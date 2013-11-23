@@ -7,7 +7,4 @@ public static class Global{
 	public static TransitionManager Transition;
 	public static Debugger Debug;
 	public static Console Console;
-	public static GameCamera Camera;
-	public static Player Player;
-	public static Sun Sun;
 }
