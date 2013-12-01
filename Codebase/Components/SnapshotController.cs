@@ -50,10 +50,13 @@ namespace Zios.Snapshot{
 			foreach(Configuration configuration in this.configurations){
 				if(configuration.accessor == null){
 					configuration.accessor = new Accessor(configuration.component,configuration.attributeName);
+					configuration.CalculateNewType();
 				}
-				object value = configuration.accessor.Get();
+				object value = stream.isReading ? configuration.defaultValue : Convert.ChangeType(configuration.accessor.Get(),configuration.newType);
 				stream.Serialize(ref value);
-				if(stream.isWriting){configuration.accessor.Set(value);}
+				if(stream.isReading){
+					configuration.accessor.Set(value);
+				}
 			}
 		}
 	}
@@ -65,6 +68,8 @@ namespace Zios.Snapshot{
 		public string type;
 		public SerializeType sendType;
 		public Accessor accessor;
+		public Type newType;
+		public object defaultValue;
 		public Configuration(Component component,string attributeName){
 			this.component = component;
 			this.componentName = this.component.GetType().Name;
@@ -77,6 +82,29 @@ namespace Zios.Snapshot{
 					this.sendType = type;
 					break;
 				}
+			}
+		}
+		public void CalculateNewType(){
+			this.newType = typeof(bool);
+			this.defaultValue = false;
+			if(this.sendType == SerializeType.Char){
+				this.newType = typeof(char);
+				this.defaultValue = (char)0;
+			} else if(this.sendType == SerializeType.Short){
+				this.newType = typeof(short);
+				this.defaultValue = (short)0;
+			} else if(this.sendType == SerializeType.Float){
+				this.newType = typeof(float);
+				this.defaultValue = 0f;
+			} else if(this.sendType == SerializeType.Int){
+				this.newType = typeof(int);
+				this.defaultValue = 0;
+			} else if(this.sendType == SerializeType.Quaternion){
+				this.newType = typeof(Quaternion);
+				this.defaultValue = Quaternion.identity;
+			} else if(this.sendType == SerializeType.Vector3){
+				this.newType = typeof(Vector3);
+				this.defaultValue = Vector3.zero;
 			}
 		}
 	}
