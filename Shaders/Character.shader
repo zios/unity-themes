@@ -1,4 +1,4 @@
-Shader "Zios/Character"{
+Shader "Zios/Standalone/Character"{
 	Properties{
 		outlineColor("Outline Color",Color) = (0.0,0.0,0.0,1.0)
 		outlineLength("Outline Length",float) = 0.09
@@ -9,7 +9,7 @@ Shader "Zios/Character"{
 	}
 	SubShader{
 		Tags{"LightMode"="ForwardBase" "Queue"="Transparent-1"}
-		UsePass "Zios/Vertex Outlines/NORMAL"
+		UsePass "Hidden/Zios/Utility/Vertex Outlines/NORMAL"
 		Usepass "Zios/Shadow Pass/Normal Index Map/SHADOWCOLLECTOR"
 		Pass{
 			AlphaTest Greater 0

@@ -1,13 +1,11 @@
-Shader "Zios/Standalone/Mesh"{
+Shader "Zios/Mappings/Diffuse Map"{
 	Properties{
 		diffuseMap("Diffuse Map",2D) = "white"{}
 	}
 	SubShader{
-		Tags{"LightMode"="ForwardBase" "Queue"="Transparent-1"}
-		Usepass "Zios/Shadow Pass/Diffuse Map/SHADOWCOLLECTOR"
 		Pass{
 			CGPROGRAM
-			#include "Utility/Unity-CG.cginc"
+			#include "../Utility/Unity-CG.cginc"
 			#pragma vertex vertexPass
 			#pragma fragment pixelPass
 			#pragma fragmentoption ARB_precision_hint_fastest
@@ -43,5 +41,4 @@ Shader "Zios/Standalone/Mesh"{
 			ENDCG
 		}
 	}
-	Fallback "Zios/Fallback/Vertex Lit"
 }

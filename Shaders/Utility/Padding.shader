@@ -1,18 +1,16 @@
-Shader "Zios/Standalone/Mesh"{
+Shader "Zios/Utility/Atlas Padding"{
 	Properties{
-		diffuseMap("Diffuse Map",2D) = "white"{}
+		paddingUV("Padding UV",Vector) = (0,0,0,0)
 	}
 	SubShader{
-		Tags{"LightMode"="ForwardBase" "Queue"="Transparent-1"}
-		Usepass "Zios/Shadow Pass/Diffuse Map/SHADOWCOLLECTOR"
 		Pass{
 			CGPROGRAM
-			#include "Utility/Unity-CG.cginc"
+			#include "../Utility/Unity-CG.cginc"
 			#pragma vertex vertexPass
 			#pragma fragment pixelPass
+			#pragma multi_compile_fwdbase
 			#pragma fragmentoption ARB_precision_hint_fastest
-			sampler2D diffuseMap;
-			fixed4 diffuseMap_ST;
+			fixed4 paddingUV;
 			struct vertexInput{
 				float4 vertex        : POSITION;
 				float4 texcoord      : TEXCOORD0;
@@ -24,24 +22,28 @@ Shader "Zios/Standalone/Mesh"{
 			struct pixelOutput{
 				float4 color         : COLOR0;
 			};
-			pixelOutput applyDiffuseMap(vertexOutput input,pixelOutput output){
-				output.color += tex2D(diffuseMap,TRANSFORM_TEX(input.UV.xy,diffuseMap));
+			pixelOutput setupPixel(vertexOutput input){
+				pixelOutput output;
+				output.color = float4(0,0,0,0);
 				return output;
 			}
+			float2 clampRange(float2 min,float2 max,float2 value){return saturate((value-min)/(max-min));}
+			vertexOutput setupPadding(vertexOutput input){
+				input.UV.xy = clampRange(paddingUV.xy,paddingUV.zw,input.UV.xy);
+				return input;
+			}
 			pixelOutput pixelPass(vertexOutput input){
-				pixelOutput output;
-				output.color = float4(0,0,0,1);
-				output = applyDiffuseMap(input,output);
+				pixelOutput output = setupPixel(input);
+				input = setupPadding(input);
 				return output;
 			}
 			vertexOutput vertexPass(vertexInput input){
 				vertexOutput output;
 				output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
-				output.UV = float4(input.texcoord.xy,0,0);
+				output.UV = float4(input.texcoord.x,input.texcoord.y,0,0);
 				return output;
 			}
 			ENDCG
 		}
 	}
-	Fallback "Zios/Fallback/Vertex Lit"
 }

@@ -1,18 +1,18 @@
-Shader "Zios/Standalone/Mesh"{
+Shader "Zios/Mappings/Index Map"{
 	Properties{
-		diffuseMap("Diffuse Map",2D) = "white"{}
+		indexMap("Index Map",2D) = "white"{}
 	}
 	SubShader{
-		Tags{"LightMode"="ForwardBase" "Queue"="Transparent-1"}
-		Usepass "Zios/Shadow Pass/Diffuse Map/SHADOWCOLLECTOR"
 		Pass{
 			CGPROGRAM
-			#include "Utility/Unity-CG.cginc"
+			#include "../Utility/Unity-CG.cginc"
+			#include "../Utility/Unity-Light.cginc"
 			#pragma vertex vertexPass
 			#pragma fragment pixelPass
+			#pragma multi_compile_fwdbase
 			#pragma fragmentoption ARB_precision_hint_fastest
-			sampler2D diffuseMap;
-			fixed4 diffuseMap_ST;
+			sampler2D indexMap;
+			fixed4 indexMap_ST;
 			struct vertexInput{
 				float4 vertex        : POSITION;
 				float4 texcoord      : TEXCOORD0;
@@ -24,14 +24,13 @@ Shader "Zios/Standalone/Mesh"{
 			struct pixelOutput{
 				float4 color         : COLOR0;
 			};
-			pixelOutput applyDiffuseMap(vertexOutput input,pixelOutput output){
-				output.color += tex2D(diffuseMap,TRANSFORM_TEX(input.UV.xy,diffuseMap));
+			pixelOutput setupPixel(vertexOutput input){
+				pixelOutput output;
+				output.color = float4(0,0,0,0);
 				return output;
 			}
 			pixelOutput pixelPass(vertexOutput input){
-				pixelOutput output;
-				output.color = float4(0,0,0,1);
-				output = applyDiffuseMap(input,output);
+				pixelOutput output = setupPixel(input);
 				return output;
 			}
 			vertexOutput vertexPass(vertexInput input){
@@ -43,5 +42,4 @@ Shader "Zios/Standalone/Mesh"{
 			ENDCG
 		}
 	}
-	Fallback "Zios/Fallback/Vertex Lit"
 }

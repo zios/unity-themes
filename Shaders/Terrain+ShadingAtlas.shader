@@ -1,4 +1,4 @@
-Shader "Zios/Terrain + Shading Atlas"{
+Shader "Zios/Standalone/Terrain (Shading Atlas)"{
 	Properties{
 		indexMap("Index Map",2D) = "white"{}
 		shadingAtlas("Shading Atlas",2D) = "white"{}
