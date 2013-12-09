@@ -68,7 +68,11 @@ public abstract class ListElementsTemplate{
 	public abstract void CreateActions();
 	public abstract List<object> GetList();
 }
-public enum ItemTypes{Label,Float,Enumeration};
+public enum ItemTypes{
+	Label,
+	Float,
+	Enumeration}
+;
 public class ListItem{
 	public string title;
 	public string fieldName;
@@ -98,5 +102,6 @@ public class ListItem{
 public abstract class ListAction{
 	public bool shouldRepaint;
 	public abstract void OnAction(UnityEngine.Object target,object targetItem);
-	public virtual void OnGlobalAction(UnityEngine.Object target){}
+	public virtual void OnGlobalAction(UnityEngine.Object target){
+	}
 }

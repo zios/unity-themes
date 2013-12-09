@@ -26,9 +26,12 @@ public abstract class AddElementTemplate{
 		foreach(Selectbox box in this.selectboxes){
 			box.Draw();
 		}
+		DrawCustomElements();
 		EditorGUILayout.EndHorizontal();
 	}
 	public abstract void CreateSelectboxes();
+	public virtual void DrawCustomElements(){
+	}
 	public abstract void AddElement();
 	public abstract void UpdateSelectboxes();
 }

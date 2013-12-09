@@ -19,8 +19,7 @@ public static class ObjectExtension{
 		MethodInfo method = target.GetType().GetMethod("MemberwiseClone",BindingFlags.Instance | BindingFlags.NonPublic);
 		if(method != null){
 			return (T)method.Invoke(target,null);
-		}
-		else{
+		} else{
 			return null;
 		}
 	}
@@ -31,8 +30,7 @@ public static class ObjectExtension{
 				if(limitTypes.Contains(field.FieldType)){
 					attributes.Add(field.Name);
 				}
-			}
-			else{
+			} else{
 				attributes.Add(field.Name);
 			}
 		}
@@ -41,17 +39,30 @@ public static class ObjectExtension{
 				if(limitTypes.Contains(property.PropertyType)){
 					attributes.Add(property.Name);
 				}
-			}
-			else{
+			} else{
 				attributes.Add(property.Name);
 			}
 		}
 		return attributes;
 	}
-	public static List<string> ListMethods(this object current){
+	public static List<string> ListMethods(this object current,List<Type> argumentTypes = null){
 		List<string> methods = new List<string>();
 		foreach(MethodInfo method in current.GetType().GetMethods()){
-			methods.Add(method.Name);
+			if(argumentTypes != null){
+				ParameterInfo[] parameters = method.GetParameters();
+				bool match = parameters.Length == argumentTypes.Count;
+				for(int i = 0;i < parameters.Length;i++){
+					if(!parameters[i].ParameterType.Equals(argumentTypes[i])){
+						match = false;
+						break;
+					}
+				}
+				if(match){
+					methods.Add(method.Name);
+				}
+			} else{
+				methods.Add(method.Name);
+			}
 		}
 		return methods;
 	}

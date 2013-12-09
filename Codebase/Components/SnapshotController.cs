@@ -6,45 +6,19 @@ namespace Zios.Snapshot{
 	[ExecuteInEditMode]
 	[AddComponentMenu("Zios/Component/General/Snapshot Controller")]
 	public class SnapshotController : MonoBehaviour{
+		public delegate void OnEvent(int intValue,float floatValue,string stringValue,Vector3 vectorValue,Quaternion quaternionValue,NetworkViewID networkViewId,NetworkPlayer networkPlayer);
+		public List<EventItem> listedEvents = new List<EventItem>();
+		public Dictionary<string,OnEvent> events = new Dictionary<string, OnEvent>();
 		public List<Configuration> configurations = new List<Configuration>();
-		public List<Component> components = new List<Component>();
-		public List<string> attributes = new List<string>();
-		private List<string> skipAttributes = new List<string>();
-		private Component currentComponent;
-		void Awake(){
-			this.skipAttributes = this.ListAttributes();
-		}
-		public void LoadComponents(){
-			this.components = new List<Component>();
-			Component[] allComponents = GetComponents<Component>();
-			foreach(Component component in allComponents){
-				if(!component.GetType().Equals(this.GetType())){
-					this.components.Add(component);
+		public void Start(){
+			foreach(EventItem item in listedEvents){
+				Zios.Snapshot.SnapshotController.OnEvent onEvent = (Zios.Snapshot.SnapshotController.OnEvent)MulticastDelegate.CreateDelegate(typeof(Zios.Snapshot.SnapshotController.OnEvent),item.component,item.methodName);
+				if(!this.events.ContainsKey(item.name)){
+					this.events.Add(item.name,onEvent);
+				} else{
+					this.events[item.name] += onEvent;
 				}
 			}
-		}
-		public void SelectComponent(int index){
-			this.currentComponent = components[index];
-			this.attributes = new List<string>();
-			List<string> allAttributes = this.currentComponent.ListAttributes();
-			foreach(string attribute in allAttributes){
-				if(!this.skipAttributes.Contains(attribute)){
-					this.attributes.Add(attribute);
-				}
-			}
-		}
-		public void Remove(Configuration setting){
-			this.configurations.Remove(setting);
-		}
-		public void Add(int componentIndex,int attributeIndex){
-			Component component = this.components[componentIndex];
-			string attributeName = this.attributes[attributeIndex];
-			foreach(Configuration configuration in this.configurations){
-				if(configuration.component.Equals(component) && configuration.attributeName.Equals(attributeName)){
-					return;
-				}
-			}
-			this.configurations.Add(new Configuration(component,attributeName));
 		}
 		public void OnSerializeNetworkView(BitStream stream,NetworkMessageInfo info){
 			foreach(Configuration configuration in this.configurations){
@@ -58,6 +32,27 @@ namespace Zios.Snapshot{
 					configuration.accessor.Set(value);
 				}
 			}
+		}
+		[RPC]
+		public void CheckEvents(string name,int intValue,float floatValue,string stringValue,Vector3 vectorValue,Quaternion quaternionValue,NetworkViewID networkViewId,NetworkPlayer networkPlayer){
+			if(this.events.ContainsKey(name)){
+				this.events[name](intValue,floatValue,stringValue,vectorValue,quaternionValue,networkViewId,networkPlayer);
+			}
+		}
+	}
+	[Serializable]
+	public class EventItem{
+		public string name;
+		public string methodName;
+		public string componentName;
+		public Component component;
+		public Zios.Snapshot.SnapshotController.OnEvent onEvent;
+		public EventItem(string name,Zios.Snapshot.SnapshotController.OnEvent onEvent,Component component){
+			this.name = name;
+			this.onEvent = onEvent;
+			this.methodName = onEvent.Method.Name;
+			this.component = component;
+			this.componentName = component.GetType().Name;
 		}
 	}
 	[Serializable]
@@ -108,5 +103,13 @@ namespace Zios.Snapshot{
 			}
 		}
 	}
-	public enum SerializeType{Bool,Char,Short,Int,Float,Quaternion,Vector3};
+	public enum SerializeType{
+		Bool,
+		Char,
+		Short,
+		Int,
+		Float,
+		Quaternion,
+		Vector3}
+	;
 }
