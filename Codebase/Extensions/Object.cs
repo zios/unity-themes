@@ -16,10 +16,11 @@ public static class ObjectExtension{
 		if(target == null){
 			return null;
 		}
-		MethodInfo method = target.GetType().GetMethod("MemberwiseClone",BindingFlags.Instance | BindingFlags.NonPublic);
+		MethodInfo method = target.GetType().GetMethod("MemberwiseClone",BindingFlags.Instance|BindingFlags.NonPublic);
 		if(method != null){
 			return (T)method.Invoke(target,null);
-		} else{
+		}
+		else{
 			return null;
 		}
 	}
@@ -30,7 +31,8 @@ public static class ObjectExtension{
 				if(limitTypes.Contains(field.FieldType)){
 					attributes.Add(field.Name);
 				}
-			} else{
+			}
+			else{
 				attributes.Add(field.Name);
 			}
 		}
@@ -39,7 +41,8 @@ public static class ObjectExtension{
 				if(limitTypes.Contains(property.PropertyType)){
 					attributes.Add(property.Name);
 				}
-			} else{
+			}
+			else{
 				attributes.Add(property.Name);
 			}
 		}
@@ -60,7 +63,8 @@ public static class ObjectExtension{
 				if(match){
 					methods.Add(method.Name);
 				}
-			} else{
+			}
+			else{
 				methods.Add(method.Name);
 			}
 		}

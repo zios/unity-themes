@@ -210,7 +210,7 @@ namespace Zios.Snapshot{
 				if(componentsBox.index < this.components.Count && methodsBox.index < this.elementsNames.Count && !String.IsNullOrEmpty(this.eventName)){
 					Component component = this.components[componentsBox.index];
 					string methodName = this.elementsNames[methodsBox.index];
-					Zios.Snapshot.SnapshotController.OnEvent onEvent = (Zios.Snapshot.SnapshotController.OnEvent)MulticastDelegate.CreateDelegate(typeof(Zios.Snapshot.SnapshotController.OnEvent),component,methodName);
+					Zios.Snapshot.OnEvent onEvent = (Zios.Snapshot.OnEvent)MulticastDelegate.CreateDelegate(typeof(Zios.Snapshot.OnEvent),component,methodName);
 					if(onEvent != null){
 						foreach(EventItem item in this.controller.listedEvents){
 							if(item.name.Equals(this.eventName) && item.methodName.Equals(methodName) && item.componentName.Equals(component.name)){

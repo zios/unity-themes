@@ -1,21 +1,22 @@
-﻿using UnityEngine;
+﻿using UnityEngine; 
 using System;
 using System.Collections;
 using System.Collections.Generic;
 namespace Zios.Snapshot{
+	public delegate void OnEvent(int intValue,float floatValue,string stringValue,Vector3 vectorValue,Quaternion quaternionValue,NetworkViewID networkViewId,NetworkPlayer networkPlayer);
 	[ExecuteInEditMode]
 	[AddComponentMenu("Zios/Component/General/Snapshot Controller")]
 	public class SnapshotController : MonoBehaviour{
-		public delegate void OnEvent(int intValue,float floatValue,string stringValue,Vector3 vectorValue,Quaternion quaternionValue,NetworkViewID networkViewId,NetworkPlayer networkPlayer);
 		public List<EventItem> listedEvents = new List<EventItem>();
 		public Dictionary<string,OnEvent> events = new Dictionary<string, OnEvent>();
 		public List<Configuration> configurations = new List<Configuration>();
 		public void Start(){
 			foreach(EventItem item in listedEvents){
-				Zios.Snapshot.SnapshotController.OnEvent onEvent = (Zios.Snapshot.SnapshotController.OnEvent)MulticastDelegate.CreateDelegate(typeof(Zios.Snapshot.SnapshotController.OnEvent),item.component,item.methodName);
+				Zios.Snapshot.OnEvent onEvent = (Zios.Snapshot.OnEvent)MulticastDelegate.CreateDelegate(typeof(Zios.Snapshot.OnEvent),item.component,item.methodName);
 				if(!this.events.ContainsKey(item.name)){
 					this.events.Add(item.name,onEvent);
-				} else{
+				}
+				else{
 					this.events[item.name] += onEvent;
 				}
 			}
@@ -46,8 +47,8 @@ namespace Zios.Snapshot{
 		public string methodName;
 		public string componentName;
 		public Component component;
-		public Zios.Snapshot.SnapshotController.OnEvent onEvent;
-		public EventItem(string name,Zios.Snapshot.SnapshotController.OnEvent onEvent,Component component){
+		public Zios.Snapshot.OnEvent onEvent;
+		public EventItem(string name,Zios.Snapshot.OnEvent onEvent,Component component){
 			this.name = name;
 			this.onEvent = onEvent;
 			this.methodName = onEvent.Method.Name;
@@ -85,31 +86,28 @@ namespace Zios.Snapshot{
 			if(this.sendType == SerializeType.Char){
 				this.newType = typeof(char);
 				this.defaultValue = (char)0;
-			} else if(this.sendType == SerializeType.Short){
+			}
+			else if(this.sendType == SerializeType.Short){
 				this.newType = typeof(short);
 				this.defaultValue = (short)0;
-			} else if(this.sendType == SerializeType.Float){
+			}
+			else if(this.sendType == SerializeType.Float){
 				this.newType = typeof(float);
 				this.defaultValue = 0f;
-			} else if(this.sendType == SerializeType.Int){
+			}
+			else if(this.sendType == SerializeType.Int){
 				this.newType = typeof(int);
 				this.defaultValue = 0;
-			} else if(this.sendType == SerializeType.Quaternion){
+			}
+			else if(this.sendType == SerializeType.Quaternion){
 				this.newType = typeof(Quaternion);
 				this.defaultValue = Quaternion.identity;
-			} else if(this.sendType == SerializeType.Vector3){
+			}
+			else if(this.sendType == SerializeType.Vector3){
 				this.newType = typeof(Vector3);
 				this.defaultValue = Vector3.zero;
 			}
 		}
 	}
-	public enum SerializeType{
-		Bool,
-		Char,
-		Short,
-		Int,
-		Float,
-		Quaternion,
-		Vector3}
-	;
+	public enum SerializeType{Bool,Char,Short,Int,Float,Quaternion,Vector3};
 }
