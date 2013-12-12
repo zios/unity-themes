@@ -186,7 +186,7 @@ namespace Zios.Snapshot{
 				}
 				Selectbox componentsBox = this.selectboxes[0];
 				Selectbox methodsBox = this.selectboxes[1];
-				if(componentsBox.Changed()){
+				if(componentsBox.Changed() && this.components.Count > componentsBox.index){
 					string[] componentsNames = new string[this.components.Count];
 					foreach(Component component in this.components){
 						componentsNames[this.components.IndexOf(component)] = component.GetType().Name;

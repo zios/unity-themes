@@ -10,6 +10,12 @@ namespace Zios.Snapshot{
 		public List<EventItem> listedEvents = new List<EventItem>();
 		public Dictionary<string,OnEvent> events = new Dictionary<string, OnEvent>();
 		public List<Configuration> configurations = new List<Configuration>();
+		public void OnEnable(){
+			if(this.gameObject.networkView == null){
+				this.gameObject.AddComponent("NetworkView");
+			}
+			this.gameObject.networkView.observed = this;
+		}
 		public void Start(){
 			foreach(EventItem item in listedEvents){
 				Zios.Snapshot.OnEvent onEvent = (Zios.Snapshot.OnEvent)MulticastDelegate.CreateDelegate(typeof(Zios.Snapshot.OnEvent),item.component,item.methodName);
