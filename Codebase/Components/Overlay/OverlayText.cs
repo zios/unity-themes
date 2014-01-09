@@ -20,7 +20,7 @@ public class OverlayText: Overlay{
 	[NonSerialized] public GUIStyle shadowStyle;
 	public override void OnGUI(){
 		base.OnGUI();
-		if(Event.current.type == EventType.Repaint && this.render){
+		if(Event.current.type == EventType.Repaint && this.visible){
 			if(this.shadowOffset != Vector2.zero){
 				GUI.Label(this.area,this.trueText,this.shadowStyle);
 			}

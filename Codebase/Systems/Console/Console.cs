@@ -44,24 +44,20 @@ public struct Bind{
 }
 [AddComponentMenu("Zios/Singleton/Console")]
 public class Console : MonoBehaviour{
+	public GUISkin skin;
 	public Texture2D background;
 	public Texture2D inputBackground;
 	public Texture2D textArrow;
-	public KeyCode backupKey = KeyCode.F12;
+	public KeyCode triggerKey = KeyCode.F12;
 	public float speed = 5.0f;
 	public float height = 0.25f;
-	public string inputText = "";
-	public string logName = "Log.txt";
-	public string configName = "Game.cfg";
-	public int logLineSize = 200;
+	public string configFile = "Game.cfg";
+	public string logFile = "Log.txt";
+	public int logLineSize = 150;
 	public int logFontSize = 15;
 	public bool logFontAllowColors = true;
 	public byte logFontColor = 7;
-	public byte status = 0;
-	public GUIStyle inputStyle;
-	public GUIStyle logStyle;
-	public GUIStyle scrollbar;
-	public GUIStyle scrollbarBackground;
+	public bool allowLogging = true;
 	public FixedList<string> log = new FixedList<string>(256);
 	public FixedList<string> history = new FixedList<string>(256);
 	public Dictionary<string,Bind> binds = new Dictionary<string,Bind>();
@@ -69,16 +65,18 @@ public class Console : MonoBehaviour{
 	public Dictionary<string,ConsoleCallback> keywords = new Dictionary<string,ConsoleCallback>();
 	public Dictionary<string,Cvar> cvars = new Dictionary<string,Cvar>();
 	private FixedList<string> autocomplete = new FixedList<string>(256);
-	private bool allowLogging = true;
+	private byte status = 0;
 	private float logScrollLimit = 0;
 	private float logPosition = 0;
 	private float offset = -1.0f;
 	private Color[] color = Colors.numbers;
 	private byte historyIndex = 0;
+	private string inputText = "";
 	private string keyDetection = "";
 	private string lastCommand = "";
 	private List<string> configOutput = new List<string>();
 	private Vector3 dragStart = Vector3.zero;
+	private GUIStyle logStyle;
 	private Dictionary<KeyCode,string> keyValues = new Dictionary<KeyCode,string>(){
 		{KeyCode.Keypad0,"0"},
 		{KeyCode.Keypad1,"1"},
@@ -160,8 +158,8 @@ public class Console : MonoBehaviour{
 	public void Awake(){
 		Global.Console = this;
 		DontDestroyOnLoad(this.transform.gameObject);
-		if(this.logName != "" && !Application.isWebPlayer){
-			using(StreamWriter file = new StreamWriter(this.logName,true)){
+		if(this.logFile != "" && !Application.isWebPlayer){
+			using(StreamWriter file = new StreamWriter(this.logFile,true)){
 			    file.WriteLine("-----------------------");
 			    file.WriteLine(DateTime.Now);
 			    file.WriteLine("-----------------------");
@@ -182,6 +180,10 @@ public class Console : MonoBehaviour{
 		}
 	}
 	public void OnGUI(){
+		if(Event.current.type != EventType.Repaint && Event.current.type != EventType.Layout){
+			Debug.Log(Event.current);
+		}
+		this.Setup();
 		this.CheckTrigger();
 		this.CheckBinds();
 		if(this.status > 0){
@@ -192,15 +194,20 @@ public class Console : MonoBehaviour{
 			this.ManageInput();
 		}
 	}
+	public void Setup(){
+		if(this.logStyle == null){
+			if(this.skin == null){this.skin = GUI.skin;}
+			this.logStyle = new GUIStyle(this.skin.textField);
+		}
+	}
 	public void Start(){
-		this.logStyle = new GUIStyle(this.inputStyle);
 		this.AddCvar("consoleFontColor",this,"logFontColor","Console Font color",this.help[5]);
 		this.AddCvar("consoleFontSize",this,"logFontSize","Console Font size",this.help[0]);
 		this.AddCvar("consoleSize",this,"height","Console Height percent",this.help[1]);
 		this.AddCvar("consoleSpeed",this,"speed","Console Speed",this.help[2]);
-		this.AddCvar("consoleLineSize",this,"logLineSize","Console Line size",this.help[6]);
-		this.AddCvar("consoleLogName",this,"logName","Console Log name");
-		this.AddCvar("consoleConfigName",this,"configName","Console Config name");
+		this.AddCvar("consoleFLineSize",this,"logLineSize","Console Line size",this.help[6]);
+		this.AddCvar("consoleLogFile",this,"logFile","Console Log name");
+		this.AddCvar("consoleConigFile",this,"configFile","Console Config name");
 		this.AddKeyword("consoleListFonts",this.ListConsoleFonts,0,this.help[4]);
 		this.AddKeyword("consoleListColors",this.ListConsoleColors,0,this.help[3]);
 		this.AddKeyword("consoleListBinds",this.ListConsoleBinds,0,this.help[10]);
@@ -226,7 +233,7 @@ public class Console : MonoBehaviour{
 		this.AddShortcut(new string[]{"showFonts","listFonts"},"consoleListFonts");
 		this.AddShortcut(new string[]{"showBinds","listBinds"},"consoleListBinds");
 		this.LoadBinds();
-		this.LoadConfig(this.configName);
+		this.LoadConfig(this.configFile);
 	}
 	//===========================
 	// Binds
@@ -259,7 +266,7 @@ public class Console : MonoBehaviour{
 	}
 	public void LoadBinds(){
 		this.AddBind("BackQuote","showConsole");
-		if(!Application.isWebPlayer && this.configName != ""){return;}
+		if(!Application.isWebPlayer && this.configFile != ""){return;}
 		if(!PlayerPrefs.HasKey("binds")){
 			PlayerPrefs.SetString("binds","|");
 		}
@@ -310,7 +317,7 @@ public class Console : MonoBehaviour{
 			if(data.repeat){bindString += "-" + data.repeatDelay;}
 			bindString += "|";
 		}
-		if(Application.isWebPlayer || this.configName == ""){
+		if(Application.isWebPlayer || this.configFile == ""){
 			bindString = bindString.Trim('|') + "|";
 			PlayerPrefs.SetString("binds",bindString);
 		}
@@ -387,7 +394,7 @@ public class Console : MonoBehaviour{
 		this.AddKeyword(name,this.HandleCvar);
 	}
 	public void LoadCvar(Cvar data){
-		if(!Application.isWebPlayer && this.configName != ""){return;}
+		if(!Application.isWebPlayer && this.configFile != ""){return;}
 		if(PlayerPrefs.HasKey(data.fullName)){
 			object value = data.value.Get();
 			Type type = data.value.type;
@@ -414,7 +421,7 @@ public class Console : MonoBehaviour{
 			if(item.Key.StartsWith("#")){continue;}
 			Cvar data = item.Value;
 			object current = data.value.Get();
-			if(Application.isWebPlayer || this.configName == ""){
+			if(Application.isWebPlayer || this.configFile == ""){
 				Type type = current.GetType();
 				if(type == typeof(float)){PlayerPrefs.SetFloat(data.fullName,(float)current);}
 				else if(type == typeof(string)){PlayerPrefs.SetString(data.fullName,(string)current);}
@@ -483,7 +490,7 @@ public class Console : MonoBehaviour{
 	//===========================
 	public void SaveConfig(){
 		if(!Application.isWebPlayer){
-			using(StreamWriter file = new StreamWriter(this.configName,false)){
+			using(StreamWriter file = new StreamWriter(this.configFile,false)){
 				foreach(string line in this.configOutput){
 					file.WriteLine(line);
 				}
@@ -491,7 +498,7 @@ public class Console : MonoBehaviour{
 		}
 	}
 	public void LoadConfig(string name){
-		if(name != "" && !Application.isWebPlayer){
+		if(name != "" && !Application.isWebPlayer && File.Exists(name)){
 			using(StreamReader file = new StreamReader(name)){
 				string line = "";
 				while((line = file.ReadLine()) != null){
@@ -525,12 +532,12 @@ public class Console : MonoBehaviour{
 			Application.RegisterLogCallback(this.HandleLog);
 			if(system){return;}
 		}
-		if(this.logName != "" && !Application.isWebPlayer){
+		if(this.logFile != "" && !Application.isWebPlayer){
 			string cleanText = text;
 			for(int index=this.color.Length-1;index>=0;--index){
 				cleanText = cleanText.Replace("^"+index,"").Replace("|","");	
 			}
-			using(StreamWriter file = new StreamWriter(this.logName,true)){
+			using(StreamWriter file = new StreamWriter(this.logFile,true)){
 			    file.WriteLine(cleanText);
 			}
 		}
@@ -587,7 +594,7 @@ public class Console : MonoBehaviour{
 	}
 	public void CheckTrigger(){
 		KeyShortcut CheckKeyDown = Button.CheckEventKeyDown;
-		if(CheckKeyDown(this.backupKey)){
+		if(CheckKeyDown(this.triggerKey)){
 			this.ShowConsole();
 			Event.current.Use();
 		}
@@ -661,6 +668,7 @@ public class Console : MonoBehaviour{
 		this.height = Mathf.Clamp(this.height,0.05f,(((float)Screen.height-30.0f)/(float)Screen.height));	
 	}
 	public void DrawElements(){
+		GUI.skin = this.skin;
 		float consoleHeight = (Screen.height * this.offset)*this.height;
 		float alternate = Time.time % 1.5f;
 		byte logLinesShown = 0;
@@ -673,13 +681,10 @@ public class Console : MonoBehaviour{
 		Rect tiling = new Rect(alternate,alternate,Screen.width/this.background.width,consoleHeight/this.background.height);
 		Rect tilingInput = new Rect(0,0,Screen.width/this.inputBackground.width,1);
 		this.logStyle.fontSize = this.logFontSize;
-		GUI.skin.settings.cursorColor = Color.yellow;
 		GUI.DrawTextureWithTexCoords(consoleBounds,this.background,tiling);
 		GUI.DrawTextureWithTexCoords(inputBounds,this.inputBackground,tilingInput);
 		GUI.DrawTexture(inputArrowBounds,this.textArrow);
 		if(this.status == ConsoleState.open && this.log.Count > 0){
-			GUI.skin.verticalScrollbar = this.scrollbarBackground;
-			GUI.skin.verticalScrollbarThumb = this.scrollbar;
 			this.logStyle.normal.textColor = this.color[this.logFontColor];
 			float clampedPosition = Mathf.Clamp(this.logPosition,0,this.logScrollLimit);
 			byte logPosition = (byte)(clampedPosition * (this.log.Count+1));
@@ -731,7 +736,7 @@ public class Console : MonoBehaviour{
 			}
 		}
 		GUI.SetNextControlName("inputText");
-		this.inputText = GUI.TextField(inputBounds,this.inputText,this.inputStyle);
+		this.inputText = GUI.TextField(inputBounds,this.inputText);
 	}
 	public void ManageState(){
 		float slideStep = this.speed * Time.deltaTime;

@@ -10,7 +10,7 @@ public class Overlay2D: Overlay{
 	private Vector2 lastTiling = Vector2.one;
 	public override void OnGUI(){
 		base.OnGUI();
-		if(Event.current.type == EventType.Repaint && this.render){
+		if(Event.current.type == EventType.Repaint && this.visible){
 			if(this.lastTiling != this.tiling){
 				this.UpdateRender();
 				this.lastTiling = this.tiling;
