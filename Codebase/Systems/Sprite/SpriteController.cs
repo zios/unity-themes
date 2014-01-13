@@ -62,7 +62,7 @@ public class SpriteController : MonoBehaviour{
 		else if(this.spriteSheet.GetSprite(fullName) != null){
 			this.instance = this.sequences[fullName] = this.spriteSheet.GetSpriteInstance(fullName);
 			if(this.instance == null){
-				Global.Console.AddLog("^2Error loading sprite -- ^7" + this.spriteName + "-^4" + this.spriteAnimation);
+				Debug.Log("^2Error loading sprite -- ^7" + this.spriteName + "-^4" + this.spriteAnimation);
 				return;
 			}
 			this.Begin();

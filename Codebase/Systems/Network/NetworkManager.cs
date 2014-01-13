@@ -4,7 +4,7 @@ using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-public struct Events{
+public struct NetworkEvents{
 	public const int LoadScene = 0;
 	public const int SyncScene = 1;
 	public const int AddEntity = 2;
@@ -61,19 +61,6 @@ public class NetworkManager : MonoBehaviour{
 	public List<Client> clients = new List<Client>();
 	public List<NetworkEntity> entities = new List<NetworkEntity>();
 	public List<NetworkEntity> localEntities = new List<NetworkEntity>();
-	private string[] help = new string[]{
-		"^3connect ^9<^7address:port^9> :^10 The ip address/domain and optional port to attempt a network connection to.",
-		"^3listen ^9<^7map^9> :^10 Places the game in server mode (on an optional map) and waits for incoming connections.",
-		"^3port ^9<^7number^9> :^10 The port used by default for both incoming/outgoing network connections.",
-		"^3password ^9<^7string^9> :^10 The required password needed by users to connect when in server mode.",
-		"^3maxUsers ^9<^7number^9> :^10 The maximum number of network connections allowed when in server mode.",
-		"^3say ^9<^7text^9> :^10 Sends a message to the server to be displayed to all clients.",
-		"^3nick ^9<^7text^9> :^10 Changes the alias used in network communications.",
-	};
-	public void Awake(){
-		Global.Network = this;
-		DontDestroyOnLoad(this.gameObject);
-	}
 	public void OnEnable(){
 		if(Network.isClient ||  Network.isServer){
 			Network.SetSendingEnabled(0,true);
@@ -86,16 +73,6 @@ public class NetworkManager : MonoBehaviour{
 	public void Start(){
 		this.connection = this.networkView;
 		if(Network.isClient || Network.isServer){Debug.Log("Level has been loaded -- " + Application.loadedLevelName);}
-		Global.Console.AddKeyword("connect",this.Connect);
-		Global.Console.AddKeyword("listen",this.StartServer);
-		Global.Console.AddKeyword("say",this.SendMessage);
-		Global.Console.AddShortcut("join","connect");
-		Global.Console.AddShortcut("name","nick");
-		Global.Console.AddShortcut("alias","nick");
-		Global.Console.AddCvar("nick",this,"clientName","Player Name",this.help[6]);
-		Global.Console.AddCvar("port",this,"port","Network Port",this.help[2]);
-		Global.Console.AddCvar("password",this,"password","Network Password",this.help[3]);
-		Global.Console.AddCvar("maxUsers",this,"maxUsers","Maximum Users",this.help[4]);
 	}
 	// =========================
 	// Unity-Derived
@@ -103,11 +80,11 @@ public class NetworkManager : MonoBehaviour{
 	public void OnPlayerConnected(NetworkPlayer player){
 		string info = "^2|" + player.externalIP + ":^9|" + player.externalPort + "^10";
 		Debug.Log("^10Client ["+info+"] has connected to the server.");
-		this.SendRPC("StringEvent",player,Events.LoadScene,this.sceneName);
+		this.SendRPC("StringEvent",player,NetworkEvents.LoadScene,this.sceneName);
 		this.LocalizeClient(player);
 		foreach(NetworkEntity entity in this.entities){
 			Vector3 position = entity.gameObject.transform.position;
-			this.SendRPC("HandleEvent",player,Events.AddEntity,entity.gameObject.name,position);
+			this.SendRPC("HandleEvent",player,NetworkEvents.AddEntity,entity.gameObject.name,position);
 		}
 	}
 	public void OnConnectedToServer(){
@@ -135,20 +112,12 @@ public class NetworkManager : MonoBehaviour{
 	// =========================
 	// Custom
 	// =========================
-	public void SendMessage(string[] values,bool help){
-		if(help || values.Length < 2){
-			Debug.Log(this.help[5]);
-			return;
-		}
+	public void SendMessage(string[] values){
 		values = values.Skip(1).ToArray();
 		string message = this.clientName + "^6:^10" + string.Join(" ",values);
-		this.SendRPC("StringEvent",RPCMode.All,Events.SendMessage,message);
+		this.SendRPC("StringEvent",RPCMode.All,NetworkEvents.SendMessage,message);
 	}
-	public void Connect(string[] values,bool help){
-		if(help){
-			Debug.Log(this.help[0]);
-			return;
-		}
+	public void Connect(string[] values){
 		string[] data = values[1].Split(':');
 		string address = data[0];
 		int port = data.Length > 1 ? Convert.ToInt32(data[1]) : this.port;
@@ -160,11 +129,7 @@ public class NetworkManager : MonoBehaviour{
 		Network.Connect(address,port);
 	}
 
-	public void StartServer(string[] values,bool help){
-		if(help){
-			Debug.Log(this.help[1]);
-			return;
-		}
+	public void StartServer(string[] values){
 		int port = this.port;
 		string sceneName = Application.loadedLevelName;
 		if(values.Length > 1){
@@ -172,11 +137,11 @@ public class NetworkManager : MonoBehaviour{
 		}
 		Debug.Log("^10Establishing [^3|" + this.maxUsers + "^10] user listen server on port ^9|" + port + "^10 ...");
 		this.sceneName = sceneName;
-		int sceneID = Global.Scene.GetMapID(this.sceneName);
+		int sceneID = Zios.Scene.GetMapID(this.sceneName);
 		Network.SetLevelPrefix(sceneID);
 		Network.incomingPassword = this.password;
 		Network.InitializeServer(this.maxUsers,port,true);
-		this.SendRPC("StringEvent",RPCMode.All,Events.LoadScene,this.sceneName);
+		this.SendRPC("StringEvent",RPCMode.All,NetworkEvents.LoadScene,this.sceneName);
 	}
 	public Client FindClient(int id){
 		foreach(Client client in this.clients){
@@ -274,11 +239,11 @@ public class NetworkManager : MonoBehaviour{
 		this.LocalizeClients(client);
 		this.nextClientID += 1;
 		this.SendRPC("FinalizeClient",player,serverViewID,client.id);
-		//this.SendRPC("HandleEvent",RPCMode.Others,Events.AddClient,info);
+		//this.SendRPC("HandleEvent",RPCMode.Others,NetworkEvents.AddClient,info);
 		if(this.clientPrefab){
 			Vector3 spawnPosition = new Vector3(400.0f,85.0f,0);
 			string entityData = this.clientPrefab.name+"-"+this.nextEntityID+"-"+client.id+"-"+client.label;
-			this.SendRPC("HandleEvent",RPCMode.All,Events.AddEntity,entityData,spawnPosition);
+			this.SendRPC("HandleEvent",RPCMode.All,NetworkEvents.AddEntity,entityData,spawnPosition);
 			this.nextEntityID += 1;
 		}
 	}
@@ -287,16 +252,16 @@ public class NetworkManager : MonoBehaviour{
 		if(this.debug){
 			Debug.Log("Event " + eventID + " : " + text + " : " + position);
 		}
-		if(eventID == Events.LoadScene){
+		if(eventID == NetworkEvents.LoadScene){
 			Debug.Log("Loading level...");
-			int sceneID = Global.Scene.GetMapID(text);
+			int sceneID = Zios.Scene.GetMapID(text);
 			Network.SetSendingEnabled(0,false);	
 			Network.isMessageQueueRunning = false;
 			Network.SetLevelPrefix(sceneID);
 			Application.LoadLevel(text);
 		}
-		else if(eventID == Events.SyncScene){}
-		else if(eventID == Events.AddEntity){
+		else if(eventID == NetworkEvents.SyncScene){}
+		else if(eventID == NetworkEvents.AddEntity){
 			Debug.Log("Adding NetworkEntity...");
 			string[] data = text.Split('-');
 			GameObject entityPrefab = this.FindPrefab(data[0]);
@@ -315,10 +280,10 @@ public class NetworkManager : MonoBehaviour{
 			}
 			this.entities.Add(entity);
 		}
-		else if(eventID == Events.AddClient){}
-		else if(eventID == Events.RemoveEntity){}
-		else if(eventID == Events.RemoveClient){}
-		else if(eventID == Events.SendMessage){
+		else if(eventID == NetworkEvents.AddClient){}
+		else if(eventID == NetworkEvents.RemoveEntity){}
+		else if(eventID == NetworkEvents.RemoveClient){}
+		else if(eventID == NetworkEvents.SendMessage){
 			Debug.Log(text);
 		}
 	}
