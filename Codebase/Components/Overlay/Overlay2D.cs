@@ -2,8 +2,8 @@ using UnityEngine;
 using System.Collections;
 [ExecuteInEditMode]
 [AddComponentMenu("Zios/Component/Overlay/Image")]
-public class Overlay2D: Overlay{
-	public new static Overlay2D Get(string name){return Overlay.Get<Overlay2D>(name);}
+public class Overlay2D: OverlayBase{
+	public static Overlay2D Get(string name){return Overlay.Get<Overlay2D>(name);}
 	public Vector2 tiling = Vector2.one;
 	public Texture2D texture;
 	public Material material;

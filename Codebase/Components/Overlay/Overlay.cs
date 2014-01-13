@@ -1,17 +1,41 @@
+#if UNITY_EDITOR 
+using UnityEditor;
+#endif
 using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-[AddComponentMenu("")]
-public class Overlay: MonoBehaviour{
-	public static Overlay Get(string name){return Overlay.instances.ContainsKey(name) ? Overlay.instances[name] : null;}
+public static class Overlay{
+	public static OverlayBase Get(string name){return Overlay.instances.ContainsKey(name) ? Overlay.instances[name] : null;}
+	public static Dictionary<string,OverlayBase> instances = new Dictionary<string,OverlayBase>();
+	public static Matrix4x4 guiMatrix;
+	public static float[] guiScale = new float[2]{1,1};
+	public static float[] defaultResolution;
+	static Overlay(){
+		Overlay.defaultResolution = new float[2]{Screen.width,Screen.height};
+		#if UNITY_EDITOR 
+		Overlay.defaultResolution = new float[2]{PlayerSettings.defaultScreenWidth,PlayerSettings.defaultScreenHeight};
+		#endif
+		//Debug.Log(Overlay.defaultResolution[0]);
+		Events.Add("OnResolutionChange",Overlay.CalculateGUIMatrix);
+		Overlay.CalculateGUIMatrix();
+	}
 	public static T Get<T>(string name){
-		Overlay overlay = Overlay.instances.ContainsKey(name) ? Overlay.instances[name] : null;
+		OverlayBase overlay = Overlay.instances.ContainsKey(name) ? Overlay.instances[name] : null;
 		return (T)Convert.ChangeType(overlay,typeof(T));
 	}
-	public static Dictionary<string,Overlay> instances = new Dictionary<string,Overlay>();
+	public static void CalculateGUIMatrix(){
+		//Debug.Log("CALC");
+		float xScale = Overlay.guiScale[0] = Screen.width / Overlay.defaultResolution[0];
+		float yScale = Overlay.guiScale[1] =  Screen.height / Overlay.defaultResolution[1];
+		Overlay.guiMatrix = Matrix4x4.TRS(Vector3.zero,Quaternion.identity,new Vector3(xScale,yScale,1));
+	}
+}
+[AddComponentMenu("")]
+public class OverlayBase : MonoBehaviour{
 	public bool visible = true;
 	public new string name;
+	public bool autoScale = true;
 	public int depth = 1000;
 	public Vector2 position;
 	public Vector2 size;
@@ -29,12 +53,18 @@ public class Overlay: MonoBehaviour{
 		GUI.depth = this.depth;
 		if(Event.current.type == EventType.Repaint && this.visible){
 			if(!Application.isPlaying){this.UpdateRender();}
-			GUI.matrix = Global.Scene.guiMatrix;
+			GUI.matrix = Overlay.guiMatrix;
 		}
 	}
 	public virtual void UpdateRender(){
-		if(Global.Scene != null){Global.Scene.CalculateGUIMatrix();}
-		this.area = new Rect(this.position.x,this.position.y,this.size.x,this.size.y);
+		Rect area = new Rect(this.position.x,this.position.y,this.size.x,this.size.y);
+		if(this.autoScale){
+			area.width = (int)(area.width * Overlay.guiScale[0]);
+			area.height = (int)(area.height * Overlay.guiScale[1]);
+		}
+		this.area = area;
 	}
-	public void OnDrawGizmosSelected(){this.UpdateRender();}
+	public void OnDrawGizmosSelected(){
+		this.UpdateRender();
+	}
 }

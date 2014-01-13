@@ -4,8 +4,8 @@ using System.Linq;
 using System.Collections;
 [ExecuteInEditMode]
 [AddComponentMenu("Zios/Component/Overlay/Text")]
-public class OverlayText: Overlay{
-	public new static OverlayText Get(string name){return Overlay.Get<OverlayText>(name);}
+public class OverlayText: OverlayBase{
+	public static OverlayText Get(string name){return Overlay.Get<OverlayText>(name);}
 	public Texture2D background;
 	public string text = "Example Text";
 	public Color textColor = Color.white;
@@ -35,7 +35,6 @@ public class OverlayText: Overlay{
 		this.style.normal.textColor = this.textColor;
 		this.style.richText = this.letterSpacing != 0;
 		this.style.font = this.font;
-		//this.style.alignment = TextAnchor.UpperLeft;
 		this.style.fontSize = this.fontSize;
 		this.style.fontStyle = this.fontStyle;
 		this.shadowStyle = new GUIStyle(this.style);

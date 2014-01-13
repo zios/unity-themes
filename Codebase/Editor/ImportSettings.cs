@@ -6,7 +6,7 @@ public class ImportSettings : AssetPostprocessor{
 	public void OnPreprocessModel(){
 		ModelImporter importer = (ModelImporter)assetImporter;
 		if(importer.importMaterials){
-			importer.globalScale = 1.0f;
+			importer.globalScale = 0.01f;
 			importer.meshCompression = ModelImporterMeshCompression.High;
 			importer.optimizeMesh = true;
 			importer.importMaterials = false;
