@@ -23,8 +23,8 @@ public class ImportSettings : AssetPostprocessor{
 	}
 	public void OnPreprocessTexture(){
 		TextureImporter importer = (TextureImporter)assetImporter;
-		if(importer.textureFormat != TextureImporterFormat.AutomaticTruecolor){
-			importer.textureType = TextureImporterType.Advanced;
+		importer.textureType = TextureImporterType.Advanced;
+		/*if(importer.textureFormat != TextureImporterFormat.AutomaticTruecolor){
 			importer.textureFormat = TextureImporterFormat.AutomaticTruecolor;
 			importer.mipmapEnabled = false;
 			if(importer.assetPath.Contains("Index") || importer.assetPath.Contains("Shading")){
@@ -37,7 +37,7 @@ public class ImportSettings : AssetPostprocessor{
 			if(importer.assetPath.Contains("Atlas")){
 				//importer.isReadable = true;
 			}
-		}
+		}*/
 	}
 	public void OnPreprocessAudio(){
 		AudioImporter importer = (AudioImporter)assetImporter;
