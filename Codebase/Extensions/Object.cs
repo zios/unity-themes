@@ -6,6 +6,9 @@ using System.Reflection;
 using System.Security.Cryptography;
 using System.Xml.Serialization;
 public static class ObjectExtension{
+	public static object Cast(this object current,Type type){
+		return Convert.ChangeType(current,type);
+	}
 	public static T Cast<T>(this object current){
 		return (T)Convert.ChangeType(current,typeof(T));
 	}

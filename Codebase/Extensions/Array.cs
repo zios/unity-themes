@@ -16,6 +16,13 @@ public static class ArrayExtension{
 		}
 		return casted.ToArray();
 	}
+	public static float[] Scale(this float[] current,float scalar){
+		float[] result = current;
+		for(int index=0;index<current.Length;++index){
+			result[index] = current[index] * scalar;
+		}
+		return result;
+	}
 	public static Color ToColor(this float[] current){
 		if(current.Length >= 3){
 			float r = current[0];

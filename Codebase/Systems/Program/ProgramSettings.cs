@@ -7,11 +7,15 @@ namespace Zios{
 		public int targetFPS = -1;
 		public bool[] pixelSnap = new bool[3]{false,false,false};
 		public void Awake(){
-			Program.settings = this;
-			Program.Awake();
+			if(Application.isPlaying){
+				Program.settings = this;
+				Program.Awake();
+			}
 		}
 		public void Start(){
-			Program.Start();
+			if(Application.isPlaying){
+				Program.Start();
+			}
 		}
 		public void Update(){
 			Program.Update();
@@ -19,7 +23,7 @@ namespace Zios{
 	}
 	public static class Program{
 		public static ProgramSettings settings;
-		public static int[] resolution;
+		public static int[] resolution = new int[3]{640,480,60};
 		private static bool allowResolution = true;
 		public static void Awake(){
 			Persistent[] instances = (Persistent[])Resources.FindObjectsOfTypeAll(typeof(Persistent));
@@ -30,10 +34,9 @@ namespace Zios{
 			}
 		}
 		public static void Start(){
-			if(!Application.isPlaying){
-				return;
-			}
-			//object unitySettings = typeof(QualitySettings);
+			Zios.Console.AddShortcut("vsync","verticalSync");
+			Zios.Console.AddCvar("maxfps",typeof(Application),"targetFrameRate","Maximum FPS");
+			Zios.Console.AddCvar("verticalSync",typeof(QualitySettings),"vSyncCount","Vertical Sync");
 			Application.targetFrameRate = Program.settings.targetFPS;
 			Resolution screen = Screen.currentResolution;
 			Program.resolution = new int[3]{Screen.width,Screen.height,screen.refreshRate};
@@ -49,12 +52,13 @@ namespace Zios{
 			bool changedHeight = Screen.height != size[1];
 			bool changedRefresh = screen.refreshRate != size[2];
 			if(changedWidth || changedHeight || changedRefresh){
+				Events.Call("OnResolutionChange");
 				if(!Program.allowResolution){
 					Program.allowResolution = true;
 					Debug.Log("^7Screen settings auto-adjusted to closest allowed values.");
-					if(changedWidth){Debug.Log("@screenWidth "+Screen.width);}
-					if(changedHeight){Debug.Log("@screenHeight "+Screen.height);}
-					if(changedRefresh){Debug.Log("@screenRefreshRate "+screen.refreshRate);}
+					if(changedWidth){Program.resolution[0] = Screen.width;}
+					if(changedHeight){Program.resolution[1] = Screen.height;}
+					if(changedRefresh){Program.resolution[2] = screen.refreshRate;}
 				}
 				else{
 					Screen.SetResolution(size[0],size[1],Screen.fullScreen,size[2]);
@@ -62,7 +66,6 @@ namespace Zios{
 				}
 			}
 			else if(!Program.allowResolution){
-				Events.Call("OnResolutionChange");
 				Program.allowResolution = true;
 				string log = "^10Program resolution is : ^8| " + size[0] + "^7x^8|" + size[1];
 				Debug.Log(log);

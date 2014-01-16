@@ -16,7 +16,6 @@ public static class Overlay{
 		#if UNITY_EDITOR 
 		Overlay.defaultResolution = new float[2]{PlayerSettings.defaultScreenWidth,PlayerSettings.defaultScreenHeight};
 		#endif
-		//Debug.Log(Overlay.defaultResolution[0]);
 		Events.Add("OnResolutionChange",Overlay.CalculateGUIMatrix);
 		Overlay.CalculateGUIMatrix();
 	}
@@ -25,7 +24,6 @@ public static class Overlay{
 		return (T)Convert.ChangeType(overlay,typeof(T));
 	}
 	public static void CalculateGUIMatrix(){
-		//Debug.Log("CALC");
 		float xScale = Overlay.guiScale[0] = Screen.width / Overlay.defaultResolution[0];
 		float yScale = Overlay.guiScale[1] =  Screen.height / Overlay.defaultResolution[1];
 		Overlay.guiMatrix = Matrix4x4.TRS(Vector3.zero,Quaternion.identity,new Vector3(xScale,yScale,1));
