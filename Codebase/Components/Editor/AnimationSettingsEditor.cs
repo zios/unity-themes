@@ -62,7 +62,7 @@ public class AnimationSettingsEditor : Editor{
 			this.actions.Add(new PlayAnimationAction());
 		}
 		public override void CreateItems(){
-			float labelWidth = 150;
+			float labelWidth = 100;
 			float defaultWidth = 120;
 			float fpsWidth = 50;
 			float blendWidth = 80;

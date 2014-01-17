@@ -20,12 +20,18 @@ public class CollisionData{
 public class ColliderController : MonoBehaviour{
 	static public Collider[] triggers;
 	static public bool triggerSetup;
-	public List<Vector3> move = new List<Vector3>();
-	[HideInInspector] public Dictionary<string,bool> blocked = new Dictionary<string,bool>();
+	[HideInInspector] public List<Vector3> move = new List<Vector3>();
+	public Dictionary<string,bool> blocked = new Dictionary<string,bool>();
+	public Dictionary<string,float> lastBlockedTime = new Dictionary<string,float>();
+	public bool[] freezePosition = new bool[3]{false,false,false};
 	public float hoverWidth = 0.0001f;
 	public float skinWidth = 0.0001f;
 	public bool persistentBlockChecks;
-	static public void Setup(){
+	public void Awake(){
+		Events.Add("OnMove",this.Move);
+		this.ResetBlocked(true);
+	}
+	public void Start(){
 		if(!ColliderController.triggerSetup){
 			Collider[] colliders = (Collider[])Resources.FindObjectsOfTypeAll(typeof(Collider));
 			List<Collider> triggers = new List<Collider>();
@@ -39,34 +45,30 @@ public class ColliderController : MonoBehaviour{
 			ColliderController.triggerSetup = true;
 		}
 	}
-	public void Awake(){
-		Events.Add("OnMove",this.Move);
-		this.ResetBlocked();
-	}
-	public void Start(){
-		ColliderController.Setup();
-	}
 	public void OnEnable(){
 		if(this.rigidbody == null){
 			this.gameObject.AddComponent("Rigidbody");
-		}
+		}	
+		this.rigidbody.isKinematic = true;
 		this.rigidbody.Sleep();
 	}
 	public void Update(){
 		this.UpdatePosition();
 	}
-	public void ResetBlocked(){
-		this.blocked["forward"] = false;
-		this.blocked["back"] = false;
-		this.blocked["up"] = false;
-		this.blocked["down"] = false;
-		this.blocked["right"] = false;
-		this.blocked["left"] = false;
+	public void ResetBlocked(bool clearTime=false){
+		string[] names = new string[]{"forward","back","up","down","right","left"};
+		foreach(string name in names){
+			this.blocked[name] = false;
+			if(clearTime){this.lastBlockedTime[name] = 0;}
+		}
+	}
+	public float GetUnblockedDuration(string name){
+		return Time.time - this.lastBlockedTime[name];
 	}
 	public void CheckBlocked(){
 		if(this.persistentBlockChecks){
-			this.rigidbody.WakeUp();
 			RaycastHit hit;
+			this.rigidbody.WakeUp();
 			float distance = this.skinWidth + this.hoverWidth + 0.01f;
 			this.blocked["forward"] = this.rigidbody.SweepTest(this.transform.forward,out hit,distance);
 			this.blocked["back"] = this.rigidbody.SweepTest(-this.transform.forward,out hit,distance);
@@ -76,9 +78,17 @@ public class ColliderController : MonoBehaviour{
 			this.blocked["left"] = this.rigidbody.SweepTest(-this.transform.right,out hit,distance);
 			this.rigidbody.Sleep();
 		}
+		foreach(var item in this.blocked){
+			if(this.blocked[item.Key]){
+				this.lastBlockedTime[item.Key] = Time.time;
+			}
+		}
 	}
 	public void Move(Vector3 move){
 		if(move != Vector3.zero){
+			if(this.freezePosition[0]){move.x = 0;}
+			if(this.freezePosition[1]){move.y = 0;}
+			if(this.freezePosition[2]){move.z = 0;}
 			this.move.Add(move);
 		}
 	}
@@ -104,7 +114,7 @@ public class ColliderController : MonoBehaviour{
 					if(isTrigger){
 						hit.transform.gameObject.Call("OnTrigger",this.collider);
 						continue;
-					}
+					}  
 					hit.transform.gameObject.Call("OnCollide",otherCollision);
 					this.gameObject.Call("OnCollide",selfCollision);
 				}
@@ -114,5 +124,13 @@ public class ColliderController : MonoBehaviour{
 			this.rigidbody.Sleep();
 		}
 		this.CheckBlocked();
+		this.Freeze();
+	}
+	public void Freeze(){
+		Vector3 position = this.transform.position;
+		if(this.freezePosition[0]){position.x = 0;}
+		if(this.freezePosition[1]){position.y = 0;}
+		if(this.freezePosition[2]){position.z = 0;}
+		this.transform.position = position;
 	}
 }
