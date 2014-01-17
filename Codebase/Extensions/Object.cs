@@ -6,8 +6,8 @@ using System.Reflection;
 using System.Security.Cryptography;
 using System.Xml.Serialization;
 public static class ObjectExtension{
-	public static object Cast(this object current,Type type){
-		return Convert.ChangeType(current,type);
+	public static T Cast<T>(this object current,ref T type){
+		return (T)Convert.ChangeType(current,typeof(T));
 	}
 	public static T Cast<T>(this object current){
 		return (T)Convert.ChangeType(current,typeof(T));
@@ -27,6 +27,14 @@ public static class ObjectExtension{
 			return null;
 		}
 	}
+	public static bool HasMethod(this object current,string name){
+		return current.GetType().GetMethod(name) != null;
+	} 
+	public static bool HasAttribute(this object current,string name){
+		bool hasProperty = current.GetType().GetProperty(name) != null;
+		bool hasField = current.GetType().GetField(name) != null;
+		return hasProperty || hasField;
+	} 
 	public static List<string> ListAttributes(this object current,List<Type> limitTypes = null){
 		List<string> attributes = new List<string>();
 		foreach(FieldInfo field in current.GetType().GetFields()){
