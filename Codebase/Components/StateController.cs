@@ -6,6 +6,7 @@ using System.Collections.Generic;
 [Serializable]
 public class StateTable{
 	public string name;
+	public bool endIfUnusable = false;
 	public List<StateRequirement> requirements = new List<StateRequirement>();
 	[HideInInspector] public Component self;
 	public StateTable(string name,Component component){
@@ -28,28 +29,23 @@ public class StateRequirement{
 public class StateController : MonoBehaviour{
 	public List<Component> actions = new List<Component>();
 	public List<StateTable> data = new List<StateTable>();
-	private Dictionary<string,bool> buffer = new Dictionary<string,bool>();
 	public void Awake(){
+		Events.Add("UpdateStates",this.UpdateStates);
 		this.UpdateActions();
 		this.UpdateTables();
 		this.UpdateRequirements();
 	}
-	public void Update(){
-		foreach(Component component in this.actions){
-			CoreAction action = (CoreAction)component;
-			string name = component.GetType().ToString();
-			this.buffer[name] = action.inUse;
-			action.usable = true;
-		}
+	public void UpdateStates(){
 		foreach(StateTable table in this.data){
 			foreach(StateRequirement requirement in table.requirements){
-				bool state = this.buffer[requirement.name];
+				CoreAction action = (CoreAction)table.self;
+				CoreAction target = (CoreAction)requirement.target;
+				bool state = target.inUse;
 				bool mismatchOn = requirement.requireOn && !state;
 				bool mismatchOff = requirement.requireOff && state;
-				if(mismatchOn || mismatchOff){
-					CoreAction action = (CoreAction)table.self;
-					action.usable = false;
-					if(action.inUse){
+				action.usable = !(mismatchOn || mismatchOff);
+				if(!action.usable){
+					if(table.endIfUnusable){
 						action.End();
 					}
 					break;
