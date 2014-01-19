@@ -3,6 +3,12 @@ using System;
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
+public interface StateInterface{
+	bool usable {get;set;}
+	bool inUse {get;set;}
+	void Use();
+	void End();
+}
 [Serializable]
 public class StateTable{
 	public string name;
@@ -38,8 +44,8 @@ public class StateController : MonoBehaviour{
 	public void UpdateStates(){
 		foreach(StateTable table in this.data){
 			foreach(StateRequirement requirement in table.requirements){
-				CoreAction action = (CoreAction)table.self;
-				CoreAction target = (CoreAction)requirement.target;
+				StateInterface action = (StateInterface)table.self;
+				StateInterface target = (StateInterface)requirement.target;
 				bool state = target.inUse;
 				bool mismatchOn = requirement.requireOn && !state;
 				bool mismatchOff = requirement.requireOff && state;
