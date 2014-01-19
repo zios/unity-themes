@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 [RequireComponent(typeof(ColliderController))]
+[AddComponentMenu("Zios/Component/Physics/Force")]
 public class Force : MonoBehaviour{
 	public Vector3 velocity;
 	public Vector3 terminalVelocity = new Vector3(20,20,20);

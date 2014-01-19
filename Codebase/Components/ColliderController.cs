@@ -16,7 +16,7 @@ public class CollisionData{
 		this.isSource = isSource;
 	}
 }
-[AddComponentMenu("Zios/Component/General/Collider Controller")]
+[AddComponentMenu("Zios/Component/Physics/Collider Controller")]
 public class ColliderController : MonoBehaviour{
 	static public Collider[] triggers;
 	static public bool triggerSetup;
@@ -24,7 +24,6 @@ public class ColliderController : MonoBehaviour{
 		return Array.IndexOf(ColliderController.triggers,collider) != -1;
 	}
 	public List<Vector3> move = new List<Vector3>();
-	public List<Vector3> lastMove = new List<Vector3>();
 	public Dictionary<string,bool> blocked = new Dictionary<string,bool>();
 	public Dictionary<string,float> lastBlockedTime = new Dictionary<string,float>();
 	public bool[] freezePosition = new bool[3]{false,false,false};
@@ -32,7 +31,6 @@ public class ColliderController : MonoBehaviour{
 	public float maxSlopeHeight = 0.15f;
 	public float hoverWidth = 0.0001f;
 	public float skinWidth = 0.0001f;
-	public bool alt = false;
 	public bool persistentBlockChecks;
 	public void Awake(){
 		Events.Add("OnMove",this.Move);
@@ -110,14 +108,12 @@ public class ColliderController : MonoBehaviour{
 	}
 	public void UpdatePosition(){
 		if(this.move.Count > 0){
-			Func<float,float> GetDistance = x => Mathf.Clamp(x-this.hoverWidth,this.hoverWidth,Mathf.Infinity);
 			this.ResetBlocked();
 			this.rigidbody.WakeUp();
 			foreach(Vector3 current in this.move){
 				Vector3 move = this.NullBlocked(current) * Time.deltaTime;
 				if(move == Vector3.zero){continue;}
 				RaycastHit hit,stepHit;
-				Vector3 offset = ((CapsuleCollider)this.collider).center;
 				Vector3 startPosition = this.rigidbody.position;
 				Vector3 direction = move.normalized;
 				float distance = Vector3.Distance(startPosition,startPosition+move);
@@ -126,15 +122,16 @@ public class ColliderController : MonoBehaviour{
 				if(contact && this.maxStepHeight != 0 && !isTrigger && move.y == 0){
 					bool onGround = this.rigidbody.SweepTest(-this.transform.up,out stepHit,this.hoverWidth+0.01f);
 					if(onGround){
+						Func<float,float> GetDistance = x => Mathf.Clamp(x-this.hoverWidth,this.hoverWidth,Mathf.Infinity);
 						this.rigidbody.position = startPosition + (this.transform.up * this.maxStepHeight);
-						this.Freeze();
 						if(!this.rigidbody.SweepTest(direction,out stepHit,distance+this.hoverWidth)){
+							float stepDistance = this.maxStepHeight+this.hoverWidth;
 							this.rigidbody.position += direction * GetDistance(stepHit.distance);
-							this.Freeze();
-							this.rigidbody.SweepTest(-this.transform.up,out stepHit);
-							this.rigidbody.position += (-this.transform.up * GetDistance(stepHit.distance));
-							this.Freeze();
-							continue;
+							bool canStep = this.rigidbody.SweepTest(-this.transform.up,out stepHit,stepDistance);
+							if(canStep){
+								this.rigidbody.position += (-this.transform.up * (stepHit.distance-this.hoverWidth));
+								continue;
+							}
 						}
 						this.rigidbody.position = startPosition;
 					}
@@ -145,7 +142,6 @@ public class ColliderController : MonoBehaviour{
 						continue;
 					}
 					this.rigidbody.position += direction * (hit.distance-this.hoverWidth);
-					this.Freeze();
 					CollisionData otherCollision = new CollisionData(this,this.gameObject,-direction,distance,false);
 					CollisionData selfCollision = new CollisionData(this,hit.transform.gameObject,direction,distance,true);
 					if(direction.z > 0){this.blocked["forward"] = true;}
@@ -159,19 +155,12 @@ public class ColliderController : MonoBehaviour{
 				}
 				else{
 					this.rigidbody.position = startPosition + move;
-					this.Freeze();
 				}
-				/*Vector3 end = startPosition + move;
-				Color color = contact ? Color.red : Color.green;
-				this.alt = !this.alt;
-				if(this.alt){color *= 0.5f;}
-				Debug.DrawLine(startPosition,end,color,0.5f);*/
 			}
 			this.Freeze();
-			this.transform.position = this.rigidbody.position;
-			this.lastMove = this.move.Copy();
 			this.move.Clear();
 			this.rigidbody.Sleep();
+			this.transform.position = this.rigidbody.position;
 		}
 		this.CheckBlocked();
 	}

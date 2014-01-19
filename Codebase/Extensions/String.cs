@@ -171,6 +171,9 @@ public static class StringExtension{
 		}
 		return result;
 	}
+	public static string StripMarkup(this string current){
+		return Regex.Replace(current,"<.*?>",string.Empty);
+	}
 	public static string Pack(this string current){
 		return current.Strip("\r","\n","'","\"","{","}","[","]","(",")","\t"," ");
 	}

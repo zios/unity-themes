@@ -9,13 +9,15 @@ public static class Overlay{
 	public static OverlayBase Get(string name){return Overlay.instances.ContainsKey(name) ? Overlay.instances[name] : null;}
 	public static Dictionary<string,OverlayBase> instances = new Dictionary<string,OverlayBase>();
 	public static Matrix4x4 guiMatrix;
-	public static float[] guiScale = new float[2]{1,1};
-	public static float[] defaultResolution;
+	public static Vector2 guiScale = new Vector2(1,1);
+	public static Vector2 defaultResolution;
 	static Overlay(){
-		Overlay.defaultResolution = new float[2]{Screen.width,Screen.height};
-		#if UNITY_EDITOR 
-		Overlay.defaultResolution = new float[2]{PlayerSettings.defaultScreenWidth,PlayerSettings.defaultScreenHeight};
-		#endif
+		if(Overlay.defaultResolution == Vector2.zero){
+			Overlay.defaultResolution = new Vector2(Screen.width,Screen.height);;
+			#if UNITY_EDITOR 
+			Overlay.defaultResolution = new Vector2(PlayerSettings.defaultScreenWidth,PlayerSettings.defaultScreenHeight);
+			#endif
+		}
 		Events.Add("OnResolutionChange",Overlay.CalculateGUIMatrix);
 		Overlay.CalculateGUIMatrix();
 	}
@@ -24,8 +26,8 @@ public static class Overlay{
 		return (T)Convert.ChangeType(overlay,typeof(T));
 	}
 	public static void CalculateGUIMatrix(){
-		float xScale = Overlay.guiScale[0] = Screen.width / Overlay.defaultResolution[0];
-		float yScale = Overlay.guiScale[1] =  Screen.height / Overlay.defaultResolution[1];
+		float xScale = Overlay.guiScale.x = Screen.width / Overlay.defaultResolution.x;
+		float yScale = Overlay.guiScale.y =  Screen.height / Overlay.defaultResolution.y;
 		Overlay.guiMatrix = Matrix4x4.TRS(Vector3.zero,Quaternion.identity,new Vector3(xScale,yScale,1));
 	}
 }
@@ -57,8 +59,8 @@ public class OverlayBase : MonoBehaviour{
 	public virtual void UpdateRender(){
 		Rect area = new Rect(this.position.x,this.position.y,this.size.x,this.size.y);
 		if(this.autoScale){
-			area.width = (int)(area.width * Overlay.guiScale[0]);
-			area.height = (int)(area.height * Overlay.guiScale[1]);
+			area.width = (int)(area.width * Overlay.guiScale.x);
+			area.height = (int)(area.height * Overlay.guiScale.y);
 		}
 		this.area = area;
 	}

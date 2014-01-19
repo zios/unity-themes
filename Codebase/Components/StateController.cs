@@ -25,7 +25,7 @@ public class StateRequirement{
 		this.target = component;
 	}
 }
-[ExecuteInEditMode]
+[ExecuteInEditMode][AddComponentMenu("Zios/Component/General/State Controller")]
 public class StateController : MonoBehaviour{
 	public List<Component> actions = new List<Component>();
 	public List<StateTable> data = new List<StateTable>();

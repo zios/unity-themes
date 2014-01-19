@@ -17,12 +17,13 @@ public class OverlayText: OverlayBase{
 	public int letterSpacing;
 	public GUIStyle style;
 	[NonSerialized] public string trueText;
+	[NonSerialized] public string shadowText;
 	[NonSerialized] public GUIStyle shadowStyle;
 	public override void OnGUI(){
 		base.OnGUI();
 		if(Event.current.type == EventType.Repaint && this.visible){
 			if(this.shadowOffset != Vector2.zero){
-				GUI.Label(this.area,this.trueText,this.shadowStyle);
+				GUI.Label(this.area,this.shadowText,this.shadowStyle);
 			}
 			GUI.Label(this.area,this.trueText,this.style);
 		}
@@ -33,7 +34,9 @@ public class OverlayText: OverlayBase{
 		this.style.fixedHeight = this.size.y;
 		this.style.normal.background = this.background;
 		this.style.normal.textColor = this.textColor;
-		this.style.richText = this.letterSpacing != 0;
+		if(this.letterSpacing != 0){
+			this.style.richText = true;
+		}
 		this.style.font = this.font;
 		this.style.fontSize = this.fontSize;
 		this.style.fontStyle = this.fontStyle;
@@ -42,6 +45,7 @@ public class OverlayText: OverlayBase{
 		this.shadowStyle.contentOffset = this.style.contentOffset + this.shadowOffset;
 		string separator = "<size=" + (this.fontSize/8) * this.letterSpacing + "> </size>";
 		this.trueText = this.letterSpacing != 0 ? this.text.Implode(separator) : this.text;
+		this.shadowText = this.letterSpacing != 0 ? this.text.StripMarkup().Implode(separator) : this.text.StripMarkup();
 		if(this.shadowOffset != Vector2.zero){
 			this.style.normal.background = null;	
 		}

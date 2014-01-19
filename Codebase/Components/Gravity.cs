@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 [RequireComponent(typeof(ColliderController))]
+[AddComponentMenu("Zios/Component/Physics/Gravity")]
 public class Gravity : MonoBehaviour{
 	public Vector3 intensity = new Vector3(0,-9.8f,0);
 	public MFloat scale = 1.0f;

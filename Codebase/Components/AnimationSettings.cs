@@ -2,7 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-[AddComponentMenu("Zios/Component/General/Animation Settings")]
+[AddComponentMenu("Zios/Component/Animation/Animation Settings")]
 [ExecuteInEditMode]
 public class AnimationSettings : MonoBehaviour{
 	public List<AnimationConfiguration> animations = new List<AnimationConfiguration>();

@@ -11,7 +11,8 @@ public class ShowFPS : MonoBehaviour {
 		this.frames += 1;
 		if(Time.time >= this.nextUpdate){
 			this.nextUpdate = Time.time + 1;
-			OverlayText.Get("FPS").UpdateText("FPS : " + this.frames);
+			string fps = "<color=yellow>FPS</color>"; 
+			OverlayText.Get("FPS").UpdateText(fps + " : " + this.frames);
 			this.frames = 0;
 		}
 	}
