@@ -1,5 +1,8 @@
 using UnityEngine;
 public static class Vector3Extension{
+	public static string Print(this Vector3 current){
+		return "("+current.x+","+current.y+","+current.z+")";
+	}
 	public static float[] ToFloat(this Vector3 current){
 		return new float[3]{current.x,current.y,current.z};
 	}

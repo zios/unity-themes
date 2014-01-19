@@ -20,12 +20,19 @@ public class CollisionData{
 public class ColliderController : MonoBehaviour{
 	static public Collider[] triggers;
 	static public bool triggerSetup;
-	[HideInInspector] public List<Vector3> move = new List<Vector3>();
+	static public bool HasTrigger(Collider collider){
+		return Array.IndexOf(ColliderController.triggers,collider) != -1;
+	}
+	public List<Vector3> move = new List<Vector3>();
+	public List<Vector3> lastMove = new List<Vector3>();
 	public Dictionary<string,bool> blocked = new Dictionary<string,bool>();
 	public Dictionary<string,float> lastBlockedTime = new Dictionary<string,float>();
 	public bool[] freezePosition = new bool[3]{false,false,false};
+	public float maxStepHeight = 0.15f;
+	public float maxSlopeHeight = 0.15f;
 	public float hoverWidth = 0.0001f;
 	public float skinWidth = 0.0001f;
+	public bool alt = false;
 	public bool persistentBlockChecks;
 	public void Awake(){
 		Events.Add("OnMove",this.Move);
@@ -52,7 +59,7 @@ public class ColliderController : MonoBehaviour{
 		this.rigidbody.isKinematic = true;
 		this.rigidbody.Sleep();
 	}
-	public void Update(){
+	public void LateUpdate(){
 		this.UpdatePosition();
 	}
 	public void ResetBlocked(bool clearTime=false){
@@ -69,7 +76,7 @@ public class ColliderController : MonoBehaviour{
 		if(this.persistentBlockChecks){
 			RaycastHit hit;
 			this.rigidbody.WakeUp();
-			float distance = this.skinWidth + this.hoverWidth + 0.01f;
+			float distance = this.hoverWidth + 0.01f;
 			this.blocked["forward"] = this.rigidbody.SweepTest(this.transform.forward,out hit,distance);
 			this.blocked["back"] = this.rigidbody.SweepTest(-this.transform.forward,out hit,distance);
 			this.blocked["up"] = this.rigidbody.SweepTest(this.transform.up,out hit,distance);
@@ -85,52 +92,101 @@ public class ColliderController : MonoBehaviour{
 		}
 	}
 	public void Move(Vector3 move){
+		if(this.freezePosition[0]){move.x = 0;}
+		if(this.freezePosition[1]){move.y = 0;}
+		if(this.freezePosition[2]){move.z = 0;}
 		if(move != Vector3.zero){
-			if(this.freezePosition[0]){move.x = 0;}
-			if(this.freezePosition[1]){move.y = 0;}
-			if(this.freezePosition[2]){move.z = 0;}
 			this.move.Add(move);
 		}
 	}
+	public Vector3 NullBlocked(Vector3 move){
+		if(this.blocked["left"] && move.x < 0){move.x = 0;}
+		if(this.blocked["right"] && move.x > 0){move.x = 0;}
+		if(this.blocked["up"] && move.y > 0){move.y = 0;}
+		if(this.blocked["down"] && move.y < 0){move.y = 0;}
+		if(this.blocked["forward"] && move.z > 0){move.z = 0;}
+		if(this.blocked["back"] && move.z < 0){move.z = 0;}
+		return move;
+	}
 	public void UpdatePosition(){
 		if(this.move.Count > 0){
+			Func<float,float> GetDistance = x => Mathf.Clamp(x-this.hoverWidth,this.hoverWidth,Mathf.Infinity);
 			this.ResetBlocked();
 			this.rigidbody.WakeUp();
 			foreach(Vector3 current in this.move){
-				Vector3 move = current * Time.deltaTime;
+				Vector3 move = this.NullBlocked(current) * Time.deltaTime;
+				if(move == Vector3.zero){continue;}
+				RaycastHit hit,stepHit;
+				Vector3 offset = ((CapsuleCollider)this.collider).center;
+				Vector3 startPosition = this.rigidbody.position;
 				Vector3 direction = move.normalized;
-				RaycastHit hit;
-				if(this.rigidbody.SweepTest(direction,out hit,move.magnitude+this.hoverWidth)){
-					move = direction * (hit.distance - this.skinWidth - this.hoverWidth);
-					CollisionData otherCollision = new CollisionData(this,this.gameObject,-direction,move.magnitude,false);
-					CollisionData selfCollision = new CollisionData(this,hit.transform.gameObject,direction,move.magnitude,true);
+				float distance = Vector3.Distance(startPosition,startPosition+move);
+				bool contact = this.rigidbody.SweepTest(direction,out hit,distance+this.hoverWidth);
+				bool isTrigger = ColliderController.HasTrigger(hit.collider);
+				if(contact && this.maxStepHeight != 0 && !isTrigger && move.y == 0){
+					bool onGround = this.rigidbody.SweepTest(-this.transform.up,out stepHit,this.hoverWidth+0.01f);
+					if(onGround){
+						this.rigidbody.position = startPosition + (this.transform.up * this.maxStepHeight);
+						this.Freeze();
+						if(!this.rigidbody.SweepTest(direction,out stepHit,distance+this.hoverWidth)){
+							this.rigidbody.position += direction * GetDistance(stepHit.distance);
+							this.Freeze();
+							this.rigidbody.SweepTest(-this.transform.up,out stepHit);
+							this.rigidbody.position += (-this.transform.up * GetDistance(stepHit.distance));
+							this.Freeze();
+							continue;
+						}
+						this.rigidbody.position = startPosition;
+					}
+				}
+				if(contact){
+					if(isTrigger){
+						hit.transform.gameObject.Call("OnTrigger",this.collider);
+						continue;
+					}
+					this.rigidbody.position += direction * (hit.distance-this.hoverWidth);
+					this.Freeze();
+					CollisionData otherCollision = new CollisionData(this,this.gameObject,-direction,distance,false);
+					CollisionData selfCollision = new CollisionData(this,hit.transform.gameObject,direction,distance,true);
 					if(direction.z > 0){this.blocked["forward"] = true;}
 					if(direction.z < 0){this.blocked["back"] = true;}
 					if(direction.y > 0){this.blocked["up"] = true;}
 					if(direction.y < 0){this.blocked["down"] = true;}
 					if(direction.x > 0){this.blocked["right"] = true;}
 					if(direction.x < 0){this.blocked["left"] = true;}
-					bool isTrigger = Array.IndexOf(ColliderController.triggers,hit.collider) != -1;
-					if(isTrigger){
-						hit.transform.gameObject.Call("OnTrigger",this.collider);
-						continue;
-					}  
 					hit.transform.gameObject.Call("OnCollide",otherCollision);
 					this.gameObject.Call("OnCollide",selfCollision);
 				}
-				this.transform.position += move;
+				else{
+					this.rigidbody.position = startPosition + move;
+					this.Freeze();
+				}
+				/*Vector3 end = startPosition + move;
+				Color color = contact ? Color.red : Color.green;
+				this.alt = !this.alt;
+				if(this.alt){color *= 0.5f;}
+				Debug.DrawLine(startPosition,end,color,0.5f);*/
 			}
+			this.Freeze();
+			this.transform.position = this.rigidbody.position;
+			this.lastMove = this.move.Copy();
 			this.move.Clear();
 			this.rigidbody.Sleep();
 		}
 		this.CheckBlocked();
-		this.Freeze();
 	}
 	public void Freeze(){
-		Vector3 position = this.transform.position;
-		if(this.freezePosition[0]){position.x = 0;}
-		if(this.freezePosition[1]){position.y = 0;}
-		if(this.freezePosition[2]){position.z = 0;}
-		this.transform.position = position;
+		Vector3 position = this.rigidbody.position;
+		if(this.freezePosition[0]){position.x = this.transform.position.x;}
+		if(this.freezePosition[1]){position.y = this.transform.position.y;}
+		if(this.freezePosition[2]){position.z = this.transform.position.z;}
+		this.rigidbody.position = position;
+	}
+	public void OnDrawGizmosSelected(){
+		Gizmos.color = Color.white;
+		Vector3 raise = this.transform.up * this.maxStepHeight;
+		Vector3 start = this.transform.position;
+		Vector3 end = this.transform.position+(this.transform.forward*2);
+		Gizmos.DrawLine(start+raise,end+raise);
 	}
 }
