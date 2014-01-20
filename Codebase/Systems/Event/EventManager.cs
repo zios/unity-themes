@@ -33,15 +33,16 @@ public static class Events{
 			}
 		}
 	}
-	public static void Handle(object callback,object value){
-		if(value == null || callback is Method){
+	public static void Handle(object callback,object[] values){
+		object value = values.Length > 0 ? values[0] : null;
+		if(values.Length > 1 && callback is MethodFull){
+			((MethodFull)callback)(values);
+		}
+		else if(value == null || callback is Method){
 			((Method)callback)();
 		}
 		else if(value is object && callback is MethodObject){
 			((MethodObject)callback)((object)value);
-		}
-		else if(value is object[] && callback is MethodFull){
-			((MethodFull)callback)((object[])value);
 		}
 		else if(value is int && callback is MethodInt){
 			((MethodInt)callback)((int)value);
@@ -62,53 +63,53 @@ public static class Events{
 			((MethodVector3)callback)((Vector3)value);
 		}
 	}
-	public static void Call(string name,object value=null){
+	public static void Call(string name,params object[] values){
 		if(Events.events.ContainsKey(name)){
 			foreach(object callback in Events.events[name]){
-				Events.Handle(callback,value);
+				Events.Handle(callback,values);
 			}
 		}
 	}
-	public static void Call(GameObject target,string name,object value=null){
+	public static void Call(GameObject target,string name,object[] values){
 		if(Events.objectEvents.ContainsKey(target)){
 			if(Events.objectEvents[target].ContainsKey(name)){
 				object callback = Events.objectEvents[target][name];
-				Events.Handle(callback,value);
+				Events.Handle(callback,values);
 			}
 		}
 	}
-	public static void CallChildren(GameObject target,string name,object value=null,bool self=false){
-		if(self){Events.Call(target,name,value);}
+	public static void CallChildren(GameObject target,string name,object[] values,bool self=false){
+		if(self){Events.Call(target,name,values);}
 		Transform[] children = target.GetComponentsInChildren<Transform>();
 		foreach(Transform transform in children){
-			Events.Call(transform.gameObject,name,value);
+			Events.Call(transform.gameObject,name,values);
 		}
 	}
-	public static void CallParents(GameObject target,string name,object value=null,bool self=false){
-		if(self){Events.Call(target,name,value);}
+	public static void CallParents(GameObject target,string name,object[] values,bool self=false){
+		if(self){Events.Call(target,name,values);}
 		Transform parent = target.transform.parent;
 		while(parent != null){
-			Events.Call(parent.gameObject,name,value);
+			Events.Call(parent.gameObject,name,values);
 			parent = parent.parent;
 		}
 	}
-	public static void CallFamily(GameObject target,string name,object value=null,bool self=false){
-		if(self){Events.Call(target,name,value);}
-		Events.CallChildren(target,name,value);
-		Events.CallParents(target,name,value);
+	public static void CallFamily(GameObject target,string name,object[] values,bool self=false){
+		if(self){Events.Call(target,name,values);}
+		Events.CallChildren(target,name,values);
+		Events.CallParents(target,name,values);
 	}
 }
 public static class GameObjectEvents{
-	public static void Call(this GameObject current,string name,object value=null){
-		Events.Call(current,name,value);
+	public static void Call(this GameObject current,string name,params object[] values){
+		Events.Call(current,name,values);
 	}
-	public static void CallChildren(this GameObject current,string name,object value=null){
-		Events.CallChildren(current,name,value);
+	public static void CallChildren(this GameObject current,string name,params object[] values){
+		Events.CallChildren(current,name,values);
 	}
-	public static void CallParents(this GameObject current,string name,object value=null){
-		Events.CallParents(current,name,value);
+	public static void CallParents(this GameObject current,string name,params object[] values){
+		Events.CallParents(current,name,values);
 	}
-	public static void CallFamily(this GameObject current,string name,object value=null){
-		Events.CallFamily(current,name,value);
+	public static void CallFamily(this GameObject current,string name,params object[] values){
+		Events.CallFamily(current,name,values);
 	}
 }
