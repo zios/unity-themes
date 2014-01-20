@@ -8,7 +8,7 @@ using System.Collections.Generic;
 public static class Overlay{
 	public static OverlayBase Get(string name){return Overlay.instances.ContainsKey(name) ? Overlay.instances[name] : null;}
 	public static Dictionary<string,OverlayBase> instances = new Dictionary<string,OverlayBase>();
-	public static Matrix4x4 guiMatrix;
+	public static Matrix4x4 guiMatrix = Matrix4x4.zero;
 	public static Vector2 guiScale = new Vector2(1,1);
 	public static Vector2 defaultResolution;
 	static Overlay(){
@@ -26,9 +26,11 @@ public static class Overlay{
 		return (T)Convert.ChangeType(overlay,typeof(T));
 	}
 	public static void CalculateGUIMatrix(){
-		float xScale = Overlay.guiScale.x = Screen.width / Overlay.defaultResolution.x;
-		float yScale = Overlay.guiScale.y =  Screen.height / Overlay.defaultResolution.y;
-		Overlay.guiMatrix = Matrix4x4.TRS(Vector3.zero,Quaternion.identity,new Vector3(xScale,yScale,1));
+		if(Overlay.defaultResolution != Vector2.zero){
+			float xScale = Overlay.guiScale.x = Screen.width / Overlay.defaultResolution.x;
+			float yScale = Overlay.guiScale.y =  Screen.height / Overlay.defaultResolution.y;
+			Overlay.guiMatrix = Matrix4x4.TRS(Vector3.zero,Quaternion.identity,new Vector3(xScale,yScale,1));
+		}
 	}
 }
 [AddComponentMenu("")]
@@ -53,7 +55,9 @@ public class OverlayBase : MonoBehaviour{
 		GUI.depth = this.depth;
 		if(Event.current.type == EventType.Repaint && this.visible){
 			if(!Application.isPlaying){this.UpdateRender();}
-			GUI.matrix = Overlay.guiMatrix;
+			if(Overlay.guiMatrix != Matrix4x4.zero){
+				GUI.matrix = Overlay.guiMatrix;
+			}
 		}
 	}
 	public virtual void UpdateRender(){

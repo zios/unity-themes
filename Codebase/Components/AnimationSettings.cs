@@ -6,14 +6,14 @@ using System.Collections.Generic;
 [ExecuteInEditMode]
 public class AnimationSettings : MonoBehaviour{
 	public List<AnimationConfiguration> animations = new List<AnimationConfiguration>();
-	void Start(){
+	public void Start(){
 		if(gameObject.animation != null){
 			foreach(AnimationConfiguration configuration in this.animations){
 				configuration.Apply(gameObject.animation);
 			}
 		}
 	}
-	void Update(){
+	public void Update(){
 		if(this.animations.Count == 0 && gameObject.animation != null){
 			foreach(AnimationState animationState in gameObject.animation){
 				this.animations.Add(AnimationConfiguration.FromAnimation(animationState));

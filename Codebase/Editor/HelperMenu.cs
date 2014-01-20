@@ -40,9 +40,9 @@ public static class HelperMenu {
 	}
     [MenuItem ("Zios/Process/Animation/Separate Animations")]
     static void SeparateAnimations(){
-		HelperMenu.SplitAnimations(-1);
+		HelperMenu.SplitAnimations();
 	}
-    static void SplitAnimations(float tangents=-1){
+    static void SplitAnimations(float forceTangent=-1){
 		foreach(Transform selection in Selection.transforms){
 			Animation animation = (Animation)selection.GetComponent("Animation");
 			if(animation != null){
@@ -70,10 +70,8 @@ public static class HelperMenu {
 							List<Keyframe> newKeys = new List<Keyframe>();
 							foreach(Keyframe key in data.curve.keys){
 								Keyframe newKey = new Keyframe(key.time,key.value);
-								if(tangents!=-1){
-									newKey.inTangent = Mathf.Infinity;
-									newKey.outTangent = Mathf.Infinity;
-								}
+								newKey.inTangent = forceTangent != -1 ? forceTangent : key.inTangent;
+								newKey.outTangent = forceTangent != -1 ? forceTangent : key.outTangent;
 								newKeys.Add(newKey);
 							}
 							newClip.SetCurve(data.path,data.type,data.propertyName,new AnimationCurve(newKeys.ToArray()));
