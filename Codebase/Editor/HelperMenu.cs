@@ -43,7 +43,6 @@ public static class HelperMenu {
 		HelperMenu.SplitAnimations(-1);
 	}
     static void SplitAnimations(float tangents=-1){
-		string savePath = "Assets/Characters/Shared/"; 
 		foreach(Transform selection in Selection.transforms){
 			Animation animation = (Animation)selection.GetComponent("Animation");
 			if(animation != null){
@@ -56,27 +55,32 @@ public static class HelperMenu {
 						++clipIndex;
 						continue;
 					}
-					AnimationClip newClip = new AnimationClip();
-					newClip.wrapMode = clip.wrapMode;
 					string clipPath = clip.name + ".anim";
-					AnimationClipCurveData[] curves = AnimationUtility.GetAllCurves(clip);
-					foreach(AnimationClipCurveData data in curves){
-						List<Keyframe> newKeys = new List<Keyframe>();
-						foreach(Keyframe key in data.curve.keys){
-							Keyframe newKey = new Keyframe(key.time,key.value);
-							if(tangents!=-1){
-								newKey.inTangent = Mathf.Infinity;
-								newKey.outTangent = Mathf.Infinity;
-							}
-							newKeys.Add(newKey);
-						}
-						newClip.SetCurve(data.path,data.type,data.propertyName,new AnimationCurve(newKeys.ToArray()));
+					string originalPath = AssetDatabase.GetAssetPath(clip);
+					string savePath = Path.GetDirectoryName(originalPath) + "/" + clipPath;
+					AnimationClip newClip = new AnimationClip();
+					if(originalPath.Contains(".anim")){
+						Debug.Log("[" + clipIndex + "] " + clip.name + " skipped.  Already separate .anim file.");
+						newClip = clip;
 					}
-					Debug.Log("[" + clipIndex + "] " + clip.name + " processed.");
-					Directory.CreateDirectory(savePath+selection.gameObject.name);
-					AssetDatabase.CreateAsset(newClip,savePath+selection.gameObject.name+"/"+clipPath);
-					//AssetDatabase.SaveAssets();
-					//AssetDatabase.Refresh();
+					else{
+						newClip.wrapMode = clip.wrapMode;
+						AnimationClipCurveData[] curves = AnimationUtility.GetAllCurves(clip);
+						foreach(AnimationClipCurveData data in curves){
+							List<Keyframe> newKeys = new List<Keyframe>();
+							foreach(Keyframe key in data.curve.keys){
+								Keyframe newKey = new Keyframe(key.time,key.value);
+								if(tangents!=-1){
+									newKey.inTangent = Mathf.Infinity;
+									newKey.outTangent = Mathf.Infinity;
+								}
+								newKeys.Add(newKey);
+							}
+							newClip.SetCurve(data.path,data.type,data.propertyName,new AnimationCurve(newKeys.ToArray()));
+						}
+						Debug.Log("[" + clipIndex + "] " + clip.name + " processed -- " + savePath);
+						AssetDatabase.CreateAsset(newClip,savePath);
+					}
 					newClips[clipIndex] = newClip;
 					++clipIndex;
 				}
