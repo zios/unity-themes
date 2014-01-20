@@ -82,14 +82,15 @@ public static class Events{
 		if(self){Events.Call(target,name,values);}
 		Transform[] children = target.GetComponentsInChildren<Transform>();
 		foreach(Transform transform in children){
-			Events.Call(transform.gameObject,name,values);
+			if(transform.gameObject == target){continue;}
+			Events.CallChildren(transform.gameObject,name,values,true);
 		}
 	}
 	public static void CallParents(GameObject target,string name,object[] values,bool self=false){
 		if(self){Events.Call(target,name,values);}
 		Transform parent = target.transform.parent;
 		while(parent != null){
-			Events.Call(parent.gameObject,name,values);
+			Events.CallParents(parent.gameObject,name,values,true);
 			parent = parent.parent;
 		}
 	}
@@ -103,13 +104,13 @@ public static class GameObjectEvents{
 	public static void Call(this GameObject current,string name,params object[] values){
 		Events.Call(current,name,values);
 	}
-	public static void CallChildren(this GameObject current,string name,params object[] values){
-		Events.CallChildren(current,name,values);
+	public static void CallChildren(this GameObject current,string name,bool self=true,params object[] values){
+		Events.CallChildren(current,name,values,self);
 	}
-	public static void CallParents(this GameObject current,string name,params object[] values){
-		Events.CallParents(current,name,values);
+	public static void CallParents(this GameObject current,string name,bool self=true,params object[] values){
+		Events.CallParents(current,name,values,self);
 	}
-	public static void CallFamily(this GameObject current,string name,params object[] values){
-		Events.CallFamily(current,name,values);
+	public static void CallFamily(this GameObject current,string name,bool self=true,params object[] values){
+		Events.CallFamily(current,name,values,self);
 	}
 }

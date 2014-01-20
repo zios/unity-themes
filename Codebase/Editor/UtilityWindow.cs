@@ -16,11 +16,14 @@ public class UtilityWindow : EditorWindow {
 	public bool preserveScale = true;
 	public ReplaceSelector optionA = new ReplaceSelector();
 	public ReplaceSelector optionB = new ReplaceSelector();
+	public bool materialIncludeInactive = true;
+	public string materialRenameFrom;
+	public string materialRenameTo;
 	public string renameFrom;
 	public string renameTo;
 	public string selectName;
 	public string selectComponent;
-    [MenuItem ("Zios/Window/Helper")]
+    [MenuItem ("Zios/Window/Utilities")]
 	static void Init(){
 		UtilityWindow window = (UtilityWindow)EditorWindow.GetWindow(typeof(UtilityWindow));
 		window.position = new Rect(100,150,200,200);
@@ -29,6 +32,8 @@ public class UtilityWindow : EditorWindow {
 	public void Start(){}
     public void OnGUI(){
 		this.title = "Utility";
+		GUILayout.Label("--------------------------------------------------------------");
+		this.DrawMaterialReplacer();
 		GUILayout.Label("--------------------------------------------------------------");
 		this.DrawPrefaber();
 		GUILayout.Label("--------------------------------------------------------------");
@@ -161,6 +166,43 @@ public class UtilityWindow : EditorWindow {
 			}
 		}
 		GUILayout.EndHorizontal();
+	}
+	//====================================
+	// Material Replacer
+	//====================================
+	public void DrawMaterialReplacer(){
+		GUILayout.BeginHorizontal("box");
+		EditorGUILayout.LabelField("Replace Material",GUILayout.Width(105));
+		this.materialRenameFrom = EditorGUILayout.TextField(this.materialRenameFrom,GUILayout.Width(100));
+		EditorGUILayout.LabelField("To",GUILayout.Width(25));
+		this.materialRenameTo = EditorGUILayout.TextField(this.materialRenameTo,GUILayout.Width(100));
+		if(GUILayout.Button("Apply",GUILayout.Width(100))){
+			Undo.RegisterSceneUndo("Revert Material Replace");
+			GameObject[] selection = Selection.gameObjects;
+			bool wildcard = this.materialRenameFrom.Contains("*");
+			string search = this.materialRenameFrom.Replace("*","");
+			foreach(GameObject current in selection){
+				Renderer[] renderers = current.GetComponentsInChildren<Renderer>(this.materialIncludeInactive);
+				foreach(Renderer renderer in renderers){
+					List<Material> replacedMaterials = new List<Material>();
+					foreach(Material material in renderer.sharedMaterials){
+						string name = material.name;
+						Material currentMaterial = material;
+						if((wildcard && name.Contains(search)) || (name == search)){
+							string replace = name.Replace(search,this.materialRenameTo);
+							Material swapMaterial = FileManager.GetAsset<Material>(replace+".mat",false);
+							if(swapMaterial != null){
+								currentMaterial = swapMaterial;
+							}
+						}
+						replacedMaterials.Add(currentMaterial);
+					}
+					renderer.sharedMaterials = replacedMaterials.ToArray();
+				}
+			}
+		}
+		GUILayout.EndHorizontal();
+		this.materialIncludeInactive = EditorGUILayout.ToggleLeft("Include Inactive",this.materialIncludeInactive);
 	}
 	//====================================
 	// Selector

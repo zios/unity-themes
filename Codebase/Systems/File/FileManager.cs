@@ -34,7 +34,7 @@ public static class FileManager{
 			Scan(folderPath);
 		}
 	}
-	public static FileData Find(string name){
+	public static FileData Find(string name,bool showWarnings=true){
 		if(name == ""){
 			Debug.LogWarning("FileManager : No path given for search.");
 			return null;
@@ -52,7 +52,7 @@ public static class FileManager{
 				}
 			}
 		}
-		Debug.LogWarning("FileManager : Path [" + name + "] could not be found.");
+		if(showWarnings){Debug.LogWarning("FileManager : Path [" + name + "] could not be found.");}
 		return null;
 	}
 	public static string GetPath(object item){
@@ -63,8 +63,8 @@ public static class FileManager{
 		#endif
 		return "";
 	}
-	public static T GetAsset<T>(string name){
-		FileData file = Find(name);
+	public static T GetAsset<T>(string name,bool showWarnings=true){
+		FileData file = FileManager.Find(name,showWarnings);
 		if(file != null){return file.GetAsset<T>();}
 		return default(T);
 	}
