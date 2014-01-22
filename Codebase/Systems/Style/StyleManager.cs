@@ -14,10 +14,9 @@ public class StyleManager : MonoBehaviour{
 		this.instances.Clear();
 	}
 	public void Update(){
-		if(Global.Styles == null || this.instances.Count < 1){
-			Global.Styles = this;
+		/*if(Global.Styles == null || this.instances.Count < 1){
 			this.Start();
-		}
+		}*/
 	}
 	public void Start(){
 		foreach(Style item in this.styles){

@@ -6,6 +6,18 @@ public static class GameObjectExtension{
 			renderer.enabled = state;
 		}
 	}
+	public static void SetCollisions(this GameObject current,bool state){
+		Collider[] colliders = current.GetComponentsInChildren<Collider>();
+		foreach(Collider collider in colliders){
+			collider.enabled = state;
+		}
+	}
+	public static void SetTriggers(this GameObject current,bool state){
+		Collider[] colliders = current.GetComponentsInChildren<Collider>();
+		foreach(Collider collider in colliders){
+			collider.isTrigger = state;
+		}
+	}
 	public static void MoveTo(this GameObject current,Vector3 location,bool useX=true,bool useY=true,bool useZ=true){
 		Vector3 position = current.transform.position;
 		if(useX){position.x = location.x;}

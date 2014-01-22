@@ -17,11 +17,16 @@ public class AnimationController : MonoBehaviour{
 			this.Play(this.defaultAnimation,0);
 		}
 	}
-	public void OnStop(string name){this.Stop(name);}
+	public void OnStop(object[] values){
+		string name = values.Length > 0 ? (string)values[0] : ""; 
+		if(name == ""){this.Stop();}
+		else{this.Stop(name);}
+	}
 	public void OnPlay(object[] values){
 		string name = (string)values[0];
 		int priority = values.Length > 1 ? (int)values[1] : 1;
-		this.Play(name,priority);
+		bool force = values.Length > 2 ? (bool)values[2] : false;
+		this.Play(name,priority,force);
 	}
 	public void OnSet(object[] values){
 		string name = (string)values[0];
@@ -29,17 +34,23 @@ public class AnimationController : MonoBehaviour{
 		int priority = values.Length > 2 ? (int)values[2] : 1;
 		this.Set(name,state,priority);
 	}
-	public void Play(string name,int priority=1){
+	public void Play(string name,int priority=1,bool force=false){
 		bool exists = this.animation[name]; 
 		if(exists && priority >= this.currentPriority){
+			if(force){this.Stop(this.currentAnimation);}
 			this.animation.Play(name);
 			this.currentAnimation = name;
 			this.currentPriority = priority;
 		}
 	}
+	public void Stop(){
+		this.currentAnimation = "";
+		this.animation.Stop();
+	}
 	public void Stop(string name){
 		bool exists = this.animation[name]; 
 		if(exists){
+			this.currentAnimation = "";
 			this.animation.Stop(name);
 		}
 	}

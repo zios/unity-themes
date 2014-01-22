@@ -20,7 +20,6 @@ public class AudioManager : MonoBehaviour{
 		"^3mute ^9 :^10 Toggles all sound/music as being off or on.",
 	};
 	public void Awake(){
-		Global.Audio = this;
 		this.startDelay = Time.time + 0.1f;
 	}
 	public void Start(){

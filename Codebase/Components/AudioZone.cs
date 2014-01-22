@@ -27,7 +27,8 @@ public class AudioZone : MonoBehaviour{
 		}
 	}
 	public void Play(){
-		float volume = Random.Range(0.2f,1);
-		Global.Audio.Play(this.currentSound,this.transform.position,volume);
+		Debug.Log(this.currentSound);
+		//float volume = Random.Range(0.2f,1);
+		//Audio.Play(this.currentSound,this.transform.position,volume);
 	}
 }

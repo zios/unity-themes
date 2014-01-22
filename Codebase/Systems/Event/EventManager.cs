@@ -35,7 +35,7 @@ public static class Events{
 	}
 	public static void Handle(object callback,object[] values){
 		object value = values.Length > 0 ? values[0] : null;
-		if(values.Length > 1 && callback is MethodFull){
+		if(callback is MethodFull){
 			((MethodFull)callback)(values);
 		}
 		else if(value == null || callback is Method){

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System;
@@ -24,16 +24,17 @@ public class ColliderController : MonoBehaviour{
 		return Array.IndexOf(ColliderController.triggers,collider) != -1;
 	}
 	public List<Vector3> move = new List<Vector3>();
+	[NonSerialized] public Vector3 lastDirection;
 	public Dictionary<string,bool> blocked = new Dictionary<string,bool>();
 	public Dictionary<string,float> lastBlockedTime = new Dictionary<string,float>();
 	public bool[] freezePosition = new bool[3]{false,false,false};
-	public float maxStepHeight = 0.15f;
-	public float maxSlopeHeight = 0.15f;
-	public float hoverWidth = 0.0001f;
-	public float skinWidth = 0.0001f;
+	public float maxStepHeight = 0;
+	public float maxSlopeHeight = 0;
+	public float hoverWidth = 0.02f;
+	public float skinWidth = 0;
 	public bool persistentBlockChecks;
 	public void Awake(){
-		Events.Add("OnMove",this.Move);
+		Events.Add("AddMove",this.Move);
 		this.ResetBlocked(true);
 	}
 	public void Start(){
@@ -57,7 +58,7 @@ public class ColliderController : MonoBehaviour{
 		this.rigidbody.isKinematic = true;
 		this.rigidbody.Sleep();
 	}
-	public void LateUpdate(){
+	public void Update(){
 		this.UpdatePosition();
 	}
 	public void ResetBlocked(bool clearTime=false){
@@ -110,9 +111,11 @@ public class ColliderController : MonoBehaviour{
 		if(this.move.Count > 0){
 			this.ResetBlocked();
 			this.rigidbody.WakeUp();
+			Vector3 cumulative = Vector3.zero;
 			foreach(Vector3 current in this.move){
 				Vector3 move = this.NullBlocked(current) * Time.deltaTime;
 				if(move == Vector3.zero){continue;}
+				cumulative += current;
 				RaycastHit hit,stepHit;
 				Vector3 startPosition = this.rigidbody.position;
 				Vector3 direction = move.normalized;
@@ -138,7 +141,7 @@ public class ColliderController : MonoBehaviour{
 				}
 				if(contact){
 					if(isTrigger){
-						hit.transform.gameObject.Call("OnTrigger",this.collider);
+						hit.transform.gameObject.Call("Trigger",this.collider);
 						continue;
 					}
 					this.rigidbody.position += direction * (hit.distance-this.hoverWidth);
@@ -150,13 +153,14 @@ public class ColliderController : MonoBehaviour{
 					if(direction.y < 0){this.blocked["down"] = true;}
 					if(direction.x > 0){this.blocked["right"] = true;}
 					if(direction.x < 0){this.blocked["left"] = true;}
-					hit.transform.gameObject.Call("OnCollide",otherCollision);
-					this.gameObject.Call("OnCollide",selfCollision);
+					hit.transform.gameObject.Call("Collide",otherCollision);
+					this.gameObject.Call("Collide",selfCollision);
 				}
 				else{
 					this.rigidbody.position = startPosition + move;
 				}
 			}
+			this.lastDirection = cumulative.normalized;
 			this.Freeze();
 			this.move.Clear();
 			this.rigidbody.Sleep();

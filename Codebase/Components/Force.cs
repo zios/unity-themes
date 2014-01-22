@@ -5,27 +5,34 @@ using System.Collections;
 public class Force : MonoBehaviour{
 	public Vector3 velocity;
 	public Vector3 terminalVelocity = new Vector3(20,20,20);
-	public float resistence;
+	public Vector3 resistence = new Vector3(8,0,8);
 	public float minimumImpactVelocity = 1;
+	public bool disabled = false;
 	[HideInInspector] public ColliderController controller;
 	public void Awake(){
-		Events.Add("OnCollide",(MethodObject)this.OnCollide);
-		Events.Add("OnForce",this.AddForce);
-		Events.Add("ResetVelocity",this.ResetVelocity);
+		Events.Add("Collide",(MethodObject)this.OnCollide);
+		Events.Add("AddForce",this.OnAddForce);
+		Events.Add("ResetVelocity",this.OnResetVelocity);
+		Events.Add("EnableForces",this.OnEnableForces);
+		Events.Add("DisableForces",this.OnDisableForces);
 		this.controller = this.GetComponent<ColliderController>();
 	}
 	public void Update(){
-		if(this.velocity != Vector3.zero){
-			Vector3 resistence = this.velocity.Sign() * this.resistence;
+		if(!this.disabled && this.velocity != Vector3.zero){
+			Vector3 resistence = Vector3.Scale(this.velocity.Sign(),this.resistence);
 			this.velocity -= resistence * Time.deltaTime;
 			this.velocity = this.velocity.Clamp(this.terminalVelocity*-1,this.terminalVelocity);
-			this.gameObject.Call("OnMove",this.velocity);
-			/*this.gameObject.Call("OnMove",new Vector3(this.velocity.x,0,0));
-			this.gameObject.Call("OnMove",new Vector3(0,this.velocity.y,0));
-			this.gameObject.Call("OnMove",new Vector3(0,0,this.velocity.z));*/
+			this.gameObject.Call("AddMove",this.velocity);
 		}
 	}
-	public void AddForce(Vector3 force){
+	public void OnDisableForces(){
+		this.disabled = true;
+		this.OnResetVelocity("xyz");
+	}
+	public void OnEnableForces(){
+		this.disabled = false;
+	}
+	public void OnAddForce(Vector3 force){
 		if(this.controller.freezePosition[0]){force.x = 0;}
 		if(this.controller.freezePosition[1]){force.y = 0;}
 		if(this.controller.freezePosition[2]){force.z = 0;}
@@ -33,7 +40,7 @@ public class Force : MonoBehaviour{
 			this.velocity += force;
 		}
 	}
-	public void ResetVelocity(string target){
+	public void OnResetVelocity(string target){
 		if(target.Contains("x")){this.velocity.x = 0;}
 		if(target.Contains("y")){this.velocity.y = 0;}
 		if(target.Contains("z")){this.velocity.z = 0;}
