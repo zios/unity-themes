@@ -216,7 +216,7 @@ public class UtilityWindow : EditorWindow {
 		if(GUILayout.Button("Find",GUILayout.Width(100))){
 			GameObject[] all = (GameObject[])GameObject.FindObjectsOfType(typeof(GameObject));
 			List<GameObject> selection = new List<GameObject>();
-			bool wildcard = this.selectName.EndsWith("*");
+			bool wildcard = this.selectName.Contains("*");
 			string search = this.selectName.Replace("*","");
 			foreach(GameObject current in all){
 				if(search == "" || (wildcard && current.name.Contains(search)) || current.name == search){

@@ -91,6 +91,7 @@ public class ColliderController : MonoBehaviour{
 		}
 	}
 	public void Move(Vector3 move){
+		if(!this.enabled){return;}
 		if(this.freezePosition[0]){move.x = 0;}
 		if(this.freezePosition[1]){move.y = 0;}
 		if(this.freezePosition[2]){move.z = 0;}
