@@ -179,7 +179,7 @@ public class UtilityWindow : EditorWindow {
 		if(GUILayout.Button("Apply",GUILayout.Width(100))){
 			Undo.RegisterSceneUndo("Revert Material Replace");
 			GameObject[] selection = Selection.gameObjects;
-			bool wildcard = this.materialRenameFrom.Contains("*");
+			bool global = this.materialRenameFrom == "*";
 			string search = this.materialRenameFrom.Replace("*","");
 			foreach(GameObject current in selection){
 				Renderer[] renderers = current.GetComponentsInChildren<Renderer>(this.materialIncludeInactive);
@@ -188,8 +188,9 @@ public class UtilityWindow : EditorWindow {
 					foreach(Material material in renderer.sharedMaterials){
 						string name = material.name;
 						Material currentMaterial = material;
-						if((wildcard && name.Contains(search)) || (name == search)){
+						if(name.Contains(search)){
 							string replace = name.Replace(search,this.materialRenameTo);
+							if(global){replace = this.materialRenameTo;}
 							Material swapMaterial = FileManager.GetAsset<Material>(replace+".mat",false);
 							if(swapMaterial != null){
 								currentMaterial = swapMaterial;
