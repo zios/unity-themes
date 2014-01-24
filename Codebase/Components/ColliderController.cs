@@ -18,8 +18,12 @@ public class CollisionData{
 }
 [AddComponentMenu("Zios/Component/Physics/Collider Controller")]
 public class ColliderController : MonoBehaviour{
+	static public Dictionary<GameObject,ColliderController> instances = new Dictionary<GameObject,ColliderController>();
 	static public Collider[] triggers;
 	static public bool triggerSetup;
+	static public ColliderController Get(GameObject gameObject){
+		return ColliderController.instances[gameObject];
+	}
 	static public bool HasTrigger(Collider collider){
 		return Array.IndexOf(ColliderController.triggers,collider) != -1;
 	}
@@ -38,6 +42,7 @@ public class ColliderController : MonoBehaviour{
 		this.ResetBlocked(true);
 	}
 	public void Start(){
+		ColliderController.instances[this.gameObject] = this;
 		if(!ColliderController.triggerSetup){
 			Collider[] colliders = (Collider[])Resources.FindObjectsOfTypeAll(typeof(Collider));
 			List<Collider> triggers = new List<Collider>();
@@ -58,63 +63,13 @@ public class ColliderController : MonoBehaviour{
 		this.rigidbody.isKinematic = true;
 		this.rigidbody.Sleep();
 	}
-	public void Update(){
-		this.UpdatePosition();
-	}
-	public void ResetBlocked(bool clearTime=false){
-		string[] names = new string[]{"forward","back","up","down","right","left"};
-		foreach(string name in names){
-			this.blocked[name] = false;
-			if(clearTime){this.lastBlockedTime[name] = 0;}
-		}
-	}
-	public float GetUnblockedDuration(string name){
-		return Time.time - this.lastBlockedTime[name];
-	}
-	public void CheckBlocked(){
-		if(this.persistentBlockChecks){
-			RaycastHit hit;
-			this.rigidbody.WakeUp();
-			float distance = this.hoverWidth + 0.01f;
-			this.blocked["forward"] = this.rigidbody.SweepTest(this.transform.forward,out hit,distance);
-			this.blocked["back"] = this.rigidbody.SweepTest(-this.transform.forward,out hit,distance);
-			this.blocked["up"] = this.rigidbody.SweepTest(this.transform.up,out hit,distance);
-			this.blocked["down"] = this.rigidbody.SweepTest(-this.transform.up,out hit,distance);
-			this.blocked["right"] = this.rigidbody.SweepTest(this.transform.right,out hit,distance);
-			this.blocked["left"] = this.rigidbody.SweepTest(-this.transform.right,out hit,distance);
-			this.rigidbody.Sleep();
-		}
-		foreach(var item in this.blocked){
-			if(this.blocked[item.Key]){
-				this.lastBlockedTime[item.Key] = Time.time;
-			}
-		}
-	}
-	public void Move(Vector3 move){
-		if(!this.enabled){return;}
-		if(this.freezePosition[0]){move.x = 0;}
-		if(this.freezePosition[1]){move.y = 0;}
-		if(this.freezePosition[2]){move.z = 0;}
-		if(move != Vector3.zero){
-			this.move.Add(move);
-		}
-	}
-	public Vector3 NullBlocked(Vector3 move){
-		if(this.blocked["left"] && move.x < 0){move.x = 0;}
-		if(this.blocked["right"] && move.x > 0){move.x = 0;}
-		if(this.blocked["up"] && move.y > 0){move.y = 0;}
-		if(this.blocked["down"] && move.y < 0){move.y = 0;}
-		if(this.blocked["forward"] && move.z > 0){move.z = 0;}
-		if(this.blocked["back"] && move.z < 0){move.z = 0;}
-		return move;
-	}
-	public void UpdatePosition(){
+	public void FixedUpdate(){
 		if(this.move.Count > 0){
 			this.ResetBlocked();
 			this.rigidbody.WakeUp();
 			Vector3 cumulative = Vector3.zero;
 			foreach(Vector3 current in this.move){
-				Vector3 move = this.NullBlocked(current) * Time.deltaTime;
+				Vector3 move = this.NullBlocked(current) * Time.fixedDeltaTime;
 				if(move == Vector3.zero){continue;}
 				cumulative += current;
 				RaycastHit hit,stepHit;
@@ -168,6 +123,53 @@ public class ColliderController : MonoBehaviour{
 			this.transform.position = this.rigidbody.position;
 		}
 		this.CheckBlocked();
+	}
+	public void ResetBlocked(bool clearTime=false){
+		string[] names = new string[]{"forward","back","up","down","right","left"};
+		foreach(string name in names){
+			this.blocked[name] = false;
+			if(clearTime){this.lastBlockedTime[name] = 0;}
+		}
+	}
+	public float GetUnblockedDuration(string name){
+		return Time.time - this.lastBlockedTime[name];
+	}
+	public void CheckBlocked(){
+		if(this.persistentBlockChecks){
+			RaycastHit hit;
+			this.rigidbody.WakeUp();
+			float distance = this.hoverWidth + 0.01f;
+			this.blocked["forward"] = this.rigidbody.SweepTest(this.transform.forward,out hit,distance);
+			this.blocked["back"] = this.rigidbody.SweepTest(-this.transform.forward,out hit,distance);
+			this.blocked["up"] = this.rigidbody.SweepTest(this.transform.up,out hit,distance);
+			this.blocked["down"] = this.rigidbody.SweepTest(-this.transform.up,out hit,distance);
+			this.blocked["right"] = this.rigidbody.SweepTest(this.transform.right,out hit,distance);
+			this.blocked["left"] = this.rigidbody.SweepTest(-this.transform.right,out hit,distance);
+			this.rigidbody.Sleep();
+		}
+		foreach(var item in this.blocked){
+			if(this.blocked[item.Key]){
+				this.lastBlockedTime[item.Key] = Time.time;
+			}
+		}
+	}
+	public void Move(Vector3 move){
+		if(!this.enabled){return;}
+		if(this.freezePosition[0]){move.x = 0;}
+		if(this.freezePosition[1]){move.y = 0;}
+		if(this.freezePosition[2]){move.z = 0;}
+		if(move != Vector3.zero){
+			this.move.Add(move);
+		}
+	}
+	public Vector3 NullBlocked(Vector3 move){
+		if(this.blocked["left"] && move.x < 0){move.x = 0;}
+		if(this.blocked["right"] && move.x > 0){move.x = 0;}
+		if(this.blocked["up"] && move.y > 0){move.y = 0;}
+		if(this.blocked["down"] && move.y < 0){move.y = 0;}
+		if(this.blocked["forward"] && move.z > 0){move.z = 0;}
+		if(this.blocked["back"] && move.z < 0){move.z = 0;}
+		return move;
 	}
 	public void Freeze(){
 		Vector3 position = this.rigidbody.position;

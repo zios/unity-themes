@@ -13,8 +13,17 @@ public class AnimationSettings : MonoBehaviour{
 		}
 	}
 	public void Update(){
-		if(this.configs.Count == 0){
+		if(this.configs.Count != this.animation.GetClipCount()){
+			foreach(AnimationConfig config in this.configs.Copy()){
+				if(this.animation[config.name]){
+					
+				}
+				else{
+					this.configs.Remove(config);
+				}
+			}
 			foreach(AnimationState animation in this.animation){
+				
 				AnimationConfig config = new AnimationConfig(animation);
 				this.configs.Add(config);
 			}
@@ -23,6 +32,7 @@ public class AnimationSettings : MonoBehaviour{
 }
 [Serializable]
 public class AnimationConfig{
+	public string GUID;
 	public string name;
 	public float fps;
 	public AnimationBlendMode blendMode;

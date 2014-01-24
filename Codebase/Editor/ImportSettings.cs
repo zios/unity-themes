@@ -15,11 +15,11 @@ public class ImportSettings : AssetPostprocessor{
 			importer.animationType = ModelImporterAnimationType.None;
 			importer.generateAnimations = ModelImporterGenerateAnimations.None;
 		}
-		if(importer.assetPath.ContainsAny("@","Shared","Animation") && importer.animationType != ModelImporterAnimationType.Legacy){
+		/*if(importer.assetPath.ContainsAny("@","Shared","Animation") && importer.animationType != ModelImporterAnimationType.Legacy){
 			importer.animationType = ModelImporterAnimationType.Legacy;
 			importer.generateAnimations = ModelImporterGenerateAnimations.GenerateAnimations;
 			importer.animationWrapMode = WrapMode.ClampForever;
-		}
+		}*/
 	}
 	public void OnPreprocessTexture(){
 		TextureImporter importer = (TextureImporter)assetImporter;

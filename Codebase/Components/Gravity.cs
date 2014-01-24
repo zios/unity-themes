@@ -11,9 +11,10 @@ public class Gravity : MonoBehaviour{
 		Events.Add("DisableGravity",this.OnDisableGravity);
 		Events.Add("EnableGravity",this.OnEnableGravity);
 	}
-	public void Update(){
-		if(!this.disabled){
-			Vector3 amount = (this.intensity*this.scale)* Time.deltaTime;
+	public void FixedUpdate(){
+		ColliderController controller = ColliderController.Get(this.gameObject);
+		if(!this.disabled && !controller.blocked["down"]){
+			Vector3 amount = (this.intensity*this.scale)* Time.fixedDeltaTime;
 			this.gameObject.Call("AddForce",amount);
 		}
 	}

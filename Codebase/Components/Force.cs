@@ -17,10 +17,10 @@ public class Force : MonoBehaviour{
 		Events.Add("DisableForces",this.OnDisableForces);
 		this.controller = this.GetComponent<ColliderController>();
 	}
-	public void Update(){
+	public void FixedUpdate(){
 		if(!this.disabled && this.velocity != Vector3.zero){
 			Vector3 resistence = Vector3.Scale(this.velocity.Sign(),this.resistence);
-			this.velocity -= resistence * Time.deltaTime;
+			this.velocity -= resistence * Time.fixedDeltaTime;
 			this.velocity = this.velocity.Clamp(this.terminalVelocity*-1,this.terminalVelocity);
 			this.gameObject.Call("AddMove",this.velocity);
 		}
