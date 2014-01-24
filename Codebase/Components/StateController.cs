@@ -26,7 +26,7 @@ public class StateController : MonoBehaviour{
 				bool mismatchOff = requirement.requireOff && state;
 				action.usable = !(mismatchOn || mismatchOff);
 				if(!action.usable){
-					if(table.endIfUnusable){
+					if(table.endIfUnusable && action.inUse){
 						action.End();
 					}
 					break;

@@ -1,9 +1,8 @@
 using UnityEngine;
 using System;
-using System.Collections;
 [AddComponentMenu("Zios/Singleton/ShowFPS")]
 [RequireComponent(typeof(OverlayText))]
-public class ShowFPS : MonoBehaviour {
+public class FpsGUI : MonoBehaviour {
 	private int frames = 0;
 	private float nextUpdate;
 	private string lastFPS;

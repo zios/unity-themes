@@ -4,9 +4,9 @@ namespace Zios{
 		public PoolPrefab prefab;
 		public bool free = true;
 		public void Awake(){
-			Events.Add("Disable",this.OnDisable);
+			Events.Add("Disable",this.OnDeactivate);
 		}
-		public void OnDisable(){
+		public void OnDeactivate(){
 			this.gameObject.SetActive(false);
 			this.free = true;
 		}
