@@ -37,6 +37,8 @@ public class UtilityWindow : EditorWindow {
 		GUILayout.Label("--------------------------------------------------------------");
 		this.DrawPrefaber();
 		GUILayout.Label("--------------------------------------------------------------");
+		this.DrawMaterialSelector();
+		GUILayout.Label("--------------------------------------------------------------");
 		this.DrawSelector();
 		//GUILayout.Label("--------------------------------------------------------------");
 		//this.DrawAssigner();
@@ -204,6 +206,31 @@ public class UtilityWindow : EditorWindow {
 		}
 		GUILayout.EndHorizontal();
 		this.materialIncludeInactive = EditorGUILayout.ToggleLeft("Include Inactive",this.materialIncludeInactive);
+	}
+	//====================================
+	// Select By Material
+	//====================================
+	public void DrawMaterialSelector(){
+		GUILayout.BeginHorizontal("box");
+		EditorGUILayout.LabelField("Select By Material",GUILayout.Width(60));
+		this.selectName = EditorGUILayout.TextField(this.selectName,GUILayout.Width(100));
+		if(GUILayout.Button("Find",GUILayout.Width(100))){
+			GameObject[] all = (GameObject[])GameObject.FindObjectsOfType(typeof(GameObject));
+			List<GameObject> selection = new List<GameObject>();
+			string search = this.selectName.Replace("*","");
+			foreach(GameObject current in all){
+				Renderer renderer = current.GetComponent<Renderer>();
+				if(renderer != null){
+					foreach(Material material in renderer.sharedMaterials){			
+						if(material.name == search){
+							selection.Add(current);
+						}
+					}
+				}
+			}
+			Selection.objects = selection.ToArray();
+		}
+		GUILayout.EndHorizontal();
 	}
 	//====================================
 	// Selector
