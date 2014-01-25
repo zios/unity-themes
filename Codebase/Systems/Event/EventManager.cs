@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public static class Events{
 	private static Dictionary<GameObject,Dictionary<string,object>> objectEvents = new Dictionary<GameObject,Dictionary<string,object>>();
 	private static Dictionary<string,List<object>> events = new Dictionary<string,List<object>>();
+	public static void AddGet(string name,MethodReturn method){Events.Add(name,(object)method);}
 	public static void Add(string name,Method method){Events.Add(name,(object)method);}
 	public static void Add(string name,MethodObject method){Events.Add(name,(object)method);}
 	public static void Add(string name,MethodFull method){Events.Add(name,(object)method);}
@@ -63,6 +64,51 @@ public static class Events{
 			((MethodVector3)callback)((Vector3)value);
 		}
 	}
+	public static object Query(string name,object result=null){
+		if(Events.events.ContainsKey(name)){
+			foreach(object callback in Events.events[name]){
+				return ((MethodReturn)callback)();
+			}
+		}
+		return result;
+	}
+	public static object Query(GameObject target,string name,object result=null){
+		if(Events.objectEvents.ContainsKey(target)){
+			if(Events.objectEvents[target].ContainsKey(name)){
+				object callback = Events.objectEvents[target][name];
+				return ((MethodReturn)callback)();
+			}
+		}
+		return result;
+	}
+	public static object QueryChildren(GameObject target,string name,bool self=false,object result=null){
+		if(result != null){return result;}
+		if(self){Events.Query(target,name,result);}
+		Transform[] children = target.GetComponentsInChildren<Transform>();
+		foreach(Transform transform in children){
+			if(transform.gameObject == target){continue;}
+			result = Events.QueryChildren(transform.gameObject,name,true,result);
+			if(result != null){return result;}
+		}
+		return result;
+	}
+	public static object QueryParents(GameObject target,string name,bool self=false,object result=null){
+		if(result != null){return result;}
+		if(self){Events.Query(target,name,result);}
+		Transform parent = target.transform.parent;
+		while(parent != null){
+			result = Events.QueryParents(parent.gameObject,name,true,result);
+			parent = parent.parent;
+			if(result != null){return result;}
+		}
+		return result;
+	}
+	public static object QueryFamily(GameObject target,string name,bool self=false,object result=null){
+		if(self){Events.Query(target,name,result);}
+		Events.QueryChildren(target,name,false,result);
+		Events.QueryParents(target,name,false,result);
+		return result;
+	}
 	public static void Call(string name,params object[] values){
 		if(Events.events.ContainsKey(name)){
 			foreach(object callback in Events.events[name]){
@@ -101,6 +147,18 @@ public static class Events{
 	}
 }
 public static class GameObjectEvents{
+	public static object Query(this GameObject current,string name){
+		return Events.Query(current,name);
+	}
+	public static object QueryChildren(this GameObject current,string name,bool self=true){
+		return Events.QueryChildren(current,name,self);
+	}
+	public static object QueryParents(this GameObject current,string name,bool self=true){
+		return Events.QueryParents(current,name,self);
+	}
+	public static object QueryFamily(this GameObject current,string name,bool self=true){
+		return Events.QueryFamily(current,name,self);
+	}
 	public static void Call(this GameObject current,string name,params object[] values){
 		Events.Call(current,name,values);
 	}
