@@ -1,42 +1,86 @@
 using UnityEngine;
 using System;
+using System.Collections.Generic;
 public static class GameObjectExtension{
+	public static void ReplaceLayer(this GameObject current,string search,string replace){
+		int layer = LayerMask.NameToLayer(replace);
+		foreach(GameObject item in current.GetByLayer(search)){
+			item.layer = layer;
+		}
+	}
+	public static void ReplaceTag(this GameObject current,string search,string replace){
+		foreach(GameObject item in current.GetByTag(search)){
+			item.tag = replace;
+		}
+	}
+	public static GameObject[] GetByLayer(this GameObject current,string search){
+		int layer = LayerMask.NameToLayer(search);
+		List<GameObject> results = new List<GameObject>();
+		Transform[] children = current.GetComponentsInChildren<Transform>(true);
+		foreach(Transform child in children){
+			if(child.gameObject.layer == layer){
+				results.Add(child.gameObject);
+			}
+		}
+		return results.ToArray();
+	}
+	public static GameObject[] GetByTag(this GameObject current,string search){
+		List<GameObject> results = new List<GameObject>();
+		Transform[] children = current.GetComponentsInChildren<Transform>(true);
+		foreach(Transform child in children){
+			if(child.gameObject.tag == search){
+				results.Add(child.gameObject);
+			}
+		}
+		return results.ToArray();
+	}
 	public static void EnableComponents(this GameObject current,params Type[] types){
-		current.SetComponents(true,types);
+		current.ToggleComponents(true,false,types);
 	}
 	public static void DisableComponents(this GameObject current,params Type[] types){
-		current.SetComponents(false,types);
+		current.ToggleComponents(false,false,types);
 	}
-	public static void SetComponents(this GameObject current,bool state,params Type[] types){
+	public static void EnableAllComponents(this GameObject current,params Type[] types){
+		current.ToggleComponents(true,true,types);
+	}
+	public static void DisableAllComponents(this GameObject current,params Type[] types){
+		current.ToggleComponents(false,true,types);
+	}
+	public static void ToggleComponents(this GameObject current,bool state,bool all=true,params Type[] types){
 		foreach(Type type in types){
-			if(type == typeof(Renderer)){
-				Renderer[] items = current.GetComponentsInChildren<Renderer>(true);
-				foreach(var item in items){item.enabled = state;}
-			}
-			else if(type == typeof(Collider)){
-				Collider[] items = current.GetComponentsInChildren<Collider>(true);
-				foreach(var item in items){item.enabled = state;}
-			}
-			else if(type == typeof(MonoBehaviour)){
-				MonoBehaviour[] items = current.GetComponentsInChildren<MonoBehaviour>(true);
-				foreach(var item in items){item.enabled = state;}
-			}
-			else if(type == typeof(Animation)){
-				Animation[] items = current.GetComponentsInChildren<Animation>(true);
-				foreach(var item in items){item.enabled = state;}
+			var components = all ? current.GetComponentsInChildren(type,true) : current.GetComponents(type);
+			foreach(var item in components){
+				Type itemType = item.GetType();
+				if(itemType.IsAssignableFrom(typeof(Renderer))){((Renderer)item).enabled = state;}
+				else if(itemType.IsAssignableFrom(typeof(MonoBehaviour))){((MonoBehaviour)item).enabled = state;}
+				else if(itemType.IsAssignableFrom(typeof(Collider))){((Collider)item).enabled = state;}
+				else if(itemType.IsAssignableFrom(typeof(Animation))){((Animation)item).enabled = state;}
 			}
 		}
 	}
-	public static void SetVisible(this GameObject current,bool state){
-		current.SetComponents(state,typeof(Renderer));
+	public static void ToggleAllVisible(this GameObject current,bool state){
+		current.ToggleComponents(state,true,typeof(Renderer));
 	}
-	public static void SetCollisions(this GameObject current,bool state){
-		current.SetComponents(state,typeof(Collider));
+	public static void ToggleAllCollisions(this GameObject current,bool state){
+		current.ToggleComponents(state,true,typeof(Collider));
 	}
-	public static void SetTriggers(this GameObject current,bool state){
+	public static void ToggleAllTriggers(this GameObject current,bool state){
 		Collider[] colliders = current.GetComponentsInChildren<Collider>();
 		foreach(Collider collider in colliders){
 			collider.isTrigger = state;
+		}
+	}
+	public static void SetAllTags(this GameObject current,string name){
+		Transform[] children = current.GetComponentsInChildren<Transform>(true);
+		foreach(Transform child in children){
+			child.gameObject.tag = name;
+		}
+	}
+	public static void SetAllLayers(this GameObject current,string name){
+		int layer = LayerMask.NameToLayer(name);
+		Transform[] children = current.GetComponentsInChildren<Transform>(true);
+		foreach(Transform child in children){
+			child.gameObject.layer = layer;
 		}
 	}
 	public static void MoveTo(this GameObject current,Vector3 location,bool useX=true,bool useY=true,bool useZ=true){

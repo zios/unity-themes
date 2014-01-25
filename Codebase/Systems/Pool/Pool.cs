@@ -5,7 +5,7 @@ using System.Collections;
 namespace Zios{
 	[Serializable]
 	public class PoolPrefab{
-		public string name;
+		[HideInInspector] public string name;
 		public GameObject prefab;
 		public Vector3 offset;
 		public Vector3 scale = Vector3.one;

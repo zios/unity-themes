@@ -38,7 +38,8 @@ public class ColliderController : MonoBehaviour{
 	public float skinWidth = 0;
 	public bool persistentBlockChecks;
 	public void Awake(){
-		Events.Add("AddMove",this.Move);
+		Events.Add("AddMove",this.OnMove);
+		Events.Add("ResetMove",this.OnResetMove);
 		this.ResetBlocked(true);
 	}
 	public void Start(){
@@ -61,6 +62,7 @@ public class ColliderController : MonoBehaviour{
 			this.gameObject.AddComponent("Rigidbody");
 		}	
 		this.rigidbody.isKinematic = true;
+		this.rigidbody.useGravity = false;
 		this.rigidbody.Sleep();
 	}
 	public void FixedUpdate(){
@@ -118,7 +120,7 @@ public class ColliderController : MonoBehaviour{
 			}
 			this.lastDirection = cumulative.normalized;
 			this.Freeze();
-			this.move.Clear();
+			this.move = new List<Vector3>();
 			this.rigidbody.Sleep();
 			this.transform.position = this.rigidbody.position;
 		}
@@ -141,7 +143,7 @@ public class ColliderController : MonoBehaviour{
 			float distance = this.hoverWidth + 0.01f;
 			this.blocked["forward"] = this.rigidbody.SweepTest(this.transform.forward,out hit,distance);
 			this.blocked["back"] = this.rigidbody.SweepTest(-this.transform.forward,out hit,distance);
-			this.blocked["up"] = this.rigidbody.SweepTest(this.transform.up,out hit,distance);
+			this.blocked["up"] = this.rigidbody.SweepTest(this.transform.up,out hit,distance*10);
 			this.blocked["down"] = this.rigidbody.SweepTest(-this.transform.up,out hit,distance);
 			this.blocked["right"] = this.rigidbody.SweepTest(this.transform.right,out hit,distance);
 			this.blocked["left"] = this.rigidbody.SweepTest(-this.transform.right,out hit,distance);
@@ -153,7 +155,7 @@ public class ColliderController : MonoBehaviour{
 			}
 		}
 	}
-	public void Move(Vector3 move){
+	public void OnMove(Vector3 move){
 		if(!this.enabled){return;}
 		if(this.freezePosition[0]){move.x = 0;}
 		if(this.freezePosition[1]){move.y = 0;}
@@ -161,6 +163,9 @@ public class ColliderController : MonoBehaviour{
 		if(move != Vector3.zero){
 			this.move.Add(move);
 		}
+	}
+	public void OnResetMove(){
+		this.move = new List<Vector3>();
 	}
 	public Vector3 NullBlocked(Vector3 move){
 		if(this.blocked["left"] && move.x < 0){move.x = 0;}

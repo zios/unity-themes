@@ -9,3 +9,5 @@ public delegate void MethodBool(bool value);
 public delegate void MethodVector2(Vector2 value);
 public delegate void MethodVector3(Vector3 value);
 public delegate void MethodFull(object[] values);
+public delegate object MethodReturn();
+public delegate object MethodReturnFull(object[] values);

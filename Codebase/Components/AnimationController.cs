@@ -25,8 +25,7 @@ public class AnimationController : MonoBehaviour{
 	public void OnPlay(object[] values){
 		string name = (string)values[0];
 		int priority = values.Length > 1 ? (int)values[1] : 1;
-		bool force = values.Length > 2 ? (bool)values[2] : false;
-		this.Play(name,priority,force);
+		this.Play(name,priority);
 	}
 	public void OnSet(object[] values){
 		string name = (string)values[0];
@@ -34,10 +33,10 @@ public class AnimationController : MonoBehaviour{
 		int priority = values.Length > 2 ? (int)values[2] : 1;
 		this.Set(name,state,priority);
 	}
-	public void Play(string name,int priority=1,bool force=false){
-		bool exists = this.animation[name]; 
-		if(exists && priority >= this.currentPriority){
-			if(force){this.Stop(this.currentAnimation);}
+	public void Play(string name,int priority=1){
+		bool exists = this.animation[name];
+		bool notCurrent = (name != this.currentAnimation);
+		if(exists && notCurrent && priority >= this.currentPriority){
 			this.animation.Play(name);
 			this.currentAnimation = name;
 			this.currentPriority = priority;
