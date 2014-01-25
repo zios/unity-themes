@@ -83,6 +83,10 @@ public static class GameObjectExtension{
 			child.gameObject.layer = layer;
 		}
 	}
+	public static void SetLayer(this GameObject current,string name){
+		int layer = LayerMask.NameToLayer(name);
+		current.layer = layer;
+	}
 	public static void MoveTo(this GameObject current,Vector3 location,bool useX=true,bool useY=true,bool useZ=true){
 		Vector3 position = current.transform.position;
 		if(useX){position.x = location.x;}
