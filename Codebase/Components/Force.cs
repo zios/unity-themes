@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 using System.Collections;
 [RequireComponent(typeof(ColliderController))]
 [AddComponentMenu("Zios/Component/Physics/Force")]
@@ -8,7 +9,7 @@ public class Force : MonoBehaviour{
 	public Vector3 resistence = new Vector3(8,0,8);
 	public float minimumImpactVelocity = 1;
 	public bool disabled = false;
-	[HideInInspector] public ColliderController controller;
+	[NonSerialized] public ColliderController controller;
 	public void Awake(){
 		Events.Add("Collide",(MethodObject)this.OnCollide);
 		Events.Add("AddForce",this.OnAddForce);

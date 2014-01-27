@@ -9,7 +9,7 @@ public class RenderOrder : MonoBehaviour{
 	public void Start(){this.Setup();}
 	public void OnDrawGizmosSelected(){this.Setup();}
 	public void Setup(){
-		if(!this.renderer || !this.renderer.sharedMaterial){return;}
+		if(this.renderer == null || this.renderer.sharedMaterial == null){return;}
 		int size = this.renderer.sharedMaterials.Length;
 		if(this.renderQueues == null || this.renderQueues.Length != size){
 			this.renderQueues = new int[size];
