@@ -105,8 +105,8 @@ public class StateMonoBehaviour : MonoBehaviour{
 	public bool usable;
 	public bool inUse;
 	public virtual void Use(){}
-	public virtual void Use(bool state){}
 	public virtual void End(){}
+	public virtual void Toggle(bool state){}
 }
 [Serializable]
 public class StateTable{
