@@ -64,6 +64,7 @@ public abstract class TableRow{
 	public object target;
 	public bool allowNegative;
 	public bool shouldRepaint;
+	public GUIStyle customStyle = new GUIStyle();
 	public TableRow(string label,bool allowNegative,object target){
 		this.label = label;
 		this.positiveChecks = new List<string>();
@@ -87,7 +88,7 @@ public abstract class TableRow{
 				else if(negativeChecks.Contains(state)){
 					symbol = "x";
 				}
-				if(GUILayout.Button(new GUIContent(symbol),GUILayout.Width(24))){
+				if(GUILayout.Button(new GUIContent(symbol),customStyle)){
 					this.Toogle(state);
 					this.shouldRepaint = true;
 				}
