@@ -12,6 +12,7 @@ public class Force : MonoBehaviour{
 	public void Awake(){
 		Events.Add("Collide",(MethodObject)this.OnCollide);
 		Events.Add("AddForce",this.OnAddForce);
+		Events.Add("ScaleVelocity",this.OnScaleVelocity);
 		Events.Add("ResetVelocity",this.OnResetVelocity);
 		Events.Add("EnableForces",this.OnEnableForces);
 		Events.Add("DisableForces",this.OnDisableForces);
@@ -40,10 +41,17 @@ public class Force : MonoBehaviour{
 			this.velocity += force;
 		}
 	}
-	public void OnResetVelocity(string target){
-		if(target.Contains("x")){this.velocity.x = 0;}
-		if(target.Contains("y")){this.velocity.y = 0;}
-		if(target.Contains("z")){this.velocity.z = 0;}
+	public void OnScaleVelocity(object[] values){
+		string axes = (string)values[0];
+		float amount = (float)values[1];
+		if(axes.Contains("x")){this.velocity.x *= amount;}
+		if(axes.Contains("y")){this.velocity.y *= amount;}
+		if(axes.Contains("z")){this.velocity.z *= amount;}
+	}
+	public void OnResetVelocity(string axes){
+		if(axes.Contains("x")){this.velocity.x = 0;}
+		if(axes.Contains("y")){this.velocity.y = 0;}
+		if(axes.Contains("z")){this.velocity.z = 0;}
 	}
 	public void OnCollide(object collision){
 		CollisionData data = (CollisionData)collision;

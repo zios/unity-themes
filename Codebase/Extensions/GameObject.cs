@@ -47,14 +47,20 @@ public static class GameObjectExtension{
 		current.ToggleComponents(false,true,types);
 	}
 	public static void ToggleComponents(this GameObject current,bool state,bool all=true,params Type[] types){
+		Type renderer = typeof(Renderer);
+		Type collider = typeof(Collider);
+		Type behaviour = typeof(MonoBehaviour);
+		Type animation = typeof(Animation);
 		foreach(Type type in types){
 			var components = all ? current.GetComponentsInChildren(type,true) : current.GetComponents(type);
 			foreach(var item in components){
 				Type itemType = item.GetType();
-				if(itemType.IsAssignableFrom(typeof(Renderer))){((Renderer)item).enabled = state;}
-				else if(itemType.IsAssignableFrom(typeof(MonoBehaviour))){((MonoBehaviour)item).enabled = state;}
-				else if(itemType.IsAssignableFrom(typeof(Collider))){((Collider)item).enabled = state;}
-				else if(itemType.IsAssignableFrom(typeof(Animation))){((Animation)item).enabled = state;}
+				Func<Type,bool> subClass = x => itemType.IsSubclassOf(x);
+				Func<Type,bool> matches = x => itemType.IsAssignableFrom(x);
+				if(subClass(renderer) || matches(renderer)){((Renderer)item).enabled = state;}
+				else if(subClass(behaviour) || matches(behaviour)){((MonoBehaviour)item).enabled = state;}
+				else if(subClass(collider) || matches(collider)){((Collider)item).enabled = state;}
+				else if(subClass(animation) || matches(animation)){((Animation)item).enabled = state;}
 			}
 		}
 	}

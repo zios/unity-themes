@@ -3,7 +3,7 @@ using System;
 using System.Reflection;
 using System.Collections.Generic;
 public static class Events{
-	private static Dictionary<GameObject,Dictionary<string,object>> objectEvents = new Dictionary<GameObject,Dictionary<string,object>>();
+	private static Dictionary<GameObject,Dictionary<string,List<object>>> objectEvents = new Dictionary<GameObject,Dictionary<string,List<object>>>();
 	private static Dictionary<string,List<object>> events = new Dictionary<string,List<object>>();
 	public static void AddGet(string name,MethodReturn method){Events.Add(name,(object)method);}
 	public static void Add(string name,Method method){Events.Add(name,(object)method);}
@@ -28,9 +28,14 @@ public static class Events{
 			if(type.IsSubclassOf((typeof(MonoBehaviour)))){
 				GameObject target = ((MonoBehaviour)methodTarget).gameObject;
 				if(!Events.objectEvents.ContainsKey(target)){
-					Events.objectEvents[target] = new Dictionary<string,object>();
+					Events.objectEvents[target] = new Dictionary<string,List<object>>();
 				}
-				Events.objectEvents[target][name] = method;
+				if(!Events.objectEvents[target].ContainsKey(name)){
+					Events.objectEvents[target][name] = new List<object>();
+				}
+				if(!Events.objectEvents[target][name].Contains(method)){
+					Events.objectEvents[target][name].Add(method);
+				}
 			}
 		}
 	}
@@ -75,8 +80,9 @@ public static class Events{
 	public static object Query(GameObject target,string name,object result=null){
 		if(Events.objectEvents.ContainsKey(target)){
 			if(Events.objectEvents[target].ContainsKey(name)){
-				object callback = Events.objectEvents[target][name];
-				return ((MethodReturn)callback)();
+				foreach(object callback in Events.objectEvents[target][name]){
+					return ((MethodReturn)callback)();
+				}
 			}
 		}
 		return result;
@@ -119,8 +125,9 @@ public static class Events{
 	public static void Call(GameObject target,string name,object[] values){
 		if(Events.objectEvents.ContainsKey(target)){
 			if(Events.objectEvents[target].ContainsKey(name)){
-				object callback = Events.objectEvents[target][name];
-				Events.Handle(callback,values);
+				foreach(object callback in Events.objectEvents[target][name]){
+					Events.Handle(callback,values);
+				}
 			}
 		}
 	}
