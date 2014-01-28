@@ -10,16 +10,13 @@ public abstract class TableTemplate{
 	public bool shouldRepaint;
 	public float labelSize = 0;
 	public float labelWidth;
-	public GUIStyle customStyle = new GUIStyle();
 	public TableTemplate(UnityEngine.Object target){
+		GUI.skin = FileManager.GetAsset<GUISkin>("TableHeaderDefault.guiskin");
 		this.target = target;
 		this.headers = new List<string>();
-		this.tableItems = new List<TableRow>();
+		this.tableItems = new List<TableRow>(); 
 		this.CreateHeaders();
-		this.customStyle.wordWrap = true;
-		this.customStyle.fixedWidth = 1;
-		this.customStyle.alignment = TextAnchor.LowerRight;
-		this.customStyle.fixedHeight = this.labelSize * 13;
+		GUI.skin.label.fixedHeight = this.labelSize * 13;
 		this.labelWidth = this.labelSize * 8;
 	}
 	public void Draw(){
@@ -31,8 +28,6 @@ public abstract class TableTemplate{
 			this.CreateHeader(header);
 		}
 		EditorGUILayout.EndHorizontal();
-		EditorGUILayout.EndVertical();
-		EditorGUILayout.BeginVertical();
 		foreach(TableRow item in this.tableItems){
 			EditorGUILayout.BeginHorizontal();
 			item.Draw(headers,this.labelWidth);
@@ -51,7 +46,7 @@ public abstract class TableTemplate{
 			EditorGUILayout.LabelField(new GUIContent(header),GUILayout.Width(this.labelWidth));
 		}
 		else{
-			EditorGUILayout.LabelField(new GUIContent(header),this.customStyle);
+			EditorGUILayout.LabelField(new GUIContent(header),GUI.skin.label,GUILayout.Width(25));
 		}
 	}
 	public abstract void CreateHeaders();
@@ -64,8 +59,8 @@ public abstract class TableRow{
 	public object target;
 	public bool allowNegative;
 	public bool shouldRepaint;
-	public GUIStyle customStyle = new GUIStyle();
 	public TableRow(string label,bool allowNegative,object target){
+		GUI.skin = FileManager.GetAsset<GUISkin>("TableDefault.guiskin");
 		this.label = label;
 		this.positiveChecks = new List<string>();
 		this.negativeChecks = new List<string>(); 
@@ -74,7 +69,7 @@ public abstract class TableRow{
 		this.PopulateChecks();
 	}
 	public void Draw(List<string> headers,float labelWidth){
-		EditorGUILayout.LabelField(new GUIContent(label),GUILayout.Width(labelWidth - 11));
+		EditorGUILayout.LabelField(new GUIContent(label),GUI.skin.label,GUILayout.Width(labelWidth - 11));
 		if(GUILayoutUtility.GetLastRect().Contains(Event.current.mousePosition) && Event.current.type == EventType.ContextClick){
 			this.CheckContext();
 			this.shouldRepaint = true;
@@ -86,9 +81,9 @@ public abstract class TableRow{
 					symbol = "✓";
 				}
 				else if(negativeChecks.Contains(state)){
-					symbol = "x";
+					symbol = "X";
 				}
-				if(GUILayout.Button(new GUIContent(symbol),customStyle)){
+				if(GUILayout.Button(new GUIContent(symbol),GUI.skin.button)){
 					this.Toogle(state);
 					this.shouldRepaint = true;
 				}
