@@ -18,8 +18,7 @@ public class StateControllerEditor : Editor{
 		}
 	}
 	public class CustomTableRow : TableRow{
-		public CustomTableRow(string label,bool allowNegative,object target):base(label,allowNegative,target){
-		}
+		public CustomTableRow(string label,bool allowNegative,object target):base(label,allowNegative,target){}
 		public override void PopulateChecks(){
 			StateTable stateTable = (StateTable)this.target;
 			foreach(StateRequirement requirement in stateTable.requirements){
@@ -31,7 +30,7 @@ public class StateControllerEditor : Editor{
 				}
 			}
 		}
-		public override void Toogle(string state){
+		public override void Toggle(string state){
 			StateTable stateTable = (StateTable)this.target;
 			foreach(StateRequirement requirement in stateTable.requirements){
 				if(requirement.name.Equals(state)){
@@ -69,8 +68,7 @@ public class StateControllerEditor : Editor{
 		}
 	}
 	public class CustomTableElement : TableTemplate{
-		public CustomTableElement(UnityEngine.Object target):base(target){
-		}
+		public CustomTableElement(UnityEngine.Object target):base(target){}
 		public override void CreateHeaders(){
 			this.headers.Add(string.Empty);
 			foreach(StateTable table in ((StateController)target).data){

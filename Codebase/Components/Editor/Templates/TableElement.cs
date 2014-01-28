@@ -8,13 +8,17 @@ public abstract class TableTemplate{
 	public List<TableRow> tableItems;
 	public List<string> headers;
 	public bool shouldRepaint;
-	public float labelSize = 0;
+	public float labelSize;
 	public float labelWidth;
+	public GUISkin tableSkin;
+	public GUISkin tableHeaderSkin;
 	public TableTemplate(UnityEngine.Object target){
-		GUI.skin = FileManager.GetAsset<GUISkin>("TableHeaderDefault.guiskin");
+		string skin = EditorGUIUtility.isProSkin ? "Dark" : "Light";
 		this.target = target;
 		this.headers = new List<string>();
 		this.tableItems = new List<TableRow>(); 
+		this.tableSkin = FileManager.GetAsset<GUISkin>("Table-"+skin+".guiskin");
+		this.tableHeaderSkin = FileManager.GetAsset<GUISkin>("TableHeader-"+skin+".guiskin");
 		this.CreateHeaders();
 		GUI.skin.label.fixedHeight = this.labelSize * 13;
 		this.labelWidth = this.labelSize * 8;
@@ -24,10 +28,12 @@ public abstract class TableTemplate{
 		this.CreateItems();
 		EditorGUILayout.BeginVertical();
 		EditorGUILayout.BeginHorizontal();
-		foreach(string header in this.headers){
-			this.CreateHeader(header);
+		GUI.skin = this.tableHeaderSkin;
+		for(int index=0;index<this.headers.Count;++index){
+			this.CreateHeader(this.headers[index],index);
 		}
 		EditorGUILayout.EndHorizontal();
+		GUI.skin = this.tableSkin;
 		foreach(TableRow item in this.tableItems){
 			EditorGUILayout.BeginHorizontal();
 			item.Draw(headers,this.labelWidth);
@@ -41,13 +47,16 @@ public abstract class TableTemplate{
 			EditorUtility.SetDirty(target);
 		}
 	}
-	private void CreateHeader(string header){
-		if(string.IsNullOrEmpty(header)){
-			EditorGUILayout.LabelField(new GUIContent(header),GUILayout.Width(this.labelWidth));
+	private void CreateHeader(string header,int offset=0){
+		if(header == ""){
+			GUILayout.Space(this.labelWidth);
+			return;
 		}
-		else{
-			EditorGUILayout.LabelField(new GUIContent(header),GUI.skin.label,GUILayout.Width(25));
-		}
+		//float xOffset = (-225) + GUILayoutUtility.GetLastRect().x;
+		//float yOffset = (-100) + GUILayoutUtility.GetLastRect().y;
+		//GUIUtility.RotateAroundPivot(90,new Vector2(xOffset,yOffset));
+		GUILayout.Label(header,GUI.skin.label);
+		//GUIUtility.RotateAroundPivot(-90,new Vector2(xOffset,yOffset));
 	}
 	public abstract void CreateHeaders();
 	public abstract void CreateItems();
@@ -60,7 +69,6 @@ public abstract class TableRow{
 	public bool allowNegative;
 	public bool shouldRepaint;
 	public TableRow(string label,bool allowNegative,object target){
-		GUI.skin = FileManager.GetAsset<GUISkin>("TableDefault.guiskin");
 		this.label = label;
 		this.positiveChecks = new List<string>();
 		this.negativeChecks = new List<string>(); 
@@ -69,7 +77,7 @@ public abstract class TableRow{
 		this.PopulateChecks();
 	}
 	public void Draw(List<string> headers,float labelWidth){
-		EditorGUILayout.LabelField(new GUIContent(label),GUI.skin.label,GUILayout.Width(labelWidth - 11));
+		GUILayout.Label(label);
 		if(GUILayoutUtility.GetLastRect().Contains(Event.current.mousePosition) && Event.current.type == EventType.ContextClick){
 			this.CheckContext();
 			this.shouldRepaint = true;
@@ -77,20 +85,28 @@ public abstract class TableRow{
 		foreach(string state in headers){
 			if(!string.IsNullOrEmpty(state)){
 				string symbol = " ";
+				GUIStyle style = GUI.skin.button;
 				if(positiveChecks.Contains(state)){
 					symbol = "✓";
+					if(GUI.skin.FindStyle("buttonOn") != null){
+						style = GUI.skin.GetStyle("buttonOn");
+					}
 				}
 				else if(negativeChecks.Contains(state)){
 					symbol = "X";
+					if(GUI.skin.FindStyle("buttonOff") != null){
+						style = GUI.skin.GetStyle("buttonOff");
+
+					}
 				}
-				if(GUILayout.Button(new GUIContent(symbol),GUI.skin.button)){
-					this.Toogle(state);
+				if(GUILayout.Button(new GUIContent(symbol),style)){
+					this.Toggle(state);
 					this.shouldRepaint = true;
 				}
 			}
 		}
 	}
 	public abstract void PopulateChecks();
-	public abstract void Toogle(string state);
+	public abstract void Toggle(string state);
 	public abstract void CheckContext();
 }
