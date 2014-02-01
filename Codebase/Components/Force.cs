@@ -11,6 +11,7 @@ public class Force : MonoBehaviour{
 	public bool disabled = false;
 	[NonSerialized] public ColliderController controller;
 	public void Awake(){
+		Events.AddGet("GetVelocity",this.OnGetVelocity);
 		Events.Add("Collide",(MethodObject)this.OnCollide);
 		Events.Add("AddForce",this.OnAddForce);
 		Events.Add("ScaleVelocity",this.OnScaleVelocity);
@@ -26,6 +27,9 @@ public class Force : MonoBehaviour{
 			this.velocity = this.velocity.Clamp(this.terminalVelocity*-1,this.terminalVelocity);
 			this.gameObject.Call("AddMove",this.velocity);
 		}
+	}
+	public object OnGetVelocity(){
+		return this.velocity;
 	}
 	public void OnDisableForces(){
 		this.disabled = true;

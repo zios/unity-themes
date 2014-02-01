@@ -60,7 +60,8 @@ public class AnimationController : MonoBehaviour{
 	public void Play(string name,int priority=1){
 		bool exists = this.animation[name];
 		bool notCurrent = (name != this.currentAnimation);
-		if(exists && notCurrent && priority >= this.currentPriority){
+		bool isPlaying = this.animation.IsPlaying(name);
+		if(!isPlaying && exists && notCurrent && priority >= this.currentPriority){
 			this.animation.Play(name);
 			this.currentAnimation = name;
 			this.currentPriority = priority;
@@ -76,8 +77,8 @@ public class AnimationController : MonoBehaviour{
 		}
 	}
 	public void Stop(string name){
-		bool exists = this.animation[name]; 
-		if(exists && Time.time > this.animationHoldEndTime){
+		bool isPlaying = this.animation.IsPlaying(name);
+		if(isPlaying && Time.time > this.animationHoldEndTime){
 			if(name == this.currentAnimation){
 				this.animationHoldEndTime = -1;
 				this.currentAnimation = "";

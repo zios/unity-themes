@@ -2,6 +2,9 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 public static class GameObjectExtension{
+	//====================
+	// Layers / Tags
+	//====================
 	public static void ReplaceLayer(this GameObject current,string search,string replace){
 		int layer = LayerMask.NameToLayer(replace);
 		foreach(GameObject item in current.GetByLayer(search)){
@@ -34,6 +37,56 @@ public static class GameObjectExtension{
 		}
 		return results.ToArray();
 	}
+	public static void SetAllTags(this GameObject current,string name){
+		Transform[] children = current.GetComponentsInChildren<Transform>(true);
+		foreach(Transform child in children){
+			child.gameObject.tag = name;
+		}
+	}
+	public static void SetAllLayers(this GameObject current,string name){
+		int layer = LayerMask.NameToLayer(name);
+		Transform[] children = current.GetComponentsInChildren<Transform>(true);
+		foreach(Transform child in children){
+			child.gameObject.layer = layer;
+		}
+	}
+	public static void SetLayer(this GameObject current,string name){
+		int layer = LayerMask.NameToLayer(name);
+		current.layer = layer;
+	}
+	//====================
+	// Collisions
+	//====================
+	public static void ToggleAllCollisions(this GameObject current,bool state){
+		current.ToggleComponents(state,true,typeof(Collider));
+	}
+	public static void ToggleAllTriggers(this GameObject current,bool state){
+		Collider[] colliders = current.GetComponentsInChildren<Collider>();
+		foreach(Collider collider in colliders){
+			collider.isTrigger = state;
+		}
+	}
+	public static void ToggleIgnoreCollisions(this GameObject current,GameObject target,bool state){
+		var colliders = current.GetComponentsInChildren<Collider>();
+		var targetColliders = target.GetComponentsInChildren<Collider>();
+		foreach(Collider collider in colliders){
+			if(!collider.enabled){continue;}
+			foreach(Collider targetCollider in targetColliders){
+				if(collider == targetCollider){continue;}
+				if(!targetCollider.enabled){continue;}
+				Physics.IgnoreCollision(collider,targetCollider,state);
+			}
+		}
+	}
+	public static void IgnoreAllCollisions(this GameObject current,GameObject target){
+		current.ToggleIgnoreCollisions(target,true);
+	}
+	public static void UnignoreAllCollisions(this GameObject current,GameObject target){
+		current.ToggleIgnoreCollisions(target,false);
+	}
+	//====================
+	// Components
+	//====================
 	public static void EnableComponents(this GameObject current,params Type[] types){
 		current.ToggleComponents(true,false,types);
 	}
@@ -66,32 +119,6 @@ public static class GameObjectExtension{
 	}
 	public static void ToggleAllVisible(this GameObject current,bool state){
 		current.ToggleComponents(state,true,typeof(Renderer));
-	}
-	public static void ToggleAllCollisions(this GameObject current,bool state){
-		current.ToggleComponents(state,true,typeof(Collider));
-	}
-	public static void ToggleAllTriggers(this GameObject current,bool state){
-		Collider[] colliders = current.GetComponentsInChildren<Collider>();
-		foreach(Collider collider in colliders){
-			collider.isTrigger = state;
-		}
-	}
-	public static void SetAllTags(this GameObject current,string name){
-		Transform[] children = current.GetComponentsInChildren<Transform>(true);
-		foreach(Transform child in children){
-			child.gameObject.tag = name;
-		}
-	}
-	public static void SetAllLayers(this GameObject current,string name){
-		int layer = LayerMask.NameToLayer(name);
-		Transform[] children = current.GetComponentsInChildren<Transform>(true);
-		foreach(Transform child in children){
-			child.gameObject.layer = layer;
-		}
-	}
-	public static void SetLayer(this GameObject current,string name){
-		int layer = LayerMask.NameToLayer(name);
-		current.layer = layer;
 	}
 	public static void MoveTo(this GameObject current,Vector3 location,bool useX=true,bool useY=true,bool useZ=true){
 		Vector3 position = current.transform.position;
