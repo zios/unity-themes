@@ -143,8 +143,9 @@ namespace Zios{
 		// Unity Specific
 		//===========================
 		public static void Awake(){
-			if(Console.settings.logFile != "" && !Application.isWebPlayer){
-				using(StreamWriter file = new StreamWriter(Console.settings.logFile,true)){
+			if(Console.settings.allowLogging && !Application.isWebPlayer){
+				string logPath = Application.persistentDataPath + "/" + Console.settings.logFile;
+				using(StreamWriter file = new StreamWriter(logPath,true)){
 					file.WriteLine("-----------------------");
 					file.WriteLine(DateTime.Now);
 					file.WriteLine("-----------------------");
@@ -514,12 +515,13 @@ namespace Zios{
 				Application.RegisterLogCallback(Console.HandleLog);
 				if(system){return;}
 			}
-			if(Console.settings.logFile != "" && !Application.isWebPlayer){
+			if(Console.settings.allowLogging && !Application.isWebPlayer){
+				string logPath = Application.persistentDataPath + "/" + Console.settings.logFile;
 				string cleanText = text;
 				for(int index=Console.color.Length-1;index>=0;--index){
 					cleanText = cleanText.Replace("^"+index,"").Replace("|","");	
 				}
-				using(StreamWriter file = new StreamWriter(Console.settings.logFile,true)){
+				using(StreamWriter file = new StreamWriter(logPath,true)){
 					file.WriteLine(cleanText);
 				}
 			}
