@@ -7,21 +7,21 @@ public class StateControllerEditor : Editor{
 	private CustomTableElement tableElement;
 	public override void OnInspectorGUI(){
 		if(this.tableElement == null){
-			this.tableElement = new CustomTableElement(target);
+			this.tableElement = new CustomTableElement(this.target);
 		}
 		this.tableElement.Draw();
 		if(this.tableElement.shouldRepaint){
 			this.Repaint();
 		}
 		if(GUI.changed){
-			EditorUtility.SetDirty(target);
+			EditorUtility.SetDirty(this.target);
 		}
 	}
 	public class CustomTableRow : TableRow{
 		public CustomTableRow(string label,bool allowNegative,object target):base(label,allowNegative,target){}
 		public override void PopulateChecks(){
-			StateTable stateTable = (StateTable)this.target;
-			foreach(StateRequirement requirement in stateTable.requirements){
+			var stateRow = (StateRow<StateInterface,StateRequirement<StateInterface>>)this.target;
+			foreach(StateRequirement<StateInterface> requirement in stateRow.requirements){
 				if(requirement.requireOn){
 					this.positiveChecks.Add(requirement.name);
 				}
@@ -31,8 +31,8 @@ public class StateControllerEditor : Editor{
 			}
 		}
 		public override void Toggle(string state){
-			StateTable stateTable = (StateTable)this.target;
-			foreach(StateRequirement requirement in stateTable.requirements){
+			var stateRow = (StateRow<StateInterface,StateRequirement<StateInterface>>)this.target;
+			foreach(StateRequirement<StateInterface> requirement in stateRow.requirements){
 				if(requirement.name.Equals(state)){
 					if(requirement.requireOn){
 						requirement.requireOn = false;
@@ -52,9 +52,9 @@ public class StateControllerEditor : Editor{
 		}
 		public override void CheckContext(){
 			GenericMenu menu = new GenericMenu();
-			StateTable stateTable = (StateTable)this.target;
+			var stateRow = (StateRow<StateInterface,StateRequirement<StateInterface>>)this.target;
 			string label = "End if unusable";
-			if(stateTable.endIfUnusable){
+			if(stateRow.endIfUnusable){
 				label += " ✓";
 			}
 			GUIContent field = new GUIContent(label);
@@ -63,25 +63,25 @@ public class StateControllerEditor : Editor{
 			Event.current.Use();
 		}
 		public void ChangeEndIfUnusable(){
-			StateTable stateTable = (StateTable)this.target;
-			stateTable.endIfUnusable = stateTable.endIfUnusable == false;
+			var stateRow = (StateRow<StateInterface,StateRequirement<StateInterface>>)this.target;
+			stateRow.endIfUnusable = stateRow.endIfUnusable == false;
 		}
 	}
 	public class CustomTableElement : TableTemplate{
 		public CustomTableElement(UnityEngine.Object target):base(target){}
 		public override void CreateHeaders(){
 			this.headers.Add(string.Empty);
-			foreach(StateTable table in ((StateController)target).data){
-				this.headers.Add(table.name);
-				if(table.name.Length > this.labelSize){
-					this.labelSize = table.name.Length;
+			foreach(var row in ((StateController)this.target).table.data){
+				this.headers.Add(row.name);
+				if(row.name.Length > this.labelSize){
+					this.labelSize = row.name.Length;
 				}
 			}
 		}
 		public override void CreateItems(){
 			this.tableItems = new List<TableRow>();
-			foreach(StateTable stateTable in ((StateController)target).data){
-				this.tableItems.Add(new CustomTableRow(stateTable.name,true,stateTable));
+			foreach(var stateRow in ((StateController)this.target).table.data){
+				this.tableItems.Add(new CustomTableRow(stateRow.name,true,stateRow));
 			}
 		}
 	}
