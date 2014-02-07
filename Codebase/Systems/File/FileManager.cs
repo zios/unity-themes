@@ -63,6 +63,15 @@ public static class FileManager{
 		#endif
 		return "";
 	}
+	public static string GetGUID(string name,bool showWarnings=true){
+		FileData file = FileManager.Find(name,showWarnings);
+		#if UNITY_EDITOR 
+		if(file != null && Application.isEditor){
+			return file.GetGUID();
+		}
+		#endif
+		return "";
+	}
 	public static T GetAsset<T>(string name,bool showWarnings=true){
 		FileData file = FileManager.Find(name,showWarnings);
 		if(file != null){return file.GetAsset<T>();}
@@ -91,6 +100,14 @@ public class FileData{
 		}
 		#endif
 		return default(T);
+	}
+	public string GetGUID(){
+		#if UNITY_EDITOR
+		if(Application.isEditor){
+			return AssetDatabase.AssetPathToGUID(this.GetAssetPath());
+		}
+		#endif
+		return "";
 	}
 	public string GetAssetPath(){
 		return this.path.Substring(this.path.IndexOf("Assets"));

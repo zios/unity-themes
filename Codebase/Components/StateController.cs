@@ -3,24 +3,23 @@ using System;
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
-#if UNITY_EDITOR 
-using UnityEditor;
-#endif
 [ExecuteInEditMode][AddComponentMenu("Zios/Component/General/State Controller")]
 public class StateController : MonoBehaviour{
-	public List<StateTable> data = new List<StateTable>();
-	public List<Component> actions = new List<Component>();
+	public StateTable[] data = new StateTable[0];
+	public List<MonoBehaviour> actions = new List<MonoBehaviour>();
 	public void Awake(){
 		Events.Add("UpdateStates",this.UpdateStates);
-		this.UpdateActions();
-		this.UpdateTables();
-		this.UpdateRequirements();
+		if(Application.isEditor){
+			this.UpdateActions();
+			this.UpdateTables();
+			this.UpdateRequirements();
+		}
 	}
 	public void UpdateStates(){
 		foreach(StateTable table in this.data){
 			foreach(StateRequirement requirement in table.requirements){
-				StateMonoBehaviour action = table.self;
-				StateMonoBehaviour target = requirement.target;
+				StateInterface action = table.self;
+				StateInterface target = requirement.target;
 				bool state = target.inUse;
 				bool mismatchOn = requirement.requireOn && !state;
 				bool mismatchOff = requirement.requireOff && state;
@@ -36,61 +35,69 @@ public class StateController : MonoBehaviour{
 	}
 	public void UpdateActions(){
 		this.actions.Clear();
-		Component[] all = this.gameObject.GetComponents<Component>();
-		foreach(Component component in all){
-			bool applicable = component.HasAttribute("usable") && component.HasAttribute("inUse");
-			if(applicable){
-				this.actions.Add(component);
+		MonoBehaviour[] all = this.gameObject.GetComponents<MonoBehaviour>();
+		foreach(MonoBehaviour script in all){
+			if(script is StateInterface){
+				this.actions.Add(script);
 			}
 		}
 		this.actions = this.actions.OrderBy(x=>x.name).ToList();
 	}
 	public void UpdateTables(){
-		foreach(StateTable table in this.data.Copy()){
-			bool actionExists = this.actions.Any(x=>x.GetType().ToString()==table.name);
-			if(!actionExists){
-				this.data.Remove(table);
-				Debug.Log("StateController : Removing old table entry -- " + table.name);
+		List<StateTable> tables = new List<StateTable>(this.data);
+		foreach(StateTable table in tables.Copy()){
+			MonoBehaviour action = this.actions.Find(x=>x.GetGUID()==table.id);
+			if(action == null){
+				tables.Remove(table);
+				string tableInfo = table.name + " [" + table.id + "]";
+				Debug.Log("StateController : Removing old table -- " + tableInfo);
+				continue;
 			}
+			table.name = action.GetType().ToString();
 		}
-		foreach(Component component in this.actions){
-			string name = component.GetType().ToString();
-			bool tableExists = this.data.Any(x=>x.name==name);
-			if(!tableExists){
-				StateTable table = new StateTable(name,component);
-				this.data.Add(table);
+		foreach(MonoBehaviour action in this.actions){
+			string name = action.GetType().ToString();
+			string guid = action.GetGUID();
+			StateTable table = tables.Find(x=>x.id==guid);
+			if(table == null){
+				table = new StateTable(name,guid,action);
+				tables.Add(table);
+				Debug.Log("StateController : Creating table -- " + table.name);
 			}
 			else{
-				StateTable table = this.data.Find(x=>x.name==name);
-				table.self = (StateMonoBehaviour)component;
-				//Debug.Log("StateController : Updating table entry -- " + name);
+				table.name = name;
+				table.self = (StateInterface)action;
+				//Debug.Log("StateController : Updating table -- " + table.name);
 			}
 		}
-		this.data = this.data.OrderBy(x=>x.name).ToList();
+		this.data = tables.OrderBy(x=>x.name).ToArray();
 	}
 	public void UpdateRequirements(){
 		foreach(StateTable table in this.data){
-			foreach(Component component in this.actions){
-				string name = component.GetType().ToString();
-				bool requirementExists = table.requirements.Any(x=>x.name==name);
-				if(!requirementExists){
-					StateRequirement requirement = new StateRequirement(name,component);
-					table.requirements.Add(requirement);
+			List<StateRequirement> requirements = new List<StateRequirement>(table.requirements);
+			foreach(StateRequirement requirement in requirements.Copy()){
+				MonoBehaviour action = this.actions.Find(x=>x.GetGUID()==requirement.id);
+				if(action == null){
+					requirements.Remove(requirement);
+					Debug.Log("StateController : Removing old requirement -- " + requirement.name);
+				}
+			}
+			foreach(MonoBehaviour action in this.actions){
+				string name = action.GetType().ToString();
+				string guid = action.GetGUID();
+				StateRequirement requirement = requirements.Find(x=>x.id==guid);
+				if(requirement == null){
+					requirement = new StateRequirement(name,guid,action);
+					requirements.Add(requirement);
+					Debug.Log("StateController : Creating requirement -- " + table.name + "-" + name);
 				}
 				else{
-					StateRequirement requirement = table.requirements.Find(x=>x.name==name);
-					requirement.target = (StateMonoBehaviour)component;
-					//Debug.Log("StateController : Updating requirement entry -- " + name);
+					requirement.name = name;
+					requirement.target = (StateInterface)action;
+					//Debug.Log("StateController : Updating requirement -- " + table.name + "-" + name);
 				}
 			}
-			foreach(StateRequirement requirement in table.requirements.Copy()){
-				bool actionExists = this.actions.Any(x=>x.GetType().ToString()==requirement.name);
-				if(!actionExists){
-					table.requirements.Remove(requirement);
-					Debug.Log("StateController : Removing old requirement entry -- " + requirement.name);
-				}
-			}
-			table.requirements = table.requirements.OrderBy(x=>x.name).ToList();
+			table.requirements = requirements.OrderBy(x=>x.name).ToArray();
 		}
 	}
 }
@@ -101,9 +108,11 @@ public interface StateInterface{
 	void End();
 }
 [Serializable]
-public class StateMonoBehaviour : MonoBehaviour{
-	public bool usable;
-	public bool inUse;
+public class StateMonoBehaviour : MonoBehaviour,StateInterface{
+	public bool stateUsable;
+	public bool stateInUse;
+	public bool usable{get{return this.stateUsable;}set{this.stateUsable = value;}}
+	public bool inUse{get{return this.stateInUse;}set{this.stateInUse = value;}}
 	public virtual void Use(){}
 	public virtual void End(){}
 	public virtual void Toggle(bool state){}
@@ -112,11 +121,13 @@ public class StateMonoBehaviour : MonoBehaviour{
 public class StateTable{
 	public string name;
 	public bool endIfUnusable = false;
-	public List<StateRequirement> requirements = new List<StateRequirement>();
-	[HideInInspector] public StateMonoBehaviour self;
-	public StateTable(string name,Component component){
+	public StateRequirement[] requirements = new StateRequirement[0];
+	[HideInInspector] public string id;
+	[HideInInspector] public StateInterface self;
+	public StateTable(string name,string guid,MonoBehaviour script){
 		this.name = name;
-		this.self = (StateMonoBehaviour)component;
+		this.id = guid;
+		this.self = (StateInterface)script;
 	}
 }
 [Serializable]
@@ -124,12 +135,13 @@ public class StateRequirement{
 	public string name;
 	public bool requireOn;
 	public bool requireOff;
-	//public string GUID;
-	[HideInInspector] public StateMonoBehaviour target;
-	public StateRequirement(string name,Component component,bool requireOn=false,bool requireOff=false){
+	[HideInInspector] public string id;
+	[HideInInspector] public StateInterface target;
+	public StateRequirement(string name,string guid,MonoBehaviour script,bool requireOn=false,bool requireOff=false){
 		this.name = name;
+		this.id = guid;
 		this.requireOn = requireOn;
 		this.requireOff = requireOff;
-		this.target = (StateMonoBehaviour)component;
+		this.target = (StateInterface)script;
 	}
 }
