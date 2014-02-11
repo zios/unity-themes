@@ -9,7 +9,6 @@ public abstract class TableTemplate{
 	public List<string> headers;
 	public bool shouldRepaint;
 	public float labelSize;
-	public float labelWidth;
 	public GUISkin tableSkin;
 	public GUISkin tableHeaderSkin;
 	public TableTemplate(UnityEngine.Object target){
@@ -20,8 +19,6 @@ public abstract class TableTemplate{
 		this.tableSkin = FileManager.GetAsset<GUISkin>("Table-"+skin+".guiskin");
 		this.tableHeaderSkin = FileManager.GetAsset<GUISkin>("TableHeader-"+skin+".guiskin");
 		this.CreateHeaders();
-		GUI.skin.label.fixedHeight = this.labelSize * 13;
-		this.labelWidth = this.labelSize * 8;
 	}
 	public void Draw(){
 		this.shouldRepaint = false;
@@ -36,7 +33,7 @@ public abstract class TableTemplate{
 		GUI.skin = this.tableSkin;
 		foreach(TableRow item in this.tableItems){
 			EditorGUILayout.BeginHorizontal();
-			item.Draw(headers,this.labelWidth);
+			item.Draw(headers,this.labelSize);
 			if(item.shouldRepaint){
 				this.shouldRepaint = true;
 			}
@@ -49,7 +46,7 @@ public abstract class TableTemplate{
 	}
 	private void CreateHeader(string header,int offset=0){
 		if(header == ""){
-			GUILayout.Space(this.labelWidth);
+			GUILayout.Space(this.labelSize);
 			return;
 		}
 		//float xOffset = (-225) + GUILayoutUtility.GetLastRect().x;
@@ -76,7 +73,7 @@ public abstract class TableRow{
 		this.target = target;
 		this.PopulateChecks();
 	}
-	public void Draw(List<string> headers,float labelWidth){
+	public void Draw(List<string> headers,float labelSize){
 		GUILayout.Label(label);
 		if(GUILayoutUtility.GetLastRect().Contains(Event.current.mousePosition) && Event.current.type == EventType.ContextClick){
 			this.CheckContext();
