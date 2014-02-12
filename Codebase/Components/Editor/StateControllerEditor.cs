@@ -25,12 +25,28 @@ public class StateControllerEditor : Editor{
 			}
 			foreach(StateRow stateRow in stateController.table){
 				TableRow tableRow = this.table.AddRow();
-				tableRow.AddField(stateRow,null,this.OnClickRowLabel);
+				tableRow.AddField(stateRow,this.OnDisplayRowLabel,this.OnClickRowLabel);
 				foreach(StateRequirement requirement in stateRow.requirements){
 					tableRow.AddField(requirement,this.OnDisplayField,this.OnClickField);
 				}
 			}
 		}
+	}
+	public void OnDisplayRowLabel(TableField field){
+		StateRow row = (StateRow)field.target;
+		GUIStyle style = GUI.skin.label;
+		if(row.target != null){
+			if(row.target.usable){
+				style = new GUIStyle(style);
+				style.normal.textColor = Colors.Get("Silver");
+			}
+			if(row.target.inUse){
+				style = new GUIStyle(style);
+				style.normal.textColor = Colors.Get("BoldOrange");
+			}
+		}
+		GUILayout.Label(row.name,style);
+		field.CheckClick();
 	}
 	public void OnDisplayField(TableField field){
 		string value = "";
@@ -41,13 +57,12 @@ public class StateControllerEditor : Editor{
 			style = GUI.skin.GetStyle("buttonOn");
 		}
 		else if(requirement.requireOff){
-			value = "x";
+			value = "X";
 			style = GUI.skin.GetStyle("buttonOff");
 		}
 		if(GUILayout.Button(new GUIContent(value),style)){
 			field.onClick(field);
 		}
-		field.CheckClick();
 	}
 	public void OnClickHeader(TableHeaderItem header){}
 	public void OnClickField(TableField field){

@@ -16,7 +16,7 @@ public class InputState : ActionPart{
 	[NonSerialized] public float intensity;
 	[NonSerialized] public bool held;
 	[NonSerialized] public bool lastHeld;
-	public void Awake(){this.DefaultPriority(5);}
+	public void OnValidate(){this.DefaultPriority(5);}
 	public override void Start(){
 		base.Start();
 		this.action.AddPart(this.alias,this);

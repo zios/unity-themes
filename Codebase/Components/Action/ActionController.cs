@@ -4,12 +4,15 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using Action = Zios.Action;
+using ActionPart = Zios.ActionPart;
 [ExecuteInEditMode][AddComponentMenu("Zios/Component/Action/Action Controller")]
 public class ActionController : StateController{
 	public Action action;
 	public override void Awake(){
+		bool setup = false;
 		if(this.action == null){
 			this.action = this.GetComponent<Action>();
+			setup = true;
 		}
 		if(this.action != null){
 			Events.Add("UpdateParts",this.UpdateStates);
@@ -21,15 +24,32 @@ public class ActionController : StateController{
 				this.UpdateBaseRequirements();
 			}
 		}
+		if(setup){
+			this.UpdateOrder();
+		}
+	}
+	public void UpdateOrder(){
+		Dictionary<StateRow,int> data = new Dictionary<StateRow,int>();	
+		List<StateRow> result = new List<StateRow>();
+		foreach(StateRow row in this.table){
+			if(row.name[0] == '@'){
+				if(row.name == "@Use"){data[row] = 10;}
+				if(row.name == "@End"){data[row] = 20;}
+				continue;
+			}
+			data[row] = ((ActionPart)row.target).priority;
+		}
+		foreach(var item in data.OrderBy(x=>x.Value)){
+			Debug.Log(item.Key + " = " + item.Value);
+			result.Add(item.Key);
+		}
+		this.table = result.ToArray();
 	}
 	public override void UpdateStates(){
-		//Debug.Log("------------");
-		//Debug.Log("Update Parts -- " + this.action.GetType().ToString());
 		foreach(StateRow row in this.table){
 			bool conditionsMet = true;
 			bool isAction = row.name[0] == '@';
 			StateInterface script = isAction ? this.action : row.target;
-			//Debug.Log("  Row = " + row.name);
 			foreach(StateRequirement requirement in row.requirements){
 				StateInterface target = requirement.name[0] == '@' ? this.action : requirement.target;
 				bool state = requirement.name == "@Usable" ? target.usable : target.inUse;
@@ -37,19 +57,12 @@ public class ActionController : StateController{
 				bool mismatchOff = requirement.requireOff && state;
 				bool usable = !(mismatchOn || mismatchOff);
 				if(row.name != "@End"){script.usable = usable;}
-				if(requirement.requireOn || requirement.requireOff){
-					//Debug.Log("     Requirement = " + requirement.name + " = " + usable);
-				}
 				if(!usable){
 					if(script.inUse && !isAction){script.End();}
 					conditionsMet = false;
 					break;
 				}
 			}
-			if(row.name == "@Use"){
-				//Debug.Log("     " + this.action.name + " has conditions met : " + conditionsMet);
-			}
-			//Debug.Log("      ACTIVE = " + this.action.usable);
 			if(conditionsMet && row.name == "@End"){
 				this.action.End();
 			}

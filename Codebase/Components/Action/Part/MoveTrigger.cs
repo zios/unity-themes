@@ -6,7 +6,7 @@ public class MoveTrigger : ActionPart{
 	public MoveType type;
 	public Vector3 amount;
 	public bool scaleByIntensity;
-	public void Awake(){this.DefaultPriority(15);}
+	public void OnValidate(){this.DefaultPriority(15);}
 	public override void Use(){
 		base.Use();
 		Vector3 amount = this.amount;

@@ -5,7 +5,9 @@ public enum ForceType{Absolute,Relative}
 public class ForceTrigger : ActionPart{
 	public ForceType type;
 	public Vector3 amount;
+	public void OnValidate(){this.DefaultPriority(15);}
 	public override void Use(){
+		base.Use();
 		Vector3 amount = this.action.intensity * this.amount;
 		this.gameObject.Call("AddForce",amount);
 	}

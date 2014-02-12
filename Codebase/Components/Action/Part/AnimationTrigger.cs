@@ -8,7 +8,7 @@ public class AnimationTrigger : ActionPart{
 	public float holdDuration = 0;
 	public float speed = 1;
 	public bool speedBasedOnIntensity;
-	public void Awake(){this.DefaultPriority(15);}
+	public void OnValidate(){this.DefaultPriority(15);}
 	public override void Use(){
 		base.Use();
 		if(this.speedBasedOnIntensity){this.speed = this.action.intensity;}
