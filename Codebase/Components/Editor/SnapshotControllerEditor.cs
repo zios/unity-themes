@@ -6,7 +6,7 @@ using System;
 using System.Reflection;
 using Controller = Zios.Snapshot.SnapshotController;
 namespace Zios.Snapshot{
-	[CustomEditor(typeof(Controller))]
+/*	[CustomEditor(typeof(Controller))]
 	public class SnapshotControllerEditor : Editor{
 		private AddAttributeElement addAttribute;
 		private AddEventElement addEvent;
@@ -222,5 +222,5 @@ namespace Zios.Snapshot{
 				}
 			}
 		}
-	}
+	}*/
 }
