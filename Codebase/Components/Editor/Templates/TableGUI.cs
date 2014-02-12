@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 using UnityEditor;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 namespace Zios.Editor{
-	public delegate void OnEvent(TableField field);
+	public delegate void OnRowEvent(TableRow row);
+	public delegate void OnFieldEvent(TableField field);
+	public delegate void OnHeaderEvent(TableHeaderItem headerField);
 	public class TableGUI{
 		public GUISkin tableSkin;
 		public GUISkin tableHeaderSkin;
@@ -16,14 +19,19 @@ namespace Zios.Editor{
 			this.tableSkin = FileManager.GetAsset<GUISkin>("Table-" + skin + ".guiskin");
 			this.tableHeaderSkin = FileManager.GetAsset<GUISkin>("TableHeader-" + skin + ".guiskin");
 		}
+		public static bool CheckRegion(){
+			bool onHover = GUILayoutUtility.GetLastRect().Contains(Event.current.mousePosition);
+			bool onMouseDown = Event.current.type == EventType.MouseDown;
+			return onHover && onMouseDown;
+		}
 		public void SetHeader(bool vertical=false,bool sortable=true){
 			this.header = new TableHeader(vertical,sortable);
 		}
-		public void AddHeader(string label){
-			this.header.items.Add(new TableHeaderItem(label));
+		public void AddHeader(string label,OnHeaderEvent onDisplay=null,OnHeaderEvent onClick=null){
+			this.header.items.Add(new TableHeaderItem(label,onDisplay,onClick));
 		}
-		public TableRow AddRow(){
-			TableRow row = new TableRow();
+		public TableRow AddRow(OnRowEvent onDisplay=null,OnRowEvent onClick=null){
+			TableRow row = new TableRow(onDisplay,onClick);
 			this.rows.Add(row);
 			return row;
 		}
@@ -56,15 +64,20 @@ namespace Zios.Editor{
 		}
 	}
 	public class TableHeaderItem{
+		public static int defaultWidth = 125;
 		public string label;
-		public static int defaultWidth = 8;
-		public TableHeaderItem(string label){
+		public OnHeaderEvent onDisplay;
+		public OnHeaderEvent onClick;
+		public TableHeaderItem(string label,OnHeaderEvent onDisplay=null,OnHeaderEvent onClick=null){
+			this.onDisplay = onDisplay;
+			this.onClick = onClick;
 			this.label = label;
-			if(label.Length * 8 > defaultWidth){
-				TableHeaderItem.defaultWidth = label.Length * 8;
-			}
 		}
 		public void Draw(){
+			if(this.onDisplay != null){
+				this.onDisplay(this);
+				return;
+			}
 			if(label == ""){
 				GUILayout.Space(TableHeaderItem.defaultWidth);
 				return;
@@ -72,21 +85,28 @@ namespace Zios.Editor{
 			//float xOffset = (-225) + GUILayoutUtility.GetLastRect().x;
 			//float yOffset = (-100) + GUILayoutUtility.GetLastRect().y;
 			//GUIUtility.RotateAroundPivot(90,new Vector2(xOffset,yOffset));
-			GUILayout.Label(label,GUI.skin.label);
+			GUILayout.Label(label);
 			//GUIUtility.RotateAroundPivot(-90,new Vector2(xOffset,yOffset));
 		}
 	}
 	public class TableRow{
 		public bool selected;
 		public object target;
+		public OnRowEvent onDisplay;
+		public OnRowEvent onClick;
 		public List<TableField> fields = new List<TableField>();
-		public void AddField(object target,OnEvent onDisplay,OnEvent onClick){
+		public TableRow(OnRowEvent onDisplay=null,OnRowEvent onClick=null){
+			this.onDisplay = onDisplay;
+			this.onClick = onClick;
+		}
+		public void AddField(object target,OnFieldEvent onDisplay=null,OnFieldEvent onClick=null){
 			this.fields.Add(new TableField(target,onDisplay,onClick));
 		}
-		public void AddField(string value,object target,TableFieldType type,OnEvent onClick){
-			this.fields.Add(new TableField(value,target,type,onClick));
-		}
 		public void Draw(){
+			if(this.onDisplay != null){
+				this.onDisplay(this);
+				return;
+			}
 			EditorGUILayout.BeginHorizontal();
 			foreach(TableField field in this.fields){
 				field.Draw();
@@ -96,19 +116,11 @@ namespace Zios.Editor{
 	}
 	public class TableField{
 		public bool selected;
-		public TableFieldType type;
 		public object target;
-		public string value;
-		public OnEvent onDisplay;
-		public OnEvent onClick;
+		public OnFieldEvent onDisplay;
+		public OnFieldEvent onClick;
 		public GUIStyle style;
-		public TableField(string value,object target,TableFieldType type,OnEvent onClick){
-			this.value = value;
-			this.target = target;
-			this.type = type;
-			this.onClick = onClick;
-		}
-		public TableField(object target,OnEvent onDisplay,OnEvent onClick){
+		public TableField(object target,OnFieldEvent onDisplay=null,OnFieldEvent onClick=null){
 			this.target = target;
 			this.onDisplay = onDisplay;
 			this.onClick = onClick;
@@ -116,16 +128,23 @@ namespace Zios.Editor{
 		public void Draw(){
 			if(this.onDisplay != null){
 				this.onDisplay(this);
+				return;
 			}
-			else{
-				if(this.type == TableFieldType.String){
-					GUILayout.Label(this.value);
-					if(GUILayoutUtility.GetLastRect().Contains(Event.current.mousePosition) && Event.current.type == EventType.ContextClick && this.onClick != null){
-						this.onClick(this);
-					}
-				}
+			if(this.target is string || this.target.HasAttribute("name")){
+				string name = this.target is string ? (string)this.target : this.target.GetAttribute<string>("name");
+				GUILayout.Label(name);
+				this.CheckClick();
+			}
+			if(this.target is bool){/*Checkbox;*/}
+			if(this.target.GetType().IsEnum){/*Dropdown*/}
+			if(this.target is Color){/*Color*/}
+			//if(this.target is Switch){}
+		}
+		public void CheckClick(){
+			if(this.onClick == null){return;}
+			if(TableGUI.CheckRegion()){
+				this.onClick(this);
 			}
 		}
 	}
-	public enum TableFieldType{String,Checkbox,Switch,Color};
 }

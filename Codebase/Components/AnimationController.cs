@@ -12,6 +12,7 @@ public class AnimationController : MonoBehaviour{
 	//=====================
 	public void Awake(){
 		Events.Add("SetAnimation",this.OnSet);
+		Events.Add("SetAnimationSpeed",this.OnSetSpeed);
 		Events.Add("SetAnimationHold",this.OnSetHold);
 		Events.Add("PlayAnimation",this.OnPlay);
 		Events.Add("StopAnimation",this.OnStop);
@@ -47,6 +48,11 @@ public class AnimationController : MonoBehaviour{
 		bool state = (bool)values[1];
 		int priority = values.Length > 2 ? (int)values[2] : 1;
 		this.Set(name,state,priority);
+	}
+	public void OnSetSpeed(object [] values){
+		string name = (string)values[0];
+		float speed = (float)values[1];
+		this.SetSpeed(name,speed);
 	}
 	public void OnSetHold(object[] values){
 		float duration = (float)values[0];
@@ -104,6 +110,9 @@ public class AnimationController : MonoBehaviour{
 			return;
 		}
 		this.Stop(name);
+	}
+	public void SetSpeed(string name,float speed){
+		this.animation[name].speed = speed;
 	}
 	public void SetHold(float duration,bool state,string name=""){
 		if(state){

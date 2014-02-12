@@ -3,6 +3,19 @@ using System;
 using System.Collections.Generic;
 public static class GameObjectExtension{
 	//====================
+	// Interface
+	//====================
+	public static Component[] GetComponentsByInterface<T>(this GameObject current){
+		List<Component> results = new List<Component>();
+		Component[] items = current.GetComponentsInChildren<Component>(true);
+		foreach(Component item in items){
+			if(item.GetType().IsAssignableFrom(typeof(T))){
+				results.Add(item);
+			}
+		}
+		return results.ToArray();
+	}
+	//====================
 	// Layers / Tags
 	//====================
 	public static void ReplaceLayer(this GameObject current,string search,string replace){
@@ -87,6 +100,34 @@ public static class GameObjectExtension{
 	//====================
 	// Components
 	//====================
+	public static Component GetComponentInParents(this GameObject current,Type type){
+		Transform node = current.transform.parent;
+		while(node != null){
+			Component component = node.GetComponent(type);
+			if(component != null){return component;}
+			node = node.parent;
+		}
+		return null;
+	}
+	public static T GetComponentInParents<T>(this GameObject current) where T : Component{
+		Transform node = current.transform.parent;
+		while(node != null){
+			T component = node.GetComponent<T>();
+			if(component != null){return component;}
+			node = node.parent;
+		}
+		return null;
+	}
+	public static T[] GetComponentsInParents<T>(this GameObject current) where T : Component{
+		List<T> results = new List<T>();
+		Transform node = current.transform.parent;
+		while(node != null){
+			T[] components = node.GetComponents<T>();
+			foreach(T item in components){results.Add(item);}
+			node = node.parent;
+		}
+		return results.ToArray();
+	}
 	public static void EnableComponents(this GameObject current,params Type[] types){
 		current.ToggleComponents(true,false,types);
 	}
@@ -120,6 +161,9 @@ public static class GameObjectExtension{
 	public static void ToggleAllVisible(this GameObject current,bool state){
 		current.ToggleComponents(state,true,typeof(Renderer));
 	}
+	//====================
+	// Utility
+	//====================
 	public static void MoveTo(this GameObject current,Vector3 location,bool useX=true,bool useY=true,bool useZ=true){
 		Vector3 position = current.transform.position;
 		if(useX){position.x = location.x;}

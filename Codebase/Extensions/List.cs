@@ -5,6 +5,11 @@ public static class ListExtension{
 	public static List<T> Copy<T>(this IEnumerable<T> current){
 		return new List<T>(current);
 	}
+	public static void Move<T>(this List<T> current,int index,int newIndex) where T : class{
+		T item = current[index];
+		current.Remove(item);
+		current.Insert(newIndex,item);
+	}
 	public static List<T> Shuffle<T>(this IList<T> current){ 
 		List<T> copy = current.Copy();
 		System.Random random = new System.Random();  

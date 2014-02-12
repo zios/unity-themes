@@ -1,4 +1,7 @@
 public static class IntExtension{
+	public static int Modulus(this int current,int max){
+		return (((current % max) + max) % max);
+	}
 	public static bool Contains(this int current,int mask){
 		int bits = 1<<current;
 		return (mask & bits) == bits;

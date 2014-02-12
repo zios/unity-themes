@@ -1,5 +1,6 @@
 using UnityEngine;
 namespace Zios{
+	[AddComponentMenu("")]
 	public class Instance : MonoBehaviour{
 		public PoolPrefab prefab;
 		public bool free = true;

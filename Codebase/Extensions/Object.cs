@@ -35,6 +35,14 @@ public static class ObjectExtension{
 		bool hasField = current.GetType().GetField(name) != null;
 		return hasProperty || hasField;
 	} 
+	public static T GetAttribute<T>(this object current,string name){
+		Type type = current.GetType();
+		PropertyInfo property = type.GetProperty(name);
+		FieldInfo field = type.GetField(name);
+		if(property != null){return (T)property.GetValue(current,null);}
+		if(field != null){return (T)field.GetValue(current);}
+		return default(T);
+	} 
 	public static List<string> ListAttributes(this object current,List<Type> limitTypes = null){
 		List<string> attributes = new List<string>();
 		foreach(FieldInfo field in current.GetType().GetFields()){
