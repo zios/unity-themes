@@ -5,9 +5,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Action = Zios.Action;
 using ActionPart = Zios.ActionPart;
+[RequireComponent(typeof(Action))]
 [ExecuteInEditMode][AddComponentMenu("Zios/Component/Action/Action Controller")]
 public class ActionController : StateController{
 	public Action action;
+	public override void Reset(){
+		this.action = null;
+		base.Reset();
+	}
 	public override void Awake(){
 		bool setup = false;
 		if(this.action == null){
@@ -40,7 +45,6 @@ public class ActionController : StateController{
 			data[row] = ((ActionPart)row.target).priority;
 		}
 		foreach(var item in data.OrderBy(x=>x.Value)){
-			Debug.Log(item.Key + " = " + item.Value);
 			result.Add(item.Key);
 		}
 		this.table = result.ToArray();
@@ -56,7 +60,8 @@ public class ActionController : StateController{
 				bool mismatchOn = requirement.requireOn && !state;
 				bool mismatchOff = requirement.requireOff && state;
 				bool usable = !(mismatchOn || mismatchOff);
-				if(row.name != "@End"){script.usable = usable;}
+				if(row.name == "@Use"){script.ready = usable;}
+				else if(row.name != "@End"){script.usable = usable;}
 				if(!usable){
 					if(script.inUse && !isAction){script.End();}
 					conditionsMet = false;

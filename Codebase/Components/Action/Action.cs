@@ -3,7 +3,7 @@ using Zios;
 using System;
 using System.Collections.Generic;
 namespace Zios{
-	[AddComponentMenu("")]
+	[AddComponentMenu("Zios/Component/Action/Basic")]
 	public class Action : StateMonoBehaviour{
 		static public Dictionary<GameObject,bool> dirty = new Dictionary<GameObject,bool>();
 		public Dictionary<string,ActionPart> parts = new Dictionary<string,ActionPart>();
@@ -21,11 +21,12 @@ namespace Zios{
 		}
 		public virtual void FixedUpdate(){
 			if(Action.dirty[this.gameObject]){
-				this.owner.Call("UpdateStates");
-				this.gameObject.Call("UpdateParts");
 				this.SetDirty(false);
+				ActionPart.dirty[this] = false;
+				this.owner.Call("UpdateStates");
+				this.owner.CallChildren("UpdateParts");
 			}
-			if(this.usable){this.Use();}
+			if(this.usable && this.ready){this.Use();}
 		}
 		public void SetDirty(bool state){Action.dirty[this.gameObject] = state;}
 		public void AddPart(string name,ActionPart part){this.parts[name] = part;}
@@ -49,7 +50,7 @@ namespace Zios{
 	public class ActionPart : StateMonoBehaviour{
 		static public Dictionary<Action,bool> dirty = new Dictionary<Action,bool>();
 		[NonSerialized] public Action action;
-		public int priority = -1;
+		[HideInInspector] public int priority = -1;
 		public override string GetInterfaceType(){return "ActionPart";}
 		public virtual void Start(){
 			this.action = this.GetComponent<Action>();
@@ -59,8 +60,8 @@ namespace Zios{
 		}
 		public virtual void FixedUpdate(){
 			if(ActionPart.dirty[this.action]){
-				this.gameObject.Call("UpdateParts");
 				this.SetDirty(false);
+				this.gameObject.Call("UpdateParts");
 			}
 			if(this.usable){this.Use();}
 		}

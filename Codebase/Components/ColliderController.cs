@@ -16,6 +16,7 @@ public class CollisionData{
 		this.isSource = isSource;
 	}
 }
+[RequireComponent(typeof(Collider))]
 [AddComponentMenu("Zios/Component/Physics/Collider Controller")]
 public class ColliderController : MonoBehaviour{
 	static public Dictionary<GameObject,ColliderController> instances = new Dictionary<GameObject,ColliderController>();

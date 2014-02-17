@@ -182,7 +182,7 @@ namespace Zios{
 			Console.AddCvar("consoleFontSize",Console.settings,"logFontSize","Console Font size",Console.help[0]);
 			Console.AddCvar("consoleSize",Console.settings,"height","Console Height percent",Console.help[1]);
 			Console.AddCvar("consoleSpeed",Console.settings,"speed","Console Speed",Console.help[2]);
-			Console.AddCvar("consoleFLineSize",Console.settings,"logLineSize","Console Line size",Console.help[6]);
+			Console.AddCvar("consoleLineSize",Console.settings,"logLineSize","Console Line size",Console.help[6]);
 			Console.AddCvar("consoleLogFile",Console.settings,"logFile","Console Log name");
 			Console.AddCvar("consoleConigFile",Console.settings,"configFile","Console Config name");
 			Console.AddKeyword("consoleListFonts",Console.ListConsoleFonts,0,Console.help[4]);

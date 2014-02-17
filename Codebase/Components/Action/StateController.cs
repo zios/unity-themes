@@ -7,6 +7,13 @@ using System.Collections.Generic;
 public class StateController : MonoBehaviour{
 	public StateRow[] table = new StateRow[0];
 	public List<StateInterface> scripts = new List<StateInterface>();
+	public Dictionary<string,List<StateInterface>> duplicates = new Dictionary<string,List<StateInterface>>();
+	public virtual void Reset(){
+		this.table = new StateRow[0];
+		this.Awake();
+	}
+	public virtual void OnValidate(){this.Awake();}
+	public virtual void OnEnable(){this.Awake();}
 	public virtual void Awake(){
 		Events.Add("UpdateStates",this.UpdateStates);
 		if(Application.isEditor){
@@ -27,6 +34,7 @@ public class StateController : MonoBehaviour{
 				bool mismatchOn = requirement.requireOn && !state;
 				bool mismatchOff = requirement.requireOff && state;
 				script.usable = !(mismatchOn || mismatchOff);
+				script.ready = script.usable;
 				if(!script.usable){
 					if(row.endIfUnusable && script.inUse){
 						script.End();
@@ -38,7 +46,8 @@ public class StateController : MonoBehaviour{
 	}
 	public virtual void UpdateScripts(string stateType="State"){
 		this.scripts.Clear();
-		MonoBehaviour[] all = this.gameObject.GetComponentsInChildren<MonoBehaviour>();
+		this.duplicates.Clear();
+		MonoBehaviour[] all = this.gameObject.GetComponentsInChildren<MonoBehaviour>(true);
 		foreach(MonoBehaviour script in all){
 			if(script is StateInterface){
 				StateInterface common = (StateInterface)script;
@@ -50,6 +59,20 @@ public class StateController : MonoBehaviour{
 				}
 			}
 		}
+		foreach(StateInterface script in this.scripts){
+			List<StateInterface> entries = this.scripts.FindAll(x=>x.id==script.id);
+			if(entries.Count > 1){
+				foreach(StateInterface entry in entries){
+					if(!this.duplicates.ContainsKey(entry.id)){
+						this.duplicates[entry.id] = new List<StateInterface>();
+					}
+					if(!this.duplicates[entry.id].Contains(entry)){
+						this.duplicates[entry.id].Add(entry);
+						Debug.LogWarning("Duplicate ID [" + entry.id + "] = " + entry.alias);
+					}
+				}
+			}
+		}
 		this.scripts = this.scripts.Distinct().ToList();
 	}
 	public virtual void UpdateRows(params string[] ignore){
@@ -58,7 +81,6 @@ public class StateController : MonoBehaviour{
 		this.RemoveUnmatched<StateRow>(rows,ignore);
 		this.AddUpdate<StateRow>(rows);
 		this.RemoveNull<StateRow>(rows,ignore);
-		//if(this.table.Length == 0){rows.OrderBy(x=>x.name);}
 		this.table = rows.ToArray();
 	}
 	public virtual void UpdateRequirements(params string[] ignore){
@@ -68,8 +90,16 @@ public class StateController : MonoBehaviour{
 			this.RemoveUnmatched<StateRequirement>(requirements,ignore);
 			this.AddUpdate<StateRequirement>(requirements);
 			this.RemoveNull<StateRequirement>(requirements,ignore);
-			//if(row.requirements.Length == 0){requirements.OrderBy(x=>x.name);}
 			row.requirements = requirements.ToArray();
+		}
+	}
+	public virtual void RepairRow(StateRow row){
+		row.id = row.target.id = Guid.NewGuid().ToString();
+		foreach(StateRow entry in this.table){
+			if(entry.target == row.target){entry.id = entry.target.id = row.target.id;}
+			foreach(StateRequirement requirement in entry.requirements){
+				if(requirement.target == row.target){requirement.id = requirement.target.id = row.target.id;}
+			}
 		}
 	}
 	// =============================
@@ -118,6 +148,9 @@ public class StateController : MonoBehaviour{
 		foreach(StateInterface script in this.scripts){
 			string name = script.alias == "" ? script.GetType().ToString() : script.alias;
 			T item = items.Find(x=>x.id==script.id);
+			if(item != null && this.scripts.FindAll(x=>x.id==item.id).Count > 1){
+				item = items.Find(x=>x.name==name);
+			}
 			if(item == null){
 				item = new T();
 				item.Setup(name,script,this);
@@ -137,6 +170,7 @@ public interface StateInterface{
 	string GetInterfaceType();
 	string alias{get;set;}
 	string id{get;set;}
+	bool ready{get;set;}
 	bool usable{get;set;}
 	bool inUse{get;set;}
 	void Use();
@@ -145,11 +179,13 @@ public interface StateInterface{
 [Serializable]
 public class StateMonoBehaviour : MonoBehaviour,StateInterface{
 	public string stateAlias;
-	public bool stateUsable;
-	public bool stateInUse;
+	[HideInInspector] public bool stateReady;
+	[HideInInspector] public bool stateUsable;
+	[HideInInspector] public bool stateInUse;
 	[HideInInspector] public string stateID = Guid.NewGuid().ToString();
 	public string id{get{return this.stateID;}set{this.stateID = value;}}
 	public string alias{get{return this.stateAlias;}set{this.stateAlias = value;}}
+	public bool ready{get{return this.stateReady;}set{this.stateReady = value;}}
 	public bool usable{get{return this.stateUsable;}set{this.stateUsable = value;}}
 	public bool inUse{get{return this.stateInUse;}set{this.stateInUse = value;}}	
 	public virtual string GetInterfaceType(){return "State";}

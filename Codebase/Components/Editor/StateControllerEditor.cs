@@ -1,18 +1,30 @@
 ﻿using UnityEngine;
 using UnityEditor;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Zios.Editor;
 [CustomEditor(typeof(StateController))]
 public class StateControllerEditor : Editor{
+	private Transform autoSelect;
 	private TableGUI table = new TableGUI();
 	public void OnEnable(){
 		this.BuildTable();
 	}
+	public void OnDisable(){
+		if(this.autoSelect != null){
+			Selection.activeTransform = this.autoSelect;
+			this.autoSelect = null;
+		}
+	}
 	public override void OnInspectorGUI(){
+		/*PropertyModification[] modifications = PrefabUtility.GetPropertyModifications(((StateController)this.target));
+		if(modifications.Length > 0){
+			EditorGUILayout.HelpBox("Prefab changes must be applied for accurate table.",MessageType.Warning);
+		}*/
 		this.table.Draw(); 
 		if(GUI.changed){
-			EditorUtility.SetDirty(target);
+			EditorUtility.SetDirty(this.target);
 		}
 	}
 	public void BuildTable(bool force=false){
@@ -33,8 +45,10 @@ public class StateControllerEditor : Editor{
 		}
 	}
 	public void OnDisplayRowLabel(TableField field){
+		StateController controller = (StateController)this.target;
 		StateRow row = (StateRow)field.target;
 		GUIStyle style = GUI.skin.label;
+		GUIContent content = new GUIContent(row.name,(string)row.id);
 		if(row.target != null){
 			if(row.target.usable){
 				style = new GUIStyle(style);
@@ -44,8 +58,19 @@ public class StateControllerEditor : Editor{
 				style = new GUIStyle(style);
 				style.normal.textColor = Colors.Get("BoldOrange");
 			}
+			if(controller.duplicates.ContainsKey(row.id)){
+				style = new GUIStyle(style);
+				style.normal.textColor = Colors.Get("BoldRed");
+				string matches = "";
+				foreach(StateInterface script in controller.duplicates[row.id]){
+					matches += script.alias + ", ";
+				}
+				matches = matches.TrimRight(", ");
+				content.text = "(!) " + content.text;
+				content.tooltip = "Duplicate ID (" + matches + ").  Click to generate new.";
+			}
 		}
-		GUILayout.Label(row.name,style);
+		GUILayout.Label(content,style);
 		field.CheckClick();
 	}
 	public void OnDisplayField(TableField field){
@@ -78,10 +103,24 @@ public class StateControllerEditor : Editor{
 		if(state == 2){requirement.requireOff = true;}
 	}
 	public void OnClickRowLabel(TableField field){
-		if(Event.current.button == 0){}
+		StateController controller = (StateController)this.target;
+		StateRow stateRow = (StateRow)field.target;
+		if(Event.current.button == 0){
+			if(controller.duplicates.ContainsKey(stateRow.id)){
+				string question = "Are you sure you wish to generate a new GUID for the " + stateRow.name + " element?";
+				if(EditorUtility.DisplayDialog("Generate ID",question,"Yes","No")){
+					controller.RepairRow(stateRow);
+					controller.Awake();
+					EditorUtility.SetDirty(controller);
+					EditorUtility.SetDirty((MonoBehaviour)(stateRow.target));
+					EditorUtility.SetDirty(((MonoBehaviour)this.target).gameObject);
+					this.autoSelect = Selection.activeTransform;
+					Selection.activeTransform = null;
+				}
+			}
+		}
 		if(Event.current.button == 1){
 			GenericMenu menu = new GenericMenu();
-			StateRow stateRow = (StateRow)field.target;
 			string label = "End if unusable";
 			if(stateRow.endIfUnusable){
 				label = "✓ " + label;
