@@ -10,7 +10,6 @@ namespace Zios.Editor{
 	public class TableGUI{
 		public GUISkin tableSkin;
 		public GUISkin tableHeaderSkin;
-		public GUISkin tableHeaderVerticalSkin;
 		public bool verticalHeader;
 		public int width = -1;
 		public int height = -1;
@@ -20,7 +19,6 @@ namespace Zios.Editor{
 			string skin = EditorGUIUtility.isProSkin ? "Dark" : "Light";
 			this.tableSkin = FileManager.GetAsset<GUISkin>("Table-" + skin + ".guiskin");
 			this.tableHeaderSkin = FileManager.GetAsset<GUISkin>("TableHeader-" + skin + ".guiskin");
-			this.tableHeaderVerticalSkin = FileManager.GetAsset<GUISkin>("TableHeaderVertical-" + skin + ".guiskin");
 		}
 		public static bool CheckRegion(){
 			bool onHover = GUILayoutUtility.GetLastRect().Contains(Event.current.mousePosition);
@@ -38,10 +36,20 @@ namespace Zios.Editor{
 			this.rows.Add(row);
 			return row;
 		}
+		public static RectOffset rotateOffset(RectOffset rectOffset){
+			int left = rectOffset.left;
+			int right = rectOffset.right;
+			int top = rectOffset.top;
+			int bottom = rectOffset.bottom;
+			rectOffset.left = bottom;
+			rectOffset.right = top;
+			rectOffset.top = right;
+			rectOffset.bottom = left;
+			return rectOffset;
+		}
 		public void Draw(){
 			EditorGUILayout.BeginVertical();
-			if(this.verticalHeader){GUI.skin = this.tableHeaderVerticalSkin;}
-			else{GUI.skin = this.tableHeaderSkin;}
+			GUI.skin = this.tableHeaderSkin;
 			this.header.Draw(this.verticalHeader);
 			GUI.skin = this.tableSkin;
 			foreach(TableRow row in this.rows){
@@ -60,30 +68,23 @@ namespace Zios.Editor{
 			this.items = new List<TableHeaderItem>();
 		}
 		public void Draw(bool isVertical){
+			GUIStyle style = GUI.skin.label;
 			if(isVertical){
-				EditorGUILayout.BeginHorizontal();
-				this.items[0].Draw();
-				float xOffset = 320+ GUILayoutUtility.GetLastRect().x;
-				float yOffset = 195+GUILayoutUtility.GetLastRect().y;
-				Vector2 pivotPoint = new Vector2(xOffset,yOffset);
-				EditorGUILayout.BeginVertical();
-				foreach(TableHeaderItem item in this.items){
-					GUIUtility.RotateAroundPivot(-90,pivotPoint);
-					if(item.label != ""){
-						item.Draw();
-					}
-					GUIUtility.RotateAroundPivot(90,pivotPoint); 
-				}
-				EditorGUILayout.EndVertical();
-				EditorGUILayout.EndHorizontal();
+				style = new GUIStyle(style);
+				float width = style.fixedWidth;
+				float height = style.fixedHeight;
+				style.fixedWidth = height;
+				style.fixedHeight = width;
+				style.margin = TableGUI.rotateOffset(style.margin);
+				style.padding = TableGUI.rotateOffset(style.padding);
+				style.wordWrap = false;
+				style.alignment = TextAnchor.MiddleLeft;
 			}
-			else{
-				EditorGUILayout.BeginHorizontal();
-				foreach(TableHeaderItem item in this.items){
-					item.Draw();
-				}
-				EditorGUILayout.EndHorizontal();
+			EditorGUILayout.BeginHorizontal();
+			foreach(TableHeaderItem item in this.items){
+				item.Draw(style, isVertical);
 			}
+			EditorGUILayout.EndHorizontal();
 		}
 	}
 	public class TableHeaderItem{
@@ -96,16 +97,27 @@ namespace Zios.Editor{
 			this.onClick = onClick;
 			this.label = label;
 		}
-		public void Draw(){
+		public void Draw(GUIStyle style, bool verticalHeader){
 			if(this.onDisplay != null){
 				this.onDisplay(this);
 				return;
 			}
 			if(label == ""){
 				GUILayout.Space(TableHeaderItem.defaultWidth);
+				GUILayout.Space(3);
 				return;
 			}
-			GUILayout.Label(label);
+			if(verticalHeader){
+				GUILayout.Label("",GUI.skin.label);
+				Rect last = GUILayoutUtility.GetLastRect();
+				Vector2 pivotPoint = last.center;
+				GUIUtility.RotateAroundPivot(-90,pivotPoint);
+				Rect position = new Rect(last.x - (7*last.width/2)+2,last.y + (7*last.height/16)-3,0,0);
+				GUI.Label(position, label, style);
+				GUIUtility.RotateAroundPivot(90,pivotPoint); 
+			}else{
+				GUILayout.Label(label, style);
+			}
 		}
 	}
 	public class TableRow{
