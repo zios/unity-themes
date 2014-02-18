@@ -12,6 +12,7 @@ GameObject:
   - 114: {fileID: 11400004}
   - 114: {fileID: 11400002}
   - 114: {fileID: 11400000}
+  - 114: {fileID: 11400008}
   m_Layer: 0
   m_Name: UseAction
   m_TagString: Untagged
@@ -41,19 +42,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37ca93e416b14114ca8f34a2d06a06cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateAlias: Input
+  stateAlias: Down
+  stateReady: 0
   stateUsable: 0
   stateInUse: 0
   stateID: 68e207c8-fc08-4893-b05f-fc319bb60eec
   priority: 5
-  type: 1
-  requirement: 0
-  range: 0
-  key: P1-Button1
-  controlActionIntensity: 1
-  heldDuringIntensity: 1
+  type: 0
+  requirement: 1
+  range: 1
+  key: '*-Vertical'
+  controlActionIntensity: 0
+  heldDuringIntensity: 0
   requireOwnership: 0
-  zeroOnActionEnd: 1
+  zeroOnActionEnd: 0
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -66,15 +68,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateAlias: Animation
+  stateReady: 0
   stateUsable: 0
   stateInUse: 0
   stateID: 9d82a07b-f851-4e93-88a2-c9815ad8b12c
   priority: 15
-  animationName: Use
+  animationName: Crouch
   animationPriority: -1
   holdDuration: -1
   speed: 1
-  speedBasedOnIntensity: 1
+  speedBasedOnIntensity: 0
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -86,10 +89,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6a5365a236805842985225b566116a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateAlias: UseAction
+  stateAlias: Crouching
+  stateReady: 0
   stateUsable: 0
   stateInUse: 0
-  stateID: 
+  stateID: 6e3604dc-cfe7-4712-bf46-f564f6af658a
   intensity: 1
 --- !u!114 &11400006
 MonoBehaviour:
@@ -103,19 +107,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   table:
-  - name: Input
+  - name: Down
     controller: {fileID: 11400006}
     id: 68e207c8-fc08-4893-b05f-fc319bb60eec
     endIfUnusable: 0
     requirements:
     - name: '@Usable'
       controller: {fileID: 11400006}
-      id: a13ac70b-b061-431b-a9eb-1addb6ec68a3
+      id: 6e3604dc-cfe7-4712-bf46-f564f6af658a
       requireOn: 0
       requireOff: 0
     - name: '@InUse'
       controller: {fileID: 11400006}
-      id: a13ac70b-b061-431b-a9eb-1addb6ec68a3
+      id: 6e3604dc-cfe7-4712-bf46-f564f6af658a
       requireOn: 0
       requireOff: 0
     - name: Animation
@@ -123,9 +127,44 @@ MonoBehaviour:
       id: 9d82a07b-f851-4e93-88a2-c9815ad8b12c
       requireOn: 0
       requireOff: 0
-    - name: Input
+    - name: Down
       controller: {fileID: 11400006}
       id: 68e207c8-fc08-4893-b05f-fc319bb60eec
+      requireOn: 0
+      requireOff: 0
+    - name: Horizontal
+      controller: {fileID: 11400006}
+      id: b9b5655c-3278-41f6-bc15-f6db9422708c
+      requireOn: 0
+      requireOff: 0
+  - name: Horizontal
+    controller: {fileID: 11400006}
+    id: b9b5655c-3278-41f6-bc15-f6db9422708c
+    endIfUnusable: 0
+    requirements:
+    - name: '@Usable'
+      controller: {fileID: 11400006}
+      id: 6e3604dc-cfe7-4712-bf46-f564f6af658a
+      requireOn: 0
+      requireOff: 0
+    - name: '@InUse'
+      controller: {fileID: 11400006}
+      id: 6e3604dc-cfe7-4712-bf46-f564f6af658a
+      requireOn: 0
+      requireOff: 0
+    - name: Animation
+      controller: {fileID: 11400006}
+      id: 9d82a07b-f851-4e93-88a2-c9815ad8b12c
+      requireOn: 0
+      requireOff: 0
+    - name: Down
+      controller: {fileID: 11400006}
+      id: 68e207c8-fc08-4893-b05f-fc319bb60eec
+      requireOn: 0
+      requireOff: 0
+    - name: Horizontal
+      controller: {fileID: 11400006}
+      id: b9b5655c-3278-41f6-bc15-f6db9422708c
       requireOn: 0
       requireOff: 0
   - name: '@Use'
@@ -136,7 +175,7 @@ MonoBehaviour:
     - name: '@Usable'
       controller: {fileID: 11400006}
       id: a13ac70b-b061-431b-a9eb-1addb6ec68a3
-      requireOn: 0
+      requireOn: 1
       requireOff: 0
     - name: '@InUse'
       controller: {fileID: 11400006}
@@ -148,11 +187,16 @@ MonoBehaviour:
       id: 9d82a07b-f851-4e93-88a2-c9815ad8b12c
       requireOn: 0
       requireOff: 0
-    - name: Input
+    - name: Down
       controller: {fileID: 11400006}
       id: 68e207c8-fc08-4893-b05f-fc319bb60eec
       requireOn: 1
       requireOff: 0
+    - name: Horizontal
+      controller: {fileID: 11400006}
+      id: b9b5655c-3278-41f6-bc15-f6db9422708c
+      requireOn: 0
+      requireOff: 1
   - name: Animation
     controller: {fileID: 11400006}
     id: 9d82a07b-f851-4e93-88a2-c9815ad8b12c
@@ -173,9 +217,14 @@ MonoBehaviour:
       id: 9d82a07b-f851-4e93-88a2-c9815ad8b12c
       requireOn: 0
       requireOff: 0
-    - name: Input
+    - name: Down
       controller: {fileID: 11400006}
       id: 68e207c8-fc08-4893-b05f-fc319bb60eec
+      requireOn: 0
+      requireOff: 0
+    - name: Horizontal
+      controller: {fileID: 11400006}
+      id: b9b5655c-3278-41f6-bc15-f6db9422708c
       requireOn: 0
       requireOff: 0
   - name: '@End'
@@ -198,12 +247,42 @@ MonoBehaviour:
       id: 9d82a07b-f851-4e93-88a2-c9815ad8b12c
       requireOn: 0
       requireOff: 0
-    - name: Input
+    - name: Down
       controller: {fileID: 11400006}
       id: 68e207c8-fc08-4893-b05f-fc319bb60eec
       requireOn: 0
       requireOff: 1
+    - name: Horizontal
+      controller: {fileID: 11400006}
+      id: b9b5655c-3278-41f6-bc15-f6db9422708c
+      requireOn: 0
+      requireOff: 0
   action: {fileID: 11400004}
+--- !u!114 &11400008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37ca93e416b14114ca8f34a2d06a06cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateAlias: Horizontal
+  stateReady: 0
+  stateUsable: 0
+  stateInUse: 0
+  stateID: b9b5655c-3278-41f6-bc15-f6db9422708c
+  priority: 5
+  type: 0
+  requirement: 0
+  range: 0
+  key: '*-Horizontal'
+  controlActionIntensity: 0
+  heldDuringIntensity: 0
+  requireOwnership: 0
+  zeroOnActionEnd: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

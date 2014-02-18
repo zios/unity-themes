@@ -5,12 +5,12 @@ using System.Collections.Generic;
 [AddComponentMenu("Zios/Component/Animation/Animation Controller")]
 [Serializable]
 public class AnimationData{
-	[HideInInspector] public string name;
-	public int priority = 0;
+	public string name;
+	public int priority = -1;
 	public float holdDuration = -1;
 	[NonSerialized] public bool active;
 	[NonSerialized] public float holdTime = -1;
-	public AnimationData(string name,int priority=0,float hold=-1){
+	public AnimationData(string name,int priority=-1,float hold=-1){
 		this.name = name;
 		this.priority = priority;
 		this.holdDuration = hold;
@@ -29,7 +29,7 @@ public class AnimationController : MonoBehaviour{
 	public void OnValidate(){
 		foreach(AnimationState state in this.animation){
 			if(this.animations.Find(x=>x.name==state.name) == null){
-				AnimationData data = new AnimationData(state.name);
+				AnimationData data = new AnimationData(state.name,this.defaultPriority);
 				this.animations.Add(data);
 			}
 		}
@@ -59,7 +59,7 @@ public class AnimationController : MonoBehaviour{
 				}
 			}
 		}
-		if(!this.animation.isPlaying){
+		if(this.current.Count == 0){
 			this.Play(this.defaultAnimation);
 		}
 	}

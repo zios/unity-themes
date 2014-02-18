@@ -9,7 +9,7 @@ public class StateControllerEditor : Editor{
 	private Transform autoSelect;
 	private TableGUI table = new TableGUI();
 	public void OnEnable(){
-		this.BuildTable(true);
+		this.BuildTable();
 	}
 	public void OnDisable(){
 		if(this.autoSelect != null){
@@ -23,9 +23,7 @@ public class StateControllerEditor : Editor{
 			EditorGUILayout.HelpBox("Prefab changes must be applied for accurate table.",MessageType.Warning);
 		}*/
 		this.table.Draw(); 
-		if(GUI.changed){
-			EditorUtility.SetDirty(this.target);
-		}
+		EditorUtility.SetDirty(this.target);
 	}
 	public void BuildTable(bool verticalHeader=false, bool force=false){
 		StateController stateController = (StateController)this.target;
