@@ -9,7 +9,7 @@ public class StateControllerEditor : Editor{
 	private Transform autoSelect;
 	private TableGUI table = new TableGUI();
 	public void OnEnable(){
-		this.BuildTable();
+		this.BuildTable(true);
 	}
 	public void OnDisable(){
 		if(this.autoSelect != null){
@@ -27,10 +27,11 @@ public class StateControllerEditor : Editor{
 			EditorUtility.SetDirty(this.target);
 		}
 	}
-	public void BuildTable(bool force=false){
+	public void BuildTable(bool verticalHeader=false, bool force=false){
 		StateController stateController = (StateController)this.target;
 		if(force || (stateController != null && stateController.table != null)){
 			this.table = new TableGUI();
+			this.table.verticalHeader = verticalHeader;
 			this.table.AddHeader("");
 			foreach(StateRequirement requirement in stateController.table[0].requirements){
 				this.table.AddHeader(requirement.name,null,this.OnClickHeader);
@@ -70,6 +71,10 @@ public class StateControllerEditor : Editor{
 				content.tooltip = "Duplicate ID (" + matches + ").  Click to generate new.";
 			}
 		}
+		if(field.selected){
+			style = new GUIStyle(style);
+			style.normal = style.active;	
+		}
 		GUILayout.Label(content,style);
 		field.CheckClick();
 	}
@@ -85,12 +90,17 @@ public class StateControllerEditor : Editor{
 			value = "X";
 			style = GUI.skin.GetStyle("buttonOff");
 		}
+		if(field.selected){
+			style = new GUIStyle(style);
+			style.normal = style.active;	
+		}
 		if(GUILayout.Button(new GUIContent(value),style)){
 			field.onClick(field);
 		}
 	}
 	public void OnClickHeader(TableHeaderItem header){}
 	public void OnClickField(TableField field){
+		//field.selected = true;
 		int state = 0;
 		StateRequirement requirement = (StateRequirement)field.target;
 		if(requirement.requireOn){state = 1;}
@@ -103,6 +113,7 @@ public class StateControllerEditor : Editor{
 		if(state == 2){requirement.requireOff = true;}
 	}
 	public void OnClickRowLabel(TableField field){
+		//field.selected = true;
 		StateController controller = (StateController)this.target;
 		StateRow stateRow = (StateRow)field.target;
 		if(Event.current.button == 0){
