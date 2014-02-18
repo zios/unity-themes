@@ -41,10 +41,10 @@ namespace Zios.Editor{
 			int right = rectOffset.right;
 			int top = rectOffset.top;
 			int bottom = rectOffset.bottom;
-			rectOffset.left = bottom;
-			rectOffset.right = top;
-			rectOffset.top = right;
-			rectOffset.bottom = left;
+			rectOffset.left = top;
+			rectOffset.right = bottom;
+			rectOffset.top = left;
+			rectOffset.bottom = right;
 			return rectOffset;
 		}
 		public void Draw(){
@@ -78,7 +78,7 @@ namespace Zios.Editor{
 				style.margin = TableGUI.rotateOffset(style.margin);
 				style.padding = TableGUI.rotateOffset(style.padding);
 				style.wordWrap = false;
-				style.alignment = TextAnchor.MiddleLeft;
+				style.alignment = TextAnchor.MiddleRight;
 			}
 			EditorGUILayout.BeginHorizontal();
 			foreach(TableHeaderItem item in this.items){
@@ -111,10 +111,10 @@ namespace Zios.Editor{
 				GUILayout.Label("",GUI.skin.label);
 				Rect last = GUILayoutUtility.GetLastRect();
 				Vector2 pivotPoint = last.center;
-				GUIUtility.RotateAroundPivot(-90,pivotPoint);
-				Rect position = new Rect(last.x - (7*last.width/2)+2,last.y + (7*last.height/16)-3,0,0);
+				GUIUtility.RotateAroundPivot(90,pivotPoint);
+				Rect position = new Rect(last.x - (7*last.width/2)+1,last.y + (7*last.height/16)+2,0,0);
 				GUI.Label(position, label, style);
-				GUIUtility.RotateAroundPivot(90,pivotPoint); 
+				GUIUtility.RotateAroundPivot(-90,pivotPoint); 
 			}else{
 				GUILayout.Label(label, style);
 			}

@@ -9,7 +9,7 @@ public class StateControllerEditor : Editor{
 	private Transform autoSelect;
 	private TableGUI table = new TableGUI();
 	public void OnEnable(){
-		this.BuildTable();
+		this.BuildTable(true);
 	}
 	public void OnDisable(){
 		if(this.autoSelect != null){
