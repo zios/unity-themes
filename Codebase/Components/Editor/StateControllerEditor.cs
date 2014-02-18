@@ -25,7 +25,7 @@ public class StateControllerEditor : Editor{
 		this.table.Draw(); 
 		EditorUtility.SetDirty(this.target);
 	}
-	public void BuildTable(bool verticalHeader=false, bool force=false){
+	public void BuildTable(bool verticalHeader=false,bool force=false){
 		StateController stateController = (StateController)this.target;
 		if(force || (stateController != null && stateController.table != null)){
 			this.table = new TableGUI();
@@ -78,14 +78,17 @@ public class StateControllerEditor : Editor{
 	}
 	public void OnDisplayField(TableField field){
 		string value = "";
+		field.empty = true;
 		StateRequirement requirement = (StateRequirement)field.target;
 		GUIStyle style = GUI.skin.button;
 		if(requirement.requireOn){
 			value = "✓";
+			field.empty = false;
 			style = GUI.skin.GetStyle("buttonOn");
 		}
 		else if(requirement.requireOff){
 			value = "X";
+			field.empty = false;
 			style = GUI.skin.GetStyle("buttonOff");
 		}
 		if(field.selected){
@@ -96,19 +99,28 @@ public class StateControllerEditor : Editor{
 			field.onClick(field);
 		}
 	}
-	public void OnClickHeader(TableHeaderItem header){}
+	public void OnClickHeader(TableHeaderItem header){
+	}
 	public void OnClickField(TableField field){
 		//field.selected = true;
 		int state = 0;
 		StateRequirement requirement = (StateRequirement)field.target;
-		if(requirement.requireOn){state = 1;}
-		if(requirement.requireOff){state = 2;}
+		if(requirement.requireOn){
+			state = 1;
+		}
+		if(requirement.requireOff){
+			state = 2;
+		}
 		state += Event.current.button == 0 ? 1 : -1;
 		state = state.Modulus(3);
 		requirement.requireOn = false;
 		requirement.requireOff = false;
-		if(state == 1){requirement.requireOn = true;}
-		if(state == 2){requirement.requireOff = true;}
+		if(state == 1){
+			requirement.requireOn = true;
+		}
+		if(state == 2){
+			requirement.requireOff = true;
+		}
 	}
 	public void OnClickRowLabel(TableField field){
 		//field.selected = true;
@@ -148,15 +160,23 @@ public class StateControllerEditor : Editor{
 		StateRow row = (StateRow)target;
 		List<StateRow> table = new List<StateRow>(row.controller.table);
 		int index = table.IndexOf(row);
-		if(index == 0 && amount < 0){return;}
-		if(index > table.Count - 2 && amount > 0){return;}
+		if(index == 0 && amount < 0){
+			return;
+		}
+		if(index > table.Count - 2 && amount > 0){
+			return;
+		}
 		table.Move(index,index + amount);
 		row.controller.table = table.ToArray();
 		EditorUtility.SetDirty(row.controller);
 		this.BuildTable(true);
 	}
-	public void MoveItemUp(object target){this.MoveItem(-1,target);}
-	public void MoveItemDown(object target){this.MoveItem(1,target);}
+	public void MoveItemUp(object target){
+		this.MoveItem(-1,target);
+	}
+	public void MoveItemDown(object target){
+		this.MoveItem(1,target);
+	}
 	public void ChangeEndIfUnusable(object target){
 		StateRow row = (StateRow)target;
 		row.endIfUnusable = !row.endIfUnusable;
