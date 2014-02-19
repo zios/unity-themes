@@ -53,11 +53,6 @@ namespace Zios.Editor{
 		public void Draw(){
 			EditorGUILayout.BeginVertical();
 			GUI.skin = this.tableHeaderSkin;
-			string prefix = this.showEmpty ? "☗ " : "☖ ";
-			GUIStyle buttonStyle = GUI.skin.button;
-			if(GUILayout.Button(prefix + "Show empty rows/columns",buttonStyle)){
-				this.showEmpty = !this.showEmpty;
-			}
 			this.header.emptyColumns = this.emptyColumns;
 			this.header.showEmpty = this.showEmpty;
 			this.header.Draw(this.verticalHeader);
@@ -71,6 +66,14 @@ namespace Zios.Editor{
 				}
 			}
 			EditorGUILayout.EndVertical();
+			GUI.skin = this.tableHeaderSkin;
+			string prefix = this.showEmpty ? "☑ " : "☐ ";
+			GUIStyle buttonStyle = new GUIStyle(GUI.skin.button);
+			buttonStyle.normal = this.showEmpty ? GUI.skin.button.active : buttonStyle.normal;
+			buttonStyle.hover = this.showEmpty ? GUI.skin.button.active : buttonStyle.hover;
+			if(GUILayout.Button(prefix + "Show empty rows/columns",buttonStyle)){
+				this.showEmpty = !this.showEmpty;
+			}
 			this.CalculateEmpty();
 		}
 		public void CalculateEmpty(){
@@ -234,12 +237,9 @@ namespace Zios.Editor{
 				GUILayout.Label(name);
 				this.CheckClick();
 			}
-			if(this.target is bool){/*Checkbox;*/
-			}
-			if(this.target.GetType().IsEnum){/*Dropdown*/
-			}
-			if(this.target is Color){/*Color*/
-			}
+			if(this.target is bool){/*Checkbox;*/}
+			if(this.target.GetType().IsEnum){/*Dropdown*/}
+			if(this.target is Color){/*Color*/}
 			//if(this.target is Switch){}
 		}
 		public void CheckClick(){
