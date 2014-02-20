@@ -29,7 +29,7 @@ public class StateControllerEditor : Editor{
 		StateController stateController = (StateController)this.target;
 		if(force || (stateController != null && stateController.table != null)){
 			this.table = new TableGUI();
-			this.table.verticalHeader = verticalHeader;
+			this.table.SetHeader(verticalHeader,true,CompareRows);
 			this.table.AddHeader("");
 			foreach(StateRequirement requirement in stateController.table[0].requirements){
 				this.table.AddHeader(requirement.name,null,this.OnClickHeader);
@@ -121,6 +121,27 @@ public class StateControllerEditor : Editor{
 		if(state == 2){
 			requirement.requireOff = true;
 		}
+	}
+	public int CompareRows(object target1,object target2){
+		if(target1 is StateRequirement && target2 is StateRequirement){
+			StateRequirement requirement1 = (StateRequirement)target1;
+			StateRequirement requirement2 = (StateRequirement)target2;
+			if(requirement1.requireOn && !requirement2.requireOn){
+				return -1;
+			}
+			if(!requirement1.requireOn && requirement2.requireOn){
+				return 1;
+			}
+			if(!requirement1.requireOn && !requirement2.requireOn){
+				if(requirement1.requireOff && !requirement2.requireOff){
+					return -1;
+				}
+				if(!requirement1.requireOff && requirement2.requireOff){
+					return 1;
+				}
+			}
+		}
+		return 0;
 	}
 	public void OnClickRowLabel(TableField field){
 		//field.selected = true;

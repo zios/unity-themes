@@ -10,7 +10,6 @@ namespace Zios.Editor{
 	public class TableGUI{
 		public GUISkin tableSkin;
 		public GUISkin tableHeaderSkin;
-		public bool verticalHeader;
 		public int width = -1;
 		public int height = -1;
 		public TableHeader header = new TableHeader(false,true);
@@ -18,18 +17,22 @@ namespace Zios.Editor{
 		public List<int> emptyRows = new List<int>();
 		public List<int> emptyColumns = new List<int>();
 		public List<TableRow> rows = new List<TableRow>();
+		public OnCompareEvent onCompare;
+		public SortOptions sortOptions;
 		public TableGUI(){
 			string skin = EditorGUIUtility.isProSkin ? "Dark" : "Light";
 			this.tableSkin = FileManager.GetAsset<GUISkin>("Table-" + skin + ".guiskin");
 			this.tableHeaderSkin = FileManager.GetAsset<GUISkin>("TableHeader-" + skin + ".guiskin");
+			this.sortOptions = new SortOptions();
 		}
 		public static bool CheckRegion(){
 			bool onHover = GUILayoutUtility.GetLastRect().Contains(Event.current.mousePosition);
 			bool onMouseDown = Event.current.type == EventType.MouseDown;
 			return onHover && onMouseDown;
 		}
-		public void SetHeader(bool vertical=false,bool sortable=true){
+		public void SetHeader(bool vertical=false,bool sortable=true,OnCompareEvent onCompare = null){
 			this.header = new TableHeader(vertical,sortable);
+			this.onCompare = onCompare;
 		}
 		public void AddHeader(string label,OnHeaderEvent onDisplay=null,OnHeaderEvent onClick=null){
 			this.header.items.Add(new TableHeaderItem(label,onDisplay,onClick));
@@ -50,12 +53,23 @@ namespace Zios.Editor{
 			rectOffset.bottom = right;
 			return rectOffset;
 		}
+		public int CompareRows(object row1,object row2){
+			object target1 = ((TableRow)row1).fields[this.sortOptions.fieldNumber].target;
+			object target2 = ((TableRow)row2).fields[this.sortOptions.fieldNumber].target;
+			int result = onCompare(target1,target2);
+			return result;
+		}
 		public void Draw(){
 			EditorGUILayout.BeginVertical();
 			GUI.skin = this.tableHeaderSkin;
 			this.header.emptyColumns = this.emptyColumns;
 			this.header.showEmpty = this.showEmpty;
-			this.header.Draw(this.verticalHeader);
+			this.header.Draw();
+			if(onCompare != null && this.header.sortColumn > -1 && !this.emptyColumns.Contains(this.header.sortColumn - 1)){
+				this.sortOptions.Setup(this.header.sortColumn);
+				this.rows.Sort(this.sortOptions,CompareRows);
+				this.header.sortColumn = -1;
+			}
 			GUI.skin = this.tableSkin;
 			foreach(TableRow row in this.rows){
 				row.emptyColumns = this.emptyColumns;
@@ -111,15 +125,16 @@ namespace Zios.Editor{
 		public bool vertical;
 		public bool sortable;
 		public bool showEmpty = true;
+		public int sortColumn = -1;
 		public List<int> emptyColumns = new List<int>();
 		public TableHeader(bool vertical,bool sortable){
 			this.vertical = vertical;
 			this.sortable = sortable;
 			this.items = new List<TableHeaderItem>();
 		}
-		public void Draw(bool isVertical){
+		public void Draw(){
 			GUIStyle style = GUI.skin.label;
-			if(isVertical){
+			if(vertical){
 				style = new GUIStyle(style);
 				float width = style.fixedWidth;
 				float height = style.fixedHeight;
@@ -134,10 +149,14 @@ namespace Zios.Editor{
 			foreach(TableHeaderItem item in this.items){
 				int headerIndex = this.items.IndexOf(item);
 				if(headerIndex == 0 || (!this.emptyColumns.Contains(headerIndex - 1) || this.showEmpty)){
-					item.Draw(style,isVertical);
+					item.onSort = SortItems;
+					item.Draw(style,vertical);
 				}
 			}
 			EditorGUILayout.EndHorizontal();
+		}
+		public void SortItems(TableHeaderItem headerField){
+			this.sortColumn = this.items.IndexOf(headerField);
 		}
 	}
 	public class TableHeaderItem{
@@ -145,6 +164,7 @@ namespace Zios.Editor{
 		public string label;
 		public OnHeaderEvent onDisplay;
 		public OnHeaderEvent onClick;
+		public OnHeaderEvent onSort;
 		public TableHeaderItem(string label,OnHeaderEvent onDisplay=null,OnHeaderEvent onClick=null){
 			this.onDisplay = onDisplay;
 			this.onClick = onClick;
@@ -162,6 +182,12 @@ namespace Zios.Editor{
 			}
 			if(verticalHeader){
 				GUILayout.Label("",GUI.skin.label);
+				if(TableGUI.CheckRegion()){
+					this.onSort(this);
+					if(this.onClick != null){
+						this.onClick(this);
+					}
+				}
 				Rect last = GUILayoutUtility.GetLastRect();
 				Vector2 pivotPoint = last.center;
 				GUIUtility.RotateAroundPivot(90,pivotPoint);
@@ -171,6 +197,12 @@ namespace Zios.Editor{
 			}
 			else{
 				GUILayout.Label(label,style);
+				if(TableGUI.CheckRegion()){
+					this.onSort(this);
+					if(this.onClick != null){
+						this.onClick(this);
+					}
+				}
 			}
 		}
 	}
@@ -237,9 +269,12 @@ namespace Zios.Editor{
 				GUILayout.Label(name);
 				this.CheckClick();
 			}
-			if(this.target is bool){/*Checkbox;*/}
-			if(this.target.GetType().IsEnum){/*Dropdown*/}
-			if(this.target is Color){/*Color*/}
+			if(this.target is bool){/*Checkbox;*/
+			}
+			if(this.target.GetType().IsEnum){/*Dropdown*/
+			}
+			if(this.target is Color){/*Color*/
+			}
 			//if(this.target is Switch){}
 		}
 		public void CheckClick(){
