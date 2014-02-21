@@ -23,7 +23,7 @@ public static class FileManager{
 		string[] folderEntries = Directory.GetDirectories(directory);
 		foreach(string filePath in fileEntries){
 			string path = filePath.Replace("\\","/");
-			string type = path.Substring(filePath.LastIndexOf(".")+1);
+			string type = path.Substring(filePath.LastIndexOf(".")+1).ToLower();
 			if(!files.ContainsKey(type)){
 				files[type] = new List<FileData>();
 			}
@@ -34,25 +34,30 @@ public static class FileManager{
 			Scan(folderPath);
 		}
 	}
-	public static FileData Find(string name,bool showWarnings=true){
+	public static FileData[] FindAll(string name,bool ignoreCase=true,bool showWarnings=true){
 		if(name == ""){
 			Debug.LogWarning("FileManager : No path given for search.");
 			return null;
 		}
-		int period = name.LastIndexOf(".");
-		int slash = name.LastIndexOf("/") + 1;
-		string fileName = slash == -1 ? name : name.Substring(slash,period-slash);
-		string type = name.Substring(period+1);
-		string path = name.Substring(0,period).TrimRight(fileName);
+		string fileName = Path.GetFileName(name);
+		string type = Path.GetExtension(name).Trim(".").ToLower();
+		string path = Path.GetDirectoryName(name);
+		bool wildcard = fileName[0] == '*';
+		List<FileData> results = new List<FileData>();
 		if(files.ContainsKey(type)){
 			foreach(FileData file in files[type]){
-				bool correctPath = slash != -1 ? file.path.Contains(path) : true;
-				if(correctPath && file.name.Contains(fileName)){
-					return file;
+				bool correctPath = path != "" ? file.path.Matches(path,ignoreCase) : true;
+				if(correctPath && (file.name.Matches(fileName,ignoreCase) || wildcard)){
+					results.Add(file);
 				}
 			}
 		}
-		if(showWarnings){Debug.LogWarning("FileManager : Path [" + name + "] could not be found.");}
+		if(results.Count == 0 && showWarnings){Debug.LogWarning("FileManager : Path [" + name + "] could not be found.");}
+		return results.ToArray();
+	}
+	public static FileData Find(string name,bool ignoreCase=true,bool showWarnings=true){
+		FileData[] results = FileManager.FindAll(name,ignoreCase,showWarnings);
+		if(results.Length > 0){return results[0];}
 		return null;
 	}
 	public static string GetPath(object item){

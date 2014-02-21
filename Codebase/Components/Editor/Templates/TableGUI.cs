@@ -9,9 +9,6 @@ namespace Zios.Editor{
 	public delegate void OnHeaderEvent(TableHeaderItem headerField);
 	public class TableGUI{
 		public GUISkin tableSkin;
-		public GUISkin tableHeaderSkin;
-		public int width = -1;
-		public int height = -1;
 		public TableHeader header = new TableHeader(false,true);
 		public bool showEmpty = true;
 		public List<int> emptyRows = new List<int>();
@@ -22,7 +19,6 @@ namespace Zios.Editor{
 		public TableGUI(){
 			string skin = EditorGUIUtility.isProSkin ? "Dark" : "Light";
 			this.tableSkin = FileManager.GetAsset<GUISkin>("Table-" + skin + ".guiskin");
-			this.tableHeaderSkin = FileManager.GetAsset<GUISkin>("TableHeader-" + skin + ".guiskin");
 			this.sortOptions = new SortOptions();
 		}
 		public static bool CheckRegion(){
@@ -53,6 +49,15 @@ namespace Zios.Editor{
 			rectOffset.bottom = right;
 			return rectOffset;
 		}
+		public static GUIStyle RotateStyle(GUIStyle style){
+			float width = style.fixedWidth;
+			float height = style.fixedHeight;
+			style.fixedWidth = height;
+			style.fixedHeight = width;
+			style.margin = TableGUI.RotateOffset(style.margin);
+			style.padding = TableGUI.RotateOffset(style.padding);
+			return style;
+		}
 		public int CompareRows(object row1,object row2){
 			object target1 = ((TableRow)row1).fields[this.sortOptions.fieldNumber].target;
 			object target2 = ((TableRow)row2).fields[this.sortOptions.fieldNumber].target;
@@ -60,8 +65,8 @@ namespace Zios.Editor{
 			return result;
 		}
 		public void Draw(){
+			GUI.skin = this.tableSkin;
 			EditorGUILayout.BeginVertical();
-			GUI.skin = this.tableHeaderSkin;
 			this.header.emptyColumns = this.emptyColumns;
 			this.header.showEmpty = this.showEmpty;
 			this.header.Draw();
@@ -70,7 +75,6 @@ namespace Zios.Editor{
 				this.rows.Sort(this.sortOptions,CompareRows);
 				this.header.sortColumn = -1;
 			}
-			GUI.skin = this.tableSkin;
 			foreach(TableRow row in this.rows){
 				row.emptyColumns = this.emptyColumns;
 				row.showEmpty = this.showEmpty;
@@ -80,11 +84,10 @@ namespace Zios.Editor{
 				}
 			}
 			EditorGUILayout.EndVertical();
-			GUI.skin = this.tableHeaderSkin;
 			string prefix = this.showEmpty ? "☑ " : "☐ ";
-			GUIStyle buttonStyle = new GUIStyle(GUI.skin.button);
-			buttonStyle.normal = this.showEmpty ? GUI.skin.button.active : buttonStyle.normal;
-			buttonStyle.hover = this.showEmpty ? GUI.skin.button.active : buttonStyle.hover;
+			GUIStyle buttonStyle = new GUIStyle(GUI.skin.toggle);
+			buttonStyle.normal = this.showEmpty ? GUI.skin.toggle.active : buttonStyle.normal;
+			buttonStyle.hover = this.showEmpty ? GUI.skin.toggle.active : buttonStyle.hover;
 			if(GUILayout.Button(prefix + "Show empty rows/columns",buttonStyle)){
 				this.showEmpty = !this.showEmpty;
 			}
@@ -133,18 +136,8 @@ namespace Zios.Editor{
 			this.items = new List<TableHeaderItem>();
 		}
 		public void Draw(){
-			GUIStyle style = GUI.skin.label;
-			if(vertical){
-				style = new GUIStyle(style);
-				float width = style.fixedWidth;
-				float height = style.fixedHeight;
-				style.fixedWidth = height;
-				style.fixedHeight = width;
-				style.margin = TableGUI.RotateOffset(style.margin);
-				style.padding = TableGUI.RotateOffset(style.padding);
-				style.wordWrap = false;
-				style.alignment = TextAnchor.MiddleRight;
-			}
+			GUIStyle style = new GUIStyle(GUI.skin.label);
+			if(!this.vertical){style = TableGUI.RotateStyle(style);}
 			EditorGUILayout.BeginHorizontal();
 			foreach(TableHeaderItem item in this.items){
 				int headerIndex = this.items.IndexOf(item);
@@ -154,13 +147,13 @@ namespace Zios.Editor{
 				}
 			}
 			EditorGUILayout.EndHorizontal();
+			GUILayout.Space(-(100-style.fixedWidth)/2);
 		}
 		public void SortItems(TableHeaderItem headerField){
 			this.sortColumn = this.items.IndexOf(headerField);
 		}
 	}
 	public class TableHeaderItem{
-		public static int defaultWidth = 125;
 		public string label;
 		public OnHeaderEvent onDisplay;
 		public OnHeaderEvent onClick;
@@ -175,33 +168,31 @@ namespace Zios.Editor{
 				this.onDisplay(this);
 				return;
 			}
+			float halfWidth = style.fixedHeight/2;
+			float halfHeight = style.fixedWidth/2;
 			if(label == ""){
-				GUILayout.Space(TableHeaderItem.defaultWidth);
-				GUILayout.Space(3);
+				GUILayout.Space(style.fixedWidth + halfWidth + 1);
 				return;
 			}
 			if(verticalHeader){
-				GUILayout.Label("",GUI.skin.label);
-				if(TableGUI.CheckRegion()){
-					this.onSort(this);
-					if(this.onClick != null){
-						this.onClick(this);
-					}
-				}
+				GUIStyle empty = new GUIStyle(GUI.skin.label);
+				TableGUI.RotateStyle(empty);
+				empty.normal.background = null;
+				GUILayout.Label("",empty);
 				Rect last = GUILayoutUtility.GetLastRect();
 				Vector2 pivotPoint = last.center;
 				GUIUtility.RotateAroundPivot(90,pivotPoint);
-				Rect position = new Rect(last.x - (7 * last.width / 2) + 1,last.y + (7 * last.height / 16) + 2,0,0);
+				Rect position = new Rect(last.x-last.width-halfWidth,last.y+last.height-halfHeight,0,0);
 				GUI.Label(position,label,style);
 				GUIUtility.RotateAroundPivot(-90,pivotPoint); 
 			}
 			else{
 				GUILayout.Label(label,style);
-				if(TableGUI.CheckRegion()){
-					this.onSort(this);
-					if(this.onClick != null){
-						this.onClick(this);
-					}
+			}
+			if(TableGUI.CheckRegion()){
+				this.onSort(this);
+				if(this.onClick != null){
+					this.onClick(this);
 				}
 			}
 		}

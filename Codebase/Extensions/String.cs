@@ -130,8 +130,8 @@ public static class StringExtension{
 		}
 		return current;
 	}
-	public static string Substring(this string current,string start,string end="",int repeatEnd=1,bool ignoreCase=true){
-		int startIndex = current.IndexOf(start,ignoreCase);
+	public static string Cut(this string current,string start="",string end="",bool ignoreCase=true,int repeatEnd=1){
+		int startIndex = start == "" ? 0 : current.IndexOf(start,ignoreCase);
 		if(startIndex != -1){
 			if(end == ""){
 				return current.Substring(startIndex);

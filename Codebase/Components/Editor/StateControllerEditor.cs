@@ -22,6 +22,14 @@ public class StateControllerEditor : Editor{
 		if(modifications.Length > 0){
 			EditorGUILayout.HelpBox("Prefab changes must be applied for accurate table.",MessageType.Warning);
 		}*/
+		this.table.tableSkin.label.fixedWidth = 0;
+		StateController stateController = (StateController)this.target;
+		foreach(StateRow stateRow in stateController.table){
+			int size = (stateRow.name.Length) * this.table.tableSkin.label.fontSize;
+			if(size > this.table.tableSkin.label.fixedWidth){
+				this.table.tableSkin.label.fixedWidth = size;
+			}	
+		}
 		this.table.Draw(); 
 		EditorUtility.SetDirty(this.target);
 	}
