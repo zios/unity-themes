@@ -138,6 +138,7 @@ namespace Zios.Editor{
 		public void Draw(){
 			GUIStyle style = new GUIStyle(GUI.skin.label);
 			if(!this.vertical){style = TableGUI.RotateStyle(style);}
+			GUILayout.Space(10+(100-style.fixedWidth)/2);
 			EditorGUILayout.BeginHorizontal();
 			foreach(TableHeaderItem item in this.items){
 				int headerIndex = this.items.IndexOf(item);
