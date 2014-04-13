@@ -98,4 +98,16 @@ public static class ObjectExtension{
 			}            
 		}
 	}
+	public static Type LoadType(this object current,string typeName){
+		System.Reflection.Assembly[] AS = System.AppDomain.CurrentDomain.GetAssemblies();
+		foreach(var A in AS){
+			System.Type[] types = A.GetTypes();
+			foreach(var T in types){
+				if(T.FullName == typeName){
+					return T;
+				}
+			}
+		}
+		return null;
+	}
 }

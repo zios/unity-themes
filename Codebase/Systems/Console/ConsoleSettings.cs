@@ -1,6 +1,7 @@
 using UnityEngine;
 namespace Zios{
 [AddComponentMenu("Zios/Singleton/Console")]
+	[ExecuteInEditMode]
 	public class ConsoleSettings : MonoBehaviour{
 		public GUISkin skin;
 		public Texture2D background;

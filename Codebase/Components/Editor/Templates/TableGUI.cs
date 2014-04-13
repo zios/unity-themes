@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEditor;
 using System;
 using System.Collections;
@@ -11,6 +11,8 @@ namespace Zios.Editor{
 		public GUISkin tableSkin;
 		public TableHeader header = new TableHeader(false,true);
 		public bool showEmpty = true;
+		public bool showEmptiesButton = true;
+		public string tableTitle;
 		public List<int> emptyRows = new List<int>();
 		public List<int> emptyColumns = new List<int>();
 		public List<TableRow> rows = new List<TableRow>();
@@ -33,8 +35,8 @@ namespace Zios.Editor{
 		public void AddHeader(string label,OnHeaderEvent onDisplay=null,OnHeaderEvent onClick=null){
 			this.header.items.Add(new TableHeaderItem(label,onDisplay,onClick));
 		}
-		public TableRow AddRow(OnRowEvent onDisplay=null,OnRowEvent onClick=null){
-			TableRow row = new TableRow(onDisplay,onClick);
+		public TableRow AddRow(object target = null, OnRowEvent onDisplay=null,OnRowEvent onClick=null){
+			TableRow row = new TableRow(target, onDisplay,onClick);
 			this.rows.Add(row);
 			return row;
 		}
@@ -66,9 +68,14 @@ namespace Zios.Editor{
 		}
 		public void Draw(){
 			GUI.skin = this.tableSkin;
+			GUIStyle style = new GUIStyle(GUI.skin.label);
+			if(this.tableTitle != null && this.tableTitle.Length > 0){
+				GUILayout.Label(tableTitle,style);
+			}
 			EditorGUILayout.BeginVertical();
 			this.header.emptyColumns = this.emptyColumns;
 			this.header.showEmpty = this.showEmpty;
+			this.header.sortOptions = this.sortOptions;
 			this.header.Draw();
 			if(onCompare != null && this.header.sortColumn > -1 && !this.emptyColumns.Contains(this.header.sortColumn - 1)){
 				this.sortOptions.Setup(this.header.sortColumn);
@@ -84,20 +91,22 @@ namespace Zios.Editor{
 				}
 			}
 			EditorGUILayout.EndVertical();
-			string prefix = this.showEmpty ? "☑ " : "☐ ";
-			GUIStyle buttonStyle = new GUIStyle(GUI.skin.toggle);
-			buttonStyle.normal = this.showEmpty ? GUI.skin.toggle.active : buttonStyle.normal;
-			buttonStyle.hover = this.showEmpty ? GUI.skin.toggle.active : buttonStyle.hover;
-			if(GUILayout.Button(prefix + "Show empty rows/columns",buttonStyle)){
-				this.showEmpty = !this.showEmpty;
+			if(showEmptiesButton){
+				string prefix = this.showEmpty ? "☑ " : "☐ ";
+				GUIStyle buttonStyle = new GUIStyle(GUI.skin.toggle);
+				buttonStyle.normal = this.showEmpty ? GUI.skin.toggle.active : buttonStyle.normal;
+				buttonStyle.hover = this.showEmpty ? GUI.skin.toggle.active : buttonStyle.hover;
+				if(GUILayout.Button(prefix + "Show empty rows/columns",buttonStyle)){
+					this.showEmpty = !this.showEmpty;
+				}
+				this.CalculateEmpty();
 			}
-			this.CalculateEmpty();
 		}
 		public void CalculateEmpty(){
 			this.emptyColumns.Clear();
 			this.emptyRows.Clear();
 			List<int> emptyColumnCount = new List<int>();
-			for(int i = 0;i < this.rows.Count;i++){
+			for(int i = 1;i < this.header.items.Count;i++){
 				emptyColumnCount.Add(0);
 			}
 			foreach(TableRow row in this.rows){
@@ -127,7 +136,9 @@ namespace Zios.Editor{
 		public List<TableHeaderItem> items;
 		public bool vertical;
 		public bool sortable;
+		public bool spaced = true;
 		public bool showEmpty = true;
+		public SortOptions sortOptions;
 		public int sortColumn = -1;
 		public List<int> emptyColumns = new List<int>();
 		public TableHeader(bool vertical,bool sortable){
@@ -137,18 +148,29 @@ namespace Zios.Editor{
 		}
 		public void Draw(){
 			GUIStyle style = new GUIStyle(GUI.skin.label);
-			if(!this.vertical){style = TableGUI.RotateStyle(style);}
-			GUILayout.Space(10+(100-style.fixedWidth)/2);
+			if(!this.vertical){
+				style = TableGUI.RotateStyle(style);
+			}
+			if(this.spaced){
+				GUILayout.Space(10 + (100 - style.fixedWidth) / 2);
+			}
 			EditorGUILayout.BeginHorizontal();
 			foreach(TableHeaderItem item in this.items){
 				int headerIndex = this.items.IndexOf(item);
 				if(headerIndex == 0 || (!this.emptyColumns.Contains(headerIndex - 1) || this.showEmpty)){
 					item.onSort = SortItems;
+					item.orientation = "";
+					if(headerIndex == this.sortOptions.fieldNumber){
+						string direction = this.sortOptions.orientation == SortOrientation.Ascending ? "↑" : "↓";
+						item.orientation = " " + direction;
+					}
 					item.Draw(style,vertical);
 				}
 			}
 			EditorGUILayout.EndHorizontal();
-			GUILayout.Space(-(100-style.fixedWidth)/2);
+			if(this.spaced){
+				GUILayout.Space(-(100 - style.fixedWidth) / 2);
+			}
 		}
 		public void SortItems(TableHeaderItem headerField){
 			this.sortColumn = this.items.IndexOf(headerField);
@@ -159,6 +181,7 @@ namespace Zios.Editor{
 		public OnHeaderEvent onDisplay;
 		public OnHeaderEvent onClick;
 		public OnHeaderEvent onSort;
+		public string orientation;
 		public TableHeaderItem(string label,OnHeaderEvent onDisplay=null,OnHeaderEvent onClick=null){
 			this.onDisplay = onDisplay;
 			this.onClick = onClick;
@@ -169,9 +192,9 @@ namespace Zios.Editor{
 				this.onDisplay(this);
 				return;
 			}
-			float halfWidth = style.fixedHeight/2;
-			float halfHeight = style.fixedWidth/2;
-			if(label == ""){
+			float halfWidth = style.fixedHeight / 2;
+			float halfHeight = style.fixedWidth / 2;
+			if(this.label == ""){
 				GUILayout.Space(style.fixedWidth + halfWidth + 1);
 				return;
 			}
@@ -183,12 +206,12 @@ namespace Zios.Editor{
 				Rect last = GUILayoutUtility.GetLastRect();
 				Vector2 pivotPoint = last.center;
 				GUIUtility.RotateAroundPivot(90,pivotPoint);
-				Rect position = new Rect(last.x-last.width-halfWidth,last.y+last.height-halfHeight,0,0);
-				GUI.Label(position,label,style);
+				Rect position = new Rect(last.x - last.width - halfWidth,last.y + last.height - halfHeight,0,0);
+				GUI.Label(position,this.label + this.orientation,style);
 				GUIUtility.RotateAroundPivot(-90,pivotPoint); 
 			}
 			else{
-				GUILayout.Label(label,style);
+				GUILayout.Label(this.label + this.orientation,style);
 			}
 			if(TableGUI.CheckRegion()){
 				this.onSort(this);
@@ -206,12 +229,13 @@ namespace Zios.Editor{
 		public bool showEmpty = true;
 		public List<int> emptyColumns = new List<int>();
 		public List<TableField> fields = new List<TableField>();
-		public TableRow(OnRowEvent onDisplay=null,OnRowEvent onClick=null){
+		public TableRow(object target = null, OnRowEvent onDisplay=null,OnRowEvent onClick=null){
+			this.target = target;
 			this.onDisplay = onDisplay;
 			this.onClick = onClick;
 		}
 		public void AddField(object target,OnFieldEvent onDisplay=null,OnFieldEvent onClick=null){
-			this.fields.Add(new TableField(target,onDisplay,onClick));
+			this.fields.Add(new TableField(target,this.target,onDisplay,onClick));
 		}
 		public void Draw(){
 			if(this.onDisplay != null){
@@ -239,11 +263,13 @@ namespace Zios.Editor{
 		public bool selected;
 		public bool empty;
 		public object target;
+		public object rowTarget;
 		public OnFieldEvent onDisplay;
 		public OnFieldEvent onClick;
 		public GUIStyle style;
-		public TableField(object target,OnFieldEvent onDisplay=null,OnFieldEvent onClick=null){
+		public TableField(object target,object rowTarget, OnFieldEvent onDisplay=null,OnFieldEvent onClick=null){
 			this.target = target;
+			this.rowTarget = rowTarget;
 			this.onDisplay = onDisplay;
 			this.onClick = onClick;
 		}
@@ -258,6 +284,7 @@ namespace Zios.Editor{
 			} 
 			if(this.target is string || this.target.HasAttribute("name")){
 				string name = this.target is string ? (string)this.target : this.target.GetAttribute<string>("name");
+				this.empty = name == null || name.Equals("");
 				GUILayout.Label(name);
 				this.CheckClick();
 			}
