@@ -27,22 +27,31 @@ public static class ObjectExtension{
 			return null;
 		}
 	}
-	public static bool HasMethod(this object current,string name){
-		return current.GetType().GetMethod(name) != null;
-	} 
+	public static bool HasMethod(this object current,string name,BindingFlags flags = BindingFlags.Instance|BindingFlags.Public,Type type = null){
+		Type currentType = type == null ? current.GetType() : type;
+		return currentType.GetMethod(name,flags) != null;
+	}
 	public static bool HasAttribute(this object current,string name){
 		bool hasProperty = current.GetType().GetProperty(name) != null;
 		bool hasField = current.GetType().GetField(name) != null;
 		return hasProperty || hasField;
-	} 
+	}
+	public static MethodInfo GetMethod(this object current,string name,BindingFlags flags = BindingFlags.Instance|BindingFlags.Public,Type type = null){
+		Type currentType = type == null ? current.GetType() : type;
+		return currentType.GetMethod(name,flags);
+	}
 	public static T GetAttribute<T>(this object current,string name){
 		Type type = current.GetType();
 		PropertyInfo property = type.GetProperty(name);
 		FieldInfo field = type.GetField(name);
-		if(property != null){return (T)property.GetValue(current,null);}
-		if(field != null){return (T)field.GetValue(current);}
+		if(property != null){
+			return (T)property.GetValue(current,null);
+		}
+		if(field != null){
+			return (T)field.GetValue(current);
+		}
 		return default(T);
-	} 
+	}
 	public static List<string> ListAttributes(this object current,List<Type> limitTypes = null){
 		List<string> attributes = new List<string>();
 		foreach(FieldInfo field in current.GetType().GetFields()){
@@ -67,16 +76,19 @@ public static class ObjectExtension{
 		}
 		return attributes;
 	}
-	public static List<string> ListMethods(this object current,List<Type> argumentTypes = null){
+	public static List<string> ListMethods(this object current,List<Type> argumentTypes = null,BindingFlags flags = BindingFlags.Instance|BindingFlags.Public,Type type = null){
 		List<string> methods = new List<string>();
-		foreach(MethodInfo method in current.GetType().GetMethods()){
+		Type currentType = type == null ? current.GetType() : type;
+		foreach(MethodInfo method in currentType.GetMethods(flags)){
 			if(argumentTypes != null){
 				ParameterInfo[] parameters = method.GetParameters();
 				bool match = parameters.Length == argumentTypes.Count;
-				for(int i = 0;i < parameters.Length;i++){
-					if(!parameters[i].ParameterType.Equals(argumentTypes[i])){
-						match = false;
-						break;
+				if(match){
+					for(int i = 0;i < parameters.Length;i++){
+						if(!parameters[i].ParameterType.Equals(argumentTypes[i])){
+							match = false;
+							break;
+						}
 					}
 				}
 				if(match){
