@@ -35,8 +35,8 @@ namespace Zios.Editor{
 		public void AddHeader(string label,OnHeaderEvent onDisplay=null,OnHeaderEvent onClick=null){
 			this.header.items.Add(new TableHeaderItem(label,onDisplay,onClick));
 		}
-		public TableRow AddRow(object target = null, OnRowEvent onDisplay=null,OnRowEvent onClick=null){
-			TableRow row = new TableRow(target, onDisplay,onClick);
+		public TableRow AddRow(object target = null,OnRowEvent onDisplay=null,OnRowEvent onClick=null){
+			TableRow row = new TableRow(target,onDisplay,onClick);
 			this.rows.Add(row);
 			return row;
 		}
@@ -68,10 +68,11 @@ namespace Zios.Editor{
 		}
 		public void Draw(){
 			GUI.skin = this.tableSkin;
-			GUIStyle style = new GUIStyle(GUI.skin.label);
+			GUIStyle style = GUI.skin.GetStyle("titleLabel");
 			if(this.tableTitle != null && this.tableTitle.Length > 0){
 				GUILayout.Label(tableTitle,style);
 			}
+			style = GUI.skin.label;
 			EditorGUILayout.BeginVertical();
 			this.header.emptyColumns = this.emptyColumns;
 			this.header.showEmpty = this.showEmpty;
@@ -229,7 +230,7 @@ namespace Zios.Editor{
 		public bool showEmpty = true;
 		public List<int> emptyColumns = new List<int>();
 		public List<TableField> fields = new List<TableField>();
-		public TableRow(object target = null, OnRowEvent onDisplay=null,OnRowEvent onClick=null){
+		public TableRow(object target = null,OnRowEvent onDisplay=null,OnRowEvent onClick=null){
 			this.target = target;
 			this.onDisplay = onDisplay;
 			this.onClick = onClick;
@@ -267,7 +268,7 @@ namespace Zios.Editor{
 		public OnFieldEvent onDisplay;
 		public OnFieldEvent onClick;
 		public GUIStyle style;
-		public TableField(object target,object rowTarget, OnFieldEvent onDisplay=null,OnFieldEvent onClick=null){
+		public TableField(object target,object rowTarget,OnFieldEvent onDisplay=null,OnFieldEvent onClick=null){
 			this.target = target;
 			this.rowTarget = rowTarget;
 			this.onDisplay = onDisplay;

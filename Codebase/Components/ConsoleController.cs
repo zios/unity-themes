@@ -160,32 +160,5 @@ public class ConsoleController : MonoBehaviour{
 			}
 		}
 	}
-	public void populateTest(){
-		ConsoleData a = new ConsoleData(){
-			key = "maxfps2",
-			scopeName = "Zios.Console",
-			methodName = "HandleCvar"
-		};
-		a.ValidateScope(this);
-		a.ValidateMethod();
-		if(this.shortcuts.Count == 0){
-			this.shortcuts.Add(new ConsoleData(){
-				key = "test",
-				shortcut = "TestTheComponent"
-			});
-			this.cvars.Add(new ConsoleData(){
-				key = "maxfps2",
-				scopeName = "UnityEngine.Application",
-				name = "targetFrameRate",
-				help = "Any help to test only",
-				fullName = "Maximum FPS"
-			});
-			keywords.Add(new ConsoleData(){
-				key = "maxfps2",
-				scopeName = "Zios.Console",
-				methodName = "HandleCvar"
-			});
-		}
-	}
 }
 

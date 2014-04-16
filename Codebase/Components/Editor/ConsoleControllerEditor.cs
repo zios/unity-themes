@@ -22,7 +22,7 @@ public class ConsoleControllerEditor : Editor{
 		this.cvarTable.header.spaced = false;
 		this.cvarTable.showEmptiesButton = false;
 		this.cvarTable.tableTitle = "Cvars";
-		shortcutTable = new TableGUI();
+		this.shortcutTable = new TableGUI();
 		this.shortcutTable.SetHeader(false,true,this.CompareRows);
 		this.shortcutTable.header.spaced = false;
 		this.shortcutTable.showEmptiesButton = false;
@@ -33,23 +33,21 @@ public class ConsoleControllerEditor : Editor{
 		this.keywordTable.showEmptiesButton = false;
 		this.keywordTable.tableTitle = "Keywords";
 		this.controller = (ConsoleController)target;
-		this.controller.populateTest();
-		if(!Application.isPlaying){
-			this.BuildTables();
-		}
+		this.BuildTables();
 	}
 	public override void OnInspectorGUI(){
 		this.cvarTable.Draw();
-		if(GUILayout.Button("New Cvar")){
-			CreateCvar();
+		GUIStyle style = GUI.skin.GetStyle("addButton");     
+		if(GUILayout.Button("New Cvar",style)){
+			this.CreateCvar();
 		}
 		this.shortcutTable.Draw();
-		if(GUILayout.Button("New Shortcut")){
-			CreateShortcut();
+		if(GUILayout.Button("New Shortcut",style)){
+			this.CreateShortcut();
 		}
 		this.keywordTable.Draw();
-		if(GUILayout.Button("New Keyword")){
-			CreateKeyword();
+		if(GUILayout.Button("New Keyword",style)){
+			this.CreateKeyword();
 		}
 		this.Repaint();
 		if(GUI.changed){
@@ -87,7 +85,7 @@ public class ConsoleControllerEditor : Editor{
 		}
 	}
 	public void DisplayHeader(TableHeaderItem headerField){
-		GUIStyle style = GUI.skin.customStyles[2];
+		GUIStyle style = GUI.skin.GetStyle("header");
 		GUIContent content = new GUIContent(headerField.label + headerField.orientation);
 		GUILayout.Label(content,style);
 		if(TableGUI.CheckRegion()){
