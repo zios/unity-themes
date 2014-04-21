@@ -38,9 +38,9 @@ public class StateControllerEditor : Editor{
 		if(force || (stateController != null && stateController.table != null)){
 			this.table = new TableGUI();
 			this.table.SetHeader(verticalHeader,true,this.CompareRows);
-			this.table.AddHeader("");
+			this.table.AddHeader("","");
 			foreach(StateRequirement requirement in stateController.table[0].requirements){
-				this.table.AddHeader(requirement.name,null,this.OnClickHeader);
+				this.table.AddHeader(requirement.name,"",null,this.OnClickHeader);
 			}
 			foreach(StateRow stateRow in stateController.table){
 				TableRow tableRow = this.table.AddRow();

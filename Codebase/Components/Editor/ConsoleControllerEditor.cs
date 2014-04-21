@@ -36,16 +36,22 @@ public class ConsoleControllerEditor : Editor{
 		this.BuildTables();
 	}
 	public override void OnInspectorGUI(){
-		this.cvarTable.Draw();
+		if(this.cvarTable.rows.Count > 0){
+			this.cvarTable.Draw();
+		}
 		GUIStyle style = GUI.skin.GetStyle("addButton");     
 		if(GUILayout.Button("New Cvar",style)){
 			this.CreateCvar();
 		}
+		if(this.shortcutTable.rows.Count > 0){
 		this.shortcutTable.Draw();
+		}
 		if(GUILayout.Button("New Shortcut",style)){
 			this.CreateShortcut();
 		}
+		if(this.keywordTable.rows.Count > 0){
 		this.keywordTable.Draw();
+		}
 		if(GUILayout.Button("New Keyword",style)){
 			this.CreateKeyword();
 		}
@@ -55,30 +61,31 @@ public class ConsoleControllerEditor : Editor{
 		}
 	}
 	public void BuildTables(){
-		this.cvarTable.AddHeader("Cvar",this.DisplayHeader);
-		this.cvarTable.AddHeader("Alias",this.DisplayHeader);
-		this.cvarTable.AddHeader("Label",this.DisplayHeader);
-		this.cvarTable.AddHeader("Help",this.DisplayHeader);
-		this.cvarTable.AddHeader("Target",this.DisplayHeader);
-		this.cvarTable.AddHeader("Target Method",this.DisplayHeader);
+		this.cvarTable.AddHeader("Name","The term typed into console.",this.DisplayHeader);
+		this.cvarTable.AddHeader("Full Name","The spaced, pretty full name.",this.DisplayHeader);
+		this.cvarTable.AddHeader("Target Object","The target object scope where attribute is.",this.DisplayHeader);
+		this.cvarTable.AddHeader("Target Attribute","The target attribute from the scope.",this.DisplayHeader);
+		this.cvarTable.AddHeader("Callback","A callback method that occurs after cvar has been get/set.",this.DisplayHeader);
+		this.cvarTable.AddHeader("Help","The help string.",this.DisplayHeader);
 		foreach(ConsoleData data in this.controller.cvars){
 			data.ValidateScope(this.controller);
 			TableRow tableRow = this.cvarTable.AddRow();
 			tableRow.AddField(data.key,this.OnDisplayCvar,this.OnClickCvar);
 		}
-		this.shortcutTable.AddHeader("Shortcut",this.DisplayHeader);
-		this.shortcutTable.AddHeader("Replaced Command",this.DisplayHeader);
+		this.shortcutTable.AddHeader("Replace","The original command.",this.DisplayHeader);
+		this.shortcutTable.AddHeader("With","The shortcut for the command.",this.DisplayHeader);
 		foreach(ConsoleData data in this.controller.shortcuts){
 			TableRow tableRow = this.shortcutTable.AddRow();
 			tableRow.AddField(data.key,this.OnDisplayShortcut,this.OnClickShortcut);
 		}
-		this.keywordTable.AddHeader("Keyword",this.DisplayHeader);
-		this.keywordTable.AddHeader("Target",this.DisplayHeader);
-		this.keywordTable.AddHeader("Target Method",this.DisplayHeader);
-		this.keywordTable.AddHeader("Minimum Parameters",this.DisplayHeader);
-		this.keywordTable.AddHeader("Help",this.DisplayHeader);
+		this.keywordTable.AddHeader("Name","",this.DisplayHeader);
+		this.keywordTable.AddHeader("Target Object","The target object scope where attribute is.",this.DisplayHeader);
+		this.keywordTable.AddHeader("Callback","A callback method that occurs after cvar has been get/set.",this.DisplayHeader);
+		this.keywordTable.AddHeader("Minimum Parameters","",this.DisplayHeader);
+		this.keywordTable.AddHeader("Help","The help string.",this.DisplayHeader);
 		foreach(ConsoleData data in this.controller.keywords){
 			data.ValidateScope(this.controller);
+			data.ValidateAttribute();
 			data.ValidateMethod();
 			TableRow tableRow = this.keywordTable.AddRow();
 			tableRow.AddField(data.key,this.OnDisplayKeyword,this.OnClickKeyword);
@@ -86,7 +93,7 @@ public class ConsoleControllerEditor : Editor{
 	}
 	public void DisplayHeader(TableHeaderItem headerField){
 		GUIStyle style = GUI.skin.GetStyle("header");
-		GUIContent content = new GUIContent(headerField.label + headerField.orientation);
+		GUIContent content = new GUIContent(headerField.label + headerField.orientation, headerField.tooltip);
 		GUILayout.Label(content,style);
 		if(TableGUI.CheckRegion()){
 			headerField.onSort(headerField);
@@ -137,40 +144,24 @@ public class ConsoleControllerEditor : Editor{
 					data.key = newName;
 					field.target = newName;
 				}
-				CheckKeyboard();
+				this.CheckKeyboard();
 			}
 			else{
-				OnDisplayField(field,name,columnNumber);
+				this.OnDisplayField(field,name,columnNumber);
 			}
 			ConsoleData cvarData = this.FindData(newName,this.controller.cvars);
 			columnNumber = 1;
 			if(this.selectedField == field && selectedColumn == columnNumber){
-				cvarData.name = GUILayout.TextField(cvarData.name);
-				CheckKeyboard();
+				cvarData.fullName = GUILayout.TextField(cvarData.fullName);
+				this.CheckKeyboard();
 			}
 			else{
-				OnDisplayField(field,cvarData.name,columnNumber);
+				this.OnDisplayField(field,cvarData.fullName,columnNumber);
 			}
 			columnNumber = 2;
 			if(this.selectedField == field && selectedColumn == columnNumber){
-				cvarData.fullName = GUILayout.TextField(cvarData.fullName);
-				CheckKeyboard();
-			}
-			else{
-				OnDisplayField(field,cvarData.fullName,columnNumber);
-			}
-			columnNumber = 3;
-			if(this.selectedField == field && selectedColumn == columnNumber){
-				cvarData.help = GUILayout.TextField(cvarData.help);
-				CheckKeyboard();
-			}
-			else{
-				OnDisplayField(field,cvarData.help,columnNumber);
-			}
-			columnNumber = 4;
-			if(this.selectedField == field && selectedColumn == columnNumber){
 				cvarData.scopeName = GUILayout.TextField(cvarData.scopeName);
-				CheckKeyboard();
+				this.CheckKeyboard();
 				cvarData.ValidateScope(this.controller);
 			}
 			else{
@@ -181,37 +172,48 @@ public class ConsoleControllerEditor : Editor{
 				else{
 					style = GUI.skin.GetStyle("labelSuccess");
 				}
-				OnDisplayField(field,cvarData.scopeName,columnNumber,style);
+				this.OnDisplayField(field,cvarData.scopeName,columnNumber,style);
 			}
-			columnNumber = 5;
+			columnNumber = 3;
+			if(this.selectedField == field && selectedColumn == columnNumber){
+				cvarData.name = GUILayout.TextField(cvarData.name);
+				this.CheckKeyboard();
+				cvarData.ValidateAttribute();
+			}
+			else{
+				GUIStyle style = GUI.skin.label;
+				if(!cvarData.validName){
+					style = GUI.skin.GetStyle("labelError");
+				}
+				else{
+					style = GUI.skin.GetStyle("labelSuccess");
+				}
+				this.OnDisplayField(field,cvarData.name,columnNumber,style);
+			}
+			columnNumber = 4;
 			this.OnDisplayMethod(cvarData,field,columnNumber);
-			//this.FindData(newName, this.controller.cvars).cvar = cvar;
+			columnNumber = 5;
+			if(this.selectedField == field && selectedColumn == columnNumber){
+				cvarData.help = GUILayout.TextField(cvarData.help);
+				this.CheckKeyboard();
+			}
+			else{
+				this.OnDisplayField(field,cvarData.help,columnNumber);
+			}
 		}
 
 	}
 	private void OnDisplayMethod(ConsoleData data,TableField field,int columnNumber){
 		if(this.selectedField == field && selectedColumn == columnNumber){
-			data.ValidateScope(this.controller);
-			List<string> delegates = data.ListDelegates();
-			int index = 0;
-			if(data.methodName != null && data.methodName.Trim() != ""){
-				index = delegates.IndexOf(data.methodName);
+			if(data.methodName == null){
+				data.methodName = "";
 			}
-			index = EditorGUILayout.Popup(index,delegates.ToArray());
-			data.methodName = delegates[index];
+			data.methodName = GUILayout.TextField(data.methodName);
+			this.CheckKeyboard();
 			data.ValidateMethod();
 		}
 		else{
-			string method = "";
-			if(data.simple != null){
-				method = data.simple.Method.Name;
-			}
-			else if(data.basic != null){
-				method = data.basic.Method.Name;
-			}
-			else if(data.full != null){
-				method = data.full.Method.Name;
-			}
+			string method = data.methodName;
 			if(method == "HandleCvar"){
 				method = "<Default>";
 			}
@@ -222,14 +224,23 @@ public class ConsoleControllerEditor : Editor{
 			else{
 				style = GUI.skin.GetStyle("labelSuccess");
 			}
-			OnDisplayField(field,method,columnNumber,style);
+			this.OnDisplayField(field,method,columnNumber,style);
 		}
 	}
 	public void OnDisplayShortcut(TableField field){
 		if(field.target is string){
 			string name = (string)field.target;
-			string newName = name;
+			ConsoleData shortcutData = this.FindData(name,this.controller.shortcuts);
 			int columnNumber = 0;
+			if(this.selectedField == field && selectedColumn == columnNumber){
+				shortcutData.replace = GUILayout.TextField(shortcutData.replace);
+				this.CheckKeyboard();
+			}
+			else{
+				this.OnDisplayField(field,shortcutData.replace,columnNumber);
+			}
+			string newName = name;
+			columnNumber = 1;
 			if(this.selectedField == field && selectedColumn == columnNumber){
 				newName = GUILayout.TextField(name);
 				if(!name.Equals(newName)){
@@ -237,20 +248,12 @@ public class ConsoleControllerEditor : Editor{
 					data.key = newName;
 					field.target = newName;
 				}
-				CheckKeyboard();
+				this.CheckKeyboard();
 			}
 			else{
-				OnDisplayField(field,name,columnNumber);
+				this.OnDisplayField(field,name,columnNumber);
 			}
-			ConsoleData shortcutData = this.FindData(name,this.controller.shortcuts);
-			columnNumber = 1;
-			if(this.selectedField == field && selectedColumn == columnNumber){
-				shortcutData.shortcut = GUILayout.TextField(shortcutData.shortcut);
-				CheckKeyboard();
-			}
-			else{
-				OnDisplayField(field,shortcutData.shortcut,columnNumber);
-			}
+
 		}
 	}
 	public void OnDisplayKeyword(TableField field){
@@ -265,16 +268,16 @@ public class ConsoleControllerEditor : Editor{
 					data.key = newName;
 					field.target = newName;
 				}
-				CheckKeyboard();
+				this.CheckKeyboard();
 			}
 			else{
-				OnDisplayField(field,name,columnNumber);
+				this.OnDisplayField(field,name,columnNumber);
 			}
 			ConsoleData keywordData = this.FindData(newName,this.controller.keywords);
 			columnNumber = 1;
 			if(this.selectedField == field && selectedColumn == columnNumber){
 				keywordData.scopeName = GUILayout.TextField(keywordData.scopeName);
-				CheckKeyboard();
+				this.CheckKeyboard();
 				keywordData.ValidateScope(this.controller);
 			}
 			else{
@@ -285,17 +288,17 @@ public class ConsoleControllerEditor : Editor{
 				else{
 					style = GUI.skin.GetStyle("labelSuccess");
 				}
-				OnDisplayField(field,keywordData.scopeName,columnNumber,style);
+				this.OnDisplayField(field,keywordData.scopeName,columnNumber,style);
 			}
 			columnNumber = 2;
 			this.OnDisplayMethod(keywordData,field,columnNumber);
 			columnNumber = 3;
 			if(this.selectedField == field && selectedColumn == columnNumber){
 				keywordData.minimumParameters = EditorGUILayout.IntField(keywordData.minimumParameters);
-				CheckKeyboard();
+				this.CheckKeyboard();
 			}
 			else{
-				OnDisplayField(field,keywordData.minimumParameters.ToString(),columnNumber);
+				this.OnDisplayField(field,keywordData.minimumParameters.ToString(),columnNumber);
 			}
 			columnNumber = 4;
 			if(keywordData.help == null){
@@ -303,12 +306,11 @@ public class ConsoleControllerEditor : Editor{
 			}
 			if(this.selectedField == field && selectedColumn == columnNumber){
 				keywordData.help = GUILayout.TextField(keywordData.help);
-				CheckKeyboard();
+				this.CheckKeyboard();
 			}
 			else{
-				OnDisplayField(field,keywordData.help,columnNumber);
+				this.OnDisplayField(field,keywordData.help,columnNumber);
 			}
-			//this.FindData(newName, this.controller.keywords).keyword = callback;
 		}
 	}
 	public void CreateCvar(){
@@ -321,7 +323,7 @@ public class ConsoleControllerEditor : Editor{
 			data.name = "";
 			data.scopeName = "";
 			data.methodName = "";
-			controller.cvars.Add(data);
+			this.controller.cvars.Add(data);
 			TableRow tableRow = this.cvarTable.AddRow();
 			tableRow.AddField(key,this.OnDisplayCvar,this.OnClickCvar);
 		}
@@ -331,8 +333,8 @@ public class ConsoleControllerEditor : Editor{
 		if(this.FindData(key,controller.shortcuts) == null){
 			ConsoleData data = new ConsoleData();
 			data.key = key;
-			data.shortcut = "";
-			controller.shortcuts.Add(data);
+			data.replace = "NEW";
+			this.controller.shortcuts.Add(data);
 			TableRow tableRow = this.shortcutTable.AddRow();
 			tableRow.AddField(key,this.OnDisplayShortcut,this.OnClickShortcut);
 		}
@@ -345,7 +347,7 @@ public class ConsoleControllerEditor : Editor{
 			data.help = "";
 			data.scopeName = "";
 			data.methodName = "";
-			controller.keywords.Add(data);
+			this.controller.keywords.Add(data);
 			TableRow tableRow = this.keywordTable.AddRow();
 			tableRow.AddField(key,this.OnDisplayKeyword,this.OnClickKeyword);
 		}

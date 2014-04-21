@@ -12,9 +12,10 @@ public class ConsoleController : MonoBehaviour{
 	[Serializable]
 	public class ConsoleData{
 		public string key;
-		public string shortcut;
+		public string replace;
 		public string scopeName;
 		public object scope;
+		public bool validName;
 		public string name;
 		public string fullName;
 		public string help;
@@ -36,6 +37,17 @@ public class ConsoleController : MonoBehaviour{
 				this.scope = null;
 			}
 		}
+		public void ValidateAttribute(){
+			this.validName = false;
+			if(this.name != null && this.name.Trim() != ""){
+				if(this.scope is Type){
+					this.validName = this.scope.HasAttribute(this.name.Trim(),(Type)this.scope);
+				}
+				else{
+					this.validName = this.scope.HasAttribute(this.name.Trim());
+				}
+			}
+		}
 		public void ValidateMethod(){
 			if(this.methodName != null && this.methodName.Trim() != ""){
 				MethodInfo methodInfo = null;
@@ -49,22 +61,29 @@ public class ConsoleController : MonoBehaviour{
 						methodInfo = this.scope.GetMethod(this.methodName,BindingFlags.Static|BindingFlags.Public);
 					}
 				}
-				ParameterInfo[] parameters = methodInfo.GetParameters();
-				this.simple = null;
-				this.basic = null;
-				this.full = null;
-				if(parameters.Length == 0){
-					this.simple = (Method)Delegate.CreateDelegate(typeof(Method),methodInfo);
+				if(methodInfo != null){
+					ParameterInfo[] parameters = methodInfo.GetParameters();
+					this.simple = null;
+					this.basic = null;
+					this.full = null;
+					if(parameters.Length == 0){
+						this.simple = (Method)Delegate.CreateDelegate(typeof(Method),methodInfo);
+					}
+					else if(parameters.Length == 1){
+						this.basic = (ConsoleMethod)Delegate.CreateDelegate(typeof(ConsoleMethod),methodInfo);
+					}
+					else if(parameters.Length == 2){
+						this.full = (ConsoleMethodFull)Delegate.CreateDelegate(typeof(ConsoleMethodFull),methodInfo);
+					} 
 				}
-				else if(parameters.Length == 1){
-					this.basic = (ConsoleMethod)Delegate.CreateDelegate(typeof(ConsoleMethod),methodInfo);
+				else{
+					this.simple = null;
+					this.basic = null;
+					this.full = null;
 				}
-				else if(parameters.Length == 2){
-					this.full = (ConsoleMethodFull)Delegate.CreateDelegate(typeof(ConsoleMethodFull),methodInfo);
-				} 
 			}
 			else{
-				this.methodName = null;
+				this.methodName = "";
 				this.simple = null;
 				this.basic = null;
 				this.full = null;
@@ -135,7 +154,7 @@ public class ConsoleController : MonoBehaviour{
 					Debug.LogWarning("Shortcut " + shortcutKey + " already exists. Won`t be added again.");
 				}
 				else{
-					string shortcutReplacement = data.shortcut;
+					string shortcutReplacement = data.replace;
 					Console.AddShortcut(shortcutKey,shortcutReplacement);
 					Debug.Log("Added Shortcut " + shortcutKey);
 				}

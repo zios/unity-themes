@@ -32,8 +32,8 @@ namespace Zios.Editor{
 			this.header = new TableHeader(vertical,sortable);
 			this.onCompare = onCompare;
 		}
-		public void AddHeader(string label,OnHeaderEvent onDisplay=null,OnHeaderEvent onClick=null){
-			this.header.items.Add(new TableHeaderItem(label,onDisplay,onClick));
+		public void AddHeader(string label,string tooltip, OnHeaderEvent onDisplay=null,OnHeaderEvent onClick=null){
+			this.header.items.Add(new TableHeaderItem(label,tooltip,onDisplay,onClick));
 		}
 		public TableRow AddRow(object target = null,OnRowEvent onDisplay=null,OnRowEvent onClick=null){
 			TableRow row = new TableRow(target,onDisplay,onClick);
@@ -179,14 +179,16 @@ namespace Zios.Editor{
 	}
 	public class TableHeaderItem{
 		public string label;
+		public string tooltip;
 		public OnHeaderEvent onDisplay;
 		public OnHeaderEvent onClick;
 		public OnHeaderEvent onSort;
 		public string orientation;
-		public TableHeaderItem(string label,OnHeaderEvent onDisplay=null,OnHeaderEvent onClick=null){
+		public TableHeaderItem(string label,string tooltip = "", OnHeaderEvent onDisplay=null,OnHeaderEvent onClick=null){
 			this.onDisplay = onDisplay;
 			this.onClick = onClick;
 			this.label = label;
+			this.tooltip=tooltip;
 		}
 		public void Draw(GUIStyle style,bool verticalHeader){
 			if(this.onDisplay != null){
@@ -212,7 +214,7 @@ namespace Zios.Editor{
 				GUIUtility.RotateAroundPivot(-90,pivotPoint); 
 			}
 			else{
-				GUILayout.Label(this.label + this.orientation,style);
+				GUILayout.Label(new GUIContent(this.label + this.orientation, this.tooltip),style);
 			}
 			if(TableGUI.CheckRegion()){
 				this.onSort(this);

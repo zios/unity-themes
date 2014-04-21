@@ -31,9 +31,10 @@ public static class ObjectExtension{
 		Type currentType = type == null ? current.GetType() : type;
 		return currentType.GetMethod(name,flags) != null;
 	}
-	public static bool HasAttribute(this object current,string name){
-		bool hasProperty = current.GetType().GetProperty(name) != null;
-		bool hasField = current.GetType().GetField(name) != null;
+	public static bool HasAttribute(this object current,string name,Type type = null){
+		Type currentType = type == null ? current.GetType() : type;
+		bool hasProperty = currentType.GetProperty(name) != null;
+		bool hasField = currentType.GetField(name) != null;
 		return hasProperty || hasField;
 	}
 	public static MethodInfo GetMethod(this object current,string name,BindingFlags flags = BindingFlags.Instance|BindingFlags.Public,Type type = null){
