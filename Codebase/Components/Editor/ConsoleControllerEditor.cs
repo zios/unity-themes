@@ -69,6 +69,7 @@ public class ConsoleControllerEditor : Editor{
 		this.cvarTable.AddHeader("Help","The help string.",this.DisplayHeader);
 		foreach(ConsoleData data in this.controller.cvars){
 			data.ValidateScope(this.controller);
+			data.ValidateAttribute();
 			TableRow tableRow = this.cvarTable.AddRow();
 			tableRow.AddField(data.key,this.OnDisplayCvar,this.OnClickCvar);
 		}

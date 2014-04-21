@@ -126,6 +126,8 @@ public class ConsoleController : MonoBehaviour{
 				}
 				else{
 					data.ValidateScope(this);
+					data.ValidateAttribute();
+					data.ValidateMethod();
 					if(data.scope == null){
 						Debug.Log("Skipping Cvar " + cvarKey);
 					}
@@ -165,6 +167,8 @@ public class ConsoleController : MonoBehaviour{
 					Debug.LogWarning("Keyword " + keywordKey + " already exists. Won`t be added again.");
 				}
 				else{
+					data.ValidateScope(this);
+					data.ValidateMethod();
 					if(data.simple != null){
 						Console.AddKeyword(keywordKey,data.simple,data.minimumParameters,data.help);
 					}
