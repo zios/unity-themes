@@ -4,10 +4,8 @@ Shader "Zios/Color/Vertex Color"{
 		Pass{
 			CGPROGRAM
 			#include "../Utility/Unity-CG.cginc"
-			#include "../Utility/Unity-Light.cginc"
 			#pragma vertex vertexPassSimple
 			#pragma fragment pixelPass
-			#pragma multi_compile_fwdbase
 			#pragma fragmentoption ARB_precision_hint_fastest
 			struct vertexInput{
 				float4 vertex        : POSITION;

@@ -1,7 +1,7 @@
 Shader "Zios/Standalone/Character"{
 	Properties{
 		outlineColor("Outline Color",Color) = (0.0,0.0,0.0,1.0)
-		outlineLength("Outline Length",float) = 0.09
+		outlineLength("Outline Length",float) = 0.004
 		indexMap("Index Map",2D) = "white"{}
 		shadingAtlas("Shading Atlas",2D) = "white"{}
 		outlineMap("Outline Map",2D) = "white"{}
@@ -9,7 +9,7 @@ Shader "Zios/Standalone/Character"{
 	}
 	SubShader{
 		Tags{"LightMode"="ForwardBase" "Queue"="Transparent-1"}
-		UsePass "Hidden/Zios/Utility/Vertex Outlines/NORMAL"
+		UsePass "Hidden/Zios/Utility/Vertex Outlines/TEST"
 		Usepass "Zios/Shadow Pass/Normal Index Map/SHADOWCOLLECTOR"
 		Pass{
 			AlphaTest Greater 0

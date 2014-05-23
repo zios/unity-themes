@@ -8,7 +8,6 @@ Shader "Zios/Color/Desaturate"{
 			#include "../Utility/Unity-CG.cginc"
 			#pragma vertex vertexPass
 			#pragma fragment pixelPass
-			#pragma multi_compile_fwdbase
 			#pragma fragmentoption ARB_precision_hint_fastest
 			fixed desaturateAmount;
 			struct vertexInput{

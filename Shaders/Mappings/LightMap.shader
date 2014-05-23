@@ -9,7 +9,6 @@ Shader "Zios/Mappings/Light Map"{
 			#include "../Utility/Unity-Light.cginc"
 			#pragma vertex vertexPass
 			#pragma fragment pixelPass
-			#pragma multi_compile_fwdbase
 			#pragma fragmentoption ARB_precision_hint_fastest
 			sampler2D unity_Lightmap;
 			fixed4 unity_LightmapST;

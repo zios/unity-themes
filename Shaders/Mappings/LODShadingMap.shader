@@ -7,11 +7,8 @@ Shader "Zios/Mappings/LOD Shading Map"{
 	SubShader{
 		Pass{
 			CGPROGRAM
-			#include "../Utility/Unity-CG.cginc"
-			#include "../Utility/Unity-Light.cginc"
 			#pragma vertex vertexStep
 			#pragma fragment pixelPass
-			#pragma multi_compile_fwdbase
 			#pragma fragmentoption ARB_precision_hint_fastest
 			sampler2D shadingMap;
 			fixed zMin;

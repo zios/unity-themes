@@ -7,10 +7,8 @@ Shader "Zios/Lighting/Self Shadow"{
 		Pass{
 			CGPROGRAM
 			#include "../Utility/Unity-CG.cginc"
-			#include "../Utility/Unity-Light.cginc"
 			#pragma vertex vertexPass
 			#pragma fragment pixelPass
-			#pragma multi_compile_fwdbase
 			#pragma fragmentoption ARB_precision_hint_fastest
 			fixed selfShadowSpread;
 			fixed selfShadowContrast;

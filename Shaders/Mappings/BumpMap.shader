@@ -8,10 +8,8 @@ Shader "Zios/Mappings/Bump Map"{
 		Pass{
 			CGPROGRAM
 			#include "../Utility/Unity-CG.cginc"
-			#include "../Utility/Unity-Light.cginc"
 			#pragma vertex vertexPass
 			#pragma fragment pixelPass
-			#pragma multi_compile_fwdbase
 			#pragma fragmentoption ARB_precision_hint_fastest
 			sampler2D bumpMap;
 			fixed4 bumpMap_ST;

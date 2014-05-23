@@ -5,10 +5,8 @@ Shader "Zios/Mappings/Shadow Lightmap"{
 		Pass{
 			CGPROGRAM
 			#include "../Utility/Unity-CG.cginc"
-			#include "../Utility/Unity-Light.cginc"
 			#pragma vertex vertexPass
 			#pragma fragment pixelPass
-			#pragma multi_compile_fwdbase
 			#pragma fragmentoption ARB_precision_hint_fastest
 			fixed4 shadowColor;
 			fixed4 unity_LightmapST;

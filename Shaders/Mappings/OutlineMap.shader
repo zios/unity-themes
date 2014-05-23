@@ -6,10 +6,8 @@ Shader "Zios/Mappings/Outline Map"{
 		Pass{
 			CGPROGRAM
 			#include "../Utility/Unity-CG.cginc"
-			#include "../Utility/Unity-Light.cginc"
 			#pragma vertex vertexPass
 			#pragma fragment pixelPass
-			#pragma multi_compile_fwdbase
 			#pragma fragmentoption ARB_precision_hint_fastest
 			sampler2D outlineMap;
 			fixed4 outlineMap_ST;

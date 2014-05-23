@@ -6,10 +6,8 @@ Shader "Zios/Lighting/Scene Ambient"{
 		Pass{
 			CGPROGRAM
 			#include "../Utility/Unity-CG.cginc"
-			#include "../Utility/Unity-Light.cginc"
 			#pragma vertex vertexPass
 			#pragma fragment pixelPass
-			#pragma multi_compile_fwdbase
 			#pragma fragmentoption ARB_precision_hint_fastest
 			float4 globalAmbientColor;
 			fixed shadingIndex;
