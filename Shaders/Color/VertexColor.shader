@@ -3,7 +3,7 @@ Shader "Zios/Color/Vertex Color"{
 	SubShader{
 		Pass{
 			CGPROGRAM
-			#include "../Utility/Unity-CG.cginc"
+			#include "UnityCG.cginc"
 			#pragma vertex vertexPassSimple
 			#pragma fragment pixelPass
 			#pragma fragmentoption ARB_precision_hint_fastest
@@ -20,22 +20,25 @@ Shader "Zios/Color/Vertex Color"{
 			};
 			pixelOutput setupPixel(vertexOutput input){
 				pixelOutput output;
+				UNITY_INITIALIZE_OUTPUT(pixelOutput,output)
 				output.color = float4(0,0,0,0);
 				return output;
-			}			
+			}
 			pixelOutput applyVertexColor(vertexOutput input,pixelOutput output){
 				output.color.rgb = input.lightNormal.rgb;
 				return output;
 			}
-			pixelOutput pixelPass(vertexOutput input){
-				pixelOutput output = setupPixel(input);
-				output = applyVertexColor(input,output);
-				return output;
-			}
 			vertexOutput vertexPassSimple(vertexInput input){
 				vertexOutput output;
+				UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
 				output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
 				output.lightNormal = ObjSpaceLightDir(input.vertex);
+				return output;
+			}
+			pixelOutput pixelPass(vertexOutput input){
+				pixelOutput output = setupPixel(input);
+				UNITY_INITIALIZE_OUTPUT(pixelOutput,output)
+				output = applyVertexColor(input,output);
 				return output;
 			}
 			ENDCG

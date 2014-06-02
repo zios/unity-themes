@@ -1,5 +1,6 @@
 Shader "Zios/Mappings/Triplanar Map"{
 	Properties{
+		diffuseMap("Diffuse Map",2D) = "white"{}
 		blendingFactor("Blending",Range(0.0,1.0)) = 0.70
 	}
 	SubShader{
@@ -13,10 +14,13 @@ Shader "Zios/Mappings/Triplanar Map"{
 			fixed4 diffuseMap_ST;
 			struct vertexInput{
 				float4 vertex        : POSITION;
-				float4 color         : COLOR;
+				float4 texcoord      : TEXCOORD0;
+				float3 normal        : NORMAL;
+				fixed4 color         : COLOR;
 			};
 			struct vertexOutput{
 				float4 pos           : POSITION;
+				float4 UV            : COLOR0;
 				float4 normal        : TEXCOORD1;
 				float4 original      : TEXCOORD3;
 			};
@@ -25,6 +29,7 @@ Shader "Zios/Mappings/Triplanar Map"{
 			};
 			pixelOutput setupPixel(vertexOutput input){
 				pixelOutput output;
+				UNITY_INITIALIZE_OUTPUT(pixelOutput,output)
 				output.color = float4(0,0,0,0);
 				return output;
 			}
@@ -44,14 +49,19 @@ Shader "Zios/Mappings/Triplanar Map"{
 				output.color = setupTriplanarMap(diffuseMap,diffuseMap_ST,input);
 				return output;
 			}
-			pixelOutput pixelPass(vertexOutput input){
-				pixelOutput output = setupPixel(input);
-				output = applyTriplanarDiffuseMap(input,output);
-				return output;
-			}
 			vertexOutput vertexPass(vertexInput input){
 				vertexOutput output;
+				UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
 				output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
+				output.UV = float4(input.texcoord.x,input.texcoord.y,0,0);
+				output.normal = float4(input.normal,0);
+				output.original = input.vertex;
+				return output;
+			}
+			pixelOutput pixelPass(vertexOutput input){
+				pixelOutput output = setupPixel(input);
+				UNITY_INITIALIZE_OUTPUT(pixelOutput,output)
+				output = applyTriplanarDiffuseMap(input,output);
 				return output;
 			}
 			ENDCG

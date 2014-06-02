@@ -6,7 +6,7 @@ Shader "Zios/Lighting/Scene Ambient (Manual)"{
 	SubShader{
 		Pass{
 			CGPROGRAM
-			#include "../Utility/Unity-CG.cginc"
+			#include "UnityCG.cginc"
 			#pragma vertex vertexPass
 			#pragma fragment pixelPass
 			#pragma fragmentoption ARB_precision_hint_fastest
@@ -30,6 +30,7 @@ Shader "Zios/Lighting/Scene Ambient (Manual)"{
 			};
 			pixelOutput setupPixel(vertexOutput input){
 				pixelOutput output;
+				UNITY_INITIALIZE_OUTPUT(pixelOutput,output)
 				output.color = float4(0,0,0,0);
 				return output;
 			}
@@ -52,14 +53,16 @@ Shader "Zios/Lighting/Scene Ambient (Manual)"{
 			pixelOutput applySceneAmbientMap(vertexOutput input,pixelOutput output){
 				return applySceneAmbient(input,output,time);
 			}
-			pixelOutput pixelPass(vertexOutput input){
-				pixelOutput output = setupPixel(input);
-				output = applySceneAmbient(input,output,sceneAmbient);
-				return output;
-			}
 			vertexOutput vertexPass(vertexInput input){
 				vertexOutput output;
+				UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
 				output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
+				return output;
+			}
+			pixelOutput pixelPass(vertexOutput input){
+				pixelOutput output = setupPixel(input);
+				UNITY_INITIALIZE_OUTPUT(pixelOutput,output)
+				output = applySceneAmbient(input,output,sceneAmbient);
 				return output;
 			}
 			ENDCG

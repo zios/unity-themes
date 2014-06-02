@@ -12,8 +12,8 @@ Shader "Zios/Standalone/Billboard"{
 			Tags{"LightMode"="ForwardBase"}
 			Alphatest Greater [alphaCutoff]
 			CGPROGRAM
-			#include "./Utility/Unity-CG.cginc"
-			#include "./Utility/Unity-Light.cginc"
+			#include "UnityCG.cginc"
+			#include "AutoLight.cginc"
 			#include "./Utility/Shared.cginc"
 			#pragma vertex vertexStep
 			#pragma fragment pixelPass

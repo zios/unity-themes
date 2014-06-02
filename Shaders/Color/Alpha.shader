@@ -16,16 +16,19 @@ Shader "Zios/Color/Alpha"{
 			fixed alpha;
 			struct vertexInput{
 				float4 vertex        : POSITION;
+				float4 texcoord      : TEXCOORD0;
 			};
 			struct vertexOutput{
 				float4 pos           : POSITION;
+				float4 UV            : COLOR0;
 			};
 			struct pixelOutput{
 				float4 color         : COLOR0;
 			};
-			vertexOutput vertexPass(vertexInput input){
-				vertexOutput output;
-				output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
+			pixelOutput setupPixel(vertexOutput input){
+				pixelOutput output;
+				UNITY_INITIALIZE_OUTPUT(pixelOutput,output)
+				output.color = float4(0,0,0,0);
 				return output;
 			}
 			pixelOutput applyAlpha(vertexOutput input,pixelOutput output,float alpha){
@@ -34,9 +37,16 @@ Shader "Zios/Color/Alpha"{
 				if(output.color.a <= alphaCutoff){clip(-1);}
 				return output;
 			}
+			vertexOutput vertexPass(vertexInput input){
+				vertexOutput output;
+				UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
+				output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
+				output.UV = float4(input.texcoord.xy,0,0);
+				return output;
+			}
 			pixelOutput pixelPass(vertexOutput input){
-				pixelOutput output;
-				output.color = float4(0,0,0,1);
+				pixelOutput output = setupPixel(input);
+				UNITY_INITIALIZE_OUTPUT(pixelOutput,output)
 				output = applyAlpha(input,output,alpha);
 				return output;
 			}

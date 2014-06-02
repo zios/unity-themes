@@ -1,4 +1,4 @@
-Shader "Zios/Shadow Pass/Normal Index Map"{
+Shader "Hidden/Zios/Shadow Pass/Normal Index Map"{
 	Properties{
 	}
 	SubShader{
@@ -14,7 +14,7 @@ Shader "Zios/Shadow Pass/Normal Index Map"{
 			#pragma fragment pixelPassShadow
 			#pragma multi_compile_shadowcaster
 			#pragma fragmentoption ARB_precision_hint_fastest
-			#include "../Unity-CG.cginc"
+			#include "UnityCG.cginc"
 			sampler2D normalIndexMap;
 			float4 normalIndexMap_ST;
 			struct vertexOutput{ 
@@ -44,7 +44,7 @@ Shader "Zios/Shadow Pass/Normal Index Map"{
 			#pragma fragmentoption ARB_precision_hint_fastest
 			#pragma multi_compile_shadowcollector
 			#define SHADOW_COLLECTOR_PASS
-			#include "../Unity-CG.cginc"
+			#include "UnityCG.cginc"
 			sampler2D normalIndexMap;
 			float4 normalIndexMap_ST;
 			struct vertexOutput{

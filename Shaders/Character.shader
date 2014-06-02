@@ -10,16 +10,15 @@ Shader "Zios/Standalone/Character"{
 	SubShader{
 		Tags{"LightMode"="ForwardBase" "Queue"="Transparent-1"}
 		UsePass "Hidden/Zios/Utility/Vertex Outlines/TEST"
-		Usepass "Zios/Shadow Pass/Normal Index Map/SHADOWCOLLECTOR"
+		Usepass "Hidden/Zios/Shadow Pass/Normal Index Map/SHADOWCOLLECTOR"
 		Pass{
 			AlphaTest Greater 0
 			Blend SrcAlpha OneMinusSrcAlpha
 			CGPROGRAM
-			#include "./Utility/Unity-CG.cginc"
-			#include "./Utility/Unity-Light.cginc"
+			#include "UnityCG.cginc"
+			#include "AutoLight.cginc"
 			#pragma vertex vertexPass
 			#pragma fragment pixelPass
-			#pragma multi_compile_fwdbase
 			#pragma fragmentoption ARB_precision_hint_fastest
 			sampler2D indexMap;
 			sampler2D normalMap;
@@ -43,7 +42,7 @@ Shader "Zios/Standalone/Character"{
 			};
 			struct vertexOutput{
 				float4 pos           : POSITION;
-				float4 UV            : COLOR0;				
+				float4 UV            : COLOR0;
 				float3 lightNormal	 : TEXCOORD0;
 				float4 normal        : TEXCOORD1;
 				float4 tangent       : TEXCOORD2;
@@ -56,6 +55,7 @@ Shader "Zios/Standalone/Character"{
 			};
 			pixelOutput setupPixel(vertexOutput input){
 				pixelOutput output;
+				UNITY_INITIALIZE_OUTPUT(pixelOutput,output)
 				output.color = float4(0,0,0,0);
 				return output;
 			}
@@ -110,17 +110,9 @@ Shader "Zios/Standalone/Character"{
 				output.color.rgb = lerp(output.color.rgb,0,lookup.a);
 				return output;
 			}
-			pixelOutput pixelPass(vertexOutput input){
-				pixelOutput output = setupPixel(input);
-				input = setupInput(input);
-				input = setupNormalMap(input);
-				input = setupLighting(input);
-				output = applyShadingAtlas(indexMap,input,output);
-				output = applyOutlineMap(input,output);
-				return output;
-			}
 			vertexOutput vertexPass(vertexInput input){
 				vertexOutput output;
+				UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
 				output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
 				output.UV = float4(input.texcoord.xy,0,0);
 				output.lightNormal = ObjSpaceLightDir(input.vertex);
@@ -128,6 +120,16 @@ Shader "Zios/Standalone/Character"{
 				output.normal = float4(input.normal,0);
 				output.tangent = input.tangent;
 				TRANSFER_VERTEX_TO_FRAGMENT(output);
+				return output;
+			}
+			pixelOutput pixelPass(vertexOutput input){
+				pixelOutput output = setupPixel(input);
+				UNITY_INITIALIZE_OUTPUT(pixelOutput,output)
+				input = setupInput(input);
+				input = setupNormalMap(input);
+				input = setupLighting(input);
+				output = applyShadingAtlas(indexMap,input,output);
+				output = applyOutlineMap(input,output);
 				return output;
 			}
 			ENDCG

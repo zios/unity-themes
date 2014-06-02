@@ -21,6 +21,7 @@ Shader "Zios/Color/Ambient"{
 			};
 			pixelOutput setupPixel(vertexOutput input){
 				pixelOutput output;
+				UNITY_INITIALIZE_OUTPUT(pixelOutput,output)
 				output.color = float4(0,0,0,0);
 				return output;
 			}
@@ -34,14 +35,16 @@ Shader "Zios/Color/Ambient"{
 				}
 				return output;
 			}
-			pixelOutput pixelPass(vertexOutput input){
-				pixelOutput output = setupPixel(input);
-				output = applyAmbientColor(input,output);
-				return output;
-			}
 			vertexOutput vertexPass(vertexInput input){
 				vertexOutput output;
+				UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
 				output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
+				return output;
+			}
+			pixelOutput pixelPass(vertexOutput input){
+				pixelOutput output = setupPixel(input);
+				UNITY_INITIALIZE_OUTPUT(pixelOutput,output)
+				output = applyAmbientColor(input,output);
 				return output;
 			}
 			ENDCG

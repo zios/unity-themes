@@ -5,7 +5,6 @@ Shader "Zios/Color/Desaturate"{
 	SubShader{
 		Pass{
 			CGPROGRAM
-			#include "../Utility/Unity-CG.cginc"
 			#pragma vertex vertexPass
 			#pragma fragment pixelPass
 			#pragma fragmentoption ARB_precision_hint_fastest
@@ -22,6 +21,7 @@ Shader "Zios/Color/Desaturate"{
 			};
 			pixelOutput setupPixel(vertexOutput input){
 				pixelOutput output;
+				UNITY_INITIALIZE_OUTPUT(pixelOutput,output)
 				output.color = float4(0,0,0,0);
 				return output;
 			}
@@ -31,14 +31,16 @@ Shader "Zios/Color/Desaturate"{
 				output.color.rgb = lerp(output.color.rgb,grayscaleColor,desaturateAmount);
 				return output;
 			}
-			pixelOutput pixelPass(vertexOutput input){
-				pixelOutput output = setupPixel(input);
-				output = applyDesaturate(input,output);
-				return output;
-			}
 			vertexOutput vertexPass(vertexInput input){
 				vertexOutput output;
+				UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
 				output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
+				return output;
+			}
+			pixelOutput pixelPass(vertexOutput input){
+				pixelOutput output = setupPixel(input);
+				UNITY_INITIALIZE_OUTPUT(pixelOutput,output)
+				output = applyDesaturate(input,output);
 				return output;
 			}
 			ENDCG

@@ -1,7 +1,7 @@
 Shader "Hidden/Zios/Lighting/SimpleLighting"{
 	Properties{
 	}
-		SubShader{
+	SubShader{
 		Pass{
 			CGPROGRAM
 			#pragma vertex vertexPass
@@ -19,6 +19,7 @@ Shader "Hidden/Zios/Lighting/SimpleLighting"{
 			};
 			pixelOutput setupPixel(vertexOutput input){
 				pixelOutput output;
+				UNITY_INITIALIZE_OUTPUT(pixelOutput,output)
 				output.color = float4(0,0,0,0);
 				return output;
 			}
@@ -26,14 +27,16 @@ Shader "Hidden/Zios/Lighting/SimpleLighting"{
 				input.lighting = 1.0;
 				return input;
 			}
-			pixelOutput pixelPass(vertexOutput input){
-				pixelOutput output = setupPixel(input);
-				input = setupSimpleLighting(input);
-				return output;
-			}
 			vertexOutput vertexPass(vertexInput input){
 				vertexOutput output;
+				UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
 				output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
+				return output;
+			}
+			pixelOutput pixelPass(vertexOutput input){
+				pixelOutput output = setupPixel(input);
+				UNITY_INITIALIZE_OUTPUT(pixelOutput,output)
+				input = setupSimpleLighting(input);
 				return output;
 			}
 			ENDCG

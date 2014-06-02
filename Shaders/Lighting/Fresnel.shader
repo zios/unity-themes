@@ -7,35 +7,38 @@ Shader "Zios/Lighting/Fresnel"{
 	SubShader{
 		Pass{
 			CGPROGRAM
-			#include "../Utility/Unity-CG.cginc"
-			#include "../Utility/Unity-Light.cginc"
+			#include "UnityCG.cginc"
 			#pragma vertex vertexPass
 			#pragma fragment pixelPass
-			#pragma multi_compile_fwdbase
 			#pragma fragmentoption ARB_precision_hint_fastest
 			fixed fresnelSize;
 			fixed fresnelIntensity;
 			fixed4 fresnelColor;
 			struct vertexInput{
 				float4 vertex        : POSITION;
+				float4 texcoord      : TEXCOORD0;
 				float3 normal        : NORMAL;
 			};
 			struct vertexOutput{
 				float4 pos           : POSITION;
-				float4 UV            : COLOR0;
 				float3 lightNormal	 : TEXCOORD0;
 				float4 normal        : TEXCOORD1;
 				float3 view	         : TEXCOORD4;
-				float  lighting      : TEXCOORD5;
-				LIGHTING_COORDS(6,7)
 			};
 			struct pixelOutput{
 				float4 color         : COLOR0;
 			};
 			pixelOutput setupPixel(vertexOutput input){
 				pixelOutput output;
+				UNITY_INITIALIZE_OUTPUT(pixelOutput,output)
 				output.color = float4(0,0,0,0);
 				return output;
+			}
+			vertexOutput setupInput(vertexOutput input){
+				input.normal.xyz = normalize(input.normal.xyz);
+				input.lightNormal = normalize(input.lightNormal);
+				input.view = normalize(input.view);
+				return input;
 			}
 			pixelOutput applyFresnel(vertexOutput input,pixelOutput output){
 				float4 specularDot = dot(input.lightNormal,input.view);
@@ -45,15 +48,20 @@ Shader "Zios/Lighting/Fresnel"{
 				output.color.rgb += pow(saturate(specularDot),fresnelLight) * fresnelStrength * fresnelColor;
 				return output;
 			}
-			pixelOutput pixelPass(vertexOutput input){
-				pixelOutput output = setupPixel(input);
-				output = applyFresnel(input,output);
-				return output;
-			}
 			vertexOutput vertexPass(vertexInput input){
 				vertexOutput output;
+				UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
 				output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
+				output.lightNormal = ObjSpaceLightDir(input.vertex);
+				output.view = ObjSpaceViewDir(input.vertex);
 				output.normal = float4(input.normal,0);
+				return output;
+			}
+			pixelOutput pixelPass(vertexOutput input){
+				pixelOutput output = setupPixel(input);
+				UNITY_INITIALIZE_OUTPUT(pixelOutput,output)
+				input = setupInput(input);
+				output = applyFresnel(input,output);
 				return output;
 			}
 			ENDCG

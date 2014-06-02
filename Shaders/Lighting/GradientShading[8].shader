@@ -13,7 +13,7 @@ Shader "Zios/Lighting/Gradient Shading"{
 	SubShader{
 		Pass{
 			CGPROGRAM
-			#include "../Utility/Unity-CG.cginc"
+			#include "UnityCG.cginc"
 			#pragma vertex vertexPass
 			#pragma fragment pixelPass
 			#pragma fragmentoption ARB_precision_hint_fastest
@@ -38,19 +38,31 @@ Shader "Zios/Lighting/Gradient Shading"{
 			struct vertexInput{
 				float4 vertex        : POSITION;
 				float4 texcoord      : TEXCOORD0;
+				float3 normal        : NORMAL;
 			};
 			struct vertexOutput{
 				float4 pos           : POSITION;
-				float4 UV            : COLOR0;
+				float3 lightNormal	 : TEXCOORD0;
+				float4 normal        : TEXCOORD1;
 				float  lighting      : TEXCOORD5;
+				float4 UV            : COLOR0;
 			};
 			struct pixelOutput{
 				float4 color         : COLOR0;
 			};
 			pixelOutput setupPixel(vertexOutput input){
 				pixelOutput output;
+				UNITY_INITIALIZE_OUTPUT(pixelOutput,output)
 				output.color = float4(0,0,0,0);
 				return output;
+			}
+			vertexOutput setupLighting(vertexOutput input){
+				input.lighting = saturate(dot(input.normal.xyz,input.lightNormal));
+				return input;
+			}
+			vertexOutput setupLighting(float3 lightDirection,vertexOutput input){
+				input.lighting = saturate(dot(lightDirection,input.lightNormal));
+				return input;
 			}
 			pixelOutput applyGradientShading8(vertexOutput input,pixelOutput output){
 				fixed lookup = floor(tex2D(indexMap,TRANSFORM_TEX(input.UV.xy,indexMap)).r * 8.5);
@@ -64,15 +76,20 @@ Shader "Zios/Lighting/Gradient Shading"{
 				if(lookup == 8){output.color = lerp(lookupColorHStart,lookupColorHEnd,input.lighting);}
 				return output;
 			}
-			pixelOutput pixelPass(vertexOutput input){
-				pixelOutput output = setupPixel(input);
-				output = applyGradientShading8(input,output);
-				return output;
-			}
 			vertexOutput vertexPass(vertexInput input){
 				vertexOutput output;
+				UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
 				output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
 				output.UV = float4(input.texcoord.xy,0,0);
+				output.lightNormal = ObjSpaceLightDir(input.vertex);
+				output.normal = float4(input.normal,0);
+				return output;
+			}
+			pixelOutput pixelPass(vertexOutput input){
+				pixelOutput output = setupPixel(input);
+				UNITY_INITIALIZE_OUTPUT(pixelOutput,output)
+				input = setupLighting(input);
+				output = applyGradientShading8(input,output);
 				return output;
 			}
 			ENDCG

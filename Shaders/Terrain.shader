@@ -11,8 +11,8 @@ Shader "Zios/Standalone/Terrain"{
 		Pass{
 			Tags{"LightMode"="ForwardBase"}
 			CGPROGRAM
-			#include "./Utility/Unity-CG.cginc"
-			#include "./Utility/Unity-Light.cginc"
+			#include "UnityCG.cginc"
+			#include "AutoLight.cginc"
 			#pragma vertex vertexPass
 			#pragma fragment pixelPass
 			#pragma multi_compile_fwdbase
@@ -40,6 +40,7 @@ Shader "Zios/Standalone/Terrain"{
 			};
 			pixelOutput setupPixel(vertexOutput input){
 				pixelOutput output;
+				UNITY_INITIALIZE_OUTPUT(pixelOutput,output)
 				output.color = float4(0,0,0,0);
 				return output;
 			}
@@ -61,22 +62,24 @@ Shader "Zios/Standalone/Terrain"{
 				output.color.rgb *= LIGHT_ATTENUATION(input) + shadowColor;
 				return output;
 			}
+			vertexOutput vertexPass(vertexInput input){
+				vertexOutput output;
+				UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
+				float2 lightmapUV = input.texcoord1.xy * unity_LightmapST.xy + unity_LightmapST.zw;
+				output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
+				output.UV = float4(input.texcoord.x,input.texcoord.y,lightmapUV.x,lightmapUV.y);
+				TRANSFER_VERTEX_TO_FRAGMENT(output);
+				return output;
+			}
 			pixelOutput pixelPass(vertexOutput input){
 				pixelOutput output = setupPixel(input);
+				UNITY_INITIALIZE_OUTPUT(pixelOutput,output)
 				output = applyDiffuseMap(input,output);
 				output = applyLightMap(input,output);
 				output = applyDiffuseColor(input,output,diffuseCutoff);
 				output = applyShadows(input,output);
 				return output;
 			}
-			vertexOutput vertexPass(vertexInput input){
-				vertexOutput output;
-				float2 lightmapUV = input.texcoord1.xy * unity_LightmapST.xy + unity_LightmapST.zw;
-				output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
-				output.UV = float4(input.texcoord.x,input.texcoord.y,lightmapUV.x,lightmapUV.y);
-				TRANSFER_VERTEX_TO_FRAGMENT(output);
-				return output;
-			}			
 			ENDCG
 		}
 	}

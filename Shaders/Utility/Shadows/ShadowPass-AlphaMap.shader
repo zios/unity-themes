@@ -1,4 +1,4 @@
-Shader "Zios/Shadow Pass/Alpha Map"{
+Shader "Hidden/Zios/Shadow Pass/Alpha Map"{
 	Properties{
 	}
 	SubShader{
@@ -14,7 +14,7 @@ Shader "Zios/Shadow Pass/Alpha Map"{
 			#pragma fragment pixelPassShadow
 			#pragma multi_compile_shadowcaster
 			#pragma fragmentoption ARB_precision_hint_fastest
-			#include "../Unity-CG.cginc"
+			#include "UnityCG.cginc"
 			sampler2D alphaMap;
 			float4 alphaMap_ST;
 			fixed alphaCutoff;
@@ -45,7 +45,7 @@ Shader "Zios/Shadow Pass/Alpha Map"{
 			#pragma fragmentoption ARB_precision_hint_fastest
 			#pragma multi_compile_shadowcollector
 			#define SHADOW_COLLECTOR_PASS
-			#include "../Unity-CG.cginc"
+			#include "UnityCG.cginc"
 			sampler2D alphaMap;
 			float4 alphaMap_ST;
 			fixed alphaCutoff;

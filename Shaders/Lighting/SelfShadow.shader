@@ -2,11 +2,12 @@ Shader "Zios/Lighting/Self Shadow"{
 	Properties{
 		selfShadowSpread("Self-Shadow Spread",Float) = 0
 		selfShadowContrast("Self-Shadow Contrast",Float) = 0
+		bumpMap("Bump Map",2D) = "black"{}
 	}
 	SubShader{
 		Pass{
 			CGPROGRAM
-			#include "../Utility/Unity-CG.cginc"
+			#include "UnityCG.cginc"
 			#pragma vertex vertexPass
 			#pragma fragment pixelPass
 			#pragma fragmentoption ARB_precision_hint_fastest
@@ -17,11 +18,15 @@ Shader "Zios/Lighting/Self Shadow"{
 			struct vertexInput{
 				float4 vertex        : POSITION;
 				float4 texcoord      : TEXCOORD0;
+				float3 normal        : NORMAL;
 				float4 color         : COLOR;
 			};
 			struct vertexOutput{
 				float4 pos           : POSITION;
 				float4 UV            : COLOR0;
+				float3 lightNormal	 : TEXCOORD0;
+				float4 normal        : TEXCOORD1;
+				float3 view	         : TEXCOORD4;
 				float  lighting      : TEXCOORD5;
 			};
 			struct pixelOutput{
@@ -29,8 +34,23 @@ Shader "Zios/Lighting/Self Shadow"{
 			};
 			pixelOutput setupPixel(vertexOutput input){
 				pixelOutput output;
+				UNITY_INITIALIZE_OUTPUT(pixelOutput,output)
 				output.color = float4(0,0,0,0);
 				return output;
+			}
+			vertexOutput setupInput(vertexOutput input){
+				input.normal.xyz = normalize(input.normal.xyz);
+				input.lightNormal = normalize(input.lightNormal);
+				input.view = normalize(input.view);
+				return input;
+			}
+			vertexOutput setupLighting(vertexOutput input){
+				input.lighting = saturate(dot(input.normal.xyz,input.lightNormal));
+				return input;
+			}
+			vertexOutput setupLighting(float3 lightDirection,vertexOutput input){
+				input.lighting = saturate(dot(lightDirection,input.lightNormal));
+				return input;
 			}
 			vertexOutput setupSelfShadow(vertexOutput input){
 				float height = 1.0-tex2D(bumpMap,TRANSFORM_TEX(input.UV.xy,bumpMap)).r;
@@ -39,15 +59,22 @@ Shader "Zios/Lighting/Self Shadow"{
 				input.lighting *= shadow;
 				return input;
 			}
-			pixelOutput pixelPass(vertexOutput input){
-				pixelOutput output = setupPixel(input);
-				input = setupSelfShadow(input);
-				return output;
-			}			
 			vertexOutput vertexPass(vertexInput input){
 				vertexOutput output;
+				UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
 				output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
 				output.UV = float4(input.texcoord.xy,0,0);
+				output.lightNormal = ObjSpaceLightDir(input.vertex);
+				output.view = ObjSpaceViewDir(input.vertex);
+				output.normal = float4(input.normal,0);
+				return output;
+			}
+			pixelOutput pixelPass(vertexOutput input){
+				pixelOutput output = setupPixel(input);
+				UNITY_INITIALIZE_OUTPUT(pixelOutput,output)
+				input = setupInput(input);
+				input = setupLighting(input);
+				input = setupSelfShadow(input);
 				return output;
 			}
 			ENDCG

@@ -7,7 +7,7 @@ Shader "Zios/Lighting/Specular"{
 	SubShader{
 		Pass{
 			CGPROGRAM
-			#include "../Utility/Unity-CG.cginc"
+			#include "UnityCG.cginc"
 			#pragma vertex vertexPass
 			#pragma fragment pixelPass
 			#pragma fragmentoption ARB_precision_hint_fastest
@@ -27,15 +27,30 @@ Shader "Zios/Lighting/Specular"{
 				float3 lightNormal	 : TEXCOORD0;
 				float4 normal        : TEXCOORD1;
 				float3 view	         : TEXCOORD4;
-			    float  lighting      : TEXCOORD5;
+				float  lighting      : TEXCOORD5;
 			};
 			struct pixelOutput{
 				float4 color         : COLOR0;
 			};
 			pixelOutput setupPixel(vertexOutput input){
 				pixelOutput output;
+				UNITY_INITIALIZE_OUTPUT(pixelOutput,output)
 				output.color = float4(0,0,0,0);
 				return output;
+			}
+			vertexOutput setupInput(vertexOutput input){
+				input.normal.xyz = normalize(input.normal.xyz);
+				input.lightNormal = normalize(input.lightNormal);
+				input.view = normalize(input.view);
+				return input;
+			}
+			vertexOutput setupLighting(vertexOutput input){
+				input.lighting = saturate(dot(input.normal.xyz,input.lightNormal));
+				return input;
+			}
+			vertexOutput setupLighting(float3 lightDirection,vertexOutput input){
+				input.lighting = saturate(dot(lightDirection,input.lightNormal));
+				return input;
 			}
 			pixelOutput applySpecularFull(vertexOutput input,pixelOutput output){
 				float3 reflect = normalize(2*input.lighting*input.normal-input.lightNormal.xyz);
@@ -52,17 +67,21 @@ Shader "Zios/Lighting/Specular"{
 				}
 			return output;
 			}
-			pixelOutput pixelPass(vertexOutput input){
-				pixelOutput output = setupPixel(input);
-				output = applySpecularFull(input,output);
-				return output;
-			}
 			vertexOutput vertexPass(vertexInput input){
 				vertexOutput output;
+				UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
 				output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
 				output.lightNormal = ObjSpaceLightDir(input.vertex) + lightOffset;
 				output.view = ObjSpaceViewDir(input.vertex);
 				output.normal = float4(input.normal,0);
+				return output;
+			}
+			pixelOutput pixelPass(vertexOutput input){
+				pixelOutput output = setupPixel(input);
+				UNITY_INITIALIZE_OUTPUT(pixelOutput,output)
+				input = setupInput(input);
+				input = setupLighting(input);
+				output = applySpecularFull(input,output);
 				return output;
 			}
 			ENDCG

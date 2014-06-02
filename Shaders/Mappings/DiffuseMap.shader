@@ -5,7 +5,7 @@ Shader "Zios/Mappings/Diffuse Map"{
 	SubShader{
 		Pass{
 			CGPROGRAM
-			#include "../Utility/Unity-CG.cginc"
+			#include "UnityCG.cginc"
 			#pragma vertex vertexPass
 			#pragma fragment pixelPass
 			#pragma fragmentoption ARB_precision_hint_fastest
@@ -22,20 +22,27 @@ Shader "Zios/Mappings/Diffuse Map"{
 			struct pixelOutput{
 				float4 color         : COLOR0;
 			};
+			pixelOutput setupPixel(vertexOutput input){
+				pixelOutput output;
+				UNITY_INITIALIZE_OUTPUT(pixelOutput,output)
+				output.color = float4(0,0,0,0);
+				return output;
+			}
 			pixelOutput applyDiffuseMap(vertexOutput input,pixelOutput output){
 				output.color += tex2D(diffuseMap,TRANSFORM_TEX(input.UV.xy,diffuseMap));
 				return output;
 			}
-			pixelOutput pixelPass(vertexOutput input){
-				pixelOutput output;
-				output.color = float4(0,0,0,1);
-				output = applyDiffuseMap(input,output);
-				return output;
-			}
 			vertexOutput vertexPass(vertexInput input){
 				vertexOutput output;
+				UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
 				output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
 				output.UV = float4(input.texcoord.xy,0,0);
+				return output;
+			}
+			pixelOutput pixelPass(vertexOutput input){
+				pixelOutput output = setupPixel(input);
+				UNITY_INITIALIZE_OUTPUT(pixelOutput,output)
+				output = applyDiffuseMap(input,output);
 				return output;
 			}
 			ENDCG

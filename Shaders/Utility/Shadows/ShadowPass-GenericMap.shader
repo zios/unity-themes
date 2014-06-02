@@ -1,4 +1,4 @@
-Shader "Zios/Shadow Pass/Generic Map"{
+Shader "Hidden/Zios/Shadow Pass/Generic Map"{
 	Properties{
 	}
 	SubShader{
@@ -14,7 +14,7 @@ Shader "Zios/Shadow Pass/Generic Map"{
 			#pragma fragment pixelPassShadow
 			#pragma multi_compile_shadowcaster
 			#pragma fragmentoption ARB_precision_hint_fastest
-			#include "../Unity-CG.cginc"
+			#include "UnityCG.cginc"
 			sampler2D genericMap;
 			float4 genericMap_ST;
 			fixed alphaCutoff;
@@ -45,7 +45,7 @@ Shader "Zios/Shadow Pass/Generic Map"{
 			#pragma fragmentoption ARB_precision_hint_fastest
 			#pragma multi_compile_shadowcollector
 			#define SHADOW_COLLECTOR_PASS
-			#include "../Unity-CG.cginc"
+			#include "UnityCG.cginc"
 			sampler2D genericMap;
 			float4 genericMap_ST;
 			fixed alphaCutoff;

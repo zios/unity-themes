@@ -1,4 +1,4 @@
-Shader "Zios/Shadow Pass/Atlas Generic Map"{
+Shader "Hidden/Zios/Shadow Pass/Atlas Generic Map"{
 	Properties{
 		atlasUV("Atlas UV",Vector) = (0,0,0,0)
 	}
@@ -15,7 +15,7 @@ Shader "Zios/Shadow Pass/Atlas Generic Map"{
 			#pragma fragment pixelPassShadow
 			#pragma multi_compile_shadowcaster
 			#pragma fragmentoption ARB_precision_hint_fastest
-			#include "../Unity-CG.cginc"
+			#include "UnityCG.cginc"
 			sampler2D genericMap;
 			float4 genericMap_ST;	
 			float4 atlasUV;
@@ -48,7 +48,7 @@ Shader "Zios/Shadow Pass/Atlas Generic Map"{
 			#pragma fragmentoption ARB_precision_hint_fastest
 			#pragma multi_compile_shadowcollector
 			#define SHADOW_COLLECTOR_PASS
-			#include "../Unity-CG.cginc"
+			#include "UnityCG.cginc"
 			sampler2D genericMap;
 			float4 genericMap_ST;
 			float4 atlasUV;

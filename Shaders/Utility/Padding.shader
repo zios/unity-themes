@@ -5,7 +5,7 @@ Shader "Zios/Utility/Atlas Padding"{
 	SubShader{
 		Pass{
 			CGPROGRAM
-			#include "../Utility/Unity-CG.cginc"
+			#include "UnityCG.cginc"
 			#pragma vertex vertexPass
 			#pragma fragment pixelPass
 			#pragma multi_compile_fwdbase

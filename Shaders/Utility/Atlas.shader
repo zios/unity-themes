@@ -5,8 +5,8 @@ Shader "Zios/Utility/Atlas"{
 	SubShader{
 		Pass{
 			CGPROGRAM
-			#include "../Utility/Unity-CG.cginc"
-			#include "../Utility/Unity-Light.cginc"
+			#include "UnityCG.cginc"
+			#include "AutoLight.cginc"
 			#pragma vertex vertexPass
 			#pragma fragment pixelPass
 			#pragma multi_compile_fwdbase

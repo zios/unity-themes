@@ -9,7 +9,7 @@ Shader "Hidden/Zios/Utility/Vertex Outlines"{
 			Blend SrcAlpha OneMinusSrcAlpha
 			Cull Front
 			CGPROGRAM
-			#include "./Unity-CG.cginc"
+			#include "UnityCG.cginc"
 			#pragma vertex vertexPassOutline
 			#pragma fragment pixelPassOutline
 			#pragma fragmentoption ARB_precision_hint_fastest
@@ -51,7 +51,7 @@ Shader "Hidden/Zios/Utility/Vertex Outlines"{
             ZWrite On
 			Tags {"LightMode"="ForwardBase"}
 			CGPROGRAM
-			#include "./Unity-CG.cginc"
+			#include "UnityCG.cginc"
 			#pragma vertex vertexPassOutline
 			#pragma fragment pixelPassOutline
 			#pragma fragmentoption ARB_precision_hint_fastest
@@ -91,7 +91,7 @@ Shader "Hidden/Zios/Utility/Vertex Outlines"{
 			Blend SrcAlpha OneMinusSrcAlpha
 			Cull Front
 			CGPROGRAM
-			#include "./Unity-CG.cginc"
+			#include "UnityCG.cginc"
 			#pragma vertex vertexPassOutline
 			#pragma fragment pixelPassBlendOutline
 			#pragma fragmentoption ARB_precision_hint_fastest

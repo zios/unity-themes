@@ -5,11 +5,10 @@ Shader "Zios/Utility/Billboard"{
 	SubShader{
 		Pass{
 			CGPROGRAM
-			#include "../Utility/Unity-CG.cginc"
-			#include "../Utility/Unity-Light.cginc"
+			#include "UnityCG.cginc"
+			#include "AutoLight.cginc"
 			#pragma vertex vertexPassBillboard
 			#pragma fragment pixelPass
-			#pragma multi_compile_fwdbase
 			#pragma fragmentoption ARB_precision_hint_fastest
 			float scale;
 			sampler2D diffuseMap;
@@ -27,18 +26,21 @@ Shader "Zios/Utility/Billboard"{
 			};
 			pixelOutput setupPixel(vertexOutput input){
 				pixelOutput output;
+				UNITY_INITIALIZE_OUTPUT(pixelOutput,output)
 				output.color = float4(0,0,0,0);
-				return output;
-			}
-			pixelOutput pixelPass(vertexOutput input){
-				pixelOutput output = setupPixel(input);
-				output.color = tex2D(diffuseMap,input.UV.xy);
 				return output;
 			}
 			vertexOutput vertexPassBillboard(vertexInput input){
 				vertexOutput output;
+				UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
 				output.UV = float4(input.texcoord.xy,0.0f,0.0f);
 				output.pos = mul(UNITY_MATRIX_P,mul(UNITY_MATRIX_MV, float4(0.0f, 0.0f, 0.0f, 1.0f)) + float4(input.vertex.x, input.vertex.y, 0.0f, 0.0f));
+				return output;
+			}
+			pixelOutput pixelPass(vertexOutput input){
+				pixelOutput output = setupPixel(input);
+				UNITY_INITIALIZE_OUTPUT(pixelOutput,output)
+				output.color = tex2D(diffuseMap,input.UV.xy);
 				return output;
 			}
 			ENDCG
