@@ -1,4 +1,4 @@
-Shader "Zios/Mappings/Generic Map"{
+Shader "Zios/(Components)/Mappings/Generic Map"{
 	Properties{
 		genericMap("Texture",2D) = "white"{}
 	}

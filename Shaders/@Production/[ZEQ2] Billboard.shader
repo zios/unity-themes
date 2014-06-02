@@ -1,4 +1,4 @@
-Shader "Zios/Standalone/Billboard"{
+Shader "Zios/ZEQ2/Billboard"{
 	Properties{
 		shadowColor("Shadow Color", Color) = (0.0,0.0,0.0,1.0)
 		diffuseColor("Diffuse Color", Color) = (0.5,0.5,0.5,1)
@@ -14,7 +14,7 @@ Shader "Zios/Standalone/Billboard"{
 			CGPROGRAM
 			#include "UnityCG.cginc"
 			#include "AutoLight.cginc"
-			#include "./Utility/Shared.cginc"
+			#include "../Utility/Shared.cginc"
 			#pragma vertex vertexStep
 			#pragma fragment pixelPass
 			#pragma multi_compile_fwdbase

@@ -1,4 +1,4 @@
-Shader "Zios/Mappings/Bump Map"{
+Shader "Zios/(Components)/Mappings/Bump Map"{
 	Properties{
 		bumpMapContrast("Bump Contrast",Float) = 0
 		bumpMapSpread("Bump Spread",Float) = 0

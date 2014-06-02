@@ -1,4 +1,4 @@
-Shader "Zios/Standalone/Terrain"{
+Shader "Zios/ZEQ2/Standalone/Terrain"{
 	Properties{
 		shadowColor("Shadow Color", Color) = (0.0,0.0,0.0,1.0)
 		diffuseColor("Diffuse Color", Color) = (0.5,0.5,0.5,1.0)
@@ -7,7 +7,7 @@ Shader "Zios/Standalone/Terrain"{
 	}
 	SubShader{
 		LOD 200
-		UsePass "Zios/Shadow Pass/Diffuse Map/SHADOWCASTER"
+		UsePass "Hidden/Zios/Shadow Pass/Diffuse Map/SHADOWCASTER"
 		Pass{
 			Tags{"LightMode"="ForwardBase"}
 			CGPROGRAM
@@ -83,5 +83,5 @@ Shader "Zios/Standalone/Terrain"{
 			ENDCG
 		}
 	}
-	Fallback "Zios/Fallback/Vertex Lit"
+	Fallback "Hidden/Zios/Fallback/Vertex Lit"
 }

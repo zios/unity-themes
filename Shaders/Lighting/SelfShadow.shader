@@ -1,4 +1,4 @@
-Shader "Zios/Lighting/Self Shadow"{
+Shader "Zios/(Components)/Lighting/Self Shadow"{
 	Properties{
 		selfShadowSpread("Self-Shadow Spread",Float) = 0
 		selfShadowContrast("Self-Shadow Contrast",Float) = 0

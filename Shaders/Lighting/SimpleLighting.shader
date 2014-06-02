@@ -1,4 +1,4 @@
-Shader "Hidden/Zios/Lighting/SimpleLighting"{
+Shader "Hidden/Zios/(Components)/Lighting/SimpleLighting"{
 	Properties{
 	}
 	SubShader{

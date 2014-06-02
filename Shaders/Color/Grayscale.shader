@@ -1,4 +1,4 @@
-Shader "Zios/Color/Grayscale"{
+Shader "Zios/(Components)/Color/Grayscale"{
 	Properties{
 		diffuseMap("Diffuse Map",2D) = "white"{}
 	}

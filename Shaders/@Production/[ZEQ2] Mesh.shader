@@ -1,4 +1,4 @@
-Shader "Zios/Standalone/Mesh"{
+Shader "Zios/ZEQ2/Mesh"{
 	Properties{
 		diffuseMap("Diffuse Map",2D) = "white"{}
 	}
@@ -50,5 +50,5 @@ Shader "Zios/Standalone/Mesh"{
 			ENDCG
 		}
 	}
-	Fallback "Zios/Fallback/Vertex Lit"
+	Fallback "Hidden/Zios/Fallback/Vertex Lit"
 }

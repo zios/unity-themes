@@ -1,4 +1,4 @@
-Shader "Zios/Mappings/Light Map"{
+Shader "Zios/(Components)/Mappings/Light Map"{
 	Properties{
 	}
 	SubShader{

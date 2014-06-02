@@ -1,4 +1,4 @@
-Shader "Zios/Lighting/Shading Atlas"{
+Shader "Zios/(Components)/Lighting/Shading Atlas"{
 	Properties{
 		shadingID("Shading ID",Float) = 128
 		shadingAtlas("Shading Atlas",2D) = "white"{}

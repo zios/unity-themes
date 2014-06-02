@@ -1,4 +1,4 @@
-Shader "Zios/Mappings/Normal Map"{
+Shader "Zios/(Components)/Mappings/Normal Map"{
 	Properties{
 		normalMap("Normal Map",2D) = "white"{}
 	}

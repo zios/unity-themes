@@ -1,4 +1,4 @@
-Shader "Zios/Color/Simple Alpha"{
+Shader "Zios/(Components)/Color/Simple Alpha"{
 	Properties{
 		alpha("Alpha",Range(0.0,1.0)) = 0.5
 	}
