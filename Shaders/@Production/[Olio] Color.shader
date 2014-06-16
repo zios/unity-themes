@@ -33,7 +33,7 @@ Shader "Zios/Olio/Solid Color"{
 			pixelOutput setupPixel(vertexOutput input){
 				pixelOutput output;
 				UNITY_INITIALIZE_OUTPUT(pixelOutput,output)
-				output.color = float4(0,0,0,0);
+				output.color = float4(0,0,0,1);
 				return output;
 			}
 			pixelOutput applyAlpha(vertexOutput input,pixelOutput output,float alpha){
