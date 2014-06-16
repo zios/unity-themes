@@ -27,12 +27,6 @@ Shader "Hidden/Zios/(Components)/Utility/Vertex Outlines"{
 			struct pixelOutput{
 				float4 color         : COLOR0;
 			};
-			pixelOutput pixelPassOutline(vertexOutput input){
-				pixelOutput output;
-				UNITY_INITIALIZE_OUTPUT(pixelOutput,output)
-				output.color = outlineColor;
-				return output;
-			}
 			vertexOutput vertexPassOutline(vertexInput input){ 
 				vertexOutput output;
 				UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
@@ -40,6 +34,12 @@ Shader "Hidden/Zios/(Components)/Utility/Vertex Outlines"{
 				float3 outline = input.vertex + input.normal * outlineLength;
 				output.pos = mul(UNITY_MATRIX_MVP,float4(outline,1));
 				output.UV.xy = float2(input.texcoord.x,input.texcoord.y);
+				return output;
+			}
+			pixelOutput pixelPassOutline(vertexOutput input){
+				pixelOutput output;
+				UNITY_INITIALIZE_OUTPUT(pixelOutput,output)
+				output.color = outlineColor;
 				return output;
 			}
 			ENDCG
@@ -68,12 +68,6 @@ Shader "Hidden/Zios/(Components)/Utility/Vertex Outlines"{
 			struct pixelOutput{
 				float4 color         : COLOR0;
 			};
-			pixelOutput pixelPassOutline(vertexOutput input){
-				pixelOutput output;
-				UNITY_INITIALIZE_OUTPUT(pixelOutput,output)
-				output.color = outlineColor;
-				return output;
-			}
 			vertexOutput vertexPassOutline(vertexInput input){ 
 				vertexOutput output;
 				UNITY_INITIALIZE_OUTPUT(vertexOutput,output)			
@@ -82,6 +76,12 @@ Shader "Hidden/Zios/(Components)/Utility/Vertex Outlines"{
                 outline.z = -0.4;
                 position = position + float4(normalize(outline),0) * outlineLength;
                 output.pos = mul(UNITY_MATRIX_P,position);			
+				return output;
+			}
+			pixelOutput pixelPassOutline(vertexOutput input){
+				pixelOutput output;
+				UNITY_INITIALIZE_OUTPUT(pixelOutput,output)
+				output.color = outlineColor;
 				return output;
 			}
 			ENDCG
@@ -111,11 +111,6 @@ Shader "Hidden/Zios/(Components)/Utility/Vertex Outlines"{
 			struct pixelOutput{
 				float4 color         : COLOR0;
 			};
-			pixelOutput pixelPassBlendOutline(vertexOutput input){
-				pixelOutput output;
-				output.color = lerp(tex2D(diffuseMap,TRANSFORM_TEX(input.UV.xy,diffuseMap)),outlineColor,outlineColor.a);
-				return output;
-			}
 			vertexOutput vertexPassOutline(vertexInput input){ 
 				vertexOutput output;
 				UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
@@ -123,6 +118,11 @@ Shader "Hidden/Zios/(Components)/Utility/Vertex Outlines"{
 				float3 outline = input.vertex + input.normal * outlineLength;
 				output.pos = mul(UNITY_MATRIX_MVP,float4(outline,1));
 				output.UV.xy = float2(input.texcoord.x,input.texcoord.y);
+				return output;
+			}
+			pixelOutput pixelPassBlendOutline(vertexOutput input){
+				pixelOutput output;
+				output.color = lerp(tex2D(diffuseMap,TRANSFORM_TEX(input.UV.xy,diffuseMap)),outlineColor,outlineColor.a);
 				return output;
 			}
 			ENDCG

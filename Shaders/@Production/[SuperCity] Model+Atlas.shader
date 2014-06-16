@@ -23,7 +23,7 @@ Shader "Zios/SuperCity/Model + Atlas"{
 			fixed4 atlasUVScale;
 			fixed4 paddingUV;
 			float2 clampRange(float2 min,float2 max,float2 value){return saturate((value-min)/(max-min));}
-			struct vertexInputTrimmed{
+			struct vertexInput{
 				float4 vertex        : POSITION;
 				float4 texcoord      : TEXCOORD0;
 				float3 normal        : NORMAL;

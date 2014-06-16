@@ -47,14 +47,14 @@ Shader "Zios/(Components)/Utility/UV Scroll"{
 				input = setupUVScroll(input,UVScrollX,UVScrollY,1);
 				return input;
 			}
-			pixelOutput pixelPass(vertexOutput input){
-				pixelOutput output = setupPixel(input);
-				input = setupUVScroll(input,timeConstant);
-				return output;
-			}
 			vertexOutput vertexPass(vertexInput input){
 				vertexOutput output;
 				output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
+				return output;
+			}
+			pixelOutput pixelPass(vertexOutput input){
+				pixelOutput output = setupPixel(input);
+				input = setupUVScroll(input,timeConstant);
 				return output;
 			}
 			ENDCG

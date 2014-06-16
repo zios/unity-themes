@@ -1,4 +1,4 @@
-Shader "Zios/SuperCity/Transparent + Scrolling"{
+Shader "Zios/Olio/Transparent + Scrolling"{
 	Properties{
 		diffuseMap("Diffuse Map",2D) = "white"{}
 		lerpColor("Lerp Color",Color) = (0,0,0,0)
@@ -7,15 +7,17 @@ Shader "Zios/SuperCity/Transparent + Scrolling"{
 		UVScrollY("UV Scroll Y",Float) = 0
 	}
 	SubShader{
-		Tags{"LightMode"="Always" "Queue"="Transparent+2"}
+		Tags{"LightMode"="ForwardBase" "Queue"="Transparent+2"}
 		ZWrite Off
 		Pass{
 			AlphaTest Greater 0
 			Blend SrcAlpha OneMinusSrcAlpha
 			CGPROGRAM
 			#include "UnityCG.cginc"
+			#include "AutoLight.cginc"
 			#pragma vertex vertexPass
 			#pragma fragment pixelPass
+			#pragma multi_compile_fwdbase
 			#pragma fragmentoption ARB_precision_hint_fastest
 			sampler2D diffuseMap;
 			fixed4 diffuseMap_ST;
@@ -45,6 +47,12 @@ Shader "Zios/SuperCity/Transparent + Scrolling"{
 				UNITY_INITIALIZE_OUTPUT(pixelOutput,output)
 				output.color = float4(0,0,0,0);
 				return output;
+			}
+			vertexOutput setupInput(vertexOutput input){
+				input.normal.xyz = normalize(input.normal.xyz);
+				input.lightNormal = normalize(input.lightNormal);
+				input.view = normalize(input.view);
+				return input;
 			}
 			vertexOutput setupLighting(vertexOutput input){
 				input.lighting = saturate(dot(input.normal.xyz,input.lightNormal));
@@ -94,6 +102,7 @@ Shader "Zios/SuperCity/Transparent + Scrolling"{
 			pixelOutput pixelPass(vertexOutput input){
 				pixelOutput output = setupPixel(input);
 				UNITY_INITIALIZE_OUTPUT(pixelOutput,output)
+				input = setupInput(input);
 				input = setupUVScroll(input,timeConstant);
 				input = setupLighting(input);
 				output = applyDiffuseMap(input,output);
@@ -103,5 +112,4 @@ Shader "Zios/SuperCity/Transparent + Scrolling"{
 			ENDCG
 		}
 	}
-	CustomEditor "ExtendedMaterialEditor"
 }

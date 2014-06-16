@@ -32,14 +32,14 @@ Shader "Zios/(Components)/Utility/Atlas"{
 				input.UV.xy = lerp(atlasUV.xy,atlasUV.zw,fmod(input.UV.xy*atlasUVScale.xy,1));
 				return input;
 			}
-			pixelOutput pixelPass(vertexOutput input){
-				pixelOutput output = setupPixel(input);
-				input = setupAtlas(input);
-				return output;
-			}
 			vertexOutput vertexPass(vertexInput input){
 				vertexOutput output;
 				output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
+				return output;
+			}
+			pixelOutput pixelPass(vertexOutput input){
+				pixelOutput output = setupPixel(input);
+				input = setupAtlas(input);
 				return output;
 			}
 			ENDCG

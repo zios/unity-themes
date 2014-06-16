@@ -1,16 +1,14 @@
-Shader "Zios/ZEQ2/Character"{
+Shader "Zios/Olio/Mesh + Scrolling"{
 	Properties{
-		outlineColor("Outline Color",Color) = (0.0,0.0,0.0,1.0)
-		outlineLength("Outline Length",float) = 0.004
-		indexMap("Index Map",2D) = "white"{}
-		shadingAtlas("Shading Atlas",2D) = "white"{}
-		outlineMap("Outline Map",2D) = "white"{}
-		normalMap("Normal Map",2D) = "white"{}
+		alpha("Alpha",Range(0.0,1.0)) = 1.0
+		diffuseMap("Diffuse Map",2D) = "white"{}
+		lerpColor("Lerp Color",Color) = (0,0,0,0)
+		lerpCutoff("Lerp Cutoff",Range(0,1)) = 0.8
+		UVScrollX("UV Scroll X",Float) = 0
+		UVScrollY("UV Scroll Y",Float) = 0
 	}
 	SubShader{
-		Tags{"LightMode"="ForwardBase"}
-		UsePass "Hidden/Zios/(Components)/Utility/Vertex Outlines/TEST"
-		Usepass "Hidden/Zios/Shadow Pass/Normal Index Map/SHADOWCOLLECTOR"
+		Tags{"LightMode"="ForwardBase" "Queue"="Transparent-1"}
 		Pass{
 			AlphaTest Greater 0
 			Blend SrcAlpha OneMinusSrcAlpha
@@ -19,19 +17,21 @@ Shader "Zios/ZEQ2/Character"{
 			#include "AutoLight.cginc"
 			#pragma vertex vertexPass
 			#pragma fragment pixelPass
+			#pragma multi_compile_fwdbase
 			#pragma fragmentoption ARB_precision_hint_fastest
-			sampler2D indexMap;
-			sampler2D normalMap;
-			sampler2D outlineMap;
-			sampler2D shadingAtlas;
-			fixed4 shadowColor;
-			fixed4 shadingAtlas_ST;
-			fixed shadingIndex;
-			fixed4 indexMap_ST;
-			fixed4 outlineMap_ST;			
-			fixed4 normalMap_ST;
-			fixed normalMapSpread;
-			fixed normalMapContrast;
+			sampler2D diffuseMap;
+			fixed4 diffuseMap_ST;
+			fixed4 lerpColor;
+			fixed lerpCutoff;
+			fixed alphaCutoff;
+			fixed alphaCutoffGlobal;
+			fixed alpha;
+			fixed4 shadingColor;
+			fixed shadingIgnoreCutoff;
+			fixed shadingSteps;
+			float timeConstant;
+			float UVScrollX;
+			float UVScrollY;
 			struct vertexInput{
 				float4 vertex        : POSITION;
 				float4 texcoord      : TEXCOORD0;
@@ -73,42 +73,44 @@ Shader "Zios/ZEQ2/Character"{
 				input.lighting = saturate(dot(lightDirection,input.lightNormal));
 				return input;
 			}
-			vertexOutput setupTangentSpace(vertexOutput input){
-				float3 binormal = cross(input.normal.xyz,input.tangent.xyz) * input.tangent.w;
-				float3x3 tangentRotate = float3x3(input.tangent.xyz,binormal,input.normal.xyz);
-				input.lightNormal = mul(tangentRotate,input.lightNormal);
+			vertexOutput setupUVScroll(vertexOutput input,float xScroll,float yScroll,float scale){
+				input.UV.x += (xScroll * scale);
+				input.UV.y += (yScroll * scale);
 				return input;
 			}
-			vertexOutput setupNormalMap(vertexOutput input){
-				input = setupTangentSpace(input);
-				fixed4 lookup = tex2D(normalMap,TRANSFORM_TEX(input.UV.xy,normalMap));
-				input.normal.xyz = (lookup.rgb*2)-1.0;
-				input.normal.w = lookup.a;
+			vertexOutput setupUVScroll(vertexOutput input,float xScroll,float yScroll){
+				input = setupUVScroll(input,xScroll,yScroll,timeConstant);
 				return input;
 			}
-			pixelOutput applyShadingAtlas(float shadeRow,vertexOutput input,pixelOutput output){
-				float2 shading = float2(input.lighting,shadeRow);
-				fixed4 lookup = tex2D(shadingAtlas,shading);
-				shadingIndex = shadeRow;
-				if(shadeRow == 0){clip(-1);}
-				output.color.rgb += lookup.rgb * lookup.a;
-				output.color.a = lookup.a;
+			vertexOutput setupUVScroll(vertexOutput input,float scale){
+				input = setupUVScroll(input,UVScrollX,UVScrollY,scale);
+				return input;
+			}
+			vertexOutput setupUVScroll(vertexOutput input){
+				input = setupUVScroll(input,UVScrollX,UVScrollY,1);
+				return input;
+			}
+			pixelOutput applyDiffuseMap(vertexOutput input,pixelOutput output){
+				output.color += tex2D(diffuseMap,TRANSFORM_TEX(input.UV.xy,diffuseMap));
 				return output;
 			}
-			pixelOutput applyShadingAtlas(sampler2D indexMap,vertexOutput input,pixelOutput output){
-				float shadeRow = 1.0 - tex2D(indexMap,TRANSFORM_TEX(input.UV.xy,indexMap)).r;
-				output = applyShadingAtlas(shadeRow,input,output);
+			pixelOutput applyLerpColor(vertexOutput input,pixelOutput output,fixed4 color,fixed cutoff){
+				if(length(output.color.rgb) >= cutoff){
+					output.color.rgb = lerp(output.color.rgb,color.rgb,color.a);
+				}
 				return output;
 			}
-			pixelOutput applyShadingAtlas(vertexOutput input,pixelOutput output){
-				float shadeRow = 1.0 - input.normal.a;
-				output = applyShadingAtlas(shadeRow,input,output);
+			pixelOutput applyLerpColor(vertexOutput input,pixelOutput output){
+				return applyLerpColor(input,output,lerpColor,lerpCutoff);
+			}
+			pixelOutput applyAlpha(vertexOutput input,pixelOutput output,float alpha){
+				output.color.a *= alpha;
+				if(alphaCutoff == 0){alphaCutoff = alphaCutoffGlobal;}
+				if(output.color.a <= alphaCutoff){clip(-1);}
 				return output;
 			}
-			pixelOutput applyOutlineMap(vertexOutput input,pixelOutput output){
-				float4 lookup = tex2D(outlineMap,TRANSFORM_TEX(input.UV.xy,outlineMap));
-				output.color.rgb = lerp(output.color.rgb,0,lookup.a);
-				return output;
+			pixelOutput applyAlpha(vertexOutput input,pixelOutput output){
+				return applyAlpha(input,output,alpha);
 			}
 			vertexOutput vertexPass(vertexInput input){
 				vertexOutput output;
@@ -126,14 +128,14 @@ Shader "Zios/ZEQ2/Character"{
 				pixelOutput output = setupPixel(input);
 				UNITY_INITIALIZE_OUTPUT(pixelOutput,output)
 				input = setupInput(input);
-				input = setupNormalMap(input);
+				input = setupUVScroll(input,timeConstant);
 				input = setupLighting(input);
-				output = applyShadingAtlas(indexMap,input,output);
-				output = applyOutlineMap(input,output);
+				output = applyDiffuseMap(input,output);
+				output = applyLerpColor(input,output);
+				output = applyAlpha(input,output);
 				return output;
 			}
 			ENDCG
 		}
 	}
-	Fallback "Hidden/Zios/Fallback/Vertex Lit"
 }

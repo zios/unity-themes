@@ -1,4 +1,4 @@
-Shader "Zios/Olio/Sprite"{
+Shader "Zios/SuperCity/Sprite"{
 	Properties{
 		alpha("Alpha",Range(0.0,1.0)) = 1.0
 		alphaCutoff("Alpha Cutoff",Range(0.0,1.0)) = 0
@@ -30,7 +30,7 @@ Shader "Zios/Olio/Sprite"{
 			fixed4 atlasUVScale;
 			fixed4 paddingUV;
 			float2 clampRange(float2 min,float2 max,float2 value){return saturate((value-min)/(max-min));}
-			struct vertexInputTrimmed{
+			struct vertexInput{
 				float4 vertex        : POSITION;
 				float4 texcoord      : TEXCOORD0;
 				float3 normal        : NORMAL;

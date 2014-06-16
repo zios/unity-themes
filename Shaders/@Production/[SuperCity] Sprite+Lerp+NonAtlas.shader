@@ -25,7 +25,7 @@ Shader "Zios/SuperCity/Sprite + Lerp + Non-Atlas"{
 			fixed alphaCutoff;
 			fixed alphaCutoffGlobal;
 			fixed alpha;
-			struct vertexInputTrimmed{
+			struct vertexInput{
 				float4 vertex        : POSITION;
 				float4 texcoord      : TEXCOORD0;
 				float3 normal        : NORMAL;

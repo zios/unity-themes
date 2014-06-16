@@ -1,4 +1,4 @@
-Shader "Zios/Olio/Sprite + Clip"{
+Shader "Zios/SuperCity/Sprite + Clip"{
 	Properties{
 		alpha("Alpha",Range(0.0,1.0)) = 1.0
 		diffuseMap("Diffuse Map",2D) = "white"{}
@@ -31,7 +31,7 @@ Shader "Zios/Olio/Sprite + Clip"{
 			fixed4 clipUV;
 			fixed4 paddingUV;
 			float2 clampRange(float2 min,float2 max,float2 value){return saturate((value-min)/(max-min));}
-			struct vertexInputTrimmed{
+			struct vertexInput{
 				float4 vertex        : POSITION;
 				float4 texcoord      : TEXCOORD0;
 				float3 normal        : NORMAL;

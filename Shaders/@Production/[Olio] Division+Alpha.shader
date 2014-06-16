@@ -1,48 +1,46 @@
-Shader "Zios/SuperCity/Sprite + Particle (Additive)"{
+Shader "Zios/Olio/Division + Alpha"{
 	Properties{
-		alpha("Alpha",Range(0.0,1.0)) = 1.0
-		alphaCutoff("Alpha Cutoff",Range(0.0,1.0)) = 0
+		intensity("Intensity",Range(0.0,2.0)) = 1.0
 		diffuseMap("Diffuse Map",2D) = "white"{}
-		diffuseColor("Diffuse Color",Color) = (1,1,1,1)
-		diffuseCutoff("Diffuse Cutoff",Range(0,1)) = 0
-		atlasUV("Atlas UV",Vector) = (0,0,1,1)
-		atlasUVScale("Atlas UV Scale",Vector) = (1,1,0,0)
-		paddingUV("Padding UV",Vector) = (0,0,1,1)
+		lerpColor("Lerp Color",Color) = (0,0,0,0)
+		lerpCutoff("Lerp Cutoff",Range(0,1)) = 0.8
+		UVScrollX("UV Scroll X",Float) = 0
+		UVScrollY("UV Scroll Y",Float) = 0
 	}
 	SubShader{
-		Tags{"LightMode"="Always" "Queue"="Transparent"}
+		Tags{"LightMode"="ForwardBase" "Queue"="Transparent+2"}
 		ZWrite Off
-		Cull Off
-		Blend One One
 		Pass{
+			AlphaTest Greater 0
+			Blend DstColor SrcColor 
 			CGPROGRAM
 			#include "UnityCG.cginc"
+			#include "AutoLight.cginc"
 			#pragma vertex vertexPass
 			#pragma fragment pixelPass
+			#pragma multi_compile_fwdbase
 			#pragma fragmentoption ARB_precision_hint_fastest
 			sampler2D diffuseMap;
 			fixed4 diffuseMap_ST;
-			fixed4 diffuseColor;
-			fixed diffuseCutoff;
+			fixed UVScrollX;
+			fixed UVScrollY;
+			float timeConstant;
+			fixed4 lerpColor;
+			fixed lerpCutoff;
+			fixed intensity;
 			fixed alphaCutoff;
 			fixed alphaCutoffGlobal;
 			fixed alpha;
-			fixed4 atlasUV;
-			fixed4 atlasUVScale;
-			fixed4 paddingUV;
-			float2 clampRange(float2 min,float2 max,float2 value){return saturate((value-min)/(max-min));}
 			struct vertexInput{
 				float4 vertex        : POSITION;
 				float4 texcoord      : TEXCOORD0;
-				float3 normal        : NORMAL;
 			};
 			struct vertexOutput{
 				float4 pos           : POSITION;
+				float4 UV            : COLOR0;
 				float3 lightNormal	 : TEXCOORD0;
 				float4 normal        : TEXCOORD1;
 				float3 view	         : TEXCOORD4;
-				float  lighting      : TEXCOORD5;
-				float4 UV            : COLOR0;
 			};
 			struct pixelOutput{
 				float4 color         : COLOR0;
@@ -53,12 +51,27 @@ Shader "Zios/SuperCity/Sprite + Particle (Additive)"{
 				output.color = float4(0,0,0,0);
 				return output;
 			}
-			vertexOutput setupPadding(vertexOutput input){
-				input.UV.xy = clampRange(paddingUV.xy,paddingUV.zw,input.UV.xy);
+			vertexOutput setupInput(vertexOutput input){
+				input.normal.xyz = normalize(input.normal.xyz);
+				input.lightNormal = normalize(input.lightNormal);
+				input.view = normalize(input.view);
 				return input;
 			}
-			vertexOutput setupAtlas(vertexOutput input){
-				input.UV.xy = lerp(atlasUV.xy,atlasUV.zw,fmod(input.UV.xy*atlasUVScale.xy,1));
+			vertexOutput setupUVScroll(vertexOutput input,float xScroll,float yScroll,float scale){
+				input.UV.x += (xScroll * scale);
+				input.UV.y += (yScroll * scale);
+				return input;
+			}
+			vertexOutput setupUVScroll(vertexOutput input,float xScroll,float yScroll){
+				input = setupUVScroll(input,xScroll,yScroll,timeConstant);
+				return input;
+			}
+			vertexOutput setupUVScroll(vertexOutput input,float scale){
+				input = setupUVScroll(input,UVScrollX,UVScrollY,scale);
+				return input;
+			}
+			vertexOutput setupUVScroll(vertexOutput input){
+				input = setupUVScroll(input,UVScrollX,UVScrollY,1);
 				return input;
 			}
 			pixelOutput applyDiffuseMap(vertexOutput input,pixelOutput output){
@@ -74,34 +87,33 @@ Shader "Zios/SuperCity/Sprite + Particle (Additive)"{
 			pixelOutput applyIntensity(vertexOutput input,pixelOutput output){
 				return applyIntensity(input,output,intensity);
 			}
-			pixelOutput applyDiffuseColor(vertexOutput input,pixelOutput output,float cutoff){
-				if(length(output.color.rgb) >= diffuseCutoff){
-					output.color.rgb *= (diffuseColor.rgb * diffuseColor.a);
+			pixelOutput applyLerpColor(vertexOutput input,pixelOutput output,fixed4 color,fixed cutoff){
+				if(length(output.color.rgb) >= cutoff){
+					output.color.rgb = lerp(output.color.rgb,color.rgb,color.a);
 				}
 				return output;
+			}
+			pixelOutput applyLerpColor(vertexOutput input,pixelOutput output){
+				return applyLerpColor(input,output,lerpColor,lerpCutoff);
 			}
 			vertexOutput vertexPass(vertexInput input){
 				vertexOutput output;
 				UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
 				output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
-				output.UV = input.texcoord;
-				output.lightNormal = ObjSpaceLightDir(input.vertex);
-				output.view = ObjSpaceViewDir(input.vertex);
-				output.normal = float4(input.normal,0);
+				output.UV = float4(input.texcoord.xy,0,0);
 				return output;
 			}
 			pixelOutput pixelPass(vertexOutput input){
 				pixelOutput output = setupPixel(input);
 				UNITY_INITIALIZE_OUTPUT(pixelOutput,output)
-				input = setupPadding(input);
-				input = setupAtlas(input);
+				input = setupInput(input);
+				input = setupUVScroll(input,timeConstant);
 				output = applyDiffuseMap(input,output);
-				output = applyDiffuseColor(input,output,diffuseCutoff);
-				output = applyIntensity(input,output,alpha);
+				output = applyLerpColor(input,output);
+				output = applyIntensity(input,output);
 				return output;
 			}
 			ENDCG
 		}
 	}
-	CustomEditor "ExtendedMaterialEditor"
 }

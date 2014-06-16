@@ -32,15 +32,15 @@ Shader "Zios/(Components)/Utility/Atlas Padding"{
 				input.UV.xy = clampRange(paddingUV.xy,paddingUV.zw,input.UV.xy);
 				return input;
 			}
-			pixelOutput pixelPass(vertexOutput input){
-				pixelOutput output = setupPixel(input);
-				input = setupPadding(input);
-				return output;
-			}
 			vertexOutput vertexPass(vertexInput input){
 				vertexOutput output;
 				output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
 				output.UV = float4(input.texcoord.x,input.texcoord.y,0,0);
+				return output;
+			}
+			pixelOutput pixelPass(vertexOutput input){
+				pixelOutput output = setupPixel(input);
+				input = setupPadding(input);
 				return output;
 			}
 			ENDCG

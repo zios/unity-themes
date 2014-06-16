@@ -1,4 +1,4 @@
-Shader "Zios/ZEQ2/Standalone/Terrain"{
+Shader "Zios/ZEQ2/Terrain"{
 	Properties{
 		shadowColor("Shadow Color", Color) = (0.0,0.0,0.0,1.0)
 		diffuseColor("Diffuse Color", Color) = (0.5,0.5,0.5,1.0)
