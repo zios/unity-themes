@@ -27,20 +27,22 @@ public class ImportSettings : AssetPostprocessor{
 	public void OnPreprocessTexture(){
 		TextureImporter importer = (TextureImporter)assetImporter;
 		importer.textureType = TextureImporterType.Advanced;
-		/*if(importer.textureFormat != TextureImporterFormat.AutomaticTruecolor){
+		if(importer.assetPath.Contains("Outlines")){
+			importer.wrapMode = TextureWrapMode.Clamp;
 			importer.textureFormat = TextureImporterFormat.AutomaticTruecolor;
 			importer.mipmapEnabled = false;
-			if(importer.assetPath.Contains("Index") || importer.assetPath.Contains("Shading")){
-				importer.filterMode = FilterMode.Point;
-				if(importer.assetPath.Contains("Shading")){
-					importer.wrapMode = TextureWrapMode.Clamp;
-				}
+		}
+		if(importer.assetPath.Contains("Index") || importer.assetPath.Contains("Shading")){
+			importer.filterMode = FilterMode.Point;
+			importer.wrapMode = TextureWrapMode.Clamp;
+			importer.mipmapEnabled = false;
+			if(importer.assetPath.Contains("Index")){
+				importer.textureFormat = TextureImporterFormat.ASTC_RGB_4x4;
 			}
-			if(importer.assetPath.Contains("Normal")){}
-			if(importer.assetPath.Contains("Atlas")){
-				//importer.isReadable = true;
+			if(importer.assetPath.Contains("Shading")){
+				importer.textureFormat = TextureImporterFormat.AutomaticTruecolor;
 			}
-		}*/
+		}
 	}
 	public void OnPreprocessAudio(){
 		AudioImporter importer = (AudioImporter)assetImporter;
