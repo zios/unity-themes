@@ -13,7 +13,7 @@ public class Force : MonoBehaviour{
 	public void Awake(){
 		Events.AddGet("GetVelocity",this.OnGetVelocity);
 		Events.Add("Collide",(MethodObject)this.OnCollide);
-		Events.Add("AddForce",this.OnAddForce);
+		Events.Add("AddForce",(MethodVector3) this.OnAddForce);
 		Events.Add("ScaleVelocity",this.OnScaleVelocity);
 		Events.Add("ResetVelocity",this.OnResetVelocity);
 		Events.Add("EnableForces",this.OnEnableForces);

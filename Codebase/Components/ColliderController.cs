@@ -39,7 +39,7 @@ public class ColliderController : MonoBehaviour{
 	public float skinWidth = 0;
 	public bool persistentBlockChecks;
 	public void Awake(){
-		Events.Add("AddMove",this.OnMove);
+		Events.Add("AddMove",(MethodVector3) this.OnMove);
 		Events.Add("ResetMove",this.OnResetMove);
 		this.ResetBlocked(true);
 	}

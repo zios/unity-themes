@@ -7,7 +7,7 @@ public class Gravity : MonoBehaviour{
 	public Vector3 intensity = new Vector3(0,-9.8f,0);
 	public MFloat scale = 1.0f;
 	public void Awake(){
-		Events.Add("SetGravityScale",this.OnSetGravityScale);
+		Events.Add("SetGravityScale",(MethodFloat) this.OnSetGravityScale);
 		Events.Add("DisableGravity",this.OnDisableGravity);
 		Events.Add("EnableGravity",this.OnEnableGravity);
 	}
