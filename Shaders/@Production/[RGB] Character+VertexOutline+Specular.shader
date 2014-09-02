@@ -5,10 +5,15 @@ Shader "Zios/RGB/Character + Vertex Outlines + Specular"{
 		indexMap("Index Map",2D) = "white"{}
 		shadingAtlas("Shading Atlas",2D) = "white"{}
 		outlineMap("Outline Map",2D) = "white"{}
-		normalMap("Normal Map",2D) = "white"{}
-		specularSize("Specular Size",Range(0.0,30)) = 0.00
-		specularHardness("Specular Hardness",Range(0.01,1)) = 0.01
-		specularColor("Specular Color",Color) = (1,1,1,1)
+		//normalMap("Normal Map",2D) = "white"{}
+		specularASize("Specular A Size",Range(0.0,1)) = 0.00
+		//specularAIntensity("Specular A Intensity",float) = 1.0
+		//specularAHardness("Specular A Hardness",Range(0.01,1)) = 0.01
+		specularAColor("Specular A Color",Color) = (1,1,1,1)
+		specularBSize("Specular B Size",Range(0.0,1)) = 0.00
+		//specularBIntensity("Specular B Intensity",float) = 1.0
+		//specularBHardness("Specular B Hardness",Range(0.01,1)) = 0.01
+		specularBColor("Specular B Color",Color) = (1,1,1,1)
 	}
 	SubShader{
 		Tags{"LightMode"="ForwardBase" "Queue"="Geometry-1"}
@@ -40,6 +45,15 @@ Shader "Zios/RGB/Character + Vertex Outlines + Specular"{
 			fixed4 specularColor;
 			fixed specularSize;
 			fixed specularHardness;
+			fixed specularIntensity;
+			fixed4 specularAColor;
+			fixed specularASize;
+			fixed specularAHardness;
+			fixed specularAIntensity;
+			fixed4 specularBColor;
+			fixed specularBSize;
+			fixed specularBHardness;
+			fixed specularBIntensity;
 			float3 lightOffset;
 			struct vertexInput{
 				float4 vertex        : POSITION;
@@ -119,18 +133,15 @@ Shader "Zios/RGB/Character + Vertex Outlines + Specular"{
 				output.color.rgb = lerp(output.color.rgb,0,lookup.a);
 				return output;
 			}
-			pixelOutput applySpecularFull(vertexOutput input,pixelOutput output){
-				float3 reflect = normalize(2*input.lighting*input.normal-input.lightNormal.xyz);
-				float intensity = pow(saturate(dot(reflect,input.view)),10/specularSize);
-				output.color.rgb += specularColor * intensity;
-				return output;
-			}
-			pixelOutput applySpecular(vertexOutput input,pixelOutput output){
+			pixelOutput applySpecular(vertexOutput input,pixelOutput output,fixed specularSize,fixed specularIntensity,fixed specularHardness,fixed4 specularColor){
 				float3 reflect = normalize(input.lightNormal + input.view);
 				float intensity = pow(saturate(dot(input.normal,reflect)),10/specularSize);
 				intensity = floor((intensity / specularHardness)+0.5) * specularHardness;
-				output.color.rgb += specularColor * intensity;
+				output.color.rgb += specularColor * intensity * specularIntensity;
 				return output;
+			}
+			pixelOutput applySpecular(vertexOutput input,pixelOutput output){
+				return applySpecular(input,output,specularSize,specularIntensity,specularHardness,specularColor);
 			}
 			vertexOutput vertexPass(vertexInput input){
 				vertexOutput output;
@@ -148,11 +159,12 @@ Shader "Zios/RGB/Character + Vertex Outlines + Specular"{
 				pixelOutput output = setupPixel(input);
 				UNITY_INITIALIZE_OUTPUT(pixelOutput,output)
 				input = setupInput(input);
+				//input = setupNormalMap(input);
 				input = setupLighting(input);
-				input = setupNormalMap(input);
 				output = applyShadingAtlas(indexMap,input,output);
 				output = applyOutlineMap(input,output);
-				output = applySpecular(input,output);
+				output = applySpecular(input,output,specularASize,1.0f,0.01f,specularAColor);
+				output = applySpecular(input,output,specularBSize,1.0f,0.01f,specularBColor);
 				return output;
 			}
 			ENDCG
