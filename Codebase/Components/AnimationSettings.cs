@@ -2,54 +2,46 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-[ExecuteInEditMode]
-[RequireComponent(typeof(Animation))]
 [AddComponentMenu("Zios/Component/Animation/Animation Settings")]
+[ExecuteInEditMode]
 public class AnimationSettings : MonoBehaviour{
-	public List<AnimationConfig> configs = new List<AnimationConfig>();
+	public List<AnimationConfiguration> animations = new List<AnimationConfiguration>();
 	public void Start(){
-		foreach(AnimationConfig config in this.configs){
-			config.Apply();
+		if(gameObject.animation != null){
+			foreach(AnimationConfiguration configuration in this.animations){
+				configuration.Apply(gameObject.animation);
+			}
 		}
 	}
 	public void Update(){
-		if(this.configs.Count != this.animation.GetClipCount()){
-			foreach(AnimationConfig config in this.configs.Copy()){
-				if(this.animation[config.name]){
-					
-				}
-				else{
-					this.configs.Remove(config);
-				}
-			}
-			foreach(AnimationState animation in this.animation){
-				
-				AnimationConfig config = new AnimationConfig(animation);
-				this.configs.Add(config);
+		if(this.animations.Count == 0 && gameObject.animation != null){
+			foreach(AnimationState animationState in gameObject.animation){
+				this.animations.Add(AnimationConfiguration.FromAnimation(animationState));
 			}
 		}
 	}
 }
 [Serializable]
-public class AnimationConfig{
-	public string GUID;
+public class AnimationConfiguration{
 	public string name;
 	public float fps;
 	public AnimationBlendMode blendMode;
 	public WrapMode wrapMode;
-	private AnimationState state;
-	public AnimationConfig(AnimationState state){
-		this.name = state.name;
-		this.fps = state.clip.frameRate;
-		this.blendMode = state.blendMode;
-		this.wrapMode = state.clip.wrapMode;
-		this.state = state;
+	private AnimationState animationState;
+	public static AnimationConfiguration FromAnimation(AnimationState animationState){
+		AnimationConfiguration configuration = new AnimationConfiguration();
+		configuration.name = animationState.name;
+		configuration.fps = animationState.clip.frameRate;
+		configuration.blendMode = animationState.blendMode;
+		configuration.wrapMode = animationState.clip.wrapMode;
+		return configuration;
 	}
-	public void Apply(){
-		if(this.state != null){
-			state.speed = this.fps / this.state.clip.frameRate;
-			state.blendMode = this.blendMode;
-			state.clip.wrapMode = this.wrapMode;
+	public void Apply(Animation animation){
+		AnimationState animationState = animation[this.name];
+		if(animationState != null){
+			animationState.speed = this.fps / animationState.clip.frameRate;
+			animationState.blendMode = this.blendMode;
+			animationState.clip.wrapMode = this.wrapMode;
 		}
 	}
 }

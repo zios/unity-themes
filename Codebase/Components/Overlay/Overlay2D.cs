@@ -3,6 +3,7 @@ using System.Collections;
 [ExecuteInEditMode]
 [AddComponentMenu("Zios/Component/Overlay/Image")]
 public class Overlay2D: OverlayBase{
+	public static Texture2D placeholder;
 	public static Overlay2D Get(string name){return Overlay.Get<Overlay2D>(name);}
 	public Vector2 tiling = Vector2.one;
 	public Texture2D texture;
@@ -15,17 +16,30 @@ public class Overlay2D: OverlayBase{
 				this.UpdateRender();
 				this.lastTiling = this.tiling;
 			}
+			Debug.Log(this.area);
 			Graphics.DrawTexture(this.area,this.texture,this.material);
 		}
 	}
 	public override void UpdateRender(){
-		base.UpdateRender();
-		bool atlasTile = this.material.HasProperty("atlasUVScale");
-		if(atlasTile){this.material.SetVector("atlasUVScale",this.tiling);}
-		else{this.material.SetTextureScale("diffuseMap",this.tiling);}
-		if(this.texture == null){
-			this.texture = (Texture2D)Resources.LoadAssetAtPath("Assets/Interface/Patterns/Transparency.png",typeof(Texture2D));
+		if(Overlay2D.placeholder == null){
+			Overlay2D.placeholder = (Texture2D)Resources.LoadAssetAtPath("Assets/Interface/Patterns/Transparency.png",typeof(Texture2D));
 		}
-		this.area = new Rect(this.position.x,this.position.y,this.size.x*this.tiling.x,this.size.y*this.tiling.y);
+		base.UpdateRender();
+		Vector2 size = this.size;
+		bool atlasTile = this.material.HasProperty("atlasUVScale");
+		string targetMap = this.material.HasProperty("diffuseMap") ? "diffuseMap" : "_MainTex";
+		if(this.texture == null){
+			this.texture = Overlay2D.placeholder;
+		}
+		this.material.SetTexture(targetMap,this.texture);
+		if(atlasTile){
+			this.material.SetVector("atlasUVScale",this.tiling);
+			size.x *= this.tiling.x;
+			size.y *= this.tiling.y;
+		}
+		else{
+			this.material.SetTextureScale(targetMap,this.tiling);
+		}
+		this.area = new Rect(this.position.x,this.position.y,size.x,size.y);
 	}
 }

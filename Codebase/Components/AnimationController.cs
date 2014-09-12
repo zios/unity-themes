@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 [RequireComponent(typeof(Animation))]
 [AddComponentMenu("Zios/Component/Animation/Animation Controller")]
@@ -20,6 +21,7 @@ public class AnimationController : MonoBehaviour{
 	public bool highestPriorityOnly = true;
 	public int defaultPriority = 1;
 	public AnimationData defaultAnimation;
+	public AnimationData currentAnimation;
 	public List<AnimationData> animations = new List<AnimationData>();
 	public Dictionary<string,AnimationData> current = new Dictionary<string,AnimationData>();
 	public Dictionary<string,AnimationData> lookup = new Dictionary<string,AnimationData>();
@@ -62,6 +64,7 @@ public class AnimationController : MonoBehaviour{
 		if(this.current.Count == 0){
 			this.Play(this.defaultAnimation);
 		}
+		this.currentAnimation = this.current.First().Value;
 	}
 	//=====================
 	// Events

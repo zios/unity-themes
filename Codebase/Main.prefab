@@ -427,7 +427,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_ActuallyLightmapped: 1
-  m_Flare: {fileID: 12100000, guid: c86b87f4efc500843ae4b31b1549895a, type: 2}
+  m_Flare: {fileID: 0}
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
@@ -571,6 +571,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   visible: 1
   name: FPS
+  autoScale: 1
   depth: 1000
   position: {x: 1160.35999, y: 0}
   size: {x: 120, y: 30}
@@ -688,13 +689,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b22fb4f4aa33d2747bf5d7d4f58d6e11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effects:
+  prefabs:
   - name: 
-    maximum: 0
-    flat: 0
-    loop: 0
-    offset: {x: 0, y: 0, z: 0}
     prefab: {fileID: 0}
+    offset: {x: 0, y: 0, z: 0}
+    scale: {x: 1, y: 1, z: 1}
+    maximum: 8
+    uniqueMaterial: 0
+  - name: 
+    prefab: {fileID: 0}
+    offset: {x: 0, y: 0, z: 0}
+    scale: {x: 1, y: 1, z: 1}
+    maximum: 8
+    uniqueMaterial: 0
+  - name: 
+    prefab: {fileID: 0}
+    offset: {x: 0, y: 0, z: 0}
+    scale: {x: 1, y: 1, z: 1}
+    maximum: 8
+    uniqueMaterial: 0
+  - name: 
+    prefab: {fileID: 0}
+    offset: {x: 0, y: 0, z: 0}
+    scale: {x: 1, y: 1, z: 1}
+    maximum: 8
+    uniqueMaterial: 0
 --- !u!114 &11400020
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -706,11 +725,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 657cc3059dfa22541943a46ac6cbc27f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scenes:
-  - Landing
+  targetFPS: -1
   pixelSnap: 000000
-  sectionContainer: {fileID: 0}
-  shaderAlphaCutoff: .300000012
 --- !u!114 &11400022
 MonoBehaviour:
   m_ObjectHideFlags: 1

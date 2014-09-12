@@ -19,14 +19,14 @@ public class AnimationSettingsEditor : Editor{
 	}
 	public class ApplyChangesAction : ListAction{
 		public override void OnAction(UnityEngine.Object target,object targetItem){
-			((AnimationConfig)targetItem).Apply();
+			((AnimationConfiguration)targetItem).Apply(((AnimationSettings)target).gameObject.animation);
 		}
 	}
 	public class PlayAnimationAction : ListAction{
-		public AnimationConfig activeAnimation;
+		public AnimationConfiguration activeAnimation;
 		public float animationTime = 0;
 		public override void OnAction(UnityEngine.Object target,object targetItem){
-			AnimationConfig configuration = (AnimationConfig)targetItem;
+			AnimationConfiguration configuration = (AnimationConfiguration)targetItem;
 			bool isPlaying = this.activeAnimation == configuration;
 			if(isPlaying && GUILayout.Button("Stop")){
 				this.activeAnimation = null;
@@ -73,7 +73,7 @@ public class AnimationSettingsEditor : Editor{
 		}
 		public override List<object> GetList(){
 			List<object> elements = new List<object>();
-			foreach(AnimationConfig configuration in ((AnimationSettings)target).configs){
+			foreach(AnimationConfiguration configuration in ((AnimationSettings)target).animations){
 				elements.Add(configuration);
 			}
 			return elements;

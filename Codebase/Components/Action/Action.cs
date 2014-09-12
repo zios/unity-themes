@@ -64,6 +64,7 @@ namespace Zios{
 				this.gameObject.Call("UpdateParts");
 			}
 			if(this.usable){this.Use();}
+			else if(this.inUse){this.End();}
 		}
 		public void DefaultPriority(int priority){
 			if(this.priority == -1){
