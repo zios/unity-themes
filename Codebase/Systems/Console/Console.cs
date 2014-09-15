@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Collections;
 using System.Collections.Generic;
+using UnityInput = UnityEngine.Input;
 namespace Zios{
 	public delegate void ConsoleMethod(string[] values);
 	public delegate void ConsoleMethodFull(string[] values,bool help);
@@ -652,10 +653,10 @@ namespace Zios{
 		public static void CheckDrag(){
 			float consoleHeight = (Screen.height * Console.offset)*Console.settings.height;
 			Rect dragBounds = new Rect(0,consoleHeight+Console.settings.inputBackground.height-9,Screen.width,9);
-			Vector3 mouse = Input.mousePosition;
+			Vector3 mouse = UnityInput.mousePosition;
 			mouse[1] = Screen.height - mouse[1];
 			if(Console.dragStart != Vector3.zero){
-				if(!Input.GetMouseButton(0)){
+				if(!UnityInput.GetMouseButton(0)){
 					Console.dragStart = Vector3.zero;
 				}
 				else{
@@ -663,7 +664,7 @@ namespace Zios{
 					Console.settings.height = Console.dragStart[2] + (changed.y/Screen.height);
 				}
 			}
-			else if(Input.GetMouseButtonDown(0)){
+			else if(UnityInput.GetMouseButtonDown(0)){
 				if(dragBounds.ContainsPoint(mouse)){
 					Console.dragStart = mouse;
 					Console.dragStart[2] = Console.settings.height;
