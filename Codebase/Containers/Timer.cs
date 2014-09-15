@@ -21,4 +21,10 @@ public class Timer{
 		this.complete = time >= endTime;
 		return this.curve.Evaluate(elapsed);
 	}
+	public Timer Copy(){
+		Timer copy = new Timer();
+		copy.duration = this.duration;
+		copy.curve = this.curve;
+		return copy;
+	}
 }

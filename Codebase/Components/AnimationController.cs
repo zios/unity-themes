@@ -2,24 +2,27 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-[RequireComponent(typeof(Animation))]
-[AddComponentMenu("Zios/Component/Animation/Animation Controller")]
 [Serializable]
 public class AnimationData{
 	public string name;
 	public int priority = -1;
 	public float holdDuration = -1;
+	public AnimationData currentAnimation;
 	[NonSerialized] public bool active;
 	[NonSerialized] public float holdTime = -1;
+	[NonSerialized] public float weight = 1;
 	public AnimationData(string name,int priority=-1,float hold=-1){
 		this.name = name;
 		this.priority = priority;
 		this.holdDuration = hold;
 	}
 }
+[RequireComponent(typeof(Animation))][AddComponentMenu("Zios/Component/Animation/Animation Controller")]
 public class AnimationController : MonoBehaviour{
 	public bool highestPriorityOnly = true;
 	public int defaultPriority = 1;
+	public float transitionIn = 0.3f;
+	public float transitionOut = 0.3f;
 	public AnimationData defaultAnimation;
 	public AnimationData currentAnimation;
 	public List<AnimationData> animations = new List<AnimationData>();
@@ -42,6 +45,7 @@ public class AnimationController : MonoBehaviour{
 		}
 		Events.Add("SetAnimation",this.OnSet);
 		Events.Add("SetAnimationSpeed",this.OnSetSpeed);
+		Events.Add("SetAnimationWeight",this.OnSetWeight);
 		Events.Add("SetAnimationHold",this.OnSetHold);
 		Events.Add("PlayAnimation",this.OnPlay);
 		Events.Add("StopAnimation",this.OnStop);
@@ -55,7 +59,7 @@ public class AnimationController : MonoBehaviour{
 				if(!current.active){
 					if(Time.time > current.holdTime){current.holdTime = -1;}
 					if(current.holdTime == -1){
-						this.animation.Stop(data.name);
+						this.animation.Blend(data.name,0,this.transitionOut);
 						this.current.Remove(data.name);
 					}
 				}
@@ -100,6 +104,11 @@ public class AnimationController : MonoBehaviour{
 		float speed = (float)values[1];
 		this.SetSpeed(name,speed);
 	}
+	public void OnSetWeight(object [] values){
+		string name = (string)values[0];
+		float weight = (float)values[1];
+		this.SetWeight(name,weight);
+	}
 	public void OnSetHold(object[] values){
 		string name =(string)values[0]; 
 		bool state = (bool)values[1];
@@ -115,14 +124,15 @@ public class AnimationController : MonoBehaviour{
 		if(exists && !active){
 			if(this.highestPriorityOnly){
 				if(priority == -1){priority = this.lookup[name].priority;}
+				this.Stop(this.defaultAnimation.name);
 				foreach(var item in this.current){
 					if(item.Value.priority > priority){return;}
-					item.Value.active = false;
 				}
 			}
-			this.animation.Play(name);
+			
 			this.current[name] = this.lookup[name]; 
 			this.current[name].active = true;
+			this.animation.Blend(name,1,this.transitionIn);
 		}
 	}
 	public void Play(AnimationData data){
@@ -168,7 +178,14 @@ public class AnimationController : MonoBehaviour{
 		this.Stop(name);
 	}
 	public void SetSpeed(string name,float speed){
-		this.animation[name].speed = speed;
+		if(this.animation[name]){
+			this.animation[name].speed = speed;
+		}
+	}
+	public void SetWeight(string name,float weight){
+		if(this.animation[name]){
+			this.animation[name].weight = weight;
+		}
 	}
 	public void SetHold(string name,bool state,float duration){
 		if(state){

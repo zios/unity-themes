@@ -90,14 +90,16 @@ public class StateControllerEditor : Editor{
 		StateRequirement requirement = (StateRequirement)field.target;
 		GUIStyle style = GUI.skin.button;
 		if(requirement.requireOn){
-			value = "✓";
+			value = requirement.index == 0 ? "✓" : requirement.index.ToString();
 			field.empty = false;
 			style = GUI.skin.GetStyle("buttonOn");
+			style.padding.left = requirement.index == 0 ? 6 : 8;
 		}
 		else if(requirement.requireOff){
-			value = "X";
+			value = requirement.index == 0 ? "X" : requirement.index.ToString();
 			field.empty = false;
 			style = GUI.skin.GetStyle("buttonOff");
+			style.padding.left = requirement.index == 0 ? 8 : 8;
 		}
 		if(field.selected){
 			style = new GUIStyle(style);
@@ -107,19 +109,24 @@ public class StateControllerEditor : Editor{
 			field.onClick(field);
 		}
 	}
-	public void OnClickHeader(TableHeaderItem header){
-	}
+	public void OnClickHeader(TableHeaderItem header){}
 	public void OnClickField(TableField field){
 		//field.selected = true;
 		int state = 0;
 		StateRequirement requirement = (StateRequirement)field.target;
+		int index = requirement.index;
 		if(requirement.requireOn){
 			state = 1;
 		}
 		if(requirement.requireOff){
 			state = 2;
 		}
-		state += Event.current.button == 0 ? 1 : -1;
+		int amount = Event.current.button == 0 ? 1 : -1;
+		state += amount;
+		//if(state == 0 && index != 0){state += amount;}
+		if(state == -1){index -= 1;}
+		if(state == 3){index += 1;}
+		requirement.index = Mathf.Clamp(index,0,9);
 		state = state.Modulus(3);
 		requirement.requireOn = false;
 		requirement.requireOff = false;
@@ -171,15 +178,15 @@ public class StateControllerEditor : Editor{
 		}
 		if(Event.current.button == 1){
 			GenericMenu menu = new GenericMenu();
-			string label = "End if unusable";
-			if(stateRow.endIfUnusable){
+			string label = "Persist While Unusable";
+			if(stateRow.persistWhileUnusable){
 				label = "✓ " + label;
 			}
-			GUIContent endIfUnusableField = new GUIContent(label);
+			GUIContent persistWhileUnusableField = new GUIContent(label);
 			GUIContent moveUp = new GUIContent("↑ Move Up");
 			GUIContent moveDown = new GUIContent("↓ Move Down");
 			menu.AddItem(moveUp,false,new GenericMenu.MenuFunction2(this.MoveItemUp),stateRow);
-			menu.AddItem(endIfUnusableField,false,new GenericMenu.MenuFunction2(this.ChangeEndIfUnusable),stateRow);
+			menu.AddItem(persistWhileUnusableField,false,new GenericMenu.MenuFunction2(this.ChangePersistWhileUnusable),stateRow);
 			menu.AddItem(moveDown,false,new GenericMenu.MenuFunction2(this.MoveItemDown),stateRow);
 			menu.ShowAsContext();
 		}
@@ -206,9 +213,9 @@ public class StateControllerEditor : Editor{
 	public void MoveItemDown(object target){
 		this.MoveItem(1,target);
 	}
-	public void ChangeEndIfUnusable(object target){
+	public void ChangePersistWhileUnusable(object target){
 		StateRow row = (StateRow)target;
-		row.endIfUnusable = !row.endIfUnusable;
+		row.persistWhileUnusable = !row.persistWhileUnusable;
 		EditorUtility.SetDirty(row.controller);
 	}
 }

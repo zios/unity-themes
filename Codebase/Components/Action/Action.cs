@@ -11,20 +11,26 @@ namespace Zios{
 		[NonSerialized] public GameObject owner;
 		private string typeName;
 		public virtual void Start(){
-			this.owner = this.gameObject.GetComponentInParents<StateController>().gameObject;
+			StateController stateController = this.gameObject.GetComponentInParents<StateController>();
+			if(stateController == null){
+				Debug.LogError("Action ("+this.transform.name+") -- No parent StateController component found.");
+				return;
+			}
+			this.owner = stateController.gameObject;
 			string type = this.typeName = this.GetType().ToString();
 			Events.AddGet("Is"+type+"Active",this.GetActive);
 			Events.AddGet("Is"+type+"Usable",this.GetUsable);
 			Events.Add("Disable"+type,this.OnEnableAction);
 			Events.Add("Enable"+type,this.OnDisableAction);
+			this.owner.Call("UpdateStates");
+			this.owner.CallChildren("UpdateParts");
 			this.SetDirty(true);
 		}
 		public virtual void FixedUpdate(){
-			if(Action.dirty[this.gameObject]){
+			if(Action.dirty.ContainsKey(this.gameObject) && Action.dirty[this.gameObject]){
 				this.SetDirty(false);
-				ActionPart.dirty[this] = false;
-				this.owner.Call("UpdateStates");
-				this.owner.CallChildren("UpdateParts");
+				Action.dirty[this.gameObject] = false;
+				this.gameObject.Call("UpdateParts");
 			}
 			if(this.usable && this.ready){this.Use();}
 		}
@@ -39,16 +45,17 @@ namespace Zios{
 		public override void Toggle(bool state){
 			if(state != this.inUse){
 				string active = this.inUse ? "Deactivate" : "Activate";
-				this.gameObject.CallChildren("Action"+active,this);
-				this.gameObject.CallChildren(this.typeName+active,this);
+				this.gameObject.Call("Action"+active,this);
+				this.gameObject.Call(this.typeName+active,this);
 				this.inUse = state;
 				this.SetDirty(true);
+				this.owner.Call("UpdateStates");
 			}
 		}
 	}
 	[AddComponentMenu("")][RequireComponent(typeof(Action))]
 	public class ActionPart : StateMonoBehaviour{
-		static public Dictionary<Action,bool> dirty = new Dictionary<Action,bool>();
+		static public Dictionary<ActionPart,bool> dirty = new Dictionary<ActionPart,bool>();
 		[NonSerialized] public Action action;
 		[HideInInspector] public int priority = -1;
 		public override string GetInterfaceType(){return "ActionPart";}
@@ -59,7 +66,7 @@ namespace Zios{
 			this.SetDirty(true);
 		}
 		public virtual void FixedUpdate(){
-			if(ActionPart.dirty[this.action]){
+			if(ActionPart.dirty[this]){
 				this.SetDirty(false);
 				this.gameObject.Call("UpdateParts");
 			}
@@ -71,7 +78,7 @@ namespace Zios{
 				this.priority = priority;
 			}
 		}
-		public void SetDirty(bool state){ActionPart.dirty[this.action] = state;}
+		public void SetDirty(bool state){ActionPart.dirty[this] = state;}
 		public virtual void OnActionStart(){}
 		public virtual void OnActionEnd(){}
 		public override void Use(){this.Toggle(true);}

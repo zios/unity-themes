@@ -35,8 +35,7 @@ public class ColliderController : MonoBehaviour{
 	public bool[] freezePosition = new bool[3]{false,false,false};
 	public float maxStepHeight = 0;
 	public float maxSlopeHeight = 0;
-	public float hoverWidth = 0.02f;
-	public float skinWidth = 0;
+	public float hoverDistance = 0.02f;
 	public bool persistentBlockChecks;
 	public void Awake(){
 		Events.Add("AddMove",(MethodVector3) this.OnMove);
@@ -79,19 +78,19 @@ public class ColliderController : MonoBehaviour{
 				Vector3 startPosition = this.rigidbody.position;
 				Vector3 direction = move.normalized;
 				float distance = Vector3.Distance(startPosition,startPosition+move);
-				bool contact = this.rigidbody.SweepTest(direction,out hit,distance+this.hoverWidth);
+				bool contact = this.rigidbody.SweepTest(direction,out hit,distance+(this.hoverDistance*2));
 				bool isTrigger = ColliderController.HasTrigger(hit.collider);
 				if(contact && this.maxStepHeight != 0 && !isTrigger && move.y == 0){
-					bool onGround = this.rigidbody.SweepTest(-this.transform.up,out stepHit,this.hoverWidth+0.01f);
+					bool onGround = this.rigidbody.SweepTest(-this.transform.up,out stepHit,(this.hoverDistance*2));
 					if(onGround){
-						Func<float,float> GetDistance = x => Mathf.Clamp(x-this.hoverWidth,this.hoverWidth,Mathf.Infinity);
+						Func<float,float> GetDistance = x => Mathf.Clamp(x-this.hoverDistance,this.hoverDistance,Mathf.Infinity);
 						this.rigidbody.position = startPosition + (this.transform.up * this.maxStepHeight);
-						if(!this.rigidbody.SweepTest(direction,out stepHit,distance+this.hoverWidth)){
-							float stepDistance = this.maxStepHeight+this.hoverWidth;
+						if(!this.rigidbody.SweepTest(direction,out stepHit,distance+this.hoverDistance)){
+							float stepDistance = this.maxStepHeight+this.hoverDistance;
 							this.rigidbody.position += direction * GetDistance(stepHit.distance);
 							bool canStep = this.rigidbody.SweepTest(-this.transform.up,out stepHit,stepDistance);
 							if(canStep){
-								this.rigidbody.position += (-this.transform.up * (stepHit.distance-this.hoverWidth));
+								this.rigidbody.position += (-this.transform.up * (stepHit.distance-this.hoverDistance));
 								continue;
 							}
 						}
@@ -103,7 +102,7 @@ public class ColliderController : MonoBehaviour{
 						hit.transform.gameObject.Call("Trigger",this.collider);
 						continue;
 					}
-					this.rigidbody.position += direction * (hit.distance-this.hoverWidth);
+					this.rigidbody.position += direction * (hit.distance-this.hoverDistance);
 					CollisionData otherCollision = new CollisionData(this,this.gameObject,-direction,distance,false);
 					CollisionData selfCollision = new CollisionData(this,hit.transform.gameObject,direction,distance,true);
 					if(direction.z > 0){this.blocked["forward"] = true;}
@@ -141,7 +140,7 @@ public class ColliderController : MonoBehaviour{
 		if(this.persistentBlockChecks){
 			RaycastHit hit;
 			this.rigidbody.WakeUp();
-			float distance = this.hoverWidth + 0.01f;
+			float distance = this.hoverDistance + 0.01f;
 			this.blocked["forward"] = this.rigidbody.SweepTest(this.transform.forward,out hit,distance);
 			this.blocked["back"] = this.rigidbody.SweepTest(-this.transform.forward,out hit,distance);
 			this.blocked["up"] = this.rigidbody.SweepTest(this.transform.up,out hit,distance*10);

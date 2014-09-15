@@ -8,7 +8,7 @@ using ActionPart = Zios.ActionPart;
 [RequireComponent(typeof(Action))]
 [ExecuteInEditMode][AddComponentMenu("Zios/Component/Action/Action Controller")]
 public class ActionController : StateController{
-	public Action action;
+	private Action action;
 	public override void Reset(){
 		this.action = null;
 		base.Reset();
@@ -19,7 +19,7 @@ public class ActionController : StateController{
 			this.action = this.GetComponent<Action>();
 			setup = true;
 		}
-		if(this.action != null){
+		if(setup){
 			Events.Add("UpdateParts",this.UpdateStates);
 			if(Application.isEditor){
 				this.UpdateBase();
@@ -28,8 +28,6 @@ public class ActionController : StateController{
 				this.UpdateRequirements("@Usable","@InUse");
 				this.UpdateBaseRequirements();
 			}
-		}
-		if(setup){
 			this.UpdateOrder();
 		}
 	}
@@ -50,25 +48,42 @@ public class ActionController : StateController{
 		this.table = result.ToArray();
 	}
 	public override void UpdateStates(){
+		Dictionary<int,bool> isEndable = new Dictionary<int,bool>();
+		Dictionary<int,bool> isUsable = new Dictionary<int,bool>();
+		Dictionary<int,bool> isReady = new Dictionary<int,bool>();
 		foreach(StateRow row in this.table){
-			bool conditionsMet = true;
+			isReady.Clear();
+			isUsable.Clear();
 			bool isAction = row.name[0] == '@';
+			bool useRow = row.name == "@Use";
+			bool endRow = row.name == "@End";
 			StateInterface script = isAction ? this.action : row.target;
 			foreach(StateRequirement requirement in row.requirements){
 				StateInterface target = requirement.name[0] == '@' ? this.action : requirement.target;
+				int index = requirement.index;
+				bool noRequirements = !requirement.requireOn && !requirement.requireOff;
+				if(noRequirements){index = requirement.index = 0;}
+				if(!isEndable.ContainsKey(index)){isEndable[index] = true;}
+				if(!isUsable.ContainsKey(index)){isUsable[index] = true;}
+				if(!isReady.ContainsKey(index)){isReady[index] = true;}
+				if(noRequirements){continue;}
+				if(!isEndable[index] && endRow){continue;}
+				if(!isUsable[index] && !endRow){continue;}
+				if(!isReady[index] && useRow){continue;}
 				bool state = requirement.name == "@Usable" ? target.usable : target.inUse;
 				bool mismatchOn = requirement.requireOn && !state;
 				bool mismatchOff = requirement.requireOff && state;
 				bool usable = !(mismatchOn || mismatchOff);
-				if(row.name == "@Use"){script.ready = usable;}
-				else if(row.name != "@End"){script.usable = usable;}
-				if(!usable){
-					if(script.inUse && !isAction){script.End();}
-					conditionsMet = false;
-					break;
-				}
+				if(useRow){isReady[index] = usable;}
+				else if(!endRow){isUsable[index] = usable;}
+				else{isEndable[index] = usable;}
 			}
-			if(conditionsMet && row.name == "@End"){
+			if(useRow){script.ready = isReady.ContainsValue(true);}
+			else if(!endRow){script.usable = isUsable.ContainsValue(true);}
+			if(!script.usable && script.inUse && !isAction){
+				script.End();
+			}
+			if(isEndable.ContainsValue(true) && endRow){
 				this.action.End();
 			}
 		}

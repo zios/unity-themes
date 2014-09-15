@@ -12,7 +12,7 @@ public class ConsoleControllerEditor : Editor{
 	private TableGUI cvarTable;
 	private TableGUI shortcutTable;
 	private TableGUI keywordTable;
-	private ConsoleController controller ;
+	private ConsoleController controller;
 	private TableField selectedField;
 	private int selectedColumn;
 	public string removeRow;

@@ -184,7 +184,7 @@ namespace Zios{
 			Console.AddCvar("consoleSpeed",Console.settings,"speed","Console Speed",Console.help[2]);
 			Console.AddCvar("consoleLineSize",Console.settings,"logLineSize","Console Line size",Console.help[6]);
 			Console.AddCvar("consoleLogFile",Console.settings,"logFile","Console Log name");
-			Console.AddCvar("consoleConigFile",Console.settings,"configFile","Console Config name");
+			Console.AddCvar("consoleConfigFile",Console.settings,"configFile","Console Config name");
 			Console.AddKeyword("consoleListFonts",Console.ListConsoleFonts,0,Console.help[4]);
 			Console.AddKeyword("consoleListColors",Console.ListConsoleColors,0,Console.help[3]);
 			Console.AddKeyword("consoleListBinds",Console.ListConsoleBinds,0,Console.help[10]);
@@ -351,6 +351,10 @@ namespace Zios{
 			}
 		}
 		public static void AddCvar(string name,object scope,string dataName,string fullName="",string help="",bool formatHelp=true){
+			if(Console.cvars.ContainsKey(name)){
+				Debug.LogWarning("Console already has registered Cvar for -- " + name);
+				return;
+			}
 			if(fullName == ""){fullName = scope.GetType().ToString() + "^1 " + dataName;}
 			int index = -1;
 			if(dataName.Contains("[")){
@@ -433,33 +437,44 @@ namespace Zios{
 		//===========================
 		// Keywords/Shortcuts
 		//===========================
+		public static void AddKeyword(string name,ConsoleCallback call){
+			if(Console.keywords.ContainsKey(name)){
+				Debug.LogWarning("Console already has registered Keyword for -- " + name);
+				return;
+			}
+			Console.keywords.Add(name,call);
+		}
 		public static void AddKeyword(string name,Method method=null,int minimumParameters=-1,string help=""){
 			ConsoleCallback call = new ConsoleCallback();
 			call.simple = method;
 			call.help = help;
 			call.minimumParameters = minimumParameters;
-			Console.keywords.Add(name,call);
+			Console.AddKeyword(name,call);
 		}
 		public static void AddKeyword(string name,ConsoleMethod method=null,int minimumParameters=-1,string help=""){
 			ConsoleCallback call = new ConsoleCallback();
 			call.basic = method;
 			call.help = help;
 			call.minimumParameters = minimumParameters;
-			Console.keywords.Add(name,call);
+			Console.AddKeyword(name,call);
 		}
 		public static void AddKeyword(string name,ConsoleMethodFull method=null,int minimumParameters=-1,string help=""){
 			ConsoleCallback call = new ConsoleCallback();
 			call.full = method;
 			call.help = help;
 			call.minimumParameters = minimumParameters;
-			Console.keywords.Add(name,call);
+			Console.AddKeyword(name,call);
 		}
 		public static void AddShortcut(string[] names,string replace){
 			foreach(string name in names){
-				Console.shortcuts.Add(name,replace);
+				Console.AddShortcut(name,replace);
 			}
 		}
 		public static void AddShortcut(string name,string replace){
+			if(Console.shortcuts.ContainsKey(name)){
+				Debug.LogWarning("Console already has registered Shortcut for -- " + name);
+				return;
+			}
 			Console.shortcuts.Add(name,replace);
 		}
 		//===========================

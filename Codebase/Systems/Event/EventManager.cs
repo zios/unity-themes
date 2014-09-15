@@ -5,6 +5,10 @@ using System.Collections.Generic;
 public static class Events{
 	private static Dictionary<GameObject,Dictionary<string,List<object>>> objectEvents = new Dictionary<GameObject,Dictionary<string,List<object>>>();
 	private static Dictionary<string,List<object>> events = new Dictionary<string,List<object>>();
+	static Events(){
+		Events.objectEvents.Clear();
+		Events.events.Clear();
+	}
 	public static void AddGet(string name,MethodReturn method){Events.Add(name,(object)method);}
 	public static void Add(string name,Method method){Events.Add(name,(object)method);}
 	public static void Add(string name,MethodObject method){Events.Add(name,(object)method);}

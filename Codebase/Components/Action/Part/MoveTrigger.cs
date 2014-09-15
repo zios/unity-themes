@@ -10,6 +10,11 @@ public class MoveTrigger : ActionPart{
 	public override void Use(){
 		base.Use();
 		Vector3 amount = this.amount;
+		if(this.type == MoveType.Relative){
+			amount = this.action.owner.transform.right * this.amount.x;
+			amount += this.action.owner.transform.up * this.amount.y;
+			amount += this.action.owner.transform.forward * this.amount.z;
+		}
 		if(this.scaleByIntensity){amount *= this.action.intensity;}
 		this.action.owner.Call("AddMove",amount);
 	}

@@ -27,20 +27,25 @@ public class StateController : MonoBehaviour{
 	// =============================
 	public virtual void UpdateStates(){
 		foreach(StateRow row in this.table){
+			Dictionary<int,bool> isUsable = new Dictionary<int,bool>();
 			StateInterface script = row.target;
 			foreach(StateRequirement requirement in row.requirements){
 				StateInterface target = requirement.target;
+				int index = requirement.index;
+				bool noRequirements = !requirement.requireOn && !requirement.requireOff;
+				if(noRequirements){index = requirement.index = 0;}
+				if(!isUsable.ContainsKey(index)){isUsable[index] = true;}
+				if(noRequirements){continue;}
+				if(!isUsable[index]){continue;}
 				bool state = target.inUse;
 				bool mismatchOn = requirement.requireOn && !state;
 				bool mismatchOff = requirement.requireOff && state;
-				script.usable = !(mismatchOn || mismatchOff);
-				script.ready = script.usable;
-				if(!script.usable){
-					if(row.endIfUnusable && script.inUse){
-						script.End();
-					}
-					break;
-				}
+				bool usable = !(mismatchOn || mismatchOff);
+				isUsable[index] = usable;
+			}
+			script.usable = isUsable.ContainsValue(true);
+			if(!script.usable && script.inUse && !row.persistWhileUnusable){
+				script.End();
 			}
 		}
 	}
@@ -210,7 +215,7 @@ public class StateBase{
 }
 [Serializable]
 public class StateRow : StateBase{
-	public bool endIfUnusable = false;
+	public bool persistWhileUnusable = false;
 	public StateRequirement[] requirements = new StateRequirement[0];
 	public StateRow(){}
 	public StateRow(string name="",StateInterface script=null,StateController controller=null){
@@ -219,6 +224,7 @@ public class StateRow : StateBase{
 }
 [Serializable]
 public class StateRequirement : StateBase{
+	public int index;
 	public bool requireOn;
 	public bool requireOff;
 	public StateRequirement(){}
