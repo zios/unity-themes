@@ -16,7 +16,6 @@ Shader "Zios/(Components)/Lighting/Specular"{
 			fixed specularHardness;
 			float3 lightOffset;
 			fixed shadingIndex;
-			fixed shadingIgnoreCutoff;
 			struct vertexInput{
 				float4 vertex        : POSITION;
 				float3 normal        : NORMAL;
@@ -59,13 +58,11 @@ Shader "Zios/(Components)/Lighting/Specular"{
 				return output;
 			}
 			pixelOutput applySpecular(vertexOutput input,pixelOutput output){
-				if(length(output.color.rgb) > shadingIgnoreCutoff){
-					float3 reflect = normalize(input.lightNormal + input.view);
-					float intensity = pow(saturate(dot(input.normal,reflect)),10/specularSize);
-					intensity = floor((intensity / specularHardness)+0.5) * specularHardness;
-					output.color.rgb += specularColor * intensity;
-				}
-			return output;
+				float3 reflect = normalize(input.lightNormal + input.view);
+				float intensity = pow(saturate(dot(input.normal,reflect)),10/specularSize);
+				intensity = floor((intensity / specularHardness)+0.5) * specularHardness;
+				output.color.rgb += specularColor * intensity;
+				return output;
 			}
 			vertexOutput vertexPass(vertexInput input){
 				vertexOutput output;

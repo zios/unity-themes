@@ -1,6 +1,7 @@
 Shader "Zios/(Components)/Lighting/Fixed Rim"{
 	Properties{
-		rimSpread("Rim Spread",Range(-1.0,2.0)) = 1.0
+		rimShadingSteps("Rim Shading Steps",Float) = 256.0
+		rimSpread("Rim Spread",Range(1.0,2.0)) = 1.0
 		rimSoftness("Rim Softness",Range(0.0,20.0)) = 5.0
 		rimAlpha("Rim Alpha",Range(0.0,1.0)) = 0.0
 		rimColor("Rim Color",Color) = (1,1,1,1)
@@ -59,6 +60,15 @@ Shader "Zios/(Components)/Lighting/Fixed Rim"{
 				float stepSize = 1.0 / (shadingSteps-1);
 				float rimPotency = ceil((rimPower / stepSize)-0.5) * stepSize;
 				//half rimPotency = pow(rimPower,25/rimSoftness);
+				output.color.rgb += rimPotency * rimColor;
+				output.color.a -= rimPotency * rimAlpha;
+				return output;
+			}
+			pixelOutput applyFixedSteppedRim(vertexOutput input,pixelOutput output){
+				rimColor = ((rimColor - 0.5) * 2) * rimColor.a;
+				half rimPower = rimSpread - max(dot(input.normal,input.view),0.01);
+				float stepSize = 1.0 / (rimShadingSteps-1);
+				float rimPotency = ceil((rimPower / stepSize)-0.5) * stepSize;
 				output.color.rgb += rimPotency * rimColor;
 				output.color.a -= rimPotency * rimAlpha;
 				return output;
