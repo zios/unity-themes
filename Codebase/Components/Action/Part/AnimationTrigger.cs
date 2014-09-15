@@ -15,10 +15,9 @@ public class AnimationTrigger : ActionPart{
 		base.Use();
 		if(this.speedBasedOnIntensity){this.speed = this.action.intensity;}
 		if(this.blendBasedOnIntensity){this.weight = this.action.intensity;}
+		if(this.speed != 1){this.action.owner.Call("SetAnimationSpeed",this.animationName,this.speed);}
+		if(this.weight != 1){this.action.owner.Call("SetAnimationWeight",this.animationName,this.weight);}
 		this.action.owner.Call("SetAnimation",this.animationName,true);
-		this.action.owner.Call("SetAnimationSpeed",this.animationName,this.speed);
-		this.action.owner.Call("SetAnimationWeight",this.animationName,this.weight);
-
 	}
 	public override void End(){
 		base.End();

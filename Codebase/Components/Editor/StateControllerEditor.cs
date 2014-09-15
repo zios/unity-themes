@@ -111,7 +111,6 @@ public class StateControllerEditor : Editor{
 	}
 	public void OnClickHeader(TableHeaderItem header){}
 	public void OnClickField(TableField field){
-		//field.selected = true;
 		int state = 0;
 		StateRequirement requirement = (StateRequirement)field.target;
 		int index = requirement.index;
@@ -123,7 +122,6 @@ public class StateControllerEditor : Editor{
 		}
 		int amount = Event.current.button == 0 ? 1 : -1;
 		state += amount;
-		//if(state == 0 && index != 0){state += amount;}
 		if(state == -1){index -= 1;}
 		if(state == 3){index += 1;}
 		requirement.index = Mathf.Clamp(index,0,9);
@@ -158,22 +156,27 @@ public class StateControllerEditor : Editor{
 		}
 		return 0;
 	}
+	public void GenerateGUID(object row){
+		StateRow stateRow = (StateRow)row;
+		string question = "Are you sure you wish to generate a new GUID for the " + stateRow.name + " element?";
+		if(EditorUtility.DisplayDialog("Generate ID",question,"Yes","No")){
+			StateController controller = (StateController)stateRow.controller;
+			controller.RepairRow(stateRow);
+			controller.Awake();
+			EditorUtility.SetDirty(controller);
+			EditorUtility.SetDirty((MonoBehaviour)(stateRow.target));
+			EditorUtility.SetDirty(((MonoBehaviour)controller).gameObject);
+			this.autoSelect = Selection.activeTransform;
+			Selection.activeTransform = null;
+		}
+	}
 	public void OnClickRowLabel(TableField field){
 		//field.selected = true;
 		StateController controller = (StateController)this.target;
 		StateRow stateRow = (StateRow)field.target;
 		if(Event.current.button == 0){
 			if(controller.duplicates.ContainsKey(stateRow.id)){
-				string question = "Are you sure you wish to generate a new GUID for the " + stateRow.name + " element?";
-				if(EditorUtility.DisplayDialog("Generate ID",question,"Yes","No")){
-					controller.RepairRow(stateRow);
-					controller.Awake();
-					EditorUtility.SetDirty(controller);
-					EditorUtility.SetDirty((MonoBehaviour)(stateRow.target));
-					EditorUtility.SetDirty(((MonoBehaviour)this.target).gameObject);
-					this.autoSelect = Selection.activeTransform;
-					Selection.activeTransform = null;
-				}
+				this.GenerateGUID(stateRow);
 			}
 		}
 		if(Event.current.button == 1){
@@ -183,10 +186,12 @@ public class StateControllerEditor : Editor{
 				label = "✓ " + label;
 			}
 			GUIContent persistWhileUnusableField = new GUIContent(label);
+			GUIContent generateGUID = new GUIContent("Generate New GUID");
 			GUIContent moveUp = new GUIContent("↑ Move Up");
 			GUIContent moveDown = new GUIContent("↓ Move Down");
 			menu.AddItem(moveUp,false,new GenericMenu.MenuFunction2(this.MoveItemUp),stateRow);
 			menu.AddItem(persistWhileUnusableField,false,new GenericMenu.MenuFunction2(this.ChangePersistWhileUnusable),stateRow);
+			menu.AddItem(generateGUID,false,new GenericMenu.MenuFunction2(this.GenerateGUID),stateRow);
 			menu.AddItem(moveDown,false,new GenericMenu.MenuFunction2(this.MoveItemDown),stateRow);
 			menu.ShowAsContext();
 		}

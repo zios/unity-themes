@@ -24,7 +24,7 @@ public class AnimationController : MonoBehaviour{
 	public float transitionIn = 0.3f;
 	public float transitionOut = 0.3f;
 	public AnimationData defaultAnimation;
-	public AnimationData currentAnimation;
+	public List<AnimationData> currentAnimations;
 	public List<AnimationData> animations = new List<AnimationData>();
 	public Dictionary<string,AnimationData> current = new Dictionary<string,AnimationData>();
 	public Dictionary<string,AnimationData> lookup = new Dictionary<string,AnimationData>();
@@ -68,7 +68,12 @@ public class AnimationController : MonoBehaviour{
 		if(this.current.Count == 0){
 			this.Play(this.defaultAnimation);
 		}
-		this.currentAnimation = this.current.First().Value;
+		if(this.current.Count > 1){
+			this.Stop(this.defaultAnimation.name);
+		}
+		if(Application.isEditor){
+			this.currentAnimations = this.current.Values.ToList();
+		}
 	}
 	//=====================
 	// Events
@@ -129,7 +134,6 @@ public class AnimationController : MonoBehaviour{
 					if(item.Value.priority > priority){return;}
 				}
 			}
-			
 			this.current[name] = this.lookup[name]; 
 			this.current[name].active = true;
 			this.animation.Blend(name,1,this.transitionIn);
