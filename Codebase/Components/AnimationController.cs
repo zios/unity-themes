@@ -126,12 +126,17 @@ public class AnimationController : MonoBehaviour{
 	public void Play(string name,int priority=1){
 		bool exists = this.lookup.ContainsKey(name);
 		bool active = this.current.ContainsKey(name);
+		bool onlyDefault = this.current.Count == 1 && this.current.ContainsKey(this.defaultAnimation.name);
 		if(exists && !active){
-			if(this.highestPriorityOnly){
+			if(this.highestPriorityOnly || onlyDefault){
+				this.animation.Blend(this.defaultAnimation.name,0,this.transitionOut);
+				this.current.Remove(this.defaultAnimation.name);
 				if(priority == -1){priority = this.lookup[name].priority;}
-				this.Stop(this.defaultAnimation.name);
 				foreach(var item in this.current){
 					if(item.Value.priority > priority){return;}
+				}
+				foreach(var item in this.current){
+					if(priority > item.Value.priority){this.Stop(item.Value.name);}
 				}
 			}
 			this.current[name] = this.lookup[name]; 

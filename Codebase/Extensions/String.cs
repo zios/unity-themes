@@ -14,6 +14,16 @@ public static class StringExtension{
 		byte[] hash = MD5.Create().ComputeHash(bytes);
 		return BitConverter.ToString(hash).Replace("-","");
 	}
+	public static int ToInt(this string current){
+		return Convert.ToInt32(current);
+	}
+	public static float ToFloat(this string current){
+		return Convert.ToSingle(current);
+	}
+	public static bool ToBool(this string current){
+		string lower = current.ToLower();
+		return lower != "false" || lower != "f" || lower != "0";
+	}
 	public static bool Matches(this string current,string value,bool ignoreCase=false){
 		if(ignoreCase){
 			return String.Equals(current,value,StringComparison.OrdinalIgnoreCase);

@@ -10,8 +10,6 @@ public class BlockedState : ActionPart{
 	public BlockType type;
 	public Direction direction;
 	public float duration;
-	public string blockedEvent;
-	public string unblockedEvent;
 	public void OnValidate(){
 		this.DefaultPriority(5);
 		if(this.controller == null){
@@ -28,9 +26,6 @@ public class BlockedState : ActionPart{
 		float duration = this.controller.GetUnblockedDuration(direction);
 		this.inUse = this.type == BlockType.Blocked ? duration < this.duration : duration > this.duration;
 		if(this.lastState != this.inUse){
-			string useEvent = this.type == BlockType.Blocked ? this.blockedEvent : this.unblockedEvent;
-			string endEvent = this.type == BlockType.Blocked ? this.unblockedEvent : this.unblockedEvent;
-			this.action.owner.CallFamily(this.inUse ? useEvent : endEvent);
 			this.lastState = this.inUse;
 			this.Toggle(this.inUse);
 			this.SetDirty(true);

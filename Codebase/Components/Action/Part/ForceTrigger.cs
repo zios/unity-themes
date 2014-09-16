@@ -9,6 +9,6 @@ public class ForceTrigger : ActionPart{
 	public override void Use(){
 		base.Use();
 		Vector3 amount = this.action.intensity * this.amount;
-		this.gameObject.Call("AddForce",amount);
+		this.action.owner.Call("AddForce",amount);
 	}
 }
