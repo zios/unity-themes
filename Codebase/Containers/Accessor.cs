@@ -68,13 +68,18 @@ public class Accessor{
 		}
 		else{
 			object container = this.Get(scope,-1);
-			if(container.GetType() != typeof(Vector3)){
-				((Array)container).SetValue(value,index);
-			}
-			else{
+			if(container.GetType() == typeof(Vector3)){
 				Vector3 adjust = (Vector3)container;
 				adjust[index] = Convert.ToSingle(value);
 				this.Set(scope,adjust,-1);
+			}
+			else if(container.GetType() == typeof(Vector2)){
+				Vector2 adjust = (Vector2)container;
+				adjust[index] = Convert.ToSingle(value);
+				this.Set(scope,adjust,-1);
+			}
+			else{
+				((Array)container).SetValue(value,index);
 			}
 		}
 	}

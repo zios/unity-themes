@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
 [AddComponentMenu("Zios/Component/General/Watch")]
-public class Watch : MonoBehaviour{
+public class Watch : StateMonoBehaviour{
 	public Transform target;
 	public Vector3 targetPosition;
 	public Vector3 targetOffset;

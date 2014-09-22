@@ -6,15 +6,20 @@ public enum EventFrequency{Once,Always}
 public class EventTrigger : ActionPart{
 	public string eventName;
 	public EventFrequency eventFrequency;
-	public void OnValidate(){this.DefaultPriority(15);}
+	public GameObject eventTarget;
+	public override void OnValidate(){
+		this.DefaultPriority(15);
+		base.OnValidate();
+	}
 	public override void Use(){
+		GameObject target = this.eventTarget == null ? this.action.owner : this.eventTarget;
 		if(this.eventFrequency == EventFrequency.Once){
 			if(!this.inUse){
-				this.action.owner.Call(this.eventName);
+				target.Call(this.eventName);
 			}
 		}
 		else{
-			this.action.owner.Call(this.eventName);
+			target.Call(this.eventName);
 		}
 		base.Use();
 	}

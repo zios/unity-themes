@@ -5,9 +5,9 @@ using System.Collections;
 using System.Collections.Generic;
 [ExecuteInEditMode][AddComponentMenu("Zios/Component/Action/State Controller")]
 public class StateController : MonoBehaviour{
+	public int total;
 	public StateRow[] table = new StateRow[0];
 	public List<StateInterface> scripts = new List<StateInterface>();
-	public Dictionary<string,List<StateInterface>> duplicates = new Dictionary<string,List<StateInterface>>();
 	public virtual void Reset(){
 		this.table = new StateRow[0];
 		this.Awake();
@@ -16,10 +16,22 @@ public class StateController : MonoBehaviour{
 	public virtual void OnEnable(){this.Awake();}
 	public virtual void Awake(){
 		Events.Add("UpdateStates",this.UpdateStates);
+		this.Refresh();
+	}
+	[ContextMenu("Refresh")]
+	public virtual void Refresh(){
+		this.UpdateScripts();
+		this.UpdateRows();
+		this.UpdateRequirements();
+		this.UpdateOrder();
+	}
+	public virtual void Update(){
 		if(Application.isEditor){
-			this.UpdateScripts();
-			this.UpdateRows();
-			this.UpdateRequirements();
+			int count = this.gameObject.GetComponentsInChildren<StateMonoBehaviour>().Length;
+			if(count != this.total){
+				this.total = count;
+				this.Refresh();
+			}
 		}
 	}
 	// =============================
@@ -27,36 +39,29 @@ public class StateController : MonoBehaviour{
 	// =============================
 	public virtual void UpdateStates(){
 		foreach(StateRow row in this.table){
-			Dictionary<int,bool> isUsable = new Dictionary<int,bool>();
+			bool usable = true;
 			StateInterface script = row.target;
-			foreach(StateRequirement requirement in row.requirements){
-				StateInterface target = requirement.target;
-				int index = requirement.index;
-				bool noRequirements = !requirement.requireOn && !requirement.requireOff;
-				if(noRequirements){index = requirement.index = 0;}
-				if(!isUsable.ContainsKey(index)){isUsable[index] = true;}
-				if(noRequirements){continue;}
-				if(!isUsable[index]){continue;}
-				bool state = target.inUse;
-				bool mismatchOn = requirement.requireOn && !state;
-				bool mismatchOff = requirement.requireOff && state;
-				bool usable = !(mismatchOn || mismatchOff);
-				isUsable[index] = usable;
+			foreach(StateRowData requirements in row.requirements){
+				foreach(StateRequirement requirement in requirements.data){
+					bool noRequirements = !requirement.requireOn && !requirement.requireOff;
+					if(noRequirements){continue;}
+					bool mismatchOn = requirement.requireOn && !requirement.target.inUse;
+					bool mismatchOff = requirement.requireOff && requirement.target.inUse;
+					usable = !(mismatchOn || mismatchOff);
+					if(!usable){break;}
+				}
+				if(usable){break;}
 			}
-			script.usable = isUsable.ContainsValue(true);
-			if(!script.usable && script.inUse && !row.persistWhileUnusable){
-				script.End();
-			}
+			script.usable = usable;
 		}
 	}
 	public virtual void UpdateScripts(string stateType="State"){
 		this.scripts.Clear();
-		this.duplicates.Clear();
 		MonoBehaviour[] all = this.gameObject.GetComponentsInChildren<MonoBehaviour>(true);
 		foreach(MonoBehaviour script in all){
 			if(script is StateInterface){
 				StateInterface common = (StateInterface)script;
-				if(common.id == ""){
+				if(common.id.IsEmpty()){
 					common.id = Guid.NewGuid().ToString();
 				}
 				if(common.GetInterfaceType() == stateType){
@@ -64,60 +69,109 @@ public class StateController : MonoBehaviour{
 				}
 			}
 		}
-		foreach(StateInterface script in this.scripts){
-			List<StateInterface> entries = this.scripts.FindAll(x=>x.id==script.id);
-			if(entries.Count > 1){
-				foreach(StateInterface entry in entries){
-					if(!this.duplicates.ContainsKey(entry.id)){
-						this.duplicates[entry.id] = new List<StateInterface>();
-					}
-					if(!this.duplicates[entry.id].Contains(entry)){
-						this.duplicates[entry.id].Add(entry);
-						Debug.LogWarning("Duplicate ID [" + entry.id + "] = " + entry.alias);
-					}
+		this.scripts = this.scripts.Distinct().ToList();
+		foreach(StateRow row in this.table){
+			List<StateInterface> entries = this.scripts.FindAll(x=>x.id==row.id);
+			foreach(StateInterface entry in entries.Skip(1)){
+				bool hasName = !entry.alias.IsEmpty() && !row.name.IsEmpty();
+				Debug.Log("StateController : Resolving duplicate ID [" + row.name + "]");
+				if(hasName && this.scripts.FindAll(x=>x.alias==row.name).Count > 1){
+					row.name = entry.alias = row.name + "2";
 				}
+				row.id = entry.id = Guid.NewGuid().ToString();
 			}
 		}
-		this.scripts = this.scripts.Distinct().ToList();
 	}
 	public virtual void UpdateRows(params string[] ignore){
 		List<StateRow> rows = new List<StateRow>(this.table);
+		this.RemoveEmptyAlternatives();
 		this.RemoveDuplicates<StateRow>(rows);
 		this.RemoveUnmatched<StateRow>(rows,ignore);
-		this.AddUpdate<StateRow>(rows);
+		this.AddUpdate<StateRow>(rows,new string[]{});
 		this.RemoveNull<StateRow>(rows,ignore);
 		this.table = rows.ToArray();
 	}
 	public virtual void UpdateRequirements(params string[] ignore){
+		List<string> hidden = new List<string>();
 		foreach(StateRow row in this.table){
-			List<StateRequirement> requirements = new List<StateRequirement>(row.requirements);
-			this.RemoveDuplicates<StateRequirement>(requirements);
-			this.RemoveUnmatched<StateRequirement>(requirements,ignore);
-			this.AddUpdate<StateRequirement>(requirements);
-			this.RemoveNull<StateRequirement>(requirements,ignore);
-			row.requirements = requirements.ToArray();
-		}
-	}
-	public virtual void RepairRow(StateRow row){
-		row.id = row.target.id = Guid.NewGuid().ToString();
-		foreach(StateRow entry in this.table){
-			if(entry.target == row.target){entry.id = entry.target.id = row.target.id;}
-			foreach(StateRequirement requirement in entry.requirements){
-				if(requirement.target == row.target){requirement.id = requirement.target.id = row.target.id;}
+			if(!row.target.requirable){
+				hidden.Add(row.target.alias);
 			}
 		}
+		foreach(StateRow row in this.table){
+			foreach(StateRowData rowData in row.requirements){
+				List<StateRequirement> requirements = new List<StateRequirement>(rowData.data);
+				this.RemoveDuplicates<StateRequirement>(requirements);
+				this.RemoveUnmatched<StateRequirement>(requirements,ignore);
+				this.AddUpdate<StateRequirement>(requirements,hidden.ToArray());
+				this.RemoveNull<StateRequirement>(requirements,ignore);
+				rowData.data = requirements.ToArray();
+			}
+		}
+		this.RemoveHidden();
+	}
+	public virtual void UpdateOrder(){
+		List<StateRow> data = new List<StateRow>(this.table);
+		foreach(StateRow row in this.table){
+			int rowIndex = this.table.IndexOf(row);
+			foreach(StateRowData rowData in row.requirements){
+				int dataIndex = row.requirements.IndexOf(rowData);
+				data[rowIndex].requirements[dataIndex].data = rowData.data.OrderBy(x=>x.name).ToArray();
+			}
+		}
+		this.table = data.OrderBy(x=>x.target.alias).ToArray();
 	}
 	// =============================
 	//  Internal
 	// =============================
+	private void RemoveEmptyAlternatives(){
+		foreach(StateRow row in this.table){
+			List<StateRowData> cleaned = new List<StateRowData>(row.requirements);
+			bool lastDataExists = true;
+			foreach(StateRowData rowData in row.requirements){
+				bool empty = true;
+				foreach(StateRequirement requirement in rowData.data){
+					if(requirement.requireOn || requirement.requireOff){
+						empty = false;
+					}
+				}
+				if(empty && !lastDataExists){
+					Debug.Log("StateController : Removing empty alternate row in -- " + row.name);
+					cleaned.Remove(rowData);
+				}
+				lastDataExists = !empty;
+			}
+			row.requirements = cleaned.ToArray();
+		}
+	}
+	private void RemoveHidden(){
+		List<string> hidden = new List<string>();
+		foreach(StateRow row in this.table){
+			if(!row.target.requirable){
+				hidden.Add(row.target.alias);
+			}
+		}
+		foreach(StateRow row in this.table){
+			foreach(StateRowData rowData in row.requirements.Copy()){
+				int dataIndex = row.requirements.IndexOf(rowData);
+				List<StateRequirement> cleaned = new List<StateRequirement>(rowData.data);
+				foreach(StateRequirement requirement in rowData.data){
+					if(hidden.Contains(requirement.name)){
+						cleaned.Remove(requirement);
+					}
+				}
+				row.requirements[dataIndex].data = cleaned.ToArray();
+			}
+		}
+	}
 	private void RemoveDuplicates<T>(List<T> items) where T : StateBase{
 		string typeName = typeof(T).ToString();
 		foreach(T targetA in items.Copy()){
 			List<T> otherItems = items.Copy();
 			otherItems.Remove(targetA);
 			foreach(T targetB in otherItems){
-				bool duplicateGUID = targetA.id != "" && targetA.id == targetB.id;
-				bool duplicateName = targetA.name != "" && targetA.name == targetB.name;
+				bool duplicateGUID = !targetA.id.IsEmpty() && targetA.id == targetB.id;
+				bool duplicateName = !targetA.name.IsEmpty() && targetA.name == targetB.name;
 				if(duplicateGUID && duplicateName){
 					items.Remove(targetA);
 					Debug.Log("StateController : Removing duplicate " + typeName + " -- " + targetA.name);
@@ -148,10 +202,11 @@ public class StateController : MonoBehaviour{
 			}
 		}
 	}
-	private void AddUpdate<T>(List<T> items) where T : StateBase,new(){
+	private void AddUpdate<T>(List<T> items,string[] ignore) where T : StateBase,new(){
 		string typeName = typeof(T).ToString();
 		foreach(StateInterface script in this.scripts){
-			string name = script.alias == "" ? script.GetType().ToString() : script.alias;
+			string name = script.alias.IsEmpty() ? script.GetType().ToString() : script.alias;
+			if(ignore.Contains(name)){continue;}
 			T item = items.Find(x=>x.id==script.id);
 			if(item != null && this.scripts.FindAll(x=>x.id==item.id).Count > 1){
 				item = items.Find(x=>x.name==name);
@@ -175,6 +230,7 @@ public interface StateInterface{
 	string GetInterfaceType();
 	string alias{get;set;}
 	string id{get;set;}
+	bool requirable{get;set;}
 	bool ready{get;set;}
 	bool usable{get;set;}
 	bool inUse{get;set;}
@@ -184,12 +240,14 @@ public interface StateInterface{
 [Serializable]
 public class StateMonoBehaviour : MonoBehaviour,StateInterface{
 	public string stateAlias;
+	[HideInInspector] public bool stateRequirable = true;
 	[HideInInspector] public bool stateReady;
 	[HideInInspector] public bool stateUsable;
 	[HideInInspector] public bool stateInUse;
 	[HideInInspector] public string stateID = Guid.NewGuid().ToString();
 	public string id{get{return this.stateID;}set{this.stateID = value;}}
 	public string alias{get{return this.stateAlias;}set{this.stateAlias = value;}}
+	public bool requirable{get{return this.stateRequirable;}set{this.stateRequirable = value;}}
 	public bool ready{get{return this.stateReady;}set{this.stateReady = value;}}
 	public bool usable{get{return this.stateUsable;}set{this.stateUsable = value;}}
 	public bool inUse{get{return this.stateInUse;}set{this.stateInUse = value;}}	
@@ -204,7 +262,7 @@ public class StateBase{
 	public StateController controller;
 	[HideInInspector] public string id;
 	[HideInInspector] public StateInterface target;
-	public void Setup(string name,StateInterface script,StateController controller){
+	public virtual void Setup(string name,StateInterface script,StateController controller){
 		this.name = name;
 		this.controller = controller;
 		if(script != null){
@@ -215,16 +273,22 @@ public class StateBase{
 }
 [Serializable]
 public class StateRow : StateBase{
-	public bool persistWhileUnusable = false;
-	public StateRequirement[] requirements = new StateRequirement[0];
+	public StateRowData[] requirements = new StateRowData[1];
 	public StateRow(){}
 	public StateRow(string name="",StateInterface script=null,StateController controller=null){
 		this.Setup(name,script,controller);
 	}
+	public override void Setup(string name="",StateInterface script=null,StateController controller=null){
+		this.requirements[0] = new StateRowData();
+		base.Setup(name,script,controller);
+	}
+}
+[Serializable]
+public class StateRowData{
+	public StateRequirement[] data = new StateRequirement[0];
 }
 [Serializable]
 public class StateRequirement : StateBase{
-	public int index;
 	public bool requireOn;
 	public bool requireOff;
 	public StateRequirement(){}

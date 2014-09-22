@@ -23,6 +23,9 @@ public static class ArrayExtension{
 		}
 		return result;
 	}
+	public static List<T> ToList<T>(this T[] current){
+		return new List<T>(current);
+	}
 	public static Color ToColor(this float[] current){
 		if(current.Length >= 3){
 			float r = current[0];
@@ -61,6 +64,9 @@ public static class ArrayExtension{
 			return new Vector4(a,b,c,d);
 		}
 		return Vector4.zero;
+	}
+	public static int IndexOf<T>(this Array current,T type){
+		return Array.IndexOf(current,type);
 	}
 	public static T[] Copy<T>(this T[] current){
 		T[] result = new T[current.Length];

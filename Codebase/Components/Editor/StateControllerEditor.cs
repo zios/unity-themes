@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using Zios.Editor;
@@ -8,24 +9,27 @@ using Zios.Editor;
 public class StateControllerEditor : Editor{
 	private Transform autoSelect;
 	private TableGUI table = new TableGUI();
-	public void OnEnable(){
+	private StateRow[] data;
+	private Dictionary<StateRow,int> rowIndex = new Dictionary<StateRow,int>();
+	public virtual void OnEnable(){
 		this.BuildTable(true);
 	}
-	public void OnDisable(){
+	public virtual void OnDisable(){
 		if(this.autoSelect != null){
 			Selection.activeTransform = this.autoSelect;
 			this.autoSelect = null;
 		}
 	}
 	public override void OnInspectorGUI(){
-		/*PropertyModification[] modifications = PrefabUtility.GetPropertyModifications(((StateController)this.target));
-		if(modifications.Length > 0){
-			EditorGUILayout.HelpBox("Prefab changes must be applied for accurate table.",MessageType.Warning);
-		}*/
-		this.table.tableSkin.label.fixedWidth = 0;
 		StateController stateController = (StateController)this.target;
+		if(this.data != stateController.table){
+			this.data = stateController.table;
+			this.BuildTable(true);
+		}
+		this.table.tableSkin.label.fixedWidth = 0;
 		foreach(StateRow stateRow in stateController.table){
-			int size = (stateRow.name.Length) * this.table.tableSkin.label.fontSize;
+			int size = (int)(GUI.skin.label.CalcSize(new GUIContent(stateRow.name)).x) + 24;
+			size = (size / 8) * 8 + 1;
 			if(size > this.table.tableSkin.label.fixedWidth){
 				this.table.tableSkin.label.fixedWidth = size;
 			}	
@@ -33,26 +37,31 @@ public class StateControllerEditor : Editor{
 		this.table.Draw(); 
 		EditorUtility.SetDirty(this.target);
 	}
-	public void BuildTable(bool verticalHeader=false,bool force=false){
+	public virtual void BuildTable(bool verticalHeader=false,bool force=false){
 		StateController stateController = (StateController)this.target;
 		if(force || (stateController != null && stateController.table != null)){
 			this.table = new TableGUI();
 			this.table.SetHeader(verticalHeader,true,this.CompareRows);
 			this.table.AddHeader("","");
-			foreach(StateRequirement requirement in stateController.table[0].requirements){
+			StateRequirement[] firstRow = stateController.table[0].requirements[0].data;
+			foreach(StateRequirement requirement in firstRow){
 				this.table.AddHeader(requirement.name,"",null,this.OnClickHeader);
 			}
 			foreach(StateRow stateRow in stateController.table){
-				TableRow tableRow = this.table.AddRow();
+				if(!this.rowIndex.ContainsKey(stateRow)){
+					this.rowIndex[stateRow] = 0;
+				}
+				int rowIndex = this.rowIndex[stateRow];
+				TableRow tableRow = this.table.AddRow(stateRow);
 				tableRow.AddField(stateRow,this.OnDisplayRowLabel,this.OnClickRowLabel);
-				foreach(StateRequirement requirement in stateRow.requirements){
+				//List<StateRequirement> sorted = stateRow.requirements[rowIndex].data.OrderBy(a=>a.name).ToList();
+				foreach(StateRequirement requirement in stateRow.requirements[rowIndex].data){
 					tableRow.AddField(requirement,this.OnDisplayField,this.OnClickField);
 				}
 			}
 		}
 	}
-	public void OnDisplayRowLabel(TableField field){
-		StateController controller = (StateController)this.target;
+	public virtual void OnDisplayRowLabel(TableField field){
 		StateRow row = (StateRow)field.target;
 		GUIStyle style = GUI.skin.label;
 		GUIContent content = new GUIContent(row.name,(string)row.id);
@@ -65,17 +74,6 @@ public class StateControllerEditor : Editor{
 				style = new GUIStyle(style);
 				style.normal.textColor = Colors.Get("BoldOrange");
 			}
-			if(controller.duplicates.ContainsKey(row.id)){
-				style = new GUIStyle(style);
-				style.normal.textColor = Colors.Get("BoldRed");
-				string matches = "";
-				foreach(StateInterface script in controller.duplicates[row.id]){
-					matches += script.alias + ", ";
-				}
-				matches = matches.TrimRight(", ");
-				content.text = "(!) " + content.text;
-				content.tooltip = "Duplicate ID (" + matches + ").  Click to generate new.";
-			}
 		}
 		if(field.selected){
 			style = new GUIStyle(style);
@@ -84,22 +82,24 @@ public class StateControllerEditor : Editor{
 		GUILayout.Label(content,style);
 		field.CheckClick();
 	}
-	public void OnDisplayField(TableField field){
+	public virtual void OnDisplayField(TableField field){
 		string value = "";
 		field.empty = true;
+		StateRow row = (StateRow)field.row.target;
 		StateRequirement requirement = (StateRequirement)field.target;
+		bool useIndexes = row != null && this.rowIndex[row] != 0;
 		GUIStyle style = GUI.skin.button;
 		if(requirement.requireOn){
-			value = requirement.index == 0 ? "✓" : requirement.index.ToString();
+			value = useIndexes ? this.rowIndex[row].ToString() : "✓";
 			field.empty = false;
 			style = GUI.skin.GetStyle("buttonOn");
-			style.padding.left = requirement.index == 0 ? 6 : 8;
+			style.padding.left = useIndexes ? 8 : 6;
 		}
 		else if(requirement.requireOff){
-			value = requirement.index == 0 ? "X" : requirement.index.ToString();
+			value = useIndexes ? this.rowIndex[row].ToString() : "X";
 			field.empty = false;
 			style = GUI.skin.GetStyle("buttonOff");
-			style.padding.left = requirement.index == 0 ? 8 : 8;
+			style.padding.left = 8;
 		}
 		if(field.selected){
 			style = new GUIStyle(style);
@@ -109,33 +109,21 @@ public class StateControllerEditor : Editor{
 			field.onClick(field);
 		}
 	}
-	public void OnClickHeader(TableHeaderItem header){}
-	public void OnClickField(TableField field){
+	public virtual void OnClickHeader(TableHeaderItem header){}
+	public virtual void OnClickField(TableField field){
 		int state = 0;
 		StateRequirement requirement = (StateRequirement)field.target;
-		int index = requirement.index;
-		if(requirement.requireOn){
-			state = 1;
-		}
-		if(requirement.requireOff){
-			state = 2;
-		}
+		if(requirement.requireOn){state = 1;}
+		if(requirement.requireOff){state = 2;}
 		int amount = Event.current.button == 0 ? 1 : -1;
 		state += amount;
-		if(state == -1){index -= 1;}
-		if(state == 3){index += 1;}
-		requirement.index = Mathf.Clamp(index,0,9);
 		state = state.Modulus(3);
 		requirement.requireOn = false;
 		requirement.requireOff = false;
-		if(state == 1){
-			requirement.requireOn = true;
-		}
-		if(state == 2){
-			requirement.requireOff = true;
-		}
+		if(state == 1){requirement.requireOn = true;}
+		if(state == 2){requirement.requireOff = true;}
 	}
-	public int CompareRows(object target1,object target2){
+	public virtual int CompareRows(object target1,object target2){
 		if(target1 is StateRequirement && target2 is StateRequirement){
 			StateRequirement requirement1 = (StateRequirement)target1;
 			StateRequirement requirement2 = (StateRequirement)target2;
@@ -156,48 +144,52 @@ public class StateControllerEditor : Editor{
 		}
 		return 0;
 	}
-	public void GenerateGUID(object row){
-		StateRow stateRow = (StateRow)row;
-		string question = "Are you sure you wish to generate a new GUID for the " + stateRow.name + " element?";
-		if(EditorUtility.DisplayDialog("Generate ID",question,"Yes","No")){
-			StateController controller = (StateController)stateRow.controller;
-			controller.RepairRow(stateRow);
-			controller.Awake();
-			EditorUtility.SetDirty(controller);
-			EditorUtility.SetDirty((MonoBehaviour)(stateRow.target));
-			EditorUtility.SetDirty(((MonoBehaviour)controller).gameObject);
-			this.autoSelect = Selection.activeTransform;
-			Selection.activeTransform = null;
-		}
-	}
-	public void OnClickRowLabel(TableField field){
-		//field.selected = true;
-		StateController controller = (StateController)this.target;
+	public virtual void OnClickRowLabel(TableField field){
 		StateRow stateRow = (StateRow)field.target;
 		if(Event.current.button == 0){
-			if(controller.duplicates.ContainsKey(stateRow.id)){
-				this.GenerateGUID(stateRow);
-			}
+			int length = stateRow.requirements.Length;
+			int index = this.rowIndex[stateRow];
+			index += Event.current.control ? -1 : 1;
+			if(index < 0){index = length-1;}
+			if(index >= length){index = 0;}
+			this.rowIndex[stateRow] = index;
+			this.BuildTable(true);
 		}
 		if(Event.current.button == 1){
 			GenericMenu menu = new GenericMenu();
-			string label = "Persist While Unusable";
-			if(stateRow.persistWhileUnusable){
-				label = "✓ " + label;
+			GUIContent addAlternative = new GUIContent("+ Add Alternate Row");
+			GUIContent removeAlternative = new GUIContent("- Remove Alternative Row");
+			//GUIContent moveUp = new GUIContent("↑ Move Up");
+			//GUIContent moveDown = new GUIContent("↓ Move Down");
+			//menu.AddItem(moveUp,false,new GenericMenu.MenuFunction2(this.MoveItemUp),stateRow);
+			menu.AddItem(addAlternative,false,new GenericMenu.MenuFunction2(this.AddAlternativeRow),stateRow);
+			if(this.rowIndex[stateRow] != 0){
+				menu.AddItem(removeAlternative,false,new GenericMenu.MenuFunction2(this.RemoveAlternativeRow),stateRow);
 			}
-			GUIContent persistWhileUnusableField = new GUIContent(label);
-			GUIContent generateGUID = new GUIContent("Generate New GUID");
-			GUIContent moveUp = new GUIContent("↑ Move Up");
-			GUIContent moveDown = new GUIContent("↓ Move Down");
-			menu.AddItem(moveUp,false,new GenericMenu.MenuFunction2(this.MoveItemUp),stateRow);
-			menu.AddItem(persistWhileUnusableField,false,new GenericMenu.MenuFunction2(this.ChangePersistWhileUnusable),stateRow);
-			menu.AddItem(generateGUID,false,new GenericMenu.MenuFunction2(this.GenerateGUID),stateRow);
-			menu.AddItem(moveDown,false,new GenericMenu.MenuFunction2(this.MoveItemDown),stateRow);
+			//menu.AddItem(moveDown,false,new GenericMenu.MenuFunction2(this.MoveItemDown),stateRow);
 			menu.ShowAsContext();
 		}
 		Event.current.Use();
 	}
-	public void MoveItem(int amount,object target){
+	public void AddAlternativeRow(object target){
+		StateRow row = (StateRow)target;
+		List<StateRowData> data = new List<StateRowData>(row.requirements);
+		data.Add(new StateRowData());
+		row.requirements = data.ToArray();
+		((StateController)this.target).Refresh();
+		this.rowIndex[row] = row.requirements.Length-1;
+		this.BuildTable(true);
+	}
+	public void RemoveAlternativeRow(object target){
+		StateRow row = (StateRow)target;
+		int index = this.rowIndex[row];
+		List<StateRowData> data = new List<StateRowData>(row.requirements);
+		data.RemoveAt(index);
+		row.requirements = data.ToArray();
+		this.rowIndex[row] = index-1;
+		this.BuildTable(true);
+	}
+	public virtual void MoveItem(int amount,object target){
 		StateRow row = (StateRow)target;
 		List<StateRow> table = new List<StateRow>(row.controller.table);
 		int index = table.IndexOf(row);
@@ -212,15 +204,10 @@ public class StateControllerEditor : Editor{
 		EditorUtility.SetDirty(row.controller);
 		this.BuildTable(true);
 	}
-	public void MoveItemUp(object target){
+	public virtual void MoveItemUp(object target){
 		this.MoveItem(-1,target);
 	}
-	public void MoveItemDown(object target){
+	public virtual void MoveItemDown(object target){
 		this.MoveItem(1,target);
-	}
-	public void ChangePersistWhileUnusable(object target){
-		StateRow row = (StateRow)target;
-		row.persistWhileUnusable = !row.persistWhileUnusable;
-		EditorUtility.SetDirty(row.controller);
 	}
 }

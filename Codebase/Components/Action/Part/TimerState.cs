@@ -9,7 +9,10 @@ public class TimerState : ActionPart{
 	public TimerEvent triggerEvent;
 	public string customEvent;
 	private float endTime = -1;
-	public void OnValidate(){this.DefaultPriority(5);}
+	public override void OnValidate(){
+		this.DefaultPriority(5);
+		base.OnValidate();
+	}
 	public override void Start(){
 		base.Start();
 		string eventName = this.triggerEvent.ToString();

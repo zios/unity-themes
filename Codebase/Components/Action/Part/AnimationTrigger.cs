@@ -10,7 +10,10 @@ public class AnimationTrigger : ActionPart{
 	public float weight = 1;
 	public bool speedBasedOnIntensity;
 	public bool blendBasedOnIntensity;
-	public void OnValidate(){this.DefaultPriority(15);}
+	public override void OnValidate(){
+		this.DefaultPriority(15);
+		base.OnValidate();
+	}
 	public override void Use(){
 		base.Use();
 		if(this.speedBasedOnIntensity){this.speed = this.action.intensity;}

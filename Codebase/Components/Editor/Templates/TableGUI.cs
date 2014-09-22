@@ -35,8 +35,8 @@ namespace Zios.Editor{
 		public void AddHeader(string label,string tooltip, OnHeaderEvent onDisplay=null,OnHeaderEvent onClick=null){
 			this.header.items.Add(new TableHeaderItem(label,tooltip,onDisplay,onClick));
 		}
-		public TableRow AddRow(object target = null,OnRowEvent onDisplay=null,OnRowEvent onClick=null){
-			TableRow row = new TableRow(target,onDisplay,onClick);
+		public TableRow AddRow(object target=null,OnRowEvent onDisplay=null,OnRowEvent onClick=null){
+			TableRow row = new TableRow(this,target,onDisplay,onClick);
 			this.rows.Add(row);
 			return row;
 		}
@@ -227,18 +227,20 @@ namespace Zios.Editor{
 	public class TableRow{
 		public bool selected;
 		public object target;
+		public TableGUI table;
 		public OnRowEvent onDisplay;
 		public OnRowEvent onClick;
 		public bool showEmpty = true;
 		public List<int> emptyColumns = new List<int>();
 		public List<TableField> fields = new List<TableField>();
-		public TableRow(object target = null,OnRowEvent onDisplay=null,OnRowEvent onClick=null){
+		public TableRow(TableGUI table,object target=null,OnRowEvent onDisplay=null,OnRowEvent onClick=null){
+			this.table = table;
 			this.target = target;
 			this.onDisplay = onDisplay;
 			this.onClick = onClick;
 		}
 		public void AddField(object target,OnFieldEvent onDisplay=null,OnFieldEvent onClick=null){
-			this.fields.Add(new TableField(target,this.target,onDisplay,onClick));
+			this.fields.Add(new TableField(this,target,onDisplay,onClick));
 		}
 		public void Draw(){
 			if(this.onDisplay != null){
@@ -265,14 +267,14 @@ namespace Zios.Editor{
 	public class TableField{
 		public bool selected;
 		public bool empty;
+		public TableRow row;
 		public object target;
-		public object rowTarget;
 		public OnFieldEvent onDisplay;
 		public OnFieldEvent onClick;
 		public GUIStyle style;
-		public TableField(object target,object rowTarget,OnFieldEvent onDisplay=null,OnFieldEvent onClick=null){
+		public TableField(TableRow row,object target,OnFieldEvent onDisplay=null,OnFieldEvent onClick=null){
+			this.row = row;
 			this.target = target;
-			this.rowTarget = rowTarget;
 			this.onDisplay = onDisplay;
 			this.onClick = onClick;
 		}

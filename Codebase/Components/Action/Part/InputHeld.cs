@@ -4,17 +4,17 @@ using System;
 using System.Collections.Generic;
 [RequireComponent(typeof(Zios.Action))][AddComponentMenu("Zios/Component/Action/Part/Input Held")]
 public class InputHeld : ActionPart{
+	public string inputName = "Button1";
 	public InputRange requirement;
-	public string key = "Button1";
 	public bool controlActionIntensity = true;
+	public bool forcePositiveIntensity = true;
 	public bool heldDuringIntensity = true;
 	public bool shared = false;
 	[NonSerialized] public bool held;
 	[NonSerialized] public bool lastHeld;
-	public void OnValidate(){this.DefaultPriority(5);}
-	public override void Start(){
-		base.Start();
-		this.action.AddPart(this.alias,this);
+	public override void OnValidate(){
+		this.DefaultPriority(5);
+		base.OnValidate();
 	}
 	public override void Use(){
 		bool inputSuccess = this.CheckInput();
@@ -27,18 +27,20 @@ public class InputHeld : ActionPart{
 	}
 	public override void OnActionStart(){
 		if(!this.shared){
-			InputState.owner[this.key] = this.GetInstanceID();
+			InputState.owner[this.inputName] = this.GetInstanceID();
 		}
 	}
-	public override void OnActionEnd(){}
 	public virtual bool CheckInput(){
-		string key = this.key;
+		string inputName = this.inputName;
 		int id = this.GetInstanceID();
-		this.held = Input.GetAxisRaw(key) != 0;
-		float intensity = Input.GetAxis(key);
+		this.held = Input.GetAxisRaw(inputName) != 0;
+		float intensity = Input.GetAxis(inputName);
 		bool released = this.held != this.lastHeld;
 		bool canEnd = !this.heldDuringIntensity || (this.heldDuringIntensity && intensity == 0);
-		if(canEnd && !this.shared && InputState.CheckOwner(key,id,released)){
+		if(this.controlActionIntensity){
+			this.action.intensity = this.forcePositiveIntensity ? Mathf.Abs(intensity) : intensity;
+		}
+		if(canEnd && !this.shared && InputState.CheckOwner(inputName,id,released)){
 			return false;
 		}
 		bool requirementMet = InputState.CheckRequirement(this.requirement,intensity);
@@ -46,7 +48,6 @@ public class InputHeld : ActionPart{
 			bool held = this.heldDuringIntensity ? intensity != 0 : this.held;
 			if(!held){requirementMet = false;}
 		}
-		if(requirementMet && this.controlActionIntensity){this.action.intensity = Mathf.Abs(intensity);}
 		this.lastHeld = this.held;
 		return requirementMet;
 	}

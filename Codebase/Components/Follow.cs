@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
 [AddComponentMenu("Zios/Component/General/Follow")]
-public class Follow : MonoBehaviour{
+public class Follow : StateMonoBehaviour{
 	public Transform target;
 	public Vector3 targetPosition;
 	public Vector3 targetOffset;
@@ -21,9 +21,24 @@ public class Follow : MonoBehaviour{
 		this.lastLerpOffset = this.targetOffset;
 		this.Update();
 		this.transition.End();
+		Events.Add("SetTarget",(MethodObject)this.OnSetTarget);
+		Events.Add("SetOrbitAngles",(MethodVector2)this.OnSetOrbitAngles);
+		Events.Add("SetTargetOffset",(MethodVector3)this.OnSetTargetOffset);
+		Events.Add("SetTargetPosition",(MethodVector3)this.OnSetTargetPosition);
+		Events.Add("AddOrbitAngles",(MethodVector2)this.OnAddOrbitAngles);
+		Events.Add("AddTargetOffset",(MethodVector3)this.OnAddTargetOffset);
 	}
+	public void OnSetTarget(object target){
+		if(target is GameObject){this.target = ((GameObject)target).transform;}
+		if(target is Transform){this.target = ((Transform)target);}
+	}
+	public void OnSetOrbitAngles(Vector2 angles){this.orbitAngles = angles;}
+	public void OnSetTargetOffset(Vector3 offset){this.targetOffset = offset;}
+	public void OnSetTargetPosition(Vector3 position){this.targetPosition = position;}
+	public void OnAddOrbitAngles(Vector2 angles){this.orbitAngles += angles;}
+	public void OnAddTargetOffset(Vector3 offset){this.targetOffset += offset;}
 	public void Update(){
-		this.orbitAngles = this.WrapAngles(this.orbitAngles);
+		//this.orbitAngles = this.WrapAngles(this.orbitAngles);
 		if(this.target){this.targetPosition = this.target.position;}
 		bool targetChanged = this.target != this.lastTarget;
 		bool targetPositionChanged = this.targetPosition != this.lastTargetPosition;
@@ -58,7 +73,7 @@ public class Follow : MonoBehaviour{
 		this.lastLerpAngles = Vector2.Lerp(this.angleStart,shortestAngles,percent);
 		Quaternion rotation = Quaternion.Euler(this.lastLerpAngles[1],this.lastLerpAngles[0],0);
 		this.transform.position = rotation * range + this.targetPosition;
-		this.lastLerpAngles = this.WrapAngles(this.lastLerpAngles);
+		//this.lastLerpAngles = this.WrapAngles(this.lastLerpAngles);
 	}
 	public void LateUpdate(){
 		this.lastLerpOffset = Vector3.Lerp(this.offsetStart,this.targetOffset,percent);

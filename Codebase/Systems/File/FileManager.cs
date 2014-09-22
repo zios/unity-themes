@@ -69,8 +69,8 @@ public static class FileManager{
 		return "";
 	}
 	public static string GetGUID(string name,bool showWarnings=true){
-		FileData file = FileManager.Find(name,showWarnings);
 		#if UNITY_EDITOR 
+		FileData file = FileManager.Find(name,showWarnings);
 		if(file != null && Application.isEditor){
 			return file.GetGUID();
 		}

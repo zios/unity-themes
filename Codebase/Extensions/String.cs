@@ -193,6 +193,9 @@ public static class StringExtension{
 		}
 		return current;
 	}
+	public static bool IsEmpty(this string text){
+		return string.IsNullOrEmpty(text);
+	}
 	public static bool IsInt(this string text){
 		short number;
 		return short.TryParse(text,out number);

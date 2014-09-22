@@ -10,11 +10,12 @@ public class BlockedState : ActionPart{
 	public BlockType type;
 	public Direction direction;
 	public float duration;
-	public void OnValidate(){
+	public override void OnValidate(){
 		this.DefaultPriority(5);
 		if(this.controller == null){
 			this.controller = this.gameObject.GetComponentInParents<ColliderController>();
 		}
+		base.OnValidate();
 	}
 	public void Awake(){
 		if(this.controller == null){

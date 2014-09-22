@@ -115,7 +115,7 @@ public class ColliderController : MonoBehaviour{
 					this.gameObject.Call("Collide",selfCollision);
 				}
 				else{
-					this.rigidbody.position = startPosition + move;
+					this.rigidbody.position = startPosition + (move*0.99f);
 				}
 			}
 			this.lastDirection = cumulative.normalized;

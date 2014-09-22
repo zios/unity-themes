@@ -18,8 +18,14 @@ public class Gravity : MonoBehaviour{
 			this.gameObject.Call("AddForce",amount);
 		}
 	}
-	public void OnDisableGravity(){this.disabled = true;}
-	public void OnEnableGravity(){this.disabled = false;}
+	public void OnDisableGravity(){
+		this.gameObject.Call("ResetVelocity","y");
+		this.disabled = true;
+	}
+	public void OnEnableGravity(){
+		this.gameObject.Call("ResetVelocity","y");
+		this.disabled = false;
+	}
 	public void OnSetGravityScale(float scale){
 		this.scale.Set(scale);
 		if(scale == -1){this.scale.Revert();}
