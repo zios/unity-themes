@@ -5,7 +5,7 @@ Shader "Zios/ZED-U/Character (Shading Atlas)"{
 		indexMap("Index Map",2D) = "white"{}
 		shadingAtlas("Shading Atlas",2D) = "white"{}
 		outlineMap("Outline Map",2D) = "white"{}
-		normalMap("Normal Map",2D) = "white"{}
+		//normalMap("Normal Map",2D) = "white"{}
 	}
 	SubShader{
 		Tags{"LightMode"="ForwardBase"}
@@ -125,7 +125,7 @@ Shader "Zios/ZED-U/Character (Shading Atlas)"{
 				UNITY_INITIALIZE_OUTPUT(pixelOutput,output)
 				input = setupInput(input);
 				input = setupLighting(input);
-				input = setupNormalMap(input);
+				//input = setupNormalMap(input);
 				output = applyShadingAtlas(indexMap,input,output);
 				output = applyOutlineMap(input,output);
 				return output;
