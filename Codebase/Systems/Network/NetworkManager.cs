@@ -61,6 +61,15 @@ public class NetworkManager : MonoBehaviour{
 	public List<Client> clients = new List<Client>();
 	public List<NetworkEntity> entities = new List<NetworkEntity>();
 	public List<NetworkEntity> localEntities = new List<NetworkEntity>();
+	private string[] help = new string[]{
+		"^3connect ^9<^7address:port^9> :^10 The ip address/domain and optional port to attempt a network connection to.",
+		"^3listen ^9<^7map^9> :^10 Places the game in server mode (on an optional map) and waits for incoming connections.",
+		"^3port ^9<^7number^9> :^10 The port used by default for both incoming/outgoing network connections.",
+		"^3password ^9<^7string^9> :^10 The required password needed by users to connect when in server mode.",
+		"^3maxUsers ^9<^7number^9> :^10 The maximum number of network connections allowed when in server mode.",
+		"^3say ^9<^7text^9> :^10 Sends a message to the server to be displayed to all clients.",
+		"^3nick ^9<^7text^9> :^10 Changes the alias used in network communications.",
+	};
 	public void OnEnable(){
 		if(Network.isClient ||  Network.isServer){
 			Network.SetSendingEnabled(0,true);
@@ -71,6 +80,16 @@ public class NetworkManager : MonoBehaviour{
 		}
 	}
 	public void Start(){
+		Zios.Console.AddKeyword("connect",this.Connect);
+		Zios.Console.AddKeyword("listen",this.StartServer);
+		Zios.Console.AddKeyword("say",this.SendMessage);
+		Zios.Console.AddShortcut("join","connect");
+		Zios.Console.AddShortcut("name","nick");
+		Zios.Console.AddShortcut("alias","nick");
+		Zios.Console.AddCvar("nick",this,"clientName","Player Name",this.help[6]);
+		Zios.Console.AddCvar("port",this,"port","Network Port",this.help[2]);
+		Zios.Console.AddCvar("password",this,"password","Network Password",this.help[3]);
+		Zios.Console.AddCvar("maxUsers",this,"maxUsers","Maximum Users",this.help[4]);
 		this.connection = this.networkView;
 		if(Network.isClient || Network.isServer){Debug.Log("Level has been loaded -- " + Application.loadedLevelName);}
 	}

@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 namespace Zios{
 	[AddComponentMenu("Zios/Singleton/Scene")]
-	public class SceneSettings{
+	public class SceneSettings : MonoBehaviour{
 		public List<string> scenes;
 		public void Awake(){
 			Scene.settings = this;

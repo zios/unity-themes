@@ -171,4 +171,17 @@ public static class GameObjectExtension{
 		if(useZ){position.z = location.z;}
 		current.transform.position = position;
 	}
+	//====================
+	// Find
+	//====================
+	public static GameObject[] FindAll(this GameObject current,string name,bool inactive=true){
+		Transform[] all = current.GetComponentsInChildren<Transform>(inactive);
+		List<GameObject> matches = new List<GameObject>();
+		foreach(Transform transform in all){
+			if(transform.name == name){
+				matches.Add(transform.gameObject);
+			}
+		}
+		return matches.ToArray();
+	}
 }

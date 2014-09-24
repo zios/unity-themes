@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 public static class Locate{
 	public static GameObject GetScenePath(string name,bool autocreate=true){
 		string[] parts = name.Split('/');
@@ -19,5 +20,15 @@ public static class Locate{
 			parent = current.transform;
 		}
 		return current;
+	}
+	public static GameObject[] FindAll(string name){
+		GameObject[] all = (GameObject[])GameObject.FindObjectsOfType(typeof(GameObject));
+		List<GameObject> matches = new List<GameObject>();
+		foreach(GameObject current in all){
+			if(current.name == name){
+				matches.Add(current);
+			}
+		}
+		return matches.ToArray();
 	}
 }
