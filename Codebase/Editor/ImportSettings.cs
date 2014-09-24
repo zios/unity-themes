@@ -7,7 +7,7 @@ public class ImportSettings : AssetPostprocessor{
 		ModelImporter importer = (ModelImporter)assetImporter;
 		if(importer.importMaterials){
 			importer.globalScale = 1.0f;
-			importer.meshCompression = ModelImporterMeshCompression.High;
+			importer.meshCompression = ModelImporterMeshCompression.Off;
 			importer.optimizeMesh = true;
 			importer.importMaterials = false;
 			importer.tangentImportMode = ModelImporterTangentSpaceMode.None;
@@ -29,7 +29,7 @@ public class ImportSettings : AssetPostprocessor{
 		importer.textureType = TextureImporterType.Advanced;
 		if(importer.assetPath.Contains("Outlines")){
 			importer.wrapMode = TextureWrapMode.Clamp;
-			importer.textureFormat = TextureImporterFormat.AutomaticTruecolor;
+			importer.textureFormat = TextureImporterFormat.DXT5;
 			importer.mipmapEnabled = false;
 		}
 		if(importer.assetPath.Contains("Index") || importer.assetPath.Contains("Shading")){
@@ -37,16 +37,19 @@ public class ImportSettings : AssetPostprocessor{
 			importer.wrapMode = TextureWrapMode.Clamp;
 			importer.mipmapEnabled = false;
 			if(importer.assetPath.Contains("Index")){
-				importer.textureFormat = TextureImporterFormat.ASTC_RGB_4x4;
+				importer.textureFormat = TextureImporterFormat.DXT1;
 			}
 			if(importer.assetPath.Contains("Shading")){
-				importer.textureFormat = TextureImporterFormat.AutomaticTruecolor;
+				importer.textureFormat = TextureImporterFormat.DXT5;
 			}
 		}
 	}
 	public void OnPreprocessAudio(){
 		AudioImporter importer = (AudioImporter)assetImporter;
 		//importer.format = AudioImporterFormat.Compressed;
+		if(importer.assetPath.Contains("Music")){
+			importer.loadType = AudioImporterLoadType.StreamFromDisc;
+		}
 		if(importer.compressionBitrate != 48000){
 			//importer.compressionBitrate = 48000;
 			//importer.forceToMono = true;
