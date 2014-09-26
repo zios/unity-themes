@@ -36,9 +36,9 @@ public class ImportSettings : AssetPostprocessor{
 			importer.filterMode = FilterMode.Point;
 			importer.wrapMode = TextureWrapMode.Clamp;
 			importer.mipmapEnabled = false;
-			if(importer.assetPath.Contains("Index")){
-				importer.textureFormat = TextureImporterFormat.DXT1;
-			}
+			//if(importer.assetPath.Contains("Index")){
+			//	importer.textureFormat = TextureImporterFormat.DXT1;
+			//}
 			if(importer.assetPath.Contains("Shading")){
 				importer.textureFormat = TextureImporterFormat.DXT5;
 			}
