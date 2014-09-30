@@ -15,14 +15,12 @@ public struct NetworkEvents{
 }
 public class Client : MonoBehaviour{
 	public int id;
-	public int port;
 	public int latency;
 	public int lastUpdate;
-	public string ip;
 	public string label;
 	public NetworkEntity entity;
 	public NetworkPlayer networkPlayer;
-	public Dictionary<short,NetworkEntity> entityStates;
+	//public Dictionary<short,NetworkEntity> entityStates;
 	public ClientReceive receive;
 	public ClientSend send;
 }
@@ -71,6 +69,7 @@ public class NetworkManager : MonoBehaviour{
 		"^3nick ^9<^7text^9> :^10 Changes the alias used in network communications.",
 	};
 	public void OnEnable(){
+		this.connection = this.networkView;
 		if(Network.isClient ||  Network.isServer){
 			Network.SetSendingEnabled(0,true);
 			Network.isMessageQueueRunning = true;
@@ -90,8 +89,16 @@ public class NetworkManager : MonoBehaviour{
 		Zios.Console.AddCvar("port",this,"port","Network Port",this.help[2]);
 		Zios.Console.AddCvar("password",this,"password","Network Password",this.help[3]);
 		Zios.Console.AddCvar("maxUsers",this,"maxUsers","Maximum Users",this.help[4]);
-		this.connection = this.networkView;
 		if(Network.isClient || Network.isServer){Debug.Log("Level has been loaded -- " + Application.loadedLevelName);}
+	}
+	public void FixedUpdate(){
+		if(Network.isClient ||  Network.isServer){
+			Network.SetSendingEnabled(0,true);
+			Network.isMessageQueueRunning = true;
+			if(Network.isClient || (Network.isServer && this.listen)){
+				this.PrepareClient();
+			}
+		}
 	}
 	// =========================
 	// Unity-Derived
@@ -112,10 +119,22 @@ public class NetworkManager : MonoBehaviour{
 	public void OnPlayerDisconnected(NetworkPlayer player){
 		string info = "^2|" + player.externalIP + ":^9|" + player.externalPort + "^10";
 		Debug.Log("^10Client [^2|"+ info + "^10] has disconnected from the server.");
-		//this.RemoveEntity
+		if(Network.isServer){
+			Client client = this.FindClient(player);
+			if(client != null){
+				this.SendRPC("HandleEvent",RPCMode.All,NetworkEvents.RemoveClient,client.id+"", Vector3.zero);
+				if(this.debug){Debug.Log("^10Client ["+info+"] was removed.");}
+				List<NetworkEntity> removedEntities = this.entities.FindAll(entity => entity.ownerID == client.entity.ownerID);
+				foreach(NetworkEntity entity in removedEntities){
+					this.SendRPC("HandleEvent",RPCMode.All,NetworkEvents.RemoveEntity,entity.id+"", Vector3.zero);
+				}
+				if(this.debug){Debug.Log("^10Client ["+info+"] entities were removed.");}
+			}
+		}
 	}
 	public void OnDisconnectedFromServer(NetworkDisconnection info){
 		if(Network.isServer){return;}
+		this.StringEvent(NetworkEvents.LoadScene,this.sceneName);
 		if(info == NetworkDisconnection.LostConnection){
 			Debug.Log("^10Connection to the server has been lost.  Attempting reconnect ...");
 			return;
@@ -149,6 +168,9 @@ public class NetworkManager : MonoBehaviour{
 	}
 
 	public void StartServer(string[] values){
+		this.activeClient = null;
+		this.clients.RemoveAll(client => true);
+		this.entities.RemoveAll(client => true);
 		int port = this.port;
 		string sceneName = Application.loadedLevelName;
 		if(values.Length > 1){
@@ -162,9 +184,21 @@ public class NetworkManager : MonoBehaviour{
 		Network.InitializeServer(this.maxUsers,port,true);
 		this.SendRPC("StringEvent",RPCMode.All,NetworkEvents.LoadScene,this.sceneName);
 	}
+	public NetworkEntity FindEntity(int id){
+		foreach(NetworkEntity entity in this.entities){
+			if(entity.id == id){ return entity;	}
+		}
+		return null;
+	}
 	public Client FindClient(int id){
 		foreach(Client client in this.clients){
 			if(client.id == id){return client;}
+		}
+		return null;
+	}
+	public Client FindClient(NetworkPlayer player){
+		foreach(Client client in this.clients){
+			if(client.networkPlayer == player){return client;}
 		}
 		return null;
 	}
@@ -189,6 +223,7 @@ public class NetworkManager : MonoBehaviour{
 			clientSend.connection.observed = clientSend;
 			clientSend.connection.viewID = clientViewID;
 			clientSend.parent = this.activeClient;
+			if(this.debug){Debug.Log("Preparing a new client");}
 			this.SendRPC("SetupClient",RPCMode.Server,Network.player,clientViewID,this.clientName);
 		}
 	}
@@ -237,8 +272,8 @@ public class NetworkManager : MonoBehaviour{
 		NetworkViewID serverViewID = Network.AllocateViewID();
 		GameObject clientObject = new GameObject("ServerClient");
 		Client client = clientObject.AddComponent<Client>();
-		client.port = player.externalPort;
-		client.ip = player.externalIP;
+		//client.port = player.externalPort;
+		//client.ip = player.externalIP;
 		client.id = this.nextClientID;
 		client.label = name;
 		client.networkPlayer = player;
@@ -260,7 +295,7 @@ public class NetworkManager : MonoBehaviour{
 		this.SendRPC("FinalizeClient",player,serverViewID,client.id);
 		//this.SendRPC("HandleEvent",RPCMode.Others,NetworkEvents.AddClient,info);
 		if(this.clientPrefab){
-			Vector3 spawnPosition = new Vector3(400.0f,85.0f,0);
+			Vector3 spawnPosition = new Vector3(-300.77f,-101.98f,185.24f);
 			string entityData = this.clientPrefab.name+"-"+this.nextEntityID+"-"+client.id+"-"+client.label;
 			this.SendRPC("HandleEvent",RPCMode.All,NetworkEvents.AddEntity,entityData,spawnPosition);
 			this.nextEntityID += 1;
@@ -273,6 +308,7 @@ public class NetworkManager : MonoBehaviour{
 		}
 		if(eventID == NetworkEvents.LoadScene){
 			Debug.Log("Loading level...");
+			this.sceneName = text;
 			int sceneID = Zios.Scene.GetMapID(text);
 			Network.SetSendingEnabled(0,false);	
 			Network.isMessageQueueRunning = false;
@@ -291,17 +327,40 @@ public class NetworkManager : MonoBehaviour{
 			entity.gameObject = (GameObject)Instantiate(entityPrefab);
 			entity.gameObject.name = text;
 			entity.gameObject.transform.position = position;
+
 			//MovableEntity script = (MovableEntity)entity.gameObject.GetComponent(data[0]);
 			//script.networkEntity = entity;
-			if(Network.isServer && this.clientPrefab == entityPrefab){
+			if(this.clientPrefab == entityPrefab){
 				Client client = this.FindClient(entity.ownerID);
-				client.entity = entity;
+				if(Network.isServer){
+					client.entity = entity;
+				}
+				if((Network.isServer && (client.entity != null && this.activeClient.id == client.id)) || (Network.isClient && this.activeClient.id == entity.ownerID)){
+					Watch watchComponent = GameObject.Find("Camera").GetComponent<Watch>();
+					watchComponent.target = entity.gameObject.transform;
+					Follow followComponent = GameObject.Find("Camera").GetComponent<Follow>();
+					followComponent.target = entity.gameObject.transform;
+				}
 			}
 			this.entities.Add(entity);
 		}
 		else if(eventID == NetworkEvents.AddClient){}
-		else if(eventID == NetworkEvents.RemoveEntity){}
-		else if(eventID == NetworkEvents.RemoveClient){}
+		else if(eventID == NetworkEvents.RemoveEntity){
+			Debug.Log("Removing NetworkEntity...");
+			NetworkEntity entity = this.FindEntity(Convert.ToInt32(text));
+			if(entity != null){
+				GameObject.Destroy(entity.gameObject);
+				this.entities.Remove(entity);
+			}
+		}
+		else if(eventID == NetworkEvents.RemoveClient){
+			Debug.Log("Removing Client...");
+			Client client = this.FindClient(Convert.ToInt32(text));
+			if(client != null){
+				this.clients.Remove(client);
+				GameObject.Destroy(client.gameObject);
+			}
+		}
 		else if(eventID == NetworkEvents.SendMessage){
 			Debug.Log(text);
 		}
