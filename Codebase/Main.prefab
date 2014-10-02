@@ -270,6 +270,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &100032
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400018}
+  - 114: {fileID: 11400042}
+  m_Layer: 0
+  m_Name: Events
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &100058
 GameObject:
   m_ObjectHideFlags: 0
@@ -400,6 +416,18 @@ Transform:
   - {fileID: 22400008}
   m_Father: {fileID: 400000}
   m_RootOrder: 1
+--- !u!4 &400018
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100032}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -.889949977, y: 5.5999999, z: 2.30800009}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 400058}
+  m_RootOrder: 5
 --- !u!4 &400022
 Transform:
   m_ObjectHideFlags: 1
@@ -440,6 +468,7 @@ Transform:
   - {fileID: 400008}
   - {fileID: 400014}
   - {fileID: 400010}
+  - {fileID: 400018}
   m_Father: {fileID: 400000}
   m_RootOrder: 2
 --- !u!20 &2000000
@@ -736,7 +765,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b22fb4f4aa33d2747bf5d7d4f58d6e11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabs: []
+  prefabs:
+  - name: BreakerMeleeHitF
+    prefab: {fileID: 100070, guid: 7c9e3a6746a57ca4690056ef7cab9567, type: 3}
+    offset: {x: 0, y: 0, z: 0}
+    scale: {x: 0, y: 0, z: 0}
+    maximum: 0
+    uniqueMaterial: 0
 --- !u!114 &11400020
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -761,11 +796,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92d2be08660655d4a8cf18f50007a8b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stateAlias: 
+  stateRequirable: 1
+  stateReady: 0
+  stateUsable: 0
+  stateInUse: 0
+  stateID: 6ea8959a-e5b8-45f8-8a3b-8de5a0701f7b
   target: {fileID: 0}
   targetPosition: {x: 0, y: 0, z: 0}
   targetOffset: {x: 0, y: 0, z: 0}
   transition:
-    duration: 1.5
+    duration: 0
     curve:
       serializedVersion: 2
       m_Curve:
@@ -792,12 +833,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fdf0630aeb5f794a945a897c2d5d509, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stateAlias: 
+  stateRequirable: 1
+  stateReady: 0
+  stateUsable: 0
+  stateInUse: 0
+  stateID: dfa8b4d2-50a4-46ed-90a4-02e165b76091
   target: {fileID: 0}
   targetPosition: {x: 0, y: 0, z: 0}
-  targetOffset: {x: 0, y: 1.5, z: -1.75}
+  targetOffset: {x: 0, y: 1.35000002, z: -1.75}
   orbitAngles: {x: 0, y: 0}
   transition:
-    duration: 2.5
+    duration: 0
     curve:
       serializedVersion: 2
       m_Curve:
@@ -959,6 +1006,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scenes:
   - Landing
+--- !u!114 &11400042
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f820ebb539015844ea7a726daee3edb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!124 &12400000
 Behaviour:
   m_ObjectHideFlags: 1

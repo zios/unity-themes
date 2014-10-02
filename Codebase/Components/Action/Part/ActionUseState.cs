@@ -7,12 +7,24 @@ public class ActionUseState : ActionPart{
 		this.DefaultAlias("@Use");
 		base.OnValidate();
 	}
-	public override void Use(){
-		this.action.ready = true;
-		base.Use();
+	public void Start(){
+		this.SetupEvents(this);
 	}
-	public override void End(){
+	public override void Use(){
+		if(!this.inUse){
+			this.action.ready = true;
+			base.Use();
+		}
+	}
+	public override void OnActionEnd(){
 		this.action.ready = false;
 		base.End();
+	}
+	public override void End(){
+		bool canEnd = !this.action.inUse;
+		if(this.action.persist){canEnd = false;}
+		if(canEnd){
+			this.OnActionEnd();
+		}
 	}
 }

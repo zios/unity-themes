@@ -19,6 +19,27 @@ public static class Events{
 	public static void Add(string name,MethodBool method){Events.Add(name,(object)method);}
 	public static void Add(string name,MethodVector2 method){Events.Add(name,(object)method);}
 	public static void Add(string name,MethodVector3 method){Events.Add(name,(object)method);}
+	public static void AddGetTarget(string name,MethodReturn method,GameObject target){Events.AddTarget(name,(object)method,target);}
+	public static void AddTarget(string name,Method method,GameObject target){Events.AddTarget(name,(object)method,target);}
+	public static void AddTarget(string name,MethodObject method,GameObject target){Events.AddTarget(name,(object)method,target);}
+	public static void AddTarget(string name,MethodFull method,GameObject target){Events.AddTarget(name,(object)method,target);}
+	public static void AddTarget(string name,MethodString method,GameObject target){Events.AddTarget(name,(object)method,target);}
+	public static void AddTarget(string name,MethodInt method,GameObject target){Events.AddTarget(name,(object)method,target);}
+	public static void AddTarget(string name,MethodFloat method,GameObject target){Events.AddTarget(name,(object)method,target);}
+	public static void AddTarget(string name,MethodBool method,GameObject target){Events.AddTarget(name,(object)method,target);}
+	public static void AddTarget(string name,MethodVector2 method,GameObject target){Events.AddTarget(name,(object)method,target);}
+	public static void AddTarget(string name,MethodVector3 method,GameObject target){Events.AddTarget(name,(object)method,target);}
+	public static void AddTarget(string name,object method,GameObject target){
+		if(!Events.objectEvents.ContainsKey(target)){
+			Events.objectEvents[target] = new Dictionary<string,List<object>>();
+		}
+		if(!Events.objectEvents[target].ContainsKey(name)){
+			Events.objectEvents[target][name] = new List<object>();
+		}
+		if(!Events.objectEvents[target][name].Contains(method)){
+			Events.objectEvents[target][name].Add(method);
+		}
+	}	
 	public static void Add(string name,object method){
 		object methodTarget = ((Delegate)method).Target;
 		if(!Events.events.ContainsKey(name)){
@@ -30,16 +51,7 @@ public static class Events{
 		if(methodTarget != null){
 			Type type = methodTarget.GetType();
 			if(type.IsSubclassOf((typeof(MonoBehaviour)))){
-				GameObject target = ((MonoBehaviour)methodTarget).gameObject;
-				if(!Events.objectEvents.ContainsKey(target)){
-					Events.objectEvents[target] = new Dictionary<string,List<object>>();
-				}
-				if(!Events.objectEvents[target].ContainsKey(name)){
-					Events.objectEvents[target][name] = new List<object>();
-				}
-				if(!Events.objectEvents[target][name].Contains(method)){
-					Events.objectEvents[target][name].Add(method);
-				}
+				Events.AddTarget(name,method,((MonoBehaviour)methodTarget).gameObject);
 			}
 		}
 	}

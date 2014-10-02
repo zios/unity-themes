@@ -7,6 +7,7 @@ public class MoveTrigger : ActionPart{
 	public Vector3 amount;
 	public bool scaleByIntensity;
 	public override void OnValidate(){
+		this.DefaultRate("FixedUpdate");
 		this.DefaultPriority(15);
 		base.OnValidate();
 	}

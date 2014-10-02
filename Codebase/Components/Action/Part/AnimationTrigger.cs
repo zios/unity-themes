@@ -4,8 +4,6 @@ using Zios;
 [RequireComponent(typeof(Zios.Action))][AddComponentMenu("Zios/Component/Action/Part/Animation Trigger")]
 public class AnimationTrigger : ActionPart{
 	public string animationName;
-	[HideInInspector] public int animationPriority = -1;
-	[HideInInspector] public float holdDuration = -1;
 	public float speed = 1;
 	public float weight = 1;
 	public bool speedBasedOnIntensity;

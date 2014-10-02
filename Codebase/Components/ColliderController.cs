@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System;
+public enum ColliderRate{FixedUpdate,Update};
 public class CollisionData{
 	public bool isSource;
 	public ColliderController sourceController;
@@ -28,6 +29,7 @@ public class ColliderController : MonoBehaviour{
 	static public bool HasTrigger(Collider collider){
 		return Array.IndexOf(ColliderController.triggers,collider) != -1;
 	}
+	public ColliderRate rate;
 	public List<Vector3> move = new List<Vector3>();
 	[NonSerialized] public Vector3 lastDirection;
 	public Dictionary<string,bool> blocked = new Dictionary<string,bool>();
@@ -38,7 +40,7 @@ public class ColliderController : MonoBehaviour{
 	public float hoverDistance = 0.02f;
 	public bool persistentBlockChecks;
 	public void Awake(){
-		Events.Add("AddMove",(MethodVector3) this.OnMove);
+		Events.Add("AddMove",(MethodVector3)this.OnMove);
 		Events.Add("ResetMove",this.OnResetMove);
 		this.ResetBlocked(true);
 	}
@@ -66,6 +68,16 @@ public class ColliderController : MonoBehaviour{
 		this.rigidbody.Sleep();
 	}
 	public void FixedUpdate(){
+		if(this.rate == ColliderRate.FixedUpdate){
+			this.Step();
+		}
+	}
+	public void Update(){
+		if(this.rate == ColliderRate.Update){
+			this.Step();
+		}
+	}
+	public void Step(){
 		if(this.move.Count > 0){
 			this.ResetBlocked();
 			this.rigidbody.WakeUp();

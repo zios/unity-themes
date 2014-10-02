@@ -204,10 +204,16 @@ public static class StringExtension{
 		float number;
 		return float.TryParse(text,out number);
 	}
+	public static string TrySplit(this string current,string value,int index=0){
+		return current.TrySplit(value[0],index);
+	}
 	public static string TrySplit(this string current,char value,int index=0){
 		if(current.Contains(value.ToString())){
 			return current.Split(value)[index];
 		}
 		return current;
+	}
+	public static string[] Split(this string current,string value){
+		return current.Split(value[0]);
 	}
 }

@@ -10,8 +10,7 @@ public class LookTrigger : ActionPart{
 	private Vector3 start;
 	private Vector3 end;
 	public override void OnValidate(){
-		this.constant = true;
-		this.late = true;
+		this.DefaultRate("LateUpdate");
 		this.DefaultPriority(15);
 		base.OnValidate();
 	}

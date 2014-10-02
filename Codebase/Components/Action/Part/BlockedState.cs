@@ -10,6 +10,11 @@ public class BlockedState : ActionPart{
 	public BlockType type;
 	public Direction direction;
 	public float duration;
+	public void Start(){
+		if(this.controller == null){
+			Debug.LogWarning("BlockedState (" + this.alias + ") : No ColliderController found.");
+		}
+	}
 	public override void OnValidate(){
 		this.DefaultPriority(5);
 		if(this.controller == null){
@@ -17,19 +22,10 @@ public class BlockedState : ActionPart{
 		}
 		base.OnValidate();
 	}
-	public void Awake(){
-		if(this.controller == null){
-			Debug.LogWarning("No ColliderController found for use with 'Grounded' Action.");
-		}
-	}
 	public override void Use(){
 		string direction = this.direction.ToString().ToLower();
 		float duration = this.controller.GetUnblockedDuration(direction);
-		this.inUse = this.type == BlockType.Blocked ? duration < this.duration : duration > this.duration;
-		if(this.lastState != this.inUse){
-			this.lastState = this.inUse;
-			this.Toggle(this.inUse);
-			this.SetDirty(true);
-		}
+		bool state = this.type == BlockType.Blocked ? duration < this.duration : duration > this.duration;
+		this.Toggle(state);
 	}
 }

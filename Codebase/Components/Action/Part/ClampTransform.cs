@@ -13,8 +13,7 @@ public class ClampTransform : ActionPart{
 	public bool[] rotationClamp = new bool[3];
 	public bool[] scaleClamp = new bool[3];
 	public override void OnValidate(){
-		this.constant = true;
-		this.late = true;
+		this.DefaultRate("LateUpdate");
 		this.DefaultPriority(15);
 		base.OnValidate();
 	}

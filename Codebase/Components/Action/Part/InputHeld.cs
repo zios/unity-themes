@@ -16,6 +16,9 @@ public class InputHeld : ActionPart{
 		this.DefaultPriority(5);
 		base.OnValidate();
 	}
+	public void Start(){
+		this.SetupEvents(this);
+	}
 	public override void Use(){
 		bool inputSuccess = this.CheckInput();
 		if(inputSuccess){

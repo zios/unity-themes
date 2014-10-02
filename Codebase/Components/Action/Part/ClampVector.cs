@@ -7,17 +7,19 @@ public class ClampVector : ActionPart{
 	public Vector2 minimum;
 	public Vector2 maximum;
 	private Accessor accessor;
+	public void Start(){
+		this.accessor = new Accessor(this.component,this.attribute);
+	}
 	public override void OnValidate(){
-		this.constant = true;
-		this.late = true;
+		this.DefaultRate("LateUpdate");
 		this.DefaultPriority(15);
 		base.OnValidate();
 	}
-	public override void Start(){
-		this.accessor = new Accessor(this.component,this.attribute);
-		base.Start();
-	}
 	public override void Use(){
+		if(accessor == null){
+			Debug.LogWarning("ClampVector : Accessor not found.");
+			return;
+		}
 		Vector2 value = (Vector2)this.accessor.Get();
 		bool xExists = this.minimum.x != 0 && this.maximum.x != 0;
 		bool yExists = this.minimum.y != 0 && this.maximum.y != 0;

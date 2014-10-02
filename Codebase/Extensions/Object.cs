@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -108,7 +109,7 @@ public static class ObjectExtension{
 				XmlSerializer serialize = new XmlSerializer(typeof(T));
 				serialize.Serialize(stream,current);
 				return hash.ComputeHash(stream);
-			}            
+			}
 		}
 	}
 	public static Type LoadType(this object current,string typeName){
@@ -122,5 +123,15 @@ public static class ObjectExtension{
 			}
 		}
 		return null;
+	}
+	public static string GetClassName(this object current){
+		string path = current.GetClassPath();
+		if(path.Contains(".")){
+			return path.Split(".").Last();
+		}
+		return path;
+	}
+	public static string GetClassPath(this object current){
+		return current.GetType().ToString();
 	}
 }

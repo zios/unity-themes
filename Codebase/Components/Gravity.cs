@@ -3,11 +3,12 @@ using System.Collections;
 [RequireComponent(typeof(ColliderController))]
 [AddComponentMenu("Zios/Component/Physics/Gravity")]
 public class Gravity : MonoBehaviour{
-	public bool disabled;
 	public Vector3 intensity = new Vector3(0,-9.8f,0);
+	public bool disabled;
 	public MFloat scale = 1.0f;
 	public void Awake(){
-		Events.Add("SetGravityScale",(MethodFloat) this.OnSetGravityScale);
+		Events.AddGet("IsGravityEnabled",this.OnCheckGravity);
+		Events.Add("SetGravityScale",(MethodFloat)this.OnSetGravityScale);
 		Events.Add("DisableGravity",this.OnDisableGravity);
 		Events.Add("EnableGravity",this.OnEnableGravity);
 	}
@@ -17,6 +18,9 @@ public class Gravity : MonoBehaviour{
 			Vector3 amount = (this.intensity*this.scale)* Time.fixedDeltaTime;
 			this.gameObject.Call("AddForce",amount);
 		}
+	}
+	public object OnCheckGravity(){
+		return !this.disabled;
 	}
 	public void OnDisableGravity(){
 		this.gameObject.Call("ResetVelocity","y");

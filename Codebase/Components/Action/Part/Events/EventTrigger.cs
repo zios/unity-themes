@@ -1,26 +1,28 @@
 using Zios;
+using System;
 using UnityEngine;
 public enum ValueType{String,Int,Float,Bool}
-public enum EventFrequency{Once,Always}
+public enum EventFrequency{Always,Once}
 [RequireComponent(typeof(Zios.Action))][AddComponentMenu("Zios/Component/Action/Part/Event Trigger")]
 public class EventTrigger : ActionPart{
 	public string eventName;
 	public EventFrequency eventFrequency;
-	public GameObject eventTarget;
+	public Target eventTarget;
+	public void Start(){
+		this.eventTarget.SetDefault(this.action.owner);
+	}
 	public override void OnValidate(){
 		this.DefaultPriority(15);
 		base.OnValidate();
 	}
 	public override void Use(){
-		GameObject target = this.eventTarget == null ? this.action.owner : this.eventTarget;
 		if(this.eventFrequency == EventFrequency.Once){
-			if(!this.inUse){
-				target.Call(this.eventName);
-			}
+			if(!this.inUse){this.CallEvent();}
 		}
-		else{
-			target.Call(this.eventName);
-		}
+		else{this.CallEvent();}
 		base.Use();
+	}
+	public virtual void CallEvent(){
+		this.eventTarget.Call(this.eventName);
 	}
 }

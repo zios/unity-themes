@@ -44,6 +44,7 @@ public class AnimationController : MonoBehaviour{
 			this.lookup[data.name] = data;
 		}
 		Events.Add("SetAnimation",this.OnSet);
+		Events.Add("SetAnimationDefault",this.OnSetDefault);
 		Events.Add("SetAnimationSpeed",this.OnSetSpeed);
 		Events.Add("SetAnimationWeight",this.OnSetWeight);
 		Events.Add("SetAnimationHold",this.OnSetHold);
@@ -103,6 +104,12 @@ public class AnimationController : MonoBehaviour{
 		bool state = (bool)values[1];
 		int priority = values.Length > 2 ? (int)values[2] : -1;
 		this.Set(name,state,priority);
+	}
+	public void OnSetDefault(object[] values){
+		string name = (string)values[0];
+		if(this.lookup.ContainsKey(name)){
+			this.defaultAnimation = this.lookup[name];
+		}
 	}
 	public void OnSetSpeed(object [] values){
 		string name = (string)values[0];
