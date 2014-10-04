@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using System.Collections.Generic;
+[AddComponentMenu("Zios/Singleton/Event")]
 public class EventDetector : MonoBehaviour{
 	public void Awake(){Events.Call("OnAwake");}
 	public void Start(){Events.Call("OnStart");}
