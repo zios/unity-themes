@@ -5,8 +5,10 @@ using System.Collections;
 public class ImportSettings : AssetPostprocessor{
 	public void OnPreprocessModel(){
 		ModelImporter importer = (ModelImporter)assetImporter;
-		if(importer.importMaterials){
+		if(importer.assetPath.ContainsAny(".fbx")){
 			importer.globalScale = 1.0f;
+		}
+		if(importer.importMaterials){
 			importer.meshCompression = ModelImporterMeshCompression.Off;
 			importer.optimizeMesh = true;
 			importer.importMaterials = false;
