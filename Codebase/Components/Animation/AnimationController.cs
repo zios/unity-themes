@@ -6,25 +6,22 @@ using System.Collections.Generic;
 public class AnimationData{
 	public string name;
 	public int priority = -1;
-	public float holdDuration = -1;
+	public float weight = -1;
+	public float transitionIn = -1;
+	public float transitionOut = -1;
 	public AnimationData currentAnimation;
+	public AnimationState state;
 	[NonSerialized] public bool active;
-	[NonSerialized] public float holdTime = -1;
-	[NonSerialized] public float weight = 1;
-	public AnimationData(string name,int priority=-1,float hold=-1){
-		this.name = name;
-		this.priority = priority;
-		this.holdDuration = hold;
-	}
 }
 [RequireComponent(typeof(Animation))][AddComponentMenu("Zios/Component/Animation/Animation Controller")]
 public class AnimationController : MonoBehaviour{
 	public bool highestPriorityOnly = true;
 	public int defaultPriority = 1;
-	public float transitionIn = 0.3f;
-	public float transitionOut = 0.3f;
-	public AnimationData defaultAnimation;
-	public List<AnimationData> currentAnimations;
+	public float defaultTransitionIn = 0.15f;
+	public float defaultTransitionOut = 0.15f;
+	public string defaultAnimationName;
+	[ReadOnly] public AnimationData defaultAnimation;
+	[ReadOnly] public List<AnimationData> currentAnimations;
 	public List<AnimationData> animations = new List<AnimationData>();
 	public Dictionary<string,AnimationData> current = new Dictionary<string,AnimationData>();
 	public Dictionary<string,AnimationData> lookup = new Dictionary<string,AnimationData>();
@@ -33,58 +30,88 @@ public class AnimationController : MonoBehaviour{
 	//=====================
 	public void OnValidate(){
 		foreach(AnimationState state in this.animation){
-			if(this.animations.Find(x=>x.name==state.name) == null){
-				AnimationData data = new AnimationData(state.name,this.defaultPriority);
+			AnimationData data = this.animations.Find(x=>x.name==state.name);
+			if(data == null){
+				data = new AnimationData();
 				this.animations.Add(data);
 			}
+			data.name = state.name;
+			data.state = state;
 		}
 	}
 	public void Awake(){
 		foreach(AnimationData data in this.animations){
 			this.lookup[data.name] = data;
+			if(data.weight == -1){data.weight = 1.0f;}
+			if(data.priority == -1){data.priority = this.defaultPriority;}
+			if(data.transitionIn == -1){data.transitionIn = this.defaultTransitionIn;}
+			if(data.transitionOut == -1){data.transitionOut = this.defaultTransitionOut;}
+		}
+		if(this.lookup.ContainsKey(this.defaultAnimationName)){
+			this.defaultAnimation = this.lookup[this.defaultAnimationName];
+			this.defaultAnimation.active = true;
+			this.current[name] = this.defaultAnimation;
+		}
+		else{
+			Debug.LogWarning("AnimationController : Default animation (" + this.defaultAnimationName + ") not found.");
 		}
 		Events.Add("SetAnimation",this.OnSet);
 		Events.Add("SetAnimationDefault",this.OnSetDefault);
 		Events.Add("SetAnimationSpeed",this.OnSetSpeed);
 		Events.Add("SetAnimationWeight",this.OnSetWeight);
-		Events.Add("SetAnimationHold",this.OnSetHold);
 		Events.Add("PlayAnimation",this.OnPlay);
 		Events.Add("StopAnimation",this.OnStop);
-		Events.Add("HoldAnimation",this.OnHold);
-		Events.Add("ReleaseAnimation",this.OnRelease);
+	}
+	private void PlayDefault(){
+		if(this.defaultAnimation == null){return;}
+		float currentWeight = 0;
+		AnimationData fallback = this.defaultAnimation;
+		string name = this.defaultAnimation.name;
+		foreach(var item in this.current){
+			if(item.Value == fallback){continue;}
+			currentWeight += item.Value.state.weight;
+		}
+		currentWeight = currentWeight < 1 ? 1.0f-currentWeight : 0;
+		float transitionTime = this.lookup[name].weight < currentWeight ? fallback.transitionOut : fallback.transitionOut;
+		this.lookup[name].weight = currentWeight;
+		this.animation.Blend(name,currentWeight,transitionTime);
 	}
 	public void Update(){
+		this.PlayDefault();
 		foreach(AnimationData data in this.animations){
 			if(this.current.ContainsKey(data.name)){
-				AnimationData current = this.current[data.name];
-				if(!current.active){
-					if(Time.time > current.holdTime){current.holdTime = -1;}
-					if(current.holdTime == -1){
-						this.animation.Blend(data.name,0,this.transitionOut);
-						this.current.Remove(data.name);
-					}
+				string name = data.name;
+				AnimationData current = this.current[name];
+				bool zeroWeight = this.lookup[name].weight <= 0.01f && current != this.defaultAnimation;
+				if(!current.active || zeroWeight){
+					this.animation.Blend(name,0,data.transitionOut);
+					current.weight = 1;
+					this.current.Remove(name);
 				}
 			}
-		}
-		if(this.current.Count == 0){
-			this.Play(this.defaultAnimation);
-		}
-		if(this.current.Count > 1){
-			this.Stop(this.defaultAnimation.name);
 		}
 		if(Application.isEditor){
 			this.currentAnimations = this.current.Values.ToList();
 		}
 	}
 	//=====================
+	// Internal
+	//=====================
+	[ContextMenu("Restore Defaults")]
+	private void RestoreDefaults(){
+		foreach(AnimationState state in this.animation){
+			AnimationData data = this.animations.Find(x=>x.name==state.name);
+			if(data != null){
+				data.weight = -1;
+				data.transitionOut = -1;
+				data.transitionIn = -1;
+				data.priority = -1;
+			}
+		}
+	}
+	//=====================
 	// Events
 	//=====================
-	public void OnHold(object[] values){
-		string name =(string)values[0]; 
-		int duration = (int)values[1];
-		this.Hold(name,duration);
-	}
-	public void OnRelease(){this.Release();}
 	public void OnStop(object[] values){
 		if(values.Length > 0){
 			string name = (string)values[0];
@@ -108,6 +135,7 @@ public class AnimationController : MonoBehaviour{
 	public void OnSetDefault(object[] values){
 		string name = (string)values[0];
 		if(this.lookup.ContainsKey(name)){
+			this.defaultAnimationName = name;
 			this.defaultAnimation = this.lookup[name];
 		}
 	}
@@ -121,23 +149,15 @@ public class AnimationController : MonoBehaviour{
 		float weight = (float)values[1];
 		this.SetWeight(name,weight);
 	}
-	public void OnSetHold(object[] values){
-		string name =(string)values[0]; 
-		bool state = (bool)values[1];
-		float duration = values.Length > 2 ? (float)values[1] : -1;
-		this.SetHold(name,state,duration);
-	}
 	//=====================
 	// Operations
 	//=====================
 	public void Play(string name,int priority=1){
 		bool exists = this.lookup.ContainsKey(name);
 		bool active = this.current.ContainsKey(name);
-		bool onlyDefault = this.current.Count == 1 && this.current.ContainsKey(this.defaultAnimation.name);
 		if(exists && !active){
-			if(this.highestPriorityOnly || onlyDefault){
-				this.animation.Blend(this.defaultAnimation.name,0,this.transitionOut);
-				this.current.Remove(this.defaultAnimation.name);
+			
+			if(this.highestPriorityOnly){
 				if(priority == -1){priority = this.lookup[name].priority;}
 				foreach(var item in this.current){
 					if(item.Value.priority > priority){return;}
@@ -148,7 +168,7 @@ public class AnimationController : MonoBehaviour{
 			}
 			this.current[name] = this.lookup[name]; 
 			this.current[name].active = true;
-			this.animation.Blend(name,1,this.transitionIn);
+			this.animation.Blend(name,this.lookup[name].weight,this.lookup[name].transitionIn);
 		}
 	}
 	public void Play(AnimationData data){
@@ -157,7 +177,6 @@ public class AnimationController : MonoBehaviour{
 	public void Stop(){
 		foreach(var item in this.current){
 			item.Value.active = false;
-			item.Value.holdTime = Time.time + item.Value.holdDuration;
 		}
 	}
 	public void Stop(string name){
@@ -166,26 +185,6 @@ public class AnimationController : MonoBehaviour{
 		}
 	}
 	public void Stop(AnimationData data){this.Stop(data.name);}
-	public void Hold(float duration){
-		foreach(var item in this.current){
-			item.Value.holdTime = Time.time + duration;
-		}
-	}
-	public void Hold(string name,float duration){
-		if(this.current.ContainsKey(name)){
-			this.current[name].holdTime = Time.time + duration;
-		}
-	}
-	public void Release(){
-		foreach(var item in this.current){
-			item.Value.holdTime = -1;
-		}
-	}
-	public void Release(string name){
-		if(this.current.ContainsKey(name)){
-			this.current[name].holdTime = -1;
-		}
-	}
 	public void Set(string name,bool state,int priority=1){
 		if(state){
 			this.Play(name,priority);
@@ -199,15 +198,13 @@ public class AnimationController : MonoBehaviour{
 		}
 	}
 	public void SetWeight(string name,float weight){
-		if(this.animation[name]){
-			this.animation[name].weight = weight;
+		if(this.animation[name] && weight != this.lookup[name].weight){
+			AnimationData data = this.lookup[name];
+			data.weight = weight;
+			if(current.ContainsKey(name)){
+				float transitionTime = data.state.weight < weight ? data.transitionOut : data.transitionOut;
+				this.animation.Blend(name,data.weight,transitionTime);
+			}
 		}
-	}
-	public void SetHold(string name,bool state,float duration){
-		if(state){
-			this.Hold(name,duration);
-			return;
-		}
-		this.Release(name);
 	}
 }

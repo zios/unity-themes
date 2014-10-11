@@ -5,7 +5,7 @@ public class Watch : StateMonoBehaviour{
 	public Transform target;
 	public Vector3 targetPosition;
 	public Vector3 targetOffset;
-	public Timer transition;
+	public Transition transition;
 	[NonSerialized] public Quaternion rotationStart;
 	[NonSerialized] public Quaternion rotationEnd;
 	[NonSerialized] public Vector3 lastPosition;

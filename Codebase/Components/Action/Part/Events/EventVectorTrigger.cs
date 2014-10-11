@@ -4,9 +4,10 @@ using UnityEngine;
 public class EventVectorTrigger : EventTrigger{
 	public Vector2 parameter;
 	public bool scaleByIntensity;
-	public override void CallEvent(){
+	public override void Use(){
 		Vector2 value = this.parameter;
 		if(this.scaleByIntensity){value *= this.action.intensity;}
-		this.eventTarget.Call(this.eventName,value);
+		this.eventTarget.Set(value);
+		base.Use();
 	}
 }

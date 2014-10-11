@@ -1,12 +1,11 @@
 using Zios;
 using UnityEngine;
-public enum LookType{LookAt,LookWith}
-[RequireComponent(typeof(Zios.Action))][AddComponentMenu("Zios/Component/Action/Part/Look Trigger")]
-public class LookTrigger : ActionPart{
+[RequireComponent(typeof(Zios.Action))][AddComponentMenu("Zios/Component/Action/Part/Look Trigger (Clamp)")]
+public class LookClampTrigger : ActionPart{
 	public LookType type;
 	public Target source = new Target();
 	public Target target = new Target();
-	public LerpVector3 lerp = new LerpVector3();
+	public ClerpVector3 lerp = new ClerpVector3();
 	public override void OnValidate(){
 		this.DefaultRate("LateUpdate");
 		this.DefaultPriority(15);

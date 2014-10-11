@@ -92,6 +92,9 @@ namespace Zios.Editor{
 				}
 			}
 			EditorGUILayout.EndVertical();
+			if(this.rows.Count < 1){
+				EditorGUILayout.HelpBox("Please add components to generate table.",MessageType.Info,true);
+			}
 			if(showEmptiesButton){
 				string prefix = this.showEmpty ? "☑ " : "☐ ";
 				GUIStyle buttonStyle = new GUIStyle(GUI.skin.toggle);

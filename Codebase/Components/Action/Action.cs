@@ -10,21 +10,21 @@ namespace Zios{
 		public float intensity = 1.0f;
 		public bool persist;
 		[NonSerialized] public GameObject owner;
-		public virtual void Awake(){
+		public void OnValidate(){
 			StateController stateController = this.gameObject.GetComponentInParents<StateController>();
-			if(stateController == null){
-				Debug.LogError("Action ("+this.transform.name+") -- No parent StateController component found.");
-				return;
-			}
-			this.owner = stateController.gameObject;
-			Events.AddGet("Is"+this.alias+"Active",this.GetActive);
-			Events.AddGet("Is"+this.alias+"Usable",this.GetUsable);
-			Events.Add("Disable"+this.alias,this.OnEnableAction);
-			Events.Add("Enable"+this.alias,this.OnDisableAction);
-			Events.AddGetTarget("Is"+this.alias+"Active",this.GetActive,this.owner);
-			Events.AddGetTarget("Is"+this.alias+"Usable",this.GetUsable,this.owner);
-			Events.AddTarget("Enable"+this.alias,this.OnEnableAction,this.owner);
-			Events.AddTarget("Disable"+this.alias,this.OnDisableAction,this.owner);
+			this.owner = stateController == null ? this.gameObject : stateController.gameObject;
+			this.gameObject.Call("Refresh");
+		}
+		public virtual void Awake(){
+			this.OnValidate();
+			string alias = this.alias.Strip(" ");
+			Events.Add("ForceEndAction",this.End);
+			Events.Add("ForceEnd"+alias,this.End);
+			Events.AddTarget("ForceEnd"+alias,this.End,this.owner);
+			Events.AddGet("Is"+alias+"Active",this.GetActive);
+			Events.AddGet("Is"+alias+"Usable",this.GetUsable);
+			Events.AddGetTarget("Is"+alias+"Active",this.GetActive,this.owner);
+			Events.AddGetTarget("Is"+alias+"Usable",this.GetUsable,this.owner);
 			this.owner.Call("UpdateStates");
 			this.owner.CallChildren("UpdateParts");
 			this.SetDirty(true);
@@ -40,49 +40,54 @@ namespace Zios{
 		}
 		public void SetDirty(bool state){Action.dirty[this.gameObject] = state;}
 		public void AddPart(string name,ActionPart part){this.parts[name] = part;}
-		public void OnEnableAction(){this.enabled = true;}
-		public void OnDisableAction(){this.enabled = false;}
 		public object GetActive(){return this.inUse;}
 		public object GetUsable(){return this.usable;}
 		public override void Use(){this.Toggle(true);}
 		public override void End(){this.Toggle(false);}
 		public override void Toggle(bool state){
 			if(state != this.inUse){
-				string active = state ? "Activate" : "Deactivate";
+				string active = state ? "Start" : "End";
 				this.gameObject.Call("Action"+active);
-				//this.gameObject.Call(this.alias+active); // Call on Actions ONLY
 				this.inUse = state;
-				//if(!this.inUse){this.ready = false;}
 				this.SetDirty(true);
 				this.owner.Call("UpdateStates");
 			}
 		}
 	}
-	public enum ActionRate{FixedUpdate,Update,LateUpdate};
+	public enum ActionRate{Default,FixedUpdate,Update,LateUpdate,ActionStart,ActionEnd,None};
 	[AddComponentMenu("")][RequireComponent(typeof(Action))]
 	public class ActionPart : StateMonoBehaviour{
 		static public Dictionary<ActionPart,bool> dirty = new Dictionary<ActionPart,bool>();
 		public ActionRate rate = ActionRate.Update;
 		[NonSerialized] public Action action;
 		[HideInInspector] public int priority = -1;
+		[HideInInspector] public bool requiredState;
 		public override string GetInterfaceType(){return "ActionPart";}
 		public virtual void OnValidate(){
-			this.GetComponent<ActionController>().Refresh();
+			this.action = this.GetComponent<Action>();
+			this.action.OnValidate();
 		}
 		public virtual void Awake(){
-			this.action = this.GetComponent<Action>();
+			this.OnValidate();
+			string alias = this.alias.Strip(" ");
+			Events.Add("End"+alias,this.End);
+			Events.Add("Use"+alias,this.Use);
+			Events.Add("ForceEnd"+alias,this.ForceEnd);
+			Events.Add("ActionStart",this.ActionStart);
+			Events.Add("ActionEnd",this.ActionEnd);
 			this.SetDirty(true);
 		}
-		public virtual void SetupEvents(ActionPart part){
-			Events.Add("ActionActivate",part.OnActionStart);
-			Events.Add("ActionDeactivate",part.OnActionEnd);
+		[ContextMenu("Toggle Column Visibility")]
+		public void ToggleRequire(){
+			this.requirable = !this.requirable;
+			this.gameObject.Call("Refresh");
 		}
 		public virtual void Step(){
 			if(ActionPart.dirty[this]){
 				this.SetDirty(false);
 				this.gameObject.Call("UpdateParts");
 			}
-			bool actionUsable = this.action.usable || this.action.persist && this.action.inUse;
+			bool actionUsable = this.action.usable || (this.action.persist && this.action.inUse);
 			if(actionUsable && this.usable){this.Use();}
 			else if(this.inUse){this.End();}
 		}
@@ -92,7 +97,7 @@ namespace Zios{
 			}
 		}
 		public virtual void Update(){
-			if(this.rate == ActionRate.Update){
+			if(this.rate == ActionRate.Update || this.rate == ActionRate.Default){
 				this.Step();
 			}
 		}
@@ -101,8 +106,19 @@ namespace Zios{
 				this.Step();
 			}
 		}
+		public virtual void ActionStart(){
+			if(this.rate == ActionRate.ActionStart){
+				this.Step();
+			}
+		}
+		public virtual void ActionEnd(){
+			if(this.rate == ActionRate.ActionEnd){
+				this.Step();
+			}
+			this.End();
+		}
 		public void DefaultRate(string rate){
-			if(this.rate == ActionRate.Update){
+			if(this.rate == ActionRate.Default){
 				if(rate == "FixedUpdate"){this.rate = ActionRate.FixedUpdate;}
 				if(rate == "LateUpdate"){this.rate = ActionRate.LateUpdate;}
 			}
@@ -118,9 +134,14 @@ namespace Zios{
 				this.alias = name;
 			}
 		}
+		public void DefaultRequirable(bool state){
+			if(!this.requiredState){
+				this.requirable = state;
+				this.requiredState = true;
+			}
+		}
 		public void SetDirty(bool state){ActionPart.dirty[this] = state;}
-		public virtual void OnActionStart(){}
-		public virtual void OnActionEnd(){}
+		public virtual void ForceEnd(){this.Toggle(false);}
 		public override void Use(){this.Toggle(true);}
 		public override void End(){this.Toggle(false);}
 		public override void Toggle(bool state){

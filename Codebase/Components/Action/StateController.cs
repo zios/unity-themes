@@ -16,6 +16,7 @@ public class StateController : MonoBehaviour{
 	public virtual void OnEnable(){this.Awake();}
 	public virtual void Awake(){
 		Events.Add("UpdateStates",this.UpdateStates);
+		Events.Add("Refresh",this.Refresh);
 		this.Refresh();
 	}
 	[ContextMenu("Refresh")]
@@ -250,7 +251,7 @@ public class StateMonoBehaviour : MonoBehaviour,StateInterface{
 	public bool requirable{get{return this.stateRequirable;}set{this.stateRequirable = value;}}
 	public bool ready{get{return this.stateReady;}set{this.stateReady = value;}}
 	public bool usable{get{return this.stateUsable;}set{this.stateUsable = value;}}
-	public bool inUse{get{return this.stateInUse;}set{this.stateInUse = value;}}	
+	public bool inUse{get{return this.stateInUse;}set{this.stateInUse = value;}}
 	public virtual string GetInterfaceType(){return "State";}
 	public virtual void Use(){}
 	public virtual void End(){}

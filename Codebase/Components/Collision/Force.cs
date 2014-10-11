@@ -13,7 +13,7 @@ public class Force : MonoBehaviour{
 	public void Awake(){
 		Events.AddGet("GetVelocity",this.OnGetVelocity);
 		Events.Add("Collide",(MethodObject)this.OnCollide);
-		Events.Add("AddForce",(MethodVector3) this.OnAddForce);
+		Events.Add("AddForce",(MethodVector3)this.OnAddForce);
 		Events.Add("ScaleVelocity",this.OnScaleVelocity);
 		Events.Add("ResetVelocity",this.OnResetVelocity);
 		Events.Add("EnableForces",this.OnEnableForces);
@@ -25,7 +25,9 @@ public class Force : MonoBehaviour{
 			Vector3 resistence = Vector3.Scale(this.velocity.Sign(),this.resistence);
 			this.velocity -= resistence * Time.fixedDeltaTime;
 			this.velocity = this.velocity.Clamp(this.terminalVelocity*-1,this.terminalVelocity);
-			this.gameObject.Call("AddMove",this.velocity);
+			this.gameObject.Call("AddMove",new Vector3(this.velocity.x,0,0));
+			this.gameObject.Call("AddMove",new Vector3(0,this.velocity.y,0));
+			this.gameObject.Call("AddMove",new Vector3(0,0,this.velocity.z));
 		}
 	}
 	public object OnGetVelocity(){
@@ -39,9 +41,6 @@ public class Force : MonoBehaviour{
 		this.disabled = false;
 	}
 	public void OnAddForce(Vector3 force){
-		if(this.controller.freezePosition[0]){force.x = 0;}
-		if(this.controller.freezePosition[1]){force.y = 0;}
-		if(this.controller.freezePosition[2]){force.z = 0;}
 		if(force != Vector3.zero){
 			this.velocity += force;
 		}

@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
 [Serializable]
-public class Timer{
+public class Transition{
 	public float duration = 0.5f;
 	public AnimationCurve curve = AnimationCurve.Linear(0,0,1,1);
 	[NonSerialized] public bool complete = true;
@@ -21,8 +21,8 @@ public class Timer{
 		this.complete = time >= endTime;
 		return this.curve.Evaluate(elapsed);
 	}
-	public Timer Copy(){
-		Timer copy = new Timer();
+	public Transition Copy(){
+		Transition copy = new Transition();
 		copy.duration = this.duration;
 		copy.curve = this.curve;
 		return copy;

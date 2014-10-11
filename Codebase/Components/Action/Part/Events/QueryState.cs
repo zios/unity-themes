@@ -3,23 +3,16 @@ using System;
 using UnityEngine;
 [RequireComponent(typeof(Zios.Action))][AddComponentMenu("Zios/Component/Action/Part/Query State")]
 public class QueryState : ActionPart{
-	public string queryName;
-	public Target queryTarget;
+	public EventGetTarget queryTarget = new EventGetTarget();
 	public override void OnValidate(){
 		this.DefaultPriority(15);
 		base.OnValidate();
-	}
-	public void Start(){
-		this.queryTarget.AddSpecial("{Owner}",this.action.owner);
+		this.queryTarget.AddSpecial("[Owner]",this.action.owner);
+		this.queryTarget.AddSpecial("[Action]",this.action.gameObject);
+		this.queryTarget.DefaultSearch("[Owner]");
 	}
 	public override void Use(){
-		bool state;
-		if(this.queryTarget.direct == null){
-			state = (bool)Events.Query(this.queryName);
-			this.Toggle(state);
-			return;
-		}
-		state = (bool)this.queryTarget.Query(this.queryName);
+		bool state = (bool)this.queryTarget.Get();
 		this.Toggle(state);
 	}
 }

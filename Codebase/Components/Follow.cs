@@ -6,7 +6,7 @@ public class Follow : StateMonoBehaviour{
 	public Vector3 targetPosition;
 	public Vector3 targetOffset;
 	public Vector2 orbitAngles;
-	public Timer transition;
+	public Transition transition;
 	[NonSerialized] public float percent;
 	[NonSerialized] public Transform lastTarget;
 	[NonSerialized] public Vector3 lastTargetPosition;
@@ -21,6 +21,10 @@ public class Follow : StateMonoBehaviour{
 		this.lastLerpOffset = this.targetOffset;
 		this.Update();
 		this.transition.End();
+		Events.AddGet("GetTarget",this.OnGetTarget);
+		Events.AddGet("GetOrbitAngles",this.OnGetOrbitAngles);
+		Events.AddGet("GetTargetOffset",this.OnGetTargetOffset);
+		Events.AddGet("GetTargetPosition",this.OnGetTargetPosition);
 		Events.Add("SetTarget",(MethodObject)this.OnSetTarget);
 		Events.Add("SetOrbitAngles",(MethodVector2)this.OnSetOrbitAngles);
 		Events.Add("SetTargetOffset",(MethodVector3)this.OnSetTargetOffset);
@@ -28,6 +32,11 @@ public class Follow : StateMonoBehaviour{
 		Events.Add("AddOrbitAngles",(MethodVector2)this.OnAddOrbitAngles);
 		Events.Add("AddTargetOffset",(MethodVector3)this.OnAddTargetOffset);
 	}
+
+	public object OnGetTarget(){return this.target;}
+	public object OnGetOrbitAngles(){return this.orbitAngles;}
+	public object OnGetTargetOffset(){return this.targetOffset;}
+	public object OnGetTargetPosition(){return this.targetPosition;}
 	public void OnSetTarget(object target){
 		if(target is GameObject){this.target = ((GameObject)target).transform;}
 		if(target is Transform){this.target = ((Transform)target);}
@@ -57,20 +66,7 @@ public class Follow : StateMonoBehaviour{
 		}
 		this.percent = this.transition.Tick();
 		Vector3 range = new Vector3(0,0,this.targetOffset[2]);
-		Vector2 shortestAngles = new Vector2(0,0);
-		for(int index=0;index<2;index++){
-			if(this.orbitAngles[index] < this.angleStart[index]){
-				float distanceA = this.orbitAngles[index] + (360 - this.angleStart[index]);
-				float distanceB = this.angleStart[index] - this.orbitAngles[index];
-				shortestAngles[index] = distanceA <= distanceB ? (360 + this.orbitAngles[index]) : this.orbitAngles[index];
-			}
-			else{
-				float distanceA = this.angleStart[index] + (360 - this.orbitAngles[index]);
-				float distanceB = this.orbitAngles[index] - this.angleStart[index];
-				shortestAngles[index] = distanceA <= distanceB ? (this.angleStart[index] - distanceA) : this.orbitAngles[index];
-			}
-		}
-		this.lastLerpAngles = Vector2.Lerp(this.angleStart,shortestAngles,percent);
+		this.lastLerpAngles = this.lastLerpAngles.LerpAngle(this.angleStart,this.orbitAngles,percent);
 		Quaternion rotation = Quaternion.Euler(this.lastLerpAngles[1],this.lastLerpAngles[0],0);
 		this.transform.position = rotation * range + this.targetPosition;
 		//this.lastLerpAngles = this.WrapAngles(this.lastLerpAngles);

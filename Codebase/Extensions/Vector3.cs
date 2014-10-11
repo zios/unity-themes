@@ -22,6 +22,13 @@ public static class Vector3Extension{
 		}
 		return signed;
 	}
+	public static Vector3 LerpAngle(this Vector3 vector,Vector3 start,Vector3 end,float percent){
+		Vector3 copy = vector;
+		copy.x = Mathf.LerpAngle(start.x,end.x,percent);
+		copy.y = Mathf.LerpAngle(start.y,end.y,percent);
+		copy.z = Mathf.LerpAngle(start.z,end.z,percent);
+		return copy;
+	}
 	public static Vector3 Clamp(this Vector3 vector,Vector3 min,Vector3 max){
 		Vector3 clamp = vector;
 		clamp.x = Mathf.Clamp(clamp.x,min.x,max.x);
@@ -41,6 +48,13 @@ public static class Vector3Extension{
 		copy.x = vector.x / 360.0f;
 		copy.y = vector.y / 360.0f;
 		copy.z = vector.z / 360.0f;
+		return copy;
+	}
+	public static Vector3 Abs(this Vector3 vector){
+		Vector3 copy = vector;
+		copy.x = Mathf.Abs(copy.x);
+		copy.y = Mathf.Abs(copy.y);
+		copy.z = Mathf.Abs(copy.z);
 		return copy;
 	}
 }

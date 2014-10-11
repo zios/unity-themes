@@ -9,6 +9,7 @@ public static class Events{
 		Events.objectEvents.Clear();
 		Events.events.Clear();
 	}
+	public static void AddGet(string name,MethodStringReturn method){Events.Add(name,(object)method);}
 	public static void AddGet(string name,MethodReturn method){Events.Add(name,(object)method);}
 	public static void Add(string name,Method method){Events.Add(name,(object)method);}
 	public static void Add(string name,MethodObject method){Events.Add(name,(object)method);}
@@ -85,50 +86,78 @@ public static class Events{
 			((MethodVector3)callback)((Vector3)value);
 		}
 	}
-	public static object Query(string name,object result=null){
+	public static object HandleGet(object callback,object[] values){
+		object value = values.Length > 0 ? values[0] : null;
+		if(callback is MethodReturn){
+			return ((MethodReturn)callback)();
+		}
+		else if(value is object && callback is MethodObjectReturn){
+			return ((MethodObjectReturn)callback)((object)value);
+		}
+		else if(value is int && callback is MethodIntReturn){
+			return ((MethodIntReturn)callback)((int)value);
+		}
+		else if(value is float && callback is MethodFloatReturn){
+			return ((MethodFloatReturn)callback)((float)value);
+		}
+		else if(value is string && callback is MethodStringReturn){
+			return ((MethodStringReturn)callback)((string)value);
+		}
+		else if(value is bool && callback is MethodBoolReturn){
+			return ((MethodBoolReturn)callback)((bool)value);
+		}
+		else if(value is Vector2 && callback is MethodVector2Return){
+			return ((MethodVector2Return)callback)((Vector2)value);
+		}
+		else if(value is Vector3 && callback is MethodVector3Return){
+			return ((MethodVector3Return)callback)((Vector3)value);
+		}
+		return null;
+	}
+	public static object Query(string name,object result=null,params object[] values){
 		if(Events.events.ContainsKey(name)){
 			foreach(object callback in Events.events[name]){
-				return ((MethodReturn)callback)();
+				return Events.HandleGet(callback,values);
 			}
 		}
 		return result;
 	}
-	public static object Query(GameObject target,string name,object result=null){
+	public static object Query(GameObject target,string name,object[] values,object result=null){
 		if(Events.objectEvents.ContainsKey(target)){
 			if(Events.objectEvents[target].ContainsKey(name)){
 				foreach(object callback in Events.objectEvents[target][name]){
-					return ((MethodReturn)callback)();
+					return Events.HandleGet(callback,values);
 				}
 			}
 		}
 		return result;
 	}
-	public static object QueryChildren(GameObject target,string name,bool self=false,object result=null){
+	public static object QueryChildren(GameObject target,string name,object[] values,object result=null,bool self=false){
 		if(result != null){return result;}
-		if(self){Events.Query(target,name,result);}
+		if(self){Events.Query(target,name,values,result);}
 		Transform[] children = target.GetComponentsInChildren<Transform>();
 		foreach(Transform transform in children){
 			if(transform.gameObject == target){continue;}
-			result = Events.QueryChildren(transform.gameObject,name,true,result);
+			result = Events.QueryChildren(transform.gameObject,name,values,result,true);
 			if(result != null){return result;}
 		}
 		return result;
 	}
-	public static object QueryParents(GameObject target,string name,bool self=false,object result=null){
+	public static object QueryParents(GameObject target,string name,object[] values,object result=null,bool self=false){
 		if(result != null){return result;}
-		if(self){Events.Query(target,name,result);}
+		if(self){Events.Query(target,name,values,result);}
 		Transform parent = target.transform.parent;
 		while(parent != null){
-			result = Events.QueryParents(parent.gameObject,name,true,result);
+			result = Events.QueryParents(parent.gameObject,name,values,result,true);
 			parent = parent.parent;
 			if(result != null){return result;}
 		}
 		return result;
 	}
-	public static object QueryFamily(GameObject target,string name,bool self=false,object result=null){
-		if(self){Events.Query(target,name,result);}
-		Events.QueryChildren(target,name,false,result);
-		Events.QueryParents(target,name,false,result);
+	public static object QueryFamily(GameObject target,string name,object[] values,object result=null,bool self=false){
+		if(self){result = Events.Query(target,name,values,result);}
+		result = Events.QueryChildren(target,name,values,result,false);
+		result = Events.QueryParents(target,name,values,result,false);
 		return result;
 	}
 	public static void Call(string name,params object[] values){
@@ -170,17 +199,17 @@ public static class Events{
 	}
 }
 public static class GameObjectEvents{
-	public static object Query(this GameObject current,string name){
-		return Events.Query(current,name);
+	public static object Query(this GameObject current,string name,params object[] values){
+		return Events.Query(current,name,values);
 	}
-	public static object QueryChildren(this GameObject current,string name,bool self=true){
-		return Events.QueryChildren(current,name,self);
+	public static object QueryChildren(this GameObject current,string name,bool self=true,params object[] values){
+		return Events.QueryChildren(current,name,values,null,self);
 	}
-	public static object QueryParents(this GameObject current,string name,bool self=true){
-		return Events.QueryParents(current,name,self);
+	public static object QueryParents(this GameObject current,string name,bool self=true,params object[] values){
+		return Events.QueryParents(current,name,values,null,self);
 	}
-	public static object QueryFamily(this GameObject current,string name,bool self=true){
-		return Events.QueryFamily(current,name,self);
+	public static object QueryFamily(this GameObject current,string name,bool self=true,params object[] values){
+		return Events.QueryFamily(current,name,values,null,self);
 	}
 	public static void Call(this GameObject current,string name,params object[] values){
 		Events.Call(current,name,values);

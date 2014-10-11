@@ -13,8 +13,8 @@ public class Gravity : MonoBehaviour{
 		Events.Add("EnableGravity",this.OnEnableGravity);
 	}
 	public void FixedUpdate(){
-		ColliderController controller = ColliderController.Get(this.gameObject);
-		if(!this.disabled && !controller.blocked["down"]){
+		bool blocked = ColliderController.Get(this.gameObject).blocked["down"];
+		if(!this.disabled && !blocked){
 			Vector3 amount = (this.intensity*this.scale)* Time.fixedDeltaTime;
 			this.gameObject.Call("AddForce",amount);
 		}
@@ -23,11 +23,9 @@ public class Gravity : MonoBehaviour{
 		return !this.disabled;
 	}
 	public void OnDisableGravity(){
-		this.gameObject.Call("ResetVelocity","y");
 		this.disabled = true;
 	}
 	public void OnEnableGravity(){
-		this.gameObject.Call("ResetVelocity","y");
 		this.disabled = false;
 	}
 	public void OnSetGravityScale(float scale){

@@ -9,7 +9,7 @@ public class InputHeld : ActionPart{
 	public bool controlActionIntensity = true;
 	public bool forcePositiveIntensity = true;
 	public bool heldDuringIntensity = true;
-	public bool shared = false;
+	public bool exclusive = false;
 	[NonSerialized] public bool held;
 	[NonSerialized] public bool lastHeld;
 	public override void OnValidate(){
@@ -17,7 +17,7 @@ public class InputHeld : ActionPart{
 		base.OnValidate();
 	}
 	public void Start(){
-		this.SetupEvents(this);
+		Events.Add("ActionStart",this.OnActionStart);
 	}
 	public override void Use(){
 		bool inputSuccess = this.CheckInput();
@@ -28,8 +28,8 @@ public class InputHeld : ActionPart{
 			base.End();
 		}
 	}
-	public override void OnActionStart(){
-		if(!this.shared){
+	public void OnActionStart(){
+		if(this.exclusive){
 			InputState.owner[this.inputName] = this.GetInstanceID();
 		}
 	}
@@ -43,7 +43,7 @@ public class InputHeld : ActionPart{
 		if(this.controlActionIntensity){
 			this.action.intensity = this.forcePositiveIntensity ? Mathf.Abs(intensity) : intensity;
 		}
-		if(canEnd && !this.shared && InputState.CheckOwner(inputName,id,released)){
+		if(canEnd && this.exclusive && InputState.CheckOwner(inputName,id,released)){
 			return false;
 		}
 		bool requirementMet = InputState.CheckRequirement(this.requirement,intensity);

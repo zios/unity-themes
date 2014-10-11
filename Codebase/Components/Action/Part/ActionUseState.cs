@@ -8,7 +8,7 @@ public class ActionUseState : ActionPart{
 		base.OnValidate();
 	}
 	public void Start(){
-		this.SetupEvents(this);
+		Events.Add("ActionEnd",this.OnActionEnd);
 	}
 	public override void Use(){
 		if(!this.inUse){
@@ -16,7 +16,7 @@ public class ActionUseState : ActionPart{
 			base.Use();
 		}
 	}
-	public override void OnActionEnd(){
+	public void OnActionEnd(){
 		this.action.ready = false;
 		base.End();
 	}

@@ -15,8 +15,9 @@ public class ActionController : StateController{
 		base.Reset();
 	}
 	public override void Awake(){
+		Events.Add("Refresh",this.Refresh);
+		Events.Add("UpdateParts",this.UpdateStates);
 		if(this.action == null){
-			Events.Add("UpdateParts",this.UpdateStates);
 			this.action = this.GetComponent<Action>();
 			this.Refresh();
 		}

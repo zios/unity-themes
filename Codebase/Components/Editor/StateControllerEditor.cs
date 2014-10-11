@@ -34,7 +34,7 @@ public class StateControllerEditor : Editor{
 				this.table.tableSkin.label.fixedWidth = size;
 			}	
 		}
-		this.table.Draw(); 
+		this.table.Draw();
 		EditorUtility.SetDirty(this.target);
 	}
 	public virtual void BuildTable(bool verticalHeader=false,bool force=false){
@@ -43,20 +43,22 @@ public class StateControllerEditor : Editor{
 			this.table = new TableGUI();
 			this.table.SetHeader(verticalHeader,true,this.CompareRows);
 			this.table.AddHeader("","");
-			StateRequirement[] firstRow = stateController.table[0].requirements[0].data;
-			foreach(StateRequirement requirement in firstRow){
-				this.table.AddHeader(requirement.name,"",null,this.OnClickHeader);
-			}
-			foreach(StateRow stateRow in stateController.table){
-				if(!this.rowIndex.ContainsKey(stateRow)){
-					this.rowIndex[stateRow] = 0;
+			if(stateController.table.Length > 0){
+				StateRequirement[] firstRow = stateController.table[0].requirements[0].data;
+				foreach(StateRequirement requirement in firstRow){
+					this.table.AddHeader(requirement.name,"",null,this.OnClickHeader);
 				}
-				int rowIndex = this.rowIndex[stateRow];
-				TableRow tableRow = this.table.AddRow(stateRow);
-				tableRow.AddField(stateRow,this.OnDisplayRowLabel,this.OnClickRowLabel);
-				//List<StateRequirement> sorted = stateRow.requirements[rowIndex].data.OrderBy(a=>a.name).ToList();
-				foreach(StateRequirement requirement in stateRow.requirements[rowIndex].data){
-					tableRow.AddField(requirement,this.OnDisplayField,this.OnClickField);
+				foreach(StateRow stateRow in stateController.table){
+					if(!this.rowIndex.ContainsKey(stateRow)){
+						this.rowIndex[stateRow] = 0;
+					}
+					int rowIndex = this.rowIndex[stateRow];
+					TableRow tableRow = this.table.AddRow(stateRow);
+					tableRow.AddField(stateRow,this.OnDisplayRowLabel,this.OnClickRowLabel);
+					//List<StateRequirement> sorted = stateRow.requirements[rowIndex].data.OrderBy(a=>a.name).ToList();
+					foreach(StateRequirement requirement in stateRow.requirements[rowIndex].data){
+						tableRow.AddField(requirement,this.OnDisplayField,this.OnClickField);
+					}
 				}
 			}
 		}
