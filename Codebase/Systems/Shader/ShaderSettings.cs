@@ -1,7 +1,7 @@
 using UnityEngine;
 namespace Zios{
 	[AddComponentMenu("Zios/Singleton/Shader")]
-	public class ShaderSettings{
+	public class ShaderSettings : MonoBehaviour{
 		public float globalAlphaCutoff = 0.3f;
 		public void Awake(){
 			Shader.settings = this;
@@ -14,6 +14,7 @@ namespace Zios{
 		public static ShaderSettings settings;
 		public static void Update(){
 			UnityEngine.Shader.SetGlobalFloat("alphaCutoffGlobal",Shader.settings.globalAlphaCutoff);
+            UnityEngine.Shader.SetGlobalFloat("timeConstant", (Time.time * 0.1f));
 		}
 	}
 }
