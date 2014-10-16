@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using System.Linq;
 using System.Reflection;
 using System.Collections.Generic;
 public static class Events{
@@ -20,28 +21,33 @@ public static class Events{
 	public static void Add(string name,MethodBool method){Events.Add(name,(object)method);}
 	public static void Add(string name,MethodVector2 method){Events.Add(name,(object)method);}
 	public static void Add(string name,MethodVector3 method){Events.Add(name,(object)method);}
-	public static void AddGetTarget(string name,MethodReturn method,GameObject target){Events.AddTarget(name,(object)method,target);}
-	public static void AddTarget(string name,Method method,GameObject target){Events.AddTarget(name,(object)method,target);}
-	public static void AddTarget(string name,MethodObject method,GameObject target){Events.AddTarget(name,(object)method,target);}
-	public static void AddTarget(string name,MethodFull method,GameObject target){Events.AddTarget(name,(object)method,target);}
-	public static void AddTarget(string name,MethodString method,GameObject target){Events.AddTarget(name,(object)method,target);}
-	public static void AddTarget(string name,MethodInt method,GameObject target){Events.AddTarget(name,(object)method,target);}
-	public static void AddTarget(string name,MethodFloat method,GameObject target){Events.AddTarget(name,(object)method,target);}
-	public static void AddTarget(string name,MethodBool method,GameObject target){Events.AddTarget(name,(object)method,target);}
-	public static void AddTarget(string name,MethodVector2 method,GameObject target){Events.AddTarget(name,(object)method,target);}
-	public static void AddTarget(string name,MethodVector3 method,GameObject target){Events.AddTarget(name,(object)method,target);}
-	public static void AddTarget(string name,object method,GameObject target){
-		if(!Events.objectEvents.ContainsKey(target)){
-			Events.objectEvents[target] = new Dictionary<string,List<object>>();
+	public static void AddGetScope(string name,MethodReturn method,params GameObject[] targets){Events.AddScope(name,(object)method,targets);}
+	public static void AddScope(string name,Method method,params GameObject[] targets){Events.AddScope(name,(object)method,targets);}
+	public static void AddScope(string name,MethodObject method,params GameObject[] targets){Events.AddScope(name,(object)method,targets);}
+	public static void AddScope(string name,MethodFull method,params GameObject[] targets){Events.AddScope(name,(object)method,targets);}
+	public static void AddScope(string name,MethodString method,params GameObject[] targets){Events.AddScope(name,(object)method,targets);}
+	public static void AddScope(string name,MethodInt method,params GameObject[] targets){Events.AddScope(name,(object)method,targets);}
+	public static void AddScope(string name,MethodFloat method,params GameObject[] targets){Events.AddScope(name,(object)method,targets);}
+	public static void AddScope(string name,MethodBool method,params GameObject[] targets){Events.AddScope(name,(object)method,targets);}
+	public static void AddScope(string name,MethodVector2 method,params GameObject[] targets){Events.AddScope(name,(object)method,targets);}
+	public static void AddScope(string name,MethodVector3 method,params GameObject[] targets){Events.AddScope(name,(object)method,targets);}
+	public static void AddScope(string name,object method,GameObject[] targets,bool addMethod=true){
+		name = name.ToLower();
+		if(addMethod){Events.Add(name,method);}
+		foreach(GameObject target in targets){
+			if(!Events.objectEvents.ContainsKey(target)){
+				Events.objectEvents[target] = new Dictionary<string,List<object>>();
+			}
+			if(!Events.objectEvents[target].ContainsKey(name)){
+				Events.objectEvents[target][name] = new List<object>();
+			}
+			if(!Events.objectEvents[target][name].Contains(method)){
+				Events.objectEvents[target][name].Add(method);
+			}
 		}
-		if(!Events.objectEvents[target].ContainsKey(name)){
-			Events.objectEvents[target][name] = new List<object>();
-		}
-		if(!Events.objectEvents[target][name].Contains(method)){
-			Events.objectEvents[target][name].Add(method);
-		}
-	}	
+	}
 	public static void Add(string name,object method){
+		name = name.ToLower();
 		object methodTarget = ((Delegate)method).Target;
 		if(!Events.events.ContainsKey(name)){
 			Events.events[name] = new List<object>();
@@ -52,9 +58,15 @@ public static class Events{
 		if(methodTarget != null){
 			Type type = methodTarget.GetType();
 			if(type.IsSubclassOf((typeof(MonoBehaviour)))){
-				Events.AddTarget(name,method,((MonoBehaviour)methodTarget).gameObject);
+				GameObject target = ((MonoBehaviour)methodTarget).gameObject;
+				Events.AddScope(name,method,new GameObject[]{target},false);
 			}
 		}
+	}
+	public static bool IsGetMethod(object callback){
+		if(callback is MethodReturn){return true;}
+		if(callback is MethodStringReturn){return true;}
+		return false;
 	}
 	public static void Handle(object callback,object[] values){
 		object value = values.Length > 0 ? values[0] : null;
@@ -114,7 +126,96 @@ public static class Events{
 		}
 		return null;
 	}
+	private static void CheckSpecial(GameObject target,string name,object[] values){
+		string prefix = Events.GetSpecialPrefix(target,name);
+		string suffix = Events.GetSpecialSuffix(target,name);
+		object value = values.Length > 0 ? values[0] : null;
+		object setMethod = Events.GetSpecialCallback(target,name,"set");
+		object getMethod = Events.GetSpecialCallback(target,name,"get");
+		if(getMethod == null || setMethod == null || value == null){return;}
+		prefix = prefix.Replace("reset","zero");
+		if(setMethod is MethodInt){
+			int current = (int)((MethodReturn)getMethod)();
+			int adjust = (int)value;
+			if(prefix == "add"){current += adjust;}
+			if(prefix == "multiply"){current *= adjust;}
+			if(prefix == "divide"){current /= adjust;}
+			if(prefix == "subtract"){current -= adjust;}
+			if(prefix == "max"){current = Mathf.Max(current,adjust);}
+			if(prefix == "min"){current = Mathf.Min(current,adjust);}
+			if(prefix == "average"){current = ((current + adjust)) / 2;}
+			if(prefix == "zero"){current = 0;}
+			((MethodInt)setMethod)(current);
+		}
+		if(setMethod is MethodFloat){
+			float original = (float)((MethodReturn)getMethod)();
+			float adjust = (float)value;
+			float current = original;
+			if(prefix == "add"){current += adjust;}
+			if(prefix == "multiply"){current *= adjust;}
+			if(prefix == "divide"){current /= adjust;}
+			if(prefix == "subtract"){current -= adjust;}
+			if(prefix == "max"){current = Mathf.Max(current,adjust);}
+			if(prefix == "min"){current = Mathf.Min(current,adjust);}
+			if(prefix == "average"){current = ((current + adjust)) / 2;}
+			if(prefix == "zero"){current = 0;}
+			((MethodFloat)setMethod)(current);
+		}
+		if(setMethod is MethodVector3){
+			Vector3 original = (Vector3)((MethodReturn)getMethod)();
+			Vector3 adjust = (Vector3)value;
+			Vector3 current = original;
+			if(prefix == "add"){current += adjust;}
+			if(prefix == "multiply"){current = Vector3.Scale(current,adjust);}
+			//if(prefix == "divide"){current = current.Divide(adjust);}
+			if(prefix == "subtract"){current -= adjust;}
+			if(prefix == "max"){current = Vector3.Max(current,adjust);}
+			if(prefix == "min"){current = Vector3.Min(current,adjust);}
+			if(prefix == "average"){current = ((current + adjust)) / 2;}
+			if(prefix == "zero"){current = Vector3.zero;}
+			if(prefix == "x"){current = Vector3.zero;}
+			if(prefix == "y"){current = Vector3.zero;}
+			if(prefix == "z"){current = Vector3.zero;}
+			if(suffix.ContainsAny("x","y","z")){
+				if(suffix == "x"){original.x = current.x;}
+				if(suffix == "y"){original.y = current.y;}
+				if(suffix == "z"){original.z = current.z;}
+				current = original;
+			}
+			((MethodVector3)setMethod)(current);
+		}
+	}
+	private static object GetSpecialCallback(GameObject target,string name,string callbackName){
+		string prefix = Events.GetSpecialPrefix(target,name);
+		string suffix = Events.GetSpecialSuffix(target,name);
+		if(!prefix.IsEmpty() || !suffix.IsEmpty()){
+			name = callbackName + name.TrimLeft(prefix).TrimRight(suffix);
+			if(Events.HasEvent(target,name)){
+				return Events.objectEvents[target][name].First();
+			}
+		}
+		return null;
+	}
+	private static string GetSpecialPrefix(GameObject target,string name){
+		string[] startKeys = new string[]{"add","multiply","divide","subtract","max","min","average","zero","reset"};
+		foreach(string key in startKeys){
+			if(name.StartsWith(key,true)){
+				return key;
+			}
+		}
+		return "";
+	}
+	private static string GetSpecialSuffix(GameObject target,string name){
+		string[] endKeys = new string[]{"x","y","z"};
+		foreach(string key in endKeys){
+			if(name.EndsWith(key,true)){
+				//return key;
+			}
+		}
+		return "";
+	}
 	public static object Query(string name,object result=null,params object[] values){
+		name = name.ToLower();
 		if(Events.events.ContainsKey(name)){
 			foreach(object callback in Events.events[name]){
 				return Events.HandleGet(callback,values);
@@ -123,6 +224,7 @@ public static class Events{
 		return result;
 	}
 	public static object Query(GameObject target,string name,object[] values,object result=null){
+		name = name.ToLower();
 		if(Events.objectEvents.ContainsKey(target)){
 			if(Events.objectEvents[target].ContainsKey(name)){
 				foreach(object callback in Events.objectEvents[target][name]){
@@ -161,19 +263,25 @@ public static class Events{
 		return result;
 	}
 	public static void Call(string name,params object[] values){
+		name = name.ToLower();
 		if(Events.events.ContainsKey(name)){
 			foreach(object callback in Events.events[name]){
 				Events.Handle(callback,values);
 			}
+			return;
 		}
+		//Events.CheckSpecial(name,values);
 	}
 	public static void Call(GameObject target,string name,object[] values){
+		name = name.ToLower();
 		if(Events.objectEvents.ContainsKey(target)){
 			if(Events.objectEvents[target].ContainsKey(name)){
 				foreach(object callback in Events.objectEvents[target][name]){
 					Events.Handle(callback,values);
 				}
+				return;
 			}
+			Events.CheckSpecial(target,name,values);
 		}
 	}
 	public static void CallChildren(GameObject target,string name,object[] values,bool self=false){
@@ -196,6 +304,29 @@ public static class Events{
 		if(self){Events.Call(target,name,values);}
 		Events.CallChildren(target,name,values);
 		Events.CallParents(target,name,values);
+	}
+	private static bool HasEvent(GameObject target,string name){
+		if(Events.objectEvents.ContainsKey(target)){
+				return Events.objectEvents[target].ContainsKey(name);
+		}
+		return false;
+	}
+	private static bool HasEvent(string name){
+		return Events.events.ContainsKey(name);
+	}
+	private static object GetEvent(GameObject target,string name){
+		if(Events.objectEvents.ContainsKey(target)){
+				if(Events.objectEvents[target].ContainsKey(name)){
+					return Events.objectEvents[target][name];
+				}
+		}
+		return null;
+	}
+	private static object GetEvent(string name){
+		if(Events.events.ContainsKey(name)){
+			return Events.events[name];
+		}
+		return null;
 	}
 }
 public static class GameObjectEvents{

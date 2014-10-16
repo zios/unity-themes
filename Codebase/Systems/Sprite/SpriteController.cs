@@ -8,18 +8,19 @@ public class SpriteController : MonoBehaviour{
 	public string spriteName;
 	public string spriteAnimation;
 	public string spriteFallback;
-	public Sprite instance;
 	public SpriteSheet spriteSheet;
 	public Material targetMaterial;
 	public float spriteSpeed = 6;
 	public bool spriteActive = true;
+	public bool spriteUnique = true;
 	public bool spriteLoop = false;
 	public bool spriteReverse = false;
 	public bool spriteRandomStart = false;
 	public bool spriteDelayStart = true;
-	public bool visible = true;
-	public bool forceUpdate = false;
-	public bool frameChanged = false;
+	[HideInInspector] public bool forceUpdate = false;
+	[HideInInspector] public bool frameChanged = false;
+	[System.NonSerialized] public bool visible = true;
+	[System.NonSerialized] public Sprite instance;
 	[System.NonSerialized] public float frame = -1;
 	private Dictionary<string,Sprite> sequences = new Dictionary<string,Sprite>();
 	private Material activeMaterial;
@@ -32,7 +33,11 @@ public class SpriteController : MonoBehaviour{
 			if(this.targetMaterial != null){
 				this.activeMaterial = this.targetMaterial;
 			}
-			if(this.activeMaterial == null){
+			if(this.activeMaterial == null && this.gameObject.renderer != null){
+				if(this.spriteUnique){
+					Material copy = new Material(this.gameObject.renderer.sharedMaterial);
+					this.gameObject.renderer.sharedMaterial = copy;
+				}
 				this.activeMaterial = this.gameObject.renderer.material;
 			}
 			this.Load();

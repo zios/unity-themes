@@ -242,8 +242,8 @@ public interface StateInterface{
 public class StateMonoBehaviour : MonoBehaviour,StateInterface{
 	public string stateAlias;
 	[HideInInspector] public bool stateRequirable = true;
-	[HideInInspector] public bool stateReady;
-	[HideInInspector] public bool stateUsable;
+	[HideInInspector] public bool stateReady = true;
+	[HideInInspector] public bool stateUsable = true;
 	[HideInInspector] public bool stateInUse;
 	[HideInInspector] public string stateID = Guid.NewGuid().ToString();
 	public string id{get{return this.stateID;}set{this.stateID = value;}}

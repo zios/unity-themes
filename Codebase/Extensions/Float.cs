@@ -1,4 +1,10 @@
 public static class FloatExtension{
+	public static bool Between(this float current,float start,float end){
+		return current >= start && current <= end;
+	}
+	public static bool InRange(this float current,float start,float end){
+		return current.Between(start,end);
+	}
 	public static float RoundClosestDown(this float current,params float[] values){
 		float highest = -1;
 		foreach(float value in values){

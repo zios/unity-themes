@@ -31,7 +31,7 @@ public class ActionController : StateController{
 		//this.UpdatePriorityOrder();
 	}
 	public override void Update(){
-		if(Application.isEditor){
+		if(!Application.isPlaying){
 			ActionPart[] parts = this.gameObject.GetComponents<ActionPart>();
 			int total = parts.Length;
 			if(this.total != total){

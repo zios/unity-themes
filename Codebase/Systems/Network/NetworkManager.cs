@@ -336,10 +336,10 @@ public class NetworkManager : MonoBehaviour{
 					client.entity = entity;
 				}
 				if((Network.isServer && (client.entity != null && this.activeClient.id == client.id)) || (Network.isClient && this.activeClient.id == entity.ownerID)){
-					Watch watchComponent = GameObject.Find("Camera").GetComponent<Watch>();
-					watchComponent.target = entity.gameObject.transform;
-					Follow followComponent = GameObject.Find("Camera").GetComponent<Follow>();
-					followComponent.target = entity.gameObject.transform;
+					//Watch watchComponent = GameObject.Find("Camera").GetComponent<Watch>();
+					//watchComponent.target = entity.gameObject.transform;
+					//Follow followComponent = GameObject.Find("Camera").GetComponent<Follow>();
+					//followComponent.target = entity.gameObject.transform;
 				}
 			}
 			this.entities.Add(entity);

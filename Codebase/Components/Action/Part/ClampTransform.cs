@@ -1,4 +1,4 @@
-﻿using Zios;
+using Zios;
 using UnityEngine;
 [RequireComponent(typeof(Zios.Action))][AddComponentMenu("Zios/Component/Action/Part/Clamp (Transform)")]
 public class ClampTransform : ActionPart{
@@ -10,11 +10,13 @@ public class ClampTransform : ActionPart{
 		this.DefaultRate("LateUpdate");
 		this.DefaultPriority(15);
 		base.OnValidate();
-		this.target.AddSpecial("[Owner]",this.action.owner);
-		this.target.AddSpecial("[Action]",this.action.gameObject);
-		this.target.DefaultSearch("[Owner]");
-		this.target.DefaultSearch("[Owner]");
-		this.rotation.isAngle = true;
+		this.target.Update(this);
+	}
+	public void Start(){
+		this.target.Setup(this);
+		this.position.Setup(this,"Position");
+		this.rotation.Setup(this,"Rotation",true);
+		this.scale.Setup(this,"Scale");
 	}
 	public override void Use(){
 		Transform target = this.target.Get().transform;
@@ -22,11 +24,5 @@ public class ClampTransform : ActionPart{
 		target.localEulerAngles = this.rotation.Step(target.localEulerAngles);
 		target.localScale = this.scale.Step(target.localScale);
 		base.Use();
-	}
-	public override void End(){
-		this.position.Reset();
-		this.rotation.Reset();
-		this.scale.Reset();
-		base.End();
 	}
 }

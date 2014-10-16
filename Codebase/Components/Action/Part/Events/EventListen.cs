@@ -8,12 +8,12 @@ public class EventListen : ActionPart{
 	public override void OnValidate(){
 		this.DefaultPriority(15);
 		base.OnValidate();
-		this.target.AddSpecial("[Owner]",this.action.owner);
-		this.target.AddSpecial("[Action]",this.action.gameObject);
+		this.target.Update(this);
 		this.target.DefaultSearch("[Action]");
 	}
 	public void Start(){
-		Events.AddTarget(this.eventName,this.Catch,this.target.Get());
+		this.target.Setup(this);
+		Events.AddScope(this.eventName,this.Catch,this.target.Get().gameObject);
 	}
 	public override void Use(){}
 	public void Catch(){

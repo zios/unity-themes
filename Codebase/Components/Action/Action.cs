@@ -7,7 +7,7 @@ namespace Zios{
 	public class Action : StateMonoBehaviour{
 		static public Dictionary<GameObject,bool> dirty = new Dictionary<GameObject,bool>();
 		public Dictionary<string,ActionPart> parts = new Dictionary<string,ActionPart>();
-		public float intensity = 1.0f;
+		public EventFloat intensity;
 		public bool persist;
 		[NonSerialized] public GameObject owner;
 		public void OnValidate(){
@@ -20,11 +20,12 @@ namespace Zios{
 			string alias = this.alias.Strip(" ");
 			Events.Add("ForceEndAction",this.End);
 			Events.Add("ForceEnd"+alias,this.End);
-			Events.AddTarget("ForceEnd"+alias,this.End,this.owner);
+			Events.AddScope("ForceEnd"+alias,this.End,this.owner);
 			Events.AddGet("Is"+alias+"Active",this.GetActive);
 			Events.AddGet("Is"+alias+"Usable",this.GetUsable);
-			Events.AddGetTarget("Is"+alias+"Active",this.GetActive,this.owner);
-			Events.AddGetTarget("Is"+alias+"Usable",this.GetUsable,this.owner);
+			Events.AddGetScope("Is"+alias+"Active",this.GetActive,this.owner);
+			Events.AddGetScope("Is"+alias+"Usable",this.GetUsable,this.owner);
+			this.intensity.Setup(this,"Intensity");
 			this.owner.Call("UpdateStates");
 			this.owner.CallChildren("UpdateParts");
 			this.SetDirty(true);
@@ -48,6 +49,8 @@ namespace Zios{
 			if(state != this.inUse){
 				string active = state ? "Start" : "End";
 				this.gameObject.Call("Action"+active);
+				this.gameObject.Call(this.alias.Strip(" ")+active);
+				this.owner.Call(this.alias.Strip(" ")+active);
 				this.inUse = state;
 				this.SetDirty(true);
 				this.owner.Call("UpdateStates");
@@ -55,7 +58,7 @@ namespace Zios{
 		}
 	}
 	public enum ActionRate{Default,FixedUpdate,Update,LateUpdate,ActionStart,ActionEnd,None};
-	[AddComponentMenu("")][RequireComponent(typeof(Action))]
+	[AddComponentMenu("")]
 	public class ActionPart : StateMonoBehaviour{
 		static public Dictionary<ActionPart,bool> dirty = new Dictionary<ActionPart,bool>();
 		public ActionRate rate = ActionRate.Update;
@@ -63,9 +66,12 @@ namespace Zios{
 		[HideInInspector] public int priority = -1;
 		[HideInInspector] public bool requiredState;
 		public override string GetInterfaceType(){return "ActionPart";}
+		public void Reset(){this.OnValidate();}
 		public virtual void OnValidate(){
 			this.action = this.GetComponent<Action>();
-			this.action.OnValidate();
+			if(this.action != null){
+				this.action.OnValidate();
+			}
 		}
 		public virtual void Awake(){
 			this.OnValidate();
@@ -87,7 +93,7 @@ namespace Zios{
 				this.SetDirty(false);
 				this.gameObject.Call("UpdateParts");
 			}
-			bool actionUsable = this.action.usable || (this.action.persist && this.action.inUse);
+			bool actionUsable = this.action != null && (this.action.usable || (this.action.persist && this.action.inUse));
 			if(actionUsable && this.usable){this.Use();}
 			else if(this.inUse){this.End();}
 		}
@@ -146,6 +152,10 @@ namespace Zios{
 		public override void End(){this.Toggle(false);}
 		public override void Toggle(bool state){
 			if(state != this.inUse){
+				string active = state ? "Start" : "End";
+				if(!this.alias.IsEmpty()){
+					this.gameObject.Call(this.alias.Strip(" ")+active);
+				}
 				this.inUse = state;
 				this.SetDirty(true);
 			}

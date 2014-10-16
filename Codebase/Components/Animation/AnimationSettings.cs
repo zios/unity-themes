@@ -6,6 +6,10 @@ using System.Collections.Generic;
 [ExecuteInEditMode]
 public class AnimationSettings : MonoBehaviour{
 	public List<AnimationConfiguration> animations = new List<AnimationConfiguration>();
+	public void Reset(){
+		this.animations = new List<AnimationConfiguration>();
+		this.Start();
+	}
 	public void Start(){
 		if(gameObject.animation != null){
 			foreach(AnimationConfiguration configuration in this.animations){

@@ -37,17 +37,18 @@ public class AnimationSettingsEditor : Editor{
 			}
 		}
 		public override void OnGlobalAction(UnityEngine.Object target){
-			GameObject gameObject = ((AnimationSettings)target).gameObject;
+			AnimationSettings settings = (AnimationSettings)target;
+			GameObject gameObject = settings.gameObject;
 			if(this.activeAnimation != null && gameObject.animation[this.activeAnimation.name] != null){
 				AnimationState animationState = gameObject.animation[this.activeAnimation.name];
 				bool loop = animationState.clip.wrapMode == WrapMode.Loop;
-				float length = animationState.length;
-				float framerate = 1000.0f / (animationState.clip.frameRate * animationState.speed);
-				this.animationTime += (length / framerate);
-				if(this.animationTime >= length){
-					this.animationTime = loop ? 0 : length;
+				float animationTime = animationState.clip.length * (animationState.clip.frameRate);
+				float framerate = 10000.0f / (animationState.clip.frameRate * animationState.speed);
+				this.animationTime += (animationTime / framerate);
+				if(this.animationTime >= animationTime){
+					this.animationTime = loop ? 0 : animationTime;
 				}
-				gameObject.SampleAnimation(animationState.clip,this.animationTime);
+				gameObject.SampleAnimation(animationState.clip, Time.realtimeSinceStartup);
 				this.shouldRepaint = true;
 			}
 			else{

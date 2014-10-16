@@ -46,9 +46,13 @@ public class StateControllerEditor : Editor{
 			if(stateController.table.Length > 0){
 				StateRequirement[] firstRow = stateController.table[0].requirements[0].data;
 				foreach(StateRequirement requirement in firstRow){
+					MonoBehaviour requireScript = requirement.target as MonoBehaviour;
+					if(requireScript != null && !requireScript.gameObject.activeInHierarchy){continue;}
 					this.table.AddHeader(requirement.name,"",null,this.OnClickHeader);
 				}
 				foreach(StateRow stateRow in stateController.table){
+					MonoBehaviour rowScript = stateRow.target as MonoBehaviour;
+					if(rowScript != null && !rowScript.gameObject.activeInHierarchy){continue;}
 					if(!this.rowIndex.ContainsKey(stateRow)){
 						this.rowIndex[stateRow] = 0;
 					}
@@ -57,6 +61,8 @@ public class StateControllerEditor : Editor{
 					tableRow.AddField(stateRow,this.OnDisplayRowLabel,this.OnClickRowLabel);
 					//List<StateRequirement> sorted = stateRow.requirements[rowIndex].data.OrderBy(a=>a.name).ToList();
 					foreach(StateRequirement requirement in stateRow.requirements[rowIndex].data){
+						MonoBehaviour requirementScript = requirement.target as MonoBehaviour;
+						if(requirementScript != null && !requirementScript.gameObject.activeInHierarchy){continue;}
 						tableRow.AddField(requirement,this.OnDisplayField,this.OnClickField);
 					}
 				}

@@ -50,11 +50,17 @@ public static class Vector3Extension{
 		copy.z = vector.z / 360.0f;
 		return copy;
 	}
+	public static Quaternion ToRotation(this Vector3 current){
+		return Quaternion.Euler(current[1],current[0],current[2]);
+	}
 	public static Vector3 Abs(this Vector3 vector){
 		Vector3 copy = vector;
 		copy.x = Mathf.Abs(copy.x);
 		copy.y = Mathf.Abs(copy.y);
 		copy.z = Mathf.Abs(copy.z);
 		return copy;
+	}
+	public static Vector3 RotateAround(this Vector3 current,Vector3 point,Vector3 euler){
+		return euler.ToRotation() * (current - point) + point;
 	}
 }

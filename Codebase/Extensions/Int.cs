@@ -1,4 +1,10 @@
 public static class IntExtension{
+	public static bool Between(this int current,int start,int end){
+		return current >= start && current <= end;
+	}
+	public static bool InRange(this int current,int start,int end){
+		return current.Between(start,end);
+	}
 	public static int Modulus(this int current,int max){
 		return (((current % max) + max) % max);
 	}
