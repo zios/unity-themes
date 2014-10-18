@@ -156,7 +156,6 @@ public class AnimationController : MonoBehaviour{
 		bool exists = this.lookup.ContainsKey(name);
 		bool active = this.current.ContainsKey(name);
 		if(exists && !active){
-			
 			if(this.highestPriorityOnly){
 				if(priority == -1){priority = this.lookup[name].priority;}
 				foreach(var item in this.current){
@@ -168,6 +167,7 @@ public class AnimationController : MonoBehaviour{
 			}
 			this.current[name] = this.lookup[name]; 
 			this.current[name].active = true;
+			this.animation.Rewind(name);
 			this.animation.Blend(name,this.lookup[name].weight,this.lookup[name].transitionIn);
 		}
 	}

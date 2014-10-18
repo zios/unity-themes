@@ -48,10 +48,10 @@ namespace Zios{
 		public override void Toggle(bool state){
 			if(state != this.inUse){
 				string active = state ? "Start" : "End";
+				this.inUse = state;
 				this.gameObject.Call("Action"+active);
 				this.gameObject.Call(this.alias.Strip(" ")+active);
 				this.owner.Call(this.alias.Strip(" ")+active);
-				this.inUse = state;
 				this.SetDirty(true);
 				this.owner.Call("UpdateStates");
 			}
@@ -61,7 +61,7 @@ namespace Zios{
 	[AddComponentMenu("")]
 	public class ActionPart : StateMonoBehaviour{
 		static public Dictionary<ActionPart,bool> dirty = new Dictionary<ActionPart,bool>();
-		public ActionRate rate = ActionRate.Update;
+		public ActionRate rate = ActionRate.Default;
 		[NonSerialized] public Action action;
 		[HideInInspector] public int priority = -1;
 		[HideInInspector] public bool requiredState;
@@ -153,10 +153,10 @@ namespace Zios{
 		public override void Toggle(bool state){
 			if(state != this.inUse){
 				string active = state ? "Start" : "End";
+				this.inUse = state;
 				if(!this.alias.IsEmpty()){
 					this.gameObject.Call(this.alias.Strip(" ")+active);
 				}
-				this.inUse = state;
 				this.SetDirty(true);
 			}
 		}
