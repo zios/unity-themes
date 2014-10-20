@@ -1,6 +1,6 @@
 using Zios;
 using UnityEngine;
-[RequireComponent(typeof(Zios.Action))][AddComponentMenu("Zios/Component/Action/Part/Rotate Towards (Target)")]
+[AddComponentMenu("Zios/Component/Action/Part/Rotate Towards (Target)")]
 public class RotateTowardsTarget : ActionPart{
 	public Target source = new Target();
 	public Target target = new Target();

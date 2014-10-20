@@ -24,28 +24,28 @@ public class RayCast : ActionPart{
 		}
 		return Vector3.zero;
 	}
-	public Vector3 GetDirection(){
-		Vector3 direction = this.direction;
+	public Vector3 AdjustVector(Vector3 value){
+		Vector3 adjusted = value;
 		if(this.relative){
 			Transform target = this.source.direct.transform;
-			direction = target.right * this.direction.x;
-			direction += target.up * this.direction.y;
-			direction += target.forward * this.direction.z;
+			adjusted = target.right * value.x;
+			adjusted += target.up * value.y;
+			adjusted += target.forward * value.z;
 		}
-		return direction;
+		return adjusted;
 	}
 	public override void Use(){
 		float distance = this.distance == -1 ? Mathf.Infinity : this.distance;
-		Vector3 direction = this.GetDirection();
-		Vector3 position = this.GetPosition() + this.offset;
+		Vector3 direction = this.AdjustVector(this.direction);
+		Vector3 position = this.GetPosition() + this.AdjustVector(this.offset);
 		bool state = Physics.Raycast(position,direction,distance,this.layers.value);
 		this.Toggle(state);
 	}
 	public void OnDrawGizmosSelected(){
 		if(this.source.direct != null){
 			Gizmos.color = this.rayColor;
-			Vector3 direction = this.GetDirection();
-			Vector3 start = this.source.direct.transform.position + this.offset;
+			Vector3 direction = this.AdjustVector(this.direction);
+			Vector3 start = this.source.direct.transform.position + this.AdjustVector(this.offset);
 			Vector3 end = start + (direction * this.distance);
 			Gizmos.DrawLine(start,end);
 		}
