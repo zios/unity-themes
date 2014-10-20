@@ -130,6 +130,7 @@ public static class Events{
 		string prefix = Events.GetSpecialPrefix(target,name);
 		string suffix = Events.GetSpecialSuffix(target,name);
 		object value = values.Length > 0 ? values[0] : null;
+		if(!suffix.IsEmpty()){name = name.Replace(suffix,"");}
 		object setMethod = Events.GetSpecialCallback(target,name,"set");
 		object getMethod = Events.GetSpecialCallback(target,name,"get");
 		if(getMethod == null || setMethod == null || value == null){return;}
@@ -163,6 +164,13 @@ public static class Events{
 		}
 		if(setMethod is MethodVector3){
 			Vector3 original = (Vector3)((MethodReturn)getMethod)();
+			if(suffix.ContainsAny("x","y","z")){
+				Vector3 single = Vector3.zero;
+				if(suffix == "x"){single.x = (float)value;}
+				if(suffix == "y"){single.y = (float)value;}
+				if(suffix == "z"){single.z = (float)value;}
+				value = (object)single;
+			}
 			Vector3 adjust = (Vector3)value;
 			Vector3 current = original;
 			if(prefix == "add"){current += adjust;}
@@ -209,7 +217,7 @@ public static class Events{
 		string[] endKeys = new string[]{"x","y","z"};
 		foreach(string key in endKeys){
 			if(name.EndsWith(key,true)){
-				//return key;
+				return key;
 			}
 		}
 		return "";
