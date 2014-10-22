@@ -1,6 +1,7 @@
-Shader "Zios/(Components)/Color/Vertex Color"{
+Shader "Zios/Dori/Vertex Color"{
 	Properties{}
 	SubShader{
+		Cull Off
 		Pass{
 			CGPROGRAM
 			#include "UnityCG.cginc"
