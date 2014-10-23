@@ -3,7 +3,7 @@ using System;
 using UnityEngine;
 public enum BlockType{Blocked,Unblocked}
 public enum Direction{Up,Down,Left,Right,Forward,Back}
-[RequireComponent(typeof(Zios.Action))][AddComponentMenu("Zios/Component/Action/Part/Blocked State")]
+[AddComponentMenu("Zios/Component/Action/Part/Blocked State")]
 public class BlockedState : ActionPart{
 	public BlockType type;
 	public Direction direction;

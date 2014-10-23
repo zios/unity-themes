@@ -8,10 +8,13 @@ using Zios.Editor;
 [CustomEditor(typeof(StateController))]
 public class StateControllerEditor : Editor{
 	private Transform autoSelect;
-	private TableGUI table = new TableGUI();
+	private TableGUI tableGUI = new TableGUI();
 	private StateRow[] data;
+	private int tableIndex = 0;
 	private Dictionary<StateRow,int> rowIndex = new Dictionary<StateRow,int>();
 	public virtual void OnEnable(){
+		StateController stateController = (StateController)this.target;
+		stateController.UpdateTableList();
 		this.BuildTable(true);
 	}
 	public virtual void OnDisable(){
@@ -22,42 +25,75 @@ public class StateControllerEditor : Editor{
 	}
 	public override void OnInspectorGUI(){
 		StateController stateController = (StateController)this.target;
-		if(this.data != stateController.table){
-			this.data = stateController.table;
+		stateController.UpdateTableList();
+		StateRow[] activeTable = stateController.tables[this.tableIndex];
+		if(this.data != activeTable){
+			this.data = activeTable;
 			this.BuildTable(true);
 		}
-		this.table.tableSkin.label.fixedWidth = 0;
-		foreach(StateRow stateRow in stateController.table){
-			int size = (int)(GUI.skin.label.CalcSize(new GUIContent(stateRow.name)).x) + 24;
-			size = (size / 8) * 8 + 1;
-			if(size > this.table.tableSkin.label.fixedWidth){
-				this.table.tableSkin.label.fixedWidth = size;
-			}	
+		if(!stateController.advanced){
+			this.tableIndex = 0;
 		}
-		this.table.Draw();
+		if(activeTable.Length > 0){
+			//string tableName = ((MonoBehaviour)activeTable[0].target).name;
+			this.tableGUI.tableSkin.label.fixedWidth = 0;
+			foreach(StateRow stateRow in activeTable){
+				int size = (int)(GUI.skin.label.CalcSize(new GUIContent(stateRow.name)).x) + 24;
+				size = (size / 8) * 8 + 1;
+				if(size > this.tableGUI.tableSkin.label.fixedWidth){
+					this.tableGUI.tableSkin.label.fixedWidth = size;
+				}	
+			}
+		}
+		this.tableGUI.Draw();
+		this.DrawControls();
 		EditorUtility.SetDirty(this.target);
+	}
+	public virtual void DrawControls(){
+		StateController stateController = (StateController)this.target;
+		string useStyle = "titleTabDisabled";
+		string endStyle = "titleTabDisabled";
+		if(stateController.advanced){
+			useStyle = this.tableIndex == 0 ? "titleTabGreen" : "titleTabInactive";
+			endStyle = this.tableIndex == 1 ? "titleTabRed" : "titleTabInactive";
+		}
+		//EditorGUI.LabelField(area,"",GUI.skin.GetStyle("title"));
+		Rect area = EditorGUILayout.GetControlRect();
+		area = new Rect(area.x+20,area.y+10,16,16);
+		stateController.advanced = EditorGUI.ToggleLeft(area,"",stateController.advanced);
+		area.x += 20;
+		area = new Rect(area.x,area.y,80,32);
+		if(GUI.Button(area,"Use",GUI.skin.GetStyle(useStyle)) && stateController.advanced){
+			this.tableIndex = 0;
+		}
+		area.x += 82;
+		if(GUI.Button(area,"End",GUI.skin.GetStyle(endStyle)) && stateController.advanced){
+			this.tableIndex = 1;
+		}
+		GUILayout.Space(25);
 	}
 	public virtual void BuildTable(bool verticalHeader=false,bool force=false){
 		StateController stateController = (StateController)this.target;
-		if(force || (stateController != null && stateController.table != null)){
-			this.table = new TableGUI();
-			this.table.SetHeader(verticalHeader,true,this.CompareRows);
-			this.table.AddHeader("","");
-			if(stateController.table.Length > 0){
-				StateRequirement[] firstRow = stateController.table[0].requirements[0].data;
+		StateRow[] activeTable = stateController.tables[this.tableIndex];
+		if(force || (stateController != null && activeTable != null)){
+			this.tableGUI = new TableGUI();
+			this.tableGUI.SetHeader(verticalHeader,true,this.CompareRows);
+			this.tableGUI.AddHeader("","");
+			if(activeTable.Length > 0){
+				StateRequirement[] firstRow = activeTable[0].requirements[0].data;
 				foreach(StateRequirement requirement in firstRow){
 					MonoBehaviour requireScript = requirement.target as MonoBehaviour;
 					if(requireScript != null && !requireScript.gameObject.activeInHierarchy){continue;}
-					this.table.AddHeader(requirement.name,"",null,this.OnClickHeader);
+					this.tableGUI.AddHeader(requirement.name,"",null,this.OnClickHeader);
 				}
-				foreach(StateRow stateRow in stateController.table){
+				foreach(StateRow stateRow in activeTable){
 					MonoBehaviour rowScript = stateRow.target as MonoBehaviour;
 					if(rowScript != null && !rowScript.gameObject.activeInHierarchy){continue;}
 					if(!this.rowIndex.ContainsKey(stateRow)){
 						this.rowIndex[stateRow] = 0;
 					}
 					int rowIndex = this.rowIndex[stateRow];
-					TableRow tableRow = this.table.AddRow(stateRow);
+					TableRow tableRow = this.tableGUI.AddRow(stateRow);
 					tableRow.AddField(stateRow,this.OnDisplayRowLabel,this.OnClickRowLabel);
 					//List<StateRequirement> sorted = stateRow.requirements[rowIndex].data.OrderBy(a=>a.name).ToList();
 					foreach(StateRequirement requirement in stateRow.requirements[rowIndex].data){

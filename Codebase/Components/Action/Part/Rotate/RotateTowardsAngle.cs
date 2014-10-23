@@ -1,6 +1,6 @@
 using Zios;
 using UnityEngine;
-[RequireComponent(typeof(Zios.Action))][AddComponentMenu("Zios/Component/Action/Part/Rotate Towards (Angle)")]
+[AddComponentMenu("Zios/Component/Action/Part/Rotate Towards (Angle)")]
 public class RotateTowardsAngle : ActionPart{
 	public Vector3 eulerAngle;
 	public bool scaleByIntensity;

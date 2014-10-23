@@ -4,7 +4,7 @@ using System;
 using UnityEngine;
 [Serializable]
 public class LerpTransition{
-	public EventBool isAngle;
+	public EventBool isAngle = true;
 	public EventBool resetOnChange;
 	public EventFloat speed;
 	public Transition transition = new Transition();
@@ -42,6 +42,7 @@ public class LerpTransition{
 			float speed = this.speed * percent;
 			speed *= this.fixedTime ? Time.fixedDeltaTime : Time.deltaTime;
 			Vector3 step = Vector3.MoveTowards(start,end,speed);
+			//Debug.Log("Start : " + start + " End : " + end + " Change : " + step);
 			if(useAxes[0]){current.x = step.x;}
 			if(useAxes[1]){current.y = step.y;}
 			if(useAxes[2]){current.z = step.z;}
@@ -74,7 +75,7 @@ public class LerpTransition{
 }
 [Serializable]
 public class LerpVector3 : LerpTransition{
-	public bool[] lerpAxes = new bool[3];
+	public bool[] lerpAxes = new bool[3]{true,true,true};
 	private Vector3 start;
 	private Vector3 lastEnd;
 	public virtual Vector3 Step(Vector3 current){

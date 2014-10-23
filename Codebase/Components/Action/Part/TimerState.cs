@@ -3,7 +3,7 @@ using System;
 using Zios;
 public enum TimerType{After,During}
 public enum PersistType{Off,UntilComplete,UntilCompleteOrActionEnds}
-[RequireComponent(typeof(Zios.Action))][AddComponentMenu("Zios/Component/Action/Part/Timer State")]
+[AddComponentMenu("Zios/Component/Action/Part/Timer State")]
 public class TimerState : ActionPart{
 	public TimerType type;
 	public PersistType persist;

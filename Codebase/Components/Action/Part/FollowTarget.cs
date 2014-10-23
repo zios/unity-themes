@@ -2,7 +2,7 @@ using Zios;
 using System;
 using UnityEngine;
 public enum OffsetType{Relative,Absolute}
-[RequireComponent(typeof(Zios.Action))][AddComponentMenu("Zios/Component/Action/Part/Follow Target")]
+[AddComponentMenu("Zios/Component/Action/Part/Follow Target")]
 public class FollowTarget : ActionPart{
 	public Target source = new Target();
 	public Target target = new Target();
@@ -23,17 +23,21 @@ public class FollowTarget : ActionPart{
 		this.offset.Setup(this,"FollowOffset");
 		this.orbit.Setup(this,"FollowOrbit");
 	}
+	public Vector3 AdjustVector(Vector3 value){
+		Vector3 adjusted = value;
+		if(this.offsetType == OffsetType.Relative){
+			Transform target = this.target.direct.transform;
+			adjusted = target.right * value.x;
+			adjusted += target.up * value.y;
+			adjusted += target.forward * value.z;
+		}
+		return adjusted;
+	}
 	public override void Use(){
 		Transform source = this.source.Get().transform;
 		Transform target = this.target.Get().transform;
-		Vector3 offset = this.offset;
+		Vector3 offset = this.AdjustVector(this.offset);
 		Vector3 orbit = this.orbit.Scale(new Vector3(1,-1,1));
-		if(this.offsetType == OffsetType.Relative){
-			Vector3 current = this.offset;
-			offset = target.forward * current.z;
-			offset += target.up * current.y;
-			offset += target.right * current.x;
-		}
 		Vector3 end = (orbit.ToRotation() * offset) + target.position;
 		source.position = this.position.Step(source.position,end);
 		base.Use();

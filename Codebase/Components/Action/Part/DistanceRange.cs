@@ -1,6 +1,6 @@
 using Zios;
 using UnityEngine;
-[RequireComponent(typeof(Zios.Action))][AddComponentMenu("Zios/Component/Action/Part/Distance Range")]
+[AddComponentMenu("Zios/Component/Action/Part/Distance Range")]
 public class DistanceRange : ActionPart{
 	public Target source = new Target();
 	public Target target = new Target();

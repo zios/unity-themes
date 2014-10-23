@@ -20,9 +20,9 @@ public class Target{
 	public void Update(MonoBehaviour script){
 		if(script is ActionPart){
 			ActionPart part = (ActionPart)script;
-			this.AddSpecial("[Owner]",part.action.owner);
-			this.AddSpecial("[Action]",part.action.gameObject);
-			this.DefaultSearch("[Owner]");
+			if(part.action){this.AddSpecial("[Owner]",part.action.owner);}
+			this.AddSpecial("[Action]",part.gameObject);
+			this.DefaultSearch(part.action ? "[Owner]" : "[Action]");
 		}
 	}
 	public void Setup(MonoBehaviour script,string eventName=""){

@@ -29,6 +29,7 @@ public class AnimationController : MonoBehaviour{
 	// Built-in
 	//=====================
 	public void OnValidate(){
+		//if(this.animation == null){return;}
 		foreach(AnimationState state in this.animation){
 			AnimationData data = this.animations.Find(x=>x.name==state.name);
 			if(data == null){

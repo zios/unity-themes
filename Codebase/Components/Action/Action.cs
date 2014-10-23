@@ -72,6 +72,7 @@ namespace Zios{
 			if(this.action != null){
 				this.action.OnValidate();
 			}
+			this.usable = true;
 		}
 		public virtual void Awake(){
 			this.OnValidate();
@@ -93,7 +94,7 @@ namespace Zios{
 				this.SetDirty(false);
 				this.gameObject.Call("UpdateParts");
 			}
-			bool actionUsable = this.action != null && (this.action.usable || (this.action.persist && this.action.inUse));
+			bool actionUsable = this.action == null || (this.action.usable || (this.action.persist && this.action.inUse));
 			if(actionUsable && this.usable){this.Use();}
 			else if(this.inUse){this.End();}
 		}

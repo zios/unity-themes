@@ -1,6 +1,6 @@
 using Zios;
 using UnityEngine;
-[RequireComponent(typeof(Zios.Action))][AddComponentMenu("Zios/Component/Action/Part/Event Get Set")]
+[AddComponentMenu("Zios/Component/Action/Part/Event Get Set")]
 public class EventGetSet : ActionPart{
 	public EventGetTarget source = new EventGetTarget();
 	public EventSetTarget target = new EventSetTarget();

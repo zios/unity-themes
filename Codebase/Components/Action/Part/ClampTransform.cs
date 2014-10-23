@@ -1,6 +1,6 @@
 using Zios;
 using UnityEngine;
-[RequireComponent(typeof(Zios.Action))][AddComponentMenu("Zios/Component/Action/Part/Clamp (Transform)")]
+[AddComponentMenu("Zios/Component/Action/Part/Clamp (Transform)")]
 public class ClampTransform : ActionPart{
 	public Target target = new Target();
 	public ClerpVector3 position = new ClerpVector3();

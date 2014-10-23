@@ -1,7 +1,7 @@
 using Zios;
 using UnityEngine;
 public enum MoveType{Absolute,Relative}
-[RequireComponent(typeof(Zios.Action))][AddComponentMenu("Zios/Component/Action/Part/Add Move")]
+[AddComponentMenu("Zios/Component/Action/Part/Add Move")]
 public class AddMove : ActionPart{
 	public MoveType type;
 	public Vector3 amount;

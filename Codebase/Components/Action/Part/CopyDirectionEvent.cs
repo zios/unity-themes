@@ -1,7 +1,7 @@
 using Zios;
 using System;
 using UnityEngine;
-[RequireComponent(typeof(Zios.Action))][AddComponentMenu("Zios/Component/Action/Part/Copy Direction (Event)")]
+[AddComponentMenu("Zios/Component/Action/Part/Copy Direction (Event)")]
 public class CopyDirectionEvent : ActionPart{
 	public Direction direction;
 	public Target source = new Target();

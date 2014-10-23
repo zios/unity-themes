@@ -1,7 +1,7 @@
 using Zios;
 using System;
 using UnityEngine;
-[RequireComponent(typeof(Zios.Action))][AddComponentMenu("Zios/Component/Action/Part/Raycast")]
+[AddComponentMenu("Zios/Component/Action/Part/Raycast")]
 public class RayCast : ActionPart{
 	public float distance = 1;
 	public Color rayColor = Color.blue;

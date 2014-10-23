@@ -14,6 +14,13 @@ public static class StringExtension{
 		byte[] hash = MD5.Create().ComputeHash(bytes);
 		return BitConverter.ToString(hash).Replace("-","");
 	}
+	public static Vector3 ToVector3(this string current){
+		string[] split = current.Strip("(",")"," ").Split(",");
+		float x = split[0].ToFloat();
+		float y = split[1].ToFloat();
+		float z = split[2].ToFloat();
+		return new Vector3(x,y,z);
+	}
 	public static int ToInt(this string current){
 		return Convert.ToInt32(current);
 	}

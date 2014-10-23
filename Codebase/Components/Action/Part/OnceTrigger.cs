@@ -1,7 +1,7 @@
 using Zios;
 using System;
 using UnityEngine;
-[RequireComponent(typeof(Zios.Action))][AddComponentMenu("Zios/Component/Action/Part/Once Trigger")]
+[AddComponentMenu("Zios/Component/Action/Part/Once Trigger")]
 public class OnceTrigger : ActionPart{
 	private bool triggered;
 	public override void OnValidate(){

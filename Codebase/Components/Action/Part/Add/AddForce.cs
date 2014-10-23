@@ -1,7 +1,7 @@
 using Zios;
 using UnityEngine;
 public enum ForceType{Absolute,Relative}
-[RequireComponent(typeof(Zios.Action))][AddComponentMenu("Zios/Component/Action/Part/Add Force")]
+[AddComponentMenu("Zios/Component/Action/Part/Add Force")]
 public class AddForce : ActionPart{
 	public ForceType type;
 	public Vector3 amount;

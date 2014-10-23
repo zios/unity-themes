@@ -28,6 +28,9 @@ namespace Zios.Editor{
 			bool onMouseDown = Event.current.type == EventType.MouseDown;
 			return onHover && onMouseDown;
 		}
+		public void Setup(){
+			GUI.skin = this.tableSkin;
+		}
 		public void SetHeader(bool vertical=false,bool sortable=true,OnCompareEvent onCompare = null){
 			this.header = new TableHeader(vertical,sortable);
 			this.onCompare = onCompare;
@@ -96,13 +99,13 @@ namespace Zios.Editor{
 				EditorGUILayout.HelpBox("Please add components to generate table.",MessageType.Info,true);
 			}
 			if(showEmptiesButton){
-				string prefix = this.showEmpty ? "☑ " : "☐ ";
+				//string prefix = this.showEmpty ? "☑ " : "☐ ";
 				GUIStyle buttonStyle = new GUIStyle(GUI.skin.toggle);
 				buttonStyle.normal = this.showEmpty ? GUI.skin.toggle.active : buttonStyle.normal;
 				buttonStyle.hover = this.showEmpty ? GUI.skin.toggle.active : buttonStyle.hover;
-				if(GUILayout.Button(prefix + "Show empty rows/columns",buttonStyle)){
+				/*if(GUILayout.Button(prefix + "Show empty rows/columns",buttonStyle)){
 					this.showEmpty = !this.showEmpty;
-				}
+				}*/
 				this.CalculateEmpty();
 			}
 		}

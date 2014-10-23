@@ -1,6 +1,6 @@
 using Zios;
 using UnityEngine;
-[RequireComponent(typeof(Zios.Action))][AddComponentMenu("Zios/Component/Action/Part/Clamp (Vector3)")]
+[AddComponentMenu("Zios/Component/Action/Part/Clamp (Vector3)")]
 public class ClampVector3 : ActionPart{
 	public EventManageTarget target = new EventManageTarget();
 	public Vector3 minimum;

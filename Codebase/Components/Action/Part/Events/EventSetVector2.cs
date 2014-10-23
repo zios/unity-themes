@@ -1,6 +1,6 @@
 using Zios;
 using UnityEngine;
-[RequireComponent(typeof(Zios.Action))][AddComponentMenu("Zios/Component/Action/Part/Event Set (Vector2)")]
+[AddComponentMenu("Zios/Component/Action/Part/Event Set (Vector2)")]
 public class EventSetVector2 : EventSet{
 	public Vector2 parameter;
 	public bool scaleByIntensity;

@@ -1,6 +1,6 @@
 using Zios;
 using UnityEngine;
-[RequireComponent(typeof(Zios.Action))][AddComponentMenu("Zios/Component/Action/Part/Event Set")]
+[AddComponentMenu("Zios/Component/Action/Part/Event Set")]
 public class EventSet : ActionPart{
 	public EventSetTarget target = new EventSetTarget();
 	public override void OnValidate(){

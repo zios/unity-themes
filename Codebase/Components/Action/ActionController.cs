@@ -15,16 +15,18 @@ public class ActionController : StateController{
 		base.Reset();
 	}
 	public override void Awake(){
-		Events.Add("Refresh",this.Refresh);
 		Events.Add("UpdateParts",this.UpdateStates);
+		Events.Add("Refresh",this.Refresh);
 		if(this.action == null){
 			this.action = this.GetComponent<Action>();
-			this.Refresh();
 		}
+		this.Refresh();
 	}
 	[ContextMenu("Refresh")]
 	public override void Refresh(){
+		this.UpdateTableList();
 		this.UpdateScripts("ActionPart");
+		this.ResolveDuplicates();
 		this.UpdateRows();
 		this.UpdateRequirements();
 		this.UpdateOrder();

@@ -1,6 +1,6 @@
 using Zios;
 using UnityEngine;
-[RequireComponent(typeof(Zios.Action))][AddComponentMenu("Zios/Component/Action/Part/Rotate Amount")]
+[AddComponentMenu("Zios/Component/Action/Part/Rotate Amount")]
 public class RotateAmount : ActionPart{
 	public Vector3 amount;
 	public bool scaleByIntensity;

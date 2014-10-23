@@ -1,6 +1,6 @@
 using Zios;
 using UnityEngine;
-[RequireComponent(typeof(Zios.Action))][AddComponentMenu("Zios/Component/Action/Part/Lock Cursor")]
+[AddComponentMenu("Zios/Component/Action/Part/Lock Cursor")]
 public class LockCursor : ActionPart{
 	public override void OnValidate(){
 		this.DefaultPriority(15);

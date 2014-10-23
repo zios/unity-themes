@@ -6,13 +6,15 @@ using ActionPart = Zios.ActionPart;
 public static class EventUtility{
 	public static void Add(MonoBehaviour script,string name,object callback,bool useOwner=true,bool useAction=true){
 		if(script is ActionPart || script is Action){
-			Action parent = script is ActionPart ? ((ActionPart)script).action : (Action)script;
-			GameObject action = parent.gameObject;
-			GameObject owner = parent.owner;
+			ActionPart part = script is ActionPart ? (ActionPart)script : null;
+			Action parent = part ? part.action : (Action)script;
+			bool hasOwner = !part || (part && part.action != null);
+			GameObject action = hasOwner ? parent.gameObject : part.gameObject;
+			GameObject owner = hasOwner ? parent.owner : part.gameObject;
 			GameObject[] actionGroup = new GameObject[]{action};
 			GameObject[] ownerGroup = new GameObject[]{owner};
 			bool multiscope = name.Contains("*");
-			string fullName = parent.alias.Strip(" ");
+			string fullName = hasOwner ? parent.alias.Strip(" ") : part.alias.Strip(" ");
 			string general = name.Replace("*","");
 			string specific = name.Replace("*",fullName);
 			if(useAction){

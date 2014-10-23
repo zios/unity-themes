@@ -1,7 +1,7 @@
 using Zios;
 using System;
 using UnityEngine;
-[RequireComponent(typeof(Zios.Action))][AddComponentMenu("Zios/Component/Action/Part/Event Call")]
+[AddComponentMenu("Zios/Component/Action/Part/Event Call")]
 public class EventCall : ActionPart{
 	public EventCallTarget target = new EventCallTarget();
 	public override void OnValidate(){

@@ -9,7 +9,7 @@ public class SpriteController : MonoBehaviour{
 	public string spriteAnimation;
 	public string spriteFallback;
 	public SpriteSheet spriteSheet;
-	public Material targetMaterial;
+	public Renderer targetRenderer;
 	public float spriteSpeed = 6;
 	public bool spriteActive = true;
 	public bool spriteUnique = true;
@@ -30,15 +30,12 @@ public class SpriteController : MonoBehaviour{
 		this.renderers = this.transform.GetComponentsInChildren<Renderer>();
 		if(Application.isPlaying && this.instance == null && this.spriteXML != null){
 			this.spriteSheet = SpriteManager.Add(this.spriteXML,this.spriteTexture);	
-			if(this.targetMaterial != null){
-				this.activeMaterial = this.targetMaterial;
-			}
-			if(this.activeMaterial == null && this.gameObject.renderer != null){
+			Renderer targetRenderer = this.targetRenderer ?? this.gameObject.renderer;
+			if(this.activeMaterial == null && targetRenderer != null){
 				if(this.spriteUnique){
-					Material copy = new Material(this.gameObject.renderer.sharedMaterial);
-					this.gameObject.renderer.sharedMaterial = copy;
+					targetRenderer.material = targetRenderer.material;
 				}
-				this.activeMaterial = this.gameObject.renderer.material;
+				this.activeMaterial = targetRenderer.sharedMaterial;
 			}
 			this.Load();
 		}

@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
 using Zios;
-[RequireComponent(typeof(Zios.Action))][AddComponentMenu("Zios/Component/Action/Part/Play Animation (3D)")]
+[AddComponentMenu("Zios/Component/Action/Part/Play Animation (3D)")]
 public class Play3DAnimation : ActionPart{
 	public string animationName;
 	public float speed = 1;

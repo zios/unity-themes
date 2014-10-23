@@ -1,7 +1,7 @@
 using Zios;
 using System;
 using UnityEngine;
-[RequireComponent(typeof(Zios.Action))][AddComponentMenu("Zios/Component/Action/Part/Event Query")]
+[AddComponentMenu("Zios/Component/Action/Part/Event Query")]
 public class EventQuery : ActionPart{
 	public EventGetTarget target = new EventGetTarget();
 	public override void OnValidate(){

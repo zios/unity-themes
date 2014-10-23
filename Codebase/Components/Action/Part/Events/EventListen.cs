@@ -1,7 +1,7 @@
 using Zios;
 using System;
 using UnityEngine;
-[RequireComponent(typeof(Zios.Action))][AddComponentMenu("Zios/Component/Action/Part/Event Listen")]
+[AddComponentMenu("Zios/Component/Action/Part/Event Listen")]
 public class EventListen : ActionPart{
 	public string eventName;
 	public Target target = new Target();

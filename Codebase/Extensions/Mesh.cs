@@ -1,5 +1,19 @@
 using UnityEngine;
 public static class MeshExtension{
+	public static Mesh Copy(this Mesh mesh){
+		Mesh copy = new Mesh();
+		copy.vertices = mesh.vertices;
+		copy.bindposes = mesh.bindposes.Copy();
+		copy.boneWeights = mesh.boneWeights.Copy();
+		copy.colors32 = mesh.colors32.Copy();
+		copy.normals = mesh.normals.Copy();
+		copy.tangents = mesh.tangents.Copy();
+		copy.triangles = mesh.triangles.Copy();
+		copy.uv = mesh.uv.Copy();
+		copy.uv2 = mesh.uv2.Copy();
+		//copy.bounds = mesh.bounds;
+		return copy;
+	}
 	public static void RecalculateTangents(this Mesh mesh){
 		int[] triangles = mesh.triangles;
 		Vector3[] vertices = mesh.vertices;

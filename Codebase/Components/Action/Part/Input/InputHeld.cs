@@ -2,7 +2,7 @@ using UnityEngine;
 using Zios;
 using System;
 using System.Collections.Generic;
-[RequireComponent(typeof(Zios.Action))][AddComponentMenu("Zios/Component/Action/Part/Input Held")]
+[AddComponentMenu("Zios/Component/Action/Part/Input Held")]
 public class InputHeld : ActionPart{
 	public string inputName = "Button1";
 	public InputRange requirement;
