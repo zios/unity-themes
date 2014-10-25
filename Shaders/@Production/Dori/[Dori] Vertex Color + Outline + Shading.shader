@@ -2,11 +2,9 @@ Shader "Zios/Dori/Vertex Color + Outline + Shading"{
 	Properties{
 		outlineSize("Outline Size",Range(0.002,0.01)) = 0.005
 		outlineIntensity("Outline Intensity",Range(0,1)) = 0.8
-		contrast("Contrast",Range(0.2,0.5)) = 0.2
+		contrast("Contrast",Range(-0.5,0.5)) = 0.2
 		shadingRamp("Shading Ramp",2D) = "white"{}
-		//shadeIntensity("Shade Intensity",Range(0,1)) = 1
-		//ambientIntensity("Ambient Intensity",Range(-0.25,0.25)) = 0
-		//shades("Shades",float) = 3.0
+		shadeIntensity("Shade Intensity",Range(0,1)) = 1
 	}
 	SubShader{
 		Tags{"LightMode"="ForwardBase"}
@@ -56,9 +54,7 @@ Shader "Zios/Dori/Vertex Color + Outline + Shading"{
 			#pragma vertex vertexPass
 			#pragma fragment pixelPass
 			#pragma fragmentoption ARB_precision_hint_fastest
-			//fixed shades;
-			//fixed shadeIntensity;
-			//fixed ambientIntensity;
+			fixed shadeIntensity;
 			fixed contrast;
 			fixed4 _LightColor0;
 			sampler2D shadingRamp;
@@ -87,8 +83,6 @@ Shader "Zios/Dori/Vertex Color + Outline + Shading"{
 			}
 			vertexOutput setupHalfLighting(vertexOutput input){
 				input.lighting = dot(input.normal,input.lightNormal) * 0.5f + 0.5f;
-				//shades = 1/shades;
-				//input.lighting = shades < 1 ? round(input.lighting / shades) * shades : 1;
 				return input;
 			}
 			pixelOutput applyVertexColor(vertexOutput input,pixelOutput output){
@@ -101,15 +95,8 @@ Shader "Zios/Dori/Vertex Color + Outline + Shading"{
 				return output;
 			}
 			pixelOutput applyDiffuseLerpShading(vertexOutput input,pixelOutput output){
-				//float4 shadingColor = float4(output.color * shadeIntensity,1);
-				//float3 shadingColor = lerp(output.color.rgb,output.color.rgb*2,ambientIntensity);
-				//float3 shadingColor = pow(output.color.rgb,saturation);
-				//shadingColor += ambientIntensity;
-				//output.color.rgb = lerp(shadingColor.rgb,output.color.rgb,input.lighting);
-				//output.color.rgb = shadingColor * tex2D(shadingRamp,input.lighting);
-				//output.color.rgb *= tex2D(shadingRamp,input.lighting) + (1-shadeIntensity);
-				output.color.rgb *= tex2D(shadingRamp,input.lighting);
-				//output.color.rgb += ambientIntensity;
+				output.color.rgb *= tex2D(shadingRamp,input.lighting) + (1-shadeIntensity);
+				//output.color.rgb *= tex2D(shadingRamp,input.lighting);
 				return output;
 			}
 			pixelOutput applyContrast(vertexOutput input,pixelOutput output){
@@ -129,15 +116,13 @@ Shader "Zios/Dori/Vertex Color + Outline + Shading"{
 			pixelOutput pixelPass(vertexOutput input){
 				input.normal = normalize(input.normal);
 				input.lightNormal = normalize(input.lightNormal);
-				//input.lightNormal = ObjSpaceLightDir(input.pos);
-				//input.lightNormal = normalize(_WorldSpaceLightPos0.xyz);
 				pixelOutput output = setupPixel(input);
 				UNITY_INITIALIZE_OUTPUT(pixelOutput,output)
 				input = setupHalfLighting(input);
 				output = applyVertexColor(input,output);
 				output = applyDiffuseLerpShading(input,output);
-				output = applyContrast(input,output);
 				output = applySceneAmbient(input,output);
+				output = applyContrast(input,output);
 				output.color.rgb *= 2;
 				return output;
 			}
