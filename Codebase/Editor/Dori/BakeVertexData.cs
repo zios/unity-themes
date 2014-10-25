@@ -8,18 +8,14 @@ public static class BakeVertexData{
 	static MeshRenderer[] renderers;
 	static Transform target;
 	static int index = 0;
-	static bool force = false;
 	static Material baked;
 	static Material bakedOutline;
 	static Material bakedShaded;
 	static float time;
-    [MenuItem ("Zios/Dori/Bake Vertex Colors (Force)")]
-    static void BakeForce(){
-		bake.force = true;
-		bake.Bake();
-	}
+	static bool complete;
     [MenuItem ("Zios/Dori/Bake Vertex Colors")]
     static void Bake(){
+		bake.complete = false;
 		if(EditorApplication.update != bake.Step && Selection.gameObjects.Length > 0){
 			bake.index = 0;
 			bake.target = Selection.gameObjects[0].transform;
@@ -28,11 +24,16 @@ public static class BakeVertexData{
 			bake.bakedShaded = FileManager.GetAsset<Material>("BakedShaded.mat");
 			bake.renderers = bake.target.GetComponentsInChildren<MeshRenderer>();
 			bake.time = Time.realtimeSinceStartup;
-			EditorApplication.update += bake.Step;
 			Undo.RecordObjects(bake.renderers,"Undo Bake Vertex Colors");
+		}
+		int passesPerStep = 1000;
+		while(passesPerStep > 0){
+			EditorApplication.update += bake.Step;
+			passesPerStep -= 1;
 		}
 	}
 	static void Step(){
+		if(bake.complete){return;}
 		Renderer renderer = bake.renderers[bake.index];
 		int size = bake.renderers.Length;
 		GameObject current = renderer.gameObject;
@@ -63,7 +64,7 @@ public static class BakeVertexData{
 					string shaderName = material.shader.name;
 					if(shaderName.Contains("Lighted",true)){targetMaterial = bake.bakedShaded;}
 					if(shaderName.Contains("Outline",true)){targetMaterial = bake.bakedOutline;}
-					if(existing != null && !force){
+					if(existing != null && !complex){
 						//Debug.Log("Bake Vertex Colors : Already exists -- " + newPath);
 						filter.sharedMesh = existing;
 						materials[subMeshIndex] = targetMaterial;
@@ -98,7 +99,7 @@ public static class BakeVertexData{
 			AssetDatabase.SaveAssets();
 			EditorUtility.ClearProgressBar();
 			EditorApplication.update -= bake.Step;
-			bake.force = false;
+			bake.complete = true;
 		}
 	}
 }

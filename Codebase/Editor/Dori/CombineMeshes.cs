@@ -18,9 +18,11 @@ public static class CombineMeshes{
 	static int vertexCount;
 	static int meshNumber = 1;
 	static float time;
+	static bool complete;
     [MenuItem ("Zios/Dori/Combine Meshes")]
     static void Combine(){
-		if(EditorApplication.update != combine.Step && Selection.gameObjects.Length > 0){
+		combine.complete = false;
+		if(Selection.gameObjects.Length > 0){
 			List<MeshFilter> filters = new List<MeshFilter>();
 			combine.meshes.Clear();
 			combine.meshes.Add(new Mesh());
@@ -35,7 +37,11 @@ public static class CombineMeshes{
 			combine.subIndex = 0;
 			combine.vertexCount = 0;
 			combine.time = Time.realtimeSinceStartup;
+		}
+		int passesPerStep = 1000;
+		while(passesPerStep > 0){
 			EditorApplication.update += combine.Step;
+			passesPerStep -= 1;
 		}
 	}
 	static void StepLast(){
@@ -44,6 +50,7 @@ public static class CombineMeshes{
 		combine.meshes.Last().CombineMeshes(range.ToArray());
 	}
 	static void Step(){
+		if(combine.complete){return;}
 		int index = combine.index;
 		MeshFilter filter = combine.filters[index];
 		string updateMessage = "Mesh " + index + "/" + combine.meshCount;
@@ -96,9 +103,13 @@ public static class CombineMeshes{
 			string totalTime = span.Minutes + " minutes and " + span.Seconds + " seconds";
 			Debug.Log("Combine Meshes : Reduced " + combine.meshCount + " meshes to " + combine.meshes.Count + ".");
 			Debug.Log("Combine Meshes : Completed in " + totalTime + ".");
+			
 			AssetDatabase.SaveAssets();
 			EditorUtility.ClearProgressBar();
-			EditorApplication.update -= combine.Step;
+			combine.complete = true;
+			while(EditorApplication.update == combine.Step){
+				EditorApplication.update -= combine.Step;
+			}
 		}
 	}
 }
