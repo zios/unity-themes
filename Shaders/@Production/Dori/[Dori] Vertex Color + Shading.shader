@@ -1,10 +1,12 @@
 Shader "Zios/Dori/Vertex Color + Shading"{
 	Properties{
-		shadeIntensity("Shade Intensity",Range(0,1)) = 0.5
-		shades("Shades",float) = 3.0
-		//shadingRamp("Shading Ramp",2D) = "white"{}
+		shadingRamp("Shading Ramp",2D) = "white"{}
+		//ambientIntensity("Ambient Intensity",Range(0,1)) = 0.2
+		//shadeIntensity("Shade Intensity",Range(0,1)) = 0.5
+		//shades("Shades",float) = 3.0
 	}
 	SubShader{
+		Tags{"LightMode"="ForwardBase"}
 		Pass{
 			Cull Off
 			CGPROGRAM
@@ -12,25 +14,28 @@ Shader "Zios/Dori/Vertex Color + Shading"{
 			#pragma vertex vertexPass
 			#pragma fragment pixelPass
 			#pragma fragmentoption ARB_precision_hint_fastest
-			fixed shadeIntensity;
-			fixed shades;
-			//sampler2D shadingRamp;
+			//fixed shades;
+			//fixed shadeIntensity;
+			//fixed ambientIntensity;
+			//fixed saturation;
+			fixed4 _LightColor0;
+			sampler2D shadingRamp;
 			struct vertexInput{
-				float4 vertex        : POSITION;
-				float4 texcoord      : TEXCOORD0;
-				float3 normal        : NORMAL;
-				float4 color         : COLOR;
+				float4 vertex          : POSITION;
+				float4 texcoord        : TEXCOORD0;
+				float3 normal          : NORMAL;
+				float4 color           : COLOR;
 			};
 			struct vertexOutput{
-				float4 pos           : POSITION;
-				float3 color    	 : COLOR;
-				float3 lightNormal	 : TEXCOORD0;
-				float4 normal        : TEXCOORD1;
-				float4 UV            : TEXCOORD2;
-				float  lighting      : TEXCOORD3;
+				float4 pos             : POSITION;
+				float3 color    	   : COLOR;
+				float4 normal          : NORMAL;
+				float3 lightNormal	   : TEXCOORD0;
+				float4 UV              : TEXCOORD2;
+				float  lighting        : TEXCOORD3;
 			};
 			struct pixelOutput{
-				float4 color         : COLOR0;
+				float4 color           : COLOR0;
 			};
 			pixelOutput setupPixel(vertexOutput input){
 				pixelOutput output;
@@ -39,19 +44,28 @@ Shader "Zios/Dori/Vertex Color + Shading"{
 				return output;
 			}
 			vertexOutput setupHalfLighting(vertexOutput input){
-				shades = 1/shades;
-				input.lighting = dot(input.normal,input.lightNormal) * 0.5 + 0.5;
-				input.lighting = shades < 1 ? round(input.lighting / shades) * shades : 1;
+				input.lighting = dot(input.normal,input.lightNormal) * 0.5f + 0.5f;
+				//shades = 1/shades;
+				//input.lighting = shades < 1 ? round(input.lighting / shades) * shades : 1;
 				return input;
 			}
 			pixelOutput applyVertexColor(vertexOutput input,pixelOutput output){
-				output.color.rgb = input.color;
+				output.color.rgb += input.color.rgb;
+				return output;
+			}
+			pixelOutput applySceneAmbient(vertexOutput input,pixelOutput output){
+				output.color.rgb += UNITY_LIGHTMODEL_AMBIENT.rgb;
+				output.color.rgb *= _LightColor0.rgb;
 				return output;
 			}
 			pixelOutput applyDiffuseLerpShading(vertexOutput input,pixelOutput output){
-				float4 shadingColor = float4(input.color * shadeIntensity,1);
-				output.color.rgb = lerp(shadingColor.rgb,output.color.rgb,input.lighting);
-				//output.color.rgb = input.color * tex2D(shadingRamp,input.lighting);
+				//float4 shadingColor = float4(output.color * shadeIntensity,1);
+				//float3 shadingColor = lerp(output.color.rgb,output.color.rgb*2,ambientIntensity);
+				//float3 shadingColor = pow(output.color.rgb,saturation);
+				//shadingColor += ambientIntensity;
+				//output.color.rgb = lerp(shadingColor.rgb,output.color.rgb,input.lighting);
+				//output.color.rgb = shadingColor * tex2D(shadingRamp,input.lighting);
+				output.color.rgb *= tex2D(shadingRamp,input.lighting);
 				return output;
 			}
 			vertexOutput vertexPass(vertexInput input){
@@ -65,11 +79,17 @@ Shader "Zios/Dori/Vertex Color + Shading"{
 				return output;
 			}
 			pixelOutput pixelPass(vertexOutput input){
+				input.normal = normalize(input.normal);
+				input.lightNormal = normalize(input.lightNormal);
+				//input.lightNormal = ObjSpaceLightDir(input.pos);
+				//input.lightNormal = normalize(_WorldSpaceLightPos0.xyz);
 				pixelOutput output = setupPixel(input);
 				UNITY_INITIALIZE_OUTPUT(pixelOutput,output)
 				input = setupHalfLighting(input);
 				output = applyVertexColor(input,output);
 				output = applyDiffuseLerpShading(input,output);
+				output = applySceneAmbient(input,output);
+				output.color.rgb *= 2;
 				return output;
 			}
 			ENDCG
