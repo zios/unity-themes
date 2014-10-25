@@ -16,7 +16,7 @@ public static class FileManager{
 	static FileManager(){Refresh();}
 	public static void Refresh(){
 		files.Clear();
-		Scan(Application.dataPath);
+		FileManager.Scan(Application.dataPath);
 	}
 	public static void Scan(string directory){
 		string[] fileEntries = Directory.GetFiles(directory);
@@ -31,11 +31,11 @@ public static class FileManager{
 		}
 		foreach(string folderPath in folderEntries){
 			if(folderPath.Contains(".svn")){continue;}
-			Scan(folderPath);
+			FileManager.Scan(folderPath);
 		}
 	}
 	public static FileData[] FindAll(string name,bool ignoreCase=true,bool showWarnings=true){
-		if(name == ""){
+		if(name == "" && showWarnings){
 			Debug.LogWarning("FileManager : No path given for search.");
 			return null;
 		}
@@ -46,8 +46,8 @@ public static class FileManager{
 		List<FileData> results = new List<FileData>();
 		if(files.ContainsKey(type)){
 			foreach(FileData file in files[type]){
-				bool correctPath = path != "" ? file.path.Matches(path,ignoreCase) : true;
-				if(correctPath && (file.name.Matches(fileName,ignoreCase) || wildcard)){
+				bool correctPath = path != "" ? file.path.Contains(path,ignoreCase) : true;
+				if(correctPath && (file.fullName.Matches(fileName,ignoreCase) || wildcard)){
 					results.Add(file);
 				}
 			}
@@ -78,7 +78,7 @@ public static class FileManager{
 		return "";
 	}
 	public static T GetAsset<T>(string name,bool showWarnings=true){
-		FileData file = FileManager.Find(name,showWarnings);
+		FileData file = FileManager.Find(name,true,showWarnings);
 		if(file != null){return file.GetAsset<T>();}
 		return default(T);
 	}
@@ -93,9 +93,13 @@ public static class FileManager{
 public class FileData{
 	public string path;
 	public string name;
+	public string fullName;
+	public string extension;
 	public FileData(string path){
 		this.path = path;
-		this.name = path.Substring(path.LastIndexOf("/")+1);
+		this.fullName = path.Substring(path.LastIndexOf("/")+1);
+		this.extension = path.Substring(path.LastIndexOf(".")+1);
+		this.name = this.fullName.Replace("."+this.extension,"");
 	}
 	public T GetAsset<T>(){
 		#if UNITY_EDITOR
@@ -114,8 +118,10 @@ public class FileData{
 		#endif
 		return "";
 	}
-	public string GetAssetPath(){
-		return this.path.Substring(this.path.IndexOf("Assets"));
+	public string GetAssetPath(bool full=true){
+		string path = this.path.Substring(this.path.IndexOf("Assets"));
+		if(full){return path;}
+		return path.Cut(0,path.LastIndexOf("/"));
 	}
 	public string GetFolderPath(){
 		return this.path.Substring(0,this.path.LastIndexOf("/")) + "/";
