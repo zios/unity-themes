@@ -45,9 +45,8 @@ public class ColliderController : MonoBehaviour{
 	// Unity-Specific
 	//--------------------------------
 	public void Awake(){
-		Events.AddGet("GetUnblocked",this.OnGetUnblocked);
+		//Events.AddGet("GetUnblocked",this.OnGetUnblocked);
 		Events.Add("AddMove",(MethodVector3)this.OnMove);
-		Events.Add("ResetMove",this.OnResetMove);
 		this.ResetBlocked(true);
 	}
 	public void Start(){
@@ -252,16 +251,10 @@ public class ColliderController : MonoBehaviour{
 	//--------------------------------
 	// Utility
 	//--------------------------------
-	public object OnGetUnblocked(string name){
-		return Time.time - this.lastBlockedTime[name];
-	}
 	public void OnMove(Vector3 move){
 		if(!this.enabled){return;}
 		if(move != Vector3.zero){
 			this.move.Add(move);
 		}
-	}
-	public void OnResetMove(){
-		this.move = new List<Vector3>();
 	}
 }

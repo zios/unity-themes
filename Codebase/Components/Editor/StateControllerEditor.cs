@@ -107,20 +107,18 @@ public class StateControllerEditor : Editor{
 	}
 	public virtual void OnDisplayRowLabel(TableField field){
 		StateRow row = (StateRow)field.target;
-		GUIStyle style = GUI.skin.label;
+		GUIStyle style = new GUIStyle(GUI.skin.label);
+		style.normal.textColor = Colors.Get("Gray");
 		GUIContent content = new GUIContent(row.name,(string)row.id);
 		if(row.target != null){
 			if(row.target.usable){
-				style = new GUIStyle(style);
-				style.normal.textColor = Colors.Get("Silver");
+				style.normal.textColor = EditorGUIUtility.isProSkin ? Colors.Get("Silver") : Colors.Get("DarkGray");
 			}
 			if(row.target.inUse){
-				style = new GUIStyle(style);
-				style.normal.textColor = Colors.Get("BoldOrange");
+				style.normal.textColor = EditorGUIUtility.isProSkin ? Colors.Get("BoldOrange") : Colors.Get("DarkBlue");
 			}
 		}
 		if(field.selected){
-			style = new GUIStyle(style);
 			style.normal = style.active;	
 		}
 		GUILayout.Label(content,style);

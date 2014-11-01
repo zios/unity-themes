@@ -4,20 +4,17 @@ using UnityEngine;
 public class RotateTowardsTarget : ActionPart{
 	public Target source = new Target();
 	public Target target = new Target();
-	public Vector3 offset;
+	public AttributeVector3 offset;
 	public OffsetType offsetType;
 	public ClerpVector3 angles = new ClerpVector3();
 	public override void OnValidate(){
-		this.DefaultRate("LateUpdate");
-		this.DefaultPriority(15);
 		base.OnValidate();
-		this.source.Update(this);
-		this.target.Update(this);
-	}
-	public void Start(){
-		this.source.Setup(this,"Source");
-		this.target.Setup(this);
-		this.angles.Setup(this,"Vector",true);
+		this.DefaultRate("LateUpdate");
+		this.source.Setup("Source",this);
+		this.target.Setup("Target",this);
+		this.offset.Setup("Offset",this);
+		this.angles.Setup("Angles",this);
+		this.angles.isAngle = true;
 	}
 	public Vector3 AdjustVector(Vector3 value){
 		Vector3 adjusted = value;

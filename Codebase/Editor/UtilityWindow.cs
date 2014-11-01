@@ -23,6 +23,7 @@ public class UtilityWindow : EditorWindow {
 	public string renameTo;
 	public string selectName;
 	public string selectComponent;
+	public string shaderName;
     [MenuItem ("Zios/Window/Utilities")]
 	static void Init(){
 		UtilityWindow window = (UtilityWindow)EditorWindow.GetWindow(typeof(UtilityWindow));
@@ -40,6 +41,8 @@ public class UtilityWindow : EditorWindow {
 		this.DrawMaterialSelector();
 		GUILayout.Label("--------------------------------------------------------------");
 		this.DrawSelector();
+		GUILayout.Label("--------------------------------------------------------------");
+		this.DrawShaderSelector();
 		//GUILayout.Label("--------------------------------------------------------------");
 		//this.DrawAssigner();
 		GUILayout.Label("--------------------------------------------------------------");
@@ -252,6 +255,29 @@ public class UtilityWindow : EditorWindow {
 						if(current.GetComponent(this.selectComponent) == null){continue;}
 					}
 					selection.Add(current);
+				}
+			}
+			Selection.objects = selection.ToArray();
+		}
+		GUILayout.EndHorizontal();
+	}
+	//====================================
+	// Shader Selector
+	//====================================
+	public void DrawShaderSelector(){
+		GUILayout.BeginHorizontal("box");
+		EditorGUILayout.LabelField("Select With Shader",GUILayout.Width(125));
+		this.shaderName = EditorGUILayout.TextField(this.shaderName,GUILayout.Width(100));
+		if(GUILayout.Button("Find",GUILayout.Width(100))){
+			List<GameObject> selection = new List<GameObject>();
+			Renderer[] all = (Renderer[])GameObject.FindObjectsOfType(typeof(Renderer));
+			foreach(Renderer current in all){
+				if(selection.Contains(current.gameObject)){continue;}
+				foreach(Material material in current.sharedMaterials){
+					string shaderName = material.shader.name;
+					if(shaderName.Contains(this.shaderName,true)){
+						selection.Add(current.gameObject);
+					}
 				}
 			}
 			Selection.objects = selection.ToArray();

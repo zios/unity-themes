@@ -3,20 +3,21 @@ using System;
 using UnityEngine;
 [AddComponentMenu("Zios/Component/Action/Part/Raycast")]
 public class RayCast : ActionPart{
-	public float distance = 1;
+	public AttributeFloat distance = 1;
 	public Color rayColor = Color.blue;
-	public Vector3 direction = -Vector3.up;
-	public Vector3 offset;
+	public AttributeVector3 direction = -Vector3.up;
+	public AttributeVector3 offset;
 	public Target source = new Target();
 	public LayerMask layers = -1;
-	public bool relative;
+	public AttributeBool relative;
 	public override void OnValidate(){
-		this.DefaultPriority(5);
 		base.OnValidate();
-		this.source.Update(this);
-	}
-	public void Start(){
-		this.source.Setup(this);
+		this.DefaultPriority(5);
+		this.distance.Setup("Distance",this);
+		this.direction.Setup("Direction",this);
+		this.offset.Setup("Offset",this);
+		this.relative.Setup("Relative",this);
+		this.source.Setup("Source",this);
 	}
 	public Vector3 GetPosition(){
 		if(this.source.Get() != null){
@@ -35,7 +36,7 @@ public class RayCast : ActionPart{
 		return adjusted;
 	}
 	public override void Use(){
-		float distance = this.distance == -1 ? Mathf.Infinity : this.distance;
+		float distance = this.distance == -1 ? Mathf.Infinity : this.distance.Get();
 		Vector3 direction = this.AdjustVector(this.direction);
 		Vector3 position = this.GetPosition() + this.AdjustVector(this.offset);
 		bool state = Physics.Raycast(position,direction,distance,this.layers.value);

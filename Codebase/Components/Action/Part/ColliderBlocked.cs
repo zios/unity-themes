@@ -5,21 +5,21 @@ public enum BlockType{Blocked,Unblocked}
 public enum Direction{Up,Down,Left,Right,Forward,Back}
 [AddComponentMenu("Zios/Component/Action/Part/Blocked State")]
 public class BlockedState : ActionPart{
+	//public AttributeEnum type = new AttributeEnum(BlockType);
 	public BlockType type;
 	public Direction direction;
-	public float duration;
+	public AttributeFloat duration;
 	public Target target = new Target();
 	public override void OnValidate(){
-		this.DefaultPriority(5);
 		base.OnValidate();
-		this.target.Update(this);
-	}
-	public void Start(){
-		this.target.Setup(this);
+		this.DefaultPriority(5);
+		this.target.Setup("Target",this);
+		this.duration.Setup("Duration",this);
 	}
 	public override void Use(){
-		string direction = this.direction.ToString().ToLower();
-		float duration = (float)this.target.Query("GetUnblocked",direction);
+		float duration = 0;
+		//string direction = this.direction.ToString().ToLower();
+		//float duration = this.target.GetDictionary<string,float>("GetUnblocked")[direction];
 		bool state = this.type == BlockType.Blocked ? duration < this.duration : duration > this.duration;
 		this.Toggle(state);
 	}

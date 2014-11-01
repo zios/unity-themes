@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 public static class EnumExtension{
 	public static String ToString(this Enum current){
 		return Enum.GetName(current.GetType(),current);
@@ -19,5 +20,13 @@ public static class EnumExtension{
 			value = fallback.ToString();
 		}
 		return (Enum)Enum.Parse(type,value);
+	}
+	public static string[] GetNames(this Enum current){
+		Array values = Enum.GetValues(current.GetType());	
+		List<string> result = new List<string>();
+		foreach(var value in values){
+			result.Add(value.ToString());
+		}
+		return result.ToArray();
 	}
 }

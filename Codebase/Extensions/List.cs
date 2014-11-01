@@ -10,6 +10,13 @@ public static class ListExtension{
 		current.Remove(item);
 		current.Insert(newIndex,item);
 	}
+	public static int IndexOf<T>(this List<T> current,T type){
+		return Array.IndexOf(current.ToArray(),type);
+	}
+	public static int IndexOf<T>(this List<T> current,Enum enumerable){
+		string name = enumerable.ToString();
+		return current.ToArray().IndexOf(name);
+	}
 	public static List<T> Shuffle<T>(this IList<T> current){ 
 		List<T> copy = current.Copy();
 		System.Random random = new System.Random();  

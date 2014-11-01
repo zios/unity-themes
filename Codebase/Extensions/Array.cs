@@ -65,8 +65,23 @@ public static class ArrayExtension{
 		}
 		return Vector4.zero;
 	}
+	public static Rect ToRect(this float[] current){
+		Rect result = new Rect();
+		for(int index=0;index<current.Length;++index){
+			if(index > 3){break;}
+			if(index == 0){result.x = current[index];}
+			if(index == 1){result.y = current[index];}
+			if(index == 2){result.width = current[index];}
+			if(index == 3){result.height = current[index];}
+		}
+		return result;
+	}
 	public static int IndexOf<T>(this Array current,T type){
 		return Array.IndexOf(current,type);
+	}
+	public static int IndexOf<T>(this Array current,Enum enumerable){
+		string name = enumerable.ToString();
+		return current.IndexOf(name);
 	}
 	public static T[] Copy<T>(this T[] current){
 		T[] result = new T[current.Length];

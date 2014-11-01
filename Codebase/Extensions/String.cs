@@ -214,6 +214,12 @@ public static class StringExtension{
 		float number;
 		return float.TryParse(text,out number);
 	}
+    public static string Truncate(this string current,int maxLength){
+        return current.Length <= maxLength ? current : current.Substring(0,maxLength); 
+    }
+	public static string Capitalize(this string current){
+		return current[0].ToString().ToUpper() + current.Substring(1);
+	}
 	public static string TrySplit(this string current,string value,int index=0){
 		return current.TrySplit(value[0],index);
 	}

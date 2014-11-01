@@ -1,61 +1,37 @@
+using Zios;
 using UnityEngine;
 using System;
 using System.Collections;
 [RequireComponent(typeof(ColliderController))]
 [AddComponentMenu("Zios/Component/Physics/Force")]
-public class Force : MonoBehaviour{
-	public Vector3 velocity;
-	public Vector3 terminalVelocity = new Vector3(20,20,20);
-	public Vector3 resistence = new Vector3(8,0,8);
-	public float minimumImpactVelocity = 1;
-	public bool disabled = false;
+public class Force : ActionPart{
+	public AttributeVector3 velocity;
+	public AttributeVector3 terminalVelocity = new Vector3(20,20,20);
+	public AttributeVector3 resistence = new Vector3(8,0,8);
+	public AttributeFloat minimumImpactVelocity = 1;
+	public AttributeBool disabled = false;
 	[NonSerialized] public ColliderController controller;
-	public void Awake(){
-		Events.AddGet("GetVelocity",this.OnGetVelocity);
+	public override void OnValidate(){
+		this.DefaultRate("FixedUpdate");
+		base.OnValidate();
+		this.velocity.Setup("Velocity",this);
+		this.terminalVelocity.Setup("Terminal Velocity",this);
+		this.resistence.Setup("Resistence",this);
+		this.minimumImpactVelocity.Setup("Minimum Impact Velocity",this);
+		this.disabled.Setup("Disabled",this);
 		Events.Add("Collide",(MethodObject)this.OnCollide);
-		Events.Add("AddForce",(MethodVector3)this.OnAddForce);
-		Events.Add("ScaleVelocity",this.OnScaleVelocity);
-		Events.Add("ResetVelocity",this.OnResetVelocity);
-		Events.Add("EnableForces",this.OnEnableForces);
-		Events.Add("DisableForces",this.OnDisableForces);
 		this.controller = this.GetComponent<ColliderController>();
 	}
-	public void FixedUpdate(){
+	public override void Use(){
 		if(!this.disabled && this.velocity != Vector3.zero){
 			Vector3 resistence = Vector3.Scale(this.velocity.Sign(),this.resistence);
 			this.velocity -= resistence * Time.fixedDeltaTime;
-			this.velocity = this.velocity.Clamp(this.terminalVelocity*-1,this.terminalVelocity);
+			this.velocity = this.velocity.Clamp(this.terminalVelocity.Get()*-1,this.terminalVelocity);
 			this.gameObject.Call("AddMove",new Vector3(this.velocity.x,0,0));
 			this.gameObject.Call("AddMove",new Vector3(0,this.velocity.y,0));
 			this.gameObject.Call("AddMove",new Vector3(0,0,this.velocity.z));
 		}
-	}
-	public object OnGetVelocity(){
-		return this.velocity;
-	}
-	public void OnDisableForces(){
-		this.disabled = true;
-		this.OnResetVelocity("xyz");
-	}
-	public void OnEnableForces(){
-		this.disabled = false;
-	}
-	public void OnAddForce(Vector3 force){
-		if(force != Vector3.zero){
-			this.velocity += force;
-		}
-	}
-	public void OnScaleVelocity(object[] values){
-		string axes = (string)values[0];
-		float amount = (float)values[1];
-		if(axes.Contains("x")){this.velocity.x *= amount;}
-		if(axes.Contains("y")){this.velocity.y *= amount;}
-		if(axes.Contains("z")){this.velocity.z *= amount;}
-	}
-	public void OnResetVelocity(string axes){
-		if(axes.Contains("x")){this.velocity.x = 0;}
-		if(axes.Contains("y")){this.velocity.y = 0;}
-		if(axes.Contains("z")){this.velocity.z = 0;}
+		base.Use();
 	}
 	public void OnCollide(object collision){
 		CollisionData data = (CollisionData)collision;

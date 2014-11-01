@@ -4,10 +4,6 @@ using UnityEngine;
 [AddComponentMenu("Zios/Component/Action/Part/Once Trigger")]
 public class OnceTrigger : ActionPart{
 	private bool triggered;
-	public override void OnValidate(){
-		this.DefaultPriority(15);
-		base.OnValidate();
-	}
 	public void Start(){
 		Events.Add("ActionEnd",this.OnActionEnd);
 	}

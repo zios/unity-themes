@@ -7,11 +7,12 @@ namespace Zios{
 	public class Action : StateMonoBehaviour{
 		static public Dictionary<GameObject,bool> dirty = new Dictionary<GameObject,bool>();
 		public Dictionary<string,ActionPart> parts = new Dictionary<string,ActionPart>();
-		public EventFloat intensity;
 		public bool persist;
 		[NonSerialized] public GameObject owner;
 		public void OnValidate(){
 			StateController stateController = this.gameObject.GetComponentInParents<StateController>();
+			this.inUse.Setup(alias+" Active",this,stateController);
+			this.usable.Setup(alias+" Usable",this,stateController);
 			this.owner = stateController == null ? this.gameObject : stateController.gameObject;
 			this.gameObject.Call("Refresh");
 		}
@@ -21,11 +22,6 @@ namespace Zios{
 			Events.Add("ForceEndAction",this.End);
 			Events.Add("ForceEnd"+alias,this.End);
 			Events.AddScope("ForceEnd"+alias,this.End,this.owner);
-			Events.AddGet("Is"+alias+"Active",this.GetActive);
-			Events.AddGet("Is"+alias+"Usable",this.GetUsable);
-			Events.AddGetScope("Is"+alias+"Active",this.GetActive,this.owner);
-			Events.AddGetScope("Is"+alias+"Usable",this.GetUsable,this.owner);
-			this.intensity.Setup(this,"Intensity");
 			this.owner.Call("UpdateStates");
 			this.owner.CallChildren("UpdateParts");
 			this.SetDirty(true);
@@ -41,8 +37,6 @@ namespace Zios{
 		}
 		public void SetDirty(bool state){Action.dirty[this.gameObject] = state;}
 		public void AddPart(string name,ActionPart part){this.parts[name] = part;}
-		public object GetActive(){return this.inUse;}
-		public object GetUsable(){return this.usable;}
 		public override void Use(){this.Toggle(true);}
 		public override void End(){this.Toggle(false);}
 		public override void Toggle(bool state){
@@ -68,6 +62,9 @@ namespace Zios{
 		public override string GetInterfaceType(){return "ActionPart";}
 		public void Reset(){this.OnValidate();}
 		public virtual void OnValidate(){
+			if(this.alias.IsEmpty()){
+				this.alias = this.GetType().ToString();
+			}
 			this.action = this.GetComponent<Action>();
 			if(this.action != null){
 				this.action.OnValidate();
@@ -155,9 +152,7 @@ namespace Zios{
 			if(state != this.inUse){
 				string active = state ? "Start" : "End";
 				this.inUse = state;
-				if(!this.alias.IsEmpty()){
-					this.gameObject.Call(this.alias.Strip(" ")+active);
-				}
+				this.gameObject.Call(this.alias.Strip(" ")+active);
 				this.SetDirty(true);
 			}
 		}

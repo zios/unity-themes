@@ -4,16 +4,12 @@ public enum ForceType{Absolute,Relative}
 [AddComponentMenu("Zios/Component/Action/Part/Add Force")]
 public class AddForce : ActionPart{
 	public ForceType type;
-	public Vector3 amount;
-	public bool scaleByIntensity;
+	public AttributeVector3 amount;
 	public Target target;
 	public override void OnValidate(){
-		this.DefaultPriority(15);
 		base.OnValidate();
-		this.target.Update(this);
-	}
-	public void Start(){
-		this.target.Setup(this);
+		this.target.Setup("Target",this);
+		this.amount.Setup("Amount",this);
 	}
 	public override void Use(){
 		base.Use();
@@ -23,7 +19,6 @@ public class AddForce : ActionPart{
 			amount += this.target.Get().transform.up * this.amount.y;
 			amount += this.target.Get().transform.forward * this.amount.z;
 		}
-		if(this.scaleByIntensity){amount *= this.action.intensity;}
 		this.target.Call("AddForce",amount);
 	}
 }

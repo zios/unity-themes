@@ -8,20 +8,16 @@ public class FollowTarget : ActionPart{
 	public Target target = new Target();
 	public LerpVector3 position = new LerpVector3();
 	public OffsetType offsetType;
-	public EventVector3 offset;
-	public EventVector3 orbit;
+	public AttributeVector3 offset;
+	public AttributeVector3 orbit;
 	public override void OnValidate(){
-		this.DefaultPriority(5);
 		base.OnValidate();
-		this.source.Update(this);
-		this.target.Update(this);
-	}
-	public void Start(){
-		this.source.Setup(this,"Source");
-		this.target.Setup(this);
-		this.position.Setup(this,"Follow");
-		this.offset.Setup(this,"FollowOffset");
-		this.orbit.Setup(this,"FollowOrbit");
+		this.DefaultPriority(5);
+		this.source.Setup("Source",this);
+		this.target.Setup("Target",this);
+		this.position.Setup("Follow",this);
+		this.offset.Setup("FollowOffset",this);
+		this.orbit.Setup("FollowOrbit",this);
 	}
 	public Vector3 AdjustVector(Vector3 value){
 		Vector3 adjusted = value;

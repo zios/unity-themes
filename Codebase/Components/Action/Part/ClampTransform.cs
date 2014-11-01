@@ -7,16 +7,13 @@ public class ClampTransform : ActionPart{
 	public ClerpVector3 rotation = new ClerpVector3();
 	public ClerpVector3 scale = new ClerpVector3();
 	public override void OnValidate(){
-		this.DefaultRate("LateUpdate");
-		this.DefaultPriority(15);
 		base.OnValidate();
-		this.target.Update(this);
-	}
-	public void Start(){
-		this.target.Setup(this);
-		this.position.Setup(this,"Position");
-		this.rotation.Setup(this,"Rotation",true);
-		this.scale.Setup(this,"Scale");
+		this.DefaultRate("LateUpdate");
+		this.target.Setup("Target",this);
+		this.position.Setup("Position",this);
+		this.rotation.Setup("Rotation",this);
+		this.rotation.isAngle = true;
+		this.scale.Setup("Scale",this);
 	}
 	public override void Use(){
 		Transform target = this.target.Get().transform;

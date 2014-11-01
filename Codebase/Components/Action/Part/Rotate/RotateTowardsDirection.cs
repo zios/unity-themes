@@ -2,21 +2,17 @@ using Zios;
 using UnityEngine;
 [AddComponentMenu("Zios/Component/Action/Part/Rotate Towards (Direction)")]
 public class RotateTowardsDirection : ActionPart{
-	public EventVector3 direction;
+	public AttributeVector3 direction;
 	public Target source = new Target();
 	public LerpVector3 rotation = new LerpVector3();
 	private Vector3 lastDirection;
 	private Vector3 current;
 	public override void OnValidate(){
-		this.DefaultRate("FixedUpdate");
-		this.DefaultPriority(15);
 		base.OnValidate();
-		this.source.Update(this);
-	}
-	public void Start(){
-		this.source.Setup(this);
-		this.rotation.Setup(this,"Rotation");
-		this.direction.Setup(this,"RotateDirection");
+		this.DefaultRate("FixedUpdate");
+		this.source.Setup("Source",this);
+		this.rotation.Setup("Rotation",this);
+		this.direction.Setup("RotateDirection",this);
 	}
 	public override void Use(){
 		if(this.lastDirection != this.direction){

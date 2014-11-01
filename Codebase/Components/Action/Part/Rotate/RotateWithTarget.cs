@@ -6,16 +6,12 @@ public class RotateWithTarget : ActionPart{
 	public Target target = new Target();
 	public ClerpVector3 angles = new ClerpVector3();
 	public override void OnValidate(){
-		this.DefaultRate("LateUpdate");
-		this.DefaultPriority(15);
 		base.OnValidate();
-		this.source.Update(this);
-		this.target.Update(this);
-	}
-	public void Start(){
-		this.source.Setup(this);
-		this.target.Setup(this);
-		this.angles.Setup(this,"Vector",true);
+		this.DefaultRate("LateUpdate");
+		this.source.Setup("Source",this);
+		this.target.Setup("Target",this);
+		this.angles.Setup("Angles",this);
+		this.angles.isAngle = true;
 	}
 	public override void Use(){
 		Transform source = this.source.Get().transform;

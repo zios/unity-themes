@@ -3,9 +3,9 @@ using UnityEngine;
 [RequireComponent(typeof(Zios.Action))][AddComponentMenu("Zios/Component/Action/Part/Action Use")]
 public class ActionUse : ActionPart{
 	public override void OnValidate(){
+		base.OnValidate();
 		this.DefaultPriority(10);
 		this.DefaultAlias("@Use");
-		base.OnValidate();
 	}
 	public void Start(){
 		Events.Add("ActionEnd",this.OnActionEnd);

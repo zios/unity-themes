@@ -1,3 +1,4 @@
+using Zios;
 using UnityEngine;
 using System;
 using System.Linq;
@@ -230,7 +231,7 @@ public class StateController : MonoBehaviour{
 			if(match == null){
 				items.Remove(item);
 				string itemInfo = typeName + " -- " + item.name + " [" + item.id + "]";
-				Debug.LogError("StateController : (Deprecate!) Removing old " + itemInfo);
+				Debug.Log("StateController : Removing old " + itemInfo);
 			}
 		}
 	}
@@ -273,27 +274,27 @@ public interface StateInterface{
 	string GetInterfaceType();
 	string alias{get;set;}
 	string id{get;set;}
-	bool requirable{get;set;}
-	bool ready{get;set;}
-	bool usable{get;set;}
-	bool inUse{get;set;}
+	AttributeBool requirable{get;set;}
+	AttributeBool ready{get;set;}
+	AttributeBool usable{get;set;}
+	AttributeBool inUse{get;set;}
 	void Use();
 	void End();
 }
 [Serializable]
 public class StateMonoBehaviour : MonoBehaviour,StateInterface{
 	public string stateAlias;
-	[HideInInspector] public bool stateRequirable = true;
-	[HideInInspector] public bool stateReady = true;
-	[HideInInspector] public bool stateUsable = true;
-	[HideInInspector] public bool stateInUse;
+	[HideInInspector] public AttributeBool stateRequirable = true;
+	[HideInInspector] public AttributeBool stateReady = true;
+	[HideInInspector] public AttributeBool stateUsable = true;
+	[HideInInspector] public AttributeBool stateInUse;
 	[HideInInspector] public string stateID = Guid.NewGuid().ToString();
 	public string id{get{return this.stateID;}set{this.stateID = value;}}
 	public string alias{get{return this.stateAlias;}set{this.stateAlias = value;}}
-	public bool requirable{get{return this.stateRequirable;}set{this.stateRequirable = value;}}
-	public bool ready{get{return this.stateReady;}set{this.stateReady = value;}}
-	public bool usable{get{return this.stateUsable;}set{this.stateUsable = value;}}
-	public bool inUse{get{return this.stateInUse;}set{this.stateInUse = value;}}
+	public AttributeBool requirable{get{return this.stateRequirable;}set{this.stateRequirable.Set(value);}}
+	public AttributeBool ready{get{return this.stateReady;}set{this.stateReady.Set(value);}}
+	public AttributeBool usable{get{return this.stateUsable;}set{this.stateUsable.Set(value);}}
+	public AttributeBool inUse{get{return this.stateInUse;}set{this.stateInUse.Set(value);}}
 	public virtual string GetInterfaceType(){return "State";}
 	public virtual void Use(){}
 	public virtual void End(){}

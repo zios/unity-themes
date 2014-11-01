@@ -4,17 +4,22 @@ using System;
 using System.Collections.Generic;
 [AddComponentMenu("Zios/Component/Action/Part/Input Held")]
 public class InputHeld : ActionPart{
-	public string inputName = "Button1";
+	public AttributeString inputName = "Button1";
 	public InputRange requirement;
-	public bool controlActionIntensity = true;
-	public bool forcePositiveIntensity = true;
-	public bool heldDuringIntensity = true;
-	public bool exclusive = false;
-	[NonSerialized] public bool held;
+	public AttributeBool forcePositiveIntensity = true;
+	public AttributeBool heldDuringIntensity = true;
+	public AttributeBool exclusive = false;
+	[HideInInspector] public AttributeFloat intensity = 0;
+	[HideInInspector] public bool held;
 	[NonSerialized] public bool lastHeld;
 	public override void OnValidate(){
-		this.DefaultPriority(5);
 		base.OnValidate();
+		this.DefaultPriority(5);
+		this.inputName.Setup("InputName",this);
+		this.forcePositiveIntensity.Setup("ForcePositiveIntensity",this);
+		this.heldDuringIntensity.Setup("HeldDuringIntensity",this);
+		this.exclusive.Setup("Exclusive",this);
+		this.intensity.Setup("Intensity",this);
 	}
 	public void Start(){
 		Events.Add("ActionStart",this.OnActionStart);
@@ -37,12 +42,10 @@ public class InputHeld : ActionPart{
 		string inputName = this.inputName;
 		int id = this.GetInstanceID();
 		this.held = Input.GetAxisRaw(inputName) != 0;
-		float intensity = Input.GetAxis(inputName);
+		float intensity = this.forcePositiveIntensity ? Mathf.Abs(Input.GetAxis(inputName)) : Input.GetAxis(inputName);
+		this.intensity.Set(intensity);
 		bool released = this.held != this.lastHeld;
 		bool canEnd = !this.heldDuringIntensity || (this.heldDuringIntensity && intensity == 0);
-		if(this.controlActionIntensity){
-			this.action.intensity.Set(this.forcePositiveIntensity ? Mathf.Abs(intensity) : intensity);
-		}
 		if(canEnd && this.exclusive && InputState.CheckOwner(inputName,id,released)){
 			return false;
 		}

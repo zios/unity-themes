@@ -2,23 +2,18 @@ using Zios;
 using UnityEngine;
 [AddComponentMenu("Zios/Component/Action/Part/Rotate Amount")]
 public class RotateAmount : ActionPart{
-	public Vector3 amount;
-	public bool scaleByIntensity;
+	public AttributeVector3 amount;
 	public Target target = new Target();
 	public override void OnValidate(){
-		this.DefaultRate("FixedUpdate");
-		this.DefaultPriority(15);
 		base.OnValidate();
-		this.target.Update(this);
-	}
-	public void Start(){
-		this.target.Setup(this);
+		this.DefaultRate("FixedUpdate");
+		this.target.Setup("Target",this);
 	}
 	public override void Use(){
 		base.Use();
 		Transform target = this.target.Get().transform;
-		Vector3 amount = this.amount * Time.fixedDeltaTime;
-		if(this.scaleByIntensity){amount *= this.action.intensity;}
+		Vector3 amount = this.amount;
+		amount *= this.rate == ActionRate.FixedUpdate ? Time.fixedDeltaTime : Time.deltaTime;
 		target.localEulerAngles += amount;
 	}
 }

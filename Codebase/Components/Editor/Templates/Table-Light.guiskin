@@ -74,10 +74,10 @@ MonoBehaviour:
   m_button:
     m_Name: button
     m_Normal:
-      m_Background: {fileID: 2800000, guid: e44e9abdb45c7574bace65a923458c87, type: 3}
+      m_Background: {fileID: 2800000, guid: 3bdeab65235ac344a9d8e129448aea44, type: 3}
       m_TextColor: {r: .397058845, g: .397058845, b: .397058845, a: 1}
     m_Hover:
-      m_Background: {fileID: 2800000, guid: 385e46d6954d8344a81368d8c1be4cf9, type: 3}
+      m_Background: {fileID: 0}
       m_TextColor: {r: 1, g: 1, b: 1, a: 1}
     m_Active:
       m_Background: {fileID: 2800000, guid: 513aef3f811be8941b77b5d7a51c19ae, type: 3}
@@ -133,26 +133,26 @@ MonoBehaviour:
   m_toggle:
     m_Name: toggle
     m_Normal:
-      m_Background: {fileID: 2800000, guid: 0850f6392f8e1d44db46e255afc51843, type: 3}
-      m_TextColor: {r: .376470596, g: .376470596, b: .376470596, a: 1}
+      m_Background: {fileID: 2800000, guid: 7ea915d3414452e4a871b222f200d10d, type: 3}
+      m_TextColor: {r: .683823526, g: .683823526, b: .683823526, a: 1}
     m_Hover:
-      m_Background: {fileID: 2800000, guid: 7941925dff2e2ad4bbdfff17c6228efa, type: 3}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_Background: {fileID: 2800000, guid: f61203c24a4df7843a6f88dfd678238d, type: 3}
+      m_TextColor: {r: 1, g: 1, b: 1, a: 1}
     m_Active:
-      m_Background: {fileID: 2800000, guid: 4bed1d5d95dd39a41837386b0ffd4a2a, type: 3}
+      m_Background: {fileID: 2800000, guid: 2b96bdf4cb50f5d48b55316577a4289e, type: 3}
       m_TextColor: {r: 1, g: 1, b: 1, a: 1}
     m_Focused:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_Background: {fileID: 2800000, guid: 385e46d6954d8344a81368d8c1be4cf9, type: 3}
+      m_TextColor: {r: 1, g: 1, b: 1, a: 1}
     m_OnNormal:
-      m_Background: {fileID: 11016, guid: 0000000000000000e000000000000000, type: 0}
-      m_TextColor: {r: .890196085, g: .890196085, b: .890196085, a: 1}
+      m_Background: {fileID: 2800000, guid: 888b037170ced1844a86f8749f035596, type: 3}
+      m_TextColor: {r: .90196079, g: .90196079, b: .90196079, a: 1}
     m_OnHover:
-      m_Background: {fileID: 11015, guid: 0000000000000000e000000000000000, type: 0}
+      m_Background: {fileID: 2800000, guid: 888b037170ced1844a86f8749f035596, type: 3}
       m_TextColor: {r: 1, g: 1, b: 1, a: 1}
     m_OnActive:
-      m_Background: {fileID: 11017, guid: 0000000000000000e000000000000000, type: 0}
-      m_TextColor: {r: 1, g: 1, b: 1, a: 1}
+      m_Background: {fileID: 2800000, guid: 888b037170ced1844a86f8749f035596, type: 3}
+      m_TextColor: {r: .899999976, g: .899999976, b: .899999976, a: 1}
     m_OnFocused:
       m_Background: {fileID: 0}
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
@@ -167,14 +167,14 @@ MonoBehaviour:
       m_Top: 4
       m_Bottom: 4
     m_Padding:
-      m_Left: 15
-      m_Right: 0
-      m_Top: 3
-      m_Bottom: 0
+      m_Left: 8
+      m_Right: 8
+      m_Top: 8
+      m_Bottom: 8
     m_Overflow:
-      m_Left: -1
+      m_Left: 0
       m_Right: 0
-      m_Top: -4
+      m_Top: 0
       m_Bottom: 0
     m_Font: {fileID: 12800000, guid: 5f19a353e8fbce64e90dfbb47ddf3436, type: 3}
     m_FontSize: 12
@@ -193,7 +193,7 @@ MonoBehaviour:
     m_Name: label
     m_Normal:
       m_Background: {fileID: 0}
-      m_TextColor: {r: .235294104, g: .235294104, b: .235294104, a: 1}
+      m_TextColor: {r: .411764681, g: .411764681, b: .411764681, a: 1}
     m_Hover:
       m_Background: {fileID: 0}
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
@@ -244,7 +244,7 @@ MonoBehaviour:
     m_TextClipping: 0
     m_ImagePosition: 0
     m_ContentOffset: {x: 0, y: 0}
-    m_FixedWidth: 113
+    m_FixedWidth: 129
     m_FixedHeight: 25
     m_StretchWidth: 0
     m_StretchHeight: 0
@@ -294,16 +294,16 @@ MonoBehaviour:
       m_Right: 0
       m_Top: 0
       m_Bottom: 0
-    m_Font: {fileID: 12800000, guid: 3a65c3306964ba44496080f14d048029, type: 3}
+    m_Font: {fileID: 0}
     m_FontSize: 12
     m_FontStyle: 0
     m_Alignment: 5
     m_WordWrap: 0
     m_RichText: 0
     m_TextClipping: 0
-    m_ImagePosition: 0
+    m_ImagePosition: 3
     m_ContentOffset: {x: 0, y: 0}
-    m_FixedWidth: 192
+    m_FixedWidth: 108
     m_FixedHeight: 25
     m_StretchWidth: 0
     m_StretchHeight: 0
@@ -1195,8 +1195,8 @@ MonoBehaviour:
   m_CustomStyles:
   - m_Name: buttonOn
     m_Normal:
-      m_Background: {fileID: 2800000, guid: 0c7d889ba83d6b743ac981c9c66680e7, type: 3}
-      m_TextColor: {r: .268698901, g: .45588237, b: 0, a: 1}
+      m_Background: {fileID: 2800000, guid: a519ae372dd5a1645bef1075f437924e, type: 3}
+      m_TextColor: {r: 1, g: 1, b: 1, a: 1}
     m_Hover:
       m_Background: {fileID: 0}
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
@@ -1219,10 +1219,10 @@ MonoBehaviour:
       m_Background: {fileID: 0}
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Border:
-      m_Left: 1
-      m_Right: 1
-      m_Top: 1
-      m_Bottom: 1
+      m_Left: 8
+      m_Right: 8
+      m_Top: 8
+      m_Bottom: 8
     m_Margin:
       m_Left: 1
       m_Right: 1
@@ -1238,9 +1238,9 @@ MonoBehaviour:
       m_Right: 0
       m_Top: 0
       m_Bottom: 0
-    m_Font: {fileID: 0}
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 14
-    m_FontStyle: 1
+    m_FontStyle: 0
     m_Alignment: 0
     m_WordWrap: 0
     m_RichText: 0
@@ -1253,8 +1253,8 @@ MonoBehaviour:
     m_StretchHeight: 0
   - m_Name: buttonOff
     m_Normal:
-      m_Background: {fileID: 2800000, guid: 7bc7cbe089a5c8d45b726e3bab236c18, type: 3}
-      m_TextColor: {r: .536764741, g: 0, b: 0, a: 1}
+      m_Background: {fileID: 2800000, guid: 23013ed82bfd7744b968634127ccdafb, type: 3}
+      m_TextColor: {r: 1, g: 1, b: 1, a: 1}
     m_Hover:
       m_Background: {fileID: 0}
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
@@ -1296,8 +1296,8 @@ MonoBehaviour:
       m_Right: 0
       m_Top: 0
       m_Bottom: 0
-    m_Font: {fileID: 0}
-    m_FontSize: 12
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
     m_FontStyle: 1
     m_Alignment: 0
     m_WordWrap: 0
@@ -1309,126 +1309,10 @@ MonoBehaviour:
     m_FixedHeight: 25
     m_StretchWidth: 1
     m_StretchHeight: 1
-  - m_Name: header
-    m_Normal:
-      m_Background: {fileID: 2800000, guid: cdcab2018444436458d717cce9d99d04, type: 3}
-      m_TextColor: {r: .235294119, g: .235294119, b: .235294119, a: 1}
-    m_Hover:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_Active:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_Focused:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_OnNormal:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_OnHover:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_OnActive:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_OnFocused:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_Border:
-      m_Left: 1
-      m_Right: 1
-      m_Top: 1
-      m_Bottom: 1
-    m_Margin:
-      m_Left: 1
-      m_Right: 1
-      m_Top: 1
-      m_Bottom: 1
-    m_Padding:
-      m_Left: 0
-      m_Right: 6
-      m_Top: 0
-      m_Bottom: 0
-    m_Overflow:
-      m_Left: 0
-      m_Right: 0
-      m_Top: 0
-      m_Bottom: 0
-    m_Font: {fileID: 0}
-    m_FontSize: 14
-    m_FontStyle: 0
-    m_Alignment: 4
-    m_WordWrap: 0
-    m_RichText: 1
-    m_TextClipping: 0
-    m_ImagePosition: 0
-    m_ContentOffset: {x: 0, y: 0}
-    m_FixedWidth: 192
-    m_FixedHeight: 25
-    m_StretchWidth: 1
-    m_StretchHeight: 1
-  - m_Name: labelSuccess
-    m_Normal:
-      m_Background: {fileID: 2800000, guid: 808e8844ca224cb4a8149ecccd9e6ff3, type: 3}
-      m_TextColor: {r: .349019617, g: .592156887, b: 0, a: 1}
-    m_Hover:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_Active:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_Focused:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_OnNormal:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_OnHover:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_OnActive:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_OnFocused:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_Border:
-      m_Left: 1
-      m_Right: 1
-      m_Top: 1
-      m_Bottom: 1
-    m_Margin:
-      m_Left: 1
-      m_Right: 1
-      m_Top: 1
-      m_Bottom: 1
-    m_Padding:
-      m_Left: 0
-      m_Right: 6
-      m_Top: 0
-      m_Bottom: 0
-    m_Overflow:
-      m_Left: 0
-      m_Right: 0
-      m_Top: 0
-      m_Bottom: 0
-    m_Font: {fileID: 12800000, guid: 3a65c3306964ba44496080f14d048029, type: 3}
-    m_FontSize: 12
-    m_FontStyle: 0
-    m_Alignment: 5
-    m_WordWrap: 0
-    m_RichText: 0
-    m_TextClipping: 0
-    m_ImagePosition: 0
-    m_ContentOffset: {x: 0, y: 0}
-    m_FixedWidth: 192
-    m_FixedHeight: 25
-    m_StretchWidth: 0
-    m_StretchHeight: 0
   - m_Name: labelError
     m_Normal:
       m_Background: {fileID: 2800000, guid: ef9b0538f34d1fc44b20f9c8aef57f49, type: 3}
-      m_TextColor: {r: .533333361, g: 0, b: 0, a: 1}
+      m_TextColor: {r: .852941155, g: .17560555, b: .17560555, a: 1}
     m_Hover:
       m_Background: {fileID: 0}
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
@@ -1479,14 +1363,72 @@ MonoBehaviour:
     m_TextClipping: 0
     m_ImagePosition: 0
     m_ContentOffset: {x: 0, y: 0}
-    m_FixedWidth: 192
+    m_FixedWidth: 108
+    m_FixedHeight: 25
+    m_StretchWidth: 0
+    m_StretchHeight: 0
+  - m_Name: labelSuccess
+    m_Normal:
+      m_Background: {fileID: 2800000, guid: 808e8844ca224cb4a8149ecccd9e6ff3, type: 3}
+      m_TextColor: {r: .349019617, g: .588235319, b: 0, a: 1}
+    m_Hover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Active:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Focused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnNormal:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnHover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnActive:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnFocused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Border:
+      m_Left: 1
+      m_Right: 1
+      m_Top: 1
+      m_Bottom: 1
+    m_Margin:
+      m_Left: 1
+      m_Right: 1
+      m_Top: 1
+      m_Bottom: 1
+    m_Padding:
+      m_Left: 0
+      m_Right: 6
+      m_Top: 0
+      m_Bottom: 0
+    m_Overflow:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Font: {fileID: 12800000, guid: 3a65c3306964ba44496080f14d048029, type: 3}
+    m_FontSize: 12
+    m_FontStyle: 0
+    m_Alignment: 5
+    m_WordWrap: 0
+    m_RichText: 0
+    m_TextClipping: 0
+    m_ImagePosition: 0
+    m_ContentOffset: {x: 0, y: 0}
+    m_FixedWidth: 108
     m_FixedHeight: 25
     m_StretchWidth: 0
     m_StretchHeight: 0
   - m_Name: titleLabel
     m_Normal:
       m_Background: {fileID: 0}
-      m_TextColor: {r: .247029603, g: .41911763, b: 0, a: 1}
+      m_TextColor: {r: .247058824, g: .419607848, b: 0, a: 1}
     m_Hover:
       m_Background: {fileID: 0}
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
@@ -1520,7 +1462,7 @@ MonoBehaviour:
       m_Bottom: 1
     m_Padding:
       m_Left: 0
-      m_Right: 6
+      m_Right: 0
       m_Top: 0
       m_Bottom: 0
     m_Overflow:
@@ -1543,14 +1485,14 @@ MonoBehaviour:
     m_StretchHeight: 0
   - m_Name: addButton
     m_Normal:
-      m_Background: {fileID: 2800000, guid: 7941925dff2e2ad4bbdfff17c6228efa, type: 3}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_Background: {fileID: 2800000, guid: 7ea915d3414452e4a871b222f200d10d, type: 3}
+      m_TextColor: {r: .784313738, g: .784313738, b: .784313738, a: 1}
     m_Hover:
-      m_Background: {fileID: 2800000, guid: 0850f6392f8e1d44db46e255afc51843, type: 3}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_Active:
       m_Background: {fileID: 2800000, guid: f61203c24a4df7843a6f88dfd678238d, type: 3}
       m_TextColor: {r: 1, g: 1, b: 1, a: 1}
+    m_Active:
+      m_Background: {fileID: 2800000, guid: 82c2dc8c51fbf3a4cbf9ba56d753b788, type: 3}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Focused:
       m_Background: {fileID: 0}
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
@@ -1591,12 +1533,360 @@ MonoBehaviour:
     m_FontStyle: 0
     m_Alignment: 4
     m_WordWrap: 0
-    m_RichText: 1
+    m_RichText: 0
     m_TextClipping: 0
     m_ImagePosition: 0
     m_ContentOffset: {x: 0, y: 0}
     m_FixedWidth: 108
     m_FixedHeight: 25
+    m_StretchWidth: 0
+    m_StretchHeight: 0
+  - m_Name: header
+    m_Normal:
+      m_Background: {fileID: 2800000, guid: ee579c1e6a009544686242915c3d530d, type: 3}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Hover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Active:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Focused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnNormal:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnHover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnActive:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnFocused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Border:
+      m_Left: 1
+      m_Right: 1
+      m_Top: 1
+      m_Bottom: 1
+    m_Margin:
+      m_Left: 1
+      m_Right: 1
+      m_Top: 1
+      m_Bottom: 1
+    m_Padding:
+      m_Left: 0
+      m_Right: 6
+      m_Top: 0
+      m_Bottom: 0
+    m_Overflow:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Font: {fileID: 12800000, guid: 3a65c3306964ba44496080f14d048029, type: 3}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_Alignment: 4
+    m_WordWrap: 0
+    m_RichText: 0
+    m_TextClipping: 0
+    m_ImagePosition: 0
+    m_ContentOffset: {x: 0, y: 0}
+    m_FixedWidth: 108
+    m_FixedHeight: 25
+    m_StretchWidth: 0
+    m_StretchHeight: 0
+  - m_Name: title
+    m_Normal:
+      m_Background: {fileID: 2800000, guid: d567d40fada09974c937ae254dd058ab, type: 3}
+      m_TextColor: {r: .308823526, g: .308823526, b: .308823526, a: 1}
+    m_Hover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Active:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Focused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnNormal:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnHover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnActive:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnFocused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Border:
+      m_Left: 7
+      m_Right: 7
+      m_Top: 7
+      m_Bottom: 7
+    m_Margin:
+      m_Left: 1
+      m_Right: 1
+      m_Top: 1
+      m_Bottom: 1
+    m_Padding:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Overflow:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 12
+    m_Font: {fileID: 0}
+    m_FontSize: 12
+    m_FontStyle: 3
+    m_Alignment: 2
+    m_WordWrap: 0
+    m_RichText: 0
+    m_TextClipping: 0
+    m_ImagePosition: 0
+    m_ContentOffset: {x: 0, y: 0}
+    m_FixedWidth: 0
+    m_FixedHeight: 10
+    m_StretchWidth: 0
+    m_StretchHeight: 0
+  - m_Name: titleTabGreen
+    m_Normal:
+      m_Background: {fileID: 2800000, guid: 2c667a1cb359554488e79fcfe3e5e4d1, type: 3}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Hover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Active:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Focused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnNormal:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnHover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnActive:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnFocused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Border:
+      m_Left: 8
+      m_Right: 8
+      m_Top: 8
+      m_Bottom: 8
+    m_Margin:
+      m_Left: 1
+      m_Right: 1
+      m_Top: 1
+      m_Bottom: 1
+    m_Padding:
+      m_Left: 0
+      m_Right: 0
+      m_Top: -4
+      m_Bottom: 0
+    m_Overflow:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 4
+      m_Bottom: 0
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 11
+    m_FontStyle: 0
+    m_Alignment: 4
+    m_WordWrap: 0
+    m_RichText: 0
+    m_TextClipping: 0
+    m_ImagePosition: 0
+    m_ContentOffset: {x: 0, y: 0}
+    m_FixedWidth: 80
+    m_FixedHeight: 18
+    m_StretchWidth: 0
+    m_StretchHeight: 0
+  - m_Name: titleTabRed
+    m_Normal:
+      m_Background: {fileID: 2800000, guid: 2c667a1cb359554488e79fcfe3e5e4d1, type: 3}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Hover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Active:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Focused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnNormal:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnHover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnActive:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnFocused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Border:
+      m_Left: 8
+      m_Right: 8
+      m_Top: 8
+      m_Bottom: 8
+    m_Margin:
+      m_Left: 1
+      m_Right: 1
+      m_Top: 1
+      m_Bottom: 1
+    m_Padding:
+      m_Left: 0
+      m_Right: 0
+      m_Top: -4
+      m_Bottom: 0
+    m_Overflow:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 4
+      m_Bottom: 0
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 11
+    m_FontStyle: 0
+    m_Alignment: 4
+    m_WordWrap: 0
+    m_RichText: 0
+    m_TextClipping: 0
+    m_ImagePosition: 0
+    m_ContentOffset: {x: 0, y: 0}
+    m_FixedWidth: 80
+    m_FixedHeight: 18
+    m_StretchWidth: 0
+    m_StretchHeight: 0
+  - m_Name: titleTabInactive
+    m_Normal:
+      m_Background: {fileID: 2800000, guid: 3bdeab65235ac344a9d8e129448aea44, type: 3}
+      m_TextColor: {r: .852941155, g: .852941155, b: .852941155, a: 1}
+    m_Hover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Active:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Focused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnNormal:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnHover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnActive:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnFocused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Border:
+      m_Left: 8
+      m_Right: 8
+      m_Top: 8
+      m_Bottom: 8
+    m_Margin:
+      m_Left: 1
+      m_Right: 1
+      m_Top: 1
+      m_Bottom: 1
+    m_Padding:
+      m_Left: 0
+      m_Right: 0
+      m_Top: -4
+      m_Bottom: 0
+    m_Overflow:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 4
+      m_Bottom: 0
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 11
+    m_FontStyle: 0
+    m_Alignment: 4
+    m_WordWrap: 0
+    m_RichText: 0
+    m_TextClipping: 0
+    m_ImagePosition: 0
+    m_ContentOffset: {x: 0, y: 0}
+    m_FixedWidth: 80
+    m_FixedHeight: 18
+    m_StretchWidth: 0
+    m_StretchHeight: 0
+  - m_Name: titleTabDisabled
+    m_Normal:
+      m_Background: {fileID: 2800000, guid: 08a1cd800e8d28f4c991737799fa8499, type: 3}
+      m_TextColor: {r: .647058845, g: .647058845, b: .647058845, a: 1}
+    m_Hover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Active:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Focused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnNormal:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnHover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnActive:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnFocused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Border:
+      m_Left: 8
+      m_Right: 8
+      m_Top: 8
+      m_Bottom: 8
+    m_Margin:
+      m_Left: 1
+      m_Right: 1
+      m_Top: 1
+      m_Bottom: 1
+    m_Padding:
+      m_Left: 0
+      m_Right: 0
+      m_Top: -4
+      m_Bottom: 0
+    m_Overflow:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 4
+      m_Bottom: 0
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 11
+    m_FontStyle: 0
+    m_Alignment: 4
+    m_WordWrap: 0
+    m_RichText: 0
+    m_TextClipping: 0
+    m_ImagePosition: 0
+    m_ContentOffset: {x: 0, y: 0}
+    m_FixedWidth: 80
+    m_FixedHeight: 18
     m_StretchWidth: 0
     m_StretchHeight: 0
   m_Settings:

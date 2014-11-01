@@ -6,8 +6,10 @@ using Zios;
 public class Target{
 	public string search;
 	public GameObject direct;
+	private MonoBehaviour script;
 	private bool hasSearched;
 	private bool hasWarned;
+	private string fallbackSearch;
 	private Dictionary<string,GameObject> special = new Dictionary<string,GameObject>();
 	public static implicit operator Transform(Target value){
 		value.Prepare();
@@ -17,33 +19,30 @@ public class Target{
 		value.Prepare();
 		return value.direct;
 	}
-	public void Update(MonoBehaviour script){
-		if(script is ActionPart){
-			ActionPart part = (ActionPart)script;
-			if(part.action){this.AddSpecial("[Owner]",part.action.owner);}
-			this.AddSpecial("[Action]",part.gameObject);
-			this.DefaultSearch(part.action ? "[Owner]" : "[Action]");
+	public void Setup(params MonoBehaviour[] scripts){this.Setup("",scripts);}
+	public void Setup(string name="",params MonoBehaviour[] scripts){
+		this.script = scripts[0];
+		foreach(MonoBehaviour script in scripts){
+			if(script is ActionPart){
+				ActionPart part = (ActionPart)script;
+				if(part.action){this.AddSpecial("[Owner]",part.action.owner);}
+				this.AddSpecial("[Action]",part.gameObject);
+				this.DefaultSearch(part.action ? "[Owner]" : "[Action]");
+			}
 		}
-	}
-	public void Setup(MonoBehaviour script,string eventName=""){
-		this.Update(script);
-		Events.AddScope("Set"+eventName+"Target",this.OnSetTarget,script.gameObject);
+		//this.DefaultSearch();
 	}
 	public GameObject Get(){
 		this.Prepare();
 		return this.direct;
 	}
-	public void OnSetTarget(string search){
-		this.hasSearched = false;
-		this.direct = null;
-		this.Search(search);
-	}
 	public void AddSpecial(string name,GameObject target){
 		this.special[name] = target;
 	}
+	public void DefaultSearch(){this.DefaultSearch(this.fallbackSearch);}
 	public void DefaultSearch(string target){
 		if(this.search.IsEmpty() && this.direct == null){
-			this.search = target;
+			this.search = this.fallbackSearch = target;
 		}
 		this.Prepare();
 	}
@@ -58,18 +57,19 @@ public class Target{
 	}
 	public void Prepare(){
 		bool editorMode = !Application.isPlaying;
+		string search = this.search.IsEmpty() ? "" : this.search;
 		if(editorMode || !this.hasSearched){
-			if(this.special.ContainsKey(this.search)){
-				this.direct = this.special[this.search];
+			if(this.special.ContainsKey(search)){
+				this.direct = this.special[search];
 			}
-			else if(!this.search.IsEmpty()){
-				this.direct = GameObject.Find(this.search);
+			else if(!search.IsEmpty()){
+				this.direct = GameObject.Find(search);
 			}
 			this.hasSearched = true;
 		}
 		if(!editorMode && this.direct == null && !this.hasWarned){
-			Debug.LogWarning("Target : No gameObject was found!");
-			if(!this.search.IsEmpty() && !this.search.Contains("Not Found")){
+			Debug.LogWarning("Target : No gameObject was found for " + this.script.name,this.script);
+			if(!search.IsEmpty() && !search.Contains("Not Found")){
 				this.search = "<" + this.search + " Not Found>";
 			}
 			this.hasWarned = true;

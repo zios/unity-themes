@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
@@ -42,10 +43,21 @@ public static class ObjectExtension{
 		Type currentType = type == null ? current.GetType() : type;
 		return currentType.GetMethod(name,flags);
 	}
-	public static T GetAttribute<T>(this object current,string name){
+	public static object GetAttribute(this object current,string name,int index=-1){
+		return current.GetAttribute<object>(name,index);
+	}
+	public static T GetAttribute<T>(this object current,string name,int index=-1){
 		Type type = current.GetType();
 		PropertyInfo property = type.GetProperty(name);
 		FieldInfo field = type.GetField(name);
+		if(index != -1){
+			if(current is Vector3){
+				//return current.Cast<Vector3>()[index].Cast<object>().Cast<T>();
+				return (T)((object)(((Vector3)current)[index]));
+			}
+			IList list = (IList)field.GetValue(current);
+			return (T)list[index];
+		}
 		if(property != null){
 			return (T)property.GetValue(current,null);
 		}
@@ -54,6 +66,28 @@ public static class ObjectExtension{
 		}
 		return default(T);
 	}
+	/*static public T GetValue<T>(this object current,string name){
+		return (T)current.GetValue(name);
+	}
+	static public object GetValue(this object current,string name){
+		if(current == null){return null;}
+		var type = current.GetType();
+		BindingFlags flags = BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance;
+		var field = type.GetField(name,flags);
+		if(field == null){
+			flags = BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance | BindingFlags.IgnoreCase;
+			var property = type.GetProperty(name,flags);
+			if(property == null){return null;}
+			return property.GetValue(current,null);
+		}
+		return field.GetValue(current);
+	}
+	static public object GetValue(this object current,string name,int index){
+		var enumerable = GetValue(current,name) as IEnumerable;
+		var enumerator = enumerable.GetEnumerator();
+		while(index-- >= 0){enumerator.MoveNext();}
+		return enumerator.Current;
+	}*/
 	public static List<string> ListAttributes(this object current,List<Type> limitTypes = null){
 		List<string> attributes = new List<string>();
 		foreach(FieldInfo field in current.GetType().GetFields()){

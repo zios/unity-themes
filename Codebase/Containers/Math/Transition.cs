@@ -1,9 +1,10 @@
+using Zios;
 using UnityEngine;
 using System;
 [Serializable]
 public class Transition{
-	public EventFloat duration = 0.5f;
-	public EventFloat delayStart;
+	public AttributeFloat duration = 0.5f;
+	public AttributeFloat delayStart;
 	public AnimationCurve curve = AnimationCurve.Linear(0,0,1,1);
 	[NonSerialized] public bool complete = true;
 	[NonSerialized] public float endTime;
@@ -13,9 +14,9 @@ public class Transition{
 		this.startTime = time + this.delayStart;
 		this.endTime = time + this.duration + this.delayStart;
 	}
-	public virtual void Setup(MonoBehaviour script,string eventName){
-		this.duration.Setup(script,eventName+"Duration");
-		this.delayStart.Setup(script,eventName+"DelayStart");
+	public virtual void Setup(string name="",params MonoBehaviour[] scripts){
+		this.duration.Setup(name+"Duration",scripts);
+		this.delayStart.Setup(name+"DelayStart",scripts);
 	}
 	public void End(){
 		this.endTime = 0;

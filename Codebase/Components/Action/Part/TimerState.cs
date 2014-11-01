@@ -7,18 +7,20 @@ public enum PersistType{Off,UntilComplete,UntilCompleteOrActionEnds}
 public class TimerState : ActionPart{
 	public TimerType type;
 	public PersistType persist;
-	public float seconds;
-	public bool scaleByIntensity;
+	public AttributeFloat seconds;
 	private float endTime;
-	private bool isActive;
-	private bool isComplete;
+	private AttributeBool isActive = false;
+	private AttributeBool isComplete = false;
 	public override void OnValidate(){
+		base.OnValidate();
 		this.DefaultPriority(5);
 		if(this.rate == ActionRate.ActionStart || this.rate == ActionRate.ActionEnd){
 			Debug.LogWarning("TimerState ["+this.alias+"] cannot use single-use ActionStart/ActionEnd triggers.");
 			this.rate = ActionRate.Default;
 		}
-		base.OnValidate();
+		this.seconds.Setup("Seconds",this);
+		this.isActive.Setup("IsActive",this);
+		this.isComplete.Setup("IsComplete",this);
 	}
 	public void Start(){
 		Events.Add("ActionEnd",this.OnActionEnd);
@@ -26,19 +28,19 @@ public class TimerState : ActionPart{
 	public override void Use(){
 		if(this.isComplete){return;}
 		if(!this.isActive){
-			float seconds = this.scaleByIntensity ? this.action.intensity * this.seconds : this.seconds;
+			float seconds = this.seconds.Get();
 			this.endTime = Time.time + seconds;
-			this.isActive = true;
+			this.isActive.Set(true);
 		}
 		bool hasElapsed = Time.time > this.endTime;
 		if(this.type == TimerType.After && hasElapsed){
-			this.isComplete = true;
+			this.isComplete.Set(true);
 			base.Use();
 		}
 		else if(this.type == TimerType.During){
 			base.Use();
 			if(hasElapsed){
-				this.isComplete = true;
+				this.isComplete.Set(true);
 				base.End();
 			}
 		}
@@ -56,8 +58,8 @@ public class TimerState : ActionPart{
 		this.ForceEnd();
 	}
 	public override void ForceEnd(){
-		this.isComplete = false;
-		this.isActive = false;
+		this.isComplete.Set(false);
+		this.isActive.Set(false);
 		base.End();
 	}
 } 

@@ -665,7 +665,7 @@ namespace Zios{
 				}
 			}
 			else if(UnityInput.GetMouseButtonDown(0)){
-				if(dragBounds.ContainsPoint(mouse)){
+				if(dragBounds.Contains(mouse)){
 					Console.dragStart = mouse;
 					Console.dragStart[2] = Console.settings.height;
 				}
