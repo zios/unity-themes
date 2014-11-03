@@ -7,8 +7,8 @@ namespace Zios{
 	public enum SpecialVector3{Copy,Flip,Abs,Sign};
 	[Serializable]
 	public class AttributeVector3 : Attribute<Vector3,AttributeVector3,AttributeVector3Data,OperatorVector3,SpecialVector3>{
-		public AttributeVector3() : this(default(Vector3)){}
-		public AttributeVector3(Vector3 value){this.Add();}
+		public AttributeVector3() : this(Vector3.zero){}
+		public AttributeVector3(Vector3 value){this.Add(value);}
 		public static implicit operator AttributeVector3(Vector3 current){return new AttributeVector3(current);}
 		public static implicit operator Vector3(AttributeVector3 current){return current.Get();}
 		public static Vector3 operator *(AttributeVector3 current,float amount){return current.Get() * amount;}
