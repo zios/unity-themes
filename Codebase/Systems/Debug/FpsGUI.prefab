@@ -24,7 +24,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 32.6903114, y: 18.4192448, z: 17.8289814}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -43,15 +43,15 @@ MonoBehaviour:
   name: FPS
   autoScale: 0
   depth: 1000
-  position: {x: 835, y: 2}
-  size: {x: 120, y: 30}
-  background: {fileID: 2800000, guid: a519ae372dd5a1645bef1075f437924e, type: 3}
+  position: {x: 925, y: 0}
+  size: {x: 100, y: 30}
+  background: {fileID: 2800000, guid: 23013ed82bfd7744b968634127ccdafb, type: 3}
   text: 'FPS : 900'
   textColor: {r: 1, g: 1, b: 1, a: 1}
   shadowColor: {r: .161764681, g: .161764681, b: .161764681, a: 1}
   shadowOffset: {x: 2, y: 2}
-  font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-  fontSize: 18
+  font: {fileID: 12800000, guid: 765cdf527c770a245ae2953532a3641b, type: 3}
+  fontSize: 30
   fontStyle: 1
   letterSpacing: 0
   style:
@@ -100,8 +100,8 @@ MonoBehaviour:
       m_Right: 0
       m_Top: 0
       m_Bottom: 0
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 18
+    m_Font: {fileID: 12800000, guid: 765cdf527c770a245ae2953532a3641b, type: 3}
+    m_FontSize: 30
     m_FontStyle: 1
     m_Alignment: 4
     m_WordWrap: 0
@@ -109,7 +109,7 @@ MonoBehaviour:
     m_TextClipping: 0
     m_ImagePosition: 0
     m_ContentOffset: {x: 0, y: 0}
-    m_FixedWidth: 120
+    m_FixedWidth: 100
     m_FixedHeight: 30
     m_StretchWidth: 1
     m_StretchHeight: 0
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 238f606338493614ca0a82f3f8189069, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c834bc92ef30dd4b9aea9d51609ee77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &100100000
