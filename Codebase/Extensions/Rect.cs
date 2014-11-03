@@ -37,8 +37,10 @@ public static class RectExtension{
 	public static Rect SetHeight(this Rect current,float value){
 		return new Rect(current).OverrideHeight(value);
 	}
+	public static Rect AddXY(this Rect current,float x,float y){return current.AddX(x).AddY(y);}
 	public static Rect AddX(this Rect current,float value){return current.Add(value);}
 	public static Rect AddY(this Rect current,float value){return current.Add(0,value);}
+	public static Rect AddSize(this Rect current,float width,float height){return current.AddWidth(width).AddHeight(height);}
 	public static Rect AddWidth(this Rect current,float value){return current.Add(0,0,value);}
 	public static Rect AddHeight(this Rect current,float value){return current.Add(0,0,0,value);}
 	public static Rect Add(this Rect current,params float[] other){
@@ -50,21 +52,6 @@ public static class RectExtension{
 		result.y += other.y;
 		result.width += other.width;
 		result.height += other.height;
-		return result;
-	}
-	public static Rect SubtractX(this Rect current,float value){return current.Subtract(value);}
-	public static Rect SubtractY(this Rect current,float value){return current.Subtract(0,value);}
-	public static Rect SubtractWidth(this Rect current,float value){return current.Subtract(0,0,value);}
-	public static Rect SubtractHeight(this Rect current,float value){return current.Subtract(0,0,0,value);}
-	public static Rect Subtract(this Rect current,params float[] other){
-		return current.Subtract(other.ToRect());
-	}
-	public static Rect Subtract(this Rect current,Rect other){
-		Rect result = new Rect(current);
-		result.x -= other.x;
-		result.y -= other.y;
-		result.width -= other.width;
-		result.height -= other.height;
 		return result;
 	}
 }

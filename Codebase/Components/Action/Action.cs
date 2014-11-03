@@ -58,7 +58,7 @@ namespace Zios{
 		public ActionRate rate = ActionRate.Default;
 		[NonSerialized] public Action action;
 		[HideInInspector] public int priority = -1;
-		[HideInInspector] public bool requiredState;
+		private bool requirableOverride;
 		public override string GetInterfaceType(){return "ActionPart";}
 		public void Reset(){this.OnValidate();}
 		public virtual void OnValidate(){
@@ -84,6 +84,7 @@ namespace Zios{
 		[ContextMenu("Toggle Column Visibility")]
 		public void ToggleRequire(){
 			this.requirable = !this.requirable;
+			this.requirableOverride = !this.requirableOverride;
 			this.gameObject.Call("Refresh");
 		}
 		public virtual void Step(){
@@ -139,9 +140,8 @@ namespace Zios{
 			}
 		}
 		public void DefaultRequirable(bool state){
-			if(!this.requiredState){
+			if(!this.requirableOverride){
 				this.requirable = state;
-				this.requiredState = true;
 			}
 		}
 		public void SetDirty(bool state){ActionPart.dirty[this] = state;}

@@ -4,8 +4,8 @@ using UnityEngine;
 public class ActionEnd: ActionPart{
 	public override void OnValidate(){
 		base.OnValidate();
-		this.DefaultRate("Update");
 		this.DefaultRequirable(false);
+		this.DefaultRate("Update");
 		this.DefaultPriority(20);
 		this.DefaultAlias("@End");
 	}
