@@ -54,4 +54,9 @@ public static class RectExtension{
 		result.height += other.height;
 		return result;
 	}
+	public static bool Clicked(this Rect current,int button=0){
+		Vector2 mouse = Event.current.mousePosition;
+		bool eventMatch = Event.current.type == EventType.MouseDown;
+		return current.Contains(mouse) && eventMatch && Event.current.button == button;
+	}
 }
