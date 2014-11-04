@@ -3,7 +3,7 @@ using System;
 using UnityEngine;
 [Serializable]
 public class LerpVector3 : LerpTransition{
-	public bool[] lerpAxes = new bool[3]{true,true,true};
+	public ListBool lerpAxes = new ListBool{true,true,true};
 	private Vector3 start;
 	private Vector3 lastEnd;
 	public virtual Vector3 Step(Vector3 current){

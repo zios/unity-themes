@@ -3,9 +3,9 @@ using UnityEngine;
 [AddComponentMenu("Zios/Component/Action/Part/Clamp (Transform)")]
 public class ClampTransform : ActionPart{
 	public Target target = new Target();
-	public ClerpVector3 position = new ClerpVector3();
-	public ClerpVector3 rotation = new ClerpVector3();
-	public ClerpVector3 scale = new ClerpVector3();
+	public LerpVector3 position = new LerpVector3();
+	public LerpVector3 rotation = new LerpVector3();
+	public LerpVector3 scale = new LerpVector3();
 	public override void OnValidate(){
 		base.OnValidate();
 		this.DefaultRate("LateUpdate");

@@ -4,7 +4,7 @@ using UnityEngine;
 public class RotateTowardsAngle : ActionPart{
 	public AttributeVector3 eulerAngle;
 	public Target target = new Target();
-	public ClerpVector3 rotation = new ClerpVector3();
+	public LerpVector3 rotation = new LerpVector3();
 	public override void OnValidate(){
 		base.OnValidate();
 		this.DefaultRate("FixedUpdate");

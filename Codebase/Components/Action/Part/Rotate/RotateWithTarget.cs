@@ -4,7 +4,7 @@ using UnityEngine;
 public class RotateWithTarget : ActionPart{
 	public Target source = new Target();
 	public Target target = new Target();
-	public ClerpVector3 angles = new ClerpVector3();
+	public LerpVector3 angles = new LerpVector3();
 	public override void OnValidate(){
 		base.OnValidate();
 		this.DefaultRate("LateUpdate");

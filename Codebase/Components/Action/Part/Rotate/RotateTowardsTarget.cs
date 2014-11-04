@@ -6,7 +6,7 @@ public class RotateTowardsTarget : ActionPart{
 	public Target target = new Target();
 	public AttributeVector3 offset;
 	public OffsetType offsetType;
-	public ClerpVector3 angles = new ClerpVector3();
+	public LerpVector3 angles = new LerpVector3();
 	public override void OnValidate(){
 		base.OnValidate();
 		this.DefaultRate("LateUpdate");

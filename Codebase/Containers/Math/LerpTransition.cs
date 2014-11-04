@@ -3,8 +3,8 @@ using Zios;
 using System;
 using UnityEngine;
 public class LerpTransition{
-	public AttributeBool isAngle = true;
-	public AttributeBool resetOnChange;
+	[HideInInspector] public AttributeBool isAngle = true;
+	[HideInInspector] public AttributeBool resetOnChange;
 	public AttributeFloat speed;
 	public Transition transition = new Transition();
 	protected bool fixedTime;

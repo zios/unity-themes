@@ -17,6 +17,8 @@ public class Transition{
 	public virtual void Setup(string name="",params MonoBehaviour[] scripts){
 		this.duration.Setup(name+"Duration",scripts);
 		this.delayStart.Setup(name+"DelayStart",scripts);
+		this.duration.locked = true;
+		this.delayStart.locked = true;
 	}
 	public void End(){
 		this.endTime = 0;

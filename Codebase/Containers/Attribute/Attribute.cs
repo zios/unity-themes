@@ -11,6 +11,7 @@ namespace Zios{
 		public string path;
 		public MonoBehaviour script;
 		public AttributeMode mode = AttributeMode.Normal;
+		public bool locked;
 		public virtual void Add(){}
 		public virtual void Remove(AttributeData data){}
 	}
