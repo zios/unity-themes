@@ -11,9 +11,9 @@ namespace Zios{
 		[NonSerialized] public GameObject owner;
 		public void OnValidate(){
 			StateController stateController = this.gameObject.GetComponentInParents<StateController>();
-			this.inUse.Setup(alias+" Active",this,stateController);
-			this.usable.Setup(alias+" Usable",this,stateController);
 			this.owner = stateController == null ? this.gameObject : stateController.gameObject;
+			this.inUse.Setup("Active",this,stateController);
+			this.usable.Setup("Usable",this,stateController);
 			this.gameObject.Call("Refresh");
 		}
 		public virtual void Awake(){

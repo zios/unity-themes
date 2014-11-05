@@ -6,8 +6,8 @@ public class ActionStateFreeze : ActionPart{
 	public AttributeBool freezeOnEnd;
 	public override void OnValidate(){
 		base.OnValidate();
-		this.freezeOnUse.Setup("FreezeOnUse",this);
-		this.freezeOnEnd.Setup("FreezeOnEnd",this);
+		this.freezeOnUse.Setup("Freeze On Use",this);
+		this.freezeOnEnd.Setup("Freeze On End",this);
 	}
 	public override void Use(){
 		if(this.action.inUse && this.freezeOnEnd){return;}

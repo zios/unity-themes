@@ -19,10 +19,10 @@ public class LerpTransition{
 				this.fixedTime = part.rate == ActionRate.FixedUpdate;
 			}
 		}
-		this.isAngle.Setup(name+"IsAngle",scripts);
-		this.resetOnChange.Setup(name+"ResetOnChange",scripts);
-		this.speed.Setup(name+"TransitionSpeed",scripts);
-		this.transition.Setup(name+"Transition",scripts);
+		this.isAngle.Setup(name+" Is Angle",scripts);
+		this.resetOnChange.Setup(name+" Reset On Change",scripts);
+		this.speed.Setup(name+" Transition Speed",scripts);
+		this.transition.Setup(name+" Transition",scripts);
 	}
 	public virtual Vector3 FixedStep(Vector3 current,Vector3 end,float size,bool[] useAxes=null){
 		if(useAxes == null){useAxes = new bool[3]{true,true,true};}

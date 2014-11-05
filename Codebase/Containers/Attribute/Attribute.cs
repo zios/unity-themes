@@ -51,13 +51,17 @@ namespace Zios{
 		public void Setup(string name,params MonoBehaviour[] scripts){
 			var lookup = this.GetLookupTable();
 			this.script = scripts[0];
-			string firstName = "";
+			string path = "";
+			name = name.Trim();
 			foreach(MonoBehaviour script in scripts){
 				if(script == null){continue;}
+				if(path.IsEmpty() && script is StateInterface){
+					StateInterface item = (StateInterface)script;
+					path = item.alias + "/";
+				}
 				GameObject target = script.gameObject;
-				string prefix = script is StateInterface ? ((StateInterface)script).alias : script.name;
-				string current = prefix + "/" + name;
-				if(firstName.IsEmpty()){firstName = current;}
+				string prefix = script is StateInterface ? "" : "*/";
+				string current = prefix + path + name;
 				if(!lookup.ContainsKey(target)){
 					lookup[target] = new Dictionary<string,Type>();
 				}
@@ -65,7 +69,7 @@ namespace Zios{
 				lookup[target].RemoveValue(self);
 				lookup[target][current] = self;
 			}
-			this.path = firstName;
+			this.path = path + name;
 			foreach(var data in this.data){
 				data.target.Setup(name+"Target",scripts);
 			}

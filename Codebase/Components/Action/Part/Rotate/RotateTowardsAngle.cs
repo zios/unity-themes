@@ -9,7 +9,7 @@ public class RotateTowardsAngle : ActionPart{
 		base.OnValidate();
 		this.DefaultRate("FixedUpdate");
 		this.target.Setup("Target",this);
-		this.rotation.Setup("RotateTowards",this);
+		this.rotation.Setup("Rotate Towards",this);
 		this.rotation.isAngle = true;
 	}
 	public override void Use(){

@@ -12,7 +12,7 @@ public class RotateTowardsDirection : ActionPart{
 		this.DefaultRate("FixedUpdate");
 		this.source.Setup("Source",this);
 		this.rotation.Setup("Rotation",this);
-		this.direction.Setup("RotateDirection",this);
+		this.direction.Setup("Rotate Direction",this);
 	}
 	public override void Use(){
 		if(this.lastDirection != this.direction){

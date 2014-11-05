@@ -16,8 +16,8 @@ public class InputHeld : ActionPart{
 		base.OnValidate();
 		this.DefaultPriority(5);
 		this.inputName.Setup("InputName",this);
-		this.forcePositiveIntensity.Setup("ForcePositiveIntensity",this);
-		this.heldDuringIntensity.Setup("HeldDuringIntensity",this);
+		this.forcePositiveIntensity.Setup("Force Positive Intensity",this);
+		this.heldDuringIntensity.Setup("Held During Intensity",this);
 		this.exclusive.Setup("Exclusive",this);
 		this.intensity.Setup("Intensity",this);
 	}

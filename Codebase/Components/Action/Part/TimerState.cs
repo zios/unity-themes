@@ -19,8 +19,8 @@ public class TimerState : ActionPart{
 			this.rate = ActionRate.Default;
 		}
 		this.seconds.Setup("Seconds",this);
-		this.isActive.Setup("IsActive",this);
-		this.isComplete.Setup("IsComplete",this);
+		this.isActive.Setup("Is Active",this);
+		this.isComplete.Setup("Is Complete",this);
 	}
 	public void Start(){
 		Events.Add("ActionEnd",this.OnActionEnd);

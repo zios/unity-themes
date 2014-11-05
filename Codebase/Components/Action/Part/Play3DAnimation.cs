@@ -9,7 +9,7 @@ public class Play3DAnimation : ActionPart{
 	public Target target;
 	public override void OnValidate(){
 		base.OnValidate();
-		this.animationName.Setup("AnimationName",this);
+		this.animationName.Setup("Animation Name",this);
 		this.speed.Setup("Speed",this);
 		this.weight.Setup("Weight",this);
 		this.target.Setup("Target",this);

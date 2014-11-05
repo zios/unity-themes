@@ -11,8 +11,8 @@ public class DistanceRange : ActionPart{
 		this.DefaultRate("LateUpdate");
 		this.source.Setup("Source",this);
 		this.target.Setup("Target",this);
-		this.minimumDistance.Setup("MinimumDistance",this);
-		this.maximumDistance.Setup("MaximumDistance",this);
+		this.minimumDistance.Setup("Minimum Distance",this);
+		this.maximumDistance.Setup("Maximum Distance",this);
 	}
 	public override void Use(){
 		Transform source = this.source.Get().transform;
