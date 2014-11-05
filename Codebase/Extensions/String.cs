@@ -4,9 +4,11 @@ using System.Text;
 using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 public static class StringExtension{
-	public static string Trim(this string current,string value){
-		current = current.TrimLeft(value);
-		current = current.TrimRight(value);
+	public static string Trim(this string current,params string[] values){
+		foreach(string value in values){
+			current = current.TrimLeft(value);
+			current = current.TrimRight(value);	
+		}
 		return current;
 	}
 	public static string ToMD5(this string current){
@@ -231,5 +233,9 @@ public static class StringExtension{
 	}
 	public static string[] Split(this string current,string value){
 		return current.Split(value[0]);
+	}
+	public static string SetDefault(this string current,string value){
+		if(current.IsEmpty()){return value;}
+		return current;
 	}
 }

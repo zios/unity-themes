@@ -12,6 +12,7 @@ namespace Zios{
 		public void OnValidate(){
 			StateController stateController = this.gameObject.GetComponentInParents<StateController>();
 			this.owner = stateController == null ? this.gameObject : stateController.gameObject;
+			this.alias = this.alias.SetDefault(this.gameObject.name);
 			this.inUse.Setup("Active",this,stateController);
 			this.usable.Setup("Usable",this,stateController);
 			this.gameObject.Call("Refresh");

@@ -14,6 +14,7 @@ namespace Zios{
 		public bool locked;
 		public virtual void Add(){}
 		public virtual void Remove(AttributeData data){}
+		public virtual void Setup(string name,params MonoBehaviour[] scripts){}
 	}
 	[Serializable]
 	public class Attribute<BaseType,Type,DataType,Operator,Special> : Attribute
@@ -48,20 +49,20 @@ namespace Zios{
 			}
 			this.data = newData.ToArray();
 		}
-		public void Setup(string name,params MonoBehaviour[] scripts){
+		public override void Setup(string name,params MonoBehaviour[] scripts){
 			var lookup = this.GetLookupTable();
 			this.script = scripts[0];
 			string path = "";
 			name = name.Trim();
 			foreach(MonoBehaviour script in scripts){
 				if(script == null){continue;}
-				if(path.IsEmpty() && script is StateInterface){
-					StateInterface item = (StateInterface)script;
-					path = item.alias + "/";
+				int index = scripts.IndexOf(script);
+				if(path.IsEmpty() && script.HasVariable("alias")){
+					path = script.GetValue<string>("alias") + "/";
 				}
 				GameObject target = script.gameObject;
-				string prefix = script is StateInterface ? "" : "*/";
-				string current = prefix + path + name;
+				string prefix = index == 0 ? "" : "*/";
+				string current = (prefix + path + name).Trim("/"," ");
 				if(!lookup.ContainsKey(target)){
 					lookup[target] = new Dictionary<string,Type>();
 				}
@@ -69,7 +70,7 @@ namespace Zios{
 				lookup[target].RemoveValue(self);
 				lookup[target][current] = self;
 			}
-			this.path = path + name;
+			this.path = (path + name).Trim("/"," ");
 			foreach(var data in this.data){
 				data.target.Setup(name+"Target",scripts);
 			}

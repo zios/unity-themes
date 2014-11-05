@@ -33,7 +33,7 @@ public static class ObjectExtension{
 		Type currentType = type == null ? current.GetType() : type;
 		return currentType.GetMethod(name,flags) != null;
 	}
-	public static bool HasAttribute(this object current,string name,Type type = null){
+	public static bool HasVariable(this object current,string name,Type type = null){
 		Type currentType = type == null ? current.GetType() : type;
 		bool hasProperty = currentType.GetProperty(name) != null;
 		bool hasField = currentType.GetField(name) != null;
@@ -43,10 +43,10 @@ public static class ObjectExtension{
 		Type currentType = type == null ? current.GetType() : type;
 		return currentType.GetMethod(name,flags);
 	}
-	public static object GetAttribute(this object current,string name,int index=-1){
-		return current.GetAttribute<object>(name,index);
+	public static object GetValue(this object current,string name,int index=-1){
+		return current.GetValue<object>(name,index);
 	}
-	public static T GetAttribute<T>(this object current,string name,int index=-1){
+	public static T GetValue<T>(this object current,string name,int index=-1){
 		Type type = current.GetType();
 		PropertyInfo property = type.GetProperty(name);
 		FieldInfo field = type.GetField(name);
@@ -66,51 +66,29 @@ public static class ObjectExtension{
 		}
 		return default(T);
 	}
-	/*static public T GetValue<T>(this object current,string name){
-		return (T)current.GetValue(name);
-	}
-	static public object GetValue(this object current,string name){
-		if(current == null){return null;}
-		var type = current.GetType();
-		BindingFlags flags = BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance;
-		var field = type.GetField(name,flags);
-		if(field == null){
-			flags = BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance | BindingFlags.IgnoreCase;
-			var property = type.GetProperty(name,flags);
-			if(property == null){return null;}
-			return property.GetValue(current,null);
-		}
-		return field.GetValue(current);
-	}
-	static public object GetValue(this object current,string name,int index){
-		var enumerable = GetValue(current,name) as IEnumerable;
-		var enumerator = enumerable.GetEnumerator();
-		while(index-- >= 0){enumerator.MoveNext();}
-		return enumerator.Current;
-	}*/
-	public static List<string> ListAttributes(this object current,List<Type> limitTypes = null){
-		List<string> attributes = new List<string>();
+	public static List<string> ListVariables(this object current,List<Type> limitTypes = null){
+		List<string> variables = new List<string>();
 		foreach(FieldInfo field in current.GetType().GetFields()){
 			if(limitTypes != null){
 				if(limitTypes.Contains(field.FieldType)){
-					attributes.Add(field.Name);
+					variables.Add(field.Name);
 				}
 			}
 			else{
-				attributes.Add(field.Name);
+				variables.Add(field.Name);
 			}
 		}
 		foreach(PropertyInfo property in current.GetType().GetProperties()){
 			if(limitTypes != null){
 				if(limitTypes.Contains(property.PropertyType)){
-					attributes.Add(property.Name);
+					variables.Add(property.Name);
 				}
 			}
 			else{
-				attributes.Add(property.Name);
+				variables.Add(property.Name);
 			}
 		}
-		return attributes;
+		return variables;
 	}
 	public static List<string> ListMethods(this object current,List<Type> argumentTypes = null,BindingFlags flags = BindingFlags.Instance|BindingFlags.Public,Type type = null){
 		List<string> methods = new List<string>();

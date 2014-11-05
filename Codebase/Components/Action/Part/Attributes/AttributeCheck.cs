@@ -6,7 +6,7 @@ public class AttributeCheck : ActionPart{
 	public AttributeBool value = false;
 	public override void OnValidate(){
 		base.OnValidate();
-		this.value.Setup("Value",this);
+		this.value.Setup("",this);
 		this.value.usage = AttributeUsage.Shaped;
 	}
 	public override void Use(){

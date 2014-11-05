@@ -293,8 +293,8 @@ namespace Zios.Editor{
 				this.style = new GUIStyle(this.style);
 				this.style.normal = this.style.active;	
 			} 
-			if(this.target is string || this.target.HasAttribute("name")){
-				string name = this.target is string ? (string)this.target : this.target.GetAttribute<string>("name");
+			if(this.target is string || this.target.HasVariable("name")){
+				string name = this.target is string ? (string)this.target : this.target.GetValue<string>("name");
 				this.empty = name == null || name.Equals("");
 				GUILayout.Label(name);
 				this.CheckClick();

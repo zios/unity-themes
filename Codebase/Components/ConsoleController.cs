@@ -41,10 +41,10 @@ public class ConsoleController : MonoBehaviour{
 			this.validName = false;
 			if(this.name != null && this.name.Trim() != ""){
 				if(this.scope is Type){
-					this.validName = this.scope.HasAttribute(this.name.Trim(),(Type)this.scope);
+					this.validName = this.scope.HasVariable(this.name.Trim(),(Type)this.scope);
 				}
 				else{
-					this.validName = this.scope.HasAttribute(this.name.Trim());
+					this.validName = this.scope.HasVariable(this.name.Trim());
 				}
 			}
 		}

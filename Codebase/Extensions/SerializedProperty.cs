@@ -25,10 +25,10 @@ public static class SerializedPropertyExtension{
 			if(element.Contains("[")){
 				var elementName = element.Substring(0,element.IndexOf("["));
 				var index = Convert.ToInt32(element.Substring(element.IndexOf("[")).Replace("[","").Replace("]",""));
-				parent = parent.GetAttribute(elementName,index);
+				parent = parent.GetValue(elementName,index);
 			}
 			else{
-				parent = parent.GetAttribute(element);
+				parent = parent.GetValue(element);
 			}
 		}
 		return (T)parent;
