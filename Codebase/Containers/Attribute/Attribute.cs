@@ -21,6 +21,14 @@ namespace Zios{
 	where DataType : AttributeData<BaseType,Type,Operator,Special>,new(){
 		public static Dictionary<GameObject,Dictionary<string,Type>> lookup = new Dictionary<GameObject,Dictionary<string,Type>>();
 		public DataType[] data = new DataType[0];
+		public AttributeUsage usage{
+			get{return this.data[0].usage;}
+			set{
+				foreach(DataType data in this.data){
+					data.usage = value;
+				}
+			}
+		}
 		public virtual BaseType HandleSpecial(Special special,BaseType value){return default(BaseType);}
 		public virtual BaseType HandleOperator(Operator sign){return default(BaseType);}
 		public override void Add(){

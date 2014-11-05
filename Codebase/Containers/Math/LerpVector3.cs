@@ -6,6 +6,16 @@ public class LerpVector3 : LerpTransition{
 	public ListBool lerpAxes = new ListBool{true,true,true};
 	private Vector3 start;
 	private Vector3 lastEnd;
+	private string name;
+	private MonoBehaviour script;
+	public override void Setup(string name,params MonoBehaviour[] scripts){
+		if(scripts[0] is ActionPart){
+			ActionPart part = (ActionPart)scripts[0];
+			this.name = part.alias + name;
+			this.script = part;
+		}
+		base.Setup(name,scripts);
+	}
 	public virtual Vector3 Step(Vector3 current){
 		return this.Step(current,current);
 	}
@@ -20,6 +30,14 @@ public class LerpVector3 : LerpTransition{
 			float speed = this.speed * percent;
 			speed *= this.fixedTime ? Time.fixedDeltaTime : Time.deltaTime;
 			Vector3 step = Vector3.MoveTowards(this.start,end,speed);
+			if(this.script != null){
+				if(step == end && current != end){
+					this.script.gameObject.Call(this.name+"TransitionEnd");
+				}
+				if(step != end && current == end){
+					this.script.gameObject.Call(this.name+"TransitionStart");
+				}
+			}
 			//Debug.Log("Start : " + start + " End : " + end + " Change : " + step);
 			if(this.lerpAxes[0]){current.x = step.x;}
 			if(this.lerpAxes[1]){current.y = step.y;}
