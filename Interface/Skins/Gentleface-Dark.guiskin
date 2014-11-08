@@ -1526,7 +1526,7 @@ MonoBehaviour:
     m_Padding:
       m_Left: 2
       m_Right: 0
-      m_Top: 1
+      m_Top: 2
       m_Bottom: 0
     m_Overflow:
       m_Left: 0
