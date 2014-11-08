@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Zios;
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -15,11 +16,11 @@ public class AnimationData{
 }
 [RequireComponent(typeof(Animation))][AddComponentMenu("Zios/Component/Animation/Animation Controller")]
 public class AnimationController : MonoBehaviour{
-	public bool highestPriorityOnly = true;
-	public int defaultPriority = 1;
-	public float defaultTransitionIn = 0.15f;
-	public float defaultTransitionOut = 0.15f;
-	public string defaultAnimationName;
+	public AttributeBool highestPriorityOnly = true;
+	public AttributeInt defaultPriority = 1;
+	public AttributeFloat defaultTransitionIn = 0.15f;
+	public AttributeFloat defaultTransitionOut = 0.15f;
+	public AttributeString defaultAnimationName;
 	[ReadOnly] public AnimationData defaultAnimation;
 	[ReadOnly] public List<AnimationData> currentAnimations;
 	public List<AnimationData> animations = new List<AnimationData>();
@@ -30,6 +31,11 @@ public class AnimationController : MonoBehaviour{
 	//=====================
 	public void OnValidate(){
 		//if(this.animation == null){return;}
+		this.highestPriorityOnly.Setup("Highest Priority Only",this);
+		this.defaultPriority.Setup("Default Priority Only",this);
+		this.defaultTransitionIn.Setup("Default Transition In",this);
+		this.defaultTransitionOut.Setup("Default Transition Out",this);
+		this.defaultAnimationName.Setup("Default Animation Name",this);
 		foreach(AnimationState state in this.animation){
 			AnimationData data = this.animations.Find(x=>x.name==state.name);
 			if(data == null){
@@ -56,12 +62,12 @@ public class AnimationController : MonoBehaviour{
 		else{
 			Debug.LogWarning("AnimationController : Default animation (" + this.defaultAnimationName + ") not found.");
 		}
-		Events.Add("SetAnimation",this.OnSet);
-		Events.Add("SetAnimationDefault",this.OnSetDefault);
-		Events.Add("SetAnimationSpeed",this.OnSetSpeed);
-		Events.Add("SetAnimationWeight",this.OnSetWeight);
-		Events.Add("PlayAnimation",this.OnPlay);
-		Events.Add("StopAnimation",this.OnStop);
+		Events.Add("Set Animation",this.OnSet);
+		Events.Add("Set Animation Default",this.OnSetDefault);
+		Events.Add("Set Animation Speed",this.OnSetSpeed);
+		Events.Add("Set Animation Weight",this.OnSetWeight);
+		Events.Add("Play Animation",this.OnPlay);
+		Events.Add("Stop Animation",this.OnStop);
 	}
 	private void PlayDefault(){
 		if(this.defaultAnimation == null){return;}

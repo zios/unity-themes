@@ -7,8 +7,8 @@ public class RotateTowardsTarget : ActionPart{
 	public AttributeVector3 offset;
 	public OffsetType offsetType;
 	public LerpVector3 angles = new LerpVector3();
-	public override void OnValidate(){
-		base.OnValidate();
+	public override void Start(){
+		base.Start();
 		this.DefaultRate("LateUpdate");
 		this.source.Setup("Source",this);
 		this.target.Setup("Target",this);

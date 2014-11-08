@@ -11,9 +11,9 @@ public class Force : ActionPart{
 	public AttributeFloat minimumImpactVelocity = 1;
 	public AttributeBool disabled = false;
 	[NonSerialized] public ColliderController controller;
-	public override void OnValidate(){
+	public override void Start(){
+		base.Start();
 		this.DefaultRate("FixedUpdate");
-		base.OnValidate();
 		this.velocity.Setup("Velocity",this);
 		this.terminalVelocity.Setup("Terminal Velocity",this);
 		this.resistence.Setup("Resistence",this);

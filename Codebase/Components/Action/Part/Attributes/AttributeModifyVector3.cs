@@ -5,8 +5,8 @@ using UnityEngine;
 public class AttributeModifyVector3 : ActionPart{
 	public AttributeVector3 target = Vector3.zero;
 	public AttributeVector3 value = Vector3.zero;
-	public override void OnValidate(){
-		base.OnValidate();
+	public override void Start(){
+		base.Start();
 		this.target.Setup("Target",this);
 		this.target.mode = AttributeMode.Linked;
 		this.value.Setup("Value",this);

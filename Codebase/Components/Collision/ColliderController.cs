@@ -1,4 +1,5 @@
 using UnityEngine;
+using Zios;
 using System.Collections;
 using System.Collections.Generic;
 using System;
@@ -36,11 +37,11 @@ public class ColliderController : MonoBehaviour{
 	[NonSerialized] public Vector3 lastDirection;
 	public Dictionary<string,bool> blocked = new Dictionary<string,bool>();
 	public Dictionary<string,float> lastBlockedTime = new Dictionary<string,float>();
-	public float fixedTimestep = 0.002f;
-	public float maxStepHeight = 0;
-	public float maxSlopeAngle = 70;
-	public float minSlideAngle = 50;
-	public float hoverDistance = 0.02f;
+	public AttributeFloat fixedTimestep = 0.002f;
+	public AttributeFloat maxStepHeight = 0;
+	public AttributeFloat maxSlopeAngle = 70;
+	public AttributeFloat minSlideAngle = 50;
+	public AttributeFloat hoverDistance = 0.02f;
 	//--------------------------------
 	// Unity-Specific
 	//--------------------------------
@@ -65,6 +66,11 @@ public class ColliderController : MonoBehaviour{
 		}
 	}
 	public void OnValidate(){
+		this.fixedTimestep.Setup("Fixed Timestep",this);
+		this.maxStepHeight.Setup("Max Step Height",this);
+		this.maxSlopeAngle.Setup("Max Slope Angle",this);
+		this.minSlideAngle.Setup("Min Slide Angle",this);
+		this.hoverDistance.Setup("Hover Distance",this);
 		if(Application.isPlaying){
 			if(this.rigidbody == null){
 				this.gameObject.AddComponent("Rigidbody");

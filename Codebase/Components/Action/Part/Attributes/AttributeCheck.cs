@@ -4,8 +4,8 @@ using UnityEngine;
 [AddComponentMenu("Zios/Component/Action/Part/Attribute Check")]
 public class AttributeCheck : ActionPart{
 	public AttributeBool value = false;
-	public override void OnValidate(){
-		base.OnValidate();
+	public override void Start(){
+		base.Start();
 		this.value.Setup("",this);
 		this.value.usage = AttributeUsage.Shaped;
 	}

@@ -4,8 +4,8 @@ using System;
 using UnityEngine;
 public class LerpTransition{
 	[HideInInspector] public AttributeBool isAngle = true;
-	[HideInInspector] public AttributeBool resetOnChange;
-	public AttributeFloat speed;
+	[HideInInspector] public AttributeBool resetOnChange = false;
+	public AttributeFloat speed = 0;
 	public Transition transition = new Transition();
 	protected bool fixedTime;
 	protected bool active;

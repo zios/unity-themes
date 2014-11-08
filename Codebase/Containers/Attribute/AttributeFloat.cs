@@ -4,6 +4,7 @@ using UnityEngine;
 namespace Zios{
 	public enum OperatorNumeral{Addition,Subtraction,Multiplication,Division,Distance,Average,Max,Min}
 	public enum SpecialNumeral{Copy,Flip,Abs,Sign,Floor,Ceil,Cos,Sin,Tan,ATan,Sqrt};
+	public enum AccessorVector3{GetX,GetY,GetZ,Magnitude,SqrMagnitude};
 	[Serializable]
 	public class AttributeFloat : Attribute<float,AttributeFloat,AttributeFloatData,OperatorNumeral,SpecialNumeral>{
 		public AttributeFloat() : this(0){}
@@ -46,5 +47,8 @@ namespace Zios{
 		}
 	}
 	[Serializable]
-	public class AttributeFloatData : AttributeData<float,AttributeFloat,OperatorNumeral,SpecialNumeral>{}
+	public class AttributeFloatData : AttributeData<float,AttributeFloat,OperatorNumeral,SpecialNumeral>{
+		public AttributeVector3 referenceVector;
+		public int referenceIndex;
+	}
 }

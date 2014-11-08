@@ -2,8 +2,8 @@ using Zios;
 using UnityEngine;
 [RequireComponent(typeof(Zios.Action))][AddComponentMenu("Zios/Component/Action/Part/Action End")]
 public class ActionEnd: ActionPart{
-	public override void OnValidate(){
-		base.OnValidate();
+	public override void Start(){
+		base.Start();
 		this.DefaultRequirable(false);
 		this.DefaultRate("Update");
 		this.DefaultPriority(20);

@@ -11,8 +11,8 @@ public class TimerState : ActionPart{
 	private float endTime;
 	private AttributeBool isActive = false;
 	private AttributeBool isComplete = false;
-	public override void OnValidate(){
-		base.OnValidate();
+	public override void Start(){
+		base.Start();
 		this.DefaultPriority(5);
 		if(this.rate == ActionRate.ActionStart || this.rate == ActionRate.ActionEnd){
 			Debug.LogWarning("TimerState ["+this.alias+"] cannot use single-use ActionStart/ActionEnd triggers.");
@@ -21,9 +21,7 @@ public class TimerState : ActionPart{
 		this.seconds.Setup("Seconds",this);
 		this.isActive.Setup("Is Active",this);
 		this.isComplete.Setup("Is Complete",this);
-	}
-	public void Start(){
-		Events.Add("ActionEnd",this.OnActionEnd);
+		Events.Add("Action End",this.OnActionEnd);
 	}
 	public override void Use(){
 		if(this.isComplete){return;}

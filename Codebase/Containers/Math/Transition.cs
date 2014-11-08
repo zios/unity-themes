@@ -4,7 +4,7 @@ using System;
 [Serializable]
 public class Transition{
 	public AttributeFloat duration = 0.5f;
-	public AttributeFloat delayStart;
+	public AttributeFloat delayStart = 0;
 	public AnimationCurve curve = AnimationCurve.Linear(0,0,1,1);
 	[NonSerialized] public bool complete = true;
 	[NonSerialized] public float endTime;

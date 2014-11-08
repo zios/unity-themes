@@ -6,8 +6,8 @@ public class DistanceRange : ActionPart{
 	public Target target = new Target();
 	public AttributeFloat minimumDistance = Mathf.Infinity;
 	public AttributeFloat maximumDistance = 0;
-	public override void OnValidate(){
-		base.OnValidate();
+	public override void Start(){
+		base.Start();
 		this.DefaultRate("LateUpdate");
 		this.source.Setup("Source",this);
 		this.target.Setup("Target",this);

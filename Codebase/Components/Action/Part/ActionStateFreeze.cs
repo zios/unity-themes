@@ -4,8 +4,8 @@ using UnityEngine;
 public class ActionStateFreeze : ActionPart{
 	public AttributeBool freezeOnUse;
 	public AttributeBool freezeOnEnd;
-	public override void OnValidate(){
-		base.OnValidate();
+	public override void Start(){
+		base.Start();
 		this.freezeOnUse.Setup("Freeze On Use",this);
 		this.freezeOnEnd.Setup("Freeze On End",this);
 	}

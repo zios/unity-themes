@@ -11,8 +11,10 @@ public class LerpVector3 : LerpTransition{
 	public override void Setup(string name,params MonoBehaviour[] scripts){
 		if(scripts[0] is ActionPart){
 			ActionPart part = (ActionPart)scripts[0];
-			this.name = part.alias + name;
+			this.name = part.alias + "/"+ name;
 			this.script = part;
+			this.script.gameObject.Register(this.name+" Transition End");
+			this.script.gameObject.Register(this.name+" Transition Start");
 		}
 		base.Setup(name,scripts);
 	}
@@ -32,10 +34,10 @@ public class LerpVector3 : LerpTransition{
 			Vector3 step = Vector3.MoveTowards(this.start,end,speed);
 			if(this.script != null){
 				if(step == end && current != end){
-					this.script.gameObject.Call(this.name+"TransitionEnd");
+					this.script.gameObject.Call(this.name+" Transition End");
 				}
 				if(step != end && current == end){
-					this.script.gameObject.Call(this.name+"TransitionStart");
+					this.script.gameObject.Call(this.name+" Transition Start");
 				}
 			}
 			//Debug.Log("Start : " + start + " End : " + end + " Change : " + step);

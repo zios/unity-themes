@@ -10,8 +10,8 @@ public class BlockedState : ActionPart{
 	public Direction direction;
 	public AttributeFloat duration;
 	public Target target = new Target();
-	public override void OnValidate(){
-		base.OnValidate();
+	public override void Start(){
+		base.Start();
 		this.DefaultPriority(5);
 		this.target.Setup("Target",this);
 		this.duration.Setup("Duration",this);

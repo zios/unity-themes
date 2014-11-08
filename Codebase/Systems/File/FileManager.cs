@@ -89,6 +89,9 @@ public static class FileManager{
 		file.Close();
 		stream.Close();
 	}
+	public static void DeleteFile(string path){
+		File.Delete(path);
+	}
 }
 public class FileData{
 	public string path;

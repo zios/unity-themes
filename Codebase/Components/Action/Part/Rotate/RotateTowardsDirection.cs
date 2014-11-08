@@ -7,8 +7,8 @@ public class RotateTowardsDirection : ActionPart{
 	public LerpVector3 rotation = new LerpVector3();
 	private Vector3 lastDirection;
 	private Vector3 current;
-	public override void OnValidate(){
-		base.OnValidate();
+	public override void Start(){
+		base.Start();
 		this.DefaultRate("FixedUpdate");
 		this.source.Setup("Source",this);
 		this.rotation.Setup("Rotation",this);

@@ -21,8 +21,8 @@ public class StateController : MonoBehaviour{
 	public virtual void OnValidate(){this.Awake();}
 	public virtual void OnEnable(){this.Awake();}
 	public virtual void Awake(){
-		Events.Add("UpdateStates",this.UpdateStates);
-		Events.Add("Refresh",this.Refresh);
+		Events.Add("@UpdateStates",this.UpdateStates);
+		Events.Add("@Refresh",this.Refresh);
 		this.Refresh();
 	}
 	[ContextMenu("Refresh")]
@@ -287,7 +287,7 @@ public class StateMonoBehaviour : MonoBehaviour,StateInterface{
 	[HideInInspector] public AttributeBool stateRequirable = true;
 	[HideInInspector] public AttributeBool stateReady = true;
 	[HideInInspector] public AttributeBool stateUsable = true;
-	[HideInInspector] public AttributeBool stateInUse;
+	[HideInInspector] public AttributeBool stateInUse = true;
 	[HideInInspector] public string stateID = Guid.NewGuid().ToString();
 	public string id{get{return this.stateID;}set{this.stateID = value;}}
 	public string alias{get{return this.stateAlias;}set{this.stateAlias = value;}}

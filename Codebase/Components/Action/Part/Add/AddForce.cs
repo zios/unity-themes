@@ -6,8 +6,8 @@ public class AddForce : ActionPart{
 	public ForceType type;
 	public AttributeVector3 amount;
 	public Target target;
-	public override void OnValidate(){
-		base.OnValidate();
+	public override void Start(){
+		base.Start();
 		this.target.Setup("Target",this);
 		this.amount.Setup("Amount",this);
 	}

@@ -1,9 +1,26 @@
 using UnityEngine;
+using UnityEditor;
 using System;
 using System.Collections.Generic;
-[AddComponentMenu("Zios/Singleton/Event Detector")]
+[AddComponentMenu("Zios/Singleton/Event Detector")][ExecuteInEditMode]
 public class EventDetector : MonoBehaviour{
-	public void Awake(){Events.Call("OnAwake");}
+	#if UNITY_EDITOR
+	public void EnterPlay(){
+		string path = Application.dataPath+"/../Playing.lock";
+		if(EditorApplication.isPlaying){
+			FileManager.WriteFile(path,new byte[0]);
+		}
+		else{
+			FileManager.DeleteFile(path);
+		}
+	}
+	#endif
+	public void Awake(){
+		#if UNITY_EDITOR
+		EditorApplication.playmodeStateChanged += this.EnterPlay;
+		#endif
+		Events.Call("OnAwake");
+	}
 	public void Start(){Events.Call("OnStart");}
 	public void Update(){Events.Call("OnUpdate");}
 	public void OnPlayerConnected(){Events.Call("OnPlayerConnected");}

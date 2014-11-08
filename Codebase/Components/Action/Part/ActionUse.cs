@@ -2,12 +2,10 @@ using Zios;
 using UnityEngine;
 [RequireComponent(typeof(Zios.Action))][AddComponentMenu("Zios/Component/Action/Part/Action Use")]
 public class ActionUse : ActionPart{
-	public override void OnValidate(){
-		base.OnValidate();
+	public override void Start(){
+		base.Start();
 		this.DefaultPriority(10);
 		this.DefaultAlias("@Use");
-	}
-	public void Start(){
 		Events.Add("ActionEnd",this.OnActionEnd);
 	}
 	public override void Use(){

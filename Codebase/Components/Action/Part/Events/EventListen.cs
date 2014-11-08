@@ -3,15 +3,12 @@ using System;
 using UnityEngine;
 [AddComponentMenu("Zios/Component/Action/Part/Event Listen")]
 public class EventListen : ActionPart{
-	public string eventName;
-	public Target target = new Target();
-	public override void OnValidate(){
-		base.OnValidate();
+	public EventTarget target = new EventTarget();
+	public bool setup;
+	public override void Start(){
+		base.Start();
 		this.target.Setup("Target",this);
-		this.target.DefaultSearch("[Action]");
-	}
-	public void Start(){
-		Events.AddScope(this.eventName,this.Catch,this.target.Get().gameObject);
+		this.target.SetupCatch(this.Catch);
 	}
 	public override void Use(){}
 	public void Catch(){

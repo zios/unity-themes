@@ -5,8 +5,8 @@ public class RotateTowardsAngle : ActionPart{
 	public AttributeVector3 eulerAngle;
 	public Target target = new Target();
 	public LerpVector3 rotation = new LerpVector3();
-	public override void OnValidate(){
-		base.OnValidate();
+	public override void Start(){
+		base.Start();
 		this.DefaultRate("FixedUpdate");
 		this.target.Setup("Target",this);
 		this.rotation.Setup("Rotate Towards",this);

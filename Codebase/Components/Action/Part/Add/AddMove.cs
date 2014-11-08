@@ -6,8 +6,8 @@ public class AddMove : ActionPart{
 	public MoveType type;
 	public AttributeVector3 amount;
 	public Target target = new Target();
-	public override void OnValidate(){
-		base.OnValidate();
+	public override void Start(){
+		base.Start();
 		this.DefaultRate("FixedUpdate");
 		this.target.Setup("Target",this);
 		this.amount.Setup("Amount",this);

@@ -3,48 +3,50 @@ using System;
 using System.Linq;
 using System.Reflection;
 using System.Collections.Generic;
+#if UNITY_EDITOR 
+using UnityEditor;
+public class EventWatcher : AssetPostprocessor{
+	public static void OnPostprocessAllAssets(string[] imported,string[] deleted,string[] moved, string[] path){
+		Events.Clear();
+	}
+}
+#endif
 public static class Events{
-	private static Dictionary<GameObject,Dictionary<string,List<object>>> objectEvents = new Dictionary<GameObject,Dictionary<string,List<object>>>();
-	private static Dictionary<string,List<object>> events = new Dictionary<string,List<object>>();
-	static Events(){
+	public static Dictionary<GameObject,Dictionary<string,List<object>>> objectEvents = new Dictionary<GameObject,Dictionary<string,List<object>>>();
+	public static Dictionary<string,List<object>> events = new Dictionary<string,List<object>>();
+	static Events(){Events.Clear();}
+	public static void Clear(){
 		Events.objectEvents.Clear();
 		Events.events.Clear();
 	}
-	public static void Add(string name,Method method){Events.Add(name,(object)method);}
-	public static void Add(string name,MethodObject method){Events.Add(name,(object)method);}
-	public static void Add(string name,MethodFull method){Events.Add(name,(object)method);}
-	public static void Add(string name,MethodString method){Events.Add(name,(object)method);}
-	public static void Add(string name,MethodInt method){Events.Add(name,(object)method);}
-	public static void Add(string name,MethodFloat method){Events.Add(name,(object)method);}
-	public static void Add(string name,MethodBool method){Events.Add(name,(object)method);}
-	public static void Add(string name,MethodVector2 method){Events.Add(name,(object)method);}
-	public static void Add(string name,MethodVector3 method){Events.Add(name,(object)method);}
-	public static void AddScope(string name,Method method,params GameObject[] targets){Events.AddScope(name,(object)method,targets);}
-	public static void AddScope(string name,MethodObject method,params GameObject[] targets){Events.AddScope(name,(object)method,targets);}
-	public static void AddScope(string name,MethodFull method,params GameObject[] targets){Events.AddScope(name,(object)method,targets);}
-	public static void AddScope(string name,MethodString method,params GameObject[] targets){Events.AddScope(name,(object)method,targets);}
-	public static void AddScope(string name,MethodInt method,params GameObject[] targets){Events.AddScope(name,(object)method,targets);}
-	public static void AddScope(string name,MethodFloat method,params GameObject[] targets){Events.AddScope(name,(object)method,targets);}
-	public static void AddScope(string name,MethodBool method,params GameObject[] targets){Events.AddScope(name,(object)method,targets);}
-	public static void AddScope(string name,MethodVector2 method,params GameObject[] targets){Events.AddScope(name,(object)method,targets);}
-	public static void AddScope(string name,MethodVector3 method,params GameObject[] targets){Events.AddScope(name,(object)method,targets);}
-	public static void AddScope(string name,object method,GameObject[] targets,bool addMethod=true){
-		name = name.ToLower();
-		if(addMethod){Events.Add(name,method);}
+	public static void Register(string name){Events.Add(name,()=>{});}
+	public static void Register(string name,params GameObject[] targets){
 		foreach(GameObject target in targets){
-			if(!Events.objectEvents.ContainsKey(target)){
-				Events.objectEvents[target] = new Dictionary<string,List<object>>();
-			}
-			if(!Events.objectEvents[target].ContainsKey(name)){
-				Events.objectEvents[target][name] = new List<object>();
-			}
-			if(!Events.objectEvents[target][name].Contains(method)){
-				Events.objectEvents[target][name].Add(method);
-			}
+			Events.AddScope(name,(Method)(()=>{}),target);
 		}
 	}
-	public static void Add(string name,object method){
-		name = name.ToLower();
+	public static void Add(string name,Method method,params GameObject[] targets){Events.Add(name,(object)method,targets);}
+	public static void Add(string name,MethodObject method,params GameObject[] targets){Events.Add(name,(object)method,targets);}
+	public static void Add(string name,MethodFull method,params GameObject[] targets){Events.Add(name,(object)method,targets);}
+	public static void Add(string name,MethodString method,params GameObject[] targets){Events.Add(name,(object)method,targets);}
+	public static void Add(string name,MethodInt method,params GameObject[] targets){Events.Add(name,(object)method,targets);}
+	public static void Add(string name,MethodFloat method,params GameObject[] targets){Events.Add(name,(object)method,targets);}
+	public static void Add(string name,MethodBool method,params GameObject[] targets){Events.Add(name,(object)method,targets);}
+	public static void Add(string name,MethodVector2 method,params GameObject[] targets){Events.Add(name,(object)method,targets);}
+	public static void Add(string name,MethodVector3 method,params GameObject[] targets){Events.Add(name,(object)method,targets);}
+	public static void AddScope(string name,object method,GameObject target){
+		if(!Events.objectEvents.ContainsKey(target)){
+			Events.objectEvents[target] = new Dictionary<string,List<object>>();
+		}
+		if(!Events.objectEvents[target].ContainsKey(name)){
+			Events.objectEvents[target][name] = new List<object>();
+		}
+		if(!Events.objectEvents[target][name].Contains(method)){
+			Events.objectEvents[target][name].Add(method);
+		}
+	}
+	public static void Add(string name,object method,params GameObject[] targets){
+		//name = name.ToLower();
 		object methodTarget = ((Delegate)method).Target;
 		if(!Events.events.ContainsKey(name)){
 			Events.events[name] = new List<object>();
@@ -56,9 +58,41 @@ public static class Events{
 			Type type = methodTarget.GetType();
 			if(type.IsSubclassOf((typeof(MonoBehaviour)))){
 				GameObject target = ((MonoBehaviour)methodTarget).gameObject;
-				Events.AddScope(name,method,new GameObject[]{target},false);
+				Events.AddScope(name,method,target);
+			}
+			foreach(GameObject target in targets){
+				Events.AddScope(name,method,target);
 			}
 		}
+	}
+	public static void RemoveNull(){
+		foreach(var current in Events.objectEvents.Copy()){
+			if(current.Key == null){
+				Events.objectEvents.Remove(current.Key);
+				continue;
+			}
+			foreach(var item in current.Value.Copy()){
+				foreach(object method in item.Value.Copy()){
+					if(method == null){
+						var copy = item.Value.Copy();
+						copy.Remove(method);
+						Debug.Log("Events : Removing empty method from -- " + item.Key);
+						Events.objectEvents[current.Key][item.Key] = copy;
+					}
+				}
+				if(Events.objectEvents[current.Key][item.Key].Count < 1){
+					Debug.Log("Events : Removing empty method list -- " + item.Key);
+					Events.objectEvents[current.Key].Remove(item.Key);
+				}
+			}
+		}
+	}
+	public static List<string> GetEvents(GameObject target){
+		Events.RemoveNull();
+		if(Events.objectEvents.ContainsKey(target)){
+			return Events.objectEvents[target].Keys.ToList();
+		}
+		return null;
 	}
 	public static void Handle(object callback,object[] values){
 		object value = values.Length > 0 ? values[0] : null;
@@ -91,7 +125,7 @@ public static class Events{
 		}
 	}
 	public static void Call(string name,params object[] values){
-		name = name.ToLower();
+		//name = name.ToLower();
 		if(Events.events.ContainsKey(name)){
 			foreach(object callback in Events.events[name]){
 				Events.Handle(callback,values);
@@ -100,7 +134,7 @@ public static class Events{
 		}
 	}
 	public static void Call(GameObject target,string name,object[] values){
-		name = name.ToLower();
+		//name = name.ToLower();
 		if(Events.objectEvents.ContainsKey(target)){
 			if(Events.objectEvents[target].ContainsKey(name)){
 				foreach(object callback in Events.objectEvents[target][name]){
@@ -156,6 +190,9 @@ public static class Events{
 	}
 }
 public static class GameObjectEvents{
+	public static void Register(this GameObject current,string name,params object[] values){
+		Events.Register(name,current);
+	}
 	public static void Call(this GameObject current,string name,params object[] values){
 		Events.Call(current,name,values);
 	}

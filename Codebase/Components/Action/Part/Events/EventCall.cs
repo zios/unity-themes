@@ -3,14 +3,13 @@ using System;
 using UnityEngine;
 [AddComponentMenu("Zios/Component/Action/Part/Event Call")]
 public class EventCall : ActionPart{
-	public string eventName;
-	public Target target = new Target();
-	public override void OnValidate(){
-		base.OnValidate();
+	public EventTarget target = new EventTarget();
+	public override void Start(){
+		base.Start();
 		this.target.Setup("Target",this);
 	}
 	public override void Use(){
-		this.target.Call(this.eventName);
+		this.target.Call();
 		base.Use();
 	}
 }

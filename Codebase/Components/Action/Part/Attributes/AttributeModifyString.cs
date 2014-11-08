@@ -5,8 +5,8 @@ using UnityEngine;
 public class AttributeModifyString : ActionPart{
 	public AttributeString target = "";
 	public AttributeString value = "";
-	public override void OnValidate(){
-		base.OnValidate();
+	public override void Start(){
+		base.Start();
 		this.target.Setup("Target",this);
 		this.target.mode = AttributeMode.Linked;
 		this.value.Setup("Value",this);

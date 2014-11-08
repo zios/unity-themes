@@ -12,16 +12,14 @@ public class InputHeld : ActionPart{
 	[HideInInspector] public AttributeFloat intensity = 0;
 	[HideInInspector] public bool held;
 	[NonSerialized] public bool lastHeld;
-	public override void OnValidate(){
-		base.OnValidate();
+	public override void Start(){
+		base.Start();
 		this.DefaultPriority(5);
 		this.inputName.Setup("InputName",this);
 		this.forcePositiveIntensity.Setup("Force Positive Intensity",this);
 		this.heldDuringIntensity.Setup("Held During Intensity",this);
 		this.exclusive.Setup("Exclusive",this);
 		this.intensity.Setup("Intensity",this);
-	}
-	public void Start(){
 		Events.Add("ActionStart",this.OnActionStart);
 	}
 	public override void Use(){

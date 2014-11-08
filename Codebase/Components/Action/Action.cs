@@ -1,4 +1,7 @@
 using UnityEngine;
+#if UNITY_EDITOR 
+using UnityEditor;
+#endif
 using Zios;
 using System;
 using System.Collections.Generic;
@@ -10,28 +13,29 @@ namespace Zios{
 		public bool persist;
 		[NonSerialized] public GameObject owner;
 		public void OnValidate(){
+			#if UNITY_EDITOR 
+			if(!EditorApplication.isPlaying){
+				this.Start();
+			}
+			#endif
+		}
+		public virtual void Start(){
 			StateController stateController = this.gameObject.GetComponentInParents<StateController>();
 			this.owner = stateController == null ? this.gameObject : stateController.gameObject;
 			this.alias = this.alias.SetDefault(this.gameObject.name);
 			this.inUse.Setup("Active",this,stateController);
 			this.usable.Setup("Usable",this,stateController);
-			this.gameObject.Call("Refresh");
-		}
-		public virtual void Awake(){
-			this.OnValidate();
-			string alias = this.alias.Strip(" ");
-			Events.Add("ForceEndAction",this.End);
-			Events.Add("ForceEnd"+alias,this.End);
-			Events.AddScope("ForceEnd"+alias,this.End,this.owner);
-			this.owner.Call("UpdateStates");
-			this.owner.CallChildren("UpdateParts");
+			Events.Add("Action End (Force)",this.End,this.owner);
+			this.gameObject.Call("@Refresh");
+			this.owner.Call("@Update States");
+			this.owner.CallChildren("@Update Parts");
 			this.SetDirty(true);
 		}
 		public virtual void FixedUpdate(){
 			if(Action.dirty.ContainsKey(this.gameObject) && Action.dirty[this.gameObject]){
 				this.SetDirty(false);
 				Action.dirty[this.gameObject] = false;
-				this.gameObject.Call("UpdateParts");
+				this.gameObject.Call("@Update Parts");
 			}
 			if(this.usable && this.ready){this.Use();}
 			else if(!this.usable && !this.persist){this.End();}
@@ -44,11 +48,11 @@ namespace Zios{
 			if(state != this.inUse){
 				string active = state ? "Start" : "End";
 				this.inUse = state;
-				this.gameObject.Call("Action"+active);
-				this.gameObject.Call(this.alias.Strip(" ")+active);
-				this.owner.Call(this.alias.Strip(" ")+active);
+				this.gameObject.Call("Action "+active);
+				this.gameObject.Call(this.alias+" "+active);
+				this.owner.Call(this.alias+" "+active);
 				this.SetDirty(true);
-				this.owner.Call("UpdateStates");
+				this.owner.Call("@Update States");
 			}
 		}
 	}
@@ -61,8 +65,18 @@ namespace Zios{
 		[HideInInspector] public int priority = -1;
 		private bool requirableOverride;
 		public override string GetInterfaceType(){return "ActionPart";}
-		public void Reset(){this.OnValidate();}
-		public virtual void OnValidate(){
+		public void OnValidate(){
+			#if UNITY_EDITOR 
+			if(!EditorApplication.isPlaying){
+				this.Start();
+			}
+			#endif
+		}
+		public virtual void Awake(){
+			this.OnValidate();
+			this.SetDirty(true);
+		}
+		public virtual void Start(){
 			if(this.alias.IsEmpty()){
 				this.alias = this.GetType().ToString();
 			}
@@ -70,28 +84,23 @@ namespace Zios{
 			if(this.action != null){
 				this.action.OnValidate();
 			}
+			Events.Add(alias+"/End",this.End);
+			Events.Add(alias+"/Use",this.Use);
+			Events.Add(alias+"/End (Force)",this.ForceEnd);
+			Events.Add("Action Start",this.ActionStart);
+			Events.Add("Action End",this.ActionEnd);
 			this.usable = true;
-		}
-		public virtual void Awake(){
-			this.OnValidate();
-			string alias = this.alias.Strip(" ");
-			Events.Add("End"+alias,this.End);
-			Events.Add("Use"+alias,this.Use);
-			Events.Add("ForceEnd"+alias,this.ForceEnd);
-			Events.Add("ActionStart",this.ActionStart);
-			Events.Add("ActionEnd",this.ActionEnd);
-			this.SetDirty(true);
 		}
 		[ContextMenu("Toggle Column Visibility")]
 		public void ToggleRequire(){
 			this.requirable = !this.requirable;
 			this.requirableOverride = !this.requirableOverride;
-			this.gameObject.Call("Refresh");
+			this.gameObject.Call("@Refresh");
 		}
 		public virtual void Step(){
 			if(ActionPart.dirty[this]){
 				this.SetDirty(false);
-				this.gameObject.Call("UpdateParts");
+				this.gameObject.Call("@Update Parts");
 			}
 			bool actionUsable = this.action == null || (this.action.usable || (this.action.persist && this.action.inUse));
 			if(actionUsable && this.usable){this.Use();}
@@ -151,9 +160,9 @@ namespace Zios{
 		public override void End(){this.Toggle(false);}
 		public override void Toggle(bool state){
 			if(state != this.inUse){
-				string active = state ? "Start" : "End";
+				string active = state ? " Start" : " End";
 				this.inUse = state;
-				this.gameObject.Call(this.alias.Strip(" ")+active);
+				this.gameObject.Call(this.alias+active);
 				this.SetDirty(true);
 			}
 		}

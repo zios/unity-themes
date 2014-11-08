@@ -10,8 +10,8 @@ public class FollowTarget : ActionPart{
 	public OffsetType offsetType;
 	public AttributeVector3 offset;
 	public AttributeVector3 orbit;
-	public override void OnValidate(){
-		base.OnValidate();
+	public override void Start(){
+		base.Start();
 		this.DefaultPriority(5);
 		this.source.Setup("Source",this);
 		this.target.Setup("Target",this);

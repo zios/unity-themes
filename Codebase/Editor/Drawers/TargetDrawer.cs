@@ -22,7 +22,7 @@ public class TargetDrawer : PropertyDrawer{
 		if(!TargetDrawer.toggled.ContainsKey(target)){TargetDrawer.toggled[target] = null;}
 		if(!TargetDrawer.unfound.ContainsKey(target)){TargetDrawer.unfound[target] = false;}
 		bool toggleActive = TargetDrawer.toggled[target] ?? target.search.IsEmpty();
-		TargetDrawer.toggled[target] = (bool)EditorGUI.Toggle(toggleRect,toggleActive,GUI.skin.GetStyle("TargetToggle"));
+		TargetDrawer.toggled[target] = toggleActive.Draw(toggleRect,GUI.skin.GetStyle("TargetToggle"));
 		bool toggled = (bool)TargetDrawer.toggled[target];
         EditorGUI.BeginProperty(position,label,property);
 		if(toggleActive != toggled){
@@ -33,24 +33,23 @@ public class TargetDrawer : PropertyDrawer{
 				TargetDrawer.unfound[target] = true;
 			}
 		}
+		label.Draw(area,null,true);
 		if(toggled){
 			if(TargetDrawer.unfound[target]){target.direct = null;}
-			EditorGUI.LabelField(area,label);
 			GameObject direct = target.direct;
-			target.direct = (GameObject)EditorGUI.ObjectField(propertyRect,target.direct,typeof(GameObject),true);
+			target.direct = target.direct.Draw(propertyRect,true);
 			if(target.direct != direct){
 				TargetDrawer.unfound[target] = false;
 			}
 		}
 		else{
-			EditorGUI.LabelField(area,label);
-			target.search = EditorGUI.TextField(propertyRect,target.search);
+			target.search = target.search.DrawField(propertyRect);
 			property.FindPropertyRelative("search").stringValue = target.search;
 			GUIStyle textStyle = new GUIStyle(GUI.skin.label);
 			textStyle.alignment = TextAnchor.MiddleRight;
 			textStyle.normal.textColor = Colors.Get("Gray");
 			string result = target.direct != null ? "Found." : "Not Found.";
-			EditorGUI.LabelField(propertyRect,result,textStyle);
+			result.Draw(propertyRect,textStyle);
 		}
         EditorGUI.EndProperty();
 		if(GUI.changed){
