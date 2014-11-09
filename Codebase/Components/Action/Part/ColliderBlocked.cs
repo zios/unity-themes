@@ -8,7 +8,7 @@ public class BlockedState : ActionPart{
 	//public AttributeEnum type = new AttributeEnum(BlockType);
 	public BlockType type;
 	public Direction direction;
-	public AttributeFloat duration;
+	public AttributeFloat duration = 0;
 	public Target target = new Target();
 	public override void Start(){
 		base.Start();

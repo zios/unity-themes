@@ -22,13 +22,13 @@ public class CollisionData{
 [RequireComponent(typeof(Collider))]
 [AddComponentMenu("Zios/Component/Physics/Collider Controller")]
 public class ColliderController : MonoBehaviour{
-	static public Dictionary<GameObject,ColliderController> instances = new Dictionary<GameObject,ColliderController>();
-	static public Collider[] triggers;
-	static public bool triggerSetup;
-	static public ColliderController Get(GameObject gameObject){
+	public static Dictionary<GameObject,ColliderController> instances = new Dictionary<GameObject,ColliderController>();
+	public static Collider[] triggers;
+	public static bool triggerSetup;
+	public static ColliderController Get(GameObject gameObject){
 		return ColliderController.instances[gameObject];
 	}
-	static public bool HasTrigger(Collider collider){
+	public static bool HasTrigger(Collider collider){
 		return Array.IndexOf(ColliderController.triggers,collider) != -1;
 	}
 	public ColliderMode mode;
@@ -47,25 +47,10 @@ public class ColliderController : MonoBehaviour{
 	//--------------------------------
 	public void Awake(){
 		//Events.AddGet("GetUnblocked",this.OnGetUnblocked);
-		Events.Add("AddMove",(MethodVector3)this.OnMove);
+		Events.Add("Add Move",(MethodVector3)this.OnMove);
 		this.ResetBlocked(true);
 	}
 	public void Start(){
-		ColliderController.instances[this.gameObject] = this;
-		if(!ColliderController.triggerSetup){
-			Collider[] colliders = (Collider[])Resources.FindObjectsOfTypeAll(typeof(Collider));
-			List<Collider> triggers = new List<Collider>();
-			foreach(Collider collider in colliders){
-				if(collider.isTrigger){
-					collider.isTrigger = false;
-					triggers.Add(collider);
-				}
-			}
-			ColliderController.triggers = triggers.ToArray();
-			ColliderController.triggerSetup = true;
-		}
-	}
-	public void OnValidate(){
 		this.fixedTimestep.Setup("Fixed Timestep",this);
 		this.maxStepHeight.Setup("Max Step Height",this);
 		this.maxSlopeAngle.Setup("Max Slope Angle",this);
@@ -79,8 +64,24 @@ public class ColliderController : MonoBehaviour{
 			this.rigidbody.freezeRotation = this.mode != ColliderMode.Sweep;
 			this.rigidbody.isKinematic = this.mode == ColliderMode.Sweep;
 			this.CheckActive("Sleep");
+			ColliderController.instances[this.gameObject] = this;
+			if(!ColliderController.triggerSetup){
+				Collider[] colliders = (Collider[])Resources.FindObjectsOfTypeAll(typeof(Collider));
+				List<Collider> triggers = new List<Collider>();
+				foreach(Collider collider in colliders){
+					if(collider.isTrigger){
+						collider.isTrigger = false;
+						triggers.Add(collider);
+					}
+				}
+				ColliderController.triggers = triggers.ToArray();
+				ColliderController.triggerSetup = true;
+			}
 			Time.fixedDeltaTime = this.fixedTimestep;
 		}
+	}
+	public void OnValidate(){
+		this.Start();
 	}
 	public void OnDrawGizmosSelected(){
 		Gizmos.color = Color.white;

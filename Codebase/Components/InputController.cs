@@ -2,7 +2,7 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-namespace Zios.Input{
+namespace Zios.Inputer{
 	[AddComponentMenu("Zios/Component/General/InputController")]
 	public class InputController : MonoBehaviour{
 		public List<Handler> handlers;

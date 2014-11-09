@@ -4,7 +4,7 @@ using UnityEngine;
 public class RotateTowardsTarget : ActionPart{
 	public Target source = new Target();
 	public Target target = new Target();
-	public AttributeVector3 offset;
+	public AttributeVector3 offset = Vector3.zero;
 	public OffsetType offsetType;
 	public LerpVector3 angles = new LerpVector3();
 	public override void Start(){

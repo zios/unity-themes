@@ -20,7 +20,7 @@ public class AnimationController : MonoBehaviour{
 	public AttributeInt defaultPriority = 1;
 	public AttributeFloat defaultTransitionIn = 0.15f;
 	public AttributeFloat defaultTransitionOut = 0.15f;
-	public AttributeString defaultAnimationName;
+	public AttributeString defaultAnimationName = "";
 	[ReadOnly] public AnimationData defaultAnimation;
 	[ReadOnly] public List<AnimationData> currentAnimations;
 	public List<AnimationData> animations = new List<AnimationData>();
@@ -30,12 +30,6 @@ public class AnimationController : MonoBehaviour{
 	// Built-in
 	//=====================
 	public void OnValidate(){
-		//if(this.animation == null){return;}
-		this.highestPriorityOnly.Setup("Highest Priority Only",this);
-		this.defaultPriority.Setup("Default Priority Only",this);
-		this.defaultTransitionIn.Setup("Default Transition In",this);
-		this.defaultTransitionOut.Setup("Default Transition Out",this);
-		this.defaultAnimationName.Setup("Default Animation Name",this);
 		foreach(AnimationState state in this.animation){
 			AnimationData data = this.animations.Find(x=>x.name==state.name);
 			if(data == null){
@@ -45,29 +39,37 @@ public class AnimationController : MonoBehaviour{
 			data.name = state.name;
 			data.state = state;
 		}
+		this.Start();
 	}
-	public void Awake(){
-		foreach(AnimationData data in this.animations){
-			this.lookup[data.name] = data;
-			if(data.weight == -1){data.weight = 1.0f;}
-			if(data.priority == -1){data.priority = this.defaultPriority;}
-			if(data.transitionIn == -1){data.transitionIn = this.defaultTransitionIn;}
-			if(data.transitionOut == -1){data.transitionOut = this.defaultTransitionOut;}
-		}
-		if(this.lookup.ContainsKey(this.defaultAnimationName)){
-			this.defaultAnimation = this.lookup[this.defaultAnimationName];
-			this.defaultAnimation.active = true;
-			this.current[name] = this.defaultAnimation;
-		}
-		else{
-			Debug.LogWarning("AnimationController : Default animation (" + this.defaultAnimationName + ") not found.");
-		}
+	public void Start(){
+		this.highestPriorityOnly.Setup("Highest Priority Only",this);
+		this.defaultPriority.Setup("Default Priority Only",this);
+		this.defaultTransitionIn.Setup("Default Transition In",this);
+		this.defaultTransitionOut.Setup("Default Transition Out",this);
+		this.defaultAnimationName.Setup("Default Animation Name",this);
 		Events.Add("Set Animation",this.OnSet);
 		Events.Add("Set Animation Default",this.OnSetDefault);
 		Events.Add("Set Animation Speed",this.OnSetSpeed);
 		Events.Add("Set Animation Weight",this.OnSetWeight);
 		Events.Add("Play Animation",this.OnPlay);
 		Events.Add("Stop Animation",this.OnStop);
+		if(Application.isPlaying){
+			foreach(AnimationData data in this.animations){
+				this.lookup[data.name] = data;
+				if(data.weight == -1){data.weight = 1.0f;}
+				if(data.priority == -1){data.priority = this.defaultPriority;}
+				if(data.transitionIn == -1){data.transitionIn = this.defaultTransitionIn;}
+				if(data.transitionOut == -1){data.transitionOut = this.defaultTransitionOut;}
+			}
+			if(this.lookup.ContainsKey(this.defaultAnimationName)){
+				this.defaultAnimation = this.lookup[this.defaultAnimationName];
+				this.defaultAnimation.active = true;
+				this.current[name] = this.defaultAnimation;
+			}
+			else{
+				Debug.LogWarning("AnimationController : Default animation (" + this.defaultAnimationName + ") not found.");
+			}
+		}
 	}
 	private void PlayDefault(){
 		if(this.defaultAnimation == null){return;}

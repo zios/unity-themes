@@ -6,32 +6,49 @@ using Zios;
 using System;
 using System.Collections.Generic;
 namespace Zios{
-	[AddComponentMenu("Zios/Component/Action/Basic")]
+	[AddComponentMenu("Zios/Component/Action/Basic")][ExecuteInEditMode]
 	public class Action : StateMonoBehaviour{
-		static public Dictionary<GameObject,bool> dirty = new Dictionary<GameObject,bool>();
-		public Dictionary<string,ActionPart> parts = new Dictionary<string,ActionPart>();
+		public static float nextUpdate = 0;
+		public static Dictionary<GameObject,bool> dirty = new Dictionary<GameObject,bool>();
 		public bool persist;
+		[NonSerialized] public StateController controller;
 		[NonSerialized] public GameObject owner;
-		public void OnValidate(){
+		#if UNITY_EDITOR 
+		public static void EditorUpdate(){
+			float time = Time.realtimeSinceStartup;
+			if(Selection.activeGameObject.IsNull() || time < Action.nextUpdate){return;}
+			Action.nextUpdate = time + 0.25f;
+			bool playing = EditorApplication.isPlaying || EditorApplication.isPlayingOrWillChangePlaymode;
+			Action current = Selection.activeGameObject.GetComponent<Action>();
+			if(!current.IsNull() && !playing){
+				current.Start();
+			}
+		}
+		#endif
+		public virtual void Start(){
+			if(this.owner.IsNull()){
+				this.controller = this.gameObject.GetComponentInParents<StateController>();
+				this.owner = this.controller == null ? this.gameObject : this.controller.gameObject;
+			}
+			this.alias = this.alias.SetDefault(this.gameObject.name);
+			this.inUse.Setup("Active",this,this.controller);
+			this.usable.Setup("Usable",this,this.controller);
+			Events.Add("Action End (Force)",this.End,this.owner);
+			this.SetDirty(true);
+		}
+		public virtual void Update(){
 			#if UNITY_EDITOR 
-			if(!EditorApplication.isPlaying){
-				this.Start();
+			bool playing = EditorApplication.isPlaying || EditorApplication.isPlayingOrWillChangePlaymode;
+			if(!playing){
+				if(!EditorApplication.update.Contains((Method)Action.EditorUpdate)){
+					EditorApplication.update += Action.EditorUpdate;
+				}
+				this.End();
 			}
 			#endif
 		}
-		public virtual void Start(){
-			StateController stateController = this.gameObject.GetComponentInParents<StateController>();
-			this.owner = stateController == null ? this.gameObject : stateController.gameObject;
-			this.alias = this.alias.SetDefault(this.gameObject.name);
-			this.inUse.Setup("Active",this,stateController);
-			this.usable.Setup("Usable",this,stateController);
-			Events.Add("Action End (Force)",this.End,this.owner);
-			this.gameObject.Call("@Refresh");
-			this.owner.Call("@Update States");
-			this.owner.CallChildren("@Update Parts");
-			this.SetDirty(true);
-		}
 		public virtual void FixedUpdate(){
+			if(!Application.isPlaying){return;}
 			if(Action.dirty.ContainsKey(this.gameObject) && Action.dirty[this.gameObject]){
 				this.SetDirty(false);
 				Action.dirty[this.gameObject] = false;
@@ -40,8 +57,8 @@ namespace Zios{
 			if(this.usable && this.ready){this.Use();}
 			else if(!this.usable && !this.persist){this.End();}
 		}
+		public void OnDestroy(){this.owner.Call("@Refresh");}
 		public void SetDirty(bool state){Action.dirty[this.gameObject] = state;}
-		public void AddPart(string name,ActionPart part){this.parts[name] = part;}
 		public override void Use(){this.Toggle(true);}
 		public override void End(){this.Toggle(false);}
 		public override void Toggle(bool state){
@@ -49,47 +66,52 @@ namespace Zios{
 				string active = state ? "Start" : "End";
 				this.inUse = state;
 				this.gameObject.Call("Action "+active);
-				this.gameObject.Call(this.alias+" "+active);
+				this.gameObject.Call(this.alias+"/"+active);
 				this.owner.Call(this.alias+" "+active);
-				this.SetDirty(true);
 				this.owner.Call("@Update States");
+				this.SetDirty(true);
 			}
 		}
 	}
 	public enum ActionRate{Default,FixedUpdate,Update,LateUpdate,ActionStart,ActionEnd,None};
-	[AddComponentMenu("")]
+	[AddComponentMenu("")][ExecuteInEditMode]
 	public class ActionPart : StateMonoBehaviour{
-		static public Dictionary<ActionPart,bool> dirty = new Dictionary<ActionPart,bool>();
+		public static float nextUpdate = 0;
+		public static Dictionary<ActionPart,bool> dirty = new Dictionary<ActionPart,bool>();
 		public ActionRate rate = ActionRate.Default;
 		[NonSerialized] public Action action;
 		[HideInInspector] public int priority = -1;
 		private bool requirableOverride;
 		public override string GetInterfaceType(){return "ActionPart";}
-		public void OnValidate(){
-			#if UNITY_EDITOR 
-			if(!EditorApplication.isPlaying){
-				this.Start();
+		#if UNITY_EDITOR 
+		public static void EditorUpdate(){
+			float time = Time.realtimeSinceStartup;
+			if(Selection.activeGameObject.IsNull() || time < ActionPart.nextUpdate){return;}
+			ActionPart.nextUpdate = time + 0.25f;
+			bool playing = EditorApplication.isPlaying || EditorApplication.isPlayingOrWillChangePlaymode;
+			ActionPart current = Selection.activeGameObject.GetComponent<ActionPart>();
+			if(!current.IsNull() && !playing){
+				var instances = (ActionPart[])current.gameObject.GetComponents<ActionPart>();
+				foreach(ActionPart part in instances){
+					part.Start();
+				}
 			}
-			#endif
 		}
-		public virtual void Awake(){
-			this.OnValidate();
-			this.SetDirty(true);
-		}
+		#endif
 		public virtual void Start(){
 			if(this.alias.IsEmpty()){
 				this.alias = this.GetType().ToString();
 			}
-			this.action = this.GetComponent<Action>();
-			if(this.action != null){
-				this.action.OnValidate();
+			if(action.IsNull()){
+				this.action = this.GetComponent<Action>();
 			}
 			Events.Add(alias+"/End",this.End);
-			Events.Add(alias+"/Use",this.Use);
+			Events.Add(alias+"/Start",this.Use);
 			Events.Add(alias+"/End (Force)",this.ForceEnd);
 			Events.Add("Action Start",this.ActionStart);
 			Events.Add("Action End",this.ActionEnd);
 			this.usable = true;
+			this.SetDirty(true);
 		}
 		[ContextMenu("Toggle Column Visibility")]
 		public void ToggleRequire(){
@@ -98,6 +120,7 @@ namespace Zios{
 			this.gameObject.Call("@Refresh");
 		}
 		public virtual void Step(){
+			if(!Application.isPlaying){return;}
 			if(ActionPart.dirty[this]){
 				this.SetDirty(false);
 				this.gameObject.Call("@Update Parts");
@@ -112,6 +135,15 @@ namespace Zios{
 			}
 		}
 		public virtual void Update(){
+			#if UNITY_EDITOR 
+			bool playing = EditorApplication.isPlaying || EditorApplication.isPlayingOrWillChangePlaymode;
+			if(!playing){
+				if(!EditorApplication.update.Contains((Method)ActionPart.EditorUpdate)){
+					EditorApplication.update += ActionPart.EditorUpdate;
+				}
+				this.inUse = false;
+			}
+			#endif
 			if(this.rate == ActionRate.Update || this.rate == ActionRate.Default){
 				this.Step();
 			}
@@ -154,13 +186,14 @@ namespace Zios{
 				this.requirable = state;
 			}
 		}
+		public void OnDestroy(){this.gameObject.Call("@Refresh");}
 		public void SetDirty(bool state){ActionPart.dirty[this] = state;}
 		public virtual void ForceEnd(){this.Toggle(false);}
 		public override void Use(){this.Toggle(true);}
 		public override void End(){this.Toggle(false);}
 		public override void Toggle(bool state){
 			if(state != this.inUse){
-				string active = state ? " Start" : " End";
+				string active = state ? "/Start" : "/End";
 				this.inUse = state;
 				this.gameObject.Call(this.alias+active);
 				this.SetDirty(true);

@@ -3,11 +3,12 @@ using System;
 using UnityEngine;
 [Serializable]
 public class EventTarget{
-	public string name;
+	public AttributeString name = "";
 	public Target target = new Target();
 	public void Setup(string name,params MonoBehaviour[] scripts){
-		this.target.Setup(name,scripts);
-		this.target.DefaultSearch("[Action]");
+		this.name.Setup(name+" Name",scripts);
+		this.target.SkipWarning();
+		this.target.Setup(name+" Target",scripts[0],"");
 	}
 	public void SetupCatch(Method method){
 		if(!this.name.IsEmpty() && this.target.direct != null){

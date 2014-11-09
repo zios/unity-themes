@@ -146,4 +146,7 @@ public static class ObjectExtension{
 	public static string GetClassPath(this object current){
 		return current.GetType().ToString();
 	}
+	public static bool IsNull(this object current){
+        return current == null || current.Equals(null);
+    }
 }

@@ -6,7 +6,7 @@ using System.Collections;
 public class Gravity : ActionPart{
 	public AttributeVector3 intensity = new Vector3(0,-9.8f,0);
 	public AttributeFloat scale = 1.0f;
-	public AttributeBool disabled;
+	public AttributeBool disabled = false;
 	public override void Start(){
 		base.Start();
 		this.DefaultRate("FixedUpdate");

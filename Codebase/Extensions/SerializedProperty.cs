@@ -17,7 +17,7 @@ public static class SerializedPropertyExtension{
 		}
 		return index;
 	}
-	static public T GetObject<T>(this SerializedProperty current){
+	public static T GetObject<T>(this SerializedProperty current){
 		object parent = current.serializedObject.targetObject;
 		string path = current.propertyPath.Replace(".Array.data[","[");
 		string[] elements = path.Split('.');

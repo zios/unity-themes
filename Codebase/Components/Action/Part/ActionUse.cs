@@ -6,7 +6,7 @@ public class ActionUse : ActionPart{
 		base.Start();
 		this.DefaultPriority(10);
 		this.DefaultAlias("@Use");
-		Events.Add("ActionEnd",this.OnActionEnd);
+		Events.Add("Action End",this.OnActionEnd);
 	}
 	public override void Use(){
 		if(!this.inUse){

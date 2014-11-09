@@ -20,7 +20,7 @@ public class InputHeld : ActionPart{
 		this.heldDuringIntensity.Setup("Held During Intensity",this);
 		this.exclusive.Setup("Exclusive",this);
 		this.intensity.Setup("Intensity",this);
-		Events.Add("ActionStart",this.OnActionStart);
+		Events.Add("Action Start",this.OnActionStart);
 	}
 	public override void Use(){
 		bool inputSuccess = this.CheckInput();

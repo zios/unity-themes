@@ -171,6 +171,22 @@ public static class GameObjectExtension{
 		if(useZ){position.z = location.z;}
 		current.transform.position = position;
 	}
+	public static string GetPath(this GameObject current){	
+		if(current.IsNull() || current.transform.IsNull()){return "";}
+		string path = current.transform.name;
+		Transform parent = current.transform.parent;
+		while(!parent.IsNull()){
+			path = parent.name + "/" + path;
+			parent = parent.parent;
+		}
+		return path;
+	}
+	public static GameObject GetParent(this GameObject current){
+		if(current.transform.parent != null){
+			return current.transform.parent.gameObject;
+		}
+		return null;
+	}
 	//====================
 	// Find
 	//====================

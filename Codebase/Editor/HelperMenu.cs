@@ -6,7 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 #pragma warning disable 618
 public static class HelperMenu {
-	static public bool IsSprite(GameObject instance){
+	public static bool IsSprite(GameObject instance){
 		MeshFilter filter = instance.GetComponent<MeshFilter>();
 		Sprite sprite = SpriteManager.GetSprite(instance.name);
 		bool inGroup = instance.transform.parent != null && instance.transform.parent.name.Contains("SpriteGroup");

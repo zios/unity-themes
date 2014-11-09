@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEditor;
 using System.Collections;
-using Zios.Input;
+using Zios.Inputer;
 [CustomEditor(typeof(InputController))]
 public class InputControllerEditor : Editor{
 	public bool foldDirections = true;

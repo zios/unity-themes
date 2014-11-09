@@ -3,7 +3,7 @@ using System;
 using Zios;
 [AddComponentMenu("Zios/Component/Action/Part/Play Animation (3D)")]
 public class Play3DAnimation : ActionPart{
-	public AttributeString animationName;
+	public AttributeString animationName = "";
 	public AttributeFloat speed = 1;
 	public AttributeFloat weight = 1;
 	public Target target;

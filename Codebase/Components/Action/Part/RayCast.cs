@@ -6,10 +6,10 @@ public class RayCast : ActionPart{
 	public AttributeFloat distance = 1;
 	public Color rayColor = Color.blue;
 	public AttributeVector3 direction = -Vector3.up;
-	public AttributeVector3 offset;
+	public AttributeVector3 offset = Vector3.zero;
 	public Target source = new Target();
 	public LayerMask layers = -1;
-	public AttributeBool relative;
+	public AttributeBool relative = false;
 	public override void Start(){
 		base.Start();
 		this.DefaultPriority(5);

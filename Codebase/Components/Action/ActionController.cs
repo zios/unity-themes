@@ -1,3 +1,4 @@
+#pragma warning disable 0414
 using UnityEngine;
 using System;
 using System.Linq;
@@ -5,21 +6,18 @@ using System.Collections;
 using System.Collections.Generic;
 using Action = Zios.Action;
 using ActionPart = Zios.ActionPart;
-[RequireComponent(typeof(Action))]
-[ExecuteInEditMode][AddComponentMenu("Zios/Component/Action/Action Controller")]
+[RequireComponent(typeof(Action))][ExecuteInEditMode]
+[AddComponentMenu("Zios/Component/Action/Action Controller")]
 public class ActionController : StateController{
 	private Action action;
-	private ActionPart[] parts = new ActionPart[0];
 	public override void Reset(){
 		this.action = null;
 		base.Reset();
 	}
 	public override void Awake(){
-		Events.Add("@UpdateParts",this.UpdateStates);
+		this.action = this.GetComponent<Action>();
+		Events.Add("@Update Parts",this.UpdateStates);
 		Events.Add("@Refresh",this.Refresh);
-		if(this.action == null){
-			this.action = this.GetComponent<Action>();
-		}
 		this.Refresh();
 	}
 	[ContextMenu("Refresh")]
@@ -31,22 +29,6 @@ public class ActionController : StateController{
 		this.UpdateRequirements();
 		this.UpdateOrder();
 		//this.UpdatePriorityOrder();
-	}
-	public override void Update(){
-		if(!Application.isPlaying){
-			ActionPart[] parts = this.gameObject.GetComponents<ActionPart>();
-			int total = parts.Length;
-			if(this.total != total){
-				this.total = total;
-				foreach(ActionPart part in parts){
-					if(!this.parts.Contains(part)){
-						part.OnValidate();
-					}
-				}
-				this.Refresh();
-				this.parts = parts;
-			}
-		}
 	}
 	public void UpdatePriorityOrder(){
 		Dictionary<StateRow,int> data = new Dictionary<StateRow,int>();	

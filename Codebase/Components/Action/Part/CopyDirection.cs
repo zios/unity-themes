@@ -5,7 +5,7 @@ using UnityEngine;
 public class CopyDirection : ActionPart{
 	public Direction direction;
 	public Target source = new Target();
-	public AttributeVector3 target;
+	public AttributeVector3 target = Vector3.zero;
 	public override void Start(){
 		base.Start();
 		this.DefaultPriority(5);

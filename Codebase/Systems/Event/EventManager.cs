@@ -5,11 +5,6 @@ using System.Reflection;
 using System.Collections.Generic;
 #if UNITY_EDITOR 
 using UnityEditor;
-public class EventWatcher : AssetPostprocessor{
-	public static void OnPostprocessAllAssets(string[] imported,string[] deleted,string[] moved, string[] path){
-		Events.Clear();
-	}
-}
 #endif
 public static class Events{
 	public static Dictionary<GameObject,Dictionary<string,List<object>>> objectEvents = new Dictionary<GameObject,Dictionary<string,List<object>>>();
@@ -19,10 +14,11 @@ public static class Events{
 		Events.objectEvents.Clear();
 		Events.events.Clear();
 	}
+	public static void Empty(){}
 	public static void Register(string name){Events.Add(name,()=>{});}
 	public static void Register(string name,params GameObject[] targets){
 		foreach(GameObject target in targets){
-			Events.AddScope(name,(Method)(()=>{}),target);
+			Events.AddScope(name,(Method)Events.Empty,target);
 		}
 	}
 	public static void Add(string name,Method method,params GameObject[] targets){Events.Add(name,(object)method,targets);}
@@ -35,6 +31,7 @@ public static class Events{
 	public static void Add(string name,MethodVector2 method,params GameObject[] targets){Events.Add(name,(object)method,targets);}
 	public static void Add(string name,MethodVector3 method,params GameObject[] targets){Events.Add(name,(object)method,targets);}
 	public static void AddScope(string name,object method,GameObject target){
+		Events.Clean(name,target,method);
 		if(!Events.objectEvents.ContainsKey(target)){
 			Events.objectEvents[target] = new Dictionary<string,List<object>>();
 		}
@@ -61,34 +58,48 @@ public static class Events{
 				Events.AddScope(name,method,target);
 			}
 			foreach(GameObject target in targets){
+				if(target.IsNull()){continue;}
 				Events.AddScope(name,method,target);
 			}
 		}
 	}
-	public static void RemoveNull(){
-		foreach(var current in Events.objectEvents.Copy()){
-			if(current.Key == null){
-				Events.objectEvents.Remove(current.Key);
-				continue;
-			}
-			foreach(var item in current.Value.Copy()){
-				foreach(object method in item.Value.Copy()){
-					if(method == null){
-						var copy = item.Value.Copy();
-						copy.Remove(method);
-						Debug.Log("Events : Removing empty method from -- " + item.Key);
-						Events.objectEvents[current.Key][item.Key] = copy;
-					}
+	public static void Clean(string ignoreName="",GameObject target=null,object targetMethod=null){
+		#if UNITY_EDITOR 
+		if(!EditorApplication.isPlayingOrWillChangePlaymode && !Application.isPlaying){
+			foreach(var current in Events.objectEvents.Copy()){
+				GameObject gameObject = current.Key;
+				if(gameObject.IsNull()){
+					Events.objectEvents.Remove(gameObject);
+					continue;
 				}
-				if(Events.objectEvents[current.Key][item.Key].Count < 1){
-					Debug.Log("Events : Removing empty method list -- " + item.Key);
-					Events.objectEvents[current.Key].Remove(item.Key);
+				foreach(var item in current.Value.Copy()){
+					string eventName = item.Key;
+					foreach(object method in item.Value.Copy()){
+						//if(method.Equals((object)(Method)Events.Empty)){continue;}
+						bool duplicate = eventName != ignoreName && target == gameObject && method.Equals(targetMethod);
+						bool invalid = method == null || ((Delegate)method).Target.IsNull();
+						if(duplicate || invalid){
+							var copy = item.Value.Copy();
+							copy.Remove(method);
+							//string messageType = method == null ? "empty method" : "duplicate method";
+							//Debug.Log("Events : Removing " + messageType  + " from -- " + gameObject.name + "/" + eventName);
+							Events.objectEvents[gameObject][eventName] = copy;
+						}
+					}
+					if(Events.objectEvents[gameObject][eventName].Count < 1){
+						//Debug.Log("Events : Removing empty method list -- " + gameObject.name + "/" + eventName);
+						Events.objectEvents[gameObject].Remove(eventName);
+					}
 				}
 			}
 		}
+		#endif
 	}
-	public static List<string> GetEvents(GameObject target){
-		Events.RemoveNull();
+	public static List<string> GetEvents(GameObject target=null){
+		Events.Clean();
+		if(target.IsNull()){
+			return Events.events.Keys.ToList();
+		}
 		if(Events.objectEvents.ContainsKey(target)){
 			return Events.objectEvents[target].Keys.ToList();
 		}
@@ -125,7 +136,6 @@ public static class Events{
 		}
 	}
 	public static void Call(string name,params object[] values){
-		//name = name.ToLower();
 		if(Events.events.ContainsKey(name)){
 			foreach(object callback in Events.events[name]){
 				Events.Handle(callback,values);
@@ -134,17 +144,26 @@ public static class Events{
 		}
 	}
 	public static void Call(GameObject target,string name,object[] values){
-		//name = name.ToLower();
+		if(!Events.ValidTarget(target,name)){return;}
+		List<object> invalid = new List<object>();
 		if(Events.objectEvents.ContainsKey(target)){
 			if(Events.objectEvents[target].ContainsKey(name)){
 				foreach(object callback in Events.objectEvents[target][name]){
+					if(callback == null || ((Delegate)callback).Target.IsNull()){
+						invalid.Add(callback);
+						continue;
+					}
 					Events.Handle(callback,values);
+				}
+				foreach(object entry in invalid){
+					Events.objectEvents[target][name].Remove(entry);
 				}
 				return;
 			}
 		}
 	}
 	public static void CallChildren(GameObject target,string name,object[] values,bool self=false){
+		if(!Events.ValidTarget(target,name)){return;}
 		if(self){Events.Call(target,name,values);}
 		Transform[] children = target.GetComponentsInChildren<Transform>();
 		foreach(Transform transform in children){
@@ -153,6 +172,7 @@ public static class Events{
 		}
 	}
 	public static void CallParents(GameObject target,string name,object[] values,bool self=false){
+		if(!Events.ValidTarget(target,name)){return;}
 		if(self){Events.Call(target,name,values);}
 		Transform parent = target.transform.parent;
 		while(parent != null){
@@ -161,6 +181,7 @@ public static class Events{
 		}
 	}
 	public static void CallFamily(GameObject target,string name,object[] values,bool self=false){
+		if(!Events.ValidTarget(target,name)){return;}
 		if(self){Events.Call(target,name,values);}
 		Events.CallChildren(target,name,values);
 		Events.CallParents(target,name,values);
@@ -170,6 +191,13 @@ public static class Events{
 			return Events.objectEvents[target].ContainsKey(name);
 		}
 		return false;
+	}
+	private static bool ValidTarget(GameObject target,string name){
+		if(target.IsNull()){
+			Debug.LogWarning("Events : Call attempted on null gameObject -- " + name);
+			return false;
+		}
+		return true;
 	}
 	private static bool HasEvent(string name){
 		return Events.events.ContainsKey(name);

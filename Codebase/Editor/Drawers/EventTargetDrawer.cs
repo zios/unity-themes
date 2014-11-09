@@ -14,19 +14,20 @@ public class EventTargetDrawer : PropertyDrawer{
         EditorGUI.BeginProperty(position,label,property);
 		EventTarget eventTarget = property.GetObject<EventTarget>();
 		Target target = eventTarget.target;
-		label.Draw(labelRect,null,true);
-		bool toggleActive = this.targetMode.ContainsKey(eventTarget) ? this.targetMode[eventTarget] : target.direct != null;
-		if(target.direct == null){toggleActive = false;}
+		label.DrawLabel(labelRect,null,true);
+		bool toggleActive = this.targetMode.ContainsKey(eventTarget) ? this.targetMode[eventTarget] : !eventTarget.name.IsEmpty();
 		this.targetMode[eventTarget] = toggleActive.Draw(valueRect.SetWidth(16),GUI.skin.GetStyle("CheckmarkToggle"));
 		valueRect = valueRect.Add(18,0,-18,0);
 		if(!this.targetMode[eventTarget]){
-			SerializedProperty targetProperty = property.FindPropertyRelative("target");
-			targetProperty.Draw(valueRect);
-			return;
+			property.FindPropertyRelative("target").Draw(valueRect);
 		}
-		if(target.direct != null){
-			if(Events.objectEvents.ContainsKey(target.direct)){
-				List<string> events = Events.GetEvents(target.direct);
+		else if(!target.direct.IsNull() && !Events.objectEvents.ContainsKey(target.direct)){
+			string error = "No events found for target -- " + target.direct.name;
+			error.DrawLabel(valueRect,GUI.skin.GetStyle("WarningLabel"));
+		}
+		else{
+			List<string> events = Events.GetEvents(target.direct);
+			if(events.Count > 0){
 				events.Sort();
 				events = events.OrderBy(item=>item.Contains("/")).ToList();
 				events.RemoveAll(item=>item.StartsWith("@"));
@@ -36,7 +37,8 @@ public class EventTargetDrawer : PropertyDrawer{
 				eventTarget.name = events[index];
 			}
 			else{
-				"No Events Found.".Draw(valueRect,GUI.skin.GetStyle("WarningLabel"));
+				string error = "No global events exist.";
+				error.Draw(valueRect,GUI.skin.GetStyle("WarningLabel"));
 			}
 		}
         EditorGUI.EndProperty();

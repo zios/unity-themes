@@ -5,7 +5,7 @@ using System.Collections;
 [RequireComponent(typeof(ColliderController))]
 [AddComponentMenu("Zios/Component/Physics/Force")]
 public class Force : ActionPart{
-	public AttributeVector3 velocity;
+	public AttributeVector3 velocity = Vector3.zero;
 	public AttributeVector3 terminalVelocity = new Vector3(20,20,20);
 	public AttributeVector3 resistence = new Vector3(8,0,8);
 	public AttributeFloat minimumImpactVelocity = 1;

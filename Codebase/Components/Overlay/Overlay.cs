@@ -18,7 +18,7 @@ public static class Overlay{
 			Overlay.defaultResolution = new Vector2(PlayerSettings.defaultScreenWidth,PlayerSettings.defaultScreenHeight);
 			#endif
 		}
-		Events.Add("ResolutionChange",Overlay.CalculateGUIMatrix);
+		Events.Add("Resolution Change",Overlay.CalculateGUIMatrix);
 		Overlay.CalculateGUIMatrix();
 	}
 	public static T Get<T>(string name){

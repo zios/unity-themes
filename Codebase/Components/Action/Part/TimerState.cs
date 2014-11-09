@@ -7,7 +7,7 @@ public enum PersistType{Off,UntilComplete,UntilCompleteOrActionEnds}
 public class TimerState : ActionPart{
 	public TimerType type;
 	public PersistType persist;
-	public AttributeFloat seconds;
+	public AttributeFloat seconds = 0;
 	private float endTime;
 	private AttributeBool isActive = false;
 	private AttributeBool isComplete = false;

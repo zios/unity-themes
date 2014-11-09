@@ -52,7 +52,7 @@ namespace Zios{
 			bool changedHeight = Screen.height != size[1];
 			bool changedRefresh = screen.refreshRate != size[2];
 			if(changedWidth || changedHeight || changedRefresh){
-				Events.Call("ResolutionChange");
+				Events.Call("Resolution Change");
 				if(!Program.allowResolution){
 					Program.allowResolution = true;
 					Debug.Log("^7Screen settings auto-adjusted to closest allowed values.");

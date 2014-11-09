@@ -4,8 +4,8 @@ public enum ForceType{Absolute,Relative}
 [AddComponentMenu("Zios/Component/Action/Part/Add Force")]
 public class AddForce : ActionPart{
 	public ForceType type;
-	public AttributeVector3 amount;
-	public Target target;
+	public AttributeVector3 amount = Vector3.zero;
+	public Target target = new Target();
 	public override void Start(){
 		base.Start();
 		this.target.Setup("Target",this);

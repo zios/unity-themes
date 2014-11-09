@@ -73,6 +73,7 @@ namespace Zios{
 			this.path = (path + name).Trim("/"," ");
 			foreach(var data in this.data){
 				data.target.Setup(name+"Target",scripts);
+				data.target.DefaultSearch("[This]");
 			}
 		}
 		public BaseType Get(){

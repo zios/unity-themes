@@ -33,7 +33,7 @@ public class TargetDrawer : PropertyDrawer{
 				TargetDrawer.unfound[target] = true;
 			}
 		}
-		label.Draw(area,null,true);
+		label.DrawLabel(area,null,true);
 		if(toggled){
 			if(TargetDrawer.unfound[target]){target.direct = null;}
 			GameObject direct = target.direct;
@@ -43,18 +43,19 @@ public class TargetDrawer : PropertyDrawer{
 			}
 		}
 		else{
-			target.search = target.search.DrawField(propertyRect);
+			string previous = target.search;
+			target.search = target.search.Draw(propertyRect);
+			if(!previous.IsEmpty() && target.search.IsEmpty()){
+				GUI.FocusControl(null);
+			}
 			property.FindPropertyRelative("search").stringValue = target.search;
-			GUIStyle textStyle = new GUIStyle(GUI.skin.label);
-			textStyle.alignment = TextAnchor.MiddleRight;
-			textStyle.normal.textColor = Colors.Get("Gray");
-			string result = target.direct != null ? "Found." : "Not Found.";
-			result.Draw(propertyRect,textStyle);
+			string result = target.direct != null ? target.direct.GetPath() : "Not Found.";
+			result.DrawLabel(propertyRect,GUI.skin.GetStyle("SubtleInfo"));
 		}
         EditorGUI.EndProperty();
 		if(GUI.changed){
 			property.serializedObject.ApplyModifiedProperties();
-			EditorUtility.SetDirty(property.serializedObject.targetObject);
+			//EditorUtility.SetDirty(property.serializedObject.targetObject);
 		}
     }
 }

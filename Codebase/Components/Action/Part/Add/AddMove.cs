@@ -4,7 +4,7 @@ public enum MoveType{Absolute,Relative}
 [AddComponentMenu("Zios/Component/Action/Part/Add Move")]
 public class AddMove : ActionPart{
 	public MoveType type;
-	public AttributeVector3 amount;
+	public AttributeVector3 amount = Vector3.zero;
 	public Target target = new Target();
 	public override void Start(){
 		base.Start();

@@ -8,8 +8,8 @@ public class FollowTarget : ActionPart{
 	public Target target = new Target();
 	public LerpVector3 position = new LerpVector3();
 	public OffsetType offsetType;
-	public AttributeVector3 offset;
-	public AttributeVector3 orbit;
+	public AttributeVector3 offset = Vector3.zero;
+	public AttributeVector3 orbit = Vector3.zero;
 	public override void Start(){
 		base.Start();
 		this.DefaultPriority(5);
