@@ -11,6 +11,7 @@ namespace Zios{
 		public static float nextUpdate = 0;
 		public static Dictionary<GameObject,bool> dirty = new Dictionary<GameObject,bool>();
 		public bool persist;
+		private bool setup;
 		[NonSerialized] public StateController controller;
 		[NonSerialized] public GameObject owner;
 		#if UNITY_EDITOR 
@@ -26,15 +27,18 @@ namespace Zios{
 		}
 		#endif
 		public virtual void Start(){
-			if(this.owner.IsNull()){
-				this.controller = this.gameObject.GetComponentInParents<StateController>();
-				this.owner = this.controller == null ? this.gameObject : this.controller.gameObject;
+			if(!this.setup){
+				if(this.owner.IsNull()){
+					this.controller = this.gameObject.GetComponentInParents<StateController>();
+					this.owner = this.controller == null ? this.gameObject : this.controller.gameObject;
+				}
+				this.alias = this.alias.SetDefault(this.gameObject.name);
+				this.inUse.Setup("Active",this,this.controller);
+				this.usable.Setup("Usable",this,this.controller);
+				Events.Add("Action End (Force)",this.End,this.owner);
+				this.SetDirty(true);
+				this.setup = Application.isPlaying;
 			}
-			this.alias = this.alias.SetDefault(this.gameObject.name);
-			this.inUse.Setup("Active",this,this.controller);
-			this.usable.Setup("Usable",this,this.controller);
-			Events.Add("Action End (Force)",this.End,this.owner);
-			this.SetDirty(true);
 		}
 		public virtual void Update(){
 			#if UNITY_EDITOR 
@@ -104,6 +108,7 @@ namespace Zios{
 			}
 			if(action.IsNull()){
 				this.action = this.GetComponent<Action>();
+				this.action.Start();
 			}
 			Events.Add(alias+"/End",this.End);
 			Events.Add(alias+"/Start",this.Use);
@@ -121,7 +126,7 @@ namespace Zios{
 		}
 		public virtual void Step(){
 			if(!Application.isPlaying){return;}
-			if(ActionPart.dirty[this]){
+			if(ActionPart.dirty.ContainsKey(this) && ActionPart.dirty[this]){
 				this.SetDirty(false);
 				this.gameObject.Call("@Update Parts");
 			}
