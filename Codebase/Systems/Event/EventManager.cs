@@ -7,18 +7,21 @@ using System.Collections.Generic;
 using UnityEditor;
 #endif
 public static class Events{
-	public static Dictionary<GameObject,Dictionary<string,List<object>>> objectEvents = new Dictionary<GameObject,Dictionary<string,List<object>>>();
-	public static Dictionary<string,List<object>> events = new Dictionary<string,List<object>>();
-	static Events(){Events.Clear();}
-	public static void Clear(){
-		Events.objectEvents.Clear();
-		Events.events.Clear();
+	public static GameObject all = new GameObject("AllEvents");
+	public static GameObject global = new GameObject("GlobalEvents");
+	public static Dictionary<GameObject,Dictionary<string,List<object>>> listeners = new Dictionary<GameObject,Dictionary<string,List<object>>>();
+	public static Dictionary<GameObject,List<string>> callers = new Dictionary<GameObject,List<string>>();
+	static Events(){
+		Events.all.hideFlags = HideFlags.HideAndDontSave;
+		Events.global.hideFlags = HideFlags.HideAndDontSave;
 	}
 	public static void Empty(){}
-	public static void Register(string name){Events.Add(name,()=>{});}
+	public static void Register(string name){Events.Register(name,Events.global);}
 	public static void Register(string name,params GameObject[] targets){
+		targets = targets.Add(Events.all);
 		foreach(GameObject target in targets){
-			Events.AddScope(name,(Method)Events.Empty,target);
+			if(!Events.callers.ContainsKey(target)){Events.callers[target] = new List<string>();}
+			if(!Events.callers[target].Contains(name)){Events.callers[target].Add(name);}
 		}
 	}
 	public static void Add(string name,Method method,params GameObject[] targets){Events.Add(name,(object)method,targets);}
@@ -32,33 +35,31 @@ public static class Events{
 	public static void Add(string name,MethodVector3 method,params GameObject[] targets){Events.Add(name,(object)method,targets);}
 	public static void AddScope(string name,object method,GameObject target){
 		Events.Clean(name,target,method);
-		if(!Events.objectEvents.ContainsKey(target)){
-			Events.objectEvents[target] = new Dictionary<string,List<object>>();
+		if(!Events.listeners.ContainsKey(target)){
+			Events.listeners[target] = new Dictionary<string,List<object>>();
 		}
-		if(!Events.objectEvents[target].ContainsKey(name)){
-			Events.objectEvents[target][name] = new List<object>();
+		if(!Events.listeners[target].ContainsKey(name)){
+			Events.listeners[target][name] = new List<object>();
 		}
-		if(!Events.objectEvents[target][name].Contains(method)){
-			Events.objectEvents[target][name].Add(method);
+		if(!Events.listeners[target][name].Contains(method)){
+			Events.listeners[target][name].Add(method);
 		}
 	}
 	public static void Add(string name,object method,params GameObject[] targets){
-		//name = name.ToLower();
+		Events.AddScope(name,method,Events.all);
+		if(targets.Contains(Events.global)){
+			Events.AddScope(name,method,Events.global);
+			return;
+		}
+		foreach(GameObject target in targets){
+			if(target.IsNull()){continue;}
+			Events.AddScope(name,method,target);
+		}
 		object methodTarget = ((Delegate)method).Target;
-		if(!Events.events.ContainsKey(name)){
-			Events.events[name] = new List<object>();
-		}
-		if(!Events.events[name].Contains(method)){
-			Events.events[name].Add(method);
-		}
 		if(methodTarget != null){
 			Type type = methodTarget.GetType();
 			if(type.IsSubclassOf((typeof(MonoBehaviour)))){
 				GameObject target = ((MonoBehaviour)methodTarget).gameObject;
-				Events.AddScope(name,method,target);
-			}
-			foreach(GameObject target in targets){
-				if(target.IsNull()){continue;}
 				Events.AddScope(name,method,target);
 			}
 		}
@@ -66,10 +67,10 @@ public static class Events{
 	public static void Clean(string ignoreName="",GameObject target=null,object targetMethod=null){
 		#if UNITY_EDITOR 
 		if(!EditorApplication.isPlayingOrWillChangePlaymode && !Application.isPlaying){
-			foreach(var current in Events.objectEvents.Copy()){
+			foreach(var current in Events.listeners.Copy()){
 				GameObject gameObject = current.Key;
 				if(gameObject.IsNull()){
-					Events.objectEvents.Remove(gameObject);
+					Events.listeners.Remove(gameObject);
 					continue;
 				}
 				foreach(var item in current.Value.Copy()){
@@ -83,27 +84,50 @@ public static class Events{
 							copy.Remove(method);
 							//string messageType = method == null ? "empty method" : "duplicate method";
 							//Debug.Log("Events : Removing " + messageType  + " from -- " + gameObject.name + "/" + eventName);
-							Events.objectEvents[gameObject][eventName] = copy;
+							Events.listeners[gameObject][eventName] = copy;
 						}
 					}
-					if(Events.objectEvents[gameObject][eventName].Count < 1){
+					if(Events.listeners[gameObject][eventName].Count < 1){
 						//Debug.Log("Events : Removing empty method list -- " + gameObject.name + "/" + eventName);
-						Events.objectEvents[gameObject].Remove(eventName);
+						Events.listeners[gameObject].Remove(eventName);
 					}
+				}
+			}
+			foreach(var current in Events.callers.Copy()){
+				GameObject gameObject = current.Key;
+				if(gameObject.IsNull()){
+					Events.callers.Remove(gameObject);
 				}
 			}
 		}
 		#endif
 	}
-	public static List<string> GetEvents(GameObject target=null){
+	public static bool HasEvents(string type,GameObject target=null){
+		if(target.IsNull()){target = Events.global;}
+		if(type.Contains("Listen",true)){
+			return Events.listeners.ContainsKey(target);
+		}
+		return Events.callers.ContainsKey(target);
+	}
+	public static bool ContainsEvent(string type,string name,GameObject target=null){
+		if(target.IsNull()){target = Events.global;}
+		if(type.Contains("Listen",true)){
+			return Events.listeners.ContainsKey(target) && Events.listeners[target].ContainsKey(name);
+		}
+		return Events.callers.ContainsKey(target) && Events.callers[target].Contains(name);
+	}
+	public static List<string> GetEvents(string type,GameObject target=null){
 		Events.Clean();
-		if(target.IsNull()){
-			return Events.events.Keys.ToList();
+		if(target.IsNull()){target = Events.global;}
+		if(type.Contains("Listen",true)){
+			if(Events.listeners.ContainsKey(target)){
+				return Events.listeners[target].Keys.ToList();
+			}
 		}
-		if(Events.objectEvents.ContainsKey(target)){
-			return Events.objectEvents[target].Keys.ToList();
+		if(Events.callers.ContainsKey(target)){
+			return Events.callers[target];
 		}
-		return null;
+		return new List<string>();
 	}
 	public static void Handle(object callback,object[] values){
 		object value = values.Length > 0 ? values[0] : null;
@@ -136,19 +160,14 @@ public static class Events{
 		}
 	}
 	public static void Call(string name,params object[] values){
-		if(Events.events.ContainsKey(name)){
-			foreach(object callback in Events.events[name]){
-				Events.Handle(callback,values);
-			}
-			return;
-		}
+		Events.Call(Events.global,name,values);
 	}
 	public static void Call(GameObject target,string name,object[] values){
-		if(!Events.ValidTarget(target,name)){return;}
+		if(!Events.ValidTarget(name,target)){return;}
 		List<object> invalid = new List<object>();
-		if(Events.objectEvents.ContainsKey(target)){
-			if(Events.objectEvents[target].ContainsKey(name)){
-				foreach(object callback in Events.objectEvents[target][name]){
+		if(Events.listeners.ContainsKey(target)){
+			if(Events.listeners[target].ContainsKey(name)){
+				foreach(object callback in Events.listeners[target][name]){
 					if(callback == null || ((Delegate)callback).Target.IsNull()){
 						invalid.Add(callback);
 						continue;
@@ -156,14 +175,14 @@ public static class Events{
 					Events.Handle(callback,values);
 				}
 				foreach(object entry in invalid){
-					Events.objectEvents[target][name].Remove(entry);
+					Events.listeners[target][name].Remove(entry);
 				}
 				return;
 			}
 		}
 	}
 	public static void CallChildren(GameObject target,string name,object[] values,bool self=false){
-		if(!Events.ValidTarget(target,name)){return;}
+		if(!Events.ValidTarget(name,target)){return;}
 		if(self){Events.Call(target,name,values);}
 		Transform[] children = target.GetComponentsInChildren<Transform>();
 		foreach(Transform transform in children){
@@ -172,7 +191,7 @@ public static class Events{
 		}
 	}
 	public static void CallParents(GameObject target,string name,object[] values,bool self=false){
-		if(!Events.ValidTarget(target,name)){return;}
+		if(!Events.ValidTarget(name,target)){return;}
 		if(self){Events.Call(target,name,values);}
 		Transform parent = target.transform.parent;
 		while(parent != null){
@@ -181,43 +200,33 @@ public static class Events{
 		}
 	}
 	public static void CallFamily(GameObject target,string name,object[] values,bool self=false){
-		if(!Events.ValidTarget(target,name)){return;}
+		if(!Events.ValidTarget(name,target)){return;}
 		if(self){Events.Call(target,name,values);}
 		Events.CallChildren(target,name,values);
 		Events.CallParents(target,name,values);
 	}
-	private static bool HasEvent(GameObject target,string name){
-		if(Events.objectEvents.ContainsKey(target)){
-			return Events.objectEvents[target].ContainsKey(name);
-		}
-		return false;
-	}
-	private static bool ValidTarget(GameObject target,string name){
+	public static bool ValidTarget(string name,GameObject target){
 		if(target.IsNull()){
 			Debug.LogWarning("Events : Call attempted on null gameObject -- " + name);
 			return false;
 		}
 		return true;
 	}
-	private static bool HasEvent(string name){
-		return Events.events.ContainsKey(name);
+	public static bool HasEvent(string name,GameObject target=null){
+		if(target.IsNull()){target = Events.global;}
+		return Events.listeners.ContainsKey(target) && Events.listeners[target].ContainsKey(name);
 	}
-	private static object GetEvent(GameObject target,string name){
-		if(Events.objectEvents.ContainsKey(target)){
-			if(Events.objectEvents[target].ContainsKey(name)){
-				return Events.objectEvents[target][name];
+	public static object GetEvent(string name,GameObject target=null){
+		if(target.IsNull()){target = Events.global;}
+		if(Events.listeners.ContainsKey(target)){
+			if(Events.listeners[target].ContainsKey(name)){
+				return Events.listeners[target][name];
 			}
 		}
 		return null;
 	}
-	private static object GetEvent(string name){
-		if(Events.events.ContainsKey(name)){
-			return Events.events[name];
-		}
-		return null;
-	}
 }
-public static class GameObjectEvents{
+public static class GameobjectListeners{
 	public static void Register(this GameObject current,string name,params object[] values){
 		Events.Register(name,current);
 	}

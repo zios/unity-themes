@@ -17,12 +17,12 @@ public class Play3DAnimation : ActionPart{
 	public override void Use(){
 		base.Use();
 		string name = this.animationName.Get();
-		this.target.Call("SetAnimationSpeed",name,this.speed.Get());
-		this.target.Call("SetAnimationWeight",name,this.weight.Get());
-		this.target.Call("PlayAnimation",name);
+		this.target.Call("Set Animation Speed",name,this.speed.Get());
+		this.target.Call("Set Animation Weight",name,this.weight.Get());
+		this.target.Call("Play Animation",name);
 	}
 	public override void End(){
 		base.End();
-		this.target.Call("StopAnimation",this.animationName.Get());
+		this.target.Call("Stop Animation",this.animationName.Get());
 	}
 }

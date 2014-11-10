@@ -36,6 +36,15 @@ namespace Zios{
 				this.inUse.Setup("Active",this,this.controller);
 				this.usable.Setup("Usable",this,this.controller);
 				Events.Add("Action End (Force)",this.End,this.owner);
+				Events.Register("@Update Parts",this.gameObject);
+				Events.Register("Action Start",this.gameObject);
+				Events.Register("Action End",this.gameObject);
+				if(this.owner != this.gameObject){
+					Events.Register("@Update States",this.owner);
+					Events.Register("@Refresh",this.owner);
+					Events.Register(this.alias+"/Start",this.owner);
+					Events.Register(this.alias+"/End",this.owner);
+				}
 				this.SetDirty(true);
 				this.setup = Application.isPlaying;
 			}
@@ -61,7 +70,11 @@ namespace Zios{
 			if(this.usable && this.ready){this.Use();}
 			else if(!this.usable && !this.persist){this.End();}
 		}
-		public void OnDestroy(){this.owner.Call("@Refresh");}
+		public void OnDestroy(){
+			if(!this.owner.IsNull()){
+				this.owner.Call("@Refresh");
+			}
+		}
 		public void SetDirty(bool state){Action.dirty[this.gameObject] = state;}
 		public override void Use(){this.Toggle(true);}
 		public override void End(){this.Toggle(false);}
@@ -70,7 +83,6 @@ namespace Zios{
 				string active = state ? "Start" : "End";
 				this.inUse = state;
 				this.gameObject.Call("Action "+active);
-				this.gameObject.Call(this.alias+"/"+active);
 				this.owner.Call(this.alias+" "+active);
 				this.owner.Call("@Update States");
 				this.SetDirty(true);
@@ -108,13 +120,19 @@ namespace Zios{
 			}
 			if(action.IsNull()){
 				this.action = this.GetComponent<Action>();
-				this.action.Start();
+				if(!action.IsNull()){
+					this.action.Start();
+				}
 			}
 			Events.Add(alias+"/End",this.End);
 			Events.Add(alias+"/Start",this.Use);
 			Events.Add(alias+"/End (Force)",this.ForceEnd);
 			Events.Add("Action Start",this.ActionStart);
 			Events.Add("Action End",this.ActionEnd);
+			Events.Register("@Refresh",this.gameObject);
+			Events.Register("@Update Parts",this.gameObject);
+			Events.Register(this.alias+"/Start",this.gameObject);
+			Events.Register(this.alias+"/End",this.gameObject);
 			this.usable = true;
 			this.SetDirty(true);
 		}
@@ -191,7 +209,11 @@ namespace Zios{
 				this.requirable = state;
 			}
 		}
-		public void OnDestroy(){this.gameObject.Call("@Refresh");}
+		public void OnDestroy(){
+			if(!this.gameObject.IsNull()){
+				this.gameObject.Call("@Refresh");
+			}
+		}
 		public void SetDirty(bool state){ActionPart.dirty[this] = state;}
 		public virtual void ForceEnd(){this.Toggle(false);}
 		public override void Use(){this.Toggle(true);}

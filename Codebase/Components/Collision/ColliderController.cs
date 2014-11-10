@@ -20,7 +20,7 @@ public class CollisionData{
 	}
 }
 [RequireComponent(typeof(Collider))]
-[AddComponentMenu("Zios/Component/Physics/Collider Controller")]
+[AddComponentMenu("Zios/Component/Physics/Collider Controller")][ExecuteInEditMode]
 public class ColliderController : MonoBehaviour{
 	public static Dictionary<GameObject,ColliderController> instances = new Dictionary<GameObject,ColliderController>();
 	public static Collider[] triggers;
@@ -45,17 +45,16 @@ public class ColliderController : MonoBehaviour{
 	//--------------------------------
 	// Unity-Specific
 	//--------------------------------
-	public void Awake(){
-		//Events.AddGet("GetUnblocked",this.OnGetUnblocked);
-		Events.Add("Add Move",(MethodVector3)this.OnMove);
-		this.ResetBlocked(true);
-	}
 	public void Start(){
+		this.ResetBlocked(true);
 		this.fixedTimestep.Setup("Fixed Timestep",this);
 		this.maxStepHeight.Setup("Max Step Height",this);
 		this.maxSlopeAngle.Setup("Max Slope Angle",this);
 		this.minSlideAngle.Setup("Min Slide Angle",this);
 		this.hoverDistance.Setup("Hover Distance",this);
+		Events.Add("Add Move",(MethodVector3)this.OnMove);
+		Events.Register("Trigger",this.gameObject);
+		Events.Register("Collide",this.gameObject);
 		if(Application.isPlaying){
 			if(this.rigidbody == null){
 				this.gameObject.AddComponent("Rigidbody");
@@ -106,6 +105,7 @@ public class ColliderController : MonoBehaviour{
 	// Internal
 	//--------------------------------
 	private void Step(){
+		if(!Application.isPlaying){return;}
 		if(this.move.Count > 0){
 			this.ResetBlocked();
 			this.CheckActive("WakeUp");
@@ -255,9 +255,6 @@ public class ColliderController : MonoBehaviour{
 			if(clearTime){this.lastBlockedTime[name] = 0;}
 		}
 	}
-	//--------------------------------
-	// Utility
-	//--------------------------------
 	public void OnMove(Vector3 move){
 		if(!this.enabled){return;}
 		if(move != Vector3.zero){

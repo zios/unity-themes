@@ -15,18 +15,20 @@ public class EventTargetDrawer : PropertyDrawer{
 		EventTarget eventTarget = property.GetObject<EventTarget>();
 		Target target = eventTarget.target;
 		label.DrawLabel(labelRect,null,true);
+		string eventType = eventTarget.mode == EventMode.Listeners ? "Listen" : "Caller";
+		bool hasEvents = eventType == "Listen" ? !Events.HasEvents("Listen",target.direct) : !Events.HasEvents("Caller",target.direct);
 		bool toggleActive = this.targetMode.ContainsKey(eventTarget) ? this.targetMode[eventTarget] : !eventTarget.name.IsEmpty();
 		this.targetMode[eventTarget] = toggleActive.Draw(valueRect.SetWidth(16),GUI.skin.GetStyle("CheckmarkToggle"));
 		valueRect = valueRect.Add(18,0,-18,0);
 		if(!this.targetMode[eventTarget]){
 			property.FindPropertyRelative("target").Draw(valueRect);
 		}
-		else if(!target.direct.IsNull() && !Events.objectEvents.ContainsKey(target.direct)){
-			string error = "No events found for target -- " + target.direct.name;
+		else if(!target.direct.IsNull() && hasEvents){
+			string error = "No <b>"+eventType+"</b> events found for target -- " + target.direct.name;
 			error.DrawLabel(valueRect,GUI.skin.GetStyle("WarningLabel"));
 		}
 		else{
-			List<string> events = Events.GetEvents(target.direct);
+			List<string> events = eventType == "Listen" ? Events.GetEvents("Listen",target.direct) : Events.GetEvents("Caller",target.direct);
 			if(events.Count > 0){
 				events.Sort();
 				events = events.OrderBy(item=>item.Contains("/")).ToList();
@@ -37,7 +39,7 @@ public class EventTargetDrawer : PropertyDrawer{
 				eventTarget.name = events[index];
 			}
 			else{
-				string error = "No global events exist.";
+				string error = "No global <b>"+eventType+"</b> events exist.";
 				error.Draw(valueRect,GUI.skin.GetStyle("WarningLabel"));
 			}
 		}

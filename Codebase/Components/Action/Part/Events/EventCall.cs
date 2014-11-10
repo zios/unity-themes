@@ -7,6 +7,7 @@ public class EventCall : ActionPart{
 	public override void Start(){
 		base.Start();
 		this.target.Setup("Event",this);
+		this.target.mode = EventMode.Listeners;
 	}
 	public override void Use(){
 		this.target.Call();

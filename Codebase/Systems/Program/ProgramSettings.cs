@@ -13,6 +13,7 @@ namespace Zios{
 			}
 		}
 		public void Start(){
+			Events.Register("Resolution Change");
 			if(Application.isPlaying){
 				Program.Start();
 			}

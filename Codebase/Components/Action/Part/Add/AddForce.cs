@@ -19,6 +19,6 @@ public class AddForce : ActionPart{
 			amount += this.target.Get().transform.up * this.amount.y;
 			amount += this.target.Get().transform.forward * this.amount.z;
 		}
-		this.target.Call("AddForce",amount);
+		this.target.Call("Add Force",amount);
 	}
 }

@@ -97,4 +97,8 @@ public static class ArrayExtension{
 	public static void Clear<T>(this T[] current){
 		Array.Clear(current,0,current.Length);
 	}
+	public static T[] Add<T>(this T[] current,T element){
+		T[] extra = new T[]{element};
+		return current.Concat(extra);
+	}
 }

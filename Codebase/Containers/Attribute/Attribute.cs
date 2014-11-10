@@ -18,7 +18,7 @@ namespace Zios{
 	}
 	[Serializable]
 	public class Attribute<BaseType,Type,DataType,Operator,Special> : Attribute
-	where Type : Attribute<BaseType,Type,DataType,Operator,Special>
+	where Type : Attribute<BaseType,Type,DataType,Operator,Special>,new()
 	where DataType : AttributeData<BaseType,Type,Operator,Special>,new(){
 		public static Dictionary<GameObject,Dictionary<string,Type>> lookup = new Dictionary<GameObject,Dictionary<string,Type>>();
 		public DataType[] data = new DataType[0];
@@ -32,6 +32,15 @@ namespace Zios{
 		}
 		public virtual BaseType HandleSpecial(Special special,BaseType value){return default(BaseType);}
 		public virtual BaseType HandleOperator(Operator sign){return default(BaseType);}
+		public static Type empty = new Type();
+		public static Type Find(GameObject target,string name){
+			if(lookup.ContainsKey(target)){
+				if(lookup[target].ContainsKey(name)){
+					return lookup[target][name];
+				}
+			}
+			return empty;
+		}
 		public override void Add(){
 			List<DataType> newData = new List<DataType>(this.data);
 			newData.Add(new DataType());

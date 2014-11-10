@@ -21,6 +21,6 @@ public class AddMove : ActionPart{
 			amount += transform.up * this.amount.y;
 			amount += transform.forward * this.amount.z;
 		}
-		this.target.Get().Call("AddMove",amount);
+		this.target.Get().Call("Add Move",amount);
 	}
 }

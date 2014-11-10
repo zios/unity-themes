@@ -8,6 +8,7 @@ public class EventListen : ActionPart{
 		base.Start();
 		this.target.Setup("Event",this);
 		this.target.SetupCatch(this.Catch);
+		this.target.mode = EventMode.Callers;
 	}
 	public override void Use(){}
 	public void Catch(){

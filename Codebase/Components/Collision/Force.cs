@@ -19,6 +19,8 @@ public class Force : ActionPart{
 		this.resistence.Setup("Resistence",this);
 		this.minimumImpactVelocity.Setup("Minimum Impact Velocity",this);
 		this.disabled.Setup("Disabled",this);
+		Events.Register("On Impact",this.gameObject);
+		Events.Register("Add Move",this.gameObject);
 		Events.Add("Collide",(MethodObject)this.OnCollide);
 		this.controller = this.GetComponent<ColliderController>();
 	}
@@ -27,9 +29,9 @@ public class Force : ActionPart{
 			Vector3 resistence = Vector3.Scale(this.velocity.Sign(),this.resistence);
 			this.velocity -= resistence * Time.fixedDeltaTime;
 			this.velocity = this.velocity.Clamp(this.terminalVelocity.Get()*-1,this.terminalVelocity);
-			this.gameObject.Call("AddMove",new Vector3(this.velocity.x,0,0));
-			this.gameObject.Call("AddMove",new Vector3(0,this.velocity.y,0));
-			this.gameObject.Call("AddMove",new Vector3(0,0,this.velocity.z));
+			this.gameObject.Call("Add Move",new Vector3(this.velocity.x,0,0));
+			this.gameObject.Call("Add Move",new Vector3(0,this.velocity.y,0));
+			this.gameObject.Call("Add Move",new Vector3(0,0,this.velocity.z));
 		}
 		base.Use();
 	}
@@ -47,7 +49,7 @@ public class Force : ActionPart{
 				Vector3 impact = (this.velocity - original);
 				float impactStrength = impact.magnitude;
 				if(impactStrength > this.minimumImpactVelocity){
-					this.gameObject.Call("OnImpact",impact);
+					this.gameObject.Call("On Impact",impact);
 				}
 			}
 		}

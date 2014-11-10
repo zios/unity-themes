@@ -1,10 +1,12 @@
 using Zios;
 using System;
 using UnityEngine;
+public enum EventMode{Listeners,Callers}
 [Serializable]
 public class EventTarget{
 	public AttributeString name = "";
 	public Target target = new Target();
+	public EventMode mode = EventMode.Listeners;
 	public void Setup(string name,params MonoBehaviour[] scripts){
 		this.name.Setup(name+" Name",scripts);
 		this.target.SkipWarning();
@@ -16,6 +18,8 @@ public class EventTarget{
 		}
 	}
 	public void Call(){
-		this.target.Call(this.name);
+		if(Events.HasEvent(name,this.target.direct)){
+			this.target.Call(this.name);
+		}
 	}
 }
