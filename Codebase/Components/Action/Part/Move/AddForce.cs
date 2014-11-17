@@ -6,8 +6,8 @@ public class AddForce : ActionPart{
 	public ForceType type;
 	public AttributeVector3 amount = Vector3.zero;
 	public Target target = new Target();
-	public override void Start(){
-		base.Start();
+	public override void Awake(){
+		base.Awake();
 		this.target.Setup("Target",this);
 		this.amount.Setup("Amount",this);
 	}

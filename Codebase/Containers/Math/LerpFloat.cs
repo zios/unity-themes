@@ -9,7 +9,7 @@ public class LerpFloat : LerpTransition{
 		return this.Step(current,current);
 	}
 	public float Step(float start,float end){
-		if(end != this.lastEnd && this.resetOnChange){this.Reset();}
+		if(end != this.lastEnd && this.isResetOnChange){this.Reset();}
 		if(!this.active){this.start = start;}
 		this.lastEnd = end;
 		this.CheckActive();

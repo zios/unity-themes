@@ -52,13 +52,13 @@ public class ConsoleController : MonoBehaviour{
 			if(this.methodName != null && this.methodName.Trim() != ""){
 				MethodInfo methodInfo = null;
 				if(this.scope is Type){
-					if(this.scope.HasMethod(this.methodName,BindingFlags.Static|BindingFlags.Public,(Type)this.scope)){
-						methodInfo = this.scope.GetMethod(this.methodName,BindingFlags.Static|BindingFlags.Public,(Type)this.scope);
+					if(this.scope.HasMethod(this.methodName,(Type)this.scope,BindingFlags.Static|BindingFlags.Public)){
+						methodInfo = this.scope.GetMethod(this.methodName,(Type)this.scope,BindingFlags.Static|BindingFlags.Public);
 					}
 				}
 				else{
-					if(this.scope.HasMethod(this.methodName,BindingFlags.Static|BindingFlags.Public)){
-						methodInfo = this.scope.GetMethod(this.methodName,BindingFlags.Static|BindingFlags.Public);
+					if(this.scope.HasMethod(this.methodName,null,BindingFlags.Static|BindingFlags.Public)){
+						methodInfo = this.scope.GetMethod(this.methodName,null,BindingFlags.Static|BindingFlags.Public);
 					}
 				}
 				if(methodInfo != null){

@@ -5,10 +5,10 @@ using UnityEngine;
 public class AttributeModifyVector3 : ActionPart{
 	public AttributeVector3 target = Vector3.zero;
 	public AttributeVector3 value = Vector3.zero;
-	public override void Start(){
-		base.Start();
-		this.target.Setup("Target",this);
+	public override void Awake(){
+		base.Awake();
 		this.target.mode = AttributeMode.Linked;
+		this.target.Setup("Target",this);
 		this.value.Setup("Value",this);
 	}
 	public override void Use(){

@@ -2,12 +2,12 @@ using Zios;
 using UnityEngine;
 [RequireComponent(typeof(Zios.Action))][AddComponentMenu("Zios/Component/Action/Part/Action End")]
 public class ActionEnd: ActionPart{
-	public override void Start(){
-		base.Start();
+	public override void Awake(){
+		this.DefaultAlias("@End");
 		this.DefaultRequirable(false);
 		this.DefaultRate("Update");
 		this.DefaultPriority(20);
-		this.DefaultAlias("@End");
+		base.Awake();
 	}
 	public override void Use(){
 		if(this.action.inUse){

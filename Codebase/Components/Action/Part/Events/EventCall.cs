@@ -4,8 +4,8 @@ using UnityEngine;
 [AddComponentMenu("Zios/Component/Action/Part/Event Call")]
 public class EventCall : ActionPart{
 	public EventTarget target = new EventTarget();
-	public override void Start(){
-		base.Start();
+	public override void Awake(){
+		base.Awake();
 		this.target.Setup("Event",this);
 		this.target.mode = EventMode.Listeners;
 	}

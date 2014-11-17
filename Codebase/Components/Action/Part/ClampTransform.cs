@@ -6,8 +6,8 @@ public class ClampTransform : ActionPart{
 	public LerpVector3 position = new LerpVector3();
 	public LerpVector3 rotation = new LerpVector3();
 	public LerpVector3 scale = new LerpVector3();
-	public override void Start(){
-		base.Start();
+	public override void Awake(){
+		base.Awake();
 		this.DefaultRate("LateUpdate");
 		this.target.Setup("Target",this);
 		this.position.Setup("Position",this);

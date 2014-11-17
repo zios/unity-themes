@@ -31,4 +31,39 @@ public static class Locate{
 		}
 		return matches.ToArray();
 	}
+	public static GameObject[] GetSceneObjects(){
+		GameObject[] all = (GameObject[])Resources.FindObjectsOfTypeAll(typeof(GameObject));
+		List<GameObject> scene = new List<GameObject>();
+		foreach(var current in all){
+			if(current.IsPrefab()){continue;}
+			scene.Add(current);
+		}
+		return scene.ToArray();
+	}
+	public static Type[] GetSceneObjects<Type>() where Type : Component{
+		Type[] all = (Type[])Resources.FindObjectsOfTypeAll(typeof(Type));
+		List<Type> scene = new List<Type>();
+		foreach(var current in all){
+			if(current.IsPrefab()){continue;}
+			scene.Add(current);
+		}
+		return scene.ToArray();
+	}
+	public static GameObject Find(string name){
+		GameObject[] scene = (GameObject[])GameObject.FindObjectsOfType(typeof(GameObject));
+		foreach(GameObject current in scene){
+			string path = current.GetPath();
+			if(path == name || path.Trim("/") == name || path.TrimLeft("/") == name || path.TrimRight("/") == name){
+				return current;
+			}
+		}
+		GameObject[] all = (GameObject[])Resources.FindObjectsOfTypeAll(typeof(GameObject));
+		foreach(GameObject current in all){
+			string path = current.GetPath();
+			if(path == name || path.Trim("/") == name || path.TrimLeft("/") == name || path.TrimRight("/") == name){
+				return current;
+			}
+		}
+		return null;
+	}
 }

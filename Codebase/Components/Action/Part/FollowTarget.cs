@@ -10,14 +10,14 @@ public class FollowTarget : ActionPart{
 	public OffsetType offsetType;
 	public AttributeVector3 offset = Vector3.zero;
 	public AttributeVector3 orbit = Vector3.zero;
-	public override void Start(){
-		base.Start();
+	public override void Awake(){
+		base.Awake();
 		this.DefaultPriority(5);
 		this.source.Setup("Source",this);
 		this.target.Setup("Target",this);
 		this.position.Setup("Follow",this);
-		this.offset.Setup("FollowOffset",this);
-		this.orbit.Setup("FollowOrbit",this);
+		this.offset.Setup("Follow Offset",this);
+		this.orbit.Setup("Follow Orbit",this);
 	}
 	public Vector3 AdjustVector(Vector3 value){
 		Vector3 adjusted = value;

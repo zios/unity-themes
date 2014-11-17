@@ -39,9 +39,8 @@ public class AnimationController : MonoBehaviour{
 			data.name = state.name;
 			data.state = state;
 		}
-		this.Start();
 	}
-	public void Start(){
+	public void Awake(){
 		this.highestPriorityOnly.Setup("Highest Priority Only",this);
 		this.defaultPriority.Setup("Default Priority Only",this);
 		this.defaultTransitionIn.Setup("Default Transition In",this);

@@ -8,6 +8,9 @@ using System.Reflection;
 using System.Security.Cryptography;
 using System.Xml.Serialization;
 public static class ObjectExtension{
+	const BindingFlags allFlags = BindingFlags.Instance|BindingFlags.NonPublic|BindingFlags.Public;
+	const BindingFlags privateFlags = BindingFlags.Instance|BindingFlags.NonPublic;
+	const BindingFlags publicFlags = BindingFlags.Instance|BindingFlags.Public;
 	public static T Cast<T>(this object current,ref T type){
 		return (T)Convert.ChangeType(current,typeof(T));
 	}
@@ -21,7 +24,7 @@ public static class ObjectExtension{
 		if(target == null){
 			return null;
 		}
-		MethodInfo method = target.GetType().GetMethod("MemberwiseClone",BindingFlags.Instance|BindingFlags.NonPublic);
+		MethodInfo method = target.GetType().GetMethod("MemberwiseClone",privateFlags);
 		if(method != null){
 			return (T)method.Invoke(target,null);
 		}
@@ -29,27 +32,27 @@ public static class ObjectExtension{
 			return null;
 		}
 	}
-	public static bool HasMethod(this object current,string name,BindingFlags flags = BindingFlags.Instance|BindingFlags.Public,Type type = null){
+	public static bool HasMethod(this object current,string name,Type type = null,BindingFlags flags = allFlags){
 		Type currentType = type == null ? current.GetType() : type;
 		return currentType.GetMethod(name,flags) != null;
 	}
-	public static bool HasVariable(this object current,string name,Type type = null){
+	public static bool HasVariable(this object current,string name,Type type = null,BindingFlags flags = allFlags){
 		Type currentType = type == null ? current.GetType() : type;
-		bool hasProperty = currentType.GetProperty(name) != null;
-		bool hasField = currentType.GetField(name) != null;
+		bool hasProperty = currentType.GetProperty(name,flags) != null;
+		bool hasField = currentType.GetField(name,flags) != null;
 		return hasProperty || hasField;
 	}
-	public static MethodInfo GetMethod(this object current,string name,BindingFlags flags = BindingFlags.Instance|BindingFlags.Public,Type type = null){
+	public static MethodInfo GetMethod(this object current,string name,Type type = null,BindingFlags flags = allFlags){
 		Type currentType = type == null ? current.GetType() : type;
 		return currentType.GetMethod(name,flags);
 	}
-	public static object GetValue(this object current,string name,int index=-1){
-		return current.GetValue<object>(name,index);
+	public static object GetVariable(this object current,string name,int index=-1,BindingFlags flags = allFlags){
+		return current.GetVariable<object>(name,index,flags);
 	}
-	public static T GetValue<T>(this object current,string name,int index=-1){
+	public static T GetVariable<T>(this object current,string name,int index=-1,BindingFlags flags = allFlags){
 		Type type = current.GetType();
-		PropertyInfo property = type.GetProperty(name);
-		FieldInfo field = type.GetField(name);
+		PropertyInfo property = type.GetProperty(name,flags);
+		FieldInfo field = type.GetField(name,flags);
 		if(index != -1){
 			if(current is Vector3){
 				//return current.Cast<Vector3>()[index].Cast<object>().Cast<T>();
@@ -65,6 +68,23 @@ public static class ObjectExtension{
 			return (T)field.GetValue(current);
 		}
 		return default(T);
+	}
+	public static void SetVariable<T>(this object current,string name,T value,int index=-1){
+		Type type = current.GetType();
+		PropertyInfo property = type.GetProperty(name);
+		FieldInfo field = type.GetField(name);
+		if(index != -1){
+			if(current is Vector3){
+				((Vector3)current)[index] = (float)Convert.ChangeType(value,typeof(float));
+			}
+			((Array)current).SetValue(value,index);
+		}
+		if(property != null){
+			property.SetValue(current,value,null);
+		}
+		if(field != null){
+			field.SetValue(current,value);
+		}
 	}
 	public static List<string> ListVariables(this object current,List<Type> limitTypes = null){
 		List<string> variables = new List<string>();
@@ -90,7 +110,7 @@ public static class ObjectExtension{
 		}
 		return variables;
 	}
-	public static List<string> ListMethods(this object current,List<Type> argumentTypes = null,BindingFlags flags = BindingFlags.Instance|BindingFlags.Public,Type type = null){
+	public static List<string> ListMethods(this object current,List<Type> argumentTypes = null,BindingFlags flags = allFlags,Type type = null){
 		List<string> methods = new List<string>();
 		Type currentType = type == null ? current.GetType() : type;
 		foreach(MethodInfo method in currentType.GetMethods(flags)){

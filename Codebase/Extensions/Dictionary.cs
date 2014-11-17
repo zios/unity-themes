@@ -6,6 +6,11 @@ public static class DictionaryExtension{
 	public static Dictionary<TKey,TValue> Copy<TKey,TValue>(this Dictionary<TKey,TValue> current){
 		return new Dictionary<TKey,TValue>(current);
 	}
+	public static void Setup<TKey,TValue>(this Dictionary<TKey,TValue> current,TKey value){
+		if(!current.ContainsKey(value)){
+			current[value] = default(TValue);
+		}
+	}
 	public static bool ContainsKey(this IDictionary current,string value,bool ignoreCase){
 		value = value.ToLower();
 		foreach(string key in current.Keys){

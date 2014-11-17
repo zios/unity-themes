@@ -1,11 +1,11 @@
 using Zios;
 using UnityEngine;
-[RequireComponent(typeof(Zios.Action))][AddComponentMenu("Zios/Component/Action/Part/Action State (Freeze)")]
+[AddComponentMenu("Zios/Component/Action/Part/Action State (Freeze)")]
 public class ActionStateFreeze : ActionPart{
 	public AttributeBool freezeOnUse = false;
 	public AttributeBool freezeOnEnd = false;
-	public override void Start(){
-		base.Start();
+	public override void Awake(){
+		base.Awake();
 		this.freezeOnUse.Setup("Freeze On Use",this);
 		this.freezeOnEnd.Setup("Freeze On End",this);
 	}

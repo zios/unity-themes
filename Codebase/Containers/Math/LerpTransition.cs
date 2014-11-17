@@ -4,7 +4,7 @@ using System;
 using UnityEngine;
 public class LerpTransition{
 	[HideInInspector] public AttributeBool isAngle = true;
-	[HideInInspector] public AttributeBool resetOnChange = false;
+	[HideInInspector] public AttributeBool isResetOnChange = false;
 	public AttributeFloat speed = 0;
 	public Transition transition = new Transition();
 	protected bool fixedTime;
@@ -12,17 +12,17 @@ public class LerpTransition{
 	public void Reset(){
 		this.active = false;
 	}
-	public virtual void Setup(string name,params MonoBehaviour[] scripts){
-		foreach(MonoBehaviour script in scripts){
-			if(script is ActionPart){
-				ActionPart part = (ActionPart)script;
-				this.fixedTime = part.rate == ActionRate.FixedUpdate;
-			}
+	public virtual void Setup(string path,Component parent){
+		path = path.AddRoot(parent);
+		if(parent is ActionPart){
+			ActionPart part = (ActionPart)parent;
+			this.fixedTime = part.rate == ActionRate.FixedUpdate;
 		}
-		this.isAngle.Setup(name+" Is Angle",scripts);
-		this.resetOnChange.Setup(name+" Reset On Change",scripts);
-		this.speed.Setup(name+" Transition Speed",scripts);
-		this.transition.Setup(name+" Transition",scripts);
+		Events.Add(path+"/Reset Transition",this.Reset,parent.gameObject);
+		this.isAngle.Setup(path+"/Is Angle",parent);
+		this.isResetOnChange.Setup(path+"/Is Reset On Change",parent);
+		this.speed.Setup(path+"/Transition/Speed",parent);
+		this.transition.Setup(path+"/Transition",parent);
 	}
 	public virtual Vector3 FixedStep(Vector3 current,Vector3 end,float size,bool[] useAxes=null){
 		if(useAxes == null){useAxes = new bool[3]{true,true,true};}

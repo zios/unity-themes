@@ -4,7 +4,7 @@ using UnityEngine;
 [AddComponentMenu("Zios/Component/Action/Part/Once Trigger")]
 public class OnceTrigger : ActionPart{
 	private bool triggered;
-	public override void Start(){
+	public override void Awake(){
 		Events.Add("Action End",this.OnActionEnd);
 	}
 	public override void Use(){

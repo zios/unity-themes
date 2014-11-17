@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using Zios.Editor;
 [CustomEditor(typeof(StateController))]
 public class StateControllerEditor : Editor{
+	public float nextStep;
 	private Transform autoSelect;
 	private TableGUI tableGUI = new TableGUI();
 	private StateRow[] data;
@@ -23,7 +24,15 @@ public class StateControllerEditor : Editor{
 			this.autoSelect = null;
 		}
 	}
+	public void EditorUpdate(){
+		StateController stateController = (StateController)this.target;
+		if(!Application.isPlaying && Time.realtimeSinceStartup > this.nextStep){
+			this.nextStep = Time.realtimeSinceStartup + 0.5f;
+			stateController.Refresh();
+		}
+	}
 	public override void OnInspectorGUI(){
+		Utility.EditorCall(this.EditorUpdate);
 		StateController stateController = (StateController)this.target;
 		stateController.UpdateTableList();
 		StateRow[] activeTable = stateController.tables[this.tableIndex];

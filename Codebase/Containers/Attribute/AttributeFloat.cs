@@ -29,7 +29,7 @@ namespace Zios{
 			else if(special == SpecialNumeral.Sqrt){return Mathf.Sqrt(value);}
 			return value;
 		}
-		public override float HandleOperator(OperatorNumeral sign){
+		public override float GetFormulaValue(OperatorNumeral sign){
 			float value = 0;
 			for(int index=0;index<this.data.Length;++index){
 				var data = this.data[index];
@@ -47,8 +47,5 @@ namespace Zios{
 		}
 	}
 	[Serializable]
-	public class AttributeFloatData : AttributeData<float,AttributeFloat,OperatorNumeral,SpecialNumeral>{
-		public AttributeVector3 referenceVector;
-		public int referenceIndex;
-	}
+	public class AttributeFloatData : AttributeData<float,AttributeFloat,OperatorNumeral,SpecialNumeral>{}
 }

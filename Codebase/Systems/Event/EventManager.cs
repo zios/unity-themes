@@ -9,6 +9,7 @@ using UnityEditor;
 public static class Events{
 	public static GameObject all = new GameObject("AllEvents");
 	public static GameObject global = new GameObject("GlobalEvents");
+	public static List<string> warned = new List<string>();
 	public static Dictionary<GameObject,Dictionary<string,List<object>>> listeners = new Dictionary<GameObject,Dictionary<string,List<object>>>();
 	public static Dictionary<GameObject,List<string>> callers = new Dictionary<GameObject,List<string>>();
 	static Events(){
@@ -207,7 +208,10 @@ public static class Events{
 	}
 	public static bool ValidTarget(string name,GameObject target){
 		if(target.IsNull()){
-			Debug.LogWarning("Events : Call attempted on null gameObject -- " + name);
+			if(!Events.warned.Contains(name)){
+				Debug.LogWarning("Events : Call attempted on null gameObject -- " + name,target);
+				Events.warned.Add(name);
+			}
 			return false;
 		}
 		return true;

@@ -8,20 +8,37 @@ namespace Zios{
 	public enum AttributeUsage{Direct,Shaped};
 	[Serializable]
 	public class Attribute{
+		public static List<Attribute> all = new List<Attribute>();
+		public static Dictionary<Attribute,bool> setWarning = new Dictionary<Attribute,bool>();
+		public static Dictionary<Attribute,bool> getWarning = new Dictionary<Attribute,bool>();
+		public static bool ready;
 		public string path;
-		public MonoBehaviour script;
+		public string id;
+		public Component parent;
 		public AttributeMode mode = AttributeMode.Normal;
 		public bool locked;
+		public virtual AttributeData[] GetData(){return null;}
+		public virtual void Clear(){}
 		public virtual void Add(){}
 		public virtual void Remove(AttributeData data){}
-		public virtual void Setup(string name,params MonoBehaviour[] scripts){}
+		public virtual void Setup(string path,Component parent){}
+		public virtual void SetupTable(){}
+		public virtual void SetupData(){}
 	}
 	[Serializable]
 	public class Attribute<BaseType,Type,DataType,Operator,Special> : Attribute
 	where Type : Attribute<BaseType,Type,DataType,Operator,Special>,new()
 	where DataType : AttributeData<BaseType,Type,Operator,Special>,new(){
+		public static bool editorStart;
+		public static Type empty = new Type();
 		public static Dictionary<GameObject,Dictionary<string,Type>> lookup = new Dictionary<GameObject,Dictionary<string,Type>>();
+		public Func<BaseType> getMethod;
+		public Action<BaseType> setMethod;
 		public DataType[] data = new DataType[0];
+		public Target target{
+			get{return this.data[0].target;}
+			set{this.data[0].target = value;}
+		}
 		public AttributeUsage usage{
 			get{return this.data[0].usage;}
 			set{
@@ -30,9 +47,9 @@ namespace Zios{
 				}
 			}
 		}
+		public override AttributeData[] GetData(){return this.data;}
 		public virtual BaseType HandleSpecial(Special special,BaseType value){return default(BaseType);}
-		public virtual BaseType HandleOperator(Operator sign){return default(BaseType);}
-		public static Type empty = new Type();
+		public virtual BaseType GetFormulaValue(Operator sign){return default(BaseType);}
 		public static Type Find(GameObject target,string name){
 			if(lookup.ContainsKey(target)){
 				if(lookup[target].ContainsKey(name)){
@@ -58,56 +75,120 @@ namespace Zios{
 			}
 			this.data = newData.ToArray();
 		}
-		public override void Setup(string name,params MonoBehaviour[] scripts){
+		public override void Setup(string path,Component parent){
+			if(parent.IsNull()){return;}
+			if(this.mode == AttributeMode.Linked){this.usage = AttributeUsage.Shaped;}
+			this.parent = parent;
+			this.path = path.AddRoot(parent);
+			this.id = this.id.IsEmpty() ? Guid.NewGuid().ToString() : this.id;
+			foreach(var data in this.data){
+				if(data.usage == AttributeUsage.Direct){continue;}
+				data.target.Setup(this.path+"/Target",parent);
+				data.target.DefaultSearch("[This]");
+			}
+			if(parent.HasVariable("hasReset") && parent.GetVariable<bool>("hasReset")){
+				if(this.id.IsEmpty()){return;}
+				parent.SetVariable<bool>("hasReset",false);
+				if(Attribute.all.FindAll(x=>x.id==this.id).Count < 2){
+					Attribute.all.RemoveAll(x=>x.id==this.id);
+				}
+				this.id = Guid.NewGuid().ToString();
+				Attribute.all.Add(this);
+				return;
+			}
+			var exists = Attribute.all.Find(item=>item.parent.GetHashCode()==this.parent.GetHashCode() && item.path==this.path);
+			if(exists.IsNull()){
+				var idMatch = Attribute.all.Find(item=>item.id==this.id);
+				bool duplicate = idMatch != null && idMatch.parent.GetHashCode() != parent.GetHashCode();
+				if(duplicate){
+					Debug.LogWarning("Attribute : Resolving duplicate id -- " + this.path);
+					this.id = Guid.NewGuid().ToString();
+				}
+				Attribute.all.Add(this);
+			}
+		}
+		public override void SetupTable(){
+			Type self = (Type)this;
+			GameObject target = this.parent.gameObject;
 			var lookup = this.GetLookupTable();
-			this.script = scripts[0];
-			string path = "";
-			name = name.Trim();
-			foreach(MonoBehaviour script in scripts){
-				if(script == null){continue;}
-				int index = scripts.IndexOf(script);
-				if(path.IsEmpty() && script.HasVariable("alias")){
-					path = script.GetValue<string>("alias") + "/";
+			if(!lookup.ContainsKey(target)){
+				lookup[target] = new Dictionary<string,Type>();
+			}
+			lookup[target].RemoveValue(self);
+			lookup[target][this.id] = self;
+		}
+		public override void SetupData(){
+			var lookup = this.GetLookupTable();
+			foreach(var data in this.data){
+				if(this.mode == AttributeMode.Linked){data.usage = AttributeUsage.Shaped;}
+				if(data.usage == AttributeUsage.Direct){continue;}
+				GameObject target = data.target.Get();
+				if(data.reference.IsNull() && !data.referenceID.IsEmpty() && !target.IsNull()){
+					if(!lookup.ContainsKey(target)){
+						lookup[target] = new Dictionary<string,Type>();
+					}
+					if(lookup[target].ContainsKey(data.referenceID)){
+						data.reference = lookup[target][data.referenceID];
+					}
 				}
-				GameObject target = script.gameObject;
-				string prefix = index == 0 ? "" : "*/";
-				string current = (prefix + path + name).Trim("/"," ");
-				if(!lookup.ContainsKey(target)){
-					lookup[target] = new Dictionary<string,Type>();
-				}
+			}
+		}
+		public void AddScope(Component parent){
+			if(parent.IsNull()){return;}
+			var lookup = this.GetLookupTable();
+			GameObject target = parent.gameObject;
+			if(lookup.ContainsKey(target)){
 				Type self = (Type)this;
 				lookup[target].RemoveValue(self);
-				lookup[target][current] = self;
-			}
-			this.path = (path + name).Trim("/"," ");
-			foreach(var data in this.data){
-				data.target.Setup(name+"Target",scripts);
-				data.target.DefaultSearch("[This]");
+				lookup[target]["*/"+this.path] = self;
 			}
 		}
 		public BaseType Get(){
+			if(this.getMethod != null){	return this.getMethod();}
 			DataType first = this.data[0];
 			if(this.mode != AttributeMode.Formula){
 				return this.GetValue(first);
 			}
-			return this.HandleOperator(first.sign);
+			return this.GetFormulaValue(first.sign);
 		}
 		public void Set(BaseType value){
+			if(this.setMethod != null){
+				this.setMethod(value);
+				return;
+			}
 			if(this.data == null || this.data.Length < 1){
-				Debug.LogWarning("Attribute : No data found. (" + this.path + ")");
+				if(!Attribute.setWarning.ContainsKey(this)){
+					Debug.LogWarning("Attribute : No data found. (" + this.path + ")",this.target);
+					Attribute.setWarning[this] = true;
+				}
 			}
 			else if(this.mode == AttributeMode.Normal){
+				if(this.usage == AttributeUsage.Shaped){
+					this.usage = AttributeUsage.Direct;
+				}
 				this.data[0].value = value;
 			}
 			else if(this.mode == AttributeMode.Linked){
+				if(!Attribute.ready && Application.isPlaying){
+					Debug.LogWarning("Attribute : Set attempt before attribute data built -- " + this.path);
+					return;
+				}
 				if(data[0].reference == null){
-					Debug.LogWarning("Attribute : No reference found. (" + this.path + ")");
+					if(!Attribute.setWarning.ContainsKey(this)){
+						string source = "("+this.path+")";
+						string goal = (data[0].target.Get().GetPath() + data[0].referencePath).Trim("/");
+						Debug.LogWarning("Attribute (Set): No reference found for " + source + " to " + goal,this.parent);
+						Attribute.setWarning[this] = true;
+					}
 					return;
 				}
 				this.data[0].reference.Set(value);
 			}
 			else if(this.mode == AttributeMode.Formula){
-				Debug.LogWarning("Attribute : Cannot manually set values for formulas. (" + this.path + ")");
+				if(!Attribute.setWarning.ContainsKey(this)){
+					Debug.LogWarning("Attribute (Set): Cannot manually set values for formulas. (" + this.path + ")",this.parent);
+					Attribute.setWarning[this] = true;
+				}
 			}
 		}
 		public BaseType GetValue(DataType data){
@@ -115,14 +196,34 @@ namespace Zios{
 				return data.value;
 			}
 			else if(this.mode == AttributeMode.Linked || data.usage == AttributeUsage.Shaped){
+				if(!Attribute.ready && Application.isPlaying){
+					Debug.LogWarning("Attribute : Get attempt before attribute data built -- " + this.path,this.parent);
+					return default(BaseType);
+				}
 				if(data.reference == null){
-					Debug.LogWarning("Attribute : No reference found. (" + this.path + ")");
+					if(!Attribute.getWarning.ContainsKey(this)){
+						string source = "("+this.path+")";
+						string goal = (data.target.Get().GetPath() + data.referencePath).Trim("/");
+						Debug.LogWarning("Attribute (Get): No reference found for " + source + " to " + goal,this.parent);
+						Attribute.getWarning[this] = true;
+					}
+					return default(BaseType);
+				}
+				else if(data.reference == this || data.reference.data[0].reference == this){
+					if(!Attribute.getWarning.ContainsKey(this)){
+						Debug.LogWarning("Attribute (Get): References self. (" + this.path + ")",this.parent);
+						Attribute.getWarning[this] = true;
+					}
 					return default(BaseType);
 				}
 				BaseType value = data.reference.Get();
+				if(this.mode == AttributeMode.Linked){return value;}
 				return this.HandleSpecial(data.special,value);
-			}		
-			Debug.LogWarning("Attribute : No value found. (" + this.path + ")");
+			}
+			if(!Attribute.getWarning.ContainsKey(this)){
+				Debug.LogWarning("Attribute (Get): No value found. (" + this.path + ") to " + data.referencePath,this.parent);
+				Attribute.getWarning[this] = true;
+			}
 			return default(BaseType);
 		}
 		public Dictionary<GameObject,Dictionary<string,Type>> GetLookupTable(){
@@ -135,17 +236,19 @@ namespace Zios{
 	public class AttributeData{
 		public Target target = new Target();
 		public AttributeUsage usage;
+		public string referenceID;
+		public string referencePath;
 	}
 	[Serializable]
-	public class AttributeData<Type,AttributeType,Operator,Special> : AttributeData
+	public class AttributeData<BaseType,AttributeType,Operator,Special> : AttributeData
 		where Operator : struct 
 		where Special : struct{
-		public AttributeType reference;
-		public Type value;
+		[NonSerialized] public AttributeType reference;
+		public BaseType value;
 		public Operator sign;
 		public Special special;
 		public bool clamp;
-		public Type clampMin;
-		public Type clampMax;
+		public BaseType clampMin;
+		public BaseType clampMax;
 	}
 }

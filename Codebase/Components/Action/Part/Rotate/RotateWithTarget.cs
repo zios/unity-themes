@@ -5,8 +5,8 @@ public class RotateWithTarget : ActionPart{
 	public Target source = new Target();
 	public Target target = new Target();
 	public LerpVector3 angles = new LerpVector3();
-	public override void Start(){
-		base.Start();
+	public override void Awake(){
+		base.Awake();
 		this.DefaultRate("LateUpdate");
 		this.source.Setup("Source",this);
 		this.target.Setup("Target",this);

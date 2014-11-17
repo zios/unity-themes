@@ -6,8 +6,8 @@ public class CopyDirection : ActionPart{
 	public Direction direction;
 	public Target source = new Target();
 	public AttributeVector3 target = Vector3.zero;
-	public override void Start(){
-		base.Start();
+	public override void Awake(){
+		base.Awake();
 		this.DefaultPriority(5);
 		this.source.Setup("Source",this);
 		this.target.Setup("Target",this);

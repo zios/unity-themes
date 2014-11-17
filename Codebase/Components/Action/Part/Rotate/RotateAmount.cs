@@ -4,8 +4,8 @@ using UnityEngine;
 public class RotateAmount : ActionPart{
 	public AttributeVector3 amount = Vector3.zero;
 	public Target target = new Target();
-	public override void Start(){
-		base.Start();
+	public override void Awake(){
+		base.Awake();
 		this.DefaultRate("FixedUpdate");
 		this.target.Setup("Target",this);
 	}

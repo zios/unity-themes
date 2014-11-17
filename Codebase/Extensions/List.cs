@@ -10,6 +10,11 @@ public static class ListExtension{
 		current.Remove(item);
 		current.Insert(newIndex,item);
 	}
+	public static void Setup<T>(this List<T> current,T value){
+		if(!current.Contains(value)){
+			current.Add(value);
+		}
+	}
 	public static int IndexOf<T>(this List<T> current,T type){
 		return Array.IndexOf(current.ToArray(),type);
 	}
@@ -37,6 +42,11 @@ public static class ListExtension{
 		}
 		return newList;
 	}
+	public static List<T> Order<T>(this List<T> current){
+		var copy = current.Copy();
+		copy.Sort();
+		return copy;
+	}
 	public static List<string> Filter(this IEnumerable<string> current,string text){
 		List<string> newList = new List<string>();
 		bool wildcard = text.Contains("*");
@@ -60,8 +70,8 @@ public static class ListExtension{
 }
 public enum SortOrientation{
 	Ascending,
-	Descending}
-;
+	Descending
+};
 public class SortOptions{
 	public int fieldNumber = -1;
 	public string field;

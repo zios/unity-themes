@@ -7,8 +7,8 @@ public class Play3DAnimation : ActionPart{
 	public AttributeFloat speed = 1;
 	public AttributeFloat weight = 1;
 	public Target target;
-	public override void Start(){
-		base.Start();
+	public override void Awake(){
+		base.Awake();
 		this.animationName.Setup("Animation Name",this);
 		this.speed.Setup("Speed",this);
 		this.weight.Setup("Weight",this);

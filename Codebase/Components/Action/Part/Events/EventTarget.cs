@@ -7,10 +7,10 @@ public class EventTarget{
 	public AttributeString name = "";
 	public Target target = new Target();
 	public EventMode mode = EventMode.Listeners;
-	public void Setup(string name,params MonoBehaviour[] scripts){
-		this.name.Setup(name+" Name",scripts);
+	public void Setup(string name,Component component){
+		this.name.Setup(name+"/Name",component);
 		this.target.SkipWarning();
-		this.target.Setup(name+" Target",scripts[0],"");
+		this.target.Setup(name+"/Target",component,"");
 	}
 	public void SetupCatch(Method method){
 		if(!this.name.IsEmpty() && this.target.direct != null){

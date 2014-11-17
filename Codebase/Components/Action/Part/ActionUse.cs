@@ -2,10 +2,10 @@ using Zios;
 using UnityEngine;
 [RequireComponent(typeof(Zios.Action))][AddComponentMenu("Zios/Component/Action/Part/Action Use")]
 public class ActionUse : ActionPart{
-	public override void Start(){
-		base.Start();
-		this.DefaultPriority(10);
+	public override void Awake(){
 		this.DefaultAlias("@Use");
+		this.DefaultPriority(10);
+		base.Awake();
 		Events.Add("Action End",this.OnActionEnd);
 	}
 	public override void Use(){
@@ -19,9 +19,7 @@ public class ActionUse : ActionPart{
 		base.End();
 	}
 	public override void End(){
-		bool canEnd = !this.action.inUse;
-		if(this.action.persist){canEnd = false;}
-		if(canEnd){
+		if(!this.action.inUse){
 			this.OnActionEnd();
 		}
 	}

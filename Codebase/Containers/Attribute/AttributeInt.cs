@@ -26,7 +26,7 @@ namespace Zios{
 			else if(special == SpecialNumeral.Sqrt){return (int)Mathf.Sqrt(value);}
 			return value;
 		}
-		public override int HandleOperator(OperatorNumeral sign){
+		public override int GetFormulaValue(OperatorNumeral sign){
 			int value = 0;
 			for(int index=0;index<this.data.Length;++index){
 				var data = this.data[index];

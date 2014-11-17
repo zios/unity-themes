@@ -81,11 +81,11 @@ namespace Zios.Editor{
 			this.header.showEmpty = this.showEmpty;
 			this.header.sortOptions = this.sortOptions;
 			this.header.Draw();
-			if(onCompare != null && this.header.sortColumn > -1 && !this.emptyColumns.Contains(this.header.sortColumn - 1)){
+			/*if(onCompare != null && this.header.sortColumn > -1 && !this.emptyColumns.Contains(this.header.sortColumn - 1)){
 				this.sortOptions.Setup(this.header.sortColumn);
 				this.rows.Sort(this.sortOptions,CompareRows);
 				this.header.sortColumn = -1;
-			}
+			}*/
 			foreach(TableRow row in this.rows){
 				row.emptyColumns = this.emptyColumns;
 				row.showEmpty = this.showEmpty;
@@ -294,7 +294,7 @@ namespace Zios.Editor{
 				this.style.normal = this.style.active;	
 			} 
 			if(this.target is string || this.target.HasVariable("name")){
-				string name = this.target is string ? (string)this.target : this.target.GetValue<string>("name");
+				string name = this.target is string ? (string)this.target : this.target.GetVariable<string>("name");
 				this.empty = name == null || name.Equals("");
 				GUILayout.Label(name);
 				this.CheckClick();

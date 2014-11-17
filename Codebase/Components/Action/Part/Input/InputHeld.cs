@@ -12,8 +12,8 @@ public class InputHeld : ActionPart{
 	[HideInInspector] public AttributeFloat intensity = 0;
 	[HideInInspector] public bool held;
 	[NonSerialized] public bool lastHeld;
-	public override void Start(){
-		base.Start();
+	public override void Awake(){
+		base.Awake();
 		this.DefaultPriority(5);
 		this.inputName.Setup("InputName",this);
 		this.forcePositiveIntensity.Setup("Force Positive Intensity",this);

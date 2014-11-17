@@ -7,8 +7,8 @@ public class RotateTowardsTarget : ActionPart{
 	public AttributeVector3 offset = Vector3.zero;
 	public OffsetType offsetType;
 	public LerpVector3 angles = new LerpVector3();
-	public override void Start(){
-		base.Start();
+	public override void Awake(){
+		base.Awake();
 		this.DefaultRate("LateUpdate");
 		this.source.Setup("Source",this);
 		this.target.Setup("Target",this);
@@ -25,6 +25,10 @@ public class RotateTowardsTarget : ActionPart{
 			adjusted += target.forward * value.z;
 		}
 		return adjusted;
+	}
+	public override void End(){
+		this.angles.Reset();
+		base.End();
 	}
 	public override void Use(){
 		Transform source = this.source.Get().transform;

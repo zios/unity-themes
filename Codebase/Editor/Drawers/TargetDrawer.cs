@@ -43,13 +43,17 @@ public class TargetDrawer : PropertyDrawer{
 			}
 		}
 		else{
+			if(!target.direct.IsNull() && propertyRect.Clicked(1)){
+				Selection.activeGameObject = target.direct;
+			}
 			string previous = target.search;
 			target.search = target.search.Draw(propertyRect);
 			if(!previous.IsEmpty() && target.search.IsEmpty()){
 				GUI.FocusControl(null);
 			}
 			property.FindPropertyRelative("search").stringValue = target.search;
-			string result = target.direct != null ? target.direct.GetPath() : "Not Found.";
+			string result = target.direct != null ? target.direct.GetPath().Trim("/") : "Not Found.";
+			//EditorGUIUtility.AddCursorRect(propertyRect,MouseCursor.Arrow);
 			result.DrawLabel(propertyRect,GUI.skin.GetStyle("SubtleInfo"));
 		}
         EditorGUI.EndProperty();

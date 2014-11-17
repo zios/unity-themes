@@ -19,7 +19,7 @@ namespace Zios{
 			else if(special == SpecialString.Capitalize){return value.Capitalize();}
 			return value;
 		}
-		public override string HandleOperator(OperatorString sign){
+		public override string GetFormulaValue(OperatorString sign){
 			string value = "";
 			for(int index=0;index<this.data.Length;++index){
 				var data = this.data[index];

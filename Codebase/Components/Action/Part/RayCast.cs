@@ -10,8 +10,8 @@ public class RayCast : ActionPart{
 	public Target source = new Target();
 	public LayerMask layers = -1;
 	public AttributeBool relative = false;
-	public override void Start(){
-		base.Start();
+	public override void Awake(){
+		base.Awake();
 		this.DefaultPriority(5);
 		this.distance.Setup("Distance",this);
 		this.direction.Setup("Direction",this);

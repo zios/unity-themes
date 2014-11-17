@@ -63,4 +63,10 @@ public static class Vector3Extension{
 	public static Vector3 RotateAround(this Vector3 current,Vector3 point,Vector3 euler){
 		return euler.ToRotation() * (current - point) + point;
 	}
+	public static bool Approximately(this Vector3 current,Vector3 value){
+		bool x = Mathf.Approximately(current.x,value.x);
+		bool y = Mathf.Approximately(current.y,value.y);
+		bool z = Mathf.Approximately(current.z,value.z);
+		return x && y && z;
+	}
 }

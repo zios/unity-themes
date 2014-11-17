@@ -11,8 +11,8 @@ public class TimerState : ActionPart{
 	private float endTime;
 	private AttributeBool isActive = false;
 	private AttributeBool isComplete = false;
-	public override void Start(){
-		base.Start();
+	public override void Awake(){
+		base.Awake();
 		this.DefaultPriority(5);
 		if(this.rate == ActionRate.ActionStart || this.rate == ActionRate.ActionEnd){
 			Debug.LogWarning("TimerState ["+this.alias+"] cannot use single-use ActionStart/ActionEnd triggers.");

@@ -9,7 +9,7 @@ public class LerpInt : LerpTransition{
 		return this.Step(current,current);
 	}
 	public virtual int Step(int start,int end){
-		if(end != this.lastEnd && this.resetOnChange){this.Reset();}
+		if(end != this.lastEnd && this.isResetOnChange){this.Reset();}
 		if(!this.active){this.start = start;}
 		this.lastEnd = end;
 		this.CheckActive();

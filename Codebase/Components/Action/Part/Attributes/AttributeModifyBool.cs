@@ -5,8 +5,8 @@ using UnityEngine;
 public class AttributeModifyBool : ActionPart{
 	public AttributeBool target = false;
 	public AttributeBool value = false;
-	public override void Start(){
-		base.Start();
+	public override void Awake(){
+		base.Awake();
 		this.target.Setup("Target",this);
 		this.target.mode = AttributeMode.Linked;
 		this.value.Setup("Value",this);

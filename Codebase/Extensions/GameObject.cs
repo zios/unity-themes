@@ -1,4 +1,7 @@
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 using System;
 using System.Collections.Generic;
 public static class GameObjectExtension{
@@ -14,6 +17,37 @@ public static class GameObjectExtension{
 			}
 		}
 		return results.ToArray();
+	}
+	public static T GetComponent<T>(this GameObject current,bool includeInactive) where T : Component{
+		T[] results = current.GetComponentsInChildren<T>(includeInactive);
+		if(results.Length > 0){
+			return results[0];
+		}
+		return null;
+	}
+	public static T[] GetComponents<T>(this GameObject current,bool includeInactive) where T : Component{
+		List<T> results = new List<T>();
+		T[] search = current.GetComponentsInChildren<T>(includeInactive);
+		foreach(T item in search){
+			if(item.transform == current.transform){
+				results.Add(item);
+			}
+		}
+		return results.ToArray();
+	}
+	public static T GetComponentInParent<T>(this GameObject current,bool includeInactive) where T : Component{
+		T[] results = current.GetComponentsInParent<T>(includeInactive);
+		if(results.Length > 0){
+			return results[0];
+		}
+		return null;
+	}
+	public static T GetComponentInChildren<T>(this GameObject current,bool includeInactive) where T : Component{
+		T[] results = current.GetComponentsInChildren<T>(includeInactive);
+		if(results.Length > 0){
+			return results[0];
+		}
+		return null;
 	}
 	//====================
 	// Layers / Tags
@@ -100,34 +134,6 @@ public static class GameObjectExtension{
 	//====================
 	// Components
 	//====================
-	public static Component GetComponentInParents(this GameObject current,Type type){
-		Transform node = current.transform.parent;
-		while(node != null){
-			Component component = node.GetComponent(type);
-			if(component != null){return component;}
-			node = node.parent;
-		}
-		return null;
-	}
-	public static T GetComponentInParents<T>(this GameObject current) where T : Component{
-		Transform node = current.transform.parent;
-		while(node != null){
-			T component = node.GetComponent<T>();
-			if(component != null){return component;}
-			node = node.parent;
-		}
-		return null;
-	}
-	public static T[] GetComponentsInParents<T>(this GameObject current) where T : Component{
-		List<T> results = new List<T>();
-		Transform node = current.transform.parent;
-		while(node != null){
-			T[] components = node.GetComponents<T>();
-			foreach(T item in components){results.Add(item);}
-			node = node.parent;
-		}
-		return results.ToArray();
-	}
 	public static void EnableComponents(this GameObject current,params Type[] types){
 		current.ToggleComponents(true,false,types);
 	}
@@ -172,20 +178,36 @@ public static class GameObjectExtension{
 		current.transform.position = position;
 	}
 	public static string GetPath(this GameObject current){	
-		if(current.IsNull() || current.transform.IsNull()){return "";}
 		string path = current.transform.name;
+		PrefabType type = PrefabUtility.GetPrefabType(current);
+		if(current.hideFlags == HideFlags.HideInHierarchy || type == PrefabType.Prefab || type == PrefabType.ModelPrefab){
+			path = "Prefab/"+path;
+		 }
+		if(current.IsNull() || current.transform.IsNull()){return "";}
 		Transform parent = current.transform.parent;
 		while(!parent.IsNull()){
 			path = parent.name + "/" + path;
 			parent = parent.parent;
 		}
-		return path;
+		return "/" + path + "/";
 	}
 	public static GameObject GetParent(this GameObject current){
 		if(current.transform.parent != null){
 			return current.transform.parent.gameObject;
 		}
 		return null;
+	}
+	public static bool IsPrefab(this GameObject current){
+		if(current.hideFlags == HideFlags.NotEditable || current.hideFlags == HideFlags.HideAndDontSave){
+			return true;
+		}
+		#if UNITY_EDITOR
+		string assetPath = AssetDatabase.GetAssetPath(current.transform.root.gameObject);
+		if(!assetPath.IsEmpty()){
+			return true;
+		}
+		#endif
+		return false;
 	}
 	//====================
 	// Find

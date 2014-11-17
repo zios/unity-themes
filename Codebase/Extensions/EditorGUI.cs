@@ -65,11 +65,11 @@ public static class GUIExtension{
 	}
 	public static void Draw(this SerializedProperty current,Rect area,string label="",bool allowScene=true,bool indention=false){
 		GUIExtension.Draw(()=>EditorGUI.PropertyField(area,current,new GUIContent(label),allowScene),indention);
-		current.serializedObject.ApplyModifiedProperties();
+		//current.serializedObject.ApplyModifiedProperties();
 	}
 	public static void Draw(this SerializedProperty current,Rect area,GUIContent label,bool allowScene=true,bool indention=false){
 		GUIExtension.Draw(()=>EditorGUI.PropertyField(area,current,label,allowScene),indention);
-		current.serializedObject.ApplyModifiedProperties();
+		//current.serializedObject.ApplyModifiedProperties();
 	}
 	public static Rect Draw(this Rect current,Rect area,bool indention=false){
 		return GUIExtension.Draw<Rect>(()=>EditorGUI.RectField(area,current),indention);
@@ -89,23 +89,23 @@ public static class GUIExtension{
 	public static Color Draw(this Color current,Rect area,bool indention=false){
 		return GUIExtension.Draw<Color>(()=>EditorGUI.ColorField(area,current),indention);
 	}
-	public static string DrawLabeled(this string current,Rect area,GUIContent label,GUIStyle style=null,bool indention=false){
+	public static string DrawLabeled(this string current,Rect area,GUIContent label,GUIStyle style=null,bool indention=true){
 		style = style ?? EditorStyles.textField;
 		return GUIExtension.Draw<string>(()=>EditorGUI.TextField(area,label,current,style),indention);
 	}
-	public static int DrawLabeledInt(this int current,Rect area,GUIContent label,GUIStyle style=null,bool indention=false){
+	public static int DrawLabeledInt(this int current,Rect area,GUIContent label,GUIStyle style=null,bool indention=true){
 		style = style ?? EditorStyles.numberField;
 		return GUIExtension.Draw<int>(()=>EditorGUI.IntField(area,label,current,style),indention);
 	}
-	public static float DrawLabeled(this float current,Rect area,GUIContent label,GUIStyle style=null,bool indention=false){
+	public static float DrawLabeled(this float current,Rect area,GUIContent label,GUIStyle style=null,bool indention=true){
 		style = style ?? EditorStyles.numberField;
 		return GUIExtension.Draw<float>(()=>EditorGUI.FloatField(area,label,current,style),indention);
 	}
-	public static bool DrawLabeled(this bool current,Rect area,GUIContent label,GUIStyle style=null,bool indention=false){
+	public static bool DrawLabeled(this bool current,Rect area,GUIContent label,GUIStyle style=null,bool indention=true){
 		style = style ?? EditorStyles.toggle;
 		return GUIExtension.Draw<bool>(()=>EditorGUI.Toggle(area,label,current,style),indention);
 	}
-	public static Vector3 DrawLabeled(this Vector3 current,Rect area,GUIContent label,bool indention=false){
+	public static Vector3 DrawLabeled(this Vector3 current,Rect area,GUIContent label,bool indention=true){
 		return GUIExtension.Draw<Vector3>(()=>EditorGUI.Vector3Field(area,label,current),indention);
 	}
 }

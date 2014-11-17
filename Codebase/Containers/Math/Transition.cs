@@ -14,9 +14,10 @@ public class Transition{
 		this.startTime = time + this.delayStart;
 		this.endTime = time + this.duration + this.delayStart;
 	}
-	public virtual void Setup(string name="",params MonoBehaviour[] scripts){
-		this.duration.Setup(name+" Duration",scripts);
-		this.delayStart.Setup(name+" Delay Start",scripts);
+	public virtual void Setup(string path,Component parent){
+		path = path.AddRoot(parent);
+		this.duration.Setup(path+"/Duration",parent);
+		this.delayStart.Setup(path+"/Delay Start",parent);
 		this.duration.locked = true;
 		this.delayStart.locked = true;
 	}

@@ -15,9 +15,21 @@ namespace Zios{
 		public static Vector3 operator *(AttributeVector3 current,Vector3 amount){return Vector3.Scale(current.Get(),amount);}
 		public static Vector3 operator +(AttributeVector3 current,Vector3 amount){return current.Get() + amount;}
 		public static Vector3 operator -(AttributeVector3 current,Vector3 amount){return current.Get() - amount;}
-		public float x{get{return this.Get().x;}set{this.SetX(value);}}
-		public float y{get{return this.Get().y;}set{this.SetY(value);}}
-		public float z{get{return this.Get().z;}set{this.SetZ(value);}}
+		public AttributeFloat x = 0;
+		public AttributeFloat y = 0;
+		public AttributeFloat z = 0;
+		public override void Setup(string path,Component component){
+			base.Setup(path,component);
+			this.x.Setup(path+"/X",component);
+			this.y.Setup(path+"/Y",component);
+			this.z.Setup(path+"/Z",component);
+			this.x.getMethod = ()=>this.Get().x;
+			this.y.getMethod = ()=>this.Get().y;
+			this.z.getMethod = ()=>this.Get().z;
+			this.x.setMethod = this.SetX;
+			this.y.setMethod = this.SetY;
+			this.z.setMethod = this.SetZ;
+		}
 		public override Vector3 HandleSpecial(SpecialVector3 special,Vector3 value){
 			if(this.mode == AttributeMode.Linked){return value;}
 			else if(special == SpecialVector3.Flip){return value * -1;}
@@ -25,7 +37,7 @@ namespace Zios{
 			else if(special == SpecialVector3.Sign){return value.Sign();}
 			return value;
 		}
-		public override Vector3 HandleOperator(OperatorVector3 sign){
+		public override Vector3 GetFormulaValue(OperatorVector3 sign){
 			Vector3 value = Vector3.zero;
 			for(int index=0;index<this.data.Length;++index){
 				var data = this.data[index];

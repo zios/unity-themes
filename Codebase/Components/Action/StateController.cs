@@ -4,12 +4,8 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using UnityObject = UnityEngine.Object;
-#if UNITY_EDITOR 
-using UnityEditor;
-#endif
 [AddComponentMenu("Zios/Component/Action/State Controller")][ExecuteInEditMode]
 public class StateController : MonoBehaviour{
-	public static float nextUpdate = 0;
 	public int total;
 	public StateRow[] table = new StateRow[0];
 	public StateRow[] tableOff = new StateRow[0];
@@ -25,28 +21,6 @@ public class StateController : MonoBehaviour{
 		Events.Add("@Update States",this.UpdateStates);
 		Events.Add("@Refresh",this.Refresh);
 		this.Refresh();
-	}
-	#if UNITY_EDITOR 
-	public static void EditorUpdate(){
-		float time = Time.realtimeSinceStartup;
-		if(Selection.activeGameObject.IsNull() || time < StateController.nextUpdate){return;}
-		StateController.nextUpdate = time + 1;
-		bool playing = EditorApplication.isPlaying || EditorApplication.isPlayingOrWillChangePlaymode;
-		StateController current = Selection.activeGameObject.GetComponent<StateController>();
-		if(current != null && !playing){
-			current.Refresh();
-		}
-	}
-	#endif
-	public void Update(){
-		#if UNITY_EDITOR 
-		bool playing = EditorApplication.isPlaying || EditorApplication.isPlayingOrWillChangePlaymode;
-		if(!playing){
-			if(!EditorApplication.update.Contains((Method)StateController.EditorUpdate)){
-				EditorApplication.update += StateController.EditorUpdate;
-			}
-		}
-		#endif
 	}
 	[ContextMenu("Refresh")]
 	public virtual void Refresh(){
@@ -82,10 +56,10 @@ public class StateController : MonoBehaviour{
 				if(usable){break;}
 			}
 			if(this.advanced && usable){
-				script.usable = negative ? false : true;
+				script.usable.Set(negative ? false : true);
 			}
 			else if(!this.advanced){
-				script.usable = usable;
+				script.usable.Set(usable);
 			}
 		}
 	}
@@ -96,16 +70,13 @@ public class StateController : MonoBehaviour{
 	}
 	public virtual void UpdateScripts(string stateType="State"){
 		this.scripts.Clear();
-		MonoBehaviour[] all = this.gameObject.GetComponentsInChildren<MonoBehaviour>(true);
-		foreach(MonoBehaviour script in all){
-			if(script is StateInterface){
-				StateInterface common = (StateInterface)script;
-				if(common.id.IsEmpty()){
-					common.id = Guid.NewGuid().ToString();
-				}
-				if(common.GetInterfaceType() == stateType){
-					this.scripts.Add(common);
-				}
+		StateMonoBehaviour[] all = this.gameObject.GetComponents<StateMonoBehaviour>(true);
+		foreach(StateMonoBehaviour script in all){
+			if(script.id.IsEmpty()){
+				script.id = Guid.NewGuid().ToString();
+			}
+			if(script.GetInterfaceType() == stateType){
+				this.scripts.Add(script);
 			}
 		}
 		this.scripts = this.scripts.Distinct().ToList();

@@ -34,6 +34,7 @@ public class ColliderController : MonoBehaviour{
 	public ColliderMode mode;
 	public ColliderRate rate;
 	public List<Vector3> move = new List<Vector3>();
+	public List<Vector3> moveRaw = new List<Vector3>();
 	[NonSerialized] public Vector3 lastDirection;
 	public Dictionary<string,bool> blocked = new Dictionary<string,bool>();
 	public Dictionary<string,float> lastBlockedTime = new Dictionary<string,float>();
@@ -45,14 +46,15 @@ public class ColliderController : MonoBehaviour{
 	//--------------------------------
 	// Unity-Specific
 	//--------------------------------
-	public void Start(){
+	public void Awake(){
 		this.ResetBlocked(true);
 		this.fixedTimestep.Setup("Fixed Timestep",this);
 		this.maxStepHeight.Setup("Max Step Height",this);
 		this.maxSlopeAngle.Setup("Max Slope Angle",this);
 		this.minSlideAngle.Setup("Min Slide Angle",this);
 		this.hoverDistance.Setup("Hover Distance",this);
-		Events.Add("Add Move",(MethodVector3)this.OnMove);
+		Events.Add("Add Move",(MethodVector3)this.AddMove);
+		Events.Add("Add Move Raw",(MethodVector3)this.AddMoveRaw);
 		Events.Register("Trigger",this.gameObject);
 		Events.Register("Collide",this.gameObject);
 		if(Application.isPlaying){
@@ -79,9 +81,6 @@ public class ColliderController : MonoBehaviour{
 			Time.fixedDeltaTime = this.fixedTimestep;
 		}
 	}
-	public void OnValidate(){
-		this.Start();
-	}
 	public void OnDrawGizmosSelected(){
 		Gizmos.color = Color.white;
 		Vector3 raise = this.transform.up * this.maxStepHeight;
@@ -106,50 +105,21 @@ public class ColliderController : MonoBehaviour{
 	//--------------------------------
 	private void Step(){
 		if(!Application.isPlaying){return;}
-		if(this.move.Count > 0){
+		if(this.move.Count > 0 || this.moveRaw.Count > 0){
 			this.ResetBlocked();
 			this.CheckActive("WakeUp");
 			Vector3 cumulative = Vector3.zero;
 			Vector3 initial = this.rigidbody.position;
 			foreach(Vector3 current in this.move){
+				cumulative += current;
 				float time = this.rate == ColliderRate.Update ? Time.deltaTime : Time.fixedDeltaTime;
 				Vector3 move = this.NullBlocked(current) * time;
-				//Vector3 move = current * Time.fixedDeltaTime;
+				this.StepMove(current,move);
+			}
+			foreach(Vector3 current in this.moveRaw){
 				cumulative += current;
-				if(this.mode == ColliderMode.Validate){
-					this.rigidbody.MovePosition(this.rigidbody.position + move);
-					continue;
-				}
-				if(move == Vector3.zero){continue;}
-				RaycastHit hit;
-				Vector3 startPosition = this.rigidbody.position;
-				Vector3 direction = move.normalized;
-				float distance = Vector3.Distance(startPosition,startPosition+move) + this.hoverDistance*2;
-				bool contact = this.rigidbody.SweepTest(direction,out hit,distance);
-				bool isTrigger = ColliderController.HasTrigger(hit.collider);
-				if(this.CheckSlope(current)){continue;}
-				if(contact && this.CheckSlope(current,hit)){continue;}
-				if(contact){
-					if(this.CheckStep(current)){continue;}
-					if(isTrigger){
-						hit.transform.gameObject.Call("Trigger",this.collider);
-						continue;
-					}
-					this.SetPosition(this.rigidbody.position + (direction * (hit.distance-this.hoverDistance*2)));
-					CollisionData otherCollision = new CollisionData(this,this.gameObject,-direction,distance,false);
-					CollisionData selfCollision = new CollisionData(this,hit.transform.gameObject,direction,distance,true);
-					if(direction.z > 0){this.blocked["forward"] = true;}
-					if(direction.z < 0){this.blocked["back"] = true;}
-					if(direction.y > 0){this.blocked["up"] = true;}
-					if(direction.y < 0){this.blocked["down"] = true;}
-					if(direction.x > 0){this.blocked["right"] = true;}
-					if(direction.x < 0){this.blocked["left"] = true;}
-					hit.transform.gameObject.Call("Collide",otherCollision);
-					this.gameObject.Call("Collide",selfCollision);
-				}
-				else{
-					this.SetPosition(startPosition + move);
-				}
+				Vector3 move = this.NullBlocked(current);
+				this.StepMove(current,move);
 			}
 			if(this.mode == ColliderMode.SweepAndValidate){
 				Vector3 totalMove = this.rigidbody.position-initial;
@@ -158,6 +128,7 @@ public class ColliderController : MonoBehaviour{
 			}
 			this.lastDirection = cumulative.normalized;
 			this.move = new List<Vector3>();
+			this.moveRaw = new List<Vector3>();
 			this.CheckActive("Sleep");
 			if(this.mode == ColliderMode.Sweep){
 				this.transform.position = this.rigidbody.position;				
@@ -168,6 +139,42 @@ public class ColliderController : MonoBehaviour{
 			this.rigidbody.angularVelocity *= 0;
 		}
 		this.CheckBlocked();
+	}
+	private void StepMove(Vector3 current,Vector3 move){
+		if(this.mode == ColliderMode.Validate){
+			this.rigidbody.MovePosition(this.rigidbody.position + move);
+			return;
+		}
+		if(move == Vector3.zero){return;}
+		RaycastHit hit;
+		Vector3 startPosition = this.rigidbody.position;
+		Vector3 direction = move.normalized;
+		float distance = Vector3.Distance(startPosition,startPosition+move) + this.hoverDistance*2;
+		bool contact = this.rigidbody.SweepTest(direction,out hit,distance);
+		bool isTrigger = ColliderController.HasTrigger(hit.collider);
+		if(this.CheckSlope(current)){return;}
+		if(contact && this.CheckSlope(current,hit)){return;}
+		if(contact){
+			if(this.CheckStep(current)){return;}
+			if(isTrigger){
+				hit.transform.gameObject.Call("Trigger",this.collider);
+				return;
+			}
+			this.SetPosition(this.rigidbody.position + (direction * (hit.distance-this.hoverDistance*2)));
+			CollisionData otherCollision = new CollisionData(this,this.gameObject,-direction,distance,false);
+			CollisionData selfCollision = new CollisionData(this,hit.transform.gameObject,direction,distance,true);
+			if(direction.z > 0){this.blocked["forward"] = true;}
+			if(direction.z < 0){this.blocked["back"] = true;}
+			if(direction.y > 0){this.blocked["up"] = true;}
+			if(direction.y < 0){this.blocked["down"] = true;}
+			if(direction.x > 0){this.blocked["right"] = true;}
+			if(direction.x < 0){this.blocked["left"] = true;}
+			hit.transform.gameObject.Call("Collide",otherCollision);
+			this.gameObject.Call("Collide",selfCollision);
+		}
+		else{
+			this.SetPosition(startPosition + move);
+		}
 	}
 	private bool CheckSlope(Vector3 current,RaycastHit slopeHit){
 		if(this.maxSlopeAngle != 0 || this.minSlideAngle != 0){
@@ -255,10 +262,16 @@ public class ColliderController : MonoBehaviour{
 			if(clearTime){this.lastBlockedTime[name] = 0;}
 		}
 	}
-	public void OnMove(Vector3 move){
+	public void AddMove(Vector3 move){
 		if(!this.enabled){return;}
 		if(move != Vector3.zero){
 			this.move.Add(move);
+		}
+	}
+	public void AddMoveRaw(Vector3 move){
+		if(!this.enabled){return;}
+		if(move != Vector3.zero){
+			this.moveRaw.Add(move);
 		}
 	}
 }

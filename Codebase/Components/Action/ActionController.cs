@@ -6,7 +6,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Action = Zios.Action;
 using ActionPart = Zios.ActionPart;
-[RequireComponent(typeof(Action))][ExecuteInEditMode]
 [AddComponentMenu("Zios/Component/Action/Action Controller")]
 public class ActionController : StateController{
 	private Action action;

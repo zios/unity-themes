@@ -5,8 +5,8 @@ public class RotateTowardsAngle : ActionPart{
 	public AttributeVector3 eulerAngle = Vector3.zero;
 	public Target target = new Target();
 	public LerpVector3 rotation = new LerpVector3();
-	public override void Start(){
-		base.Start();
+	public override void Awake(){
+		base.Awake();
 		this.DefaultRate("FixedUpdate");
 		this.target.Setup("Target",this);
 		this.rotation.Setup("Rotate Towards",this);
