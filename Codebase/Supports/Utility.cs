@@ -7,7 +7,7 @@ using CallbackFunction = UnityEditor.EditorApplication.CallbackFunction;
 public class UtilityListener : AssetPostprocessor{
 	public static void OnPostprocessAllAssets(string[] imported,string[] deleted,string[] moved, string[] path){
 		bool playing = EditorApplication.isPlaying || EditorApplication.isPlayingOrWillChangePlaymode;
-		if(!playing){
+		if(!playing && Utility.assetUpdate != null){
 			Utility.assetUpdate();
 		}
 	}

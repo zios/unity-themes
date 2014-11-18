@@ -29,18 +29,10 @@ public class AnimationController : MonoBehaviour{
 	//=====================
 	// Built-in
 	//=====================
-	public void OnValidate(){
-		foreach(AnimationState state in this.animation){
-			AnimationData data = this.animations.Find(x=>x.name==state.name);
-			if(data == null){
-				data = new AnimationData();
-				this.animations.Add(data);
-			}
-			data.name = state.name;
-			data.state = state;
-		}
-	}
+	public void Reset(){this.Awake();}
+	public void OnApplicationQuit(){this.Awake();}
 	public void Awake(){
+		this.Build();
 		this.highestPriorityOnly.Setup("Highest Priority Only",this);
 		this.defaultPriority.Setup("Default Priority Only",this);
 		this.defaultTransitionIn.Setup("Default Transition In",this);
@@ -105,6 +97,17 @@ public class AnimationController : MonoBehaviour{
 	//=====================
 	// Internal
 	//=====================
+	private void Build(){
+		foreach(AnimationState state in this.animation){
+			AnimationData data = this.animations.Find(x=>x.name==state.name);
+			if(data == null){
+				data = new AnimationData();
+				this.animations.Add(data);
+			}
+			data.name = state.name;
+			data.state = state;
+		}
+	}
 	[ContextMenu("Restore Defaults")]
 	private void RestoreDefaults(){
 		foreach(AnimationState state in this.animation){

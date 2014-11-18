@@ -7,6 +7,8 @@ public class MonoBehaviourEditor : Editor{
 	public override void OnInspectorGUI(){
 		this.DrawDefaultInspector();
 		if(this.target is AttributeBox){Utility.EditorCall(this.EditorUpdate<AttributeBox>);}
+		if(this.target is AnimationController){Utility.EditorCall(this.EditorUpdate<AnimationController>);}
+		if(this.target is ColliderController){Utility.EditorCall(this.EditorUpdate<ColliderController>);}
 		if(this.target is StateMonoBehaviour){Utility.EditorCall(this.EditorUpdate<StateMonoBehaviour>);}
 	}
 	public void EditorUpdate<Type>() where Type : MonoBehaviour{

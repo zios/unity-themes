@@ -20,7 +20,7 @@ public class CollisionData{
 	}
 }
 [RequireComponent(typeof(Collider))]
-[AddComponentMenu("Zios/Component/Physics/Collider Controller")][ExecuteInEditMode]
+[AddComponentMenu("Zios/Component/Physics/Collider Controller")]
 public class ColliderController : MonoBehaviour{
 	public static Dictionary<GameObject,ColliderController> instances = new Dictionary<GameObject,ColliderController>();
 	public static Collider[] triggers;
@@ -46,6 +46,8 @@ public class ColliderController : MonoBehaviour{
 	//--------------------------------
 	// Unity-Specific
 	//--------------------------------
+	public void Reset(){this.Awake();}
+	public void OnApplicationQuit(){this.Awake();}
 	public void Awake(){
 		this.ResetBlocked(true);
 		this.fixedTimestep.Setup("Fixed Timestep",this);
