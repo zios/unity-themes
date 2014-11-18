@@ -12,30 +12,33 @@ public class AttributeManager : MonoBehaviour{
 		Utility.EditorUpdate(this.Start,true);
 	}
 	public void OnDestroy(){
-		Utility.RemoveAssetUpdate(this.FullRefresh);
+		Utility.RemoveAssetUpdate(this.SceneRefresh);
 		Utility.RemoveHierarchyUpdate(this.SceneRefresh);
 		Utility.RemoveEditorUpdate(this.Start);
 	}
 	public void Update(){
-		Utility.AssetUpdate(this.FullRefresh);
+		Utility.AssetUpdate(this.SceneRefresh);
 		Utility.HierarchyUpdate(this.SceneRefresh);
 		Utility.EditorUpdate(this.Start,true);
 	}
-	public void FullRefresh(){
-		this.SceneRefresh(true);
-	}
-	public void SceneRefresh(bool full=false){
+	public void SceneRefresh(bool full=true){
+		Attribute.all.Clear();
+		AttributeFloat.lookup.Clear();
+		AttributeVector3.lookup.Clear();
+		AttributeBool.lookup.Clear();
+		AttributeInt.lookup.Clear();
+		AttributeString.lookup.Clear();
 		AttributeBox[] boxes = Locate.GetSceneObjects<AttributeBox>();
-		ActionPart[] parts = Locate.GetSceneObjects<ActionPart>();
-		Action[] actions = Locate.GetSceneObjects<Action>();
+		StateMonoBehaviour[] states = Locate.GetSceneObjects<StateMonoBehaviour>();
+		AttributeExposer[] exposers = Locate.GetSceneObjects<AttributeExposer>();
 		foreach(AttributeBox box in boxes){
 			if(full || !box.gameObject.activeInHierarchy || !box.enabled){box.Awake();}
 		}
-		foreach(ActionPart part in parts){
-			if(full || !part.gameObject.activeInHierarchy || !part.enabled){part.Awake();}
+		foreach(StateMonoBehaviour state in states){
+			if(full || !state.gameObject.activeInHierarchy || !state.enabled){state.Awake();}
 		}
-		foreach(Action action in actions){
-			if(full || !action.gameObject.activeInHierarchy || !action.enabled){action.Awake();}
+		foreach(AttributeExposer exposer in exposers){
+			if(full || !exposer.gameObject.activeInHierarchy || !exposer.enabled){exposer.Awake();}
 		}
 		this.Setup();
 	}

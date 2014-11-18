@@ -14,7 +14,7 @@ namespace Zios{
 		[NonSerialized] public GameObject owner;
 		public void Reset(){this.Awake();}
 		public void OnApplicationQuit(){this.Awake();}
-		public virtual void Awake(){
+		public override void Awake(){
 			if(!this.setup){
 				if(this.owner.IsNull()){
 					this.controller = this.gameObject.GetComponentInParent<StateController>(true);
@@ -92,7 +92,7 @@ namespace Zios{
 			this.Awake();
 		}
 		public void OnApplicationQuit(){this.Awake();}
-		public virtual void Awake(){
+		public override void Awake(){
 			if(this.alias.IsEmpty()){
 				this.alias = this.GetType().ToString();
 			}

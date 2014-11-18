@@ -4,7 +4,7 @@ using Zios;
 using System.Collections;
 using UnityEngine;
 [AddComponentMenu("Zios/Component/Action/Part/Attribute Transform")]
-public class AttributeTransform : MonoBehaviour{
+public class AttributeTransform : AttributeExposer{
 	private string alias = "Transform";
 	private AttributeVector3 rotation = Vector3.zero;
 	private AttributeVector3 position = Vector3.zero;
@@ -15,9 +15,7 @@ public class AttributeTransform : MonoBehaviour{
 	private AttributeVector3 directionRight = Vector3.zero;
 	private AttributeVector3 directionForward = Vector3.zero;
 	private AttributeVector3 directionBack = Vector3.zero;
-	public void Reset(){this.Awake();}
-	public void OnApplicationQuit(){this.Awake();}
-	public void Awake(){
+	public override void Awake(){
 		this.rotation.Setup("Rotation",this);
 		this.position.Setup("Position",this);
 		this.scale.Setup("Scale",this);
