@@ -87,7 +87,6 @@ namespace Zios{
 		[HideInInspector] public int priority = -1;
 		[HideInInspector] public bool hasReset;
 		private bool requirableOverride;
-		public override string GetInterfaceType(){return "ActionPart";}
 		public void Reset(){
 			this.hasReset = true;
 			this.Awake();

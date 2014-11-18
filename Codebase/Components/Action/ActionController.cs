@@ -22,7 +22,7 @@ public class ActionController : StateController{
 	[ContextMenu("Refresh")]
 	public override void Refresh(){
 		this.UpdateTableList();
-		this.UpdateScripts("ActionPart");
+		this.UpdateScripts<ActionPart>();
 		this.ResolveDuplicates();
 		this.UpdateRows();
 		this.UpdateRequirements();

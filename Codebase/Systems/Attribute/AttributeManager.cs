@@ -91,7 +91,7 @@ public class AttributeManager : MonoBehaviour{
 		Attribute.ready = true;
 	}
 	public void Build(GameObject target){
-		if(this.builtTargets.Contains(target) || target.IsPrefab() || target.IsNull() || target.name.IsEmpty()){return;}
+		if(this.builtTargets.Contains(target) || target.IsNull() || target.IsPrefab() || target.name.IsEmpty()){return;}
 		this.SetupExtra(target,null,null,null);
 	}
 	public void SetupExtra(GameObject target,AttributeVector3 position,AttributeVector3 rotation,AttributeVector3 scale){

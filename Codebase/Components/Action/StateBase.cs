@@ -2,7 +2,6 @@ using Zios;
 using UnityEngine;
 using System;
 public interface StateInterface{
-	string GetInterfaceType();
 	string alias{get;set;}
 	string id{get;set;}
 	AttributeBool requirable{get;set;}
@@ -26,7 +25,6 @@ public class StateMonoBehaviour : MonoBehaviour,StateInterface{
 	public AttributeBool ready{get{return this.stateReady;}set{this.stateReady.Set(value);}}
 	public AttributeBool usable{get{return this.stateUsable;}set{this.stateUsable.Set(value);}}
 	public AttributeBool inUse{get{return this.stateInUse;}set{this.stateInUse.Set(value);}}
-	public virtual string GetInterfaceType(){return "State";}
 	public virtual void Use(){}
 	public virtual void End(){}
 	public virtual void Toggle(bool state){}

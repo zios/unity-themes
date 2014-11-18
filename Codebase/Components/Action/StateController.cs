@@ -4,6 +4,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using UnityObject = UnityEngine.Object;
+using Action = Zios.Action;
 [AddComponentMenu("Zios/Component/Action/State Controller")][ExecuteInEditMode]
 public class StateController : MonoBehaviour{
 	public int total;
@@ -25,7 +26,7 @@ public class StateController : MonoBehaviour{
 	[ContextMenu("Refresh")]
 	public virtual void Refresh(){
 		this.UpdateTableList();
-		this.UpdateScripts();
+		this.UpdateScripts<Action>();
 		this.ResolveDuplicates();
 		this.UpdateRows();
 		this.UpdateRequirements();
@@ -68,16 +69,14 @@ public class StateController : MonoBehaviour{
 		this.tables.Add(this.table);
 		this.tables.Add(this.tableOff);
 	}
-	public virtual void UpdateScripts(string stateType="State"){
+	public virtual void UpdateScripts<Type>() where Type : StateMonoBehaviour{
 		this.scripts.Clear();
-		StateMonoBehaviour[] all = this.gameObject.GetComponents<StateMonoBehaviour>(true);
-		foreach(StateMonoBehaviour script in all){
+		Type[] all = this.gameObject.GetComponentsInChildren<Type>(true);
+		foreach(Type script in all){
 			if(script.id.IsEmpty()){
 				script.id = Guid.NewGuid().ToString();
 			}
-			if(script.GetInterfaceType() == stateType){
-				this.scripts.Add(script);
-			}
+			scripts.Add((StateInterface)script);
 		}
 		this.scripts = this.scripts.Distinct().ToList();
 	}
