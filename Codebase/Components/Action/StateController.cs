@@ -69,9 +69,9 @@ public class StateController : MonoBehaviour{
 		this.tables.Add(this.table);
 		this.tables.Add(this.tableOff);
 	}
-	public virtual void UpdateScripts<Type>() where Type : StateMonoBehaviour{
+	public virtual void UpdateScripts<Type>(bool useChildren=true) where Type : StateMonoBehaviour{
 		this.scripts.Clear();
-		Type[] all = this.gameObject.GetComponentsInChildren<Type>(true);
+		Type[] all = this.gameObject.GetComponentsInChildren<Type>(useChildren);
 		foreach(Type script in all){
 			if(script.id.IsEmpty()){
 				script.id = Guid.NewGuid().ToString();
