@@ -71,7 +71,7 @@ public class StateController : MonoBehaviour{
 	}
 	public virtual void UpdateScripts<Type>(bool useChildren=true) where Type : StateMonoBehaviour{
 		this.scripts.Clear();
-		Type[] all = this.gameObject.GetComponentsInChildren<Type>(useChildren);
+		Type[] all = useChildren ? this.gameObject.GetComponentsInChildren<Type>(true) : this.gameObject.GetComponents<Type>(true);
 		foreach(Type script in all){
 			if(script.id.IsEmpty()){
 				script.id = Guid.NewGuid().ToString();
