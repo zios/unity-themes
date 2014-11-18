@@ -1,11 +1,9 @@
 using Zios;
 using System.Collections;
 using UnityEngine;
-using UnityEditor;
 [AddComponentMenu("")]
 public class AttributeBox<Type> : AttributeBox 
 where Type : Zios.Attribute,new(){
-	public static float nextUpdate;
 	public string alias = "Attribute";
 	public Type value = default(Type);
 	public virtual void Reset(){this.Awake();}

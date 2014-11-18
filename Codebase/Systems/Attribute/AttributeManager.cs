@@ -8,10 +8,6 @@ using Action = Zios.Action;
 public class AttributeManager : MonoBehaviour{
 	private float nextStep;
 	private bool initialSearch;
-	public List<GameObject> builtTargets = new List<GameObject>();
-	public List<AttributeVector3> builtPosition = new List<AttributeVector3>();
-	public List<AttributeVector3> builtRotation = new List<AttributeVector3>();
-	public List<AttributeVector3> builtScale = new List<AttributeVector3>();
 	public void OnApplicationQuit(){
 		Utility.EditorUpdate(this.Start,true);
 	}
@@ -24,7 +20,6 @@ public class AttributeManager : MonoBehaviour{
 		Utility.AssetUpdate(this.FullRefresh);
 		Utility.HierarchyUpdate(this.SceneRefresh);
 		Utility.EditorUpdate(this.Start,true);
-		//Utility.EditorCall(this.Start);
 	}
 	public void FullRefresh(){
 		this.SceneRefresh(true);
@@ -56,60 +51,14 @@ public class AttributeManager : MonoBehaviour{
 		}
 	}
 	public void Setup(){
-		foreach(GameObject target in this.builtTargets.Copy()){
-			if(target.IsNull() || target.IsPrefab()){
-				int index = this.builtTargets.IndexOf(target);
-				this.builtTargets.RemoveAt(index);
-				this.builtPosition.RemoveAt(index);
-				this.builtRotation.RemoveAt(index);
-				this.builtScale.RemoveAt(index);
-			}
-		}
-		for(int index=0;index<this.builtTargets.Count;++index){
-			GameObject target = this.builtTargets[index];
-			AttributeVector3 position = this.builtPosition[index];
-			AttributeVector3 rotation = this.builtRotation[index];
-			AttributeVector3 scale = this.builtScale[index];
-			this.SetupExtra(target,position,rotation,scale);
-		}
 		foreach(var attribute in Attribute.all.Copy()){
 			if(attribute.parent.IsNull()){
 				Attribute.all.Remove(attribute);
 				continue;
 			}
-			GameObject target = attribute.parent.gameObject;
-			this.Build(target);
-			foreach(var data in attribute.GetData()){
-				if(data.usage != AttributeUsage.Direct){
-					target = data.target.Get();
-					this.Build(target);
-				}
-			}
 		}
 		foreach(var attribute in Attribute.all){attribute.SetupTable();}
 		foreach(var attribute in Attribute.all){attribute.SetupData();}
 		Attribute.ready = true;
-	}
-	public void Build(GameObject target){
-		if(this.builtTargets.Contains(target) || target.IsNull() || target.IsPrefab() || target.name.IsEmpty()){return;}
-		this.SetupExtra(target,null,null,null);
-	}
-	public void SetupExtra(GameObject target,AttributeVector3 position,AttributeVector3 rotation,AttributeVector3 scale){
-		if(position.IsNull()){position = new AttributeVector3(target.transform.position);}
-		if(rotation.IsNull()){rotation = new AttributeVector3(target.transform.eulerAngles);}
-		if(scale.IsNull()){scale = new AttributeVector3(target.transform.localScale);}
-		if(!this.builtTargets.Contains(target)){this.builtTargets.Add(target);}
-		if(!this.builtPosition.Contains(position)){this.builtPosition.Add(position);}
-		if(!this.builtRotation.Contains(rotation)){this.builtRotation.Add(rotation);}
-		if(!this.builtScale.Contains(scale)){this.builtScale.Add(scale);}
-		position.getMethod = ()=>target.transform.position;
-		position.setMethod = value=>target.transform.position = value;
-		rotation.getMethod = ()=>target.transform.eulerAngles;
-		rotation.setMethod = value=>target.transform.eulerAngles = value;
-		scale.getMethod = ()=>target.transform.localScale;
-		scale.setMethod = value=>target.transform.localScale = value;
-		position.Setup("Position",target.transform);
-		rotation.Setup("Rotation",target.transform);
-		scale.Setup("Scale",target.transform);
 	}
 }
