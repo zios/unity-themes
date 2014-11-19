@@ -50,15 +50,10 @@ public static class Locate{
 		return scene.ToArray();
 	}
 	public static GameObject Find(string name){
-		GameObject[] scene = (GameObject[])GameObject.FindObjectsOfType(typeof(GameObject));
-		foreach(GameObject current in scene){
-			string path = current.GetPath();
-			if(path == name || path.Trim("/") == name || path.TrimLeft("/") == name || path.TrimRight("/") == name){
-				return current;
-			}
-		}
+		if(!name.Contains("/")){return GameObject.Find(name);}
 		GameObject[] all = (GameObject[])Resources.FindObjectsOfTypeAll(typeof(GameObject));
 		foreach(GameObject current in all){
+			if(current.IsPrefab()){continue;}
 			string path = current.GetPath();
 			if(path == name || path.Trim("/") == name || path.TrimLeft("/") == name || path.TrimRight("/") == name){
 				return current;

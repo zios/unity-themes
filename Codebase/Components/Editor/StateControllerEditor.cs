@@ -27,7 +27,7 @@ public class StateControllerEditor : Editor{
 	public void EditorUpdate(){
 		StateController stateController = (StateController)this.target;
 		if(!Application.isPlaying && Time.realtimeSinceStartup > this.nextStep){
-			this.nextStep = Time.realtimeSinceStartup + 0.5f;
+			this.nextStep = Time.realtimeSinceStartup + 1f;
 			stateController.Refresh();
 		}
 	}

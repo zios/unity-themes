@@ -13,7 +13,7 @@ public class MonoBehaviourEditor : Editor{
 	}
 	public void EditorUpdate<Type>() where Type : MonoBehaviour{
 		if(Time.realtimeSinceStartup > this.nextStep){
-			this.nextStep = Time.realtimeSinceStartup + 0.1f;
+			this.nextStep = Time.realtimeSinceStartup + 1f;
 			Type target = (Type)this.target;
 			if(target.HasMethod("Awake")){
 				target.GetMethod("Awake").Invoke(target,null);
