@@ -22,7 +22,7 @@ public class AttributeManager : MonoBehaviour{
 		Utility.EditorUpdate(this.Start,true);
 	}
 	public void SceneRefresh(bool full=true){
-		if(!Application.isPlaying){
+		if(full){
 			Attribute.all.Clear();
 			AttributeFloat.lookup.Clear();
 			AttributeVector3.lookup.Clear();
@@ -48,7 +48,7 @@ public class AttributeManager : MonoBehaviour{
 		if(Application.isPlaying || Time.realtimeSinceStartup > this.nextStep){
 			this.nextStep = Time.realtimeSinceStartup + 1;
 			if(!this.initialSearch){
-				this.SceneRefresh(Application.isPlaying);
+				this.SceneRefresh(!Application.isPlaying);
 				this.initialSearch = true;
 				return;
 			}

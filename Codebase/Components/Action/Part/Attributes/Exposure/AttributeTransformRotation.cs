@@ -4,8 +4,8 @@ using Zios;
 using UnityEngine;
 [AddComponentMenu("Zios/Component/Action/Part/Attribute Transform (Rotation)")]
 public class AttributeTransformRotation : AttributeExposer{
-	private string alias = "Transform";
-	private AttributeVector3 rotation = Vector3.zero;
+	[HideInInspector] public string alias = "Transform";
+	[HideInInspector] public AttributeVector3 rotation = Vector3.zero;
 	public override void Awake(){
 		this.rotation.Setup("Rotation",this);
 		this.rotation.getMethod = ()=>this.transform.eulerAngles;

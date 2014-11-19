@@ -4,8 +4,8 @@ using Zios;
 using UnityEngine;
 [AddComponentMenu("Zios/Component/Action/Part/Attribute Transform (Position)")]
 public class AttributeTransformPosition : AttributeExposer{
-	private string alias = "Transform";
-	private AttributeVector3 position = Vector3.zero;
+	[HideInInspector] public string alias = "Transform";
+	[HideInInspector] public AttributeVector3 position = Vector3.zero;
 	public override void Awake(){
 		this.position.Setup("Position",this);
 		this.position.getMethod = ()=>this.transform.position;

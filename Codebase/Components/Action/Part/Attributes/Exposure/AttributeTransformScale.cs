@@ -4,8 +4,8 @@ using Zios;
 using UnityEngine;
 [AddComponentMenu("Zios/Component/Action/Part/Attribute Transform (Scale)")]
 public class AttributeTransformScale : AttributeExposer{
-	private string alias = "Transform";
-	private AttributeVector3 scale = Vector3.zero;
+	[HideInInspector] public string alias = "Transform";
+	[HideInInspector] public AttributeVector3 scale = Vector3.zero;
 	public override void Awake(){
 		this.scale.Setup("Scale",this);
 		this.scale.getMethod = ()=>this.transform.localScale;

@@ -4,13 +4,13 @@ using Zios;
 using UnityEngine;
 [AddComponentMenu("Zios/Component/Action/Part/Attribute Transform (Direction)")]
 public class AttributeTransformDirection : AttributeExposer{
-	private string alias = "Transform";
-	private AttributeVector3 directionUp = Vector3.zero;
-	private AttributeVector3 directionDown = Vector3.zero;
-	private AttributeVector3 directionLeft = Vector3.zero;
-	private AttributeVector3 directionRight = Vector3.zero;
-	private AttributeVector3 directionForward = Vector3.zero;
-	private AttributeVector3 directionBack = Vector3.zero;
+	[HideInInspector] public string alias = "Transform";
+	[HideInInspector] public AttributeVector3 directionUp = Vector3.zero;
+	[HideInInspector] public AttributeVector3 directionDown = Vector3.zero;
+	[HideInInspector] public AttributeVector3 directionLeft = Vector3.zero;
+	[HideInInspector] public AttributeVector3 directionRight = Vector3.zero;
+	[HideInInspector] public AttributeVector3 directionForward = Vector3.zero;
+	[HideInInspector] public AttributeVector3 directionBack = Vector3.zero;
 	public override void Awake(){
 		this.directionUp.getMethod = ()=>this.transform.rotation * Vector3.up;
 		this.directionDown.getMethod = ()=>this.transform.rotation * Vector3.down;
