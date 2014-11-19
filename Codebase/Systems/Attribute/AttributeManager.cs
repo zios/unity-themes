@@ -22,12 +22,14 @@ public class AttributeManager : MonoBehaviour{
 		Utility.EditorUpdate(this.Start,true);
 	}
 	public void SceneRefresh(bool full=true){
-		Attribute.all.Clear();
-		AttributeFloat.lookup.Clear();
-		AttributeVector3.lookup.Clear();
-		AttributeBool.lookup.Clear();
-		AttributeInt.lookup.Clear();
-		AttributeString.lookup.Clear();
+		if(!Application.isPlaying){
+			Attribute.all.Clear();
+			AttributeFloat.lookup.Clear();
+			AttributeVector3.lookup.Clear();
+			AttributeBool.lookup.Clear();
+			AttributeInt.lookup.Clear();
+			AttributeString.lookup.Clear();
+		}
 		AttributeBox[] boxes = Locate.GetSceneObjects<AttributeBox>();
 		StateMonoBehaviour[] states = Locate.GetSceneObjects<StateMonoBehaviour>();
 		AttributeExposer[] exposers = Locate.GetSceneObjects<AttributeExposer>();
@@ -46,7 +48,7 @@ public class AttributeManager : MonoBehaviour{
 		if(Application.isPlaying || Time.realtimeSinceStartup > this.nextStep){
 			this.nextStep = Time.realtimeSinceStartup + 1;
 			if(!this.initialSearch){
-				this.SceneRefresh(!Application.isPlaying);
+				this.SceneRefresh(Application.isPlaying);
 				this.initialSearch = true;
 				return;
 			}
