@@ -32,6 +32,7 @@ namespace Zios{
 		public static bool editorStart;
 		public static Type empty = new Type();
 		public static Dictionary<GameObject,Dictionary<string,Type>> lookup = new Dictionary<GameObject,Dictionary<string,Type>>();
+		public static Dictionary<GameObject,Dictionary<string,string>> resolve = new Dictionary<GameObject,Dictionary<string,string>>();
 		public Func<BaseType> getMethod;
 		public Action<BaseType> setMethod;
 		public DataType[] data = new DataType[0];
@@ -101,8 +102,14 @@ namespace Zios{
 				var idMatch = Attribute.all.Find(item=>item.id==this.id);
 				bool duplicate = idMatch != null && idMatch.parent.GetHashCode() != parent.GetHashCode();
 				if(duplicate){
+					var resolve = this.GetResolveTable();
 					Debug.LogWarning("Attribute : Resolving duplicate id -- " + this.path);
+					string former = this.id;
 					this.id = Guid.NewGuid().ToString();
+					if(!resolve.ContainsKey(parent.gameObject)){
+						resolve[parent.gameObject] = new Dictionary<string,string>();
+					}
+					resolve[parent.gameObject][former] = this.id;
 				}
 				Attribute.all.Add(this);
 			}
@@ -119,6 +126,7 @@ namespace Zios{
 		}
 		public override void SetupData(){
 			var lookup = this.GetLookupTable();
+			var resolve = this.GetResolveTable();
 			foreach(var data in this.data){
 				if(this.mode == AttributeMode.Linked){data.usage = AttributeUsage.Shaped;}
 				if(data.usage == AttributeUsage.Direct){continue;}
@@ -126,6 +134,9 @@ namespace Zios{
 				if(data.reference.IsNull() && !data.referenceID.IsEmpty() && !target.IsNull()){
 					if(!lookup.ContainsKey(target)){
 						lookup[target] = new Dictionary<string,Type>();
+					}
+					if(resolve.ContainsKey(target) && resolve[target].ContainsKey(data.referenceID)){
+						data.referenceID = resolve[target][data.referenceID];
 					}
 					if(lookup[target].ContainsKey(data.referenceID)){
 						data.reference = lookup[target][data.referenceID];
@@ -230,6 +241,11 @@ namespace Zios{
 			System.Type type = typeof(Attribute<BaseType,Type,DataType,Operator,Special>);
 			object lookupObject = type.GetField("lookup",BindingFlags.Public|BindingFlags.Static).GetValue(null);
 			return (Dictionary<GameObject,Dictionary<string,Type>>)lookupObject;
+		}
+		public Dictionary<GameObject,Dictionary<string,string>> GetResolveTable(){
+			System.Type type = typeof(Attribute<BaseType,Type,DataType,Operator,Special>);
+			object resolveObject = type.GetField("resolve",BindingFlags.Public|BindingFlags.Static).GetValue(null);
+			return (Dictionary<GameObject,Dictionary<string,string>>)resolveObject;
 		}
 	}
 	[Serializable]
