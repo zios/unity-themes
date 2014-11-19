@@ -23,6 +23,8 @@ public class Play3DAnimation : ActionPart{
 	}
 	public override void End(){
 		base.End();
-		this.target.Call("Stop Animation",this.animationName.Get());
+		if(!this.target.direct.IsNull()){
+			this.target.Call("Stop Animation",this.animationName.Get());
+		}
 	}
 }

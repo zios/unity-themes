@@ -20,8 +20,10 @@ public static class GameObjectExtension{
 	}
 	public static T GetComponent<T>(this GameObject current,bool includeInactive) where T : Component{
 		T[] results = current.GetComponentsInChildren<T>(includeInactive);
-		if(results.Length > 0){
-			return results[0];
+		foreach(T item in results){
+			if(item.transform == current.transform){
+				return item;
+			}
 		}
 		return null;
 	}

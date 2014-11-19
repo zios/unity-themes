@@ -12,12 +12,11 @@ public class ListBoolDrawer : PropertyDrawer{
 		GUI.changed = false;
 		EditorGUI.BeginProperty(position,label,property);
 		if(dataObject is ListBool){
-			List<bool> data = (List<bool>)dataObject;
+			List<bool> data = ((ListBool)dataObject).value;
 			EditorGUI.LabelField(labelRect,label);
-			valueRect = valueRect.AddX(-15);
 			for(int index=0;index<data.Count;++index){
-				data[index] = EditorGUI.Toggle(valueRect.AddX((index*30)).SetWidth(30),data[index]);
-				EditorGUI.LabelField(valueRect.Add(14+(index*30)),names[index]);
+				data[index] = data[index].Draw(valueRect.AddX((index*30)).SetWidth(30));
+				names[index].DrawLabel(valueRect.Add(14+(index*30)));
 			}
 		}
 		EditorGUI.EndProperty();

@@ -129,8 +129,8 @@ public class ColliderController : MonoBehaviour{
 				this.rigidbody.MovePosition(initial + totalMove);
 			}
 			this.lastDirection = cumulative.normalized;
-			this.move = new List<Vector3>();
-			this.moveRaw = new List<Vector3>();
+			if(this.move.Count > 0){this.move = new List<Vector3>();}
+			if(this.moveRaw.Count > 0){this.moveRaw = new List<Vector3>();}
 			this.CheckActive("Sleep");
 			if(this.mode == ColliderMode.Sweep){
 				this.transform.position = this.rigidbody.position;				

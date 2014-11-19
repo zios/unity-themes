@@ -155,7 +155,7 @@ namespace Zios{
 			}
 		}
 		public BaseType Get(){
-			if(this.getMethod != null){	return this.getMethod();}
+			if(this.getMethod != null){return this.getMethod();}
 			DataType first = this.data[0];
 			if(this.mode != AttributeMode.Formula){
 				return this.GetValue(first);

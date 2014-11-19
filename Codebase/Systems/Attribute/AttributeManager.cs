@@ -8,19 +8,21 @@ using Action = Zios.Action;
 public class AttributeManager : MonoBehaviour{
 	private float nextStep;
 	private bool initialSearch;
+	private bool refresh;
 	public void OnApplicationQuit(){
 		Utility.EditorUpdate(this.Start,true);
 	}
 	public void OnDestroy(){
-		Utility.RemoveAssetUpdate(this.SceneRefresh);
-		Utility.RemoveHierarchyUpdate(this.SceneRefresh);
+		Utility.RemoveAssetUpdate(this.ReSearch);
+		Utility.RemoveHierarchyUpdate(this.ReSearch);
 		Utility.RemoveEditorUpdate(this.Start);
 	}
 	public void Update(){
-		Utility.AssetUpdate(this.SceneRefresh);
-		Utility.HierarchyUpdate(this.SceneRefresh);
+		Utility.AssetUpdate(this.ReSearch);
+		Utility.HierarchyUpdate(this.ReSearch);
 		Utility.EditorUpdate(this.Start,true);
 	}
+	public void ReSearch(){this.refresh=true;}
 	public void SceneRefresh(bool full=true){
 		if(full){
 			Attribute.all.Clear();
@@ -47,9 +49,10 @@ public class AttributeManager : MonoBehaviour{
 	public void Start(){
 		if(Application.isPlaying || Time.realtimeSinceStartup > this.nextStep){
 			this.nextStep = Time.realtimeSinceStartup + 1;
-			if(!this.initialSearch){
+			if(!this.initialSearch || this.refresh){
 				this.SceneRefresh(!Application.isPlaying);
 				this.initialSearch = true;
+				this.refresh = false;
 				return;
 			}
 			this.Setup();
