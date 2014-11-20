@@ -56,6 +56,10 @@ public static class GUIExtension{
 		style = style ?? EditorStyles.popup;
 		return GUIExtension.Draw<Enum>(()=>EditorGUI.EnumPopup(area,current,style),indention);
 	}
+	public static Enum DrawMask(this Enum current,Rect area,GUIStyle style=null,bool indention=false){
+		style = style ?? EditorStyles.popup;
+		return GUIExtension.Draw<Enum>(()=>EditorGUI.EnumMaskField(area,current,style),indention);
+	}
 	public static int Draw(this string[] current,Rect area,int index,GUIStyle style=null,bool indention=false){
 		style = style ?? EditorStyles.popup;
 		return GUIExtension.Draw<int>(()=>EditorGUI.Popup(area,index,current,style),indention);
@@ -88,6 +92,10 @@ public static class GUIExtension{
 	}
 	public static Color Draw(this Color current,Rect area,bool indention=false){
 		return GUIExtension.Draw<Color>(()=>EditorGUI.ColorField(area,current),indention);
+	}
+	public static Enum DrawLabeledMask(this Enum current,Rect area,GUIContent label,GUIStyle style=null,bool indention=true){
+		style = style ?? EditorStyles.popup;
+		return GUIExtension.Draw<Enum>(()=>EditorGUI.EnumMaskField(area,label,current,style),indention);
 	}
 	public static string DrawLabeled(this string current,Rect area,GUIContent label,GUIStyle style=null,bool indention=true){
 		style = style ?? EditorStyles.textField;

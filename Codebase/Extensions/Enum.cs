@@ -4,6 +4,9 @@ public static class EnumExtension{
 	public static String ToString(this Enum current){
 		return Enum.GetName(current.GetType(),current);
 	}
+	public static int ToInt(this Enum current){
+		return (int)Convert.ChangeType(current,current.GetType());
+	}
 	public static Enum Get(this Enum current,string value,int fallback=-1){
 		Type type = current.GetType();
 		string[] items = Enum.GetNames(type);
@@ -28,5 +31,8 @@ public static class EnumExtension{
 			result.Add(value.ToString());
 		}
 		return result.ToArray();
+	}
+	public static bool Contains(this Enum current,Enum value){
+		return (value.ToInt() & value.ToInt()) != 0;
 	}
 }
