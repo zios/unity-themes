@@ -4,9 +4,9 @@ using UnityEngine;
 [Serializable]
 public class LerpVector3 : LerpTransition{
 	public ListBool lerpAxes = new ListBool{true,true,true};
-	private Vector3 start;
-	private Vector3 lastEnd;
-	private Vector3? lastGoalReached;
+	public float endProximity;
+	private Vector3? lastStart;
+	private Vector3? lastEnd;
 	private string path;
 	private Component parent;
 	public override void Setup(string path,Component parent){
@@ -20,34 +20,42 @@ public class LerpVector3 : LerpTransition{
 		return this.Step(current,current);
 	}
 	public virtual Vector3 Step(Vector3 start,Vector3 end){
-		if(end != this.lastEnd && this.isResetOnChange){this.Reset();}
-		if(!this.active || this.speed != 0){this.start = start;}
-		this.lastEnd = end;
-		this.CheckActive();
+		float distance = Vector3.Distance(start,end);
+		if(distance <= this.endProximity){
+			if(this.active){
+				this.parent.gameObject.Call(this.path+"/Transition/End");
+				this.active = false;
+			}
+			return start;
+		}
+		if(this.isResetOnChange){
+			if(this.lastEnd != end){
+				this.Reset();
+				this.active = false;
+			}
+		}
+		if(!this.active){
+			this.transition.Reset();
+			this.parent.gameObject.Call(this.path+"/Transition/Start");
+			this.lastStart = start;
+			this.lastEnd = end;
+			this.active = true;
+		}
 		float percent = this.transition.Tick();
 		Vector3 current = start;
 		if(this.speed != 0){
 			float speed = this.speed * percent;
 			speed *= this.fixedTime ? Time.fixedDeltaTime : Time.deltaTime;
-			Vector3 step = Vector3.MoveTowards(this.start,end,speed);
-			if(this.parent != null){
-				if(this.lastGoalReached != end && step == end && current != end){
-					this.parent.gameObject.Call(this.path+"/Transition/End");
-					this.lastGoalReached = end;
-				}
-				if(this.lastGoalReached != end && step != end && current == end){
-					this.parent.gameObject.Call(this.path+"/Transition/Start");
-					this.lastGoalReached = end;
-				}
-			}
-			if(this.lerpAxes[0]){current.x = step.x;}
-			if(this.lerpAxes[1]){current.y = step.y;}
-			if(this.lerpAxes[2]){current.z = step.z;}
+			if(!this.lerpAxes[0]){end.x = start.x;}
+			if(!this.lerpAxes[1]){end.y = start.y;}
+			if(!this.lerpAxes[2]){end.z = start.z;}
+			current = Vector3.MoveTowards(current,end,speed);
 		}
 		else{
-			if(this.lerpAxes[0]){current.x = this.Lerp(this.start.x,end.x,percent);}
-			if(this.lerpAxes[1]){current.y = this.Lerp(this.start.y,end.y,percent);}
-			if(this.lerpAxes[2]){current.z = this.Lerp(this.start.z,end.z,percent);}
+			Vector3 lastStart = (Vector3)this.lastStart;
+			if(this.lerpAxes[0]){current.x = this.Lerp(lastStart.x,end.x,percent);}
+			if(this.lerpAxes[1]){current.y = this.Lerp(lastStart.y,end.y,percent);}
+			if(this.lerpAxes[2]){current.z = this.Lerp(lastStart.z,end.z,percent);}
 		}
 		return current;
 	}

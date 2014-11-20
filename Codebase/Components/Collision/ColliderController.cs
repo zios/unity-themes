@@ -43,6 +43,7 @@ public class ColliderController : MonoBehaviour{
 	public AttributeFloat maxSlopeAngle = 70;
 	public AttributeFloat minSlideAngle = 50;
 	public AttributeFloat hoverDistance = 0.02f;
+	private Vector3 lastPosition;
 	//--------------------------------
 	// Unity-Specific
 	//--------------------------------
@@ -107,7 +108,8 @@ public class ColliderController : MonoBehaviour{
 	//--------------------------------
 	private void Step(){
 		if(!Application.isPlaying){return;}
-		if(this.move.Count > 0 || this.moveRaw.Count > 0){
+		bool positionAltered = this.lastPosition != this.transform.position;
+		if(this.move.Count > 0 || this.moveRaw.Count > 0 || positionAltered){
 			this.ResetBlocked();
 			this.CheckActive("WakeUp");
 			Vector3 cumulative = Vector3.zero;
@@ -135,6 +137,7 @@ public class ColliderController : MonoBehaviour{
 			if(this.mode == ColliderMode.Sweep){
 				this.transform.position = this.rigidbody.position;				
 			}
+			this.lastPosition = this.transform.position;
 		}
 		if(this.mode != ColliderMode.Sweep){
 			this.rigidbody.velocity *= 0;

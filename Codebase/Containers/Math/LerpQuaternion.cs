@@ -3,8 +3,9 @@ using System;
 using UnityEngine;
 [Serializable]
 public class LerpQuaternion : LerpTransition{
-	private Quaternion start;
-	private Quaternion lastEnd;
+	public float endProximity;
+	private Quaternion? lastStart;
+	private Quaternion? lastEnd;
 	private string path;
 	private Component parent;
 	public override void Setup(string path,Component parent){
@@ -18,28 +19,36 @@ public class LerpQuaternion : LerpTransition{
 		return this.Step(current,current);
 	}
 	public virtual Quaternion Step(Quaternion start,Quaternion end){
-		if(end != this.lastEnd && this.isResetOnChange){this.Reset();}
-		if(!this.active || this.speed != 0){this.start = start;}
-		this.lastEnd = end;
-		this.CheckActive();
+		float distance = (Quaternion.Inverse(start)*end).eulerAngles.magnitude;
+		if(distance <= this.endProximity){
+			if(this.active){
+				this.parent.gameObject.Call(this.path+"/Transition/End");
+				this.active = false;
+			}
+			return start;
+		}
+		if(this.isResetOnChange){
+			if(this.lastEnd != end){
+				this.Reset();
+				this.active = false;
+			}
+		}
+		if(!this.active){
+			this.transition.Reset();
+			this.parent.gameObject.Call(this.path+"/Transition/Start");
+			this.lastStart = start;
+			this.lastEnd = end;
+			this.active = true;
+		}
 		float percent = this.transition.Tick();
 		Quaternion current = start;
 		if(this.speed != 0){
 			float speed = this.speed * percent;
 			speed *= this.fixedTime ? Time.fixedDeltaTime : Time.deltaTime;
-			Quaternion step = Quaternion.RotateTowards(this.start,end,speed);
-			if(this.parent != null){
-				if(step == end && current != end){
-					this.parent.gameObject.Call(this.path+"/Transition/End");
-				}
-				if(step != end && current == end){
-					this.parent.gameObject.Call(this.path+"/Transition/Start");
-				}
-			}
-			current = step;
+			current = Quaternion.RotateTowards(start,end,speed);
 		}
 		else{
-			current = Quaternion.Slerp(this.start,end,percent);
+			current = Quaternion.Slerp((Quaternion)this.lastStart,end,percent);
 		}
 		return current;
 	}

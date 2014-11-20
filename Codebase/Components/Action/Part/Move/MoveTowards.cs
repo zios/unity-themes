@@ -22,7 +22,9 @@ public class MoveTowards : ActionPart{
 		if(!target.IsNull()){
 			Vector3 current = this.travel.Step(target.transform.position,this.goal);	
 			Vector3 amount = current-target.transform.position;
-			target.Call("Add Move Raw",amount);
+			target.Call("Add Move Raw",new Vector3(amount.x,0,0));
+			target.Call("Add Move Raw",new Vector3(0,amount.y,0));
+			target.Call("Add Move Raw",new Vector3(0,0,amount.z));
 		}
 	}
 }

@@ -13,6 +13,7 @@ public class RotateTowardsPoint : ActionPart{
 		this.source.Setup("Source",this);
 		this.target.Setup("Target",this);
 		this.angles.Setup("Angles",this);
+		this.angles.isResetOnChange.Set(false);
 	}
 	public override void End(){
 		this.angles.Reset();

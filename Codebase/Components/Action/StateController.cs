@@ -24,7 +24,9 @@ public class StateController : MonoBehaviour{
 		this.Refresh();
 	}
 	public virtual void Start(){
-		this.UpdateStates();
+		if(Application.isPlaying){
+			this.UpdateStates();
+		}
 	}
 	[ContextMenu("Refresh")]
 	public virtual void Refresh(){
