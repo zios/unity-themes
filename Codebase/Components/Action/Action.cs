@@ -5,43 +5,36 @@ using System;
 using System.Collections.Generic;
 using Attribute = Zios.Attribute;
 namespace Zios{
-	[AddComponentMenu("Zios/Component/Action/Basic")]
+	[AddComponentMenu("Zios/Component/Action/Action")]
 	public class Action : StateMonoBehaviour{
-		public static float nextUpdate = 0;
 		public static Dictionary<GameObject,bool> dirty = new Dictionary<GameObject,bool>();
-		private bool setup;
 		[NonSerialized] public StateController controller;
 		[NonSerialized] public GameObject owner;
-		public void Reset(){this.Awake();}
-		public void OnApplicationQuit(){this.Awake();}
 		public override void Awake(){
-			if(!this.setup){
-				if(this.owner.IsNull()){
-					this.controller = this.gameObject.GetComponentInParent<StateController>(true);
-					this.owner = this.controller == null ? this.gameObject : this.controller.gameObject;
-				}
-				this.alias = this.gameObject.name;
-				this.inUse.Setup("Active",this);
-				this.usable.Setup("Usable",this);
-				if(!this.controller.IsNull()){
-					this.inUse.AddScope(this.controller);
-					this.usable.AddScope(this.controller);
-				}
-				Events.Add("Action End (Force)",this.End,this.owner);
-				Events.Register("@Update Parts",this.gameObject);
-				Events.Register("Action Start",this.gameObject);
-				Events.Register("Action End",this.gameObject);
-				Events.Register("Action Disabled",this.gameObject);
-				if(this.owner != this.gameObject){
-					Events.Register("@Update States",this.owner);
-					Events.Register("@Refresh",this.owner);
-					Events.Register(this.alias+"/Start",this.owner);
-					Events.Register(this.alias+"/End",this.owner);
-				}
-				this.usable.Set(false);
-				this.SetDirty(true);
-				this.setup = Application.isPlaying;
+			if(this.owner.IsNull()){
+				this.controller = this.gameObject.GetComponentInParent<StateController>(true);
+				this.owner = this.controller == null ? this.gameObject : this.controller.gameObject;
 			}
+			this.alias = this.gameObject.name;
+			this.inUse.Setup("Active",this);
+			this.usable.Setup("Usable",this);
+			if(!this.controller.IsNull()){
+				this.inUse.AddScope(this.controller);
+				this.usable.AddScope(this.controller);
+			}
+			Events.Add("Action End (Force)",this.End,this.owner);
+			Events.Register("@Update Parts",this.gameObject);
+			Events.Register("Action Start",this.gameObject);
+			Events.Register("Action End",this.gameObject);
+			Events.Register("Action Disabled",this.gameObject);
+			if(this.owner != this.gameObject){
+				Events.Register("@Update States",this.owner);
+				Events.Register("@Refresh",this.owner);
+				Events.Register(this.alias+"/Start",this.owner);
+				Events.Register(this.alias+"/End",this.owner);
+			}
+			this.usable.Set(this.controller==null);
+			this.SetDirty(true);
 		}
 		public virtual void FixedUpdate(){
 			if(!Application.isPlaying){return;}
@@ -50,6 +43,7 @@ namespace Zios{
 				Action.dirty[this.gameObject] = false;
 				this.gameObject.Call("@Update Parts");
 			}
+			//Debug.Log(this.alias + " -- " + this.usable.Get() + " -- " + this.ready.Get());
 			if(this.usable && this.ready){this.Use();}
 			else if(!this.usable){this.End();}
 		}
@@ -79,19 +73,16 @@ namespace Zios{
 	public enum ActionRate{Default,FixedUpdate,Update,LateUpdate,ActionStart,ActionEnd,None};
 	[AddComponentMenu("")]
 	public class ActionPart : StateMonoBehaviour{
-		public static float nextUpdate = 0;
-		//public static Dictionary<string,ActionPart> all = new Dictionary<string,ActionPart>();
 		public static Dictionary<ActionPart,bool> dirty = new Dictionary<ActionPart,bool>();
 		public ActionRate rate = ActionRate.Default;
 		[NonSerialized] public Action action;
 		[HideInInspector] public int priority = -1;
 		[HideInInspector] public bool hasReset;
 		private bool requirableOverride;
-		public void Reset(){
+		public override void Reset(){
 			this.hasReset = true;
 			this.Awake();
 		}
-		public void OnApplicationQuit(){this.Awake();}
 		public override void Awake(){
 			if(this.alias.IsEmpty()){
 				this.alias = this.GetType().ToString();

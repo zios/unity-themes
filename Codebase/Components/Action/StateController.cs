@@ -23,6 +23,9 @@ public class StateController : MonoBehaviour{
 		Events.Add("@Refresh",this.Refresh);
 		this.Refresh();
 	}
+	public virtual void Start(){
+		this.UpdateStates();
+	}
 	[ContextMenu("Refresh")]
 	public virtual void Refresh(){
 		this.UpdateTableList();

@@ -10,12 +10,12 @@ public class ActionUse : ActionPart{
 	}
 	public override void Use(){
 		if(!this.inUse){
-			this.action.ready = true;
+			this.action.ready.Set(true);
 			base.Use();
 		}
 	}
 	public void OnActionEnd(){
-		this.action.ready = false;
+		this.action.ready.Set(false);
 		base.End();
 	}
 	public override void End(){
