@@ -1,20 +1,23 @@
 using Zios;
+using System;
 using UnityEngine;
-[AddComponentMenu("Zios/Component/Action/Rotate/Towards/Target")]
-public class RotateTowardsTarget : ActionPart{
+public enum OffsetType{Relative,Absolute}
+[AddComponentMenu("Zios/Component/Action/Follow Target")]
+public class FollowTarget : ActionPart{
 	public Target source = new Target();
 	public Target target = new Target();
-	public AttributeVector3 offset = Vector3.zero;
+	public LerpVector3 position = new LerpVector3();
 	public OffsetType offsetType;
-	public LerpVector3 angles = new LerpVector3();
+	public AttributeVector3 offset = Vector3.zero;
+	public AttributeVector3 orbit = Vector3.zero;
 	public override void Awake(){
 		base.Awake();
-		this.DefaultRate("LateUpdate");
+		this.DefaultPriority(5);
 		this.source.Setup("Source",this);
 		this.target.Setup("Target",this);
-		this.offset.Setup("Offset",this);
-		this.angles.Setup("Angles",this);
-		this.angles.isAngle = true;
+		this.position.Setup("Follow",this);
+		this.offset.Setup("Follow Offset",this);
+		this.orbit.Setup("Follow Orbit",this);
 	}
 	public Vector3 AdjustVector(Vector3 value){
 		Vector3 adjusted = value;
@@ -26,18 +29,14 @@ public class RotateTowardsTarget : ActionPart{
 		}
 		return adjusted;
 	}
-	public override void End(){
-		this.angles.Reset();
-		base.End();
-	}
 	public override void Use(){
 		Transform source = this.source.Get().transform;
 		Transform target = this.target.Get().transform;
 		Vector3 offset = this.AdjustVector(this.offset);
-		Vector3 current = source.localEulerAngles;
-		source.LookAt(target.position + offset);
-		Vector3 goal = source.localEulerAngles;
-		source.localEulerAngles = this.angles.Step(current,goal);
+		Vector3 orbit = this.orbit.Scale(new Vector3(1,-1,1));
+		Vector3 end = (orbit.ToRotation() * offset) + target.position;
+		source.position = this.position.Step(source.position,end);
 		base.Use();
 	}
 }
+

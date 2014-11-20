@@ -1,7 +1,7 @@
 using Zios;
 using System.Collections.Generic;
 using UnityEngine;
-[AddComponentMenu("Zios/Component/Action/Part/Rotate Towards (Point)")]
+[AddComponentMenu("Zios/Component/Action/Rotate/Towards/Point")]
 public class RotateTowardsPoint : ActionPart{
 	public Target source = new Target();
 	public AttributeVector3 target = Vector3.zero;

@@ -1,6 +1,6 @@
 using Zios;
 using UnityEngine;
-[AddComponentMenu("Zios/Component/Action/Part/Rotate Towards (Direction)")]
+[AddComponentMenu("Zios/Component/Action/Rotate/Towards/Direction")]
 public class RotateTowardsDirection : ActionPart{
 	public AttributeVector3 direction = Vector3.zero;
 	public Target source = new Target();
