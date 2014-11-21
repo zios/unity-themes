@@ -5,8 +5,16 @@ public static class Colors{
 	public static Dictionary<string,Color> names;
 	public static Color Get(int index){return Colors.numbers[index];}
 	public static Color Get(string name){return Colors.names[name.ToLower()];}
+	public static Color FromHex(string name){
+		name = name.Strip("#");
+		int value = int.Parse(name,System.Globalization.NumberStyles.HexNumber);
+		float red = (value >> 16) & 0xFF;
+		float  green = (value >> 8) & 0xFF;
+		float  blue = value & 0xFF;
+		return new Color(red/255,green/255,blue/255);
+	}
 	static Colors(){
-		numbers = new Color[42];
+		numbers = new Color[50];
 		names = new Dictionary<string,Color>();
 		//-------------
 		// Base
@@ -47,24 +55,35 @@ public static class Colors{
 		//-------------
 		// Light
 		//-------------
-		names["lightred"]    = names["tangerine"]  = numbers[27] = new Color(1.00f,0.50f,0.50f,1.00f);
-		names["lightgreen"]  = names["mint"]       = numbers[28] = new Color(0.50f,1.00f,0.50f,1.00f);
-		names["lightblue"]   = names["malibu"]     = numbers[29] = new Color(0.50f,0.50f,1.00f,1.00f);
-		names["lightyellow"] = names["dolly"]      = numbers[30] = new Color(1.00f,1.00f,0.50f,1.00f);
-		names["lightorange"] = names["macncheese"] = numbers[31] = new Color(1.00f,0.75f,0.50f,1.00f);
-		names["lightpurple"] = names["blush"]      = numbers[32] = new Color(1.00f,0.50f,1.00f,1.00f);
-		names["lightcyan"]   = names["anakiwa"]    = numbers[33] = new Color(0.50f,1.00f,1.00f,1.00f);
+		names["lightred"]    = names["tangerine"]   = numbers[27] = new Color(1.00f,0.50f,0.50f,1.00f);
+		names["lightgreen"]  = names["mint"]        = numbers[28] = new Color(0.50f,1.00f,0.50f,1.00f);
+		names["lightblue"]   = names["malibu"]      = numbers[29] = new Color(0.50f,0.50f,1.00f,1.00f);
+		names["lightyellow"] = names["dolly"]       = numbers[30] = new Color(1.00f,1.00f,0.50f,1.00f);
+		names["lightorange"] = names["macncheese"]  = numbers[31] = new Color(1.00f,0.75f,0.50f,1.00f);
+		names["lightpurple"] = names["blush"]       = numbers[32] = new Color(1.00f,0.50f,1.00f,1.00f);
+		names["lightcyan"]   = names["anakiwa"]     = numbers[33] = new Color(0.50f,1.00f,1.00f,1.00f);
 		names["pink"]        = names["lightpurple"];
 		//-------------
 		// Bold
 		//-------------
-		names["boldred"]    = names["coral"]       = numbers[34] = new Color(1.00f,0.25f,0.25f,1.00f);
-		names["boldgreen"]  = names["earthbound"]  = numbers[35] = new Color(0.25f,1.00f,0.50f,1.00f);
-		names["boldblue"]   = names["dodger"]      = numbers[36] = new Color(0.25f,0.50f,1.00f,1.00f);
-		names["boldyellow"] = names["golden"]      = numbers[37] = new Color(1.00f,1.00f,0.25f,1.00f);
-		names["boldorange"] = names["crusta"]      = numbers[38] = new Color(1.00f,0.50f,0.25f,1.00f);
-		names["boldpurple"] = names["velectric"]   = numbers[39] = new Color(0.50f,0.25f,1.00f,1.00f);
-		names["boldcyan"]   = names["aqua"]        = numbers[40] = new Color(0.25f,1.00f,1.00f,1.00f);
-		names["boldpink"]   = names["strawberry"]  = numbers[41] = new Color(1.00f,0.25f,0.50f,1.00f);
+		names["boldred"]    = names["coral"]        = numbers[34] = new Color(1.00f,0.25f,0.25f,1.00f);
+		names["boldgreen"]  = names["earthbound"]   = numbers[35] = new Color(0.25f,1.00f,0.50f,1.00f);
+		names["boldblue"]   = names["dodger"]       = numbers[36] = new Color(0.25f,0.50f,1.00f,1.00f);
+		names["boldyellow"] = names["golden"]       = numbers[37] = new Color(1.00f,1.00f,0.25f,1.00f);
+		names["boldorange"] = names["crusta"]       = numbers[38] = new Color(1.00f,0.50f,0.25f,1.00f);
+		names["boldpurple"] = names["velectric"]    = numbers[39] = new Color(0.50f,0.25f,1.00f,1.00f);
+		names["boldcyan"]   = names["aqua"]         = numbers[40] = new Color(0.25f,1.00f,1.00f,1.00f);
+		names["boldpink"]   = names["strawberry"]   = numbers[41] = new Color(1.00f,0.25f,0.50f,1.00f);
+		//-------------
+		// Zesty
+		//-------------
+		names["zestyred"]    = names["bittersweet"] = numbers[42] = Colors.FromHex("#ff5b5b");
+		names["zestygreen"]  = names["screamin"]    = numbers[43] = Colors.FromHex("#91ff5b");
+		names["zestyblue"]   = names["maya"]        = numbers[44] = Colors.FromHex("#5bc3ff");
+		names["zestyyellow"] = names["lemon"]       = numbers[45] = Colors.FromHex("#fffd5b");
+		names["zestyorange"] = names["tainoi"]      = numbers[46] = Colors.FromHex("#ffbf5b");
+		names["zestypurple"] = names["heliotrope"]  = numbers[47] = Colors.FromHex("#da5bff");
+		names["zestycyan"]   = names["aquamarine"]  = numbers[48] = Colors.FromHex("#5bffda");
+		names["zestypink"]   = names["neon"]        = numbers[49] = Colors.FromHex("#ff5bc3");
 	}
 }

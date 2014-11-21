@@ -1,7 +1,7 @@
 ﻿using Zios;
 using UnityEngine;
 using UnityEditor;
-[CustomEditor(typeof(MonoBehaviour),true)]
+[CustomEditor(typeof(MonoBehaviour),true)][CanEditMultipleObjects]
 public class MonoBehaviourEditor : Editor{
 	public float nextStep;
 	public override void OnInspectorGUI(){

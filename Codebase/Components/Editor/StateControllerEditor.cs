@@ -120,11 +120,18 @@ public class StateControllerEditor : Editor{
 		style.normal.textColor = Colors.Get("Gray");
 		GUIContent content = new GUIContent(row.name,(string)row.id);
 		if(row.target != null){
-			if(row.target.usable){
+			StateMonoBehaviour script = (StateMonoBehaviour)row.target;
+			if(script.usable){
 				style.normal.textColor = EditorGUIUtility.isProSkin ? Colors.Get("Silver") : Colors.Get("DarkGray");
 			}
-			if(row.target.inUse){
-				style.normal.textColor = EditorGUIUtility.isProSkin ? Colors.Get("BoldOrange") : Colors.Get("DarkBlue");
+			if(script.used){
+				style.normal.textColor = EditorGUIUtility.isProSkin ? Colors.Get("ZestyBlue") : Colors.Get("DarkGreen");
+			}
+			if(script.inUse){
+				style.normal.textColor = EditorGUIUtility.isProSkin ? Colors.Get("ZestyGreen") : Colors.Get("DarkBlue");
+			}
+			if(!script.enabled){
+				style.normal.textColor = EditorGUIUtility.isProSkin ? Colors.Get("ZestyRed") : Colors.Get("DarkRed");
 			}
 		}
 		if(field.selected){

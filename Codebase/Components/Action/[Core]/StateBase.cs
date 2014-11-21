@@ -8,16 +8,18 @@ public interface StateInterface{
 	AttributeBool ready{get;set;}
 	AttributeBool usable{get;set;}
 	AttributeBool inUse{get;set;}
+	AttributeBool used{get;set;}
 	void Use();
 	void End();
 }
 [Serializable]
 public class StateMonoBehaviour : MonoBehaviour,StateInterface{
 	public string stateAlias;
-	[HideInInspector] public AttributeBool stateRequirable = true;
-	[HideInInspector] public AttributeBool stateReady = true;
-	[HideInInspector] public AttributeBool stateUsable = true;
-	[HideInInspector] public AttributeBool stateInUse = true;
+	[NonSerialized] public AttributeBool stateRequirable = true;
+	[NonSerialized] public AttributeBool stateReady = true;
+	[NonSerialized] public AttributeBool stateUsable = false;
+	[NonSerialized] public AttributeBool stateInUse = false;
+	[NonSerialized] public AttributeBool stateUsed = false;
 	[HideInInspector] public string stateID = Guid.NewGuid().ToString();
 	public string id{get{return this.stateID;}set{this.stateID = value;}}
 	public string alias{get{return this.stateAlias;}set{this.stateAlias = value;}}
@@ -25,9 +27,16 @@ public class StateMonoBehaviour : MonoBehaviour,StateInterface{
 	public AttributeBool ready{get{return this.stateReady;}set{this.stateReady.Set(value);}}
 	public AttributeBool usable{get{return this.stateUsable;}set{this.stateUsable.Set(value);}}
 	public AttributeBool inUse{get{return this.stateInUse;}set{this.stateInUse.Set(value);}}
+	public AttributeBool used{get{return this.stateUsed;}set{this.stateUsed.Set(value);}}
 	public virtual void OnApplicationQuit(){this.Awake();}
 	public virtual void Reset(){this.Awake();}
-	public virtual void Awake(){}
+	public virtual void Awake(){
+		this.inUse.Setup("Active",this);
+		this.requirable.Setup("Requirable",this);
+		this.ready.Setup("Ready",this);
+		this.usable.Setup("Usable",this);
+		this.used.Setup("Usable",this);
+	}
 	public virtual void Use(){}
 	public virtual void End(){}
 	public virtual void Toggle(bool state){}

@@ -43,12 +43,8 @@ public class TargetDrawer : PropertyDrawer{
 			}
 		}
 		else{
+			Rect textRect = propertyRect;
 			string result = target.direct != null ? target.direct.GetPath().Trim("/") : "Not Found.";
-			if(!target.direct.IsNull() && propertyRect.Clicked(1)){
-				Selection.activeGameObject = target.direct;
-			}
-			GUI.SetNextControlName("simple");
-			target.search = target.search.Draw(propertyRect);
 			Vector2 textSize = GUI.skin.textField.CalcSize(new GUIContent(target.search));
 			Vector2 subtleSize = GUI.skin.GetStyle("SubtleInfo").CalcSize(new GUIContent(result));
 			float subtleX = propertyRect.x+propertyRect.width-subtleSize.x;
@@ -59,8 +55,13 @@ public class TargetDrawer : PropertyDrawer{
 				subtleX = minimumX;
 			}
 			propertyRect = propertyRect.SetX(subtleX).SetWidth(subtleWidth);
+			EditorGUIUtility.AddCursorRect(propertyRect,MouseCursor.Zoom);
+			if(!target.direct.IsNull() && propertyRect.Clicked(0)){
+				Selection.activeGameObject = target.direct;
+				Event.current.Use();
+			}
+			target.search = target.search.Draw(textRect);
 			property.FindPropertyRelative("search").stringValue = target.search;
-			//EditorGUIUtility.AddCursorRect(propertyRect,MouseCursor.Arrow);
 			result.DrawLabel(propertyRect,GUI.skin.GetStyle("SubtleInfo"));
 		}
         EditorGUI.EndProperty();

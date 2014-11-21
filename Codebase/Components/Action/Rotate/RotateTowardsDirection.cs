@@ -6,7 +6,6 @@ public class RotateTowardsDirection : ActionPart{
 	public Target source = new Target();
 	public LerpVector3 rotation = new LerpVector3();
 	private Vector3 lastDirection;
-	private Vector3 current;
 	public override void Awake(){
 		base.Awake();
 		this.DefaultRate("FixedUpdate");
@@ -21,7 +20,6 @@ public class RotateTowardsDirection : ActionPart{
 		Transform transform = this.source.Get().transform;
 		Vector3 current = transform.rotation * Vector3.forward;
 		Vector3 goal = this.rotation.Step(current,this.direction);
-		//this.current = goal;
 		if(goal != Vector3.zero){
 			transform.rotation = Quaternion.LookRotation(goal);
 		}

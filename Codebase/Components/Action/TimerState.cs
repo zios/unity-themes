@@ -14,10 +14,6 @@ public class TimerState : ActionPart{
 	public override void Awake(){
 		base.Awake();
 		this.DefaultPriority(5);
-		if(this.rate == ActionRate.ActionStart || this.rate == ActionRate.ActionEnd){
-			Debug.LogWarning("TimerState ["+this.alias+"] cannot use single-use ActionStart/ActionEnd triggers.");
-			this.rate = ActionRate.Default;
-		}
 		this.seconds.Setup("Seconds",this);
 		this.isActive.Setup("Is Active",this);
 		this.isComplete.Setup("Is Complete",this);
