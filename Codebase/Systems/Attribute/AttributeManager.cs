@@ -6,21 +6,26 @@ using Attribute = Zios.Attribute;
 using Action = Zios.Action;
 [AddComponentMenu("Zios/Singleton/Attribute Manager")][ExecuteInEditMode]
 public class AttributeManager : MonoBehaviour{
+	public float updateEditorInterval = 1;
+	public bool updateEditorOnHierarchyChange = true;
+	public bool updateEditorOnAssetChange = true;
 	private float nextStep;
 	private bool initialSearch;
 	private bool refresh;
+	public void OnValidate(){this.CleanEvents();}
+	public void OnDestroy(){this.CleanEvents();}
 	public void OnApplicationQuit(){
 		Utility.EditorUpdate(this.Start,true);
 	}
-	public void OnDestroy(){
+	public void Update(){
+		if(this.updateEditorOnAssetChange){Utility.AssetUpdate(this.ReSearch);}
+		if(this.updateEditorOnHierarchyChange){Utility.HierarchyUpdate(this.ReSearch);}
+		Utility.EditorUpdate(this.Start,true);
+	}
+	public void CleanEvents(){
 		Utility.RemoveAssetUpdate(this.ReSearch);
 		Utility.RemoveHierarchyUpdate(this.ReSearch);
 		Utility.RemoveEditorUpdate(this.Start);
-	}
-	public void Update(){
-		Utility.AssetUpdate(this.ReSearch);
-		Utility.HierarchyUpdate(this.ReSearch);
-		Utility.EditorUpdate(this.Start,true);
 	}
 	public void ReSearch(){this.refresh=true;}
 	public void SceneRefresh(bool full=true){
@@ -48,7 +53,8 @@ public class AttributeManager : MonoBehaviour{
 	}
 	public void Start(){
 		if(Application.isPlaying || Time.realtimeSinceStartup > this.nextStep){
-			this.nextStep = Time.realtimeSinceStartup + 1;
+			if(this.updateEditorInterval == -1){return;}
+			this.nextStep = Time.realtimeSinceStartup + this.updateEditorInterval;
 			if(!this.initialSearch || this.refresh){
 				this.SceneRefresh(!Application.isPlaying);
 				this.initialSearch = true;
