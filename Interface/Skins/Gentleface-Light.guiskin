@@ -1595,7 +1595,7 @@ MonoBehaviour:
     m_Alignment: 5
     m_WordWrap: 0
     m_RichText: 1
-    m_TextClipping: 0
+    m_TextClipping: 1
     m_ImagePosition: 3
     m_ContentOffset: {x: 0, y: 0}
     m_FixedWidth: 0
