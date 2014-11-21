@@ -3,7 +3,7 @@
 using Zios;
 using System.Collections;
 using UnityEngine;
-[AddComponentMenu("Zios/Component/Action/Attribute/Expose/Transform")]
+[AddComponentMenu("Zios/Component/Action/Attribute/Expose/Expose Transform")]
 public class AttributeTransform : AttributeExposer{
 	[HideInInspector] public string alias = "Transform";
 	[HideInInspector] public AttributeVector3 rotation = Vector3.zero;

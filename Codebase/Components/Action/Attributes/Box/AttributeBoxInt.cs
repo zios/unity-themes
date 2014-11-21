@@ -1,6 +1,6 @@
 using Zios;
 using UnityEngine;
-[AddComponentMenu("Zios/Component/Attribute/Box/Int")]
+[AddComponentMenu("Zios/Component/Attribute/Box/Box Int")]
 public class AttributeBoxInt : AttributeBox<AttributeInt>{
 	public override void Reset(){
 		this.value = 0;

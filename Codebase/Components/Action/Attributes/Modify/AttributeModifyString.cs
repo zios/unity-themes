@@ -1,7 +1,7 @@
 using Zios;
 using System;
 using UnityEngine;
-[AddComponentMenu("Zios/Component/Action/Attribute/Modify/String")]
+[AddComponentMenu("Zios/Component/Action/Attribute/Modify/Modify String")]
 public class AttributeModifyString : ActionPart{
 	public AttributeString target = "";
 	public AttributeString value = "";

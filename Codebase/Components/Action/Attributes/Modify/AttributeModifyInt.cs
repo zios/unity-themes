@@ -1,7 +1,7 @@
 using Zios;
 using System;
 using UnityEngine;
-[AddComponentMenu("Zios/Component/Action/Attribute/Modify/Int")]
+[AddComponentMenu("Zios/Component/Action/Attribute/Modify/Modify Int")]
 public class AttributeModifyInt : ActionPart{
 	public AttributeInt target = 0;
 	public AttributeInt value = 0;

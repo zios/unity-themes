@@ -1,7 +1,7 @@
 using Zios;
 using System;
 using UnityEngine;
-[AddComponentMenu("Zios/Component/Action/Event/Call")]
+[AddComponentMenu("Zios/Component/Action/Event/Event Call")]
 public class EventCall : ActionPart{
 	public EventTarget target = new EventTarget();
 	public override void Awake(){

@@ -1,7 +1,7 @@
 using Zios;
 using UnityEngine;
 public enum ForceType{Absolute,Relative}
-[AddComponentMenu("Zios/Component/Action/Add Force")]
+[AddComponentMenu("Zios/Component/Action/Move/Add Force")]
 public class AddForce : ActionPart{
 	public ForceType type;
 	public AttributeVector3 amount = Vector3.zero;

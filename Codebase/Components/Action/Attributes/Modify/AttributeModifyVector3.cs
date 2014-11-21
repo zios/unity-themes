@@ -1,7 +1,7 @@
 using Zios;
 using System;
 using UnityEngine;
-[AddComponentMenu("Zios/Component/Action/Attribute/Modify/Vector3")]
+[AddComponentMenu("Zios/Component/Action/Attribute/Modify/Modify Vector3")]
 public class AttributeModifyVector3 : ActionPart{
 	public AttributeVector3 target = Vector3.zero;
 	public AttributeVector3 value = Vector3.zero;

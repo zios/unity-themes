@@ -1,7 +1,7 @@
 using Zios;
 using System;
 using UnityEngine;
-[AddComponentMenu("Zios/Component/Action/Attribute/Modify/Float")]
+[AddComponentMenu("Zios/Component/Action/Attribute/Modify/Modify Float")]
 public class AttributeModifyFloat : ActionPart{
 	public AttributeFloat target = 0;
 	public AttributeFloat value = 0;

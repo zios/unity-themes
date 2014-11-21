@@ -1,6 +1,6 @@
 using Zios;
 using UnityEngine;
-[AddComponentMenu("Zios/Component/Attribute/Box/Float")]
+[AddComponentMenu("Zios/Component/Attribute/Box/Box Float")]
 public class AttributeBoxFloat : AttributeBox<AttributeFloat>{
 	public override void Reset(){
 		this.value = 0;

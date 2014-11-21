@@ -1,7 +1,7 @@
 using Zios;
 using System;
 using UnityEngine;
-[AddComponentMenu("Zios/Component/Action/Event/Listen")]
+[AddComponentMenu("Zios/Component/Action/Event/Event Listen")]
 public class EventListen : ActionPart{
 	public EventTarget target = new EventTarget();
 	public override void Awake(){

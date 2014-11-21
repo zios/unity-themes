@@ -1,6 +1,6 @@
 using Zios;
 using UnityEngine;
-[AddComponentMenu("Zios/Component/Action/Move Towards")]
+[AddComponentMenu("Zios/Component/Action/Move/Move Towards")]
 public class MoveTowards : ActionPart{
 	public Target target = new Target();
 	public AttributeVector3 goal = Vector3.zero;

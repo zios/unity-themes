@@ -2,7 +2,7 @@
 #pragma warning disable 0414
 using Zios;
 using UnityEngine;
-[AddComponentMenu("Zios/Component/Action/Attribute/Expose/Transform (Rotation)")]
+[AddComponentMenu("Zios/Component/Action/Attribute/Expose/Expose Transform (Rotation)")]
 public class AttributeTransformRotation : AttributeExposer{
 	[HideInInspector] public string alias = "Transform";
 	[HideInInspector] public AttributeVector3 rotation = Vector3.zero;

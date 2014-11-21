@@ -44,6 +44,8 @@ public class AnimationController : MonoBehaviour{
 		Events.Add("Set Animation Weight",this.OnSetWeight);
 		Events.Add("Play Animation",this.OnPlay);
 		Events.Add("Stop Animation",this.OnStop);
+	}
+	public void Start(){
 		if(Application.isPlaying){
 			foreach(AnimationData data in this.animations){
 				this.lookup[data.name] = data;

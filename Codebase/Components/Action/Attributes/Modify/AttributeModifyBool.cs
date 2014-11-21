@@ -1,7 +1,7 @@
 using Zios;
 using System;
 using UnityEngine;
-[AddComponentMenu("Zios/Component/Action/Attribute/Modify/Bool")]
+[AddComponentMenu("Zios/Component/Action/Attribute/Modify/Modify Bool")]
 public class AttributeModifyBool : ActionPart{
 	public AttributeBool target = false;
 	public AttributeBool value = false;
