@@ -29,19 +29,19 @@ namespace Zios{
 			else if(special == SpecialNumeral.Sqrt){return Mathf.Sqrt(value);}
 			return value;
 		}
-		public override float GetFormulaValue(OperatorNumeral sign){
+		public override float GetFormulaValue(){
 			float value = 0;
 			for(int index=0;index<this.data.Length;++index){
 				var data = this.data[index];
 				float current = this.GetValue(data);
 				if(index == 0){value = current;}
-				else if(sign == OperatorNumeral.Addition){value += current;}
-				else if(sign == OperatorNumeral.Subtraction){value -= current;}
-				else if(sign == OperatorNumeral.Multiplication){value *= current;}
-				else if(sign == OperatorNumeral.Division){value /= current;}
-				else if(sign == OperatorNumeral.Average){value = (value + current) / 2;}
-				else if(sign == OperatorNumeral.Max){value = Mathf.Max(value,current);}
-				else if(sign == OperatorNumeral.Min){value = Mathf.Min(value,current);}
+				else if(data.sign == OperatorNumeral.Addition){value += current;}
+				else if(data.sign == OperatorNumeral.Subtraction){value -= current;}
+				else if(data.sign == OperatorNumeral.Multiplication){value *= current;}
+				else if(data.sign == OperatorNumeral.Division){value /= current;}
+				else if(data.sign == OperatorNumeral.Average){value = (value + current) / 2;}
+				else if(data.sign == OperatorNumeral.Max){value = Mathf.Max(value,current);}
+				else if(data.sign == OperatorNumeral.Min){value = Mathf.Min(value,current);}
 			}
 			return value;
 		}

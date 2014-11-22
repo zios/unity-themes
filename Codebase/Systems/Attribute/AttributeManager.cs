@@ -38,13 +38,13 @@ public class AttributeManager : MonoBehaviour{
 			AttributeString.lookup.Clear();
 		}
 		AttributeBox[] boxes = Locate.GetSceneObjects<AttributeBox>();
-		StateMonoBehaviour[] states = Locate.GetSceneObjects<StateMonoBehaviour>();
+		ManagedMonoBehaviour[] states = Locate.GetSceneObjects<ManagedMonoBehaviour>();
 		AttributeExposer[] exposers = Locate.GetSceneObjects<AttributeExposer>();
 		foreach(AttributeBox box in boxes){
 			if(full || !box.gameObject.activeInHierarchy || !box.enabled){box.Awake();}
 		}
-		foreach(StateMonoBehaviour state in states){
-			if(full || !state.gameObject.activeInHierarchy || !state.enabled){state.Awake();}
+		foreach(ManagedMonoBehaviour managed in states){
+			if(full || !managed.gameObject.activeInHierarchy || !managed.enabled){managed.Awake();}
 		}
 		foreach(AttributeExposer exposer in exposers){
 			if(full || !exposer.gameObject.activeInHierarchy || !exposer.enabled){exposer.Awake();}
@@ -66,10 +66,7 @@ public class AttributeManager : MonoBehaviour{
 	}
 	public void Setup(){
 		foreach(var attribute in Attribute.all.Copy()){
-			if(attribute.parent.IsNull()){
-				Attribute.all.Remove(attribute);
-				continue;
-			}
+			if(attribute.parent.IsNull()){Attribute.all.Remove(attribute);}
 		}
 		foreach(var attribute in Attribute.all){attribute.SetupTable();}
 		foreach(var attribute in Attribute.all){attribute.SetupData();}

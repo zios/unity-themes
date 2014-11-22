@@ -11,7 +11,7 @@ public class StateController : MonoBehaviour{
 	public StateRow[] table = new StateRow[0];
 	public StateRow[] tableOff = new StateRow[0];
 	public bool advanced;
-	public List<StateInterface> scripts = new List<StateInterface>();
+	public List<StateMonoBehaviour> scripts = new List<StateMonoBehaviour>();
 	public List<StateRow[]> tables = new List<StateRow[]>();
 	public virtual void Reset(){
 		this.table = new StateRow[0];
@@ -36,6 +36,7 @@ public class StateController : MonoBehaviour{
 		this.UpdateRows();
 		this.UpdateRequirements();
 		this.UpdateOrder();
+		Utility.SetDirty(this);
 	}
 	// =============================
 	//  Maintenence
@@ -49,7 +50,7 @@ public class StateController : MonoBehaviour{
 	public void UpdateTable(StateRow[] table,bool negative=false){
 		foreach(StateRow row in table){
 			bool usable = true;
-			StateInterface script = row.target;
+			StateMonoBehaviour script = row.target;
 			foreach(StateRowData requirements in row.requirements){
 				foreach(StateRequirement requirement in requirements.data){
 					bool noRequirements = !requirement.requireOn && !requirement.requireOff;
@@ -79,23 +80,23 @@ public class StateController : MonoBehaviour{
 		Type[] all = useChildren ? this.gameObject.GetComponentsInChildren<Type>(true) : this.gameObject.GetComponents<Type>(true);
 		foreach(Type script in all){
 			if(script.id.IsEmpty()){
-				script.id = Guid.NewGuid().ToString();
+				script.id = script.GetInstanceID().ToString();
 			}
-			scripts.Add((StateInterface)script);
+			scripts.Add((StateMonoBehaviour)script);
 		}
 		this.scripts = this.scripts.Distinct().ToList();
 	}
 	public virtual void ResolveDuplicates(){
 		foreach(StateRow[] table in this.tables){
 			foreach(StateRow row in table){
-				List<StateInterface> entries = this.scripts.FindAll(x=>x.id==row.id);
-				foreach(StateInterface entry in entries.Skip(1)){
+				List<StateMonoBehaviour> entries = this.scripts.FindAll(x=>x.id==row.id);
+				foreach(StateMonoBehaviour entry in entries.Skip(1)){
 					bool hasName = !entry.alias.IsEmpty() && !row.name.IsEmpty();
 					Debug.Log("StateController : Resolving duplicate ID [" + row.name + "]",(UnityObject)row.target);
 					if(hasName && this.scripts.FindAll(x=>x.alias==row.name).Count > 1){
 						row.name = entry.alias = row.name + "2";
 					}
-					row.id = entry.id = Guid.NewGuid().ToString();
+					row.id = entry.id = entry.GetInstanceID().ToString();
 				}
 			}
 		}
@@ -208,7 +209,7 @@ public class StateController : MonoBehaviour{
 				bool duplicateName = !targetA.name.IsEmpty() && targetA.name == targetB.name;
 				if(duplicateGUID && duplicateName){
 					items.Remove(targetA);
-					Debug.LogError("StateController : (Deprecate!) Removing duplicate " + typeName + " -- " + targetA.name);
+					Debug.LogError("StateController : (Deprecate!) Removing duplicate " + typeName + " -- " + targetA.name,this.gameObject);
 				}
 			}
 		}
@@ -216,11 +217,11 @@ public class StateController : MonoBehaviour{
 	private void RemoveUnmatched<T>(List<T> items) where T : StateBase{
 		string typeName = typeof(T).ToString();
 		foreach(T item in items.Copy()){
-			StateInterface match = this.scripts.Find(x=>x.id==item.id);
+			StateMonoBehaviour match = this.scripts.Find(x=>x.id==item.id);
 			if(match == null){
 				items.Remove(item);
 				string itemInfo = typeName + " -- " + item.name + " [" + item.id + "]";
-				Debug.Log("StateController : Removing old " + itemInfo);
+				Debug.Log("StateController : Removing old " + itemInfo,this.gameObject);
 			}
 		}
 	}
@@ -230,13 +231,13 @@ public class StateController : MonoBehaviour{
 			if(item.target == null){
 				items.Remove(item);
 				string itemInfo = typeName + " -- " + item.name + " [" + item.id + "]";
-				Debug.Log("StateController : Removing null " + itemInfo);
+				Debug.Log("StateController : Removing null " + itemInfo,this.gameObject);
 			}
 		}
 	}
 	private void AddUpdate<T>(List<T> items,string[] ignore=null) where T : StateBase,new(){
 		string typeName = typeof(T).ToString();
-		foreach(StateInterface script in this.scripts){
+		foreach(StateMonoBehaviour script in this.scripts){
 			string name = script.alias.IsEmpty() ? script.GetType().ToString() : script.alias;
 			ignore = ignore ?? new string[0];
 			if(ignore.Contains(name)){continue;}
@@ -249,7 +250,7 @@ public class StateController : MonoBehaviour{
 				item.Setup(name,script,this);
 				items.Add(item);
 				string itemInfo = typeName + " -- " + item.name + " [" + item.id + "]";
-				Debug.Log("StateController : Creating " + itemInfo);
+				Debug.Log("StateController : Creating " + itemInfo,this.gameObject);
 			}
 			else{
 				item.name = name;
@@ -257,5 +258,45 @@ public class StateController : MonoBehaviour{
 				//Debug.Log("StateController : Updating " + typeName + " -- " + item.name);
 			}
 		}
+	}
+}
+[Serializable]
+public class StateBase{
+	public string name;
+	public StateController controller;
+	[HideInInspector] public string id;
+	[HideInInspector] public StateMonoBehaviour target;
+	public virtual void Setup(string name,StateMonoBehaviour script,StateController controller){
+		this.name = name;
+		this.controller = controller;
+		if(script != null){
+			this.id = script.id;
+			this.target = script;
+		}
+	}
+}
+[Serializable]
+public class StateRow : StateBase{
+	public StateRowData[] requirements = new StateRowData[1];
+	public StateRow(){}
+	public StateRow(string name="",StateMonoBehaviour script=null,StateController controller=null){
+		this.Setup(name,script,controller);
+	}
+	public override void Setup(string name="",StateMonoBehaviour script=null,StateController controller=null){
+		this.requirements[0] = new StateRowData();
+		base.Setup(name,script,controller);
+	}
+}
+[Serializable]
+public class StateRowData{
+	public StateRequirement[] data = new StateRequirement[0];
+}
+[Serializable]
+public class StateRequirement : StateBase{
+	public bool requireOn;
+	public bool requireOff;
+	public StateRequirement(){}
+	public StateRequirement(string name="",StateMonoBehaviour script=null,StateController controller=null){
+		this.Setup(name,script,controller);
 	}
 }

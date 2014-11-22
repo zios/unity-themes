@@ -23,6 +23,9 @@ public static class StringExtension{
 		float z = split[2].ToFloat();
 		return new Vector3(x,y,z);
 	}
+	public static string ToTitle(this string current){
+		return Regex.Replace(current,"(\\B[A-Z])"," $1");
+	}
 	public static int ToInt(this string current){
 		return Convert.ToInt32(current);
 	}

@@ -3,7 +3,6 @@ using Zios;
 using System.Collections;
 using System.Collections.Generic;
 using System;
-public enum ColliderRate{FixedUpdate,Update};
 public enum ColliderMode{Sweep,SweepAndValidate,SweepAndValidatePrecise,Validate};
 public class CollisionData{
 	public bool isSource;
@@ -21,7 +20,7 @@ public class CollisionData{
 }
 [RequireComponent(typeof(Collider))]
 [AddComponentMenu("Zios/Component/Physics/Collider Controller")]
-public class ColliderController : MonoBehaviour{
+public class ColliderController : ManagedMonoBehaviour{
 	public static Dictionary<GameObject,ColliderController> instances = new Dictionary<GameObject,ColliderController>();
 	public static Collider[] triggers;
 	public static bool triggerSetup;
@@ -32,7 +31,6 @@ public class ColliderController : MonoBehaviour{
 		return Array.IndexOf(ColliderController.triggers,collider) != -1;
 	}
 	public ColliderMode mode;
-	public ColliderRate rate;
 	public List<Vector3> move = new List<Vector3>();
 	public List<Vector3> moveRaw = new List<Vector3>();
 	[NonSerialized] public Vector3 lastDirection;
@@ -47,9 +45,8 @@ public class ColliderController : MonoBehaviour{
 	//--------------------------------
 	// Unity-Specific
 	//--------------------------------
-	public void Reset(){this.Awake();}
-	public void OnApplicationQuit(){this.Awake();}
-	public void Awake(){
+	public override void Awake(){
+		base.Awake();
 		this.ResetBlocked(true);
 		this.fixedTimestep.Setup("Fixed Timestep",this);
 		this.maxStepHeight.Setup("Max Step Height",this);
@@ -93,20 +90,10 @@ public class ColliderController : MonoBehaviour{
 		Gizmos.color = Color.red;
 		Gizmos.DrawLine(start,start+(-Vector3.up*0.5f));
 	}
-	public void FixedUpdate(){
-		if(this.rate == ColliderRate.FixedUpdate){
-			this.Step();
-		}
-	}
-	public void Update(){
-		if(this.rate == ColliderRate.Update){
-			this.Step();
-		}
-	}
 	//--------------------------------
 	// Internal
 	//--------------------------------
-	private void Step(){
+	public override void Step(){
 		if(!Application.isPlaying){return;}
 		bool positionAltered = this.lastPosition != this.transform.position;
 		if(this.move.Count > 0 || this.moveRaw.Count > 0 || positionAltered){
@@ -116,7 +103,7 @@ public class ColliderController : MonoBehaviour{
 			Vector3 initial = this.rigidbody.position;
 			foreach(Vector3 current in this.move){
 				cumulative += current;
-				float time = this.rate == ColliderRate.Update ? Time.deltaTime : Time.fixedDeltaTime;
+				float time = this.rate == UpdateRate.Update ? Time.deltaTime : Time.fixedDeltaTime;
 				Vector3 move = this.NullBlocked(current) * time;
 				this.StepMove(current,move);
 			}

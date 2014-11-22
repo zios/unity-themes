@@ -14,6 +14,7 @@ namespace Zios{
 		public static bool ready;
 		public string path;
 		public string id;
+		public string localID;
 		public Component parent;
 		public AttributeMode mode = AttributeMode.Normal;
 		public bool locked;
@@ -50,7 +51,7 @@ namespace Zios{
 		}
 		public override AttributeData[] GetData(){return this.data;}
 		public virtual BaseType HandleSpecial(Special special,BaseType value){return default(BaseType);}
-		public virtual BaseType GetFormulaValue(Operator sign){return default(BaseType);}
+		public virtual BaseType GetFormulaValue(){return default(BaseType);}
 		public static Type Find(GameObject target,string name){
 			if(lookup.ContainsKey(target)){
 				if(lookup[target].ContainsKey(name)){
@@ -78,39 +79,46 @@ namespace Zios{
 		}
 		public override void Setup(string path,Component parent){
 			if(parent.IsNull()){return;}
-			if(this.mode == AttributeMode.Linked){this.usage = AttributeUsage.Shaped;}
+			Attribute.all.RemoveAll(x=>x==this);
 			this.parent = parent;
 			this.path = path.AddRoot(parent);
-			this.id = this.id.IsEmpty() ? Guid.NewGuid().ToString() : this.id;
+			string previousID = this.id;
+			this.localID = this.localID.IsEmpty() ? Guid.NewGuid().ToString() : this.localID;
+			this.id = parent.GetInstanceID()+"/"+this.localID;
+			bool changed = !previousID.IsEmpty() && this.id != previousID;
+			if(!Application.isPlaying){
+				if(this.mode == AttributeMode.Linked){this.usage = AttributeUsage.Shaped;}
+				if(changed){
+					GameObject root = Utility.FindPrefabRoot(parent.gameObject);
+					if(!root.IsNull()){
+						string name = root.gameObject.name;
+						if(Locate.HasDuplicate(name)){
+							Debug.Log("Attribute : Duplicate detected -- " + this.id + " -- " + previousID);
+							char lastDigit = name[name.Length-1];
+							if(name.Length > 1 && name[name.Length-2] == ' ' && char.IsLetter(lastDigit)){
+								char nextLetter = (char)(char.ToUpper(lastDigit)+1);
+								root.gameObject.name = name.TrimEnd(lastDigit) + nextLetter;
+							}
+							else{
+								root.gameObject.name = name + " B";
+							}
+						}
+					}
+					var resolve = this.GetResolveTable();
+					if(!resolve.ContainsKey(parent.gameObject)){
+						resolve[parent.gameObject] = new Dictionary<string,string>();
+					}
+					resolve[parent.gameObject][previousID] = this.id;
+					Utility.SetDirty(parent);
+				}
+			}
 			foreach(var data in this.data){
 				if(data.usage == AttributeUsage.Direct){continue;}
 				data.target.Setup(this.path+"/Target",parent);
 				data.target.DefaultSearch("[This]");
 			}
-			if(parent.HasVariable("hasReset") && parent.GetVariable<bool>("hasReset")){
-				if(this.id.IsEmpty()){return;}
-				parent.SetVariable<bool>("hasReset",false);
-				if(Attribute.all.FindAll(x=>x.id==this.id).Count < 2){
-					Attribute.all.RemoveAll(x=>x.id==this.id);
-				}
-				this.id = Guid.NewGuid().ToString();
-				Attribute.all.Add(this);
-				return;
-			}
-			var exists = Attribute.all.Find(item=>item.parent.GetHashCode()==this.parent.GetHashCode() && item.path==this.path);
+			var exists = Attribute.all.Find(item=>item.id == this.id);
 			if(exists.IsNull()){
-				var idMatch = Attribute.all.Find(item=>item.id==this.id);
-				bool duplicate = idMatch != null && idMatch.parent.GetHashCode() != parent.GetHashCode();
-				if(duplicate){
-					var resolve = this.GetResolveTable();
-					Debug.LogWarning("Attribute : Resolving duplicate id -- " + this.path);
-					string former = this.id;
-					this.id = Guid.NewGuid().ToString();
-					if(!resolve.ContainsKey(parent.gameObject)){
-						resolve[parent.gameObject] = new Dictionary<string,string>();
-					}
-					resolve[parent.gameObject][former] = this.id;
-				}
 				Attribute.all.Add(this);
 			}
 		}
@@ -135,8 +143,10 @@ namespace Zios{
 					if(!lookup.ContainsKey(target)){
 						lookup[target] = new Dictionary<string,Type>();
 					}
-					if(resolve.ContainsKey(target) && resolve[target].ContainsKey(data.referenceID)){
-						data.referenceID = resolve[target][data.referenceID];
+					if(!Application.isPlaying){
+						if(resolve.ContainsKey(target) && resolve[target].ContainsKey(data.referenceID)){
+							data.referenceID = resolve[target][data.referenceID];
+						}
 					}
 					if(lookup[target].ContainsKey(data.referenceID)){
 						data.reference = lookup[target][data.referenceID];
@@ -160,7 +170,7 @@ namespace Zios{
 			if(this.mode != AttributeMode.Formula){
 				return this.GetValue(first);
 			}
-			return this.GetFormulaValue(first.sign);
+			return this.GetFormulaValue();
 		}
 		public void Set(BaseType value){
 			if(this.setMethod != null){

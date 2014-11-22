@@ -18,7 +18,7 @@ namespace Zios{
 			else if(special == SpecialBool.Flip){return !value;}
 			return value;
 		}
-		public override bool GetFormulaValue(OperatorBool sign){
+		public override bool GetFormulaValue(){
 			bool value = false;
 			var first = this.data[0];
 			if(this.mode != AttributeMode.Formula){

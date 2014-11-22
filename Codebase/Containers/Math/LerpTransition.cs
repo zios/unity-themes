@@ -16,9 +16,9 @@ public class LerpTransition{
 		path = path.AddRoot(parent);
 		if(parent is ActionPart){
 			ActionPart part = (ActionPart)parent;
-			this.fixedTime = part.rate == ActionRate.FixedUpdate;
+			this.fixedTime = part.rate == UpdateRate.FixedUpdate;
 		}
-		Events.Add(path+"/Reset Transition",this.Reset,parent.gameObject);
+		Events.Add(path+"/Transition/Reset",this.Reset,parent.gameObject);
 		this.isAngle.Setup(path+"/Is Angle",parent);
 		this.isResetOnChange.Setup(path+"/Is Reset On Change",parent);
 		this.speed.Setup(path+"/Transition/Speed",parent);

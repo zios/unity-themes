@@ -37,7 +37,7 @@ namespace Zios{
 			else if(special == SpecialVector3.Sign){return value.Sign();}
 			return value;
 		}
-		public override Vector3 GetFormulaValue(OperatorVector3 sign){
+		public override Vector3 GetFormulaValue(){
 			Vector3 value = Vector3.zero;
 			for(int index=0;index<this.data.Length;++index){
 				var data = this.data[index];

@@ -31,6 +31,16 @@ public static class Locate{
 		}
 		return matches.ToArray();
 	}
+	public static bool HasDuplicate(string name){
+		GameObject[] all = (GameObject[])Resources.FindObjectsOfTypeAll(typeof(GameObject));
+		List<GameObject> amount = new List<GameObject>();
+		foreach(var current in all){
+			if(current.IsPrefab()){continue;}
+			if(current.name == name){amount.Add(current);}
+			if(amount.Count > 1){return true;}
+		}
+		return false;
+	}
 	public static GameObject[] GetSceneObjects(){
 		GameObject[] all = (GameObject[])Resources.FindObjectsOfTypeAll(typeof(GameObject));
 		List<GameObject> scene = new List<GameObject>();

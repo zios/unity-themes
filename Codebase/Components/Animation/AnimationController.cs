@@ -15,7 +15,7 @@ public class AnimationData{
 	[NonSerialized] public bool active;
 }
 [RequireComponent(typeof(Animation))][AddComponentMenu("Zios/Component/Animation/Animation Controller")]
-public class AnimationController : MonoBehaviour{
+public class AnimationController : ManagedMonoBehaviour{
 	public AttributeBool highestPriorityOnly = true;
 	public AttributeInt defaultPriority = 1;
 	public AttributeFloat defaultTransitionIn = 0.15f;
@@ -29,9 +29,8 @@ public class AnimationController : MonoBehaviour{
 	//=====================
 	// Built-in
 	//=====================
-	public void Reset(){this.Awake();}
-	public void OnApplicationQuit(){this.Awake();}
-	public void Awake(){
+	public override void Awake(){
+		base.Awake();
 		this.Build();
 		this.highestPriorityOnly.Setup("Highest Priority Only",this);
 		this.defaultPriority.Setup("Default Priority Only",this);
@@ -78,7 +77,7 @@ public class AnimationController : MonoBehaviour{
 		this.lookup[name].weight = currentWeight;
 		this.animation.Blend(name,currentWeight,transitionTime);
 	}
-	public void Update(){
+	public override void Step(){
 		this.PlayDefault();
 		foreach(AnimationData data in this.animations){
 			if(this.current.ContainsKey(data.name)){
@@ -152,12 +151,12 @@ public class AnimationController : MonoBehaviour{
 			this.defaultAnimation = this.lookup[name];
 		}
 	}
-	public void OnSetSpeed(object [] values){
+	public void OnSetSpeed(object[] values){
 		string name = (string)values[0];
 		float speed = (float)values[1];
 		this.SetSpeed(name,speed);
 	}
-	public void OnSetWeight(object [] values){
+	public void OnSetWeight(object[] values){
 		string name = (string)values[0];
 		float weight = (float)values[1];
 		this.SetWeight(name,weight);

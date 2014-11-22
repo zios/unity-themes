@@ -1,8 +1,10 @@
+#pragma warning disable 0162
 using UnityEngine;
 using System.Linq;
 using System.Collections.Generic;
 #if UNITY_EDITOR
 using UnityEditor;
+using UnityObject = UnityEngine.Object;
 using CallbackFunction = UnityEditor.EditorApplication.CallbackFunction;
 public class UtilityListener : AssetPostprocessor{
 	public static void OnPostprocessAllAssets(string[] imported,string[] deleted,string[] moved, string[] path){
@@ -24,6 +26,17 @@ public static class Utility{
 			current = prefix + "/" + current;
 		}
 		return current.Replace("//","/").TrimRight("/");
+	}
+	public static void SetDirty(UnityObject target){
+		#if UNITY_EDITOR
+		EditorUtility.SetDirty(target);
+		#endif
+	}
+	public static GameObject FindPrefabRoot(GameObject target){
+		#if UNITY_EDITOR
+		return PrefabUtility.FindPrefabRoot(target);
+		#endif
+		return null;
 	}
 	public static void EditorUpdate(CallbackFunction method,bool callImmediately=false){
 		#if UNITY_EDITOR

@@ -7,11 +7,12 @@ using System.Collections.Generic;
 using UnityEditor;
 #endif
 public static class Events{
-	public static GameObject all = new GameObject("AllEvents");
-	public static GameObject global = new GameObject("GlobalEvents");
+	public static GameObject all = new GameObject("All Events");
+	public static GameObject global = new GameObject("Global Events");
 	public static List<string> warned = new List<string>();
 	public static Dictionary<GameObject,Dictionary<string,List<object>>> listeners = new Dictionary<GameObject,Dictionary<string,List<object>>>();
 	public static Dictionary<GameObject,List<string>> callers = new Dictionary<GameObject,List<string>>();
+	public static Dictionary<GameObject,float> lastRegister = new Dictionary<GameObject,float>();
 	static Events(){
 		Events.all.hideFlags = HideFlags.HideAndDontSave;
 		Events.global.hideFlags = HideFlags.HideAndDontSave;
@@ -21,6 +22,11 @@ public static class Events{
 	public static void Register(string name,params GameObject[] targets){
 		targets = targets.Add(Events.all);
 		foreach(GameObject target in targets){
+			Events.lastRegister.Setup(target);
+			if(Time.realtimeSinceStartup > Events.lastRegister[target]){
+				Events.callers[target] = new List<string>();
+				Events.lastRegister[target] = Time.realtimeSinceStartup + 1;
+			}
 			if(!Events.callers.ContainsKey(target)){Events.callers[target] = new List<string>();}
 			if(!Events.callers[target].Contains(name)){Events.callers[target].Add(name);}
 		}

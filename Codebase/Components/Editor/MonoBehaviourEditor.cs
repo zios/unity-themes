@@ -9,7 +9,7 @@ public class MonoBehaviourEditor : Editor{
 		if(this.target is AttributeBox){Utility.EditorCall(this.EditorUpdate<AttributeBox>);}
 		if(this.target is AnimationController){Utility.EditorCall(this.EditorUpdate<AnimationController>);}
 		if(this.target is ColliderController){Utility.EditorCall(this.EditorUpdate<ColliderController>);}
-		if(this.target is StateMonoBehaviour){Utility.EditorCall(this.EditorUpdate<StateMonoBehaviour>);}
+		if(this.target is ManagedMonoBehaviour){Utility.EditorCall(this.EditorUpdate<ManagedMonoBehaviour>);}
 	}
 	public void EditorUpdate<Type>() where Type : MonoBehaviour{
 		if(Time.realtimeSinceStartup > this.nextStep){
