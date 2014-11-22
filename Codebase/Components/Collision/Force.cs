@@ -4,7 +4,7 @@ using System;
 using System.Collections;
 [RequireComponent(typeof(ColliderController))]
 [AddComponentMenu("Zios/Component/Physics/Force")]
-public class Force : ActionPart{
+public class Force : ManagedMonoBehaviour{
 	public AttributeVector3 velocity = Vector3.zero;
 	public AttributeVector3 terminalVelocity = new Vector3(20,20,20);
 	public AttributeVector3 resistence = new Vector3(8,0,8);
@@ -25,16 +25,15 @@ public class Force : ActionPart{
 		Events.Add("Add Force",this.AddForce);
 		this.controller = this.GetComponent<ColliderController>();
 	}
-	public override void Use(){
+	public override void Step(){
 		if(!this.disabled && this.velocity != Vector3.zero){
 			Vector3 resistence = Vector3.Scale(this.velocity.Sign(),this.resistence);
-			this.velocity.Set(this.velocity - resistence * Time.fixedDeltaTime);
+			this.velocity.Set(this.velocity - resistence * this.deltaTime);
 			this.velocity.Set(this.velocity.Clamp(this.terminalVelocity.Get()*-1,this.terminalVelocity));
 			this.gameObject.Call("Add Move",new Vector3(this.velocity.x,0,0));
 			this.gameObject.Call("Add Move",new Vector3(0,this.velocity.y,0));
 			this.gameObject.Call("Add Move",new Vector3(0,0,this.velocity.z));
 		}
-		base.Use();
 	}
 	public void AddForce(Vector3 force){
 		this.velocity.Set(this.velocity + force);

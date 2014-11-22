@@ -7,14 +7,17 @@ public class LerpTransition{
 	public AttributeBool isResetOnChange = true;
 	public AttributeFloat speed = 0;
 	public Transition transition = new Transition();
+	protected Component parent;
+	protected string path;
 	protected bool fixedTime;
 	protected bool active;
 	public void Reset(){
 		this.active = false;
 	}
 	public virtual void Setup(string path,Component parent){
-		path = path.AddRoot(parent);
-		if(parent is ActionPart){
+		this.path = path.AddRoot(parent);
+		this.parent = parent;
+		if(this.parent is ManagedMonoBehaviour){
 			ActionPart part = (ActionPart)parent;
 			this.fixedTime = part.rate == UpdateRate.FixedUpdate;
 		}

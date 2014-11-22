@@ -7,14 +7,10 @@ public class LerpVector3 : LerpTransition{
 	public float endProximity;
 	private Vector3? lastStart;
 	private Vector3? lastEnd;
-	private string path;
-	private Component parent;
 	public override void Setup(string path,Component parent){
-		this.path = path.AddRoot(parent);
-		this.parent = parent;
+		base.Setup(path,parent);
 		this.parent.gameObject.Register(this.path+"/Transition/End");
 		this.parent.gameObject.Register(this.path+"/Transition/Start");
-		base.Setup(this.path,parent);
 	}
 	public virtual Vector3 Step(Vector3 current){
 		return this.Step(current,current);

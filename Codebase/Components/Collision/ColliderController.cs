@@ -31,8 +31,8 @@ public class ColliderController : ManagedMonoBehaviour{
 		return Array.IndexOf(ColliderController.triggers,collider) != -1;
 	}
 	public ColliderMode mode;
-	public List<Vector3> move = new List<Vector3>();
-	public List<Vector3> moveRaw = new List<Vector3>();
+	[NonSerialized] public List<Vector3> move = new List<Vector3>();
+	[NonSerialized] public List<Vector3> moveRaw = new List<Vector3>();
 	[NonSerialized] public Vector3 lastDirection;
 	public Dictionary<string,bool> blocked = new Dictionary<string,bool>();
 	public Dictionary<string,float> lastBlockedTime = new Dictionary<string,float>();
@@ -103,8 +103,7 @@ public class ColliderController : ManagedMonoBehaviour{
 			Vector3 initial = this.rigidbody.position;
 			foreach(Vector3 current in this.move){
 				cumulative += current;
-				float time = this.rate == UpdateRate.Update ? Time.deltaTime : Time.fixedDeltaTime;
-				Vector3 move = this.NullBlocked(current) * time;
+				Vector3 move = this.NullBlocked(current) * this.deltaTime;
 				this.StepMove(current,move);
 			}
 			foreach(Vector3 current in this.moveRaw){
@@ -179,7 +178,7 @@ public class ColliderController : ManagedMonoBehaviour{
 				bool slopeCheck = !yOnly && (angle < this.maxSlopeAngle);
 				if(slopeCheck || slideCheck){
 					Vector3 cross = Vector3.Cross(slopeHit.normal,current);
-					Vector3 change = Vector3.Cross(cross,slopeHit.normal) * Time.fixedDeltaTime;
+					Vector3 change = Vector3.Cross(cross,slopeHit.normal) * this.deltaTime;
 					this.SetPosition(this.rigidbody.position + change);
 					this.blocked["down"] = false;
 					return true;
@@ -201,7 +200,7 @@ public class ColliderController : ManagedMonoBehaviour{
 	private bool CheckStep(Vector3 current){
 		if(this.maxStepHeight != 0 && current.y == 0){
 			RaycastHit stepHit;
-			Vector3 move = this.NullBlocked(current) * Time.fixedDeltaTime;
+			Vector3 move = this.NullBlocked(current) * this.deltaTime;
 			Vector3 direction = move.normalized;
 			Vector3 position = this.rigidbody.position;
 			float distance = Vector3.Distance(position,position+move) + this.hoverDistance*2;

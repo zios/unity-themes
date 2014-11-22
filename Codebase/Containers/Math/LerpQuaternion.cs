@@ -6,14 +6,10 @@ public class LerpQuaternion : LerpTransition{
 	public float endProximity;
 	private Quaternion? lastStart;
 	private Quaternion? lastEnd;
-	private string path;
-	private Component parent;
 	public override void Setup(string path,Component parent){
-		this.path = path.AddRoot(parent);
-		this.parent = parent;
+		base.Setup(path,parent);
 		this.parent.gameObject.Register(this.path+"/Transition/End");
 		this.parent.gameObject.Register(this.path+"/Transition/Start");
-		base.Setup(this.path,parent);
 	}
 	public virtual Quaternion Step(Quaternion current){
 		return this.Step(current,current);

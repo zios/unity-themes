@@ -13,7 +13,7 @@ public class RotateAmount : ActionPart{
 		base.Use();
 		Transform target = this.target.Get().transform;
 		Vector3 amount = this.amount;
-		amount *= this.rate == UpdateRate.FixedUpdate ? Time.fixedDeltaTime : Time.deltaTime;
+		amount *= this.deltaTime;
 		target.localEulerAngles += amount;
 	}
 }
