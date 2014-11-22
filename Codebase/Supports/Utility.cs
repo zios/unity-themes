@@ -27,6 +27,10 @@ public static class Utility{
 		}
 		return current.Replace("//","/").TrimRight("/");
 	}
+	public static void Destroy(UnityObject target){
+		if(!Application.isPlaying){Object.DestroyImmediate(target);}
+		else{Object.Destroy(target);}
+	}
 	public static void SetDirty(UnityObject target){
 		#if UNITY_EDITOR
 		EditorUtility.SetDirty(target);

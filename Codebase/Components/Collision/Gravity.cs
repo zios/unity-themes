@@ -15,8 +15,7 @@ public class Gravity : ActionPart{
 		this.scale.Setup("Scale",this);
 	}
 	public override void Use(){
-		bool blocked = ColliderController.Get(this.gameObject).blocked["down"];
-		if(!this.disabled && !blocked){
+		if(!this.disabled){
 			Vector3 amount = (this.intensity*this.scale)* Time.fixedDeltaTime;
 			this.gameObject.Call("Add Force",amount);
 		}

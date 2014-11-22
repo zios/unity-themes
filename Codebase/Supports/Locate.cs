@@ -34,11 +34,20 @@ public static class Locate{
 	public static bool HasDuplicate(string name){
 		GameObject[] all = (GameObject[])Resources.FindObjectsOfTypeAll(typeof(GameObject));
 		List<GameObject> amount = new List<GameObject>();
+		GameObject root = new GameObject("root");
 		foreach(var current in all){
 			if(current.IsPrefab()){continue;}
-			if(current.name == name){amount.Add(current);}
-			if(amount.Count > 1){return true;}
+			GameObject parent = current.GetParent();
+			if(parent.IsNull()){parent = root;}
+			if(current.name == name){
+				if(amount.Contains(parent)){
+					Utility.Destroy(root);
+					return true;
+				}
+				amount.Add(parent);
+			}
 		}
+		Utility.Destroy(root);
 		return false;
 	}
 	public static GameObject[] GetSceneObjects(){

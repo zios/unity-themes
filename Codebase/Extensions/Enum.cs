@@ -32,7 +32,9 @@ public static class EnumExtension{
 		}
 		return result.ToArray();
 	}
-	public static bool Contains(this Enum current,Enum value){
-		return (value.ToInt() & value.ToInt()) != 0;
+	public static bool Contains(this Enum current,Enum mask){
+		int bits = 1<<mask.ToInt();
+		return (current.ToInt() & bits) == bits;
+		//return (current.ToInt() | (1<<mask.ToInt())) == current.ToInt();
 	}
 }
