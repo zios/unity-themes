@@ -9,10 +9,8 @@ namespace Zios{
 		[NonSerialized] public GameObject owner;
 		public override void Awake(){
 			this.alias = this.gameObject.name;
-			if(this.owner.IsNull()){
-				this.controller = this.gameObject.GetComponentInParent<StateController>(true);
-				this.owner = this.controller == null ? this.gameObject : this.controller.gameObject;
-			}
+			this.controller = this.gameObject.GetParent().GetComponentInParent<StateController>(true);
+			this.owner = this.controller == null ? this.gameObject : this.controller.gameObject;
 			if(!this.controller.IsNull()){
 				this.inUse.AddScope(this.controller);
 				this.usable.AddScope(this.controller);

@@ -1,7 +1,7 @@
 using Zios;
 using System;
 using UnityEngine;
-[AddComponentMenu("Zios/Component/Action/Attribute/Check")]
+[AddComponentMenu("Zios/Component/Action/Attribute/Attribute Check")]
 public class AttributeCheck : ActionPart{
 	public AttributeBool value = false;
 	public override void Awake(){
