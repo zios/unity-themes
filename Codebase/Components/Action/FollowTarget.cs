@@ -4,8 +4,8 @@ using UnityEngine;
 public enum OffsetType{Relative,Absolute}
 [AddComponentMenu("Zios/Component/Action/Follow Target")]
 public class FollowTarget : ActionPart{
-	public Target source = new Target();
-	public Target target = new Target();
+	public AttributeGameObject source = new AttributeGameObject();
+	public AttributeGameObject target = new AttributeGameObject();
 	public LerpVector3 position = new LerpVector3();
 	public OffsetType offsetType;
 	public AttributeVector3 offset = Vector3.zero;
@@ -22,7 +22,7 @@ public class FollowTarget : ActionPart{
 	public Vector3 AdjustVector(Vector3 value){
 		Vector3 adjusted = value;
 		if(this.offsetType == OffsetType.Relative){
-			Transform target = this.target.direct.transform;
+			Transform target = this.target.Get().transform;
 			adjusted = target.right * value.x;
 			adjusted += target.up * value.y;
 			adjusted += target.forward * value.z;

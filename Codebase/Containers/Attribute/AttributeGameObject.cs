@@ -20,12 +20,17 @@ namespace Zios{
 			return this.GetValue(first);
 		}
 		public override void Setup(string path,Component component){
-			this.canFormula = false;
+			this.locked = true;
+			this.usage = AttributeUsage.Shaped;
+			this.mode = AttributeMode.Normal;
 			base.Setup(path,component);
 		}
 		public override GameObject HandleSpecial(SpecialGameObject special,GameObject value){
 			if(special == SpecialGameObject.Parent){return value.GetParent();}
 			return value;
+		}
+		public void DefaultSearch(string target){
+			this.data[0].target.DefaultSearch(target);
 		}
 	}
 	[Serializable]

@@ -6,7 +6,7 @@ public class Play3DAnimation : ActionPart{
 	public AttributeString animationName = "";
 	public AttributeFloat speed = 1;
 	public AttributeFloat weight = 1;
-	public Target target = new Target();
+	public AttributeGameObject target = new AttributeGameObject();
 	public override void Awake(){
 		base.Awake();
 		this.animationName.Setup("Animation Name",this);
@@ -23,8 +23,9 @@ public class Play3DAnimation : ActionPart{
 	}
 	public override void End(){
 		base.End();
-		if(!this.target.direct.IsNull()){
-			this.target.Call("Stop Animation",this.animationName.Get());
+		GameObject target = this.target.Get();
+		if(!target.IsNull()){
+			target.Call("Stop Animation",this.animationName.Get());
 		}
 	}
 }

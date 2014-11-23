@@ -5,7 +5,7 @@ public enum ForceType{Absolute,Relative}
 public class AddForce : ActionPart{
 	public ForceType type;
 	public AttributeVector3 amount = Vector3.zero;
-	public Target target = new Target();
+	public AttributeGameObject target = new AttributeGameObject();
 	public override void Awake(){
 		base.Awake();
 		this.target.Setup("Target",this);

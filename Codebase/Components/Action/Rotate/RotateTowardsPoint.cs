@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 [AddComponentMenu("Zios/Component/Action/Rotate/Towards/Rotate Towards Point")]
 public class RotateTowardsPoint : ActionPart{
-	public Target source = new Target();
+	public AttributeGameObject source = new AttributeGameObject();
 	public AttributeVector3 target = Vector3.zero;
 	public LerpQuaternion angles = new LerpQuaternion();
 	public ListBool lerpAxes = new ListBool(){true,true,true};

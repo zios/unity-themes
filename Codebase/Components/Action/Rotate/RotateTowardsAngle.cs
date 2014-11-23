@@ -3,7 +3,7 @@ using UnityEngine;
 [AddComponentMenu("Zios/Component/Action/Rotate/Towards/Rotate Towards Angle")]
 public class RotateTowardsAngle : ActionPart{
 	public AttributeVector3 eulerAngle = Vector3.zero;
-	public Target target = new Target();
+	public AttributeGameObject target = new AttributeGameObject();
 	public LerpVector3 rotation = new LerpVector3();
 	public override void Awake(){
 		base.Awake();

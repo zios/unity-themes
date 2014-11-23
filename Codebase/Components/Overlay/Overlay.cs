@@ -13,7 +13,7 @@ public static class Overlay{
 	public static Vector2 defaultResolution;
 	static Overlay(){
 		if(Overlay.defaultResolution == Vector2.zero){
-			Overlay.defaultResolution = new Vector2(Screen.width,Screen.height);;
+			Overlay.defaultResolution = new Vector2(Screen.width,Screen.height);
 			#if UNITY_EDITOR 
 			Overlay.defaultResolution = new Vector2(PlayerSettings.defaultScreenWidth,PlayerSettings.defaultScreenHeight);
 			#endif

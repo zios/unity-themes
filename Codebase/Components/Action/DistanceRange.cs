@@ -2,8 +2,8 @@ using Zios;
 using UnityEngine;
 [AddComponentMenu("Zios/Component/Action/Distance Range")]
 public class DistanceRange : ActionPart{
-	public Target source = new Target();
-	public Target target = new Target();
+	public AttributeGameObject source = new AttributeGameObject();
+	public AttributeGameObject target = new AttributeGameObject();
 	public AttributeFloat minimumDistance = Mathf.Infinity;
 	public AttributeFloat maximumDistance = 0;
 	public override void Awake(){

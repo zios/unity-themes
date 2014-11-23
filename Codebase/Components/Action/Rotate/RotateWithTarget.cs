@@ -2,8 +2,8 @@ using Zios;
 using UnityEngine;
 [AddComponentMenu("Zios/Component/Action/Rotate/With/Rotate With Target")]
 public class RotateWithTarget : ActionPart{
-	public Target source = new Target();
-	public Target target = new Target();
+	public AttributeGameObject source = new AttributeGameObject();
+	public AttributeGameObject target = new AttributeGameObject();
 	public LerpVector3 angles = new LerpVector3();
 	public override void Awake(){
 		base.Awake();

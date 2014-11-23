@@ -7,7 +7,7 @@ public class RayCast : ActionPart{
 	public Color rayColor = Color.blue;
 	public AttributeVector3 direction = -Vector3.up;
 	public AttributeVector3 offset = Vector3.zero;
-	public Target source = new Target();
+	public AttributeGameObject source = new AttributeGameObject();
 	public LayerMask layers = -1;
 	public AttributeBool relative = false;
 	public override void Awake(){
@@ -20,18 +20,19 @@ public class RayCast : ActionPart{
 		this.source.Setup("Source",this);
 	}
 	public Vector3 GetPosition(){
-		if(this.source.Get() != null){
-			return this.source.direct.transform.position;
+		GameObject source = this.source.Get();
+		if(!source.IsNull()){
+			return source.transform.position;
 		}
 		return Vector3.zero;
 	}
 	public Vector3 AdjustVector(Vector3 value){
 		Vector3 adjusted = value;
 		if(this.relative){
-			Transform target = this.source.direct.transform;
-			adjusted = target.right * value.x;
-			adjusted += target.up * value.y;
-			adjusted += target.forward * value.z;
+			Transform source = this.source.Get().transform;
+			adjusted = source.right * value.x;
+			adjusted += source.up * value.y;
+			adjusted += source.forward * value.z;
 		}
 		return adjusted;
 	}
@@ -43,10 +44,11 @@ public class RayCast : ActionPart{
 		this.Toggle(state);
 	}
 	public void OnDrawGizmosSelected(){
-		if(this.source.direct != null){
+		GameObject source = this.source.Get();
+		if(!source.IsNull()){
 			Gizmos.color = this.rayColor;
 			Vector3 direction = this.AdjustVector(this.direction);
-			Vector3 start = this.source.direct.transform.position + this.AdjustVector(this.offset);
+			Vector3 start = source.transform.position + this.AdjustVector(this.offset);
 			Vector3 end = start + (direction * this.distance);
 			Gizmos.DrawLine(start,end);
 		}

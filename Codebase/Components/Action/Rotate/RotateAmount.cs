@@ -3,7 +3,7 @@ using UnityEngine;
 [AddComponentMenu("Zios/Component/Action/Rotate/Rotate Amount")]
 public class RotateAmount : ActionPart{
 	public AttributeVector3 amount = Vector3.zero;
-	public Target target = new Target();
+	public AttributeGameObject target = new AttributeGameObject();
 	public override void Awake(){
 		base.Awake();
 		this.DefaultRate("FixedUpdate");

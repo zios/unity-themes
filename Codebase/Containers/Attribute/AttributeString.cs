@@ -23,7 +23,7 @@ namespace Zios{
 			string value = "";
 			for(int index=0;index<this.data.Length;++index){
 				var data = this.data[index];
-				string current = this.GetValue(data);;
+				string current = this.GetValue(data);
 				if(index == 0){value = current;}
 				else if(data.sign == OperatorString.Prefix){value = current + value;}
 				else if(data.sign == OperatorString.Suffix){value = value + current;}

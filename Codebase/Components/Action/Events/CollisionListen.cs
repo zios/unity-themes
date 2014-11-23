@@ -18,14 +18,14 @@ public class CollisionListen : ActionPart{
 	[EnumMask] public CollisionSource sourceCause = (CollisionSource)(-1);
 	//[EnumMask] public CollisionDirection direction = (CollisionDirection)(-1);
 	public LayerMask layer = (LayerMask)(-1);
-	public Target target = new Target();
+	public AttributeGameObject target = new AttributeGameObject();
 	//public AttributeBool forceRequired = true;
 	public override void Awake(){
 		base.Awake();
 		this.target.Setup("Target",this);
 		this.target.DefaultSearch("[Owner]");
-		if(!this.target.direct.IsNull()){
-			Events.AddScope("Collide",(MethodObject)this.OnCollide,this.target.direct);
+		if(!this.target.Get().IsNull()){
+			Events.AddScope("Collide",(MethodObject)this.OnCollide,this.target.Get());
 		}
 	}
 	public override void Use(){}

@@ -13,22 +13,22 @@ public class EventTargetDrawer : PropertyDrawer{
 		GUI.changed = false;
         EditorGUI.BeginProperty(position,label,property);
 		EventTarget eventTarget = property.GetObject<EventTarget>();
-		Target target = eventTarget.target;
+		GameObject target = eventTarget.target.Get();
 		label.DrawLabel(labelRect,null,true);
 		string eventType = eventTarget.mode == EventMode.Listeners ? "Listen" : "Caller";
-		bool hasEvents = eventType == "Listen" ? !Events.HasEvents("Listen",target.direct) : !Events.HasEvents("Caller",target.direct);
+		bool hasEvents = eventType == "Listen" ? !Events.HasEvents("Listen",target) : !Events.HasEvents("Caller",target);
 		bool toggleActive = this.targetMode.ContainsKey(eventTarget) ? this.targetMode[eventTarget] : !eventTarget.name.IsEmpty();
 		this.targetMode[eventTarget] = toggleActive.Draw(valueRect.SetWidth(16),GUI.skin.GetStyle("CheckmarkToggle"));
 		valueRect = valueRect.Add(18,0,-18,0);
 		if(!this.targetMode[eventTarget]){
 			property.FindPropertyRelative("target").Draw(valueRect);
 		}
-		else if(!target.direct.IsNull() && hasEvents){
-			string error = "No <b>"+eventType+"</b> events found for target -- " + target.direct.name;
+		else if(!target.IsNull() && hasEvents){
+			string error = "No <b>"+eventType+"</b> events found for target -- " + target.name;
 			error.DrawLabel(valueRect,GUI.skin.GetStyle("WarningLabel"));
 		}
 		else{
-			List<string> events = eventType == "Listen" ? Events.GetEvents("Listen",target.direct) : Events.GetEvents("Caller",target.direct);
+			List<string> events = eventType == "Listen" ? Events.GetEvents("Listen",target) : Events.GetEvents("Caller",target);
 			if(events.Count > 0){
 				events.Sort();
 				events = events.OrderBy(item=>item.Contains("/")).ToList();

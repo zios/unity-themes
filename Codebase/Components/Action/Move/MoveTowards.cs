@@ -2,7 +2,7 @@ using Zios;
 using UnityEngine;
 [AddComponentMenu("Zios/Component/Action/Move/Move Towards")]
 public class MoveTowards : ActionPart{
-	public Target target = new Target();
+	public AttributeGameObject target = new AttributeGameObject();
 	public AttributeVector3 goal = Vector3.zero;
 	public LerpVector3 travel = new LerpVector3();
 	public override void Awake(){

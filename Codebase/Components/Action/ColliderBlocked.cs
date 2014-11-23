@@ -9,7 +9,7 @@ public class BlockedState : ActionPart{
 	public BlockType type;
 	public Direction direction;
 	public AttributeFloat duration = 0;
-	public Target target = new Target();
+	public AttributeGameObject target = new AttributeGameObject();
 	public override void Awake(){
 		base.Awake();
 		this.DefaultPriority(5);

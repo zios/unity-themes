@@ -9,17 +9,20 @@ public class EventTarget{
 	public EventMode mode = EventMode.Listeners;
 	public void Setup(string name,Component component){
 		this.name.Setup(name+"/Name",component);
-		this.target.SkipWarning();
-		this.target.Setup(name+"/Target",component,"");
+		//this.target.SkipWarning();
+		this.target.Setup(name+"/Target",component);
+		this.target.DefaultSearch("");
 	}
 	public void SetupCatch(Method method){
-		if(!this.name.IsEmpty() && this.target.direct != null){
-			Events.AddScope(this.name,method,this.target.direct);
+		GameObject target = this.target.Get();
+		if(!this.name.IsEmpty() && !target.IsNull()){
+			Events.AddScope(this.name,method,target);
 		}
 	}
 	public void Call(){
-		if(Events.HasEvent(name,this.target.direct)){
-			this.target.Call(this.name);
+		GameObject target = this.target.Get();
+		if(Events.HasEvent(name,target)){
+			target.Call(this.name);
 		}
 	}
 }
