@@ -6,7 +6,6 @@ public class RotateAmount : ActionPart{
 	public AttributeGameObject target = new AttributeGameObject();
 	public override void Awake(){
 		base.Awake();
-		this.DefaultRate("FixedUpdate");
 		this.target.Setup("Target",this);
 	}
 	public override void Use(){

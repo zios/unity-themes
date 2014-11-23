@@ -50,7 +50,10 @@ public static class Locate{
 		Utility.Destroy(root);
 		return false;
 	}
-	public static GameObject[] GetSceneObjects(){
+	public static GameObject[] GetSceneObjects(bool includeHidden=true){
+		if(!includeHidden){
+			return (GameObject[])GameObject.FindObjectsOfType(typeof(GameObject));
+		}
 		GameObject[] all = (GameObject[])Resources.FindObjectsOfTypeAll(typeof(GameObject));
 		List<GameObject> scene = new List<GameObject>();
 		foreach(var current in all){
@@ -59,7 +62,10 @@ public static class Locate{
 		}
 		return scene.ToArray();
 	}
-	public static Type[] GetSceneObjects<Type>() where Type : Component{
+	public static Type[] GetSceneObjects<Type>(bool includeHidden=true) where Type : Component{
+		if(!includeHidden){
+			return (Type[])GameObject.FindObjectsOfType(typeof(Type));
+		}
 		Type[] all = (Type[])Resources.FindObjectsOfTypeAll(typeof(Type));
 		List<Type> scene = new List<Type>();
 		foreach(var current in all){
@@ -68,11 +74,13 @@ public static class Locate{
 		}
 		return scene.ToArray();
 	}
-	public static GameObject Find(string name){
+	public static GameObject Find(string name,bool includeHidden=true){
 		if(!name.Contains("/")){return GameObject.Find(name);}
-		GameObject[] all = (GameObject[])Resources.FindObjectsOfTypeAll(typeof(GameObject));
+		GameObject[] all;
+		if(!includeHidden){all = (GameObject[])GameObject.FindObjectsOfType(typeof(GameObject));}
+		else{all = (GameObject[])Resources.FindObjectsOfTypeAll(typeof(GameObject));}
 		foreach(GameObject current in all){
-			if(current.IsPrefab()){continue;}
+			if(includeHidden && current.IsPrefab()){continue;}
 			string path = current.GetPath();
 			if(path == name || path.Trim("/") == name || path.TrimLeft("/") == name || path.TrimRight("/") == name){
 				return current;

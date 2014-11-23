@@ -7,7 +7,6 @@ public class MoveTowards : ActionPart{
 	public LerpVector3 travel = new LerpVector3();
 	public override void Awake(){
 		base.Awake();
-		this.DefaultRate("FixedUpdate");
 		this.target.Setup("Target",this);
 		this.goal.Setup("Goal",this);
 		this.travel.Setup("Travel",this);

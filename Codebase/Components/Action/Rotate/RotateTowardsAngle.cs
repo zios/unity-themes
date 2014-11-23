@@ -7,7 +7,6 @@ public class RotateTowardsAngle : ActionPart{
 	public LerpVector3 rotation = new LerpVector3();
 	public override void Awake(){
 		base.Awake();
-		this.DefaultRate("FixedUpdate");
 		this.target.Setup("Target",this);
 		this.rotation.Setup("Rotate Towards",this);
 		this.rotation.isAngle = true;

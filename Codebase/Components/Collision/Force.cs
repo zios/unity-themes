@@ -13,7 +13,6 @@ public class Force : ManagedMonoBehaviour{
 	[NonSerialized] public ColliderController controller;
 	public override void Awake(){
 		base.Awake();
-		this.DefaultRate("FixedUpdate");
 		this.velocity.Setup("Velocity",this);
 		this.terminalVelocity.Setup("Terminal Velocity",this);
 		this.resistence.Setup("Resistence",this);

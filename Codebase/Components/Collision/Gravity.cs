@@ -9,7 +9,6 @@ public class Gravity : ManagedMonoBehaviour{
 	public AttributeBool disabled = false;
 	public override void Awake(){
 		base.Awake();
-		this.DefaultRate("FixedUpdate");
 		this.intensity.Setup("Intensity",this);
 		this.disabled.Setup("Disabled",this);
 		this.scale.Setup("Scale",this);

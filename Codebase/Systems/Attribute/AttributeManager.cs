@@ -6,28 +6,45 @@ using Attribute = Zios.Attribute;
 using Action = Zios.Action;
 [AddComponentMenu("Zios/Singleton/Attribute Manager")][ExecuteInEditMode]
 public class AttributeManager : MonoBehaviour{
-	public float updateEditorInterval = 1;
-	public bool updateEditorOnHierarchyChange = true;
-	public bool updateEditorOnAssetChange = true;
+	public float editorInterval = 1;
+	public bool editorIncludeHidden = false;
+	public bool updateOnHierarchyChange = true;
+	public bool updateOnAssetChange = true;
 	private float nextStep;
 	private bool initialSearch;
 	private bool refresh;
+	private bool rebuild = true;
+	private AttributeBox[] boxes = new AttributeBox[0];
+	private ManagedMonoBehaviour[] states = new ManagedMonoBehaviour[0];
+	private AttributeExposer[] exposers = new AttributeExposer[0];
 	public void OnValidate(){this.CleanEvents();}
 	public void OnDestroy(){this.CleanEvents();}
 	public void OnApplicationQuit(){
 		Utility.EditorUpdate(this.Start,true);
 	}
 	public void Update(){
-		if(this.updateEditorOnAssetChange){Utility.AssetUpdate(this.ReSearch);}
-		if(this.updateEditorOnHierarchyChange){Utility.HierarchyUpdate(this.ReSearch);}
+		if(this.updateOnAssetChange){Utility.AssetUpdate(this.PerformRefresh);}
+		if(this.updateOnHierarchyChange){Utility.HierarchyUpdate(this.PerformRebuild);}
 		Utility.EditorUpdate(this.Start,true);
 	}
 	public void CleanEvents(){
-		Utility.RemoveAssetUpdate(this.ReSearch);
-		Utility.RemoveHierarchyUpdate(this.ReSearch);
+		Utility.RemoveAssetUpdate(this.PerformRefresh);
+		Utility.RemoveHierarchyUpdate(this.PerformRebuild);
 		Utility.RemoveEditorUpdate(this.Start);
 	}
-	public void ReSearch(){this.refresh=true;}
+	public void PerformRefresh(){
+		this.refresh = true;
+	}
+	[ContextMenu("Refresh")]
+	public void PerformRebuild(){
+		this.rebuild = true;
+		this.refresh = true;
+	}
+	public void BuildLists(){
+		this.boxes = Locate.GetSceneObjects<AttributeBox>(this.editorIncludeHidden);
+		this.states = Locate.GetSceneObjects<ManagedMonoBehaviour>(this.editorIncludeHidden);
+		this.exposers = Locate.GetSceneObjects<AttributeExposer>(this.editorIncludeHidden);
+	}
 	public void SceneRefresh(bool full=true){
 		if(full){
 			Attribute.all.Clear();
@@ -36,10 +53,8 @@ public class AttributeManager : MonoBehaviour{
 			AttributeBool.lookup.Clear();
 			AttributeInt.lookup.Clear();
 			AttributeString.lookup.Clear();
+			AttributeGameObject.lookup.Clear();
 		}
-		AttributeBox[] boxes = Locate.GetSceneObjects<AttributeBox>();
-		ManagedMonoBehaviour[] states = Locate.GetSceneObjects<ManagedMonoBehaviour>();
-		AttributeExposer[] exposers = Locate.GetSceneObjects<AttributeExposer>();
 		foreach(AttributeBox box in boxes){
 			if(full || !box.gameObject.activeInHierarchy || !box.enabled){box.Awake();}
 		}
@@ -53,9 +68,13 @@ public class AttributeManager : MonoBehaviour{
 	}
 	public void Start(){
 		if(Application.isPlaying || Time.realtimeSinceStartup > this.nextStep){
-			if(this.updateEditorInterval == -1){return;}
-			this.nextStep = Time.realtimeSinceStartup + this.updateEditorInterval;
+			if(this.editorInterval == -1){return;}
+			this.nextStep = Time.realtimeSinceStartup + this.editorInterval;
 			if(!this.initialSearch || this.refresh){
+				if(this.rebuild){
+					this.BuildLists();
+					this.rebuild = false;
+				}
 				this.SceneRefresh(!Application.isPlaying);
 				this.initialSearch = true;
 				this.refresh = false;

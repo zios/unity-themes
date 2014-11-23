@@ -8,7 +8,6 @@ public class AddMove : ActionPart{
 	public AttributeGameObject target = new AttributeGameObject();
 	public override void Awake(){
 		base.Awake();
-		this.DefaultRate("FixedUpdate");
 		this.target.Setup("Target",this);
 		this.amount.Setup("Amount",this);
 	}

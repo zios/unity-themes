@@ -27,12 +27,12 @@ public class ManagedMonoBehaviour : MonoBehaviour{
 		}
 	}
 	public virtual void FixedUpdate(){
-		if(this.rate == UpdateRate.FixedUpdate){
+		if(this.rate == UpdateRate.FixedUpdate || this.rate == UpdateRate.Default){
 			this.Step();
 		}
 	}
 	public virtual void Update(){
-		if(this.rate == UpdateRate.Update || this.rate == UpdateRate.Default){
+		if(this.rate == UpdateRate.Update){
 			this.Step();
 		}
 	}

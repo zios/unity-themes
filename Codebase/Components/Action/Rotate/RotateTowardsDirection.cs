@@ -8,7 +8,6 @@ public class RotateTowardsDirection : ActionPart{
 	private Vector3 lastDirection;
 	public override void Awake(){
 		base.Awake();
-		this.DefaultRate("FixedUpdate");
 		this.source.Setup("Source",this);
 		this.rotation.Setup("Rotation",this);
 		this.direction.Setup("Rotate Direction",this);
