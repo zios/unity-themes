@@ -18,6 +18,7 @@ namespace Zios{
 		public Component parent;
 		public AttributeMode mode = AttributeMode.Normal;
 		public bool locked;
+		public bool canFormula = true;
 		public virtual AttributeData[] GetData(){return null;}
 		public virtual void Clear(){}
 		public virtual void Add(){}
@@ -50,7 +51,7 @@ namespace Zios{
 			}
 		}
 		public override AttributeData[] GetData(){return this.data;}
-		public virtual BaseType HandleSpecial(Special special,BaseType value){return default(BaseType);}
+		public virtual BaseType HandleSpecial(Special special,BaseType value){return value;}
 		public virtual BaseType GetFormulaValue(){return default(BaseType);}
 		public static Type Find(GameObject target,string name){
 			if(lookup.ContainsKey(target)){
@@ -164,7 +165,7 @@ namespace Zios{
 				lookup[target]["*/"+this.path] = self;
 			}
 		}
-		public BaseType Get(){
+		public virtual BaseType Get(){
 			if(this.getMethod != null){return this.getMethod();}
 			DataType first = this.data[0];
 			if(this.mode != AttributeMode.Formula){
@@ -172,7 +173,7 @@ namespace Zios{
 			}
 			return this.GetFormulaValue();
 		}
-		public void Set(BaseType value){
+		public virtual void Set(BaseType value){
 			if(this.setMethod != null){
 				this.setMethod(value);
 				return;
@@ -212,7 +213,7 @@ namespace Zios{
 				}
 			}
 		}
-		public BaseType GetValue(DataType data){
+		public virtual BaseType GetValue(DataType data){
 			if(data.usage == AttributeUsage.Direct){
 				return data.value;
 			}

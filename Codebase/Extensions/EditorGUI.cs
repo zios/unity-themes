@@ -5,6 +5,7 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityObject = UnityEngine.Object;
 public static class GUIExtension{
+	public static bool render = true;
 	public static Type Draw<Type>(Func<Type> method,bool indention=false){
 		int indentValue = EditorGUI.indentLevel;
 		if(!indention){EditorGUI.indentLevel = 0;}
@@ -15,7 +16,7 @@ public static class GUIExtension{
 	public static void Draw(System.Action method,bool indention=false){
 		int indentValue = EditorGUI.indentLevel;
 		if(!indention){EditorGUI.indentLevel = 0;}
-		method();
+		if(GUIExtension.render){method();}
 		if(!indention){EditorGUI.indentLevel = indentValue;}
 	}
 	public static void DrawLabel(this GUIContent current,Rect area,GUIStyle style=null,bool indention=false){
@@ -49,7 +50,7 @@ public static class GUIExtension{
 		style = style ?? EditorStyles.toggle;
 		return GUIExtension.Draw<bool>(()=>EditorGUI.Toggle(area,current,style),indention);
 	}
-	public static GameObject Draw(this GameObject current,Rect area,bool allowScene=true,bool indention=false){
+	public static GameObject DrawObject(this GameObject current,Rect area,bool allowScene=true,bool indention=false){
 		return (GameObject)GUIExtension.Draw<UnityObject>(()=>EditorGUI.ObjectField(area,current,typeof(GameObject),allowScene),indention);
 	}
 	public static Enum Draw(this Enum current,Rect area,GUIStyle style=null,bool indention=false){
@@ -115,5 +116,8 @@ public static class GUIExtension{
 	}
 	public static Vector3 DrawLabeled(this Vector3 current,Rect area,GUIContent label,bool indention=true){
 		return GUIExtension.Draw<Vector3>(()=>EditorGUI.Vector3Field(area,label,current),indention);
+	}
+	public static GameObject DrawLabeledObject(this GameObject current,Rect area,GUIContent label,bool allowScene=true,bool indention=false){
+		return (GameObject)GUIExtension.Draw<UnityObject>(()=>EditorGUI.ObjectField(area,label,current,typeof(GameObject),allowScene),indention);
 	}
 }

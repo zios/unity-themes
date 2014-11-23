@@ -37,7 +37,7 @@ public class TargetDrawer : PropertyDrawer{
 		if(toggled){
 			if(TargetDrawer.unfound[target]){target.direct = null;}
 			GameObject direct = target.direct;
-			target.direct = target.direct.Draw(propertyRect,true);
+			target.direct = target.direct.DrawObject(propertyRect,true);
 			if(target.direct != direct){
 				TargetDrawer.unfound[target] = false;
 			}

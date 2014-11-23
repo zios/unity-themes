@@ -47,6 +47,7 @@ namespace Zios{
 			Program.DetectResolution();
 		}
 		public static void DetectResolution(){
+			if(!Application.isPlaying){return;}
 			Resolution screen = Screen.currentResolution;
 			int[] size = Program.resolution;
 			bool changedWidth = Screen.width != size[0];
