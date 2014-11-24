@@ -49,7 +49,8 @@ public class StateController : MonoBehaviour{
 	}
 	public void UpdateTable(StateRow[] table,bool negative=false){
 		foreach(StateRow row in table){
-			bool usable = true;
+			bool usable = false;
+			bool empty = true;
 			StateMonoBehaviour script = row.target;
 			foreach(StateRowData requirements in row.requirements){
 				foreach(StateRequirement requirement in requirements.data){
@@ -58,10 +59,12 @@ public class StateController : MonoBehaviour{
 					bool mismatchOn = requirement.requireOn && !requirement.target.inUse;
 					bool mismatchOff = requirement.requireOff && requirement.target.inUse;
 					usable = !(mismatchOn || mismatchOff);
+					empty = false;
 					if(!usable){break;}
 				}
 				if(usable){break;}
 			}
+			if(!negative){usable = (usable || empty);}
 			if(this.advanced && usable){
 				script.usable.Set(negative ? false : true);
 			}
@@ -277,6 +280,7 @@ public class StateBase{
 }
 [Serializable]
 public class StateRow : StateBase{
+	public bool empty;
 	public StateRowData[] requirements = new StateRowData[1];
 	public StateRow(){}
 	public StateRow(string name="",StateMonoBehaviour script=null,StateController controller=null){

@@ -16,6 +16,9 @@ public class LerpVector3 : LerpTransition{
 		return this.Step(current,current);
 	}
 	public virtual Vector3 Step(Vector3 start,Vector3 end){
+		if(!this.lerpAxes[0]){end.x = start.x;}
+		if(!this.lerpAxes[1]){end.y = start.y;}
+		if(!this.lerpAxes[2]){end.z = start.z;}
 		float distance = Vector3.Distance(start,end);
 		if(distance <= this.endProximity){
 			if(this.active){
@@ -42,9 +45,6 @@ public class LerpVector3 : LerpTransition{
 		if(this.speed != 0){
 			float speed = this.speed * percent;
 			speed *= this.fixedTime ? Time.fixedDeltaTime : Time.deltaTime;
-			if(!this.lerpAxes[0]){end.x = start.x;}
-			if(!this.lerpAxes[1]){end.y = start.y;}
-			if(!this.lerpAxes[2]){end.z = start.z;}
 			current = Vector3.MoveTowards(current,end,speed);
 		}
 		else{

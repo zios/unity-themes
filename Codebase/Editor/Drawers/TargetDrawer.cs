@@ -65,9 +65,9 @@ public class TargetDrawer : PropertyDrawer{
 			result.DrawLabel(propertyRect,GUI.skin.GetStyle("SubtleInfo"));
 		}
         EditorGUI.EndProperty();
+		property.serializedObject.ApplyModifiedProperties();
 		if(GUI.changed){
-			property.serializedObject.ApplyModifiedProperties();
-			//EditorUtility.SetDirty(property.serializedObject.targetObject);
+			EditorUtility.SetDirty(property.serializedObject.targetObject);
 		}
     }
 }

@@ -41,9 +41,10 @@ public class AttributeManager : MonoBehaviour{
 		this.refresh = true;
 	}
 	public void BuildLists(){
-		this.boxes = Locate.GetSceneObjects<AttributeBox>(this.editorIncludeHidden);
-		this.states = Locate.GetSceneObjects<ManagedMonoBehaviour>(this.editorIncludeHidden);
-		this.exposers = Locate.GetSceneObjects<AttributeExposer>(this.editorIncludeHidden);
+		bool includeHidden = Application.isPlaying || this.editorIncludeHidden;
+		this.boxes = Locate.GetSceneObjects<AttributeBox>(includeHidden);
+		this.states = Locate.GetSceneObjects<ManagedMonoBehaviour>(includeHidden);
+		this.exposers = Locate.GetSceneObjects<AttributeExposer>(includeHidden);
 	}
 	public void SceneRefresh(bool full=true){
 		if(full){
@@ -71,7 +72,7 @@ public class AttributeManager : MonoBehaviour{
 			if(this.editorInterval == -1){return;}
 			this.nextStep = Time.realtimeSinceStartup + this.editorInterval;
 			if(!this.initialSearch || this.refresh){
-				if(this.rebuild){
+				if(!this.initialSearch || this.rebuild){
 					this.BuildLists();
 					this.rebuild = false;
 				}

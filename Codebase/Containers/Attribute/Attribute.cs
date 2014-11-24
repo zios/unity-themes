@@ -86,8 +86,8 @@ namespace Zios{
 			string previousID = this.id;
 			this.localID = this.localID.IsEmpty() ? Guid.NewGuid().ToString() : this.localID;
 			this.id = parent.GetInstanceID()+"/"+this.localID;
-			bool changed = !previousID.IsEmpty() && this.id != previousID;
 			if(!Application.isPlaying){
+				bool changed = !previousID.IsEmpty() && this.id != previousID;
 				if(this.mode == AttributeMode.Linked){this.usage = AttributeUsage.Shaped;}
 				if(changed){
 					GameObject root = Utility.FindPrefabRoot(parent.gameObject);

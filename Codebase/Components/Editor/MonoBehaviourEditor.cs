@@ -21,6 +21,7 @@ public class MonoBehaviourEditor : Editor{
 			if(target is StateMonoBehaviour){
 				((StateMonoBehaviour)this.target).inUse.Set(false);
 			}
+			EditorUtility.SetDirty((MonoBehaviour)this.target);
 		}
 	}
 }

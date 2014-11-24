@@ -14,24 +14,29 @@ public enum CollisionSource : int{
 	Self      = 0x001,
 	Target    = 0x002,
 }
+public enum CollisionEvent{CollisionStart,CollisionEnd,Collision}
 public class CollisionListen : ActionPart{
+	public CollisionEvent trigger;
 	[EnumMask] public CollisionSource sourceCause = (CollisionSource)(-1);
 	//[EnumMask] public CollisionDirection direction = (CollisionDirection)(-1);
 	public LayerMask layer = (LayerMask)(-1);
 	public AttributeGameObject target = new AttributeGameObject();
 	//public AttributeBool forceRequired = true;
+	[HideInInspector] public AttributeGameObject lastCollision = new AttributeGameObject();
 	public override void Awake(){
 		base.Awake();
+		this.lastCollision.Setup("Last Collision",this);
 		this.target.Setup("Target",this);
 		this.target.DefaultSearch("[Owner]");
 		if(!this.target.Get().IsNull()){
-			Events.AddScope("Collide",(MethodObject)this.OnCollide,this.target.Get());
+			Events.AddScope(this.trigger.ToString(),(MethodObject)this.Collision,this.target.Get());
 		}
 	}
 	public override void Use(){}
-	public void OnCollide(object data){
+	public void Collision(object data){
 		CollisionData collision = (CollisionData)data;
 		CollisionSource sourceCause = collision.isSource ? CollisionSource.Self : CollisionSource.Target;
+		this.lastCollision.Set(collision.gameObject);
 		bool layerMatch = this.layer.Contains(collision.gameObject.layer);
 		bool sourceMatch = this.sourceCause.Contains(sourceCause);
 		if(sourceMatch && layerMatch /*&& directionMatch && this.forceRequired.Get()*/){

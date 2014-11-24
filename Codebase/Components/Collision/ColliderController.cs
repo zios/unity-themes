@@ -1,5 +1,6 @@
 using UnityEngine;
 using Zios;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using System;
@@ -10,6 +11,7 @@ public class CollisionData{
 	public GameObject gameObject;
 	public Vector3 direction;
 	public float force;
+	public float endTime;
 	public CollisionData(ColliderController controller,GameObject gameObject,Vector3 direction,float force,bool isSource){
 		this.sourceController = controller;
 		this.gameObject = gameObject;
@@ -30,6 +32,9 @@ public class ColliderController : ManagedMonoBehaviour{
 	public static bool HasTrigger(Collider collider){
 		return Array.IndexOf(ColliderController.triggers,collider) != -1;
 	}
+	private Dictionary<GameObject,CollisionData> collisions = new Dictionary<GameObject,CollisionData>();
+	private Dictionary<GameObject,CollisionData> frameCollisions = new Dictionary<GameObject,CollisionData>();
+	private Vector3 lastPosition;
 	public ColliderMode mode;
 	[NonSerialized] public List<Vector3> move = new List<Vector3>();
 	[NonSerialized] public List<Vector3> moveRaw = new List<Vector3>();
@@ -41,7 +46,7 @@ public class ColliderController : ManagedMonoBehaviour{
 	public AttributeFloat maxSlopeAngle = 70;
 	public AttributeFloat minSlideAngle = 50;
 	public AttributeFloat hoverDistance = 0.02f;
-	private Vector3 lastPosition;
+	public AttributeFloat collisionPersist = 0.2f;
 	//--------------------------------
 	// Unity-Specific
 	//--------------------------------
@@ -121,7 +126,7 @@ public class ColliderController : ManagedMonoBehaviour{
 			if(this.moveRaw.Count > 0){this.moveRaw = new List<Vector3>();}
 			this.CheckActive("Sleep");
 			if(this.mode == ColliderMode.Sweep){
-				this.transform.position = this.rigidbody.position;				
+				this.transform.position = this.rigidbody.position;
 			}
 			this.lastPosition = this.transform.position;
 		}
@@ -129,6 +134,23 @@ public class ColliderController : ManagedMonoBehaviour{
 			this.rigidbody.velocity *= 0;
 			this.rigidbody.angularVelocity *= 0;
 		}
+		foreach(GameObject existing in this.collisions.Keys.ToList()){
+			if(!this.frameCollisions.ContainsKey(existing)){
+				CollisionData data = this.collisions[existing];
+				if(Time.time > data.endTime){
+					existing.Call("CollisionEnd",data);
+					this.collisions.Remove(existing);
+				}
+			}
+		}
+		foreach(var collision in this.frameCollisions){
+			if(!this.collisions.ContainsKey(collision.Key)){
+				this.collisions[collision.Key] = collision.Value;
+				collision.Key.Call("CollisionStart",collision.Value);
+			}
+			this.collisions[collision.Key].endTime = Time.time + this.collisionPersist;
+		}
+		this.frameCollisions.Clear();
 		this.CheckBlocked();
 	}
 	private void StepMove(Vector3 current,Vector3 move){
@@ -160,8 +182,12 @@ public class ColliderController : ManagedMonoBehaviour{
 			if(direction.y < 0){this.blocked["down"] = true;}
 			if(direction.x > 0){this.blocked["right"] = true;}
 			if(direction.x < 0){this.blocked["left"] = true;}
-			hit.transform.gameObject.Call("Collide",otherCollision);
-			this.gameObject.Call("Collide",selfCollision);
+			GameObject hitObject = hit.transform.gameObject;
+			hitObject.Call("Collision",otherCollision);
+			this.gameObject.Call("Collision",selfCollision);
+			if(!this.frameCollisions.ContainsKey(hitObject)){
+				this.frameCollisions[hitObject] = otherCollision;
+			}
 		}
 		else{
 			this.SetPosition(startPosition + move);

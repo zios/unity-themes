@@ -44,8 +44,8 @@ public class EventTargetDrawer : PropertyDrawer{
 			}
 		}
         EditorGUI.EndProperty();
+		property.serializedObject.ApplyModifiedProperties();
 		if(GUI.changed){
-			property.serializedObject.ApplyModifiedProperties();
 			EditorUtility.SetDirty(property.serializedObject.targetObject);
 		}
     }

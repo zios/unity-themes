@@ -20,7 +20,7 @@ public class Force : ManagedMonoBehaviour{
 		this.disabled.Setup("Disabled",this);
 		Events.Register("On Impact",this.gameObject);
 		Events.Register("Add Move",this.gameObject);
-		Events.Add("Collide",(MethodObject)this.OnCollide);
+		Events.Add("Collision",(MethodObject)this.OnCollide);
 		Events.Add("Add Force",this.AddForce);
 		this.controller = this.GetComponent<ColliderController>();
 	}

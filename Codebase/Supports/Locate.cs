@@ -64,7 +64,7 @@ public static class Locate{
 	}
 	public static Type[] GetSceneObjects<Type>(bool includeHidden=true) where Type : Component{
 		if(!includeHidden){
-			return (Type[])GameObject.FindObjectsOfType(typeof(Type));
+			return (Type[])Object.FindObjectsOfType(typeof(Type));
 		}
 		Type[] all = (Type[])Resources.FindObjectsOfTypeAll(typeof(Type));
 		List<Type> scene = new List<Type>();

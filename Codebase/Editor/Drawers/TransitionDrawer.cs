@@ -3,6 +3,7 @@ using UnityEditor;
 [CustomPropertyDrawer(typeof(Transition))]
 public class TransitionDrawer : PropertyDrawer{
     public override void OnGUI(Rect position,SerializedProperty property,GUIContent label){
+		GUI.changed = false;
 		SerializedProperty duration = property.FindPropertyRelative("duration");
 		SerializedProperty delay = property.FindPropertyRelative("delayStart");
 		SerializedProperty curve = property.FindPropertyRelative("curve");
@@ -17,5 +18,8 @@ public class TransitionDrawer : PropertyDrawer{
 		curve.Draw(valueRect.Add(169,0,-169,0));
 		EditorGUI.EndProperty();
 		property.serializedObject.ApplyModifiedProperties();
+		if(GUI.changed){
+			EditorUtility.SetDirty(property.serializedObject.targetObject);
+		}
     }
 }

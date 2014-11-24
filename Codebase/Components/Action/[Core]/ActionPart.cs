@@ -10,7 +10,7 @@ namespace Zios{
 		public static Dictionary<GameObject,bool> dirty = new Dictionary<GameObject,bool>();
 		public static Dictionary<ActionPart,List<ActionPart>> once = new Dictionary<ActionPart,List<ActionPart>>();
 		public static ActionPart current;
-		public ActionOccurrence occurrence = ActionOccurrence.Constant;
+		public ActionOccurrence occurrence = ActionOccurrence.Default;
 		[NonSerialized] public Action action;
 		[HideInInspector] public int priority = -1;
 		[HideInInspector] public bool hasReset;
@@ -35,7 +35,7 @@ namespace Zios{
 			Events.Register(this.alias+"/Disabled",this.gameObject);
 			Events.Register(this.alias+"/Started",this.gameObject);
 			Events.Register(this.alias+"/Ended",this.gameObject);
-			bool controlled = this.action != null && this.action.controller != null;
+			bool controlled = this.GetComponent<ActionController>(true) != null;
 			this.usable.Set(!controlled);
 			this.SetDirty(true);
 			if(Application.isPlaying){
@@ -62,13 +62,16 @@ namespace Zios{
 				this.gameObject.Call("@Update Parts");
 				this.SetDirty(false);
 			}
-			bool partHappened = this.used && this.occurrence == ActionOccurrence.Once;
+			bool happenedOnce = this.used && this.occurrence == ActionOccurrence.Once;
 			bool actionUsable = this.action == null || this.action.usable;
-			if(!partHappened){
+			if(!happenedOnce){
 				if(actionUsable && this.usable){this.Use();}
 				else if(this.inUse){
 					this.End();
 				}
+			}
+			if(this.used && !this.usable){
+				this.End();
 			}
 		}
 		public void OnDestroy(){
