@@ -235,7 +235,7 @@ public static class StringExtension{
 		return current;
 	}
 	public static string[] Split(this string current,string value){
-		return current.Split(value[0]);
+		return value.Length > 0 ? current.Split(value[0]) : new string[1]{current};
 	}
 	public static string SetDefault(this string current,string value){
 		if(current.IsEmpty()){return value;}

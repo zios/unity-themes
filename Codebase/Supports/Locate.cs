@@ -10,9 +10,9 @@ public static class Locate{
 	public static bool cleanGameObjects = false;
 	public static List<Type> cleanComponents = new List<Type>();
 	public static List<GameObject> cleanSiblings = new List<GameObject>();
-	public static Dictionary<Type,GameObject[]> siblings = new Dictionary<Type,GameObject>();
-	public static Dictionary<Type,GameObject[]> enabledSiblings = new Dictionary<Type,GameObject>();
-	public static Dictionary<Type,GameObject[]> disabledSiblings = new Dictionary<Type,GameObject>();
+	public static Dictionary<Type,GameObject[]> siblings = new Dictionary<Type,GameObject[]>();
+	public static Dictionary<Type,GameObject[]> enabledSiblings = new Dictionary<Type,GameObject[]>();
+	public static Dictionary<Type,GameObject[]> disabledSiblings = new Dictionary<Type,GameObject[]>();
 	public static GameObject[] sceneObjects = new GameObject[0];
 	public static GameObject[] enabledObjects = new GameObject[0];
 	public static GameObject[] disabledObjects = new GameObject[0];
