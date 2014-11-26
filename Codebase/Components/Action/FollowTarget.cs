@@ -12,7 +12,6 @@ public class FollowTarget : ActionPart{
 	public AttributeVector3 orbit = Vector3.zero;
 	public override void Awake(){
 		base.Awake();
-		this.DefaultPriority(5);
 		this.source.Setup("Source",this);
 		this.target.Setup("Target",this);
 		this.position.Setup("Follow",this);

@@ -15,8 +15,7 @@ namespace Zios{
 				this.inUse.AddScope(this.controller);
 				this.usable.AddScope(this.controller);
 			}
-			Events.Add("Action End (Force)",this.End,this.owner);
-			Events.Register("@Update Parts",this.gameObject);
+			Events.Register("@Update States",this.gameObject);
 			Events.Register("Action Start",this.gameObject);
 			Events.Register("Action End",this.gameObject);
 			Events.Register("Action Disabled",this.gameObject);
@@ -41,7 +40,7 @@ namespace Zios{
 		}
 		public void OnDisable(){
 			this.gameObject.Call("Action Disabled");
-			this.gameObject.Call("@Update Parts");
+			this.gameObject.Call("@Update States");
 		}
 		public override void Use(){this.Toggle(true);}
 		public override void End(){this.Toggle(false);}
@@ -52,7 +51,7 @@ namespace Zios{
 				this.gameObject.Call("Action "+active);
 				this.owner.Call(this.alias+" "+active);
 				this.owner.Call("@Update States");
-				this.gameObject.Call("@Update Parts");
+				this.gameObject.Call("@Update States");
 			}
 		}
 	}

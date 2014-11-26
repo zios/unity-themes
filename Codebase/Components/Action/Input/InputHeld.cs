@@ -14,7 +14,6 @@ public class InputHeld : ActionPart{
 	[NonSerialized] public bool lastHeld;
 	public override void Awake(){
 		base.Awake();
-		this.DefaultPriority(5);
 		this.inputName.Setup("InputName",this);
 		this.forcePositiveIntensity.Setup("Force Positive Intensity",this);
 		this.heldDuringIntensity.Setup("Held During Intensity",this);

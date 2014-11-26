@@ -4,7 +4,6 @@ using UnityEngine;
 public class ActionUse : ActionPart{
 	public override void Awake(){
 		this.DefaultAlias("@Use");
-		this.DefaultPriority(10);
 		base.Awake();
 		Events.Add("Action End",this.OnActionEnd);
 	}

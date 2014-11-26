@@ -12,7 +12,6 @@ public class RayCast : ActionPart{
 	public AttributeBool relative = false;
 	public override void Awake(){
 		base.Awake();
-		this.DefaultPriority(5);
 		this.distance.Setup("Distance",this);
 		this.direction.Setup("Direction",this);
 		this.offset.Setup("Offset",this);

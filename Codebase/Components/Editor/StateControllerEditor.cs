@@ -5,7 +5,7 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using Zios.Editor;
-[CustomEditor(typeof(StateController))]
+[CustomEditor(typeof(StateController),true)]
 public class StateControllerEditor : Editor{
 	public float nextStep;
 	private Transform autoSelect;

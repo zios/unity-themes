@@ -1,23 +1,16 @@
 #pragma warning disable 0414
 using UnityEngine;
+using Zios;
 using System;
-using System.Linq;
-using System.Collections;
-using System.Collections.Generic;
 using Action = Zios.Action;
 using ActionPart = Zios.ActionPart;
 [AddComponentMenu("Zios/Component/Action/*/Action Controller")]
 public class ActionController : StateController{
-	private Action action;
-	public override void Reset(){
-		this.action = null;
-		base.Reset();
-	}
+	public ActionPart[] parts = new ActionPart[0];
+	public bool isFixed;
 	public override void Awake(){
-		this.action = this.GetComponent<Action>();
-		Events.Add("@Update Parts",this.UpdateStates);
-		Events.Add("@Refresh",this.Refresh);
-		this.Refresh();
+		this.parts = this.gameObject.GetComponents<ActionPart>();
+		this.isFixed = !this.parts.Exists(x=>x.rate == UpdateRate.Update);
 	}
 	[ContextMenu("Refresh")]
 	public override void Refresh(){
@@ -27,17 +20,40 @@ public class ActionController : StateController{
 		this.UpdateRows();
 		this.UpdateRequirements();
 		this.UpdateOrder();
-		//this.UpdatePriorityOrder();
 	}
-	public void UpdatePriorityOrder(){
-		Dictionary<StateRow,int> data = new Dictionary<StateRow,int>();	
-		List<StateRow> result = new List<StateRow>();
-		foreach(StateRow row in this.table){
-			data[row] = ((ActionPart)row.target).priority;
+	public void Update(){
+		if(!this.isFixed){
+			this.Step();
 		}
-		foreach(var item in data.OrderBy(x=>x.Value)){
-			result.Add(item.Key);
+	}
+	public void FixedUpdate(){
+		if(this.isFixed){
+			this.Step();
 		}
-		this.table = result.ToArray();
+	}
+	public void Step(){
+		bool changes = false;
+		foreach(ActionPart part in this.parts){
+			if(part.used && part.inUse && part.occurrence == ActionOccurrence.Once){
+				part.inUse.Set(false);
+				changes = true;
+			}
+			if(part.nextState != null){
+				part.ApplyState((bool)part.nextState);
+				part.nextState = null;
+				changes = true;
+			}
+		}
+		if(changes){
+			this.UpdateStates();
+		}
+	}
+	public void OnDisable(){
+		if(!this.gameObject.activeInHierarchy || !this.enabled){
+			foreach(ActionPart part in this.parts){
+				part.ApplyState(false);
+			}
+			this.UpdateStates();
+		}
 	}
 }

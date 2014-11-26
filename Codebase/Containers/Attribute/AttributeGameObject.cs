@@ -20,9 +20,8 @@ namespace Zios{
 			return this.GetValue(first);
 		}
 		public override void Setup(string path,Component component){
-			this.locked = true;
+			this.canDirect = this.canFormula = false;
 			this.usage = AttributeUsage.Shaped;
-			this.mode = AttributeMode.Normal;
 			base.Setup(path,component);
 		}
 		public override GameObject HandleSpecial(SpecialGameObject special,GameObject value){

@@ -17,8 +17,11 @@ namespace Zios{
 		public string localID;
 		public Component parent;
 		public AttributeMode mode = AttributeMode.Normal;
-		public bool locked;
-		public bool canFormula = true;
+		[NonSerialized] public bool locked;
+		[NonSerialized] public bool canFormula = true;
+		[NonSerialized] public bool canDirect = true;
+		[NonSerialized] public bool canShape = true;
+		[NonSerialized] public bool canLink = true;
 		public virtual AttributeData[] GetData(){return null;}
 		public virtual void Clear(){}
 		public virtual void Add(){}

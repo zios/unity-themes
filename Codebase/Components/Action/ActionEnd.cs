@@ -5,7 +5,6 @@ public class ActionEnd: ActionPart{
 	public override void Awake(){
 		this.DefaultAlias("@End");
 		this.DefaultRequirable(false);
-		this.DefaultPriority(20);
 		base.Awake();
 	}
 	public override void Use(){

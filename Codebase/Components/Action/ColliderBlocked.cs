@@ -12,7 +12,6 @@ public class BlockedState : ActionPart{
 	public AttributeGameObject target = new AttributeGameObject();
 	public override void Awake(){
 		base.Awake();
-		this.DefaultPriority(5);
 		this.target.Setup("Target",this);
 		this.duration.Setup("Duration",this);
 	}
