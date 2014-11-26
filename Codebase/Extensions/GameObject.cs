@@ -6,8 +6,40 @@ using System;
 using System.Collections.Generic;
 public static class GameObjectExtension{
 	//====================
-	// Interface
+	// Retrieval
 	//====================
+	public static int GetSiblingCount(this GameObject current,bool includeInactive=false){
+		GameObject parent = current.GetParent();
+		if(parent.IsNull()){
+			Debug.Log("GameObject : Cannot locate siblings for root objects",current);
+			return 0;
+		}
+		return parent.GetComponentsInChildren<Transform>(includeInactive).Remove(parent.transform).Length;
+	}
+	public static GameObject GetPreviousSibling(this GameObject current,bool includeInactive=false){
+		GameObject parent = current.GetParent();
+		if(parent.IsNull()){
+			Debug.Log("GameObject : Cannot locate siblings for root objects",current);
+			return current;
+		}
+		Transform[] siblings = parent.GetComponentsInChildren<Transform>(includeInactive).Remove(parent.transform);
+		if(siblings.Length == 0){return current;}
+		int previousIndex = siblings.IndexOf(current.transform) - 1;
+		if(previousIndex < 0){previousIndex = siblings.Length-1;}
+		return siblings[previousIndex].gameObject;
+	}
+	public static GameObject GetNextSibling(this GameObject current,bool includeInactive=false){
+		GameObject parent = current.GetParent();
+		if(parent.IsNull()){
+			Debug.Log("GameObject : Cannot locate siblings for root objects",current);
+			return current;
+		}
+		Transform[] siblings = parent.GetComponentsInChildren<Transform>(includeInactive).Remove(parent.transform);
+		if(siblings.Length == 0){return current;}
+		int nextIndex = siblings.IndexOf(current.transform) + 1;
+		if(nextIndex >= siblings.Length){nextIndex = 0;}
+		return siblings[nextIndex].gameObject;
+	}
 	public static Component[] GetComponentsByInterface<T>(this GameObject current){
 		List<Component> results = new List<Component>();
 		Component[] items = current.GetComponentsInChildren<Component>(true);
@@ -18,7 +50,7 @@ public static class GameObjectExtension{
 		}
 		return results.ToArray();
 	}
-	public static T GetComponent<T>(this GameObject current,bool includeInactive) where T : Component{
+	public static T GetComponent<T>(this GameObject current,bool includeInactive=false) where T : Component{
 		T[] results = current.GetComponentsInChildren<T>(includeInactive);
 		foreach(T item in results){
 			if(item.transform == current.transform){
@@ -27,7 +59,7 @@ public static class GameObjectExtension{
 		}
 		return null;
 	}
-	public static T[] GetComponents<T>(this GameObject current,bool includeInactive) where T : Component{
+	public static T[] GetComponents<T>(this GameObject current,bool includeInactive=false) where T : Component{
 		List<T> results = new List<T>();
 		T[] search = current.GetComponentsInChildren<T>(includeInactive);
 		foreach(T item in search){
@@ -37,19 +69,29 @@ public static class GameObjectExtension{
 		}
 		return results.ToArray();
 	}
-	public static T GetComponentInParent<T>(this GameObject current,bool includeInactive) where T : Component{
+	public static T GetComponentInParent<T>(this GameObject current,bool includeInactive=false) where T : Component{
 		T[] results = current.GetComponentsInParent<T>(includeInactive);
 		if(results.Length > 0){
 			return results[0];
 		}
 		return null;
 	}
-	public static T GetComponentInChildren<T>(this GameObject current,bool includeInactive) where T : Component{
+	public static T GetComponentInChildren<T>(this GameObject current,bool includeInactive=false) where T : Component{
 		T[] results = current.GetComponentsInChildren<T>(includeInactive);
 		if(results.Length > 0){
 			return results[0];
 		}
 		return null;
+	}
+	public static GameObject[] GetByName(this GameObject current,string name,bool includeInactive=true){
+		Transform[] all = current.GetComponentsInChildren<Transform>(includeInactive);
+		List<GameObject> matches = new List<GameObject>();
+		foreach(Transform transform in all){
+			if(transform.name == name){
+				matches.Add(transform.gameObject);
+			}
+		}
+		return matches.ToArray();
 	}
 	//====================
 	// Layers / Tags
@@ -210,18 +252,5 @@ public static class GameObjectExtension{
 		}
 		#endif
 		return false;
-	}
-	//====================
-	// Find
-	//====================
-	public static GameObject[] FindAll(this GameObject current,string name,bool inactive=true){
-		Transform[] all = current.GetComponentsInChildren<Transform>(inactive);
-		List<GameObject> matches = new List<GameObject>();
-		foreach(Transform transform in all){
-			if(transform.name == name){
-				matches.Add(transform.gameObject);
-			}
-		}
-		return matches.ToArray();
 	}
 }

@@ -34,9 +34,16 @@ public class EventTargetDrawer : PropertyDrawer{
 				events = events.OrderBy(item=>item.Contains("/")).ToList();
 				events.RemoveAll(item=>item.StartsWith("@"));
 				int index = events.IndexOf(eventTarget.name);
-				if(index == -1){index = 0;}
+				bool missing = false;
+				if(index == -1){
+					missing = true;
+					events.Insert(0,"[Missing] " + eventTarget.name);
+					index = 0;
+				}
 				index = events.Draw(valueRect,index);
-				eventTarget.name = events[index];
+				if(!missing || index != 0){
+					eventTarget.name = events[index];
+				}
 			}
 			else{
 				string error = "No global <b>"+eventType+"</b> events exist.";

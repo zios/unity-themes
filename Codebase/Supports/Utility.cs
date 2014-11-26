@@ -34,6 +34,7 @@ public static class Utility{
 	public static void SetDirty(UnityObject target){
 		#if UNITY_EDITOR
 		EditorUtility.SetDirty(target);
+		new SerializedObject(target).UpdateIfDirtyOrScript();
 		#endif
 	}
 	public static GameObject FindPrefabRoot(GameObject target){

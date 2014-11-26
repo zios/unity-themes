@@ -67,6 +67,11 @@ public static class ListExtension{
 	public static void Sort<T>(this List<T> current,SortOptions options,OnCompareEvent onCompare){
 		current.Sort(new Comparer<T>(options,onCompare));
 	}
+	public static List<T> Extend<T>(this List<T> current,List<T> values){
+		List<T> copy = new List<T>(current);
+		copy.AddRange(values);
+		return copy;
+	}
 }
 public enum SortOrientation{
 	Ascending,

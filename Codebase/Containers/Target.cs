@@ -9,9 +9,11 @@ using UnityObject = UnityEngine.Object;
 public class Target{
 	public string search = "";
 	public GameObject direct;
-	private Component parent;
+	public Component parent;
 	private bool hasSearched;
 	private bool hasWarned;
+	private int siblingCount;
+	private Component lastParent;
 	private string lastSearch = "";
 	private string fallbackSearch = "";
 	private Dictionary<string,GameObject> special = new Dictionary<string,GameObject>();
@@ -29,8 +31,12 @@ public class Target{
 	}
 	public void Setup(string path,Component parent,string defaultSearch="[Self]"){
 		this.parent = parent;
-		this.AddSpecial("[This]",this.parent.gameObject);
-		this.AddSpecial("[Self]",this.parent.gameObject);
+		this.AddSpecial("[This]",parent.gameObject);
+		this.AddSpecial("[Self]",parent.gameObject);
+		this.AddSpecial("[Next]",parent.gameObject.GetNextSibling(true));
+		this.AddSpecial("[Previous]",parent.gameObject.GetPreviousSibling(true));
+		this.AddSpecial("[NextEnabled]",parent.gameObject.GetNextSibling());
+		this.AddSpecial("[PreviousEnabled]",parent.gameObject.GetPreviousSibling());
 		if(parent is ActionPart || parent is Action){
 			ActionPart part = parent is ActionPart ? (ActionPart)parent : null;
 			Action action = parent is Action ? (Action)parent : part.action;
@@ -51,8 +57,15 @@ public class Target{
 	public void SkipWarning(){this.hasWarned = true;}
 	public void DefaultSearch(){this.DefaultSearch(this.fallbackSearch);}
 	public void DefaultSearch(string target){
+		int siblingCount = this.parent.gameObject.GetSiblingCount();
 		this.fallbackSearch = target;
-		if(this.search != this.lastSearch || this.direct == null){
+		bool searchChange = this.search != this.lastSearch;
+		bool parentChange = this.parent != this.lastParent;
+		bool siblingChange = this.siblingCount != siblingCount;
+		if(parentChange || searchChange || siblingChange || this.direct == null){
+			this.hasSearched = false;
+			this.lastParent = this.parent;
+			this.siblingCount = siblingCount;
 			if(this.search.IsEmpty()){
 				this.search = target;
 			}
@@ -106,7 +119,7 @@ public class Target{
 	public void Prepare(){
 		bool editorMode = !Application.isPlaying;
 		this.search = this.search.Replace("\\","/");
-		if((editorMode || !this.hasSearched) && !this.search.IsEmpty()){
+		if(!this.hasSearched && !this.search.IsEmpty()){
 			this.direct = this.FindTarget(this.search);
 			this.lastSearch = this.search;
 			this.hasSearched = true;

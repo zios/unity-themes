@@ -104,4 +104,9 @@ public static class ArrayExtension{
 		T[] extra = new T[]{element};
 		return current.Concat(extra);
 	}
+	public static T[] Remove<T>(this T[] current,T value){
+		List<T> copy = new List<T>(current);
+		copy.Remove(value);
+		return copy.ToArray();
+	}
 }

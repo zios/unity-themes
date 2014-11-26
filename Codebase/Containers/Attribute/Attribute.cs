@@ -97,7 +97,7 @@ namespace Zios{
 					if(!root.IsNull()){
 						string name = root.gameObject.name;
 						if(Locate.HasDuplicate(name)){
-							Debug.Log("Attribute : Duplicate detected -- " + this.id + " -- " + previousID);
+							Debug.Log("Attribute : Duplicate detected -- " + this.path,this.parent.gameObject);
 							char lastDigit = name[name.Length-1];
 							if(name.Length > 1 && name[name.Length-2] == ' ' && char.IsLetter(lastDigit)){
 								char nextLetter = (char)(char.ToUpper(lastDigit)+1);
@@ -113,10 +113,10 @@ namespace Zios{
 						resolve[parent.gameObject] = new Dictionary<string,string>();
 					}
 					resolve[parent.gameObject][previousID] = this.id;
-					Utility.SetDirty(parent);
 				}
 			}
 			foreach(var data in this.data){
+				if(!Application.isPlaying){data.reference = null;}
 				if(data.usage == AttributeUsage.Direct){continue;}
 				data.target.Setup(this.path+"/Target",parent);
 				data.target.DefaultSearch("[This]");
@@ -154,6 +154,17 @@ namespace Zios{
 					}
 					if(lookup[target].ContainsKey(data.referenceID)){
 						data.reference = lookup[target][data.referenceID];
+					}
+					if(data.reference.IsNull() && !data.referencePath.IsEmpty()){
+						var entries = lookup[target];
+						foreach(var attribute in entries){
+							if(attribute.Value.path == data.referencePath){
+								Debug.Log("Attribute : ID missing.  Resolved via path -- " + data.referencePath,this.parent.gameObject);
+								data.referenceID = attribute.Value.id;
+								data.reference = attribute.Value;
+								break;
+							}
+						}
 					}
 				}
 			}

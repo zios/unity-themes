@@ -293,7 +293,7 @@ GameObject:
   - 4: {fileID: 400020}
   - 114: {fileID: 11400022}
   m_Layer: 0
-  m_Name: Attribute
+  m_Name: Attributes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -782,7 +782,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   editorInterval: 1
-  editorIncludeHidden: 1
+  editorIncludeDisabled: 1
   updateOnHierarchyChange: 1
   updateOnAssetChange: 1
 --- !u!114 &11400026
