@@ -28,7 +28,8 @@ GameObject:
   - 20: {fileID: 2000000}
   - 81: {fileID: 8100000}
   - 124: {fileID: 12400000}
-  m_Layer: 0
+  - 114: {fileID: 11400024}
+  m_Layer: 2
   m_Name: Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -785,6 +786,498 @@ MonoBehaviour:
   editorIncludeDisabled: 1
   updateOnHierarchyChange: 1
   updateOnAssetChange: 1
+--- !u!114 &11400024
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0bda5aee53855947aa30ca341b86cd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Transform
+  directionUp:
+    path: Transform/Direction/Up
+    id: 17362/1a9751ce-e972-4e82-8e7b-fb9f7f798a8e
+    localID: 1a9751ce-e972-4e82-8e7b-fb9f7f798a8e
+    parent: {fileID: 11400024}
+    mode: 0
+    data:
+    - target:
+        search: 
+        direct: {fileID: 0}
+        parent: {fileID: 0}
+      usage: 0
+      referenceID: 
+      referencePath: 
+      value: {x: 0, y: 0, z: 0}
+      sign: 0
+      special: 0
+      clamp: 0
+      clampMin: {x: 0, y: 0, z: 0}
+      clampMax: {x: 0, y: 0, z: 0}
+    x:
+      path: Transform/Direction/Up/X
+      id: 17362/31f52748-4b08-4b11-9aef-dbde6d97f8a5
+      localID: 31f52748-4b08-4b11-9aef-dbde6d97f8a5
+      parent: {fileID: 11400024}
+      mode: 0
+      data:
+      - target:
+          search: 
+          direct: {fileID: 0}
+          parent: {fileID: 0}
+        usage: 0
+        referenceID: 
+        referencePath: 
+        value: 0
+        sign: 0
+        special: 0
+        clamp: 0
+        clampMin: 0
+        clampMax: 0
+    y:
+      path: Transform/Direction/Up/Y
+      id: 17362/a2acbc5c-9468-4b55-99df-be45c062d4fd
+      localID: a2acbc5c-9468-4b55-99df-be45c062d4fd
+      parent: {fileID: 11400024}
+      mode: 0
+      data:
+      - target:
+          search: 
+          direct: {fileID: 0}
+          parent: {fileID: 0}
+        usage: 0
+        referenceID: 
+        referencePath: 
+        value: 0
+        sign: 0
+        special: 0
+        clamp: 0
+        clampMin: 0
+        clampMax: 0
+    z:
+      path: Transform/Direction/Up/Z
+      id: 17362/a49d8c57-9ad6-4db8-9dcf-4d91dd8e6ef2
+      localID: a49d8c57-9ad6-4db8-9dcf-4d91dd8e6ef2
+      parent: {fileID: 11400024}
+      mode: 0
+      data:
+      - target:
+          search: 
+          direct: {fileID: 0}
+          parent: {fileID: 0}
+        usage: 0
+        referenceID: 
+        referencePath: 
+        value: 0
+        sign: 0
+        special: 0
+        clamp: 0
+        clampMin: 0
+        clampMax: 0
+  directionDown:
+    path: Transform/Direction/Down
+    id: 17362/97aee892-6779-49aa-922c-8a64151b39c5
+    localID: 97aee892-6779-49aa-922c-8a64151b39c5
+    parent: {fileID: 11400024}
+    mode: 0
+    data:
+    - target:
+        search: 
+        direct: {fileID: 0}
+        parent: {fileID: 0}
+      usage: 0
+      referenceID: 
+      referencePath: 
+      value: {x: 0, y: 0, z: 0}
+      sign: 0
+      special: 0
+      clamp: 0
+      clampMin: {x: 0, y: 0, z: 0}
+      clampMax: {x: 0, y: 0, z: 0}
+    x:
+      path: Transform/Direction/Down/X
+      id: 17362/deb853f0-994e-474b-82eb-72d10e19f297
+      localID: deb853f0-994e-474b-82eb-72d10e19f297
+      parent: {fileID: 11400024}
+      mode: 0
+      data:
+      - target:
+          search: 
+          direct: {fileID: 0}
+          parent: {fileID: 0}
+        usage: 0
+        referenceID: 
+        referencePath: 
+        value: 0
+        sign: 0
+        special: 0
+        clamp: 0
+        clampMin: 0
+        clampMax: 0
+    y:
+      path: Transform/Direction/Down/Y
+      id: 17362/2ac67d4c-9f7a-470c-aca2-aaed541c607b
+      localID: 2ac67d4c-9f7a-470c-aca2-aaed541c607b
+      parent: {fileID: 11400024}
+      mode: 0
+      data:
+      - target:
+          search: 
+          direct: {fileID: 0}
+          parent: {fileID: 0}
+        usage: 0
+        referenceID: 
+        referencePath: 
+        value: 0
+        sign: 0
+        special: 0
+        clamp: 0
+        clampMin: 0
+        clampMax: 0
+    z:
+      path: Transform/Direction/Down/Z
+      id: 17362/9c4f17c7-91e0-4cf8-ad26-1ac613ba3f5c
+      localID: 9c4f17c7-91e0-4cf8-ad26-1ac613ba3f5c
+      parent: {fileID: 11400024}
+      mode: 0
+      data:
+      - target:
+          search: 
+          direct: {fileID: 0}
+          parent: {fileID: 0}
+        usage: 0
+        referenceID: 
+        referencePath: 
+        value: 0
+        sign: 0
+        special: 0
+        clamp: 0
+        clampMin: 0
+        clampMax: 0
+  directionLeft:
+    path: Transform/Direction/Left
+    id: 17362/b3dae569-66a3-4613-a5e7-810e760dadc2
+    localID: b3dae569-66a3-4613-a5e7-810e760dadc2
+    parent: {fileID: 11400024}
+    mode: 0
+    data:
+    - target:
+        search: 
+        direct: {fileID: 0}
+        parent: {fileID: 0}
+      usage: 0
+      referenceID: 
+      referencePath: 
+      value: {x: 0, y: 0, z: 0}
+      sign: 0
+      special: 0
+      clamp: 0
+      clampMin: {x: 0, y: 0, z: 0}
+      clampMax: {x: 0, y: 0, z: 0}
+    x:
+      path: Transform/Direction/Left/X
+      id: 17362/6ef59645-4d5e-42ae-99ab-99b04bf603c7
+      localID: 6ef59645-4d5e-42ae-99ab-99b04bf603c7
+      parent: {fileID: 11400024}
+      mode: 0
+      data:
+      - target:
+          search: 
+          direct: {fileID: 0}
+          parent: {fileID: 0}
+        usage: 0
+        referenceID: 
+        referencePath: 
+        value: 0
+        sign: 0
+        special: 0
+        clamp: 0
+        clampMin: 0
+        clampMax: 0
+    y:
+      path: Transform/Direction/Left/Y
+      id: 17362/62e4b448-fc68-46d7-ae0d-d11e1653d423
+      localID: 62e4b448-fc68-46d7-ae0d-d11e1653d423
+      parent: {fileID: 11400024}
+      mode: 0
+      data:
+      - target:
+          search: 
+          direct: {fileID: 0}
+          parent: {fileID: 0}
+        usage: 0
+        referenceID: 
+        referencePath: 
+        value: 0
+        sign: 0
+        special: 0
+        clamp: 0
+        clampMin: 0
+        clampMax: 0
+    z:
+      path: Transform/Direction/Left/Z
+      id: 17362/68615d10-15a5-415a-9215-4f179ff28252
+      localID: 68615d10-15a5-415a-9215-4f179ff28252
+      parent: {fileID: 11400024}
+      mode: 0
+      data:
+      - target:
+          search: 
+          direct: {fileID: 0}
+          parent: {fileID: 0}
+        usage: 0
+        referenceID: 
+        referencePath: 
+        value: 0
+        sign: 0
+        special: 0
+        clamp: 0
+        clampMin: 0
+        clampMax: 0
+  directionRight:
+    path: Transform/Direction/Right
+    id: 17362/5b433242-3e5b-4713-a712-a5b86ed20d8b
+    localID: 5b433242-3e5b-4713-a712-a5b86ed20d8b
+    parent: {fileID: 11400024}
+    mode: 0
+    data:
+    - target:
+        search: 
+        direct: {fileID: 0}
+        parent: {fileID: 0}
+      usage: 0
+      referenceID: 
+      referencePath: 
+      value: {x: 0, y: 0, z: 0}
+      sign: 0
+      special: 0
+      clamp: 0
+      clampMin: {x: 0, y: 0, z: 0}
+      clampMax: {x: 0, y: 0, z: 0}
+    x:
+      path: Transform/Direction/Right/X
+      id: 17362/6d677860-d57e-439e-8072-63ace2ddc23e
+      localID: 6d677860-d57e-439e-8072-63ace2ddc23e
+      parent: {fileID: 11400024}
+      mode: 0
+      data:
+      - target:
+          search: 
+          direct: {fileID: 0}
+          parent: {fileID: 0}
+        usage: 0
+        referenceID: 
+        referencePath: 
+        value: 0
+        sign: 0
+        special: 0
+        clamp: 0
+        clampMin: 0
+        clampMax: 0
+    y:
+      path: Transform/Direction/Right/Y
+      id: 17362/d015e273-504e-458d-92bb-762095770b7b
+      localID: d015e273-504e-458d-92bb-762095770b7b
+      parent: {fileID: 11400024}
+      mode: 0
+      data:
+      - target:
+          search: 
+          direct: {fileID: 0}
+          parent: {fileID: 0}
+        usage: 0
+        referenceID: 
+        referencePath: 
+        value: 0
+        sign: 0
+        special: 0
+        clamp: 0
+        clampMin: 0
+        clampMax: 0
+    z:
+      path: Transform/Direction/Right/Z
+      id: 17362/457d6091-cddd-493f-85e9-6958061a4eb6
+      localID: 457d6091-cddd-493f-85e9-6958061a4eb6
+      parent: {fileID: 11400024}
+      mode: 0
+      data:
+      - target:
+          search: 
+          direct: {fileID: 0}
+          parent: {fileID: 0}
+        usage: 0
+        referenceID: 
+        referencePath: 
+        value: 0
+        sign: 0
+        special: 0
+        clamp: 0
+        clampMin: 0
+        clampMax: 0
+  directionForward:
+    path: Transform/Direction/Forward
+    id: 17362/c863e874-2a19-4025-953f-0274d7d6d2b0
+    localID: c863e874-2a19-4025-953f-0274d7d6d2b0
+    parent: {fileID: 11400024}
+    mode: 0
+    data:
+    - target:
+        search: 
+        direct: {fileID: 0}
+        parent: {fileID: 0}
+      usage: 0
+      referenceID: 
+      referencePath: 
+      value: {x: 0, y: 0, z: 0}
+      sign: 0
+      special: 0
+      clamp: 0
+      clampMin: {x: 0, y: 0, z: 0}
+      clampMax: {x: 0, y: 0, z: 0}
+    x:
+      path: Transform/Direction/Forward/X
+      id: 17362/e1c3844a-a16c-498e-9ec9-7a494c9435d4
+      localID: e1c3844a-a16c-498e-9ec9-7a494c9435d4
+      parent: {fileID: 11400024}
+      mode: 0
+      data:
+      - target:
+          search: 
+          direct: {fileID: 0}
+          parent: {fileID: 0}
+        usage: 0
+        referenceID: 
+        referencePath: 
+        value: 0
+        sign: 0
+        special: 0
+        clamp: 0
+        clampMin: 0
+        clampMax: 0
+    y:
+      path: Transform/Direction/Forward/Y
+      id: 17362/0e522abf-7419-4a3d-83dc-38c29f147c9b
+      localID: 0e522abf-7419-4a3d-83dc-38c29f147c9b
+      parent: {fileID: 11400024}
+      mode: 0
+      data:
+      - target:
+          search: 
+          direct: {fileID: 0}
+          parent: {fileID: 0}
+        usage: 0
+        referenceID: 
+        referencePath: 
+        value: 0
+        sign: 0
+        special: 0
+        clamp: 0
+        clampMin: 0
+        clampMax: 0
+    z:
+      path: Transform/Direction/Forward/Z
+      id: 17362/3a686669-1cec-4115-aa02-179da34518d0
+      localID: 3a686669-1cec-4115-aa02-179da34518d0
+      parent: {fileID: 11400024}
+      mode: 0
+      data:
+      - target:
+          search: 
+          direct: {fileID: 0}
+          parent: {fileID: 0}
+        usage: 0
+        referenceID: 
+        referencePath: 
+        value: 0
+        sign: 0
+        special: 0
+        clamp: 0
+        clampMin: 0
+        clampMax: 0
+  directionBack:
+    path: Transform/Direction/Back
+    id: 17362/e51a7e33-81ba-45ae-8aed-bf2933e1dd23
+    localID: e51a7e33-81ba-45ae-8aed-bf2933e1dd23
+    parent: {fileID: 11400024}
+    mode: 0
+    data:
+    - target:
+        search: 
+        direct: {fileID: 0}
+        parent: {fileID: 0}
+      usage: 0
+      referenceID: 
+      referencePath: 
+      value: {x: 0, y: 0, z: 0}
+      sign: 0
+      special: 0
+      clamp: 0
+      clampMin: {x: 0, y: 0, z: 0}
+      clampMax: {x: 0, y: 0, z: 0}
+    x:
+      path: Transform/Direction/Back/X
+      id: 17362/7a875793-aed1-42d0-b3fc-c66675fc7516
+      localID: 7a875793-aed1-42d0-b3fc-c66675fc7516
+      parent: {fileID: 11400024}
+      mode: 0
+      data:
+      - target:
+          search: 
+          direct: {fileID: 0}
+          parent: {fileID: 0}
+        usage: 0
+        referenceID: 
+        referencePath: 
+        value: 0
+        sign: 0
+        special: 0
+        clamp: 0
+        clampMin: 0
+        clampMax: 0
+    y:
+      path: Transform/Direction/Back/Y
+      id: 17362/2be0184a-c8a4-416b-875a-4ed0a95427bd
+      localID: 2be0184a-c8a4-416b-875a-4ed0a95427bd
+      parent: {fileID: 11400024}
+      mode: 0
+      data:
+      - target:
+          search: 
+          direct: {fileID: 0}
+          parent: {fileID: 0}
+        usage: 0
+        referenceID: 
+        referencePath: 
+        value: 0
+        sign: 0
+        special: 0
+        clamp: 0
+        clampMin: 0
+        clampMax: 0
+    z:
+      path: Transform/Direction/Back/Z
+      id: 17362/834b3a21-d809-45c6-bd1b-68d4c1d9e416
+      localID: 834b3a21-d809-45c6-bd1b-68d4c1d9e416
+      parent: {fileID: 11400024}
+      mode: 0
+      data:
+      - target:
+          search: 
+          direct: {fileID: 0}
+          parent: {fileID: 0}
+        usage: 0
+        referenceID: 
+        referencePath: 
+        value: 0
+        sign: 0
+        special: 0
+        clamp: 0
+        clampMin: 0
+        clampMax: 0
 --- !u!114 &11400026
 MonoBehaviour:
   m_ObjectHideFlags: 1
