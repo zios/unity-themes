@@ -223,10 +223,12 @@ public static class GameObjectExtension{
 	}
 	public static string GetPath(this GameObject current){	
 		string path = current.transform.name;
+		#if UNITY_EDITOR
 		PrefabType type = PrefabUtility.GetPrefabType(current);
 		if(current.hideFlags == HideFlags.HideInHierarchy || type == PrefabType.Prefab || type == PrefabType.ModelPrefab){
 			path = "Prefab/"+path;
 		 }
+		#endif
 		if(current.IsNull() || current.transform.IsNull()){return "";}
 		Transform parent = current.transform.parent;
 		while(!parent.IsNull()){

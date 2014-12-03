@@ -1,4 +1,5 @@
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
 using System;
 using System.Linq;
@@ -121,3 +122,4 @@ public static class GUIExtension{
 		return (GameObject)GUIExtension.Draw<UnityObject>(()=>EditorGUI.ObjectField(area,label,current,typeof(GameObject),allowScene),indention);
 	}
 }
+#endif

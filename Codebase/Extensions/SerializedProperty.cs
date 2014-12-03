@@ -1,4 +1,5 @@
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
 using System;
 using System.Linq;
@@ -34,3 +35,4 @@ public static class SerializedPropertyExtension{
 		return (T)parent;
 	}
 }
+#endif

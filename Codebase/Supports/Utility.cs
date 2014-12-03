@@ -2,9 +2,9 @@
 using UnityEngine;
 using System.Linq;
 using System.Collections.Generic;
+using UnityObject = UnityEngine.Object;
 #if UNITY_EDITOR
 using UnityEditor;
-using UnityObject = UnityEngine.Object;
 using CallbackFunction = UnityEditor.EditorApplication.CallbackFunction;
 public class UtilityListener : AssetPostprocessor{
 	public static void OnPostprocessAllAssets(string[] imported,string[] deleted,string[] moved, string[] path){
@@ -43,8 +43,8 @@ public static class Utility{
 		#endif
 		return null;
 	}
+	#if UNITY_EDITOR
 	public static void EditorUpdate(CallbackFunction method,bool callImmediately=false){
-		#if UNITY_EDITOR
 		bool playing = EditorApplication.isPlaying || EditorApplication.isPlayingOrWillChangePlaymode;
 		if(!playing){
 			if(!EditorApplication.update.Contains(method)){
@@ -55,10 +55,8 @@ public static class Utility{
 		else{
 			Utility.RemoveEditorUpdate(method);
 		}
-		#endif
 	}
 	public static void HierarchyUpdate(CallbackFunction method,bool callImmediately=false){
-		#if UNITY_EDITOR
 		bool playing = EditorApplication.isPlaying || EditorApplication.isPlayingOrWillChangePlaymode;
 		if(!playing){
 			if(!EditorApplication.hierarchyWindowChanged.Contains(method)){
@@ -69,10 +67,8 @@ public static class Utility{
 		else{
 			Utility.RemoveHierarchyUpdate(method);
 		}
-		#endif
 	}
 	public static void AssetUpdate(CallbackFunction method,bool callImmediately=false){
-		#if UNITY_EDITOR
 		bool playing = EditorApplication.isPlaying || EditorApplication.isPlayingOrWillChangePlaymode;
 		if(!playing){
 			if(!Utility.assetUpdate.Contains(method)){
@@ -83,29 +79,21 @@ public static class Utility{
 		else{
 			Utility.RemoveAssetUpdate(method);
 		}
-		#endif
 	}
 	public static void RemoveAssetUpdate(CallbackFunction method){
-		#if UNITY_EDITOR
 		Utility.assetUpdate -= method;
-		#endif
 	}
 	public static void RemoveEditorUpdate(CallbackFunction method){
-		#if UNITY_EDITOR
 		EditorApplication.update -= method;
-		#endif
 	}
 	public static void RemoveHierarchyUpdate(CallbackFunction method){
-		#if UNITY_EDITOR
 		EditorApplication.hierarchyWindowChanged -= method;
-		#endif
 	}
 	public static void EditorCall(CallbackFunction method){
-		#if UNITY_EDITOR
 		bool playing = EditorApplication.isPlaying || EditorApplication.isPlayingOrWillChangePlaymode;
 		if(!playing){
 			method();
 		}
-		#endif
 	}
+	#endif
 }

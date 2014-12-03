@@ -20,7 +20,9 @@ public static class Locate{
 	public static Dictionary<Type,Component[]> enabledComponents = new Dictionary<Type,Component[]>();
 	public static Dictionary<Type,Component[]> disabledComponents = new Dictionary<Type,Component[]>();
 	static Locate(){
+		#if UNITY_EDITOR
 		EditorApplication.hierarchyWindowChanged += Locate.SetDirty;
+		#endif
 	}
 	public static void SetDirty(){
 		Locate.cleanGameObjects = false;

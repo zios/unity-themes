@@ -13,6 +13,7 @@ public class AttributeManager : MonoBehaviour{
 	private float nextStep;
 	private bool setup;
 	private bool refresh;
+	#if UNITY_EDITOR
 	public void OnValidate(){this.CleanEvents();}
 	public void OnDestroy(){this.CleanEvents();}
 	public void OnApplicationQuit(){
@@ -28,6 +29,7 @@ public class AttributeManager : MonoBehaviour{
 		Utility.RemoveHierarchyUpdate(this.PerformRefresh);
 		Utility.RemoveEditorUpdate(this.Start);
 	}
+	#endif
 	[ContextMenu("Refresh")]
 	public void PerformRefresh(){
 		this.refresh = true;
