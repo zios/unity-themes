@@ -29,6 +29,7 @@ GameObject:
   - 81: {fileID: 8100000}
   - 124: {fileID: 12400000}
   - 114: {fileID: 11400024}
+  - 114: {fileID: 11400074}
   m_Layer: 2
   m_Name: Camera
   m_TagString: MainCamera
@@ -338,7 +339,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &100040
 GameObject:
   m_ObjectHideFlags: 1
@@ -1846,8 +1847,8 @@ MonoBehaviour:
   - {fileID: 11400046}
   - {fileID: 11400036}
   parts:
-  - {fileID: 11400054}
-  - {fileID: 11400052}
+  - {fileID: 11400046}
+  - {fileID: 11400036}
   isFixed: 1
 --- !u!114 &11400050
 MonoBehaviour:
@@ -1944,8 +1945,8 @@ MonoBehaviour:
   - {fileID: 11400052}
   - {fileID: 11400054}
   parts:
-  - {fileID: 11400054}
   - {fileID: 11400052}
+  - {fileID: 11400054}
   isFixed: 1
 --- !u!114 &11400052
 MonoBehaviour:
@@ -2232,6 +2233,41 @@ MonoBehaviour:
   logFontAllowColors: 1
   logFontColor: 7
   allowLogging: 1
+--- !u!114 &11400074
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73b64c0f72e54d14aa80e1da05fc7e13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Lock Cursor
+  rate: 0
+  id: 
+  requirable:
+    path: Lock Cursor/Requirable
+    id: -257516/c7cbeef9-71fb-4a21-8eed-908516c96448
+    localID: c7cbeef9-71fb-4a21-8eed-908516c96448
+    parent: {fileID: 11400074}
+    mode: 0
+    data:
+    - target:
+        search: 
+        direct: {fileID: 0}
+        parent: {fileID: 0}
+      usage: 0
+      referenceID: 
+      referencePath: 
+      value: 1
+      sign: 0
+      special: 0
+      clamp: 0
+      clampMin: 0
+      clampMax: 0
+  occurrence: 2
 --- !u!124 &12400000
 Behaviour:
   m_ObjectHideFlags: 1
