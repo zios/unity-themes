@@ -6,9 +6,10 @@ public static class DictionaryExtension{
 	public static Dictionary<TKey,TValue> Copy<TKey,TValue>(this Dictionary<TKey,TValue> current){
 		return new Dictionary<TKey,TValue>(current);
 	}
-	public static void Setup<TKey,TValue>(this Dictionary<TKey,TValue> current,TKey value){
-		if(!current.ContainsKey(value)){
-			current[value] = default(TValue);
+	public static void AddNew<TKey,TValue>(this IDictionary<TKey,TValue> current,TKey key,TValue value=default(TValue)) where TValue : new(){
+		if(!current.ContainsKey(key)){
+			bool isDefault = EqualityComparer<TValue>.Default.Equals(value,default(TValue));
+			current[key] = isDefault ? new TValue() : value;
 		}
 	}
 	public static bool ContainsKey(this IDictionary current,string value,bool ignoreCase){

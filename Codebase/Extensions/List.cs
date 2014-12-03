@@ -1,8 +1,9 @@
-using System.Collections.Generic;
-using System.Reflection;
 using System;
+using System.Linq;
+using System.Reflection;
+using System.Collections.Generic;
 public static class ListExtension{
-	public static List<T> Copy<T>(this IEnumerable<T> current){
+	public static List<T> Copy<T>(this List<T> current){
 		return new List<T>(current);
 	}
 	public static void Move<T>(this List<T> current,int index,int newIndex) where T : class{
@@ -10,10 +11,12 @@ public static class ListExtension{
 		current.Remove(item);
 		current.Insert(newIndex,item);
 	}
-	public static void Setup<T>(this List<T> current,T value){
+	public static T AddNew<T>(this List<T> current,T value){
 		if(!current.Contains(value)){
 			current.Add(value);
+			return value;
 		}
+		return current.Find(x=>x.Equals(value));
 	}
 	public static int IndexOf<T>(this List<T> current,T type){
 		return Array.IndexOf(current.ToArray(),type);
@@ -22,7 +25,7 @@ public static class ListExtension{
 		string name = enumerable.ToString();
 		return current.ToArray().IndexOf(name);
 	}
-	public static List<T> Shuffle<T>(this IList<T> current){ 
+	public static List<T> Shuffle<T>(this List<T> current){ 
 		List<T> copy = current.Copy();
 		System.Random random = new System.Random();  
 		int total = copy.Count;
@@ -46,20 +49,6 @@ public static class ListExtension{
 		var copy = current.Copy();
 		copy.Sort();
 		return copy;
-	}
-	public static List<string> Filter(this IEnumerable<string> current,string text){
-		List<string> newList = new List<string>();
-		bool wildcard = text.Contains("*");
-		text = text.Replace("*","");
-		foreach(string item in current){
-			if(wildcard && item.Contains(text)){
-				newList.Add(item);
-			}
-			else if(item == text){
-				newList.Add(item);
-			}
-		}
-		return newList;
 	}
 	public static void Sort<T>(this List<T> current,SortOptions options){
 		current.Sort(new Comparer<T>(options));

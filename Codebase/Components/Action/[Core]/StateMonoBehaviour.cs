@@ -12,7 +12,7 @@ public class StateMonoBehaviour : ManagedMonoBehaviour{
 	private bool requirableOverride;
 	[ContextMenu("Toggle Column Visibility")]
 	public void ToggleRequire(){
-		this.requirable = !this.requirable;
+		this.requirable.Set(!this.requirable);
 		this.requirableOverride = !this.requirableOverride;
 		this.gameObject.Call("@Refresh");
 	}
@@ -23,7 +23,7 @@ public class StateMonoBehaviour : ManagedMonoBehaviour{
 	}
 	public void DefaultRequirable(bool state){
 		if(!this.requirableOverride){
-			this.requirable = state;
+			this.requirable.Set(state);
 		}
 	}
 	public override void Awake(){

@@ -4,10 +4,10 @@ using System.Collections;
 using System.Collections.Generic;
 [CustomPropertyDrawer(typeof(LayerDistances))]
 public class LayerDistancesDrawer : PropertyDrawer{
-	public bool expanded;
 	public int drawn;
 	public override float GetPropertyHeight(SerializedProperty property,GUIContent label){
-		if(this.expanded){
+		this.OnGUI(new Rect(-30000,-30000,0,0),property,label);
+		if(EditorPrefs.GetBool("layerDistancesExpanded")){
 			return ((EditorGUIUtility.singleLineHeight+2) * this.drawn) + 16;
 		}
 		return base.GetPropertyHeight(property,label);
@@ -17,8 +17,10 @@ public class LayerDistancesDrawer : PropertyDrawer{
 		GUI.changed = false;
 		EditorGUI.BeginProperty(position,label,property);
 		position = position.SetHeight(singleLine);
-		this.expanded = EditorGUI.Foldout(position,this.expanded,"Layer Cull Distances");
-		if(this.expanded){
+		bool expanded = EditorPrefs.GetBool("layerDistancesExpanded");
+		expanded = EditorGUI.Foldout(position,expanded,"Layer Cull Distances");
+		EditorPrefs.SetBool("layerDistancesExpanded",expanded);
+		if(expanded){
 			EditorGUI.indentLevel += 1;
 			this.drawn = 0;
 			SerializedProperty valuesProperty = property.FindPropertyRelative("values");

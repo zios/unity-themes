@@ -1,12 +1,14 @@
+using Zios;
 using System;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
-using Zios;
 using Action = Zios.Action;
 using UnityObject = UnityEngine.Object;
 [Serializable]
 public class Target{
+	public List<GameObject> special = new List<GameObject>();
+	public List<string> specialNames = new List<string>();
 	public string search = "";
 	public GameObject direct;
 	public Component parent;
@@ -16,7 +18,6 @@ public class Target{
 	private Component lastParent;
 	private string lastSearch = "";
 	private string fallbackSearch = "";
-	private Dictionary<string,GameObject> special = new Dictionary<string,GameObject>();
 	public static implicit operator Transform(Target value){
 		value.Prepare();
 		return value.direct.transform;
@@ -31,12 +32,15 @@ public class Target{
 	}
 	public void Setup(string path,Component parent,string defaultSearch="[Self]"){
 		this.parent = parent;
-		this.AddSpecial("[This]",parent.gameObject);
-		this.AddSpecial("[Self]",parent.gameObject);
-		this.AddSpecial("[Next]",parent.gameObject.GetNextSibling(true));
-		this.AddSpecial("[Previous]",parent.gameObject.GetPreviousSibling(true));
-		this.AddSpecial("[NextEnabled]",parent.gameObject.GetNextSibling());
-		this.AddSpecial("[PreviousEnabled]",parent.gameObject.GetPreviousSibling());
+		if(!Application.isPlaying){
+			this.AddSpecial("[This]",parent.gameObject);
+			this.AddSpecial("[Self]",parent.gameObject);
+			this.AddSpecial("[Next]",parent.gameObject.GetNextSibling(true));
+			this.AddSpecial("[Previous]",parent.gameObject.GetPreviousSibling(true));
+			this.AddSpecial("[NextEnabled]",parent.gameObject.GetNextSibling());
+			this.AddSpecial("[PreviousEnabled]",parent.gameObject.GetPreviousSibling());
+			this.AddSpecial("[Root]",parent.gameObject.GetPrefabRoot());
+		}
 		if(parent is ActionPart || parent is Action){
 			ActionPart part = parent is ActionPart ? (ActionPart)parent : null;
 			Action action = parent is Action ? (Action)parent : part.action;
@@ -52,7 +56,14 @@ public class Target{
 		return this.direct;
 	}
 	public void AddSpecial(string name,GameObject target){
-		this.special[name.ToLower()] = target;
+		if(!this.specialNames.Any(x=>x.Contains(name,true))){
+			this.specialNames.Add(name);
+			this.special.Add(target);
+		}
+		else{
+			int index = this.specialNames.FindIndex(x=>x.Contains(name,true));
+			this.special[index] = target;
+		}
 	}
 	public void SkipWarning(){this.hasWarned = true;}
 	public void DefaultSearch(){this.DefaultSearch(this.fallbackSearch);}
@@ -78,11 +89,12 @@ public class Target{
 		}
 	}
 	public GameObject FindTarget(string search){
-		foreach(var item in this.special){
-			string special = item.Key;
-			if(search.ToLower().Contains(special)){
-				string specialPath = this.special[special].GetPath();
-				search = search.Replace(special,specialPath,true);
+		for(int index=0;index<this.special.Count;++index){
+			string specialName = this.specialNames[index];
+			GameObject special = this.special[index];
+			if(search.Contains(specialName,true)){
+				string specialPath = special.GetPath();
+				search = search.Replace(specialName,specialPath,true);
 			}
 		}
 		if(search.Contains("/")){
@@ -93,7 +105,8 @@ public class Target{
 				if(part == ".." || part == "." || part.IsEmpty()){
 					if(part.IsEmpty()){continue;}
 					if(total.IsEmpty()){
-						GameObject current = this.special.ContainsKey("[this]") ? this.special["[this]"] : null;
+						int specialIndex = this.specialNames.FindIndex(x=>x.Contains("[this]",true));
+						GameObject current = specialIndex != -1 ? this.special[index] : null;
 						if(!current.IsNull()){
 							if(part == ".."){
 								total = current.GetParent().IsNull() ? "" : current.GetParent().GetPath();

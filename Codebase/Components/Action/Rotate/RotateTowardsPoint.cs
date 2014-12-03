@@ -14,6 +14,8 @@ public class RotateTowardsPoint : ActionPart{
 		this.target.Setup("Target",this);
 		this.angles.Setup("Angles",this);
 		this.angles.isResetOnChange.Set(false);
+		this.angles.isResetOnChange.showInEditor = false;
+		this.angles.isAngle.showInEditor = false;
 	}
 	public override void End(){
 		this.angles.Reset();

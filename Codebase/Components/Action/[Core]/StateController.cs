@@ -5,7 +5,7 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityObject = UnityEngine.Object;
 using Action = Zios.Action;
-[AddComponentMenu("Zios/Component/Action/*/State Controller")][ExecuteInEditMode]
+[AddComponentMenu("Zios/Component/Action/*/State Controller")]
 public class StateController : MonoBehaviour{
 	public int total;
 	public StateRow[] table = new StateRow[0];

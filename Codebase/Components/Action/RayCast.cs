@@ -4,7 +4,7 @@ using UnityEngine;
 [AddComponentMenu("Zios/Component/Action/Raycast")]
 public class RayCast : ActionPart{
 	public AttributeFloat distance = 1;
-	public Color rayColor = Color.blue;
+	public Color debugColor = Color.blue;
 	public AttributeVector3 direction = -Vector3.up;
 	public AttributeVector3 offset = Vector3.zero;
 	public AttributeGameObject source = new AttributeGameObject();
@@ -55,7 +55,7 @@ public class RayCast : ActionPart{
 	public void OnDrawGizmosSelected(){
 		GameObject source = this.source.Get();
 		if(!source.IsNull()){
-			Gizmos.color = this.rayColor;
+			Gizmos.color = this.debugColor;
 			Vector3 direction = this.AdjustVector(this.direction);
 			Vector3 start = source.transform.position + this.AdjustVector(this.offset);
 			Vector3 end = start + (direction * this.distance);

@@ -8,10 +8,10 @@ using System.Reflection;
 using System.Security.Cryptography;
 using System.Xml.Serialization;
 public static class ObjectExtension{
-	const BindingFlags allFlags = BindingFlags.Instance|BindingFlags.NonPublic|BindingFlags.Public;
+	const BindingFlags allFlags = BindingFlags.Static|BindingFlags.Instance|BindingFlags.NonPublic|BindingFlags.Public;
 	const BindingFlags privateFlags = BindingFlags.Instance|BindingFlags.NonPublic;
 	const BindingFlags publicFlags = BindingFlags.Instance|BindingFlags.Public;
-	public static T Cast<T>(this object current,ref T type){
+	public static T Cast<T>(this object current,T type){
 		return (T)Convert.ChangeType(current,typeof(T));
 	}
 	public static T Cast<T>(this object current){
@@ -31,6 +31,15 @@ public static class ObjectExtension{
 		else{
 			return null;
 		}
+	}
+	public static object CallMethod(this object current,string name,object[] parameters=null){
+		return current.CallMethod<object>(name,parameters);
+	}
+	public static V CallMethod<V>(this object current,string name,object[] parameters=null){
+		if(current.IsStatic()){
+			return (V)current.GetMethod(name).Invoke(null,parameters);
+		}
+		return (V)current.GetMethod(name).Invoke(current,parameters);
 	}
 	public static bool HasMethod(this object current,string name,Type type = null,BindingFlags flags = allFlags){
 		Type currentType = type == null ? current.GetType() : type;
@@ -68,6 +77,19 @@ public static class ObjectExtension{
 			return (T)field.GetValue(current);
 		}
 		return default(T);
+	}
+	public static Type GetVariableType(this object current,string name,int index=-1,BindingFlags flags = allFlags){
+		Type type = current is Type ? (Type)current : current.GetType();
+		PropertyInfo property = type.GetProperty(name,flags);
+		FieldInfo field = type.GetField(name,flags);
+		if(index != -1){
+			if(current is Vector3){return typeof(float);}
+			IList list = (IList)field.GetValue(current);
+			return list[index].GetType();
+		}
+		if(property != null){return property.PropertyType;}
+		if(field != null){return field.FieldType;}
+		return typeof(Type);
 	}
 	public static void SetVariable<T>(this object current,string name,T value,int index=-1){
 		Type type = current.GetType();
@@ -169,4 +191,14 @@ public static class ObjectExtension{
 	public static bool IsNull(this object current){
         return current == null || current.Equals(null);
     }
+	public static bool IsType(this object current,Type value){
+		return current.GetType().IsType(value);
+	}
+	public static T[] AsArray<T>(this T current){
+		return new T[]{current};
+	}
+	public static List<T> AsList<T>(this T current){
+		return new List<T>{current};
+	}
+	public static bool IsStatic(this object current){return current.GetType().IsStatic();}
 }

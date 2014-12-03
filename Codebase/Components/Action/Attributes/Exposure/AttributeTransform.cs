@@ -4,8 +4,7 @@ using Zios;
 using System.Collections;
 using UnityEngine;
 [AddComponentMenu("Zios/Component/Action/Attribute/Expose/Expose Transform")]
-public class AttributeTransform : AttributeExposer{
-	[HideInInspector] public string alias = "Transform";
+public class AttributeTransform : DataMonoBehaviour{
 	[HideInInspector] public AttributeVector3 rotation = Vector3.zero;
 	[HideInInspector] public AttributeVector3 position = Vector3.zero;
 	[HideInInspector] public AttributeVector3 scale = Vector3.zero;

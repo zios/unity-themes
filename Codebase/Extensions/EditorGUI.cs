@@ -80,13 +80,13 @@ public static class GUIExtension{
 	public static Rect Draw(this Rect current,Rect area,bool indention=false){
 		return GUIExtension.Draw<Rect>(()=>EditorGUI.RectField(area,current),indention);
 	}
-	public static Vector2 Draw(this Vector2 current,Rect area,bool indention=false){
+	public static Vector2 DrawVector2(this Vector2 current,Rect area,bool indention=false){
 		return GUIExtension.Draw<Vector2>(()=>EditorGUI.Vector2Field(area,"",current),indention);
 	}
-	public static Vector3 Draw(this Vector3 current,Rect area,bool indention=false){
+	public static Vector3 DrawVector3(this Vector3 current,Rect area,bool indention=false){
 		return GUIExtension.Draw<Vector3>(()=>EditorGUI.Vector3Field(area,"",current),indention);
 	}
-	public static Vector4 Draw(this Vector4 current,Rect area,bool indention=false){
+	public static Vector4 DrawVector4(this Vector4 current,Rect area,bool indention=false){
 		return GUIExtension.Draw<Vector3>(()=>EditorGUI.Vector4Field(area,"",current),indention);
 	}
 	public static AnimationCurve Draw(this AnimationCurve current,Rect area,bool indention=false){

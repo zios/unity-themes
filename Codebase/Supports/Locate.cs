@@ -10,9 +10,10 @@ public static class Locate{
 	public static bool cleanGameObjects = false;
 	public static List<Type> cleanComponents = new List<Type>();
 	public static List<GameObject> cleanSiblings = new List<GameObject>();
-	public static Dictionary<Type,GameObject[]> siblings = new Dictionary<Type,GameObject[]>();
-	public static Dictionary<Type,GameObject[]> enabledSiblings = new Dictionary<Type,GameObject[]>();
-	public static Dictionary<Type,GameObject[]> disabledSiblings = new Dictionary<Type,GameObject[]>();
+	public static Dictionary<GameObject,GameObject[]> siblings = new Dictionary<GameObject,GameObject[]>();
+	public static Dictionary<GameObject,GameObject[]> enabledSiblings = new Dictionary<GameObject,GameObject[]>();
+	public static Dictionary<GameObject,GameObject[]> disabledSiblings = new Dictionary<GameObject,GameObject[]>();
+	public static GameObject[] rootObjects = new GameObject[0];
 	public static GameObject[] sceneObjects = new GameObject[0];
 	public static GameObject[] enabledObjects = new GameObject[0];
 	public static GameObject[] disabledObjects = new GameObject[0];
@@ -27,6 +28,7 @@ public static class Locate{
 	public static void SetDirty(){
 		Locate.cleanGameObjects = false;
 		Locate.cleanComponents.Clear();
+		Locate.cleanSiblings.Clear();
 	}
 	public static GameObject GetScenePath(string name,bool autocreate=true){
 		string[] parts = name.Split('/');
@@ -49,11 +51,13 @@ public static class Locate{
 		return current;
 	}
 	public static void Build<Type>() where Type : Component{
+		List<GameObject> rootObjects = new List<GameObject>();
 		List<Type> enabled = new List<Type>();
 		List<Type> disabled = new List<Type>();
 		Type[] all = (Type[])Resources.FindObjectsOfTypeAll(typeof(Type));
 		foreach(Type current in all){
 			if(current.IsPrefab()){continue;}
+			if(current.gameObject.transform.parent == null){rootObjects.Add(current.gameObject);}
 			if(current.gameObject.activeInHierarchy){enabled.Add(current);}
 			else{disabled.Add(current);}
 		}
@@ -67,10 +71,11 @@ public static class Locate{
 			Locate.sceneObjects = enabledObjects.Extend(disabledObjects).ToArray();
 			Locate.enabledObjects = enabledObjects.ToArray();
 			Locate.disabledObjects = disabledObjects.ToArray();
+			Locate.rootObjects = rootObjects.ToArray();
 			Locate.cleanGameObjects = true;
 		}
 	}
-	public static GameObject[] FindAll(string name){
+	public static GameObject[] GetByName(string name){
 		if(!Locate.cleanGameObjects){Locate.Build<Transform>();}
 		List<GameObject> matches = new List<GameObject>();
 		foreach(GameObject current in Locate.enabledObjects){
@@ -97,6 +102,24 @@ public static class Locate{
 		}
 		Utility.Destroy(root);
 		return false;
+	}
+	public static GameObject[] GetSiblings(this GameObject current,bool includeEnabled=true,bool includeDisabled=true){
+		if(!Locate.cleanSiblings.Contains(current)){
+			GameObject parent = current.GetParent();
+			if(parent.IsNull()){
+				//Debug.Log("GameObject : Cannot locate siblings for root objects",current);
+				return current.AsArray();
+			}
+			List<Transform> siblingTransforms = parent.GetComponentsInChildren<Transform>(true).Remove(parent.transform).ToList();
+			siblingTransforms.RemoveAll(x=>x.parent!=parent.transform);
+			Locate.siblings[current] = siblingTransforms.Select(x=>x.gameObject).ToArray();
+			Locate.enabledSiblings[current] = Locate.siblings[current].Where(x=>x.gameObject.activeInHierarchy).Select(x=>x.gameObject).ToArray();
+			Locate.disabledSiblings[current] = Locate.siblings[current].Where(x=>!x.gameObject.activeInHierarchy).Select(x=>x.gameObject).ToArray();
+			Locate.cleanSiblings.Add(current);
+		}
+		if(includeEnabled && includeDisabled){return Locate.siblings[current];}
+		if(!includeEnabled){return Locate.disabledSiblings[current];}
+		return Locate.enabledSiblings[current];
 	}
 	public static GameObject[] GetSceneObjects(bool includeEnabled=true,bool includeDisabled=true){
 		if(!Locate.cleanGameObjects){Locate.Build<Transform>();}

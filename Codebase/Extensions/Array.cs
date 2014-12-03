@@ -76,8 +76,11 @@ public static class ArrayExtension{
 		}
 		return result;
 	}
-	public static int IndexOf<T>(this Array current,T type){
-		return Array.IndexOf(current,type);
+	public static bool Contains<T>(this Array current,T value){
+		return Array.IndexOf(current,value) != -1;
+	}
+	public static int IndexOf<T>(this Array current,T value){
+		return Array.IndexOf(current,value);
 	}
 	public static int IndexOf<T>(this Array current,Enum enumerable){
 		string name = enumerable.ToString();

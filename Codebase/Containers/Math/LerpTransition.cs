@@ -18,8 +18,12 @@ public class LerpTransition{
 		this.path = path.AddRoot(parent);
 		this.parent = parent;
 		if(this.parent is ManagedMonoBehaviour){
-			ActionPart part = (ActionPart)parent;
-			this.fixedTime = part.rate == UpdateRate.FixedUpdate;
+			var script = (ManagedMonoBehaviour)parent;
+			this.fixedTime = script.rate == UpdateRate.FixedUpdate;
+		}
+		if(this.parent is ActionPart){
+			var script = (ActionPart)parent;
+			Events.Add(script.alias+"/End",this.Reset);	
 		}
 		Events.Add(path+"/Transition/Reset",this.Reset,parent.gameObject);
 		this.isAngle.Setup(path+"/Is Angle",parent);

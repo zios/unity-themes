@@ -75,7 +75,7 @@ namespace Zios{
 		}
 		public void ApplyState(bool state){
 			this.inUse.Set(state);
-			this.used = state;
+			this.used.Set(state);
 			string active = state ? "/Started" : "/Ended";
 			this.gameObject.Call(this.alias+active);
 		}

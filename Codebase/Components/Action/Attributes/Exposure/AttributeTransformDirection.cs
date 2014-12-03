@@ -3,8 +3,7 @@
 using Zios;
 using UnityEngine;
 [AddComponentMenu("Zios/Component/Action/Attribute/Expose/Expose Transform (Direction)")]
-public class AttributeTransformDirection : AttributeExposer{
-	[HideInInspector] public string alias = "Transform";
+public class AttributeTransformDirection : DataMonoBehaviour{
 	[HideInInspector] public AttributeVector3 directionUp = Vector3.zero;
 	[HideInInspector] public AttributeVector3 directionDown = Vector3.zero;
 	[HideInInspector] public AttributeVector3 directionLeft = Vector3.zero;

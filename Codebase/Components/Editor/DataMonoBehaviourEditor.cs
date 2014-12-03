@@ -1,15 +1,14 @@
 ﻿using Zios;
 using UnityEngine;
 using UnityEditor;
-[CustomEditor(typeof(MonoBehaviour),true)][CanEditMultipleObjects]
-public class MonoBehaviourEditor : Editor{
+[CustomEditor(typeof(DataMonoBehaviour),true)][CanEditMultipleObjects]
+public class DataMonoBehaviourEditor : Editor{
 	public float nextStep;
 	public override void OnInspectorGUI(){
-		this.DrawDefaultInspector();
-		if(this.target is AttributeBox){Utility.EditorCall(this.EditorUpdate<AttributeBox>);}
-		if(this.target is AnimationController){Utility.EditorCall(this.EditorUpdate<AnimationController>);}
-		if(this.target is ColliderController){Utility.EditorCall(this.EditorUpdate<ColliderController>);}
-		if(this.target is ManagedMonoBehaviour){Utility.EditorCall(this.EditorUpdate<ManagedMonoBehaviour>);}
+		if(!(target is AttributeData)){
+			this.DrawDefaultInspector();
+		}
+		Utility.EditorCall(this.EditorUpdate<DataMonoBehaviour>);
 	}
 	public void EditorUpdate<Type>() where Type : MonoBehaviour{
 		if(Time.realtimeSinceStartup > this.nextStep){
@@ -20,6 +19,9 @@ public class MonoBehaviourEditor : Editor{
 			}
 			if(target is StateMonoBehaviour){
 				((StateMonoBehaviour)this.target).inUse.Set(false);
+			}
+			if(target is AttributeData){
+				target.hideFlags = HideFlags.HideInInspector;
 			}
 			EditorUtility.SetDirty((MonoBehaviour)this.target);
 		}

@@ -2,27 +2,35 @@ using Zios;
 using UnityEngine;
 [AddComponentMenu("Zios/Component/Action/Rotate/Towards/Rotate Towards Direction")]
 public class RotateTowardsDirection : ActionPart{
-	public AttributeVector3 direction = Vector3.zero;
 	public AttributeGameObject source = new AttributeGameObject();
-	public LerpVector3 rotation = new LerpVector3();
-	private Vector3 lastDirection;
+	public AttributeVector3 target = Vector3.zero;
+	public ListBool lerpAxes = new ListBool(){true,true,true};
+	public LerpQuaternion rotation = new LerpQuaternion();
 	public override void Awake(){
 		base.Awake();
+		this.DefaultRate("LateUpdate");
 		this.source.Setup("Source",this);
-		this.rotation.Setup("Rotation",this);
-		this.direction.Setup("Rotate Direction",this);
+		this.target.Setup("Target Direction",this);
+		this.rotation.Setup("Rotate Direction",this);
+		this.rotation.isAngle.showInEditor = false;
 	}
 	public override void Use(){
-		if(this.lastDirection != this.direction){
-			this.rotation.Reset();
+		GameObject source = this.source.Get();
+		Vector3 target = this.target.Get();
+		if(!target.IsNull() && !source.IsNull()){
+			Vector3 angle = source.transform.eulerAngles;
+			Debug.Log(target);
+			Quaternion current = source.transform.rotation;
+			if(target != Vector3.zero){
+				source.transform.rotation = Quaternion.LookRotation(target);
+			}
+			Quaternion goal = source.transform.rotation;
+			source.transform.rotation = this.rotation.Step(current,goal);
+			if(this.lerpAxes[1]){angle.x = source.transform.eulerAngles.x;}
+			if(this.lerpAxes[0]){angle.y = source.transform.eulerAngles.y;}
+			if(this.lerpAxes[2]){angle.z = source.transform.eulerAngles.z;}
+			source.transform.eulerAngles = angle;
+			base.Use();
 		}
-		Transform transform = this.source.Get().transform;
-		Vector3 current = transform.rotation * Vector3.forward;
-		Vector3 goal = this.rotation.Step(current,this.direction);
-		if(goal != Vector3.zero){
-			transform.rotation = Quaternion.LookRotation(goal);
-		}
-		this.lastDirection = this.direction;
-		base.Use();
 	}
 }

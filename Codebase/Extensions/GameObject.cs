@@ -8,35 +8,23 @@ public static class GameObjectExtension{
 	//====================
 	// Retrieval
 	//====================
+	public static GameObject GetPrefabRoot(this GameObject current){
+		return Utility.FindPrefabRoot(current);
+	}
 	public static int GetSiblingCount(this GameObject current,bool includeInactive=false){
-		GameObject parent = current.GetParent();
-		if(parent.IsNull()){
-			Debug.Log("GameObject : Cannot locate siblings for root objects",current);
-			return 0;
-		}
-		return parent.GetComponentsInChildren<Transform>(includeInactive).Remove(parent.transform).Length;
+		return Locate.GetSiblings(current,true,includeInactive).Length;
 	}
 	public static GameObject GetPreviousSibling(this GameObject current,bool includeInactive=false){
-		GameObject parent = current.GetParent();
-		if(parent.IsNull()){
-			Debug.Log("GameObject : Cannot locate siblings for root objects",current);
-			return current;
-		}
-		Transform[] siblings = parent.GetComponentsInChildren<Transform>(includeInactive).Remove(parent.transform);
+		GameObject[] siblings = Locate.GetSiblings(current,true,includeInactive);
 		if(siblings.Length == 0){return current;}
-		int previousIndex = siblings.IndexOf(current.transform) - 1;
+		int previousIndex = siblings.IndexOf(current) - 1;
 		if(previousIndex < 0){previousIndex = siblings.Length-1;}
 		return siblings[previousIndex].gameObject;
 	}
 	public static GameObject GetNextSibling(this GameObject current,bool includeInactive=false){
-		GameObject parent = current.GetParent();
-		if(parent.IsNull()){
-			Debug.Log("GameObject : Cannot locate siblings for root objects",current);
-			return current;
-		}
-		Transform[] siblings = parent.GetComponentsInChildren<Transform>(includeInactive).Remove(parent.transform);
+		GameObject[] siblings = Locate.GetSiblings(current,true,includeInactive);
 		if(siblings.Length == 0){return current;}
-		int nextIndex = siblings.IndexOf(current.transform) + 1;
+		int nextIndex = siblings.IndexOf(current) + 1;
 		if(nextIndex >= siblings.Length){nextIndex = 0;}
 		return siblings[nextIndex].gameObject;
 	}

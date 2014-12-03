@@ -3,8 +3,7 @@
 using Zios;
 using UnityEngine;
 [AddComponentMenu("Zios/Component/Action/Attribute/Expose/Expose Transform (Rotation)")]
-public class AttributeTransformRotation : AttributeExposer{
-	[HideInInspector] public string alias = "Transform";
+public class AttributeTransformRotation : DataMonoBehaviour{
 	[HideInInspector] public AttributeVector3 rotation = Vector3.zero;
 	public override void Awake(){
 		this.rotation.Setup("Rotation",this);

@@ -9,7 +9,7 @@ public class RotateTowardsAngle : ActionPart{
 		base.Awake();
 		this.target.Setup("Target",this);
 		this.rotation.Setup("Rotate Towards",this);
-		this.rotation.isAngle = true;
+		this.rotation.isAngle.Set(true);
 	}
 	public override void Use(){
 		Transform transform = this.target.Get().transform;

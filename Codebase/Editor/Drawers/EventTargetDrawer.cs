@@ -1,11 +1,13 @@
 using UnityEngine;
 using UnityEditor;
+using Zios;
 using System.Linq;
 using System.Collections.Generic;
 [CustomPropertyDrawer(typeof(EventTarget))]
 public class EventTargetDrawer : PropertyDrawer{
 	public Dictionary<EventTarget,bool> targetMode = new Dictionary<EventTarget,bool>();
     public override void OnGUI(Rect position,SerializedProperty property,GUIContent label){
+		if(!Attribute.ready){return;}
 		string skin = EditorGUIUtility.isProSkin ? "Dark" : "Light";
 		GUI.skin = FileManager.GetAsset<GUISkin>("Gentleface-" + skin + ".guiskin");
 		Rect labelRect = position.SetWidth(EditorGUIUtility.labelWidth);
@@ -13,6 +15,7 @@ public class EventTargetDrawer : PropertyDrawer{
 		GUI.changed = false;
         EditorGUI.BeginProperty(position,label,property);
 		EventTarget eventTarget = property.GetObject<EventTarget>();
+		string eventName = eventTarget.name;
 		GameObject target = eventTarget.target.Get();
 		label.DrawLabel(labelRect,null,true);
 		string eventType = eventTarget.mode == EventMode.Listeners ? "Listen" : "Caller";
@@ -33,16 +36,16 @@ public class EventTargetDrawer : PropertyDrawer{
 				events.Sort();
 				events = events.OrderBy(item=>item.Contains("/")).ToList();
 				events.RemoveAll(item=>item.StartsWith("@"));
-				int index = events.IndexOf(eventTarget.name);
+				int index = events.IndexOf(eventName);
 				bool missing = false;
 				if(index == -1){
 					missing = true;
-					events.Insert(0,"[Missing] " + eventTarget.name);
+					events.Insert(0,"[Missing] " + eventName);
 					index = 0;
 				}
 				index = events.Draw(valueRect,index);
 				if(!missing || index != 0){
-					eventTarget.name = events[index];
+					eventTarget.name.Set(events[index]);
 				}
 			}
 			else{

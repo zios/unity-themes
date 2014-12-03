@@ -11,7 +11,7 @@ public class RotateWithTarget : ActionPart{
 		this.source.Setup("Source",this);
 		this.target.Setup("Target",this);
 		this.angles.Setup("Angles",this);
-		this.angles.isAngle = true;
+		this.angles.isAngle.Set(true);
 	}
 	public override void Use(){
 		Transform source = this.source.Get().transform;

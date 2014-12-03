@@ -3,8 +3,7 @@
 using Zios;
 using UnityEngine;
 [AddComponentMenu("Zios/Component/Action/Attribute/Expose/Expose Transform (Position)")]
-public class AttributeTransformPosition : AttributeExposer{
-	[HideInInspector] public string alias = "Transform";
+public class AttributeTransformPosition : DataMonoBehaviour{
 	[HideInInspector] public AttributeVector3 position = Vector3.zero;
 	public override void Awake(){
 		this.position.Setup("Position",this);

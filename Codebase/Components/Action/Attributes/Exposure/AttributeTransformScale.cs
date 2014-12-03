@@ -3,8 +3,7 @@
 using Zios;
 using UnityEngine;
 [AddComponentMenu("Zios/Component/Action/Attribute/Expose/Expose Transform (Scale)")]
-public class AttributeTransformScale : AttributeExposer{
-	[HideInInspector] public string alias = "Transform";
+public class AttributeTransformScale : DataMonoBehaviour{
 	[HideInInspector] public AttributeVector3 scale = Vector3.zero;
 	public override void Awake(){
 		this.scale.Setup("Scale",this);

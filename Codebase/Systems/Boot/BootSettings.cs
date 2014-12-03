@@ -30,7 +30,7 @@ namespace Zios{
 				}
 			}
 			if(existing != null){
-				GameObject[] all = Locate.FindAll(name);
+				GameObject[] all = Locate.GetByName(name);
 				foreach(GameObject current in all){
 					if(current != existing){
 						GameObject.Destroy(current);

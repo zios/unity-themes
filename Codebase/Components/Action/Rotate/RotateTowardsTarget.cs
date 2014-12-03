@@ -14,7 +14,7 @@ public class RotateTowardsTarget : ActionPart{
 		this.target.Setup("Target",this);
 		this.offset.Setup("Offset",this);
 		this.angles.Setup("Angles",this);
-		this.angles.isAngle = true;
+		this.angles.isAngle.Set(true);
 	}
 	public Vector3 AdjustVector(Vector3 value){
 		Vector3 adjusted = value;

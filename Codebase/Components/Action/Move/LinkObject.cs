@@ -32,7 +32,7 @@ public class LinkObject : ActionPart{
 			if(!this.options.Contains(LinkOptions.Rotation)){this.preserveRotation = target.transform.rotation;}
 			//if(!this.options.Contains(LinkOptions.Scale)){this.preserveScale = target.transform.localScale;}
 			this.previousLink = target.transform.parent;
-			this.isLinked = true;
+			this.isLinked.Set(true);
 		}
 		target.transform.parent = (this.mode != LinkMode.Unlink) ? linkTo.transform : this.previousLink;
 		if(!this.options.Contains(LinkOptions.Position)){target.transform.position = this.preservePosition;}
@@ -44,7 +44,7 @@ public class LinkObject : ActionPart{
 			GameObject target = this.target.Get();
 			target.transform.parent = this.previousLink;
 			this.previousLink = null;
-			this.isLinked = false;
+			this.isLinked.Set(false);
 		}
 		base.End();
 	}

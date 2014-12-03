@@ -147,7 +147,7 @@ public class AnimationController : ManagedMonoBehaviour{
 	public void OnSetDefault(object[] values){
 		string name = (string)values[0];
 		if(this.lookup.ContainsKey(name)){
-			this.defaultAnimationName = name;
+			this.defaultAnimationName.Set(name);
 			this.defaultAnimation = this.lookup[name];
 		}
 	}

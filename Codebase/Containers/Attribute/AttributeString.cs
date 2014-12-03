@@ -8,33 +8,22 @@ namespace Zios{
 	[Serializable]
 	public class AttributeString : Attribute<string,AttributeString,AttributeStringData,OperatorString,SpecialString>{
 		public AttributeString() : this(""){}
-		public AttributeString(string value){this.Add(value);}
+		public AttributeString(string value){this.delayedValue = value;}
 		public static implicit operator AttributeString(string current){return new AttributeString(current);}
 		public static implicit operator string(AttributeString current){return current.Get();}
-		public static string operator +(AttributeString current,string amount){return current.Get() + amount;}
-		public override string HandleSpecial(SpecialString special,string value){
-			if(this.mode == AttributeMode.Linked){return value;}
-			else if(special == SpecialString.Lower){return value.ToLower();}
-			else if(special == SpecialString.Upper){return value.ToUpper();}
-			else if(special == SpecialString.Capitalize){return value.Capitalize();}
-			return value;
-		}
+		//public static string operator +(AttributeString current,string amount){return current.Get() + amount;}
 		public override string GetFormulaValue(){
 			string value = "";
 			for(int index=0;index<this.data.Length;++index){
-				var data = this.data[index];
-				string current = this.GetValue(data);
+				AttributeData raw = this.data[index];
+				var data = (AttributeStringData)raw;
+				var sign = data.sign;
+				string current = data.Get();
 				if(index == 0){value = current;}
-				else if(data.sign == OperatorString.Prefix){value = current + value;}
-				else if(data.sign == OperatorString.Suffix){value = value + current;}
+				else if(sign == OperatorString.Prefix){value = current + value;}
+				else if(sign == OperatorString.Suffix){value = value + current;}
 			}
 			return value;
 		}
-	}
-	[Serializable]
-	public class AttributeStringData : AttributeData<string,AttributeString,OperatorString,SpecialString>{
-		public int characterLimit;
-		public string[] allowed = new string[0];
-		public string[] disallowed = new string[0];
 	}
 }

@@ -7,7 +7,7 @@ using Action = Zios.Action;
 [AddComponentMenu("Zios/Singleton/Attribute Manager")][ExecuteInEditMode]
 public class AttributeManager : MonoBehaviour{
 	public float editorInterval = 1;
-	public bool editorIncludeDisabled = false;
+	public bool editorIncludeDisabled = true;
 	public bool updateOnHierarchyChange = true;
 	public bool updateOnAssetChange = true;
 	private float nextStep;
@@ -38,21 +38,12 @@ public class AttributeManager : MonoBehaviour{
 		bool fullSweep = !Application.isPlaying;
 		if(fullSweep){
 			Attribute.all.Clear();
-			AttributeFloat.lookup.Clear();
-			AttributeVector3.lookup.Clear();
-			AttributeBool.lookup.Clear();
-			AttributeInt.lookup.Clear();
-			AttributeString.lookup.Clear();
-			AttributeGameObject.lookup.Clear();
+			Attribute.lookup.Clear();
 		}
 		bool includeEnabled = this.setup;
 		bool includeDisabled = !this.setup || this.editorIncludeDisabled;
-		AttributeBox[] boxes = Locate.GetSceneObjects<AttributeBox>(includeEnabled,includeDisabled);
-		AttributeExposer[] exposers = Locate.GetSceneObjects<AttributeExposer>(includeEnabled,includeDisabled);
-		ManagedMonoBehaviour[] states = Locate.GetSceneObjects<ManagedMonoBehaviour>(includeEnabled,includeDisabled);
-		foreach(AttributeBox box in boxes){box.Awake();}
-		foreach(AttributeExposer exposer in exposers){exposer.Awake();}
-		foreach(ManagedMonoBehaviour managed in states){managed.Awake();}
+		DataMonoBehaviour[] data = Locate.GetSceneObjects<DataMonoBehaviour>(includeEnabled,includeDisabled);
+		foreach(DataMonoBehaviour entry in data){entry.Awake();}
 		this.Setup();
 	}
 	public void Start(){

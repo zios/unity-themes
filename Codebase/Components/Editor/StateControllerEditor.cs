@@ -5,6 +5,7 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using Zios.Editor;
+using Attribute = Zios.Attribute;
 [CustomEditor(typeof(StateController),true)]
 public class StateControllerEditor : Editor{
 	public float nextStep;
@@ -32,6 +33,7 @@ public class StateControllerEditor : Editor{
 		}
 	}
 	public override void OnInspectorGUI(){
+		if(!Attribute.ready){return;}
 		Utility.EditorCall(this.EditorUpdate);
 		StateController stateController = (StateController)this.target;
 		stateController.UpdateTableList();

@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
-[CustomPropertyDrawer(typeof(Target))]
+[CustomPropertyDrawer(typeof(Target),true)]
 public class TargetDrawer : PropertyDrawer{
 	public static Dictionary<Target,bool?> toggled = new Dictionary<Target,bool?>();
 	public static Dictionary<Target,bool> unfound = new Dictionary<Target,bool>();

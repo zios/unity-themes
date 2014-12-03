@@ -22,7 +22,7 @@ public static class Events{
 	public static void Register(string name,params GameObject[] targets){
 		targets = targets.Add(Events.all);
 		foreach(GameObject target in targets){
-			Events.lastRegister.Setup(target);
+			Events.lastRegister.AddNew(target);
 			if(Time.realtimeSinceStartup > Events.lastRegister[target]){
 				Events.callers[target] = new List<string>();
 				Events.lastRegister[target] = Time.realtimeSinceStartup + 1;
