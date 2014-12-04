@@ -8,22 +8,20 @@ public class DataMonoBehaviourEditor : Editor{
 		if(!(target is AttributeData)){
 			this.DrawDefaultInspector();
 		}
-		Utility.EditorCall(this.EditorUpdate<DataMonoBehaviour>);
+		Utility.EditorCall(this.EditorUpdate);
 	}
-	public void EditorUpdate<Type>() where Type : MonoBehaviour{
+	public void EditorUpdate(){
 		if(Time.realtimeSinceStartup > this.nextStep){
 			this.nextStep = Time.realtimeSinceStartup + 1f;
-			Type target = (Type)this.target;
-			if(target.HasMethod("Awake")){
-				target.GetMethod("Awake").Invoke(target,null);
-			}
+			DataMonoBehaviour target = (DataMonoBehaviour)this.target;
+			target.Awake();
 			if(target is StateMonoBehaviour){
 				((StateMonoBehaviour)this.target).inUse.Set(false);
 			}
 			if(target is AttributeData){
 				target.hideFlags = HideFlags.HideInInspector;
 			}
-			EditorUtility.SetDirty((MonoBehaviour)this.target);
+			EditorUtility.SetDirty(target);
 		}
 	}
 }

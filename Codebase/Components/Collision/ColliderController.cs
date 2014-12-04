@@ -58,6 +58,7 @@ public class ColliderController : ManagedMonoBehaviour{
 		this.maxSlopeAngle.Setup("Max Slope Angle",this);
 		this.minSlideAngle.Setup("Min Slide Angle",this);
 		this.hoverDistance.Setup("Hover Distance",this);
+		this.collisionPersist.Setup("Collision Persist",this);
 		Events.Add("Add Move",(MethodVector3)this.AddMove);
 		Events.Add("Add Move Raw",(MethodVector3)this.AddMoveRaw);
 		Events.Register("Trigger",this.gameObject);
