@@ -20,9 +20,9 @@ namespace Zios{
 			return data.Get();
 		}
 		public override void Setup(string path,Component component){
+			base.Setup(path,component);
 			this.canDirect = this.canFormula = false;
 			this.usage = AttributeUsage.Shaped;
-			base.Setup(path,component);
 		}
 		public void DefaultSearch(string target){
 			this.GetFirst().target.DefaultSearch(target);

@@ -14,9 +14,6 @@ namespace Zios{
 		public static float operator +(AttributeFloat current,float amount){return current.Get() + amount;}
 		public static float operator -(AttributeFloat current,float amount){return current.Get() - amount;}
 		public static float operator /(AttributeFloat current,float amount){return current.Get() / amount;}
-		public override void Setup(string path,Component component){
-			base.Setup(path,component);
-		}
 		public override float GetFormulaValue(){
 			float value = 0;
 			for(int index=0;index<this.data.Length;++index){
