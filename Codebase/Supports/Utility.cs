@@ -114,7 +114,7 @@ public static class Utility{
 		foreach(var type in typeof(EditorApplication).Assembly.GetTypes()){
 			if(type.Name == name){return type;}
 		}
-		return null;
 		#endif
+		return null;
 	}
 }

@@ -21,9 +21,9 @@ public class RayCast : ActionPart{
 		this.offset.Setup("Offset",this);
 		this.relative.Setup("Relative",this);
 		this.source.Setup("Source",this);
-		this.hitPoint.Setup ("Hit Point",this);
-		this.hitNormal.Setup ("Hit Normal",this);
-		this.hitDistance.Setup ("Hit Distance",this);
+		this.hitPoint.Setup("Hit Point",this);
+		this.hitNormal.Setup("Hit Normal",this);
+		this.hitDistance.Setup("Hit Distance",this);
 	}
 	public Vector3 GetPosition(){
 		GameObject source = this.source.Get();

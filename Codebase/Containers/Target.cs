@@ -68,7 +68,7 @@ public class Target{
 	public void SkipWarning(){this.hasWarned = true;}
 	public void DefaultSearch(){this.DefaultSearch(this.fallbackSearch);}
 	public void DefaultSearch(string target){
-		int siblingCount = this.parent.gameObject.GetSiblingCount();
+		int siblingCount = this.parent.IsNull() ? -1 : this.parent.gameObject.GetSiblingCount();
 		this.fallbackSearch = target;
 		bool searchChange = this.search != this.lastSearch;
 		bool parentChange = this.parent != this.lastParent;

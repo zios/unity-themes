@@ -6,8 +6,8 @@ public class SetActive : ActionPart{
 	public AttributeGameObject target;
 	public ToggleState state;
 	public override void Awake(){
-		this.target.Setup("Target",this);
 		base.Awake();
+		this.target.Setup("Target",this);
 	}
 	public override void Use(){
 		GameObject target = this.target.Get();

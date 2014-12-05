@@ -39,6 +39,7 @@ public static class ObjectExtension{
 		if(current.IsStatic()){
 			return (V)current.GetMethod(name).Invoke(null,parameters);
 		}
+		if(current is Type){return (V)current.GetMethod(name,(Type)current).Invoke(current,parameters);}
 		return (V)current.GetMethod(name).Invoke(current,parameters);
 	}
 	public static bool HasMethod(this object current,string name,Type type = null,BindingFlags flags = allFlags){
@@ -188,6 +189,9 @@ public static class ObjectExtension{
 	public static string GetClassPath(this object current){
 		return current.GetType().ToString();
 	}
+	public static bool IsEmpty(this object current){
+        return current == null || current.Equals(null) || (current is string && ((string)current).IsEmpty());
+    }
 	public static bool IsNull(this object current){
         return current == null || current.Equals(null);
     }

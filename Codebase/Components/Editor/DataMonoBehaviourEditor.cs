@@ -5,10 +5,12 @@ using UnityEditor;
 public class DataMonoBehaviourEditor : Editor{
 	public float nextStep;
 	public override void OnInspectorGUI(){
+		GUI.changed = false;
 		if(!(target is AttributeData)){
 			this.DrawDefaultInspector();
 		}
 		Utility.EditorCall(this.EditorUpdate);
+		if(GUI.changed){Utility.SetDirty(target);}
 	}
 	public void EditorUpdate(){
 		if(Time.realtimeSinceStartup > this.nextStep){
@@ -21,7 +23,6 @@ public class DataMonoBehaviourEditor : Editor{
 			if(target is AttributeData){
 				target.hideFlags = HideFlags.HideInInspector;
 			}
-			EditorUtility.SetDirty(target);
 		}
 	}
 }

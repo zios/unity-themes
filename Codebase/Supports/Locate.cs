@@ -88,19 +88,16 @@ public static class Locate{
 	public static bool HasDuplicate(string name){
 		if(!Locate.cleanGameObjects){Locate.Build<Transform>();}
 		List<GameObject> amount = new List<GameObject>();
-		GameObject root = new GameObject("root");
 		foreach(var current in Locate.sceneObjects){
 			GameObject parent = current.GetParent();
-			if(parent.IsNull()){parent = root;}
+			if(parent.IsNull()){parent = default(GameObject);}
 			if(current.name == name){
 				if(amount.Contains(parent)){
-					Utility.Destroy(root);
 					return true;
 				}
 				amount.Add(parent);
 			}
 		}
-		Utility.Destroy(root);
 		return false;
 	}
 	public static GameObject[] GetSiblings(this GameObject current,bool includeEnabled=true,bool includeDisabled=true){

@@ -4,13 +4,14 @@ using System.Collections;
 using System.Collections.Generic;
 [CustomPropertyDrawer(typeof(ListBool))]
 public class ListBoolDrawer : PropertyDrawer{
-    public override void OnGUI(Rect position,SerializedProperty property,GUIContent label){
+    public override void OnGUI(Rect area,SerializedProperty property,GUIContent label){
+		if(!area.HierarchyValid()){return;}
 		string[] names = new string[]{"X","Y","Z","W"};
 		object dataObject = property.GetObject<object>();
-		Rect labelRect = position.SetWidth(EditorGUIUtility.labelWidth);
-		Rect valueRect = position.Add(labelRect.width,0,-labelRect.width,0);
+		Rect labelRect = area.SetWidth(EditorGUIUtility.labelWidth);
+		Rect valueRect = area.Add(labelRect.width,0,-labelRect.width,0);
 		GUI.changed = false;
-		EditorGUI.BeginProperty(position,label,property);
+		EditorGUI.BeginProperty(area,label,property);
 		if(dataObject is ListBool){
 			List<bool> data = ((ListBool)dataObject).value;
 			EditorGUI.LabelField(labelRect,label);

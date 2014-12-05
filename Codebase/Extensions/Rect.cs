@@ -1,4 +1,8 @@
+using System;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 public static class RectExtension{
 	/*public static bool ContainsPoint(this Rect area,Vector3 position){
 		return (position.x > area.xMin) && (position.x < area.xMax) && (position.y > area.yMin) && (position.y < area.yMax);
@@ -58,5 +62,37 @@ public static class RectExtension{
 		Vector2 mouse = Event.current.mousePosition;
 		bool eventMatch = Event.current.type == EventType.MouseDown;
 		return current.Contains(mouse) && eventMatch && Event.current.button == button;
+	}
+	public static bool InFocusedWindow(this Rect current){
+		Rect windowRect = new Rect(0,0,Screen.width,Screen.height);
+		#if UNITY_EDITOR
+		if(EditorWindow.focusedWindow){
+			//EditorWindow.focusedWindow.maxSize
+			Vector2 scroll = EditorWindow.focusedWindow.GetVariable<Vector2>("m_ScrollPosition");
+			windowRect.y = scroll.y;
+		}
+		#endif
+		return current.Overlaps(windowRect);
+	}
+	public static EditorWindow[] hierarchies;
+	public static bool InHierarchyWindow(this Rect current){
+		Rect windowRect = new Rect(0,0,Screen.width,Screen.height);
+		#if UNITY_EDITOR
+		if(RectExtension.hierarchies == null){
+			Type inspectorType = Utility.GetEditorType("InspectorWindow");
+			RectExtension.hierarchies = inspectorType.CallMethod<EditorWindow[]>("GetAllInspectorWindows");
+		}
+		foreach(var window in RectExtension.hierarchies){
+			Vector2 scroll = window.GetVariable<Vector2>("m_ScrollPosition");
+			windowRect.y = scroll.y;
+			if(current.Overlaps(windowRect)){return true;}
+		}
+		#endif
+		return false;
+	}
+	public static bool HierarchyValid(this Rect current){
+		if(current == new Rect(0,0,1,1)){return false;}
+		if(!current.InHierarchyWindow() && current.y > 0){return false;}
+		return true;
 	}
 }

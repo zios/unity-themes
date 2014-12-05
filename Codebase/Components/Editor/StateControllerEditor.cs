@@ -28,37 +28,37 @@ public class StateControllerEditor : Editor{
 	public void EditorUpdate(){
 		StateController stateController = (StateController)this.target;
 		if(!Application.isPlaying && Time.realtimeSinceStartup > this.nextStep){
-			this.nextStep = Time.realtimeSinceStartup + 1f;
 			stateController.Refresh();
+			stateController.UpdateTableList();
+			StateRow[] activeTable = stateController.tables[this.tableIndex];
+			GUI.changed = false;
+			if(this.data != activeTable){
+				this.data = activeTable;
+				this.BuildTable(true);
+			}
+			if(!stateController.advanced){
+				this.tableIndex = 0;
+			}
+			if(activeTable.Length > 0){
+				//string tableName = ((MonoBehaviour)activeTable[0].target).name;
+				this.tableGUI.tableSkin.label.fixedWidth = 0;
+				foreach(StateRow stateRow in activeTable){
+					int size = (int)(GUI.skin.label.CalcSize(new GUIContent(stateRow.name)).x) + 24;
+					size = (size / 8) * 8 + 1;
+					if(size > this.tableGUI.tableSkin.label.fixedWidth){
+						this.tableGUI.tableSkin.label.fixedWidth = size;
+					}	
+				}
+			}
+			this.nextStep = Time.realtimeSinceStartup + 1f;
 		}
 	}
 	public override void OnInspectorGUI(){
 		if(!Attribute.ready){return;}
 		Utility.EditorCall(this.EditorUpdate);
-		StateController stateController = (StateController)this.target;
-		stateController.UpdateTableList();
-		StateRow[] activeTable = stateController.tables[this.tableIndex];
-		if(this.data != activeTable){
-			this.data = activeTable;
-			this.BuildTable(true);
-		}
-		if(!stateController.advanced){
-			this.tableIndex = 0;
-		}
-		if(activeTable.Length > 0){
-			//string tableName = ((MonoBehaviour)activeTable[0].target).name;
-			this.tableGUI.tableSkin.label.fixedWidth = 0;
-			foreach(StateRow stateRow in activeTable){
-				int size = (int)(GUI.skin.label.CalcSize(new GUIContent(stateRow.name)).x) + 24;
-				size = (size / 8) * 8 + 1;
-				if(size > this.tableGUI.tableSkin.label.fixedWidth){
-					this.tableGUI.tableSkin.label.fixedWidth = size;
-				}	
-			}
-		}
 		this.tableGUI.Draw();
 		this.DrawControls();
-		EditorUtility.SetDirty(this.target);
+		if(GUI.changed){Utility.SetDirty(this.target);}
 	}
 	public virtual void DrawControls(){
 		StateController stateController = (StateController)this.target;

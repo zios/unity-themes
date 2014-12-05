@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
+using UnityObject = UnityEngine.Object;
 #if UNITY_EDITOR 
 using UnityEditor;
 public class FileManagerWatcher : AssetPostprocessor{
@@ -60,21 +61,17 @@ public static class FileManager{
 		if(results.Length > 0){return results[0];}
 		return null;
 	}
-	public static string GetPath(object item){
+	public static string GetPath(UnityObject item){
 		#if UNITY_EDITOR 
 		if(Application.isEditor){
-			return AssetDatabase.GetAssetPath((UnityEngine.Object)item);
+			return AssetDatabase.GetAssetPath(item);
 		}
 		#endif
 		return "";
 	}
 	public static string GetGUID(string name,bool showWarnings=true){
-		#if UNITY_EDITOR 
 		FileData file = FileManager.Find(name,showWarnings);
-		if(file != null && Application.isEditor){
-			return file.GetGUID();
-		}
-		#endif
+		if(file != null){return file.GetGUID();}
 		return "";
 	}
 	public static T GetAsset<T>(string name,bool showWarnings=true){

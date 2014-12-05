@@ -32,7 +32,7 @@ public class StateMonoBehaviour : ManagedMonoBehaviour{
 		this.requirable.Setup("Requirable",this);
 		this.ready.Setup("Ready",this);
 		this.usable.Setup("Usable",this);
-		this.used.Setup("Usable",this);
+		this.used.Setup("Used",this);
 	}
 	public virtual void Use(){}
 	public virtual void End(){}

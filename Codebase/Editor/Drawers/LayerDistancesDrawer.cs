@@ -12,13 +12,14 @@ public class LayerDistancesDrawer : PropertyDrawer{
 		}
 		return base.GetPropertyHeight(property,label);
 	}
-    public override void OnGUI(Rect position,SerializedProperty property,GUIContent label){
+    public override void OnGUI(Rect area,SerializedProperty property,GUIContent label){
+		if(!area.HierarchyValid()){return;}
 		float singleLine = EditorGUIUtility.singleLineHeight;
 		GUI.changed = false;
-		EditorGUI.BeginProperty(position,label,property);
-		position = position.SetHeight(singleLine);
+		EditorGUI.BeginProperty(area,label,property);
+		area = area.SetHeight(singleLine);
 		bool expanded = EditorPrefs.GetBool("layerDistancesExpanded");
-		expanded = EditorGUI.Foldout(position,expanded,"Layer Cull Distances");
+		expanded = EditorGUI.Foldout(area,expanded,"Layer Cull Distances");
 		EditorPrefs.SetBool("layerDistancesExpanded",expanded);
 		if(expanded){
 			EditorGUI.indentLevel += 1;
@@ -29,8 +30,8 @@ public class LayerDistancesDrawer : PropertyDrawer{
 				string layerName = LayerMask.LayerToName(index);
 				//if(layerName.IsEmpty()){layerName = "[Unnamed]";}
 				if(!layerName.IsEmpty()){
-					position = position.AddY(singleLine+2);
-					current.floatValue = current.floatValue.DrawLabeled(position,new GUIContent(layerName));
+					area = area.AddY(singleLine+2);
+					current.floatValue = current.floatValue.DrawLabeled(area,new GUIContent(layerName));
 					this.drawn += 1;
 				}
 			}

@@ -6,14 +6,14 @@ using System.Collections.Generic;
 public class TargetDrawer : PropertyDrawer{
 	public static Dictionary<Target,bool?> toggled = new Dictionary<Target,bool?>();
 	public static Dictionary<Target,bool> unfound = new Dictionary<Target,bool>();
-    public override void OnGUI(Rect position,SerializedProperty property,GUIContent label){
+    public override void OnGUI(Rect area,SerializedProperty property,GUIContent label){
+		if(!area.HierarchyValid()){return;}
 		string skin = EditorGUIUtility.isProSkin ? "Dark" : "Light";
 		GUI.skin = FileManager.GetAsset<GUISkin>("Gentleface-" + skin + ".guiskin");
 		GUI.changed = false;
 		Target target = property.GetObject<Target>();
-        Rect area = new Rect(position.x,position.y,position.width,position.height);
-		Rect toggleRect = new Rect(position);
-		Rect propertyRect = new Rect(position);
+		Rect toggleRect = new Rect(area);
+		Rect propertyRect = new Rect(area);
 		float labelWidth = label.text.IsEmpty() ? 0 : EditorGUIUtility.labelWidth;
 		propertyRect.x += labelWidth + 18;
 		propertyRect.width -= labelWidth + 18;
@@ -24,7 +24,7 @@ public class TargetDrawer : PropertyDrawer{
 		bool toggleActive = TargetDrawer.toggled[target] ?? target.search.IsEmpty();
 		TargetDrawer.toggled[target] = toggleActive.Draw(toggleRect,GUI.skin.GetStyle("TargetToggle"));
 		bool toggled = (bool)TargetDrawer.toggled[target];
-        EditorGUI.BeginProperty(position,label,property);
+        EditorGUI.BeginProperty(area,label,property);
 		if(toggleActive != toggled){
 			target.search = "";
 			target.DefaultSearch();
@@ -67,7 +67,7 @@ public class TargetDrawer : PropertyDrawer{
         EditorGUI.EndProperty();
 		property.serializedObject.ApplyModifiedProperties();
 		if(GUI.changed){
-			EditorUtility.SetDirty(property.serializedObject.targetObject);
+			Utility.SetDirty(property.serializedObject.targetObject);
 		}
     }
 }

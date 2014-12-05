@@ -8,8 +8,10 @@ namespace Zios{
 		[NonSerialized] public StateController controller;
 		[NonSerialized] public GameObject owner;
 		public override void Awake(){
+			base.Awake();
+			GameObject parent = this.gameObject.GetParent();
 			this.alias = this.gameObject.name;
-			this.controller = this.gameObject.GetParent().GetComponentInParent<StateController>(true);
+			this.controller = parent.IsNull() ? null : parent.GetComponentInParent<StateController>(true);
 			this.owner = this.controller == null ? this.gameObject : this.controller.gameObject;
 			if(!this.controller.IsNull()){
 				this.inUse.AddScope(this.controller);
@@ -25,7 +27,6 @@ namespace Zios{
 				Events.Register(this.alias+"/Start",this.owner);
 				Events.Register(this.alias+"/End",this.owner);
 			}
-			base.Awake();
 			this.usable.Set(this.controller==null);
 		}
 		public override void Step(){

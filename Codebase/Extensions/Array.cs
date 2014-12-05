@@ -112,4 +112,9 @@ public static class ArrayExtension{
 		copy.Remove(value);
 		return copy.ToArray();
 	}
+	public static T[] RemoveAt<T>(this T[] current,int index){
+		List<T> copy = new List<T>(current);
+		copy.RemoveAt(index);
+		return copy.ToArray();
+	}
 }

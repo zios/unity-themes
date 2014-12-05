@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 using MenuFunction = UnityEditor.GenericMenu.MenuFunction;
+using UnityObject = UnityEngine.Object;
 namespace Zios{
 	[CustomPropertyDrawer(typeof(Attribute),true)]
 	public class AttributeDrawer : PropertyDrawer{
@@ -17,11 +18,11 @@ namespace Zios{
 			return this.overallHeight;
 		}
 		public override void OnGUI(Rect area,SerializedProperty property,GUIContent label){
-			if(!Attribute.ready){return;}
 			if(!property.GetObject<Attribute>().showInEditor){
 				this.overallHeight = -2;
 				return;
 			}
+			if(!Attribute.ready || !area.HierarchyValid()){return;}
 			this.overallHeight = base.GetPropertyHeight(property,label);
 			if(this.access == null){
 				object generic = property.GetObject<object>();
@@ -65,13 +66,18 @@ namespace Zios{
 			this.labelRect = this.fullRect.SetWidth(EditorGUIUtility.labelWidth);
 			this.valueRect = this.fullRect.Add(labelRect.width,0,-labelRect.width,0);
 			this.iconRect = this.fullRect.SetSize(14,14);
+			List<UnityObject> sources = new List<UnityObject>(){property.serializedObject.targetObject};
+			foreach(var data in this.property.GetObject<Attribute>().data){
+				if(!data.IsNull()){sources.Add(data);}
+			}
 			GUI.changed = false;
+			Undo.RecordObjects(sources.ToArray(),"Attribute Changes");
 			EditorGUI.BeginProperty(area,label,property);
 			this.Draw();
 			EditorGUI.EndProperty();
-			property.serializedObject.ApplyModifiedProperties();
 			if(GUI.changed){
-				EditorUtility.SetDirty(property.serializedObject.targetObject);
+				property.serializedObject.ApplyModifiedProperties();
+				EditorUtility.SetDirty(sources[0]);
 				//property.serializedObject.UpdateIfDirtyOrScript();
 				if(EditorWindow.mouseOverWindow != null){
 					EditorWindow.mouseOverWindow.Repaint();
@@ -107,36 +113,41 @@ namespace Zios{
 			}
 		}
 		public void DrawDirect(AttributeData data,GUIContent label,bool? drawSpecial=null,bool? drawOperator=null){
-			Rect line = this.valueRect;
-			if(drawOperator != null){
-				this.DrawOperator(line,data,(bool)!drawOperator);
-				line = line.Add(81,0,-81,0);
-			}
-			if(drawSpecial != null){
-				this.DrawSpecial(line,data);
-				line = line.Add(81,0,-81,0);
-			}
-			label.DrawLabel(this.labelRect);
+			float labelSize = EditorGUIUtility.labelWidth;
+			Rect comboRect = this.fullRect;
+			Rect extraRect = this.valueRect;
+			if(drawOperator != null){EditorGUIUtility.labelWidth -= 24;}
+			if(drawSpecial != null){EditorGUIUtility.labelWidth -= 24;}
+			//label.DrawLabel(this.labelRect);
 			if(data is AttributeFloatData){
 				AttributeFloatData floatData = (AttributeFloatData)data;
-				floatData.value = floatData.value.Draw(line);
+				//floatData.value = floatData.value.Draw(comboRect);
+				floatData.value = floatData.value.DrawLabeled(comboRect,label);
 			}
 			if(data is AttributeIntData){
 				AttributeIntData intData = (AttributeIntData)data;
-				intData.value = intData.value.DrawInt(line);
+				intData.value = intData.value.DrawLabeledInt(comboRect,label);
 			}
 			if(data is AttributeStringData){
 				AttributeStringData stringData = (AttributeStringData)data;
-				stringData.value = stringData.value.Draw(line);
+				stringData.value = stringData.value.DrawLabeled(comboRect,label);
 			}
 			if(data is AttributeBoolData){
 				AttributeBoolData boolData = (AttributeBoolData)data;
-				boolData.value = boolData.value.Draw(line);
+				boolData.value = boolData.value.DrawLabeled(comboRect,label);
 			}
 			if(data is AttributeVector3Data){
 				AttributeVector3Data vector3Data = (AttributeVector3Data)data;
-				vector3Data.value = vector3Data.value.DrawVector3(line);
+				vector3Data.value = vector3Data.value.DrawLabeled(comboRect,label);
 			}
+			if(drawOperator != null){
+				this.DrawOperator(extraRect,data,(bool)!drawOperator);
+				extraRect = extraRect.Add(81,0,-81,0);
+			}
+			if(drawSpecial != null){
+				this.DrawSpecial(extraRect,data);
+			}
+			EditorGUIUtility.labelWidth = labelSize;
 		}
 		public void DrawShaped(AttributeType attribute,SerializedObject property,GUIContent label,bool? drawSpecial=null,bool? drawOperator=null){
 			label.DrawLabel(labelRect);

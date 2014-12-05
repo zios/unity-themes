@@ -43,6 +43,9 @@ public class AnimationController : ManagedMonoBehaviour{
 		Events.Add("Set Animation Weight",this.OnSetWeight);
 		Events.Add("Play Animation",this.OnPlay);
 		Events.Add("Stop Animation",this.OnStop);
+		if(this.animations.Count > 0){
+			this.defaultAnimationName.SetDefault(this.animations.First().name);
+		}
 	}
 	public void Start(){
 		if(Application.isPlaying){

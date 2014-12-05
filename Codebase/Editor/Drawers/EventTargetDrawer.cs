@@ -6,14 +6,14 @@ using System.Collections.Generic;
 [CustomPropertyDrawer(typeof(EventTarget))]
 public class EventTargetDrawer : PropertyDrawer{
 	public Dictionary<EventTarget,bool> targetMode = new Dictionary<EventTarget,bool>();
-    public override void OnGUI(Rect position,SerializedProperty property,GUIContent label){
-		if(!Attribute.ready){return;}
+    public override void OnGUI(Rect area,SerializedProperty property,GUIContent label){
+		if(!Attribute.ready || !area.HierarchyValid()){return;}
 		string skin = EditorGUIUtility.isProSkin ? "Dark" : "Light";
 		GUI.skin = FileManager.GetAsset<GUISkin>("Gentleface-" + skin + ".guiskin");
-		Rect labelRect = position.SetWidth(EditorGUIUtility.labelWidth);
-		Rect valueRect = position.Add(labelRect.width,0,-labelRect.width,0);
+		Rect labelRect = area.SetWidth(EditorGUIUtility.labelWidth);
+		Rect valueRect = area.Add(labelRect.width,0,-labelRect.width,0);
 		GUI.changed = false;
-        EditorGUI.BeginProperty(position,label,property);
+        EditorGUI.BeginProperty(area,label,property);
 		EventTarget eventTarget = property.GetObject<EventTarget>();
 		string eventName = eventTarget.name;
 		GameObject target = eventTarget.target.Get();

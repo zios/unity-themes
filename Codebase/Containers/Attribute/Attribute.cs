@@ -13,7 +13,7 @@ namespace Zios{
 		public static Dictionary<GameObject,Dictionary<string,string>> resolve = new Dictionary<GameObject,Dictionary<string,string>>();
 		public static Dictionary<Attribute,bool> setWarning = new Dictionary<Attribute,bool>();
 		public static Dictionary<AttributeData,bool> getWarning = new Dictionary<AttributeData,bool>();
-		public static bool ready;
+		public static bool ready = false;
 		public string path;
 		public string id;
 		public string localID;
@@ -61,12 +61,34 @@ namespace Zios{
 			}
 		}
 		public override AttributeData[] GetData(){return this.data;}
+		public void Prepare(){
+			if(this.data.Length < 1){
+				BaseType value = this.delayedValue != null ? this.delayedValue : default(BaseType);
+				if(this.delayedValue == null){
+					Debug.Log("Attribute : Fixing unprepared data -- " + this.path);
+				}
+				this.Add(value);
+			}
+		}
 		public DataType GetFirst(){
-			if(this.data.Length < 1){this.Add(this.delayedValue);}
+			if(!Application.isPlaying){
+				if(this.data.Length > 0 && this.data[0].IsNull()){
+					Debug.Log("Attribute : Purging null data -- " + this.path);
+					this.data = this.data.RemoveAt(0);
+				}
+				this.Prepare();
+			}
 			return (DataType)this.data[0];
 		}
 		public virtual BaseType GetFormulaValue(){return default(BaseType);}
 		public override Type[] GetFormulaTypes(){return new Type[]{typeof(AttributeData)};}
+		public void SetDefault(BaseType value){
+			this.Prepare();
+			BaseType current = this.GetFirst().value;
+			if(current.IsEmpty()){
+				this.value = value;
+			}
+		}
 		public override void Add<Type>(){
 			if(this.parent != null){
 				AttributeData data = this.parent.gameObject.AddComponent<Type>();
@@ -85,6 +107,7 @@ namespace Zios{
 		public override void Remove(AttributeData data){
 			foreach(AttributeData current in this.data.Copy()){
 				if(current == data){
+					Debug.Log("Attribute : Removing attribute data -- " + this.path + " -- " + data);
 					this.data.Remove(current);
 					Utility.Destroy(current);
 				}
@@ -102,18 +125,16 @@ namespace Zios{
 				Attribute.all.RemoveAll(x=>x==this);
 				for(int index=0;index<this.data.Length;++index){
 					AttributeData data = this.data[index];
-					bool emptyData = data.IsNull();
-					if(emptyData){
-						this.data = this.data.Remove(data);
+					if(data.IsNull()){
+						Debug.Log("Attribute : Removing null attribute data in " + this.path + ".");
+						this.data = this.data.RemoveAt(index);
+						index -= 1;
 						continue;
 					}
 					bool wrongParent = (data.attribute != this) || (data.attribute.id != this.id);
 					bool emptyParent = data.attribute.parent.IsNull();
 					bool emptyAttribute = data.attribute.IsNull();
 					if(wrongParent || emptyParent || emptyAttribute){
-						//Debug.Log("Attribute : Component copy detected.");
-						//if(wrongParent){Utility.Destroy(data);}
-						//this.data[index] = data.Copy(this.parent.gameObject);
 						this.data[index].attribute = this;
 						Utility.SetDirty(this.data[index]);
 					}
@@ -142,11 +163,8 @@ namespace Zios{
 					}
 					resolve[parent.gameObject][previousID] = this.id;
 				}
-				if(this.data.Length < 1){
-					//Debug.Log("Attribute : Adding entry to empty data set -- " + this.path);
-					this.Add(this.delayedValue);
-				}
 			}
+			this.Prepare();
 			for(int index=0;index<this.data.Length;++index){
 				AttributeData data = this.data[index];
 				if(!Application.isPlaying){data.reference = null;}
