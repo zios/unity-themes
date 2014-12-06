@@ -5,11 +5,19 @@ using System;
 public class StateMonoBehaviour : ManagedMonoBehaviour{
 	[HideInInspector] public string id;
 	[HideInInspector] public AttributeBool requirable = true;
-	[NonSerialized] public AttributeBool ready = true;
-	[NonSerialized] public AttributeBool usable = false;
-	[NonSerialized] public AttributeBool inUse = false;
-	[NonSerialized] public AttributeBool used = false;
+	[HideInInspector] public AttributeBool ready = true;
+	[HideInInspector] public AttributeBool usable = false;
+	[HideInInspector] public AttributeBool inUse = false;
+	[HideInInspector] public AttributeBool used = false;
 	private bool requirableOverride;
+	public override void Awake(){
+		base.Awake();
+		this.inUse.Setup("Active",this);
+		this.requirable.Setup("Requirable",this);
+		this.ready.Setup("Ready",this);
+		this.usable.Setup("Usable",this);
+		this.used.Setup("Used",this);
+	}
 	[ContextMenu("Toggle Column Visibility")]
 	public void ToggleRequire(){
 		this.requirable.Set(!this.requirable);
@@ -25,14 +33,6 @@ public class StateMonoBehaviour : ManagedMonoBehaviour{
 		if(!this.requirableOverride){
 			this.requirable.Set(state);
 		}
-	}
-	public override void Awake(){
-		base.Awake();
-		this.inUse.Setup("Active",this);
-		this.requirable.Setup("Requirable",this);
-		this.ready.Setup("Ready",this);
-		this.usable.Setup("Usable",this);
-		this.used.Setup("Used",this);
 	}
 	public virtual void Use(){}
 	public virtual void End(){}

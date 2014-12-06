@@ -74,15 +74,15 @@ public static class RectExtension{
 		#endif
 		return current.Overlaps(windowRect);
 	}
-	public static EditorWindow[] hierarchies;
-	public static bool InHierarchyWindow(this Rect current){
+	public static EditorWindow[] inspectors;
+	public static bool InInspectorWindow(this Rect current){
 		Rect windowRect = new Rect(0,0,Screen.width,Screen.height);
 		#if UNITY_EDITOR
-		if(RectExtension.hierarchies == null){
+		if(RectExtension.inspectors == null){
 			Type inspectorType = Utility.GetEditorType("InspectorWindow");
-			RectExtension.hierarchies = inspectorType.CallMethod<EditorWindow[]>("GetAllInspectorWindows");
+			RectExtension.inspectors = inspectorType.CallMethod<EditorWindow[]>("GetAllInspectorWindows");
 		}
-		foreach(var window in RectExtension.hierarchies){
+		foreach(var window in RectExtension.inspectors){
 			Vector2 scroll = window.GetVariable<Vector2>("m_ScrollPosition");
 			windowRect.y = scroll.y;
 			if(current.Overlaps(windowRect)){return true;}
@@ -90,9 +90,9 @@ public static class RectExtension{
 		#endif
 		return false;
 	}
-	public static bool HierarchyValid(this Rect current){
+	public static bool InspectorValid(this Rect current){
 		if(current == new Rect(0,0,1,1)){return false;}
-		if(!current.InHierarchyWindow() && current.y > 0){return false;}
+		if(!current.InInspectorWindow() && current.y > 0){return false;}
 		return true;
 	}
 }

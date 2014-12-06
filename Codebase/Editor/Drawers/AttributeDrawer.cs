@@ -18,11 +18,12 @@ namespace Zios{
 			return this.overallHeight;
 		}
 		public override void OnGUI(Rect area,SerializedProperty property,GUIContent label){
-			if(!property.GetObject<Attribute>().showInEditor){
+			MonoBehaviour script = (MonoBehaviour)property.serializedObject.targetObject;
+			if(script.IsPrefab() || !property.GetObject<Attribute>().showInEditor){
 				this.overallHeight = -2;
 				return;
 			}
-			if(!Attribute.ready || !area.HierarchyValid()){return;}
+			if(!Attribute.ready || !area.InspectorValid()){return;}
 			this.overallHeight = base.GetPropertyHeight(property,label);
 			if(this.access == null){
 				object generic = property.GetObject<object>();

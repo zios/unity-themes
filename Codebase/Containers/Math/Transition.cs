@@ -29,7 +29,7 @@ public class Transition{
 		float startTime = this.endTime - this.duration;
 		float time = Application.isPlaying ? Time.time : Time.realtimeSinceStartup;
 		if(time < this.startTime){return 0;}
-		float elapsed = this.duration <= 0 ? 1 :(time-startTime)/this.duration;
+		float elapsed = this.duration <= 0 ? 1 : (time-startTime)/this.duration;
 		this.complete = time >= endTime;
 		return this.curve.Evaluate(elapsed);
 	}

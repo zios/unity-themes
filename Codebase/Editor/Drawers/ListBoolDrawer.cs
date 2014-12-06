@@ -5,7 +5,7 @@ using System.Collections.Generic;
 [CustomPropertyDrawer(typeof(ListBool))]
 public class ListBoolDrawer : PropertyDrawer{
     public override void OnGUI(Rect area,SerializedProperty property,GUIContent label){
-		if(!area.HierarchyValid()){return;}
+		if(!area.InspectorValid()){return;}
 		string[] names = new string[]{"X","Y","Z","W"};
 		object dataObject = property.GetObject<object>();
 		Rect labelRect = area.SetWidth(EditorGUIUtility.labelWidth);

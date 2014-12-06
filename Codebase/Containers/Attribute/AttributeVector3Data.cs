@@ -9,5 +9,4 @@ public class AttributeVector3Data : AttributeData<Vector3,AttributeVector3,Attri
 		else if(this.special == SpecialVector3.Sign){return value.Sign();}
 		return value;
 	}
-	//public new bool[] clamp = new bool[3]{false,false,false};
 }

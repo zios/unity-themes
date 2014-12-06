@@ -1,18 +1,51 @@
 using Zios;
 using System;
+using System.Linq;
 using UnityEngine;
 using System.Collections.Generic;
 using Attribute = Zios.Attribute;
 using Action = Zios.Action;
+using UnityObject = UnityEngine.Object;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 [AddComponentMenu("Zios/Singleton/Attribute Manager")][ExecuteInEditMode]
 public class AttributeManager : MonoBehaviour{
+	private static bool refresh;
 	public float editorInterval = 1;
 	public bool editorIncludeDisabled = true;
 	public bool updateOnHierarchyChange = true;
 	public bool updateOnAssetChange = true;
 	private float nextStep;
 	private bool setup;
-	private bool refresh;
+	#if UNITY_EDITOR
+    [MenuItem("Zios/Process/Attribute/Remove Visible Data")]
+	static void RemoveVisibleData(){AttributeManager.RemoveAttributeData(true);}
+    [MenuItem("Zios/Process/Attribute/Remove All Data")]
+	static void RemoveAttributeData(bool visibleOnly=false){
+		foreach(UnityObject current in Selection.objects){
+			if(current is GameObject){
+				GameObject gameObject = (GameObject)current;
+				foreach(AttributeData data in Locate.GetObjectComponents<AttributeData>(gameObject)){
+					bool canDestroy = !visibleOnly || (visibleOnly && !data.hideFlags.Contains(HideFlags.HideInInspector));
+					if(canDestroy){
+						Utility.Destroy(data);
+					}
+				}
+			}
+		}
+	}
+    [MenuItem("Zios/Process/Attribute/Hide All Data")]
+	static void HideAttributeData(){
+		PlayerPrefs.SetInt("ShowAttributeData",0);
+		AttributeManager.refresh = true;
+	}
+    [MenuItem("Zios/Process/Attribute/Show All Data")]
+	static void ShowAttributeData(){
+		PlayerPrefs.SetInt("ShowAttributeData",1);
+		AttributeManager.refresh = true;
+	}
+	#endif
 	public void OnValidate(){this.CleanEvents();}
 	public void OnDestroy(){this.CleanEvents();}
 	public void OnApplicationQuit(){
@@ -30,7 +63,7 @@ public class AttributeManager : MonoBehaviour{
 	}
 	[ContextMenu("Refresh")]
 	public void PerformRefresh(){
-		this.refresh = true;
+		AttributeManager.refresh = true;
 	}
 	public void SceneRefresh(){
 		bool fullSweep = !Application.isPlaying;
@@ -40,18 +73,19 @@ public class AttributeManager : MonoBehaviour{
 		}
 		bool includeEnabled = this.setup;
 		bool includeDisabled = !this.setup || this.editorIncludeDisabled;
-		DataMonoBehaviour[] data = Locate.GetSceneObjects<DataMonoBehaviour>(includeEnabled,includeDisabled);
+		DataMonoBehaviour[] data = Locate.GetSceneComponents<DataMonoBehaviour>(includeEnabled,includeDisabled);
+		//data = data.OrderBy(x=>x.GetType().ToString()).ToArray();
 		foreach(DataMonoBehaviour entry in data){entry.Awake();}
 		this.Setup();
 	}
 	public void Start(){
 		if(Application.isPlaying || Time.realtimeSinceStartup > this.nextStep){
-			if(this.editorInterval == -1){return;}
+			if(!Application.isPlaying && this.editorInterval == -1){return;}
 			this.nextStep = Time.realtimeSinceStartup + this.editorInterval;
-			if(!this.setup || this.refresh){
+			if(!this.setup || AttributeManager.refresh){
 				this.SceneRefresh();
 				this.setup = true;
-				this.refresh = false;
+				AttributeManager.refresh = false;
 				return;
 			}
 			this.Setup();

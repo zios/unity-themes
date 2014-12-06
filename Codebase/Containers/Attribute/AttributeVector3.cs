@@ -13,8 +13,8 @@ namespace Zios{
 		public static implicit operator Vector3(AttributeVector3 current){return current.Get();}
 		public static Vector3 operator *(AttributeVector3 current,float amount){return current.Get() * amount;}
 		public static Vector3 operator *(AttributeVector3 current,Vector3 amount){return Vector3.Scale(current.Get(),amount);}
-		public static Vector3 operator +(AttributeVector3 current,Vector3 amount){return current.Get() + amount;}
-		public static Vector3 operator -(AttributeVector3 current,Vector3 amount){return current.Get() - amount;}
+		/*public static Vector3 operator +(AttributeVector3 current,Vector3 amount){return current.Get() + amount;}
+		public static Vector3 operator -(AttributeVector3 current,Vector3 amount){return current.Get() - amount;}*/
 		public AttributeFloat x = 0;
 		public AttributeFloat y = 0;
 		public AttributeFloat z = 0;

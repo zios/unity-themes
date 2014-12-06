@@ -129,6 +129,7 @@ namespace Zios{
 						Debug.Log("Attribute : Removing null attribute data in " + this.path + ".");
 						this.data = this.data.RemoveAt(index);
 						index -= 1;
+						Utility.SetDirty(this.parent);
 						continue;
 					}
 					bool wrongParent = (data.attribute != this) || (data.attribute.id != this.id);
@@ -167,6 +168,7 @@ namespace Zios{
 			this.Prepare();
 			for(int index=0;index<this.data.Length;++index){
 				AttributeData data = this.data[index];
+				data.hideFlags = PlayerPrefs.GetInt("ShowAttributeData") == 1 ? 0 : HideFlags.HideInInspector;
 				if(!Application.isPlaying){data.reference = null;}
 				if(data.usage == AttributeUsage.Direct){continue;}
 				data.target.Setup(this.path+"/Target",parent);
@@ -210,6 +212,7 @@ namespace Zios{
 								Debug.Log("Attribute : ID missing.  Resolved via path -- " + data.referencePath,this.parent.gameObject);
 								data.referenceID = attribute.Value.id;
 								data.reference = attribute.Value;
+								Utility.SetDirty(data);
 								break;
 							}
 						}
@@ -228,19 +231,22 @@ namespace Zios{
 			}
 		}
 		public virtual BaseType Get(){
-			if(this.data.Length < 1){return default(BaseType);}
 			if(this.getMethod != null){return this.getMethod();}
+			if(this.data.Length < 1){
+				//Debug.LogWarning("Attribute : No data found for -- " + this.path);
+				return default(BaseType);
+			}
 			if(this.mode != AttributeMode.Formula){
 				return this.GetFirst().Get();
 			}
 			return this.GetFormulaValue();
 		}
 		public virtual void Set(BaseType value){
-			DataType data = this.GetFirst();
 			if(this.setMethod != null){
 				this.setMethod(value);
 				return;
 			}
+			DataType data = this.GetFirst();
 			if(data == null){
 				if(!Attribute.setWarning.ContainsKey(this)){
 					Debug.LogWarning("Attribute : No data found. (" + this.path + ")",this.target);
@@ -277,90 +283,5 @@ namespace Zios{
 			}
 		}
 
-	}
-	[Serializable]
-	public class AttributeData : DataMonoBehaviour{
-		public Target target = new Target();
-		public AttributeUsage usage;
-		public string referenceID;
-		public string referencePath;
-		public Attribute attribute;
-		[NonSerialized] public Attribute reference;
-		public override void Awake(){
-			if(!this.attribute.IsNull()){
-				bool wrongParent = !this.attribute.data.Contains(this);
-				bool emptyParent = this.attribute.parent.IsNull();
-				bool emptyRoot = emptyParent || this.attribute.parent.gameObject.IsNull();
-				if(wrongParent || emptyParent || emptyRoot){
-					//Debug.Log("AttributeData : Clearing defunct data.");
-					Utility.Destroy(this);
-				}
-			}
-		}
-		public virtual AttributeData Copy(GameObject target){return default(AttributeData);}
-	}
-	[Serializable]
-	public class AttributeData<BaseType,AttributeType,DataType,Operator,Special> : AttributeData
-		where DataType : AttributeData<BaseType,AttributeType,DataType,Operator,Special>
-		where AttributeType : Attribute<BaseType,AttributeType,DataType,Operator,Special>
-		where Operator : struct 
-		where Special : struct{
-		public BaseType value;
-		public Operator sign;
-		public Special special;
-		/*public bool clamp;
-		public BaseType clampMin;
-		public BaseType clampMax;*/
-		public virtual BaseType HandleSpecial(){return default(BaseType);}
-		public override AttributeData Copy(GameObject target){
-			DataType data = target.AddComponent<DataType>();
-			data.target = this.target.Clone();
-			data.usage = this.usage;
-			data.referenceID = this.referenceID;
-			data.referencePath = this.referencePath;
-			data.sign = this.sign;
-			data.special = this.special;
-			data.value = this.value;
-			return data;
-		}
-		public BaseType Get(){
-			Attribute attribute = this.attribute;
-			if(this.usage == AttributeUsage.Direct){
-				if(attribute.mode == AttributeMode.Formula){
-					return this.HandleSpecial();
-				}
-				return this.value;
-			}
-			else if(attribute.mode == AttributeMode.Linked || this.usage == AttributeUsage.Shaped){	
-				if(!Attribute.ready && Application.isPlaying){
-					Debug.LogWarning("Attribute : Get attempt before attribute data built -- " + attribute.path,attribute.parent);
-					return default(BaseType);
-				}
-				else if(this.reference == null){
-					if(!Attribute.getWarning.ContainsKey(this)){
-						string source = "("+attribute.path+")";
-						string goal = (this.target.Get().GetPath() + this.referencePath).Trim("/");
-						Debug.LogWarning("Attribute (Get): No reference found for " + source + " to " + goal,attribute.parent);
-						Attribute.getWarning[this] = true;
-					}
-					return default(BaseType);
-				}
-				else if(this.reference == attribute){
-					if(!Attribute.getWarning.ContainsKey(this)){
-						Debug.LogWarning("Attribute (Get): References self. (" + attribute.path + ")",attribute.parent);
-						Attribute.getWarning[this] = true;
-					}
-					return default(BaseType);
-				}
-				BaseType value = ((AttributeType)this.reference).Get();
-				if(attribute.mode == AttributeMode.Linked){return value;}
-				return this.HandleSpecial();
-			}
-			if(!Attribute.getWarning.ContainsKey(this)){
-				Debug.LogWarning("Attribute (Get): No value found. (" + attribute.path + ") to " + this.referencePath,attribute.parent);
-				Attribute.getWarning[this] = true;
-			}
-			return default(BaseType);
-		}
 	}
 }

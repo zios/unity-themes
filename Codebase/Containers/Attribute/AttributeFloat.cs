@@ -10,10 +10,10 @@ namespace Zios{
 		public AttributeFloat(float value){this.delayedValue = value;}
 		public static implicit operator AttributeFloat(float current){return new AttributeFloat(current);}
 		public static implicit operator float(AttributeFloat current){return current.Get();}
-		public static float operator *(AttributeFloat current,float amount){return current.Get() * amount;}
+		/*public static float operator *(AttributeFloat current,float amount){return current.Get() * amount;}
 		public static float operator +(AttributeFloat current,float amount){return current.Get() + amount;}
 		public static float operator -(AttributeFloat current,float amount){return current.Get() - amount;}
-		public static float operator /(AttributeFloat current,float amount){return current.Get() / amount;}
+		public static float operator /(AttributeFloat current,float amount){return current.Get() / amount;}*/
 		public override float GetFormulaValue(){
 			float value = 0;
 			for(int index=0;index<this.data.Length;++index){

@@ -8,10 +8,10 @@ namespace Zios{
 		public AttributeInt(int value){this.delayedValue = value;}
 		public static implicit operator AttributeInt(int current){return new AttributeInt(current);}
 		public static implicit operator int(AttributeInt current){return current.Get();}
-		public static int operator *(AttributeInt current,int amount){return current.Get() * amount;}
+		/*public static int operator *(AttributeInt current,int amount){return current.Get() * amount;}
 		public static int operator +(AttributeInt current,int amount){return current.Get() + amount;}
 		public static int operator -(AttributeInt current,int amount){return current.Get() - amount;}
-		public static int operator /(AttributeInt current,int amount){return current.Get() / amount;}
+		public static int operator /(AttributeInt current,int amount){return current.Get() / amount;}*/
 		public override int GetFormulaValue(){
 			int value = 0;
 			for(int index=0;index<this.data.Length;++index){

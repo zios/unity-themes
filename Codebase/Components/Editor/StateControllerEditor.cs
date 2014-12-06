@@ -54,7 +54,8 @@ public class StateControllerEditor : Editor{
 		}
 	}
 	public override void OnInspectorGUI(){
-		if(!Attribute.ready){return;}
+		StateController controller = (StateController)this.target;
+		if(!Attribute.ready || controller.IsPrefab()){return;}
 		Utility.EditorCall(this.EditorUpdate);
 		this.tableGUI.Draw();
 		this.DrawControls();

@@ -8,7 +8,7 @@ using UnityEditor;
 #endif
 public static class Locate{
 	public static bool cleanGameObjects = false;
-	public static List<Type> cleanComponents = new List<Type>();
+	public static List<Type> cleanSceneComponents = new List<Type>();
 	public static List<GameObject> cleanSiblings = new List<GameObject>();
 	public static Dictionary<GameObject,GameObject[]> siblings = new Dictionary<GameObject,GameObject[]>();
 	public static Dictionary<GameObject,GameObject[]> enabledSiblings = new Dictionary<GameObject,GameObject[]>();
@@ -20,6 +20,7 @@ public static class Locate{
 	public static Dictionary<Type,Component[]> sceneComponents = new Dictionary<Type,Component[]>();
 	public static Dictionary<Type,Component[]> enabledComponents = new Dictionary<Type,Component[]>();
 	public static Dictionary<Type,Component[]> disabledComponents = new Dictionary<Type,Component[]>();
+	public static Dictionary<GameObject,Dictionary<Type,Component[]>> objectComponents = new Dictionary<GameObject,Dictionary<Type,Component[]>>();
 	static Locate(){
 		#if UNITY_EDITOR
 		EditorApplication.hierarchyWindowChanged += Locate.SetDirty;
@@ -27,8 +28,9 @@ public static class Locate{
 	}
 	public static void SetDirty(){
 		Locate.cleanGameObjects = false;
-		Locate.cleanComponents.Clear();
+		Locate.cleanSceneComponents.Clear();
 		Locate.cleanSiblings.Clear();
+		Locate.objectComponents.Clear();
 	}
 	public static GameObject GetScenePath(string name,bool autocreate=true){
 		string[] parts = name.Split('/');
@@ -64,7 +66,7 @@ public static class Locate{
 		Locate.sceneComponents[typeof(Type)] = enabled.Extend(disabled).ToArray();
 		Locate.enabledComponents[typeof(Type)] = enabled.ToArray();
 		Locate.disabledComponents[typeof(Type)] = disabled.ToArray();
-		Locate.cleanComponents.Add(typeof(Type));
+		Locate.cleanSceneComponents.Add(typeof(Type));
 		if(typeof(Type) == typeof(Transform)){
 			List<GameObject> enabledObjects = enabled.Select(x=>x.gameObject).ToList();
 			List<GameObject> disabledObjects = disabled.Select(x=>x.gameObject).ToList();
@@ -124,11 +126,18 @@ public static class Locate{
 		if(!includeEnabled){return Locate.disabledObjects;}
 		return Locate.enabledObjects;
 	}
-	public static Type[] GetSceneObjects<Type>(bool includeEnabled=true,bool includeDisabled=true) where Type : Component{
-		if(!Locate.cleanComponents.Contains(typeof(Type))){Locate.Build<Type>();}
+	public static Type[] GetSceneComponents<Type>(bool includeEnabled=true,bool includeDisabled=true) where Type : Component{
+		if(!Locate.cleanSceneComponents.Contains(typeof(Type))){Locate.Build<Type>();}
 		if(includeEnabled && includeDisabled){return (Type[])Locate.sceneComponents[typeof(Type)];}
 		if(!includeEnabled){return (Type[])Locate.disabledComponents[typeof(Type)];}
 		return (Type[])Locate.enabledComponents[typeof(Type)];
+	}
+	public static Type[] GetObjectComponents<Type>(GameObject target) where Type : Component{
+		if(!Locate.objectComponents.ContainsKey(target) || !Locate.objectComponents[target].ContainsKey(typeof(Type))){
+			Locate.objectComponents.AddNew(target);
+			Locate.objectComponents[target][typeof(Type)] = target.GetComponents<Type>(true);
+		}
+		return (Type[])Locate.objectComponents[target][typeof(Type)];
 	}
 	public static GameObject Find(string name,bool includeHidden=true){
 		if(!Locate.cleanGameObjects){Locate.Build<Transform>();}

@@ -7,7 +7,7 @@ public class TargetDrawer : PropertyDrawer{
 	public static Dictionary<Target,bool?> toggled = new Dictionary<Target,bool?>();
 	public static Dictionary<Target,bool> unfound = new Dictionary<Target,bool>();
     public override void OnGUI(Rect area,SerializedProperty property,GUIContent label){
-		if(!area.HierarchyValid()){return;}
+		if(!area.InspectorValid()){return;}
 		string skin = EditorGUIUtility.isProSkin ? "Dark" : "Light";
 		GUI.skin = FileManager.GetAsset<GUISkin>("Gentleface-" + skin + ".guiskin");
 		GUI.changed = false;
