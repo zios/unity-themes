@@ -1,6 +1,7 @@
 using UnityEngine;
 using Zios;
-public class AttributeIntData : AttributeData<int,AttributeInt,AttributeIntData,OperatorNumeral,SpecialNumeral>{
+[AddComponentMenu("")]
+public class AttributeIntData : AttributeData<int,AttributeInt,AttributeIntData,SpecialNumeral>{
 	public override int HandleSpecial(){
 		int value = this.value;
 		if(this.attribute.mode == AttributeMode.Linked){return value;}

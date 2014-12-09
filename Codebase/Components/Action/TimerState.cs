@@ -6,9 +6,9 @@ public enum TimerType{After,During}
 public class TimerState : ActionPart{
 	public TimerType type;
 	public AttributeFloat seconds = 0;
+	[HideInInspector] public AttributeBool isStarted = false;
+	[HideInInspector] public AttributeBool isComplete = false;
 	private float endTime;
-	private AttributeBool isStarted = false;
-	private AttributeBool isComplete = false;
 	public override void Awake(){
 		base.Awake();
 		this.seconds.Setup("Seconds",this);

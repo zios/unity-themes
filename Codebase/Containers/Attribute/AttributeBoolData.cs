@@ -1,6 +1,7 @@
 using UnityEngine;
 using Zios;
-public class AttributeBoolData : AttributeData<bool,AttributeBool,AttributeBoolData,OperatorBool,SpecialBool>{
+[AddComponentMenu("")]
+public class AttributeBoolData : AttributeData<bool,AttributeBool,AttributeBoolData,SpecialBool>{
 	public override bool HandleSpecial(){
 		bool value = this.value;
 		if(this.attribute.mode == AttributeMode.Linked){return value;}

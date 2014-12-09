@@ -1,7 +1,7 @@
 using Zios;
 using UnityEngine;
-[AddComponentMenu("Zios/Component/Action/Move/Set Position")]
 public enum PositionMode{World,Local}
+[AddComponentMenu("Zios/Component/Action/Move/Set Position")]
 public class SetPosition : ActionPart{
 	public PositionMode mode;
 	public AttributeGameObject target = new AttributeGameObject();

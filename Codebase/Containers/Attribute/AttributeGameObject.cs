@@ -3,10 +3,9 @@ using System;
 using UnityEngine;
 using System.Collections.Generic;
 namespace Zios{
-	public enum OperatorGameObject{}
 	public enum SpecialGameObject{Copy,Parent};
 	[Serializable]
-	public class AttributeGameObject : Attribute<GameObject,AttributeGameObject,AttributeGameObjectData,OperatorGameObject,SpecialGameObject>{
+	public class AttributeGameObject : Attribute<GameObject,AttributeGameObject,AttributeGameObjectData,SpecialGameObject>{
 		public AttributeGameObject() : this(null){}
 		public AttributeGameObject(GameObject value){this.delayedValue = value;}
 		public static implicit operator AttributeGameObject(GameObject current){return new AttributeGameObject(current);}

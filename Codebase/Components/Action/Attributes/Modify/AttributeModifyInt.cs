@@ -8,7 +8,7 @@ public class AttributeModifyInt : ActionPart{
 	public override void Awake(){
 		base.Awake();
 		this.target.Setup("Target",this);
-		this.target.mode = AttributeMode.Linked;
+		this.target.info.mode = AttributeMode.Linked;
 		this.value.Setup("Value",this);
 	}
 	public override void Use(){

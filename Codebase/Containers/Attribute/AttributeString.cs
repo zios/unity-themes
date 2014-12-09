@@ -3,10 +3,12 @@ using System;
 using UnityEngine;
 using System.Collections.Generic;
 namespace Zios{
-	public enum OperatorString{Prefix,Suffix}
 	public enum SpecialString{Copy,Lower,Upper,Capitalize};
 	[Serializable]
-	public class AttributeString : Attribute<string,AttributeString,AttributeStringData,OperatorString,SpecialString>{
+	public class AttributeString : Attribute<string,AttributeString,AttributeStringData,SpecialString>{
+		public static Dictionary<Type,string[]> compare = new Dictionary<Type,string[]>(){
+			{typeof(AttributeStringData),new string[]{"Prefix","Suffix"}}
+		};
 		public AttributeString() : this(""){}
 		public AttributeString(string value){this.delayedValue = value;}
 		public static implicit operator AttributeString(string current){return new AttributeString(current);}
@@ -16,12 +18,12 @@ namespace Zios{
 			string value = "";
 			for(int index=0;index<this.data.Length;++index){
 				AttributeData raw = this.data[index];
+				string sign = AttributeString.compare[raw.GetType()][raw.sign];
 				var data = (AttributeStringData)raw;
-				var sign = data.sign;
 				string current = data.Get();
 				if(index == 0){value = current;}
-				else if(sign == OperatorString.Prefix){value = current + value;}
-				else if(sign == OperatorString.Suffix){value = value + current;}
+				else if(sign == "Prefix"){value = current + value;}
+				else if(sign == "Suffix"){value = value + current;}
 			}
 			return value;
 		}

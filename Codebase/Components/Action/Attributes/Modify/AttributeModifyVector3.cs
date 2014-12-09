@@ -7,7 +7,7 @@ public class AttributeModifyVector3 : ActionPart{
 	public AttributeVector3 value = Vector3.zero;
 	public override void Awake(){
 		base.Awake();
-		this.target.mode = AttributeMode.Linked;
+		this.target.info.mode = AttributeMode.Linked;
 		this.target.Setup("Target",this);
 		this.value.Setup("Value",this);
 	}

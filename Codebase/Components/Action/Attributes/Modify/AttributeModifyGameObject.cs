@@ -7,7 +7,7 @@ public class AttributeModifyGameObject : ActionPart{
 	public AttributeGameObject value;
 	public override void Awake(){
 		base.Awake();
-		this.target.mode = AttributeMode.Linked;
+		this.target.info.mode = AttributeMode.Linked;
 		this.target.Setup("Target",this);
 		this.value.Setup("Value",this);
 	}

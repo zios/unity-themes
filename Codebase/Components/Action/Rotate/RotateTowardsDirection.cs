@@ -19,7 +19,6 @@ public class RotateTowardsDirection : ActionPart{
 		Vector3 target = this.target.Get();
 		if(!target.IsNull() && !source.IsNull()){
 			Vector3 angle = source.transform.eulerAngles;
-			Debug.Log(target);
 			Quaternion current = source.transform.rotation;
 			if(target != Vector3.zero){
 				source.transform.rotation = Quaternion.LookRotation(target);

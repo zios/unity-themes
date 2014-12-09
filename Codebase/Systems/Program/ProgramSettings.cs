@@ -57,7 +57,7 @@ namespace Zios{
 				Events.Call("Resolution Change");
 				if(!Program.allowResolution){
 					Program.allowResolution = true;
-					Debug.Log("^7Screen settings auto-adjusted to closest allowed values.");
+					if(Application.isPlaying){Debug.Log("^7Screen settings auto-adjusted to closest allowed values.");}
 					if(changedWidth){Program.resolution[0] = Screen.width;}
 					if(changedHeight){Program.resolution[1] = Screen.height;}
 					if(changedRefresh){Program.resolution[2] = screen.refreshRate;}
@@ -70,7 +70,7 @@ namespace Zios{
 			else if(!Program.allowResolution){
 				Program.allowResolution = true;
 				string log = "^10Program resolution is : ^8| " + size[0] + "^7x^8|" + size[1];
-				Debug.Log(log);
+				if(Application.isPlaying){Debug.Log(log);}
 			}
 		}
 		public static void ChangeResolution(string[] values){

@@ -46,8 +46,7 @@ public static class Utility{
 	}
 	public static void EditorUpdate(CallbackFunction method,bool callImmediately=false){
 		#if UNITY_EDITOR
-		bool playing = EditorApplication.isPlaying || EditorApplication.isPlayingOrWillChangePlaymode;
-		if(!playing){
+		if(!Utility.IsPlaying()){
 			if(!EditorApplication.update.Contains(method)){
 				EditorApplication.update += method;
 				if(callImmediately){method();}
@@ -60,8 +59,7 @@ public static class Utility{
 	}
 	public static void HierarchyUpdate(CallbackFunction method,bool callImmediately=false){
 		#if UNITY_EDITOR
-		bool playing = EditorApplication.isPlaying || EditorApplication.isPlayingOrWillChangePlaymode;
-		if(!playing){
+		if(!Utility.IsPlaying()){
 			if(!EditorApplication.hierarchyWindowChanged.Contains(method)){
 				EditorApplication.hierarchyWindowChanged += method;
 				if(callImmediately){method();}
@@ -74,8 +72,7 @@ public static class Utility{
 	}
 	public static void AssetUpdate(CallbackFunction method,bool callImmediately=false){
 		#if UNITY_EDITOR
-		bool playing = EditorApplication.isPlaying || EditorApplication.isPlayingOrWillChangePlaymode;
-		if(!playing){
+		if(!Utility.IsPlaying()){
 			if(!Utility.assetUpdate.Contains(method)){
 				Utility.assetUpdate += method;
 				if(callImmediately){method();}
@@ -103,8 +100,7 @@ public static class Utility{
 	}
 	public static void EditorCall(CallbackFunction method){
 		#if UNITY_EDITOR
-		bool playing = EditorApplication.isPlaying || EditorApplication.isPlayingOrWillChangePlaymode;
-		if(!playing){
+		if(!Utility.IsPlaying()){
 			method();
 		}
 		#endif
@@ -116,5 +112,17 @@ public static class Utility{
 		}
 		#endif
 		return null;
+	}
+	public static bool IsPlaying(){
+		#if UNITY_EDITOR
+		return EditorApplication.isPlayingOrWillChangePlaymode;	
+		#endif
+		return EditorApplication.isPlaying;
+	}
+	public static int GetLocalID(int instanceID){
+		#if UNITY_EDITOR
+		return UnityEditor.Unsupported.GetLocalIdentifierInFile(instanceID);
+		#endif
+		return 0;
 	}
 }

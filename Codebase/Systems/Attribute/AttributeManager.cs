@@ -12,7 +12,8 @@ using UnityEditor;
 [AddComponentMenu("Zios/Singleton/Attribute Manager")][ExecuteInEditMode]
 public class AttributeManager : MonoBehaviour{
 	private static bool refresh;
-	public float editorInterval = 1;
+	public static float editorInterval = 1;
+	public float updateInterval = 1;
 	public bool editorIncludeDisabled = true;
 	public bool updateOnHierarchyChange = true;
 	public bool updateOnAssetChange = true;
@@ -45,6 +46,10 @@ public class AttributeManager : MonoBehaviour{
 		PlayerPrefs.SetInt("ShowAttributeData",1);
 		AttributeManager.refresh = true;
 	}
+    [MenuItem("Zios/Process/Attribute/Full Refresh")]
+	static void AttributeRefresh(){
+		AttributeManager.refresh = true;
+	}	
 	#endif
 	public void OnValidate(){this.CleanEvents();}
 	public void OnDestroy(){this.CleanEvents();}
@@ -71,32 +76,39 @@ public class AttributeManager : MonoBehaviour{
 			Attribute.all.Clear();
 			Attribute.lookup.Clear();
 		}
-		bool includeEnabled = this.setup;
+		bool includeEnabled = this.setup || !Application.isPlaying;
 		bool includeDisabled = !this.setup || this.editorIncludeDisabled;
 		DataMonoBehaviour[] data = Locate.GetSceneComponents<DataMonoBehaviour>(includeEnabled,includeDisabled);
 		//data = data.OrderBy(x=>x.GetType().ToString()).ToArray();
 		foreach(DataMonoBehaviour entry in data){entry.Awake();}
-		this.Setup();
+		if(!Application.isPlaying){
+			Debug.Log("AttributeData Count : " + data.Count(x=>x is AttributeData));
+			foreach(DataMonoBehaviour entry in data){
+				if(entry is AttributeData){
+					((AttributeData)entry).Validate();
+				}
+			}
+		}
 	}
 	public void Start(){
 		if(Application.isPlaying || Time.realtimeSinceStartup > this.nextStep){
-			if(!Application.isPlaying && this.editorInterval == -1){return;}
-			this.nextStep = Time.realtimeSinceStartup + this.editorInterval;
+			AttributeManager.editorInterval = this.updateInterval;
+			if(!Application.isPlaying && AttributeManager.editorInterval == -1 && !AttributeManager.refresh){return;}
+			this.nextStep = Time.realtimeSinceStartup + AttributeManager.editorInterval;
 			if(!this.setup || AttributeManager.refresh){
 				this.SceneRefresh();
 				this.setup = true;
 				AttributeManager.refresh = false;
-				return;
 			}
 			this.Setup();
 		}
 	}
 	public void Setup(){
 		foreach(var attribute in Attribute.all.Copy()){
-			if(attribute.parent.IsNull()){Attribute.all.Remove(attribute);}
+			if(attribute.info.parent.IsNull()){Attribute.all.Remove(attribute);}
 		}
-		foreach(var attribute in Attribute.all){attribute.SetupTable();}
-		foreach(var attribute in Attribute.all){attribute.SetupData();}
+		foreach(var attribute in Attribute.all){attribute.BuildLookup();}
+		foreach(var attribute in Attribute.all){attribute.BuildData();}
 		Attribute.ready = true;
 	}
 }

@@ -1,6 +1,7 @@
 using UnityEngine;
 using Zios;
-public class AttributeFloatData : AttributeData<float,AttributeFloat,AttributeFloatData,OperatorNumeral,SpecialNumeral>{
+[AddComponentMenu("")]
+public class AttributeFloatData : AttributeData<float,AttributeFloat,AttributeFloatData,SpecialNumeral>{
 	public override float HandleSpecial(){
 		float value = this.value;
 		if(this.attribute.mode == AttributeMode.Linked){return value;}

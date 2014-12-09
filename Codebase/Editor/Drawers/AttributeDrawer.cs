@@ -12,27 +12,41 @@ namespace Zios{
 	[CustomPropertyDrawer(typeof(Attribute),true)]
 	public class AttributeDrawer : PropertyDrawer{
 		public IAttributeAccess access;
+		public new Attribute attribute;
 		public float overallHeight;
+		public bool isPrefab;
 		public override float GetPropertyHeight(SerializedProperty property,GUIContent label){
 			this.OnGUI(new Rect(-10000,-10000,0,0),property,label);
 			return this.overallHeight;
 		}
 		public override void OnGUI(Rect area,SerializedProperty property,GUIContent label){
-			MonoBehaviour script = (MonoBehaviour)property.serializedObject.targetObject;
-			if(script.IsPrefab() || !property.GetObject<Attribute>().showInEditor){
+			if(this.attribute == null){
+				this.attribute = property.GetObject<Attribute>();
+				MonoBehaviour script = (MonoBehaviour)property.serializedObject.targetObject;
+				this.isPrefab = script.IsPrefab();
+			}
+			if(!this.attribute.showInEditor){
 				this.overallHeight = -2;
+				return;
+			}
+			if(this.isPrefab){
+				/*this.overallHeight = EditorGUIUtility.singleLineHeight;
+				//base.OnGUI(area,property,label);
+				Type utility = Utility.GetEditorType("ScriptAttributeUtility");
+				utility.GetVariable<Stack<PropertyDrawer>>("s_DrawerStack").Pop();
+				base.OnGUI(area,property,label);
+				utility.GetVariable<Stack<PropertyDrawer>>("s_DrawerStack").Push(this);*/
 				return;
 			}
 			if(!Attribute.ready || !area.InspectorValid()){return;}
 			this.overallHeight = base.GetPropertyHeight(property,label);
 			if(this.access == null){
-				object generic = property.GetObject<object>();
-				if(generic is AttributeFloat){this.access = new AttributeAccess<float,AttributeFloat,AttributeFloatData,OperatorNumeral,SpecialNumeral>();}
-				if(generic is AttributeInt){this.access = new AttributeAccess<int,AttributeInt,AttributeIntData,OperatorNumeral,SpecialNumeral>();}
-				if(generic is AttributeString){this.access = new AttributeAccess<string,AttributeString,AttributeStringData,OperatorString,SpecialString>();}
-				if(generic is AttributeBool){this.access = new AttributeAccess<bool,AttributeBool,AttributeBoolData,OperatorBool,SpecialBool>();}
-				if(generic is AttributeVector3){this.access = new AttributeAccess<Vector3,AttributeVector3,AttributeVector3Data,OperatorVector3,SpecialVector3>();}
-				if(generic is AttributeGameObject){this.access = new AttributeAccess<GameObject,AttributeGameObject,AttributeGameObjectData,OperatorGameObject,SpecialGameObject>();}
+				if(this.attribute is AttributeFloat){this.access = new AttributeAccess<float,AttributeFloat,AttributeFloatData,SpecialNumeral>();}
+				if(this.attribute is AttributeInt){this.access = new AttributeAccess<int,AttributeInt,AttributeIntData,SpecialNumeral>();}
+				if(this.attribute is AttributeString){this.access = new AttributeAccess<string,AttributeString,AttributeStringData,SpecialString>();}
+				if(this.attribute is AttributeBool){this.access = new AttributeAccess<bool,AttributeBool,AttributeBoolData,SpecialBool>();}
+				if(this.attribute is AttributeVector3){this.access = new AttributeAccess<Vector3,AttributeVector3,AttributeVector3Data,SpecialVector3>();}
+				if(this.attribute is AttributeGameObject){this.access = new AttributeAccess<GameObject,AttributeGameObject,AttributeGameObjectData,SpecialGameObject>();}
 			}
 			if(this.access != null){
 				this.access.Setup(this,area,property,label);
@@ -42,11 +56,12 @@ namespace Zios{
 	public interface IAttributeAccess{
 		void Setup(AttributeDrawer drawer,Rect area,SerializedProperty property,GUIContent label);
 	}
-	public class AttributeAccess<BaseType,AttributeType,DataType,Operator,Special> : IAttributeAccess
-		where Operator : struct
+	public class AttributeAccess<BaseType,AttributeType,DataType,Special> : IAttributeAccess
 		where Special  : struct
-		where AttributeType     : Attribute<BaseType,AttributeType,DataType,Operator,Special>,new()
-		where DataType : AttributeData<BaseType,AttributeType,DataType,Operator,Special>,new(){
+		where AttributeType     : Attribute<BaseType,AttributeType,DataType,Special>,new()
+		where DataType : AttributeData<BaseType,AttributeType,DataType,Special>,new(){
+		public Attribute attribute;
+		public AttributeType attributeCast;
 		public AttributeDrawer drawer;
 		public SerializedProperty property;
 		public GUIContent label;
@@ -55,10 +70,16 @@ namespace Zios{
 		public Rect valueRect;
 		public Rect iconRect;
 		public bool contextOpen;
+		public GUISkin skin;
 		public Dictionary<AttributeData,bool> targetMode = new Dictionary<AttributeData,bool>();
 		public void Setup(AttributeDrawer drawer,Rect area,SerializedProperty property,GUIContent label){
-			string skinName = EditorGUIUtility.isProSkin ? "Dark" : "Light";
-			GUI.skin = FileManager.GetAsset<GUISkin>("Gentleface-" + skinName + ".guiskin");
+			if(skin == null){
+				string skinName = EditorGUIUtility.isProSkin ? "Dark" : "Light";
+				this.skin = FileManager.GetAsset<GUISkin>("Gentleface-" + skinName + ".guiskin");
+				this.attribute = property.GetObject<Attribute>();
+				this.attributeCast = (AttributeType)this.attribute;
+			}
+			GUI.skin = this.skin;
 			this.drawer = drawer;
 			this.property = property;
 			this.label = label;
@@ -68,7 +89,7 @@ namespace Zios{
 			this.valueRect = this.fullRect.Add(labelRect.width,0,-labelRect.width,0);
 			this.iconRect = this.fullRect.SetSize(14,14);
 			List<UnityObject> sources = new List<UnityObject>(){property.serializedObject.targetObject};
-			foreach(var data in this.property.GetObject<Attribute>().data){
+			foreach(var data in this.attribute.data){
 				if(!data.IsNull()){sources.Add(data);}
 			}
 			GUI.changed = false;
@@ -86,43 +107,48 @@ namespace Zios{
 			}
 		}
 		public void Draw(){
-			AttributeType attribute = this.property.GetObject<AttributeType>();
-			DataType firstData = attribute.GetFirst();
+			DataType firstData = this.attributeCast.GetFirst();
 			if(firstData.IsNull()){return;}
 			SerializedObject firstProperty = new SerializedObject(firstData);
-			this.DrawContext(attribute,firstData);
-			if(attribute.mode == AttributeMode.Normal){
+			this.DrawContext(firstData);
+			if(this.attribute.info.mode == AttributeMode.Normal){
 				if(firstData.usage == AttributeUsage.Direct){
 					this.DrawDirect(firstData,this.label);
 				}
 				if(firstData.usage == AttributeUsage.Shaped){
 					GUI.Box(this.iconRect,"",GUI.skin.GetStyle("IconShaped"));
 					this.labelRect = this.labelRect.AddX(16);
-					this.DrawShaped(attribute,firstProperty,this.label,true);
+					this.DrawShaped(firstProperty,this.label,true);
 				}
 				if(GUI.changed){Utility.SetDirty(firstData);}
 			}
-			if(attribute.mode == AttributeMode.Linked){
-				attribute.usage = AttributeUsage.Shaped;
+			if(this.attribute.info.mode == AttributeMode.Linked){
+				this.attributeCast.usage = AttributeUsage.Shaped;
 				GUI.Box(this.iconRect,"",GUI.skin.GetStyle("IconLinked"));
 				this.labelRect = this.labelRect.AddX(16);
-				this.DrawShaped(attribute,firstProperty,this.label);
+				this.DrawShaped(firstProperty,this.label);
 				if(GUI.changed){Utility.SetDirty(firstData);}
 			}
-			if(attribute.mode == AttributeMode.Formula){
-				this.DrawFormula(attribute,this.label);
+			if(this.attribute.info.mode == AttributeMode.Formula){
+				this.DrawFormula(this.label);
 			}
 		}
 		public void DrawDirect(AttributeData data,GUIContent label,bool? drawSpecial=null,bool? drawOperator=null){
 			float labelSize = EditorGUIUtility.labelWidth;
 			Rect comboRect = this.fullRect;
 			Rect extraRect = this.valueRect;
-			if(drawOperator != null){EditorGUIUtility.labelWidth -= 24;}
-			if(drawSpecial != null){EditorGUIUtility.labelWidth -= 24;}
-			//label.DrawLabel(this.labelRect);
+			EditorGUIUtility.labelWidth = this.labelRect.width;
+			if(drawOperator != null){EditorGUIUtility.labelWidth += 81;}
+			if(drawSpecial != null){EditorGUIUtility.labelWidth += 81;}
+			if(drawOperator != null){
+				this.DrawOperator(extraRect,data,(bool)!drawOperator);
+				extraRect = extraRect.Add(81,0,-81,0);
+			}
+			if(drawSpecial != null){
+				this.DrawSpecial(extraRect,data);
+			}
 			if(data is AttributeFloatData){
 				AttributeFloatData floatData = (AttributeFloatData)data;
-				//floatData.value = floatData.value.Draw(comboRect);
 				floatData.value = floatData.value.DrawLabeled(comboRect,label);
 			}
 			if(data is AttributeIntData){
@@ -141,16 +167,9 @@ namespace Zios{
 				AttributeVector3Data vector3Data = (AttributeVector3Data)data;
 				vector3Data.value = vector3Data.value.DrawLabeled(comboRect,label);
 			}
-			if(drawOperator != null){
-				this.DrawOperator(extraRect,data,(bool)!drawOperator);
-				extraRect = extraRect.Add(81,0,-81,0);
-			}
-			if(drawSpecial != null){
-				this.DrawSpecial(extraRect,data);
-			}
 			EditorGUIUtility.labelWidth = labelSize;
 		}
-		public void DrawShaped(AttributeType attribute,SerializedObject property,GUIContent label,bool? drawSpecial=null,bool? drawOperator=null){
+		public void DrawShaped(SerializedObject property,GUIContent label,bool? drawSpecial=null,bool? drawOperator=null){
 			label.DrawLabel(labelRect);
 			AttributeData data = (AttributeData)property.targetObject;
 			Target target = data.target;
@@ -158,7 +177,7 @@ namespace Zios{
 			bool toggleActive = this.targetMode.ContainsKey(data) ? this.targetMode[data] : !data.referenceID.IsEmpty();
 			this.targetMode[data] = toggleActive.Draw(toggleRect,GUI.skin.GetStyle("CheckmarkToggle"));
 			if(toggleActive != this.targetMode[data]){
-				if(attribute is AttributeGameObject){
+				if(this.attribute is AttributeGameObject){
 					data.referenceID = toggleActive ? "" : data.referenceID;
 				}
 			}
@@ -173,15 +192,15 @@ namespace Zios{
 			if(target.direct != null && Attribute.lookup.ContainsKey(target.direct)){
 				var lookup = Attribute.lookup[target.direct];
 				foreach(var item in lookup){
-					if(!item.Value.dataType.IsType(data.GetType())){continue;}
-					bool feedback = item.Value.id == attribute.id || item.Value.data[0].referenceID == attribute.id;
+					if(item.Value.info.dataType != data.GetType()){continue;}
+					bool feedback = (item.Value.info.id == this.attribute.info.id || item.Value.data[0].referenceID == this.attribute.info.id);
 					if(!feedback){
-						attributeNames.Add(item.Value.path);
+						attributeNames.Add(item.Value.info.path);
 					}
 				}
 				attributeNames = attributeNames.Order().OrderBy(item=>item.Contains("/")).ToList();
 				foreach(string name in attributeNames){
-					string id = lookup.Values.ToList().Find(x=>x.path == name).id;
+					string id = lookup.Values.ToList().Find(x=>x.info.path == name).info.id;
 					attributeIDs.Add(id);
 				}
 				if(!data.referenceID.IsEmpty()){
@@ -250,40 +269,28 @@ namespace Zios{
 				GUI.enabled = true;
 				return;
 			}
-			Enum sign = data.GetVariable<Enum>("sign");	
-			Type signType = sign.GetType();
-			operatorList = Enum.GetNames(signType).ToList();
-			string operatorName = Enum.GetName(signType,sign);
-			int operatorIndex = operatorList.IndexOf(operatorName);
-			if(operatorIndex == -1){operatorIndex = 0;}
-			for(int index=0;index<operatorList.Count;++index){
-				string operatorAlias = operatorList[index];
-				if(operatorAlias.Contains("Add")){operatorAlias="+";}
-				if(operatorAlias.Contains("Sub")){operatorAlias="-";}
-				if(operatorAlias.Contains("Mul")){operatorAlias="×";}
-				if(operatorAlias.Contains("Div")){operatorAlias="÷";}
-				operatorList[index] = operatorAlias;
-			}
-			operatorIndex = operatorList.Draw(operatorRect,operatorIndex,style);
-			data.SetVariable("sign",Enum.GetValues(signType).GetValue(operatorIndex));
+			var operatorCollection = typeof(AttributeType).GetVariable<Dictionary<Type,string[]>>("compare");
+			operatorList = operatorCollection[data.GetType()].ToList();
+			int operatorIndex = Mathf.Clamp(data.sign,0,operatorList.Count-1);
+			data.sign = operatorList.Draw(operatorRect,operatorIndex,style);
 		}
-		public void DrawFormula(AttributeType attribute,GUIContent label){
+		public void DrawFormula(GUIContent label){
 			Rect labelRect = this.labelRect.AddX(12);
 			EditorGUIUtility.AddCursorRect(this.fullRect,MouseCursor.ArrowPlus);
-			bool formulaExpanded = EditorPrefs.GetBool(attribute.path+"FormulaExpanded");
+			bool formulaExpanded = EditorPrefs.GetBool(this.attribute.info.path+"FormulaExpanded");
 			if(this.labelRect.AddX(16).Clicked() || this.valueRect.Clicked()){
 				GUI.changed = true;
 				formulaExpanded = !formulaExpanded;
 			}
 			formulaExpanded = EditorGUI.Foldout(labelRect,formulaExpanded,label,GUI.skin.GetStyle("IconFormula"));
-			EditorPrefs.SetBool(attribute.path+"FormulaExpanded",formulaExpanded);
+			EditorPrefs.SetBool(this.attribute.info.path+"FormulaExpanded",formulaExpanded);
 			if(formulaExpanded){
 				float lineHeight = EditorGUIUtility.singleLineHeight+2;
 				this.fullRect = this.fullRect.SetX(45).AddWidth(-55);
 				this.labelRect = this.labelRect.SetX(45).SetWidth(25);
 				this.valueRect = this.valueRect.SetX(70).SetWidth(this.fullRect.width);
-				for(int index=0;index<attribute.data.Length;++index){
-					AttributeData currentData = attribute.data[index];
+				for(int index=0;index<this.attribute.data.Length;++index){
+					AttributeData currentData = this.attribute.data[index];
 					if(currentData == null){continue;}
 					SerializedObject currentProperty = new SerializedObject(currentData);
 					GUIContent formulaLabel = new GUIContent("#"+(index+1));
@@ -298,19 +305,19 @@ namespace Zios{
 						this.fullRect = this.fullRect.AddWidth(-25);
 					}
 					else if(currentData.usage == AttributeUsage.Shaped){
-						this.DrawShaped(attribute,currentProperty,formulaLabel,true,operatorState);
+						this.DrawShaped(currentProperty,formulaLabel,true,operatorState);
 					}
 					if(GUI.changed){Utility.SetDirty(currentData);}
-					this.DrawContext(attribute,currentData,false,index!=0);
+					this.DrawContext(currentData,false,index!=0);
 				}
 				this.labelRect.y += lineHeight;
 				this.drawer.overallHeight += lineHeight;
 				if(GUI.Button(this.labelRect.SetWidth(100),"Add Attribute")){
-					if(attribute.GetFormulaTypes().Length > 1){
-						this.DrawAddMenu(attribute);
+					if(this.attribute.GetFormulaTypes().Length > 1){
+						this.DrawAddMenu();
 						return;
 					}
-					attribute.Add<DataType>();
+					this.attribute.Add<DataType>();
 					GUI.changed = true;
 				}
 			}
@@ -319,45 +326,45 @@ namespace Zios{
 				message.DrawLabel(this.valueRect,GUI.skin.GetStyle("WarningLabel"));
 			}
 		}
-		public void DrawAddMenu(Attribute attribute){
+		public void DrawAddMenu(){
 			GenericMenu menu = new GenericMenu();
-			foreach(Type AttributeType in attribute.GetFormulaTypes()){
+			foreach(Type AttributeType in this.attribute.GetFormulaTypes()){
 				string name = AttributeType.Name.Strip("Attribute","Data");
-				MethodInfo generic = attribute.GetType().GetMethod("Add",new Type[]{}).MakeGenericMethod(AttributeType);
+				MethodInfo generic = this.attribute.GetType().GetMethod("Add",new Type[]{}).MakeGenericMethod(AttributeType);
 				MenuFunction method = ()=>{generic.Invoke(attribute,null);};
 				menu.AddItem(new GUIContent(name),false,method);
 			}
 			menu.ShowAsContext();
 		}
-		public void DrawContext(Attribute attribute,AttributeData data,bool showMode=true,bool showRemove=false){
+		public void DrawContext(AttributeData data,bool showMode=true,bool showRemove=false){
 			if(this.labelRect.Clicked(1)){
 				this.contextOpen = true;
 				GenericMenu menu = new GenericMenu();
-				AttributeMode mode = attribute.mode;
+				AttributeMode mode = this.attribute.info.mode;
 				AttributeUsage usage = data.usage;
-				MenuFunction removeAttribute = ()=>{attribute.Remove(data);};
-				MenuFunction modeNormal  = ()=>{attribute.mode = AttributeMode.Normal;};
-				MenuFunction modeLinked  = ()=>{attribute.mode = AttributeMode.Linked;};
-				MenuFunction modeFormula = ()=>{attribute.mode = AttributeMode.Formula;};
+				MenuFunction removeAttribute = ()=>{this.attribute.Remove(data);};
+				MenuFunction modeNormal  = ()=>{this.attribute.info.mode = AttributeMode.Normal;};
+				MenuFunction modeLinked  = ()=>{this.attribute.info.mode = AttributeMode.Linked;};
+				MenuFunction modeFormula = ()=>{this.attribute.info.mode = AttributeMode.Formula;};
 				MenuFunction usageDirect = ()=>{data.usage = AttributeUsage.Direct;};
 				MenuFunction usageShaped = ()=>{data.usage = AttributeUsage.Shaped;};
-				bool normal = attribute.mode == AttributeMode.Normal;
-				if(attribute.locked){
+				bool normal = this.attribute.info.mode == AttributeMode.Normal;
+				if(this.attribute.locked){
 					menu.AddDisabledItem(new GUIContent("Attribute Locked"));
 					menu.ShowAsContext();
 					return;
 				}
 				if(showMode){
-					string directPath = attribute.canShape ? "Normal/Direct" : "Direct";
-					string shapedPath = attribute.canDirect ? "Normal/Shaped" : "Shaped";
-					if(attribute.canDirect){menu.AddItem(new GUIContent(directPath),normal&&(usage==AttributeUsage.Direct),modeNormal+usageDirect);}
-					if(attribute.canShape){menu.AddItem(new GUIContent(shapedPath),normal&&(usage==AttributeUsage.Shaped),modeNormal+usageShaped);}
-					if(attribute.canLink){menu.AddItem(new GUIContent("Linked"),(mode==AttributeMode.Linked),modeLinked+usageShaped);}
-					if(attribute.canFormula){menu.AddItem(new GUIContent("Formula"),(mode==AttributeMode.Formula),modeFormula);}
+					string directPath = this.attribute.canShape ? "Normal/Direct" : "Direct";
+					string shapedPath = this.attribute.canDirect ? "Normal/Shaped" : "Shaped";
+					if(this.attribute.canDirect){menu.AddItem(new GUIContent(directPath),normal&&(usage==AttributeUsage.Direct),modeNormal+usageDirect);}
+					if(this.attribute.canShape){menu.AddItem(new GUIContent(shapedPath),normal&&(usage==AttributeUsage.Shaped),modeNormal+usageShaped);}
+					if(this.attribute.canLink){menu.AddItem(new GUIContent("Linked"),(mode==AttributeMode.Linked),modeLinked+usageShaped);}
+					if(this.attribute.canFormula){menu.AddItem(new GUIContent("Formula"),(mode==AttributeMode.Formula),modeFormula);}
 				}
 				else{
-					if(attribute.canDirect){menu.AddItem(new GUIContent("Direct"),normal&&(usage==AttributeUsage.Direct),usageDirect);}
-					if(attribute.canShape){menu.AddItem(new GUIContent("Shaped"),normal&&(usage==AttributeUsage.Shaped),usageShaped);}
+					if(this.attribute.canDirect){menu.AddItem(new GUIContent("Direct"),normal&&(usage==AttributeUsage.Direct),usageDirect);}
+					if(this.attribute.canShape){menu.AddItem(new GUIContent("Shaped"),normal&&(usage==AttributeUsage.Shaped),usageShaped);}
 				}
 				if(showRemove){
 					menu.AddItem(new GUIContent("Remove"),false,removeAttribute);	
@@ -371,7 +378,7 @@ namespace Zios{
 			}
 		}
 		public void ForceUpdate(){
-			SerializedProperty forceUpdate = property.FindPropertyRelative("path");
+			SerializedProperty forceUpdate = property.FindPropertyRelative("info").FindPropertyRelative("path");
 			string path = forceUpdate.stringValue;
 			forceUpdate.stringValue = "";
 			forceUpdate.stringValue = path;

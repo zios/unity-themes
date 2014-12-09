@@ -1,7 +1,7 @@
 using Zios;
 using UnityEngine;
 using System;
-[Serializable]
+[Serializable][AddComponentMenu("")]
 public class StateMonoBehaviour : ManagedMonoBehaviour{
 	[HideInInspector] public string id;
 	[HideInInspector] public AttributeBool requirable = true;

@@ -39,28 +39,28 @@ public static class ObjectExtension{
 		if(current.IsStatic()){
 			return (V)current.GetMethod(name).Invoke(null,parameters);
 		}
-		if(current is Type){return (V)current.GetMethod(name,(Type)current).Invoke(current,parameters);}
 		return (V)current.GetMethod(name).Invoke(current,parameters);
 	}
-	public static bool HasMethod(this object current,string name,Type type = null,BindingFlags flags = allFlags){
-		Type currentType = type == null ? current.GetType() : type;
-		return currentType.GetMethod(name,flags) != null;
+	public static bool HasMethod(this object current,string name,BindingFlags flags = allFlags){
+		Type type = current is Type ? (Type)current : current.GetType();
+		return type.GetMethod(name,flags) != null;
 	}
-	public static bool HasVariable(this object current,string name,Type type = null,BindingFlags flags = allFlags){
-		Type currentType = type == null ? current.GetType() : type;
-		bool hasProperty = currentType.GetProperty(name,flags) != null;
-		bool hasField = currentType.GetField(name,flags) != null;
+	public static bool HasVariable(this object current,string name,BindingFlags flags = allFlags){
+		Type type = current is Type ? (Type)current : current.GetType();
+		bool hasProperty = type.GetProperty(name,flags) != null;
+		bool hasField = type.GetField(name,flags) != null;
 		return hasProperty || hasField;
 	}
-	public static MethodInfo GetMethod(this object current,string name,Type type = null,BindingFlags flags = allFlags){
-		Type currentType = type == null ? current.GetType() : type;
-		return currentType.GetMethod(name,flags);
+	public static MethodInfo GetMethod(this object current,string name,BindingFlags flags = allFlags){
+		Type type = current is Type ? (Type)current : current.GetType();
+		return type.GetMethod(name,flags);
 	}
 	public static object GetVariable(this object current,string name,int index=-1,BindingFlags flags = allFlags){
 		return current.GetVariable<object>(name,index,flags);
 	}
 	public static T GetVariable<T>(this object current,string name,int index=-1,BindingFlags flags = allFlags){
-		Type type = current.GetType();
+		Type type = current is Type ? (Type)current : current.GetType();
+		object instance = current.IsStatic() || current is Type ? null : current;
 		PropertyInfo property = type.GetProperty(name,flags);
 		FieldInfo field = type.GetField(name,flags);
 		if(index != -1){
@@ -68,14 +68,14 @@ public static class ObjectExtension{
 				//return current.Cast<Vector3>()[index].Cast<object>().Cast<T>();
 				return (T)((object)(((Vector3)current)[index]));
 			}
-			IList list = (IList)field.GetValue(current);
+			IList list = (IList)field.GetValue(instance);
 			return (T)list[index];
 		}
 		if(property != null){
-			return (T)property.GetValue(current,null);
+			return (T)property.GetValue(instance,null);
 		}
 		if(field != null){
-			return (T)field.GetValue(current);
+			return (T)field.GetValue(instance);
 		}
 		return default(T);
 	}
@@ -93,7 +93,7 @@ public static class ObjectExtension{
 		return typeof(Type);
 	}
 	public static void SetVariable<T>(this object current,string name,T value,int index=-1){
-		Type type = current.GetType();
+		Type type = current is Type ? (Type)current : current.GetType();
 		PropertyInfo property = type.GetProperty(name);
 		FieldInfo field = type.GetField(name);
 		if(index != -1){

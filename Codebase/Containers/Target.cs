@@ -56,6 +56,7 @@ public class Target{
 		return this.direct;
 	}
 	public void AddSpecial(string name,GameObject target){
+		if(target.IsNull()){target = this.parent.gameObject;}
 		if(!this.specialNames.Any(x=>x.Contains(name,true))){
 			this.specialNames.Add(name);
 			this.special.Add(target);
@@ -68,7 +69,7 @@ public class Target{
 	public void SkipWarning(){this.hasWarned = true;}
 	public void DefaultSearch(){this.DefaultSearch(this.fallbackSearch);}
 	public void DefaultSearch(string target){
-		int siblingCount = this.parent.IsNull() ? -1 : this.parent.gameObject.GetSiblingCount();
+		int siblingCount = this.parent.IsNull() ? -1 : this.parent.gameObject.GetSiblingCount(true);
 		this.fallbackSearch = target;
 		bool searchChange = this.search != this.lastSearch;
 		bool parentChange = this.parent != this.lastParent;
@@ -92,7 +93,7 @@ public class Target{
 		for(int index=0;index<this.special.Count;++index){
 			string specialName = this.specialNames[index];
 			GameObject special = this.special[index];
-			if(search.Contains(specialName,true)){
+			if(!special.IsNull() && search.Contains(specialName,true)){
 				string specialPath = special.GetPath();
 				search = search.Replace(specialName,specialPath,true);
 			}

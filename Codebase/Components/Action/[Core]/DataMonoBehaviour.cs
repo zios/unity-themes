@@ -1,7 +1,7 @@
 using Zios;
 using UnityEngine;
 using System;
-[Serializable]
+[Serializable][AddComponentMenu("")]
 public class DataMonoBehaviour : MonoBehaviour{
 	public string alias;
 	public virtual void OnApplicationQuit(){this.Awake();}

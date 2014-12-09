@@ -1,6 +1,7 @@
 using UnityEngine;
 using Zios;
-public class AttributeVector3Data : AttributeData<Vector3,AttributeVector3,AttributeVector3Data,OperatorVector3,SpecialVector3>{
+[AddComponentMenu("")]
+public class AttributeVector3Data : AttributeData<Vector3,AttributeVector3,AttributeVector3Data,SpecialVector3>{
 	public override Vector3 HandleSpecial(){
 		Vector3 value = this.value;
 		if(this.attribute.mode == AttributeMode.Linked){return value;}

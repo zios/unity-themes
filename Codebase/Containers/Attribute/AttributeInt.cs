@@ -1,9 +1,14 @@
 using Zios;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 namespace Zios{
 	[Serializable]
-	public class AttributeInt : Attribute<int,AttributeInt,AttributeIntData,OperatorNumeral,SpecialNumeral>{
+	public class AttributeInt : Attribute<int,AttributeInt,AttributeIntData,SpecialNumeral>{
+		public static Dictionary<Type,string[]> compare = new Dictionary<Type,string[]>(){
+			{typeof(AttributeIntData),new string[]{"+","-","×","÷","/","Distance","Average","Max","Min"}},
+			{typeof(AttributeFloatData),new string[]{"+","-","×","÷","/","Distance","Average","Max","Min"}}
+		};
 		public AttributeInt() : this(0){}
 		public AttributeInt(int value){this.delayedValue = value;}
 		public static implicit operator AttributeInt(int current){return new AttributeInt(current);}
@@ -16,16 +21,16 @@ namespace Zios{
 			int value = 0;
 			for(int index=0;index<this.data.Length;++index){
 				AttributeData raw = this.data[index];
-				var sign = raw is AttributeIntData ? ((AttributeIntData)raw).sign : ((AttributeFloatData)raw).sign;
+				string sign = AttributeInt.compare[raw.GetType()][raw.sign];
 				int current = raw is AttributeIntData ? ((AttributeIntData)raw).Get() : (int)((AttributeFloatData)raw).Get();
 				if(index == 0){value = current;}
-				else if(sign == OperatorNumeral.Addition){value += current;}
-				else if(sign == OperatorNumeral.Subtraction){value -= current;}
-				else if(sign == OperatorNumeral.Multiplication){value *= current;}
-				else if(sign == OperatorNumeral.Division){value /= current;}
-				else if(sign == OperatorNumeral.Average){value = (value + current) / 2;}
-				else if(sign == OperatorNumeral.Max){value = Mathf.Max(value,current);}
-				else if(sign == OperatorNumeral.Min){value = Mathf.Min(value,current);}
+				else if(sign == "+"){value += current;}
+				else if(sign == "-"){value -= current;}
+				else if(sign == "×"){value *= current;}
+				else if(sign == "÷"){value /= current;}
+				else if(sign == "Average"){value = (value + current) / 2;}
+				else if(sign == "Max"){value = Mathf.Max(value,current);}
+				else if(sign == "Min"){value = Mathf.Min(value,current);}
 			}
 			return value;
 		}

@@ -1,6 +1,7 @@
 using UnityEngine;
 using Zios;
-public class AttributeStringData : AttributeData<string,AttributeString,AttributeStringData,OperatorString,SpecialString>{
+[AddComponentMenu("")]
+public class AttributeStringData : AttributeData<string,AttributeString,AttributeStringData,SpecialString>{
 	public int characterLimit;
 	public string[] allowed = new string[0];
 	public string[] disallowed = new string[0];

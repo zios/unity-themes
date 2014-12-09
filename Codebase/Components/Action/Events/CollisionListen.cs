@@ -1,7 +1,6 @@
 using Zios;
 using System;
 using UnityEngine;
-[AddComponentMenu("Zios/Component/Action/Event/Collision Listen")]
 public enum CollisionDirection : int{
 	Above     = 0x001,
 	Below     = 0x002,
@@ -15,6 +14,7 @@ public enum CollisionSource : int{
 	Target    = 0x002,
 }
 public enum CollisionEvent{CollisionStart,CollisionEnd,Collision}
+[AddComponentMenu("Zios/Component/Action/Event/Collision Listen")]
 public class CollisionListen : ActionPart{
 	public CollisionEvent trigger;
 	[EnumMask] public CollisionSource sourceCause = (CollisionSource)(-1);

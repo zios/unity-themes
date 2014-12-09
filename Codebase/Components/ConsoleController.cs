@@ -40,25 +40,20 @@ public class ConsoleController : MonoBehaviour{
 		public void ValidateAttribute(){
 			this.validName = false;
 			if(this.name != null && this.name.Trim() != ""){
-				if(this.scope is Type){
-					this.validName = this.scope.HasVariable(this.name.Trim(),(Type)this.scope);
-				}
-				else{
-					this.validName = this.scope.HasVariable(this.name.Trim());
-				}
+				this.validName = this.scope.HasVariable(this.name.Trim());
 			}
 		}
 		public void ValidateMethod(){
 			if(this.methodName != null && this.methodName.Trim() != ""){
 				MethodInfo methodInfo = null;
 				if(this.scope is Type){
-					if(this.scope.HasMethod(this.methodName,(Type)this.scope,BindingFlags.Static|BindingFlags.Public)){
-						methodInfo = this.scope.GetMethod(this.methodName,(Type)this.scope,BindingFlags.Static|BindingFlags.Public);
+					if(this.scope.HasMethod(this.methodName)){
+						methodInfo = this.scope.GetMethod(this.methodName);
 					}
 				}
 				else{
-					if(this.scope.HasMethod(this.methodName,null,BindingFlags.Static|BindingFlags.Public)){
-						methodInfo = this.scope.GetMethod(this.methodName,null,BindingFlags.Static|BindingFlags.Public);
+					if(this.scope.HasMethod(this.methodName)){
+						methodInfo = this.scope.GetMethod(this.methodName);
 					}
 				}
 				if(methodInfo != null){
