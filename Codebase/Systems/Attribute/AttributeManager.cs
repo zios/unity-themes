@@ -11,12 +11,12 @@ using UnityEditor;
 #endif
 [AddComponentMenu("Zios/Singleton/Attribute Manager")][ExecuteInEditMode]
 public class AttributeManager : MonoBehaviour{
-	private static bool refresh;
+	public static bool refresh;
 	public static float editorInterval = 1;
 	public float updateInterval = 1;
 	public bool editorIncludeDisabled = true;
-	public bool updateOnHierarchyChange = true;
-	public bool updateOnAssetChange = true;
+	public bool updateOnHierarchyChange = false;
+	public bool updateOnAssetChange = false;
 	private float nextStep;
 	private bool setup;
 	#if UNITY_EDITOR
@@ -80,7 +80,10 @@ public class AttributeManager : MonoBehaviour{
 		bool includeDisabled = !this.setup || this.editorIncludeDisabled;
 		DataMonoBehaviour[] data = Locate.GetSceneComponents<DataMonoBehaviour>(includeEnabled,includeDisabled);
 		//data = data.OrderBy(x=>x.GetType().ToString()).ToArray();
-		foreach(DataMonoBehaviour entry in data){entry.Awake();}
+		foreach(DataMonoBehaviour entry in data){
+			if(AttributeManager.refresh){return;}
+			entry.Awake();
+		}
 		if(!Application.isPlaying){
 			Debug.Log("AttributeData Count : " + data.Count(x=>x is AttributeData));
 			foreach(DataMonoBehaviour entry in data){
@@ -96,9 +99,9 @@ public class AttributeManager : MonoBehaviour{
 			if(!Application.isPlaying && AttributeManager.editorInterval == -1 && !AttributeManager.refresh){return;}
 			this.nextStep = Time.realtimeSinceStartup + AttributeManager.editorInterval;
 			if(!this.setup || AttributeManager.refresh){
-				this.SceneRefresh();
-				this.setup = true;
 				AttributeManager.refresh = false;
+				this.setup = true;
+				this.SceneRefresh();
 			}
 			this.Setup();
 		}

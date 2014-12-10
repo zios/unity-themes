@@ -217,8 +217,8 @@ namespace Zios{
 		public void FixDuplicates(){
 			GameObject root = Utility.FindPrefabRoot(this.info.parent.gameObject);
 			if(!root.IsNull()){
-				string name = root.gameObject.name;
-				if(Locate.HasDuplicate(name)){
+				string name = root.name;
+				if(Locate.HasDuplicate(root)){
 					Debug.Log("[Attribute] Resolving same name siblings : " + this.info.path,this.info.parent.gameObject);
 					char lastDigit = name[name.Length-1];
 					if(name.Length > 1 && name[name.Length-2] == ' ' && char.IsLetter(lastDigit)){
@@ -228,6 +228,7 @@ namespace Zios{
 					else{
 						root.gameObject.name = name + " B";
 					}
+					AttributeManager.refresh = true;
 				}
 			}
 		}

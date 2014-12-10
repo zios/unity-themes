@@ -22,9 +22,7 @@ public static class Locate{
 	public static Dictionary<Type,Component[]> disabledComponents = new Dictionary<Type,Component[]>();
 	public static Dictionary<GameObject,Dictionary<Type,Component[]>> objectComponents = new Dictionary<GameObject,Dictionary<Type,Component[]>>();
 	static Locate(){
-		#if UNITY_EDITOR
-		EditorApplication.hierarchyWindowChanged += Locate.SetDirty;
-		#endif
+		Utility.HierarchyUpdate(Locate.SetDirty,true);
 	}
 	public static void SetDirty(){
 		Locate.cleanGameObjects = false;
@@ -87,31 +85,26 @@ public static class Locate{
 		}
 		return matches.ToArray();
 	}
-	public static bool HasDuplicate(string name){
-		if(!Locate.cleanGameObjects){Locate.Build<Transform>();}
-		List<GameObject> amount = new List<GameObject>();
-		foreach(var current in Locate.sceneObjects){
-			GameObject parent = current.GetParent();
-			if(parent.IsNull()){parent = default(GameObject);}
-			if(current.name == name){
-				if(amount.Contains(parent)){
-					return true;
-				}
-				amount.Add(parent);
-			}
+	public static bool HasDuplicate(GameObject target){
+		GameObject[] siblings = target.GetSiblings();
+		foreach(GameObject current in siblings){
+			if(current.name == target.name){return true;}
 		}
 		return false;
 	}
 	public static GameObject[] GetSiblings(this GameObject current,bool includeEnabled=true,bool includeDisabled=true){
 		if(!Locate.cleanSiblings.Contains(current)){
 			GameObject parent = current.GetParent();
+			List<GameObject> siblings;
 			if(parent.IsNull()){
-				//Debug.Log("GameObject : Cannot locate siblings for root objects",current);
-				return current.AsArray();
+				Locate.GetSceneObjects(includeEnabled,includeDisabled);
+				siblings = Locate.rootObjects.Remove(current).ToList();
 			}
-			List<Transform> siblingTransforms = parent.GetComponentsInChildren<Transform>(true).Remove(parent.transform).ToList();
-			siblingTransforms.RemoveAll(x=>x.parent!=parent.transform);
-			Locate.siblings[current] = siblingTransforms.Select(x=>x.gameObject).ToArray();
+			else{
+				siblings = parent.GetComponentsInChildren<Transform>(true).Remove(current.transform).Select(x=>x.gameObject).ToList();
+				siblings.RemoveAll(x=>x.GetParent()!=parent);
+			}
+			Locate.siblings[current] = siblings.ToArray();
 			Locate.enabledSiblings[current] = Locate.siblings[current].Where(x=>x.gameObject.activeInHierarchy).Select(x=>x.gameObject).ToArray();
 			Locate.disabledSiblings[current] = Locate.siblings[current].Where(x=>!x.gameObject.activeInHierarchy).Select(x=>x.gameObject).ToArray();
 			Locate.cleanSiblings.Add(current);
