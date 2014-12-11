@@ -13,13 +13,14 @@ namespace Zios{
 		[NonSerialized] public Attribute reference;
 		public void Validate(){
 			bool noAttribute = this.attribute.IsNull();
+			bool visible = !this.hideFlags.Contains(HideFlags.HideInInspector) && PlayerPrefs.GetInt("ShowAttributeData") == 0;
 			bool wrongParent = noAttribute || !this.attribute.data.Contains(this);
 			bool emptyParent = noAttribute || this.attribute.parent.IsNull();
 			bool emptyRoot = emptyParent || this.attribute.parent.gameObject.IsNull();
 			bool wrongPlace = emptyParent || (this.attribute.parent.gameObject != this.gameObject);
 			//bool notActive = noAttribute || !this.attribute.setup;
 			//bool notActive = Attribute.ready && !Attribute.all.Contains(this.attribute);
-			if(noAttribute || wrongParent || emptyParent || emptyRoot || wrongPlace){
+			if(noAttribute || wrongParent || emptyParent || emptyRoot || wrongPlace || visible){
 				Debug.Log("AttributeData : Clearing defunct data.");
 				Utility.Destroy(this);
 				return;

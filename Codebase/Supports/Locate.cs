@@ -92,7 +92,7 @@ public static class Locate{
 		}
 		return false;
 	}
-	public static GameObject[] GetSiblings(this GameObject current,bool includeEnabled=true,bool includeDisabled=true){
+	public static GameObject[] GetSiblings(this GameObject current,bool includeEnabled=true,bool includeDisabled=true,bool includeSelf=true){
 		if(!Locate.cleanSiblings.Contains(current)){
 			GameObject parent = current.GetParent();
 			List<GameObject> siblings;
@@ -101,8 +101,9 @@ public static class Locate{
 				siblings = Locate.rootObjects.Remove(current).ToList();
 			}
 			else{
-				siblings = parent.GetComponentsInChildren<Transform>(true).Remove(current.transform).Select(x=>x.gameObject).ToList();
+				siblings = parent.GetComponentsInChildren<Transform>(true).Select(x=>x.gameObject).ToList();
 				siblings.RemoveAll(x=>x.GetParent()!=parent);
+				if(!includeSelf){siblings.Remove(current);}
 			}
 			Locate.siblings[current] = siblings.ToArray();
 			Locate.enabledSiblings[current] = Locate.siblings[current].Where(x=>x.gameObject.activeInHierarchy).Select(x=>x.gameObject).ToArray();
