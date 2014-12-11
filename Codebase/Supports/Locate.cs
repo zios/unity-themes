@@ -86,7 +86,7 @@ public static class Locate{
 		return matches.ToArray();
 	}
 	public static bool HasDuplicate(GameObject target){
-		GameObject[] siblings = target.GetSiblings();
+		GameObject[] siblings = target.GetSiblings(true,true,false);
 		foreach(GameObject current in siblings){
 			if(current.name == target.name){return true;}
 		}

@@ -215,21 +215,19 @@ namespace Zios{
 			}
 		}
 		public void FixDuplicates(){
-			GameObject root = Utility.FindPrefabRoot(this.info.parent.gameObject);
-			if(!root.IsNull()){
-				string name = root.name;
-				if(Locate.HasDuplicate(root)){
-					Debug.Log("[Attribute] Resolving same name siblings : " + this.info.path,this.info.parent.gameObject);
-					char lastDigit = name[name.Length-1];
-					if(name.Length > 1 && name[name.Length-2] == ' ' && char.IsLetter(lastDigit)){
-						char nextLetter = (char)(char.ToUpper(lastDigit)+1);
-						root.gameObject.name = name.TrimEnd(lastDigit) + nextLetter;
-					}
-					else{
-						root.gameObject.name = name + " B";
-					}
-					AttributeManager.refresh = true;
+			GameObject current = this.info.parent.gameObject;
+			string name = current.name;
+			if(Locate.HasDuplicate(current)){
+				Debug.Log("[Attribute] Resolving same name siblings : " + this.info.path,this.info.parent.gameObject);
+				char lastDigit = name[name.Length-1];
+				if(name.Length > 1 && name[name.Length-2] == ' ' && char.IsLetter(lastDigit)){
+					char nextLetter = (char)(char.ToUpper(lastDigit)+1);
+					current.gameObject.name = name.TrimEnd(lastDigit) + nextLetter;
 				}
+				else{
+					current.gameObject.name = name + " B";
+				}
+				AttributeManager.refresh = true;
 			}
 		}
 		public void FixIDConflict(string previousID){
