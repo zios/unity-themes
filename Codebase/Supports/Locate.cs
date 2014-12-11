@@ -112,7 +112,7 @@ public static class Locate{
 		GameObject[] results = Locate.enabledSiblings[current];
 		if(includeEnabled && includeDisabled){results = Locate.siblings[current];}
 		if(!includeEnabled){results = Locate.disabledSiblings[current];}
-		if(!includeSelf){siblings.Remove(current);}
+		if(!includeSelf){results = results.Remove(current);}
 		return results;
 	}
 	public static GameObject[] GetSceneObjects(bool includeEnabled=true,bool includeDisabled=true){
