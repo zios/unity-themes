@@ -23,7 +23,7 @@ namespace Zios{
 			else if(!this.attribute.data.Contains(this) && !this.attribute.dataB.Contains(this) && !this.attribute.dataC.Contains(this)){this.Purge("Not In Attribute");}
 		}
 		public void Purge(string reason){
-			Debug.Log("AttributeData : Clearing defunct data -- " + reason);
+			Debug.Log("AttributeData : Clearing defunct data -- " + reason + ".");
 			Utility.Destroy(this);
 		}
 		public virtual AttributeData Copy(GameObject target){return default(AttributeData);}

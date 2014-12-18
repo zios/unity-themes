@@ -49,7 +49,7 @@ namespace Zios{
 			if(dataIndex < dataB.Length && dataB[dataIndex] != null){
 				string dataType = data.GetType().Name.Strip("Data","Attribute").Replace("Int","Number").Replace("Float","Number");
 				string compareType = dataB[dataIndex].GetType().Name.Strip("Data","Attribute").Replace("Int","Number").Replace("Float","Number");
-				if(!AttributeBool.compareAgainst.ContainsKey(dataType+compareType)){
+				if(!AttributeBool.comparers.ContainsKey(dataType+compareType)){
 					string warning = "Cannot compare <b>" + dataType + "</b> and <b>" + compareType + "</b>.";
 					if(this.valueRect.Clicked(0) || this.valueRect.Clicked(1)){
 						this.DrawTypeMenu(dataB[dataIndex]);
@@ -57,8 +57,8 @@ namespace Zios{
 					warning.Draw(this.valueRect,GUI.skin.GetStyle("WarningLabel"));
 				}
 				else{
-					this.operatorOverride = AttributeBool.compareAgainst[dataType+compareType].ToList();
-					if(AttributeBool.compareAgainst.ContainsKey(dataType+compareType)){
+					this.operatorOverride = AttributeBool.comparers[dataType+compareType].ToList();
+					if(AttributeBool.comparers.ContainsKey(dataType+compareType)){
 						this.attribute.canDirect = true;
 						this.DrawFormulaPart(dataB[dataIndex],index+1);
 					}

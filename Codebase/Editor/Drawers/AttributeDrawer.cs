@@ -277,7 +277,7 @@ namespace Zios{
 			}
 			operatorList = this.operatorOverride;
 			if(operatorList == null){
-				var operatorCollection = typeof(AttributeType).GetVariable<Dictionary<Type,string[]>>("compare");
+				var operatorCollection = typeof(AttributeType).GetVariable<Dictionary<Type,string[]>>("operators");
 				operatorList = operatorCollection[data.GetType()].ToList();
 			}
 			int operatorIndex = Mathf.Clamp(data.operation,0,operatorList.Count-1);

@@ -6,7 +6,7 @@ namespace Zios{
 	[Serializable]
 	public class AttributeFloat : Attribute<float,AttributeFloat,AttributeFloatData>{
 		public static string[] specialList = new string[]{"Copy","Flip","Abs","Sign","Floor","Ceil","Cos","Sin","Tan","ATan","Sqrt"};
-		public static Dictionary<Type,string[]> compare = new Dictionary<Type,string[]>(){
+		public static Dictionary<Type,string[]> operators = new Dictionary<Type,string[]>(){
 			{typeof(AttributeFloatData),new string[]{"+","-","×","÷","/","Distance","Average","Max","Min"}},
 			{typeof(AttributeIntData),new string[]{"+","-","×","÷","/","Distance","Average","Max","Min"}}
 		};
@@ -22,7 +22,7 @@ namespace Zios{
 			float value = 0;
 			for(int index=0;index<this.data.Length;++index){
 				AttributeData raw = this.data[index];
-				string operation = AttributeFloat.compare[raw.GetType()][raw.operation];
+				string operation = AttributeFloat.operators[raw.GetType()][raw.operation];
 				float current = raw is AttributeIntData ? ((AttributeIntData)raw).Get() : ((AttributeFloatData)raw).Get();
 				if(index == 0){value = current;}
 				else if(operation == "+"){value += current;}

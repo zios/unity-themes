@@ -6,7 +6,7 @@ namespace Zios{
 	[Serializable]
 	public class AttributeString : Attribute<string,AttributeString,AttributeStringData>{
 		public static string[] specialList = new string[]{"Copy","Lower","Upper","Capitalize"};
-		public static Dictionary<Type,string[]> compare = new Dictionary<Type,string[]>(){
+		public static Dictionary<Type,string[]> operators = new Dictionary<Type,string[]>(){
 			{typeof(AttributeStringData),new string[]{"Prefix","Suffix"}}
 		};
 		public AttributeString() : this(""){}
@@ -18,7 +18,7 @@ namespace Zios{
 			string value = "";
 			for(int index=0;index<this.data.Length;++index){
 				AttributeData raw = this.data[index];
-				string operation = AttributeString.compare[raw.GetType()][raw.operation];
+				string operation = AttributeString.operators[raw.GetType()][raw.operation];
 				var data = (AttributeStringData)raw;
 				string current = data.Get();
 				if(index == 0){value = current;}

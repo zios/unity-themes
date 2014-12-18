@@ -6,13 +6,13 @@ namespace Zios{
 	[Serializable]
 	public class AttributeBool : Attribute<bool,AttributeBool,AttributeBoolData>{
 		public static string[] specialList = new string[]{"Copy","Flip"};
-		public static Dictionary<Type,string[]> compare = new Dictionary<Type,string[]>(){
+		public static Dictionary<Type,string[]> operators = new Dictionary<Type,string[]>(){
 			{typeof(AttributeBoolData),new string[]{"And","Or"}},
 			{typeof(AttributeIntData),new string[]{"And","Or"}},
 			{typeof(AttributeFloatData),new string[]{"And","Or"}},
 			//{typeof(AttributeVector3Data),new string[]{"And","Or"}}
 		};
-		public static Dictionary<string,string[]> compareAgainst = new Dictionary<string,string[]>(){
+		public static Dictionary<string,string[]> comparers = new Dictionary<string,string[]>(){
 			{"BoolBool",new string[]{"==","!="}},
 			{"NumberNumber",new string[]{"<",">","<=",">=","==","!="}},
 			//{"Vector3Vector3",new string[]{"<",">","<=",">=","==","!="}},
@@ -31,14 +31,14 @@ namespace Zios{
 				bool againstIsNumber = against is AttributeIntData || against is AttributeFloatData;
 				string operation = compare.operation == 0 ? "And" : "Or";
 				if(compare is AttributeBoolData && against is AttributeBoolData){
-					string comparer = AttributeBool.compareAgainst["BoolBool"][against.operation];
+					string comparer = AttributeBool.comparers["BoolBool"][against.operation];
 					bool compareValue = ((AttributeBoolData)compare).Get();
 					bool againstValue = ((AttributeBoolData)against).Get();
 					if(comparer == "=="){current = compareValue == againstValue;}
 					else if(comparer == "!+"){current = compareValue != againstValue;}
 				}
 				else if(compareIsNumber && againstIsNumber){
-					string comparer = AttributeBool.compareAgainst["NumberNumber"][against.operation];
+					string comparer = AttributeBool.comparers["NumberNumber"][against.operation];
 					float compareValue = compare is AttributeIntData ? ((AttributeIntData)compare).Get() : ((AttributeFloatData)compare).Get();
 					float againstValue = against is AttributeIntData ? ((AttributeIntData)against).Get() : ((AttributeFloatData)against).Get();
 					if(comparer == "<"){current = compareValue < againstValue;}

@@ -6,7 +6,7 @@ namespace Zios{
 	[Serializable]
 	public class AttributeVector3 : Attribute<Vector3,AttributeVector3,AttributeVector3Data>{
 		public static string[] specialList = new string[]{"Copy","Flip","Abs","Sign","Floor","Ceil","Normalized","Magnitude","SqrMagnitude"};
-		public static Dictionary<Type,string[]> compare = new Dictionary<Type,string[]>(){
+		public static Dictionary<Type,string[]> operators = new Dictionary<Type,string[]>(){
 			{typeof(AttributeVector3Data),new string[]{"+","-","×","/","Average","Max","Min","Distance","Dot","Cross","Angle","Reflect","Project","ProjectOnPlane"}},
 			{typeof(AttributeIntData),new string[]{"+","-","×","/","Average","Max","Min"}},
 			{typeof(AttributeFloatData),new string[]{"+","-","×","/","Average","Max","Min"}},
@@ -38,7 +38,7 @@ namespace Zios{
 			Vector3 value = Vector3.zero;
 			for(int index=0;index<this.data.Length;++index){
 				AttributeData raw = this.data[index];
-				string operation = AttributeVector3.compare[raw.GetType()][raw.operation];
+				string operation = AttributeVector3.operators[raw.GetType()][raw.operation];
 				if(raw is AttributeVector3Data){
 					var data = (AttributeVector3Data)raw;
 					Vector3 current = data.Get();
