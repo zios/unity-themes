@@ -1,10 +1,11 @@
 Shader "Zios/Dori/Vertex Color + Outline + Shading"{
 	Properties{
+		cullDistance("Distance",float) = 20
 		outlineSize("Outline Size",Range(0.002,0.01)) = 0.005
 		outlineIntensity("Outline Intensity",Range(0,1)) = 0.8
-		contrast("Contrast",Range(-0.5,0.5)) = 0.2
+		contrast("Contrast",Range(-0.5,0.5)) = 0.1107143
 		shadingRamp("Shading Ramp",2D) = "white"{}
-		shadeIntensity("Shade Intensity",Range(0,1)) = 1
+		shadeIntensity("Shade Intensity",Range(0,1)) = 0.8571429
 	}
 	SubShader{
 		Tags{"LightMode"="ForwardBase"}
@@ -15,6 +16,7 @@ Shader "Zios/Dori/Vertex Color + Outline + Shading"{
 			#pragma vertex vertexPass
 			#pragma fragment pixelPass
 			#pragma fragmentoption ARB_precision_hint_fastest
+			float cullDistance;
 			fixed outlineIntensity;
 			fixed outlineSize;
 			struct vertexInput{
@@ -33,6 +35,10 @@ Shader "Zios/Dori/Vertex Color + Outline + Shading"{
 				vertexOutput output;
 				UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
 				output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
+				if(distance(ObjSpaceViewDir(input.vertex),output.pos) > cullDistance){
+					output.pos.w = -1;
+					return output;
+				}
 				float3 normal = mul((float3x3)UNITY_MATRIX_IT_MV,input.normal);
 				float2 offset = TransformViewToProjection(normal.xy);
 				output.pos.xy += offset * output.pos.z * outlineSize;
@@ -54,6 +60,7 @@ Shader "Zios/Dori/Vertex Color + Outline + Shading"{
 			#pragma vertex vertexPass
 			#pragma fragment pixelPass
 			#pragma fragmentoption ARB_precision_hint_fastest
+			float cullDistance;
 			fixed shadeIntensity;
 			fixed contrast;
 			fixed4 _LightColor0;
@@ -106,18 +113,22 @@ Shader "Zios/Dori/Vertex Color + Outline + Shading"{
 			vertexOutput vertexPass(vertexInput input){
 				vertexOutput output;
 				UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
-				output.UV = float4(input.texcoord.xy,0,0);
 				output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
+				if(distance(ObjSpaceViewDir(input.vertex),output.pos) > cullDistance){
+					output.pos.w = -1;
+					return output;
+				}
+				output.UV = float4(input.texcoord.xy,0,0);
 				output.color = input.color;
 				output.normal = float4(input.normal,0);
 				output.lightNormal = ObjSpaceLightDir(input.vertex);
 				return output;
 			}
 			pixelOutput pixelPass(vertexOutput input){
-				input.normal = normalize(input.normal);
-				input.lightNormal = normalize(input.lightNormal);
 				pixelOutput output = setupPixel(input);
 				UNITY_INITIALIZE_OUTPUT(pixelOutput,output)
+				input.normal = normalize(input.normal);
+				input.lightNormal = normalize(input.lightNormal);
 				input = setupHalfLighting(input);
 				output = applyVertexColor(input,output);
 				output = applyDiffuseLerpShading(input,output);
