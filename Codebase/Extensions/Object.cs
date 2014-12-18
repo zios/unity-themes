@@ -201,6 +201,9 @@ public static class ObjectExtension{
 	public static T[] AsArray<T>(this T current){
 		return new T[]{current};
 	}
+	public static object[] AsBoxedArray<T>(this T current){
+		return new object[]{current};
+	}
 	public static List<T> AsList<T>(this T current){
 		return new List<T>{current};
 	}

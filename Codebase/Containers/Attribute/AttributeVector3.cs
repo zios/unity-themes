@@ -3,11 +3,11 @@ using System;
 using UnityEngine;
 using System.Collections.Generic;
 namespace Zios{
-	public enum SpecialVector3{Copy,Flip,Abs,Sign};
 	[Serializable]
-	public class AttributeVector3 : Attribute<Vector3,AttributeVector3,AttributeVector3Data,SpecialVector3>{
+	public class AttributeVector3 : Attribute<Vector3,AttributeVector3,AttributeVector3Data>{
+		public static string[] specialList = new string[]{"Copy","Flip","Abs","Sign","Floor","Ceil","Normalized","Magnitude","SqrMagnitude"};
 		public static Dictionary<Type,string[]> compare = new Dictionary<Type,string[]>(){
-			{typeof(AttributeVector3Data),new string[]{"+","-","×","/","Distance","Average","Max","Min"}},
+			{typeof(AttributeVector3Data),new string[]{"+","-","×","/","Average","Max","Min","Distance","Dot","Cross","Angle","Reflect","Project","ProjectOnPlane"}},
 			{typeof(AttributeIntData),new string[]{"+","-","×","/","Average","Max","Min"}},
 			{typeof(AttributeFloatData),new string[]{"+","-","×","/","Average","Max","Min"}},
 		};
@@ -38,27 +38,43 @@ namespace Zios{
 			Vector3 value = Vector3.zero;
 			for(int index=0;index<this.data.Length;++index){
 				AttributeData raw = this.data[index];
-				string sign = AttributeVector3.compare[raw.GetType()][raw.sign];
+				string operation = AttributeVector3.compare[raw.GetType()][raw.operation];
 				if(raw is AttributeVector3Data){
 					var data = (AttributeVector3Data)raw;
 					Vector3 current = data.Get();
 					if(index == 0){value = current;}
-					else if(sign == "+"){value += current;}
-					else if(sign == "-"){value -= current;}
-					else if(sign == "×"){value = Vector3.Scale(value,current);}
-					else if(sign == "Average"){value = (value + current) / 2;}
-					else if(sign == "Max"){value = Vector3.Max(value,current);}
-					else if(sign == "Min"){value = Vector3.Min(value,current);}
+					else if(operation == "+"){value += current;}
+					else if(operation == "-"){value -= current;}
+					else if(operation == "×"){value = Vector3.Scale(value,current);}
+					else if(operation == "Average"){value = (value + current) / 2;}
+					else if(operation == "Max"){value = Vector3.Max(value,current);}
+					else if(operation == "Min"){value = Vector3.Min(value,current);}
+					else if(operation == "Distance"){
+						float distance = Vector3.Distance(value,current);
+						value = new Vector3(distance,distance,distance);
+					}
+					else if(operation == "Dot"){
+						float dot = Vector3.Dot(value,current);
+						value = new Vector3(dot,dot,dot);
+					}
+					else if(operation == "Angle"){
+						float angle = Vector3.Angle(value,current);
+						value = new Vector3(angle,angle,angle);
+					}
+					else if(operation == "Cross"){value = Vector3.Cross(value,current);}
+					else if(operation == "Reflect"){value = Vector3.Reflect(value,current);}
+					else if(operation == "Project"){value = Vector3.Project(value,current);}
+					else if(operation == "ProjectOnPlane"){value = Vector3.ProjectOnPlane(value,current);}
 				}
 				else if(raw is AttributeIntData || raw is AttributeFloatData){
 					float current = raw is AttributeIntData ? ((AttributeIntData)raw).Get() : ((AttributeFloatData)raw).Get();
 					if(index == 0){value = new Vector3(current,current,current);}
-					else if(sign == "+"){value += new Vector3(current,current,current);}
-					else if(sign == "-"){value -= new Vector3(current,current,current);}
-					else if(sign == "×"){value = value * current;}
-					else if(sign == "Average"){value = (value + new Vector3(current,current,current)) / 2;}
-					else if(sign == "Max"){value = Vector3.Max(value,new Vector3(current,current,current));}
-					else if(sign == "Min"){value = Vector3.Min(value,new Vector3(current,current,current));}
+					else if(operation == "+"){value += new Vector3(current,current,current);}
+					else if(operation == "-"){value -= new Vector3(current,current,current);}
+					else if(operation == "×"){value = value * current;}
+					else if(operation == "Average"){value = (value + new Vector3(current,current,current)) / 2;}
+					else if(operation == "Max"){value = Vector3.Max(value,new Vector3(current,current,current));}
+					else if(operation == "Min"){value = Vector3.Min(value,new Vector3(current,current,current));}
 				}
 			}
 			return value;

@@ -117,4 +117,18 @@ public static class ArrayExtension{
 		copy.RemoveAt(index);
 		return copy.ToArray();
 	}
+	public static T[] RemoveAll<T>(this T[] current,T value){
+		List<T> copy = new List<T>(current);
+		copy.RemoveAll(x=>x.Equals(value));
+		return copy.ToArray();
+	}
+	public static T[] Resize<T>(this T[] current,int newSize){
+		while(current.Length > newSize){
+			current = current.RemoveAt(current.Length-1);
+		}
+		while(current.Length < newSize){
+			current = current.Add(default(T));
+		}
+		return current;
+	}
 }

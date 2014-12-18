@@ -6,47 +6,34 @@ namespace Zios{
 	public class AttributeData : DataMonoBehaviour{
 		public Target target = new Target();
 		public AttributeUsage usage;
+		public string path;
 		public string referenceID;
 		public string referencePath;
 		public AttributeInfo attribute;
-		public int sign;
+		public Attribute attributeRaw;
+		public int operation;
+		public int special;
 		[NonSerialized] public Attribute reference;
-		public void Validate(){
-			bool noAttribute = this.attribute.IsNull();
-			bool visible = !this.hideFlags.Contains(HideFlags.HideInInspector) && PlayerPrefs.GetInt("ShowAttributeData") == 0;
-			bool wrongParent = noAttribute || !this.attribute.data.Contains(this);
-			bool emptyParent = noAttribute || this.attribute.parent.IsNull();
-			bool emptyRoot = emptyParent || this.attribute.parent.gameObject.IsNull();
-			bool wrongPlace = emptyParent || (this.attribute.parent.gameObject != this.gameObject);
-			//bool notActive = noAttribute || !this.attribute.setup;
-			//bool notActive = Attribute.ready && !Attribute.all.Contains(this.attribute);
-			if(noAttribute || wrongParent || emptyParent || emptyRoot || wrongPlace || visible){
-				Debug.Log("AttributeData : Clearing defunct data.");
-				Utility.Destroy(this);
-				return;
-			}
+		public virtual void Validate(){
+			if(this.attribute.IsNull()){this.Purge("Null Attribute");}
+			else if(this.attribute.parent.IsNull()){this.Purge("Null Parent");}
+			else if(this.attribute.parent.gameObject.IsNull()){this.Purge("Null GameObject");}
+			else if(this.attribute.parent.gameObject != this.gameObject){this.Purge("Wrong Scope");}
+			else if(!this.hideFlags.Contains(HideFlags.HideInInspector) && PlayerPrefs.GetInt("ShowAttributeData") == 0){this.Purge("Visible");}
+			else if(!this.attribute.data.Contains(this) && !this.attribute.dataB.Contains(this) && !this.attribute.dataC.Contains(this)){this.Purge("Not In Attribute");}
+		}
+		public void Purge(string reason){
+			Debug.Log("AttributeData : Clearing defunct data -- " + reason);
+			Utility.Destroy(this);
 		}
 		public virtual AttributeData Copy(GameObject target){return default(AttributeData);}
 	}
 	[Serializable]
-	public class AttributeData<BaseType,AttributeType,DataType,Special> : AttributeData
-		where DataType : AttributeData<BaseType,AttributeType,DataType,Special>
-		where AttributeType : Attribute<BaseType,AttributeType,DataType,Special>
-		where Special : struct{
+	public class AttributeData<BaseType,AttributeType,DataType> : AttributeData
+		where DataType : AttributeData<BaseType,AttributeType,DataType>
+		where AttributeType : Attribute<BaseType,AttributeType,DataType>{
 		public BaseType value;
-		public Special special;
 		public virtual BaseType HandleSpecial(){return default(BaseType);}
-		public override AttributeData Copy(GameObject target){
-			DataType data = target.AddComponent<DataType>();
-			data.target = this.target.Clone();
-			data.usage = this.usage;
-			data.referenceID = this.referenceID;
-			data.referencePath = this.referencePath;
-			data.sign = this.sign;
-			data.special = this.special;
-			data.value = this.value;
-			return data;
-		}
 		public BaseType Get(){
 			AttributeInfo attribute = this.attribute;
 			if(this.usage == AttributeUsage.Direct){

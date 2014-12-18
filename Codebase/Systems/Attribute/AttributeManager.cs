@@ -111,7 +111,11 @@ public class AttributeManager : MonoBehaviour{
 			if(attribute.info.parent.IsNull()){Attribute.all.Remove(attribute);}
 		}
 		foreach(var attribute in Attribute.all){attribute.BuildLookup();}
-		foreach(var attribute in Attribute.all){attribute.BuildData();}
+		foreach(var attribute in Attribute.all){
+			attribute.BuildData(attribute.info.data);
+			attribute.BuildData(attribute.info.dataB);
+			attribute.BuildData(attribute.info.dataC);
+		}
 		Attribute.ready = true;
 	}
 }

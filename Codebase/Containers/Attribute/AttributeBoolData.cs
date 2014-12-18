@@ -1,11 +1,12 @@
 using UnityEngine;
 using Zios;
 [AddComponentMenu("")]
-public class AttributeBoolData : AttributeData<bool,AttributeBool,AttributeBoolData,SpecialBool>{
+public class AttributeBoolData : AttributeData<bool,AttributeBool,AttributeBoolData>{
 	public override bool HandleSpecial(){
 		bool value = this.value;
+		string special = AttributeBool.specialList[this.special];
 		if(this.attribute.mode == AttributeMode.Linked){return value;}
-		else if(this.special == SpecialBool.Flip){return !value;}
+		else if(special == "Flip"){return !value;}
 		return value;
 	}
 }

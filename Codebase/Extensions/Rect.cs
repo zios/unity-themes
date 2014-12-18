@@ -23,6 +23,9 @@ public static class RectExtension{
 		current.height = value;
 		return current;
 	}
+	public static Rect Scale(this Rect current,float x,float y){
+		return new Rect(current).OverrideWidth(current.width*x).OverrideHeight(current.height*y);
+	}
 	public static Rect SetXY(this Rect current,float x,float y){
 		return new Rect(current).OverrideX(x).OverrideY(y);
 	}

@@ -10,7 +10,7 @@ public class DataMonoBehaviourEditor : Editor{
 		if(isData && PlayerPrefs.GetInt("ShowAttributeData") == 0){return;}
 		if(this.isPrefab == null){
 			MonoBehaviour script = (MonoBehaviour)this.target;
-			this.isPrefab = !script.IsPrefab();
+			this.isPrefab = script.IsPrefab();
 		}
 		GUI.changed = false;
 		this.DrawDefaultInspector();

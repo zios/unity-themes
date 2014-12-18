@@ -18,8 +18,8 @@ public static class ListExtension{
 		}
 		return current.Find(x=>x.Equals(value));
 	}
-	public static int IndexOf<T>(this List<T> current,T type){
-		return Array.IndexOf(current.ToArray(),type);
+	public static int IndexOf<T>(this List<T> current,T item){
+		return current.FindIndex(x=>x.Equals(item));
 	}
 	public static int IndexOf<T>(this List<T> current,Enum enumerable){
 		string name = enumerable.ToString();

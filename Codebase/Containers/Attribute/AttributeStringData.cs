@@ -1,16 +1,17 @@
 using UnityEngine;
 using Zios;
 [AddComponentMenu("")]
-public class AttributeStringData : AttributeData<string,AttributeString,AttributeStringData,SpecialString>{
+public class AttributeStringData : AttributeData<string,AttributeString,AttributeStringData>{
 	public int characterLimit;
 	public string[] allowed = new string[0];
 	public string[] disallowed = new string[0];
 	public override string HandleSpecial(){
 		string value = this.value;
+		string special = AttributeString.specialList[this.special];
 		if(this.attribute.mode == AttributeMode.Linked){return value;}
-		else if(this.special == SpecialString.Lower){return value.ToLower();}
-		else if(this.special == SpecialString.Upper){return value.ToUpper();}
-		else if(this.special == SpecialString.Capitalize){return value.Capitalize();}
+		else if(special == "Lower"){return value.ToLower();}
+		else if(special == "Upper"){return value.ToUpper();}
+		else if(special == "Capitalize"){return value.Capitalize();}
 		return value;
 	}
 }

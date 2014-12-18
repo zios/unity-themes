@@ -3,9 +3,9 @@ using System;
 using UnityEngine;
 using System.Collections.Generic;
 namespace Zios{
-	public enum SpecialString{Copy,Lower,Upper,Capitalize};
 	[Serializable]
-	public class AttributeString : Attribute<string,AttributeString,AttributeStringData,SpecialString>{
+	public class AttributeString : Attribute<string,AttributeString,AttributeStringData>{
+		public static string[] specialList = new string[]{"Copy","Lower","Upper","Capitalize"};
 		public static Dictionary<Type,string[]> compare = new Dictionary<Type,string[]>(){
 			{typeof(AttributeStringData),new string[]{"Prefix","Suffix"}}
 		};
@@ -18,12 +18,12 @@ namespace Zios{
 			string value = "";
 			for(int index=0;index<this.data.Length;++index){
 				AttributeData raw = this.data[index];
-				string sign = AttributeString.compare[raw.GetType()][raw.sign];
+				string operation = AttributeString.compare[raw.GetType()][raw.operation];
 				var data = (AttributeStringData)raw;
 				string current = data.Get();
 				if(index == 0){value = current;}
-				else if(sign == "Prefix"){value = current + value;}
-				else if(sign == "Suffix"){value = value + current;}
+				else if(operation == "Prefix"){value = current + value;}
+				else if(operation == "Suffix"){value = value + current;}
 			}
 			return value;
 		}
