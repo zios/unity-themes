@@ -86,9 +86,9 @@ namespace Zios{
 				string skinName = EditorGUIUtility.isProSkin ? "Dark" : "Light";
 				this.skin = FileManager.GetAsset<GUISkin>("Gentleface-" + skinName + ".guiskin");
 				this.attribute = property.GetObject<Attribute>();
-				this.activeDataset = this.attribute.info.data;
 				this.attributeCast = (AttributeType)this.attribute;
 			}
+			this.activeDataset = this.attribute.info.data;
 			GUI.skin = this.skin;
 			this.drawer = drawer;
 			this.property = property;

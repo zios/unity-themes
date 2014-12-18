@@ -102,6 +102,9 @@ namespace Zios{
 			if(index > dataArray.Length-1){
 				dataArray = dataArray.Resize(index+1);
 			}
+			if(dataArray[index] != null){
+				Utility.Destroy(dataArray[index]);
+			}
 			dataArray[index] = data;
 			Utility.SetDirty(data);
 			return dataArray;
