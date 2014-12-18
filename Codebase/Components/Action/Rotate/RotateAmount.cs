@@ -6,6 +6,7 @@ public class RotateAmount : ActionPart{
 	public AttributeGameObject target = new AttributeGameObject();
 	public override void Awake(){
 		base.Awake();
+		this.amount.Setup("Amount",this);
 		this.target.Setup("Target",this);
 	}
 	public override void Use(){

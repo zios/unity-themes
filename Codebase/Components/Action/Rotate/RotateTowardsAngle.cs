@@ -8,6 +8,7 @@ public class RotateTowardsAngle : ActionPart{
 	public override void Awake(){
 		base.Awake();
 		this.source.Setup("Source",this);
+		this.goal.Setup("Goal",this);
 		this.rotation.Setup("Rotation Angle",this);
 		this.rotation.isAngle.Set(true);
 	}
