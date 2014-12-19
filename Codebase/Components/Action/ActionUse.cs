@@ -5,21 +5,14 @@ public class ActionUse : ActionPart{
 	public override void Awake(){
 		this.DefaultAlias("@Use");
 		base.Awake();
-		Events.Add("Action End",this.OnActionEnd);
 	}
 	public override void Use(){
-		if(!this.inUse){
-			this.action.ready.Set(true);
-			base.Use();
-		}
-	}
-	public void OnActionEnd(){
-		this.action.ready.Set(false);
-		base.End();
+		this.action.ready.Set(true);
+		base.Use();
 	}
 	public override void End(){
-		if(!this.action.inUse){
-			this.OnActionEnd();
-		}
+		this.action.ready.Set(false);
+		this.action.End();
+		base.End();
 	}
 }

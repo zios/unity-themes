@@ -145,15 +145,19 @@ namespace Zios{
 			if(parent.IsNull()){return;}
 			this.info.dataType = typeof(DataType);
 			if(!Application.isPlaying){
+				bool dirty = this.info.parent != parent;
+				dirty = dirty || this.info.path != path.AddRoot(parent);
+				dirty = dirty || this.info.localID.IsEmpty();
 				this.info.parent = parent;
 				this.info.path = path.AddRoot(parent);
 				string previousID = this.info.id;
 				this.info.localID = this.info.localID.IsEmpty() ? Guid.NewGuid().ToString() : this.info.localID;
 				this.info.id = parent.GetInstanceID()+"/"+this.info.localID;
-				//Attribute.all.RemoveAll(x=>x==this);
 				this.FixDuplicates();
 				this.FixIDConflict(previousID);
-				Utility.SetDirty(parent);
+				if(dirty || this.info.id != previousID){
+					Utility.SetDirty(parent);
+				}
 			}
 			this.PrepareData();
 			if(!Attribute.all.Contains(this)){
