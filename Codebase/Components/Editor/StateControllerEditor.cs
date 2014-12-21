@@ -39,18 +39,23 @@ public class StateControllerEditor : Editor{
 			if(!stateController.advanced){
 				this.tableIndex = 0;
 			}
-			if(activeTable.Length > 0){
-				//string tableName = ((MonoBehaviour)activeTable[0].target).name;
-				this.tableGUI.tableSkin.label.fixedWidth = 0;
-				foreach(StateRow stateRow in activeTable){
-					int size = (int)(GUI.skin.label.CalcSize(new GUIContent(stateRow.name)).x) + 24;
-					size = (size / 8) * 8 + 1;
-					if(size > this.tableGUI.tableSkin.label.fixedWidth){
-						this.tableGUI.tableSkin.label.fixedWidth = size;
-					}	
+			this.FixLabels();
+			this.nextStep = Time.realtimeSinceStartup + 1f;
+		}
+	}
+	public void FixLabels(){
+		StateController stateController = (StateController)this.target;
+		StateRow[] activeTable = stateController.tables[this.tableIndex];
+		if(activeTable.Length > 0){
+			//string tableName = ((MonoBehaviour)activeTable[0].target).name;
+			this.tableGUI.tableSkin.label.fixedWidth = 0;
+			foreach(StateRow stateRow in activeTable){
+				int size = (int)(GUI.skin.label.CalcSize(new GUIContent(stateRow.name)).x) + 24;
+				size = (size / 8) * 8 + 1;
+				if(size > this.tableGUI.tableSkin.label.fixedWidth){
+					this.tableGUI.tableSkin.label.fixedWidth = size;
 				}
 			}
-			this.nextStep = Time.realtimeSinceStartup + 1f;
 		}
 	}
 	public override void OnInspectorGUI(){
@@ -59,10 +64,14 @@ public class StateControllerEditor : Editor{
 			this.DrawDefaultInspector();
 			return;
 		}
+		this.FixLabels();
 		Utility.EditorCall(this.EditorUpdate);
 		this.tableGUI.Draw();
 		this.DrawControls();
-		if(GUI.changed){Utility.SetDirty(this.target);}
+		if(GUI.changed){
+			Utility.SetDirty(this.target);
+			this.nextStep = 0;
+		}
 	}
 	public virtual void DrawControls(){
 		StateController stateController = (StateController)this.target;
@@ -265,7 +274,7 @@ public class StateControllerEditor : Editor{
 		}
 		table.Move(index,index + amount);
 		row.controller.table = table.ToArray();
-		EditorUtility.SetDirty(row.controller);
+		Utility.SetDirty(row.controller);
 		this.BuildTable(true);
 	}
 	public virtual void MoveItemUp(object target){

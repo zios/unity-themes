@@ -26,6 +26,12 @@ public static class StringExtension{
 	public static string ToTitle(this string current){
 		return Regex.Replace(current,"(\\B[A-Z])"," $1");
 	}
+	public static string ToPascalcase(this string current){
+		return current.Strip(" ").Capitalize();
+	}
+	public static string ToCamelcase(this string current){
+		return current[0].ToString().ToLower() + current.Substring(1).Strip(" ");
+	}
 	public static int ToInt(this string current){
 		return Convert.ToInt32(current);
 	}

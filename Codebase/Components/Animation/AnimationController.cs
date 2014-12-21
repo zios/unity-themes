@@ -12,6 +12,7 @@ public class AnimationData{
 	public float transitionOut = -1;
 	public AnimationData currentAnimation;
 	public AnimationState state;
+	[NonSerialized] public float originalWeight;
 	[NonSerialized] public bool active;
 }
 [RequireComponent(typeof(Animation))][AddComponentMenu("Zios/Component/Animation/Animation Controller")]
@@ -55,6 +56,7 @@ public class AnimationController : ManagedMonoBehaviour{
 				if(data.priority == -1){data.priority = this.defaultPriority;}
 				if(data.transitionIn == -1){data.transitionIn = this.defaultTransitionIn;}
 				if(data.transitionOut == -1){data.transitionOut = this.defaultTransitionOut;}
+				data.originalWeight = data.weight;
 			}
 			if(this.lookup.ContainsKey(this.defaultAnimationName)){
 				this.defaultAnimation = this.lookup[this.defaultAnimationName];
@@ -85,11 +87,10 @@ public class AnimationController : ManagedMonoBehaviour{
 		foreach(AnimationData data in this.animations){
 			if(this.current.ContainsKey(data.name)){
 				string name = data.name;
-				AnimationData current = this.current[name];
-				bool zeroWeight = this.lookup[name].weight <= 0.01f && current != this.defaultAnimation;
-				if(!current.active || zeroWeight){
+				bool zeroWeight = this.lookup[name].weight <= 0.01f && data != this.defaultAnimation;
+				if(!data.active || zeroWeight){
 					this.animation.Blend(name,0,data.transitionOut);
-					current.weight = 1;
+					data.weight = data.originalWeight;
 					this.current.Remove(name);
 				}
 			}

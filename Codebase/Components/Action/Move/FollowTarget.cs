@@ -2,7 +2,7 @@ using Zios;
 using System;
 using UnityEngine;
 public enum OffsetType{Relative,Absolute}
-[AddComponentMenu("Zios/Component/Action/Follow Target")]
+[AddComponentMenu("Zios/Component/Action/Move/Follow Target")]
 public class FollowTarget : ActionPart{
 	public AttributeGameObject source = new AttributeGameObject();
 	public AttributeGameObject target = new AttributeGameObject();
