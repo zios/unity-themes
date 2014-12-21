@@ -22,7 +22,7 @@ namespace Zios{
 		public static implicit operator AttributeBool(bool current){return new AttributeBool(current);}
 		public static implicit operator bool(AttributeBool current){return current.Get();}
 		public override bool GetFormulaValue(){
-			bool value = false;
+			bool value = true;
 			for(int index=0;index<this.data.Length;++index){
 				bool current = false;
 				AttributeData compare = this.info.data[index];
@@ -30,12 +30,13 @@ namespace Zios{
 				bool compareIsNumber = compare is AttributeIntData || compare is AttributeFloatData;
 				bool againstIsNumber = against is AttributeIntData || against is AttributeFloatData;
 				string operation = compare.operation == 0 ? "And" : "Or";
+				if(operation == "Or" && value){break;}
 				if(compare is AttributeBoolData && against is AttributeBoolData){
 					string comparer = AttributeBool.comparers["BoolBool"][against.operation];
 					bool compareValue = ((AttributeBoolData)compare).Get();
 					bool againstValue = ((AttributeBoolData)against).Get();
 					if(comparer == "=="){current = compareValue == againstValue;}
-					else if(comparer == "!+"){current = compareValue != againstValue;}
+					else if(comparer == "!="){current = compareValue != againstValue;}
 				}
 				else if(compareIsNumber && againstIsNumber){
 					string comparer = AttributeBool.comparers["NumberNumber"][against.operation];
@@ -43,8 +44,8 @@ namespace Zios{
 					float againstValue = against is AttributeIntData ? ((AttributeIntData)against).Get() : ((AttributeFloatData)against).Get();
 					if(comparer == "<"){current = compareValue < againstValue;}
 					else if(comparer == ">"){current = compareValue > againstValue;}
-					else if(comparer == "<="){current = compareValue >= againstValue;}
-					else if(comparer == ">="){current = compareValue <= againstValue;}
+					else if(comparer == "<="){current = compareValue <= againstValue;}
+					else if(comparer == ">="){current = compareValue >= againstValue;}
 					else if(comparer == "=="){current = compareValue == againstValue;}
 					else if(comparer == "!+"){current = compareValue != againstValue;}
 				}
