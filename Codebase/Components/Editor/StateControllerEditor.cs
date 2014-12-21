@@ -137,7 +137,7 @@ public class StateControllerEditor : Editor{
 		if(row.target != null){
 			StateMonoBehaviour script = (StateMonoBehaviour)row.target;
 			if(script.usable){
-				style.normal.textColor = EditorGUIUtility.isProSkin ? Colors.Get("Silver") : Colors.Get("DarkGray");
+				style.normal.textColor = EditorGUIUtility.isProSkin ? Colors.Get("Silver") : Colors.Get("Black");
 			}
 			if(script.used){
 				style.normal.textColor = EditorGUIUtility.isProSkin ? Colors.Get("ZestyBlue") : Colors.Get("DarkGreen");
