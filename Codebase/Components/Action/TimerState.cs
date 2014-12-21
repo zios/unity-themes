@@ -14,6 +14,7 @@ public class TimerState : ActionPart{
 		this.seconds.Setup("Seconds",this);
 		this.isStarted.Setup("Is Started",this);
 		this.isComplete.Setup("Is Complete",this);
+		this.endWhileUnusable.Set(this.type == TimerType.After);
 	}
 	public override void Use(){
 		if(this.isComplete){return;}
