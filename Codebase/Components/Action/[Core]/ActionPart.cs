@@ -37,7 +37,7 @@ namespace Zios{
 			bool actionUsable = this.action == null || this.action.usable;
 			if(!happenedOnce){
 				if(actionUsable && this.usable){this.Use();}
-				else if(this.inUse){this.End();}
+				else if(this.inUse || this.endWhileUnusable){this.End();}
 			}
 			else if(!this.usable){
 				this.End();
