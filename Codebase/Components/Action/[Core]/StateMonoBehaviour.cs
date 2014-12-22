@@ -13,10 +13,10 @@ public class StateMonoBehaviour : ManagedMonoBehaviour{
 	private bool requirableOverride;
 	public override void Awake(){
 		base.Awake();
-		this.inUse.Setup("Active",this);
 		this.requirable.Setup("Requirable",this);
 		this.ready.Setup("Ready",this);
 		this.usable.Setup("Usable",this);
+		this.inUse.Setup("Active",this);
 		this.used.Setup("Used",this);
 		this.endWhileUnusable.Setup("End While Unusable",this);
 	}

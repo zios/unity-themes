@@ -104,13 +104,9 @@ namespace Zios{
 			EditorGUI.BeginProperty(area,label,property);
 			this.Draw();
 			EditorGUI.EndProperty();
-			if(GUI.changed){
+			if(GUI.changed || Application.isPlaying){
 				property.serializedObject.ApplyModifiedProperties();
 				EditorUtility.SetDirty(sources[0]);
-				//property.serializedObject.UpdateIfDirtyOrScript();
-				if(EditorWindow.mouseOverWindow != null){
-					EditorWindow.mouseOverWindow.Repaint();
-				}
 			}
 		}
 		public void SetupAreas(Rect area){
