@@ -128,14 +128,14 @@ public class AttributeManager : MonoBehaviour{
 		this.data[this.nextIndex].Awake();
 		this.nextIndex += 1;
 		if(AttributeManager.refresh){
-			this.stage = 2;
+			this.stage = 0;
 			this.nextIndex = 0;
-			return;
 		}
 	}
 	public void StepCleanData(){
 		if(this.nextIndex > Attribute.all.Count-1){
 			this.stage = 3;
+			this.nextIndex = 0;
 			return;
 		}
 		var attribute = Attribute.all[this.nextIndex];
@@ -145,6 +145,7 @@ public class AttributeManager : MonoBehaviour{
 	public void StepBuildLookup(){
 		if(this.nextIndex > Attribute.all.Count-1){
 			this.stage = 4;
+			this.nextIndex = 0;
 			return;
 		}
 		var attribute = Attribute.all[this.nextIndex];
@@ -155,6 +156,7 @@ public class AttributeManager : MonoBehaviour{
 		if(this.nextIndex > Attribute.all.Count-1){
 			Attribute.ready = true;
 			this.stage = 0;
+			this.nextIndex = 0;
 			return;
 		}
 		var attribute = Attribute.all[this.nextIndex];		
