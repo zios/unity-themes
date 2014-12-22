@@ -23,8 +23,7 @@ public class AttributeManager : MonoBehaviour{
 	private DataMonoBehaviour[] data;
 	private int nextIndex;
 	private bool setup;
-	private bool building;
-	private bool buildingData;
+	private int stage;
 	#if UNITY_EDITOR
     [MenuItem("Zios/Process/Attribute/Remove Visible Data")]
 	static void RemoveVisibleData(){AttributeManager.RemoveAttributeData(true);}
@@ -89,10 +88,33 @@ public class AttributeManager : MonoBehaviour{
 		this.start = Time.realtimeSinceStartup;
 		this.nextIndex = 0;
 	}
-	public void BuildStep(){
+	public void Start(){
+		if(!AttributeManager.refresh){
+			if(this.stage == 1){this.StepRefresh();}
+			if(this.stage == 2){this.StepCleanData();}
+			if(this.stage == 3){this.StepBuildLookup();}
+			if(this.stage == 4){this.StepBuildData();}
+		}
+		if(Application.isPlaying || Time.realtimeSinceStartup > this.nextStep){
+			AttributeManager.editorInterval = this.updateInterval;
+			if(!Application.isPlaying && AttributeManager.editorInterval == -1 && !AttributeManager.refresh){return;}
+			this.nextStep = Time.realtimeSinceStartup + AttributeManager.editorInterval;
+			if(!this.setup || AttributeManager.refresh){
+				AttributeManager.refresh = false;
+				this.SceneRefresh();
+				this.setup = true;
+				this.stage = 1;
+				Debug.Log("AttributeManager : Refreshing...");
+			}
+			else if(this.stage == 0){
+				this.stage = 2;
+			}
+		}
+	}
+	public void StepRefresh(){
 		if(this.nextIndex > this.data.Length-1){
-			this.building = false;
-			Debug.Log("AttributeManager : Build Complete : " + (Time.realtimeSinceStartup - this.start) + " seconds.");
+			this.stage = 2;
+			Debug.Log("AttributeManager : Refresh Complete : " + (Time.realtimeSinceStartup - this.start) + " seconds.");
 			if(!Application.isPlaying){
 				Debug.Log("AttributeManager : Data Count : " + data.Count(x=>x is AttributeData));
 				foreach(DataMonoBehaviour entry in data){
@@ -106,39 +128,36 @@ public class AttributeManager : MonoBehaviour{
 		this.data[this.nextIndex].Awake();
 		this.nextIndex += 1;
 		if(AttributeManager.refresh){
-			this.building = false;
+			this.stage = 2;
 			this.nextIndex = 0;
 			return;
 		}
 	}
-	public void Start(){
-		if(this.building){this.BuildStep();}
-		if(this.buildingData){this.BuildDataStep();}
-		if(Application.isPlaying || Time.realtimeSinceStartup > this.nextStep){
-			AttributeManager.editorInterval = this.updateInterval;
-			if(!Application.isPlaying && AttributeManager.editorInterval == -1 && !AttributeManager.refresh){return;}
-			this.nextStep = Time.realtimeSinceStartup + AttributeManager.editorInterval;
-			if(!this.setup || AttributeManager.refresh){
-				AttributeManager.refresh = false;
-				this.SceneRefresh();
-				this.setup = true;
-				this.building = true;
-				Debug.Log("AttributeManager : Building...");
-			}
-			if(!this.building){
-				this.buildingData = true;
-			}
-		}
-	}
-	public void BuildDataStep(){
+	public void StepCleanData(){
 		if(this.nextIndex > Attribute.all.Count-1){
-			Attribute.ready = true;
-			this.buildingData = false;
+			this.stage = 3;
 			return;
 		}
 		var attribute = Attribute.all[this.nextIndex];
 		if(attribute.info.parent.IsNull()){Attribute.all.Remove(attribute);}
+		this.nextIndex += 1;
+	}
+	public void StepBuildLookup(){
+		if(this.nextIndex > Attribute.all.Count-1){
+			this.stage = 4;
+			return;
+		}
+		var attribute = Attribute.all[this.nextIndex];
 		attribute.BuildLookup();
+		this.nextIndex += 1;
+	}
+	public void StepBuildData(){
+		if(this.nextIndex > Attribute.all.Count-1){
+			Attribute.ready = true;
+			this.stage = 0;
+			return;
+		}
+		var attribute = Attribute.all[this.nextIndex];		
 		attribute.BuildData(attribute.info.data);
 		attribute.BuildData(attribute.info.dataB);
 		attribute.BuildData(attribute.info.dataC);
