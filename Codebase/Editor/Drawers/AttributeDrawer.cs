@@ -45,8 +45,13 @@ namespace Zios{
 				utility.GetVariable<Stack<PropertyDrawer>>("s_DrawerStack").Push(this);*/
 				return;
 			}
-			if(!Attribute.ready || !area.InspectorValid()){return;}
+			if(!area.InspectorValid()){return;}
 			this.overallHeight = this.GetBaseHeight(property,label);
+			if(!Attribute.ready){
+				EditorGUI.ProgressBar(area,AttributeManager.percentLoaded,"Refreshing");
+				Utility.SetDirty(property.serializedObject.targetObject);
+				return;
+			}
 			if(this.access == null){
 				if(this.attribute is AttributeFloat){this.access = new AttributeAccess<float,AttributeFloat,AttributeFloatData>();}
 				if(this.attribute is AttributeInt){this.access = new AttributeAccess<int,AttributeInt,AttributeIntData>();}

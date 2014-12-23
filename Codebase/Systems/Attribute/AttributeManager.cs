@@ -12,6 +12,7 @@ using UnityEditor;
 #endif
 [AddComponentMenu("Zios/Singleton/Attribute Manager")][ExecuteInEditMode]
 public class AttributeManager : MonoBehaviour{
+	public static float percentLoaded;
 	public static bool refresh;
 	public static float editorInterval = 1;
 	public float updateInterval = 1;
@@ -20,7 +21,7 @@ public class AttributeManager : MonoBehaviour{
 	public bool updateOnAssetChange = false;
 	private float nextStep;
 	private float start;
-	private DataMonoBehaviour[] data;
+	private DataMonoBehaviour[] data = new DataMonoBehaviour[0];
 	private int nextIndex;
 	private bool setup;
 	private int stage;
@@ -53,6 +54,7 @@ public class AttributeManager : MonoBehaviour{
 	}
     [MenuItem("Zios/Process/Attribute/Full Refresh")]
 	static void AttributeRefresh(){
+		Attribute.ready = false;
 		AttributeManager.refresh = true;
 	}	
 	#endif
@@ -73,6 +75,7 @@ public class AttributeManager : MonoBehaviour{
 	}
 	[ContextMenu("Refresh")]
 	public void PerformRefresh(){
+		Attribute.ready = false;
 		AttributeManager.refresh = true;
 	}
 	public void SceneRefresh(){
@@ -101,6 +104,7 @@ public class AttributeManager : MonoBehaviour{
 			if(this.stage == 2){this.StepCleanData();}
 			if(this.stage == 3){this.StepBuildLookup();}
 			if(this.stage == 4){this.StepBuildData();}
+			AttributeManager.percentLoaded = (((float)this.nextIndex / this.data.Length) / 4.0f) + ((this.stage-1)*0.25f);
 		}
 		if(!Application.isPlaying && Time.realtimeSinceStartup > this.nextStep){
 			AttributeManager.editorInterval = this.updateInterval;
@@ -111,7 +115,7 @@ public class AttributeManager : MonoBehaviour{
 				this.SceneRefresh();
 				this.setup = true;
 				this.stage = 1;
-				Debug.Log("AttributeManager : Refreshing...");
+				Utility.EditorLog("AttributeManager : Refreshing...");
 			}
 			else if(this.stage == 0){
 				this.stage = 2;
@@ -121,10 +125,10 @@ public class AttributeManager : MonoBehaviour{
 	public void StepRefresh(){
 		if(this.nextIndex > this.data.Length-1){
 			this.stage = 2;
-			Debug.Log("AttributeManager : Refresh Complete : " + (Time.realtimeSinceStartup - this.start) + " seconds.");
+			Utility.EditorLog("AttributeManager : Refresh Complete : " + (Time.realtimeSinceStartup - this.start) + " seconds.");
+			Utility.EditorLog("AttributeManager : Data Count : " + this.data.Count(x=>x is AttributeData));
 			if(!Application.isPlaying){
-				Debug.Log("AttributeManager : Data Count : " + data.Count(x=>x is AttributeData));
-				foreach(DataMonoBehaviour entry in data){
+				foreach(DataMonoBehaviour entry in this.data){
 					if(entry is AttributeData){
 						((AttributeData)entry).Validate();
 					}

@@ -7,7 +7,12 @@ using System.Collections.Generic;
 public class EventTargetDrawer : PropertyDrawer{
 	public Dictionary<EventTarget,bool> targetMode = new Dictionary<EventTarget,bool>();
     public override void OnGUI(Rect area,SerializedProperty property,GUIContent label){
-		if(!Attribute.ready || !area.InspectorValid()){return;}
+		if(!area.InspectorValid()){return;}
+		if(!Attribute.ready){
+			EditorGUI.ProgressBar(area,AttributeManager.percentLoaded,"Refreshing");
+			Utility.SetDirty(property.serializedObject.targetObject);
+			return;
+		}
 		string skin = EditorGUIUtility.isProSkin ? "Dark" : "Light";
 		GUI.skin = FileManager.GetAsset<GUISkin>("Gentleface-" + skin + ".guiskin");
 		Rect labelRect = area.SetWidth(EditorGUIUtility.labelWidth);

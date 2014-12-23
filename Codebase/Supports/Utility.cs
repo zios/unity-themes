@@ -125,4 +125,9 @@ public static class Utility{
 		#endif
 		return 0;
 	}
+	public static void EditorLog(string text){
+		if(!Application.isPlaying){
+			Debug.Log(text);
+		}
+	}
 }
