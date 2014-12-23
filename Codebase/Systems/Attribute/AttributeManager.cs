@@ -89,13 +89,20 @@ public class AttributeManager : MonoBehaviour{
 		this.nextIndex = 0;
 	}
 	public void Start(){
+		if(Application.isPlaying && !this.setup){
+			this.SceneRefresh();
+			this.setup = true;
+			this.stage = 1;
+			while(this.stage != 0){this.Start();}
+			return;
+		}
 		if(!AttributeManager.refresh){
 			if(this.stage == 1){this.StepRefresh();}
 			if(this.stage == 2){this.StepCleanData();}
 			if(this.stage == 3){this.StepBuildLookup();}
 			if(this.stage == 4){this.StepBuildData();}
 		}
-		if(Application.isPlaying || Time.realtimeSinceStartup > this.nextStep){
+		if(!Application.isPlaying && Time.realtimeSinceStartup > this.nextStep){
 			AttributeManager.editorInterval = this.updateInterval;
 			if(!Application.isPlaying && AttributeManager.editorInterval == -1 && !AttributeManager.refresh){return;}
 			this.nextStep = Time.realtimeSinceStartup + AttributeManager.editorInterval;
