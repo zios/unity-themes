@@ -48,7 +48,7 @@ namespace Zios{
 			if(!area.InspectorValid()){return;}
 			this.overallHeight = this.GetBaseHeight(property,label);
 			if(!Attribute.ready){
-				EditorGUI.ProgressBar(area,AttributeManager.percentLoaded,"Refreshing");
+				EditorGUI.ProgressBar(area,AttributeManager.percentLoaded,"Updating");
 				Utility.SetDirty(property.serializedObject.targetObject);
 				return;
 			}

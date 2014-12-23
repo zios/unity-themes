@@ -9,7 +9,7 @@ public class EventTargetDrawer : PropertyDrawer{
     public override void OnGUI(Rect area,SerializedProperty property,GUIContent label){
 		if(!area.InspectorValid()){return;}
 		if(!Attribute.ready){
-			EditorGUI.ProgressBar(area,AttributeManager.percentLoaded,"Refreshing");
+			EditorGUI.ProgressBar(area,AttributeManager.percentLoaded,"Updating");
 			Utility.SetDirty(property.serializedObject.targetObject);
 			return;
 		}

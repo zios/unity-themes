@@ -17,12 +17,14 @@ public class AttributeManager : MonoBehaviour{
 	public static float editorInterval = 1;
 	public float updateInterval = 1;
 	public bool editorIncludeDisabled = true;
+	public bool editorPassiveRefresh = false;
 	public bool updateOnHierarchyChange = false;
 	public bool updateOnAssetChange = false;
 	private float nextStep;
 	private float start;
 	private DataMonoBehaviour[] data = new DataMonoBehaviour[0];
 	private int nextIndex;
+	private bool activeRefresh;
 	private bool setup;
 	private int stage;
 	#if UNITY_EDITOR
@@ -92,7 +94,8 @@ public class AttributeManager : MonoBehaviour{
 		this.nextIndex = 0;
 	}
 	public void Start(){
-		if(Application.isPlaying && !this.setup){
+		bool editor = !Application.isPlaying;
+		if(!editor && !this.setup){
 			this.SceneRefresh();
 			this.setup = true;
 			this.stage = 1;
@@ -106,9 +109,9 @@ public class AttributeManager : MonoBehaviour{
 			if(this.stage == 4){this.StepBuildData();}
 			AttributeManager.percentLoaded = (((float)this.nextIndex / this.data.Length) / 4.0f) + ((this.stage-1)*0.25f);
 		}
-		if(!Application.isPlaying && Time.realtimeSinceStartup > this.nextStep){
+		if(editor && Time.realtimeSinceStartup > this.nextStep){
 			AttributeManager.editorInterval = this.updateInterval;
-			if(!Application.isPlaying && AttributeManager.editorInterval == -1 && !AttributeManager.refresh){return;}
+			if(editor && AttributeManager.editorInterval == -1 && !AttributeManager.refresh){return;}
 			this.nextStep = Time.realtimeSinceStartup + AttributeManager.editorInterval;
 			if(!this.setup || AttributeManager.refresh){
 				AttributeManager.refresh = false;
@@ -116,6 +119,11 @@ public class AttributeManager : MonoBehaviour{
 				this.setup = true;
 				this.stage = 1;
 				Utility.EditorLog("AttributeManager : Refreshing...");
+				if(editor && !this.editorPassiveRefresh && !this.activeRefresh){
+					this.activeRefresh = true;
+					while(this.stage != 0){this.Start();}
+					this.activeRefresh = false;
+				}
 			}
 			else if(this.stage == 0){
 				this.stage = 2;
@@ -125,8 +133,6 @@ public class AttributeManager : MonoBehaviour{
 	public void StepRefresh(){
 		if(this.nextIndex > this.data.Length-1){
 			this.stage = 2;
-			Utility.EditorLog("AttributeManager : Refresh Complete : " + (Time.realtimeSinceStartup - this.start) + " seconds.");
-			Utility.EditorLog("AttributeManager : Data Count : " + this.data.Count(x=>x is AttributeData));
 			if(!Application.isPlaying){
 				foreach(DataMonoBehaviour entry in this.data){
 					if(entry is AttributeData){
@@ -165,6 +171,10 @@ public class AttributeManager : MonoBehaviour{
 	}
 	public void StepBuildData(){
 		if(this.nextIndex > Attribute.all.Count-1){
+			if(!Attribute.ready){
+				Utility.EditorLog("AttributeManager : Refresh Complete : " + (Time.realtimeSinceStartup - this.start) + " seconds.");
+				Utility.EditorLog("AttributeManager : Data Count : " + this.data.Count(x=>x is AttributeData));
+			}
 			Attribute.ready = true;
 			this.stage = 0;
 			this.nextIndex = 0;
