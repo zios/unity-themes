@@ -351,6 +351,7 @@ namespace Zios{
 					this.usage = AttributeUsage.Direct;
 				}
 				data.value = value;
+				Utility.SetDirty(data);
 			}
 			else if(this.info.mode == AttributeMode.Linked){
 				if(!Attribute.ready && Application.isPlaying){
@@ -367,6 +368,7 @@ namespace Zios{
 					return;
 				}
 				((AttributeType)data.reference).Set(value);
+				Utility.SetDirty(data);
 			}
 			else if(this.info.mode == AttributeMode.Formula){
 				if(!Attribute.setWarning.ContainsKey(this)){

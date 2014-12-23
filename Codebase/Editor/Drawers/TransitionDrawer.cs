@@ -20,11 +20,11 @@ public class TransitionDrawer : PropertyDrawer{
 		"delay".DrawLabel(valueRect.AddX(127).SetWidth(40));
 		curveValue = transition.curve.Draw(valueRect.Add(169,0,-169,0));
 		EditorGUI.EndProperty();
-		property.serializedObject.ApplyModifiedProperties();
 		if(GUI.changed){
 			transition.duration.Set(durationValue);
 			transition.delayStart.Set(delayValue);
 			transition.curve = curveValue;
+			property.serializedObject.ApplyModifiedProperties();
 			EditorUtility.SetDirty(property.serializedObject.targetObject);
 		}
     }

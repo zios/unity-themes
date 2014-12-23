@@ -5,17 +5,21 @@ using System.Collections.Generic;
 public enum InputRange{Any,Zero,Negative,Positive}
 public static class InputState{
 	public static Dictionary<string,int> owner = new Dictionary<string,int>();
-	public static bool CheckOwner(string key,int id,bool released){
+	public static void SetOwner(string key,int id){
+		InputState.owner[key] = id;
+	}
+	public static void ResetOwner(string key){
+		InputState.SetOwner(key,-1);
+	}
+	public static bool HasOwner(string key){
 		if(InputState.owner.ContainsKey(key)){
-			int owner = InputState.owner[key];
-			bool isOwner = owner == id;
-			if(isOwner && released){
-				InputState.owner[key] = -1;
-				return true;
-			}
-			if(!isOwner && owner != -1){
-				return true;
-			}
+			return InputState.owner[key] != -1;
+		}
+		return false;
+	}
+	public static bool IsOwner(string key,int id){
+		if(InputState.HasOwner(key)){
+			return InputState.owner[key] == id;
 		}
 		return false;
 	}

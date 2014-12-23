@@ -18,8 +18,13 @@ namespace Zios{
 				return;
 			}
 			if(this.isPrefab){return;}
-			if(!Attribute.ready || !area.InspectorValid()){return;}
+			if(!area.InspectorValid()){return;}
 			this.overallHeight = this.GetBaseHeight(property,label);
+			if(!Attribute.ready){
+				EditorGUI.ProgressBar(area,AttributeManager.percentLoaded,"Updating");
+				Utility.SetDirty(property.serializedObject.targetObject);
+				return;
+			}
 			if(this.access == null){
 				this.access = new AttributeBoolAccess();
 			}

@@ -4,48 +4,51 @@ using System;
 using System.Collections.Generic;
 [AddComponentMenu("Zios/Component/Action/Input Held")]
 public class InputHeld : ActionPart{
-	public AttributeString inputName = "Button1";
 	public InputRange requirement;
-	public AttributeBool forcePositiveIntensity = true;
+	public AttributeString inputName = "Button1";
+	public AttributeFloat intensity = 0;
 	public AttributeBool heldDuringIntensity = true;
-	public AttributeBool exclusive = false;
-	[HideInInspector] public AttributeFloat intensity = 0;
+	public AttributeBool ignoreOwnership = false;
 	[HideInInspector] public bool held;
+	[NonSerialized] public int inputID;
 	[NonSerialized] public bool lastHeld;
+	[NonSerialized] public bool setup;
 	public override void Awake(){
 		base.Awake();
-		this.inputName.Setup("InputName",this);
-		this.forcePositiveIntensity.Setup("Force Positive Intensity",this);
+		this.inputID = this.GetInstanceID();
+		this.inputName.Setup("Input Name",this);
 		this.heldDuringIntensity.Setup("Held During Intensity",this);
-		this.exclusive.Setup("Exclusive",this);
+		this.ignoreOwnership.Setup("Ignore Ownership",this);
 		this.intensity.Setup("Intensity",this);
-		Events.Add("Action Start",this.OnActionStart);
 	}
 	public override void Use(){
 		bool inputSuccess = this.CheckInput();
 		if(inputSuccess){
+			if(!this.setup){
+				this.setup = true;
+				if(this.ignoreOwnership || !InputState.HasOwner(this.inputName)){
+					InputState.SetOwner(this.inputName,this.inputID);
+				}
+			}
 			base.Use();
 		}
 		else if(this.inUse){
+			InputState.ResetOwner(this.inputName);
+			this.setup = false;
+			this.lastHeld = false;
 			base.End();
-		}
-	}
-	public void OnActionStart(){
-		if(this.exclusive){
-			InputState.owner[this.inputName] = this.GetInstanceID();
 		}
 	}
 	public virtual bool CheckInput(){
 		string inputName = this.inputName;
-		int id = this.GetInstanceID();
+		bool isOwner = this.ignoreOwnership || !InputState.HasOwner(inputName) || InputState.IsOwner(inputName,this.inputID);
+		if(!isOwner){return false;}
 		this.held = Input.GetAxisRaw(inputName) != 0;
-		float intensity = this.forcePositiveIntensity ? Mathf.Abs(Input.GetAxis(inputName)) : Input.GetAxis(inputName);
-		this.intensity.Set(intensity);
-		bool released = this.held != this.lastHeld;
-		bool canEnd = !this.heldDuringIntensity || (this.heldDuringIntensity && intensity == 0);
-		if(canEnd && this.exclusive && InputState.CheckOwner(inputName,id,released)){
-			return false;
-		}
+		this.intensity.Set(Input.GetAxis(inputName));
+		bool released = !this.held && this.lastHeld;
+		bool canEnd = (!this.heldDuringIntensity && released) || (this.heldDuringIntensity && intensity == 0);
+		if(released && isOwner){InputState.ResetOwner(inputName);}
+		if(canEnd){return false;}
 		bool requirementMet = InputState.CheckRequirement(this.requirement,intensity);
 		if(requirementMet){
 			bool held = this.heldDuringIntensity ? intensity != 0 : this.held;

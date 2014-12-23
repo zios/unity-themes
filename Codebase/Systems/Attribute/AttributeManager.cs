@@ -16,8 +16,8 @@ public class AttributeManager : MonoBehaviour{
 	public static bool refresh;
 	public static float editorInterval = 1;
 	public float updateInterval = 1;
+	public int editorRefreshPasses = -1;
 	public bool editorIncludeDisabled = true;
-	public bool editorPassiveRefresh = false;
 	public bool updateOnHierarchyChange = false;
 	public bool updateOnAssetChange = false;
 	private float nextStep;
@@ -93,6 +93,11 @@ public class AttributeManager : MonoBehaviour{
 		this.start = Time.realtimeSinceStartup;
 		this.nextIndex = 0;
 	}
+	public void StartStep(){
+		this.activeRefresh = true;
+		this.Start();
+		this.activeRefresh = false;
+	}
 	public void Start(){
 		bool editor = !Application.isPlaying;
 		if(!editor && !this.setup){
@@ -101,6 +106,11 @@ public class AttributeManager : MonoBehaviour{
 			this.stage = 1;
 			while(this.stage != 0){this.Start();}
 			return;
+		}
+		if(editor && stage != 0 && !this.activeRefresh && this.editorRefreshPasses > 1){
+			for(int index=0;index<this.editorRefreshPasses-1;++index){
+				Utility.EditorDelayCall(this.StartStep);
+			}
 		}
 		if(!AttributeManager.refresh){
 			if(this.stage == 1){this.StepRefresh();}
@@ -119,7 +129,7 @@ public class AttributeManager : MonoBehaviour{
 				this.setup = true;
 				this.stage = 1;
 				Utility.EditorLog("AttributeManager : Refreshing...");
-				if(editor && !this.editorPassiveRefresh && !this.activeRefresh){
+				if(editor && this.editorRefreshPasses <= 0 && !this.activeRefresh){
 					this.activeRefresh = true;
 					while(this.stage != 0){this.Start();}
 					this.activeRefresh = false;

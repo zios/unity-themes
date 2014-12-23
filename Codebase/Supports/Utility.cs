@@ -105,6 +105,11 @@ public static class Utility{
 		}
 		#endif
 	}
+	public static void EditorDelayCall(CallbackFunction method){
+		#if UNITY_EDITOR
+		EditorApplication.delayCall += method;
+		#endif
+	}
 	public static Type GetEditorType(string name){
 		#if UNITY_EDITOR
 		foreach(var type in typeof(EditorApplication).Assembly.GetTypes()){
