@@ -64,6 +64,7 @@ GameObject:
   - 114: {fileID: 11400660}
   - 114: {fileID: 11400658}
   - 114: {fileID: 11400656}
+  - 114: {fileID: 11400082}
   m_Layer: 2
   m_Name: Camera
   m_TagString: MainCamera
@@ -98,7 +99,7 @@ GameObject:
   - 222: {fileID: 22200000}
   - 114: {fileID: 11400006}
   m_Layer: 5
-  m_Name: Background
+  m_Name: FrameTime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -181,7 +182,7 @@ GameObject:
   - 114: {fileID: 11400056}
   - 114: {fileID: 11400058}
   m_Layer: 5
-  m_Name: FramerateText
+  m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -361,6 +362,8 @@ GameObject:
   - 114: {fileID: 11400604}
   - 114: {fileID: 11400602}
   - 114: {fileID: 11400600}
+  - 114: {fileID: 11400080}
+  - 114: {fileID: 11400078}
   m_Layer: 0
   m_Name: FadeIn
   m_TagString: Untagged
@@ -395,6 +398,8 @@ GameObject:
   - 114: {fileID: 11400632}
   - 114: {fileID: 11400630}
   - 114: {fileID: 11400628}
+  - 114: {fileID: 11400086}
+  - 114: {fileID: 11400084}
   m_Layer: 0
   m_Name: FadeOut
   m_TagString: Untagged
@@ -411,11 +416,10 @@ GameObject:
   m_Component:
   - 224: {fileID: 22400006}
   - 222: {fileID: 22200004}
-  - 114: {fileID: 11400060}
   - 114: {fileID: 11400062}
-  - 114: {fileID: 11400064}
+  - 114: {fileID: 11400060}
   m_Layer: 5
-  m_Name: FramerateValue
+  m_Name: FPSValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -431,9 +435,9 @@ GameObject:
   - 224: {fileID: 22400008}
   - 222: {fileID: 22200006}
   - 114: {fileID: 11400066}
-  - 114: {fileID: 11400068}
+  - 114: {fileID: 11400064}
   m_Layer: 5
-  m_Name: FramerateColon
+  m_Name: Colon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -449,6 +453,7 @@ GameObject:
   - 224: {fileID: 22400000}
   - 223: {fileID: 22300000}
   - 114: {fileID: 11400070}
+  - 114: {fileID: 11400088}
   m_Layer: 5
   m_Name: Debug
   m_TagString: Untagged
@@ -487,6 +492,77 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &100050
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 22400010}
+  - 222: {fileID: 22200008}
+  - 114: {fileID: 11400090}
+  m_Layer: 5
+  m_Name: FPS
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &100052
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 22400012}
+  - 222: {fileID: 22200010}
+  - 114: {fileID: 11400094}
+  - 114: {fileID: 11400092}
+  m_Layer: 5
+  m_Name: FrameTimeValue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &100054
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 22400014}
+  - 222: {fileID: 22200012}
+  - 114: {fileID: 11400098}
+  - 114: {fileID: 11400096}
+  m_Layer: 5
+  m_Name: Label
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &100056
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 22400016}
+  - 222: {fileID: 22200014}
+  - 114: {fileID: 11400102}
+  - 114: {fileID: 11400100}
+  m_Layer: 5
+  m_Name: Colon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &100058
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,7 +586,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: .939999998, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400002}
@@ -875,11 +951,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 21300000, guid: 26ef53bb67e864b4cb3eeb4d8168c69c, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 4bed1d5d95dd39a41837386b0ffd4a2a, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -966,6 +1042,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c834bc92ef30dd4b9aea9d51609ee77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fpsText: {fileID: 0}
+  frameTimeText: {fileID: 0}
 --- !u!114 &11400012
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1052,6 +1130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   updateInterval: 1
+  editorRefreshPasses: -1
   editorIncludeDisabled: 1
   updateOnHierarchyChange: 1
   updateOnAssetChange: 1
@@ -1070,7 +1149,7 @@ MonoBehaviour:
   directionUp:
     info:
       path: Transform/Direction/Up
-      id: 212142/7c1c8f1d-b588-4661-a9ca-483101477a07
+      id: 42856/7c1c8f1d-b588-4661-a9ca-483101477a07
       localID: 7c1c8f1d-b588-4661-a9ca-483101477a07
       parent: {fileID: 11400024}
       mode: 0
@@ -1081,7 +1160,7 @@ MonoBehaviour:
     x:
       info:
         path: Transform/Direction/Up/X
-        id: 212142/9da8b0e5-831f-426e-81f4-ad03ccbe2069
+        id: 42856/9da8b0e5-831f-426e-81f4-ad03ccbe2069
         localID: 9da8b0e5-831f-426e-81f4-ad03ccbe2069
         parent: {fileID: 11400024}
         mode: 0
@@ -1092,7 +1171,7 @@ MonoBehaviour:
     y:
       info:
         path: Transform/Direction/Up/Y
-        id: 212142/10f9502d-4ade-4821-beee-7dcbb937980e
+        id: 42856/10f9502d-4ade-4821-beee-7dcbb937980e
         localID: 10f9502d-4ade-4821-beee-7dcbb937980e
         parent: {fileID: 11400024}
         mode: 0
@@ -1103,7 +1182,7 @@ MonoBehaviour:
     z:
       info:
         path: Transform/Direction/Up/Z
-        id: 212142/6d9d13f2-893b-4ba1-9e8e-1acd60d1515e
+        id: 42856/6d9d13f2-893b-4ba1-9e8e-1acd60d1515e
         localID: 6d9d13f2-893b-4ba1-9e8e-1acd60d1515e
         parent: {fileID: 11400024}
         mode: 0
@@ -1114,7 +1193,7 @@ MonoBehaviour:
   directionDown:
     info:
       path: Transform/Direction/Down
-      id: 212142/6ba0f867-8c21-4840-84e0-a9f007a390bc
+      id: 42856/6ba0f867-8c21-4840-84e0-a9f007a390bc
       localID: 6ba0f867-8c21-4840-84e0-a9f007a390bc
       parent: {fileID: 11400024}
       mode: 0
@@ -1125,7 +1204,7 @@ MonoBehaviour:
     x:
       info:
         path: Transform/Direction/Down/X
-        id: 212142/319ee938-44eb-4587-ac19-f70093b7eaa4
+        id: 42856/319ee938-44eb-4587-ac19-f70093b7eaa4
         localID: 319ee938-44eb-4587-ac19-f70093b7eaa4
         parent: {fileID: 11400024}
         mode: 0
@@ -1136,7 +1215,7 @@ MonoBehaviour:
     y:
       info:
         path: Transform/Direction/Down/Y
-        id: 212142/24e3bb12-44fe-4974-845a-c70c39418c19
+        id: 42856/24e3bb12-44fe-4974-845a-c70c39418c19
         localID: 24e3bb12-44fe-4974-845a-c70c39418c19
         parent: {fileID: 11400024}
         mode: 0
@@ -1147,7 +1226,7 @@ MonoBehaviour:
     z:
       info:
         path: Transform/Direction/Down/Z
-        id: 212142/bd90eeaa-7eba-4b54-9ee0-b9ec30c26cd4
+        id: 42856/bd90eeaa-7eba-4b54-9ee0-b9ec30c26cd4
         localID: bd90eeaa-7eba-4b54-9ee0-b9ec30c26cd4
         parent: {fileID: 11400024}
         mode: 0
@@ -1158,7 +1237,7 @@ MonoBehaviour:
   directionLeft:
     info:
       path: Transform/Direction/Left
-      id: 212142/996781d9-9a85-4d85-bf88-518db39e5bd1
+      id: 42856/996781d9-9a85-4d85-bf88-518db39e5bd1
       localID: 996781d9-9a85-4d85-bf88-518db39e5bd1
       parent: {fileID: 11400024}
       mode: 0
@@ -1169,7 +1248,7 @@ MonoBehaviour:
     x:
       info:
         path: Transform/Direction/Left/X
-        id: 212142/ffcd09b5-2baf-4b6a-a35d-1a485e026b6a
+        id: 42856/ffcd09b5-2baf-4b6a-a35d-1a485e026b6a
         localID: ffcd09b5-2baf-4b6a-a35d-1a485e026b6a
         parent: {fileID: 11400024}
         mode: 0
@@ -1180,7 +1259,7 @@ MonoBehaviour:
     y:
       info:
         path: Transform/Direction/Left/Y
-        id: 212142/66de9ddf-9de4-42db-a326-82f30797bf5b
+        id: 42856/66de9ddf-9de4-42db-a326-82f30797bf5b
         localID: 66de9ddf-9de4-42db-a326-82f30797bf5b
         parent: {fileID: 11400024}
         mode: 0
@@ -1191,7 +1270,7 @@ MonoBehaviour:
     z:
       info:
         path: Transform/Direction/Left/Z
-        id: 212142/fd370e2e-8ded-4774-8f67-a186724d0148
+        id: 42856/fd370e2e-8ded-4774-8f67-a186724d0148
         localID: fd370e2e-8ded-4774-8f67-a186724d0148
         parent: {fileID: 11400024}
         mode: 0
@@ -1202,7 +1281,7 @@ MonoBehaviour:
   directionRight:
     info:
       path: Transform/Direction/Right
-      id: 212142/5d397ae8-41b9-4edc-96a7-078335dc8920
+      id: 42856/5d397ae8-41b9-4edc-96a7-078335dc8920
       localID: 5d397ae8-41b9-4edc-96a7-078335dc8920
       parent: {fileID: 11400024}
       mode: 0
@@ -1213,7 +1292,7 @@ MonoBehaviour:
     x:
       info:
         path: Transform/Direction/Right/X
-        id: 212142/5e5e5663-18ae-42b7-b464-7f82c142b318
+        id: 42856/5e5e5663-18ae-42b7-b464-7f82c142b318
         localID: 5e5e5663-18ae-42b7-b464-7f82c142b318
         parent: {fileID: 11400024}
         mode: 0
@@ -1224,7 +1303,7 @@ MonoBehaviour:
     y:
       info:
         path: Transform/Direction/Right/Y
-        id: 212142/c1deb29c-1ee7-4654-be23-c27d9171fa12
+        id: 42856/c1deb29c-1ee7-4654-be23-c27d9171fa12
         localID: c1deb29c-1ee7-4654-be23-c27d9171fa12
         parent: {fileID: 11400024}
         mode: 0
@@ -1235,7 +1314,7 @@ MonoBehaviour:
     z:
       info:
         path: Transform/Direction/Right/Z
-        id: 212142/9c4c3748-6d19-4ace-bfa4-49e24a7d646c
+        id: 42856/9c4c3748-6d19-4ace-bfa4-49e24a7d646c
         localID: 9c4c3748-6d19-4ace-bfa4-49e24a7d646c
         parent: {fileID: 11400024}
         mode: 0
@@ -1246,7 +1325,7 @@ MonoBehaviour:
   directionForward:
     info:
       path: Transform/Direction/Forward
-      id: 212142/0aff9476-fb05-4afa-8489-24b2073f2f2e
+      id: 42856/0aff9476-fb05-4afa-8489-24b2073f2f2e
       localID: 0aff9476-fb05-4afa-8489-24b2073f2f2e
       parent: {fileID: 11400024}
       mode: 0
@@ -1257,7 +1336,7 @@ MonoBehaviour:
     x:
       info:
         path: Transform/Direction/Forward/X
-        id: 212142/b606da24-43f4-4c6b-8ca4-9e23d43939aa
+        id: 42856/b606da24-43f4-4c6b-8ca4-9e23d43939aa
         localID: b606da24-43f4-4c6b-8ca4-9e23d43939aa
         parent: {fileID: 11400024}
         mode: 0
@@ -1268,7 +1347,7 @@ MonoBehaviour:
     y:
       info:
         path: Transform/Direction/Forward/Y
-        id: 212142/690d3851-aa68-49cc-be7e-51b586ce3396
+        id: 42856/690d3851-aa68-49cc-be7e-51b586ce3396
         localID: 690d3851-aa68-49cc-be7e-51b586ce3396
         parent: {fileID: 11400024}
         mode: 0
@@ -1279,7 +1358,7 @@ MonoBehaviour:
     z:
       info:
         path: Transform/Direction/Forward/Z
-        id: 212142/64d8f9b6-0a56-4fef-ab27-a1baa3b354a2
+        id: 42856/64d8f9b6-0a56-4fef-ab27-a1baa3b354a2
         localID: 64d8f9b6-0a56-4fef-ab27-a1baa3b354a2
         parent: {fileID: 11400024}
         mode: 0
@@ -1290,7 +1369,7 @@ MonoBehaviour:
   directionBack:
     info:
       path: Transform/Direction/Back
-      id: 212142/89f0c7f6-13b9-43a3-a803-65bcd98ce0df
+      id: 42856/89f0c7f6-13b9-43a3-a803-65bcd98ce0df
       localID: 89f0c7f6-13b9-43a3-a803-65bcd98ce0df
       parent: {fileID: 11400024}
       mode: 0
@@ -1301,7 +1380,7 @@ MonoBehaviour:
     x:
       info:
         path: Transform/Direction/Back/X
-        id: 212142/8c788f8b-0caf-444c-86dc-bb181020fb05
+        id: 42856/8c788f8b-0caf-444c-86dc-bb181020fb05
         localID: 8c788f8b-0caf-444c-86dc-bb181020fb05
         parent: {fileID: 11400024}
         mode: 0
@@ -1312,7 +1391,7 @@ MonoBehaviour:
     y:
       info:
         path: Transform/Direction/Back/Y
-        id: 212142/7205cdbd-bd5e-45fc-bf42-ee227da791b5
+        id: 42856/7205cdbd-bd5e-45fc-bf42-ee227da791b5
         localID: 7205cdbd-bd5e-45fc-bf42-ee227da791b5
         parent: {fileID: 11400024}
         mode: 0
@@ -1323,7 +1402,7 @@ MonoBehaviour:
     z:
       info:
         path: Transform/Direction/Back/Z
-        id: 212142/3dad85ec-a1f3-4b36-a733-f42dda8f8cc6
+        id: 42856/3dad85ec-a1f3-4b36-a733-f42dda8f8cc6
         localID: 3dad85ec-a1f3-4b36-a733-f42dda8f8cc6
         parent: {fileID: 11400024}
         mode: 0
@@ -1451,7 +1530,7 @@ MonoBehaviour:
   requirable:
     info:
       path: Disable/Requirable
-      id: 212436/79274a24-f9dc-4334-82c0-e038609a7afd
+      id: 43984/79274a24-f9dc-4334-82c0-e038609a7afd
       localID: 79274a24-f9dc-4334-82c0-e038609a7afd
       parent: {fileID: 11400036}
       mode: 0
@@ -1462,7 +1541,7 @@ MonoBehaviour:
   ready:
     info:
       path: Disable/Ready
-      id: 212436/3a8b1164-8e48-4c55-8f18-70b66465324c
+      id: 43984/3a8b1164-8e48-4c55-8f18-70b66465324c
       localID: 3a8b1164-8e48-4c55-8f18-70b66465324c
       parent: {fileID: 11400036}
       mode: 0
@@ -1473,7 +1552,7 @@ MonoBehaviour:
   usable:
     info:
       path: Disable/Usable
-      id: 212436/f723ee0b-c3b4-4b2f-81e1-5f9ea3a2659a
+      id: 43984/f723ee0b-c3b4-4b2f-81e1-5f9ea3a2659a
       localID: f723ee0b-c3b4-4b2f-81e1-5f9ea3a2659a
       parent: {fileID: 11400036}
       mode: 0
@@ -1484,7 +1563,7 @@ MonoBehaviour:
   inUse:
     info:
       path: Disable/Active
-      id: 212436/1b4e8fb9-405c-47b0-8736-f487a42d0936
+      id: 43984/1b4e8fb9-405c-47b0-8736-f487a42d0936
       localID: 1b4e8fb9-405c-47b0-8736-f487a42d0936
       parent: {fileID: 11400036}
       mode: 0
@@ -1495,7 +1574,7 @@ MonoBehaviour:
   used:
     info:
       path: Disable/Used
-      id: 212436/b4e028c5-f25e-4455-85f0-0cc6ad206c3f
+      id: 43984/b4e028c5-f25e-4455-85f0-0cc6ad206c3f
       localID: b4e028c5-f25e-4455-85f0-0cc6ad206c3f
       parent: {fileID: 11400036}
       mode: 0
@@ -1503,11 +1582,22 @@ MonoBehaviour:
       - {fileID: 11400646}
       dataB: []
       dataC: []
+  endWhileUnusable:
+    info:
+      path: Disable/End While Unusable
+      id: 43984/069bc529-16f5-4ebb-bc5d-1ec74dc73077
+      localID: 069bc529-16f5-4ebb-bc5d-1ec74dc73077
+      parent: {fileID: 11400036}
+      mode: 0
+      data:
+      - {fileID: 11400086}
+      dataB: []
+      dataC: []
   occurrence: 2
   target:
     info:
       path: Disable/Target
-      id: 212436/641ea334-112a-449a-a626-c23c619afcb4
+      id: 43984/641ea334-112a-449a-a626-c23c619afcb4
       localID: 641ea334-112a-449a-a626-c23c619afcb4
       parent: {fileID: 11400036}
       mode: 0
@@ -1585,7 +1675,7 @@ MonoBehaviour:
   requirable:
     info:
       path: Lifetime/Requirable
-      id: 212438/0fa7c80d-a673-48db-bb7d-8bb1a2807e26
+      id: 43986/0fa7c80d-a673-48db-bb7d-8bb1a2807e26
       localID: 0fa7c80d-a673-48db-bb7d-8bb1a2807e26
       parent: {fileID: 11400046}
       mode: 0
@@ -1596,7 +1686,7 @@ MonoBehaviour:
   ready:
     info:
       path: Lifetime/Ready
-      id: 212438/b4955416-fbd8-4712-a310-cafada30ba7e
+      id: 43986/b4955416-fbd8-4712-a310-cafada30ba7e
       localID: b4955416-fbd8-4712-a310-cafada30ba7e
       parent: {fileID: 11400046}
       mode: 0
@@ -1607,7 +1697,7 @@ MonoBehaviour:
   usable:
     info:
       path: Lifetime/Usable
-      id: 212438/848fb369-23d8-4b38-9412-fb4fa80632b1
+      id: 43986/848fb369-23d8-4b38-9412-fb4fa80632b1
       localID: 848fb369-23d8-4b38-9412-fb4fa80632b1
       parent: {fileID: 11400046}
       mode: 0
@@ -1618,7 +1708,7 @@ MonoBehaviour:
   inUse:
     info:
       path: Lifetime/Active
-      id: 212438/4d90a97d-6067-4f98-8d59-45450a8ce596
+      id: 43986/4d90a97d-6067-4f98-8d59-45450a8ce596
       localID: 4d90a97d-6067-4f98-8d59-45450a8ce596
       parent: {fileID: 11400046}
       mode: 0
@@ -1629,7 +1719,7 @@ MonoBehaviour:
   used:
     info:
       path: Lifetime/Used
-      id: 212438/f0231d64-50ac-43c3-bf77-c28ab6b5cdff
+      id: 43986/f0231d64-50ac-43c3-bf77-c28ab6b5cdff
       localID: f0231d64-50ac-43c3-bf77-c28ab6b5cdff
       parent: {fileID: 11400046}
       mode: 0
@@ -1637,12 +1727,23 @@ MonoBehaviour:
       - {fileID: 11400634}
       dataB: []
       dataC: []
+  endWhileUnusable:
+    info:
+      path: Lifetime/End While Unusable
+      id: 43986/68b6f70d-1d19-49ca-bf38-9961ebcfb404
+      localID: 68b6f70d-1d19-49ca-bf38-9961ebcfb404
+      parent: {fileID: 11400046}
+      mode: 0
+      data:
+      - {fileID: 11400084}
+      dataB: []
+      dataC: []
   occurrence: 0
   type: 0
   seconds:
     info:
       path: Lifetime/Seconds
-      id: 212438/111f0ca4-c73d-4741-bbf6-0b034b33437b
+      id: 43986/111f0ca4-c73d-4741-bbf6-0b034b33437b
       localID: 111f0ca4-c73d-4741-bbf6-0b034b33437b
       parent: {fileID: 11400046}
       mode: 0
@@ -1653,7 +1754,7 @@ MonoBehaviour:
   isStarted:
     info:
       path: Lifetime/Is Started
-      id: 212438/aa514e39-0654-4da0-83f1-b48eadb0b435
+      id: 43986/aa514e39-0654-4da0-83f1-b48eadb0b435
       localID: aa514e39-0654-4da0-83f1-b48eadb0b435
       parent: {fileID: 11400046}
       mode: 0
@@ -1664,7 +1765,7 @@ MonoBehaviour:
   isComplete:
     info:
       path: Lifetime/Is Complete
-      id: 212438/872e9aaa-ce3b-4c40-984f-997309c72722
+      id: 43986/872e9aaa-ce3b-4c40-984f-997309c72722
       localID: 872e9aaa-ce3b-4c40-984f-997309c72722
       parent: {fileID: 11400046}
       mode: 0
@@ -1885,7 +1986,7 @@ MonoBehaviour:
   requirable:
     info:
       path: Lifetime/Requirable
-      id: 213504/ba0d254f-74c9-4e1f-863f-6bdaab49ea94
+      id: 41628/ba0d254f-74c9-4e1f-863f-6bdaab49ea94
       localID: ba0d254f-74c9-4e1f-863f-6bdaab49ea94
       parent: {fileID: 11400052}
       mode: 0
@@ -1896,7 +1997,7 @@ MonoBehaviour:
   ready:
     info:
       path: Lifetime/Ready
-      id: 213504/1a908959-6dd1-4d23-a21e-30033bdb36d0
+      id: 41628/1a908959-6dd1-4d23-a21e-30033bdb36d0
       localID: 1a908959-6dd1-4d23-a21e-30033bdb36d0
       parent: {fileID: 11400052}
       mode: 0
@@ -1907,7 +2008,7 @@ MonoBehaviour:
   usable:
     info:
       path: Lifetime/Usable
-      id: 213504/b0f29e25-0891-4484-886f-47219bbe68bf
+      id: 41628/b0f29e25-0891-4484-886f-47219bbe68bf
       localID: b0f29e25-0891-4484-886f-47219bbe68bf
       parent: {fileID: 11400052}
       mode: 0
@@ -1918,7 +2019,7 @@ MonoBehaviour:
   inUse:
     info:
       path: Lifetime/Active
-      id: 213504/00a222f7-7ed6-486c-b7f0-f406856d2b0c
+      id: 41628/00a222f7-7ed6-486c-b7f0-f406856d2b0c
       localID: 00a222f7-7ed6-486c-b7f0-f406856d2b0c
       parent: {fileID: 11400052}
       mode: 0
@@ -1929,7 +2030,7 @@ MonoBehaviour:
   used:
     info:
       path: Lifetime/Used
-      id: 213504/793dc28c-a7bf-4c3c-82b0-98bcf4acf869
+      id: 41628/793dc28c-a7bf-4c3c-82b0-98bcf4acf869
       localID: 793dc28c-a7bf-4c3c-82b0-98bcf4acf869
       parent: {fileID: 11400052}
       mode: 0
@@ -1937,12 +2038,23 @@ MonoBehaviour:
       - {fileID: 11400618}
       dataB: []
       dataC: []
+  endWhileUnusable:
+    info:
+      path: Lifetime/End While Unusable
+      id: 41628/6e50a429-b873-49f5-800e-5c922ab8fc96
+      localID: 6e50a429-b873-49f5-800e-5c922ab8fc96
+      parent: {fileID: 11400052}
+      mode: 0
+      data:
+      - {fileID: 11400078}
+      dataB: []
+      dataC: []
   occurrence: 0
   type: 0
   seconds:
     info:
       path: Lifetime/Seconds
-      id: 213504/868a8e6d-a048-43f2-b1d4-1c315db61757
+      id: 41628/868a8e6d-a048-43f2-b1d4-1c315db61757
       localID: 868a8e6d-a048-43f2-b1d4-1c315db61757
       parent: {fileID: 11400052}
       mode: 0
@@ -1953,7 +2065,7 @@ MonoBehaviour:
   isStarted:
     info:
       path: Lifetime/Is Started
-      id: 213504/a6f9d906-2c06-4765-96ad-1da817e412fa
+      id: 41628/a6f9d906-2c06-4765-96ad-1da817e412fa
       localID: a6f9d906-2c06-4765-96ad-1da817e412fa
       parent: {fileID: 11400052}
       mode: 0
@@ -1964,7 +2076,7 @@ MonoBehaviour:
   isComplete:
     info:
       path: Lifetime/Is Complete
-      id: 213504/c18f8e2e-5934-483e-a9b4-832d7b16b64d
+      id: 41628/c18f8e2e-5934-483e-a9b4-832d7b16b64d
       localID: c18f8e2e-5934-483e-a9b4-832d7b16b64d
       parent: {fileID: 11400052}
       mode: 0
@@ -1989,7 +2101,7 @@ MonoBehaviour:
   requirable:
     info:
       path: Disable/Requirable
-      id: 213506/806e961a-c585-4a55-aa5f-1f49d7644271
+      id: 41626/806e961a-c585-4a55-aa5f-1f49d7644271
       localID: 806e961a-c585-4a55-aa5f-1f49d7644271
       parent: {fileID: 11400054}
       mode: 0
@@ -2000,7 +2112,7 @@ MonoBehaviour:
   ready:
     info:
       path: Disable/Ready
-      id: 213506/ca4ee0d5-08bf-47d2-8fda-1b9669cbc9dc
+      id: 41626/ca4ee0d5-08bf-47d2-8fda-1b9669cbc9dc
       localID: ca4ee0d5-08bf-47d2-8fda-1b9669cbc9dc
       parent: {fileID: 11400054}
       mode: 0
@@ -2011,7 +2123,7 @@ MonoBehaviour:
   usable:
     info:
       path: Disable/Usable
-      id: 213506/362fe737-25c2-4892-a995-f801efa74693
+      id: 41626/362fe737-25c2-4892-a995-f801efa74693
       localID: 362fe737-25c2-4892-a995-f801efa74693
       parent: {fileID: 11400054}
       mode: 0
@@ -2022,7 +2134,7 @@ MonoBehaviour:
   inUse:
     info:
       path: Disable/Active
-      id: 213506/dd2ef7cc-feb5-49f3-894d-8093da588024
+      id: 41626/dd2ef7cc-feb5-49f3-894d-8093da588024
       localID: dd2ef7cc-feb5-49f3-894d-8093da588024
       parent: {fileID: 11400054}
       mode: 0
@@ -2033,7 +2145,7 @@ MonoBehaviour:
   used:
     info:
       path: Disable/Used
-      id: 213506/ce1e868e-6e88-46c4-a1bb-9568e84bc45c
+      id: 41626/ce1e868e-6e88-46c4-a1bb-9568e84bc45c
       localID: ce1e868e-6e88-46c4-a1bb-9568e84bc45c
       parent: {fileID: 11400054}
       mode: 0
@@ -2041,11 +2153,22 @@ MonoBehaviour:
       - {fileID: 11400602}
       dataB: []
       dataC: []
+  endWhileUnusable:
+    info:
+      path: Disable/End While Unusable
+      id: 41626/af5f3a10-1fec-4303-b935-d45b9a55c862
+      localID: af5f3a10-1fec-4303-b935-d45b9a55c862
+      parent: {fileID: 11400054}
+      mode: 0
+      data:
+      - {fileID: 11400080}
+      dataB: []
+      dataC: []
   occurrence: 2
   target:
     info:
       path: Disable/Target
-      id: 213506/bbc7bf4f-1c00-47fe-8d4b-ba97e82939af
+      id: 41626/bbc7bf4f-1c00-47fe-8d4b-ba97e82939af
       localID: bbc7bf4f-1c00-47fe-8d4b-ba97e82939af
       parent: {fileID: 11400054}
       mode: 0
@@ -2066,20 +2189,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 0, a: 1}
+  m_Color: {r: .835294127, g: .835294127, b: .835294127, a: 1}
   m_FontData:
     m_Font: {fileID: 12800000, guid: 765cdf527c770a245ae2953532a3641b, type: 3}
-    m_FontSize: 34
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 6
+    m_MaxSize: 25
+    m_Alignment: 4
     m_RichText: 0
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: FPS
+  m_Text: Frame Time
 --- !u!114 &11400058
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2091,10 +2214,24 @@ MonoBehaviour:
   m_Script: {fileID: 1573420865, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: .80392158}
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
   m_EffectDistance: {x: 1, y: -1.99000001}
   m_UseGraphicAlpha: 1
 --- !u!114 &11400060
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1573420865, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: .670588255}
+  m_EffectDistance: {x: 1.40999997, y: -1.94000006}
+  m_UseGraphicAlpha: 1
+--- !u!114 &11400062
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -2113,38 +2250,27 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 7
+    m_MaxSize: 30
+    m_Alignment: 4
     m_RichText: 0
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 900
---- !u!114 &11400062
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100040}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1573420865, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: .670588255}
-  m_EffectDistance: {x: 1.40999997, y: -1.94000006}
-  m_UseGraphicAlpha: 1
+  m_Text: 0
 --- !u!114 &11400064
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100040}
+  m_GameObject: {fileID: 100042}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c834bc92ef30dd4b9aea9d51609ee77, type: 3}
+  m_Script: {fileID: 1573420865, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: .80392158}
+  m_EffectDistance: {x: 1, y: -1.99000001}
+  m_UseGraphicAlpha: 1
 --- !u!114 &11400066
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2171,20 +2297,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: ':'
---- !u!114 &11400068
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100042}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1573420865, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: .80392158}
-  m_EffectDistance: {x: 1, y: -1.99000001}
-  m_UseGraphicAlpha: 1
 --- !u!114 &11400070
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2244,7 +2356,7 @@ MonoBehaviour:
   requirable:
     info:
       path: Lock Cursor/Requirable
-      id: 212134/6319e4cf-d8fc-4ec1-84ee-193999a72f1c
+      id: 42854/6319e4cf-d8fc-4ec1-84ee-193999a72f1c
       localID: 6319e4cf-d8fc-4ec1-84ee-193999a72f1c
       parent: {fileID: 11400074}
       mode: 0
@@ -2255,7 +2367,7 @@ MonoBehaviour:
   ready:
     info:
       path: Lock Cursor/Ready
-      id: 212134/906ce955-5650-45e2-9dec-368a9eab1b05
+      id: 42854/906ce955-5650-45e2-9dec-368a9eab1b05
       localID: 906ce955-5650-45e2-9dec-368a9eab1b05
       parent: {fileID: 11400074}
       mode: 0
@@ -2266,7 +2378,7 @@ MonoBehaviour:
   usable:
     info:
       path: Lock Cursor/Usable
-      id: 212134/78353af6-e670-40a0-bc39-4cc1d6f23aea
+      id: 42854/78353af6-e670-40a0-bc39-4cc1d6f23aea
       localID: 78353af6-e670-40a0-bc39-4cc1d6f23aea
       parent: {fileID: 11400074}
       mode: 0
@@ -2277,7 +2389,7 @@ MonoBehaviour:
   inUse:
     info:
       path: Lock Cursor/Active
-      id: 212134/96f3081a-c657-4e79-af6e-d736c8bad847
+      id: 42854/96f3081a-c657-4e79-af6e-d736c8bad847
       localID: 96f3081a-c657-4e79-af6e-d736c8bad847
       parent: {fileID: 11400074}
       mode: 0
@@ -2288,12 +2400,23 @@ MonoBehaviour:
   used:
     info:
       path: Lock Cursor/Used
-      id: 212134/e0f58fc1-ae5c-4b17-aec6-a0ef3872010c
+      id: 42854/e0f58fc1-ae5c-4b17-aec6-a0ef3872010c
       localID: e0f58fc1-ae5c-4b17-aec6-a0ef3872010c
       parent: {fileID: 11400074}
       mode: 0
       data:
       - {fileID: 11400712}
+      dataB: []
+      dataC: []
+  endWhileUnusable:
+    info:
+      path: Lock Cursor/End While Unusable
+      id: 42854/cd626186-c01f-4821-874d-b831ef73573b
+      localID: cd626186-c01f-4821-874d-b831ef73573b
+      parent: {fileID: 11400074}
+      mode: 0
+      data:
+      - {fileID: 11400082}
       dataB: []
       dataC: []
   occurrence: 2
@@ -2312,7 +2435,7 @@ MonoBehaviour:
   position:
     info:
       path: Transform/Position
-      id: 212144/ab157e29-840d-4f26-87e9-131ee32c5b9a
+      id: 42852/ab157e29-840d-4f26-87e9-131ee32c5b9a
       localID: ab157e29-840d-4f26-87e9-131ee32c5b9a
       parent: {fileID: 11400076}
       mode: 0
@@ -2323,7 +2446,7 @@ MonoBehaviour:
     x:
       info:
         path: Transform/Position/X
-        id: 212144/5d398aa0-9296-41fd-8f47-4e2c45b12965
+        id: 42852/5d398aa0-9296-41fd-8f47-4e2c45b12965
         localID: 5d398aa0-9296-41fd-8f47-4e2c45b12965
         parent: {fileID: 11400076}
         mode: 0
@@ -2334,7 +2457,7 @@ MonoBehaviour:
     y:
       info:
         path: Transform/Position/Y
-        id: 212144/20d47e13-ad3f-4187-a5ed-b42b989dc241
+        id: 42852/20d47e13-ad3f-4187-a5ed-b42b989dc241
         localID: 20d47e13-ad3f-4187-a5ed-b42b989dc241
         parent: {fileID: 11400076}
         mode: 0
@@ -2345,7 +2468,7 @@ MonoBehaviour:
     z:
       info:
         path: Transform/Position/Z
-        id: 212144/223ae1fd-86f0-46eb-8a8c-2609d323e47d
+        id: 42852/223ae1fd-86f0-46eb-8a8c-2609d323e47d
         localID: 223ae1fd-86f0-46eb-8a8c-2609d323e47d
         parent: {fileID: 11400076}
         mode: 0
@@ -2353,6 +2476,385 @@ MonoBehaviour:
         - {fileID: 11400656}
         dataB: []
         dataC: []
+--- !u!114 &11400078
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    direct: {fileID: 0}
+    parent: {fileID: 0}
+  usage: 0
+  path: Lifetime/End While Unusable/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    path: Lifetime/End While Unusable
+    id: 41628/6e50a429-b873-49f5-800e-5c922ab8fc96
+    localID: 6e50a429-b873-49f5-800e-5c922ab8fc96
+    parent: {fileID: 11400052}
+    mode: 0
+    data:
+    - {fileID: 11400078}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 1
+--- !u!114 &11400080
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    direct: {fileID: 0}
+    parent: {fileID: 0}
+  usage: 0
+  path: Disable/End While Unusable/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    path: Disable/End While Unusable
+    id: 41626/af5f3a10-1fec-4303-b935-d45b9a55c862
+    localID: af5f3a10-1fec-4303-b935-d45b9a55c862
+    parent: {fileID: 11400054}
+    mode: 0
+    data:
+    - {fileID: 11400080}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11400082
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    direct: {fileID: 0}
+    parent: {fileID: 0}
+  usage: 0
+  path: Lock Cursor/End While Unusable/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    path: Lock Cursor/End While Unusable
+    id: 42854/cd626186-c01f-4821-874d-b831ef73573b
+    localID: cd626186-c01f-4821-874d-b831ef73573b
+    parent: {fileID: 11400074}
+    mode: 0
+    data:
+    - {fileID: 11400082}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11400084
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    direct: {fileID: 0}
+    parent: {fileID: 0}
+  usage: 0
+  path: Lifetime/End While Unusable/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    path: Lifetime/End While Unusable
+    id: 43986/68b6f70d-1d19-49ca-bf38-9961ebcfb404
+    localID: 68b6f70d-1d19-49ca-bf38-9961ebcfb404
+    parent: {fileID: 11400046}
+    mode: 0
+    data:
+    - {fileID: 11400084}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 1
+--- !u!114 &11400086
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    direct: {fileID: 0}
+    parent: {fileID: 0}
+  usage: 0
+  path: Disable/End While Unusable/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    path: Disable/End While Unusable
+    id: 43984/069bc529-16f5-4ebb-bc5d-1ec74dc73077
+    localID: 069bc529-16f5-4ebb-bc5d-1ec74dc73077
+    parent: {fileID: 11400036}
+    mode: 0
+    data:
+    - {fileID: 11400086}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11400088
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c834bc92ef30dd4b9aea9d51609ee77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fpsText: {fileID: 11400062}
+  frameTimeText: {fileID: 11400094}
+--- !u!114 &11400090
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 4bed1d5d95dd39a41837386b0ffd4a2a, type: 3}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!114 &11400092
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1573420865, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: .670588255}
+  m_EffectDistance: {x: 1.40999997, y: -1.94000006}
+  m_UseGraphicAlpha: 1
+--- !u!114 &11400094
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 765cdf527c770a245ae2953532a3641b, type: 3}
+    m_FontSize: 19
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 10
+    m_MaxSize: 25
+    m_Alignment: 4
+    m_RichText: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 0
+--- !u!114 &11400096
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1573420865, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 1, y: -1.99000001}
+  m_UseGraphicAlpha: 1
+--- !u!114 &11400098
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: .838235259, g: .838235259, b: .838235259, a: 1}
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 765cdf527c770a245ae2953532a3641b, type: 3}
+    m_FontSize: 25
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 10
+    m_MaxSize: 25
+    m_Alignment: 4
+    m_RichText: 0
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: FPS
+--- !u!114 &11400100
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1573420865, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: .80392158}
+  m_EffectDistance: {x: 1, y: -1.99000001}
+  m_UseGraphicAlpha: 1
+--- !u!114 &11400102
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 765cdf527c770a245ae2953532a3641b, type: 3}
+    m_FontSize: 34
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 1
+    m_RichText: 0
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: ':'
 --- !u!114 &11400600
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2373,7 +2875,7 @@ MonoBehaviour:
     - {fileID: 100038}
     - {fileID: 100038}
     - {fileID: 100038}
-    - {fileID: 100000}
+    - {fileID: 100036}
     - {fileID: 100036}
     - {fileID: 100036}
     specialNames:
@@ -2395,7 +2897,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Disable/Target
-    id: 213506/bbc7bf4f-1c00-47fe-8d4b-ba97e82939af
+    id: 41626/bbc7bf4f-1c00-47fe-8d4b-ba97e82939af
     localID: bbc7bf4f-1c00-47fe-8d4b-ba97e82939af
     parent: {fileID: 11400054}
     mode: 0
@@ -2440,7 +2942,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Disable/Used
-    id: 213506/ce1e868e-6e88-46c4-a1bb-9568e84bc45c
+    id: 41626/ce1e868e-6e88-46c4-a1bb-9568e84bc45c
     localID: ce1e868e-6e88-46c4-a1bb-9568e84bc45c
     parent: {fileID: 11400054}
     mode: 0
@@ -2485,7 +2987,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Disable/Usable
-    id: 213506/362fe737-25c2-4892-a995-f801efa74693
+    id: 41626/362fe737-25c2-4892-a995-f801efa74693
     localID: 362fe737-25c2-4892-a995-f801efa74693
     parent: {fileID: 11400054}
     mode: 0
@@ -2530,7 +3032,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Disable/Ready
-    id: 213506/ca4ee0d5-08bf-47d2-8fda-1b9669cbc9dc
+    id: 41626/ca4ee0d5-08bf-47d2-8fda-1b9669cbc9dc
     localID: ca4ee0d5-08bf-47d2-8fda-1b9669cbc9dc
     parent: {fileID: 11400054}
     mode: 0
@@ -2575,7 +3077,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Disable/Requirable
-    id: 213506/806e961a-c585-4a55-aa5f-1f49d7644271
+    id: 41626/806e961a-c585-4a55-aa5f-1f49d7644271
     localID: 806e961a-c585-4a55-aa5f-1f49d7644271
     parent: {fileID: 11400054}
     mode: 0
@@ -2620,7 +3122,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Disable/Active
-    id: 213506/dd2ef7cc-feb5-49f3-894d-8093da588024
+    id: 41626/dd2ef7cc-feb5-49f3-894d-8093da588024
     localID: dd2ef7cc-feb5-49f3-894d-8093da588024
     parent: {fileID: 11400054}
     mode: 0
@@ -2665,7 +3167,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Lifetime/Is Complete
-    id: 213504/c18f8e2e-5934-483e-a9b4-832d7b16b64d
+    id: 41628/c18f8e2e-5934-483e-a9b4-832d7b16b64d
     localID: c18f8e2e-5934-483e-a9b4-832d7b16b64d
     parent: {fileID: 11400052}
     mode: 0
@@ -2710,7 +3212,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Lifetime/Is Started
-    id: 213504/a6f9d906-2c06-4765-96ad-1da817e412fa
+    id: 41628/a6f9d906-2c06-4765-96ad-1da817e412fa
     localID: a6f9d906-2c06-4765-96ad-1da817e412fa
     parent: {fileID: 11400052}
     mode: 0
@@ -2755,7 +3257,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Lifetime/Seconds
-    id: 213504/868a8e6d-a048-43f2-b1d4-1c315db61757
+    id: 41628/868a8e6d-a048-43f2-b1d4-1c315db61757
     localID: 868a8e6d-a048-43f2-b1d4-1c315db61757
     parent: {fileID: 11400052}
     mode: 0
@@ -2800,7 +3302,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Lifetime/Used
-    id: 213504/793dc28c-a7bf-4c3c-82b0-98bcf4acf869
+    id: 41628/793dc28c-a7bf-4c3c-82b0-98bcf4acf869
     localID: 793dc28c-a7bf-4c3c-82b0-98bcf4acf869
     parent: {fileID: 11400052}
     mode: 0
@@ -2845,7 +3347,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Lifetime/Usable
-    id: 213504/b0f29e25-0891-4484-886f-47219bbe68bf
+    id: 41628/b0f29e25-0891-4484-886f-47219bbe68bf
     localID: b0f29e25-0891-4484-886f-47219bbe68bf
     parent: {fileID: 11400052}
     mode: 0
@@ -2890,7 +3392,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Lifetime/Ready
-    id: 213504/1a908959-6dd1-4d23-a21e-30033bdb36d0
+    id: 41628/1a908959-6dd1-4d23-a21e-30033bdb36d0
     localID: 1a908959-6dd1-4d23-a21e-30033bdb36d0
     parent: {fileID: 11400052}
     mode: 0
@@ -2935,7 +3437,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Lifetime/Requirable
-    id: 213504/ba0d254f-74c9-4e1f-863f-6bdaab49ea94
+    id: 41628/ba0d254f-74c9-4e1f-863f-6bdaab49ea94
     localID: ba0d254f-74c9-4e1f-863f-6bdaab49ea94
     parent: {fileID: 11400052}
     mode: 0
@@ -2980,7 +3482,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Lifetime/Active
-    id: 213504/00a222f7-7ed6-486c-b7f0-f406856d2b0c
+    id: 41628/00a222f7-7ed6-486c-b7f0-f406856d2b0c
     localID: 00a222f7-7ed6-486c-b7f0-f406856d2b0c
     parent: {fileID: 11400052}
     mode: 0
@@ -3025,7 +3527,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Lifetime/Is Complete
-    id: 212438/872e9aaa-ce3b-4c40-984f-997309c72722
+    id: 43986/872e9aaa-ce3b-4c40-984f-997309c72722
     localID: 872e9aaa-ce3b-4c40-984f-997309c72722
     parent: {fileID: 11400046}
     mode: 0
@@ -3070,7 +3572,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Lifetime/Is Started
-    id: 212438/aa514e39-0654-4da0-83f1-b48eadb0b435
+    id: 43986/aa514e39-0654-4da0-83f1-b48eadb0b435
     localID: aa514e39-0654-4da0-83f1-b48eadb0b435
     parent: {fileID: 11400046}
     mode: 0
@@ -3115,7 +3617,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Lifetime/Seconds
-    id: 212438/111f0ca4-c73d-4741-bbf6-0b034b33437b
+    id: 43986/111f0ca4-c73d-4741-bbf6-0b034b33437b
     localID: 111f0ca4-c73d-4741-bbf6-0b034b33437b
     parent: {fileID: 11400046}
     mode: 0
@@ -3160,7 +3662,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Lifetime/Used
-    id: 212438/f0231d64-50ac-43c3-bf77-c28ab6b5cdff
+    id: 43986/f0231d64-50ac-43c3-bf77-c28ab6b5cdff
     localID: f0231d64-50ac-43c3-bf77-c28ab6b5cdff
     parent: {fileID: 11400046}
     mode: 0
@@ -3205,7 +3707,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Lifetime/Usable
-    id: 212438/848fb369-23d8-4b38-9412-fb4fa80632b1
+    id: 43986/848fb369-23d8-4b38-9412-fb4fa80632b1
     localID: 848fb369-23d8-4b38-9412-fb4fa80632b1
     parent: {fileID: 11400046}
     mode: 0
@@ -3250,7 +3752,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Lifetime/Ready
-    id: 212438/b4955416-fbd8-4712-a310-cafada30ba7e
+    id: 43986/b4955416-fbd8-4712-a310-cafada30ba7e
     localID: b4955416-fbd8-4712-a310-cafada30ba7e
     parent: {fileID: 11400046}
     mode: 0
@@ -3295,7 +3797,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Lifetime/Requirable
-    id: 212438/0fa7c80d-a673-48db-bb7d-8bb1a2807e26
+    id: 43986/0fa7c80d-a673-48db-bb7d-8bb1a2807e26
     localID: 0fa7c80d-a673-48db-bb7d-8bb1a2807e26
     parent: {fileID: 11400046}
     mode: 0
@@ -3340,7 +3842,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Lifetime/Active
-    id: 212438/4d90a97d-6067-4f98-8d59-45450a8ce596
+    id: 43986/4d90a97d-6067-4f98-8d59-45450a8ce596
     localID: 4d90a97d-6067-4f98-8d59-45450a8ce596
     parent: {fileID: 11400046}
     mode: 0
@@ -3381,7 +3883,7 @@ MonoBehaviour:
     - {fileID: 100036}
     - {fileID: 100038}
     - {fileID: 100038}
-    - {fileID: 100000}
+    - {fileID: 100038}
     - {fileID: 100038}
     - {fileID: 100038}
     specialNames:
@@ -3403,7 +3905,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Disable/Target
-    id: 212436/641ea334-112a-449a-a626-c23c619afcb4
+    id: 43984/641ea334-112a-449a-a626-c23c619afcb4
     localID: 641ea334-112a-449a-a626-c23c619afcb4
     parent: {fileID: 11400036}
     mode: 0
@@ -3448,7 +3950,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Disable/Used
-    id: 212436/b4e028c5-f25e-4455-85f0-0cc6ad206c3f
+    id: 43984/b4e028c5-f25e-4455-85f0-0cc6ad206c3f
     localID: b4e028c5-f25e-4455-85f0-0cc6ad206c3f
     parent: {fileID: 11400036}
     mode: 0
@@ -3493,7 +3995,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Disable/Usable
-    id: 212436/f723ee0b-c3b4-4b2f-81e1-5f9ea3a2659a
+    id: 43984/f723ee0b-c3b4-4b2f-81e1-5f9ea3a2659a
     localID: f723ee0b-c3b4-4b2f-81e1-5f9ea3a2659a
     parent: {fileID: 11400036}
     mode: 0
@@ -3538,7 +4040,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Disable/Ready
-    id: 212436/3a8b1164-8e48-4c55-8f18-70b66465324c
+    id: 43984/3a8b1164-8e48-4c55-8f18-70b66465324c
     localID: 3a8b1164-8e48-4c55-8f18-70b66465324c
     parent: {fileID: 11400036}
     mode: 0
@@ -3583,7 +4085,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Disable/Requirable
-    id: 212436/79274a24-f9dc-4334-82c0-e038609a7afd
+    id: 43984/79274a24-f9dc-4334-82c0-e038609a7afd
     localID: 79274a24-f9dc-4334-82c0-e038609a7afd
     parent: {fileID: 11400036}
     mode: 0
@@ -3628,7 +4130,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Disable/Active
-    id: 212436/1b4e8fb9-405c-47b0-8736-f487a42d0936
+    id: 43984/1b4e8fb9-405c-47b0-8736-f487a42d0936
     localID: 1b4e8fb9-405c-47b0-8736-f487a42d0936
     parent: {fileID: 11400036}
     mode: 0
@@ -3673,7 +4175,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Transform/Position/Z
-    id: 212144/223ae1fd-86f0-46eb-8a8c-2609d323e47d
+    id: 42852/223ae1fd-86f0-46eb-8a8c-2609d323e47d
     localID: 223ae1fd-86f0-46eb-8a8c-2609d323e47d
     parent: {fileID: 11400076}
     mode: 0
@@ -3718,7 +4220,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Transform/Position/Y
-    id: 212144/20d47e13-ad3f-4187-a5ed-b42b989dc241
+    id: 42852/20d47e13-ad3f-4187-a5ed-b42b989dc241
     localID: 20d47e13-ad3f-4187-a5ed-b42b989dc241
     parent: {fileID: 11400076}
     mode: 0
@@ -3763,7 +4265,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Transform/Position/X
-    id: 212144/5d398aa0-9296-41fd-8f47-4e2c45b12965
+    id: 42852/5d398aa0-9296-41fd-8f47-4e2c45b12965
     localID: 5d398aa0-9296-41fd-8f47-4e2c45b12965
     parent: {fileID: 11400076}
     mode: 0
@@ -3808,7 +4310,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Transform/Position
-    id: 212144/ab157e29-840d-4f26-87e9-131ee32c5b9a
+    id: 42852/ab157e29-840d-4f26-87e9-131ee32c5b9a
     localID: ab157e29-840d-4f26-87e9-131ee32c5b9a
     parent: {fileID: 11400076}
     mode: 0
@@ -3853,7 +4355,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Transform/Direction/Back/Z
-    id: 212142/3dad85ec-a1f3-4b36-a733-f42dda8f8cc6
+    id: 42856/3dad85ec-a1f3-4b36-a733-f42dda8f8cc6
     localID: 3dad85ec-a1f3-4b36-a733-f42dda8f8cc6
     parent: {fileID: 11400024}
     mode: 0
@@ -3898,7 +4400,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Transform/Direction/Back/Y
-    id: 212142/7205cdbd-bd5e-45fc-bf42-ee227da791b5
+    id: 42856/7205cdbd-bd5e-45fc-bf42-ee227da791b5
     localID: 7205cdbd-bd5e-45fc-bf42-ee227da791b5
     parent: {fileID: 11400024}
     mode: 0
@@ -3943,7 +4445,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Transform/Direction/Back/X
-    id: 212142/8c788f8b-0caf-444c-86dc-bb181020fb05
+    id: 42856/8c788f8b-0caf-444c-86dc-bb181020fb05
     localID: 8c788f8b-0caf-444c-86dc-bb181020fb05
     parent: {fileID: 11400024}
     mode: 0
@@ -3988,7 +4490,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Transform/Direction/Back
-    id: 212142/89f0c7f6-13b9-43a3-a803-65bcd98ce0df
+    id: 42856/89f0c7f6-13b9-43a3-a803-65bcd98ce0df
     localID: 89f0c7f6-13b9-43a3-a803-65bcd98ce0df
     parent: {fileID: 11400024}
     mode: 0
@@ -4033,7 +4535,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Transform/Direction/Forward/Z
-    id: 212142/64d8f9b6-0a56-4fef-ab27-a1baa3b354a2
+    id: 42856/64d8f9b6-0a56-4fef-ab27-a1baa3b354a2
     localID: 64d8f9b6-0a56-4fef-ab27-a1baa3b354a2
     parent: {fileID: 11400024}
     mode: 0
@@ -4078,7 +4580,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Transform/Direction/Forward/Y
-    id: 212142/690d3851-aa68-49cc-be7e-51b586ce3396
+    id: 42856/690d3851-aa68-49cc-be7e-51b586ce3396
     localID: 690d3851-aa68-49cc-be7e-51b586ce3396
     parent: {fileID: 11400024}
     mode: 0
@@ -4123,7 +4625,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Transform/Direction/Forward/X
-    id: 212142/b606da24-43f4-4c6b-8ca4-9e23d43939aa
+    id: 42856/b606da24-43f4-4c6b-8ca4-9e23d43939aa
     localID: b606da24-43f4-4c6b-8ca4-9e23d43939aa
     parent: {fileID: 11400024}
     mode: 0
@@ -4168,7 +4670,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Transform/Direction/Forward
-    id: 212142/0aff9476-fb05-4afa-8489-24b2073f2f2e
+    id: 42856/0aff9476-fb05-4afa-8489-24b2073f2f2e
     localID: 0aff9476-fb05-4afa-8489-24b2073f2f2e
     parent: {fileID: 11400024}
     mode: 0
@@ -4213,7 +4715,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Transform/Direction/Right/Z
-    id: 212142/9c4c3748-6d19-4ace-bfa4-49e24a7d646c
+    id: 42856/9c4c3748-6d19-4ace-bfa4-49e24a7d646c
     localID: 9c4c3748-6d19-4ace-bfa4-49e24a7d646c
     parent: {fileID: 11400024}
     mode: 0
@@ -4258,7 +4760,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Transform/Direction/Right/Y
-    id: 212142/c1deb29c-1ee7-4654-be23-c27d9171fa12
+    id: 42856/c1deb29c-1ee7-4654-be23-c27d9171fa12
     localID: c1deb29c-1ee7-4654-be23-c27d9171fa12
     parent: {fileID: 11400024}
     mode: 0
@@ -4303,7 +4805,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Transform/Direction/Right/X
-    id: 212142/5e5e5663-18ae-42b7-b464-7f82c142b318
+    id: 42856/5e5e5663-18ae-42b7-b464-7f82c142b318
     localID: 5e5e5663-18ae-42b7-b464-7f82c142b318
     parent: {fileID: 11400024}
     mode: 0
@@ -4348,7 +4850,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Transform/Direction/Right
-    id: 212142/5d397ae8-41b9-4edc-96a7-078335dc8920
+    id: 42856/5d397ae8-41b9-4edc-96a7-078335dc8920
     localID: 5d397ae8-41b9-4edc-96a7-078335dc8920
     parent: {fileID: 11400024}
     mode: 0
@@ -4393,7 +4895,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Transform/Direction/Left/Z
-    id: 212142/fd370e2e-8ded-4774-8f67-a186724d0148
+    id: 42856/fd370e2e-8ded-4774-8f67-a186724d0148
     localID: fd370e2e-8ded-4774-8f67-a186724d0148
     parent: {fileID: 11400024}
     mode: 0
@@ -4438,7 +4940,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Transform/Direction/Left/Y
-    id: 212142/66de9ddf-9de4-42db-a326-82f30797bf5b
+    id: 42856/66de9ddf-9de4-42db-a326-82f30797bf5b
     localID: 66de9ddf-9de4-42db-a326-82f30797bf5b
     parent: {fileID: 11400024}
     mode: 0
@@ -4483,7 +4985,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Transform/Direction/Left/X
-    id: 212142/ffcd09b5-2baf-4b6a-a35d-1a485e026b6a
+    id: 42856/ffcd09b5-2baf-4b6a-a35d-1a485e026b6a
     localID: ffcd09b5-2baf-4b6a-a35d-1a485e026b6a
     parent: {fileID: 11400024}
     mode: 0
@@ -4528,7 +5030,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Transform/Direction/Left
-    id: 212142/996781d9-9a85-4d85-bf88-518db39e5bd1
+    id: 42856/996781d9-9a85-4d85-bf88-518db39e5bd1
     localID: 996781d9-9a85-4d85-bf88-518db39e5bd1
     parent: {fileID: 11400024}
     mode: 0
@@ -4573,7 +5075,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Transform/Direction/Down/Z
-    id: 212142/bd90eeaa-7eba-4b54-9ee0-b9ec30c26cd4
+    id: 42856/bd90eeaa-7eba-4b54-9ee0-b9ec30c26cd4
     localID: bd90eeaa-7eba-4b54-9ee0-b9ec30c26cd4
     parent: {fileID: 11400024}
     mode: 0
@@ -4618,7 +5120,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Transform/Direction/Down/Y
-    id: 212142/24e3bb12-44fe-4974-845a-c70c39418c19
+    id: 42856/24e3bb12-44fe-4974-845a-c70c39418c19
     localID: 24e3bb12-44fe-4974-845a-c70c39418c19
     parent: {fileID: 11400024}
     mode: 0
@@ -4663,7 +5165,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Transform/Direction/Down/X
-    id: 212142/319ee938-44eb-4587-ac19-f70093b7eaa4
+    id: 42856/319ee938-44eb-4587-ac19-f70093b7eaa4
     localID: 319ee938-44eb-4587-ac19-f70093b7eaa4
     parent: {fileID: 11400024}
     mode: 0
@@ -4708,7 +5210,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Transform/Direction/Down
-    id: 212142/6ba0f867-8c21-4840-84e0-a9f007a390bc
+    id: 42856/6ba0f867-8c21-4840-84e0-a9f007a390bc
     localID: 6ba0f867-8c21-4840-84e0-a9f007a390bc
     parent: {fileID: 11400024}
     mode: 0
@@ -4753,7 +5255,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Transform/Direction/Up/Z
-    id: 212142/6d9d13f2-893b-4ba1-9e8e-1acd60d1515e
+    id: 42856/6d9d13f2-893b-4ba1-9e8e-1acd60d1515e
     localID: 6d9d13f2-893b-4ba1-9e8e-1acd60d1515e
     parent: {fileID: 11400024}
     mode: 0
@@ -4798,7 +5300,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Transform/Direction/Up/Y
-    id: 212142/10f9502d-4ade-4821-beee-7dcbb937980e
+    id: 42856/10f9502d-4ade-4821-beee-7dcbb937980e
     localID: 10f9502d-4ade-4821-beee-7dcbb937980e
     parent: {fileID: 11400024}
     mode: 0
@@ -4843,7 +5345,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Transform/Direction/Up/X
-    id: 212142/9da8b0e5-831f-426e-81f4-ad03ccbe2069
+    id: 42856/9da8b0e5-831f-426e-81f4-ad03ccbe2069
     localID: 9da8b0e5-831f-426e-81f4-ad03ccbe2069
     parent: {fileID: 11400024}
     mode: 0
@@ -4888,7 +5390,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Transform/Direction/Up
-    id: 212142/7c1c8f1d-b588-4661-a9ca-483101477a07
+    id: 42856/7c1c8f1d-b588-4661-a9ca-483101477a07
     localID: 7c1c8f1d-b588-4661-a9ca-483101477a07
     parent: {fileID: 11400024}
     mode: 0
@@ -4933,7 +5435,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Lock Cursor/Used
-    id: 212134/e0f58fc1-ae5c-4b17-aec6-a0ef3872010c
+    id: 42854/e0f58fc1-ae5c-4b17-aec6-a0ef3872010c
     localID: e0f58fc1-ae5c-4b17-aec6-a0ef3872010c
     parent: {fileID: 11400074}
     mode: 0
@@ -4978,7 +5480,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Lock Cursor/Usable
-    id: 212134/78353af6-e670-40a0-bc39-4cc1d6f23aea
+    id: 42854/78353af6-e670-40a0-bc39-4cc1d6f23aea
     localID: 78353af6-e670-40a0-bc39-4cc1d6f23aea
     parent: {fileID: 11400074}
     mode: 0
@@ -5023,7 +5525,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Lock Cursor/Ready
-    id: 212134/906ce955-5650-45e2-9dec-368a9eab1b05
+    id: 42854/906ce955-5650-45e2-9dec-368a9eab1b05
     localID: 906ce955-5650-45e2-9dec-368a9eab1b05
     parent: {fileID: 11400074}
     mode: 0
@@ -5068,7 +5570,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Lock Cursor/Requirable
-    id: 212134/6319e4cf-d8fc-4ec1-84ee-193999a72f1c
+    id: 42854/6319e4cf-d8fc-4ec1-84ee-193999a72f1c
     localID: 6319e4cf-d8fc-4ec1-84ee-193999a72f1c
     parent: {fileID: 11400074}
     mode: 0
@@ -5113,7 +5615,7 @@ MonoBehaviour:
   referencePath: 
   attribute:
     path: Lock Cursor/Active
-    id: 212134/96f3081a-c657-4e79-af6e-d736c8bad847
+    id: 42854/96f3081a-c657-4e79-af6e-d736c8bad847
     localID: 96f3081a-c657-4e79-af6e-d736c8bad847
     parent: {fileID: 11400074}
     mode: 0
@@ -7345,6 +7847,30 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100042}
+--- !u!222 &22200008
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100050}
+--- !u!222 &22200010
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100052}
+--- !u!222 &22200012
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100054}
+--- !u!222 &22200014
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100056}
 --- !u!223 &22300000
 Canvas:
   m_ObjectHideFlags: 1
@@ -7372,6 +7898,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 22400010}
   - {fileID: 22400002}
   m_Father: {fileID: 400016}
   m_RootOrder: 1
@@ -7390,15 +7917,15 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 22400016}
+  - {fileID: 22400012}
   - {fileID: 22400004}
-  - {fileID: 22400006}
-  - {fileID: 22400008}
   m_Father: {fileID: 22400000}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -77.9000015, y: -17.5}
-  m_SizeDelta: {x: 156.399994, y: 34.7999992}
+  m_AnchoredPosition: {x: -101.800003, y: -18.2999992}
+  m_SizeDelta: {x: 194.100006, y: 30.8500004}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22400004
 RectTransform:
@@ -7411,11 +7938,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 22400002}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -29.6999989, y: -2.62260437e-06}
-  m_SizeDelta: {x: -105.400002, y: 3.81469999e-06}
+  m_AnchoredPosition: {x: -37.7000008, y: -.200000003}
+  m_SizeDelta: {x: -64.6999512, y: .25}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22400006
 RectTransform:
@@ -7427,12 +7954,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 22400002}
+  m_Father: {fileID: 22400010}
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 38.0999985, y: 0}
-  m_SizeDelta: {x: -106.800003, y: 0}
+  m_AnchoredPosition: {x: 29.8999996, y: -.5}
+  m_SizeDelta: {x: -89.25, y: 2.5}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22400008
 RectTransform:
@@ -7444,12 +7971,83 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
+  m_Father: {fileID: 22400010}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -8, y: 1.39999998}
+  m_SizeDelta: {x: -113.049927, y: 2.5}
+  m_Pivot: {x: .5, y: .5}
+--- !u!224 &22400010
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100050}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 22400008}
+  - {fileID: 22400006}
+  - {fileID: 22400014}
+  m_Father: {fileID: 22400000}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -73.5749969, y: -52}
+  m_SizeDelta: {x: 137.649994, y: 32.2999992}
+  m_Pivot: {x: .5, y: .5}
+--- !u!224 &22400012
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100052}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
   m_Father: {fileID: 22400002}
+  m_RootOrder: 1
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 56.9000015, y: -.400000006}
+  m_SizeDelta: {x: -144.5, y: 3.94998169}
+  m_Pivot: {x: .5, y: .5}
+--- !u!224 &22400014
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100054}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 22400010}
   m_RootOrder: 2
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1, y: 0}
-  m_SizeDelta: {x: -131.800003, y: 0}
+  m_AnchoredPosition: {x: -38.7000008, y: -.100000001}
+  m_SizeDelta: {x: -86.6500244, y: 2.50006104}
+  m_Pivot: {x: .5, y: .5}
+--- !u!224 &22400016
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100056}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 22400002}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 19.8000488, y: .675048828}
+  m_SizeDelta: {x: -169.5, y: 3.94998169}
   m_Pivot: {x: .5, y: .5}
 --- !u!1001 &100100000
 Prefab:
