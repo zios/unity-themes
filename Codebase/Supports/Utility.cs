@@ -130,6 +130,29 @@ public static class Utility{
 		#endif
 		return 0;
 	}
+	public static bool MoveComponentUp(Component component){
+		#if UNITY_EDITOR
+		return (bool)Utility.GetEditorType("ComponentUtility").CallMethod("MoveComponentUp",component.AsArray());
+		#endif
+		return false;
+	}
+	public static bool MoveComponentDown(Component component){
+		#if UNITY_EDITOR
+		return (bool)Utility.GetEditorType("ComponentUtility").CallMethod("MoveComponentDown",component.AsArray());
+		#endif
+		return false;
+	}
+	public static bool ReconnectToLastPrefab(GameObject target){
+		#if UNITY_EDITOR
+		return PrefabUtility.ReconnectToLastPrefab(target);
+		#endif
+		return false;
+	}
+	public static void DisconnectPrefabInstance(UnityObject target){
+		#if UNITY_EDITOR
+		PrefabUtility.DisconnectPrefabInstance(target);
+		#endif
+	}
 	public static void EditorLog(string text){
 		if(!Application.isPlaying){
 			Debug.Log(text);

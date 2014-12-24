@@ -29,9 +29,9 @@ public class AttributeManager : MonoBehaviour{
 	private int stage;
 	#if UNITY_EDITOR
     [MenuItem("Zios/Process/Attribute/Remove Visible Data")]
-	static void RemoveVisibleData(){AttributeManager.RemoveAttributeData(true);}
+	static public void RemoveVisibleData(){AttributeManager.RemoveAttributeData(true);}
     [MenuItem("Zios/Process/Attribute/Remove All Data")]
-	static void RemoveAttributeData(bool visibleOnly=false){
+	static public void RemoveAttributeData(bool visibleOnly=false){
 		foreach(UnityObject current in Selection.objects){
 			if(current is GameObject){
 				GameObject gameObject = (GameObject)current;
@@ -45,17 +45,17 @@ public class AttributeManager : MonoBehaviour{
 		}
 	}
     [MenuItem("Zios/Process/Attribute/Hide All Data")]
-	static void HideAttributeData(){
+	static public void HideAttributeData(){
 		PlayerPrefs.SetInt("ShowAttributeData",0);
 		AttributeManager.refresh = true;
 	}
     [MenuItem("Zios/Process/Attribute/Show All Data")]
-	static void ShowAttributeData(){
+	static public void ShowAttributeData(){
 		PlayerPrefs.SetInt("ShowAttributeData",1);
 		AttributeManager.refresh = true;
 	}
     [MenuItem("Zios/Process/Attribute/Full Refresh")]
-	static void AttributeRefresh(){
+	static public void AttributeRefresh(){
 		Attribute.ready = false;
 		AttributeManager.refresh = true;
 	}	

@@ -14,6 +14,58 @@ public static class ComponentExtension{
 	public static bool IsPrefab(this Component current){
 		return current.gameObject.IsPrefab();
 	}
+	public static void Move(this Component current,int amount){
+		Utility.DisconnectPrefabInstance(current);
+		while(amount != 0){
+			if(amount > 0){
+				Utility.MoveComponentDown(current);
+				amount -= 1;
+			}
+			if(amount < 0){
+				Utility.MoveComponentUp(current);
+				amount += 1;
+			}
+		}
+		AttributeManager.AttributeRefresh();
+	}
+	public static void MoveUp(this Component current){
+		Component[] components = current.GetComponents<Component>();
+		int position = components.IndexOf(current);
+		int amount = 1;
+		if(position != 0){
+			while(components[position-1].hideFlags.Contains(HideFlags.HideInInspector)){
+				position -= 1;
+				amount += 1;
+			}
+		}
+		current.Move(-amount);
+	}
+	public static void MoveDown(this Component current){
+		Component[] components = current.GetComponents<Component>();
+		int position = components.IndexOf(current);
+		int amount = 1;
+		if(position < components.Length-1){
+			while(components[position+1].hideFlags.Contains(HideFlags.HideInInspector)){
+				position += 1;
+				amount += 1;
+			}
+		}
+		current.Move(amount);
+	}
+	public static void MoveToTop(this Component current){
+		Utility.DisconnectPrefabInstance(current);
+		Component[] components = current.GetComponents<Component>();
+		int position = components.IndexOf(current);
+		current.Move(-position);
+		AttributeManager.AttributeRefresh();
+	}
+	public static void MoveToBottom(this Component current){
+		Utility.DisconnectPrefabInstance(current);
+		Component[] components = current.GetComponents<Component>();
+		int position = components.IndexOf(current);
+		current.Move(components.Length-position);
+		AttributeManager.AttributeRefresh();
+	}
 	//====================
 	// Interface
 	//====================

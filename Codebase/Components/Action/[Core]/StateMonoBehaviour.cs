@@ -20,12 +20,14 @@ public class StateMonoBehaviour : ManagedMonoBehaviour{
 		this.used.Setup("Used",this);
 		this.endWhileUnusable.Setup("End While Unusable",this);
 	}
-	[ContextMenu("Toggle Column Visibility")]
+	[ContextMenu("Toggle Column In Table")]
 	public void ToggleRequire(){
 		this.requirable.Set(!this.requirable);
 		this.requirableOverride = !this.requirableOverride;
 		this.gameObject.Call("@Refresh");
 	}
+	[ContextMenu("//")]
+	public void Nothing(){}
 	public void DefaultAlias(string name){
 		if(this.alias.IsEmpty()){
 			this.alias = name;

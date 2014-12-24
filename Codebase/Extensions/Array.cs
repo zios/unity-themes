@@ -100,6 +100,9 @@ public static class ArrayExtension{
 	public static bool Exists<T>(this T[] current,Predicate<T> predicate){
 		return Array.Exists(current,predicate);
 	}
+	public static T Find<T>(this T[] current,Predicate<T> predicate){
+		return Array.Find(current,predicate);
+	}
 	public static void Clear<T>(this T[] current){
 		Array.Clear(current,0,current.Length);
 	}
