@@ -15,6 +15,7 @@ public class AttributeTransform : DataMonoBehaviour{
 	[HideInInspector] public AttributeVector3 directionForward = Vector3.zero;
 	[HideInInspector] public AttributeVector3 directionBack = Vector3.zero;
 	public override void Awake(){
+		base.Awake();
 		this.rotation.Setup("Rotation",this);
 		this.position.Setup("Position",this);
 		this.scale.Setup("Scale",this);

@@ -6,6 +6,7 @@ using UnityEngine;
 public class AttributeTransformPosition : DataMonoBehaviour{
 	[HideInInspector] public AttributeVector3 position = Vector3.zero;
 	public override void Awake(){
+		base.Awake();
 		this.position.Setup("Position",this);
 		this.position.getMethod = ()=>this.transform.position;
 		this.position.setMethod = value=>this.transform.position = value;
