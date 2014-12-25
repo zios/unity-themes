@@ -42,7 +42,7 @@ public class AnimationConfiguration{
 	}
 	public void Apply(Animation animation){
 		AnimationState animationState = animation[this.name];
-		if(animationState != null){
+		if(animationState != null && animationState.clip != null){
 			animationState.speed = this.fps / animationState.clip.frameRate;
 			animationState.blendMode = this.blendMode;
 			animationState.clip.wrapMode = this.wrapMode;
