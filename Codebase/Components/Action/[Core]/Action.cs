@@ -28,6 +28,7 @@ namespace Zios{
 				Events.Register(this.alias+"/End",this.owner);
 			}
 			this.usable.Set(this.controller==null);
+			this.ready.Set(false);
 		}
 		public override void Step(){
 			if(!Application.isPlaying){return;}
