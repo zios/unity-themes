@@ -5,7 +5,7 @@ using System;
 public class StateMonoBehaviour : ManagedMonoBehaviour{
 	[HideInInspector] public string id;
 	[HideInInspector] public AttributeBool requirable = true;
-	[HideInInspector] public AttributeBool ready = true;
+	[HideInInspector] public AttributeBool ready = false;
 	[HideInInspector] public AttributeBool usable = false;
 	[HideInInspector] public AttributeBool inUse = false;
 	[HideInInspector] public AttributeBool used = false;
