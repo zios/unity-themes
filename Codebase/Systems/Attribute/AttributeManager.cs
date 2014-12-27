@@ -29,9 +29,9 @@ public class AttributeManager : MonoBehaviour{
 	private int stage;
 	#if UNITY_EDITOR
     [MenuItem("Zios/Process/Attribute/Remove Visible Data")]
-	static public void RemoveVisibleData(){AttributeManager.RemoveAttributeData(true);}
+	public static void RemoveVisibleData(){AttributeManager.RemoveAttributeData(true);}
     [MenuItem("Zios/Process/Attribute/Remove All Data")]
-	static public void RemoveAttributeData(bool visibleOnly=false){
+	public static void RemoveAttributeData(bool visibleOnly=false){
 		foreach(UnityObject current in Selection.objects){
 			if(current is GameObject){
 				GameObject gameObject = (GameObject)current;
@@ -45,17 +45,17 @@ public class AttributeManager : MonoBehaviour{
 		}
 	}
     [MenuItem("Zios/Process/Attribute/Hide All Data")]
-	static public void HideAttributeData(){
+	public static void HideAttributeData(){
 		PlayerPrefs.SetInt("ShowAttributeData",0);
 		AttributeManager.refresh = true;
 	}
     [MenuItem("Zios/Process/Attribute/Show All Data")]
-	static public void ShowAttributeData(){
+	public static void ShowAttributeData(){
 		PlayerPrefs.SetInt("ShowAttributeData",1);
 		AttributeManager.refresh = true;
 	}
     [MenuItem("Zios/Process/Attribute/Full Refresh")]
-	static public void AttributeRefresh(){
+	public static void AttributeRefresh(){
 		Attribute.ready = false;
 		AttributeManager.refresh = true;
 	}	
@@ -100,24 +100,26 @@ public class AttributeManager : MonoBehaviour{
 	}
 	public void Start(){
 		bool editor = !Application.isPlaying;
-		if(!editor && !this.setup){
-			this.SceneRefresh();
-			this.setup = true;
-			this.stage = 1;
-			while(this.stage != 0){this.Start();}
-			return;
-		}
-		if(editor && stage != 0 && !this.activeRefresh && this.editorRefreshPasses > 1){
-			for(int index=0;index<this.editorRefreshPasses-1;++index){
-				Utility.EditorDelayCall(this.StartStep);
+		if(AttributeManager.editorInterval != -1){
+			if(!editor && !this.setup){
+				this.SceneRefresh();
+				this.setup = true;
+				this.stage = 1;
+				while(this.stage != 0){this.Start();}
+				return;
 			}
-		}
-		if(!AttributeManager.refresh){
-			if(this.stage == 1){this.StepRefresh();}
-			if(this.stage == 2){this.StepCleanData();}
-			if(this.stage == 3){this.StepBuildLookup();}
-			if(this.stage == 4){this.StepBuildData();}
-			AttributeManager.percentLoaded = (((float)this.nextIndex / this.data.Length) / 4.0f) + ((this.stage-1)*0.25f);
+			if(editor && stage != 0 && !this.activeRefresh && this.editorRefreshPasses > 1){
+				for(int index=0;index<this.editorRefreshPasses-1;++index){
+					Utility.EditorDelayCall(this.StartStep);
+				}
+			}
+			if(!AttributeManager.refresh){
+				if(this.stage == 1){this.StepRefresh();}
+				if(this.stage == 2){this.StepCleanData();}
+				if(this.stage == 3){this.StepBuildLookup();}
+				if(this.stage == 4){this.StepBuildData();}
+				AttributeManager.percentLoaded = (((float)this.nextIndex / this.data.Length) / 4.0f) + ((this.stage-1)*0.25f);
+			}
 		}
 		if(editor && Time.realtimeSinceStartup > this.nextStep){
 			AttributeManager.editorInterval = this.updateInterval;

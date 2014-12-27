@@ -26,7 +26,6 @@ public static class ComponentExtension{
 				amount += 1;
 			}
 		}
-		AttributeManager.AttributeRefresh();
 	}
 	public static void MoveUp(this Component current){
 		Component[] components = current.GetComponents<Component>();
@@ -57,14 +56,12 @@ public static class ComponentExtension{
 		Component[] components = current.GetComponents<Component>();
 		int position = components.IndexOf(current);
 		current.Move(-position);
-		AttributeManager.AttributeRefresh();
 	}
 	public static void MoveToBottom(this Component current){
 		Utility.DisconnectPrefabInstance(current);
 		Component[] components = current.GetComponents<Component>();
 		int position = components.IndexOf(current);
 		current.Move(components.Length-position);
-		AttributeManager.AttributeRefresh();
 	}
 	//====================
 	// Interface

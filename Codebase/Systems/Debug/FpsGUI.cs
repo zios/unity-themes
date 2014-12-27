@@ -15,7 +15,7 @@ public class FpsGUI : MonoBehaviour {
 		if(Time.time >= this.nextUpdate){
 			this.nextUpdate = Time.time + 1;
 			this.fpsText.text = this.frames.ToString();
-			this.frameTimeText.text = (Time.time - this.frameTime).ToString("0.0000");
+			this.frameTimeText.text = ((Time.time - this.frameTime) * 1000).ToString("0.0") + " ms";
 			this.frames = 0;
 		}
 		this.frameTime = Time.time;

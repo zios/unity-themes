@@ -19,6 +19,8 @@ public class UtilityListener : AssetPostprocessor{
 public static class Utility{
 	#if UNITY_EDITOR
 	public static CallbackFunction assetUpdate;
+	public static List<CallbackFunction> hierarchyMethods = new List<CallbackFunction>();
+	public static bool hierarchyPaused;
 	#endif
 	public static string AddRoot(this string current,Component parent){
 		string prefix = parent.HasVariable("alias") ? parent.GetVariable<string>("alias") : parent.GetType().ToString();
@@ -57,11 +59,32 @@ public static class Utility{
 		}
 		#endif
 	}
+	public static void PauseHierarchyUpdates(){
+		#if UNITY_EDITOR
+		foreach(CallbackFunction method in Utility.hierarchyMethods){
+			EditorApplication.hierarchyWindowChanged -= method;
+		}
+		Utility.hierarchyPaused = true;
+		#endif
+	}
+	public static void ResumeHierarchyUpdates(){
+		#if UNITY_EDITOR
+		foreach(CallbackFunction method in Utility.hierarchyMethods){
+			if(!EditorApplication.hierarchyWindowChanged.Contains(method)){
+				EditorApplication.hierarchyWindowChanged += method;
+			}
+		}
+		Utility.hierarchyPaused = false;
+		#endif
+	}
 	public static void HierarchyUpdate(CallbackFunction method,bool callImmediately=false){
 		#if UNITY_EDITOR
 		if(!Utility.IsPlaying()){
 			if(!EditorApplication.hierarchyWindowChanged.Contains(method)){
-				EditorApplication.hierarchyWindowChanged += method;
+				if(!Utility.hierarchyPaused){
+					EditorApplication.hierarchyWindowChanged += method;
+				}
+				Utility.hierarchyMethods.Add(method);
 				if(callImmediately){method();}
 			}
 		}
@@ -85,17 +108,24 @@ public static class Utility{
 	}
 	public static void RemoveAssetUpdate(CallbackFunction method){
 		#if UNITY_EDITOR
-		Utility.assetUpdate -= method;
+		while(Utility.assetUpdate.Contains(method)){
+			Utility.assetUpdate -= method;
+		}
 		#endif
 	}
 	public static void RemoveEditorUpdate(CallbackFunction method){
 		#if UNITY_EDITOR
-		EditorApplication.update -= method;
+		while(EditorApplication.update.Contains(method)){
+			EditorApplication.update -= method;
+		}
 		#endif
 	}
 	public static void RemoveHierarchyUpdate(CallbackFunction method){
 		#if UNITY_EDITOR
-		EditorApplication.hierarchyWindowChanged -= method;
+		while(EditorApplication.hierarchyWindowChanged.Contains(method)){
+			EditorApplication.hierarchyWindowChanged -= method;
+		}
+		Utility.hierarchyMethods.RemoveAll(x=>x==method);
 		#endif
 	}
 	public static void EditorCall(CallbackFunction method){

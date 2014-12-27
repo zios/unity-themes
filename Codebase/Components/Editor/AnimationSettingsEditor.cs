@@ -30,10 +30,12 @@ public class AnimationSettingsEditor : Editor{
 			bool isPlaying = this.activeAnimation == configuration;
 			if(isPlaying && GUILayout.Button("Stop")){
 				this.activeAnimation = null;
+				Utility.ResumeHierarchyUpdates();
 			}
 			else if(!isPlaying && GUILayout.Button("Play")){
 				this.animationTime = 0;
 				this.activeAnimation = configuration;
+				Utility.PauseHierarchyUpdates();
 			}
 		}
 		public override void OnGlobalAction(UnityEngine.Object target){

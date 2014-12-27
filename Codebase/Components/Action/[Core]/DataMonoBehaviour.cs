@@ -4,14 +4,49 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Action = Zios.Action;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 [Serializable][AddComponentMenu("")]
 public class DataMonoBehaviour : MonoBehaviour{
+	public static DataMonoBehaviour[] sorting;
+	public static int processIndex;
 	public string alias;
 	public virtual void OnApplicationQuit(){this.Awake();}
 	public virtual void Reset(){this.Awake();}
 	public virtual void Awake(){
 		string name = this.GetType().ToString().ToTitle();
 		this.alias = this.alias.SetDefault(name);
+	}
+	#if UNITY_EDITOR
+    [MenuItem("Zios/Process/Components/Sort All (Smart)")]
+	public static void SortSmartAll(){
+		var unique = new List<DataMonoBehaviour>();
+		DataMonoBehaviour.sorting = Locate.GetSceneComponents<DataMonoBehaviour>();
+		foreach(var behaviour in DataMonoBehaviour.sorting){
+			if(!unique.Exists(x=>x.gameObject==behaviour.gameObject)){
+				unique.Add(behaviour);
+			}
+		}
+		DataMonoBehaviour.sorting = unique.ToArray();
+		DataMonoBehaviour.processIndex = 0;
+		Utility.EditorUpdate(DataMonoBehaviour.SortSmartNext,true);
+		Utility.PauseHierarchyUpdates();
+	}
+	public static void SortSmartNext(){
+		int index = DataMonoBehaviour.processIndex;
+		var sorting = DataMonoBehaviour.sorting;
+		var current = DataMonoBehaviour.sorting[index];
+		float total = (float)index/sorting.Length;
+		string message = index + " / " + sorting.Length + " -- " + current.gameObject.name;
+		bool canceled = EditorUtility.DisplayCancelableProgressBar("Sorting All Components",message,total);
+		current.SortSmart();
+		DataMonoBehaviour.processIndex += 1;
+		if(canceled || index+1 > sorting.Length-1){
+			Utility.RemoveEditorUpdate(DataMonoBehaviour.SortSmartNext);
+			EditorUtility.ClearProgressBar();
+			Utility.ResumeHierarchyUpdates();
+		}
 	}
 	[ContextMenu("Sort (By Type)")]
 	public void SortByType(){
@@ -52,4 +87,5 @@ public class DataMonoBehaviour : MonoBehaviour{
 	public void MoveBottom(){this.MoveToBottom();}
 	[ContextMenu("Move To Top")]
 	public void MoveTop(){this.MoveToTop();}
+	#endif
 }
