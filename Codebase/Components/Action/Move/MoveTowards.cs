@@ -1,7 +1,7 @@
 using Zios;
 using UnityEngine;
 [AddComponentMenu("Zios/Component/Action/Move/Move Towards")]
-public class MoveTowards : ActionPart{
+public class MoveTowards : ActionLink{
 	public AttributeGameObject target = new AttributeGameObject();
 	public AttributeVector3 goal = Vector3.zero;
 	public LerpVector3 travel = new LerpVector3();

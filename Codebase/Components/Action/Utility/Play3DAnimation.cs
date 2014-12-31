@@ -2,7 +2,7 @@ using UnityEngine;
 using System;
 using Zios;
 [AddComponentMenu("Zios/Component/Action/Play Animation (3D)")]
-public class Play3DAnimation : ActionPart{
+public class Play3DAnimation : ActionLink{
 	public AttributeString animationName = "";
 	public AttributeFloat speed = 1;
 	public AttributeFloat weight = 1;

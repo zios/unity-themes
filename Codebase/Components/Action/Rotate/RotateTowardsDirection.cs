@@ -1,7 +1,7 @@
 using Zios;
 using UnityEngine;
 [AddComponentMenu("Zios/Component/Action/Rotate/Towards/Rotate Towards Direction")]
-public class RotateTowardsDirection : ActionPart{
+public class RotateTowardsDirection : ActionLink{
 	public AttributeGameObject source = new AttributeGameObject();
 	public AttributeVector3 goal = Vector3.zero;
 	public ListBool lerpAxes = new ListBool(){true,true,true};

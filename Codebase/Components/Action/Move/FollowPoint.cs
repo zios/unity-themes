@@ -2,7 +2,7 @@ using Zios;
 using System;
 using UnityEngine;
 [AddComponentMenu("Zios/Component/Action/Move/Follow Point")]
-public class FollowPoint : ActionPart{
+public class FollowPoint : ActionLink{
 	public AttributeGameObject target = new AttributeGameObject();
 	public AttributeVector3 goal = Vector3.zero;
 	public LerpVector3 position = new LerpVector3();

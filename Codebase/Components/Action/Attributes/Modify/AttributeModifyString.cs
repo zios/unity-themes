@@ -2,7 +2,7 @@ using Zios;
 using System;
 using UnityEngine;
 [AddComponentMenu("Zios/Component/Action/Attribute/Modify/Modify String")]
-public class AttributeModifyString : ActionPart{
+public class AttributeModifyString : ActionLink{
 	public AttributeString target = "";
 	public AttributeString value = "";
 	public override void Awake(){

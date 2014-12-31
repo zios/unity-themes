@@ -5,7 +5,6 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using Attribute = Zios.Attribute;
-using Action = Zios.Action;
 using UnityObject = UnityEngine.Object;
 #if UNITY_EDITOR
 using UnityEditor;

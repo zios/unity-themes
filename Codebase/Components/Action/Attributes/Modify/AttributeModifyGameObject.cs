@@ -2,7 +2,7 @@ using Zios;
 using System;
 using UnityEngine;
 [AddComponentMenu("Zios/Component/Action/Attribute/Modify/Modify GameObject")]
-public class AttributeModifyGameObject : ActionPart{
+public class AttributeModifyGameObject : ActionLink{
 	public AttributeGameObject target;
 	public AttributeGameObject value;
 	public override void Awake(){

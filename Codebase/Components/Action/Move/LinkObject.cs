@@ -7,7 +7,7 @@ public enum LinkOptions : int{
 }
 public enum LinkMode{Automatic,Link,Unlink}
 [AddComponentMenu("Zios/Component/Action/Move/Link Objects")]
-public class LinkObject : ActionPart{
+public class LinkObject : ActionLink{
 	public LinkMode mode;
 	[EnumMask] public LinkOptions options = (LinkOptions)(-1);
 	public AttributeGameObject target = new AttributeGameObject();

@@ -2,7 +2,7 @@ using Zios;
 using UnityEngine;
 public enum ToggleState{Enable,Disable,Toggle}
 [AddComponentMenu("Zios/Component/Action/Set Active")]
-public class SetActive : ActionPart{
+public class SetActive : ActionLink{
 	public AttributeGameObject target;
 	public ToggleState state;
 	public override void Awake(){

@@ -1,7 +1,7 @@
 using Zios;
 using UnityEngine;
 [AddComponentMenu("Zios/Component/Action/Lock Cursor")]
-public class LockCursor : ActionPart{
+public class LockCursor : ActionLink{
 	public override void Use(){
 		base.Use();
 		Screen.lockCursor = true;

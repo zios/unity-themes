@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEditor;
 using System;
 using System.Linq;
@@ -6,8 +6,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Zios.Editor;
 using Attribute = Zios.Attribute;
-[CustomEditor(typeof(StateController),true)]
-public class StateControllerEditor : Editor{
+[CustomEditor(typeof(StateTable),true)]
+public class StateTableEditor : Editor{
 	public float nextStep;
 	private Transform autoSelect;
 	private TableGUI tableGUI = new TableGUI();
@@ -15,8 +15,8 @@ public class StateControllerEditor : Editor{
 	private int tableIndex = 0;
 	private Dictionary<StateRow,int> rowIndex = new Dictionary<StateRow,int>();
 	public virtual void OnEnable(){
-		StateController stateController = (StateController)this.target;
-		stateController.UpdateTableList();
+		StateTable stateTable = (StateTable)this.target;
+		stateTable.UpdateTableList();
 		this.BuildTable(true);
 	}
 	public virtual void OnDisable(){
@@ -26,17 +26,17 @@ public class StateControllerEditor : Editor{
 		}
 	}
 	public void EditorUpdate(){
-		StateController stateController = (StateController)this.target;
+		StateTable stateTable = (StateTable)this.target;
 		if(!Application.isPlaying && Time.realtimeSinceStartup > this.nextStep){
-			stateController.Refresh();
-			stateController.UpdateTableList();
-			StateRow[] activeTable = stateController.tables[this.tableIndex];
+			stateTable.Refresh();
+			stateTable.UpdateTableList();
+			StateRow[] activeTable = stateTable.tables[this.tableIndex];
 			GUI.changed = false;
 			if(this.data != activeTable){
 				this.data = activeTable;
 				this.BuildTable(true);
 			}
-			if(!stateController.advanced){
+			if(!stateTable.advanced){
 				this.tableIndex = 0;
 			}
 			this.FixLabels();
@@ -44,8 +44,8 @@ public class StateControllerEditor : Editor{
 		}
 	}
 	public void FixLabels(){
-		StateController stateController = (StateController)this.target;
-		StateRow[] activeTable = stateController.tables[this.tableIndex];
+		StateTable stateTable = (StateTable)this.target;
+		StateRow[] activeTable = stateTable.tables[this.tableIndex];
 		if(activeTable.Length > 0){
 			//string tableName = ((MonoBehaviour)activeTable[0].target).name;
 			this.tableGUI.tableSkin.label.fixedWidth = 0;
@@ -59,8 +59,8 @@ public class StateControllerEditor : Editor{
 		}
 	}
 	public override void OnInspectorGUI(){
-		StateController controller = (StateController)this.target;
-		if(!Attribute.ready || controller.IsPrefab()){
+		StateTable table = (StateTable)this.target;
+		if(!Attribute.ready || table.IsPrefab()){
 			this.DrawDefaultInspector();
 			return;
 		}
@@ -74,32 +74,32 @@ public class StateControllerEditor : Editor{
 		}
 	}
 	public virtual void DrawControls(){
-		StateController stateController = (StateController)this.target;
+		StateTable stateTable = (StateTable)this.target;
 		string useStyle = "titleTabDisabled";
 		string endStyle = "titleTabDisabled";
-		if(stateController.advanced){
+		if(stateTable.advanced){
 			useStyle = this.tableIndex == 0 ? "titleTabGreen" : "titleTabInactive";
 			endStyle = this.tableIndex == 1 ? "titleTabRed" : "titleTabInactive";
 		}
 		//EditorGUI.LabelField(area,"",GUI.skin.GetStyle("title"));
 		Rect area = EditorGUILayout.GetControlRect();
 		area = new Rect(area.x+20,area.y+10,16,16);
-		stateController.advanced = EditorGUI.ToggleLeft(area,"",stateController.advanced);
+		stateTable.advanced = EditorGUI.ToggleLeft(area,"",stateTable.advanced);
 		area.x += 20;
 		area = new Rect(area.x,area.y,80,32);
-		if(GUI.Button(area,"Use",GUI.skin.GetStyle(useStyle)) && stateController.advanced){
+		if(GUI.Button(area,"Use",GUI.skin.GetStyle(useStyle)) && stateTable.advanced){
 			this.tableIndex = 0;
 		}
 		area.x += 82;
-		if(GUI.Button(area,"End",GUI.skin.GetStyle(endStyle)) && stateController.advanced){
+		if(GUI.Button(area,"End",GUI.skin.GetStyle(endStyle)) && stateTable.advanced){
 			this.tableIndex = 1;
 		}
 		GUILayout.Space(25);
 	}
 	public virtual void BuildTable(bool verticalHeader=false,bool force=false){
-		StateController stateController = (StateController)this.target;
-		StateRow[] activeTable = stateController.tables[this.tableIndex];
-		if(force || (stateController != null && activeTable != null)){
+		StateTable stateTable = (StateTable)this.target;
+		StateRow[] activeTable = stateTable.tables[this.tableIndex];
+		if(force || (stateTable != null && activeTable != null)){
 			this.tableGUI = new TableGUI();
 			this.tableGUI.SetHeader(verticalHeader,true,this.CompareRows);
 			this.tableGUI.AddHeader("","");
@@ -163,7 +163,7 @@ public class StateControllerEditor : Editor{
 		bool useIndexes = row != null && this.rowIndex[row] != 0;
 		GUIStyle style = GUI.skin.button;
 		if(requirement.requireOn){
-			value = useIndexes ? this.rowIndex[row].ToString() : "✓";
+			value = useIndexes ? this.rowIndex[row].ToString() : "?";
 			field.empty = false;
 			style = GUI.skin.GetStyle("buttonOn");
 			style.padding.left = useIndexes ? 8 : 6;
@@ -232,8 +232,8 @@ public class StateControllerEditor : Editor{
 			GenericMenu menu = new GenericMenu();
 			GUIContent addAlternative = new GUIContent("+ Add Alternate Row");
 			GUIContent removeAlternative = new GUIContent("- Remove Alternative Row");
-			//GUIContent moveUp = new GUIContent("↑ Move Up");
-			//GUIContent moveDown = new GUIContent("↓ Move Down");
+			//GUIContent moveUp = new GUIContent("? Move Up");
+			//GUIContent moveDown = new GUIContent("? Move Down");
 			//menu.AddItem(moveUp,false,new GenericMenu.MenuFunction2(this.MoveItemUp),stateRow);
 			menu.AddItem(addAlternative,false,new GenericMenu.MenuFunction2(this.AddAlternativeRow),stateRow);
 			if(this.rowIndex[stateRow] != 0){
@@ -249,7 +249,7 @@ public class StateControllerEditor : Editor{
 		List<StateRowData> data = new List<StateRowData>(row.requirements);
 		data.Add(new StateRowData());
 		row.requirements = data.ToArray();
-		((StateController)this.target).Refresh();
+		((StateTable)this.target).Refresh();
 		this.rowIndex[row] = row.requirements.Length-1;
 		this.BuildTable(true);
 	}
@@ -264,7 +264,7 @@ public class StateControllerEditor : Editor{
 	}
 	public virtual void MoveItem(int amount,object target){
 		StateRow row = (StateRow)target;
-		List<StateRow> table = new List<StateRow>(row.controller.table);
+		List<StateRow> table = new List<StateRow>(row.stateTable.table);
 		int index = table.IndexOf(row);
 		if(index == 0 && amount < 0){
 			return;
@@ -273,8 +273,8 @@ public class StateControllerEditor : Editor{
 			return;
 		}
 		table.Move(index,index + amount);
-		row.controller.table = table.ToArray();
-		Utility.SetDirty(row.controller);
+		row.stateTable.table = table.ToArray();
+		Utility.SetDirty(row.stateTable);
 		this.BuildTable(true);
 	}
 	public virtual void MoveItemUp(object target){

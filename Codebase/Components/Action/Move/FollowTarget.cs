@@ -3,7 +3,7 @@ using System;
 using UnityEngine;
 public enum OffsetType{Relative,Absolute}
 [AddComponentMenu("Zios/Component/Action/Move/Follow Target")]
-public class FollowTarget : ActionPart{
+public class FollowTarget : ActionLink{
 	public AttributeGameObject source = new AttributeGameObject();
 	public AttributeGameObject target = new AttributeGameObject();
 	public LerpVector3 position = new LerpVector3();

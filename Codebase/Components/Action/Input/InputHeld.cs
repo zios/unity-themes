@@ -3,7 +3,7 @@ using Zios;
 using System;
 using System.Collections.Generic;
 [AddComponentMenu("Zios/Component/Action/Input Held")]
-public class InputHeld : ActionPart{
+public class InputHeld : ActionLink{
 	public InputRange requirement;
 	public AttributeString inputName = "Button1";
 	public AttributeFloat intensity = 0;

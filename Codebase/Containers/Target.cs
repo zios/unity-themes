@@ -3,7 +3,6 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
-using Action = Zios.Action;
 using UnityObject = UnityEngine.Object;
 [Serializable]
 public class Target{
@@ -41,13 +40,15 @@ public class Target{
 			this.AddSpecial("[PreviousEnabled]",parent.gameObject.GetPreviousSibling());
 			this.AddSpecial("[Root]",parent.gameObject.GetPrefabRoot());
 		}
-		if(parent is ActionPart || parent is Action){
-			ActionPart part = parent is ActionPart ? (ActionPart)parent : null;
-			Action action = parent is Action ? (Action)parent : part.action;
-			GameObject actionObject = action != null ? action.gameObject : part.gameObject;
-			GameObject ownerObject = action != null ? action.owner : part.gameObject;
+		if(parent is ActionLink || parent is StateLink){
+			ActionLink actionLink = parent is ActionLink ? (ActionLink)parent : null;
+			StateLink stateLink = parent is StateLink ? (StateLink)parent : actionLink.stateLink;
+			GameObject linkObject = stateLink != null ? stateLink.gameObject : actionLink.gameObject;
+			GameObject ownerObject = stateLink != null ? stateLink.owner : actionLink.gameObject;
 			this.AddSpecial("[Owner]",ownerObject);
-			this.AddSpecial("[Action]",actionObject);
+			this.AddSpecial("[Action]",linkObject);
+			this.AddSpecial("[ActionLink]",linkObject);
+			this.AddSpecial("[StateLink]",linkObject);
 		}
 		this.DefaultSearch(defaultSearch);
 	}

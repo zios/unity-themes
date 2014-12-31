@@ -3,7 +3,7 @@ using System;
 using Zios;
 public enum TimerType{After,During}
 [AddComponentMenu("Zios/Component/Action/Timer State")]
-public class TimerState : ActionPart{
+public class TimerState : ActionLink{
 	public TimerType type;
 	public AttributeFloat seconds = 0;
 	[HideInInspector] public AttributeBool isStarted = false;

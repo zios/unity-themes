@@ -2,7 +2,7 @@ using Zios;
 using UnityEngine;
 public enum PositionMode{World,Local}
 [AddComponentMenu("Zios/Component/Action/Move/Set Position")]
-public class SetPosition : ActionPart{
+public class SetPosition : ActionLink{
 	public PositionMode mode;
 	public AttributeGameObject target = new AttributeGameObject();
 	public AttributeVector3 position = Vector3.zero;

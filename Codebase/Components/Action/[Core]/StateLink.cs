@@ -3,19 +3,19 @@ using UnityEngine;
 using Zios;
 using System;
 namespace Zios{
-	[AddComponentMenu("Zios/Component/Action/*/Action")]
-	public class Action : StateMonoBehaviour{
-		[NonSerialized] public StateController controller;
+	[AddComponentMenu("Zios/Component/Action/*/State Link")]
+	public class StateLink : StateMonoBehaviour{
+		[NonSerialized] public StateTable stateTable;
 		[NonSerialized] public GameObject owner;
 		public override void Awake(){
 			base.Awake();
 			GameObject parent = this.gameObject.GetParent();
 			this.alias = this.gameObject.name;
-			this.controller = parent.IsNull() ? null : parent.GetComponentInParent<StateController>(true);
-			this.owner = this.controller == null ? this.gameObject : this.controller.gameObject;
-			if(!this.controller.IsNull()){
-				this.inUse.AddScope(this.controller);
-				this.usable.AddScope(this.controller);
+			this.stateTable = parent.IsNull() ? null : parent.GetComponentInParent<StateTable>(true);
+			this.owner = this.stateTable == null ? this.gameObject : this.stateTable.gameObject;
+			if(!this.stateTable.IsNull()){
+				this.inUse.AddScope(this.stateTable);
+				this.usable.AddScope(this.stateTable);
 			}
 			Events.Register("@Update States",this.gameObject);
 			Events.Register("Action Start",this.gameObject);
@@ -27,7 +27,7 @@ namespace Zios{
 				Events.Register(this.alias+"/Start",this.owner);
 				Events.Register(this.alias+"/End",this.owner);
 			}
-			this.usable.Set(this.controller==null);
+			this.usable.Set(this.stateTable==null);
 			this.ready.Set(false);
 		}
 		public override void Step(){

@@ -4,7 +4,7 @@ using UnityEngine;
 public enum BlockType{Blocked,Unblocked}
 public enum Direction{Up,Down,Left,Right,Forward,Back}
 [AddComponentMenu("Zios/Component/Action/Blocked State")]
-public class BlockedState : ActionPart{
+public class BlockedState : ActionLink{
 	//public AttributeEnum type = new AttributeEnum(BlockType);
 	public BlockType type;
 	public Direction direction;

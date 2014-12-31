@@ -21,8 +21,8 @@ public class LerpTransition{
 			var script = (ManagedMonoBehaviour)parent;
 			this.fixedTime = script.rate == UpdateRate.FixedUpdate;
 		}
-		if(this.parent is ActionPart){
-			var script = (ActionPart)parent;
+		if(this.parent is ActionLink){
+			var script = (ActionLink)parent;
 			Events.Add(script.alias+"/End",this.Reset);	
 		}
 		Events.Add(path+"/Transition/Reset",this.Reset,parent.gameObject);

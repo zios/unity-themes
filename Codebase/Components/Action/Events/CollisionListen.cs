@@ -15,7 +15,7 @@ public enum CollisionSource : int{
 }
 public enum CollisionEvent{CollisionStart,CollisionEnd,Collision}
 [AddComponentMenu("Zios/Component/Action/Event/Collision Listen")]
-public class CollisionListen : ActionPart{
+public class CollisionListen : ActionLink{
 	public CollisionEvent trigger;
 	[EnumMask] public CollisionSource sourceCause = (CollisionSource)(-1);
 	//[EnumMask] public CollisionDirection direction = (CollisionDirection)(-1);

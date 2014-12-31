@@ -2,7 +2,7 @@ using Zios;
 using UnityEngine;
 public enum ForceType{Absolute,Relative}
 [AddComponentMenu("Zios/Component/Action/Move/Add Force")]
-public class AddForce : ActionPart{
+public class AddForce : ActionLink{
 	public ForceType type;
 	public AttributeVector3 amount = Vector3.zero;
 	public AttributeGameObject target = new AttributeGameObject();

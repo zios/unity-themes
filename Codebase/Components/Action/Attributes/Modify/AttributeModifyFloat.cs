@@ -2,7 +2,7 @@ using Zios;
 using System;
 using UnityEngine;
 [AddComponentMenu("Zios/Component/Action/Attribute/Modify/Modify Float")]
-public class AttributeModifyFloat : ActionPart{
+public class AttributeModifyFloat : ActionLink{
 	public AttributeFloat target = 0;
 	public AttributeFloat value = 0;
 	public override void Awake(){

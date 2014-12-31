@@ -2,7 +2,7 @@ using Zios;
 using System;
 using UnityEngine;
 [AddComponentMenu("Zios/Component/Action/Attribute/Modify/Modify Bool")]
-public class AttributeModifyBool : ActionPart{
+public class AttributeModifyBool : ActionLink{
 	public AttributeBool target = false;
 	public AttributeBool value = false;
 	public override void Awake(){

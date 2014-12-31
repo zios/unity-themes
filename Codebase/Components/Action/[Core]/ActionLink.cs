@@ -7,11 +7,11 @@ using System.Collections.Generic;
 namespace Zios{
 	public enum ActionOccurrence{Default,Constant,Once};
 	[AddComponentMenu("")]
-	public class ActionPart : StateMonoBehaviour{
+	public class ActionLink : StateMonoBehaviour{
 		public ActionOccurrence occurrence = ActionOccurrence.Default;
 		public bool? nextState;
-		[NonSerialized] public Action action;
-		[NonSerialized] public ActionController controller;
+		[NonSerialized] public StateLink stateLink;
+		[NonSerialized] public ActionTable actionTable;
 		public override void Awake(){
 			base.Awake();
 			Events.Add(this.alias+"/End",this.End);
@@ -21,22 +21,22 @@ namespace Zios{
 			Events.Register(this.alias+"/Started",this.gameObject);
 			Events.Register(this.alias+"/Ended",this.gameObject);
 			if(Application.isPlaying){
-				if(this.action.IsNull()){
-					this.action = this.GetComponent<Action>(true);
-					if(!this.action.IsNull()){
-						this.action.Awake();
+				if(this.stateLink.IsNull()){
+					this.stateLink = this.GetComponent<StateLink>(true);
+					if(!this.stateLink.IsNull()){
+						this.stateLink.Awake();
 					}
 				}
-				this.controller = this.GetComponent<ActionController>(true);
-				this.usable.Set(this.controller==null);
+				this.actionTable = this.GetComponent<ActionTable>(true);
+				this.usable.Set(this.actionTable==null);
 			}
 		}
 		public override void Step(){
 			if(!Application.isPlaying){return;}
 			bool happenedOnce = this.used && this.occurrence == ActionOccurrence.Once;
-			bool actionUsable = this.action == null || this.action.usable;
+			bool stateLinkUsable = this.stateLink == null || this.stateLink.usable;
 			if(!happenedOnce){
-				if(actionUsable && this.usable){this.Use();}
+				if(stateLinkUsable && this.usable){this.Use();}
 				else if(this.inUse || this.endWhileUnusable){this.End();}
 			}
 			else if(!this.usable){
@@ -51,7 +51,7 @@ namespace Zios{
 		public void OnDisable(){
 			if(!this.gameObject.activeInHierarchy || !this.enabled){
 				this.gameObject.Call(this.alias+"/Disabled");
-				if(this.controller==null){this.End();}
+				if(this.actionTable==null){this.End();}
 			}
 		}
 		public void DefaultOccurrence(string occurrence){
@@ -66,7 +66,7 @@ namespace Zios{
 		public override void Toggle(bool state){
 			bool onceReset = this.used && this.occurrence == ActionOccurrence.Once && !state;
 			if(onceReset || (state != this.inUse)){
-				if(this.controller != null){
+				if(this.actionTable != null){
 					this.nextState = state;
 					return;
 				}

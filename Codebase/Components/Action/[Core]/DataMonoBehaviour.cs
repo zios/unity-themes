@@ -3,7 +3,6 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Action = Zios.Action;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -62,9 +61,9 @@ public class DataMonoBehaviour : MonoBehaviour{
 	public void SortSmart(){
 		Component[] components = this.GetComponents<Component>().ToList().OrderBy(x=>x.GetAlias()).ToArray();
 		this.Sort(components);
-		var action = components.Find(x=>x is Action);
-		var controller = components.Find(x=>x is StateController);
-		if(!action.IsNull()){action.MoveToTop();}
+		var stateLink = components.Find(x=>x is StateLink);
+		var controller = components.Find(x=>x is StateTable);
+		if(!stateLink.IsNull()){stateLink.MoveToTop();}
 		if(!controller.IsNull()){controller.MoveToTop();}
 	}
 	public void Sort(Component[] components){

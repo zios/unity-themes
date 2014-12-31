@@ -2,7 +2,7 @@ using Zios;
 using System;
 using UnityEngine;
 [AddComponentMenu("Zios/Component/Action/Attribute/Attribute Check")]
-public class AttributeCheck : ActionPart{
+public class AttributeCheck : ActionLink{
 	public AttributeBool value = false;
 	public override void Awake(){
 		base.Awake();
