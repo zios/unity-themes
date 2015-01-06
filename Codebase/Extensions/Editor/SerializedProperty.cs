@@ -23,8 +23,8 @@ public static class SerializedPropertyExtension{
 		string[] elements = path.Split('.');
 		foreach(string element in elements){
 			if(element.Contains("[")){
-				var elementName = element.Substring(0,element.IndexOf("["));
-				var index = Convert.ToInt32(element.Substring(element.IndexOf("[")).Replace("[","").Replace("]",""));
+				string elementName = element.Substring(0,element.IndexOf("["));
+				int index = Convert.ToInt32(element.Substring(element.IndexOf("[")).Replace("[","").Replace("]",""));
 				parent = parent.GetVariable(elementName,index);
 			}
 			else{

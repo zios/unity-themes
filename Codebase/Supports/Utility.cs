@@ -15,6 +15,8 @@ public class UtilityListener : AssetPostprocessor{
 		}
 	}
 }
+#else
+	public delegate void CallbackFunction();
 #endif
 public static class Utility{
 	#if UNITY_EDITOR

@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEditor;
 using System;
 using System.Linq;
@@ -163,7 +163,7 @@ public class StateTableEditor : Editor{
 		bool useIndexes = row != null && this.rowIndex[row] != 0;
 		GUIStyle style = GUI.skin.button;
 		if(requirement.requireOn){
-			value = useIndexes ? this.rowIndex[row].ToString() : "?";
+			value = useIndexes ? this.rowIndex[row].ToString() : "✓";
 			field.empty = false;
 			style = GUI.skin.GetStyle("buttonOn");
 			style.padding.left = useIndexes ? 8 : 6;

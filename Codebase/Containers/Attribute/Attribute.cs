@@ -38,6 +38,7 @@ namespace Zios{
 		[NonSerialized] public bool canDirect = true;
 		[NonSerialized] public bool canShape = true;
 		[NonSerialized] public bool canLink = true;	
+		[NonSerialized] public bool isDefault = true;
 		[NonSerialized] public string defaultSet = "A";
 		public virtual Type[] GetFormulaTypes(){return null;}
 		public virtual AttributeData[] GetData(){return null;}
@@ -110,6 +111,7 @@ namespace Zios{
 			return dataArray;
 		}
 		public override void Add<Type>(int index=-1,string set=""){
+			this.isDefault = false;
 			if(this.info.parent != null){
 				if(set.IsEmpty()){set = this.defaultSet;}
 				if(set == "A"){this.info.data = this.CreateData<Type>(this.info.data,index);}
@@ -119,6 +121,7 @@ namespace Zios{
 			}
 		}
 		public void Add(BaseType value){
+			this.isDefault = false;
 			if(this.info.parent != null){
 				this.Add<DataType>();
 				((DataType)this.info.data.Last()).value = value;
@@ -331,6 +334,7 @@ namespace Zios{
 			return this.GetFormulaValue();
 		}
 		public virtual void Set(BaseType value){
+			this.isDefault = false;
 			if(this.setMethod != null){
 				this.setMethod(value);
 				return;
