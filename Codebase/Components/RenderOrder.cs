@@ -9,16 +9,16 @@ public class RenderOrder : MonoBehaviour{
 	public void Start(){this.Setup();}
 	public void OnDrawGizmosSelected(){this.Setup();}
 	public void Setup(){
-		if(this.renderer == null || this.renderer.sharedMaterial == null){return;}
-		int size = this.renderer.sharedMaterials.Length;
+		if(this.GetComponent<Renderer>() == null || this.GetComponent<Renderer>().sharedMaterial == null){return;}
+		int size = this.GetComponent<Renderer>().sharedMaterials.Length;
 		if(this.renderQueues == null || this.renderQueues.Length != size){
 			this.renderQueues = new int[size];
 			for(int index=0;index<size;++index){
-				this.renderQueues[index] = this.renderer.sharedMaterials[index].renderQueue;
+				this.renderQueues[index] = this.GetComponent<Renderer>().sharedMaterials[index].renderQueue;
 			}			
 		}
 		for(int index=0;index<size;++index){
-			this.renderer.sharedMaterials[index].renderQueue = this.renderQueues[index];
+			this.GetComponent<Renderer>().sharedMaterials[index].renderQueue = this.renderQueues[index];
 		}
 	}
 }

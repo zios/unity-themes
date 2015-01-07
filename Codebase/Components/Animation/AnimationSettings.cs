@@ -11,15 +11,15 @@ public class AnimationSettings : MonoBehaviour{
 		this.Start();
 	}
 	public void Start(){
-		if(gameObject.animation != null){
+		if(gameObject.GetComponent<Animation>() != null){
 			foreach(AnimationConfiguration configuration in this.animations){
-				configuration.Apply(gameObject.animation);
+				configuration.Apply(gameObject.GetComponent<Animation>());
 			}
 		}
 	}
 	public void Update(){
-		if(this.animations.Count == 0 && gameObject.animation != null){
-			foreach(AnimationState animationState in gameObject.animation){
+		if(this.animations.Count == 0 && gameObject.GetComponent<Animation>() != null){
+			foreach(AnimationState animationState in gameObject.GetComponent<Animation>()){
 				this.animations.Add(AnimationConfiguration.FromAnimation(animationState));
 			}
 		}

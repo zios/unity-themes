@@ -69,7 +69,7 @@ public class NetworkManager : MonoBehaviour{
 		"^3nick ^9<^7text^9> :^10 Changes the alias used in network communications.",
 	};
 	public void OnEnable(){
-		this.connection = this.networkView;
+		this.connection = this.GetComponent<NetworkView>();
 		if(Network.isClient ||  Network.isServer){
 			Network.SetSendingEnabled(0,true);
 			Network.isMessageQueueRunning = true;
@@ -219,7 +219,7 @@ public class NetworkManager : MonoBehaviour{
 			ClientSend clientSend = this.activeClient.send = clientObject.AddComponent<ClientSend>();
 			ClientReceive clientReceive = this.activeClient.receive = clientObject.AddComponent<ClientReceive>();
 			clientReceive.parent = this.activeClient;
-			clientSend.connection = (NetworkView)clientObject.AddComponent("NetworkView");
+			clientSend.connection = (NetworkView)clientObject.AddComponent<NetworkView>();
 			clientSend.connection.observed = clientSend;
 			clientSend.connection.viewID = clientViewID;
 			clientSend.parent = this.activeClient;
@@ -262,7 +262,7 @@ public class NetworkManager : MonoBehaviour{
 		Client client = this.activeClient;
 		client.id = clientID;
 		client.send.connection.group = clientID;
-		client.receive.connection = (NetworkView)client.gameObject.AddComponent("NetworkView");
+		client.receive.connection = (NetworkView)client.gameObject.AddComponent<NetworkView>();
 		client.receive.connection.observed = client.receive;
 		client.receive.connection.viewID = serverViewID;
 		client.receive.connection.group = clientID;
@@ -278,13 +278,13 @@ public class NetworkManager : MonoBehaviour{
 		client.label = name;
 		client.networkPlayer = player;
 		ClientReceive clientReceive = client.receive = clientObject.AddComponent<ClientReceive>();
-		clientReceive.connection = (NetworkView)clientObject.AddComponent("NetworkView");
+		clientReceive.connection = (NetworkView)clientObject.AddComponent<NetworkView>();
 		clientReceive.connection.observed = clientReceive;
 		clientReceive.connection.viewID = clientViewID;
 		clientReceive.connection.group = client.id;
 		clientReceive.parent = client;
 		ClientSend clientSend = client.send = clientObject.AddComponent<ClientSend>();
-		clientSend.connection = (NetworkView)clientObject.AddComponent("NetworkView");
+		clientSend.connection = (NetworkView)clientObject.AddComponent<NetworkView>();
 		clientSend.connection.observed = clientSend;
 		clientSend.connection.viewID = serverViewID;
 		clientSend.connection.group = client.id;

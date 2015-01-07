@@ -46,17 +46,4 @@ public class ImportSettings : AssetPostprocessor{
 			}
 		}
 	}
-	public void OnPreprocessAudio(){
-		AudioImporter importer = (AudioImporter)assetImporter;
-		//importer.format = AudioImporterFormat.Compressed;
-		if(importer.assetPath.Contains("Music")){
-			importer.loadType = AudioImporterLoadType.StreamFromDisc;
-		}
-		if(importer.compressionBitrate != 48000){
-			//importer.compressionBitrate = 48000;
-			//importer.forceToMono = true;
-			importer.threeD = false;
-			//importer.loadType = AudioImporterLoadType.DecompressOnLoad;
-		}
-	}
 }

@@ -47,8 +47,8 @@ namespace Zios{
 				instance.gameObject.transform.parent = instanceGroup;
 				instance.gameObject.transform.localScale = blueprint.scale;
 				if(blueprint.uniqueMaterial){
-					Material material = instance.gameObject.renderer.sharedMaterial;
-					instance.gameObject.renderer.sharedMaterial = (Material)Material.Instantiate(material);
+					Material material = instance.gameObject.GetComponent<Renderer>().sharedMaterial;
+					instance.gameObject.GetComponent<Renderer>().sharedMaterial = (Material)Material.Instantiate(material);
 				}
 			}
 		}

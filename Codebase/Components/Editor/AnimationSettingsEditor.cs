@@ -19,7 +19,7 @@ public class AnimationSettingsEditor : Editor{
 	}
 	public class ApplyChangesAction : ListAction{
 		public override void OnAction(UnityEngine.Object target,object targetItem){
-			((AnimationConfiguration)targetItem).Apply(((AnimationSettings)target).gameObject.animation);
+			((AnimationConfiguration)targetItem).Apply(((AnimationSettings)target).gameObject.GetComponent<Animation>());
 		}
 	}
 	public class PlayAnimationAction : ListAction{
@@ -41,8 +41,8 @@ public class AnimationSettingsEditor : Editor{
 		public override void OnGlobalAction(UnityEngine.Object target){
 			AnimationSettings settings = (AnimationSettings)target;
 			GameObject gameObject = settings.gameObject;
-			if(this.activeAnimation != null && gameObject.animation[this.activeAnimation.name] != null){
-				AnimationState animationState = gameObject.animation[this.activeAnimation.name];
+			if(this.activeAnimation != null && gameObject.GetComponent<Animation>()[this.activeAnimation.name] != null){
+				AnimationState animationState = gameObject.GetComponent<Animation>()[this.activeAnimation.name];
 				bool loop = animationState.clip.wrapMode == WrapMode.Loop;
 				float animationTime = animationState.clip.length * (animationState.clip.frameRate);
 				float framerate = 10000.0f / (animationState.clip.frameRate * animationState.speed);
@@ -50,7 +50,7 @@ public class AnimationSettingsEditor : Editor{
 				if(this.animationTime >= animationTime){
 					this.animationTime = loop ? 0 : animationTime;
 				}
-				gameObject.SampleAnimation(animationState.clip, Time.realtimeSinceStartup);
+				animationState.clip.SampleAnimation(gameObject, Time.realtimeSinceStartup);
 				this.shouldRepaint = true;
 			}
 			else{

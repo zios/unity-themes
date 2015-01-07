@@ -77,6 +77,7 @@ public static class RectExtension{
 		#endif
 		return current.Overlaps(windowRect);
 	}
+	#if UNITY_EDITOR
 	public static EditorWindow[] inspectors;
 	public static bool InInspectorWindow(this Rect current){
 		Rect windowRect = new Rect(0,0,Screen.width,Screen.height);
@@ -98,4 +99,5 @@ public static class RectExtension{
 		if(!current.InInspectorWindow() && current.y > 0){return false;}
 		return true;
 	}
+	#endif
 }

@@ -30,7 +30,7 @@ public class SpriteController : MonoBehaviour{
 		this.renderers = this.transform.GetComponentsInChildren<Renderer>();
 		if(Application.isPlaying && this.instance == null && this.spriteXML != null){
 			this.spriteSheet = SpriteManager.Add(this.spriteXML,this.spriteTexture);	
-			Renderer targetRenderer = this.targetRenderer ?? this.gameObject.renderer;
+			Renderer targetRenderer = this.targetRenderer ?? this.gameObject.GetComponent<Renderer>();
 			if(this.activeMaterial == null && targetRenderer != null){
 				if(this.spriteUnique){
 					targetRenderer.material = targetRenderer.material;

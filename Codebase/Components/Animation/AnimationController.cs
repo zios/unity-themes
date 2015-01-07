@@ -80,7 +80,7 @@ public class AnimationController : ManagedMonoBehaviour{
 		currentWeight = currentWeight < 1 ? 1.0f-currentWeight : 0;
 		float transitionTime = this.lookup[name].weight < currentWeight ? fallback.transitionOut : fallback.transitionOut;
 		this.lookup[name].weight = currentWeight;
-		this.animation.Blend(name,currentWeight,transitionTime);
+		this.GetComponent<Animation>().Blend(name,currentWeight,transitionTime);
 	}
 	public override void Step(){
 		this.PlayDefault();
@@ -89,7 +89,7 @@ public class AnimationController : ManagedMonoBehaviour{
 				string name = data.name;
 				bool zeroWeight = this.lookup[name].weight <= 0.01f && data != this.defaultAnimation;
 				if(!data.active || zeroWeight){
-					this.animation.Blend(name,0,data.transitionOut);
+					this.GetComponent<Animation>().Blend(name,0,data.transitionOut);
 					data.weight = data.originalWeight;
 					this.current.Remove(name);
 				}
@@ -103,7 +103,7 @@ public class AnimationController : ManagedMonoBehaviour{
 	// Internal
 	//=====================
 	private void Build(){
-		foreach(AnimationState state in this.animation){
+		foreach(AnimationState state in this.GetComponent<Animation>()){
 			AnimationData data = this.animations.Find(x=>x.name==state.name);
 			if(data == null){
 				data = new AnimationData();
@@ -115,7 +115,7 @@ public class AnimationController : ManagedMonoBehaviour{
 	}
 	[ContextMenu("Restore Defaults")]
 	private void RestoreDefaults(){
-		foreach(AnimationState state in this.animation){
+		foreach(AnimationState state in this.GetComponent<Animation>()){
 			AnimationData data = this.animations.Find(x=>x.name==state.name);
 			if(data != null){
 				data.weight = -1;
@@ -183,8 +183,8 @@ public class AnimationController : ManagedMonoBehaviour{
 			}
 			this.current[name] = this.lookup[name]; 
 			this.current[name].active = true;
-			this.animation.Rewind(name);
-			this.animation.Blend(name,this.lookup[name].weight,this.lookup[name].transitionIn);
+			this.GetComponent<Animation>().Rewind(name);
+			this.GetComponent<Animation>().Blend(name,this.lookup[name].weight,this.lookup[name].transitionIn);
 		}
 	}
 	public void Play(AnimationData data){
@@ -209,17 +209,17 @@ public class AnimationController : ManagedMonoBehaviour{
 		this.Stop(name);
 	}
 	public void SetSpeed(string name,float speed){
-		if(this.animation[name]){
-			this.animation[name].speed = speed;
+		if(this.GetComponent<Animation>()[name]){
+			this.GetComponent<Animation>()[name].speed = speed;
 		}
 	}
 	public void SetWeight(string name,float weight){
-		if(this.animation[name] && weight != this.lookup[name].weight){
+		if(this.GetComponent<Animation>()[name] && weight != this.lookup[name].weight){
 			AnimationData data = this.lookup[name];
 			data.weight = weight;
 			if(current.ContainsKey(name)){
 				float transitionTime = data.state.weight < weight ? data.transitionOut : data.transitionOut;
-				this.animation.Blend(name,data.weight,transitionTime);
+				this.GetComponent<Animation>().Blend(name,data.weight,transitionTime);
 			}
 		}
 	}

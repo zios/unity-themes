@@ -11,10 +11,10 @@ namespace Zios.Snapshot{
 		public Dictionary<string,OnEvent> events = new Dictionary<string, OnEvent>();
 		public List<Configuration> configurations = new List<Configuration>();
 		public void OnEnable(){
-			if(this.gameObject.networkView == null){
-				this.gameObject.AddComponent("NetworkView");
+			if(this.gameObject.GetComponent<NetworkView>() == null){
+				this.gameObject.AddComponent<NetworkView>();
 			}
-			this.gameObject.networkView.observed = this;
+			this.gameObject.GetComponent<NetworkView>().observed = this;
 		}
 		public void Start(){
 			foreach(EventItem item in listedEvents){

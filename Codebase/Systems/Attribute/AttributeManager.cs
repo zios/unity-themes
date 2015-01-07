@@ -146,14 +146,16 @@ public class AttributeManager : MonoBehaviour{
 			this.stage = 2;
 			if(!Application.isPlaying){
 				foreach(DataMonoBehaviour entry in this.data){
-					if(entry is AttributeData){
+					if(!entry.IsNull() && entry is AttributeData){
 						((AttributeData)entry).Validate();
 					}
 				}
 			}
 			return;
 		}
-		this.data[this.nextIndex].Awake();
+		if(!this.data[this.nextIndex].IsNull()){
+			this.data[this.nextIndex].Awake();
+		}
 		this.nextIndex += 1;
 		if(AttributeManager.refresh){
 			this.stage = 0;

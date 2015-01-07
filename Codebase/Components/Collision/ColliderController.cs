@@ -64,12 +64,12 @@ public class ColliderController : ManagedMonoBehaviour{
 		Events.Register("Trigger",this.gameObject);
 		Events.Register("Collide",this.gameObject);
 		if(Application.isPlaying){
-			if(this.rigidbody == null){
-				this.gameObject.AddComponent("Rigidbody");
+			if(this.GetComponent<Rigidbody>() == null){
+				this.gameObject.AddComponent<Rigidbody>();
 			}
-			this.rigidbody.useGravity = false;
-			this.rigidbody.freezeRotation = this.mode != ColliderMode.Sweep;
-			this.rigidbody.isKinematic = this.mode == ColliderMode.Sweep;
+			this.GetComponent<Rigidbody>().useGravity = false;
+			this.GetComponent<Rigidbody>().freezeRotation = this.mode != ColliderMode.Sweep;
+			this.GetComponent<Rigidbody>().isKinematic = this.mode == ColliderMode.Sweep;
 			this.CheckActive("Sleep");
 			ColliderController.instances[this.gameObject] = this;
 			if(!ColliderController.triggerSetup){
@@ -106,7 +106,7 @@ public class ColliderController : ManagedMonoBehaviour{
 			this.ResetBlocked();
 			this.CheckActive("WakeUp");
 			Vector3 cumulative = Vector3.zero;
-			Vector3 initial = this.rigidbody.position;
+			Vector3 initial = this.GetComponent<Rigidbody>().position;
 			foreach(Vector3 current in this.move){
 				cumulative += current;
 				Vector3 move = this.NullBlocked(current) * this.deltaTime;
@@ -118,22 +118,22 @@ public class ColliderController : ManagedMonoBehaviour{
 				this.StepMove(current,move);
 			}
 			if(this.mode == ColliderMode.SweepAndValidate){
-				Vector3 totalMove = this.rigidbody.position-initial;
-				this.rigidbody.position = initial;
-				this.rigidbody.MovePosition(initial + totalMove);
+				Vector3 totalMove = this.GetComponent<Rigidbody>().position-initial;
+				this.GetComponent<Rigidbody>().position = initial;
+				this.GetComponent<Rigidbody>().MovePosition(initial + totalMove);
 			}
 			this.lastDirection = cumulative.normalized;
 			if(this.move.Count > 0){this.move = new List<Vector3>();}
 			if(this.moveRaw.Count > 0){this.moveRaw = new List<Vector3>();}
 			this.CheckActive("Sleep");
 			if(this.mode == ColliderMode.Sweep){
-				this.transform.position = this.rigidbody.position;
+				this.transform.position = this.GetComponent<Rigidbody>().position;
 			}
 			this.lastPosition = this.transform.position;
 		}
 		if(this.mode != ColliderMode.Sweep){
-			this.rigidbody.velocity *= 0;
-			this.rigidbody.angularVelocity *= 0;
+			this.GetComponent<Rigidbody>().velocity *= 0;
+			this.GetComponent<Rigidbody>().angularVelocity *= 0;
 		}
 		foreach(GameObject existing in this.collisions.Keys.ToList()){
 			if(!this.frameCollisions.ContainsKey(existing)){
@@ -156,25 +156,25 @@ public class ColliderController : ManagedMonoBehaviour{
 	}
 	private void StepMove(Vector3 current,Vector3 move){
 		if(this.mode == ColliderMode.Validate){
-			this.rigidbody.MovePosition(this.rigidbody.position + move);
+			this.GetComponent<Rigidbody>().MovePosition(this.GetComponent<Rigidbody>().position + move);
 			return;
 		}
 		if(move == Vector3.zero){return;}
 		RaycastHit hit;
-		Vector3 startPosition = this.rigidbody.position;
+		Vector3 startPosition = this.GetComponent<Rigidbody>().position;
 		Vector3 direction = move.normalized;
 		float distance = Vector3.Distance(startPosition,startPosition+move) + this.hoverDistance*2;
-		bool contact = this.rigidbody.SweepTest(direction,out hit,distance);
+		bool contact = this.GetComponent<Rigidbody>().SweepTest(direction,out hit,distance);
 		bool isTrigger = ColliderController.HasTrigger(hit.collider);
 		if(this.CheckSlope(current)){return;}
 		if(contact && this.CheckSlope(current,hit)){return;}
 		if(contact){
 			if(this.CheckStep(current)){return;}
 			if(isTrigger){
-				hit.transform.gameObject.Call("Trigger",this.collider);
+				hit.transform.gameObject.Call("Trigger",this.GetComponent<Collider>());
 				return;
 			}
-			this.SetPosition(this.rigidbody.position + (direction * (hit.distance-this.hoverDistance*2)));
+			this.SetPosition(this.GetComponent<Rigidbody>().position + (direction * (hit.distance-this.hoverDistance*2)));
 			CollisionData otherCollision = new CollisionData(this,this.gameObject,-direction,distance,false);
 			CollisionData selfCollision = new CollisionData(this,hit.transform.gameObject,direction,distance,true);
 			if(direction.z > 0){this.blocked["forward"] = true;}
@@ -206,7 +206,7 @@ public class ColliderController : ManagedMonoBehaviour{
 				if(slopeCheck || slideCheck){
 					Vector3 cross = Vector3.Cross(slopeHit.normal,current);
 					Vector3 change = Vector3.Cross(cross,slopeHit.normal) * this.deltaTime;
-					this.SetPosition(this.rigidbody.position + change);
+					this.SetPosition(this.GetComponent<Rigidbody>().position + change);
 					this.blocked["down"] = false;
 					return true;
 				}
@@ -217,7 +217,7 @@ public class ColliderController : ManagedMonoBehaviour{
 	private bool CheckSlope(Vector3 current){
 		if(this.maxSlopeAngle != 0 || this.minSlideAngle != 0){
 			RaycastHit slopeHit;
-			bool slopeTest = this.rigidbody.SweepTest(-Vector3.up,out slopeHit,0.5f);
+			bool slopeTest = this.GetComponent<Rigidbody>().SweepTest(-Vector3.up,out slopeHit,0.5f);
 			if(slopeTest){
 				return this.CheckSlope(current,slopeHit);
 			}
@@ -229,14 +229,14 @@ public class ColliderController : ManagedMonoBehaviour{
 			RaycastHit stepHit;
 			Vector3 move = this.NullBlocked(current) * this.deltaTime;
 			Vector3 direction = move.normalized;
-			Vector3 position = this.rigidbody.position;
+			Vector3 position = this.GetComponent<Rigidbody>().position;
 			float distance = Vector3.Distance(position,position+move) + this.hoverDistance*2;
-			this.SetPosition(this.rigidbody.position + (Vector3.up * this.maxStepHeight));
-			bool stepTest = this.rigidbody.SweepTest(direction,out stepHit,distance);
+			this.SetPosition(this.GetComponent<Rigidbody>().position + (Vector3.up * this.maxStepHeight));
+			bool stepTest = this.GetComponent<Rigidbody>().SweepTest(direction,out stepHit,distance);
 			if(!stepTest){
-				this.SetPosition(this.rigidbody.position + move);
-				this.rigidbody.SweepTest(-Vector3.up,out stepHit);
-				this.SetPosition(this.rigidbody.position + (-Vector3.up*(stepHit.distance-0.01f)));
+				this.SetPosition(this.GetComponent<Rigidbody>().position + move);
+				this.GetComponent<Rigidbody>().SweepTest(-Vector3.up,out stepHit);
+				this.SetPosition(this.GetComponent<Rigidbody>().position + (-Vector3.up*(stepHit.distance-0.01f)));
 				this.blocked["down"] = true;
 				return true;
 			}
@@ -246,16 +246,16 @@ public class ColliderController : ManagedMonoBehaviour{
 	}
 	private void SetPosition(Vector3 position){
 		if(this.mode != ColliderMode.SweepAndValidatePrecise){
-			this.rigidbody.position = position;
+			this.GetComponent<Rigidbody>().position = position;
 			return;
 		}
-		this.rigidbody.MovePosition(position);
+		this.GetComponent<Rigidbody>().MovePosition(position);
 	}
 	private void CheckActive(string state){
 		if(this.mode == ColliderMode.Sweep){
-			if(state == "Sleep"){this.rigidbody.Sleep();}
+			if(state == "Sleep"){this.GetComponent<Rigidbody>().Sleep();}
 		}
-		if(state == "Wake"){this.rigidbody.WakeUp();}
+		if(state == "Wake"){this.GetComponent<Rigidbody>().WakeUp();}
 	}
 	private void CheckBlocked(){
 		foreach(var item in this.blocked){

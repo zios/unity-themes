@@ -56,6 +56,7 @@ public static class Locate{
 		List<Type> disabled = new List<Type>();
 		Type[] all = (Type[])Resources.FindObjectsOfTypeAll(typeof(Type));
 		foreach(Type current in all){
+			if(current.IsNull()){continue;}
 			if(current.IsPrefab()){continue;}
 			if(current.gameObject.transform.parent == null){rootObjects.Add(current.gameObject);}
 			if(current.gameObject.activeInHierarchy){enabled.Add(current);}

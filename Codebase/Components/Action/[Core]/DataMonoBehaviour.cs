@@ -23,6 +23,7 @@ public class DataMonoBehaviour : MonoBehaviour{
 		var unique = new List<DataMonoBehaviour>();
 		DataMonoBehaviour.sorting = Locate.GetSceneComponents<DataMonoBehaviour>();
 		foreach(var behaviour in DataMonoBehaviour.sorting){
+			if(behaviour.IsNull() || behaviour.gameObject.IsNull()){continue;}
 			if(!unique.Exists(x=>x.gameObject==behaviour.gameObject)){
 				unique.Add(behaviour);
 			}

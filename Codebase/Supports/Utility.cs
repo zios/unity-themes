@@ -154,7 +154,7 @@ public static class Utility{
 		#if UNITY_EDITOR
 		return EditorApplication.isPlayingOrWillChangePlaymode;	
 		#endif
-		return EditorApplication.isPlaying;
+		return Application.isPlaying;
 	}
 	public static int GetLocalID(int instanceID){
 		#if UNITY_EDITOR

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Collections;
 [AddComponentMenu("Zios/Component/Rendering/Sprite After Image")]
 public class SpriteAfterImage : MonoBehaviour{
-	public new bool active = false;
+	public bool active = false;
 	public int amount = 5;
 	public float delay = 0.05f;
 	public float lifetime = 0.2f;
@@ -48,9 +48,9 @@ public class SpriteAfterImage : MonoBehaviour{
 			this.sprites[index] = image.GetComponentInChildren<SpriteController>();
 			image.name = source.name + "-AfterImage-" + (index+1);
 			image.transform.parent = parent;
-			image.renderer.material = new Material(image.renderer.material);
-			image.renderer.material.shader = Shader.Find("Zios/Olio/Sprite + Particle + Lerp");
-			image.renderer.material.SetFloat("lerpCutoff",0);
+			image.GetComponent<Renderer>().material = new Material(image.GetComponent<Renderer>().material);
+			image.GetComponent<Renderer>().material.shader = Shader.Find("Zios/Olio/Sprite + Particle + Lerp");
+			image.GetComponent<Renderer>().material.SetFloat("lerpCutoff",0);
 			image.SetActive(false);
 			this.sprites[index].Start();
 		}
@@ -70,7 +70,7 @@ public class SpriteAfterImage : MonoBehaviour{
 			sprite.spriteActive = sprite.instance.active = false;
 			sprite.UpdateFrame();
 			if(this.randomColors){
-				sprite.gameObject.renderer.material.SetColor("lerpColor",Color.red.Random(this.randomIntensity));
+				sprite.gameObject.GetComponent<Renderer>().material.SetColor("lerpColor",Color.red.Random(this.randomIntensity));
 			}
 			this.nextDeath[this.nextIndex] = Time.time + this.lifetime;
 			this.nextSpawn = Time.time + this.delay;
@@ -86,10 +86,10 @@ public class SpriteAfterImage : MonoBehaviour{
 					Color startColor = this.startColor[index % this.startColor.Length];
 					Color endColor = this.endColor[index % this.endColor.Length];
 					Color mixColor = Color.Lerp(startColor,endColor,progress);
-					sprite.gameObject.renderer.material.SetColor("lerpColor",mixColor);
+					sprite.gameObject.GetComponent<Renderer>().material.SetColor("lerpColor",mixColor);
 				}
 				float mixAlpha = new Bezier(this.startAlpha,this.endAlpha).Curve(progress);
-				sprite.gameObject.renderer.material.SetFloat("alpha",mixAlpha);
+				sprite.gameObject.GetComponent<Renderer>().material.SetFloat("alpha",mixAlpha);
 				if(Time.time > deathTime){sprite.gameObject.SetActive(false);}
 			}
 		}
