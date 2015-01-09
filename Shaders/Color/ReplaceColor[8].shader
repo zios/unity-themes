@@ -1,4 +1,4 @@
-Shader "Zios/(Components)/Color/Replace Color"{
+﻿Shader "Zios/(Components)/Color/Replace Color"{
 	Properties{
 		indexMap("Lookup Map",2D) = "white"{}
 		lookupColorAStart("Replacement Color A",Color) = (1,0,0,1)

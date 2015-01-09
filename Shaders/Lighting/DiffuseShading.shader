@@ -1,4 +1,4 @@
-Shader "Zios/(Components)/Lighting/Diffuse Shading"{
+﻿Shader "Zios/(Components)/Lighting/Diffuse Shading"{
 	Properties{
 		shadingColor("Diffuse Shading Color",Color) = (0.5,0.5,0.5,1)
 	}

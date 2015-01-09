@@ -1,4 +1,4 @@
-Shader "Zios/Mobile/Lighting"{
+﻿Shader "Zios/Mobile/Lighting"{
 	Properties{
 		_MainTex("Diffuse Map",2D) = "white"{}
 		lightDirection("Light Direction",Vector) = (-1,1,0,1)

@@ -1,4 +1,4 @@
-Shader "Zios/Dori/Vertex Color + Outline + Shading"{
+﻿Shader "Zios/Dori/Vertex Color + Outline + Shading"{
 	Properties{
 		cullDistance("Distance",float) = 20
 		outlineSize("Outline Size",Range(0.002,0.01)) = 0.005

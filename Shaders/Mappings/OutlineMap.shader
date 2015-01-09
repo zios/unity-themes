@@ -1,4 +1,4 @@
-Shader "Zios/(Components)/Mappings/Outline Map"{
+﻿Shader "Zios/(Components)/Mappings/Outline Map"{
 	Properties{
 		outlineMap("Outline Map",2D) = "white"{}
 	}

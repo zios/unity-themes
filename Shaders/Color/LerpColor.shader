@@ -1,4 +1,4 @@
-Shader "Zios/(Components)/Color/Lerp Color"{
+﻿Shader "Zios/(Components)/Color/Lerp Color"{
 	Properties{
 		lerpColor("Lerp Color",Color) = (0,0,0,0)
 		lerpCutoff("Lerp Cutoff",Range(0,1)) = 0}

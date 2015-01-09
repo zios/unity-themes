@@ -1,4 +1,4 @@
-Shader "Zios/(Components)/Mappings/Splat Map"{
+﻿Shader "Zios/(Components)/Mappings/Splat Map"{
 	Properties{
 		splatMap("Splat Map",2D) = "white"{}
 		blendMapRed("Blend Texture Red",2D) = "white"{}

@@ -1,4 +1,4 @@
-Shader "Zios/ZEQ2/Triplanar Diffuse Map"{
+﻿Shader "Zios/ZEQ2/Triplanar Diffuse Map"{
 	Properties{
 		diffuseMap("Diffuse Map",2D) = "white"{}
 	}

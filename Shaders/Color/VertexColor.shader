@@ -1,4 +1,4 @@
-Shader "Zios/(Components)/Color/Vertex Color"{
+﻿Shader "Zios/(Components)/Color/Vertex Color"{
 	Properties{}
 	SubShader{
 		Pass{

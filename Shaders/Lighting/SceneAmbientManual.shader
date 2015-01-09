@@ -1,4 +1,4 @@
-Shader "Zios/(Components)/Lighting/Scene Ambient (Manual)"{
+﻿Shader "Zios/(Components)/Lighting/Scene Ambient (Manual)"{
 	Properties{
 		sceneAmbientMap("Scene Ambient Map",2D) = "white"{}
 		sceneAmbient("Scene Ambient",Range(0,1.0)) = 1.0

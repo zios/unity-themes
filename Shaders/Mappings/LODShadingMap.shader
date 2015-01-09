@@ -1,4 +1,4 @@
-Shader "Zios/(Components)/Mappings/LOD Shading Map"{
+﻿Shader "Zios/(Components)/Mappings/LOD Shading Map"{
 	Properties{
 		shadingMap("Shading Map",2D) = "white"{}
 		zMin("Z Min",Float) = 1.0

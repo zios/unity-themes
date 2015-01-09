@@ -1,4 +1,4 @@
-Shader "Zios/(Components)/Lighting/Stepped Shading [Blend]"{
+﻿Shader "Zios/(Components)/Lighting/Stepped Shading [Blend]"{
 	Properties{
 		shadingSteps("Shading Steps",float) = 3.0
 	}

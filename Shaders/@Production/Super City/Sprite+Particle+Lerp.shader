@@ -1,4 +1,4 @@
-Shader "Zios/SuperCity/Sprite + Particle + Lerp"{
+﻿Shader "Zios/SuperCity/Sprite + Particle + Lerp"{
 	Properties{
 		alpha("Alpha",Range(0.0,1.0)) = 1.0
 		alphaCutoff("Alpha Cutoff",Range(0.0,1.0)) = 0

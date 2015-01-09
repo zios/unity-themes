@@ -1,4 +1,4 @@
-Shader "Zios/(Components)/Lighting/Gradient Shading"{
+﻿Shader "Zios/(Components)/Lighting/Gradient Shading"{
 	Properties{
 		indexMap("Lookup Map",2D) = "white"{}
 		lookupColorAStart("Replacement Color A",Color) = (1,0,0,1)

@@ -1,4 +1,4 @@
-Shader "Zios/Sprite/Alpha Blend"{
+﻿Shader "Zios/Sprite/Alpha Blend"{
 	Properties{
 		[PerRendererData] _MainTex("Diffuse Map",2D) = "white"{}
 	}

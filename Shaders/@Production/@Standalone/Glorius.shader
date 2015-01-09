@@ -1,4 +1,4 @@
-Shader "Zios/Standalone/Glorius"{
+﻿Shader "Zios/Standalone/Glorius"{
 	Properties{
 		ambientMap("Ambient Map",2D) = "white"{}
 		ambientMapIntensity("Ambient Map Intensity",Range(0.0,1.0)) = 1.0

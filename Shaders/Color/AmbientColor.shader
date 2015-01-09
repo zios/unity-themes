@@ -1,4 +1,4 @@
-Shader "Zios/(Components)/Color/Ambient"{
+﻿Shader "Zios/(Components)/Color/Ambient"{
 	Properties{
 		ambientColor("Ambient Color", Color) = (0.5,0.5,0.5,1)
 		ambientCutoff("Ambient Cutoff",Range(0,1)) = 0.8

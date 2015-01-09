@@ -1,4 +1,4 @@
-Shader "Zios/(Components)/Color/Diffuse Color"{
+﻿Shader "Zios/(Components)/Color/Diffuse Color"{
 	Properties{
 		diffuseColor("Diffuse Color", Color) = (0.5,0.5,0.5,1)
 		diffuseCutoff("Diffuse Cut Off",Range(0,1)) = 0

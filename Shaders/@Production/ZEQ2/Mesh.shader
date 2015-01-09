@@ -1,4 +1,4 @@
-Shader "Zios/ZEQ2/Mesh"{
+﻿Shader "Zios/ZEQ2/Mesh"{
 	Properties{
 		diffuseMap("Diffuse Map",2D) = "white"{}
 	}

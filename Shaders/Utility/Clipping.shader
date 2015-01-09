@@ -1,4 +1,4 @@
-Shader "Zios/(Components)/Utility/Clipping"{
+﻿Shader "Zios/(Components)/Utility/Clipping"{
 	Properties{
 		clipUV("Clip UV",Vector) = (0,0,1,1)
 	}

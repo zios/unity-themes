@@ -1,4 +1,4 @@
-Shader "Zios/SuperCity/Shadow"{
+﻿Shader "Zios/SuperCity/Shadow"{
 	Properties{
 		alpha("Alpha",Range(0.0,1.0)) = 0.5
 		alphaCutoff("Alpha Cutoff",Range(0.0,1.0)) = 0

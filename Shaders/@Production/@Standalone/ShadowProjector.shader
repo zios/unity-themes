@@ -1,4 +1,4 @@
-Shader "Zios/General/Shadow Projector"{ 
+﻿Shader "Zios/General/Shadow Projector"{ 
 	Properties {
 		shadowMap ("Cookie", 2D) = "gray" {}
 		falloffMap ("FallOff", 2D) = "white" {}

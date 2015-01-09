@@ -1,4 +1,4 @@
-Shader "Hidden/Zios/(Components)/Utility/Vertex Outlines"{
+﻿Shader "Hidden/Zios/(Components)/Utility/Vertex Outlines"{
 	Properties{
 	}
 	SubShader{

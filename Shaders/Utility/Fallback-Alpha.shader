@@ -1,4 +1,4 @@
-Shader "Hidden/Zios/Fallback/Alpha Vertex Lit" {
+﻿Shader "Hidden/Zios/Fallback/Alpha Vertex Lit" {
 Properties {
 	diffuseColor ("Diffuse Color", Color) = (1,1,1,1)
 	specularColor ("Spec Color", Color) = (1,1,1,0)

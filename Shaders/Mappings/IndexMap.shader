@@ -1,4 +1,4 @@
-Shader "Zios/(Components)/Mappings/Index Map"{
+﻿Shader "Zios/(Components)/Mappings/Index Map"{
 	Properties{
 		indexMap("Index Map",2D) = "white"{}
 	}

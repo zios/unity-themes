@@ -1,4 +1,4 @@
-Shader "Zios/RGB/Character"{
+﻿Shader "Zios/RGB/Character"{
 	Properties{
 		indexMap("Index Map",2D) = "white"{}
 		shadingAtlas("Shading Atlas",2D) = "white"{}

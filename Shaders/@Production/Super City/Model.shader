@@ -1,4 +1,4 @@
-Shader "Zios/SuperCity/Model"{
+﻿Shader "Zios/SuperCity/Model"{
 	Properties{
 		diffuseMap("Diffuse Map",2D) = "white"{}
 		ambientColor("Ambient Color",Color) = (0,0,0,0)

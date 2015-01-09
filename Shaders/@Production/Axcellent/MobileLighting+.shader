@@ -1,4 +1,4 @@
-Shader "Zios/Mobile/Lighting+"{
+﻿Shader "Zios/Mobile/Lighting+"{
 	Properties{
 		_MainTex("Diffuse Map",2D) = "white"{}
 		intensity("Light Intensity",Range(0,2)) = 1

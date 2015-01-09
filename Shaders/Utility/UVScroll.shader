@@ -1,4 +1,4 @@
-Shader "Zios/(Components)/Utility/UV Scroll"{
+﻿Shader "Zios/(Components)/Utility/UV Scroll"{
 	Properties{
 		UVScrollX("UV Scroll X",Float) = 1.0
 		UVScrollY("UV Scroll Y",Float) = 1.0

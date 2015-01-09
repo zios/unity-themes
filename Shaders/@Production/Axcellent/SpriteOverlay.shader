@@ -1,4 +1,4 @@
-Shader "Zios/Sprite/Overlay"{
+﻿Shader "Zios/Sprite/Overlay"{
 	Properties{
 		[PerRendererData]_MainTex("Diffuse Map",2D) = "white"{}
 	}

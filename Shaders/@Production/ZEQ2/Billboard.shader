@@ -1,4 +1,4 @@
-Shader "Zios/ZEQ2/Billboard"{
+﻿Shader "Zios/ZEQ2/Billboard"{
 	Properties{
 		diffuseMap("Diffuse Map",2D) = "white"{}
 		alpha("Alpha",Range(0.0,1.0)) = 0.5

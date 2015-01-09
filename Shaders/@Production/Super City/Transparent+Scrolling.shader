@@ -1,4 +1,4 @@
-Shader "Zios/SuperCity/Transparent + Scrolling"{
+﻿Shader "Zios/SuperCity/Transparent + Scrolling"{
 	Properties{
 		diffuseMap("Diffuse Map",2D) = "white"{}
 		lerpColor("Lerp Color",Color) = (0,0,0,0)

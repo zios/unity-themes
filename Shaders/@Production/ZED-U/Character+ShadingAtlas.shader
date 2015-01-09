@@ -1,4 +1,4 @@
-Shader "Zios/ZED-U/Character (Shading Atlas)"{
+﻿Shader "Zios/ZED-U/Character (Shading Atlas)"{
 	Properties{
 		outlineColor("Outline Color",Color) = (0.0,0.0,0.0,1.0)
 		outlineLength("Outline Length",float) = 0.004

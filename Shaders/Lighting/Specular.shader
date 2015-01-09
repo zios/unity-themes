@@ -1,4 +1,4 @@
-Shader "Zios/(Components)/Lighting/Specular"{
+﻿Shader "Zios/(Components)/Lighting/Specular"{
 	Properties{
 		specularSize("Specular Size",Float) = 1
 		specularHardness("Specular Hardness",Range(0.01,1)) = 0.01

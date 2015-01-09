@@ -1,4 +1,4 @@
-Shader "Zios/(Components)/Color/Overlay Color"{
+﻿Shader "Zios/(Components)/Color/Overlay Color"{
 	Properties{
 		overlayColor("Overlay Color",Color) = (1.0,1.0,1.0,1.0)
 		overlayIntensity("Overlay Intensity",Range(0,1)) = 0

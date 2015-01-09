@@ -1,4 +1,4 @@
-Shader "Zios/SuperCity/Sprite + Clip"{
+﻿Shader "Zios/SuperCity/Sprite + Clip"{
 	Properties{
 		alpha("Alpha",Range(0.0,1.0)) = 1.0
 		diffuseMap("Diffuse Map",2D) = "white"{}

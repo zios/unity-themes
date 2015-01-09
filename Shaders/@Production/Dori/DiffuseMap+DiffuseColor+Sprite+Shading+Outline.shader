@@ -1,4 +1,4 @@
-Shader "Zios/Dori/Diffuse Map + Diffuse Color + Sprite + Shading + Outline"{
+﻿Shader "Zios/Dori/Diffuse Map + Diffuse Color + Sprite + Shading + Outline"{
 	Properties{
 		diffuseMap("Diffuse Map",2D) = "white"{}
 		lerpColor("Lerp Color",Color) = (1,1,1,0)

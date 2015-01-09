@@ -1,4 +1,4 @@
-Shader "Zios/(Components)/Utility/Atlas"{
+﻿Shader "Zios/(Components)/Utility/Atlas"{
 	Properties{
 		atlasUV("Atlas UV",Vector) = (0,0,0,0)
 	}

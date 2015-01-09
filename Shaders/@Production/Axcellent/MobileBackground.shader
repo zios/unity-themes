@@ -1,4 +1,4 @@
-Shader "Zios/Mobile/Background"{
+﻿Shader "Zios/Mobile/Background"{
 	Properties{
 		_MainTex("Diffuse Map",2D) = "white"{}
 	}

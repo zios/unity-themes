@@ -1,4 +1,4 @@
-Shader "Zios/(Components)/Lighting/Scene Ambient"{
+﻿Shader "Zios/(Components)/Lighting/Scene Ambient"{
 	Properties{
 		sceneAmbient("Scene Ambient",Range(0,1.0)) = 1.0
 	}

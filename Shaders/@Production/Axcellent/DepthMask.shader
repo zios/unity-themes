@@ -1,4 +1,4 @@
-Shader "Zios/General/Depth Mask"{
+﻿Shader "Zios/General/Depth Mask"{
 	SubShader{
 		Tags{"Queue"="Geometry+10"}
 		ColorMask 0

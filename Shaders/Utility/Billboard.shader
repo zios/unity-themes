@@ -1,4 +1,4 @@
-Shader "Zios/(Components)/Utility/Billboard"{
+﻿Shader "Zios/(Components)/Utility/Billboard"{
 	Properties{
 		diffuseMap("Diffuse Map",2D) = "white"{}
 	}

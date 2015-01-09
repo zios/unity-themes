@@ -1,4 +1,4 @@
-Shader "Zios/RGB/Mesh + Normal"{
+﻿Shader "Zios/RGB/Mesh + Normal"{
 	Properties{
 		diffuseMap("Diffuse Map",2D) = "white"{}
 		normalMap("Normal Map",2D) = "black"{}

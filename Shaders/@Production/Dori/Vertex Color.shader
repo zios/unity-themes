@@ -1,4 +1,4 @@
-Shader "Zios/Dori/Vertex Color"{
+﻿Shader "Zios/Dori/Vertex Color"{
 	Properties{}
 	SubShader{
 		Cull Off
