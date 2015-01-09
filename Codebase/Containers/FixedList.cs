@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 public class FixedList<T> : List<T>{
 	public int maxSize = 0;
 	public FixedList(int size) : base(size){

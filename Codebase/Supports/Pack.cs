@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 public static class Store{
 	public static float PackFloats(params float[] values){

@@ -1,4 +1,4 @@
-using Zios;
+﻿using Zios;
 using UnityEngine;
 [AddComponentMenu("Zios/Component/Action/Rotate/Towards/Rotate Towards Direction")]
 public class RotateTowardsDirection : ActionLink{

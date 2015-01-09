@@ -1,4 +1,4 @@
-using Zios;
+﻿using Zios;
 using UnityEngine;
 public enum MoveType{Absolute,Relative}
 [AddComponentMenu("Zios/Component/Action/Move/Add Move")]

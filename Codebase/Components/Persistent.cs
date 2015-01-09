@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 [AddComponentMenu("Zios/Component/General/Persistent")]
 public class Persistent : MonoBehaviour{

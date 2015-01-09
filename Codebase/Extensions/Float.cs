@@ -1,4 +1,4 @@
-public static class FloatExtension{
+﻿public static class FloatExtension{
 	public static bool Between(this float current,float start,float end){
 		return current >= start && current <= end;
 	}

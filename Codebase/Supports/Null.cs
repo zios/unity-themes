@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 public static class Null{
 	public static Vector3 vector3;
 	public static Rect rect;

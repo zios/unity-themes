@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Zios;
 [AddComponentMenu("")]
 public class AttributeIntData : AttributeData<int,AttributeInt,AttributeIntData>{

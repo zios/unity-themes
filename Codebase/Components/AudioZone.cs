@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 [AddComponentMenu("Zios/Component/General/Audio Zone")]

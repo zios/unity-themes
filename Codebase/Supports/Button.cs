@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 public static class Button{
 	public static bool CheckEventKeyDown(KeyCode code){
 		return Event.current.type == EventType.KeyDown && Event.current.keyCode == code;

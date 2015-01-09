@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 [AddComponentMenu("Zios/Component/Rendering/Sprite Controller")]

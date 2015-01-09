@@ -1,4 +1,4 @@
-using Zios;
+ï»¿using Zios;
 using System;
 using UnityEngine;
 using System.Collections.Generic;
@@ -7,9 +7,9 @@ namespace Zios{
 	public class AttributeVector3 : Attribute<Vector3,AttributeVector3,AttributeVector3Data>{
 		public static string[] specialList = new string[]{"Copy","Flip","Abs","Sign","Floor","Ceil","Normalized","Magnitude","SqrMagnitude"};
 		public static Dictionary<Type,string[]> operators = new Dictionary<Type,string[]>(){
-			{typeof(AttributeVector3Data),new string[]{"+","-","×","/","Average","Max","Min","Distance","Dot","Cross","Angle","Reflect","Project","ProjectOnPlane"}},
-			{typeof(AttributeIntData),new string[]{"+","-","×","/","Average","Max","Min"}},
-			{typeof(AttributeFloatData),new string[]{"+","-","×","/","Average","Max","Min"}},
+			{typeof(AttributeVector3Data),new string[]{"+","-","Ã—","Ã·","Average","Max","Min","Distance","Dot","Cross","Angle","Reflect","Project","ProjectOnPlane"}},
+			{typeof(AttributeIntData),new string[]{"+","-","Ã—","Ã·","Average","Max","Min"}},
+			{typeof(AttributeFloatData),new string[]{"+","-","Ã—","Ã·","Average","Max","Min"}},
 		};
 		public AttributeVector3() : this(Vector3.zero){}
 		public AttributeVector3(Vector3 value){this.delayedValue = value;}
@@ -45,7 +45,7 @@ namespace Zios{
 					if(index == 0){value = current;}
 					else if(operation == "+"){value += current;}
 					else if(operation == "-"){value -= current;}
-					else if(operation == "×"){value = Vector3.Scale(value,current);}
+					else if(operation == "Ã—"){value = Vector3.Scale(value,current);}
 					else if(operation == "Average"){value = (value + current) / 2;}
 					else if(operation == "Max"){value = Vector3.Max(value,current);}
 					else if(operation == "Min"){value = Vector3.Min(value,current);}
@@ -71,7 +71,7 @@ namespace Zios{
 					if(index == 0){value = new Vector3(current,current,current);}
 					else if(operation == "+"){value += new Vector3(current,current,current);}
 					else if(operation == "-"){value -= new Vector3(current,current,current);}
-					else if(operation == "×"){value = value * current;}
+					else if(operation == "Ã—"){value = value * current;}
 					else if(operation == "Average"){value = (value + new Vector3(current,current,current)) / 2;}
 					else if(operation == "Max"){value = Vector3.Max(value,new Vector3(current,current,current));}
 					else if(operation == "Min"){value = Vector3.Min(value,new Vector3(current,current,current));}

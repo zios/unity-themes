@@ -1,4 +1,4 @@
-using Zios;
+﻿using Zios;
 using UnityEngine;
 public enum ForceType{Absolute,Relative}
 [AddComponentMenu("Zios/Component/Action/Move/Add Force")]

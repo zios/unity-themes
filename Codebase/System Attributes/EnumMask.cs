@@ -1,2 +1,2 @@
-using UnityEngine;
+﻿using UnityEngine;
 public class EnumMaskAttribute : PropertyAttribute{}

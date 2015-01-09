@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using UnityEngine;
 public static class LayerMaskExtension{
 	public static bool Contains(this LayerMask current,LayerMask mask){

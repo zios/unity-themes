@@ -1,4 +1,4 @@
-using Zios;
+﻿using Zios;
 using UnityEngine;
 public enum ToggleState{Enable,Disable,Toggle}
 [AddComponentMenu("Zios/Component/Action/Set Active")]

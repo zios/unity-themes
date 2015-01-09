@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 public static class MeshExtension{
 	public static Mesh Copy(this Mesh mesh){
 		Mesh copy = new Mesh();

@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 namespace Zios{
 	[AddComponentMenu("Zios/Singleton/Shader")]
 	public class ShaderSettings : MonoBehaviour{

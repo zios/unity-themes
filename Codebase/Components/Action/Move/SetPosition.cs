@@ -1,4 +1,4 @@
-using Zios;
+﻿using Zios;
 using UnityEngine;
 public enum PositionMode{World,Local}
 [AddComponentMenu("Zios/Component/Action/Move/Set Position")]

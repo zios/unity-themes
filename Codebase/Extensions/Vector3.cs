@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 public static class Vector3Extension{
 	public static string Print(this Vector3 current){
 		return "("+current.x+","+current.y+","+current.z+")";

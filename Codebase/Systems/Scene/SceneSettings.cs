@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
 namespace Zios{
 	[AddComponentMenu("Zios/Singleton/Scene")]

@@ -1,4 +1,4 @@
-public static class IntExtension{
+﻿public static class IntExtension{
 	public static bool Between(this int current,int start,int end){
 		return current >= start && current <= end;
 	}

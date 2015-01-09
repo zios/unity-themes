@@ -1,4 +1,4 @@
-using UnityEditor;
+﻿using UnityEditor;
 
 public class LightmapResolution512 : EditorWindow
 {

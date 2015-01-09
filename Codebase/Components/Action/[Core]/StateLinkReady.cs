@@ -1,4 +1,4 @@
-using Zios;
+﻿using Zios;
 using UnityEngine;
 [RequireComponent(typeof(StateLink))][AddComponentMenu("Zios/Component/Action/State Link Ready")]
 public class StateLinkReady : ActionLink{

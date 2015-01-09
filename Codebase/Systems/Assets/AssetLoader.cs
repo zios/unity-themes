@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 [AddComponentMenu("Zios/Singleton/Asset")]
 public class AssetLoader : MonoBehaviour {

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 public static class TypeExtension{
 	public static bool IsStatic(this Type current){
 		return current.IsAbstract && current.IsSealed;

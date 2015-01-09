@@ -1,4 +1,4 @@
-using Zios;
+﻿using Zios;
 using UnityEngine;
 [AddComponentMenu("Zios/Component/Action/Distance Range")]
 public class DistanceRange : ActionLink{

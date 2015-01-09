@@ -1,4 +1,4 @@
-using System.IO;
+﻿using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 public static class SerializableExtension{
 	public static T DeepCopy<T>(this T target){
