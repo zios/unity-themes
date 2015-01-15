@@ -13,6 +13,8 @@ public class PlayAudio : ActionLink{
 	private AudioSource currentSource;
 	public override void Awake(){
 		base.Awake();
+        this.pitch.Setup("Pitch", this);
+        this.volume.Setup("Volume", this);
 		this.stopWhenNotUsable.Setup("Stop When Not Usable",this);
 		this.currentSource = this.sources[0];
 	}
