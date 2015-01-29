@@ -19,6 +19,6 @@ public class AddForce : ActionLink{
 			amount += this.target.Get().transform.up * this.amount.y;
 			amount += this.target.Get().transform.forward * this.amount.z;
 		}
-		this.target.Call("Add Force",amount);
+		this.target.Get().Call("Add Force",amount);
 	}
 }

@@ -17,9 +17,9 @@ public class Play3DAnimation : ActionLink{
 	public override void Use(){
 		base.Use();
 		string name = this.animationName.Get();
-		this.target.Call("Set Animation Speed",name,this.speed.Get());
-		this.target.Call("Set Animation Weight",name,this.weight.Get());
-		this.target.Call("Play Animation",name);
+		this.target.Get().Call("Set Animation Speed",name,this.speed.Get());
+        this.target.Get().Call("Set Animation Weight", name, this.weight.Get());
+        this.target.Get().Call("Play Animation", name);
 	}
 	public override void End(){
 		base.End();

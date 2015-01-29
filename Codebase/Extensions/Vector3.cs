@@ -6,7 +6,7 @@ public static class Vector3Extension{
 	public static float[] ToFloat(this Vector3 current){
 		return new float[3]{current.x,current.y,current.z};
 	}
-	public static Vector3 Scale(this Vector3 current,Vector3 other){
+	public static Vector3 ScaleBy(this Vector3 current,Vector3 other){
 		return Vector3.Scale(current,other);
 	}
 	public static Vector3 Sign(this Vector3 vector,bool allowZero=true){

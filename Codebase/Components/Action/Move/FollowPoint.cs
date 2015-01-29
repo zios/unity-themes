@@ -16,7 +16,7 @@ public class FollowPoint : ActionLink{
 	}
 	public override void Use(){
 		Transform target = this.target.Get().transform;
-		Vector3 orbit = this.orbit.Scale(new Vector3(1,-1,1));
+		Vector3 orbit = this.orbit.Get().ScaleBy(new Vector3(1,-1,1));
 		Vector3 end = orbit.ToRotation()*Vector3.zero + this.goal.Get();
 		target.position = this.position.Step(target.position,end);
 		base.Use();

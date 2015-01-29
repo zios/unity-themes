@@ -32,7 +32,7 @@ public class FollowTarget : ActionLink{
 		Transform source = this.source.Get().transform;
 		Transform target = this.target.Get().transform;
 		Vector3 offset = this.AdjustVector(this.offset);
-		Vector3 orbit = this.orbit.Scale(new Vector3(1,-1,1));
+		Vector3 orbit = this.orbit.Get().ScaleBy(new Vector3(1,-1,1));
 		Vector3 end = (orbit.ToRotation() * offset) + target.position;
 		source.position = this.position.Step(source.position,end);
 		base.Use();

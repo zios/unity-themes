@@ -21,14 +21,14 @@ public class Force : ManagedMonoBehaviour{
 		Events.Register("On Impact",this.gameObject);
 		Events.Register("Add Move",this.gameObject);
 		Events.Add("Collision",(MethodObject)this.OnCollide);
-		Events.Add("Add Force",this.AddForce);
+		Events.Add("Add Force",(MethodVector3)this.AddForce);
 		this.controller = this.GetComponent<ColliderController>();
 	}
 	public override void Step(){
 		if(!this.disabled && this.velocity != Vector3.zero){
-			Vector3 resistence = Vector3.Scale(this.velocity.Sign(),this.resistence);
+			Vector3 resistence = Vector3.Scale(this.velocity.Get().Sign(),this.resistence);
 			this.velocity.Set(this.velocity - resistence * this.deltaTime);
-			this.velocity.Set(this.velocity.Clamp(this.terminalVelocity.Get()*-1,this.terminalVelocity));
+			this.velocity.Set(this.velocity.Get().Clamp(this.terminalVelocity.Get()*-1,this.terminalVelocity));
 			this.gameObject.Call("Add Move",new Vector3(this.velocity.x,0,0));
 			this.gameObject.Call("Add Move",new Vector3(0,this.velocity.y,0));
 			this.gameObject.Call("Add Move",new Vector3(0,0,this.velocity.z));

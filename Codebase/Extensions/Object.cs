@@ -98,9 +98,11 @@ public static class ObjectExtension{
 		FieldInfo field = type.GetField(name);
 		if(index != -1){
 			if(current is Vector3){
-				((Vector3)current)[index] = (float)Convert.ChangeType(value,typeof(float));
+				Vector3 currentVector3 = (Vector3)current;
+				currentVector3[index] = (float)Convert.ChangeType(value,typeof(float));
 			}
-			((Array)current).SetValue(value,index);
+			Array currentArray = (Array)current;
+			currentArray.SetValue(value,index);
 		}
 		if(property != null){
 			property.SetValue(current,value,null);
