@@ -14,15 +14,15 @@ ModelImporter:
     materialName: 0
     materialSearch: 1
   animations:
-    legacyGenerateAnimations: 0
+    legacyGenerateAnimations: 4
     bakeSimulation: 0
     optimizeGameObjects: 0
     motionNodeName: 
-    animationCompression: 0
+    animationCompression: 1
     animationRotationError: .5
-    animationPositionError: .5
+    animationPositionError: 0
     animationScaleError: .5
-    animationWrapMode: 0
+    animationWrapMode: 8
     extraExposedTransformPaths: []
     clipAnimations: []
     isReadable: 0
@@ -46,7 +46,7 @@ ModelImporter:
     splitTangentsAcrossUV: 1
     normalImportMode: 0
     tangentImportMode: 1
-  importAnimation: 0
+  importAnimation: 1
   copyAvatar: 0
   humanDescription:
     human: []
@@ -60,6 +60,6 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 1
   additionalBone: 1
   userData: 

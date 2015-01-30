@@ -3,11 +3,12 @@ guid: 3fb08a1c588772a469217bd7d37e6263
 TrueTypeFontImporter:
   serializedVersion: 2
   fontSize: 16
-  fontColor: {r: 1, g: 1, b: 1, a: 1}
   forceTextureCase: -2
-  renderMode: 0
-  style: 0
+  characterSpacing: 1
+  characterPadding: 0
   includeFontData: 1
   use2xBehaviour: 0
   fontNames: []
   customCharacters: 
+  fontRenderingMode: 0
+  userData: 
