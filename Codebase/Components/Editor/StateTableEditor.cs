@@ -60,7 +60,7 @@ public class StateTableEditor : Editor{
 	}
 	public override void OnInspectorGUI(){
 		StateTable table = (StateTable)this.target;
-		if(!Attribute.ready || table.IsPrefab()){
+		if(AttributeManager.safe && (!Attribute.ready || table.IsPrefab())){
 			this.DrawDefaultInspector();
 			return;
 		}

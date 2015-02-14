@@ -14,7 +14,7 @@ public class DataMonoBehaviour : MonoBehaviour{
 	public virtual void OnApplicationQuit(){this.Awake();}
 	public virtual void Reset(){this.Awake();}
 	public virtual void Awake(){
-		string name = this.GetType().ToString().ToTitle();
+		string name = this.GetType().ToString().ToTitle().Replace("3 D","3D");
 		this.alias = this.alias.SetDefault(name);
 	}
 	#if UNITY_EDITOR

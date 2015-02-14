@@ -19,7 +19,7 @@ namespace Zios{
 			return base.GetPropertyHeight(property,label);
 		}
 		public override float GetPropertyHeight(SerializedProperty property,GUIContent label){
-			this.OnGUI(new Rect(-10000,-10000,0,0),property,label);
+			//this.OnGUI(new Rect(-10000,-10000,0,0),property,label);
 			return this.overallHeight;
 		}
 		public override void OnGUI(Rect area,SerializedProperty property,GUIContent label){
@@ -47,7 +47,7 @@ namespace Zios{
 			}
 			if(!area.InspectorValid()){return;}
 			this.overallHeight = this.GetBaseHeight(property,label);
-			if(!Attribute.ready){
+			if(!Attribute.ready && AttributeManager.safe){
 				EditorGUI.ProgressBar(area,AttributeManager.percentLoaded,"Updating");
 				Utility.SetDirty(property.serializedObject.targetObject);
 				return;

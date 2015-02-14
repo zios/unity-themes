@@ -3,7 +3,7 @@ using UnityEngine;
 public enum ToggleState{Enable,Disable,Toggle}
 [AddComponentMenu("Zios/Component/Action/Set Active")]
 public class SetActive : ActionLink{
-	public AttributeGameObject target;
+	public AttributeGameObject target = new AttributeGameObject();
 	public ToggleState state;
 	public override void Awake(){
 		base.Awake();

@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEditor;
 [CustomEditor(typeof(DataMonoBehaviour),true)][CanEditMultipleObjects]
 public class DataMonoBehaviourEditor : Editor{
-	public float nextStep;
+	public float nextUpdateStep;
 	public bool? isPrefab;
 	public override void OnInspectorGUI(){
 		bool isData = this.target is AttributeData;
@@ -18,8 +18,9 @@ public class DataMonoBehaviourEditor : Editor{
 		if(GUI.changed){Utility.SetDirty(target);}
 	}
 	public void EditorUpdate(){
-		if(!(bool)this.isPrefab && Time.realtimeSinceStartup > this.nextStep){
-			this.nextStep = Time.realtimeSinceStartup + AttributeManager.editorInterval;
+		if(AttributeManager.editorInterval == -1){return;}
+		if(!(bool)this.isPrefab && Time.realtimeSinceStartup > this.nextUpdateStep){
+			this.nextUpdateStep = Time.realtimeSinceStartup + AttributeManager.editorInterval;
 			((DataMonoBehaviour)this.target).Awake();
 			if(target is StateMonoBehaviour){
 				((StateMonoBehaviour)this.target).inUse.Set(false);

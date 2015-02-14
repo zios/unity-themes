@@ -14,11 +14,13 @@ public class AttributeManager : MonoBehaviour{
 	public static float percentLoaded;
 	public static bool refresh;
 	public static float editorInterval = 1;
+	public static bool safe = true;
 	public float updateInterval = 1;
 	public int editorRefreshPasses = -1;
 	public bool editorIncludeDisabled = true;
 	public bool updateOnHierarchyChange = false;
 	public bool updateOnAssetChange = false;
+	public bool safeMode = true;
 	private float nextStep;
 	private float start;
 	private DataMonoBehaviour[] data = new DataMonoBehaviour[0];
@@ -99,7 +101,8 @@ public class AttributeManager : MonoBehaviour{
 	}
 	public void Start(){
 		bool editor = !Application.isPlaying;
-		if(AttributeManager.editorInterval != -1){
+		AttributeManager.safe = this.safeMode;
+		if(this.activeRefresh || AttributeManager.editorInterval != -1){
 			if(!editor && !this.setup){
 				this.SceneRefresh();
 				this.setup = true;
@@ -122,19 +125,19 @@ public class AttributeManager : MonoBehaviour{
 		}
 		if(editor && Time.realtimeSinceStartup > this.nextStep){
 			AttributeManager.editorInterval = this.updateInterval;
-			if(editor && AttributeManager.editorInterval == -1 && !AttributeManager.refresh){return;}
+			if(AttributeManager.editorInterval == -1 && !AttributeManager.refresh){return;}
 			this.nextStep = Time.realtimeSinceStartup + AttributeManager.editorInterval;
 			if(!this.setup || AttributeManager.refresh){
-				AttributeManager.refresh = false;
 				this.SceneRefresh();
 				this.setup = true;
 				this.stage = 1;
 				Utility.EditorLog("AttributeManager : Refreshing...");
-				if(editor && this.editorRefreshPasses <= 0 && !this.activeRefresh){
+				if(this.editorRefreshPasses <= 0 && !this.activeRefresh){
 					this.activeRefresh = true;
 					while(this.stage != 0){this.Start();}
 					this.activeRefresh = false;
 				}
+				AttributeManager.refresh = false;
 			}
 			else if(this.stage == 0){
 				this.stage = 2;

@@ -41,7 +41,7 @@ public static class Events{
 	public static void Add(string name,MethodVector2 method,params GameObject[] targets){Events.Add(name,(object)method,targets);}
 	public static void Add(string name,MethodVector3 method,params GameObject[] targets){Events.Add(name,(object)method,targets);}
 	public static void AddScope(string name,object method,GameObject target){
-		Events.Clean(name,target,method);
+		Utility.EditorCall(()=>Events.Clean(name,target,method));
 		if(!Events.listeners.ContainsKey(target)){
 			Events.listeners[target] = new Dictionary<string,List<object>>();
 		}
@@ -72,42 +72,38 @@ public static class Events{
 		}
 	}
 	public static void Clean(string ignoreName="",GameObject target=null,object targetMethod=null){
-		#if UNITY_EDITOR 
-		if(!EditorApplication.isPlayingOrWillChangePlaymode && !Application.isPlaying){
-			foreach(var current in Events.listeners.Copy()){
-				GameObject gameObject = current.Key;
-				if(gameObject.IsNull()){
-					Events.listeners.Remove(gameObject);
-					continue;
-				}
-				foreach(var item in current.Value.Copy()){
-					string eventName = item.Key;
-					foreach(object method in item.Value.Copy()){
-						//if(method.Equals((object)(Method)Events.Empty)){continue;}
-						bool duplicate = eventName != ignoreName && target == gameObject && method.Equals(targetMethod);
-						bool invalid = method == null || ((Delegate)method).Target.IsNull();
-						if(duplicate || invalid){
-							var copy = item.Value.Copy();
-							copy.Remove(method);
-							//string messageType = method == null ? "empty method" : "duplicate method";
-							//Debug.Log("Events : Removing " + messageType  + " from -- " + gameObject.name + "/" + eventName);
-							Events.listeners[gameObject][eventName] = copy;
-						}
-					}
-					if(Events.listeners[gameObject][eventName].Count < 1){
-						//Debug.Log("Events : Removing empty method list -- " + gameObject.name + "/" + eventName);
-						Events.listeners[gameObject].Remove(eventName);
-					}
-				}
+		foreach(var current in Events.listeners.Copy()){
+			GameObject gameObject = current.Key;
+			if(gameObject.IsNull()){
+				Events.listeners.Remove(gameObject);
+				continue;
 			}
-			foreach(var current in Events.callers.Copy()){
-				GameObject gameObject = current.Key;
-				if(gameObject.IsNull()){
-					Events.callers.Remove(gameObject);
+			foreach(var item in current.Value.Copy()){
+				string eventName = item.Key;
+				foreach(object method in item.Value.Copy()){
+					//if(method.Equals((object)(Method)Events.Empty)){continue;}
+					bool duplicate = eventName != ignoreName && target == gameObject && method.Equals(targetMethod);
+					bool invalid = method == null || ((Delegate)method).Target.IsNull();
+					if(duplicate || invalid){
+						var copy = item.Value.Copy();
+						copy.Remove(method);
+						//string messageType = method == null ? "empty method" : "duplicate method";
+						//Debug.Log("Events : Removing " + messageType  + " from -- " + gameObject.name + "/" + eventName);
+						Events.listeners[gameObject][eventName] = copy;
+					}
+				}
+				if(Events.listeners[gameObject][eventName].Count < 1){
+					//Debug.Log("Events : Removing empty method list -- " + gameObject.name + "/" + eventName);
+					Events.listeners[gameObject].Remove(eventName);
 				}
 			}
 		}
-		#endif
+		foreach(var current in Events.callers.Copy()){
+			GameObject gameObject = current.Key;
+			if(gameObject.IsNull()){
+				Events.callers.Remove(gameObject);
+			}
+		}
 	}
 	public static bool HasEvents(string type,GameObject target=null){
 		if(target.IsNull()){target = Events.global;}
@@ -124,7 +120,7 @@ public static class Events{
 		return Events.callers.ContainsKey(target) && Events.callers[target].Contains(name);
 	}
 	public static List<string> GetEvents(string type,GameObject target=null){
-		Events.Clean();
+		Utility.EditorCall(Events.Clean);
 		if(target.IsNull()){target = Events.global;}
 		if(type.Contains("Listen",true)){
 			if(Events.listeners.ContainsKey(target)){
