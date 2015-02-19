@@ -45,17 +45,17 @@ public class AttributeManager : MonoBehaviour{
 			}
 		}
 	}
-    [MenuItem("Zios/Process/Attribute/Hide All Data")]
+    [MenuItem("Zios/Process/Attribute/Hide All Data %3")]
 	public static void HideAttributeData(){
 		PlayerPrefs.SetInt("ShowAttributeData",0);
 		AttributeManager.refresh = true;
 	}
-    [MenuItem("Zios/Process/Attribute/Show All Data")]
+    [MenuItem("Zios/Process/Attribute/Show All Data %2")]
 	public static void ShowAttributeData(){
 		PlayerPrefs.SetInt("ShowAttributeData",1);
 		AttributeManager.refresh = true;
 	}
-    [MenuItem("Zios/Process/Attribute/Full Refresh")]
+    [MenuItem("Zios/Process/Attribute/Full Refresh %1")]
 	public static void AttributeRefresh(){
 		Attribute.ready = false;
 		AttributeManager.refresh = true;
