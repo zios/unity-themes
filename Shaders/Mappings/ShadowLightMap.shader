@@ -1,4 +1,7 @@
-﻿Shader "Zios/(Components)/Mappings/Shadow Lightmap"{
+﻿// Upgrade NOTE: commented out 'sampler2D unity_Lightmap', a built-in variable
+// Upgrade NOTE: replaced tex2D unity_Lightmap with UNITY_SAMPLE_TEX2D
+
+Shader "Zios/(Components)/Mappings/Shadow Lightmap"{
 	Properties{
 	}
 	SubShader{
@@ -10,7 +13,7 @@
 			#pragma fragmentoption ARB_precision_hint_fastest
 			fixed4 shadowColor;
 			fixed4 unity_LightmapST;
-			sampler2D unity_Lightmap;
+			// sampler2D unity_Lightmap;
 			struct vertexInput{
 				float4 vertex        : POSITION;
 				float4 texcoord      : TEXCOORD0;
@@ -31,7 +34,7 @@
 				return output;
 			}
 			pixelOutput applyShadowLightMap(vertexOutput input,pixelOutput output){
-				output.color.rgb *= saturate(DecodeLightmap(tex2D(unity_Lightmap,input.UV.zw))) + shadowColor;
+				output.color.rgb *= saturate(DecodeLightmap(UNITY_SAMPLE_TEX2D(unity_Lightmap,input.UV.zw))) + shadowColor;
 				return output;
 			}
 			vertexOutput vertexPass(vertexInput input){

@@ -264,7 +264,7 @@ public class SpriteWindow : EditorWindow{
 		bool alt = Event.current.alt;
 		bool mouseMove = Event.current.type == EventType.MouseMove;
 		Vector2 mouseChange = mouseMove ? Event.current.delta : new Vector2(0,0);
-		Screen.showCursor = !((control || alt || shift) && placementMode);
+		Cursor.visible = !((control || alt || shift) && placementMode);
 		KeyShortcut CheckKey = Button.CheckEventKeyDown;
 		Transform[] selected = this.placementMode && this.brush != null ? new Transform[1]{this.brush.transform} : Selection.transforms;
 		if((control||alt||shift) && mouseMove){
@@ -307,7 +307,7 @@ public class SpriteWindow : EditorWindow{
 		foreach(Transform active in selected){
 			if(active == null){continue;}
 			SpriteController controller = active.GetComponent<SpriteController>();
-			bool hasRenderer = active.renderer != null;
+			bool hasRenderer = active.GetComponent<Renderer>() != null;
 			bool isBrush = this.brush && active == this.brush.transform;
 			bool isAnimated = controller != null;
 			Vector3 scale = active.localScale;
@@ -315,7 +315,7 @@ public class SpriteWindow : EditorWindow{
 			Vector3 rotation = active.localEulerAngles;
 			if(hasRenderer){
 				if(CheckKey(KeyCode.S)){
-					active.renderer.castShadows = !active.renderer.castShadows;
+					active.GetComponent<Renderer>().castShadows = !active.GetComponent<Renderer>().castShadows;
 					useEvent = true;
 				}
 			}
@@ -401,8 +401,8 @@ public class SpriteWindow : EditorWindow{
 			if(current.transform.localPosition == Vector3.zero){continue;}
 			bool isSprite = this.IsSprite(current);
 			bool repairable = false;
-			if(current.renderer != null && !isSprite){
-				foreach(Material material in current.renderer.sharedMaterials){
+			if(current.GetComponent<Renderer>() != null && !isSprite){
+				foreach(Material material in current.GetComponent<Renderer>().sharedMaterials){
 					repairable = material == null || material.HasProperty("atlasUV");
 					if(repairable){break;}
 				}
@@ -413,7 +413,7 @@ public class SpriteWindow : EditorWindow{
 				continue;
 			}
 			if(isSprite || repairable){
-				Material[] materialList = current.renderer != null ? current.renderer.sharedMaterials : new Material[1];
+				Material[] materialList = current.GetComponent<Renderer>() != null ? current.GetComponent<Renderer>().sharedMaterials : new Material[1];
 				if(isSprite && materialList.Length == 0){materialList = new Material[1];}
 				foreach(Material material in materialList){
 					string materialName = material != null ? material.name.Replace(this.assetPrefix,"") : "";
@@ -472,14 +472,14 @@ public class SpriteWindow : EditorWindow{
 		bool isSprite = this.IsSprite(current);
 		current = this.ApplySprite(current,sprite,true,false);
 		if(current != null && isSprite){
-			if(current.renderer != null){
-				if(current.renderer.sharedMaterial == null){
+			if(current.GetComponent<Renderer>() != null){
+				if(current.GetComponent<Renderer>().sharedMaterial == null){
 					string fullName = this.assetPrefix+sprite.fullName;
 					string sourcePath = AssetDatabase.GetAssetPath(sprite.parent.xml);
 					sourcePath = this.FindAssetFolder(sourcePath,sprite.name,"Materials");
 					string materialPath = sourcePath+fullName+".mat";
-					current.renderer.sharedMaterial = FileManager.GetAsset<Material>(materialPath);
-					if(current.renderer.sharedMaterial == null){
+					current.GetComponent<Renderer>().sharedMaterial = FileManager.GetAsset<Material>(materialPath);
+					if(current.GetComponent<Renderer>().sharedMaterial == null){
 						Debug.LogError("SpriteWindow : Material assignment could not be fixed -- " + name);
 					}
 					else{
@@ -627,8 +627,8 @@ public class SpriteWindow : EditorWindow{
 		return targetPath;
 	}
 	public void SortShader(GameObject instance){
-		if(instance.renderer == null || instance.renderer.sharedMaterial == null){return;}
-		Shader shader = instance.renderer.sharedMaterial.shader;
+		if(instance.GetComponent<Renderer>() == null || instance.GetComponent<Renderer>().sharedMaterial == null){return;}
+		Shader shader = instance.GetComponent<Renderer>().sharedMaterial.shader;
 		bool systemShader = shader.name.Contains("Sprite");
 		bool dualSprite = instance.name.Contains("@Bottom") || instance.name.Contains("@Top");
 		bool flat = instance.transform.localEulerAngles.x == 270 || instance.transform.localEulerAngles.x == -90;
@@ -636,9 +636,9 @@ public class SpriteWindow : EditorWindow{
 			bool viable = flat && !dualSprite;
 			Shader targetShader = viable ? this.assets.shaderFlat : this.assets.shaderNormal;
 			if(shader != targetShader){
-				instance.renderer.sharedMaterial.shader = targetShader;
+				instance.GetComponent<Renderer>().sharedMaterial.shader = targetShader;
 			}
-			instance.renderer.castShadows = !flat;
+			instance.GetComponent<Renderer>().castShadows = !flat;
 		}
 	}
 	public void CreateMaterial(Sprite sprite,bool forceOverwrite=false,bool forceUpdate=false){
@@ -1184,13 +1184,13 @@ public class SpriteWindow : EditorWindow{
 		foreach(GameObject current in objects){
 			MeshFilter filter = current.GetComponent<MeshFilter>();
 			if(filter == null || filter.sharedMesh == null || handled.Contains(current.name)){continue;};
-			if(bake && filter.sharedMesh == this.assets.spriteMesh && current.renderer != null){
-				if(current.renderer.sharedMaterial == null){continue;}
+			if(bake && filter.sharedMesh == this.assets.spriteMesh && current.GetComponent<Renderer>() != null){
+				if(current.GetComponent<Renderer>().sharedMaterial == null){continue;}
 				this.spriteBakes.Add(current,bake);
 			}
 			else{
 				FileData materialFile = FileManager.Find(filter.sharedMesh.name+".mat");
-				if(materialFile != null && current.renderer.sharedMaterial.name.Contains("[")){
+				if(materialFile != null && current.GetComponent<Renderer>().sharedMaterial.name.Contains("[")){
 					this.spriteBakes.Add(current,bake);
 				}
 			}
@@ -1204,7 +1204,7 @@ public class SpriteWindow : EditorWindow{
 	public void BakeSprite(GameObject current,bool bake){
 		MeshFilter filter = current.GetComponent<MeshFilter>();
 		if(bake){
-			Renderer renderer = current.renderer;
+			Renderer renderer = current.GetComponent<Renderer>();
 			FileData meshFile = FileManager.Find(renderer.sharedMaterial.name+".asset");
 			if(meshFile != null){
 				string materialName = renderer.sharedMaterial.name.Replace(this.assetPrefix,"");
@@ -1236,7 +1236,7 @@ public class SpriteWindow : EditorWindow{
 				scale.y = (sprite.current.fullBounds.height*0.001937f) * 1.414f;
 				current.transform.localScale = scale;
 			}
-			current.renderer.sharedMaterial = spriteMaterial;
+			current.GetComponent<Renderer>().sharedMaterial = spriteMaterial;
 			filter.sharedMesh = this.assets.spriteMesh;
 		}
 		GameObject root = PrefabUtility.FindPrefabRoot(current);

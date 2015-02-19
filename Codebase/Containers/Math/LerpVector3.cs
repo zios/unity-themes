@@ -4,11 +4,12 @@ using UnityEngine;
 [Serializable]
 public class LerpVector3 : LerpTransition{
 	public ListBool lerpAxes = new ListBool{true,true,true};
-	public float endProximity;
+	public AttributeFloat endProximity = 0;
 	private Vector3? lastStart;
 	private Vector3? lastEnd;
 	public override void Setup(string path,Component parent){
 		base.Setup(path,parent);
+		this.endProximity.Setup("End Proximity",parent);
 		this.parent.gameObject.Register(this.path+"/Transition/End");
 		this.parent.gameObject.Register(this.path+"/Transition/Start");
 	}

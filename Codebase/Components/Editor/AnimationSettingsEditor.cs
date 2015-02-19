@@ -50,7 +50,7 @@ public class AnimationSettingsEditor : Editor{
 				if(this.animationTime >= animationTime){
 					this.animationTime = loop ? 0 : animationTime;
 				}
-				gameObject.SampleAnimation(animationState.clip, Time.realtimeSinceStartup);
+				animationState.clip.SampleAnimation(gameObject, Time.realtimeSinceStartup);
 				this.shouldRepaint = true;
 			}
 			else{

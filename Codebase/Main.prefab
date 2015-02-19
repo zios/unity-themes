@@ -1155,8 +1155,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c834bc92ef30dd4b9aea9d51609ee77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fpsText: {fileID: 0}
-  frameTimeText: {fileID: 0}
+  fpsText: {fileID: 11400062}
+  frameTimeText: {fileID: 11400094}
 --- !u!114 &11400090
 MonoBehaviour:
   m_ObjectHideFlags: 1

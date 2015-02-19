@@ -17,6 +17,9 @@ public class DataMonoBehaviour : MonoBehaviour{
 		string name = this.GetType().ToString().ToTitle().Replace("3 D","3D");
 		this.alias = this.alias.SetDefault(name);
 	}
+	public virtual void OnDestroy(){
+		AttributeManager.refresh = true;
+	}
 	#if UNITY_EDITOR
     [MenuItem("Zios/Process/Components/Sort All (Smart)")]
 	public static void SortSmartAll(){

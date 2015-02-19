@@ -1,3 +1,6 @@
+// Upgrade NOTE: commented out 'sampler2D unity_Lightmap', a built-in variable
+// Upgrade NOTE: replaced tex2D unity_Lightmap with UNITY_SAMPLE_TEX2D
+
 //==========================
 // Variables
 //==========================
@@ -16,7 +19,7 @@ sampler2D normalIndexMap;
 sampler2D blendMapRed;
 sampler2D blendMapGreen;
 sampler2D blendMapBlue;
-sampler2D unity_Lightmap;
+// sampler2D unity_Lightmap;
 sampler2D _MainTex;
 fixed4 _MainTex_ST;
 fixed4 unity_LightmapST;
@@ -446,11 +449,11 @@ pixelOutput applyShadows(vertexOutput input,pixelOutput output){
 	return output;
 }
 pixelOutput applyLightMap(vertexOutput input,pixelOutput output){
-	output.color.rgb *= DecodeLightmap(tex2D(unity_Lightmap,input.UV.zw)) + shadowColor;
+	output.color.rgb *= DecodeLightmap(UNITY_SAMPLE_TEX2D(unity_Lightmap,input.UV.zw)) + shadowColor;
 	return output;
 }
 pixelOutput applyShadowLightMap(vertexOutput input,pixelOutput output){
-	output.color.rgb *= saturate(DecodeLightmap(tex2D(unity_Lightmap,input.UV.zw))) + shadowColor;
+	output.color.rgb *= saturate(DecodeLightmap(UNITY_SAMPLE_TEX2D(unity_Lightmap,input.UV.zw))) + shadowColor;
 	return output;
 }
 //==========================

@@ -4,10 +4,12 @@ using UnityEngine;
 public class LockCursor : ActionLink{
 	public override void Use(){
 		base.Use();
-		Screen.lockCursor = true;
+		Cursor.lockState = CursorLockMode.Locked;
+		Cursor.visible = false;
 	}
 	public override void End(){
 		base.End();
-		Screen.lockCursor = false;
+		Cursor.lockState = CursorLockMode.None;
+		Cursor.visible = true;
 	}
 }

@@ -154,10 +154,10 @@ namespace Zios{
 			}
 		}
 		public static void OnEnable(){
-			Application.RegisterLogCallback(Console.HandleLog);
+			Application.logMessageReceived += Console.HandleLog;
 		}
 		public static void OnDisable(){
-			Application.RegisterLogCallback(null);
+			Application.logMessageReceived -= Console.HandleLog;
 		}
 		public static void OnApplicationQuit(){
 			Console.SaveCvars();
@@ -526,9 +526,9 @@ namespace Zios{
 		public static void AddLog(string text,bool system=false){
 			if(!Console.settings.allowLogging){return;}
 			if(Application.isEditor){
-				Application.RegisterLogCallback(null);
+				Application.logMessageReceived -= Console.HandleLog;
 				Debug.Log(text);
-				Application.RegisterLogCallback(Console.HandleLog);
+				Application.logMessageReceived += Console.HandleLog;
 				if(system){return;}
 			}
 			if(Console.settings.allowLogging && !Application.isWebPlayer){
