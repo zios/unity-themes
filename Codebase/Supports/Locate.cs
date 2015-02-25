@@ -22,7 +22,8 @@ public static class Locate{
 	public static Dictionary<Type,Component[]> disabledComponents = new Dictionary<Type,Component[]>();
 	public static Dictionary<GameObject,Dictionary<Type,Component[]>> objectComponents = new Dictionary<GameObject,Dictionary<Type,Component[]>>();
 	static Locate(){
-		Utility.HierarchyUpdate(Locate.SetDirty,true);
+		//Events.Add("On Application Quit",Locate.SetDirty);
+		Utility.AddHierarchyUpdate(Locate.SetDirty,true);
 	}
 	public static void SetDirty(){
 		Locate.cleanGameObjects = false;

@@ -17,6 +17,9 @@ public class Accessor{
 		this.property = type.GetProperty(name);
 		this.type = this.Get().GetType();
 	}
+	public object Get<Type>(){
+		return (Type)this.Get(this.scope,this.index);
+	}
 	public object Get(){
 		return this.Get(this.scope,this.index);
 	}
@@ -27,6 +30,7 @@ public class Accessor{
 		return this.Get(scope,this.index);
 	}
 	public object Get(object scope,int index){
+		if(this.field == null && this.property == null){return new object();}
 		object current = this.field == null ? this.property.GetValue(scope,null) : this.field.GetValue(scope);
 		if(index == -1){
 			return current;

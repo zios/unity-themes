@@ -8,9 +8,10 @@ using System.Reflection;
 using System.Security.Cryptography;
 using System.Xml.Serialization;
 public static class ObjectExtension{
-	const BindingFlags allFlags = BindingFlags.Static|BindingFlags.Instance|BindingFlags.NonPublic|BindingFlags.Public;
-	const BindingFlags privateFlags = BindingFlags.Instance|BindingFlags.NonPublic;
-	const BindingFlags publicFlags = BindingFlags.Instance|BindingFlags.Public;
+	public const BindingFlags allFlags = BindingFlags.Static|BindingFlags.Instance|BindingFlags.NonPublic|BindingFlags.Public;
+	public const BindingFlags staticFlags = BindingFlags.Static|BindingFlags.NonPublic|BindingFlags.Public;
+	public const BindingFlags privateFlags = BindingFlags.Instance|BindingFlags.NonPublic;
+	public const BindingFlags publicFlags = BindingFlags.Instance|BindingFlags.Public;
 	public static T Cast<T>(this object current,T type){
 		return (T)Convert.ChangeType(current,typeof(T));
 	}
@@ -92,10 +93,11 @@ public static class ObjectExtension{
 		if(field != null){return field.FieldType;}
 		return typeof(Type);
 	}
-	public static void SetVariable<T>(this object current,string name,T value,int index=-1){
+	public static void SetVariable<T>(this object current,string name,T value,int index=-1,BindingFlags flags = allFlags){
 		Type type = current is Type ? (Type)current : current.GetType();
-		PropertyInfo property = type.GetProperty(name);
-		FieldInfo field = type.GetField(name);
+		current = current.IsStatic() ? null : current;
+		PropertyInfo property = type.GetProperty(name,flags);
+		FieldInfo field = type.GetField(name,flags);
 		if(index != -1){
 			if(current is Vector3){
 				Vector3 currentVector3 = (Vector3)current;
@@ -111,9 +113,10 @@ public static class ObjectExtension{
 			field.SetValue(current,value);
 		}
 	}
-	public static List<string> ListVariables(this object current,List<Type> limitTypes = null){
+	public static List<string> ListVariables(this object current,List<Type> limitTypes = null,BindingFlags flags = allFlags){
+		Type type = current is Type ? (Type)current : current.GetType();
 		List<string> variables = new List<string>();
-		foreach(FieldInfo field in current.GetType().GetFields()){
+		foreach(FieldInfo field in type.GetFields(flags)){
 			if(limitTypes != null){
 				if(limitTypes.Contains(field.FieldType)){
 					variables.Add(field.Name);
@@ -123,7 +126,7 @@ public static class ObjectExtension{
 				variables.Add(field.Name);
 			}
 		}
-		foreach(PropertyInfo property in current.GetType().GetProperties()){
+		foreach(PropertyInfo property in type.GetProperties(flags)){
 			if(limitTypes != null){
 				if(limitTypes.Contains(property.PropertyType)){
 					variables.Add(property.Name);
@@ -135,10 +138,10 @@ public static class ObjectExtension{
 		}
 		return variables;
 	}
-	public static List<string> ListMethods(this object current,List<Type> argumentTypes = null,BindingFlags flags = allFlags,Type type = null){
+	public static List<string> ListMethods(this object current,List<Type> argumentTypes = null,BindingFlags flags = allFlags){
+		Type type = current is Type ? (Type)current : current.GetType();
 		List<string> methods = new List<string>();
-		Type currentType = type == null ? current.GetType() : type;
-		foreach(MethodInfo method in currentType.GetMethods(flags)){
+		foreach(MethodInfo method in type.GetMethods(flags)){
 			if(argumentTypes != null){
 				ParameterInfo[] parameters = method.GetParameters();
 				bool match = parameters.Length == argumentTypes.Count;
@@ -170,12 +173,12 @@ public static class ObjectExtension{
 		}
 	}
 	public static Type LoadType(this object current,string typeName){
-		System.Reflection.Assembly[] AS = System.AppDomain.CurrentDomain.GetAssemblies();
-		foreach(var A in AS){
-			System.Type[] types = A.GetTypes();
-			foreach(var T in types){
-				if(T.FullName == typeName){
-					return T;
+		Assembly[] assemblies = System.AppDomain.CurrentDomain.GetAssemblies();
+		foreach(var assembly in assemblies){
+			Type[] types = assembly.GetTypes();
+			foreach(Type type in types){
+				if(type.FullName == typeName){
+					return type;
 				}
 			}
 		}
@@ -209,5 +212,8 @@ public static class ObjectExtension{
 	public static List<T> AsList<T>(this T current){
 		return new List<T>{current};
 	}
-	public static bool IsStatic(this object current){return current.GetType().IsStatic();}
+	public static bool IsStatic(this object current){
+		Type type = current is Type ? (Type)current : current.GetType();
+		return type.IsStatic();
+	}
 }

@@ -48,7 +48,7 @@ public static class Utility{
 		#endif
 		return target;
 	}
-	public static void EditorUpdate(CallbackFunction method,bool callImmediately=false){
+	public static void AddEditorUpdate(CallbackFunction method,bool callImmediately=false){
 		#if UNITY_EDITOR
 		if(!Utility.IsPlaying()){
 			if(!EditorApplication.update.Contains(method)){
@@ -79,7 +79,7 @@ public static class Utility{
 		Utility.hierarchyPaused = false;
 		#endif
 	}
-	public static void HierarchyUpdate(CallbackFunction method,bool callImmediately=false){
+	public static void AddHierarchyUpdate(CallbackFunction method,bool callImmediately=false){
 		#if UNITY_EDITOR
 		if(!Utility.IsPlaying()){
 			if(!EditorApplication.hierarchyWindowChanged.Contains(method)){
@@ -95,7 +95,7 @@ public static class Utility{
 		}
 		#endif
 	}
-	public static void AssetUpdate(CallbackFunction method,bool callImmediately=false){
+	public static void AddAssetUpdate(CallbackFunction method,bool callImmediately=false){
 		#if UNITY_EDITOR
 		if(!Utility.IsPlaying()){
 			if(!Utility.assetUpdate.Contains(method)){

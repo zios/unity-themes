@@ -8,7 +8,7 @@ public class EditorFPSEditor : Editor{
 	private float nextUpdate;
 	private GUISkin skin;
 	public override void OnInspectorGUI(){
-		Utility.EditorUpdate(this.Step,true);	
+		Utility.AddEditorUpdate(this.Step,true);	
 		string skinName = EditorGUIUtility.isProSkin ? "Dark" : "Light";
 		if(this.skin == null || !this.skin.name.Contains(skinName)){
 			this.skin = FileManager.GetAsset<GUISkin>("Gentleface-" + skinName + ".guiskin");

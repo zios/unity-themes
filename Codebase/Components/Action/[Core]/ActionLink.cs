@@ -43,7 +43,7 @@ namespace Zios{
 				this.End();
 			}
 		}
-		public void OnDestroy(){
+		public override void OnDestroy(){
 			if(!this.gameObject.IsNull()){
 				this.gameObject.Call("@Refresh");
 			}

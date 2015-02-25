@@ -9,6 +9,7 @@ namespace Zios{
 	public enum AttributeUsage{Direct,Shaped};
 	[Serializable]
 	public class AttributeInfo{
+		public string name;
 		public string path;
 		public string id;
 		public string localID;
@@ -148,23 +149,28 @@ namespace Zios{
 			if(parent.IsNull()){return;}
 			this.info.dataType = typeof(DataType);
 			if(!Application.isPlaying){
-				bool dirty = this.info.parent != parent;
-				dirty = dirty || this.info.path != path.AddRoot(parent);
-				dirty = dirty || this.info.localID.IsEmpty();
-				this.info.parent = parent;
-				this.info.path = path.AddRoot(parent);
 				string previousID = this.info.id;
-				this.info.localID = this.info.localID.IsEmpty() ? Guid.NewGuid().ToString() : this.info.localID;
-				this.info.id = parent.GetInstanceID()+"/"+this.info.localID;
+				this.BuildInfo(path,parent);
 				this.FixDuplicates();
 				this.FixIDConflict(previousID);
-				if(dirty || this.info.id != previousID){
-					Utility.SetDirty(parent);
-				}
 			}
 			this.PrepareData();
 			if(!Attribute.all.Contains(this)){
 				Attribute.all.Add(this);
+			}
+		}
+		public void BuildInfo(string path,Component parent){
+			bool dirty = this.info.parent != parent;
+			dirty = dirty || this.info.path != path.AddRoot(parent);
+			dirty = dirty || this.info.localID.IsEmpty();
+			this.info.parent = parent;
+			this.info.path = path.AddRoot(parent);
+			this.info.name = this.info.path.Substring(this.info.path.LastIndexOf('/') + 1);
+			string previousID = this.info.id;
+			this.info.localID = this.info.localID.IsEmpty() ? Guid.NewGuid().ToString() : this.info.localID;
+			this.info.id = parent.GetInstanceID()+"/"+this.info.localID;
+			if(dirty || this.info.id != previousID){
+				Utility.SetDirty(parent);
 			}
 		}
 		public override void BuildLookup(){
@@ -221,6 +227,32 @@ namespace Zios{
 		// ======================
 		// Repair
 		// ======================
+		public void FixDuplicates(){
+			GameObject current = this.info.parent.gameObject;
+			string name = current.name;
+			if(Locate.HasDuplicate(current)){
+				Debug.Log("[Attribute] Resolving same name siblings : " + this.info.path,this.info.parent.gameObject);
+				char lastDigit = name[name.Length-1];
+				if(name.Length > 1 && name[name.Length-2] == ' ' && char.IsLetter(lastDigit)){
+					char nextLetter = (char)(char.ToUpper(lastDigit)+1);
+					current.gameObject.name = name.TrimEnd(lastDigit) + nextLetter;
+				}
+				else{
+					current.gameObject.name = name + " B";
+				}
+				AttributeManager.refresh = true;
+			}
+		}
+		public void FixIDConflict(string previousID){
+			bool changedID = !previousID.IsEmpty() && this.info.id != previousID;
+			if(changedID){
+				var resolve = Attribute.resolve;
+				if(!resolve.ContainsKey(this.info.parent.gameObject)){
+					resolve[this.info.parent.gameObject] = new Dictionary<string,string>();
+				}
+				resolve[this.info.parent.gameObject][previousID] = this.info.id;
+			}
+		}
 		public void PrepareData(){
 			if(this.info.data.Length < 1){
 				BaseType value = this.delayedValue != null ? this.delayedValue : default(BaseType);
@@ -239,17 +271,6 @@ namespace Zios{
 			this.UpdateData(this.info.data);
 			this.UpdateData(this.info.dataB);
 			this.UpdateData(this.info.dataC);
-		}
-		public virtual void UpdateData(AttributeData[] dataSet){
-			for(int index=0;index<dataSet.Length;++index){
-				AttributeData data = dataSet[index];
-				data.attribute = this.info;
-				data.path = this.info.path + "/" + index;
-				data.hideFlags = PlayerPrefs.GetInt("ShowAttributeData") == 1 ? 0 : HideFlags.HideInInspector;
-				if(data.usage == AttributeUsage.Direct){continue;}
-				data.target.Setup(this.info.path+"/Target",this.info.parent);
-				data.target.DefaultSearch("[This]");
-			}
 		}
 		public void RepairData(string set="A"){
 			AttributeData[] dataSet = this.info.data;
@@ -283,30 +304,15 @@ namespace Zios{
 				}
 			}
 		}
-		public void FixDuplicates(){
-			GameObject current = this.info.parent.gameObject;
-			string name = current.name;
-			if(Locate.HasDuplicate(current)){
-				Debug.Log("[Attribute] Resolving same name siblings : " + this.info.path,this.info.parent.gameObject);
-				char lastDigit = name[name.Length-1];
-				if(name.Length > 1 && name[name.Length-2] == ' ' && char.IsLetter(lastDigit)){
-					char nextLetter = (char)(char.ToUpper(lastDigit)+1);
-					current.gameObject.name = name.TrimEnd(lastDigit) + nextLetter;
-				}
-				else{
-					current.gameObject.name = name + " B";
-				}
-				AttributeManager.refresh = true;
-			}
-		}
-		public void FixIDConflict(string previousID){
-			bool changedID = !previousID.IsEmpty() && this.info.id != previousID;
-			if(changedID){
-				var resolve = Attribute.resolve;
-				if(!resolve.ContainsKey(this.info.parent.gameObject)){
-					resolve[this.info.parent.gameObject] = new Dictionary<string,string>();
-				}
-				resolve[this.info.parent.gameObject][previousID] = this.info.id;
+		public virtual void UpdateData(AttributeData[] dataSet){
+			for(int index=0;index<dataSet.Length;++index){
+				AttributeData data = dataSet[index];
+				data.attribute = this.info;
+				data.path = this.info.path + "/" + index;
+				data.hideFlags = PlayerPrefs.GetInt("ShowAttributeData") == 1 ? 0 : HideFlags.HideInInspector;
+				if(data.usage == AttributeUsage.Direct){continue;}
+				data.target.Setup(this.info.path+"/Target",this.info.parent);
+				data.target.DefaultSearch("[This]");
 			}
 		}
 		// ======================
@@ -381,6 +387,5 @@ namespace Zios{
 				}
 			}
 		}
-
 	}
 }

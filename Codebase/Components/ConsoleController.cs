@@ -91,20 +91,11 @@ public class ConsoleController : MonoBehaviour{
 			if(this.scope == null){
 				return delegates;
 			}
-			if(this.scope is Type){
-				delegates.AddRange(this.scope.ListMethods(types,BindingFlags.Static|BindingFlags.Public,(Type)this.scope));
-				types.Add(typeof(string[]));
-				delegates.AddRange(this.scope.ListMethods(types,BindingFlags.Static|BindingFlags.Public,(Type)this.scope));
-				types.Add(typeof(bool));
-				delegates.AddRange(this.scope.ListMethods(types,BindingFlags.Static|BindingFlags.Public,(Type)this.scope));
-			}
-			else{
-				delegates.AddRange(this.scope.ListMethods(types,BindingFlags.Static|BindingFlags.Public));
-				types.Add(typeof(string[]));
-				delegates.AddRange(this.scope.ListMethods(types,BindingFlags.Static|BindingFlags.Public));
-				types.Add(typeof(bool));
-				delegates.AddRange(this.scope.ListMethods(types,BindingFlags.Static|BindingFlags.Public));
-			}
+			delegates.AddRange(this.scope.ListMethods(types));
+			types.Add(typeof(string[]));
+			delegates.AddRange(this.scope.ListMethods(types));
+			types.Add(typeof(bool));
+			delegates.AddRange(this.scope.ListMethods(types));
 			return delegates;
 		}
 	}

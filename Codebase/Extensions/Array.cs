@@ -134,4 +134,9 @@ public static class ArrayExtension{
 		}
 		return current;
 	}
+	public static T[] Order<T>(this T[] current){
+		var copy = current.Copy().ToList();
+		copy.Sort();
+		return copy.ToArray();
+	}
 }

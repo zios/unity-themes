@@ -71,6 +71,10 @@ public static class GUIExtensionSpecial{
 		style = style ?? EditorStyles.textField;
 		return GUIExtension.Draw<string>(()=>EditorGUI.TextField(area,current,style),indention);
 	}
+	public static bool DrawButton(this string current,Rect area,GUIStyle style=null,bool indention=false){
+		style = style ?? GUI.skin.button;
+		return GUIExtension.Draw<bool>(()=>GUI.Button(area,current,style),indention);
+	}
 	public static int DrawInt(this int current,Rect area,GUIStyle style=null,bool indention=false){
 		style = style ?? EditorStyles.numberField;
 		return GUIExtension.Draw<int>(()=>EditorGUI.IntField(area,current,style),indention);
@@ -177,6 +181,10 @@ public static class GUILayoutExtensionSpecial{
 	public static string DrawArea(this string current,GUIStyle style=null,bool indention=false){
 		style = style ?? EditorStyles.textField;
 		return GUIExtension.Draw<string>(()=>EditorGUILayout.TextField(current,style),indention);
+	}
+	public static bool DrawButton(this string current,GUIStyle style=null,bool indention=false){
+		style = style ?? GUI.skin.button;
+		return GUIExtension.Draw<bool>(()=>GUILayout.Button(current,style),indention);
 	}
 	public static int DrawInt(this int current,GUIStyle style=null,bool indention=false){
 		style = style ?? EditorStyles.numberField;

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System;
 using System.Text;
+using System.Globalization;
 using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 public static class StringExtension{
@@ -24,7 +25,8 @@ public static class StringExtension{
 		return new Vector3(x,y,z);
 	}
 	public static string ToTitle(this string current){
-		return Regex.Replace(current,"(\\B[A-Z])"," $1");
+		string text = Regex.Replace(current,"(\\B[A-Z])"," $1");
+		return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(text);
 	}
 	public static string ToPascalcase(this string current){
 		return current.Strip(" ").Capitalize();

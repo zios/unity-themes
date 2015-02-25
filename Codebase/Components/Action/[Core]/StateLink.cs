@@ -35,7 +35,7 @@ namespace Zios{
 			if(this.usable && this.ready){this.Use();}
 			else if(!this.usable){this.End();}
 		}
-		public void OnDestroy(){
+		public override void OnDestroy(){
 			if(!this.owner.IsNull()){
 				this.owner.Call("@Refresh");
 			}

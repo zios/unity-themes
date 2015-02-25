@@ -33,7 +33,7 @@ public class DataMonoBehaviour : MonoBehaviour{
 		}
 		DataMonoBehaviour.sorting = unique.ToArray();
 		DataMonoBehaviour.processIndex = 0;
-		Utility.EditorUpdate(DataMonoBehaviour.SortSmartNext,true);
+		Utility.AddEditorUpdate(DataMonoBehaviour.SortSmartNext,true);
 		Utility.PauseHierarchyUpdates();
 	}
 	public static void SortSmartNext(){
