@@ -26,6 +26,9 @@ public class StaticInspector : EditorWindow{
 		window.position = new Rect(100,150,200,200);
 		window.Start();
     }
+	public void OnDestroy(){
+		Utility.RemoveEditorUpdate(this.Setup);
+	}
     public void OnGUI(){
 		Utility.AddEditorUpdate(this.Setup,true);
 		if(this.assemblies.Count < 1){this.setup = false;}
@@ -137,7 +140,11 @@ public class StaticInspector : EditorWindow{
 		if(this.activeClass != null && this.variables.Count < 1){
 			List<string> names = this.activeClass.ListVariables(null,ObjectExtension.staticFlags);
 			foreach(string name in names){
-				this.variables[name] = new Accessor(this.activeClass,name);
+				try{
+					var accessor = new Accessor(this.activeClass,name);
+					this.variables[name] = accessor;
+				}
+				catch{}
 			}
 		}
 		if(this.variables.Count > 0){
