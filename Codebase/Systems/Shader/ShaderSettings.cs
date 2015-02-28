@@ -4,17 +4,17 @@ namespace Zios{
 	public class ShaderSettings : MonoBehaviour{
 		public float globalAlphaCutoff = 0.3f;
 		public void Awake(){
-			Shader.settings = this;
+			ShaderManager.settings = this;
 		}
 		public void Update(){
-			Shader.Update();
+			ShaderManager.Update();
 		}
 	}
-	public static class Shader{
+	public static class ShaderManager{
 		public static ShaderSettings settings;
 		public static void Update(){
-			UnityEngine.Shader.SetGlobalFloat("alphaCutoffGlobal",Shader.settings.globalAlphaCutoff);
-            UnityEngine.Shader.SetGlobalFloat("timeConstant", (Time.time * 0.1f));
+			Shader.SetGlobalFloat("alphaCutoffGlobal",ShaderManager.settings.globalAlphaCutoff);
+            Shader.SetGlobalFloat("timeConstant", (Time.time * 0.1f));
 		}
 	}
 }

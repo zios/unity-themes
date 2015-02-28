@@ -3,7 +3,7 @@ using UnityEditor;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-namespace Zios.Editor{
+namespace Zios.Inspector{
 	public delegate void OnRowEvent(TableRow row);
 	public delegate void OnFieldEvent(TableField field);
 	public delegate void OnHeaderEvent(TableHeaderItem headerField);

@@ -1,2 +1,4 @@
 ﻿using UnityEngine;
-public class EnumMaskAttribute : PropertyAttribute{}
+namespace Zios{
+    public class EnumMaskAttribute : PropertyAttribute{}
+}

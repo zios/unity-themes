@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
-[AddComponentMenu("Zios/Singleton/Asset")]
-public class AssetLoader : MonoBehaviour {
-	// Use this for initialization
-	void Start () {
+namespace Zios{
+    [AddComponentMenu("Zios/Singleton/Asset")]
+    public class AssetLoader : MonoBehaviour {
+	    // Use this for initialization
+	    void Start () {
 	
-	}
-	// Update is called once per frame
-	void Update () {
+	    }
+	    // Update is called once per frame
+	    void Update () {
 	
-	}
+	    }
+    }
 }
