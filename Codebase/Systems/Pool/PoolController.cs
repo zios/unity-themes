@@ -9,7 +9,7 @@ namespace Zios{
 		public void Awake(){
 			foreach(PoolPrefab prefab in this.prefabs){
 				if(prefab == null || prefab.prefab == null){
-					Debug.LogWarning("PoolController -- Prefab for element is missing/corrupt.");
+					Debug.LogWarning("[PoolController] Prefab for element is missing/corrupt.");
 					continue;
 				}
 				prefab.name = prefab.prefab.name;

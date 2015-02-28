@@ -3,9 +3,10 @@
 using Zios;
 using UnityEngine;
 [AddComponentMenu("Zios/Component/Action/Attribute/Expose/Expose Transform (Scale)")]
-public class AttributeTransformScale : DataMonoBehaviour{
+public class ExposeTransformScale : DataMonoBehaviour{
 	[HideInInspector] public AttributeVector3 scale = Vector3.zero;
 	public override void Awake(){
+		this.alias = this.alias.SetDefault("Transform");
 		base.Awake();
 		this.scale.Setup("Scale",this);
 		this.scale.getMethod = ()=>this.transform.localScale;

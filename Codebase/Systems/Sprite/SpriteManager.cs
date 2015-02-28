@@ -50,7 +50,7 @@ public class SpriteSheet{
 						if(this.image == null){
 							this.image = FileManager.GetAsset<Texture2D>(this.imagePath);
 							if(this.image == null){
-								Debug.Log("Sprite Manager -- Could not locate " + this.imagePath);
+								Debug.Log("[SpriteManager] -- Could not locate " + this.imagePath);
 								break;
 							}
 						}

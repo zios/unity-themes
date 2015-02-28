@@ -1,33 +1,38 @@
-﻿using Zios;
+using Zios;
 using System;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityObject = UnityEngine.Object;
+public enum TargetMode{Search,Direct};
 [Serializable]
 public class Target{
 	public List<GameObject> special = new List<GameObject>();
 	public List<string> specialNames = new List<string>();
 	public string search = "";
-	public GameObject direct;
+	public GameObject directObject;
+	public GameObject searchObject;
 	public Component parent;
+	public TargetMode mode = TargetMode.Search;
 	private bool hasSearched;
 	private bool hasWarned;
 	private int siblingCount;
 	private Component lastParent;
 	private string lastSearch = "";
 	private string fallbackSearch = "";
-	public static implicit operator Transform(Target value){
-		value.Prepare();
-		return value.direct.transform;
-	}
-	public static implicit operator GameObject(Target value){
-		value.Prepare();
-		return value.direct;
-	}
-	public static implicit operator UnityObject(Target value){
-		value.Prepare();
-		return value.direct;
+	public static implicit operator Transform(Target value){return value.Get().transform;}
+	public static implicit operator GameObject(Target value){return value.Get();}
+	public static implicit operator UnityObject(Target value){return value.Get();}
+	public GameObject Get(){
+		GameObject result = this.directObject;
+		if(this.mode == TargetMode.Search){
+			this.PerformSearch();
+			return this.searchObject;
+		}
+		if(result == null){
+			Debug.LogWarning("[Target] No target found for : " + this.parent.name);
+		}
+		return result;
 	}
 	public void Setup(string path,Component parent,string defaultSearch="[Self]"){
 		this.parent = parent;
@@ -52,10 +57,6 @@ public class Target{
 		}
 		this.DefaultSearch(defaultSearch);
 	}
-	public GameObject Get(){
-		this.Prepare();
-		return this.direct;
-	}
 	public void AddSpecial(string name,GameObject target){
 		if(target.IsNull()){target = this.parent.gameObject;}
 		if(!this.specialNames.Any(x=>x.Contains(name,true))){
@@ -75,19 +76,19 @@ public class Target{
 		bool searchChange = this.search != this.lastSearch;
 		bool parentChange = this.parent != this.lastParent;
 		bool siblingChange = this.siblingCount != siblingCount;
-		if(parentChange || searchChange || siblingChange || this.direct == null){
+		if(parentChange || searchChange || siblingChange || this.searchObject.IsNull()){
 			this.hasSearched = false;
 			this.lastParent = this.parent;
 			this.siblingCount = siblingCount;
 			if(this.search.IsEmpty()){
 				this.search = target;
 			}
-			this.Prepare();
+			this.PerformSearch();
 		}
 	}
 	public void DefaultTarget(GameObject target){
-		if(this.direct.IsNull()){
-			this.direct = target;
+		if(this.searchObject.IsNull()){
+			this.searchObject = target;
 		}
 	}
 	public GameObject FindTarget(string search){
@@ -131,16 +132,16 @@ public class Target{
 		}
 		return Locate.Find(search);
 	}
-	public void Prepare(){
+	public void PerformSearch(){
 		bool editorMode = !Application.isPlaying;
 		this.search = this.search.Replace("\\","/");
 		if(!this.hasSearched && !this.search.IsEmpty()){
-			this.direct = this.FindTarget(this.search);
+			this.searchObject = this.FindTarget(this.search);
 			this.lastSearch = this.search;
 			this.hasSearched = true;
 		}
-		if(!editorMode && this.direct.IsNull() && !this.hasWarned){
-			Debug.LogWarning("Target : No gameObject was found for " + this.parent.name,this.parent);
+		if(!editorMode && this.searchObject.IsNull() && !this.hasWarned){
+			Debug.LogWarning("[Target] No gameObject was found for search " + this.parent.name,this.parent);
 			if(!search.IsEmpty() && !search.Contains("Not Found")){
 				this.search = "<" + this.search + " Not Found>";
 			}

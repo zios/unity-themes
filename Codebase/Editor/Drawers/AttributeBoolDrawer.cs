@@ -20,7 +20,7 @@ namespace Zios{
 			if(this.isPrefab){return;}
 			if(!area.InspectorValid()){return;}
 			this.overallHeight = this.GetBaseHeight(property,label);
-			if(!Attribute.ready){
+			if(!Attribute.ready && AttributeManager.safe){
 				EditorGUI.ProgressBar(area,AttributeManager.percentLoaded,"Updating");
 				Utility.SetDirty(property.serializedObject.targetObject);
 				return;

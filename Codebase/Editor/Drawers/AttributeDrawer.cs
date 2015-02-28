@@ -19,7 +19,7 @@ namespace Zios{
 			return base.GetPropertyHeight(property,label);
 		}
 		public override float GetPropertyHeight(SerializedProperty property,GUIContent label){
-			//this.OnGUI(new Rect(-10000,-10000,0,0),property,label);
+			if(AttributeManager.preDrawn){this.OnGUI(new Rect(-10000,-10000,0,0),property,label);}
 			return this.overallHeight;
 		}
 		public override void OnGUI(Rect area,SerializedProperty property,GUIContent label){
@@ -56,7 +56,7 @@ namespace Zios{
 				if(this.attribute is AttributeFloat){this.access = new AttributeAccess<float,AttributeFloat,AttributeFloatData>();}
 				if(this.attribute is AttributeInt){this.access = new AttributeAccess<int,AttributeInt,AttributeIntData>();}
 				if(this.attribute is AttributeString){this.access = new AttributeAccess<string,AttributeString,AttributeStringData>();}
-				if(this.attribute is AttributeBool){this.access = new AttributeAccess<bool,AttributeBool,AttributeBoolData>();}
+				//if(this.attribute is AttributeBool){this.access = new AttributeAccess<bool,AttributeBool,AttributeBoolData>();}
 				if(this.attribute is AttributeVector3){this.access = new AttributeAccess<Vector3,AttributeVector3,AttributeVector3Data>();}
 				if(this.attribute is AttributeGameObject){this.access = new AttributeAccess<GameObject,AttributeGameObject,AttributeGameObjectData>();}
 			}
@@ -203,8 +203,9 @@ namespace Zios{
 			List<string> attributeNames = new List<string>();
 			List<string> attributeIDs = new List<string>();
 			int attributeIndex = -1;
-			if(target.direct != null && Attribute.lookup.ContainsKey(target.direct)){
-				var lookup = Attribute.lookup[target.direct];
+			GameObject targetScope = target.Get();
+			if(targetScope != null && Attribute.lookup.ContainsKey(targetScope)){
+				var lookup = Attribute.lookup[targetScope];
 				foreach(var item in lookup){
 					if(item.Value.info.dataType != data.GetType()){continue;}
 					bool feedback = (item.Value.info.id == this.attribute.info.id || item.Value.data[0].referenceID == this.attribute.info.id);
@@ -250,7 +251,7 @@ namespace Zios{
 			}
 			else{
 				Rect warningRect = area.Add(18,0,-18,0);
-				string targetName = target.direct == null ? "Target" : target.direct.ToString().Strip("(UnityEngine.GameObject)").Trim();
+				string targetName = targetScope == null ? "Target" : targetScope.ToString().Strip("(UnityEngine.GameObject)").Trim();
 				string typeName = data.GetVariableType("value").Name.Replace("Single","Float").Replace("Int32","Int");
 				string message = "<b>" + targetName.Truncate(16) + "</b> has no <b>"+typeName+"</b> attributes.";
 				message.DrawLabel(warningRect,GUI.skin.GetStyle("WarningLabel"));

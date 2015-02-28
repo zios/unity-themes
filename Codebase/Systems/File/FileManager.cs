@@ -37,7 +37,7 @@ public static class FileManager{
 	}
 	public static FileData[] FindAll(string name,bool ignoreCase=true,bool showWarnings=true){
 		if(name == "" && showWarnings){
-			Debug.LogWarning("FileManager : No path given for search.");
+			Debug.LogWarning("[FileManager] No path given for search.");
 			return null;
 		}
 		string fileName = Path.GetFileName(name);
@@ -53,7 +53,7 @@ public static class FileManager{
 				}
 			}
 		}
-		if(results.Count == 0 && showWarnings){Debug.LogWarning("FileManager : Path [" + name + "] could not be found.");}
+		if(results.Count == 0 && showWarnings){Debug.LogWarning("[FileManager] Path [" + name + "] could not be found.");}
 		return results.ToArray();
 	}
 	public static FileData Find(string name,bool ignoreCase=true,bool showWarnings=true){

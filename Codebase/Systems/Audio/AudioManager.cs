@@ -81,7 +81,7 @@ public class AudioManager : MonoBehaviour{
 	}
 	public AudioSource Play(AudioSource sound,float volumeScale=1.0f){
 		if(this.listener == null){
-			Debug.LogError("No audio listener exists in the scene to play sound from.");
+			Debug.LogError("[AudioManager] No audio listener exists in the scene to play sound from.");
 			return null;
 		}
 		return this.Play(sound,this.listener.transform.position,volumeScale);

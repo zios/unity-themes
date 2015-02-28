@@ -27,12 +27,12 @@ public static class HelperMenu {
 			bool nested = !isRoot && gameObject.transform.parent.parent == null;
 			nested = nested || (parentName.Contains(pureName) && !parentName.Contains("SpriteGroup"));
 			if(IsSprite(gameObject) && (isRoot || !nested) && position.x == 0 && position.z == 0){
-				Debug.Log(gameObject.name + " has been removed.");
+				Debug.Log("[HelperMenu]" + gameObject.name + " has been removed.");
 				GameObject.DestroyImmediate(gameObject);
 				++removed;
 			}
 		}
-		Debug.Log(removed + " null game objects removed.");
+		Debug.Log("[HelperMenu]" + removed + " null game objects removed.");
 	}
     [MenuItem ("Zios/Process/Animation/Stepped Curves")]
     static void SteppedCurves(){
@@ -48,7 +48,7 @@ public static class HelperMenu {
 			if(animation != null){
 				AnimationClip[] clips = AnimationUtility.GetAnimationClips(selection.gameObject);
 				AnimationClip[] newClips = new AnimationClip[clips.Length];
-				Debug.Log("Converting " + clips.Length + " animations...");
+				Debug.Log("[HelperMenu] Converting " + clips.Length + " animations...");
 				int clipIndex = 0;
 				foreach(AnimationClip clip in clips){
 					if(clip == null){
@@ -60,7 +60,7 @@ public static class HelperMenu {
 					string savePath = Path.GetDirectoryName(originalPath) + "/" + clipPath;
 					AnimationClip newClip = new AnimationClip();
 					if(originalPath.Contains(".anim")){
-						Debug.Log("[" + clipIndex + "] " + clip.name + " skipped.  Already separate .anim file.");
+						Debug.Log("[HelperMenu] [" + clipIndex + "] " + clip.name + " skipped.  Already separate .anim file.");
 						newClip = clip;
 					}
 					else{
@@ -76,7 +76,7 @@ public static class HelperMenu {
 							}
 							newClip.SetCurve(data.path,data.type,data.propertyName,new AnimationCurve(newKeys.ToArray()));
 						}
-						Debug.Log("[" + clipIndex + "] " + clip.name + " processed -- " + savePath);
+						Debug.Log("[HelperMenu] [" + clipIndex + "] " + clip.name + " processed -- " + savePath);
 						AssetDatabase.CreateAsset(newClip,savePath);
 					}
 					newClips[clipIndex] = newClip;
@@ -85,7 +85,7 @@ public static class HelperMenu {
 				AnimationUtility.SetAnimationClips(animation,newClips);
 			}
 			else{
-				Debug.Log("No animation component found on object -- " + selection.name);
+				Debug.Log("[HelperMenu] No animation component found on object -- " + selection.name);
 			}
 		}
     }

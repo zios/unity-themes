@@ -25,7 +25,7 @@ public class ExtendedMaterialWatcher : AssetPostprocessor{
 	public static void OnPostprocessAllAssets(string[] imported,string[] deleted,string[] moved, string[] path){
 		if(imported.Length > 0){
 			if(Buffer.active != null && !Buffer.refresh){
-				Debug.Log("ExtendedMaterial : Asset Refreshing -- " + Buffer.active.menuPath);
+				Debug.Log("[ExtendedMaterial] Asset Refreshing -- " + Buffer.active.menuPath);
 				ExtendedMaterial.DestroyImmediate(Buffer.active);
 			}
 		}
@@ -65,7 +65,7 @@ public class ExtendedMaterialEditor : MaterialEditor{
 			Buffer.refresh = false;
 			Buffer.unsaved = false;
 			this.LoadSettings();
-			Debug.Log("ExtendedMaterial : Material loaded -- " + material.name + " [" + material.shader.name + "]");
+			Debug.Log("[ExtendedMaterial] Material loaded -- " + material.name + " [" + material.shader.name + "]");
 		}
 	}
 	public void LoadSettings(){
@@ -281,7 +281,7 @@ public class ExtendedMaterialEditor : MaterialEditor{
 						this.EndPreview();
 						Buffer.unsaved = false;
 						Buffer.material.shader = Buffer.active.Save();
-						Debug.Log("ExtendedMaterial : Shader saved -- " + Buffer.active.path);
+						Debug.Log("[ExtendedMaterial] Shader saved -- " + Buffer.active.path);
 						return;
 					}
 				}
@@ -295,7 +295,7 @@ public class ExtendedMaterialEditor : MaterialEditor{
 						Buffer.unsaved = false;
 						string path = EditorUtility.SaveFilePanel("Save Shader",Buffer.active.path,Buffer.active.fileName,"shader");
 						Buffer.material.shader = Buffer.active.Save(path);
-						Debug.Log("ExtendedMaterial : Shader saved -- " + path);
+						Debug.Log("[ExtendedMaterial] Shader saved -- " + path);
 						return;
 					}
 				}
@@ -313,7 +313,7 @@ public class ExtendedMaterialEditor : MaterialEditor{
 					this.EndPreview();
 					Buffer.unsaved = false;
 					Buffer.active.Branch();
-					Debug.Log("ExtendedMaterial : Shader branched -- " + Buffer.active.path);
+					Debug.Log("[ExtendedMaterial] Shader branched -- " + Buffer.active.path);
 					return;
 				}
 				EditorGUILayout.EndHorizontal();
@@ -506,7 +506,7 @@ public class ExtendedMaterialEditor : MaterialEditor{
 				if(this.stateChanged.Contains("TextArea")){Buffer.buildDelay += 2.0f;}
 				if(this.stateChanged.Contains("Field")){Buffer.buildDelay += 1.5f;}
 				if(this.stateChanged.Contains("Color")){Buffer.buildDelay += 0.5f;}
-				Debug.Log("ExtendedMaterial : Value changed -- " + this.stateChanged);
+				Debug.Log("[ExtendedMaterial] Value changed -- " + this.stateChanged);
 			}
 		}
 		this.CheckContext();
@@ -542,7 +542,7 @@ public class ExtendedMaterialEditor : MaterialEditor{
 					return;
 				}
 				if(Buffer.material != null){Buffer.material.shader = shader;}
-				Debug.Log("ExtendedMaterial : Shader reverted -- " + shader.name);
+				Debug.Log("[ExtendedMaterial] Shader reverted -- " + shader.name);
 				material.shader = shader;
 				Buffer.unsaved = false;
 			}

@@ -8,6 +8,7 @@ public class AddMove : ActionLink{
 	public AttributeGameObject target = new AttributeGameObject();
 	public override void Awake(){
 		base.Awake();
+		this.AddDependent<ColliderController>(this.target);
 		this.target.Setup("Target",this);
 		this.amount.Setup("Amount",this);
 	}

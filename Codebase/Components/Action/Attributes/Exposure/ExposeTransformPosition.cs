@@ -3,9 +3,10 @@
 using Zios;
 using UnityEngine;
 [AddComponentMenu("Zios/Component/Action/Attribute/Expose/Expose Transform (Position)")]
-public class AttributeTransformPosition : DataMonoBehaviour{
+public class ExposeTransformPosition : DataMonoBehaviour{
 	[HideInInspector] public AttributeVector3 position = Vector3.zero;
 	public override void Awake(){
+		this.alias = this.alias.SetDefault("Transform");
 		base.Awake();
 		this.position.Setup("Position",this);
 		this.position.getMethod = ()=>this.transform.position;

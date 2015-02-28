@@ -4,7 +4,7 @@ using Zios;
 using System.Collections;
 using UnityEngine;
 [AddComponentMenu("Zios/Component/Action/Attribute/Expose/Expose Transform")]
-public class AttributeTransform : DataMonoBehaviour{
+public class ExposeTransform : DataMonoBehaviour{
 	[HideInInspector] public AttributeVector3 rotation = Vector3.zero;
 	[HideInInspector] public AttributeVector3 position = Vector3.zero;
 	[HideInInspector] public AttributeVector3 scale = Vector3.zero;
@@ -15,6 +15,7 @@ public class AttributeTransform : DataMonoBehaviour{
 	[HideInInspector] public AttributeVector3 directionForward = Vector3.zero;
 	[HideInInspector] public AttributeVector3 directionBack = Vector3.zero;
 	public override void Awake(){
+		this.alias = this.alias.SetDefault("Transform");
 		base.Awake();
 		this.rotation.Setup("Rotation",this);
 		this.position.Setup("Position",this);

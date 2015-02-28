@@ -64,7 +64,7 @@ public class AnimationController : ManagedMonoBehaviour{
 				this.current[name] = this.defaultAnimation;
 			}
 			else{
-				Debug.LogWarning("AnimationController : Default animation (" + this.defaultAnimationName + ") not found.");
+				Debug.LogWarning("[AnimationController] Default animation (" + this.defaultAnimationName + ") not found.");
 			}
 		}
 	}

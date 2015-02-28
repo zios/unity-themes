@@ -1,11 +1,5 @@
 ﻿using Zios;
 using UnityEngine;
-public enum LinkOptions : int{
-	Position  = 0x000,
-	Rotation  = 0x001,
-	//Scale    = 0x002,
-}
-public enum LinkMode{Automatic,Link,Unlink}
 [AddComponentMenu("Zios/Component/Action/Move/Link Objects")]
 public class LinkObject : ActionLink{
 	public LinkMode mode;
@@ -49,3 +43,9 @@ public class LinkObject : ActionLink{
 		base.End();
 	}
 }
+public enum LinkOptions : int{
+	Position  = 0x000,
+	Rotation  = 0x001,
+	//Scale    = 0x002,
+}
+public enum LinkMode{Automatic,Link,Unlink}

@@ -230,7 +230,7 @@ public class SpriteWindow : EditorWindow{
 	}
 	public void ResetSystem(){
 		Debug.Log("-------------------------------");
-		Debug.Log("SpriteWindow : Resetting system");
+		Debug.Log("[SpriteWindow] Resetting system");
 		FileManager.Refresh();
 		this.assets = new SpriteAssets();
 		this.assetSprites = new Sprite[0];
@@ -389,7 +389,7 @@ public class SpriteWindow : EditorWindow{
 		if(useEvent){Event.current.Use();}
 	}
 	public void FixScene(bool allowForce = false){
-		Debug.Log("SpriteWindow : Fixing Scene = " + (allowForce?"Full":"Repair"));
+		Debug.Log("[SpriteWindow] Fixing Scene = " + (allowForce?"Full":"Repair"));
 		GameObject[] objects = Selection.gameObjects.Length > 0 ? Selection.gameObjects : (GameObject[])Resources.FindObjectsOfTypeAll(typeof(GameObject));
 		Dictionary<string,Sprite> sprites = new Dictionary<string,Sprite>();
 		List<RepairData> repairList = new List<RepairData>();
@@ -430,7 +430,7 @@ public class SpriteWindow : EditorWindow{
 				}
 			}
 		}
-		Debug.Log("SpriteWindow : " + repairList.Count + " Sprites found. "  + sprites.Count + " Materials found.");
+		Debug.Log("[SpriteWindow] " + repairList.Count + " Sprites found. "  + sprites.Count + " Materials found.");
 		this.PrepareAssets(sprites);
 		if(allowForce && forceState){
 			this.ProgressReport("Forcing Scene Rebuild-"+this.assetSprites.Length+" Sprites",false);
@@ -480,17 +480,17 @@ public class SpriteWindow : EditorWindow{
 					string materialPath = sourcePath+fullName+".mat";
 					current.GetComponent<Renderer>().sharedMaterial = FileManager.GetAsset<Material>(materialPath);
 					if(current.GetComponent<Renderer>().sharedMaterial == null){
-						Debug.LogError("SpriteWindow : Material assignment could not be fixed -- " + name);
+						Debug.LogError("[SpriteWindow] Material assignment could not be fixed -- " + name);
 					}
 					else{
-						Debug.Log("SpriteWindow : Fixed material assignment -- " + name);
+						Debug.Log("[SpriteWindow] Fixed material assignment -- " + name);
 					}
 				}
 				this.SortShader(current);
 			}
 		}
 		else if(isSprite){
-			Debug.LogError("SpriteWindow : Object was destroyed while attempting to repair -- " + name);
+			Debug.LogError("[SpriteWindow] Object was destroyed while attempting to repair -- " + name);
 		}
 	}
 	//===========================
@@ -594,7 +594,7 @@ public class SpriteWindow : EditorWindow{
 					}
 					if(nextShade > 8){
 						int limit = nextShade-8;
-						string message = "SpriteWindow : " + sprite.fullName + " could not be converted to lookup map.";
+						string message = "[SpriteWindow] " + sprite.fullName + " could not be converted to lookup map.";
 						message += "  Maximum colors [8] exceeded by " + limit + ".";
 						Debug.LogWarning(message);
 					}
@@ -657,12 +657,12 @@ public class SpriteWindow : EditorWindow{
 				bool existed = true;
 				Material spriteMaterial = FileManager.GetAsset<Material>(materialPath);
 				if(spriteMaterial == null){
-					Debug.Log("SpriteWindow : Creating Material -- " + name);
+					Debug.Log("[SpriteWindow] Creating Material -- " + name);
 					existed = false;
 					spriteMaterial = new Material(spriteShader);
 				}
 				if(this.ApplyMaterial(spriteMaterial,sprite)){
-					Debug.Log("SpriteWindow : Updating Material -- " + name);
+					Debug.Log("[SpriteWindow] Updating Material -- " + name);
 					//spriteMaterial.shader = spriteShader;
 					if(!existed){AssetDatabase.CreateAsset(spriteMaterial,materialPath);}
 					else{
@@ -673,15 +673,15 @@ public class SpriteWindow : EditorWindow{
 				this.spriteMaterials[name] = spriteMaterial;
 			}
 			else{
-				Debug.Log("SpriteWindow : Loading Material -- " + name);
+				Debug.Log("[SpriteWindow] Loading Material -- " + name);
 				this.spriteMaterials[name] = FileManager.GetAsset<Material>(materialPath);
 				if(this.spriteMaterials[name] == null){
-					Debug.LogWarning("SpriteWindow : Material could not be loaded -- " + name);
+					Debug.LogWarning("[SpriteWindow] Material could not be loaded -- " + name);
 					this.spriteMaterials.Remove(name);
 				}
 			}
 			if(this.spriteMaterials.ContainsKey(name) && this.spriteMaterials[name].name != name){
-				Debug.Log("SpriteWindow : Fixing Material Name -- " + name);
+				Debug.Log("[SpriteWindow] Fixing Material Name -- " + name);
 				this.spriteMaterials[name].name = name;
 			}
 		}
@@ -697,7 +697,7 @@ public class SpriteWindow : EditorWindow{
 				if(forceOverwrite){
 					AssetDatabase.DeleteAsset(meshPath);
 				}
-				Debug.Log("SpriteWindow : Creating Mesh -- " + name);
+				Debug.Log("[SpriteWindow] Creating Mesh -- " + name);
 				this.ProgressReport(name+".asset");
 				bool existed = true;
 				Mesh spriteMesh = FileManager.GetAsset<Mesh>(meshPath);
@@ -755,7 +755,7 @@ public class SpriteWindow : EditorWindow{
 				AssetDatabase.Refresh();
 			}
 			else{
-				Debug.Log("SpriteWindow : Loading Mesh -- " + name);
+				Debug.Log("[SpriteWindow] Loading Mesh -- " + name);
 				this.spriteMeshes[name] = FileManager.GetAsset<Mesh>(meshPath);
 			}
 		}
@@ -778,19 +778,19 @@ public class SpriteWindow : EditorWindow{
 				GameObject scalePrefab;
 				UnityEngine.Object prefab = FileManager.GetAsset<GameObject>(prefabPath);
 				if(prefab == null){
-					Debug.Log("SpriteWindow : Creating Prefab -- " + name);
+					Debug.Log("[SpriteWindow] Creating Prefab -- " + name);
 					this.ProgressReport(prefabName+".prefab");
 					prefab = PrefabUtility.CreateEmptyPrefab(prefabPath);
 					spritePrefab = scalePrefab = new GameObject(name);
 					MeshFilter meshFilter = spritePrefab.AddComponent<MeshFilter>();
 					MeshRenderer meshRenderer = spritePrefab.AddComponent<MeshRenderer>();
 					if(!this.spriteMaterials.ContainsKey(name)){
-						Debug.LogError("SpriteWindow : Material for prefab does not exist -- " + name);
+						Debug.LogError("[SpriteWindow] Material for prefab does not exist -- " + name);
 						return;
 					}
 					if(this.spriteMaterials[name] == null){
 						this.spriteMaterials.Remove(name);
-						Debug.LogError("SpriteWindow : Material key for prefab was corrupt.  Please try again -- " + name);
+						Debug.LogError("[SpriteWindow] Material key for prefab was corrupt.  Please try again -- " + name);
 						return;
 					}
 					if(sprite.animated){
@@ -817,7 +817,7 @@ public class SpriteWindow : EditorWindow{
 						}
 						scalePrefab = prefabSearch.gameObject;
 					}
-					Debug.Log("SpriteWindow : Updating Prefab -- " + name);
+					Debug.Log("[SpriteWindow] Updating Prefab -- " + name);
 				}
 				if(adjustScale){
 					Vector3 currentScale = scalePrefab.transform.localScale;
@@ -830,7 +830,7 @@ public class SpriteWindow : EditorWindow{
 				DestroyImmediate(spritePrefab);
 				AssetDatabase.Refresh();
 			}
-			Debug.Log("SpriteWindow : Loading Prefab -- " + name);
+			Debug.Log("[SpriteWindow] Loading Prefab -- " + name);
 			string path = prefabPath;
 			this.spritePrefabs[name] = FileManager.GetAsset<GameObject>(path);
 			if(this.spritePrefabs[name] == null){
@@ -841,7 +841,7 @@ public class SpriteWindow : EditorWindow{
 					this.CreatePrefab(sprite,true);
 				}
 				else{
-					Debug.LogError("SpriteWindow : Failed loading prefab -- " + path);
+					Debug.LogError("[SpriteWindow] Failed loading prefab -- " + path);
 				}
 			}
 		}
@@ -891,7 +891,7 @@ public class SpriteWindow : EditorWindow{
 	// Brush/Prefab Management
 	//===========================
 	public void ResetBrush(){
-		Debug.Log("SpriteWindow : Resetting Brush");
+		Debug.Log("[SpriteWindow] Resetting Brush");
 		this.ClearInstances("@Brush");
 		this.activeMaterial = null;
 		this.brush = new GameObject("@Brush");
@@ -921,7 +921,7 @@ public class SpriteWindow : EditorWindow{
 		if(sprite == null){sprite = this.selected;}
 		if(this.assetsReady){
 			string activeName = this.activeMaterial != null ? " to " + this.activeMaterial.name : "";
-			Debug.Log("SpriteWindow : Applying Sprite -- " + sprite.fullName + activeName);
+			Debug.Log("[SpriteWindow] Applying Sprite -- " + sprite.fullName + activeName);
 		}
 		string spriteName = this.assetPrefix+sprite.fullName;
 		bool assetState = this.assetsReady;
@@ -936,7 +936,7 @@ public class SpriteWindow : EditorWindow{
 		bool mismatchedAtlas = materialExists && !sprite.animated && this.spriteMaterials[spriteName].GetVector("atlasUV") != sprite.current.uv;
 		//bool meshExists = this.spriteMeshes.ContainsKey(spriteName) && this.spriteMeshes[spriteName] != null;
 		if((mismatchedAtlas || noBrushMaterial)){
-			Debug.Log("SpriteWindow : Mismatch = " + mismatchedAtlas + " | No Brush Material = " + noBrushMaterial);
+			Debug.Log("[SpriteWindow] Mismatch = " + mismatchedAtlas + " | No Brush Material = " + noBrushMaterial);
 			forceMaterialUpdate = true;
 		}
 		if(!materialExists || forceOverwrite || forceMaterialUpdate){this.CreateMaterial(sprite,forceOverwrite,forceMaterialUpdate);}
@@ -944,7 +944,7 @@ public class SpriteWindow : EditorWindow{
 		this.assetsReady = assetState;
 		if(!this.spriteMaterials.ContainsKey(spriteName) || !this.spritePrefabs.ContainsKey(spriteName)){
 			string type = !this.spriteMaterials.ContainsKey(spriteName) ? "Material" : "Prefab";
-			Debug.LogWarning("SpriteWindow : " + type + " keys do not exist -- " + spriteName);
+			Debug.LogWarning("[SpriteWindow] " + type + " keys do not exist -- " + spriteName);
 			return target;
 		}
 		foreach(GameObject current in objects){
@@ -954,7 +954,7 @@ public class SpriteWindow : EditorWindow{
 				GameObject spritePrefab = this.spritePrefabs[spriteName];
 				if(spriteMaterial == null || spritePrefab == null){
 					string type = !spriteMaterial ? "material" : "prefab";
-					Debug.LogError("SpriteWindow : Problem finding/creating " + type + " -- " + spriteName);
+					Debug.LogError("[SpriteWindow] Problem finding/creating " + type + " -- " + spriteName);
 					return target;
 				}
 				if(this.brush == current){
@@ -999,7 +999,7 @@ public class SpriteWindow : EditorWindow{
 					}
 				}
 				else if(this.activeMaterial == null){
-					Debug.LogWarning("SpriteWindow : Cannot apply atlas selection.  Object is not a sprite nor does it have an atlas-capable shader -- " + current.name);
+					Debug.LogWarning("[SpriteWindow] Cannot apply atlas selection.  Object is not a sprite nor does it have an atlas-capable shader -- " + current.name);
 				}
 			}
 		}
@@ -1035,7 +1035,7 @@ public class SpriteWindow : EditorWindow{
 			}
 		}
 		if(changed && material.shader != this.assets.shaderEditor){
-			Debug.Log("SpriteWindow : Material properties changed -- " + material.name);
+			Debug.Log("[SpriteWindow] Material properties changed -- " + material.name);
 		}
 		return changed;
 	}

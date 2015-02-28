@@ -48,7 +48,7 @@ namespace Zios{
 				this.gameObject.Call("@Refresh");
 			}
 		}
-		public void OnDisable(){
+		public virtual void OnDisable(){
 			if(!this.gameObject.activeInHierarchy || !this.enabled){
 				this.gameObject.Call(this.alias+"/Disabled");
 				if(this.actionTable==null){this.End();}

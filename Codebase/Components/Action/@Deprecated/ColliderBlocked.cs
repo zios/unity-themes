@@ -12,6 +12,7 @@ public class BlockedState : ActionLink{
 	public AttributeGameObject target = new AttributeGameObject();
 	public override void Awake(){
 		base.Awake();
+		this.warnings["This component has been deprecated and likely should not be used."] = ()=>{};
 		this.target.Setup("Target",this);
 		this.duration.Setup("Duration",this);
 	}

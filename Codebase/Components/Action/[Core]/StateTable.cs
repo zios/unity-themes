@@ -95,7 +95,7 @@ public class StateTable : MonoBehaviour{
 				List<StateMonoBehaviour> entries = this.scripts.FindAll(x=>x.id==row.id);
 				foreach(StateMonoBehaviour entry in entries.Skip(1)){
 					bool hasName = !entry.alias.IsEmpty() && !row.name.IsEmpty();
-					Debug.Log("StateTable : Resolving duplicate ID [" + row.name + "]",(UnityObject)row.target);
+					Debug.Log("[StateTable] Resolving duplicate ID [" + row.name + "]",(UnityObject)row.target);
 					if(hasName && this.scripts.FindAll(x=>x.alias==row.name).Count > 1){
 						row.name = entry.alias = row.name + "2";
 					}
@@ -198,7 +198,7 @@ public class StateTable : MonoBehaviour{
 						}
 					}
 					if(empty && !lastDataExists){
-						Debug.Log("StateTable : Removing empty alternate row in -- " + row.name,(UnityObject)row.target);
+						Debug.Log("[StateTable] Removing empty alternate row in -- " + row.name,(UnityObject)row.target);
 						cleaned.Remove(rowData);
 					}
 					lastDataExists = !empty;
@@ -221,7 +221,7 @@ public class StateTable : MonoBehaviour{
 					List<StateRequirement> cleaned = new List<StateRequirement>(rowData.data);
 					foreach(StateRequirement requirement in rowData.data){
 						if(hidden.Contains(requirement.name)){
-							Debug.Log("StateTable : Removing non-requirable column  -- " + requirement.name,(UnityObject)requirement.target);
+							Debug.Log("[StateTable] Removing non-requirable column  -- " + requirement.name,(UnityObject)requirement.target);
 							cleaned.Remove(requirement);
 						}
 					}
@@ -240,7 +240,7 @@ public class StateTable : MonoBehaviour{
 				bool duplicateName = !targetA.name.IsEmpty() && targetA.name == targetB.name;
 				if(duplicateGUID && duplicateName){
 					items.Remove(targetA);
-					Debug.LogError("StateTable : (Deprecate!) Removing duplicate " + typeName + " -- " + targetA.name,this.gameObject);
+					Debug.LogError("[StateTable] (Deprecate!) Removing duplicate " + typeName + " -- " + targetA.name,this.gameObject);
 				}
 			}
 		}
@@ -252,7 +252,7 @@ public class StateTable : MonoBehaviour{
 			if(match == null){
 				items.Remove(item);
 				string itemInfo = typeName + " -- " + item.name + " [" + item.id + "]";
-				Debug.Log("StateTable : Removing old " + itemInfo,this.gameObject);
+				Debug.Log("[StateTable] Removing old " + itemInfo,this.gameObject);
 			}
 		}
 	}
@@ -262,7 +262,7 @@ public class StateTable : MonoBehaviour{
 			if(item.target == null){
 				items.Remove(item);
 				string itemInfo = typeName + " -- " + item.name + " [" + item.id + "]";
-				Debug.Log("StateTable : Removing null " + itemInfo,this.gameObject);
+				Debug.Log("[StateTable] Removing null " + itemInfo,this.gameObject);
 			}
 		}
 	}
@@ -281,12 +281,12 @@ public class StateTable : MonoBehaviour{
 				item.Setup(name,script,this);
 				items.Add(item);
 				string itemInfo = typeName + " -- " + item.name + " [" + item.id + "]";
-				Debug.Log("StateTable : Creating " + itemInfo,this.gameObject);
+				Debug.Log("[StateTable] Creating " + itemInfo,this.gameObject);
 			}
 			else{
 				item.name = name;
 				item.target = script;
-				//Debug.Log("StateTable : Updating " + typeName + " -- " + item.name);
+				//Debug.Log("[StateTable] Updating " + typeName + " -- " + item.name);
 			}
 		}
 	}

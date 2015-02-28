@@ -9,6 +9,7 @@ namespace Zios{
 		[NonSerialized] public GameObject owner;
 		public override void Awake(){
 			base.Awake();
+			this.AddDependent<ActionReady>();
 			GameObject parent = this.gameObject.GetParent();
 			this.alias = this.gameObject.name;
 			this.stateTable = parent.IsNull() ? null : parent.GetComponentInParent<StateTable>(true);

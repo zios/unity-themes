@@ -64,13 +64,13 @@ public class SpriteController : MonoBehaviour{
 		else if(this.spriteSheet.GetSprite(fullName) != null){
 			this.instance = this.sequences[fullName] = this.spriteSheet.GetSpriteInstance(fullName);
 			if(this.instance == null){
-				Debug.Log("^2Error loading sprite -- ^7" + this.spriteName + "-^4" + this.spriteAnimation);
+				Debug.Log("[SpriteController] ^2Error loading sprite -- ^7" + this.spriteName + "-^4" + this.spriteAnimation);
 				return;
 			}
 			this.Begin();
 		}
 		else{
-			Debug.Log("No sprite named " + fullName + " was found.");
+			Debug.Log("[SpriteController] No sprite named " + fullName + " was found.");
 		}
 	}
 	public void AddEvent(string name,int frame,SpriteEvent method){

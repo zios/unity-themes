@@ -32,7 +32,7 @@ namespace Zios{
 					}
 				}
 			}
-			Debug.LogWarning("Pool : No instances were available for " + name + "!");
+			Debug.LogWarning("[Pool] No instances were available for " + name + "!");
 			return Pool.empty;
 		}
 		public static void Build(PoolPrefab blueprint){

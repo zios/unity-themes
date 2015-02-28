@@ -3,9 +3,10 @@
 using Zios;
 using UnityEngine;
 [AddComponentMenu("Zios/Component/Action/Attribute/Expose/Expose Transform (Rotation)")]
-public class AttributeTransformRotation : DataMonoBehaviour{
+public class ExposeTransformRotation : DataMonoBehaviour{
 	[HideInInspector] public AttributeVector3 rotation = Vector3.zero;
 	public override void Awake(){
+		this.alias = this.alias.SetDefault("Transform");
 		base.Awake();
 		this.rotation.Setup("Rotation",this);
 		this.rotation.getMethod = ()=>this.transform.eulerAngles;

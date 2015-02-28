@@ -8,17 +8,27 @@ using UnityEditor;
 #endif
 [Serializable][AddComponentMenu("")]
 public class DataMonoBehaviour : MonoBehaviour{
+	public Dictionary<string,Method> warnings = new Dictionary<string,Method>();
 	public static DataMonoBehaviour[] sorting;
 	public static int processIndex;
 	public string alias;
 	public virtual void OnApplicationQuit(){this.Awake();}
 	public virtual void Reset(){this.Awake();}
 	public virtual void Awake(){
-		string name = this.GetType().ToString().ToTitle().Replace("3 D","3D");
+		this.warnings.Clear();
+		string name = this.GetType().Name.ToTitle().Replace("3 D","3D");
 		this.alias = this.alias.SetDefault(name);
 	}
 	public virtual void OnDestroy(){
 		AttributeManager.refresh = true;
+	}
+	public void AddDependent<Type>() where Type : Component{this.AddDependent<Type>(this.gameObject,true);}
+	public void AddDependent<Type>(GameObject target,bool self=false) where Type : Component{
+		if(!target.IsNull() && target.GetComponent<Type>() == null){
+			string targetName = self ? this.GetType().Name : target.name;
+			string issue = targetName + " is missing required component : " + typeof(Type).Name + ". Click here to add.";
+			this.warnings[issue] = ()=>target.AddComponent<Type>();
+		}
 	}
 	#if UNITY_EDITOR
     [MenuItem("Zios/Process/Components/Sort All (Smart)")]

@@ -59,7 +59,7 @@ public static class CombineMeshes{
 		if(canceled){combine.meshCount = 0;}
 		else if(filter != null && filter.sharedMesh != null){
 			if((combine.vertexCount + filter.sharedMesh.vertexCount) >= 65534){
-				Debug.Log("Combine Meshes : Added extra submesh due to vertices at " + combine.vertexCount);
+				Debug.Log("[Combine Meshes] Added extra submesh due to vertices at " + combine.vertexCount);
 				combine.StepLast();
 				combine.meshes.Add(new Mesh());
 				combine.subIndex = index;
@@ -119,8 +119,8 @@ public static class CombineMeshes{
 			}
 			TimeSpan span = TimeSpan.FromSeconds(Time.realtimeSinceStartup - combine.time);
 			string totalTime = span.Minutes + " minutes and " + span.Seconds + " seconds";
-			Debug.Log("Combine Meshes : Reduced " + combine.meshCount + " meshes to " + combine.meshes.Count + ".");
-			Debug.Log("Combine Meshes : Completed in " + totalTime + ".");
+			Debug.Log("[Combine Meshes] Reduced " + combine.meshCount + " meshes to " + combine.meshes.Count + ".");
+			Debug.Log("[Combine Meshes] Completed in " + totalTime + ".");
 			AssetDatabase.SaveAssets();
 			EditorUtility.ClearProgressBar();
 			combine.complete = true;

@@ -88,12 +88,12 @@ public static class Events{
 						var copy = item.Value.Copy();
 						copy.Remove(method);
 						//string messageType = method == null ? "empty method" : "duplicate method";
-						//Debug.Log("Events : Removing " + messageType  + " from -- " + gameObject.name + "/" + eventName);
+						//Debug.Log("[Events] Removing " + messageType  + " from -- " + gameObject.name + "/" + eventName);
 						Events.listeners[gameObject][eventName] = copy;
 					}
 				}
 				if(Events.listeners[gameObject][eventName].Count < 1){
-					//Debug.Log("Events : Removing empty method list -- " + gameObject.name + "/" + eventName);
+					//Debug.Log("[Events] Removing empty method list -- " + gameObject.name + "/" + eventName);
 					Events.listeners[gameObject].Remove(eventName);
 				}
 			}
@@ -211,7 +211,7 @@ public static class Events{
 	public static bool ValidTarget(string name,GameObject target){
 		if(target.IsNull()){
 			if(!Events.warned.Contains(name)){
-				Debug.LogWarning("Events : Call attempted on null gameObject -- " + name,target);
+				Debug.LogWarning("[Events] Call attempted on null gameObject -- " + name,target);
 				Events.warned.Add(name);
 			}
 			return false;

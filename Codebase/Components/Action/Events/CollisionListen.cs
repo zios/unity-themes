@@ -1,19 +1,6 @@
 ﻿using Zios;
 using System;
 using UnityEngine;
-public enum CollisionDirection : int{
-	Above     = 0x001,
-	Below     = 0x002,
-	Front     = 0x004,
-	Behind    = 0x008,
-	Left      = 0x010,
-	Right     = 0x020,
-}
-public enum CollisionSource : int{
-	Self      = 0x001,
-	Target    = 0x002,
-}
-public enum CollisionEvent{CollisionStart,CollisionEnd,Collision}
 [AddComponentMenu("Zios/Component/Action/Event/Collision Listen")]
 public class CollisionListen : ActionLink{
 	public CollisionEvent trigger;
@@ -25,6 +12,7 @@ public class CollisionListen : ActionLink{
 	[HideInInspector] public AttributeGameObject lastCollision = new AttributeGameObject();
 	public override void Awake(){
 		base.Awake();
+		this.AddDependent<ColliderController>(this.target);
 		this.lastCollision.Setup("Last Collision",this);
 		this.target.Setup("Target",this);
 		this.target.DefaultSearch("[Owner]");
@@ -43,4 +31,17 @@ public class CollisionListen : ActionLink{
 			base.Use();
 		}
 	}
+}
+public enum CollisionEvent{CollisionStart,CollisionEnd,Collision}
+public enum CollisionDirection : int{
+	Above     = 0x001,
+	Below     = 0x002,
+	Front     = 0x004,
+	Behind    = 0x008,
+	Left      = 0x010,
+	Right     = 0x020,
+}
+public enum CollisionSource : int{
+	Self      = 0x001,
+	Target    = 0x002,
 }

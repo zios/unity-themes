@@ -16,12 +16,16 @@ namespace Zios{
 		public static bool refresh;
 		public static float editorInterval = 1;
 		public static bool safe = true;
+		public static bool preDrawn = true;
+		public static bool debug = false;
 		public float updateInterval = 1;
 		public int editorRefreshPasses = -1;
 		public bool editorIncludeDisabled = true;
 		public bool updateOnHierarchyChange = false;
 		public bool updateOnAssetChange = false;
+		public bool preDraw = true;
 		public bool safeMode = true;
+		public bool debugMode = true;
 		private float nextStep;
 		private float start;
 		private DataMonoBehaviour[] data = new DataMonoBehaviour[0];
@@ -93,6 +97,8 @@ namespace Zios{
 		public void Start(){
 			bool editor = !Application.isPlaying;
 			AttributeManager.safe = this.safeMode;
+			AttributeManager.debug = this.debugMode;
+			AttributeManager.preDrawn = this.preDraw;
 			if(this.activeRefresh || AttributeManager.editorInterval != -1){
 				if(!editor && !this.setup){
 					this.SceneRefresh();
@@ -108,9 +114,8 @@ namespace Zios{
 				}
 				if(!AttributeManager.refresh){
 					if(this.stage == 1){this.StepRefresh();}
-					if(this.stage == 2){this.StepCleanData();}
-					if(this.stage == 3){this.StepBuildLookup();}
-					if(this.stage == 4){this.StepBuildData();}
+					if(this.stage == 2){this.StepBuildLookup();}
+					if(this.stage == 3){this.StepBuildData();}
 					AttributeManager.percentLoaded = (((float)this.nextIndex / this.data.Length) / 4.0f) + ((this.stage-1)*0.25f);
 				}
 			}
@@ -123,7 +128,7 @@ namespace Zios{
 					this.setup = true;
 					this.SceneRefresh();
 					this.stage = 1;
-					Utility.EditorLog("AttributeManager : Refreshing...");
+					if(this.debugMode){Utility.EditorLog("[AttributeManager] Refreshing...");}
 					if(this.editorRefreshPasses <= 0 && !this.activeRefresh){
 						this.activeRefresh = true;
 						while(this.stage != 0){this.Start();}
@@ -175,31 +180,25 @@ namespace Zios{
 				this.nextIndex = 0;
 			}
 		}
-		public void StepCleanData(){
+		public void StepBuildLookup(){
 			if(this.nextIndex > Attribute.all.Count-1){
 				this.stage = 3;
 				this.nextIndex = 0;
 				return;
 			}
 			var attribute = Attribute.all[this.nextIndex];
-			if(attribute.info.parent.IsNull()){Attribute.all.Remove(attribute);}
-			this.nextIndex += 1;
-		}
-		public void StepBuildLookup(){
-			if(this.nextIndex > Attribute.all.Count-1){
-				this.stage = 4;
-				this.nextIndex = 0;
+			if(attribute.IsNull() || attribute.info.parent.IsNull()){
+				Attribute.all.Remove(attribute);
 				return;
 			}
-			var attribute = Attribute.all[this.nextIndex];
 			attribute.BuildLookup();
 			this.nextIndex += 1;
 		}
 		public void StepBuildData(){
 			if(this.nextIndex > Attribute.all.Count-1){
 				if(!Attribute.ready){
-					Utility.EditorLog("AttributeManager : Refresh Complete : " + (Time.realtimeSinceStartup - this.start) + " seconds.");
-					Utility.EditorLog("AttributeManager : Data Count : " + this.data.Count(x=>x is AttributeData));
+					if(this.debugMode){Utility.EditorLog("[AttributeManager] Refresh Complete : " + (Time.realtimeSinceStartup - this.start) + " seconds.");}
+					if(this.debugMode){Utility.EditorLog("[AttributeManager] Data Count : " + this.data.Count(x=>x is AttributeData));}
 				}
 				Attribute.ready = true;
 				this.stage = 0;

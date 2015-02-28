@@ -3,7 +3,7 @@
 using Zios;
 using UnityEngine;
 [AddComponentMenu("Zios/Component/Action/Attribute/Expose/Expose Transform (Direction)")]
-public class AttributeTransformDirection : DataMonoBehaviour{
+public class ExposeTransformDirection : DataMonoBehaviour{
 	[HideInInspector] public AttributeVector3 directionUp = Vector3.zero;
 	[HideInInspector] public AttributeVector3 directionDown = Vector3.zero;
 	[HideInInspector] public AttributeVector3 directionLeft = Vector3.zero;
@@ -11,6 +11,7 @@ public class AttributeTransformDirection : DataMonoBehaviour{
 	[HideInInspector] public AttributeVector3 directionForward = Vector3.zero;
 	[HideInInspector] public AttributeVector3 directionBack = Vector3.zero;
 	public override void Awake(){
+		this.alias = this.alias.SetDefault("Transform");
 		base.Awake();
 		this.directionUp.Setup("Direction/Up",this);
 		this.directionDown.Setup("Direction/Down",this);

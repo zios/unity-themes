@@ -84,7 +84,7 @@ public static class StringExtension{
 			return new Color(r,g,b,a);
 		}
 		else{
-			Debug.LogError("Color strings can only be converted from Hexidecimal or comma/space separated Decimal.");
+			Debug.LogError("[StringExtension] Color strings can only be converted from Hexidecimal or comma/space separated Decimal.");
 			return new Color(255,0,255);
 		}
 	}

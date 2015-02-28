@@ -9,6 +9,7 @@ public class Play3DAnimation : ActionLink{
 	public AttributeGameObject target = new AttributeGameObject();
 	public override void Awake(){
 		base.Awake();
+		this.AddDependent<AnimationController>(this.target);
 		this.animationName.Setup("Animation Name",this);
 		this.speed.Setup("Speed",this);
 		this.weight.Setup("Weight",this);

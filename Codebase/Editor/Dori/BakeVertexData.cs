@@ -65,7 +65,7 @@ public static class BakeVertexData{
 					if(shaderName.Contains("Lighted",true)){targetMaterial = bake.bakedShaded;}
 					if(shaderName.Contains("Outline",true)){targetMaterial = bake.bakedOutline;}
 					if(existing != null && !complex){
-						//Debug.Log("Bake Vertex Colors : Already exists -- " + newPath);
+						//Debug.Log("[Bake Vertex Colors] Already exists -- " + newPath);
 						filter.sharedMesh = existing;
 						materials[subMeshIndex] = targetMaterial;
 						generateMesh = false;
@@ -82,7 +82,7 @@ public static class BakeVertexData{
 				if(generateMesh){
 					Mesh newMesh = (Mesh)UnityEngine.Object.Instantiate(filter.sharedMesh);
 					newMesh.colors32 = colorValues;
-					//Debug.Log("Bake Vertex Colors : Generating -- " + newPath);
+					//Debug.Log("[Bake Vertex Colors] Generating -- " + newPath);
 					Directory.CreateDirectory(Path.GetDirectoryName(file.path)+"/Baked");
 					AssetDatabase.CreateAsset(newMesh,newPath);
 					filter.sharedMesh = newMesh;
@@ -94,8 +94,8 @@ public static class BakeVertexData{
 		if(bake.index >= size){
 			TimeSpan span = TimeSpan.FromSeconds(Time.realtimeSinceStartup - bake.time);
 			string totalTime = span.Minutes + " minutes and " + span.Seconds + " seconds";
-			Debug.Log("Bake Vertex Colors : Baked data for " + size + " renderers.");
-			Debug.Log("Bake Vertex Colors : Completed in " + totalTime + ".");
+			Debug.Log("[Bake Vertex Colors] Baked data for " + size + " renderers.");
+			Debug.Log("[Bake Vertex Colors] Completed in " + totalTime + ".");
 			AssetDatabase.SaveAssets();
 			EditorUtility.ClearProgressBar();
 			EditorApplication.update -= bake.Step;

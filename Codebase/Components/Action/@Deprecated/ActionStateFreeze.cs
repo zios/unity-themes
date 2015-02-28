@@ -6,6 +6,7 @@ public class ActionStateFreeze : ActionLink{
 	public AttributeBool freezeOnEnd = false;
 	public override void Awake(){
 		base.Awake();
+		this.warnings["This component has been deprecated and likely should not be used."] = ()=>{};
 		this.freezeOnUse.Setup("Freeze On Use",this);
 		this.freezeOnEnd.Setup("Freeze On End",this);
 	}

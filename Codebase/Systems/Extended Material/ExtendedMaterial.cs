@@ -192,7 +192,7 @@ namespace MaterialExtended{
 		}
 		public void RemovePass(Pass pass){
 			if(this.passes.Count == 1){
-				Debug.LogWarning("ExtendedMaterial : Cannot remove the only pass in a SubShader");
+				Debug.LogWarning("[ExtendedMaterial] Cannot remove the only pass in a SubShader");
 				return;
 			}
 			this.passes.RemoveValue(pass);
@@ -463,7 +463,7 @@ namespace MaterialExtended{
 				}
 				while(true){
 					if(parsePass > 128){
-						Debug.LogError("ExtendedMaterial : Error parsing shader -- " + this.menuPath);
+						Debug.LogError("[ExtendedMaterial] Error parsing shader -- " + this.menuPath);
 						return;
 					}
 					string nextSubShader = this.GetBlock(contents,"SubShader");
@@ -473,7 +473,7 @@ namespace MaterialExtended{
 					string tagBlock;
 					while(true){
 						if(parsePass > 128){
-							Debug.LogError("ExtendedMaterial : Error parsing shader -- " + this.menuPath);
+							Debug.LogError("[ExtendedMaterial] Error parsing shader -- " + this.menuPath);
 							return;
 						}
 						Pass pass = new Pass();
@@ -638,7 +638,7 @@ namespace MaterialExtended{
 		}
 		public void RemoveSubShader(SubShader subShader){
 			if(this.subShaders.Count == 1){
-				Debug.LogWarning("ExtendedMaterial : Cannot remove the only subShader in a material");
+				Debug.LogWarning("[ExtendedMaterial] Cannot remove the only subShader in a material");
 				return;
 			}
 			this.subShaders.Remove(subShader);

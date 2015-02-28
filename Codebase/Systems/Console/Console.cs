@@ -221,7 +221,7 @@ namespace Zios{
 			if(!keyCodes.Contains(key)){
 				key = Console.keyValues.ContainsValue(key) ? Console.keyValues.GetKey(key) : key;
 				if(!keyCodes.Contains(key)){ 
-					Debug.LogWarning(key + " could not be bound. It is not a valid key.");
+					Debug.LogWarning("[Console] " + key + " could not be bound. It is not a valid key.");
 					return;
 				}
 			}
@@ -353,7 +353,7 @@ namespace Zios{
 		}
 		public static void AddCvar(string name,object scope,string dataName,string fullName="",string help="",bool formatHelp=true){
 			if(Console.cvars.ContainsKey(name)){
-				Debug.LogWarning("Console already has registered Cvar for -- " + name);
+				Debug.LogWarning("[Console] Already has registered Cvar for -- " + name);
 				return;
 			}
 			if(fullName == ""){fullName = scope.GetType().ToString() + "^1 " + dataName;}
@@ -440,7 +440,7 @@ namespace Zios{
 		//===========================
 		public static void AddKeyword(string name,ConsoleCallback call){
 			if(Console.keywords.ContainsKey(name)){
-				Debug.LogWarning("Console already has registered Keyword for -- " + name);
+				Debug.LogWarning("[Console] Already has registered Keyword for -- " + name);
 				return;
 			}
 			Console.keywords.Add(name,call);
@@ -473,7 +473,7 @@ namespace Zios{
 		}
 		public static void AddShortcut(string name,string replace){
 			if(Console.shortcuts.ContainsKey(name)){
-				Debug.LogWarning("Console already has registered Shortcut for -- " + name);
+				Debug.LogWarning("[Console] Already has registered Shortcut for -- " + name);
 				return;
 			}
 			Console.shortcuts.Add(name,replace);

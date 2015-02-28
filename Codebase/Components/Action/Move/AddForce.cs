@@ -10,6 +10,8 @@ public class AddForce : ActionLink{
 		base.Awake();
 		this.target.Setup("Target",this);
 		this.amount.Setup("Amount",this);
+		this.AddDependent<ColliderController>(this.target);
+		this.AddDependent<Force>(this.target);
 	}
 	public override void Use(){
 		base.Use();
