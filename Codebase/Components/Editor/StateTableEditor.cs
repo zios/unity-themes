@@ -186,6 +186,7 @@ public class StateTableEditor : Editor{
 	public virtual void OnClickHeader(TableHeaderItem header){}
 	public virtual void OnClickField(TableField field){
 		int state = 0;
+		StateTable stateTable = (StateTable)this.target;
 		StateRequirement requirement = (StateRequirement)field.target;
 		if(requirement.requireOn){state = 1;}
 		if(requirement.requireOff){state = 2;}
@@ -196,6 +197,7 @@ public class StateTableEditor : Editor{
 		requirement.requireOff = false;
 		if(state == 1){requirement.requireOn = true;}
 		if(state == 2){requirement.requireOff = true;}
+		stateTable.UpdateStates();
 	}
 	public virtual int CompareRows(object target1,object target2){
 		if(target1 is StateRequirement && target2 is StateRequirement){
