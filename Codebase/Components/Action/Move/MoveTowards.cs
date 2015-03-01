@@ -8,10 +8,10 @@ namespace Zios{
 	    public LerpVector3 travel = new LerpVector3();
 	    public override void Awake(){
 		    base.Awake();
-		    this.AddDependent<ColliderController>(this.target);
 		    this.target.Setup("Target",this);
 		    this.goal.Setup("Goal",this);
 		    this.travel.Setup("Travel",this);
+		    this.AddDependent<ColliderController>(this.target);
 	    }
 	    public override void End(){
 		    this.travel.Reset();

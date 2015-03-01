@@ -6,7 +6,7 @@ namespace Zios{
 	[Serializable]
 	public class AttributeGameObject : Attribute<GameObject,AttributeGameObject,AttributeGameObjectData>{
 		public static string[] specialList = new string[]{"Copy","Parent"};
-		public AttributeGameObject() : this(null){}
+		public AttributeGameObject() : this(default(GameObject)){}
 		public AttributeGameObject(GameObject value){this.delayedValue = value;}
 		public static implicit operator AttributeGameObject(GameObject current){return new AttributeGameObject(current);}
 		public static implicit operator GameObject(AttributeGameObject current){return current.Get();}

@@ -13,10 +13,10 @@ namespace Zios{
 	    [HideInInspector] public AttributeGameObject lastCollision = new AttributeGameObject();
 	    public override void Awake(){
 		    base.Awake();
-		    this.AddDependent<ColliderController>(this.target);
 		    this.lastCollision.Setup("Last Collision",this);
 		    this.target.Setup("Target",this);
 		    this.target.DefaultSearch("[Owner]");
+		    this.AddDependent<ColliderController>(this.target);
 		    if(!this.target.Get().IsNull()){
 			    Events.AddScope(this.trigger.ToString(),(MethodObject)this.Collision,this.target.Get());
 		    }

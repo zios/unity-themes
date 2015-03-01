@@ -9,9 +9,9 @@ namespace Zios{
 	    public AttributeGameObject target = new AttributeGameObject();
 	    public override void Awake(){
 		    base.Awake();
-		    this.AddDependent<ColliderController>(this.target);
 		    this.target.Setup("Target",this);
 		    this.amount.Setup("Amount",this);
+		    this.AddDependent<ColliderController>(this.target);
 	    }
 	    public override void Use(){
 		    base.Use();

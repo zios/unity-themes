@@ -129,7 +129,8 @@ namespace Zios{
 			this.isDefault = false;
 			if(this.info.parent != null){
 				this.Add<DataType>();
-				((DataType)this.info.data.Last()).value = value;
+				var newData = (DataType)this.info.data.Last();
+				newData.value = value;
 			}
 		}
 		public override void Remove(AttributeData data,string set=""){
@@ -283,7 +284,7 @@ namespace Zios{
 		public void PrepareData(){
 			if(this.info.data.Length < 1){
 				BaseType value = this.delayedValue != null ? this.delayedValue : default(BaseType);
-				if(this.delayedValue == null && AttributeManager.debug){Debug.Log("[Attribute] Fixing unprepared data : " + this.info.path);}
+				if(typeof(BaseType).IsValueType && this.delayedValue == null && AttributeManager.debug){Debug.Log("[Attribute] Fixing unprepared data : " + this.info.path);}
 				//else{Debug.Log("[Attribute] Delayed add : " + this.info.path);}
 				this.Add(value);
 			}
