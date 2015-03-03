@@ -10,11 +10,11 @@ namespace Zios{
 	    public AttributeGameObject target = new AttributeGameObject();
 	    public override void Awake(){
 		    base.Awake();
-		    this.AddDependent<AnimationController>(this.target);
-		    this.animationName.Setup("Animation Name",this);
+			this.animationName.Setup("Animation Name",this);
 		    this.speed.Setup("Speed",this);
 		    this.weight.Setup("Weight",this);
 		    this.target.Setup("Target",this);
+            this.AddDependent<AnimationController>(this.target);
 	    }
 	    public override void Use(){
 		    base.Use();
