@@ -4,9 +4,9 @@ using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityObject = UnityEngine.Object;
-#if UNITY_EDITOR 
-using UnityEditor;
 namespace Zios{
+    #if UNITY_EDITOR 
+    using UnityEditor;
     public class FileManagerWatcher : AssetPostprocessor{
 	    public static void OnPostprocessAllAssets(string[] imported,string[] deleted,string[] moved, string[] path){
 		    FileManager.Refresh();

@@ -2,9 +2,9 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-#if UNITY_EDITOR
-using UnityEditor;
 namespace Zios{
+    #if UNITY_EDITOR
+    using UnityEditor;
     [InitializeOnLoad]
     #endif
     public static class Locate{
