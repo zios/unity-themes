@@ -64,6 +64,10 @@ namespace Zios{
 		    int position = components.IndexOf(current);
 		    current.Move(components.Length-position);
 	    }
+		public static bool IsExpanded(this Component current){
+			Type editorUtility = Utility.GetEditorType("InternalEditorUtility");
+			return (bool)editorUtility.CallMethod("GetIsInspectorExpanded",current.AsBoxedArray());
+		}
 	    //====================
 	    // Interface
 	    //====================

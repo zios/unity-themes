@@ -7,9 +7,9 @@ namespace Zios{
     public class InputHeld : ActionLink{
 	    public InputRange requirement;
 	    public AttributeString inputName = "Button1";
-	    public AttributeFloat intensity = 0;
 	    public AttributeBool heldDuringIntensity = true;
 	    public AttributeBool ignoreOwnership = false;
+	    [HideInInspector] public AttributeFloat intensity = 0;
 	    [HideInInspector] public bool held;
 	    [NonSerialized] public int inputID;
 	    [NonSerialized] public bool lastHeld;

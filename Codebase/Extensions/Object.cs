@@ -39,9 +39,9 @@ namespace Zios{
 	    }
 	    public static V CallMethod<V>(this object current,string name,object[] parameters=null){
 		    if(current.IsStatic()){
-			    return (V)current.GetMethod(name).Invoke(null,parameters);
+			    return (V)current.GetMethod(name,allFlags).Invoke(null,parameters);
 		    }
-		    return (V)current.GetMethod(name).Invoke(current,parameters);
+		    return (V)current.GetMethod(name,allFlags).Invoke(current,parameters);
 	    }
 	    public static bool HasMethod(this object current,string name,BindingFlags flags = allFlags){
 		    Type type = current is Type ? (Type)current : current.GetType();

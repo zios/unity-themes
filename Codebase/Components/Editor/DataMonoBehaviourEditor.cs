@@ -3,11 +3,12 @@ using UnityEngine;
 using UnityEditor;
 namespace Zios{
     [CustomEditor(typeof(DataMonoBehaviour),true)][CanEditMultipleObjects]
-    public class DataMonoBehaviourEditor : Editor{
+    public class DataMonoBehaviourEditor : MonoBehaviourEditor{
 	    public float nextUpdateStep;
 	    public bool? isPrefab;
 	    public bool warningReady;
 	    public override void OnInspectorGUI(){
+			if(Event.current.type == EventType.ScrollWheel){return;}
 		    if(Event.current.type == EventType.Layout){this.warningReady = false;}
 		    DataMonoBehaviour target = (DataMonoBehaviour)this.target;
 		    bool isData = this.target is AttributeData;
@@ -29,7 +30,7 @@ namespace Zios{
 			    this.isPrefab = script.IsPrefab();
 		    }
 		    GUI.changed = false;
-		    this.DrawDefaultInspector();
+		    base.OnInspectorGUI();
 		    if(!isData){Utility.EditorCall(this.EditorUpdate);}
 		    if(GUI.changed){Utility.SetDirty(target);}
 	    }

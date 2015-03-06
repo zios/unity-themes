@@ -78,21 +78,21 @@ namespace Zios{
 		    #endif
 		    return current.Overlaps(windowRect);
 	    }
+		public static bool IsEmpty(this Rect current){
+			return current.x == 0 && current.y == 0 && current.width == 1 && current.height == 1;
+		}
 	    #if UNITY_EDITOR
-	    public static EditorWindow[] inspectors;
+	    public static EditorWindow GetInspectorWindow(this Rect current){
+			Type inspectorWindow = Utility.GetEditorType("InspectorWindow");
+			return EditorWindow.GetWindowWithRect(inspectorWindow,current);
+	    }
 	    public static bool InInspectorWindow(this Rect current){
 		    Rect windowRect = new Rect(0,0,Screen.width,Screen.height);
-		    #if UNITY_EDITOR
-		    if(RectExtension.inspectors == null){
-			    Type inspectorType = Utility.GetEditorType("InspectorWindow");
-			    RectExtension.inspectors = inspectorType.CallMethod<EditorWindow[]>("GetAllInspectorWindows");
-		    }
-		    foreach(var window in RectExtension.inspectors){
+		    foreach(var window in Utility.GetInspectors()){
 			    Vector2 scroll = window.GetVariable<Vector2>("m_ScrollPosition");
 			    windowRect.y = scroll.y;
 			    if(current.Overlaps(windowRect)){return true;}
 		    }
-		    #endif
 		    return false;
 	    }
 	    public static bool InspectorValid(this Rect current){

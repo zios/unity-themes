@@ -10,6 +10,7 @@ namespace Zios{
 	    private float nextUpdate;
 	    private GUISkin skin;
 	    public override void OnInspectorGUI(){
+			if(Event.current.type == EventType.ScrollWheel){return;}
 		    Utility.AddEditorUpdate(this.Step,true);	
 		    string skinName = EditorGUIUtility.isProSkin ? "Dark" : "Light";
 		    if(this.skin == null || !this.skin.name.Contains(skinName)){

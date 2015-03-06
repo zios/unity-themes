@@ -4,10 +4,11 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using UnityObject = UnityEngine.Object;
+#if UNITY_EDITOR
+using UnityEditor;
+using UnityEditorInternal;
+using CallbackFunction = UnityEditor.EditorApplication.CallbackFunction;
 namespace Zios{
-    #if UNITY_EDITOR
-    using UnityEditor;
-    using CallbackFunction = UnityEditor.EditorApplication.CallbackFunction;
     public class UtilityListener : AssetPostprocessor{
 	    public static void OnPostprocessAllAssets(string[] imported,string[] deleted,string[] moved, string[] path){
 		    bool playing = EditorApplication.isPlaying || EditorApplication.isPlayingOrWillChangePlaymode;
@@ -21,10 +22,23 @@ namespace Zios{
     #endif
     public static class Utility{
 	    #if UNITY_EDITOR
+	    public static EditorWindow[] inspectors;
 	    public static CallbackFunction assetUpdate;
 	    public static List<CallbackFunction> hierarchyMethods = new List<CallbackFunction>();
 	    public static bool hierarchyPaused;
-	    #endif
+	    public static EditorWindow[] GetInspectors(){
+		    if(Utility.inspectors == null){
+			    Type inspectorType = Utility.GetEditorType("InspectorWindow");
+			    Utility.inspectors = inspectorType.CallMethod<EditorWindow[]>("GetAllInspectorWindows");
+		    }
+			return Utility.inspectors;
+	    }
+	    public static Vector2 GetInspectorScrollPosition(this Rect current){
+			Type inspectorWindow = Utility.GetEditorType("InspectorWindow");
+			var window = EditorWindow.GetWindowWithRect(inspectorWindow,current);
+			return window.GetVariable<Vector2>("m_ScrollPosition");
+	    }
+		#endif
 	    public static string AddRoot(this string current,Component parent){
 		    string prefix = parent.HasVariable("alias") ? parent.GetVariable<string>("alias") : parent.GetType().ToString();
 		    prefix = prefix.Split(".").Last();
