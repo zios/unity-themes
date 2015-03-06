@@ -5,6 +5,7 @@ namespace Zios{
     [CustomPropertyDrawer(typeof(Transition))]
     public class TransitionDrawer : PropertyDrawer{
         public override void OnGUI(Rect area,SerializedProperty property,GUIContent label){
+			if(!Event.current.IsUseful()){return;}
 		    if(!area.InspectorValid()){return;}
 		    GUI.changed = false;
 		    Transition transition = property.GetObject<Transition>();

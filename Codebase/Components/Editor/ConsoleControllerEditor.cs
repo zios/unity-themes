@@ -37,6 +37,7 @@ namespace Zios{
 		    this.BuildTables();
 	    }
 	    public override void OnInspectorGUI(){
+			if(!Event.current.IsUseful()){return;}
 		    if(this.cvarTable.rows.Count > 0){
 			    this.cvarTable.Draw();
 		    }

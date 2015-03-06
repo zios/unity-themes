@@ -7,6 +7,7 @@ namespace Zios{
     public class TargetDrawer : PropertyDrawer{
 	    public bool setup;
         public override void OnGUI(Rect area,SerializedProperty property,GUIContent label){
+			if(!Event.current.IsUseful()){return;}
 		    if(!area.InspectorValid()){return;}
 		    string skin = EditorGUIUtility.isProSkin ? "Dark" : "Light";
 		    GUI.skin = FileManager.GetAsset<GUISkin>("Gentleface-" + skin + ".guiskin");

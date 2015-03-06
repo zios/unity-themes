@@ -260,6 +260,7 @@ namespace Zios{
 		    }
 	    }
 	    public override void OnInspectorGUI(){
+			if(!Event.current.IsUseful()){return;}
 		    this.Setup(true);
 		    if(this.isVisible && Buffer.active != null){
 			    Material material = Buffer.material;

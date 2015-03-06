@@ -8,7 +8,7 @@ namespace Zios{
 	    public bool? isPrefab;
 	    public bool warningReady;
 	    public override void OnInspectorGUI(){
-			if(Event.current.type == EventType.ScrollWheel){return;}
+			if(!Event.current.IsUseful()){return;}
 		    if(Event.current.type == EventType.Layout){this.warningReady = false;}
 		    DataMonoBehaviour target = (DataMonoBehaviour)this.target;
 		    bool isData = this.target is AttributeData;

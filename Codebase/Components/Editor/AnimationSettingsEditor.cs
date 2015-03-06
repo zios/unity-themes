@@ -8,6 +8,7 @@ namespace Zios{
     public class AnimationSettingsEditor :UnityEditor.Editor{
 	    private CustomListElement listElement;
 	    public override void OnInspectorGUI(){
+			if(!Event.current.IsUseful()){return;}
 		    if(this.listElement == null){
 			    this.listElement = new CustomListElement(target);
 		    }

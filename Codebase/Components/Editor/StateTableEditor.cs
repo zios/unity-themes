@@ -61,7 +61,7 @@ namespace Zios.Table{
 		    }
 	    }
 	    public override void OnInspectorGUI(){
-			if(Event.current.type == EventType.ScrollWheel){return;}
+			if(!Event.current.IsUseful()){return;}
 		    /*StateTable table = (StateTable)this.target;
 		    if(AttributeManager.safe && (!Attribute.ready || table.IsPrefab())){
 			    this.DrawDefaultInspector();

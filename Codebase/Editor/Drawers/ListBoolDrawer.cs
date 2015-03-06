@@ -6,6 +6,7 @@ namespace Zios{
     [CustomPropertyDrawer(typeof(ListBool))]
     public class ListBoolDrawer : PropertyDrawer{
         public override void OnGUI(Rect area,SerializedProperty property,GUIContent label){
+			if(!Event.current.IsUseful()){return;}
 		    if(!area.InspectorValid()){return;}
 		    string[] names = new string[]{"X","Y","Z","W"};
 		    object dataObject = property.GetObject<object>();

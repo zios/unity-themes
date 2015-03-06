@@ -8,6 +8,7 @@ namespace Zios{
     public class EventTargetDrawer : PropertyDrawer{
 	    public Dictionary<EventTarget,bool> targetMode = new Dictionary<EventTarget,bool>();
         public override void OnGUI(Rect area,SerializedProperty property,GUIContent label){
+			if(!Event.current.IsUseful()){return;}
 		    if(!area.InspectorValid()){return;}
 		    if(!Attribute.ready){
 			    EditorGUI.ProgressBar(area,AttributeManager.percentLoaded,"Updating");

@@ -27,8 +27,6 @@ namespace Zios{
 		    this.requirableOverride = !this.requirableOverride;
 		    this.gameObject.Call("@Refresh");
 	    }
-	    [ContextMenu("//")]
-	    public void Nothing(){}
 	    public void DefaultAlias(string name){
 		    if(this.alias.IsEmpty()){
 			    this.alias = name;

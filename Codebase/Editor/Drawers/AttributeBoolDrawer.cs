@@ -8,6 +8,7 @@ namespace Zios{
 	[CustomPropertyDrawer(typeof(AttributeBool),true)]
 	public class AttributeBoolDrawer : AttributeDrawer{
 		public override void OnGUI(Rect area,SerializedProperty property,GUIContent label){
+			if(!Event.current.IsUseful()){return;}
 			if(this.attribute == null){
 				this.attribute = property.GetObject<Attribute>();
 				MonoBehaviour script = (MonoBehaviour)property.serializedObject.targetObject;

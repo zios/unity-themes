@@ -15,6 +15,7 @@ namespace Zios{
 		    return base.GetPropertyHeight(property,label);
 	    }
         public override void OnGUI(Rect area,SerializedProperty property,GUIContent label){
+			if(!Event.current.IsUseful()){return;}
 		    if(!area.InspectorValid()){return;}
 		    float singleLine = EditorGUIUtility.singleLineHeight;
 		    GUI.changed = false;
