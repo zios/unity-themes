@@ -31,11 +31,10 @@ namespace Zios{
 		    }
 		    GUI.changed = false;
 		    base.OnInspectorGUI();
-		    if(!isData){Utility.EditorCall(this.EditorUpdate);}
+		    //if(!isData){Utility.EditorCall(this.EditorUpdate);}
 		    if(GUI.changed){Utility.SetDirty(target);}
 	    }
-	    public void EditorUpdate(){
-		    if(AttributeManager.editorInterval == -1){return;}
+	    /*public void EditorUpdate(){
 		    if(!(bool)this.isPrefab && Time.realtimeSinceStartup > this.nextUpdateStep){
 			    this.nextUpdateStep = Time.realtimeSinceStartup + AttributeManager.editorInterval;
 			    ((DataMonoBehaviour)this.target).Awake();
@@ -43,6 +42,6 @@ namespace Zios{
 				    ((StateMonoBehaviour)this.target).inUse.Set(false);
 			    }
 		    }
-	    }
+	    }*/
     }
 }

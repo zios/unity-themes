@@ -55,7 +55,7 @@ namespace Zios{
             EditorGUI.EndProperty();
 		    property.serializedObject.ApplyModifiedProperties();
 		    if(GUI.changed){
-			    Utility.SetDirty(property.serializedObject.targetObject);
+				Utility.SetDirty(property.serializedObject.targetObject);
 		    }
         }
     }

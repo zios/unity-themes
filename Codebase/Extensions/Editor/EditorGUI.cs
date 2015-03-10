@@ -43,11 +43,8 @@ namespace Zios{
 	    public static int Draw(this List<string> current,Rect area,int index,GUIStyle style=null,bool indention=false){
 		    return current.ToArray().Draw(area,index,style,indention);
 	    }
-	    public static void Draw(this SerializedProperty current,Rect area,string label="",bool allowScene=true,bool indention=false){
-		    EditorGUIExtension.Draw(()=>EditorGUI.PropertyField(area,current,new GUIContent(label),allowScene),indention);
-	    }
-	    public static void Draw(this SerializedProperty current,Rect area,GUIContent label,bool allowScene=true,bool indention=false){
-		    EditorGUIExtension.Draw(()=>EditorGUI.PropertyField(area,current,label,allowScene),indention);
+	    public static void Draw(this SerializedProperty current,Rect area,bool allowScene=true,bool indention=false){
+		    EditorGUIExtension.Draw(()=>EditorGUI.PropertyField(area,current,new GUIContent(""),allowScene),indention);
 	    }
 	    public static Rect Draw(this Rect current,Rect area,bool indention=false){
 		    return EditorGUIExtension.Draw<Rect>(()=>EditorGUI.RectField(area,current),indention);
@@ -130,6 +127,13 @@ namespace Zios{
 	    }
 	    public static Vector3 DrawLabeled(this Vector3 current,Rect area,GUIContent label,bool indention=true){
 		    return EditorGUIExtension.Draw<Vector3>(()=>EditorGUI.Vector3Field(area,label,current),indention);
+	    }
+	    public static void DrawLabeled(this SerializedProperty current,Rect area,string label="",bool allowScene=true,bool indention=false){
+			if(label.IsEmpty()){label = current.displayName;}
+		    EditorGUIExtension.Draw(()=>EditorGUI.PropertyField(area,current,new GUIContent(label),allowScene),indention);
+	    }
+	    public static void DrawLabeled(this SerializedProperty current,Rect area,GUIContent label,bool allowScene=true,bool indention=false){
+		    EditorGUIExtension.Draw(()=>EditorGUI.PropertyField(area,current,label,allowScene),indention);
 	    }
 	    public static GameObject DrawLabeledObject(this GameObject current,Rect area,GUIContent label,bool allowScene=true,bool indention=false){
 		    return (GameObject)EditorGUIExtension.Draw<UnityObject>(()=>EditorGUI.ObjectField(area,label,current,typeof(GameObject),allowScene),indention);

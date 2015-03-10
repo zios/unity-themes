@@ -11,6 +11,7 @@ namespace Zios{
     public static class ObjectExtension{
 	    public const BindingFlags allFlags = BindingFlags.Static|BindingFlags.Instance|BindingFlags.NonPublic|BindingFlags.Public;
 	    public const BindingFlags staticFlags = BindingFlags.Static|BindingFlags.NonPublic|BindingFlags.Public;
+	    public const BindingFlags instanceFlags = BindingFlags.Instance|BindingFlags.NonPublic|BindingFlags.Public;
 	    public const BindingFlags privateFlags = BindingFlags.Instance|BindingFlags.NonPublic;
 	    public const BindingFlags publicFlags = BindingFlags.Instance|BindingFlags.Public;
 	    public static T Cast<T>(this object current,T type){

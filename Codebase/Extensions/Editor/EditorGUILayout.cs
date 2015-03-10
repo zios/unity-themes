@@ -29,12 +29,8 @@ namespace Zios{
 	    public static int Draw(this List<string> current,int index,GUIStyle style=null){
 		    return current.ToArray().Draw(index,style);
 	    }
-	    public static void Draw(this SerializedProperty current,string label="",bool allowScene=true){
-		    Action action = ()=>EditorGUILayout.PropertyField(current,new GUIContent(label),allowScene);
-		    EditorGUIExtension.Draw(action);
-	    }
-	    public static void Draw(this SerializedProperty current,GUIContent label,bool allowScene=true){
-		    Action action = ()=>EditorGUILayout.PropertyField(current,label,allowScene);
+	    public static void Draw(this SerializedProperty current,bool allowScene=true){
+		    Action action = ()=>EditorGUILayout.PropertyField(current,new GUIContent(""),allowScene);
 		    EditorGUIExtension.Draw(action);
 	    }
 	    public static Rect Draw(this Rect current){
@@ -118,6 +114,15 @@ namespace Zios{
 	    }
 	    public static Vector3 DrawLabeled(this Vector3 current,GUIContent label,bool indention=true){
 		    return EditorGUIExtension.Draw<Vector3>(()=>EditorGUILayout.Vector3Field(label,current),indention);
+	    }
+	    public static void DrawLabeled(this SerializedProperty current,string label="",bool allowScene=true){
+			if(label.IsEmpty()){label = current.displayName;}
+		    Action action = ()=>EditorGUILayout.PropertyField(current,new GUIContent(label),allowScene);
+		    EditorGUIExtension.Draw(action);
+	    }
+	    public static void DrawLabeled(this SerializedProperty current,GUIContent label,bool allowScene=true){
+		    Action action = ()=>EditorGUILayout.PropertyField(current,label,allowScene);
+		    EditorGUIExtension.Draw(action);
 	    }
 	    public static GameObject DrawLabeledObject(this GameObject current,GUIContent label,bool allowScene=true,bool indention=false){
 		    return (GameObject)EditorGUIExtension.Draw<UnityObject>(()=>EditorGUILayout.ObjectField(label,current,typeof(GameObject),allowScene),indention);

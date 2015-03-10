@@ -3,10 +3,13 @@ using UnityEditor;
 using System;
 using System.Linq;
 using System.Reflection;
+using System.Collections;
 using System.Collections.Generic;
 using MenuFunction = UnityEditor.GenericMenu.MenuFunction;
 namespace Zios{
     public class StaticInspector : EditorWindow{
+		private Vector2 scrollPosition;
+		private Rect viewArea;
 	    private string currentAssembly;
 	    private string currentNamespace;
 	    private string currentClass;
@@ -16,8 +19,11 @@ namespace Zios{
 	    private object activeClass;
 	    private bool setup;
 	    private float nextRepaint;
+		private Rect labelArea;
+		private Rect valueArea;
 	    private List<Assembly> assemblies = new List<Assembly>();
 	    private int setupIndex;
+		private Dictionary<int,bool> foldoutState = new Dictionary<int,bool>();
 	    private Dictionary<string,Accessor> variables = new Dictionary<string,Accessor>();
 	    private SortedDictionary<string,SortedDictionary<string,List<string>>> classNames = new SortedDictionary<string,SortedDictionary<string,List<string>>>();
 	    private SortedDictionary<string,SortedDictionary<string,List<Type>>> classes = new SortedDictionary<string,SortedDictionary<string,List<Type>>>();
@@ -38,6 +44,10 @@ namespace Zios{
 			    this.DrawSelectors();
 			    this.DrawInspector();
 		    }
+			if(Application.isPlaying){
+				this.Setup();
+				this.Repaint();
+			}
 	    }
 	    public void Start(){}
 	    public void Setup(){
@@ -61,7 +71,6 @@ namespace Zios{
 					    }
 				    }
 				    EditorUtility.ClearProgressBar();
-
 				    this.Repaint();
 				    return;
 			    }
@@ -138,6 +147,7 @@ namespace Zios{
 		    }
 	    }
 	    public void DrawInspector(){
+			this.scrollPosition = GUI.BeginScrollView(new Rect(0,25,Screen.width,Screen.height),this.scrollPosition,this.viewArea);
 		    if(this.activeClass != null && this.variables.Count < 1){
 			    List<string> names = this.activeClass.ListVariables(null,ObjectExtension.staticFlags);
 			    foreach(string name in names){
@@ -149,38 +159,121 @@ namespace Zios{
 			    }
 		    }
 		    if(this.variables.Count > 0){
-			    Rect labelArea = new Rect(13,25,this.position.width*0.415f,15);
-			    Rect valueArea = new Rect(-13+this.position.width*0.415f,25,this.position.width*0.585f,15);
+			    this.labelArea = new Rect(13,10,this.position.width*0.415f,15);
+			    this.valueArea = new Rect(-13+this.position.width*0.415f,10,this.position.width*0.585f,15);
 			    foreach(var current in this.variables.Copy()){
-				    string name = current.Key;
-				    object value = current.Value.Get();
-				    if(!(value is string || value is bool || value is float || value is int)){
-					    continue;
-				    }
-				    GUIContent label = new GUIContent(name.ToTitle());
-				    GUI.changed = false;
-				    label.DrawLabel(labelArea);
-				    if(value is string){
-					    string newValue = ((string)value).Draw(valueArea);
-					    if(GUI.changed){current.Value.Set(newValue);}
-				    }
-				    if(value is bool){
-					    bool newValue = ((bool)value).Draw(valueArea);
-					    if(GUI.changed){current.Value.Set(newValue);}
-				    }
-				    if(value is float){
-					    float newValue =((float)value).Draw(valueArea);
-					    if(GUI.changed){current.Value.Set(newValue);}
-				    }
-				    if(value is int){
-					    int newValue = ((int)value).DrawInt(valueArea);
-					    if(GUI.changed){current.Value.Set(newValue);}
-				    }
-				    labelArea = labelArea.AddY(18);
-				    valueArea = valueArea.AddY(18);	
+					string name = current.Key;
+					object value = current.Value.Get();
+					this.DrawValue(name,value);
 			    }
 		    }
+			this.viewArea = this.viewArea.SetHeight(this.valueArea.y+22);
+			GUI.EndScrollView();
 	    }
+		public void DrawValue(string name,object value,Accessor accessor=null,int depth=0){
+			if(name.Contains("$cache")){return;}
+			GUIContent label = new GUIContent(name.ToTitle());
+			GUI.changed = false;
+			bool common = (value is string || value is bool || value is float || value is int || value is GameObject || value is Enum);
+			if(common){label.DrawLabel(this.labelArea);}
+			int hash = 0;
+			if(!value.IsNull()){
+				hash = value.GetHashCode();
+				this.foldoutState.AddNew(hash);
+			}
+			if(value is GameObject){
+				GameObject newValue = ((GameObject)value).DrawObject(this.valueArea);
+				if(accessor != null && GUI.changed){accessor.Set(newValue);}
+			}
+			else if(value.IsNull()){return;}
+			else if(value is Enum){
+				Enum newValue = ((Enum)value).Draw(this.valueArea);
+				if(accessor != null && GUI.changed){accessor.Set(newValue.ToInt());}
+			}
+			else if(value is string){
+				string newValue = ((string)value).Draw(this.valueArea);
+				if(accessor != null && GUI.changed){accessor.Set(newValue);}
+			}
+			else if(value is bool){
+				bool newValue = ((bool)value).Draw(this.valueArea);
+				if(accessor != null && GUI.changed){accessor.Set(newValue);}
+			}
+			else if(value is float){
+				float newValue =((float)value).Draw(this.valueArea);
+				if(accessor != null && GUI.changed){accessor.Set(newValue);}
+			}
+			else if(value is int){
+				int newValue = ((int)value).DrawInt(this.valueArea);
+				if(accessor != null && GUI.changed){accessor.Set(newValue);}
+			}
+			else if(value is IList && depth < 9){
+				IList items = (IList)value;
+				label.text = label.text + " (" + items.Count + ")";
+				this.foldoutState[hash] = EditorGUI.Foldout(this.labelArea,this.foldoutState[hash],label);
+				this.labelArea = this.labelArea.AddY(18);
+				this.valueArea = this.valueArea.AddY(18);
+				if(this.foldoutState[hash]){
+					if(items.Count < 1){return;}
+					this.labelArea = this.labelArea.AddX(10);
+					int index = 0;
+					foreach(object item in items){
+						this.DrawValue("Item " + index,item,null,++depth);
+						++index;
+					}
+					this.labelArea = this.labelArea.AddX(-10);
+				}
+				return;
+			}
+			else if(value is IDictionary && depth < 9){
+				IDictionary items = (IDictionary)value;
+				label.text = label.text + " (" + items.Count + ")";
+				this.foldoutState[hash] = EditorGUI.Foldout(this.labelArea,this.foldoutState[hash],label);
+				this.labelArea = this.labelArea.AddY(18);
+				this.valueArea = this.valueArea.AddY(18);
+				if(this.foldoutState[hash]){
+					this.labelArea = this.labelArea.AddX(10);
+					int index = 0;
+					foreach(DictionaryEntry item in items){
+						int itemHash = item.GetHashCode();
+						this.foldoutState.AddNew(itemHash);
+						this.foldoutState[itemHash] = EditorGUI.Foldout(this.labelArea,this.foldoutState[itemHash],"Item " + index);
+						this.labelArea = this.labelArea.AddY(18);
+						this.valueArea = this.valueArea.AddY(18);
+						if(this.foldoutState[itemHash]){
+							this.labelArea = this.labelArea.AddX(10);
+							this.DrawValue("Key",item.Key,null,++depth);
+							this.DrawValue("Value",item.Value,null,++depth);
+							this.labelArea = this.labelArea.AddX(-10);
+						}
+						++index;
+					}
+					this.labelArea = this.labelArea.AddX(-10);
+				}
+				return;
+			}
+			else if(value.GetType().IsSerializable && depth < 9){
+				this.foldoutState[hash] = EditorGUI.Foldout(this.labelArea,this.foldoutState[hash],label);
+				this.labelArea = this.labelArea.AddY(18);
+				this.valueArea = this.valueArea.AddY(18);
+				if(this.foldoutState[hash]){
+					List<string> fieldNames = value.ListVariables(null,ObjectExtension.publicFlags);
+					if(fieldNames.Count < 1){return;}
+					this.labelArea = this.labelArea.AddX(10);
+					foreach(string fieldName in fieldNames){
+						try{
+							object fieldValue = value.GetVariable(fieldName);
+							this.DrawValue(fieldName,fieldValue,null,++depth);
+						}
+						catch{}
+					}
+					this.labelArea = this.labelArea.AddX(-10);
+				}
+				return;
+			}
+			else{return;}
+			this.labelArea = this.labelArea.AddY(18);
+			this.valueArea = this.valueArea.AddY(18);
+		}
 	    public void ResetIndexes(int priority){
 		    if(priority > 2){this.selectedAssembly = 0;}
 		    if(priority > 1){this.selectedNamespace = 0;}

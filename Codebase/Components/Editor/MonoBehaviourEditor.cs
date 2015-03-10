@@ -33,8 +33,7 @@ namespace Zios{
 						}
 						if(this.area[property].Clicked(1)){this.DrawHiddenMenu();}
 					}
-					try{property.Draw(property.displayName);}
-					catch{continue;}
+					property.DrawLabeled();
 					Rect area = GUILayoutUtility.GetLastRect();
 					if(!area.IsEmpty()){this.area[property] = area;}
 				}

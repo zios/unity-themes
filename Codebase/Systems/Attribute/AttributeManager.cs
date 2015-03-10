@@ -12,26 +12,22 @@ using UnityEditor;
 namespace Zios{
 	[AddComponentMenu("Zios/Singleton/Attribute Manager")][ExecuteInEditMode]
 	public class AttributeManager : MonoBehaviour{
+		private static float nextRefresh;
 		public static float percentLoaded;
 		public static bool refresh;
-		public static float editorInterval = 1;
 		public static bool safe = true;
 		public static bool preDrawn = true;
 		public static bool debug = false;
-		public float updateInterval = 1;
 		public int editorRefreshPasses = -1;
 		public bool editorIncludeDisabled = true;
-		public bool updateOnHierarchyChange = false;
-		public bool updateOnAssetChange = false;
+		public bool refreshOnHierarchyChange = false;
+		public bool refreshOnAssetChange = false;
 		public bool preDraw = true;
 		public bool safeMode = true;
 		public bool debugMode = true;
-		private float nextStep;
 		private float start;
 		private DataMonoBehaviour[] data = new DataMonoBehaviour[0];
 		private int nextIndex;
-		private bool activeRefresh;
-		private bool setup;
 		private int stage;
 		//==============================
 		// Editor
@@ -64,86 +60,66 @@ namespace Zios{
 			AttributeManager.refresh = true;
 		}
 		[MenuItem("Zios/Process/Attribute/Full Refresh %1")]
-		public static void AttributeRefresh(){
-			Attribute.ready = false;
-			AttributeManager.refresh = true;
-		}	
-		#endif
-		public void CleanEvents(){
-			Utility.RemoveAssetUpdate(this.PerformRefresh);
-			Utility.RemoveHierarchyUpdate(this.PerformRefresh);
-			Utility.RemoveEditorUpdate(this.Start);
+		public static void PerformRefresh(){
+			AttributeManager.nextRefresh = Time.realtimeSinceStartup + 1;
 		}
 		[ContextMenu("Refresh")]
-		public void PerformRefresh(){
-			Locate.SetDirty();
-			Attribute.ready = false;
-			AttributeManager.refresh = true;
+		public void ContextRefresh(){
+			AttributeManager.PerformRefresh();
+		}
+		#endif
+		public void CleanEvents(){
+			Utility.RemoveAssetUpdate(AttributeManager.PerformRefresh);
+			Utility.RemoveHierarchyUpdate(AttributeManager.PerformRefresh);
+			Utility.RemoveEditorUpdate(this.Start);
 		}
 		//==============================
 		// Unity
 		//==============================
 		public void OnValidate(){this.CleanEvents();}
 		public void OnDestroy(){this.CleanEvents();}
-		public void OnApplicationQuit(){this.PerformRefresh();}
+		public void OnApplicationQuit(){AttributeManager.PerformRefresh();}
 		public void Update(){
-			if(this.updateOnAssetChange){Utility.AddAssetUpdate(this.PerformRefresh);}
-			if(this.updateOnHierarchyChange){Utility.AddHierarchyUpdate(this.PerformRefresh);}
+			if(this.refreshOnAssetChange){Utility.AddAssetUpdate(AttributeManager.PerformRefresh);}
+			if(this.refreshOnHierarchyChange){Utility.AddHierarchyUpdate(AttributeManager.PerformRefresh);}
 			Utility.AddEditorUpdate(this.Start);
 		}
 		//==============================
 		// Main
 		//==============================
 		public void Start(){
-			bool editor = !Application.isPlaying;
 			AttributeManager.safe = this.safeMode;
 			AttributeManager.debug = this.debugMode;
 			AttributeManager.preDrawn = this.preDraw;
-			if(this.activeRefresh || AttributeManager.editorInterval != -1){
-				if(!editor && !this.setup){
-					this.SceneRefresh();
-					this.setup = true;
-					this.stage = 1;
-					while(this.stage != 0){this.Start();}
-					return;
-				}
-				if(editor && this.stage != 0 && !this.activeRefresh && this.editorRefreshPasses > 1){
-					for(int index=0;index<this.editorRefreshPasses-1;++index){
-						Utility.EditorDelayCall(this.StartStep);
-					}
-				}
-				if(!AttributeManager.refresh){
-					if(this.stage == 1){this.StepRefresh();}
-					if(this.stage == 2){this.StepBuildLookup();}
-					if(this.stage == 3){this.StepBuildData();}
-					AttributeManager.percentLoaded = (((float)this.nextIndex / this.data.Length) / 4.0f) + ((this.stage-1)*0.25f);
-				}
+			if(AttributeManager.nextRefresh > 0 && Time.realtimeSinceStartup > AttributeManager.nextRefresh){
+				if(this.debugMode){Utility.EditorLog("[AttributeManager] Refreshing...");}
+				Locate.SetDirty();
+				Attribute.ready = false;
+				AttributeManager.refresh = true;
+				AttributeManager.nextRefresh = 0;
 			}
-			if(editor && Time.realtimeSinceStartup > this.nextStep){
-				AttributeManager.editorInterval = this.updateInterval;
-				if(AttributeManager.editorInterval == -1 && !AttributeManager.refresh){return;}
-				this.nextStep = Time.realtimeSinceStartup + AttributeManager.editorInterval;
-				if(!this.setup || AttributeManager.refresh){
+			if(this.editorRefreshPasses < 1){
+				if(AttributeManager.refresh || !Attribute.ready){
+					this.SceneRefresh();
 					AttributeManager.refresh = false;
-					this.setup = true;
-					this.SceneRefresh();
 					this.stage = 1;
-					if(this.debugMode){Utility.EditorLog("[AttributeManager] Refreshing...");}
-					if(this.editorRefreshPasses <= 0 && !this.activeRefresh){
-						this.activeRefresh = true;
-						while(this.stage != 0){this.Start();}
-						this.activeRefresh = false;
-					}
-				}
-				else if(this.stage == 0){
-					this.stage = 2;
+					if(this.debugMode){Utility.EditorLog("[AttributeManager] Stage 1 (Awake) start...");}
+					while(this.stage != 0){this.Process();}
 				}
 			}
+			else{
+				for(int index=1;index<=this.editorRefreshPasses;++index){
+					Utility.EditorDelayCall(this.Process);
+				}
+			}	
 		}
-		public void StartStep(){
-			this.activeRefresh = true;
-			this.Start();
-			this.activeRefresh = false;
+		public void Process(){
+			if(this.stage > 0){
+				if(this.stage == 1){this.StepAwake();}
+				if(this.stage == 2){this.StepBuildLookup();}
+				if(this.stage == 3){this.StepBuildData();}
+				AttributeManager.percentLoaded = (((float)this.nextIndex / this.data.Length) / 4.0f) + ((this.stage-1)*0.25f);
+			}
 		}
 		public void SceneRefresh(){
 			bool fullSweep = !Application.isPlaying;
@@ -151,31 +127,36 @@ namespace Zios{
 				Attribute.all.Clear();
 				Attribute.lookup.Clear();
 			}
-			bool includeEnabled = this.setup || !Application.isPlaying;
-			bool includeDisabled = !this.setup || this.editorIncludeDisabled;
-			//Locate.SetDirty();
+			bool includeEnabled = Attribute.ready || !Application.isPlaying;
+			bool includeDisabled = !Attribute.ready || this.editorIncludeDisabled;
+			if(this.debugMode){Utility.EditorLog("[AttributeManager] Scene Refreshing...");}
 			this.data = Locate.GetSceneComponents<DataMonoBehaviour>(includeEnabled,includeDisabled);
-			//this.data = this.data.OrderBy(x=>x.GetType().ToString()).ToArray();
+			if(this.debugMode){Utility.EditorLog("[AttributeManager] DataMonoBehaviour Count : " + this.data.Length);}
 			this.start = Time.realtimeSinceStartup;
 			this.nextIndex = 0;
 		}
-		public void StepRefresh(){
+		public void StepAwake(){
 			if(this.nextIndex > this.data.Length-1){
 				this.stage = 2;
+				this.nextIndex = 0;
 				if(!Application.isPlaying){
+					if(this.debugMode){Utility.EditorLog("[AttributeManager] Stage 1b (Validate) start...");}
 					foreach(DataMonoBehaviour entry in this.data){
 						if(!entry.IsNull() && entry is AttributeData){
 							((AttributeData)entry).Validate();
 						}
 					}
 				}
+				if(this.debugMode){Utility.EditorLog("[AttributeManager] Stage 2 (Build Lookup) start...");}
 				return;
 			}
 			if(!this.data[this.nextIndex].IsNull()){
 				this.data[this.nextIndex].Awake();
 			}
+			else if(this.debugMode){Utility.EditorLog("[AttributeManager] Stage 1 (Awake) index " + this.nextIndex + " was null.");}
 			this.nextIndex += 1;
 			if(AttributeManager.refresh){
+				if(this.debugMode){Utility.EditorLog("[AttributeManager] Resetting process due to refresh during Awake.");}
 				this.stage = 0;
 				this.nextIndex = 0;
 			}
@@ -184,10 +165,12 @@ namespace Zios{
 			if(this.nextIndex > Attribute.all.Count-1){
 				this.stage = 3;
 				this.nextIndex = 0;
+				if(this.debugMode){Utility.EditorLog("[AttributeManager] Stage 3 (Build Data) start...");}
 				return;
 			}
 			var attribute = Attribute.all[this.nextIndex];
 			if(attribute.IsNull() || attribute.info.parent.IsNull()){
+				if(this.debugMode){Utility.EditorLog("[AttributeManager] Null attribute found.  Removing index " + this.nextIndex + ".");}
 				Attribute.all.Remove(attribute);
 				return;
 			}
@@ -196,11 +179,12 @@ namespace Zios{
 		}
 		public void StepBuildData(){
 			if(this.nextIndex > Attribute.all.Count-1){
-				if(!Attribute.ready){
-					if(this.debugMode){Utility.EditorLog("[AttributeManager] Refresh Complete : " + (Time.realtimeSinceStartup - this.start) + " seconds.");}
-					if(this.debugMode){Utility.EditorLog("[AttributeManager] Data Count : " + this.data.Count(x=>x is AttributeData));}
+				if(!Attribute.ready && this.debugMode){
+					Utility.EditorLog("[AttributeManager] Refresh Complete : " + (Time.realtimeSinceStartup - this.start) + " seconds.");
+					Utility.EditorLog("[AttributeManager] AttributeData Count : " + this.data.Count(x=>x is AttributeData));
 				}
 				Attribute.ready = true;
+				AttributeManager.percentLoaded = 1;
 				this.stage = 0;
 				this.nextIndex = 0;
 				return;

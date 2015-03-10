@@ -325,7 +325,7 @@ namespace Zios{
 						destroy = true;
 					}
 				}
-				if(destroy){
+				if(destroy && index < dataSet.Length){
 					if(set == "A"){this.info.data = this.info.data.RemoveAt(index);}
 					if(set == "B"){this.info.dataB = this.info.dataB.RemoveAt(index);}
 					if(set == "C"){this.info.dataC = this.info.dataC.RemoveAt(index);}

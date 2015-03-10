@@ -13,8 +13,15 @@ namespace Zios{
 	    public static DataMonoBehaviour[] sorting;
 	    public static int processIndex;
 	    public string alias;
+		private string lastAlias;
 	    public virtual void OnApplicationQuit(){this.Awake();}
 	    public virtual void Reset(){this.Awake();}
+	    public virtual void OnValidate(){
+			if(this.lastAlias != this.alias){
+				AttributeManager.PerformRefresh();
+				this.lastAlias = this.alias;
+			}
+	    }
 	    public virtual void Awake(){
 		    this.warnings.Clear();
 		    string name = this.GetType().Name.ToTitle().Replace("3 D","3D");

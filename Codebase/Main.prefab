@@ -823,11 +823,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbd6696a0ba36f142ac5f1916b8ca6ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  updateInterval: 1
   editorRefreshPasses: -1
   editorIncludeDisabled: 1
-  updateOnHierarchyChange: 1
-  updateOnAssetChange: 1
+  refreshOnHierarchyChange: 1
+  refreshOnAssetChange: 1
   preDraw: 0
   safeMode: 1
   debugMode: 0
