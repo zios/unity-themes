@@ -4,11 +4,11 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using UnityObject = UnityEngine.Object;
-#if UNITY_EDITOR
-using UnityEditor;
-using UnityEditorInternal;
-using CallbackFunction = UnityEditor.EditorApplication.CallbackFunction;
 namespace Zios{
+    #if UNITY_EDITOR
+    using UnityEditor;
+    using UnityEditorInternal;
+    using CallbackFunction = UnityEditor.EditorApplication.CallbackFunction;
     public class UtilityListener : AssetPostprocessor{
 	    public static void OnPostprocessAllAssets(string[] imported,string[] deleted,string[] moved, string[] path){
 		    bool playing = EditorApplication.isPlaying || EditorApplication.isPlayingOrWillChangePlaymode;
