@@ -59,15 +59,15 @@ namespace Zios{
 			PlayerPrefs.SetInt("ShowAttributeData",1);
 			AttributeManager.refresh = true;
 		}
-		[MenuItem("Zios/Process/Attribute/Full Refresh %1")]
-		public static void PerformRefresh(){
-			AttributeManager.nextRefresh = Time.realtimeSinceStartup + 1;
-		}
 		[ContextMenu("Refresh")]
 		public void ContextRefresh(){
 			AttributeManager.PerformRefresh();
 		}
+		[MenuItem("Zios/Process/Attribute/Full Refresh %1")]
 		#endif
+		public static void PerformRefresh(){
+			AttributeManager.nextRefresh = Time.realtimeSinceStartup + 1;
+		}
 		public void CleanEvents(){
 			Utility.RemoveAssetUpdate(AttributeManager.PerformRefresh);
 			Utility.RemoveHierarchyUpdate(AttributeManager.PerformRefresh);
