@@ -41,7 +41,6 @@ namespace Zios{
 				}
 			}		
 			if(GUI.changed){
-				this.serializedObject.Update();
 				this.serializedObject.ApplyModifiedProperties();	
 			}
 	    }
