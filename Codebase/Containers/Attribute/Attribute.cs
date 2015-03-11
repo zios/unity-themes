@@ -268,7 +268,7 @@ namespace Zios{
 				else{
 					current.gameObject.name = name + " B";
 				}
-				AttributeManager.refresh = true;
+				AttributeManager.PerformRefresh();
 			}
 		}
 		public void FixIDConflict(string previousID){

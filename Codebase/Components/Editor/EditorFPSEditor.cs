@@ -31,7 +31,7 @@ namespace Zios{
 			    this.nextUpdate = Time.realtimeSinceStartup + 0.5f;
 			    this.text = frameText + " fps";
 			    this.frames = 0;
-			    Utility.SetDirty(this.target);
+			    this.Repaint();
 		    }
 	    }
     }

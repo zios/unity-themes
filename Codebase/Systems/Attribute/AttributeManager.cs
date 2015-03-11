@@ -14,7 +14,6 @@ namespace Zios{
 	public class AttributeManager : MonoBehaviour{
 		private static float nextRefresh;
 		public static float percentLoaded;
-		public static bool refresh;
 		public static bool safe = true;
 		public static bool debug = false;
 		public int editorRefreshPasses = -1;
@@ -50,12 +49,12 @@ namespace Zios{
 		[MenuItem("Zios/Process/Attribute/Hide All Data %3")]
 		public static void HideAttributeData(){
 			PlayerPrefs.SetInt("ShowAttributeData",0);
-			AttributeManager.refresh = true;
+			AttributeManager.PerformRefresh();
 		}
 		[MenuItem("Zios/Process/Attribute/Show All Data %2")]
 		public static void ShowAttributeData(){
 			PlayerPrefs.SetInt("ShowAttributeData",1);
-			AttributeManager.refresh = true;
+			AttributeManager.PerformRefresh();
 		}
 		[ContextMenu("Refresh")]
 		public void ContextRefresh(){
@@ -91,20 +90,20 @@ namespace Zios{
 			if(AttributeManager.nextRefresh > 0 && Time.realtimeSinceStartup > AttributeManager.nextRefresh){
 				if(this.debugMode){Utility.EditorLog("[AttributeManager] Refreshing...");}
 				Locate.SetDirty();
+				this.stage = 1;
+				this.nextIndex = 0;
 				Attribute.ready = false;
-				AttributeManager.refresh = true;
 				AttributeManager.nextRefresh = 0;
 			}
 			if(this.editorRefreshPasses < 1){
-				if(AttributeManager.refresh || !Attribute.ready){
+				if(!Attribute.ready){
 					this.SceneRefresh();
-					AttributeManager.refresh = false;
 					this.stage = 1;
 					if(this.debugMode){Utility.EditorLog("[AttributeManager] Stage 1 (Awake) start...");}
 					while(this.stage != 0){this.Process();}
 				}
 			}
-			else{
+			else if(this.stage != 0){
 				for(int index=1;index<=this.editorRefreshPasses;++index){
 					Utility.EditorDelayCall(this.Process);
 				}
@@ -152,11 +151,6 @@ namespace Zios{
 			}
 			else if(this.debugMode){Utility.EditorLog("[AttributeManager] Stage 1 (Awake) index " + this.nextIndex + " was null.");}
 			this.nextIndex += 1;
-			if(AttributeManager.refresh){
-				if(this.debugMode){Utility.EditorLog("[AttributeManager] Resetting process due to refresh during Awake.");}
-				this.stage = 0;
-				this.nextIndex = 0;
-			}
 		}
 		public void StepBuildLookup(){
 			if(this.nextIndex > Attribute.all.Count-1){

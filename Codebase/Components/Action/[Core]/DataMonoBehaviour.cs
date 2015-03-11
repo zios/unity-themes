@@ -28,7 +28,7 @@ namespace Zios{
 		    this.alias = this.alias.SetDefault(name);
 	    }
 	    public virtual void OnDestroy(){
-		    AttributeManager.refresh = true;
+		    AttributeManager.PerformRefresh();
 	    }
 	    public void AddDependent<Type>() where Type : Component{this.AddDependent<Type>(this.gameObject,true);}
 	    public void AddDependent<Type>(GameObject target,bool self=false) where Type : Component{
