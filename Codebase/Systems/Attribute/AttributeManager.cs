@@ -16,13 +16,11 @@ namespace Zios{
 		public static float percentLoaded;
 		public static bool refresh;
 		public static bool safe = true;
-		public static bool preDrawn = true;
 		public static bool debug = false;
 		public int editorRefreshPasses = -1;
 		public bool editorIncludeDisabled = true;
 		public bool refreshOnHierarchyChange = false;
 		public bool refreshOnAssetChange = false;
-		public bool preDraw = true;
 		public bool safeMode = true;
 		public bool debugMode = true;
 		private float start;
@@ -90,7 +88,6 @@ namespace Zios{
 		public void Start(){
 			AttributeManager.safe = this.safeMode;
 			AttributeManager.debug = this.debugMode;
-			AttributeManager.preDrawn = this.preDraw;
 			if(AttributeManager.nextRefresh > 0 && Time.realtimeSinceStartup > AttributeManager.nextRefresh){
 				if(this.debugMode){Utility.EditorLog("[AttributeManager] Refreshing...");}
 				Locate.SetDirty();

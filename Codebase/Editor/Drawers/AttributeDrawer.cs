@@ -20,7 +20,6 @@ namespace Zios{
 		}
 		public override float GetPropertyHeight(SerializedProperty property,GUIContent label){
 			if(this.overallHeight == 0){this.overallHeight = base.GetPropertyHeight(property,label);}
-			if(AttributeManager.preDrawn){this.OnGUI(new Rect(-10000,-10000,0,0),property,label);}
 			return this.overallHeight;
 		}
 		public override void OnGUI(Rect area,SerializedProperty property,GUIContent label){
@@ -51,7 +50,7 @@ namespace Zios{
 			this.overallHeight = this.GetBaseHeight(property,label);
 			if(!Attribute.ready && AttributeManager.safe){
 				EditorGUI.ProgressBar(area,AttributeManager.percentLoaded,"Updating");
-				Utility.SetDirty(property.serializedObject.targetObject);
+				//Utility.SetDirty(property.serializedObject.targetObject);
 				return;
 			}
 			if(this.access == null){
@@ -112,7 +111,6 @@ namespace Zios{
 			this.Draw();
 			EditorGUI.EndProperty();
 			if(GUI.changed || Application.isPlaying){
-				property.serializedObject.Update();
 				property.serializedObject.ApplyModifiedProperties();
 				//EditorUtility.SetDirty(sources[0]);
 			}
@@ -424,10 +422,11 @@ namespace Zios{
 			}
 		}
 		public virtual void ForceUpdate(){
-			SerializedProperty forceUpdate = property.FindPropertyRelative("info").FindPropertyRelative("path");
+			SerializedProperty forceUpdate = this.property.FindPropertyRelative("info").FindPropertyRelative("path");
 			string path = forceUpdate.stringValue;
 			forceUpdate.stringValue = "";
 			forceUpdate.stringValue = path;
+			this.property.serializedObject.Update();
 			Utility.RepaintInspectors();
 		}
 	}
