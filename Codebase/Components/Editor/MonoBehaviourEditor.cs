@@ -23,23 +23,26 @@ namespace Zios{
 			this.Setup();
 			foreach(var property in this.properties){
 				if(!this.hidden.Contains(property)){
-					if(this.area.ContainsKey(property) && Event.current.shift){
-						bool canHide = (this.properties.Count - this.hidden.Count) > 1;
-						if(this.area[property].Clicked(0) && canHide){
-							//Undo.RecordObject(this.serializedObject.targetObject,"Hide " + property.propertyPath);
-							string path = "InspectorPropertyHide-"+this.target.GetInstanceID()+"-"+property.propertyPath;
-							EditorPrefs.SetBool(path,true);
-							this.hidden.Add(property);
+					if(this.area.ContainsKey(property)){
+						if(Event.current.shift){
+							bool canHide = (this.properties.Count - this.hidden.Count) > 1;
+							if(this.area[property].Clicked(0) && canHide){
+								//Undo.RecordObject(this.serializedObject.targetObject,"Hide " + property.propertyPath);
+								string path = "InspectorPropertyHide-"+this.target.GetInstanceID()+"-"+property.propertyPath;
+								EditorPrefs.SetBool(path,true);
+								this.hidden.Add(property);
+							}
+							if(this.area[property].Clicked(1)){this.DrawHiddenMenu();}
 						}
-						if(this.area[property].Clicked(1)){this.DrawHiddenMenu();}
 					}
 					property.DrawLabeled();
 					Rect area = GUILayoutUtility.GetLastRect();
 					if(!area.IsEmpty()){this.area[property] = area;}
 				}
-			}
+			}		
 			if(GUI.changed){
-				this.serializedObject.ApplyModifiedProperties();
+				this.serializedObject.Update();
+				this.serializedObject.ApplyModifiedProperties();	
 			}
 	    }
 		public void Setup(){

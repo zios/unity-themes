@@ -5,7 +5,6 @@ namespace Zios{
     [CustomEditor(typeof(DataMonoBehaviour),true)][CanEditMultipleObjects]
     public class DataMonoBehaviourEditor : MonoBehaviourEditor{
 	    public float nextUpdateStep;
-	    public bool? isPrefab;
 	    public bool warningReady;
 	    public override void OnInspectorGUI(){
 			if(!Event.current.IsUseful()){return;}
@@ -25,23 +24,9 @@ namespace Zios{
 			    }
 		    }
 		    if(isData && PlayerPrefs.GetInt("ShowAttributeData") == 0){return;}
-		    if(this.isPrefab == null){
-			    MonoBehaviour script = (MonoBehaviour)this.target;
-			    this.isPrefab = script.IsPrefab();
-		    }
 		    GUI.changed = false;
 		    base.OnInspectorGUI();
-		    //if(!isData){Utility.EditorCall(this.EditorUpdate);}
 		    if(GUI.changed){Utility.SetDirty(target);}
 	    }
-	    /*public void EditorUpdate(){
-		    if(!(bool)this.isPrefab && Time.realtimeSinceStartup > this.nextUpdateStep){
-			    this.nextUpdateStep = Time.realtimeSinceStartup + AttributeManager.editorInterval;
-			    ((DataMonoBehaviour)this.target).Awake();
-			    if(target is StateMonoBehaviour){
-				    ((StateMonoBehaviour)this.target).inUse.Set(false);
-			    }
-		    }
-	    }*/
     }
 }

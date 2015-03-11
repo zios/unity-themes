@@ -33,6 +33,10 @@ namespace Zios{
 		    }
 			return Utility.inspectors;
 	    }
+	    public static void RepaintInspectors(){
+			Type inspectorType = Utility.GetEditorType("InspectorWindow");
+			inspectorType.CallMethod("RepaintAllInspectors");
+	    }
 	    public static Vector2 GetInspectorScrollPosition(this Rect current){
 			Type inspectorWindow = Utility.GetEditorType("InspectorWindow");
 			var window = EditorWindow.GetWindowWithRect(inspectorWindow,current);

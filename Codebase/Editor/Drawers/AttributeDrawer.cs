@@ -19,6 +19,7 @@ namespace Zios{
 			return base.GetPropertyHeight(property,label);
 		}
 		public override float GetPropertyHeight(SerializedProperty property,GUIContent label){
+			if(this.overallHeight == 0){this.overallHeight = base.GetPropertyHeight(property,label);}
 			if(AttributeManager.preDrawn){this.OnGUI(new Rect(-10000,-10000,0,0),property,label);}
 			return this.overallHeight;
 		}
@@ -111,8 +112,9 @@ namespace Zios{
 			this.Draw();
 			EditorGUI.EndProperty();
 			if(GUI.changed || Application.isPlaying){
+				property.serializedObject.Update();
 				property.serializedObject.ApplyModifiedProperties();
-				EditorUtility.SetDirty(sources[0]);
+				//EditorUtility.SetDirty(sources[0]);
 			}
 		}
 		public void SetupAreas(Rect area){
@@ -426,6 +428,7 @@ namespace Zios{
 			string path = forceUpdate.stringValue;
 			forceUpdate.stringValue = "";
 			forceUpdate.stringValue = path;
+			Utility.RepaintInspectors();
 		}
 	}
 }
