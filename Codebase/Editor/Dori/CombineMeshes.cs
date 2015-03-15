@@ -49,7 +49,9 @@ namespace Zios{
 	    static void StepLast(){
 		    int end = combine.index - combine.subIndex;
 		    List<CombineInstance> range = new List<CombineInstance>(combine.combines).GetRange(combine.subIndex,end);
-		    combine.meshes.Last().CombineMeshes(range.ToArray());
+			Mesh finalMesh = combine.meshes.Last();
+		    finalMesh.CombineMeshes(range.ToArray());
+			Unwrapping.GenerateSecondaryUVSet(finalMesh);
 	    }
 	    static void Step(){
 		    if(combine.complete){return;}

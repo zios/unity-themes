@@ -828,7 +828,7 @@ MonoBehaviour:
   refreshOnHierarchyChange: 1
   refreshOnAssetChange: 1
   safeMode: 1
-  debugMode: 1
+  debugMode: 0
 --- !u!114 &11400026
 MonoBehaviour:
   m_ObjectHideFlags: 1

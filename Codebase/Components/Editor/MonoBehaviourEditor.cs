@@ -10,7 +10,7 @@ namespace Zios{
     public class MonoBehaviourEditor : Editor{
 		public static Dictionary<Type,Dictionary<string,object>> defaults = new Dictionary<Type,Dictionary<string,object>>();
 		public static bool hideAllDefault;
-		public bool hideDefault;
+		public bool? hideDefault;
 		public bool setup;
 		public List<SerializedProperty> properties = new List<SerializedProperty>();
 		public List<SerializedProperty> hidden = new List<SerializedProperty>();
@@ -21,8 +21,23 @@ namespace Zios{
 			this.SortDefaults();
 			this.SortProperties();
 			this.Setup();
+			Type type = this.target.GetType();
 			foreach(var property in this.properties){
-				if(!this.hidden.Contains(property)){
+				bool isHidden = this.hidden.Contains(property);
+				bool hideDefault = this.hideDefault != null ? (bool)this.hideDefault : MonoBehaviourEditor.hideAllDefault;
+				if(hideDefault){
+					object defaultValue = MonoBehaviourEditor.defaults[type][property.name];
+					object currentValue = property.GetObject<object>();
+					if(currentValue is AttributeFloat){currentValue = ((AttributeFloat)currentValue).Get();}
+					if(currentValue is AttributeInt){currentValue = ((AttributeInt)currentValue).Get();}
+					if(currentValue is AttributeBool){currentValue = ((AttributeBool)currentValue).Get();}
+					if(currentValue is AttributeString){currentValue = ((AttributeString)currentValue).Get();}
+					if(currentValue is AttributeVector3){currentValue = ((AttributeVector3)currentValue).Get();}
+					if(currentValue is AttributeGameObject){currentValue = ((AttributeGameObject)currentValue).Get();}
+					bool isDefault = defaultValue.Equals(currentValue);
+					if(isDefault){isHidden = true;}
+				}
+				if(!isHidden){
 					if(this.area.ContainsKey(property)){
 						if(Event.current.shift){
 							bool canHide = (this.properties.Count - this.hidden.Count) > 1;
@@ -56,7 +71,36 @@ namespace Zios{
 			}
 		}
 		public void SortDefaults(){
-			
+			Type type = this.target.GetType();
+			var defaults = MonoBehaviourEditor.defaults;
+			if(!defaults.ContainsKey(type)){
+				defaults.AddNew(type);
+				var script = (MonoBehaviour)this.target;
+				var component = script.gameObject.AddComponent(type);
+				foreach(string name in component.ListVariables()){
+					/*try{
+						var behaviour = (DataMonoBehaviour)component;
+						behaviour.Awake();
+						defaults[type][name] = component.GetVariable(name);
+					}
+					catch{
+						try{defaults[type][name] = component.GetVariable(name);}
+						catch{}
+					}*/
+					try{
+						object defaultValue = component.GetVariable(name);
+						if(defaultValue is AttributeFloat){defaultValue = ((AttributeFloat)defaultValue).Get();}
+						if(defaultValue is AttributeInt){defaultValue = ((AttributeInt)defaultValue).Get();}
+						if(defaultValue is AttributeBool){defaultValue = ((AttributeBool)defaultValue).Get();}
+						if(defaultValue is AttributeString){defaultValue = ((AttributeString)defaultValue).Get();}
+						if(defaultValue is AttributeVector3){defaultValue = ((AttributeVector3)defaultValue).Get();}
+						if(defaultValue is AttributeGameObject){defaultValue = ((AttributeGameObject)defaultValue).Get();}
+						defaults[type][name] = defaultValue;
+					}
+					catch{}
+				}
+				Utility.Destroy(component);
+			}
 		}
 		public void SortProperties(){
 			if(this.properties.Count < 1){
@@ -71,9 +115,13 @@ namespace Zios{
 		public void DrawHiddenMenu(){
 			GenericMenu menu = new GenericMenu();
 			MenuFunction allDefaults = ()=>{MonoBehaviourEditor.hideAllDefault = !MonoBehaviourEditor.hideAllDefault;};
-			MenuFunction localDefaults = ()=>{this.hideDefault = !this.hideDefault;};
-			menu.AddItem(new GUIContent("Defaults/Show \u2044 Hide All"),false,allDefaults);
-			menu.AddItem(new GUIContent("Defaults/Show \u2044 Hide Local"),false,localDefaults);
+			MenuFunction localDefaults = ()=>{
+				if(this.hideDefault == null){this.hideDefault = true;}
+				else{this.hideDefault = !(bool)this.hideDefault;}
+			};
+			bool hideLocalDefault = this.hideDefault != null ? (bool)this.hideDefault : false;
+			menu.AddItem(new GUIContent("Defaults/Show \u2044 Hide All"),MonoBehaviourEditor.hideAllDefault,allDefaults);
+			menu.AddItem(new GUIContent("Defaults/Show \u2044 Hide Local"),hideLocalDefault,localDefaults);
 			if(this.hidden.Count > 0){
 				MenuFunction unhideAll = ()=>{this.hidden.Clear();};
 				menu.AddItem(new GUIContent("Unhide/All"),false,unhideAll);

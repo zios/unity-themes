@@ -2,5 +2,5 @@
 using Zios;
 namespace Zios.FPS{
     [AddComponentMenu("Zios/Component/Debug/Editor FPS")]
-    public class EditorFPS : DataMonoBehaviour{}
+    public class EditorFPS : MonoBehaviour{}
 }
