@@ -53,6 +53,7 @@ namespace Zios{
 			    bool usable = false;
 			    bool empty = true;
 			    StateMonoBehaviour script = row.target;
+				if(script.IsNull()){continue;}
 			    foreach(StateRowData requirements in row.requirements){
 				    foreach(StateRequirement requirement in requirements.data){
 					    bool noRequirements = !requirement.requireOn && !requirement.requireOff;
