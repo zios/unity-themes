@@ -9,6 +9,12 @@ namespace Zios{
 			if(!Event.current.IsUseful()){return;}
 		    if(Event.current.type == EventType.Layout){this.warningReady = false;}
 		    DataMonoBehaviour target = (DataMonoBehaviour)this.target;
+			string missing = "Attribute Manager does not exist in scene.  Attributes may not function correctly.";
+			if(AttributeManager.instance == null){
+				missing.DrawHelp("Warning");
+				Attribute.ready = true;
+			}
+			bool dirty = false;
 		    foreach(var item in target.warnings){
 			    if(Event.current.type == EventType.Layout){this.warningReady = true;}
 			    if(this.warningReady){
@@ -17,10 +23,14 @@ namespace Zios{
 				    message.DrawHelp("Warning");
 				    if(GUILayoutUtility.GetLastRect().Clicked(0)){
 					    method();
-					    Utility.SetDirty(target);
+						dirty = true;
 				    }
 			    }
 		    }
+			if(dirty){
+				target.Awake();
+				Utility.SetDirty(target);
+			}
 		    base.OnInspectorGUI();
 	    }
     }

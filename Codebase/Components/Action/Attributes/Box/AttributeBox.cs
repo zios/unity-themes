@@ -16,6 +16,7 @@ namespace Zios{
 	    public override void Reset(){this.Awake();}
 	    public override void Awake(){
 		    this.alias = this.alias.SetDefault("Attribute");
+			base.Awake();
 		    this.value.Setup("",this);
 		    if(this.remember){this.Load();}
 	    }

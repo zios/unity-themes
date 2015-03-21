@@ -12,8 +12,10 @@ using UnityEditor;
 namespace Zios{
 	[AddComponentMenu("Zios/Singleton/Attribute Manager")][ExecuteInEditMode]
 	public class AttributeManager : MonoBehaviour{
-		private static float nextRefresh;
+		public static float nextRefresh;
+		public static AttributeManager instance;
 		public static float percentLoaded;
+		public static bool disabled = false;
 		public static bool safe = true;
 		public static bool debug = false;
 		public int editorRefreshPasses = -1;
@@ -63,6 +65,7 @@ namespace Zios{
 		[MenuItem("Zios/Process/Attribute/Full Refresh %1")]
 		#endif
 		public static void PerformRefresh(){
+			if(AttributeManager.disabled){return;}
 			AttributeManager.nextRefresh = Time.realtimeSinceStartup + 1;
 		}
 		public void CleanEvents(){
@@ -85,6 +88,8 @@ namespace Zios{
 		// Main
 		//==============================
 		public void Start(){
+			if(AttributeManager.disabled){return;}
+			AttributeManager.instance = this;
 			AttributeManager.safe = this.safeMode;
 			AttributeManager.debug = this.debugMode;
 			if(AttributeManager.nextRefresh > 0 && Time.realtimeSinceStartup > AttributeManager.nextRefresh){
@@ -99,6 +104,7 @@ namespace Zios{
 				if(!Attribute.ready){
 					this.SceneRefresh();
 					this.stage = 1;
+					this.nextIndex = 0;
 					if(this.debugMode){Utility.EditorLog("[AttributeManager] Stage 1 (Awake) start...");}
 					while(this.stage != 0){this.Process();}
 				}
@@ -173,6 +179,7 @@ namespace Zios{
 				if(!Attribute.ready && this.debugMode){
 					Utility.EditorLog("[AttributeManager] Refresh Complete : " + (Time.realtimeSinceStartup - this.start) + " seconds.");
 					Utility.EditorLog("[AttributeManager] AttributeData Count : " + this.data.Count(x=>x is AttributeData));
+					Utility.RepaintInspectors();
 				}
 				Attribute.ready = true;
 				AttributeManager.percentLoaded = 1;

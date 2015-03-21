@@ -13,9 +13,11 @@ namespace Zios{
 		    base.Use();
 	    }
 	    public override void End(){
-		    this.stateLink.ready.Set(false);
-		    this.stateLink.End();
-		    base.End();
+			if(!this.stateLink.IsNull()){
+				this.stateLink.ready.Set(false);
+				this.stateLink.End();
+			}
+			base.End();
 	    }
     }
 }

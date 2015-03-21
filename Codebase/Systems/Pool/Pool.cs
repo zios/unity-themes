@@ -63,7 +63,7 @@ namespace Zios{
 				instance.gameObject.SetActive(true);
 				instance.free = false;
 			}
-			instance.gameObject.Call("Spawn");
+			instance.gameObject.CallEvent("Spawn");
 			return instance.gameObject;
 		}
 	}

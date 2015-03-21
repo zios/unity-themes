@@ -7,6 +7,7 @@ using UnityObject = UnityEngine.Object;
 namespace Zios{
     [AddComponentMenu("Zios/Component/Action/*/State Table")]
     public class StateTable : MonoBehaviour{
+		public static bool debug;
 	    public int total;
 	    public StateRow[] table = new StateRow[0];
 	    public StateRow[] tableOff = new StateRow[0];
@@ -97,7 +98,7 @@ namespace Zios{
 				    List<StateMonoBehaviour> entries = this.scripts.FindAll(x=>x.id==row.id);
 				    foreach(StateMonoBehaviour entry in entries.Skip(1)){
 					    bool hasName = !entry.alias.IsEmpty() && !row.name.IsEmpty();
-					    Debug.Log("[StateTable] Resolving duplicate ID [" + row.name + "]",(UnityObject)row.target);
+					    if(StateTable.debug){Debug.Log("[StateTable] Resolving duplicate ID [" + row.name + "]",(UnityObject)row.target);}
 					    if(hasName && this.scripts.FindAll(x=>x.alias==row.name).Count > 1){
 						    row.name = entry.alias = row.name + "2";
 					    }
@@ -169,9 +170,7 @@ namespace Zios{
 					    for(int requirementIndex=0;requirementIndex<rowData.data.Length;++requirementIndex){
 						    StateRequirement requirement = rowData.data[requirementIndex];
 						    if(!(requirement.requireOn || requirement.requireOff)){
-							    Debug.Log("before : " + rowData.data.Length);
 							    rowData.data = rowData.data.Remove(requirement);
-							    Debug.Log("after  : " + rowData.data.Length);
 							    requirementIndex -= 1;
 						    }
 					    }
@@ -200,7 +199,7 @@ namespace Zios{
 						    }
 					    }
 					    if(empty && !lastDataExists){
-						    Debug.Log("[StateTable] Removing empty alternate row in -- " + row.name,(UnityObject)row.target);
+						    if(StateTable.debug){Debug.Log("[StateTable] Removing empty alternate row in -- " + row.name,(UnityObject)row.target);}
 						    cleaned.Remove(rowData);
 					    }
 					    lastDataExists = !empty;
@@ -223,7 +222,7 @@ namespace Zios{
 					    List<StateRequirement> cleaned = new List<StateRequirement>(rowData.data);
 					    foreach(StateRequirement requirement in rowData.data){
 						    if(hidden.Contains(requirement.name)){
-							    Debug.Log("[StateTable] Removing non-requirable column  -- " + requirement.name,(UnityObject)requirement.target);
+							    if(StateTable.debug){Debug.Log("[StateTable] Removing non-requirable column  -- " + requirement.name,(UnityObject)requirement.target);}
 							    cleaned.Remove(requirement);
 						    }
 					    }
@@ -254,7 +253,7 @@ namespace Zios{
 			    if(match == null){
 				    items.Remove(item);
 				    string itemInfo = typeName + " -- " + item.name + " [" + item.id + "]";
-				    Debug.Log("[StateTable] Removing old " + itemInfo,this.gameObject);
+				    if(StateTable.debug){Debug.Log("[StateTable] Removing old " + itemInfo,this.gameObject);}
 			    }
 		    }
 	    }
@@ -264,7 +263,7 @@ namespace Zios{
 			    if(item.target == null){
 				    items.Remove(item);
 				    string itemInfo = typeName + " -- " + item.name + " [" + item.id + "]";
-				    Debug.Log("[StateTable] Removing null " + itemInfo,this.gameObject);
+				    if(StateTable.debug){Debug.Log("[StateTable] Removing null " + itemInfo,this.gameObject);}
 			    }
 		    }
 	    }
@@ -283,12 +282,12 @@ namespace Zios{
 				    item.Setup(name,script,this);
 				    items.Add(item);
 				    string itemInfo = typeName + " -- " + item.name + " [" + item.id + "]";
-				    Debug.Log("[StateTable] Creating " + itemInfo,this.gameObject);
+				    if(StateTable.debug){Debug.Log("[StateTable] Creating " + itemInfo,this.gameObject);}
 			    }
 			    else{
 				    item.name = name;
 				    item.target = script;
-				    //Debug.Log("[StateTable] Updating " + typeName + " -- " + item.name);
+				    //if(StateTable.debug){Debug.Log("[StateTable] Updating " + typeName + " -- " + item.name);}
 			    }
 		    }
 	    }

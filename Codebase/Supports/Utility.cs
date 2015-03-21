@@ -17,15 +17,22 @@ namespace Zios{
 		    }
 	    }
     }
+    [InitializeOnLoad]
     #else
 	    public delegate void CallbackFunction();
     #endif
     public static class Utility{
 	    #if UNITY_EDITOR
+		public static string editorScene;
 	    public static EditorWindow[] inspectors;
 	    public static CallbackFunction assetUpdate;
 	    public static List<CallbackFunction> hierarchyMethods = new List<CallbackFunction>();
 	    public static bool hierarchyPaused;
+	    static Utility(){Utility.editorScene = EditorApplication.currentScene;}
+	    public static SerializedObject GetSerialized(UnityObject target){
+			Type type = typeof(SerializedObject);
+		    return type.CallMethod<SerializedObject>("LoadFromCache",target.GetInstanceID().AsBoxedArray());
+	    }
 	    public static EditorWindow[] GetInspectors(){
 		    if(Utility.inspectors == null){
 			    Type inspectorType = Utility.GetEditorType("InspectorWindow");
@@ -33,16 +40,18 @@ namespace Zios{
 		    }
 			return Utility.inspectors;
 	    }
-	    public static void RepaintInspectors(){
-			Type inspectorType = Utility.GetEditorType("InspectorWindow");
-			inspectorType.CallMethod("RepaintAllInspectors");
-	    }
 	    public static Vector2 GetInspectorScrollPosition(this Rect current){
 			Type inspectorWindow = Utility.GetEditorType("InspectorWindow");
 			var window = EditorWindow.GetWindowWithRect(inspectorWindow,current);
 			return window.GetVariable<Vector2>("m_ScrollPosition");
 	    }
 		#endif
+	    public static void RepaintInspectors(){
+		    #if UNITY_EDITOR
+			Type inspectorType = Utility.GetEditorType("InspectorWindow");
+			inspectorType.CallMethod("RepaintAllInspectors");
+			#endif
+	    }
 	    public static string AddRoot(this string current,Component parent){
 		    string prefix = parent.HasVariable("alias") ? parent.GetVariable<string>("alias") : parent.GetType().ToString();
 		    prefix = prefix.Split(".").Last();

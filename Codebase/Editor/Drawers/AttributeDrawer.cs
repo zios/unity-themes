@@ -110,9 +110,9 @@ namespace Zios{
 			EditorGUI.BeginProperty(area,label,property);
 			this.Draw();
 			EditorGUI.EndProperty();
-			if(GUI.changed || Application.isPlaying){
+			if(GUI.changed){
 				property.serializedObject.ApplyModifiedProperties();
-				//EditorUtility.SetDirty(sources[0]);
+				property.serializedObject.Update();
 			}
 		}
 		public void SetupAreas(Rect area){
@@ -341,6 +341,7 @@ namespace Zios{
 			this.DrawContext(data,index!=0,false);
 		}
 		public virtual void DrawAddMenu(){
+			this.contextOpen = true;
 			GenericMenu menu = new GenericMenu();
 			foreach(Type attributeType in this.attribute.GetFormulaTypes()){
 				string name = attributeType.Name.Strip("Attribute","Data");
@@ -417,17 +418,9 @@ namespace Zios{
 			}
 			if(this.contextOpen && Event.current.button == 0){
 				GUI.changed = true;
-				this.ForceUpdate();
+				Utility.RepaintInspectors();
 				this.contextOpen = false;
 			}
-		}
-		public virtual void ForceUpdate(){
-			SerializedProperty forceUpdate = this.property.FindPropertyRelative("info").FindPropertyRelative("path");
-			string path = forceUpdate.stringValue;
-			forceUpdate.stringValue = "";
-			forceUpdate.stringValue = path;
-			this.property.serializedObject.Update();
-			Utility.RepaintInspectors();
 		}
 	}
 }

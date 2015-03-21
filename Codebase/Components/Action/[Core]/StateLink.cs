@@ -8,10 +8,11 @@ namespace Zios{
 		[NonSerialized] public StateTable stateTable;
 		[NonSerialized] public GameObject owner;
 		public override void Awake(){
+			string name = this.transform.parent != null ? this.transform.parent.name : this.transform.name;
+			this.alias = this.alias.SetDefault(name);
 			base.Awake();
 			this.AddDependent<ActionReady>();
 			GameObject parent = this.gameObject.GetParent();
-			this.alias = this.gameObject.name;
 			this.stateTable = parent.IsNull() ? null : parent.GetComponentInParent<StateTable>(true);
 			this.owner = this.stateTable == null ? this.gameObject : this.stateTable.gameObject;
 			if(!this.stateTable.IsNull()){
@@ -36,14 +37,9 @@ namespace Zios{
 			if(this.usable && this.ready){this.Use();}
 			else if(!this.usable){this.End();}
 		}
-		public override void OnDestroy(){
-			if(!this.owner.IsNull()){
-				this.owner.Call("@Refresh");
-			}
-		}
 		public void OnDisable(){
-			this.gameObject.Call("Action Disabled");
-			this.gameObject.Call("@Update States");
+			this.gameObject.CallEvent("Action Disabled");
+			this.gameObject.CallEvent("@Update States");
 		}
 		public override void Use(){this.Toggle(true);}
 		public override void End(){this.Toggle(false);}
@@ -51,10 +47,10 @@ namespace Zios{
 			if(state != this.inUse){
 				string active = state ? "Start" : "End";
 				this.inUse.Set(state);
-				this.gameObject.Call("Action "+active);
-				this.owner.Call(this.alias+" "+active);
-				this.owner.Call("@Update States");
-				this.gameObject.Call("@Update States");
+				this.gameObject.CallEvent("Action "+active);
+				this.owner.CallEvent(this.alias+" "+active);
+				this.owner.CallEvent("@Update States");
+				this.gameObject.CallEvent("@Update States");
 			}
 		}
 	}

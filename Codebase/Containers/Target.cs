@@ -30,7 +30,7 @@ namespace Zios{
 			    this.PerformSearch();
 			    return this.searchObject;
 		    }
-		    if(result == null){
+		    if(result == null && Application.isPlaying){
 			    Debug.LogWarning("[Target] No target found for : " + this.parent.name);
 		    }
 		    return result;

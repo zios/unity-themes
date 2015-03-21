@@ -25,7 +25,7 @@ namespace Zios{
 	    public void ToggleRequire(){
 		    this.requirable.Set(!this.requirable);
 		    this.requirableOverride = !this.requirableOverride;
-		    this.gameObject.Call("@Refresh");
+		    this.gameObject.CallEvent("@Refresh");
 	    }
 	    public void DefaultAlias(string name){
 		    if(this.alias.IsEmpty()){

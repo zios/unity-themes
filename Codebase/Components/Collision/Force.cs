@@ -30,9 +30,9 @@ namespace Zios{
 			    Vector3 resistence = Vector3.Scale(this.velocity.Get().Sign(),this.resistence);
 			    this.velocity.Set(this.velocity - resistence * this.deltaTime);
 			    this.velocity.Set(this.velocity.Get().Clamp(this.terminalVelocity.Get()*-1,this.terminalVelocity));
-			    this.gameObject.Call("Add Move",new Vector3(this.velocity.x,0,0));
-			    this.gameObject.Call("Add Move",new Vector3(0,this.velocity.y,0));
-			    this.gameObject.Call("Add Move",new Vector3(0,0,this.velocity.z));
+			    this.gameObject.CallEvent("Add Move",new Vector3(this.velocity.x,0,0));
+			    this.gameObject.CallEvent("Add Move",new Vector3(0,this.velocity.y,0));
+			    this.gameObject.CallEvent("Add Move",new Vector3(0,0,this.velocity.z));
 		    }
 	    }
 	    public void AddForce(Vector3 force){
@@ -52,7 +52,7 @@ namespace Zios{
 				    Vector3 impact = (this.velocity - original);
 				    float impactStrength = impact.magnitude;
 				    if(impactStrength > this.minimumImpactVelocity){
-					    this.gameObject.Call("On Impact",impact);
+					    this.gameObject.CallEvent("On Impact",impact);
 				    }
 			    }
 		    }

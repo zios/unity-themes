@@ -60,6 +60,7 @@ namespace Zios{
 		    foreach(Type current in all){
 			    if(current.IsNull()){continue;}
 			    if(current.IsPrefab()){continue;}
+				if(current.gameObject.IsNull()){continue;}
 			    if(current.gameObject.transform.parent == null){rootObjects.Add(current.gameObject);}
 			    if(current.gameObject.activeInHierarchy){enabled.Add(current);}
 			    else{disabled.Add(current);}
@@ -79,9 +80,11 @@ namespace Zios{
 		    }
 	    }
 	    public static GameObject[] GetByName(string name){
+			if(Application.isLoadingLevel){return new GameObject[0];}
 		    if(!Locate.cleanGameObjects){Locate.Build<Transform>();}
 		    List<GameObject> matches = new List<GameObject>();
 		    foreach(GameObject current in Locate.enabledObjects){
+				if(current.IsNull()){continue;}
 			    if(current.name == name){
 				    matches.Add(current);
 			    }
@@ -89,13 +92,16 @@ namespace Zios{
 		    return matches.ToArray();
 	    }
 	    public static bool HasDuplicate(GameObject target){
+			if(Application.isLoadingLevel){return false;}
 		    GameObject[] siblings = target.GetSiblings(true,true,false);
 		    foreach(GameObject current in siblings){
+				if(current.IsNull()){continue;}
 			    if(current.name == target.name){return true;}
 		    }
 		    return false;
 	    }
 	    public static GameObject[] GetSiblings(this GameObject current,bool includeEnabled=true,bool includeDisabled=true,bool includeSelf=true){
+			if(Application.isLoadingLevel){return new GameObject[0];}
 		    if(!Locate.cleanSiblings.Contains(current)){
 			    GameObject parent = current.GetParent();
 			    List<GameObject> siblings;
@@ -119,18 +125,21 @@ namespace Zios{
 		    return results;
 	    }
 	    public static GameObject[] GetSceneObjects(bool includeEnabled=true,bool includeDisabled=true){
+			if(Application.isLoadingLevel){return new GameObject[0];}
 		    if(!Locate.cleanGameObjects){Locate.Build<Transform>();}
 		    if(includeEnabled && includeDisabled){return Locate.sceneObjects;}
 		    if(!includeEnabled){return Locate.disabledObjects;}
 		    return Locate.enabledObjects;
 	    }
 	    public static Type[] GetSceneComponents<Type>(bool includeEnabled=true,bool includeDisabled=true) where Type : Component{
+			if(Application.isLoadingLevel){return new Type[0];}
 		    if(!Locate.cleanSceneComponents.Contains(typeof(Type))){Locate.Build<Type>();}
 		    if(includeEnabled && includeDisabled){return (Type[])Locate.sceneComponents[typeof(Type)];}
 		    if(!includeEnabled){return (Type[])Locate.disabledComponents[typeof(Type)];}
 		    return (Type[])Locate.enabledComponents[typeof(Type)];
 	    }
 	    public static Type[] GetObjectComponents<Type>(GameObject target) where Type : Component{
+			if(Application.isLoadingLevel){return new Type[0];}
 		    if(!Locate.objectComponents.ContainsKey(target) || !Locate.objectComponents[target].ContainsKey(typeof(Type))){
 			    Locate.objectComponents.AddNew(target);
 			    Locate.objectComponents[target][typeof(Type)] = target.GetComponents<Type>(true);
@@ -138,11 +147,13 @@ namespace Zios{
 		    return (Type[])Locate.objectComponents[target][typeof(Type)];
 	    }
 	    public static GameObject Find(string name,bool includeHidden=true){
+			if(Application.isLoadingLevel){return null;}
 		    if(!Locate.cleanGameObjects){Locate.Build<Transform>();}
 		    if(!name.Contains("/")){return GameObject.Find(name);}
 		    GameObject[] all;
 		    all = includeHidden ? Locate.sceneObjects : Locate.enabledObjects;
 		    foreach(GameObject current in all){
+				if(current.IsNull()){continue;}
 			    string path = current.GetPath();
 			    if(path == name || path.Trim("/") == name || path.TrimLeft("/") == name || path.TrimRight("/") == name){
 				    return current;

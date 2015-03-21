@@ -44,13 +44,16 @@ namespace Zios{
 			}
 		}
 		public override void OnDestroy(){
-			if(!this.gameObject.IsNull()){
-				this.gameObject.Call("@Refresh");
+			if(!Utility.IsPlaying()){
+				base.OnDestroy();
+				if(!this.gameObject.IsNull()){
+					this.gameObject.CallEvent("@Refresh");
+				}
 			}
 		}
 		public virtual void OnDisable(){
 			if(!this.gameObject.activeInHierarchy || !this.enabled){
-				this.gameObject.Call(this.alias+"/Disabled");
+				this.gameObject.CallEvent(this.alias+"/Disabled");
 				if(this.actionTable==null){this.End();}
 			}
 		}
@@ -77,7 +80,7 @@ namespace Zios{
 			this.inUse.Set(state);
 			this.used.Set(state);
 			string active = state ? "/Started" : "/Ended";
-			this.gameObject.Call(this.alias+active);
+			this.gameObject.CallEvent(this.alias+active);
 		}
 	}
 }

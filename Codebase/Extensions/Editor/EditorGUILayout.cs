@@ -75,7 +75,10 @@ namespace Zios{
 		    return EditorGUIExtension.Draw<int>(()=>EditorGUILayout.IntSlider(current,min,max),indention);
 	    }
 	    public static GameObject DrawObject(this GameObject current,bool allowScene=true,bool indention=false){
-		    return (GameObject)EditorGUIExtension.Draw<UnityObject>(()=>EditorGUILayout.ObjectField(current,typeof(GameObject),allowScene),indention);
+		    return (GameObject)EditorGUIExtension.Draw<UnityObject>(()=>EditorGUILayout.ObjectField(current,current.GetType(),allowScene),indention);
+	    }
+	    public static Component DrawObject(this Component current,bool allowScene=true,bool indention=false){
+		    return (Component)EditorGUIExtension.Draw<UnityObject>(()=>EditorGUILayout.ObjectField(current,current.GetType(),allowScene),indention);
 	    }
 	    public static Enum DrawMask(this Enum current,GUIStyle style=null,bool indention=false){
 		    style = style ?? EditorStyles.popup;
@@ -125,7 +128,10 @@ namespace Zios{
 		    EditorGUIExtension.Draw(action);
 	    }
 	    public static GameObject DrawLabeledObject(this GameObject current,GUIContent label,bool allowScene=true,bool indention=false){
-		    return (GameObject)EditorGUIExtension.Draw<UnityObject>(()=>EditorGUILayout.ObjectField(label,current,typeof(GameObject),allowScene),indention);
+		    return (GameObject)EditorGUIExtension.Draw<UnityObject>(()=>EditorGUILayout.ObjectField(label,current,current.GetType(),allowScene),indention);
+	    }
+	    public static Component DrawLabeledObject(this Component current,GUIContent label,bool allowScene=true,bool indention=false){
+		    return (Component)EditorGUIExtension.Draw<UnityObject>(()=>EditorGUILayout.ObjectField(label,current,current.GetType(),allowScene),indention);
 	    }
     }
 }

@@ -140,7 +140,7 @@ namespace Zios{
 			    if(!this.frameCollisions.ContainsKey(existing)){
 				    CollisionData data = this.collisions[existing];
 				    if(Time.time > data.endTime){
-					    existing.Call("CollisionEnd",data);
+					    existing.CallEvent("CollisionEnd",data);
 					    this.collisions.Remove(existing);
 				    }
 			    }
@@ -148,7 +148,7 @@ namespace Zios{
 		    foreach(var collision in this.frameCollisions){
 			    if(!this.collisions.ContainsKey(collision.Key)){
 				    this.collisions[collision.Key] = collision.Value;
-				    collision.Key.Call("CollisionStart",collision.Value);
+				    collision.Key.CallEvent("CollisionStart",collision.Value);
 			    }
 			    this.collisions[collision.Key].endTime = Time.time + this.collisionPersist;
 		    }
@@ -172,7 +172,7 @@ namespace Zios{
 		    if(contact){
 			    if(this.CheckStep(current)){return;}
 			    if(isTrigger){
-				    hit.transform.gameObject.Call("Trigger",this.GetComponent<Collider>());
+				    hit.transform.gameObject.CallEvent("Trigger",this.GetComponent<Collider>());
 				    return;
 			    }
 			    this.SetPosition(this.GetComponent<Rigidbody>().position + (direction * (hit.distance-this.hoverDistance*2)));
@@ -185,8 +185,8 @@ namespace Zios{
 			    if(direction.x > 0){this.blocked["right"] = true;}
 			    if(direction.x < 0){this.blocked["left"] = true;}
 			    GameObject hitObject = hit.transform.gameObject;
-			    hitObject.Call("Collision",otherCollision);
-			    this.gameObject.Call("Collision",selfCollision);
+			    hitObject.CallEvent("Collision",otherCollision);
+			    this.gameObject.CallEvent("Collision",selfCollision);
 			    if(!this.frameCollisions.ContainsKey(hitObject)){
 				    this.frameCollisions[hitObject] = otherCollision;
 			    }

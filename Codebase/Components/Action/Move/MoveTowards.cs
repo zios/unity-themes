@@ -23,9 +23,9 @@ namespace Zios{
 		    if(!target.IsNull()){
 			    Vector3 current = this.travel.Step(target.transform.position,this.goal);	
 			    Vector3 amount = current-target.transform.position;
-			    target.Call("Add Move Raw",new Vector3(amount.x,0,0));
-			    target.Call("Add Move Raw",new Vector3(0,amount.y,0));
-			    target.Call("Add Move Raw",new Vector3(0,0,amount.z));
+			    target.CallEvent("Add Move Raw",new Vector3(amount.x,0,0));
+			    target.CallEvent("Add Move Raw",new Vector3(0,amount.y,0));
+			    target.CallEvent("Add Move Raw",new Vector3(0,0,amount.z));
 		    }
 	    }
     }

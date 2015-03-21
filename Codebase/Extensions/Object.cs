@@ -39,7 +39,7 @@ namespace Zios{
 		    return current.CallMethod<object>(name,parameters);
 	    }
 	    public static V CallMethod<V>(this object current,string name,object[] parameters=null){
-		    if(current.IsStatic()){
+		    if(current.IsStatic() || current is Type){
 			    return (V)current.GetMethod(name,allFlags).Invoke(null,parameters);
 		    }
 		    return (V)current.GetMethod(name,allFlags).Invoke(current,parameters);

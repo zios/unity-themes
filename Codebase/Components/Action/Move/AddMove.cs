@@ -22,7 +22,7 @@ namespace Zios{
 			    amount += transform.up * this.amount.y;
 			    amount += transform.forward * this.amount.z;
 		    }
-		    this.target.Get().Call("Add Move",amount);
+		    this.target.Get().CallEvent("Add Move",amount);
 	    }
     }
 }

@@ -104,6 +104,7 @@ namespace Zios{
 			AttributeData data = this.info.parent.gameObject.AddComponent<Type>();
 			data.hideFlags = HideFlags.HideInInspector;
 			data.attribute = this.info;
+			data.Setup();
 			if(index == -1){index = dataArray.Length;}
 			if(index > dataArray.Length-1){
 				dataArray = dataArray.Resize(index+1);
@@ -153,7 +154,7 @@ namespace Zios{
 		public override void Setup(string path,Component parent){
 			if(parent.IsNull()){return;}
 			this.info.dataType = typeof(DataType);
-			if(!Application.isPlaying){
+			if(!Application.isPlaying){	
 				string previousID = this.info.id;
 				this.BuildInfo(path,parent);
 				this.FixDuplicates();
@@ -304,15 +305,13 @@ namespace Zios{
 			AttributeData[] dataSet = this.info.data;
 			if(set == "B"){dataSet = this.info.dataB;}
 			if(set == "C"){dataSet = this.info.dataC;}
-			for(int index=0;index<dataSet.Length;++index){
-				AttributeData data = dataSet[index];
-				bool destroy = false;
+			List<AttributeData> corrupt = new List<AttributeData>();
+			foreach(var data in dataSet){
 				if(data.IsNull()){
 					if(AttributeManager.debug){Debug.Log("[Attribute] Removing null attribute data in " + this.info.path + ".");}
-					destroy = true;
+					corrupt.Add(data);
 				}
 				else{
-					//if(data.attribute.parent.IsNull() || data.attribute.parent.gameObject.IsNull()){continue;}
 					bool kidnapped = data.attribute.parent.gameObject != data.gameObject;
 					bool amnesia = data.attribute.IsNull();
 					bool orphanned = data.attribute.parent.IsNull();
@@ -322,16 +321,17 @@ namespace Zios{
 							if(orphanned){Debug.LogWarning("[Attribute] Data was orphanned.  What a travesty! : " + data.referencePath);}
 							if(amnesia){Debug.LogWarning("[Attribute] Data has amnesia.  Who am I?! : " + data.referencePath);}
 						}
-						destroy = true;
+						corrupt.Add(data);
 					}
 				}
-				if(destroy && index < dataSet.Length){
-					if(set == "A"){this.info.data = this.info.data.RemoveAt(index);}
-					if(set == "B"){this.info.dataB = this.info.dataB.RemoveAt(index);}
-					if(set == "C"){this.info.dataC = this.info.dataC.RemoveAt(index);}
-					index -= 1;
-					Utility.SetDirty(this.info.parent);
+			}
+			if(corrupt.Count > 0){
+				foreach(var data in corrupt){
+					if(set == "A"){this.info.data = this.info.data.Remove(data);}
+					if(set == "B"){this.info.dataB = this.info.dataB.Remove(data);}
+					if(set == "C"){this.info.dataC = this.info.dataC.Remove(data);}
 				}
+				Utility.SetDirty(this.info.parent);
 			}
 		}
 		public virtual void UpdateData(AttributeData[] dataSet){
@@ -340,6 +340,7 @@ namespace Zios{
 				data.attribute = this.info;
 				data.path = this.info.path + "/" + index;
 				data.hideFlags = PlayerPrefs.GetInt("ShowAttributeData") == 1 ? 0 : HideFlags.HideInInspector;
+				data.Setup();
 				if(data.usage == AttributeUsage.Direct){continue;}
 				data.target.Setup(this.info.path+"/Target",this.info.parent);
 				data.target.DefaultSearch("[This]");

@@ -19,15 +19,15 @@ namespace Zios{
 	    public override void Use(){
 		    base.Use();
 		    string name = this.animationName.Get();
-		    this.target.Get().Call("Set Animation Speed",name,this.speed.Get());
-            this.target.Get().Call("Set Animation Weight", name, this.weight.Get());
-            this.target.Get().Call("Play Animation", name);
+		    this.target.Get().CallEvent("Set Animation Speed",name,this.speed.Get());
+            this.target.Get().CallEvent("Set Animation Weight", name, this.weight.Get());
+            this.target.Get().CallEvent("Play Animation", name);
 	    }
 	    public override void End(){
 		    base.End();
 		    GameObject target = this.target.Get();
 		    if(!target.IsNull()){
-			    target.Call("Stop Animation",this.animationName.Get());
+			    target.CallEvent("Stop Animation",this.animationName.Get());
 		    }
 	    }
     }

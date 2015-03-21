@@ -9,6 +9,7 @@ namespace Zios{
     [CustomEditor(typeof(MonoBehaviour),true)][CanEditMultipleObjects]
     public class MonoBehaviourEditor : Editor{
 		public static Dictionary<Type,Dictionary<string,object>> defaults = new Dictionary<Type,Dictionary<string,object>>();
+		public static float resumeHierarchyTime;
 		public static bool hideAllDefault;
 		public bool? hideDefault;
 		public bool setup;
@@ -16,12 +17,16 @@ namespace Zios{
 		public List<SerializedProperty> hidden = new List<SerializedProperty>();
 		public Dictionary<SerializedProperty,Rect> area = new Dictionary<SerializedProperty,Rect>();
 	    public override void OnInspectorGUI(){
-			//this.DrawDefaultInspector();
+			if(Application.isPlaying){
+				this.DrawDefaultInspector();
+				return;
+			}
 			if(!Event.current.IsUseful()){return;}
 			this.SortDefaults();
 			this.SortProperties();
 			this.Setup();
 			Type type = this.target.GetType();
+			GUI.changed = false;
 			foreach(var property in this.properties){
 				bool isHidden = this.hidden.Contains(property);
 				bool hideDefault = this.hideDefault != null ? (bool)this.hideDefault : MonoBehaviourEditor.hideAllDefault;
@@ -56,7 +61,8 @@ namespace Zios{
 				}
 			}		
 			if(GUI.changed){
-				this.serializedObject.ApplyModifiedProperties();	
+				this.serializedObject.ApplyModifiedProperties();
+				this.serializedObject.Update();
 			}
 	    }
 		public void Setup(){
@@ -71,9 +77,13 @@ namespace Zios{
 			}
 		}
 		public void SortDefaults(){
+			bool debugState = AttributeManager.debug;
 			Type type = this.target.GetType();
 			var defaults = MonoBehaviourEditor.defaults;
 			if(!defaults.ContainsKey(type)){
+				AttributeManager.debug = false;
+				AttributeManager.disabled = true;
+				Utility.PauseHierarchyUpdates();
 				defaults.AddNew(type);
 				var script = (MonoBehaviour)this.target;
 				var component = script.gameObject.AddComponent(type);
@@ -100,6 +110,12 @@ namespace Zios{
 					catch{}
 				}
 				Utility.Destroy(component);
+				AttributeManager.debug = debugState;
+				AttributeManager.disabled = false;
+				MonoBehaviourEditor.resumeHierarchyTime = Time.realtimeSinceStartup + 0.5f;
+			}
+			else if(Time.realtimeSinceStartup > MonoBehaviourEditor.resumeHierarchyTime){
+				Utility.ResumeHierarchyUpdates();
 			}
 		}
 		public void SortProperties(){

@@ -3,26 +3,28 @@ using System;
 using System.Linq;
 using System.Reflection;
 using System.Collections.Generic;
+using UnityObject = UnityEngine.Object;
 #if UNITY_EDITOR 
 using UnityEditor;
 #endif
 namespace Zios{
     public static class Events{
+		public static bool debug;
 	    public static GameObject all = new GameObject("All Events");
 	    public static GameObject global = new GameObject("Global Events");
 	    public static List<string> warned = new List<string>();
-	    public static Dictionary<GameObject,Dictionary<string,List<object>>> listeners = new Dictionary<GameObject,Dictionary<string,List<object>>>();
-	    public static Dictionary<GameObject,List<string>> callers = new Dictionary<GameObject,List<string>>();
-	    public static Dictionary<GameObject,float> lastRegister = new Dictionary<GameObject,float>();
+	    public static Dictionary<UnityObject,Dictionary<string,List<object>>> listeners = new Dictionary<UnityObject,Dictionary<string,List<object>>>();
+	    public static Dictionary<UnityObject,List<string>> callers = new Dictionary<UnityObject,List<string>>();
+	    public static Dictionary<UnityObject,float> lastRegister = new Dictionary<UnityObject,float>();
 	    static Events(){
 		    Events.all.hideFlags = HideFlags.HideAndDontSave;
 		    Events.global.hideFlags = HideFlags.HideAndDontSave;
 	    }
 	    public static void Empty(){}
 	    public static void Register(string name){Events.Register(name,Events.global);}
-	    public static void Register(string name,params GameObject[] targets){
+	    public static void Register(string name,params UnityObject[] targets){
 		    targets = targets.Add(Events.all);
-		    foreach(GameObject target in targets){
+		    foreach(UnityObject target in targets){
 			    Events.lastRegister.AddNew(target);
 			    if(Time.realtimeSinceStartup > Events.lastRegister[target]){
 				    Events.callers[target] = new List<string>();
@@ -32,17 +34,17 @@ namespace Zios{
 			    if(!Events.callers[target].Contains(name)){Events.callers[target].Add(name);}
 		    }
 	    }
-	    public static void Add(string name,Method method,params GameObject[] targets){Events.Add(name,(object)method,targets);}
-	    public static void Add(string name,MethodObject method,params GameObject[] targets){Events.Add(name,(object)method,targets);}
-	    public static void Add(string name,MethodFull method,params GameObject[] targets){Events.Add(name,(object)method,targets);}
-	    public static void Add(string name,MethodString method,params GameObject[] targets){Events.Add(name,(object)method,targets);}
-	    public static void Add(string name,MethodInt method,params GameObject[] targets){Events.Add(name,(object)method,targets);}
-	    public static void Add(string name,MethodFloat method,params GameObject[] targets){Events.Add(name,(object)method,targets);}
-	    public static void Add(string name,MethodBool method,params GameObject[] targets){Events.Add(name,(object)method,targets);}
-	    public static void Add(string name,MethodVector2 method,params GameObject[] targets){Events.Add(name,(object)method,targets);}
-	    public static void Add(string name,MethodVector3 method,params GameObject[] targets){Events.Add(name,(object)method,targets);}
-	    public static void AddScope(string name,object method,GameObject target){
-		    Utility.EditorCall(()=>Events.Clean(name,target,method));
+	    public static void Add(string name,Method method,params UnityObject[] targets){Events.Add(name,(object)method,targets);}
+	    public static void Add(string name,MethodObject method,params UnityObject[] targets){Events.Add(name,(object)method,targets);}
+	    public static void Add(string name,MethodFull method,params UnityObject[] targets){Events.Add(name,(object)method,targets);}
+	    public static void Add(string name,MethodString method,params UnityObject[] targets){Events.Add(name,(object)method,targets);}
+	    public static void Add(string name,MethodInt method,params UnityObject[] targets){Events.Add(name,(object)method,targets);}
+	    public static void Add(string name,MethodFloat method,params UnityObject[] targets){Events.Add(name,(object)method,targets);}
+	    public static void Add(string name,MethodBool method,params UnityObject[] targets){Events.Add(name,(object)method,targets);}
+	    public static void Add(string name,MethodVector2 method,params UnityObject[] targets){Events.Add(name,(object)method,targets);}
+	    public static void Add(string name,MethodVector3 method,params UnityObject[] targets){Events.Add(name,(object)method,targets);}
+	    public static void AddScope(string name,object method,UnityObject target){
+		    //Utility.EditorCall(()=>Events.Clean(name,target,method));
 		    if(!Events.listeners.ContainsKey(target)){
 			    Events.listeners[target] = new Dictionary<string,List<object>>();
 		    }
@@ -53,74 +55,76 @@ namespace Zios{
 			    Events.listeners[target][name].Add(method);
 		    }
 	    }
-	    public static void Add(string name,object method,params GameObject[] targets){
+	    public static void Add(string name,object method,params UnityObject[] targets){
 		    Events.AddScope(name,method,Events.all);
 		    if(targets.Contains(Events.global)){
+				if(Events.debug){Debug.Log("[EventManager] : Adding global event -- " + name + " -- " + method);}
 			    Events.AddScope(name,method,Events.global);
 			    return;
 		    }
-		    foreach(GameObject target in targets){
+		    foreach(UnityObject target in targets){
 			    if(target.IsNull()){continue;}
+				if(Events.debug){Debug.Log("[EventManager] : Adding target event -- " + target + " -- " + name + " -- " + method);}
 			    Events.AddScope(name,method,target);
 		    }
 		    object methodTarget = ((Delegate)method).Target;
 		    if(methodTarget != null){
-			    Type type = methodTarget.GetType();
-			    if(type.IsSubclassOf((typeof(MonoBehaviour)))){
-				    GameObject target = ((MonoBehaviour)methodTarget).gameObject;
+			    if(methodTarget is MonoBehaviour){ 
+				    UnityObject target = ((MonoBehaviour)methodTarget).gameObject;
+					if(Events.debug){Debug.Log("[EventManager] : Method is from a MonoBehaviour.  Auto-adding event to gameObject -- " + target);}
 				    Events.AddScope(name,method,target);
 			    }
 		    }
 	    }
-	    public static void Clean(string ignoreName="",GameObject target=null,object targetMethod=null){
+	    public static void Clean(string ignoreName="",UnityObject target=null,object targetMethod=null){
 		    foreach(var current in Events.listeners.Copy()){
-			    GameObject gameObject = current.Key;
-			    if(gameObject.IsNull()){
-				    Events.listeners.Remove(gameObject);
+			    UnityObject unityObject = current.Key;
+			    if(unityObject.IsNull()){
+				    Events.listeners.Remove(unityObject);
 				    continue;
 			    }
 			    foreach(var item in current.Value.Copy()){
 				    string eventName = item.Key;
 				    foreach(object method in item.Value.Copy()){
 					    //if(method.Equals((object)(Method)Events.Empty)){continue;}
-					    bool duplicate = eventName != ignoreName && target == gameObject && method.Equals(targetMethod);
+					    bool duplicate = eventName != ignoreName && target == unityObject && method.Equals(targetMethod);
 					    bool invalid = method == null || ((Delegate)method).Target.IsNull();
 					    if(duplicate || invalid){
 						    var copy = item.Value.Copy();
 						    copy.Remove(method);
 						    //string messageType = method == null ? "empty method" : "duplicate method";
-						    //Debug.Log("[Events] Removing " + messageType  + " from -- " + gameObject.name + "/" + eventName);
-						    Events.listeners[gameObject][eventName] = copy;
+						    //Debug.Log("[Events] Removing " + messageType  + " from -- " + unityObject.name + "/" + eventName);
+						    Events.listeners[unityObject][eventName] = copy;
 					    }
 				    }
-				    if(Events.listeners[gameObject][eventName].Count < 1){
-					    //Debug.Log("[Events] Removing empty method list -- " + gameObject.name + "/" + eventName);
-					    Events.listeners[gameObject].Remove(eventName);
+				    if(Events.listeners[unityObject][eventName].Count < 1){
+					    //Debug.Log("[Events] Removing empty method list -- " + unityObject.name + "/" + eventName);
+					    Events.listeners[unityObject].Remove(eventName);
 				    }
 			    }
 		    }
 		    foreach(var current in Events.callers.Copy()){
-			    GameObject gameObject = current.Key;
-			    if(gameObject.IsNull()){
-				    Events.callers.Remove(gameObject);
+			    UnityObject unityObject = current.Key;
+			    if(unityObject.IsNull()){
+				    Events.callers.Remove(unityObject);
 			    }
 		    }
 	    }
-	    public static bool HasEvents(string type,GameObject target=null){
+	    public static bool HasEvents(string type,UnityObject target=null){
 		    if(target.IsNull()){target = Events.global;}
 		    if(type.Contains("Listen",true)){
 			    return Events.listeners.ContainsKey(target);
 		    }
 		    return Events.callers.ContainsKey(target);
 	    }
-	    public static bool ContainsEvent(string type,string name,GameObject target=null){
+	    public static bool ContainsEvent(string type,string name,UnityObject target=null){
 		    if(target.IsNull()){target = Events.global;}
 		    if(type.Contains("Listen",true)){
 			    return Events.listeners.ContainsKey(target) && Events.listeners[target].ContainsKey(name);
 		    }
 		    return Events.callers.ContainsKey(target) && Events.callers[target].Contains(name);
 	    }
-	    public static List<string> GetEvents(string type,GameObject target=null){
+	    public static List<string> GetEvents(string type,UnityObject target=null){
 		    Utility.EditorCall(Events.Clean);
 		    if(target.IsNull()){target = Events.global;}
 		    if(type.Contains("Listen",true)){
@@ -166,16 +170,21 @@ namespace Zios{
 	    public static void Call(string name,params object[] values){
 		    Events.Call(Events.global,name,values);
 	    }
-	    public static void Call(GameObject target,string name,object[] values){
+	    public static void Call(UnityObject target,string name,object[] values){
 		    if(!Events.ValidTarget(name,target)){return;}
 		    List<object> invalid = new List<object>();
+			if(Events.debug){Debug.Log("[EventManager] : Calling event -- " + name + " on " + target);}
 		    if(Events.listeners.ContainsKey(target)){
+				if(Events.debug){Debug.Log("[EventManager] : Event target found -- " + target);}
 			    if(Events.listeners[target].ContainsKey(name)){
+					if(Events.debug){Debug.Log("[EventManager] : Event target name found -- " + name);}
 				    foreach(object callback in Events.listeners[target][name]){
-					    if(callback == null || ((Delegate)callback).Target.IsNull()){
+					    if(callback == null){
+							if(Events.debug){Debug.Log("[EventManager] : Invalid callback -- " + callback);}
 						    invalid.Add(callback);
 						    continue;
 					    }
+						if(Events.debug){Debug.Log("[EventManager] : Calling event -- " + callback);}
 					    Events.Handle(callback,values);
 				    }
 				    foreach(object entry in invalid){
@@ -185,45 +194,51 @@ namespace Zios{
 			    }
 		    }
 	    }
-	    public static void CallChildren(GameObject target,string name,object[] values,bool self=false){
+	    public static void CallChildren(UnityObject target,string name,object[] values,bool self=false){
 		    if(!Events.ValidTarget(name,target)){return;}
 		    if(self){Events.Call(target,name,values);}
-		    Transform[] children = target.GetComponentsInChildren<Transform>();
-		    foreach(Transform transform in children){
-			    if(transform.gameObject == target){continue;}
-			    Events.CallChildren(transform.gameObject,name,values,true);
-		    }
+			if(target is GameObject){
+				var gameObject = (GameObject)target;
+				Transform[] children = gameObject.GetComponentsInChildren<Transform>();
+				foreach(Transform transform in children){
+					if(transform.gameObject == gameObject){continue;}
+					Events.CallChildren(transform.gameObject,name,values,true);
+				}
+			}
 	    }
-	    public static void CallParents(GameObject target,string name,object[] values,bool self=false){
+	    public static void CallParents(UnityObject target,string name,object[] values,bool self=false){
 		    if(!Events.ValidTarget(name,target)){return;}
 		    if(self){Events.Call(target,name,values);}
-		    Transform parent = target.transform.parent;
-		    while(parent != null){
-			    Events.CallParents(parent.gameObject,name,values,true);
-			    parent = parent.parent;
-		    }
+			if(target is GameObject){
+				var gameObject = (GameObject)target;
+				Transform parent = gameObject.transform.parent;
+				while(parent != null){
+					Events.CallParents(parent.gameObject,name,values,true);
+					parent = parent.parent;
+				}
+			}
 	    }
-	    public static void CallFamily(GameObject target,string name,object[] values,bool self=false){
+	    public static void CallFamily(UnityObject target,string name,object[] values,bool self=false){
 		    if(!Events.ValidTarget(name,target)){return;}
 		    if(self){Events.Call(target,name,values);}
 		    Events.CallChildren(target,name,values);
 		    Events.CallParents(target,name,values);
 	    }
-	    public static bool ValidTarget(string name,GameObject target){
+	    public static bool ValidTarget(string name,UnityObject target){
 		    if(target.IsNull()){
 			    if(!Events.warned.Contains(name)){
-				    Debug.LogWarning("[Events] Call attempted on null gameObject -- " + name,target);
+				    Debug.LogWarning("[Events] Call attempted on null unityObject -- " + name,target);
 				    Events.warned.Add(name);
 			    }
 			    return false;
 		    }
 		    return true;
 	    }
-	    public static bool HasEvent(string name,GameObject target=null){
+	    public static bool HasEvent(string name,UnityObject target=null){
 		    if(target.IsNull()){target = Events.global;}
 		    return Events.listeners.ContainsKey(target) && Events.listeners[target].ContainsKey(name);
 	    }
-	    public static object GetEvent(string name,GameObject target=null){
+	    public static object GetEvent(string name,UnityObject target=null){
 		    if(target.IsNull()){target = Events.global;}
 		    if(Events.listeners.ContainsKey(target)){
 			    if(Events.listeners[target].ContainsKey(name)){
@@ -233,20 +248,23 @@ namespace Zios{
 		    return null;
 	    }
     }
-    public static class GameobjectListeners{
-	    public static void Register(this GameObject current,string name,params object[] values){
+    public static class UnityObjectListeners{
+	    public static void RegisterEvent(this UnityObject current,string name,params object[] values){
 		    Events.Register(name,current);
 	    }
-	    public static void Call(this GameObject current,string name,params object[] values){
+	    public static void AddEvent(this UnityObject current,string name,object method){
+		    Events.Add(name,method,current);
+	    }
+	    public static void CallEvent(this UnityObject current,string name,params object[] values){
 		    Events.Call(current,name,values);
 	    }
-	    public static void CallChildren(this GameObject current,string name,bool self=true,params object[] values){
+	    public static void CallEventChildren(this UnityObject current,string name,bool self=true,params object[] values){
 		    Events.CallChildren(current,name,values,self);
 	    }
-	    public static void CallParents(this GameObject current,string name,bool self=true,params object[] values){
+	    public static void CallEventParents(this UnityObject current,string name,bool self=true,params object[] values){
 		    Events.CallParents(current,name,values,self);
 	    }
-	    public static void CallFamily(this GameObject current,string name,bool self=true,params object[] values){
+	    public static void CallEventFamily(this UnityObject current,string name,bool self=true,params object[] values){
 		    Events.CallFamily(current,name,values,self);
 	    }
     }

@@ -11,8 +11,8 @@ namespace Zios{
 	    public override void Setup(string path,Component parent){
 		    base.Setup(path,parent);
 		    this.endProximity.Setup("End Proximity",parent);
-		    this.parent.gameObject.Register(this.path+"/Transition/End");
-		    this.parent.gameObject.Register(this.path+"/Transition/Start");
+		    this.parent.gameObject.RegisterEvent(this.path+"/Transition/End");
+		    this.parent.gameObject.RegisterEvent(this.path+"/Transition/Start");
 	    }
 	    public virtual Vector3 Step(Vector3 current){
 		    return this.Step(current,current);
@@ -24,7 +24,7 @@ namespace Zios{
 		    float distance = Vector3.Distance(start,end);
 		    if(distance <= this.endProximity){
 			    if(this.active){
-				    this.parent.gameObject.Call(this.path+"/Transition/End");
+				    this.parent.gameObject.CallEvent(this.path+"/Transition/End");
 				    this.active = false;
 			    }
 			    return start;
@@ -37,7 +37,7 @@ namespace Zios{
 		    }
 		    if(!this.active){
 			    this.transition.Reset();
-			    this.parent.gameObject.Call(this.path+"/Transition/Start");
+			    this.parent.gameObject.CallEvent(this.path+"/Transition/Start");
 			    this.lastStart = start;
 			    this.lastEnd = end;
 			    this.active = true;

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
+using UnityObject = UnityEngine.Object;
 using MenuFunction = UnityEditor.GenericMenu.MenuFunction;
 namespace Zios{
     public class StaticInspector : EditorWindow{
@@ -147,7 +148,7 @@ namespace Zios{
 		    }
 	    }
 	    public void DrawInspector(){
-			this.scrollPosition = GUI.BeginScrollView(new Rect(0,25,Screen.width,Screen.height),this.scrollPosition,this.viewArea);
+			this.scrollPosition = GUI.BeginScrollView(new Rect(0,25,Screen.width,Screen.height-45),this.scrollPosition,this.viewArea);
 		    if(this.activeClass != null && this.variables.Count < 1){
 			    List<string> names = this.activeClass.ListVariables(null,ObjectExtension.staticFlags);
 			    foreach(string name in names){
@@ -174,7 +175,7 @@ namespace Zios{
 			if(name.Contains("$cache")){return;}
 			GUIContent label = new GUIContent(name.ToTitle());
 			GUI.changed = false;
-			bool common = (value is string || value is bool || value is float || value is int || value is GameObject || value is Enum);
+			bool common = (value is string || value is bool || value is float || value is int || value is UnityObject || value is Enum);
 			if(common){label.DrawLabel(this.labelArea);}
 			int hash = 0;
 			if(!value.IsNull()){
@@ -183,6 +184,10 @@ namespace Zios{
 			}
 			if(value is GameObject){
 				GameObject newValue = ((GameObject)value).DrawObject(this.valueArea);
+				if(accessor != null && GUI.changed){accessor.Set(newValue);}
+			}
+			else if(value is Component){
+				Component newValue = ((Component)value).DrawObject(this.valueArea);
 				if(accessor != null && GUI.changed){accessor.Set(newValue);}
 			}
 			else if(value.IsNull()){return;}

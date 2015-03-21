@@ -21,7 +21,7 @@ namespace Zios{
 	    public void Call(){
 		    GameObject target = this.target.Get();
 		    if(Events.HasEvent(name,target)){
-			    target.Call(this.name);
+			    target.CallEvent(this.name);
 		    }
 	    }
     }

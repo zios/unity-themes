@@ -2,7 +2,7 @@
 using System;
 using UnityEngine;
 namespace Zios{	
-	[Serializable][AddComponentMenu("")]
+	[AddComponentMenu("")]
 	public class AttributeData : DataMonoBehaviour{
 		public Target target = new Target();
 		public AttributeUsage usage;
@@ -14,6 +14,24 @@ namespace Zios{
 		public int operation;
 		public int special;
 		[NonSerialized] public Attribute reference;
+		public void Setup(){
+			if(!this.attribute.IsNull() && !this.attribute.parent.IsNull()){
+				Method destroyMethod = ()=>{
+					bool exists = !this.IsNull() && !this.gameObject.IsNull();
+					if(exists){Utility.EditorDelayCall(()=>Utility.Destroy(this));}
+				};
+				this.attribute.parent.AddEvent("On Destroy",destroyMethod);
+				//Events.Add("On Destroy",destroyMethod,this.attribute.parent);
+			}
+		}
+		public override void OnDestroy(){
+			base.OnDestroy();
+			if(this.attribute != null){
+				this.attribute.data = this.attribute.data.Remove(this);
+				this.attribute.dataB = this.attribute.dataB.Remove(this);
+				this.attribute.dataC = this.attribute.dataC.Remove(this);
+			}
+		}
 		public virtual void Validate(){
 			if(this.attribute.IsNull()){this.Purge("Null Attribute");}
 			else if(this.attribute.parent.IsNull()){this.Purge("Null Parent");}
@@ -29,7 +47,6 @@ namespace Zios{
 		public virtual bool CanCache(){return true;}
 		public virtual AttributeData Copy(GameObject target){return default(AttributeData);}
 	}
-	[Serializable]
 	public class AttributeData<BaseType,AttributeType,DataType> : AttributeData
 		where DataType : AttributeData<BaseType,AttributeType,DataType>
 		where AttributeType : Attribute<BaseType,AttributeType,DataType>{

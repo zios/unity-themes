@@ -7,28 +7,35 @@ using System.Linq;
 using UnityEditor;
 #endif
 namespace Zios{
-    [Serializable][AddComponentMenu("")]
+    [AddComponentMenu("")][ExecuteInEditMode]
     public class DataMonoBehaviour : MonoBehaviour{
 	    public Dictionary<string,Method> warnings = new Dictionary<string,Method>();
 	    public static DataMonoBehaviour[] sorting;
 	    public static int processIndex;
 	    public string alias;
 		private string lastAlias;
+		private bool isAwake;
 	    public virtual void OnApplicationQuit(){this.Awake();}
 	    public virtual void Reset(){this.Awake();}
 	    public virtual void OnValidate(){
-			if(this.lastAlias != this.alias){
-				AttributeManager.PerformRefresh();
-				this.lastAlias = this.alias;
+			if(this.isAwake && !Utility.IsPlaying()){
+				if(this.lastAlias != this.alias || this.alias.IsEmpty()){
+					AttributeManager.PerformRefresh();
+					this.lastAlias = this.alias;
+					this.Awake();
+				}
 			}
 	    }
 	    public virtual void Awake(){
+			this.isAwake = true;
 		    this.warnings.Clear();
+			this.RegisterEvent("On Destroy");
 		    string name = this.GetType().Name.ToTitle().Replace("3 D","3D");
 		    this.alias = this.alias.SetDefault(name);
 	    }
 	    public virtual void OnDestroy(){
-		    AttributeManager.PerformRefresh();
+			this.CallEvent("On Destroy");
+			AttributeManager.PerformRefresh();
 	    }
 	    public void AddDependent<Type>() where Type : Component{this.AddDependent<Type>(this.gameObject,true);}
 	    public void AddDependent<Type>(GameObject target,bool self=false) where Type : Component{

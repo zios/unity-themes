@@ -233,6 +233,7 @@ namespace Zios{
 		    return null;
 	    }
 	    public static bool IsPrefab(this GameObject current){
+			if(current.IsNull()){return false;}
 		    if(current.hideFlags == HideFlags.NotEditable || current.hideFlags == HideFlags.HideAndDontSave){
 			    return true;
 		    }
