@@ -14,20 +14,17 @@ namespace Zios{
 	    public static int processIndex;
 	    public string alias;
 		private string lastAlias;
-		private bool isAwake;
 	    public virtual void OnApplicationQuit(){this.Awake();}
 	    public virtual void Reset(){this.Awake();}
 	    public virtual void OnValidate(){
-			if(this.isAwake && !Utility.IsPlaying()){
-				if(this.lastAlias != this.alias || this.alias.IsEmpty()){
-					AttributeManager.PerformRefresh();
-					this.lastAlias = this.alias;
-					this.Awake();
-				}
+			if(Utility.IsPlaying() || Application.isLoadingLevel){return;}
+			if(this.lastAlias != this.alias || this.alias.IsEmpty()){
+				AttributeManager.PerformRefresh();
+				this.lastAlias = this.alias;
+				this.Awake();
 			}
 	    }
 	    public virtual void Awake(){
-			this.isAwake = true;
 		    this.warnings.Clear();
 			this.RegisterEvent("On Destroy");
 		    string name = this.GetType().Name.ToTitle().Replace("3 D","3D");
