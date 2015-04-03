@@ -1,6 +1,9 @@
 ﻿Shader "Zios/ZEQ2/Triplanar Diffuse Map"{
 	Properties{
 		diffuseMap("Diffuse Map",2D) = "white"{}
+		[MaterialToggle] xHardBlend("X Hard Blend",Float) = 0
+		[MaterialToggle] yHardBlend("Y Hard Blend",Float) = 0
+		[MaterialToggle] zHardBlend("Z Hard Blend",Float) = 0
 	}
 	SubShader{
 		Pass{
@@ -12,6 +15,9 @@
 			#pragma fragmentoption ARB_precision_hint_fastest
 			sampler2D diffuseMap;
 			fixed4 diffuseMap_ST;
+			fixed xHardBlend;
+			fixed yHardBlend;
+			fixed zHardBlend;
 			struct vertexInput{
 				float4 vertex        : POSITION;
 				float4 texcoord      : TEXCOORD0;
@@ -41,6 +47,9 @@
 				float4 color3 = tex2D(triplanar,input.worldPosition.zy * offset.xy + offset.zw);
 				input.worldNormal = normalize(input.worldNormal);
 				float3 projectedNormal = saturate(pow(input.worldNormal*1.5,4));
+				if(xHardBlend != 0){projectedNormal.x = ceil(projectedNormal.x-0.5f);}
+				if(yHardBlend != 0){projectedNormal.y = ceil(projectedNormal.y-0.5f);}
+				if(zHardBlend != 0){projectedNormal.z = ceil(projectedNormal.z-0.5f);}
 				float3 color = lerp(color2,color1,projectedNormal.z);
 				color = lerp(color,color3,projectedNormal.x);
 				return float4(color,1.0);
