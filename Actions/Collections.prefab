@@ -1,0 +1,220 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &159538
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400440}
+  m_Layer: 0
+  m_Name: Collections
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &160670
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 463834}
+  - 114: {fileID: 11487226}
+  - 114: {fileID: 11495070}
+  - 114: {fileID: 11410680}
+  - 114: {fileID: 11495956}
+  m_Layer: 0
+  m_Name: Orb Collection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &400440
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159538}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 463834}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!4 &463834
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 160670}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 400440}
+  m_RootOrder: 0
+--- !u!114 &11410680
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 160670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Collecting/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Collecting
+    path: Collecting
+    id: -15568/749bc210-bbe9-4610-b588-573a874668e1
+    localID: 749bc210-bbe9-4610-b588-573a874668e1
+    parent: {fileID: 11487226}
+    mode: 0
+    data:
+    - {fileID: 11410680}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11487226
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 160670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c052664a50885d043b194e39441461a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Collecting
+  value:
+    info:
+      name: Collecting
+      path: Collecting
+      id: -15568/749bc210-bbe9-4610-b588-573a874668e1
+      localID: 749bc210-bbe9-4610-b588-573a874668e1
+      parent: {fileID: 11487226}
+      mode: 0
+      data:
+      - {fileID: 11410680}
+      dataB: []
+      dataC: []
+  remember: 0
+--- !u!114 &11495070
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 160670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7c0e4551771ce94faea6b93123eba59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Orbs Collected
+  value:
+    info:
+      name: Orbs Collected
+      path: Orbs Collected
+      id: -15566/a7c702bc-b570-4078-8b66-7a93deacde4c
+      localID: a7c702bc-b570-4078-8b66-7a93deacde4c
+      parent: {fileID: 11495070}
+      mode: 0
+      data:
+      - {fileID: 11495956}
+      dataB: []
+      dataC: []
+  remember: 0
+--- !u!114 &11495956
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 160670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d1c5738016cec84ab5d3eb4cd4f20e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Int Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Orbs Collected/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Orbs Collected
+    path: Orbs Collected
+    id: -15566/a7c702bc-b570-4078-8b66-7a93deacde4c
+    localID: a7c702bc-b570-4078-8b66-7a93deacde4c
+    parent: {fileID: 11495070}
+    mode: 0
+    data:
+    - {fileID: 11495956}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 159538}
+  m_IsPrefabParent: 1

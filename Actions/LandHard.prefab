@@ -1,0 +1,3436 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &125666
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 469164}
+  - 114: {fileID: 11414766}
+  - 114: {fileID: 11450320}
+  - 114: {fileID: 11493080}
+  - 114: {fileID: 11489310}
+  - 114: {fileID: 11447132}
+  - 114: {fileID: 11495142}
+  - 114: {fileID: 11440678}
+  - 114: {fileID: 11448676}
+  - 114: {fileID: 11465422}
+  - 114: {fileID: 11416564}
+  m_Layer: 0
+  m_Name: '@Settings'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &149288
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 407930}
+  - 114: {fileID: 11483786}
+  - 114: {fileID: 11419652}
+  - 114: {fileID: 11442260}
+  - 114: {fileID: 11492346}
+  - 114: {fileID: 11405008}
+  - 114: {fileID: 11460608}
+  - 114: {fileID: 11427658}
+  - 114: {fileID: 11402154}
+  - 114: {fileID: 11423216}
+  - 114: {fileID: 11425746}
+  - 114: {fileID: 11410994}
+  - 114: {fileID: 11478844}
+  - 114: {fileID: 11464742}
+  - 114: {fileID: 11491270}
+  - 114: {fileID: 11485188}
+  - 114: {fileID: 11423854}
+  - 114: {fileID: 11455860}
+  - 114: {fileID: 11465152}
+  - 114: {fileID: 11431668}
+  - 114: {fileID: 11450986}
+  - 114: {fileID: 11404674}
+  - 114: {fileID: 11484780}
+  - 114: {fileID: 11490518}
+  - 114: {fileID: 11474626}
+  - 114: {fileID: 11484816}
+  - 114: {fileID: 11450660}
+  - 114: {fileID: 11483384}
+  - 114: {fileID: 11463452}
+  - 114: {fileID: 11468326}
+  - 114: {fileID: 11429526}
+  - 114: {fileID: 11465468}
+  - 114: {fileID: 11490558}
+  - 114: {fileID: 11415820}
+  - 114: {fileID: 11404112}
+  - 114: {fileID: 11477834}
+  - 114: {fileID: 11406304}
+  - 114: {fileID: 11457150}
+  - 114: {fileID: 11403572}
+  - 114: {fileID: 11486942}
+  - 114: {fileID: 11456572}
+  - 114: {fileID: 11401142}
+  - 114: {fileID: 11423702}
+  - 114: {fileID: 11452236}
+  - 114: {fileID: 11454448}
+  - 114: {fileID: 11474628}
+  - 114: {fileID: 11445656}
+  m_Layer: 0
+  m_Name: Main
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &178848
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 468652}
+  m_Layer: 0
+  m_Name: LandHard
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &407930
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149288}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 468652}
+  m_RootOrder: 1
+--- !u!4 &468652
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 178848}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 469164}
+  - {fileID: 407930}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!4 &469164
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 125666}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 468652}
+  m_RootOrder: 0
+--- !u!114 &11401142
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Prepare Crash/End While Unusable/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: End While Unusable
+    path: Prepare Crash/End While Unusable
+    id: -63510/1a03c345-1917-4f48-9ec8-b8cadc71e51d
+    localID: 1a03c345-1917-4f48-9ec8-b8cadc71e51d
+    parent: {fileID: 11457150}
+    mode: 0
+    data:
+    - {fileID: 11401142}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 1
+--- !u!114 &11402154
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Land Hard/Ready/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Ready
+    path: Land Hard/Ready
+    id: -63502/9d415ffa-66bf-4ada-bc02-bf01ce93aa63
+    localID: 9d415ffa-66bf-4ada-bc02-bf01ce93aa63
+    parent: {fileID: 11419652}
+    mode: 0
+    data:
+    - {fileID: 11402154}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11403572
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Prepare Crash/Is Complete/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Is Complete
+    path: Prepare Crash/Is Complete
+    id: -63510/5aef5e9d-d782-46df-8338-a16e817269a0
+    localID: 5aef5e9d-d782-46df-8338-a16e817269a0
+    parent: {fileID: 11457150}
+    mode: 0
+    data:
+    - {fileID: 11403572}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11404112
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Float Data
+  target:
+    special:
+    - {fileID: 149288}
+    - {fileID: 149288}
+    - {fileID: 125666}
+    - {fileID: 125666}
+    - {fileID: 149288}
+    - {fileID: 149288}
+    - {fileID: 178848}
+    - {fileID: 149288}
+    - {fileID: 149288}
+    - {fileID: 149288}
+    - {fileID: 149288}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    - '[Owner]'
+    - '[Action]'
+    - '[ActionLink]'
+    - '[StateLink]'
+    search: ../@Settings
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 11405008}
+    mode: 0
+  usage: 1
+  path: Crash Duration/Seconds/0
+  referenceID: -22408/36e06670-e99b-4c51-a366-51346402a31d
+  referencePath: Crash Duration
+  attribute:
+    name: Seconds
+    path: Crash Duration/Seconds
+    id: -63508/273634b7-5996-4029-9c72-eae233361486
+    localID: 273634b7-5996-4029-9c72-eae233361486
+    parent: {fileID: 11405008}
+    mode: 0
+    data:
+    - {fileID: 11404112}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 2
+--- !u!114 &11404674
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Crash Animation/End While Unusable/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: End While Unusable
+    path: Crash Animation/End While Unusable
+    id: -63506/31013251-c52d-418f-b990-3e6f2f2e5bb5
+    localID: 31013251-c52d-418f-b990-3e6f2f2e5bb5
+    parent: {fileID: 11492346}
+    mode: 0
+    data:
+    - {fileID: 11404674}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11405008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb780ed64906f1944b7e8d65c34757d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Crash Duration
+  rate: 1
+  id: -51698
+  requirable:
+    info:
+      name: Requirable
+      path: Crash Duration/Requirable
+      id: -63508/c5acff7a-ce84-4a95-a710-9b88e3d5fab9
+      localID: c5acff7a-ce84-4a95-a710-9b88e3d5fab9
+      parent: {fileID: 11405008}
+      mode: 0
+      data:
+      - {fileID: 11474626}
+      dataB: []
+      dataC: []
+  ready:
+    info:
+      name: Ready
+      path: Crash Duration/Ready
+      id: -63508/5393307e-b81e-452b-9781-0857eb7d1f70
+      localID: 5393307e-b81e-452b-9781-0857eb7d1f70
+      parent: {fileID: 11405008}
+      mode: 0
+      data:
+      - {fileID: 11484816}
+      dataB: []
+      dataC: []
+  usable:
+    info:
+      name: Usable
+      path: Crash Duration/Usable
+      id: -63508/67b8c729-6845-4b9c-a3dc-2393360c1e46
+      localID: 67b8c729-6845-4b9c-a3dc-2393360c1e46
+      parent: {fileID: 11405008}
+      mode: 0
+      data:
+      - {fileID: 11450660}
+      dataB: []
+      dataC: []
+  inUse:
+    info:
+      name: Active
+      path: Crash Duration/Active
+      id: -63508/9840094e-1bc4-4a8e-8bb0-b0d47d605336
+      localID: 9840094e-1bc4-4a8e-8bb0-b0d47d605336
+      parent: {fileID: 11405008}
+      mode: 0
+      data:
+      - {fileID: 11483384}
+      dataB: []
+      dataC: []
+  used:
+    info:
+      name: Used
+      path: Crash Duration/Used
+      id: -63508/c5870a6a-6eb1-411e-b0bb-dd6f3c41ab3e
+      localID: c5870a6a-6eb1-411e-b0bb-dd6f3c41ab3e
+      parent: {fileID: 11405008}
+      mode: 0
+      data:
+      - {fileID: 11463452}
+      dataB: []
+      dataC: []
+  endWhileUnusable:
+    info:
+      name: End While Unusable
+      path: Crash Duration/End While Unusable
+      id: -63508/a9e409a7-b68d-489e-b610-12b4e641d188
+      localID: a9e409a7-b68d-489e-b610-12b4e641d188
+      parent: {fileID: 11405008}
+      mode: 0
+      data:
+      - {fileID: 11468326}
+      dataB: []
+      dataC: []
+  occurrence: 0
+  type: 1
+  seconds:
+    info:
+      name: Seconds
+      path: Crash Duration/Seconds
+      id: -63508/273634b7-5996-4029-9c72-eae233361486
+      localID: 273634b7-5996-4029-9c72-eae233361486
+      parent: {fileID: 11405008}
+      mode: 0
+      data:
+      - {fileID: 11404112}
+      dataB: []
+      dataC: []
+  isStarted:
+    info:
+      name: Is Started
+      path: Crash Duration/Is Started
+      id: -63508/b3f8dae2-11ca-4899-96c3-eaea264a49a3
+      localID: b3f8dae2-11ca-4899-96c3-eaea264a49a3
+      parent: {fileID: 11405008}
+      mode: 0
+      data:
+      - {fileID: 11429526}
+      dataB: []
+      dataC: []
+  isComplete:
+    info:
+      name: Is Complete
+      path: Crash Duration/Is Complete
+      id: -63508/d83603a5-e9dd-43d8-99d7-40e866776247
+      localID: d83603a5-e9dd-43d8-99d7-40e866776247
+      parent: {fileID: 11405008}
+      mode: 0
+      data:
+      - {fileID: 11465468}
+      dataB: []
+      dataC: []
+--- !u!114 &11406304
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3e9984a5f3f19942be359930227796e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute String Data
+  target:
+    special:
+    - {fileID: 149288}
+    - {fileID: 149288}
+    - {fileID: 125666}
+    - {fileID: 125666}
+    - {fileID: 149288}
+    - {fileID: 149288}
+    - {fileID: 178848}
+    - {fileID: 149288}
+    - {fileID: 149288}
+    - {fileID: 149288}
+    - {fileID: 149288}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    - '[Owner]'
+    - '[Action]'
+    - '[ActionLink]'
+    - '[StateLink]'
+    search: ../@Settings
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 11492346}
+    mode: 0
+  usage: 1
+  path: Crash Animation/Animation Name/0
+  referenceID: -22412/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
+  referencePath: Animation
+  attribute:
+    name: Animation Name
+    path: Crash Animation/Animation Name
+    id: -63506/77ad57fe-0436-463b-82f2-15e5dbd84662
+    localID: 77ad57fe-0436-463b-82f2-15e5dbd84662
+    parent: {fileID: 11492346}
+    mode: 0
+    data:
+    - {fileID: 11406304}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: Run
+  characterLimit: 0
+  allowed: []
+  disallowed: []
+--- !u!114 &11410994
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Crash Animation/Active/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Active
+    path: Crash Animation/Active
+    id: -63506/8c440c15-6e8b-4196-8e6f-5fe9749c72e9
+    localID: 8c440c15-6e8b-4196-8e6f-5fe9749c72e9
+    parent: {fileID: 11492346}
+    mode: 0
+    data:
+    - {fileID: 11410994}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11414766
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 125666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15dc630d7daaf4548bf1d099b9be1324, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Animation
+  value:
+    info:
+      name: Animation
+      path: Animation
+      id: -63512/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
+      localID: 7e894ef6-a99f-450f-b42a-e1aa6c29abb9
+      parent: {fileID: 11414766}
+      mode: 0
+      data:
+      - {fileID: 11416564}
+      dataB: []
+      dataC: []
+  remember: 0
+--- !u!114 &11415820
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Float Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Crash Animation/Weight/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Weight
+    path: Crash Animation/Weight
+    id: -63506/09b30845-e759-4c6f-bf8e-eb9caec24036
+    localID: 09b30845-e759-4c6f-bf8e-eb9caec24036
+    parent: {fileID: 11492346}
+    mode: 0
+    data:
+    - {fileID: 11415820}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 1
+--- !u!114 &11416564
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 125666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3e9984a5f3f19942be359930227796e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute String Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Animation/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Animation
+    path: Animation
+    id: -63512/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
+    localID: 7e894ef6-a99f-450f-b42a-e1aa6c29abb9
+    parent: {fileID: 11414766}
+    mode: 0
+    data:
+    - {fileID: 11416564}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: LandHard
+  characterLimit: 0
+  allowed: []
+  disallowed: []
+--- !u!114 &11419652
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6a5365a236805842985225b566116a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Land Hard
+  rate: 0
+  id: -1694376
+  requirable:
+    info:
+      name: Requirable
+      path: Land Hard/Requirable
+      id: -63502/84452e99-6856-4dcc-a4de-5faca30dab5e
+      localID: 84452e99-6856-4dcc-a4de-5faca30dab5e
+      parent: {fileID: 11419652}
+      mode: 0
+      data:
+      - {fileID: 11427658}
+      dataB: []
+      dataC: []
+  ready:
+    info:
+      name: Ready
+      path: Land Hard/Ready
+      id: -63502/9d415ffa-66bf-4ada-bc02-bf01ce93aa63
+      localID: 9d415ffa-66bf-4ada-bc02-bf01ce93aa63
+      parent: {fileID: 11419652}
+      mode: 0
+      data:
+      - {fileID: 11402154}
+      dataB: []
+      dataC: []
+  usable:
+    info:
+      name: Usable
+      path: Land Hard/Usable
+      id: -63502/5cae632b-0d08-4b5d-8829-9277028303e3
+      localID: 5cae632b-0d08-4b5d-8829-9277028303e3
+      parent: {fileID: 11419652}
+      mode: 0
+      data:
+      - {fileID: 11423216}
+      dataB: []
+      dataC: []
+  inUse:
+    info:
+      name: Active
+      path: Land Hard/Active
+      id: -63502/81e54aa2-7146-4a29-941f-291d3627602c
+      localID: 81e54aa2-7146-4a29-941f-291d3627602c
+      parent: {fileID: 11419652}
+      mode: 0
+      data:
+      - {fileID: 11460608}
+      dataB: []
+      dataC: []
+  used:
+    info:
+      name: Used
+      path: Land Hard/Used
+      id: -63502/0d74e31e-f5c7-4e2b-b70b-2048c9d0969e
+      localID: 0d74e31e-f5c7-4e2b-b70b-2048c9d0969e
+      parent: {fileID: 11419652}
+      mode: 0
+      data:
+      - {fileID: 11425746}
+      dataB: []
+      dataC: []
+  endWhileUnusable:
+    info:
+      name: End While Unusable
+      path: Land Hard/End While Unusable
+      id: -63502/95be452e-55c0-4d43-b5fd-751f414897c1
+      localID: 95be452e-55c0-4d43-b5fd-751f414897c1
+      parent: {fileID: 11419652}
+      mode: 0
+      data:
+      - {fileID: 11484780}
+      dataB: []
+      dataC: []
+--- !u!114 &11423216
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Land Hard/Usable/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Usable
+    path: Land Hard/Usable
+    id: -63502/5cae632b-0d08-4b5d-8829-9277028303e3
+    localID: 5cae632b-0d08-4b5d-8829-9277028303e3
+    parent: {fileID: 11419652}
+    mode: 0
+    data:
+    - {fileID: 11423216}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 1
+--- !u!114 &11423702
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Prepare Crash/Used/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Used
+    path: Prepare Crash/Used
+    id: -63510/639d926f-d9a0-4068-b61c-84a9dfb4a353
+    localID: 639d926f-d9a0-4068-b61c-84a9dfb4a353
+    parent: {fileID: 11457150}
+    mode: 0
+    data:
+    - {fileID: 11423702}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11423854
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: '@Ready/Active/0'
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Active
+    path: '@Ready/Active'
+    id: -63504/d9561d1b-ab79-44f0-9d5a-b8a7b4bf2157
+    localID: d9561d1b-ab79-44f0-9d5a-b8a7b4bf2157
+    parent: {fileID: 11442260}
+    mode: 0
+    data:
+    - {fileID: 11423854}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11425746
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Land Hard/Used/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Used
+    path: Land Hard/Used
+    id: -63502/0d74e31e-f5c7-4e2b-b70b-2048c9d0969e
+    localID: 0d74e31e-f5c7-4e2b-b70b-2048c9d0969e
+    parent: {fileID: 11419652}
+    mode: 0
+    data:
+    - {fileID: 11425746}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11427658
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Land Hard/Requirable/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Requirable
+    path: Land Hard/Requirable
+    id: -63502/84452e99-6856-4dcc-a4de-5faca30dab5e
+    localID: 84452e99-6856-4dcc-a4de-5faca30dab5e
+    parent: {fileID: 11419652}
+    mode: 0
+    data:
+    - {fileID: 11427658}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 1
+--- !u!114 &11429526
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Crash Duration/Is Started/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Is Started
+    path: Crash Duration/Is Started
+    id: -63508/b3f8dae2-11ca-4899-96c3-eaea264a49a3
+    localID: b3f8dae2-11ca-4899-96c3-eaea264a49a3
+    parent: {fileID: 11405008}
+    mode: 0
+    data:
+    - {fileID: 11429526}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11431668
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: '@Ready/Usable/0'
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Usable
+    path: '@Ready/Usable'
+    id: -63504/b4a06b68-33e6-4ce5-a647-084cc982df02
+    localID: b4a06b68-33e6-4ce5-a647-084cc982df02
+    parent: {fileID: 11442260}
+    mode: 0
+    data:
+    - {fileID: 11431668}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 1
+--- !u!114 &11440678
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 125666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Float Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Crash Countdown/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Crash Countdown
+    path: Crash Countdown
+    id: -63514/7c8b26f2-86f1-47c1-a931-c3ec782cd72c
+    localID: 7c8b26f2-86f1-47c1-a931-c3ec782cd72c
+    parent: {fileID: 11450320}
+    mode: 0
+    data:
+    - {fileID: 11440678}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 4
+--- !u!114 &11442260
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d2c3095ed3786d4cb99a269e5e55882, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: '@Ready'
+  rate: 1
+  id: -1899036
+  requirable:
+    info:
+      name: Requirable
+      path: '@Ready/Requirable'
+      id: -63504/06c2e7b7-5ae5-4f33-ad1c-0a7c2a41e10d
+      localID: 06c2e7b7-5ae5-4f33-ad1c-0a7c2a41e10d
+      parent: {fileID: 11442260}
+      mode: 0
+      data:
+      - {fileID: 11455860}
+      dataB: []
+      dataC: []
+  ready:
+    info:
+      name: Ready
+      path: '@Ready/Ready'
+      id: -63504/2984627a-56a6-4b05-8ffc-7b9a830e45f9
+      localID: 2984627a-56a6-4b05-8ffc-7b9a830e45f9
+      parent: {fileID: 11442260}
+      mode: 0
+      data:
+      - {fileID: 11465152}
+      dataB: []
+      dataC: []
+  usable:
+    info:
+      name: Usable
+      path: '@Ready/Usable'
+      id: -63504/b4a06b68-33e6-4ce5-a647-084cc982df02
+      localID: b4a06b68-33e6-4ce5-a647-084cc982df02
+      parent: {fileID: 11442260}
+      mode: 0
+      data:
+      - {fileID: 11431668}
+      dataB: []
+      dataC: []
+  inUse:
+    info:
+      name: Active
+      path: '@Ready/Active'
+      id: -63504/d9561d1b-ab79-44f0-9d5a-b8a7b4bf2157
+      localID: d9561d1b-ab79-44f0-9d5a-b8a7b4bf2157
+      parent: {fileID: 11442260}
+      mode: 0
+      data:
+      - {fileID: 11423854}
+      dataB: []
+      dataC: []
+  used:
+    info:
+      name: Used
+      path: '@Ready/Used'
+      id: -63504/fc1a7f2e-6377-45d7-b231-2381c71714c8
+      localID: fc1a7f2e-6377-45d7-b231-2381c71714c8
+      parent: {fileID: 11442260}
+      mode: 0
+      data:
+      - {fileID: 11450986}
+      dataB: []
+      dataC: []
+  endWhileUnusable:
+    info:
+      name: End While Unusable
+      path: '@Ready/End While Unusable'
+      id: -63504/78075f42-18e2-4211-b2f8-c01b6c723a0a
+      localID: 78075f42-18e2-4211-b2f8-c01b6c723a0a
+      parent: {fileID: 11442260}
+      mode: 0
+      data:
+      - {fileID: 11490518}
+      dataB: []
+      dataC: []
+  occurrence: 0
+--- !u!114 &11445656
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Prepare Crash/Requirable/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Requirable
+    path: Prepare Crash/Requirable
+    id: -63510/206260c9-313c-4af2-ae3c-8d52166b44da
+    localID: 206260c9-313c-4af2-ae3c-8d52166b44da
+    parent: {fileID: 11457150}
+    mode: 0
+    data:
+    - {fileID: 11445656}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 1
+--- !u!114 &11447132
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 125666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e8a46b59a6b8eb489e122ad5fdef015, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Visuals
+  value:
+    info:
+      name: Visuals
+      path: Visuals
+      id: -63520/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+      localID: 33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+      parent: {fileID: 11447132}
+      mode: 0
+      data:
+      - {fileID: 11465422}
+      dataB: []
+      dataC: []
+  remember: 0
+--- !u!114 &11448676
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 125666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Game Object Data
+  target:
+    special:
+    - {fileID: 125666}
+    - {fileID: 125666}
+    - {fileID: 149288}
+    - {fileID: 149288}
+    - {fileID: 125666}
+    - {fileID: 125666}
+    - {fileID: 178848}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    search: ../../..
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 11489310}
+    mode: 0
+  usage: 1
+  path: Source/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Source
+    path: Source
+    id: -63518/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+    localID: 0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+    parent: {fileID: 11489310}
+    mode: 0
+    data:
+    - {fileID: 11448676}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: {fileID: 0}
+--- !u!114 &11450320
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 125666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73460de1a42c5d64884ae83214747f38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Crash Countdown
+  value:
+    info:
+      name: Crash Countdown
+      path: Crash Countdown
+      id: -63514/7c8b26f2-86f1-47c1-a931-c3ec782cd72c
+      localID: 7c8b26f2-86f1-47c1-a931-c3ec782cd72c
+      parent: {fileID: 11450320}
+      mode: 0
+      data:
+      - {fileID: 11440678}
+      dataB: []
+      dataC: []
+  remember: 0
+--- !u!114 &11450660
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Crash Duration/Usable/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Usable
+    path: Crash Duration/Usable
+    id: -63508/67b8c729-6845-4b9c-a3dc-2393360c1e46
+    localID: 67b8c729-6845-4b9c-a3dc-2393360c1e46
+    parent: {fileID: 11405008}
+    mode: 0
+    data:
+    - {fileID: 11450660}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11450986
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: '@Ready/Used/0'
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Used
+    path: '@Ready/Used'
+    id: -63504/fc1a7f2e-6377-45d7-b231-2381c71714c8
+    localID: fc1a7f2e-6377-45d7-b231-2381c71714c8
+    parent: {fileID: 11442260}
+    mode: 0
+    data:
+    - {fileID: 11450986}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11452236
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Prepare Crash/Active/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Active
+    path: Prepare Crash/Active
+    id: -63510/7ae82959-7c61-4771-b9f4-c1f36c6c1066
+    localID: 7ae82959-7c61-4771-b9f4-c1f36c6c1066
+    parent: {fileID: 11457150}
+    mode: 0
+    data:
+    - {fileID: 11452236}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11454448
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Prepare Crash/Usable/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Usable
+    path: Prepare Crash/Usable
+    id: -63510/f4db569d-74ad-47a4-bb8c-9178e8a04ab7
+    localID: f4db569d-74ad-47a4-bb8c-9178e8a04ab7
+    parent: {fileID: 11457150}
+    mode: 0
+    data:
+    - {fileID: 11454448}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 1
+--- !u!114 &11455860
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: '@Ready/Requirable/0'
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Requirable
+    path: '@Ready/Requirable'
+    id: -63504/06c2e7b7-5ae5-4f33-ad1c-0a7c2a41e10d
+    localID: 06c2e7b7-5ae5-4f33-ad1c-0a7c2a41e10d
+    parent: {fileID: 11442260}
+    mode: 0
+    data:
+    - {fileID: 11455860}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 1
+--- !u!114 &11456572
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Float Data
+  target:
+    special:
+    - {fileID: 149288}
+    - {fileID: 149288}
+    - {fileID: 125666}
+    - {fileID: 125666}
+    - {fileID: 149288}
+    - {fileID: 149288}
+    - {fileID: 178848}
+    - {fileID: 149288}
+    - {fileID: 149288}
+    - {fileID: 149288}
+    - {fileID: 149288}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    - '[Owner]'
+    - '[Action]'
+    - '[ActionLink]'
+    - '[StateLink]'
+    search: ../@Settings
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 11457150}
+    mode: 0
+  usage: 1
+  path: Prepare Crash/Seconds/0
+  referenceID: -22410/7c8b26f2-86f1-47c1-a931-c3ec782cd72c
+  referencePath: Crash Countdown
+  attribute:
+    name: Seconds
+    path: Prepare Crash/Seconds
+    id: -63510/e551c672-16b1-4413-bb28-5624a2b7ff9b
+    localID: e551c672-16b1-4413-bb28-5624a2b7ff9b
+    parent: {fileID: 11457150}
+    mode: 0
+    data:
+    - {fileID: 11456572}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11457150
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb780ed64906f1944b7e8d65c34757d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Prepare Crash
+  rate: 1
+  id: -522208
+  requirable:
+    info:
+      name: Requirable
+      path: Prepare Crash/Requirable
+      id: -63510/206260c9-313c-4af2-ae3c-8d52166b44da
+      localID: 206260c9-313c-4af2-ae3c-8d52166b44da
+      parent: {fileID: 11457150}
+      mode: 0
+      data:
+      - {fileID: 11445656}
+      dataB: []
+      dataC: []
+  ready:
+    info:
+      name: Ready
+      path: Prepare Crash/Ready
+      id: -63510/c9d853ad-ee07-4d94-b2a6-06fccc8df54d
+      localID: c9d853ad-ee07-4d94-b2a6-06fccc8df54d
+      parent: {fileID: 11457150}
+      mode: 0
+      data:
+      - {fileID: 11474628}
+      dataB: []
+      dataC: []
+  usable:
+    info:
+      name: Usable
+      path: Prepare Crash/Usable
+      id: -63510/f4db569d-74ad-47a4-bb8c-9178e8a04ab7
+      localID: f4db569d-74ad-47a4-bb8c-9178e8a04ab7
+      parent: {fileID: 11457150}
+      mode: 0
+      data:
+      - {fileID: 11454448}
+      dataB: []
+      dataC: []
+  inUse:
+    info:
+      name: Active
+      path: Prepare Crash/Active
+      id: -63510/7ae82959-7c61-4771-b9f4-c1f36c6c1066
+      localID: 7ae82959-7c61-4771-b9f4-c1f36c6c1066
+      parent: {fileID: 11457150}
+      mode: 0
+      data:
+      - {fileID: 11452236}
+      dataB: []
+      dataC: []
+  used:
+    info:
+      name: Used
+      path: Prepare Crash/Used
+      id: -63510/639d926f-d9a0-4068-b61c-84a9dfb4a353
+      localID: 639d926f-d9a0-4068-b61c-84a9dfb4a353
+      parent: {fileID: 11457150}
+      mode: 0
+      data:
+      - {fileID: 11423702}
+      dataB: []
+      dataC: []
+  endWhileUnusable:
+    info:
+      name: End While Unusable
+      path: Prepare Crash/End While Unusable
+      id: -63510/1a03c345-1917-4f48-9ec8-b8cadc71e51d
+      localID: 1a03c345-1917-4f48-9ec8-b8cadc71e51d
+      parent: {fileID: 11457150}
+      mode: 0
+      data:
+      - {fileID: 11401142}
+      dataB: []
+      dataC: []
+  occurrence: 0
+  type: 0
+  seconds:
+    info:
+      name: Seconds
+      path: Prepare Crash/Seconds
+      id: -63510/e551c672-16b1-4413-bb28-5624a2b7ff9b
+      localID: e551c672-16b1-4413-bb28-5624a2b7ff9b
+      parent: {fileID: 11457150}
+      mode: 0
+      data:
+      - {fileID: 11456572}
+      dataB: []
+      dataC: []
+  isStarted:
+    info:
+      name: Is Started
+      path: Prepare Crash/Is Started
+      id: -63510/80a83782-e1d4-4957-b027-f8e4c950d454
+      localID: 80a83782-e1d4-4957-b027-f8e4c950d454
+      parent: {fileID: 11457150}
+      mode: 0
+      data:
+      - {fileID: 11486942}
+      dataB: []
+      dataC: []
+  isComplete:
+    info:
+      name: Is Complete
+      path: Prepare Crash/Is Complete
+      id: -63510/5aef5e9d-d782-46df-8338-a16e817269a0
+      localID: 5aef5e9d-d782-46df-8338-a16e817269a0
+      parent: {fileID: 11457150}
+      mode: 0
+      data:
+      - {fileID: 11403572}
+      dataB: []
+      dataC: []
+--- !u!114 &11460608
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Land Hard/Active/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Active
+    path: Land Hard/Active
+    id: -63502/81e54aa2-7146-4a29-941f-291d3627602c
+    localID: 81e54aa2-7146-4a29-941f-291d3627602c
+    parent: {fileID: 11419652}
+    mode: 0
+    data:
+    - {fileID: 11460608}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11463452
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Crash Duration/Used/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Used
+    path: Crash Duration/Used
+    id: -63508/c5870a6a-6eb1-411e-b0bb-dd6f3c41ab3e
+    localID: c5870a6a-6eb1-411e-b0bb-dd6f3c41ab3e
+    parent: {fileID: 11405008}
+    mode: 0
+    data:
+    - {fileID: 11463452}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11464742
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Crash Animation/Ready/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Ready
+    path: Crash Animation/Ready
+    id: -63506/fe317e88-95fc-4f73-a7e5-0ac58ed60271
+    localID: fe317e88-95fc-4f73-a7e5-0ac58ed60271
+    parent: {fileID: 11492346}
+    mode: 0
+    data:
+    - {fileID: 11464742}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 1
+--- !u!114 &11465152
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: '@Ready/Ready/0'
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Ready
+    path: '@Ready/Ready'
+    id: -63504/2984627a-56a6-4b05-8ffc-7b9a830e45f9
+    localID: 2984627a-56a6-4b05-8ffc-7b9a830e45f9
+    parent: {fileID: 11442260}
+    mode: 0
+    data:
+    - {fileID: 11465152}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 1
+--- !u!114 &11465422
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 125666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Game Object Data
+  target:
+    special:
+    - {fileID: 125666}
+    - {fileID: 125666}
+    - {fileID: 149288}
+    - {fileID: 149288}
+    - {fileID: 125666}
+    - {fileID: 125666}
+    - {fileID: 178848}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    search: ../../../Visuals
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 11447132}
+    mode: 0
+  usage: 1
+  path: Visuals/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Visuals
+    path: Visuals
+    id: -63520/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+    localID: 33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+    parent: {fileID: 11447132}
+    mode: 0
+    data:
+    - {fileID: 11465422}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: {fileID: 0}
+--- !u!114 &11465468
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Crash Duration/Is Complete/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Is Complete
+    path: Crash Duration/Is Complete
+    id: -63508/d83603a5-e9dd-43d8-99d7-40e866776247
+    localID: d83603a5-e9dd-43d8-99d7-40e866776247
+    parent: {fileID: 11405008}
+    mode: 0
+    data:
+    - {fileID: 11465468}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11468326
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Crash Duration/End While Unusable/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: End While Unusable
+    path: Crash Duration/End While Unusable
+    id: -63508/a9e409a7-b68d-489e-b610-12b4e641d188
+    localID: a9e409a7-b68d-489e-b610-12b4e641d188
+    parent: {fileID: 11405008}
+    mode: 0
+    data:
+    - {fileID: 11468326}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11474626
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Crash Duration/Requirable/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Requirable
+    path: Crash Duration/Requirable
+    id: -63508/c5acff7a-ce84-4a95-a710-9b88e3d5fab9
+    localID: c5acff7a-ce84-4a95-a710-9b88e3d5fab9
+    parent: {fileID: 11405008}
+    mode: 0
+    data:
+    - {fileID: 11474626}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 1
+--- !u!114 &11474628
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Prepare Crash/Ready/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Ready
+    path: Prepare Crash/Ready
+    id: -63510/c9d853ad-ee07-4d94-b2a6-06fccc8df54d
+    localID: c9d853ad-ee07-4d94-b2a6-06fccc8df54d
+    parent: {fileID: 11457150}
+    mode: 0
+    data:
+    - {fileID: 11474628}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11477834
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Game Object Data
+  target:
+    special:
+    - {fileID: 149288}
+    - {fileID: 149288}
+    - {fileID: 125666}
+    - {fileID: 125666}
+    - {fileID: 149288}
+    - {fileID: 149288}
+    - {fileID: 178848}
+    - {fileID: 149288}
+    - {fileID: 149288}
+    - {fileID: 149288}
+    - {fileID: 149288}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    - '[Owner]'
+    - '[Action]'
+    - '[ActionLink]'
+    - '[StateLink]'
+    search: ../@Settings
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 11492346}
+    mode: 0
+  usage: 1
+  path: Crash Animation/Target/0
+  referenceID: -22404/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+  referencePath: Visuals
+  attribute:
+    name: Target
+    path: Crash Animation/Target
+    id: -63506/50a23dc5-6f4c-4c4d-b156-2954a24dd1ee
+    localID: 50a23dc5-6f4c-4c4d-b156-2954a24dd1ee
+    parent: {fileID: 11492346}
+    mode: 0
+    data:
+    - {fileID: 11477834}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: {fileID: 0}
+--- !u!114 &11478844
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Crash Animation/Requirable/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Requirable
+    path: Crash Animation/Requirable
+    id: -63506/4e2474ed-0531-4f66-8bbd-0179e15e5dd0
+    localID: 4e2474ed-0531-4f66-8bbd-0179e15e5dd0
+    parent: {fileID: 11492346}
+    mode: 0
+    data:
+    - {fileID: 11478844}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 1
+--- !u!114 &11483384
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Crash Duration/Active/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Active
+    path: Crash Duration/Active
+    id: -63508/9840094e-1bc4-4a8e-8bb0-b0d47d605336
+    localID: 9840094e-1bc4-4a8e-8bb0-b0d47d605336
+    parent: {fileID: 11405008}
+    mode: 0
+    data:
+    - {fileID: 11483384}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11483786
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5701b12795b13f745a1a7a75b69238fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  total: 0
+  table:
+  - name: '@Ready'
+    stateTable: {fileID: 0}
+    id: -1899036
+    target: {fileID: 11442260}
+    empty: 0
+    requirements:
+    - data:
+      - name: '@Ready'
+        stateTable: {fileID: 0}
+        id: -1899036
+        target: {fileID: 11442260}
+        requireOn: 0
+        requireOff: 0
+      - name: Crash Animation
+        stateTable: {fileID: 0}
+        id: -1701640
+        target: {fileID: 11492346}
+        requireOn: 0
+        requireOff: 0
+      - name: Crash Duration
+        stateTable: {fileID: 11483786}
+        id: -51698
+        target: {fileID: 11405008}
+        requireOn: 0
+        requireOff: 0
+      - name: Prepare Crash
+        stateTable: {fileID: 11483786}
+        id: -522208
+        target: {fileID: 11457150}
+        requireOn: 0
+        requireOff: 0
+  - name: Crash Animation
+    stateTable: {fileID: 0}
+    id: -1701640
+    target: {fileID: 11492346}
+    empty: 0
+    requirements:
+    - data:
+      - name: '@Ready'
+        stateTable: {fileID: 0}
+        id: -1899036
+        target: {fileID: 11442260}
+        requireOn: 1
+        requireOff: 0
+      - name: Crash Animation
+        stateTable: {fileID: 0}
+        id: -1701640
+        target: {fileID: 11492346}
+        requireOn: 0
+        requireOff: 0
+      - name: Crash Duration
+        stateTable: {fileID: 11483786}
+        id: -51698
+        target: {fileID: 11405008}
+        requireOn: 0
+        requireOff: 0
+      - name: Prepare Crash
+        stateTable: {fileID: 11483786}
+        id: -522208
+        target: {fileID: 11457150}
+        requireOn: 0
+        requireOff: 0
+  - name: Crash Duration
+    stateTable: {fileID: 11483786}
+    id: -51698
+    target: {fileID: 11405008}
+    empty: 0
+    requirements:
+    - data:
+      - name: '@Ready'
+        stateTable: {fileID: 11483786}
+        id: -1899036
+        target: {fileID: 11442260}
+        requireOn: 1
+        requireOff: 0
+      - name: Crash Animation
+        stateTable: {fileID: 11483786}
+        id: -1701640
+        target: {fileID: 11492346}
+        requireOn: 0
+        requireOff: 0
+      - name: Crash Duration
+        stateTable: {fileID: 11483786}
+        id: -51698
+        target: {fileID: 11405008}
+        requireOn: 0
+        requireOff: 0
+      - name: Prepare Crash
+        stateTable: {fileID: 11483786}
+        id: -522208
+        target: {fileID: 11457150}
+        requireOn: 0
+        requireOff: 0
+  - name: Prepare Crash
+    stateTable: {fileID: 11483786}
+    id: -522208
+    target: {fileID: 11457150}
+    empty: 0
+    requirements:
+    - data:
+      - name: '@Ready'
+        stateTable: {fileID: 11483786}
+        id: -1899036
+        target: {fileID: 11442260}
+        requireOn: 0
+        requireOff: 0
+      - name: Crash Animation
+        stateTable: {fileID: 11483786}
+        id: -1701640
+        target: {fileID: 11492346}
+        requireOn: 0
+        requireOff: 0
+      - name: Crash Duration
+        stateTable: {fileID: 11483786}
+        id: -51698
+        target: {fileID: 11405008}
+        requireOn: 0
+        requireOff: 0
+      - name: Prepare Crash
+        stateTable: {fileID: 11483786}
+        id: -522208
+        target: {fileID: 11457150}
+        requireOn: 0
+        requireOff: 0
+  tableOff:
+  - name: '@Ready'
+    stateTable: {fileID: 0}
+    id: -1899036
+    target: {fileID: 11442260}
+    empty: 0
+    requirements:
+    - data:
+      - name: '@Ready'
+        stateTable: {fileID: 0}
+        id: -1899036
+        target: {fileID: 11442260}
+        requireOn: 0
+        requireOff: 0
+      - name: Crash Animation
+        stateTable: {fileID: 0}
+        id: -1701640
+        target: {fileID: 11492346}
+        requireOn: 0
+        requireOff: 0
+      - name: Crash Duration
+        stateTable: {fileID: 11483786}
+        id: -51698
+        target: {fileID: 11405008}
+        requireOn: 1
+        requireOff: 0
+      - name: Prepare Crash
+        stateTable: {fileID: 11483786}
+        id: -522208
+        target: {fileID: 11457150}
+        requireOn: 0
+        requireOff: 1
+  - name: Crash Animation
+    stateTable: {fileID: 0}
+    id: -1701640
+    target: {fileID: 11492346}
+    empty: 0
+    requirements:
+    - data:
+      - name: '@Ready'
+        stateTable: {fileID: 0}
+        id: -1899036
+        target: {fileID: 11442260}
+        requireOn: 0
+        requireOff: 1
+      - name: Crash Animation
+        stateTable: {fileID: 0}
+        id: -1701640
+        target: {fileID: 11492346}
+        requireOn: 0
+        requireOff: 0
+      - name: Crash Duration
+        stateTable: {fileID: 11483786}
+        id: -51698
+        target: {fileID: 11405008}
+        requireOn: 0
+        requireOff: 0
+      - name: Prepare Crash
+        stateTable: {fileID: 11483786}
+        id: -522208
+        target: {fileID: 11457150}
+        requireOn: 0
+        requireOff: 0
+  - name: Crash Duration
+    stateTable: {fileID: 11483786}
+    id: -51698
+    target: {fileID: 11405008}
+    empty: 0
+    requirements:
+    - data:
+      - name: '@Ready'
+        stateTable: {fileID: 11483786}
+        id: -1899036
+        target: {fileID: 11442260}
+        requireOn: 0
+        requireOff: 1
+      - name: Crash Animation
+        stateTable: {fileID: 11483786}
+        id: -1701640
+        target: {fileID: 11492346}
+        requireOn: 0
+        requireOff: 0
+      - name: Crash Duration
+        stateTable: {fileID: 11483786}
+        id: -51698
+        target: {fileID: 11405008}
+        requireOn: 0
+        requireOff: 0
+      - name: Prepare Crash
+        stateTable: {fileID: 11483786}
+        id: -522208
+        target: {fileID: 11457150}
+        requireOn: 0
+        requireOff: 0
+  - name: Prepare Crash
+    stateTable: {fileID: 11483786}
+    id: -522208
+    target: {fileID: 11457150}
+    empty: 0
+    requirements:
+    - data:
+      - name: '@Ready'
+        stateTable: {fileID: 11483786}
+        id: -1899036
+        target: {fileID: 11442260}
+        requireOn: 0
+        requireOff: 0
+      - name: Crash Animation
+        stateTable: {fileID: 11483786}
+        id: -1701640
+        target: {fileID: 11492346}
+        requireOn: 0
+        requireOff: 0
+      - name: Crash Duration
+        stateTable: {fileID: 11483786}
+        id: -51698
+        target: {fileID: 11405008}
+        requireOn: 0
+        requireOff: 0
+      - name: Prepare Crash
+        stateTable: {fileID: 11483786}
+        id: -522208
+        target: {fileID: 11457150}
+        requireOn: 0
+        requireOff: 0
+  advanced: 1
+  scripts:
+  - {fileID: 11442260}
+  - {fileID: 11492346}
+  - {fileID: 11405008}
+  - {fileID: 11457150}
+  parts:
+  - {fileID: 11492346}
+  - {fileID: 0}
+  - {fileID: 11442260}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  isFixed: 1
+--- !u!114 &11484780
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Land Hard/End While Unusable/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: End While Unusable
+    path: Land Hard/End While Unusable
+    id: -63502/95be452e-55c0-4d43-b5fd-751f414897c1
+    localID: 95be452e-55c0-4d43-b5fd-751f414897c1
+    parent: {fileID: 11419652}
+    mode: 0
+    data:
+    - {fileID: 11484780}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11484816
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Crash Duration/Ready/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Ready
+    path: Crash Duration/Ready
+    id: -63508/5393307e-b81e-452b-9781-0857eb7d1f70
+    localID: 5393307e-b81e-452b-9781-0857eb7d1f70
+    parent: {fileID: 11405008}
+    mode: 0
+    data:
+    - {fileID: 11484816}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11485188
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Crash Animation/Used/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Used
+    path: Crash Animation/Used
+    id: -63506/2a95779e-862b-470e-bc99-49916c4cce30
+    localID: 2a95779e-862b-470e-bc99-49916c4cce30
+    parent: {fileID: 11492346}
+    mode: 0
+    data:
+    - {fileID: 11485188}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11486942
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Prepare Crash/Is Started/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Is Started
+    path: Prepare Crash/Is Started
+    id: -63510/80a83782-e1d4-4957-b027-f8e4c950d454
+    localID: 80a83782-e1d4-4957-b027-f8e4c950d454
+    parent: {fileID: 11457150}
+    mode: 0
+    data:
+    - {fileID: 11486942}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11489310
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 125666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e8a46b59a6b8eb489e122ad5fdef015, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Source
+  value:
+    info:
+      name: Source
+      path: Source
+      id: -63518/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+      localID: 0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+      parent: {fileID: 11489310}
+      mode: 0
+      data:
+      - {fileID: 11448676}
+      dataB: []
+      dataC: []
+  remember: 0
+--- !u!114 &11490518
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: '@Ready/End While Unusable/0'
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: End While Unusable
+    path: '@Ready/End While Unusable'
+    id: -63504/78075f42-18e2-4211-b2f8-c01b6c723a0a
+    localID: 78075f42-18e2-4211-b2f8-c01b6c723a0a
+    parent: {fileID: 11442260}
+    mode: 0
+    data:
+    - {fileID: 11490518}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11490558
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Float Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Crash Animation/Speed/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Speed
+    path: Crash Animation/Speed
+    id: -63506/97c8e6a5-0c2c-4a92-97b4-36e9caf6f7c4
+    localID: 97c8e6a5-0c2c-4a92-97b4-36e9caf6f7c4
+    parent: {fileID: 11492346}
+    mode: 0
+    data:
+    - {fileID: 11490558}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 1
+--- !u!114 &11491270
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Crash Animation/Usable/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Usable
+    path: Crash Animation/Usable
+    id: -63506/765cd5ac-484e-4161-9557-5f6a254f020e
+    localID: 765cd5ac-484e-4161-9557-5f6a254f020e
+    parent: {fileID: 11492346}
+    mode: 0
+    data:
+    - {fileID: 11491270}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11492346
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 913766e3e62ceac4a918c0cd12f04e67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Crash Animation
+  rate: 1
+  id: -1701640
+  requirable:
+    info:
+      name: Requirable
+      path: Crash Animation/Requirable
+      id: -63506/4e2474ed-0531-4f66-8bbd-0179e15e5dd0
+      localID: 4e2474ed-0531-4f66-8bbd-0179e15e5dd0
+      parent: {fileID: 11492346}
+      mode: 0
+      data:
+      - {fileID: 11478844}
+      dataB: []
+      dataC: []
+  ready:
+    info:
+      name: Ready
+      path: Crash Animation/Ready
+      id: -63506/fe317e88-95fc-4f73-a7e5-0ac58ed60271
+      localID: fe317e88-95fc-4f73-a7e5-0ac58ed60271
+      parent: {fileID: 11492346}
+      mode: 0
+      data:
+      - {fileID: 11464742}
+      dataB: []
+      dataC: []
+  usable:
+    info:
+      name: Usable
+      path: Crash Animation/Usable
+      id: -63506/765cd5ac-484e-4161-9557-5f6a254f020e
+      localID: 765cd5ac-484e-4161-9557-5f6a254f020e
+      parent: {fileID: 11492346}
+      mode: 0
+      data:
+      - {fileID: 11491270}
+      dataB: []
+      dataC: []
+  inUse:
+    info:
+      name: Active
+      path: Crash Animation/Active
+      id: -63506/8c440c15-6e8b-4196-8e6f-5fe9749c72e9
+      localID: 8c440c15-6e8b-4196-8e6f-5fe9749c72e9
+      parent: {fileID: 11492346}
+      mode: 0
+      data:
+      - {fileID: 11410994}
+      dataB: []
+      dataC: []
+  used:
+    info:
+      name: Used
+      path: Crash Animation/Used
+      id: -63506/2a95779e-862b-470e-bc99-49916c4cce30
+      localID: 2a95779e-862b-470e-bc99-49916c4cce30
+      parent: {fileID: 11492346}
+      mode: 0
+      data:
+      - {fileID: 11485188}
+      dataB: []
+      dataC: []
+  endWhileUnusable:
+    info:
+      name: End While Unusable
+      path: Crash Animation/End While Unusable
+      id: -63506/31013251-c52d-418f-b990-3e6f2f2e5bb5
+      localID: 31013251-c52d-418f-b990-3e6f2f2e5bb5
+      parent: {fileID: 11492346}
+      mode: 0
+      data:
+      - {fileID: 11404674}
+      dataB: []
+      dataC: []
+  occurrence: 0
+  animationName:
+    info:
+      name: Animation Name
+      path: Crash Animation/Animation Name
+      id: -63506/77ad57fe-0436-463b-82f2-15e5dbd84662
+      localID: 77ad57fe-0436-463b-82f2-15e5dbd84662
+      parent: {fileID: 11492346}
+      mode: 0
+      data:
+      - {fileID: 11406304}
+      dataB: []
+      dataC: []
+  speed:
+    info:
+      name: Speed
+      path: Crash Animation/Speed
+      id: -63506/97c8e6a5-0c2c-4a92-97b4-36e9caf6f7c4
+      localID: 97c8e6a5-0c2c-4a92-97b4-36e9caf6f7c4
+      parent: {fileID: 11492346}
+      mode: 0
+      data:
+      - {fileID: 11490558}
+      dataB: []
+      dataC: []
+  weight:
+    info:
+      name: Weight
+      path: Crash Animation/Weight
+      id: -63506/09b30845-e759-4c6f-bf8e-eb9caec24036
+      localID: 09b30845-e759-4c6f-bf8e-eb9caec24036
+      parent: {fileID: 11492346}
+      mode: 0
+      data:
+      - {fileID: 11415820}
+      dataB: []
+      dataC: []
+  target:
+    info:
+      name: Target
+      path: Crash Animation/Target
+      id: -63506/50a23dc5-6f4c-4c4d-b156-2954a24dd1ee
+      localID: 50a23dc5-6f4c-4c4d-b156-2954a24dd1ee
+      parent: {fileID: 11492346}
+      mode: 0
+      data:
+      - {fileID: 11477834}
+      dataB: []
+      dataC: []
+--- !u!114 &11493080
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 125666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73460de1a42c5d64884ae83214747f38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Crash Duration
+  value:
+    info:
+      name: Crash Duration
+      path: Crash Duration
+      id: -63516/36e06670-e99b-4c51-a366-51346402a31d
+      localID: 36e06670-e99b-4c51-a366-51346402a31d
+      parent: {fileID: 11493080}
+      mode: 0
+      data:
+      - {fileID: 11495142}
+      dataB: []
+      dataC: []
+  remember: 0
+--- !u!114 &11495142
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 125666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Float Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Crash Duration/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Crash Duration
+    path: Crash Duration
+    id: -63516/36e06670-e99b-4c51-a366-51346402a31d
+    localID: 36e06670-e99b-4c51-a366-51346402a31d
+    parent: {fileID: 11493080}
+    mode: 0
+    data:
+    - {fileID: 11495142}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 2
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 178848}
+  m_IsPrefabParent: 1

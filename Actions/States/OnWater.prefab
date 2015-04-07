@@ -1,0 +1,2802 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &147818
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 407140}
+  m_Layer: 0
+  m_Name: OnWater
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &151806
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 410358}
+  - 114: {fileID: 11402734}
+  - 114: {fileID: 11434288}
+  - 114: {fileID: 11448054}
+  - 114: {fileID: 11410658}
+  m_Layer: 0
+  m_Name: '@Settings'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &194272
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 452474}
+  - 114: {fileID: 11436688}
+  - 114: {fileID: 11411518}
+  - 114: {fileID: 11482018}
+  - 114: {fileID: 11492428}
+  - 114: {fileID: 11489014}
+  - 114: {fileID: 11496642}
+  - 114: {fileID: 11415996}
+  - 114: {fileID: 11428108}
+  - 114: {fileID: 11413762}
+  - 114: {fileID: 11443258}
+  - 114: {fileID: 11482012}
+  - 114: {fileID: 11424992}
+  - 114: {fileID: 11402058}
+  - 114: {fileID: 11443470}
+  - 114: {fileID: 11463168}
+  - 114: {fileID: 11437900}
+  - 114: {fileID: 11458984}
+  - 114: {fileID: 11473370}
+  - 114: {fileID: 11420028}
+  - 114: {fileID: 11408560}
+  - 114: {fileID: 11450540}
+  - 114: {fileID: 11484678}
+  - 114: {fileID: 11425170}
+  - 114: {fileID: 11449680}
+  - 114: {fileID: 11456372}
+  - 114: {fileID: 11409478}
+  - 114: {fileID: 11410810}
+  - 114: {fileID: 11441394}
+  - 114: {fileID: 11444264}
+  - 114: {fileID: 11490770}
+  - 114: {fileID: 11471474}
+  - 114: {fileID: 11444054}
+  - 114: {fileID: 11426818}
+  - 114: {fileID: 11463708}
+  - 114: {fileID: 11489106}
+  - 114: {fileID: 11405264}
+  - 114: {fileID: 11428136}
+  - 114: {fileID: 11491396}
+  - 114: {fileID: 11417232}
+  - 114: {fileID: 11479140}
+  - 114: {fileID: 11421482}
+  - 114: {fileID: 11409074}
+  m_Layer: 0
+  m_Name: Main
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &407140
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147818}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 410358}
+  - {fileID: 452474}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!4 &410358
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 151806}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 407140}
+  m_RootOrder: 0
+--- !u!4 &452474
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194272}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 407140}
+  m_RootOrder: 1
+--- !u!114 &11402058
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: '@Ready/Used/0'
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Used
+    path: '@Ready/Used'
+    id: -79980/51830dcf-fe9b-4484-9e82-b9a280942c93
+    localID: 51830dcf-fe9b-4484-9e82-b9a280942c93
+    parent: {fileID: 11482018}
+    mode: 0
+    data:
+    - {fileID: 11402058}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11402734
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 151806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e8a46b59a6b8eb489e122ad5fdef015, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Source
+  value:
+    info:
+      name: Source
+      path: Source
+      id: -79996/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+      localID: 0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+      parent: {fileID: 11402734}
+      mode: 0
+      data:
+      - {fileID: 11448054}
+      dataB: []
+      dataC: []
+  remember: 0
+--- !u!114 &11405264
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Float Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Water Check/Hit Point/Y/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Y
+    path: Water Check/Hit Point/Y
+    id: -79978/7c5e9c3d-00de-4753-b5b7-64c57bf301bf
+    localID: 7c5e9c3d-00de-4753-b5b7-64c57bf301bf
+    parent: {fileID: 11437900}
+    mode: 0
+    data:
+    - {fileID: 11405264}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11408560
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Water Check/Active/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Active
+    path: Water Check/Active
+    id: -79978/58438cd1-bd47-402d-b543-c376a647c218
+    localID: 58438cd1-bd47-402d-b543-c376a647c218
+    parent: {fileID: 11437900}
+    mode: 0
+    data:
+    - {fileID: 11408560}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11409074
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Float Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Water Check/Hit Distance/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Hit Distance
+    path: Water Check/Hit Distance
+    id: -79978/b94f05f9-f69a-4317-ac4b-454b1ac9aa70
+    localID: b94f05f9-f69a-4317-ac4b-454b1ac9aa70
+    parent: {fileID: 11437900}
+    mode: 0
+    data:
+    - {fileID: 11409074}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11409478
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Float Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Water Check/Direction/Y/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Y
+    path: Water Check/Direction/Y
+    id: -79978/b88d4d6d-6e03-4306-841f-4c56bfda0547
+    localID: b88d4d6d-6e03-4306-841f-4c56bfda0547
+    parent: {fileID: 11437900}
+    mode: 0
+    data:
+    - {fileID: 11409478}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11410658
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 151806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Game Object Data
+  target:
+    special:
+    - {fileID: 151806}
+    - {fileID: 151806}
+    - {fileID: 194272}
+    - {fileID: 194272}
+    - {fileID: 151806}
+    - {fileID: 151806}
+    - {fileID: 147818}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    search: ../../../../Visuals
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 11434288}
+    mode: 0
+  usage: 1
+  path: Visuals/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Visuals
+    path: Visuals
+    id: -79984/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+    localID: 33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+    parent: {fileID: 11434288}
+    mode: 0
+    data:
+    - {fileID: 11410658}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: {fileID: 0}
+--- !u!114 &11410810
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Float Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Water Check/Direction/Z/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Z
+    path: Water Check/Direction/Z
+    id: -79978/6e90abe4-41f6-4522-954a-d5ee3b3f0b9d
+    localID: 6e90abe4-41f6-4522-954a-d5ee3b3f0b9d
+    parent: {fileID: 11437900}
+    mode: 0
+    data:
+    - {fileID: 11410810}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11411518
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6a5365a236805842985225b566116a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: On Water
+  rate: 0
+  id: -107698
+  requirable:
+    info:
+      name: Requirable
+      path: On Water/Requirable
+      id: -79994/83408c16-1b4d-4a80-99d3-f459d98bf693
+      localID: 83408c16-1b4d-4a80-99d3-f459d98bf693
+      parent: {fileID: 11411518}
+      mode: 0
+      data:
+      - {fileID: 11489014}
+      dataB: []
+      dataC: []
+  ready:
+    info:
+      name: Ready
+      path: On Water/Ready
+      id: -79994/8936b831-f5c3-4127-81be-fb28c2702eed
+      localID: 8936b831-f5c3-4127-81be-fb28c2702eed
+      parent: {fileID: 11411518}
+      mode: 0
+      data:
+      - {fileID: 11496642}
+      dataB: []
+      dataC: []
+  usable:
+    info:
+      name: Usable
+      path: On Water/Usable
+      id: -79994/5d3c539f-1121-4791-95f9-f42199ba3426
+      localID: 5d3c539f-1121-4791-95f9-f42199ba3426
+      parent: {fileID: 11411518}
+      mode: 0
+      data:
+      - {fileID: 11415996}
+      dataB: []
+      dataC: []
+  inUse:
+    info:
+      name: Active
+      path: On Water/Active
+      id: -79994/18b3cf6c-52fe-4e3a-9497-c16b95c6abc4
+      localID: 18b3cf6c-52fe-4e3a-9497-c16b95c6abc4
+      parent: {fileID: 11411518}
+      mode: 0
+      data:
+      - {fileID: 11492428}
+      dataB: []
+      dataC: []
+  used:
+    info:
+      name: Used
+      path: On Water/Used
+      id: -79994/3883e6f5-e4bc-4e88-844c-b8109fdfa17a
+      localID: 3883e6f5-e4bc-4e88-844c-b8109fdfa17a
+      parent: {fileID: 11411518}
+      mode: 0
+      data:
+      - {fileID: 11428108}
+      dataB: []
+      dataC: []
+  endWhileUnusable:
+    info:
+      name: End While Unusable
+      path: On Water/End While Unusable
+      id: -79994/32105d25-f0bf-4ebd-b965-4166d558fcce
+      localID: 32105d25-f0bf-4ebd-b965-4166d558fcce
+      parent: {fileID: 11411518}
+      mode: 0
+      data:
+      - {fileID: 11463168}
+      dataB: []
+      dataC: []
+--- !u!114 &11413762
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: '@Ready/Active/0'
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Active
+    path: '@Ready/Active'
+    id: -79980/eb100418-bcc3-431d-80bd-f6e42344c05c
+    localID: eb100418-bcc3-431d-80bd-f6e42344c05c
+    parent: {fileID: 11482018}
+    mode: 0
+    data:
+    - {fileID: 11413762}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11415996
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: On Water/Usable/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Usable
+    path: On Water/Usable
+    id: -79994/5d3c539f-1121-4791-95f9-f42199ba3426
+    localID: 5d3c539f-1121-4791-95f9-f42199ba3426
+    parent: {fileID: 11411518}
+    mode: 0
+    data:
+    - {fileID: 11415996}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 1
+--- !u!114 &11417232
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Float Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Water Check/Hit Normal/X/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: X
+    path: Water Check/Hit Normal/X
+    id: -79978/e3bc0c70-f04a-4b04-befa-85524e898892
+    localID: e3bc0c70-f04a-4b04-befa-85524e898892
+    parent: {fileID: 11437900}
+    mode: 0
+    data:
+    - {fileID: 11417232}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11420028
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Water Check/Usable/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Usable
+    path: Water Check/Usable
+    id: -79978/5563bb6a-bdcf-4b19-acef-b4baa3feb793
+    localID: 5563bb6a-bdcf-4b19-acef-b4baa3feb793
+    parent: {fileID: 11437900}
+    mode: 0
+    data:
+    - {fileID: 11420028}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 1
+--- !u!114 &11421482
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Float Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Water Check/Hit Normal/Z/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Z
+    path: Water Check/Hit Normal/Z
+    id: -79978/a3fd8ac9-d2c6-4d00-844c-e895efe63912
+    localID: a3fd8ac9-d2c6-4d00-844c-e895efe63912
+    parent: {fileID: 11437900}
+    mode: 0
+    data:
+    - {fileID: 11421482}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11424992
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: '@Ready/Usable/0'
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Usable
+    path: '@Ready/Usable'
+    id: -79980/413612a0-7259-4da0-911d-8842d8e79f56
+    localID: 413612a0-7259-4da0-911d-8842d8e79f56
+    parent: {fileID: 11482018}
+    mode: 0
+    data:
+    - {fileID: 11424992}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11425170
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Float Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Water Check/Distance/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Distance
+    path: Water Check/Distance
+    id: -79978/210345fd-dfed-4d0c-96c1-ddbf13836d4f
+    localID: 210345fd-dfed-4d0c-96c1-ddbf13836d4f
+    parent: {fileID: 11437900}
+    mode: 0
+    data:
+    - {fileID: 11425170}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 1
+--- !u!114 &11426818
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Game Object Data
+  target:
+    special:
+    - {fileID: 194272}
+    - {fileID: 194272}
+    - {fileID: 151806}
+    - {fileID: 151806}
+    - {fileID: 194272}
+    - {fileID: 194272}
+    - {fileID: 147818}
+    - {fileID: 194272}
+    - {fileID: 194272}
+    - {fileID: 194272}
+    - {fileID: 194272}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    - '[Owner]'
+    - '[Action]'
+    - '[ActionLink]'
+    - '[StateLink]'
+    search: ../@Settings
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 11437900}
+    mode: 0
+  usage: 1
+  path: Water Check/Source/0
+  referenceID: -70214/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+  referencePath: Source
+  attribute:
+    name: Source
+    path: Water Check/Source
+    id: -79978/9b3fc38c-9478-4f4d-8998-aff605f06ebf
+    localID: 9b3fc38c-9478-4f4d-8998-aff605f06ebf
+    parent: {fileID: 11437900}
+    mode: 0
+    data:
+    - {fileID: 11426818}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: {fileID: 0}
+--- !u!114 &11428108
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: On Water/Used/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Used
+    path: On Water/Used
+    id: -79994/3883e6f5-e4bc-4e88-844c-b8109fdfa17a
+    localID: 3883e6f5-e4bc-4e88-844c-b8109fdfa17a
+    parent: {fileID: 11411518}
+    mode: 0
+    data:
+    - {fileID: 11428108}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11428136
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Float Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Water Check/Hit Point/Z/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Z
+    path: Water Check/Hit Point/Z
+    id: -79978/881ce71a-2470-47dd-a215-4dc2077d4507
+    localID: 881ce71a-2470-47dd-a215-4dc2077d4507
+    parent: {fileID: 11437900}
+    mode: 0
+    data:
+    - {fileID: 11428136}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11434288
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 151806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e8a46b59a6b8eb489e122ad5fdef015, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Visuals
+  value:
+    info:
+      name: Visuals
+      path: Visuals
+      id: -79984/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+      localID: 33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+      parent: {fileID: 11434288}
+      mode: 0
+      data:
+      - {fileID: 11410658}
+      dataB: []
+      dataC: []
+  remember: 0
+--- !u!114 &11436688
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5701b12795b13f745a1a7a75b69238fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  total: 0
+  table:
+  - name: '@Ready'
+    stateTable: {fileID: 0}
+    id: -117420
+    target: {fileID: 11482018}
+    empty: 0
+    requirements:
+    - data:
+      - name: '@Ready'
+        stateTable: {fileID: 0}
+        id: -117420
+        target: {fileID: 11482018}
+        requireOn: 0
+        requireOff: 0
+      - name: Water Check
+        stateTable: {fileID: 11436688}
+        id: -72490
+        target: {fileID: 11437900}
+        requireOn: 1
+        requireOff: 0
+  - name: Water Check
+    stateTable: {fileID: 11436688}
+    id: -72490
+    target: {fileID: 11437900}
+    empty: 0
+    requirements:
+    - data:
+      - name: '@Ready'
+        stateTable: {fileID: 11436688}
+        id: -117420
+        target: {fileID: 11482018}
+        requireOn: 0
+        requireOff: 0
+      - name: Water Check
+        stateTable: {fileID: 11436688}
+        id: -72490
+        target: {fileID: 11437900}
+        requireOn: 0
+        requireOff: 0
+  tableOff:
+  - name: '@Ready'
+    stateTable: {fileID: 0}
+    id: -117420
+    target: {fileID: 11482018}
+    empty: 0
+    requirements:
+    - data:
+      - name: '@Ready'
+        stateTable: {fileID: 0}
+        id: -117420
+        target: {fileID: 11482018}
+        requireOn: 0
+        requireOff: 0
+      - name: Water Check
+        stateTable: {fileID: 11436688}
+        id: -72490
+        target: {fileID: 11437900}
+        requireOn: 0
+        requireOff: 0
+  - name: Water Check
+    stateTable: {fileID: 11436688}
+    id: -72490
+    target: {fileID: 11437900}
+    empty: 0
+    requirements:
+    - data:
+      - name: '@Ready'
+        stateTable: {fileID: 11436688}
+        id: -117420
+        target: {fileID: 11482018}
+        requireOn: 0
+        requireOff: 0
+      - name: Water Check
+        stateTable: {fileID: 11436688}
+        id: -72490
+        target: {fileID: 11437900}
+        requireOn: 0
+        requireOff: 0
+  advanced: 0
+  scripts:
+  - {fileID: 11482018}
+  - {fileID: 11437900}
+  parts: []
+  isFixed: 1
+--- !u!114 &11437900
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d483bbf7771b8d4eb254f917061fe72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Water Check
+  rate: 1
+  id: -72490
+  requirable:
+    info:
+      name: Requirable
+      path: Water Check/Requirable
+      id: -79978/d7cf7e9c-d4d4-4c77-820a-b7a768f37b1a
+      localID: d7cf7e9c-d4d4-4c77-820a-b7a768f37b1a
+      parent: {fileID: 11437900}
+      mode: 0
+      data:
+      - {fileID: 11458984}
+      dataB: []
+      dataC: []
+  ready:
+    info:
+      name: Ready
+      path: Water Check/Ready
+      id: -79978/475f0808-c7f0-4f1d-bc06-1f85dd373352
+      localID: 475f0808-c7f0-4f1d-bc06-1f85dd373352
+      parent: {fileID: 11437900}
+      mode: 0
+      data:
+      - {fileID: 11473370}
+      dataB: []
+      dataC: []
+  usable:
+    info:
+      name: Usable
+      path: Water Check/Usable
+      id: -79978/5563bb6a-bdcf-4b19-acef-b4baa3feb793
+      localID: 5563bb6a-bdcf-4b19-acef-b4baa3feb793
+      parent: {fileID: 11437900}
+      mode: 0
+      data:
+      - {fileID: 11420028}
+      dataB: []
+      dataC: []
+  inUse:
+    info:
+      name: Active
+      path: Water Check/Active
+      id: -79978/58438cd1-bd47-402d-b543-c376a647c218
+      localID: 58438cd1-bd47-402d-b543-c376a647c218
+      parent: {fileID: 11437900}
+      mode: 0
+      data:
+      - {fileID: 11408560}
+      dataB: []
+      dataC: []
+  used:
+    info:
+      name: Used
+      path: Water Check/Used
+      id: -79978/de1f00b9-c7f3-410c-8aba-99724e553d13
+      localID: de1f00b9-c7f3-410c-8aba-99724e553d13
+      parent: {fileID: 11437900}
+      mode: 0
+      data:
+      - {fileID: 11450540}
+      dataB: []
+      dataC: []
+  endWhileUnusable:
+    info:
+      name: End While Unusable
+      path: Water Check/End While Unusable
+      id: -79978/d629d686-ecd1-4f54-bb80-f9532e3814e7
+      localID: d629d686-ecd1-4f54-bb80-f9532e3814e7
+      parent: {fileID: 11437900}
+      mode: 0
+      data:
+      - {fileID: 11484678}
+      dataB: []
+      dataC: []
+  occurrence: 0
+  distance:
+    info:
+      name: Distance
+      path: Water Check/Distance
+      id: -79978/210345fd-dfed-4d0c-96c1-ddbf13836d4f
+      localID: 210345fd-dfed-4d0c-96c1-ddbf13836d4f
+      parent: {fileID: 11437900}
+      mode: 0
+      data:
+      - {fileID: 11425170}
+      dataB: []
+      dataC: []
+  debugColor: {r: 0, g: .638554096, b: 1, a: 1}
+  direction:
+    info:
+      name: Direction
+      path: Water Check/Direction
+      id: -79978/d60c2381-244b-4ef5-8a1c-76d3ee3043c3
+      localID: d60c2381-244b-4ef5-8a1c-76d3ee3043c3
+      parent: {fileID: 11437900}
+      mode: 0
+      data:
+      - {fileID: 11449680}
+      dataB: []
+      dataC: []
+    x:
+      info:
+        name: X
+        path: Water Check/Direction/X
+        id: -79978/f9c8bf6c-cd3a-45c5-8107-136f9e46239a
+        localID: f9c8bf6c-cd3a-45c5-8107-136f9e46239a
+        parent: {fileID: 11437900}
+        mode: 0
+        data:
+        - {fileID: 11456372}
+        dataB: []
+        dataC: []
+    y:
+      info:
+        name: Y
+        path: Water Check/Direction/Y
+        id: -79978/b88d4d6d-6e03-4306-841f-4c56bfda0547
+        localID: b88d4d6d-6e03-4306-841f-4c56bfda0547
+        parent: {fileID: 11437900}
+        mode: 0
+        data:
+        - {fileID: 11409478}
+        dataB: []
+        dataC: []
+    z:
+      info:
+        name: Z
+        path: Water Check/Direction/Z
+        id: -79978/6e90abe4-41f6-4522-954a-d5ee3b3f0b9d
+        localID: 6e90abe4-41f6-4522-954a-d5ee3b3f0b9d
+        parent: {fileID: 11437900}
+        mode: 0
+        data:
+        - {fileID: 11410810}
+        dataB: []
+        dataC: []
+  offset:
+    info:
+      name: Offset
+      path: Water Check/Offset
+      id: -79978/261241ab-9c7e-411b-abb7-7ee37eddeec9
+      localID: 261241ab-9c7e-411b-abb7-7ee37eddeec9
+      parent: {fileID: 11437900}
+      mode: 0
+      data:
+      - {fileID: 11441394}
+      dataB: []
+      dataC: []
+    x:
+      info:
+        name: X
+        path: Water Check/Offset/X
+        id: -79978/b2138124-3e64-4187-a390-ba31ee4473cb
+        localID: b2138124-3e64-4187-a390-ba31ee4473cb
+        parent: {fileID: 11437900}
+        mode: 0
+        data:
+        - {fileID: 11444264}
+        dataB: []
+        dataC: []
+    y:
+      info:
+        name: Y
+        path: Water Check/Offset/Y
+        id: -79978/099aad98-c16f-49f1-a225-ac0e0e7b691b
+        localID: 099aad98-c16f-49f1-a225-ac0e0e7b691b
+        parent: {fileID: 11437900}
+        mode: 0
+        data:
+        - {fileID: 11490770}
+        dataB: []
+        dataC: []
+    z:
+      info:
+        name: Z
+        path: Water Check/Offset/Z
+        id: -79978/2f10e345-b782-4bd9-989c-6d15a4f52254
+        localID: 2f10e345-b782-4bd9-989c-6d15a4f52254
+        parent: {fileID: 11437900}
+        mode: 0
+        data:
+        - {fileID: 11471474}
+        dataB: []
+        dataC: []
+  source:
+    info:
+      name: Source
+      path: Water Check/Source
+      id: -79978/9b3fc38c-9478-4f4d-8998-aff605f06ebf
+      localID: 9b3fc38c-9478-4f4d-8998-aff605f06ebf
+      parent: {fileID: 11437900}
+      mode: 0
+      data:
+      - {fileID: 11426818}
+      dataB: []
+      dataC: []
+  hitPoint:
+    info:
+      name: Hit Point
+      path: Water Check/Hit Point
+      id: -79978/bc95ad49-870f-4a41-b2b7-0913fc7163aa
+      localID: bc95ad49-870f-4a41-b2b7-0913fc7163aa
+      parent: {fileID: 11437900}
+      mode: 0
+      data:
+      - {fileID: 11463708}
+      dataB: []
+      dataC: []
+    x:
+      info:
+        name: X
+        path: Water Check/Hit Point/X
+        id: -79978/ea322078-1a5b-4b4e-b232-5063cc872a0f
+        localID: ea322078-1a5b-4b4e-b232-5063cc872a0f
+        parent: {fileID: 11437900}
+        mode: 0
+        data:
+        - {fileID: 11489106}
+        dataB: []
+        dataC: []
+    y:
+      info:
+        name: Y
+        path: Water Check/Hit Point/Y
+        id: -79978/7c5e9c3d-00de-4753-b5b7-64c57bf301bf
+        localID: 7c5e9c3d-00de-4753-b5b7-64c57bf301bf
+        parent: {fileID: 11437900}
+        mode: 0
+        data:
+        - {fileID: 11405264}
+        dataB: []
+        dataC: []
+    z:
+      info:
+        name: Z
+        path: Water Check/Hit Point/Z
+        id: -79978/881ce71a-2470-47dd-a215-4dc2077d4507
+        localID: 881ce71a-2470-47dd-a215-4dc2077d4507
+        parent: {fileID: 11437900}
+        mode: 0
+        data:
+        - {fileID: 11428136}
+        dataB: []
+        dataC: []
+  hitNormal:
+    info:
+      name: Hit Normal
+      path: Water Check/Hit Normal
+      id: -79978/45f8adf8-74cc-4f13-84bb-dc8f332335df
+      localID: 45f8adf8-74cc-4f13-84bb-dc8f332335df
+      parent: {fileID: 11437900}
+      mode: 0
+      data:
+      - {fileID: 11491396}
+      dataB: []
+      dataC: []
+    x:
+      info:
+        name: X
+        path: Water Check/Hit Normal/X
+        id: -79978/e3bc0c70-f04a-4b04-befa-85524e898892
+        localID: e3bc0c70-f04a-4b04-befa-85524e898892
+        parent: {fileID: 11437900}
+        mode: 0
+        data:
+        - {fileID: 11417232}
+        dataB: []
+        dataC: []
+    y:
+      info:
+        name: Y
+        path: Water Check/Hit Normal/Y
+        id: -79978/2f5ce897-d327-4972-8ac2-3d588cdf1ca4
+        localID: 2f5ce897-d327-4972-8ac2-3d588cdf1ca4
+        parent: {fileID: 11437900}
+        mode: 0
+        data:
+        - {fileID: 11479140}
+        dataB: []
+        dataC: []
+    z:
+      info:
+        name: Z
+        path: Water Check/Hit Normal/Z
+        id: -79978/a3fd8ac9-d2c6-4d00-844c-e895efe63912
+        localID: a3fd8ac9-d2c6-4d00-844c-e895efe63912
+        parent: {fileID: 11437900}
+        mode: 0
+        data:
+        - {fileID: 11421482}
+        dataB: []
+        dataC: []
+  hitDistance:
+    info:
+      name: Hit Distance
+      path: Water Check/Hit Distance
+      id: -79978/b94f05f9-f69a-4317-ac4b-454b1ac9aa70
+      localID: b94f05f9-f69a-4317-ac4b-454b1ac9aa70
+      parent: {fileID: 11437900}
+      mode: 0
+      data:
+      - {fileID: 11409074}
+      dataB: []
+      dataC: []
+  layers:
+    serializedVersion: 2
+    m_Bits: 16
+  relative:
+    info:
+      name: Relative
+      path: Water Check/Relative
+      id: -79978/58ea4168-e78c-4bf8-81d0-6a155288a006
+      localID: 58ea4168-e78c-4bf8-81d0-6a155288a006
+      parent: {fileID: 11437900}
+      mode: 0
+      data:
+      - {fileID: 11444054}
+      dataB: []
+      dataC: []
+--- !u!114 &11441394
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bd276b9f61cc614aaa69e18d0ef39ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Vector3Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Water Check/Offset/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Offset
+    path: Water Check/Offset
+    id: -79978/261241ab-9c7e-411b-abb7-7ee37eddeec9
+    localID: 261241ab-9c7e-411b-abb7-7ee37eddeec9
+    parent: {fileID: 11437900}
+    mode: 0
+    data:
+    - {fileID: 11441394}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: {x: 0, y: 0, z: 0}
+--- !u!114 &11443258
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: '@Ready/Requirable/0'
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Requirable
+    path: '@Ready/Requirable'
+    id: -79980/eef08438-83fa-43f5-ac80-9bf4c016d3ae
+    localID: eef08438-83fa-43f5-ac80-9bf4c016d3ae
+    parent: {fileID: 11482018}
+    mode: 0
+    data:
+    - {fileID: 11443258}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 1
+--- !u!114 &11443470
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: '@Ready/End While Unusable/0'
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: End While Unusable
+    path: '@Ready/End While Unusable'
+    id: -79980/73ec6cb9-33a3-4ebd-a953-6d2cc51519a8
+    localID: 73ec6cb9-33a3-4ebd-a953-6d2cc51519a8
+    parent: {fileID: 11482018}
+    mode: 0
+    data:
+    - {fileID: 11443470}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11444054
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Water Check/Relative/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Relative
+    path: Water Check/Relative
+    id: -79978/58ea4168-e78c-4bf8-81d0-6a155288a006
+    localID: 58ea4168-e78c-4bf8-81d0-6a155288a006
+    parent: {fileID: 11437900}
+    mode: 0
+    data:
+    - {fileID: 11444054}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11444264
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Float Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Water Check/Offset/X/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: X
+    path: Water Check/Offset/X
+    id: -79978/b2138124-3e64-4187-a390-ba31ee4473cb
+    localID: b2138124-3e64-4187-a390-ba31ee4473cb
+    parent: {fileID: 11437900}
+    mode: 0
+    data:
+    - {fileID: 11444264}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11448054
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 151806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Game Object Data
+  target:
+    special:
+    - {fileID: 151806}
+    - {fileID: 151806}
+    - {fileID: 194272}
+    - {fileID: 194272}
+    - {fileID: 151806}
+    - {fileID: 151806}
+    - {fileID: 147818}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    search: ../../../../
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 11402734}
+    mode: 0
+  usage: 1
+  path: Source/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Source
+    path: Source
+    id: -79996/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+    localID: 0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+    parent: {fileID: 11402734}
+    mode: 0
+    data:
+    - {fileID: 11448054}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: {fileID: 0}
+--- !u!114 &11449680
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bd276b9f61cc614aaa69e18d0ef39ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Vector3Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Water Check/Direction/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Direction
+    path: Water Check/Direction
+    id: -79978/d60c2381-244b-4ef5-8a1c-76d3ee3043c3
+    localID: d60c2381-244b-4ef5-8a1c-76d3ee3043c3
+    parent: {fileID: 11437900}
+    mode: 0
+    data:
+    - {fileID: 11449680}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: {x: -0, y: -.200000003, z: -0}
+--- !u!114 &11450540
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Water Check/Used/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Used
+    path: Water Check/Used
+    id: -79978/de1f00b9-c7f3-410c-8aba-99724e553d13
+    localID: de1f00b9-c7f3-410c-8aba-99724e553d13
+    parent: {fileID: 11437900}
+    mode: 0
+    data:
+    - {fileID: 11450540}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11456372
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Float Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Water Check/Direction/X/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: X
+    path: Water Check/Direction/X
+    id: -79978/f9c8bf6c-cd3a-45c5-8107-136f9e46239a
+    localID: f9c8bf6c-cd3a-45c5-8107-136f9e46239a
+    parent: {fileID: 11437900}
+    mode: 0
+    data:
+    - {fileID: 11456372}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11458984
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Water Check/Requirable/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Requirable
+    path: Water Check/Requirable
+    id: -79978/d7cf7e9c-d4d4-4c77-820a-b7a768f37b1a
+    localID: d7cf7e9c-d4d4-4c77-820a-b7a768f37b1a
+    parent: {fileID: 11437900}
+    mode: 0
+    data:
+    - {fileID: 11458984}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 1
+--- !u!114 &11463168
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: On Water/End While Unusable/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: End While Unusable
+    path: On Water/End While Unusable
+    id: -79994/32105d25-f0bf-4ebd-b965-4166d558fcce
+    localID: 32105d25-f0bf-4ebd-b965-4166d558fcce
+    parent: {fileID: 11411518}
+    mode: 0
+    data:
+    - {fileID: 11463168}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11463708
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bd276b9f61cc614aaa69e18d0ef39ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Vector3Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Water Check/Hit Point/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Hit Point
+    path: Water Check/Hit Point
+    id: -79978/bc95ad49-870f-4a41-b2b7-0913fc7163aa
+    localID: bc95ad49-870f-4a41-b2b7-0913fc7163aa
+    parent: {fileID: 11437900}
+    mode: 0
+    data:
+    - {fileID: 11463708}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: {x: 0, y: 0, z: 0}
+--- !u!114 &11471474
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Float Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Water Check/Offset/Z/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Z
+    path: Water Check/Offset/Z
+    id: -79978/2f10e345-b782-4bd9-989c-6d15a4f52254
+    localID: 2f10e345-b782-4bd9-989c-6d15a4f52254
+    parent: {fileID: 11437900}
+    mode: 0
+    data:
+    - {fileID: 11471474}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11473370
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Water Check/Ready/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Ready
+    path: Water Check/Ready
+    id: -79978/475f0808-c7f0-4f1d-bc06-1f85dd373352
+    localID: 475f0808-c7f0-4f1d-bc06-1f85dd373352
+    parent: {fileID: 11437900}
+    mode: 0
+    data:
+    - {fileID: 11473370}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11479140
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Float Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Water Check/Hit Normal/Y/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Y
+    path: Water Check/Hit Normal/Y
+    id: -79978/2f5ce897-d327-4972-8ac2-3d588cdf1ca4
+    localID: 2f5ce897-d327-4972-8ac2-3d588cdf1ca4
+    parent: {fileID: 11437900}
+    mode: 0
+    data:
+    - {fileID: 11479140}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11482012
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: '@Ready/Ready/0'
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Ready
+    path: '@Ready/Ready'
+    id: -79980/76a5b328-0f98-493a-9902-5734b325bd3c
+    localID: 76a5b328-0f98-493a-9902-5734b325bd3c
+    parent: {fileID: 11482018}
+    mode: 0
+    data:
+    - {fileID: 11482012}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 1
+--- !u!114 &11482018
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d2c3095ed3786d4cb99a269e5e55882, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: '@Ready'
+  rate: 1
+  id: -117420
+  requirable:
+    info:
+      name: Requirable
+      path: '@Ready/Requirable'
+      id: -79980/eef08438-83fa-43f5-ac80-9bf4c016d3ae
+      localID: eef08438-83fa-43f5-ac80-9bf4c016d3ae
+      parent: {fileID: 11482018}
+      mode: 0
+      data:
+      - {fileID: 11443258}
+      dataB: []
+      dataC: []
+  ready:
+    info:
+      name: Ready
+      path: '@Ready/Ready'
+      id: -79980/76a5b328-0f98-493a-9902-5734b325bd3c
+      localID: 76a5b328-0f98-493a-9902-5734b325bd3c
+      parent: {fileID: 11482018}
+      mode: 0
+      data:
+      - {fileID: 11482012}
+      dataB: []
+      dataC: []
+  usable:
+    info:
+      name: Usable
+      path: '@Ready/Usable'
+      id: -79980/413612a0-7259-4da0-911d-8842d8e79f56
+      localID: 413612a0-7259-4da0-911d-8842d8e79f56
+      parent: {fileID: 11482018}
+      mode: 0
+      data:
+      - {fileID: 11424992}
+      dataB: []
+      dataC: []
+  inUse:
+    info:
+      name: Active
+      path: '@Ready/Active'
+      id: -79980/eb100418-bcc3-431d-80bd-f6e42344c05c
+      localID: eb100418-bcc3-431d-80bd-f6e42344c05c
+      parent: {fileID: 11482018}
+      mode: 0
+      data:
+      - {fileID: 11413762}
+      dataB: []
+      dataC: []
+  used:
+    info:
+      name: Used
+      path: '@Ready/Used'
+      id: -79980/51830dcf-fe9b-4484-9e82-b9a280942c93
+      localID: 51830dcf-fe9b-4484-9e82-b9a280942c93
+      parent: {fileID: 11482018}
+      mode: 0
+      data:
+      - {fileID: 11402058}
+      dataB: []
+      dataC: []
+  endWhileUnusable:
+    info:
+      name: End While Unusable
+      path: '@Ready/End While Unusable'
+      id: -79980/73ec6cb9-33a3-4ebd-a953-6d2cc51519a8
+      localID: 73ec6cb9-33a3-4ebd-a953-6d2cc51519a8
+      parent: {fileID: 11482018}
+      mode: 0
+      data:
+      - {fileID: 11443470}
+      dataB: []
+      dataC: []
+  occurrence: 0
+--- !u!114 &11484678
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Water Check/End While Unusable/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: End While Unusable
+    path: Water Check/End While Unusable
+    id: -79978/d629d686-ecd1-4f54-bb80-f9532e3814e7
+    localID: d629d686-ecd1-4f54-bb80-f9532e3814e7
+    parent: {fileID: 11437900}
+    mode: 0
+    data:
+    - {fileID: 11484678}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11489014
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: On Water/Requirable/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Requirable
+    path: On Water/Requirable
+    id: -79994/83408c16-1b4d-4a80-99d3-f459d98bf693
+    localID: 83408c16-1b4d-4a80-99d3-f459d98bf693
+    parent: {fileID: 11411518}
+    mode: 0
+    data:
+    - {fileID: 11489014}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 1
+--- !u!114 &11489106
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Float Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Water Check/Hit Point/X/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: X
+    path: Water Check/Hit Point/X
+    id: -79978/ea322078-1a5b-4b4e-b232-5063cc872a0f
+    localID: ea322078-1a5b-4b4e-b232-5063cc872a0f
+    parent: {fileID: 11437900}
+    mode: 0
+    data:
+    - {fileID: 11489106}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11490770
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Float Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Water Check/Offset/Y/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Y
+    path: Water Check/Offset/Y
+    id: -79978/099aad98-c16f-49f1-a225-ac0e0e7b691b
+    localID: 099aad98-c16f-49f1-a225-ac0e0e7b691b
+    parent: {fileID: 11437900}
+    mode: 0
+    data:
+    - {fileID: 11490770}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11491396
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bd276b9f61cc614aaa69e18d0ef39ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Vector3Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Water Check/Hit Normal/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Hit Normal
+    path: Water Check/Hit Normal
+    id: -79978/45f8adf8-74cc-4f13-84bb-dc8f332335df
+    localID: 45f8adf8-74cc-4f13-84bb-dc8f332335df
+    parent: {fileID: 11437900}
+    mode: 0
+    data:
+    - {fileID: 11491396}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: {x: 0, y: 0, z: 0}
+--- !u!114 &11492428
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: On Water/Active/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Active
+    path: On Water/Active
+    id: -79994/18b3cf6c-52fe-4e3a-9497-c16b95c6abc4
+    localID: 18b3cf6c-52fe-4e3a-9497-c16b95c6abc4
+    parent: {fileID: 11411518}
+    mode: 0
+    data:
+    - {fileID: 11492428}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11496642
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: On Water/Ready/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Ready
+    path: On Water/Ready
+    id: -79994/8936b831-f5c3-4127-81be-fb28c2702eed
+    localID: 8936b831-f5c3-4127-81be-fb28c2702eed
+    parent: {fileID: 11411518}
+    mode: 0
+    data:
+    - {fileID: 11496642}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 147818}
+  m_IsPrefabParent: 1

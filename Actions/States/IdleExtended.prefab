@@ -1,0 +1,2658 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &156288
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 479156}
+  - 114: {fileID: 11424168}
+  - 114: {fileID: 11485834}
+  - 114: {fileID: 11474318}
+  - 114: {fileID: 11467010}
+  - 114: {fileID: 11411678}
+  - 114: {fileID: 11470524}
+  - 114: {fileID: 11494388}
+  - 114: {fileID: 11447814}
+  - 114: {fileID: 11433136}
+  - 114: {fileID: 11484124}
+  - 114: {fileID: 11474690}
+  - 114: {fileID: 11470610}
+  - 114: {fileID: 11408676}
+  - 114: {fileID: 11418166}
+  - 114: {fileID: 11484902}
+  - 114: {fileID: 11412450}
+  - 114: {fileID: 11436558}
+  - 114: {fileID: 11490204}
+  - 114: {fileID: 11426194}
+  - 114: {fileID: 11444274}
+  - 114: {fileID: 11468684}
+  - 114: {fileID: 11434798}
+  - 114: {fileID: 11403646}
+  - 114: {fileID: 11448858}
+  - 114: {fileID: 11455154}
+  - 114: {fileID: 11432618}
+  - 114: {fileID: 11482750}
+  - 114: {fileID: 11408510}
+  - 114: {fileID: 11473748}
+  - 114: {fileID: 11453666}
+  - 114: {fileID: 11457920}
+  - 114: {fileID: 11488020}
+  - 114: {fileID: 11408928}
+  - 114: {fileID: 11434282}
+  - 114: {fileID: 11478400}
+  - 114: {fileID: 11455206}
+  m_Layer: 0
+  m_Name: Main
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &181058
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 443610}
+  - 114: {fileID: 11432748}
+  - 114: {fileID: 11442116}
+  - 114: {fileID: 11462798}
+  - 114: {fileID: 11437674}
+  - 114: {fileID: 11420250}
+  - 114: {fileID: 11416688}
+  - 114: {fileID: 11489718}
+  - 114: {fileID: 11443776}
+  m_Layer: 0
+  m_Name: '@Settings'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &186412
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 429340}
+  m_Layer: 0
+  m_Name: IdleExtended
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &429340
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 186412}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 443610}
+  - {fileID: 479156}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!4 &443610
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 181058}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 429340}
+  m_RootOrder: 0
+--- !u!4 &479156
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156288}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 429340}
+  m_RootOrder: 1
+--- !u!114 &11403646
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Float Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Play Idle Animation/Speed/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Speed
+    path: Play Idle Animation/Speed
+    id: -39812/b11b4576-242d-431c-a7c1-4683167a760d
+    localID: b11b4576-242d-431c-a7c1-4683167a760d
+    parent: {fileID: 11467010}
+    mode: 0
+    data:
+    - {fileID: 11403646}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 1
+--- !u!114 &11408510
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Timer Prepare/Requirable/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Requirable
+    path: Timer Prepare/Requirable
+    id: -39888/ead7f35c-22fa-4957-b5d8-8a94a1aeece0
+    localID: ead7f35c-22fa-4957-b5d8-8a94a1aeece0
+    parent: {fileID: 11482750}
+    mode: 0
+    data:
+    - {fileID: 11408510}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 1
+--- !u!114 &11408676
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: '@Ready/Usable/0'
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Usable
+    path: '@Ready/Usable'
+    id: -39796/583a6840-222e-4e2b-b6e1-f696e28f6893
+    localID: 583a6840-222e-4e2b-b6e1-f696e28f6893
+    parent: {fileID: 11474318}
+    mode: 0
+    data:
+    - {fileID: 11408676}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11408928
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Timer Prepare/End While Unusable/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: End While Unusable
+    path: Timer Prepare/End While Unusable
+    id: -39888/1bdc8c0f-843c-4218-9c34-a34136d80c62
+    localID: 1bdc8c0f-843c-4218-9c34-a34136d80c62
+    parent: {fileID: 11482750}
+    mode: 0
+    data:
+    - {fileID: 11408928}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 1
+--- !u!114 &11411678
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Idle (Extended)/Active/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Active
+    path: Idle (Extended)/Active
+    id: -39806/60d63d3c-d63e-494f-b5ce-bf6cdea16368
+    localID: 60d63d3c-d63e-494f-b5ce-bf6cdea16368
+    parent: {fileID: 11485834}
+    mode: 0
+    data:
+    - {fileID: 11411678}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11412450
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Play Idle Animation/Requirable/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Requirable
+    path: Play Idle Animation/Requirable
+    id: -39812/2e122735-65aa-45b1-afa1-1e54c638dca4
+    localID: 2e122735-65aa-45b1-afa1-1e54c638dca4
+    parent: {fileID: 11467010}
+    mode: 0
+    data:
+    - {fileID: 11412450}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 1
+--- !u!114 &11416688
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 181058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3e9984a5f3f19942be359930227796e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute String Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Animation/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Animation
+    path: Animation
+    id: -39808/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
+    localID: 7e894ef6-a99f-450f-b42a-e1aa6c29abb9
+    parent: {fileID: 11432748}
+    mode: 0
+    data:
+    - {fileID: 11416688}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: IdleExtended
+  characterLimit: 0
+  allowed: []
+  disallowed: []
+--- !u!114 &11418166
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: '@Ready/Used/0'
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Used
+    path: '@Ready/Used'
+    id: -39796/86333a4c-af41-4289-aeb0-8e6a6420db5e
+    localID: 86333a4c-af41-4289-aeb0-8e6a6420db5e
+    parent: {fileID: 11474318}
+    mode: 0
+    data:
+    - {fileID: 11418166}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11420250
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 181058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Game Object Data
+  target:
+    special:
+    - {fileID: 181058}
+    - {fileID: 181058}
+    - {fileID: 156288}
+    - {fileID: 156288}
+    - {fileID: 181058}
+    - {fileID: 181058}
+    - {fileID: 186412}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    search: ../../../../Visuals
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 11462798}
+    mode: 0
+  usage: 1
+  path: Visuals/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Visuals
+    path: Visuals
+    id: -39810/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+    localID: 33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+    parent: {fileID: 11462798}
+    mode: 0
+    data:
+    - {fileID: 11420250}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: {fileID: 0}
+--- !u!114 &11424168
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5701b12795b13f745a1a7a75b69238fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  total: 0
+  table:
+  - name: '@Ready'
+    stateTable: {fileID: 0}
+    id: -994872
+    target: {fileID: 11474318}
+    empty: 0
+    requirements:
+    - data:
+      - name: '@Ready'
+        stateTable: {fileID: 0}
+        id: -994872
+        target: {fileID: 11474318}
+        requireOn: 0
+        requireOff: 0
+      - name: Play Idle Animation
+        stateTable: {fileID: 0}
+        id: -1001040
+        target: {fileID: 11467010}
+        requireOn: 0
+        requireOff: 0
+      - name: Timer Prepare
+        stateTable: {fileID: 11424168}
+        id: -8114
+        target: {fileID: 11482750}
+        requireOn: 1
+        requireOff: 0
+  - name: Play Idle Animation
+    stateTable: {fileID: 0}
+    id: -1001040
+    target: {fileID: 11467010}
+    empty: 0
+    requirements:
+    - data:
+      - name: '@Ready'
+        stateTable: {fileID: 0}
+        id: -994872
+        target: {fileID: 11474318}
+        requireOn: 1
+        requireOff: 0
+      - name: Play Idle Animation
+        stateTable: {fileID: 0}
+        id: -1001040
+        target: {fileID: 11467010}
+        requireOn: 0
+        requireOff: 0
+      - name: Timer Prepare
+        stateTable: {fileID: 11424168}
+        id: -8114
+        target: {fileID: 11482750}
+        requireOn: 0
+        requireOff: 0
+  - name: Timer Prepare
+    stateTable: {fileID: 11424168}
+    id: -8114
+    target: {fileID: 11482750}
+    empty: 0
+    requirements:
+    - data:
+      - name: '@Ready'
+        stateTable: {fileID: 11424168}
+        id: -994872
+        target: {fileID: 11474318}
+        requireOn: 0
+        requireOff: 0
+      - name: Play Idle Animation
+        stateTable: {fileID: 11424168}
+        id: -1001040
+        target: {fileID: 11467010}
+        requireOn: 0
+        requireOff: 0
+      - name: Timer Prepare
+        stateTable: {fileID: 11424168}
+        id: -8114
+        target: {fileID: 11482750}
+        requireOn: 0
+        requireOff: 0
+  tableOff:
+  - name: '@Ready'
+    stateTable: {fileID: 0}
+    id: -994872
+    target: {fileID: 11474318}
+    empty: 0
+    requirements:
+    - data:
+      - name: '@Ready'
+        stateTable: {fileID: 0}
+        id: -994872
+        target: {fileID: 11474318}
+        requireOn: 0
+        requireOff: 0
+      - name: Play Idle Animation
+        stateTable: {fileID: 0}
+        id: -1001040
+        target: {fileID: 11467010}
+        requireOn: 0
+        requireOff: 0
+      - name: Timer Prepare
+        stateTable: {fileID: 11424168}
+        id: -8114
+        target: {fileID: 11482750}
+        requireOn: 0
+        requireOff: 0
+  - name: Play Idle Animation
+    stateTable: {fileID: 0}
+    id: -1001040
+    target: {fileID: 11467010}
+    empty: 0
+    requirements:
+    - data:
+      - name: '@Ready'
+        stateTable: {fileID: 0}
+        id: -994872
+        target: {fileID: 11474318}
+        requireOn: 1
+        requireOff: 0
+      - name: Play Idle Animation
+        stateTable: {fileID: 0}
+        id: -1001040
+        target: {fileID: 11467010}
+        requireOn: 0
+        requireOff: 0
+      - name: Timer Prepare
+        stateTable: {fileID: 11424168}
+        id: -8114
+        target: {fileID: 11482750}
+        requireOn: 0
+        requireOff: 0
+  - name: Timer Prepare
+    stateTable: {fileID: 11424168}
+    id: -8114
+    target: {fileID: 11482750}
+    empty: 0
+    requirements:
+    - data:
+      - name: '@Ready'
+        stateTable: {fileID: 11424168}
+        id: -994872
+        target: {fileID: 11474318}
+        requireOn: 0
+        requireOff: 0
+      - name: Play Idle Animation
+        stateTable: {fileID: 11424168}
+        id: -1001040
+        target: {fileID: 11467010}
+        requireOn: 0
+        requireOff: 0
+      - name: Timer Prepare
+        stateTable: {fileID: 11424168}
+        id: -8114
+        target: {fileID: 11482750}
+        requireOn: 0
+        requireOff: 0
+  advanced: 0
+  scripts:
+  - {fileID: 11474318}
+  - {fileID: 11467010}
+  - {fileID: 11482750}
+  parts: []
+  isFixed: 1
+--- !u!114 &11426194
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Play Idle Animation/Used/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Used
+    path: Play Idle Animation/Used
+    id: -39812/19351f76-3633-47f5-b082-8dfb2b786432
+    localID: 19351f76-3633-47f5-b082-8dfb2b786432
+    parent: {fileID: 11467010}
+    mode: 0
+    data:
+    - {fileID: 11426194}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11432618
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3e9984a5f3f19942be359930227796e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute String Data
+  target:
+    special:
+    - {fileID: 156288}
+    - {fileID: 156288}
+    - {fileID: 181058}
+    - {fileID: 181058}
+    - {fileID: 156288}
+    - {fileID: 156288}
+    - {fileID: 186412}
+    - {fileID: 156288}
+    - {fileID: 156288}
+    - {fileID: 156288}
+    - {fileID: 156288}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    - '[Owner]'
+    - '[Action]'
+    - '[ActionLink]'
+    - '[StateLink]'
+    search: ../@Settings
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 11467010}
+    mode: 0
+  usage: 1
+  path: Play Idle Animation/Animation Name/0
+  referenceID: -22520/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
+  referencePath: Animation
+  attribute:
+    name: Animation Name
+    path: Play Idle Animation/Animation Name
+    id: -39812/10c2af6a-8790-478b-8b35-9071ff9fa06b
+    localID: 10c2af6a-8790-478b-8b35-9071ff9fa06b
+    parent: {fileID: 11467010}
+    mode: 0
+    data:
+    - {fileID: 11432618}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: Idle
+  characterLimit: 0
+  allowed: []
+  disallowed: []
+--- !u!114 &11432748
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 181058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15dc630d7daaf4548bf1d099b9be1324, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Animation
+  value:
+    info:
+      name: Animation
+      path: Animation
+      id: -39808/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
+      localID: 7e894ef6-a99f-450f-b42a-e1aa6c29abb9
+      parent: {fileID: 11432748}
+      mode: 0
+      data:
+      - {fileID: 11416688}
+      dataB: []
+      dataC: []
+  remember: 0
+--- !u!114 &11433136
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Idle (Extended)/Used/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Used
+    path: Idle (Extended)/Used
+    id: -39806/3ffb51da-3a70-4b0b-af4c-363ca8903750
+    localID: 3ffb51da-3a70-4b0b-af4c-363ca8903750
+    parent: {fileID: 11485834}
+    mode: 0
+    data:
+    - {fileID: 11433136}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11434282
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Float Data
+  target:
+    special:
+    - {fileID: 156288}
+    - {fileID: 156288}
+    - {fileID: 181058}
+    - {fileID: 181058}
+    - {fileID: 156288}
+    - {fileID: 156288}
+    - {fileID: 186412}
+    - {fileID: 156288}
+    - {fileID: 156288}
+    - {fileID: 156288}
+    - {fileID: 156288}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    - '[Owner]'
+    - '[Action]'
+    - '[ActionLink]'
+    - '[StateLink]'
+    search: ../@Settings
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 11482750}
+    mode: 0
+  usage: 1
+  path: Timer Prepare/Seconds/0
+  referenceID: -21010/bd1f87cf-0ee9-417e-bbc1-427b77ae28cb
+  referencePath: Timer
+  attribute:
+    name: Seconds
+    path: Timer Prepare/Seconds
+    id: -39888/961ac3db-021c-4be0-bb4a-6f6208c2664d
+    localID: 961ac3db-021c-4be0-bb4a-6f6208c2664d
+    parent: {fileID: 11482750}
+    mode: 0
+    data:
+    - {fileID: 11434282}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11434798
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: '@Ready/End While Unusable/0'
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: End While Unusable
+    path: '@Ready/End While Unusable'
+    id: -39796/81b3698f-69f1-442f-abeb-75f3c966c7ad
+    localID: 81b3698f-69f1-442f-abeb-75f3c966c7ad
+    parent: {fileID: 11474318}
+    mode: 0
+    data:
+    - {fileID: 11434798}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11436558
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Play Idle Animation/Ready/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Ready
+    path: Play Idle Animation/Ready
+    id: -39812/404f5943-a259-40d0-ad11-918d855c87b5
+    localID: 404f5943-a259-40d0-ad11-918d855c87b5
+    parent: {fileID: 11467010}
+    mode: 0
+    data:
+    - {fileID: 11436558}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 1
+--- !u!114 &11437674
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 181058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Game Object Data
+  target:
+    special:
+    - {fileID: 181058}
+    - {fileID: 181058}
+    - {fileID: 156288}
+    - {fileID: 156288}
+    - {fileID: 181058}
+    - {fileID: 181058}
+    - {fileID: 186412}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    search: ../../../..
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 11442116}
+    mode: 0
+  usage: 1
+  path: Source/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Source
+    path: Source
+    id: -39794/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+    localID: 0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+    parent: {fileID: 11442116}
+    mode: 0
+    data:
+    - {fileID: 11437674}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: {fileID: 0}
+--- !u!114 &11442116
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 181058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e8a46b59a6b8eb489e122ad5fdef015, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Source
+  value:
+    info:
+      name: Source
+      path: Source
+      id: -39794/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+      localID: 0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+      parent: {fileID: 11442116}
+      mode: 0
+      data:
+      - {fileID: 11437674}
+      dataB: []
+      dataC: []
+  remember: 0
+--- !u!114 &11443776
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 181058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Float Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Timer/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Timer
+    path: Timer
+    id: -39868/bd1f87cf-0ee9-417e-bbc1-427b77ae28cb
+    localID: bd1f87cf-0ee9-417e-bbc1-427b77ae28cb
+    parent: {fileID: 11489718}
+    mode: 0
+    data:
+    - {fileID: 11443776}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 5
+--- !u!114 &11444274
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Play Idle Animation/End While Unusable/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: End While Unusable
+    path: Play Idle Animation/End While Unusable
+    id: -39812/160da1e7-3f02-404c-94d3-474a271a157d
+    localID: 160da1e7-3f02-404c-94d3-474a271a157d
+    parent: {fileID: 11467010}
+    mode: 0
+    data:
+    - {fileID: 11444274}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11447814
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Idle (Extended)/Usable/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Usable
+    path: Idle (Extended)/Usable
+    id: -39806/8af7de18-df2a-413e-b41e-17d7471f16ba
+    localID: 8af7de18-df2a-413e-b41e-17d7471f16ba
+    parent: {fileID: 11485834}
+    mode: 0
+    data:
+    - {fileID: 11447814}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 1
+--- !u!114 &11448858
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Float Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Play Idle Animation/Weight/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Weight
+    path: Play Idle Animation/Weight
+    id: -39812/3e374ef8-b26c-40a6-972b-f269764dc5aa
+    localID: 3e374ef8-b26c-40a6-972b-f269764dc5aa
+    parent: {fileID: 11467010}
+    mode: 0
+    data:
+    - {fileID: 11448858}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 1
+--- !u!114 &11453666
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Timer Prepare/Usable/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Usable
+    path: Timer Prepare/Usable
+    id: -39888/819562ce-f350-429f-bdb4-cc4475f61191
+    localID: 819562ce-f350-429f-bdb4-cc4475f61191
+    parent: {fileID: 11482750}
+    mode: 0
+    data:
+    - {fileID: 11453666}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 1
+--- !u!114 &11455154
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Game Object Data
+  target:
+    special:
+    - {fileID: 156288}
+    - {fileID: 156288}
+    - {fileID: 181058}
+    - {fileID: 181058}
+    - {fileID: 156288}
+    - {fileID: 156288}
+    - {fileID: 186412}
+    - {fileID: 156288}
+    - {fileID: 156288}
+    - {fileID: 156288}
+    - {fileID: 156288}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    - '[Owner]'
+    - '[Action]'
+    - '[ActionLink]'
+    - '[StateLink]'
+    search: ../@Settings
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 11467010}
+    mode: 0
+  usage: 1
+  path: Play Idle Animation/Target/0
+  referenceID: -22518/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+  referencePath: Visuals
+  attribute:
+    name: Target
+    path: Play Idle Animation/Target
+    id: -39812/858f73b3-0307-423f-9f6d-73e471fc3e38
+    localID: 858f73b3-0307-423f-9f6d-73e471fc3e38
+    parent: {fileID: 11467010}
+    mode: 0
+    data:
+    - {fileID: 11455154}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: {fileID: 0}
+--- !u!114 &11455206
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Timer Prepare/Is Complete/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Is Complete
+    path: Timer Prepare/Is Complete
+    id: -39888/7c0a834f-33a9-4059-b8a1-596f56beb614
+    localID: 7c0a834f-33a9-4059-b8a1-596f56beb614
+    parent: {fileID: 11482750}
+    mode: 0
+    data:
+    - {fileID: 11455206}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11457920
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Timer Prepare/Active/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Active
+    path: Timer Prepare/Active
+    id: -39888/a786b9ec-6beb-4c06-afca-63d8ad6252e3
+    localID: a786b9ec-6beb-4c06-afca-63d8ad6252e3
+    parent: {fileID: 11482750}
+    mode: 0
+    data:
+    - {fileID: 11457920}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11462798
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 181058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e8a46b59a6b8eb489e122ad5fdef015, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Visuals
+  value:
+    info:
+      name: Visuals
+      path: Visuals
+      id: -39810/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+      localID: 33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+      parent: {fileID: 11462798}
+      mode: 0
+      data:
+      - {fileID: 11420250}
+      dataB: []
+      dataC: []
+  remember: 0
+--- !u!114 &11467010
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 913766e3e62ceac4a918c0cd12f04e67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Play Idle Animation
+  rate: 1
+  id: -1001040
+  requirable:
+    info:
+      name: Requirable
+      path: Play Idle Animation/Requirable
+      id: -39812/2e122735-65aa-45b1-afa1-1e54c638dca4
+      localID: 2e122735-65aa-45b1-afa1-1e54c638dca4
+      parent: {fileID: 11467010}
+      mode: 0
+      data:
+      - {fileID: 11412450}
+      dataB: []
+      dataC: []
+  ready:
+    info:
+      name: Ready
+      path: Play Idle Animation/Ready
+      id: -39812/404f5943-a259-40d0-ad11-918d855c87b5
+      localID: 404f5943-a259-40d0-ad11-918d855c87b5
+      parent: {fileID: 11467010}
+      mode: 0
+      data:
+      - {fileID: 11436558}
+      dataB: []
+      dataC: []
+  usable:
+    info:
+      name: Usable
+      path: Play Idle Animation/Usable
+      id: -39812/e351b306-bbbb-47f8-880d-d7b866a6ebe9
+      localID: e351b306-bbbb-47f8-880d-d7b866a6ebe9
+      parent: {fileID: 11467010}
+      mode: 0
+      data:
+      - {fileID: 11490204}
+      dataB: []
+      dataC: []
+  inUse:
+    info:
+      name: Active
+      path: Play Idle Animation/Active
+      id: -39812/fe08f49f-eefd-4933-b9cd-5c83a9685e8f
+      localID: fe08f49f-eefd-4933-b9cd-5c83a9685e8f
+      parent: {fileID: 11467010}
+      mode: 0
+      data:
+      - {fileID: 11484902}
+      dataB: []
+      dataC: []
+  used:
+    info:
+      name: Used
+      path: Play Idle Animation/Used
+      id: -39812/19351f76-3633-47f5-b082-8dfb2b786432
+      localID: 19351f76-3633-47f5-b082-8dfb2b786432
+      parent: {fileID: 11467010}
+      mode: 0
+      data:
+      - {fileID: 11426194}
+      dataB: []
+      dataC: []
+  endWhileUnusable:
+    info:
+      name: End While Unusable
+      path: Play Idle Animation/End While Unusable
+      id: -39812/160da1e7-3f02-404c-94d3-474a271a157d
+      localID: 160da1e7-3f02-404c-94d3-474a271a157d
+      parent: {fileID: 11467010}
+      mode: 0
+      data:
+      - {fileID: 11444274}
+      dataB: []
+      dataC: []
+  occurrence: 0
+  animationName:
+    info:
+      name: Animation Name
+      path: Play Idle Animation/Animation Name
+      id: -39812/10c2af6a-8790-478b-8b35-9071ff9fa06b
+      localID: 10c2af6a-8790-478b-8b35-9071ff9fa06b
+      parent: {fileID: 11467010}
+      mode: 0
+      data:
+      - {fileID: 11432618}
+      dataB: []
+      dataC: []
+  speed:
+    info:
+      name: Speed
+      path: Play Idle Animation/Speed
+      id: -39812/b11b4576-242d-431c-a7c1-4683167a760d
+      localID: b11b4576-242d-431c-a7c1-4683167a760d
+      parent: {fileID: 11467010}
+      mode: 0
+      data:
+      - {fileID: 11403646}
+      dataB: []
+      dataC: []
+  weight:
+    info:
+      name: Weight
+      path: Play Idle Animation/Weight
+      id: -39812/3e374ef8-b26c-40a6-972b-f269764dc5aa
+      localID: 3e374ef8-b26c-40a6-972b-f269764dc5aa
+      parent: {fileID: 11467010}
+      mode: 0
+      data:
+      - {fileID: 11448858}
+      dataB: []
+      dataC: []
+  target:
+    info:
+      name: Target
+      path: Play Idle Animation/Target
+      id: -39812/858f73b3-0307-423f-9f6d-73e471fc3e38
+      localID: 858f73b3-0307-423f-9f6d-73e471fc3e38
+      parent: {fileID: 11467010}
+      mode: 0
+      data:
+      - {fileID: 11455154}
+      dataB: []
+      dataC: []
+--- !u!114 &11468684
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Idle (Extended)/End While Unusable/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: End While Unusable
+    path: Idle (Extended)/End While Unusable
+    id: -39806/b6f65c34-1bc8-4ebb-ac4b-d77ea45d00f9
+    localID: b6f65c34-1bc8-4ebb-ac4b-d77ea45d00f9
+    parent: {fileID: 11485834}
+    mode: 0
+    data:
+    - {fileID: 11468684}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11470524
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Idle (Extended)/Requirable/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Requirable
+    path: Idle (Extended)/Requirable
+    id: -39806/a924029f-ec8e-4ebe-bc3f-2c8afdaad0e5
+    localID: a924029f-ec8e-4ebe-bc3f-2c8afdaad0e5
+    parent: {fileID: 11485834}
+    mode: 0
+    data:
+    - {fileID: 11470524}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 1
+--- !u!114 &11470610
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: '@Ready/Ready/0'
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Ready
+    path: '@Ready/Ready'
+    id: -39796/2e5e4409-064c-4b73-a086-a71fdbfe33d0
+    localID: 2e5e4409-064c-4b73-a086-a71fdbfe33d0
+    parent: {fileID: 11474318}
+    mode: 0
+    data:
+    - {fileID: 11470610}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 1
+--- !u!114 &11473748
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Timer Prepare/Ready/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Ready
+    path: Timer Prepare/Ready
+    id: -39888/feb608b3-3f9f-4d47-aef4-2840437b9dd4
+    localID: feb608b3-3f9f-4d47-aef4-2840437b9dd4
+    parent: {fileID: 11482750}
+    mode: 0
+    data:
+    - {fileID: 11473748}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11474318
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d2c3095ed3786d4cb99a269e5e55882, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: '@Ready'
+  rate: 1
+  id: -994872
+  requirable:
+    info:
+      name: Requirable
+      path: '@Ready/Requirable'
+      id: -39796/d4457b71-fb5e-46e7-a083-7944b7082adb
+      localID: d4457b71-fb5e-46e7-a083-7944b7082adb
+      parent: {fileID: 11474318}
+      mode: 0
+      data:
+      - {fileID: 11474690}
+      dataB: []
+      dataC: []
+  ready:
+    info:
+      name: Ready
+      path: '@Ready/Ready'
+      id: -39796/2e5e4409-064c-4b73-a086-a71fdbfe33d0
+      localID: 2e5e4409-064c-4b73-a086-a71fdbfe33d0
+      parent: {fileID: 11474318}
+      mode: 0
+      data:
+      - {fileID: 11470610}
+      dataB: []
+      dataC: []
+  usable:
+    info:
+      name: Usable
+      path: '@Ready/Usable'
+      id: -39796/583a6840-222e-4e2b-b6e1-f696e28f6893
+      localID: 583a6840-222e-4e2b-b6e1-f696e28f6893
+      parent: {fileID: 11474318}
+      mode: 0
+      data:
+      - {fileID: 11408676}
+      dataB: []
+      dataC: []
+  inUse:
+    info:
+      name: Active
+      path: '@Ready/Active'
+      id: -39796/f5ee98b8-683b-40a5-88ad-35826804bdff
+      localID: f5ee98b8-683b-40a5-88ad-35826804bdff
+      parent: {fileID: 11474318}
+      mode: 0
+      data:
+      - {fileID: 11484124}
+      dataB: []
+      dataC: []
+  used:
+    info:
+      name: Used
+      path: '@Ready/Used'
+      id: -39796/86333a4c-af41-4289-aeb0-8e6a6420db5e
+      localID: 86333a4c-af41-4289-aeb0-8e6a6420db5e
+      parent: {fileID: 11474318}
+      mode: 0
+      data:
+      - {fileID: 11418166}
+      dataB: []
+      dataC: []
+  endWhileUnusable:
+    info:
+      name: End While Unusable
+      path: '@Ready/End While Unusable'
+      id: -39796/81b3698f-69f1-442f-abeb-75f3c966c7ad
+      localID: 81b3698f-69f1-442f-abeb-75f3c966c7ad
+      parent: {fileID: 11474318}
+      mode: 0
+      data:
+      - {fileID: 11434798}
+      dataB: []
+      dataC: []
+  occurrence: 0
+--- !u!114 &11474690
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: '@Ready/Requirable/0'
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Requirable
+    path: '@Ready/Requirable'
+    id: -39796/d4457b71-fb5e-46e7-a083-7944b7082adb
+    localID: d4457b71-fb5e-46e7-a083-7944b7082adb
+    parent: {fileID: 11474318}
+    mode: 0
+    data:
+    - {fileID: 11474690}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 1
+--- !u!114 &11478400
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Timer Prepare/Is Started/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Is Started
+    path: Timer Prepare/Is Started
+    id: -39888/9b1f9484-b702-4a42-aeef-f41fb52e7b3e
+    localID: 9b1f9484-b702-4a42-aeef-f41fb52e7b3e
+    parent: {fileID: 11482750}
+    mode: 0
+    data:
+    - {fileID: 11478400}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11482750
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb780ed64906f1944b7e8d65c34757d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Timer Prepare
+  rate: 1
+  id: -8114
+  requirable:
+    info:
+      name: Requirable
+      path: Timer Prepare/Requirable
+      id: -39888/ead7f35c-22fa-4957-b5d8-8a94a1aeece0
+      localID: ead7f35c-22fa-4957-b5d8-8a94a1aeece0
+      parent: {fileID: 11482750}
+      mode: 0
+      data:
+      - {fileID: 11408510}
+      dataB: []
+      dataC: []
+  ready:
+    info:
+      name: Ready
+      path: Timer Prepare/Ready
+      id: -39888/feb608b3-3f9f-4d47-aef4-2840437b9dd4
+      localID: feb608b3-3f9f-4d47-aef4-2840437b9dd4
+      parent: {fileID: 11482750}
+      mode: 0
+      data:
+      - {fileID: 11473748}
+      dataB: []
+      dataC: []
+  usable:
+    info:
+      name: Usable
+      path: Timer Prepare/Usable
+      id: -39888/819562ce-f350-429f-bdb4-cc4475f61191
+      localID: 819562ce-f350-429f-bdb4-cc4475f61191
+      parent: {fileID: 11482750}
+      mode: 0
+      data:
+      - {fileID: 11453666}
+      dataB: []
+      dataC: []
+  inUse:
+    info:
+      name: Active
+      path: Timer Prepare/Active
+      id: -39888/a786b9ec-6beb-4c06-afca-63d8ad6252e3
+      localID: a786b9ec-6beb-4c06-afca-63d8ad6252e3
+      parent: {fileID: 11482750}
+      mode: 0
+      data:
+      - {fileID: 11457920}
+      dataB: []
+      dataC: []
+  used:
+    info:
+      name: Used
+      path: Timer Prepare/Used
+      id: -39888/aa77b508-acbe-457f-b9dc-e1174fb652dc
+      localID: aa77b508-acbe-457f-b9dc-e1174fb652dc
+      parent: {fileID: 11482750}
+      mode: 0
+      data:
+      - {fileID: 11488020}
+      dataB: []
+      dataC: []
+  endWhileUnusable:
+    info:
+      name: End While Unusable
+      path: Timer Prepare/End While Unusable
+      id: -39888/1bdc8c0f-843c-4218-9c34-a34136d80c62
+      localID: 1bdc8c0f-843c-4218-9c34-a34136d80c62
+      parent: {fileID: 11482750}
+      mode: 0
+      data:
+      - {fileID: 11408928}
+      dataB: []
+      dataC: []
+  occurrence: 0
+  type: 0
+  seconds:
+    info:
+      name: Seconds
+      path: Timer Prepare/Seconds
+      id: -39888/961ac3db-021c-4be0-bb4a-6f6208c2664d
+      localID: 961ac3db-021c-4be0-bb4a-6f6208c2664d
+      parent: {fileID: 11482750}
+      mode: 0
+      data:
+      - {fileID: 11434282}
+      dataB: []
+      dataC: []
+  isStarted:
+    info:
+      name: Is Started
+      path: Timer Prepare/Is Started
+      id: -39888/9b1f9484-b702-4a42-aeef-f41fb52e7b3e
+      localID: 9b1f9484-b702-4a42-aeef-f41fb52e7b3e
+      parent: {fileID: 11482750}
+      mode: 0
+      data:
+      - {fileID: 11478400}
+      dataB: []
+      dataC: []
+  isComplete:
+    info:
+      name: Is Complete
+      path: Timer Prepare/Is Complete
+      id: -39888/7c0a834f-33a9-4059-b8a1-596f56beb614
+      localID: 7c0a834f-33a9-4059-b8a1-596f56beb614
+      parent: {fileID: 11482750}
+      mode: 0
+      data:
+      - {fileID: 11455206}
+      dataB: []
+      dataC: []
+--- !u!114 &11484124
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: '@Ready/Active/0'
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Active
+    path: '@Ready/Active'
+    id: -39796/f5ee98b8-683b-40a5-88ad-35826804bdff
+    localID: f5ee98b8-683b-40a5-88ad-35826804bdff
+    parent: {fileID: 11474318}
+    mode: 0
+    data:
+    - {fileID: 11484124}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11484902
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Play Idle Animation/Active/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Active
+    path: Play Idle Animation/Active
+    id: -39812/fe08f49f-eefd-4933-b9cd-5c83a9685e8f
+    localID: fe08f49f-eefd-4933-b9cd-5c83a9685e8f
+    parent: {fileID: 11467010}
+    mode: 0
+    data:
+    - {fileID: 11484902}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11485834
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6a5365a236805842985225b566116a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Idle (Extended)
+  rate: 0
+  id: -5480
+  requirable:
+    info:
+      name: Requirable
+      path: Idle (Extended)/Requirable
+      id: -39806/a924029f-ec8e-4ebe-bc3f-2c8afdaad0e5
+      localID: a924029f-ec8e-4ebe-bc3f-2c8afdaad0e5
+      parent: {fileID: 11485834}
+      mode: 0
+      data:
+      - {fileID: 11470524}
+      dataB: []
+      dataC: []
+  ready:
+    info:
+      name: Ready
+      path: Idle (Extended)/Ready
+      id: -39806/28c10a9c-1e22-4f30-9c41-48a717bb203f
+      localID: 28c10a9c-1e22-4f30-9c41-48a717bb203f
+      parent: {fileID: 11485834}
+      mode: 0
+      data:
+      - {fileID: 11494388}
+      dataB: []
+      dataC: []
+  usable:
+    info:
+      name: Usable
+      path: Idle (Extended)/Usable
+      id: -39806/8af7de18-df2a-413e-b41e-17d7471f16ba
+      localID: 8af7de18-df2a-413e-b41e-17d7471f16ba
+      parent: {fileID: 11485834}
+      mode: 0
+      data:
+      - {fileID: 11447814}
+      dataB: []
+      dataC: []
+  inUse:
+    info:
+      name: Active
+      path: Idle (Extended)/Active
+      id: -39806/60d63d3c-d63e-494f-b5ce-bf6cdea16368
+      localID: 60d63d3c-d63e-494f-b5ce-bf6cdea16368
+      parent: {fileID: 11485834}
+      mode: 0
+      data:
+      - {fileID: 11411678}
+      dataB: []
+      dataC: []
+  used:
+    info:
+      name: Used
+      path: Idle (Extended)/Used
+      id: -39806/3ffb51da-3a70-4b0b-af4c-363ca8903750
+      localID: 3ffb51da-3a70-4b0b-af4c-363ca8903750
+      parent: {fileID: 11485834}
+      mode: 0
+      data:
+      - {fileID: 11433136}
+      dataB: []
+      dataC: []
+  endWhileUnusable:
+    info:
+      name: End While Unusable
+      path: Idle (Extended)/End While Unusable
+      id: -39806/b6f65c34-1bc8-4ebb-ac4b-d77ea45d00f9
+      localID: b6f65c34-1bc8-4ebb-ac4b-d77ea45d00f9
+      parent: {fileID: 11485834}
+      mode: 0
+      data:
+      - {fileID: 11468684}
+      dataB: []
+      dataC: []
+--- !u!114 &11488020
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Timer Prepare/Used/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Used
+    path: Timer Prepare/Used
+    id: -39888/aa77b508-acbe-457f-b9dc-e1174fb652dc
+    localID: aa77b508-acbe-457f-b9dc-e1174fb652dc
+    parent: {fileID: 11482750}
+    mode: 0
+    data:
+    - {fileID: 11488020}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11489718
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 181058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73460de1a42c5d64884ae83214747f38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Timer
+  value:
+    info:
+      name: Timer
+      path: Timer
+      id: -39868/bd1f87cf-0ee9-417e-bbc1-427b77ae28cb
+      localID: bd1f87cf-0ee9-417e-bbc1-427b77ae28cb
+      parent: {fileID: 11489718}
+      mode: 0
+      data:
+      - {fileID: 11443776}
+      dataB: []
+      dataC: []
+  remember: 0
+--- !u!114 &11490204
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Play Idle Animation/Usable/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Usable
+    path: Play Idle Animation/Usable
+    id: -39812/e351b306-bbbb-47f8-880d-d7b866a6ebe9
+    localID: e351b306-bbbb-47f8-880d-d7b866a6ebe9
+    parent: {fileID: 11467010}
+    mode: 0
+    data:
+    - {fileID: 11490204}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11494388
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Idle (Extended)/Ready/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Ready
+    path: Idle (Extended)/Ready
+    id: -39806/28c10a9c-1e22-4f30-9c41-48a717bb203f
+    localID: 28c10a9c-1e22-4f30-9c41-48a717bb203f
+    parent: {fileID: 11485834}
+    mode: 0
+    data:
+    - {fileID: 11494388}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 186412}
+  m_IsPrefabParent: 1
