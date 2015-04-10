@@ -19,8 +19,8 @@ namespace Zios{
 		    this.lastAlias = this.alias = this.alias.SetDefault(name);
 			this.dependents.Clear();
 			if(!Application.isPlaying){
-				this.RegisterEvent("On Destroy");
-				this.RegisterEvent("On Validate");
+				Events.Register("On Destroy",this);
+				Events.Register("On Validate",this);
 				Events.Add("On Validate",this.CheckAlias,this);
 				Events.Add("On Validate",this.CheckDependents,this);
 				Events.Add("On Attributes Ready",this.CheckDependents,Events.global);
@@ -63,7 +63,7 @@ namespace Zios{
 	    public void AddDependent<Type>() where Type : Component{this.AddDependent<Type>(this.gameObject,true);}
 	    public void AddDependent<Type>(object target,bool isScript=false) where Type : Component{
 			Method delayAdd = ()=>this.DelayAddDependent(typeof(Type),target,isScript);
-			Events.AddLimited("On Attributes Ready",delayAdd,1,Events.global);
+			Events.AddLimited("On Attributes Ready",delayAdd,1);
 	    }
 	    public void DelayAddDependent(Type type,object target,bool isScript=false){
 			if(this.dependents.Exists(x=>x.type==type)){return;}

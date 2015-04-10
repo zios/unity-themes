@@ -39,12 +39,12 @@ namespace Zios{
 		    this.defaultTransitionIn.Setup("Default Transition In",this);
 		    this.defaultTransitionOut.Setup("Default Transition Out",this);
 		    this.defaultAnimationName.Setup("Default Animation Name",this);
-		    Events.Add("Set Animation",this.OnSet);
-		    Events.Add("Set Animation Default",this.OnSetDefault);
-		    Events.Add("Set Animation Speed",this.OnSetSpeed);
-		    Events.Add("Set Animation Weight",this.OnSetWeight);
-		    Events.Add("Play Animation",this.OnPlay);
-		    Events.Add("Stop Animation",this.OnStop);
+		    Events.Add("Set Animation",this.OnSet,this.gameObject);
+		    Events.Add("Set Animation Default",this.OnSetDefault,this.gameObject);
+		    Events.Add("Set Animation Speed",this.OnSetSpeed,this.gameObject);
+		    Events.Add("Set Animation Weight",this.OnSetWeight,this.gameObject);
+		    Events.Add("Play Animation",this.OnPlay,this.gameObject);
+		    Events.Add("Stop Animation",this.OnStop,this.gameObject);
 		    if(this.animations.Count > 0){
 			    this.defaultAnimationName.SetDefault(this.animations.First().name);
 		    }

@@ -13,7 +13,7 @@ namespace Zios{
 			}
 		}
 		public void Start(){
-			Events.Register("Resolution Change");
+			Events.Register("On Resolution Change");
 			if(Application.isPlaying){
 				Program.Start();
 			}
@@ -54,7 +54,7 @@ namespace Zios{
 			bool changedHeight = Screen.height != size[1];
 			bool changedRefresh = screen.refreshRate != size[2];
 			if(changedWidth || changedHeight || changedRefresh){
-				Events.Call("Resolution Change");
+				Events.Call("On Resolution Change");
 				if(!Program.allowResolution){
 					Program.allowResolution = true;
 					if(Application.isPlaying){Debug.Log("^7Screen settings auto-adjusted to closest allowed values.");}

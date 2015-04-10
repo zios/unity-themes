@@ -18,7 +18,7 @@ namespace Zios{
 		    this.target.DefaultSearch("[Owner]");
 		    this.AddDependent<ColliderController>(this.target);
 		    if(!this.target.Get().IsNull()){
-			    Events.AddScope(this.trigger.ToString(),(MethodObject)this.Collision,this.target.Get());
+			    Events.Add(this.trigger.ToString().ToTitle(),(MethodObject)this.Collision,this.target.Get());
 		    }
 	    }
 	    public override void Use(){}
@@ -33,7 +33,7 @@ namespace Zios{
 		    }
 	    }
     }
-    public enum CollisionEvent{CollisionStart,CollisionEnd,Collision}
+    public enum CollisionEvent{OnCollisionStart,OnCollisionEnd,OnCollision}
     public enum CollisionDirection : int{
 	    Above     = 0x001,
 	    Below     = 0x002,

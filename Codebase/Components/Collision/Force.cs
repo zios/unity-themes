@@ -21,8 +21,8 @@ namespace Zios{
 		    this.disabled.Setup("Disabled",this);
 		    Events.Register("On Impact",this.gameObject);
 		    Events.Register("Add Move",this.gameObject);
-		    Events.Add("Collision",(MethodObject)this.OnCollide);
-		    Events.Add("Add Force",(MethodVector3)this.AddForce);
+		    Events.Add("On Collision",(MethodObject)this.OnCollide,this.gameObject);
+		    Events.Add("Add Force",(MethodVector3)this.AddForce,this.gameObject);
 		    this.controller = this.GetComponent<ColliderController>();
 	    }
 	    public override void Step(){

@@ -20,8 +20,8 @@ namespace Zios{
 		    this.Awake();
 	    }
 	    public virtual void Awake(){
-		    Events.Add("@Update States",this.UpdateStates);
-		    Events.Add("@Refresh",this.Refresh);
+		    Events.Add("On State Update",this.UpdateStates,this.gameObject);
+		    Events.Add("On State Refresh",this.Refresh,this.gameObject);
 		    this.Refresh();
 	    }
 	    public virtual void Start(){

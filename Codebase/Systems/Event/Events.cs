@@ -131,7 +131,6 @@ namespace Zios{
 	    public static void Register(string name){Events.Register(name,Events.Validate());}
 	    public static void Register(string name,params object[] targets){
 			if(Events.disabled){return;}
-		    targets = targets.Add(Events.all);
 		    foreach(object target in targets){
 				if(target.IsNull()){continue;}
 				Events.callers.AddNew(target);
@@ -165,32 +164,25 @@ namespace Zios{
 			var listener = Events.empty;
 			foreach(object target in targets){
 			    if(target.IsNull()){continue;}
-			    listener = Events.AddScope(name,method,target,amount);
-		    }
-			Events.AddScope(name,method,Events.all,amount);
-			return listener;
-	    }
-	    public static EventListener AddScope(string name,object method,object target,int amount=-1){
-			if(Events.disabled){return null;}
-		    //Utility.EditorCall(()=>Events.Clean(name,target,method));
-			target = Events.Validate(target);
-			var listener = Events.empty;
-			if(!Events.cache.AddNew(target).AddNew(name).ContainsKey(method)){
-				listener = new EventListener();
-				if(target != Events.all && Events.debug.Has(EventDebug.Add)){
-					var info = (Delegate)method;
-					Debug.Log("[EventManager] : Adding event -- " + Events.GetMethodName(info) + "-- " + name,target as UnityObject);
+				if(!Events.cache.AddNew(target).AddNew(name).ContainsKey(method)){
+					listener = new EventListener();
+					if(Events.debug.Has(EventDebug.Add)){
+						var info = (Delegate)method;
+						Debug.Log("[EventManager] : Adding event -- " + Events.GetMethodName(info) + "-- " + name,target as UnityObject);
+					}
+					Events.listeners.Add(listener);
+					Events.cache.AddNew(Events.all).AddNew(name);
 				}
-				Events.listeners.Add(listener);
-			}
-			else{
-				listener = Events.cache[target][name].AddNew(method);
-			}
-			listener.name = name;
-			listener.method = method;
-			listener.target = target;
-			listener.occurrences = amount;
-			Events.cache[target][name][method] = listener;
+				else{
+					listener = Events.cache[target][name].AddNew(method);
+				}
+				listener.name = name;
+				listener.method = method;
+				listener.target = target;
+				listener.occurrences = amount;
+				Events.cache[target][name][method] = listener;
+				Events.cache[Events.all][name][method] = listener;
+		    }
 			return listener;
 	    }
 	    public static void Remove(string name,Method method,params object[] targets){Events.Remove(name,(object)method,targets);}
@@ -205,10 +197,10 @@ namespace Zios{
 		public static void Remove(string name,object method,params object[] targets){
 			if(Events.disabled){return;}
 			targets = Events.ValidateAll(targets);
-		    targets = targets.Add(Events.all);
 			foreach(var target in targets){
 				if(Events.cache.ContainsKey(target) && Events.cache[target].ContainsKey(name)){
 					Events.cache[target][name].Remove(method);
+					Events.cache[Events.all][name].Remove(method);
 				}
 				Events.listeners.RemoveAll(x=>x.method==method && x.target==target && x.name==name);
 			}

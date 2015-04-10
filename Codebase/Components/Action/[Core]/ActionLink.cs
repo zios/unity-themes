@@ -1,4 +1,4 @@
-﻿#pragma warning disable 0414
+#pragma warning disable 0414
 using UnityEngine;
 using Zios;
 using System;
@@ -14,12 +14,12 @@ namespace Zios{
 		[NonSerialized] public ActionTable actionTable;
 		public override void Awake(){
 			base.Awake();
-			Events.Add(this.alias+"/End",this.End);
-			Events.Add(this.alias+"/Start",this.Use);
-			Events.Register("@Refresh",this.gameObject);
-			Events.Register(this.alias+"/Disabled",this.gameObject);
-			Events.Register(this.alias+"/Started",this.gameObject);
-			Events.Register(this.alias+"/Ended",this.gameObject);
+			Events.Add(this.alias+"/On End",this.End,this.gameObject);
+			Events.Add(this.alias+"/On Start",this.Use,this.gameObject);
+			Events.Register("On State Refresh",this.gameObject);
+			Events.Register(this.alias+"/On Disabled",this.gameObject);
+			Events.Register(this.alias+"/On Started",this.gameObject);
+			Events.Register(this.alias+"/On Ended",this.gameObject);
 			if(Application.isPlaying){
 				if(this.stateLink.IsNull()){
 					this.stateLink = this.GetComponent<StateLink>(true);
@@ -45,7 +45,7 @@ namespace Zios{
 		}
 		public virtual void OnDisable(){
 			if(!this.gameObject.activeInHierarchy || !this.enabled){
-				this.gameObject.CallEvent(this.alias+"/Disabled");
+				this.gameObject.CallEvent(this.alias+"/On Disabled");
 				if(this.actionTable==null){this.End();}
 			}
 		}
@@ -71,7 +71,7 @@ namespace Zios{
 		public void ApplyState(bool state){
 			this.inUse.Set(state);
 			this.used.Set(state);
-			string active = state ? "/Started" : "/Ended";
+			string active = state ? "/On Started" : "/On Ended";
 			this.gameObject.CallEvent(this.alias+active);
 		}
 	}

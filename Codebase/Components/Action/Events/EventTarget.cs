@@ -15,7 +15,7 @@ namespace Zios{
 	    public void SetupCatch(Method method){
 		    GameObject target = this.target.Get();
 		    if(!this.name.IsEmpty() && !target.IsNull()){
-			    Events.AddScope(this.name,method,target);
+			    Events.Add(this.name,method,target);
 		    }
 	    }
 	    public void Call(){

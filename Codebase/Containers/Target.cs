@@ -45,7 +45,7 @@ namespace Zios{
 			    this.AddSpecial("[NextEnabled]",parent.gameObject.GetNextSibling());
 			    this.AddSpecial("[PreviousEnabled]",parent.gameObject.GetPreviousSibling());
 			    this.AddSpecial("[Root]",parent.gameObject.GetPrefabRoot());
-				parent.AddEvent("On Validate",(Method)this.DefaultSearch);
+				Events.Add("On Validate",(Method)this.DefaultSearch,parent);
 		    }
 		    if(parent is ActionLink || parent is StateLink){
 			    ActionLink actionLink = parent is ActionLink ? (ActionLink)parent : null;

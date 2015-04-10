@@ -48,9 +48,9 @@ namespace Zios{
 	    public AttributeFloat minSlideAngle = 50;
 	    public AttributeFloat hoverDistance = 0.02f;
 	    public AttributeFloat collisionPersist = 0.2f;
-	    //--------------------------------
+	    //================================
 	    // Unity-Specific
-	    //--------------------------------
+	    //================================
 	    public override void Awake(){
 		    base.Awake();
 		    this.ResetBlocked(true);
@@ -60,10 +60,10 @@ namespace Zios{
 		    this.minSlideAngle.Setup("Min Slide Angle",this);
 		    this.hoverDistance.Setup("Hover Distance",this);
 		    this.collisionPersist.Setup("Collision Persist",this);
-		    Events.Add("Add Move",(MethodVector3)this.AddMove);
-		    Events.Add("Add Move Raw",(MethodVector3)this.AddMoveRaw);
-		    Events.Register("Trigger",this.gameObject);
-		    Events.Register("Collide",this.gameObject);
+		    Events.Add("Add Move",(MethodVector3)this.AddMove,this.gameObject);
+		    Events.Add("Add Move Raw",(MethodVector3)this.AddMoveRaw,this.gameObject);
+		    Events.Register("On Trigger",this.gameObject);
+		    Events.Register("On Collide",this.gameObject);
 		    if(Application.isPlaying){
 			    if(this.GetComponent<Rigidbody>() == null){
 				    this.gameObject.AddComponent<Rigidbody>();
@@ -97,9 +97,9 @@ namespace Zios{
 		    Gizmos.color = Color.red;
 		    Gizmos.DrawLine(start,start+(-Vector3.up*0.5f));
 	    }
-	    //--------------------------------
+	    //================================
 	    // Internal
-	    //--------------------------------
+	    //================================
 	    public override void Step(){
 		    if(!Application.isPlaying){return;}
 		    bool positionAltered = this.lastPosition != this.transform.position;
@@ -140,7 +140,7 @@ namespace Zios{
 			    if(!this.frameCollisions.ContainsKey(existing)){
 				    CollisionData data = this.collisions[existing];
 				    if(Time.time > data.endTime){
-					    existing.CallEvent("CollisionEnd",data);
+					    existing.CallEvent("On Collision End",data);
 					    this.collisions.Remove(existing);
 				    }
 			    }
@@ -148,7 +148,7 @@ namespace Zios{
 		    foreach(var collision in this.frameCollisions){
 			    if(!this.collisions.ContainsKey(collision.Key)){
 				    this.collisions[collision.Key] = collision.Value;
-				    collision.Key.CallEvent("CollisionStart",collision.Value);
+				    collision.Key.CallEvent("On Collision Start",collision.Value);
 			    }
 			    this.collisions[collision.Key].endTime = Time.time + this.collisionPersist;
 		    }
@@ -172,7 +172,7 @@ namespace Zios{
 		    if(contact){
 			    if(this.CheckStep(current)){return;}
 			    if(isTrigger){
-				    hit.transform.gameObject.CallEvent("Trigger",this.GetComponent<Collider>());
+				    hit.transform.gameObject.CallEvent("On Trigger",this.GetComponent<Collider>());
 				    return;
 			    }
 			    this.SetPosition(this.GetComponent<Rigidbody>().position + (direction * (hit.distance-this.hoverDistance*2)));
@@ -185,8 +185,8 @@ namespace Zios{
 			    if(direction.x > 0){this.blocked["right"] = true;}
 			    if(direction.x < 0){this.blocked["left"] = true;}
 			    GameObject hitObject = hit.transform.gameObject;
-			    hitObject.CallEvent("Collision",otherCollision);
-			    this.gameObject.CallEvent("Collision",selfCollision);
+			    hitObject.CallEvent("On Collision",otherCollision);
+			    this.gameObject.CallEvent("On Collision",selfCollision);
 			    if(!this.frameCollisions.ContainsKey(hitObject)){
 				    this.frameCollisions[hitObject] = otherCollision;
 			    }

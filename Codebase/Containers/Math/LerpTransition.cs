@@ -24,9 +24,9 @@ namespace Zios{
 		    }
 		    if(this.parent is ActionLink){
 			    var script = (ActionLink)parent;
-			    Events.Add(script.alias+"/End",this.Reset);	
+			    Events.Add(script.alias+"/On End",this.Reset,parent.gameObject);	
 		    }
-		    Events.Add(path+"/Transition/Reset",this.Reset,parent.gameObject);
+		    Events.Add(path+"/Transition/On Reset",this.Reset,parent.gameObject);
 		    this.isAngle.Setup(path+"/Is Angle",parent);
 		    this.isResetOnChange.Setup(path+"/Is Reset On Change",parent);
 		    this.speed.Setup(path+"/Transition/Speed",parent);

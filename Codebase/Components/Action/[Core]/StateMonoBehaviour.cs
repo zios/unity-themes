@@ -1,4 +1,4 @@
-﻿using Zios;
+using Zios;
 using UnityEngine;
 using System;
 namespace Zios{
@@ -25,7 +25,7 @@ namespace Zios{
 	    public void ToggleRequire(){
 		    this.requirable.Set(!this.requirable);
 		    this.requirableOverride = !this.requirableOverride;
-		    this.gameObject.CallEvent("@Refresh");
+		    this.gameObject.CallEvent("On State Refresh");
 	    }
 	    public void DefaultAlias(string name){
 		    if(this.alias.IsEmpty()){
