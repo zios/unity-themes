@@ -23,7 +23,7 @@ namespace Zios{
 			this.overallHeight = this.GetBaseHeight(property,label);
 			if(!Attribute.ready && AttributeManager.safe){
 				EditorGUI.ProgressBar(area,AttributeManager.percentLoaded,"Updating");
-				Utility.SetDirty(property.serializedObject.targetObject);
+				//Utility.SetDirty(property.serializedObject.targetObject);
 				return;
 			}
 			if(this.access == null){
@@ -90,7 +90,7 @@ namespace Zios{
 			else if(data.usage == AttributeUsage.Shaped){
 				this.DrawShaped(this.valueRect,currentProperty,formulaLabel,true,operatorState);
 			}
-			if(GUI.changed){Utility.SetDirty(data);}
+			//if(GUI.changed){Utility.SetDirty(data);}
 			this.DrawContext(data,index!=0,false);
 		}
 	}

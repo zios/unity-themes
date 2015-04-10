@@ -33,12 +33,12 @@ namespace Zios{
 			    bool isPlaying = this.activeAnimation == configuration;
 			    if(isPlaying && GUILayout.Button("Stop")){
 				    this.activeAnimation = null;
-				    Utility.ResumeHierarchyUpdates();
+					Events.Resume("On Hierarchy Changed");
 			    }
 			    else if(!isPlaying && GUILayout.Button("Play")){
 				    this.animationTime = 0;
 				    this.activeAnimation = configuration;
-				    Utility.PauseHierarchyUpdates();
+					Events.Pause("On Hierarchy Changed");
 			    }
 		    }
 		    public override void OnGlobalAction(UnityEngine.Object target){

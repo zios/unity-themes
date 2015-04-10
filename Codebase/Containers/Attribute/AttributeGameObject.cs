@@ -23,8 +23,7 @@ namespace Zios{
 			this.canDirect = this.canFormula = false;
 			this.usage = AttributeUsage.Shaped;
 		}
-		public void DefaultSearch(string target){
-			this.GetFirst().target.DefaultSearch(target);
-		}
+		public void DefaultSearch(){this.GetFirst().target.DefaultSearch();}
+		public void DefaultSearch(string target){this.GetFirst().target.DefaultSearch(target);}
 	}
 }

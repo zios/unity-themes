@@ -33,11 +33,15 @@ namespace Zios{
 		    }
 		    return result.ToArray();
 	    }
+	    public static bool Has(this Enum current,Enum mask){return current.Contains(mask);}
 	    public static bool Contains(this Enum current,Enum mask){
 		    return (current.ToInt() & mask.ToInt()) != 0;
 		    //int bits = 1<<mask.ToInt();
 		    //return (current.ToInt() & bits) == bits;
 		    //return (current.ToInt() | (1<<mask.ToInt())) == current.ToInt();
+	    }
+	    public static bool Matches(this Enum current,Enum value){
+		    return (current.ToInt() & value.ToInt()) == value.ToInt();
 	    }
     }
 }

@@ -19,6 +19,9 @@ namespace Zios{
 		    }
 		    return newList;
 	    }
+	    public static HashSet<T> ToHashSet<T>(this IEnumerable<T> current){
+		   return new HashSet<T>(current);
+		}
 	    public static string ToString<T>(this IEnumerable<T> current,string separator=" ",string endTerm="or"){
 		    string result = "";
 		    foreach(var item in current){

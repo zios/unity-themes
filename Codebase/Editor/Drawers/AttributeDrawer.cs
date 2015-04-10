@@ -83,11 +83,13 @@ namespace Zios{
 		public Rect valueRect;
 		public Rect iconRect;
 		public bool contextOpen;
+		public bool dirty;
 		public GUISkin skin;
 		public List<string> operatorOverride;
 		public List<string> specialOverride;
 		public Dictionary<AttributeData,bool> targetMode = new Dictionary<AttributeData,bool>();
 		public virtual void Setup(AttributeDrawer drawer,Rect area,SerializedProperty property,GUIContent label){
+			property.serializedObject.Update();
 			if(skin == null){
 				string skinName = EditorGUIUtility.isProSkin ? "Dark" : "Light";
 				this.skin = FileManager.GetAsset<GUISkin>("Gentleface-" + skinName + ".guiskin");
@@ -110,9 +112,13 @@ namespace Zios{
 			EditorGUI.BeginProperty(area,label,property);
 			this.Draw();
 			EditorGUI.EndProperty();
-			if(GUI.changed){
+			if(GUI.changed || this.dirty){
+				property.serializedObject.targetObject.CallMethod("OnValidate");
 				property.serializedObject.ApplyModifiedProperties();
-				property.serializedObject.Update();
+				if(this.dirty){
+					Utility.RepaintInspectors();
+					this.dirty = false;
+				}
 			}
 		}
 		public void SetupAreas(Rect area){
@@ -135,14 +141,12 @@ namespace Zios{
 					this.labelRect = this.labelRect.AddX(16);
 					this.DrawShaped(this.valueRect,firstProperty,this.label,true);
 				}
-				if(GUI.changed){Utility.SetDirty(firstData);}
 			}
 			if(this.attribute.info.mode == AttributeMode.Linked){
 				this.attributeCast.usage = AttributeUsage.Shaped;
 				GUI.Box(this.iconRect,"",GUI.skin.GetStyle("IconLinked"));
 				this.labelRect = this.labelRect.AddX(16);
 				this.DrawShaped(this.valueRect,firstProperty,this.label);
-				if(GUI.changed){Utility.SetDirty(firstData);}
 			}
 			if(this.attribute.info.mode == AttributeMode.Formula){
 				this.DrawFormula(this.label);
@@ -193,7 +197,12 @@ namespace Zios{
 			this.targetMode[data] = toggleActive.Draw(toggleRect,GUI.skin.GetStyle("CheckmarkToggle"));
 			if(toggleActive != this.targetMode[data]){
 				if(this.attribute is AttributeGameObject){
-					data.referenceID = toggleActive ? "" : data.referenceID;
+					//data.referenceID = toggleActive ? "" : data.referenceID;
+					if(!this.targetMode[data]){
+						data.referenceID = "";
+						data.referencePath = "";
+						data.reference = null;
+					}
 				}
 			}
 			if(!this.targetMode[data]){
@@ -205,9 +214,10 @@ namespace Zios{
 			List<string> attributeIDs = new List<string>();
 			int attributeIndex = -1;
 			GameObject targetScope = target.Get();
-			if(targetScope != null && Attribute.lookup.ContainsKey(targetScope)){
+			if(!targetScope.IsNull() && Attribute.lookup.ContainsKey(targetScope)){
 				var lookup = Attribute.lookup[targetScope];
 				foreach(var item in lookup){
+					if(item.Value.data.Length < 1){continue;}
 					if(item.Value.info.dataType != data.GetType()){continue;}
 					bool feedback = (item.Value.info.id == this.attribute.info.id || item.Value.data[0].referenceID == this.attribute.info.id);
 					if(!feedback){
@@ -248,6 +258,7 @@ namespace Zios{
 				if(attributeIndex != previousIndex){
 					data.referencePath = name;
 					data.referenceID = id;
+					data.reference = Attribute.lookup[targetScope][data.referenceID];
 				}
 			}
 			else{
@@ -291,7 +302,7 @@ namespace Zios{
 			EditorGUIUtility.AddCursorRect(this.fullRect,MouseCursor.ArrowPlus);
 			bool formulaExpanded = EditorPrefs.GetBool(this.attribute.info.path+"FormulaExpanded");
 			if(this.labelRect.AddX(16).Clicked() || this.valueRect.Clicked()){
-				GUI.changed = true;
+				this.dirty = true;
 				formulaExpanded = !formulaExpanded;
 			}
 			formulaExpanded = EditorGUI.Foldout(labelRect,formulaExpanded,label,GUI.skin.GetStyle("IconFormula"));
@@ -312,7 +323,7 @@ namespace Zios{
 						return;
 					}
 					this.attribute.Add<DataType>();
-					GUI.changed = true;
+					this.dirty = true;
 				}
 			}
 			else{
@@ -337,7 +348,6 @@ namespace Zios{
 			else if(data.usage == AttributeUsage.Shaped){
 				this.DrawShaped(this.valueRect,currentProperty,formulaLabel,true,operatorState);
 			}
-			if(GUI.changed){Utility.SetDirty(data);}
 			this.DrawContext(data,index!=0,false);
 		}
 		public virtual void DrawAddMenu(){
@@ -417,8 +427,7 @@ namespace Zios{
 				menu.ShowAsContext();
 			}
 			if(this.contextOpen && Event.current.button == 0){
-				GUI.changed = true;
-				Utility.RepaintInspectors();
+				this.dirty = true;
 				this.contextOpen = false;
 			}
 		}

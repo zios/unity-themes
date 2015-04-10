@@ -200,8 +200,8 @@ namespace Zios{
 			    ++EditorGUI.indentLevel;
 			    EditorGUI.BeginDisabledGroup(!custom && !extended);
 			    string blendName = extended ? "Color" : "Color & Alpha";
-			    common.blend = this.Draw(blendName,common.blend).CastArray<Blend>();
-			    if(extended){common.blendAlpha = this.Draw("Alpha",common.blendAlpha).CastArray<Blend>();}
+			    common.blend = this.Draw(blendName,common.blend).ConvertArray<Blend>();
+			    if(extended){common.blendAlpha = this.Draw("Alpha",common.blendAlpha).ConvertArray<Blend>();}
 			    EditorGUI.EndDisabledGroup();
 			    --EditorGUI.indentLevel;
 		    }

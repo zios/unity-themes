@@ -39,6 +39,9 @@ namespace Zios{
 		    }
 		    return results.ToArray();
 	    }
+	    public static bool HasComponent<T>(this GameObject current,bool includeInactive=false) where T : Component{
+		    return !current.GetComponent<T>(includeInactive).IsNull();
+	    }
 	    public static T GetComponent<T>(this GameObject current,bool includeInactive=false) where T : Component{
 		    T[] results = current.GetComponentsInChildren<T>(includeInactive);
 		    foreach(T item in results){

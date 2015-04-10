@@ -33,6 +33,7 @@ namespace Zios{
 			get{return this.info.data;}
 			set{this.info.data = value;}
 		}
+		[NonSerialized] public bool isSetup;
 		[NonSerialized] public bool dirty = true;
 		[NonSerialized] public bool locked;
 		[NonSerialized] public bool showInEditor = true;
@@ -45,6 +46,7 @@ namespace Zios{
 		[NonSerialized] public string defaultSet = "A";
 		[NonSerialized] public List<Attribute> dependents = new List<Attribute>();
 		public virtual Type[] GetFormulaTypes(){return null;}
+		public virtual bool HasData(){return false;}
 		public virtual AttributeData[] GetData(){return null;}
 		public virtual void Clear(){}
 		public virtual void Add<Type>(int index=-1,string set="") where Type : AttributeData{}
@@ -80,8 +82,9 @@ namespace Zios{
 		public virtual BaseType GetFormulaValue(){return default(BaseType);}
 		public override Type[] GetFormulaTypes(){return new Type[]{typeof(AttributeData)};}
 		public override AttributeData[] GetData(){return this.info.data;}
+		public override bool HasData(){return this.info.data.Length > 0;}
 		public AttributeData GetFirst(){
-			if(!Application.isPlaying){
+			if(this.info.data.Length < 1){
 				this.PrepareData();
 			}
 			return this.info.data[0];
@@ -164,6 +167,10 @@ namespace Zios{
 			if(!Attribute.all.Contains(this)){
 				Attribute.all.Add(this);
 			}
+			if(!Application.isPlaying){
+				Events.Add("On Validate",this.ValidateDependents,parent);
+			}
+			this.isSetup = true;
 		}
 		public void BuildInfo(string path,Component parent){
 			bool dirty = this.info.parent != parent;
@@ -186,6 +193,7 @@ namespace Zios{
 			lookup.AddNew(target);
 			lookup[target].RemoveValue(self);
 			lookup[target][this.info.id] = self;
+			this.dependents.Clear();
 		}
 		public override void BuildData(AttributeData[] dataSet){
 			var lookup = Attribute.lookup;
@@ -253,6 +261,14 @@ namespace Zios{
 				}
 			}
 		}
+		public void ValidateDependents(){
+			foreach(var dependent in this.dependents){
+				var parent = dependent.info.parent;
+				if(parent is DataMonoBehaviour){
+					((DataMonoBehaviour)parent).OnValidate();
+				}
+			}
+		}
 		// ======================
 		// Repair
 		// ======================
@@ -283,12 +299,6 @@ namespace Zios{
 			}
 		}
 		public void PrepareData(){
-			if(this.info.data.Length < 1){
-				BaseType value = this.delayedValue != null ? this.delayedValue : default(BaseType);
-				if(typeof(BaseType).IsValueType && this.delayedValue == null && AttributeManager.debug){Debug.Log("[Attribute] Fixing unprepared data : " + this.info.path);}
-				//else{Debug.Log("[Attribute] Delayed add : " + this.info.path);}
-				this.Add(value);
-			}
 			if(!Application.isPlaying){
 				this.RepairData("A");
 				this.RepairData("B");
@@ -296,6 +306,12 @@ namespace Zios{
 				if(this.info.mode == AttributeMode.Linked){
 					this.usage = AttributeUsage.Shaped;
 				}
+			}
+			if(this.info.data.Length < 1){
+				BaseType value = this.delayedValue != null ? this.delayedValue : default(BaseType);
+				if(typeof(BaseType).IsValueType && this.delayedValue == null && AttributeManager.debug){Debug.Log("[Attribute] Fixing unprepared data : " + this.info.path);}
+				//else{Debug.Log("[Attribute] Delayed add : " + this.info.path);}
+				this.Add(value);
 			}
 			this.UpdateData(this.info.data);
 			this.UpdateData(this.info.dataB);
@@ -341,9 +357,6 @@ namespace Zios{
 				data.path = this.info.path + "/" + index;
 				data.hideFlags = PlayerPrefs.GetInt("ShowAttributeData") == 1 ? 0 : HideFlags.HideInInspector;
 				data.Setup();
-				if(data.usage == AttributeUsage.Direct){continue;}
-				data.target.Setup(this.info.path+"/Target",this.info.parent);
-				data.target.DefaultSearch("[This]");
 			}
 		}
 		// ======================
@@ -360,6 +373,7 @@ namespace Zios{
 			}
 		}
 		public virtual BaseType Get(){
+			if(!this.isSetup){this.Setup("",null);}
 			if(this.getMethod != null){return this.getMethod();}
 			if(this.info.data.Length < 1){
 				if(AttributeManager.debug){Debug.LogWarning("[Attribute] Get : No data found for : " + this.info.path);}

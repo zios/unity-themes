@@ -10,9 +10,10 @@ namespace Zios{
         public override void OnGUI(Rect area,SerializedProperty property,GUIContent label){
 			if(!Event.current.IsUseful()){return;}
 		    if(!area.InspectorValid()){return;}
+			property.serializedObject.Update();
 		    if(!Attribute.ready){
 			    EditorGUI.ProgressBar(area,AttributeManager.percentLoaded,"Updating");
-			    Utility.SetDirty(property.serializedObject.targetObject);
+			    //Utility.SetDirty(property.serializedObject.targetObject);
 			    return;
 		    }
 		    string skin = EditorGUIUtility.isProSkin ? "Dark" : "Light";
@@ -38,7 +39,7 @@ namespace Zios{
 			    error.DrawLabel(valueRect,GUI.skin.GetStyle("WarningLabel"));
 		    }
 		    else{
-			    List<string> events = eventType == "Listen" ? Events.GetEvents("Listen",target) : Events.GetEvents("Caller",target);
+			    List<string> events = eventType == "Listen" ? Events.GetEventNames("Listen",target) : Events.GetEventNames("Caller",target);
 			    if(events.Count > 0){
 				    events.Sort();
 				    events = events.OrderBy(item=>item.Contains("/")).ToList();
@@ -61,9 +62,8 @@ namespace Zios{
 			    }
 		    }
             EditorGUI.EndProperty();
-		    property.serializedObject.ApplyModifiedProperties();
 		    if(GUI.changed){
-			    EditorUtility.SetDirty(property.serializedObject.targetObject);
+				property.serializedObject.ApplyModifiedProperties();
 		    }
         }
     }

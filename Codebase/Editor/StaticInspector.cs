@@ -34,14 +34,11 @@ namespace Zios{
 		    window.position = new Rect(100,150,200,200);
 		    window.Start();
         }
-	    public void OnDestroy(){
-		    Utility.RemoveEditorUpdate(this.Setup);
-	    }
         public void OnGUI(){
-		    Utility.AddEditorUpdate(this.Setup,true);
+			Events.Add("On Editor Update",this.Setup);
 		    if(this.assemblies.Count < 1){this.setup = false;}
 		    if(this.setup){
-			    this.DrawContext();
+				this.DrawContext();
 			    this.DrawSelectors();
 			    this.DrawInspector();
 		    }
@@ -97,6 +94,7 @@ namespace Zios{
 	    public void Reset(){
 		    this.setup = false;
 		    this.assemblies.Clear();
+			this.Setup();
 	    }
 	    public void DrawContext(){
 		    if(this.position.SetX(0).SetY(0).Clicked(1)){
@@ -165,18 +163,25 @@ namespace Zios{
 			    foreach(var current in this.variables.Copy()){
 					string name = current.Key;
 					object value = current.Value.Get();
-					this.DrawValue(name,value);
+					var accessor = this.variables.ContainsKey(name) ? this.variables[name] : null;
+					this.DrawValue(name,value,accessor);
 			    }
 		    }
 			this.viewArea = this.viewArea.SetHeight(this.valueArea.y+22);
 			GUI.EndScrollView();
 	    }
-		public void DrawValue(string name,object value,Accessor accessor=null,int depth=0){
-			if(name.Contains("$cache")){return;}
-			GUIContent label = new GUIContent(name.ToTitle());
+		public void DrawValue(string labelText,object value,Accessor accessor=null,int depth=0){
+			if(labelText.Contains("$cache")){return;}
+			labelText = labelText.ToTitle();
+			if(value is UnityObject){labelText = labelText + " (" + value.GetType().Name + ")";}
+			bool labelDrawn = false;
+			GUIContent label = new GUIContent(labelText);
 			GUI.changed = false;
 			bool common = (value is string || value is bool || value is float || value is int || value is UnityObject || value is Enum);
-			if(common){label.DrawLabel(this.labelArea);}
+			if(common){
+				label.DrawLabel(this.labelArea);
+				labelDrawn = true;
+			}
 			int hash = 0;
 			if(!value.IsNull()){
 				hash = value.GetHashCode();
@@ -192,8 +197,16 @@ namespace Zios{
 			}
 			else if(value.IsNull()){return;}
 			else if(value is Enum){
-				Enum newValue = ((Enum)value).Draw(this.valueArea);
-				if(accessor != null && GUI.changed){accessor.Set(newValue.ToInt());}
+				string name = accessor != null ? accessor.name : "";
+				object scope = accessor != null ? accessor.scope : null;
+				if(accessor != null && scope.HasAttribute(name,typeof(EnumMaskAttribute))){
+					Enum newValue = ((Enum)value).DrawMask(this.valueArea);
+					if(GUI.changed){accessor.Set(newValue.ToInt());}
+				}
+				else{
+					Enum newValue = ((Enum)value).Draw(this.valueArea);
+					if(accessor != null && GUI.changed){accessor.Set(newValue.ToInt());}
+				}
 			}
 			else if(value is string){
 				string newValue = ((string)value).Draw(this.valueArea);
@@ -213,6 +226,10 @@ namespace Zios{
 			}
 			else if(value is IList && depth < 9){
 				IList items = (IList)value;
+				/*if(items.Count == 1){
+					this.DrawValue(label.text,items[0],null,++depth);
+					return;
+				}*/
 				label.text = label.text + " (" + items.Count + ")";
 				this.foldoutState[hash] = EditorGUI.Foldout(this.labelArea,this.foldoutState[hash],label);
 				this.labelArea = this.labelArea.AddY(18);
@@ -231,6 +248,12 @@ namespace Zios{
 			}
 			else if(value is IDictionary && depth < 9){
 				IDictionary items = (IDictionary)value;
+				/*if(items.Count <= 1){
+					foreach(DictionaryEntry item in items){
+						this.DrawValue(label.text,item.Value,null,++depth);
+					}
+					return;
+				}*/
 				label.text = label.text + " (" + items.Count + ")";
 				this.foldoutState[hash] = EditorGUI.Foldout(this.labelArea,this.foldoutState[hash],label);
 				this.labelArea = this.labelArea.AddY(18);
@@ -239,6 +262,10 @@ namespace Zios{
 					this.labelArea = this.labelArea.AddX(10);
 					int index = 0;
 					foreach(DictionaryEntry item in items){
+						if(item.Key is string){
+							this.DrawValue((string)item.Key,item.Value,null,++depth);
+							continue;
+						}
 						int itemHash = item.GetHashCode();
 						this.foldoutState.AddNew(itemHash);
 						this.foldoutState[itemHash] = EditorGUI.Foldout(this.labelArea,this.foldoutState[itemHash],"Item " + index);
@@ -275,7 +302,10 @@ namespace Zios{
 				}
 				return;
 			}
-			else{return;}
+			else if(!labelDrawn){return;}
+			if(GUI.changed && this.activeClass.HasMethod("StaticValidate")){
+				this.activeClass.CallMethod("StaticValidate");
+			}
 			this.labelArea = this.labelArea.AddY(18);
 			this.valueArea = this.valueArea.AddY(18);
 		}

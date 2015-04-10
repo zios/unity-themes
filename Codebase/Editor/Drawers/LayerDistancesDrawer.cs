@@ -8,7 +8,6 @@ namespace Zios{
     public class LayerDistancesDrawer : PropertyDrawer{
 	    public int drawn;
 	    public override float GetPropertyHeight(SerializedProperty property,GUIContent label){
-		    this.OnGUI(new Rect(-30000,-30000,0,0),property,label);
 		    if(EditorPrefs.GetBool("layerDistancesExpanded")){
 			    return ((EditorGUIUtility.singleLineHeight+2) * this.drawn) + 16;
 		    }
@@ -17,6 +16,7 @@ namespace Zios{
         public override void OnGUI(Rect area,SerializedProperty property,GUIContent label){
 			if(!Event.current.IsUseful()){return;}
 		    if(!area.InspectorValid()){return;}
+			property.serializedObject.Update();
 		    float singleLine = EditorGUIUtility.singleLineHeight;
 		    GUI.changed = false;
 		    EditorGUI.BeginProperty(area,label,property);
@@ -41,9 +41,9 @@ namespace Zios{
 			    EditorGUI.indentLevel -= 1;
 		    }
 		    EditorGUI.EndProperty();
-		    property.serializedObject.ApplyModifiedProperties();
 		    if(GUI.changed){
-			    EditorUtility.SetDirty(property.serializedObject.targetObject);
+				property.serializedObject.ApplyModifiedProperties();
+			    //EditorUtility.SetDirty(property.serializedObject.targetObject);
 		    }
         }
     }

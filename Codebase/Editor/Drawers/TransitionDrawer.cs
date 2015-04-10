@@ -7,6 +7,7 @@ namespace Zios{
         public override void OnGUI(Rect area,SerializedProperty property,GUIContent label){
 			if(!Event.current.IsUseful()){return;}
 		    if(!area.InspectorValid()){return;}
+			property.serializedObject.Update();
 		    GUI.changed = false;
 		    Transition transition = property.GetObject<Transition>();
 		    float durationValue = transition.duration.Get();
@@ -27,7 +28,7 @@ namespace Zios{
 			    transition.delayStart.Set(delayValue);
 			    transition.curve = curveValue;
 			    property.serializedObject.ApplyModifiedProperties();
-			    EditorUtility.SetDirty(property.serializedObject.targetObject);
+			    //EditorUtility.SetDirty(property.serializedObject.targetObject);
 		    }
         }
     }

@@ -9,6 +9,7 @@ namespace Zios{
         public override void OnGUI(Rect area,SerializedProperty property,GUIContent label){
 			if(!Event.current.IsUseful()){return;}
 		    if(!area.InspectorValid()){return;}
+			property.serializedObject.Update();
 		    string skin = EditorGUIUtility.isProSkin ? "Dark" : "Light";
 		    GUI.skin = FileManager.GetAsset<GUISkin>("Gentleface-" + skin + ".guiskin");
 		    GUI.changed = false;
@@ -22,7 +23,6 @@ namespace Zios{
 		    toggleRect.width = 18;
 		    bool previousMode = target.mode == TargetMode.Direct;
 		    bool currentMode = previousMode.Draw(toggleRect,GUI.skin.GetStyle("TargetToggle"));
-            EditorGUI.BeginProperty(area,label,property);
 		    if(previousMode != currentMode){
 			    target.mode = target.mode == TargetMode.Direct ? TargetMode.Search : TargetMode.Direct;
 		    }
@@ -49,11 +49,9 @@ namespace Zios{
 				    Event.current.Use();
 			    }
 			    target.search = target.search.Draw(textRect);
-			    property.FindPropertyRelative("search").stringValue = target.search;
 			    result.DrawLabel(propertyRect,GUI.skin.GetStyle("SubtleInfo"));
 		    }
-            EditorGUI.EndProperty();
-		    property.serializedObject.ApplyModifiedProperties();
+			property.serializedObject.ApplyModifiedProperties();
 		    if(GUI.changed){
 				Utility.SetDirty(property.serializedObject.targetObject);
 		    }

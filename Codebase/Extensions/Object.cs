@@ -14,13 +14,13 @@ namespace Zios{
 	    public const BindingFlags instanceFlags = BindingFlags.Instance|BindingFlags.NonPublic|BindingFlags.Public;
 	    public const BindingFlags privateFlags = BindingFlags.Instance|BindingFlags.NonPublic;
 	    public const BindingFlags publicFlags = BindingFlags.Instance|BindingFlags.Public;
-	    public static T Cast<T>(this object current,T type){
+	    public static T ChangeType<T>(this object current,T type){
 		    return (T)Convert.ChangeType(current,typeof(T));
 	    }
-	    public static T Cast<T>(this object current){
+	    public static T ChangeType<T>(this object current){
 		    return (T)Convert.ChangeType(current,typeof(T));
 	    }
-	    public static T[] CastArray<T>(this object current){
+	    public static T[] ConvertArray<T>(this object current){
 		    return ((Array)current).Convert<T>();
 	    }
 	    public static T Clone<T>(this T target) where T : class{
@@ -43,6 +43,15 @@ namespace Zios{
 			    return (V)current.GetMethod(name,allFlags).Invoke(null,parameters);
 		    }
 		    return (V)current.GetMethod(name,allFlags).Invoke(current,parameters);
+	    }
+	    public static bool HasAttribute(this object current,string name,Type attribute){
+		    Type type = current is Type ? (Type)current : current.GetType();
+		    var property = type.GetProperty(name,allFlags);
+		    var field = type.GetField(name,allFlags);
+			System.Attribute[] attributes = new System.Attribute[0];
+			if(field != null){attributes = System.Attribute.GetCustomAttributes(field);}
+			if(property != null){attributes = System.Attribute.GetCustomAttributes(property);}
+			return attributes.Exists(x=>x.GetType()==attribute);
 	    }
 	    public static bool HasMethod(this object current,string name,BindingFlags flags = allFlags){
 		    Type type = current is Type ? (Type)current : current.GetType();
@@ -196,6 +205,11 @@ namespace Zios{
 	    public static string GetClassPath(this object current){
 		    return current.GetType().ToString();
 	    }
+	    public static string GetAlias(this object current){
+		    if(current.HasVariable("alias")){return current.GetVariable<string>("alias");}
+		    //if(current.HasVariable("name")){return current.GetVariable<string>("name");}
+		    return current.GetType().Name;
+	    }
 	    public static bool IsEmpty(this object current){
             return current == null || current.Equals(null) || (current is string && ((string)current).IsEmpty());
         }
@@ -204,6 +218,15 @@ namespace Zios{
         }
 	    public static bool IsType(this object current,Type value){
 		    return current.GetType().IsType(value);
+	    }
+	    public static object Box<T>(this T current){
+		    return current.AsBox();
+	    }
+	    public static T As<T>(this object current){
+		    return (T)current;
+	    }
+	    public static object AsBox<T>(this T current){
+		    return (object)current;
 	    }
 	    public static T[] AsArray<T>(this T current){
 		    return new T[]{current};

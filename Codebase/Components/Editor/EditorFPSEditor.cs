@@ -11,7 +11,7 @@ namespace Zios{
 	    private GUISkin skin;
 	    public override void OnInspectorGUI(){
 			if(!Event.current.IsUseful()){return;}
-		    Utility.AddEditorUpdate(this.Step,true);	
+			Events.Add("On Editor Update",this.Step);
 		    string skinName = EditorGUIUtility.isProSkin ? "Dark" : "Light";
 		    if(this.skin == null || !this.skin.name.Contains(skinName)){
 			    this.skin = FileManager.GetAsset<GUISkin>("Gentleface-" + skinName + ".guiskin");
@@ -21,7 +21,7 @@ namespace Zios{
 	    }
 	    public void Step(){
 		    if(this.target.IsNull()){
-			    Utility.RemoveEditorUpdate(this.Step);
+				Events.Remove("On Editor Update",this.Step);
 			    return;
 		    }
 		    this.frames += 1;

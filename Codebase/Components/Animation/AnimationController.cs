@@ -70,7 +70,8 @@ namespace Zios{
 		    }
 	    }
 	    private void PlayDefault(){
-		    if(this.defaultAnimation == null){return;}
+			bool exists = this.defaultAnimation != null && this.lookup.ContainsKey(this.defaultAnimation.name);
+		    if(!exists){return;}
 		    float currentWeight = 0;
 		    AnimationData fallback = this.defaultAnimation;
 		    string name = this.defaultAnimation.name;

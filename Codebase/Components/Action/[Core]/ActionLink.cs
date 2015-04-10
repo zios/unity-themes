@@ -43,14 +43,6 @@ namespace Zios{
 				this.End();
 			}
 		}
-		public override void OnDestroy(){
-			if(!Utility.IsPlaying()){
-				base.OnDestroy();
-				if(!this.gameObject.IsNull()){
-					this.gameObject.CallEvent("@Refresh");
-				}
-			}
-		}
 		public virtual void OnDisable(){
 			if(!this.gameObject.activeInHierarchy || !this.enabled){
 				this.gameObject.CallEvent(this.alias+"/Disabled");

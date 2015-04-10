@@ -3,14 +3,13 @@ using System;
 using System.Collections.Generic;
 namespace Zios{
     public static class ComponentExtension{
-	    public static string GetAlias(this Component current){
-		    if(current.HasVariable("alias")){
-			    return current.GetVariable<string>("alias");
-		    }
-		    return current.GetType().ToString();
+	    public static GameObject GetParent(this Component current){	
+		    return current.gameObject.GetParent();
 	    }
-	    public static string GetPath(this Component current){	
-		    return current.gameObject.GetPath();
+	    public static string GetPath(this Component current,bool includeSelf=true){	
+			string path = current.gameObject.GetPath();
+			if(includeSelf){path += current.GetAlias();}
+		    return path;
 	    }
 	    public static bool IsPrefab(this Component current){
 		    return current.gameObject.IsPrefab();

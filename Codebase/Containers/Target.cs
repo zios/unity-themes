@@ -45,6 +45,7 @@ namespace Zios{
 			    this.AddSpecial("[NextEnabled]",parent.gameObject.GetNextSibling());
 			    this.AddSpecial("[PreviousEnabled]",parent.gameObject.GetPreviousSibling());
 			    this.AddSpecial("[Root]",parent.gameObject.GetPrefabRoot());
+				parent.AddEvent("On Validate",(Method)this.DefaultSearch);
 		    }
 		    if(parent is ActionLink || parent is StateLink){
 			    ActionLink actionLink = parent is ActionLink ? (ActionLink)parent : null;
@@ -141,8 +142,8 @@ namespace Zios{
 			    this.lastSearch = this.search;
 			    this.hasSearched = true;
 		    }
-		    if(!editorMode && this.searchObject.IsNull() && !this.hasWarned){
-			    Debug.LogWarning("[Target] No gameObject was found for search " + this.parent.name,this.parent);
+		    if(!editorMode && this.searchObject.IsNull() && !this.parent.IsNull() && !this.hasWarned){
+			    Debug.LogWarning("[Target] No gameObject was found for search " + this.parent.GetPath(),this.parent);
 			    if(!search.IsEmpty() && !search.Contains("Not Found")){
 				    this.search = "<" + this.search + " Not Found>";
 			    }

@@ -27,7 +27,9 @@ namespace Zios{
 	    }
 	    public static string ToTitle(this string current){
 		    string text = Regex.Replace(current,"(\\B[A-Z])"," $1");
-		    return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(text);
+		    text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(text);
+			text = text.Replace("3 D","3D").Replace("2 D","2D");
+			return text;
 	    }
 	    public static string ToPascalcase(this string current){
 		    return current.Strip(" ").Capitalize();

@@ -4,6 +4,9 @@ using UnityEngine;
 public class ActionState : ActionLink{
 	public override void Awake(){
 		base.Awake();
-		this.warnings["This component has been deprecated and likely should not be used."] = ()=>{};
+		string warning = "This component has been deprecated and likely should not be used.";
+		if(!this.dependents.Exists(x=>x.message==warning)){
+			this.dependents.AddNew().message = warning;
+		}
 	}
 }

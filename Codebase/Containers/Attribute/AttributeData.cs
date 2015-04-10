@@ -16,15 +16,25 @@ namespace Zios{
 		[NonSerialized] public Attribute reference;
 		public void Setup(){
 			if(!this.attribute.IsNull() && !this.attribute.parent.IsNull()){
-				Method destroyMethod = ()=>{
-					bool exists = !this.IsNull() && !this.gameObject.IsNull();
-					if(exists){Utility.EditorDelayCall(()=>Utility.Destroy(this));}
-				};
-				this.attribute.parent.AddEvent("On Destroy",destroyMethod);
-				//Events.Add("On Destroy",destroyMethod,this.attribute.parent);
+				this.target.Setup(this.attribute.path+"/Target",this.attribute.parent);
+				if(!Application.isPlaying){
+					Events.Add("On Destroy",this.DestroySelf,this.attribute.parent);
+					Events.Add("On Validate",this.ValidateParent,this);
+				}
+			}
+		}
+		public void DestroySelf(){
+			bool exists = !this.IsNull() && !this.gameObject.IsNull();
+			if(exists){Utility.EditorDelayCall(()=>Utility.Destroy(this));}
+		}
+		public void ValidateParent(){
+			if(this.attribute.parent is DataMonoBehaviour){
+				var dataBehaviour = (DataMonoBehaviour)this.attribute.parent;
+				dataBehaviour.OnValidate();
 			}
 		}
 		public override void OnDestroy(){
+			if(Utility.IsPlaying() || Application.isLoadingLevel){return;}
 			base.OnDestroy();
 			if(this.attribute != null){
 				this.attribute.data = this.attribute.data.Remove(this);

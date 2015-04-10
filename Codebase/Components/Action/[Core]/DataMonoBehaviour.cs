@@ -1,4 +1,4 @@
-﻿using Zios;
+using Zios;
 using UnityEngine;
 using System;
 using System.Collections.Generic;
@@ -7,41 +7,79 @@ using System.Linq;
 using UnityEditor;
 #endif
 namespace Zios{
-    [AddComponentMenu("")][ExecuteInEditMode]
+    [ExecuteInEditMode]
     public class DataMonoBehaviour : MonoBehaviour{
-	    public Dictionary<string,Method> warnings = new Dictionary<string,Method>();
 	    public static DataMonoBehaviour[] sorting;
 	    public static int processIndex;
 	    public string alias;
 		private string lastAlias;
-	    public virtual void OnApplicationQuit(){this.Awake();}
-	    public virtual void Reset(){this.Awake();}
+	    [NonSerialized] public List<DataDependency> dependents = new List<DataDependency>();
+	    public virtual void Awake(){
+		    string name = this.GetType().Name.ToTitle();
+		    this.lastAlias = this.alias = this.alias.SetDefault(name);
+			this.dependents.Clear();
+			if(!Application.isPlaying){
+				this.RegisterEvent("On Destroy");
+				this.RegisterEvent("On Validate");
+				Events.Add("On Validate",this.CheckAlias,this);
+				Events.Add("On Validate",this.CheckDependents,this);
+				Events.Add("On Attributes Ready",this.CheckDependents,Events.global);
+			}
+	    }
+		//===============
+		// Editor
+		//===============
 	    public virtual void OnValidate(){
 			if(Utility.IsPlaying() || Application.isLoadingLevel){return;}
+			this.CallEvent("On Validate");
+	    }
+	    public virtual void OnDestroy(){
+			if(Utility.IsPlaying() || Application.isLoadingLevel){return;}
+			this.CallEvent("On Destroy");
+			AttributeManager.PerformRefresh();
+	    }
+		public void CheckAlias(){
 			if(this.lastAlias != this.alias || this.alias.IsEmpty()){
 				AttributeManager.PerformRefresh();
 				this.lastAlias = this.alias;
 				this.Awake();
 			}
-	    }
-	    public virtual void Awake(){
-		    this.warnings.Clear();
-			this.RegisterEvent("On Destroy");
-		    string name = this.GetType().Name.ToTitle().Replace("3 D","3D");
-		    this.alias = this.alias.SetDefault(name);
-	    }
-	    public virtual void OnDestroy(){
-			this.CallEvent("On Destroy");
-			AttributeManager.PerformRefresh();
-	    }
+		}
+		public void CheckDependents(){
+			foreach(var dependent in this.dependents){
+				dependent.exists = false;
+				if(dependent.type.IsNull()){continue;}
+				if(dependent.target.IsNull() && dependent.dynamicTarget.IsNull()){continue;}
+				if(dependent.target.IsNull() && !dependent.dynamicTarget.HasData()){continue;}
+				GameObject target = dependent.target.IsNull() ? dependent.dynamicTarget.Get() : dependent.target;
+				dependent.method = ()=>{};
+				if(!target.IsNull()){
+					Type type = dependent.type;
+					dependent.exists = !target.GetComponent(type).IsNull();
+					dependent.method = ()=>target.AddComponent(type);
+				}
+			}
+		}
 	    public void AddDependent<Type>() where Type : Component{this.AddDependent<Type>(this.gameObject,true);}
-	    public void AddDependent<Type>(GameObject target,bool self=false) where Type : Component{
-		    if(!target.IsNull() && target.GetComponent<Type>() == null){
-			    string targetName = self ? this.GetType().Name : target.name;
-			    string issue = targetName + " is missing required component : " + typeof(Type).Name + ". Click here to add.";
-			    this.warnings[issue] = ()=>target.AddComponent<Type>();
-		    }
+	    public void AddDependent<Type>(object target,bool isScript=false) where Type : Component{
+			Method delayAdd = ()=>this.DelayAddDependent(typeof(Type),target,isScript);
+			Events.AddLimited("On Attributes Ready",delayAdd,1,Events.global);
 	    }
+	    public void DelayAddDependent(Type type,object target,bool isScript=false){
+			if(this.dependents.Exists(x=>x.type==type)){return;}
+			if(target.IsNull()){return;}
+			var dependent = new DataDependency();
+			dependent.dynamicTarget = target is AttributeGameObject ? (AttributeGameObject)target : null;
+			dependent.target = target is AttributeGameObject ? null : (GameObject)target;
+			dependent.type = type;
+			dependent.scriptName = isScript ? this.GetType().Name : "";
+			dependent.message = "[target] is missing required component : [type]. Click here to add.";
+			this.dependents.AddNew(dependent);
+			this.CheckDependents();
+	    }
+		//===============
+		// Sorting	
+		//===============
 	    #if UNITY_EDITOR
         [MenuItem("Zios/Process/Components/Sort All (Smart)")]
 	    public static void SortSmartAll(){
@@ -55,8 +93,8 @@ namespace Zios{
 		    }
 		    DataMonoBehaviour.sorting = unique.ToArray();
 		    DataMonoBehaviour.processIndex = 0;
-		    Utility.AddEditorUpdate(DataMonoBehaviour.SortSmartNext,true);
-		    Utility.PauseHierarchyUpdates();
+			Events.Add("On Editor Update",DataMonoBehaviour.SortSmartNext);
+			Events.Pause("On Hierarchy Changed");
 	    }
 	    public static void SortSmartNext(){
 		    int index = DataMonoBehaviour.processIndex;
@@ -68,9 +106,9 @@ namespace Zios{
 		    current.SortSmart();
 		    DataMonoBehaviour.processIndex += 1;
 		    if(canceled || index+1 > sorting.Length-1){
-			    Utility.RemoveEditorUpdate(DataMonoBehaviour.SortSmartNext);
 			    EditorUtility.ClearProgressBar();
-			    Utility.ResumeHierarchyUpdates();
+				Events.Remove("On Editor Update",DataMonoBehaviour.SortSmartNext);
+				Events.Resume("On Hierarchy Changed");
 		    }
 	    }
 	    [ContextMenu("Sort (By Type)")]
@@ -114,4 +152,13 @@ namespace Zios{
 	    public void MoveTop(){this.MoveToTop();}
 	    #endif
     }
+	public class DataDependency{
+		public bool exists;
+		public string scriptName;
+		public AttributeGameObject dynamicTarget;
+		public GameObject target;
+		public Type type;
+		public string message;
+		public Method method = ()=>{};
+	}
 }

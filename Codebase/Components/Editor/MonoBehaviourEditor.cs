@@ -1,4 +1,4 @@
-﻿using Zios;
+using Zios;
 using System;
 using UnityEngine;
 using UnityEditor;
@@ -8,8 +8,9 @@ using MenuFunction = UnityEditor.GenericMenu.MenuFunction;
 namespace Zios{
     [CustomEditor(typeof(MonoBehaviour),true)][CanEditMultipleObjects]
     public class MonoBehaviourEditor : Editor{
+		public static bool sortDefaults;
 		public static Dictionary<Type,Dictionary<string,object>> defaults = new Dictionary<Type,Dictionary<string,object>>();
-		public static float resumeHierarchyTime;
+		public static float resumeHierarchyTime = -1;
 		public static bool hideAllDefault;
 		public bool? hideDefault;
 		public bool setup;
@@ -21,8 +22,11 @@ namespace Zios{
 				this.DrawDefaultInspector();
 				return;
 			}
+			this.serializedObject.Update();
+			var script = (MonoBehaviour)this.target;
+			if(script.IsPrefab()){return;}
 			if(!Event.current.IsUseful()){return;}
-			this.SortDefaults();
+			if(MonoBehaviourEditor.sortDefaults){this.SortDefaults();}
 			this.SortProperties();
 			this.Setup();
 			Type type = this.target.GetType();
@@ -62,7 +66,10 @@ namespace Zios{
 			}		
 			if(GUI.changed){
 				this.serializedObject.ApplyModifiedProperties();
-				this.serializedObject.Update();
+				/*var targetObject = this.serializedObject.targetObject;
+				if(targetObject is DataMonoBehaviour){
+					((DataMonoBehaviour)targetObject).OnValidate();
+				}*/
 			}
 	    }
 		public void Setup(){
@@ -77,13 +84,13 @@ namespace Zios{
 			}
 		}
 		public void SortDefaults(){
-			bool debugState = AttributeManager.debug;
 			Type type = this.target.GetType();
 			var defaults = MonoBehaviourEditor.defaults;
 			if(!defaults.ContainsKey(type)){
-				AttributeManager.debug = false;
+				Events.Pause("On Hierarchy Changed");
+				Events.disabled = true;
 				AttributeManager.disabled = true;
-				Utility.PauseHierarchyUpdates();
+				Utility.delayPaused = true;
 				defaults.AddNew(type);
 				var script = (MonoBehaviour)this.target;
 				var component = script.gameObject.AddComponent(type);
@@ -110,12 +117,14 @@ namespace Zios{
 					catch{}
 				}
 				Utility.Destroy(component);
-				AttributeManager.debug = debugState;
+				Utility.delayPaused = false;
+				Events.disabled = false;
 				AttributeManager.disabled = false;
 				MonoBehaviourEditor.resumeHierarchyTime = Time.realtimeSinceStartup + 0.5f;
 			}
-			else if(Time.realtimeSinceStartup > MonoBehaviourEditor.resumeHierarchyTime){
-				Utility.ResumeHierarchyUpdates();
+			else if(MonoBehaviourEditor.resumeHierarchyTime != -1 && Time.realtimeSinceStartup > MonoBehaviourEditor.resumeHierarchyTime){
+				MonoBehaviourEditor.resumeHierarchyTime = -1;
+				Events.Resume("On Hierarchy Changed");
 			}
 		}
 		public void SortProperties(){

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -24,7 +24,9 @@ namespace Zios{
 	    public static Dictionary<GameObject,Dictionary<Type,Component[]>> objectComponents = new Dictionary<GameObject,Dictionary<Type,Component[]>>();
 	    static Locate(){
 		    //Events.Add("On Application Quit",Locate.SetDirty);
-		    Utility.AddHierarchyUpdate(Locate.SetDirty,true);
+			Events.Add("On Scene Loaded",Locate.SetDirty);
+			Events.Add("On Hierarchy Changed",Locate.SetDirty);
+		    Locate.SetDirty();
 	    }
 	    public static void SetDirty(){
 		    Locate.cleanGameObjects = false;
@@ -39,14 +41,14 @@ namespace Zios{
 		    Transform parent = null;
 		    foreach(string part in parts){
 			    path = path + "/" + part;
-			    current = GameObject.Find(path);
-			    if(current == null){
+			    current = Locate.Find(path);
+			    if(current.IsNull()){
 				    if(!autocreate){
 					    return null;
 				    }
-				    current = new GameObject();
-				    current.name = part;
-				    current.transform.parent = parent; 
+				    current = new GameObject(part);
+				    current.transform.parent = parent;
+					Locate.SetDirty();
 			    }
 			    parent = current.transform;
 		    }
@@ -149,13 +151,12 @@ namespace Zios{
 	    public static GameObject Find(string name,bool includeHidden=true){
 			if(Application.isLoadingLevel){return null;}
 		    if(!Locate.cleanGameObjects){Locate.Build<Transform>();}
-		    if(!name.Contains("/")){return GameObject.Find(name);}
-		    GameObject[] all;
-		    all = includeHidden ? Locate.sceneObjects : Locate.enabledObjects;
+			name = name.Trim("/");
+		    GameObject[] all = includeHidden ? Locate.sceneObjects : Locate.enabledObjects;
 		    foreach(GameObject current in all){
 				if(current.IsNull()){continue;}
-			    string path = current.GetPath();
-			    if(path == name || path.Trim("/") == name || path.TrimLeft("/") == name || path.TrimRight("/") == name){
+			    string path = current.GetPath().Trim("/");
+			    if(path == name){
 				    return current;
 			    }
 		    }

@@ -8,6 +8,7 @@ namespace Zios{
         public override void OnGUI(Rect area,SerializedProperty property,GUIContent label){
 			if(!Event.current.IsUseful()){return;}
 		    if(!area.InspectorValid()){return;}
+			property.serializedObject.Update();
 		    string[] names = new string[]{"X","Y","Z","W"};
 		    object dataObject = property.GetObject<object>();
 		    Rect labelRect = area.SetWidth(EditorGUIUtility.labelWidth);
@@ -23,9 +24,9 @@ namespace Zios{
 			    }
 		    }
 		    EditorGUI.EndProperty();
-		    property.serializedObject.ApplyModifiedProperties();
 		    if(GUI.changed){
-			    EditorUtility.SetDirty(property.serializedObject.targetObject);
+				property.serializedObject.ApplyModifiedProperties();
+			    //EditorUtility.SetDirty(property.serializedObject.targetObject);
 		    }
         }
     }

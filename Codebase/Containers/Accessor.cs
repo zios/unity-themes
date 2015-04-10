@@ -9,10 +9,12 @@ namespace Zios{
 	    public object scope;
 	    public Type type;
 	    public int index;
+		public string name;
 	    public Accessor(object scope,string name) : this(scope,name,-1){}
 	    public Accessor(object scope,string name,int index){
 		    Type type = scope is Type ? (Type)scope : scope.GetType();
 		    this.scope = scope;
+			this.name = name;
 		    this.index = index;
 		    this.field = type.GetField(name);
 		    this.property = type.GetProperty(name);
@@ -60,9 +62,12 @@ namespace Zios{
 				    value = false;
 			    }
 		    }
-		    if(value.GetType() != typeof(Vector3) && value.GetType() != this.type){
-			    value = Convert.ChangeType(value,this.type);
-		    }
+		    if(value.GetType() != this.type){
+				if(this.type.IsEnum){}
+				else if(value.GetType() != typeof(Vector3)){
+					value = Convert.ChangeType(value,this.type);
+				}
+			}
 		    if(index == -1){
 			    if(this.field != null){
 				    this.field.SetValue(scope,value);
