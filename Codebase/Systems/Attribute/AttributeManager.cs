@@ -70,19 +70,19 @@ namespace Zios{
 		public void ContextRefresh(){
 			AttributeManager.PerformRefresh();
 		}
-		#endif
-		public static void Build(){
-			if(AttributeManager.instance.IsNull()){
-				var manager = Locate.GetScenePath("@Main/Attributes");
-				if(!manager.HasComponent<AttributeManager>()){manager.AddComponent<AttributeManager>();}
-			}
-		}
 		[MenuItem("Zios/Process/Attribute/Full Refresh %1")]
+		#endif
 		public static void PerformRefresh(){
 			if(AttributeManager.disabled){return;}
 			Events.Call("On Attributes Refresh");
 			AttributeManager.nextRefresh = Time.realtimeSinceStartup + 1;
 
+		}
+		public static void Build(){
+			if(AttributeManager.instance.IsNull()){
+				var manager = Locate.GetScenePath("@Main/Attributes");
+				if(!manager.HasComponent<AttributeManager>()){manager.AddComponent<AttributeManager>();}
+			}
 		}
 		//==============================
 		// Unity

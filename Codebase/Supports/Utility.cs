@@ -140,16 +140,19 @@ namespace Zios{
 		    #endif
 	    }
 	    public static void EditorDelayCall(CallbackFunction method){
+			#if UNITY_EDITOR
 			if(!Utility.IsPlaying() && !Utility.delayPaused){
-				#if UNITY_EDITOR
 				EditorApplication.delayCall += method;
-				#endif
+				
 			}
+			#endif
 	    }
 	    public static void EditorDelayCall(CallbackFunction method,float seconds){
+			#if UNITY_EDITOR
 			if(!Utility.delayProcessing && !Utility.delayPaused){
 				Utility.delayedMethods[method] = Time.realtimeSinceStartup + seconds;
 			}
+			#endif
 	    }
 		//=================
 		// Proxy
