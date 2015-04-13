@@ -42,16 +42,17 @@ namespace Zios{
 		public object method;
 		public string name;
 		public int occurrences;
-		public bool warned;
 		public bool paused;
 		public bool permanent;
+		private bool warned;
 	    public bool IsValid(){
-			if(this.target.IsNull() && !this.warned && Events.debug.Has(EventDebug.Call)){
+			if(this.target.IsNull() && !this.warned && Events.debug.Has("Call")){
 				Debug.LogWarning("[Events] Call attempted -- null unityObject -- " + this.name,(UnityObject)this.target);
 				this.warned = true;
 			}
 		    return !this.target.IsNull();
 	    }
+		public void SetPaused(bool state){this.paused = state;}
 		public void SetPermanent(bool state){this.permanent = state;}
 	    public void Call(object[] values){
 			if(!this.IsValid()){return;}
@@ -89,12 +90,12 @@ namespace Zios{
 		}
 		public static void Build(){
 			if(Events.instance.IsNull()){
-				Debug.Log("[EventManager] : Auto-creating Events Manager GameObject.");
-				var eventsObject = Locate.GetScenePath("@Main/Events");
-				if(!eventsObject.HasComponent<Events>()){
-					Events.instance = eventsObject.AddComponent<Events>();
+				var eventsPath = Locate.GetScenePath("@Main/Events");
+				if(!eventsPath.HasComponent<Events>()){
+					Debug.Log("[EventManager] : Auto-creating Events Manager GameObject.");
+					Events.instance = eventsPath.AddComponent<Events>();
 				}
-				Events.instance = eventsObject.GetComponent<Events>();
+				Events.instance = eventsPath.GetComponent<Events>();
 			}
 		}
 		public static void Setup(){
@@ -157,7 +158,7 @@ namespace Zios{
 	    public static EventListener AddLimited(string name,MethodVector3 method,int amount,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
 	    public static EventListener Add(string name,object method,int amount,params object[] targets){
 			if(Events.disabled){
-				if(Events.debug.Has(EventDebug.AddDeep)){Debug.LogWarning("[EventManager] : Add attempted while Events disabled. " + name);}
+				if(Events.debug.Has("AddDeep")){Debug.LogWarning("[EventManager] : Add attempted while Events disabled. " + name);}
 				return null;
 			}
 			targets = Events.ValidateAll(targets);
@@ -166,9 +167,9 @@ namespace Zios{
 			    if(target.IsNull()){continue;}
 				if(!Events.cache.AddNew(target).AddNew(name).ContainsKey(method)){
 					listener = new EventListener();
-					if(Events.debug.Has(EventDebug.Add)){
+					if(Events.debug.Has("Add")){
 						var info = (Delegate)method;
-						Debug.Log("[EventManager] : Adding event -- " + Events.GetMethodName(info) + "-- " + name,target as UnityObject);
+						Debug.Log("[EventManager] : Adding event -- " + Events.GetMethodName(info) + " -- " + name,target as UnityObject);
 					}
 					Events.listeners.Add(listener);
 					Events.cache.AddNew(Events.all).AddNew(name);
@@ -207,7 +208,7 @@ namespace Zios{
 		}
 	    public static void SetPause(string type,string name,object method,object target){
 			target = Events.Validate(target);
-			if(Events.debug.Has(EventDebug.Pause)){
+			if(Events.debug.Has("Pause")){
 				string message = "[EventManager] : " + type + " event -- " + Events.GetTargetName(target) + " -- " + name;
 				Debug.Log(message,target as UnityObject);
 			}
@@ -227,13 +228,13 @@ namespace Zios{
 			if(Events.disabled){return;}
 			Events.lastEventName = name;
 			var events = Events.cache.AddNew(target).AddNew(name);
-			if(events.Count == 0 && !Events.debug.Has(EventDebug.CallEmpty)){return;}
+			if(events.Count == 0 && !Events.debug.Has("CallEmpty")){return;}
 			float callTime = Time.realtimeSinceStartup;
 			bool debugEvent = Events.CanDebug(target,name,events.Count);
 			foreach(var item in events.Copy()){
 				var listener = item.Value;
 				if(listener.paused){continue;}
-				if(debugEvent && Events.debug.Has(EventDebug.CallDeep)){
+				if(debugEvent && Events.debug.Has("CallDeep")){
 					string message = "[EventManager] : Event calling -- " + Events.GetMethodName(listener.method);
 					Debug.Log(message,target as UnityObject);
 				}
@@ -243,7 +244,7 @@ namespace Zios{
 					Events.cache[target][name].Remove(listener.method);
 				}
 			}
-			if(debugEvent && Events.debug.Has(EventDebug.CallTimer)){
+			if(debugEvent && Events.debug.Has("CallTimer")){
 				float elapsed = Time.realtimeSinceStartup - callTime;
 				string message = "[EventManager] : Calling complete [" + events.Count + "] -- " + name + " -- " + elapsed + " seconds.";
 				Debug.Log(message,target as UnityObject);
@@ -318,11 +319,11 @@ namespace Zios{
 			bool allowed = true;
 			var debug = Events.debug;
 			var scope = Events.debugScope;
-			allowed = target.Equals(Events.global) ? scope.Has(EventDebugScope.Global) : scope.Has(EventDebugScope.Scoped);
+			allowed = target.Equals(Events.global) ? scope.Has("Global") : scope.Has("Scoped");
 			if(allowed && name.ContainsAny("On Update","On Editor Update","On GUI")){
-				allowed = debug.Has(EventDebug.CallUpdate);
+				allowed = debug.Has("CallUpdate");
 			}
-			if(allowed && debug.Has(EventDebug.Call|EventDebug.CallUpdate|EventDebug.CallDeep|EventDebug.CallEmpty)){
+			if(allowed && debug.HasAny("Call","CallUpdate","CallDeep","CallEmpty")){
 				string message = "[EventManager] : Calling " + count + " events -- " + Events.GetTargetName(target) + " -- " + name;
 				if(allowed){Debug.Log(message,target as UnityObject);}
 			}
@@ -337,7 +338,7 @@ namespace Zios{
 				bool invalid = eventTarget.IsNull() || eventMethod.IsNull() || ((Delegate)eventMethod).Target.IsNull();
 				if(duplicate || invalid){
 				    Utility.EditorDelayCall(()=>Events.listeners.Remove(eventListener));
-					if(Events.debug.Has(EventDebug.Remove)){
+					if(Events.debug.Has("Remove")){
 						string messageType = eventMethod.IsNull() ? "empty method" : "duplicate method";
 						string message = "[Events] Removing " + messageType  + " from -- " + eventTarget + "/" + eventName;
 						Debug.Log(message,target as UnityObject);

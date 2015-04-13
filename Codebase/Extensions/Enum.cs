@@ -6,7 +6,8 @@ namespace Zios{
 		    return Enum.GetName(current.GetType(),current);
 	    }
 	    public static int ToInt(this Enum current){
-		    return (int)Convert.ChangeType(current,current.GetType());
+			return Convert.ToInt32(current);
+			//return (int)current;
 	    }
 	    public static Enum Get(this Enum current,string value,int fallback=-1){
 		    Type type = current.GetType();
@@ -26,14 +27,24 @@ namespace Zios{
 		    return (Enum)Enum.Parse(type,value);
 	    }
 	    public static string[] GetNames(this Enum current){
-		    Array values = Enum.GetValues(current.GetType());	
-		    List<string> result = new List<string>();
-		    foreach(var value in values){
-			    result.Add(value.ToString());
-		    }
-		    return result.ToArray();
+		    return Enum.GetNames(current.GetType());
 	    }
 	    public static bool Has(this Enum current,Enum mask){return current.Contains(mask);}
+	    public static bool Has(this Enum current,string value){
+			if(current.ToInt() == 0){return false;}
+			if(current.GetNames().Contains(value)){
+				Enum mask = (Enum)Enum.Parse(current.GetType(),value);
+				return current.Has(mask);
+			}
+			return false;
+		}
+	    public static bool HasAny(this Enum current,params string[] values){
+			if(current.ToInt() == 0){return false;}
+			foreach(var value in values){
+				if(current.Has(value)){return true;}
+			}
+			return false;
+		}
 	    public static bool Contains(this Enum current,Enum mask){
 		    return (current.ToInt() & mask.ToInt()) != 0;
 		    //int bits = 1<<mask.ToInt();

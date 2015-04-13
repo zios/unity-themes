@@ -51,7 +51,7 @@ namespace Zios{
 			else if(!this.attribute.data.Contains(this) && !this.attribute.dataB.Contains(this) && !this.attribute.dataC.Contains(this)){this.Purge("Not In Attribute");}
 		}
 		public void Purge(string reason){
-			if(AttributeManager.debug){Debug.Log("[AttributeData] Clearing defunct data -- " + reason + ".");}
+			if(Attribute.debug.Has("Issue")){Debug.Log("[AttributeData] Clearing defunct data -- " + reason + ".");}
 			Utility.Destroy(this);
 		}
 		public virtual bool CanCache(){return true;}
@@ -80,21 +80,21 @@ namespace Zios{
 			}
 			else if(attribute.mode == AttributeMode.Linked || this.usage == AttributeUsage.Shaped){	
 				if(!Attribute.ready && Application.isPlaying){
-					if(AttributeManager.debug){Debug.LogWarning("[AttributeData] Get attempt before attribute data built : " + attribute.path,attribute.parent);}
+					if(Attribute.debug.Has("Issue")){Debug.LogWarning("[AttributeData] Get attempt before attribute data built : " + attribute.path,attribute.parent);}
 					return default(BaseType);
 				}
 				else if(this.reference == null){
 					if(!Attribute.getWarning.ContainsKey(this)){
 						string source = "("+attribute.path+")";
 						string goal = (this.target.Get().GetPath() + this.referencePath).Trim("/");
-						if(AttributeManager.debug){Debug.LogWarning("[AttributeData] Get : No reference found for " + source + " to " + goal,attribute.parent);}
+						if(Attribute.debug.Has("Issue")){Debug.LogWarning("[AttributeData] Get : No reference found for " + source + " to " + goal,attribute.parent);}
 						Attribute.getWarning[this] = true;
 					}
 					return default(BaseType);
 				}
 				else if(this.reference.info == attribute){
 					if(!Attribute.getWarning.ContainsKey(this)){
-						if(AttributeManager.debug){Debug.LogWarning("[AttributeData] Get : References self. (" + attribute.path + ")",attribute.parent);}
+						if(Attribute.debug.Has("Issue")){Debug.LogWarning("[AttributeData] Get : References self. (" + attribute.path + ")",attribute.parent);}
 						Attribute.getWarning[this] = true;
 					}
 					return default(BaseType);
@@ -104,7 +104,7 @@ namespace Zios{
 				return this.HandleSpecial();
 			}
 			if(!Attribute.getWarning.ContainsKey(this)){
-				if(AttributeManager.debug){Debug.LogWarning("[AttributeData] Get : No value found. (" + attribute.path + ") to " + this.referencePath,attribute.parent);}
+				if(Attribute.debug.Has("Issue")){Debug.LogWarning("[AttributeData] Get : No value found. (" + attribute.path + ") to " + this.referencePath,attribute.parent);}
 				Attribute.getWarning[this] = true;
 			}
 			return default(BaseType);
