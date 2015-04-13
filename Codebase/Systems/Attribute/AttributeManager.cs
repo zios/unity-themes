@@ -92,7 +92,7 @@ namespace Zios{
 		public void OnValidate(){
 			if(!AttributeManager.disabled){
 				Utility.EditorDelayCall(this.Setup);
-				Utility.EditorDelayCall(this.PerformRefresh);
+				Utility.EditorDelayCall(AttributeManager.PerformRefresh);
 			}
 		}
 		public void Awake(){

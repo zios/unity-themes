@@ -357,7 +357,7 @@ namespace Zios{
 			return Events.cache.AddNew(target).AddNew(name).Count < 1;
 	    }
 	    public static List<string> GetEventNames(string type,object target=null){
-		    Utility.EditorCall(Events.Clean);
+		    Utility.EditorCall(()=>Events.Clean());
 			target = Events.Validate(target);
 		    if(type.Contains("Listen",true)){
 			    return Events.listeners.ToList().FindAll(x=>x.target==target).Select(x=>x.name).ToList();

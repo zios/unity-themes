@@ -1,0 +1,2802 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &113604
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 407994}
+  - 114: {fileID: 11478156}
+  - 114: {fileID: 11462350}
+  - 114: {fileID: 11442460}
+  - 114: {fileID: 11485024}
+  m_Layer: 0
+  m_Name: '@Settings'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &178176
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 475724}
+  m_Layer: 0
+  m_Name: StickyTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &184090
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 493086}
+  - 114: {fileID: 11465376}
+  - 114: {fileID: 11437468}
+  - 114: {fileID: 11437440}
+  - 114: {fileID: 11421146}
+  - 114: {fileID: 11475758}
+  - 114: {fileID: 11494280}
+  - 114: {fileID: 11432660}
+  - 114: {fileID: 11458192}
+  - 114: {fileID: 11469596}
+  - 114: {fileID: 11455194}
+  - 114: {fileID: 11413310}
+  - 114: {fileID: 11441116}
+  - 114: {fileID: 11418646}
+  - 114: {fileID: 11493326}
+  - 114: {fileID: 11478816}
+  - 114: {fileID: 11439766}
+  - 114: {fileID: 11421322}
+  - 114: {fileID: 11476992}
+  - 114: {fileID: 11424882}
+  - 114: {fileID: 11498872}
+  - 114: {fileID: 11417244}
+  - 114: {fileID: 11407538}
+  - 114: {fileID: 11429798}
+  - 114: {fileID: 11473904}
+  - 114: {fileID: 11418414}
+  - 114: {fileID: 11433254}
+  - 114: {fileID: 11448198}
+  - 114: {fileID: 11470654}
+  - 114: {fileID: 11403166}
+  - 114: {fileID: 11419200}
+  - 114: {fileID: 11437754}
+  - 114: {fileID: 11434916}
+  - 114: {fileID: 11458532}
+  - 114: {fileID: 11450446}
+  - 114: {fileID: 11428812}
+  - 114: {fileID: 11443204}
+  - 114: {fileID: 11452246}
+  - 114: {fileID: 11434434}
+  - 114: {fileID: 11457532}
+  - 114: {fileID: 11477786}
+  - 114: {fileID: 11427554}
+  - 114: {fileID: 11418712}
+  m_Layer: 0
+  m_Name: Main
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &407994
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 113604}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 475724}
+  m_RootOrder: 0
+--- !u!4 &475724
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 178176}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 407994}
+  - {fileID: 493086}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!4 &493086
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184090}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 475724}
+  m_RootOrder: 1
+--- !u!114 &11403166
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Float Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Sticky Check/Offset/X/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: X
+    path: Sticky Check/Offset/X
+    id: -2139368/987c73f3-24ca-40e1-8a9e-3908e09b106a
+    localID: 987c73f3-24ca-40e1-8a9e-3908e09b106a
+    parent: {fileID: 11439766}
+    mode: 0
+    data:
+    - {fileID: 11403166}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11407538
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Sticky Check/End While Unusable/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: End While Unusable
+    path: Sticky Check/End While Unusable
+    id: -2139368/3391f9b5-8b41-4e66-a725-a2068b969d15
+    localID: 3391f9b5-8b41-4e66-a725-a2068b969d15
+    parent: {fileID: 11439766}
+    mode: 0
+    data:
+    - {fileID: 11407538}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11413310
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Sticky Trigger/Ready/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Ready
+    path: Sticky Trigger/Ready
+    id: -2139396/e0e52e25-65fc-4609-83c6-2ce9b131eb6b
+    localID: e0e52e25-65fc-4609-83c6-2ce9b131eb6b
+    parent: {fileID: 11437468}
+    mode: 0
+    data:
+    - {fileID: 11413310}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11417244
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Sticky Check/Used/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Used
+    path: Sticky Check/Used
+    id: -2139368/1849e919-9a58-4cbf-bc32-ea0aad08a4da
+    localID: 1849e919-9a58-4cbf-bc32-ea0aad08a4da
+    parent: {fileID: 11439766}
+    mode: 0
+    data:
+    - {fileID: 11417244}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11418414
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Float Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Sticky Check/Direction/X/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: X
+    path: Sticky Check/Direction/X
+    id: -2139368/1e4edaf0-92c4-4203-ae9d-564b165b401e
+    localID: 1e4edaf0-92c4-4203-ae9d-564b165b401e
+    parent: {fileID: 11439766}
+    mode: 0
+    data:
+    - {fileID: 11418414}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11418646
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Sticky Trigger/Active/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Active
+    path: Sticky Trigger/Active
+    id: -2139396/7624fe9d-2a62-4e53-9c2e-0909a13a917f
+    localID: 7624fe9d-2a62-4e53-9c2e-0909a13a917f
+    parent: {fileID: 11437468}
+    mode: 0
+    data:
+    - {fileID: 11418646}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11418712
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Float Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Sticky Check/Hit Distance/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Hit Distance
+    path: Sticky Check/Hit Distance
+    id: -2139368/7d0a0ab2-c6a4-461b-87f4-4cd0f4b91fe3
+    localID: 7d0a0ab2-c6a4-461b-87f4-4cd0f4b91fe3
+    parent: {fileID: 11439766}
+    mode: 0
+    data:
+    - {fileID: 11418712}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11419200
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Float Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Sticky Check/Offset/Y/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Y
+    path: Sticky Check/Offset/Y
+    id: -2139368/a292d240-82d7-4fb0-a477-cb8483ee2962
+    localID: a292d240-82d7-4fb0-a477-cb8483ee2962
+    parent: {fileID: 11439766}
+    mode: 0
+    data:
+    - {fileID: 11419200}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11421146
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: '@Ready/Requirable/0'
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Requirable
+    path: '@Ready/Requirable'
+    id: -2139394/d3b8abd5-d6cf-46f1-bd6f-c9c7e8c5c761
+    localID: d3b8abd5-d6cf-46f1-bd6f-c9c7e8c5c761
+    parent: {fileID: 11437440}
+    mode: 0
+    data:
+    - {fileID: 11421146}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 1
+--- !u!114 &11421322
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Sticky Check/Requirable/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Requirable
+    path: Sticky Check/Requirable
+    id: -2139368/5d7397f2-c2d3-4e71-9b54-a9a93e6efd81
+    localID: 5d7397f2-c2d3-4e71-9b54-a9a93e6efd81
+    parent: {fileID: 11439766}
+    mode: 0
+    data:
+    - {fileID: 11421322}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 1
+--- !u!114 &11424882
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Sticky Check/Usable/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Usable
+    path: Sticky Check/Usable
+    id: -2139368/b9411779-dfb6-4aa3-8b7f-11137379f861
+    localID: b9411779-dfb6-4aa3-8b7f-11137379f861
+    parent: {fileID: 11439766}
+    mode: 0
+    data:
+    - {fileID: 11424882}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 1
+--- !u!114 &11427554
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Float Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Sticky Check/Hit Normal/Z/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Z
+    path: Sticky Check/Hit Normal/Z
+    id: -2139368/accf128d-e98a-4a43-ae2b-76a72b5b1100
+    localID: accf128d-e98a-4a43-ae2b-76a72b5b1100
+    parent: {fileID: 11439766}
+    mode: 0
+    data:
+    - {fileID: 11427554}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11428812
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Float Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Sticky Check/Hit Point/X/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: X
+    path: Sticky Check/Hit Point/X
+    id: -2139368/97b3e44e-af8d-4368-a2cf-c7143822458b
+    localID: 97b3e44e-af8d-4368-a2cf-c7143822458b
+    parent: {fileID: 11439766}
+    mode: 0
+    data:
+    - {fileID: 11428812}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11429798
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Float Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Sticky Check/Distance/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Distance
+    path: Sticky Check/Distance
+    id: -2139368/9eeb5b0e-9283-4419-b0f6-8a87f1502506
+    localID: 9eeb5b0e-9283-4419-b0f6-8a87f1502506
+    parent: {fileID: 11439766}
+    mode: 0
+    data:
+    - {fileID: 11429798}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 1
+--- !u!114 &11432660
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: '@Ready/Active/0'
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Active
+    path: '@Ready/Active'
+    id: -2139394/3a5a9adb-330e-4c19-8d77-b2b4604288c4
+    localID: 3a5a9adb-330e-4c19-8d77-b2b4604288c4
+    parent: {fileID: 11437440}
+    mode: 0
+    data:
+    - {fileID: 11432660}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11433254
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Float Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Sticky Check/Direction/Y/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Y
+    path: Sticky Check/Direction/Y
+    id: -2139368/6d5d4853-83a3-437c-9b10-885c4803bf2f
+    localID: 6d5d4853-83a3-437c-9b10-885c4803bf2f
+    parent: {fileID: 11439766}
+    mode: 0
+    data:
+    - {fileID: 11433254}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11434434
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bd276b9f61cc614aaa69e18d0ef39ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Vector3Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Sticky Check/Hit Normal/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Hit Normal
+    path: Sticky Check/Hit Normal
+    id: -2139368/61f01fbe-16db-4a40-a2f3-996b29e87f31
+    localID: 61f01fbe-16db-4a40-a2f3-996b29e87f31
+    parent: {fileID: 11439766}
+    mode: 0
+    data:
+    - {fileID: 11434434}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: {x: 0, y: 0, z: 0}
+--- !u!114 &11434916
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Sticky Check/Relative/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Relative
+    path: Sticky Check/Relative
+    id: -2139368/97fdc535-ccd9-4763-9532-6244bdc787ee
+    localID: 97fdc535-ccd9-4763-9532-6244bdc787ee
+    parent: {fileID: 11439766}
+    mode: 0
+    data:
+    - {fileID: 11434916}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11437440
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d2c3095ed3786d4cb99a269e5e55882, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: '@Ready'
+  rate: 1
+  id: -102226
+  requirable:
+    info:
+      name: Requirable
+      path: '@Ready/Requirable'
+      id: -2139394/d3b8abd5-d6cf-46f1-bd6f-c9c7e8c5c761
+      localID: d3b8abd5-d6cf-46f1-bd6f-c9c7e8c5c761
+      parent: {fileID: 11437440}
+      mode: 0
+      data:
+      - {fileID: 11421146}
+      dataB: []
+      dataC: []
+  ready:
+    info:
+      name: Ready
+      path: '@Ready/Ready'
+      id: -2139394/4611a391-fdef-4561-9a64-15fe65285069
+      localID: 4611a391-fdef-4561-9a64-15fe65285069
+      parent: {fileID: 11437440}
+      mode: 0
+      data:
+      - {fileID: 11475758}
+      dataB: []
+      dataC: []
+  usable:
+    info:
+      name: Usable
+      path: '@Ready/Usable'
+      id: -2139394/468ca0a1-27c0-4f6c-9d82-f4353d2755d2
+      localID: 468ca0a1-27c0-4f6c-9d82-f4353d2755d2
+      parent: {fileID: 11437440}
+      mode: 0
+      data:
+      - {fileID: 11494280}
+      dataB: []
+      dataC: []
+  inUse:
+    info:
+      name: Active
+      path: '@Ready/Active'
+      id: -2139394/3a5a9adb-330e-4c19-8d77-b2b4604288c4
+      localID: 3a5a9adb-330e-4c19-8d77-b2b4604288c4
+      parent: {fileID: 11437440}
+      mode: 0
+      data:
+      - {fileID: 11432660}
+      dataB: []
+      dataC: []
+  used:
+    info:
+      name: Used
+      path: '@Ready/Used'
+      id: -2139394/b55a2902-968e-4481-b206-1cbe6a9642a2
+      localID: b55a2902-968e-4481-b206-1cbe6a9642a2
+      parent: {fileID: 11437440}
+      mode: 0
+      data:
+      - {fileID: 11458192}
+      dataB: []
+      dataC: []
+  endWhileUnusable:
+    info:
+      name: End While Unusable
+      path: '@Ready/End While Unusable'
+      id: -2139394/400514fa-c45c-430e-89f2-46f3fe73f390
+      localID: 400514fa-c45c-430e-89f2-46f3fe73f390
+      parent: {fileID: 11437440}
+      mode: 0
+      data:
+      - {fileID: 11469596}
+      dataB: []
+      dataC: []
+  occurrence: 0
+--- !u!114 &11437468
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6a5365a236805842985225b566116a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Sticky Trigger
+  rate: 0
+  id: -2139396
+  requirable:
+    info:
+      name: Requirable
+      path: Sticky Trigger/Requirable
+      id: -2139396/3c405524-a646-48c3-b10b-4ece378f7041
+      localID: 3c405524-a646-48c3-b10b-4ece378f7041
+      parent: {fileID: 11437468}
+      mode: 0
+      data:
+      - {fileID: 11455194}
+      dataB: []
+      dataC: []
+  ready:
+    info:
+      name: Ready
+      path: Sticky Trigger/Ready
+      id: -2139396/e0e52e25-65fc-4609-83c6-2ce9b131eb6b
+      localID: e0e52e25-65fc-4609-83c6-2ce9b131eb6b
+      parent: {fileID: 11437468}
+      mode: 0
+      data:
+      - {fileID: 11413310}
+      dataB: []
+      dataC: []
+  usable:
+    info:
+      name: Usable
+      path: Sticky Trigger/Usable
+      id: -2139396/84d4986a-1feb-4a17-98a8-e5ed7b1058e0
+      localID: 84d4986a-1feb-4a17-98a8-e5ed7b1058e0
+      parent: {fileID: 11437468}
+      mode: 0
+      data:
+      - {fileID: 11441116}
+      dataB: []
+      dataC: []
+  inUse:
+    info:
+      name: Active
+      path: Sticky Trigger/Active
+      id: -2139396/7624fe9d-2a62-4e53-9c2e-0909a13a917f
+      localID: 7624fe9d-2a62-4e53-9c2e-0909a13a917f
+      parent: {fileID: 11437468}
+      mode: 0
+      data:
+      - {fileID: 11418646}
+      dataB: []
+      dataC: []
+  used:
+    info:
+      name: Used
+      path: Sticky Trigger/Used
+      id: -2139396/23fc7162-db36-42a6-8d72-848a0e84ba3e
+      localID: 23fc7162-db36-42a6-8d72-848a0e84ba3e
+      parent: {fileID: 11437468}
+      mode: 0
+      data:
+      - {fileID: 11493326}
+      dataB: []
+      dataC: []
+  endWhileUnusable:
+    info:
+      name: End While Unusable
+      path: Sticky Trigger/End While Unusable
+      id: -2139396/51d5b320-9114-4514-849c-f1096de92ffa
+      localID: 51d5b320-9114-4514-849c-f1096de92ffa
+      parent: {fileID: 11437468}
+      mode: 0
+      data:
+      - {fileID: 11478816}
+      dataB: []
+      dataC: []
+--- !u!114 &11437754
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Float Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Sticky Check/Offset/Z/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Z
+    path: Sticky Check/Offset/Z
+    id: -2139368/0ae0399e-300c-4a4e-8854-115ba190ad68
+    localID: 0ae0399e-300c-4a4e-8854-115ba190ad68
+    parent: {fileID: 11439766}
+    mode: 0
+    data:
+    - {fileID: 11437754}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11439766
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d483bbf7771b8d4eb254f917061fe72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Sticky Check
+  rate: 1
+  id: -53364
+  requirable:
+    info:
+      name: Requirable
+      path: Sticky Check/Requirable
+      id: -2139368/5d7397f2-c2d3-4e71-9b54-a9a93e6efd81
+      localID: 5d7397f2-c2d3-4e71-9b54-a9a93e6efd81
+      parent: {fileID: 11439766}
+      mode: 0
+      data:
+      - {fileID: 11421322}
+      dataB: []
+      dataC: []
+  ready:
+    info:
+      name: Ready
+      path: Sticky Check/Ready
+      id: -2139368/53a75334-cbd5-4850-90e3-12a77e436d90
+      localID: 53a75334-cbd5-4850-90e3-12a77e436d90
+      parent: {fileID: 11439766}
+      mode: 0
+      data:
+      - {fileID: 11476992}
+      dataB: []
+      dataC: []
+  usable:
+    info:
+      name: Usable
+      path: Sticky Check/Usable
+      id: -2139368/b9411779-dfb6-4aa3-8b7f-11137379f861
+      localID: b9411779-dfb6-4aa3-8b7f-11137379f861
+      parent: {fileID: 11439766}
+      mode: 0
+      data:
+      - {fileID: 11424882}
+      dataB: []
+      dataC: []
+  inUse:
+    info:
+      name: Active
+      path: Sticky Check/Active
+      id: -2139368/65595841-4880-4400-a0c5-6979d70a2518
+      localID: 65595841-4880-4400-a0c5-6979d70a2518
+      parent: {fileID: 11439766}
+      mode: 0
+      data:
+      - {fileID: 11498872}
+      dataB: []
+      dataC: []
+  used:
+    info:
+      name: Used
+      path: Sticky Check/Used
+      id: -2139368/1849e919-9a58-4cbf-bc32-ea0aad08a4da
+      localID: 1849e919-9a58-4cbf-bc32-ea0aad08a4da
+      parent: {fileID: 11439766}
+      mode: 0
+      data:
+      - {fileID: 11417244}
+      dataB: []
+      dataC: []
+  endWhileUnusable:
+    info:
+      name: End While Unusable
+      path: Sticky Check/End While Unusable
+      id: -2139368/3391f9b5-8b41-4e66-a725-a2068b969d15
+      localID: 3391f9b5-8b41-4e66-a725-a2068b969d15
+      parent: {fileID: 11439766}
+      mode: 0
+      data:
+      - {fileID: 11407538}
+      dataB: []
+      dataC: []
+  occurrence: 0
+  distance:
+    info:
+      name: Distance
+      path: Sticky Check/Distance
+      id: -2139368/9eeb5b0e-9283-4419-b0f6-8a87f1502506
+      localID: 9eeb5b0e-9283-4419-b0f6-8a87f1502506
+      parent: {fileID: 11439766}
+      mode: 0
+      data:
+      - {fileID: 11429798}
+      dataB: []
+      dataC: []
+  debugColor: {r: 1, g: 0, b: 0, a: 1}
+  direction:
+    info:
+      name: Direction
+      path: Sticky Check/Direction
+      id: -2139368/9684c49a-2e2d-491b-af75-558c1753e5bb
+      localID: 9684c49a-2e2d-491b-af75-558c1753e5bb
+      parent: {fileID: 11439766}
+      mode: 0
+      data:
+      - {fileID: 11473904}
+      dataB: []
+      dataC: []
+    x:
+      info:
+        name: X
+        path: Sticky Check/Direction/X
+        id: -2139368/1e4edaf0-92c4-4203-ae9d-564b165b401e
+        localID: 1e4edaf0-92c4-4203-ae9d-564b165b401e
+        parent: {fileID: 11439766}
+        mode: 0
+        data:
+        - {fileID: 11418414}
+        dataB: []
+        dataC: []
+    y:
+      info:
+        name: Y
+        path: Sticky Check/Direction/Y
+        id: -2139368/6d5d4853-83a3-437c-9b10-885c4803bf2f
+        localID: 6d5d4853-83a3-437c-9b10-885c4803bf2f
+        parent: {fileID: 11439766}
+        mode: 0
+        data:
+        - {fileID: 11433254}
+        dataB: []
+        dataC: []
+    z:
+      info:
+        name: Z
+        path: Sticky Check/Direction/Z
+        id: -2139368/6c073f81-a72e-4d37-9fa5-1ba7b53cce5a
+        localID: 6c073f81-a72e-4d37-9fa5-1ba7b53cce5a
+        parent: {fileID: 11439766}
+        mode: 0
+        data:
+        - {fileID: 11448198}
+        dataB: []
+        dataC: []
+  offset:
+    info:
+      name: Offset
+      path: Sticky Check/Offset
+      id: -2139368/6c9f77b2-227c-49fd-be88-38ad37c37b2d
+      localID: 6c9f77b2-227c-49fd-be88-38ad37c37b2d
+      parent: {fileID: 11439766}
+      mode: 0
+      data:
+      - {fileID: 11470654}
+      dataB: []
+      dataC: []
+    x:
+      info:
+        name: X
+        path: Sticky Check/Offset/X
+        id: -2139368/987c73f3-24ca-40e1-8a9e-3908e09b106a
+        localID: 987c73f3-24ca-40e1-8a9e-3908e09b106a
+        parent: {fileID: 11439766}
+        mode: 0
+        data:
+        - {fileID: 11403166}
+        dataB: []
+        dataC: []
+    y:
+      info:
+        name: Y
+        path: Sticky Check/Offset/Y
+        id: -2139368/a292d240-82d7-4fb0-a477-cb8483ee2962
+        localID: a292d240-82d7-4fb0-a477-cb8483ee2962
+        parent: {fileID: 11439766}
+        mode: 0
+        data:
+        - {fileID: 11419200}
+        dataB: []
+        dataC: []
+    z:
+      info:
+        name: Z
+        path: Sticky Check/Offset/Z
+        id: -2139368/0ae0399e-300c-4a4e-8854-115ba190ad68
+        localID: 0ae0399e-300c-4a4e-8854-115ba190ad68
+        parent: {fileID: 11439766}
+        mode: 0
+        data:
+        - {fileID: 11437754}
+        dataB: []
+        dataC: []
+  source:
+    info:
+      name: Source
+      path: Sticky Check/Source
+      id: -2139368/82317b72-9009-4f3d-9655-2ceb680718ca
+      localID: 82317b72-9009-4f3d-9655-2ceb680718ca
+      parent: {fileID: 11439766}
+      mode: 0
+      data:
+      - {fileID: 11458532}
+      dataB: []
+      dataC: []
+  hitPoint:
+    info:
+      name: Hit Point
+      path: Sticky Check/Hit Point
+      id: -2139368/4331e230-fef5-473b-b056-6a77dbfd748a
+      localID: 4331e230-fef5-473b-b056-6a77dbfd748a
+      parent: {fileID: 11439766}
+      mode: 0
+      data:
+      - {fileID: 11450446}
+      dataB: []
+      dataC: []
+    x:
+      info:
+        name: X
+        path: Sticky Check/Hit Point/X
+        id: -2139368/97b3e44e-af8d-4368-a2cf-c7143822458b
+        localID: 97b3e44e-af8d-4368-a2cf-c7143822458b
+        parent: {fileID: 11439766}
+        mode: 0
+        data:
+        - {fileID: 11428812}
+        dataB: []
+        dataC: []
+    y:
+      info:
+        name: Y
+        path: Sticky Check/Hit Point/Y
+        id: -2139368/54861f07-862d-43df-b5f7-1982096e4f68
+        localID: 54861f07-862d-43df-b5f7-1982096e4f68
+        parent: {fileID: 11439766}
+        mode: 0
+        data:
+        - {fileID: 11443204}
+        dataB: []
+        dataC: []
+    z:
+      info:
+        name: Z
+        path: Sticky Check/Hit Point/Z
+        id: -2139368/4ebd894d-c45c-463b-8a7f-a6b5cd41f4d9
+        localID: 4ebd894d-c45c-463b-8a7f-a6b5cd41f4d9
+        parent: {fileID: 11439766}
+        mode: 0
+        data:
+        - {fileID: 11452246}
+        dataB: []
+        dataC: []
+  hitNormal:
+    info:
+      name: Hit Normal
+      path: Sticky Check/Hit Normal
+      id: -2139368/61f01fbe-16db-4a40-a2f3-996b29e87f31
+      localID: 61f01fbe-16db-4a40-a2f3-996b29e87f31
+      parent: {fileID: 11439766}
+      mode: 0
+      data:
+      - {fileID: 11434434}
+      dataB: []
+      dataC: []
+    x:
+      info:
+        name: X
+        path: Sticky Check/Hit Normal/X
+        id: -2139368/5ed469ee-33da-4f10-918d-9ad82579d037
+        localID: 5ed469ee-33da-4f10-918d-9ad82579d037
+        parent: {fileID: 11439766}
+        mode: 0
+        data:
+        - {fileID: 11457532}
+        dataB: []
+        dataC: []
+    y:
+      info:
+        name: Y
+        path: Sticky Check/Hit Normal/Y
+        id: -2139368/35ac2e8f-8b4a-4bee-9736-d2b434cb6ecb
+        localID: 35ac2e8f-8b4a-4bee-9736-d2b434cb6ecb
+        parent: {fileID: 11439766}
+        mode: 0
+        data:
+        - {fileID: 11477786}
+        dataB: []
+        dataC: []
+    z:
+      info:
+        name: Z
+        path: Sticky Check/Hit Normal/Z
+        id: -2139368/accf128d-e98a-4a43-ae2b-76a72b5b1100
+        localID: accf128d-e98a-4a43-ae2b-76a72b5b1100
+        parent: {fileID: 11439766}
+        mode: 0
+        data:
+        - {fileID: 11427554}
+        dataB: []
+        dataC: []
+  hitDistance:
+    info:
+      name: Hit Distance
+      path: Sticky Check/Hit Distance
+      id: -2139368/7d0a0ab2-c6a4-461b-87f4-4cd0f4b91fe3
+      localID: 7d0a0ab2-c6a4-461b-87f4-4cd0f4b91fe3
+      parent: {fileID: 11439766}
+      mode: 0
+      data:
+      - {fileID: 11418712}
+      dataB: []
+      dataC: []
+  layers:
+    serializedVersion: 2
+    m_Bits: 1048576
+  relative:
+    info:
+      name: Relative
+      path: Sticky Check/Relative
+      id: -2139368/97fdc535-ccd9-4763-9532-6244bdc787ee
+      localID: 97fdc535-ccd9-4763-9532-6244bdc787ee
+      parent: {fileID: 11439766}
+      mode: 0
+      data:
+      - {fileID: 11434916}
+      dataB: []
+      dataC: []
+--- !u!114 &11441116
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Sticky Trigger/Usable/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Usable
+    path: Sticky Trigger/Usable
+    id: -2139396/84d4986a-1feb-4a17-98a8-e5ed7b1058e0
+    localID: 84d4986a-1feb-4a17-98a8-e5ed7b1058e0
+    parent: {fileID: 11437468}
+    mode: 0
+    data:
+    - {fileID: 11441116}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11442460
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 113604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Game Object Data
+  target:
+    special:
+    - {fileID: 113604}
+    - {fileID: 113604}
+    - {fileID: 184090}
+    - {fileID: 184090}
+    - {fileID: 184090}
+    - {fileID: 184090}
+    - {fileID: 178176}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    search: ../../..
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 11478156}
+    mode: 0
+  usage: 1
+  path: Source/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Source
+    path: Source
+    id: -2139410/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+    localID: 0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+    parent: {fileID: 11478156}
+    mode: 0
+    data:
+    - {fileID: 11442460}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: {fileID: 0}
+--- !u!114 &11443204
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Float Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Sticky Check/Hit Point/Y/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Y
+    path: Sticky Check/Hit Point/Y
+    id: -2139368/54861f07-862d-43df-b5f7-1982096e4f68
+    localID: 54861f07-862d-43df-b5f7-1982096e4f68
+    parent: {fileID: 11439766}
+    mode: 0
+    data:
+    - {fileID: 11443204}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11448198
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Float Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Sticky Check/Direction/Z/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Z
+    path: Sticky Check/Direction/Z
+    id: -2139368/6c073f81-a72e-4d37-9fa5-1ba7b53cce5a
+    localID: 6c073f81-a72e-4d37-9fa5-1ba7b53cce5a
+    parent: {fileID: 11439766}
+    mode: 0
+    data:
+    - {fileID: 11448198}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11450446
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bd276b9f61cc614aaa69e18d0ef39ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Vector3Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Sticky Check/Hit Point/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Hit Point
+    path: Sticky Check/Hit Point
+    id: -2139368/4331e230-fef5-473b-b056-6a77dbfd748a
+    localID: 4331e230-fef5-473b-b056-6a77dbfd748a
+    parent: {fileID: 11439766}
+    mode: 0
+    data:
+    - {fileID: 11450446}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: {x: 0, y: 0, z: 0}
+--- !u!114 &11452246
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Float Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Sticky Check/Hit Point/Z/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Z
+    path: Sticky Check/Hit Point/Z
+    id: -2139368/4ebd894d-c45c-463b-8a7f-a6b5cd41f4d9
+    localID: 4ebd894d-c45c-463b-8a7f-a6b5cd41f4d9
+    parent: {fileID: 11439766}
+    mode: 0
+    data:
+    - {fileID: 11452246}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11455194
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Sticky Trigger/Requirable/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Requirable
+    path: Sticky Trigger/Requirable
+    id: -2139396/3c405524-a646-48c3-b10b-4ece378f7041
+    localID: 3c405524-a646-48c3-b10b-4ece378f7041
+    parent: {fileID: 11437468}
+    mode: 0
+    data:
+    - {fileID: 11455194}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 1
+--- !u!114 &11457532
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Float Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Sticky Check/Hit Normal/X/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: X
+    path: Sticky Check/Hit Normal/X
+    id: -2139368/5ed469ee-33da-4f10-918d-9ad82579d037
+    localID: 5ed469ee-33da-4f10-918d-9ad82579d037
+    parent: {fileID: 11439766}
+    mode: 0
+    data:
+    - {fileID: 11457532}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11458192
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: '@Ready/Used/0'
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Used
+    path: '@Ready/Used'
+    id: -2139394/b55a2902-968e-4481-b206-1cbe6a9642a2
+    localID: b55a2902-968e-4481-b206-1cbe6a9642a2
+    parent: {fileID: 11437440}
+    mode: 0
+    data:
+    - {fileID: 11458192}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11458532
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Game Object Data
+  target:
+    special:
+    - {fileID: 184090}
+    - {fileID: 184090}
+    - {fileID: 113604}
+    - {fileID: 113604}
+    - {fileID: 113604}
+    - {fileID: 113604}
+    - {fileID: 178176}
+    - {fileID: 184090}
+    - {fileID: 184090}
+    - {fileID: 184090}
+    - {fileID: 184090}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    - '[Owner]'
+    - '[Action]'
+    - '[ActionLink]'
+    - '[StateLink]'
+    search: ../@Settings
+    directObject: {fileID: 0}
+    searchObject: {fileID: 113604}
+    parent: {fileID: 11439766}
+    mode: 0
+  usage: 1
+  path: Sticky Check/Source/0
+  referenceID: -2139410/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+  referencePath: Source
+  attribute:
+    name: Source
+    path: Sticky Check/Source
+    id: -2139368/82317b72-9009-4f3d-9655-2ceb680718ca
+    localID: 82317b72-9009-4f3d-9655-2ceb680718ca
+    parent: {fileID: 11439766}
+    mode: 0
+    data:
+    - {fileID: 11458532}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: {fileID: 0}
+--- !u!114 &11462350
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 113604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e8a46b59a6b8eb489e122ad5fdef015, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Visuals
+  value:
+    info:
+      name: Visuals
+      path: Visuals
+      id: -2139408/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+      localID: 33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+      parent: {fileID: 11462350}
+      mode: 0
+      data:
+      - {fileID: 11485024}
+      dataB: []
+      dataC: []
+  remember: 0
+--- !u!114 &11465376
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5701b12795b13f745a1a7a75b69238fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  total: 0
+  table:
+  - name: '@Ready'
+    stateTable: {fileID: 11465376}
+    id: -102226
+    target: {fileID: 11437440}
+    empty: 0
+    requirements:
+    - data:
+      - name: '@Ready'
+        stateTable: {fileID: 11465376}
+        id: -102226
+        target: {fileID: 11437440}
+        requireOn: 0
+        requireOff: 0
+      - name: Sticky Check
+        stateTable: {fileID: 11465376}
+        id: -53364
+        target: {fileID: 11439766}
+        requireOn: 1
+        requireOff: 0
+  - name: Sticky Check
+    stateTable: {fileID: 11465376}
+    id: -53364
+    target: {fileID: 11439766}
+    empty: 0
+    requirements:
+    - data:
+      - name: '@Ready'
+        stateTable: {fileID: 11465376}
+        id: -102226
+        target: {fileID: 11437440}
+        requireOn: 0
+        requireOff: 0
+      - name: Sticky Check
+        stateTable: {fileID: 11465376}
+        id: -53364
+        target: {fileID: 11439766}
+        requireOn: 0
+        requireOff: 0
+  tableOff:
+  - name: '@Ready'
+    stateTable: {fileID: 11465376}
+    id: -102226
+    target: {fileID: 11437440}
+    empty: 0
+    requirements:
+    - data:
+      - name: '@Ready'
+        stateTable: {fileID: 11465376}
+        id: -102226
+        target: {fileID: 11437440}
+        requireOn: 0
+        requireOff: 0
+      - name: Sticky Check
+        stateTable: {fileID: 11465376}
+        id: -53364
+        target: {fileID: 11439766}
+        requireOn: 0
+        requireOff: 1
+  - name: Sticky Check
+    stateTable: {fileID: 11465376}
+    id: -53364
+    target: {fileID: 11439766}
+    empty: 0
+    requirements:
+    - data:
+      - name: '@Ready'
+        stateTable: {fileID: 11465376}
+        id: -102226
+        target: {fileID: 11437440}
+        requireOn: 0
+        requireOff: 0
+      - name: Sticky Check
+        stateTable: {fileID: 11465376}
+        id: -53364
+        target: {fileID: 11439766}
+        requireOn: 0
+        requireOff: 0
+  advanced: 1
+  scripts:
+  - {fileID: 11437440}
+  - {fileID: 11439766}
+  parts: []
+  isFixed: 1
+--- !u!114 &11469596
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: '@Ready/End While Unusable/0'
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: End While Unusable
+    path: '@Ready/End While Unusable'
+    id: -2139394/400514fa-c45c-430e-89f2-46f3fe73f390
+    localID: 400514fa-c45c-430e-89f2-46f3fe73f390
+    parent: {fileID: 11437440}
+    mode: 0
+    data:
+    - {fileID: 11469596}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11470654
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bd276b9f61cc614aaa69e18d0ef39ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Vector3Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Sticky Check/Offset/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Offset
+    path: Sticky Check/Offset
+    id: -2139368/6c9f77b2-227c-49fd-be88-38ad37c37b2d
+    localID: 6c9f77b2-227c-49fd-be88-38ad37c37b2d
+    parent: {fileID: 11439766}
+    mode: 0
+    data:
+    - {fileID: 11470654}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: {x: 0, y: 0, z: 0}
+--- !u!114 &11473904
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bd276b9f61cc614aaa69e18d0ef39ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Vector3Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Sticky Check/Direction/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Direction
+    path: Sticky Check/Direction
+    id: -2139368/9684c49a-2e2d-491b-af75-558c1753e5bb
+    localID: 9684c49a-2e2d-491b-af75-558c1753e5bb
+    parent: {fileID: 11439766}
+    mode: 0
+    data:
+    - {fileID: 11473904}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: {x: -0, y: -.100000001, z: -0}
+--- !u!114 &11475758
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: '@Ready/Ready/0'
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Ready
+    path: '@Ready/Ready'
+    id: -2139394/4611a391-fdef-4561-9a64-15fe65285069
+    localID: 4611a391-fdef-4561-9a64-15fe65285069
+    parent: {fileID: 11437440}
+    mode: 0
+    data:
+    - {fileID: 11475758}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11476992
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Sticky Check/Ready/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Ready
+    path: Sticky Check/Ready
+    id: -2139368/53a75334-cbd5-4850-90e3-12a77e436d90
+    localID: 53a75334-cbd5-4850-90e3-12a77e436d90
+    parent: {fileID: 11439766}
+    mode: 0
+    data:
+    - {fileID: 11476992}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11477786
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Float Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Sticky Check/Hit Normal/Y/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Y
+    path: Sticky Check/Hit Normal/Y
+    id: -2139368/35ac2e8f-8b4a-4bee-9736-d2b434cb6ecb
+    localID: 35ac2e8f-8b4a-4bee-9736-d2b434cb6ecb
+    parent: {fileID: 11439766}
+    mode: 0
+    data:
+    - {fileID: 11477786}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11478156
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 113604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e8a46b59a6b8eb489e122ad5fdef015, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Source
+  value:
+    info:
+      name: Source
+      path: Source
+      id: -2139410/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+      localID: 0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+      parent: {fileID: 11478156}
+      mode: 0
+      data:
+      - {fileID: 11442460}
+      dataB: []
+      dataC: []
+  remember: 0
+--- !u!114 &11478816
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Sticky Trigger/End While Unusable/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: End While Unusable
+    path: Sticky Trigger/End While Unusable
+    id: -2139396/51d5b320-9114-4514-849c-f1096de92ffa
+    localID: 51d5b320-9114-4514-849c-f1096de92ffa
+    parent: {fileID: 11437468}
+    mode: 0
+    data:
+    - {fileID: 11478816}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11485024
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 113604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Game Object Data
+  target:
+    special:
+    - {fileID: 113604}
+    - {fileID: 113604}
+    - {fileID: 184090}
+    - {fileID: 184090}
+    - {fileID: 184090}
+    - {fileID: 184090}
+    - {fileID: 178176}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    search: ../../../Visuals
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 11462350}
+    mode: 0
+  usage: 1
+  path: Visuals/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Visuals
+    path: Visuals
+    id: -2139408/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+    localID: 33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+    parent: {fileID: 11462350}
+    mode: 0
+    data:
+    - {fileID: 11485024}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: {fileID: 0}
+--- !u!114 &11493326
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Sticky Trigger/Used/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Used
+    path: Sticky Trigger/Used
+    id: -2139396/23fc7162-db36-42a6-8d72-848a0e84ba3e
+    localID: 23fc7162-db36-42a6-8d72-848a0e84ba3e
+    parent: {fileID: 11437468}
+    mode: 0
+    data:
+    - {fileID: 11493326}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11494280
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: '@Ready/Usable/0'
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Usable
+    path: '@Ready/Usable'
+    id: -2139394/468ca0a1-27c0-4f6c-9d82-f4353d2755d2
+    localID: 468ca0a1-27c0-4f6c-9d82-f4353d2755d2
+    parent: {fileID: 11437440}
+    mode: 0
+    data:
+    - {fileID: 11494280}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11498872
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Sticky Check/Active/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Active
+    path: Sticky Check/Active
+    id: -2139368/65595841-4880-4400-a0c5-6979d70a2518
+    localID: 65595841-4880-4400-a0c5-6979d70a2518
+    parent: {fileID: 11439766}
+    mode: 0
+    data:
+    - {fileID: 11498872}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 178176}
+  m_IsPrefabParent: 1

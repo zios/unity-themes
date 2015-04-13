@@ -1,0 +1,1859 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &106104
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 424374}
+  m_Layer: 10
+  m_Name: Crawl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &107052
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 469068}
+  - 114: {fileID: 11460396}
+  - 114: {fileID: 11478822}
+  - 114: {fileID: 11492566}
+  - 114: {fileID: 11498892}
+  - 114: {fileID: 11458384}
+  - 114: {fileID: 11472282}
+  - 114: {fileID: 11450278}
+  - 114: {fileID: 11410646}
+  m_Layer: 0
+  m_Name: '@Settings'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &149096
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 440034}
+  - 114: {fileID: 11423974}
+  - 114: {fileID: 11404906}
+  - 114: {fileID: 11467470}
+  - 114: {fileID: 11408322}
+  - 114: {fileID: 11467542}
+  - 114: {fileID: 11465200}
+  - 114: {fileID: 11440830}
+  - 114: {fileID: 11480866}
+  - 114: {fileID: 11479204}
+  - 114: {fileID: 11473176}
+  - 114: {fileID: 11402898}
+  - 114: {fileID: 11464446}
+  - 114: {fileID: 11458772}
+  - 114: {fileID: 11406576}
+  - 114: {fileID: 11471070}
+  - 114: {fileID: 11432222}
+  - 114: {fileID: 11442778}
+  - 114: {fileID: 11479482}
+  - 114: {fileID: 11480268}
+  - 114: {fileID: 11497048}
+  - 114: {fileID: 11426106}
+  - 114: {fileID: 11431306}
+  - 114: {fileID: 11483352}
+  - 114: {fileID: 11473528}
+  m_Layer: 0
+  m_Name: Main
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &424374
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 106104}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 469068}
+  - {fileID: 440034}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!4 &440034
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149096}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 424374}
+  m_RootOrder: 1
+--- !u!4 &469068
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 107052}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 424374}
+  m_RootOrder: 0
+--- !u!114 &11402898
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: '@Ready/Ready/0'
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Ready
+    path: '@Ready/Ready'
+    id: -2259730/ac03eca9-7bf9-48f6-b4a4-1758e1001a68
+    localID: ac03eca9-7bf9-48f6-b4a4-1758e1001a68
+    parent: {fileID: 11467470}
+    mode: 0
+    data:
+    - {fileID: 11402898}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 1
+--- !u!114 &11404906
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6a5365a236805842985225b566116a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Crawl
+  rate: 0
+  id: -2123296
+  requirable:
+    info:
+      name: Requirable
+      path: Crawl/Requirable
+      id: -2259728/0b1fa146-1c64-44ff-a219-5604cb44329d
+      localID: 0b1fa146-1c64-44ff-a219-5604cb44329d
+      parent: {fileID: 11404906}
+      mode: 0
+      data:
+      - {fileID: 11467542}
+      dataB: []
+      dataC: []
+  ready:
+    info:
+      name: Ready
+      path: Crawl/Ready
+      id: -2259728/d71203f9-525f-47c8-bb83-38789233f45a
+      localID: d71203f9-525f-47c8-bb83-38789233f45a
+      parent: {fileID: 11404906}
+      mode: 0
+      data:
+      - {fileID: 11465200}
+      dataB: []
+      dataC: []
+  usable:
+    info:
+      name: Usable
+      path: Crawl/Usable
+      id: -2259728/cf8ed2f1-8930-4f3c-9333-7acda51c68a1
+      localID: cf8ed2f1-8930-4f3c-9333-7acda51c68a1
+      parent: {fileID: 11404906}
+      mode: 0
+      data:
+      - {fileID: 11440830}
+      dataB: []
+      dataC: []
+  inUse:
+    info:
+      name: Active
+      path: Crawl/Active
+      id: -2259728/2093493c-62e6-4b5d-affb-2f6937c8f027
+      localID: 2093493c-62e6-4b5d-affb-2f6937c8f027
+      parent: {fileID: 11404906}
+      mode: 0
+      data:
+      - {fileID: 11408322}
+      dataB: []
+      dataC: []
+  used:
+    info:
+      name: Used
+      path: Crawl/Used
+      id: -2259728/e17458b7-8bf2-4c2a-8cda-344175f5fa03
+      localID: e17458b7-8bf2-4c2a-8cda-344175f5fa03
+      parent: {fileID: 11404906}
+      mode: 0
+      data:
+      - {fileID: 11480866}
+      dataB: []
+      dataC: []
+  endWhileUnusable:
+    info:
+      name: End While Unusable
+      path: Crawl/End While Unusable
+      id: -2259728/c6ec329a-5120-4b65-83c0-248fde8caf49
+      localID: c6ec329a-5120-4b65-83c0-248fde8caf49
+      parent: {fileID: 11404906}
+      mode: 0
+      data:
+      - {fileID: 11406576}
+      dataB: []
+      dataC: []
+--- !u!114 &11406576
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Crawl/End While Unusable/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: End While Unusable
+    path: Crawl/End While Unusable
+    id: -2259728/c6ec329a-5120-4b65-83c0-248fde8caf49
+    localID: c6ec329a-5120-4b65-83c0-248fde8caf49
+    parent: {fileID: 11404906}
+    mode: 0
+    data:
+    - {fileID: 11406576}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11408322
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Crawl/Active/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Active
+    path: Crawl/Active
+    id: -2259728/2093493c-62e6-4b5d-affb-2f6937c8f027
+    localID: 2093493c-62e6-4b5d-affb-2f6937c8f027
+    parent: {fileID: 11404906}
+    mode: 0
+    data:
+    - {fileID: 11408322}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11410646
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 107052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Float Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Crawl Speed/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Crawl Speed
+    path: Crawl Speed
+    id: -2259706/2e598b53-0a61-4a68-86b9-595f8e971990
+    localID: 2e598b53-0a61-4a68-86b9-595f8e971990
+    parent: {fileID: 11450278}
+    mode: 0
+    data:
+    - {fileID: 11410646}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 2
+--- !u!114 &11423974
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5701b12795b13f745a1a7a75b69238fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  total: 0
+  table:
+  - name: '@Ready'
+    stateTable: {fileID: 0}
+    id: -1463324
+    target: {fileID: 11467470}
+    empty: 0
+    requirements:
+    - data:
+      - name: '@Ready'
+        stateTable: {fileID: 0}
+        id: -1463324
+        target: {fileID: 11467470}
+        requireOn: 0
+        requireOff: 0
+      - name: Crawl Speed
+        stateTable: {fileID: 11423974}
+        id: -2125640
+        target: {fileID: 11432222}
+        requireOn: 0
+        requireOff: 0
+  - name: Crawl Speed
+    stateTable: {fileID: 11423974}
+    id: -2125640
+    target: {fileID: 11432222}
+    empty: 0
+    requirements:
+    - data:
+      - name: '@Ready'
+        stateTable: {fileID: 11423974}
+        id: -1463324
+        target: {fileID: 11467470}
+        requireOn: 1
+        requireOff: 0
+      - name: Crawl Speed
+        stateTable: {fileID: 11423974}
+        id: -2125640
+        target: {fileID: 11432222}
+        requireOn: 0
+        requireOff: 0
+  tableOff:
+  - name: '@Ready'
+    stateTable: {fileID: 0}
+    id: -1463324
+    target: {fileID: 11467470}
+    empty: 0
+    requirements:
+    - data:
+      - name: '@Ready'
+        stateTable: {fileID: 0}
+        id: -1463324
+        target: {fileID: 11467470}
+        requireOn: 0
+        requireOff: 0
+      - name: Crawl Speed
+        stateTable: {fileID: 11423974}
+        id: -2125640
+        target: {fileID: 11432222}
+        requireOn: 0
+        requireOff: 0
+  - name: Crawl Speed
+    stateTable: {fileID: 11423974}
+    id: -2125640
+    target: {fileID: 11432222}
+    empty: 0
+    requirements:
+    - data:
+      - name: '@Ready'
+        stateTable: {fileID: 11423974}
+        id: -1463324
+        target: {fileID: 11467470}
+        requireOn: 0
+        requireOff: 0
+      - name: Crawl Speed
+        stateTable: {fileID: 11423974}
+        id: -2125640
+        target: {fileID: 11432222}
+        requireOn: 0
+        requireOff: 0
+  advanced: 0
+  scripts:
+  - {fileID: 11467470}
+  - {fileID: 11432222}
+  parts: []
+  isFixed: 1
+--- !u!114 &11426106
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Crawl Speed/Used/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Used
+    path: Crawl Speed/Used
+    id: -2259724/73927be3-5383-485e-ab73-6cf53e2b605c
+    localID: 73927be3-5383-485e-ab73-6cf53e2b605c
+    parent: {fileID: 11432222}
+    mode: 0
+    data:
+    - {fileID: 11426106}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11431306
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Crawl Speed/End While Unusable/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: End While Unusable
+    path: Crawl Speed/End While Unusable
+    id: -2259724/61c9fc76-22d6-4b72-bfbb-12c36a0a2ae5
+    localID: 61c9fc76-22d6-4b72-bfbb-12c36a0a2ae5
+    parent: {fileID: 11432222}
+    mode: 0
+    data:
+    - {fileID: 11431306}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11432222
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2423479bf36dd4245b48e7e6a05012a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Crawl Speed
+  rate: 0
+  id: -2125640
+  requirable:
+    info:
+      name: Requirable
+      path: Crawl Speed/Requirable
+      id: -2259724/238b4e15-ca0c-4a0b-b6e1-10925cc759c6
+      localID: 238b4e15-ca0c-4a0b-b6e1-10925cc759c6
+      parent: {fileID: 11432222}
+      mode: 0
+      data:
+      - {fileID: 11442778}
+      dataB: []
+      dataC: []
+  ready:
+    info:
+      name: Ready
+      path: Crawl Speed/Ready
+      id: -2259724/1448e798-1d34-4a31-bdda-a31e91298d28
+      localID: 1448e798-1d34-4a31-bdda-a31e91298d28
+      parent: {fileID: 11432222}
+      mode: 0
+      data:
+      - {fileID: 11479482}
+      dataB: []
+      dataC: []
+  usable:
+    info:
+      name: Usable
+      path: Crawl Speed/Usable
+      id: -2259724/88150583-7f98-451b-8cab-ad5bd7e85ec8
+      localID: 88150583-7f98-451b-8cab-ad5bd7e85ec8
+      parent: {fileID: 11432222}
+      mode: 0
+      data:
+      - {fileID: 11480268}
+      dataB: []
+      dataC: []
+  inUse:
+    info:
+      name: Active
+      path: Crawl Speed/Active
+      id: -2259724/7e31aa4b-9aed-4811-aa5a-1ee41e9d01e7
+      localID: 7e31aa4b-9aed-4811-aa5a-1ee41e9d01e7
+      parent: {fileID: 11432222}
+      mode: 0
+      data:
+      - {fileID: 11497048}
+      dataB: []
+      dataC: []
+  used:
+    info:
+      name: Used
+      path: Crawl Speed/Used
+      id: -2259724/73927be3-5383-485e-ab73-6cf53e2b605c
+      localID: 73927be3-5383-485e-ab73-6cf53e2b605c
+      parent: {fileID: 11432222}
+      mode: 0
+      data:
+      - {fileID: 11426106}
+      dataB: []
+      dataC: []
+  endWhileUnusable:
+    info:
+      name: End While Unusable
+      path: Crawl Speed/End While Unusable
+      id: -2259724/61c9fc76-22d6-4b72-bfbb-12c36a0a2ae5
+      localID: 61c9fc76-22d6-4b72-bfbb-12c36a0a2ae5
+      parent: {fileID: 11432222}
+      mode: 0
+      data:
+      - {fileID: 11431306}
+      dataB: []
+      dataC: []
+  occurrence: 0
+  target:
+    info:
+      name: Target
+      path: Crawl Speed/Target
+      id: -2259724/fe5bb54e-8246-49df-8693-a0e506e858e8
+      localID: fe5bb54e-8246-49df-8693-a0e506e858e8
+      parent: {fileID: 11432222}
+      mode: 1
+      data:
+      - {fileID: 11483352}
+      dataB: []
+      dataC: []
+  value:
+    info:
+      name: Value
+      path: Crawl Speed/Value
+      id: -2259724/f4fb5df0-b4c6-4ca5-a90a-0444192eb9b6
+      localID: f4fb5df0-b4c6-4ca5-a90a-0444192eb9b6
+      parent: {fileID: 11432222}
+      mode: 0
+      data:
+      - {fileID: 11473528}
+      dataB: []
+      dataC: []
+--- !u!114 &11440830
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Crawl/Usable/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Usable
+    path: Crawl/Usable
+    id: -2259728/cf8ed2f1-8930-4f3c-9333-7acda51c68a1
+    localID: cf8ed2f1-8930-4f3c-9333-7acda51c68a1
+    parent: {fileID: 11404906}
+    mode: 0
+    data:
+    - {fileID: 11440830}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 1
+--- !u!114 &11442778
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Crawl Speed/Requirable/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Requirable
+    path: Crawl Speed/Requirable
+    id: -2259724/238b4e15-ca0c-4a0b-b6e1-10925cc759c6
+    localID: 238b4e15-ca0c-4a0b-b6e1-10925cc759c6
+    parent: {fileID: 11432222}
+    mode: 0
+    data:
+    - {fileID: 11442778}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 1
+--- !u!114 &11450278
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 107052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73460de1a42c5d64884ae83214747f38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Crawl Speed
+  value:
+    info:
+      name: Crawl Speed
+      path: Crawl Speed
+      id: -2259706/2e598b53-0a61-4a68-86b9-595f8e971990
+      localID: 2e598b53-0a61-4a68-86b9-595f8e971990
+      parent: {fileID: 11450278}
+      mode: 0
+      data:
+      - {fileID: 11410646}
+      dataB: []
+      dataC: []
+  remember: 0
+--- !u!114 &11458384
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 107052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Game Object Data
+  target:
+    special:
+    - {fileID: 107052}
+    - {fileID: 107052}
+    - {fileID: 149096}
+    - {fileID: 149096}
+    - {fileID: 107052}
+    - {fileID: 107052}
+    - {fileID: 106104}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    search: ../../../../Visuals
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 11492566}
+    mode: 0
+  usage: 1
+  path: Visuals/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Visuals
+    path: Visuals
+    id: -2259768/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+    localID: 33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+    parent: {fileID: 11492566}
+    mode: 0
+    data:
+    - {fileID: 11458384}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: {fileID: 0}
+--- !u!114 &11458772
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: '@Ready/Used/0'
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Used
+    path: '@Ready/Used'
+    id: -2259730/02e4ea24-2482-4836-b6f3-8df48b53729f
+    localID: 02e4ea24-2482-4836-b6f3-8df48b53729f
+    parent: {fileID: 11467470}
+    mode: 0
+    data:
+    - {fileID: 11458772}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11460396
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 107052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15dc630d7daaf4548bf1d099b9be1324, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Animation
+  value:
+    info:
+      name: Animation
+      path: Animation
+      id: -2259764/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
+      localID: 7e894ef6-a99f-450f-b42a-e1aa6c29abb9
+      parent: {fileID: 11460396}
+      mode: 0
+      data:
+      - {fileID: 11472282}
+      dataB: []
+      dataC: []
+  remember: 0
+--- !u!114 &11464446
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: '@Ready/Usable/0'
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Usable
+    path: '@Ready/Usable'
+    id: -2259730/2b001586-418a-4314-8227-21150f04396a
+    localID: 2b001586-418a-4314-8227-21150f04396a
+    parent: {fileID: 11467470}
+    mode: 0
+    data:
+    - {fileID: 11464446}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 1
+--- !u!114 &11465200
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Crawl/Ready/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Ready
+    path: Crawl/Ready
+    id: -2259728/d71203f9-525f-47c8-bb83-38789233f45a
+    localID: d71203f9-525f-47c8-bb83-38789233f45a
+    parent: {fileID: 11404906}
+    mode: 0
+    data:
+    - {fileID: 11465200}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11467470
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d2c3095ed3786d4cb99a269e5e55882, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: '@Ready'
+  rate: 1
+  id: -1463324
+  requirable:
+    info:
+      name: Requirable
+      path: '@Ready/Requirable'
+      id: -2259730/059cba77-4b0d-45e8-8904-031618ba6b02
+      localID: 059cba77-4b0d-45e8-8904-031618ba6b02
+      parent: {fileID: 11467470}
+      mode: 0
+      data:
+      - {fileID: 11473176}
+      dataB: []
+      dataC: []
+  ready:
+    info:
+      name: Ready
+      path: '@Ready/Ready'
+      id: -2259730/ac03eca9-7bf9-48f6-b4a4-1758e1001a68
+      localID: ac03eca9-7bf9-48f6-b4a4-1758e1001a68
+      parent: {fileID: 11467470}
+      mode: 0
+      data:
+      - {fileID: 11402898}
+      dataB: []
+      dataC: []
+  usable:
+    info:
+      name: Usable
+      path: '@Ready/Usable'
+      id: -2259730/2b001586-418a-4314-8227-21150f04396a
+      localID: 2b001586-418a-4314-8227-21150f04396a
+      parent: {fileID: 11467470}
+      mode: 0
+      data:
+      - {fileID: 11464446}
+      dataB: []
+      dataC: []
+  inUse:
+    info:
+      name: Active
+      path: '@Ready/Active'
+      id: -2259730/d939247b-747a-46d2-8811-8ebfc28caf43
+      localID: d939247b-747a-46d2-8811-8ebfc28caf43
+      parent: {fileID: 11467470}
+      mode: 0
+      data:
+      - {fileID: 11479204}
+      dataB: []
+      dataC: []
+  used:
+    info:
+      name: Used
+      path: '@Ready/Used'
+      id: -2259730/02e4ea24-2482-4836-b6f3-8df48b53729f
+      localID: 02e4ea24-2482-4836-b6f3-8df48b53729f
+      parent: {fileID: 11467470}
+      mode: 0
+      data:
+      - {fileID: 11458772}
+      dataB: []
+      dataC: []
+  endWhileUnusable:
+    info:
+      name: End While Unusable
+      path: '@Ready/End While Unusable'
+      id: -2259730/ec1c0977-f826-4ebf-b182-7139be92910d
+      localID: ec1c0977-f826-4ebf-b182-7139be92910d
+      parent: {fileID: 11467470}
+      mode: 0
+      data:
+      - {fileID: 11471070}
+      dataB: []
+      dataC: []
+  occurrence: 0
+--- !u!114 &11467542
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Crawl/Requirable/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Requirable
+    path: Crawl/Requirable
+    id: -2259728/0b1fa146-1c64-44ff-a219-5604cb44329d
+    localID: 0b1fa146-1c64-44ff-a219-5604cb44329d
+    parent: {fileID: 11404906}
+    mode: 0
+    data:
+    - {fileID: 11467542}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 1
+--- !u!114 &11471070
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: '@Ready/End While Unusable/0'
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: End While Unusable
+    path: '@Ready/End While Unusable'
+    id: -2259730/ec1c0977-f826-4ebf-b182-7139be92910d
+    localID: ec1c0977-f826-4ebf-b182-7139be92910d
+    parent: {fileID: 11467470}
+    mode: 0
+    data:
+    - {fileID: 11471070}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11472282
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 107052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3e9984a5f3f19942be359930227796e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute String Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Animation/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Animation
+    path: Animation
+    id: -2259764/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
+    localID: 7e894ef6-a99f-450f-b42a-e1aa6c29abb9
+    parent: {fileID: 11460396}
+    mode: 0
+    data:
+    - {fileID: 11472282}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: Crawl
+  characterLimit: 0
+  allowed: []
+  disallowed: []
+--- !u!114 &11473176
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: '@Ready/Requirable/0'
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Requirable
+    path: '@Ready/Requirable'
+    id: -2259730/059cba77-4b0d-45e8-8904-031618ba6b02
+    localID: 059cba77-4b0d-45e8-8904-031618ba6b02
+    parent: {fileID: 11467470}
+    mode: 0
+    data:
+    - {fileID: 11473176}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 1
+--- !u!114 &11473528
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Float Data
+  target:
+    special:
+    - {fileID: 149096}
+    - {fileID: 149096}
+    - {fileID: 107052}
+    - {fileID: 107052}
+    - {fileID: 149096}
+    - {fileID: 149096}
+    - {fileID: 106104}
+    - {fileID: 149096}
+    - {fileID: 149096}
+    - {fileID: 149096}
+    - {fileID: 149096}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    - '[Owner]'
+    - '[Action]'
+    - '[ActionLink]'
+    - '[StateLink]'
+    search: ../@Settings
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 11432222}
+    mode: 0
+  usage: 1
+  path: Crawl Speed/Value/0
+  referenceID: -2132710/2e598b53-0a61-4a68-86b9-595f8e971990
+  referencePath: Crawl Speed
+  attribute:
+    name: Value
+    path: Crawl Speed/Value
+    id: -2259724/f4fb5df0-b4c6-4ca5-a90a-0444192eb9b6
+    localID: f4fb5df0-b4c6-4ca5-a90a-0444192eb9b6
+    parent: {fileID: 11432222}
+    mode: 0
+    data:
+    - {fileID: 11473528}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11478822
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 107052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e8a46b59a6b8eb489e122ad5fdef015, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Source
+  value:
+    info:
+      name: Source
+      path: Source
+      id: -2259766/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+      localID: 0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+      parent: {fileID: 11478822}
+      mode: 0
+      data:
+      - {fileID: 11498892}
+      dataB: []
+      dataC: []
+  remember: 0
+--- !u!114 &11479204
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: '@Ready/Active/0'
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Active
+    path: '@Ready/Active'
+    id: -2259730/d939247b-747a-46d2-8811-8ebfc28caf43
+    localID: d939247b-747a-46d2-8811-8ebfc28caf43
+    parent: {fileID: 11467470}
+    mode: 0
+    data:
+    - {fileID: 11479204}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11479482
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Crawl Speed/Ready/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Ready
+    path: Crawl Speed/Ready
+    id: -2259724/1448e798-1d34-4a31-bdda-a31e91298d28
+    localID: 1448e798-1d34-4a31-bdda-a31e91298d28
+    parent: {fileID: 11432222}
+    mode: 0
+    data:
+    - {fileID: 11479482}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11480268
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Crawl Speed/Usable/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Usable
+    path: Crawl Speed/Usable
+    id: -2259724/88150583-7f98-451b-8cab-ad5bd7e85ec8
+    localID: 88150583-7f98-451b-8cab-ad5bd7e85ec8
+    parent: {fileID: 11432222}
+    mode: 0
+    data:
+    - {fileID: 11480268}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11480866
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Crawl/Used/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Used
+    path: Crawl/Used
+    id: -2259728/e17458b7-8bf2-4c2a-8cda-344175f5fa03
+    localID: e17458b7-8bf2-4c2a-8cda-344175f5fa03
+    parent: {fileID: 11404906}
+    mode: 0
+    data:
+    - {fileID: 11480866}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11483352
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Float Data
+  target:
+    special:
+    - {fileID: 149096}
+    - {fileID: 149096}
+    - {fileID: 107052}
+    - {fileID: 107052}
+    - {fileID: 149096}
+    - {fileID: 149096}
+    - {fileID: 106104}
+    - {fileID: 149096}
+    - {fileID: 149096}
+    - {fileID: 149096}
+    - {fileID: 149096}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    - '[Owner]'
+    - '[Action]'
+    - '[ActionLink]'
+    - '[StateLink]'
+    search: ../../../Movement/Main
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 11432222}
+    mode: 0
+  usage: 1
+  path: Crawl Speed/Target/0
+  referenceID: -1566/803b3f04-ebf6-4105-a804-2d70b349d86a
+  referencePath: Move Direction/Amount/Z
+  attribute:
+    name: Target
+    path: Crawl Speed/Target
+    id: -2259724/fe5bb54e-8246-49df-8693-a0e506e858e8
+    localID: fe5bb54e-8246-49df-8693-a0e506e858e8
+    parent: {fileID: 11432222}
+    mode: 1
+    data:
+    - {fileID: 11483352}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11492566
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 107052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e8a46b59a6b8eb489e122ad5fdef015, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Visuals
+  value:
+    info:
+      name: Visuals
+      path: Visuals
+      id: -2259768/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+      localID: 33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+      parent: {fileID: 11492566}
+      mode: 0
+      data:
+      - {fileID: 11458384}
+      dataB: []
+      dataC: []
+  remember: 0
+--- !u!114 &11497048
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Crawl Speed/Active/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Active
+    path: Crawl Speed/Active
+    id: -2259724/7e31aa4b-9aed-4811-aa5a-1ee41e9d01e7
+    localID: 7e31aa4b-9aed-4811-aa5a-1ee41e9d01e7
+    parent: {fileID: 11432222}
+    mode: 0
+    data:
+    - {fileID: 11497048}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11498892
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 107052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Game Object Data
+  target:
+    special:
+    - {fileID: 107052}
+    - {fileID: 107052}
+    - {fileID: 149096}
+    - {fileID: 149096}
+    - {fileID: 107052}
+    - {fileID: 107052}
+    - {fileID: 106104}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    search: ../../../..
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 11478822}
+    mode: 0
+  usage: 1
+  path: Source/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Source
+    path: Source
+    id: -2259766/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+    localID: 0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+    parent: {fileID: 11478822}
+    mode: 0
+    data:
+    - {fileID: 11498892}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: {fileID: 0}
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 106104}
+  m_IsPrefabParent: 1

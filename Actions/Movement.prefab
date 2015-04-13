@@ -581,12 +581,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Copy Direction/Value/0
-  referenceID: 23292/5d397ae8-41b9-4edc-96a7-078335dc8920
+  referenceID: -2690/5d397ae8-41b9-4edc-96a7-078335dc8920
   referencePath: Transform/Direction/Right
   attribute:
     name: Value
     path: Copy Direction/Value
-    id: -57660/bc87dc9d-d2db-47da-9752-51e60a5362e9
+    id: 29668/bc87dc9d-d2db-47da-9752-51e60a5362e9
     localID: bc87dc9d-d2db-47da-9752-51e60a5362e9
     parent: {fileID: 11485996}
     mode: 2
@@ -636,7 +636,7 @@ MonoBehaviour:
   attribute:
     name: Z
     path: Copy Direction/Value/Z
-    id: -57660/fe94adfe-82ad-4c3e-b204-d8a4543f9af3
+    id: 29668/fe94adfe-82ad-4c3e-b204-d8a4543f9af3
     localID: fe94adfe-82ad-4c3e-b204-d8a4543f9af3
     parent: {fileID: 11485996}
     mode: 0
@@ -685,7 +685,7 @@ MonoBehaviour:
   attribute:
     name: Z
     path: Copy Direction/Value/Z
-    id: -57674/7d5e61a5-139d-463a-b8b7-b3cd28b16956
+    id: 29710/7d5e61a5-139d-463a-b8b7-b3cd28b16956
     localID: 7d5e61a5-139d-463a-b8b7-b3cd28b16956
     parent: {fileID: 11426356}
     mode: 0
@@ -734,7 +734,7 @@ MonoBehaviour:
   attribute:
     name: Usable
     path: Key Backward/Usable
-    id: -57676/236a3a8d-2bf2-45f5-98ae-5d4b4b342158
+    id: 29670/236a3a8d-2bf2-45f5-98ae-5d4b4b342158
     localID: 236a3a8d-2bf2-45f5-98ae-5d4b4b342158
     parent: {fileID: 11484042}
     mode: 0
@@ -800,12 +800,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Copy Direction/Target/0
-  referenceID: -22436/6dab5b04-6765-4a3e-9491-1da594126c19
+  referenceID: -1570/6dab5b04-6765-4a3e-9491-1da594126c19
   referencePath: Rotate/Goal Direction
   attribute:
     name: Target
     path: Copy Direction/Target
-    id: -57674/06ff2d2d-d336-4c6d-80b1-d5bd4d7c4850
+    id: 29710/06ff2d2d-d336-4c6d-80b1-d5bd4d7c4850
     localID: 06ff2d2d-d336-4c6d-80b1-d5bd4d7c4850
     parent: {fileID: 11426356}
     mode: 1
@@ -854,7 +854,7 @@ MonoBehaviour:
   attribute:
     name: Active
     path: '@Ready/Active'
-    id: -57608/69826f7b-fe0b-414c-a626-5b625af70500
+    id: 29678/69826f7b-fe0b-414c-a626-5b625af70500
     localID: 69826f7b-fe0b-414c-a626-5b625af70500
     parent: {fileID: 11473166}
     mode: 0
@@ -912,12 +912,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Backward Right/1
-  referenceID: -22446/f5444bf6-5f8e-4171-90f2-6711c5bd3d96
+  referenceID: -1556/f5444bf6-5f8e-4171-90f2-6711c5bd3d96
   referencePath: Key Right/Intensity
   attribute:
     name: Backward Right
     path: Backward Right
-    id: -57652/65e7050d-ae09-4de1-8a84-8530ba19905c
+    id: 29692/65e7050d-ae09-4de1-8a84-8530ba19905c
     localID: 65e7050d-ae09-4de1-8a84-8530ba19905c
     parent: {fileID: 11444064}
     mode: 2
@@ -967,7 +967,7 @@ MonoBehaviour:
   attribute:
     name: Ready
     path: Key Backward/Ready
-    id: -57676/dde59b92-29a6-4607-a43b-ac9ffc00be2b
+    id: 29670/dde59b92-29a6-4607-a43b-ac9ffc00be2b
     localID: dde59b92-29a6-4607-a43b-ac9ffc00be2b
     parent: {fileID: 11484042}
     mode: 0
@@ -1010,13 +1010,13 @@ MonoBehaviour:
     parent: {fileID: 0}
     mode: 0
   usage: 0
-  path: Run Speed/Requirable/0
+  path: Move Speed/Requirable/0
   referenceID: 
   referencePath: 
   attribute:
     name: Requirable
-    path: Run Speed/Requirable
-    id: -57672/69a8c77b-6f37-49e2-94b3-e9d975027f8d
+    path: Move Speed/Requirable
+    id: 29684/69a8c77b-6f37-49e2-94b3-e9d975027f8d
     localID: 69a8c77b-6f37-49e2-94b3-e9d975027f8d
     parent: {fileID: 11467074}
     mode: 0
@@ -1082,12 +1082,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Move Direction/Target/0
-  referenceID: -22418/883b86d2-9b19-43df-a467-3abfc6328d60
+  referenceID: -1600/883b86d2-9b19-43df-a467-3abfc6328d60
   referencePath: Source
   attribute:
     name: Target
     path: Move Direction/Target
-    id: -57666/785a97d1-b04a-4b29-a6bc-bca01255761f
+    id: 29682/785a97d1-b04a-4b29-a6bc-bca01255761f
     localID: 785a97d1-b04a-4b29-a6bc-bca01255761f
     parent: {fileID: 11469102}
     mode: 0
@@ -1136,7 +1136,7 @@ MonoBehaviour:
   attribute:
     name: Intensity
     path: Key Backward/Intensity
-    id: -57676/5ebcf647-c1a0-42dc-b328-4abc420996b9
+    id: 29670/5ebcf647-c1a0-42dc-b328-4abc420996b9
     localID: 5ebcf647-c1a0-42dc-b328-4abc420996b9
     parent: {fileID: 11484042}
     mode: 0
@@ -1203,7 +1203,7 @@ MonoBehaviour:
   attribute:
     name: Amount
     path: Move Direction/Amount
-    id: -57666/cf9b4f76-9f6c-403f-b64d-90709a722c4e
+    id: 29682/cf9b4f76-9f6c-403f-b64d-90709a722c4e
     localID: cf9b4f76-9f6c-403f-b64d-90709a722c4e
     parent: {fileID: 11469102}
     mode: 0
@@ -1252,7 +1252,7 @@ MonoBehaviour:
   attribute:
     name: End While Unusable
     path: Copy Direction/End While Unusable
-    id: -57692/e77fee85-c652-4660-bc35-f73605909460
+    id: 29700/e77fee85-c652-4660-bc35-f73605909460
     localID: e77fee85-c652-4660-bc35-f73605909460
     parent: {fileID: 11438338}
     mode: 0
@@ -1301,7 +1301,7 @@ MonoBehaviour:
   attribute:
     name: Usable
     path: Move Direction/Usable
-    id: -57666/ef82f52b-6b12-4b19-a7ee-384d521ffecb
+    id: 29682/ef82f52b-6b12-4b19-a7ee-384d521ffecb
     localID: ef82f52b-6b12-4b19-a7ee-384d521ffecb
     parent: {fileID: 11469102}
     mode: 0
@@ -1350,7 +1350,7 @@ MonoBehaviour:
   attribute:
     name: Ready
     path: Copy Direction/Ready
-    id: -57692/ec1654b7-81c8-4f3a-bf3d-15058ffde172
+    id: 29700/ec1654b7-81c8-4f3a-bf3d-15058ffde172
     localID: ec1654b7-81c8-4f3a-bf3d-15058ffde172
     parent: {fileID: 11438338}
     mode: 0
@@ -1399,7 +1399,7 @@ MonoBehaviour:
   attribute:
     name: Active
     path: Rotate/Active
-    id: -57668/54063f69-0d01-4d2d-bdde-077e2fa1d296
+    id: 29688/54063f69-0d01-4d2d-bdde-077e2fa1d296
     localID: 54063f69-0d01-4d2d-bdde-077e2fa1d296
     parent: {fileID: 11449860}
     mode: 0
@@ -1448,7 +1448,7 @@ MonoBehaviour:
   attribute:
     name: End While Unusable
     path: Rotate/End While Unusable
-    id: -57668/06e9e39c-3252-4924-98d4-eeb1c14a0621
+    id: 29688/06e9e39c-3252-4924-98d4-eeb1c14a0621
     localID: 06e9e39c-3252-4924-98d4-eeb1c14a0621
     parent: {fileID: 11449860}
     mode: 0
@@ -1497,7 +1497,7 @@ MonoBehaviour:
   attribute:
     name: Active
     path: Copy Direction/Active
-    id: -57660/1cac2455-4189-4e6a-961b-2678b941ded1
+    id: 29668/1cac2455-4189-4e6a-961b-2678b941ded1
     localID: 1cac2455-4189-4e6a-961b-2678b941ded1
     parent: {fileID: 11485996}
     mode: 0
@@ -1546,7 +1546,7 @@ MonoBehaviour:
   attribute:
     name: End While Unusable
     path: Copy Direction/End While Unusable
-    id: -57660/92feeffd-ab32-4011-9b13-10533a552406
+    id: 29668/92feeffd-ab32-4011-9b13-10533a552406
     localID: 92feeffd-ab32-4011-9b13-10533a552406
     parent: {fileID: 11485996}
     mode: 0
@@ -1595,7 +1595,7 @@ MonoBehaviour:
   attribute:
     name: X
     path: Copy Direction/Target/X
-    id: -57660/e1643c6f-24dc-4599-8b35-0f09564e2f1b
+    id: 29668/e1643c6f-24dc-4599-8b35-0f09564e2f1b
     localID: e1643c6f-24dc-4599-8b35-0f09564e2f1b
     parent: {fileID: 11485996}
     mode: 0
@@ -1661,12 +1661,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Run Animation/Animation Name/0
-  referenceID: -22422/3c4a9063-940b-4807-ae18-c77464599981
+  referenceID: -1546/3c4a9063-940b-4807-ae18-c77464599981
   referencePath: Animation
   attribute:
     name: Animation Name
     path: Run Animation/Animation Name
-    id: -57670/0e4c512b-f240-4406-9430-9cf40fb6495e
+    id: 29662/0e4c512b-f240-4406-9430-9cf40fb6495e
     localID: 0e4c512b-f240-4406-9430-9cf40fb6495e
     parent: {fileID: 11492738}
     mode: 0
@@ -1707,7 +1707,7 @@ MonoBehaviour:
     info:
       name: Forward Right
       path: Forward Right
-      id: -57656/09e7a80f-9134-4ae6-b73a-ebea599669a5
+      id: 29722/09e7a80f-9134-4ae6-b73a-ebea599669a5
       localID: 09e7a80f-9134-4ae6-b73a-ebea599669a5
       parent: {fileID: 11406550}
       mode: 2
@@ -1761,12 +1761,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Copy Direction/Target/0
-  referenceID: -22436/6dab5b04-6765-4a3e-9491-1da594126c19
+  referenceID: -1570/6dab5b04-6765-4a3e-9491-1da594126c19
   referencePath: Rotate/Goal Direction
   attribute:
     name: Target
     path: Copy Direction/Target
-    id: -57688/2816a66a-8f64-42f7-95eb-3741142efa0e
+    id: 29696/2816a66a-8f64-42f7-95eb-3741142efa0e
     localID: 2816a66a-8f64-42f7-95eb-3741142efa0e
     parent: {fileID: 11443132}
     mode: 1
@@ -1804,7 +1804,7 @@ MonoBehaviour:
     info:
       name: Source
       path: Source
-      id: -57682/883b86d2-9b19-43df-a467-3abfc6328d60
+      id: 29720/883b86d2-9b19-43df-a467-3abfc6328d60
       localID: 883b86d2-9b19-43df-a467-3abfc6328d60
       parent: {fileID: 11407156}
       mode: 0
@@ -1840,7 +1840,7 @@ MonoBehaviour:
   attribute:
     name: Y
     path: Move Direction/Amount/Y
-    id: -57666/371ac101-28a6-4df6-bb5f-838ee7d62300
+    id: 29682/371ac101-28a6-4df6-bb5f-838ee7d62300
     localID: 371ac101-28a6-4df6-bb5f-838ee7d62300
     parent: {fileID: 11469102}
     mode: 0
@@ -1889,7 +1889,7 @@ MonoBehaviour:
   attribute:
     name: End While Unusable
     path: Copy Direction/End While Unusable
-    id: -57674/c014139c-f5a7-45ce-809a-6b2b4f3359e1
+    id: 29710/c014139c-f5a7-45ce-809a-6b2b4f3359e1
     localID: c014139c-f5a7-45ce-809a-6b2b4f3359e1
     parent: {fileID: 11426356}
     mode: 0
@@ -1927,7 +1927,7 @@ MonoBehaviour:
     info:
       name: Forward Left
       path: Forward Left
-      id: -57654/e34e6140-220d-40fe-bf68-47bdfd272815
+      id: 29718/e34e6140-220d-40fe-bf68-47bdfd272815
       localID: e34e6140-220d-40fe-bf68-47bdfd272815
       parent: {fileID: 11408114}
       mode: 2
@@ -1964,7 +1964,7 @@ MonoBehaviour:
   attribute:
     name: Active
     path: Copy Direction/Active
-    id: -57674/ad6bf40e-6c9b-4f6f-bf9b-158c258ccbc6
+    id: 29710/ad6bf40e-6c9b-4f6f-bf9b-158c258ccbc6
     localID: ad6bf40e-6c9b-4f6f-bf9b-158c258ccbc6
     parent: {fileID: 11426356}
     mode: 0
@@ -2013,7 +2013,7 @@ MonoBehaviour:
   attribute:
     name: Ready
     path: '@Ready/Ready'
-    id: -57608/f06a1230-3509-4258-a380-b72c9f75f7dd
+    id: 29678/f06a1230-3509-4258-a380-b72c9f75f7dd
     localID: f06a1230-3509-4258-a380-b72c9f75f7dd
     parent: {fileID: 11473166}
     mode: 0
@@ -2062,7 +2062,7 @@ MonoBehaviour:
   attribute:
     name: Animation
     path: Animation
-    id: -57678/3c4a9063-940b-4807-ae18-c77464599981
+    id: 29660/3c4a9063-940b-4807-ae18-c77464599981
     localID: 3c4a9063-940b-4807-ae18-c77464599981
     parent: {fileID: 11494954}
     mode: 0
@@ -2114,7 +2114,7 @@ MonoBehaviour:
   attribute:
     name: X
     path: Rotate/Goal Direction/X
-    id: -57668/fc7bf06e-2533-41be-bb50-d418a7a8da7a
+    id: 29688/fc7bf06e-2533-41be-bb50-d418a7a8da7a
     localID: fc7bf06e-2533-41be-bb50-d418a7a8da7a
     parent: {fileID: 11449860}
     mode: 0
@@ -2327,7 +2327,7 @@ MonoBehaviour:
     info:
       name: Requirable
       path: Key Forward/Requirable
-      id: -57694/a74aeab6-8930-4837-b992-a0c11189c985
+      id: 29716/a74aeab6-8930-4837-b992-a0c11189c985
       localID: a74aeab6-8930-4837-b992-a0c11189c985
       parent: {fileID: 11410102}
       mode: 0
@@ -2339,7 +2339,7 @@ MonoBehaviour:
     info:
       name: Ready
       path: Key Forward/Ready
-      id: -57694/2208bd1b-ceb2-4a87-97ea-407a70d83795
+      id: 29716/2208bd1b-ceb2-4a87-97ea-407a70d83795
       localID: 2208bd1b-ceb2-4a87-97ea-407a70d83795
       parent: {fileID: 11410102}
       mode: 0
@@ -2351,7 +2351,7 @@ MonoBehaviour:
     info:
       name: Usable
       path: Key Forward/Usable
-      id: -57694/3818e8ba-ef55-49f4-a7c8-3aae34b2fbe0
+      id: 29716/3818e8ba-ef55-49f4-a7c8-3aae34b2fbe0
       localID: 3818e8ba-ef55-49f4-a7c8-3aae34b2fbe0
       parent: {fileID: 11410102}
       mode: 0
@@ -2363,7 +2363,7 @@ MonoBehaviour:
     info:
       name: Active
       path: Key Forward/Active
-      id: -57694/e3de4679-b84d-4be6-b3c7-c34f0d35e960
+      id: 29716/e3de4679-b84d-4be6-b3c7-c34f0d35e960
       localID: e3de4679-b84d-4be6-b3c7-c34f0d35e960
       parent: {fileID: 11410102}
       mode: 0
@@ -2375,7 +2375,7 @@ MonoBehaviour:
     info:
       name: Used
       path: Key Forward/Used
-      id: -57694/670c5f1b-a5ab-4880-96dc-4181419b23ec
+      id: 29716/670c5f1b-a5ab-4880-96dc-4181419b23ec
       localID: 670c5f1b-a5ab-4880-96dc-4181419b23ec
       parent: {fileID: 11410102}
       mode: 0
@@ -2387,7 +2387,7 @@ MonoBehaviour:
     info:
       name: End While Unusable
       path: Key Forward/End While Unusable
-      id: -57694/a00743eb-e7e1-4eb2-8f34-5b65cd142329
+      id: 29716/a00743eb-e7e1-4eb2-8f34-5b65cd142329
       localID: a00743eb-e7e1-4eb2-8f34-5b65cd142329
       parent: {fileID: 11410102}
       mode: 0
@@ -2401,7 +2401,7 @@ MonoBehaviour:
     info:
       name: Input Name
       path: Key Forward/Input Name
-      id: -57694/0bdce41e-4de1-4b44-ba10-3d95d415bbfb
+      id: 29716/0bdce41e-4de1-4b44-ba10-3d95d415bbfb
       localID: 0bdce41e-4de1-4b44-ba10-3d95d415bbfb
       parent: {fileID: 11410102}
       mode: 0
@@ -2413,7 +2413,7 @@ MonoBehaviour:
     info:
       name: Held During Intensity
       path: Key Forward/Held During Intensity
-      id: -57694/d5644cb4-47fa-4060-9a0f-1daad9fa0189
+      id: 29716/d5644cb4-47fa-4060-9a0f-1daad9fa0189
       localID: d5644cb4-47fa-4060-9a0f-1daad9fa0189
       parent: {fileID: 11410102}
       mode: 0
@@ -2425,7 +2425,7 @@ MonoBehaviour:
     info:
       name: Ignore Ownership
       path: Key Forward/Ignore Ownership
-      id: -57694/ebe3e059-c8d4-46a1-adc1-20e0ebd9f44f
+      id: 29716/ebe3e059-c8d4-46a1-adc1-20e0ebd9f44f
       localID: ebe3e059-c8d4-46a1-adc1-20e0ebd9f44f
       parent: {fileID: 11410102}
       mode: 0
@@ -2437,7 +2437,7 @@ MonoBehaviour:
     info:
       name: Intensity
       path: Key Forward/Intensity
-      id: -57694/aff1c26b-ac89-48bd-ba8f-63ae2e64bf3f
+      id: 29716/aff1c26b-ac89-48bd-ba8f-63ae2e64bf3f
       localID: aff1c26b-ac89-48bd-ba8f-63ae2e64bf3f
       parent: {fileID: 11410102}
       mode: 0
@@ -2473,7 +2473,7 @@ MonoBehaviour:
   attribute:
     name: Usable
     path: '@Ready/Usable'
-    id: -57596/b33e9593-0e4c-447b-82c6-968735e75777
+    id: 29690/b33e9593-0e4c-447b-82c6-968735e75777
     localID: b33e9593-0e4c-447b-82c6-968735e75777
     parent: {fileID: 11447124}
     mode: 0
@@ -2522,7 +2522,7 @@ MonoBehaviour:
   attribute:
     name: X
     path: Copy Direction/Value/X
-    id: -57660/0f829d4d-524a-4373-9f54-8275b573325a
+    id: 29668/0f829d4d-524a-4373-9f54-8275b573325a
     localID: 0f829d4d-524a-4373-9f54-8275b573325a
     parent: {fileID: 11485996}
     mode: 0
@@ -2588,12 +2588,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Copy Direction/Value/1
-  referenceID: -22436/6dab5b04-6765-4a3e-9491-1da594126c19
+  referenceID: -1570/6dab5b04-6765-4a3e-9491-1da594126c19
   referencePath: Rotate/Goal Direction
   attribute:
     name: Value
     path: Copy Direction/Value
-    id: -57674/1445b4fd-ca09-4d19-8eae-8924b84bad86
+    id: 29710/1445b4fd-ca09-4d19-8eae-8924b84bad86
     localID: 1445b4fd-ca09-4d19-8eae-8924b84bad86
     parent: {fileID: 11426356}
     mode: 2
@@ -2833,12 +2833,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Copy Direction/Value/1
-  referenceID: -22436/6dab5b04-6765-4a3e-9491-1da594126c19
+  referenceID: -1570/6dab5b04-6765-4a3e-9491-1da594126c19
   referencePath: Rotate/Goal Direction
   attribute:
     name: Value
     path: Copy Direction/Value
-    id: -57692/b986fdfa-a231-4861-979b-e1c00a339c66
+    id: 29700/b986fdfa-a231-4861-979b-e1c00a339c66
     localID: b986fdfa-a231-4861-979b-e1c00a339c66
     parent: {fileID: 11438338}
     mode: 2
@@ -2888,7 +2888,7 @@ MonoBehaviour:
   attribute:
     name: Usable
     path: Move Amount/Usable
-    id: -57664/5767a3d6-0bce-4e46-abcb-f3eb7b5ad272
+    id: 29680/5767a3d6-0bce-4e46-abcb-f3eb7b5ad272
     localID: 5767a3d6-0bce-4e46-abcb-f3eb7b5ad272
     parent: {fileID: 11470918}
     mode: 0
@@ -2953,13 +2953,13 @@ MonoBehaviour:
     parent: {fileID: 11467074}
     mode: 0
   usage: 1
-  path: Run Speed/Value/0
-  referenceID: -22472/b126fe56-f7e4-4235-a952-5e28ea525f32
+  path: Move Speed/Value/0
+  referenceID: -1550/b126fe56-f7e4-4235-a952-5e28ea525f32
   referencePath: Intensity
   attribute:
     name: Value
-    path: Run Speed/Value
-    id: -57672/f10cb9a5-1053-4de7-a33d-fbe218ba5f50
+    path: Move Speed/Value
+    id: 29684/f10cb9a5-1053-4de7-a33d-fbe218ba5f50
     localID: f10cb9a5-1053-4de7-a33d-fbe218ba5f50
     parent: {fileID: 11467074}
     mode: 2
@@ -3009,7 +3009,7 @@ MonoBehaviour:
   attribute:
     name: Used
     path: Move Amount/Used
-    id: -57664/185e1ccd-b5aa-4953-b826-c24c16a4234a
+    id: 29680/185e1ccd-b5aa-4953-b826-c24c16a4234a
     localID: 185e1ccd-b5aa-4953-b826-c24c16a4234a
     parent: {fileID: 11470918}
     mode: 0
@@ -3058,7 +3058,7 @@ MonoBehaviour:
   attribute:
     name: Requirable
     path: '@Ready/Requirable'
-    id: -57602/797aaa26-4a91-4225-9439-a7e3c7d94b13
+    id: 29674/797aaa26-4a91-4225-9439-a7e3c7d94b13
     localID: 797aaa26-4a91-4225-9439-a7e3c7d94b13
     parent: {fileID: 11477880}
     mode: 0
@@ -3107,7 +3107,7 @@ MonoBehaviour:
   attribute:
     name: Used
     path: '@Ready/Used'
-    id: -57596/d803351f-b9b8-4ac5-92a2-8fe9e70d9445
+    id: 29690/d803351f-b9b8-4ac5-92a2-8fe9e70d9445
     localID: d803351f-b9b8-4ac5-92a2-8fe9e70d9445
     parent: {fileID: 11447124}
     mode: 0
@@ -3156,7 +3156,7 @@ MonoBehaviour:
   attribute:
     name: Used
     path: '@Ready/Used'
-    id: -57608/a4cb3179-93b5-494e-9df3-2b4c99ff8ee2
+    id: 29678/a4cb3179-93b5-494e-9df3-2b4c99ff8ee2
     localID: a4cb3179-93b5-494e-9df3-2b4c99ff8ee2
     parent: {fileID: 11473166}
     mode: 0
@@ -3205,7 +3205,7 @@ MonoBehaviour:
   attribute:
     name: Active
     path: Run Animation/Active
-    id: -57670/83d0a65b-6eb5-4a04-913a-775905316454
+    id: 29662/83d0a65b-6eb5-4a04-913a-775905316454
     localID: 83d0a65b-6eb5-4a04-913a-775905316454
     parent: {fileID: 11492738}
     mode: 0
@@ -3254,7 +3254,7 @@ MonoBehaviour:
   attribute:
     name: Usable
     path: Movement/Usable
-    id: -57638/b76db291-e4b9-410d-b1cd-56bc5a50a91e
+    id: 29592/b76db291-e4b9-410d-b1cd-56bc5a50a91e
     localID: b76db291-e4b9-410d-b1cd-56bc5a50a91e
     parent: {fileID: 11483940}
     mode: 0
@@ -3303,7 +3303,7 @@ MonoBehaviour:
   attribute:
     name: Input Name
     path: Key Left/Input Name
-    id: -57690/82a21c7e-cd40-409b-a422-ff83d9ddf4e2
+    id: 29712/82a21c7e-cd40-409b-a422-ff83d9ddf4e2
     localID: 82a21c7e-cd40-409b-a422-ff83d9ddf4e2
     parent: {fileID: 11422548}
     mode: 0
@@ -3355,7 +3355,7 @@ MonoBehaviour:
   attribute:
     name: Requirable
     path: Move Direction/Requirable
-    id: -57666/c894b02a-7023-42cb-a566-9723f175ce3b
+    id: 29682/c894b02a-7023-42cb-a566-9723f175ce3b
     localID: c894b02a-7023-42cb-a566-9723f175ce3b
     parent: {fileID: 11469102}
     mode: 0
@@ -3404,7 +3404,7 @@ MonoBehaviour:
   attribute:
     name: Input Name
     path: Key Right/Input Name
-    id: -57662/eb26d9f9-ecc5-43c3-8551-a880779fcd3c
+    id: 29672/eb26d9f9-ecc5-43c3-8551-a880779fcd3c
     localID: eb26d9f9-ecc5-43c3-8551-a880779fcd3c
     parent: {fileID: 11482060}
     mode: 0
@@ -3456,7 +3456,7 @@ MonoBehaviour:
   attribute:
     name: End While Unusable
     path: '@Ready/End While Unusable'
-    id: -57608/37ae8bdd-7c8c-473a-87eb-07086fbd304c
+    id: 29678/37ae8bdd-7c8c-473a-87eb-07086fbd304c
     localID: 37ae8bdd-7c8c-473a-87eb-07086fbd304c
     parent: {fileID: 11473166}
     mode: 0
@@ -3505,7 +3505,7 @@ MonoBehaviour:
   attribute:
     name: Intensity
     path: Key Left/Intensity
-    id: -57690/c59c8a90-7875-45b1-903c-7c55fa22f236
+    id: 29712/c59c8a90-7875-45b1-903c-7c55fa22f236
     localID: c59c8a90-7875-45b1-903c-7c55fa22f236
     parent: {fileID: 11422548}
     mode: 0
@@ -3554,7 +3554,7 @@ MonoBehaviour:
   attribute:
     name: End While Unusable
     path: Rotate Right/End While Unusable
-    id: -57648/1a2b0055-8d91-495a-bccb-a46bfe1a6c49
+    id: 29666/1a2b0055-8d91-495a-bccb-a46bfe1a6c49
     localID: 1a2b0055-8d91-495a-bccb-a46bfe1a6c49
     parent: {fileID: 11488424}
     mode: 0
@@ -3603,7 +3603,7 @@ MonoBehaviour:
   attribute:
     name: X
     path: Copy Direction/Value/X
-    id: -57674/4426e033-aea0-445c-86d3-217d9d92022e
+    id: 29710/4426e033-aea0-445c-86d3-217d9d92022e
     localID: 4426e033-aea0-445c-86d3-217d9d92022e
     parent: {fileID: 11426356}
     mode: 0
@@ -3652,7 +3652,7 @@ MonoBehaviour:
   attribute:
     name: Active
     path: '@Ready/Active'
-    id: -57602/e508d929-e585-4d33-84ab-eb512111a013
+    id: 29674/e508d929-e585-4d33-84ab-eb512111a013
     localID: e508d929-e585-4d33-84ab-eb512111a013
     parent: {fileID: 11477880}
     mode: 0
@@ -3701,7 +3701,7 @@ MonoBehaviour:
   attribute:
     name: Is Angle
     path: Rotate/Rotate Direction/Is Angle
-    id: -57668/f2f959b0-4b7a-4af1-9d8b-e5b68e69a09c
+    id: 29688/f2f959b0-4b7a-4af1-9d8b-e5b68e69a09c
     localID: f2f959b0-4b7a-4af1-9d8b-e5b68e69a09c
     parent: {fileID: 11449860}
     mode: 0
@@ -3739,7 +3739,7 @@ MonoBehaviour:
     info:
       name: Visuals
       path: Visuals
-      id: -57686/a773ab3e-6979-4d6d-a0b6-f187570d48dc
+      id: 29714/a773ab3e-6979-4d6d-a0b6-f187570d48dc
       localID: a773ab3e-6979-4d6d-a0b6-f187570d48dc
       parent: {fileID: 11418722}
       mode: 0
@@ -3775,7 +3775,7 @@ MonoBehaviour:
   attribute:
     name: Ready
     path: Rotate Right/Ready
-    id: -57648/4027dd02-a27c-48e9-8503-7ddbfe631cb2
+    id: 29666/4027dd02-a27c-48e9-8503-7ddbfe631cb2
     localID: 4027dd02-a27c-48e9-8503-7ddbfe631cb2
     parent: {fileID: 11488424}
     mode: 0
@@ -3818,13 +3818,13 @@ MonoBehaviour:
     parent: {fileID: 0}
     mode: 0
   usage: 0
-  path: Run Speed/Active/0
+  path: Move Speed/Active/0
   referenceID: 
   referencePath: 
   attribute:
     name: Active
-    path: Run Speed/Active
-    id: -57672/817fe3d3-1aa5-49d1-ac27-559db0df616f
+    path: Move Speed/Active
+    id: 29684/817fe3d3-1aa5-49d1-ac27-559db0df616f
     localID: 817fe3d3-1aa5-49d1-ac27-559db0df616f
     parent: {fileID: 11467074}
     mode: 0
@@ -3873,7 +3873,7 @@ MonoBehaviour:
   attribute:
     name: Requirable
     path: Copy Direction/Requirable
-    id: -57688/3fb0a6d8-68da-49f3-8c94-62558a617edb
+    id: 29696/3fb0a6d8-68da-49f3-8c94-62558a617edb
     localID: 3fb0a6d8-68da-49f3-8c94-62558a617edb
     parent: {fileID: 11443132}
     mode: 0
@@ -3922,7 +3922,7 @@ MonoBehaviour:
   attribute:
     name: Requirable
     path: '@Ready/Requirable'
-    id: -57608/86fa72b7-1172-44c1-b79e-8128bb0db3ea
+    id: 29678/86fa72b7-1172-44c1-b79e-8128bb0db3ea
     localID: 86fa72b7-1172-44c1-b79e-8128bb0db3ea
     parent: {fileID: 11473166}
     mode: 0
@@ -3971,7 +3971,7 @@ MonoBehaviour:
   attribute:
     name: Usable
     path: Rotate/Usable
-    id: -57668/2acaf70e-03b4-4e1c-bf63-38e7c4022292
+    id: 29688/2acaf70e-03b4-4e1c-bf63-38e7c4022292
     localID: 2acaf70e-03b4-4e1c-bf63-38e7c4022292
     parent: {fileID: 11449860}
     mode: 0
@@ -4020,7 +4020,7 @@ MonoBehaviour:
   attribute:
     name: Active
     path: '@Ready/Active'
-    id: -57596/cc197a1f-a6ec-40de-add8-696a114b422c
+    id: 29690/cc197a1f-a6ec-40de-add8-696a114b422c
     localID: cc197a1f-a6ec-40de-add8-696a114b422c
     parent: {fileID: 11447124}
     mode: 0
@@ -4086,12 +4086,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Copy Direction/Value/1
-  referenceID: -22436/6dab5b04-6765-4a3e-9491-1da594126c19
+  referenceID: -1570/6dab5b04-6765-4a3e-9491-1da594126c19
   referencePath: Rotate/Goal Direction
   attribute:
     name: Value
     path: Copy Direction/Value
-    id: -57660/bc87dc9d-d2db-47da-9752-51e60a5362e9
+    id: 29668/bc87dc9d-d2db-47da-9752-51e60a5362e9
     localID: bc87dc9d-d2db-47da-9752-51e60a5362e9
     parent: {fileID: 11485996}
     mode: 2
@@ -4132,7 +4132,7 @@ MonoBehaviour:
     info:
       name: Requirable
       path: Key Left/Requirable
-      id: -57690/bea1dcbf-8442-4248-b6c5-06dde81e9213
+      id: 29712/bea1dcbf-8442-4248-b6c5-06dde81e9213
       localID: bea1dcbf-8442-4248-b6c5-06dde81e9213
       parent: {fileID: 11422548}
       mode: 0
@@ -4144,7 +4144,7 @@ MonoBehaviour:
     info:
       name: Ready
       path: Key Left/Ready
-      id: -57690/ea859029-9121-4b5d-93d7-ce8258f9cd55
+      id: 29712/ea859029-9121-4b5d-93d7-ce8258f9cd55
       localID: ea859029-9121-4b5d-93d7-ce8258f9cd55
       parent: {fileID: 11422548}
       mode: 0
@@ -4156,7 +4156,7 @@ MonoBehaviour:
     info:
       name: Usable
       path: Key Left/Usable
-      id: -57690/848b35e6-fba4-45e8-b537-91b264b0ad6e
+      id: 29712/848b35e6-fba4-45e8-b537-91b264b0ad6e
       localID: 848b35e6-fba4-45e8-b537-91b264b0ad6e
       parent: {fileID: 11422548}
       mode: 0
@@ -4168,7 +4168,7 @@ MonoBehaviour:
     info:
       name: Active
       path: Key Left/Active
-      id: -57690/9604e74d-48c0-4f49-9d1c-00bea2e56f7a
+      id: 29712/9604e74d-48c0-4f49-9d1c-00bea2e56f7a
       localID: 9604e74d-48c0-4f49-9d1c-00bea2e56f7a
       parent: {fileID: 11422548}
       mode: 0
@@ -4180,7 +4180,7 @@ MonoBehaviour:
     info:
       name: Used
       path: Key Left/Used
-      id: -57690/0fbc1cf9-185b-454a-92a5-9e0eb0452d43
+      id: 29712/0fbc1cf9-185b-454a-92a5-9e0eb0452d43
       localID: 0fbc1cf9-185b-454a-92a5-9e0eb0452d43
       parent: {fileID: 11422548}
       mode: 0
@@ -4192,7 +4192,7 @@ MonoBehaviour:
     info:
       name: End While Unusable
       path: Key Left/End While Unusable
-      id: -57690/e812fa3b-178e-47de-92b9-38f63f604001
+      id: 29712/e812fa3b-178e-47de-92b9-38f63f604001
       localID: e812fa3b-178e-47de-92b9-38f63f604001
       parent: {fileID: 11422548}
       mode: 0
@@ -4206,7 +4206,7 @@ MonoBehaviour:
     info:
       name: Input Name
       path: Key Left/Input Name
-      id: -57690/82a21c7e-cd40-409b-a422-ff83d9ddf4e2
+      id: 29712/82a21c7e-cd40-409b-a422-ff83d9ddf4e2
       localID: 82a21c7e-cd40-409b-a422-ff83d9ddf4e2
       parent: {fileID: 11422548}
       mode: 0
@@ -4218,7 +4218,7 @@ MonoBehaviour:
     info:
       name: Held During Intensity
       path: Key Left/Held During Intensity
-      id: -57690/4a7548c3-a5a8-4a21-9669-51e4efa42978
+      id: 29712/4a7548c3-a5a8-4a21-9669-51e4efa42978
       localID: 4a7548c3-a5a8-4a21-9669-51e4efa42978
       parent: {fileID: 11422548}
       mode: 0
@@ -4230,7 +4230,7 @@ MonoBehaviour:
     info:
       name: Ignore Ownership
       path: Key Left/Ignore Ownership
-      id: -57690/040ec58c-b561-4802-9597-2362245e4b97
+      id: 29712/040ec58c-b561-4802-9597-2362245e4b97
       localID: 040ec58c-b561-4802-9597-2362245e4b97
       parent: {fileID: 11422548}
       mode: 0
@@ -4242,7 +4242,7 @@ MonoBehaviour:
     info:
       name: Intensity
       path: Key Left/Intensity
-      id: -57690/c59c8a90-7875-45b1-903c-7c55fa22f236
+      id: 29712/c59c8a90-7875-45b1-903c-7c55fa22f236
       localID: c59c8a90-7875-45b1-903c-7c55fa22f236
       parent: {fileID: 11422548}
       mode: 0
@@ -4278,7 +4278,7 @@ MonoBehaviour:
   attribute:
     name: Ready
     path: '@Ready/Ready'
-    id: -57612/b89e524b-2d29-4dd6-996a-93061748ef2e
+    id: 29676/b89e524b-2d29-4dd6-996a-93061748ef2e
     localID: b89e524b-2d29-4dd6-996a-93061748ef2e
     parent: {fileID: 11475892}
     mode: 0
@@ -4327,7 +4327,7 @@ MonoBehaviour:
   attribute:
     name: Used
     path: Copy Direction/Used
-    id: -57688/e0a51936-5064-4d67-b30b-dac85450e912
+    id: 29696/e0a51936-5064-4d67-b30b-dac85450e912
     localID: e0a51936-5064-4d67-b30b-dac85450e912
     parent: {fileID: 11443132}
     mode: 0
@@ -4376,7 +4376,7 @@ MonoBehaviour:
   attribute:
     name: Active
     path: Key Right/Active
-    id: -57662/06267864-5ab7-45e7-babb-661aa111d0e7
+    id: 29672/06267864-5ab7-45e7-babb-661aa111d0e7
     localID: 06267864-5ab7-45e7-babb-661aa111d0e7
     parent: {fileID: 11482060}
     mode: 0
@@ -4434,12 +4434,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Backward Left/1
-  referenceID: -22400/c59c8a90-7875-45b1-903c-7c55fa22f236
+  referenceID: -1592/c59c8a90-7875-45b1-903c-7c55fa22f236
   referencePath: Key Left/Intensity
   attribute:
     name: Backward Left
     path: Backward Left
-    id: -57650/8ed16860-087f-42cc-a75b-0ee295ae9f2e
+    id: 29702/8ed16860-087f-42cc-a75b-0ee295ae9f2e
     localID: 8ed16860-087f-42cc-a75b-0ee295ae9f2e
     parent: {fileID: 11437022}
     mode: 2
@@ -4489,7 +4489,7 @@ MonoBehaviour:
   attribute:
     name: Ignore Ownership
     path: Key Backward/Ignore Ownership
-    id: -57676/13959289-92bc-471c-9edb-69e4380f97ed
+    id: 29670/13959289-92bc-471c-9edb-69e4380f97ed
     localID: 13959289-92bc-471c-9edb-69e4380f97ed
     parent: {fileID: 11484042}
     mode: 0
@@ -4538,7 +4538,7 @@ MonoBehaviour:
   attribute:
     name: Z
     path: Copy Direction/Value/Z
-    id: -57688/b71eadee-ac6b-4009-b165-f4b584ad39a6
+    id: 29696/b71eadee-ac6b-4009-b165-f4b584ad39a6
     localID: b71eadee-ac6b-4009-b165-f4b584ad39a6
     parent: {fileID: 11443132}
     mode: 0
@@ -4587,7 +4587,7 @@ MonoBehaviour:
   attribute:
     name: Ignore Ownership
     path: Key Left/Ignore Ownership
-    id: -57690/040ec58c-b561-4802-9597-2362245e4b97
+    id: 29712/040ec58c-b561-4802-9597-2362245e4b97
     localID: 040ec58c-b561-4802-9597-2362245e4b97
     parent: {fileID: 11422548}
     mode: 0
@@ -4627,7 +4627,7 @@ MonoBehaviour:
     info:
       name: Requirable
       path: Copy Direction/Requirable
-      id: -57674/29eb4c8f-7b8c-494b-8ef8-ccedbca9ea71
+      id: 29710/29eb4c8f-7b8c-494b-8ef8-ccedbca9ea71
       localID: 29eb4c8f-7b8c-494b-8ef8-ccedbca9ea71
       parent: {fileID: 11426356}
       mode: 0
@@ -4639,7 +4639,7 @@ MonoBehaviour:
     info:
       name: Ready
       path: Copy Direction/Ready
-      id: -57674/eec778dd-10c1-449b-bb97-f31f7bcbd1c8
+      id: 29710/eec778dd-10c1-449b-bb97-f31f7bcbd1c8
       localID: eec778dd-10c1-449b-bb97-f31f7bcbd1c8
       parent: {fileID: 11426356}
       mode: 0
@@ -4651,7 +4651,7 @@ MonoBehaviour:
     info:
       name: Usable
       path: Copy Direction/Usable
-      id: -57674/fa64895b-9193-45eb-8c08-52dac8932cfb
+      id: 29710/fa64895b-9193-45eb-8c08-52dac8932cfb
       localID: fa64895b-9193-45eb-8c08-52dac8932cfb
       parent: {fileID: 11426356}
       mode: 0
@@ -4663,7 +4663,7 @@ MonoBehaviour:
     info:
       name: Active
       path: Copy Direction/Active
-      id: -57674/ad6bf40e-6c9b-4f6f-bf9b-158c258ccbc6
+      id: 29710/ad6bf40e-6c9b-4f6f-bf9b-158c258ccbc6
       localID: ad6bf40e-6c9b-4f6f-bf9b-158c258ccbc6
       parent: {fileID: 11426356}
       mode: 0
@@ -4675,7 +4675,7 @@ MonoBehaviour:
     info:
       name: Used
       path: Copy Direction/Used
-      id: -57674/90bf6c90-149f-420e-914b-c482e8cfbf35
+      id: 29710/90bf6c90-149f-420e-914b-c482e8cfbf35
       localID: 90bf6c90-149f-420e-914b-c482e8cfbf35
       parent: {fileID: 11426356}
       mode: 0
@@ -4687,7 +4687,7 @@ MonoBehaviour:
     info:
       name: End While Unusable
       path: Copy Direction/End While Unusable
-      id: -57674/c014139c-f5a7-45ce-809a-6b2b4f3359e1
+      id: 29710/c014139c-f5a7-45ce-809a-6b2b4f3359e1
       localID: c014139c-f5a7-45ce-809a-6b2b4f3359e1
       parent: {fileID: 11426356}
       mode: 0
@@ -4700,7 +4700,7 @@ MonoBehaviour:
     info:
       name: Target
       path: Copy Direction/Target
-      id: -57674/06ff2d2d-d336-4c6d-80b1-d5bd4d7c4850
+      id: 29710/06ff2d2d-d336-4c6d-80b1-d5bd4d7c4850
       localID: 06ff2d2d-d336-4c6d-80b1-d5bd4d7c4850
       parent: {fileID: 11426356}
       mode: 1
@@ -4712,7 +4712,7 @@ MonoBehaviour:
       info:
         name: X
         path: Copy Direction/Target/X
-        id: -57674/4bc9677b-f287-44b9-8b9a-6ddc42081e6b
+        id: 29710/4bc9677b-f287-44b9-8b9a-6ddc42081e6b
         localID: 4bc9677b-f287-44b9-8b9a-6ddc42081e6b
         parent: {fileID: 11426356}
         mode: 0
@@ -4724,7 +4724,7 @@ MonoBehaviour:
       info:
         name: Y
         path: Copy Direction/Target/Y
-        id: -57674/60425123-2bdc-4326-bbb2-fc84f2a1ab26
+        id: 29710/60425123-2bdc-4326-bbb2-fc84f2a1ab26
         localID: 60425123-2bdc-4326-bbb2-fc84f2a1ab26
         parent: {fileID: 11426356}
         mode: 0
@@ -4736,7 +4736,7 @@ MonoBehaviour:
       info:
         name: Z
         path: Copy Direction/Target/Z
-        id: -57674/2538f0f6-566b-4de7-b440-ee01a7e94b18
+        id: 29710/2538f0f6-566b-4de7-b440-ee01a7e94b18
         localID: 2538f0f6-566b-4de7-b440-ee01a7e94b18
         parent: {fileID: 11426356}
         mode: 0
@@ -4748,7 +4748,7 @@ MonoBehaviour:
     info:
       name: Value
       path: Copy Direction/Value
-      id: -57674/1445b4fd-ca09-4d19-8eae-8924b84bad86
+      id: 29710/1445b4fd-ca09-4d19-8eae-8924b84bad86
       localID: 1445b4fd-ca09-4d19-8eae-8924b84bad86
       parent: {fileID: 11426356}
       mode: 2
@@ -4761,7 +4761,7 @@ MonoBehaviour:
       info:
         name: X
         path: Copy Direction/Value/X
-        id: -57674/4426e033-aea0-445c-86d3-217d9d92022e
+        id: 29710/4426e033-aea0-445c-86d3-217d9d92022e
         localID: 4426e033-aea0-445c-86d3-217d9d92022e
         parent: {fileID: 11426356}
         mode: 0
@@ -4773,7 +4773,7 @@ MonoBehaviour:
       info:
         name: Y
         path: Copy Direction/Value/Y
-        id: -57674/ac53f2bb-8efa-4f29-86ad-c026108607cb
+        id: 29710/ac53f2bb-8efa-4f29-86ad-c026108607cb
         localID: ac53f2bb-8efa-4f29-86ad-c026108607cb
         parent: {fileID: 11426356}
         mode: 0
@@ -4785,7 +4785,7 @@ MonoBehaviour:
       info:
         name: Z
         path: Copy Direction/Value/Z
-        id: -57674/7d5e61a5-139d-463a-b8b7-b3cd28b16956
+        id: 29710/7d5e61a5-139d-463a-b8b7-b3cd28b16956
         localID: 7d5e61a5-139d-463a-b8b7-b3cd28b16956
         parent: {fileID: 11426356}
         mode: 0
@@ -4834,7 +4834,7 @@ MonoBehaviour:
   attribute:
     name: Visuals
     path: Visuals
-    id: -57686/a773ab3e-6979-4d6d-a0b6-f187570d48dc
+    id: 29714/a773ab3e-6979-4d6d-a0b6-f187570d48dc
     localID: a773ab3e-6979-4d6d-a0b6-f187570d48dc
     parent: {fileID: 11418722}
     mode: 0
@@ -4883,7 +4883,7 @@ MonoBehaviour:
   attribute:
     name: Usable
     path: '@Ready/Usable'
-    id: -57604/7e7f112c-bb0c-43ad-bf21-3f0381ae0676
+    id: 29708/7e7f112c-bb0c-43ad-bf21-3f0381ae0676
     localID: 7e7f112c-bb0c-43ad-bf21-3f0381ae0676
     parent: {fileID: 11431738}
     mode: 0
@@ -4932,7 +4932,7 @@ MonoBehaviour:
   attribute:
     name: Ready
     path: Run Animation/Ready
-    id: -57670/81b54115-1c70-497a-b777-2ab4bb809cc6
+    id: 29662/81b54115-1c70-497a-b777-2ab4bb809cc6
     localID: 81b54115-1c70-497a-b777-2ab4bb809cc6
     parent: {fileID: 11492738}
     mode: 0
@@ -4975,13 +4975,13 @@ MonoBehaviour:
     parent: {fileID: 0}
     mode: 0
   usage: 0
-  path: Run Speed/Used/0
+  path: Move Speed/Used/0
   referenceID: 
   referencePath: 
   attribute:
     name: Used
-    path: Run Speed/Used
-    id: -57672/a052faf0-1028-4a8d-9d9f-af6444549e28
+    path: Move Speed/Used
+    id: 29684/a052faf0-1028-4a8d-9d9f-af6444549e28
     localID: a052faf0-1028-4a8d-9d9f-af6444549e28
     parent: {fileID: 11467074}
     mode: 0
@@ -5030,7 +5030,7 @@ MonoBehaviour:
   attribute:
     name: Z
     path: Move Direction/Amount/Z
-    id: -57666/803b3f04-ebf6-4105-a804-2d70b349d86a
+    id: 29682/803b3f04-ebf6-4105-a804-2d70b349d86a
     localID: 803b3f04-ebf6-4105-a804-2d70b349d86a
     parent: {fileID: 11469102}
     mode: 0
@@ -5070,7 +5070,7 @@ MonoBehaviour:
     info:
       name: Requirable
       path: '@Ready/Requirable'
-      id: -57604/f0a3467b-3b87-4100-99b1-adc31dcb5876
+      id: 29708/f0a3467b-3b87-4100-99b1-adc31dcb5876
       localID: f0a3467b-3b87-4100-99b1-adc31dcb5876
       parent: {fileID: 11431738}
       mode: 0
@@ -5082,7 +5082,7 @@ MonoBehaviour:
     info:
       name: Ready
       path: '@Ready/Ready'
-      id: -57604/e9b2d549-87ef-4835-9f4b-07afcc61fa71
+      id: 29708/e9b2d549-87ef-4835-9f4b-07afcc61fa71
       localID: e9b2d549-87ef-4835-9f4b-07afcc61fa71
       parent: {fileID: 11431738}
       mode: 0
@@ -5094,7 +5094,7 @@ MonoBehaviour:
     info:
       name: Usable
       path: '@Ready/Usable'
-      id: -57604/7e7f112c-bb0c-43ad-bf21-3f0381ae0676
+      id: 29708/7e7f112c-bb0c-43ad-bf21-3f0381ae0676
       localID: 7e7f112c-bb0c-43ad-bf21-3f0381ae0676
       parent: {fileID: 11431738}
       mode: 0
@@ -5106,7 +5106,7 @@ MonoBehaviour:
     info:
       name: Active
       path: '@Ready/Active'
-      id: -57604/07113467-18a2-4bd6-8555-2122d33f482e
+      id: 29708/07113467-18a2-4bd6-8555-2122d33f482e
       localID: 07113467-18a2-4bd6-8555-2122d33f482e
       parent: {fileID: 11431738}
       mode: 0
@@ -5118,7 +5118,7 @@ MonoBehaviour:
     info:
       name: Used
       path: '@Ready/Used'
-      id: -57604/3813e111-5fd6-4d41-a40b-75fefd61b7d7
+      id: 29708/3813e111-5fd6-4d41-a40b-75fefd61b7d7
       localID: 3813e111-5fd6-4d41-a40b-75fefd61b7d7
       parent: {fileID: 11431738}
       mode: 0
@@ -5130,7 +5130,7 @@ MonoBehaviour:
     info:
       name: End While Unusable
       path: '@Ready/End While Unusable'
-      id: -57604/a570de34-1693-4f4b-a678-c30c89542dd5
+      id: 29708/a570de34-1693-4f4b-a678-c30c89542dd5
       localID: a570de34-1693-4f4b-a678-c30c89542dd5
       parent: {fileID: 11431738}
       mode: 0
@@ -5166,7 +5166,7 @@ MonoBehaviour:
   attribute:
     name: Usable
     path: Movement Speed/Usable
-    id: -57640/197251eb-25e4-42da-a498-1e5e9f5714e6
+    id: 29698/197251eb-25e4-42da-a498-1e5e9f5714e6
     localID: 197251eb-25e4-42da-a498-1e5e9f5714e6
     parent: {fileID: 11441214}
     mode: 0
@@ -5224,12 +5224,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Intensity/0
-  referenceID: -22476/e34e6140-220d-40fe-bf68-47bdfd272815
+  referenceID: -1598/e34e6140-220d-40fe-bf68-47bdfd272815
   referencePath: Forward Left
   attribute:
     name: Intensity
     path: Intensity
-    id: -57658/b126fe56-f7e4-4235-a952-5e28ea525f32
+    id: 29664/b126fe56-f7e4-4235-a952-5e28ea525f32
     localID: b126fe56-f7e4-4235-a952-5e28ea525f32
     parent: {fileID: 11490872}
     mode: 2
@@ -5283,7 +5283,7 @@ MonoBehaviour:
   attribute:
     name: Input Name
     path: Key Backward/Input Name
-    id: -57676/df9970fd-292f-4727-8ebc-7e099640399e
+    id: 29670/df9970fd-292f-4727-8ebc-7e099640399e
     localID: df9970fd-292f-4727-8ebc-7e099640399e
     parent: {fileID: 11484042}
     mode: 0
@@ -5335,7 +5335,7 @@ MonoBehaviour:
   attribute:
     name: Active
     path: Copy Direction/Active
-    id: -57688/01dfda9b-881b-4dc9-9a56-dedce36f0c4b
+    id: 29696/01dfda9b-881b-4dc9-9a56-dedce36f0c4b
     localID: 01dfda9b-881b-4dc9-9a56-dedce36f0c4b
     parent: {fileID: 11443132}
     mode: 0
@@ -5384,7 +5384,7 @@ MonoBehaviour:
   attribute:
     name: Y
     path: Rotate/Goal Direction/Y
-    id: -57668/1ca0ce05-929a-4471-90ca-7a478daa8e0b
+    id: 29688/1ca0ce05-929a-4471-90ca-7a478daa8e0b
     localID: 1ca0ce05-929a-4471-90ca-7a478daa8e0b
     parent: {fileID: 11449860}
     mode: 0
@@ -5433,7 +5433,7 @@ MonoBehaviour:
   attribute:
     name: Z
     path: Copy Direction/Value/Z
-    id: -57692/9baaab68-d279-4aff-8820-62cd331fa36d
+    id: 29700/9baaab68-d279-4aff-8820-62cd331fa36d
     localID: 9baaab68-d279-4aff-8820-62cd331fa36d
     parent: {fileID: 11438338}
     mode: 0
@@ -5482,7 +5482,7 @@ MonoBehaviour:
   attribute:
     name: Active
     path: Key Backward/Active
-    id: -57676/b8eaf093-84da-49bb-a7ca-b9d2fd23c5a3
+    id: 29670/b8eaf093-84da-49bb-a7ca-b9d2fd23c5a3
     localID: b8eaf093-84da-49bb-a7ca-b9d2fd23c5a3
     parent: {fileID: 11484042}
     mode: 0
@@ -5531,7 +5531,7 @@ MonoBehaviour:
   attribute:
     name: Ready
     path: Copy Direction/Ready
-    id: -57660/22bbd7bb-e3b6-4c36-8afa-97879fac2e73
+    id: 29668/22bbd7bb-e3b6-4c36-8afa-97879fac2e73
     localID: 22bbd7bb-e3b6-4c36-8afa-97879fac2e73
     parent: {fileID: 11485996}
     mode: 0
@@ -5580,7 +5580,7 @@ MonoBehaviour:
   attribute:
     name: Y
     path: Copy Direction/Target/Y
-    id: -57660/b7c1ef3e-5758-4477-a865-04df271865a7
+    id: 29668/b7c1ef3e-5758-4477-a865-04df271865a7
     localID: b7c1ef3e-5758-4477-a865-04df271865a7
     parent: {fileID: 11485996}
     mode: 0
@@ -5629,7 +5629,7 @@ MonoBehaviour:
   attribute:
     name: Usable
     path: '@Ready/Usable'
-    id: -57612/a2854c80-cfa7-458c-8c2e-17f4fceb9085
+    id: 29676/a2854c80-cfa7-458c-8c2e-17f4fceb9085
     localID: a2854c80-cfa7-458c-8c2e-17f4fceb9085
     parent: {fileID: 11475892}
     mode: 0
@@ -5678,7 +5678,7 @@ MonoBehaviour:
   attribute:
     name: Y
     path: Copy Direction/Target/Y
-    id: -57692/6f2a57f2-cb4a-45c9-adb7-262608f147ba
+    id: 29700/6f2a57f2-cb4a-45c9-adb7-262608f147ba
     localID: 6f2a57f2-cb4a-45c9-adb7-262608f147ba
     parent: {fileID: 11438338}
     mode: 0
@@ -5727,7 +5727,7 @@ MonoBehaviour:
   attribute:
     name: Held During Intensity
     path: Key Forward/Held During Intensity
-    id: -57694/d5644cb4-47fa-4060-9a0f-1daad9fa0189
+    id: 29716/d5644cb4-47fa-4060-9a0f-1daad9fa0189
     localID: d5644cb4-47fa-4060-9a0f-1daad9fa0189
     parent: {fileID: 11410102}
     mode: 0
@@ -5776,7 +5776,7 @@ MonoBehaviour:
   attribute:
     name: End While Unusable
     path: '@Ready/End While Unusable'
-    id: -57612/9ae4e983-f8c4-4a0d-ac79-894fba5c2db6
+    id: 29676/9ae4e983-f8c4-4a0d-ac79-894fba5c2db6
     localID: 9ae4e983-f8c4-4a0d-ac79-894fba5c2db6
     parent: {fileID: 11475892}
     mode: 0
@@ -5834,12 +5834,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Forward Right/0
-  referenceID: -22392/aff1c26b-ac89-48bd-ba8f-63ae2e64bf3f
+  referenceID: -1596/aff1c26b-ac89-48bd-ba8f-63ae2e64bf3f
   referencePath: Key Forward/Intensity
   attribute:
     name: Forward Right
     path: Forward Right
-    id: -57656/09e7a80f-9134-4ae6-b73a-ebea599669a5
+    id: 29722/09e7a80f-9134-4ae6-b73a-ebea599669a5
     localID: 09e7a80f-9134-4ae6-b73a-ebea599669a5
     parent: {fileID: 11406550}
     mode: 2
@@ -5889,7 +5889,7 @@ MonoBehaviour:
   attribute:
     name: Usable
     path: Key Forward/Usable
-    id: -57694/3818e8ba-ef55-49f4-a7c8-3aae34b2fbe0
+    id: 29716/3818e8ba-ef55-49f4-a7c8-3aae34b2fbe0
     localID: 3818e8ba-ef55-49f4-a7c8-3aae34b2fbe0
     parent: {fileID: 11410102}
     mode: 0
@@ -5938,7 +5938,7 @@ MonoBehaviour:
   attribute:
     name: Ready
     path: '@Ready/Ready'
-    id: -57596/1d9e3dfc-c154-4c01-bff1-c886aa8b6db0
+    id: 29690/1d9e3dfc-c154-4c01-bff1-c886aa8b6db0
     localID: 1d9e3dfc-c154-4c01-bff1-c886aa8b6db0
     parent: {fileID: 11447124}
     mode: 0
@@ -5987,7 +5987,7 @@ MonoBehaviour:
   attribute:
     name: X
     path: Copy Direction/Target/X
-    id: -57688/93fbc934-cb84-40ce-b22b-d308cbe548c4
+    id: 29696/93fbc934-cb84-40ce-b22b-d308cbe548c4
     localID: 93fbc934-cb84-40ce-b22b-d308cbe548c4
     parent: {fileID: 11443132}
     mode: 0
@@ -6036,7 +6036,7 @@ MonoBehaviour:
   attribute:
     name: Requirable
     path: Copy Direction/Requirable
-    id: -57660/79c79c96-8930-43b8-859e-189b13682233
+    id: 29668/79c79c96-8930-43b8-859e-189b13682233
     localID: 79c79c96-8930-43b8-859e-189b13682233
     parent: {fileID: 11485996}
     mode: 0
@@ -6074,7 +6074,7 @@ MonoBehaviour:
     info:
       name: Speed
       path: Speed
-      id: -57684/dca5905a-c495-4ff2-9c6d-31ab61c97f06
+      id: 29706/dca5905a-c495-4ff2-9c6d-31ab61c97f06
       localID: dca5905a-c495-4ff2-9c6d-31ab61c97f06
       parent: {fileID: 11436814}
       mode: 0
@@ -6099,7 +6099,7 @@ MonoBehaviour:
     info:
       name: Multiplier
       path: Multiplier
-      id: -57680/a3066f67-a462-4a24-961a-4534b49543d1
+      id: 29704/a3066f67-a462-4a24-961a-4534b49543d1
       localID: a3066f67-a462-4a24-961a-4534b49543d1
       parent: {fileID: 11436982}
       mode: 0
@@ -6124,7 +6124,7 @@ MonoBehaviour:
     info:
       name: Backward Left
       path: Backward Left
-      id: -57650/8ed16860-087f-42cc-a75b-0ee295ae9f2e
+      id: 29702/8ed16860-087f-42cc-a75b-0ee295ae9f2e
       localID: 8ed16860-087f-42cc-a75b-0ee295ae9f2e
       parent: {fileID: 11437022}
       mode: 2
@@ -6161,7 +6161,7 @@ MonoBehaviour:
   attribute:
     name: Used
     path: '@Ready/Used'
-    id: -57604/3813e111-5fd6-4d41-a40b-75fefd61b7d7
+    id: 29708/3813e111-5fd6-4d41-a40b-75fefd61b7d7
     localID: 3813e111-5fd6-4d41-a40b-75fefd61b7d7
     parent: {fileID: 11431738}
     mode: 0
@@ -6210,7 +6210,7 @@ MonoBehaviour:
   attribute:
     name: Z
     path: Copy Direction/Target/Z
-    id: -57688/d4690b2f-647a-4e97-b642-90084c4eef77
+    id: 29696/d4690b2f-647a-4e97-b642-90084c4eef77
     localID: d4690b2f-647a-4e97-b642-90084c4eef77
     parent: {fileID: 11443132}
     mode: 0
@@ -6259,7 +6259,7 @@ MonoBehaviour:
   attribute:
     name: Requirable
     path: '@Ready/Requirable'
-    id: -57604/f0a3467b-3b87-4100-99b1-adc31dcb5876
+    id: 29708/f0a3467b-3b87-4100-99b1-adc31dcb5876
     localID: f0a3467b-3b87-4100-99b1-adc31dcb5876
     parent: {fileID: 11431738}
     mode: 0
@@ -6308,7 +6308,7 @@ MonoBehaviour:
   attribute:
     name: Usable
     path: Rotate Backward/Usable
-    id: -57642/5aae970d-4064-4ad8-805e-ffaab7939c7b
+    id: 29686/5aae970d-4064-4ad8-805e-ffaab7939c7b
     localID: 5aae970d-4064-4ad8-805e-ffaab7939c7b
     parent: {fileID: 11466546}
     mode: 0
@@ -6357,7 +6357,7 @@ MonoBehaviour:
   attribute:
     name: Held During Intensity
     path: Key Right/Held During Intensity
-    id: -57662/2a60f1c8-64b8-4362-957c-8feb20482d31
+    id: 29672/2a60f1c8-64b8-4362-957c-8feb20482d31
     localID: 2a60f1c8-64b8-4362-957c-8feb20482d31
     parent: {fileID: 11482060}
     mode: 0
@@ -6406,7 +6406,7 @@ MonoBehaviour:
   attribute:
     name: Intensity
     path: Key Right/Intensity
-    id: -57662/f5444bf6-5f8e-4171-90f2-6711c5bd3d96
+    id: 29672/f5444bf6-5f8e-4171-90f2-6711c5bd3d96
     localID: f5444bf6-5f8e-4171-90f2-6711c5bd3d96
     parent: {fileID: 11482060}
     mode: 0
@@ -6455,7 +6455,7 @@ MonoBehaviour:
   attribute:
     name: Z
     path: Copy Direction/Target/Z
-    id: -57692/141cbbb8-8536-4069-840c-bf2d5b897da5
+    id: 29700/141cbbb8-8536-4069-840c-bf2d5b897da5
     localID: 141cbbb8-8536-4069-840c-bf2d5b897da5
     parent: {fileID: 11438338}
     mode: 0
@@ -6495,7 +6495,7 @@ MonoBehaviour:
     info:
       name: Requirable
       path: Copy Direction/Requirable
-      id: -57692/09ecd4f8-8128-4160-a0a9-85348e45f898
+      id: 29700/09ecd4f8-8128-4160-a0a9-85348e45f898
       localID: 09ecd4f8-8128-4160-a0a9-85348e45f898
       parent: {fileID: 11438338}
       mode: 0
@@ -6507,7 +6507,7 @@ MonoBehaviour:
     info:
       name: Ready
       path: Copy Direction/Ready
-      id: -57692/ec1654b7-81c8-4f3a-bf3d-15058ffde172
+      id: 29700/ec1654b7-81c8-4f3a-bf3d-15058ffde172
       localID: ec1654b7-81c8-4f3a-bf3d-15058ffde172
       parent: {fileID: 11438338}
       mode: 0
@@ -6519,7 +6519,7 @@ MonoBehaviour:
     info:
       name: Usable
       path: Copy Direction/Usable
-      id: -57692/3c1622b8-b8f7-4e04-be42-bbd437da248d
+      id: 29700/3c1622b8-b8f7-4e04-be42-bbd437da248d
       localID: 3c1622b8-b8f7-4e04-be42-bbd437da248d
       parent: {fileID: 11438338}
       mode: 0
@@ -6531,7 +6531,7 @@ MonoBehaviour:
     info:
       name: Active
       path: Copy Direction/Active
-      id: -57692/4da12aff-e990-4a9c-bb2a-b0ea1add0609
+      id: 29700/4da12aff-e990-4a9c-bb2a-b0ea1add0609
       localID: 4da12aff-e990-4a9c-bb2a-b0ea1add0609
       parent: {fileID: 11438338}
       mode: 0
@@ -6543,7 +6543,7 @@ MonoBehaviour:
     info:
       name: Used
       path: Copy Direction/Used
-      id: -57692/04e99fa2-bfa3-4f47-8153-8ceac66de3a8
+      id: 29700/04e99fa2-bfa3-4f47-8153-8ceac66de3a8
       localID: 04e99fa2-bfa3-4f47-8153-8ceac66de3a8
       parent: {fileID: 11438338}
       mode: 0
@@ -6555,7 +6555,7 @@ MonoBehaviour:
     info:
       name: End While Unusable
       path: Copy Direction/End While Unusable
-      id: -57692/e77fee85-c652-4660-bc35-f73605909460
+      id: 29700/e77fee85-c652-4660-bc35-f73605909460
       localID: e77fee85-c652-4660-bc35-f73605909460
       parent: {fileID: 11438338}
       mode: 0
@@ -6568,7 +6568,7 @@ MonoBehaviour:
     info:
       name: Target
       path: Copy Direction/Target
-      id: -57692/15d15784-07e6-49d4-92be-d28b741bcf0f
+      id: 29700/15d15784-07e6-49d4-92be-d28b741bcf0f
       localID: 15d15784-07e6-49d4-92be-d28b741bcf0f
       parent: {fileID: 11438338}
       mode: 1
@@ -6580,7 +6580,7 @@ MonoBehaviour:
       info:
         name: X
         path: Copy Direction/Target/X
-        id: -57692/f82ae28a-ce16-4fbf-b412-5f39516349d1
+        id: 29700/f82ae28a-ce16-4fbf-b412-5f39516349d1
         localID: f82ae28a-ce16-4fbf-b412-5f39516349d1
         parent: {fileID: 11438338}
         mode: 0
@@ -6592,7 +6592,7 @@ MonoBehaviour:
       info:
         name: Y
         path: Copy Direction/Target/Y
-        id: -57692/6f2a57f2-cb4a-45c9-adb7-262608f147ba
+        id: 29700/6f2a57f2-cb4a-45c9-adb7-262608f147ba
         localID: 6f2a57f2-cb4a-45c9-adb7-262608f147ba
         parent: {fileID: 11438338}
         mode: 0
@@ -6604,7 +6604,7 @@ MonoBehaviour:
       info:
         name: Z
         path: Copy Direction/Target/Z
-        id: -57692/141cbbb8-8536-4069-840c-bf2d5b897da5
+        id: 29700/141cbbb8-8536-4069-840c-bf2d5b897da5
         localID: 141cbbb8-8536-4069-840c-bf2d5b897da5
         parent: {fileID: 11438338}
         mode: 0
@@ -6616,7 +6616,7 @@ MonoBehaviour:
     info:
       name: Value
       path: Copy Direction/Value
-      id: -57692/b986fdfa-a231-4861-979b-e1c00a339c66
+      id: 29700/b986fdfa-a231-4861-979b-e1c00a339c66
       localID: b986fdfa-a231-4861-979b-e1c00a339c66
       parent: {fileID: 11438338}
       mode: 2
@@ -6629,7 +6629,7 @@ MonoBehaviour:
       info:
         name: X
         path: Copy Direction/Value/X
-        id: -57692/4fa07877-4590-46d6-905f-caff6f7ba94e
+        id: 29700/4fa07877-4590-46d6-905f-caff6f7ba94e
         localID: 4fa07877-4590-46d6-905f-caff6f7ba94e
         parent: {fileID: 11438338}
         mode: 0
@@ -6641,7 +6641,7 @@ MonoBehaviour:
       info:
         name: Y
         path: Copy Direction/Value/Y
-        id: -57692/46cfadde-6f32-42c8-b010-843b1a7a7739
+        id: 29700/46cfadde-6f32-42c8-b010-843b1a7a7739
         localID: 46cfadde-6f32-42c8-b010-843b1a7a7739
         parent: {fileID: 11438338}
         mode: 0
@@ -6653,7 +6653,7 @@ MonoBehaviour:
       info:
         name: Z
         path: Copy Direction/Value/Z
-        id: -57692/9baaab68-d279-4aff-8820-62cd331fa36d
+        id: 29700/9baaab68-d279-4aff-8820-62cd331fa36d
         localID: 9baaab68-d279-4aff-8820-62cd331fa36d
         parent: {fileID: 11438338}
         mode: 0
@@ -6688,7 +6688,7 @@ MonoBehaviour:
   attribute:
     name: End While Unusable
     path: Key Forward/End While Unusable
-    id: -57694/a00743eb-e7e1-4eb2-8f34-5b65cd142329
+    id: 29716/a00743eb-e7e1-4eb2-8f34-5b65cd142329
     localID: a00743eb-e7e1-4eb2-8f34-5b65cd142329
     parent: {fileID: 11410102}
     mode: 0
@@ -6737,7 +6737,7 @@ MonoBehaviour:
   attribute:
     name: Delay Start
     path: Rotate/Rotate Direction/Transition/Delay Start
-    id: -57668/f0972323-56c0-4244-9683-494a77adee7e
+    id: 29688/f0972323-56c0-4244-9683-494a77adee7e
     localID: f0972323-56c0-4244-9683-494a77adee7e
     parent: {fileID: 11449860}
     mode: 0
@@ -6786,7 +6786,7 @@ MonoBehaviour:
   attribute:
     name: Ready
     path: Rotate/Ready
-    id: -57668/99ff0907-948b-4baf-8363-163554efb54d
+    id: 29688/99ff0907-948b-4baf-8363-163554efb54d
     localID: 99ff0907-948b-4baf-8363-163554efb54d
     parent: {fileID: 11449860}
     mode: 0
@@ -7006,7 +7006,7 @@ MonoBehaviour:
   attribute:
     name: Goal Direction
     path: Rotate/Goal Direction
-    id: -57668/6dab5b04-6765-4a3e-9491-1da594126c19
+    id: 29688/6dab5b04-6765-4a3e-9491-1da594126c19
     localID: 6dab5b04-6765-4a3e-9491-1da594126c19
     parent: {fileID: 11449860}
     mode: 0
@@ -7055,7 +7055,7 @@ MonoBehaviour:
   attribute:
     name: Used
     path: '@Ready/Used'
-    id: -57602/c290ed4e-fd4b-43af-aede-13cac7bca74b
+    id: 29674/c290ed4e-fd4b-43af-aede-13cac7bca74b
     localID: c290ed4e-fd4b-43af-aede-13cac7bca74b
     parent: {fileID: 11477880}
     mode: 0
@@ -7104,7 +7104,7 @@ MonoBehaviour:
   attribute:
     name: Requirable
     path: '@Ready/Requirable'
-    id: -57612/2d923aa3-208b-498b-90b3-ccbb6e98d70d
+    id: 29676/2d923aa3-208b-498b-90b3-ccbb6e98d70d
     localID: 2d923aa3-208b-498b-90b3-ccbb6e98d70d
     parent: {fileID: 11475892}
     mode: 0
@@ -7153,7 +7153,7 @@ MonoBehaviour:
   attribute:
     name: End While Unusable
     path: Key Right/End While Unusable
-    id: -57662/bb9370af-09b1-4888-90ef-44ca72fdccae
+    id: 29672/bb9370af-09b1-4888-90ef-44ca72fdccae
     localID: bb9370af-09b1-4888-90ef-44ca72fdccae
     parent: {fileID: 11482060}
     mode: 0
@@ -7373,7 +7373,7 @@ MonoBehaviour:
   attribute:
     name: Usable
     path: Key Left/Usable
-    id: -57690/848b35e6-fba4-45e8-b537-91b264b0ad6e
+    id: 29712/848b35e6-fba4-45e8-b537-91b264b0ad6e
     localID: 848b35e6-fba4-45e8-b537-91b264b0ad6e
     parent: {fileID: 11422548}
     mode: 0
@@ -7413,7 +7413,7 @@ MonoBehaviour:
     info:
       name: Requirable
       path: Movement Speed/Requirable
-      id: -57640/f9947803-f264-40fd-b7bd-3cbaf2157979
+      id: 29698/f9947803-f264-40fd-b7bd-3cbaf2157979
       localID: f9947803-f264-40fd-b7bd-3cbaf2157979
       parent: {fileID: 11441214}
       mode: 0
@@ -7425,7 +7425,7 @@ MonoBehaviour:
     info:
       name: Ready
       path: Movement Speed/Ready
-      id: -57640/75e270f1-0c4d-41df-9c90-926538dc2d41
+      id: 29698/75e270f1-0c4d-41df-9c90-926538dc2d41
       localID: 75e270f1-0c4d-41df-9c90-926538dc2d41
       parent: {fileID: 11441214}
       mode: 0
@@ -7437,7 +7437,7 @@ MonoBehaviour:
     info:
       name: Usable
       path: Movement Speed/Usable
-      id: -57640/197251eb-25e4-42da-a498-1e5e9f5714e6
+      id: 29698/197251eb-25e4-42da-a498-1e5e9f5714e6
       localID: 197251eb-25e4-42da-a498-1e5e9f5714e6
       parent: {fileID: 11441214}
       mode: 0
@@ -7449,7 +7449,7 @@ MonoBehaviour:
     info:
       name: Active
       path: Movement Speed/Active
-      id: -57640/af08a982-73aa-40f7-be26-fcf31603d98f
+      id: 29698/af08a982-73aa-40f7-be26-fcf31603d98f
       localID: af08a982-73aa-40f7-be26-fcf31603d98f
       parent: {fileID: 11441214}
       mode: 0
@@ -7461,7 +7461,7 @@ MonoBehaviour:
     info:
       name: Used
       path: Movement Speed/Used
-      id: -57640/e4dec1ba-d97c-42d8-8af8-71943947fc62
+      id: 29698/e4dec1ba-d97c-42d8-8af8-71943947fc62
       localID: e4dec1ba-d97c-42d8-8af8-71943947fc62
       parent: {fileID: 11441214}
       mode: 0
@@ -7473,7 +7473,7 @@ MonoBehaviour:
     info:
       name: End While Unusable
       path: Movement Speed/End While Unusable
-      id: -57640/01cc9715-ce88-4a77-8232-2e3c8392df62
+      id: 29698/01cc9715-ce88-4a77-8232-2e3c8392df62
       localID: 01cc9715-ce88-4a77-8232-2e3c8392df62
       parent: {fileID: 11441214}
       mode: 0
@@ -7525,12 +7525,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Copy Direction/Value/0
-  referenceID: 23292/0aff9476-fb05-4afa-8489-24b2073f2f2e
+  referenceID: -2690/0aff9476-fb05-4afa-8489-24b2073f2f2e
   referencePath: Transform/Direction/Forward
   attribute:
     name: Value
     path: Copy Direction/Value
-    id: -57692/b986fdfa-a231-4861-979b-e1c00a339c66
+    id: 29700/b986fdfa-a231-4861-979b-e1c00a339c66
     localID: b986fdfa-a231-4861-979b-e1c00a339c66
     parent: {fileID: 11438338}
     mode: 2
@@ -7580,7 +7580,7 @@ MonoBehaviour:
   attribute:
     name: Speed
     path: Rotate/Rotate Direction/Transition/Speed
-    id: -57668/a1282c53-9cf5-4bb0-9332-05adebaf39ed
+    id: 29688/a1282c53-9cf5-4bb0-9332-05adebaf39ed
     localID: a1282c53-9cf5-4bb0-9332-05adebaf39ed
     parent: {fileID: 11449860}
     mode: 0
@@ -7629,7 +7629,7 @@ MonoBehaviour:
   attribute:
     name: Used
     path: Key Left/Used
-    id: -57690/0fbc1cf9-185b-454a-92a5-9e0eb0452d43
+    id: 29712/0fbc1cf9-185b-454a-92a5-9e0eb0452d43
     localID: 0fbc1cf9-185b-454a-92a5-9e0eb0452d43
     parent: {fileID: 11422548}
     mode: 0
@@ -7669,7 +7669,7 @@ MonoBehaviour:
     info:
       name: Requirable
       path: Copy Direction/Requirable
-      id: -57688/3fb0a6d8-68da-49f3-8c94-62558a617edb
+      id: 29696/3fb0a6d8-68da-49f3-8c94-62558a617edb
       localID: 3fb0a6d8-68da-49f3-8c94-62558a617edb
       parent: {fileID: 11443132}
       mode: 0
@@ -7681,7 +7681,7 @@ MonoBehaviour:
     info:
       name: Ready
       path: Copy Direction/Ready
-      id: -57688/b8673b05-7e90-4845-8ba9-79563385d6d9
+      id: 29696/b8673b05-7e90-4845-8ba9-79563385d6d9
       localID: b8673b05-7e90-4845-8ba9-79563385d6d9
       parent: {fileID: 11443132}
       mode: 0
@@ -7693,7 +7693,7 @@ MonoBehaviour:
     info:
       name: Usable
       path: Copy Direction/Usable
-      id: -57688/4d5c977f-2200-429e-8461-6c1fcbc94d81
+      id: 29696/4d5c977f-2200-429e-8461-6c1fcbc94d81
       localID: 4d5c977f-2200-429e-8461-6c1fcbc94d81
       parent: {fileID: 11443132}
       mode: 0
@@ -7705,7 +7705,7 @@ MonoBehaviour:
     info:
       name: Active
       path: Copy Direction/Active
-      id: -57688/01dfda9b-881b-4dc9-9a56-dedce36f0c4b
+      id: 29696/01dfda9b-881b-4dc9-9a56-dedce36f0c4b
       localID: 01dfda9b-881b-4dc9-9a56-dedce36f0c4b
       parent: {fileID: 11443132}
       mode: 0
@@ -7717,7 +7717,7 @@ MonoBehaviour:
     info:
       name: Used
       path: Copy Direction/Used
-      id: -57688/e0a51936-5064-4d67-b30b-dac85450e912
+      id: 29696/e0a51936-5064-4d67-b30b-dac85450e912
       localID: e0a51936-5064-4d67-b30b-dac85450e912
       parent: {fileID: 11443132}
       mode: 0
@@ -7729,7 +7729,7 @@ MonoBehaviour:
     info:
       name: End While Unusable
       path: Copy Direction/End While Unusable
-      id: -57688/94a3fc25-c2ed-4ffe-a76e-796e90e087b2
+      id: 29696/94a3fc25-c2ed-4ffe-a76e-796e90e087b2
       localID: 94a3fc25-c2ed-4ffe-a76e-796e90e087b2
       parent: {fileID: 11443132}
       mode: 0
@@ -7742,7 +7742,7 @@ MonoBehaviour:
     info:
       name: Target
       path: Copy Direction/Target
-      id: -57688/2816a66a-8f64-42f7-95eb-3741142efa0e
+      id: 29696/2816a66a-8f64-42f7-95eb-3741142efa0e
       localID: 2816a66a-8f64-42f7-95eb-3741142efa0e
       parent: {fileID: 11443132}
       mode: 1
@@ -7754,7 +7754,7 @@ MonoBehaviour:
       info:
         name: X
         path: Copy Direction/Target/X
-        id: -57688/93fbc934-cb84-40ce-b22b-d308cbe548c4
+        id: 29696/93fbc934-cb84-40ce-b22b-d308cbe548c4
         localID: 93fbc934-cb84-40ce-b22b-d308cbe548c4
         parent: {fileID: 11443132}
         mode: 0
@@ -7766,7 +7766,7 @@ MonoBehaviour:
       info:
         name: Y
         path: Copy Direction/Target/Y
-        id: -57688/ad4b0f62-ec17-4ced-86fb-ea72c19ad710
+        id: 29696/ad4b0f62-ec17-4ced-86fb-ea72c19ad710
         localID: ad4b0f62-ec17-4ced-86fb-ea72c19ad710
         parent: {fileID: 11443132}
         mode: 0
@@ -7778,7 +7778,7 @@ MonoBehaviour:
       info:
         name: Z
         path: Copy Direction/Target/Z
-        id: -57688/d4690b2f-647a-4e97-b642-90084c4eef77
+        id: 29696/d4690b2f-647a-4e97-b642-90084c4eef77
         localID: d4690b2f-647a-4e97-b642-90084c4eef77
         parent: {fileID: 11443132}
         mode: 0
@@ -7790,7 +7790,7 @@ MonoBehaviour:
     info:
       name: Value
       path: Copy Direction/Value
-      id: -57688/e5e72dd6-d412-46b4-b3a9-401db9757cfe
+      id: 29696/e5e72dd6-d412-46b4-b3a9-401db9757cfe
       localID: e5e72dd6-d412-46b4-b3a9-401db9757cfe
       parent: {fileID: 11443132}
       mode: 2
@@ -7803,7 +7803,7 @@ MonoBehaviour:
       info:
         name: X
         path: Copy Direction/Value/X
-        id: -57688/6728dcc4-f41e-4f4d-adb5-3d3ae322b3f1
+        id: 29696/6728dcc4-f41e-4f4d-adb5-3d3ae322b3f1
         localID: 6728dcc4-f41e-4f4d-adb5-3d3ae322b3f1
         parent: {fileID: 11443132}
         mode: 0
@@ -7815,7 +7815,7 @@ MonoBehaviour:
       info:
         name: Y
         path: Copy Direction/Value/Y
-        id: -57688/a801d9e6-91dd-4800-b54d-1b101c110dd3
+        id: 29696/a801d9e6-91dd-4800-b54d-1b101c110dd3
         localID: a801d9e6-91dd-4800-b54d-1b101c110dd3
         parent: {fileID: 11443132}
         mode: 0
@@ -7827,7 +7827,7 @@ MonoBehaviour:
       info:
         name: Z
         path: Copy Direction/Value/Z
-        id: -57688/b71eadee-ac6b-4009-b165-f4b584ad39a6
+        id: 29696/b71eadee-ac6b-4009-b165-f4b584ad39a6
         localID: b71eadee-ac6b-4009-b165-f4b584ad39a6
         parent: {fileID: 11443132}
         mode: 0
@@ -7853,7 +7853,7 @@ MonoBehaviour:
     info:
       name: Requirable
       path: '@Ready/Requirable'
-      id: -57616/f27cfaad-f527-45ee-a728-cbd923a82e57
+      id: 29694/f27cfaad-f527-45ee-a728-cbd923a82e57
       localID: f27cfaad-f527-45ee-a728-cbd923a82e57
       parent: {fileID: 11443258}
       mode: 0
@@ -7865,7 +7865,7 @@ MonoBehaviour:
     info:
       name: Ready
       path: '@Ready/Ready'
-      id: -57616/84eb7e77-ed1d-4f18-bd09-0fcd92a18dc9
+      id: 29694/84eb7e77-ed1d-4f18-bd09-0fcd92a18dc9
       localID: 84eb7e77-ed1d-4f18-bd09-0fcd92a18dc9
       parent: {fileID: 11443258}
       mode: 0
@@ -7877,7 +7877,7 @@ MonoBehaviour:
     info:
       name: Usable
       path: '@Ready/Usable'
-      id: -57616/22fa30b0-2d5b-44d8-be15-8715cac3ad8c
+      id: 29694/22fa30b0-2d5b-44d8-be15-8715cac3ad8c
       localID: 22fa30b0-2d5b-44d8-be15-8715cac3ad8c
       parent: {fileID: 11443258}
       mode: 0
@@ -7889,7 +7889,7 @@ MonoBehaviour:
     info:
       name: Active
       path: '@Ready/Active'
-      id: -57616/e6e2d6c9-f269-4b90-a016-0163c4574ab1
+      id: 29694/e6e2d6c9-f269-4b90-a016-0163c4574ab1
       localID: e6e2d6c9-f269-4b90-a016-0163c4574ab1
       parent: {fileID: 11443258}
       mode: 0
@@ -7901,7 +7901,7 @@ MonoBehaviour:
     info:
       name: Used
       path: '@Ready/Used'
-      id: -57616/4fcdfa12-6c9f-4346-8494-f3565cec9145
+      id: 29694/4fcdfa12-6c9f-4346-8494-f3565cec9145
       localID: 4fcdfa12-6c9f-4346-8494-f3565cec9145
       parent: {fileID: 11443258}
       mode: 0
@@ -7913,7 +7913,7 @@ MonoBehaviour:
     info:
       name: End While Unusable
       path: '@Ready/End While Unusable'
-      id: -57616/94def4ac-8188-4d14-9bd2-9f0cc30b25b2
+      id: 29694/94def4ac-8188-4d14-9bd2-9f0cc30b25b2
       localID: 94def4ac-8188-4d14-9bd2-9f0cc30b25b2
       parent: {fileID: 11443258}
       mode: 0
@@ -7949,7 +7949,7 @@ MonoBehaviour:
   attribute:
     name: Active
     path: '@Ready/Active'
-    id: -57612/5c66c266-6473-41cc-9e37-26fd0f7638dd
+    id: 29676/5c66c266-6473-41cc-9e37-26fd0f7638dd
     localID: 5c66c266-6473-41cc-9e37-26fd0f7638dd
     parent: {fileID: 11475892}
     mode: 0
@@ -7998,7 +7998,7 @@ MonoBehaviour:
   attribute:
     name: Ready
     path: '@Ready/Ready'
-    id: -57602/8adbd6b0-c93f-40c3-9424-b960234a8a83
+    id: 29674/8adbd6b0-c93f-40c3-9424-b960234a8a83
     localID: 8adbd6b0-c93f-40c3-9424-b960234a8a83
     parent: {fileID: 11477880}
     mode: 0
@@ -8457,12 +8457,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Copy Direction/Value/1
-  referenceID: -22436/6dab5b04-6765-4a3e-9491-1da594126c19
+  referenceID: -1570/6dab5b04-6765-4a3e-9491-1da594126c19
   referencePath: Rotate/Goal Direction
   attribute:
     name: Value
     path: Copy Direction/Value
-    id: -57688/e5e72dd6-d412-46b4-b3a9-401db9757cfe
+    id: 29696/e5e72dd6-d412-46b4-b3a9-401db9757cfe
     localID: e5e72dd6-d412-46b4-b3a9-401db9757cfe
     parent: {fileID: 11443132}
     mode: 2
@@ -8501,7 +8501,7 @@ MonoBehaviour:
     info:
       name: Backward Right
       path: Backward Right
-      id: -57652/65e7050d-ae09-4de1-8a84-8530ba19905c
+      id: 29692/65e7050d-ae09-4de1-8a84-8530ba19905c
       localID: 65e7050d-ae09-4de1-8a84-8530ba19905c
       parent: {fileID: 11444064}
       mode: 2
@@ -8529,7 +8529,7 @@ MonoBehaviour:
     info:
       name: Requirable
       path: Rotate Left/Requirable
-      id: -57646/b13fb1bd-353d-413c-b619-c78a336847f6
+      id: 29566/b13fb1bd-353d-413c-b619-c78a336847f6
       localID: b13fb1bd-353d-413c-b619-c78a336847f6
       parent: {fileID: 11444652}
       mode: 0
@@ -8541,7 +8541,7 @@ MonoBehaviour:
     info:
       name: Ready
       path: Rotate Left/Ready
-      id: -57646/2ee88b66-01d7-45c0-9e59-02ab9c85f347
+      id: 29566/2ee88b66-01d7-45c0-9e59-02ab9c85f347
       localID: 2ee88b66-01d7-45c0-9e59-02ab9c85f347
       parent: {fileID: 11444652}
       mode: 0
@@ -8553,7 +8553,7 @@ MonoBehaviour:
     info:
       name: Usable
       path: Rotate Left/Usable
-      id: -57646/7d6e635d-317c-41ce-9479-7b1183e1535c
+      id: 29566/7d6e635d-317c-41ce-9479-7b1183e1535c
       localID: 7d6e635d-317c-41ce-9479-7b1183e1535c
       parent: {fileID: 11444652}
       mode: 0
@@ -8565,7 +8565,7 @@ MonoBehaviour:
     info:
       name: Active
       path: Rotate Left/Active
-      id: -57646/5fcb9206-edd7-4389-bc9e-ca1f16aa0d54
+      id: 29566/5fcb9206-edd7-4389-bc9e-ca1f16aa0d54
       localID: 5fcb9206-edd7-4389-bc9e-ca1f16aa0d54
       parent: {fileID: 11444652}
       mode: 0
@@ -8577,7 +8577,7 @@ MonoBehaviour:
     info:
       name: Used
       path: Rotate Left/Used
-      id: -57646/897afa01-f408-4910-b44c-39edc1cfbe70
+      id: 29566/897afa01-f408-4910-b44c-39edc1cfbe70
       localID: 897afa01-f408-4910-b44c-39edc1cfbe70
       parent: {fileID: 11444652}
       mode: 0
@@ -8589,7 +8589,7 @@ MonoBehaviour:
     info:
       name: End While Unusable
       path: Rotate Left/End While Unusable
-      id: -57646/bb540f71-51af-4d38-ba57-8182d5b97342
+      id: 29566/bb540f71-51af-4d38-ba57-8182d5b97342
       localID: bb540f71-51af-4d38-ba57-8182d5b97342
       parent: {fileID: 11444652}
       mode: 0
@@ -8624,7 +8624,7 @@ MonoBehaviour:
   attribute:
     name: Usable
     path: Rotate Right/Usable
-    id: -57648/48dd442a-99d1-4edc-a76f-33ecadce9aed
+    id: 29666/48dd442a-99d1-4edc-a76f-33ecadce9aed
     localID: 48dd442a-99d1-4edc-a76f-33ecadce9aed
     parent: {fileID: 11488424}
     mode: 0
@@ -8687,7 +8687,7 @@ MonoBehaviour:
   attribute:
     name: Intensity
     path: Intensity
-    id: -57658/b126fe56-f7e4-4235-a952-5e28ea525f32
+    id: 29664/b126fe56-f7e4-4235-a952-5e28ea525f32
     localID: b126fe56-f7e4-4235-a952-5e28ea525f32
     parent: {fileID: 11490872}
     mode: 2
@@ -8741,7 +8741,7 @@ MonoBehaviour:
   attribute:
     name: Requirable
     path: Move Amount/Requirable
-    id: -57664/9423cc7d-aefc-42fd-885e-647479309662
+    id: 29680/9423cc7d-aefc-42fd-885e-647479309662
     localID: 9423cc7d-aefc-42fd-885e-647479309662
     parent: {fileID: 11470918}
     mode: 0
@@ -8790,7 +8790,7 @@ MonoBehaviour:
   attribute:
     name: Used
     path: Copy Direction/Used
-    id: -57674/90bf6c90-149f-420e-914b-c482e8cfbf35
+    id: 29710/90bf6c90-149f-420e-914b-c482e8cfbf35
     localID: 90bf6c90-149f-420e-914b-c482e8cfbf35
     parent: {fileID: 11426356}
     mode: 0
@@ -8839,7 +8839,7 @@ MonoBehaviour:
   attribute:
     name: End While Unusable
     path: Movement/End While Unusable
-    id: -57638/c04dbf21-6065-409d-9997-41fdc10e9333
+    id: 29592/c04dbf21-6065-409d-9997-41fdc10e9333
     localID: c04dbf21-6065-409d-9997-41fdc10e9333
     parent: {fileID: 11483940}
     mode: 0
@@ -8888,7 +8888,7 @@ MonoBehaviour:
   attribute:
     name: Used
     path: Copy Direction/Used
-    id: -57660/469a4045-cfd6-44f6-b2d6-9bdefe0e4606
+    id: 29668/469a4045-cfd6-44f6-b2d6-9bdefe0e4606
     localID: 469a4045-cfd6-44f6-b2d6-9bdefe0e4606
     parent: {fileID: 11485996}
     mode: 0
@@ -8937,7 +8937,7 @@ MonoBehaviour:
   attribute:
     name: Requirable
     path: Rotate Right/Requirable
-    id: -57648/eab3c927-a92b-47f3-a9aa-17e736d160e8
+    id: 29666/eab3c927-a92b-47f3-a9aa-17e736d160e8
     localID: eab3c927-a92b-47f3-a9aa-17e736d160e8
     parent: {fileID: 11488424}
     mode: 0
@@ -8995,12 +8995,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Intensity/3
-  referenceID: -22478/65e7050d-ae09-4de1-8a84-8530ba19905c
+  referenceID: -1574/65e7050d-ae09-4de1-8a84-8530ba19905c
   referencePath: Backward Right
   attribute:
     name: Intensity
     path: Intensity
-    id: -57658/b126fe56-f7e4-4235-a952-5e28ea525f32
+    id: 29664/b126fe56-f7e4-4235-a952-5e28ea525f32
     localID: b126fe56-f7e4-4235-a952-5e28ea525f32
     parent: {fileID: 11490872}
     mode: 2
@@ -9045,7 +9045,7 @@ MonoBehaviour:
     info:
       name: Requirable
       path: '@Ready/Requirable'
-      id: -57596/fabbabe3-be84-4126-a544-8b3a901a7c6e
+      id: 29690/fabbabe3-be84-4126-a544-8b3a901a7c6e
       localID: fabbabe3-be84-4126-a544-8b3a901a7c6e
       parent: {fileID: 11447124}
       mode: 0
@@ -9057,7 +9057,7 @@ MonoBehaviour:
     info:
       name: Ready
       path: '@Ready/Ready'
-      id: -57596/1d9e3dfc-c154-4c01-bff1-c886aa8b6db0
+      id: 29690/1d9e3dfc-c154-4c01-bff1-c886aa8b6db0
       localID: 1d9e3dfc-c154-4c01-bff1-c886aa8b6db0
       parent: {fileID: 11447124}
       mode: 0
@@ -9069,7 +9069,7 @@ MonoBehaviour:
     info:
       name: Usable
       path: '@Ready/Usable'
-      id: -57596/b33e9593-0e4c-447b-82c6-968735e75777
+      id: 29690/b33e9593-0e4c-447b-82c6-968735e75777
       localID: b33e9593-0e4c-447b-82c6-968735e75777
       parent: {fileID: 11447124}
       mode: 0
@@ -9081,7 +9081,7 @@ MonoBehaviour:
     info:
       name: Active
       path: '@Ready/Active'
-      id: -57596/cc197a1f-a6ec-40de-add8-696a114b422c
+      id: 29690/cc197a1f-a6ec-40de-add8-696a114b422c
       localID: cc197a1f-a6ec-40de-add8-696a114b422c
       parent: {fileID: 11447124}
       mode: 0
@@ -9093,7 +9093,7 @@ MonoBehaviour:
     info:
       name: Used
       path: '@Ready/Used'
-      id: -57596/d803351f-b9b8-4ac5-92a2-8fe9e70d9445
+      id: 29690/d803351f-b9b8-4ac5-92a2-8fe9e70d9445
       localID: d803351f-b9b8-4ac5-92a2-8fe9e70d9445
       parent: {fileID: 11447124}
       mode: 0
@@ -9105,7 +9105,7 @@ MonoBehaviour:
     info:
       name: End While Unusable
       path: '@Ready/End While Unusable'
-      id: -57596/14d07182-45c0-4203-853e-878515396c1f
+      id: 29690/14d07182-45c0-4203-853e-878515396c1f
       localID: 14d07182-45c0-4203-853e-878515396c1f
       parent: {fileID: 11447124}
       mode: 0
@@ -9141,7 +9141,7 @@ MonoBehaviour:
   attribute:
     name: Used
     path: Rotate/Used
-    id: -57668/e2bf1154-fdfa-4e49-8dcf-38e286975b0e
+    id: 29688/e2bf1154-fdfa-4e49-8dcf-38e286975b0e
     localID: e2bf1154-fdfa-4e49-8dcf-38e286975b0e
     parent: {fileID: 11449860}
     mode: 0
@@ -9190,7 +9190,7 @@ MonoBehaviour:
   attribute:
     name: End While Unusable
     path: Move Amount/End While Unusable
-    id: -57664/214df371-147a-48bf-834b-5d9b5f795ecf
+    id: 29680/214df371-147a-48bf-834b-5d9b5f795ecf
     localID: 214df371-147a-48bf-834b-5d9b5f795ecf
     parent: {fileID: 11470918}
     mode: 0
@@ -9255,13 +9255,13 @@ MonoBehaviour:
     parent: {fileID: 11467074}
     mode: 0
   usage: 1
-  path: Run Speed/Value/1
-  referenceID: -22420/a3066f67-a462-4a24-961a-4534b49543d1
+  path: Move Speed/Value/1
+  referenceID: -1584/a3066f67-a462-4a24-961a-4534b49543d1
   referencePath: Multiplier
   attribute:
     name: Value
-    path: Run Speed/Value
-    id: -57672/f10cb9a5-1053-4de7-a33d-fbe218ba5f50
+    path: Move Speed/Value
+    id: 29684/f10cb9a5-1053-4de7-a33d-fbe218ba5f50
     localID: f10cb9a5-1053-4de7-a33d-fbe218ba5f50
     parent: {fileID: 11467074}
     mode: 2
@@ -9320,12 +9320,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Forward Left/0
-  referenceID: -22392/aff1c26b-ac89-48bd-ba8f-63ae2e64bf3f
+  referenceID: -1596/aff1c26b-ac89-48bd-ba8f-63ae2e64bf3f
   referencePath: Key Forward/Intensity
   attribute:
     name: Forward Left
     path: Forward Left
-    id: -57654/e34e6140-220d-40fe-bf68-47bdfd272815
+    id: 29718/e34e6140-220d-40fe-bf68-47bdfd272815
     localID: e34e6140-220d-40fe-bf68-47bdfd272815
     parent: {fileID: 11408114}
     mode: 2
@@ -9375,7 +9375,7 @@ MonoBehaviour:
   attribute:
     name: Used
     path: Key Forward/Used
-    id: -57694/670c5f1b-a5ab-4880-96dc-4181419b23ec
+    id: 29716/670c5f1b-a5ab-4880-96dc-4181419b23ec
     localID: 670c5f1b-a5ab-4880-96dc-4181419b23ec
     parent: {fileID: 11410102}
     mode: 0
@@ -9415,7 +9415,7 @@ MonoBehaviour:
     info:
       name: Requirable
       path: Rotate/Requirable
-      id: -57668/e6a30e2a-9732-4f0b-af52-8962f6e39a13
+      id: 29688/e6a30e2a-9732-4f0b-af52-8962f6e39a13
       localID: e6a30e2a-9732-4f0b-af52-8962f6e39a13
       parent: {fileID: 11449860}
       mode: 0
@@ -9427,7 +9427,7 @@ MonoBehaviour:
     info:
       name: Ready
       path: Rotate/Ready
-      id: -57668/99ff0907-948b-4baf-8363-163554efb54d
+      id: 29688/99ff0907-948b-4baf-8363-163554efb54d
       localID: 99ff0907-948b-4baf-8363-163554efb54d
       parent: {fileID: 11449860}
       mode: 0
@@ -9439,7 +9439,7 @@ MonoBehaviour:
     info:
       name: Usable
       path: Rotate/Usable
-      id: -57668/2acaf70e-03b4-4e1c-bf63-38e7c4022292
+      id: 29688/2acaf70e-03b4-4e1c-bf63-38e7c4022292
       localID: 2acaf70e-03b4-4e1c-bf63-38e7c4022292
       parent: {fileID: 11449860}
       mode: 0
@@ -9451,7 +9451,7 @@ MonoBehaviour:
     info:
       name: Active
       path: Rotate/Active
-      id: -57668/54063f69-0d01-4d2d-bdde-077e2fa1d296
+      id: 29688/54063f69-0d01-4d2d-bdde-077e2fa1d296
       localID: 54063f69-0d01-4d2d-bdde-077e2fa1d296
       parent: {fileID: 11449860}
       mode: 0
@@ -9463,7 +9463,7 @@ MonoBehaviour:
     info:
       name: Used
       path: Rotate/Used
-      id: -57668/e2bf1154-fdfa-4e49-8dcf-38e286975b0e
+      id: 29688/e2bf1154-fdfa-4e49-8dcf-38e286975b0e
       localID: e2bf1154-fdfa-4e49-8dcf-38e286975b0e
       parent: {fileID: 11449860}
       mode: 0
@@ -9475,7 +9475,7 @@ MonoBehaviour:
     info:
       name: End While Unusable
       path: Rotate/End While Unusable
-      id: -57668/06e9e39c-3252-4924-98d4-eeb1c14a0621
+      id: 29688/06e9e39c-3252-4924-98d4-eeb1c14a0621
       localID: 06e9e39c-3252-4924-98d4-eeb1c14a0621
       parent: {fileID: 11449860}
       mode: 0
@@ -9488,7 +9488,7 @@ MonoBehaviour:
     info:
       name: Source
       path: Rotate/Source
-      id: -57668/05d3075c-4c63-4efc-98c0-10bc81380bbf
+      id: 29688/05d3075c-4c63-4efc-98c0-10bc81380bbf
       localID: 05d3075c-4c63-4efc-98c0-10bc81380bbf
       parent: {fileID: 11449860}
       mode: 0
@@ -9500,7 +9500,7 @@ MonoBehaviour:
     info:
       name: Goal Direction
       path: Rotate/Goal Direction
-      id: -57668/6dab5b04-6765-4a3e-9491-1da594126c19
+      id: 29688/6dab5b04-6765-4a3e-9491-1da594126c19
       localID: 6dab5b04-6765-4a3e-9491-1da594126c19
       parent: {fileID: 11449860}
       mode: 0
@@ -9512,7 +9512,7 @@ MonoBehaviour:
       info:
         name: X
         path: Rotate/Goal Direction/X
-        id: -57668/fc7bf06e-2533-41be-bb50-d418a7a8da7a
+        id: 29688/fc7bf06e-2533-41be-bb50-d418a7a8da7a
         localID: fc7bf06e-2533-41be-bb50-d418a7a8da7a
         parent: {fileID: 11449860}
         mode: 0
@@ -9524,7 +9524,7 @@ MonoBehaviour:
       info:
         name: Y
         path: Rotate/Goal Direction/Y
-        id: -57668/1ca0ce05-929a-4471-90ca-7a478daa8e0b
+        id: 29688/1ca0ce05-929a-4471-90ca-7a478daa8e0b
         localID: 1ca0ce05-929a-4471-90ca-7a478daa8e0b
         parent: {fileID: 11449860}
         mode: 0
@@ -9536,7 +9536,7 @@ MonoBehaviour:
       info:
         name: Z
         path: Rotate/Goal Direction/Z
-        id: -57668/5061fbfa-ab25-4f29-9951-b853c0723e6d
+        id: 29688/5061fbfa-ab25-4f29-9951-b853c0723e6d
         localID: 5061fbfa-ab25-4f29-9951-b853c0723e6d
         parent: {fileID: 11449860}
         mode: 0
@@ -9551,7 +9551,7 @@ MonoBehaviour:
       info:
         name: Is Angle
         path: Rotate/Rotate Direction/Is Angle
-        id: -57668/f2f959b0-4b7a-4af1-9d8b-e5b68e69a09c
+        id: 29688/f2f959b0-4b7a-4af1-9d8b-e5b68e69a09c
         localID: f2f959b0-4b7a-4af1-9d8b-e5b68e69a09c
         parent: {fileID: 11449860}
         mode: 0
@@ -9563,7 +9563,7 @@ MonoBehaviour:
       info:
         name: Is Reset On Change
         path: Rotate/Rotate Direction/Is Reset On Change
-        id: -57668/da452aeb-61f2-4a4f-af3d-717723b8778f
+        id: 29688/da452aeb-61f2-4a4f-af3d-717723b8778f
         localID: da452aeb-61f2-4a4f-af3d-717723b8778f
         parent: {fileID: 11449860}
         mode: 0
@@ -9575,7 +9575,7 @@ MonoBehaviour:
       info:
         name: Speed
         path: Rotate/Rotate Direction/Transition/Speed
-        id: -57668/a1282c53-9cf5-4bb0-9332-05adebaf39ed
+        id: 29688/a1282c53-9cf5-4bb0-9332-05adebaf39ed
         localID: a1282c53-9cf5-4bb0-9332-05adebaf39ed
         parent: {fileID: 11449860}
         mode: 0
@@ -9588,7 +9588,7 @@ MonoBehaviour:
         info:
           name: Duration
           path: Rotate/Rotate Direction/Transition/Duration
-          id: -57668/75566a8a-92f6-485b-b6cc-63d2d1a02cc6
+          id: 29688/75566a8a-92f6-485b-b6cc-63d2d1a02cc6
           localID: 75566a8a-92f6-485b-b6cc-63d2d1a02cc6
           parent: {fileID: 11449860}
           mode: 0
@@ -9600,7 +9600,7 @@ MonoBehaviour:
         info:
           name: Delay Start
           path: Rotate/Rotate Direction/Transition/Delay Start
-          id: -57668/f0972323-56c0-4244-9683-494a77adee7e
+          id: 29688/f0972323-56c0-4244-9683-494a77adee7e
           localID: f0972323-56c0-4244-9683-494a77adee7e
           parent: {fileID: 11449860}
           mode: 0
@@ -9651,7 +9651,7 @@ MonoBehaviour:
   attribute:
     name: Y
     path: Copy Direction/Value/Y
-    id: -57692/46cfadde-6f32-42c8-b010-843b1a7a7739
+    id: 29700/46cfadde-6f32-42c8-b010-843b1a7a7739
     localID: 46cfadde-6f32-42c8-b010-843b1a7a7739
     parent: {fileID: 11438338}
     mode: 0
@@ -9700,7 +9700,7 @@ MonoBehaviour:
   attribute:
     name: Ready
     path: Rotate Left/Ready
-    id: -57646/2ee88b66-01d7-45c0-9e59-02ab9c85f347
+    id: 29566/2ee88b66-01d7-45c0-9e59-02ab9c85f347
     localID: 2ee88b66-01d7-45c0-9e59-02ab9c85f347
     parent: {fileID: 11444652}
     mode: 0
@@ -9766,12 +9766,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Copy Direction/Target/0
-  referenceID: -22436/6dab5b04-6765-4a3e-9491-1da594126c19
+  referenceID: -1570/6dab5b04-6765-4a3e-9491-1da594126c19
   referencePath: Rotate/Goal Direction
   attribute:
     name: Target
     path: Copy Direction/Target
-    id: -57660/f33fd1be-68f3-455d-992f-200c36b43b6a
+    id: 29668/f33fd1be-68f3-455d-992f-200c36b43b6a
     localID: f33fd1be-68f3-455d-992f-200c36b43b6a
     parent: {fileID: 11485996}
     mode: 1
@@ -9820,7 +9820,7 @@ MonoBehaviour:
   attribute:
     name: Active
     path: '@Ready/Active'
-    id: -57616/e6e2d6c9-f269-4b90-a016-0163c4574ab1
+    id: 29694/e6e2d6c9-f269-4b90-a016-0163c4574ab1
     localID: e6e2d6c9-f269-4b90-a016-0163c4574ab1
     parent: {fileID: 11443258}
     mode: 0
@@ -9869,7 +9869,7 @@ MonoBehaviour:
   attribute:
     name: X
     path: Copy Direction/Target/X
-    id: -57692/f82ae28a-ce16-4fbf-b412-5f39516349d1
+    id: 29700/f82ae28a-ce16-4fbf-b412-5f39516349d1
     localID: f82ae28a-ce16-4fbf-b412-5f39516349d1
     parent: {fileID: 11438338}
     mode: 0
@@ -9935,12 +9935,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Copy Direction/Target/0
-  referenceID: -22436/6dab5b04-6765-4a3e-9491-1da594126c19
+  referenceID: -1570/6dab5b04-6765-4a3e-9491-1da594126c19
   referencePath: Rotate/Goal Direction
   attribute:
     name: Target
     path: Copy Direction/Target
-    id: -57692/15d15784-07e6-49d4-92be-d28b741bcf0f
+    id: 29700/15d15784-07e6-49d4-92be-d28b741bcf0f
     localID: 15d15784-07e6-49d4-92be-d28b741bcf0f
     parent: {fileID: 11438338}
     mode: 1
@@ -9989,7 +9989,7 @@ MonoBehaviour:
   attribute:
     name: Ready
     path: Copy Direction/Ready
-    id: -57688/b8673b05-7e90-4845-8ba9-79563385d6d9
+    id: 29696/b8673b05-7e90-4845-8ba9-79563385d6d9
     localID: b8673b05-7e90-4845-8ba9-79563385d6d9
     parent: {fileID: 11443132}
     mode: 0
@@ -10038,7 +10038,7 @@ MonoBehaviour:
   attribute:
     name: Multiplier
     path: Multiplier
-    id: -57680/a3066f67-a462-4a24-961a-4534b49543d1
+    id: 29704/a3066f67-a462-4a24-961a-4534b49543d1
     localID: a3066f67-a462-4a24-961a-4534b49543d1
     parent: {fileID: 11436982}
     mode: 0
@@ -10087,7 +10087,7 @@ MonoBehaviour:
   attribute:
     name: Active
     path: Movement Speed/Active
-    id: -57640/af08a982-73aa-40f7-be26-fcf31603d98f
+    id: 29698/af08a982-73aa-40f7-be26-fcf31603d98f
     localID: af08a982-73aa-40f7-be26-fcf31603d98f
     parent: {fileID: 11441214}
     mode: 0
@@ -10136,7 +10136,7 @@ MonoBehaviour:
   attribute:
     name: Active
     path: Move Direction/Active
-    id: -57666/c797e451-ef82-4784-992a-ce3ada890243
+    id: 29682/c797e451-ef82-4784-992a-ce3ada890243
     localID: c797e451-ef82-4784-992a-ce3ada890243
     parent: {fileID: 11469102}
     mode: 0
@@ -10185,7 +10185,7 @@ MonoBehaviour:
   attribute:
     name: Used
     path: '@Ready/Used'
-    id: -57616/4fcdfa12-6c9f-4346-8494-f3565cec9145
+    id: 29694/4fcdfa12-6c9f-4346-8494-f3565cec9145
     localID: 4fcdfa12-6c9f-4346-8494-f3565cec9145
     parent: {fileID: 11443258}
     mode: 0
@@ -10243,12 +10243,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Intensity/2
-  referenceID: -22480/8ed16860-087f-42cc-a75b-0ee295ae9f2e
+  referenceID: -1582/8ed16860-087f-42cc-a75b-0ee295ae9f2e
   referencePath: Backward Left
   attribute:
     name: Intensity
     path: Intensity
-    id: -57658/b126fe56-f7e4-4235-a952-5e28ea525f32
+    id: 29664/b126fe56-f7e4-4235-a952-5e28ea525f32
     localID: b126fe56-f7e4-4235-a952-5e28ea525f32
     parent: {fileID: 11490872}
     mode: 2
@@ -10302,7 +10302,7 @@ MonoBehaviour:
   attribute:
     name: Ready
     path: Copy Direction/Ready
-    id: -57674/eec778dd-10c1-449b-bb97-f31f7bcbd1c8
+    id: 29710/eec778dd-10c1-449b-bb97-f31f7bcbd1c8
     localID: eec778dd-10c1-449b-bb97-f31f7bcbd1c8
     parent: {fileID: 11426356}
     mode: 0
@@ -10351,7 +10351,7 @@ MonoBehaviour:
   attribute:
     name: End While Unusable
     path: Rotate Forward/End While Unusable
-    id: -57644/0ace6114-159c-459e-bfb0-873869250708
+    id: 29658/0ace6114-159c-459e-bfb0-873869250708
     localID: 0ace6114-159c-459e-bfb0-873869250708
     parent: {fileID: 11495614}
     mode: 0
@@ -10400,7 +10400,7 @@ MonoBehaviour:
   attribute:
     name: Ignore Ownership
     path: Key Right/Ignore Ownership
-    id: -57662/2f3f7ddd-c8a1-449a-9241-951a921277f5
+    id: 29672/2f3f7ddd-c8a1-449a-9241-951a921277f5
     localID: 2f3f7ddd-c8a1-449a-9241-951a921277f5
     parent: {fileID: 11482060}
     mode: 0
@@ -10449,7 +10449,7 @@ MonoBehaviour:
   attribute:
     name: Used
     path: Rotate Right/Used
-    id: -57648/cd74cad0-7194-4bd6-8ee8-b2e3f718da65
+    id: 29666/cd74cad0-7194-4bd6-8ee8-b2e3f718da65
     localID: cd74cad0-7194-4bd6-8ee8-b2e3f718da65
     parent: {fileID: 11488424}
     mode: 0
@@ -10498,7 +10498,7 @@ MonoBehaviour:
   attribute:
     name: Active
     path: Key Left/Active
-    id: -57690/9604e74d-48c0-4f49-9d1c-00bea2e56f7a
+    id: 29712/9604e74d-48c0-4f49-9d1c-00bea2e56f7a
     localID: 9604e74d-48c0-4f49-9d1c-00bea2e56f7a
     parent: {fileID: 11422548}
     mode: 0
@@ -10547,7 +10547,7 @@ MonoBehaviour:
   attribute:
     name: Usable
     path: Copy Direction/Usable
-    id: -57688/4d5c977f-2200-429e-8461-6c1fcbc94d81
+    id: 29696/4d5c977f-2200-429e-8461-6c1fcbc94d81
     localID: 4d5c977f-2200-429e-8461-6c1fcbc94d81
     parent: {fileID: 11443132}
     mode: 0
@@ -10596,7 +10596,7 @@ MonoBehaviour:
   attribute:
     name: Active
     path: '@Ready/Active'
-    id: -57604/07113467-18a2-4bd6-8555-2122d33f482e
+    id: 29708/07113467-18a2-4bd6-8555-2122d33f482e
     localID: 07113467-18a2-4bd6-8555-2122d33f482e
     parent: {fileID: 11431738}
     mode: 0
@@ -10645,7 +10645,7 @@ MonoBehaviour:
   attribute:
     name: Requirable
     path: Key Right/Requirable
-    id: -57662/b9e7a94a-2ea9-438f-bb53-b5bd6863893a
+    id: 29672/b9e7a94a-2ea9-438f-bb53-b5bd6863893a
     localID: b9e7a94a-2ea9-438f-bb53-b5bd6863893a
     parent: {fileID: 11482060}
     mode: 0
@@ -10688,13 +10688,13 @@ MonoBehaviour:
     parent: {fileID: 0}
     mode: 0
   usage: 0
-  path: Run Speed/Usable/0
+  path: Move Speed/Usable/0
   referenceID: 
   referencePath: 
   attribute:
     name: Usable
-    path: Run Speed/Usable
-    id: -57672/eed0963d-bab3-4470-ad37-a421a271ea3d
+    path: Move Speed/Usable
+    id: 29684/eed0963d-bab3-4470-ad37-a421a271ea3d
     localID: eed0963d-bab3-4470-ad37-a421a271ea3d
     parent: {fileID: 11467074}
     mode: 0
@@ -10743,7 +10743,7 @@ MonoBehaviour:
   attribute:
     name: Ready
     path: '@Ready/Ready'
-    id: -57616/84eb7e77-ed1d-4f18-bd09-0fcd92a18dc9
+    id: 29694/84eb7e77-ed1d-4f18-bd09-0fcd92a18dc9
     localID: 84eb7e77-ed1d-4f18-bd09-0fcd92a18dc9
     parent: {fileID: 11443258}
     mode: 0
@@ -10792,7 +10792,7 @@ MonoBehaviour:
   attribute:
     name: Input Name
     path: Key Forward/Input Name
-    id: -57694/0bdce41e-4de1-4b44-ba10-3d95d415bbfb
+    id: 29716/0bdce41e-4de1-4b44-ba10-3d95d415bbfb
     localID: 0bdce41e-4de1-4b44-ba10-3d95d415bbfb
     parent: {fileID: 11410102}
     mode: 0
@@ -10861,12 +10861,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Move Amount/Target/0
-  referenceID: -22438/803b3f04-ebf6-4105-a804-2d70b349d86a
+  referenceID: -1566/803b3f04-ebf6-4105-a804-2d70b349d86a
   referencePath: Move Direction/Amount/Z
   attribute:
     name: Target
     path: Move Amount/Target
-    id: -57664/525e12fd-7537-4bb3-8f08-b33e9d11bcd3
+    id: 29680/525e12fd-7537-4bb3-8f08-b33e9d11bcd3
     localID: 525e12fd-7537-4bb3-8f08-b33e9d11bcd3
     parent: {fileID: 11470918}
     mode: 1
@@ -10931,13 +10931,13 @@ MonoBehaviour:
     parent: {fileID: 11467074}
     mode: 0
   usage: 1
-  path: Run Speed/Target/0
-  referenceID: -22416/dca5905a-c495-4ff2-9c6d-31ab61c97f06
+  path: Move Speed/Target/0
+  referenceID: -1586/dca5905a-c495-4ff2-9c6d-31ab61c97f06
   referencePath: Speed
   attribute:
     name: Target
-    path: Run Speed/Target
-    id: -57672/dcfc88b8-ac72-47fe-acb1-4660acbd802b
+    path: Move Speed/Target
+    id: 29684/dcfc88b8-ac72-47fe-acb1-4660acbd802b
     localID: dcfc88b8-ac72-47fe-acb1-4660acbd802b
     parent: {fileID: 11467074}
     mode: 1
@@ -10986,7 +10986,7 @@ MonoBehaviour:
   attribute:
     name: Usable
     path: Copy Direction/Usable
-    id: -57692/3c1622b8-b8f7-4e04-be42-bbd437da248d
+    id: 29700/3c1622b8-b8f7-4e04-be42-bbd437da248d
     localID: 3c1622b8-b8f7-4e04-be42-bbd437da248d
     parent: {fileID: 11438338}
     mode: 0
@@ -11035,7 +11035,7 @@ MonoBehaviour:
   attribute:
     name: Ready
     path: Move Amount/Ready
-    id: -57664/02db05ef-2d96-4a7d-a60e-2feef0688319
+    id: 29680/02db05ef-2d96-4a7d-a60e-2feef0688319
     localID: 02db05ef-2d96-4a7d-a60e-2feef0688319
     parent: {fileID: 11470918}
     mode: 0
@@ -11084,7 +11084,7 @@ MonoBehaviour:
   attribute:
     name: Held During Intensity
     path: Key Backward/Held During Intensity
-    id: -57676/be3dc2b4-3ca8-46ba-9cc7-8eae071d61ef
+    id: 29670/be3dc2b4-3ca8-46ba-9cc7-8eae071d61ef
     localID: be3dc2b4-3ca8-46ba-9cc7-8eae071d61ef
     parent: {fileID: 11484042}
     mode: 0
@@ -11133,7 +11133,7 @@ MonoBehaviour:
   attribute:
     name: Y
     path: Copy Direction/Value/Y
-    id: -57674/ac53f2bb-8efa-4f29-86ad-c026108607cb
+    id: 29710/ac53f2bb-8efa-4f29-86ad-c026108607cb
     localID: ac53f2bb-8efa-4f29-86ad-c026108607cb
     parent: {fileID: 11426356}
     mode: 0
@@ -11182,7 +11182,7 @@ MonoBehaviour:
   attribute:
     name: Used
     path: Rotate Backward/Used
-    id: -57642/3b46f95b-3cc0-4e06-9239-5f8ecbdf3993
+    id: 29686/3b46f95b-3cc0-4e06-9239-5f8ecbdf3993
     localID: 3b46f95b-3cc0-4e06-9239-5f8ecbdf3993
     parent: {fileID: 11466546}
     mode: 0
@@ -11231,7 +11231,7 @@ MonoBehaviour:
   attribute:
     name: Requirable
     path: Key Left/Requirable
-    id: -57690/bea1dcbf-8442-4248-b6c5-06dde81e9213
+    id: 29712/bea1dcbf-8442-4248-b6c5-06dde81e9213
     localID: bea1dcbf-8442-4248-b6c5-06dde81e9213
     parent: {fileID: 11422548}
     mode: 0
@@ -11294,7 +11294,7 @@ MonoBehaviour:
   attribute:
     name: Source
     path: Source
-    id: -57682/883b86d2-9b19-43df-a467-3abfc6328d60
+    id: 29720/883b86d2-9b19-43df-a467-3abfc6328d60
     localID: 883b86d2-9b19-43df-a467-3abfc6328d60
     parent: {fileID: 11407156}
     mode: 0
@@ -11352,12 +11352,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Backward Left/0
-  referenceID: -22428/5ebcf647-c1a0-42dc-b328-4abc420996b9
+  referenceID: -1554/5ebcf647-c1a0-42dc-b328-4abc420996b9
   referencePath: Key Backward/Intensity
   attribute:
     name: Backward Left
     path: Backward Left
-    id: -57650/8ed16860-087f-42cc-a75b-0ee295ae9f2e
+    id: 29702/8ed16860-087f-42cc-a75b-0ee295ae9f2e
     localID: 8ed16860-087f-42cc-a75b-0ee295ae9f2e
     parent: {fileID: 11437022}
     mode: 2
@@ -11407,7 +11407,7 @@ MonoBehaviour:
   attribute:
     name: Ready
     path: Move Direction/Ready
-    id: -57666/18241bde-dcfa-41df-a446-b637f0256b2a
+    id: 29682/18241bde-dcfa-41df-a446-b637f0256b2a
     localID: 18241bde-dcfa-41df-a446-b637f0256b2a
     parent: {fileID: 11469102}
     mode: 0
@@ -11456,7 +11456,7 @@ MonoBehaviour:
   attribute:
     name: Ready
     path: Rotate Backward/Ready
-    id: -57642/6b6fb1d0-612d-4b8f-9cae-07d339b239cc
+    id: 29686/6b6fb1d0-612d-4b8f-9cae-07d339b239cc
     localID: 6b6fb1d0-612d-4b8f-9cae-07d339b239cc
     parent: {fileID: 11466546}
     mode: 0
@@ -11505,7 +11505,7 @@ MonoBehaviour:
   attribute:
     name: Used
     path: Copy Direction/Used
-    id: -57692/04e99fa2-bfa3-4f47-8153-8ceac66de3a8
+    id: 29700/04e99fa2-bfa3-4f47-8153-8ceac66de3a8
     localID: 04e99fa2-bfa3-4f47-8153-8ceac66de3a8
     parent: {fileID: 11438338}
     mode: 0
@@ -11554,7 +11554,7 @@ MonoBehaviour:
   attribute:
     name: End While Unusable
     path: Movement Speed/End While Unusable
-    id: -57640/01cc9715-ce88-4a77-8232-2e3c8392df62
+    id: 29698/01cc9715-ce88-4a77-8232-2e3c8392df62
     localID: 01cc9715-ce88-4a77-8232-2e3c8392df62
     parent: {fileID: 11441214}
     mode: 0
@@ -11603,7 +11603,7 @@ MonoBehaviour:
   attribute:
     name: X
     path: Copy Direction/Value/X
-    id: -57692/4fa07877-4590-46d6-905f-caff6f7ba94e
+    id: 29700/4fa07877-4590-46d6-905f-caff6f7ba94e
     localID: 4fa07877-4590-46d6-905f-caff6f7ba94e
     parent: {fileID: 11438338}
     mode: 0
@@ -11643,7 +11643,7 @@ MonoBehaviour:
     info:
       name: Requirable
       path: Rotate Backward/Requirable
-      id: -57642/f6316849-2d2b-4a17-b060-cb9182c204d1
+      id: 29686/f6316849-2d2b-4a17-b060-cb9182c204d1
       localID: f6316849-2d2b-4a17-b060-cb9182c204d1
       parent: {fileID: 11466546}
       mode: 0
@@ -11655,7 +11655,7 @@ MonoBehaviour:
     info:
       name: Ready
       path: Rotate Backward/Ready
-      id: -57642/6b6fb1d0-612d-4b8f-9cae-07d339b239cc
+      id: 29686/6b6fb1d0-612d-4b8f-9cae-07d339b239cc
       localID: 6b6fb1d0-612d-4b8f-9cae-07d339b239cc
       parent: {fileID: 11466546}
       mode: 0
@@ -11667,7 +11667,7 @@ MonoBehaviour:
     info:
       name: Usable
       path: Rotate Backward/Usable
-      id: -57642/5aae970d-4064-4ad8-805e-ffaab7939c7b
+      id: 29686/5aae970d-4064-4ad8-805e-ffaab7939c7b
       localID: 5aae970d-4064-4ad8-805e-ffaab7939c7b
       parent: {fileID: 11466546}
       mode: 0
@@ -11679,7 +11679,7 @@ MonoBehaviour:
     info:
       name: Active
       path: Rotate Backward/Active
-      id: -57642/317ab944-48e0-4b81-8957-2cfed6de3d78
+      id: 29686/317ab944-48e0-4b81-8957-2cfed6de3d78
       localID: 317ab944-48e0-4b81-8957-2cfed6de3d78
       parent: {fileID: 11466546}
       mode: 0
@@ -11691,7 +11691,7 @@ MonoBehaviour:
     info:
       name: Used
       path: Rotate Backward/Used
-      id: -57642/3b46f95b-3cc0-4e06-9239-5f8ecbdf3993
+      id: 29686/3b46f95b-3cc0-4e06-9239-5f8ecbdf3993
       localID: 3b46f95b-3cc0-4e06-9239-5f8ecbdf3993
       parent: {fileID: 11466546}
       mode: 0
@@ -11703,7 +11703,7 @@ MonoBehaviour:
     info:
       name: End While Unusable
       path: Rotate Backward/End While Unusable
-      id: -57642/deaf9758-7f62-4d0c-9e12-b54f8b7d54d5
+      id: 29686/deaf9758-7f62-4d0c-9e12-b54f8b7d54d5
       localID: deaf9758-7f62-4d0c-9e12-b54f8b7d54d5
       parent: {fileID: 11466546}
       mode: 0
@@ -11738,7 +11738,7 @@ MonoBehaviour:
   attribute:
     name: End While Unusable
     path: '@Ready/End While Unusable'
-    id: -57596/14d07182-45c0-4203-853e-878515396c1f
+    id: 29690/14d07182-45c0-4203-853e-878515396c1f
     localID: 14d07182-45c0-4203-853e-878515396c1f
     parent: {fileID: 11447124}
     mode: 0
@@ -11771,14 +11771,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2423479bf36dd4245b48e7e6a05012a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alias: Run Speed
+  alias: Move Speed
   rate: 2
   id: -148660
   requirable:
     info:
       name: Requirable
-      path: Run Speed/Requirable
-      id: -57672/69a8c77b-6f37-49e2-94b3-e9d975027f8d
+      path: Move Speed/Requirable
+      id: 29684/69a8c77b-6f37-49e2-94b3-e9d975027f8d
       localID: 69a8c77b-6f37-49e2-94b3-e9d975027f8d
       parent: {fileID: 11467074}
       mode: 0
@@ -11789,8 +11789,8 @@ MonoBehaviour:
   ready:
     info:
       name: Ready
-      path: Run Speed/Ready
-      id: -57672/32ef82db-7f84-4504-8d83-7921791b4c79
+      path: Move Speed/Ready
+      id: 29684/32ef82db-7f84-4504-8d83-7921791b4c79
       localID: 32ef82db-7f84-4504-8d83-7921791b4c79
       parent: {fileID: 11467074}
       mode: 0
@@ -11801,8 +11801,8 @@ MonoBehaviour:
   usable:
     info:
       name: Usable
-      path: Run Speed/Usable
-      id: -57672/eed0963d-bab3-4470-ad37-a421a271ea3d
+      path: Move Speed/Usable
+      id: 29684/eed0963d-bab3-4470-ad37-a421a271ea3d
       localID: eed0963d-bab3-4470-ad37-a421a271ea3d
       parent: {fileID: 11467074}
       mode: 0
@@ -11813,8 +11813,8 @@ MonoBehaviour:
   inUse:
     info:
       name: Active
-      path: Run Speed/Active
-      id: -57672/817fe3d3-1aa5-49d1-ac27-559db0df616f
+      path: Move Speed/Active
+      id: 29684/817fe3d3-1aa5-49d1-ac27-559db0df616f
       localID: 817fe3d3-1aa5-49d1-ac27-559db0df616f
       parent: {fileID: 11467074}
       mode: 0
@@ -11825,8 +11825,8 @@ MonoBehaviour:
   used:
     info:
       name: Used
-      path: Run Speed/Used
-      id: -57672/a052faf0-1028-4a8d-9d9f-af6444549e28
+      path: Move Speed/Used
+      id: 29684/a052faf0-1028-4a8d-9d9f-af6444549e28
       localID: a052faf0-1028-4a8d-9d9f-af6444549e28
       parent: {fileID: 11467074}
       mode: 0
@@ -11837,8 +11837,8 @@ MonoBehaviour:
   endWhileUnusable:
     info:
       name: End While Unusable
-      path: Run Speed/End While Unusable
-      id: -57672/cb3ddf4a-2ff4-42b2-94f5-df399c93a1d4
+      path: Move Speed/End While Unusable
+      id: 29684/cb3ddf4a-2ff4-42b2-94f5-df399c93a1d4
       localID: cb3ddf4a-2ff4-42b2-94f5-df399c93a1d4
       parent: {fileID: 11467074}
       mode: 0
@@ -11850,8 +11850,8 @@ MonoBehaviour:
   target:
     info:
       name: Target
-      path: Run Speed/Target
-      id: -57672/dcfc88b8-ac72-47fe-acb1-4660acbd802b
+      path: Move Speed/Target
+      id: 29684/dcfc88b8-ac72-47fe-acb1-4660acbd802b
       localID: dcfc88b8-ac72-47fe-acb1-4660acbd802b
       parent: {fileID: 11467074}
       mode: 1
@@ -11862,8 +11862,8 @@ MonoBehaviour:
   value:
     info:
       name: Value
-      path: Run Speed/Value
-      id: -57672/f10cb9a5-1053-4de7-a33d-fbe218ba5f50
+      path: Move Speed/Value
+      id: 29684/f10cb9a5-1053-4de7-a33d-fbe218ba5f50
       localID: f10cb9a5-1053-4de7-a33d-fbe218ba5f50
       parent: {fileID: 11467074}
       mode: 2
@@ -11916,12 +11916,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Rotate/Source/0
-  referenceID: -22418/883b86d2-9b19-43df-a467-3abfc6328d60
+  referenceID: -1600/883b86d2-9b19-43df-a467-3abfc6328d60
   referencePath: Source
   attribute:
     name: Source
     path: Rotate/Source
-    id: -57668/05d3075c-4c63-4efc-98c0-10bc81380bbf
+    id: 29688/05d3075c-4c63-4efc-98c0-10bc81380bbf
     localID: 05d3075c-4c63-4efc-98c0-10bc81380bbf
     parent: {fileID: 11449860}
     mode: 0
@@ -11970,7 +11970,7 @@ MonoBehaviour:
   attribute:
     name: Used
     path: Movement/Used
-    id: -57638/dc707136-3f5c-4373-aa82-ea3617204ef9
+    id: 29592/dc707136-3f5c-4373-aa82-ea3617204ef9
     localID: dc707136-3f5c-4373-aa82-ea3617204ef9
     parent: {fileID: 11483940}
     mode: 0
@@ -12010,7 +12010,7 @@ MonoBehaviour:
     info:
       name: Requirable
       path: Move Direction/Requirable
-      id: -57666/c894b02a-7023-42cb-a566-9723f175ce3b
+      id: 29682/c894b02a-7023-42cb-a566-9723f175ce3b
       localID: c894b02a-7023-42cb-a566-9723f175ce3b
       parent: {fileID: 11469102}
       mode: 0
@@ -12022,7 +12022,7 @@ MonoBehaviour:
     info:
       name: Ready
       path: Move Direction/Ready
-      id: -57666/18241bde-dcfa-41df-a446-b637f0256b2a
+      id: 29682/18241bde-dcfa-41df-a446-b637f0256b2a
       localID: 18241bde-dcfa-41df-a446-b637f0256b2a
       parent: {fileID: 11469102}
       mode: 0
@@ -12034,7 +12034,7 @@ MonoBehaviour:
     info:
       name: Usable
       path: Move Direction/Usable
-      id: -57666/ef82f52b-6b12-4b19-a7ee-384d521ffecb
+      id: 29682/ef82f52b-6b12-4b19-a7ee-384d521ffecb
       localID: ef82f52b-6b12-4b19-a7ee-384d521ffecb
       parent: {fileID: 11469102}
       mode: 0
@@ -12046,7 +12046,7 @@ MonoBehaviour:
     info:
       name: Active
       path: Move Direction/Active
-      id: -57666/c797e451-ef82-4784-992a-ce3ada890243
+      id: 29682/c797e451-ef82-4784-992a-ce3ada890243
       localID: c797e451-ef82-4784-992a-ce3ada890243
       parent: {fileID: 11469102}
       mode: 0
@@ -12058,7 +12058,7 @@ MonoBehaviour:
     info:
       name: Used
       path: Move Direction/Used
-      id: -57666/0d336483-9c76-492d-a8da-b63651ff0322
+      id: 29682/0d336483-9c76-492d-a8da-b63651ff0322
       localID: 0d336483-9c76-492d-a8da-b63651ff0322
       parent: {fileID: 11469102}
       mode: 0
@@ -12070,7 +12070,7 @@ MonoBehaviour:
     info:
       name: End While Unusable
       path: Move Direction/End While Unusable
-      id: -57666/640d3827-f997-4a28-8744-938a4d4b0e25
+      id: 29682/640d3827-f997-4a28-8744-938a4d4b0e25
       localID: 640d3827-f997-4a28-8744-938a4d4b0e25
       parent: {fileID: 11469102}
       mode: 0
@@ -12084,7 +12084,7 @@ MonoBehaviour:
     info:
       name: Amount
       path: Move Direction/Amount
-      id: -57666/cf9b4f76-9f6c-403f-b64d-90709a722c4e
+      id: 29682/cf9b4f76-9f6c-403f-b64d-90709a722c4e
       localID: cf9b4f76-9f6c-403f-b64d-90709a722c4e
       parent: {fileID: 11469102}
       mode: 0
@@ -12096,7 +12096,7 @@ MonoBehaviour:
       info:
         name: X
         path: Move Direction/Amount/X
-        id: -57666/a1307d9e-b507-4629-a1e9-56e79da4cb43
+        id: 29682/a1307d9e-b507-4629-a1e9-56e79da4cb43
         localID: a1307d9e-b507-4629-a1e9-56e79da4cb43
         parent: {fileID: 11469102}
         mode: 0
@@ -12108,7 +12108,7 @@ MonoBehaviour:
       info:
         name: Y
         path: Move Direction/Amount/Y
-        id: -57666/371ac101-28a6-4df6-bb5f-838ee7d62300
+        id: 29682/371ac101-28a6-4df6-bb5f-838ee7d62300
         localID: 371ac101-28a6-4df6-bb5f-838ee7d62300
         parent: {fileID: 11469102}
         mode: 0
@@ -12120,7 +12120,7 @@ MonoBehaviour:
       info:
         name: Z
         path: Move Direction/Amount/Z
-        id: -57666/803b3f04-ebf6-4105-a804-2d70b349d86a
+        id: 29682/803b3f04-ebf6-4105-a804-2d70b349d86a
         localID: 803b3f04-ebf6-4105-a804-2d70b349d86a
         parent: {fileID: 11469102}
         mode: 0
@@ -12132,7 +12132,7 @@ MonoBehaviour:
     info:
       name: Target
       path: Move Direction/Target
-      id: -57666/785a97d1-b04a-4b29-a6bc-bca01255761f
+      id: 29682/785a97d1-b04a-4b29-a6bc-bca01255761f
       localID: 785a97d1-b04a-4b29-a6bc-bca01255761f
       parent: {fileID: 11469102}
       mode: 0
@@ -12167,7 +12167,7 @@ MonoBehaviour:
   attribute:
     name: Requirable
     path: Key Backward/Requirable
-    id: -57676/cff12268-a593-4e2e-b0a3-88aca3ad6e93
+    id: 29670/cff12268-a593-4e2e-b0a3-88aca3ad6e93
     localID: cff12268-a593-4e2e-b0a3-88aca3ad6e93
     parent: {fileID: 11484042}
     mode: 0
@@ -12216,7 +12216,7 @@ MonoBehaviour:
   attribute:
     name: Active
     path: Key Forward/Active
-    id: -57694/e3de4679-b84d-4be6-b3c7-c34f0d35e960
+    id: 29716/e3de4679-b84d-4be6-b3c7-c34f0d35e960
     localID: e3de4679-b84d-4be6-b3c7-c34f0d35e960
     parent: {fileID: 11410102}
     mode: 0
@@ -12287,7 +12287,7 @@ MonoBehaviour:
   attribute:
     name: Weight
     path: Run Animation/Weight
-    id: -57670/00171e77-becc-4cd1-b1cd-e91a27e9b4dd
+    id: 29662/00171e77-becc-4cd1-b1cd-e91a27e9b4dd
     localID: 00171e77-becc-4cd1-b1cd-e91a27e9b4dd
     parent: {fileID: 11492738}
     mode: 0
@@ -12336,7 +12336,7 @@ MonoBehaviour:
   attribute:
     name: End While Unusable
     path: Key Backward/End While Unusable
-    id: -57676/20030140-fc4a-4cd0-b975-0f0ce006b1b1
+    id: 29670/20030140-fc4a-4cd0-b975-0f0ce006b1b1
     localID: 20030140-fc4a-4cd0-b975-0f0ce006b1b1
     parent: {fileID: 11484042}
     mode: 0
@@ -12385,7 +12385,7 @@ MonoBehaviour:
   attribute:
     name: Requirable
     path: Rotate Backward/Requirable
-    id: -57642/f6316849-2d2b-4a17-b060-cb9182c204d1
+    id: 29686/f6316849-2d2b-4a17-b060-cb9182c204d1
     localID: f6316849-2d2b-4a17-b060-cb9182c204d1
     parent: {fileID: 11466546}
     mode: 0
@@ -12434,7 +12434,7 @@ MonoBehaviour:
   attribute:
     name: Active
     path: Movement/Active
-    id: -57638/4164c464-bcb4-4a8d-a939-cbab8000a6a4
+    id: 29592/4164c464-bcb4-4a8d-a939-cbab8000a6a4
     localID: 4164c464-bcb4-4a8d-a939-cbab8000a6a4
     parent: {fileID: 11483940}
     mode: 0
@@ -12474,7 +12474,7 @@ MonoBehaviour:
     info:
       name: Requirable
       path: Move Amount/Requirable
-      id: -57664/9423cc7d-aefc-42fd-885e-647479309662
+      id: 29680/9423cc7d-aefc-42fd-885e-647479309662
       localID: 9423cc7d-aefc-42fd-885e-647479309662
       parent: {fileID: 11470918}
       mode: 0
@@ -12486,7 +12486,7 @@ MonoBehaviour:
     info:
       name: Ready
       path: Move Amount/Ready
-      id: -57664/02db05ef-2d96-4a7d-a60e-2feef0688319
+      id: 29680/02db05ef-2d96-4a7d-a60e-2feef0688319
       localID: 02db05ef-2d96-4a7d-a60e-2feef0688319
       parent: {fileID: 11470918}
       mode: 0
@@ -12498,7 +12498,7 @@ MonoBehaviour:
     info:
       name: Usable
       path: Move Amount/Usable
-      id: -57664/5767a3d6-0bce-4e46-abcb-f3eb7b5ad272
+      id: 29680/5767a3d6-0bce-4e46-abcb-f3eb7b5ad272
       localID: 5767a3d6-0bce-4e46-abcb-f3eb7b5ad272
       parent: {fileID: 11470918}
       mode: 0
@@ -12510,7 +12510,7 @@ MonoBehaviour:
     info:
       name: Active
       path: Move Amount/Active
-      id: -57664/760b6708-2580-4d6a-9f0a-cc77e47747bf
+      id: 29680/760b6708-2580-4d6a-9f0a-cc77e47747bf
       localID: 760b6708-2580-4d6a-9f0a-cc77e47747bf
       parent: {fileID: 11470918}
       mode: 0
@@ -12522,7 +12522,7 @@ MonoBehaviour:
     info:
       name: Used
       path: Move Amount/Used
-      id: -57664/185e1ccd-b5aa-4953-b826-c24c16a4234a
+      id: 29680/185e1ccd-b5aa-4953-b826-c24c16a4234a
       localID: 185e1ccd-b5aa-4953-b826-c24c16a4234a
       parent: {fileID: 11470918}
       mode: 0
@@ -12534,7 +12534,7 @@ MonoBehaviour:
     info:
       name: End While Unusable
       path: Move Amount/End While Unusable
-      id: -57664/214df371-147a-48bf-834b-5d9b5f795ecf
+      id: 29680/214df371-147a-48bf-834b-5d9b5f795ecf
       localID: 214df371-147a-48bf-834b-5d9b5f795ecf
       parent: {fileID: 11470918}
       mode: 0
@@ -12547,7 +12547,7 @@ MonoBehaviour:
     info:
       name: Target
       path: Move Amount/Target
-      id: -57664/525e12fd-7537-4bb3-8f08-b33e9d11bcd3
+      id: 29680/525e12fd-7537-4bb3-8f08-b33e9d11bcd3
       localID: 525e12fd-7537-4bb3-8f08-b33e9d11bcd3
       parent: {fileID: 11470918}
       mode: 1
@@ -12559,7 +12559,7 @@ MonoBehaviour:
     info:
       name: Value
       path: Move Amount/Value
-      id: -57664/dffee994-e8bb-44da-81bc-2dc469d6bab8
+      id: 29680/dffee994-e8bb-44da-81bc-2dc469d6bab8
       localID: dffee994-e8bb-44da-81bc-2dc469d6bab8
       parent: {fileID: 11470918}
       mode: 0
@@ -12603,12 +12603,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Intensity/1
-  referenceID: -22474/09e7a80f-9134-4ae6-b73a-ebea599669a5
+  referenceID: -1602/09e7a80f-9134-4ae6-b73a-ebea599669a5
   referencePath: Forward Right
   attribute:
     name: Intensity
     path: Intensity
-    id: -57658/b126fe56-f7e4-4235-a952-5e28ea525f32
+    id: 29664/b126fe56-f7e4-4235-a952-5e28ea525f32
     localID: b126fe56-f7e4-4235-a952-5e28ea525f32
     parent: {fileID: 11490872}
     mode: 2
@@ -12662,7 +12662,7 @@ MonoBehaviour:
   attribute:
     name: End While Unusable
     path: Rotate Backward/End While Unusable
-    id: -57642/deaf9758-7f62-4d0c-9e12-b54f8b7d54d5
+    id: 29686/deaf9758-7f62-4d0c-9e12-b54f8b7d54d5
     localID: deaf9758-7f62-4d0c-9e12-b54f8b7d54d5
     parent: {fileID: 11466546}
     mode: 0
@@ -12711,7 +12711,7 @@ MonoBehaviour:
   attribute:
     name: Is Reset On Change
     path: Rotate/Rotate Direction/Is Reset On Change
-    id: -57668/da452aeb-61f2-4a4f-af3d-717723b8778f
+    id: 29688/da452aeb-61f2-4a4f-af3d-717723b8778f
     localID: da452aeb-61f2-4a4f-af3d-717723b8778f
     parent: {fileID: 11449860}
     mode: 0
@@ -12751,7 +12751,7 @@ MonoBehaviour:
     info:
       name: Requirable
       path: '@Ready/Requirable'
-      id: -57608/86fa72b7-1172-44c1-b79e-8128bb0db3ea
+      id: 29678/86fa72b7-1172-44c1-b79e-8128bb0db3ea
       localID: 86fa72b7-1172-44c1-b79e-8128bb0db3ea
       parent: {fileID: 11473166}
       mode: 0
@@ -12763,7 +12763,7 @@ MonoBehaviour:
     info:
       name: Ready
       path: '@Ready/Ready'
-      id: -57608/f06a1230-3509-4258-a380-b72c9f75f7dd
+      id: 29678/f06a1230-3509-4258-a380-b72c9f75f7dd
       localID: f06a1230-3509-4258-a380-b72c9f75f7dd
       parent: {fileID: 11473166}
       mode: 0
@@ -12775,7 +12775,7 @@ MonoBehaviour:
     info:
       name: Usable
       path: '@Ready/Usable'
-      id: -57608/8202279e-0c57-4405-bd5e-291d60e9eab1
+      id: 29678/8202279e-0c57-4405-bd5e-291d60e9eab1
       localID: 8202279e-0c57-4405-bd5e-291d60e9eab1
       parent: {fileID: 11473166}
       mode: 0
@@ -12787,7 +12787,7 @@ MonoBehaviour:
     info:
       name: Active
       path: '@Ready/Active'
-      id: -57608/69826f7b-fe0b-414c-a626-5b625af70500
+      id: 29678/69826f7b-fe0b-414c-a626-5b625af70500
       localID: 69826f7b-fe0b-414c-a626-5b625af70500
       parent: {fileID: 11473166}
       mode: 0
@@ -12799,7 +12799,7 @@ MonoBehaviour:
     info:
       name: Used
       path: '@Ready/Used'
-      id: -57608/a4cb3179-93b5-494e-9df3-2b4c99ff8ee2
+      id: 29678/a4cb3179-93b5-494e-9df3-2b4c99ff8ee2
       localID: a4cb3179-93b5-494e-9df3-2b4c99ff8ee2
       parent: {fileID: 11473166}
       mode: 0
@@ -12811,7 +12811,7 @@ MonoBehaviour:
     info:
       name: End While Unusable
       path: '@Ready/End While Unusable'
-      id: -57608/37ae8bdd-7c8c-473a-87eb-07086fbd304c
+      id: 29678/37ae8bdd-7c8c-473a-87eb-07086fbd304c
       localID: 37ae8bdd-7c8c-473a-87eb-07086fbd304c
       parent: {fileID: 11473166}
       mode: 0
@@ -12856,12 +12856,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Forward Left/1
-  referenceID: -22400/c59c8a90-7875-45b1-903c-7c55fa22f236
+  referenceID: -1592/c59c8a90-7875-45b1-903c-7c55fa22f236
   referencePath: Key Left/Intensity
   attribute:
     name: Forward Left
     path: Forward Left
-    id: -57654/e34e6140-220d-40fe-bf68-47bdfd272815
+    id: 29718/e34e6140-220d-40fe-bf68-47bdfd272815
     localID: e34e6140-220d-40fe-bf68-47bdfd272815
     parent: {fileID: 11408114}
     mode: 2
@@ -12911,7 +12911,7 @@ MonoBehaviour:
   attribute:
     name: End While Unusable
     path: Rotate Left/End While Unusable
-    id: -57646/bb540f71-51af-4d38-ba57-8182d5b97342
+    id: 29566/bb540f71-51af-4d38-ba57-8182d5b97342
     localID: bb540f71-51af-4d38-ba57-8182d5b97342
     parent: {fileID: 11444652}
     mode: 0
@@ -12960,7 +12960,7 @@ MonoBehaviour:
   attribute:
     name: Ready
     path: Movement Speed/Ready
-    id: -57640/75e270f1-0c4d-41df-9c90-926538dc2d41
+    id: 29698/75e270f1-0c4d-41df-9c90-926538dc2d41
     localID: 75e270f1-0c4d-41df-9c90-926538dc2d41
     parent: {fileID: 11441214}
     mode: 0
@@ -13009,7 +13009,7 @@ MonoBehaviour:
   attribute:
     name: Used
     path: Key Right/Used
-    id: -57662/4ffd1339-59dd-4cfb-98a9-ab9118125064
+    id: 29672/4ffd1339-59dd-4cfb-98a9-ab9118125064
     localID: 4ffd1339-59dd-4cfb-98a9-ab9118125064
     parent: {fileID: 11482060}
     mode: 0
@@ -13058,7 +13058,7 @@ MonoBehaviour:
   attribute:
     name: Speed
     path: Speed
-    id: -57684/dca5905a-c495-4ff2-9c6d-31ab61c97f06
+    id: 29706/dca5905a-c495-4ff2-9c6d-31ab61c97f06
     localID: dca5905a-c495-4ff2-9c6d-31ab61c97f06
     parent: {fileID: 11436814}
     mode: 0
@@ -13107,7 +13107,7 @@ MonoBehaviour:
   attribute:
     name: Usable
     path: '@Ready/Usable'
-    id: -57602/1764a7b2-db6d-4d0c-91e0-8e1fb5840383
+    id: 29674/1764a7b2-db6d-4d0c-91e0-8e1fb5840383
     localID: 1764a7b2-db6d-4d0c-91e0-8e1fb5840383
     parent: {fileID: 11477880}
     mode: 0
@@ -13156,7 +13156,7 @@ MonoBehaviour:
   attribute:
     name: Z
     path: Copy Direction/Target/Z
-    id: -57660/13ad1c20-7442-4ea0-b48f-73a53420adad
+    id: 29668/13ad1c20-7442-4ea0-b48f-73a53420adad
     localID: 13ad1c20-7442-4ea0-b48f-73a53420adad
     parent: {fileID: 11485996}
     mode: 0
@@ -13205,7 +13205,7 @@ MonoBehaviour:
   attribute:
     name: Usable
     path: Key Right/Usable
-    id: -57662/b28f740e-bcc5-41ac-87aa-f929c30bd5fe
+    id: 29672/b28f740e-bcc5-41ac-87aa-f929c30bd5fe
     localID: b28f740e-bcc5-41ac-87aa-f929c30bd5fe
     parent: {fileID: 11482060}
     mode: 0
@@ -13254,7 +13254,7 @@ MonoBehaviour:
   attribute:
     name: Usable
     path: '@Ready/Usable'
-    id: -57608/8202279e-0c57-4405-bd5e-291d60e9eab1
+    id: 29678/8202279e-0c57-4405-bd5e-291d60e9eab1
     localID: 8202279e-0c57-4405-bd5e-291d60e9eab1
     parent: {fileID: 11473166}
     mode: 0
@@ -13294,7 +13294,7 @@ MonoBehaviour:
     info:
       name: Requirable
       path: '@Ready/Requirable'
-      id: -57612/2d923aa3-208b-498b-90b3-ccbb6e98d70d
+      id: 29676/2d923aa3-208b-498b-90b3-ccbb6e98d70d
       localID: 2d923aa3-208b-498b-90b3-ccbb6e98d70d
       parent: {fileID: 11475892}
       mode: 0
@@ -13306,7 +13306,7 @@ MonoBehaviour:
     info:
       name: Ready
       path: '@Ready/Ready'
-      id: -57612/b89e524b-2d29-4dd6-996a-93061748ef2e
+      id: 29676/b89e524b-2d29-4dd6-996a-93061748ef2e
       localID: b89e524b-2d29-4dd6-996a-93061748ef2e
       parent: {fileID: 11475892}
       mode: 0
@@ -13318,7 +13318,7 @@ MonoBehaviour:
     info:
       name: Usable
       path: '@Ready/Usable'
-      id: -57612/a2854c80-cfa7-458c-8c2e-17f4fceb9085
+      id: 29676/a2854c80-cfa7-458c-8c2e-17f4fceb9085
       localID: a2854c80-cfa7-458c-8c2e-17f4fceb9085
       parent: {fileID: 11475892}
       mode: 0
@@ -13330,7 +13330,7 @@ MonoBehaviour:
     info:
       name: Active
       path: '@Ready/Active'
-      id: -57612/5c66c266-6473-41cc-9e37-26fd0f7638dd
+      id: 29676/5c66c266-6473-41cc-9e37-26fd0f7638dd
       localID: 5c66c266-6473-41cc-9e37-26fd0f7638dd
       parent: {fileID: 11475892}
       mode: 0
@@ -13342,7 +13342,7 @@ MonoBehaviour:
     info:
       name: Used
       path: '@Ready/Used'
-      id: -57612/f1e762c6-63ce-44f5-89d6-d36cadb0ecb0
+      id: 29676/f1e762c6-63ce-44f5-89d6-d36cadb0ecb0
       localID: f1e762c6-63ce-44f5-89d6-d36cadb0ecb0
       parent: {fileID: 11475892}
       mode: 0
@@ -13354,7 +13354,7 @@ MonoBehaviour:
     info:
       name: End While Unusable
       path: '@Ready/End While Unusable'
-      id: -57612/9ae4e983-f8c4-4a0d-ac79-894fba5c2db6
+      id: 29676/9ae4e983-f8c4-4a0d-ac79-894fba5c2db6
       localID: 9ae4e983-f8c4-4a0d-ac79-894fba5c2db6
       parent: {fileID: 11475892}
       mode: 0
@@ -13390,7 +13390,7 @@ MonoBehaviour:
   attribute:
     name: End While Unusable
     path: '@Ready/End While Unusable'
-    id: -57602/27621b11-c21b-4aca-ae62-864100a23725
+    id: 29674/27621b11-c21b-4aca-ae62-864100a23725
     localID: 27621b11-c21b-4aca-ae62-864100a23725
     parent: {fileID: 11477880}
     mode: 0
@@ -13439,7 +13439,7 @@ MonoBehaviour:
   attribute:
     name: End While Unusable
     path: Key Left/End While Unusable
-    id: -57690/e812fa3b-178e-47de-92b9-38f63f604001
+    id: 29712/e812fa3b-178e-47de-92b9-38f63f604001
     localID: e812fa3b-178e-47de-92b9-38f63f604001
     parent: {fileID: 11422548}
     mode: 0
@@ -13488,7 +13488,7 @@ MonoBehaviour:
   attribute:
     name: Duration
     path: Rotate/Rotate Direction/Transition/Duration
-    id: -57668/75566a8a-92f6-485b-b6cc-63d2d1a02cc6
+    id: 29688/75566a8a-92f6-485b-b6cc-63d2d1a02cc6
     localID: 75566a8a-92f6-485b-b6cc-63d2d1a02cc6
     parent: {fileID: 11449860}
     mode: 0
@@ -13537,7 +13537,7 @@ MonoBehaviour:
   attribute:
     name: End While Unusable
     path: Copy Direction/End While Unusable
-    id: -57688/94a3fc25-c2ed-4ffe-a76e-796e90e087b2
+    id: 29696/94a3fc25-c2ed-4ffe-a76e-796e90e087b2
     localID: 94a3fc25-c2ed-4ffe-a76e-796e90e087b2
     parent: {fileID: 11443132}
     mode: 0
@@ -13586,7 +13586,7 @@ MonoBehaviour:
   attribute:
     name: Requirable
     path: Rotate Forward/Requirable
-    id: -57644/55b84c66-b151-427b-adef-8bee4df7728f
+    id: 29658/55b84c66-b151-427b-adef-8bee4df7728f
     localID: 55b84c66-b151-427b-adef-8bee4df7728f
     parent: {fileID: 11495614}
     mode: 0
@@ -13626,7 +13626,7 @@ MonoBehaviour:
     info:
       name: Requirable
       path: '@Ready/Requirable'
-      id: -57602/797aaa26-4a91-4225-9439-a7e3c7d94b13
+      id: 29674/797aaa26-4a91-4225-9439-a7e3c7d94b13
       localID: 797aaa26-4a91-4225-9439-a7e3c7d94b13
       parent: {fileID: 11477880}
       mode: 0
@@ -13638,7 +13638,7 @@ MonoBehaviour:
     info:
       name: Ready
       path: '@Ready/Ready'
-      id: -57602/8adbd6b0-c93f-40c3-9424-b960234a8a83
+      id: 29674/8adbd6b0-c93f-40c3-9424-b960234a8a83
       localID: 8adbd6b0-c93f-40c3-9424-b960234a8a83
       parent: {fileID: 11477880}
       mode: 0
@@ -13650,7 +13650,7 @@ MonoBehaviour:
     info:
       name: Usable
       path: '@Ready/Usable'
-      id: -57602/1764a7b2-db6d-4d0c-91e0-8e1fb5840383
+      id: 29674/1764a7b2-db6d-4d0c-91e0-8e1fb5840383
       localID: 1764a7b2-db6d-4d0c-91e0-8e1fb5840383
       parent: {fileID: 11477880}
       mode: 0
@@ -13662,7 +13662,7 @@ MonoBehaviour:
     info:
       name: Active
       path: '@Ready/Active'
-      id: -57602/e508d929-e585-4d33-84ab-eb512111a013
+      id: 29674/e508d929-e585-4d33-84ab-eb512111a013
       localID: e508d929-e585-4d33-84ab-eb512111a013
       parent: {fileID: 11477880}
       mode: 0
@@ -13674,7 +13674,7 @@ MonoBehaviour:
     info:
       name: Used
       path: '@Ready/Used'
-      id: -57602/c290ed4e-fd4b-43af-aede-13cac7bca74b
+      id: 29674/c290ed4e-fd4b-43af-aede-13cac7bca74b
       localID: c290ed4e-fd4b-43af-aede-13cac7bca74b
       parent: {fileID: 11477880}
       mode: 0
@@ -13686,7 +13686,7 @@ MonoBehaviour:
     info:
       name: End While Unusable
       path: '@Ready/End While Unusable'
-      id: -57602/27621b11-c21b-4aca-ae62-864100a23725
+      id: 29674/27621b11-c21b-4aca-ae62-864100a23725
       localID: 27621b11-c21b-4aca-ae62-864100a23725
       parent: {fileID: 11477880}
       mode: 0
@@ -13722,7 +13722,7 @@ MonoBehaviour:
   attribute:
     name: Requirable
     path: Run Animation/Requirable
-    id: -57670/34618104-49c0-415e-863f-05d96963c603
+    id: 29662/34618104-49c0-415e-863f-05d96963c603
     localID: 34618104-49c0-415e-863f-05d96963c603
     parent: {fileID: 11492738}
     mode: 0
@@ -13771,7 +13771,7 @@ MonoBehaviour:
   attribute:
     name: Used
     path: Rotate Left/Used
-    id: -57646/897afa01-f408-4910-b44c-39edc1cfbe70
+    id: 29566/897afa01-f408-4910-b44c-39edc1cfbe70
     localID: 897afa01-f408-4910-b44c-39edc1cfbe70
     parent: {fileID: 11444652}
     mode: 0
@@ -13820,7 +13820,7 @@ MonoBehaviour:
   attribute:
     name: Requirable
     path: '@Ready/Requirable'
-    id: -57596/fabbabe3-be84-4126-a544-8b3a901a7c6e
+    id: 29690/fabbabe3-be84-4126-a544-8b3a901a7c6e
     localID: fabbabe3-be84-4126-a544-8b3a901a7c6e
     parent: {fileID: 11447124}
     mode: 0
@@ -13869,7 +13869,7 @@ MonoBehaviour:
   attribute:
     name: Active
     path: Rotate Right/Active
-    id: -57648/0f3ef57c-fb43-4ffb-a721-ecb031227559
+    id: 29666/0f3ef57c-fb43-4ffb-a721-ecb031227559
     localID: 0f3ef57c-fb43-4ffb-a721-ecb031227559
     parent: {fileID: 11488424}
     mode: 0
@@ -13918,7 +13918,7 @@ MonoBehaviour:
   attribute:
     name: Y
     path: Copy Direction/Target/Y
-    id: -57674/60425123-2bdc-4326-bbb2-fc84f2a1ab26
+    id: 29710/60425123-2bdc-4326-bbb2-fc84f2a1ab26
     localID: 60425123-2bdc-4326-bbb2-fc84f2a1ab26
     parent: {fileID: 11426356}
     mode: 0
@@ -13967,7 +13967,7 @@ MonoBehaviour:
   attribute:
     name: End While Unusable
     path: Move Direction/End While Unusable
-    id: -57666/640d3827-f997-4a28-8744-938a4d4b0e25
+    id: 29682/640d3827-f997-4a28-8744-938a4d4b0e25
     localID: 640d3827-f997-4a28-8744-938a4d4b0e25
     parent: {fileID: 11469102}
     mode: 0
@@ -14016,7 +14016,7 @@ MonoBehaviour:
   attribute:
     name: End While Unusable
     path: '@Ready/End While Unusable'
-    id: -57604/a570de34-1693-4f4b-a678-c30c89542dd5
+    id: 29708/a570de34-1693-4f4b-a678-c30c89542dd5
     localID: a570de34-1693-4f4b-a678-c30c89542dd5
     parent: {fileID: 11431738}
     mode: 0
@@ -14065,7 +14065,7 @@ MonoBehaviour:
   attribute:
     name: Used
     path: Move Direction/Used
-    id: -57666/0d336483-9c76-492d-a8da-b63651ff0322
+    id: 29682/0d336483-9c76-492d-a8da-b63651ff0322
     localID: 0d336483-9c76-492d-a8da-b63651ff0322
     parent: {fileID: 11469102}
     mode: 0
@@ -14114,7 +14114,7 @@ MonoBehaviour:
   attribute:
     name: Intensity
     path: Key Forward/Intensity
-    id: -57694/aff1c26b-ac89-48bd-ba8f-63ae2e64bf3f
+    id: 29716/aff1c26b-ac89-48bd-ba8f-63ae2e64bf3f
     localID: aff1c26b-ac89-48bd-ba8f-63ae2e64bf3f
     parent: {fileID: 11410102}
     mode: 0
@@ -14163,7 +14163,7 @@ MonoBehaviour:
   attribute:
     name: Requirable
     path: Movement/Requirable
-    id: -57638/52a18061-c25a-448c-9c7d-990d9bba18c8
+    id: 29592/52a18061-c25a-448c-9c7d-990d9bba18c8
     localID: 52a18061-c25a-448c-9c7d-990d9bba18c8
     parent: {fileID: 11483940}
     mode: 0
@@ -14212,7 +14212,7 @@ MonoBehaviour:
   attribute:
     name: Usable
     path: Copy Direction/Usable
-    id: -57674/fa64895b-9193-45eb-8c08-52dac8932cfb
+    id: 29710/fa64895b-9193-45eb-8c08-52dac8932cfb
     localID: fa64895b-9193-45eb-8c08-52dac8932cfb
     parent: {fileID: 11426356}
     mode: 0
@@ -14252,7 +14252,7 @@ MonoBehaviour:
     info:
       name: Requirable
       path: Key Right/Requirable
-      id: -57662/b9e7a94a-2ea9-438f-bb53-b5bd6863893a
+      id: 29672/b9e7a94a-2ea9-438f-bb53-b5bd6863893a
       localID: b9e7a94a-2ea9-438f-bb53-b5bd6863893a
       parent: {fileID: 11482060}
       mode: 0
@@ -14264,7 +14264,7 @@ MonoBehaviour:
     info:
       name: Ready
       path: Key Right/Ready
-      id: -57662/c90e5a8e-15e6-4c73-9d37-db3deb0eaea8
+      id: 29672/c90e5a8e-15e6-4c73-9d37-db3deb0eaea8
       localID: c90e5a8e-15e6-4c73-9d37-db3deb0eaea8
       parent: {fileID: 11482060}
       mode: 0
@@ -14276,7 +14276,7 @@ MonoBehaviour:
     info:
       name: Usable
       path: Key Right/Usable
-      id: -57662/b28f740e-bcc5-41ac-87aa-f929c30bd5fe
+      id: 29672/b28f740e-bcc5-41ac-87aa-f929c30bd5fe
       localID: b28f740e-bcc5-41ac-87aa-f929c30bd5fe
       parent: {fileID: 11482060}
       mode: 0
@@ -14288,7 +14288,7 @@ MonoBehaviour:
     info:
       name: Active
       path: Key Right/Active
-      id: -57662/06267864-5ab7-45e7-babb-661aa111d0e7
+      id: 29672/06267864-5ab7-45e7-babb-661aa111d0e7
       localID: 06267864-5ab7-45e7-babb-661aa111d0e7
       parent: {fileID: 11482060}
       mode: 0
@@ -14300,7 +14300,7 @@ MonoBehaviour:
     info:
       name: Used
       path: Key Right/Used
-      id: -57662/4ffd1339-59dd-4cfb-98a9-ab9118125064
+      id: 29672/4ffd1339-59dd-4cfb-98a9-ab9118125064
       localID: 4ffd1339-59dd-4cfb-98a9-ab9118125064
       parent: {fileID: 11482060}
       mode: 0
@@ -14312,7 +14312,7 @@ MonoBehaviour:
     info:
       name: End While Unusable
       path: Key Right/End While Unusable
-      id: -57662/bb9370af-09b1-4888-90ef-44ca72fdccae
+      id: 29672/bb9370af-09b1-4888-90ef-44ca72fdccae
       localID: bb9370af-09b1-4888-90ef-44ca72fdccae
       parent: {fileID: 11482060}
       mode: 0
@@ -14326,7 +14326,7 @@ MonoBehaviour:
     info:
       name: Input Name
       path: Key Right/Input Name
-      id: -57662/eb26d9f9-ecc5-43c3-8551-a880779fcd3c
+      id: 29672/eb26d9f9-ecc5-43c3-8551-a880779fcd3c
       localID: eb26d9f9-ecc5-43c3-8551-a880779fcd3c
       parent: {fileID: 11482060}
       mode: 0
@@ -14338,7 +14338,7 @@ MonoBehaviour:
     info:
       name: Held During Intensity
       path: Key Right/Held During Intensity
-      id: -57662/2a60f1c8-64b8-4362-957c-8feb20482d31
+      id: 29672/2a60f1c8-64b8-4362-957c-8feb20482d31
       localID: 2a60f1c8-64b8-4362-957c-8feb20482d31
       parent: {fileID: 11482060}
       mode: 0
@@ -14350,7 +14350,7 @@ MonoBehaviour:
     info:
       name: Ignore Ownership
       path: Key Right/Ignore Ownership
-      id: -57662/2f3f7ddd-c8a1-449a-9241-951a921277f5
+      id: 29672/2f3f7ddd-c8a1-449a-9241-951a921277f5
       localID: 2f3f7ddd-c8a1-449a-9241-951a921277f5
       parent: {fileID: 11482060}
       mode: 0
@@ -14362,7 +14362,7 @@ MonoBehaviour:
     info:
       name: Intensity
       path: Key Right/Intensity
-      id: -57662/f5444bf6-5f8e-4171-90f2-6711c5bd3d96
+      id: 29672/f5444bf6-5f8e-4171-90f2-6711c5bd3d96
       localID: f5444bf6-5f8e-4171-90f2-6711c5bd3d96
       parent: {fileID: 11482060}
       mode: 0
@@ -14398,7 +14398,7 @@ MonoBehaviour:
   attribute:
     name: End While Unusable
     path: Run Animation/End While Unusable
-    id: -57670/e79d185a-8370-4fb0-84b6-8171eccadf90
+    id: 29662/e79d185a-8370-4fb0-84b6-8171eccadf90
     localID: e79d185a-8370-4fb0-84b6-8171eccadf90
     parent: {fileID: 11492738}
     mode: 0
@@ -14447,7 +14447,7 @@ MonoBehaviour:
   attribute:
     name: Active
     path: Move Amount/Active
-    id: -57664/760b6708-2580-4d6a-9f0a-cc77e47747bf
+    id: 29680/760b6708-2580-4d6a-9f0a-cc77e47747bf
     localID: 760b6708-2580-4d6a-9f0a-cc77e47747bf
     parent: {fileID: 11470918}
     mode: 0
@@ -14487,7 +14487,7 @@ MonoBehaviour:
     info:
       name: Requirable
       path: Movement/Requirable
-      id: -57638/52a18061-c25a-448c-9c7d-990d9bba18c8
+      id: 29592/52a18061-c25a-448c-9c7d-990d9bba18c8
       localID: 52a18061-c25a-448c-9c7d-990d9bba18c8
       parent: {fileID: 11483940}
       mode: 0
@@ -14499,7 +14499,7 @@ MonoBehaviour:
     info:
       name: Ready
       path: Movement/Ready
-      id: -57638/4d91fc2f-04b2-419f-8182-eece16b7af94
+      id: 29592/4d91fc2f-04b2-419f-8182-eece16b7af94
       localID: 4d91fc2f-04b2-419f-8182-eece16b7af94
       parent: {fileID: 11483940}
       mode: 0
@@ -14511,7 +14511,7 @@ MonoBehaviour:
     info:
       name: Usable
       path: Movement/Usable
-      id: -57638/b76db291-e4b9-410d-b1cd-56bc5a50a91e
+      id: 29592/b76db291-e4b9-410d-b1cd-56bc5a50a91e
       localID: b76db291-e4b9-410d-b1cd-56bc5a50a91e
       parent: {fileID: 11483940}
       mode: 0
@@ -14523,7 +14523,7 @@ MonoBehaviour:
     info:
       name: Active
       path: Movement/Active
-      id: -57638/4164c464-bcb4-4a8d-a939-cbab8000a6a4
+      id: 29592/4164c464-bcb4-4a8d-a939-cbab8000a6a4
       localID: 4164c464-bcb4-4a8d-a939-cbab8000a6a4
       parent: {fileID: 11483940}
       mode: 0
@@ -14535,7 +14535,7 @@ MonoBehaviour:
     info:
       name: Used
       path: Movement/Used
-      id: -57638/dc707136-3f5c-4373-aa82-ea3617204ef9
+      id: 29592/dc707136-3f5c-4373-aa82-ea3617204ef9
       localID: dc707136-3f5c-4373-aa82-ea3617204ef9
       parent: {fileID: 11483940}
       mode: 0
@@ -14547,7 +14547,7 @@ MonoBehaviour:
     info:
       name: End While Unusable
       path: Movement/End While Unusable
-      id: -57638/c04dbf21-6065-409d-9997-41fdc10e9333
+      id: 29592/c04dbf21-6065-409d-9997-41fdc10e9333
       localID: c04dbf21-6065-409d-9997-41fdc10e9333
       parent: {fileID: 11483940}
       mode: 0
@@ -14573,7 +14573,7 @@ MonoBehaviour:
     info:
       name: Requirable
       path: Key Backward/Requirable
-      id: -57676/cff12268-a593-4e2e-b0a3-88aca3ad6e93
+      id: 29670/cff12268-a593-4e2e-b0a3-88aca3ad6e93
       localID: cff12268-a593-4e2e-b0a3-88aca3ad6e93
       parent: {fileID: 11484042}
       mode: 0
@@ -14585,7 +14585,7 @@ MonoBehaviour:
     info:
       name: Ready
       path: Key Backward/Ready
-      id: -57676/dde59b92-29a6-4607-a43b-ac9ffc00be2b
+      id: 29670/dde59b92-29a6-4607-a43b-ac9ffc00be2b
       localID: dde59b92-29a6-4607-a43b-ac9ffc00be2b
       parent: {fileID: 11484042}
       mode: 0
@@ -14597,7 +14597,7 @@ MonoBehaviour:
     info:
       name: Usable
       path: Key Backward/Usable
-      id: -57676/236a3a8d-2bf2-45f5-98ae-5d4b4b342158
+      id: 29670/236a3a8d-2bf2-45f5-98ae-5d4b4b342158
       localID: 236a3a8d-2bf2-45f5-98ae-5d4b4b342158
       parent: {fileID: 11484042}
       mode: 0
@@ -14609,7 +14609,7 @@ MonoBehaviour:
     info:
       name: Active
       path: Key Backward/Active
-      id: -57676/b8eaf093-84da-49bb-a7ca-b9d2fd23c5a3
+      id: 29670/b8eaf093-84da-49bb-a7ca-b9d2fd23c5a3
       localID: b8eaf093-84da-49bb-a7ca-b9d2fd23c5a3
       parent: {fileID: 11484042}
       mode: 0
@@ -14621,7 +14621,7 @@ MonoBehaviour:
     info:
       name: Used
       path: Key Backward/Used
-      id: -57676/ff2a14f7-6b2c-48c2-a183-4782a9bb5ea3
+      id: 29670/ff2a14f7-6b2c-48c2-a183-4782a9bb5ea3
       localID: ff2a14f7-6b2c-48c2-a183-4782a9bb5ea3
       parent: {fileID: 11484042}
       mode: 0
@@ -14633,7 +14633,7 @@ MonoBehaviour:
     info:
       name: End While Unusable
       path: Key Backward/End While Unusable
-      id: -57676/20030140-fc4a-4cd0-b975-0f0ce006b1b1
+      id: 29670/20030140-fc4a-4cd0-b975-0f0ce006b1b1
       localID: 20030140-fc4a-4cd0-b975-0f0ce006b1b1
       parent: {fileID: 11484042}
       mode: 0
@@ -14647,7 +14647,7 @@ MonoBehaviour:
     info:
       name: Input Name
       path: Key Backward/Input Name
-      id: -57676/df9970fd-292f-4727-8ebc-7e099640399e
+      id: 29670/df9970fd-292f-4727-8ebc-7e099640399e
       localID: df9970fd-292f-4727-8ebc-7e099640399e
       parent: {fileID: 11484042}
       mode: 0
@@ -14659,7 +14659,7 @@ MonoBehaviour:
     info:
       name: Held During Intensity
       path: Key Backward/Held During Intensity
-      id: -57676/be3dc2b4-3ca8-46ba-9cc7-8eae071d61ef
+      id: 29670/be3dc2b4-3ca8-46ba-9cc7-8eae071d61ef
       localID: be3dc2b4-3ca8-46ba-9cc7-8eae071d61ef
       parent: {fileID: 11484042}
       mode: 0
@@ -14671,7 +14671,7 @@ MonoBehaviour:
     info:
       name: Ignore Ownership
       path: Key Backward/Ignore Ownership
-      id: -57676/13959289-92bc-471c-9edb-69e4380f97ed
+      id: 29670/13959289-92bc-471c-9edb-69e4380f97ed
       localID: 13959289-92bc-471c-9edb-69e4380f97ed
       parent: {fileID: 11484042}
       mode: 0
@@ -14683,7 +14683,7 @@ MonoBehaviour:
     info:
       name: Intensity
       path: Key Backward/Intensity
-      id: -57676/5ebcf647-c1a0-42dc-b328-4abc420996b9
+      id: 29670/5ebcf647-c1a0-42dc-b328-4abc420996b9
       localID: 5ebcf647-c1a0-42dc-b328-4abc420996b9
       parent: {fileID: 11484042}
       mode: 0
@@ -14736,12 +14736,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Run Animation/Target/0
-  referenceID: -22414/a773ab3e-6979-4d6d-a0b6-f187570d48dc
+  referenceID: -1594/a773ab3e-6979-4d6d-a0b6-f187570d48dc
   referencePath: Visuals
   attribute:
     name: Target
     path: Run Animation/Target
-    id: -57670/b817adc1-4e7e-4292-a0d9-dd11abe922bd
+    id: 29662/b817adc1-4e7e-4292-a0d9-dd11abe922bd
     localID: b817adc1-4e7e-4292-a0d9-dd11abe922bd
     parent: {fileID: 11492738}
     mode: 0
@@ -14790,7 +14790,7 @@ MonoBehaviour:
   attribute:
     name: Active
     path: Rotate Left/Active
-    id: -57646/5fcb9206-edd7-4389-bc9e-ca1f16aa0d54
+    id: 29566/5fcb9206-edd7-4389-bc9e-ca1f16aa0d54
     localID: 5fcb9206-edd7-4389-bc9e-ca1f16aa0d54
     parent: {fileID: 11444652}
     mode: 0
@@ -14839,7 +14839,7 @@ MonoBehaviour:
   attribute:
     name: Y
     path: Copy Direction/Value/Y
-    id: -57688/a801d9e6-91dd-4800-b54d-1b101c110dd3
+    id: 29696/a801d9e6-91dd-4800-b54d-1b101c110dd3
     localID: a801d9e6-91dd-4800-b54d-1b101c110dd3
     parent: {fileID: 11443132}
     mode: 0
@@ -14905,12 +14905,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Move Amount/Value/0
-  referenceID: -22416/dca5905a-c495-4ff2-9c6d-31ab61c97f06
+  referenceID: -1586/dca5905a-c495-4ff2-9c6d-31ab61c97f06
   referencePath: Speed
   attribute:
     name: Value
     path: Move Amount/Value
-    id: -57664/dffee994-e8bb-44da-81bc-2dc469d6bab8
+    id: 29680/dffee994-e8bb-44da-81bc-2dc469d6bab8
     localID: dffee994-e8bb-44da-81bc-2dc469d6bab8
     parent: {fileID: 11470918}
     mode: 0
@@ -14959,7 +14959,7 @@ MonoBehaviour:
   attribute:
     name: Z
     path: Rotate/Goal Direction/Z
-    id: -57668/5061fbfa-ab25-4f29-9951-b853c0723e6d
+    id: 29688/5061fbfa-ab25-4f29-9951-b853c0723e6d
     localID: 5061fbfa-ab25-4f29-9951-b853c0723e6d
     parent: {fileID: 11449860}
     mode: 0
@@ -15025,12 +15025,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Copy Direction/Value/0
-  referenceID: 23292/89f0c7f6-13b9-43a3-a803-65bcd98ce0df
+  referenceID: -2690/89f0c7f6-13b9-43a3-a803-65bcd98ce0df
   referencePath: Transform/Direction/Back
   attribute:
     name: Value
     path: Copy Direction/Value
-    id: -57674/1445b4fd-ca09-4d19-8eae-8924b84bad86
+    id: 29710/1445b4fd-ca09-4d19-8eae-8924b84bad86
     localID: 1445b4fd-ca09-4d19-8eae-8924b84bad86
     parent: {fileID: 11426356}
     mode: 2
@@ -15071,7 +15071,7 @@ MonoBehaviour:
     info:
       name: Requirable
       path: Copy Direction/Requirable
-      id: -57660/79c79c96-8930-43b8-859e-189b13682233
+      id: 29668/79c79c96-8930-43b8-859e-189b13682233
       localID: 79c79c96-8930-43b8-859e-189b13682233
       parent: {fileID: 11485996}
       mode: 0
@@ -15083,7 +15083,7 @@ MonoBehaviour:
     info:
       name: Ready
       path: Copy Direction/Ready
-      id: -57660/22bbd7bb-e3b6-4c36-8afa-97879fac2e73
+      id: 29668/22bbd7bb-e3b6-4c36-8afa-97879fac2e73
       localID: 22bbd7bb-e3b6-4c36-8afa-97879fac2e73
       parent: {fileID: 11485996}
       mode: 0
@@ -15095,7 +15095,7 @@ MonoBehaviour:
     info:
       name: Usable
       path: Copy Direction/Usable
-      id: -57660/8f6f4334-a436-4ba0-a87d-b647f8ad11d1
+      id: 29668/8f6f4334-a436-4ba0-a87d-b647f8ad11d1
       localID: 8f6f4334-a436-4ba0-a87d-b647f8ad11d1
       parent: {fileID: 11485996}
       mode: 0
@@ -15107,7 +15107,7 @@ MonoBehaviour:
     info:
       name: Active
       path: Copy Direction/Active
-      id: -57660/1cac2455-4189-4e6a-961b-2678b941ded1
+      id: 29668/1cac2455-4189-4e6a-961b-2678b941ded1
       localID: 1cac2455-4189-4e6a-961b-2678b941ded1
       parent: {fileID: 11485996}
       mode: 0
@@ -15119,7 +15119,7 @@ MonoBehaviour:
     info:
       name: Used
       path: Copy Direction/Used
-      id: -57660/469a4045-cfd6-44f6-b2d6-9bdefe0e4606
+      id: 29668/469a4045-cfd6-44f6-b2d6-9bdefe0e4606
       localID: 469a4045-cfd6-44f6-b2d6-9bdefe0e4606
       parent: {fileID: 11485996}
       mode: 0
@@ -15131,7 +15131,7 @@ MonoBehaviour:
     info:
       name: End While Unusable
       path: Copy Direction/End While Unusable
-      id: -57660/92feeffd-ab32-4011-9b13-10533a552406
+      id: 29668/92feeffd-ab32-4011-9b13-10533a552406
       localID: 92feeffd-ab32-4011-9b13-10533a552406
       parent: {fileID: 11485996}
       mode: 0
@@ -15144,7 +15144,7 @@ MonoBehaviour:
     info:
       name: Target
       path: Copy Direction/Target
-      id: -57660/f33fd1be-68f3-455d-992f-200c36b43b6a
+      id: 29668/f33fd1be-68f3-455d-992f-200c36b43b6a
       localID: f33fd1be-68f3-455d-992f-200c36b43b6a
       parent: {fileID: 11485996}
       mode: 1
@@ -15156,7 +15156,7 @@ MonoBehaviour:
       info:
         name: X
         path: Copy Direction/Target/X
-        id: -57660/e1643c6f-24dc-4599-8b35-0f09564e2f1b
+        id: 29668/e1643c6f-24dc-4599-8b35-0f09564e2f1b
         localID: e1643c6f-24dc-4599-8b35-0f09564e2f1b
         parent: {fileID: 11485996}
         mode: 0
@@ -15168,7 +15168,7 @@ MonoBehaviour:
       info:
         name: Y
         path: Copy Direction/Target/Y
-        id: -57660/b7c1ef3e-5758-4477-a865-04df271865a7
+        id: 29668/b7c1ef3e-5758-4477-a865-04df271865a7
         localID: b7c1ef3e-5758-4477-a865-04df271865a7
         parent: {fileID: 11485996}
         mode: 0
@@ -15180,7 +15180,7 @@ MonoBehaviour:
       info:
         name: Z
         path: Copy Direction/Target/Z
-        id: -57660/13ad1c20-7442-4ea0-b48f-73a53420adad
+        id: 29668/13ad1c20-7442-4ea0-b48f-73a53420adad
         localID: 13ad1c20-7442-4ea0-b48f-73a53420adad
         parent: {fileID: 11485996}
         mode: 0
@@ -15192,7 +15192,7 @@ MonoBehaviour:
     info:
       name: Value
       path: Copy Direction/Value
-      id: -57660/bc87dc9d-d2db-47da-9752-51e60a5362e9
+      id: 29668/bc87dc9d-d2db-47da-9752-51e60a5362e9
       localID: bc87dc9d-d2db-47da-9752-51e60a5362e9
       parent: {fileID: 11485996}
       mode: 2
@@ -15205,7 +15205,7 @@ MonoBehaviour:
       info:
         name: X
         path: Copy Direction/Value/X
-        id: -57660/0f829d4d-524a-4373-9f54-8275b573325a
+        id: 29668/0f829d4d-524a-4373-9f54-8275b573325a
         localID: 0f829d4d-524a-4373-9f54-8275b573325a
         parent: {fileID: 11485996}
         mode: 0
@@ -15217,7 +15217,7 @@ MonoBehaviour:
       info:
         name: Y
         path: Copy Direction/Value/Y
-        id: -57660/03606ca7-f583-4f24-94d0-f9f3ef18b8a4
+        id: 29668/03606ca7-f583-4f24-94d0-f9f3ef18b8a4
         localID: 03606ca7-f583-4f24-94d0-f9f3ef18b8a4
         parent: {fileID: 11485996}
         mode: 0
@@ -15229,7 +15229,7 @@ MonoBehaviour:
       info:
         name: Z
         path: Copy Direction/Value/Z
-        id: -57660/fe94adfe-82ad-4c3e-b204-d8a4543f9af3
+        id: 29668/fe94adfe-82ad-4c3e-b204-d8a4543f9af3
         localID: fe94adfe-82ad-4c3e-b204-d8a4543f9af3
         parent: {fileID: 11485996}
         mode: 0
@@ -15264,7 +15264,7 @@ MonoBehaviour:
   attribute:
     name: Requirable
     path: Movement Speed/Requirable
-    id: -57640/f9947803-f264-40fd-b7bd-3cbaf2157979
+    id: 29698/f9947803-f264-40fd-b7bd-3cbaf2157979
     localID: f9947803-f264-40fd-b7bd-3cbaf2157979
     parent: {fileID: 11441214}
     mode: 0
@@ -15313,7 +15313,7 @@ MonoBehaviour:
   attribute:
     name: Y
     path: Copy Direction/Target/Y
-    id: -57688/ad4b0f62-ec17-4ced-86fb-ea72c19ad710
+    id: 29696/ad4b0f62-ec17-4ced-86fb-ea72c19ad710
     localID: ad4b0f62-ec17-4ced-86fb-ea72c19ad710
     parent: {fileID: 11443132}
     mode: 0
@@ -15371,12 +15371,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Backward Right/0
-  referenceID: -22428/5ebcf647-c1a0-42dc-b328-4abc420996b9
+  referenceID: -1554/5ebcf647-c1a0-42dc-b328-4abc420996b9
   referencePath: Key Backward/Intensity
   attribute:
     name: Backward Right
     path: Backward Right
-    id: -57652/65e7050d-ae09-4de1-8a84-8530ba19905c
+    id: 29692/65e7050d-ae09-4de1-8a84-8530ba19905c
     localID: 65e7050d-ae09-4de1-8a84-8530ba19905c
     parent: {fileID: 11444064}
     mode: 2
@@ -15426,7 +15426,7 @@ MonoBehaviour:
   attribute:
     name: Active
     path: Rotate Backward/Active
-    id: -57642/317ab944-48e0-4b81-8957-2cfed6de3d78
+    id: 29686/317ab944-48e0-4b81-8957-2cfed6de3d78
     localID: 317ab944-48e0-4b81-8957-2cfed6de3d78
     parent: {fileID: 11466546}
     mode: 0
@@ -15475,7 +15475,7 @@ MonoBehaviour:
   attribute:
     name: Ready
     path: Rotate Forward/Ready
-    id: -57644/6dc40e2a-3d0f-464f-88c2-3d79d4a3537d
+    id: 29658/6dc40e2a-3d0f-464f-88c2-3d79d4a3537d
     localID: 6dc40e2a-3d0f-464f-88c2-3d79d4a3537d
     parent: {fileID: 11495614}
     mode: 0
@@ -15524,7 +15524,7 @@ MonoBehaviour:
   attribute:
     name: Used
     path: Movement Speed/Used
-    id: -57640/e4dec1ba-d97c-42d8-8af8-71943947fc62
+    id: 29698/e4dec1ba-d97c-42d8-8af8-71943947fc62
     localID: e4dec1ba-d97c-42d8-8af8-71943947fc62
     parent: {fileID: 11441214}
     mode: 0
@@ -15573,7 +15573,7 @@ MonoBehaviour:
   attribute:
     name: X
     path: Copy Direction/Target/X
-    id: -57674/4bc9677b-f287-44b9-8b9a-6ddc42081e6b
+    id: 29710/4bc9677b-f287-44b9-8b9a-6ddc42081e6b
     localID: 4bc9677b-f287-44b9-8b9a-6ddc42081e6b
     parent: {fileID: 11426356}
     mode: 0
@@ -15622,7 +15622,7 @@ MonoBehaviour:
   attribute:
     name: Used
     path: Key Backward/Used
-    id: -57676/ff2a14f7-6b2c-48c2-a183-4782a9bb5ea3
+    id: 29670/ff2a14f7-6b2c-48c2-a183-4782a9bb5ea3
     localID: ff2a14f7-6b2c-48c2-a183-4782a9bb5ea3
     parent: {fileID: 11484042}
     mode: 0
@@ -15671,7 +15671,7 @@ MonoBehaviour:
   attribute:
     name: X
     path: Copy Direction/Value/X
-    id: -57688/6728dcc4-f41e-4f4d-adb5-3d3ae322b3f1
+    id: 29696/6728dcc4-f41e-4f4d-adb5-3d3ae322b3f1
     localID: 6728dcc4-f41e-4f4d-adb5-3d3ae322b3f1
     parent: {fileID: 11443132}
     mode: 0
@@ -15711,7 +15711,7 @@ MonoBehaviour:
     info:
       name: Requirable
       path: Rotate Right/Requirable
-      id: -57648/eab3c927-a92b-47f3-a9aa-17e736d160e8
+      id: 29666/eab3c927-a92b-47f3-a9aa-17e736d160e8
       localID: eab3c927-a92b-47f3-a9aa-17e736d160e8
       parent: {fileID: 11488424}
       mode: 0
@@ -15723,7 +15723,7 @@ MonoBehaviour:
     info:
       name: Ready
       path: Rotate Right/Ready
-      id: -57648/4027dd02-a27c-48e9-8503-7ddbfe631cb2
+      id: 29666/4027dd02-a27c-48e9-8503-7ddbfe631cb2
       localID: 4027dd02-a27c-48e9-8503-7ddbfe631cb2
       parent: {fileID: 11488424}
       mode: 0
@@ -15735,7 +15735,7 @@ MonoBehaviour:
     info:
       name: Usable
       path: Rotate Right/Usable
-      id: -57648/48dd442a-99d1-4edc-a76f-33ecadce9aed
+      id: 29666/48dd442a-99d1-4edc-a76f-33ecadce9aed
       localID: 48dd442a-99d1-4edc-a76f-33ecadce9aed
       parent: {fileID: 11488424}
       mode: 0
@@ -15747,7 +15747,7 @@ MonoBehaviour:
     info:
       name: Active
       path: Rotate Right/Active
-      id: -57648/0f3ef57c-fb43-4ffb-a721-ecb031227559
+      id: 29666/0f3ef57c-fb43-4ffb-a721-ecb031227559
       localID: 0f3ef57c-fb43-4ffb-a721-ecb031227559
       parent: {fileID: 11488424}
       mode: 0
@@ -15759,7 +15759,7 @@ MonoBehaviour:
     info:
       name: Used
       path: Rotate Right/Used
-      id: -57648/cd74cad0-7194-4bd6-8ee8-b2e3f718da65
+      id: 29666/cd74cad0-7194-4bd6-8ee8-b2e3f718da65
       localID: cd74cad0-7194-4bd6-8ee8-b2e3f718da65
       parent: {fileID: 11488424}
       mode: 0
@@ -15771,7 +15771,7 @@ MonoBehaviour:
     info:
       name: End While Unusable
       path: Rotate Right/End While Unusable
-      id: -57648/1a2b0055-8d91-495a-bccb-a46bfe1a6c49
+      id: 29666/1a2b0055-8d91-495a-bccb-a46bfe1a6c49
       localID: 1a2b0055-8d91-495a-bccb-a46bfe1a6c49
       parent: {fileID: 11488424}
       mode: 0
@@ -15805,13 +15805,13 @@ MonoBehaviour:
         target: {fileID: 11477880}
         requireOn: 0
         requireOff: 0
-      - name: Run Speed
+      - name: Move Speed
         stateTable: {fileID: 11488500}
         id: -148660
         target: {fileID: 11467074}
         requireOn: 0
         requireOff: 0
-  - name: Run Speed
+  - name: Move Speed
     stateTable: {fileID: 11488500}
     id: -148660
     target: {fileID: 11467074}
@@ -15824,7 +15824,7 @@ MonoBehaviour:
         target: {fileID: 11477880}
         requireOn: 1
         requireOff: 0
-      - name: Run Speed
+      - name: Move Speed
         stateTable: {fileID: 11488500}
         id: -148660
         target: {fileID: 11467074}
@@ -15844,13 +15844,13 @@ MonoBehaviour:
         target: {fileID: 11477880}
         requireOn: 0
         requireOff: 0
-      - name: Run Speed
+      - name: Move Speed
         stateTable: {fileID: 11488500}
         id: -148660
         target: {fileID: 11467074}
         requireOn: 0
         requireOff: 0
-  - name: Run Speed
+  - name: Move Speed
     stateTable: {fileID: 11488500}
     id: -148660
     target: {fileID: 11467074}
@@ -15863,7 +15863,7 @@ MonoBehaviour:
         target: {fileID: 11477880}
         requireOn: 0
         requireOff: 0
-      - name: Run Speed
+      - name: Move Speed
         stateTable: {fileID: 11488500}
         id: -148660
         target: {fileID: 11467074}
@@ -15903,7 +15903,7 @@ MonoBehaviour:
   attribute:
     name: Requirable
     path: Key Forward/Requirable
-    id: -57694/a74aeab6-8930-4837-b992-a0c11189c985
+    id: 29716/a74aeab6-8930-4837-b992-a0c11189c985
     localID: a74aeab6-8930-4837-b992-a0c11189c985
     parent: {fileID: 11410102}
     mode: 0
@@ -15952,7 +15952,7 @@ MonoBehaviour:
   attribute:
     name: End While Unusable
     path: '@Ready/End While Unusable'
-    id: -57616/94def4ac-8188-4d14-9bd2-9f0cc30b25b2
+    id: 29694/94def4ac-8188-4d14-9bd2-9f0cc30b25b2
     localID: 94def4ac-8188-4d14-9bd2-9f0cc30b25b2
     parent: {fileID: 11443258}
     mode: 0
@@ -16001,7 +16001,7 @@ MonoBehaviour:
   attribute:
     name: X
     path: Move Direction/Amount/X
-    id: -57666/a1307d9e-b507-4629-a1e9-56e79da4cb43
+    id: 29682/a1307d9e-b507-4629-a1e9-56e79da4cb43
     localID: a1307d9e-b507-4629-a1e9-56e79da4cb43
     parent: {fileID: 11469102}
     mode: 0
@@ -16050,7 +16050,7 @@ MonoBehaviour:
   attribute:
     name: Ready
     path: Key Forward/Ready
-    id: -57694/2208bd1b-ceb2-4a87-97ea-407a70d83795
+    id: 29716/2208bd1b-ceb2-4a87-97ea-407a70d83795
     localID: 2208bd1b-ceb2-4a87-97ea-407a70d83795
     parent: {fileID: 11410102}
     mode: 0
@@ -16099,7 +16099,7 @@ MonoBehaviour:
   attribute:
     name: Active
     path: Copy Direction/Active
-    id: -57692/4da12aff-e990-4a9c-bb2a-b0ea1add0609
+    id: 29700/4da12aff-e990-4a9c-bb2a-b0ea1add0609
     localID: 4da12aff-e990-4a9c-bb2a-b0ea1add0609
     parent: {fileID: 11438338}
     mode: 0
@@ -16148,7 +16148,7 @@ MonoBehaviour:
   attribute:
     name: Usable
     path: Rotate Left/Usable
-    id: -57646/7d6e635d-317c-41ce-9479-7b1183e1535c
+    id: 29566/7d6e635d-317c-41ce-9479-7b1183e1535c
     localID: 7d6e635d-317c-41ce-9479-7b1183e1535c
     parent: {fileID: 11444652}
     mode: 0
@@ -16197,7 +16197,7 @@ MonoBehaviour:
   attribute:
     name: Ready
     path: Key Right/Ready
-    id: -57662/c90e5a8e-15e6-4c73-9d37-db3deb0eaea8
+    id: 29672/c90e5a8e-15e6-4c73-9d37-db3deb0eaea8
     localID: c90e5a8e-15e6-4c73-9d37-db3deb0eaea8
     parent: {fileID: 11482060}
     mode: 0
@@ -16240,13 +16240,13 @@ MonoBehaviour:
     parent: {fileID: 0}
     mode: 0
   usage: 0
-  path: Run Speed/End While Unusable/0
+  path: Move Speed/End While Unusable/0
   referenceID: 
   referencePath: 
   attribute:
     name: End While Unusable
-    path: Run Speed/End While Unusable
-    id: -57672/cb3ddf4a-2ff4-42b2-94f5-df399c93a1d4
+    path: Move Speed/End While Unusable
+    id: 29684/cb3ddf4a-2ff4-42b2-94f5-df399c93a1d4
     localID: cb3ddf4a-2ff4-42b2-94f5-df399c93a1d4
     parent: {fileID: 11467074}
     mode: 0
@@ -16284,7 +16284,7 @@ MonoBehaviour:
     info:
       name: Intensity
       path: Intensity
-      id: -57658/b126fe56-f7e4-4235-a952-5e28ea525f32
+      id: 29664/b126fe56-f7e4-4235-a952-5e28ea525f32
       localID: b126fe56-f7e4-4235-a952-5e28ea525f32
       parent: {fileID: 11490872}
       mode: 2
@@ -16325,7 +16325,7 @@ MonoBehaviour:
   attribute:
     name: Requirable
     path: '@Ready/Requirable'
-    id: -57616/f27cfaad-f527-45ee-a728-cbd923a82e57
+    id: 29694/f27cfaad-f527-45ee-a728-cbd923a82e57
     localID: f27cfaad-f527-45ee-a728-cbd923a82e57
     parent: {fileID: 11443258}
     mode: 0
@@ -16374,7 +16374,7 @@ MonoBehaviour:
   attribute:
     name: Z
     path: Copy Direction/Target/Z
-    id: -57674/2538f0f6-566b-4de7-b440-ee01a7e94b18
+    id: 29710/2538f0f6-566b-4de7-b440-ee01a7e94b18
     localID: 2538f0f6-566b-4de7-b440-ee01a7e94b18
     parent: {fileID: 11426356}
     mode: 0
@@ -16423,7 +16423,7 @@ MonoBehaviour:
   attribute:
     name: Requirable
     path: Copy Direction/Requirable
-    id: -57692/09ecd4f8-8128-4160-a0a9-85348e45f898
+    id: 29700/09ecd4f8-8128-4160-a0a9-85348e45f898
     localID: 09ecd4f8-8128-4160-a0a9-85348e45f898
     parent: {fileID: 11438338}
     mode: 0
@@ -16472,7 +16472,7 @@ MonoBehaviour:
   attribute:
     name: Requirable
     path: Rotate/Requirable
-    id: -57668/e6a30e2a-9732-4f0b-af52-8962f6e39a13
+    id: 29688/e6a30e2a-9732-4f0b-af52-8962f6e39a13
     localID: e6a30e2a-9732-4f0b-af52-8962f6e39a13
     parent: {fileID: 11449860}
     mode: 0
@@ -16521,7 +16521,7 @@ MonoBehaviour:
   attribute:
     name: Requirable
     path: Copy Direction/Requirable
-    id: -57674/29eb4c8f-7b8c-494b-8ef8-ccedbca9ea71
+    id: 29710/29eb4c8f-7b8c-494b-8ef8-ccedbca9ea71
     localID: 29eb4c8f-7b8c-494b-8ef8-ccedbca9ea71
     parent: {fileID: 11426356}
     mode: 0
@@ -16570,7 +16570,7 @@ MonoBehaviour:
   attribute:
     name: Held During Intensity
     path: Key Left/Held During Intensity
-    id: -57690/4a7548c3-a5a8-4a21-9669-51e4efa42978
+    id: 29712/4a7548c3-a5a8-4a21-9669-51e4efa42978
     localID: 4a7548c3-a5a8-4a21-9669-51e4efa42978
     parent: {fileID: 11422548}
     mode: 0
@@ -16619,7 +16619,7 @@ MonoBehaviour:
   attribute:
     name: Usable
     path: '@Ready/Usable'
-    id: -57616/22fa30b0-2d5b-44d8-be15-8715cac3ad8c
+    id: 29694/22fa30b0-2d5b-44d8-be15-8715cac3ad8c
     localID: 22fa30b0-2d5b-44d8-be15-8715cac3ad8c
     parent: {fileID: 11443258}
     mode: 0
@@ -16685,12 +16685,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Copy Direction/Value/0
-  referenceID: 23292/996781d9-9a85-4d85-bf88-518db39e5bd1
+  referenceID: -2690/996781d9-9a85-4d85-bf88-518db39e5bd1
   referencePath: Transform/Direction/Left
   attribute:
     name: Value
     path: Copy Direction/Value
-    id: -57688/e5e72dd6-d412-46b4-b3a9-401db9757cfe
+    id: 29696/e5e72dd6-d412-46b4-b3a9-401db9757cfe
     localID: e5e72dd6-d412-46b4-b3a9-401db9757cfe
     parent: {fileID: 11443132}
     mode: 2
@@ -16731,7 +16731,7 @@ MonoBehaviour:
     info:
       name: Requirable
       path: Run Animation/Requirable
-      id: -57670/34618104-49c0-415e-863f-05d96963c603
+      id: 29662/34618104-49c0-415e-863f-05d96963c603
       localID: 34618104-49c0-415e-863f-05d96963c603
       parent: {fileID: 11492738}
       mode: 0
@@ -16743,7 +16743,7 @@ MonoBehaviour:
     info:
       name: Ready
       path: Run Animation/Ready
-      id: -57670/81b54115-1c70-497a-b777-2ab4bb809cc6
+      id: 29662/81b54115-1c70-497a-b777-2ab4bb809cc6
       localID: 81b54115-1c70-497a-b777-2ab4bb809cc6
       parent: {fileID: 11492738}
       mode: 0
@@ -16755,7 +16755,7 @@ MonoBehaviour:
     info:
       name: Usable
       path: Run Animation/Usable
-      id: -57670/55858d28-8276-4fab-87bc-3f3139dc400e
+      id: 29662/55858d28-8276-4fab-87bc-3f3139dc400e
       localID: 55858d28-8276-4fab-87bc-3f3139dc400e
       parent: {fileID: 11492738}
       mode: 0
@@ -16767,7 +16767,7 @@ MonoBehaviour:
     info:
       name: Active
       path: Run Animation/Active
-      id: -57670/83d0a65b-6eb5-4a04-913a-775905316454
+      id: 29662/83d0a65b-6eb5-4a04-913a-775905316454
       localID: 83d0a65b-6eb5-4a04-913a-775905316454
       parent: {fileID: 11492738}
       mode: 0
@@ -16779,7 +16779,7 @@ MonoBehaviour:
     info:
       name: Used
       path: Run Animation/Used
-      id: -57670/a41cc4d9-7a27-4ad7-92e3-7e7e6af45410
+      id: 29662/a41cc4d9-7a27-4ad7-92e3-7e7e6af45410
       localID: a41cc4d9-7a27-4ad7-92e3-7e7e6af45410
       parent: {fileID: 11492738}
       mode: 0
@@ -16791,7 +16791,7 @@ MonoBehaviour:
     info:
       name: End While Unusable
       path: Run Animation/End While Unusable
-      id: -57670/e79d185a-8370-4fb0-84b6-8171eccadf90
+      id: 29662/e79d185a-8370-4fb0-84b6-8171eccadf90
       localID: e79d185a-8370-4fb0-84b6-8171eccadf90
       parent: {fileID: 11492738}
       mode: 0
@@ -16804,7 +16804,7 @@ MonoBehaviour:
     info:
       name: Animation Name
       path: Run Animation/Animation Name
-      id: -57670/0e4c512b-f240-4406-9430-9cf40fb6495e
+      id: 29662/0e4c512b-f240-4406-9430-9cf40fb6495e
       localID: 0e4c512b-f240-4406-9430-9cf40fb6495e
       parent: {fileID: 11492738}
       mode: 0
@@ -16816,7 +16816,7 @@ MonoBehaviour:
     info:
       name: Speed
       path: Run Animation/Speed
-      id: -57670/78d3e813-d448-49e8-bd51-779ab231db90
+      id: 29662/78d3e813-d448-49e8-bd51-779ab231db90
       localID: 78d3e813-d448-49e8-bd51-779ab231db90
       parent: {fileID: 11492738}
       mode: 0
@@ -16828,7 +16828,7 @@ MonoBehaviour:
     info:
       name: Weight
       path: Run Animation/Weight
-      id: -57670/00171e77-becc-4cd1-b1cd-e91a27e9b4dd
+      id: 29662/00171e77-becc-4cd1-b1cd-e91a27e9b4dd
       localID: 00171e77-becc-4cd1-b1cd-e91a27e9b4dd
       parent: {fileID: 11492738}
       mode: 0
@@ -16840,7 +16840,7 @@ MonoBehaviour:
     info:
       name: Target
       path: Run Animation/Target
-      id: -57670/b817adc1-4e7e-4292-a0d9-dd11abe922bd
+      id: 29662/b817adc1-4e7e-4292-a0d9-dd11abe922bd
       localID: b817adc1-4e7e-4292-a0d9-dd11abe922bd
       parent: {fileID: 11492738}
       mode: 0
@@ -16875,7 +16875,7 @@ MonoBehaviour:
   attribute:
     name: Usable
     path: Rotate Forward/Usable
-    id: -57644/19d646f1-9dfd-495d-bda8-afedbfaa4333
+    id: 29658/19d646f1-9dfd-495d-bda8-afedbfaa4333
     localID: 19d646f1-9dfd-495d-bda8-afedbfaa4333
     parent: {fileID: 11495614}
     mode: 0
@@ -16924,7 +16924,7 @@ MonoBehaviour:
   attribute:
     name: Y
     path: Copy Direction/Value/Y
-    id: -57660/03606ca7-f583-4f24-94d0-f9f3ef18b8a4
+    id: 29668/03606ca7-f583-4f24-94d0-f9f3ef18b8a4
     localID: 03606ca7-f583-4f24-94d0-f9f3ef18b8a4
     parent: {fileID: 11485996}
     mode: 0
@@ -16973,7 +16973,7 @@ MonoBehaviour:
   attribute:
     name: Requirable
     path: Rotate Left/Requirable
-    id: -57646/b13fb1bd-353d-413c-b619-c78a336847f6
+    id: 29566/b13fb1bd-353d-413c-b619-c78a336847f6
     localID: b13fb1bd-353d-413c-b619-c78a336847f6
     parent: {fileID: 11444652}
     mode: 0
@@ -17016,13 +17016,13 @@ MonoBehaviour:
     parent: {fileID: 0}
     mode: 0
   usage: 0
-  path: Run Speed/Ready/0
+  path: Move Speed/Ready/0
   referenceID: 
   referencePath: 
   attribute:
     name: Ready
-    path: Run Speed/Ready
-    id: -57672/32ef82db-7f84-4504-8d83-7921791b4c79
+    path: Move Speed/Ready
+    id: 29684/32ef82db-7f84-4504-8d83-7921791b4c79
     localID: 32ef82db-7f84-4504-8d83-7921791b4c79
     parent: {fileID: 11467074}
     mode: 0
@@ -17071,7 +17071,7 @@ MonoBehaviour:
   attribute:
     name: Ready
     path: '@Ready/Ready'
-    id: -57604/e9b2d549-87ef-4835-9f4b-07afcc61fa71
+    id: 29708/e9b2d549-87ef-4835-9f4b-07afcc61fa71
     localID: e9b2d549-87ef-4835-9f4b-07afcc61fa71
     parent: {fileID: 11431738}
     mode: 0
@@ -17120,7 +17120,7 @@ MonoBehaviour:
   attribute:
     name: Usable
     path: Run Animation/Usable
-    id: -57670/55858d28-8276-4fab-87bc-3f3139dc400e
+    id: 29662/55858d28-8276-4fab-87bc-3f3139dc400e
     localID: 55858d28-8276-4fab-87bc-3f3139dc400e
     parent: {fileID: 11492738}
     mode: 0
@@ -17158,7 +17158,7 @@ MonoBehaviour:
     info:
       name: Animation
       path: Animation
-      id: -57678/3c4a9063-940b-4807-ae18-c77464599981
+      id: 29660/3c4a9063-940b-4807-ae18-c77464599981
       localID: 3c4a9063-940b-4807-ae18-c77464599981
       parent: {fileID: 11494954}
       mode: 0
@@ -17194,7 +17194,7 @@ MonoBehaviour:
   attribute:
     name: Usable
     path: Copy Direction/Usable
-    id: -57660/8f6f4334-a436-4ba0-a87d-b647f8ad11d1
+    id: 29668/8f6f4334-a436-4ba0-a87d-b647f8ad11d1
     localID: 8f6f4334-a436-4ba0-a87d-b647f8ad11d1
     parent: {fileID: 11485996}
     mode: 0
@@ -17234,7 +17234,7 @@ MonoBehaviour:
     info:
       name: Requirable
       path: Rotate Forward/Requirable
-      id: -57644/55b84c66-b151-427b-adef-8bee4df7728f
+      id: 29658/55b84c66-b151-427b-adef-8bee4df7728f
       localID: 55b84c66-b151-427b-adef-8bee4df7728f
       parent: {fileID: 11495614}
       mode: 0
@@ -17246,7 +17246,7 @@ MonoBehaviour:
     info:
       name: Ready
       path: Rotate Forward/Ready
-      id: -57644/6dc40e2a-3d0f-464f-88c2-3d79d4a3537d
+      id: 29658/6dc40e2a-3d0f-464f-88c2-3d79d4a3537d
       localID: 6dc40e2a-3d0f-464f-88c2-3d79d4a3537d
       parent: {fileID: 11495614}
       mode: 0
@@ -17258,7 +17258,7 @@ MonoBehaviour:
     info:
       name: Usable
       path: Rotate Forward/Usable
-      id: -57644/19d646f1-9dfd-495d-bda8-afedbfaa4333
+      id: 29658/19d646f1-9dfd-495d-bda8-afedbfaa4333
       localID: 19d646f1-9dfd-495d-bda8-afedbfaa4333
       parent: {fileID: 11495614}
       mode: 0
@@ -17270,7 +17270,7 @@ MonoBehaviour:
     info:
       name: Active
       path: Rotate Forward/Active
-      id: -57644/161fef27-ca52-41d1-b749-4fdae79b28aa
+      id: 29658/161fef27-ca52-41d1-b749-4fdae79b28aa
       localID: 161fef27-ca52-41d1-b749-4fdae79b28aa
       parent: {fileID: 11495614}
       mode: 0
@@ -17282,7 +17282,7 @@ MonoBehaviour:
     info:
       name: Used
       path: Rotate Forward/Used
-      id: -57644/c3e62d00-c932-4f35-9ab8-9f448c8d702b
+      id: 29658/c3e62d00-c932-4f35-9ab8-9f448c8d702b
       localID: c3e62d00-c932-4f35-9ab8-9f448c8d702b
       parent: {fileID: 11495614}
       mode: 0
@@ -17294,7 +17294,7 @@ MonoBehaviour:
     info:
       name: End While Unusable
       path: Rotate Forward/End While Unusable
-      id: -57644/0ace6114-159c-459e-bfb0-873869250708
+      id: 29658/0ace6114-159c-459e-bfb0-873869250708
       localID: 0ace6114-159c-459e-bfb0-873869250708
       parent: {fileID: 11495614}
       mode: 0
@@ -17329,7 +17329,7 @@ MonoBehaviour:
   attribute:
     name: Ready
     path: Key Left/Ready
-    id: -57690/ea859029-9121-4b5d-93d7-ce8258f9cd55
+    id: 29712/ea859029-9121-4b5d-93d7-ce8258f9cd55
     localID: ea859029-9121-4b5d-93d7-ce8258f9cd55
     parent: {fileID: 11422548}
     mode: 0
@@ -17378,7 +17378,7 @@ MonoBehaviour:
   attribute:
     name: Ready
     path: Movement/Ready
-    id: -57638/4d91fc2f-04b2-419f-8182-eece16b7af94
+    id: 29592/4d91fc2f-04b2-419f-8182-eece16b7af94
     localID: 4d91fc2f-04b2-419f-8182-eece16b7af94
     parent: {fileID: 11483940}
     mode: 0
@@ -17444,12 +17444,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Run Animation/Speed/0
-  referenceID: -22472/b126fe56-f7e4-4235-a952-5e28ea525f32
+  referenceID: -1550/b126fe56-f7e4-4235-a952-5e28ea525f32
   referencePath: Intensity
   attribute:
     name: Speed
     path: Run Animation/Speed
-    id: -57670/78d3e813-d448-49e8-bd51-779ab231db90
+    id: 29662/78d3e813-d448-49e8-bd51-779ab231db90
     localID: 78d3e813-d448-49e8-bd51-779ab231db90
     parent: {fileID: 11492738}
     mode: 0
@@ -17507,12 +17507,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Forward Right/1
-  referenceID: -22446/f5444bf6-5f8e-4171-90f2-6711c5bd3d96
+  referenceID: -1556/f5444bf6-5f8e-4171-90f2-6711c5bd3d96
   referencePath: Key Right/Intensity
   attribute:
     name: Forward Right
     path: Forward Right
-    id: -57656/09e7a80f-9134-4ae6-b73a-ebea599669a5
+    id: 29722/09e7a80f-9134-4ae6-b73a-ebea599669a5
     localID: 09e7a80f-9134-4ae6-b73a-ebea599669a5
     parent: {fileID: 11406550}
     mode: 2
@@ -17562,7 +17562,7 @@ MonoBehaviour:
   attribute:
     name: Used
     path: Rotate Forward/Used
-    id: -57644/c3e62d00-c932-4f35-9ab8-9f448c8d702b
+    id: 29658/c3e62d00-c932-4f35-9ab8-9f448c8d702b
     localID: c3e62d00-c932-4f35-9ab8-9f448c8d702b
     parent: {fileID: 11495614}
     mode: 0
@@ -17611,7 +17611,7 @@ MonoBehaviour:
   attribute:
     name: Active
     path: Rotate Forward/Active
-    id: -57644/161fef27-ca52-41d1-b749-4fdae79b28aa
+    id: 29658/161fef27-ca52-41d1-b749-4fdae79b28aa
     localID: 161fef27-ca52-41d1-b749-4fdae79b28aa
     parent: {fileID: 11495614}
     mode: 0
@@ -17660,7 +17660,7 @@ MonoBehaviour:
   attribute:
     name: Used
     path: '@Ready/Used'
-    id: -57612/f1e762c6-63ce-44f5-89d6-d36cadb0ecb0
+    id: 29676/f1e762c6-63ce-44f5-89d6-d36cadb0ecb0
     localID: f1e762c6-63ce-44f5-89d6-d36cadb0ecb0
     parent: {fileID: 11475892}
     mode: 0
@@ -17709,7 +17709,7 @@ MonoBehaviour:
   attribute:
     name: Intensity
     path: Intensity
-    id: -57658/b126fe56-f7e4-4235-a952-5e28ea525f32
+    id: 29664/b126fe56-f7e4-4235-a952-5e28ea525f32
     localID: b126fe56-f7e4-4235-a952-5e28ea525f32
     parent: {fileID: 11490872}
     mode: 2
@@ -17763,7 +17763,7 @@ MonoBehaviour:
   attribute:
     name: Used
     path: Run Animation/Used
-    id: -57670/a41cc4d9-7a27-4ad7-92e3-7e7e6af45410
+    id: 29662/a41cc4d9-7a27-4ad7-92e3-7e7e6af45410
     localID: a41cc4d9-7a27-4ad7-92e3-7e7e6af45410
     parent: {fileID: 11492738}
     mode: 0
@@ -17812,7 +17812,7 @@ MonoBehaviour:
   attribute:
     name: Ignore Ownership
     path: Key Forward/Ignore Ownership
-    id: -57694/ebe3e059-c8d4-46a1-adc1-20e0ebd9f44f
+    id: 29716/ebe3e059-c8d4-46a1-adc1-20e0ebd9f44f
     localID: ebe3e059-c8d4-46a1-adc1-20e0ebd9f44f
     parent: {fileID: 11410102}
     mode: 0

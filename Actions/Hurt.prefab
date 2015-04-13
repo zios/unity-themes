@@ -26,12 +26,7 @@ GameObject:
   - 114: {fileID: 11495978}
   - 114: {fileID: 11467030}
   - 114: {fileID: 11445666}
-  - 114: {fileID: 11461506}
-  - 114: {fileID: 11496008}
-  - 114: {fileID: 11493710}
   - 114: {fileID: 11496146}
-  - 114: {fileID: 11496668}
-  - 114: {fileID: 11445654}
   - 114: {fileID: 11407560}
   - 114: {fileID: 11448054}
   - 114: {fileID: 11418024}
@@ -47,79 +42,45 @@ GameObject:
   - 114: {fileID: 11441842}
   - 114: {fileID: 11467068}
   - 114: {fileID: 11435012}
-  - 114: {fileID: 11482098}
-  - 114: {fileID: 11424610}
-  - 114: {fileID: 11434136}
-  - 114: {fileID: 11483072}
-  - 114: {fileID: 11466598}
-  - 114: {fileID: 11464546}
-  - 114: {fileID: 11416778}
   - 114: {fileID: 11429284}
   - 114: {fileID: 11411822}
   - 114: {fileID: 11467454}
-  - 114: {fileID: 11435748}
-  - 114: {fileID: 11411666}
-  - 114: {fileID: 11432810}
-  - 114: {fileID: 11440730}
-  - 114: {fileID: 11407952}
-  - 114: {fileID: 11440728}
-  - 114: {fileID: 11421112}
-  - 114: {fileID: 11456340}
-  - 114: {fileID: 11431012}
-  - 114: {fileID: 11442712}
-  - 114: {fileID: 11460176}
-  - 114: {fileID: 11429844}
-  - 114: {fileID: 11477384}
-  - 114: {fileID: 11497908}
-  - 114: {fileID: 11488480}
-  - 114: {fileID: 11478788}
-  - 114: {fileID: 11434458}
-  - 114: {fileID: 11471200}
-  - 114: {fileID: 11415108}
-  - 114: {fileID: 11420950}
-  - 114: {fileID: 11412476}
-  - 114: {fileID: 11407192}
-  - 114: {fileID: 11447858}
-  - 114: {fileID: 11474218}
-  - 114: {fileID: 11422600}
-  - 114: {fileID: 11450088}
   - 114: {fileID: 11499498}
   - 114: {fileID: 11433772}
-  - 114: {fileID: 11411694}
-  - 114: {fileID: 11446950}
-  - 114: {fileID: 11499570}
-  - 114: {fileID: 11486900}
-  - 114: {fileID: 11400258}
-  - 114: {fileID: 11450418}
-  - 114: {fileID: 11441176}
-  - 114: {fileID: 11417708}
-  - 114: {fileID: 11460310}
-  - 114: {fileID: 11481694}
-  - 114: {fileID: 11409788}
-  - 114: {fileID: 11441646}
-  - 114: {fileID: 11480878}
-  - 114: {fileID: 11496740}
-  - 114: {fileID: 11419050}
-  - 114: {fileID: 11442550}
-  - 114: {fileID: 11479982}
-  - 114: {fileID: 11414354}
-  - 114: {fileID: 11432400}
-  - 114: {fileID: 11425618}
-  - 114: {fileID: 11443218}
-  - 114: {fileID: 11484648}
   - 114: {fileID: 11445576}
-  - 114: {fileID: 11495878}
-  - 114: {fileID: 11457634}
-  - 114: {fileID: 11443730}
-  - 114: {fileID: 11436548}
   - 114: {fileID: 11481392}
-  - 114: {fileID: 11458038}
-  - 114: {fileID: 11447918}
-  - 114: {fileID: 11435564}
-  - 114: {fileID: 11432080}
-  - 114: {fileID: 11434854}
-  - 114: {fileID: 11462990}
-  - 114: {fileID: 11423350}
+  - 114: {fileID: 11490038}
+  - 114: {fileID: 11416886}
+  - 114: {fileID: 11457428}
+  - 114: {fileID: 11478084}
+  - 114: {fileID: 11447554}
+  - 114: {fileID: 11463156}
+  - 114: {fileID: 11491640}
+  - 114: {fileID: 11410222}
+  - 114: {fileID: 11499330}
+  - 114: {fileID: 11474480}
+  - 114: {fileID: 11419866}
+  - 114: {fileID: 11417108}
+  - 114: {fileID: 11478524}
+  - 114: {fileID: 11464154}
+  - 114: {fileID: 11468684}
+  - 114: {fileID: 11452426}
+  - 114: {fileID: 11454498}
+  - 114: {fileID: 11410594}
+  - 114: {fileID: 11482234}
+  - 114: {fileID: 11487504}
+  - 114: {fileID: 11470190}
+  - 114: {fileID: 11482180}
+  - 114: {fileID: 11497232}
+  - 114: {fileID: 11469578}
+  - 114: {fileID: 11463590}
+  - 114: {fileID: 11412882}
+  - 114: {fileID: 11429528}
+  - 114: {fileID: 11446696}
+  - 114: {fileID: 11431970}
+  - 114: {fileID: 11439444}
+  - 114: {fileID: 11415520}
+  - 114: {fileID: 11401202}
   m_Layer: 0
   m_Name: Main
   m_TagString: Untagged
@@ -136,17 +97,17 @@ GameObject:
   m_Component:
   - 4: {fileID: 416188}
   - 114: {fileID: 11404472}
-  - 114: {fileID: 11457084}
   - 114: {fileID: 11438374}
   - 114: {fileID: 11426186}
   - 114: {fileID: 11401886}
-  - 114: {fileID: 11481440}
   - 114: {fileID: 11418022}
   - 114: {fileID: 11451232}
   - 114: {fileID: 11415852}
-  - 114: {fileID: 11494096}
   - 114: {fileID: 11459950}
-  - 114: {fileID: 11492184}
+  - 114: {fileID: 11421462}
+  - 114: {fileID: 11446332}
+  - 114: {fileID: 11405560}
+  - 114: {fileID: 11458246}
   m_Layer: 0
   m_Name: '@Settings'
   m_TagString: Untagged
@@ -164,8 +125,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 417756}
   - {fileID: 416188}
+  - {fileID: 417756}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &416188
@@ -179,7 +140,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 401302}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!4 &417756
 Transform:
   m_ObjectHideFlags: 1
@@ -191,59 +152,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 401302}
-  m_RootOrder: 0
---- !u!114 &11400258
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Float Data
-  target:
-    special: []
-    specialNames: []
-    search: 
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
-    mode: 0
-  usage: 0
-  path: Dummy Hurt Check/Offset/X/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: X
-    path: Dummy Hurt Check/Offset/X
-    id: -21552/ec624c82-ea00-47e7-986c-204d89f89ea1
-    localID: ec624c82-ea00-47e7-986c-204d89f89ea1
-    parent: {fileID: 11493710}
-    mode: 0
-    data:
-    - {fileID: 11400258}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 0
+  m_RootOrder: 1
 --- !u!114 &11400798
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187420}
@@ -268,12 +180,61 @@ MonoBehaviour:
   attribute:
     name: Requirable
     path: '@Ready/Requirable'
-    id: -21558/3b44df59-2d63-48e8-8a32-bde98e6c3f05
+    id: -2916/3b44df59-2d63-48e8-8a32-bde98e6c3f05
     localID: 3b44df59-2d63-48e8-8a32-bde98e6c3f05
     parent: {fileID: 11445666}
     mode: 0
     data:
     - {fileID: 11400798}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 1
+--- !u!114 &11401202
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 187420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Damage Duration/Requirable/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Requirable
+    path: Damage Duration/Requirable
+    id: -166820/d6adf382-20b7-4d86-93e1-8ce708a899ec
+    localID: d6adf382-20b7-4d86-93e1-8ce708a899ec
+    parent: {fileID: 11497232}
+    mode: 0
+    data:
+    - {fileID: 11401202}
     dataB: []
     dataC: []
   attributeRaw:
@@ -306,7 +267,7 @@ MonoBehaviour:
     info:
       name: Visuals
       path: Visuals
-      id: -21534/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+      id: -3000/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
       localID: 33bddd78-c7f6-40fe-94d8-1637fbd7fa73
       parent: {fileID: 11401886}
       mode: 0
@@ -331,7 +292,7 @@ MonoBehaviour:
     info:
       name: Animation
       path: Animation
-      id: -21542/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
+      id: -2994/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
       localID: 7e894ef6-a99f-450f-b42a-e1aa6c29abb9
       parent: {fileID: 11404472}
       mode: 0
@@ -340,58 +301,34 @@ MonoBehaviour:
       dataB: []
       dataC: []
   remember: 0
---- !u!114 &11407192
+--- !u!114 &11405560
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
+  m_GameObject: {fileID: 190592}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Script: {fileID: 11500000, guid: 73460de1a42c5d64884ae83214747f38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alias: Attribute Bool Data
-  target:
-    special: []
-    specialNames: []
-    search: 
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
-    mode: 0
-  usage: 0
-  path: Dress Hurt Animation/Ready/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Ready
-    path: Dress Hurt Animation/Ready
-    id: -21556/246e11cf-0cdc-47b1-ba1f-790fc076e391
-    localID: 246e11cf-0cdc-47b1-ba1f-790fc076e391
-    parent: {fileID: 11461506}
-    mode: 0
-    data:
-    - {fileID: 11407192}
-    dataB: []
-    dataC: []
-  attributeRaw:
+  alias: Duration
+  value:
     info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
+      name: Duration
+      path: Duration
+      id: -236508/21536505-299e-4d76-89cd-91090c83fb08
+      localID: 21536505-299e-4d76-89cd-91090c83fb08
+      parent: {fileID: 11405560}
       mode: 0
-      data: []
+      data:
+      - {fileID: 11458246}
       dataB: []
       dataC: []
-  operation: 0
-  special: 0
-  value: 0
+  remember: 0
 --- !u!114 &11407560
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187420}
@@ -410,13 +347,13 @@ MonoBehaviour:
     parent: {fileID: 0}
     mode: 0
   usage: 0
-  path: Hurt/Active/0
+  path: Damage Jump/Active/0
   referenceID: 
   referencePath: 
   attribute:
     name: Active
-    path: Hurt/Active
-    id: -21572/68120be0-cb90-43be-ab6f-c42fe0a903ed
+    path: Damage Jump/Active
+    id: -2930/68120be0-cb90-43be-ab6f-c42fe0a903ed
     localID: 68120be0-cb90-43be-ab6f-c42fe0a903ed
     parent: {fileID: 11467030}
     mode: 0
@@ -438,9 +375,80 @@ MonoBehaviour:
   operation: 0
   special: 0
   value: 0
---- !u!114 &11407952
+--- !u!114 &11410222
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 187420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Game Object Data
+  target:
+    special:
+    - {fileID: 187420}
+    - {fileID: 187420}
+    - {fileID: 190592}
+    - {fileID: 190592}
+    - {fileID: 190592}
+    - {fileID: 190592}
+    - {fileID: 177750}
+    - {fileID: 187420}
+    - {fileID: 187420}
+    - {fileID: 187420}
+    - {fileID: 187420}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    - '[Owner]'
+    - '[Action]'
+    - '[ActionLink]'
+    - '[StateLink]'
+    search: ../@Settings
+    directObject: {fileID: 0}
+    searchObject: {fileID: 190592}
+    parent: {fileID: 11490038}
+    mode: 0
+  usage: 1
+  path: Knockback Force/Target/0
+  referenceID: -2996/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+  referencePath: Source
+  attribute:
+    name: Target
+    path: Knockback Force/Target
+    id: -3008/30aa99ca-29da-472e-9c8b-7f9283787689
+    localID: 30aa99ca-29da-472e-9c8b-7f9283787689
+    parent: {fileID: 11490038}
+    mode: 0
+    data:
+    - {fileID: 11410222}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: {fileID: 0}
+--- !u!114 &11410594
+MonoBehaviour:
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187420}
@@ -459,18 +467,18 @@ MonoBehaviour:
     parent: {fileID: 0}
     mode: 0
   usage: 0
-  path: Hurt Timer/Used/0
+  path: Damage Prepare/Used/0
   referenceID: 
   referencePath: 
   attribute:
     name: Used
-    path: Hurt Timer/Used
-    id: -21548/3fc3404f-0ee9-4783-ae36-6191e7dbd742
-    localID: 3fc3404f-0ee9-4783-ae36-6191e7dbd742
-    parent: {fileID: 11496668}
+    path: Damage Prepare/Used
+    id: -168516/3ea2aeed-dbb5-42da-83dd-3be2cb9e14d1
+    localID: 3ea2aeed-dbb5-42da-83dd-3be2cb9e14d1
+    parent: {fileID: 11478524}
     mode: 0
     data:
-    - {fileID: 11407952}
+    - {fileID: 11410594}
     dataB: []
     dataC: []
   attributeRaw:
@@ -487,156 +495,9 @@ MonoBehaviour:
   operation: 0
   special: 0
   value: 0
---- !u!114 &11409788
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Float Data
-  target:
-    special: []
-    specialNames: []
-    search: 
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
-    mode: 0
-  usage: 0
-  path: Dummy Hurt Check/Hit Normal/X/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: X
-    path: Dummy Hurt Check/Hit Normal/X
-    id: -21552/b04a5fd1-70aa-4ae4-8504-868aea4c389b
-    localID: b04a5fd1-70aa-4ae4-8504-868aea4c389b
-    parent: {fileID: 11493710}
-    mode: 0
-    data:
-    - {fileID: 11409788}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11411666
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Bool Data
-  target:
-    special: []
-    specialNames: []
-    search: 
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
-    mode: 0
-  usage: 0
-  path: Hurt Timer/Ready/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Ready
-    path: Hurt Timer/Ready
-    id: -21548/5d5bd731-995a-48c2-abcc-76d34327bf3f
-    localID: 5d5bd731-995a-48c2-abcc-76d34327bf3f
-    parent: {fileID: 11496668}
-    mode: 0
-    data:
-    - {fileID: 11411666}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11411694
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Float Data
-  target:
-    special: []
-    specialNames: []
-    search: 
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
-    mode: 0
-  usage: 0
-  path: Dummy Hurt Check/Distance/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Distance
-    path: Dummy Hurt Check/Distance
-    id: -21552/db8c0ace-ca4d-48f1-8bf4-6331228f9428
-    localID: db8c0ace-ca4d-48f1-8bf4-6331228f9428
-    parent: {fileID: 11493710}
-    mode: 0
-    data:
-    - {fileID: 11411694}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 1
 --- !u!114 &11411822
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187420}
@@ -661,7 +522,7 @@ MonoBehaviour:
   attribute:
     name: End While Unusable
     path: '@Ready/End While Unusable'
-    id: -21558/e7f25af8-bbb9-4069-ab45-a5213220446e
+    id: -2916/e7f25af8-bbb9-4069-ab45-a5213220446e
     localID: e7f25af8-bbb9-4069-ab45-a5213220446e
     parent: {fileID: 11445666}
     mode: 0
@@ -683,58 +544,9 @@ MonoBehaviour:
   operation: 0
   special: 0
   value: 0
---- !u!114 &11412476
+--- !u!114 &11412882
 MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Bool Data
-  target:
-    special: []
-    specialNames: []
-    search: 
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
-    mode: 0
-  usage: 0
-  path: Dress Hurt Animation/Requirable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Requirable
-    path: Dress Hurt Animation/Requirable
-    id: -21556/a0afda87-4d0a-4e7c-893c-065d354872a9
-    localID: a0afda87-4d0a-4e7c-893c-065d354872a9
-    parent: {fileID: 11461506}
-    mode: 0
-    data:
-    - {fileID: 11412476}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11414354
-MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187420}
@@ -745,26 +557,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alias: Attribute Float Data
   target:
-    special: []
-    specialNames: []
-    search: 
+    special:
+    - {fileID: 187420}
+    - {fileID: 187420}
+    - {fileID: 190592}
+    - {fileID: 190592}
+    - {fileID: 190592}
+    - {fileID: 190592}
+    - {fileID: 177750}
+    - {fileID: 187420}
+    - {fileID: 187420}
+    - {fileID: 187420}
+    - {fileID: 187420}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    - '[Owner]'
+    - '[Action]'
+    - '[ActionLink]'
+    - '[StateLink]'
+    search: ../@Settings
     directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
+    searchObject: {fileID: 190592}
+    parent: {fileID: 11497232}
     mode: 0
-  usage: 0
-  path: Toss Back/Amount/Z/0
-  referenceID: 
-  referencePath: 
+  usage: 1
+  path: Damage Duration/Seconds/0
+  referenceID: -236508/21536505-299e-4d76-89cd-91090c83fb08
+  referencePath: Duration
   attribute:
-    name: Z
-    path: Toss Back/Amount/Z
-    id: -21546/2a05a144-1b51-4ad7-9e47-ac86108a4f14
-    localID: 2a05a144-1b51-4ad7-9e47-ac86108a4f14
-    parent: {fileID: 11445654}
+    name: Seconds
+    path: Damage Duration/Seconds
+    id: -166820/41ddd285-14d9-4f38-80bc-eae00a54bc38
+    localID: 41ddd285-14d9-4f38-80bc-eae00a54bc38
+    parent: {fileID: 11497232}
     mode: 0
     data:
-    - {fileID: 11414354}
+    - {fileID: 11412882}
     dataB: []
     dataC: []
   attributeRaw:
@@ -781,9 +615,9 @@ MonoBehaviour:
   operation: 0
   special: 0
   value: 0
---- !u!114 &11415108
+--- !u!114 &11415520
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187420}
@@ -802,18 +636,18 @@ MonoBehaviour:
     parent: {fileID: 0}
     mode: 0
   usage: 0
-  path: Dress Hurt Animation (Vertex)/Used/0
+  path: Damage Duration/Ready/0
   referenceID: 
   referencePath: 
   attribute:
-    name: Used
-    path: Dress Hurt Animation (Vertex)/Used
-    id: -21554/17bf1040-1634-44fa-98e1-5ca6b0b1c883
-    localID: 17bf1040-1634-44fa-98e1-5ca6b0b1c883
-    parent: {fileID: 11496008}
+    name: Ready
+    path: Damage Duration/Ready
+    id: -166820/3e2ae606-e0a3-41b3-899b-5d73cd2308dc
+    localID: 3e2ae606-e0a3-41b3-899b-5d73cd2308dc
+    parent: {fileID: 11497232}
     mode: 0
     data:
-    - {fileID: 11415108}
+    - {fileID: 11415520}
     dataB: []
     dataC: []
   attributeRaw:
@@ -832,7 +666,7 @@ MonoBehaviour:
   value: 0
 --- !u!114 &11415852
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 190592}
@@ -848,8 +682,8 @@ MonoBehaviour:
     - {fileID: 190592}
     - {fileID: 187420}
     - {fileID: 187420}
-    - {fileID: 190592}
-    - {fileID: 190592}
+    - {fileID: 187420}
+    - {fileID: 187420}
     - {fileID: 177750}
     specialNames:
     - '[This]'
@@ -859,7 +693,7 @@ MonoBehaviour:
     - '[NextEnabled]'
     - '[PreviousEnabled]'
     - '[Root]'
-    search: ../../../Visuals
+    search: ../../../../Visuals
     directObject: {fileID: 0}
     searchObject: {fileID: 0}
     parent: {fileID: 11401886}
@@ -871,7 +705,7 @@ MonoBehaviour:
   attribute:
     name: Visuals
     path: Visuals
-    id: -21534/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+    id: -3000/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
     localID: 33bddd78-c7f6-40fe-94d8-1637fbd7fa73
     parent: {fileID: 11401886}
     mode: 0
@@ -893,9 +727,9 @@ MonoBehaviour:
   operation: 0
   special: 0
   value: {fileID: 0}
---- !u!114 &11416778
+--- !u!114 &11416886
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187420}
@@ -914,18 +748,18 @@ MonoBehaviour:
     parent: {fileID: 0}
     mode: 0
   usage: 0
-  path: Dummy Hurt Check/End While Unusable/0
+  path: Knockback Force/Requirable/0
   referenceID: 
   referencePath: 
   attribute:
-    name: End While Unusable
-    path: Dummy Hurt Check/End While Unusable
-    id: -21552/3d8f6a8b-4cef-4794-9fe0-5b6db37f4714
-    localID: 3d8f6a8b-4cef-4794-9fe0-5b6db37f4714
-    parent: {fileID: 11493710}
+    name: Requirable
+    path: Knockback Force/Requirable
+    id: -3008/3d2b0df2-473d-4d66-822a-53f4bff04ea4
+    localID: 3d2b0df2-473d-4d66-822a-53f4bff04ea4
+    parent: {fileID: 11490038}
     mode: 0
     data:
-    - {fileID: 11416778}
+    - {fileID: 11416886}
     dataB: []
     dataC: []
   attributeRaw:
@@ -941,10 +775,10 @@ MonoBehaviour:
       dataC: []
   operation: 0
   special: 0
-  value: 0
---- !u!114 &11417708
+  value: 1
+--- !u!114 &11417108
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187420}
@@ -963,18 +797,18 @@ MonoBehaviour:
     parent: {fileID: 0}
     mode: 0
   usage: 0
-  path: Dummy Hurt Check/Hit Point/X/0
+  path: Knockback Force/Amount/Z/0
   referenceID: 
   referencePath: 
   attribute:
-    name: X
-    path: Dummy Hurt Check/Hit Point/X
-    id: -21552/32134fff-6db8-4114-b9cb-de650b94c97c
-    localID: 32134fff-6db8-4114-b9cb-de650b94c97c
-    parent: {fileID: 11493710}
+    name: Z
+    path: Knockback Force/Amount/Z
+    id: -3008/77fb3c8a-19ba-40c2-82d0-1885cfd8f2e7
+    localID: 77fb3c8a-19ba-40c2-82d0-1885cfd8f2e7
+    parent: {fileID: 11490038}
     mode: 0
     data:
-    - {fileID: 11417708}
+    - {fileID: 11417108}
     dataB: []
     dataC: []
   attributeRaw:
@@ -993,7 +827,7 @@ MonoBehaviour:
   value: 0
 --- !u!114 &11418022
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 190592}
@@ -1018,7 +852,7 @@ MonoBehaviour:
   attribute:
     name: Timer
     path: Timer
-    id: -21536/36e06670-e99b-4c51-a366-51346402a31d
+    id: -2998/36e06670-e99b-4c51-a366-51346402a31d
     localID: 36e06670-e99b-4c51-a366-51346402a31d
     parent: {fileID: 11426186}
     mode: 0
@@ -1039,10 +873,10 @@ MonoBehaviour:
       dataC: []
   operation: 0
   special: 0
-  value: 2
+  value: .219999999
 --- !u!114 &11418024
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187420}
@@ -1061,13 +895,13 @@ MonoBehaviour:
     parent: {fileID: 0}
     mode: 0
   usage: 0
-  path: Hurt/Ready/0
+  path: Damage Jump/Ready/0
   referenceID: 
   referencePath: 
   attribute:
     name: Ready
-    path: Hurt/Ready
-    id: -21572/1e06ad52-3412-4764-a6e1-f07e9ff4fe05
+    path: Damage Jump/Ready
+    id: -2930/1e06ad52-3412-4764-a6e1-f07e9ff4fe05
     localID: 1e06ad52-3412-4764-a6e1-f07e9ff4fe05
     parent: {fileID: 11467030}
     mode: 0
@@ -1089,325 +923,9 @@ MonoBehaviour:
   operation: 0
   special: 0
   value: 0
---- !u!114 &11419050
+--- !u!114 &11419866
 MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Float Data
-  target:
-    special:
-    - {fileID: 187420}
-    - {fileID: 187420}
-    - {fileID: 190592}
-    - {fileID: 190592}
-    - {fileID: 187420}
-    - {fileID: 187420}
-    - {fileID: 177750}
-    - {fileID: 187420}
-    - {fileID: 187420}
-    - {fileID: 187420}
-    - {fileID: 187420}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
-    - '[Owner]'
-    - '[Action]'
-    - '[ActionLink]'
-    - '[StateLink]'
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 11496668}
-    mode: 0
-  usage: 1
-  path: Hurt Timer/Seconds/0
-  referenceID: -4822/36e06670-e99b-4c51-a366-51346402a31d
-  referencePath: Timer
-  attribute:
-    name: Seconds
-    path: Hurt Timer/Seconds
-    id: -21548/3578a332-9571-4584-a1bf-95eafa1c8055
-    localID: 3578a332-9571-4584-a1bf-95eafa1c8055
-    parent: {fileID: 11496668}
-    mode: 0
-    data:
-    - {fileID: 11419050}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 2
---- !u!114 &11420950
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Bool Data
-  target:
-    special: []
-    specialNames: []
-    search: 
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
-    mode: 0
-  usage: 0
-  path: Dress Hurt Animation (Vertex)/End While Unusable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: End While Unusable
-    path: Dress Hurt Animation (Vertex)/End While Unusable
-    id: -21554/c4c5a6e3-a635-4a1a-8e8a-a30ecc45e210
-    localID: c4c5a6e3-a635-4a1a-8e8a-a30ecc45e210
-    parent: {fileID: 11496008}
-    mode: 0
-    data:
-    - {fileID: 11420950}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11421112
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Bool Data
-  target:
-    special: []
-    specialNames: []
-    search: 
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
-    mode: 0
-  usage: 0
-  path: Hurt Timer/Is Started/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Is Started
-    path: Hurt Timer/Is Started
-    id: -21548/b2e29298-a283-4a0d-83e7-d355dfd3fb6b
-    localID: b2e29298-a283-4a0d-83e7-d355dfd3fb6b
-    parent: {fileID: 11496668}
-    mode: 0
-    data:
-    - {fileID: 11421112}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11422600
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Bool Data
-  target:
-    special: []
-    specialNames: []
-    search: 
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
-    mode: 0
-  usage: 0
-  path: Dress Hurt Animation/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: Dress Hurt Animation/Used
-    id: -21556/509f9000-b4f1-4e2e-b441-2d3a0b4dcc4f
-    localID: 509f9000-b4f1-4e2e-b441-2d3a0b4dcc4f
-    parent: {fileID: 11461506}
-    mode: 0
-    data:
-    - {fileID: 11422600}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11423350
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bd276b9f61cc614aaa69e18d0ef39ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Vector3 Data
-  target:
-    special: []
-    specialNames: []
-    search: 
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
-    mode: 0
-  usage: 0
-  path: Toss Back/Amount/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Amount
-    path: Toss Back/Amount
-    id: -21546/89e96359-f3a1-4140-b2df-48df7d06d76b
-    localID: 89e96359-f3a1-4140-b2df-48df7d06d76b
-    parent: {fileID: 11445654}
-    mode: 0
-    data:
-    - {fileID: 11423350}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: {x: 0, y: .0500000007, z: -.0500000007}
---- !u!114 &11424610
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Bool Data
-  target:
-    special: []
-    specialNames: []
-    search: 
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
-    mode: 0
-  usage: 0
-  path: Dummy Hurt Check/Requirable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Requirable
-    path: Dummy Hurt Check/Requirable
-    id: -21552/a0746096-2bcf-40b8-a4be-fb739c0b29d7
-    localID: a0746096-2bcf-40b8-a4be-fb739c0b29d7
-    parent: {fileID: 11493710}
-    mode: 0
-    data:
-    - {fileID: 11424610}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11425618
-MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187420}
@@ -1426,18 +944,18 @@ MonoBehaviour:
     parent: {fileID: 0}
     mode: 0
   usage: 0
-  path: Dress Hurt Animation (Vertex)/Weight/0
+  path: Knockback Force/Amount/Y/0
   referenceID: 
   referencePath: 
   attribute:
-    name: Weight
-    path: Dress Hurt Animation (Vertex)/Weight
-    id: -21554/a9d14fc4-a849-4304-b320-b6860072d8a9
-    localID: a9d14fc4-a849-4304-b320-b6860072d8a9
-    parent: {fileID: 11496008}
+    name: Y
+    path: Knockback Force/Amount/Y
+    id: -3008/4c9c283e-967e-4f52-b44d-7b46f557908b
+    localID: 4c9c283e-967e-4f52-b44d-7b46f557908b
+    parent: {fileID: 11490038}
     mode: 0
     data:
-    - {fileID: 11425618}
+    - {fileID: 11419866}
     dataB: []
     dataC: []
   attributeRaw:
@@ -1453,7 +971,32 @@ MonoBehaviour:
       dataC: []
   operation: 0
   special: 0
-  value: 1
+  value: 0
+--- !u!114 &11421462
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 190592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73460de1a42c5d64884ae83214747f38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Animation Speed
+  value:
+    info:
+      name: Animation Speed
+      path: Animation Speed
+      id: -3006/ec51a466-34a5-486c-9fbf-4e55a0f2341a
+      localID: ec51a466-34a5-486c-9fbf-4e55a0f2341a
+      parent: {fileID: 11421462}
+      mode: 0
+      data:
+      - {fileID: 11446332}
+      dataB: []
+      dataC: []
+  remember: 0
 --- !u!114 &11426186
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1470,7 +1013,7 @@ MonoBehaviour:
     info:
       name: Timer
       path: Timer
-      id: -21536/36e06670-e99b-4c51-a366-51346402a31d
+      id: -2998/36e06670-e99b-4c51-a366-51346402a31d
       localID: 36e06670-e99b-4c51-a366-51346402a31d
       parent: {fileID: 11426186}
       mode: 0
@@ -1481,7 +1024,7 @@ MonoBehaviour:
   remember: 0
 --- !u!114 &11429284
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187420}
@@ -1500,13 +1043,13 @@ MonoBehaviour:
     parent: {fileID: 0}
     mode: 0
   usage: 0
-  path: Hurt Animation/End While Unusable/0
+  path: Damage Animation/End While Unusable/0
   referenceID: 
   referencePath: 
   attribute:
     name: End While Unusable
-    path: Hurt Animation/End While Unusable
-    id: -21550/40edcd1a-6eba-4d49-8f1f-3daae3e71030
+    path: Damage Animation/End While Unusable
+    id: -3002/40edcd1a-6eba-4d49-8f1f-3daae3e71030
     localID: 40edcd1a-6eba-4d49-8f1f-3daae3e71030
     parent: {fileID: 11496146}
     mode: 0
@@ -1528,9 +1071,9 @@ MonoBehaviour:
   operation: 0
   special: 0
   value: 0
---- !u!114 &11429844
+--- !u!114 &11429528
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187420}
@@ -1549,18 +1092,18 @@ MonoBehaviour:
     parent: {fileID: 0}
     mode: 0
   usage: 0
-  path: Toss Back/Active/0
+  path: Damage Duration/End While Unusable/0
   referenceID: 
   referencePath: 
   attribute:
-    name: Active
-    path: Toss Back/Active
-    id: -21546/3b085fe8-9797-4156-9ae3-8ad5881b1177
-    localID: 3b085fe8-9797-4156-9ae3-8ad5881b1177
-    parent: {fileID: 11445654}
+    name: End While Unusable
+    path: Damage Duration/End While Unusable
+    id: -166820/673de777-8d3c-402d-86db-fd67e66e77d8
+    localID: 673de777-8d3c-402d-86db-fd67e66e77d8
+    parent: {fileID: 11497232}
     mode: 0
     data:
-    - {fileID: 11429844}
+    - {fileID: 11429528}
     dataB: []
     dataC: []
   attributeRaw:
@@ -1577,9 +1120,9 @@ MonoBehaviour:
   operation: 0
   special: 0
   value: 0
---- !u!114 &11431012
+--- !u!114 &11431970
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187420}
@@ -1598,165 +1141,18 @@ MonoBehaviour:
     parent: {fileID: 0}
     mode: 0
   usage: 0
-  path: Toss Back/Requirable/0
+  path: Damage Duration/Active/0
   referenceID: 
   referencePath: 
   attribute:
-    name: Requirable
-    path: Toss Back/Requirable
-    id: -21546/d2427da7-8e16-4aa9-b99e-884ad42ffcff
-    localID: d2427da7-8e16-4aa9-b99e-884ad42ffcff
-    parent: {fileID: 11445654}
+    name: Active
+    path: Damage Duration/Active
+    id: -166820/f46bdcb6-cf32-41f8-9a27-3b3725cb8006
+    localID: f46bdcb6-cf32-41f8-9a27-3b3725cb8006
+    parent: {fileID: 11497232}
     mode: 0
     data:
-    - {fileID: 11431012}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11432080
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bd276b9f61cc614aaa69e18d0ef39ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Vector3 Data
-  target:
-    special: []
-    specialNames: []
-    search: 
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
-    mode: 0
-  usage: 0
-  path: Dummy Hurt Check/Offset/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Offset
-    path: Dummy Hurt Check/Offset
-    id: -21552/9b16fa96-2f0d-42a5-8bfd-a5d51d07cc76
-    localID: 9b16fa96-2f0d-42a5-8bfd-a5d51d07cc76
-    parent: {fileID: 11493710}
-    mode: 0
-    data:
-    - {fileID: 11432080}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: {x: 0, y: .899999976, z: 0}
---- !u!114 &11432400
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Float Data
-  target:
-    special: []
-    specialNames: []
-    search: 
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
-    mode: 0
-  usage: 0
-  path: Dress Hurt Animation (Vertex)/Speed/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Speed
-    path: Dress Hurt Animation (Vertex)/Speed
-    id: -21554/bd842059-9882-466c-a7f6-944eb55c1418
-    localID: bd842059-9882-466c-a7f6-944eb55c1418
-    parent: {fileID: 11496008}
-    mode: 0
-    data:
-    - {fileID: 11432400}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11432810
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Bool Data
-  target:
-    special: []
-    specialNames: []
-    search: 
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
-    mode: 0
-  usage: 0
-  path: Hurt Timer/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: Hurt Timer/Usable
-    id: -21548/047b30c6-9e05-4527-8afd-fa972e63097e
-    localID: 047b30c6-9e05-4527-8afd-fa972e63097e
-    parent: {fileID: 11496668}
-    mode: 0
-    data:
-    - {fileID: 11432810}
+    - {fileID: 11431970}
     dataB: []
     dataC: []
   attributeRaw:
@@ -1775,7 +1171,7 @@ MonoBehaviour:
   value: 0
 --- !u!114 &11433772
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187420}
@@ -1794,13 +1190,13 @@ MonoBehaviour:
     parent: {fileID: 0}
     mode: 0
   usage: 0
-  path: Hurt Animation/Weight/0
+  path: Damage Animation/Weight/0
   referenceID: 
   referencePath: 
   attribute:
     name: Weight
-    path: Hurt Animation/Weight
-    id: -21550/6dc76b7e-8264-4551-8778-9b937f8d4248
+    path: Damage Animation/Weight
+    id: -3002/6dc76b7e-8264-4551-8778-9b937f8d4248
     localID: 6dc76b7e-8264-4551-8778-9b937f8d4248
     parent: {fileID: 11496146}
     mode: 0
@@ -1822,156 +1218,9 @@ MonoBehaviour:
   operation: 0
   special: 0
   value: 1
---- !u!114 &11434136
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Bool Data
-  target:
-    special: []
-    specialNames: []
-    search: 
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
-    mode: 0
-  usage: 0
-  path: Dummy Hurt Check/Ready/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Ready
-    path: Dummy Hurt Check/Ready
-    id: -21552/6819f913-e5fe-4366-92a8-a213be1d8dfe
-    localID: 6819f913-e5fe-4366-92a8-a213be1d8dfe
-    parent: {fileID: 11493710}
-    mode: 0
-    data:
-    - {fileID: 11434136}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11434458
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Bool Data
-  target:
-    special: []
-    specialNames: []
-    search: 
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
-    mode: 0
-  usage: 0
-  path: Dress Hurt Animation (Vertex)/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: Dress Hurt Animation (Vertex)/Usable
-    id: -21554/d56e4ff9-8278-4a46-b5a4-17a2ccad9b7a
-    localID: d56e4ff9-8278-4a46-b5a4-17a2ccad9b7a
-    parent: {fileID: 11496008}
-    mode: 0
-    data:
-    - {fileID: 11434458}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11434854
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bd276b9f61cc614aaa69e18d0ef39ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Vector3 Data
-  target:
-    special: []
-    specialNames: []
-    search: 
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
-    mode: 0
-  usage: 0
-  path: Dummy Hurt Check/Hit Point/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Hit Point
-    path: Dummy Hurt Check/Hit Point
-    id: -21552/36bb1ab7-a52b-44ef-8496-2bc76e3ae01c
-    localID: 36bb1ab7-a52b-44ef-8496-2bc76e3ae01c
-    parent: {fileID: 11493710}
-    mode: 0
-    data:
-    - {fileID: 11434854}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: {x: 0, y: 0, z: 0}
 --- !u!114 &11435012
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187420}
@@ -1990,13 +1239,13 @@ MonoBehaviour:
     parent: {fileID: 0}
     mode: 0
   usage: 0
-  path: Hurt Animation/Used/0
+  path: Damage Animation/Used/0
   referenceID: 
   referencePath: 
   attribute:
     name: Used
-    path: Hurt Animation/Used
-    id: -21550/7b2a7695-5ad5-4171-b9cf-35c04924a8ba
+    path: Damage Animation/Used
+    id: -3002/7b2a7695-5ad5-4171-b9cf-35c04924a8ba
     localID: 7b2a7695-5ad5-4171-b9cf-35c04924a8ba
     parent: {fileID: 11496146}
     mode: 0
@@ -2018,175 +1267,6 @@ MonoBehaviour:
   operation: 0
   special: 0
   value: 0
---- !u!114 &11435564
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bd276b9f61cc614aaa69e18d0ef39ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Vector3 Data
-  target:
-    special: []
-    specialNames: []
-    search: 
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
-    mode: 0
-  usage: 0
-  path: Dummy Hurt Check/Direction/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Direction
-    path: Dummy Hurt Check/Direction
-    id: -21552/917b6b05-de4a-435c-9d39-aa18f7aa2d07
-    localID: 917b6b05-de4a-435c-9d39-aa18f7aa2d07
-    parent: {fileID: 11493710}
-    mode: 0
-    data:
-    - {fileID: 11435564}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: {x: 0, y: 0, z: .699999988}
---- !u!114 &11435748
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Bool Data
-  target:
-    special: []
-    specialNames: []
-    search: 
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
-    mode: 0
-  usage: 0
-  path: Hurt Timer/Requirable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Requirable
-    path: Hurt Timer/Requirable
-    id: -21548/024fb2a1-7620-4d2f-b906-c564178e1a03
-    localID: 024fb2a1-7620-4d2f-b906-c564178e1a03
-    parent: {fileID: 11496668}
-    mode: 0
-    data:
-    - {fileID: 11435748}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11436548
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Game Object Data
-  target:
-    special:
-    - {fileID: 187420}
-    - {fileID: 187420}
-    - {fileID: 190592}
-    - {fileID: 190592}
-    - {fileID: 187420}
-    - {fileID: 187420}
-    - {fileID: 177750}
-    - {fileID: 187420}
-    - {fileID: 187420}
-    - {fileID: 187420}
-    - {fileID: 187420}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
-    - '[Owner]'
-    - '[Action]'
-    - '[ActionLink]'
-    - '[StateLink]'
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 11461506}
-    mode: 0
-  usage: 1
-  path: Dress Hurt Animation/Target/0
-  referenceID: -4826/f928cb06-a579-461d-9880-53ddadb448dc
-  referencePath: Visuals (Secondary)
-  attribute:
-    name: Target
-    path: Dress Hurt Animation/Target
-    id: -21556/2958c4b4-74e0-4430-89c8-94fbc07b1985
-    localID: 2958c4b4-74e0-4430-89c8-94fbc07b1985
-    parent: {fileID: 11461506}
-    mode: 0
-    data:
-    - {fileID: 11436548}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: {fileID: 0}
 --- !u!114 &11438374
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2203,7 +1283,7 @@ MonoBehaviour:
     info:
       name: Source
       path: Source
-      id: -21538/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+      id: -2996/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
       localID: 0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
       parent: {fileID: 11438374}
       mode: 0
@@ -2214,7 +1294,7 @@ MonoBehaviour:
   remember: 0
 --- !u!114 &11438494
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187420}
@@ -2239,7 +1319,7 @@ MonoBehaviour:
   attribute:
     name: Active
     path: '@Ready/Active'
-    id: -21558/278a6529-aa95-47e2-b998-5fdf4596b0dd
+    id: -2916/278a6529-aa95-47e2-b998-5fdf4596b0dd
     localID: 278a6529-aa95-47e2-b998-5fdf4596b0dd
     parent: {fileID: 11445666}
     mode: 0
@@ -2263,7 +1343,7 @@ MonoBehaviour:
   value: 0
 --- !u!114 &11438616
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187420}
@@ -2282,13 +1362,13 @@ MonoBehaviour:
     parent: {fileID: 0}
     mode: 0
   usage: 0
-  path: Hurt Animation/Requirable/0
+  path: Damage Animation/Requirable/0
   referenceID: 
   referencePath: 
   attribute:
     name: Requirable
-    path: Hurt Animation/Requirable
-    id: -21550/5bc1fc7e-c726-499e-a3fa-b4319be38113
+    path: Damage Animation/Requirable
+    id: -3002/5bc1fc7e-c726-499e-a3fa-b4319be38113
     localID: 5bc1fc7e-c726-499e-a3fa-b4319be38113
     parent: {fileID: 11496146}
     mode: 0
@@ -2310,9 +1390,9 @@ MonoBehaviour:
   operation: 0
   special: 0
   value: 1
---- !u!114 &11440728
+--- !u!114 &11439444
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187420}
@@ -2331,67 +1411,18 @@ MonoBehaviour:
     parent: {fileID: 0}
     mode: 0
   usage: 0
-  path: Hurt Timer/End While Unusable/0
+  path: Damage Duration/Usable/0
   referenceID: 
   referencePath: 
   attribute:
-    name: End While Unusable
-    path: Hurt Timer/End While Unusable
-    id: -21548/1462d185-79d7-4b73-a5e5-a360db76ee35
-    localID: 1462d185-79d7-4b73-a5e5-a360db76ee35
-    parent: {fileID: 11496668}
+    name: Usable
+    path: Damage Duration/Usable
+    id: -166820/3f6545a7-db97-4462-aa06-0c8d7f177c0f
+    localID: 3f6545a7-db97-4462-aa06-0c8d7f177c0f
+    parent: {fileID: 11497232}
     mode: 0
     data:
-    - {fileID: 11440728}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11440730
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Bool Data
-  target:
-    special: []
-    specialNames: []
-    search: 
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
-    mode: 0
-  usage: 0
-  path: Hurt Timer/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: Hurt Timer/Active
-    id: -21548/1275d036-d40b-4e83-a26b-9b43a6eac7b2
-    localID: 1275d036-d40b-4e83-a26b-9b43a6eac7b2
-    parent: {fileID: 11496668}
-    mode: 0
-    data:
-    - {fileID: 11440730}
+    - {fileID: 11439444}
     dataB: []
     dataC: []
   attributeRaw:
@@ -2410,7 +1441,7 @@ MonoBehaviour:
   value: 0
 --- !u!114 &11441106
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187420}
@@ -2435,7 +1466,7 @@ MonoBehaviour:
   attribute:
     name: Usable
     path: '@Ready/Usable'
-    id: -21558/ccb2d153-b61c-4280-a5ae-c9e2a6d46b9b
+    id: -2916/ccb2d153-b61c-4280-a5ae-c9e2a6d46b9b
     localID: ccb2d153-b61c-4280-a5ae-c9e2a6d46b9b
     parent: {fileID: 11445666}
     mode: 0
@@ -2457,107 +1488,9 @@ MonoBehaviour:
   operation: 0
   special: 0
   value: 0
---- !u!114 &11441176
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Float Data
-  target:
-    special: []
-    specialNames: []
-    search: 
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
-    mode: 0
-  usage: 0
-  path: Dummy Hurt Check/Offset/Z/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Z
-    path: Dummy Hurt Check/Offset/Z
-    id: -21552/0560ab36-139a-4c5c-b000-4fa5324653d3
-    localID: 0560ab36-139a-4c5c-b000-4fa5324653d3
-    parent: {fileID: 11493710}
-    mode: 0
-    data:
-    - {fileID: 11441176}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11441646
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Float Data
-  target:
-    special: []
-    specialNames: []
-    search: 
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
-    mode: 0
-  usage: 0
-  path: Dummy Hurt Check/Hit Normal/Y/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Y
-    path: Dummy Hurt Check/Hit Normal/Y
-    id: -21552/3991af80-2b07-46eb-830e-5f7ae9b0f85f
-    localID: 3991af80-2b07-46eb-830e-5f7ae9b0f85f
-    parent: {fileID: 11493710}
-    mode: 0
-    data:
-    - {fileID: 11441646}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!114 &11441842
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187420}
@@ -2576,13 +1509,13 @@ MonoBehaviour:
     parent: {fileID: 0}
     mode: 0
   usage: 0
-  path: Hurt Animation/Ready/0
+  path: Damage Animation/Ready/0
   referenceID: 
   referencePath: 
   attribute:
     name: Ready
-    path: Hurt Animation/Ready
-    id: -21550/1c2a7db1-644e-4634-93dc-45876494e7fc
+    path: Damage Animation/Ready
+    id: -3002/1c2a7db1-644e-4634-93dc-45876494e7fc
     localID: 1c2a7db1-644e-4634-93dc-45876494e7fc
     parent: {fileID: 11496146}
     mode: 0
@@ -2604,227 +1537,9 @@ MonoBehaviour:
   operation: 0
   special: 0
   value: 1
---- !u!114 &11442550
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Float Data
-  target:
-    special: []
-    specialNames: []
-    search: 
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
-    mode: 0
-  usage: 0
-  path: Toss Back/Amount/X/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: X
-    path: Toss Back/Amount/X
-    id: -21546/30ba47cd-33b4-4861-85b5-b198bbd78686
-    localID: 30ba47cd-33b4-4861-85b5-b198bbd78686
-    parent: {fileID: 11445654}
-    mode: 0
-    data:
-    - {fileID: 11442550}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11442712
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Bool Data
-  target:
-    special: []
-    specialNames: []
-    search: 
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
-    mode: 0
-  usage: 0
-  path: Toss Back/Ready/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Ready
-    path: Toss Back/Ready
-    id: -21546/696cfef5-12fe-4b4f-bb5a-a12b8fe8072e
-    localID: 696cfef5-12fe-4b4f-bb5a-a12b8fe8072e
-    parent: {fileID: 11445654}
-    mode: 0
-    data:
-    - {fileID: 11442712}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11443218
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Float Data
-  target:
-    special: []
-    specialNames: []
-    search: 
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
-    mode: 0
-  usage: 0
-  path: Dress Hurt Animation/Speed/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Speed
-    path: Dress Hurt Animation/Speed
-    id: -21556/44b155ae-a910-4a0f-9a28-46ea4c5cdf56
-    localID: 44b155ae-a910-4a0f-9a28-46ea4c5cdf56
-    parent: {fileID: 11461506}
-    mode: 0
-    data:
-    - {fileID: 11443218}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11443730
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Game Object Data
-  target:
-    special:
-    - {fileID: 187420}
-    - {fileID: 187420}
-    - {fileID: 190592}
-    - {fileID: 190592}
-    - {fileID: 187420}
-    - {fileID: 187420}
-    - {fileID: 177750}
-    - {fileID: 187420}
-    - {fileID: 187420}
-    - {fileID: 187420}
-    - {fileID: 187420}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
-    - '[Owner]'
-    - '[Action]'
-    - '[ActionLink]'
-    - '[StateLink]'
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 11496008}
-    mode: 0
-  usage: 1
-  path: Dress Hurt Animation (Vertex)/Target/0
-  referenceID: -4826/f928cb06-a579-461d-9880-53ddadb448dc
-  referencePath: Visuals (Secondary)
-  attribute:
-    name: Target
-    path: Dress Hurt Animation (Vertex)/Target
-    id: -21554/6aa9e668-2ba5-4111-a08c-f9a4f30b584d
-    localID: 6aa9e668-2ba5-4111-a08c-f9a4f30b584d
-    parent: {fileID: 11496008}
-    mode: 0
-    data:
-    - {fileID: 11443730}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: {fileID: 0}
 --- !u!114 &11445576
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187420}
@@ -2840,8 +1555,8 @@ MonoBehaviour:
     - {fileID: 187420}
     - {fileID: 190592}
     - {fileID: 190592}
-    - {fileID: 187420}
-    - {fileID: 187420}
+    - {fileID: 190592}
+    - {fileID: 190592}
     - {fileID: 177750}
     - {fileID: 187420}
     - {fileID: 187420}
@@ -2861,17 +1576,17 @@ MonoBehaviour:
     - '[StateLink]'
     search: ../@Settings
     directObject: {fileID: 0}
-    searchObject: {fileID: 0}
+    searchObject: {fileID: 190592}
     parent: {fileID: 11496146}
     mode: 0
   usage: 1
-  path: Hurt Animation/Target/0
-  referenceID: -4824/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+  path: Damage Animation/Target/0
+  referenceID: -3000/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
   referencePath: Visuals
   attribute:
     name: Target
-    path: Hurt Animation/Target
-    id: -21550/929fa23f-bb73-4896-a360-319f0be2fe7d
+    path: Damage Animation/Target
+    id: -3002/929fa23f-bb73-4896-a360-319f0be2fe7d
     localID: 929fa23f-bb73-4896-a360-319f0be2fe7d
     parent: {fileID: 11496146}
     mode: 0
@@ -2893,154 +1608,6 @@ MonoBehaviour:
   operation: 0
   special: 0
   value: {fileID: 0}
---- !u!114 &11445654
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4ba437929f5bca41b28abb66b9f3cd0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Toss Back
-  rate: 1
-  id: -72274
-  requirable:
-    info:
-      name: Requirable
-      path: Toss Back/Requirable
-      id: -21546/d2427da7-8e16-4aa9-b99e-884ad42ffcff
-      localID: d2427da7-8e16-4aa9-b99e-884ad42ffcff
-      parent: {fileID: 11445654}
-      mode: 0
-      data:
-      - {fileID: 11431012}
-      dataB: []
-      dataC: []
-  ready:
-    info:
-      name: Ready
-      path: Toss Back/Ready
-      id: -21546/696cfef5-12fe-4b4f-bb5a-a12b8fe8072e
-      localID: 696cfef5-12fe-4b4f-bb5a-a12b8fe8072e
-      parent: {fileID: 11445654}
-      mode: 0
-      data:
-      - {fileID: 11442712}
-      dataB: []
-      dataC: []
-  usable:
-    info:
-      name: Usable
-      path: Toss Back/Usable
-      id: -21546/cb567c47-3772-4d6b-9ca2-2515bb840d41
-      localID: cb567c47-3772-4d6b-9ca2-2515bb840d41
-      parent: {fileID: 11445654}
-      mode: 0
-      data:
-      - {fileID: 11460176}
-      dataB: []
-      dataC: []
-  inUse:
-    info:
-      name: Active
-      path: Toss Back/Active
-      id: -21546/3b085fe8-9797-4156-9ae3-8ad5881b1177
-      localID: 3b085fe8-9797-4156-9ae3-8ad5881b1177
-      parent: {fileID: 11445654}
-      mode: 0
-      data:
-      - {fileID: 11429844}
-      dataB: []
-      dataC: []
-  used:
-    info:
-      name: Used
-      path: Toss Back/Used
-      id: -21546/e069282f-623f-4a5e-b9ce-a25908577f9c
-      localID: e069282f-623f-4a5e-b9ce-a25908577f9c
-      parent: {fileID: 11445654}
-      mode: 0
-      data:
-      - {fileID: 11477384}
-      dataB: []
-      dataC: []
-  endWhileUnusable:
-    info:
-      name: End While Unusable
-      path: Toss Back/End While Unusable
-      id: -21546/e0122c84-eb9c-4088-aded-be8c6010e65d
-      localID: e0122c84-eb9c-4088-aded-be8c6010e65d
-      parent: {fileID: 11445654}
-      mode: 0
-      data:
-      - {fileID: 11497908}
-      dataB: []
-      dataC: []
-  occurrence: 0
-  type: 1
-  amount:
-    info:
-      name: Amount
-      path: Toss Back/Amount
-      id: -21546/89e96359-f3a1-4140-b2df-48df7d06d76b
-      localID: 89e96359-f3a1-4140-b2df-48df7d06d76b
-      parent: {fileID: 11445654}
-      mode: 0
-      data:
-      - {fileID: 11423350}
-      dataB: []
-      dataC: []
-    x:
-      info:
-        name: X
-        path: Toss Back/Amount/X
-        id: -21546/30ba47cd-33b4-4861-85b5-b198bbd78686
-        localID: 30ba47cd-33b4-4861-85b5-b198bbd78686
-        parent: {fileID: 11445654}
-        mode: 0
-        data:
-        - {fileID: 11442550}
-        dataB: []
-        dataC: []
-    y:
-      info:
-        name: Y
-        path: Toss Back/Amount/Y
-        id: -21546/64781550-3143-4283-b9ea-6372a7100bb0
-        localID: 64781550-3143-4283-b9ea-6372a7100bb0
-        parent: {fileID: 11445654}
-        mode: 0
-        data:
-        - {fileID: 11479982}
-        dataB: []
-        dataC: []
-    z:
-      info:
-        name: Z
-        path: Toss Back/Amount/Z
-        id: -21546/2a05a144-1b51-4ad7-9e47-ac86108a4f14
-        localID: 2a05a144-1b51-4ad7-9e47-ac86108a4f14
-        parent: {fileID: 11445654}
-        mode: 0
-        data:
-        - {fileID: 11414354}
-        dataB: []
-        dataC: []
-  target:
-    info:
-      name: Target
-      path: Toss Back/Target
-      id: -21546/878c328d-a64b-4a83-8839-2b3e3ea0cf87
-      localID: 878c328d-a64b-4a83-8839-2b3e3ea0cf87
-      parent: {fileID: 11445654}
-      mode: 0
-      data:
-      - {fileID: 11457634}
-      dataB: []
-      dataC: []
 --- !u!114 &11445666
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3059,7 +1626,7 @@ MonoBehaviour:
     info:
       name: Requirable
       path: '@Ready/Requirable'
-      id: -21558/3b44df59-2d63-48e8-8a32-bde98e6c3f05
+      id: -2916/3b44df59-2d63-48e8-8a32-bde98e6c3f05
       localID: 3b44df59-2d63-48e8-8a32-bde98e6c3f05
       parent: {fileID: 11445666}
       mode: 0
@@ -3071,7 +1638,7 @@ MonoBehaviour:
     info:
       name: Ready
       path: '@Ready/Ready'
-      id: -21558/f227093d-18c6-4ab4-8f24-eb30760b1bb0
+      id: -2916/f227093d-18c6-4ab4-8f24-eb30760b1bb0
       localID: f227093d-18c6-4ab4-8f24-eb30760b1bb0
       parent: {fileID: 11445666}
       mode: 0
@@ -3083,7 +1650,7 @@ MonoBehaviour:
     info:
       name: Usable
       path: '@Ready/Usable'
-      id: -21558/ccb2d153-b61c-4280-a5ae-c9e2a6d46b9b
+      id: -2916/ccb2d153-b61c-4280-a5ae-c9e2a6d46b9b
       localID: ccb2d153-b61c-4280-a5ae-c9e2a6d46b9b
       parent: {fileID: 11445666}
       mode: 0
@@ -3095,7 +1662,7 @@ MonoBehaviour:
     info:
       name: Active
       path: '@Ready/Active'
-      id: -21558/278a6529-aa95-47e2-b998-5fdf4596b0dd
+      id: -2916/278a6529-aa95-47e2-b998-5fdf4596b0dd
       localID: 278a6529-aa95-47e2-b998-5fdf4596b0dd
       parent: {fileID: 11445666}
       mode: 0
@@ -3107,7 +1674,7 @@ MonoBehaviour:
     info:
       name: Used
       path: '@Ready/Used'
-      id: -21558/6f7fa066-a9dd-43a1-88d6-b3ab31f5fab8
+      id: -2916/6f7fa066-a9dd-43a1-88d6-b3ab31f5fab8
       localID: 6f7fa066-a9dd-43a1-88d6-b3ab31f5fab8
       parent: {fileID: 11445666}
       mode: 0
@@ -3119,7 +1686,7 @@ MonoBehaviour:
     info:
       name: End While Unusable
       path: '@Ready/End While Unusable'
-      id: -21558/e7f25af8-bbb9-4069-ab45-a5213220446e
+      id: -2916/e7f25af8-bbb9-4069-ab45-a5213220446e
       localID: e7f25af8-bbb9-4069-ab45-a5213220446e
       parent: {fileID: 11445666}
       mode: 0
@@ -3128,12 +1695,12 @@ MonoBehaviour:
       dataB: []
       dataC: []
   occurrence: 0
---- !u!114 &11446950
+--- !u!114 &11446332
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
+  m_GameObject: {fileID: 190592}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
@@ -3149,18 +1716,18 @@ MonoBehaviour:
     parent: {fileID: 0}
     mode: 0
   usage: 0
-  path: Dummy Hurt Check/Direction/X/0
+  path: Animation Speed/0
   referenceID: 
   referencePath: 
   attribute:
-    name: X
-    path: Dummy Hurt Check/Direction/X
-    id: -21552/abfcce77-5632-49ea-84dd-0c78957b26ca
-    localID: abfcce77-5632-49ea-84dd-0c78957b26ca
-    parent: {fileID: 11493710}
+    name: Animation Speed
+    path: Animation Speed
+    id: -3006/ec51a466-34a5-486c-9fbf-4e55a0f2341a
+    localID: ec51a466-34a5-486c-9fbf-4e55a0f2341a
+    parent: {fileID: 11421462}
     mode: 0
     data:
-    - {fileID: 11446950}
+    - {fileID: 11446332}
     dataB: []
     dataC: []
   attributeRaw:
@@ -3176,10 +1743,10 @@ MonoBehaviour:
       dataC: []
   operation: 0
   special: 0
-  value: 0
---- !u!114 &11447858
+  value: 1
+--- !u!114 &11446696
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187420}
@@ -3198,18 +1765,18 @@ MonoBehaviour:
     parent: {fileID: 0}
     mode: 0
   usage: 0
-  path: Dress Hurt Animation/Usable/0
+  path: Damage Duration/Used/0
   referenceID: 
   referencePath: 
   attribute:
-    name: Usable
-    path: Dress Hurt Animation/Usable
-    id: -21556/6f3a4246-c481-4294-82b5-7eaf4776b983
-    localID: 6f3a4246-c481-4294-82b5-7eaf4776b983
-    parent: {fileID: 11461506}
+    name: Used
+    path: Damage Duration/Used
+    id: -166820/12f507e2-4382-4a65-803a-b388d9152314
+    localID: 12f507e2-4382-4a65-803a-b388d9152314
+    parent: {fileID: 11497232}
     mode: 0
     data:
-    - {fileID: 11447858}
+    - {fileID: 11446696}
     dataB: []
     dataC: []
   attributeRaw:
@@ -3226,61 +1793,39 @@ MonoBehaviour:
   operation: 0
   special: 0
   value: 0
---- !u!114 &11447918
+--- !u!114 &11447554
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187420}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3e9984a5f3f19942be359930227796e, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alias: Attribute String Data
+  alias: Attribute Bool Data
   target:
-    special:
-    - {fileID: 187420}
-    - {fileID: 187420}
-    - {fileID: 190592}
-    - {fileID: 190592}
-    - {fileID: 187420}
-    - {fileID: 187420}
-    - {fileID: 177750}
-    - {fileID: 187420}
-    - {fileID: 187420}
-    - {fileID: 187420}
-    - {fileID: 187420}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
-    - '[Owner]'
-    - '[Action]'
-    - '[ActionLink]'
-    - '[StateLink]'
-    search: ../@Settings
+    special: []
+    specialNames: []
+    search: 
     directObject: {fileID: 0}
     searchObject: {fileID: 0}
-    parent: {fileID: 11461506}
+    parent: {fileID: 0}
     mode: 0
-  usage: 1
-  path: Dress Hurt Animation/Animation Name/0
-  referenceID: -4816/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
-  referencePath: Animation
+  usage: 0
+  path: Knockback Force/Active/0
+  referenceID: 
+  referencePath: 
   attribute:
-    name: Animation Name
-    path: Dress Hurt Animation/Animation Name
-    id: -21556/c684db1d-f435-426e-bce6-d590b2c6e35d
-    localID: c684db1d-f435-426e-bce6-d590b2c6e35d
-    parent: {fileID: 11461506}
+    name: Active
+    path: Knockback Force/Active
+    id: -3008/626d86bb-27da-40ca-a257-80d78d157de3
+    localID: 626d86bb-27da-40ca-a257-80d78d157de3
+    parent: {fileID: 11490038}
     mode: 0
     data:
-    - {fileID: 11447918}
+    - {fileID: 11447554}
     dataB: []
     dataC: []
   attributeRaw:
@@ -3296,13 +1841,10 @@ MonoBehaviour:
       dataC: []
   operation: 0
   special: 0
-  value: Hurt
-  characterLimit: 0
-  allowed: []
-  disallowed: []
+  value: 0
 --- !u!114 &11448054
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187420}
@@ -3321,13 +1863,13 @@ MonoBehaviour:
     parent: {fileID: 0}
     mode: 0
   usage: 0
-  path: Hurt/Requirable/0
+  path: Damage Jump/Requirable/0
   referenceID: 
   referencePath: 
   attribute:
     name: Requirable
-    path: Hurt/Requirable
-    id: -21572/39799801-d71e-4f45-8384-cf5837f1c1a3
+    path: Damage Jump/Requirable
+    id: -2930/39799801-d71e-4f45-8384-cf5837f1c1a3
     localID: 39799801-d71e-4f45-8384-cf5837f1c1a3
     parent: {fileID: 11467030}
     mode: 0
@@ -3349,107 +1891,9 @@ MonoBehaviour:
   operation: 0
   special: 0
   value: 1
---- !u!114 &11450088
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Bool Data
-  target:
-    special: []
-    specialNames: []
-    search: 
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
-    mode: 0
-  usage: 0
-  path: Dress Hurt Animation/End While Unusable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: End While Unusable
-    path: Dress Hurt Animation/End While Unusable
-    id: -21556/848f0963-e4e1-4820-828e-0e4b53f95752
-    localID: 848f0963-e4e1-4820-828e-0e4b53f95752
-    parent: {fileID: 11461506}
-    mode: 0
-    data:
-    - {fileID: 11450088}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11450418
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Float Data
-  target:
-    special: []
-    specialNames: []
-    search: 
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
-    mode: 0
-  usage: 0
-  path: Dummy Hurt Check/Offset/Y/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Y
-    path: Dummy Hurt Check/Offset/Y
-    id: -21552/2fb0121f-8b7e-41fb-ab4b-a41a787eb20c
-    localID: 2fb0121f-8b7e-41fb-ab4b-a41a787eb20c
-    parent: {fileID: 11493710}
-    mode: 0
-    data:
-    - {fileID: 11450418}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!114 &11451142
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187420}
@@ -3468,13 +1912,13 @@ MonoBehaviour:
     parent: {fileID: 0}
     mode: 0
   usage: 0
-  path: Hurt Animation/Active/0
+  path: Damage Animation/Active/0
   referenceID: 
   referencePath: 
   attribute:
     name: Active
-    path: Hurt Animation/Active
-    id: -21550/251dc569-644f-445d-9452-843638c3dd39
+    path: Damage Animation/Active
+    id: -3002/251dc569-644f-445d-9452-843638c3dd39
     localID: 251dc569-644f-445d-9452-843638c3dd39
     parent: {fileID: 11496146}
     mode: 0
@@ -3498,7 +1942,7 @@ MonoBehaviour:
   value: 0
 --- !u!114 &11451232
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 190592}
@@ -3514,8 +1958,8 @@ MonoBehaviour:
     - {fileID: 190592}
     - {fileID: 187420}
     - {fileID: 187420}
-    - {fileID: 190592}
-    - {fileID: 190592}
+    - {fileID: 187420}
+    - {fileID: 187420}
     - {fileID: 177750}
     specialNames:
     - '[This]'
@@ -3525,7 +1969,7 @@ MonoBehaviour:
     - '[NextEnabled]'
     - '[PreviousEnabled]'
     - '[Root]'
-    search: ../../..
+    search: ../../../..
     directObject: {fileID: 0}
     searchObject: {fileID: 0}
     parent: {fileID: 11438374}
@@ -3537,7 +1981,7 @@ MonoBehaviour:
   attribute:
     name: Source
     path: Source
-    id: -21538/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+    id: -2996/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
     localID: 0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
     parent: {fileID: 11438374}
     mode: 0
@@ -3559,9 +2003,80 @@ MonoBehaviour:
   operation: 0
   special: 0
   value: {fileID: 0}
+--- !u!114 &11452426
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 187420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Float Data
+  target:
+    special:
+    - {fileID: 187420}
+    - {fileID: 187420}
+    - {fileID: 190592}
+    - {fileID: 190592}
+    - {fileID: 190592}
+    - {fileID: 190592}
+    - {fileID: 177750}
+    - {fileID: 187420}
+    - {fileID: 187420}
+    - {fileID: 187420}
+    - {fileID: 187420}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    - '[Owner]'
+    - '[Action]'
+    - '[ActionLink]'
+    - '[StateLink]'
+    search: ../@Settings
+    directObject: {fileID: 0}
+    searchObject: {fileID: 190592}
+    parent: {fileID: 11478524}
+    mode: 0
+  usage: 1
+  path: Damage Prepare/Seconds/0
+  referenceID: -2998/36e06670-e99b-4c51-a366-51346402a31d
+  referencePath: Timer
+  attribute:
+    name: Seconds
+    path: Damage Prepare/Seconds
+    id: -168516/5dd312dc-0417-4122-a726-7efa128992bd
+    localID: 5dd312dc-0417-4122-a726-7efa128992bd
+    parent: {fileID: 11478524}
+    mode: 0
+    data:
+    - {fileID: 11452426}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: .219999999
 --- !u!114 &11453926
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187420}
@@ -3586,7 +2101,7 @@ MonoBehaviour:
   attribute:
     name: Ready
     path: '@Ready/Ready'
-    id: -21558/f227093d-18c6-4ab4-8f24-eb30760b1bb0
+    id: -2916/f227093d-18c6-4ab4-8f24-eb30760b1bb0
     localID: f227093d-18c6-4ab4-8f24-eb30760b1bb0
     parent: {fileID: 11445666}
     mode: 0
@@ -3608,9 +2123,9 @@ MonoBehaviour:
   operation: 0
   special: 0
   value: 1
---- !u!114 &11456340
+--- !u!114 &11454498
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187420}
@@ -3629,18 +2144,67 @@ MonoBehaviour:
     parent: {fileID: 0}
     mode: 0
   usage: 0
-  path: Hurt Timer/Is Complete/0
+  path: Damage Prepare/End While Unusable/0
   referenceID: 
   referencePath: 
   attribute:
-    name: Is Complete
-    path: Hurt Timer/Is Complete
-    id: -21548/5c40c7c6-5a55-4ed4-936c-e4b5ed9bb4b5
-    localID: 5c40c7c6-5a55-4ed4-936c-e4b5ed9bb4b5
-    parent: {fileID: 11496668}
+    name: End While Unusable
+    path: Damage Prepare/End While Unusable
+    id: -168516/f0c09846-2946-4f54-828b-320d3e74419d
+    localID: f0c09846-2946-4f54-828b-320d3e74419d
+    parent: {fileID: 11478524}
     mode: 0
     data:
-    - {fileID: 11456340}
+    - {fileID: 11454498}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 1
+--- !u!114 &11457428
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 187420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Knockback Force/Ready/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Ready
+    path: Knockback Force/Ready
+    id: -3008/7717189c-929b-481b-be70-b522b7e8b4ff
+    localID: 7717189c-929b-481b-be70-b522b7e8b4ff
+    parent: {fileID: 11490038}
+    mode: 0
+    data:
+    - {fileID: 11457428}
     dataB: []
     dataC: []
   attributeRaw:
@@ -3657,7 +2221,7 @@ MonoBehaviour:
   operation: 0
   special: 0
   value: 0
---- !u!114 &11457084
+--- !u!114 &11458246
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -3665,78 +2229,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 190592}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15dc630d7daaf4548bf1d099b9be1324, type: 3}
+  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alias: Animation (Secondary)
-  value:
-    info:
-      name: Animation (Secondary)
-      path: Animation (Secondary)
-      id: -21540/11a24977-7849-42c5-8506-4626833abaf9
-      localID: 11a24977-7849-42c5-8506-4626833abaf9
-      parent: {fileID: 11457084}
-      mode: 0
-      data:
-      - {fileID: 11492184}
-      dataB: []
-      dataC: []
-  remember: 0
---- !u!114 &11457634
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Game Object Data
+  alias: Attribute Float Data
   target:
-    special:
-    - {fileID: 187420}
-    - {fileID: 187420}
-    - {fileID: 190592}
-    - {fileID: 190592}
-    - {fileID: 187420}
-    - {fileID: 187420}
-    - {fileID: 177750}
-    - {fileID: 187420}
-    - {fileID: 187420}
-    - {fileID: 187420}
-    - {fileID: 187420}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
-    - '[Owner]'
-    - '[Action]'
-    - '[ActionLink]'
-    - '[StateLink]'
-    search: ../@Settings
+    special: []
+    specialNames: []
+    search: 
     directObject: {fileID: 0}
     searchObject: {fileID: 0}
-    parent: {fileID: 11445654}
+    parent: {fileID: 0}
     mode: 0
-  usage: 1
-  path: Toss Back/Target/0
-  referenceID: -4820/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
-  referencePath: Source
+  usage: 0
+  path: Duration/0
+  referenceID: 
+  referencePath: 
   attribute:
-    name: Target
-    path: Toss Back/Target
-    id: -21546/878c328d-a64b-4a83-8839-2b3e3ea0cf87
-    localID: 878c328d-a64b-4a83-8839-2b3e3ea0cf87
-    parent: {fileID: 11445654}
+    name: Duration
+    path: Duration
+    id: -236508/21536505-299e-4d76-89cd-91090c83fb08
+    localID: 21536505-299e-4d76-89cd-91090c83fb08
+    parent: {fileID: 11405560}
     mode: 0
     data:
-    - {fileID: 11457634}
+    - {fileID: 11458246}
     dataB: []
     dataC: []
   attributeRaw:
@@ -3752,84 +2269,10 @@ MonoBehaviour:
       dataC: []
   operation: 0
   special: 0
-  value: {fileID: 0}
---- !u!114 &11458038
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3e9984a5f3f19942be359930227796e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute String Data
-  target:
-    special:
-    - {fileID: 187420}
-    - {fileID: 187420}
-    - {fileID: 190592}
-    - {fileID: 190592}
-    - {fileID: 187420}
-    - {fileID: 187420}
-    - {fileID: 177750}
-    - {fileID: 187420}
-    - {fileID: 187420}
-    - {fileID: 187420}
-    - {fileID: 187420}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
-    - '[Owner]'
-    - '[Action]'
-    - '[ActionLink]'
-    - '[StateLink]'
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 11496008}
-    mode: 0
-  usage: 1
-  path: Dress Hurt Animation (Vertex)/Animation Name/0
-  referenceID: -4818/11a24977-7849-42c5-8506-4626833abaf9
-  referencePath: Animation (Secondary)
-  attribute:
-    name: Animation Name
-    path: Dress Hurt Animation (Vertex)/Animation Name
-    id: -21554/f3eced0e-68c9-411f-9365-1a1083045780
-    localID: f3eced0e-68c9-411f-9365-1a1083045780
-    parent: {fileID: 11496008}
-    mode: 0
-    data:
-    - {fileID: 11458038}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: ../@Settings
-  characterLimit: 0
-  allowed: []
-  disallowed: []
+  value: 2
 --- !u!114 &11459950
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 190592}
@@ -3854,7 +2297,7 @@ MonoBehaviour:
   attribute:
     name: Animation
     path: Animation
-    id: -21542/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
+    id: -2994/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
     localID: 7e894ef6-a99f-450f-b42a-e1aa6c29abb9
     parent: {fileID: 11404472}
     mode: 0
@@ -3879,105 +2322,7 @@ MonoBehaviour:
   characterLimit: 0
   allowed: []
   disallowed: []
---- !u!114 &11460176
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Bool Data
-  target:
-    special: []
-    specialNames: []
-    search: 
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
-    mode: 0
-  usage: 0
-  path: Toss Back/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: Toss Back/Usable
-    id: -21546/cb567c47-3772-4d6b-9ca2-2515bb840d41
-    localID: cb567c47-3772-4d6b-9ca2-2515bb840d41
-    parent: {fileID: 11445654}
-    mode: 0
-    data:
-    - {fileID: 11460176}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11460310
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Float Data
-  target:
-    special: []
-    specialNames: []
-    search: 
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
-    mode: 0
-  usage: 0
-  path: Dummy Hurt Check/Hit Point/Y/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Y
-    path: Dummy Hurt Check/Hit Point/Y
-    id: -21552/fb4608ff-cb36-44bd-b2ab-0d586677c7ed
-    localID: fb4608ff-cb36-44bd-b2ab-0d586677c7ed
-    parent: {fileID: 11493710}
-    mode: 0
-    data:
-    - {fileID: 11460310}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11461506
+--- !u!114 &11463156
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -3985,190 +2330,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 187420}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 913766e3e62ceac4a918c0cd12f04e67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Dress Hurt Animation
-  rate: 1
-  id: -69602
-  requirable:
-    info:
-      name: Requirable
-      path: Dress Hurt Animation/Requirable
-      id: -21556/a0afda87-4d0a-4e7c-893c-065d354872a9
-      localID: a0afda87-4d0a-4e7c-893c-065d354872a9
-      parent: {fileID: 11461506}
-      mode: 0
-      data:
-      - {fileID: 11412476}
-      dataB: []
-      dataC: []
-  ready:
-    info:
-      name: Ready
-      path: Dress Hurt Animation/Ready
-      id: -21556/246e11cf-0cdc-47b1-ba1f-790fc076e391
-      localID: 246e11cf-0cdc-47b1-ba1f-790fc076e391
-      parent: {fileID: 11461506}
-      mode: 0
-      data:
-      - {fileID: 11407192}
-      dataB: []
-      dataC: []
-  usable:
-    info:
-      name: Usable
-      path: Dress Hurt Animation/Usable
-      id: -21556/6f3a4246-c481-4294-82b5-7eaf4776b983
-      localID: 6f3a4246-c481-4294-82b5-7eaf4776b983
-      parent: {fileID: 11461506}
-      mode: 0
-      data:
-      - {fileID: 11447858}
-      dataB: []
-      dataC: []
-  inUse:
-    info:
-      name: Active
-      path: Dress Hurt Animation/Active
-      id: -21556/2a31ece0-de8c-4171-8eb0-dd8afab6f9ee
-      localID: 2a31ece0-de8c-4171-8eb0-dd8afab6f9ee
-      parent: {fileID: 11461506}
-      mode: 0
-      data:
-      - {fileID: 11474218}
-      dataB: []
-      dataC: []
-  used:
-    info:
-      name: Used
-      path: Dress Hurt Animation/Used
-      id: -21556/509f9000-b4f1-4e2e-b441-2d3a0b4dcc4f
-      localID: 509f9000-b4f1-4e2e-b441-2d3a0b4dcc4f
-      parent: {fileID: 11461506}
-      mode: 0
-      data:
-      - {fileID: 11422600}
-      dataB: []
-      dataC: []
-  endWhileUnusable:
-    info:
-      name: End While Unusable
-      path: Dress Hurt Animation/End While Unusable
-      id: -21556/848f0963-e4e1-4820-828e-0e4b53f95752
-      localID: 848f0963-e4e1-4820-828e-0e4b53f95752
-      parent: {fileID: 11461506}
-      mode: 0
-      data:
-      - {fileID: 11450088}
-      dataB: []
-      dataC: []
-  occurrence: 0
-  animationName:
-    info:
-      name: Animation Name
-      path: Dress Hurt Animation/Animation Name
-      id: -21556/c684db1d-f435-426e-bce6-d590b2c6e35d
-      localID: c684db1d-f435-426e-bce6-d590b2c6e35d
-      parent: {fileID: 11461506}
-      mode: 0
-      data:
-      - {fileID: 11447918}
-      dataB: []
-      dataC: []
-  speed:
-    info:
-      name: Speed
-      path: Dress Hurt Animation/Speed
-      id: -21556/44b155ae-a910-4a0f-9a28-46ea4c5cdf56
-      localID: 44b155ae-a910-4a0f-9a28-46ea4c5cdf56
-      parent: {fileID: 11461506}
-      mode: 0
-      data:
-      - {fileID: 11443218}
-      dataB: []
-      dataC: []
-  weight:
-    info:
-      name: Weight
-      path: Dress Hurt Animation/Weight
-      id: -21556/55560f5c-c7ba-4c9a-8476-2b988811f635
-      localID: 55560f5c-c7ba-4c9a-8476-2b988811f635
-      parent: {fileID: 11461506}
-      mode: 0
-      data:
-      - {fileID: 11484648}
-      dataB: []
-      dataC: []
-  target:
-    info:
-      name: Target
-      path: Dress Hurt Animation/Target
-      id: -21556/2958c4b4-74e0-4430-89c8-94fbc07b1985
-      localID: 2958c4b4-74e0-4430-89c8-94fbc07b1985
-      parent: {fileID: 11461506}
-      mode: 0
-      data:
-      - {fileID: 11436548}
-      dataB: []
-      dataC: []
---- !u!114 &11462990
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bd276b9f61cc614aaa69e18d0ef39ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Vector3 Data
-  target:
-    special: []
-    specialNames: []
-    search: 
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
-    mode: 0
-  usage: 0
-  path: Dummy Hurt Check/Hit Normal/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Hit Normal
-    path: Dummy Hurt Check/Hit Normal
-    id: -21552/538592e8-18e2-4321-adcc-695596ea9edf
-    localID: 538592e8-18e2-4321-adcc-695596ea9edf
-    parent: {fileID: 11493710}
-    mode: 0
-    data:
-    - {fileID: 11462990}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: {x: 0, y: 0, z: 0}
---- !u!114 &11464546
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -4182,67 +2343,116 @@ MonoBehaviour:
     parent: {fileID: 0}
     mode: 0
   usage: 0
-  path: Dummy Hurt Check/Relative/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Relative
-    path: Dummy Hurt Check/Relative
-    id: -21552/c1eeaab3-b8eb-478d-b986-93dda2842505
-    localID: c1eeaab3-b8eb-478d-b986-93dda2842505
-    parent: {fileID: 11493710}
-    mode: 0
-    data:
-    - {fileID: 11464546}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11466598
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Bool Data
-  target:
-    special: []
-    specialNames: []
-    search: 
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
-    mode: 0
-  usage: 0
-  path: Dummy Hurt Check/Used/0
+  path: Knockback Force/Used/0
   referenceID: 
   referencePath: 
   attribute:
     name: Used
-    path: Dummy Hurt Check/Used
-    id: -21552/f92cd2c9-a1e9-44cf-9fd8-ee5819ae7e73
-    localID: f92cd2c9-a1e9-44cf-9fd8-ee5819ae7e73
-    parent: {fileID: 11493710}
+    path: Knockback Force/Used
+    id: -3008/872eda80-2f43-4f6f-9ce1-f49af02824ff
+    localID: 872eda80-2f43-4f6f-9ce1-f49af02824ff
+    parent: {fileID: 11490038}
     mode: 0
     data:
-    - {fileID: 11466598}
+    - {fileID: 11463156}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11463590
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 187420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Damage Duration/Is Started/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Is Started
+    path: Damage Duration/Is Started
+    id: -166820/f69b6229-d3f0-42a6-89ab-8f918fbb0fa8
+    localID: f69b6229-d3f0-42a6-89ab-8f918fbb0fa8
+    parent: {fileID: 11497232}
+    mode: 0
+    data:
+    - {fileID: 11463590}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11464154
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 187420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Damage Prepare/Is Complete/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Is Complete
+    path: Damage Prepare/Is Complete
+    id: -168516/2517cf2e-26ee-4d98-b938-039de2e4db5b
+    localID: 2517cf2e-26ee-4d98-b938-039de2e4db5b
+    parent: {fileID: 11478524}
+    mode: 0
+    data:
+    - {fileID: 11464154}
     dataB: []
     dataC: []
   attributeRaw:
@@ -4270,14 +2480,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6a5365a236805842985225b566116a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alias: Hurt
+  alias: Damage Jump
   rate: 0
   id: -1122024
   requirable:
     info:
       name: Requirable
-      path: Hurt/Requirable
-      id: -21572/39799801-d71e-4f45-8384-cf5837f1c1a3
+      path: Damage Jump/Requirable
+      id: -2930/39799801-d71e-4f45-8384-cf5837f1c1a3
       localID: 39799801-d71e-4f45-8384-cf5837f1c1a3
       parent: {fileID: 11467030}
       mode: 0
@@ -4288,8 +2498,8 @@ MonoBehaviour:
   ready:
     info:
       name: Ready
-      path: Hurt/Ready
-      id: -21572/1e06ad52-3412-4764-a6e1-f07e9ff4fe05
+      path: Damage Jump/Ready
+      id: -2930/1e06ad52-3412-4764-a6e1-f07e9ff4fe05
       localID: 1e06ad52-3412-4764-a6e1-f07e9ff4fe05
       parent: {fileID: 11467030}
       mode: 0
@@ -4300,8 +2510,8 @@ MonoBehaviour:
   usable:
     info:
       name: Usable
-      path: Hurt/Usable
-      id: -21572/6a5f3235-e40f-4454-9314-f74abcdb53b1
+      path: Damage Jump/Usable
+      id: -2930/6a5f3235-e40f-4454-9314-f74abcdb53b1
       localID: 6a5f3235-e40f-4454-9314-f74abcdb53b1
       parent: {fileID: 11467030}
       mode: 0
@@ -4312,8 +2522,8 @@ MonoBehaviour:
   inUse:
     info:
       name: Active
-      path: Hurt/Active
-      id: -21572/68120be0-cb90-43be-ab6f-c42fe0a903ed
+      path: Damage Jump/Active
+      id: -2930/68120be0-cb90-43be-ab6f-c42fe0a903ed
       localID: 68120be0-cb90-43be-ab6f-c42fe0a903ed
       parent: {fileID: 11467030}
       mode: 0
@@ -4324,8 +2534,8 @@ MonoBehaviour:
   used:
     info:
       name: Used
-      path: Hurt/Used
-      id: -21572/3fdcf49e-5a2a-415e-8490-f585b136d3bb
+      path: Damage Jump/Used
+      id: -2930/3fdcf49e-5a2a-415e-8490-f585b136d3bb
       localID: 3fdcf49e-5a2a-415e-8490-f585b136d3bb
       parent: {fileID: 11467030}
       mode: 0
@@ -4336,8 +2546,8 @@ MonoBehaviour:
   endWhileUnusable:
     info:
       name: End While Unusable
-      path: Hurt/End While Unusable
-      id: -21572/7a5f879e-8aad-46a2-ae5c-608475b0d9c1
+      path: Damage Jump/End While Unusable
+      id: -2930/7a5f879e-8aad-46a2-ae5c-608475b0d9c1
       localID: 7a5f879e-8aad-46a2-ae5c-608475b0d9c1
       parent: {fileID: 11467030}
       mode: 0
@@ -4347,7 +2557,7 @@ MonoBehaviour:
       dataC: []
 --- !u!114 &11467068
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187420}
@@ -4366,13 +2576,13 @@ MonoBehaviour:
     parent: {fileID: 0}
     mode: 0
   usage: 0
-  path: Hurt Animation/Usable/0
+  path: Damage Animation/Usable/0
   referenceID: 
   referencePath: 
   attribute:
     name: Usable
-    path: Hurt Animation/Usable
-    id: -21550/855db985-26e1-4a7c-850c-5bb71aeebea0
+    path: Damage Animation/Usable
+    id: -3002/855db985-26e1-4a7c-850c-5bb71aeebea0
     localID: 855db985-26e1-4a7c-850c-5bb71aeebea0
     parent: {fileID: 11496146}
     mode: 0
@@ -4396,7 +2606,7 @@ MonoBehaviour:
   value: 0
 --- !u!114 &11467454
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187420}
@@ -4415,13 +2625,13 @@ MonoBehaviour:
     parent: {fileID: 0}
     mode: 0
   usage: 0
-  path: Hurt/End While Unusable/0
+  path: Damage Jump/End While Unusable/0
   referenceID: 
   referencePath: 
   attribute:
     name: End While Unusable
-    path: Hurt/End While Unusable
-    id: -21572/7a5f879e-8aad-46a2-ae5c-608475b0d9c1
+    path: Damage Jump/End While Unusable
+    id: -2930/7a5f879e-8aad-46a2-ae5c-608475b0d9c1
     localID: 7a5f879e-8aad-46a2-ae5c-608475b0d9c1
     parent: {fileID: 11467030}
     mode: 0
@@ -4443,9 +2653,58 @@ MonoBehaviour:
   operation: 0
   special: 0
   value: 0
+--- !u!114 &11468684
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 187420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Damage Prepare/Is Started/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Is Started
+    path: Damage Prepare/Is Started
+    id: -168516/43749e1f-e8dd-4ff4-aa7c-b8f9297b6cce
+    localID: 43749e1f-e8dd-4ff4-aa7c-b8f9297b6cce
+    parent: {fileID: 11478524}
+    mode: 0
+    data:
+    - {fileID: 11468684}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
 --- !u!114 &11468830
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187420}
@@ -4470,7 +2729,7 @@ MonoBehaviour:
   attribute:
     name: Used
     path: '@Ready/Used'
-    id: -21558/6f7fa066-a9dd-43a1-88d6-b3ab31f5fab8
+    id: -2916/6f7fa066-a9dd-43a1-88d6-b3ab31f5fab8
     localID: 6f7fa066-a9dd-43a1-88d6-b3ab31f5fab8
     parent: {fileID: 11445666}
     mode: 0
@@ -4492,9 +2751,9 @@ MonoBehaviour:
   operation: 0
   special: 0
   value: 0
---- !u!114 &11471200
+--- !u!114 &11469578
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187420}
@@ -4513,18 +2772,67 @@ MonoBehaviour:
     parent: {fileID: 0}
     mode: 0
   usage: 0
-  path: Dress Hurt Animation (Vertex)/Active/0
+  path: Damage Duration/Is Complete/0
   referenceID: 
   referencePath: 
   attribute:
-    name: Active
-    path: Dress Hurt Animation (Vertex)/Active
-    id: -21554/78829690-688a-4d56-a5e1-d9dafa838794
-    localID: 78829690-688a-4d56-a5e1-d9dafa838794
-    parent: {fileID: 11496008}
+    name: Is Complete
+    path: Damage Duration/Is Complete
+    id: -166820/ee77db0d-9b63-4a78-95eb-0ecdb6e09e9c
+    localID: ee77db0d-9b63-4a78-95eb-0ecdb6e09e9c
+    parent: {fileID: 11497232}
     mode: 0
     data:
-    - {fileID: 11471200}
+    - {fileID: 11469578}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11470190
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 187420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Damage Prepare/Ready/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Ready
+    path: Damage Prepare/Ready
+    id: -168516/db9c93cb-f41a-4e97-bdc8-32dba775ed70
+    localID: db9c93cb-f41a-4e97-bdc8-32dba775ed70
+    parent: {fileID: 11478524}
+    mode: 0
+    data:
+    - {fileID: 11470190}
     dataB: []
     dataC: []
   attributeRaw:
@@ -4543,7 +2851,7 @@ MonoBehaviour:
   value: 0
 --- !u!114 &11471392
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187420}
@@ -4562,13 +2870,13 @@ MonoBehaviour:
     parent: {fileID: 0}
     mode: 0
   usage: 0
-  path: Hurt/Usable/0
+  path: Damage Jump/Usable/0
   referenceID: 
   referencePath: 
   attribute:
     name: Usable
-    path: Hurt/Usable
-    id: -21572/6a5f3235-e40f-4454-9314-f74abcdb53b1
+    path: Damage Jump/Usable
+    id: -2930/6a5f3235-e40f-4454-9314-f74abcdb53b1
     localID: 6a5f3235-e40f-4454-9314-f74abcdb53b1
     parent: {fileID: 11467030}
     mode: 0
@@ -4589,157 +2897,10 @@ MonoBehaviour:
       dataC: []
   operation: 0
   special: 0
-  value: 1
---- !u!114 &11474218
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Bool Data
-  target:
-    special: []
-    specialNames: []
-    search: 
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
-    mode: 0
-  usage: 0
-  path: Dress Hurt Animation/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: Dress Hurt Animation/Active
-    id: -21556/2a31ece0-de8c-4171-8eb0-dd8afab6f9ee
-    localID: 2a31ece0-de8c-4171-8eb0-dd8afab6f9ee
-    parent: {fileID: 11461506}
-    mode: 0
-    data:
-    - {fileID: 11474218}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
   value: 0
---- !u!114 &11477384
+--- !u!114 &11474480
 MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Bool Data
-  target:
-    special: []
-    specialNames: []
-    search: 
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
-    mode: 0
-  usage: 0
-  path: Toss Back/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: Toss Back/Used
-    id: -21546/e069282f-623f-4a5e-b9ce-a25908577f9c
-    localID: e069282f-623f-4a5e-b9ce-a25908577f9c
-    parent: {fileID: 11445654}
-    mode: 0
-    data:
-    - {fileID: 11477384}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11478788
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Bool Data
-  target:
-    special: []
-    specialNames: []
-    search: 
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
-    mode: 0
-  usage: 0
-  path: Dress Hurt Animation (Vertex)/Ready/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Ready
-    path: Dress Hurt Animation (Vertex)/Ready
-    id: -21554/0d8fb5b0-43f2-4420-8ef9-495affc1c723
-    localID: 0d8fb5b0-43f2-4420-8ef9-495affc1c723
-    parent: {fileID: 11496008}
-    mode: 0
-    data:
-    - {fileID: 11478788}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11479982
-MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187420}
@@ -4758,18 +2919,18 @@ MonoBehaviour:
     parent: {fileID: 0}
     mode: 0
   usage: 0
-  path: Toss Back/Amount/Y/0
+  path: Knockback Force/Amount/X/0
   referenceID: 
   referencePath: 
   attribute:
-    name: Y
-    path: Toss Back/Amount/Y
-    id: -21546/64781550-3143-4283-b9ea-6372a7100bb0
-    localID: 64781550-3143-4283-b9ea-6372a7100bb0
-    parent: {fileID: 11445654}
+    name: X
+    path: Knockback Force/Amount/X
+    id: -3008/65264b99-a96f-4d4d-8e0a-1aa479c7360f
+    localID: 65264b99-a96f-4d4d-8e0a-1aa479c7360f
+    parent: {fileID: 11490038}
     mode: 0
     data:
-    - {fileID: 11479982}
+    - {fileID: 11474480}
     dataB: []
     dataC: []
   attributeRaw:
@@ -4786,18 +2947,18 @@ MonoBehaviour:
   operation: 0
   special: 0
   value: 0
---- !u!114 &11480878
+--- !u!114 &11478084
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187420}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alias: Attribute Float Data
+  alias: Attribute Bool Data
   target:
     special: []
     specialNames: []
@@ -4807,18 +2968,18 @@ MonoBehaviour:
     parent: {fileID: 0}
     mode: 0
   usage: 0
-  path: Dummy Hurt Check/Hit Normal/Z/0
+  path: Knockback Force/Usable/0
   referenceID: 
   referencePath: 
   attribute:
-    name: Z
-    path: Dummy Hurt Check/Hit Normal/Z
-    id: -21552/e4cad372-f719-4c11-9668-7e4179ca1c2b
-    localID: e4cad372-f719-4c11-9668-7e4179ca1c2b
-    parent: {fileID: 11493710}
+    name: Usable
+    path: Knockback Force/Usable
+    id: -3008/3b6aaba5-92f3-486a-ba5e-a355b372ec38
+    localID: 3b6aaba5-92f3-486a-ba5e-a355b372ec38
+    parent: {fileID: 11490038}
     mode: 0
     data:
-    - {fileID: 11480878}
+    - {fileID: 11478084}
     dataB: []
     dataC: []
   attributeRaw:
@@ -4835,9 +2996,133 @@ MonoBehaviour:
   operation: 0
   special: 0
   value: 0
+--- !u!114 &11478524
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 187420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb780ed64906f1944b7e8d65c34757d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Damage Prepare
+  rate: 1
+  id: -168516
+  requirable:
+    info:
+      name: Requirable
+      path: Damage Prepare/Requirable
+      id: -168516/a6e8b94a-cc4a-42c1-9faa-e6c87abef27b
+      localID: a6e8b94a-cc4a-42c1-9faa-e6c87abef27b
+      parent: {fileID: 11478524}
+      mode: 0
+      data:
+      - {fileID: 11482180}
+      dataB: []
+      dataC: []
+  ready:
+    info:
+      name: Ready
+      path: Damage Prepare/Ready
+      id: -168516/db9c93cb-f41a-4e97-bdc8-32dba775ed70
+      localID: db9c93cb-f41a-4e97-bdc8-32dba775ed70
+      parent: {fileID: 11478524}
+      mode: 0
+      data:
+      - {fileID: 11470190}
+      dataB: []
+      dataC: []
+  usable:
+    info:
+      name: Usable
+      path: Damage Prepare/Usable
+      id: -168516/7086f66a-1cc4-4327-a892-7ca7650f990d
+      localID: 7086f66a-1cc4-4327-a892-7ca7650f990d
+      parent: {fileID: 11478524}
+      mode: 0
+      data:
+      - {fileID: 11487504}
+      dataB: []
+      dataC: []
+  inUse:
+    info:
+      name: Active
+      path: Damage Prepare/Active
+      id: -168516/503821bb-82d8-46b2-a6d3-18378c364f33
+      localID: 503821bb-82d8-46b2-a6d3-18378c364f33
+      parent: {fileID: 11478524}
+      mode: 0
+      data:
+      - {fileID: 11482234}
+      dataB: []
+      dataC: []
+  used:
+    info:
+      name: Used
+      path: Damage Prepare/Used
+      id: -168516/3ea2aeed-dbb5-42da-83dd-3be2cb9e14d1
+      localID: 3ea2aeed-dbb5-42da-83dd-3be2cb9e14d1
+      parent: {fileID: 11478524}
+      mode: 0
+      data:
+      - {fileID: 11410594}
+      dataB: []
+      dataC: []
+  endWhileUnusable:
+    info:
+      name: End While Unusable
+      path: Damage Prepare/End While Unusable
+      id: -168516/f0c09846-2946-4f54-828b-320d3e74419d
+      localID: f0c09846-2946-4f54-828b-320d3e74419d
+      parent: {fileID: 11478524}
+      mode: 0
+      data:
+      - {fileID: 11454498}
+      dataB: []
+      dataC: []
+  occurrence: 0
+  type: 0
+  seconds:
+    info:
+      name: Seconds
+      path: Damage Prepare/Seconds
+      id: -168516/5dd312dc-0417-4122-a726-7efa128992bd
+      localID: 5dd312dc-0417-4122-a726-7efa128992bd
+      parent: {fileID: 11478524}
+      mode: 0
+      data:
+      - {fileID: 11452426}
+      dataB: []
+      dataC: []
+  isStarted:
+    info:
+      name: Is Started
+      path: Damage Prepare/Is Started
+      id: -168516/43749e1f-e8dd-4ff4-aa7c-b8f9297b6cce
+      localID: 43749e1f-e8dd-4ff4-aa7c-b8f9297b6cce
+      parent: {fileID: 11478524}
+      mode: 0
+      data:
+      - {fileID: 11468684}
+      dataB: []
+      dataC: []
+  isComplete:
+    info:
+      name: Is Complete
+      path: Damage Prepare/Is Complete
+      id: -168516/2517cf2e-26ee-4d98-b938-039de2e4db5b
+      localID: 2517cf2e-26ee-4d98-b938-039de2e4db5b
+      parent: {fileID: 11478524}
+      mode: 0
+      data:
+      - {fileID: 11464154}
+      dataB: []
+      dataC: []
 --- !u!114 &11481392
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187420}
@@ -4853,8 +3138,8 @@ MonoBehaviour:
     - {fileID: 187420}
     - {fileID: 190592}
     - {fileID: 190592}
-    - {fileID: 187420}
-    - {fileID: 187420}
+    - {fileID: 190592}
+    - {fileID: 190592}
     - {fileID: 177750}
     - {fileID: 187420}
     - {fileID: 187420}
@@ -4874,17 +3159,17 @@ MonoBehaviour:
     - '[StateLink]'
     search: ../@Settings
     directObject: {fileID: 0}
-    searchObject: {fileID: 0}
+    searchObject: {fileID: 190592}
     parent: {fileID: 11496146}
     mode: 0
   usage: 1
-  path: Hurt Animation/Animation Name/0
-  referenceID: -4816/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
+  path: Damage Animation/Animation Name/0
+  referenceID: -2994/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
   referencePath: Animation
   attribute:
     name: Animation Name
-    path: Hurt Animation/Animation Name
-    id: -21550/db82c64b-dafe-45b1-9527-a91a22c9b686
+    path: Damage Animation/Animation Name
+    id: -3002/db82c64b-dafe-45b1-9527-a91a22c9b686
     localID: db82c64b-dafe-45b1-9527-a91a22c9b686
     parent: {fileID: 11496146}
     mode: 0
@@ -4909,85 +3194,11 @@ MonoBehaviour:
   characterLimit: 0
   allowed: []
   disallowed: []
---- !u!114 &11481440
+--- !u!114 &11482180
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e8a46b59a6b8eb489e122ad5fdef015, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Visuals (Secondary)
-  value:
-    info:
-      name: Visuals (Secondary)
-      path: Visuals (Secondary)
-      id: -21532/f928cb06-a579-461d-9880-53ddadb448dc
-      localID: f928cb06-a579-461d-9880-53ddadb448dc
-      parent: {fileID: 11481440}
-      mode: 0
-      data:
-      - {fileID: 11494096}
-      dataB: []
-      dataC: []
-  remember: 0
---- !u!114 &11481694
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Float Data
-  target:
-    special: []
-    specialNames: []
-    search: 
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
-    mode: 0
-  usage: 0
-  path: Dummy Hurt Check/Hit Point/Z/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Z
-    path: Dummy Hurt Check/Hit Point/Z
-    id: -21552/29b69a39-c1f3-4434-bb0b-667fbb9a85d3
-    localID: 29b69a39-c1f3-4434-bb0b-667fbb9a85d3
-    parent: {fileID: 11493710}
-    mode: 0
-    data:
-    - {fileID: 11481694}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11482098
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187420}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -5004,214 +3215,18 @@ MonoBehaviour:
     parent: {fileID: 0}
     mode: 0
   usage: 0
-  path: Dummy Hurt Check/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: Dummy Hurt Check/Active
-    id: -21552/7080fa55-2fe4-4378-b210-1e47dd3dc7f7
-    localID: 7080fa55-2fe4-4378-b210-1e47dd3dc7f7
-    parent: {fileID: 11493710}
-    mode: 0
-    data:
-    - {fileID: 11482098}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11483072
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Bool Data
-  target:
-    special: []
-    specialNames: []
-    search: 
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
-    mode: 0
-  usage: 0
-  path: Dummy Hurt Check/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: Dummy Hurt Check/Usable
-    id: -21552/ce63510d-62fb-458c-889b-e3396b273ae2
-    localID: ce63510d-62fb-458c-889b-e3396b273ae2
-    parent: {fileID: 11493710}
-    mode: 0
-    data:
-    - {fileID: 11483072}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11484648
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Float Data
-  target:
-    special: []
-    specialNames: []
-    search: 
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
-    mode: 0
-  usage: 0
-  path: Dress Hurt Animation/Weight/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Weight
-    path: Dress Hurt Animation/Weight
-    id: -21556/55560f5c-c7ba-4c9a-8476-2b988811f635
-    localID: 55560f5c-c7ba-4c9a-8476-2b988811f635
-    parent: {fileID: 11461506}
-    mode: 0
-    data:
-    - {fileID: 11484648}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11486900
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Float Data
-  target:
-    special: []
-    specialNames: []
-    search: 
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
-    mode: 0
-  usage: 0
-  path: Dummy Hurt Check/Direction/Z/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Z
-    path: Dummy Hurt Check/Direction/Z
-    id: -21552/2f67084c-1c83-4e9d-bbca-f8e800fccf68
-    localID: 2f67084c-1c83-4e9d-bbca-f8e800fccf68
-    parent: {fileID: 11493710}
-    mode: 0
-    data:
-    - {fileID: 11486900}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11488480
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Bool Data
-  target:
-    special: []
-    specialNames: []
-    search: 
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
-    mode: 0
-  usage: 0
-  path: Dress Hurt Animation (Vertex)/Requirable/0
+  path: Damage Prepare/Requirable/0
   referenceID: 
   referencePath: 
   attribute:
     name: Requirable
-    path: Dress Hurt Animation (Vertex)/Requirable
-    id: -21554/dcac6932-d350-46e5-a773-3da3f4112065
-    localID: dcac6932-d350-46e5-a773-3da3f4112065
-    parent: {fileID: 11496008}
+    path: Damage Prepare/Requirable
+    id: -168516/a6e8b94a-cc4a-42c1-9faa-e6c87abef27b
+    localID: a6e8b94a-cc4a-42c1-9faa-e6c87abef27b
+    parent: {fileID: 11478524}
     mode: 0
     data:
-    - {fileID: 11488480}
+    - {fileID: 11482180}
     dataB: []
     dataC: []
   attributeRaw:
@@ -5228,18 +3243,18 @@ MonoBehaviour:
   operation: 0
   special: 0
   value: 1
---- !u!114 &11492184
+--- !u!114 &11482234
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190592}
+  m_GameObject: {fileID: 187420}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3e9984a5f3f19942be359930227796e, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alias: Attribute String Data
+  alias: Attribute Bool Data
   target:
     special: []
     specialNames: []
@@ -5249,18 +3264,18 @@ MonoBehaviour:
     parent: {fileID: 0}
     mode: 0
   usage: 0
-  path: Animation (Secondary)/0
+  path: Damage Prepare/Active/0
   referenceID: 
   referencePath: 
   attribute:
-    name: Animation (Secondary)
-    path: Animation (Secondary)
-    id: -21540/11a24977-7849-42c5-8506-4626833abaf9
-    localID: 11a24977-7849-42c5-8506-4626833abaf9
-    parent: {fileID: 11457084}
+    name: Active
+    path: Damage Prepare/Active
+    id: -168516/503821bb-82d8-46b2-a6d3-18378c364f33
+    localID: 503821bb-82d8-46b2-a6d3-18378c364f33
+    parent: {fileID: 11478524}
     mode: 0
     data:
-    - {fileID: 11492184}
+    - {fileID: 11482234}
     dataB: []
     dataC: []
   attributeRaw:
@@ -5276,11 +3291,8 @@ MonoBehaviour:
       dataC: []
   operation: 0
   special: 0
-  value: DressHurt
-  characterLimit: 0
-  allowed: []
-  disallowed: []
---- !u!114 &11493710
+  value: 0
+--- !u!114 &11487504
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -5288,447 +3300,228 @@ MonoBehaviour:
   m_GameObject: {fileID: 187420}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d483bbf7771b8d4eb254f917061fe72, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alias: Dummy Hurt Check
+  alias: Attribute Bool Data
+  target:
+    special: []
+    specialNames: []
+    search: 
+    directObject: {fileID: 0}
+    searchObject: {fileID: 0}
+    parent: {fileID: 0}
+    mode: 0
+  usage: 0
+  path: Damage Prepare/Usable/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Usable
+    path: Damage Prepare/Usable
+    id: -168516/7086f66a-1cc4-4327-a892-7ca7650f990d
+    localID: 7086f66a-1cc4-4327-a892-7ca7650f990d
+    parent: {fileID: 11478524}
+    mode: 0
+    data:
+    - {fileID: 11487504}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 1
+--- !u!114 &11490038
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 187420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4ba437929f5bca41b28abb66b9f3cd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alias: Knockback Force
   rate: 1
-  id: -1158112
+  id: -15532
   requirable:
     info:
       name: Requirable
-      path: Dummy Hurt Check/Requirable
-      id: -21552/a0746096-2bcf-40b8-a4be-fb739c0b29d7
-      localID: a0746096-2bcf-40b8-a4be-fb739c0b29d7
-      parent: {fileID: 11493710}
+      path: Knockback Force/Requirable
+      id: -3008/3d2b0df2-473d-4d66-822a-53f4bff04ea4
+      localID: 3d2b0df2-473d-4d66-822a-53f4bff04ea4
+      parent: {fileID: 11490038}
       mode: 0
       data:
-      - {fileID: 11424610}
+      - {fileID: 11416886}
       dataB: []
       dataC: []
   ready:
     info:
       name: Ready
-      path: Dummy Hurt Check/Ready
-      id: -21552/6819f913-e5fe-4366-92a8-a213be1d8dfe
-      localID: 6819f913-e5fe-4366-92a8-a213be1d8dfe
-      parent: {fileID: 11493710}
+      path: Knockback Force/Ready
+      id: -3008/7717189c-929b-481b-be70-b522b7e8b4ff
+      localID: 7717189c-929b-481b-be70-b522b7e8b4ff
+      parent: {fileID: 11490038}
       mode: 0
       data:
-      - {fileID: 11434136}
+      - {fileID: 11457428}
       dataB: []
       dataC: []
   usable:
     info:
       name: Usable
-      path: Dummy Hurt Check/Usable
-      id: -21552/ce63510d-62fb-458c-889b-e3396b273ae2
-      localID: ce63510d-62fb-458c-889b-e3396b273ae2
-      parent: {fileID: 11493710}
+      path: Knockback Force/Usable
+      id: -3008/3b6aaba5-92f3-486a-ba5e-a355b372ec38
+      localID: 3b6aaba5-92f3-486a-ba5e-a355b372ec38
+      parent: {fileID: 11490038}
       mode: 0
       data:
-      - {fileID: 11483072}
+      - {fileID: 11478084}
       dataB: []
       dataC: []
   inUse:
     info:
       name: Active
-      path: Dummy Hurt Check/Active
-      id: -21552/7080fa55-2fe4-4378-b210-1e47dd3dc7f7
-      localID: 7080fa55-2fe4-4378-b210-1e47dd3dc7f7
-      parent: {fileID: 11493710}
+      path: Knockback Force/Active
+      id: -3008/626d86bb-27da-40ca-a257-80d78d157de3
+      localID: 626d86bb-27da-40ca-a257-80d78d157de3
+      parent: {fileID: 11490038}
       mode: 0
       data:
-      - {fileID: 11482098}
+      - {fileID: 11447554}
       dataB: []
       dataC: []
   used:
     info:
       name: Used
-      path: Dummy Hurt Check/Used
-      id: -21552/f92cd2c9-a1e9-44cf-9fd8-ee5819ae7e73
-      localID: f92cd2c9-a1e9-44cf-9fd8-ee5819ae7e73
-      parent: {fileID: 11493710}
+      path: Knockback Force/Used
+      id: -3008/872eda80-2f43-4f6f-9ce1-f49af02824ff
+      localID: 872eda80-2f43-4f6f-9ce1-f49af02824ff
+      parent: {fileID: 11490038}
       mode: 0
       data:
-      - {fileID: 11466598}
+      - {fileID: 11463156}
       dataB: []
       dataC: []
   endWhileUnusable:
     info:
       name: End While Unusable
-      path: Dummy Hurt Check/End While Unusable
-      id: -21552/3d8f6a8b-4cef-4794-9fe0-5b6db37f4714
-      localID: 3d8f6a8b-4cef-4794-9fe0-5b6db37f4714
-      parent: {fileID: 11493710}
+      path: Knockback Force/End While Unusable
+      id: -3008/44b58902-90c4-4821-8bae-3aab052d4c48
+      localID: 44b58902-90c4-4821-8bae-3aab052d4c48
+      parent: {fileID: 11490038}
       mode: 0
       data:
-      - {fileID: 11416778}
+      - {fileID: 11491640}
       dataB: []
       dataC: []
   occurrence: 0
-  distance:
+  type: 0
+  amount:
     info:
-      name: Distance
-      path: Dummy Hurt Check/Distance
-      id: -21552/db8c0ace-ca4d-48f1-8bf4-6331228f9428
-      localID: db8c0ace-ca4d-48f1-8bf4-6331228f9428
-      parent: {fileID: 11493710}
+      name: Amount
+      path: Knockback Force/Amount
+      id: -3008/4927b27c-8967-4101-b520-fa2e92c7e2d9
+      localID: 4927b27c-8967-4101-b520-fa2e92c7e2d9
+      parent: {fileID: 11490038}
       mode: 0
       data:
-      - {fileID: 11411694}
-      dataB: []
-      dataC: []
-  debugColor: {r: 1, g: 0, b: 0, a: 1}
-  direction:
-    info:
-      name: Direction
-      path: Dummy Hurt Check/Direction
-      id: -21552/917b6b05-de4a-435c-9d39-aa18f7aa2d07
-      localID: 917b6b05-de4a-435c-9d39-aa18f7aa2d07
-      parent: {fileID: 11493710}
-      mode: 0
-      data:
-      - {fileID: 11435564}
+      - {fileID: 11499330}
       dataB: []
       dataC: []
     x:
       info:
         name: X
-        path: Dummy Hurt Check/Direction/X
-        id: -21552/abfcce77-5632-49ea-84dd-0c78957b26ca
-        localID: abfcce77-5632-49ea-84dd-0c78957b26ca
-        parent: {fileID: 11493710}
+        path: Knockback Force/Amount/X
+        id: -3008/65264b99-a96f-4d4d-8e0a-1aa479c7360f
+        localID: 65264b99-a96f-4d4d-8e0a-1aa479c7360f
+        parent: {fileID: 11490038}
         mode: 0
         data:
-        - {fileID: 11446950}
+        - {fileID: 11474480}
         dataB: []
         dataC: []
     y:
       info:
         name: Y
-        path: Dummy Hurt Check/Direction/Y
-        id: -21552/fd97e9a0-ebc0-46c9-8b43-0132a3940dbd
-        localID: fd97e9a0-ebc0-46c9-8b43-0132a3940dbd
-        parent: {fileID: 11493710}
+        path: Knockback Force/Amount/Y
+        id: -3008/4c9c283e-967e-4f52-b44d-7b46f557908b
+        localID: 4c9c283e-967e-4f52-b44d-7b46f557908b
+        parent: {fileID: 11490038}
         mode: 0
         data:
-        - {fileID: 11499570}
+        - {fileID: 11419866}
         dataB: []
         dataC: []
     z:
       info:
         name: Z
-        path: Dummy Hurt Check/Direction/Z
-        id: -21552/2f67084c-1c83-4e9d-bbca-f8e800fccf68
-        localID: 2f67084c-1c83-4e9d-bbca-f8e800fccf68
-        parent: {fileID: 11493710}
+        path: Knockback Force/Amount/Z
+        id: -3008/77fb3c8a-19ba-40c2-82d0-1885cfd8f2e7
+        localID: 77fb3c8a-19ba-40c2-82d0-1885cfd8f2e7
+        parent: {fileID: 11490038}
         mode: 0
         data:
-        - {fileID: 11486900}
+        - {fileID: 11417108}
         dataB: []
         dataC: []
-  offset:
-    info:
-      name: Offset
-      path: Dummy Hurt Check/Offset
-      id: -21552/9b16fa96-2f0d-42a5-8bfd-a5d51d07cc76
-      localID: 9b16fa96-2f0d-42a5-8bfd-a5d51d07cc76
-      parent: {fileID: 11493710}
-      mode: 0
-      data:
-      - {fileID: 11432080}
-      dataB: []
-      dataC: []
-    x:
-      info:
-        name: X
-        path: Dummy Hurt Check/Offset/X
-        id: -21552/ec624c82-ea00-47e7-986c-204d89f89ea1
-        localID: ec624c82-ea00-47e7-986c-204d89f89ea1
-        parent: {fileID: 11493710}
-        mode: 0
-        data:
-        - {fileID: 11400258}
-        dataB: []
-        dataC: []
-    y:
-      info:
-        name: Y
-        path: Dummy Hurt Check/Offset/Y
-        id: -21552/2fb0121f-8b7e-41fb-ab4b-a41a787eb20c
-        localID: 2fb0121f-8b7e-41fb-ab4b-a41a787eb20c
-        parent: {fileID: 11493710}
-        mode: 0
-        data:
-        - {fileID: 11450418}
-        dataB: []
-        dataC: []
-    z:
-      info:
-        name: Z
-        path: Dummy Hurt Check/Offset/Z
-        id: -21552/0560ab36-139a-4c5c-b000-4fa5324653d3
-        localID: 0560ab36-139a-4c5c-b000-4fa5324653d3
-        parent: {fileID: 11493710}
-        mode: 0
-        data:
-        - {fileID: 11441176}
-        dataB: []
-        dataC: []
-  source:
-    info:
-      name: Source
-      path: Dummy Hurt Check/Source
-      id: -21552/117ef904-97e2-46fe-abbe-300bd3e1c213
-      localID: 117ef904-97e2-46fe-abbe-300bd3e1c213
-      parent: {fileID: 11493710}
-      mode: 0
-      data:
-      - {fileID: 11495878}
-      dataB: []
-      dataC: []
-  hitPoint:
-    info:
-      name: Hit Point
-      path: Dummy Hurt Check/Hit Point
-      id: -21552/36bb1ab7-a52b-44ef-8496-2bc76e3ae01c
-      localID: 36bb1ab7-a52b-44ef-8496-2bc76e3ae01c
-      parent: {fileID: 11493710}
-      mode: 0
-      data:
-      - {fileID: 11434854}
-      dataB: []
-      dataC: []
-    x:
-      info:
-        name: X
-        path: Dummy Hurt Check/Hit Point/X
-        id: -21552/32134fff-6db8-4114-b9cb-de650b94c97c
-        localID: 32134fff-6db8-4114-b9cb-de650b94c97c
-        parent: {fileID: 11493710}
-        mode: 0
-        data:
-        - {fileID: 11417708}
-        dataB: []
-        dataC: []
-    y:
-      info:
-        name: Y
-        path: Dummy Hurt Check/Hit Point/Y
-        id: -21552/fb4608ff-cb36-44bd-b2ab-0d586677c7ed
-        localID: fb4608ff-cb36-44bd-b2ab-0d586677c7ed
-        parent: {fileID: 11493710}
-        mode: 0
-        data:
-        - {fileID: 11460310}
-        dataB: []
-        dataC: []
-    z:
-      info:
-        name: Z
-        path: Dummy Hurt Check/Hit Point/Z
-        id: -21552/29b69a39-c1f3-4434-bb0b-667fbb9a85d3
-        localID: 29b69a39-c1f3-4434-bb0b-667fbb9a85d3
-        parent: {fileID: 11493710}
-        mode: 0
-        data:
-        - {fileID: 11481694}
-        dataB: []
-        dataC: []
-  hitNormal:
-    info:
-      name: Hit Normal
-      path: Dummy Hurt Check/Hit Normal
-      id: -21552/538592e8-18e2-4321-adcc-695596ea9edf
-      localID: 538592e8-18e2-4321-adcc-695596ea9edf
-      parent: {fileID: 11493710}
-      mode: 0
-      data:
-      - {fileID: 11462990}
-      dataB: []
-      dataC: []
-    x:
-      info:
-        name: X
-        path: Dummy Hurt Check/Hit Normal/X
-        id: -21552/b04a5fd1-70aa-4ae4-8504-868aea4c389b
-        localID: b04a5fd1-70aa-4ae4-8504-868aea4c389b
-        parent: {fileID: 11493710}
-        mode: 0
-        data:
-        - {fileID: 11409788}
-        dataB: []
-        dataC: []
-    y:
-      info:
-        name: Y
-        path: Dummy Hurt Check/Hit Normal/Y
-        id: -21552/3991af80-2b07-46eb-830e-5f7ae9b0f85f
-        localID: 3991af80-2b07-46eb-830e-5f7ae9b0f85f
-        parent: {fileID: 11493710}
-        mode: 0
-        data:
-        - {fileID: 11441646}
-        dataB: []
-        dataC: []
-    z:
-      info:
-        name: Z
-        path: Dummy Hurt Check/Hit Normal/Z
-        id: -21552/e4cad372-f719-4c11-9668-7e4179ca1c2b
-        localID: e4cad372-f719-4c11-9668-7e4179ca1c2b
-        parent: {fileID: 11493710}
-        mode: 0
-        data:
-        - {fileID: 11480878}
-        dataB: []
-        dataC: []
-  hitDistance:
-    info:
-      name: Hit Distance
-      path: Dummy Hurt Check/Hit Distance
-      id: -21552/01911e4c-2b6f-4e49-8ca4-53ea12059b1b
-      localID: 01911e4c-2b6f-4e49-8ca4-53ea12059b1b
-      parent: {fileID: 11493710}
-      mode: 0
-      data:
-      - {fileID: 11496740}
-      dataB: []
-      dataC: []
-  layers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  relative:
-    info:
-      name: Relative
-      path: Dummy Hurt Check/Relative
-      id: -21552/c1eeaab3-b8eb-478d-b986-93dda2842505
-      localID: c1eeaab3-b8eb-478d-b986-93dda2842505
-      parent: {fileID: 11493710}
-      mode: 0
-      data:
-      - {fileID: 11464546}
-      dataB: []
-      dataC: []
---- !u!114 &11494096
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Game Object Data
   target:
-    special:
-    - {fileID: 190592}
-    - {fileID: 190592}
-    - {fileID: 187420}
-    - {fileID: 187420}
-    - {fileID: 190592}
-    - {fileID: 190592}
-    - {fileID: 177750}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
-    search: ../../../Visuals/Dress
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 11481440}
-    mode: 0
-  usage: 1
-  path: Visuals (Secondary)/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Visuals (Secondary)
-    path: Visuals (Secondary)
-    id: -21532/f928cb06-a579-461d-9880-53ddadb448dc
-    localID: f928cb06-a579-461d-9880-53ddadb448dc
-    parent: {fileID: 11481440}
-    mode: 0
-    data:
-    - {fileID: 11494096}
-    dataB: []
-    dataC: []
-  attributeRaw:
     info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
+      name: Target
+      path: Knockback Force/Target
+      id: -3008/30aa99ca-29da-472e-9c8b-7f9283787689
+      localID: 30aa99ca-29da-472e-9c8b-7f9283787689
+      parent: {fileID: 11490038}
       mode: 0
-      data: []
+      data:
+      - {fileID: 11410222}
       dataB: []
       dataC: []
-  operation: 0
-  special: 0
-  value: {fileID: 0}
---- !u!114 &11495878
+--- !u!114 &11491640
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187420}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alias: Attribute Game Object Data
+  alias: Attribute Bool Data
   target:
-    special:
-    - {fileID: 187420}
-    - {fileID: 187420}
-    - {fileID: 190592}
-    - {fileID: 190592}
-    - {fileID: 187420}
-    - {fileID: 187420}
-    - {fileID: 177750}
-    - {fileID: 187420}
-    - {fileID: 187420}
-    - {fileID: 187420}
-    - {fileID: 187420}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
-    - '[Owner]'
-    - '[Action]'
-    - '[ActionLink]'
-    - '[StateLink]'
-    search: ../@Settings
+    special: []
+    specialNames: []
+    search: 
     directObject: {fileID: 0}
     searchObject: {fileID: 0}
-    parent: {fileID: 11493710}
+    parent: {fileID: 0}
     mode: 0
-  usage: 1
-  path: Dummy Hurt Check/Source/0
-  referenceID: -4820/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
-  referencePath: Source
+  usage: 0
+  path: Knockback Force/End While Unusable/0
+  referenceID: 
+  referencePath: 
   attribute:
-    name: Source
-    path: Dummy Hurt Check/Source
-    id: -21552/117ef904-97e2-46fe-abbe-300bd3e1c213
-    localID: 117ef904-97e2-46fe-abbe-300bd3e1c213
-    parent: {fileID: 11493710}
+    name: End While Unusable
+    path: Knockback Force/End While Unusable
+    id: -3008/44b58902-90c4-4821-8bae-3aab052d4c48
+    localID: 44b58902-90c4-4821-8bae-3aab052d4c48
+    parent: {fileID: 11490038}
     mode: 0
     data:
-    - {fileID: 11495878}
+    - {fileID: 11491640}
     dataB: []
     dataC: []
   attributeRaw:
@@ -5744,7 +3537,7 @@ MonoBehaviour:
       dataC: []
   operation: 0
   special: 0
-  value: {fileID: 0}
+  value: 0
 --- !u!114 &11495978
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5771,190 +3564,31 @@ MonoBehaviour:
         target: {fileID: 11445666}
         requireOn: 0
         requireOff: 0
-      - name: Dress Hurt Animation
+      - name: Damage Animation
+        stateTable: {fileID: 0}
+        id: -1134442
+        target: {fileID: 11496146}
+        requireOn: 0
+        requireOff: 0
+      - name: Damage Duration
         stateTable: {fileID: 11495978}
-        id: -69602
-        target: {fileID: 11461506}
+        id: -166820
+        target: {fileID: 11497232}
         requireOn: 0
-        requireOff: 0
-      - name: Dress Hurt Animation (Vertex)
-        stateTable: {fileID: 0}
-        id: -28066
-        target: {fileID: 11496008}
-        requireOn: 0
-        requireOff: 0
-      - name: Dummy Hurt Check
-        stateTable: {fileID: 0}
-        id: -1158112
-        target: {fileID: 11493710}
+        requireOff: 1
+      - name: Damage Prepare
+        stateTable: {fileID: 11495978}
+        id: -168516
+        target: {fileID: 11478524}
         requireOn: 1
         requireOff: 0
-      - name: Hurt Animation
-        stateTable: {fileID: 0}
-        id: -1134442
-        target: {fileID: 11496146}
-        requireOn: 0
-        requireOff: 0
-      - name: Hurt Timer
-        stateTable: {fileID: 0}
-        id: -18166
-        target: {fileID: 11496668}
-        requireOn: 0
-        requireOff: 0
-      - name: Toss Back
-        stateTable: {fileID: 0}
-        id: -72274
-        target: {fileID: 11445654}
-        requireOn: 0
-        requireOff: 0
-  - name: Dress Hurt Animation
-    stateTable: {fileID: 11495978}
-    id: -69602
-    target: {fileID: 11461506}
-    empty: 0
-    requirements:
-    - data:
-      - name: '@Ready'
+      - name: Knockback Force
         stateTable: {fileID: 11495978}
-        id: -1122500
-        target: {fileID: 11445666}
-        requireOn: 1
-        requireOff: 0
-      - name: Dress Hurt Animation
-        stateTable: {fileID: 11495978}
-        id: -69602
-        target: {fileID: 11461506}
+        id: -15532
+        target: {fileID: 11490038}
         requireOn: 0
         requireOff: 0
-      - name: Dress Hurt Animation (Vertex)
-        stateTable: {fileID: 11495978}
-        id: -28066
-        target: {fileID: 11496008}
-        requireOn: 0
-        requireOff: 0
-      - name: Dummy Hurt Check
-        stateTable: {fileID: 11495978}
-        id: -1158112
-        target: {fileID: 11493710}
-        requireOn: 0
-        requireOff: 0
-      - name: Hurt Animation
-        stateTable: {fileID: 11495978}
-        id: -1134442
-        target: {fileID: 11496146}
-        requireOn: 0
-        requireOff: 0
-      - name: Hurt Timer
-        stateTable: {fileID: 11495978}
-        id: -18166
-        target: {fileID: 11496668}
-        requireOn: 0
-        requireOff: 0
-      - name: Toss Back
-        stateTable: {fileID: 11495978}
-        id: -72274
-        target: {fileID: 11445654}
-        requireOn: 0
-        requireOff: 0
-  - name: Dress Hurt Animation (Vertex)
-    stateTable: {fileID: 0}
-    id: -28066
-    target: {fileID: 11496008}
-    empty: 0
-    requirements:
-    - data:
-      - name: '@Ready'
-        stateTable: {fileID: 0}
-        id: -1122500
-        target: {fileID: 11445666}
-        requireOn: 1
-        requireOff: 0
-      - name: Dress Hurt Animation
-        stateTable: {fileID: 11495978}
-        id: -69602
-        target: {fileID: 11461506}
-        requireOn: 0
-        requireOff: 0
-      - name: Dress Hurt Animation (Vertex)
-        stateTable: {fileID: 0}
-        id: -28066
-        target: {fileID: 11496008}
-        requireOn: 0
-        requireOff: 0
-      - name: Dummy Hurt Check
-        stateTable: {fileID: 0}
-        id: -1158112
-        target: {fileID: 11493710}
-        requireOn: 0
-        requireOff: 0
-      - name: Hurt Animation
-        stateTable: {fileID: 0}
-        id: -1134442
-        target: {fileID: 11496146}
-        requireOn: 0
-        requireOff: 0
-      - name: Hurt Timer
-        stateTable: {fileID: 0}
-        id: -18166
-        target: {fileID: 11496668}
-        requireOn: 0
-        requireOff: 0
-      - name: Toss Back
-        stateTable: {fileID: 0}
-        id: -72274
-        target: {fileID: 11445654}
-        requireOn: 0
-        requireOff: 0
-  - name: Dummy Hurt Check
-    stateTable: {fileID: 0}
-    id: -1158112
-    target: {fileID: 11493710}
-    empty: 0
-    requirements:
-    - data:
-      - name: '@Ready'
-        stateTable: {fileID: 0}
-        id: -1122500
-        target: {fileID: 11445666}
-        requireOn: 0
-        requireOff: 0
-      - name: Dress Hurt Animation
-        stateTable: {fileID: 11495978}
-        id: -69602
-        target: {fileID: 11461506}
-        requireOn: 0
-        requireOff: 0
-      - name: Dress Hurt Animation (Vertex)
-        stateTable: {fileID: 0}
-        id: -28066
-        target: {fileID: 11496008}
-        requireOn: 0
-        requireOff: 0
-      - name: Dummy Hurt Check
-        stateTable: {fileID: 0}
-        id: -1158112
-        target: {fileID: 11493710}
-        requireOn: 0
-        requireOff: 0
-      - name: Hurt Animation
-        stateTable: {fileID: 0}
-        id: -1134442
-        target: {fileID: 11496146}
-        requireOn: 0
-        requireOff: 0
-      - name: Hurt Timer
-        stateTable: {fileID: 0}
-        id: -18166
-        target: {fileID: 11496668}
-        requireOn: 0
-        requireOff: 0
-      - name: Toss Back
-        stateTable: {fileID: 0}
-        id: -72274
-        target: {fileID: 11445654}
-        requireOn: 0
-        requireOff: 0
-  - name: Hurt Animation
+  - name: Damage Animation
     stateTable: {fileID: 0}
     id: -1134442
     target: {fileID: 11496146}
@@ -5967,138 +3601,139 @@ MonoBehaviour:
         target: {fileID: 11445666}
         requireOn: 1
         requireOff: 0
-      - name: Dress Hurt Animation
-        stateTable: {fileID: 11495978}
-        id: -69602
-        target: {fileID: 11461506}
-        requireOn: 0
-        requireOff: 0
-      - name: Dress Hurt Animation (Vertex)
-        stateTable: {fileID: 0}
-        id: -28066
-        target: {fileID: 11496008}
-        requireOn: 0
-        requireOff: 0
-      - name: Dummy Hurt Check
-        stateTable: {fileID: 0}
-        id: -1158112
-        target: {fileID: 11493710}
-        requireOn: 0
-        requireOff: 0
-      - name: Hurt Animation
+      - name: Damage Animation
         stateTable: {fileID: 0}
         id: -1134442
         target: {fileID: 11496146}
         requireOn: 0
         requireOff: 0
-      - name: Hurt Timer
-        stateTable: {fileID: 0}
-        id: -18166
-        target: {fileID: 11496668}
+      - name: Damage Duration
+        stateTable: {fileID: 11495978}
+        id: -166820
+        target: {fileID: 11497232}
         requireOn: 0
         requireOff: 0
-      - name: Toss Back
-        stateTable: {fileID: 0}
-        id: -72274
-        target: {fileID: 11445654}
+      - name: Damage Prepare
+        stateTable: {fileID: 11495978}
+        id: -168516
+        target: {fileID: 11478524}
         requireOn: 0
         requireOff: 0
-  - name: Hurt Timer
-    stateTable: {fileID: 0}
-    id: -18166
-    target: {fileID: 11496668}
+      - name: Knockback Force
+        stateTable: {fileID: 11495978}
+        id: -15532
+        target: {fileID: 11490038}
+        requireOn: 0
+        requireOff: 0
+  - name: Damage Duration
+    stateTable: {fileID: 11495978}
+    id: -166820
+    target: {fileID: 11497232}
     empty: 0
     requirements:
     - data:
       - name: '@Ready'
-        stateTable: {fileID: 0}
+        stateTable: {fileID: 11495978}
         id: -1122500
         target: {fileID: 11445666}
-        requireOn: 0
-        requireOff: 0
-      - name: Dress Hurt Animation
-        stateTable: {fileID: 11495978}
-        id: -69602
-        target: {fileID: 11461506}
-        requireOn: 0
-        requireOff: 0
-      - name: Dress Hurt Animation (Vertex)
-        stateTable: {fileID: 0}
-        id: -28066
-        target: {fileID: 11496008}
-        requireOn: 0
-        requireOff: 0
-      - name: Dummy Hurt Check
-        stateTable: {fileID: 0}
-        id: -1158112
-        target: {fileID: 11493710}
         requireOn: 1
         requireOff: 0
-      - name: Hurt Animation
-        stateTable: {fileID: 0}
+      - name: Damage Animation
+        stateTable: {fileID: 11495978}
         id: -1134442
         target: {fileID: 11496146}
         requireOn: 0
         requireOff: 0
-      - name: Hurt Timer
-        stateTable: {fileID: 0}
-        id: -18166
-        target: {fileID: 11496668}
+      - name: Damage Duration
+        stateTable: {fileID: 11495978}
+        id: -166820
+        target: {fileID: 11497232}
         requireOn: 0
         requireOff: 0
-      - name: Toss Back
-        stateTable: {fileID: 0}
-        id: -72274
-        target: {fileID: 11445654}
+      - name: Damage Prepare
+        stateTable: {fileID: 11495978}
+        id: -168516
+        target: {fileID: 11478524}
         requireOn: 0
         requireOff: 0
-  - name: Toss Back
-    stateTable: {fileID: 0}
-    id: -72274
-    target: {fileID: 11445654}
+      - name: Knockback Force
+        stateTable: {fileID: 11495978}
+        id: -15532
+        target: {fileID: 11490038}
+        requireOn: 0
+        requireOff: 0
+  - name: Damage Prepare
+    stateTable: {fileID: 11495978}
+    id: -168516
+    target: {fileID: 11478524}
     empty: 0
     requirements:
     - data:
       - name: '@Ready'
-        stateTable: {fileID: 0}
+        stateTable: {fileID: 11495978}
         id: -1122500
         target: {fileID: 11445666}
-        requireOn: 1
+        requireOn: 0
         requireOff: 0
-      - name: Dress Hurt Animation
+      - name: Damage Animation
         stateTable: {fileID: 11495978}
-        id: -69602
-        target: {fileID: 11461506}
-        requireOn: 0
-        requireOff: 0
-      - name: Dress Hurt Animation (Vertex)
-        stateTable: {fileID: 0}
-        id: -28066
-        target: {fileID: 11496008}
-        requireOn: 0
-        requireOff: 0
-      - name: Dummy Hurt Check
-        stateTable: {fileID: 0}
-        id: -1158112
-        target: {fileID: 11493710}
-        requireOn: 0
-        requireOff: 0
-      - name: Hurt Animation
-        stateTable: {fileID: 0}
         id: -1134442
         target: {fileID: 11496146}
         requireOn: 0
         requireOff: 0
-      - name: Hurt Timer
-        stateTable: {fileID: 0}
-        id: -18166
-        target: {fileID: 11496668}
+      - name: Damage Duration
+        stateTable: {fileID: 11495978}
+        id: -166820
+        target: {fileID: 11497232}
         requireOn: 0
         requireOff: 0
-      - name: Toss Back
-        stateTable: {fileID: 0}
-        id: -72274
-        target: {fileID: 11445654}
+      - name: Damage Prepare
+        stateTable: {fileID: 11495978}
+        id: -168516
+        target: {fileID: 11478524}
+        requireOn: 0
+        requireOff: 0
+      - name: Knockback Force
+        stateTable: {fileID: 11495978}
+        id: -15532
+        target: {fileID: 11490038}
+        requireOn: 0
+        requireOff: 0
+  - name: Knockback Force
+    stateTable: {fileID: 11495978}
+    id: -15532
+    target: {fileID: 11490038}
+    empty: 0
+    requirements:
+    - data:
+      - name: '@Ready'
+        stateTable: {fileID: 11495978}
+        id: -1122500
+        target: {fileID: 11445666}
+        requireOn: 1
+        requireOff: 0
+      - name: Damage Animation
+        stateTable: {fileID: 11495978}
+        id: -1134442
+        target: {fileID: 11496146}
+        requireOn: 0
+        requireOff: 0
+      - name: Damage Duration
+        stateTable: {fileID: 11495978}
+        id: -166820
+        target: {fileID: 11497232}
+        requireOn: 0
+        requireOff: 0
+      - name: Damage Prepare
+        stateTable: {fileID: 11495978}
+        id: -168516
+        target: {fileID: 11478524}
+        requireOn: 0
+        requireOff: 0
+      - name: Knockback Force
+        stateTable: {fileID: 11495978}
+        id: -15532
+        target: {fileID: 11490038}
         requireOn: 0
         requireOff: 0
   tableOff:
@@ -6115,190 +3750,31 @@ MonoBehaviour:
         target: {fileID: 11445666}
         requireOn: 0
         requireOff: 0
-      - name: Dress Hurt Animation
-        stateTable: {fileID: 11495978}
-        id: -69602
-        target: {fileID: 11461506}
-        requireOn: 0
-        requireOff: 0
-      - name: Dress Hurt Animation (Vertex)
-        stateTable: {fileID: 0}
-        id: -28066
-        target: {fileID: 11496008}
-        requireOn: 0
-        requireOff: 0
-      - name: Dummy Hurt Check
-        stateTable: {fileID: 0}
-        id: -1158112
-        target: {fileID: 11493710}
-        requireOn: 0
-        requireOff: 1
-      - name: Hurt Animation
+      - name: Damage Animation
         stateTable: {fileID: 0}
         id: -1134442
         target: {fileID: 11496146}
         requireOn: 0
         requireOff: 0
-      - name: Hurt Timer
-        stateTable: {fileID: 0}
-        id: -18166
-        target: {fileID: 11496668}
-        requireOn: 1
-        requireOff: 0
-      - name: Toss Back
-        stateTable: {fileID: 0}
-        id: -72274
-        target: {fileID: 11445654}
-        requireOn: 0
-        requireOff: 0
-  - name: Dress Hurt Animation
-    stateTable: {fileID: 11495978}
-    id: -69602
-    target: {fileID: 11461506}
-    empty: 0
-    requirements:
-    - data:
-      - name: '@Ready'
+      - name: Damage Duration
         stateTable: {fileID: 11495978}
-        id: -1122500
-        target: {fileID: 11445666}
+        id: -166820
+        target: {fileID: 11497232}
         requireOn: 0
-        requireOff: 1
-      - name: Dress Hurt Animation
+        requireOff: 0
+      - name: Damage Prepare
         stateTable: {fileID: 11495978}
-        id: -69602
-        target: {fileID: 11461506}
+        id: -168516
+        target: {fileID: 11478524}
         requireOn: 0
         requireOff: 0
-      - name: Dress Hurt Animation (Vertex)
+      - name: Knockback Force
         stateTable: {fileID: 11495978}
-        id: -28066
-        target: {fileID: 11496008}
+        id: -15532
+        target: {fileID: 11490038}
         requireOn: 0
         requireOff: 0
-      - name: Dummy Hurt Check
-        stateTable: {fileID: 11495978}
-        id: -1158112
-        target: {fileID: 11493710}
-        requireOn: 0
-        requireOff: 0
-      - name: Hurt Animation
-        stateTable: {fileID: 11495978}
-        id: -1134442
-        target: {fileID: 11496146}
-        requireOn: 0
-        requireOff: 0
-      - name: Hurt Timer
-        stateTable: {fileID: 11495978}
-        id: -18166
-        target: {fileID: 11496668}
-        requireOn: 0
-        requireOff: 0
-      - name: Toss Back
-        stateTable: {fileID: 11495978}
-        id: -72274
-        target: {fileID: 11445654}
-        requireOn: 0
-        requireOff: 0
-  - name: Dress Hurt Animation (Vertex)
-    stateTable: {fileID: 0}
-    id: -28066
-    target: {fileID: 11496008}
-    empty: 0
-    requirements:
-    - data:
-      - name: '@Ready'
-        stateTable: {fileID: 0}
-        id: -1122500
-        target: {fileID: 11445666}
-        requireOn: 0
-        requireOff: 1
-      - name: Dress Hurt Animation
-        stateTable: {fileID: 11495978}
-        id: -69602
-        target: {fileID: 11461506}
-        requireOn: 0
-        requireOff: 0
-      - name: Dress Hurt Animation (Vertex)
-        stateTable: {fileID: 0}
-        id: -28066
-        target: {fileID: 11496008}
-        requireOn: 0
-        requireOff: 0
-      - name: Dummy Hurt Check
-        stateTable: {fileID: 0}
-        id: -1158112
-        target: {fileID: 11493710}
-        requireOn: 0
-        requireOff: 0
-      - name: Hurt Animation
-        stateTable: {fileID: 0}
-        id: -1134442
-        target: {fileID: 11496146}
-        requireOn: 0
-        requireOff: 0
-      - name: Hurt Timer
-        stateTable: {fileID: 0}
-        id: -18166
-        target: {fileID: 11496668}
-        requireOn: 0
-        requireOff: 0
-      - name: Toss Back
-        stateTable: {fileID: 0}
-        id: -72274
-        target: {fileID: 11445654}
-        requireOn: 0
-        requireOff: 0
-  - name: Dummy Hurt Check
-    stateTable: {fileID: 0}
-    id: -1158112
-    target: {fileID: 11493710}
-    empty: 0
-    requirements:
-    - data:
-      - name: '@Ready'
-        stateTable: {fileID: 0}
-        id: -1122500
-        target: {fileID: 11445666}
-        requireOn: 0
-        requireOff: 0
-      - name: Dress Hurt Animation
-        stateTable: {fileID: 11495978}
-        id: -69602
-        target: {fileID: 11461506}
-        requireOn: 0
-        requireOff: 0
-      - name: Dress Hurt Animation (Vertex)
-        stateTable: {fileID: 0}
-        id: -28066
-        target: {fileID: 11496008}
-        requireOn: 0
-        requireOff: 0
-      - name: Dummy Hurt Check
-        stateTable: {fileID: 0}
-        id: -1158112
-        target: {fileID: 11493710}
-        requireOn: 0
-        requireOff: 0
-      - name: Hurt Animation
-        stateTable: {fileID: 0}
-        id: -1134442
-        target: {fileID: 11496146}
-        requireOn: 0
-        requireOff: 0
-      - name: Hurt Timer
-        stateTable: {fileID: 0}
-        id: -18166
-        target: {fileID: 11496668}
-        requireOn: 0
-        requireOff: 0
-      - name: Toss Back
-        stateTable: {fileID: 0}
-        id: -72274
-        target: {fileID: 11445654}
-        requireOn: 0
-        requireOff: 0
-  - name: Hurt Animation
+  - name: Damage Animation
     stateTable: {fileID: 0}
     id: -1134442
     target: {fileID: 11496146}
@@ -6311,286 +3787,150 @@ MonoBehaviour:
         target: {fileID: 11445666}
         requireOn: 0
         requireOff: 1
-      - name: Dress Hurt Animation
-        stateTable: {fileID: 11495978}
-        id: -69602
-        target: {fileID: 11461506}
-        requireOn: 0
-        requireOff: 0
-      - name: Dress Hurt Animation (Vertex)
-        stateTable: {fileID: 0}
-        id: -28066
-        target: {fileID: 11496008}
-        requireOn: 0
-        requireOff: 0
-      - name: Dummy Hurt Check
-        stateTable: {fileID: 0}
-        id: -1158112
-        target: {fileID: 11493710}
-        requireOn: 0
-        requireOff: 0
-      - name: Hurt Animation
+      - name: Damage Animation
         stateTable: {fileID: 0}
         id: -1134442
         target: {fileID: 11496146}
         requireOn: 0
         requireOff: 0
-      - name: Hurt Timer
-        stateTable: {fileID: 0}
-        id: -18166
-        target: {fileID: 11496668}
+      - name: Damage Duration
+        stateTable: {fileID: 11495978}
+        id: -166820
+        target: {fileID: 11497232}
         requireOn: 0
         requireOff: 0
-      - name: Toss Back
-        stateTable: {fileID: 0}
-        id: -72274
-        target: {fileID: 11445654}
+      - name: Damage Prepare
+        stateTable: {fileID: 11495978}
+        id: -168516
+        target: {fileID: 11478524}
         requireOn: 0
         requireOff: 0
-  - name: Hurt Timer
-    stateTable: {fileID: 0}
-    id: -18166
-    target: {fileID: 11496668}
+      - name: Knockback Force
+        stateTable: {fileID: 11495978}
+        id: -15532
+        target: {fileID: 11490038}
+        requireOn: 0
+        requireOff: 0
+  - name: Damage Duration
+    stateTable: {fileID: 11495978}
+    id: -166820
+    target: {fileID: 11497232}
     empty: 0
     requirements:
     - data:
       - name: '@Ready'
-        stateTable: {fileID: 0}
+        stateTable: {fileID: 11495978}
         id: -1122500
         target: {fileID: 11445666}
         requireOn: 0
         requireOff: 0
-      - name: Dress Hurt Animation
+      - name: Damage Animation
         stateTable: {fileID: 11495978}
-        id: -69602
-        target: {fileID: 11461506}
-        requireOn: 0
-        requireOff: 0
-      - name: Dress Hurt Animation (Vertex)
-        stateTable: {fileID: 0}
-        id: -28066
-        target: {fileID: 11496008}
-        requireOn: 0
-        requireOff: 0
-      - name: Dummy Hurt Check
-        stateTable: {fileID: 0}
-        id: -1158112
-        target: {fileID: 11493710}
-        requireOn: 0
-        requireOff: 0
-      - name: Hurt Animation
-        stateTable: {fileID: 0}
         id: -1134442
         target: {fileID: 11496146}
         requireOn: 0
         requireOff: 0
-      - name: Hurt Timer
-        stateTable: {fileID: 0}
-        id: -18166
-        target: {fileID: 11496668}
+      - name: Damage Duration
+        stateTable: {fileID: 11495978}
+        id: -166820
+        target: {fileID: 11497232}
         requireOn: 0
         requireOff: 0
-      - name: Toss Back
-        stateTable: {fileID: 0}
-        id: -72274
-        target: {fileID: 11445654}
+      - name: Damage Prepare
+        stateTable: {fileID: 11495978}
+        id: -168516
+        target: {fileID: 11478524}
         requireOn: 0
         requireOff: 0
-  - name: Toss Back
-    stateTable: {fileID: 0}
-    id: -72274
-    target: {fileID: 11445654}
+      - name: Knockback Force
+        stateTable: {fileID: 11495978}
+        id: -15532
+        target: {fileID: 11490038}
+        requireOn: 0
+        requireOff: 0
+  - name: Damage Prepare
+    stateTable: {fileID: 11495978}
+    id: -168516
+    target: {fileID: 11478524}
     empty: 0
     requirements:
     - data:
       - name: '@Ready'
-        stateTable: {fileID: 0}
+        stateTable: {fileID: 11495978}
         id: -1122500
         target: {fileID: 11445666}
         requireOn: 0
         requireOff: 0
-      - name: Dress Hurt Animation
+      - name: Damage Animation
         stateTable: {fileID: 11495978}
-        id: -69602
-        target: {fileID: 11461506}
-        requireOn: 0
-        requireOff: 0
-      - name: Dress Hurt Animation (Vertex)
-        stateTable: {fileID: 0}
-        id: -28066
-        target: {fileID: 11496008}
-        requireOn: 0
-        requireOff: 0
-      - name: Dummy Hurt Check
-        stateTable: {fileID: 0}
-        id: -1158112
-        target: {fileID: 11493710}
-        requireOn: 0
-        requireOff: 1
-      - name: Hurt Animation
-        stateTable: {fileID: 0}
         id: -1134442
         target: {fileID: 11496146}
         requireOn: 0
         requireOff: 0
-      - name: Hurt Timer
-        stateTable: {fileID: 0}
-        id: -18166
-        target: {fileID: 11496668}
+      - name: Damage Duration
+        stateTable: {fileID: 11495978}
+        id: -166820
+        target: {fileID: 11497232}
         requireOn: 0
         requireOff: 0
-      - name: Toss Back
-        stateTable: {fileID: 0}
-        id: -72274
-        target: {fileID: 11445654}
+      - name: Damage Prepare
+        stateTable: {fileID: 11495978}
+        id: -168516
+        target: {fileID: 11478524}
         requireOn: 0
         requireOff: 0
-  advanced: 1
+      - name: Knockback Force
+        stateTable: {fileID: 11495978}
+        id: -15532
+        target: {fileID: 11490038}
+        requireOn: 0
+        requireOff: 0
+  - name: Knockback Force
+    stateTable: {fileID: 11495978}
+    id: -15532
+    target: {fileID: 11490038}
+    empty: 0
+    requirements:
+    - data:
+      - name: '@Ready'
+        stateTable: {fileID: 11495978}
+        id: -1122500
+        target: {fileID: 11445666}
+        requireOn: 0
+        requireOff: 0
+      - name: Damage Animation
+        stateTable: {fileID: 11495978}
+        id: -1134442
+        target: {fileID: 11496146}
+        requireOn: 0
+        requireOff: 0
+      - name: Damage Duration
+        stateTable: {fileID: 11495978}
+        id: -166820
+        target: {fileID: 11497232}
+        requireOn: 0
+        requireOff: 0
+      - name: Damage Prepare
+        stateTable: {fileID: 11495978}
+        id: -168516
+        target: {fileID: 11478524}
+        requireOn: 0
+        requireOff: 0
+      - name: Knockback Force
+        stateTable: {fileID: 11495978}
+        id: -15532
+        target: {fileID: 11490038}
+        requireOn: 0
+        requireOff: 0
+  advanced: 0
   scripts:
   - {fileID: 11445666}
-  - {fileID: 11461506}
-  - {fileID: 11496008}
-  - {fileID: 11493710}
   - {fileID: 11496146}
-  - {fileID: 11496668}
-  - {fileID: 11445654}
+  - {fileID: 11490038}
+  - {fileID: 11478524}
+  - {fileID: 11497232}
   parts: []
   isFixed: 1
---- !u!114 &11496008
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 913766e3e62ceac4a918c0cd12f04e67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Dress Hurt Animation (Vertex)
-  rate: 1
-  id: -28066
-  requirable:
-    info:
-      name: Requirable
-      path: Dress Hurt Animation (Vertex)/Requirable
-      id: -21554/dcac6932-d350-46e5-a773-3da3f4112065
-      localID: dcac6932-d350-46e5-a773-3da3f4112065
-      parent: {fileID: 11496008}
-      mode: 0
-      data:
-      - {fileID: 11488480}
-      dataB: []
-      dataC: []
-  ready:
-    info:
-      name: Ready
-      path: Dress Hurt Animation (Vertex)/Ready
-      id: -21554/0d8fb5b0-43f2-4420-8ef9-495affc1c723
-      localID: 0d8fb5b0-43f2-4420-8ef9-495affc1c723
-      parent: {fileID: 11496008}
-      mode: 0
-      data:
-      - {fileID: 11478788}
-      dataB: []
-      dataC: []
-  usable:
-    info:
-      name: Usable
-      path: Dress Hurt Animation (Vertex)/Usable
-      id: -21554/d56e4ff9-8278-4a46-b5a4-17a2ccad9b7a
-      localID: d56e4ff9-8278-4a46-b5a4-17a2ccad9b7a
-      parent: {fileID: 11496008}
-      mode: 0
-      data:
-      - {fileID: 11434458}
-      dataB: []
-      dataC: []
-  inUse:
-    info:
-      name: Active
-      path: Dress Hurt Animation (Vertex)/Active
-      id: -21554/78829690-688a-4d56-a5e1-d9dafa838794
-      localID: 78829690-688a-4d56-a5e1-d9dafa838794
-      parent: {fileID: 11496008}
-      mode: 0
-      data:
-      - {fileID: 11471200}
-      dataB: []
-      dataC: []
-  used:
-    info:
-      name: Used
-      path: Dress Hurt Animation (Vertex)/Used
-      id: -21554/17bf1040-1634-44fa-98e1-5ca6b0b1c883
-      localID: 17bf1040-1634-44fa-98e1-5ca6b0b1c883
-      parent: {fileID: 11496008}
-      mode: 0
-      data:
-      - {fileID: 11415108}
-      dataB: []
-      dataC: []
-  endWhileUnusable:
-    info:
-      name: End While Unusable
-      path: Dress Hurt Animation (Vertex)/End While Unusable
-      id: -21554/c4c5a6e3-a635-4a1a-8e8a-a30ecc45e210
-      localID: c4c5a6e3-a635-4a1a-8e8a-a30ecc45e210
-      parent: {fileID: 11496008}
-      mode: 0
-      data:
-      - {fileID: 11420950}
-      dataB: []
-      dataC: []
-  occurrence: 0
-  animationName:
-    info:
-      name: Animation Name
-      path: Dress Hurt Animation (Vertex)/Animation Name
-      id: -21554/f3eced0e-68c9-411f-9365-1a1083045780
-      localID: f3eced0e-68c9-411f-9365-1a1083045780
-      parent: {fileID: 11496008}
-      mode: 0
-      data:
-      - {fileID: 11458038}
-      dataB: []
-      dataC: []
-  speed:
-    info:
-      name: Speed
-      path: Dress Hurt Animation (Vertex)/Speed
-      id: -21554/bd842059-9882-466c-a7f6-944eb55c1418
-      localID: bd842059-9882-466c-a7f6-944eb55c1418
-      parent: {fileID: 11496008}
-      mode: 0
-      data:
-      - {fileID: 11432400}
-      dataB: []
-      dataC: []
-  weight:
-    info:
-      name: Weight
-      path: Dress Hurt Animation (Vertex)/Weight
-      id: -21554/a9d14fc4-a849-4304-b320-b6860072d8a9
-      localID: a9d14fc4-a849-4304-b320-b6860072d8a9
-      parent: {fileID: 11496008}
-      mode: 0
-      data:
-      - {fileID: 11425618}
-      dataB: []
-      dataC: []
-  target:
-    info:
-      name: Target
-      path: Dress Hurt Animation (Vertex)/Target
-      id: -21554/6aa9e668-2ba5-4111-a08c-f9a4f30b584d
-      localID: 6aa9e668-2ba5-4111-a08c-f9a4f30b584d
-      parent: {fileID: 11496008}
-      mode: 0
-      data:
-      - {fileID: 11443730}
-      dataB: []
-      dataC: []
 --- !u!114 &11496146
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6602,14 +3942,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 913766e3e62ceac4a918c0cd12f04e67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alias: Hurt Animation
+  alias: Damage Animation
   rate: 1
   id: -1134442
   requirable:
     info:
       name: Requirable
-      path: Hurt Animation/Requirable
-      id: -21550/5bc1fc7e-c726-499e-a3fa-b4319be38113
+      path: Damage Animation/Requirable
+      id: -3002/5bc1fc7e-c726-499e-a3fa-b4319be38113
       localID: 5bc1fc7e-c726-499e-a3fa-b4319be38113
       parent: {fileID: 11496146}
       mode: 0
@@ -6620,8 +3960,8 @@ MonoBehaviour:
   ready:
     info:
       name: Ready
-      path: Hurt Animation/Ready
-      id: -21550/1c2a7db1-644e-4634-93dc-45876494e7fc
+      path: Damage Animation/Ready
+      id: -3002/1c2a7db1-644e-4634-93dc-45876494e7fc
       localID: 1c2a7db1-644e-4634-93dc-45876494e7fc
       parent: {fileID: 11496146}
       mode: 0
@@ -6632,8 +3972,8 @@ MonoBehaviour:
   usable:
     info:
       name: Usable
-      path: Hurt Animation/Usable
-      id: -21550/855db985-26e1-4a7c-850c-5bb71aeebea0
+      path: Damage Animation/Usable
+      id: -3002/855db985-26e1-4a7c-850c-5bb71aeebea0
       localID: 855db985-26e1-4a7c-850c-5bb71aeebea0
       parent: {fileID: 11496146}
       mode: 0
@@ -6644,8 +3984,8 @@ MonoBehaviour:
   inUse:
     info:
       name: Active
-      path: Hurt Animation/Active
-      id: -21550/251dc569-644f-445d-9452-843638c3dd39
+      path: Damage Animation/Active
+      id: -3002/251dc569-644f-445d-9452-843638c3dd39
       localID: 251dc569-644f-445d-9452-843638c3dd39
       parent: {fileID: 11496146}
       mode: 0
@@ -6656,8 +3996,8 @@ MonoBehaviour:
   used:
     info:
       name: Used
-      path: Hurt Animation/Used
-      id: -21550/7b2a7695-5ad5-4171-b9cf-35c04924a8ba
+      path: Damage Animation/Used
+      id: -3002/7b2a7695-5ad5-4171-b9cf-35c04924a8ba
       localID: 7b2a7695-5ad5-4171-b9cf-35c04924a8ba
       parent: {fileID: 11496146}
       mode: 0
@@ -6668,8 +4008,8 @@ MonoBehaviour:
   endWhileUnusable:
     info:
       name: End While Unusable
-      path: Hurt Animation/End While Unusable
-      id: -21550/40edcd1a-6eba-4d49-8f1f-3daae3e71030
+      path: Damage Animation/End While Unusable
+      id: -3002/40edcd1a-6eba-4d49-8f1f-3daae3e71030
       localID: 40edcd1a-6eba-4d49-8f1f-3daae3e71030
       parent: {fileID: 11496146}
       mode: 0
@@ -6681,8 +4021,8 @@ MonoBehaviour:
   animationName:
     info:
       name: Animation Name
-      path: Hurt Animation/Animation Name
-      id: -21550/db82c64b-dafe-45b1-9527-a91a22c9b686
+      path: Damage Animation/Animation Name
+      id: -3002/db82c64b-dafe-45b1-9527-a91a22c9b686
       localID: db82c64b-dafe-45b1-9527-a91a22c9b686
       parent: {fileID: 11496146}
       mode: 0
@@ -6693,8 +4033,8 @@ MonoBehaviour:
   speed:
     info:
       name: Speed
-      path: Hurt Animation/Speed
-      id: -21550/87e1ee5d-9748-421f-a38a-b08ad9d67d73
+      path: Damage Animation/Speed
+      id: -3002/87e1ee5d-9748-421f-a38a-b08ad9d67d73
       localID: 87e1ee5d-9748-421f-a38a-b08ad9d67d73
       parent: {fileID: 11496146}
       mode: 0
@@ -6705,8 +4045,8 @@ MonoBehaviour:
   weight:
     info:
       name: Weight
-      path: Hurt Animation/Weight
-      id: -21550/6dc76b7e-8264-4551-8778-9b937f8d4248
+      path: Damage Animation/Weight
+      id: -3002/6dc76b7e-8264-4551-8778-9b937f8d4248
       localID: 6dc76b7e-8264-4551-8778-9b937f8d4248
       parent: {fileID: 11496146}
       mode: 0
@@ -6717,8 +4057,8 @@ MonoBehaviour:
   target:
     info:
       name: Target
-      path: Hurt Animation/Target
-      id: -21550/929fa23f-bb73-4896-a360-319f0be2fe7d
+      path: Damage Animation/Target
+      id: -3002/929fa23f-bb73-4896-a360-319f0be2fe7d
       localID: 929fa23f-bb73-4896-a360-319f0be2fe7d
       parent: {fileID: 11496146}
       mode: 0
@@ -6728,7 +4068,7 @@ MonoBehaviour:
       dataC: []
 --- !u!114 &11496534
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187420}
@@ -6747,13 +4087,13 @@ MonoBehaviour:
     parent: {fileID: 0}
     mode: 0
   usage: 0
-  path: Hurt/Used/0
+  path: Damage Jump/Used/0
   referenceID: 
   referencePath: 
   attribute:
     name: Used
-    path: Hurt/Used
-    id: -21572/3fdcf49e-5a2a-415e-8490-f585b136d3bb
+    path: Damage Jump/Used
+    id: -2930/3fdcf49e-5a2a-415e-8490-f585b136d3bb
     localID: 3fdcf49e-5a2a-415e-8490-f585b136d3bb
     parent: {fileID: 11467030}
     mode: 0
@@ -6775,7 +4115,7 @@ MonoBehaviour:
   operation: 0
   special: 0
   value: 0
---- !u!114 &11496668
+--- !u!114 &11497232
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -6786,131 +4126,131 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb780ed64906f1944b7e8d65c34757d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alias: Hurt Timer
+  alias: Damage Duration
   rate: 1
-  id: -18166
+  id: -166820
   requirable:
     info:
       name: Requirable
-      path: Hurt Timer/Requirable
-      id: -21548/024fb2a1-7620-4d2f-b906-c564178e1a03
-      localID: 024fb2a1-7620-4d2f-b906-c564178e1a03
-      parent: {fileID: 11496668}
+      path: Damage Duration/Requirable
+      id: -166820/d6adf382-20b7-4d86-93e1-8ce708a899ec
+      localID: d6adf382-20b7-4d86-93e1-8ce708a899ec
+      parent: {fileID: 11497232}
       mode: 0
       data:
-      - {fileID: 11435748}
+      - {fileID: 11401202}
       dataB: []
       dataC: []
   ready:
     info:
       name: Ready
-      path: Hurt Timer/Ready
-      id: -21548/5d5bd731-995a-48c2-abcc-76d34327bf3f
-      localID: 5d5bd731-995a-48c2-abcc-76d34327bf3f
-      parent: {fileID: 11496668}
+      path: Damage Duration/Ready
+      id: -166820/3e2ae606-e0a3-41b3-899b-5d73cd2308dc
+      localID: 3e2ae606-e0a3-41b3-899b-5d73cd2308dc
+      parent: {fileID: 11497232}
       mode: 0
       data:
-      - {fileID: 11411666}
+      - {fileID: 11415520}
       dataB: []
       dataC: []
   usable:
     info:
       name: Usable
-      path: Hurt Timer/Usable
-      id: -21548/047b30c6-9e05-4527-8afd-fa972e63097e
-      localID: 047b30c6-9e05-4527-8afd-fa972e63097e
-      parent: {fileID: 11496668}
+      path: Damage Duration/Usable
+      id: -166820/3f6545a7-db97-4462-aa06-0c8d7f177c0f
+      localID: 3f6545a7-db97-4462-aa06-0c8d7f177c0f
+      parent: {fileID: 11497232}
       mode: 0
       data:
-      - {fileID: 11432810}
+      - {fileID: 11439444}
       dataB: []
       dataC: []
   inUse:
     info:
       name: Active
-      path: Hurt Timer/Active
-      id: -21548/1275d036-d40b-4e83-a26b-9b43a6eac7b2
-      localID: 1275d036-d40b-4e83-a26b-9b43a6eac7b2
-      parent: {fileID: 11496668}
+      path: Damage Duration/Active
+      id: -166820/f46bdcb6-cf32-41f8-9a27-3b3725cb8006
+      localID: f46bdcb6-cf32-41f8-9a27-3b3725cb8006
+      parent: {fileID: 11497232}
       mode: 0
       data:
-      - {fileID: 11440730}
+      - {fileID: 11431970}
       dataB: []
       dataC: []
   used:
     info:
       name: Used
-      path: Hurt Timer/Used
-      id: -21548/3fc3404f-0ee9-4783-ae36-6191e7dbd742
-      localID: 3fc3404f-0ee9-4783-ae36-6191e7dbd742
-      parent: {fileID: 11496668}
+      path: Damage Duration/Used
+      id: -166820/12f507e2-4382-4a65-803a-b388d9152314
+      localID: 12f507e2-4382-4a65-803a-b388d9152314
+      parent: {fileID: 11497232}
       mode: 0
       data:
-      - {fileID: 11407952}
+      - {fileID: 11446696}
       dataB: []
       dataC: []
   endWhileUnusable:
     info:
       name: End While Unusable
-      path: Hurt Timer/End While Unusable
-      id: -21548/1462d185-79d7-4b73-a5e5-a360db76ee35
-      localID: 1462d185-79d7-4b73-a5e5-a360db76ee35
-      parent: {fileID: 11496668}
+      path: Damage Duration/End While Unusable
+      id: -166820/673de777-8d3c-402d-86db-fd67e66e77d8
+      localID: 673de777-8d3c-402d-86db-fd67e66e77d8
+      parent: {fileID: 11497232}
       mode: 0
       data:
-      - {fileID: 11440728}
+      - {fileID: 11429528}
       dataB: []
       dataC: []
   occurrence: 0
-  type: 0
+  type: 1
   seconds:
     info:
       name: Seconds
-      path: Hurt Timer/Seconds
-      id: -21548/3578a332-9571-4584-a1bf-95eafa1c8055
-      localID: 3578a332-9571-4584-a1bf-95eafa1c8055
-      parent: {fileID: 11496668}
+      path: Damage Duration/Seconds
+      id: -166820/41ddd285-14d9-4f38-80bc-eae00a54bc38
+      localID: 41ddd285-14d9-4f38-80bc-eae00a54bc38
+      parent: {fileID: 11497232}
       mode: 0
       data:
-      - {fileID: 11419050}
+      - {fileID: 11412882}
       dataB: []
       dataC: []
   isStarted:
     info:
       name: Is Started
-      path: Hurt Timer/Is Started
-      id: -21548/b2e29298-a283-4a0d-83e7-d355dfd3fb6b
-      localID: b2e29298-a283-4a0d-83e7-d355dfd3fb6b
-      parent: {fileID: 11496668}
+      path: Damage Duration/Is Started
+      id: -166820/f69b6229-d3f0-42a6-89ab-8f918fbb0fa8
+      localID: f69b6229-d3f0-42a6-89ab-8f918fbb0fa8
+      parent: {fileID: 11497232}
       mode: 0
       data:
-      - {fileID: 11421112}
+      - {fileID: 11463590}
       dataB: []
       dataC: []
   isComplete:
     info:
       name: Is Complete
-      path: Hurt Timer/Is Complete
-      id: -21548/5c40c7c6-5a55-4ed4-936c-e4b5ed9bb4b5
-      localID: 5c40c7c6-5a55-4ed4-936c-e4b5ed9bb4b5
-      parent: {fileID: 11496668}
+      path: Damage Duration/Is Complete
+      id: -166820/ee77db0d-9b63-4a78-95eb-0ecdb6e09e9c
+      localID: ee77db0d-9b63-4a78-95eb-0ecdb6e09e9c
+      parent: {fileID: 11497232}
       mode: 0
       data:
-      - {fileID: 11456340}
+      - {fileID: 11469578}
       dataB: []
       dataC: []
---- !u!114 &11496740
+--- !u!114 &11499330
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187420}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
+  m_Script: {fileID: 11500000, guid: 5bd276b9f61cc614aaa69e18d0ef39ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alias: Attribute Float Data
+  alias: Attribute Vector3Data
   target:
     special: []
     specialNames: []
@@ -6920,18 +4260,18 @@ MonoBehaviour:
     parent: {fileID: 0}
     mode: 0
   usage: 0
-  path: Dummy Hurt Check/Hit Distance/0
+  path: Knockback Force/Amount/0
   referenceID: 
   referencePath: 
   attribute:
-    name: Hit Distance
-    path: Dummy Hurt Check/Hit Distance
-    id: -21552/01911e4c-2b6f-4e49-8ca4-53ea12059b1b
-    localID: 01911e4c-2b6f-4e49-8ca4-53ea12059b1b
-    parent: {fileID: 11493710}
+    name: Amount
+    path: Knockback Force/Amount
+    id: -3008/4927b27c-8967-4101-b520-fa2e92c7e2d9
+    localID: 4927b27c-8967-4101-b520-fa2e92c7e2d9
+    parent: {fileID: 11490038}
     mode: 0
     data:
-    - {fileID: 11496740}
+    - {fileID: 11499330}
     dataB: []
     dataC: []
   attributeRaw:
@@ -6947,59 +4287,10 @@ MonoBehaviour:
       dataC: []
   operation: 0
   special: 0
-  value: 0
---- !u!114 &11497908
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Bool Data
-  target:
-    special: []
-    specialNames: []
-    search: 
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
-    mode: 0
-  usage: 0
-  path: Toss Back/End While Unusable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: End While Unusable
-    path: Toss Back/End While Unusable
-    id: -21546/e0122c84-eb9c-4088-aded-be8c6010e65d
-    localID: e0122c84-eb9c-4088-aded-be8c6010e65d
-    parent: {fileID: 11445654}
-    mode: 0
-    data:
-    - {fileID: 11497908}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 0
+  value: {x: 0, y: .389999986, z: 0}
 --- !u!114 &11499498
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187420}
@@ -7010,21 +4301,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alias: Attribute Float Data
   target:
-    special: []
-    specialNames: []
-    search: 
+    special:
+    - {fileID: 187420}
+    - {fileID: 187420}
+    - {fileID: 190592}
+    - {fileID: 190592}
+    - {fileID: 190592}
+    - {fileID: 190592}
+    - {fileID: 177750}
+    - {fileID: 187420}
+    - {fileID: 187420}
+    - {fileID: 187420}
+    - {fileID: 187420}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    - '[Owner]'
+    - '[Action]'
+    - '[ActionLink]'
+    - '[StateLink]'
+    search: ../@Settings
     directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
+    searchObject: {fileID: 190592}
+    parent: {fileID: 11496146}
     mode: 0
-  usage: 0
-  path: Hurt Animation/Speed/0
-  referenceID: 
-  referencePath: 
+  usage: 1
+  path: Damage Animation/Speed/0
+  referenceID: -3006/ec51a466-34a5-486c-9fbf-4e55a0f2341a
+  referencePath: Animation Speed
   attribute:
     name: Speed
-    path: Hurt Animation/Speed
-    id: -21550/87e1ee5d-9748-421f-a38a-b08ad9d67d73
+    path: Damage Animation/Speed
+    id: -3002/87e1ee5d-9748-421f-a38a-b08ad9d67d73
     localID: 87e1ee5d-9748-421f-a38a-b08ad9d67d73
     parent: {fileID: 11496146}
     mode: 0
@@ -7045,56 +4358,7 @@ MonoBehaviour:
       dataC: []
   operation: 0
   special: 0
-  value: .400000006
---- !u!114 &11499570
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Float Data
-  target:
-    special: []
-    specialNames: []
-    search: 
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
-    mode: 0
-  usage: 0
-  path: Dummy Hurt Check/Direction/Y/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Y
-    path: Dummy Hurt Check/Direction/Y
-    id: -21552/fd97e9a0-ebc0-46c9-8b43-0132a3940dbd
-    localID: fd97e9a0-ebc0-46c9-8b43-0132a3940dbd
-    parent: {fileID: 11493710}
-    mode: 0
-    data:
-    - {fileID: 11499570}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 0
+  value: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

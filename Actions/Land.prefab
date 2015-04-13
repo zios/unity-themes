@@ -143,7 +143,7 @@ MonoBehaviour:
     info:
       name: Visuals
       path: Visuals
-      id: -54650/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+      id: -402242/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
       localID: 33bddd78-c7f6-40fe-94d8-1637fbd7fa73
       parent: {fileID: 11405406}
       mode: 0
@@ -154,7 +154,7 @@ MonoBehaviour:
   remember: 0
 --- !u!114 &11405864
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101718}
@@ -165,12 +165,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alias: Attribute Bool Data
   target:
-    special: []
-    specialNames: []
-    search: 
+    special:
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 142214}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    - '[Owner]'
+    - '[Action]'
+    - '[ActionLink]'
+    - '[StateLink]'
+    search: '[Self]'
     directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
+    searchObject: {fileID: 101718}
+    parent: {fileID: 11452304}
     mode: 0
   usage: 0
   path: Land Duration/Is Complete/0
@@ -179,7 +201,7 @@ MonoBehaviour:
   attribute:
     name: Is Complete
     path: Land Duration/Is Complete
-    id: -54654/1ab85da4-7ea1-4918-853a-18bb70e02fb6
+    id: -402234/1ab85da4-7ea1-4918-853a-18bb70e02fb6
     localID: 1ab85da4-7ea1-4918-853a-18bb70e02fb6
     parent: {fileID: 11452304}
     mode: 0
@@ -217,7 +239,7 @@ MonoBehaviour:
     info:
       name: Land Duration
       path: Land Duration
-      id: -54648/36e06670-e99b-4c51-a366-51346402a31d
+      id: -402238/36e06670-e99b-4c51-a366-51346402a31d
       localID: 36e06670-e99b-4c51-a366-51346402a31d
       parent: {fileID: 11406382}
       mode: 0
@@ -228,7 +250,7 @@ MonoBehaviour:
   remember: 0
 --- !u!114 &11408066
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101718}
@@ -239,12 +261,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alias: Attribute Bool Data
   target:
-    special: []
-    specialNames: []
-    search: 
+    special:
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 142214}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    - '[Owner]'
+    - '[Action]'
+    - '[ActionLink]'
+    - '[StateLink]'
+    search: '[Self]'
     directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
+    searchObject: {fileID: 101718}
+    parent: {fileID: 11433938}
     mode: 0
   usage: 0
   path: Land Animation/Used/0
@@ -253,7 +297,7 @@ MonoBehaviour:
   attribute:
     name: Used
     path: Land Animation/Used
-    id: -54652/cb309e2c-baac-4c2b-9092-940dd4ac8bd9
+    id: -402232/cb309e2c-baac-4c2b-9092-940dd4ac8bd9
     localID: cb309e2c-baac-4c2b-9092-940dd4ac8bd9
     parent: {fileID: 11433938}
     mode: 0
@@ -293,7 +337,7 @@ MonoBehaviour:
     info:
       name: Requirable
       path: '@Ready/Requirable'
-      id: -54634/8aa6edd5-370c-4a40-baa7-c09665b56333
+      id: -402230/8aa6edd5-370c-4a40-baa7-c09665b56333
       localID: 8aa6edd5-370c-4a40-baa7-c09665b56333
       parent: {fileID: 11412638}
       mode: 0
@@ -305,7 +349,7 @@ MonoBehaviour:
     info:
       name: Ready
       path: '@Ready/Ready'
-      id: -54634/b175ccce-b23f-44f9-8e46-14dceff9f53f
+      id: -402230/b175ccce-b23f-44f9-8e46-14dceff9f53f
       localID: b175ccce-b23f-44f9-8e46-14dceff9f53f
       parent: {fileID: 11412638}
       mode: 0
@@ -317,7 +361,7 @@ MonoBehaviour:
     info:
       name: Usable
       path: '@Ready/Usable'
-      id: -54634/c9b30471-896a-4716-b936-9ab657be7ed4
+      id: -402230/c9b30471-896a-4716-b936-9ab657be7ed4
       localID: c9b30471-896a-4716-b936-9ab657be7ed4
       parent: {fileID: 11412638}
       mode: 0
@@ -329,7 +373,7 @@ MonoBehaviour:
     info:
       name: Active
       path: '@Ready/Active'
-      id: -54634/afd2e9ab-0ca0-49ad-893e-a9825a24b2ef
+      id: -402230/afd2e9ab-0ca0-49ad-893e-a9825a24b2ef
       localID: afd2e9ab-0ca0-49ad-893e-a9825a24b2ef
       parent: {fileID: 11412638}
       mode: 0
@@ -341,7 +385,7 @@ MonoBehaviour:
     info:
       name: Used
       path: '@Ready/Used'
-      id: -54634/169a6cd7-cd8f-48d6-acda-93727312be10
+      id: -402230/169a6cd7-cd8f-48d6-acda-93727312be10
       localID: 169a6cd7-cd8f-48d6-acda-93727312be10
       parent: {fileID: 11412638}
       mode: 0
@@ -353,7 +397,7 @@ MonoBehaviour:
     info:
       name: End While Unusable
       path: '@Ready/End While Unusable'
-      id: -54634/7187f814-b6b6-482d-87bc-94c6359e7347
+      id: -402230/7187f814-b6b6-482d-87bc-94c6359e7347
       localID: 7187f814-b6b6-482d-87bc-94c6359e7347
       parent: {fileID: 11412638}
       mode: 0
@@ -378,7 +422,7 @@ MonoBehaviour:
     info:
       name: Source
       path: Source
-      id: -54632/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+      id: -402240/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
       localID: 0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
       parent: {fileID: 11414598}
       mode: 0
@@ -389,7 +433,7 @@ MonoBehaviour:
   remember: 0
 --- !u!114 &11417908
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 110938}
@@ -405,8 +449,8 @@ MonoBehaviour:
     - {fileID: 110938}
     - {fileID: 101718}
     - {fileID: 101718}
-    - {fileID: 110938}
-    - {fileID: 110938}
+    - {fileID: 101718}
+    - {fileID: 101718}
     - {fileID: 142214}
     specialNames:
     - '[This]'
@@ -428,7 +472,7 @@ MonoBehaviour:
   attribute:
     name: Source
     path: Source
-    id: -54632/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+    id: -402240/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
     localID: 0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
     parent: {fileID: 11414598}
     mode: 0
@@ -452,7 +496,7 @@ MonoBehaviour:
   value: {fileID: 0}
 --- !u!114 &11419144
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101718}
@@ -463,12 +507,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alias: Attribute Bool Data
   target:
-    special: []
-    specialNames: []
-    search: 
+    special:
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 142214}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    - '[Owner]'
+    - '[Action]'
+    - '[ActionLink]'
+    - '[StateLink]'
+    search: '[Self]'
     directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
+    searchObject: {fileID: 101718}
+    parent: {fileID: 11439402}
     mode: 0
   usage: 0
   path: Land/Ready/0
@@ -477,7 +543,7 @@ MonoBehaviour:
   attribute:
     name: Ready
     path: Land/Ready
-    id: -54644/8ecb5164-d44b-4d66-9413-898db6161338
+    id: -402228/8ecb5164-d44b-4d66-9413-898db6161338
     localID: 8ecb5164-d44b-4d66-9413-898db6161338
     parent: {fileID: 11439402}
     mode: 0
@@ -501,7 +567,7 @@ MonoBehaviour:
   value: 0
 --- !u!114 &11419472
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101718}
@@ -512,12 +578,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alias: Attribute Bool Data
   target:
-    special: []
-    specialNames: []
-    search: 
+    special:
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 142214}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    - '[Owner]'
+    - '[Action]'
+    - '[ActionLink]'
+    - '[StateLink]'
+    search: '[Self]'
     directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
+    searchObject: {fileID: 101718}
+    parent: {fileID: 11412638}
     mode: 0
   usage: 0
   path: '@Ready/Usable/0'
@@ -526,7 +614,7 @@ MonoBehaviour:
   attribute:
     name: Usable
     path: '@Ready/Usable'
-    id: -54634/c9b30471-896a-4716-b936-9ab657be7ed4
+    id: -402230/c9b30471-896a-4716-b936-9ab657be7ed4
     localID: c9b30471-896a-4716-b936-9ab657be7ed4
     parent: {fileID: 11412638}
     mode: 0
@@ -550,7 +638,7 @@ MonoBehaviour:
   value: 0
 --- !u!114 &11420084
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101718}
@@ -561,12 +649,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alias: Attribute Bool Data
   target:
-    special: []
-    specialNames: []
-    search: 
+    special:
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 142214}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    - '[Owner]'
+    - '[Action]'
+    - '[ActionLink]'
+    - '[StateLink]'
+    search: '[Self]'
     directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
+    searchObject: {fileID: 101718}
+    parent: {fileID: 11412638}
     mode: 0
   usage: 0
   path: '@Ready/Requirable/0'
@@ -575,7 +685,7 @@ MonoBehaviour:
   attribute:
     name: Requirable
     path: '@Ready/Requirable'
-    id: -54634/8aa6edd5-370c-4a40-baa7-c09665b56333
+    id: -402230/8aa6edd5-370c-4a40-baa7-c09665b56333
     localID: 8aa6edd5-370c-4a40-baa7-c09665b56333
     parent: {fileID: 11412638}
     mode: 0
@@ -599,7 +709,7 @@ MonoBehaviour:
   value: 1
 --- !u!114 &11426478
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101718}
@@ -610,12 +720,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alias: Attribute Float Data
   target:
-    special: []
-    specialNames: []
-    search: 
+    special:
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 142214}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    - '[Owner]'
+    - '[Action]'
+    - '[ActionLink]'
+    - '[StateLink]'
+    search: '[Self]'
     directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
+    searchObject: {fileID: 101718}
+    parent: {fileID: 11433938}
     mode: 0
   usage: 0
   path: Land Animation/Weight/0
@@ -624,7 +756,7 @@ MonoBehaviour:
   attribute:
     name: Weight
     path: Land Animation/Weight
-    id: -54652/5492b57f-aeca-4287-992c-12386ef162dd
+    id: -402232/5492b57f-aeca-4287-992c-12386ef162dd
     localID: 5492b57f-aeca-4287-992c-12386ef162dd
     parent: {fileID: 11433938}
     mode: 0
@@ -648,7 +780,7 @@ MonoBehaviour:
   value: 1
 --- !u!114 &11427902
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101718}
@@ -659,12 +791,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alias: Attribute Bool Data
   target:
-    special: []
-    specialNames: []
-    search: 
+    special:
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 142214}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    - '[Owner]'
+    - '[Action]'
+    - '[ActionLink]'
+    - '[StateLink]'
+    search: '[Self]'
     directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
+    searchObject: {fileID: 101718}
+    parent: {fileID: 11439402}
     mode: 0
   usage: 0
   path: Land/End While Unusable/0
@@ -673,7 +827,7 @@ MonoBehaviour:
   attribute:
     name: End While Unusable
     path: Land/End While Unusable
-    id: -54644/6ace51e5-2865-4c08-b5b4-f9a048a3e178
+    id: -402228/6ace51e5-2865-4c08-b5b4-f9a048a3e178
     localID: 6ace51e5-2865-4c08-b5b4-f9a048a3e178
     parent: {fileID: 11439402}
     mode: 0
@@ -697,7 +851,7 @@ MonoBehaviour:
   value: 0
 --- !u!114 &11429564
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101718}
@@ -708,12 +862,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alias: Attribute Bool Data
   target:
-    special: []
-    specialNames: []
-    search: 
+    special:
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 142214}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    - '[Owner]'
+    - '[Action]'
+    - '[ActionLink]'
+    - '[StateLink]'
+    search: '[Self]'
     directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
+    searchObject: {fileID: 101718}
+    parent: {fileID: 11439402}
     mode: 0
   usage: 0
   path: Land/Usable/0
@@ -722,7 +898,7 @@ MonoBehaviour:
   attribute:
     name: Usable
     path: Land/Usable
-    id: -54644/26b16178-2fd3-462c-9046-a8f553bbc7a2
+    id: -402228/26b16178-2fd3-462c-9046-a8f553bbc7a2
     localID: 26b16178-2fd3-462c-9046-a8f553bbc7a2
     parent: {fileID: 11439402}
     mode: 0
@@ -743,10 +919,10 @@ MonoBehaviour:
       dataC: []
   operation: 0
   special: 0
-  value: 1
+  value: 0
 --- !u!114 &11432550
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101718}
@@ -757,12 +933,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alias: Attribute Bool Data
   target:
-    special: []
-    specialNames: []
-    search: 
+    special:
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 142214}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    - '[Owner]'
+    - '[Action]'
+    - '[ActionLink]'
+    - '[StateLink]'
+    search: '[Self]'
     directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
+    searchObject: {fileID: 101718}
+    parent: {fileID: 11433938}
     mode: 0
   usage: 0
   path: Land Animation/Active/0
@@ -771,7 +969,7 @@ MonoBehaviour:
   attribute:
     name: Active
     path: Land Animation/Active
-    id: -54652/a3dff532-2f41-4da9-90ad-fd20de5254c6
+    id: -402232/a3dff532-2f41-4da9-90ad-fd20de5254c6
     localID: a3dff532-2f41-4da9-90ad-fd20de5254c6
     parent: {fileID: 11433938}
     mode: 0
@@ -795,7 +993,7 @@ MonoBehaviour:
   value: 0
 --- !u!114 &11432974
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101718}
@@ -806,12 +1004,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alias: Attribute Bool Data
   target:
-    special: []
-    specialNames: []
-    search: 
+    special:
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 142214}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    - '[Owner]'
+    - '[Action]'
+    - '[ActionLink]'
+    - '[StateLink]'
+    search: '[Self]'
     directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
+    searchObject: {fileID: 101718}
+    parent: {fileID: 11439402}
     mode: 0
   usage: 0
   path: Land/Used/0
@@ -820,7 +1040,7 @@ MonoBehaviour:
   attribute:
     name: Used
     path: Land/Used
-    id: -54644/43a8275b-91d5-4ed9-8dca-f4b7d49870c4
+    id: -402228/43a8275b-91d5-4ed9-8dca-f4b7d49870c4
     localID: 43a8275b-91d5-4ed9-8dca-f4b7d49870c4
     parent: {fileID: 11439402}
     mode: 0
@@ -860,7 +1080,7 @@ MonoBehaviour:
     info:
       name: Requirable
       path: Land Animation/Requirable
-      id: -54652/59d0f247-de5c-482c-aa2b-680b25c02128
+      id: -402232/59d0f247-de5c-482c-aa2b-680b25c02128
       localID: 59d0f247-de5c-482c-aa2b-680b25c02128
       parent: {fileID: 11433938}
       mode: 0
@@ -872,7 +1092,7 @@ MonoBehaviour:
     info:
       name: Ready
       path: Land Animation/Ready
-      id: -54652/baaa5a71-e22d-447f-9c99-a08c42e53d09
+      id: -402232/baaa5a71-e22d-447f-9c99-a08c42e53d09
       localID: baaa5a71-e22d-447f-9c99-a08c42e53d09
       parent: {fileID: 11433938}
       mode: 0
@@ -884,7 +1104,7 @@ MonoBehaviour:
     info:
       name: Usable
       path: Land Animation/Usable
-      id: -54652/6029571f-cfcd-443c-9b9a-ee07da0a8d1a
+      id: -402232/6029571f-cfcd-443c-9b9a-ee07da0a8d1a
       localID: 6029571f-cfcd-443c-9b9a-ee07da0a8d1a
       parent: {fileID: 11433938}
       mode: 0
@@ -896,7 +1116,7 @@ MonoBehaviour:
     info:
       name: Active
       path: Land Animation/Active
-      id: -54652/a3dff532-2f41-4da9-90ad-fd20de5254c6
+      id: -402232/a3dff532-2f41-4da9-90ad-fd20de5254c6
       localID: a3dff532-2f41-4da9-90ad-fd20de5254c6
       parent: {fileID: 11433938}
       mode: 0
@@ -908,7 +1128,7 @@ MonoBehaviour:
     info:
       name: Used
       path: Land Animation/Used
-      id: -54652/cb309e2c-baac-4c2b-9092-940dd4ac8bd9
+      id: -402232/cb309e2c-baac-4c2b-9092-940dd4ac8bd9
       localID: cb309e2c-baac-4c2b-9092-940dd4ac8bd9
       parent: {fileID: 11433938}
       mode: 0
@@ -920,7 +1140,7 @@ MonoBehaviour:
     info:
       name: End While Unusable
       path: Land Animation/End While Unusable
-      id: -54652/fd6d33ac-0080-407e-8fcd-cf927131e1cf
+      id: -402232/fd6d33ac-0080-407e-8fcd-cf927131e1cf
       localID: fd6d33ac-0080-407e-8fcd-cf927131e1cf
       parent: {fileID: 11433938}
       mode: 0
@@ -933,7 +1153,7 @@ MonoBehaviour:
     info:
       name: Animation Name
       path: Land Animation/Animation Name
-      id: -54652/b054be47-1b5a-41d9-98dd-84ea37cc178a
+      id: -402232/b054be47-1b5a-41d9-98dd-84ea37cc178a
       localID: b054be47-1b5a-41d9-98dd-84ea37cc178a
       parent: {fileID: 11433938}
       mode: 0
@@ -945,7 +1165,7 @@ MonoBehaviour:
     info:
       name: Speed
       path: Land Animation/Speed
-      id: -54652/f95b5258-61f1-448e-8eb7-506e36970161
+      id: -402232/f95b5258-61f1-448e-8eb7-506e36970161
       localID: f95b5258-61f1-448e-8eb7-506e36970161
       parent: {fileID: 11433938}
       mode: 0
@@ -957,7 +1177,7 @@ MonoBehaviour:
     info:
       name: Weight
       path: Land Animation/Weight
-      id: -54652/5492b57f-aeca-4287-992c-12386ef162dd
+      id: -402232/5492b57f-aeca-4287-992c-12386ef162dd
       localID: 5492b57f-aeca-4287-992c-12386ef162dd
       parent: {fileID: 11433938}
       mode: 0
@@ -969,7 +1189,7 @@ MonoBehaviour:
     info:
       name: Target
       path: Land Animation/Target
-      id: -54652/889a6357-f9cd-41a5-8c71-e5eb929735c7
+      id: -402232/889a6357-f9cd-41a5-8c71-e5eb929735c7
       localID: 889a6357-f9cd-41a5-8c71-e5eb929735c7
       parent: {fileID: 11433938}
       mode: 0
@@ -1150,7 +1370,7 @@ MonoBehaviour:
   isFixed: 1
 --- !u!114 &11437692
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101718}
@@ -1161,12 +1381,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alias: Attribute Bool Data
   target:
-    special: []
-    specialNames: []
-    search: 
+    special:
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 142214}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    - '[Owner]'
+    - '[Action]'
+    - '[ActionLink]'
+    - '[StateLink]'
+    search: '[Self]'
     directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
+    searchObject: {fileID: 101718}
+    parent: {fileID: 11452304}
     mode: 0
   usage: 0
   path: Land Duration/Used/0
@@ -1175,7 +1417,7 @@ MonoBehaviour:
   attribute:
     name: Used
     path: Land Duration/Used
-    id: -54654/bf100468-2bd2-4fac-b758-9167f5506e2c
+    id: -402234/bf100468-2bd2-4fac-b758-9167f5506e2c
     localID: bf100468-2bd2-4fac-b758-9167f5506e2c
     parent: {fileID: 11452304}
     mode: 0
@@ -1199,7 +1441,7 @@ MonoBehaviour:
   value: 0
 --- !u!114 &11438846
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 110938}
@@ -1210,12 +1452,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alias: Attribute String Data
   target:
-    special: []
-    specialNames: []
-    search: 
+    special:
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 142214}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    search: '[Self]'
     directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
+    searchObject: {fileID: 110938}
+    parent: {fileID: 11442248}
     mode: 0
   usage: 0
   path: Animation/0
@@ -1224,7 +1480,7 @@ MonoBehaviour:
   attribute:
     name: Animation
     path: Animation
-    id: -54646/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
+    id: -402236/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
     localID: 7e894ef6-a99f-450f-b42a-e1aa6c29abb9
     parent: {fileID: 11442248}
     mode: 0
@@ -1267,7 +1523,7 @@ MonoBehaviour:
     info:
       name: Requirable
       path: Land/Requirable
-      id: -54644/546b29b2-dfcd-48e7-a221-47797354053b
+      id: -402228/546b29b2-dfcd-48e7-a221-47797354053b
       localID: 546b29b2-dfcd-48e7-a221-47797354053b
       parent: {fileID: 11439402}
       mode: 0
@@ -1279,7 +1535,7 @@ MonoBehaviour:
     info:
       name: Ready
       path: Land/Ready
-      id: -54644/8ecb5164-d44b-4d66-9413-898db6161338
+      id: -402228/8ecb5164-d44b-4d66-9413-898db6161338
       localID: 8ecb5164-d44b-4d66-9413-898db6161338
       parent: {fileID: 11439402}
       mode: 0
@@ -1291,7 +1547,7 @@ MonoBehaviour:
     info:
       name: Usable
       path: Land/Usable
-      id: -54644/26b16178-2fd3-462c-9046-a8f553bbc7a2
+      id: -402228/26b16178-2fd3-462c-9046-a8f553bbc7a2
       localID: 26b16178-2fd3-462c-9046-a8f553bbc7a2
       parent: {fileID: 11439402}
       mode: 0
@@ -1303,7 +1559,7 @@ MonoBehaviour:
     info:
       name: Active
       path: Land/Active
-      id: -54644/3601ed0e-5f85-4262-a208-14c31a17c0a5
+      id: -402228/3601ed0e-5f85-4262-a208-14c31a17c0a5
       localID: 3601ed0e-5f85-4262-a208-14c31a17c0a5
       parent: {fileID: 11439402}
       mode: 0
@@ -1315,7 +1571,7 @@ MonoBehaviour:
     info:
       name: Used
       path: Land/Used
-      id: -54644/43a8275b-91d5-4ed9-8dca-f4b7d49870c4
+      id: -402228/43a8275b-91d5-4ed9-8dca-f4b7d49870c4
       localID: 43a8275b-91d5-4ed9-8dca-f4b7d49870c4
       parent: {fileID: 11439402}
       mode: 0
@@ -1327,7 +1583,7 @@ MonoBehaviour:
     info:
       name: End While Unusable
       path: Land/End While Unusable
-      id: -54644/6ace51e5-2865-4c08-b5b4-f9a048a3e178
+      id: -402228/6ace51e5-2865-4c08-b5b4-f9a048a3e178
       localID: 6ace51e5-2865-4c08-b5b4-f9a048a3e178
       parent: {fileID: 11439402}
       mode: 0
@@ -1337,7 +1593,7 @@ MonoBehaviour:
       dataC: []
 --- !u!114 &11439658
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101718}
@@ -1348,12 +1604,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alias: Attribute Bool Data
   target:
-    special: []
-    specialNames: []
-    search: 
+    special:
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 142214}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    - '[Owner]'
+    - '[Action]'
+    - '[ActionLink]'
+    - '[StateLink]'
+    search: '[Self]'
     directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
+    searchObject: {fileID: 101718}
+    parent: {fileID: 11433938}
     mode: 0
   usage: 0
   path: Land Animation/Usable/0
@@ -1362,7 +1640,7 @@ MonoBehaviour:
   attribute:
     name: Usable
     path: Land Animation/Usable
-    id: -54652/6029571f-cfcd-443c-9b9a-ee07da0a8d1a
+    id: -402232/6029571f-cfcd-443c-9b9a-ee07da0a8d1a
     localID: 6029571f-cfcd-443c-9b9a-ee07da0a8d1a
     parent: {fileID: 11433938}
     mode: 0
@@ -1386,7 +1664,7 @@ MonoBehaviour:
   value: 0
 --- !u!114 &11440576
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101718}
@@ -1397,12 +1675,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alias: Attribute Bool Data
   target:
-    special: []
-    specialNames: []
-    search: 
+    special:
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 142214}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    - '[Owner]'
+    - '[Action]'
+    - '[ActionLink]'
+    - '[StateLink]'
+    search: '[Self]'
     directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
+    searchObject: {fileID: 101718}
+    parent: {fileID: 11412638}
     mode: 0
   usage: 0
   path: '@Ready/Active/0'
@@ -1411,7 +1711,7 @@ MonoBehaviour:
   attribute:
     name: Active
     path: '@Ready/Active'
-    id: -54634/afd2e9ab-0ca0-49ad-893e-a9825a24b2ef
+    id: -402230/afd2e9ab-0ca0-49ad-893e-a9825a24b2ef
     localID: afd2e9ab-0ca0-49ad-893e-a9825a24b2ef
     parent: {fileID: 11412638}
     mode: 0
@@ -1435,7 +1735,7 @@ MonoBehaviour:
   value: 0
 --- !u!114 &11440678
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101718}
@@ -1451,8 +1751,8 @@ MonoBehaviour:
     - {fileID: 101718}
     - {fileID: 110938}
     - {fileID: 110938}
-    - {fileID: 101718}
-    - {fileID: 101718}
+    - {fileID: 110938}
+    - {fileID: 110938}
     - {fileID: 142214}
     - {fileID: 101718}
     - {fileID: 101718}
@@ -1472,17 +1772,17 @@ MonoBehaviour:
     - '[StateLink]'
     search: ../@Settings
     directObject: {fileID: 0}
-    searchObject: {fileID: 0}
+    searchObject: {fileID: 110938}
     parent: {fileID: 11433938}
     mode: 0
   usage: 1
   path: Land Animation/Animation Name/0
-  referenceID: -22454/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
+  referenceID: -402236/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
   referencePath: Animation
   attribute:
     name: Animation Name
     path: Land Animation/Animation Name
-    id: -54652/b054be47-1b5a-41d9-98dd-84ea37cc178a
+    id: -402232/b054be47-1b5a-41d9-98dd-84ea37cc178a
     localID: b054be47-1b5a-41d9-98dd-84ea37cc178a
     parent: {fileID: 11433938}
     mode: 0
@@ -1509,7 +1809,7 @@ MonoBehaviour:
   disallowed: []
 --- !u!114 &11442058
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101718}
@@ -1520,12 +1820,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alias: Attribute Bool Data
   target:
-    special: []
-    specialNames: []
-    search: 
+    special:
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 142214}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    - '[Owner]'
+    - '[Action]'
+    - '[ActionLink]'
+    - '[StateLink]'
+    search: '[Self]'
     directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
+    searchObject: {fileID: 101718}
+    parent: {fileID: 11412638}
     mode: 0
   usage: 0
   path: '@Ready/Ready/0'
@@ -1534,7 +1856,7 @@ MonoBehaviour:
   attribute:
     name: Ready
     path: '@Ready/Ready'
-    id: -54634/b175ccce-b23f-44f9-8e46-14dceff9f53f
+    id: -402230/b175ccce-b23f-44f9-8e46-14dceff9f53f
     localID: b175ccce-b23f-44f9-8e46-14dceff9f53f
     parent: {fileID: 11412638}
     mode: 0
@@ -1572,7 +1894,7 @@ MonoBehaviour:
     info:
       name: Animation
       path: Animation
-      id: -54646/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
+      id: -402236/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
       localID: 7e894ef6-a99f-450f-b42a-e1aa6c29abb9
       parent: {fileID: 11442248}
       mode: 0
@@ -1583,7 +1905,7 @@ MonoBehaviour:
   remember: 0
 --- !u!114 &11442818
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101718}
@@ -1594,12 +1916,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alias: Attribute Bool Data
   target:
-    special: []
-    specialNames: []
-    search: 
+    special:
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 142214}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    - '[Owner]'
+    - '[Action]'
+    - '[ActionLink]'
+    - '[StateLink]'
+    search: '[Self]'
     directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
+    searchObject: {fileID: 101718}
+    parent: {fileID: 11433938}
     mode: 0
   usage: 0
   path: Land Animation/Requirable/0
@@ -1608,7 +1952,7 @@ MonoBehaviour:
   attribute:
     name: Requirable
     path: Land Animation/Requirable
-    id: -54652/59d0f247-de5c-482c-aa2b-680b25c02128
+    id: -402232/59d0f247-de5c-482c-aa2b-680b25c02128
     localID: 59d0f247-de5c-482c-aa2b-680b25c02128
     parent: {fileID: 11433938}
     mode: 0
@@ -1632,7 +1976,7 @@ MonoBehaviour:
   value: 1
 --- !u!114 &11442926
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101718}
@@ -1643,12 +1987,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alias: Attribute Bool Data
   target:
-    special: []
-    specialNames: []
-    search: 
+    special:
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 142214}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    - '[Owner]'
+    - '[Action]'
+    - '[ActionLink]'
+    - '[StateLink]'
+    search: '[Self]'
     directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
+    searchObject: {fileID: 101718}
+    parent: {fileID: 11452304}
     mode: 0
   usage: 0
   path: Land Duration/End While Unusable/0
@@ -1657,7 +2023,7 @@ MonoBehaviour:
   attribute:
     name: End While Unusable
     path: Land Duration/End While Unusable
-    id: -54654/1de6d100-bc9e-44e2-a1cf-59c18499254a
+    id: -402234/1de6d100-bc9e-44e2-a1cf-59c18499254a
     localID: 1de6d100-bc9e-44e2-a1cf-59c18499254a
     parent: {fileID: 11452304}
     mode: 0
@@ -1681,7 +2047,7 @@ MonoBehaviour:
   value: 0
 --- !u!114 &11447552
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101718}
@@ -1692,12 +2058,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alias: Attribute Bool Data
   target:
-    special: []
-    specialNames: []
-    search: 
+    special:
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 142214}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    - '[Owner]'
+    - '[Action]'
+    - '[ActionLink]'
+    - '[StateLink]'
+    search: '[Self]'
     directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
+    searchObject: {fileID: 101718}
+    parent: {fileID: 11412638}
     mode: 0
   usage: 0
   path: '@Ready/Used/0'
@@ -1706,7 +2094,7 @@ MonoBehaviour:
   attribute:
     name: Used
     path: '@Ready/Used'
-    id: -54634/169a6cd7-cd8f-48d6-acda-93727312be10
+    id: -402230/169a6cd7-cd8f-48d6-acda-93727312be10
     localID: 169a6cd7-cd8f-48d6-acda-93727312be10
     parent: {fileID: 11412638}
     mode: 0
@@ -1746,7 +2134,7 @@ MonoBehaviour:
     info:
       name: Requirable
       path: Land Duration/Requirable
-      id: -54654/067624fa-c9b9-4e98-8d2e-7ab375732b13
+      id: -402234/067624fa-c9b9-4e98-8d2e-7ab375732b13
       localID: 067624fa-c9b9-4e98-8d2e-7ab375732b13
       parent: {fileID: 11452304}
       mode: 0
@@ -1758,7 +2146,7 @@ MonoBehaviour:
     info:
       name: Ready
       path: Land Duration/Ready
-      id: -54654/e2e10140-5b03-45be-9977-d2b4b6420b8c
+      id: -402234/e2e10140-5b03-45be-9977-d2b4b6420b8c
       localID: e2e10140-5b03-45be-9977-d2b4b6420b8c
       parent: {fileID: 11452304}
       mode: 0
@@ -1770,7 +2158,7 @@ MonoBehaviour:
     info:
       name: Usable
       path: Land Duration/Usable
-      id: -54654/acf92531-d2ee-4a51-a9d5-b838848bd6db
+      id: -402234/acf92531-d2ee-4a51-a9d5-b838848bd6db
       localID: acf92531-d2ee-4a51-a9d5-b838848bd6db
       parent: {fileID: 11452304}
       mode: 0
@@ -1782,7 +2170,7 @@ MonoBehaviour:
     info:
       name: Active
       path: Land Duration/Active
-      id: -54654/8b86446b-9560-4b44-b8a8-2405dd088b61
+      id: -402234/8b86446b-9560-4b44-b8a8-2405dd088b61
       localID: 8b86446b-9560-4b44-b8a8-2405dd088b61
       parent: {fileID: 11452304}
       mode: 0
@@ -1794,7 +2182,7 @@ MonoBehaviour:
     info:
       name: Used
       path: Land Duration/Used
-      id: -54654/bf100468-2bd2-4fac-b758-9167f5506e2c
+      id: -402234/bf100468-2bd2-4fac-b758-9167f5506e2c
       localID: bf100468-2bd2-4fac-b758-9167f5506e2c
       parent: {fileID: 11452304}
       mode: 0
@@ -1806,7 +2194,7 @@ MonoBehaviour:
     info:
       name: End While Unusable
       path: Land Duration/End While Unusable
-      id: -54654/1de6d100-bc9e-44e2-a1cf-59c18499254a
+      id: -402234/1de6d100-bc9e-44e2-a1cf-59c18499254a
       localID: 1de6d100-bc9e-44e2-a1cf-59c18499254a
       parent: {fileID: 11452304}
       mode: 0
@@ -1820,7 +2208,7 @@ MonoBehaviour:
     info:
       name: Seconds
       path: Land Duration/Seconds
-      id: -54654/b9f37898-e726-4aaa-82f7-e031c96d012e
+      id: -402234/b9f37898-e726-4aaa-82f7-e031c96d012e
       localID: b9f37898-e726-4aaa-82f7-e031c96d012e
       parent: {fileID: 11452304}
       mode: 0
@@ -1832,7 +2220,7 @@ MonoBehaviour:
     info:
       name: Is Started
       path: Land Duration/Is Started
-      id: -54654/0d49de0b-f55d-4773-b497-be8622600f09
+      id: -402234/0d49de0b-f55d-4773-b497-be8622600f09
       localID: 0d49de0b-f55d-4773-b497-be8622600f09
       parent: {fileID: 11452304}
       mode: 0
@@ -1844,7 +2232,7 @@ MonoBehaviour:
     info:
       name: Is Complete
       path: Land Duration/Is Complete
-      id: -54654/1ab85da4-7ea1-4918-853a-18bb70e02fb6
+      id: -402234/1ab85da4-7ea1-4918-853a-18bb70e02fb6
       localID: 1ab85da4-7ea1-4918-853a-18bb70e02fb6
       parent: {fileID: 11452304}
       mode: 0
@@ -1854,7 +2242,7 @@ MonoBehaviour:
       dataC: []
 --- !u!114 &11452968
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101718}
@@ -1865,12 +2253,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alias: Attribute Bool Data
   target:
-    special: []
-    specialNames: []
-    search: 
+    special:
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 142214}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    - '[Owner]'
+    - '[Action]'
+    - '[ActionLink]'
+    - '[StateLink]'
+    search: '[Self]'
     directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
+    searchObject: {fileID: 101718}
+    parent: {fileID: 11433938}
     mode: 0
   usage: 0
   path: Land Animation/Ready/0
@@ -1879,7 +2289,7 @@ MonoBehaviour:
   attribute:
     name: Ready
     path: Land Animation/Ready
-    id: -54652/baaa5a71-e22d-447f-9c99-a08c42e53d09
+    id: -402232/baaa5a71-e22d-447f-9c99-a08c42e53d09
     localID: baaa5a71-e22d-447f-9c99-a08c42e53d09
     parent: {fileID: 11433938}
     mode: 0
@@ -1903,7 +2313,7 @@ MonoBehaviour:
   value: 1
 --- !u!114 &11455226
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101718}
@@ -1914,12 +2324,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alias: Attribute Bool Data
   target:
-    special: []
-    specialNames: []
-    search: 
+    special:
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 142214}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    - '[Owner]'
+    - '[Action]'
+    - '[ActionLink]'
+    - '[StateLink]'
+    search: '[Self]'
     directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
+    searchObject: {fileID: 101718}
+    parent: {fileID: 11452304}
     mode: 0
   usage: 0
   path: Land Duration/Active/0
@@ -1928,7 +2360,7 @@ MonoBehaviour:
   attribute:
     name: Active
     path: Land Duration/Active
-    id: -54654/8b86446b-9560-4b44-b8a8-2405dd088b61
+    id: -402234/8b86446b-9560-4b44-b8a8-2405dd088b61
     localID: 8b86446b-9560-4b44-b8a8-2405dd088b61
     parent: {fileID: 11452304}
     mode: 0
@@ -1952,7 +2384,7 @@ MonoBehaviour:
   value: 0
 --- !u!114 &11457714
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 110938}
@@ -1968,8 +2400,8 @@ MonoBehaviour:
     - {fileID: 110938}
     - {fileID: 101718}
     - {fileID: 101718}
-    - {fileID: 110938}
-    - {fileID: 110938}
+    - {fileID: 101718}
+    - {fileID: 101718}
     - {fileID: 142214}
     specialNames:
     - '[This]'
@@ -1991,7 +2423,7 @@ MonoBehaviour:
   attribute:
     name: Visuals
     path: Visuals
-    id: -54650/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+    id: -402242/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
     localID: 33bddd78-c7f6-40fe-94d8-1637fbd7fa73
     parent: {fileID: 11405406}
     mode: 0
@@ -2015,7 +2447,7 @@ MonoBehaviour:
   value: {fileID: 0}
 --- !u!114 &11465710
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101718}
@@ -2026,12 +2458,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alias: Attribute Bool Data
   target:
-    special: []
-    specialNames: []
-    search: 
+    special:
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 142214}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    - '[Owner]'
+    - '[Action]'
+    - '[ActionLink]'
+    - '[StateLink]'
+    search: '[Self]'
     directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
+    searchObject: {fileID: 101718}
+    parent: {fileID: 11439402}
     mode: 0
   usage: 0
   path: Land/Requirable/0
@@ -2040,7 +2494,7 @@ MonoBehaviour:
   attribute:
     name: Requirable
     path: Land/Requirable
-    id: -54644/546b29b2-dfcd-48e7-a221-47797354053b
+    id: -402228/546b29b2-dfcd-48e7-a221-47797354053b
     localID: 546b29b2-dfcd-48e7-a221-47797354053b
     parent: {fileID: 11439402}
     mode: 0
@@ -2064,7 +2518,7 @@ MonoBehaviour:
   value: 1
 --- !u!114 &11466966
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101718}
@@ -2080,8 +2534,8 @@ MonoBehaviour:
     - {fileID: 101718}
     - {fileID: 110938}
     - {fileID: 110938}
-    - {fileID: 101718}
-    - {fileID: 101718}
+    - {fileID: 110938}
+    - {fileID: 110938}
     - {fileID: 142214}
     - {fileID: 101718}
     - {fileID: 101718}
@@ -2101,17 +2555,17 @@ MonoBehaviour:
     - '[StateLink]'
     search: ../@Settings
     directObject: {fileID: 0}
-    searchObject: {fileID: 0}
+    searchObject: {fileID: 110938}
     parent: {fileID: 11452304}
     mode: 0
   usage: 1
   path: Land Duration/Seconds/0
-  referenceID: -22452/36e06670-e99b-4c51-a366-51346402a31d
-  referencePath: Landing Duration
+  referenceID: -402238/36e06670-e99b-4c51-a366-51346402a31d
+  referencePath: Land Duration
   attribute:
     name: Seconds
     path: Land Duration/Seconds
-    id: -54654/b9f37898-e726-4aaa-82f7-e031c96d012e
+    id: -402234/b9f37898-e726-4aaa-82f7-e031c96d012e
     localID: b9f37898-e726-4aaa-82f7-e031c96d012e
     parent: {fileID: 11452304}
     mode: 0
@@ -2135,7 +2589,7 @@ MonoBehaviour:
   value: .400000006
 --- !u!114 &11470442
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101718}
@@ -2146,12 +2600,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alias: Attribute Float Data
   target:
-    special: []
-    specialNames: []
-    search: 
+    special:
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 142214}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    - '[Owner]'
+    - '[Action]'
+    - '[ActionLink]'
+    - '[StateLink]'
+    search: '[Self]'
     directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
+    searchObject: {fileID: 101718}
+    parent: {fileID: 11433938}
     mode: 0
   usage: 0
   path: Land Animation/Speed/0
@@ -2160,7 +2636,7 @@ MonoBehaviour:
   attribute:
     name: Speed
     path: Land Animation/Speed
-    id: -54652/f95b5258-61f1-448e-8eb7-506e36970161
+    id: -402232/f95b5258-61f1-448e-8eb7-506e36970161
     localID: f95b5258-61f1-448e-8eb7-506e36970161
     parent: {fileID: 11433938}
     mode: 0
@@ -2184,7 +2660,7 @@ MonoBehaviour:
   value: 1
 --- !u!114 &11471868
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101718}
@@ -2195,12 +2671,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alias: Attribute Bool Data
   target:
-    special: []
-    specialNames: []
-    search: 
+    special:
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 142214}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    - '[Owner]'
+    - '[Action]'
+    - '[ActionLink]'
+    - '[StateLink]'
+    search: '[Self]'
     directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
+    searchObject: {fileID: 101718}
+    parent: {fileID: 11452304}
     mode: 0
   usage: 0
   path: Land Duration/Requirable/0
@@ -2209,7 +2707,7 @@ MonoBehaviour:
   attribute:
     name: Requirable
     path: Land Duration/Requirable
-    id: -54654/067624fa-c9b9-4e98-8d2e-7ab375732b13
+    id: -402234/067624fa-c9b9-4e98-8d2e-7ab375732b13
     localID: 067624fa-c9b9-4e98-8d2e-7ab375732b13
     parent: {fileID: 11452304}
     mode: 0
@@ -2233,7 +2731,7 @@ MonoBehaviour:
   value: 1
 --- !u!114 &11474098
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101718}
@@ -2244,12 +2742,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alias: Attribute Bool Data
   target:
-    special: []
-    specialNames: []
-    search: 
+    special:
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 142214}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    - '[Owner]'
+    - '[Action]'
+    - '[ActionLink]'
+    - '[StateLink]'
+    search: '[Self]'
     directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
+    searchObject: {fileID: 101718}
+    parent: {fileID: 11452304}
     mode: 0
   usage: 0
   path: Land Duration/Is Started/0
@@ -2258,7 +2778,7 @@ MonoBehaviour:
   attribute:
     name: Is Started
     path: Land Duration/Is Started
-    id: -54654/0d49de0b-f55d-4773-b497-be8622600f09
+    id: -402234/0d49de0b-f55d-4773-b497-be8622600f09
     localID: 0d49de0b-f55d-4773-b497-be8622600f09
     parent: {fileID: 11452304}
     mode: 0
@@ -2282,7 +2802,7 @@ MonoBehaviour:
   value: 0
 --- !u!114 &11475500
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101718}
@@ -2293,12 +2813,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alias: Attribute Bool Data
   target:
-    special: []
-    specialNames: []
-    search: 
+    special:
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 142214}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    - '[Owner]'
+    - '[Action]'
+    - '[ActionLink]'
+    - '[StateLink]'
+    search: '[Self]'
     directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
+    searchObject: {fileID: 101718}
+    parent: {fileID: 11439402}
     mode: 0
   usage: 0
   path: Land/Active/0
@@ -2307,7 +2849,7 @@ MonoBehaviour:
   attribute:
     name: Active
     path: Land/Active
-    id: -54644/3601ed0e-5f85-4262-a208-14c31a17c0a5
+    id: -402228/3601ed0e-5f85-4262-a208-14c31a17c0a5
     localID: 3601ed0e-5f85-4262-a208-14c31a17c0a5
     parent: {fileID: 11439402}
     mode: 0
@@ -2331,7 +2873,7 @@ MonoBehaviour:
   value: 0
 --- !u!114 &11477420
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101718}
@@ -2342,12 +2884,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alias: Attribute Bool Data
   target:
-    special: []
-    specialNames: []
-    search: 
+    special:
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 142214}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    - '[Owner]'
+    - '[Action]'
+    - '[ActionLink]'
+    - '[StateLink]'
+    search: '[Self]'
     directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
+    searchObject: {fileID: 101718}
+    parent: {fileID: 11452304}
     mode: 0
   usage: 0
   path: Land Duration/Usable/0
@@ -2356,7 +2920,7 @@ MonoBehaviour:
   attribute:
     name: Usable
     path: Land Duration/Usable
-    id: -54654/acf92531-d2ee-4a51-a9d5-b838848bd6db
+    id: -402234/acf92531-d2ee-4a51-a9d5-b838848bd6db
     localID: acf92531-d2ee-4a51-a9d5-b838848bd6db
     parent: {fileID: 11452304}
     mode: 0
@@ -2380,7 +2944,7 @@ MonoBehaviour:
   value: 1
 --- !u!114 &11477892
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 110938}
@@ -2391,12 +2955,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alias: Attribute Float Data
   target:
-    special: []
-    specialNames: []
-    search: 
+    special:
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 142214}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    search: '[Self]'
     directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
+    searchObject: {fileID: 110938}
+    parent: {fileID: 11406382}
     mode: 0
   usage: 0
   path: Land Duration/0
@@ -2405,7 +2983,7 @@ MonoBehaviour:
   attribute:
     name: Land Duration
     path: Land Duration
-    id: -54648/36e06670-e99b-4c51-a366-51346402a31d
+    id: -402238/36e06670-e99b-4c51-a366-51346402a31d
     localID: 36e06670-e99b-4c51-a366-51346402a31d
     parent: {fileID: 11406382}
     mode: 0
@@ -2429,7 +3007,7 @@ MonoBehaviour:
   value: .400000006
 --- !u!114 &11482610
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101718}
@@ -2440,12 +3018,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alias: Attribute Bool Data
   target:
-    special: []
-    specialNames: []
-    search: 
+    special:
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 142214}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    - '[Owner]'
+    - '[Action]'
+    - '[ActionLink]'
+    - '[StateLink]'
+    search: '[Self]'
     directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
+    searchObject: {fileID: 101718}
+    parent: {fileID: 11412638}
     mode: 0
   usage: 0
   path: '@Ready/End While Unusable/0'
@@ -2454,7 +3054,7 @@ MonoBehaviour:
   attribute:
     name: End While Unusable
     path: '@Ready/End While Unusable'
-    id: -54634/7187f814-b6b6-482d-87bc-94c6359e7347
+    id: -402230/7187f814-b6b6-482d-87bc-94c6359e7347
     localID: 7187f814-b6b6-482d-87bc-94c6359e7347
     parent: {fileID: 11412638}
     mode: 0
@@ -2478,7 +3078,7 @@ MonoBehaviour:
   value: 0
 --- !u!114 &11484712
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101718}
@@ -2494,8 +3094,8 @@ MonoBehaviour:
     - {fileID: 101718}
     - {fileID: 110938}
     - {fileID: 110938}
-    - {fileID: 101718}
-    - {fileID: 101718}
+    - {fileID: 110938}
+    - {fileID: 110938}
     - {fileID: 142214}
     - {fileID: 101718}
     - {fileID: 101718}
@@ -2515,17 +3115,17 @@ MonoBehaviour:
     - '[StateLink]'
     search: ../@Settings
     directObject: {fileID: 0}
-    searchObject: {fileID: 0}
+    searchObject: {fileID: 110938}
     parent: {fileID: 11433938}
     mode: 0
   usage: 1
   path: Land Animation/Target/0
-  referenceID: -22450/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+  referenceID: -402242/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
   referencePath: Visuals
   attribute:
     name: Target
     path: Land Animation/Target
-    id: -54652/889a6357-f9cd-41a5-8c71-e5eb929735c7
+    id: -402232/889a6357-f9cd-41a5-8c71-e5eb929735c7
     localID: 889a6357-f9cd-41a5-8c71-e5eb929735c7
     parent: {fileID: 11433938}
     mode: 0
@@ -2549,7 +3149,7 @@ MonoBehaviour:
   value: {fileID: 0}
 --- !u!114 &11491604
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101718}
@@ -2560,12 +3160,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alias: Attribute Bool Data
   target:
-    special: []
-    specialNames: []
-    search: 
+    special:
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 142214}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    - '[Owner]'
+    - '[Action]'
+    - '[ActionLink]'
+    - '[StateLink]'
+    search: '[Self]'
     directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
+    searchObject: {fileID: 101718}
+    parent: {fileID: 11433938}
     mode: 0
   usage: 0
   path: Land Animation/End While Unusable/0
@@ -2574,7 +3196,7 @@ MonoBehaviour:
   attribute:
     name: End While Unusable
     path: Land Animation/End While Unusable
-    id: -54652/fd6d33ac-0080-407e-8fcd-cf927131e1cf
+    id: -402232/fd6d33ac-0080-407e-8fcd-cf927131e1cf
     localID: fd6d33ac-0080-407e-8fcd-cf927131e1cf
     parent: {fileID: 11433938}
     mode: 0
@@ -2598,7 +3220,7 @@ MonoBehaviour:
   value: 0
 --- !u!114 &11496666
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101718}
@@ -2609,12 +3231,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alias: Attribute Bool Data
   target:
-    special: []
-    specialNames: []
-    search: 
+    special:
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 110938}
+    - {fileID: 142214}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    - {fileID: 101718}
+    specialNames:
+    - '[This]'
+    - '[Self]'
+    - '[Next]'
+    - '[Previous]'
+    - '[NextEnabled]'
+    - '[PreviousEnabled]'
+    - '[Root]'
+    - '[Owner]'
+    - '[Action]'
+    - '[ActionLink]'
+    - '[StateLink]'
+    search: '[Self]'
     directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
+    searchObject: {fileID: 101718}
+    parent: {fileID: 11452304}
     mode: 0
   usage: 0
   path: Land Duration/Ready/0
@@ -2623,7 +3267,7 @@ MonoBehaviour:
   attribute:
     name: Ready
     path: Land Duration/Ready
-    id: -54654/e2e10140-5b03-45be-9977-d2b4b6420b8c
+    id: -402234/e2e10140-5b03-45be-9977-d2b4b6420b8c
     localID: e2e10140-5b03-45be-9977-d2b4b6420b8c
     parent: {fileID: 11452304}
     mode: 0
