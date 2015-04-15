@@ -203,7 +203,7 @@ namespace Zios{
 			dirty = dirty || this.info.localID.IsEmpty();
 			this.info.parent = parent;
 			this.info.path = path;
-			this.info.name = parent.GetAlias();
+			this.info.name = path.Split("/").Last();
 			string previousID = this.info.id;
 			this.info.localID = this.info.localID.IsEmpty() ? Guid.NewGuid().ToString() : this.info.localID;
 			this.info.id = parent.GetInstanceID()+"/"+this.info.localID;
