@@ -44,7 +44,6 @@ namespace Zios{
 			get{return this.info.data;}
 			set{this.info.data = value;}
 		}
-		public static void StaticValidate(){PlayerPrefs.SetInt("Attribute-Debug",Attribute.debug.ToInt());}
 		[NonSerialized] public bool isSetup;
 		[NonSerialized] public bool dirty = true;
 		[NonSerialized] public bool locked;
@@ -380,7 +379,7 @@ namespace Zios{
 				AttributeData data = dataSet[index];
 				data.attribute = this.info;
 				data.path = this.info.path + "/" + index;
-				data.hideFlags = PlayerPrefs.GetInt("ShowAttributeData") == 1 ? 0 : HideFlags.HideInInspector;
+				data.hideFlags = PlayerPrefs.GetInt("Attribute-ShowData") == 1 ? 0 : HideFlags.HideInInspector;
 				data.Setup();
 			}
 		}

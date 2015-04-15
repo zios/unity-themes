@@ -84,10 +84,6 @@ namespace Zios{
 	    public static List<EventListener> listeners = new List<EventListener>();
 	    public static Dictionary<object,List<string>> callers = new Dictionary<object,List<string>>();
 		public static string lastEventName;
-		public static void StaticValidate(){
-			PlayerPrefs.SetInt("Events-Debug",Events.debug.ToInt());
-			PlayerPrefs.SetInt("Events-DebugScope",Events.debugScope.ToInt());
-		}
 		public static void Build(){
 			if(Events.instance.IsNull()){
 				var eventsPath = Locate.GetScenePath("@Main/Events");

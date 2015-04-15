@@ -170,6 +170,17 @@ namespace Zios{
 			this.viewArea = this.viewArea.SetHeight(this.valueArea.y+22);
 			GUI.EndScrollView();
 	    }
+		public void UpdateValue(Accessor accessor,object value){
+			if(accessor != null && GUI.changed){
+				string name = this.currentClass+"-"+accessor.name.ToPascalCase();
+				if(value is Enum){PlayerPrefs.SetInt(name,value.As<Enum>().ToInt());}
+				if(value is bool){PlayerPrefs.SetInt(name,value.As<bool>().ToInt());}
+				if(value is int){PlayerPrefs.SetInt(name,(int)value);}
+				if(value is string){PlayerPrefs.SetString(name,(string)value);}
+				if(value is float){PlayerPrefs.SetFloat(name,(float)value);}
+				accessor.Set(value);
+			}
+		}
 		public void DrawValue(string labelText,object value,Accessor accessor=null,int depth=0){
 			if(labelText.Contains("$cache")){return;}
 			labelText = labelText.ToTitle();
@@ -189,11 +200,11 @@ namespace Zios{
 			}
 			if(value is GameObject){
 				GameObject newValue = ((GameObject)value).DrawObject(this.valueArea);
-				if(accessor != null && GUI.changed){accessor.Set(newValue);}
+				this.UpdateValue(accessor,newValue);
 			}
 			else if(value is Component){
 				Component newValue = ((Component)value).DrawObject(this.valueArea);
-				if(accessor != null && GUI.changed){accessor.Set(newValue);}
+				this.UpdateValue(accessor,newValue);
 			}
 			else if(value.IsNull()){return;}
 			else if(value is Enum){
@@ -201,28 +212,28 @@ namespace Zios{
 				object scope = accessor != null ? accessor.scope : null;
 				if(accessor != null && scope.HasAttribute(name,typeof(EnumMaskAttribute))){
 					Enum newValue = ((Enum)value).DrawMask(this.valueArea);
-					if(GUI.changed){accessor.Set(newValue.ToInt());}
+					this.UpdateValue(accessor,newValue);
 				}
 				else{
 					Enum newValue = ((Enum)value).Draw(this.valueArea);
-					if(accessor != null && GUI.changed){accessor.Set(newValue.ToInt());}
+					this.UpdateValue(accessor,newValue);
 				}
 			}
 			else if(value is string){
 				string newValue = ((string)value).Draw(this.valueArea);
-				if(accessor != null && GUI.changed){accessor.Set(newValue);}
+				this.UpdateValue(accessor,newValue);
 			}
 			else if(value is bool){
 				bool newValue = ((bool)value).Draw(this.valueArea);
-				if(accessor != null && GUI.changed){accessor.Set(newValue);}
+				this.UpdateValue(accessor,newValue);
 			}
 			else if(value is float){
 				float newValue =((float)value).Draw(this.valueArea);
-				if(accessor != null && GUI.changed){accessor.Set(newValue);}
+				this.UpdateValue(accessor,newValue);
 			}
 			else if(value is int){
 				int newValue = ((int)value).DrawInt(this.valueArea);
-				if(accessor != null && GUI.changed){accessor.Set(newValue);}
+				this.UpdateValue(accessor,newValue);
 			}
 			else if(value is IList && depth < 9){
 				IList items = (IList)value;

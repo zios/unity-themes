@@ -31,10 +31,10 @@ namespace Zios{
 			text = text.Replace("3 D","3D").Replace("2 D","2D");
 			return text;
 	    }
-	    public static string ToPascalcase(this string current){
+	    public static string ToPascalCase(this string current){
 		    return current.Strip(" ").Capitalize();
 	    }
-	    public static string ToCamelcase(this string current){
+	    public static string ToCamelCase(this string current){
 		    return current[0].ToString().ToLower() + current.Substring(1).Strip(" ");
 	    }
 	    public static int ToInt(this string current){

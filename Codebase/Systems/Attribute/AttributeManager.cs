@@ -56,12 +56,12 @@ namespace Zios{
 		}
 		[MenuItem("Zios/Process/Attribute/Hide All Data %3")]
 		public static void HideAttributeData(){
-			PlayerPrefs.SetInt("ShowAttributeData",0);
+			PlayerPrefs.SetInt("Attribute-ShowData",0);
 			AttributeManager.PerformRefresh();
 		}
 		[MenuItem("Zios/Process/Attribute/Show All Data %2")]
 		public static void ShowAttributeData(){
-			PlayerPrefs.SetInt("ShowAttributeData",1);
+			PlayerPrefs.SetInt("Attribute-ShowData",1);
 			AttributeManager.PerformRefresh();
 		}
 		[ContextMenu("Refresh")]

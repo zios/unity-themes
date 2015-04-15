@@ -8,6 +8,7 @@ namespace Zios{
     public enum TargetMode{Search,Direct};
     [Serializable]
     public class Target{
+		static public string defaultSearch = "[Self]";
 	    public List<GameObject> special = new List<GameObject>();
 	    public List<string> specialNames = new List<string>();
 	    public string search = "";
@@ -21,6 +22,10 @@ namespace Zios{
 	    private Component lastParent;
 	    private string lastSearch = "";
 	    private string fallbackSearch = "";
+		static Target(){
+			string defaultSearch = PlayerPrefs.GetString("Target-DefaultSearch");
+			if(!defaultSearch.IsEmpty()){Target.defaultSearch = defaultSearch;}
+		}
 	    public static implicit operator Transform(Target value){return value.Get().transform;}
 	    public static implicit operator GameObject(Target value){return value.Get();}
 	    public static implicit operator UnityObject(Target value){return value.Get();}
@@ -35,7 +40,8 @@ namespace Zios{
 		    }
 		    return result;
 	    }
-	    public void Setup(string path,Component parent,string defaultSearch="[Self]"){
+	    public void Setup(string path,Component parent,string defaultSearch=""){
+			if(defaultSearch.IsEmpty()){defaultSearch = Target.defaultSearch;}
 		    this.parent = parent;
 		    if(!Application.isPlaying){
 			    this.AddSpecial("[This]",parent.gameObject);
