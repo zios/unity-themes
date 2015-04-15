@@ -2,10 +2,11 @@
 using System;
 using System.Linq;
 using System.Reflection;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 namespace Zios{
-	public enum AttributeMode{Normal,Linked,Formula};
+	public enum AttributeMode{Normal,Linked,Formula,Group};
 	public enum AttributeUsage{Direct,Shaped};
 	[Serializable]
 	public class AttributeInfo{
@@ -48,8 +49,10 @@ namespace Zios{
 		[NonSerialized] public bool dirty = true;
 		[NonSerialized] public bool locked;
 		[NonSerialized] public bool showInEditor = true;
+		[NonSerialized] public bool canAdvanced = true;
 		[NonSerialized] public bool canCache = true;
 		[NonSerialized] public bool canFormula = true;
+		[NonSerialized] public bool canGroup = false;
 		[NonSerialized] public bool canDirect = true;
 		[NonSerialized] public bool canShape = true;
 		[NonSerialized] public bool canLink = true;	
@@ -67,11 +70,12 @@ namespace Zios{
 		public virtual void BuildData(AttributeData[] dataSet){}
 	}
 	[Serializable]
-	public class Attribute<BaseType,AttributeType,DataType> : Attribute
+	public class Attribute<BaseType,AttributeType,DataType> : Attribute,IEnumerable<BaseType>
 	where AttributeType : Attribute<BaseType,AttributeType,DataType>
 	where DataType : AttributeData<BaseType,AttributeType,DataType>{
 		public static bool editorStart;
 		private BaseType cachedValue;
+		private IEnumerator<BaseType> cachedEnumerator;
 		protected BaseType delayedValue = default(BaseType);
 		public Func<BaseType> getMethod;
 		public Action<BaseType> setMethod;
@@ -87,6 +91,15 @@ namespace Zios{
 				}
 			}
 		}
+		public IEnumerator<BaseType> GetEnumerator(){
+			/*if(this.cachedEnumerator == null){
+				this.cachedEnumerator = this.info.data.Where(x=>x is DataType).Select(x=>x.As<DataType>().Get()).GetEnumerator();
+			}
+			return this.cachedEnumerator;
+			*/
+			return this.info.data.Where(x=>x is DataType).Select(x=>x.As<DataType>().Get()).GetEnumerator();
+		}
+		IEnumerator IEnumerable.GetEnumerator(){return GetEnumerator();}
 		// ======================
 		// Shortcuts
 		// ======================
@@ -185,11 +198,12 @@ namespace Zios{
 		}
 		public void BuildInfo(string path,Component parent){
 			bool dirty = this.info.parent != parent;
-			dirty = dirty || this.info.path != path.AddRoot(parent);
+			path = (parent.GetAlias() + "/" + path).Trim("/");
+			dirty = dirty || this.info.path != path;
 			dirty = dirty || this.info.localID.IsEmpty();
 			this.info.parent = parent;
-			this.info.path = path.AddRoot(parent);
-			this.info.name = this.info.path.Substring(this.info.path.LastIndexOf('/') + 1);
+			this.info.path = path;
+			this.info.name = parent.GetAlias();
 			string previousID = this.info.id;
 			this.info.localID = this.info.localID.IsEmpty() ? Guid.NewGuid().ToString() : this.info.localID;
 			this.info.id = parent.GetInstanceID()+"/"+this.info.localID;

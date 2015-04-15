@@ -110,7 +110,7 @@ namespace Zios{
 			    Vector3 initial = this.GetComponent<Rigidbody>().position;
 			    foreach(Vector3 current in this.move){
 				    cumulative += current;
-				    Vector3 move = this.NullBlocked(current) * this.deltaTime;
+				    Vector3 move = this.NullBlocked(current) * this.GetTimeOffset();
 				    this.StepMove(current,move);
 			    }
 			    foreach(Vector3 current in this.moveRaw){
@@ -206,7 +206,7 @@ namespace Zios{
 				    bool slopeCheck = !yOnly && (angle < this.maxSlopeAngle);
 				    if(slopeCheck || slideCheck){
 					    Vector3 cross = Vector3.Cross(slopeHit.normal,current);
-					    Vector3 change = Vector3.Cross(cross,slopeHit.normal) * this.deltaTime;
+					    Vector3 change = Vector3.Cross(cross,slopeHit.normal) * this.GetTimeOffset();
 					    this.SetPosition(this.GetComponent<Rigidbody>().position + change);
 					    this.blocked["down"] = false;
 					    return true;
@@ -228,7 +228,7 @@ namespace Zios{
 	    private bool CheckStep(Vector3 current){
 		    if(this.maxStepHeight != 0 && current.y == 0){
 			    RaycastHit stepHit;
-			    Vector3 move = this.NullBlocked(current) * this.deltaTime;
+			    Vector3 move = this.NullBlocked(current) * this.GetTimeOffset();
 			    Vector3 direction = move.normalized;
 			    Vector3 position = this.GetComponent<Rigidbody>().position;
 			    float distance = Vector3.Distance(position,position+move) + this.hoverDistance*2;

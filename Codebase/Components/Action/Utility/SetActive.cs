@@ -11,10 +11,12 @@ namespace Zios{
 		    this.target.Setup("Target",this);
 	    }
 	    public override void Use(){
-		    GameObject target = this.target.Get();
-		    if(state == ToggleState.Enable && !target.activeSelf){target.SetActive(true);}
-		    if(state == ToggleState.Disable && target.activeSelf){target.SetActive(false);}
-		    if(state == ToggleState.Toggle){target.SetActive(!target.activeSelf);}
+			foreach(GameObject target in this.target){
+				if(target.IsNull()){continue;}
+				if(state == ToggleState.Enable && !target.activeSelf){target.SetActive(true);}
+				if(state == ToggleState.Disable && target.activeSelf){target.SetActive(false);}
+				if(state == ToggleState.Toggle){target.SetActive(!target.activeSelf);}
+			}
 		    if(this.gameObject.activeSelf){
 			    base.Use();
 		    }

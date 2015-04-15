@@ -16,7 +16,7 @@ namespace Zios{
 	    }
 	    public override void Step(){
 		    if(!this.disabled){
-			    Vector3 amount = (this.intensity*this.scale)* this.deltaTime;
+			    Vector3 amount = (this.intensity*this.scale);
 			    this.gameObject.CallEvent("Add Force",amount);
 		    }
 	    }

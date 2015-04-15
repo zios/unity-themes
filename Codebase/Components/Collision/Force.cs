@@ -23,12 +23,13 @@ namespace Zios{
 		    Events.Register("Add Move",this.gameObject);
 		    Events.Add("On Collision",(MethodObject)this.OnCollide,this.gameObject);
 		    Events.Add("Add Force",(MethodVector3)this.AddForce,this.gameObject);
+		    Events.Add("Add Force Raw",(MethodVector3)this.AddForceRaw,this.gameObject);
 		    this.controller = this.GetComponent<ColliderController>();
 	    }
 	    public override void Step(){
 		    if(!this.disabled && this.velocity != Vector3.zero){
 			    Vector3 resistence = Vector3.Scale(this.velocity.Get().Sign(),this.resistence);
-			    this.velocity.Set(this.velocity - resistence * this.deltaTime);
+			    this.velocity.Set(this.velocity - resistence * this.GetTimeOffset());
 			    this.velocity.Set(this.velocity.Get().Clamp(this.terminalVelocity.Get()*-1,this.terminalVelocity));
 			    this.gameObject.CallEvent("Add Move",new Vector3(this.velocity.x,0,0));
 			    this.gameObject.CallEvent("Add Move",new Vector3(0,this.velocity.y,0));
@@ -36,6 +37,10 @@ namespace Zios{
 		    }
 	    }
 	    public void AddForce(Vector3 force){
+			force *= this.GetTimeOffset();
+		    this.velocity.Set(this.velocity + force);
+	    }
+	    public void AddForceRaw(Vector3 force){
 		    this.velocity.Set(this.velocity + force);
 	    }
 	    public void OnCollide(object collision){

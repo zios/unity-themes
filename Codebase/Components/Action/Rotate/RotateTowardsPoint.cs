@@ -18,9 +18,8 @@ using UnityEngine;
 		    this.rotation.isAngle.showInEditor = false;
 	    }
 	    public override void Use(){
-		    GameObject source = this.source.Get();
 		    Vector3 goal = this.goal.Get();
-		    if(!goal.IsNull() && !source.IsNull()){
+		    foreach(GameObject source in this.source){
 			    Vector3 angle = source.transform.eulerAngles;
 			    Quaternion current = source.transform.rotation;
 			    source.transform.LookAt(goal);
@@ -29,8 +28,8 @@ using UnityEngine;
 			    if(this.lerpAxes[0]){angle.y = source.transform.eulerAngles.y;}
 			    if(this.lerpAxes[2]){angle.z = source.transform.eulerAngles.z;}
 			    source.transform.eulerAngles = angle;
-			    base.Use();
 		    }
+			base.Use();
 	    }
     }
 }

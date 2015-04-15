@@ -2,8 +2,8 @@
 using System.Collections;
 using UnityEngine;
 namespace Zios{
-[AddComponentMenu("")]
-    public class AttributeBox<AttributeType> : DataMonoBehaviour
+	[AddComponentMenu("")]
+	public class AttributeBox<AttributeType> : DataMonoBehaviour
     where AttributeType : Zios.Attribute,new(){
 	    public AttributeType value = new AttributeType();
 	    public bool remember = false;

@@ -15,12 +15,12 @@ namespace Zios{
 		    this.rotation.isAngle.Set(true);
 	    }
 	    public override void Use(){
-		    Transform source = this.source.Get().transform;
-		    Transform goal = this.goal.Get().transform;
-		    Vector3 start = source.localEulerAngles;
-		    Vector3 end = goal.localEulerAngles;
-		    source.localEulerAngles = this.rotation.Step(start,end);
-		    base.Use();
+			Vector3 end = this.goal.Get().transform.localEulerAngles;
+			foreach(GameObject source in this.source){
+				Vector3 start = source.transform.localEulerAngles;
+				source.transform.localEulerAngles = this.rotation.Step(start,end);
+			}
+			base.Use();
 	    }
     }
 }

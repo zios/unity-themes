@@ -17,19 +17,19 @@ using UnityEngine;
 		    this.rotation.isAngle.showInEditor = false;
 	    }
 	    public override void Use(){
-		    GameObject source = this.source.Get();
 		    Vector3 goal = this.goal.Get();
-		    if(!goal.IsNull() && !source.IsNull()){
-			    Vector3 angle = source.transform.eulerAngles;
-			    Quaternion current = source.transform.rotation;
+		    foreach(GameObject source in this.source){
+				Transform transform = source.transform;
+			    Vector3 angle = transform.eulerAngles;
+			    Quaternion current = transform.rotation;
 			    if(goal != Vector3.zero){
-				    source.transform.rotation = Quaternion.LookRotation(goal);
+				    transform.rotation = Quaternion.LookRotation(goal);
 			    }
-			    source.transform.rotation = this.rotation.Step(current,source.transform.rotation);
-			    if(this.lerpAxes[1]){angle.x = source.transform.eulerAngles.x;}
-			    if(this.lerpAxes[0]){angle.y = source.transform.eulerAngles.y;}
-			    if(this.lerpAxes[2]){angle.z = source.transform.eulerAngles.z;}
-			    source.transform.eulerAngles = angle;
+			    transform.rotation = this.rotation.Step(current,transform.rotation);
+			    if(this.lerpAxes[1]){angle.x = transform.eulerAngles.x;}
+			    if(this.lerpAxes[0]){angle.y = transform.eulerAngles.y;}
+			    if(this.lerpAxes[2]){angle.z = transform.eulerAngles.z;}
+			    transform.eulerAngles = angle;
 			    base.Use();
 		    }
 	    }

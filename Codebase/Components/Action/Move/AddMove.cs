@@ -5,8 +5,10 @@ namespace Zios{
     [AddComponentMenu("Zios/Component/Action/Move/Add Move")]
     public class AddMove : ActionLink{
 	    public MoveType type;
-	    public AttributeVector3 amount = Vector3.zero;
 	    public AttributeGameObject target = new AttributeGameObject();
+	    public AttributeVector3 amount = Vector3.zero;
+		protected string eventName = "Add Move";
+		protected string eventNameOnce = "Add Move Raw";
 	    public override void Awake(){
 		    base.Awake();
 		    this.target.Setup("Target",this);
@@ -15,14 +17,17 @@ namespace Zios{
 	    }
 	    public override void Use(){
 		    base.Use();
-		    Vector3 amount = this.amount;
-		    Transform transform = this.target.Get().transform;
-		    if(this.type == MoveType.Relative){
-			    amount = transform.right * this.amount.x;
-			    amount += transform.up * this.amount.y;
-			    amount += transform.forward * this.amount.z;
-		    }
-		    this.target.Get().CallEvent("Add Move",amount);
+			foreach(GameObject target in this.target){
+				Vector3 amount = this.amount;
+				if(this.type == MoveType.Relative){
+					amount = target.transform.Localize(amount);
+				}
+				if(this.occurrence == ActionOccurrence.Once){
+					target.CallEvent(this.eventNameOnce,amount*this.GetTimeOffset());
+					continue;
+				}
+				target.CallEvent(this.eventName,amount);
+			}
 	    }
     }
 }

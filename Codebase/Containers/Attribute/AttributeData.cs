@@ -84,7 +84,7 @@ namespace Zios{
 					return default(BaseType);
 				}
 				else if(this.reference == null){
-					if(!Attribute.getWarning.ContainsKey(this)){
+					if(!this.target.Get().IsNull() && !Attribute.getWarning.ContainsKey(this)){
 						string source = "("+attribute.path+")";
 						string goal = (this.target.Get().GetPath() + this.referencePath).Trim("/");
 						if(Attribute.debug.Has("Issue")){Debug.LogWarning("[AttributeData] Get : No reference found for " + source + " to " + goal,attribute.parent);}

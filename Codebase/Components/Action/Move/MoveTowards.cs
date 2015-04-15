@@ -19,8 +19,7 @@ namespace Zios{
 	    }
 	    public override void Use(){
 		    base.Use();
-		    GameObject target = this.target.Get();
-		    if(!target.IsNull()){
+			foreach(GameObject target in this.target){
 			    Vector3 current = this.travel.Step(target.transform.position,this.goal);	
 			    Vector3 amount = current-target.transform.position;
 			    target.CallEvent("Add Move Raw",new Vector3(amount.x,0,0));

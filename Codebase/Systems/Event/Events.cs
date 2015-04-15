@@ -370,24 +370,31 @@ namespace Zios{
     }
     public static class ObjectEventExtensions{
 	    public static void RegisterEvent(this object current,string name,params object[] values){
+			if(current.IsNull()){return;}
 		    Events.Register(name,current);
 	    }
 	    public static EventListener AddEvent(this object current,string name,object method,int amount=-1){
+			if(current.IsNull()){return Events.empty;}
 		    return Events.Add(name,method,amount,current);
 	    }
 	    public static void RemoveEvent(this object current,string name,object method){
+			if(current.IsNull()){return;}
 		    Events.Remove(name,method,current);
 	    }
 	    public static void CallEvent(this object current,string name,params object[] values){
+			if(current.IsNull()){return;}
 		    Events.Call(current,name,values);
 	    }
 	    public static void CallEventChildren(this object current,string name,bool self=true,params object[] values){
+			if(current.IsNull()){return;}
 		    Events.CallChildren(current,name,values,self);
 	    }
 	    public static void CallEventParents(this object current,string name,bool self=true,params object[] values){
+			if(current.IsNull()){return;}
 		    Events.CallParents(current,name,values,self);
 	    }
 	    public static void CallEventFamily(this object current,string name,bool self=true,params object[] values){
+			if(current.IsNull()){return;}
 		    Events.CallFamily(current,name,values,self);
 	    }
     }

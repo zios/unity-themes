@@ -14,9 +14,11 @@ namespace Zios{
 		    this.rotation.isAngle.Set(true);
 	    }
 	    public override void Use(){
-		    Transform transform = this.source.Get().transform;
-		    Vector3 current = transform.localEulerAngles;
-		    transform.localEulerAngles = this.rotation.Step(current,this.goal);
+			foreach(GameObject source in this.source){
+				Transform transform = source.transform;
+				Vector3 current = transform.localEulerAngles;
+				transform.localEulerAngles = this.rotation.Step(current,this.goal);
+			}
 		    base.Use();
 	    }
     }

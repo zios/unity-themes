@@ -104,14 +104,6 @@ namespace Zios{
 		//=================
 		// General
 		//=================
-	    public static string AddRoot(this string current,Component parent){
-		    string prefix = parent.HasVariable("alias") ? parent.GetVariable<string>("alias") : parent.GetType().ToString();
-		    prefix = prefix.Split(".").Last();
-		    if(!current.StartsWith(prefix+"/")){
-			    current = prefix + "/" + current;
-		    }
-		    return current.Replace("//","/").TrimRight("/");
-	    }
 	    public static void Destroy(UnityObject target){
 		    if(!Application.isPlaying){UnityObject.DestroyImmediate(target,true);}
 		    else{UnityObject.Destroy(target);}

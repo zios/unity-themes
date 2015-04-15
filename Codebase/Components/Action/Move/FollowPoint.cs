@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Zios{
     [AddComponentMenu("Zios/Component/Action/Move/Follow Point")]
     public class FollowPoint : ActionLink{
-	    public AttributeGameObject target = new AttributeGameObject();
+		public AttributeGameObject target = new AttributeGameObject();
 	    public AttributeVector3 goal = Vector3.zero;
 	    public LerpVector3 position = new LerpVector3();
 	    public AttributeVector3 orbit = Vector3.zero;
@@ -16,10 +16,11 @@ namespace Zios{
 		    this.orbit.Setup("Follow Orbit",this);
 	    }
 	    public override void Use(){
-		    Transform target = this.target.Get().transform;
 		    Vector3 orbit = this.orbit.Get().ScaleBy(new Vector3(1,-1,1));
 		    Vector3 end = orbit.ToRotation()*Vector3.zero + this.goal.Get();
-		    target.position = this.position.Step(target.position,end);
+			foreach(GameObject target in this.target){
+				target.transform.position = this.position.Step(target.transform.position,end);
+			}
 		    base.Use();
 	    }
     }

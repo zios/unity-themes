@@ -149,7 +149,10 @@ namespace Zios{
 				this.DrawShaped(this.valueRect,firstProperty,this.label);
 			}
 			if(this.attribute.info.mode == AttributeMode.Formula){
-				this.DrawFormula(this.label);
+				this.DrawGroup(this.label,true);
+			}
+			if(this.attribute.info.mode == AttributeMode.Group){
+				this.DrawGroup(this.label,false);
 			}
 		}
 		public virtual void DrawDirect(Rect area,Rect extraArea,AttributeData data,GUIContent label,bool? drawSpecial=null,bool? drawOperator=null){
@@ -297,7 +300,7 @@ namespace Zios{
 			int operatorIndex = Mathf.Clamp(data.operation,0,operatorList.Count-1);
 			data.operation = operatorList.Draw(operatorRect,operatorIndex,style);
 		}
-		public virtual void DrawFormula(GUIContent label){
+		public virtual void DrawGroup(GUIContent label,bool drawAdvanced=true){
 			Rect labelRect = this.labelRect.AddX(12);
 			EditorGUIUtility.AddCursorRect(this.fullRect,MouseCursor.ArrowPlus);
 			bool formulaExpanded = EditorPrefs.GetBool(this.attribute.info.path+"FormulaExpanded");
@@ -313,7 +316,7 @@ namespace Zios{
 				for(int index=0;index<this.attribute.data.Length;++index){
 					AttributeData currentData = this.attribute.data[index];
 					if(currentData == null){continue;}
-					this.DrawFormulaRow(currentData,index);
+					this.DrawGroupRow(currentData,index,drawAdvanced);
 				}
 				this.SetupAreas(this.fullRect.AddY(lineHeight));
 				this.drawer.overallHeight += lineHeight;
@@ -331,7 +334,7 @@ namespace Zios{
 				message.DrawLabel(this.valueRect,GUI.skin.GetStyle("WarningLabel"));
 			}
 		}
-		public virtual void DrawFormulaRow(AttributeData data,int index){
+		public virtual void DrawGroupRow(AttributeData data,int index,bool drawAdvanced){
 			float lineHeight = EditorGUIUtility.singleLineHeight+2;
 			SerializedObject currentProperty = new SerializedObject(data);
 			//GUIContent formulaLabel = new GUIContent(((char)('A'+index)).ToString());
@@ -340,13 +343,13 @@ namespace Zios{
 			this.labelRect = this.labelRect.SetWidth(1);
 			this.valueRect = this.fullRect.Add(this.labelRect.width,0,-labelRect.width,0);
 			this.drawer.overallHeight += lineHeight;
-			bool? operatorState = index == 0 ? (bool?)false : (bool?)true;
+			bool? operatorState = index == 0 || !drawAdvanced ? (bool?)false : (bool?)true;
 			if(data.usage == AttributeUsage.Direct){
 				GUI.Box(this.labelRect.AddX(2),"",GUI.skin.GetStyle("IconDirect"));
-				this.DrawDirect(this.fullRect,this.valueRect,data,formulaLabel,true,operatorState);
+				this.DrawDirect(this.fullRect,this.valueRect,data,formulaLabel,drawAdvanced,operatorState);
 			}
 			else if(data.usage == AttributeUsage.Shaped){
-				this.DrawShaped(this.valueRect,currentProperty,formulaLabel,true,operatorState);
+				this.DrawShaped(this.valueRect,currentProperty,formulaLabel,drawAdvanced,operatorState);
 			}
 			this.DrawContext(data,index!=0,false);
 		}
@@ -394,6 +397,7 @@ namespace Zios{
 				MenuFunction modeNormal  = ()=>{this.attribute.info.mode = AttributeMode.Normal;};
 				MenuFunction modeLinked  = ()=>{this.attribute.info.mode = AttributeMode.Linked;};
 				MenuFunction modeFormula = ()=>{this.attribute.info.mode = AttributeMode.Formula;};
+				MenuFunction modeGroup = ()=>{this.attribute.info.mode = AttributeMode.Group;};
 				MenuFunction usageDirect = ()=>{data.usage = AttributeUsage.Direct;};
 				MenuFunction usageShaped = ()=>{data.usage = AttributeUsage.Shaped;};
 				bool normal = this.attribute.info.mode == AttributeMode.Normal;
@@ -402,8 +406,8 @@ namespace Zios{
 					menu.ShowAsContext();
 					return;
 				}
-				if(isRoot || (mode != AttributeMode.Formula)){
-					if(mode != AttributeMode.Formula && mode != AttributeMode.Linked && usage == AttributeUsage.Shaped){
+				if(isRoot || mode.Matches("Normal","Linked")){
+					if(mode.Matches("Normal") && usage.Matches("Shaped") && this.attribute.canAdvanced){
 						menu.AddItem(new GUIContent("Advanced"),advanced,toggleAdvanced);
 						menu.AddSeparator("/");
 					}
@@ -412,8 +416,9 @@ namespace Zios{
 					if(this.attribute.canLink){menu.AddItem(new GUIContent("Linked"),(mode==AttributeMode.Linked),modeLinked+usageShaped);}
 					menu.AddSeparator("/");
 					if(this.attribute.canFormula){menu.AddItem(new GUIContent("Formula"),(mode==AttributeMode.Formula),modeFormula);}
+					if(this.attribute.canGroup){menu.AddItem(new GUIContent("Group"),(mode==AttributeMode.Group),modeGroup);}
 				}
-				else{
+				else if(mode.Matches("Formula")){
 					menu.AddItem(new GUIContent("Advanced"),advanced,toggleAdvanced);
 					this.DrawTypeMenu(data,menu);
 					menu.AddSeparator("/");
@@ -421,7 +426,7 @@ namespace Zios{
 					if(this.attribute.canShape){menu.AddItem(new GUIContent("Shaped"),usage==AttributeUsage.Shaped,usageShaped);}
 				}
 				if(showRemove){
-					menu.AddSeparator("/");
+					if(!mode.Matches("Group")){menu.AddSeparator("/");}
 					menu.AddItem(new GUIContent("Remove"),false,removeAttribute);	
 				}
 				menu.ShowAsContext();

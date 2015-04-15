@@ -2,24 +2,16 @@
 using UnityEngine;
     namespace Zios{
     [AddComponentMenu("Zios/Component/Action/Rotate/Towards/Rotate Towards Target")]
-    public class RotateTowardsTarget : ActionLink{
-	    public AttributeGameObject source = new AttributeGameObject();
-	    public AttributeGameObject goal = new AttributeGameObject();
-	    public LerpVector3 rotation = new LerpVector3();
+    public class RotateTowardsTarget : RotateTowardsPoint{
+	    public AttributeGameObject target = new AttributeGameObject();
 	    public override void Awake(){
 		    base.Awake();
-		    this.source.Setup("Source",this);
-		    this.goal.Setup("Goal Target",this);
-		    this.rotation.Setup("Rotation Target",this);
-		    this.rotation.isAngle.Set(true);
+		    this.target.Setup("Target",this);
+			this.goal.showInEditor = false;;
 	    }
 	    public override void Use(){
-		    Transform source = this.source.Get().transform;
-		    Transform goal = this.goal.Get().transform;
-		    Vector3 start = source.localEulerAngles;
-		    source.LookAt(goal.position);
-		    Vector3 end = source.localEulerAngles;
-		    source.localEulerAngles = this.rotation.Step(start,end);
+			Vector3 goalPosition = this.target.Get().transform.position;
+			this.goal.Set(goalPosition);
 		    base.Use();
 	    }
     }

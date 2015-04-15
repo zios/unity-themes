@@ -48,10 +48,20 @@ namespace Zios{
 		    return lower != "false" || lower != "f" || lower != "0";
 	    }
 	    public static bool Matches(this string current,string value,bool ignoreCase=false){
-		    if(ignoreCase){
-			    return String.Equals(current,value,StringComparison.OrdinalIgnoreCase);
-		    }
-		    return String.Equals(current,value);
+		    if(ignoreCase){return current.ToLower() == value.ToLower();}
+		    return current == value;
+	    }
+	    public static bool MatchesAny(this string current,params string[] values){
+			foreach(string value in values){
+				if(current.Matches(value,true)){return true;}
+			}
+		    return false;
+	    }
+	    public static bool MatchesAll(this string current,params string[] values){
+			foreach(string value in values){
+				if(!current.Matches(value,true)){return false;}
+			}
+		    return true;
 	    }
 	    public static string Implode(this string current,string separator=" "){
 		    StringBuilder builder = new StringBuilder(current.Length * 2);
@@ -119,9 +129,6 @@ namespace Zios{
 		    }
 		    return current.IndexOf(value);
 	    }
-	    public static bool Contains(this string current,string value,bool ignoreCase){
-		    return current.IndexOf(value,ignoreCase) >= 0;
-	    }
 	    public static bool StartsWith(this string current,string value,bool ignoreCase){
 		    if(ignoreCase){
 			    return current.StartsWith(value,StringComparison.OrdinalIgnoreCase);
@@ -134,22 +141,20 @@ namespace Zios{
 		    }
 		    return current.EndsWith(value);
 	    }
+	    public static bool Contains(this string current,string value,bool ignoreCase){
+		    return current.IndexOf(value,ignoreCase) >= 0;
+	    }
 	    public static bool ContainsAny(this string current,params string[] values){
 		    foreach(string name in values){
-			    if(current.Contains(name)){
-				    return true;
-			    }
+			    if(current.Contains(name,true)){return true;}
 		    }
 		    return false;
 	    }
 	    public static bool ContainsAll(this string current,params string[] values){
-		    int found = 0;
 		    foreach(string name in values){
-			    if(current.Contains(name)){
-				    found += 1;
-			    }
+			    if(!current.Contains(name,true)){return false;}
 		    }
-		    return found == values.Length;
+		    return true;
 	    }
 	    public static string TrimRight(this string current,string value,bool ignoreCase=false){
 		    if(current.EndsWith(value,ignoreCase)){

@@ -16,7 +16,7 @@ namespace Zios{
 		    this.endTime = time + this.duration + this.delayStart;
 	    }
 	    public virtual void Setup(string path,Component parent){
-		    path = path.AddRoot(parent);
+		    path = (parent.GetAlias() + "/" + path).Trim("/");
 		    this.duration.Setup(path+"/Duration",parent);
 		    this.delayStart.Setup(path+"/Delay Start",parent);
 		    this.duration.locked = true;

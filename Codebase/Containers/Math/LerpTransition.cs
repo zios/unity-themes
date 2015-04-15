@@ -16,7 +16,7 @@ namespace Zios{
 		    this.active = false;
 	    }
 	    public virtual void Setup(string path,Component parent){
-		    this.path = path.AddRoot(parent);
+		    this.path = (parent.GetAlias() + "/" + path).Trim("/");
 		    this.parent = parent;
 		    if(this.parent is ManagedMonoBehaviour){
 			    var script = (ManagedMonoBehaviour)parent;

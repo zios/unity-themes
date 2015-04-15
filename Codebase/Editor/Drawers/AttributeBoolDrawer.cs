@@ -33,7 +33,7 @@ namespace Zios{
 		}
 	}
 	public class AttributeBoolAccess : AttributeAccess<bool,AttributeBool,AttributeBoolData>{
-		public override void DrawFormulaRow(AttributeData data,int index){
+		public override void DrawGroupRow(AttributeData data,int index,bool drawAdvanced){
 			float lineHeight = EditorGUIUtility.singleLineHeight+2;
 			Rect original = this.fullRect;
 			this.operatorOverride = null;

@@ -20,7 +20,8 @@ namespace Zios{
 		}
 		public override void Setup(string path,Component component){
 			base.Setup(path,component);
-			this.canDirect = this.canFormula = false;
+			this.canDirect = this.canFormula = this.canAdvanced = false;
+			this.canGroup = true;
 			this.usage = AttributeUsage.Shaped;
 		}
 		public void DefaultSearch(){this.GetFirst().target.DefaultSearch();}

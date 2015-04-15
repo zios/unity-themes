@@ -14,9 +14,10 @@ namespace Zios{
 	    }
 	    public override void Use(){
 		    Vector3 position = this.position.Get();
-		    Transform target = this.target.Get().transform;
-		    if(this.mode == PositionMode.World){target.position = position;}
-		    if(this.mode == PositionMode.Local){target.localPosition = position;}
+			foreach(GameObject target in this.target){
+				if(this.mode == PositionMode.World){target.transform.position = position;}
+				if(this.mode == PositionMode.Local){target.transform.localPosition = position;}
+			}
 		    base.Use();
 	    }
     }

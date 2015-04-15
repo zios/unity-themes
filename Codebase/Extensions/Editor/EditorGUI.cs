@@ -14,7 +14,7 @@ namespace Zios{
 		    EditorGUI.indentLevel = indentValue;
 		    return value;
 	    }
-	    public static void Draw(System.Action method,bool indention=false){
+	    public static void Draw(Action method,bool indention=false){
 		    int indentValue = EditorGUI.indentLevel;
 		    if(!indention){EditorGUI.indentLevel = 0;}
 		    if(EditorGUIExtension.render){method();}
@@ -88,10 +88,10 @@ namespace Zios{
 		    return EditorGUIExtension.Draw<int>(()=>EditorGUI.IntSlider(area,current,min,max),indention);
 	    }
 	    public static GameObject DrawObject(this GameObject current,Rect area,bool allowScene=true,bool indention=false){
-		    return (GameObject)EditorGUIExtension.Draw<UnityObject>(()=>EditorGUI.ObjectField(area,current,current.GetType(),allowScene),indention);
+		    return (GameObject)EditorGUIExtension.Draw<UnityObject>(()=>EditorGUI.ObjectField(area,current,typeof(GameObject),allowScene),indention);
 	    }
 	    public static Component DrawObject(this Component current,Rect area,bool allowScene=true,bool indention=false){
-		    return (Component)EditorGUIExtension.Draw<UnityObject>(()=>EditorGUI.ObjectField(area,current,current.GetType(),allowScene),indention);
+		    return (Component)EditorGUIExtension.Draw<UnityObject>(()=>EditorGUI.ObjectField(area,current,typeof(Component),allowScene),indention);
 	    }
 	    public static Enum DrawMask(this Enum current,Rect area,GUIStyle style=null,bool indention=false){
 		    style = style ?? EditorStyles.popup;

@@ -6,8 +6,7 @@ namespace Zios{
     [Serializable][AddComponentMenu("")]
     public class ManagedMonoBehaviour : DataMonoBehaviour{
 	    public UpdateRate rate = UpdateRate.Default;
-	    public float deltaTime{get{return this.GetTime();}}
-	    public float GetTime(){
+	    public float GetTimeOffset(){
 		    if(this.rate == UpdateRate.FixedUpdate){
 			    return Time.fixedDeltaTime;
 		    }
