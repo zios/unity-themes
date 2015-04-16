@@ -105,7 +105,8 @@ namespace Zios{
 	    // Internal
 	    //=====================
 	    private void Build(){
-		    foreach(AnimationState state in this.GetComponent<Animation>()){
+			Animation animations = this.GetComponent<Animation>();
+		    foreach(AnimationState state in animations){
 			    AnimationData data = this.animations.Find(x=>x.name==state.name);
 			    if(data == null){
 				    data = new AnimationData();

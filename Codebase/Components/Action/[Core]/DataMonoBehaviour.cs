@@ -17,7 +17,7 @@ namespace Zios{
 	    public virtual void Awake(){
 		    string name = this.GetType().Name.ToTitle();
 		    this.lastAlias = this.alias = this.alias.SetDefault(name);
-			this.dependents.Clear();
+			this.dependents = new List<DataDependency>();
 			if(!Application.isPlaying){
 				Events.Register("On Destroy",this);
 				Events.Register("On Validate",this);

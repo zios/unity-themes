@@ -5,29 +5,32 @@ using System;
 namespace Zios{
 	[AddComponentMenu("Zios/Component/Action/*/State Link")]
 	public class StateLink : StateMonoBehaviour{
-		[NonSerialized] public StateTable stateTable;
-		[NonSerialized] public GameObject owner;
+		[HideInInspector] public StateTable stateTable;
+		[HideInInspector] public GameObject owner;
 		public override void Awake(){
 			string name = this.transform.parent != null ? this.transform.parent.name : this.transform.name;
 			this.alias = this.alias.SetDefault(name);
 			base.Awake();
-			this.AddDependent<ActionReady>();
-			GameObject parent = this.gameObject.GetParent();
-			this.stateTable = parent.IsNull() ? null : parent.GetComponentInParent<StateTable>(true);
-			this.owner = this.stateTable == null ? this.gameObject : this.stateTable.gameObject;
-			if(!this.stateTable.IsNull()){
-				this.inUse.AddScope(this.stateTable);
-				this.usable.AddScope(this.stateTable);
-			}
-			Events.Register("On State Update",this.gameObject);
-			Events.Register("On Action Start",this.gameObject);
-			Events.Register("On Action End",this.gameObject);
-			Events.Register("On Action Disabled",this.gameObject);
-			if(this.owner != this.gameObject){
-				Events.Register("On State Update",this.owner);
-				Events.Register("On State Refresh",this.owner);
-				Events.Register(this.alias+"/On Start",this.owner);
-				Events.Register(this.alias+"/On End",this.owner);
+			if(!Application.isPlaying){
+				this.AddDependent<ActionReady>();
+				GameObject parent = this.gameObject.GetParent();
+				this.stateTable = parent.IsNull() ? null : parent.GetComponentInParent<StateTable>(true);
+				this.owner = this.gameObject.GetPrefabRoot();
+				if(!this.stateTable.IsNull()){
+					this.inUse.AddScope(this.stateTable);
+					this.usable.AddScope(this.stateTable);
+				}
+				Events.Register("On State Update",this.gameObject);
+				Events.Register("On Action Start",this.gameObject);
+				Events.Register("On Action End",this.gameObject);
+				Events.Register("On Action Disabled",this.gameObject);
+				if(this.owner != this.gameObject){
+					Events.Register("On State Update",this.owner);
+					Events.Register("On State Refresh",this.owner);
+					Events.Register(this.alias+"/On Start",this.owner);
+					Events.Register(this.alias+"/On End",this.owner);
+				}
+				Utility.SetDirty(this);
 			}
 			this.usable.Set(this.stateTable==null);
 			this.ready.Set(false);
