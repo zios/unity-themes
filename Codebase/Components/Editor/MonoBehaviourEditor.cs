@@ -13,7 +13,6 @@ namespace Zios{
 		public static bool hideAllDefault;
 		public bool hideDefault;
 		public bool setup;
-		public Dictionary<object,bool> layoutReady = new Dictionary<object,bool>();
 		public List<SerializedProperty> properties = new List<SerializedProperty>();
 		public List<SerializedProperty> hidden = new List<SerializedProperty>();
 		public Dictionary<SerializedProperty,Rect> propertyArea = new Dictionary<SerializedProperty,Rect>();
@@ -24,11 +23,8 @@ namespace Zios{
 				this.DrawDefaultInspector();
 				return;
 			}
-			bool drawAllowed = Event.current.type.Has("Layout") || (Event.current.type.Has("Repaint") && this.layoutReady.AddNew("AreaStart"));
-			if(drawAllowed){
-				this.layoutReady["AreaStart"] = Event.current.type.Has("Layout");
-				this.areaStart = GUILayoutUtility.GetRect(0,0);
-			}
+			try{this.areaStart = GUILayoutUtility.GetRect(0,0);}
+			catch{}
 			if(!Event.current.IsUseful()){return;}
 			if(this.target.As<MonoBehaviour>().IsPrefab()){return;}
 			MonoBehaviourEditor.hideAllDefault = EditorPrefs.GetBool("MonoBehaviourEditor-HideAllDefault",false);
@@ -42,13 +38,12 @@ namespace Zios{
 			GUI.changed = false;
 			bool showAll = false;
 			Vector2 mousePosition = Event.current.mousePosition;
-			if(Event.current.control){
+			if(Event.current.alt){
 				showAll = this.area.Contains(mousePosition);
 				this.Repaint();
 			}
 			foreach(var property in this.properties){
 				bool isHidden = !showAll && this.hidden.Contains(property);
-				drawAllowed = Event.current.type.Has("Layout") || (Event.current.type.Has("Repaint") && this.layoutReady.AddNew(property));
 				if(!showAll && hideDefault){
 					object defaultValue = MonoBehaviourEditor.defaults[type][property.name];
 					object currentValue = property.GetObject<object>();
@@ -75,27 +70,22 @@ namespace Zios{
 							if(this.propertyArea[property].Clicked(1)){this.DrawHiddenMenu();}
 						}
 					}
-					if(drawAllowed){
-						this.layoutReady[property] = Event.current.type.Has("Layout");
-						try{property.DrawLabeled();}
-						catch{}
+					try{
+						property.DrawLabeled();
 						Rect area = GUILayoutUtility.GetLastRect();
 						if(!area.IsEmpty()){this.propertyArea[property] = area;}
 					}
+					catch{}
 				}
 			}		
-			drawAllowed = Event.current.type.Has("Layout") || (Event.current.type.Has("Repaint") && this.layoutReady.AddNew("AreaEnd"));
-			if(drawAllowed){
-				this.layoutReady["AreaEnd"] = Event.current.type.Has("Layout");
-				try{
-					Rect areaEnd = GUILayoutUtility.GetRect(0,0);
-					if(!areaEnd.IsEmpty()){
-						this.area = this.areaStart.AddY(-15);
-						this.area.height = (areaEnd.y - this.areaStart.y) + 15;
-					}
+			try{
+				Rect areaEnd = GUILayoutUtility.GetRect(0,0);
+				if(!areaEnd.IsEmpty()){
+					this.area = this.areaStart.AddY(-15);
+					this.area.height = (areaEnd.y - this.areaStart.y) + 15;
 				}
-				catch{}
 			}
+			catch{}
 			if(GUI.changed){
 				this.serializedObject.ApplyModifiedProperties();
 				Utility.SetDirty(this.serializedObject.targetObject);
