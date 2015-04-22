@@ -1,5 +1,16 @@
-﻿namespace Zios{
+﻿using System;
+namespace Zios{
     public static class FloatExtension{
+		public static float MoveTowards(this float current,float end,float speed){
+			if(current > end){speed *= -1;}
+			current += speed;
+			current = end < current ? Math.Max(current,end) : Math.Min(current,end);
+			if((speed > 0 && current > end) || (speed < 0 && current < end)){current = end;}
+			return current;
+		}
+		public static float Distance(this float current,float end){
+			return Math.Abs(current-end);
+		}
 	    public static bool Between(this float current,float start,float end){
 		    return current >= start && current <= end;
 	    }

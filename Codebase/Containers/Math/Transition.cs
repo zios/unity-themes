@@ -34,11 +34,5 @@ namespace Zios{
 		    this.complete = time >= endTime;
 		    return this.curve.Evaluate(elapsed);
 	    }
-	    public Transition Copy(){
-		    Transition copy = new Transition();
-		    copy.duration = this.duration;
-		    copy.curve = this.curve;
-		    return copy;
-	    }
     }
 }

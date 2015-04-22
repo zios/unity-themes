@@ -4,6 +4,18 @@ namespace Zios{
 	    public static string Print(this Vector3 current){
 		    return "("+current.x+","+current.y+","+current.z+")";
 	    }
+		public static Vector3 MoveTowards(this Vector3 current,Vector3 end,Vector3 speed){
+			current.x = current.x.MoveTowards(end.x,speed.x);
+			current.y = current.y.MoveTowards(end.y,speed.y);
+			current.z = current.z.MoveTowards(end.z,speed.z);
+			return current;
+		}
+		public static Vector3 MoveTowards(this Vector3 current,Vector3 end,float speed){
+			return Vector3.MoveTowards(current,end,speed);
+		}
+		public static float Distance(this Vector3 current,Vector3 end){
+			return Vector3.Distance(current,end);
+		}
 	    public static float[] ToFloat(this Vector3 current){
 		    return new float[3]{current.x,current.y,current.z};
 	    }

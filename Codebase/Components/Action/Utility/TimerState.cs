@@ -7,8 +7,8 @@ namespace Zios{
     public class TimerState : ActionLink{
 	    public TimerType type;
 	    public AttributeFloat seconds = 0;
-	    [HideInInspector] public AttributeBool isStarted = false;
-	    [HideInInspector] public AttributeBool isComplete = false;
+	    [Advanced][ReadOnly] public AttributeBool isStarted = false;
+	    [Advanced][ReadOnly] public AttributeBool isComplete = false;
 	    private float endTime;
 	    public override void Awake(){
 		    base.Awake();
@@ -20,8 +20,7 @@ namespace Zios{
 	    public override void Use(){
 		    if(this.isComplete){return;}
 		    if(!this.isStarted){
-			    float seconds = this.seconds.Get();
-			    this.endTime = Time.time + seconds;
+			    this.endTime = Time.time + this.seconds.Get();
 			    this.isStarted.Set(true);
 		    }
 		    bool hasElapsed = Time.time > this.endTime;

@@ -13,7 +13,9 @@ namespace Zios{
 	public static class AttributeBooter{
 		static AttributeBooter(){
 			Events.Add("On Hierarchy Changed",AttributeManager.Build).SetPermanent(true);
-			Utility.EditorDelayCall(AttributeManager.Build);
+			if(!Application.isPlaying){
+				Utility.EditorDelayCall(AttributeManager.Build);
+			}
 		}
 	}
 	#endif
@@ -77,6 +79,7 @@ namespace Zios{
 
 		}
 		public static void Build(){
+			Attribute.debug = (AttributeDebug)PlayerPrefs.GetInt("Attribute-Debug");
 			if(AttributeManager.instance.IsNull()){
 				var managerPath = Locate.GetScenePath("@Main/Attributes");
 				if(!managerPath.HasComponent<AttributeManager>()){
@@ -90,17 +93,17 @@ namespace Zios{
 		// Unity
 		//==============================
 		public void OnValidate(){
+			if(Utility.IsPlaying() || Application.isLoadingLevel){return;}
 			if(!AttributeManager.disabled){
-				Utility.EditorDelayCall(this.Setup);
-				Utility.EditorDelayCall(AttributeManager.PerformRefresh);
+				this.Setup();
+				AttributeManager.PerformRefresh();
 			}
 		}
 		public void Awake(){
-			Attribute.debug = (AttributeDebug)PlayerPrefs.GetInt("Attribute-Debug");
 			if(!AttributeManager.disabled){
 				AttributeManager.instance = this;
 				AttributeManager.Build();
-				if(Application.isPlaying){this.Setup();}
+				if(!Application.isPlaying){this.Setup();}
 			}
 		}
 		public void OnDestroy(){

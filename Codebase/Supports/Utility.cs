@@ -161,6 +161,12 @@ namespace Zios{
 		    #endif
 		    return Application.isPlaying;
 	    }
+	    public static bool IsPaused(){
+		    #if UNITY_EDITOR
+		    return EditorApplication.isPaused;	
+		    #endif
+		    return false;
+	    }
 	    public static void RepaintInspectors(){
 		    #if UNITY_EDITOR
 			Type inspectorType = Utility.GetEditorType("InspectorWindow");

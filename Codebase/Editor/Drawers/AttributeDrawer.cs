@@ -146,7 +146,7 @@ namespace Zios{
 				this.attributeCast.usage = AttributeUsage.Shaped;
 				GUI.Box(this.iconRect,"",GUI.skin.GetStyle("IconLinked"));
 				this.labelRect = this.labelRect.AddX(16);
-				this.DrawShaped(this.valueRect,firstProperty,this.label);
+				this.DrawShaped(this.valueRect,firstProperty,this.label,true);
 			}
 			if(this.attribute.info.mode == AttributeMode.Formula){
 				this.DrawGroup(this.label,true);
@@ -222,8 +222,8 @@ namespace Zios{
 				foreach(var item in lookup){
 					if(item.Value.data.Length < 1){continue;}
 					if(item.Value.info.dataType != data.GetType()){continue;}
-					bool feedback = (item.Value.info.id == this.attribute.info.id || item.Value.data[0].referenceID == this.attribute.info.id);
-					if(!feedback){
+					bool isSelf = (item.Value.info.id == this.attribute.info.id) || (item.Value.data[0].referenceID == this.attribute.info.id);
+					if(!isSelf){
 						attributeNames.Add(item.Value.info.path);
 					}
 				}
@@ -268,12 +268,16 @@ namespace Zios{
 				Rect warningRect = area.Add(18,0,-18,0);
 				string targetName = targetScope == null ? "Target" : targetScope.ToString().Strip("(UnityEngine.GameObject)").Trim();
 				string typeName = data.GetVariableType("value").Name.Replace("Single","Float").Replace("Int32","Int");
-				string message = "<b>" + targetName.Truncate(16) + "</b> has no <b>"+typeName+"</b> attributes.";
+				string message = "<b>" + targetName.Truncate(24) + "</b> has no <b>"+typeName+"</b> attributes.";
 				message.DrawLabel(warningRect,GUI.skin.GetStyle("WarningLabel"));
 			}
 		}
 		public virtual void DrawSpecial(Rect area,AttributeData data){
 			Rect specialRect = area.Add(18,0,0,0).SetWidth(50);
+			if(this.attribute.info.mode == AttributeMode.Linked){
+				this.attribute.info.linkType = (LinkType)this.attribute.info.linkType.Draw(specialRect);
+				return;
+			}
 			List<string> specialList = this.specialOverride ?? typeof(AttributeType).GetVariable<string[]>("specialList").ToList();
 			data.special = specialList.Draw(specialRect,data.special);
 		}
@@ -407,7 +411,7 @@ namespace Zios{
 					return;
 				}
 				if(isRoot || mode.Matches("Normal","Linked")){
-					if(mode.Matches("Normal") && usage.Matches("Shaped") && this.attribute.canAdvanced){
+					if(mode.Matches("Normal","Linked") && usage.Matches("Shaped") && this.attribute.canAdvanced){
 						menu.AddItem(new GUIContent("Advanced"),advanced,toggleAdvanced);
 						menu.AddSeparator("/");
 					}

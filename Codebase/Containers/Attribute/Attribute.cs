@@ -8,6 +8,7 @@ using UnityEngine;
 namespace Zios{
 	public enum AttributeMode{Normal,Linked,Formula,Group};
 	public enum AttributeUsage{Direct,Shaped};
+	public enum LinkType{Both,Get};
 	[Serializable]
 	public class AttributeInfo{
 		public string name;
@@ -17,6 +18,7 @@ namespace Zios{
 		public Type dataType;
 		public Component parent;
 		public AttributeMode mode = AttributeMode.Normal;
+		public LinkType linkType;
 		public AttributeData[] data = new AttributeData[0];
 		public AttributeData[] dataB = new AttributeData[0];
 		public AttributeData[] dataC = new AttributeData[0];
@@ -448,7 +450,7 @@ namespace Zios{
 				data.value = value;
 				Utility.SetDirty(data);
 			}
-			else if(this.info.mode == AttributeMode.Linked){
+			else if(this.info.mode == AttributeMode.Linked && this.info.linkType != LinkType.Get){
 				if(!Attribute.ready && Application.isPlaying){
 					if(Attribute.debug.Has("Issue")){Debug.LogWarning("[Attribute] Set attempt before attribute data built : " + this.info.path);}
 					return;

@@ -8,7 +8,7 @@ namespace Zios{
 	public enum ActionOccurrence{Default,Constant,Once};
 	[AddComponentMenu("")]
 	public class ActionLink : StateMonoBehaviour{
-		public ActionOccurrence occurrence = ActionOccurrence.Default;
+		[Advanced] public ActionOccurrence occurrence = ActionOccurrence.Default;
 		public bool? nextState;
 		[HideInInspector] public StateLink stateLink;
 		[HideInInspector] public ActionTable actionTable;

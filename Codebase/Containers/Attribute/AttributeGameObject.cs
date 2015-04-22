@@ -13,10 +13,7 @@ namespace Zios{
 		public override GameObject Get(){
 			if(this.getMethod != null){return this.getMethod();}
 			AttributeGameObjectData data = this.GetFirstRaw();
-			if(this.usage == AttributeUsage.Shaped && data.reference.IsNull()){
-				return data.target.Get();
-			}
-			return data.Get();
+			return data.target.Get();
 		}
 		public override void Setup(string path,Component component){
 			base.Setup(path,component);

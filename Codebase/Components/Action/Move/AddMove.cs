@@ -4,12 +4,12 @@ namespace Zios{
     public enum MoveType{Absolute,Relative}
     [AddComponentMenu("Zios/Component/Action/Move/Add Move")]
     public class AddMove : ActionLink{
+		[Advanced] public string eventName;
 	    public MoveType type;
 	    public AttributeGameObject target = new AttributeGameObject();
 	    public AttributeVector3 amount = Vector3.zero;
-		protected string eventName = "Add Move";
-		protected string eventNameOnce = "Add Move Raw";
 	    public override void Awake(){
+			this.eventName = this.eventName.SetDefault("Add Move");
 		    base.Awake();
 		    this.target.Setup("Target",this);
 		    this.amount.Setup("Amount",this);
@@ -21,10 +21,6 @@ namespace Zios{
 				Vector3 amount = this.amount;
 				if(this.type == MoveType.Relative){
 					amount = target.transform.Localize(amount);
-				}
-				if(this.occurrence == ActionOccurrence.Once){
-					target.CallEvent(this.eventNameOnce,amount*this.GetTimeOffset());
-					continue;
 				}
 				target.CallEvent(this.eventName,amount);
 			}

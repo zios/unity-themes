@@ -36,7 +36,7 @@ namespace Zios{
 	    private Dictionary<GameObject,CollisionData> collisions = new Dictionary<GameObject,CollisionData>();
 	    private Dictionary<GameObject,CollisionData> frameCollisions = new Dictionary<GameObject,CollisionData>();
 	    private Vector3 lastPosition;
-	    public ColliderMode mode;
+	    [Advanced] public ColliderMode mode;
 	    [NonSerialized] public List<Vector3> move = new List<Vector3>();
 	    [NonSerialized] public List<Vector3> moveRaw = new List<Vector3>();
 	    [NonSerialized] public Vector3 lastDirection;

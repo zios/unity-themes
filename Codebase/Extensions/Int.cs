@@ -1,4 +1,5 @@
-﻿namespace Zios{ 
+﻿using System;
+namespace Zios{ 
     public static class IntExtension{
 	    public static bool Between(this int current,int start,int end){
 		    return current >= start && current <= end;
@@ -9,10 +10,12 @@
 	    public static int Modulus(this int current,int max){
 		    return (((current % max) + max) % max);
 	    }
+	    public static bool Contains(this int current,Enum mask){
+		    return (current & mask.ToInt()) != 0;
+		}
 	    public static bool Contains(this int current,int mask){
-		    int bits = 1<<current;
-		    return (mask & bits) == bits;
-	    }
+		    return (current & mask) != 0;
+		}
 	    public static bool ToBool(this int current){
 		    return current != 0;
 	    }

@@ -17,11 +17,12 @@ namespace Zios{
 		    this.target.Setup("Target",this);
 		    this.target.DefaultSearch("[Owner]");
 		    this.AddDependent<ColliderController>(this.target);
-			foreach(GameObject target in this.target){
-				if(target.IsNull()){continue;}
+			if(Application.isPlaying){
 				string triggerName = this.trigger.ToString().ToTitle();
-			    Events.Add(triggerName,(MethodObject)this.Collision,target);
-		    }
+				foreach(GameObject target in this.target){
+					Events.Add(triggerName,(MethodObject)this.Collision,target);
+				}
+			}
 	    }
 	    public override void Use(){}
 	    public void Collision(object data){

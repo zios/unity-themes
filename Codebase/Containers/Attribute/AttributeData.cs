@@ -47,7 +47,7 @@ namespace Zios{
 			else if(this.attribute.parent.IsNull()){this.Purge("Null Parent");}
 			else if(this.attribute.parent.gameObject.IsNull()){this.Purge("Null GameObject");}
 			else if(this.attribute.parent.gameObject != this.gameObject){this.Purge("Wrong Scope");}
-			else if(!this.hideFlags.Contains(HideFlags.HideInInspector) && PlayerPrefs.GetInt("ShowAttributeData") == 0){this.Purge("Visible");}
+			else if(!this.hideFlags.Contains(HideFlags.HideInInspector) && PlayerPrefs.GetInt("Attribute-ShowData") == 0){this.Purge("Visible");}
 			else if(!this.attribute.data.Contains(this) && !this.attribute.dataB.Contains(this) && !this.attribute.dataC.Contains(this)){this.Purge("Not In Attribute");}
 		}
 		public void Purge(string reason){
@@ -70,7 +70,7 @@ namespace Zios{
 			}
 			return false;
 		}
-		public BaseType Get(){
+		public virtual BaseType Get(){
 			AttributeInfo attribute = this.attribute;
 			if(this.usage == AttributeUsage.Direct){
 				if(attribute.mode == AttributeMode.Formula){

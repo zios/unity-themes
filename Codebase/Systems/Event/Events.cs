@@ -55,6 +55,7 @@ namespace Zios{
 		public void SetPaused(bool state){this.paused = state;}
 		public void SetPermanent(bool state){this.permanent = state;}
 	    public void Call(object[] values){
+			if(Utility.IsPaused()){return;}
 			if(!this.IsValid()){return;}
 			if(this.occurrences > 0){this.occurrences -= 1;}
 			if(values.Length < 1 || this.method is Method){
@@ -74,7 +75,7 @@ namespace Zios{
 	}
     public class Events : EventDetector{
 		public static bool disabled;
-		[EnumMask] public static EventDebugScope debugScope = (EventDebugScope)(-1);
+		[EnumMask] public static EventDebugScope debugScope;
 		[EnumMask] public static EventDebug debug;
 		public static Events instance;
 	    public static object all = "All";
@@ -315,7 +316,7 @@ namespace Zios{
 			bool allowed = true;
 			var debug = Events.debug;
 			var scope = Events.debugScope;
-			allowed = target.Equals(Events.global) ? scope.Has("Global") : scope.Has("Scoped");
+			allowed = target == Events.global ? scope.Has("Global") : scope.Has("Scoped");
 			if(allowed && name.ContainsAny("On Update","On Editor Update","On GUI")){
 				allowed = debug.Has("CallUpdate");
 			}

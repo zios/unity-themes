@@ -17,8 +17,6 @@ namespace Zios{
 	    public GameObject searchObject;
 	    public Component parent;
 	    public TargetMode mode = TargetMode.Search;
-	    private bool hasSearched;
-	    private bool hasWarned;
 	    private int siblingCount;
 	    private Component lastParent;
 	    private string lastSearch = "";
@@ -27,11 +25,7 @@ namespace Zios{
 	    public static implicit operator GameObject(Target value){return value.Get();}
 	    public static implicit operator UnityObject(Target value){return value.Get();}
 	    public GameObject Get(){
-		    GameObject result = this.directObject;
-		    if(this.mode == TargetMode.Search){
-			    this.PerformSearch();
-			    return this.searchObject;
-		    }
+		    GameObject result = this.mode == TargetMode.Search ? this.searchObject : this.directObject;
 		    if(result == null && Application.isPlaying){
 			    Debug.LogWarning("[Target] No target found for : " + this.parent.name);
 		    }
@@ -65,7 +59,9 @@ namespace Zios{
 			    this.AddSpecial("[ActionLink]",linkObject);
 			    this.AddSpecial("[StateLink]",linkObject);
 		    }
-		    this.DefaultSearch(defaultSearch);
+			if(!Application.isPlaying){
+				this.DefaultSearch(defaultSearch);
+			}
 	    }
 	    public void AddSpecial(string name,GameObject target){
 		    if(target.IsNull()){target = this.parent.gameObject;}
@@ -78,7 +74,6 @@ namespace Zios{
 			    this.special[index] = target;
 		    }
 	    }
-	    public void SkipWarning(){this.hasWarned = true;}
 	    public void DefaultSearch(){this.DefaultSearch(this.fallbackSearch);}
 	    public void DefaultSearch(string target){
 		    int siblingCount = this.parent.IsNull() ? -1 : this.parent.gameObject.GetSiblingCount(true);
@@ -87,7 +82,6 @@ namespace Zios{
 		    bool parentChange = this.parent != this.lastParent;
 		    bool siblingChange = this.siblingCount != siblingCount;
 		    if(parentChange || searchChange || siblingChange || this.searchObject.IsNull()){
-			    this.hasSearched = false;
 			    this.lastParent = this.parent;
 			    this.siblingCount = siblingCount;
 			    if(this.search.IsEmpty()){
@@ -143,19 +137,10 @@ namespace Zios{
 		    return Locate.Find(search);
 	    }
 	    public void PerformSearch(){
-		    bool editorMode = !Application.isPlaying;
 		    this.search = this.search.Replace("\\","/");
-		    if(!this.hasSearched && !this.search.IsEmpty()){
+		    if(!this.search.IsEmpty()){
 			    this.searchObject = this.FindTarget(this.search);
 			    this.lastSearch = this.search;
-			    this.hasSearched = true;
-		    }
-		    if(!editorMode && this.searchObject.IsNull() && !this.parent.IsNull() && !this.hasWarned){
-			    Debug.LogWarning("[Target] No gameObject was found for search " + this.parent.GetPath(),this.parent);
-			    if(!search.IsEmpty() && !search.Contains("Not Found")){
-				    this.search = "<" + this.search + " Not Found>";
-			    }
-			    this.hasWarned = true;
 		    }
 	    }
     }

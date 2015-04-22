@@ -238,7 +238,7 @@ namespace Zios{
 			else if(value is IList && depth < 9){
 				IList items = (IList)value;
 				/*if(items.Count == 1){
-					this.DrawValue(label.text,items[0],null,++depth);
+					this.DrawValue(label.text,items[0],null,depth+1);
 					return;
 				}*/
 				label.text = label.text + " (" + items.Count + ")";
@@ -250,7 +250,7 @@ namespace Zios{
 					this.labelArea = this.labelArea.AddX(10);
 					int index = 0;
 					foreach(object item in items){
-						this.DrawValue("Item " + index,item,null,++depth);
+						this.DrawValue("Item " + index,item,null,depth+1);
 						++index;
 					}
 					this.labelArea = this.labelArea.AddX(-10);
@@ -261,7 +261,7 @@ namespace Zios{
 				IDictionary items = (IDictionary)value;
 				/*if(items.Count <= 1){
 					foreach(DictionaryEntry item in items){
-						this.DrawValue(label.text,item.Value,null,++depth);
+						this.DrawValue(label.text,item.Value,null,depth+1);
 					}
 					return;
 				}*/
@@ -274,7 +274,8 @@ namespace Zios{
 					int index = 0;
 					foreach(DictionaryEntry item in items){
 						if(item.Key is string){
-							this.DrawValue((string)item.Key,item.Value,null,++depth);
+							this.DrawValue((string)item.Key,item.Value,null,depth+1);
+							--depth;
 							continue;
 						}
 						int itemHash = item.GetHashCode();
@@ -284,8 +285,8 @@ namespace Zios{
 						this.valueArea = this.valueArea.AddY(18);
 						if(this.foldoutState[itemHash]){
 							this.labelArea = this.labelArea.AddX(10);
-							this.DrawValue("Key",item.Key,null,++depth);
-							this.DrawValue("Value",item.Value,null,++depth);
+							this.DrawValue("Key",item.Key,null,depth+1);
+							this.DrawValue("Value",item.Value,null,depth+1);
 							this.labelArea = this.labelArea.AddX(-10);
 						}
 						++index;
@@ -305,7 +306,7 @@ namespace Zios{
 					foreach(string fieldName in fieldNames){
 						try{
 							object fieldValue = value.GetVariable(fieldName);
-							this.DrawValue(fieldName,fieldValue,null,++depth);
+							this.DrawValue(fieldName,fieldValue,null,depth+1);
 						}
 						catch{}
 					}
