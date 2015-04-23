@@ -302,7 +302,7 @@ namespace Zios{
 			GameObject current = this.info.parent.gameObject;
 			string name = current.name;
 			if(Locate.HasDuplicate(current)){
-				if(Attribute.debug.Has("Issue")){Debug.Log("[Attribute] Resolving same name siblings : " + this.info.path,this.info.parent.gameObject);}
+				if(Attribute.debug.Has("Issue")){Debug.Log("[Attribute] Resolving same name siblings : " + name,this.info.parent.gameObject);}
 				char lastDigit = name[name.Length-1];
 				if(name.Length > 1 && name[name.Length-2] == ' ' && char.IsLetter(lastDigit)){
 					char nextLetter = (char)(char.ToUpper(lastDigit)+1);
