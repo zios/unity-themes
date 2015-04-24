@@ -1,4 +1,4 @@
-﻿using Zios;
+using Zios;
 using UnityEngine;
 using System;
 using System.Linq;
@@ -296,8 +296,8 @@ namespace Zios{
     public class StateBase{
 	    public string name;
 	    public StateTable stateTable;
-	    [HideInInspector] public string id;
-	    [HideInInspector] public StateMonoBehaviour target;
+	    [Internal] public string id;
+	    [Internal] public StateMonoBehaviour target;
 	    public virtual void Setup(string name,StateMonoBehaviour script,StateTable stateTable){
 		    this.name = name;
 		    this.stateTable = stateTable;

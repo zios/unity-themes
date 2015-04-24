@@ -1,4 +1,4 @@
-﻿using Zios;
+using Zios;
 using System;
 using UnityEngine;
 namespace Zios{
@@ -9,10 +9,10 @@ namespace Zios{
 	    public AttributeVector3 direction = -Vector3.up;
 	    public AttributeFloat distance = 1;
 	    public Color debugColor = Color.blue;
-	    [HideInInspector] public RaycastHit castHit = new RaycastHit();
-	    [HideInInspector] public AttributeVector3 hitPoint = Vector3.zero;
-	    [HideInInspector] public AttributeVector3 hitNormal = Vector3.zero;
-	    [HideInInspector] public AttributeFloat hitDistance = 0;
+	    [Internal] public RaycastHit castHit = new RaycastHit();
+	    [Internal] public AttributeVector3 hitPoint = Vector3.zero;
+	    [Internal] public AttributeVector3 hitNormal = Vector3.zero;
+	    [Internal] public AttributeFloat hitDistance = 0;
 	    public LayerMask layers = -1;
 	    public AttributeBool relative = false;
 	    public override void Awake(){

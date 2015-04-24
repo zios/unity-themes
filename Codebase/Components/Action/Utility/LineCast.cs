@@ -1,4 +1,4 @@
-﻿using Zios;
+using Zios;
 using System;
 using UnityEngine;
 namespace Zios{
@@ -8,10 +8,10 @@ namespace Zios{
 	    public AttributeVector3 source = Vector3.zero;
 	    public AttributeVector3 goal = Vector3.zero;
 	    public LayerMask layers = -1;
-	    [HideInInspector] public RaycastHit cast = new RaycastHit();
-	    [HideInInspector] public AttributeVector3 hitPoint = Vector3.zero;
-	    [HideInInspector] public AttributeVector3 hitNormal = Vector3.zero;
-	    [HideInInspector] public AttributeFloat hitDistance = 0;
+	    [Internal] public RaycastHit cast = new RaycastHit();
+	    [Internal] public AttributeVector3 hitPoint = Vector3.zero;
+	    [Internal] public AttributeVector3 hitNormal = Vector3.zero;
+	    [Internal] public AttributeFloat hitDistance = 0;
 	    public override void Awake(){
 		    base.Awake();
 		    this.source.Setup("Source",this);

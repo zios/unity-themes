@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using Zios;
 using System;
 using System.Collections.Generic;
@@ -9,8 +9,8 @@ namespace Zios{
 	    public AttributeString inputName = "Button1";
 	    public AttributeBool heldDuringIntensity = true;
 	    public AttributeBool ignoreOwnership = false;
-	    [HideInInspector] public AttributeFloat intensity = 0;
-	    [HideInInspector] public bool held;
+	    [Internal] public AttributeFloat intensity = 0;
+	    [Internal] public bool held;
 	    [NonSerialized] public int inputID;
 	    [NonSerialized] public bool lastHeld;
 	    [NonSerialized] public bool setup;

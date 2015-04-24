@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 namespace Zios{
@@ -18,8 +18,8 @@ namespace Zios{
 	    public bool spriteReverse = false;
 	    public bool spriteRandomStart = false;
 	    public bool spriteDelayStart = true;
-	    [HideInInspector] public bool forceUpdate = false;
-	    [HideInInspector] public bool frameChanged = false;
+	    [Internal] public bool forceUpdate = false;
+	    [Internal] public bool frameChanged = false;
 	    [System.NonSerialized] public bool visible = true;
 	    [System.NonSerialized] public Sprite instance;
 	    [System.NonSerialized] public float frame = -1;

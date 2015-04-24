@@ -1,11 +1,11 @@
-﻿using Zios;
+using Zios;
 using UnityEngine;
 using System;
 namespace Zios{
     [RequireComponent(typeof(Camera))]
     [AddComponentMenu("Zios/Component/General/Camera Advanced")]
     public class CameraAdvanced : MonoBehaviour{
-	    [HideInInspector] public Camera target;
+	    [Internal] public Camera target;
 	    [ReadOnly] public Vector3 velocity;
 	    [ReadOnly] public Matrix4x4 worldToCameraMatrix;
 	    public Matrix4x4 projectionMatrix;

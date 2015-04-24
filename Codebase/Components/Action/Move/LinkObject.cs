@@ -1,4 +1,4 @@
-﻿using Zios;
+using Zios;
 using UnityEngine;
 namespace Zios{
     [AddComponentMenu("Zios/Component/Action/Move/Link Objects")]
@@ -7,7 +7,7 @@ namespace Zios{
 	    [EnumMask] public LinkOptions options = (LinkOptions)(-1);
 	    public AttributeGameObject target = new AttributeGameObject();
 	    public AttributeGameObject linkTo = new AttributeGameObject();
-	    [HideInInspector] public AttributeBool isLinked = false;
+	    [Internal] public AttributeBool isLinked = false;
 	    private Transform previousLink;
 	    private Quaternion preserveRotation;
 	    private Vector3 preservePosition;

@@ -1,11 +1,11 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System;
 using System.Collections.Generic;
 using System.Collections;
 namespace Zios{
 	[Serializable]
 	public class PoolPrefab{
-		[HideInInspector] public string name;
+		[Internal] public string name;
 		public GameObject prefab;
 		public Vector3 offset;
 		public Vector3 scale = Vector3.one;

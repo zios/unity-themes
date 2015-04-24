@@ -1,4 +1,4 @@
-﻿using Zios;
+using Zios;
 using System;
 using UnityEngine;
 namespace Zios{
@@ -10,7 +10,7 @@ namespace Zios{
 	    public LayerMask layer = (LayerMask)(-1);
 	    public AttributeGameObject target = new AttributeGameObject();
 	    //public AttributeBool forceRequired = true;
-	    [HideInInspector] public AttributeGameObject lastCollision = new AttributeGameObject();
+	    [Internal] public AttributeGameObject lastCollision = new AttributeGameObject();
 	    public override void Awake(){
 		    base.Awake();
 		    this.lastCollision.Setup("Last Collision",this);

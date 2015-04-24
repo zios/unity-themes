@@ -44,14 +44,17 @@ namespace Zios{
 		    }
 		    return (V)current.GetMethod(name,allFlags).Invoke(current,parameters);
 	    }
-	    public static bool HasAttribute(this object current,string name,Type attribute){
+	    public static System.Attribute[] ListAttributes(this object current,string name){
 		    Type type = current is Type ? (Type)current : current.GetType();
 		    var property = type.GetProperty(name,allFlags);
 		    var field = type.GetField(name,allFlags);
 			System.Attribute[] attributes = new System.Attribute[0];
 			if(field != null){attributes = System.Attribute.GetCustomAttributes(field);}
 			if(property != null){attributes = System.Attribute.GetCustomAttributes(property);}
-			return attributes.Exists(x=>x.GetType()==attribute);
+			return attributes;
+	    }
+	    public static bool HasAttribute(this object current,string name,Type attribute){
+			return current.ListAttributes(name).Exists(x=>x.GetType()==attribute);
 	    }
 	    public static bool HasMethod(this object current,string name,BindingFlags flags = allFlags){
 		    Type type = current is Type ? (Type)current : current.GetType();

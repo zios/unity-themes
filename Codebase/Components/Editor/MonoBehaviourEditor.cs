@@ -1,5 +1,6 @@
 using Zios;
 using System;
+using System.Linq;
 using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
@@ -38,15 +39,20 @@ namespace Zios{
 			bool changed = false;
 			bool showAll = false;
 			bool showAdvanced = EditorPrefs.GetBool("InspectorAdvanced");
+			bool showInternal = EditorPrefs.GetBool("InspectorInternal");
 			Vector2 mousePosition = Event.current.mousePosition;
 			if(Event.current.alt){
 				showAll = this.area.Contains(mousePosition);
 				this.Repaint();
 			}
 			foreach(var property in this.properties){
-				bool isReadOnly = this.serializedObject.targetObject.HasAttribute(property.name,typeof(ReadOnlyAttribute));
-				bool isAdvanced = !showAdvanced && this.serializedObject.targetObject.HasAttribute(property.name,typeof(AdvancedAttribute));
+				string[] attributes = this.serializedObject.targetObject.ListAttributes(property.name).Select(x=>x.GetType().Name).ToArray();
+				bool isInternal = attributes.Contains("InternalAttribute");
+				bool isAdvanced = attributes.Contains("AdvancedAttribute");
+				bool isReadOnly = isInternal || attributes.Contains("ReadOnlyAttribute");
 				bool isHidden = !showAll && this.hidden.Contains(property);
+				if(isAdvanced && !showAdvanced){isHidden = true;}
+				if(isInternal && !showInternal){isHidden = true;}
 				if(!showAll && hideDefault){
 					object defaultValue = MonoBehaviourEditor.defaults[type][property.name];
 					object currentValue = property.GetObject<object>();
@@ -60,7 +66,7 @@ namespace Zios{
 					bool isDefault = defaultValue.Equals(currentValue);
 					if(isDefault){isHidden = true;}
 				}
-				if(!isHidden && !isAdvanced){
+				if(!isHidden){
 					if(this.propertyArea.ContainsKey(property)){
 						if(Event.current.shift){
 							bool canHide = (this.properties.Count - this.hidden.Count) > 1;
@@ -150,18 +156,22 @@ namespace Zios{
 		}
 		public void SortProperties(){
 			if(this.properties.Count < 1){
+				var target = this.serializedObject.targetObject;
 				var property = this.serializedObject.GetIterator();
 				property.NextVisible(true);
 				while(property.NextVisible(false)){
 					var realProperty = this.serializedObject.FindProperty(property.propertyPath);
 					this.properties.Add(realProperty);
 				}
+				this.properties = this.properties.OrderBy(x=>target.HasAttribute(x.name,typeof(InternalAttribute))).ToList();
 			}
 		}
 		public void DrawMenu(){
 			GenericMenu menu = new GenericMenu();
 			bool showAdvanced = EditorPrefs.GetBool("InspectorAdvanced");
+			bool showInternal = EditorPrefs.GetBool("InspectorInternal");
 			menu.AddItem(new GUIContent("Advanced"),showAdvanced,()=>EditorPrefs.SetBool("InspectorAdvanced",!showAdvanced));
+			menu.AddItem(new GUIContent("Internal"),showInternal,()=>EditorPrefs.SetBool("InspectorInternal",!showInternal));
 			MenuFunction hideAllDefaults = ()=>{
 				MonoBehaviourEditor.hideAllDefault = !MonoBehaviourEditor.hideAllDefault;
 				EditorPrefs.SetBool("MonoBehaviourEditor-HideAllDefault",MonoBehaviourEditor.hideAllDefault);

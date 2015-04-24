@@ -1,11 +1,11 @@
-﻿#pragma warning disable 0649
+#pragma warning disable 0649
 #pragma warning disable 0414
 using Zios;
 using UnityEngine;
 namespace Zios{
     [AddComponentMenu("Zios/Component/Action/Attribute/Expose/Expose Transform (Position)")]
     public class ExposeTransformPosition : DataMonoBehaviour{
-	    [HideInInspector] public AttributeVector3 position = Vector3.zero;
+	    [Internal] public AttributeVector3 position = Vector3.zero;
 	    public override void Awake(){
 		    this.alias = this.alias.SetDefault("Transform");
 		    base.Awake();

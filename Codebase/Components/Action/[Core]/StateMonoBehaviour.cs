@@ -4,13 +4,13 @@ using System;
 namespace Zios{
     [Serializable][AddComponentMenu("")]
     public class StateMonoBehaviour : ManagedMonoBehaviour{
-	    [HideInInspector] public string id;
-	    [HideInInspector] public AttributeBool requirable = true;
-	    [HideInInspector] public AttributeBool ready = false;
-	    [HideInInspector] public AttributeBool usable = false;
-	    [HideInInspector] public AttributeBool inUse = false;
-	    [HideInInspector] public AttributeBool used = false;
-	    [HideInInspector] public AttributeBool endWhileUnusable = false;
+	    [Internal] public string id;
+	    [Internal] public AttributeBool requirable = true;
+	    [Internal] public AttributeBool ready = false;
+	    [Internal] public AttributeBool usable = false;
+	    [Internal] public AttributeBool inUse = false;
+	    [Internal] public AttributeBool used = false;
+	    [Internal] public AttributeBool endWhileUnusable = false;
 	    private bool requirableOverride;
 	    public override void Awake(){
 		    base.Awake();

@@ -1,4 +1,4 @@
-﻿#pragma warning disable 0649
+#pragma warning disable 0649
 #pragma warning disable 0414
 using Zios;
 using System.Collections;
@@ -6,15 +6,15 @@ using UnityEngine;
 namespace Zios{
     [AddComponentMenu("Zios/Component/Action/Attribute/Expose/Expose Transform")]
     public class ExposeTransform : DataMonoBehaviour{
-	    [HideInInspector] public AttributeVector3 rotation = Vector3.zero;
-	    [HideInInspector] public AttributeVector3 position = Vector3.zero;
-	    [HideInInspector] public AttributeVector3 scale = Vector3.zero;
-	    [HideInInspector] public AttributeVector3 directionUp = Vector3.zero;
-	    [HideInInspector] public AttributeVector3 directionDown = Vector3.zero;
-	    [HideInInspector] public AttributeVector3 directionLeft = Vector3.zero;
-	    [HideInInspector] public AttributeVector3 directionRight = Vector3.zero;
-	    [HideInInspector] public AttributeVector3 directionForward = Vector3.zero;
-	    [HideInInspector] public AttributeVector3 directionBack = Vector3.zero;
+	    [Internal] public AttributeVector3 rotation = Vector3.zero;
+	    [Internal] public AttributeVector3 position = Vector3.zero;
+	    [Internal] public AttributeVector3 scale = Vector3.zero;
+	    [Internal] public AttributeVector3 directionUp = Vector3.zero;
+	    [Internal] public AttributeVector3 directionDown = Vector3.zero;
+	    [Internal] public AttributeVector3 directionLeft = Vector3.zero;
+	    [Internal] public AttributeVector3 directionRight = Vector3.zero;
+	    [Internal] public AttributeVector3 directionForward = Vector3.zero;
+	    [Internal] public AttributeVector3 directionBack = Vector3.zero;
 	    public override void Awake(){
 		    this.alias = this.alias.SetDefault("Transform");
 		    base.Awake();
