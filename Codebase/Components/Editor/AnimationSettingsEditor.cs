@@ -5,19 +5,15 @@ using System.Collections.Generic;
 using Zios;
 namespace Zios{
     [CustomEditor(typeof(AnimationSettings))]
-    public class AnimationSettingsEditor :UnityEditor.Editor{
+    public class AnimationSettingsEditor : Editor{
 	    private CustomListElement listElement;
 	    public override void OnInspectorGUI(){
-			if(!Event.current.IsUseful()){return;}
 		    if(this.listElement == null){
 			    this.listElement = new CustomListElement(target);
 		    }
 		    this.listElement.Draw();
 		    if(this.listElement.shouldRepaint){
 			    this.Repaint();
-		    }
-		    if(GUI.changed){
-			    EditorUtility.SetDirty(target);
 		    }
 	    }
 	    public class ApplyChangesAction : ListAction{

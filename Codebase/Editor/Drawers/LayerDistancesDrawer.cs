@@ -14,12 +14,7 @@ namespace Zios{
 		    return base.GetPropertyHeight(property,label);
 	    }
         public override void OnGUI(Rect area,SerializedProperty property,GUIContent label){
-			if(!Event.current.IsUseful()){return;}
-		    if(!area.InspectorValid()){return;}
-			property.serializedObject.Update();
 		    float singleLine = EditorGUIUtility.singleLineHeight;
-		    GUI.changed = false;
-		    EditorGUI.BeginProperty(area,label,property);
 		    area = area.SetHeight(singleLine);
 		    bool expanded = EditorPrefs.GetBool("layerDistancesExpanded");
 		    expanded = EditorGUI.Foldout(area,expanded,"Layer Cull Distances");
@@ -27,23 +22,17 @@ namespace Zios{
 		    if(expanded){
 			    EditorGUI.indentLevel += 1;
 			    this.drawn = 0;
-			    SerializedProperty valuesProperty = property.FindPropertyRelative("values");
+			    float[] values = property.FindPropertyRelative("values").GetObject<float[]>();
 			    for(int index=0;index<32;index++){
-				    SerializedProperty current = valuesProperty.GetArrayElementAtIndex(index);
 				    string layerName = LayerMask.LayerToName(index);
 				    //if(layerName.IsEmpty()){layerName = "[Unnamed]";}
 				    if(!layerName.IsEmpty()){
 					    area = area.AddY(singleLine+2);
-					    current.floatValue = current.floatValue.DrawLabeled(area,new GUIContent(layerName));
+					    values[index] = values[index].DrawLabeled(area,new GUIContent(layerName));
 					    this.drawn += 1;
 				    }
 			    }
 			    EditorGUI.indentLevel -= 1;
-		    }
-		    EditorGUI.EndProperty();
-		    if(GUI.changed){
-				property.serializedObject.ApplyModifiedProperties();
-			    //EditorUtility.SetDirty(property.serializedObject.targetObject);
 		    }
         }
     }

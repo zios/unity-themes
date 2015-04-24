@@ -7,12 +7,8 @@ namespace Zios{
     public class TargetDrawer : PropertyDrawer{
 	    public bool setup;
         public override void OnGUI(Rect area,SerializedProperty property,GUIContent label){
-			if(!Event.current.IsUseful()){return;}
-		    if(!area.InspectorValid()){return;}
-			property.serializedObject.Update();
 		    string skin = EditorGUIUtility.isProSkin ? "Dark" : "Light";
 		    GUI.skin = FileManager.GetAsset<GUISkin>("Gentleface-" + skin + ".guiskin");
-		    GUI.changed = false;
 		    Target target = property.GetObject<Target>();
 		    Rect toggleRect = new Rect(area);
 		    Rect propertyRect = new Rect(area);
@@ -50,10 +46,6 @@ namespace Zios{
 			    }
 			    target.search = target.search.Draw(textRect);
 			    result.DrawLabel(propertyRect,GUI.skin.GetStyle("SubtleInfo"));
-		    }
-			property.serializedObject.ApplyModifiedProperties();
-		    if(GUI.changed){
-				Utility.SetDirty(property.serializedObject.targetObject);
 		    }
         }
     }

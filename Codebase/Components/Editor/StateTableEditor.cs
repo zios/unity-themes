@@ -33,7 +33,6 @@ namespace Zios.Table{
 			    stateTable.Refresh();
 			    stateTable.UpdateTableList();
 			    StateRow[] activeTable = stateTable.tables[this.tableIndex];
-			    GUI.changed = false;
 			    if(this.data != activeTable){
 				    this.data = activeTable;
 				    this.BuildTable(true);
@@ -67,8 +66,9 @@ namespace Zios.Table{
 			    this.DrawDefaultInspector();
 			    return;
 		    }*/
+			GUI.changed = false;
 		    this.FixLabels();
-		    Utility.EditorCall(this.EditorUpdate);
+		    this.EditorUpdate();
 		    this.tableGUI.Draw();
 		    this.DrawControls();
 		    if(GUI.changed){

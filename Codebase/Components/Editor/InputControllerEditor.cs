@@ -15,8 +15,5 @@ public class InputControllerEditor : Editor{
 		}
 		EditorGUILayout.LabelField("Left/Right");
 		EditorGUILayout.LabelField("Forward/Backward");
-		if(GUI.changed){
-			EditorUtility.SetDirty(target);
-		}
 	}
 }

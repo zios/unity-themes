@@ -242,7 +242,6 @@ namespace Zios{
 				Attribute.ready = true;
 				AttributeManager.percentLoaded = 1;
 				Events.Call("On Attributes Ready");
-				//Utility.SetDirty(Selection.activeGameObject);
 				this.stage = 0;
 				this.nextIndex = 0;
 				return;

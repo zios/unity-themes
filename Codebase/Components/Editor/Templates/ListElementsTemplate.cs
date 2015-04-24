@@ -49,9 +49,6 @@ namespace Zios{
 			    action.OnGlobalAction(this.target);
 			    this.shouldRepaint = this.shouldRepaint || action.shouldRepaint;
 		    }
-		    if(GUI.changed){
-			    EditorUtility.SetDirty(target);
-		    }
 	    }
 	    private void CreateHeader(string title,float width,string field){
 		    if(this.sortOptions.field != null && this.sortOptions.field.Equals(field)){

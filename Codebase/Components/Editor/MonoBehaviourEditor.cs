@@ -19,23 +19,23 @@ namespace Zios{
 		public Rect area;
 		public Rect areaStart;
 	    public override void OnInspectorGUI(){
-			if(Application.isPlaying){
+			if(Utility.IsPlaying() || Application.isLoadingLevel){
 				this.DrawDefaultInspector();
 				return;
 			}
-			try{this.areaStart = GUILayoutUtility.GetRect(0,0);}
-			catch{}
 			if(!Event.current.IsUseful()){return;}
 			if(this.target.As<MonoBehaviour>().IsPrefab()){return;}
+			try{this.areaStart = GUILayoutUtility.GetRect(0,0);}
+			catch{}
+			this.serializedObject.Update();
 			MonoBehaviourEditor.hideAllDefault = EditorPrefs.GetBool("MonoBehaviourEditor-HideAllDefault",false);
 			this.hideDefault = EditorPrefs.GetBool("MonoBehaviourEditor-"+this.target.GetInstanceID()+"HideDefault",false);
-			this.serializedObject.Update();
 			bool hideDefault = MonoBehaviourEditor.hideAllDefault ? MonoBehaviourEditor.hideAllDefault : this.hideDefault;
 			if(hideDefault){this.SortDefaults();}
 			this.SortProperties();
 			this.Setup();
 			Type type = this.target.GetType();
-			GUI.changed = false;
+			bool changed = false;
 			bool showAll = false;
 			bool showAdvanced = EditorPrefs.GetBool("InspectorAdvanced");
 			Vector2 mousePosition = Event.current.mousePosition;
@@ -72,10 +72,15 @@ namespace Zios{
 							}
 							if(this.propertyArea[property].Clicked(1)){this.DrawMenu();}
 						}
+						if(!this.propertyArea[property].InspectorValid()){continue;}
 					}
 					try{
 						if(isReadOnly){GUI.enabled = false;}
+						GUI.changed = false;
+						EditorGUI.BeginProperty(this.propertyArea.AddNew(property),new GUIContent(property.displayName),property);
 						property.DrawLabeled();
+						EditorGUI.EndProperty();
+						changed = changed || GUI.changed;
 						if(isReadOnly){GUI.enabled = true;}
 						Rect area = GUILayoutUtility.GetLastRect();
 						if(!area.IsEmpty()){this.propertyArea[property] = area;}
@@ -91,8 +96,9 @@ namespace Zios{
 				}
 			}
 			catch{}
-			if(GUI.changed){
+			if(changed){
 				this.serializedObject.ApplyModifiedProperties();
+				this.serializedObject.targetObject.CallMethod("OnValidate");
 				Utility.SetDirty(this.serializedObject.targetObject);
 			}
 	    }

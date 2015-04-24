@@ -22,9 +22,6 @@ namespace Zios.Snapshot{
 			if(this.addAttribute.list.shouldRepaint || this.addEvent.list.shouldRepaint){
 				this.Repaint();
 			}
-			if(GUI.changed){
-				EditorUtility.SetDirty(target);
-			}
 		}
 		class AttributesListElement : ListElementsTemplate{
 			public AttributesListElement(UnityEngine.Object target):base(target){

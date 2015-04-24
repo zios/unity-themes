@@ -5,8 +5,8 @@ using System;
 namespace Zios{
 	[AddComponentMenu("Zios/Component/Action/*/State Link")]
 	public class StateLink : StateMonoBehaviour{
-		[HideInInspector] public StateTable stateTable;
-		[HideInInspector] public GameObject owner;
+		[Internal] public StateTable stateTable;
+		[Internal] public GameObject owner;
 		public override void Awake(){
 			string name = this.transform.parent != null ? this.transform.parent.name : this.transform.name;
 			this.alias = this.alias.SetDefault(name);
@@ -30,7 +30,6 @@ namespace Zios{
 					Events.Register(this.alias+"/On Start",this.owner);
 					Events.Register(this.alias+"/On End",this.owner);
 				}
-				Utility.SetDirty(this);
 			}
 			this.usable.Set(this.stateTable==null);
 			this.ready.Set(false);

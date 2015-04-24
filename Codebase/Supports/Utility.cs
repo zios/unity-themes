@@ -28,6 +28,7 @@ namespace Zios{
 	    public static EditorWindow[] inspectors;
 	    public static List<CallbackFunction> hierarchyMethods = new List<CallbackFunction>();
 	    public static Dictionary<CallbackFunction,float> delayedMethods = new Dictionary<CallbackFunction,float>();
+		public static List<UnityObject> delayedDirty = new List<UnityObject>();
 	    public static bool hierarchyPaused;
 		public static bool delayPaused;
 		public static bool delayProcessing;
@@ -88,6 +89,12 @@ namespace Zios{
 			Type type = typeof(SerializedObject);
 		    return type.CallMethod<SerializedObject>("LoadFromCache",target.GetInstanceID().AsBoxedArray());
 	    }
+		public static void UpdateSerialized(UnityObject target){
+			var serialized = new SerializedObject(target);
+			serialized.Update();
+			serialized.ApplyModifiedProperties();
+			Utility.UpdatePrefab(target);
+		}
 	    public static EditorWindow[] GetInspectors(){
 		    if(Utility.inspectors == null){
 			    Type inspectorType = Utility.GetEditorType("InspectorWindow");
@@ -149,11 +156,17 @@ namespace Zios{
 		//=================
 		// Proxy
 		//=================
-	    public static GameObject FindPrefabRoot(GameObject target){
+	    public static UnityObject GetPrefab(UnityObject target){
+		    #if UNITY_EDITOR
+		    return PrefabUtility.GetPrefabObject(target);
+		    #endif
+		    return null;
+	    }
+	    public static GameObject GetPrefabRoot(GameObject target){
 		    #if UNITY_EDITOR
 		    return PrefabUtility.FindPrefabRoot(target);
 		    #endif
-		    return target;
+		    return null;
 	    }
 	    public static bool IsPlaying(){
 		    #if UNITY_EDITOR
@@ -173,11 +186,21 @@ namespace Zios{
 			inspectorType.CallMethod("RepaintAllInspectors");
 			#endif
 	    }
-	    public static void SetDirty(UnityObject target){
+		public static void ClearDirty(){Utility.delayedDirty.Clear();}
+	    public static void SetDirty(UnityObject target,bool delayed=false){
 		    #if UNITY_EDITOR
 			if(target.IsNull()){return;}
+			if(target.GetPrefab().IsNull()){return;}
+			if(delayed){
+				if(!Utility.delayedDirty.Contains(target)){
+					Events.AddLimited("On Enter Play",()=>Utility.SetDirty(target),1);
+					Events.AddLimited("On Enter Play",Utility.ClearDirty,1);
+					Utility.delayedDirty.AddNew(target);
+				}
+				return;
+			}
 		    EditorUtility.SetDirty(target);
-		    //new SerializedObject(target).UpdateIfDirtyOrScript();
+			Utility.UpdatePrefab(target);
 		    #endif
 	    }
 	    public static int GetLocalID(int instanceID){
@@ -198,6 +221,11 @@ namespace Zios{
 		    #endif
 		    return false;
 	    }
+		public static void UpdatePrefab(UnityObject target){
+		    #if UNITY_EDITOR
+		    PrefabUtility.RecordPrefabInstancePropertyModifications(target);
+		    #endif
+		}
 	    public static bool ReconnectToLastPrefab(GameObject target){
 		    #if UNITY_EDITOR
 		    return PrefabUtility.ReconnectToLastPrefab(target);

@@ -1,8 +1,15 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections.Generic;
+using UnityObject = UnityEngine.Object;
 namespace Zios{
     public static class ComponentExtension{
+		public static void UpdateSerialized(this Component current){
+			Utility.UpdateSerialized(current);
+		}
+	    public static GameObject GetPrefabRoot(this Component current){
+		    return current.gameObject.GetPrefabRoot();
+	    }
 	    public static GameObject GetParent(this Component current){	
 		    return current.gameObject.GetParent();
 	    }

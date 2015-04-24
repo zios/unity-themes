@@ -8,20 +8,14 @@ namespace Zios{
     public class EventTargetDrawer : PropertyDrawer{
 	    public Dictionary<EventTarget,bool> targetMode = new Dictionary<EventTarget,bool>();
         public override void OnGUI(Rect area,SerializedProperty property,GUIContent label){
-			if(!Event.current.IsUseful()){return;}
-		    if(!area.InspectorValid()){return;}
-			property.serializedObject.Update();
 		    if(!Attribute.ready){
 			    EditorGUI.ProgressBar(area,AttributeManager.percentLoaded,"Updating");
-			    //Utility.SetDirty(property.serializedObject.targetObject);
 			    return;
 		    }
 		    string skin = EditorGUIUtility.isProSkin ? "Dark" : "Light";
 		    GUI.skin = FileManager.GetAsset<GUISkin>("Gentleface-" + skin + ".guiskin");
 		    Rect labelRect = area.SetWidth(EditorGUIUtility.labelWidth);
 		    Rect valueRect = area.Add(labelRect.width,0,-labelRect.width,0);
-		    GUI.changed = false;
-            EditorGUI.BeginProperty(area,label,property);
 		    EventTarget eventTarget = property.GetObject<EventTarget>();
 		    string eventName = eventTarget.name;
 		    GameObject target = eventTarget.target.Get();
@@ -60,10 +54,6 @@ namespace Zios{
 				    string error = "No global <b>"+eventType+"</b> events exist.";
 				    error.Draw(valueRect,GUI.skin.GetStyle("WarningLabel"));
 			    }
-		    }
-            EditorGUI.EndProperty();
-		    if(GUI.changed){
-				property.serializedObject.ApplyModifiedProperties();
 		    }
         }
     }

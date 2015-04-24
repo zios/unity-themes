@@ -6,15 +6,10 @@ namespace Zios{
     [CustomPropertyDrawer(typeof(ListBool))]
     public class ListBoolDrawer : PropertyDrawer{
         public override void OnGUI(Rect area,SerializedProperty property,GUIContent label){
-			if(!Event.current.IsUseful()){return;}
-		    if(!area.InspectorValid()){return;}
-			property.serializedObject.Update();
 		    string[] names = new string[]{"X","Y","Z","W"};
 		    object dataObject = property.GetObject<object>();
 		    Rect labelRect = area.SetWidth(EditorGUIUtility.labelWidth);
 		    Rect valueRect = area.Add(labelRect.width,0,-labelRect.width,0);
-		    GUI.changed = false;
-		    EditorGUI.BeginProperty(area,label,property);
 		    if(dataObject is ListBool){
 			    List<bool> data = ((ListBool)dataObject).value;
 			    EditorGUI.LabelField(labelRect,label);
@@ -22,11 +17,6 @@ namespace Zios{
 				    data[index] = data[index].Draw(valueRect.AddX((index*30)).SetWidth(30));
 				    names[index].DrawLabel(valueRect.Add(14+(index*30)));
 			    }
-		    }
-		    EditorGUI.EndProperty();
-		    if(GUI.changed){
-				property.serializedObject.ApplyModifiedProperties();
-			    //EditorUtility.SetDirty(property.serializedObject.targetObject);
 		    }
         }
     }

@@ -8,7 +8,6 @@ namespace Zios{
 	[CustomPropertyDrawer(typeof(AttributeBool),true)]
 	public class AttributeBoolDrawer : AttributeDrawer{
 		public override void OnGUI(Rect area,SerializedProperty property,GUIContent label){
-			if(!Event.current.IsUseful()){return;}
 			if(this.attribute == null){
 				this.attribute = property.GetObject<Attribute>();
 				MonoBehaviour script = (MonoBehaviour)property.serializedObject.targetObject;
@@ -19,11 +18,9 @@ namespace Zios{
 				return;
 			}
 			if(this.isPrefab){return;}
-			if(!area.InspectorValid()){return;}
 			this.overallHeight = this.GetBaseHeight(property,label);
 			if(!Attribute.ready && AttributeManager.safe){
 				EditorGUI.ProgressBar(area,AttributeManager.percentLoaded,"Updating");
-				//Utility.SetDirty(property.serializedObject.targetObject);
 				return;
 			}
 			if(this.access == null){
@@ -45,6 +42,11 @@ namespace Zios{
 			}
 			this.attribute.canDirect = false;
 			this.DrawFormulaPart(data,index);
+			if(GUI.changed){
+				Utility.SetDirty(data);
+				this.dirty = true;
+				GUI.changed = false;
+			}
 			int dataIndex = this.attributeCast.data.IndexOf(data);
 			AttributeData[] dataB = this.attribute.info.dataB;
 			this.SetupAreas(this.fullRect.AddX(this.fullRect.width+3));
@@ -90,7 +92,7 @@ namespace Zios{
 			else if(data.usage == AttributeUsage.Shaped){
 				this.DrawShaped(this.valueRect,currentProperty,formulaLabel,true,operatorState);
 			}
-			//if(GUI.changed){Utility.SetDirty(data);}
+			if(GUI.changed){Utility.SetDirty(data);}
 			this.DrawContext(data,index!=0,false);
 		}
 	}

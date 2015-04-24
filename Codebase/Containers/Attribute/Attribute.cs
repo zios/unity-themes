@@ -187,29 +187,28 @@ namespace Zios{
 				this.BuildInfo(path,parent);
 				this.FixDuplicates();
 				this.FixIDConflict(previousID);
+				Events.Add("On Validate",this.ValidateDependents,parent);
 			}
 			this.PrepareData();
 			if(!Attribute.all.Contains(this)){
 				Attribute.all.Add(this);
 			}
-			if(!Application.isPlaying){
-				Events.Add("On Validate",this.ValidateDependents,parent);
-			}
 			this.isSetup = true;
 		}
 		public void BuildInfo(string path,Component parent){
-			bool dirty = this.info.parent != parent;
+			string previousID = this.info.id;
 			path = (parent.GetAlias() + "/" + path).Trim("/");
+			bool dirty = this.info.parent != parent;
 			dirty = dirty || this.info.path != path;
 			dirty = dirty || this.info.localID.IsEmpty();
 			this.info.parent = parent;
 			this.info.path = path;
 			this.info.name = path.Split("/").Last();
-			string previousID = this.info.id;
 			this.info.localID = this.info.localID.IsEmpty() ? Guid.NewGuid().ToString() : this.info.localID;
 			this.info.id = parent.GetInstanceID()+"/"+this.info.localID;
-			if(dirty || this.info.id != previousID){
-				Utility.SetDirty(parent);
+			dirty = dirty || this.info.id != previousID;
+			if(dirty){
+				Utility.SetDirty(parent,true);
 			}
 		}
 		public override void BuildLookup(){
@@ -236,7 +235,12 @@ namespace Zios{
 					}
 					if(!Application.isPlaying){
 						if(resolve.ContainsKey(target) && resolve[target].ContainsKey(data.referenceID)){
-							data.referenceID = resolve[target][data.referenceID];
+							string resolvedID = resolve[target][data.referenceID];
+							if(resolvedID != data.referenceID){
+								data.referenceID = resolvedID;
+								Utility.SetDirty(this.info.parent,true);
+								Utility.SetDirty(data,true);
+							}
 						}
 					}
 					if(lookup[target].ContainsKey(data.referenceID)){
@@ -253,9 +257,9 @@ namespace Zios{
 								}
 								data.referenceID = attribute.Value.info.id;
 								data.reference = attribute.Value;
-								Utility.SetDirty(attribute.Value.info.parent);
-								Utility.SetDirty(data);
 								Utility.SetDirty(this.info.parent);
+								Utility.SetDirty(data.reference.info.parent);
+								Utility.SetDirty(data);
 								resolved = true;
 								break;
 							}
@@ -290,9 +294,7 @@ namespace Zios{
 		public void ValidateDependents(){
 			foreach(var dependent in this.dependents){
 				var parent = dependent.info.parent;
-				if(parent is DataMonoBehaviour){
-					((DataMonoBehaviour)parent).OnValidate();
-				}
+				parent.CallMethod("OnValidate");
 			}
 		}
 		// ======================
@@ -448,7 +450,6 @@ namespace Zios{
 					this.usage = AttributeUsage.Direct;
 				}
 				data.value = value;
-				Utility.SetDirty(data);
 			}
 			else if(this.info.mode == AttributeMode.Linked && this.info.linkType != LinkType.Get){
 				if(!Attribute.ready && Application.isPlaying){
@@ -465,7 +466,6 @@ namespace Zios{
 					return;
 				}
 				((AttributeType)data.reference).Set(value);
-				Utility.SetDirty(data);
 			}
 			else if(this.info.mode == AttributeMode.Formula){
 				if(!Attribute.setWarning.ContainsKey(this)){

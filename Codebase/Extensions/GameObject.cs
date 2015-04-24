@@ -4,13 +4,14 @@ using UnityEditor;
 #endif
 using System;
 using System.Collections.Generic;
+using UnityObject = UnityEngine.Object;
 namespace Zios{
     public static class GameObjectExtension{
 	    //====================
 	    // Retrieval
 	    //====================
 	    public static GameObject GetPrefabRoot(this GameObject current){
-		    return Utility.FindPrefabRoot(current);
+		    return Utility.GetPrefabRoot(current);
 	    }
 	    public static int GetSiblingCount(this GameObject current,bool includeInactive=false){
 		    return Locate.GetSiblings(current,true,includeInactive).Length;

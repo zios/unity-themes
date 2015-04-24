@@ -34,7 +34,6 @@ namespace Zios{
 		    }
 			if(dependentsChanged){
 				target.Awake();
-				Utility.SetDirty(target);
 			}
 		    base.OnInspectorGUI();
 	    }

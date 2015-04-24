@@ -10,8 +10,8 @@ namespace Zios{
 	public class ActionLink : StateMonoBehaviour{
 		[Advanced] public ActionOccurrence occurrence = ActionOccurrence.Default;
 		public bool? nextState;
-		[HideInInspector] public StateLink stateLink;
-		[HideInInspector] public ActionTable actionTable;
+		[Internal] public StateLink stateLink;
+		[Internal] public ActionTable actionTable;
 		public override void Awake(){
 			base.Awake();
 			Events.Add(this.alias+"/On End",this.End,this.gameObject);
@@ -23,7 +23,6 @@ namespace Zios{
 			if(!Application.isPlaying){
 				this.stateLink = this.GetComponent<StateLink>(true);
 				this.actionTable = this.GetComponent<ActionTable>(true);
-				Utility.SetDirty(this);
 			}
 			this.usable.Set(this.actionTable==null);
 		}

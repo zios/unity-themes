@@ -87,7 +87,6 @@ namespace Zios{
 		    }
 		    if(Time.realtimeSinceStartup > this.nextRepaint){
 			    this.nextRepaint = Time.realtimeSinceStartup + 0.25f;
-			    Utility.SetDirty(this);
 			    this.Repaint();
 		    }
 	    }

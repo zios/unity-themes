@@ -23,7 +23,6 @@ namespace Zios{
 			return this.overallHeight;
 		}
 		public override void OnGUI(Rect area,SerializedProperty property,GUIContent label){
-			if(!Event.current.IsUseful()){return;}
 			if(this.attribute == null){
 				this.attribute = property.GetObject<Attribute>();
 				MonoBehaviour script = (MonoBehaviour)property.serializedObject.targetObject;
@@ -46,11 +45,9 @@ namespace Zios{
 				utility.GetVariable<Stack<PropertyDrawer>>("s_DrawerStack").Push(this);*/
 				return;
 			}
-			if(!area.InspectorValid()){return;}
 			this.overallHeight = this.GetBaseHeight(property,label);
 			if(!Attribute.ready && AttributeManager.safe){
 				EditorGUI.ProgressBar(area,AttributeManager.percentLoaded,"Updating");
-				//Utility.SetDirty(property.serializedObject.targetObject);
 				return;
 			}
 			if(this.access == null){
@@ -89,7 +86,6 @@ namespace Zios{
 		public List<string> specialOverride;
 		public Dictionary<AttributeData,bool> targetMode = new Dictionary<AttributeData,bool>();
 		public virtual void Setup(AttributeDrawer drawer,Rect area,SerializedProperty property,GUIContent label){
-			property.serializedObject.Update();
 			if(skin == null){
 				string skinName = EditorGUIUtility.isProSkin ? "Dark" : "Light";
 				this.skin = FileManager.GetAsset<GUISkin>("Gentleface-" + skinName + ".guiskin");
@@ -107,18 +103,11 @@ namespace Zios{
 			foreach(var data in this.attribute.data){
 				if(!data.IsNull()){sources.Add(data);}
 			}
-			GUI.changed = false;
 			Undo.RecordObjects(sources.ToArray(),"Attribute Changes");
-			EditorGUI.BeginProperty(area,label,property);
 			this.Draw();
-			EditorGUI.EndProperty();
-			if(GUI.changed || this.dirty){
-				property.serializedObject.targetObject.CallMethod("OnValidate");
-				property.serializedObject.ApplyModifiedProperties();
-				if(this.dirty){
-					Utility.RepaintInspectors();
-					this.dirty = false;
-				}
+			if(this.dirty){
+				Utility.RepaintInspectors();
+				this.dirty = false;
 			}
 		}
 		public void SetupAreas(Rect area){
@@ -131,6 +120,7 @@ namespace Zios{
 			AttributeData firstData = this.attributeCast.GetFirst();
 			if(firstData.IsNull()){return;}
 			SerializedObject firstProperty = new SerializedObject(firstData);
+			firstProperty.Update();
 			this.DrawContext(firstData);
 			if(this.attribute.info.mode == AttributeMode.Normal){
 				if(firstData.usage == AttributeUsage.Direct){
@@ -141,12 +131,14 @@ namespace Zios{
 					this.labelRect = this.labelRect.AddX(16);
 					this.DrawShaped(this.valueRect,firstProperty,this.label,true);
 				}
+				if(GUI.changed){Utility.SetDirty(firstData);}
 			}
 			if(this.attribute.info.mode == AttributeMode.Linked){
 				this.attributeCast.usage = AttributeUsage.Shaped;
 				GUI.Box(this.iconRect,"",GUI.skin.GetStyle("IconLinked"));
 				this.labelRect = this.labelRect.AddX(16);
 				this.DrawShaped(this.valueRect,firstProperty,this.label,true);
+				if(GUI.changed){Utility.SetDirty(firstData);}
 			}
 			if(this.attribute.info.mode == AttributeMode.Formula){
 				this.DrawGroup(this.label,true);
@@ -341,6 +333,7 @@ namespace Zios{
 		public virtual void DrawGroupRow(AttributeData data,int index,bool drawAdvanced){
 			float lineHeight = EditorGUIUtility.singleLineHeight+2;
 			SerializedObject currentProperty = new SerializedObject(data);
+			currentProperty.Update();
 			//GUIContent formulaLabel = new GUIContent(((char)('A'+index)).ToString());
 			GUIContent formulaLabel = new GUIContent(" ");
 			this.SetupAreas(this.fullRect.AddY(lineHeight));
@@ -356,6 +349,11 @@ namespace Zios{
 				this.DrawShaped(this.valueRect,currentProperty,formulaLabel,drawAdvanced,operatorState);
 			}
 			this.DrawContext(data,index!=0,false);
+			if(GUI.changed){
+				Utility.SetDirty(data);
+				this.dirty = true;
+				GUI.changed = false;
+			}
 		}
 		public virtual void DrawAddMenu(){
 			this.contextOpen = true;
@@ -402,7 +400,12 @@ namespace Zios{
 				MenuFunction modeLinked  = ()=>{this.attribute.info.mode = AttributeMode.Linked;};
 				MenuFunction modeFormula = ()=>{this.attribute.info.mode = AttributeMode.Formula;};
 				MenuFunction modeGroup = ()=>{this.attribute.info.mode = AttributeMode.Group;};
-				MenuFunction usageDirect = ()=>{data.usage = AttributeUsage.Direct;};
+				MenuFunction usageDirect = ()=>{
+					data.usage = AttributeUsage.Direct;
+					data.referencePath = "";
+					data.referenceID = "";
+					data.reference = null;
+				};
 				MenuFunction usageShaped = ()=>{data.usage = AttributeUsage.Shaped;};
 				bool normal = this.attribute.info.mode == AttributeMode.Normal;
 				if(this.attribute.locked){

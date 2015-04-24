@@ -100,7 +100,7 @@ namespace Zios{
 			Events.debugScope = (EventDebugScope)PlayerPrefs.GetInt("Events-DebugScope");
 			Events.callers.Clear();
 			Events.cache.Clear();
-			Events.listeners.RemoveAll(x=>!x.permanent);
+			Events.listeners.RemoveAll(x=>!x.permanent||x.occurrences==0);
 			foreach(var listener in Events.listeners){
 				var scope = Events.cache.AddNew(listener.target).AddNew(listener.name);
 				scope[listener.method] = listener;
