@@ -20,10 +20,6 @@ namespace Zios{
 		public Rect area;
 		public Rect areaStart;
 	    public override void OnInspectorGUI(){
-			if(Utility.IsPlaying() || Application.isLoadingLevel){
-				this.DrawDefaultInspector();
-				return;
-			}
 			if(!Event.current.IsUseful()){return;}
 			if(this.target.As<MonoBehaviour>().IsPrefab()){return;}
 			try{this.areaStart = GUILayoutUtility.GetRect(0,0);}

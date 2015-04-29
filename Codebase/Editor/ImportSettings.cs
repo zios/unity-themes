@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using System;
+using System.Linq;
 using System.Collections;
 namespace Zios{
     public class ImportSettings : AssetPostprocessor{
@@ -29,20 +30,21 @@ namespace Zios{
 	    }
 	    public void OnPreprocessTexture(){
 		    TextureImporter importer = (TextureImporter)assetImporter;
+			string assetName = importer.assetPath.Split("/").Last();
 		    importer.textureType = TextureImporterType.Advanced;
-		    if(importer.assetPath.Contains("Outlines")){
+		    if(assetName.Contains("Outlines")){
 			    importer.wrapMode = TextureWrapMode.Clamp;
 			    importer.textureFormat = TextureImporterFormat.DXT5;
 			    importer.mipmapEnabled = false;
 		    }
-		    if(importer.assetPath.Contains("Index") || importer.assetPath.Contains("Shading")){
+		    if(assetName.Contains("Index") || assetName.Contains("Shading")){
 			    importer.filterMode = FilterMode.Point;
 			    importer.wrapMode = TextureWrapMode.Clamp;
 			    importer.mipmapEnabled = false;
 			    //if(importer.assetPath.Contains("Index")){
 			    //	importer.textureFormat = TextureImporterFormat.DXT1;
 			    //}
-			    if(importer.assetPath.Contains("Shading")){
+			    if(assetName.Contains("Shading")){
 				    importer.textureFormat = TextureImporterFormat.DXT5;
 			    }
 		    }

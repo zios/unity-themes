@@ -5,10 +5,6 @@ namespace Zios{
     [CustomEditor(typeof(DataMonoBehaviour),true)][CanEditMultipleObjects]
     public class DataMonoBehaviourEditor : MonoBehaviourEditor{
 	    public override void OnInspectorGUI(){
-			if(Utility.IsPlaying() || Application.isLoadingLevel){
-				this.DrawDefaultInspector();
-				return;
-			}
 			if(!Event.current.IsUseful()){return;}
 		    DataMonoBehaviour target = (DataMonoBehaviour)this.target;
 			var dependents = target.dependents;
