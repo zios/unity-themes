@@ -7,7 +7,7 @@ namespace Zios{
 		public AttributeFloat speed = 1;
 		public AttributeFloat target = 0;
 		public AttributeFloat goal = 0;
-		public AttributeFloat delta = 0;
+		[Advanced][ReadOnly] public AttributeFloat delta = 0;
 		private float start;
 		private float lastGoal;
 		public override void Awake(){
@@ -22,12 +22,16 @@ namespace Zios{
 			float end = this.goal.Get();
 			float speed = this.speed.Get();
 			float remainingDistance = current.Distance(end);
+			if(speed == -1){
+				current = end;
+				this.target.Set(end);
+			}
 			if(current == end){
 				if(!this.finished){this.gameObject.CallEvent(this.alias+"/End");}
 				this.finished = true;
 				this.delta.Set(0);
 				this.state = TransitionState.Idle;
-				this.End();
+				base.Use();
 				return;
 			}
 			if(this.state == TransitionState.Idle){

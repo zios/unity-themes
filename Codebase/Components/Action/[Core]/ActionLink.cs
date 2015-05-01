@@ -28,11 +28,11 @@ namespace Zios{
 		}
 		public override void Step(){
 			if(!Application.isPlaying){return;}
-			bool happenedOnce = this.used && this.occurrence == ActionOccurrence.Once;
+			bool onlyHappenOnce = this.used && this.occurrence == ActionOccurrence.Once;
 			bool stateLinkUsable = this.stateLink == null || this.stateLink.usable;
-			if(!happenedOnce){
+			if(!onlyHappenOnce){
 				if(stateLinkUsable && this.usable){this.Use();}
-				else if(this.inUse || this.endWhileUnusable){this.End();}
+				else if(this.inUse){this.End();}
 			}
 			else if(!this.usable){
 				this.End();

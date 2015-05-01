@@ -20,7 +20,7 @@ namespace Zios{
 		public Rect area;
 		public Rect areaStart;
 	    public override void OnInspectorGUI(){
-			if(!Event.current.IsUseful()){return;}
+			//if(!Event.current.IsUseful()){return;}
 			if(this.target.As<MonoBehaviour>().IsPrefab()){return;}
 			try{this.areaStart = GUILayoutUtility.GetRect(0,0);}
 			catch{}
@@ -49,9 +49,9 @@ namespace Zios{
 				bool isHidden = !showAll && this.hidden.Contains(property);
 				if(isAdvanced && !showAdvanced){isHidden = true;}
 				if(isInternal && !showInternal){isHidden = true;}
+				object currentValue = property.GetObject<object>();
 				if(!showAll && hideDefault){
 					object defaultValue = MonoBehaviourEditor.defaults[type][property.name];
-					object currentValue = property.GetObject<object>();
 					if(defaultValue.IsNull()){continue;}
 					if(currentValue is AttributeFloat){currentValue = ((AttributeFloat)currentValue).Get();}
 					if(currentValue is AttributeInt){currentValue = ((AttributeInt)currentValue).Get();}
@@ -74,13 +74,14 @@ namespace Zios{
 							}
 							if(this.propertyArea[property].Clicked(1)){this.DrawMenu();}
 						}
-						if(!this.propertyArea[property].InspectorValid()){continue;}
+						//if(!this.propertyArea[property].InspectorValid()){continue;}
 					}
 					try{
+						string propertyName = currentValue is Attribute ? currentValue.As<Attribute>().info.name : "";
 						if(isReadOnly){GUI.enabled = false;}
 						GUI.changed = false;
 						EditorGUI.BeginProperty(this.propertyArea.AddNew(property),new GUIContent(property.displayName),property);
-						property.DrawLabeled();
+						property.DrawLabeled(propertyName);
 						EditorGUI.EndProperty();
 						changed = changed || GUI.changed;
 						if(isReadOnly){GUI.enabled = true;}

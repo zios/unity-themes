@@ -22,12 +22,16 @@ namespace Zios{
 			Vector3 end = this.goal.Get();
 			float speed = this.speed.Get();
 			float remainingDistance = current.Distance(end);
+			if(speed == -1){
+				current = end;
+				this.target.Set(end);
+			}
 			if(current == end){
 				if(!this.finished){this.gameObject.CallEvent(this.alias+"/End");}
 				this.finished = true;
 				this.delta.Set(Vector3.zero);
 				this.state = TransitionState.Idle;
-				this.End();
+				base.Use();
 				return;
 			}
 			if(this.state == TransitionState.Idle){

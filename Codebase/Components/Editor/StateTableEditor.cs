@@ -60,21 +60,15 @@ namespace Zios.Table{
 		    }
 	    }
 	    public override void OnInspectorGUI(){
-			if(!Event.current.IsUseful()){return;}
-		    /*StateTable table = (StateTable)this.target;
-		    if(AttributeManager.safe && (!Attribute.ready || table.IsPrefab())){
-			    this.DrawDefaultInspector();
-			    return;
-		    }*/
 			GUI.changed = false;
-		    this.FixLabels();
-		    this.EditorUpdate();
+			this.FixLabels();
+			this.EditorUpdate();
 		    this.tableGUI.Draw();
-		    this.DrawControls();
-		    if(GUI.changed){
-			    Utility.SetDirty(this.target);
-			    this.nextStep = 0;
-		    }
+			this.DrawControls();
+			if(GUI.changed){
+				Utility.SetDirty(this.target);
+				this.nextStep = 0;
+			}
 	    }
 	    public virtual void DrawControls(){
 		    StateTable stateTable = (StateTable)this.target;

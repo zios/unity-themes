@@ -108,6 +108,7 @@ namespace Zios{
 			if(this.dirty){
 				Utility.RepaintInspectors();
 				this.dirty = false;
+				GUI.changed = true;
 			}
 		}
 		public void SetupAreas(Rect area){

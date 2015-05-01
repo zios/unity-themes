@@ -48,6 +48,9 @@ namespace Zios{
 	    public AttributeFloat minSlideAngle = 50;
 	    public AttributeFloat hoverDistance = 0.02f;
 	    public AttributeFloat collisionPersist = 0.2f;
+		[Advanced][ReadOnly] public AttributeBool onSlope;
+		[Advanced][ReadOnly] public AttributeBool onSlide;
+		[Advanced][ReadOnly] public AttributeVector3 slopeNormal;
 	    //================================
 	    // Unity-Specific
 	    //================================
@@ -60,6 +63,9 @@ namespace Zios{
 		    this.minSlideAngle.Setup("Min Slide Angle",this);
 		    this.hoverDistance.Setup("Hover Distance",this);
 		    this.collisionPersist.Setup("Collision Persist",this);
+		    this.onSlope.Setup("On Slope",this);
+		    this.onSlide.Setup("On Slide",this);
+		    this.slopeNormal.Setup("Slope Normal",this);
 		    Events.Add("Add Move",(MethodVector3)this.AddMove,this.gameObject);
 		    Events.Add("Add Move Raw",(MethodVector3)this.AddMoveRaw,this.gameObject);
 		    Events.Register("On Trigger",this.gameObject);
@@ -204,11 +210,14 @@ namespace Zios{
 			    if(isSlope){
 				    bool slideCheck = yOnly && (angle > this.minSlideAngle);
 				    bool slopeCheck = !yOnly && (angle < this.maxSlopeAngle);
+					this.onSlope.Set(true);
 				    if(slopeCheck || slideCheck){
+						this.onSlide.Set(slideCheck);
 					    Vector3 cross = Vector3.Cross(slopeHit.normal,current);
 					    Vector3 change = Vector3.Cross(cross,slopeHit.normal) * this.GetTimeOffset();
 					    this.SetPosition(this.GetComponent<Rigidbody>().position + change);
 					    this.blocked["down"] = false;
+						this.slopeNormal.Set(slopeHit.normal);
 					    return true;
 				    }
 			    }
@@ -216,6 +225,8 @@ namespace Zios{
 		    return false;
 	    }
 	    private bool CheckSlope(Vector3 current){
+			this.onSlope.Set(false);
+			this.onSlide.Set(false);
 		    if(this.maxSlopeAngle != 0 || this.minSlideAngle != 0){
 			    RaycastHit slopeHit;
 			    bool slopeTest = this.GetComponent<Rigidbody>().SweepTest(-Vector3.up,out slopeHit,0.5f);

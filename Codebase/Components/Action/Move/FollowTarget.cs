@@ -18,6 +18,7 @@ namespace Zios{
 		    this.position.Setup("Follow",this);
 		    this.offset.Setup("Follow Offset",this);
 		    this.orbit.Setup("Follow Orbit",this);
+			this.position.isAngle.Set(false);
 	    }
 	    public Vector3 AdjustVector(Vector3 value){
 		    Vector3 adjusted = value;
@@ -33,7 +34,7 @@ namespace Zios{
 		    Transform target = this.target.Get().transform;
 		    Vector3 offset = this.AdjustVector(this.offset);
 		    Vector3 orbit = this.orbit.Get().ScaleBy(new Vector3(1,-1,1));
-		    Vector3 end = (orbit.ToRotation() * offset) + target.position;
+		    Vector3 end = (orbit.ToRotation() * new Vector3(0,0,offset.z)) + target.position;
 			foreach(GameObject source in this.source){
 				source.transform.position = this.position.Step(source.transform.position,end);
 			}

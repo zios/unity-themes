@@ -197,7 +197,7 @@ namespace Zios{
 		}
 		public void BuildInfo(string path,Component parent){
 			string previousID = this.info.id;
-			path = (parent.GetAlias() + "/" + path).Trim("/");
+			path = (parent.GetAlias() + "/" + path.Trim("/")).Trim("/");
 			bool dirty = this.info.parent != parent;
 			dirty = dirty || this.info.path != path;
 			dirty = dirty || this.info.localID.IsEmpty();

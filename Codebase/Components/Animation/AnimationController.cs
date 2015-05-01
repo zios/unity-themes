@@ -23,8 +23,8 @@ namespace Zios{
 	    public AttributeFloat defaultTransitionIn = 0.15f;
 	    public AttributeFloat defaultTransitionOut = 0.15f;
 	    public AttributeString defaultAnimationName = "";
-	    [ReadOnly] public AnimationData defaultAnimation;
-	    [ReadOnly] public List<AnimationData> currentAnimations;
+	    [Internal][ReadOnly] public AnimationData defaultAnimation;
+	    [Internal][ReadOnly] public List<AnimationData> currentAnimations;
 	    public List<AnimationData> animations = new List<AnimationData>();
 	    public Dictionary<string,AnimationData> current = new Dictionary<string,AnimationData>();
 	    public Dictionary<string,AnimationData> lookup = new Dictionary<string,AnimationData>();
@@ -65,7 +65,7 @@ namespace Zios{
 				    this.current[name] = this.defaultAnimation;
 			    }
 			    else{
-				    Debug.LogWarning("[AnimationController] Default animation (" + this.defaultAnimationName + ") not found.");
+				    Debug.LogWarning("[AnimationController] Default animation (" + this.defaultAnimationName + ") not found.",this.gameObject);
 			    }
 		    }
 	    }

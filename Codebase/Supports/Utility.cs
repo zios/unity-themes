@@ -187,10 +187,10 @@ namespace Zios{
 			#endif
 	    }
 		public static void ClearDirty(){Utility.delayedDirty.Clear();}
-	    public static void SetDirty(UnityObject target,bool delayed=false){
+	    public static void SetDirty(UnityObject target,bool delayed=false,bool forced=false){
 		    #if UNITY_EDITOR
-			if(target.IsNull()){return;}
-			if(target.GetPrefab().IsNull()){return;}
+			if(!forced && target.IsNull()){return;}
+			if(!forced && target.GetPrefab().IsNull()){return;}
 			if(delayed){
 				if(!Utility.delayedDirty.Contains(target)){
 					Events.AddLimited("On Enter Play",()=>Utility.SetDirty(target),1);

@@ -10,7 +10,6 @@ namespace Zios{
 	    [Internal] public AttributeBool usable = false;
 	    [Internal] public AttributeBool inUse = false;
 	    [Internal] public AttributeBool used = false;
-	    [Internal] public AttributeBool endWhileUnusable = false;
 	    private bool requirableOverride;
 	    public override void Awake(){
 		    base.Awake();
@@ -19,7 +18,6 @@ namespace Zios{
 		    this.usable.Setup("Usable",this);
 		    this.inUse.Setup("Active",this);
 		    this.used.Setup("Used",this);
-		    this.endWhileUnusable.Setup("End While Unusable",this);
 	    }
 	    [ContextMenu("Toggle Column In Table")]
 	    public void ToggleRequire(){

@@ -15,8 +15,13 @@ namespace Zios{
 		    this.seconds.Setup("Seconds",this);
 		    this.isStarted.Setup("Is Started",this);
 		    this.isComplete.Setup("Is Complete",this);
-		    this.endWhileUnusable.Set(this.type == TimerType.After);
 	    }
+		public override void Step(){
+			base.Step();
+			if(!this.usable && this.isStarted){
+				this.End();
+			}
+		}
 	    public override void Use(){
 		    if(this.isComplete){return;}
 		    if(!this.isStarted){

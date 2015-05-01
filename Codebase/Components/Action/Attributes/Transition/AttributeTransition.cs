@@ -16,7 +16,7 @@ namespace Zios{
 		protected bool finished;
 		public override void Awake(){
 			base.Awake();
-			this.transitionSeconds.Setup("Transition Seconds",this);
+			this.transitionSeconds.Setup("Speed Transition Seconds",this);
 			Events.Register(this.alias+"/Start",this.gameObject);
 			Events.Register(this.alias+"/End",this.gameObject);
 		}

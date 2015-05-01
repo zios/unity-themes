@@ -34,11 +34,10 @@ namespace Zios{
 	    public virtual void Refresh(){
 		    this.UpdateTableList();
 		    this.UpdateScripts<StateLink>();
-		    this.ResolveDuplicates();
+			this.ResolveDuplicates();
 		    this.UpdateRows();
-		    this.UpdateRequirements();
+			this.UpdateRequirements();
 		    this.UpdateOrder();
-		    Utility.SetDirty(this);
 	    }
 	    // =============================
 	    //  Maintenence
@@ -48,6 +47,7 @@ namespace Zios{
 		    if(this.advanced){
 			    this.UpdateTable(this.tableOff,true);
 		    }
+			Utility.SetDirty(this,false,true);
 	    }
 	    public void UpdateTable(StateRow[] table,bool negative=false){
 		    foreach(StateRow row in table){
