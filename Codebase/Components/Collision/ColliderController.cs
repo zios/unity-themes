@@ -207,12 +207,18 @@ namespace Zios{
 			    float angle = Mathf.Acos(Mathf.Clamp(slopeHit.normal.y,-1,1)) * 90;
 			    bool yOnly = motion == Vector3.zero;
 			    bool isSlope = angle > 0;
+				if(yOnly){
+					this.onSlope.Set(false);
+					this.onSlide.Set(false);
+				}
 			    if(isSlope){
 				    bool slideCheck = yOnly && (angle > this.minSlideAngle);
 				    bool slopeCheck = !yOnly && (angle < this.maxSlopeAngle);
-					this.onSlope.Set(true);
-				    if(slopeCheck || slideCheck){
+					if(yOnly){
+						this.onSlope.Set(true);
 						this.onSlide.Set(slideCheck);
+					}
+				    if(slopeCheck || slideCheck){
 					    Vector3 cross = Vector3.Cross(slopeHit.normal,current);
 					    Vector3 change = Vector3.Cross(cross,slopeHit.normal) * this.GetTimeOffset();
 					    this.SetPosition(this.GetComponent<Rigidbody>().position + change);
@@ -225,8 +231,6 @@ namespace Zios{
 		    return false;
 	    }
 	    private bool CheckSlope(Vector3 current){
-			this.onSlope.Set(false);
-			this.onSlide.Set(false);
 		    if(this.maxSlopeAngle != 0 || this.minSlideAngle != 0){
 			    RaycastHit slopeHit;
 			    bool slopeTest = this.GetComponent<Rigidbody>().SweepTest(-Vector3.up,out slopeHit,0.5f);
