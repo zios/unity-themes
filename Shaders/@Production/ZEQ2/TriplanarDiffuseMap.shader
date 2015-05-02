@@ -1,23 +1,25 @@
 ﻿Shader "Zios/ZEQ2/Triplanar Diffuse Map"{
 	Properties{
 		diffuseMap("Diffuse Map",2D) = "white"{}
-		[MaterialToggle] xHardBlend("X Hard Blend",Float) = 0
-		[MaterialToggle] yHardBlend("Y Hard Blend",Float) = 0
-		[MaterialToggle] zHardBlend("Z Hard Blend",Float) = 0
+		[MaterialToggle] xBlending("X Blending",Float) = 0
+		[MaterialToggle] yBlending("Y Blending",Float) = 0
+		[MaterialToggle] zBlending("Z Blending",Float) = 0
 	}
 	SubShader{
+		Tags{"LightMode"="ForwardBase"}
 		Pass{
 			CGPROGRAM
 			#include "UnityCG.cginc"
 			#include "AutoLight.cginc"
 			#pragma vertex vertexPass
 			#pragma fragment pixelPass
+			#pragma multi_compile_fwdbase
 			#pragma fragmentoption ARB_precision_hint_fastest
 			sampler2D diffuseMap;
 			fixed4 diffuseMap_ST;
-			fixed xHardBlend;
-			fixed yHardBlend;
-			fixed zHardBlend;
+			fixed xBlending;
+			fixed yBlending;
+			fixed zBlending;
 			struct vertexInput{
 				float4 vertex        : POSITION;
 				float4 texcoord      : TEXCOORD0;
@@ -29,8 +31,9 @@
 				float4 pos           : POSITION;
 				float4 UV            : COLOR0;
 				float4 normal        : TEXCOORD1;
-				float3 worldNormal   : TEXCOORD6;
-				float3 worldPosition : TEXCOORD7;
+				float3 worldNormal   : TEXCOORD4;
+				float3 worldPosition : TEXCOORD5;
+				LIGHTING_COORDS(6,7)
 			};
 			struct pixelOutput{
 				float4 color         : COLOR0;
@@ -47,9 +50,9 @@
 				float4 color3 = tex2D(triplanar,input.worldPosition.zy * offset.xy + offset.zw);
 				input.worldNormal = normalize(input.worldNormal);
 				float3 projectedNormal = saturate(pow(input.worldNormal*1.5,4));
-				if(xHardBlend != 0){projectedNormal.x = ceil(projectedNormal.x-0.5f);}
-				if(yHardBlend != 0){projectedNormal.y = ceil(projectedNormal.y-0.5f);}
-				if(zHardBlend != 0){projectedNormal.z = ceil(projectedNormal.z-0.5f);}
+				if(xBlending != 0){projectedNormal.x = ceil(projectedNormal.x-0.5f);}
+				if(yBlending != 0){projectedNormal.y = ceil(projectedNormal.y-0.5f);}
+				if(zBlending != 0){projectedNormal.z = ceil(projectedNormal.z-0.5f);}
 				float3 color = lerp(color2,color1,projectedNormal.z);
 				color = lerp(color,color3,projectedNormal.x);
 				return float4(color,1.0);
@@ -77,4 +80,5 @@
 			ENDCG
 		}
 	}
+	Fallback "Diffuse"
 }

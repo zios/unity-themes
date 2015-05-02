@@ -82,5 +82,5 @@
 			ENDCG
 		}
 	}
-	CustomEditor "ExtendedMaterialEditor"
+	CustomEditor "Zios.ExtendedMaterialEditor"
 }

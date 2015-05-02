@@ -24,7 +24,7 @@ namespace Zios{
 	    public override void UpdateRender(){
             #if UNITY_EDITOR
 		        if(Overlay2D.placeholder == null){
-			        Overlay2D.placeholder = (Texture2D)Resources.LoadAssetAtPath("Assets/Interface/Patterns/Transparency.png",typeof(Texture2D));
+			        Overlay2D.placeholder = (Texture2D)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Interface/Patterns/Transparency.png",typeof(Texture2D));
 		        }
             #endif
 		    base.UpdateRender();
