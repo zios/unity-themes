@@ -674,7 +674,7 @@ MonoBehaviour:
   attribute:
     name: Requirable
     path: Lifetime/Requirable
-    id: -1763308/ba0d254f-74c9-4e1f-863f-6bdaab49ea94
+    id: -5746/ba0d254f-74c9-4e1f-863f-6bdaab49ea94
     localID: ba0d254f-74c9-4e1f-863f-6bdaab49ea94
     parent: {fileID: 11488470}
     mode: 0
@@ -747,7 +747,7 @@ MonoBehaviour:
   attribute:
     name: Used
     path: Disable/Used
-    id: -1763300/b4e028c5-f25e-4455-85f0-0cc6ad206c3f
+    id: -5710/b4e028c5-f25e-4455-85f0-0cc6ad206c3f
     localID: b4e028c5-f25e-4455-85f0-0cc6ad206c3f
     parent: {fileID: 11493514}
     mode: 0
@@ -820,7 +820,7 @@ MonoBehaviour:
   attribute:
     name: Used
     path: Set Zoom Goal/Used
-    id: -1763182/acda8848-ae7c-4d13-aff7-8a7b29844f5a
+    id: -5716/acda8848-ae7c-4d13-aff7-8a7b29844f5a
     localID: acda8848-ae7c-4d13-aff7-8a7b29844f5a
     parent: {fileID: 11497228}
     mode: 0
@@ -893,7 +893,7 @@ MonoBehaviour:
   attribute:
     name: X
     path: Modify Position/Value/X
-    id: -1762808/cf3a07bc-c18f-455b-a5f7-9918658f35f1
+    id: -5752/cf3a07bc-c18f-455b-a5f7-9918658f35f1
     localID: cf3a07bc-c18f-455b-a5f7-9918658f35f1
     parent: {fileID: 11461954}
     mode: 0
@@ -966,7 +966,7 @@ MonoBehaviour:
   attribute:
     name: Usable
     path: Set Zoom Goal/Usable
-    id: -1763182/79edcb64-0430-44ca-87b4-ebcc1d692214
+    id: -5716/79edcb64-0430-44ca-87b4-ebcc1d692214
     localID: 79edcb64-0430-44ca-87b4-ebcc1d692214
     parent: {fileID: 11497228}
     mode: 0
@@ -1039,7 +1039,7 @@ MonoBehaviour:
   attribute:
     name: Z
     path: Follow/Follow Orbit/Z
-    id: -1762804/21623266-40dd-4459-9573-da73e94a1c45
+    id: -5692/21623266-40dd-4459-9573-da73e94a1c45
     localID: 21623266-40dd-4459-9573-da73e94a1c45
     parent: {fileID: 11474082}
     mode: 0
@@ -1104,7 +1104,7 @@ MonoBehaviour:
   attribute:
     name: Y
     path: Transform/Direction/Left/Y
-    id: -1763304/66de9ddf-9de4-42db-a326-82f30797bf5b
+    id: -5706/66de9ddf-9de4-42db-a326-82f30797bf5b
     localID: 66de9ddf-9de4-42db-a326-82f30797bf5b
     parent: {fileID: 11486396}
     mode: 0
@@ -1177,7 +1177,7 @@ MonoBehaviour:
   attribute:
     name: Requirable
     path: Lifetime/Requirable
-    id: -1763298/0fa7c80d-a673-48db-bb7d-8bb1a2807e26
+    id: -5712/0fa7c80d-a673-48db-bb7d-8bb1a2807e26
     localID: 0fa7c80d-a673-48db-bb7d-8bb1a2807e26
     parent: {fileID: 11426184}
     mode: 0
@@ -1250,7 +1250,7 @@ MonoBehaviour:
   attribute:
     name: Usable
     path: Camera Orbit Y/Usable
-    id: -1762792/33f4dcb0-9e5f-4a5b-80cd-0de676eda569
+    id: -5736/33f4dcb0-9e5f-4a5b-80cd-0de676eda569
     localID: 33f4dcb0-9e5f-4a5b-80cd-0de676eda569
     parent: {fileID: 11473842}
     mode: 0
@@ -1323,7 +1323,7 @@ MonoBehaviour:
   attribute:
     name: Intensity
     path: Mouse Input/Intensity
-    id: -1762790/e68bcbcd-ddc6-4903-baa1-d24c87e905ba
+    id: -5738/e68bcbcd-ddc6-4903-baa1-d24c87e905ba
     localID: e68bcbcd-ddc6-4903-baa1-d24c87e905ba
     parent: {fileID: 11407292}
     mode: 0
@@ -1396,7 +1396,7 @@ MonoBehaviour:
   attribute:
     name: Usable
     path: Mouse Z/Usable
-    id: -1762796/2c468df6-a0bc-4368-be31-9744bf977e38
+    id: -5732/2c468df6-a0bc-4368-be31-9744bf977e38
     localID: 2c468df6-a0bc-4368-be31-9744bf977e38
     parent: {fileID: 11428766}
     mode: 0
@@ -1436,7 +1436,7 @@ MonoBehaviour:
     info:
       name: Source
       path: Source
-      id: -1762788/1e353034-be1c-426a-8436-1db907700a89
+      id: -5740/1e353034-be1c-426a-8436-1db907700a89
       localID: 1e353034-be1c-426a-8436-1db907700a89
       parent: {fileID: 11402516}
       mode: 0
@@ -1495,7 +1495,7 @@ MonoBehaviour:
   attribute:
     name: Requirable
     path: Disable/Requirable
-    id: -1763300/79274a24-f9dc-4334-82c0-e038609a7afd
+    id: -5710/79274a24-f9dc-4334-82c0-e038609a7afd
     localID: 79274a24-f9dc-4334-82c0-e038609a7afd
     parent: {fileID: 11493514}
     mode: 0
@@ -1563,12 +1563,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Follow/Source/0
-  referenceID: -1762788/1e353034-be1c-426a-8436-1db907700a89
+  referenceID: -5740/1e353034-be1c-426a-8436-1db907700a89
   referencePath: Source
   attribute:
     name: Source
     path: Follow/Source
-    id: -1762804/b00ea1b4-3589-4296-897f-1b6ef6ccf5af
+    id: -5692/b00ea1b4-3589-4296-897f-1b6ef6ccf5af
     localID: b00ea1b4-3589-4296-897f-1b6ef6ccf5af
     parent: {fileID: 11474082}
     mode: 0
@@ -1633,7 +1633,7 @@ MonoBehaviour:
   attribute:
     name: X
     path: Follow Slide/X
-    id: -1763132/4fb7337e-faa9-4b24-b089-131cbf432794
+    id: -5722/4fb7337e-faa9-4b24-b089-131cbf432794
     localID: 4fb7337e-faa9-4b24-b089-131cbf432794
     parent: {fileID: 11438548}
     mode: 0
@@ -1698,7 +1698,7 @@ MonoBehaviour:
   attribute:
     name: Y
     path: Transform/Direction/Back/Y
-    id: -1763304/7205cdbd-bd5e-45fc-bf42-ee227da791b5
+    id: -5706/7205cdbd-bd5e-45fc-bf42-ee227da791b5
     localID: 7205cdbd-bd5e-45fc-bf42-ee227da791b5
     parent: {fileID: 11486396}
     mode: 0
@@ -1763,7 +1763,7 @@ MonoBehaviour:
   attribute:
     name: Z
     path: Follow Slide/Z
-    id: -1763132/ec5fc48d-8630-4f9d-b6dd-b769c3f437ad
+    id: -5722/ec5fc48d-8630-4f9d-b6dd-b769c3f437ad
     localID: ec5fc48d-8630-4f9d-b6dd-b769c3f437ad
     parent: {fileID: 11438548}
     mode: 0
@@ -1836,7 +1836,7 @@ MonoBehaviour:
   attribute:
     name: Used
     path: Line Cast/Used
-    id: -1762810/8c20c288-26ad-4f4d-a96f-a0d707b0f4e6
+    id: -5750/8c20c288-26ad-4f4d-a96f-a0d707b0f4e6
     localID: 8c20c288-26ad-4f4d-a96f-a0d707b0f4e6
     parent: {fileID: 11442334}
     mode: 0
@@ -1909,7 +1909,7 @@ MonoBehaviour:
   attribute:
     name: Is Complete
     path: Lifetime/Is Complete
-    id: -1763308/c18f8e2e-5934-483e-a9b4-832d7b16b64d
+    id: -5746/c18f8e2e-5934-483e-a9b4-832d7b16b64d
     localID: c18f8e2e-5934-483e-a9b4-832d7b16b64d
     parent: {fileID: 11488470}
     mode: 0
@@ -1974,7 +1974,7 @@ MonoBehaviour:
   attribute:
     name: Y
     path: Follow Slide/Y
-    id: -1763132/08edcf1a-2f0e-4a91-9dc6-7efdf860f738
+    id: -5722/08edcf1a-2f0e-4a91-9dc6-7efdf860f738
     localID: 08edcf1a-2f0e-4a91-9dc6-7efdf860f738
     parent: {fileID: 11438548}
     mode: 0
@@ -2047,7 +2047,7 @@ MonoBehaviour:
   attribute:
     name: Y
     path: Follow/Follow Orbit/Y
-    id: -1762804/c46c6921-ffb4-4f33-9d6f-a27b2775f856
+    id: -5692/c46c6921-ffb4-4f33-9d6f-a27b2775f856
     localID: c46c6921-ffb4-4f33-9d6f-a27b2775f856
     parent: {fileID: 11474082}
     mode: 0
@@ -2120,7 +2120,7 @@ MonoBehaviour:
   attribute:
     name: Y
     path: Line Cast/Hit Point/Y
-    id: -1762810/25f5561e-68e8-47e8-8277-d8dfe412647b
+    id: -5750/25f5561e-68e8-47e8-8277-d8dfe412647b
     localID: 25f5561e-68e8-47e8-8277-d8dfe412647b
     parent: {fileID: 11442334}
     mode: 0
@@ -2162,7 +2162,7 @@ MonoBehaviour:
     info:
       name: Requirable
       path: Mouse Input/Requirable
-      id: -1762790/d85a111c-b54d-4447-a92c-4d672342227b
+      id: -5738/d85a111c-b54d-4447-a92c-4d672342227b
       localID: d85a111c-b54d-4447-a92c-4d672342227b
       parent: {fileID: 11407292}
       mode: 0
@@ -2175,7 +2175,7 @@ MonoBehaviour:
     info:
       name: Ready
       path: Mouse Input/Ready
-      id: -1762790/b51d1913-42f1-4cb3-a676-c1fe8fc5d310
+      id: -5738/b51d1913-42f1-4cb3-a676-c1fe8fc5d310
       localID: b51d1913-42f1-4cb3-a676-c1fe8fc5d310
       parent: {fileID: 11407292}
       mode: 0
@@ -2188,7 +2188,7 @@ MonoBehaviour:
     info:
       name: Usable
       path: Mouse Input/Usable
-      id: -1762790/6769b698-aed1-4fc5-9714-445c7988c5c1
+      id: -5738/6769b698-aed1-4fc5-9714-445c7988c5c1
       localID: 6769b698-aed1-4fc5-9714-445c7988c5c1
       parent: {fileID: 11407292}
       mode: 0
@@ -2201,7 +2201,7 @@ MonoBehaviour:
     info:
       name: Active
       path: Mouse Input/Active
-      id: -1762790/e0573c89-a73c-4ab1-b9ed-4abd85a69636
+      id: -5738/e0573c89-a73c-4ab1-b9ed-4abd85a69636
       localID: e0573c89-a73c-4ab1-b9ed-4abd85a69636
       parent: {fileID: 11407292}
       mode: 0
@@ -2214,7 +2214,7 @@ MonoBehaviour:
     info:
       name: Used
       path: Mouse Input/Used
-      id: -1762790/5ab4d8ac-779e-4215-9d0e-d4d80cd3c0ec
+      id: -5738/5ab4d8ac-779e-4215-9d0e-d4d80cd3c0ec
       localID: 5ab4d8ac-779e-4215-9d0e-d4d80cd3c0ec
       parent: {fileID: 11407292}
       mode: 0
@@ -2231,7 +2231,7 @@ MonoBehaviour:
     info:
       name: Input Name
       path: Mouse Input/Input Name
-      id: -1762790/d7d49161-78f8-497b-9d71-ba250670b3b5
+      id: -5738/d7d49161-78f8-497b-9d71-ba250670b3b5
       localID: d7d49161-78f8-497b-9d71-ba250670b3b5
       parent: {fileID: 11407292}
       mode: 0
@@ -2244,7 +2244,7 @@ MonoBehaviour:
     info:
       name: Held During Intensity
       path: Mouse Input/Held During Intensity
-      id: -1762790/ceead2a6-7137-4850-ad50-4ae4ded6e655
+      id: -5738/ceead2a6-7137-4850-ad50-4ae4ded6e655
       localID: ceead2a6-7137-4850-ad50-4ae4ded6e655
       parent: {fileID: 11407292}
       mode: 0
@@ -2257,7 +2257,7 @@ MonoBehaviour:
     info:
       name: Ignore Ownership
       path: Mouse Input/Ignore Ownership
-      id: -1762790/b11548c9-16cb-4673-bdc1-5ea51170e084
+      id: -5738/b11548c9-16cb-4673-bdc1-5ea51170e084
       localID: b11548c9-16cb-4673-bdc1-5ea51170e084
       parent: {fileID: 11407292}
       mode: 0
@@ -2270,7 +2270,7 @@ MonoBehaviour:
     info:
       name: Intensity
       path: Mouse Input/Intensity
-      id: -1762790/e68bcbcd-ddc6-4903-baa1-d24c87e905ba
+      id: -5738/e68bcbcd-ddc6-4903-baa1-d24c87e905ba
       localID: e68bcbcd-ddc6-4903-baa1-d24c87e905ba
       parent: {fileID: 11407292}
       mode: 0
@@ -2329,7 +2329,7 @@ MonoBehaviour:
   attribute:
     name: Z
     path: Follow/Follow Offset/Z
-    id: -1762804/fd36074c-4c30-4557-875a-43e8c908b202
+    id: -5692/fd36074c-4c30-4557-875a-43e8c908b202
     localID: fd36074c-4c30-4557-875a-43e8c908b202
     parent: {fileID: 11474082}
     mode: 0
@@ -2402,7 +2402,7 @@ MonoBehaviour:
   attribute:
     name: Follow Orbit
     path: Follow/Follow Orbit
-    id: -1762804/dfc91ed8-7ecc-400e-a235-8231c9bc5062
+    id: -5692/dfc91ed8-7ecc-400e-a235-8231c9bc5062
     localID: dfc91ed8-7ecc-400e-a235-8231c9bc5062
     parent: {fileID: 11474082}
     mode: 0
@@ -2475,7 +2475,7 @@ MonoBehaviour:
   attribute:
     name: End Proximity
     path: Follow/End Proximity
-    id: -1762804/891adc85-e189-49ae-bde1-9a6d8397988b
+    id: -5692/891adc85-e189-49ae-bde1-9a6d8397988b
     localID: 891adc85-e189-49ae-bde1-9a6d8397988b
     parent: {fileID: 11474082}
     mode: 0
@@ -2548,7 +2548,7 @@ MonoBehaviour:
   attribute:
     name: Ignore Ownership
     path: Mouse Z/Ignore Ownership
-    id: -1762796/9553a554-ee7f-4d2b-bb4e-e8a950df984a
+    id: -5732/9553a554-ee7f-4d2b-bb4e-e8a950df984a
     localID: 9553a554-ee7f-4d2b-bb4e-e8a950df984a
     parent: {fileID: 11428766}
     mode: 0
@@ -2621,7 +2621,7 @@ MonoBehaviour:
   attribute:
     name: Hit Distance
     path: Line Cast/Hit Distance
-    id: -1762810/4f0f01d6-31d4-4bd9-8c77-eea758cbab72
+    id: -5750/4f0f01d6-31d4-4bd9-8c77-eea758cbab72
     localID: 4f0f01d6-31d4-4bd9-8c77-eea758cbab72
     parent: {fileID: 11442334}
     mode: 0
@@ -2689,12 +2689,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Camera Orbit Y/Value/0
-  referenceID: -1762790/e68bcbcd-ddc6-4903-baa1-d24c87e905ba
+  referenceID: -5738/e68bcbcd-ddc6-4903-baa1-d24c87e905ba
   referencePath: Mouse Input/Intensity
   attribute:
     name: Value
     path: Camera Orbit Y/Value
-    id: -1762792/edec0d4c-fd01-4ebd-a95a-d10f52342890
+    id: -5736/edec0d4c-fd01-4ebd-a95a-d10f52342890
     localID: edec0d4c-fd01-4ebd-a95a-d10f52342890
     parent: {fileID: 11473842}
     mode: 2
@@ -2762,7 +2762,7 @@ MonoBehaviour:
   attribute:
     name: X
     path: Follow Distance/X
-    id: -1763142/255796fd-2633-4829-80b6-f599262493a9
+    id: -5720/255796fd-2633-4829-80b6-f599262493a9
     localID: 255796fd-2633-4829-80b6-f599262493a9
     parent: {fileID: 11434486}
     mode: 0
@@ -2830,12 +2830,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Camera Orbit X/Value/1
-  referenceID: -1762804/58a7a077-5849-4696-9205-d10ee2d9322a
+  referenceID: -5692/58a7a077-5849-4696-9205-d10ee2d9322a
   referencePath: Follow/Follow Orbit/X
   attribute:
     name: Value
     path: Camera Orbit X/Value
-    id: -1762800/56a1ae6f-877b-40c8-ad43-ddf79dd005fe
+    id: -5728/56a1ae6f-877b-40c8-ad43-ddf79dd005fe
     localID: 56a1ae6f-877b-40c8-ad43-ddf79dd005fe
     parent: {fileID: 11429126}
     mode: 2
@@ -2901,7 +2901,7 @@ MonoBehaviour:
   attribute:
     name: Z
     path: Transform/Direction/Up/Z
-    id: -1763304/6d9d13f2-893b-4ba1-9e8e-1acd60d1515e
+    id: -5706/6d9d13f2-893b-4ba1-9e8e-1acd60d1515e
     localID: 6d9d13f2-893b-4ba1-9e8e-1acd60d1515e
     parent: {fileID: 11486396}
     mode: 0
@@ -3064,7 +3064,7 @@ MonoBehaviour:
   attribute:
     name: X
     path: Transform/Direction/Down/X
-    id: -1763304/319ee938-44eb-4587-ac19-f70093b7eaa4
+    id: -5706/319ee938-44eb-4587-ac19-f70093b7eaa4
     localID: 319ee938-44eb-4587-ac19-f70093b7eaa4
     parent: {fileID: 11486396}
     mode: 0
@@ -3137,7 +3137,7 @@ MonoBehaviour:
   attribute:
     name: Hit Point
     path: Line Cast/Hit Point
-    id: -1762810/9808d0f7-7dfe-4693-9d9b-c2f649801a54
+    id: -5750/9808d0f7-7dfe-4693-9d9b-c2f649801a54
     localID: 9808d0f7-7dfe-4693-9d9b-c2f649801a54
     parent: {fileID: 11442334}
     mode: 0
@@ -3202,7 +3202,7 @@ MonoBehaviour:
   attribute:
     name: Z
     path: Transform/Position/Z
-    id: -1763302/223ae1fd-86f0-46eb-8a8c-2609d323e47d
+    id: -5708/223ae1fd-86f0-46eb-8a8c-2609d323e47d
     localID: 223ae1fd-86f0-46eb-8a8c-2609d323e47d
     parent: {fileID: 11412678}
     mode: 0
@@ -3275,7 +3275,7 @@ MonoBehaviour:
   attribute:
     name: Target
     path: Disable/Target
-    id: -1763300/641ea334-112a-449a-a626-c23c619afcb4
+    id: -5710/641ea334-112a-449a-a626-c23c619afcb4
     localID: 641ea334-112a-449a-a626-c23c619afcb4
     parent: {fileID: 11493514}
     mode: 0
@@ -3348,7 +3348,7 @@ MonoBehaviour:
   attribute:
     name: Value
     path: Camera Orbit Y/Value
-    id: -1762792/edec0d4c-fd01-4ebd-a95a-d10f52342890
+    id: -5736/edec0d4c-fd01-4ebd-a95a-d10f52342890
     localID: edec0d4c-fd01-4ebd-a95a-d10f52342890
     parent: {fileID: 11473842}
     mode: 2
@@ -3419,12 +3419,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Line Cast/Source/0
-  referenceID: -1762788/1e353034-be1c-426a-8436-1db907700a89
+  referenceID: -5740/1e353034-be1c-426a-8436-1db907700a89
   referencePath: Source
   attribute:
     name: Source
     path: Line Cast/Source
-    id: -1762810/101830b1-3b4d-499c-9050-568433c02596
+    id: -5750/101830b1-3b4d-499c-9050-568433c02596
     localID: 101830b1-3b4d-499c-9050-568433c02596
     parent: {fileID: 11442334}
     mode: 0
@@ -3497,7 +3497,7 @@ MonoBehaviour:
   attribute:
     name: Delta
     path: Zoom Distance/Delta
-    id: -1763158/ce91c4ea-d83a-43f9-96b6-38b5d8673504
+    id: -5718/ce91c4ea-d83a-43f9-96b6-38b5d8673504
     localID: ce91c4ea-d83a-43f9-96b6-38b5d8673504
     parent: {fileID: 11460206}
     mode: 0
@@ -3570,7 +3570,7 @@ MonoBehaviour:
   attribute:
     name: Y
     path: Watch/Goal Point/Y
-    id: -1762802/df514658-202e-4fd6-8e98-e2499340259a
+    id: -5726/df514658-202e-4fd6-8e98-e2499340259a
     localID: df514658-202e-4fd6-8e98-e2499340259a
     parent: {fileID: 11430404}
     mode: 0
@@ -3643,7 +3643,7 @@ MonoBehaviour:
   attribute:
     name: Usable
     path: Mouse Input/Usable
-    id: -1762798/05ad1d83-ab06-4791-9f54-81908a894ba1
+    id: -5730/05ad1d83-ab06-4791-9f54-81908a894ba1
     localID: 05ad1d83-ab06-4791-9f54-81908a894ba1
     parent: {fileID: 11412688}
     mode: 0
@@ -3708,7 +3708,7 @@ MonoBehaviour:
   attribute:
     name: Z
     path: Follow Distance/Z
-    id: -1763142/2b20f098-2cc3-4e1f-b346-fdcda517cc0c
+    id: -5720/2b20f098-2cc3-4e1f-b346-fdcda517cc0c
     localID: 2b20f098-2cc3-4e1f-b346-fdcda517cc0c
     parent: {fileID: 11434486}
     mode: 0
@@ -3748,7 +3748,7 @@ MonoBehaviour:
     info:
       name: Position
       path: Transform/Position
-      id: -1763302/ab157e29-840d-4f26-87e9-131ee32c5b9a
+      id: -5708/ab157e29-840d-4f26-87e9-131ee32c5b9a
       localID: ab157e29-840d-4f26-87e9-131ee32c5b9a
       parent: {fileID: 11412678}
       mode: 0
@@ -3761,7 +3761,7 @@ MonoBehaviour:
       info:
         name: X
         path: Transform/Position/X
-        id: -1763302/5d398aa0-9296-41fd-8f47-4e2c45b12965
+        id: -5708/5d398aa0-9296-41fd-8f47-4e2c45b12965
         localID: 5d398aa0-9296-41fd-8f47-4e2c45b12965
         parent: {fileID: 11412678}
         mode: 0
@@ -3774,7 +3774,7 @@ MonoBehaviour:
       info:
         name: Y
         path: Transform/Position/Y
-        id: -1763302/20d47e13-ad3f-4187-a5ed-b42b989dc241
+        id: -5708/20d47e13-ad3f-4187-a5ed-b42b989dc241
         localID: 20d47e13-ad3f-4187-a5ed-b42b989dc241
         parent: {fileID: 11412678}
         mode: 0
@@ -3787,7 +3787,7 @@ MonoBehaviour:
       info:
         name: Z
         path: Transform/Position/Z
-        id: -1763302/223ae1fd-86f0-46eb-8a8c-2609d323e47d
+        id: -5708/223ae1fd-86f0-46eb-8a8c-2609d323e47d
         localID: 223ae1fd-86f0-46eb-8a8c-2609d323e47d
         parent: {fileID: 11412678}
         mode: 0
@@ -3814,7 +3814,7 @@ MonoBehaviour:
     info:
       name: Requirable
       path: Mouse Input/Requirable
-      id: -1762798/7c738993-cfac-43c5-9a95-8aa5c8afc97e
+      id: -5730/7c738993-cfac-43c5-9a95-8aa5c8afc97e
       localID: 7c738993-cfac-43c5-9a95-8aa5c8afc97e
       parent: {fileID: 11412688}
       mode: 0
@@ -3827,7 +3827,7 @@ MonoBehaviour:
     info:
       name: Ready
       path: Mouse Input/Ready
-      id: -1762798/5ffc5011-fd0a-4b1a-8ad3-92f88808ef92
+      id: -5730/5ffc5011-fd0a-4b1a-8ad3-92f88808ef92
       localID: 5ffc5011-fd0a-4b1a-8ad3-92f88808ef92
       parent: {fileID: 11412688}
       mode: 0
@@ -3840,7 +3840,7 @@ MonoBehaviour:
     info:
       name: Usable
       path: Mouse Input/Usable
-      id: -1762798/05ad1d83-ab06-4791-9f54-81908a894ba1
+      id: -5730/05ad1d83-ab06-4791-9f54-81908a894ba1
       localID: 05ad1d83-ab06-4791-9f54-81908a894ba1
       parent: {fileID: 11412688}
       mode: 0
@@ -3853,7 +3853,7 @@ MonoBehaviour:
     info:
       name: Active
       path: Mouse Input/Active
-      id: -1762798/fa911f09-e049-4bc0-b29b-f74cae7d3284
+      id: -5730/fa911f09-e049-4bc0-b29b-f74cae7d3284
       localID: fa911f09-e049-4bc0-b29b-f74cae7d3284
       parent: {fileID: 11412688}
       mode: 0
@@ -3866,7 +3866,7 @@ MonoBehaviour:
     info:
       name: Used
       path: Mouse Input/Used
-      id: -1762798/07fa0413-8410-44a7-84c0-2e5a1217ab64
+      id: -5730/07fa0413-8410-44a7-84c0-2e5a1217ab64
       localID: 07fa0413-8410-44a7-84c0-2e5a1217ab64
       parent: {fileID: 11412688}
       mode: 0
@@ -3883,7 +3883,7 @@ MonoBehaviour:
     info:
       name: Input Name
       path: Mouse Input/Input Name
-      id: -1762798/60ba7719-617f-4377-947d-a779c8af3eaf
+      id: -5730/60ba7719-617f-4377-947d-a779c8af3eaf
       localID: 60ba7719-617f-4377-947d-a779c8af3eaf
       parent: {fileID: 11412688}
       mode: 0
@@ -3896,7 +3896,7 @@ MonoBehaviour:
     info:
       name: Held During Intensity
       path: Mouse Input/Held During Intensity
-      id: -1762798/bee64ecf-defa-489e-8e2e-e3447decbf4a
+      id: -5730/bee64ecf-defa-489e-8e2e-e3447decbf4a
       localID: bee64ecf-defa-489e-8e2e-e3447decbf4a
       parent: {fileID: 11412688}
       mode: 0
@@ -3909,7 +3909,7 @@ MonoBehaviour:
     info:
       name: Ignore Ownership
       path: Mouse Input/Ignore Ownership
-      id: -1762798/019ad42d-5116-45ff-9c1c-06a1ecb45fe3
+      id: -5730/019ad42d-5116-45ff-9c1c-06a1ecb45fe3
       localID: 019ad42d-5116-45ff-9c1c-06a1ecb45fe3
       parent: {fileID: 11412688}
       mode: 0
@@ -3922,7 +3922,7 @@ MonoBehaviour:
     info:
       name: Intensity
       path: Mouse Input/Intensity
-      id: -1762798/0f11dca5-acc7-43a6-97da-b06384b9032e
+      id: -5730/0f11dca5-acc7-43a6-97da-b06384b9032e
       localID: 0f11dca5-acc7-43a6-97da-b06384b9032e
       parent: {fileID: 11412688}
       mode: 0
@@ -3950,7 +3950,7 @@ MonoBehaviour:
     info:
       name: Requirable
       path: Lock Cursor/Requirable
-      id: -1763306/6319e4cf-d8fc-4ec1-84ee-193999a72f1c
+      id: -5704/6319e4cf-d8fc-4ec1-84ee-193999a72f1c
       localID: 6319e4cf-d8fc-4ec1-84ee-193999a72f1c
       parent: {fileID: 11412844}
       mode: 0
@@ -3963,7 +3963,7 @@ MonoBehaviour:
     info:
       name: Ready
       path: Lock Cursor/Ready
-      id: -1763306/906ce955-5650-45e2-9dec-368a9eab1b05
+      id: -5704/906ce955-5650-45e2-9dec-368a9eab1b05
       localID: 906ce955-5650-45e2-9dec-368a9eab1b05
       parent: {fileID: 11412844}
       mode: 0
@@ -3976,7 +3976,7 @@ MonoBehaviour:
     info:
       name: Usable
       path: Lock Cursor/Usable
-      id: -1763306/78353af6-e670-40a0-bc39-4cc1d6f23aea
+      id: -5704/78353af6-e670-40a0-bc39-4cc1d6f23aea
       localID: 78353af6-e670-40a0-bc39-4cc1d6f23aea
       parent: {fileID: 11412844}
       mode: 0
@@ -3989,7 +3989,7 @@ MonoBehaviour:
     info:
       name: Active
       path: Lock Cursor/Active
-      id: -1763306/96f3081a-c657-4e79-af6e-d736c8bad847
+      id: -5704/96f3081a-c657-4e79-af6e-d736c8bad847
       localID: 96f3081a-c657-4e79-af6e-d736c8bad847
       parent: {fileID: 11412844}
       mode: 0
@@ -4002,7 +4002,7 @@ MonoBehaviour:
     info:
       name: Used
       path: Lock Cursor/Used
-      id: -1763306/e0f58fc1-ae5c-4b17-aec6-a0ef3872010c
+      id: -5704/e0f58fc1-ae5c-4b17-aec6-a0ef3872010c
       localID: e0f58fc1-ae5c-4b17-aec6-a0ef3872010c
       parent: {fileID: 11412844}
       mode: 0
@@ -4063,7 +4063,7 @@ MonoBehaviour:
   attribute:
     name: Active
     path: Zoom Adjust/Active
-    id: -1762794/608d43eb-ff98-4397-801a-531ce24faa33
+    id: -5734/608d43eb-ff98-4397-801a-531ce24faa33
     localID: 608d43eb-ff98-4397-801a-531ce24faa33
     parent: {fileID: 11453964}
     mode: 0
@@ -4136,7 +4136,7 @@ MonoBehaviour:
   attribute:
     name: Y
     path: Modify Position/Value/Y
-    id: -1762808/e4c304a5-d921-402b-8df6-a7c5251a484f
+    id: -5752/e4c304a5-d921-402b-8df6-a7c5251a484f
     localID: e4c304a5-d921-402b-8df6-a7c5251a484f
     parent: {fileID: 11461954}
     mode: 0
@@ -4209,7 +4209,7 @@ MonoBehaviour:
   attribute:
     name: Active
     path: Reset Position/Active
-    id: -1762806/7594c393-dc1c-4ab5-a3dd-01e573d8c3c4
+    id: -5754/7594c393-dc1c-4ab5-a3dd-01e573d8c3c4
     localID: 7594c393-dc1c-4ab5-a3dd-01e573d8c3c4
     parent: {fileID: 11482484}
     mode: 0
@@ -4282,7 +4282,7 @@ MonoBehaviour:
   attribute:
     name: Ready
     path: Reset Position/Ready
-    id: -1762806/b8db9424-ceb4-4b63-a26b-be8cddda61ca
+    id: -5754/b8db9424-ceb4-4b63-a26b-be8cddda61ca
     localID: b8db9424-ceb4-4b63-a26b-be8cddda61ca
     parent: {fileID: 11482484}
     mode: 0
@@ -4355,7 +4355,7 @@ MonoBehaviour:
   attribute:
     name: Is Reset On Change
     path: Follow/Follow/Is Reset On Change
-    id: -1762804/734d10a3-5d1c-41d2-9847-9ecb8b3037ee
+    id: -5692/734d10a3-5d1c-41d2-9847-9ecb8b3037ee
     localID: 734d10a3-5d1c-41d2-9847-9ecb8b3037ee
     parent: {fileID: 11474082}
     mode: 0
@@ -4428,7 +4428,7 @@ MonoBehaviour:
   attribute:
     name: Active
     path: Mouse Input/Active
-    id: -1762798/fa911f09-e049-4bc0-b29b-f74cae7d3284
+    id: -5730/fa911f09-e049-4bc0-b29b-f74cae7d3284
     localID: fa911f09-e049-4bc0-b29b-f74cae7d3284
     parent: {fileID: 11412688}
     mode: 0
@@ -4501,7 +4501,7 @@ MonoBehaviour:
   attribute:
     name: Speed Transition Seconds
     path: Zoom Distance/Speed Transition Seconds
-    id: -1763158/35b4d6f9-d502-461b-91f6-5efc4302d624
+    id: -5718/35b4d6f9-d502-461b-91f6-5efc4302d624
     localID: 35b4d6f9-d502-461b-91f6-5efc4302d624
     parent: {fileID: 11460206}
     mode: 0
@@ -4569,12 +4569,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Follow/Follow Offset/2
-  referenceID: -1763142/fc49ae38-1571-404d-9b5c-a0abc04c6292
+  referenceID: -5720/fc49ae38-1571-404d-9b5c-a0abc04c6292
   referencePath: Follow Distance
   attribute:
     name: Follow Offset
     path: Follow/Follow Offset
-    id: -1762804/143f0e03-3fcf-41a0-ba6b-5bcb2f5b8006
+    id: -5692/143f0e03-3fcf-41a0-ba6b-5bcb2f5b8006
     localID: 143f0e03-3fcf-41a0-ba6b-5bcb2f5b8006
     parent: {fileID: 11474082}
     mode: 2
@@ -4649,7 +4649,7 @@ MonoBehaviour:
   attribute:
     name: Delay Start
     path: Follow/Follow/Follow/Transition/Delay Start
-    id: -1762804/a4adea4c-c4d9-48da-b652-59eae79f7c45
+    id: -5692/a4adea4c-c4d9-48da-b652-59eae79f7c45
     localID: a4adea4c-c4d9-48da-b652-59eae79f7c45
     parent: {fileID: 11474082}
     mode: 0
@@ -4722,7 +4722,7 @@ MonoBehaviour:
   attribute:
     name: Y
     path: Line Cast/Hit Normal/Y
-    id: -1762810/8b54ee73-10ee-42ac-89ee-b18283865e4c
+    id: -5750/8b54ee73-10ee-42ac-89ee-b18283865e4c
     localID: 8b54ee73-10ee-42ac-89ee-b18283865e4c
     parent: {fileID: 11442334}
     mode: 0
@@ -4790,12 +4790,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Set Zoom Goal/Target/0
-  referenceID: -1763158/74ef2a32-3d8e-4630-8991-969c7d4b217b
+  referenceID: -5718/74ef2a32-3d8e-4630-8991-969c7d4b217b
   referencePath: Zoom Speed/Goal
   attribute:
     name: Target
     path: Set Zoom Goal/Target
-    id: -1763182/8c4a6169-d92f-45b4-abb2-17fab383eda7
+    id: -5716/8c4a6169-d92f-45b4-abb2-17fab383eda7
     localID: 8c4a6169-d92f-45b4-abb2-17fab383eda7
     parent: {fileID: 11497228}
     mode: 1
@@ -4868,7 +4868,7 @@ MonoBehaviour:
   attribute:
     name: Requirable
     path: Mouse Input/Requirable
-    id: -1762798/7c738993-cfac-43c5-9a95-8aa5c8afc97e
+    id: -5730/7c738993-cfac-43c5-9a95-8aa5c8afc97e
     localID: 7c738993-cfac-43c5-9a95-8aa5c8afc97e
     parent: {fileID: 11412688}
     mode: 0
@@ -4936,12 +4936,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Follow/Target/0
-  referenceID: -1762786/d39974ea-9fc3-402f-b1bf-2478c7d914a4
+  referenceID: -5742/d39974ea-9fc3-402f-b1bf-2478c7d914a4
   referencePath: Target
   attribute:
     name: Target
     path: Follow/Target
-    id: -1762804/a3083a16-3b1c-455d-a1fb-2345af7bc3f3
+    id: -5692/a3083a16-3b1c-455d-a1fb-2345af7bc3f3
     localID: a3083a16-3b1c-455d-a1fb-2345af7bc3f3
     parent: {fileID: 11474082}
     mode: 0
@@ -5014,7 +5014,7 @@ MonoBehaviour:
   attribute:
     name: Requirable
     path: Mouse Input/Requirable
-    id: -1762790/d85a111c-b54d-4447-a92c-4d672342227b
+    id: -5738/d85a111c-b54d-4447-a92c-4d672342227b
     localID: d85a111c-b54d-4447-a92c-4d672342227b
     parent: {fileID: 11407292}
     mode: 0
@@ -5079,7 +5079,7 @@ MonoBehaviour:
   attribute:
     name: X
     path: Target Position/X
-    id: -1762784/140671d7-6698-4019-9995-1efc754dad8d
+    id: -5694/140671d7-6698-4019-9995-1efc754dad8d
     localID: 140671d7-6698-4019-9995-1efc754dad8d
     parent: {fileID: 11465990}
     mode: 0
@@ -5152,7 +5152,7 @@ MonoBehaviour:
   attribute:
     name: Active
     path: Disable/Active
-    id: -1763300/1b4e8fb9-405c-47b0-8736-f487a42d0936
+    id: -5710/1b4e8fb9-405c-47b0-8736-f487a42d0936
     localID: 1b4e8fb9-405c-47b0-8736-f487a42d0936
     parent: {fileID: 11493514}
     mode: 0
@@ -5217,7 +5217,7 @@ MonoBehaviour:
   attribute:
     name: Z
     path: Transform/Direction/Down/Z
-    id: -1763304/bd90eeaa-7eba-4b54-9ee0-b9ec30c26cd4
+    id: -5706/bd90eeaa-7eba-4b54-9ee0-b9ec30c26cd4
     localID: bd90eeaa-7eba-4b54-9ee0-b9ec30c26cd4
     parent: {fileID: 11486396}
     mode: 0
@@ -5282,7 +5282,7 @@ MonoBehaviour:
   attribute:
     name: Right
     path: Transform/Direction/Right
-    id: -1763304/5d397ae8-41b9-4edc-96a7-078335dc8920
+    id: -5706/5d397ae8-41b9-4edc-96a7-078335dc8920
     localID: 5d397ae8-41b9-4edc-96a7-078335dc8920
     parent: {fileID: 11486396}
     mode: 0
@@ -5355,7 +5355,7 @@ MonoBehaviour:
   attribute:
     name: Z
     path: Line Cast/Source/Z
-    id: -1762810/91140e38-27e9-436c-af9c-0bfb311cf624
+    id: -5750/91140e38-27e9-436c-af9c-0bfb311cf624
     localID: 91140e38-27e9-436c-af9c-0bfb311cf624
     parent: {fileID: 11442334}
     mode: 0
@@ -5420,7 +5420,7 @@ MonoBehaviour:
   attribute:
     name: X
     path: Transform/Direction/Right/X
-    id: -1763304/5e5e5663-18ae-42b7-b464-7f82c142b318
+    id: -5706/5e5e5663-18ae-42b7-b464-7f82c142b318
     localID: 5e5e5663-18ae-42b7-b464-7f82c142b318
     parent: {fileID: 11486396}
     mode: 0
@@ -5493,7 +5493,7 @@ MonoBehaviour:
   attribute:
     name: Usable
     path: Disable/Usable
-    id: -1763300/f723ee0b-c3b4-4b2f-81e1-5f9ea3a2659a
+    id: -5710/f723ee0b-c3b4-4b2f-81e1-5f9ea3a2659a
     localID: f723ee0b-c3b4-4b2f-81e1-5f9ea3a2659a
     parent: {fileID: 11493514}
     mode: 0
@@ -5558,7 +5558,7 @@ MonoBehaviour:
   attribute:
     name: Z
     path: Target Position/Z
-    id: -1762784/b57d283f-7dd9-40b2-90ce-40e79af6e24c
+    id: -5694/b57d283f-7dd9-40b2-90ce-40e79af6e24c
     localID: b57d283f-7dd9-40b2-90ce-40e79af6e24c
     parent: {fileID: 11465990}
     mode: 0
@@ -5631,7 +5631,7 @@ MonoBehaviour:
   attribute:
     name: Delay Start
     path: Watch/Watch/Rotation Point/Transition/Delay Start
-    id: -1762802/a392d962-af91-44a8-8643-c5d35ba57e2e
+    id: -5726/a392d962-af91-44a8-8643-c5d35ba57e2e
     localID: a392d962-af91-44a8-8643-c5d35ba57e2e
     parent: {fileID: 11430404}
     mode: 0
@@ -5704,7 +5704,7 @@ MonoBehaviour:
   attribute:
     name: Held During Intensity
     path: Mouse Input/Held During Intensity
-    id: -1762798/bee64ecf-defa-489e-8e2e-e3447decbf4a
+    id: -5730/bee64ecf-defa-489e-8e2e-e3447decbf4a
     localID: bee64ecf-defa-489e-8e2e-e3447decbf4a
     parent: {fileID: 11412688}
     mode: 0
@@ -5777,7 +5777,7 @@ MonoBehaviour:
   attribute:
     name: Ready
     path: Camera Orbit Y/Ready
-    id: -1762792/75557107-e20e-42ca-a4a9-7d4a881da834
+    id: -5736/75557107-e20e-42ca-a4a9-7d4a881da834
     localID: 75557107-e20e-42ca-a4a9-7d4a881da834
     parent: {fileID: 11473842}
     mode: 0
@@ -5850,7 +5850,7 @@ MonoBehaviour:
   attribute:
     name: Active
     path: Lifetime/Active
-    id: -1763308/00a222f7-7ed6-486c-b7f0-f406856d2b0c
+    id: -5746/00a222f7-7ed6-486c-b7f0-f406856d2b0c
     localID: 00a222f7-7ed6-486c-b7f0-f406856d2b0c
     parent: {fileID: 11488470}
     mode: 0
@@ -5923,7 +5923,7 @@ MonoBehaviour:
   attribute:
     name: Active
     path: Watch/Active
-    id: -1762802/90fece4b-cd1b-4c35-8589-e2199c5376ca
+    id: -5726/90fece4b-cd1b-4c35-8589-e2199c5376ca
     localID: 90fece4b-cd1b-4c35-8589-e2199c5376ca
     parent: {fileID: 11430404}
     mode: 0
@@ -5983,12 +5983,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Mouse Intensity/0
-  referenceID: -1762796/bab7ed0d-db4b-41ca-aec5-a374affb574e
+  referenceID: -5732/bab7ed0d-db4b-41ca-aec5-a374affb574e
   referencePath: Mouse Z/Intensity
   attribute:
     name: Mouse Intensity
     path: Mouse Intensity
-    id: -1763206/199f0e72-9297-4d9a-b0f5-c8a900103983
+    id: -5714/199f0e72-9297-4d9a-b0f5-c8a900103983
     localID: 199f0e72-9297-4d9a-b0f5-c8a900103983
     parent: {fileID: 11486370}
     mode: 2
@@ -6054,7 +6054,7 @@ MonoBehaviour:
   attribute:
     name: Z
     path: Transform/Direction/Left/Z
-    id: -1763304/fd370e2e-8ded-4774-8f67-a186724d0148
+    id: -5706/fd370e2e-8ded-4774-8f67-a186724d0148
     localID: fd370e2e-8ded-4774-8f67-a186724d0148
     parent: {fileID: 11486396}
     mode: 0
@@ -6127,7 +6127,7 @@ MonoBehaviour:
   attribute:
     name: Requirable
     path: Camera Orbit X/Requirable
-    id: -1762800/640a58c0-f4fb-4256-b18c-0c9a16dcd662
+    id: -5728/640a58c0-f4fb-4256-b18c-0c9a16dcd662
     localID: 640a58c0-f4fb-4256-b18c-0c9a16dcd662
     parent: {fileID: 11429126}
     mode: 0
@@ -6200,7 +6200,7 @@ MonoBehaviour:
   attribute:
     name: Active
     path: Lock Cursor/Active
-    id: -1763306/96f3081a-c657-4e79-af6e-d736c8bad847
+    id: -5704/96f3081a-c657-4e79-af6e-d736c8bad847
     localID: 96f3081a-c657-4e79-af6e-d736c8bad847
     parent: {fileID: 11412844}
     mode: 0
@@ -6268,12 +6268,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Zoom Adjust/Target/0
-  referenceID: -1763142/2b20f098-2cc3-4e1f-b346-fdcda517cc0c
+  referenceID: -5720/2b20f098-2cc3-4e1f-b346-fdcda517cc0c
   referencePath: Follow Distance/Z
   attribute:
     name: Target
     path: Zoom Adjust/Target
-    id: -1762794/573cfdfb-c698-4b0d-9864-867eef4951fd
+    id: -5734/573cfdfb-c698-4b0d-9864-867eef4951fd
     localID: 573cfdfb-c698-4b0d-9864-867eef4951fd
     parent: {fileID: 11453964}
     mode: 1
@@ -6346,7 +6346,7 @@ MonoBehaviour:
   attribute:
     name: Requirable
     path: Watch/Requirable
-    id: -1762802/1756bc9a-569a-471f-864a-fae4bed5ebe8
+    id: -5726/1756bc9a-569a-471f-864a-fae4bed5ebe8
     localID: 1756bc9a-569a-471f-864a-fae4bed5ebe8
     parent: {fileID: 11430404}
     mode: 0
@@ -6419,7 +6419,7 @@ MonoBehaviour:
   attribute:
     name: Used
     path: Watch/Used
-    id: -1762802/ceeb9e28-ff7b-432b-aa81-172215b1ee1b
+    id: -5726/ceeb9e28-ff7b-432b-aa81-172215b1ee1b
     localID: ceeb9e28-ff7b-432b-aa81-172215b1ee1b
     parent: {fileID: 11430404}
     mode: 0
@@ -6461,7 +6461,7 @@ MonoBehaviour:
     info:
       name: Requirable
       path: Lifetime/Requirable
-      id: -1763298/0fa7c80d-a673-48db-bb7d-8bb1a2807e26
+      id: -5712/0fa7c80d-a673-48db-bb7d-8bb1a2807e26
       localID: 0fa7c80d-a673-48db-bb7d-8bb1a2807e26
       parent: {fileID: 11426184}
       mode: 0
@@ -6474,7 +6474,7 @@ MonoBehaviour:
     info:
       name: Ready
       path: Lifetime/Ready
-      id: -1763298/b4955416-fbd8-4712-a310-cafada30ba7e
+      id: -5712/b4955416-fbd8-4712-a310-cafada30ba7e
       localID: b4955416-fbd8-4712-a310-cafada30ba7e
       parent: {fileID: 11426184}
       mode: 0
@@ -6487,7 +6487,7 @@ MonoBehaviour:
     info:
       name: Usable
       path: Lifetime/Usable
-      id: -1763298/848fb369-23d8-4b38-9412-fb4fa80632b1
+      id: -5712/848fb369-23d8-4b38-9412-fb4fa80632b1
       localID: 848fb369-23d8-4b38-9412-fb4fa80632b1
       parent: {fileID: 11426184}
       mode: 0
@@ -6500,7 +6500,7 @@ MonoBehaviour:
     info:
       name: Active
       path: Lifetime/Active
-      id: -1763298/4d90a97d-6067-4f98-8d59-45450a8ce596
+      id: -5712/4d90a97d-6067-4f98-8d59-45450a8ce596
       localID: 4d90a97d-6067-4f98-8d59-45450a8ce596
       parent: {fileID: 11426184}
       mode: 0
@@ -6513,7 +6513,7 @@ MonoBehaviour:
     info:
       name: Used
       path: Lifetime/Used
-      id: -1763298/f0231d64-50ac-43c3-bf77-c28ab6b5cdff
+      id: -5712/f0231d64-50ac-43c3-bf77-c28ab6b5cdff
       localID: f0231d64-50ac-43c3-bf77-c28ab6b5cdff
       parent: {fileID: 11426184}
       mode: 0
@@ -6530,7 +6530,7 @@ MonoBehaviour:
     info:
       name: Seconds
       path: Lifetime/Seconds
-      id: -1763298/111f0ca4-c73d-4741-bbf6-0b034b33437b
+      id: -5712/111f0ca4-c73d-4741-bbf6-0b034b33437b
       localID: 111f0ca4-c73d-4741-bbf6-0b034b33437b
       parent: {fileID: 11426184}
       mode: 0
@@ -6543,7 +6543,7 @@ MonoBehaviour:
     info:
       name: Is Started
       path: Lifetime/Is Started
-      id: -1763298/aa514e39-0654-4da0-83f1-b48eadb0b435
+      id: -5712/aa514e39-0654-4da0-83f1-b48eadb0b435
       localID: aa514e39-0654-4da0-83f1-b48eadb0b435
       parent: {fileID: 11426184}
       mode: 0
@@ -6556,7 +6556,7 @@ MonoBehaviour:
     info:
       name: Is Complete
       path: Lifetime/Is Complete
-      id: -1763298/872e9aaa-ce3b-4c40-984f-997309c72722
+      id: -5712/872e9aaa-ce3b-4c40-984f-997309c72722
       localID: 872e9aaa-ce3b-4c40-984f-997309c72722
       parent: {fileID: 11426184}
       mode: 0
@@ -6609,12 +6609,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Camera Orbit Y/Value/1
-  referenceID: -1762804/c46c6921-ffb4-4f33-9d6f-a27b2775f856
+  referenceID: -5692/c46c6921-ffb4-4f33-9d6f-a27b2775f856
   referencePath: Follow/Follow Orbit/Y
   attribute:
     name: Value
     path: Camera Orbit Y/Value
-    id: -1762792/edec0d4c-fd01-4ebd-a95a-d10f52342890
+    id: -5736/edec0d4c-fd01-4ebd-a95a-d10f52342890
     localID: edec0d4c-fd01-4ebd-a95a-d10f52342890
     parent: {fileID: 11473842}
     mode: 2
@@ -6685,12 +6685,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Watch/Source/0
-  referenceID: -1762788/1e353034-be1c-426a-8436-1db907700a89
+  referenceID: -5740/1e353034-be1c-426a-8436-1db907700a89
   referencePath: Source
   attribute:
     name: Source
     path: Watch/Source
-    id: -1762802/a6f362a2-7e37-480a-a8ae-24644e2e8122
+    id: -5726/a6f362a2-7e37-480a-a8ae-24644e2e8122
     localID: a6f362a2-7e37-480a-a8ae-24644e2e8122
     parent: {fileID: 11430404}
     mode: 0
@@ -6763,7 +6763,7 @@ MonoBehaviour:
   attribute:
     name: Is Complete
     path: Lifetime/Is Complete
-    id: -1763298/872e9aaa-ce3b-4c40-984f-997309c72722
+    id: -5712/872e9aaa-ce3b-4c40-984f-997309c72722
     localID: 872e9aaa-ce3b-4c40-984f-997309c72722
     parent: {fileID: 11426184}
     mode: 0
@@ -6836,7 +6836,7 @@ MonoBehaviour:
   attribute:
     name: Value
     path: Set Zoom Goal/Value
-    id: -1763182/996cdd64-ed7c-4820-ae9e-85bdac2923ee
+    id: -5716/996cdd64-ed7c-4820-ae9e-85bdac2923ee
     localID: 996cdd64-ed7c-4820-ae9e-85bdac2923ee
     parent: {fileID: 11497228}
     mode: 2
@@ -6862,7 +6862,7 @@ MonoBehaviour:
       dataC: []
   operation: 8
   special: 0
-  value: 7
+  value: 4
 --- !u!114 &11427856
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6912,7 +6912,7 @@ MonoBehaviour:
   attribute:
     name: Requirable
     path: Line Cast/Requirable
-    id: -1762810/64ade91b-31ae-4cc0-acd6-7e71ac9034fb
+    id: -5750/64ade91b-31ae-4cc0-acd6-7e71ac9034fb
     localID: 64ade91b-31ae-4cc0-acd6-7e71ac9034fb
     parent: {fileID: 11442334}
     mode: 0
@@ -6985,7 +6985,7 @@ MonoBehaviour:
   attribute:
     name: Active
     path: Mouse Z/Active
-    id: -1762796/61b52535-6b2d-439c-8dd4-b40b3750254a
+    id: -5732/61b52535-6b2d-439c-8dd4-b40b3750254a
     localID: 61b52535-6b2d-439c-8dd4-b40b3750254a
     parent: {fileID: 11428766}
     mode: 0
@@ -7058,7 +7058,7 @@ MonoBehaviour:
   attribute:
     name: Usable
     path: Reset Position/Usable
-    id: -1762806/4cba9bbf-9a28-46d6-84b6-11ca7541cb50
+    id: -5754/4cba9bbf-9a28-46d6-84b6-11ca7541cb50
     localID: 4cba9bbf-9a28-46d6-84b6-11ca7541cb50
     parent: {fileID: 11482484}
     mode: 0
@@ -7131,7 +7131,7 @@ MonoBehaviour:
   attribute:
     name: Usable
     path: Zoom Distance/Usable
-    id: -1763158/ae35c47b-30e9-4d94-a8a8-9e55c71c37be
+    id: -5718/ae35c47b-30e9-4d94-a8a8-9e55c71c37be
     localID: ae35c47b-30e9-4d94-a8a8-9e55c71c37be
     parent: {fileID: 11460206}
     mode: 0
@@ -7173,7 +7173,7 @@ MonoBehaviour:
     info:
       name: Requirable
       path: Mouse Z/Requirable
-      id: -1762796/f4384378-c9df-497b-b98b-ce464e872836
+      id: -5732/f4384378-c9df-497b-b98b-ce464e872836
       localID: f4384378-c9df-497b-b98b-ce464e872836
       parent: {fileID: 11428766}
       mode: 0
@@ -7186,7 +7186,7 @@ MonoBehaviour:
     info:
       name: Ready
       path: Mouse Z/Ready
-      id: -1762796/69c9d23d-52b9-40c2-837e-fa71185e6d24
+      id: -5732/69c9d23d-52b9-40c2-837e-fa71185e6d24
       localID: 69c9d23d-52b9-40c2-837e-fa71185e6d24
       parent: {fileID: 11428766}
       mode: 0
@@ -7199,7 +7199,7 @@ MonoBehaviour:
     info:
       name: Usable
       path: Mouse Z/Usable
-      id: -1762796/2c468df6-a0bc-4368-be31-9744bf977e38
+      id: -5732/2c468df6-a0bc-4368-be31-9744bf977e38
       localID: 2c468df6-a0bc-4368-be31-9744bf977e38
       parent: {fileID: 11428766}
       mode: 0
@@ -7212,7 +7212,7 @@ MonoBehaviour:
     info:
       name: Active
       path: Mouse Z/Active
-      id: -1762796/61b52535-6b2d-439c-8dd4-b40b3750254a
+      id: -5732/61b52535-6b2d-439c-8dd4-b40b3750254a
       localID: 61b52535-6b2d-439c-8dd4-b40b3750254a
       parent: {fileID: 11428766}
       mode: 0
@@ -7225,7 +7225,7 @@ MonoBehaviour:
     info:
       name: Used
       path: Mouse Z/Used
-      id: -1762796/73df091d-cbe1-4ebb-8900-7081c233bf2d
+      id: -5732/73df091d-cbe1-4ebb-8900-7081c233bf2d
       localID: 73df091d-cbe1-4ebb-8900-7081c233bf2d
       parent: {fileID: 11428766}
       mode: 0
@@ -7242,7 +7242,7 @@ MonoBehaviour:
     info:
       name: Input Name
       path: Mouse Z/Input Name
-      id: -1762796/b6676621-e02a-44aa-9247-a130437efbc9
+      id: -5732/b6676621-e02a-44aa-9247-a130437efbc9
       localID: b6676621-e02a-44aa-9247-a130437efbc9
       parent: {fileID: 11428766}
       mode: 0
@@ -7255,7 +7255,7 @@ MonoBehaviour:
     info:
       name: Held During Intensity
       path: Mouse Z/Held During Intensity
-      id: -1762796/e5d6b06f-e9ba-4dcb-b336-8c63702379b4
+      id: -5732/e5d6b06f-e9ba-4dcb-b336-8c63702379b4
       localID: e5d6b06f-e9ba-4dcb-b336-8c63702379b4
       parent: {fileID: 11428766}
       mode: 0
@@ -7268,7 +7268,7 @@ MonoBehaviour:
     info:
       name: Ignore Ownership
       path: Mouse Z/Ignore Ownership
-      id: -1762796/9553a554-ee7f-4d2b-bb4e-e8a950df984a
+      id: -5732/9553a554-ee7f-4d2b-bb4e-e8a950df984a
       localID: 9553a554-ee7f-4d2b-bb4e-e8a950df984a
       parent: {fileID: 11428766}
       mode: 0
@@ -7281,7 +7281,7 @@ MonoBehaviour:
     info:
       name: Intensity
       path: Mouse Z/Intensity
-      id: -1762796/bab7ed0d-db4b-41ca-aec5-a374affb574e
+      id: -5732/bab7ed0d-db4b-41ca-aec5-a374affb574e
       localID: bab7ed0d-db4b-41ca-aec5-a374affb574e
       parent: {fileID: 11428766}
       mode: 0
@@ -7307,7 +7307,7 @@ MonoBehaviour:
     info:
       name: Follow Height
       path: Follow Height
-      id: -1763122/30c95990-717c-47ff-b535-f46d82440dfe
+      id: -5724/30c95990-717c-47ff-b535-f46d82440dfe
       localID: 30c95990-717c-47ff-b535-f46d82440dfe
       parent: {fileID: 11428940}
       mode: 0
@@ -7320,7 +7320,7 @@ MonoBehaviour:
       info:
         name: X
         path: Follow Height/X
-        id: -1763122/746ed861-789e-469a-af9a-e459156b020f
+        id: -5724/746ed861-789e-469a-af9a-e459156b020f
         localID: 746ed861-789e-469a-af9a-e459156b020f
         parent: {fileID: 11428940}
         mode: 0
@@ -7333,7 +7333,7 @@ MonoBehaviour:
       info:
         name: Y
         path: Follow Height/Y
-        id: -1763122/f96cdaaf-a6c9-4509-8911-15c505afb31b
+        id: -5724/f96cdaaf-a6c9-4509-8911-15c505afb31b
         localID: f96cdaaf-a6c9-4509-8911-15c505afb31b
         parent: {fileID: 11428940}
         mode: 0
@@ -7346,7 +7346,7 @@ MonoBehaviour:
       info:
         name: Z
         path: Follow Height/Z
-        id: -1763122/a86aab60-4e28-42e1-a78e-703762ce157f
+        id: -5724/a86aab60-4e28-42e1-a78e-703762ce157f
         localID: a86aab60-4e28-42e1-a78e-703762ce157f
         parent: {fileID: 11428940}
         mode: 0
@@ -7374,7 +7374,7 @@ MonoBehaviour:
     info:
       name: Requirable
       path: Camera Orbit X/Requirable
-      id: -1762800/640a58c0-f4fb-4256-b18c-0c9a16dcd662
+      id: -5728/640a58c0-f4fb-4256-b18c-0c9a16dcd662
       localID: 640a58c0-f4fb-4256-b18c-0c9a16dcd662
       parent: {fileID: 11429126}
       mode: 0
@@ -7387,7 +7387,7 @@ MonoBehaviour:
     info:
       name: Ready
       path: Camera Orbit X/Ready
-      id: -1762800/e16d70e1-f53d-4252-ba6a-b98964f853cf
+      id: -5728/e16d70e1-f53d-4252-ba6a-b98964f853cf
       localID: e16d70e1-f53d-4252-ba6a-b98964f853cf
       parent: {fileID: 11429126}
       mode: 0
@@ -7400,7 +7400,7 @@ MonoBehaviour:
     info:
       name: Usable
       path: Camera Orbit X/Usable
-      id: -1762800/60ab6867-c0f3-415a-bff2-8ae93993d3d4
+      id: -5728/60ab6867-c0f3-415a-bff2-8ae93993d3d4
       localID: 60ab6867-c0f3-415a-bff2-8ae93993d3d4
       parent: {fileID: 11429126}
       mode: 0
@@ -7413,7 +7413,7 @@ MonoBehaviour:
     info:
       name: Active
       path: Camera Orbit X/Active
-      id: -1762800/c10bd856-58d0-4a24-941a-d0a55368b12c
+      id: -5728/c10bd856-58d0-4a24-941a-d0a55368b12c
       localID: c10bd856-58d0-4a24-941a-d0a55368b12c
       parent: {fileID: 11429126}
       mode: 0
@@ -7426,7 +7426,7 @@ MonoBehaviour:
     info:
       name: Used
       path: Camera Orbit X/Used
-      id: -1762800/e3c5d14b-22cf-4720-8e47-c738b3863fa2
+      id: -5728/e3c5d14b-22cf-4720-8e47-c738b3863fa2
       localID: e3c5d14b-22cf-4720-8e47-c738b3863fa2
       parent: {fileID: 11429126}
       mode: 0
@@ -7442,7 +7442,7 @@ MonoBehaviour:
     info:
       name: Target
       path: Camera Orbit X/Target
-      id: -1762800/671414bb-cf17-4c2c-9181-ed8a2929b6fd
+      id: -5728/671414bb-cf17-4c2c-9181-ed8a2929b6fd
       localID: 671414bb-cf17-4c2c-9181-ed8a2929b6fd
       parent: {fileID: 11429126}
       mode: 1
@@ -7455,7 +7455,7 @@ MonoBehaviour:
     info:
       name: Value
       path: Camera Orbit X/Value
-      id: -1762800/56a1ae6f-877b-40c8-ad43-ddf79dd005fe
+      id: -5728/56a1ae6f-877b-40c8-ad43-ddf79dd005fe
       localID: 56a1ae6f-877b-40c8-ad43-ddf79dd005fe
       parent: {fileID: 11429126}
       mode: 2
@@ -7514,7 +7514,7 @@ MonoBehaviour:
   attribute:
     name: Ready
     path: Lifetime/Ready
-    id: -1763298/b4955416-fbd8-4712-a310-cafada30ba7e
+    id: -5712/b4955416-fbd8-4712-a310-cafada30ba7e
     localID: b4955416-fbd8-4712-a310-cafada30ba7e
     parent: {fileID: 11426184}
     mode: 0
@@ -7579,7 +7579,7 @@ MonoBehaviour:
   attribute:
     name: X
     path: Transform/Position/X
-    id: -1763302/5d398aa0-9296-41fd-8f47-4e2c45b12965
+    id: -5708/5d398aa0-9296-41fd-8f47-4e2c45b12965
     localID: 5d398aa0-9296-41fd-8f47-4e2c45b12965
     parent: {fileID: 11412678}
     mode: 0
@@ -7621,7 +7621,7 @@ MonoBehaviour:
     info:
       name: Requirable
       path: Watch/Requirable
-      id: -1762802/1756bc9a-569a-471f-864a-fae4bed5ebe8
+      id: -5726/1756bc9a-569a-471f-864a-fae4bed5ebe8
       localID: 1756bc9a-569a-471f-864a-fae4bed5ebe8
       parent: {fileID: 11430404}
       mode: 0
@@ -7634,7 +7634,7 @@ MonoBehaviour:
     info:
       name: Ready
       path: Watch/Ready
-      id: -1762802/d7ecce94-333e-42d3-8ab6-10ea3192a68e
+      id: -5726/d7ecce94-333e-42d3-8ab6-10ea3192a68e
       localID: d7ecce94-333e-42d3-8ab6-10ea3192a68e
       parent: {fileID: 11430404}
       mode: 0
@@ -7647,7 +7647,7 @@ MonoBehaviour:
     info:
       name: Usable
       path: Watch/Usable
-      id: -1762802/b39b2f40-96ab-4400-a73c-ece18b73c282
+      id: -5726/b39b2f40-96ab-4400-a73c-ece18b73c282
       localID: b39b2f40-96ab-4400-a73c-ece18b73c282
       parent: {fileID: 11430404}
       mode: 0
@@ -7660,7 +7660,7 @@ MonoBehaviour:
     info:
       name: Active
       path: Watch/Active
-      id: -1762802/90fece4b-cd1b-4c35-8589-e2199c5376ca
+      id: -5726/90fece4b-cd1b-4c35-8589-e2199c5376ca
       localID: 90fece4b-cd1b-4c35-8589-e2199c5376ca
       parent: {fileID: 11430404}
       mode: 0
@@ -7673,7 +7673,7 @@ MonoBehaviour:
     info:
       name: Used
       path: Watch/Used
-      id: -1762802/ceeb9e28-ff7b-432b-aa81-172215b1ee1b
+      id: -5726/ceeb9e28-ff7b-432b-aa81-172215b1ee1b
       localID: ceeb9e28-ff7b-432b-aa81-172215b1ee1b
       parent: {fileID: 11430404}
       mode: 0
@@ -7689,7 +7689,7 @@ MonoBehaviour:
     info:
       name: Source
       path: Watch/Source
-      id: -1762802/a6f362a2-7e37-480a-a8ae-24644e2e8122
+      id: -5726/a6f362a2-7e37-480a-a8ae-24644e2e8122
       localID: a6f362a2-7e37-480a-a8ae-24644e2e8122
       parent: {fileID: 11430404}
       mode: 0
@@ -7702,7 +7702,7 @@ MonoBehaviour:
     info:
       name: Goal Point
       path: Watch/Goal Point
-      id: -1762802/d68e88fa-4fd8-4eef-8286-5f35c1fbe306
+      id: -5726/d68e88fa-4fd8-4eef-8286-5f35c1fbe306
       localID: d68e88fa-4fd8-4eef-8286-5f35c1fbe306
       parent: {fileID: 11430404}
       mode: 2
@@ -7716,7 +7716,7 @@ MonoBehaviour:
       info:
         name: X
         path: Watch/Goal Point/X
-        id: -1762802/7cfe0fd5-5f8f-4bed-a1c0-923ad77e058d
+        id: -5726/7cfe0fd5-5f8f-4bed-a1c0-923ad77e058d
         localID: 7cfe0fd5-5f8f-4bed-a1c0-923ad77e058d
         parent: {fileID: 11430404}
         mode: 0
@@ -7729,7 +7729,7 @@ MonoBehaviour:
       info:
         name: Y
         path: Watch/Goal Point/Y
-        id: -1762802/df514658-202e-4fd6-8e98-e2499340259a
+        id: -5726/df514658-202e-4fd6-8e98-e2499340259a
         localID: df514658-202e-4fd6-8e98-e2499340259a
         parent: {fileID: 11430404}
         mode: 0
@@ -7742,7 +7742,7 @@ MonoBehaviour:
       info:
         name: Z
         path: Watch/Goal Point/Z
-        id: -1762802/e2b4ebd7-8300-4416-8e33-f0f59487a8a1
+        id: -5726/e2b4ebd7-8300-4416-8e33-f0f59487a8a1
         localID: e2b4ebd7-8300-4416-8e33-f0f59487a8a1
         parent: {fileID: 11430404}
         mode: 0
@@ -7758,7 +7758,7 @@ MonoBehaviour:
       info:
         name: Is Angle
         path: Watch/Rotation Point/Is Angle
-        id: -1762802/52d351b4-bf1d-423b-aabd-83e768ff5ccf
+        id: -5726/52d351b4-bf1d-423b-aabd-83e768ff5ccf
         localID: 52d351b4-bf1d-423b-aabd-83e768ff5ccf
         parent: {fileID: 11430404}
         mode: 0
@@ -7771,7 +7771,7 @@ MonoBehaviour:
       info:
         name: Is Reset On Change
         path: Watch/Rotation Point/Is Reset On Change
-        id: -1762802/ef3f48d0-54bb-42ea-be7b-73a535eb853f
+        id: -5726/ef3f48d0-54bb-42ea-be7b-73a535eb853f
         localID: ef3f48d0-54bb-42ea-be7b-73a535eb853f
         parent: {fileID: 11430404}
         mode: 0
@@ -7784,7 +7784,7 @@ MonoBehaviour:
       info:
         name: Speed
         path: Watch/Rotation Point/Transition/Speed
-        id: -1762802/791f9fe0-fe5a-4e94-b053-91aecf9dbf77
+        id: -5726/791f9fe0-fe5a-4e94-b053-91aecf9dbf77
         localID: 791f9fe0-fe5a-4e94-b053-91aecf9dbf77
         parent: {fileID: 11430404}
         mode: 0
@@ -7798,7 +7798,7 @@ MonoBehaviour:
         info:
           name: Duration
           path: Watch/Watch/Rotation Point/Transition/Duration
-          id: -1762802/f937aeff-d43d-4bdc-839d-fcc03fa9719f
+          id: -5726/f937aeff-d43d-4bdc-839d-fcc03fa9719f
           localID: f937aeff-d43d-4bdc-839d-fcc03fa9719f
           parent: {fileID: 11430404}
           mode: 0
@@ -7811,7 +7811,7 @@ MonoBehaviour:
         info:
           name: Delay Start
           path: Watch/Watch/Rotation Point/Transition/Delay Start
-          id: -1762802/a392d962-af91-44a8-8643-c5d35ba57e2e
+          id: -5726/a392d962-af91-44a8-8643-c5d35ba57e2e
           localID: a392d962-af91-44a8-8643-c5d35ba57e2e
           parent: {fileID: 11430404}
           mode: 0
@@ -7885,7 +7885,7 @@ MonoBehaviour:
   attribute:
     name: Ready
     path: Follow/Ready
-    id: -1762804/07a603fb-be5f-44d8-b548-dd877bb6d207
+    id: -5692/07a603fb-be5f-44d8-b548-dd877bb6d207
     localID: 07a603fb-be5f-44d8-b548-dd877bb6d207
     parent: {fileID: 11474082}
     mode: 0
@@ -7950,7 +7950,7 @@ MonoBehaviour:
   attribute:
     name: Mouse Intensity
     path: Mouse Intensity
-    id: -1763206/199f0e72-9297-4d9a-b0f5-c8a900103983
+    id: -5714/199f0e72-9297-4d9a-b0f5-c8a900103983
     localID: 199f0e72-9297-4d9a-b0f5-c8a900103983
     parent: {fileID: 11486370}
     mode: 2
@@ -8024,7 +8024,7 @@ MonoBehaviour:
   attribute:
     name: Z
     path: Modify Position/Target/Z
-    id: -1762808/58df7e83-2e5f-4c72-8648-365377beebd0
+    id: -5752/58df7e83-2e5f-4c72-8648-365377beebd0
     localID: 58df7e83-2e5f-4c72-8648-365377beebd0
     parent: {fileID: 11461954}
     mode: 0
@@ -8089,7 +8089,7 @@ MonoBehaviour:
   attribute:
     name: Y
     path: Target Position/Y
-    id: -1762784/ab1130a1-872c-40f8-ac86-e3a28cae08b1
+    id: -5694/ab1130a1-872c-40f8-ac86-e3a28cae08b1
     localID: ab1130a1-872c-40f8-ac86-e3a28cae08b1
     parent: {fileID: 11465990}
     mode: 0
@@ -8162,7 +8162,7 @@ MonoBehaviour:
   attribute:
     name: Requirable
     path: Zoom Adjust/Requirable
-    id: -1762794/1814c6c9-9887-41d3-b8a0-669347021eac
+    id: -5734/1814c6c9-9887-41d3-b8a0-669347021eac
     localID: 1814c6c9-9887-41d3-b8a0-669347021eac
     parent: {fileID: 11453964}
     mode: 0
@@ -8227,7 +8227,7 @@ MonoBehaviour:
   attribute:
     name: X
     path: Transform/Direction/Left/X
-    id: -1763304/ffcd09b5-2baf-4b6a-a35d-1a485e026b6a
+    id: -5706/ffcd09b5-2baf-4b6a-a35d-1a485e026b6a
     localID: ffcd09b5-2baf-4b6a-a35d-1a485e026b6a
     parent: {fileID: 11486396}
     mode: 0
@@ -8292,7 +8292,7 @@ MonoBehaviour:
   attribute:
     name: Follow Height
     path: Follow Height
-    id: -1763122/30c95990-717c-47ff-b535-f46d82440dfe
+    id: -5724/30c95990-717c-47ff-b535-f46d82440dfe
     localID: 30c95990-717c-47ff-b535-f46d82440dfe
     parent: {fileID: 11428940}
     mode: 0
@@ -8360,12 +8360,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Camera Orbit X/Value/0
-  referenceID: -1762798/0f11dca5-acc7-43a6-97da-b06384b9032e
+  referenceID: -5730/0f11dca5-acc7-43a6-97da-b06384b9032e
   referencePath: Mouse Input/Intensity
   attribute:
     name: Value
     path: Camera Orbit X/Value
-    id: -1762800/56a1ae6f-877b-40c8-ad43-ddf79dd005fe
+    id: -5728/56a1ae6f-877b-40c8-ad43-ddf79dd005fe
     localID: 56a1ae6f-877b-40c8-ad43-ddf79dd005fe
     parent: {fileID: 11429126}
     mode: 2
@@ -8431,7 +8431,7 @@ MonoBehaviour:
   attribute:
     name: Z
     path: Transform/Direction/Forward/Z
-    id: -1763304/64d8f9b6-0a56-4fef-ab27-a1baa3b354a2
+    id: -5706/64d8f9b6-0a56-4fef-ab27-a1baa3b354a2
     localID: 64d8f9b6-0a56-4fef-ab27-a1baa3b354a2
     parent: {fileID: 11486396}
     mode: 0
@@ -8504,7 +8504,7 @@ MonoBehaviour:
   attribute:
     name: Ready
     path: Lock Cursor/Ready
-    id: -1763306/906ce955-5650-45e2-9dec-368a9eab1b05
+    id: -5704/906ce955-5650-45e2-9dec-368a9eab1b05
     localID: 906ce955-5650-45e2-9dec-368a9eab1b05
     parent: {fileID: 11412844}
     mode: 0
@@ -8544,7 +8544,7 @@ MonoBehaviour:
     info:
       name: Follow Distance
       path: Follow Distance
-      id: -1763142/fc49ae38-1571-404d-9b5c-a0abc04c6292
+      id: -5720/fc49ae38-1571-404d-9b5c-a0abc04c6292
       localID: fc49ae38-1571-404d-9b5c-a0abc04c6292
       parent: {fileID: 11434486}
       mode: 0
@@ -8557,7 +8557,7 @@ MonoBehaviour:
       info:
         name: X
         path: Follow Distance/X
-        id: -1763142/255796fd-2633-4829-80b6-f599262493a9
+        id: -5720/255796fd-2633-4829-80b6-f599262493a9
         localID: 255796fd-2633-4829-80b6-f599262493a9
         parent: {fileID: 11434486}
         mode: 0
@@ -8570,7 +8570,7 @@ MonoBehaviour:
       info:
         name: Y
         path: Follow Distance/Y
-        id: -1763142/86e35ec4-f788-4c74-98e8-76ad4601b558
+        id: -5720/86e35ec4-f788-4c74-98e8-76ad4601b558
         localID: 86e35ec4-f788-4c74-98e8-76ad4601b558
         parent: {fileID: 11434486}
         mode: 0
@@ -8583,7 +8583,7 @@ MonoBehaviour:
       info:
         name: Z
         path: Follow Distance/Z
-        id: -1763142/2b20f098-2cc3-4e1f-b346-fdcda517cc0c
+        id: -5720/2b20f098-2cc3-4e1f-b346-fdcda517cc0c
         localID: 2b20f098-2cc3-4e1f-b346-fdcda517cc0c
         parent: {fileID: 11434486}
         mode: 0
@@ -8637,12 +8637,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Zoom Distance/Current/0
-  referenceID: -1763142/2b20f098-2cc3-4e1f-b346-fdcda517cc0c
+  referenceID: -5720/2b20f098-2cc3-4e1f-b346-fdcda517cc0c
   referencePath: Follow Distance/Z
   attribute:
     name: Current
     path: Zoom Distance/Current
-    id: -1763158/60abfcfc-a1b5-4f55-ad20-dbe480bcf8b3
+    id: -5718/60abfcfc-a1b5-4f55-ad20-dbe480bcf8b3
     localID: 60abfcfc-a1b5-4f55-ad20-dbe480bcf8b3
     parent: {fileID: 11460206}
     mode: 0
@@ -8715,7 +8715,7 @@ MonoBehaviour:
   attribute:
     name: X
     path: Watch/Goal Point/X
-    id: -1762802/7cfe0fd5-5f8f-4bed-a1c0-923ad77e058d
+    id: -5726/7cfe0fd5-5f8f-4bed-a1c0-923ad77e058d
     localID: 7cfe0fd5-5f8f-4bed-a1c0-923ad77e058d
     parent: {fileID: 11430404}
     mode: 0
@@ -8788,7 +8788,7 @@ MonoBehaviour:
   attribute:
     name: Input Name
     path: Mouse Input/Input Name
-    id: -1762790/d7d49161-78f8-497b-9d71-ba250670b3b5
+    id: -5738/d7d49161-78f8-497b-9d71-ba250670b3b5
     localID: d7d49161-78f8-497b-9d71-ba250670b3b5
     parent: {fileID: 11407292}
     mode: 0
@@ -8864,7 +8864,7 @@ MonoBehaviour:
   attribute:
     name: Ready
     path: Zoom Adjust/Ready
-    id: -1762794/49df8b59-8514-4c48-b60c-694e5352ce92
+    id: -5734/49df8b59-8514-4c48-b60c-694e5352ce92
     localID: 49df8b59-8514-4c48-b60c-694e5352ce92
     parent: {fileID: 11453964}
     mode: 0
@@ -8929,7 +8929,7 @@ MonoBehaviour:
   attribute:
     name: Follow Distance
     path: Follow Distance
-    id: -1763142/fc49ae38-1571-404d-9b5c-a0abc04c6292
+    id: -5720/fc49ae38-1571-404d-9b5c-a0abc04c6292
     localID: fc49ae38-1571-404d-9b5c-a0abc04c6292
     parent: {fileID: 11434486}
     mode: 0
@@ -8952,7 +8952,7 @@ MonoBehaviour:
       dataC: []
   operation: 0
   special: 0
-  value: {x: 0, y: 0, z: 4.5}
+  value: {x: 0, y: 0, z: 3}
 --- !u!114 &11438548
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8969,7 +8969,7 @@ MonoBehaviour:
     info:
       name: Follow Slide
       path: Follow Slide
-      id: -1763132/1ca4517e-bd62-4930-89d9-673ad84ec1d6
+      id: -5722/1ca4517e-bd62-4930-89d9-673ad84ec1d6
       localID: 1ca4517e-bd62-4930-89d9-673ad84ec1d6
       parent: {fileID: 11438548}
       mode: 0
@@ -8982,7 +8982,7 @@ MonoBehaviour:
       info:
         name: X
         path: Follow Slide/X
-        id: -1763132/4fb7337e-faa9-4b24-b089-131cbf432794
+        id: -5722/4fb7337e-faa9-4b24-b089-131cbf432794
         localID: 4fb7337e-faa9-4b24-b089-131cbf432794
         parent: {fileID: 11438548}
         mode: 0
@@ -8995,7 +8995,7 @@ MonoBehaviour:
       info:
         name: Y
         path: Follow Slide/Y
-        id: -1763132/08edcf1a-2f0e-4a91-9dc6-7efdf860f738
+        id: -5722/08edcf1a-2f0e-4a91-9dc6-7efdf860f738
         localID: 08edcf1a-2f0e-4a91-9dc6-7efdf860f738
         parent: {fileID: 11438548}
         mode: 0
@@ -9008,7 +9008,7 @@ MonoBehaviour:
       info:
         name: Z
         path: Follow Slide/Z
-        id: -1763132/ec5fc48d-8630-4f9d-b6dd-b769c3f437ad
+        id: -5722/ec5fc48d-8630-4f9d-b6dd-b769c3f437ad
         localID: ec5fc48d-8630-4f9d-b6dd-b769c3f437ad
         parent: {fileID: 11438548}
         mode: 0
@@ -9059,7 +9059,7 @@ MonoBehaviour:
   attribute:
     name: Target
     path: Target
-    id: -1762786/d39974ea-9fc3-402f-b1bf-2478c7d914a4
+    id: -5742/d39974ea-9fc3-402f-b1bf-2478c7d914a4
     localID: d39974ea-9fc3-402f-b1bf-2478c7d914a4
     parent: {fileID: 11465698}
     mode: 0
@@ -9132,7 +9132,7 @@ MonoBehaviour:
   attribute:
     name: Z
     path: Watch/Goal Point/Z
-    id: -1762802/e2b4ebd7-8300-4416-8e33-f0f59487a8a1
+    id: -5726/e2b4ebd7-8300-4416-8e33-f0f59487a8a1
     localID: e2b4ebd7-8300-4416-8e33-f0f59487a8a1
     parent: {fileID: 11430404}
     mode: 0
@@ -9303,7 +9303,7 @@ MonoBehaviour:
   attribute:
     name: Active
     path: Camera Orbit Y/Active
-    id: -1762792/1f096c8b-9a03-4501-87fa-a079e56012f8
+    id: -5736/1f096c8b-9a03-4501-87fa-a079e56012f8
     localID: 1f096c8b-9a03-4501-87fa-a079e56012f8
     parent: {fileID: 11473842}
     mode: 0
@@ -9376,7 +9376,7 @@ MonoBehaviour:
   attribute:
     name: Active
     path: Disable/Active
-    id: -1763310/dd2ef7cc-feb5-49f3-894d-8093da588024
+    id: -5744/dd2ef7cc-feb5-49f3-894d-8093da588024
     localID: dd2ef7cc-feb5-49f3-894d-8093da588024
     parent: {fileID: 11488714}
     mode: 0
@@ -9418,7 +9418,7 @@ MonoBehaviour:
     info:
       name: Requirable
       path: Line Cast/Requirable
-      id: -1762810/64ade91b-31ae-4cc0-acd6-7e71ac9034fb
+      id: -5750/64ade91b-31ae-4cc0-acd6-7e71ac9034fb
       localID: 64ade91b-31ae-4cc0-acd6-7e71ac9034fb
       parent: {fileID: 11442334}
       mode: 0
@@ -9431,7 +9431,7 @@ MonoBehaviour:
     info:
       name: Ready
       path: Line Cast/Ready
-      id: -1762810/d6874361-4b4b-402b-8d5a-8addf2d23184
+      id: -5750/d6874361-4b4b-402b-8d5a-8addf2d23184
       localID: d6874361-4b4b-402b-8d5a-8addf2d23184
       parent: {fileID: 11442334}
       mode: 0
@@ -9444,7 +9444,7 @@ MonoBehaviour:
     info:
       name: Usable
       path: Line Cast/Usable
-      id: -1762810/f1f6e155-78b4-40a6-849e-c69453438fe4
+      id: -5750/f1f6e155-78b4-40a6-849e-c69453438fe4
       localID: f1f6e155-78b4-40a6-849e-c69453438fe4
       parent: {fileID: 11442334}
       mode: 0
@@ -9457,7 +9457,7 @@ MonoBehaviour:
     info:
       name: Active
       path: Line Cast/Active
-      id: -1762810/3bab40ba-b112-4e36-b5b3-7864d7def741
+      id: -5750/3bab40ba-b112-4e36-b5b3-7864d7def741
       localID: 3bab40ba-b112-4e36-b5b3-7864d7def741
       parent: {fileID: 11442334}
       mode: 0
@@ -9470,7 +9470,7 @@ MonoBehaviour:
     info:
       name: Used
       path: Line Cast/Used
-      id: -1762810/8c20c288-26ad-4f4d-a96f-a0d707b0f4e6
+      id: -5750/8c20c288-26ad-4f4d-a96f-a0d707b0f4e6
       localID: 8c20c288-26ad-4f4d-a96f-a0d707b0f4e6
       parent: {fileID: 11442334}
       mode: 0
@@ -9487,7 +9487,7 @@ MonoBehaviour:
     info:
       name: Source
       path: Line Cast/Source
-      id: -1762810/101830b1-3b4d-499c-9050-568433c02596
+      id: -5750/101830b1-3b4d-499c-9050-568433c02596
       localID: 101830b1-3b4d-499c-9050-568433c02596
       parent: {fileID: 11442334}
       mode: 0
@@ -9500,7 +9500,7 @@ MonoBehaviour:
       info:
         name: X
         path: Line Cast/Source/X
-        id: -1762810/c104e28d-5e78-4462-8468-d299bf1a7e2d
+        id: -5750/c104e28d-5e78-4462-8468-d299bf1a7e2d
         localID: c104e28d-5e78-4462-8468-d299bf1a7e2d
         parent: {fileID: 11442334}
         mode: 0
@@ -9513,7 +9513,7 @@ MonoBehaviour:
       info:
         name: Y
         path: Line Cast/Source/Y
-        id: -1762810/4232753c-12c7-4769-98e7-5de840214f87
+        id: -5750/4232753c-12c7-4769-98e7-5de840214f87
         localID: 4232753c-12c7-4769-98e7-5de840214f87
         parent: {fileID: 11442334}
         mode: 0
@@ -9526,7 +9526,7 @@ MonoBehaviour:
       info:
         name: Z
         path: Line Cast/Source/Z
-        id: -1762810/91140e38-27e9-436c-af9c-0bfb311cf624
+        id: -5750/91140e38-27e9-436c-af9c-0bfb311cf624
         localID: 91140e38-27e9-436c-af9c-0bfb311cf624
         parent: {fileID: 11442334}
         mode: 0
@@ -9539,7 +9539,7 @@ MonoBehaviour:
     info:
       name: Goal
       path: Line Cast/Goal
-      id: -1762810/0a70fbf0-3c42-4622-b517-479d955ef439
+      id: -5750/0a70fbf0-3c42-4622-b517-479d955ef439
       localID: 0a70fbf0-3c42-4622-b517-479d955ef439
       parent: {fileID: 11442334}
       mode: 0
@@ -9552,7 +9552,7 @@ MonoBehaviour:
       info:
         name: X
         path: Line Cast/Goal/X
-        id: -1762810/40943d8c-fa73-4fd6-b70f-b24967a648ae
+        id: -5750/40943d8c-fa73-4fd6-b70f-b24967a648ae
         localID: 40943d8c-fa73-4fd6-b70f-b24967a648ae
         parent: {fileID: 11442334}
         mode: 0
@@ -9565,7 +9565,7 @@ MonoBehaviour:
       info:
         name: Y
         path: Line Cast/Goal/Y
-        id: -1762810/d9da1416-a06c-4ee0-88fd-078a41b1bf13
+        id: -5750/d9da1416-a06c-4ee0-88fd-078a41b1bf13
         localID: d9da1416-a06c-4ee0-88fd-078a41b1bf13
         parent: {fileID: 11442334}
         mode: 0
@@ -9578,7 +9578,7 @@ MonoBehaviour:
       info:
         name: Z
         path: Line Cast/Goal/Z
-        id: -1762810/5a43a8c3-f86e-48fd-8e08-ff48656565ab
+        id: -5750/5a43a8c3-f86e-48fd-8e08-ff48656565ab
         localID: 5a43a8c3-f86e-48fd-8e08-ff48656565ab
         parent: {fileID: 11442334}
         mode: 0
@@ -9594,7 +9594,7 @@ MonoBehaviour:
     info:
       name: Hit Point
       path: Line Cast/Hit Point
-      id: -1762810/9808d0f7-7dfe-4693-9d9b-c2f649801a54
+      id: -5750/9808d0f7-7dfe-4693-9d9b-c2f649801a54
       localID: 9808d0f7-7dfe-4693-9d9b-c2f649801a54
       parent: {fileID: 11442334}
       mode: 0
@@ -9607,7 +9607,7 @@ MonoBehaviour:
       info:
         name: X
         path: Line Cast/Hit Point/X
-        id: -1762810/0c189a9a-3391-4180-87be-b33fbab856c9
+        id: -5750/0c189a9a-3391-4180-87be-b33fbab856c9
         localID: 0c189a9a-3391-4180-87be-b33fbab856c9
         parent: {fileID: 11442334}
         mode: 0
@@ -9620,7 +9620,7 @@ MonoBehaviour:
       info:
         name: Y
         path: Line Cast/Hit Point/Y
-        id: -1762810/25f5561e-68e8-47e8-8277-d8dfe412647b
+        id: -5750/25f5561e-68e8-47e8-8277-d8dfe412647b
         localID: 25f5561e-68e8-47e8-8277-d8dfe412647b
         parent: {fileID: 11442334}
         mode: 0
@@ -9633,7 +9633,7 @@ MonoBehaviour:
       info:
         name: Z
         path: Line Cast/Hit Point/Z
-        id: -1762810/3ae0a1da-3844-4e59-9467-94968dcb2f25
+        id: -5750/3ae0a1da-3844-4e59-9467-94968dcb2f25
         localID: 3ae0a1da-3844-4e59-9467-94968dcb2f25
         parent: {fileID: 11442334}
         mode: 0
@@ -9646,7 +9646,7 @@ MonoBehaviour:
     info:
       name: Hit Normal
       path: Line Cast/Hit Normal
-      id: -1762810/07e19879-85cd-4f29-8227-c139da63c9be
+      id: -5750/07e19879-85cd-4f29-8227-c139da63c9be
       localID: 07e19879-85cd-4f29-8227-c139da63c9be
       parent: {fileID: 11442334}
       mode: 0
@@ -9659,7 +9659,7 @@ MonoBehaviour:
       info:
         name: X
         path: Line Cast/Hit Normal/X
-        id: -1762810/850b5408-ab1f-4f16-a04b-6ad7a7be399c
+        id: -5750/850b5408-ab1f-4f16-a04b-6ad7a7be399c
         localID: 850b5408-ab1f-4f16-a04b-6ad7a7be399c
         parent: {fileID: 11442334}
         mode: 0
@@ -9672,7 +9672,7 @@ MonoBehaviour:
       info:
         name: Y
         path: Line Cast/Hit Normal/Y
-        id: -1762810/8b54ee73-10ee-42ac-89ee-b18283865e4c
+        id: -5750/8b54ee73-10ee-42ac-89ee-b18283865e4c
         localID: 8b54ee73-10ee-42ac-89ee-b18283865e4c
         parent: {fileID: 11442334}
         mode: 0
@@ -9685,7 +9685,7 @@ MonoBehaviour:
       info:
         name: Z
         path: Line Cast/Hit Normal/Z
-        id: -1762810/fec45cc7-1eb4-4ccb-949f-93c8d80308cb
+        id: -5750/fec45cc7-1eb4-4ccb-949f-93c8d80308cb
         localID: fec45cc7-1eb4-4ccb-949f-93c8d80308cb
         parent: {fileID: 11442334}
         mode: 0
@@ -9698,7 +9698,7 @@ MonoBehaviour:
     info:
       name: Hit Distance
       path: Line Cast/Hit Distance
-      id: -1762810/4f0f01d6-31d4-4bd9-8c77-eea758cbab72
+      id: -5750/4f0f01d6-31d4-4bd9-8c77-eea758cbab72
       localID: 4f0f01d6-31d4-4bd9-8c77-eea758cbab72
       parent: {fileID: 11442334}
       mode: 0
@@ -9756,7 +9756,7 @@ MonoBehaviour:
   attribute:
     name: Input Name
     path: Mouse Input/Input Name
-    id: -1762798/60ba7719-617f-4377-947d-a779c8af3eaf
+    id: -5730/60ba7719-617f-4377-947d-a779c8af3eaf
     localID: 60ba7719-617f-4377-947d-a779c8af3eaf
     parent: {fileID: 11412688}
     mode: 0
@@ -9827,12 +9827,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Set Zoom Goal/Value/1
-  referenceID: -1763206/199f0e72-9297-4d9a-b0f5-c8a900103983
+  referenceID: -5714/199f0e72-9297-4d9a-b0f5-c8a900103983
   referencePath: Mouse Intensity
   attribute:
     name: Value
     path: Set Zoom Goal/Value
-    id: -1763182/996cdd64-ed7c-4820-ae9e-85bdac2923ee
+    id: -5716/996cdd64-ed7c-4820-ae9e-85bdac2923ee
     localID: 996cdd64-ed7c-4820-ae9e-85bdac2923ee
     parent: {fileID: 11497228}
     mode: 2
@@ -9900,7 +9900,7 @@ MonoBehaviour:
   attribute:
     name: Y
     path: Transform/Direction/Up/Y
-    id: -1763304/10f9502d-4ade-4821-beee-7dcbb937980e
+    id: -5706/10f9502d-4ade-4821-beee-7dcbb937980e
     localID: 10f9502d-4ade-4821-beee-7dcbb937980e
     parent: {fileID: 11486396}
     mode: 0
@@ -9973,7 +9973,7 @@ MonoBehaviour:
   attribute:
     name: Active
     path: Camera Orbit X/Active
-    id: -1762800/c10bd856-58d0-4a24-941a-d0a55368b12c
+    id: -5728/c10bd856-58d0-4a24-941a-d0a55368b12c
     localID: c10bd856-58d0-4a24-941a-d0a55368b12c
     parent: {fileID: 11429126}
     mode: 0
@@ -10046,7 +10046,7 @@ MonoBehaviour:
   attribute:
     name: Used
     path: Zoom Adjust/Used
-    id: -1762794/99b855b5-5701-4d28-ac7e-1d9b882f233b
+    id: -5734/99b855b5-5701-4d28-ac7e-1d9b882f233b
     localID: 99b855b5-5701-4d28-ac7e-1d9b882f233b
     parent: {fileID: 11453964}
     mode: 0
@@ -10119,7 +10119,7 @@ MonoBehaviour:
   attribute:
     name: Speed
     path: Follow/Follow/Transition/Speed
-    id: -1762804/433968ac-f6a2-4521-bf09-de1e67b52909
+    id: -5692/433968ac-f6a2-4521-bf09-de1e67b52909
     localID: 433968ac-f6a2-4521-bf09-de1e67b52909
     parent: {fileID: 11474082}
     mode: 0
@@ -10184,7 +10184,7 @@ MonoBehaviour:
   attribute:
     name: Z
     path: Transform/Direction/Back/Z
-    id: -1763304/3dad85ec-a1f3-4b36-a733-f42dda8f8cc6
+    id: -5706/3dad85ec-a1f3-4b36-a733-f42dda8f8cc6
     localID: 3dad85ec-a1f3-4b36-a733-f42dda8f8cc6
     parent: {fileID: 11486396}
     mode: 0
@@ -10257,7 +10257,7 @@ MonoBehaviour:
   attribute:
     name: Usable
     path: Camera Orbit X/Usable
-    id: -1762800/60ab6867-c0f3-415a-bff2-8ae93993d3d4
+    id: -5728/60ab6867-c0f3-415a-bff2-8ae93993d3d4
     localID: 60ab6867-c0f3-415a-bff2-8ae93993d3d4
     parent: {fileID: 11429126}
     mode: 0
@@ -10322,7 +10322,7 @@ MonoBehaviour:
   attribute:
     name: X
     path: Follow Height/X
-    id: -1763122/746ed861-789e-469a-af9a-e459156b020f
+    id: -5724/746ed861-789e-469a-af9a-e459156b020f
     localID: 746ed861-789e-469a-af9a-e459156b020f
     parent: {fileID: 11428940}
     mode: 0
@@ -10390,12 +10390,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Follow/Follow Offset/1
-  referenceID: -1763122/30c95990-717c-47ff-b535-f46d82440dfe
+  referenceID: -5724/30c95990-717c-47ff-b535-f46d82440dfe
   referencePath: Follow Height
   attribute:
     name: Follow Offset
     path: Follow/Follow Offset
-    id: -1762804/143f0e03-3fcf-41a0-ba6b-5bcb2f5b8006
+    id: -5692/143f0e03-3fcf-41a0-ba6b-5bcb2f5b8006
     localID: 143f0e03-3fcf-41a0-ba6b-5bcb2f5b8006
     parent: {fileID: 11474082}
     mode: 2
@@ -10470,7 +10470,7 @@ MonoBehaviour:
   attribute:
     name: Goal Point
     path: Watch/Goal Point
-    id: -1762802/d68e88fa-4fd8-4eef-8286-5f35c1fbe306
+    id: -5726/d68e88fa-4fd8-4eef-8286-5f35c1fbe306
     localID: d68e88fa-4fd8-4eef-8286-5f35c1fbe306
     parent: {fileID: 11430404}
     mode: 2
@@ -10536,7 +10536,7 @@ MonoBehaviour:
   attribute:
     name: X
     path: Transform/Direction/Back/X
-    id: -1763304/8c788f8b-0caf-444c-86dc-bb181020fb05
+    id: -5706/8c788f8b-0caf-444c-86dc-bb181020fb05
     localID: 8c788f8b-0caf-444c-86dc-bb181020fb05
     parent: {fileID: 11486396}
     mode: 0
@@ -10609,7 +10609,7 @@ MonoBehaviour:
   attribute:
     name: Target
     path: Disable/Target
-    id: -1763310/bbc7bf4f-1c00-47fe-8d4b-ba97e82939af
+    id: -5744/bbc7bf4f-1c00-47fe-8d4b-ba97e82939af
     localID: bbc7bf4f-1c00-47fe-8d4b-ba97e82939af
     parent: {fileID: 11488714}
     mode: 0
@@ -10682,7 +10682,7 @@ MonoBehaviour:
   attribute:
     name: Usable
     path: Modify Position/Usable
-    id: -1762808/1f047402-31ea-4931-a96e-c33a124df4cf
+    id: -5752/1f047402-31ea-4931-a96e-c33a124df4cf
     localID: 1f047402-31ea-4931-a96e-c33a124df4cf
     parent: {fileID: 11461954}
     mode: 0
@@ -10755,7 +10755,7 @@ MonoBehaviour:
   attribute:
     name: Speed
     path: Watch/Rotation Point/Transition/Speed
-    id: -1762802/791f9fe0-fe5a-4e94-b053-91aecf9dbf77
+    id: -5726/791f9fe0-fe5a-4e94-b053-91aecf9dbf77
     localID: 791f9fe0-fe5a-4e94-b053-91aecf9dbf77
     parent: {fileID: 11430404}
     mode: 0
@@ -10828,7 +10828,7 @@ MonoBehaviour:
   attribute:
     name: Y
     path: Line Cast/Source/Y
-    id: -1762810/4232753c-12c7-4769-98e7-5de840214f87
+    id: -5750/4232753c-12c7-4769-98e7-5de840214f87
     localID: 4232753c-12c7-4769-98e7-5de840214f87
     parent: {fileID: 11442334}
     mode: 0
@@ -10896,12 +10896,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Watch/Goal Point/0
-  referenceID: -1762784/5d033220-f5d3-44f8-856d-936afe954598
+  referenceID: -5694/5d033220-f5d3-44f8-856d-936afe954598
   referencePath: Target Position
   attribute:
     name: Goal Point
     path: Watch/Goal Point
-    id: -1762802/d68e88fa-4fd8-4eef-8286-5f35c1fbe306
+    id: -5726/d68e88fa-4fd8-4eef-8286-5f35c1fbe306
     localID: d68e88fa-4fd8-4eef-8286-5f35c1fbe306
     parent: {fileID: 11430404}
     mode: 2
@@ -10975,7 +10975,7 @@ MonoBehaviour:
   attribute:
     name: X
     path: Line Cast/Hit Point/X
-    id: -1762810/0c189a9a-3391-4180-87be-b33fbab856c9
+    id: -5750/0c189a9a-3391-4180-87be-b33fbab856c9
     localID: 0c189a9a-3391-4180-87be-b33fbab856c9
     parent: {fileID: 11442334}
     mode: 0
@@ -11048,7 +11048,7 @@ MonoBehaviour:
   attribute:
     name: Used
     path: Lifetime/Used
-    id: -1763308/793dc28c-a7bf-4c3c-82b0-98bcf4acf869
+    id: -5746/793dc28c-a7bf-4c3c-82b0-98bcf4acf869
     localID: 793dc28c-a7bf-4c3c-82b0-98bcf4acf869
     parent: {fileID: 11488470}
     mode: 0
@@ -11108,12 +11108,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Last Position/0
-  referenceID: -1762810/9808d0f7-7dfe-4693-9d9b-c2f649801a54
+  referenceID: -5750/9808d0f7-7dfe-4693-9d9b-c2f649801a54
   referencePath: Line Cast/Hit Point
   attribute:
     name: Last Position
     path: Last Position
-    id: -1762812/96ed5258-5434-413f-902b-1d9eba440244
+    id: -5748/96ed5258-5434-413f-902b-1d9eba440244
     localID: 96ed5258-5434-413f-902b-1d9eba440244
     parent: {fileID: 11455488}
     mode: 2
@@ -11187,7 +11187,7 @@ MonoBehaviour:
   attribute:
     name: Active
     path: Follow/Active
-    id: -1762804/e6d5e9b9-80b8-4f94-bd66-ace63aec71a9
+    id: -5692/e6d5e9b9-80b8-4f94-bd66-ace63aec71a9
     localID: e6d5e9b9-80b8-4f94-bd66-ace63aec71a9
     parent: {fileID: 11474082}
     mode: 0
@@ -11260,7 +11260,7 @@ MonoBehaviour:
   attribute:
     name: Used
     path: Camera Orbit Y/Used
-    id: -1762792/fbc84254-9a68-4bb9-b658-b59b43a7b5e0
+    id: -5736/fbc84254-9a68-4bb9-b658-b59b43a7b5e0
     localID: fbc84254-9a68-4bb9-b658-b59b43a7b5e0
     parent: {fileID: 11473842}
     mode: 0
@@ -11333,7 +11333,7 @@ MonoBehaviour:
   attribute:
     name: Used
     path: Follow/Used
-    id: -1762804/5a887af7-73fb-4c88-97ea-b0774eff4624
+    id: -5692/5a887af7-73fb-4c88-97ea-b0774eff4624
     localID: 5a887af7-73fb-4c88-97ea-b0774eff4624
     parent: {fileID: 11474082}
     mode: 0
@@ -11398,7 +11398,7 @@ MonoBehaviour:
   attribute:
     name: Y
     path: Last Position/Y
-    id: -1762812/0af7d509-3437-4ea6-aee8-82119310cd7c
+    id: -5748/0af7d509-3437-4ea6-aee8-82119310cd7c
     localID: 0af7d509-3437-4ea6-aee8-82119310cd7c
     parent: {fileID: 11455488}
     mode: 0
@@ -11463,7 +11463,7 @@ MonoBehaviour:
   attribute:
     name: X
     path: Transform/Direction/Up/X
-    id: -1763304/9da8b0e5-831f-426e-81f4-ad03ccbe2069
+    id: -5706/9da8b0e5-831f-426e-81f4-ad03ccbe2069
     localID: 9da8b0e5-831f-426e-81f4-ad03ccbe2069
     parent: {fileID: 11486396}
     mode: 0
@@ -11536,7 +11536,7 @@ MonoBehaviour:
   attribute:
     name: Requirable
     path: Follow/Requirable
-    id: -1762804/19686909-d76c-4b27-b9d9-558058e71c06
+    id: -5692/19686909-d76c-4b27-b9d9-558058e71c06
     localID: 19686909-d76c-4b27-b9d9-558058e71c06
     parent: {fileID: 11474082}
     mode: 0
@@ -11601,7 +11601,7 @@ MonoBehaviour:
   attribute:
     name: X
     path: Transform/Direction/Forward/X
-    id: -1763304/b606da24-43f4-4c6b-8ca4-9e23d43939aa
+    id: -5706/b606da24-43f4-4c6b-8ca4-9e23d43939aa
     localID: b606da24-43f4-4c6b-8ca4-9e23d43939aa
     parent: {fileID: 11486396}
     mode: 0
@@ -11674,7 +11674,7 @@ MonoBehaviour:
   attribute:
     name: Held During Intensity
     path: Mouse Input/Held During Intensity
-    id: -1762790/ceead2a6-7137-4850-ad50-4ae4ded6e655
+    id: -5738/ceead2a6-7137-4850-ad50-4ae4ded6e655
     localID: ceead2a6-7137-4850-ad50-4ae4ded6e655
     parent: {fileID: 11407292}
     mode: 0
@@ -11747,7 +11747,7 @@ MonoBehaviour:
   attribute:
     name: Requirable
     path: Modify Position/Requirable
-    id: -1762808/7a963be2-745f-432b-bf53-af389b06fda5
+    id: -5752/7a963be2-745f-432b-bf53-af389b06fda5
     localID: 7a963be2-745f-432b-bf53-af389b06fda5
     parent: {fileID: 11461954}
     mode: 0
@@ -11820,7 +11820,7 @@ MonoBehaviour:
   attribute:
     name: Goal
     path: Zoom Distance/Goal
-    id: -1763158/74ef2a32-3d8e-4630-8991-969c7d4b217b
+    id: -5718/74ef2a32-3d8e-4630-8991-969c7d4b217b
     localID: 74ef2a32-3d8e-4630-8991-969c7d4b217b
     parent: {fileID: 11460206}
     mode: 0
@@ -11843,7 +11843,7 @@ MonoBehaviour:
       dataC: []
   operation: 0
   special: 0
-  value: 0
+  value: 3
 --- !u!114 &11453014
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11893,7 +11893,7 @@ MonoBehaviour:
   attribute:
     name: Y
     path: Follow/Follow Offset/Y
-    id: -1762804/e84b18af-6519-4eba-bc2f-03df9e55193a
+    id: -5692/e84b18af-6519-4eba-bc2f-03df9e55193a
     localID: e84b18af-6519-4eba-bc2f-03df9e55193a
     parent: {fileID: 11474082}
     mode: 0
@@ -11966,7 +11966,7 @@ MonoBehaviour:
   attribute:
     name: Used
     path: Reset Position/Used
-    id: -1762806/051923d8-ba75-4602-a129-1354e8c4c433
+    id: -5754/051923d8-ba75-4602-a129-1354e8c4c433
     localID: 051923d8-ba75-4602-a129-1354e8c4c433
     parent: {fileID: 11482484}
     mode: 0
@@ -12039,7 +12039,7 @@ MonoBehaviour:
   attribute:
     name: Requirable
     path: Zoom Distance/Requirable
-    id: -1763158/8f3013d0-3e81-4a65-adda-886274a7d47a
+    id: -5718/8f3013d0-3e81-4a65-adda-886274a7d47a
     localID: 8f3013d0-3e81-4a65-adda-886274a7d47a
     parent: {fileID: 11460206}
     mode: 0
@@ -12112,7 +12112,7 @@ MonoBehaviour:
   attribute:
     name: Ready
     path: Mouse Input/Ready
-    id: -1762798/5ffc5011-fd0a-4b1a-8ad3-92f88808ef92
+    id: -5730/5ffc5011-fd0a-4b1a-8ad3-92f88808ef92
     localID: 5ffc5011-fd0a-4b1a-8ad3-92f88808ef92
     parent: {fileID: 11412688}
     mode: 0
@@ -12154,7 +12154,7 @@ MonoBehaviour:
     info:
       name: Requirable
       path: Zoom Adjust/Requirable
-      id: -1762794/1814c6c9-9887-41d3-b8a0-669347021eac
+      id: -5734/1814c6c9-9887-41d3-b8a0-669347021eac
       localID: 1814c6c9-9887-41d3-b8a0-669347021eac
       parent: {fileID: 11453964}
       mode: 0
@@ -12167,7 +12167,7 @@ MonoBehaviour:
     info:
       name: Ready
       path: Zoom Adjust/Ready
-      id: -1762794/49df8b59-8514-4c48-b60c-694e5352ce92
+      id: -5734/49df8b59-8514-4c48-b60c-694e5352ce92
       localID: 49df8b59-8514-4c48-b60c-694e5352ce92
       parent: {fileID: 11453964}
       mode: 0
@@ -12180,7 +12180,7 @@ MonoBehaviour:
     info:
       name: Usable
       path: Zoom Adjust/Usable
-      id: -1762794/63b54850-b0bf-40ab-9a78-aa61d37c96d7
+      id: -5734/63b54850-b0bf-40ab-9a78-aa61d37c96d7
       localID: 63b54850-b0bf-40ab-9a78-aa61d37c96d7
       parent: {fileID: 11453964}
       mode: 0
@@ -12193,7 +12193,7 @@ MonoBehaviour:
     info:
       name: Active
       path: Zoom Adjust/Active
-      id: -1762794/608d43eb-ff98-4397-801a-531ce24faa33
+      id: -5734/608d43eb-ff98-4397-801a-531ce24faa33
       localID: 608d43eb-ff98-4397-801a-531ce24faa33
       parent: {fileID: 11453964}
       mode: 0
@@ -12206,7 +12206,7 @@ MonoBehaviour:
     info:
       name: Used
       path: Zoom Adjust/Used
-      id: -1762794/99b855b5-5701-4d28-ac7e-1d9b882f233b
+      id: -5734/99b855b5-5701-4d28-ac7e-1d9b882f233b
       localID: 99b855b5-5701-4d28-ac7e-1d9b882f233b
       parent: {fileID: 11453964}
       mode: 0
@@ -12222,7 +12222,7 @@ MonoBehaviour:
     info:
       name: Target
       path: Zoom Adjust/Target
-      id: -1762794/573cfdfb-c698-4b0d-9864-867eef4951fd
+      id: -5734/573cfdfb-c698-4b0d-9864-867eef4951fd
       localID: 573cfdfb-c698-4b0d-9864-867eef4951fd
       parent: {fileID: 11453964}
       mode: 1
@@ -12235,7 +12235,7 @@ MonoBehaviour:
     info:
       name: Value
       path: Zoom Adjust/Value
-      id: -1762794/89a534ea-cd1f-40ff-8c6e-c7bfaff1ad6b
+      id: -5734/89a534ea-cd1f-40ff-8c6e-c7bfaff1ad6b
       localID: 89a534ea-cd1f-40ff-8c6e-c7bfaff1ad6b
       parent: {fileID: 11453964}
       mode: 0
@@ -12285,7 +12285,7 @@ MonoBehaviour:
   attribute:
     name: X
     path: Last Position/X
-    id: -1762812/f70b8b5b-bfe7-483c-8ad4-4b5d6e95e61a
+    id: -5748/f70b8b5b-bfe7-483c-8ad4-4b5d6e95e61a
     localID: f70b8b5b-bfe7-483c-8ad4-4b5d6e95e61a
     parent: {fileID: 11455488}
     mode: 0
@@ -12358,7 +12358,7 @@ MonoBehaviour:
   attribute:
     name: X
     path: Follow/Follow Offset/X
-    id: -1762804/36ff89b9-ce22-4bfb-95a7-ad08305463e1
+    id: -5692/36ff89b9-ce22-4bfb-95a7-ad08305463e1
     localID: 36ff89b9-ce22-4bfb-95a7-ad08305463e1
     parent: {fileID: 11474082}
     mode: 0
@@ -12431,7 +12431,7 @@ MonoBehaviour:
   attribute:
     name: Z
     path: Line Cast/Hit Point/Z
-    id: -1762810/3ae0a1da-3844-4e59-9467-94968dcb2f25
+    id: -5750/3ae0a1da-3844-4e59-9467-94968dcb2f25
     localID: 3ae0a1da-3844-4e59-9467-94968dcb2f25
     parent: {fileID: 11442334}
     mode: 0
@@ -12504,7 +12504,7 @@ MonoBehaviour:
   attribute:
     name: Duration
     path: Follow/Follow/Follow/Transition/Duration
-    id: -1762804/30178147-bcb0-4ea1-a3bc-61860e10c53c
+    id: -5692/30178147-bcb0-4ea1-a3bc-61860e10c53c
     localID: 30178147-bcb0-4ea1-a3bc-61860e10c53c
     parent: {fileID: 11474082}
     mode: 0
@@ -12577,7 +12577,7 @@ MonoBehaviour:
   attribute:
     name: Usable
     path: Line Cast/Usable
-    id: -1762810/f1f6e155-78b4-40a6-849e-c69453438fe4
+    id: -5750/f1f6e155-78b4-40a6-849e-c69453438fe4
     localID: f1f6e155-78b4-40a6-849e-c69453438fe4
     parent: {fileID: 11442334}
     mode: 0
@@ -12642,7 +12642,7 @@ MonoBehaviour:
   attribute:
     name: Source
     path: Source
-    id: -1762788/1e353034-be1c-426a-8436-1db907700a89
+    id: -5740/1e353034-be1c-426a-8436-1db907700a89
     localID: 1e353034-be1c-426a-8436-1db907700a89
     parent: {fileID: 11402516}
     mode: 0
@@ -12682,7 +12682,7 @@ MonoBehaviour:
     info:
       name: Last Position
       path: Last Position
-      id: -1762812/96ed5258-5434-413f-902b-1d9eba440244
+      id: -5748/96ed5258-5434-413f-902b-1d9eba440244
       localID: 96ed5258-5434-413f-902b-1d9eba440244
       parent: {fileID: 11455488}
       mode: 2
@@ -12696,7 +12696,7 @@ MonoBehaviour:
       info:
         name: X
         path: Last Position/X
-        id: -1762812/f70b8b5b-bfe7-483c-8ad4-4b5d6e95e61a
+        id: -5748/f70b8b5b-bfe7-483c-8ad4-4b5d6e95e61a
         localID: f70b8b5b-bfe7-483c-8ad4-4b5d6e95e61a
         parent: {fileID: 11455488}
         mode: 0
@@ -12709,7 +12709,7 @@ MonoBehaviour:
       info:
         name: Y
         path: Last Position/Y
-        id: -1762812/0af7d509-3437-4ea6-aee8-82119310cd7c
+        id: -5748/0af7d509-3437-4ea6-aee8-82119310cd7c
         localID: 0af7d509-3437-4ea6-aee8-82119310cd7c
         parent: {fileID: 11455488}
         mode: 0
@@ -12722,7 +12722,7 @@ MonoBehaviour:
       info:
         name: Z
         path: Last Position/Z
-        id: -1762812/7fa8d7bf-d328-41e1-8a78-f7527776b52d
+        id: -5748/7fa8d7bf-d328-41e1-8a78-f7527776b52d
         localID: 7fa8d7bf-d328-41e1-8a78-f7527776b52d
         parent: {fileID: 11455488}
         mode: 0
@@ -12768,15 +12768,15 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Target Position/0
-  referenceID: -1738958/d0ed5a92-b622-46df-a6b1-1b3190530af8
+  referenceID: -1704/d0ed5a92-b622-46df-a6b1-1b3190530af8
   referencePath: Transform/Position
   attribute:
     name: Target Position
     path: Target Position
-    id: -1762784/5d033220-f5d3-44f8-856d-936afe954598
+    id: -5694/5d033220-f5d3-44f8-856d-936afe954598
     localID: 5d033220-f5d3-44f8-856d-936afe954598
     parent: {fileID: 11465990}
-    mode: 0
+    mode: 1
     linkType: 0
     data:
     - {fileID: 11455492}
@@ -13020,7 +13020,7 @@ MonoBehaviour:
   attribute:
     name: Duration
     path: Watch/Watch/Rotation Point/Transition/Duration
-    id: -1762802/f937aeff-d43d-4bdc-839d-fcc03fa9719f
+    id: -5726/f937aeff-d43d-4bdc-839d-fcc03fa9719f
     localID: f937aeff-d43d-4bdc-839d-fcc03fa9719f
     parent: {fileID: 11430404}
     mode: 0
@@ -13080,12 +13080,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Last Position/1
-  referenceID: -1762804/143f0e03-3fcf-41a0-ba6b-5bcb2f5b8006
+  referenceID: -5692/143f0e03-3fcf-41a0-ba6b-5bcb2f5b8006
   referencePath: Follow/Follow Offset
   attribute:
     name: Last Position
     path: Last Position
-    id: -1762812/96ed5258-5434-413f-902b-1d9eba440244
+    id: -5748/96ed5258-5434-413f-902b-1d9eba440244
     localID: 96ed5258-5434-413f-902b-1d9eba440244
     parent: {fileID: 11455488}
     mode: 2
@@ -13151,7 +13151,7 @@ MonoBehaviour:
   attribute:
     name: Follow Slide
     path: Follow Slide
-    id: -1763132/1ca4517e-bd62-4930-89d9-673ad84ec1d6
+    id: -5722/1ca4517e-bd62-4930-89d9-673ad84ec1d6
     localID: 1ca4517e-bd62-4930-89d9-673ad84ec1d6
     parent: {fileID: 11438548}
     mode: 0
@@ -13224,7 +13224,7 @@ MonoBehaviour:
   attribute:
     name: Used
     path: Lock Cursor/Used
-    id: -1763306/e0f58fc1-ae5c-4b17-aec6-a0ef3872010c
+    id: -5704/e0f58fc1-ae5c-4b17-aec6-a0ef3872010c
     localID: e0f58fc1-ae5c-4b17-aec6-a0ef3872010c
     parent: {fileID: 11412844}
     mode: 0
@@ -13297,7 +13297,7 @@ MonoBehaviour:
   attribute:
     name: Z
     path: Modify Position/Value/Z
-    id: -1762808/30fead46-1486-4d31-84ec-978fe6b6fa85
+    id: -5752/30fead46-1486-4d31-84ec-978fe6b6fa85
     localID: 30fead46-1486-4d31-84ec-978fe6b6fa85
     parent: {fileID: 11461954}
     mode: 0
@@ -13370,7 +13370,7 @@ MonoBehaviour:
   attribute:
     name: Usable
     path: Lock Cursor/Usable
-    id: -1763306/78353af6-e670-40a0-bc39-4cc1d6f23aea
+    id: -5704/78353af6-e670-40a0-bc39-4cc1d6f23aea
     localID: 78353af6-e670-40a0-bc39-4cc1d6f23aea
     parent: {fileID: 11412844}
     mode: 0
@@ -13438,12 +13438,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Set Zoom Goal/Value/0
-  referenceID: -1763158/74ef2a32-3d8e-4630-8991-969c7d4b217b
+  referenceID: -5718/74ef2a32-3d8e-4630-8991-969c7d4b217b
   referencePath: Zoom Speed/Goal
   attribute:
     name: Value
     path: Set Zoom Goal/Value
-    id: -1763182/996cdd64-ed7c-4820-ae9e-85bdac2923ee
+    id: -5716/996cdd64-ed7c-4820-ae9e-85bdac2923ee
     localID: 996cdd64-ed7c-4820-ae9e-85bdac2923ee
     parent: {fileID: 11497228}
     mode: 2
@@ -13511,7 +13511,7 @@ MonoBehaviour:
   attribute:
     name: Y
     path: Transform/Direction/Right/Y
-    id: -1763304/c1deb29c-1ee7-4654-be23-c27d9171fa12
+    id: -5706/c1deb29c-1ee7-4654-be23-c27d9171fa12
     localID: c1deb29c-1ee7-4654-be23-c27d9171fa12
     parent: {fileID: 11486396}
     mode: 0
@@ -13584,7 +13584,7 @@ MonoBehaviour:
   attribute:
     name: Usable
     path: Lifetime/Usable
-    id: -1763298/848fb369-23d8-4b38-9412-fb4fa80632b1
+    id: -5712/848fb369-23d8-4b38-9412-fb4fa80632b1
     localID: 848fb369-23d8-4b38-9412-fb4fa80632b1
     parent: {fileID: 11426184}
     mode: 0
@@ -13657,7 +13657,7 @@ MonoBehaviour:
   attribute:
     name: Requirable
     path: Camera Orbit Y/Requirable
-    id: -1762792/6c01e455-c9dd-45a3-bb43-417e9ab0a500
+    id: -5736/6c01e455-c9dd-45a3-bb43-417e9ab0a500
     localID: 6c01e455-c9dd-45a3-bb43-417e9ab0a500
     parent: {fileID: 11473842}
     mode: 0
@@ -13699,7 +13699,7 @@ MonoBehaviour:
     info:
       name: Requirable
       path: Zoom Distance/Requirable
-      id: -1763158/8f3013d0-3e81-4a65-adda-886274a7d47a
+      id: -5718/8f3013d0-3e81-4a65-adda-886274a7d47a
       localID: 8f3013d0-3e81-4a65-adda-886274a7d47a
       parent: {fileID: 11460206}
       mode: 0
@@ -13712,7 +13712,7 @@ MonoBehaviour:
     info:
       name: Ready
       path: Zoom Distance/Ready
-      id: -1763158/2375f48d-5088-44a6-a506-ae4982b47ee6
+      id: -5718/2375f48d-5088-44a6-a506-ae4982b47ee6
       localID: 2375f48d-5088-44a6-a506-ae4982b47ee6
       parent: {fileID: 11460206}
       mode: 0
@@ -13725,7 +13725,7 @@ MonoBehaviour:
     info:
       name: Usable
       path: Zoom Distance/Usable
-      id: -1763158/ae35c47b-30e9-4d94-a8a8-9e55c71c37be
+      id: -5718/ae35c47b-30e9-4d94-a8a8-9e55c71c37be
       localID: ae35c47b-30e9-4d94-a8a8-9e55c71c37be
       parent: {fileID: 11460206}
       mode: 0
@@ -13738,7 +13738,7 @@ MonoBehaviour:
     info:
       name: Active
       path: Zoom Distance/Active
-      id: -1763158/b2c19cd7-d882-45c7-ab13-a52add1ab38d
+      id: -5718/b2c19cd7-d882-45c7-ab13-a52add1ab38d
       localID: b2c19cd7-d882-45c7-ab13-a52add1ab38d
       parent: {fileID: 11460206}
       mode: 0
@@ -13751,7 +13751,7 @@ MonoBehaviour:
     info:
       name: Used
       path: Zoom Distance/Used
-      id: -1763158/907e92b9-45c0-4acf-9aa3-03d524014d33
+      id: -5718/907e92b9-45c0-4acf-9aa3-03d524014d33
       localID: 907e92b9-45c0-4acf-9aa3-03d524014d33
       parent: {fileID: 11460206}
       mode: 0
@@ -13797,7 +13797,7 @@ MonoBehaviour:
     info:
       name: Speed Transition Seconds
       path: Zoom Distance/Speed Transition Seconds
-      id: -1763158/35b4d6f9-d502-461b-91f6-5efc4302d624
+      id: -5718/35b4d6f9-d502-461b-91f6-5efc4302d624
       localID: 35b4d6f9-d502-461b-91f6-5efc4302d624
       parent: {fileID: 11460206}
       mode: 0
@@ -13810,7 +13810,7 @@ MonoBehaviour:
     info:
       name: Speed
       path: Zoom Distance/Speed
-      id: -1763158/074f11dd-183d-45ce-850f-c3de531e0ee7
+      id: -5718/074f11dd-183d-45ce-850f-c3de531e0ee7
       localID: 074f11dd-183d-45ce-850f-c3de531e0ee7
       parent: {fileID: 11460206}
       mode: 0
@@ -13823,7 +13823,7 @@ MonoBehaviour:
     info:
       name: Current
       path: Zoom Distance/Current
-      id: -1763158/60abfcfc-a1b5-4f55-ad20-dbe480bcf8b3
+      id: -5718/60abfcfc-a1b5-4f55-ad20-dbe480bcf8b3
       localID: 60abfcfc-a1b5-4f55-ad20-dbe480bcf8b3
       parent: {fileID: 11460206}
       mode: 0
@@ -13836,7 +13836,7 @@ MonoBehaviour:
     info:
       name: Goal
       path: Zoom Distance/Goal
-      id: -1763158/74ef2a32-3d8e-4630-8991-969c7d4b217b
+      id: -5718/74ef2a32-3d8e-4630-8991-969c7d4b217b
       localID: 74ef2a32-3d8e-4630-8991-969c7d4b217b
       parent: {fileID: 11460206}
       mode: 0
@@ -13849,7 +13849,7 @@ MonoBehaviour:
     info:
       name: Delta
       path: Zoom Distance/Delta
-      id: -1763158/ce91c4ea-d83a-43f9-96b6-38b5d8673504
+      id: -5718/ce91c4ea-d83a-43f9-96b6-38b5d8673504
       localID: ce91c4ea-d83a-43f9-96b6-38b5d8673504
       parent: {fileID: 11460206}
       mode: 0
@@ -13907,7 +13907,7 @@ MonoBehaviour:
   attribute:
     name: Ready
     path: Camera Orbit X/Ready
-    id: -1762800/e16d70e1-f53d-4252-ba6a-b98964f853cf
+    id: -5728/e16d70e1-f53d-4252-ba6a-b98964f853cf
     localID: e16d70e1-f53d-4252-ba6a-b98964f853cf
     parent: {fileID: 11429126}
     mode: 0
@@ -13975,12 +13975,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Follow/Follow Offset/0
-  referenceID: -1763132/1ca4517e-bd62-4930-89d9-673ad84ec1d6
+  referenceID: -5722/1ca4517e-bd62-4930-89d9-673ad84ec1d6
   referencePath: Follow Slide
   attribute:
     name: Follow Offset
     path: Follow/Follow Offset
-    id: -1762804/143f0e03-3fcf-41a0-ba6b-5bcb2f5b8006
+    id: -5692/143f0e03-3fcf-41a0-ba6b-5bcb2f5b8006
     localID: 143f0e03-3fcf-41a0-ba6b-5bcb2f5b8006
     parent: {fileID: 11474082}
     mode: 2
@@ -14055,7 +14055,7 @@ MonoBehaviour:
   attribute:
     name: Goal
     path: Line Cast/Goal
-    id: -1762810/0a70fbf0-3c42-4622-b517-479d955ef439
+    id: -5750/0a70fbf0-3c42-4622-b517-479d955ef439
     localID: 0a70fbf0-3c42-4622-b517-479d955ef439
     parent: {fileID: 11442334}
     mode: 0
@@ -14097,7 +14097,7 @@ MonoBehaviour:
     info:
       name: Requirable
       path: Modify Position/Requirable
-      id: -1762808/7a963be2-745f-432b-bf53-af389b06fda5
+      id: -5752/7a963be2-745f-432b-bf53-af389b06fda5
       localID: 7a963be2-745f-432b-bf53-af389b06fda5
       parent: {fileID: 11461954}
       mode: 0
@@ -14110,7 +14110,7 @@ MonoBehaviour:
     info:
       name: Ready
       path: Modify Position/Ready
-      id: -1762808/7c3c0c50-03ec-4cd7-b375-d42cbbacc905
+      id: -5752/7c3c0c50-03ec-4cd7-b375-d42cbbacc905
       localID: 7c3c0c50-03ec-4cd7-b375-d42cbbacc905
       parent: {fileID: 11461954}
       mode: 0
@@ -14123,7 +14123,7 @@ MonoBehaviour:
     info:
       name: Usable
       path: Modify Position/Usable
-      id: -1762808/1f047402-31ea-4931-a96e-c33a124df4cf
+      id: -5752/1f047402-31ea-4931-a96e-c33a124df4cf
       localID: 1f047402-31ea-4931-a96e-c33a124df4cf
       parent: {fileID: 11461954}
       mode: 0
@@ -14136,7 +14136,7 @@ MonoBehaviour:
     info:
       name: Active
       path: Modify Position/Active
-      id: -1762808/9ff8aa7a-907a-4583-8e28-e18e664a7799
+      id: -5752/9ff8aa7a-907a-4583-8e28-e18e664a7799
       localID: 9ff8aa7a-907a-4583-8e28-e18e664a7799
       parent: {fileID: 11461954}
       mode: 0
@@ -14149,7 +14149,7 @@ MonoBehaviour:
     info:
       name: Used
       path: Modify Position/Used
-      id: -1762808/a9da572c-3318-4b19-a2f4-72b3e017a570
+      id: -5752/a9da572c-3318-4b19-a2f4-72b3e017a570
       localID: a9da572c-3318-4b19-a2f4-72b3e017a570
       parent: {fileID: 11461954}
       mode: 0
@@ -14165,7 +14165,7 @@ MonoBehaviour:
     info:
       name: Target
       path: Modify Position/Target
-      id: -1762808/b7a91331-4a0e-4aa3-884f-a77607dc8e2a
+      id: -5752/b7a91331-4a0e-4aa3-884f-a77607dc8e2a
       localID: b7a91331-4a0e-4aa3-884f-a77607dc8e2a
       parent: {fileID: 11461954}
       mode: 1
@@ -14178,7 +14178,7 @@ MonoBehaviour:
       info:
         name: X
         path: Modify Position/Target/X
-        id: -1762808/78cb62c5-f03d-4b66-aa06-3a3ce0d551fd
+        id: -5752/78cb62c5-f03d-4b66-aa06-3a3ce0d551fd
         localID: 78cb62c5-f03d-4b66-aa06-3a3ce0d551fd
         parent: {fileID: 11461954}
         mode: 0
@@ -14191,7 +14191,7 @@ MonoBehaviour:
       info:
         name: Y
         path: Modify Position/Target/Y
-        id: -1762808/43c410c3-a291-467c-8c13-53ac11dede36
+        id: -5752/43c410c3-a291-467c-8c13-53ac11dede36
         localID: 43c410c3-a291-467c-8c13-53ac11dede36
         parent: {fileID: 11461954}
         mode: 0
@@ -14204,7 +14204,7 @@ MonoBehaviour:
       info:
         name: Z
         path: Modify Position/Target/Z
-        id: -1762808/58df7e83-2e5f-4c72-8648-365377beebd0
+        id: -5752/58df7e83-2e5f-4c72-8648-365377beebd0
         localID: 58df7e83-2e5f-4c72-8648-365377beebd0
         parent: {fileID: 11461954}
         mode: 0
@@ -14217,7 +14217,7 @@ MonoBehaviour:
     info:
       name: Value
       path: Modify Position/Value
-      id: -1762808/233e5012-bab0-4fd8-b6a6-7e790c85760b
+      id: -5752/233e5012-bab0-4fd8-b6a6-7e790c85760b
       localID: 233e5012-bab0-4fd8-b6a6-7e790c85760b
       parent: {fileID: 11461954}
       mode: 2
@@ -14232,7 +14232,7 @@ MonoBehaviour:
       info:
         name: X
         path: Modify Position/Value/X
-        id: -1762808/cf3a07bc-c18f-455b-a5f7-9918658f35f1
+        id: -5752/cf3a07bc-c18f-455b-a5f7-9918658f35f1
         localID: cf3a07bc-c18f-455b-a5f7-9918658f35f1
         parent: {fileID: 11461954}
         mode: 0
@@ -14245,7 +14245,7 @@ MonoBehaviour:
       info:
         name: Y
         path: Modify Position/Value/Y
-        id: -1762808/e4c304a5-d921-402b-8df6-a7c5251a484f
+        id: -5752/e4c304a5-d921-402b-8df6-a7c5251a484f
         localID: e4c304a5-d921-402b-8df6-a7c5251a484f
         parent: {fileID: 11461954}
         mode: 0
@@ -14258,7 +14258,7 @@ MonoBehaviour:
       info:
         name: Z
         path: Modify Position/Value/Z
-        id: -1762808/30fead46-1486-4d31-84ec-978fe6b6fa85
+        id: -5752/30fead46-1486-4d31-84ec-978fe6b6fa85
         localID: 30fead46-1486-4d31-84ec-978fe6b6fa85
         parent: {fileID: 11461954}
         mode: 0
@@ -14316,7 +14316,7 @@ MonoBehaviour:
   attribute:
     name: Y
     path: Line Cast/Goal/Y
-    id: -1762810/d9da1416-a06c-4ee0-88fd-078a41b1bf13
+    id: -5750/d9da1416-a06c-4ee0-88fd-078a41b1bf13
     localID: d9da1416-a06c-4ee0-88fd-078a41b1bf13
     parent: {fileID: 11442334}
     mode: 0
@@ -14389,7 +14389,7 @@ MonoBehaviour:
   attribute:
     name: Is Angle
     path: Follow/Follow/Is Angle
-    id: -1762804/7282bd47-47aa-42df-b0b4-47a1c6d192a8
+    id: -5692/7282bd47-47aa-42df-b0b4-47a1c6d192a8
     localID: 7282bd47-47aa-42df-b0b4-47a1c6d192a8
     parent: {fileID: 11474082}
     mode: 0
@@ -14462,7 +14462,7 @@ MonoBehaviour:
   attribute:
     name: Hit Normal
     path: Line Cast/Hit Normal
-    id: -1762810/07e19879-85cd-4f29-8227-c139da63c9be
+    id: -5750/07e19879-85cd-4f29-8227-c139da63c9be
     localID: 07e19879-85cd-4f29-8227-c139da63c9be
     parent: {fileID: 11442334}
     mode: 0
@@ -14527,7 +14527,7 @@ MonoBehaviour:
   attribute:
     name: Y
     path: Transform/Direction/Down/Y
-    id: -1763304/24e3bb12-44fe-4974-845a-c70c39418c19
+    id: -5706/24e3bb12-44fe-4974-845a-c70c39418c19
     localID: 24e3bb12-44fe-4974-845a-c70c39418c19
     parent: {fileID: 11486396}
     mode: 0
@@ -14595,12 +14595,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Modify Position/Value/2
-  referenceID: -1762804/143f0e03-3fcf-41a0-ba6b-5bcb2f5b8006
+  referenceID: -5692/143f0e03-3fcf-41a0-ba6b-5bcb2f5b8006
   referencePath: Follow/Follow Offset
   attribute:
     name: Value
     path: Modify Position/Value
-    id: -1762808/233e5012-bab0-4fd8-b6a6-7e790c85760b
+    id: -5752/233e5012-bab0-4fd8-b6a6-7e790c85760b
     localID: 233e5012-bab0-4fd8-b6a6-7e790c85760b
     parent: {fileID: 11461954}
     mode: 2
@@ -14675,7 +14675,7 @@ MonoBehaviour:
   attribute:
     name: Ignore Ownership
     path: Mouse Input/Ignore Ownership
-    id: -1762790/b11548c9-16cb-4673-bdc1-5ea51170e084
+    id: -5738/b11548c9-16cb-4673-bdc1-5ea51170e084
     localID: b11548c9-16cb-4673-bdc1-5ea51170e084
     parent: {fileID: 11407292}
     mode: 0
@@ -14748,7 +14748,7 @@ MonoBehaviour:
   attribute:
     name: Z
     path: Line Cast/Hit Normal/Z
-    id: -1762810/fec45cc7-1eb4-4ccb-949f-93c8d80308cb
+    id: -5750/fec45cc7-1eb4-4ccb-949f-93c8d80308cb
     localID: fec45cc7-1eb4-4ccb-949f-93c8d80308cb
     parent: {fileID: 11442334}
     mode: 0
@@ -14788,7 +14788,7 @@ MonoBehaviour:
     info:
       name: Target
       path: Target
-      id: -1762786/d39974ea-9fc3-402f-b1bf-2478c7d914a4
+      id: -5742/d39974ea-9fc3-402f-b1bf-2478c7d914a4
       localID: d39974ea-9fc3-402f-b1bf-2478c7d914a4
       parent: {fileID: 11465698}
       mode: 0
@@ -14814,10 +14814,10 @@ MonoBehaviour:
     info:
       name: Target Position
       path: Target Position
-      id: -1762784/5d033220-f5d3-44f8-856d-936afe954598
+      id: -5694/5d033220-f5d3-44f8-856d-936afe954598
       localID: 5d033220-f5d3-44f8-856d-936afe954598
       parent: {fileID: 11465990}
-      mode: 0
+      mode: 1
       linkType: 0
       data:
       - {fileID: 11455492}
@@ -14827,7 +14827,7 @@ MonoBehaviour:
       info:
         name: X
         path: Target Position/X
-        id: -1762784/140671d7-6698-4019-9995-1efc754dad8d
+        id: -5694/140671d7-6698-4019-9995-1efc754dad8d
         localID: 140671d7-6698-4019-9995-1efc754dad8d
         parent: {fileID: 11465990}
         mode: 0
@@ -14840,7 +14840,7 @@ MonoBehaviour:
       info:
         name: Y
         path: Target Position/Y
-        id: -1762784/ab1130a1-872c-40f8-ac86-e3a28cae08b1
+        id: -5694/ab1130a1-872c-40f8-ac86-e3a28cae08b1
         localID: ab1130a1-872c-40f8-ac86-e3a28cae08b1
         parent: {fileID: 11465990}
         mode: 0
@@ -14853,7 +14853,7 @@ MonoBehaviour:
       info:
         name: Z
         path: Target Position/Z
-        id: -1762784/b57d283f-7dd9-40b2-90ce-40e79af6e24c
+        id: -5694/b57d283f-7dd9-40b2-90ce-40e79af6e24c
         localID: b57d283f-7dd9-40b2-90ce-40e79af6e24c
         parent: {fileID: 11465990}
         mode: 0
@@ -14912,7 +14912,7 @@ MonoBehaviour:
   attribute:
     name: Is Angle
     path: Watch/Rotation Point/Is Angle
-    id: -1762802/52d351b4-bf1d-423b-aabd-83e768ff5ccf
+    id: -5726/52d351b4-bf1d-423b-aabd-83e768ff5ccf
     localID: 52d351b4-bf1d-423b-aabd-83e768ff5ccf
     parent: {fileID: 11430404}
     mode: 0
@@ -14977,7 +14977,7 @@ MonoBehaviour:
   attribute:
     name: Z
     path: Last Position/Z
-    id: -1762812/7fa8d7bf-d328-41e1-8a78-f7527776b52d
+    id: -5748/7fa8d7bf-d328-41e1-8a78-f7527776b52d
     localID: 7fa8d7bf-d328-41e1-8a78-f7527776b52d
     parent: {fileID: 11455488}
     mode: 0
@@ -15050,7 +15050,7 @@ MonoBehaviour:
   attribute:
     name: Used
     path: Mouse Input/Used
-    id: -1762790/5ab4d8ac-779e-4215-9d0e-d4d80cd3c0ec
+    id: -5738/5ab4d8ac-779e-4215-9d0e-d4d80cd3c0ec
     localID: 5ab4d8ac-779e-4215-9d0e-d4d80cd3c0ec
     parent: {fileID: 11407292}
     mode: 0
@@ -15123,7 +15123,7 @@ MonoBehaviour:
   attribute:
     name: Input Name
     path: Mouse Z/Input Name
-    id: -1762796/b6676621-e02a-44aa-9247-a130437efbc9
+    id: -5732/b6676621-e02a-44aa-9247-a130437efbc9
     localID: b6676621-e02a-44aa-9247-a130437efbc9
     parent: {fileID: 11428766}
     mode: 0
@@ -15199,7 +15199,7 @@ MonoBehaviour:
   attribute:
     name: Ready
     path: Zoom Distance/Ready
-    id: -1763158/2375f48d-5088-44a6-a506-ae4982b47ee6
+    id: -5718/2375f48d-5088-44a6-a506-ae4982b47ee6
     localID: 2375f48d-5088-44a6-a506-ae4982b47ee6
     parent: {fileID: 11460206}
     mode: 0
@@ -15272,7 +15272,7 @@ MonoBehaviour:
   attribute:
     name: Ready
     path: Set Zoom Goal/Ready
-    id: -1763182/9d8794b1-36bf-4a7c-9da1-74aade201484
+    id: -5716/9d8794b1-36bf-4a7c-9da1-74aade201484
     localID: 9d8794b1-36bf-4a7c-9da1-74aade201484
     parent: {fileID: 11497228}
     mode: 0
@@ -15345,7 +15345,7 @@ MonoBehaviour:
   attribute:
     name: Ready
     path: Disable/Ready
-    id: -1763300/3a8b1164-8e48-4c55-8f18-70b66465324c
+    id: -5710/3a8b1164-8e48-4c55-8f18-70b66465324c
     localID: 3a8b1164-8e48-4c55-8f18-70b66465324c
     parent: {fileID: 11493514}
     mode: 0
@@ -15418,7 +15418,7 @@ MonoBehaviour:
   attribute:
     name: Requirable
     path: Set Zoom Goal/Requirable
-    id: -1763182/d7ea1c92-224e-4676-9fba-7112a17d8f4c
+    id: -5716/d7ea1c92-224e-4676-9fba-7112a17d8f4c
     localID: d7ea1c92-224e-4676-9fba-7112a17d8f4c
     parent: {fileID: 11497228}
     mode: 0
@@ -15491,7 +15491,7 @@ MonoBehaviour:
   attribute:
     name: Usable
     path: Lifetime/Usable
-    id: -1763308/b0f29e25-0891-4484-886f-47219bbe68bf
+    id: -5746/b0f29e25-0891-4484-886f-47219bbe68bf
     localID: b0f29e25-0891-4484-886f-47219bbe68bf
     parent: {fileID: 11488470}
     mode: 0
@@ -15564,7 +15564,7 @@ MonoBehaviour:
   attribute:
     name: Active
     path: Set Zoom Goal/Active
-    id: -1763182/0a249d77-3ea5-494c-b715-6f2618a3e093
+    id: -5716/0a249d77-3ea5-494c-b715-6f2618a3e093
     localID: 0a249d77-3ea5-494c-b715-6f2618a3e093
     parent: {fileID: 11497228}
     mode: 0
@@ -15637,7 +15637,7 @@ MonoBehaviour:
   attribute:
     name: Requirable
     path: Reset Position/Requirable
-    id: -1762806/ad6f1a13-830d-4906-8c25-715439381e7a
+    id: -5754/ad6f1a13-830d-4906-8c25-715439381e7a
     localID: ad6f1a13-830d-4906-8c25-715439381e7a
     parent: {fileID: 11482484}
     mode: 0
@@ -15710,7 +15710,7 @@ MonoBehaviour:
   attribute:
     name: Usable
     path: Mouse Input/Usable
-    id: -1762790/6769b698-aed1-4fc5-9714-445c7988c5c1
+    id: -5738/6769b698-aed1-4fc5-9714-445c7988c5c1
     localID: 6769b698-aed1-4fc5-9714-445c7988c5c1
     parent: {fileID: 11407292}
     mode: 0
@@ -15783,7 +15783,7 @@ MonoBehaviour:
   attribute:
     name: Used
     path: Disable/Used
-    id: -1763310/ce1e868e-6e88-46c4-a1bb-9568e84bc45c
+    id: -5744/ce1e868e-6e88-46c4-a1bb-9568e84bc45c
     localID: ce1e868e-6e88-46c4-a1bb-9568e84bc45c
     parent: {fileID: 11488714}
     mode: 0
@@ -15848,7 +15848,7 @@ MonoBehaviour:
   attribute:
     name: Z
     path: Transform/Direction/Right/Z
-    id: -1763304/9c4c3748-6d19-4ace-bfa4-49e24a7d646c
+    id: -5706/9c4c3748-6d19-4ace-bfa4-49e24a7d646c
     localID: 9c4c3748-6d19-4ace-bfa4-49e24a7d646c
     parent: {fileID: 11486396}
     mode: 0
@@ -15913,7 +15913,7 @@ MonoBehaviour:
   attribute:
     name: Up
     path: Transform/Direction/Up
-    id: -1763304/7c1c8f1d-b588-4661-a9ca-483101477a07
+    id: -5706/7c1c8f1d-b588-4661-a9ca-483101477a07
     localID: 7c1c8f1d-b588-4661-a9ca-483101477a07
     parent: {fileID: 11486396}
     mode: 0
@@ -15978,7 +15978,7 @@ MonoBehaviour:
   attribute:
     name: Y
     path: Follow Height/Y
-    id: -1763122/f96cdaaf-a6c9-4509-8911-15c505afb31b
+    id: -5724/f96cdaaf-a6c9-4509-8911-15c505afb31b
     localID: f96cdaaf-a6c9-4509-8911-15c505afb31b
     parent: {fileID: 11428940}
     mode: 0
@@ -16020,7 +16020,7 @@ MonoBehaviour:
     info:
       name: Requirable
       path: Camera Orbit Y/Requirable
-      id: -1762792/6c01e455-c9dd-45a3-bb43-417e9ab0a500
+      id: -5736/6c01e455-c9dd-45a3-bb43-417e9ab0a500
       localID: 6c01e455-c9dd-45a3-bb43-417e9ab0a500
       parent: {fileID: 11473842}
       mode: 0
@@ -16033,7 +16033,7 @@ MonoBehaviour:
     info:
       name: Ready
       path: Camera Orbit Y/Ready
-      id: -1762792/75557107-e20e-42ca-a4a9-7d4a881da834
+      id: -5736/75557107-e20e-42ca-a4a9-7d4a881da834
       localID: 75557107-e20e-42ca-a4a9-7d4a881da834
       parent: {fileID: 11473842}
       mode: 0
@@ -16046,7 +16046,7 @@ MonoBehaviour:
     info:
       name: Usable
       path: Camera Orbit Y/Usable
-      id: -1762792/33f4dcb0-9e5f-4a5b-80cd-0de676eda569
+      id: -5736/33f4dcb0-9e5f-4a5b-80cd-0de676eda569
       localID: 33f4dcb0-9e5f-4a5b-80cd-0de676eda569
       parent: {fileID: 11473842}
       mode: 0
@@ -16059,7 +16059,7 @@ MonoBehaviour:
     info:
       name: Active
       path: Camera Orbit Y/Active
-      id: -1762792/1f096c8b-9a03-4501-87fa-a079e56012f8
+      id: -5736/1f096c8b-9a03-4501-87fa-a079e56012f8
       localID: 1f096c8b-9a03-4501-87fa-a079e56012f8
       parent: {fileID: 11473842}
       mode: 0
@@ -16072,7 +16072,7 @@ MonoBehaviour:
     info:
       name: Used
       path: Camera Orbit Y/Used
-      id: -1762792/fbc84254-9a68-4bb9-b658-b59b43a7b5e0
+      id: -5736/fbc84254-9a68-4bb9-b658-b59b43a7b5e0
       localID: fbc84254-9a68-4bb9-b658-b59b43a7b5e0
       parent: {fileID: 11473842}
       mode: 0
@@ -16088,7 +16088,7 @@ MonoBehaviour:
     info:
       name: Target
       path: Camera Orbit Y/Target
-      id: -1762792/413ac081-b9fb-4556-91ae-658af342e76b
+      id: -5736/413ac081-b9fb-4556-91ae-658af342e76b
       localID: 413ac081-b9fb-4556-91ae-658af342e76b
       parent: {fileID: 11473842}
       mode: 1
@@ -16101,7 +16101,7 @@ MonoBehaviour:
     info:
       name: Value
       path: Camera Orbit Y/Value
-      id: -1762792/edec0d4c-fd01-4ebd-a95a-d10f52342890
+      id: -5736/edec0d4c-fd01-4ebd-a95a-d10f52342890
       localID: edec0d4c-fd01-4ebd-a95a-d10f52342890
       parent: {fileID: 11473842}
       mode: 2
@@ -16131,7 +16131,7 @@ MonoBehaviour:
     info:
       name: Requirable
       path: Follow/Requirable
-      id: -1762804/19686909-d76c-4b27-b9d9-558058e71c06
+      id: -5692/19686909-d76c-4b27-b9d9-558058e71c06
       localID: 19686909-d76c-4b27-b9d9-558058e71c06
       parent: {fileID: 11474082}
       mode: 0
@@ -16144,7 +16144,7 @@ MonoBehaviour:
     info:
       name: Ready
       path: Follow/Ready
-      id: -1762804/07a603fb-be5f-44d8-b548-dd877bb6d207
+      id: -5692/07a603fb-be5f-44d8-b548-dd877bb6d207
       localID: 07a603fb-be5f-44d8-b548-dd877bb6d207
       parent: {fileID: 11474082}
       mode: 0
@@ -16157,7 +16157,7 @@ MonoBehaviour:
     info:
       name: Usable
       path: Follow/Usable
-      id: -1762804/ca226048-70b6-4f61-ba41-54b47ff70a3e
+      id: -5692/ca226048-70b6-4f61-ba41-54b47ff70a3e
       localID: ca226048-70b6-4f61-ba41-54b47ff70a3e
       parent: {fileID: 11474082}
       mode: 0
@@ -16170,7 +16170,7 @@ MonoBehaviour:
     info:
       name: Active
       path: Follow/Active
-      id: -1762804/e6d5e9b9-80b8-4f94-bd66-ace63aec71a9
+      id: -5692/e6d5e9b9-80b8-4f94-bd66-ace63aec71a9
       localID: e6d5e9b9-80b8-4f94-bd66-ace63aec71a9
       parent: {fileID: 11474082}
       mode: 0
@@ -16183,7 +16183,7 @@ MonoBehaviour:
     info:
       name: Used
       path: Follow/Used
-      id: -1762804/5a887af7-73fb-4c88-97ea-b0774eff4624
+      id: -5692/5a887af7-73fb-4c88-97ea-b0774eff4624
       localID: 5a887af7-73fb-4c88-97ea-b0774eff4624
       parent: {fileID: 11474082}
       mode: 0
@@ -16199,7 +16199,7 @@ MonoBehaviour:
     info:
       name: Source
       path: Follow/Source
-      id: -1762804/b00ea1b4-3589-4296-897f-1b6ef6ccf5af
+      id: -5692/b00ea1b4-3589-4296-897f-1b6ef6ccf5af
       localID: b00ea1b4-3589-4296-897f-1b6ef6ccf5af
       parent: {fileID: 11474082}
       mode: 0
@@ -16212,7 +16212,7 @@ MonoBehaviour:
     info:
       name: Target
       path: Follow/Target
-      id: -1762804/a3083a16-3b1c-455d-a1fb-2345af7bc3f3
+      id: -5692/a3083a16-3b1c-455d-a1fb-2345af7bc3f3
       localID: a3083a16-3b1c-455d-a1fb-2345af7bc3f3
       parent: {fileID: 11474082}
       mode: 0
@@ -16226,7 +16226,7 @@ MonoBehaviour:
       info:
         name: Is Angle
         path: Follow/Follow/Is Angle
-        id: -1762804/7282bd47-47aa-42df-b0b4-47a1c6d192a8
+        id: -5692/7282bd47-47aa-42df-b0b4-47a1c6d192a8
         localID: 7282bd47-47aa-42df-b0b4-47a1c6d192a8
         parent: {fileID: 11474082}
         mode: 0
@@ -16239,7 +16239,7 @@ MonoBehaviour:
       info:
         name: Is Reset On Change
         path: Follow/Follow/Is Reset On Change
-        id: -1762804/734d10a3-5d1c-41d2-9847-9ecb8b3037ee
+        id: -5692/734d10a3-5d1c-41d2-9847-9ecb8b3037ee
         localID: 734d10a3-5d1c-41d2-9847-9ecb8b3037ee
         parent: {fileID: 11474082}
         mode: 0
@@ -16252,7 +16252,7 @@ MonoBehaviour:
       info:
         name: Speed
         path: Follow/Follow/Transition/Speed
-        id: -1762804/433968ac-f6a2-4521-bf09-de1e67b52909
+        id: -5692/433968ac-f6a2-4521-bf09-de1e67b52909
         localID: 433968ac-f6a2-4521-bf09-de1e67b52909
         parent: {fileID: 11474082}
         mode: 0
@@ -16266,7 +16266,7 @@ MonoBehaviour:
         info:
           name: Duration
           path: Follow/Follow/Follow/Transition/Duration
-          id: -1762804/30178147-bcb0-4ea1-a3bc-61860e10c53c
+          id: -5692/30178147-bcb0-4ea1-a3bc-61860e10c53c
           localID: 30178147-bcb0-4ea1-a3bc-61860e10c53c
           parent: {fileID: 11474082}
           mode: 0
@@ -16279,7 +16279,7 @@ MonoBehaviour:
         info:
           name: Delay Start
           path: Follow/Follow/Follow/Transition/Delay Start
-          id: -1762804/a4adea4c-c4d9-48da-b652-59eae79f7c45
+          id: -5692/a4adea4c-c4d9-48da-b652-59eae79f7c45
           localID: a4adea4c-c4d9-48da-b652-59eae79f7c45
           parent: {fileID: 11474082}
           mode: 0
@@ -16309,7 +16309,7 @@ MonoBehaviour:
       info:
         name: End Proximity
         path: Follow/End Proximity
-        id: -1762804/891adc85-e189-49ae-bde1-9a6d8397988b
+        id: -5692/891adc85-e189-49ae-bde1-9a6d8397988b
         localID: 891adc85-e189-49ae-bde1-9a6d8397988b
         parent: {fileID: 11474082}
         mode: 0
@@ -16318,12 +16318,12 @@ MonoBehaviour:
         - {fileID: 11408576}
         dataB: []
         dataC: []
-  offsetType: 0
+  offsetType: 1
   offset:
     info:
       name: Follow Offset
       path: Follow/Follow Offset
-      id: -1762804/143f0e03-3fcf-41a0-ba6b-5bcb2f5b8006
+      id: -5692/143f0e03-3fcf-41a0-ba6b-5bcb2f5b8006
       localID: 143f0e03-3fcf-41a0-ba6b-5bcb2f5b8006
       parent: {fileID: 11474082}
       mode: 2
@@ -16338,7 +16338,7 @@ MonoBehaviour:
       info:
         name: X
         path: Follow/Follow Offset/X
-        id: -1762804/36ff89b9-ce22-4bfb-95a7-ad08305463e1
+        id: -5692/36ff89b9-ce22-4bfb-95a7-ad08305463e1
         localID: 36ff89b9-ce22-4bfb-95a7-ad08305463e1
         parent: {fileID: 11474082}
         mode: 0
@@ -16351,7 +16351,7 @@ MonoBehaviour:
       info:
         name: Y
         path: Follow/Follow Offset/Y
-        id: -1762804/e84b18af-6519-4eba-bc2f-03df9e55193a
+        id: -5692/e84b18af-6519-4eba-bc2f-03df9e55193a
         localID: e84b18af-6519-4eba-bc2f-03df9e55193a
         parent: {fileID: 11474082}
         mode: 0
@@ -16364,7 +16364,7 @@ MonoBehaviour:
       info:
         name: Z
         path: Follow/Follow Offset/Z
-        id: -1762804/fd36074c-4c30-4557-875a-43e8c908b202
+        id: -5692/fd36074c-4c30-4557-875a-43e8c908b202
         localID: fd36074c-4c30-4557-875a-43e8c908b202
         parent: {fileID: 11474082}
         mode: 0
@@ -16377,7 +16377,7 @@ MonoBehaviour:
     info:
       name: Follow Orbit
       path: Follow/Follow Orbit
-      id: -1762804/dfc91ed8-7ecc-400e-a235-8231c9bc5062
+      id: -5692/dfc91ed8-7ecc-400e-a235-8231c9bc5062
       localID: dfc91ed8-7ecc-400e-a235-8231c9bc5062
       parent: {fileID: 11474082}
       mode: 0
@@ -16390,7 +16390,7 @@ MonoBehaviour:
       info:
         name: X
         path: Follow/Follow Orbit/X
-        id: -1762804/58a7a077-5849-4696-9205-d10ee2d9322a
+        id: -5692/58a7a077-5849-4696-9205-d10ee2d9322a
         localID: 58a7a077-5849-4696-9205-d10ee2d9322a
         parent: {fileID: 11474082}
         mode: 0
@@ -16403,7 +16403,7 @@ MonoBehaviour:
       info:
         name: Y
         path: Follow/Follow Orbit/Y
-        id: -1762804/c46c6921-ffb4-4f33-9d6f-a27b2775f856
+        id: -5692/c46c6921-ffb4-4f33-9d6f-a27b2775f856
         localID: c46c6921-ffb4-4f33-9d6f-a27b2775f856
         parent: {fileID: 11474082}
         mode: 0
@@ -16416,7 +16416,7 @@ MonoBehaviour:
       info:
         name: Z
         path: Follow/Follow Orbit/Z
-        id: -1762804/21623266-40dd-4459-9573-da73e94a1c45
+        id: -5692/21623266-40dd-4459-9573-da73e94a1c45
         localID: 21623266-40dd-4459-9573-da73e94a1c45
         parent: {fileID: 11474082}
         mode: 0
@@ -16474,7 +16474,7 @@ MonoBehaviour:
   attribute:
     name: X
     path: Modify Position/Target/X
-    id: -1762808/78cb62c5-f03d-4b66-aa06-3a3ce0d551fd
+    id: -5752/78cb62c5-f03d-4b66-aa06-3a3ce0d551fd
     localID: 78cb62c5-f03d-4b66-aa06-3a3ce0d551fd
     parent: {fileID: 11461954}
     mode: 0
@@ -16542,12 +16542,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Camera Orbit X/Target/0
-  referenceID: -1762804/58a7a077-5849-4696-9205-d10ee2d9322a
+  referenceID: -5692/58a7a077-5849-4696-9205-d10ee2d9322a
   referencePath: Follow/Follow Orbit/X
   attribute:
     name: Target
     path: Camera Orbit X/Target
-    id: -1762800/671414bb-cf17-4c2c-9181-ed8a2929b6fd
+    id: -5728/671414bb-cf17-4c2c-9181-ed8a2929b6fd
     localID: 671414bb-cf17-4c2c-9181-ed8a2929b6fd
     parent: {fileID: 11429126}
     mode: 1
@@ -16620,7 +16620,7 @@ MonoBehaviour:
   attribute:
     name: Intensity
     path: Mouse Input/Intensity
-    id: -1762798/0f11dca5-acc7-43a6-97da-b06384b9032e
+    id: -5730/0f11dca5-acc7-43a6-97da-b06384b9032e
     localID: 0f11dca5-acc7-43a6-97da-b06384b9032e
     parent: {fileID: 11412688}
     mode: 0
@@ -16685,7 +16685,7 @@ MonoBehaviour:
   attribute:
     name: Forward
     path: Transform/Direction/Forward
-    id: -1763304/0aff9476-fb05-4afa-8489-24b2073f2f2e
+    id: -5706/0aff9476-fb05-4afa-8489-24b2073f2f2e
     localID: 0aff9476-fb05-4afa-8489-24b2073f2f2e
     parent: {fileID: 11486396}
     mode: 0
@@ -16758,7 +16758,7 @@ MonoBehaviour:
   attribute:
     name: Ready
     path: Mouse Z/Ready
-    id: -1762796/69c9d23d-52b9-40c2-837e-fa71185e6d24
+    id: -5732/69c9d23d-52b9-40c2-837e-fa71185e6d24
     localID: 69c9d23d-52b9-40c2-837e-fa71185e6d24
     parent: {fileID: 11428766}
     mode: 0
@@ -16831,7 +16831,7 @@ MonoBehaviour:
   attribute:
     name: Y
     path: Modify Position/Target/Y
-    id: -1762808/43c410c3-a291-467c-8c13-53ac11dede36
+    id: -5752/43c410c3-a291-467c-8c13-53ac11dede36
     localID: 43c410c3-a291-467c-8c13-53ac11dede36
     parent: {fileID: 11461954}
     mode: 0
@@ -16899,12 +16899,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Modify Position/Value/0
-  referenceID: -1762812/96ed5258-5434-413f-902b-1d9eba440244
+  referenceID: -5748/96ed5258-5434-413f-902b-1d9eba440244
   referencePath: Last Position
   attribute:
     name: Value
     path: Modify Position/Value
-    id: -1762808/233e5012-bab0-4fd8-b6a6-7e790c85760b
+    id: -5752/233e5012-bab0-4fd8-b6a6-7e790c85760b
     localID: 233e5012-bab0-4fd8-b6a6-7e790c85760b
     parent: {fileID: 11461954}
     mode: 2
@@ -16979,7 +16979,7 @@ MonoBehaviour:
   attribute:
     name: X
     path: Line Cast/Hit Normal/X
-    id: -1762810/850b5408-ab1f-4f16-a04b-6ad7a7be399c
+    id: -5750/850b5408-ab1f-4f16-a04b-6ad7a7be399c
     localID: 850b5408-ab1f-4f16-a04b-6ad7a7be399c
     parent: {fileID: 11442334}
     mode: 0
@@ -17044,7 +17044,7 @@ MonoBehaviour:
   attribute:
     name: Back
     path: Transform/Direction/Back
-    id: -1763304/89f0c7f6-13b9-43a3-a803-65bcd98ce0df
+    id: -5706/89f0c7f6-13b9-43a3-a803-65bcd98ce0df
     localID: 89f0c7f6-13b9-43a3-a803-65bcd98ce0df
     parent: {fileID: 11486396}
     mode: 0
@@ -17117,7 +17117,7 @@ MonoBehaviour:
   attribute:
     name: Used
     path: Lifetime/Used
-    id: -1763298/f0231d64-50ac-43c3-bf77-c28ab6b5cdff
+    id: -5712/f0231d64-50ac-43c3-bf77-c28ab6b5cdff
     localID: f0231d64-50ac-43c3-bf77-c28ab6b5cdff
     parent: {fileID: 11426184}
     mode: 0
@@ -17190,7 +17190,7 @@ MonoBehaviour:
   attribute:
     name: Active
     path: Lifetime/Active
-    id: -1763298/4d90a97d-6067-4f98-8d59-45450a8ce596
+    id: -5712/4d90a97d-6067-4f98-8d59-45450a8ce596
     localID: 4d90a97d-6067-4f98-8d59-45450a8ce596
     parent: {fileID: 11426184}
     mode: 0
@@ -17255,7 +17255,7 @@ MonoBehaviour:
   attribute:
     name: Down
     path: Transform/Direction/Down
-    id: -1763304/6ba0f867-8c21-4840-84e0-a9f007a390bc
+    id: -5706/6ba0f867-8c21-4840-84e0-a9f007a390bc
     localID: 6ba0f867-8c21-4840-84e0-a9f007a390bc
     parent: {fileID: 11486396}
     mode: 0
@@ -17320,7 +17320,7 @@ MonoBehaviour:
   attribute:
     name: Y
     path: Transform/Position/Y
-    id: -1763302/20d47e13-ad3f-4187-a5ed-b42b989dc241
+    id: -5708/20d47e13-ad3f-4187-a5ed-b42b989dc241
     localID: 20d47e13-ad3f-4187-a5ed-b42b989dc241
     parent: {fileID: 11412678}
     mode: 0
@@ -17393,7 +17393,7 @@ MonoBehaviour:
   attribute:
     name: Used
     path: Modify Position/Used
-    id: -1762808/a9da572c-3318-4b19-a2f4-72b3e017a570
+    id: -5752/a9da572c-3318-4b19-a2f4-72b3e017a570
     localID: a9da572c-3318-4b19-a2f4-72b3e017a570
     parent: {fileID: 11461954}
     mode: 0
@@ -17466,7 +17466,7 @@ MonoBehaviour:
   attribute:
     name: Ready
     path: Line Cast/Ready
-    id: -1762810/d6874361-4b4b-402b-8d5a-8addf2d23184
+    id: -5750/d6874361-4b4b-402b-8d5a-8addf2d23184
     localID: d6874361-4b4b-402b-8d5a-8addf2d23184
     parent: {fileID: 11442334}
     mode: 0
@@ -17534,12 +17534,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Camera Orbit Y/Target/0
-  referenceID: -1762804/c46c6921-ffb4-4f33-9d6f-a27b2775f856
+  referenceID: -5692/c46c6921-ffb4-4f33-9d6f-a27b2775f856
   referencePath: Follow/Follow Orbit/Y
   attribute:
     name: Target
     path: Camera Orbit Y/Target
-    id: -1762792/413ac081-b9fb-4556-91ae-658af342e76b
+    id: -5736/413ac081-b9fb-4556-91ae-658af342e76b
     localID: 413ac081-b9fb-4556-91ae-658af342e76b
     parent: {fileID: 11473842}
     mode: 1
@@ -17612,7 +17612,7 @@ MonoBehaviour:
   attribute:
     name: Usable
     path: Follow/Usable
-    id: -1762804/ca226048-70b6-4f61-ba41-54b47ff70a3e
+    id: -5692/ca226048-70b6-4f61-ba41-54b47ff70a3e
     localID: ca226048-70b6-4f61-ba41-54b47ff70a3e
     parent: {fileID: 11474082}
     mode: 0
@@ -17685,7 +17685,7 @@ MonoBehaviour:
   attribute:
     name: Intensity
     path: Mouse Z/Intensity
-    id: -1762796/bab7ed0d-db4b-41ca-aec5-a374affb574e
+    id: -5732/bab7ed0d-db4b-41ca-aec5-a374affb574e
     localID: bab7ed0d-db4b-41ca-aec5-a374affb574e
     parent: {fileID: 11428766}
     mode: 0
@@ -17758,7 +17758,7 @@ MonoBehaviour:
   attribute:
     name: Ready
     path: Disable/Ready
-    id: -1763310/ca4ee0d5-08bf-47d2-8fda-1b9669cbc9dc
+    id: -5744/ca4ee0d5-08bf-47d2-8fda-1b9669cbc9dc
     localID: ca4ee0d5-08bf-47d2-8fda-1b9669cbc9dc
     parent: {fileID: 11488714}
     mode: 0
@@ -17800,7 +17800,7 @@ MonoBehaviour:
     info:
       name: Requirable
       path: Reset Position/Requirable
-      id: -1762806/ad6f1a13-830d-4906-8c25-715439381e7a
+      id: -5754/ad6f1a13-830d-4906-8c25-715439381e7a
       localID: ad6f1a13-830d-4906-8c25-715439381e7a
       parent: {fileID: 11482484}
       mode: 0
@@ -17813,7 +17813,7 @@ MonoBehaviour:
     info:
       name: Ready
       path: Reset Position/Ready
-      id: -1762806/b8db9424-ceb4-4b63-a26b-be8cddda61ca
+      id: -5754/b8db9424-ceb4-4b63-a26b-be8cddda61ca
       localID: b8db9424-ceb4-4b63-a26b-be8cddda61ca
       parent: {fileID: 11482484}
       mode: 0
@@ -17826,7 +17826,7 @@ MonoBehaviour:
     info:
       name: Usable
       path: Reset Position/Usable
-      id: -1762806/4cba9bbf-9a28-46d6-84b6-11ca7541cb50
+      id: -5754/4cba9bbf-9a28-46d6-84b6-11ca7541cb50
       localID: 4cba9bbf-9a28-46d6-84b6-11ca7541cb50
       parent: {fileID: 11482484}
       mode: 0
@@ -17839,7 +17839,7 @@ MonoBehaviour:
     info:
       name: Active
       path: Reset Position/Active
-      id: -1762806/7594c393-dc1c-4ab5-a3dd-01e573d8c3c4
+      id: -5754/7594c393-dc1c-4ab5-a3dd-01e573d8c3c4
       localID: 7594c393-dc1c-4ab5-a3dd-01e573d8c3c4
       parent: {fileID: 11482484}
       mode: 0
@@ -17852,7 +17852,7 @@ MonoBehaviour:
     info:
       name: Used
       path: Reset Position/Used
-      id: -1762806/051923d8-ba75-4602-a129-1354e8c4c433
+      id: -5754/051923d8-ba75-4602-a129-1354e8c4c433
       localID: 051923d8-ba75-4602-a129-1354e8c4c433
       parent: {fileID: 11482484}
       mode: 0
@@ -17868,7 +17868,7 @@ MonoBehaviour:
     info:
       name: Target
       path: Reset Position/Target
-      id: -1762806/802572e9-100e-4604-8d9a-4c025a91c9e4
+      id: -5754/802572e9-100e-4604-8d9a-4c025a91c9e4
       localID: 802572e9-100e-4604-8d9a-4c025a91c9e4
       parent: {fileID: 11482484}
       mode: 1
@@ -17881,7 +17881,7 @@ MonoBehaviour:
     info:
       name: Value
       path: Reset Position/Value
-      id: -1762806/03fa9b0c-7ce0-4a9e-baa6-a59bf33c73f7
+      id: -5754/03fa9b0c-7ce0-4a9e-baa6-a59bf33c73f7
       localID: 03fa9b0c-7ce0-4a9e-baa6-a59bf33c73f7
       parent: {fileID: 11482484}
       mode: 0
@@ -17939,7 +17939,7 @@ MonoBehaviour:
   attribute:
     name: Requirable
     path: Mouse Z/Requirable
-    id: -1762796/f4384378-c9df-497b-b98b-ce464e872836
+    id: -5732/f4384378-c9df-497b-b98b-ce464e872836
     localID: f4384378-c9df-497b-b98b-ce464e872836
     parent: {fileID: 11428766}
     mode: 0
@@ -18007,12 +18007,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Zoom Adjust/Value/0
-  referenceID: -1763158/60abfcfc-a1b5-4f55-ad20-dbe480bcf8b3
+  referenceID: -5718/60abfcfc-a1b5-4f55-ad20-dbe480bcf8b3
   referencePath: Zoom Distance/Current
   attribute:
     name: Value
     path: Zoom Adjust/Value
-    id: -1762794/89a534ea-cd1f-40ff-8c6e-c7bfaff1ad6b
+    id: -5734/89a534ea-cd1f-40ff-8c6e-c7bfaff1ad6b
     localID: 89a534ea-cd1f-40ff-8c6e-c7bfaff1ad6b
     parent: {fileID: 11453964}
     mode: 0
@@ -18085,7 +18085,7 @@ MonoBehaviour:
   attribute:
     name: Value
     path: Set Zoom Goal/Value
-    id: -1763182/996cdd64-ed7c-4820-ae9e-85bdac2923ee
+    id: -5716/996cdd64-ed7c-4820-ae9e-85bdac2923ee
     localID: 996cdd64-ed7c-4820-ae9e-85bdac2923ee
     parent: {fileID: 11497228}
     mode: 2
@@ -18111,7 +18111,7 @@ MonoBehaviour:
       dataC: []
   operation: 7
   special: 0
-  value: 4
+  value: 2.5
 --- !u!114 &11484058
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -18161,7 +18161,7 @@ MonoBehaviour:
   attribute:
     name: Ready
     path: Modify Position/Ready
-    id: -1762808/7c3c0c50-03ec-4cd7-b375-d42cbbacc905
+    id: -5752/7c3c0c50-03ec-4cd7-b375-d42cbbacc905
     localID: 7c3c0c50-03ec-4cd7-b375-d42cbbacc905
     parent: {fileID: 11461954}
     mode: 0
@@ -18234,7 +18234,7 @@ MonoBehaviour:
   attribute:
     name: Active
     path: Mouse Input/Active
-    id: -1762790/e0573c89-a73c-4ab1-b9ed-4abd85a69636
+    id: -5738/e0573c89-a73c-4ab1-b9ed-4abd85a69636
     localID: e0573c89-a73c-4ab1-b9ed-4abd85a69636
     parent: {fileID: 11407292}
     mode: 0
@@ -18307,7 +18307,7 @@ MonoBehaviour:
   attribute:
     name: Used
     path: Mouse Input/Used
-    id: -1762798/07fa0413-8410-44a7-84c0-2e5a1217ab64
+    id: -5730/07fa0413-8410-44a7-84c0-2e5a1217ab64
     localID: 07fa0413-8410-44a7-84c0-2e5a1217ab64
     parent: {fileID: 11412688}
     mode: 0
@@ -18380,7 +18380,7 @@ MonoBehaviour:
   attribute:
     name: Requirable
     path: Lock Cursor/Requirable
-    id: -1763306/6319e4cf-d8fc-4ec1-84ee-193999a72f1c
+    id: -5704/6319e4cf-d8fc-4ec1-84ee-193999a72f1c
     localID: 6319e4cf-d8fc-4ec1-84ee-193999a72f1c
     parent: {fileID: 11412844}
     mode: 0
@@ -18445,7 +18445,7 @@ MonoBehaviour:
   attribute:
     name: Left
     path: Transform/Direction/Left
-    id: -1763304/996781d9-9a85-4d85-bf88-518db39e5bd1
+    id: -5706/996781d9-9a85-4d85-bf88-518db39e5bd1
     localID: 996781d9-9a85-4d85-bf88-518db39e5bd1
     parent: {fileID: 11486396}
     mode: 0
@@ -18518,7 +18518,7 @@ MonoBehaviour:
   attribute:
     name: Ready
     path: Watch/Ready
-    id: -1762802/d7ecce94-333e-42d3-8ab6-10ea3192a68e
+    id: -5726/d7ecce94-333e-42d3-8ab6-10ea3192a68e
     localID: d7ecce94-333e-42d3-8ab6-10ea3192a68e
     parent: {fileID: 11430404}
     mode: 0
@@ -18591,7 +18591,7 @@ MonoBehaviour:
   attribute:
     name: Ready
     path: Mouse Input/Ready
-    id: -1762790/b51d1913-42f1-4cb3-a676-c1fe8fc5d310
+    id: -5738/b51d1913-42f1-4cb3-a676-c1fe8fc5d310
     localID: b51d1913-42f1-4cb3-a676-c1fe8fc5d310
     parent: {fileID: 11407292}
     mode: 0
@@ -18659,12 +18659,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Modify Position/Target/0
-  referenceID: -1762804/143f0e03-3fcf-41a0-ba6b-5bcb2f5b8006
+  referenceID: -5692/143f0e03-3fcf-41a0-ba6b-5bcb2f5b8006
   referencePath: Follow/Follow Offset
   attribute:
     name: Target
     path: Modify Position/Target
-    id: -1762808/b7a91331-4a0e-4aa3-884f-a77607dc8e2a
+    id: -5752/b7a91331-4a0e-4aa3-884f-a77607dc8e2a
     localID: b7a91331-4a0e-4aa3-884f-a77607dc8e2a
     parent: {fileID: 11461954}
     mode: 1
@@ -18704,7 +18704,7 @@ MonoBehaviour:
     info:
       name: Mouse Intensity
       path: Mouse Intensity
-      id: -1763206/199f0e72-9297-4d9a-b0f5-c8a900103983
+      id: -5714/199f0e72-9297-4d9a-b0f5-c8a900103983
       localID: 199f0e72-9297-4d9a-b0f5-c8a900103983
       parent: {fileID: 11486370}
       mode: 2
@@ -18731,7 +18731,7 @@ MonoBehaviour:
     info:
       name: Up
       path: Transform/Direction/Up
-      id: -1763304/7c1c8f1d-b588-4661-a9ca-483101477a07
+      id: -5706/7c1c8f1d-b588-4661-a9ca-483101477a07
       localID: 7c1c8f1d-b588-4661-a9ca-483101477a07
       parent: {fileID: 11486396}
       mode: 0
@@ -18744,7 +18744,7 @@ MonoBehaviour:
       info:
         name: X
         path: Transform/Direction/Up/X
-        id: -1763304/9da8b0e5-831f-426e-81f4-ad03ccbe2069
+        id: -5706/9da8b0e5-831f-426e-81f4-ad03ccbe2069
         localID: 9da8b0e5-831f-426e-81f4-ad03ccbe2069
         parent: {fileID: 11486396}
         mode: 0
@@ -18757,7 +18757,7 @@ MonoBehaviour:
       info:
         name: Y
         path: Transform/Direction/Up/Y
-        id: -1763304/10f9502d-4ade-4821-beee-7dcbb937980e
+        id: -5706/10f9502d-4ade-4821-beee-7dcbb937980e
         localID: 10f9502d-4ade-4821-beee-7dcbb937980e
         parent: {fileID: 11486396}
         mode: 0
@@ -18770,7 +18770,7 @@ MonoBehaviour:
       info:
         name: Z
         path: Transform/Direction/Up/Z
-        id: -1763304/6d9d13f2-893b-4ba1-9e8e-1acd60d1515e
+        id: -5706/6d9d13f2-893b-4ba1-9e8e-1acd60d1515e
         localID: 6d9d13f2-893b-4ba1-9e8e-1acd60d1515e
         parent: {fileID: 11486396}
         mode: 0
@@ -18783,7 +18783,7 @@ MonoBehaviour:
     info:
       name: Down
       path: Transform/Direction/Down
-      id: -1763304/6ba0f867-8c21-4840-84e0-a9f007a390bc
+      id: -5706/6ba0f867-8c21-4840-84e0-a9f007a390bc
       localID: 6ba0f867-8c21-4840-84e0-a9f007a390bc
       parent: {fileID: 11486396}
       mode: 0
@@ -18796,7 +18796,7 @@ MonoBehaviour:
       info:
         name: X
         path: Transform/Direction/Down/X
-        id: -1763304/319ee938-44eb-4587-ac19-f70093b7eaa4
+        id: -5706/319ee938-44eb-4587-ac19-f70093b7eaa4
         localID: 319ee938-44eb-4587-ac19-f70093b7eaa4
         parent: {fileID: 11486396}
         mode: 0
@@ -18809,7 +18809,7 @@ MonoBehaviour:
       info:
         name: Y
         path: Transform/Direction/Down/Y
-        id: -1763304/24e3bb12-44fe-4974-845a-c70c39418c19
+        id: -5706/24e3bb12-44fe-4974-845a-c70c39418c19
         localID: 24e3bb12-44fe-4974-845a-c70c39418c19
         parent: {fileID: 11486396}
         mode: 0
@@ -18822,7 +18822,7 @@ MonoBehaviour:
       info:
         name: Z
         path: Transform/Direction/Down/Z
-        id: -1763304/bd90eeaa-7eba-4b54-9ee0-b9ec30c26cd4
+        id: -5706/bd90eeaa-7eba-4b54-9ee0-b9ec30c26cd4
         localID: bd90eeaa-7eba-4b54-9ee0-b9ec30c26cd4
         parent: {fileID: 11486396}
         mode: 0
@@ -18835,7 +18835,7 @@ MonoBehaviour:
     info:
       name: Left
       path: Transform/Direction/Left
-      id: -1763304/996781d9-9a85-4d85-bf88-518db39e5bd1
+      id: -5706/996781d9-9a85-4d85-bf88-518db39e5bd1
       localID: 996781d9-9a85-4d85-bf88-518db39e5bd1
       parent: {fileID: 11486396}
       mode: 0
@@ -18848,7 +18848,7 @@ MonoBehaviour:
       info:
         name: X
         path: Transform/Direction/Left/X
-        id: -1763304/ffcd09b5-2baf-4b6a-a35d-1a485e026b6a
+        id: -5706/ffcd09b5-2baf-4b6a-a35d-1a485e026b6a
         localID: ffcd09b5-2baf-4b6a-a35d-1a485e026b6a
         parent: {fileID: 11486396}
         mode: 0
@@ -18861,7 +18861,7 @@ MonoBehaviour:
       info:
         name: Y
         path: Transform/Direction/Left/Y
-        id: -1763304/66de9ddf-9de4-42db-a326-82f30797bf5b
+        id: -5706/66de9ddf-9de4-42db-a326-82f30797bf5b
         localID: 66de9ddf-9de4-42db-a326-82f30797bf5b
         parent: {fileID: 11486396}
         mode: 0
@@ -18874,7 +18874,7 @@ MonoBehaviour:
       info:
         name: Z
         path: Transform/Direction/Left/Z
-        id: -1763304/fd370e2e-8ded-4774-8f67-a186724d0148
+        id: -5706/fd370e2e-8ded-4774-8f67-a186724d0148
         localID: fd370e2e-8ded-4774-8f67-a186724d0148
         parent: {fileID: 11486396}
         mode: 0
@@ -18887,7 +18887,7 @@ MonoBehaviour:
     info:
       name: Right
       path: Transform/Direction/Right
-      id: -1763304/5d397ae8-41b9-4edc-96a7-078335dc8920
+      id: -5706/5d397ae8-41b9-4edc-96a7-078335dc8920
       localID: 5d397ae8-41b9-4edc-96a7-078335dc8920
       parent: {fileID: 11486396}
       mode: 0
@@ -18900,7 +18900,7 @@ MonoBehaviour:
       info:
         name: X
         path: Transform/Direction/Right/X
-        id: -1763304/5e5e5663-18ae-42b7-b464-7f82c142b318
+        id: -5706/5e5e5663-18ae-42b7-b464-7f82c142b318
         localID: 5e5e5663-18ae-42b7-b464-7f82c142b318
         parent: {fileID: 11486396}
         mode: 0
@@ -18913,7 +18913,7 @@ MonoBehaviour:
       info:
         name: Y
         path: Transform/Direction/Right/Y
-        id: -1763304/c1deb29c-1ee7-4654-be23-c27d9171fa12
+        id: -5706/c1deb29c-1ee7-4654-be23-c27d9171fa12
         localID: c1deb29c-1ee7-4654-be23-c27d9171fa12
         parent: {fileID: 11486396}
         mode: 0
@@ -18926,7 +18926,7 @@ MonoBehaviour:
       info:
         name: Z
         path: Transform/Direction/Right/Z
-        id: -1763304/9c4c3748-6d19-4ace-bfa4-49e24a7d646c
+        id: -5706/9c4c3748-6d19-4ace-bfa4-49e24a7d646c
         localID: 9c4c3748-6d19-4ace-bfa4-49e24a7d646c
         parent: {fileID: 11486396}
         mode: 0
@@ -18939,7 +18939,7 @@ MonoBehaviour:
     info:
       name: Forward
       path: Transform/Direction/Forward
-      id: -1763304/0aff9476-fb05-4afa-8489-24b2073f2f2e
+      id: -5706/0aff9476-fb05-4afa-8489-24b2073f2f2e
       localID: 0aff9476-fb05-4afa-8489-24b2073f2f2e
       parent: {fileID: 11486396}
       mode: 0
@@ -18952,7 +18952,7 @@ MonoBehaviour:
       info:
         name: X
         path: Transform/Direction/Forward/X
-        id: -1763304/b606da24-43f4-4c6b-8ca4-9e23d43939aa
+        id: -5706/b606da24-43f4-4c6b-8ca4-9e23d43939aa
         localID: b606da24-43f4-4c6b-8ca4-9e23d43939aa
         parent: {fileID: 11486396}
         mode: 0
@@ -18965,7 +18965,7 @@ MonoBehaviour:
       info:
         name: Y
         path: Transform/Direction/Forward/Y
-        id: -1763304/690d3851-aa68-49cc-be7e-51b586ce3396
+        id: -5706/690d3851-aa68-49cc-be7e-51b586ce3396
         localID: 690d3851-aa68-49cc-be7e-51b586ce3396
         parent: {fileID: 11486396}
         mode: 0
@@ -18978,7 +18978,7 @@ MonoBehaviour:
       info:
         name: Z
         path: Transform/Direction/Forward/Z
-        id: -1763304/64d8f9b6-0a56-4fef-ab27-a1baa3b354a2
+        id: -5706/64d8f9b6-0a56-4fef-ab27-a1baa3b354a2
         localID: 64d8f9b6-0a56-4fef-ab27-a1baa3b354a2
         parent: {fileID: 11486396}
         mode: 0
@@ -18991,7 +18991,7 @@ MonoBehaviour:
     info:
       name: Back
       path: Transform/Direction/Back
-      id: -1763304/89f0c7f6-13b9-43a3-a803-65bcd98ce0df
+      id: -5706/89f0c7f6-13b9-43a3-a803-65bcd98ce0df
       localID: 89f0c7f6-13b9-43a3-a803-65bcd98ce0df
       parent: {fileID: 11486396}
       mode: 0
@@ -19004,7 +19004,7 @@ MonoBehaviour:
       info:
         name: X
         path: Transform/Direction/Back/X
-        id: -1763304/8c788f8b-0caf-444c-86dc-bb181020fb05
+        id: -5706/8c788f8b-0caf-444c-86dc-bb181020fb05
         localID: 8c788f8b-0caf-444c-86dc-bb181020fb05
         parent: {fileID: 11486396}
         mode: 0
@@ -19017,7 +19017,7 @@ MonoBehaviour:
       info:
         name: Y
         path: Transform/Direction/Back/Y
-        id: -1763304/7205cdbd-bd5e-45fc-bf42-ee227da791b5
+        id: -5706/7205cdbd-bd5e-45fc-bf42-ee227da791b5
         localID: 7205cdbd-bd5e-45fc-bf42-ee227da791b5
         parent: {fileID: 11486396}
         mode: 0
@@ -19030,7 +19030,7 @@ MonoBehaviour:
       info:
         name: Z
         path: Transform/Direction/Back/Z
-        id: -1763304/3dad85ec-a1f3-4b36-a733-f42dda8f8cc6
+        id: -5706/3dad85ec-a1f3-4b36-a733-f42dda8f8cc6
         localID: 3dad85ec-a1f3-4b36-a733-f42dda8f8cc6
         parent: {fileID: 11486396}
         mode: 0
@@ -19088,7 +19088,7 @@ MonoBehaviour:
   attribute:
     name: Used
     path: Zoom Distance/Used
-    id: -1763158/907e92b9-45c0-4acf-9aa3-03d524014d33
+    id: -5718/907e92b9-45c0-4acf-9aa3-03d524014d33
     localID: 907e92b9-45c0-4acf-9aa3-03d524014d33
     parent: {fileID: 11460206}
     mode: 0
@@ -19161,7 +19161,7 @@ MonoBehaviour:
   attribute:
     name: Ready
     path: Lifetime/Ready
-    id: -1763308/1a908959-6dd1-4d23-a21e-30033bdb36d0
+    id: -5746/1a908959-6dd1-4d23-a21e-30033bdb36d0
     localID: 1a908959-6dd1-4d23-a21e-30033bdb36d0
     parent: {fileID: 11488470}
     mode: 0
@@ -19234,7 +19234,7 @@ MonoBehaviour:
   attribute:
     name: X
     path: Follow/Follow Orbit/X
-    id: -1762804/58a7a077-5849-4696-9205-d10ee2d9322a
+    id: -5692/58a7a077-5849-4696-9205-d10ee2d9322a
     localID: 58a7a077-5849-4696-9205-d10ee2d9322a
     parent: {fileID: 11474082}
     mode: 0
@@ -19307,7 +19307,7 @@ MonoBehaviour:
   attribute:
     name: Used
     path: Camera Orbit X/Used
-    id: -1762800/e3c5d14b-22cf-4720-8e47-c738b3863fa2
+    id: -5728/e3c5d14b-22cf-4720-8e47-c738b3863fa2
     localID: e3c5d14b-22cf-4720-8e47-c738b3863fa2
     parent: {fileID: 11429126}
     mode: 0
@@ -19349,7 +19349,7 @@ MonoBehaviour:
     info:
       name: Requirable
       path: Lifetime/Requirable
-      id: -1763308/ba0d254f-74c9-4e1f-863f-6bdaab49ea94
+      id: -5746/ba0d254f-74c9-4e1f-863f-6bdaab49ea94
       localID: ba0d254f-74c9-4e1f-863f-6bdaab49ea94
       parent: {fileID: 11488470}
       mode: 0
@@ -19362,7 +19362,7 @@ MonoBehaviour:
     info:
       name: Ready
       path: Lifetime/Ready
-      id: -1763308/1a908959-6dd1-4d23-a21e-30033bdb36d0
+      id: -5746/1a908959-6dd1-4d23-a21e-30033bdb36d0
       localID: 1a908959-6dd1-4d23-a21e-30033bdb36d0
       parent: {fileID: 11488470}
       mode: 0
@@ -19375,7 +19375,7 @@ MonoBehaviour:
     info:
       name: Usable
       path: Lifetime/Usable
-      id: -1763308/b0f29e25-0891-4484-886f-47219bbe68bf
+      id: -5746/b0f29e25-0891-4484-886f-47219bbe68bf
       localID: b0f29e25-0891-4484-886f-47219bbe68bf
       parent: {fileID: 11488470}
       mode: 0
@@ -19388,7 +19388,7 @@ MonoBehaviour:
     info:
       name: Active
       path: Lifetime/Active
-      id: -1763308/00a222f7-7ed6-486c-b7f0-f406856d2b0c
+      id: -5746/00a222f7-7ed6-486c-b7f0-f406856d2b0c
       localID: 00a222f7-7ed6-486c-b7f0-f406856d2b0c
       parent: {fileID: 11488470}
       mode: 0
@@ -19401,7 +19401,7 @@ MonoBehaviour:
     info:
       name: Used
       path: Lifetime/Used
-      id: -1763308/793dc28c-a7bf-4c3c-82b0-98bcf4acf869
+      id: -5746/793dc28c-a7bf-4c3c-82b0-98bcf4acf869
       localID: 793dc28c-a7bf-4c3c-82b0-98bcf4acf869
       parent: {fileID: 11488470}
       mode: 0
@@ -19418,7 +19418,7 @@ MonoBehaviour:
     info:
       name: Seconds
       path: Lifetime/Seconds
-      id: -1763308/868a8e6d-a048-43f2-b1d4-1c315db61757
+      id: -5746/868a8e6d-a048-43f2-b1d4-1c315db61757
       localID: 868a8e6d-a048-43f2-b1d4-1c315db61757
       parent: {fileID: 11488470}
       mode: 0
@@ -19431,7 +19431,7 @@ MonoBehaviour:
     info:
       name: Is Started
       path: Lifetime/Is Started
-      id: -1763308/a6f9d906-2c06-4765-96ad-1da817e412fa
+      id: -5746/a6f9d906-2c06-4765-96ad-1da817e412fa
       localID: a6f9d906-2c06-4765-96ad-1da817e412fa
       parent: {fileID: 11488470}
       mode: 0
@@ -19444,7 +19444,7 @@ MonoBehaviour:
     info:
       name: Is Complete
       path: Lifetime/Is Complete
-      id: -1763308/c18f8e2e-5934-483e-a9b4-832d7b16b64d
+      id: -5746/c18f8e2e-5934-483e-a9b4-832d7b16b64d
       localID: c18f8e2e-5934-483e-a9b4-832d7b16b64d
       parent: {fileID: 11488470}
       mode: 0
@@ -19494,7 +19494,7 @@ MonoBehaviour:
   attribute:
     name: Position
     path: Transform/Position
-    id: -1763302/ab157e29-840d-4f26-87e9-131ee32c5b9a
+    id: -5708/ab157e29-840d-4f26-87e9-131ee32c5b9a
     localID: ab157e29-840d-4f26-87e9-131ee32c5b9a
     parent: {fileID: 11412678}
     mode: 0
@@ -19536,7 +19536,7 @@ MonoBehaviour:
     info:
       name: Requirable
       path: Disable/Requirable
-      id: -1763310/806e961a-c585-4a55-aa5f-1f49d7644271
+      id: -5744/806e961a-c585-4a55-aa5f-1f49d7644271
       localID: 806e961a-c585-4a55-aa5f-1f49d7644271
       parent: {fileID: 11488714}
       mode: 0
@@ -19549,7 +19549,7 @@ MonoBehaviour:
     info:
       name: Ready
       path: Disable/Ready
-      id: -1763310/ca4ee0d5-08bf-47d2-8fda-1b9669cbc9dc
+      id: -5744/ca4ee0d5-08bf-47d2-8fda-1b9669cbc9dc
       localID: ca4ee0d5-08bf-47d2-8fda-1b9669cbc9dc
       parent: {fileID: 11488714}
       mode: 0
@@ -19562,7 +19562,7 @@ MonoBehaviour:
     info:
       name: Usable
       path: Disable/Usable
-      id: -1763310/362fe737-25c2-4892-a995-f801efa74693
+      id: -5744/362fe737-25c2-4892-a995-f801efa74693
       localID: 362fe737-25c2-4892-a995-f801efa74693
       parent: {fileID: 11488714}
       mode: 0
@@ -19575,7 +19575,7 @@ MonoBehaviour:
     info:
       name: Active
       path: Disable/Active
-      id: -1763310/dd2ef7cc-feb5-49f3-894d-8093da588024
+      id: -5744/dd2ef7cc-feb5-49f3-894d-8093da588024
       localID: dd2ef7cc-feb5-49f3-894d-8093da588024
       parent: {fileID: 11488714}
       mode: 0
@@ -19588,7 +19588,7 @@ MonoBehaviour:
     info:
       name: Used
       path: Disable/Used
-      id: -1763310/ce1e868e-6e88-46c4-a1bb-9568e84bc45c
+      id: -5744/ce1e868e-6e88-46c4-a1bb-9568e84bc45c
       localID: ce1e868e-6e88-46c4-a1bb-9568e84bc45c
       parent: {fileID: 11488714}
       mode: 0
@@ -19604,7 +19604,7 @@ MonoBehaviour:
     info:
       name: Target
       path: Disable/Target
-      id: -1763310/bbc7bf4f-1c00-47fe-8d4b-ba97e82939af
+      id: -5744/bbc7bf4f-1c00-47fe-8d4b-ba97e82939af
       localID: bbc7bf4f-1c00-47fe-8d4b-ba97e82939af
       parent: {fileID: 11488714}
       mode: 0
@@ -19663,7 +19663,7 @@ MonoBehaviour:
   attribute:
     name: Active
     path: Modify Position/Active
-    id: -1762808/9ff8aa7a-907a-4583-8e28-e18e664a7799
+    id: -5752/9ff8aa7a-907a-4583-8e28-e18e664a7799
     localID: 9ff8aa7a-907a-4583-8e28-e18e664a7799
     parent: {fileID: 11461954}
     mode: 0
@@ -19736,7 +19736,7 @@ MonoBehaviour:
   attribute:
     name: Usable
     path: Disable/Usable
-    id: -1763310/362fe737-25c2-4892-a995-f801efa74693
+    id: -5744/362fe737-25c2-4892-a995-f801efa74693
     localID: 362fe737-25c2-4892-a995-f801efa74693
     parent: {fileID: 11488714}
     mode: 0
@@ -19809,7 +19809,7 @@ MonoBehaviour:
   attribute:
     name: X
     path: Line Cast/Source/X
-    id: -1762810/c104e28d-5e78-4462-8468-d299bf1a7e2d
+    id: -5750/c104e28d-5e78-4462-8468-d299bf1a7e2d
     localID: c104e28d-5e78-4462-8468-d299bf1a7e2d
     parent: {fileID: 11442334}
     mode: 0
@@ -19882,7 +19882,7 @@ MonoBehaviour:
   attribute:
     name: Speed
     path: Zoom Distance/Speed
-    id: -1763158/074f11dd-183d-45ce-850f-c3de531e0ee7
+    id: -5718/074f11dd-183d-45ce-850f-c3de531e0ee7
     localID: 074f11dd-183d-45ce-850f-c3de531e0ee7
     parent: {fileID: 11460206}
     mode: 0
@@ -19955,7 +19955,7 @@ MonoBehaviour:
   attribute:
     name: Usable
     path: Zoom Adjust/Usable
-    id: -1762794/63b54850-b0bf-40ab-9a78-aa61d37c96d7
+    id: -5734/63b54850-b0bf-40ab-9a78-aa61d37c96d7
     localID: 63b54850-b0bf-40ab-9a78-aa61d37c96d7
     parent: {fileID: 11453964}
     mode: 0
@@ -20020,7 +20020,7 @@ MonoBehaviour:
   attribute:
     name: Y
     path: Follow Distance/Y
-    id: -1763142/86e35ec4-f788-4c74-98e8-76ad4601b558
+    id: -5720/86e35ec4-f788-4c74-98e8-76ad4601b558
     localID: 86e35ec4-f788-4c74-98e8-76ad4601b558
     parent: {fileID: 11434486}
     mode: 0
@@ -20093,7 +20093,7 @@ MonoBehaviour:
   attribute:
     name: Value
     path: Reset Position/Value
-    id: -1762806/03fa9b0c-7ce0-4a9e-baa6-a59bf33c73f7
+    id: -5754/03fa9b0c-7ce0-4a9e-baa6-a59bf33c73f7
     localID: 03fa9b0c-7ce0-4a9e-baa6-a59bf33c73f7
     parent: {fileID: 11482484}
     mode: 0
@@ -20158,7 +20158,7 @@ MonoBehaviour:
   attribute:
     name: Z
     path: Follow Height/Z
-    id: -1763122/a86aab60-4e28-42e1-a78e-703762ce157f
+    id: -5724/a86aab60-4e28-42e1-a78e-703762ce157f
     localID: a86aab60-4e28-42e1-a78e-703762ce157f
     parent: {fileID: 11428940}
     mode: 0
@@ -20200,7 +20200,7 @@ MonoBehaviour:
     info:
       name: Requirable
       path: Disable/Requirable
-      id: -1763300/79274a24-f9dc-4334-82c0-e038609a7afd
+      id: -5710/79274a24-f9dc-4334-82c0-e038609a7afd
       localID: 79274a24-f9dc-4334-82c0-e038609a7afd
       parent: {fileID: 11493514}
       mode: 0
@@ -20213,7 +20213,7 @@ MonoBehaviour:
     info:
       name: Ready
       path: Disable/Ready
-      id: -1763300/3a8b1164-8e48-4c55-8f18-70b66465324c
+      id: -5710/3a8b1164-8e48-4c55-8f18-70b66465324c
       localID: 3a8b1164-8e48-4c55-8f18-70b66465324c
       parent: {fileID: 11493514}
       mode: 0
@@ -20226,7 +20226,7 @@ MonoBehaviour:
     info:
       name: Usable
       path: Disable/Usable
-      id: -1763300/f723ee0b-c3b4-4b2f-81e1-5f9ea3a2659a
+      id: -5710/f723ee0b-c3b4-4b2f-81e1-5f9ea3a2659a
       localID: f723ee0b-c3b4-4b2f-81e1-5f9ea3a2659a
       parent: {fileID: 11493514}
       mode: 0
@@ -20239,7 +20239,7 @@ MonoBehaviour:
     info:
       name: Active
       path: Disable/Active
-      id: -1763300/1b4e8fb9-405c-47b0-8736-f487a42d0936
+      id: -5710/1b4e8fb9-405c-47b0-8736-f487a42d0936
       localID: 1b4e8fb9-405c-47b0-8736-f487a42d0936
       parent: {fileID: 11493514}
       mode: 0
@@ -20252,7 +20252,7 @@ MonoBehaviour:
     info:
       name: Used
       path: Disable/Used
-      id: -1763300/b4e028c5-f25e-4455-85f0-0cc6ad206c3f
+      id: -5710/b4e028c5-f25e-4455-85f0-0cc6ad206c3f
       localID: b4e028c5-f25e-4455-85f0-0cc6ad206c3f
       parent: {fileID: 11493514}
       mode: 0
@@ -20268,7 +20268,7 @@ MonoBehaviour:
     info:
       name: Target
       path: Disable/Target
-      id: -1763300/641ea334-112a-449a-a626-c23c619afcb4
+      id: -5710/641ea334-112a-449a-a626-c23c619afcb4
       localID: 641ea334-112a-449a-a626-c23c619afcb4
       parent: {fileID: 11493514}
       mode: 0
@@ -20327,7 +20327,7 @@ MonoBehaviour:
   attribute:
     name: Active
     path: Line Cast/Active
-    id: -1762810/3bab40ba-b112-4e36-b5b3-7864d7def741
+    id: -5750/3bab40ba-b112-4e36-b5b3-7864d7def741
     localID: 3bab40ba-b112-4e36-b5b3-7864d7def741
     parent: {fileID: 11442334}
     mode: 0
@@ -20400,7 +20400,7 @@ MonoBehaviour:
   attribute:
     name: Usable
     path: Watch/Usable
-    id: -1762802/b39b2f40-96ab-4400-a73c-ece18b73c282
+    id: -5726/b39b2f40-96ab-4400-a73c-ece18b73c282
     localID: b39b2f40-96ab-4400-a73c-ece18b73c282
     parent: {fileID: 11430404}
     mode: 0
@@ -20473,7 +20473,7 @@ MonoBehaviour:
   attribute:
     name: Held During Intensity
     path: Mouse Z/Held During Intensity
-    id: -1762796/e5d6b06f-e9ba-4dcb-b336-8c63702379b4
+    id: -5732/e5d6b06f-e9ba-4dcb-b336-8c63702379b4
     localID: e5d6b06f-e9ba-4dcb-b336-8c63702379b4
     parent: {fileID: 11428766}
     mode: 0
@@ -20546,7 +20546,7 @@ MonoBehaviour:
   attribute:
     name: Is Reset On Change
     path: Watch/Rotation Point/Is Reset On Change
-    id: -1762802/ef3f48d0-54bb-42ea-be7b-73a535eb853f
+    id: -5726/ef3f48d0-54bb-42ea-be7b-73a535eb853f
     localID: ef3f48d0-54bb-42ea-be7b-73a535eb853f
     parent: {fileID: 11430404}
     mode: 0
@@ -20619,7 +20619,7 @@ MonoBehaviour:
   attribute:
     name: Z
     path: Line Cast/Goal/Z
-    id: -1762810/5a43a8c3-f86e-48fd-8e08-ff48656565ab
+    id: -5750/5a43a8c3-f86e-48fd-8e08-ff48656565ab
     localID: 5a43a8c3-f86e-48fd-8e08-ff48656565ab
     parent: {fileID: 11442334}
     mode: 0
@@ -20687,12 +20687,12 @@ MonoBehaviour:
     mode: 0
   usage: 1
   path: Reset Position/Target/0
-  referenceID: -1762804/fd36074c-4c30-4557-875a-43e8c908b202
+  referenceID: -5692/fd36074c-4c30-4557-875a-43e8c908b202
   referencePath: Follow/Follow Offset/Z
   attribute:
     name: Target
     path: Reset Position/Target
-    id: -1762806/802572e9-100e-4604-8d9a-4c025a91c9e4
+    id: -5754/802572e9-100e-4604-8d9a-4c025a91c9e4
     localID: 802572e9-100e-4604-8d9a-4c025a91c9e4
     parent: {fileID: 11482484}
     mode: 1
@@ -20765,7 +20765,7 @@ MonoBehaviour:
   attribute:
     name: Value
     path: Modify Position/Value
-    id: -1762808/233e5012-bab0-4fd8-b6a6-7e790c85760b
+    id: -5752/233e5012-bab0-4fd8-b6a6-7e790c85760b
     localID: 233e5012-bab0-4fd8-b6a6-7e790c85760b
     parent: {fileID: 11461954}
     mode: 2
@@ -20840,7 +20840,7 @@ MonoBehaviour:
   attribute:
     name: Used
     path: Mouse Z/Used
-    id: -1762796/73df091d-cbe1-4ebb-8900-7081c233bf2d
+    id: -5732/73df091d-cbe1-4ebb-8900-7081c233bf2d
     localID: 73df091d-cbe1-4ebb-8900-7081c233bf2d
     parent: {fileID: 11428766}
     mode: 0
@@ -20905,7 +20905,7 @@ MonoBehaviour:
   attribute:
     name: Y
     path: Transform/Direction/Forward/Y
-    id: -1763304/690d3851-aa68-49cc-be7e-51b586ce3396
+    id: -5706/690d3851-aa68-49cc-be7e-51b586ce3396
     localID: 690d3851-aa68-49cc-be7e-51b586ce3396
     parent: {fileID: 11486396}
     mode: 0
@@ -20978,7 +20978,7 @@ MonoBehaviour:
   attribute:
     name: Seconds
     path: Lifetime/Seconds
-    id: -1763298/111f0ca4-c73d-4741-bbf6-0b034b33437b
+    id: -5712/111f0ca4-c73d-4741-bbf6-0b034b33437b
     localID: 111f0ca4-c73d-4741-bbf6-0b034b33437b
     parent: {fileID: 11426184}
     mode: 0
@@ -21051,7 +21051,7 @@ MonoBehaviour:
   attribute:
     name: Active
     path: Zoom Distance/Active
-    id: -1763158/b2c19cd7-d882-45c7-ab13-a52add1ab38d
+    id: -5718/b2c19cd7-d882-45c7-ab13-a52add1ab38d
     localID: b2c19cd7-d882-45c7-ab13-a52add1ab38d
     parent: {fileID: 11460206}
     mode: 0
@@ -21124,7 +21124,7 @@ MonoBehaviour:
   attribute:
     name: Is Started
     path: Lifetime/Is Started
-    id: -1763298/aa514e39-0654-4da0-83f1-b48eadb0b435
+    id: -5712/aa514e39-0654-4da0-83f1-b48eadb0b435
     localID: aa514e39-0654-4da0-83f1-b48eadb0b435
     parent: {fileID: 11426184}
     mode: 0
@@ -21166,7 +21166,7 @@ MonoBehaviour:
     info:
       name: Requirable
       path: Set Zoom Goal/Requirable
-      id: -1763182/d7ea1c92-224e-4676-9fba-7112a17d8f4c
+      id: -5716/d7ea1c92-224e-4676-9fba-7112a17d8f4c
       localID: d7ea1c92-224e-4676-9fba-7112a17d8f4c
       parent: {fileID: 11497228}
       mode: 0
@@ -21179,7 +21179,7 @@ MonoBehaviour:
     info:
       name: Ready
       path: Set Zoom Goal/Ready
-      id: -1763182/9d8794b1-36bf-4a7c-9da1-74aade201484
+      id: -5716/9d8794b1-36bf-4a7c-9da1-74aade201484
       localID: 9d8794b1-36bf-4a7c-9da1-74aade201484
       parent: {fileID: 11497228}
       mode: 0
@@ -21192,7 +21192,7 @@ MonoBehaviour:
     info:
       name: Usable
       path: Set Zoom Goal/Usable
-      id: -1763182/79edcb64-0430-44ca-87b4-ebcc1d692214
+      id: -5716/79edcb64-0430-44ca-87b4-ebcc1d692214
       localID: 79edcb64-0430-44ca-87b4-ebcc1d692214
       parent: {fileID: 11497228}
       mode: 0
@@ -21205,7 +21205,7 @@ MonoBehaviour:
     info:
       name: Active
       path: Set Zoom Goal/Active
-      id: -1763182/0a249d77-3ea5-494c-b715-6f2618a3e093
+      id: -5716/0a249d77-3ea5-494c-b715-6f2618a3e093
       localID: 0a249d77-3ea5-494c-b715-6f2618a3e093
       parent: {fileID: 11497228}
       mode: 0
@@ -21218,7 +21218,7 @@ MonoBehaviour:
     info:
       name: Used
       path: Set Zoom Goal/Used
-      id: -1763182/acda8848-ae7c-4d13-aff7-8a7b29844f5a
+      id: -5716/acda8848-ae7c-4d13-aff7-8a7b29844f5a
       localID: acda8848-ae7c-4d13-aff7-8a7b29844f5a
       parent: {fileID: 11497228}
       mode: 0
@@ -21234,7 +21234,7 @@ MonoBehaviour:
     info:
       name: Target
       path: Set Zoom Goal/Target
-      id: -1763182/8c4a6169-d92f-45b4-abb2-17fab383eda7
+      id: -5716/8c4a6169-d92f-45b4-abb2-17fab383eda7
       localID: 8c4a6169-d92f-45b4-abb2-17fab383eda7
       parent: {fileID: 11497228}
       mode: 1
@@ -21247,7 +21247,7 @@ MonoBehaviour:
     info:
       name: Value
       path: Set Zoom Goal/Value
-      id: -1763182/996cdd64-ed7c-4820-ae9e-85bdac2923ee
+      id: -5716/996cdd64-ed7c-4820-ae9e-85bdac2923ee
       localID: 996cdd64-ed7c-4820-ae9e-85bdac2923ee
       parent: {fileID: 11497228}
       mode: 2
@@ -21308,7 +21308,7 @@ MonoBehaviour:
   attribute:
     name: Seconds
     path: Lifetime/Seconds
-    id: -1763308/868a8e6d-a048-43f2-b1d4-1c315db61757
+    id: -5746/868a8e6d-a048-43f2-b1d4-1c315db61757
     localID: 868a8e6d-a048-43f2-b1d4-1c315db61757
     parent: {fileID: 11488470}
     mode: 0
@@ -21381,7 +21381,7 @@ MonoBehaviour:
   attribute:
     name: Ignore Ownership
     path: Mouse Input/Ignore Ownership
-    id: -1762798/019ad42d-5116-45ff-9c1c-06a1ecb45fe3
+    id: -5730/019ad42d-5116-45ff-9c1c-06a1ecb45fe3
     localID: 019ad42d-5116-45ff-9c1c-06a1ecb45fe3
     parent: {fileID: 11412688}
     mode: 0
@@ -21454,7 +21454,7 @@ MonoBehaviour:
   attribute:
     name: Is Started
     path: Lifetime/Is Started
-    id: -1763308/a6f9d906-2c06-4765-96ad-1da817e412fa
+    id: -5746/a6f9d906-2c06-4765-96ad-1da817e412fa
     localID: a6f9d906-2c06-4765-96ad-1da817e412fa
     parent: {fileID: 11488470}
     mode: 0
@@ -21527,7 +21527,7 @@ MonoBehaviour:
   attribute:
     name: Requirable
     path: Disable/Requirable
-    id: -1763310/806e961a-c585-4a55-aa5f-1f49d7644271
+    id: -5744/806e961a-c585-4a55-aa5f-1f49d7644271
     localID: 806e961a-c585-4a55-aa5f-1f49d7644271
     parent: {fileID: 11488714}
     mode: 0
@@ -21600,7 +21600,7 @@ MonoBehaviour:
   attribute:
     name: Value
     path: Camera Orbit Y/Value
-    id: -1762792/edec0d4c-fd01-4ebd-a95a-d10f52342890
+    id: -5736/edec0d4c-fd01-4ebd-a95a-d10f52342890
     localID: edec0d4c-fd01-4ebd-a95a-d10f52342890
     parent: {fileID: 11473842}
     mode: 2
@@ -21676,7 +21676,7 @@ MonoBehaviour:
   attribute:
     name: X
     path: Line Cast/Goal/X
-    id: -1762810/40943d8c-fa73-4fd6-b70f-b24967a648ae
+    id: -5750/40943d8c-fa73-4fd6-b70f-b24967a648ae
     localID: 40943d8c-fa73-4fd6-b70f-b24967a648ae
     parent: {fileID: 11442334}
     mode: 0
