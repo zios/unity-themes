@@ -18,7 +18,9 @@ namespace Zios{
 	    }
 		public override void Step(){
 			base.Step();
-			if(!this.usable && this.isStarted){
+			bool stateLinkUsable = this.stateLink == null || this.stateLink.usable;
+			bool usable = stateLinkUsable && this.usable;
+			if(!usable && this.isStarted){
 				this.End();
 			}
 		}
