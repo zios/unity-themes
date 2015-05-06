@@ -3,9 +3,9 @@ using System;
 using System.Linq;
 using UnityEngine;
 namespace Zios{
-    [AddComponentMenu("Zios/Component/Action/Spherecast")]
-	public class SphereCast : ActionLink{
-	    public AttributeVector3 source = new AttributeVector3();
+    [AddComponentMenu("Zios/Component/Action/Spherecast (Target)")]
+	public class SphereCastTarget : ActionLink{
+	    public AttributeGameObject source = new AttributeGameObject();
 	    public AttributeFloat radius = 1;
 	    public LayerMask layers = -1;
 	    [Advanced] public Color debugColor = new Color(1,1,1,0.4f);
@@ -21,13 +21,17 @@ namespace Zios{
 			this.hits.enumerateMethod = ()=>{return this.hitList.Select(x=>x).GetEnumerator();};
 	    }
 	    public override void Use(){
-			this.hitList = Physics.OverlapSphere(this.source,this.radius,this.layers.value).Select(x=>x.gameObject).ToArray();
+			Vector3 sourcePosition = this.source.Get().transform.position;
+			this.hitList = Physics.OverlapSphere(sourcePosition,this.radius,this.layers.value).Select(x=>x.gameObject).ToArray();
 			bool state = this.hitList.Length > 0;
 		    this.Toggle(state);
 	    }
 	    public void OnDrawGizmosSelected(){
 			Gizmos.color = this.debugColor;
-			Gizmos.DrawSphere(this.source,this.radius);
+			if(!this.source.Get().IsNull()){
+				Vector3 sourcePosition = this.source.Get().transform.position;
+				Gizmos.DrawSphere(sourcePosition,this.radius);
+			}
 	    }
 	}
 }
