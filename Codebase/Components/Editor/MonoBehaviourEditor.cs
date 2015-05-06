@@ -102,7 +102,7 @@ namespace Zios{
 			if(changed){
 				this.serializedObject.ApplyModifiedProperties();
 				this.serializedObject.targetObject.CallMethod("OnValidate");
-				Utility.SetDirty(this.serializedObject.targetObject);
+				Utility.SetDirty(this.serializedObject.targetObject,false,true);
 			}
 	    }
 		public void Setup(){

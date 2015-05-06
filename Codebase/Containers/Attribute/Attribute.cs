@@ -46,6 +46,10 @@ namespace Zios{
 			get{return this.info.data;}
 			set{this.info.data = value;}
 		}
+		public int Length{
+			get{return this.info.data.Length;}
+			set{}
+		}
 		[NonSerialized] public bool isSetup;
 		[NonSerialized] public bool dirty = true;
 		[NonSerialized] public bool locked;
@@ -78,6 +82,7 @@ namespace Zios{
 		private BaseType cachedValue;
 		private IEnumerator<BaseType> cachedEnumerator;
 		protected BaseType delayedValue = default(BaseType);
+		public Func<IEnumerator<BaseType>> enumerateMethod;
 		public Func<BaseType> getMethod;
 		public Action<BaseType> setMethod;
 		public Target target{
@@ -98,7 +103,9 @@ namespace Zios{
 			}
 			return this.cachedEnumerator;
 			*/
-			return this.info.data.Where(x=>x is DataType).Select(x=>x.As<DataType>().Get()).GetEnumerator();
+			if(this.enumerateMethod != null){return this.enumerateMethod();}
+			if(this.info.mode == AttributeMode.Linked){return ((AttributeType)this.GetFirstRaw().reference).GetEnumerator();}
+			return data.Where(x=>x is DataType).Select(x=>x.As<DataType>().Get()).GetEnumerator();
 		}
 		IEnumerator IEnumerable.GetEnumerator(){return GetEnumerator();}
 		// ======================
@@ -227,6 +234,7 @@ namespace Zios{
 				if(data.IsNull()){continue;}
 				if(this.info.mode == AttributeMode.Linked){data.usage = AttributeUsage.Shaped;}
 				if(data.usage == AttributeUsage.Direct){continue;}
+				if(this.getMethod != null){continue;}
 				GameObject target = data.target.Get();
 				if(data.reference.IsNull() && !data.referenceID.IsEmpty() && !target.IsNull()){
 					if(!lookup.ContainsKey(target)){

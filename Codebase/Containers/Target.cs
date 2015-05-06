@@ -17,6 +17,7 @@ namespace Zios{
 	    public GameObject searchObject;
 	    public Component parent;
 	    public TargetMode mode = TargetMode.Search;
+		public string path;
 	    private int siblingCount;
 	    private Component lastParent;
 	    private string lastSearch = "";
@@ -27,11 +28,12 @@ namespace Zios{
 	    public GameObject Get(){
 		    GameObject result = this.mode == TargetMode.Search ? this.searchObject : this.directObject;
 		    if(result == null && Application.isPlaying){
-			    Debug.LogWarning("[Target] No target found for : " + this.parent.name);
+			    Debug.LogWarning("[Target] No target found for : " + this.path,this.parent);
 		    }
 		    return result;
 	    }
 	    public void Setup(string path,Component parent,string defaultSearch=""){
+			this.path = parent.GetPath() + "/" + path;
 			if(!Target.loaded){
 				string savedDefault = PlayerPrefs.GetString("Target-DefaultSearch");
 				if(!savedDefault.IsEmpty()){Target.defaultSearch = savedDefault;}
