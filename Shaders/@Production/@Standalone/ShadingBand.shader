@@ -74,13 +74,13 @@
 				return input;
 			}
 			pixelOutput applyDiffuseMap(vertexOutput input,pixelOutput output){
-				output.color += tex2D(diffuseMap,TRANSFORM_TEX(input.UV.xy,diffuseMap));
+				output.color.rgb = tex2D(diffuseMap,TRANSFORM_TEX(input.UV.xy,diffuseMap));
 				return output;
 			}
 			pixelOutput applyShadingBand(vertexOutput input,pixelOutput output){
 				float2 shading = float2(input.lighting,0);
 				fixed4 lookup = tex2D(shadingBand,shading);
-				output.color.rgb += lookup.rgb * lookup.a;
+				output.color.rgb *= lookup.rgb * lookup.a;
 				output.color.a = lookup.a;
 				return output;
 			}
@@ -89,8 +89,8 @@
 				input = setupInput(input);
 				input = setupNormalMap(input);
 				input = setupLighting(input);
-				output = applyShadingBand(input,output);
 				output = applyDiffuseMap(input,output);
+				output = applyShadingBand(input,output);
 				return output;
 			}
 			vertexOutput vertexPass(vertexInput input){
