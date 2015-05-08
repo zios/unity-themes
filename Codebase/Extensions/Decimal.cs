@@ -2,71 +2,71 @@
 using System.Collections.Generic;
 using System.Linq;
 namespace Zios{ 
-    public static class FloatExtension{
+    public static class DecimalExtension{
 		//=====================
 		// Numeric
 		//=====================
-		public static float MoveTowards(this float current,float end,float speed){
+		public static decimal MoveTowards(this decimal current,decimal end,decimal speed){
 			if(current > end){speed *= -1;}
 			current += speed;
 			current = end < current ? Math.Max(current,end) : Math.Min(current,end);
 			if((speed > 0 && current > end) || (speed < 0 && current < end)){current = end;}
 			return current;
 		}
-		public static float Distance(this float current,float end){
+		public static decimal Distance(this decimal current,decimal end){
 			return Math.Abs(current-end);
 		}
-	    public static bool Between(this float current,float start,float end){
+	    public static bool Between(this decimal current,decimal start,decimal end){
 		    return current >= start && current <= end;
 	    }
-	    public static bool InRange(this float current,float start,float end){
+	    public static bool InRange(this decimal current,decimal start,decimal end){
 		    return current.Between(start,end);
 	    }
-	    public static bool ToBool(this float current){
+	    public static bool ToBool(this decimal current){
 		    return current != 0;
 	    }
-	    public static float RoundClosestDown(this float current,params float[] values){
-		    float highest = -1;
-		    foreach(float value in values){
+	    public static decimal RoundClosestDown(this decimal current,params decimal[] values){
+		    decimal highest = -1;
+		    foreach(decimal value in values){
 			    if(current >= value){
 				    highest = value;
 				    break;
 			    }
 		    }
-		    foreach(float value in values){
+		    foreach(decimal value in values){
 			    if(current >= value && value > highest){
 				    highest = value;
 			    }
 		    }
 		    return highest;
 	    }
-	    public static float RoundClosestUp(this float current,params float[] values){
-		    float lowest = -1;
-		    foreach(float value in values){
+	    public static decimal RoundClosestUp(this decimal current,params decimal[] values){
+		    decimal lowest = -1;
+		    foreach(decimal value in values){
 			    if(current >= value){
 				    lowest = value;
 				    break;
 			    }
 		    }
-		    foreach(float value in values){
+		    foreach(decimal value in values){
 			    if(current <= value && value < lowest){
 				    lowest = value;
 			    }
 		    }
 		    return lowest;
 	    }
-		public static float Mean(this IEnumerable<float> current){return (float)current.Average();}
-		public static float Median(this IEnumerable<float> current){
+		public static decimal Mean(this IEnumerable<decimal> current){return (decimal)current.Average();}
+		public static decimal Median(this IEnumerable<decimal> current){
 			int count = current.Cast<object>().Count(); 
 			var sorted = current.OrderBy(n=>n); 
-			float midValue = sorted.ElementAt(count/2);
-			float median = midValue;
+			decimal midValue = sorted.ElementAt(count/2);
+			decimal median = midValue;
 			if(count%2==0){
 				median = (midValue + sorted.ElementAt((count/2)-1))/2;
 			}
 			return median;
 		}
-		public static float Mode(this IEnumerable<float> current){
+		public static decimal Mode(this IEnumerable<decimal> current){
 			return current.GroupBy(x=>x).OrderByDescending(x=>x.Count()).Select(x=>x.Key).FirstOrDefault();
 		}
     }
