@@ -32,6 +32,7 @@ namespace Zios{
 		    TextureImporter importer = (TextureImporter)assetImporter;
 			string assetName = importer.assetPath.Split("/").Last();
 		    importer.textureType = TextureImporterType.Advanced;
+			importer.npotScale = TextureImporterNPOTScale.None;
 		    if(assetName.Contains("Outlines")){
 			    importer.wrapMode = TextureWrapMode.Clamp;
 			    importer.textureFormat = TextureImporterFormat.DXT5;
