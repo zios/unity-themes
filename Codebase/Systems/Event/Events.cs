@@ -285,8 +285,16 @@ namespace Zios{
 			string targetName = target.ToString();
 			if(target is GameObject){targetName = ((GameObject)target).GetPath();}
 			if(target is Component){targetName = ((Component)target).GetPath();}
-			if(target is Attribute){targetName = ((Attribute)target).info.parent.GetPath();}
-			if(target is AttributeData){targetName = ((AttributeData)target).attribute.parent.GetPath();}
+			if(target is Attribute){
+				Component parent = ((Attribute)target).info.parent;
+				if(parent.IsNull()){return "Null";}
+				targetName = parent.GetPath();
+			}
+			if(target is AttributeData){
+				Component parent = ((AttributeData)target).attribute.parent;
+				if(parent.IsNull()){return "Null";}
+				targetName = parent.GetPath();
+			}
 			if(targetName.IsEmpty()){targetName = target.GetType().Name;}
 			targetName = targetName.Trim("/");
 			if(targetName.Contains("__")){targetName = "Anonymous";}

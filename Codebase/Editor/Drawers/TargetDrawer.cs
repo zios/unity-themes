@@ -45,6 +45,7 @@ namespace Zios{
 				    Event.current.Use();
 			    }
 			    target.search = target.search.Draw(textRect);
+				if(GUI.changed){target.searchObject = null;}
 			    result.DrawLabel(propertyRect,GUI.skin.GetStyle("SubtleInfo"));
 		    }
         }
