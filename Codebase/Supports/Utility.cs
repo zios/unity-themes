@@ -29,6 +29,7 @@ namespace Zios{
 	    public static List<CallbackFunction> hierarchyMethods = new List<CallbackFunction>();
 	    public static Dictionary<CallbackFunction,float> delayedMethods = new Dictionary<CallbackFunction,float>();
 		public static List<UnityObject> delayedDirty = new List<UnityObject>();
+		public static Dictionary<UnityObject,SerializedObject> serializedObjects = new Dictionary<UnityObject,SerializedObject>();
 	    public static bool hierarchyPaused;
 		public static bool delayPaused;
 		public static bool delayProcessing;
@@ -85,12 +86,18 @@ namespace Zios{
 		//=================
 		// Editor-Only
 		//=================
+	    public static SerializedObject GetSerializedObject(UnityObject target){
+			if(!Utility.serializedObjects.ContainsKey(target)){
+				Utility.serializedObjects[target] = new SerializedObject(target);
+			}
+			return Utility.serializedObjects[target];
+		}
 	    public static SerializedObject GetSerialized(UnityObject target){
 			Type type = typeof(SerializedObject);
 		    return type.CallMethod<SerializedObject>("LoadFromCache",target.GetInstanceID().AsBoxedArray());
 	    }
 		public static void UpdateSerialized(UnityObject target){
-			var serialized = new SerializedObject(target);
+			var serialized = Utility.GetSerializedObject(target);
 			serialized.Update();
 			serialized.ApplyModifiedProperties();
 			Utility.UpdatePrefab(target);
@@ -202,6 +209,12 @@ namespace Zios{
 		    EditorUtility.SetDirty(target);
 			Utility.UpdatePrefab(target);
 		    #endif
+	    }
+	    public static bool IsDirty(UnityObject target){
+		    #if UNITY_EDITOR
+		    return typeof(EditorUtility).CallMethod<bool>("IsDirty",target.GetInstanceID().AsBoxedArray());
+			#endif
+			return false;
 	    }
 	    public static int GetLocalID(int instanceID){
 		    #if UNITY_EDITOR

@@ -5,12 +5,16 @@ using UnityEditor;
 namespace Zios{
     [CustomEditor(typeof(ActionLink),true)]
     public class ActionLinkEditor : MonoBehaviourEditor{
+		public GUISkin skin;
 	    public override void OnInspectorGUI(){
 			if(!Event.current.IsUseful()){return;}
 		    ActionLink script = (ActionLink)this.target;
 			if(script.actionTable != null){
 				string skinName = EditorGUIUtility.isProSkin ? "Dark" : "Light";
-				GUI.skin = FileManager.GetAsset<GUISkin>("Gentleface-" + skinName + ".guiskin");
+				if(this.skin == null || !this.skin.name.Contains(skinName)){
+					this.skin = FileManager.GetAsset<GUISkin>("Gentleface-" + skinName + ".guiskin");
+				}
+				GUI.skin = this.skin;
 				StateRowData[] onRows = script.actionTable.table.Where(x=>x.target==script).FirstOrDefault().requirements;
 				StateRowData[] offRows = script.actionTable.tableOff.Where(x=>x.target==script).FirstOrDefault().requirements;
 				bool hasOnData = onRows.Select(x=>x.data).First().Where(x=>x.requireOn||x.requireOff).FirstOrDefault() != null;

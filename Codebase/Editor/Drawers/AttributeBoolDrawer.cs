@@ -82,7 +82,7 @@ namespace Zios{
 		}
 		public void DrawFormulaPart(AttributeData data,int index){
 			//string name = emptyLabel ? " " : ((char)('A'+index)).ToString();
-			SerializedObject currentProperty = new SerializedObject(data);
+			var currentProperty = Utility.GetSerializedObject(data);
 			GUIContent formulaLabel = new GUIContent(" ");
 			bool? operatorState = index == 0 ? (bool?)false : (bool?)true;
 			if(data.usage == AttributeUsage.Direct){

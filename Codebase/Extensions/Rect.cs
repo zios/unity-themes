@@ -79,7 +79,9 @@ namespace Zios{
 		    return current.Overlaps(windowRect);
 	    }
 		public static bool IsEmpty(this Rect current){
-			return current.x == 0 && current.y == 0 && current.width == 1 && current.height == 1;
+			bool oneSize = current.x == 0 && current.y == 0 && current.width == 1 && current.height == 1;
+			bool noSize = current.x == 0 && current.y == 0 && current.width == 0 && current.height == 0;
+			return oneSize || noSize;
 		}
 	    #if UNITY_EDITOR
 	    public static EditorWindow GetInspectorWindow(this Rect current){
@@ -90,14 +92,15 @@ namespace Zios{
 		    Rect windowRect = new Rect(0,0,Screen.width,Screen.height);
 		    foreach(var window in Utility.GetInspectors()){
 			    Vector2 scroll = window.GetVariable<Vector2>("m_ScrollPosition");
+				windowRect.x = scroll.x;
 			    windowRect.y = scroll.y;
 			    if(current.Overlaps(windowRect)){return true;}
 		    }
 		    return false;
 	    }
 	    public static bool InspectorValid(this Rect current){
-		    if(current == new Rect(0,0,1,1)){return false;}
-		    if(!current.InInspectorWindow() && current.y > 0){return false;}
+		    if(current.IsEmpty()){return false;}
+		    if(!current.InInspectorWindow()){return false;}
 		    return true;
 	    }
 	    #endif

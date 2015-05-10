@@ -20,9 +20,16 @@ namespace Zios{
 		public Rect area;
 		public Rect areaStart;
 	    public override void OnInspectorGUI(){
-			//if(!Event.current.IsUseful()){return;}
+			if(!Event.current.IsUseful()){return;}
 			if(this.target.As<MonoBehaviour>().IsPrefab()){return;}
-			try{this.areaStart = GUILayoutUtility.GetRect(0,0);}
+			try{
+				Rect areaStart = GUILayoutUtility.GetRect(0,0);
+				if(!areaStart.IsEmpty() && this.areaStart != areaStart){
+					this.areaStart = areaStart;
+					this.propertyArea.Clear();
+					this.Repaint();
+				}
+			}
 			catch{}
 			this.serializedObject.Update();
 			MonoBehaviourEditor.hideAllDefault = EditorPrefs.GetBool("MonoBehaviourEditor-HideAllDefault",false);
@@ -63,7 +70,8 @@ namespace Zios{
 					if(isDefault){isHidden = true;}
 				}
 				if(!isHidden){
-					if(this.propertyArea.ContainsKey(property)){
+					bool hasArea = this.propertyArea.ContainsKey(property);
+					if(hasArea){
 						if(Event.current.shift){
 							bool canHide = (this.properties.Count - this.hidden.Count) > 1;
 							if(this.propertyArea[property].Clicked(0) && canHide){
@@ -74,15 +82,18 @@ namespace Zios{
 							}
 							if(this.propertyArea[property].Clicked(1)){this.DrawMenu();}
 						}
-						//if(!this.propertyArea[property].InspectorValid()){continue;}
+						if(!this.propertyArea[property].InspectorValid()){
+							GUILayout.Space(this.propertyArea[property].height);
+							continue;
+						}
 					}
 					try{
 						string propertyName = currentValue is Attribute ? currentValue.As<Attribute>().info.name : "";
 						if(isReadOnly){GUI.enabled = false;}
 						GUI.changed = false;
-						EditorGUI.BeginProperty(this.propertyArea.AddNew(property),new GUIContent(property.displayName),property);
+						if(hasArea){EditorGUI.BeginProperty(this.propertyArea[property],new GUIContent(property.displayName),property);}
 						property.DrawLabeled(propertyName);
-						EditorGUI.EndProperty();
+						if(hasArea){EditorGUI.EndProperty();}
 						changed = changed || GUI.changed;
 						if(isReadOnly){GUI.enabled = true;}
 						Rect area = GUILayoutUtility.GetLastRect();

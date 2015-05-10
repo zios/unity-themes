@@ -86,8 +86,8 @@ namespace Zios{
 		public List<string> specialOverride;
 		public Dictionary<AttributeData,bool> targetMode = new Dictionary<AttributeData,bool>();
 		public virtual void Setup(AttributeDrawer drawer,Rect area,SerializedProperty property,GUIContent label){
-			if(skin == null){
-				string skinName = EditorGUIUtility.isProSkin ? "Dark" : "Light";
+			string skinName = EditorGUIUtility.isProSkin ? "Dark" : "Light";
+			if(this.skin == null || !this.skin.name.Contains(skinName)){
 				this.skin = FileManager.GetAsset<GUISkin>("Gentleface-" + skinName + ".guiskin");
 				this.attribute = property.GetObject<Attribute>();
 				this.attributeCast = (AttributeType)this.attribute;
@@ -120,7 +120,7 @@ namespace Zios{
 		public virtual void Draw(){
 			AttributeData firstData = this.attributeCast.GetFirst();
 			if(firstData.IsNull()){return;}
-			SerializedObject firstProperty = new SerializedObject(firstData);
+			SerializedObject firstProperty = Utility.GetSerializedObject(firstData);
 			firstProperty.Update();
 			this.DrawContext(firstData);
 			if(this.attribute.info.mode == AttributeMode.Normal){
@@ -333,7 +333,7 @@ namespace Zios{
 		}
 		public virtual void DrawGroupRow(AttributeData data,int index,bool drawAdvanced){
 			float lineHeight = EditorGUIUtility.singleLineHeight+2;
-			SerializedObject currentProperty = new SerializedObject(data);
+			SerializedObject currentProperty = Utility.GetSerializedObject(data);
 			currentProperty.Update();
 			//GUIContent formulaLabel = new GUIContent(((char)('A'+index)).ToString());
 			GUIContent formulaLabel = new GUIContent(" ");
