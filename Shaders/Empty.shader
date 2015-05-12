@@ -5,5 +5,5 @@
 		Pass{
 		}
 	}
-	CustomEditor "Zios.ExtendedMaterialEditor"
+	CustomEditor "ExtendedMaterialEditor"
 }

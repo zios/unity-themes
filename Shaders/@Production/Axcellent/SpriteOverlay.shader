@@ -1,4 +1,4 @@
-﻿Shader "Zios/Sprite/Overlay"{
+Shader "Zios/Sprite/Overlay"{
 	Properties{
 		[PerRendererData]_MainTex("Diffuse Map",2D) = "white"{}
 	}
@@ -35,5 +35,5 @@
 			ENDCG
 		}
 	}
-	CustomEditor "Zios.ExtendedMaterialEditor"
+	CustomEditor "ExtendedMaterialEditor"
 }

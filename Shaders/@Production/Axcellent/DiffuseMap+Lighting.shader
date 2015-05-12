@@ -1,4 +1,4 @@
-﻿Shader "Zios/General/Diffuse Map + Lighting"{
+Shader "Zios/General/Diffuse Map + Lighting"{
 	Properties{
 		_MainTex("Diffuse Map",2D) = "white"{}
 		intensity("Light Intensity",Range(1,4)) = 4.0
@@ -36,5 +36,5 @@
 			ENDCG
 		}
 	}
-	CustomEditor "Zios.ExtendedMaterialEditor"
+	CustomEditor "ExtendedMaterialEditor"
 }

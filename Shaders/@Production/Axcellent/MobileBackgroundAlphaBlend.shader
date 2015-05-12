@@ -1,4 +1,4 @@
-﻿Shader "Zios/Mobile/Background Alpha Blend"{
+Shader "Zios/Mobile/Background Alpha Blend"{
 	Properties{
 		_MainTex("Diffuse Map",2D) = "white"{}
 	}
@@ -33,5 +33,5 @@
 			ENDCG
 		}
 	}
-	CustomEditor "Zios.ExtendedMaterialEditor"
+	CustomEditor "ExtendedMaterialEditor"
 }

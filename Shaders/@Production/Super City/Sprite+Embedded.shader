@@ -1,4 +1,4 @@
-﻿Shader "Zios/SuperCity/Sprite + Embedded"{
+Shader "Zios/SuperCity/Sprite + Embedded"{
 	Properties{
 		diffuseMap("Diffuse Map",2D) = "white"{}
 		normalMap("Normal Map",2D) = "white"{}
@@ -127,5 +127,5 @@
 			ENDCG
 		}
 	}
-	CustomEditor "Zios.ExtendedMaterialEditor"
+	CustomEditor "ExtendedMaterialEditor"
 }

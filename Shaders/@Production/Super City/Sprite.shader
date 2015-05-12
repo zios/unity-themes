@@ -1,4 +1,4 @@
-﻿Shader "Zios/SuperCity/Sprite"{
+Shader "Zios/SuperCity/Sprite"{
 	Properties{
 		alpha("Alpha",Range(0.0,1.0)) = 1.0
 		alphaCutoff("Alpha Cutoff",Range(0.0,1.0)) = 0
@@ -96,5 +96,5 @@
 			ENDCG
 		}
 	}
-	CustomEditor "Zios.ExtendedMaterialEditor"
+	CustomEditor "ExtendedMaterialEditor"
 }

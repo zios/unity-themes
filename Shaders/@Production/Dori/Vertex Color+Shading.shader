@@ -1,4 +1,4 @@
-﻿Shader "Zios/Dori/Vertex Color + Shading"{
+Shader "Zios/Dori/Vertex Color + Shading"{
 	Properties{
 		contrast("Contrast",Range(-0.5,0.5)) = 0.2
 		shadingRamp("Shading Ramp",2D) = "white"{}
@@ -88,5 +88,5 @@
 			ENDCG
 		}
 	}
-	//CustomEditor "Zios.ExtendedMaterialEditor"
+	//CustomEditor "ExtendedMaterialEditor"
 }
