@@ -156,6 +156,7 @@ namespace Zios{
 			return current;
 		}
 		public static GUIStyle Background(this GUIStyle current,string value,bool asCopy=true){
+			if(value.IsEmpty()){return current.Background(default(Texture2D),asCopy);}
 			Texture2D texture = FileManager.GetAsset<Texture2D>(value);
 			if(texture != null){return current.Background(texture,asCopy);}
 			return current;

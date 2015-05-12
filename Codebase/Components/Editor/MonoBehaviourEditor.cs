@@ -19,18 +19,11 @@ namespace Zios{
 		public Dictionary<SerializedProperty,Rect> propertyArea = new Dictionary<SerializedProperty,Rect>();
 		public Rect area;
 		public Rect areaStart;
+		public bool areaBegan;
 	    public override void OnInspectorGUI(){
 			if(!Event.current.IsUseful()){return;}
 			if(this.target.As<MonoBehaviour>().IsPrefab()){return;}
-			try{
-				Rect areaStart = GUILayoutUtility.GetRect(0,0);
-				if(!areaStart.IsEmpty() && this.areaStart != areaStart){
-					this.areaStart = areaStart;
-					this.propertyArea.Clear();
-					this.Repaint();
-				}
-			}
-			catch{}
+			this.BeginArea();
 			this.serializedObject.Update();
 			MonoBehaviourEditor.hideAllDefault = EditorPrefs.GetBool("MonoBehaviourEditor-HideAllDefault",false);
 			this.hideDefault = EditorPrefs.GetBool("MonoBehaviourEditor-"+this.target.GetInstanceID()+"HideDefault",false);
@@ -48,6 +41,7 @@ namespace Zios{
 				showAll = this.area.Contains(mousePosition);
 				this.Repaint();
 			}
+			EditorGUILayout.BeginVertical();
 			foreach(var property in this.properties){
 				string[] attributes = this.serializedObject.targetObject.ListAttributes(property.name).Select(x=>x.GetType().Name).ToArray();
 				bool isInternal = attributes.Contains("InternalAttribute");
@@ -83,7 +77,8 @@ namespace Zios{
 							if(this.propertyArea[property].Clicked(1)){this.DrawMenu();}
 						}
 						if(!this.propertyArea[property].InspectorValid()){
-							GUILayout.Space(this.propertyArea[property].height);
+							try{GUILayout.Space(this.propertyArea[property].height);}
+							catch{}
 							continue;
 						}
 					}
@@ -96,26 +91,46 @@ namespace Zios{
 						if(hasArea){EditorGUI.EndProperty();}
 						changed = changed || GUI.changed;
 						if(isReadOnly){GUI.enabled = true;}
-						Rect area = GUILayoutUtility.GetLastRect();
-						if(!area.IsEmpty()){this.propertyArea[property] = area;}
+						if(Event.current.type == EventType.Repaint){
+							Rect area = GUILayoutUtility.GetLastRect();
+							if(!area.IsEmpty()){this.propertyArea[property] = area;}
+						}
 					}
 					catch{}
 				}
-			}		
-			try{
-				Rect areaEnd = GUILayoutUtility.GetRect(0,0);
-				if(!areaEnd.IsEmpty()){
-					this.area = this.areaStart.AddY(-15);
-					this.area.height = (areaEnd.y - this.areaStart.y) + 15;
-				}
 			}
-			catch{}
+			EditorGUILayout.EndVertical();
+			this.EndArea();
 			if(changed){
 				this.serializedObject.ApplyModifiedProperties();
 				this.serializedObject.targetObject.CallMethod("OnValidate");
 				Utility.SetDirty(this.serializedObject.targetObject,false,true);
 			}
 	    }
+		public void BeginArea(){
+			if(this.areaBegan){return;}
+			try{
+				Rect areaStart = GUILayoutUtility.GetRect(0,0);
+				if(!areaStart.IsEmpty() && this.areaStart != areaStart){
+					this.areaStart = areaStart;
+					this.propertyArea.Clear();
+					this.Repaint();
+				}
+				this.areaBegan = true;
+			}
+			catch{}
+		}
+		public void EndArea(){
+			try{
+				Rect areaEnd = GUILayoutUtility.GetRect(0,0);
+				if(!areaEnd.IsEmpty()){
+					this.area = this.areaStart.AddY(-15);
+					this.area.height = (areaEnd.y - this.areaStart.y) + 15;
+				}
+				this.areaBegan = false;
+			}
+			catch{}
+		}
 		public void Setup(){
 			if(this.properties.Count > 0 && !this.setup){
 				foreach(var property in this.properties){

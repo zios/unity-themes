@@ -19,6 +19,10 @@ namespace Zios{
 		    this.inUse.Setup("Active",this);
 		    this.used.Setup("Used",this);
 	    }
+	    [ContextMenu("Toggle Breakdown")]
+	    public virtual void ToggleLinkBreakdown(){
+			Utility.ToggleEditorPref("StateLinkBreakdownVisible",true);
+		}
 	    [ContextMenu("Toggle Column In Table")]
 	    public void ToggleRequire(){
 		    this.requirable.Set(!this.requirable);

@@ -118,6 +118,16 @@ namespace Zios{
 		//=================
 		// General
 		//=================
+		public static void TogglePlayerPref(string name,bool fallback=false){
+			bool value = !(PlayerPrefs.GetInt(name) == fallback.ToInt());
+			PlayerPrefs.SetInt(name,value.ToInt());
+		}
+		public static void ToggleEditorPref(string name,bool fallback=false){
+		    #if UNITY_EDITOR
+			bool value = !EditorPrefs.GetBool(name,fallback);
+			EditorPrefs.SetBool(name,value);
+			#endif
+		}
 	    public static void Destroy(UnityObject target){
 		    if(!Application.isPlaying){UnityObject.DestroyImmediate(target,true);}
 		    else{UnityObject.Destroy(target);}
