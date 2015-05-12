@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Zios;
+using MaterialExtended;
 using FogMode = MaterialExtended.FogMode;
 using Buffer = MaterialExtended.Buffer;
 #pragma warning disable 618
