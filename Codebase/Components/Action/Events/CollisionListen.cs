@@ -15,7 +15,7 @@ namespace Zios{
 		    base.Awake();
 		    this.lastCollision.Setup("Last Collision",this);
 		    this.target.Setup("Target",this);
-		    this.target.DefaultSearch("[Owner]");
+		    this.target.SetFallback("[Owner]");
 		    this.AddDependent<ColliderController>(this.target);
 			Method eventSetup = ()=>{
 				string triggerName = this.trigger.ToString().ToTitle();

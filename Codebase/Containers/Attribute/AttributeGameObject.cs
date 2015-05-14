@@ -24,7 +24,10 @@ namespace Zios{
 			this.canGroup = true;
 			this.usage = AttributeUsage.Shaped;
 		}
-		public void DefaultSearch(){this.GetFirst().target.DefaultSearch();}
-		public void DefaultSearch(string target){this.GetFirst().target.DefaultSearch(target);}
+		public void SetFallback(string target){
+			foreach(var data in this.data){
+				data.target.SetFallback(target);
+			}
+		}
 	}
 }

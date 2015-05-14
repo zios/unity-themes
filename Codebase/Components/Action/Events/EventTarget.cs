@@ -10,7 +10,7 @@ namespace Zios{
 	    public EventMode mode = EventMode.Listeners;
 	    public void Setup(string name,Component component){
 		    this.name.Setup(name+"/Name",component);
-		    this.target.Setup(name+"/Target",component,"");
+		    this.target.Setup(name+"/Target",component);
 	    }
 	    public void SetupCatch(Method method){
 		    GameObject target = this.target.Get();
