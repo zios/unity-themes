@@ -26,7 +26,7 @@ namespace Zios{
 		public static float nextRefresh;
 		public static float percentLoaded;
 		public static bool disabled = false;
-		public static bool safe = true;
+		public static bool safe = false;
 		public int editorRefreshPasses = -1;
 		public bool editorIncludeDisabled = true;
 		public bool refreshOnHierarchyChange = true;
@@ -100,13 +100,6 @@ namespace Zios{
 		//==============================
 		// Unity
 		//==============================
-		public void OnValidate(){
-			if(Utility.IsPlaying() || Application.isLoadingLevel){return;}
-			if(!AttributeManager.disabled){
-				this.Setup();
-				AttributeManager.PerformRefresh();
-			}
-		}
 		public void Awake(){
 			if(!AttributeManager.disabled){
 				AttributeManager.instance = this;

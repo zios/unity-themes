@@ -28,7 +28,7 @@ namespace Zios{
 				this.BeginArea();
 				GUILayout.BeginHorizontal();
 				if(hasOnData){
-					int fixedWidth = showFixed ? 150 : (Screen.width/2)-20;
+					int fixedWidth = showFixed ? 150 : (Screen.width/2)-18;
 					var columnStyle = GUI.skin.GetStyle("Box").FixedWidth(fixedWidth).Background("");
 					GUILayout.BeginVertical(columnStyle);
 					for(int index=0;index<onRows.Length;++index){
@@ -63,12 +63,14 @@ namespace Zios{
 					GUILayout.EndVertical();
 				}
 				else{
-					int fixedWidth = showFixed ? 305 : Screen.width-40;
+					int fixedWidth = showFixed ? 305 : Screen.width-37;
 					var columnStyle = GUI.skin.GetStyle("Box").FixedWidth(fixedWidth);
+					GUILayout.BeginVertical(columnStyle.Background(""));
 					GUILayout.BeginVertical(columnStyle);
 					string onColor = EditorGUIUtility.isProSkin ? "#95e032" : "#0000AA99";
 					string phrase = ("Always <b><color="+onColor+">On</color></b>").ToUpper();
 					phrase.DrawLabel(GUI.skin.GetStyle("FixedLabel").Alignment("MiddleCenter"));
+					GUILayout.EndVertical();
 					GUILayout.EndVertical();
 				}
 				GUILayout.EndHorizontal();
@@ -84,11 +86,9 @@ namespace Zios{
 			GenericMenu menu = new GenericMenu();
 			MenuFunction hideBreakdown = ()=>{Utility.ToggleEditorPref("StateLinkBreakdownVisible");};
 			MenuFunction toggleFixed = ()=>{Utility.ToggleEditorPref("StateLinkBreakdownFixed");};
-			//menu.AddSeparator("");
 			menu.AddItem(new GUIContent("Fixed Layout"),EditorPrefs.GetBool("StateLinkBreakdownFixed"),toggleFixed);
 			menu.AddItem(new GUIContent("Hide Breakdown"),false,hideBreakdown);
 			menu.ShowAsContext();
-			//Event.current.Use();
 		}
 		public void DrawState(StateRowData[] rowData,int rowIndex,string title,bool flip=false){
 			StateRowData row = rowData[rowIndex];
