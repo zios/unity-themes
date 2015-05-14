@@ -10,7 +10,7 @@ namespace Zios{
 		    List<bool> data = property.GetObject<ListBool>().value;
 		    Rect labelRect = area.SetWidth(EditorGUIUtility.labelWidth);
 		    Rect valueRect = area.Add(labelRect.width,0,-labelRect.width,0);
-			label.DrawLabel(labelRect);
+			label.DrawLabel(labelRect,null,true);
 			for(int index=0;index<data.Count;++index){
 				data[index] = data[index].Draw(valueRect.AddX((index*30)).SetWidth(30));
 				names[index].DrawLabel(valueRect.Add(14+(index*30)));

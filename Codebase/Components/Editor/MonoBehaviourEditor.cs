@@ -22,7 +22,7 @@ namespace Zios{
 		public bool areaBegan;
 	    public override void OnInspectorGUI(){
 			if(!Event.current.IsUseful()){return;}
-			if(this.target.As<MonoBehaviour>().IsPrefab()){return;}
+			if(this.target is MonoBehaviour && this.target.As<MonoBehaviour>().IsPrefab()){return;}
 			this.BeginArea();
 			this.serializedObject.Update();
 			MonoBehaviourEditor.hideAllDefault = EditorPrefs.GetBool("MonoBehaviourEditor-HideAllDefault",false);
@@ -51,7 +51,8 @@ namespace Zios{
 				if(isAdvanced && !showAdvanced){isHidden = true;}
 				if(isInternal && !showInternal){isHidden = true;}
 				object currentValue = property.GetObject<object>();
-				if(!showAll && hideDefault){
+				bool hasDefault = MonoBehaviourEditor.defaults.ContainsKey(type) && MonoBehaviourEditor.defaults[type].ContainsKey(property.name);
+				if(!showAll && hideDefault && hasDefault){
 					object defaultValue = MonoBehaviourEditor.defaults[type][property.name];
 					if(defaultValue.IsNull()){continue;}
 					if(currentValue is AttributeFloat){currentValue = ((AttributeFloat)currentValue).Get();}
@@ -145,6 +146,7 @@ namespace Zios{
 		public void SortDefaults(){
 			Type type = this.target.GetType();
 			var defaults = MonoBehaviourEditor.defaults;
+			if(!(this.target is MonoBehaviour)){return;}
 			if(!defaults.ContainsKey(type)){
 				Events.Pause("On Hierarchy Changed");
 				Events.disabled = true;
@@ -153,9 +155,10 @@ namespace Zios{
 				defaults.AddNew(type);
 				var script = (MonoBehaviour)this.target;
 				var component = script.gameObject.AddComponent(type);
-				foreach(string name in component.ListVariables()){
+				foreach(var item in component.GetVariables()){
 					try{
-						object defaultValue = component.GetVariable(name);
+						string name = item.Key;
+						object defaultValue = item.Value;
 						if(defaultValue is AttributeFloat){defaultValue = ((AttributeFloat)defaultValue).Get();}
 						if(defaultValue is AttributeInt){defaultValue = ((AttributeInt)defaultValue).Get();}
 						if(defaultValue is AttributeBool){defaultValue = ((AttributeBool)defaultValue).Get();}

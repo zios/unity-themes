@@ -94,7 +94,7 @@ namespace Zios{
 		}
 	    public static SerializedObject GetSerialized(UnityObject target){
 			Type type = typeof(SerializedObject);
-		    return type.CallMethod<SerializedObject>("LoadFromCache",target.GetInstanceID().AsBoxedArray());
+		    return type.CallMethod<SerializedObject>("LoadFromCache",target.GetInstanceID());
 	    }
 		public static void UpdateSerialized(UnityObject target){
 			var serialized = Utility.GetSerializedObject(target);
@@ -222,7 +222,7 @@ namespace Zios{
 	    }
 	    public static bool IsDirty(UnityObject target){
 		    #if UNITY_EDITOR
-		    return typeof(EditorUtility).CallMethod<bool>("IsDirty",target.GetInstanceID().AsBoxedArray());
+		    return typeof(EditorUtility).CallMethod<bool>("IsDirty",target.GetInstanceID());
 			#endif
 			return false;
 	    }

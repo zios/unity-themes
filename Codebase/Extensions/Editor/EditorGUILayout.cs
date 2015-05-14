@@ -2,6 +2,7 @@
 using UnityEditor;
 using System;
 using System.Linq;
+using System.Collections;
 using System.Collections.Generic;
 using UnityObject = UnityEngine.Object;
 namespace Zios{
@@ -42,8 +43,73 @@ namespace Zios{
 	    public static Color Draw(this Color current){
 		    return EditorGUIExtension.Draw<Color>(()=>EditorGUILayout.ColorField(current));
 	    }
+		public static void Draw<T>(this List<T> current,string header="List"){
+			if(header.IsEmpty() || EditorGUILayoutExtension.Foldout(header)){
+				if(!header.IsEmpty()){EditorGUI.indentLevel += 1;}
+				for(int index=0;index<current.Count;++index){
+					var item = current[index];
+					string label = "#"+index;
+					if(item is ICollection){
+						var enumerable = item as IEnumerable;
+						enumerable.OfType<object>().ToList().Draw(label);
+						continue;
+					}
+					if(item.GetType().IsClass && item.GetType().IsSerializable && !(item is string)){
+						item.DrawFields(label);
+						continue;
+					}
+					item.DrawAutoLabeled(label);
+				}
+				if(!header.IsEmpty()){EditorGUI.indentLevel -= 1;}
+			}
+		}
+		public static void DrawFields(this object current,string header="Fields"){
+			if(header.IsEmpty() || EditorGUILayoutExtension.Foldout(header)){
+				if(!header.IsEmpty()){EditorGUI.indentLevel += 1;}
+				foreach(var item in current.GetVariables()){
+					string label = item.Key.ToTitle();
+					object field = item.Value;
+					if(field is ICollection){
+						var enumerable = field as IEnumerable;
+						enumerable.OfType<object>().ToList().Draw(label);
+						continue;
+					}
+					if(field.GetType().IsClass && field.GetType().IsSerializable && !(field is string)){
+						field.DrawFields(label);
+						continue;
+					}
+					string value = Convert.ToString(field);
+					if(value != null){
+						value.DrawLabeled(label);
+					}
+				}
+				if(!header.IsEmpty()){EditorGUI.indentLevel -= 1;}
+			}
+		}
+		public static bool Foldout(string label=""){
+			string name = label + "Foldout";
+			bool state = EditorPrefs.GetBool(name);
+			state = EditorGUILayout.Foldout(state,label);
+			EditorPrefs.SetBool(name,state);
+			return state;
+		}
     }
     public static class EditorGUILayoutExtensionSpecial{
+		public static void DrawAuto(this object current,GUIStyle style=null){
+			if(current is string){current.As<string>().Draw(style);}
+			if(current is int){current.As<int>().DrawInt();}
+			if(current is float){current.As<float>().Draw(style);}
+			if(current is Enum){current.As<Enum>().Draw(style);}
+			if(current is SerializedProperty){current.As<SerializedProperty>().Draw();}
+			if(current is AnimationCurve){current.As<AnimationCurve>().Draw();}
+			if(current is Color){current.As<Color>().Draw();}
+			if(current is Rect){current.As<Rect>().Draw();}
+			if(current is GameObject){current.As<GameObject>().DrawObject();}
+			if(current is Component){current.As<Component>().DrawObject();}
+			if(current is Vector2){current.As<Vector2>().DrawVector2();}
+			if(current is Vector3){current.As<Vector3>().DrawVector3();}
+			if(current is Vector4){current.As<Vector4>().DrawVector4();}
+		}
 	    public static void DrawLabel(this GUIContent current,GUIStyle style=null,bool indention=false){
 		    style = style ?? EditorStyles.label;
 		    EditorGUIExtension.Draw(()=>EditorGUILayout.LabelField(current,style),indention);
@@ -131,6 +197,49 @@ namespace Zios{
 		    return (GameObject)EditorGUIExtension.Draw<UnityObject>(()=>EditorGUILayout.ObjectField(label,current,current.GetType(),allowScene),indention);
 	    }
 	    public static Component DrawLabeledObject(this Component current,GUIContent label,bool allowScene=true,bool indention=false){
+		    return (Component)EditorGUIExtension.Draw<UnityObject>(()=>EditorGUILayout.ObjectField(label,current,current.GetType(),allowScene),indention);
+	    }
+    }
+    public static class EditorGUILayoutExtensionLabeledString{
+		public static void DrawAutoLabeled(this object current,object label,GUIStyle style=null){
+			GUIContent content = new GUIContent();
+			if(label is string){content.text = (string)label;}
+			if(label is GUIContent){content = (GUIContent)label;}
+			if(current is string){current.As<string>().DrawLabeled(content,style);}
+			if(current is int){current.As<int>().DrawLabeledInt(content,style);}
+			if(current is float){current.As<float>().DrawLabeled(content,style);}
+			if(current is SerializedProperty){current.As<SerializedProperty>().DrawLabeled(content);}
+			if(current is GameObject){current.As<GameObject>().DrawLabeledObject(content);}
+			if(current is Component){current.As<Component>().DrawLabeledObject(content);}
+			if(current is Vector3){current.As<Vector3>().DrawLabeled(content);}
+		}
+	    public static string DrawLabeled(this string current,string label,GUIStyle style=null,bool indention=true){
+		    style = style ?? EditorStyles.textField;
+		    return EditorGUIExtension.Draw<string>(()=>EditorGUILayout.TextField(label,current,style),indention);
+	    }
+	    public static Enum DrawLabeledMask(this Enum current,string label,GUIStyle style=null,bool indention=true){
+		    style = style ?? EditorStyles.popup;
+		    return EditorGUIExtension.Draw<Enum>(()=>EditorGUILayout.EnumMaskField(label,current,style),indention);
+	    }
+	    public static int DrawLabeledInt(this int current,string label,GUIStyle style=null,bool indention=true){
+		    style = style ?? EditorStyles.numberField;
+		    return EditorGUIExtension.Draw<int>(()=>EditorGUILayout.IntField(label,current,style),indention);
+	    }
+	    public static float DrawLabeled(this float current,string label,GUIStyle style=null,bool indention=true){
+		    style = style ?? EditorStyles.numberField;
+		    return EditorGUIExtension.Draw<float>(()=>EditorGUILayout.FloatField(label,current,style),indention);
+	    }
+	    public static bool DrawLabeled(this bool current,string label,GUIStyle style=null,bool indention=true){
+		    style = style ?? EditorStyles.toggle;
+		    return EditorGUIExtension.Draw<bool>(()=>EditorGUILayout.Toggle(label,current,style),indention);
+	    }
+	    public static Vector3 DrawLabeled(this Vector3 current,string label,bool indention=true){
+		    return EditorGUIExtension.Draw<Vector3>(()=>EditorGUILayout.Vector3Field(label,current),indention);
+	    }
+	    public static GameObject DrawLabeledObject(this GameObject current,string label,bool allowScene=true,bool indention=false){
+		    return (GameObject)EditorGUIExtension.Draw<UnityObject>(()=>EditorGUILayout.ObjectField(label,current,current.GetType(),allowScene),indention);
+	    }
+	    public static Component DrawLabeledObject(this Component current,string label,bool allowScene=true,bool indention=false){
 		    return (Component)EditorGUIExtension.Draw<UnityObject>(()=>EditorGUILayout.ObjectField(label,current,current.GetType(),allowScene),indention);
 	    }
     }

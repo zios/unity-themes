@@ -20,7 +20,7 @@ namespace Zios{
 		    this.property = type.GetProperty(name);
 		    this.type = this.Get().GetType();
 	    }
-	    public object Get<Type>(){
+	    public Type Get<Type>(){
 		    return (Type)this.Get(this.scope,this.index);
 	    }
 	    public object Get(){

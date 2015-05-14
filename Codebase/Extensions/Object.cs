@@ -14,15 +14,6 @@ namespace Zios{
 	    public const BindingFlags instanceFlags = BindingFlags.Instance|BindingFlags.NonPublic|BindingFlags.Public;
 	    public const BindingFlags privateFlags = BindingFlags.Instance|BindingFlags.NonPublic;
 	    public const BindingFlags publicFlags = BindingFlags.Instance|BindingFlags.Public;
-	    public static T ChangeType<T>(this object current,T type){
-		    return (T)Convert.ChangeType(current,typeof(T));
-	    }
-	    public static T ChangeType<T>(this object current){
-		    return (T)Convert.ChangeType(current,typeof(T));
-	    }
-	    public static T[] ConvertArray<T>(this object current){
-		    return ((Array)current).Convert<T>();
-	    }
 	    public static T Clone<T>(this T target) where T : class{
 		    if(target == null){
 			    return null;
@@ -35,14 +26,57 @@ namespace Zios{
 			    return null;
 		    }
 	    }
-	    public static object CallMethod(this object current,string name,object[] parameters=null){
+		//=========================
+		// Reflection - Methods
+		//=========================
+	    public static bool HasMethod(this object current,string name,BindingFlags flags = allFlags){
+		    Type type = current is Type ? (Type)current : current.GetType();
+		    return type.GetMethod(name,flags) != null;
+	    }
+	    public static object CallMethod(this object current,string name,params object[] parameters){
 		    return current.CallMethod<object>(name,parameters);
 	    }
-	    public static V CallMethod<V>(this object current,string name,object[] parameters=null){
+	    public static V CallMethod<V>(this object current,string name,params object[] parameters){
+			var method = current.GetMethod(name,allFlags);
+			if(method == null){return default(V);}
 		    if(current.IsStatic() || current is Type){
-			    return (V)current.GetMethod(name,allFlags).Invoke(null,parameters);
+			    return (V)method.Invoke(null,parameters);
 		    }
-		    return (V)current.GetMethod(name,allFlags).Invoke(current,parameters);
+		    return (V)method.Invoke(current,parameters);
+	    }
+	    public static MethodInfo GetMethod(this object current,string name,BindingFlags flags = allFlags){
+		    Type type = current is Type ? (Type)current : current.GetType();
+		    return type.GetMethod(name,flags);
+	    }
+	    public static List<MethodInfo> GetMethods(this object current,List<Type> argumentTypes = null,BindingFlags flags = allFlags){
+		    Type type = current is Type ? (Type)current : current.GetType();
+		    List<MethodInfo> methods = new List<MethodInfo>();
+		    foreach(MethodInfo method in type.GetMethods(flags)){
+			    if(argumentTypes != null){
+				    ParameterInfo[] parameters = method.GetParameters();
+				    bool match = parameters.Length == argumentTypes.Count;
+				    if(match){
+					    for(int i = 0;i < parameters.Length;i++){
+						    if(!parameters[i].ParameterType.Equals(argumentTypes[i])){
+							    match = false;
+							    break;
+						    }
+					    }
+				    }
+				    if(!match){continue;}
+			    }
+				methods.Add(method);
+		    }
+		    return methods;
+	    }
+	    public static List<string> ListMethods(this object current,List<Type> argumentTypes = null,BindingFlags flags = allFlags){
+		    return current.GetMethods(argumentTypes,flags).Select(x=>x.Name).ToList();
+	    }
+		//=========================
+		// Reflection - Attributes
+		//=========================
+	    public static bool HasAttribute(this object current,string name,Type attribute){
+			return current.ListAttributes(name).Exists(x=>x.GetType()==attribute);
 	    }
 	    public static System.Attribute[] ListAttributes(this object current,string name){
 		    Type type = current is Type ? (Type)current : current.GetType();
@@ -53,22 +87,27 @@ namespace Zios{
 			if(property != null){attributes = System.Attribute.GetCustomAttributes(property);}
 			return attributes;
 	    }
-	    public static bool HasAttribute(this object current,string name,Type attribute){
-			return current.ListAttributes(name).Exists(x=>x.GetType()==attribute);
-	    }
-	    public static bool HasMethod(this object current,string name,BindingFlags flags = allFlags){
-		    Type type = current is Type ? (Type)current : current.GetType();
-		    return type.GetMethod(name,flags) != null;
-	    }
+		//=========================
+		// Reflection - Variables
+		//=========================
 	    public static bool HasVariable(this object current,string name,BindingFlags flags = allFlags){
 		    Type type = current is Type ? (Type)current : current.GetType();
 		    bool hasProperty = type.GetProperty(name,flags) != null;
 		    bool hasField = type.GetField(name,flags) != null;
 		    return hasProperty || hasField;
 	    }
-	    public static MethodInfo GetMethod(this object current,string name,BindingFlags flags = allFlags){
+	    public static Type GetVariableType(this object current,string name,int index=-1,BindingFlags flags = allFlags){
 		    Type type = current is Type ? (Type)current : current.GetType();
-		    return type.GetMethod(name,flags);
+		    PropertyInfo property = type.GetProperty(name,flags);
+		    FieldInfo field = type.GetField(name,flags);
+		    if(index != -1){
+			    if(current is Vector3){return typeof(float);}
+			    IList list = (IList)field.GetValue(current);
+			    return list[index].GetType();
+		    }
+		    if(property != null){return property.PropertyType;}
+		    if(field != null){return field.FieldType;}
+		    return typeof(Type);
 	    }
 	    public static object GetVariable(this object current,string name,int index=-1,BindingFlags flags = allFlags){
 		    return current.GetVariable<object>(name,index,flags);
@@ -94,19 +133,6 @@ namespace Zios{
 		    }
 		    return default(T);
 	    }
-	    public static Type GetVariableType(this object current,string name,int index=-1,BindingFlags flags = allFlags){
-		    Type type = current is Type ? (Type)current : current.GetType();
-		    PropertyInfo property = type.GetProperty(name,flags);
-		    FieldInfo field = type.GetField(name,flags);
-		    if(index != -1){
-			    if(current is Vector3){return typeof(float);}
-			    IList list = (IList)field.GetValue(current);
-			    return list[index].GetType();
-		    }
-		    if(property != null){return property.PropertyType;}
-		    if(field != null){return field.FieldType;}
-		    return typeof(Type);
-	    }
 	    public static void SetVariable<T>(this object current,string name,T value,int index=-1,BindingFlags flags = allFlags){
 		    Type type = current is Type ? (Type)current : current.GetType();
 		    current = current.IsStatic() ? null : current;
@@ -127,56 +153,70 @@ namespace Zios{
 			    field.SetValue(current,value);
 		    }
 	    }
-	    public static List<string> ListVariables(this object current,List<Type> limitTypes = null,BindingFlags flags = allFlags){
+	    public static Dictionary<string,object> GetVariables(this object current,List<Type> limitTypes = null,BindingFlags flags = allFlags){
 		    Type type = current is Type ? (Type)current : current.GetType();
-		    List<string> variables = new List<string>();
+		    object instance = current.IsStatic() || current is Type ? null : current;
+		    Dictionary<string,object> variables = new Dictionary<string,object>();
 		    foreach(FieldInfo field in type.GetFields(flags)){
-			    if(limitTypes != null){
-				    if(limitTypes.Contains(field.FieldType)){
-					    variables.Add(field.Name);
-				    }
-			    }
-			    else{
-				    variables.Add(field.Name);
-			    }
+			    if(limitTypes != null && !limitTypes.Contains(field.FieldType)){continue;}
+				variables[field.Name] = field.GetValue(instance);
 		    }
 		    foreach(PropertyInfo property in type.GetProperties(flags)){
-			    if(limitTypes != null){
-				    if(limitTypes.Contains(property.PropertyType)){
-					    variables.Add(property.Name);
-				    }
-			    }
-			    else{
-				    variables.Add(property.Name);
-			    }
+			    if(limitTypes != null && !limitTypes.Contains(property.PropertyType)){continue;}
+				try{variables[property.Name] = property.GetValue(instance,null);}
+				catch{}
 		    }
 		    return variables;
 	    }
-	    public static List<string> ListMethods(this object current,List<Type> argumentTypes = null,BindingFlags flags = allFlags){
-		    Type type = current is Type ? (Type)current : current.GetType();
-		    List<string> methods = new List<string>();
-		    foreach(MethodInfo method in type.GetMethods(flags)){
-			    if(argumentTypes != null){
-				    ParameterInfo[] parameters = method.GetParameters();
-				    bool match = parameters.Length == argumentTypes.Count;
-				    if(match){
-					    for(int i = 0;i < parameters.Length;i++){
-						    if(!parameters[i].ParameterType.Equals(argumentTypes[i])){
-							    match = false;
-							    break;
-						    }
-					    }
-				    }
-				    if(match){
-					    methods.Add(method.Name);
-				    }
-			    }
-			    else{
-				    methods.Add(method.Name);
-			    }
-		    }
-		    return methods;
+	    public static List<string> ListVariables(this object current,List<Type> argumentTypes = null,BindingFlags flags = allFlags){
+		    return current.GetVariables(argumentTypes,flags).Keys.ToList();
 	    }
+		//=========================
+		// Shortcuts - Checks
+		//=========================
+	    public static bool IsEmpty(this object current){
+            return current == null || current.Equals(null) || (current is string && ((string)current).IsEmpty());
+        }
+	    public static bool IsNull(this object current){
+            return current == null || current.Equals(null);
+        }
+	    public static bool IsType(this object current,Type value){
+		    return current.GetType().IsType(value);
+	    }
+	    public static bool IsStatic(this object current){
+		    Type type = current is Type ? (Type)current : current.GetType();
+		    return type.IsStatic();
+	    }
+		//=========================
+		// Shortcuts - Casts
+		//=========================
+	    public static T ChangeType<T>(this object current,T type){
+		    return (T)Convert.ChangeType(current,typeof(T));
+	    }
+	    public static T ChangeType<T>(this object current){
+		    return (T)Convert.ChangeType(current,typeof(T));
+	    }
+	    public static object Box<T>(this T current){
+		    return current.AsBox();
+	    }
+	    public static T As<T>(this object current){
+		    return (T)current;
+	    }
+	    public static object AsBox<T>(this T current){
+		    return (object)current;
+	    }
+	    public static T[] AsArray<T>(this T current){
+		    return new T[]{current};
+	    }
+	    public static object[] AsBoxedArray<T>(this T current){
+		    return new object[]{current};
+	    }
+	    public static List<T> AsList<T>(this T current){
+		    return new List<T>{current};
+	    }
+		//=========================
+		// Other
+		//=========================
 	    public static byte[] CreateHash<T>(this T current) where T : class{
 		    using(MemoryStream stream = new MemoryStream()){
 			    using(SHA512Managed hash = new SHA512Managed()){
@@ -212,37 +252,6 @@ namespace Zios{
 		    if(current.HasVariable("alias")){return current.GetVariable<string>("alias");}
 		    //if(current.HasVariable("name")){return current.GetVariable<string>("name");}
 		    return current.GetType().Name;
-	    }
-	    public static bool IsEmpty(this object current){
-            return current == null || current.Equals(null) || (current is string && ((string)current).IsEmpty());
-        }
-	    public static bool IsNull(this object current){
-            return current == null || current.Equals(null);
-        }
-	    public static bool IsType(this object current,Type value){
-		    return current.GetType().IsType(value);
-	    }
-	    public static object Box<T>(this T current){
-		    return current.AsBox();
-	    }
-	    public static T As<T>(this object current){
-		    return (T)current;
-	    }
-	    public static object AsBox<T>(this T current){
-		    return (object)current;
-	    }
-	    public static T[] AsArray<T>(this T current){
-		    return new T[]{current};
-	    }
-	    public static object[] AsBoxedArray<T>(this T current){
-		    return new object[]{current};
-	    }
-	    public static List<T> AsList<T>(this T current){
-		    return new List<T>{current};
-	    }
-	    public static bool IsStatic(this object current){
-		    Type type = current is Type ? (Type)current : current.GetType();
-		    return type.IsStatic();
 	    }
     }
 }

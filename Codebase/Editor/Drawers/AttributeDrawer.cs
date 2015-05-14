@@ -38,7 +38,7 @@ namespace Zios{
 				Type utility = Utility.GetEditorType("ScriptAttributeUtility");
 				Type utility = Utility.GetEditorType("ScriptAttributeUtility");
 				SerializedProperty againstProperty = this.property;
-				var handler = utility.CallMethod("GetHandler",againstProperty.AsBoxedArray());
+				var handler = utility.CallMethod("GetHandler",againstProperty);
 				Debug.Log(handler.GetVariable<PropertyDrawer>("m_PropertyDrawer"));
 				utility.GetVariable<Stack<PropertyDrawer>>("s_DrawerStack").Pop();
 				base.OnGUI(area,property,label);

@@ -177,8 +177,8 @@ public class ExtendedMaterialEditor : MaterialEditor{
 			++EditorGUI.indentLevel;
 			EditorGUI.BeginDisabledGroup(!custom && !extended);
 			string blendName = extended ? "Color" : "Color & Alpha";
-			common.blend = this.Draw(blendName,common.blend).ConvertArray<Blend>();
-			if(extended){common.blendAlpha = this.Draw("Alpha",common.blendAlpha).ConvertArray<Blend>();}
+			common.blend = this.Draw(blendName,common.blend).As<Array>().Convert<Blend>();
+			if(extended){common.blendAlpha = this.Draw("Alpha",common.blendAlpha).As<Array>().Convert<Blend>();}
 			EditorGUI.EndDisabledGroup();
 			--EditorGUI.indentLevel;
 		}
@@ -485,7 +485,7 @@ public class ExtendedMaterialEditor : MaterialEditor{
 				if(this.stateChanged.Contains("TextArea")){Buffer.buildDelay += 2.0f;}
 				if(this.stateChanged.Contains("Field")){Buffer.buildDelay += 1.5f;}
 				if(this.stateChanged.Contains("Color")){Buffer.buildDelay += 0.5f;}
-				Debug.Log("[ExtendedMaterial] Value changed -- " + this.stateChanged);
+				//Debug.Log("[ExtendedMaterial] Value changed -- " + this.stateChanged);
 			}
 		}
 		this.CheckContext();

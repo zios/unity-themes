@@ -72,7 +72,7 @@ namespace Zios{
 	    }
 		public static bool IsExpanded(this Component current){
 			Type editorUtility = Utility.GetEditorType("InternalEditorUtility");
-			return editorUtility.CallMethod<bool>("GetIsInspectorExpanded",current.AsBoxedArray());
+			return editorUtility.CallMethod<bool>("GetIsInspectorExpanded",current);
 		}
 	    //====================
 	    // Interface
