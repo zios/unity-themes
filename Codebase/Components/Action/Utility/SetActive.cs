@@ -6,20 +6,32 @@ namespace Zios{
     public class SetActive : ActionLink{
 	    public AttributeGameObject target = new AttributeGameObject();
 	    public ToggleState state;
+		public AttributeBool revertOnEnd = false;
 	    public override void Awake(){
 		    base.Awake();
 		    this.target.Setup("Target",this);
+			this.revertOnEnd.Setup("Revert On End",this);
 	    }
-	    public override void Use(){
+		public void Perform(bool flip=false){
+			bool state = this.state == ToggleState.Enable ? true : false;
+			if(flip){state = !state;}
 			foreach(GameObject target in this.target){
 				if(target.IsNull()){continue;}
-				if(state == ToggleState.Enable && !target.activeSelf){target.SetActive(true);}
-				if(state == ToggleState.Disable && target.activeSelf){target.SetActive(false);}
-				if(state == ToggleState.Toggle){target.SetActive(!target.activeSelf);}
+				if(this.state == ToggleState.Toggle){state = !target.activeSelf;}
+				if(state != target.activeSelf){target.SetActive(state);}
 			}
+		}
+	    public override void Use(){
+			this.Perform();
 		    if(this.gameObject.activeSelf){
 			    base.Use();
 		    }
 	    }
+		public override void End(){
+			if(this.revertOnEnd.Get()){
+				this.Perform(true);
+			}
+			base.End();
+		}
     }
 }
