@@ -73,6 +73,14 @@ namespace Zios{
 		public virtual void Setup(string path,Component parent){}
 		public virtual void BuildLookup(){}
 		public virtual void BuildData(AttributeData[] dataSet){}
+		public AttributeData[] GetDataSet(){
+			return this.GetDataSet(this.defaultSet);
+		}
+		public AttributeData[] GetDataSet(string name){
+			if(name == "B"){return this.info.dataB;}
+			if(name == "C"){return this.info.dataC;}
+			return this.info.data;
+		}
 	}
 	[Serializable]
 	public class Attribute<BaseType,AttributeType,DataType> : Attribute,IEnumerable<BaseType>

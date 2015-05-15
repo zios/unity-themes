@@ -23,18 +23,18 @@ namespace Zios{
 				Events.Register("On Validate",this);
 				Events.Add("On Validate",this.CheckAlias,this);
 				Events.Add("On Validate",this.CheckDependents,this);
-				Events.Add("On Attributes Ready",this.CheckDependents,Events.global);
+				Events.Add("On Attributes Ready",this.CheckDependents);
 			}
 	    }
 		//===============
 		// Editor
 		//===============
 	    public virtual void OnValidate(){
-			if(Utility.IsPlaying() || Application.isLoadingLevel){return;}
+			if(Application.isPlaying || Application.isLoadingLevel){return;}
 			this.CallEvent("On Validate");
 	    }
 	    public virtual void OnDestroy(){
-			if(Utility.IsPlaying() || Application.isLoadingLevel){return;}
+			if(Application.isPlaying || Application.isLoadingLevel){return;}
 			this.CallEvent("On Destroy");
 			AttributeManager.PerformRefresh();
 	    }

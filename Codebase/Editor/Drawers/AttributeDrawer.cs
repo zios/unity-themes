@@ -369,8 +369,10 @@ namespace Zios{
 			menu.ShowAsContext();
 		}
 		public void SwapType(int index,Type attributeType,string set){
-			MethodInfo generic = this.attribute.GetType().GetMethod("Add",new Type[]{typeof(int),typeof(string)}).MakeGenericMethod(attributeType);
-			generic.Invoke(this.attribute,new object[]{index,set});
+			if(this.attribute.GetDataSet(set)[index].GetType() != attributeType){
+				MethodInfo generic = this.attribute.GetType().GetMethod("Add",new Type[]{typeof(int),typeof(string)}).MakeGenericMethod(attributeType);
+				generic.Invoke(this.attribute,new object[]{index,set});
+			}
 		}
 		public virtual void DrawTypeMenu(AttributeData data,GenericMenu menu=null){
 			bool openMenu = menu == null;
@@ -408,6 +410,7 @@ namespace Zios{
 					data.reference = null;
 				};
 				MenuFunction usageShaped = ()=>{data.usage = AttributeUsage.Shaped;};
+				MenuFunction fixType = ()=>{this.SwapType(0,typeof(DataType),this.attribute.defaultSet);};
 				bool normal = this.attribute.info.mode == AttributeMode.Normal;
 				if(this.attribute.locked){
 					menu.AddDisabledItem(new GUIContent("Attribute Locked"));
@@ -419,9 +422,9 @@ namespace Zios{
 						menu.AddItem(new GUIContent("Advanced"),advanced,toggleAdvanced);
 						menu.AddSeparator("/");
 					}
-					if(this.attribute.canDirect){menu.AddItem(new GUIContent("Direct"),normal&&(usage==AttributeUsage.Direct),modeNormal+usageDirect);}
-					if(this.attribute.canShape){menu.AddItem(new GUIContent("Shaped"),normal&&(usage==AttributeUsage.Shaped),modeNormal+usageShaped);}
-					if(this.attribute.canLink){menu.AddItem(new GUIContent("Linked"),(mode==AttributeMode.Linked),modeLinked+usageShaped);}
+					if(this.attribute.canDirect){menu.AddItem(new GUIContent("Direct"),normal&&(usage==AttributeUsage.Direct),fixType+modeNormal+usageDirect);}
+					if(this.attribute.canShape){menu.AddItem(new GUIContent("Shaped"),normal&&(usage==AttributeUsage.Shaped),fixType+modeNormal+usageShaped);}
+					if(this.attribute.canLink){menu.AddItem(new GUIContent("Linked"),(mode==AttributeMode.Linked),fixType+modeLinked+usageShaped);}
 					menu.AddSeparator("/");
 					if(this.attribute.canFormula){menu.AddItem(new GUIContent("Formula"),(mode==AttributeMode.Formula),modeFormula);}
 					if(this.attribute.canGroup){menu.AddItem(new GUIContent("Group"),(mode==AttributeMode.Group),modeGroup);}

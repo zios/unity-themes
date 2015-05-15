@@ -30,6 +30,8 @@ namespace Zios{
 	    public static Dictionary<CallbackFunction,float> delayedMethods = new Dictionary<CallbackFunction,float>();
 		public static List<UnityObject> delayedDirty = new List<UnityObject>();
 		public static Dictionary<UnityObject,SerializedObject> serializedObjects = new Dictionary<UnityObject,SerializedObject>();
+		public static int ignoredHierarchyChange = 0;
+		public static bool ignoreFirstHierarchyChange = true;
 	    public static bool hierarchyPaused;
 		public static bool delayPaused;
 		public static bool delayProcessing;
@@ -41,7 +43,13 @@ namespace Zios{
 			Events.Register("On Enter Play");
 			Events.Register("On Exit Play");
 			EditorApplication.update += ()=>Events.Call("On Editor Update");
-			EditorApplication.hierarchyWindowChanged += ()=>Events.Call("On Hierarchy Changed");
+			EditorApplication.hierarchyWindowChanged += ()=>{
+				if(Utility.ignoreFirstHierarchyChange && Utility.ignoredHierarchyChange < 1){
+					Utility.ignoredHierarchyChange = 1;
+					return;
+				}
+				Events.Call("On Hierarchy Changed");
+			};
 			EditorApplication.projectWindowChanged += ()=>Events.Call("On Project Changed");
 			EditorApplication.playmodeStateChanged += ()=>Events.Call("On Mode Changed");
 			CallbackFunction windowEvent = ()=>Events.Call("On Window Reordered");
@@ -53,6 +61,7 @@ namespace Zios{
 			EditorApplication.playmodeStateChanged += ()=>{
 				bool changing = EditorApplication.isPlayingOrWillChangePlaymode;
 				bool playing = Application.isPlaying;
+				Utility.ignoredHierarchyChange = 0;
 				if(changing && !playing){Events.Call("On Enter Play");}
 				if(!changing && playing){Events.Call("On Exit Play");}
 			};

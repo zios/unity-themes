@@ -40,7 +40,6 @@ namespace Zios{
 			    this.AddSpecial("[PreviousEnabled]",parent.gameObject.GetPreviousSibling());
 			    this.AddSpecial("[Root]",parent.gameObject.GetPrefabRoot());
 				Events.Add("On Validate",(Method)this.Search,parent);
-				Events.Add("On Attributes Ready",(Method)this.Search);
 		    }
 		    if(parent is ActionLink || parent is StateLink){
 			    ActionLink actionLink = parent is ActionLink ? (ActionLink)parent : null;
@@ -55,7 +54,9 @@ namespace Zios{
 			if(!Application.isPlaying){
 				string defaultSearch = Target.defaultSearch = PlayerPrefs.GetString("Target-DefaultSearch","[Self]");
 				this.SetFallback(defaultSearch);
-				this.Search();
+				if(this.mode == TargetMode.Search && this.search.IsEmpty()){
+					this.Search();
+				}
 			}
 	    }
 		public void SetFallback(string name){this.fallbackSearch = name;}

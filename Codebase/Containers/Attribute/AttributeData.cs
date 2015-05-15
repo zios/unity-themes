@@ -34,7 +34,7 @@ namespace Zios{
 			}
 		}
 		public override void OnDestroy(){
-			if(Utility.IsPlaying() || Application.isLoadingLevel){return;}
+			if(Application.isPlaying || Application.isLoadingLevel){return;}
 			base.OnDestroy();
 			if(this.attribute != null){
 				this.attribute.data = this.attribute.data.Remove(this);

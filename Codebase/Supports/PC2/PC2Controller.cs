@@ -22,7 +22,7 @@ public class PC2Controller : MonoBehaviour{
 	public void Reload(){this.data.Load(this.path);}
 	public void Reset(){this.OnValidate();}
 	public void OnValidate(){
-		if(Utility.IsPlaying() || Application.isLoadingLevel){return;}
+		if(Application.isPlaying || Application.isLoadingLevel){return;}
 		if(this.target == null){this.target = this.gameObject;}
 		if(this.previous != this.file){
 			this.previous = this.file;

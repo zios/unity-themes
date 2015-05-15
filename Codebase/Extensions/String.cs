@@ -57,12 +57,6 @@ namespace Zios{
 			}
 		    return false;
 	    }
-	    public static bool MatchesAll(this string current,params string[] values){
-			foreach(string value in values){
-				if(!current.Matches(value,true)){return false;}
-			}
-		    return true;
-	    }
 	    public static string Implode(this string current,string separator=" "){
 		    StringBuilder builder = new StringBuilder(current.Length * 2);
 		    foreach(char letter in current){
@@ -141,6 +135,9 @@ namespace Zios{
 		    }
 		    return current.EndsWith(value);
 	    }
+	    public static bool Has(this string current,string value,bool ignoreCase){return current.Contains(value,ignoreCase);}
+	    public static bool HasAny(this string current,params string[] values){return current.ContainsAny(values);}
+	    public static bool HasAll(this string current,params string[] values){return current.ContainsAll(values);}
 	    public static bool Contains(this string current,string value,bool ignoreCase){
 		    return current.IndexOf(value,ignoreCase) >= 0;
 	    }

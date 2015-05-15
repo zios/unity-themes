@@ -70,11 +70,10 @@ namespace Zios{
 		public static bool Contains(this Enum current,params string[] values){return current.Has(values);}
 	    public static bool Has(this Enum current,Enum mask){return current.Contains(mask);}
 		public static bool Has(this Enum current,params string[] values){return current.HasAny(values);}
-	    public static bool HasAny(this Enum current,params string[] values){return current.ToName().ContainsAny(values);}
-	    public static bool HasAll(this Enum current,params string[] values){return current.ToName().ContainsAll(values);}
+	    public static bool HasAny(this Enum current,params string[] values){return current.ToName().HasAny(values);}
+	    public static bool HasAll(this Enum current,params string[] values){return current.ToName().HasAll(values);}
 	    public static bool Matches(this Enum current,Enum value){return (current.ToInt() & value.ToInt()) == value.ToInt();}
 	    public static bool Matches(this Enum current,params string[] values){return current.MatchesAny(values);}
 	    public static bool MatchesAny(this Enum current,params string[] values){return current.ToName().MatchesAny(values);}
-	    public static bool MatchesAll(this Enum current,params string[] values){return current.ToName().MatchesAll(values);}
     }
 }

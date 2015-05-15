@@ -3,6 +3,9 @@ using System;
 using System.Collections.Generic;
 namespace Zios{
     public static class ArrayExtension{
+		//=======================
+		// Default
+		//=======================
 	    public static T[] Convert<T>(this Array current){
 		    List<T> casted = new List<T>();
 		    Type type = typeof(T);
@@ -17,65 +20,8 @@ namespace Zios{
 		    }
 		    return casted.ToArray();
 	    }
-	    public static float[] Scale(this float[] current,float scalar){
-		    float[] result = current;
-		    for(int index=0;index<current.Length;++index){
-			    result[index] = current[index] * scalar;
-		    }
-		    return result;
-	    }
 	    public static List<T> ToList<T>(this T[] current){
 		    return new List<T>(current);
-	    }
-	    public static Color ToColor(this float[] current){
-		    if(current.Length >= 3){
-			    float r = current[0];
-			    float g = current[1];
-			    float b = current[2];
-			    if(current.Length > 3){
-				    return new Color(r,g,b,current[3]);
-			    }
-			    return new Color(r,g,b);
-		    }
-		    return Color.white;
-	    }
-	    public static Vector2 ToVector2(this float[] current){
-		    if(current.Length >= 2){
-			    float a = current[0];
-			    float b = current[1];
-			    return new Vector2(a,b);
-		    }
-		    return Vector2.zero;
-	    }
-	    public static Vector3 ToVector3(this float[] current){
-		    if(current.Length >= 3){
-			    float a = current[0];
-			    float b = current[1];
-			    float c = current[2];
-			    return new Vector3(a,b,c);
-		    }
-		    return Vector3.zero;
-	    }
-	    public static Vector4 ToVector4(this float[] current){
-		    if(current.Length >= 4){
-			    float a = current[0];
-			    float b = current[1];
-			    float c = current[2];
-			    float d = current[3];
-			    return new Vector4(a,b,c,d);
-		    }
-		    return Vector4.zero;
-	    }
-	    public static Rect ToRect(this float[] current){
-		    Rect result = new Rect();
-		    for(int index=0;index<current.Length;++index){
-			    if(index > 3){break;}
-			    if(index == 0){result.x = current[index];}
-			    if(index == 1){result.y = current[index];}
-			    if(index == 2){result.width = current[index];}
-			    if(index == 3){result.height = current[index];}
-		    }
-		    return result;
 	    }
 	    public static bool Contains<T>(this Array current,T value){
 		    return Array.IndexOf(current,value) != -1;
@@ -139,6 +85,66 @@ namespace Zios{
 		    var copy = current.Copy().ToList();
 		    copy.Sort();
 		    return copy.ToArray();
+	    }
+		//=======================
+		// Float
+		//=======================
+	    public static float[] Scale(this float[] current,float scalar){
+		    float[] result = current;
+		    for(int index=0;index<current.Length;++index){
+			    result[index] = current[index] * scalar;
+		    }
+		    return result;
+	    }
+	    public static Color ToColor(this float[] current){
+		    if(current.Length >= 3){
+			    float r = current[0];
+			    float g = current[1];
+			    float b = current[2];
+			    if(current.Length > 3){
+				    return new Color(r,g,b,current[3]);
+			    }
+			    return new Color(r,g,b);
+		    }
+		    return Color.white;
+	    }
+	    public static Vector2 ToVector2(this float[] current){
+		    if(current.Length >= 2){
+			    float a = current[0];
+			    float b = current[1];
+			    return new Vector2(a,b);
+		    }
+		    return Vector2.zero;
+	    }
+	    public static Vector3 ToVector3(this float[] current){
+		    if(current.Length >= 3){
+			    float a = current[0];
+			    float b = current[1];
+			    float c = current[2];
+			    return new Vector3(a,b,c);
+		    }
+		    return Vector3.zero;
+	    }
+	    public static Vector4 ToVector4(this float[] current){
+		    if(current.Length >= 4){
+			    float a = current[0];
+			    float b = current[1];
+			    float c = current[2];
+			    float d = current[3];
+			    return new Vector4(a,b,c,d);
+		    }
+		    return Vector4.zero;
+	    }
+	    public static Rect ToRect(this float[] current){
+		    Rect result = new Rect();
+		    for(int index=0;index<current.Length;++index){
+			    if(index > 3){break;}
+			    if(index == 0){result.x = current[index];}
+			    if(index == 1){result.y = current[index];}
+			    if(index == 2){result.width = current[index];}
+			    if(index == 3){result.height = current[index];}
+		    }
+		    return result;
 	    }
     }
 }

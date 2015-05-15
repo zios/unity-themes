@@ -44,7 +44,7 @@ namespace Zios{
 		}
 	    public virtual void OnPlayerConnected(){Events.Call("On Player Connected");}
 	    public virtual void OnPlayerDisconnected(){Events.Call("On Player Disconnected");}
-	    public virtual void OnLevelWasLoaded(int level){Events.Call("On Level Was Loaded");}
+	    public virtual void OnLevelWasLoaded(int level){Events.Call("On Level Was Loaded",level);}
 	    public virtual void OnMasterServerEvent(){Events.Call("On Master Server Event");}
 	    public virtual void OnApplicationQuit(){Events.Call("On Application Quit");}
 	    public virtual void OnApplicationFocus(){Events.Call("On Application Focus");}
