@@ -28,7 +28,7 @@ namespace Zios{
 				StateRowData[] offRows = table.tableOff.Where(x=>x.target==this.target).FirstOrDefault().requirements;
 				bool hasOnData = onRows.Select(x=>x.data).First().Where(x=>x.requireOn||x.requireOff).FirstOrDefault() != null;
 				this.BeginArea();
-				bool fastInspector = EditorPrefs.GetBool("MonoBehaviourEditor-FastInspector",true);
+				bool fastInspector = EditorPrefs.GetBool("MonoBehaviourEditor-FastInspector");
 				if(fastInspector && !this.breakdownVisible){
 					GUILayout.Space(this.breakdownArea.height);
 				}

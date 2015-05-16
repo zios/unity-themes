@@ -27,7 +27,7 @@ namespace Zios{
 		public Method dirtyEvent;
 		[PreferenceItem("Zios")]
 		static public void Preferences(){
-			bool fastInspector = EditorPrefs.GetBool("MonoBehaviourEditor-FastInspector",true).DrawLabeled("Turbo Inspector (Experimental)");
+			bool fastInspector = EditorPrefs.GetBool("MonoBehaviourEditor-FastInspector").DrawLabeled("Turbo Inspector (Experimental)");
 			if(GUI.changed){
 				EditorPrefs.SetBool("MonoBehaviourEditor-FastInspector",fastInspector);
 			}
@@ -36,7 +36,7 @@ namespace Zios{
 			if(!Event.current.IsUseful()){return;}
 			if(this.target is MonoBehaviour && this.target.As<MonoBehaviour>().IsPrefab()){return;}
 			this.BeginArea();
-			bool fastInspector = EditorPrefs.GetBool("MonoBehaviourEditor-FastInspector",true);
+			bool fastInspector = EditorPrefs.GetBool("MonoBehaviourEditor-FastInspector");
 			/*if(fastInspector && MonoBehaviourEditor.offScreen.ContainsKey(this)){
 				GUILayout.Space(this.area.height);
 				this.CheckChanges();
@@ -120,7 +120,7 @@ namespace Zios{
 	    }
 		public void CheckChanges(){
 			if(Event.current.type == EventType.Repaint){
-				bool fastInspector = EditorPrefs.GetBool("MonoBehaviourEditor-FastInspector",true);
+				bool fastInspector = EditorPrefs.GetBool("MonoBehaviourEditor-FastInspector");
 				Vector2 mousePosition = Event.current.mousePosition;
 				this.showAll = Event.current.alt && this.area.Contains(mousePosition);
 				if(this.dirtyEvent != null){
