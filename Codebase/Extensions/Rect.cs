@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -88,20 +89,20 @@ namespace Zios{
 			Type inspectorWindow = Utility.GetEditorType("InspectorWindow");
 			return EditorWindow.GetWindowWithRect(inspectorWindow,current);
 	    }
-	    public static bool InInspectorWindow(this Rect current){
+	    public static Rect GetInspectorArea(this Rect current,EditorWindow window=null){
 		    Rect windowRect = new Rect(0,0,Screen.width,Screen.height);
-		    foreach(var window in Utility.GetInspectors()){
-			    Vector2 scroll = window.GetVariable<Vector2>("m_ScrollPosition");
-				windowRect.x = scroll.x;
-			    windowRect.y = scroll.y;
-			    if(current.Overlaps(windowRect)){return true;}
-		    }
-		    return false;
+			//var window = current.GetInspectorWindow();
+			//Debug.Log(window.GetVariable<Rect>("position"));
+			if(window == null){window = Utility.GetInspectors().First();}
+			Vector2 scroll = window.GetVariable<Vector2>("m_ScrollPosition");
+			windowRect.x = scroll.x;
+			windowRect.y = scroll.y;
+			return windowRect;
 	    }
-	    public static bool InspectorValid(this Rect current){
+	    public static bool InInspectorWindow(this Rect current,EditorWindow window=null){
 		    if(current.IsEmpty()){return false;}
-		    if(!current.InInspectorWindow()){return false;}
-		    return true;
+			Rect windowRect = current.GetInspectorArea(window);
+			return current.Overlaps(windowRect);
 	    }
 	    #endif
     }

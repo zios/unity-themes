@@ -193,6 +193,9 @@ namespace Zios{
 		    Action action = ()=>EditorGUILayout.PropertyField(current,label,allowScene);
 		    EditorGUIExtension.Draw(action);
 	    }
+	    public static Rect DrawLabeled(this Rect current,GUIContent label,bool indention=true){
+		    return EditorGUIExtension.Draw<Rect>(()=>EditorGUILayout.RectField(label,current),indention);
+	    }
 	    public static GameObject DrawLabeledObject(this GameObject current,GUIContent label,bool allowScene=true,bool indention=false){
 		    return (GameObject)EditorGUIExtension.Draw<UnityObject>(()=>EditorGUILayout.ObjectField(label,current,current.GetType(),allowScene),indention);
 	    }
@@ -232,6 +235,9 @@ namespace Zios{
 	    public static bool DrawLabeled(this bool current,string label,GUIStyle style=null,bool indention=true){
 		    style = style ?? EditorStyles.toggle;
 		    return EditorGUIExtension.Draw<bool>(()=>EditorGUILayout.Toggle(label,current,style),indention);
+	    }
+	    public static Rect DrawLabeled(this Rect current,string label,bool indention=true){
+		    return EditorGUIExtension.Draw<Rect>(()=>EditorGUILayout.RectField(label,current),indention);
 	    }
 	    public static Vector3 DrawLabeled(this Vector3 current,string label,bool indention=true){
 		    return EditorGUIExtension.Draw<Vector3>(()=>EditorGUILayout.Vector3Field(label,current),indention);

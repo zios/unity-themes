@@ -7,6 +7,8 @@ namespace Zios{
     [CustomEditor(typeof(StateLink),true)]
     public class StateLinkEditor : MonoBehaviourEditor{
 		public GUISkin skin;
+		public Rect breakdownArea;
+		public bool breakdownVisible = true;
 		public virtual StateTable GetTable(){
 		    StateLink script = (StateLink)this.target;
 			return script.stateTable;
@@ -16,7 +18,7 @@ namespace Zios{
 			StateTable table = this.GetTable();
 			bool showBreakdown = EditorPrefs.GetBool("StateLinkBreakdownVisible",true);
 			bool showFixed = EditorPrefs.GetBool("StateLinkBreakdownFixed");
-			if(showBreakdown && table != null){
+			if((this.showAll || showBreakdown) && table != null){
 				string skinName = EditorGUIUtility.isProSkin ? "Dark" : "Light";
 				if(this.skin == null || !this.skin.name.Contains(skinName)){
 					this.skin = FileManager.GetAsset<GUISkin>("Gentleface-" + skinName + ".guiskin");
@@ -26,58 +28,70 @@ namespace Zios{
 				StateRowData[] offRows = table.tableOff.Where(x=>x.target==this.target).FirstOrDefault().requirements;
 				bool hasOnData = onRows.Select(x=>x.data).First().Where(x=>x.requireOn||x.requireOff).FirstOrDefault() != null;
 				this.BeginArea();
-				GUILayout.BeginHorizontal();
-				if(hasOnData){
-					int fixedWidth = showFixed ? 150 : (Screen.width/2)-18;
-					var columnStyle = GUI.skin.GetStyle("Box").FixedWidth(fixedWidth).Background("");
-					GUILayout.BeginVertical(columnStyle);
-					for(int index=0;index<onRows.Length;++index){
-						string title = index < 1 ? "<b>ON</b> When" : "<b>OR</b> When";
-						this.DrawState(onRows,index,title);
-					}
-					GUILayout.EndVertical();
-					GUILayout.BeginVertical(columnStyle);
-					if(table.advanced){
-						bool hasOffData = offRows.Select(x=>x.data).First().Where(x=>x.requireOn||x.requireOff).FirstOrDefault() != null;
-						if(!hasOffData){
-							GUIStyle boxStyle = GUI.skin.GetStyle("Box").FixedWidth(150).Background("SolidRed50.png");
-							GUILayout.BeginVertical(boxStyle);
-							string phraseColor = EditorGUIUtility.isProSkin ? "#FF6666" : "#770000";
-							string phrase = "<color="+phraseColor+">Never turns off!</color>".ToUpper();
-							phrase.DrawLabel(GUI.skin.GetStyle("FixedLabel").Alignment("MiddleCenter"));
-							GUILayout.EndVertical();
-						}
-						else{
-							for(int index=0;index<offRows.Length;++index){
-								string title = index < 1 ? "<b>OFF</b> When" : "<b>OR</b> When";
-								this.DrawState(offRows,index,title);
-							}
-						}
-					}
-					else{
-						for(int index=0;index<onRows.Length;++index){
-							string title = index < 1 ? "<b>OFF</b> When" : "<b>AND</b>";
-							this.DrawState(onRows,index,title,true);
-						}
-					}
-					GUILayout.EndVertical();
+				bool fastInspector = EditorPrefs.GetBool("MonoBehaviourEditor-FastInspector",true);
+				if(fastInspector && !this.breakdownVisible){
+					GUILayout.Space(this.breakdownArea.height);
 				}
 				else{
-					int fixedWidth = showFixed ? 305 : Screen.width-37;
-					var columnStyle = GUI.skin.GetStyle("Box").FixedWidth(fixedWidth);
-					GUILayout.BeginVertical(columnStyle.Background(""));
-					GUILayout.BeginVertical(columnStyle);
-					string onColor = EditorGUIUtility.isProSkin ? "#95e032" : "#0000AA99";
-					string phrase = ("Always <b><color="+onColor+">On</color></b>").ToUpper();
-					phrase.DrawLabel(GUI.skin.GetStyle("FixedLabel").Alignment("MiddleCenter"));
-					GUILayout.EndVertical();
-					GUILayout.EndVertical();
+					GUILayout.BeginHorizontal();
+					if(hasOnData){
+						int fixedWidth = showFixed ? 150 : (Screen.width/2)-18;
+						var columnStyle = GUI.skin.GetStyle("Box").FixedWidth(fixedWidth).Background("");
+						GUILayout.BeginVertical(columnStyle);
+						for(int index=0;index<onRows.Length;++index){
+							string title = index < 1 ? "<b>ON</b> When" : "<b>OR</b> When";
+							this.DrawState(onRows,index,title);
+						}
+						GUILayout.EndVertical();
+						GUILayout.BeginVertical(columnStyle);
+						if(table.advanced){
+							bool hasOffData = offRows.Select(x=>x.data).First().Where(x=>x.requireOn||x.requireOff).FirstOrDefault() != null;
+							if(!hasOffData){
+								GUIStyle boxStyle = GUI.skin.GetStyle("Box").FixedWidth(150).Background("SolidRed50.png");
+								GUILayout.BeginVertical(boxStyle);
+								string phraseColor = EditorGUIUtility.isProSkin ? "#FF6666" : "#770000";
+								string phrase = "<color="+phraseColor+">Never turns off!</color>".ToUpper();
+								phrase.DrawLabel(GUI.skin.GetStyle("FixedLabel").Alignment("MiddleCenter"));
+								GUILayout.EndVertical();
+							}
+							else{
+								for(int index=0;index<offRows.Length;++index){
+									string title = index < 1 ? "<b>OFF</b> When" : "<b>OR</b> When";
+									this.DrawState(offRows,index,title);
+								}
+							}
+						}
+						else{
+							for(int index=0;index<onRows.Length;++index){
+								string title = index < 1 ? "<b>OFF</b> When" : "<b>AND</b>";
+								this.DrawState(onRows,index,title,true);
+							}
+						}
+						GUILayout.EndVertical();
+					}
+					else{
+						int fixedWidth = showFixed ? 305 : Screen.width-37;
+						var columnStyle = GUI.skin.GetStyle("Box").FixedWidth(fixedWidth);
+						GUILayout.BeginVertical(columnStyle.Background(""));
+						GUILayout.BeginVertical(columnStyle);
+						string onColor = EditorGUIUtility.isProSkin ? "#95e032" : "#0000AA99";
+						string phrase = ("Always <b><color="+onColor+">On</color></b>").ToUpper();
+						phrase.DrawLabel(GUI.skin.GetStyle("FixedLabel").Alignment("MiddleCenter"));
+						GUILayout.EndVertical();
+						GUILayout.EndVertical();
+					}
+					GUILayout.EndHorizontal();
+					Rect area = GUILayoutUtility.GetLastRect();
+					if(!area.IsEmpty()){
+						if(Event.current.type == EventType.Repaint){this.breakdownArea = area;}
+						if(area.Clicked(1)){this.DrawBreakdownMenu();}
+						if(Event.current.shift && area.Clicked(0)){
+							Utility.ToggleEditorPref("StateLinkBreakdownVisible");
+						}
+					}
 				}
-				GUILayout.EndHorizontal();
-				Rect area = GUILayoutUtility.GetLastRect();
-				if(!area.IsEmpty()){
-					if(area.Clicked(1)){this.DrawBreakdownMenu();}
-					if(Event.current.shift && area.Clicked(0)){Utility.ToggleEditorPref("StateLinkBreakdownVisible");}
+				if(Event.current.type == EventType.Repaint && !this.breakdownArea.IsEmpty()){
+					this.breakdownVisible = this.breakdownArea.InInspectorWindow();
 				}
 			}
 		    base.OnInspectorGUI();
