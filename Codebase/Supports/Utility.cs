@@ -123,6 +123,18 @@ namespace Zios{
 			var window = EditorWindow.GetWindowWithRect(inspectorWindow,current);
 			return window.GetVariable<Vector2>("m_ScrollPosition");
 	    }
+		[MenuItem("Zios/Process/Clear Player Prefs")]
+		public static void DeletePlayerPrefs(){
+			if(EditorUtility.DisplayDialog("Clear Player Prefs","Delete all the player preferences?","Yes","No")){
+				PlayerPrefs.DeleteAll();
+			}
+		}
+		[MenuItem("Zios/Process/Clear Editor Prefs")]
+		public static void DeleteEditorPrefs(){
+			if(EditorUtility.DisplayDialog("Clear Editor Prefs","Delete all the editor preferences?","Yes","No")){
+				EditorPrefs.DeleteAll();
+			}
+		}
 		#endif
 		//=================
 		// General
