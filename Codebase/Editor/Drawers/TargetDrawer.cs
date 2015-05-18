@@ -18,13 +18,13 @@ namespace Zios{
 		    toggleRect.x += labelWidth;
 		    toggleRect.width = 18;
 		    bool previousMode = target.mode == TargetMode.Direct;
-		    bool currentMode = previousMode.Draw(toggleRect,GUI.skin.GetStyle("TargetToggle"));
+		    bool currentMode = previousMode.Draw(toggleRect,"",GUI.skin.GetStyle("TargetToggle"));
 		    if(previousMode != currentMode){
 			    target.mode = target.mode == TargetMode.Direct ? TargetMode.Search : TargetMode.Direct;
 		    }
 		    label.DrawLabel(area,null,true);
 		    if(target.mode == TargetMode.Direct){
-			    target.directObject = target.directObject.DrawObject(propertyRect,true);
+			    target.directObject = target.directObject.DrawObject(propertyRect,"",true);
 		    }
 		    else{
 			    Rect textRect = propertyRect;

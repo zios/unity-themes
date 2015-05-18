@@ -62,7 +62,7 @@ namespace Zios{
 					if(this.valueRect.Clicked(0) || this.valueRect.Clicked(1)){
 						this.DrawTypeMenu(dataB[dataIndex]);
 					}
-					warning.Draw(this.valueRect,GUI.skin.GetStyle("WarningLabel"));
+					warning.Draw(this.valueRect,"",GUI.skin.GetStyle("WarningLabel"));
 				}
 				else{
 					this.operatorOverride = AttributeBool.comparers[dataType+compareType].ToList();

@@ -1,4 +1,4 @@
-﻿using Zios;
+using Zios;
 using UnityEngine;
 using UnityEditor;
 using System;
@@ -164,23 +164,23 @@ namespace Zios{
 			}
 			if(data is AttributeFloatData){
 				AttributeFloatData floatData = (AttributeFloatData)data;
-				floatData.value = floatData.value.DrawLabeled(area,label);
+				floatData.value = floatData.value.Draw(area,label);
 			}
 			if(data is AttributeIntData){
 				AttributeIntData intData = (AttributeIntData)data;
-				intData.value = intData.value.DrawLabeledInt(area,label);
+				intData.value = intData.value.DrawInt(area,label);
 			}
 			if(data is AttributeStringData){
 				AttributeStringData stringData = (AttributeStringData)data;
-				stringData.value = stringData.value.DrawLabeled(area,label);
+				stringData.value = stringData.value.Draw(area,label);
 			}
 			if(data is AttributeBoolData){
 				AttributeBoolData boolData = (AttributeBoolData)data;
-				boolData.value = boolData.value.DrawLabeled(area,label);
+				boolData.value = boolData.value.Draw(area,label);
 			}
 			if(data is AttributeVector3Data){
 				AttributeVector3Data vector3Data = (AttributeVector3Data)data;
-				vector3Data.value = vector3Data.value.DrawLabeled(area,label);
+				vector3Data.value = vector3Data.value.DrawVector3(area,label);
 			}
 			EditorGUIUtility.labelWidth = labelSize;
 		}
@@ -190,7 +190,7 @@ namespace Zios{
 			Target target = data.target;
 			Rect toggleRect = area.SetWidth(16);
 			bool toggleActive = this.targetMode.ContainsKey(data) ? this.targetMode[data] : !data.referenceID.IsEmpty();
-			this.targetMode[data] = toggleActive.Draw(toggleRect,GUI.skin.GetStyle("CheckmarkToggle"));
+			this.targetMode[data] = toggleActive.Draw(toggleRect,"",GUI.skin.GetStyle("CheckmarkToggle"));
 			if(toggleActive != this.targetMode[data]){
 				if(this.attribute is AttributeGameObject){
 					//data.referenceID = toggleActive ? "" : data.referenceID;
@@ -285,7 +285,7 @@ namespace Zios{
 			if(disabled){
 				GUI.enabled = false;
 				operatorList.Add("=");
-				operatorList.Draw(operatorRect,0,style);
+				operatorList.Draw(operatorRect,0,"",style);
 				GUI.enabled = true;
 				return;
 			}
@@ -295,7 +295,7 @@ namespace Zios{
 				operatorList = operatorCollection[data.GetType()].ToList();
 			}
 			int operatorIndex = Mathf.Clamp(data.operation,0,operatorList.Count-1);
-			data.operation = operatorList.Draw(operatorRect,operatorIndex,style);
+			data.operation = operatorList.Draw(operatorRect,operatorIndex,"",style);
 		}
 		public virtual void DrawGroup(GUIContent label,bool drawAdvanced=true){
 			Rect labelRect = this.labelRect.AddX(12);

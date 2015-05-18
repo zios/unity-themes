@@ -23,7 +23,7 @@ namespace Zios{
 		    string eventType = eventTarget.mode == EventMode.Listeners ? "Listen" : "Caller";
 		    bool hasEvents = eventType == "Listen" ? !Events.HasEvents("Listen",target) : !Events.HasEvents("Caller",target);
 		    bool toggleActive = this.targetMode.ContainsKey(eventTarget) ? this.targetMode[eventTarget] : !eventTarget.name.IsEmpty();
-		    this.targetMode[eventTarget] = toggleActive.Draw(valueRect.SetWidth(16),GUI.skin.GetStyle("CheckmarkToggle"));
+		    this.targetMode[eventTarget] = toggleActive.Draw(valueRect.SetWidth(16),"",GUI.skin.GetStyle("CheckmarkToggle"));
 		    valueRect = valueRect.Add(18,0,-18,0);
 		    if(!this.targetMode[eventTarget]){
 			    property.FindPropertyRelative("target").Draw(valueRect);
@@ -52,7 +52,7 @@ namespace Zios{
 			    }
 			    else{
 				    string error = "No global <b>"+eventType+"</b> events exist.";
-				    error.Draw(valueRect,GUI.skin.GetStyle("WarningLabel"));
+				    error.Draw(valueRect,"",GUI.skin.GetStyle("WarningLabel"));
 			    }
 		    }
         }

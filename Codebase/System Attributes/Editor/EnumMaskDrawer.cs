@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using UnityEngine;
 using UnityEditor;
 namespace Zios{
@@ -6,7 +6,7 @@ namespace Zios{
     public class EnumMaskDrawer : PropertyDrawer{
 	    public override void OnGUI(Rect position,SerializedProperty property,GUIContent label){
 		    Enum value = property.GetObject<Enum>();
-		    value = value.DrawLabeledMask(position,label,null);
+		    value = value.DrawMask(position,label,null);
 		    property.intValue = value.ToInt();
 	    }
     }

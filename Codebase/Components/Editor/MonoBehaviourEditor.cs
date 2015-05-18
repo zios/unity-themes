@@ -27,7 +27,7 @@ namespace Zios{
 		public Method dirtyEvent;
 		[PreferenceItem("Zios")]
 		static public void Preferences(){
-			bool fastInspector = EditorPrefs.GetBool("MonoBehaviourEditor-FastInspector").DrawLabeled("Turbo Inspector (Experimental)");
+			bool fastInspector = EditorPrefs.GetBool("MonoBehaviourEditor-FastInspector").Draw("Turbo Inspector (Experimental)");
 			if(GUI.changed){
 				EditorPrefs.SetBool("MonoBehaviourEditor-FastInspector",fastInspector);
 			}
@@ -98,7 +98,7 @@ namespace Zios{
 					GUI.changed = false;
 					EditorGUILayout.BeginVertical();
 					if(hasArea){EditorGUI.BeginProperty(this.propertyArea[property],new GUIContent(property.displayName),property);}
-					property.DrawLabeled(propertyName);
+					property.Draw(propertyName);
 					if(hasArea){EditorGUI.EndProperty();}
 					EditorGUILayout.EndVertical();
 					changed = changed || GUI.changed;

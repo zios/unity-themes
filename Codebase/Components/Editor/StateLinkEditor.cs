@@ -5,7 +5,7 @@ using UnityEditor;
 using MenuFunction = UnityEditor.GenericMenu.MenuFunction;
 namespace Zios{
     [CustomEditor(typeof(StateLink),true)]
-    public class StateLinkEditor : MonoBehaviourEditor{
+    public class StateLinkEditor : DataMonoBehaviourEditor{
 		public GUISkin skin;
 		public Rect breakdownArea;
 		public bool breakdownVisible = true;

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
@@ -28,7 +28,7 @@ namespace Zios{
 				    //if(layerName.IsEmpty()){layerName = "[Unnamed]";}
 				    if(!layerName.IsEmpty()){
 					    area = area.AddY(singleLine+2);
-					    values[index] = values[index].DrawLabeled(area,new GUIContent(layerName));
+					    values[index] = values[index].Draw(area,new GUIContent(layerName));
 					    this.drawn += 1;
 				    }
 			    }
