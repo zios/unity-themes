@@ -24,9 +24,16 @@ namespace Zios{
 					this.skin = FileManager.GetAsset<GUISkin>("Gentleface-" + skinName + ".guiskin");
 				}
 				GUI.skin = this.skin;
-				StateRowData[] onRows = table.table.Where(x=>x.target==this.target).FirstOrDefault().requirements;
-				StateRowData[] offRows = table.tableOff.Where(x=>x.target==this.target).FirstOrDefault().requirements;
-				bool hasOnData = onRows.Select(x=>x.data).First().Where(x=>x.requireOn||x.requireOff).FirstOrDefault() != null;
+				var matchingOnRows = table.table.Where(x=>x.target==this.target).FirstOrDefault();
+				var matchingOffRows = table.tableOff.Where(x=>x.target==this.target).FirstOrDefault();
+				StateRowData[] onRows = new StateRowData[0];
+				StateRowData[] offRows = new StateRowData[0];
+				bool hasOnData = matchingOnRows != null;
+				if(hasOnData){
+					onRows = matchingOnRows.requirements;
+					offRows = matchingOffRows.requirements;
+					hasOnData = onRows.Select(x=>x.data).First().Where(x=>x.requireOn||x.requireOff).FirstOrDefault() != null;
+				}
 				this.BeginArea();
 				bool fastInspector = EditorPrefs.GetBool("MonoBehaviourEditor-FastInspector");
 				if(fastInspector && !this.breakdownVisible){
