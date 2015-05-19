@@ -10,11 +10,33 @@ namespace Zios{
     using UnityEditorInternal;
     using CallbackFunction = UnityEditor.EditorApplication.CallbackFunction;
     public class UtilityListener : AssetPostprocessor{
-	    public static void OnPostprocessAllAssets(string[] imported,string[] deleted,string[] moved, string[] path){
+	    public static void OnPostprocessAllAssets(string[] imported,string[] deleted,string[] movedTo, string[] movedFrom){
 		    bool playing = EditorApplication.isPlaying || EditorApplication.isPlayingOrWillChangePlaymode;
 		    if(!playing){Events.Call("On Asset Changed");}
 	    }
     }
+	public class UtilityModificationListener : AssetModificationProcessor{
+		public static string[] OnWillSaveAssets(string[] paths){
+			foreach(string path in paths){Debug.Log("Saving Changes : " + path);}
+			Events.Call("On Asset Saving");
+			return paths;
+		}
+		public static string OnWillCreateAssets(string path){
+			Debug.Log("Creating : " + path);
+			Events.Call("On Asset Creating");
+			return path;
+		}
+		public static string[] OnWillDeleteAssets(string[] paths,RemoveAssetOptions option){
+			foreach(string path in paths){Debug.Log("Deleting : " + path);}
+			Events.Call("On Asset Deleting");
+			return paths;
+		}
+		public static string OnWillMoveAssets(string path,string destination){
+			Debug.Log("Moving : " + path + " to " + destination);
+			Events.Call("On Asset Moving");
+			return path;
+		}
+	}
     [InitializeOnLoad]
     #else
 	    public delegate void CallbackFunction();
@@ -50,6 +72,14 @@ namespace Zios{
 				}
 				Events.Call("On Hierarchy Changed");
 			};
+			Camera.onPostRender += (Camera camera)=>Events.Call("On Camera Post Render",camera);
+			Camera.onPreRender += (Camera camera)=>Events.Call("On Camera Pre Render",camera);
+			Camera.onPreCull += (Camera camera)=>Events.Call("On Camera Pre Cull",camera);
+			Undo.willFlushUndoRecord += ()=>Events.Call("On Undo Flushing");
+			Undo.undoRedoPerformed += ()=>Events.Call("On Undo");
+			Undo.undoRedoPerformed += ()=>Events.Call("On Redo");
+			PrefabUtility.prefabInstanceUpdated += (GameObject target)=>Events.Call("On Prefab Changed",target);
+			Lightmapping.completed += ()=>Events.Call("On Lightmap Baked");
 			EditorApplication.projectWindowChanged += ()=>Events.Call("On Project Changed");
 			EditorApplication.playmodeStateChanged += ()=>Events.Call("On Mode Changed");
 			CallbackFunction windowEvent = ()=>Events.Call("On Window Reordered");
@@ -123,13 +153,13 @@ namespace Zios{
 			var window = EditorWindow.GetWindowWithRect(inspectorWindow,current);
 			return window.GetVariable<Vector2>("m_ScrollPosition");
 	    }
-		[MenuItem("Zios/Process/Clear Player Prefs")]
+		[MenuItem("Zios/Process/Prefs/Clear Player")]
 		public static void DeletePlayerPrefs(){
 			if(EditorUtility.DisplayDialog("Clear Player Prefs","Delete all the player preferences?","Yes","No")){
 				PlayerPrefs.DeleteAll();
 			}
 		}
-		[MenuItem("Zios/Process/Clear Editor Prefs")]
+		[MenuItem("Zios/Process/Prefs/Clear Editor")]
 		public static void DeleteEditorPrefs(){
 			if(EditorUtility.DisplayDialog("Clear Editor Prefs","Delete all the editor preferences?","Yes","No")){
 				EditorPrefs.DeleteAll();
@@ -205,6 +235,12 @@ namespace Zios{
 		    return PrefabUtility.FindPrefabRoot(target);
 		    #endif
 		    return null;
+	    }
+	    public static void ApplyPrefab(GameObject target){
+		    #if UNITY_EDITOR
+		    GameObject root = PrefabUtility.FindPrefabRoot(target);
+			PrefabUtility.ReplacePrefab(root,PrefabUtility.GetPrefabParent(root),ReplacePrefabOptions.ConnectToPrefab);
+		    #endif
 	    }
 	    public static bool IsPlaying(){
 		    #if UNITY_EDITOR

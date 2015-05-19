@@ -15,13 +15,15 @@ public class DefaultAssetEditor : Editor{
 			return;
 		}
 		FileData file = FileManager.Get(this.target);
-		string prefix = file.isFolder ? "Folder" : "File";
-		string format = file.isFolder ? this.target.name : file.extension.ToUpper();
-		string editorName = prefix + format + "Editor";
-		Type type = Type.GetType(editorName);
-		if(type != null && type.IsSubclassOf(typeof(Editor))){
-			this.instance = Editor.CreateEditor(this.target,type);
-			this.instance.OnInspectorGUI();
+		if(file != null){
+			string prefix = file.isFolder ? "Folder" : "File";
+			string format = file.isFolder ? this.target.name : file.extension.ToUpper();
+			string editorName = prefix + format + "Editor";
+			Type type = Type.GetType(editorName);
+			if(type != null && type.IsSubclassOf(typeof(Editor))){
+				this.instance = Editor.CreateEditor(this.target,type);
+				this.instance.OnInspectorGUI();
+			}
 		}
 	}
 }

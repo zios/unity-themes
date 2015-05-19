@@ -9,7 +9,7 @@ using UnityEditor;
 namespace Zios{
     [ExecuteInEditMode]
     public class DataMonoBehaviour : MonoBehaviour{
-	    public static DataMonoBehaviour[] sorting;
+	    public static GameObject[] sorting;
 	    public static int processIndex;
 	    public string alias;
 		private string lastAlias;
@@ -30,7 +30,7 @@ namespace Zios{
 		// Editor
 		//===============
 	    public virtual void OnValidate(){
-			if(Application.isPlaying || Application.isLoadingLevel){return;}
+			if(Application.isPlaying || Application.isLoadingLevel || !this.gameObject.activeInHierarchy){return;}
 			this.CallEvent("On Validate");
 	    }
 	    public virtual void OnDestroy(){
@@ -81,29 +81,38 @@ namespace Zios{
 		// Sorting	
 		//===============
 	    #if UNITY_EDITOR
-        [MenuItem("Zios/Process/Components/Sort All (Smart)")]
+        [MenuItem("Zios/Process/GameObject/Apply Prefab (Selected)")]
+	    public static void ApplyPrefabSelected(){
+			foreach(var target in Selection.gameObjects){
+				DataMonoBehaviour.ApplyPrefabTarget(target);
+			}
+		}
+        [MenuItem("Zios/Process/GameObject/Sort Components (Selected)")]
+	    public static void SortSmartSelected(){
+			foreach(var target in Selection.gameObjects){
+				DataMonoBehaviour.SortSmartTarget(target);
+			}
+		}
+        [MenuItem("Zios/Process/GameObject/Sort Components (All)")]
 	    public static void SortSmartAll(){
 		    var unique = new List<DataMonoBehaviour>();
-		    DataMonoBehaviour.sorting = Locate.GetSceneComponents<DataMonoBehaviour>();
-		    foreach(var behaviour in DataMonoBehaviour.sorting){
-			    if(behaviour.IsNull() || behaviour.gameObject.IsNull()){continue;}
-			    if(!unique.Exists(x=>x.gameObject==behaviour.gameObject)){
-				    unique.Add(behaviour);
-			    }
-		    }
-		    DataMonoBehaviour.sorting = unique.ToArray();
-		    DataMonoBehaviour.processIndex = 0;
-			Events.Add("On Editor Update",DataMonoBehaviour.SortSmartNext);
-			Events.Pause("On Hierarchy Changed");
+		    DataMonoBehaviour.sorting = Locate.GetSceneObjects();
+			if(DataMonoBehaviour.sorting.Length > 0){
+				DataMonoBehaviour.processIndex = 0;
+				Events.Add("On Editor Update",DataMonoBehaviour.SortSmartNext);
+			}
 	    }
 	    public static void SortSmartNext(){
+			Events.Pause("On Hierarchy Changed");
 		    int index = DataMonoBehaviour.processIndex;
 		    var sorting = DataMonoBehaviour.sorting;
 		    var current = DataMonoBehaviour.sorting[index];
 		    float total = (float)index/sorting.Length;
-		    string message = index + " / " + sorting.Length + " -- " + current.gameObject.name;
+		    string message = index + " / " + sorting.Length + " -- " + current.GetPath();
 		    bool canceled = EditorUtility.DisplayCancelableProgressBar("Sorting All Components",message,total);
-		    current.SortSmart();
+			current.PauseValidate();
+			DataMonoBehaviour.SortSmartTarget(current);
+			current.ResumeValidate();
 		    DataMonoBehaviour.processIndex += 1;
 		    if(canceled || index+1 > sorting.Length-1){
 			    EditorUtility.ClearProgressBar();
@@ -111,26 +120,18 @@ namespace Zios{
 				Events.Resume("On Hierarchy Changed");
 		    }
 	    }
-	    [ContextMenu("Sort (By Type)")]
-	    public void SortByType(){
-		    Component[] components = this.GetComponents<Component>().ToList().OrderBy(x=>x.GetType().Name).ToArray();
-		    this.Sort(components);
-	    }
-	    [ContextMenu("Sort (By Alias)")]
-	    public void SortByAlias(){
-		    Component[] components = this.GetComponents<Component>().ToList().OrderBy(x=>x.GetAlias()).ToArray();
-		    this.Sort(components);
-	    }
-	    [ContextMenu("Sort (Smart)")]
-	    public void SortSmart(){
-		    Component[] components = this.GetComponents<Component>().ToList().OrderBy(x=>x.GetAlias()).ToArray();
-		    this.Sort(components);
-		    var stateLink = components.Find(x=>x is StateLink);
-		    var controller = components.Find(x=>x is StateTable);
-		    if(!stateLink.IsNull()){stateLink.MoveToTop();}
-		    if(!controller.IsNull()){controller.MoveToTop();}
-	    }
-	    public void Sort(Component[] components){
+		//===============
+		// Shared
+		//===============
+		public static void SortSmartTarget(GameObject target){
+			Component[] components = target.GetComponents<Component>().ToList().OrderBy(x=>x.GetAlias()).ToArray();
+			DataMonoBehaviour.Sort(components);
+			var stateLink = components.Find(x=>x is StateLink);
+			var controller = components.Find(x=>x is StateTable);
+			if(!stateLink.IsNull()){stateLink.MoveToTop();}
+			if(!controller.IsNull()){controller.MoveToTop();}
+		}
+	    public static void Sort(Component[] components){
 		    foreach(var component in components){
 			    if(!component.hideFlags.Contains(HideFlags.HideInInspector)){
 				    component.MoveToBottom();
@@ -142,6 +143,28 @@ namespace Zios{
 			    }
 		    }
 	    }
+		public static void ApplyPrefabTarget(GameObject target){
+			Events.Pause("On Hierarchy Changed");
+			target.PauseValidate();
+		    Utility.ApplyPrefab(target);
+			target.ResumeValidate();
+			Events.Resume("On Hierarchy Changed");
+		}
+		//===============
+		// Context
+		//===============
+	    [ContextMenu("Sort (By Type)")]
+	    public void SortByType(){
+		    Component[] components = this.GetComponents<Component>().ToList().OrderBy(x=>x.GetType().Name).ToArray();
+		    DataMonoBehaviour.Sort(components);
+	    }
+	    [ContextMenu("Sort (By Alias)")]
+	    public void SortByAlias(){
+		    Component[] components = this.GetComponents<Component>().ToList().OrderBy(x=>x.GetAlias()).ToArray();
+		    DataMonoBehaviour.Sort(components);
+	    }
+	    [ContextMenu("Sort (Smart)")]
+	    public void SortSmart(){DataMonoBehaviour.SortSmartTarget(this.gameObject);}
 	    [ContextMenu("Move Element Up")]
 	    public void MoveItemUp(){this.MoveUp();}
 	    [ContextMenu("Move Element Down")]
@@ -150,6 +173,8 @@ namespace Zios{
 	    public void MoveBottom(){this.MoveToBottom();}
 	    [ContextMenu("Move To Top")]
 	    public void MoveTop(){this.MoveToTop();}
+	    [ContextMenu("Apply Prefab")]
+	    public void ApplyPrefab(){DataMonoBehaviour.ApplyPrefabTarget(this.gameObject);}
 	    #endif
     }
 	public class DataDependency{

@@ -203,7 +203,7 @@ namespace Zios{
 				Events.listeners.RemoveAll(x=>x.method==method && x.target==target && x.name==name);
 			}
 		}
-	    public static void SetPause(string type,string name,object method,object target){
+	    public static void SetPause(string type,string name,object target){
 			target = Events.Validate(target);
 			if(Events.debug.Has("Pause")){
 				string message = "[EventManager] : " + type + " event -- " + Events.GetTargetName(target) + " -- " + name;
@@ -214,8 +214,8 @@ namespace Zios{
 				item.Value.paused = type == "Pausing";
 			}
 		}
-	    public static void Pause(string name,object method=null,object target=null){Events.SetPause("Pausing",name,method,target);}
-	    public static void Resume(string name,object method=null,object target=null){Events.SetPause("Resuming",name,method,target);}
+	    public static void Pause(string name,object target=null){Events.SetPause("Pausing",name,target);}
+	    public static void Resume(string name,object target=null){Events.SetPause("Resuming",name,target);}
 	    public static void Call(string name,params object[] values){
 			if(Events.disabled){return;}
 			Events.lastEventName = name;
@@ -325,7 +325,7 @@ namespace Zios{
 			var debug = Events.debug;
 			var scope = Events.debugScope;
 			allowed = target == Events.global ? scope.Has("Global") : scope.Has("Scoped");
-			if(allowed && name.ContainsAny("On Update","On Editor Update","On GUI")){
+			if(allowed && name.ContainsAny("On Update","On Editor Update","On GUI","On Camera","On Undo Flushing")){
 				allowed = debug.Has("CallUpdate");
 			}
 			if(allowed && debug.HasAny("Call","CallUpdate","CallDeep","CallEmpty")){

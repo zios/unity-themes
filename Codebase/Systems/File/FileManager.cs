@@ -74,9 +74,9 @@ namespace Zios{
 		    if(results.Length > 0){return results[0];}
 		    return null;
 	    }
-	    public static FileData Get(UnityObject item,bool showWarnings=true){
+	    public static FileData Get(UnityObject item,bool showWarnings=false){
 			string path = FileManager.GetPath(item,false);
-			return FileManager.Find(path);
+			return FileManager.Find(path,true,showWarnings);
 	    }
 	    public static string GetPath(UnityObject item,bool relative=true){
 		    #if UNITY_EDITOR 

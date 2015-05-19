@@ -13,7 +13,7 @@ namespace Zios{
 		    bool inGroup = instance.transform.parent != null && instance.transform.parent.name.Contains("SpriteGroup");
 		    return (inGroup && sprite != null) || (filter != null && filter.sharedMesh.name == "plane");
 	    }
-        [MenuItem ("Zios/Process/Remove Invisible Sprites")]
+        [MenuItem ("Zios/Process/Sprites/Remove Invisible")]
 	    static void RemoveObjects(){
 		    GameObject[] objects = (GameObject[])Resources.FindObjectsOfTypeAll(typeof(GameObject));
 		    int removed = 0;
@@ -90,7 +90,7 @@ namespace Zios{
 			    }
 		    }
         }
-        [MenuItem ("Zios/Process/Snap Positions")]
+        [MenuItem ("Zios/Process/Sprites/Snap Positions")]
         static void SnapPositions(){
 		    GameObject[] all = (GameObject[])GameObject.FindObjectsOfType(typeof(GameObject));
 		    for(int index=0;index < all.Length;++index){
