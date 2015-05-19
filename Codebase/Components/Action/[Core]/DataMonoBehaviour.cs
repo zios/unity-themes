@@ -95,7 +95,6 @@ namespace Zios{
 		}
         [MenuItem("Zios/Process/GameObject/Sort Components (All)")]
 	    public static void SortSmartAll(){
-		    var unique = new List<DataMonoBehaviour>();
 		    DataMonoBehaviour.sorting = Locate.GetSceneObjects();
 			if(DataMonoBehaviour.sorting.Length > 0){
 				DataMonoBehaviour.processIndex = 0;
