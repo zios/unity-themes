@@ -188,6 +188,9 @@ namespace Zios{
 		    foreach(var type in typeof(EditorApplication).Assembly.GetTypes()){
 			    if(type.Name == name){return type;}
 		    }
+		    foreach(var type in typeof(UnityEditor.EditorWindow).Assembly.GetTypes()){
+			    if(type.Name == name){return type;}
+		    }
 		    #endif
 		    return null;
 	    }
@@ -260,6 +263,25 @@ namespace Zios{
 			inspectorType.CallMethod("RepaintAllInspectors");
 			#endif
 	    }
+	    public static void RepaintAll(){
+		    #if UNITY_EDITOR
+			UnityEditorInternal.InternalEditorUtility.RepaintAllViews();
+			#endif
+	    }
+	    public static void RepaintGameView(){
+		    #if UNITY_EDITOR
+			Type viewType = Utility.GetEditorType("GameView");
+			EditorWindow gameview = EditorWindow.GetWindow(viewType);
+			gameview.Repaint();
+			#endif
+	    }
+		public static void RepaintSceneView(){
+		    #if UNITY_EDITOR
+			if(SceneView.lastActiveSceneView != null){
+				SceneView.lastActiveSceneView.Repaint();
+			}
+			#endif
+		}
 		public static void ClearDirty(){Utility.delayedDirty.Clear();}
 	    public static void SetDirty(UnityObject target,bool delayed=false,bool forced=false){
 		    #if UNITY_EDITOR

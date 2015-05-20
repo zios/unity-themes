@@ -25,13 +25,6 @@ namespace Zios{
 		public bool showAll;
 		public bool visible = true;
 		public Method dirtyEvent;
-		[PreferenceItem("Zios")]
-		static public void Preferences(){
-			bool fastInspector = EditorPrefs.GetBool("MonoBehaviourEditor-FastInspector").Draw("Turbo Inspector (Experimental)");
-			if(GUI.changed){
-				EditorPrefs.SetBool("MonoBehaviourEditor-FastInspector",fastInspector);
-			}
-		}
 	    public override void OnInspectorGUI(){
 			if(!Event.current.IsUseful()){return;}
 			if(this.target is MonoBehaviour && this.target.As<MonoBehaviour>().IsPrefab()){return;}
