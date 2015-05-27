@@ -24,7 +24,7 @@ namespace Zios{
 		    }
 		    label.DrawLabel(area,null,true);
 		    if(target.mode == TargetMode.Direct){
-			    target.directObject = target.directObject.DrawObject(propertyRect,"",true);
+			    target.directObject = target.directObject.Draw<GameObject>(propertyRect,"",true);
 		    }
 		    else{
 			    Rect textRect = propertyRect;

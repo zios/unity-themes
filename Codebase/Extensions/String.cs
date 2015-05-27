@@ -168,8 +168,8 @@ namespace Zios{
 	    public static string Cut(this string current,int startIndex=0,int endIndex=-1){
 		    return current.Substring(startIndex,endIndex - startIndex + 1);
 	    }
-	    public static string Cut(this string current,string start="",string end="",bool ignoreCase=true,int repeatEnd=1){
-		    int startIndex = start == "" ? 0 : current.IndexOf(start,ignoreCase);
+	    public static string Cut(this string current,string start="",string end="",int offset=0,bool ignoreCase=true,int repeatEnd=1){
+		    int startIndex = start == "" ? 0 : current.IndexOf(start,offset,ignoreCase);
 		    if(startIndex != -1){
 			    if(end == ""){
 				    return current.Substring(startIndex);

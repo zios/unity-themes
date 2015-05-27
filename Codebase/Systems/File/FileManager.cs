@@ -122,6 +122,12 @@ namespace Zios{
 			this.name = Path.GetFileNameWithoutExtension(path);
 			this.isFolder = Directory.Exists(path);
 	    }
+		public string GetText(){
+			return File.ReadAllText(this.path);
+		}
+		public void WriteText(string contents){
+			File.WriteAllText(this.path,contents);
+		}
 	    public T GetAsset<T>(){
 		    #if UNITY_EDITOR
 		    if(Application.isEditor){

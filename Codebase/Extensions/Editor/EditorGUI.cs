@@ -94,11 +94,8 @@ namespace Zios{
 	    public static int DrawSlider(this int current,Rect area,int min,int max,UnityLabel label=null,bool indention=false){
 		    return EditorGUIExtension.Draw<int>(()=>EditorGUI.IntSlider(area,label,current,min,max),indention);
 	    }
-	    public static GameObject DrawObject(this GameObject current,Rect area,UnityLabel label=null,bool allowScene=true,bool indention=false){
-		    return (GameObject)EditorGUIExtension.Draw<UnityObject>(()=>EditorGUI.ObjectField(area,label,current,typeof(GameObject),allowScene),indention);
-	    }
-	    public static Component DrawObject(this Component current,Rect area,UnityLabel label=null,bool allowScene=true,bool indention=false){
-		    return (Component)EditorGUIExtension.Draw<UnityObject>(()=>EditorGUI.ObjectField(area,label,current,typeof(Component),allowScene),indention);
+	    public static Type Draw<Type>(this UnityObject current,Rect area,UnityLabel label=null,bool allowScene=true,bool indention=false) where Type : UnityObject{
+		    return (Type)EditorGUIExtension.Draw<UnityObject>(()=>EditorGUI.ObjectField(area,label,current,typeof(Type),allowScene),indention);
 	    }
 	    public static Enum DrawMask(this Enum current,Rect area,UnityLabel label=null,GUIStyle style=null,bool indention=false){
 		    style = style ?? EditorStyles.popup;

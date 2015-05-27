@@ -477,7 +477,7 @@ namespace MaterialExtended{
 						if(type == "Texture" || type == "Rect" || type == "Cube"){
 							string extra = current.Cut("{","}").Strip("{","}") + " ";
 							if(extra.Contains("TexGen")){
-								string texgen = extra.Cut("TexGen"," ",true,2).Strip("TexGen","\t"," ");
+								string texgen = extra.Cut("TexGen"," ",0,true,2).Strip("TexGen","\t"," ");
 								property.texgenMode =  (TexGen)property.texgenMode.Get(texgen);
 							}
 							int bracket = value.IndexOf("{");
@@ -528,8 +528,8 @@ namespace MaterialExtended{
 							pass.gpuShader = pass.gpuShader.Strip("\t\t\t");
 							tagBlock = this.GetBlock(normalPass,"tags").Strip(" ","\t").Replace("Prelight","Prepass",true);
 							if(tagBlock != ""){
-								string lightMode = tagBlock.Cut("LightMode",quote,true,3).Strip(quote).TrySplit('=',1);
-								string require = tagBlock.Cut("Require",quote,true,3).Strip(quote).TrySplit('=',1);
+								string lightMode = tagBlock.Cut("LightMode",quote,0,true,3).Strip(quote).TrySplit('=',1);
+								string require = tagBlock.Cut("Require",quote,0,true,3).Strip(quote).TrySplit('=',1);
 								pass.tags.lightMode = (LightMode)pass.tags.lightMode.Get(lightMode,0);
 								pass.tags.require = (Require)pass.tags.require.Get(require,0);
 							}
@@ -543,12 +543,12 @@ namespace MaterialExtended{
 					nextSubShader = nextSubShader.ReplaceFirst(tagBlock,"",true);
 					if(tagBlock != ""){
 						tagBlock = tagBlock.Strip(" ","\t").Replace("Prelight","Prepass",true);
-						string renderQueue = tagBlock.Cut("Queue",quote,true,3).Strip(quote).TrySplit('=',1);
-						string renderType = tagBlock.Cut("Rendertype",quote,true,3).Strip(quote).TrySplit('=',1);
-						string ignoreProjector = tagBlock.Cut("IgnoreProjector",quote,true,3).Strip(quote).TrySplit('=',1);
-						string forceNoShadowCasting = tagBlock.Cut("ForceNoShadowCasting",quote,true,3).Strip(quote).TrySplit('=',1);
-						string lightMode = tagBlock.Cut("LightMode",quote,true,3).Strip(quote).TrySplit('=',1);
-						string require = tagBlock.Cut("Require",quote,true,3).Strip(quote).TrySplit('=',1);
+						string renderQueue = tagBlock.Cut("Queue",quote,0,true,3).Strip(quote).TrySplit('=',1);
+						string renderType = tagBlock.Cut("Rendertype",quote,0,true,3).Strip(quote).TrySplit('=',1);
+						string ignoreProjector = tagBlock.Cut("IgnoreProjector",quote,0,true,3).Strip(quote).TrySplit('=',1);
+						string forceNoShadowCasting = tagBlock.Cut("ForceNoShadowCasting",quote,0,true,3).Strip(quote).TrySplit('=',1);
+						string lightMode = tagBlock.Cut("LightMode",quote,0,true,3).Strip(quote).TrySplit('=',1);
+						string require = tagBlock.Cut("Require",quote,0,true,3).Strip(quote).TrySplit('=',1);
 						if(renderQueue.Contains("+")){
 							subShader.tags.renderQueueOffset = Convert.ToInt16(renderQueue.Split('+')[1]);
 							renderQueue = renderQueue.Split('+')[0];

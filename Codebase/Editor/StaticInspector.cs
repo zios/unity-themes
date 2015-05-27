@@ -198,11 +198,11 @@ namespace Zios{
 				this.foldoutState.AddNew(hash);
 			}
 			if(value is GameObject){
-				GameObject newValue = ((GameObject)value).DrawObject(this.valueArea);
+				GameObject newValue = value.As<GameObject>().Draw<GameObject>(this.valueArea);
 				this.UpdateValue(accessor,newValue);
 			}
 			else if(value is Component){
-				Component newValue = ((Component)value).DrawObject(this.valueArea);
+				Component newValue = value.As<Component>().Draw<Component>(this.valueArea);
 				this.UpdateValue(accessor,newValue);
 			}
 			else if(value.IsNull()){return;}

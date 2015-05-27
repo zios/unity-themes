@@ -7,40 +7,40 @@ using System.Collections.Generic;
 using UnityObject = UnityEngine.Object;
 namespace Zios{
     public static class EditorGUILayoutExtension{
-	    public static string Draw(this string current,UnityLabel label=null,GUIStyle style=null){
+	    public static string Draw(this string current,UnityLabel label=null,GUIStyle style=null,bool indention=false){
 		    style = style ?? EditorStyles.textField;
-		    return EditorGUIExtension.Draw<string>(()=>EditorGUILayout.TextField(label,current,style));
+		    return EditorGUIExtension.Draw<string>(()=>EditorGUILayout.TextField(label,current,style),indention);
 	    }
-	    public static float Draw(this float current,UnityLabel label=null,GUIStyle style=null){
+	    public static float Draw(this float current,UnityLabel label=null,GUIStyle style=null,bool indention=false){
 		    style = style ?? EditorStyles.numberField;
-		    return EditorGUIExtension.Draw<float>(()=>EditorGUILayout.FloatField(label,current,style));
+		    return EditorGUIExtension.Draw<float>(()=>EditorGUILayout.FloatField(label,current,style),indention);
 	    }
-	    public static bool Draw(this bool current,UnityLabel label=null,GUIStyle style=null){
+	    public static bool Draw(this bool current,UnityLabel label=null,GUIStyle style=null,bool indention=false){
 		    style = style ?? EditorStyles.toggle;
-		    return EditorGUIExtension.Draw<bool>(()=>EditorGUILayout.Toggle(label,current,style));
+		    return EditorGUIExtension.Draw<bool>(()=>EditorGUILayout.Toggle(label,current,style),indention);
 	    }
-	    public static Enum Draw(this Enum current,UnityLabel label=null,GUIStyle style=null){
+	    public static Enum Draw(this Enum current,UnityLabel label=null,GUIStyle style=null,bool indention=false){
 		    style = style ?? EditorStyles.popup;
-		    return EditorGUIExtension.Draw<Enum>(()=>EditorGUILayout.EnumPopup(label,current,style));
+		    return EditorGUIExtension.Draw<Enum>(()=>EditorGUILayout.EnumPopup(label,current,style),indention);
 	    }
-	    public static int Draw(this IList<string> current,int index,UnityLabel label=null,GUIStyle style=null){
+	    public static int Draw(this IList<string> current,int index,UnityLabel label=null,GUIStyle style=null,bool indention=false){
 		    style = style ?? EditorStyles.popup;
 			var contents = current.Select(x=>new GUIContent(x)).ToArray();
-		    return EditorGUIExtension.Draw<int>(()=>EditorGUILayout.Popup(label,index,contents,style));
+		    return EditorGUIExtension.Draw<int>(()=>EditorGUILayout.Popup(label,index,contents,style),indention);
 	    }
-	    public static void Draw(this SerializedProperty current,UnityLabel label=null,bool allowScene=true){
+	    public static void Draw(this SerializedProperty current,UnityLabel label=null,bool allowScene=true,bool indention=false){
 			if(label != null && label.value.text.IsEmpty()){label = new GUIContent(current.displayName);}
 			Action action = ()=>EditorGUILayout.PropertyField(current,label,allowScene);
-		    EditorGUIExtension.Draw(action);
+		    EditorGUIExtension.Draw(action,indention);
 	    }
-	    public static Rect Draw(this Rect current,UnityLabel label=null){
-		    return EditorGUIExtension.Draw<Rect>(()=>EditorGUILayout.RectField(label,current));
+	    public static Rect Draw(this Rect current,UnityLabel label=null,bool indention=false){
+		    return EditorGUIExtension.Draw<Rect>(()=>EditorGUILayout.RectField(label,current),indention);
 	    }
-	    public static AnimationCurve Draw(this AnimationCurve current,UnityLabel label=null){
-		    return EditorGUIExtension.Draw<AnimationCurve>(()=>EditorGUILayout.CurveField(label,current));
+	    public static AnimationCurve Draw(this AnimationCurve current,UnityLabel label=null,bool indention=false){
+		    return EditorGUIExtension.Draw<AnimationCurve>(()=>EditorGUILayout.CurveField(label,current),indention);
 	    }
-	    public static Color Draw(this Color current,UnityLabel label=null){
-		    return EditorGUIExtension.Draw<Color>(()=>EditorGUILayout.ColorField(label,current));
+	    public static Color Draw(this Color current,UnityLabel label=null,bool indention=false){
+		    return EditorGUIExtension.Draw<Color>(()=>EditorGUILayout.ColorField(label,current),indention);
 	    }
 		public static void Draw<T>(this IList<T> current,string header="List"){
 			if(header.IsEmpty() || EditorGUILayoutExtensionSpecial.DrawFoldout(header)){
@@ -53,7 +53,7 @@ namespace Zios{
 						enumerable.OfType<object>().ToList().Draw(label);
 						continue;
 					}
-					if(item.GetType().IsClass && item.GetType().IsSerializable && !(item is string)){
+					if(!item.IsNull() && item.GetType() != typeof(UnityObject) && item.GetType().IsClass && item.GetType().IsSerializable && !(item is string)){
 						item.DrawFields(label);
 						continue;
 					}
@@ -73,8 +73,10 @@ namespace Zios{
 			if(current is AnimationCurve){current.As<AnimationCurve>().Draw(label);}
 			if(current is Color){current.As<Color>().Draw(label);}
 			if(current is Rect){current.As<Rect>().Draw(label);}
-			if(current is GameObject){current.As<GameObject>().DrawObject(label);}
-			if(current is Component){current.As<Component>().DrawObject(label);}
+			if(current is GameObject){current.As<GameObject>().Draw<GameObject>(label);}
+			if(current is Component){current.As<Component>().Draw(label);}
+			if(current is Material){current.As<Material>().Draw(label);}
+			if(current is Shader){current.As<Shader>().Draw(label);}
 			if(current is Vector2){current.As<Vector2>().DrawVector2(label);}
 			if(current is Vector3){current.As<Vector3>().DrawVector3(label);}
 			if(current is Vector4){current.As<Vector4>().DrawVector4(label);}
@@ -135,11 +137,8 @@ namespace Zios{
 	    public static int DrawSlider(this int current,int min,int max,UnityLabel label=null,bool indention=false){
 		    return EditorGUIExtension.Draw<int>(()=>EditorGUILayout.IntSlider(label,current,min,max),indention);
 	    }
-	    public static GameObject DrawObject(this GameObject current,UnityLabel label=null,bool allowScene=true,bool indention=false){
-		    return (GameObject)EditorGUIExtension.Draw<UnityObject>(()=>EditorGUILayout.ObjectField(label,current,current.GetType(),allowScene),indention);
-	    }
-	    public static Component DrawObject(this Component current,UnityLabel label=null,bool allowScene=true,bool indention=false){
-		    return (Component)EditorGUIExtension.Draw<UnityObject>(()=>EditorGUILayout.ObjectField(label,current,current.GetType(),allowScene),indention);
+	    public static Type Draw<Type>(this UnityObject current,UnityLabel label=null,bool allowScene=true,bool indention=false) where Type : UnityObject{
+		    return (Type)EditorGUIExtension.Draw<UnityObject>(()=>EditorGUILayout.ObjectField(label,current,typeof(Type),allowScene),indention);
 	    }
 	    public static Enum DrawMask(this Enum current,UnityLabel label=null,GUIStyle style=null,bool indention=false){
 		    style = style ?? EditorStyles.popup;
