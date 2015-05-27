@@ -9,13 +9,13 @@ GameObject:
   m_Component:
   - 4: {fileID: 425784}
   - 114: {fileID: 11489464}
+  - 114: {fileID: 11468978}
   - 114: {fileID: 11460964}
   - 114: {fileID: 11478856}
   - 114: {fileID: 11424174}
   - 114: {fileID: 11401538}
   - 114: {fileID: 11406378}
   - 114: {fileID: 11453950}
-  - 114: {fileID: 11468978}
   - 114: {fileID: 11402294}
   - 114: {fileID: 11484496}
   - 114: {fileID: 11463376}
@@ -142,7 +142,7 @@ MonoBehaviour:
     searchObject: {fileID: 104766}
     parent: {fileID: 11460964}
     mode: 0
-    path: /Player/@Actions/Template/Main/@Ready/@Ready/Usable/Target
+    path: /Template/Main/@Ready/@Ready/Usable/Target
   usage: 0
   path: '@Ready/Usable/0'
   referenceID: 
@@ -150,7 +150,7 @@ MonoBehaviour:
   attribute:
     name: Usable
     path: '@Ready/Usable'
-    id: -108960/f340d105-4df2-46d7-b399-19ca064611ae
+    id: -35688/f340d105-4df2-46d7-b399-19ca064611ae
     localID: f340d105-4df2-46d7-b399-19ca064611ae
     parent: {fileID: 11460964}
     mode: 0
@@ -195,7 +195,7 @@ MonoBehaviour:
     - {fileID: 171856}
     - {fileID: 171856}
     - {fileID: 104766}
-    - {fileID: 104766}
+    - {fileID: 198786}
     - {fileID: 104766}
     - {fileID: 104766}
     - {fileID: 104766}
@@ -216,7 +216,7 @@ MonoBehaviour:
     searchObject: {fileID: 104766}
     parent: {fileID: 11468978}
     mode: 0
-    path: /Player/@Actions/Template/Main/Template/Template/Requirable/Target
+    path: /Template/Main/Template/Template/Requirable/Target
   usage: 0
   path: Template/Requirable/0
   referenceID: 
@@ -224,7 +224,7 @@ MonoBehaviour:
   attribute:
     name: Requirable
     path: Template/Requirable
-    id: -109326/da6924c4-11be-442b-b170-372d72ac12cc
+    id: -35700/da6924c4-11be-442b-b170-372d72ac12cc
     localID: da6924c4-11be-442b-b170-372d72ac12cc
     parent: {fileID: 11468978}
     mode: 0
@@ -290,7 +290,7 @@ MonoBehaviour:
     searchObject: {fileID: 104766}
     parent: {fileID: 11460964}
     mode: 0
-    path: /Player/@Actions/Template/Main/@Ready/@Ready/Active/Target
+    path: /Template/Main/@Ready/@Ready/Active/Target
   usage: 0
   path: '@Ready/Active/0'
   referenceID: 
@@ -298,7 +298,7 @@ MonoBehaviour:
   attribute:
     name: Active
     path: '@Ready/Active'
-    id: -108960/d2a8da6f-9df9-45bb-90e9-70adc7a1c73f
+    id: -35688/d2a8da6f-9df9-45bb-90e9-70adc7a1c73f
     localID: d2a8da6f-9df9-45bb-90e9-70adc7a1c73f
     parent: {fileID: 11460964}
     mode: 0
@@ -364,7 +364,7 @@ MonoBehaviour:
     searchObject: {fileID: 104766}
     parent: {fileID: 11460964}
     mode: 0
-    path: /Player/@Actions/Template/Main/@Ready/@Ready/Ready/Target
+    path: /Template/Main/@Ready/@Ready/Ready/Target
   usage: 0
   path: '@Ready/Ready/0'
   referenceID: 
@@ -372,7 +372,7 @@ MonoBehaviour:
   attribute:
     name: Ready
     path: '@Ready/Ready'
-    id: -108960/b263c83e-d644-43c4-9fe6-874c70218ffe
+    id: -35688/b263c83e-d644-43c4-9fe6-874c70218ffe
     localID: b263c83e-d644-43c4-9fe6-874c70218ffe
     parent: {fileID: 11460964}
     mode: 0
@@ -430,7 +430,7 @@ MonoBehaviour:
     searchObject: {fileID: 0}
     parent: {fileID: 11479562}
     mode: 0
-    path: /Player/@Actions/Template/@Settings/Source/Source/Target
+    path: /Template/@Settings/Source/Source/Target
   usage: 1
   path: Source/0
   referenceID: 
@@ -438,7 +438,7 @@ MonoBehaviour:
   attribute:
     name: Source
     path: Source
-    id: -103344/42717df2-729d-4670-baef-fe0d0dd89d73
+    id: -35712/42717df2-729d-4670-baef-fe0d0dd89d73
     localID: 42717df2-729d-4670-baef-fe0d0dd89d73
     parent: {fileID: 11479562}
     mode: 0
@@ -483,7 +483,7 @@ MonoBehaviour:
     - {fileID: 171856}
     - {fileID: 171856}
     - {fileID: 104766}
-    - {fileID: 104766}
+    - {fileID: 198786}
     - {fileID: 104766}
     - {fileID: 104766}
     - {fileID: 104766}
@@ -504,7 +504,7 @@ MonoBehaviour:
     searchObject: {fileID: 104766}
     parent: {fileID: 11468978}
     mode: 0
-    path: /Player/@Actions/Template/Main/Template/Template/Used/Target
+    path: /Template/Main/Template/Template/Used/Target
   usage: 0
   path: Template/Used/0
   referenceID: 
@@ -512,7 +512,7 @@ MonoBehaviour:
   attribute:
     name: Used
     path: Template/Used
-    id: -109326/28d0b73a-99c4-430a-b065-a956075e91c5
+    id: -35700/28d0b73a-99c4-430a-b065-a956075e91c5
     localID: 28d0b73a-99c4-430a-b065-a956075e91c5
     parent: {fileID: 11468978}
     mode: 0
@@ -578,7 +578,7 @@ MonoBehaviour:
     searchObject: {fileID: 104766}
     parent: {fileID: 11460964}
     mode: 0
-    path: /Player/@Actions/Template/Main/@Ready/@Ready/Used/Target
+    path: /Template/Main/@Ready/@Ready/Used/Target
   usage: 0
   path: '@Ready/Used/0'
   referenceID: 
@@ -586,7 +586,7 @@ MonoBehaviour:
   attribute:
     name: Used
     path: '@Ready/Used'
-    id: -108960/91102aad-a77a-40c9-97bf-c338d305c2d7
+    id: -35688/91102aad-a77a-40c9-97bf-c338d305c2d7
     localID: 91102aad-a77a-40c9-97bf-c338d305c2d7
     parent: {fileID: 11460964}
     mode: 0
@@ -622,13 +622,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   alias: '@Ready'
-  rate: 0
+  rate: 1
   id: -108960
   requirable:
     info:
       name: Requirable
       path: '@Ready/Requirable'
-      id: -108960/b05a1e01-d6bd-4879-b472-ceca85131b13
+      id: -35688/b05a1e01-d6bd-4879-b472-ceca85131b13
       localID: b05a1e01-d6bd-4879-b472-ceca85131b13
       parent: {fileID: 11460964}
       mode: 0
@@ -641,7 +641,7 @@ MonoBehaviour:
     info:
       name: Ready
       path: '@Ready/Ready'
-      id: -108960/b263c83e-d644-43c4-9fe6-874c70218ffe
+      id: -35688/b263c83e-d644-43c4-9fe6-874c70218ffe
       localID: b263c83e-d644-43c4-9fe6-874c70218ffe
       parent: {fileID: 11460964}
       mode: 0
@@ -654,7 +654,7 @@ MonoBehaviour:
     info:
       name: Usable
       path: '@Ready/Usable'
-      id: -108960/f340d105-4df2-46d7-b399-19ca064611ae
+      id: -35688/f340d105-4df2-46d7-b399-19ca064611ae
       localID: f340d105-4df2-46d7-b399-19ca064611ae
       parent: {fileID: 11460964}
       mode: 0
@@ -667,7 +667,7 @@ MonoBehaviour:
     info:
       name: Active
       path: '@Ready/Active'
-      id: -108960/d2a8da6f-9df9-45bb-90e9-70adc7a1c73f
+      id: -35688/d2a8da6f-9df9-45bb-90e9-70adc7a1c73f
       localID: d2a8da6f-9df9-45bb-90e9-70adc7a1c73f
       parent: {fileID: 11460964}
       mode: 0
@@ -680,7 +680,7 @@ MonoBehaviour:
     info:
       name: Used
       path: '@Ready/Used'
-      id: -108960/91102aad-a77a-40c9-97bf-c338d305c2d7
+      id: -35688/91102aad-a77a-40c9-97bf-c338d305c2d7
       localID: 91102aad-a77a-40c9-97bf-c338d305c2d7
       parent: {fileID: 11460964}
       mode: 0
@@ -713,7 +713,7 @@ MonoBehaviour:
     - {fileID: 171856}
     - {fileID: 171856}
     - {fileID: 104766}
-    - {fileID: 104766}
+    - {fileID: 198786}
     - {fileID: 104766}
     - {fileID: 104766}
     - {fileID: 104766}
@@ -734,7 +734,7 @@ MonoBehaviour:
     searchObject: {fileID: 104766}
     parent: {fileID: 11468978}
     mode: 0
-    path: /Player/@Actions/Template/Main/Template/Template/Usable/Target
+    path: /Template/Main/Template/Template/Usable/Target
   usage: 0
   path: Template/Usable/0
   referenceID: 
@@ -742,7 +742,7 @@ MonoBehaviour:
   attribute:
     name: Usable
     path: Template/Usable
-    id: -109326/c1a4e2a5-c4f5-4c99-b0c6-f5098c14d989
+    id: -35700/c1a4e2a5-c4f5-4c99-b0c6-f5098c14d989
     localID: c1a4e2a5-c4f5-4c99-b0c6-f5098c14d989
     parent: {fileID: 11468978}
     mode: 0
@@ -765,7 +765,7 @@ MonoBehaviour:
       dataC: []
   operation: 0
   special: 0
-  value: 0
+  value: 1
 --- !u!114 &11468978
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -784,7 +784,7 @@ MonoBehaviour:
     info:
       name: Requirable
       path: Template/Requirable
-      id: -109326/da6924c4-11be-442b-b170-372d72ac12cc
+      id: -35700/da6924c4-11be-442b-b170-372d72ac12cc
       localID: da6924c4-11be-442b-b170-372d72ac12cc
       parent: {fileID: 11468978}
       mode: 0
@@ -797,7 +797,7 @@ MonoBehaviour:
     info:
       name: Ready
       path: Template/Ready
-      id: -109326/8d234ccf-cab9-4713-b876-8282d010fa3a
+      id: -35700/8d234ccf-cab9-4713-b876-8282d010fa3a
       localID: 8d234ccf-cab9-4713-b876-8282d010fa3a
       parent: {fileID: 11468978}
       mode: 0
@@ -810,7 +810,7 @@ MonoBehaviour:
     info:
       name: Usable
       path: Template/Usable
-      id: -109326/c1a4e2a5-c4f5-4c99-b0c6-f5098c14d989
+      id: -35700/c1a4e2a5-c4f5-4c99-b0c6-f5098c14d989
       localID: c1a4e2a5-c4f5-4c99-b0c6-f5098c14d989
       parent: {fileID: 11468978}
       mode: 0
@@ -823,7 +823,7 @@ MonoBehaviour:
     info:
       name: Active
       path: Template/Active
-      id: -109326/bf99af0b-791c-4cac-b7ce-f4aec8c70649
+      id: -35700/bf99af0b-791c-4cac-b7ce-f4aec8c70649
       localID: bf99af0b-791c-4cac-b7ce-f4aec8c70649
       parent: {fileID: 11468978}
       mode: 0
@@ -836,7 +836,7 @@ MonoBehaviour:
     info:
       name: Used
       path: Template/Used
-      id: -109326/28d0b73a-99c4-430a-b065-a956075e91c5
+      id: -35700/28d0b73a-99c4-430a-b065-a956075e91c5
       localID: 28d0b73a-99c4-430a-b065-a956075e91c5
       parent: {fileID: 11468978}
       mode: 0
@@ -889,7 +889,7 @@ MonoBehaviour:
     searchObject: {fileID: 104766}
     parent: {fileID: 11460964}
     mode: 0
-    path: /Player/@Actions/Template/Main/@Ready/@Ready/Requirable/Target
+    path: /Template/Main/@Ready/@Ready/Requirable/Target
   usage: 0
   path: '@Ready/Requirable/0'
   referenceID: 
@@ -897,7 +897,7 @@ MonoBehaviour:
   attribute:
     name: Requirable
     path: '@Ready/Requirable'
-    id: -108960/b05a1e01-d6bd-4879-b472-ceca85131b13
+    id: -35688/b05a1e01-d6bd-4879-b472-ceca85131b13
     localID: b05a1e01-d6bd-4879-b472-ceca85131b13
     parent: {fileID: 11460964}
     mode: 0
@@ -937,7 +937,7 @@ MonoBehaviour:
     info:
       name: Source
       path: Source
-      id: -103344/42717df2-729d-4670-baef-fe0d0dd89d73
+      id: -35712/42717df2-729d-4670-baef-fe0d0dd89d73
       localID: 42717df2-729d-4670-baef-fe0d0dd89d73
       parent: {fileID: 11479562}
       mode: 0
@@ -968,7 +968,7 @@ MonoBehaviour:
     - {fileID: 171856}
     - {fileID: 171856}
     - {fileID: 104766}
-    - {fileID: 104766}
+    - {fileID: 198786}
     - {fileID: 104766}
     - {fileID: 104766}
     - {fileID: 104766}
@@ -989,7 +989,7 @@ MonoBehaviour:
     searchObject: {fileID: 104766}
     parent: {fileID: 11468978}
     mode: 0
-    path: /Player/@Actions/Template/Main/Template/Template/Active/Target
+    path: /Template/Main/Template/Template/Active/Target
   usage: 0
   path: Template/Active/0
   referenceID: 
@@ -997,7 +997,7 @@ MonoBehaviour:
   attribute:
     name: Active
     path: Template/Active
-    id: -109326/bf99af0b-791c-4cac-b7ce-f4aec8c70649
+    id: -35700/bf99af0b-791c-4cac-b7ce-f4aec8c70649
     localID: bf99af0b-791c-4cac-b7ce-f4aec8c70649
     parent: {fileID: 11468978}
     mode: 0
@@ -1042,7 +1042,7 @@ MonoBehaviour:
     - {fileID: 171856}
     - {fileID: 171856}
     - {fileID: 104766}
-    - {fileID: 104766}
+    - {fileID: 198786}
     - {fileID: 104766}
     - {fileID: 104766}
     - {fileID: 104766}
@@ -1063,7 +1063,7 @@ MonoBehaviour:
     searchObject: {fileID: 104766}
     parent: {fileID: 11468978}
     mode: 0
-    path: /Player/@Actions/Template/Main/Template/Template/Ready/Target
+    path: /Template/Main/Template/Template/Ready/Target
   usage: 0
   path: Template/Ready/0
   referenceID: 
@@ -1071,7 +1071,7 @@ MonoBehaviour:
   attribute:
     name: Ready
     path: Template/Ready
-    id: -109326/8d234ccf-cab9-4713-b876-8282d010fa3a
+    id: -35700/8d234ccf-cab9-4713-b876-8282d010fa3a
     localID: 8d234ccf-cab9-4713-b876-8282d010fa3a
     parent: {fileID: 11468978}
     mode: 0
@@ -1129,7 +1129,7 @@ MonoBehaviour:
     searchObject: {fileID: 0}
     parent: {fileID: 11490446}
     mode: 0
-    path: /Player/@Actions/Template/@Settings/Visuals/Visuals/Target
+    path: /Template/@Settings/Visuals/Visuals/Target
   usage: 1
   path: Visuals/0
   referenceID: 
@@ -1137,7 +1137,7 @@ MonoBehaviour:
   attribute:
     name: Visuals
     path: Visuals
-    id: -104214/50398c23-5dbb-4f84-9859-f07ddc3b90f1
+    id: -35716/50398c23-5dbb-4f84-9859-f07ddc3b90f1
     localID: 50398c23-5dbb-4f84-9859-f07ddc3b90f1
     parent: {fileID: 11490446}
     mode: 0
@@ -1222,7 +1222,7 @@ MonoBehaviour:
     info:
       name: Visuals
       path: Visuals
-      id: -104214/50398c23-5dbb-4f84-9859-f07ddc3b90f1
+      id: -35716/50398c23-5dbb-4f84-9859-f07ddc3b90f1
       localID: 50398c23-5dbb-4f84-9859-f07ddc3b90f1
       parent: {fileID: 11490446}
       mode: 0

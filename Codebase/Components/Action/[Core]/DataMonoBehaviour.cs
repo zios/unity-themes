@@ -81,7 +81,7 @@ namespace Zios{
 		// Sorting	
 		//===============
 	    #if UNITY_EDITOR
-        [MenuItem("Zios/Process/GameObject/Apply Prefab (Selected)")]
+        [MenuItem("Zios/Process/GameObject/Apply Prefab (Selected) %4")]
 	    public static void ApplyPrefabSelected(){
 			foreach(var target in Selection.gameObjects){
 				DataMonoBehaviour.ApplyPrefabTarget(target);
