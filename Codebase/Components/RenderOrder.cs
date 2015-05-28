@@ -2,8 +2,7 @@
 using System.Collections;
 namespace Zios{
     [AddComponentMenu("Zios/Component/Rendering/Render Order")]
-    [RequireComponent(typeof(Renderer))]
-    [ExecuteInEditMode]
+    [RequireComponent(typeof(Renderer))][ExecuteInEditMode]
     public class RenderOrder : MonoBehaviour{
 	    public int[] renderQueues;
 	    public void OnEnable(){this.Setup();}

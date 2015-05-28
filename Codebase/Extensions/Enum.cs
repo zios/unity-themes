@@ -4,8 +4,13 @@ using System.Text;
 using System.Collections.Generic;
 namespace Zios{
     public static class EnumExtension{
+		public static Dictionary<Type,Dictionary<Enum,string>> nameCache = new Dictionary<Type,Dictionary<Enum,string>>();
 	    public static string ToName(this Enum current){
 			Type type = current.GetType();
+			var cache = EnumExtension.nameCache;
+			if(cache.ContainsKey(type) && cache[type].ContainsKey(current)){
+				return cache[type][current];
+			}
 			if(current.ToInt() == -1){
 				string[] allNames = Enum.GetNames(type);
 				return string.Join(" ",allNames);
@@ -23,6 +28,7 @@ namespace Zios{
 				}
 				name = names.ToString();
 			}
+			cache.AddNew(type)[current] = name;
 		    return name;
 	    }
 	    public static int ToInt(this Enum current){

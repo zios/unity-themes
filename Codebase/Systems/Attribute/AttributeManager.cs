@@ -76,7 +76,7 @@ namespace Zios{
 		[MenuItem("Zios/Process/Attribute/Full Refresh %1")]
 		#endif
 		public static void PerformRefresh(){
-			if(AttributeManager.disabled){return;}
+			if(Application.isPlaying || AttributeManager.disabled){return;}
 			Events.Call("On Attributes Refresh");
 			AttributeManager.nextRefresh = Time.realtimeSinceStartup + 1;
 
