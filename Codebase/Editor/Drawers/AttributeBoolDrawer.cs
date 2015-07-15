@@ -1,4 +1,4 @@
-﻿using Zios;
+using Zios;
 using UnityEngine;
 using UnityEditor;
 using System;
@@ -55,8 +55,8 @@ namespace Zios{
 			this.activeDataset = dataB;
 			this.attribute.defaultSet = "B";
 			if(dataIndex < dataB.Length && dataB[dataIndex] != null){
-				string dataType = data.GetType().Name.Strip("Data","Attribute").Replace("Int","Number").Replace("Float","Number");
-				string compareType = dataB[dataIndex].GetType().Name.Strip("Data","Attribute").Replace("Int","Number").Replace("Float","Number");
+				string dataType = data.GetType().Name.Remove("Data","Attribute").Replace("Int","Number").Replace("Float","Number");
+				string compareType = dataB[dataIndex].GetType().Name.Remove("Data","Attribute").Replace("Int","Number").Replace("Float","Number");
 				if(!AttributeBool.comparers.ContainsKey(dataType+compareType)){
 					string warning = "Cannot compare <b>" + dataType + "</b> and <b>" + compareType + "</b>.";
 					if(this.valueRect.Clicked(0) || this.valueRect.Clicked(1)){

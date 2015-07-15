@@ -302,10 +302,10 @@ public class ExtendedMaterialEditor : MaterialEditor{
 				EditorGUILayout.EndHorizontal();
 				if(this.warning != ""){EditorGUILayout.HelpBox(this.warning,MessageType.Warning);}
 				EditorGUI.BeginDisabledGroup(true);
-				Buffer.active.fileName = (string)this.Draw("File",Buffer.active.fileName.Strip("-Preview"));
+				Buffer.active.fileName = (string)this.Draw("File",Buffer.active.fileName.Remove("-Preview"));
 				EditorGUI.EndDisabledGroup();
 				string pathPrefix = isPreview ? "Hidden/Preview/" : "";
-				Buffer.active.menuPath = pathPrefix+(string)this.Draw("Menu",Buffer.active.menuPath.Strip("\\","Hidden/Preview/"));
+				Buffer.active.menuPath = pathPrefix+(string)this.Draw("Menu",Buffer.active.menuPath.Remove("\\","Hidden/Preview/"));
 				Buffer.active.fallback = (string)this.Draw("Fallback",Buffer.active.fallback,"");
 				Buffer.active.editor = (string)this.Draw("Editor",Buffer.active.editor,"");
 				Buffer.options["Properties"] = this.DrawFold("Properties",Buffer.options["Properties"]);
@@ -494,8 +494,8 @@ public class ExtendedMaterialEditor : MaterialEditor{
 		if(Buffer.buildPreview && Buffer.material != null && Time.realtimeSinceStartup > Buffer.buildDelay){
 			string path = Buffer.material.shader.name;
 			if(!path.Contains("Hidden/Preview/")){Buffer.originalPath = path;}
-			Buffer.active.path = Buffer.active.path.Strip("-Preview").Replace(".shader","-Preview.shader");
-			Buffer.active.menuPath = "Hidden/Preview/"+Buffer.active.menuPath.Strip("Hidden/Preview/");
+			Buffer.active.path = Buffer.active.path.Remove("-Preview").Replace(".shader","-Preview.shader");
+			Buffer.active.menuPath = "Hidden/Preview/"+Buffer.active.menuPath.Remove("Hidden/Preview/");
 			Buffer.refresh = true;
 			Buffer.material.shader = Buffer.active.Save();
 			Buffer.shader = Buffer.material.shader;
@@ -503,8 +503,8 @@ public class ExtendedMaterialEditor : MaterialEditor{
 		}
 	}
 	public void EndPreview(){
-		Buffer.active.path = Buffer.active.path.Strip("-Preview");
-		Buffer.active.menuPath = Buffer.active.menuPath.Strip("Hidden/Preview/");
+		Buffer.active.path = Buffer.active.path.Remove("-Preview");
+		Buffer.active.menuPath = Buffer.active.menuPath.Remove("Hidden/Preview/");
 	}
 	public void FixPreviewShader(bool force=false){
 		Material material = (Material)this.target;
@@ -514,8 +514,8 @@ public class ExtendedMaterialEditor : MaterialEditor{
 				Shader shader = Shader.Find(Buffer.originalPath);
 				Func<Shader,bool> Validate = item => item == null || item.name.Contains("Hidden/Preview");
 				if(Validate(shader) && Buffer.active != null){shader = Shader.Find(Buffer.active.menuPath);}
-				if(Validate(shader) && Buffer.material != null){shader = Shader.Find(Buffer.material.shader.name.Strip("Hidden/Preview/"));}
-				if(Validate(shader)){shader = Shader.Find(material.shader.name.Strip("Hidden/Preview/"));}
+				if(Validate(shader) && Buffer.material != null){shader = Shader.Find(Buffer.material.shader.name.Remove("Hidden/Preview/"));}
+				if(Validate(shader)){shader = Shader.Find(material.shader.name.Remove("Hidden/Preview/"));}
 				if(shader == null){
 					Debug.LogWarning("Shader for material is a 'preview' shader, but original path could not be found to revert.  Please fix manually.");
 					return;

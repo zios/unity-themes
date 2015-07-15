@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System;
 using System.Text;
 using System.Globalization;
@@ -6,20 +6,16 @@ using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 namespace Zios{
     public static class StringExtension{
-	    public static string Trim(this string current,params string[] values){
-		    foreach(string value in values){
-			    current = current.TrimLeft(value);
-			    current = current.TrimRight(value);	
-		    }
-		    return current;
-	    }
+		//============================
+		// Conversion
+		//============================
 	    public static string ToMD5(this string current){
 		    byte[] bytes = Encoding.UTF8.GetBytes(current);
 		    byte[] hash = MD5.Create().ComputeHash(bytes);
 		    return BitConverter.ToString(hash).Replace("-","");
 	    }
 	    public static Vector3 ToVector3(this string current){
-		    string[] split = current.Strip("(",")"," ").Split(",");
+		    string[] split = current.Remove("(",")"," ").Split(",");
 		    float x = split[0].ToFloat();
 		    float y = split[1].ToFloat();
 		    float z = split[2].ToFloat();
@@ -32,10 +28,10 @@ namespace Zios{
 			return text;
 	    }
 	    public static string ToPascalCase(this string current){
-		    return current.Strip(" ").Capitalize();
+		    return current.Remove(" ").Capitalize();
 	    }
 	    public static string ToCamelCase(this string current){
-		    return current[0].ToString().ToLower() + current.Substring(1).Strip(" ");
+		    return current[0].ToString().ToLower() + current.Substring(1).Remove(" ");
 	    }
 	    public static int ToInt(this string current){
 		    return Convert.ToInt32(current);
@@ -46,28 +42,6 @@ namespace Zios{
 	    public static bool ToBool(this string current){
 		    string lower = current.ToLower();
 		    return lower != "false" || lower != "f" || lower != "0";
-	    }
-	    public static bool Matches(this string current,string value,bool ignoreCase=false){
-		    if(ignoreCase){return current.ToLower() == value.ToLower();}
-		    return current == value;
-	    }
-	    public static bool MatchesAny(this string current,params string[] values){
-			foreach(string value in values){
-				if(current.Matches(value,true)){return true;}
-			}
-		    return false;
-	    }
-	    public static string Implode(this string current,string separator=" "){
-		    StringBuilder builder = new StringBuilder(current.Length * 2);
-		    foreach(char letter in current){
-			    builder.Append(letter);
-			    builder.Append(separator);
-		    }
-		    return builder.ToString();
-	    }
-	    public static bool IsNumber(this string current){
-		    int result;
-		    return int.TryParse(current,out result);
 	    }
 	    public static Color ToColor(this string current){
 		    bool commaSplit = current.Contains(",");
@@ -95,6 +69,41 @@ namespace Zios{
 			    return new Color(255,0,255);
 		    }
 	    }
+	    public static string Capitalize(this string current){
+		    return current[0].ToString().ToUpper() + current.Substring(1);
+	    }
+		//============================
+		// Standard
+		//============================
+	    public static string Trim(this string current,params string[] values){
+		    foreach(string value in values){
+			    current = current.TrimLeft(value);
+			    current = current.TrimRight(value);	
+		    }
+		    return current;
+	    }
+	    public static string TrimRight(this string current,string value,bool ignoreCase=false){
+		    if(current.EndsWith(value,ignoreCase)){
+			    current = current.Substring(0,current.Length - value.Length);
+		    }
+		    return current;
+	    }
+	    public static string TrimLeft(this string current,string value,bool ignoreCase=false){
+		    if(current.StartsWith(value,ignoreCase)){
+			    current = current.Substring(value.Length);
+		    }
+		    return current;
+	    }
+	    public static bool Matches(this string current,string value,bool ignoreCase=false){
+		    if(ignoreCase){return current.ToLower() == value.ToLower();}
+		    return current == value;
+	    }
+	    public static bool MatchesAny(this string current,params string[] values){
+			foreach(string value in values){
+				if(current.Matches(value,true)){return true;}
+			}
+		    return false;
+	    }
 	    public static string Replace(this string current,string search,string replace,bool ignoreCase){
 		    if(ignoreCase){
 			    search = Regex.Escape(search);
@@ -104,7 +113,7 @@ namespace Zios{
 		    }
 		    return current.Replace(search,replace);
 	    }
-	    public static string ReplaceFirst(this string current,string search,string replace,bool ignoreCase){
+	    public static string ReplaceFirst(this string current,string search,string replace,bool ignoreCase=false){
 		    int position = current.IndexOf(search,ignoreCase);
 		    if(position == -1){
 			    return current;
@@ -153,17 +162,45 @@ namespace Zios{
 		    }
 		    return true;
 	    }
-	    public static string TrimRight(this string current,string value,bool ignoreCase=false){
-		    if(current.EndsWith(value,ignoreCase)){
-			    current = current.Substring(0,current.Length - value.Length);
+	    public static string Remove(this string current,params string[] values){
+		    string result = current;
+		    foreach(string value in values){
+			    result = result.Replace(value,"",true);
 		    }
-		    return current;
+		    return result;
 	    }
-	    public static string TrimLeft(this string current,string value,bool ignoreCase=false){
-		    if(current.StartsWith(value,ignoreCase)){
-			    current = current.Substring(value.Length);
+	    public static string[] Split(this string current,string value){
+			if(value.Length == 0){return new string[1]{current};}
+			return current.Split(new string[]{value},StringSplitOptions.None);
+	    }
+		//============================
+		// Checks
+		//============================
+	    public static bool IsEmpty(this string text){
+		    return string.IsNullOrEmpty(text);
+	    }
+	    public static bool IsInt(this string text){
+		    short number;
+		    return short.TryParse(text,out number);
+	    }
+	    public static bool IsFloat(this string text){
+		    float number;
+		    return float.TryParse(text,out number);
+	    }
+	    public static bool IsNumber(this string current){
+		    double result;
+		    return double.TryParse(current,out result);
+	    }
+		//============================
+		// Extension
+		//============================
+	    public static string Implode(this string current,string separator=" "){
+		    StringBuilder builder = new StringBuilder(current.Length * 2);
+		    foreach(char letter in current){
+			    builder.Append(letter);
+			    builder.Append(separator);
 		    }
-		    return current;
+		    return builder.ToString();
 	    }
 	    public static string Cut(this string current,int startIndex=0,int endIndex=-1){
 		    return current.Substring(startIndex,endIndex - startIndex + 1);
@@ -171,15 +208,11 @@ namespace Zios{
 	    public static string Cut(this string current,string start="",string end="",int offset=0,bool ignoreCase=true,int repeatEnd=1){
 		    int startIndex = start == "" ? 0 : current.IndexOf(start,offset,ignoreCase);
 		    if(startIndex != -1){
-			    if(end == ""){
-				    return current.Substring(startIndex);
-			    }
+			    if(end == ""){return current.Substring(startIndex);}
 			    int endIndex = current.IndexOf(end,startIndex + 1,ignoreCase);
 			    if(endIndex != -1){
 				    while(repeatEnd > 1){
-					    if(endIndex == -1){
-						    return "";
-					    }
+					    if(endIndex == -1){return "";}
 					    endIndex = current.IndexOf(end,endIndex + 1,ignoreCase);
 					    --repeatEnd;
 				    }
@@ -190,6 +223,11 @@ namespace Zios{
 		    }
 		    return "";
 	    }
+	    public static string Parse(this string current,string start="",string end="",int offset=0,bool ignoreCase=true,int repeatEnd=1){
+			string value = current.Cut(start,end,offset,ignoreCase,repeatEnd);
+			if(value.IsEmpty()){return value;}
+			return value.Substring(start.Length).TrimRight(end).Trim();
+		}
 	    public static string FindFirst(this string current,params string[] values){
 		    int index = -1;
 		    string first = "";
@@ -202,18 +240,11 @@ namespace Zios{
 		    }
 		    return first;
 	    }
-	    public static string Strip(this string current,params string[] values){
-		    string result = current;
-		    foreach(string value in values){
-			    result = result.Replace(value,"",true);
-		    }
-		    return result;
-	    }
 	    public static string StripMarkup(this string current){
 		    return Regex.Replace(current,"<.*?>",string.Empty);
 	    }
 	    public static string Pack(this string current){
-		    return current.Strip("\r","\n","'","\"","{","}","[","]","(",")","\t"," ");
+		    return current.Remove("\r","\n","'","\"","{","}","[","]","(",")","\t"," ");
 	    }
 	    public static string Condense(this string current){
 		    while(current.ContainsAny("\t\t","  ")){
@@ -221,23 +252,9 @@ namespace Zios{
 		    }
 		    return current;
 	    }
-	    public static bool IsEmpty(this string text){
-		    return string.IsNullOrEmpty(text);
-	    }
-	    public static bool IsInt(this string text){
-		    short number;
-		    return short.TryParse(text,out number);
-	    }
-	    public static bool IsFloat(this string text){
-		    float number;
-		    return float.TryParse(text,out number);
-	    }
         public static string Truncate(this string current,int maxLength){
             return current.Length <= maxLength ? current : current.Substring(0,maxLength); 
         }
-	    public static string Capitalize(this string current){
-		    return current[0].ToString().ToUpper() + current.Substring(1);
-	    }
 	    public static string TrySplit(this string current,string value,int index=0){
 		    return current.TrySplit(value[0],index);
 	    }
@@ -246,9 +263,6 @@ namespace Zios{
 			    return current.Split(value)[index];
 		    }
 		    return current;
-	    }
-	    public static string[] Split(this string current,string value){
-		    return value.Length > 0 ? current.Split(value[0]) : new string[1]{current};
 	    }
 	    public static string SetDefault(this string current,string value){
 		    if(current.IsEmpty()){return value;}

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections.Generic;
 namespace Zios{
     public static class Colors{
@@ -7,7 +7,7 @@ namespace Zios{
 	    public static Color Get(int index){return Colors.numbers[index];}
 	    public static Color Get(string name){return Colors.names[name.ToLower()];}
 	    public static Color FromHex(string name){
-		    name = name.Strip("#");
+		    name = name.Remove("#");
 		    int value = int.Parse(name,System.Globalization.NumberStyles.HexNumber);
 		    float red = (value >> 16) & 0xFF;
 		    float  green = (value >> 8) & 0xFF;

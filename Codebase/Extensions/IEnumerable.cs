@@ -24,6 +24,9 @@ namespace Zios{
 		//=======================
 		// String
 		//=======================
+		public static string Join(this IEnumerable<string> current,string separator=" "){
+			return string.Join(separator,current.ToArray());
+		}
 	    public static List<string> Filter(this IEnumerable<string> current,string text){
 		    List<string> newList = new List<string>();
 		    bool wildcard = text.Contains("*");

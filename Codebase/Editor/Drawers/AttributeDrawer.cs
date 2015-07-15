@@ -259,7 +259,7 @@ namespace Zios{
 			}
 			else{
 				Rect warningRect = area.Add(18,0,-18,0);
-				string targetName = targetScope == null ? "Target" : targetScope.ToString().Strip("(UnityEngine.GameObject)").Trim();
+				string targetName = targetScope == null ? "Target" : targetScope.ToString().Remove("(UnityEngine.GameObject)").Trim();
 				string typeName = data.GetVariableType("value").Name.Replace("Single","Float").Replace("Int32","Int");
 				string message = "<b>" + targetName.Truncate(24) + "</b> has no <b>"+typeName+"</b> attributes.";
 				message.DrawLabel(warningRect,GUI.skin.GetStyle("WarningLabel"));
@@ -360,7 +360,7 @@ namespace Zios{
 			this.contextOpen = true;
 			GenericMenu menu = new GenericMenu();
 			foreach(Type attributeType in this.attribute.GetFormulaTypes()){
-				string name = attributeType.Name.Strip("Attribute","Data");
+				string name = attributeType.Name.Remove("Attribute","Data");
 				string set = this.attribute.defaultSet;
 				MethodInfo generic = this.attribute.GetType().GetMethod("Add",new Type[]{typeof(int),typeof(string)}).MakeGenericMethod(attributeType);
 				MenuFunction method = ()=>{generic.Invoke(this.attribute,new object[]{-1,set});};
@@ -382,7 +382,7 @@ namespace Zios{
 				int index = this.activeDataset.IndexOf(data);
 				foreach(Type attributeType in types){
 					Type type = attributeType;
-					string name = type.Name.Strip("Attribute","Data");
+					string name = type.Name.Remove("Attribute","Data");
 					string set = this.attribute.defaultSet;
 					MenuFunction swapType = ()=>{this.SwapType(index,type,set);};
 					menu.AddItem(new GUIContent("Type/"+name),(data.GetType()==type),swapType);

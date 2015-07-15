@@ -443,7 +443,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: .899999976, z: -932.099976}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400058}
@@ -956,6 +956,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   globalAlphaCutoff: .300000012
+  cullDistance: 300
+  fadeType: 0
+  fadeGrayscale: 0
+  fadeBlend: 4
+  fadeSteps: 3
+  fadeStartDistance: 50
+  fadeEndDistance: 100
+  fadeStartColor: {r: 0, g: 0, b: 0, a: 1}
+  fadeEndColor: {r: .0614186823, g: .522058845, b: .522058845, a: 1}
 --- !u!114 &11400056
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1298,7 +1307,6 @@ MonoBehaviour:
   refreshOnHierarchyChange: 1
   refreshOnAssetChange: 1
   safeMode: 1
-  debugMode: 0
 --- !u!148 &14800000
 NetworkView:
   m_ObjectHideFlags: 1

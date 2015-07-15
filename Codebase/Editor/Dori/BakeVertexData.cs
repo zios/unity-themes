@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEditor;
 using System;
 using System.IO;
@@ -58,7 +58,7 @@ namespace Zios{
 					    bool hasColor = material.HasProperty("_Color");
 					    Color32 color = hasColor ? material.GetColor("_Color") : Colors.Get("Violet");
 					    //color.a = shaderName.Contains("Outline",true) ? 255 : 0;
-					    string colorValue = color.ToString().Strip("RGBA("," ",",",")");
+					    string colorValue = color.ToString().Remove("RGBA("," ",",",")");
 					    string pathID = complex ? "" : "-" + colorValue;
 					    newPath = newPath.Replace("%%",pathID);
 					    Mesh existing = FileManager.GetAsset<Mesh>(newPath,false);

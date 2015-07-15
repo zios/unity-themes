@@ -2,6 +2,7 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using UnityObject = UnityEngine.Object;
 namespace Zios{
     #if UNITY_EDITOR
     using UnityEditor;
@@ -11,6 +12,7 @@ namespace Zios{
 	    public static bool cleanGameObjects = false;
 	    public static List<Type> cleanSceneComponents = new List<Type>();
 	    public static List<GameObject> cleanSiblings = new List<GameObject>();
+		public static Dictionary<Type,UnityObject[]> assets = new Dictionary<Type,UnityObject[]>();
 	    public static Dictionary<GameObject,GameObject[]> siblings = new Dictionary<GameObject,GameObject[]>();
 	    public static Dictionary<GameObject,GameObject[]> enabledSiblings = new Dictionary<GameObject,GameObject[]>();
 	    public static Dictionary<GameObject,GameObject[]> disabledSiblings = new Dictionary<GameObject,GameObject[]>();
@@ -26,6 +28,7 @@ namespace Zios{
 		    //Events.Add("On Application Quit",Locate.SetDirty);
 			Events.Add("On Scene Loaded",Locate.SetDirty);
 			Events.Add("On Hierarchy Changed",Locate.SetDirty);
+			Events.Add("On Assets Changed",()=>Locate.assets.Clear());
 		    Locate.SetDirty();
 	    }
 	    public static void SetDirty(){
@@ -33,26 +36,6 @@ namespace Zios{
 		    Locate.cleanSceneComponents.Clear();
 		    Locate.cleanSiblings.Clear();
 		    Locate.objectComponents.Clear();
-	    }
-	    public static GameObject GetScenePath(string name,bool autocreate=true){
-		    string[] parts = name.Split('/');
-		    string path = "";
-		    GameObject current = null;
-		    Transform parent = null;
-		    foreach(string part in parts){
-			    path = path + "/" + part;
-			    current = Locate.Find(path);
-			    if(current.IsNull()){
-				    if(!autocreate){
-					    return null;
-				    }
-				    current = new GameObject(part);
-				    current.transform.parent = parent;
-					Locate.SetDirty();
-			    }
-			    parent = current.transform;
-		    }
-		    return current;
 	    }
 	    public static void Build<Type>() where Type : Component{
 		    List<GameObject> rootObjects = new List<GameObject>();
@@ -81,18 +64,9 @@ namespace Zios{
 			    Locate.cleanGameObjects = true;
 		    }
 	    }
-	    public static GameObject[] GetByName(string name){
-			if(Application.isLoadingLevel){return new GameObject[0];}
-		    if(!Locate.cleanGameObjects){Locate.Build<Transform>();}
-		    List<GameObject> matches = new List<GameObject>();
-		    foreach(GameObject current in Locate.enabledObjects){
-				if(current.IsNull()){continue;}
-			    if(current.name == name){
-				    matches.Add(current);
-			    }
-		    }
-		    return matches.ToArray();
-	    }
+		//=====================
+		// Gameobject
+		//=====================
 	    public static bool HasDuplicate(GameObject target){
 			if(Application.isLoadingLevel){return false;}
 		    GameObject[] siblings = target.GetSiblings(true,true,false);
@@ -126,6 +100,38 @@ namespace Zios{
 		    if(!includeSelf){results = results.Remove(current);}
 		    return results;
 	    }
+	    public static GameObject GetScenePath(string name,bool autocreate=true){
+		    string[] parts = name.Split('/');
+		    string path = "";
+		    GameObject current = null;
+		    Transform parent = null;
+		    foreach(string part in parts){
+			    path = path + "/" + part;
+			    current = Locate.Find(path);
+			    if(current.IsNull()){
+				    if(!autocreate){
+					    return null;
+				    }
+				    current = new GameObject(part);
+				    current.transform.parent = parent;
+					Locate.SetDirty();
+			    }
+			    parent = current.transform;
+		    }
+		    return current;
+	    }
+	    public static GameObject[] GetByName(string name){
+			if(Application.isLoadingLevel){return new GameObject[0];}
+		    if(!Locate.cleanGameObjects){Locate.Build<Transform>();}
+		    List<GameObject> matches = new List<GameObject>();
+		    foreach(GameObject current in Locate.enabledObjects){
+				if(current.IsNull()){continue;}
+			    if(current.name == name){
+				    matches.Add(current);
+			    }
+		    }
+		    return matches.ToArray();
+	    }
 	    public static GameObject[] GetSceneObjects(bool includeEnabled=true,bool includeDisabled=true){
 			if(Application.isLoadingLevel){return new GameObject[0];}
 		    if(!Locate.cleanGameObjects){Locate.Build<Transform>();}
@@ -133,6 +139,23 @@ namespace Zios{
 		    if(!includeEnabled){return Locate.disabledObjects;}
 		    return Locate.enabledObjects;
 	    }
+	    public static GameObject Find(string name,bool includeHidden=true){
+			if(Application.isLoadingLevel){return null;}
+		    if(!Locate.cleanGameObjects){Locate.Build<Transform>();}
+			name = name.Trim("/");
+		    GameObject[] all = includeHidden ? Locate.sceneObjects : Locate.enabledObjects;
+		    foreach(GameObject current in all){
+				if(current.IsNull()){continue;}
+			    string path = current.GetPath().Trim("/");
+			    if(path == name){
+				    return current;
+			    }
+		    }
+		    return null;
+	    }
+		//=====================
+		// Components
+		//=====================
 	    public static Type[] GetSceneComponents<Type>(bool includeEnabled=true,bool includeDisabled=true) where Type : Component{
 			if(Application.isLoadingLevel){return new Type[0];}
 		    if(!Locate.cleanSceneComponents.Contains(typeof(Type))){Locate.Build<Type>();}
@@ -148,19 +171,13 @@ namespace Zios{
 		    }
 		    return (Type[])Locate.objectComponents[target][typeof(Type)];
 	    }
-	    public static GameObject Find(string name,bool includeHidden=true){
-			if(Application.isLoadingLevel){return null;}
-		    if(!Locate.cleanGameObjects){Locate.Build<Transform>();}
-			name = name.Trim("/");
-		    GameObject[] all = includeHidden ? Locate.sceneObjects : Locate.enabledObjects;
-		    foreach(GameObject current in all){
-				if(current.IsNull()){continue;}
-			    string path = current.GetPath().Trim("/");
-			    if(path == name){
-				    return current;
-			    }
-		    }
-		    return null;
+		//=====================
+		// Assets
+		//=====================
+	    public static Type[] GetAssets<Type>() where Type : UnityObject{
+			if(Application.isLoadingLevel){return new Type[0];}
+		    if(!Locate.assets.ContainsKey(typeof(Type))){Locate.assets[typeof(Type)] = Resources.FindObjectsOfTypeAll(typeof(Type));}
+		    return (Type[])Locate.assets[typeof(Type)];
 	    }
     }
 }

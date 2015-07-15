@@ -1,4 +1,4 @@
-﻿//====================================
+//====================================
 // General
 //====================================
 using UnityEngine;
@@ -275,7 +275,7 @@ namespace MaterialExtended{
 			foreach(var item in this.properties){
 				Property property = item.Value;
 				string type = property.type.ToString();
-				string defaultValue = property.defaultValue.ToString().Strip("RGBA"," ").Strip(".000",".0");
+				string defaultValue = property.defaultValue.ToString().Remove("RGBA"," ").Remove(".000",".0");
 				if(type.ContainsAny("Texture","Rect","Cube")){
 					if(type == "Texture"){type = "2D";}
 					defaultValue = "'"+defaultValue.ToLower()+"'{";
@@ -363,7 +363,7 @@ namespace MaterialExtended{
 				if(common.zWrite != Toggle.Default){output.AppendLine(pad+"ZWrite "+common.zWrite);}
 				if(common.alphaTest != Test.Default){
 					string compare = " ["+common.alphaCutoff+"]";
-					if(common.alphaCutoff.IsNumber()){compare = compare.Strip("[","]");}
+					if(common.alphaCutoff.IsNumber()){compare = compare.Remove("[","]");}
 					if(common.alphaTest == Test.Off || common.alphaTest == Test.Always){compare = "";}
 					output.AppendLine(pad+"AlphaTest "+common.alphaTest+compare);
 				}
@@ -388,7 +388,7 @@ namespace MaterialExtended{
 				}
 				if(!common.fog.IsDefault() && common.fog.mode != FogMode.Default){
 					Fog fog = common.fog;
-					string fogColor = fog.color.ToString().Strip("RGBA"," ");
+					string fogColor = fog.color.ToString().Remove("RGBA"," ");
 					string fogRange = fog.range.ToString().Pack();
 					output.AppendLine(pad+"Fog{");
 					output.AppendLine(pad+"\tMode "+fog.mode);
@@ -398,7 +398,7 @@ namespace MaterialExtended{
 					output.AppendLine(pad+"}");
 				}
 			}
-			return output.ToString().Strip(".000",".0");
+			return output.ToString().Remove(".000",".0");
 		}
 		public void Branch(){
 			string hash = "#"+this.Generate().ToMD5();
@@ -443,23 +443,23 @@ namespace MaterialExtended{
 				contents = contents.Replace("Prepass","Prelight",true);
 				contents = contents.Replace("UsePass","UseShader",true);
 				contents = contents.Replace("GrabPass","GrabScreen",true);
-				this.menuPath = contents.Cut(quote,quote).Strip(quote);
-				this.editor = contents.Cut("CustomEditor","\n").Strip("CustomEditor").Pack();
-				this.fallback = contents.Cut("Fallback","\n").Strip("Fallback").Pack();
+				this.menuPath = contents.Cut(quote,quote).Remove(quote);
+				this.editor = contents.Cut("CustomEditor","\n").Remove("CustomEditor").Pack();
+				this.fallback = contents.Cut("Fallback","\n").Remove("Fallback").Pack();
 				this.source = Shader.Find(this.menuPath);
 				string propertyBlock = this.GetBlock(contents,"Properties");
 				contents = contents.ReplaceFirst(propertyBlock,"",true);
 				string [] lines = propertyBlock.Split(new string[]{"\r\n","\n"},StringSplitOptions.None);
 				foreach(string current in lines){
-					string line = current.Strip(" ","\t",quote).Condense();
+					string line = current.Remove(" ","\t",quote).Condense();
 					if(line.Contains("=")){
 						Property property = new Property();
 						property.variable = line.Substring(0,line.IndexOf("("));
-						property.name = current.Cut("(",",").Strip("(",",",quote);
-						string type = line.Cut(",",")").Strip(",",")");
+						property.name = current.Cut("(",",").Remove("(",",",quote);
+						string type = line.Cut(",",")").Remove(",",")");
 						if(type.Contains("Range",true)){
 							type = "Range";
-							string data = line.Cut(",",")").Strip("Range","(",")").TrimLeft(",");
+							string data = line.Cut(",",")").Remove("Range","(",")").TrimLeft(",");
 							property.minimum = Convert.ToSingle(data.TrySplit(',',0));
 							property.maximum = Convert.ToSingle(data.TrySplit(',',1));
 						}
@@ -469,15 +469,15 @@ namespace MaterialExtended{
 						property.defaultValue = value;
 						if(type == "Range" || type == "Float"){property.defaultValue = Convert.ToSingle(value);}
 						if(type == "Color" || type == "Vector"){
-							float[] values = value.Strip("(",")").Split(',').Convert<float>();
+							float[] values = value.Remove("(",")").Split(',').Convert<float>();
 							property.defaultValue = values;
 							if(type == "Color"){property.defaultValue = values.ToColor();}
 							if(type == "Vector"){property.defaultValue = values.ToVector4();}
 						}
 						if(type == "Texture" || type == "Rect" || type == "Cube"){
-							string extra = current.Cut("{","}").Strip("{","}") + " ";
+							string extra = current.Cut("{","}").Remove("{","}") + " ";
 							if(extra.Contains("TexGen")){
-								string texgen = extra.Cut("TexGen"," ",0,true,2).Strip("TexGen","\t"," ");
+								string texgen = extra.Cut("TexGen"," ",0,true,2).Remove("TexGen","\t"," ");
 								property.texgenMode =  (TexGen)property.texgenMode.Get(texgen);
 							}
 							int bracket = value.IndexOf("{");
@@ -509,27 +509,27 @@ namespace MaterialExtended{
 						if(nextType == "UseShader" && usePass != ""){
 							nextSubShader = nextSubShader.ReplaceFirst(usePass,"",true);
 							pass.type = PassType.Use;
-							pass.usePass = usePass.Strip("UseShader").Pack();
+							pass.usePass = usePass.Remove("UseShader").Pack();
 						}
 						string grabPass = this.GetBlock(nextSubShader,"GrabScreen");
 						if(nextType == "GrabScreen" && grabPass != ""){
 							nextSubShader = nextSubShader.ReplaceFirst(grabPass,"",true);
 							pass.type = PassType.Grab;
-							pass.grabPass = grabPass.Strip("GrabScreen").Pack();
+							pass.grabPass = grabPass.Remove("GrabScreen").Pack();
 						}
 						string normalPass = this.GetBlock(nextSubShader,"Pass");
 						if(nextType == "Pass" && normalPass != ""){
 							nextSubShader = nextSubShader.ReplaceFirst(normalPass,"",true);
-							pass.name = normalPass.Cut("Name \"","\n").Strip("Name").Pack();
+							pass.name = normalPass.Cut("Name \"","\n").Remove("Name").Pack();
 							pass.gpuShader = normalPass.Cut("CGPROGRAM","ENDCG");
 							normalPass = normalPass.ReplaceFirst(pass.gpuShader,"",true);
 							if(pass.name != ""){passName = pass.name;}
 							if(normalPass.Contains("GLSLPROGRAM")){pass.gpuShader = normalPass.Cut("GLSLPROGRAM","ENDGLSL");}
-							pass.gpuShader = pass.gpuShader.Strip("\t\t\t");
-							tagBlock = this.GetBlock(normalPass,"tags").Strip(" ","\t").Replace("Prelight","Prepass",true);
+							pass.gpuShader = pass.gpuShader.Remove("\t\t\t");
+							tagBlock = this.GetBlock(normalPass,"tags").Remove(" ","\t").Replace("Prelight","Prepass",true);
 							if(tagBlock != ""){
-								string lightMode = tagBlock.Cut("LightMode",quote,0,true,3).Strip(quote).TrySplit('=',1);
-								string require = tagBlock.Cut("Require",quote,0,true,3).Strip(quote).TrySplit('=',1);
+								string lightMode = tagBlock.Cut("LightMode",quote,0,true,3).Remove(quote).TrySplit('=',1);
+								string require = tagBlock.Cut("Require",quote,0,true,3).Remove(quote).TrySplit('=',1);
 								pass.tags.lightMode = (LightMode)pass.tags.lightMode.Get(lightMode,0);
 								pass.tags.require = (Require)pass.tags.require.Get(require,0);
 							}
@@ -542,13 +542,13 @@ namespace MaterialExtended{
 					tagBlock = this.GetBlock(nextSubShader,"tags");
 					nextSubShader = nextSubShader.ReplaceFirst(tagBlock,"",true);
 					if(tagBlock != ""){
-						tagBlock = tagBlock.Strip(" ","\t").Replace("Prelight","Prepass",true);
-						string renderQueue = tagBlock.Cut("Queue",quote,0,true,3).Strip(quote).TrySplit('=',1);
-						string renderType = tagBlock.Cut("Rendertype",quote,0,true,3).Strip(quote).TrySplit('=',1);
-						string ignoreProjector = tagBlock.Cut("IgnoreProjector",quote,0,true,3).Strip(quote).TrySplit('=',1);
-						string forceNoShadowCasting = tagBlock.Cut("ForceNoShadowCasting",quote,0,true,3).Strip(quote).TrySplit('=',1);
-						string lightMode = tagBlock.Cut("LightMode",quote,0,true,3).Strip(quote).TrySplit('=',1);
-						string require = tagBlock.Cut("Require",quote,0,true,3).Strip(quote).TrySplit('=',1);
+						tagBlock = tagBlock.Remove(" ","\t").Replace("Prelight","Prepass",true);
+						string renderQueue = tagBlock.Cut("Queue",quote,0,true,3).Remove(quote).TrySplit('=',1);
+						string renderType = tagBlock.Cut("Rendertype",quote,0,true,3).Remove(quote).TrySplit('=',1);
+						string ignoreProjector = tagBlock.Cut("IgnoreProjector",quote,0,true,3).Remove(quote).TrySplit('=',1);
+						string forceNoShadowCasting = tagBlock.Cut("ForceNoShadowCasting",quote,0,true,3).Remove(quote).TrySplit('=',1);
+						string lightMode = tagBlock.Cut("LightMode",quote,0,true,3).Remove(quote).TrySplit('=',1);
+						string require = tagBlock.Cut("Require",quote,0,true,3).Remove(quote).TrySplit('=',1);
 						if(renderQueue.Contains("+")){
 							subShader.tags.renderQueueOffset = Convert.ToInt16(renderQueue.Split('+')[1]);
 							renderQueue = renderQueue.Split('+')[0];
@@ -574,20 +574,20 @@ namespace MaterialExtended{
 			this.fileName = path.Substring(path.LastIndexOf("/")+1);
 		}
 		public void SortCommon(Common common,string contents){
-			string cull = contents.Cut("Cull","\n").Strip("Cull").Condense().Trim();
-			string zTest = contents.Cut("ZTest","\n").Strip("ZTest").Condense().Trim();
-			string zWrite = contents.Cut("ZWrite","\n").Strip("ZWrite").Condense().Trim();
-			string alphaTest = contents.Cut("AlphaTest","\n").Strip("AlphaTest").Condense().Trim();
+			string cull = contents.Cut("Cull","\n").Remove("Cull").Condense().Trim();
+			string zTest = contents.Cut("ZTest","\n").Remove("ZTest").Condense().Trim();
+			string zWrite = contents.Cut("ZWrite","\n").Remove("ZWrite").Condense().Trim();
+			string alphaTest = contents.Cut("AlphaTest","\n").Remove("AlphaTest").Condense().Trim();
 			string blend = contents.Cut("Blend","\n").Condense().Trim();
-			string blendOp = contents.Cut("BlendOp","\n").Strip("BlendOp").Condense().Trim();
-			string offset = contents.Cut("Offset","\n").Strip("Offset").Condense().Trim();
+			string blendOp = contents.Cut("BlendOp","\n").Remove("BlendOp").Condense().Trim();
+			string offset = contents.Cut("Offset","\n").Remove("Offset").Condense().Trim();
 			common.cull = (Cull)common.cull.Get(cull,0);
 			common.zTest = (Test)common.zTest.Get(zTest,0);
 			common.zWrite = (Toggle)common.zWrite.Get(zWrite,0);
 			if(alphaTest != ""){
 				string test = alphaTest.Split(' ')[0];
 				common.alphaTest = (Test)common.alphaTest.Get(test,0);
-				common.alphaCutoff = test.Matches("Off",true) ? "0" : alphaTest.Split(' ')[1].Strip("[","]");
+				common.alphaCutoff = test.Matches("Off",true) ? "0" : alphaTest.Split(' ')[1].Remove("[","]");
 			}
 			if(offset != ""){
 				float x = Convert.ToSingle(offset.Split(',')[0].Trim());
@@ -612,10 +612,10 @@ namespace MaterialExtended{
 			common.blendOp = (BlendOp)common.blendOp.Get(blendOp,0);
 			string fogBlock = this.GetBlock(contents,"Fog");
 			if(fogBlock != ""){
-				string fogMode = fogBlock.Cut("Mode","\n").Strip("Mode").Trim();
-				string fogColor = fogBlock.Cut("Color","\n").Strip("Color","(",")").Trim();
-				string fogRange = fogBlock.Cut("Range","\n").Strip("Range").Trim();
-				string fogDensity = fogBlock.Cut("Density","\n").Strip("Density").Trim();
+				string fogMode = fogBlock.Cut("Mode","\n").Remove("Mode").Trim();
+				string fogColor = fogBlock.Cut("Color","\n").Remove("Color","(",")").Trim();
+				string fogRange = fogBlock.Cut("Range","\n").Remove("Range").Trim();
+				string fogDensity = fogBlock.Cut("Density","\n").Remove("Density").Trim();
 				if(fogRange != ""){
 					float start = Convert.ToSingle(fogRange.TrySplit(',',0));
 					float end = Convert.ToSingle(fogRange.TrySplit(',',1));

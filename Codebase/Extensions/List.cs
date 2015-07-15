@@ -63,9 +63,9 @@ namespace Zios{
 		    return newList;
 	    }
 	    public static List<T> Order<T>(this List<T> current){
-		    var copy = current.Copy();
-		    copy.Sort();
-		    return copy;
+		    //var copy = current.Copy();
+		    current.Sort();
+		    return current;
 	    }
 	    public static void Sort<T>(this List<T> current,SortOptions options){
 		    current.Sort(new Comparer<T>(options));

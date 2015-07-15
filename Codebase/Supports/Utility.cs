@@ -164,7 +164,7 @@ namespace Zios{
 			if(EditorUtility.DisplayDialog("Clear Editor Prefs","Delete all the editor preferences?","Yes","No")){
 				EditorPrefs.DeleteAll();
 			}
-		}
+		}		
 		#endif
 		//=================
 		// General
@@ -227,6 +227,26 @@ namespace Zios{
 		//=================
 		// Proxy
 		//=================
+	    public static void StartAssetEditing(){
+		    #if UNITY_EDITOR
+			AssetDatabase.StartAssetEditing();
+		    #endif
+	    }
+	    public static void StopAssetEditing(){
+		    #if UNITY_EDITOR
+			AssetDatabase.StopAssetEditing();
+		    #endif
+	    }
+	    public static void RefreshAssets(){
+		    #if UNITY_EDITOR
+			AssetDatabase.Refresh();
+		    #endif
+	    }
+		public static void SaveAssets(){
+		    #if UNITY_EDITOR
+			AssetDatabase.SaveAssets();
+		    #endif
+		}
 	    public static UnityObject GetPrefab(UnityObject target){
 		    #if UNITY_EDITOR
 		    return PrefabUtility.GetPrefabObject(target);
@@ -257,6 +277,37 @@ namespace Zios{
 		    #endif
 		    return false;
 	    }
+	    public static void UpdateSelection(){
+		    #if UNITY_EDITOR
+			var targets = Selection.objects;
+			if(targets.Length > 0){
+				Selection.activeObject = null;
+				Utility.EditorDelayCall(()=>Selection.objects = targets,0.05f);
+			}
+			#endif
+	    }
+		public static void RebuildInspectors(){
+		    #if UNITY_EDITOR
+			Type inspectorType = Utility.GetEditorType("InspectorWindow");
+			var windows = inspectorType.CallMethod<EditorWindow[]>("GetAllInspectorWindows");
+			for(int index=0;index<windows.Length;++index){
+				var tracker = windows[index].CallMethod<ActiveEditorTracker>("GetTracker");
+				tracker.ForceRebuild();
+			}
+			#endif
+		}
+		public static void ShowInspectors(){
+		    #if UNITY_EDITOR
+			Type inspectorType = Utility.GetEditorType("InspectorWindow");
+			var windows = inspectorType.CallMethod<EditorWindow[]>("GetAllInspectorWindows");
+			for(int index=0;index<windows.Length;++index){
+				var tracker = windows[index].CallMethod<ActiveEditorTracker>("GetTracker");
+				for(int editorIndex=0;editorIndex<tracker.activeEditors.Length;++editorIndex){
+					tracker.SetVisible(editorIndex,1);
+				}
+			}
+			#endif
+		}
 	    public static void RepaintInspectors(){
 		    #if UNITY_EDITOR
 			Type inspectorType = Utility.GetEditorType("InspectorWindow");
@@ -299,6 +350,14 @@ namespace Zios{
 			Utility.UpdatePrefab(target);
 		    #endif
 	    }
+	    public static void SetAssetDirty(UnityObject target){
+		    #if UNITY_EDITOR
+			string path = AssetDatabase.GetAssetPath(target);
+			UnityObject asset = AssetDatabase.LoadMainAssetAtPath(path);
+			Utility.SetDirty(asset,false,true);
+			#endif
+		}
+
 	    public static bool IsDirty(UnityObject target){
 		    #if UNITY_EDITOR
 		    return typeof(EditorUtility).CallMethod<bool>("IsDirty",target.GetInstanceID());

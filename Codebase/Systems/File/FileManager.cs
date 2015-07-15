@@ -16,9 +16,12 @@ namespace Zios{
     public static class FileManager{
 	    public static Dictionary<string,List<FileData>> files = new Dictionary<string,List<FileData>>();
 		public static Dictionary<string,FileData> folders = new Dictionary<string,FileData>();
+		public static Dictionary<string,FileData[]> cache = new Dictionary<string,FileData[]>();
 	    static FileManager(){Refresh();}
 	    public static void Refresh(){
-			files.Clear();
+			FileManager.files.Clear();
+			FileManager.folders.Clear();
+			FileManager.cache.Clear();
 			FileManager.Scan(Application.dataPath);
 	    }
 	    public static void Scan(string directory){
@@ -44,10 +47,14 @@ namespace Zios{
 			    Debug.LogWarning("[FileManager] No path given for search.");
 			    return null;
 		    }
+			string searchKey = name+"-"+ignoreCase.ToString();
+			if(FileManager.cache.ContainsKey(searchKey)){
+				return FileManager.cache[searchKey];
+			}
 		    string fileName = Path.GetFileName(name);
 		    string type = Path.GetExtension(name).Trim(".").ToLower();
 		    string path = Path.GetDirectoryName(name);
-		    bool wildcard = fileName[0] == '*';
+		    bool wildcard = fileName.Length > 0 && fileName[0] == '*';
 		    List<FileData> results = new List<FileData>();
 			foreach(var item in FileManager.folders){
 				FileData folder = item.Value;
@@ -67,6 +74,7 @@ namespace Zios{
 				}
 		    }
 		    if(results.Count == 0 && showWarnings){Debug.LogWarning("[FileManager] Path [" + name + "] could not be found.");}
+			FileManager.cache[searchKey] = results.ToArray();
 		    return results.ToArray();
 	    }
 	    public static FileData Find(string name,bool ignoreCase=true,bool showWarnings=true){
@@ -74,14 +82,14 @@ namespace Zios{
 		    if(results.Length > 0){return results[0];}
 		    return null;
 	    }
-	    public static FileData Get(UnityObject item,bool showWarnings=false){
-			string path = FileManager.GetPath(item,false);
+	    public static FileData Get(UnityObject target,bool showWarnings=false){
+			string path = FileManager.GetPath(target,false);
 			return FileManager.Find(path,true,showWarnings);
 	    }
-	    public static string GetPath(UnityObject item,bool relative=true){
+	    public static string GetPath(UnityObject target,bool relative=true){
 		    #if UNITY_EDITOR 
 		    if(Application.isEditor){
-				string assetPath = AssetDatabase.GetAssetPath(item);
+				string assetPath = AssetDatabase.GetAssetPath(target);
 				if(!relative){assetPath = Application.dataPath.Replace("Assets","") + assetPath;}
 			    return assetPath;
 		    }
@@ -93,6 +101,16 @@ namespace Zios{
 		    if(file != null){return file.GetGUID();}
 		    return "";
 	    }
+		public static T GetAsset<T>(UnityObject target){
+		    #if UNITY_EDITOR
+		    if(Application.isEditor){
+				string assetPath = AssetDatabase.GetAssetPath(target);
+			    object asset = AssetDatabase.LoadAssetAtPath(assetPath,typeof(T));
+			    return (T)Convert.ChangeType(asset,typeof(T));
+		    }
+		    #endif
+			return default(T);
+		}
 	    public static T GetAsset<T>(string name,bool showWarnings=true){
 		    FileData file = FileManager.Find(name,true,showWarnings);
 		    if(file != null){return file.GetAsset<T>();}
@@ -111,12 +129,14 @@ namespace Zios{
     }
     public class FileData{
 	    public string path;
+	    public string folder;
 	    public string name;
 	    public string fullName;
 	    public string extension;
 		public bool isFolder;
 	    public FileData(string path){
 		    this.path = path;
+			this.folder = Path.GetDirectoryName(path);
 		    this.fullName = Path.GetFileName(path);
 			this.extension = Path.GetExtension(path).Trim(".");
 			this.name = Path.GetFileNameWithoutExtension(path);
@@ -128,6 +148,10 @@ namespace Zios{
 		public void WriteText(string contents){
 			File.WriteAllText(this.path,contents);
 		}
+		public string GetModifiedDate(string format="M-d-yy"){return File.GetLastWriteTime(this.path).ToString(format);}
+		public string GetAccessedDate(string format="M-d-yy"){return File.GetLastAccessTime(this.path).ToString(format);}
+		public string GetCreatedDate(string format="M-d-yy"){return File.GetCreationTime(this.path).ToString(format);}
+		public string GetChecksum(){return this.GetText().ToMD5();}
 	    public T GetAsset<T>(){
 		    #if UNITY_EDITOR
 		    if(Application.isEditor){

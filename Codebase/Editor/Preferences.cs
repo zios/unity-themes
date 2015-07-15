@@ -3,7 +3,7 @@ using UnityEditor;
 namespace Zios{
 	public class Preferences{
 		[PreferenceItem("Zios")]
-		static public void Main(){
+		public static void Main(){
 			GUIContent fastInspectorContent = new GUIContent("Turbo Inspector (Experimental)");
 			GUIContent alwaysUpdateContent = new GUIContent("Always Update");
 			fastInspectorContent.tooltip = "Prevents offscreen attributes/components from being drawn in inspectors. ";

@@ -136,6 +136,7 @@ namespace Zios{
 			}
 			AssetDatabase.CreateAsset(new Material(this.goal),"Assets/Temporary.mat");
 			string goalHeader = FileManager.Find("Temporary.mat").GetText().Cut("%YAML","m_SavedProperties");
+			string goalName = goalHeader.Parse("m_Name:","\n");
 			AssetDatabase.DeleteAsset("Assets/Temporary.mat");
 			List<string> guids = new List<string>();
 			List<FileData> matching = new List<FileData>();
@@ -147,17 +148,21 @@ namespace Zios{
 			}
 			AssetDatabase.StartAssetEditing();
 			foreach(FileData materialFile in allMaterials){
+				Material material = materialFile.GetAsset<Material>();
 				string text = materialFile.GetText();
-				string header = text.Cut("%YAML","m_SavedProperties");
 				foreach(string guid in guids){
 					string idLine = "guid: "+guid;
-					if(text.Contains(idLine)){
+					bool repair = material.shader.name.Contains("Hidden/InternalErrorShader");
+					if(repair || text.Contains(idLine)){
+						string header = text.Cut("%YAML","m_SavedProperties");
+						string name = header.Parse("m_Name:","\n");
 						foreach(ShaderInfo info in this.keywordMap){
 							if(!info.mapTo.ContainsAny("[Ignore]","[No Matching]")){
 								text = text.Replace(" "+info.name," "+info.mapTo);
 							}
 						}
 						text = text.Replace(header,goalHeader);
+						text = text.Replace(goalName,name);
 						materialFile.WriteText(text);
 						matching.AddNew(materialFile);
 						break;

@@ -23,9 +23,6 @@ namespace Zios{
 	    public static List<T> ToList<T>(this T[] current){
 		    return new List<T>(current);
 	    }
-	    public static bool Contains<T>(this Array current,T value){
-		    return Array.IndexOf(current,value) != -1;
-	    }
 	    public static int IndexOf<T>(this Array current,T value){
 		    return Array.IndexOf(current,value);
 	    }

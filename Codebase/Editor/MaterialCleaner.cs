@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEditor;
 using System.Linq;
 using System;
@@ -9,14 +9,16 @@ namespace Zios{
         [MenuItem ("Zios/Process/Material Clean (All)")]
         public static void Clean(){MaterialCleaner.Clean(null);}
         public static void Clean(FileData[] materials){
+			bool anyChanges = false;
 			FileData[] files = materials ?? FileManager.FindAll("*.mat");
 			AssetDatabase.StartAssetEditing();
 			foreach(var file in files){
 				string text = file.GetText();
 				string copy = text;
 				int index = 0;
+				bool changed = false;
 				bool removePrevious = false;
-				string guid = text.Cut("guid: ",",").Strip(",").Substring(6);
+				string guid = text.Parse("guid: ",",");
 				string shaderPath = AssetDatabase.GUIDToAssetPath(guid);
 				Material material = file.GetAsset<Material>();
 				Shader shader = FileManager.GetAsset<Shader>(shaderPath,false);
@@ -27,7 +29,17 @@ namespace Zios{
 					string name = ShaderUtil.GetPropertyName(shader,propertyIndex);
 					properties[name] = ShaderUtil.GetPropertyType(shader,propertyIndex).ToName();
 				}
-				Debug.Log("[MaterialCleaner] : Cleaning unused serialized data -- " + file.fullName);
+				string keywords = text.Parse("m_ShaderKeywords:","m_").Trim("[]");
+				if(!keywords.IsEmpty()){
+					string keywordsCleaned = keywords;
+					foreach(string keyword in keywords.Replace("\n   ","").Split(" ")){
+						if(!properties.ContainsKey(keyword.Split("_")[0],true)){
+							keywordsCleaned = keywordsCleaned.Replace(" "+keyword,"");
+							changed = true;
+						}
+					}
+					copy = copy.Replace(keywords,keywordsCleaned);
+				}
 				while(true){
 					int nextIndex = text.IndexOf("data:",index+5);
 					if(removePrevious){
@@ -36,6 +48,7 @@ namespace Zios{
 						string section = nextIndex < 0 ? text.Substring(index) : text.Substring(index,count);
 						copy = copy.Replace(section,"");
 						removePrevious = false;
+						changed = true;
 					}
 					if(nextIndex == -1){break;}
 					index = nextIndex;
@@ -47,12 +60,15 @@ namespace Zios{
 					removePrevious = !properties.ContainsKey(name) || emptyTexture;
 					//if(removePrevious){Debug.Log("[MaterialCleaner] : Removing " + name + " from " + file.fullName);}
 				}
-				if(text != copy){
+				if(changed){
+					anyChanges = true;
+					Debug.Log("[MaterialCleaner] : Cleaned unused serialized data " + file.fullName);
 					file.WriteText(copy);
 				}
 			}
+			if(!anyChanges){Debug.Log("[MaterialCleaner] : All files already clean.");}
 			AssetDatabase.StopAssetEditing();
-			AssetDatabase.Refresh();
+			Utility.EditorDelayCall(()=>AssetDatabase.Refresh(),1);
 	    }
     }
 }
