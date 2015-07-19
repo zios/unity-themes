@@ -26,11 +26,11 @@ public class VariableMaterialEditor : MaterialEditor{
 			if("Update".DrawButton()){VariableMaterial.Refresh(this.targets);}
 			GUI.enabled = true;
 			EditorGUILayout.EndHorizontal();
+			base.OnInspectorGUI();
 			if(isFlat && !keywords.SequenceEqual(this.material.shaderKeywords)){
 				VariableMaterial.Refresh(this.target);
 			}
 		}
-		base.OnInspectorGUI();
 	}
 	public void Reload(){
 		FileData parent = VariableMaterial.GetParentShader(this.target);
