@@ -20,6 +20,7 @@ namespace Zios{
 	    public bool spriteDelayStart = true;
 	    [Internal] public bool forceUpdate = false;
 	    [Internal] public bool frameChanged = false;
+		public string[] shaderTextureNames = new string[]{"indexMap","textureMap"};
 	    [System.NonSerialized] public bool visible = true;
 	    [System.NonSerialized] public Sprite instance;
 	    [System.NonSerialized] public float frame = -1;
@@ -155,7 +156,9 @@ namespace Zios{
 		    if(this.activeMaterial != null){
 			    this.activeMaterial.SetVector("atlasUV",this.instance.current.uv);
 			    this.activeMaterial.SetVector("paddingUV",this.instance.current.uvPadding);
-			    this.activeMaterial.SetTexture("indexMap",this.spriteTexture);
+				foreach(var name in this.shaderTextureNames){
+					this.activeMaterial.SetTexture(name,this.spriteTexture);
+				}
 		    }
 		    if(this.frame != this.instance.currentFrame){this.frameChanged = true;}
 		    this.frame = this.instance.currentFrame;

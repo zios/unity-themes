@@ -14,7 +14,6 @@ public class VariableMaterial{
 			var material = (Material)target;
 			bool isFlat = material.shader != null && material.shader.name.Contains("#");
 			if(isFlat){
-				VariableMaterial.Unflatten(target);
 				VariableMaterial.Flatten(target);
 			}
 		}
@@ -23,7 +22,10 @@ public class VariableMaterial{
 		var material = (Material)target;
 		FileData file = FileManager.Get(material.shader);
 		if(!file.IsNull() && file.name.Contains("#")){
-			file = FileManager.Find(file.fullName.Split("#")[0]+".shader");
+			string realName = file.name.Split("#")[0];
+			file = FileManager.Find(realName+".shader",true,false);
+			if(file.IsNull()){file = FileManager.Find(realName+".zshader",true,false);}
+			if(file.IsNull()){Debug.LogWarning("[VariableMaterial] : Parent shader/zshader not found : " + realName);}
 		}
 		return file;
 	}
@@ -56,7 +58,7 @@ public class VariableMaterial{
 			string text = shaderFile.GetText();
 			string shaderName = text.Parse("Shader ","{").Trim(' ','"');
 			if(shaderName.Contains("#")){continue;}
-			string outputPath = shaderFile.folder+"/"+shaderFile.name+"#"+hash+"."+shaderFile.extension;
+			string outputPath = shaderFile.folder+"/"+shaderFile.name+"#"+hash+".shader";
 			string output = "Shader " + '"' + "Hidden/"+shaderName+"#"+hash+'"'+"{\r\n";
 			var allowed = new Stack<bool?>();
 			int tabs = -1;
