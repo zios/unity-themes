@@ -9,8 +9,8 @@ namespace Zios{
     [Serializable]
     public class Target{
 		public static string defaultSearch = "[Self]";
-	    public List<GameObject> special = new List<GameObject>();
-	    public List<string> specialNames = new List<string>();
+	    private List<GameObject> special = new List<GameObject>();
+	    private List<string> specialNames = new List<string>();
 	    public string search = "";
 	    public GameObject directObject;
 	    public GameObject searchObject;

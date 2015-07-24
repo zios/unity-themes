@@ -139,7 +139,7 @@ namespace Zios{
 			}
 		}
 		public void BeginArea(){
-			//if(this.areaBegan){return;}
+			if(this.areaBegan){return;}
 			Rect areaStart = GUILayoutUtility.GetRect(0,0);
 			if(!areaStart.IsEmpty() && this.areaStart != areaStart){
 				this.AddDirty(()=>{
