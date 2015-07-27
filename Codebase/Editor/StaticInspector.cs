@@ -104,7 +104,7 @@ namespace Zios{
 		    }
 	    }
 	    public void DrawSelectors(){
-		    this.title = "Static";
+            this.titleContent = new GUIContent("Static");
 		    float fieldSize = this.position.width/3.0f - 6;
 		    Rect assemblyArea = new Rect(5,5,fieldSize,15);
 		    Rect namespaceArea = new Rect(5+(fieldSize)+2,5,fieldSize,15);

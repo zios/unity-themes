@@ -19,10 +19,10 @@ namespace Zios{
 			    importer.animationType = ModelImporterAnimationType.None;
 			    importer.generateAnimations = ModelImporterGenerateAnimations.None;
 		    }
-		    if(importer.assetPath.ContainsAny("@","Shared","Animation") && importer.animationType != ModelImporterAnimationType.Legacy){
+		    if(importer.assetPath.ContainsAny("@","Shared","Animation","Actions") && importer.animationType != ModelImporterAnimationType.Legacy){
 			    importer.animationType = ModelImporterAnimationType.Legacy;
 			    importer.generateAnimations = ModelImporterGenerateAnimations.GenerateAnimations;
-			    importer.animationCompression = ModelImporterAnimationCompression.KeyframeReduction;
+			    importer.animationCompression = ModelImporterAnimationCompression.Off;
 			    importer.animationPositionError = 0;
 			    importer.animationWrapMode = WrapMode.ClampForever;
 			    importer.importAnimation = true;
