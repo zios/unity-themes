@@ -42,9 +42,9 @@ namespace Zios{
 	    public delegate void CallbackFunction();
     #endif
     public static class Utility{
-		//=================
+		//============================
 		// Editor Only
-		//=================
+		//============================
 	    #if UNITY_EDITOR
 		public static float sceneCheck;
 	    public static EditorWindow[] inspectors;
@@ -122,9 +122,9 @@ namespace Zios{
 				Utility.delayProcessing = false;
 			};
 		}
-		//=================
+		//============================
 		// Editor-Only
-		//=================
+		//============================
 	    public static SerializedObject GetSerializedObject(UnityObject target){
 			if(!Utility.serializedObjects.ContainsKey(target)){
 				Utility.serializedObjects[target] = new SerializedObject(target);
@@ -166,9 +166,9 @@ namespace Zios{
 			}
 		}		
 		#endif
-		//=================
+		//============================
 		// General
-		//=================
+		//============================
 		public static void TogglePlayerPref(string name,bool fallback=false){
 			bool value = !(PlayerPrefs.GetInt(name) == fallback.ToInt());
 			PlayerPrefs.SetInt(name,value.ToInt());
@@ -199,9 +199,9 @@ namespace Zios{
 			    Debug.Log(text);
 		    }
 	    }
-		//=================
+		//============================
 		// Editor Call
-		//=================
+		//============================
 	    public static void EditorCall(CallbackFunction method){
 		    #if UNITY_EDITOR
 		    if(!Utility.IsPlaying()){
@@ -224,9 +224,23 @@ namespace Zios{
 			}
 			#endif
 	    }
-		//=================
-		// Proxy
-		//=================
+		//============================
+		// Proxy - EditorUtility
+		//============================
+	    public static bool DisplayCancelableProgressBar(string title,string message,float percent){
+		    #if UNITY_EDITOR
+			return EditorUtility.DisplayCancelableProgressBar(title,message,percent);
+		    #endif
+			return true;
+	    }
+	    public static void ClearProgressBar(){
+		    #if UNITY_EDITOR
+			EditorUtility.ClearProgressBar();
+		    #endif
+	    }
+		//============================
+		// Proxy - AssetDatabase
+		//============================
 	    public static void StartAssetEditing(){
 		    #if UNITY_EDITOR
 			AssetDatabase.StartAssetEditing();
@@ -247,6 +261,9 @@ namespace Zios{
 			AssetDatabase.SaveAssets();
 		    #endif
 		}
+		//============================
+		// Proxy - PrefabUtility
+		//============================
 	    public static UnityObject GetPrefab(UnityObject target){
 		    #if UNITY_EDITOR
 		    return PrefabUtility.GetPrefabObject(target);
@@ -271,12 +288,37 @@ namespace Zios{
 		    #endif
 		    return Application.isPlaying;
 	    }
+		//============================
+		// Proxy - EditorApplication
+		//============================
 	    public static bool IsPaused(){
 		    #if UNITY_EDITOR
 		    return EditorApplication.isPaused;	
 		    #endif
 		    return false;
 	    }
+		//============================
+		// Proxy - PrefabUtility
+		//============================
+		public static void UpdatePrefab(UnityObject target){
+		    #if UNITY_EDITOR
+		    PrefabUtility.RecordPrefabInstancePropertyModifications(target);
+		    #endif
+		}
+	    public static bool ReconnectToLastPrefab(GameObject target){
+		    #if UNITY_EDITOR
+		    return PrefabUtility.ReconnectToLastPrefab(target);
+		    #endif
+		    return false;
+	    }
+	    public static void DisconnectPrefabInstance(UnityObject target){
+		    #if UNITY_EDITOR
+		    PrefabUtility.DisconnectPrefabInstance(target);
+		    #endif
+	    }
+		//============================
+		// Proxy - Other
+		//============================
 	    public static void UpdateSelection(){
 		    #if UNITY_EDITOR
 			var targets = Selection.objects;
@@ -381,22 +423,6 @@ namespace Zios{
 		    return (bool)Utility.GetEditorType("ComponentUtility").CallMethod("MoveComponentDown",component.AsArray());
 		    #endif
 		    return false;
-	    }
-		public static void UpdatePrefab(UnityObject target){
-		    #if UNITY_EDITOR
-		    PrefabUtility.RecordPrefabInstancePropertyModifications(target);
-		    #endif
-		}
-	    public static bool ReconnectToLastPrefab(GameObject target){
-		    #if UNITY_EDITOR
-		    return PrefabUtility.ReconnectToLastPrefab(target);
-		    #endif
-		    return false;
-	    }
-	    public static void DisconnectPrefabInstance(UnityObject target){
-		    #if UNITY_EDITOR
-		    PrefabUtility.DisconnectPrefabInstance(target);
-		    #endif
 	    }
     }
 }

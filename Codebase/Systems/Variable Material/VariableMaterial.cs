@@ -9,7 +9,14 @@ using UnityObject = UnityEngine.Object;
 public class VariableMaterial{
 	public static bool debug;
 	public static bool dirty;
+	public static bool delay;
+	public static Action writes;
+	public static Action updates;
 	public static void Refresh(params UnityObject[] targets){
+		VariableMaterial.Refresh(false,targets);
+	}
+	public static void Refresh(bool delay,params UnityObject[] targets){
+		VariableMaterial.delay = delay;
 		foreach(var target in targets){
 			var material = (Material)target;
 			bool isFlat = material.shader != null && material.shader.name.Contains("#");
@@ -29,6 +36,22 @@ public class VariableMaterial{
 		}
 		return file;
 	}
+	public static void RefreshEditor(){
+		if(VariableMaterial.updates.GetInvocationList().Length > 1){
+			Utility.StartAssetEditing();
+			VariableMaterial.writes();
+			Utility.StopAssetEditing();
+			//Utility.SaveAssets();
+			Utility.RefreshAssets();
+			FileManager.Refresh();
+			VariableMaterial.updates();
+		}
+		VariableMaterial.updates = ()=>{};
+		VariableMaterial.writes = ()=>{};
+		VariableMaterial.dirty = true;
+		VariableMaterial.delay = false;
+		Utility.RebuildInspectors();
+	}
 	public static void Unflatten(params UnityObject[] targets){
 		string shaderName = "";
 		foreach(var target in targets){
@@ -45,10 +68,7 @@ public class VariableMaterial{
 		Utility.RebuildInspectors();
 	}
 	public static void Flatten(params UnityObject[] targets){
-		bool assetRefresh = false;
 		string originalName = "";
-		Action delayedUpdates = ()=>{};
-		Utility.StartAssetEditing();
 		foreach(var target in targets){
 			Material material = (Material)target;
 			FileData shaderFile = VariableMaterial.GetParentShader(target);
@@ -62,7 +82,7 @@ public class VariableMaterial{
 			string output = "Shader " + '"' + "Hidden/"+shaderName+"#"+hash+'"'+"{\r\n";
 			var allowed = new Stack<bool?>();
 			int tabs = -1;
-			foreach(string current in text.Split("\n").Skip(1)){
+			foreach(string current in text.Split("\r\n").Skip(1)){
 				if(current.IsEmpty()){continue;}
 				string line = current;
 				bool hideBlock = allowed.Count > 0 && allowed.Peek() != true;
@@ -117,43 +137,33 @@ public class VariableMaterial{
 					line = new String('\t',tabs) + line.TrimStart();
 					if(line.Contains("{")){tabs += 1;}
 				}
-				output += line+"\n";
+				output += line+"\r\n";
 			}
-			output = output.Replace("{\n\t\t\t}","{}");
-			string pattern = output.Cut("{\n\t\t\t\treturn ",";\n\t\t\t");
+			output = output.Replace("{\r\n\t\t\t}","{}");
+			string pattern = output.Cut("{\r\n\t\t\t\treturn ",";\r\n\t\t\t");
 			while(!pattern.IsEmpty()){
-				string replace = pattern.Replace("\n","").Replace("\t","");
+				string replace = pattern.Replace("\r\n","").Replace("\t","");
 				output = output.ReplaceFirst(pattern,replace);
-				pattern = output.Cut("{\n\t\t\t\treturn ",";\n\t\t\t");
+				pattern = output.Cut("{\r\n\t\t\t\treturn ",";\r\n\t\t\t");
 			}
 			if(output != text){
-				File.WriteAllText(outputPath,output);
-				assetRefresh = FileManager.Find(outputPath,true,false) == null;
+				Action write = ()=>File.WriteAllText(outputPath,output);
 				Action update = ()=>{
 					material.shader = FileManager.GetAsset<Shader>(outputPath);
-					//Utility.SetAssetDirty(material.shader);
 					Utility.SetAssetDirty(material);
+					if(VariableMaterial.debug){Debug.Log("[VariableMaterial] Shader set " + outputPath);}
 				};
-				if(assetRefresh){
-					if(VariableMaterial.debug){Debug.Log("[VariableMaterial] Delayed Shader set " + outputPath);}
-					delayedUpdates += update;
-					continue;
-				}
-				if(VariableMaterial.debug){Debug.Log("[VariableMaterial] Shader set " + outputPath);}
-				update();
+				VariableMaterial.writes += write;
+				VariableMaterial.updates += update;
 			}
 		}
-		Utility.StopAssetEditing();
-		if(delayedUpdates.GetInvocationList().Length > 1){
-			//Utility.SaveAssets();
-			Utility.RefreshAssets();	
-			FileManager.Refresh();
-			delayedUpdates();
-		}
-		VariableMaterial.dirty = true;
 		if(VariableMaterial.debug){
 			Debug.Log("[VariableMaterial] " + originalName + " -- " + targets.Length + " flattened.");
 		}
-		Utility.RebuildInspectors();
+		if(VariableMaterial.delay){
+			Utility.EditorDelayCall(VariableMaterial.RefreshEditor,0.5f);
+			return;
+		}
+		VariableMaterial.RefreshEditor();
 	}
 }

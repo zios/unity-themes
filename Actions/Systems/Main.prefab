@@ -955,14 +955,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 707a7a68415736f4f93930529b482e6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  globalAlphaCutoff: .300000012
+  alphaCutoff: .300000012
+  shadowColor: {r: .117241383, g: 0, b: 1, a: 1}
+  shadowMode: 1
+  shadowBlend: 0
+  shadowIntensity: .833999991
   cullDistance: 300
   fadeType: 0
   fadeGrayscale: 0
   fadeBlend: 4
   fadeSteps: 3
-  fadeStartDistance: 50
-  fadeEndDistance: 100
+  fadeStartDistance: 100
+  fadeEndDistance: 200
   fadeStartColor: {r: 0, g: 0, b: 0, a: 1}
   fadeEndColor: {r: .0614186823, g: .522058845, b: .522058845, a: 1}
 --- !u!114 &11400056

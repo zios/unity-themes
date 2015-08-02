@@ -73,6 +73,35 @@ namespace Zios{
 		    else if(value is Vector3 && this.method is MethodVector3){((MethodVector3)this.method)((Vector3)value);}
 	    }
 	}
+	public class EventSequence{
+		public MethodInt method;
+		public string eventName;
+		public int size;
+		public int index;
+		public bool complete;
+		public List<Method> passes = new List<Method>();
+		public void Step(){
+			bool canceled = false;
+			if(this.index != -1){
+				this.method(this.index);
+				float percent = ((float)this.index)/this.size;
+				canceled = Utility.DisplayCancelableProgressBar(Events.sequenceTitle,Events.sequenceMessage,percent);
+				this.index += 1;
+			}
+			bool loading = Application.isLoadingLevel || this.passes.Count < 1;
+			bool ended = (this.index > this.size-1) || this.index == -1;
+			if((loading || canceled || ended) && !this.complete){
+				this.index = -1;
+				foreach(var pass in this.passes){
+					Events.Remove(this.eventName,pass);
+				}
+				this.complete = true;
+				this.passes.Clear();
+				Events.sequences.Remove(this.method);
+				Utility.ClearProgressBar();
+			}	
+		}
+	}
     public class Events : EventDetector{
 		public static bool disabled;
 		[EnumMask] public static EventDebugScope debugScope;
@@ -84,6 +113,9 @@ namespace Zios{
 		public static Dictionary<object,Dictionary<string,Dictionary<object,EventListener>>> cache = new Dictionary<object,Dictionary<string,Dictionary<object,EventListener>>>();
 	    public static List<EventListener> listeners = new List<EventListener>();
 	    public static Dictionary<object,List<string>> callers = new Dictionary<object,List<string>>();
+		public static Dictionary<MethodInt,EventSequence> sequences = new Dictionary<MethodInt,EventSequence>();
+		public static string sequenceTitle;
+		public static string sequenceMessage;
 		public static string lastEventName;
 		public static void Build(){
 			if(Events.instance.IsNull()){
@@ -135,6 +167,19 @@ namespace Zios{
 				Events.callers[target].AddNew(name);
 		    }
 	    }
+		public static void AddSequence(string eventName,MethodInt method,int size,int passes){
+			var sequence = Events.sequences[method] = new EventSequence();
+			sequence.eventName = eventName;
+			sequence.method = method;
+			sequence.size = size;
+			sequence.index = 0;
+			while(passes > 0){
+				Method pass = ()=>sequence.Step();
+				sequence.passes.Add(pass);
+				Events.Add(eventName,pass).SetPermanent(true);
+				passes -= 1;
+			}
+		}
 	    public static EventListener Add(string name,Method method,params object[] targets){return Events.Add(name,(object)method,-1,targets);}
 	    public static EventListener Add(string name,MethodObject method,params object[] targets){return Events.Add(name,(object)method,-1,targets);}
 	    public static EventListener Add(string name,MethodFull method,params object[] targets){return Events.Add(name,(object)method,-1,targets);}
