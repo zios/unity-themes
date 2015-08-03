@@ -23,6 +23,7 @@ namespace Zios{
 				Events.Register("On Validate",this);
 				Events.Add("On Validate",this.CheckAlias,this);
 				Events.Add("On Validate",this.CheckDependents,this);
+				Events.Add("On Hierarchy Changed",this.CheckDependents);
 				Events.Add("On Attributes Ready",this.CheckDependents);
 			}
 	    }
@@ -47,31 +48,43 @@ namespace Zios{
 		}
 		public void CheckDependents(){
 			foreach(var dependent in this.dependents){
+				var currentDependent = dependent;
+				dependent.processing = false;
 				dependent.exists = false;
-				if(dependent.type.IsNull()){continue;}
 				if(dependent.target.IsNull() && dependent.dynamicTarget.IsNull()){continue;}
 				if(dependent.target.IsNull() && !dependent.dynamicTarget.HasData()){continue;}
 				GameObject target = dependent.target.IsNull() ? dependent.dynamicTarget.Get() : dependent.target;
 				dependent.method = ()=>{};
 				if(!target.IsNull()){
-					Type type = dependent.type;
-					dependent.exists = !target.GetComponent(type).IsNull();
-					dependent.method = ()=>target.AddComponent(type);
+					Type[] types = dependent.types;
+					foreach(var type in types){
+						var currentType = type;
+						dependent.exists = !target.GetComponent(currentType).IsNull();
+						dependent.method = ()=>{
+							var component = target.AddComponent(currentType);
+							currentDependent.processing = component != null;
+						};
+						if(dependent.exists){break;}
+					}
 				}
 			}
 		}
 	    public void AddDependent<Type>() where Type : Component{this.AddDependent<Type>(this.gameObject,true);}
 	    public void AddDependent<Type>(object target,bool isScript=false) where Type : Component{
-			Method delayAdd = ()=>this.DelayAddDependent(typeof(Type),target,isScript);
+			Method delayAdd = ()=>this.DelayAddDependent(target,isScript,typeof(Type));
 			Events.AddLimited("On Attributes Ready",delayAdd,1);
 	    }
-	    public void DelayAddDependent(Type type,object target,bool isScript=false){
-			if(this.dependents.Exists(x=>x.type==type)){return;}
+	    public void AddDependent(object target,bool isScript=false,params Type[] types){
+			Method delayAdd = ()=>this.DelayAddDependent(target,isScript,types);
+			Events.AddLimited("On Attributes Ready",delayAdd,1);
+	    }
+	    public void DelayAddDependent(object target,bool isScript=false,params Type[] types){
+			if(this.dependents.Exists(x=>Enumerable.SequenceEqual(x.types,types))){return;}
 			if(target.IsNull()){return;}
 			var dependent = new DataDependency();
 			dependent.dynamicTarget = target is AttributeGameObject ? (AttributeGameObject)target : null;
 			dependent.target = target is AttributeGameObject ? null : (GameObject)target;
-			dependent.type = type;
+			dependent.types = types;
 			dependent.scriptName = isScript ? this.GetType().Name : "";
 			dependent.message = "[target] is missing required component : [type]. Click here to add.";
 			this.dependents.AddNew(dependent);
@@ -178,10 +191,11 @@ namespace Zios{
     }
 	public class DataDependency{
 		public bool exists;
+		public bool processing;
 		public string scriptName;
 		public AttributeGameObject dynamicTarget;
 		public GameObject target;
-		public Type type;
+		public Type[] types;
 		public string message;
 		public Method method = ()=>{};
 	}

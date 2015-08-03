@@ -23,7 +23,7 @@ namespace Zios{
 		public Color fadeStartColor = new Color(1,1,1,1);
 		public Color fadeEndColor = new Color(1,1,1,0);
 		private bool dirty;
-		private FileData[] materials = new FileData[0];
+		private List<Material> materials = new List<Material>();
 		private List<Material> materialsChanged = new List<Material>();
 		public static ShaderSettings Get(){return ShaderSettings.instance;}
 		public void Awake(){this.Setup();}
@@ -39,23 +39,23 @@ namespace Zios{
 			Shader.SetGlobalColor("fadeStartColor",this.fadeStartColor);
 			Shader.SetGlobalColor("fadeEndColor",this.fadeEndColor);
 			if(Application.isEditor){
+				this.materials = VariableMaterial.GetAll();
 				this.dirty = false;
-				this.materials = FileManager.FindAll("*.mat");
 				this.SetKeyword(shadowMode);
 				this.SetKeyword(shadowBlend);
 				this.SetKeyword(fadeType);
 				this.SetKeyword(fadeBlend);
 				this.SetKeyword(fadeGrayscale);
 				if(this.dirty){
-					//VariableMaterial.Refresh(this.materialsChanged.ToArray());
-					Events.AddSequence("On Editor Update",this.RefreshStep,this.materialsChanged.Count,50);
+					Events.AddStepper("On Editor Update",this.RefreshStep,this.materialsChanged,50);
 				}
 			}
 		}
-		public void RefreshStep(int index){
-			Events.sequenceTitle = "Updating " + this.materialsChanged.Count + " Materials";
-			Events.sequenceMessage = "Updating material : " + this.materialsChanged[index].name;
-			VariableMaterial.Refresh(true,this.materialsChanged[index]);
+		public static void RefreshStep(object collection,int index){
+			var materials = (List<Material>)collection;
+			Events.stepperTitle = "Updating " + materials.Count + " Materials";
+			Events.stepperMessage = "Updating material : " + materials[index].name;
+			VariableMaterial.Refresh(true,materials[index]);
 		}
 		public void Update(){
 			Shader.SetGlobalFloat("timeConstant",(Time.realtimeSinceStartup));
@@ -77,24 +77,20 @@ namespace Zios{
 		public void SetKeyword(Enum target){
 			string typeName = target.GetType().Name.ToUpper()+"_";
 			string targetKeyword = typeName+target.ToString().ToUpper();
-			foreach(var materialFile in this.materials){
-				var material = materialFile.GetAsset<Material>();
-				string editorName = material.shader.GetVariable<string>("customEditor");
-				if(editorName == "VariableMaterialEditor"){
-					foreach(var name in target.GetNames()){
-						string keyword = typeName+name.ToUpper();
-						if(keyword != targetKeyword && material.IsKeywordEnabled(keyword)){
-							material.DisableKeyword(keyword);
-						}
+			foreach(var material in this.materials){
+				foreach(var name in target.GetNames()){
+					string keyword = typeName+name.ToUpper();
+					if(keyword != targetKeyword && material.IsKeywordEnabled(keyword)){
+						material.DisableKeyword(keyword);
 					}
-					if(!material.IsKeywordEnabled(targetKeyword)){
-						if(!this.dirty){
-							this.materialsChanged.Clear();
-							this.dirty = true;
-						}
-						this.materialsChanged.Add(material);
-						material.EnableKeyword(targetKeyword);
+				}
+				if(!material.IsKeywordEnabled(targetKeyword)){
+					if(!this.dirty){
+						this.materialsChanged.Clear();
+						this.dirty = true;
 					}
+					this.materialsChanged.Add(material);
+					material.EnableKeyword(targetKeyword);
 				}
 			}
 		}

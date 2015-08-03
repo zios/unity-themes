@@ -8,28 +8,39 @@ namespace Zios{
 			if(!Event.current.IsUseful()){return;}
 		    DataMonoBehaviour target = (DataMonoBehaviour)this.target;
 			var dependents = target.dependents;
-			bool dependentsChanged = false;
+			bool targetsMissing = false;
+			string message = "";
 		    foreach(var dependent in dependents){
 				if(dependent.exists){continue;}
-				string message = dependent.message;
+				message = dependent.message;
+				if(dependent.target.IsNull() && dependent.dynamicTarget.Get().IsNull()){
+					targetsMissing = true;
+					continue;
+				}
 				if(!dependent.target.IsNull() || (!dependent.dynamicTarget.IsNull() && !dependent.dynamicTarget.Get().IsNull())){
 					string targetName = dependent.dynamicTarget.IsNull() ? dependent.target.name : dependent.dynamicTarget.Get().name;
 					if(!dependent.scriptName.IsEmpty()){targetName = dependent.scriptName;}
 					message = message.Replace("[target]",targetName);
 				}
-				if(!dependent.type.IsNull()){
-					message = message.Replace("[type]",dependent.type.Name);
+				if(!dependent.types.IsNull()){
+					string names = "";
+					foreach(var type in dependent.types){names += type.Name + " or ";}
+					message = message.Replace("[type]",names.Trim(" or "));
 				}
+				GUI.enabled = !dependent.processing;
 				message.DrawHelp("Warning");
-				Rect area = GUILayoutUtility.GetLastRect();
-				EditorGUIUtility.AddCursorRect(area,MouseCursor.Link);
-				if(area.Clicked(0) && dependent.method != null){
-					dependent.method();
-					dependentsChanged = true;
+				GUI.enabled = true;
+				if(!dependent.processing){
+					Rect area = GUILayoutUtility.GetLastRect();
+					EditorGUIUtility.AddCursorRect(area,MouseCursor.Link);
+					if(area.Clicked(0) && dependent.method != null){
+						dependent.method();
+					}
 				}
 		    }
-			if(dependentsChanged){
-				target.Awake();
+			if(targetsMissing){
+				message = "One or more target fields are missing.";
+				message.DrawHelp("Warning");
 			}
 		    base.OnInspectorGUI();
 	    }

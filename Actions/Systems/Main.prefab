@@ -443,7 +443,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: .899999976, z: -932.099976}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400058}
@@ -968,7 +968,7 @@ MonoBehaviour:
   fadeStartDistance: 100
   fadeEndDistance: 200
   fadeStartColor: {r: 0, g: 0, b: 0, a: 1}
-  fadeEndColor: {r: .0614186823, g: .522058845, b: .522058845, a: 1}
+  fadeEndColor: {r: .0614186823, g: .522058845, b: .522058845, a: 0}
 --- !u!114 &11400056
 MonoBehaviour:
   m_ObjectHideFlags: 1

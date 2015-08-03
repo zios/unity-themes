@@ -12,6 +12,18 @@ public class VariableMaterial{
 	public static bool delay;
 	public static Action writes;
 	public static Action updates;
+	public static List<Material> GetAll(){
+		var materialFiles = FileManager.FindAll("*.mat");
+		var materials = new List<Material>();
+		foreach(var file in materialFiles){
+			var material = file.GetAsset<Material>();
+			string editorName = material.shader.GetVariable<string>("customEditor");
+			if(editorName == "VariableMaterialEditor"){
+				materials.Add(material);
+			}
+		}
+		return materials;
+	}
 	public static void Refresh(params UnityObject[] targets){
 		VariableMaterial.Refresh(false,targets);
 	}

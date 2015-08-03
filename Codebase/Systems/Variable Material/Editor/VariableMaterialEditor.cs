@@ -2,6 +2,7 @@
 using UnityEditor;
 using System;
 using System.Linq;
+using System.Collections.Generic;
 using Zios;
 [CanEditMultipleObjects]
 public class VariableMaterialEditor : MaterialEditor{
@@ -9,6 +10,7 @@ public class VariableMaterialEditor : MaterialEditor{
 	public Shader shader;
 	public string hash;
 	public FileData parent;
+	public static List<Material> allMaterials = new List<Material>();
 	public override void OnInspectorGUI(){
 		this.material = (Material)this.target;
 		bool matching = this.shader == this.material.shader;
@@ -23,7 +25,10 @@ public class VariableMaterialEditor : MaterialEditor{
 			if(isFlat && "Unflatten".DrawButton()){VariableMaterial.Unflatten(this.targets);}
 			if(!isFlat && "Flatten".DrawButton()){VariableMaterial.Flatten(this.targets);}
 			GUI.enabled = Event.current.shift || !isUpdated;
-			if("Update".DrawButton()){VariableMaterial.Refresh(this.targets);}
+			if("Update".DrawButton()){
+				var materials = this.targets.Cast<Material>().ToList();
+				Events.AddStepper("On Editor Update",VariableMaterialEditor.RefreshStep,materials,50);
+			}
 			GUI.enabled = true;
 			EditorGUILayout.EndHorizontal();
 			base.OnInspectorGUI();
@@ -39,7 +44,17 @@ public class VariableMaterialEditor : MaterialEditor{
 		}
 		VariableMaterial.dirty = false;
 		this.shader = this.material.shader;
-		//VariableMaterial.shader = this.material.shader;
 		this.Repaint();
+	}
+	[MenuItem("Zios/Process/Material/Refresh (Variable Materials)")]
+	public static void RefreshAll(){
+		var materials = VariableMaterial.GetAll();
+		Events.AddStepper("On Editor Update",VariableMaterialEditor.RefreshStep,materials,50);
+	}
+	public static void RefreshStep(object collection,int index){
+		var materials = (List<Material>)collection;
+		Events.stepperTitle = "Updating " + materials.Count + " Materials";
+		Events.stepperMessage = "Updating material : " + materials[index].name;
+		VariableMaterial.Refresh(true,materials[index]);
 	}
 }

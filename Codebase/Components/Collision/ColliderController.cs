@@ -21,6 +21,24 @@ namespace Zios{
 		    this.isSource = isSource;
 	    }
     }
+	[Serializable]
+	public class BlockedDirection{
+		public AttributeBool forward = false;
+		public AttributeBool back = false;
+		public AttributeBool up = false;
+		public AttributeBool down = false;
+		public AttributeBool right = false;
+		public AttributeBool left = false;
+	}
+	[Serializable]
+	public class BlockedTime{
+		public AttributeFloat forward = 0;
+		public AttributeFloat back = 0;
+		public AttributeFloat up = 0;
+		public AttributeFloat down = 0;
+		public AttributeFloat right = 0;
+		public AttributeFloat left = 0;
+	}
     [RequireComponent(typeof(Collider))]
     [AddComponentMenu("Zios/Component/Physics/Collider Controller")]
     public class ColliderController : ManagedMonoBehaviour{
@@ -40,23 +58,36 @@ namespace Zios{
 	    [NonSerialized] public List<Vector3> move = new List<Vector3>();
 	    [NonSerialized] public List<Vector3> moveRaw = new List<Vector3>();
 	    [NonSerialized] public Vector3 lastDirection;
-	    public Dictionary<string,bool> blocked = new Dictionary<string,bool>();
-	    public Dictionary<string,float> lastBlockedTime = new Dictionary<string,float>();
+		public bool persistentBlockChecks;
 	    public AttributeFloat fixedTimestep = 0.002f;
 	    public AttributeFloat maxStepHeight = 0;
 	    public AttributeFloat maxSlopeAngle = 70;
 	    public AttributeFloat minSlideAngle = 50;
 	    public AttributeFloat hoverDistance = 0.02f;
 	    public AttributeFloat collisionPersist = 0.2f;
-		[Advanced][ReadOnly] public AttributeBool onSlope;
-		[Advanced][ReadOnly] public AttributeBool onSlide;
-		[Advanced][ReadOnly] public AttributeVector3 slopeNormal;
+		[Advanced][ReadOnly] public AttributeBool onSlope = false;
+		[Advanced][ReadOnly] public AttributeBool onSlide = false;
+		[Advanced][ReadOnly] public AttributeVector3 slopeNormal = Vector3.zero;
+		[ReadOnly] public BlockedDirection blocked = new BlockedDirection();
+		[ReadOnly] public BlockedTime lastBlockedTime = new BlockedTime();
 	    //================================
 	    // Unity-Specific
 	    //================================
 	    public override void Awake(){
 		    base.Awake();
 		    this.ResetBlocked(true);
+			this.blocked.forward.Setup("Blocked/Forward",this);
+			this.blocked.back.Setup("Blocked/Back",this);
+			this.blocked.up.Setup("Blocked/Up",this);
+			this.blocked.down.Setup("Blocked/Down",this);
+			this.blocked.right.Setup("Blocked/Right",this);
+			this.blocked.left.Setup("Blocked/Left",this);
+			this.lastBlockedTime.forward.Setup("Last Blocked Time/Forward",this);
+			this.lastBlockedTime.back.Setup("Last Blocked Time/Back",this);
+			this.lastBlockedTime.up.Setup("Last Blocked Time/Up",this);
+			this.lastBlockedTime.down.Setup("Last Blocked Time/Down",this);
+			this.lastBlockedTime.right.Setup("Last Blocked Time/Right",this);
+			this.lastBlockedTime.left.Setup("Last Blocked Time/Left",this);
 		    this.fixedTimestep.Setup("Fixed Timestep",this);
 		    this.maxStepHeight.Setup("Max Step Height",this);
 		    this.maxSlopeAngle.Setup("Max Slope Angle",this);
@@ -184,12 +215,12 @@ namespace Zios{
 			    this.SetPosition(this.GetComponent<Rigidbody>().position + (direction * (hit.distance-this.hoverDistance*2)));
 			    CollisionData otherCollision = new CollisionData(this,this.gameObject,-direction,distance,false);
 			    CollisionData selfCollision = new CollisionData(this,hit.transform.gameObject,direction,distance,true);
-			    if(direction.z > 0){this.blocked["forward"] = true;}
-			    if(direction.z < 0){this.blocked["back"] = true;}
-			    if(direction.y > 0){this.blocked["up"] = true;}
-			    if(direction.y < 0){this.blocked["down"] = true;}
-			    if(direction.x > 0){this.blocked["right"] = true;}
-			    if(direction.x < 0){this.blocked["left"] = true;}
+			    if(direction.z > 0){this.blocked.forward.Set(true);}
+			    if(direction.z < 0){this.blocked.back.Set(true);}
+			    if(direction.y > 0){this.blocked.up.Set(true);}
+			    if(direction.y < 0){this.blocked.down.Set(true);}
+			    if(direction.x > 0){this.blocked.right.Set(true);}
+			    if(direction.x < 0){this.blocked.left.Set(true);}
 			    GameObject hitObject = hit.transform.gameObject;
 			    hitObject.CallEvent("On Collision",otherCollision);
 			    this.gameObject.CallEvent("On Collision",selfCollision);
@@ -222,7 +253,7 @@ namespace Zios{
 					    Vector3 cross = Vector3.Cross(slopeHit.normal,current);
 					    Vector3 change = Vector3.Cross(cross,slopeHit.normal) * this.GetTimeOffset();
 					    this.SetPosition(this.GetComponent<Rigidbody>().position + change);
-					    this.blocked["down"] = false;
+					    this.blocked.down.Set(false);
 						this.slopeNormal.Set(slopeHit.normal);
 					    return true;
 				    }
@@ -253,7 +284,7 @@ namespace Zios{
 				    this.SetPosition(this.GetComponent<Rigidbody>().position + move);
 				    this.GetComponent<Rigidbody>().SweepTest(-Vector3.up,out stepHit);
 				    this.SetPosition(this.GetComponent<Rigidbody>().position + (-Vector3.up*(stepHit.distance-0.01f)));
-				    this.blocked["down"] = true;
+				    this.blocked.down.Set(true);
 				    return true;
 			    }
 			    this.SetPosition(position);
@@ -274,27 +305,50 @@ namespace Zios{
 		    if(state == "Wake"){this.GetComponent<Rigidbody>().WakeUp();}
 	    }
 	    private void CheckBlocked(){
-		    foreach(var item in this.blocked){
-			    if(this.blocked[item.Key]){
-				    this.lastBlockedTime[item.Key] = Time.time;
-			    }
-		    }
+			if(this.persistentBlockChecks){
+				var body = this.GetComponent<Rigidbody>();
+				RaycastHit hit;
+				body.WakeUp();
+				float distance = this.hoverDistance * 2 + 0.01f;
+				this.blocked.forward.Set(body.SweepTest(this.transform.forward,out hit,distance));
+				this.blocked.back.Set(body.SweepTest(-this.transform.forward,out hit,distance));
+				this.blocked.up.Set(body.SweepTest(this.transform.up,out hit,distance));
+				this.blocked.down.Set(body.SweepTest(-this.transform.up,out hit,distance));
+				this.blocked.right.Set(body.SweepTest(this.transform.right,out hit,distance));
+				this.blocked.left.Set(body.SweepTest(-this.transform.right,out hit,distance));
+				body.Sleep();
+			}
+			if(this.blocked.forward){this.lastBlockedTime.forward.Set(Time.time);}
+			if(this.blocked.back){this.lastBlockedTime.back.Set(Time.time);}
+			if(this.blocked.up){this.lastBlockedTime.up.Set(Time.time);}
+			if(this.blocked.down){this.lastBlockedTime.down.Set(Time.time);}
+			if(this.blocked.right){this.lastBlockedTime.right.Set(Time.time);}
+			if(this.blocked.left){this.lastBlockedTime.left.Set(Time.time);}
 	    }
 	    private Vector3 NullBlocked(Vector3 move){
-		    if(this.blocked["left"] && move.x < 0){move.x = 0;}
-		    if(this.blocked["right"] && move.x > 0){move.x = 0;}
-		    if(this.blocked["up"] && move.y > 0){move.y = 0;}
-		    if(this.blocked["down"] && move.y < 0){move.y = 0;}
-		    if(this.blocked["forward"] && move.z > 0){move.z = 0;}
-		    if(this.blocked["back"] && move.z < 0){move.z = 0;}
+		    if(this.blocked.forward && move.x < 0){move.x = 0;}
+		    if(this.blocked.back && move.x > 0){move.x = 0;}
+		    if(this.blocked.up && move.y > 0){move.y = 0;}
+		    if(this.blocked.down && move.y < 0){move.y = 0;}
+		    if(this.blocked.right && move.z > 0){move.z = 0;}
+		    if(this.blocked.left && move.z < 0){move.z = 0;}
 		    return move;
 	    }
 	    private void ResetBlocked(bool clearTime=false){
-		    string[] names = new string[]{"forward","back","up","down","right","left"};
-		    foreach(string name in names){
-			    this.blocked[name] = false;
-			    if(clearTime){this.lastBlockedTime[name] = 0;}
-		    }
+			this.blocked.forward.Set(false);
+			this.blocked.back.Set(false);
+			this.blocked.up.Set(false);
+			this.blocked.down.Set(false);
+			this.blocked.right.Set(false);
+			this.blocked.left.Set(false);
+			if(clearTime){
+				this.lastBlockedTime.forward.Set(0);
+				this.lastBlockedTime.back.Set(0);
+				this.lastBlockedTime.up.Set(0);
+				this.lastBlockedTime.down.Set(0);
+				this.lastBlockedTime.right.Set(0);
+				this.lastBlockedTime.left.Set(0);
+			}
 	    }
 	    public void AddMove(Vector3 move){
 		    if(!this.enabled){return;}

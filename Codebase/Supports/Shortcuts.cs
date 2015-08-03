@@ -16,6 +16,7 @@ public delegate void MethodBool(bool value);
 public delegate void MethodVector2(Vector2 value);
 public delegate void MethodVector3(Vector3 value);
 public delegate void MethodFull(object[] values);
+public delegate void MethodStep(object collection,int value);
 public delegate object MethodReturn();
 public delegate object MethodObjectReturn(object value);
 public delegate object MethodIntReturn(int value);

@@ -2,6 +2,7 @@
 using System;
 using System.Linq;
 using System.Reflection;
+using System.Collections;
 using System.Collections.Generic;
 using UnityObject = UnityEngine.Object;
 #if UNITY_EDITOR 
@@ -44,6 +45,7 @@ namespace Zios{
 		public int occurrences;
 		public bool paused;
 		public bool permanent;
+		public bool isStatic;
 		private bool warned;
 	    public bool IsValid(){
 			if(this.target.IsNull() && !this.warned && Events.debug.Has("Call")){
@@ -73,23 +75,23 @@ namespace Zios{
 		    else if(value is Vector3 && this.method is MethodVector3){((MethodVector3)this.method)((Vector3)value);}
 	    }
 	}
-	public class EventSequence{
-		public MethodInt method;
+	public class EventStepper{
+		public MethodStep method;
 		public string eventName;
-		public int size;
+		public IList collection;
 		public int index;
 		public bool complete;
 		public List<Method> passes = new List<Method>();
 		public void Step(){
 			bool canceled = false;
 			if(this.index != -1){
-				this.method(this.index);
-				float percent = ((float)this.index)/this.size;
-				canceled = Utility.DisplayCancelableProgressBar(Events.sequenceTitle,Events.sequenceMessage,percent);
+				this.method(this.collection,this.index);
+				float percent = ((float)this.index)/this.collection.Count;
+				canceled = Utility.DisplayCancelableProgressBar(Events.stepperTitle,Events.stepperMessage,percent);
 				this.index += 1;
 			}
 			bool loading = Application.isLoadingLevel || this.passes.Count < 1;
-			bool ended = (this.index > this.size-1) || this.index == -1;
+			bool ended = (this.index > this.collection.Count-1) || this.index == -1;
 			if((loading || canceled || ended) && !this.complete){
 				this.index = -1;
 				foreach(var pass in this.passes){
@@ -97,7 +99,7 @@ namespace Zios{
 				}
 				this.complete = true;
 				this.passes.Clear();
-				Events.sequences.Remove(this.method);
+				Events.steppers.Remove(this.method);
 				Utility.ClearProgressBar();
 			}	
 		}
@@ -113,9 +115,9 @@ namespace Zios{
 		public static Dictionary<object,Dictionary<string,Dictionary<object,EventListener>>> cache = new Dictionary<object,Dictionary<string,Dictionary<object,EventListener>>>();
 	    public static List<EventListener> listeners = new List<EventListener>();
 	    public static Dictionary<object,List<string>> callers = new Dictionary<object,List<string>>();
-		public static Dictionary<MethodInt,EventSequence> sequences = new Dictionary<MethodInt,EventSequence>();
-		public static string sequenceTitle;
-		public static string sequenceMessage;
+		public static Dictionary<MethodStep,EventStepper> steppers = new Dictionary<MethodStep,EventStepper>();
+		public static string stepperTitle;
+		public static string stepperMessage;
 		public static string lastEventName;
 		public static void Build(){
 			if(Events.instance.IsNull()){
@@ -125,6 +127,41 @@ namespace Zios{
 					Events.instance = eventsPath.AddComponent<Events>();
 				}
 				Events.instance = eventsPath.GetComponent<Events>();
+			}
+			Events.Cleanup();
+		}
+		public static void Cleanup(){
+			foreach(var cached in Events.cache.Copy()){
+				foreach(var set in cached.Value.Copy()){
+					foreach(var eventPair in set.Value.Copy()){
+						var listener = eventPair.Value;
+						Delegate method = (Delegate)listener.method;
+						bool targetMissing = !listener.isStatic && listener.target.IsNull();
+						bool methodMissing = !listener.isStatic && method.Target.IsNull();
+						if(targetMissing || methodMissing || eventPair.Key.IsNull()){
+							Events.cache[cached.Key][set.Key].Remove(eventPair.Key);
+						}
+					}
+					if(set.Key.IsNull() || set.Value.Count < 1){
+						Events.cache[cached.Key].Remove(set.Key);
+					}
+				}
+				if(cached.Key.IsNull() || cached.Value.Count < 1){
+					Events.cache.Remove(cached.Key);
+				}
+			}
+			foreach(var listener in Events.listeners.Copy()){
+				Delegate method = (Delegate)listener.method;
+				bool targetMissing = !listener.isStatic && listener.target.IsNull();
+				bool methodMissing = !listener.isStatic && method.Target.IsNull();
+				if(targetMissing || methodMissing){
+					Events.listeners.Remove(listener);
+				}
+			}
+			foreach(var item in Events.callers.Copy()){
+				if(item.Key.IsNull()){
+					Events.callers.Remove(item.Key);
+				}
 			}
 		}
 		public static void Setup(){
@@ -167,15 +204,15 @@ namespace Zios{
 				Events.callers[target].AddNew(name);
 		    }
 	    }
-		public static void AddSequence(string eventName,MethodInt method,int size,int passes){
-			var sequence = Events.sequences[method] = new EventSequence();
-			sequence.eventName = eventName;
-			sequence.method = method;
-			sequence.size = size;
-			sequence.index = 0;
+		public static void AddStepper(string eventName,MethodStep method,IList collection,int passes){
+			var stepper = Events.steppers[method] = new EventStepper();
+			stepper.eventName = eventName;
+			stepper.method = method;
+			stepper.collection = collection;
+			stepper.index = 0;
 			while(passes > 0){
-				Method pass = ()=>sequence.Step();
-				sequence.passes.Add(pass);
+				Method pass = ()=>stepper.Step();
+				stepper.passes.Add(pass);
 				Events.Add(eventName,pass).SetPermanent(true);
 				passes -= 1;
 			}
@@ -223,6 +260,7 @@ namespace Zios{
 				listener.method = method;
 				listener.target = target;
 				listener.occurrences = amount;
+				listener.isStatic = ((Delegate)method).Target.IsNull();
 				Events.cache[target][name][method] = listener;
 				Events.cache[Events.all][name][method] = listener;
 		    }
@@ -385,7 +423,7 @@ namespace Zios{
 				object eventTarget = eventListener.target;
 				object eventMethod = eventListener.method;
 				bool duplicate = eventName != ignoreName && eventTarget == target && eventMethod.Equals(targetMethod);
-				bool invalid = eventTarget.IsNull() || eventMethod.IsNull() || ((Delegate)eventMethod).Target.IsNull();
+				bool invalid = eventTarget.IsNull() || eventMethod.IsNull() || (!eventListener.isStatic && ((Delegate)eventMethod).Target.IsNull());
 				if(duplicate || invalid){
 				    Utility.EditorDelayCall(()=>Events.listeners.Remove(eventListener));
 					if(Events.debug.Has("Remove")){

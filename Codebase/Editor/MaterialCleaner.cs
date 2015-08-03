@@ -6,7 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 namespace Zios{
     public static class MaterialCleaner{
-        [MenuItem ("Zios/Process/Material Clean (All)")]
+        [MenuItem ("Zios/Process/Material/Remove Unused Data (All)")]
         public static void Clean(){MaterialCleaner.Clean(null);}
         public static void Clean(FileData[] materials){
 			bool anyChanges = false;

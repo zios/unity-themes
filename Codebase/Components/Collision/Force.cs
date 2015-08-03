@@ -3,7 +3,6 @@ using UnityEngine;
 using System;
 using System.Collections;
 namespace Zios{
-    [RequireComponent(typeof(ColliderController))]
     [AddComponentMenu("Zios/Component/Physics/Force")]
     public class Force : ManagedMonoBehaviour{
 	    public AttributeVector3 velocity = Vector3.zero;
@@ -11,7 +10,6 @@ namespace Zios{
 	    public AttributeVector3 resistence = new Vector3(8,0,8);
 	    public AttributeFloat minimumImpactVelocity = 1;
 	    public AttributeBool disabled = false;
-	    [NonSerialized] public ColliderController controller;
 	    public override void Awake(){
 		    base.Awake();
 		    this.velocity.Setup("Velocity",this);
@@ -24,7 +22,7 @@ namespace Zios{
 		    Events.Add("On Collision",(MethodObject)this.OnCollide,this.gameObject);
 		    Events.Add("Add Force",(MethodVector3)this.AddForce,this.gameObject);
 		    Events.Add("Add Force Raw",(MethodVector3)this.AddForceRaw,this.gameObject);
-		    this.controller = this.GetComponent<ColliderController>();
+		    this.AddDependent<ColliderController>(this.gameObject);
 	    }
 	    public override void Step(){
 		    if(!this.disabled && this.velocity != Vector3.zero){
@@ -47,12 +45,12 @@ namespace Zios{
 		    CollisionData data = (CollisionData)collision;
 		    if(data.isSource){
 			    Vector3 original = this.velocity.Get();
-			    if(data.sourceController.blocked["down"] && this.velocity.y < 0){this.velocity.y.Set(0);}
-			    if(data.sourceController.blocked["up"] && this.velocity.y > 0){this.velocity.y.Set(0);}
-			    if(data.sourceController.blocked["right"] && this.velocity.x > 0){this.velocity.x.Set(0);}
-			    if(data.sourceController.blocked["left"] && this.velocity.x < 0){this.velocity.x.Set(0);}
-			    if(data.sourceController.blocked["forward"] && this.velocity.z > 0){this.velocity.z.Set(0);}
-			    if(data.sourceController.blocked["back"] && this.velocity.z < 0){this.velocity.z.Set(0);}
+			    if(data.sourceController.blocked.forward && this.velocity.y < 0){this.velocity.y.Set(0);}
+			    if(data.sourceController.blocked.back && this.velocity.y > 0){this.velocity.y.Set(0);}
+			    if(data.sourceController.blocked.up && this.velocity.x > 0){this.velocity.x.Set(0);}
+			    if(data.sourceController.blocked.down && this.velocity.x < 0){this.velocity.x.Set(0);}
+			    if(data.sourceController.blocked.right && this.velocity.z > 0){this.velocity.z.Set(0);}
+			    if(data.sourceController.blocked.left && this.velocity.z < 0){this.velocity.z.Set(0);}
 			    if(original != this.velocity.Get()){
 				    Vector3 impact = (this.velocity - original);
 				    float impactStrength = impact.magnitude;
