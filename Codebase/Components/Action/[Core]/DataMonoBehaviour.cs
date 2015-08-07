@@ -31,7 +31,7 @@ namespace Zios{
 		// Editor
 		//===============
 	    public virtual void OnValidate(){
-			if(Application.isPlaying || Application.isLoadingLevel || !this.gameObject.activeInHierarchy){return;}
+			if(!this.CanValidate()){return;}
 			this.CallEvent("On Validate");
 	    }
 	    public virtual void OnDestroy(){

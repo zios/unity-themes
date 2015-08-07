@@ -10,10 +10,10 @@ namespace Zios{
 			fastInspectorContent.tooltip += "Currently has issues with multiple inspectors visible and erratic nudging position offset issues while scrolling.";
 			alwaysUpdateContent.tooltip = "Forces the scene view to repaint every frame.  Huge performance cost, but will allow shaders based on time to update in realtime.";
 			bool fastInspector = EditorPrefs.GetBool("MonoBehaviourEditor-FastInspector").Draw(fastInspectorContent);
-			bool alwaysUpdate = EditorPrefs.GetBool("ShaderSettings-AlwaysUpdate").Draw(alwaysUpdateContent);
+			bool alwaysUpdate = EditorPrefs.GetBool("SceneSettings-AlwaysUpdate").Draw(alwaysUpdateContent);
 			if(GUI.changed){
 				EditorPrefs.SetBool("MonoBehaviourEditor-FastInspector",fastInspector);
-				EditorPrefs.SetBool("ShaderSettings-AlwaysUpdate",alwaysUpdate);
+				EditorPrefs.SetBool("SceneSettings-AlwaysUpdate",alwaysUpdate);
 			}
 		}
 	}

@@ -7,6 +7,7 @@ namespace Zios{
 		private float loadStart;
 		private static bool loading;
 		public virtual void OnValidate(){
+			if(!this.CanValidate()){return;}
 			this.loadStart = Time.realtimeSinceStartup;
 			EventDetector.loading = true;
 			Events.Call("On Validate");

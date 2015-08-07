@@ -84,7 +84,7 @@ namespace Zios{
 		public static void Build(){
 			Attribute.debug = (AttributeDebug)PlayerPrefs.GetInt("Attribute-Debug");
 			if(AttributeManager.instance.IsNull()){
-				var managerPath = Locate.GetScenePath("@Main/Attributes");
+				var managerPath = Locate.GetScenePath("@Main");
 				if(!managerPath.HasComponent<AttributeManager>()){
 					Debug.Log("[AttributeManager] : Auto-creating Attribute Manager GameObject.");
 					managerPath.AddComponent<AttributeManager>();

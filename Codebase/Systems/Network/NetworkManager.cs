@@ -1,5 +1,6 @@
 ﻿#pragma warning disable 0618
 using UnityEngine;
+using Zios;
 using System;
 using System.Reflection;
 using System.Collections;
@@ -81,16 +82,16 @@ namespace Zios{
 		    }
 	    }
 	    public void Start(){
-		    Zios.Console.AddKeyword("connect",this.Connect);
-		    Zios.Console.AddKeyword("listen",this.StartServer);
-		    Zios.Console.AddKeyword("say",this.SendMessage);
-		    Zios.Console.AddShortcut("join","connect");
-		    Zios.Console.AddShortcut("name","nick");
-		    Zios.Console.AddShortcut("alias","nick");
-		    Zios.Console.AddCvar("nick",this,"clientName","Player Name",this.help[6]);
-		    Zios.Console.AddCvar("port",this,"port","Network Port",this.help[2]);
-		    Zios.Console.AddCvar("password",this,"password","Network Password",this.help[3]);
-		    Zios.Console.AddCvar("maxUsers",this,"maxUsers","Maximum Users",this.help[4]);
+		    Console.AddKeyword("connect",this.Connect);
+		    Console.AddKeyword("listen",this.StartServer);
+		    Console.AddKeyword("say",this.SendMessage);
+		    Console.AddShortcut("join","connect");
+		    Console.AddShortcut("name","nick");
+		    Console.AddShortcut("alias","nick");
+		    Console.AddCvar("nick",this,"clientName","Player Name",this.help[6]);
+		    Console.AddCvar("port",this,"port","Network Port",this.help[2]);
+		    Console.AddCvar("password",this,"password","Network Password",this.help[3]);
+		    Console.AddCvar("maxUsers",this,"maxUsers","Maximum Users",this.help[4]);
 		    if(Network.isClient || Network.isServer){Debug.Log("Level has been loaded -- " + Application.loadedLevelName);}
 	    }
 	    public void FixedUpdate(){
@@ -180,7 +181,7 @@ namespace Zios{
 		    }
 		    Debug.Log("^10Establishing [^3|" + this.maxUsers + "^10] user listen server on port ^9|" + port + "^10 ...");
 		    this.sceneName = sceneName;
-		    int sceneID = Zios.Scene.GetMapID(this.sceneName);
+		    int sceneID = SceneSettings.GetMapID(this.sceneName);
 		    Network.SetLevelPrefix(sceneID);
 		    Network.incomingPassword = this.password;
 		    Network.InitializeServer(this.maxUsers,port,true);
@@ -311,7 +312,7 @@ namespace Zios{
 		    if(eventID == NetworkEvents.LoadScene){
 			    Debug.Log("Loading level...");
 			    this.sceneName = text;
-			    int sceneID = Zios.Scene.GetMapID(text);
+			    int sceneID = SceneSettings.GetMapID(text);
 			    Network.SetSendingEnabled(0,false);	
 			    Network.isMessageQueueRunning = false;
 			    Network.SetLevelPrefix(sceneID);

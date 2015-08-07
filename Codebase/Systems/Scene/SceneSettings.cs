@@ -1,19 +1,19 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections.Generic;
 namespace Zios{
-	[AddComponentMenu("Zios/Singleton/Scene")]
+	[AddComponentMenu("Zios/Singleton/Scene Settings")][ExecuteInEditMode]
 	public class SceneSettings : MonoBehaviour{
-		public List<string> scenes;
-		public void Awake(){
-			Scene.settings = this;
-		}
-	}
-	public static class Scene{
-		public static SceneSettings settings;
+		public static SceneSettings instance;
 		public static string currentMap = "";
+		public string[] scenes;
+		public static SceneSettings Get(){return SceneSettings.instance;}
+		public void OnEnable(){this.Setup();}
+		public void Awake(){this.Setup();}
+		public void Setup(){SceneSettings.instance = this;}
 		public static int GetMapID(string name){
-			for(int index=0;index<Scene.settings.scenes.Count;++index){
-				if(Scene.settings.scenes[index] == name){
+			for(int index=0;index<SceneSettings.Get().scenes.Length;++index){
+				if(SceneSettings.Get().scenes[index] == name){
 					return index;
 				}
 			}
@@ -31,8 +31,8 @@ namespace Zios{
 					return;
 				}
 			}
-			Scene.currentMap = mapName;
-			Debug.Log("^10Current Map is :^3 " + Scene.currentMap);
+			SceneSettings.currentMap = mapName;
+			Debug.Log("^10Current Map is :^3 " + SceneSettings.currentMap);
 		}
 	}
 }

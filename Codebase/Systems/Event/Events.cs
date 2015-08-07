@@ -121,7 +121,7 @@ namespace Zios{
 		public static string lastEventName;
 		public static void Build(){
 			if(Events.instance.IsNull()){
-				var eventsPath = Locate.GetScenePath("@Main/Events");
+				var eventsPath = Locate.GetScenePath("@Main");
 				if(!eventsPath.HasComponent<Events>()){
 					Debug.Log("[EventManager] : Auto-creating Events Manager GameObject.");
 					Events.instance = eventsPath.AddComponent<Events>();

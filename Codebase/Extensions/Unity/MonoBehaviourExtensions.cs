@@ -15,6 +15,10 @@ namespace Zios{
 		    }
 		    #endif
 		    return "";
-	    }
+
+		}
+		public static bool CanValidate(this MonoBehaviour current){
+			return !Application.isPlaying && !Application.isLoadingLevel && current.gameObject.activeInHierarchy && current.enabled;
+		}
     }
 }

@@ -23,9 +23,10 @@ public class VariableMaterialEditor : MaterialEditor{
 			bool isUpdated = !isFlat || this.shader.name.Split("#")[1].Split(".")[0] == this.hash;
 			GUI.enabled = !this.parent.IsNull() && (isHook || this.parent.extension != "zshader");
 			if(isFlat && "Unflatten".DrawButton()){VariableMaterial.Unflatten(this.targets);}
-			if(!isFlat && "Flatten".DrawButton()){VariableMaterial.Flatten(this.targets);}
+			if(!isFlat && "Flatten".DrawButton()){VariableMaterial.Flatten(true,this.targets);}
 			GUI.enabled = Event.current.shift || !isUpdated;
 			if("Update".DrawButton()){
+				VariableMaterial.force = true;
 				var materials = this.targets.Cast<Material>().ToList();
 				Events.AddStepper("On Editor Update",VariableMaterialEditor.RefreshStep,materials,50);
 			}

@@ -10,15 +10,26 @@ public class VariableMaterial{
 	public static bool debug;
 	public static bool dirty;
 	public static bool delay;
-	public static Action writes;
-	public static Action updates;
+	public static bool force;
+	public static Action writes = ()=>{};
+	public static Action updates = ()=>{};
+	public static bool IsBroken(Material material){
+		if(material.shader.name.Contains("Hidden/InternalErrorShader")){
+			foreach(string keyword in material.shaderKeywords){
+				if(keyword.Contains("VARIABLE_MATERIAL_")){
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 	public static List<Material> GetAll(){
 		var materialFiles = FileManager.FindAll("*.mat");
 		var materials = new List<Material>();
 		foreach(var file in materialFiles){
 			var material = file.GetAsset<Material>();
 			string editorName = material.shader.GetVariable<string>("customEditor");
-			if(editorName == "VariableMaterialEditor"){
+			if(editorName == "VariableMaterialEditor" || VariableMaterial.IsBroken(material)){
 				materials.Add(material);
 			}
 		}
@@ -32,19 +43,32 @@ public class VariableMaterial{
 		foreach(var target in targets){
 			var material = (Material)target;
 			bool isFlat = material.shader != null && material.shader.name.Contains("#");
-			if(isFlat){
+			if(isFlat || VariableMaterial.IsBroken(material)){
 				VariableMaterial.Flatten(target);
 			}
 		}
 	}
 	public static FileData GetParentShader(UnityObject target){
 		var material = (Material)target;
-		FileData file = FileManager.Get(material.shader);
+		FileData file;
+		if(material.shader.name.Contains("Hidden/InternalErrorShader")){
+			foreach(string keyword in material.shaderKeywords){
+				if(keyword.Contains("VARIABLE_MATERIAL_")){
+					string shaderName = keyword.Split("_").Skip(2).Join("_").ToLower();
+					file = FileManager.Find(shaderName+".shader",true,false);
+					if(file.IsNull()){file = FileManager.Find(shaderName+".zshader",true,false);}
+					if(file.IsNull()){Debug.LogWarning("[VariableMaterial] : Parent recovery shader missing : " + shaderName);}
+					return file;
+				}
+			}
+			Debug.LogWarning("[VariableMaterial] : Parent shader missing : " + material.name);
+		}
+		file = FileManager.Get(material.shader);
 		if(!file.IsNull() && file.name.Contains("#")){
-			string realName = file.name.Split("#")[0];
-			file = FileManager.Find(realName+".shader",true,false);
-			if(file.IsNull()){file = FileManager.Find(realName+".zshader",true,false);}
-			if(file.IsNull()){Debug.LogWarning("[VariableMaterial] : Parent shader/zshader not found : " + realName);}
+			string shaderName = file.name.Split("#")[0];
+			file = FileManager.Find(shaderName+".shader",true,false);
+			if(file.IsNull()){file = FileManager.Find(shaderName+".zshader",true,false);}
+			if(file.IsNull()){Debug.LogWarning("[VariableMaterial] : Parent shader/zshader not found : " + shaderName);}
 		}
 		return file;
 	}
@@ -79,18 +103,34 @@ public class VariableMaterial{
 		}
 		Utility.RebuildInspectors();
 	}
+	public static void Flatten(bool force,params UnityObject[] targets){
+		VariableMaterial.force = force;
+		VariableMaterial.Flatten(targets);
+	}
 	public static void Flatten(params UnityObject[] targets){
 		string originalName = "";
 		foreach(var target in targets){
 			Material material = (Material)target;
 			FileData shaderFile = VariableMaterial.GetParentShader(target);
 			if(shaderFile.IsNull()){continue;}
+			string timestamp = shaderFile.GetModifiedDate("MdyyHmmff");
+			string hash = timestamp + "-" + material.shaderKeywords.Join(" ").ToMD5();
+			string folderPath = shaderFile.folder+"/"+shaderFile.name+"/";
+			string outputPath = folderPath+shaderFile.name+"#"+hash+".shader";
+			Action update = ()=>{
+				material.EnableKeyword("VARIABLE_MATERIAL_"+shaderFile.name.ToUpper());
+				material.shader = FileManager.GetAsset<Shader>(outputPath);
+				Utility.SetAssetDirty(material);
+				if(VariableMaterial.debug){Debug.Log("[VariableMaterial] Shader set " + outputPath);}
+			};
+			if(!VariableMaterial.force && File.Exists(outputPath)){
+				VariableMaterial.updates += update;
+				continue;
+			}
 			originalName = shaderFile.fullName;
-			string hash = shaderFile.GetModifiedDate("MdyyHmmff") + "-" + material.shaderKeywords.Join(" ").ToMD5();
 			string text = shaderFile.GetText();
 			string shaderName = text.Parse("Shader ","{").Trim(' ','"');
 			if(shaderName.Contains("#")){continue;}
-			string outputPath = shaderFile.folder+"/"+shaderFile.name+"#"+hash+".shader";
 			string output = "Shader " + '"' + "Hidden/"+shaderName+"#"+hash+'"'+"{\r\n";
 			var allowed = new Stack<bool?>();
 			int tabs = -1;
@@ -99,16 +139,28 @@ public class VariableMaterial{
 				string line = current;
 				bool hideBlock = allowed.Count > 0 && allowed.Peek() != true;
 				bool allowedBranch = line.ContainsAny("#else","#elif") && allowed.Peek() != null;
+				bool ignoredBranch = line.Contains("@#");
 				//if(line.ContainsAny("[KeywordEnum","[Toggle")){continue;}
-				if(line.Contains("#endif")){
+				if(!ignoredBranch && line.Contains("#endif")){
 					allowed.Pop();
 					if(allowed.Count == 0){tabs = -1;}
 					continue;
 				}
 				if(hideBlock && !allowedBranch){
-					if(line.ContainsAny("#if")){allowed.Push(null);}
+					if(!ignoredBranch && line.ContainsAny("#if")){allowed.Push(null);}
 					continue;
 				}
+				if(ignoredBranch){
+					bool end = line.Contains("#end");
+					bool include = line.Contains("#include");
+					if(tabs < 0){tabs = line.Length - line.TrimStart().Length;}
+					if(end){tabs -= 1;}
+					line = new String('\t',tabs) + line.TrimStart();
+					output += line.Replace("@#","#") + "\r\n";
+					if(!end && !include){tabs += 1;}
+					continue;
+				}
+				if(line.Contains("#include")){line = line.Replace("#include \"","#include \"../");}
 				if(line.Contains("#pragma shader_feature")){continue;}
 				if(line.Contains("#pragma multi_compile ")){continue;}
 				if(line.ContainsAny("#if","#elif","#else")){
@@ -139,15 +191,15 @@ public class VariableMaterial{
 						}
 					}
 					allowed.Push(useBlock);
-					if(useBlock && allowed.Count == 1){
+					if(useBlock && allowed.Count == 1 && tabs <= 0){
 						tabs = line.Length - line.TrimStart().Length;
 					}
 					continue;
 				}
 				if(tabs != -1){
-					if(line.Contains("}")){tabs -= 1;}
+					if(line.Contains("}") && !line.Contains("{")){tabs -= 1;}
 					line = new String('\t',tabs) + line.TrimStart();
-					if(line.Contains("{")){tabs += 1;}
+					if(line.Contains("{") && !line.Contains("}")){tabs += 1;}
 				}
 				output += line+"\r\n";
 			}
@@ -159,11 +211,9 @@ public class VariableMaterial{
 				pattern = output.Cut("{\r\n\t\t\t\treturn ",";\r\n\t\t\t");
 			}
 			if(output != text){
-				Action write = ()=>File.WriteAllText(outputPath,output);
-				Action update = ()=>{
-					material.shader = FileManager.GetAsset<Shader>(outputPath);
-					Utility.SetAssetDirty(material);
-					if(VariableMaterial.debug){Debug.Log("[VariableMaterial] Shader set " + outputPath);}
+				Action write = ()=>{
+					Directory.CreateDirectory(folderPath);
+					File.WriteAllText(outputPath,output);
 				};
 				VariableMaterial.writes += write;
 				VariableMaterial.updates += update;
@@ -177,5 +227,6 @@ public class VariableMaterial{
 			return;
 		}
 		VariableMaterial.RefreshEditor();
+		VariableMaterial.force = false;
 	}
 }

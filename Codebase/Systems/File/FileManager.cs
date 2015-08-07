@@ -64,7 +64,18 @@ namespace Zios{
 				}
 			}
 		    if(results.Count == 0){
-				if(FileManager.files.ContainsKey(type)){
+				if(type.IsEmpty()){
+					foreach(var fileGroup in FileManager.files){
+						type = fileGroup.Key;
+						foreach(FileData file in FileManager.files[type]){
+							bool correctPath = path != "" ? file.path.Contains(path,ignoreCase) : true;
+							if(correctPath && (file.name.Matches(fileName,ignoreCase) || wildcard)){
+								results.Add(file);
+							}
+						}
+					}
+				}
+				else if(FileManager.files.ContainsKey(type)){
 					foreach(FileData file in FileManager.files[type]){
 						bool correctPath = path != "" ? file.path.Contains(path,ignoreCase) : true;
 						if(correctPath && (file.fullName.Matches(fileName,ignoreCase) || wildcard)){

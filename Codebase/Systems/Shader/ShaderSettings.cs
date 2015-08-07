@@ -5,42 +5,26 @@ namespace Zios{
 	[AddComponentMenu("Zios/Singleton/Shader")][ExecuteInEditMode]
 	public class ShaderSettings : MonoBehaviour{
 		public static ShaderSettings instance;
-		[Header("General")]
-		public float alphaCutoff = 0.3f;
 		[Header("Shadows")]
-		public Color shadowColor = new Color(0,0,0,1);
+		public ShadowType shadowType = ShadowType.Stepped;
 		public ShadowMode shadowMode;
 		public ShadowBlend shadowBlend;
-		[Range(0,1)] public float shadowIntensity = 0.5f;
 		[Header("Visibility")]
-		public int cullDistance = 100;
 		public FadeType fadeType;
 		public FadeGrayscale fadeGrayscale;
 		public FadeBlend fadeBlend;
-		public int fadeSteps = 3;
-		public int fadeStartDistance = 80;
-		public int fadeEndDistance = 100;
-		public Color fadeStartColor = new Color(1,1,1,1);
-		public Color fadeEndColor = new Color(1,1,1,0);
 		private bool dirty;
 		private List<Material> materials = new List<Material>();
 		private List<Material> materialsChanged = new List<Material>();
 		public static ShaderSettings Get(){return ShaderSettings.instance;}
+		public void OnEnable(){this.Setup();}
 		public void Awake(){this.Setup();}
 		public void Setup(){
 			ShaderSettings.instance = this;
-			Shader.SetGlobalFloat("globalAlphaCutoff",this.alphaCutoff);
-			Shader.SetGlobalColor("globalShadowColor",this.shadowColor);
-			Shader.SetGlobalFloat("globalShadowIntensity",1-this.shadowIntensity);
-			Shader.SetGlobalFloat("cullDistance",this.cullDistance);
-			Shader.SetGlobalFloat("fadeSteps",this.fadeSteps);
-			Shader.SetGlobalFloat("fadeStartDistance",this.fadeStartDistance);
-			Shader.SetGlobalFloat("fadeEndDistance",this.fadeEndDistance);
-			Shader.SetGlobalColor("fadeStartColor",this.fadeStartColor);
-			Shader.SetGlobalColor("fadeEndColor",this.fadeEndColor);
 			if(Application.isEditor){
 				this.materials = VariableMaterial.GetAll();
 				this.dirty = false;
+				this.SetKeyword(shadowType);
 				this.SetKeyword(shadowMode);
 				this.SetKeyword(shadowBlend);
 				this.SetKeyword(fadeType);
@@ -57,22 +41,9 @@ namespace Zios{
 			Events.stepperMessage = "Updating material : " + materials[index].name;
 			VariableMaterial.Refresh(true,materials[index]);
 		}
-		public void Update(){
-			Shader.SetGlobalFloat("timeConstant",(Time.realtimeSinceStartup));
-			Events.Add("On Editor Update",this.EditorUpdate);
-		}
 		public void OnValidate(){
-			if(Application.isPlaying || Application.isLoadingLevel || !this.gameObject.activeInHierarchy){return;}
+			if(!this.CanValidate()){return;}
 			this.Setup();
-			this.Update();
-		}
-		public void EditorUpdate(){
-			#if UNITY_EDITOR
-			if(!Application.isPlaying && !Application.isLoadingLevel && UnityEditor.EditorPrefs.GetBool("ShaderSettings-AlwaysUpdate")){
-				Shader.SetGlobalFloat("timeConstant",(Time.realtimeSinceStartup));
-				Utility.RepaintSceneView();
-			}
-			#endif	
 		}
 		public void SetKeyword(Enum target){
 			string typeName = target.GetType().Name.ToUpper()+"_";
@@ -95,8 +66,9 @@ namespace Zios{
 			}
 		}
 	}
+	public enum ShadowType{Smooth,Stepped};
 	public enum ShadowMode{Shaded,Blended};
-	public enum ShadowBlend{Multiply,Subtract};
+	public enum ShadowBlend{Lerp,Multiply,Subtract};
 	public enum FadeGrayscale{Off,On};
 	public enum FadeType{Smooth,Stepped};
 	public enum FadeBlend{Multiply,Add,Lerp,Overlay,Screen,SoftLight,LinearLight};
