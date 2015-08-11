@@ -45,12 +45,12 @@ namespace Zios{
 		    CollisionData data = (CollisionData)collision;
 		    if(data.isSource){
 			    Vector3 original = this.velocity.Get();
-			    if(data.sourceController.blocked.forward && this.velocity.y < 0){this.velocity.y.Set(0);}
-			    if(data.sourceController.blocked.back && this.velocity.y > 0){this.velocity.y.Set(0);}
-			    if(data.sourceController.blocked.up && this.velocity.x > 0){this.velocity.x.Set(0);}
-			    if(data.sourceController.blocked.down && this.velocity.x < 0){this.velocity.x.Set(0);}
-			    if(data.sourceController.blocked.right && this.velocity.z > 0){this.velocity.z.Set(0);}
-			    if(data.sourceController.blocked.left && this.velocity.z < 0){this.velocity.z.Set(0);}
+			    if(data.sourceController.blocked.forward && this.velocity.z < 0){this.velocity.z.Set(0);}
+			    if(data.sourceController.blocked.back && this.velocity.z > 0){this.velocity.z.Set(0);}
+			    if(data.sourceController.blocked.up && this.velocity.y > 0){this.velocity.y.Set(0);}
+			    if(data.sourceController.blocked.down && this.velocity.y < 0){this.velocity.y.Set(0);}
+			    if(data.sourceController.blocked.right && this.velocity.x > 0){this.velocity.x.Set(0);}
+			    if(data.sourceController.blocked.left && this.velocity.x < 0){this.velocity.x.Set(0);}
 			    if(original != this.velocity.Get()){
 				    Vector3 impact = (this.velocity - original);
 				    float impactStrength = impact.magnitude;
