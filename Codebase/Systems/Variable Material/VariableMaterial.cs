@@ -134,6 +134,7 @@ public class VariableMaterial{
 			string output = "Shader " + '"' + "Hidden/"+shaderName+"#"+hash+'"'+"{\r\n";
 			var allowed = new Stack<bool?>();
 			int tabs = -1;
+			text = text.Replace("\\\r\n","");
 			foreach(string current in text.Split("\r\n").Skip(1)){
 				if(current.IsEmpty()){continue;}
 				string line = current;
@@ -196,7 +197,7 @@ public class VariableMaterial{
 					}
 					continue;
 				}
-				if(tabs != -1){
+				if(tabs >= 1){
 					if(line.Contains("}") && !line.Contains("{")){tabs -= 1;}
 					line = new String('\t',tabs) + line.TrimStart();
 					if(line.Contains("{") && !line.Contains("}")){tabs += 1;}

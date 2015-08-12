@@ -47,7 +47,14 @@ public class VariableMaterialEditor : MaterialEditor{
 		this.shader = this.material.shader;
 		this.Repaint();
 	}
-	[MenuItem("Zios/Process/Material/Refresh (Variable Materials)")]
+	[MenuItem("Zios/Process/Material/Refresh Variable Materials (Scene)")]
+	public static void RefreshScene(){
+		List<Material> materials = new List<Material>();
+		var renderers = Locate.GetSceneComponents<Renderer>();
+		foreach(var renderer in renderers){materials.AddRange(renderer.sharedMaterials);}
+		Events.AddStepper("On Editor Update",VariableMaterialEditor.RefreshStep,materials,50);
+	}
+	[MenuItem("Zios/Process/Material/Refresh Variable Materials (All)")]
 	public static void RefreshAll(){
 		var materials = VariableMaterial.GetAll();
 		Events.AddStepper("On Editor Update",VariableMaterialEditor.RefreshStep,materials,50);

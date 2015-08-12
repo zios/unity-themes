@@ -8,20 +8,23 @@ namespace Zios{
 		[Header("General")]
 		[Range(0,1)] public float alphaCutoff = 0.3f;
 		[Header("Shadows")]
-		public Color shadowColor = new Color(0,0,0,1);
+		public Color shadowColor = new Color(0,0,0,0.25f);
 		[Range(1,32)] public int shadowSteps = 3;
 		[Header("Visibility")]
-		public int cullDistance = 100;
+		public int cullDistance = 150;
 		[Range(1,32)] public int fadeSteps = 3;
 		public int fadeStartDistance = 80;
 		public int fadeEndDistance = 100;
-		public Color fadeStartColor = new Color(1,1,1,1);
-		public Color fadeEndColor = new Color(1,1,1,0);
+		public Color fadeStartColor = new Color(0,0,0,1);
+		public Color fadeEndColor = new Color(0,0,0,0);
 		public static ShaderLocalSettings Get(){return ShaderLocalSettings.instance;}
 		public void OnEnable(){this.Setup();}
 		public void Awake(){this.Setup();}
 		public void Setup(){
 			ShaderLocalSettings.instance = this;
+			this.cullDistance = Math.Max(0,this.cullDistance);
+			this.fadeStartDistance = Math.Max(0,Math.Min(this.fadeStartDistance,this.fadeEndDistance));
+			this.fadeEndDistance = Math.Max(this.fadeStartDistance,this.fadeEndDistance);
 			Shader.SetGlobalFloat("globalAlphaCutoff",this.alphaCutoff);
 			Shader.SetGlobalColor("globalShadowColor",this.shadowColor);
 			Shader.SetGlobalFloat("globalShadowSteps",this.shadowSteps);

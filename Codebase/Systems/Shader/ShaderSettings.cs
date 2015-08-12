@@ -5,6 +5,8 @@ namespace Zios{
 	[AddComponentMenu("Zios/Singleton/Shader")][ExecuteInEditMode]
 	public class ShaderSettings : MonoBehaviour{
 		public static ShaderSettings instance;
+		[Header("Shading")]
+		public ShadingBlend shadingBlend = ShadingBlend.Multiply;
 		[Header("Shadows")]
 		public ShadowType shadowType = ShadowType.Stepped;
 		public ShadowMode shadowMode;
@@ -24,6 +26,7 @@ namespace Zios{
 			if(Application.isEditor){
 				this.materials = VariableMaterial.GetAll();
 				this.dirty = false;
+				this.SetKeyword(shadingBlend);
 				this.SetKeyword(shadowType);
 				this.SetKeyword(shadowMode);
 				this.SetKeyword(shadowBlend);
@@ -66,6 +69,7 @@ namespace Zios{
 			}
 		}
 	}
+	public enum ShadingBlend{Multiply,Add,Lerp,Overlay,Screen,SoftLight,LinearLight};
 	public enum ShadowType{Smooth,Stepped};
 	public enum ShadowMode{Shaded,Blended};
 	public enum ShadowBlend{Lerp,Multiply,Subtract};
