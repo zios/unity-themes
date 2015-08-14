@@ -77,8 +77,8 @@ namespace Zios{
 			if(current > max){return max;}
 			return current;
 		}
-		public static float ClampRange(this float current,float min,float max){
-			return ((current-min)/(max-min)).Saturate();
+		public static float LerpRelative(this float current,float start,float end){
+			return ((current-start)/(end-start)).Saturate();
 		}
     }
 }
