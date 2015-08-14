@@ -143,13 +143,13 @@ namespace Zios{
 		}
 	    public static EditorWindow[] GetInspectors(){
 		    if(Utility.inspectors == null){
-			    Type inspectorType = Utility.GetEditorType("InspectorWindow");
+			    Type inspectorType = Utility.GetInternalType("InspectorWindow");
 			    Utility.inspectors = inspectorType.CallMethod<EditorWindow[]>("GetAllInspectorWindows");
 		    }
 			return Utility.inspectors;
 	    }
 	    public static Vector2 GetInspectorScrollPosition(this Rect current){
-			Type inspectorWindow = Utility.GetEditorType("InspectorWindow");
+			Type inspectorWindow = Utility.GetInternalType("InspectorWindow");
 			var window = EditorWindow.GetWindowWithRect(inspectorWindow,current);
 			return window.GetVariable<Vector2>("m_ScrollPosition");
 	    }
@@ -183,12 +183,12 @@ namespace Zios{
 		    if(!Application.isPlaying){UnityObject.DestroyImmediate(target,true);}
 		    else{UnityObject.Destroy(target);}
 	    }
-	    public static Type GetEditorType(string name){
+	    public static Type GetInternalType(string name){
 		    #if UNITY_EDITOR
-		    foreach(var type in typeof(EditorApplication).Assembly.GetTypes()){
+		    foreach(var type in typeof(UnityEditor.Editor).Assembly.GetTypes()){
 			    if(type.Name == name){return type;}
 		    }
-		    foreach(var type in typeof(UnityEditor.EditorWindow).Assembly.GetTypes()){
+		    foreach(var type in typeof(UnityEngine.Object).Assembly.GetTypes()){
 			    if(type.Name == name){return type;}
 		    }
 		    #endif
@@ -330,7 +330,7 @@ namespace Zios{
 	    }
 		public static void RebuildInspectors(){
 		    #if UNITY_EDITOR
-			Type inspectorType = Utility.GetEditorType("InspectorWindow");
+			Type inspectorType = Utility.GetInternalType("InspectorWindow");
 			var windows = inspectorType.CallMethod<EditorWindow[]>("GetAllInspectorWindows");
 			for(int index=0;index<windows.Length;++index){
 				var tracker = windows[index].CallMethod<ActiveEditorTracker>("GetTracker");
@@ -340,7 +340,7 @@ namespace Zios{
 		}
 		public static void ShowInspectors(){
 		    #if UNITY_EDITOR
-			Type inspectorType = Utility.GetEditorType("InspectorWindow");
+			Type inspectorType = Utility.GetInternalType("InspectorWindow");
 			var windows = inspectorType.CallMethod<EditorWindow[]>("GetAllInspectorWindows");
 			for(int index=0;index<windows.Length;++index){
 				var tracker = windows[index].CallMethod<ActiveEditorTracker>("GetTracker");
@@ -352,7 +352,7 @@ namespace Zios{
 		}
 	    public static void RepaintInspectors(){
 		    #if UNITY_EDITOR
-			Type inspectorType = Utility.GetEditorType("InspectorWindow");
+			Type inspectorType = Utility.GetInternalType("InspectorWindow");
 			inspectorType.CallMethod("RepaintAllInspectors");
 			#endif
 	    }
@@ -363,7 +363,7 @@ namespace Zios{
 	    }
 	    public static void RepaintGameView(){
 		    #if UNITY_EDITOR
-			Type viewType = Utility.GetEditorType("GameView");
+			Type viewType = Utility.GetInternalType("GameView");
 			EditorWindow gameview = EditorWindow.GetWindow(viewType);
 			gameview.Repaint();
 			#endif
@@ -414,13 +414,13 @@ namespace Zios{
 	    }
 	    public static bool MoveComponentUp(Component component){
 		    #if UNITY_EDITOR
-		    return (bool)Utility.GetEditorType("ComponentUtility").CallMethod("MoveComponentUp",component.AsArray());
+		    return (bool)Utility.GetInternalType("ComponentUtility").CallMethod("MoveComponentUp",component.AsArray());
 		    #endif
 		    return false;
 	    }
 	    public static bool MoveComponentDown(Component component){
 		    #if UNITY_EDITOR
-		    return (bool)Utility.GetEditorType("ComponentUtility").CallMethod("MoveComponentDown",component.AsArray());
+		    return (bool)Utility.GetInternalType("ComponentUtility").CallMethod("MoveComponentDown",component.AsArray());
 		    #endif
 		    return false;
 	    }

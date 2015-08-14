@@ -7,11 +7,11 @@ namespace Zios{
 		    return Utility.GetPrefab(current);
 	    }
 		public static bool IsExpanded(this UnityObject current){
-			Type editorUtility = Utility.GetEditorType("InternalEditorUtility");
+			Type editorUtility = Utility.GetInternalType("InternalEditorUtility");
 			return editorUtility.CallMethod<bool>("GetIsInspectorExpanded",current);
 		}
 		public static void SetExpanded(this UnityObject current,bool state){
-			Type editorUtility = Utility.GetEditorType("InternalEditorUtility");
+			Type editorUtility = Utility.GetInternalType("InternalEditorUtility");
 			editorUtility.CallMethod("SetIsInspectorExpanded",current,state);
 		}
 	}

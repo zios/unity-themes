@@ -212,6 +212,7 @@ namespace Zios{
 		public void SortProperties(){
 			if(this.properties.Count < 1){
 				var target = this.serializedObject.targetObject;
+				if(target.IsNull()){return;}
 				var property = this.serializedObject.GetIterator();
 				property.NextVisible(true);
 				while(property.NextVisible(false)){

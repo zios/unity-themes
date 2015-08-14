@@ -26,9 +26,9 @@ namespace Zios{
 	    public static Dictionary<GameObject,Dictionary<Type,Component[]>> objectComponents = new Dictionary<GameObject,Dictionary<Type,Component[]>>();
 	    static Locate(){
 		    //Events.Add("On Application Quit",Locate.SetDirty);
-			Events.Add("On Scene Loaded",Locate.SetDirty);
-			Events.Add("On Hierarchy Changed",Locate.SetDirty);
-			Events.Add("On Assets Changed",()=>Locate.assets.Clear());
+			Events.Add("On Scene Loaded",Locate.SetDirty).SetPermanent(true);
+			Events.Add("On Hierarchy Changed",Locate.SetDirty).SetPermanent(true);
+			Events.Add("On Assets Changed",()=>Locate.assets.Clear()).SetPermanent(true);
 		    Locate.SetDirty();
 	    }
 	    public static void SetDirty(){
@@ -37,6 +37,8 @@ namespace Zios{
 		    Locate.cleanSiblings.Clear();
 		    Locate.objectComponents.Clear();
 	    }
+		public static void SetComponentsDirty<Type>() where Type : Component{Locate.cleanSceneComponents.Remove(typeof(Type));}
+		public static void SetComponentsDirty<Type>(GameObject target) where Type : Component{Locate.objectComponents[target].Remove(typeof(Type));}
 	    public static void Build<Type>() where Type : Component{
 		    List<GameObject> rootObjects = new List<GameObject>();
 		    List<Type> enabled = new List<Type>();

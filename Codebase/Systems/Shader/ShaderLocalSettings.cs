@@ -37,20 +37,11 @@ namespace Zios{
 		}
 		public void Update(){
 			Shader.SetGlobalFloat("timeConstant",(Time.realtimeSinceStartup));
-			Events.Add("On Editor Update",this.EditorUpdate);
 		}
 		public void OnValidate(){
 			if(!this.CanValidate()){return;}
 			this.Setup();
 			this.Update();
-		}
-		public void EditorUpdate(){
-			#if UNITY_EDITOR
-			if(!Application.isPlaying && !Application.isLoadingLevel && UnityEditor.EditorPrefs.GetBool("SceneSettings-AlwaysUpdate")){
-				Shader.SetGlobalFloat("timeConstant",(Time.realtimeSinceStartup));
-				Utility.RepaintSceneView();
-			}
-			#endif	
 		}
 	}
 }

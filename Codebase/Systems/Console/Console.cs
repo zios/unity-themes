@@ -217,6 +217,7 @@ namespace Zios{
 		// Binds
 		//===========================
 		public static void AddBind(string key,string action,bool toggle=false,bool repeat=false,float repeatDelay=0){
+			if(!Application.isPlaying){return;}
 			List<string> keyCodes = new List<string>(Enum.GetNames(typeof(KeyCode)));
 			if(!keyCodes.Contains(key)){
 				key = Console.keyValues.ContainsValue(key) ? Console.keyValues.GetKey(key) : key;
@@ -335,23 +336,28 @@ namespace Zios{
 		// Cvars
 		//===========================
 		public static void AddCvarMethod(string name,object scope,string dataName,string fullName="",string help="",Method method=null){
+			if(!Application.isPlaying){return;}
 			Console.AddCvar(name,scope,dataName,fullName,help);
 			Console.cvars[name].method.simple = method;
 		}
 		public static void AddCvarMethod(string name,object scope,string dataName,string fullName="",string help="",ConsoleMethod method=null){
+			if(!Application.isPlaying){return;}
 			Console.AddCvar(name,scope,dataName,fullName,help);
 			Console.cvars[name].method.basic = method;
 		}
 		public static void AddCvarMethod(string name,object scope,string dataName,string fullName="",string help="",ConsoleMethodFull method=null){
+			if(!Application.isPlaying){return;}
 			Console.AddCvar(name,scope,dataName,fullName,help);
 			Console.cvars[name].method.full = method;
 		}
 		public static void AddCvar(string name,object scope,string dataName,string fullName,Dictionary<string,string> help,bool formatHelp=true){
+			if(!Application.isPlaying){return;}
 			if(help.ContainsKey(name)){
 				Console.AddCvar(name,scope,dataName,fullName,name + " " + help[name],formatHelp);
 			}
 		}
 		public static void AddCvar(string name,object scope,string dataName,string fullName="",string help="",bool formatHelp=true){
+			if(!Application.isPlaying){return;}
 			if(Console.cvars.ContainsKey(name)){
 				Debug.LogWarning("[Console] Already has registered Cvar for -- " + name);
 				return;
@@ -439,6 +445,7 @@ namespace Zios{
 		// Keywords/Shortcuts
 		//===========================
 		public static void AddKeyword(string name,ConsoleCallback call){
+			if(!Application.isPlaying){return;}
 			if(Console.keywords.ContainsKey(name)){
 				Debug.LogWarning("[Console] Already has registered Keyword for -- " + name);
 				return;
@@ -446,6 +453,7 @@ namespace Zios{
 			Console.keywords.Add(name,call);
 		}
 		public static void AddKeyword(string name,Method method=null,int minimumParameters=-1,string help=""){
+			if(!Application.isPlaying){return;}
 			ConsoleCallback call = new ConsoleCallback();
 			call.simple = method;
 			call.help = help;
@@ -453,6 +461,7 @@ namespace Zios{
 			Console.AddKeyword(name,call);
 		}
 		public static void AddKeyword(string name,ConsoleMethod method=null,int minimumParameters=-1,string help=""){
+			if(!Application.isPlaying){return;}
 			ConsoleCallback call = new ConsoleCallback();
 			call.basic = method;
 			call.help = help;
@@ -460,6 +469,7 @@ namespace Zios{
 			Console.AddKeyword(name,call);
 		}
 		public static void AddKeyword(string name,ConsoleMethodFull method=null,int minimumParameters=-1,string help=""){
+			if(!Application.isPlaying){return;}
 			ConsoleCallback call = new ConsoleCallback();
 			call.full = method;
 			call.help = help;
@@ -467,11 +477,13 @@ namespace Zios{
 			Console.AddKeyword(name,call);
 		}
 		public static void AddShortcut(string[] names,string replace){
+			if(!Application.isPlaying){return;}
 			foreach(string name in names){
 				Console.AddShortcut(name,replace);
 			}
 		}
 		public static void AddShortcut(string name,string replace){
+			if(!Application.isPlaying){return;}
 			if(Console.shortcuts.ContainsKey(name)){
 				Debug.LogWarning("[Console] Already has registered Shortcut for -- " + name);
 				return;
