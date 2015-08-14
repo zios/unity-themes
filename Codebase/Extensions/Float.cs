@@ -69,5 +69,16 @@ namespace Zios{
 		public static float Mode(this IEnumerable<float> current){
 			return current.GroupBy(x=>x).OrderByDescending(x=>x.Count()).Select(x=>x.Key).FirstOrDefault();
 		}
+		public static float Saturate(this float current){
+			return current.Clamp(0,1);
+		}
+		public static float Clamp(this float current,float min,float max){
+			if(current < min){return min;}
+			if(current > max){return max;}
+			return current;
+		}
+		public static float ClampRange(this float current,float min,float max){
+			return ((current-min)/(max-min)).Saturate();
+		}
     }
 }
