@@ -2,32 +2,20 @@
 using System;
 using System.Collections.Generic;
 namespace Zios{
-    [AddComponentMenu("Zios/Singleton/Style")]
-    [ExecuteInEditMode]
-    public class StyleManager : MonoBehaviour{
-	    public Style[] styles = new Style[0];
-	    public Dictionary<string,GUIStyle> instances = new Dictionary<string,GUIStyle>();
-	    public GUIStyle Get(string name){return this.instances.ContainsKey(name) ? this.instances[name] : null;}
-	    public void Awake(){
-		    DontDestroyOnLoad(this.gameObject);
-	    }
-	    public void Reset(){
-		    this.instances.Clear();
-	    }
-	    public void Update(){
-		    /*if(Global.Styles == null || this.instances.Count < 1){
-			    this.Start();
-		    }*/
-	    }
-	    public void Start(){
-		    foreach(Style item in this.styles){
-			    this.instances[item.name] = item.style;
-		    }
-	    }
-    }
-    [Serializable]
-    public class Style{
-	    public string name;
-	    public GUIStyle style;
+    public static class Style{
+		public static Dictionary<GUISkin,Dictionary<string,GUIStyle>> styles = new Dictionary<GUISkin,Dictionary<string,GUIStyle>>();
+		public static GUIStyle Get(GUISkin skin,string name,bool copy=false){
+			GUIStyle style;
+			if(Style.styles.AddNew(skin).ContainsKey(name)){
+				style = Style.styles[skin][name];
+				if(copy){return new GUIStyle(style);}
+				return style;
+			}
+			style = skin.GetStyle(name);
+			if(style != null){Style.styles[skin][name] = style;}
+			if(copy){return new GUIStyle(style);}
+			return style;
+		}
+		public static GUIStyle Get(string name,bool copy=false){return Style.Get(GUI.skin,name,copy);}
     }
 }

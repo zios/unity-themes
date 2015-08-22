@@ -46,6 +46,7 @@ namespace Zios{
 	    public static Rect SetHeight(this Rect current,float value){
 		    return new Rect(current).OverrideHeight(value);
 	    }
+	    public static Rect AddXY(this Rect current,Vector2 value){return current.AddX(value.x).AddY(value.y);}
 	    public static Rect AddXY(this Rect current,float x,float y){return current.AddX(x).AddY(y);}
 	    public static Rect AddX(this Rect current,float value){return current.Add(value);}
 	    public static Rect AddY(this Rect current,float value){return current.Add(0,value);}
@@ -63,10 +64,14 @@ namespace Zios{
 		    result.height += other.height;
 		    return result;
 	    }
-	    public static bool Clicked(this Rect current,int button=0){
+	    public static bool Hovered(this Rect current){
 		    Vector2 mouse = Event.current.mousePosition;
+		    return current.Contains(mouse);
+	    }
+	    public static bool Clicked(this Rect current,int button=-1){
 		    bool eventMatch = Event.current.type == EventType.MouseDown;
-		    return current.Contains(mouse) && eventMatch && Event.current.button == button;
+			bool buttonMatch = button == -1 ? true : Event.current.button == button;
+		    return current.Hovered() && eventMatch && buttonMatch;
 	    }
 	    public static bool InFocusedWindow(this Rect current){
 		    Rect windowRect = new Rect(0,0,Screen.width,Screen.height);

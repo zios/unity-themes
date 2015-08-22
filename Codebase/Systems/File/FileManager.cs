@@ -17,8 +17,10 @@ namespace Zios{
 	    public static Dictionary<string,List<FileData>> files = new Dictionary<string,List<FileData>>();
 		public static Dictionary<string,FileData> folders = new Dictionary<string,FileData>();
 		public static Dictionary<string,FileData[]> cache = new Dictionary<string,FileData[]>();
+		public static Dictionary<UnityObject,object> assets = new Dictionary<UnityObject,object>();
 	    static FileManager(){Refresh();}
 	    public static void Refresh(){
+			FileManager.assets.Clear();
 			FileManager.files.Clear();
 			FileManager.folders.Clear();
 			FileManager.cache.Clear();
@@ -115,9 +117,12 @@ namespace Zios{
 		public static T GetAsset<T>(UnityObject target){
 		    #if UNITY_EDITOR
 		    if(Application.isEditor){
-				string assetPath = AssetDatabase.GetAssetPath(target);
-			    object asset = AssetDatabase.LoadAssetAtPath(assetPath,typeof(T));
-			    return (T)Convert.ChangeType(asset,typeof(T));
+				if(!FileManager.assets.ContainsKey(target)){
+					string assetPath = AssetDatabase.GetAssetPath(target);
+					object asset = AssetDatabase.LoadAssetAtPath(assetPath,typeof(T));
+					FileManager.assets[target] = Convert.ChangeType(asset,typeof(T));
+				}
+				return (T)FileManager.assets[target];
 		    }
 		    #endif
 			return default(T);

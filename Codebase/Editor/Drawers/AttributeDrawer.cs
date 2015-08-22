@@ -301,7 +301,7 @@ namespace Zios{
 			Rect labelRect = this.labelRect.AddX(12);
 			EditorGUIUtility.AddCursorRect(this.fullRect,MouseCursor.ArrowPlus);
 			bool formulaExpanded = EditorPrefs.GetBool(this.attribute.info.path+"FormulaExpanded");
-			if(this.labelRect.AddX(16).Clicked() || this.valueRect.Clicked()){
+			if(this.labelRect.AddX(16).Clicked(0) || this.valueRect.Clicked(0)){
 				this.dirty = true;
 				formulaExpanded = !formulaExpanded;
 			}

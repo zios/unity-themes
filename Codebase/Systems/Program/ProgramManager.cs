@@ -14,9 +14,9 @@ namespace Zios{
 		public void OnEnable(){this.Setup();}
 		public void Awake(){this.Setup();}
 		public void Start(){
-			Zios.Console.AddShortcut("vsync","verticalSync");
+			/*Zios.Console.AddShortcut("vsync","verticalSync");
 			Zios.Console.AddCvar("maxfps",typeof(Application),"targetFrameRate","Maximum FPS");
-			Zios.Console.AddCvar("verticalSync",typeof(QualitySettings),"vSyncCount","Vertical Sync");
+			Zios.Console.AddCvar("verticalSync",typeof(QualitySettings),"vSyncCount","Vertical Sync");*/
 		}
 		public void Setup(){
 			ProgramManager.instance = this;

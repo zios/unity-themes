@@ -113,9 +113,9 @@ namespace Zios{
 		}
 	    public static void DrawLabel(this UnityLabel current,GUIStyle style=null,bool indention=false){
 		    style = style ?? EditorStyles.label;
-		    EditorGUIExtension.Draw(()=>EditorGUILayout.LabelField(current,style),indention);
+		    EditorGUIExtension.Draw(()=>GUILayout.Label(current,style),indention);
 	    }
-	    public static void DrawHelp(this string current,string textType,bool indention=false){
+	    public static void DrawHelp(this string current,string textType="Info",bool indention=false){
 		    MessageType type = MessageType.None;
 		    if(textType.Contains("Info",true)){type = MessageType.Info;}
 		    if(textType.Contains("Error",true)){type = MessageType.Error;}

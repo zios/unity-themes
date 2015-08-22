@@ -29,29 +29,57 @@ namespace Zios{
 		//=========================
 		// Reflection - Methods
 		//=========================
-	    public static bool HasMethod(this object current,string name,BindingFlags flags = allFlags){
-		    Type type = current is Type ? (Type)current : current.GetType();
-		    return type.GetMethod(name,flags) != null;
+		public static object CallExactMethod(this object current,string name,params object[] parameters){
+			return current.CallExactMethod<object>(name,allFlags,parameters);
+		}
+	    public static V CallExactMethod<V>(this object current,string name,params object[] parameters){
+			return current.CallExactMethod<V>(name,allFlags,parameters);
+		}
+	    public static V CallExactMethod<V>(this object current,string name,BindingFlags flags,params object[] parameters){
+			List<Type> argumentTypes = new List<Type>();
+			foreach(var parameter in parameters){
+				argumentTypes.Add(parameter.GetType());
+			}
+		    var methods = current.GetMethods(argumentTypes,name,flags);
+			if(methods.Count < 1){
+				Debug.LogWarning("[Object] No method found to call -- " + name);
+				return default(V);
+			}
+			if(current.IsStatic() || current is Type){
+				return (V)methods[0].Invoke(null,parameters);
+			}
+			return (V)methods[0].Invoke(current,parameters);
 	    }
 	    public static object CallMethod(this object current,string name,params object[] parameters){
-		    return current.CallMethod<object>(name,parameters);
+		    return current.CallMethod<object>(name,allFlags,parameters);
 	    }
 	    public static V CallMethod<V>(this object current,string name,params object[] parameters){
-			var method = current.GetMethod(name,allFlags);
-			if(method == null){return default(V);}
+			return current.CallMethod<V>(name,allFlags,parameters);
+		}
+	    public static V CallMethod<V>(this object current,string name,BindingFlags flags,params object[] parameters){
+			var method = current.GetMethod(name,flags);
+			if(method == null){
+				Debug.LogWarning("[Object] No method found to call -- " + name);
+				return default(V);
+			}
 		    if(current.IsStatic() || current is Type){
 			    return (V)method.Invoke(null,parameters);
 		    }
 		    return (V)method.Invoke(current,parameters);
 	    }
-	    public static MethodInfo GetMethod(this object current,string name,BindingFlags flags = allFlags){
+	    public static bool HasMethod(this object current,string name,BindingFlags flags=allFlags){
+		    Type type = current is Type ? (Type)current : current.GetType();
+		    return type.GetMethod(name,flags) != null;
+	    }
+	    public static MethodInfo GetMethod(this object current,string name,BindingFlags flags=allFlags){
 		    Type type = current is Type ? (Type)current : current.GetType();
 		    return type.GetMethod(name,flags);
 	    }
-	    public static List<MethodInfo> GetMethods(this object current,List<Type> argumentTypes = null,BindingFlags flags = allFlags){
+	    public static List<MethodInfo> GetMethods(this object current,List<Type> argumentTypes=null,string name="",BindingFlags flags=allFlags){
 		    Type type = current is Type ? (Type)current : current.GetType();
 		    List<MethodInfo> methods = new List<MethodInfo>();
 		    foreach(MethodInfo method in type.GetMethods(flags)){
+				if(!name.IsEmpty() && !method.Name.Matches(name,true)){continue;}
 			    if(argumentTypes != null){
 				    ParameterInfo[] parameters = method.GetParameters();
 				    bool match = parameters.Length == argumentTypes.Count;
@@ -69,8 +97,8 @@ namespace Zios{
 		    }
 		    return methods;
 	    }
-	    public static List<string> ListMethods(this object current,List<Type> argumentTypes = null,BindingFlags flags = allFlags){
-		    return current.GetMethods(argumentTypes,flags).Select(x=>x.Name).ToList();
+	    public static List<string> ListMethods(this object current,List<Type> argumentTypes=null,BindingFlags flags=allFlags){
+		    return current.GetMethods(argumentTypes,"",flags).Select(x=>x.Name).ToList();
 	    }
 		//=========================
 		// Reflection - Attributes
@@ -199,17 +227,20 @@ namespace Zios{
 	    public static object Box<T>(this T current){
 		    return current.AsBox();
 	    }
-	    public static T As<T>(this object current){
-		    return (T)current;
-	    }
 	    public static object AsBox<T>(this T current){
 		    return (object)current;
 	    }
-	    public static T[] AsArray<T>(this T current){
-		    return new T[]{current};
-	    }
 	    public static object[] AsBoxedArray<T>(this T current){
 		    return new object[]{current};
+	    }
+	    public static List<object> AsBoxedList<T>(this T current){
+		    return new List<object>{(object)current};
+	    }
+	    public static T As<T>(this object current){
+		    return (T)current;
+	    }
+	    public static T[] AsArray<T>(this T current){
+		    return new T[]{current};
 	    }
 	    public static List<T> AsList<T>(this T current){
 		    return new List<T>{current};

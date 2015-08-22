@@ -38,7 +38,7 @@ namespace Zios{
 			    importer.textureFormat = TextureImporterFormat.DXT5;
 			    importer.mipmapEnabled = false;
 		    }
-		    if(assetName.Contains("Index") || assetName.Contains("Shading")){
+		    if(assetName.Contains("Index") || assetName.Contains("Shading") || importer.assetPath.Contains("Interface")){
 			    importer.filterMode = FilterMode.Point;
 			    importer.wrapMode = TextureWrapMode.Clamp;
 			    importer.mipmapEnabled = false;
