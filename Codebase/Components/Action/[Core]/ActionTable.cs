@@ -1,5 +1,4 @@
-﻿#pragma warning disable 0414
-using UnityEngine;
+﻿using UnityEngine;
 using Zios;
 using System;
 namespace Zios{
@@ -10,6 +9,7 @@ namespace Zios{
 	    public override void Awake(){
 		    this.parts = this.gameObject.GetComponents<ActionLink>();
 		    this.isFixed = !this.parts.Exists(x=>x.rate == UpdateRate.Update);
+			base.Awake();
 	    }
 	    [ContextMenu("Refresh")]
 	    public override void Refresh(){
@@ -19,6 +19,7 @@ namespace Zios{
 		    this.UpdateRows();
 		    this.UpdateRequirements();
 		    this.UpdateOrder();
+			Events.Call("On Refresh",this.gameObject);
 	    }
 	    public void Update(){
 		    if(!this.isFixed){

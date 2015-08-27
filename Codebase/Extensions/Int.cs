@@ -84,5 +84,7 @@ namespace Zios{
 		public static int Mode(this IEnumerable<int> current){
 			return current.GroupBy(x=>x).OrderByDescending(x=>x.Count()).Select(x=>x.Key).FirstOrDefault();
 		}
+		public static int Min(this int current,int value){return Math.Min(current,value);}
+		public static int Max(this int current,int value){return Math.Max(current,value);}
     }
 }

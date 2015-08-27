@@ -5,7 +5,7 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityObject = UnityEngine.Object;
 namespace Zios{
-    [AddComponentMenu("Zios/Component/Action/*/State Table")]
+    [AddComponentMenu("Zios/Component/Action/*/State Table")][ExecuteInEditMode]
     public class StateTable : MonoBehaviour{
 		public static bool debug;
 	    public int total;
@@ -19,7 +19,13 @@ namespace Zios{
 		    this.tableOff = new StateRow[0];
 		    this.Awake();
 	    }
+		public virtual void OnDestroy(){
+			Events.Remove("On Hierarchy Changed",this.Refresh);
+		    Events.Remove("On State Update",this.UpdateStates,this.gameObject);
+		    Events.Remove("On State Refresh",this.Refresh,this.gameObject);
+		}
 	    public virtual void Awake(){
+			Events.Add("On Hierarchy Changed",this.Refresh);
 		    Events.Add("On State Update",this.UpdateStates,this.gameObject);
 		    Events.Add("On State Refresh",this.Refresh,this.gameObject);
 		    this.Refresh();
@@ -38,6 +44,7 @@ namespace Zios{
 		    this.UpdateRows();
 			this.UpdateRequirements();
 		    this.UpdateOrder();
+			Events.Call("On Refresh",this.gameObject);
 	    }
 	    // =============================
 	    //  Maintenence
@@ -310,6 +317,7 @@ namespace Zios{
     [Serializable]
     public class StateRow : StateBase{
 	    public bool empty;
+		public string section;
 	    public StateRowData[] requirements = new StateRowData[1];
 	    public StateRow(){}
 	    public StateRow(string name="",StateMonoBehaviour script=null,StateTable stateTable=null){

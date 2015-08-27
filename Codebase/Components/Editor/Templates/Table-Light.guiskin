@@ -120,7 +120,7 @@ MonoBehaviour:
     m_Font: {fileID: 0}
     m_FontSize: 0
     m_FontStyle: 0
-    m_Alignment: 4
+    m_Alignment: 3
     m_WordWrap: 0
     m_RichText: 0
     m_TextClipping: 0
@@ -129,7 +129,7 @@ MonoBehaviour:
     m_FixedWidth: 81
     m_FixedHeight: 27
     m_StretchWidth: 1
-    m_StretchHeight: 0
+    m_StretchHeight: 1
   m_toggle:
     m_Name: toggle
     m_Normal:
@@ -244,7 +244,7 @@ MonoBehaviour:
     m_TextClipping: 1
     m_ImagePosition: 0
     m_ContentOffset: {x: 0, y: 0}
-    m_FixedWidth: 137
+    m_FixedWidth: 109
     m_FixedHeight: 27
     m_StretchWidth: 0
     m_StretchHeight: 0
@@ -1249,7 +1249,7 @@ MonoBehaviour:
     m_ContentOffset: {x: 0, y: 0}
     m_FixedWidth: 81
     m_FixedHeight: 27
-    m_StretchWidth: 1
+    m_StretchWidth: 0
     m_StretchHeight: 0
   - m_Name: buttonOff
     m_Normal:
@@ -1309,6 +1309,122 @@ MonoBehaviour:
     m_FixedHeight: 27
     m_StretchWidth: 1
     m_StretchHeight: 1
+  - m_Name: buttonDisabled
+    m_Normal:
+      m_Background: {fileID: 2800000, guid: 593591b05b81efd4fb991629572718ee, type: 3}
+      m_TextColor: {r: .389705896, g: .389705896, b: .389705896, a: 1}
+    m_Hover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Active:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Focused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnNormal:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnHover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnActive:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnFocused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Border:
+      m_Left: 4
+      m_Right: 4
+      m_Top: 4
+      m_Bottom: 4
+    m_Margin:
+      m_Left: 0
+      m_Right: 1
+      m_Top: 1
+      m_Bottom: 0
+    m_Padding:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Overflow:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Font: {fileID: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_Alignment: 4
+    m_WordWrap: 0
+    m_RichText: 1
+    m_TextClipping: 0
+    m_ImagePosition: 0
+    m_ContentOffset: {x: 0, y: 0}
+    m_FixedWidth: 81
+    m_FixedHeight: 27
+    m_StretchWidth: 1
+    m_StretchHeight: 1
+  - m_Name: buttonExpand
+    m_Normal:
+      m_Background: {fileID: 2800000, guid: e3d2d2023148fbc4682b36bcde325620, type: 3}
+      m_TextColor: {r: .45588237, g: .45588237, b: .45588237, a: 1}
+    m_Hover:
+      m_Background: {fileID: 2800000, guid: 9c508c0955f616d42a3cae34ce568f54, type: 3}
+      m_TextColor: {r: .213235319, g: .213235319, b: .213235319, a: 1}
+    m_Active:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Focused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnNormal:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnHover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnActive:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnFocused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Border:
+      m_Left: 4
+      m_Right: 4
+      m_Top: 4
+      m_Bottom: 4
+    m_Margin:
+      m_Left: 5
+      m_Right: 1
+      m_Top: 1
+      m_Bottom: 0
+    m_Padding:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Overflow:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Font: {fileID: 0}
+    m_FontSize: 12
+    m_FontStyle: 0
+    m_Alignment: 4
+    m_WordWrap: 0
+    m_RichText: 1
+    m_TextClipping: 0
+    m_ImagePosition: 0
+    m_ContentOffset: {x: -1, y: -2}
+    m_FixedWidth: 27
+    m_FixedHeight: 27
+    m_StretchWidth: 1
+    m_StretchHeight: 1
   - m_Name: title
     m_Normal:
       m_Background: {fileID: 2800000, guid: 9c6b7749af402024ba157e1b3cf452be, type: 3}
@@ -1363,7 +1479,7 @@ MonoBehaviour:
     m_TextClipping: 0
     m_ImagePosition: 0
     m_ContentOffset: {x: 0, y: 0}
-    m_FixedWidth: 569
+    m_FixedWidth: 691
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0

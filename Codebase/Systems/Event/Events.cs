@@ -226,15 +226,15 @@ namespace Zios{
 	    public static EventListener Add(string name,MethodBool method,params object[] targets){return Events.Add(name,(object)method,-1,targets);}
 	    public static EventListener Add(string name,MethodVector2 method,params object[] targets){return Events.Add(name,(object)method,-1,targets);}
 	    public static EventListener Add(string name,MethodVector3 method,params object[] targets){return Events.Add(name,(object)method,-1,targets);}
-	    public static EventListener AddLimited(string name,Method method,int amount,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
-	    public static EventListener AddLimited(string name,MethodObject method,int amount,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
-	    public static EventListener AddLimited(string name,MethodFull method,int amount,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
-	    public static EventListener AddLimited(string name,MethodString method,int amount,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
-	    public static EventListener AddLimited(string name,MethodInt method,int amount,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
-	    public static EventListener AddLimited(string name,MethodFloat method,int amount,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
-	    public static EventListener AddLimited(string name,MethodBool method,int amount,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
-	    public static EventListener AddLimited(string name,MethodVector2 method,int amount,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
-	    public static EventListener AddLimited(string name,MethodVector3 method,int amount,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
+	    public static EventListener AddLimited(string name,Method method,int amount=1,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
+	    public static EventListener AddLimited(string name,MethodObject method,int amount=1,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
+	    public static EventListener AddLimited(string name,MethodFull method,int amount=1,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
+	    public static EventListener AddLimited(string name,MethodString method,int amount=1,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
+	    public static EventListener AddLimited(string name,MethodInt method,int amount=1,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
+	    public static EventListener AddLimited(string name,MethodFloat method,int amount=1,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
+	    public static EventListener AddLimited(string name,MethodBool method,int amount=1,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
+	    public static EventListener AddLimited(string name,MethodVector2 method,int amount=1,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
+	    public static EventListener AddLimited(string name,MethodVector3 method,int amount=1,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
 	    public static EventListener Add(string name,object method,int amount,params object[] targets){
 			if(Events.disabled){
 				if(Events.debug.Has("AddDeep")){Debug.LogWarning("[EventManager] : Add attempted while Events disabled. " + name);}

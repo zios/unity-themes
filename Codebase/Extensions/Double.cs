@@ -69,5 +69,7 @@ namespace Zios{
 		public static double Mode(this IEnumerable<double> current){
 			return current.GroupBy(x=>x).OrderByDescending(x=>x.Count()).Select(x=>x.Key).FirstOrDefault();
 		}
+		public static double Min(this double current,double value){return Math.Min(current,value);}
+		public static double Max(this double current,double value){return Math.Max(current,value);}
     }
 }

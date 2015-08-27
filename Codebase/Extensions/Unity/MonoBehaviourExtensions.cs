@@ -21,7 +21,7 @@ namespace Zios{
 			return !Application.isPlaying && !Application.isLoadingLevel && current.gameObject.activeInHierarchy && current.enabled;
 		}
 		public static bool IsEnabled(this MonoBehaviour current){
-			return current.enabled && current.gameObject.activeInHierarchy;
+			return !current.IsNull() && current.enabled && current.gameObject.activeInHierarchy;
 		}
     }
 }

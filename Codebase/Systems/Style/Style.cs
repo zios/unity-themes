@@ -4,6 +4,10 @@ using System.Collections.Generic;
 namespace Zios{
     public static class Style{
 		public static Dictionary<GUISkin,Dictionary<string,GUIStyle>> styles = new Dictionary<GUISkin,Dictionary<string,GUIStyle>>();
+		public static GUIStyle Get(string skin,string name,bool copy=false){
+			var guiSkin = FileManager.GetAsset<GUISkin>(skin+".guiskin");
+			return Style.Get(guiSkin,name,copy);
+		}
 		public static GUIStyle Get(GUISkin skin,string name,bool copy=false){
 			GUIStyle style;
 			if(Style.styles.AddNew(skin).ContainsKey(name)){

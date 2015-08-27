@@ -21,6 +21,10 @@ namespace Zios{
 		public static ShaderSettings Get(){return ShaderSettings.instance;}
 		public void OnEnable(){this.Setup();}
 		public void Awake(){this.Setup();}
+		public void OnValidate(){
+			if(!this.CanValidate()){return;}
+			this.Setup();
+		}
 		public void Setup(){
 			ShaderSettings.instance = this;
 			if(Application.isEditor){
@@ -43,10 +47,6 @@ namespace Zios{
 			Events.stepperTitle = "Updating " + materials.Count + " Materials";
 			Events.stepperMessage = "Updating material : " + materials[index].name;
 			VariableMaterial.Refresh(true,materials[index]);
-		}
-		public void OnValidate(){
-			if(!this.CanValidate()){return;}
-			this.Setup();
 		}
 		public void SetKeyword(Enum target){
 			string typeName = target.GetType().Name.ToUpper()+"_";

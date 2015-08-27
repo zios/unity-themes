@@ -266,7 +266,7 @@ namespace Zios{
 		    bool mouseMove = Event.current.type == EventType.MouseMove;
 		    Vector2 mouseChange = mouseMove ? Event.current.delta : new Vector2(0,0);
 		    Cursor.visible = !((control || alt || shift) && placementMode);
-		    KeyShortcut CheckKey = Button.CheckEventKeyDown;
+		    KeyShortcut CheckKey = Button.KeyDown;
 		    Transform[] selected = this.placementMode && this.brush != null ? new Transform[1]{this.brush.transform} : Selection.transforms;
 		    if((control||alt||shift) && mouseMove){
 			    if(this.controlPosition == Vector2.zero){
@@ -1066,7 +1066,7 @@ namespace Zios{
 		    this.DrawAnimated();
 		    this.visible = false;
 		    if(this.disabled){return;}
-		    KeyShortcut CheckKeyDown = Button.CheckEventKeyDown;
+		    KeyShortcut CheckKeyDown = Button.KeyDown;
 		    bool useEvent = false;
 		    bool brushUsable = EditorWindow.mouseOverWindow == view;
 		    if((!this.placementMode || !brushUsable) && this.brush != null && this.brush.activeSelf){

@@ -80,5 +80,7 @@ namespace Zios{
 		public static float LerpRelative(this float current,float start,float end){
 			return ((current-start)/(end-start)).Saturate();
 		}
+		public static float Min(this float current,float value){return Math.Min(current,value);}
+		public static float Max(this float current,float value){return Math.Max(current,value);}
     }
 }

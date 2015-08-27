@@ -1,9 +1,11 @@
 fileFormatVersion: 2
-guid: 3a65c3306964ba44496080f14d048029
+guid: dbd67190823a9214cb2c7ab692634623
+timeCreated: 1440435187
+licenseType: Pro
 TrueTypeFontImporter:
   serializedVersion: 2
-  fontSize: 16
-  forceTextureCase: -2
+  fontSize: 32
+  forceTextureCase: -1
   characterSpacing: 1
   characterPadding: 0
   includeFontData: 1

@@ -25,6 +25,18 @@ namespace Zios.UI{
 			row.order = this.rows.Count-1;
 			return row;
 		}
+		public void Reorder(){
+			int rowIndex = 0;
+			foreach(var row in this.rows){
+				int columnIndex = 0;
+				row.order = rowIndex;
+				foreach(var column in row.fields){
+					column.order = columnIndex;
+					columnIndex += 1;
+				}
+				rowIndex += 1;
+			}
+		}
 		public virtual void Draw(){
 			GUI.skin = this.GetSkin();
 			foreach(var row in this.rows){row.Draw();}
@@ -69,20 +81,11 @@ namespace Zios.UI{
 		public TableRow row;
 		public object target;
 		public int order;
-		public string style = "Text Field";
 		public TableField(object target=null,TableRow row=null){
 			this.row = row;
 			this.target = target;
 		}
-		public virtual void Draw(){
-			var style = new GUIStyle(Style.Get(this.style));
-			if(this.selected){style.normal = style.active;}
-			if(this.target is string || this.target.HasVariable("name")){
-				string name = this.target is string ? (string)this.target : this.target.GetVariable<string>("name");
-				name.DrawLabel(style);
-			}
-			this.CheckClicked();
-		}
+		public virtual void Draw(){}
 		public virtual void Clicked(int button){}
 		public void CheckClicked(){
 			if(GUILayoutUtility.GetLastRect().Clicked()){

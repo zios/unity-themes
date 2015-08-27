@@ -65,61 +65,6 @@ namespace Zios{
 		private static List<string> configOutput = new List<string>();
 		private static Vector3 dragStart = Vector3.zero;
 		private static GUIStyle logStyle;
-		private static Dictionary<KeyCode,string> keyValues = new Dictionary<KeyCode,string>(){
-			{KeyCode.Keypad0,"0"},
-			{KeyCode.Keypad1,"1"},
-			{KeyCode.Keypad2,"2"},
-			{KeyCode.Keypad3,"3"},
-			{KeyCode.Keypad4,"4"},
-			{KeyCode.Keypad5,"5"},
-			{KeyCode.Keypad6,"6"},
-			{KeyCode.Keypad7,"7"},
-			{KeyCode.Keypad8,"8"},
-			{KeyCode.Keypad9,"9"},
-			{KeyCode.KeypadPeriod,"."},
-			{KeyCode.KeypadDivide,"/"},
-			{KeyCode.KeypadMultiply,"*"},
-			{KeyCode.KeypadMinus,"-"},
-			{KeyCode.KeypadPlus,"+"},
-			{KeyCode.KeypadEquals,"="},
-			{KeyCode.Alpha0,"0"},
-			{KeyCode.Alpha1,"1"},
-			{KeyCode.Alpha2,"2"},
-			{KeyCode.Alpha3,"3"},
-			{KeyCode.Alpha4,"4"},
-			{KeyCode.Alpha5,"5"},
-			{KeyCode.Alpha6,"6"},
-			{KeyCode.Alpha7,"7"},
-			{KeyCode.Alpha8,"8"},
-			{KeyCode.Alpha9,"9"},
-			{KeyCode.Exclaim,"!"},
-			{KeyCode.DoubleQuote,"\""},
-			{KeyCode.Hash,"#"},
-			{KeyCode.Dollar,"$"},
-			{KeyCode.Ampersand,"&"},
-			{KeyCode.Quote,"'"},
-			{KeyCode.LeftParen,"("},
-			{KeyCode.RightParen,")"},
-			{KeyCode.Asterisk,"*"},
-			{KeyCode.Plus,"+"},
-			{KeyCode.Comma,","},
-			{KeyCode.Minus,"-"},
-			{KeyCode.Period,"."},
-			{KeyCode.Slash,"/"},
-			{KeyCode.Colon,":"},
-			{KeyCode.Semicolon,";"},
-			{KeyCode.Less,"<"},
-			{KeyCode.Equals,"="},
-			{KeyCode.Greater,">"},
-			{KeyCode.Question,"?"},
-			{KeyCode.At,"@"},
-			{KeyCode.LeftBracket,"["},
-			{KeyCode.Backslash,"\\"},
-			{KeyCode.RightBracket,"]"},
-			{KeyCode.Caret,"^"},
-			{KeyCode.Underscore,"_"},
-			{KeyCode.BackQuote,"`"}
-		};
 		private static string[] help = new string[]{
 			"^3consoleFontSize ^9<^7number^9> :^10 The font size of the log.",
 			"^3consoleSize ^9<^7decimal^9> :^10 The height percent that the console is visible.",
@@ -220,7 +165,7 @@ namespace Zios{
 			if(!Application.isPlaying){return;}
 			List<string> keyCodes = new List<string>(Enum.GetNames(typeof(KeyCode)));
 			if(!keyCodes.Contains(key)){
-				key = Console.keyValues.ContainsValue(key) ? Console.keyValues.GetKey(key) : key;
+				key = Button.GetName(key);
 				if(!keyCodes.Contains(key)){ 
 					Debug.LogWarning("[Console] " + key + " could not be bound. It is not a valid key.");
 					return;
@@ -305,12 +250,11 @@ namespace Zios{
 			}
 		}
 		public static void CheckBinds(){
-			KeyShortcut CheckKeyDown = Button.CheckEventKeyDown;
 			if(Console.keyDetection != ""){return;}
 			foreach(var item in Console.binds){
 				Bind data = item.Value;
 				if(Console.status > 0 && !data.action.Contains("consoleShow",true)){continue;}
-				bool keyDown = CheckKeyDown(data.key);
+				bool keyDown = Button.KeyDown(data.key);
 				if(keyDown && data.repeat && data.nextRepeat > Time.time){
 					Console.AddCommand(data.action);
 					data.nextRepeat += Time.time + data.repeatDelay;
@@ -610,8 +554,7 @@ namespace Zios{
 			}
 		}
 		public static void CheckTrigger(){
-			KeyShortcut CheckKeyDown = Button.CheckEventKeyDown;
-			if(CheckKeyDown(Console.settings.triggerKey)){
+			if(Button.KeyDown(Console.settings.triggerKey)){
 				Console.ShowConsole();
 				Event.current.Use();
 			}
@@ -620,7 +563,6 @@ namespace Zios{
 			bool control = Event.current.control;
 			bool shift = Event.current.shift;
 			bool alt = Event.current.alt;
-			KeyShortcut CheckKeyDown = Button.CheckEventKeyDown;
 			if(control && alt){
 				string keyName = Convert.ToString(Event.current.keyCode);
 				if(Console.keyDetection == ""){Console.keyDetection = "###";}
@@ -636,7 +578,7 @@ namespace Zios{
 				}
 			}
 			else{Console.keyDetection = "";}
-			if(CheckKeyDown(KeyCode.Return)){
+			if(Button.KeyDown(KeyCode.Return)){
 				Console.inputText = Console.inputText.TrimStart('\\').TrimStart('/');
 				Console.lastCommand = Console.inputText == "" ? " " : Console.inputText;
 				if(Console.inputText != ""){
@@ -651,12 +593,12 @@ namespace Zios{
 				else if(shift){Console.settings.height += Math.Sign(Event.current.delta[1]) * 0.02f;}
 				else{Console.logPosition += (float)(Event.current.delta[1]) / (float)(Console.log.Count);}
 			}
-			else if(CheckKeyDown(KeyCode.PageDown)){Console.logPosition += Console.logScrollLimit * 0.25f;}
-			else if(CheckKeyDown(KeyCode.PageUp)){Console.logPosition -= Console.logScrollLimit * 0.25f;}
-			else if(CheckKeyDown(KeyCode.Tab)){Console.CheckAutocomplete();}
-			if(Console.history.Count > 0 && (CheckKeyDown(KeyCode.UpArrow) || CheckKeyDown(KeyCode.DownArrow))){
-				if(CheckKeyDown(KeyCode.UpArrow) && Console.historyIndex > 0){--Console.historyIndex;}
-				if(CheckKeyDown(KeyCode.DownArrow)){++Console.historyIndex;}
+			else if(Button.KeyDown(KeyCode.PageDown)){Console.logPosition += Console.logScrollLimit * 0.25f;}
+			else if(Button.KeyDown(KeyCode.PageUp)){Console.logPosition -= Console.logScrollLimit * 0.25f;}
+			else if(Button.KeyDown(KeyCode.Tab)){Console.CheckAutocomplete();}
+			if(Console.history.Count > 0 && (Button.KeyDown(KeyCode.UpArrow) || Button.KeyDown(KeyCode.DownArrow))){
+				if(Button.KeyDown(KeyCode.UpArrow) && Console.historyIndex > 0){--Console.historyIndex;}
+				if(Button.KeyDown(KeyCode.DownArrow)){++Console.historyIndex;}
 				Console.historyIndex = (byte)Mathf.Clamp(Console.historyIndex,0,Console.history.Count-1);
 				Console.inputText = Console.history[Console.historyIndex];
 			}
