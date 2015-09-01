@@ -4,7 +4,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using UnityObject = UnityEngine.Object;
-namespace Zios{
+namespace Zios.UI{
 	public class UnityLabel{
 		public GUIContent value = new GUIContent("");
 		public UnityLabel(string value){this.value = new GUIContent(value);}

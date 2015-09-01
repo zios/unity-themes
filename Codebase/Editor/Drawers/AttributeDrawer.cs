@@ -8,7 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using MenuFunction = UnityEditor.GenericMenu.MenuFunction;
 using UnityObject = UnityEngine.Object;
-namespace Zios{
+namespace Zios.UI{
 	[CustomPropertyDrawer(typeof(Attribute),true)]
 	public class AttributeDrawer : PropertyDrawer{
 		public IAttributeAccess access;
@@ -28,7 +28,7 @@ namespace Zios{
 				MonoBehaviour script = (MonoBehaviour)property.serializedObject.targetObject;
 				this.isPrefab = script.IsPrefab();
 			}
-			if(!this.attribute.showInEditor){
+			if(!this.attribute.showInEditor || !this.attribute.isSetup){
 				this.overallHeight = -2;
 				return;
 			}

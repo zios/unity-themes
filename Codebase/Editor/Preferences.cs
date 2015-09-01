@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEditor;
-namespace Zios{
+namespace Zios.UI{
 	public class Preferences{
 		[PreferenceItem("Zios")]
 		public static void Main(){

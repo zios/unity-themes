@@ -3,7 +3,7 @@ using UnityEditor;
 using Zios;
 using System.Linq;
 using System.Collections.Generic;
-namespace Zios{
+namespace Zios.UI{
     [CustomPropertyDrawer(typeof(EventTarget))]
     public class EventTargetDrawer : PropertyDrawer{
 	    public Dictionary<EventTarget,bool> targetMode = new Dictionary<EventTarget,bool>();

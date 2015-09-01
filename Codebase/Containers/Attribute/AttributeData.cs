@@ -19,14 +19,10 @@ namespace Zios{
 			if(!this.attribute.IsNull() && !this.attribute.parent.IsNull()){
 				this.target.Setup(this.attribute.path+"/Target",this.attribute.parent);
 				if(!Application.isPlaying){
-					Events.Add("On Destroy",this.DestroySelf,this.attribute.parent);
+					Events.Add("On Destroy",this.OnDestroy,this.attribute.parent);
 					Events.Add("On Validate",this.ValidateParent,this);
 				}
 			}
-		}
-		public void DestroySelf(){
-			bool exists = !this.IsNull() && !this.gameObject.IsNull();
-			if(exists){Utility.EditorDelayCall(()=>Utility.Destroy(this));}
 		}
 		public void ValidateParent(){
 			if(this.attribute.parent is DataMonoBehaviour){
@@ -37,6 +33,7 @@ namespace Zios{
 		public override void OnDestroy(){
 			if(Application.isPlaying || Application.isLoadingLevel){return;}
 			base.OnDestroy();
+			Events.Remove("On Destroy",this.OnDestroy,this.attribute.parent);
 			if(this.attribute != null){
 				this.attribute.data = this.attribute.data.Remove(this);
 				this.attribute.dataB = this.attribute.dataB.Remove(this);

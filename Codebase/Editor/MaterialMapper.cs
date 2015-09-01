@@ -7,7 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityObject = UnityEngine.Object;
 using MenuFunction = UnityEditor.GenericMenu.MenuFunction;
-namespace Zios{
+namespace Zios.UI{
 	[Serializable]
 	public class ShaderInfo{
 		public bool found;

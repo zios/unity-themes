@@ -2,7 +2,7 @@
 using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
-namespace Zios{
+namespace Zios.UI{
     [CustomPropertyDrawer(typeof(ListBool))]
     public class ListBoolDrawer : PropertyDrawer{
         public override void OnGUI(Rect area,SerializedProperty property,GUIContent label){

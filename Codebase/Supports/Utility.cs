@@ -213,7 +213,6 @@ namespace Zios{
 			#if UNITY_EDITOR
 			if(!Utility.IsPlaying() && !Utility.delayPaused){
 				EditorApplication.delayCall += method;
-				
 			}
 			#endif
 	    }
@@ -390,6 +389,7 @@ namespace Zios{
 			}
 		    EditorUtility.SetDirty(target);
 			Utility.UpdatePrefab(target);
+			EditorApplication.MarkSceneDirty();
 		    #endif
 	    }
 	    public static void SetAssetDirty(UnityObject target){

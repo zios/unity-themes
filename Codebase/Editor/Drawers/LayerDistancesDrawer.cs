@@ -3,7 +3,7 @@ using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
 using Zios;
-namespace Zios{
+namespace Zios.UI{
     [CustomPropertyDrawer(typeof(LayerDistances))]
     public class LayerDistancesDrawer : PropertyDrawer{
 	    public int drawn;

@@ -4,7 +4,7 @@ using UnityEditor;
 using System;
 using System.Linq;
 using System.Collections.Generic;
-namespace Zios{
+namespace Zios.UI{
 	[CustomPropertyDrawer(typeof(AttributeBool),true)]
 	public class AttributeBoolDrawer : AttributeDrawer{
 		public override void OnGUI(Rect area,SerializedProperty property,GUIContent label){
@@ -13,7 +13,7 @@ namespace Zios{
 				MonoBehaviour script = (MonoBehaviour)property.serializedObject.targetObject;
 				this.isPrefab = script.IsPrefab();
 			}
-			if(!this.attribute.showInEditor){
+			if(!this.attribute.showInEditor || !this.attribute.isSetup){
 				this.overallHeight = -2;
 				return;
 			}

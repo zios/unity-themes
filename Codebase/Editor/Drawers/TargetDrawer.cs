@@ -2,7 +2,7 @@
 using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
-namespace Zios{
+namespace Zios.UI{
     [CustomPropertyDrawer(typeof(Target),true)]
     public class TargetDrawer : PropertyDrawer{
 	    public bool setup;

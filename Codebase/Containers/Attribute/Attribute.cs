@@ -203,6 +203,7 @@ namespace Zios{
 				this.FixDuplicates();
 				this.FixIDConflict(previousID);
 				Events.Add("On Validate",this.ValidateDependents,parent);
+				Events.AddLimited("On Reset",()=>this.Setup(path,parent),1,parent);
 			}
 			this.PrepareData();
 			if(!Attribute.all.Contains(this)){
