@@ -1249,7 +1249,7 @@ MonoBehaviour:
     m_ContentOffset: {x: 0, y: 0}
     m_FixedWidth: 81
     m_FixedHeight: 27
-    m_StretchWidth: 0
+    m_StretchWidth: 1
     m_StretchHeight: 0
   - m_Name: buttonOff
     m_Normal:

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System;
 using System.Reflection;
 using Controller = Zios.Snapshot.SnapshotController;
-namespace Zios.Snapshot{
+namespace Zios.UI{
 /*	[CustomEditor(typeof(Controller))]
 	public class SnapshotControllerEditor : Editor{
 		private AddAttributeElement addAttribute;

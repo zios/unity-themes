@@ -1,7 +1,7 @@
 ﻿using Zios;
 using UnityEngine;
 using UnityEditor;
-namespace Zios{
+namespace Zios.UI{
     [CustomEditor(typeof(DataMonoBehaviour),true)][CanEditMultipleObjects]
     public class DataMonoBehaviourEditor : MonoBehaviourEditor{
 	    public override void OnInspectorGUI(){

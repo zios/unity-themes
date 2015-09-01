@@ -49,7 +49,7 @@ namespace Zios{
 		    }
 	    }
 	    public void OnDisable(){
-		    if(!this.gameObject.activeInHierarchy || !this.enabled){
+		    if(this.gameObject.activeInHierarchy || this.enabled){
 			    foreach(ActionLink part in this.parts){
 				    part.ApplyState(false);
 			    }

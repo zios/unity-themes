@@ -4,8 +4,8 @@ namespace Zios{
     public enum MoveType{Absolute,Relative}
     [AddComponentMenu("Zios/Component/Action/Move/Add Move")]
     public class AddMove : ActionLink{
-		[Advanced] public string eventName;
 	    public MoveType type;
+		[Advanced] public string eventName;
 	    public AttributeGameObject target = new AttributeGameObject();
 	    public AttributeVector3 amount = Vector3.zero;
 	    public override void Awake(){

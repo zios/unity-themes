@@ -38,9 +38,9 @@ namespace Zios{
 				this.End();
 			}
 		}
-		public virtual void OnDisable(){
+		public override void OnDisable(){
+			base.OnDisable();
 			if(!this.gameObject.activeInHierarchy || !this.enabled){
-				this.gameObject.CallEvent(this.alias+"/On Disabled");
 				if(this.actionTable==null){this.End();}
 			}
 		}

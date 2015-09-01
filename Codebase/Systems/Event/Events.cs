@@ -281,9 +281,20 @@ namespace Zios{
 			foreach(var target in targets){
 				if(Events.cache.ContainsKey(target) && Events.cache[target].ContainsKey(name)){
 					Events.cache[target][name].Remove(method);
-					Events.cache[Events.all][name].Remove(method);
+					if(Events.cache[Events.all].ContainsKey(name)){
+						Events.cache[Events.all][name].Remove(method);
+					}
 				}
 				Events.listeners.RemoveAll(x=>x.method==method && x.target==target && x.name==name);
+			}
+		}
+		public static void RemoveAll(params object[] targets){
+			if(Events.disabled){return;}
+			targets = Events.ValidateAll(targets);
+			foreach(var target in targets){
+				if(Events.cache.ContainsKey(target)){
+					Events.cache.Remove(target);
+				}
 			}
 		}
 	    public static void SetPause(string type,string name,object target){
@@ -468,6 +479,10 @@ namespace Zios{
 	    public static void RemoveEvent(this object current,string name,object method){
 			if(current.IsNull()){return;}
 		    Events.Remove(name,method,current);
+	    }
+	    public static void RemoveAllEvents(this object current,string name,object method){
+			if(current.IsNull()){return;}
+		    Events.RemoveAll(current);
 	    }
 	    public static void CallEvent(this object current,string name,params object[] values){
 			if(current.IsNull()){return;}

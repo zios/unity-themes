@@ -3,7 +3,7 @@ using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
 using Zios;
-namespace Zios{
+namespace Zios.UI{
     [CustomEditor(typeof(AnimationSettings))]
     public class AnimationSettingsEditor : Editor{
 	    private CustomListElement listElement;

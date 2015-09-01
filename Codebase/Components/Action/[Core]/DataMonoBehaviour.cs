@@ -17,12 +17,11 @@ namespace Zios{
 	    public virtual void Awake(){
 		    string name = this.GetType().Name.ToTitle();
 		    this.lastAlias = this.alias = this.alias.SetDefault(name);
-			this.dependents = new List<DataDependency>();
 			if(!Application.isPlaying){
 				Events.Register("On Destroy",this);
 				Events.Register("On Validate",this);
-				Events.Add("On Validate",this.CheckAlias,this);
 				Events.Add("On Validate",this.CheckDependents,this);
+				Events.Add("On Validate",this.CheckAlias,this);
 				Events.Add("On Hierarchy Changed",this.CheckDependents);
 				Events.Add("On Attributes Ready",this.CheckDependents);
 			}
@@ -30,13 +29,37 @@ namespace Zios{
 		//===============
 		// Editor
 		//===============
+		public virtual void Reset(){
+			if(this.alias.IsEmpty()){
+				this.CallEvent("On Reset");
+				return;
+			}
+			Events.Call("On Attach",this);
+		}
+		public virtual void OnDisable(){
+			if(this.gameObject.activeInHierarchy || this.enabled){
+				this.gameObject.CallEvent(this.alias+"/On Disabled");
+				this.gameObject.CallEvent("On Disable");
+				this.gameObject.CallEvent("On Components Changed");
+			}
+		}
+		public virtual void OnEnable(){
+			if(!this.lastAlias.IsEmpty() && this.gameObject.activeInHierarchy && this.enabled){
+				this.gameObject.CallEvent(this.alias+"/On Enabled");
+				this.gameObject.CallEvent("On Enable");
+				this.gameObject.CallEvent("On Components Changed");
+			}
+		}
 	    public virtual void OnValidate(){
 			if(!this.CanValidate()){return;}
-			this.CallEvent("On Validate");
+			Utility.EditorDelayCall(()=>this.CallEvent("On Validate"),1);
 	    }
 	    public virtual void OnDestroy(){
 			if(Application.isPlaying || Application.isLoadingLevel){return;}
+			Events.Remove("On Hierarchy Changed",this.CheckDependents);
+			Events.Remove("On Attributes Ready",this.CheckDependents);
 			this.CallEvent("On Destroy");
+			Events.RemoveAll(this);
 			AttributeManager.PerformRefresh();
 	    }
 		public void CheckAlias(){
@@ -47,6 +70,7 @@ namespace Zios{
 			}
 		}
 		public void CheckDependents(){
+			this.dependents.RemoveAll(x=>x.processing);
 			foreach(var dependent in this.dependents){
 				var currentDependent = dependent;
 				dependent.processing = false;

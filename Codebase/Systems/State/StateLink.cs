@@ -39,7 +39,8 @@ namespace Zios{
 			if(this.usable && this.ready){this.Use();}
 			else if(!this.usable){this.End();}
 		}
-		public void OnDisable(){
+		public override void OnDisable(){
+			base.OnDisable();
 			this.gameObject.CallEvent("On Action Disabled");
 			this.gameObject.CallEvent("On State Update");
 		}

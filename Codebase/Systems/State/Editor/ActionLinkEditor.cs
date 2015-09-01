@@ -1,7 +1,7 @@
 ﻿using Zios;
 using UnityEngine;
 using UnityEditor;
-namespace Zios{
+namespace Zios.UI{
     [CustomEditor(typeof(ActionLink),true)]
     public class ActionLinkEditor : StateLinkEditor{
 		public override StateTable GetTable(){

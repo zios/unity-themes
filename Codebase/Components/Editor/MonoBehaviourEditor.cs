@@ -6,7 +6,7 @@ using UnityEditor;
 using System.Collections.Generic;
 using UnityObject = UnityEngine.Object;
 using MenuFunction = UnityEditor.GenericMenu.MenuFunction;
-namespace Zios{
+namespace Zios.UI{
     [CustomEditor(typeof(MonoBehaviour),true)][CanEditMultipleObjects]
     public class MonoBehaviourEditor : Editor{
 		public static Dictionary<Type,Dictionary<string,object>> defaults = new Dictionary<Type,Dictionary<string,object>>();

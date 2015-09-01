@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEditor;
 using MenuFunction = UnityEditor.GenericMenu.MenuFunction;
-namespace Zios{
+namespace Zios.UI{
     [CustomEditor(typeof(StateLink),true)]
     public class StateLinkEditor : DataMonoBehaviourEditor{
 		public GUISkin skin;

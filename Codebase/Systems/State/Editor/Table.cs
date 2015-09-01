@@ -39,7 +39,9 @@ namespace Zios.UI{
 		}
 		public virtual void Draw(){
 			GUI.skin = this.GetSkin();
-			foreach(var row in this.rows){row.Draw();}
+			foreach(var row in this.rows){
+				if(!row.disabled){row.Draw();}
+			}
 			if(this.rows.Count < 1){
 				EditorGUILayout.HelpBox("Please add components to generate table.",MessageType.Info,true);
 			}
@@ -47,6 +49,7 @@ namespace Zios.UI{
 	}
 	public class TableRow{
 		public bool selected;
+		public bool disabled;
 		public object target;
 		public Table table;
 		public int order;
@@ -71,12 +74,13 @@ namespace Zios.UI{
 		public virtual void Draw(){
 			GUILayout.BeginHorizontal();
 			foreach(TableField field in this.fields){
-				field.Draw();
+				if(!field.disabled){field.Draw();}
 			}
 			GUILayout.EndHorizontal();
 		}
 	}
 	public class TableField{
+		public bool disabled;
 		public bool selected;
 		public TableRow row;
 		public object target;
@@ -87,9 +91,10 @@ namespace Zios.UI{
 		}
 		public virtual void Draw(){}
 		public virtual void Clicked(int button){}
-		public void CheckClicked(){
-			if(GUILayoutUtility.GetLastRect().Clicked()){
+		public void CheckClicked(float xAdjust=0,float yAdjust=0){
+			if(GUILayoutUtility.GetLastRect().AddXY(xAdjust,yAdjust).Clicked()){
 				this.Clicked(Event.current.button);
+				Event.current.Use();
 			}
 		}
 	}

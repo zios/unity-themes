@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using System.Collections;
-using Zios.FPS;
-namespace Zios{
+namespace Zios.UI{
     [CustomEditor(typeof(EditorFPS))]
     public class EditorFPSEditor : Editor{
 	    public string text;
