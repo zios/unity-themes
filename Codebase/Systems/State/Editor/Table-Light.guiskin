@@ -103,15 +103,15 @@ MonoBehaviour:
       m_Top: 4
       m_Bottom: 4
     m_Margin:
-      m_Left: 0
+      m_Left: 1
       m_Right: 1
       m_Top: 1
-      m_Bottom: 0
+      m_Bottom: 1
     m_Padding:
-      m_Left: 6
-      m_Right: 6
-      m_Top: 3
-      m_Bottom: 3
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
     m_Overflow:
       m_Left: 0
       m_Right: 0
@@ -129,7 +129,7 @@ MonoBehaviour:
     m_FixedWidth: 81
     m_FixedHeight: 27
     m_StretchWidth: 1
-    m_StretchHeight: 1
+    m_StretchHeight: 0
   m_toggle:
     m_Name: toggle
     m_Normal:
@@ -244,7 +244,7 @@ MonoBehaviour:
     m_TextClipping: 1
     m_ImagePosition: 0
     m_ContentOffset: {x: 0, y: 0}
-    m_FixedWidth: 109
+    m_FixedWidth: 141
     m_FixedHeight: 27
     m_StretchWidth: 0
     m_StretchHeight: 0
@@ -1224,10 +1224,10 @@ MonoBehaviour:
       m_Top: 4
       m_Bottom: 4
     m_Margin:
-      m_Left: 0
+      m_Left: 1
       m_Right: 1
       m_Top: 1
-      m_Bottom: 0
+      m_Bottom: 1
     m_Padding:
       m_Left: 0
       m_Right: 0
@@ -1246,7 +1246,7 @@ MonoBehaviour:
     m_RichText: 0
     m_TextClipping: 0
     m_ImagePosition: 0
-    m_ContentOffset: {x: 0, y: 0}
+    m_ContentOffset: {x: -1, y: 0}
     m_FixedWidth: 81
     m_FixedHeight: 27
     m_StretchWidth: 1
@@ -1282,10 +1282,10 @@ MonoBehaviour:
       m_Top: 4
       m_Bottom: 4
     m_Margin:
-      m_Left: 0
+      m_Left: 1
       m_Right: 1
       m_Top: 1
-      m_Bottom: 0
+      m_Bottom: 1
     m_Padding:
       m_Left: 0
       m_Right: 0
@@ -1304,11 +1304,11 @@ MonoBehaviour:
     m_RichText: 1
     m_TextClipping: 0
     m_ImagePosition: 0
-    m_ContentOffset: {x: 0, y: 0}
+    m_ContentOffset: {x: -1, y: 0}
     m_FixedWidth: 81
     m_FixedHeight: 27
     m_StretchWidth: 1
-    m_StretchHeight: 1
+    m_StretchHeight: 0
   - m_Name: buttonDisabled
     m_Normal:
       m_Background: {fileID: 2800000, guid: 593591b05b81efd4fb991629572718ee, type: 3}
@@ -1340,10 +1340,10 @@ MonoBehaviour:
       m_Top: 4
       m_Bottom: 4
     m_Margin:
-      m_Left: 0
+      m_Left: 1
       m_Right: 1
       m_Top: 1
-      m_Bottom: 0
+      m_Bottom: 1
     m_Padding:
       m_Left: 0
       m_Right: 0
@@ -1362,11 +1362,11 @@ MonoBehaviour:
     m_RichText: 1
     m_TextClipping: 0
     m_ImagePosition: 0
-    m_ContentOffset: {x: 0, y: 0}
+    m_ContentOffset: {x: -1, y: 0}
     m_FixedWidth: 81
     m_FixedHeight: 27
     m_StretchWidth: 1
-    m_StretchHeight: 1
+    m_StretchHeight: 0
   - m_Name: buttonExpand
     m_Normal:
       m_Background: {fileID: 2800000, guid: e3d2d2023148fbc4682b36bcde325620, type: 3}
@@ -1479,7 +1479,7 @@ MonoBehaviour:
     m_TextClipping: 0
     m_ImagePosition: 0
     m_ContentOffset: {x: 0, y: 0}
-    m_FixedWidth: 691
+    m_FixedWidth: 1055
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
