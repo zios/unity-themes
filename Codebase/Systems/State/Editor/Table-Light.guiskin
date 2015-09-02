@@ -195,8 +195,8 @@ MonoBehaviour:
       m_Background: {fileID: 2800000, guid: 053fc7828fbe5364c84b71c7115fe739, type: 3}
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Hover:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_Background: {fileID: 2800000, guid: fdcfaf064d0d77746963b0f1241f8070, type: 3}
+      m_TextColor: {r: 1, g: 1, b: 1, a: 1}
     m_Active:
       m_Background: {fileID: 0}
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
@@ -1479,7 +1479,7 @@ MonoBehaviour:
     m_TextClipping: 0
     m_ImagePosition: 0
     m_ContentOffset: {x: 0, y: 0}
-    m_FixedWidth: 1055
+    m_FixedWidth: 595
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
