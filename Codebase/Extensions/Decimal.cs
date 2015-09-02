@@ -25,6 +25,15 @@ namespace Zios{
 	    public static bool ToBool(this decimal current){
 		    return current != 0;
 	    }
+		public static decimal Closest(this decimal current,params decimal[] values){
+			decimal match = decimal.MaxValue;
+			foreach(decimal value in values){
+				if(current.Distance(value) < match){
+					match = value;
+				}
+			}
+			return match;
+		}
 	    public static decimal RoundClosestDown(this decimal current,params decimal[] values){
 		    decimal highest = -1;
 		    foreach(decimal value in values){
@@ -69,5 +78,7 @@ namespace Zios{
 		public static decimal Mode(this IEnumerable<decimal> current){
 			return current.GroupBy(x=>x).OrderByDescending(x=>x.Count()).Select(x=>x.Key).FirstOrDefault();
 		}
+		public static decimal Min(this decimal current,decimal value){return Math.Min(current,value);}
+		public static decimal Max(this decimal current,decimal value){return Math.Max(current,value);}
     }
 }

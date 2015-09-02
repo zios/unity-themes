@@ -40,6 +40,15 @@ namespace Zios{
 	    public static bool ToBool(this int current){
 		    return current != 0;
 	    }
+		public static int Closest(this int current,params int[] values){
+			int match = int.MaxValue;
+			foreach(int value in values){
+				if(current.Distance(value) < match){
+					match = value;
+				}
+			}
+			return match;
+		}
 	    public static int RoundClosestDown(this int current,params int[] values){
 		    int highest = -1;
 		    foreach(int value in values){

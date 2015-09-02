@@ -25,6 +25,15 @@ namespace Zios{
 	    public static bool ToBool(this double current){
 		    return current != 0;
 	    }
+		public static double Closest(this double current,params double[] values){
+			double match = double.MaxValue;
+			foreach(double value in values){
+				if(current.Distance(value) < match){
+					match = value;
+				}
+			}
+			return match;
+		}
 	    public static double RoundClosestDown(this double current,params double[] values){
 		    double highest = -1;
 		    foreach(double value in values){

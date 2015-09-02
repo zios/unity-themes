@@ -64,9 +64,14 @@ namespace Zios{
 		    result.height += other.height;
 		    return result;
 	    }
-	    public static bool Hovered(this Rect current){
+	    public static bool Hovered(this Rect current,string cursor="Link"){
 		    Vector2 mouse = Event.current.mousePosition;
-		    return current.Contains(mouse);
+			bool state = current.Contains(mouse);
+			if(state){
+				var pointer = (MouseCursor)Enum.Parse(typeof(MouseCursor),cursor);
+				EditorGUIUtility.AddCursorRect(current,pointer);
+			}
+		    return state;
 	    }
 	    public static bool Clicked(this Rect current,int button=-1){
 		    bool eventMatch = Event.current.type == EventType.MouseDown;
