@@ -18,8 +18,8 @@ namespace Zios{
 			Events.Add(this.alias+"/On Start",this.Use,this.gameObject);
 			Events.Register("On State Refresh",this.gameObject);
 			Events.Register(this.alias+"/On Disabled",this.gameObject);
-			Events.Register(this.alias+"/On Started",this.gameObject);
-			Events.Register(this.alias+"/On Ended",this.gameObject);
+			Events.Register(this.alias+"/On Start",this.gameObject);
+			Events.Register(this.alias+"/On End",this.gameObject);
 			if(!Application.isPlaying){
 				this.stateLink = this.GetComponent<StateLink>(true);
 				this.actionTable = this.GetComponent<ActionTable>(true);
@@ -66,8 +66,9 @@ namespace Zios{
 		public void ApplyState(bool state){
 			this.inUse.Set(state);
 			this.used.Set(state);
-			string active = state ? "/On Started" : "/On Ended";
+			string active = state ? "/On Start" : "/On End";
 			this.gameObject.CallEvent(this.alias+active);
+			this.gameObject.CallEvent("On State Update");
 		}
 	}
 }
