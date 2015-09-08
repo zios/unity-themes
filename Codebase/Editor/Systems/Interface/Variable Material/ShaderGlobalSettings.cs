@@ -2,9 +2,9 @@
 using System;
 using System.Collections.Generic;
 namespace Zios{
-	[AddComponentMenu("Zios/Singleton/Shader")][ExecuteInEditMode]
-	public class ShaderSettings : MonoBehaviour{
-		public static ShaderSettings instance;
+	[AddComponentMenu("Zios/Singleton/Shader Settings (Global)")][ExecuteInEditMode]
+	public class ShaderGlobalSettings : MonoBehaviour{
+		public static ShaderGlobalSettings instance;
 		[Header("Shading")]
 		public ShadingBlend shadingBlend = ShadingBlend.Multiply;
 		[Header("Shadows")]
@@ -18,7 +18,7 @@ namespace Zios{
 		private bool dirty;
 		private List<Material> materials = new List<Material>();
 		private List<Material> materialsChanged = new List<Material>();
-		public static ShaderSettings Get(){return ShaderSettings.instance;}
+		public static ShaderGlobalSettings Get(){return ShaderGlobalSettings.instance;}
 		public void OnEnable(){this.Setup();}
 		public void Awake(){this.Setup();}
 		public void OnValidate(){
@@ -26,7 +26,7 @@ namespace Zios{
 			this.Setup();
 		}
 		public void Setup(){
-			ShaderSettings.instance = this;
+			ShaderGlobalSettings.instance = this;
 			if(Application.isEditor){
 				this.materials = VariableMaterial.GetAll();
 				this.dirty = false;

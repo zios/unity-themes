@@ -132,11 +132,6 @@ namespace Zios{
 		    List<string> hidden = new List<string>();
 		    foreach(StateRow[] table in this.tables){
 			    foreach(StateRow row in table){
-				    if(!row.target.requirable){
-					    hidden.Add(row.target.alias);
-				    }
-			    }
-			    foreach(StateRow row in table){
 				    foreach(StateRowData rowData in row.requirements){
 					    List<StateRequirement> requirements = new List<StateRequirement>(rowData.data);
 					    this.RemoveDuplicates<StateRequirement>(requirements);
@@ -147,7 +142,6 @@ namespace Zios{
 				    }
 			    }
 		    }
-		    this.RemoveHidden();
 	    }
 	    public virtual void UpdateOrder(){
 		    for(int index=0;index<this.tables.Count;++index){
@@ -212,29 +206,6 @@ namespace Zios{
 					    lastDataExists = !empty;
 				    }
 				    row.requirements = cleaned.ToArray();
-			    }
-		    }
-	    }
-	    private void RemoveHidden(){
-		    List<string> hidden = new List<string>();
-		    foreach(StateRow[] table in this.tables){
-			    foreach(StateRow row in table){
-				    if(!row.target.requirable){
-					    hidden.Add(row.target.alias);
-				    }
-			    }
-			    foreach(StateRow row in table){
-				    foreach(StateRowData rowData in row.requirements.Copy()){
-					    int dataIndex = row.requirements.IndexOf(rowData);
-					    List<StateRequirement> cleaned = new List<StateRequirement>(rowData.data);
-					    foreach(StateRequirement requirement in rowData.data){
-						    if(hidden.Contains(requirement.name)){
-							    if(StateTable.debug){Debug.Log("[StateTable] Removing non-requirable column  -- " + requirement.name,(UnityObject)requirement.target);}
-							    cleaned.Remove(requirement);
-						    }
-					    }
-					    row.requirements[dataIndex].data = cleaned.ToArray();
-				    }
 			    }
 		    }
 	    }

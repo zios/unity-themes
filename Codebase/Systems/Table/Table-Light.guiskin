@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12001, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Table-Dark
+  m_Name: Table-Light
   m_EditorClassIdentifier: 
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   m_box:
@@ -74,13 +74,13 @@ MonoBehaviour:
   m_button:
     m_Name: button
     m_Normal:
-      m_Background: {fileID: 2800000, guid: 98f19ee8066570d40a3942ae14c0ea3e, type: 3}
+      m_Background: {fileID: 2800000, guid: e3d2d2023148fbc4682b36bcde325620, type: 3}
       m_TextColor: {r: .397058845, g: .397058845, b: .397058845, a: 1}
     m_Hover:
-      m_Background: {fileID: 2800000, guid: 601a6ea4aac2406458f32279b1326fd6, type: 3}
-      m_TextColor: {r: 1, g: 1, b: 1, a: 1}
+      m_Background: {fileID: 2800000, guid: 161228050c962874caf540522fc29807, type: 3}
+      m_TextColor: {r: .90196085, g: .90196085, b: .90196085, a: 1}
     m_Active:
-      m_Background: {fileID: 0}
+      m_Background: {fileID: 2800000, guid: 161228050c962874caf540522fc29807, type: 3}
       m_TextColor: {r: .899999976, g: .899999976, b: .899999976, a: 1}
     m_Focused:
       m_Background: {fileID: 2800000, guid: 513aef3f811be8941b77b5d7a51c19ae, type: 3}
@@ -120,12 +120,12 @@ MonoBehaviour:
     m_Font: {fileID: 0}
     m_FontSize: -1
     m_FontStyle: 0
-    m_Alignment: 4
+    m_Alignment: 3
     m_WordWrap: 0
     m_RichText: 0
     m_TextClipping: 0
     m_ImagePosition: 0
-    m_ContentOffset: {x: -1, y: 0}
+    m_ContentOffset: {x: 0, y: 0}
     m_FixedWidth: 81
     m_FixedHeight: 27
     m_StretchWidth: 1
@@ -192,10 +192,10 @@ MonoBehaviour:
   m_label:
     m_Name: label
     m_Normal:
-      m_Background: {fileID: 2800000, guid: 7ba7d3088d5c0724f9ad81c738f60449, type: 3}
-      m_TextColor: {r: .411764681, g: .411764681, b: .411764681, a: 1}
+      m_Background: {fileID: 2800000, guid: 053fc7828fbe5364c84b71c7115fe739, type: 3}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Hover:
-      m_Background: {fileID: 2800000, guid: f76a5b7fd367bb14089de89a35ba5e38, type: 3}
+      m_Background: {fileID: 2800000, guid: fdcfaf064d0d77746963b0f1241f8070, type: 3}
       m_TextColor: {r: 1, g: 1, b: 1, a: 1}
     m_Active:
       m_Background: {fileID: 0}
@@ -244,7 +244,7 @@ MonoBehaviour:
     m_TextClipping: 1
     m_ImagePosition: 0
     m_ContentOffset: {x: 0, y: 0}
-    m_FixedWidth: 157
+    m_FixedWidth: 149
     m_FixedHeight: 27
     m_StretchWidth: 1
     m_StretchHeight: 0
@@ -1195,7 +1195,7 @@ MonoBehaviour:
   m_CustomStyles:
   - m_Name: buttonOn
     m_Normal:
-      m_Background: {fileID: 2800000, guid: a133aee2a38d41b48bc09492f51aa3e1, type: 3}
+      m_Background: {fileID: 2800000, guid: 865e36e08a40b164dbde4d0041b8de50, type: 3}
       m_TextColor: {r: .776127934, g: 1, b: .639705896, a: 1}
     m_Hover:
       m_Background: {fileID: 0}
@@ -1253,7 +1253,7 @@ MonoBehaviour:
     m_StretchHeight: 0
   - m_Name: buttonOff
     m_Normal:
-      m_Background: {fileID: 2800000, guid: 1865be730b6f49b4fafef5d30fa7940f, type: 3}
+      m_Background: {fileID: 2800000, guid: b1d232c656c43704688ad499ed9a0662, type: 3}
       m_TextColor: {r: .963235319, g: .654596865, b: .651600361, a: 1}
     m_Hover:
       m_Background: {fileID: 0}
@@ -1311,8 +1311,8 @@ MonoBehaviour:
     m_StretchHeight: 0
   - m_Name: buttonDisabled
     m_Normal:
-      m_Background: {fileID: 2800000, guid: 7cbee15158a0fd04a89d49f573f153e1, type: 3}
-      m_TextColor: {r: .426470578, g: .426470578, b: .426470578, a: 1}
+      m_Background: {fileID: 2800000, guid: 593591b05b81efd4fb991629572718ee, type: 3}
+      m_TextColor: {r: .389705896, g: .389705896, b: .389705896, a: 1}
     m_Hover:
       m_Background: {fileID: 0}
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
@@ -1369,11 +1369,11 @@ MonoBehaviour:
     m_StretchHeight: 0
   - m_Name: buttonSelected
     m_Normal:
-      m_Background: {fileID: 2800000, guid: 92b084a242ba1cb43bd9bfdbac91c3a0, type: 3}
+      m_Background: {fileID: 2800000, guid: 29395b99198092a4eaed2b239941fa9e, type: 3}
       m_TextColor: {r: 1, g: 1, b: 1, a: 1}
     m_Hover:
       m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_TextColor: {r: 1, g: 1, b: 1, a: 1}
     m_Active:
       m_Background: {fileID: 0}
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
@@ -1427,11 +1427,11 @@ MonoBehaviour:
     m_StretchHeight: 0
   - m_Name: buttonExpand
     m_Normal:
-      m_Background: {fileID: 2800000, guid: 7ba7d3088d5c0724f9ad81c738f60449, type: 3}
-      m_TextColor: {r: .463235319, g: .463235319, b: .463235319, a: 1}
+      m_Background: {fileID: 2800000, guid: e3d2d2023148fbc4682b36bcde325620, type: 3}
+      m_TextColor: {r: .45588237, g: .45588237, b: .45588237, a: 1}
     m_Hover:
-      m_Background: {fileID: 2800000, guid: f76a5b7fd367bb14089de89a35ba5e38, type: 3}
-      m_TextColor: {r: 1, g: 1, b: 1, a: 1}
+      m_Background: {fileID: 2800000, guid: 9c508c0955f616d42a3cae34ce568f54, type: 3}
+      m_TextColor: {r: .213235319, g: .213235319, b: .213235319, a: 1}
     m_Active:
       m_Background: {fileID: 0}
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
@@ -1485,8 +1485,8 @@ MonoBehaviour:
     m_StretchHeight: 1
   - m_Name: title
     m_Normal:
-      m_Background: {fileID: 2800000, guid: 60975eb7626e54244b679d989050926e, type: 3}
-      m_TextColor: {r: .705882311, g: .705882311, b: .705882311, a: 1}
+      m_Background: {fileID: 2800000, guid: 9c6b7749af402024ba157e1b3cf452be, type: 3}
+      m_TextColor: {r: .257352948, g: .257352948, b: .257352948, a: 1}
     m_Hover:
       m_Background: {fileID: 0}
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
@@ -1509,10 +1509,10 @@ MonoBehaviour:
       m_Background: {fileID: 0}
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Border:
-      m_Left: 4
-      m_Right: 4
-      m_Top: 4
-      m_Bottom: 4
+      m_Left: 8
+      m_Right: 8
+      m_Top: 8
+      m_Bottom: 8
     m_Margin:
       m_Left: 5
       m_Right: 13
@@ -1530,14 +1530,14 @@ MonoBehaviour:
       m_Bottom: 0
     m_Font: {fileID: 12800000, guid: 3a65c3306964ba44496080f14d048029, type: 3}
     m_FontSize: 16
-    m_FontStyle: 1
+    m_FontStyle: 0
     m_Alignment: 4
     m_WordWrap: 0
-    m_RichText: 0
+    m_RichText: 1
     m_TextClipping: 0
     m_ImagePosition: 0
     m_ContentOffset: {x: 0, y: 0}
-    m_FixedWidth: 422
+    m_FixedWidth: 418
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0

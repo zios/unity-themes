@@ -122,9 +122,6 @@ namespace Zios{
 				Utility.delayProcessing = false;
 			};
 		}
-		//============================
-		// Editor-Only
-		//============================
 	    public static SerializedObject GetSerializedObject(UnityObject target){
 			if(!Utility.serializedObjects.ContainsKey(target)){
 				Utility.serializedObjects[target] = new SerializedObject(target);

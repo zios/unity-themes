@@ -3,9 +3,9 @@ using System;
 using Zios;
 using System.Collections;
 using System.Collections.Generic;
-// -------------
+//=======================
 // Delegates
-// -------------
+//=======================
 public delegate bool KeyShortcut(KeyCode code);
 public delegate void Method();
 public delegate void MethodObject(object value);
@@ -25,9 +25,9 @@ public delegate object MethodStringReturn(string value);
 public delegate object MethodBoolReturn(bool value);
 public delegate object MethodVector2Return(Vector2 value);
 public delegate object MethodVector3Return(Vector3 value);
-// -------------
+//=======================
 // Non-Generic Lists
-// -------------
+//=======================
 [Serializable] public class FloatList : List<float>{}
 [Serializable] public class IntList : List<int>{}
 [Serializable] public class BoolList: List<bool>{}

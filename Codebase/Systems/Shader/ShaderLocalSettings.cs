@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 namespace Zios{
-	[AddComponentMenu("Zios/Singleton/Shader Settings (Local)")][ExecuteInEditMode]
+	[AddComponentMenu("Zios/Components/Shader Settings (Local)")][ExecuteInEditMode]
 	public class ShaderLocalSettings : MonoBehaviour{
 		public static ShaderLocalSettings instance;
 		[Header("General")]
