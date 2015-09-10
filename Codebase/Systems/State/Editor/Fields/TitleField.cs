@@ -33,6 +33,7 @@ namespace Zios.UI{
 					window.BuildTable();
 				};
 				menu.AddItem("Advanced Mode",window.target.advanced,toggleAdvanced);
+				menu.AddItem("Rebuild Table",false,window.BuildTable);
 				menu.ShowAsContext();
 			}
 		}

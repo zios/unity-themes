@@ -17,7 +17,9 @@ namespace Zios.UI{
 	    }
 	    public static bool Draw(this bool current,UnityLabel label=null,GUIStyle style=null,bool indention=false){
 		    style = style ?? EditorStyles.toggle;
-		    return EditorGUIExtension.Draw<bool>(()=>EditorGUILayout.Toggle(label,current,style),indention);
+			var options = new List<GUILayoutOption>();
+			options.Add(GUILayout.Width(style.fixedWidth));
+		    return EditorGUIExtension.Draw<bool>(()=>EditorGUILayout.Toggle(label,current,style,options.ToArray()),indention);
 	    }
 	    public static Enum Draw(this Enum current,UnityLabel label=null,GUIStyle style=null,bool indention=false){
 		    style = style ?? EditorStyles.popup;
@@ -104,16 +106,22 @@ namespace Zios.UI{
 				if(!header.IsEmpty()){EditorGUI.indentLevel -= 1;}
 			}
 		}
-		public static bool DrawFoldout(string label=""){
-			string name = label + "Foldout";
+		public static bool DrawFoldout(this UnityLabel current,bool indention=false){
+			string name = current + "Foldout";
 			bool state = EditorPrefs.GetBool(name);
-			state = EditorGUILayout.Foldout(state,label);
+			state = EditorGUIExtension.Draw<bool>(()=>EditorGUILayout.Foldout(state,current),indention);
 			EditorPrefs.SetBool(name,state);
 			return state;
 		}
 	    public static void DrawLabel(this UnityLabel current,GUIStyle style=null,bool indention=false){
 		    style = style ?? EditorStyles.label;
-		    EditorGUIExtension.Draw(()=>GUILayout.Label(current,style),indention);
+		    if(indention){
+				var options = new List<GUILayoutOption>();
+				options.Add(GUILayout.Width(style.fixedWidth));
+				EditorGUIExtension.Draw(()=>EditorGUILayout.LabelField(current,style,options.ToArray()),indention);
+				return;
+			}
+			EditorGUIExtension.Draw(()=>GUILayout.Label(current,style),indention);
 	    }
 	    public static void DrawHelp(this string current,string textType="Info",bool indention=false){
 		    MessageType type = MessageType.None;

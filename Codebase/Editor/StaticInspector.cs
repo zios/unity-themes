@@ -172,11 +172,11 @@ namespace Zios.UI{
 		public void UpdateValue(Accessor accessor,object value){
 			if(accessor != null && GUI.changed){
 				string name = this.currentClass+"-"+accessor.name.ToPascalCase();
-				if(value is Enum){PlayerPrefs.SetInt(name,value.As<Enum>().ToInt());}
-				if(value is bool){PlayerPrefs.SetInt(name,value.As<bool>().ToInt());}
-				if(value is int){PlayerPrefs.SetInt(name,(int)value);}
-				if(value is string){PlayerPrefs.SetString(name,(string)value);}
-				if(value is float){PlayerPrefs.SetFloat(name,(float)value);}
+				if(value is Enum){EditorPrefs.SetInt(name,value.As<Enum>().ToInt());}
+				if(value is bool){EditorPrefs.SetInt(name,value.As<bool>().ToInt());}
+				if(value is int){EditorPrefs.SetInt(name,(int)value);}
+				if(value is string){EditorPrefs.SetString(name,(string)value);}
+				if(value is float){EditorPrefs.SetFloat(name,(float)value);}
 				accessor.Set(value);
 			}
 		}

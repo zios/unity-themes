@@ -56,8 +56,6 @@ namespace Zios{
 	    }
 	    public virtual void OnDestroy(){
 			if(Application.isPlaying || Application.isLoadingLevel){return;}
-			Events.Remove("On Hierarchy Changed",this.CheckDependents);
-			Events.Remove("On Attributes Ready",this.CheckDependents);
 			this.CallEvent("On Destroy");
 			Events.RemoveAll(this);
 			AttributeManager.PerformRefresh();

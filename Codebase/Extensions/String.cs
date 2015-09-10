@@ -225,7 +225,7 @@ namespace Zios{
 	    }
 	    public static string Parse(this string current,string start="",string end="",int offset=0,bool ignoreCase=true,int repeatEnd=1){
 			string value = current.Cut(start,end,offset,ignoreCase,repeatEnd);
-			if(value.IsEmpty()){return value;}
+			if(value.IsEmpty()){return "";}
 			return value.Substring(start.Length).TrimRight(end).Trim();
 		}
 	    public static string FindFirst(this string current,params string[] values){

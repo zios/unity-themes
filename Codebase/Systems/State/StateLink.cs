@@ -26,7 +26,6 @@ namespace Zios{
 				Events.Register("On Action Disabled",this.gameObject);
 				if(this.owner != this.gameObject){
 					Events.Register("On State Update",this.owner);
-					Events.Register("On State Refresh",this.owner);
 					Events.Register(this.alias+"/On Start",this.owner);
 					Events.Register(this.alias+"/On End",this.owner);
 				}

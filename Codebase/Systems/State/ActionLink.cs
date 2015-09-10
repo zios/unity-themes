@@ -16,7 +16,6 @@ namespace Zios{
 			base.Awake();
 			Events.Add(this.alias+"/On End",this.End,this.gameObject);
 			Events.Add(this.alias+"/On Start",this.Use,this.gameObject);
-			Events.Register("On State Refresh",this.gameObject);
 			Events.Register(this.alias+"/On Disabled",this.gameObject);
 			Events.Register(this.alias+"/On Start",this.gameObject);
 			Events.Register(this.alias+"/On End",this.gameObject);

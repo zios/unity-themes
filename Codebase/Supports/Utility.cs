@@ -12,7 +12,7 @@ namespace Zios{
     public class UtilityListener : AssetPostprocessor{
 	    public static void OnPostprocessAllAssets(string[] imported,string[] deleted,string[] movedTo, string[] movedFrom){
 		    bool playing = EditorApplication.isPlaying || EditorApplication.isPlayingOrWillChangePlaymode;
-		    if(!playing){Events.Call("On Asset Changed");}
+		    if(!playing){Events.Call("On Assets Changed");}
 	    }
     }
 	public class UtilityModificationListener : AssetModificationProcessor{
