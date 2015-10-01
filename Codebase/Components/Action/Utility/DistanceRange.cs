@@ -1,8 +1,8 @@
-﻿using Zios;
+using Zios;
 using UnityEngine;
 namespace Zios{
     [AddComponentMenu("Zios/Component/Action/Distance Range")]
-    public class DistanceRange : ActionLink{
+    public class DistanceRange : StateMonoBehaviour{
 	    public AttributeGameObject source = new AttributeGameObject();
 	    public AttributeGameObject target = new AttributeGameObject();
 	    public AttributeFloat minimumDistance = Mathf.Infinity;

@@ -106,7 +106,7 @@ namespace Zios.UI{
 			this.EndArea();
 			if(changed){
 				this.serializedObject.ApplyModifiedProperties();
-				this.serializedObject.targetObject.CallMethod("OnValidate");
+				//this.serializedObject.targetObject.CallMethod("OnValidate");
 				Utility.SetDirty(this.serializedObject.targetObject,false,true);
 			}
 			this.CheckChanges();
@@ -178,7 +178,8 @@ namespace Zios.UI{
 			if(!(this.target is MonoBehaviour)){return;}
 			if(!defaults.ContainsKey(type)){
 				Events.Pause("On Hierarchy Changed");
-				Events.disabled = true;
+				var state = Events.disabled;
+				Events.disabled = (EventDisabled)(-1);
 				AttributeManager.disabled = true;
 				Utility.delayPaused = true;
 				defaults.AddNew(type);
@@ -200,7 +201,7 @@ namespace Zios.UI{
 				}
 				Utility.Destroy(component);
 				Utility.delayPaused = false;
-				Events.disabled = false;
+				Events.disabled = state;
 				AttributeManager.disabled = false;
 				MonoBehaviourEditor.resumeHierarchyTime = Time.realtimeSinceStartup + 0.5f;
 			}

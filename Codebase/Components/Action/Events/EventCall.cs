@@ -1,9 +1,9 @@
-﻿using Zios;
+using Zios;
 using System;
 using UnityEngine;
 namespace Zios{
     [AddComponentMenu("Zios/Component/Action/Event/Event Call")]
-    public class EventCall : ActionLink{
+    public class EventCall : StateMonoBehaviour{
 	    public EventTarget target = new EventTarget();
 	    public override void Awake(){
 		    base.Awake();

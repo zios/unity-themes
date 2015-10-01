@@ -41,15 +41,20 @@ namespace Zios{
 			    this.AddSpecial("[Root]",parent.gameObject.GetPrefabRoot());
 				Events.Add("On Validate",(Method)this.Search,parent);
 		    }
-		    if(parent is ActionLink || parent is StateLink){
-			    ActionLink actionLink = parent is ActionLink ? (ActionLink)parent : null;
-			    StateLink stateLink = parent is StateLink ? (StateLink)parent : actionLink.stateLink;
-			    GameObject linkObject = stateLink != null ? stateLink.gameObject : actionLink.gameObject;
-			    GameObject ownerObject = stateLink != null ? stateLink.owner : actionLink.gameObject;
-			    this.AddSpecial("[Owner]",ownerObject);
-			    this.AddSpecial("[Action]",linkObject);
-			    this.AddSpecial("[ActionLink]",linkObject);
-			    this.AddSpecial("[StateLink]",linkObject);
+		    if(parent is StateMonoBehaviour){
+				var state = (StateMonoBehaviour)parent;
+			    GameObject stateObject = state.gameObject;
+				GameObject parentObject = state.gameObject;
+				if(state.controller != null){
+					stateObject = state.controller.gameObject;
+					parentObject = state.controller.gameObject;
+					if(state.controller.controller != null){
+						parentObject = state.controller.controller.gameObject;
+					}
+				}
+			    this.AddSpecial("[ParentController]",parentObject);
+			    this.AddSpecial("[Controller]",stateObject);
+			    this.AddSpecial("[State]",state.gameObject);
 		    }
 			if(!Application.isPlaying){
 				string defaultSearch = Target.defaultSearch = PlayerPrefs.GetString("Target-DefaultSearch","[Self]");

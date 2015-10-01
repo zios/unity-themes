@@ -1,9 +1,9 @@
-﻿using Zios;
+using Zios;
 using System;
 using UnityEngine;
 namespace Zios{
     [AddComponentMenu("Zios/Component/Action/Event/Collision Listen")]
-    public class CollisionListen : ActionLink{
+    public class CollisionListen : StateMonoBehaviour{
 	    public CollisionEvent trigger;
 	    [EnumMask] public CollisionSource sourceCause = (CollisionSource)(-1);
 	    //[EnumMask] public CollisionDirection direction = (CollisionDirection)(-1);

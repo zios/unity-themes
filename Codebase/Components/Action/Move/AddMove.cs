@@ -1,9 +1,9 @@
-﻿using Zios;
+using Zios;
 using UnityEngine;
 namespace Zios{
     public enum MoveType{Absolute,Relative}
     [AddComponentMenu("Zios/Component/Action/Move/Add Move")]
-    public class AddMove : ActionLink{
+    public class AddMove : StateMonoBehaviour{
 	    public MoveType type;
 		[Advanced] public string eventName;
 	    public AttributeGameObject target = new AttributeGameObject();

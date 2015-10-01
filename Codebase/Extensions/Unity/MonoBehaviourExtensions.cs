@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿#pragma warning disable 0618
+using UnityEngine;
 using System;
 using System.Collections.Generic;
 #if UNITY_EDITOR
@@ -18,7 +19,7 @@ namespace Zios{
 
 		}
 		public static bool CanValidate(this MonoBehaviour current){
-			return !Application.isPlaying && !Application.isLoadingLevel && current.gameObject.activeInHierarchy && current.enabled;
+			return !Application.isPlaying && !Application.isLoadingLevel && !current.IsNull() && current.gameObject.activeInHierarchy && current.enabled;
 		}
 		public static bool IsEnabled(this MonoBehaviour current){
 			return !current.IsNull() && current.enabled && current.gameObject.activeInHierarchy;

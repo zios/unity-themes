@@ -22,8 +22,8 @@ namespace Zios{
 			    var script = (ManagedMonoBehaviour)parent;
 			    this.fixedTime = script.rate == UpdateRate.FixedUpdate;
 		    }
-		    if(this.parent is ActionLink){
-			    var script = (ActionLink)parent;
+		    if(this.parent is StateMonoBehaviour){
+			    var script = (StateMonoBehaviour)parent;
 			    Events.Add(script.alias+"/On End",this.Reset,parent.gameObject);	
 		    }
 		    Events.Add(path+"/Transition/On Reset",this.Reset,parent.gameObject);

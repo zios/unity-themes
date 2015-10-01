@@ -224,7 +224,7 @@ namespace Zios{
 			this.info.id = parent.GetInstanceID()+"/"+this.info.localID;
 			dirty = dirty || this.info.id != previousID;
 			if(dirty){
-				Utility.SetDirty(parent,true);
+				Utility.SetDirty(parent);
 			}
 		}
 		public override void BuildLookup(){
@@ -255,8 +255,8 @@ namespace Zios{
 							string resolvedID = resolve[target][data.referenceID];
 							if(resolvedID != data.referenceID){
 								data.referenceID = resolvedID;
-								Utility.SetDirty(this.info.parent,true);
-								Utility.SetDirty(data,true);
+								Utility.SetDirty(this.info.parent);
+								Utility.SetDirty(data);
 							}
 						}
 					}

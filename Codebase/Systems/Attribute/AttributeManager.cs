@@ -14,6 +14,7 @@ namespace Zios{
 		static AttributeBooter(){
 			Events.Add("On Editor Update",AttributeManager.EditorUpdate).SetPermanent(true);
 			Events.Add("On Hierarchy Changed",AttributeManager.Build).SetPermanent(true);
+			Events.Add("On Scene Loaded",AttributeManager.Build).SetPermanent(true);
 			if(!Application.isPlaying){
 				Utility.EditorDelayCall(AttributeManager.Build);
 			}

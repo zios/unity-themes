@@ -49,7 +49,8 @@ namespace Zios{
 			    this.defaultAnimationName.SetDefault(this.animations.First().name);
 		    }
 	    }
-	    public void Start(){
+	    public override void Start(){
+			base.Start();
 		    if(Application.isPlaying){
 			    foreach(AnimationData data in this.animations){
 				    this.lookup[data.name] = data;

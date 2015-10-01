@@ -1,10 +1,10 @@
-﻿using Zios;
+using Zios;
 using System;
 using UnityEngine;
 namespace Zios{
 	public enum TransitionState{Idle,Acceleration,Travel,Deceleration};
     [AddComponentMenu("")]
-	public class AttributeTransition : ActionLink{
+	public class AttributeTransition : StateMonoBehaviour{
 		[Advanced] public AnimationCurve acceleration = AnimationCurve.EaseInOut(0,0,1,1);
 		[Advanced] public AnimationCurve deceleration = AnimationCurve.EaseInOut(0,1,1,0);
 		public AttributeFloat transitionSeconds = 1;

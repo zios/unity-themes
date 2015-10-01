@@ -15,6 +15,7 @@ namespace Zios.UI{
 				this.disabled = this.row.fields.Skip(1).Count(x=>!x.disabled) < 1;
 				window.headerSize = 64;
 				style.margin.left = 5;
+				style.hover = style.normal;
 				string background = darkSkin ? "BoxBlackA30" : "BoxWhiteBWarm";
 				style.normal.background = FileManager.GetAsset<Texture2D>(background);
 				if(mode == HeaderMode.Vertical){

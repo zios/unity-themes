@@ -49,14 +49,10 @@ namespace Zios{
 		public static float sceneCheck;
 	    public static EditorWindow[] inspectors;
 	    public static List<CallbackFunction> hierarchyMethods = new List<CallbackFunction>();
-	    public static Dictionary<CallbackFunction,float> delayedMethods = new Dictionary<CallbackFunction,float>();
+	    public static Dictionary<object,KeyValuePair<CallbackFunction,float>> delayedMethods = new Dictionary<object,KeyValuePair<CallbackFunction,float>>();
 		public static List<UnityObject> delayedDirty = new List<UnityObject>();
 		public static Dictionary<UnityObject,SerializedObject> serializedObjects = new Dictionary<UnityObject,SerializedObject>();
-		public static int ignoredHierarchyChange = 0;
-		public static bool ignoreFirstHierarchyChange = true;
-	    public static bool hierarchyPaused;
 		public static bool delayPaused;
-		public static bool delayProcessing;
 	    static Utility(){
 			Events.Register("On Global Event");
 			Events.Register("On Windows Reordered");
@@ -66,11 +62,8 @@ namespace Zios{
 			Events.Register("On Exit Play");
 			EditorApplication.update += ()=>Events.Call("On Editor Update");
 			EditorApplication.hierarchyWindowChanged += ()=>{
-				if(Utility.ignoreFirstHierarchyChange && Utility.ignoredHierarchyChange < 1){
-					Utility.ignoredHierarchyChange = 1;
-					return;
-				}
 				Events.Call("On Hierarchy Changed");
+				Events.Cooldown("On Hierarchy Changed",1);
 			};
 			Camera.onPostRender += (Camera camera)=>Events.Call("On Camera Post Render",camera);
 			Camera.onPreRender += (Camera camera)=>Events.Call("On Camera Pre Render",camera);
@@ -91,7 +84,6 @@ namespace Zios{
 			EditorApplication.playmodeStateChanged += ()=>{
 				bool changing = EditorApplication.isPlayingOrWillChangePlaymode;
 				bool playing = Application.isPlaying;
-				Utility.ignoredHierarchyChange = 0;
 				if(changing && !playing){Events.Call("On Enter Play");}
 				if(!changing && playing){Events.Call("On Exit Play");}
 			};
@@ -106,20 +98,14 @@ namespace Zios{
 			};
 			EditorApplication.update += ()=>{
 				if(Utility.delayedMethods.Count < 1){return;}
-				Utility.delayProcessing = true;
-				var complete = new List<CallbackFunction>();
-				foreach(var item in Utility.delayedMethods){
-					var method = item.Key;
-					float callTime = item.Value;
+				foreach(var item in Utility.delayedMethods.Copy()){
+					var method = item.Value.Key;
+					float callTime = item.Value.Value;
 					if(Time.realtimeSinceStartup > callTime){
 						method();
-						complete.Add(method);
+						Utility.delayedMethods.Remove(item.Key);
 					}
 				}
-				foreach(var method in complete){
-					Utility.delayedMethods.Remove(method);
-				}
-				Utility.delayProcessing = false;
 			};
 		}
 	    public static SerializedObject GetSerializedObject(UnityObject target){
@@ -145,7 +131,12 @@ namespace Zios{
 		    }
 			return Utility.inspectors;
 	    }
-	    public static Vector2 GetInspectorScrollPosition(this Rect current){
+	    public static Vector2 GetInspectorScroll(){
+			Type inspectorWindow = Utility.GetInternalType("InspectorWindow");
+			var window = EditorWindow.GetWindow(inspectorWindow);
+			return window.GetVariable<Vector2>("m_ScrollPosition");
+	    }
+	    public static Vector2 GetInspectorScroll(this Rect current){
 			Type inspectorWindow = Utility.GetInternalType("InspectorWindow");
 			var window = EditorWindow.GetWindowWithRect(inspectorWindow,current);
 			return window.GetVariable<Vector2>("m_ScrollPosition");
@@ -208,15 +199,20 @@ namespace Zios{
 	    }
 	    public static void EditorDelayCall(CallbackFunction method){
 			#if UNITY_EDITOR
-			if(!Utility.IsPlaying() && !Utility.delayPaused){
+			if(!Utility.IsPlaying() && !Utility.delayPaused && EditorApplication.delayCall != method){
 				EditorApplication.delayCall += method;
 			}
 			#endif
 	    }
 	    public static void EditorDelayCall(CallbackFunction method,float seconds){
 			#if UNITY_EDITOR
-			if(!Utility.delayProcessing && !Utility.delayPaused){
-				Utility.delayedMethods[method] = Time.realtimeSinceStartup + seconds;
+			Utility.EditorDelayCall(method,method,seconds);
+			#endif
+	    }
+	    public static void EditorDelayCall(object key,CallbackFunction method,float seconds){
+			#if UNITY_EDITOR
+			if(!Utility.delayPaused && !key.IsNull() && !method.IsNull() && !Utility.delayedMethods.ContainsKey(key)){
+				Utility.delayedMethods[key] = new KeyValuePair<CallbackFunction,float>(method,Time.realtimeSinceStartup + seconds);
 			}
 			#endif
 	    }
@@ -374,6 +370,7 @@ namespace Zios{
 		public static void ClearDirty(){Utility.delayedDirty.Clear();}
 	    public static void SetDirty(UnityObject target,bool delayed=false,bool forced=false){
 		    #if UNITY_EDITOR
+			if(Application.isPlaying){return;}
 			if(!forced && target.IsNull()){return;}
 			if(!forced && target.GetPrefab().IsNull()){return;}
 			if(delayed){

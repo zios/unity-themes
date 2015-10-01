@@ -4,20 +4,20 @@ using UnityEngine;
 using UnityEditor;
 using MenuFunction = UnityEditor.GenericMenu.MenuFunction;
 namespace Zios.UI{
-    [CustomEditor(typeof(StateLink),true)]
-    public class StateLinkEditor : DataMonoBehaviourEditor{
+    [CustomEditor(typeof(StateMonoBehaviourEditor),true)]
+    public class StateMonoBehaviourEditor : DataMonoBehaviourEditor{
 		public GUISkin skin;
 		public Rect breakdownArea;
 		public bool breakdownVisible = true;
 		public virtual StateTable GetTable(){
-		    StateLink script = (StateLink)this.target;
-			return script.stateTable;
+		    var script = (StateMonoBehaviour)this.target;
+			return script.controller;
 		}
 	    public override void OnInspectorGUI(){
 			if(!Event.current.IsUseful()){return;}
 			StateTable table = this.GetTable();
-			bool showBreakdown = EditorPrefs.GetBool("StateLinkBreakdownVisible",true);
-			bool showFixed = EditorPrefs.GetBool("StateLinkBreakdownFixed");
+			bool showBreakdown = EditorPrefs.GetBool("StateBreakdownVisible",true);
+			bool showFixed = EditorPrefs.GetBool("StateBreakdownFixed");
 			if((this.showAll || showBreakdown) && table != null){
 				string skinName = EditorGUIUtility.isProSkin ? "Dark" : "Light";
 				if(this.skin == null || !this.skin.name.Contains(skinName)){
@@ -93,7 +93,7 @@ namespace Zios.UI{
 						if(Event.current.type == EventType.Repaint){this.breakdownArea = area;}
 						if(area.Clicked(1)){this.DrawBreakdownMenu();}
 						if(Event.current.shift && area.Clicked(0)){
-							Utility.ToggleEditorPref("StateLinkBreakdownVisible");
+							Utility.ToggleEditorPref("StateBreakdownVisible");
 						}
 					}
 				}
@@ -105,9 +105,9 @@ namespace Zios.UI{
 	    }
 		public void DrawBreakdownMenu(){
 			GenericMenu menu = new GenericMenu();
-			MenuFunction hideBreakdown = ()=>{Utility.ToggleEditorPref("StateLinkBreakdownVisible");};
-			MenuFunction toggleFixed = ()=>{Utility.ToggleEditorPref("StateLinkBreakdownFixed");};
-			menu.AddItem(new GUIContent("Fixed Layout"),EditorPrefs.GetBool("StateLinkBreakdownFixed"),toggleFixed);
+			MenuFunction hideBreakdown = ()=>{Utility.ToggleEditorPref("StateBreakdownVisible");};
+			MenuFunction toggleFixed = ()=>{Utility.ToggleEditorPref("StateBreakdownFixed");};
+			menu.AddItem(new GUIContent("Fixed Layout"),EditorPrefs.GetBool("StateBreakdownFixed"),toggleFixed);
 			menu.AddItem(new GUIContent("Hide Breakdown"),false,hideBreakdown);
 			menu.ShowAsContext();
 		}

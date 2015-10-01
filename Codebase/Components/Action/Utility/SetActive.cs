@@ -1,9 +1,9 @@
-﻿using Zios;
+using Zios;
 using UnityEngine;
 namespace Zios{
     public enum ToggleState{Enable,Disable,Toggle}
     [AddComponentMenu("Zios/Component/Action/Set Active")]
-    public class SetActive : ActionLink{
+    public class SetActive : StateMonoBehaviour{
 	    public AttributeGameObject target = new AttributeGameObject();
 	    public ToggleState state;
 		public AttributeBool revertOnEnd = false;

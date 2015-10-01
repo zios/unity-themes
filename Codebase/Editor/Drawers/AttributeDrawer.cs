@@ -84,6 +84,7 @@ namespace Zios.UI{
 		public GUISkin skin;
 		public List<string> operatorOverride;
 		public List<string> specialOverride;
+		public List<string> attributeNames = new List<string>();
 		public Dictionary<AttributeData,bool> targetMode = new Dictionary<AttributeData,bool>();
 		public virtual void Setup(AttributeDrawer drawer,Rect area,SerializedProperty property,GUIContent label){
 			string skinName = EditorGUIUtility.isProSkin ? "Dark" : "Light";
@@ -220,8 +221,10 @@ namespace Zios.UI{
 						attributeNames.Add(item.Value.info.path);
 					}
 				}
-				attributeNames = attributeNames.Order().OrderBy(item=>item.Contains("/")).ToList();
-				foreach(string name in attributeNames){
+				if(attributeNames.Count != this.attributeNames.Count){
+					this.attributeNames = attributeNames.Order().OrderBy(item=>item.Contains("/")).ToList();
+				}
+				foreach(string name in this.attributeNames){
 					string id = lookup.Values.ToList().Find(x=>x.info.path == name).info.id;
 					attributeIDs.Add(id);
 				}
@@ -229,13 +232,13 @@ namespace Zios.UI{
 					attributeIndex = attributeIDs.IndexOf(data.referenceID);
 				}
 			}
-			if(attributeNames.Count > 0){
+			if(this.attributeNames.Count > 0){
 				Rect line = area;
 				bool showSpecial = drawSpecial != null && (EditorPrefs.GetBool(data.path+"Advanced") || data.special != 0);
 				if(attributeIndex == -1){
 					string message = data.referenceID.IsEmpty() ? "[Not Set]" : "[Missing] " + data.referencePath;
 					attributeIndex = 0;
-					attributeNames.Insert(0,message);
+					this.attributeNames.Insert(0,message);
 					attributeIDs.Insert(0,"0");
 				}
 				if(drawOperator != null){
@@ -248,8 +251,8 @@ namespace Zios.UI{
 				}
 				Rect attributeRect = line.Add(18,0,-18,0);
 				int previousIndex = attributeIndex;
-				attributeIndex = attributeNames.Draw(attributeRect,attributeIndex);
-				string name = attributeNames[attributeIndex];
+				attributeIndex = this.attributeNames.Draw(attributeRect,attributeIndex);
+				string name = this.attributeNames[attributeIndex];
 				string id = attributeIDs[attributeIndex];
 				if(attributeIndex != previousIndex){
 					data.referencePath = name;

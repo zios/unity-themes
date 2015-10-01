@@ -1,9 +1,9 @@
-﻿using Zios;
+using Zios;
 using System;
 using UnityEngine;
 namespace Zios{
     [AddComponentMenu("Zios/Component/Action/Attribute/Modify/Modify Float")]
-    public class AttributeModifyFloat : ActionLink{
+    public class AttributeModifyFloat : StateMonoBehaviour{
 	    public AttributeFloat target = 0;
 	    public AttributeFloat value = 0;
 	    public override void Awake(){

@@ -14,7 +14,7 @@ namespace Zios{
 		    return (inGroup && sprite != null) || (filter != null && filter.sharedMesh.name == "plane");
 	    }
         [MenuItem ("Zios/Process/Sprites/Remove Invisible")]
-	    static void RemoveObjects(){
+	    static void RemoveInvisibleSprites(){
 		    GameObject[] objects = (GameObject[])Resources.FindObjectsOfTypeAll(typeof(GameObject));
 		    int removed = 0;
 		    Undo.RecordObjects(objects,"Remove Invisible Sprites");

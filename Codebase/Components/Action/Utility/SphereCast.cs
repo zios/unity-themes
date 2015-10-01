@@ -1,10 +1,10 @@
-﻿using Zios;
+using Zios;
 using System;
 using System.Linq;
 using UnityEngine;
 namespace Zios{
     [AddComponentMenu("Zios/Component/Action/Spherecast")]
-	public class SphereCast : ActionLink{
+	public class SphereCast : StateMonoBehaviour{
 	    public AttributeVector3 source = new AttributeVector3();
 	    public AttributeFloat radius = 1;
 	    public LayerMask layers = -1;

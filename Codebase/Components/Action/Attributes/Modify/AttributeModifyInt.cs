@@ -1,9 +1,9 @@
-﻿using Zios;
+using Zios;
 using System;
 using UnityEngine;
 namespace Zios{
     [AddComponentMenu("Zios/Component/Action/Attribute/Modify/Modify Int")]
-    public class AttributeModifyInt : ActionLink{
+    public class AttributeModifyInt : StateMonoBehaviour{
 	    public AttributeInt target = 0;
 	    public AttributeInt value = 0;
 	    public override void Awake(){

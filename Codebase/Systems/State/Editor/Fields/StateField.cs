@@ -6,11 +6,14 @@ namespace Zios.UI{
 		public StateField(object target=null,TableRow row=null) : base(target,row){}
 		public override void Draw(){
 			int state = 0;
+			var window = StateWindow.Get();
 			var requirement = this.target.As<StateRequirement>();
-			if(requirement.requireOn){state = 1;}
-			if(requirement.requireOff){state = 2;}
-			this.DrawStyle(state);
-			this.CheckClicked();
+			if(window.target.manual || requirement.name != "@External"){
+				if(requirement.requireOn){state = 1;}
+				if(requirement.requireOff){state = 2;}
+				this.DrawStyle(state);
+				this.CheckClicked();
+			}
 		}
 		public virtual void DrawStyle(int state=0){
 			var window = StateWindow.Get();

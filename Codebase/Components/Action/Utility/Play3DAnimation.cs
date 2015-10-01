@@ -1,9 +1,9 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System;
 using Zios;
 namespace Zios{
     [AddComponentMenu("Zios/Component/Action/Play Animation (3D)")]
-    public class Play3DAnimation : ActionLink{
+    public class Play3DAnimation : StateMonoBehaviour{
 	    public AttributeString animationName = "";
 	    public AttributeFloat speed = 1;
 	    public AttributeFloat weight = 1;

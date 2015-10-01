@@ -1,8 +1,8 @@
-﻿using Zios;
+using Zios;
 using UnityEngine;
 namespace Zios{
     [AddComponentMenu("Zios/Component/Action/Move/Move Towards")]
-    public class MoveTowards : ActionLink{
+    public class MoveTowards : StateMonoBehaviour{
 	    public AttributeGameObject target = new AttributeGameObject();
 	    public AttributeVector3 goal = Vector3.zero;
 	    public LerpVector3 travel = new LerpVector3();

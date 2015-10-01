@@ -1,4 +1,5 @@
-﻿using Zios;
+﻿#pragma warning disable 0618
+using Zios;
 using System;
 using System.Linq;
 using UnityEngine;
@@ -15,19 +16,17 @@ namespace Zios{
 		public int operation;
 		public int special;
 		[NonSerialized] public Attribute reference;
+		public override void Awake(){}
 		public void Setup(){
 			if(!this.attribute.IsNull() && !this.attribute.parent.IsNull()){
 				this.target.Setup(this.attribute.path+"/Target",this.attribute.parent);
 				if(!Application.isPlaying){
 					Events.Add("On Destroy",this.OnDestroy,this.attribute.parent);
-					Events.Add("On Validate",this.ValidateParent,this);
+					if(this.attribute.parent is DataMonoBehaviour){
+						var parent = (DataMonoBehaviour)this.attribute.parent;
+						Events.Add("On Validate",parent.OnValidate,this);
+					}
 				}
-			}
-		}
-		public void ValidateParent(){
-			if(this.attribute.parent is DataMonoBehaviour){
-				var dataBehaviour = (DataMonoBehaviour)this.attribute.parent;
-				dataBehaviour.OnValidate();
 			}
 		}
 		public override void OnDestroy(){

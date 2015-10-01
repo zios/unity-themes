@@ -1,9 +1,9 @@
-﻿using Zios;
+using Zios;
 using System;
 using UnityEngine;
 namespace Zios{
     [AddComponentMenu("Zios/Component/Action/Attribute/Modify/Modify Bool")]
-    public class AttributeModifyBool : ActionLink{
+    public class AttributeModifyBool : StateMonoBehaviour{
 	    public AttributeBool target = false;
 	    public AttributeBool value = false;
 	    public override void Awake(){

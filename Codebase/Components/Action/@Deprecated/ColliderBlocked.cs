@@ -1,10 +1,10 @@
-﻿using Zios;
+using Zios;
 using System;
 using UnityEngine;
 public enum BlockType{Blocked,Unblocked}
 public enum Direction{Up,Down,Left,Right,Forward,Back}
 [AddComponentMenu("Zios/Component/Action/Blocked State")]
-public class BlockedState : ActionLink{
+public class BlockedState : StateMonoBehaviour{
 	//public AttributeEnum type = new AttributeEnum(BlockType);
 	public BlockType type;
 	public Direction direction;

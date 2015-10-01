@@ -1,10 +1,10 @@
-﻿using Zios;
+using Zios;
 using System;
 using UnityEngine;
 namespace Zios{
     public enum OffsetType{Relative,Absolute}
     [AddComponentMenu("Zios/Component/Action/Move/Follow Target")]
-    public class FollowTarget : ActionLink{
+    public class FollowTarget : StateMonoBehaviour{
 	    public AttributeGameObject source = new AttributeGameObject();
 	    public AttributeGameObject target = new AttributeGameObject();
 	    public LerpVector3 position = new LerpVector3();

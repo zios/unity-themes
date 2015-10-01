@@ -1,4 +1,5 @@
-﻿using Zios;
+﻿#pragma warning disable 0618
+using Zios;
 using UnityEngine;
 using System;
 using System.Collections.Generic;
@@ -11,11 +12,16 @@ namespace Zios{
     public class DataMonoBehaviour : MonoBehaviour{
 	    public static GameObject[] sorting;
 	    public static int processIndex;
+		[Internal] public string parentPath;
+		[Internal] public string location;
 	    public string alias;
 		private string lastAlias;
+		private bool setup;
 	    [NonSerialized] public List<DataDependency> dependents = new List<DataDependency>();
 	    public virtual void Awake(){
 		    string name = this.GetType().Name.ToTitle();
+			this.parentPath = this.gameObject.GetPath();
+			this.location = this.GetPath();
 		    this.lastAlias = this.alias = this.alias.SetDefault(name);
 			if(!Application.isPlaying){
 				Events.Register("On Destroy",this);
@@ -26,33 +32,40 @@ namespace Zios{
 				Events.Add("On Attributes Ready",this.CheckDependents);
 			}
 	    }
+		public virtual void Start(){
+			this.setup = true;
+			this.CheckDependents();
+		}
 		//===============
 		// Editor
 		//===============
 		public virtual void Reset(){
-			if(this.alias.IsEmpty()){
+			if(this.setup){
 				this.CallEvent("On Reset");
 				return;
 			}
 			Events.Call("On Attach",this);
 		}
 		public virtual void OnDisable(){
+			if(!this.setup){return;}
 			if(this.gameObject.activeInHierarchy || this.enabled){
-				this.gameObject.CallEvent(this.alias+"/On Disabled");
-				this.gameObject.CallEvent("On Disable");
-				this.gameObject.CallEvent("On Components Changed");
+				this.gameObject.DelayEvent(this.parentPath,this.alias+"/On Disabled");
+				this.gameObject.DelayEvent(this.parentPath,"On Disable");
+				this.gameObject.DelayEvent(this.parentPath,"On Components Changed");
 			}
 		}
 		public virtual void OnEnable(){
+			if(!this.setup){return;}
 			if(!this.lastAlias.IsEmpty() && this.gameObject.activeInHierarchy && this.enabled){
-				this.gameObject.CallEvent(this.alias+"/On Enabled");
-				this.gameObject.CallEvent("On Enable");
-				this.gameObject.CallEvent("On Components Changed");
+				this.gameObject.DelayEvent(this.parentPath,this.alias+"/On Enabled");
+				this.gameObject.DelayEvent(this.parentPath,"On Enable");
+				this.gameObject.DelayEvent(this.parentPath,"On Components Changed");
 			}
 		}
 	    public virtual void OnValidate(){
-			if(!this.CanValidate()){return;}
-			Utility.EditorDelayCall(()=>this.CallEvent("On Validate"),1);
+			if(!this.CanValidate() || !this.setup){return;}
+			this.DelayEvent(this.location,"On Validate",1);
+			this.gameObject.DelayEvent(this.parentPath,"On Components Changed");
 	    }
 	    public virtual void OnDestroy(){
 			if(Application.isPlaying || Application.isLoadingLevel){return;}
@@ -68,6 +81,7 @@ namespace Zios{
 			}
 		}
 		public void CheckDependents(){
+			if(!this.setup){return;}
 			this.dependents.RemoveAll(x=>x.processing);
 			foreach(var dependent in this.dependents){
 				var currentDependent = dependent;
@@ -160,9 +174,7 @@ namespace Zios{
 		public static void SortSmartTarget(GameObject target){
 			Component[] components = target.GetComponents<Component>().ToList().OrderBy(x=>x.GetAlias()).ToArray();
 			DataMonoBehaviour.Sort(components);
-			var stateLink = components.Find(x=>x is StateLink);
 			var controller = components.Find(x=>x is StateTable);
-			if(!stateLink.IsNull()){stateLink.MoveToTop();}
 			if(!controller.IsNull()){controller.MoveToTop();}
 		}
 	    public static void Sort(Component[] components){

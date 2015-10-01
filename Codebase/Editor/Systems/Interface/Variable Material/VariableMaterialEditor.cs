@@ -4,7 +4,8 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using Zios;
-namespace Zios.UI{
+using Zios.UI;
+//namespace Zios.UI{
 	[CanEditMultipleObjects]
 	public class VariableMaterialEditor : MaterialEditor{
 		public Material material;
@@ -67,4 +68,4 @@ namespace Zios.UI{
 			VariableMaterial.Refresh(true,materials[index]);
 		}
 	}
-}
+//}

@@ -1,10 +1,10 @@
-﻿using UnityEngine;
+using UnityEngine;
 using Zios;
 using System;
 using System.Collections.Generic;
 namespace Zios{
     [AddComponentMenu("Zios/Component/Action/Input Held")]
-    public class InputHeld : ActionLink{
+    public class InputHeld : StateMonoBehaviour{
 	    public InputRange requirement;
 	    public AttributeString inputName = "Button1";
 	    public AttributeBool heldDuringIntensity = true;

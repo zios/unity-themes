@@ -1,10 +1,10 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System;
 using Zios;
 namespace Zios{
     public enum TimerType{After,During}
     [AddComponentMenu("Zios/Component/Action/Timer State")]
-    public class TimerState : ActionLink{
+    public class TimerState : StateMonoBehaviour{
 	    public TimerType type;
 	    public AttributeFloat seconds = 0;
 	    [Advanced][ReadOnly] public AttributeBool isStarted = false;
@@ -18,9 +18,7 @@ namespace Zios{
 	    }
 		public override void Step(){
 			base.Step();
-			bool stateLinkUsable = this.stateLink == null || this.stateLink.usable;
-			bool usable = stateLinkUsable && this.usable;
-			if(!usable && this.isStarted){
+			if(!this.usable && this.isStarted){
 				this.End();
 			}
 		}

@@ -169,6 +169,18 @@ namespace Zios.UI{
 			this.viewArea = this.viewArea.SetHeight(this.valueArea.y+22);
 			GUI.EndScrollView();
 	    }
+		public void LoadValue(Accessor accessor,object value){
+			if(accessor != null){
+				string name = this.currentClass+"-"+accessor.name.ToPascalCase();
+				if(EditorPrefs.HasKey(name)){
+					if(value is Enum){accessor.Set(EditorPrefs.GetInt(name));}
+					if(value is bool){accessor.Set(EditorPrefs.GetInt(name));}
+					if(value is int){accessor.Set(EditorPrefs.GetInt(name));}
+					if(value is string){accessor.Set(EditorPrefs.GetString(name));}
+					if(value is float){accessor.Set(EditorPrefs.GetFloat(name));}
+				}
+			}
+		}
 		public void UpdateValue(Accessor accessor,object value){
 			if(accessor != null && GUI.changed){
 				string name = this.currentClass+"-"+accessor.name.ToPascalCase();
@@ -188,6 +200,7 @@ namespace Zios.UI{
 			GUIContent label = new GUIContent(labelText);
 			GUI.changed = false;
 			bool common = (value is string || value is bool || value is float || value is int || value is UnityObject || value is Enum);
+			this.LoadValue(accessor,value);
 			if(common){
 				label.DrawLabel(this.labelArea);
 				labelDrawn = true;

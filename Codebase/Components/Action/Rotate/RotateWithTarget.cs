@@ -1,8 +1,8 @@
-﻿using Zios;
+using Zios;
 using UnityEngine;
 namespace Zios{
     [AddComponentMenu("Zios/Component/Action/Rotate/With/Rotate With Target")]
-    public class RotateWithTarget : ActionLink{
+    public class RotateWithTarget : StateMonoBehaviour{
 	    public AttributeGameObject source = new AttributeGameObject();
 	    public AttributeGameObject goal = new AttributeGameObject();
 	    public LerpVector3 rotation = new LerpVector3();

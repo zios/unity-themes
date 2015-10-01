@@ -1,8 +1,8 @@
-﻿using Zios;
+using Zios;
 using UnityEngine;
 namespace Zios{
     [AddComponentMenu("Zios/Component/Action/Move/Link Objects")]
-    public class LinkObject : ActionLink{
+    public class LinkObject : StateMonoBehaviour{
 	    public LinkMode mode;
 	    [EnumMask] public LinkOptions options = (LinkOptions)(-1);
 	    public AttributeGameObject target = new AttributeGameObject();

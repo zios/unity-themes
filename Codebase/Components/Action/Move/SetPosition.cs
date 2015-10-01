@@ -1,9 +1,9 @@
-﻿using Zios;
+using Zios;
 using UnityEngine;
 namespace Zios{
     public enum PositionMode{World,Local}
     [AddComponentMenu("Zios/Component/Action/Move/Set Position")]
-    public class SetPosition : ActionLink{
+    public class SetPosition : StateMonoBehaviour{
 	    public PositionMode mode;
 	    public AttributeGameObject target = new AttributeGameObject();
 	    public AttributeVector3 position = Vector3.zero;

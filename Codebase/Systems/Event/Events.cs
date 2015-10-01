@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿#pragma warning disable 0618
+using UnityEngine;
 using System;
 using System.Linq;
 using System.Reflection;
@@ -13,6 +14,7 @@ namespace Zios{
 	[InitializeOnLoad]
 	public static class EventsBooter{
 		static EventsBooter(){
+			Events.Add("On Scene Loaded",Events.Build).SetPermanent(true);
 			Events.Add("On Hierarchy Changed",Events.Build).SetPermanent(true);
 			if(!Application.isPlaying){
 				Utility.EditorDelayCall(Events.Build);
@@ -21,6 +23,11 @@ namespace Zios{
 		}
 	}
 	#endif
+	[Flags]
+    public enum EventDisabled : int{
+	    Add        = 0x001,
+	    Call       = 0x002,
+	}
 	[Flags]
     public enum EventDebug : int{
 	    Add        = 0x001,
@@ -46,6 +53,7 @@ namespace Zios{
 		public int occurrences;
 		public bool paused;
 		public bool permanent;
+		public bool unique;
 		public bool isStatic;
 		private bool warned;
 	    public bool IsValid(){
@@ -58,9 +66,17 @@ namespace Zios{
 	    }
 		public void SetPaused(bool state){this.paused = state;}
 		public void SetPermanent(bool state){this.permanent = state;}
+		public void SetUnique(bool state){
+			Events.unique.AddNew(this.target)[this.name] = this;
+			this.unique = state;
+		}
 		public void Remove(){
-			Events.cache[this.target][this.name].Remove(this);
-			Events.cache[Events.all][this.name].Remove(this);
+			if(Events.cache.ContainsKey(this.target) && Events.cache[this.target].ContainsKey(this.name)){
+				Events.cache[this.target][this.name].Remove(this.method);
+			}
+			if(Events.cache[Events.all].ContainsKey(this.name)){
+				Events.cache[Events.all][this.name].Remove(this.method);
+			}
 			Events.listeners.Remove(this);
 			this.paused = true;
 		}
@@ -68,6 +84,7 @@ namespace Zios{
 			if(Utility.IsPaused()){return;}
 			if(!this.IsValid()){return;}
 			if(this.occurrences > 0){this.occurrences -= 1;}
+			if(this.occurrences == 0){this.Remove();}
 			if(values.Length < 1 || this.method is Method){
 				((Method)this.method)();
 				return;
@@ -113,20 +130,23 @@ namespace Zios{
 		}
 	}
     public class Events : EventDetector{
-		public static bool disabled;
+		[EnumMask] public static EventDisabled disabled;
 		[EnumMask] public static EventDebugScope debugScope;
 		[EnumMask] public static EventDebug debug;
 		public static Events instance;
 	    public static object all = "All";
 	    public static object global = "Global";
 		public static EventListener empty = new EventListener();
+		public static Dictionary<object,Dictionary<string,EventListener>> unique = new Dictionary<object,Dictionary<string,EventListener>>();
 		public static Dictionary<object,Dictionary<string,Dictionary<object,EventListener>>> cache = new Dictionary<object,Dictionary<string,Dictionary<object,EventListener>>>();
+		public static Dictionary<object,Dictionary<string,float>> cooldown = new Dictionary<object,Dictionary<string,float>>();
 	    public static List<EventListener> listeners = new List<EventListener>();
 	    public static Dictionary<object,List<string>> callers = new Dictionary<object,List<string>>();
 		public static Dictionary<MethodStep,EventStepper> steppers = new Dictionary<MethodStep,EventStepper>();
 		public static string stepperTitle;
 		public static string stepperMessage;
 		public static FixedList<string> eventHistory = new FixedList<string>(15);
+		public static List<EventListener> stack = new List<EventListener>();
 		public static void Build(){
 			if(Events.instance.IsNull()){
 				var eventsPath = Locate.GetScenePath("@Main");
@@ -136,7 +156,7 @@ namespace Zios{
 				}
 				Events.instance = eventsPath.GetComponent<Events>();
 			}
-			//Events.Cleanup();
+			Events.Cleanup();
 		}
 		public static void Cleanup(){
 			foreach(var cached in Events.cache.Copy()){
@@ -148,7 +168,6 @@ namespace Zios{
 						bool methodMissing = !listener.isStatic && method.Target.IsNull();
 						if(targetMissing || methodMissing || eventPair.Key.IsNull()){
 							listener.Remove();
-							Events.cache[cached.Key][set.Key].Remove(eventPair.Key);
 						}
 					}
 					if(set.Key.IsNull() || set.Value.Count < 1){
@@ -206,7 +225,7 @@ namespace Zios{
 	    public static void Empty(){}
 	    public static void Register(string name){Events.Register(name,Events.Validate());}
 	    public static void Register(string name,params object[] targets){
-			if(Events.disabled){return;}
+			if(Events.disabled.Has("Add")){return;}
 		    foreach(object target in targets){
 				if(target.IsNull()){continue;}
 				Events.callers.AddNew(target);
@@ -245,7 +264,7 @@ namespace Zios{
 	    public static EventListener AddLimited(string name,MethodVector2 method,int amount=1,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
 	    public static EventListener AddLimited(string name,MethodVector3 method,int amount=1,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
 	    public static EventListener Add(string name,object method,int amount,params object[] targets){
-			if(Events.disabled){
+			if(Events.disabled.Has("Add")){
 				if(Events.debug.Has("AddDeep")){Debug.LogWarning("[Events] : Add attempted while Events disabled. " + name);}
 				return null;
 			}
@@ -253,6 +272,10 @@ namespace Zios{
 			var listener = Events.empty;
 			foreach(object target in targets){
 			    if(target.IsNull()){continue;}
+				if(Events.unique.ContainsKey(target) && Events.unique[target].ContainsKey(name)){
+					listener = Events.unique[target][name];
+					continue;
+				}
 				if(!Events.cache.AddNew(target).AddNew(name).ContainsKey(method)){
 					listener = new EventListener();
 					if(Events.debug.Has("Add")){
@@ -260,6 +283,7 @@ namespace Zios{
 						Debug.Log("[Events] : Adding event -- " + Events.GetMethodName(info) + " -- " + name,target as UnityObject);
 					}
 					Events.listeners.Add(listener);
+					Utility.EditorDelayCall(Events.OnEventsChanged);
 				}
 				else{
 					listener = Events.cache[target][name].AddNew(method);
@@ -274,6 +298,7 @@ namespace Zios{
 		    }
 			return listener;
 	    }
+		public static void OnEventsChanged(){Events.Call("On Events Changed");}
 	    public static void Remove(string name,Method method,params object[] targets){Events.Remove(name,(object)method,targets);}
 	    public static void Remove(string name,MethodObject method,params object[] targets){Events.Remove(name,(object)method,targets);}
 	    public static void Remove(string name,MethodFull method,params object[] targets){Events.Remove(name,(object)method,targets);}
@@ -284,7 +309,7 @@ namespace Zios{
 	    public static void Remove(string name,MethodVector2 method,params object[] targets){Events.Remove(name,(object)method,targets);}
 	    public static void Remove(string name,MethodVector3 method,params object[] targets){Events.Remove(name,(object)method,targets);}
 		public static void Remove(string name,object method,params object[] targets){
-			if(Events.disabled){return;}
+			if(Events.disabled.Has("Add")){return;}
 			targets = Events.ValidateAll(targets);
 			foreach(var target in targets){
 				if(Events.cache.ContainsKey(target) && Events.cache[target].ContainsKey(name)){
@@ -293,9 +318,10 @@ namespace Zios{
 				var removals = Events.listeners.Where(x=>x.method==method && x.target==target && x.name==name).ToList();
 				removals.ForEach(x=>x.Remove());
 			}
+			Utility.EditorDelayCall(Events.OnEventsChanged);
 		}
 		public static void RemoveAll(params object[] targets){
-			if(Events.disabled){return;}
+			if(Events.disabled.Has("Add")){return;}
 			targets = Events.ValidateAll(targets);
 			foreach(var target in targets){
 				var removals = Events.listeners.Where(x=>x.target==target || x.method.As<Delegate>().Target==target).ToList();
@@ -303,6 +329,7 @@ namespace Zios{
 				Events.cache.AddNew(target).SelectMany(x=>x.Value).Select(x=>x.Value).ToList().ForEach(x=>x.Remove());
 				Events.cache.Remove(target);
 			}
+			Utility.EditorDelayCall(Events.OnEventsChanged);
 		}
 	    public static void SetPause(string type,string name,object target){
 			target = Events.Validate(target);
@@ -334,39 +361,50 @@ namespace Zios{
 				Events.eventHistory.Add(name);
 			}
 		}
+		public static void Cooldown(string name,float seconds){Events.Cooldown(Events.global,name,seconds);}
+		public static void Cooldown(object target,string name,float seconds){Events.cooldown.AddNew(target)[name] = Time.realtimeSinceStartup + seconds;}
 	    public static void Call(string name,params object[] values){
-			if(Events.disabled){return;}
-			Events.AddHistory(name);
+			if(Events.disabled.Has("Call")){return;}
 		    Events.Call(Events.Validate(),name,values);
 	    }
 	    public static void Call(object target,string name,object[] values){
-			if(Events.disabled){return;}
+			if(Events.disabled.Has("Call")){return;}
+			if(Events.cooldown.ContainsKey(target) && Events.cooldown[target].ContainsKey(name)){
+				if(Time.realtimeSinceStartup < Events.cooldown[target][name]){return;}
+			}
+			if(Events.stack.Count > 1000){
+				Debug.LogWarning("[Events] : Event stack overflow.");
+				Events.disabled = (EventDisabled)(-1);
+				return;
+			}
 			Events.AddHistory(name);
-			var events = Events.cache.AddNew(target).AddNew(name);
-			if(events.Count == 0 && !Events.debug.Has("CallEmpty")){return;}
-			float callTime = Time.realtimeSinceStartup;
-			bool debugEvent = Events.CanDebug(target,name,events.Count);
-			foreach(var item in events.Copy()){
-				var listener = item.Value;
-				if(listener.paused){continue;}
-				if(debugEvent && Events.debug.Has("CallDeep")){
-					string message = "[Events] : Event calling -- " + Events.GetMethodName(listener.method);
-					Debug.Log(message,target as UnityObject);
+			bool hasEvents = Events.cache.ContainsKey(target) && Events.cache[target].ContainsKey(name);
+			var events = hasEvents ? Events.cache[target][name] : null;
+			int count = hasEvents ? events.Count : 0;
+			bool debugEvent = Events.CanDebug(target,name,count);
+			float elapsed = 0;
+			if(hasEvents && (count != 0 || Events.debug.Has("CallEmpty"))){
+				float callTime = Time.realtimeSinceStartup;
+				foreach(var item in events.Copy()){
+					var listener = item.Value;
+					if(listener.paused){continue;}
+					if(debugEvent && Events.debug.Has("CallDeep")){
+						string message = "[Events] : Event calling -- " + Events.GetMethodName(listener.method);
+						Debug.Log(message,target as UnityObject);
+					}
+					Events.stack.Add(listener);
+					listener.Call(values);
+					Events.stack.Remove(listener);
 				}
-				listener.Call(values);
-				if(listener.occurrences == 0){
-					Events.listeners.Remove(listener);
-					Events.cache[target][name].Remove(listener.method);
-				}
+				elapsed = Time.realtimeSinceStartup - callTime;
 			}
 			if(debugEvent && Events.debug.Has("CallTimer")){
-				float elapsed = Time.realtimeSinceStartup - callTime;
-				string message = "[Events] : Calling complete [" + events.Count + "] -- " + name + " -- " + elapsed + " seconds.";
+				string message = "[Events] : Calling complete [" + count + "] -- " + name + " -- " + elapsed + " seconds.";
 				Debug.Log(message,target as UnityObject);
 			}
 	    }
 	    public static void CallChildren(object target,string name,object[] values,bool self=false){
-			if(Events.disabled){return;}
+			if(Events.disabled.Has("Call")){return;}
 		    if(self){Events.Call(target,name,values);}
 			if(target is GameObject){
 				var gameObject = (GameObject)target;
@@ -378,7 +416,7 @@ namespace Zios{
 			}
 	    }
 	    public static void CallParents(object target,string name,object[] values,bool self=false){
-			if(Events.disabled){return;}
+			if(Events.disabled.Has("Call")){return;}
 		    if(self){Events.Call(target,name,values);}
 			if(target is GameObject){
 				var gameObject = (GameObject)target;
@@ -390,7 +428,7 @@ namespace Zios{
 			}
 	    }
 	    public static void CallFamily(object target,string name,object[] values,bool self=false){
-			if(Events.disabled){return;}
+			if(Events.disabled.Has("Call")){return;}
 		    if(self){Events.Call(target,name,values);}
 		    Events.CallChildren(target,name,values);
 		    Events.CallParents(target,name,values);
@@ -400,18 +438,19 @@ namespace Zios{
 		//========================
 		public static string GetTargetName(object target){
 			if(target.IsNull()){return "Null";}
-			string targetName = target.ToString();
+			string targetName = "";
+			if(target is string){targetName = target.ToString();}
 			if(target is GameObject){targetName = ((GameObject)target).GetPath();}
 			if(target is Component){targetName = ((Component)target).GetPath();}
 			if(target is Attribute){
-				Component parent = ((Attribute)target).info.parent;
-				if(parent.IsNull()){return "Null";}
-				targetName = parent.GetPath();
+				var info = ((Attribute)target).info;
+				if(info.IsNull()){return "Null";}
+				targetName = info.parent.GetPath() + "/" + info.name;
 			}
 			if(target is AttributeData){
-				Component parent = ((AttributeData)target).attribute.parent;
-				if(parent.IsNull()){return "Null";}
-				targetName = parent.GetPath();
+				var info = ((AttributeData)target).attribute;
+				if(info.IsNull()){return "Null";}
+				targetName = info.parent.GetPath() + "/" + info.name;
 			}
 			if(targetName.IsEmpty()){targetName = target.GetType().Name;}
 			targetName = targetName.Trim("/");
@@ -425,12 +464,7 @@ namespace Zios{
 				string targetName = info.Method.DeclaringType.Name;
 				string methodName = info.Method.Name;
 				if(!info.Target.IsNull()){
-					string path = "";
-					if(info.Target is Component){path = info.Target.As<Component>().GetPath(false);}
-					if(info.Target is GameObject){path = info.Target.As<GameObject>().GetPath();}
-					if(!path.IsEmpty()){path = path.Trim("/") + " -- ";}
-					targetName = path + info.Target.GetAlias().Replace(" ","");
-					if(targetName.Contains("__")){targetName = info.Target.GetType().ReflectedType.Name;}
+					targetName = GetTargetName(info.Target);
 				}
 				if(targetName.Contains("__")){targetName = "Anonymous";}
 				if(methodName.Contains("__")){methodName = "Anonymous";}
@@ -443,6 +477,7 @@ namespace Zios{
 			var debug = Events.debug;
 			var scope = Events.debugScope;
 			allowed = target == Events.global ? scope.Has("Global") : scope.Has("Scoped");
+			allowed = allowed && (count > 0 || debug.Has("CallEmpty"));
 			if(allowed && name.ContainsAny("On Update","On Editor Update","On GUI","On Camera","On Undo Flushing")){
 				allowed = debug.Has("CallUpdate");
 			}
@@ -507,6 +542,14 @@ namespace Zios{
 	    public static void RemoveAllEvents(this object current,string name,object method){
 			if(current.IsNull()){return;}
 		    Events.RemoveAll(current);
+	    }
+	    public static void DelayEvent(this object current,string key,string name,float delay=0.5f,params object[] values){
+			if(current.IsNull()){return;}
+			Utility.EditorDelayCall(key,()=>Events.Call(current,name,values),delay);
+	    }
+	    public static void CooldownEvent(this object current,string name,float seconds){
+			if(current.IsNull()){return;}
+		    Events.Cooldown(current,name,seconds);
 	    }
 	    public static void CallEvent(this object current,string name,params object[] values){
 			if(current.IsNull()){return;}

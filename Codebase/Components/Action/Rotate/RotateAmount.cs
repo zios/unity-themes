@@ -1,8 +1,8 @@
-﻿using Zios;
+using Zios;
 using UnityEngine;
 namespace Zios{
     [AddComponentMenu("Zios/Component/Action/Rotate/Rotate Amount")]
-    public class RotateAmount : ActionLink{
+    public class RotateAmount : StateMonoBehaviour{
 	    public AttributeGameObject target = new AttributeGameObject();
 	    public AttributeVector3 amount = Vector3.zero;
 	    public override void Awake(){

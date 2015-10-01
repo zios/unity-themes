@@ -1,10 +1,10 @@
-﻿using UnityEngine;
+using UnityEngine;
 using Zios;
 using System;
 using System.Collections.Generic;
 namespace Zios{
     [AddComponentMenu("Zios/Component/Action/Input Pressed")]
-    public class InputPressed : ActionLink{
+    public class InputPressed : StateMonoBehaviour{
 	    public InputRange requirement;
 	    public AttributeString inputName = "Button1";
 	    [Internal] public AttributeBool released = true;

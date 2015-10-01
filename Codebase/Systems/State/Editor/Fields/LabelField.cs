@@ -5,10 +5,15 @@ using System.Collections.Generic;
 using MenuFunction2 = UnityEditor.GenericMenu.MenuFunction2;
 namespace Zios.UI{
 	public class LabelField : TableField{
+		public bool delayedContext;
 		public LabelField(object target=null,TableRow row=null) : base(target,row){}
 		public override void Draw(){
 			var window = StateWindow.Get();
 			this.DrawStyle();
+			if(this.delayedContext){
+				this.Clicked(1);
+				this.delayedContext = false;
+			}
 			this.CheckClicked(window.scroll.x);
 		}
 		public virtual void DrawStyle(){
@@ -16,7 +21,7 @@ namespace Zios.UI{
 			var row = this.row.target.As<StateRow>();
 			var script = row.target;
 			bool darkSkin = EditorGUIUtility.isProSkin;
-			string name = this.target is string ? (string)this.target : script.alias;
+			string name = this.target is string ? (string)this.target : this.target.As<StateRow>().name;
 			string background = darkSkin ? "BoxBlackA30" : "BoxWhiteBWarm";
 			Color textColor = darkSkin? Colors.Get("Silver") : Colors.Get("Black");
 			GUIContent content = new GUIContent(name);
@@ -34,7 +39,8 @@ namespace Zios.UI{
 			if(Application.isPlaying){
 				textColor = Colors.Get("Gray");
 				background = darkSkin ? "BoxBlackAWarm30" : "BoxWhiteBWarm50";
-				if(script.usable){
+				bool usable = row.target is StateTable && row.target != window.target ? row.target.As<StateTable>().external : script.usable;
+				if(usable){
 					textColor = darkSkin ? Colors.Get("Silver") : Colors.Get("Black");
 					background = darkSkin ? "BoxBlackA30" : "BoxWhiteBWarm";
 				}
@@ -70,6 +76,7 @@ namespace Zios.UI{
 				window.BuildTable();
 				return;
 			}
+			if(!this.row.selected && button == 1){this.delayedContext = true;}
 			if(button == 0 || !this.row.selected){
 				if(Event.current.shift){
 					var allRows = this.row.table.rows;

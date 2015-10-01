@@ -1,9 +1,9 @@
-﻿using Zios;
+using Zios;
 using System;
 using UnityEngine;
 namespace Zios{
     [AddComponentMenu("Zios/Component/Action/Attribute/Modify/Modify String")]
-    public class AttributeModifyString : ActionLink{
+    public class AttributeModifyString : StateMonoBehaviour{
 	    public AttributeString target = "";
 	    public AttributeString value = "";
 	    public override void Awake(){

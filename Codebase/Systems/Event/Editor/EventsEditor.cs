@@ -1,28 +1,35 @@
 ﻿using System.Linq;
 using UnityEngine;
 using UnityEditor;
+using System.Collections.Generic;
 namespace Zios.UI{
     [CustomEditor(typeof(Events))]
-    public class EventsEditor : MonoBehaviourEditor{
+    public class EventsEditor : Editor{
+		public Dictionary<string,List<EventListener>> listeners;
+		public void BuildListeners(){
+			this.listeners = Events.listeners.GroupBy(x=>Events.GetTargetName(x.target)).ToDictionary(x=>x.Key,x=>x.ToList());
+		}
 	    public override void OnInspectorGUI(){
-			Events.disabled = Events.disabled.Draw("Disabled");
+			//Events.Add("On Events Changed",()=>Utility.EditorDelayCall(this.BuildListeners)).SetUnique(true);
+			Events.disabled = (EventDisabled)Events.disabled.DrawMask("Disabled");
 			Events.debugScope = (EventDebugScope)Events.debugScope.DrawMask("Debug Scope");
 			Events.debug = (EventDebug)Events.debug.DrawMask("Debug");
 			if("Listeners".DrawFoldout(true)){
 				EditorGUI.indentLevel += 1;
-				var listeners = Events.listeners.GroupBy(x=>Events.GetTargetName(x.target)).ToDictionary(x=>x.Key,x=>x.ToList());
+				if(this.listeners == null){this.BuildListeners();}
 				var labelStyle = GUI.skin.label.FixedWidth(200);
-				var valueStyle = GUI.skin.label.FixedWidth(250);
-				var checkStyle = GUI.skin.toggle.FixedWidth(32);
-				foreach(var item in listeners){
+				var valueStyle = GUI.skin.label.FixedWidth(350);
+				var checkStyle = GUI.skin.toggle.FixedWidth(16);
+				foreach(var item in this.listeners){
 					if(item.Key.DrawFoldout(true)){
 						EditorGUI.indentLevel += 1;
 						foreach(var listener in item.Value){
 							GUILayout.BeginHorizontal();
 							listener.name.DrawLabel(labelStyle,true);
 							Events.GetMethodName(listener.method).DrawLabel(valueStyle);
-							listener.permanent.Draw(null,checkStyle);
 							listener.isStatic.Draw(null,checkStyle);
+							listener.permanent.Draw(null,checkStyle);
+							listener.unique.Draw(null,checkStyle);
 							GUILayout.EndHorizontal();
 						}
 						EditorGUI.indentLevel -= 1;

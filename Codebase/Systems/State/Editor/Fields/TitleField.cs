@@ -32,7 +32,12 @@ namespace Zios.UI{
 					window.tableIndex = 0;
 					window.BuildTable();
 				};
+				MenuFunction toggleManual = ()=>{
+					window.target.manual = !window.target.manual;
+					window.BuildTable();
+				};
 				menu.AddItem("Advanced Mode",window.target.advanced,toggleAdvanced);
+				menu.AddItem("Manual Mode",window.target.manual,toggleManual);
 				menu.AddItem("Rebuild Table",false,window.BuildTable);
 				menu.ShowAsContext();
 			}

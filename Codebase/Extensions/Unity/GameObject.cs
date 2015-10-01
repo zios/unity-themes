@@ -225,6 +225,7 @@ namespace Zios{
 		    current.transform.position = position;
 	    }
 	    public static string GetPath(this GameObject current){	
+		    if(current.IsNull() || current.transform.IsNull()){return "";}
 		    string path = current.transform.name;
 		    #if UNITY_EDITOR
 		    PrefabType type = PrefabUtility.GetPrefabType(current);
@@ -232,7 +233,6 @@ namespace Zios{
 			    path = "Prefab/"+path;
 		     }
 		    #endif
-		    if(current.IsNull() || current.transform.IsNull()){return "";}
 		    Transform parent = current.transform.parent;
 		    while(!parent.IsNull()){
 			    path = parent.name + "/" + path;

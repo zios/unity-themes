@@ -1,8 +1,8 @@
-﻿using Zios;
+using Zios;
 using UnityEngine;
 namespace Zios{
     [AddComponentMenu("Zios/Component/Action/Lock Cursor")]
-    public class LockCursor : ActionLink{
+    public class LockCursor : StateMonoBehaviour{
 	    public override void Use(){
 		    base.Use();
 		    Cursor.lockState = CursorLockMode.Locked;

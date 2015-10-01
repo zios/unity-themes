@@ -1,9 +1,9 @@
-﻿using Zios;
+using Zios;
 using System;
 using UnityEngine;
 namespace Zios{
     [AddComponentMenu("Zios/Component/Action/Attribute/Attribute Check")]
-    public class AttributeCheck : ActionLink{
+    public class AttributeCheck : StateMonoBehaviour{
 	    public AttributeBool value = false;
 	    public override void Awake(){
 		    base.Awake();

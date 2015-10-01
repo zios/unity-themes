@@ -1,11 +1,11 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System;
 using Zios;
 namespace Zios{
     using Random = UnityEngine.Random;
     public enum AudioOrder{First,Sequence,Random}
     [AddComponentMenu("Zios/Component/Action/Play Audio")]
-    public class PlayAudio : ActionLink{
+    public class PlayAudio : StateMonoBehaviour{
 	    public AudioOrder order;
 	    public AudioSource[] sources = new AudioSource[1];
 	    public AttributeFloat pitch = -1;

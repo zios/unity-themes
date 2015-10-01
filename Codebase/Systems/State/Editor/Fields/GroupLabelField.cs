@@ -46,6 +46,7 @@ namespace Zios.UI{
 				Utility.ToggleEditorPref("StateWindow-GroupRow-"+row.section);
 				foreach(var groupRow in this.groupRows){groupRow.disabled = !groupRow.disabled;}
 				Event.current.Use();
+				window.tableGUI.ShowAll();
 				window.Repaint();
 			}
 			StateWindow.Clip(name,style,-1,window.headerSize);
@@ -62,7 +63,8 @@ namespace Zios.UI{
 		public override void Clicked(int button){
 			var window = StateWindow.Get();
 			if(button == 0){
-				if(!Event.current.control){window.DeselectAll();}
+				var multiple = window.tableGUI.rows.Count(x=>x.selected && !this.groupRows.Contains(x)) > 0;
+				if(!multiple && !Event.current.control){window.DeselectAll();}
 				this.SelectGroup(true);
 				this.row.selected = this.groupRows.Count(x=>x.selected) > 0;
 			}

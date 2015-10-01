@@ -1,9 +1,9 @@
-﻿using Zios;
+using Zios;
 using System;
 using UnityEngine;
 namespace Zios{
     [AddComponentMenu("Zios/Component/Action/Raycast")]
-    public class RayCast : ActionLink{
+    public class RayCast : StateMonoBehaviour{
 	    public AttributeVector3 source = new AttributeVector3();
 	    public AttributeVector3 direction = -Vector3.up;
 	    public AttributeFloat distance = 1;

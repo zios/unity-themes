@@ -1,8 +1,8 @@
-﻿using Zios;
+using Zios;
 using UnityEngine;
 namespace Zios{
     [AddComponentMenu("Zios/Component/Action/Rotate/Towards/Rotate Towards Angle")]
-    public class RotateTowardsAngle : ActionLink{
+    public class RotateTowardsAngle : StateMonoBehaviour{
 	    public AttributeGameObject source = new AttributeGameObject();
 	    public AttributeVector3 goal = Vector3.zero;
 	    public LerpVector3 rotation = new LerpVector3();

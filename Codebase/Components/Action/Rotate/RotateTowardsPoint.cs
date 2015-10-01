@@ -1,9 +1,9 @@
-﻿using Zios;
+using Zios;
 using System.Collections.Generic;
 using UnityEngine;
     namespace Zios{
     [AddComponentMenu("Zios/Component/Action/Rotate/Towards/Rotate Towards Point")]
-    public class RotateTowardsPoint : ActionLink{
+    public class RotateTowardsPoint : StateMonoBehaviour{
 	    public AttributeGameObject source = new AttributeGameObject();
 	    public AttributeVector3 goal = Vector3.zero;
 	    public ListBool lerpAxes = new ListBool(){true,true,true};

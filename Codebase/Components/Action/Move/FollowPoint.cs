@@ -1,9 +1,9 @@
-﻿using Zios;
+using Zios;
 using System;
 using UnityEngine;
 namespace Zios{
     [AddComponentMenu("Zios/Component/Action/Move/Follow Point")]
-    public class FollowPoint : ActionLink{
+    public class FollowPoint : StateMonoBehaviour{
 		public AttributeGameObject target = new AttributeGameObject();
 	    public AttributeVector3 goal = Vector3.zero;
 	    public LerpVector3 position = new LerpVector3();
