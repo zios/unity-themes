@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityObject = UnityEngine.Object;
 namespace Zios{
     public static class UnityObjectExtension{
+		#if UNITY_EDITOR
 	    public static UnityObject GetPrefab(this UnityObject current){
 		    return Utility.GetPrefab(current);
 	    }
@@ -14,5 +15,6 @@ namespace Zios{
 			Type editorUtility = Utility.GetInternalType("InternalEditorUtility");
 			editorUtility.CallMethod("SetIsInspectorExpanded",current,state);
 		}
+		#endif
 	}
 }

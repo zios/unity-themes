@@ -68,8 +68,10 @@ namespace Zios{
 		    Vector2 mouse = Event.current.mousePosition;
 			bool state = current.Contains(mouse);
 			if(state){
+				#if UNITY_EDITOR
 				var pointer = (MouseCursor)Enum.Parse(typeof(MouseCursor),cursor);
 				EditorGUIUtility.AddCursorRect(current,pointer);
+				#endif
 			}
 		    return state;
 	    }

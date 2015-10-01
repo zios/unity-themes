@@ -5,7 +5,9 @@ using UnityObject = UnityEngine.Object;
 namespace Zios{
     public static class ComponentExtension{
 		public static void UpdateSerialized(this Component current){
+			#if UNITY_EDITOR
 			Utility.UpdateSerialized(current);
+			#endif
 		}
 	    public static GameObject GetPrefabRoot(this Component current){
 		    return current.gameObject.GetPrefabRoot();

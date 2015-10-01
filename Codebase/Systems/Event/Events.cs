@@ -14,9 +14,9 @@ namespace Zios{
 	[InitializeOnLoad]
 	public static class EventsBooter{
 		static EventsBooter(){
-			Events.Add("On Scene Loaded",Events.Build).SetPermanent(true);
-			Events.Add("On Hierarchy Changed",Events.Build).SetPermanent(true);
 			if(!Application.isPlaying){
+				Events.Add("On Scene Loaded",Events.Build).SetPermanent(true);
+				Events.Add("On Hierarchy Changed",Events.Build).SetPermanent(true);
 				Utility.EditorDelayCall(Events.Build);
 				Utility.EditorDelayCall(Events.Setup);
 			}

@@ -60,7 +60,10 @@ namespace Zios{
 			Events.Register("On Scene Loaded");
 			Events.Register("On Enter Play");
 			Events.Register("On Exit Play");
-			EditorApplication.update += ()=>Events.Call("On Editor Update");
+			EditorApplication.update += ()=>{
+				if(Application.isPlaying){return;}
+				Events.Call("On Editor Update");
+			};
 			EditorApplication.hierarchyWindowChanged += ()=>{
 				Events.Call("On Hierarchy Changed");
 				Events.Cooldown("On Hierarchy Changed",1);
@@ -367,7 +370,11 @@ namespace Zios{
 			}
 			#endif
 		}
-		public static void ClearDirty(){Utility.delayedDirty.Clear();}
+		public static void ClearDirty(){
+			#if UNITY_EDITOR
+			Utility.delayedDirty.Clear();
+			#endif
+		}
 	    public static void SetDirty(UnityObject target,bool delayed=false,bool forced=false){
 		    #if UNITY_EDITOR
 			if(Application.isPlaying){return;}

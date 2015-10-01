@@ -50,14 +50,18 @@ namespace Zios{
 			}
 		}
 		public static void RefreshTables(){
+			if(Application.isPlaying){return;}
 			var tables = Locate.GetSceneComponents<StateTable>().OrderBy(x=>x.GetPath().Length);
 			tables.Reverse();
 			foreach(var table in tables){
 				table.Refresh();
 			}
 		}
+		[ContextMenu("Refresh (All)")]
+		public void RefreshAll(){StateTable.RefreshTables();}
 		[ContextMenu("Refresh")]
 		public virtual void Refresh(){
+			if(Application.isPlaying){return;}
 			if(this.controller.IsNull()){this.controller = null;}
 			this.UpdateScripts();
 			if(this.scripts.Count > 0){
