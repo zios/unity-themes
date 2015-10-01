@@ -9,20 +9,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 403814}
   - 114: {fileID: 11419038}
-  - 114: {fileID: 11469758}
-  - 114: {fileID: 11408176}
-  - 114: {fileID: 11406030}
-  - 114: {fileID: 11416638}
-  - 114: {fileID: 11428108}
-  - 114: {fileID: 11409516}
-  - 114: {fileID: 11403398}
-  - 114: {fileID: 11493948}
-  - 114: {fileID: 11434196}
-  - 114: {fileID: 11467396}
-  - 114: {fileID: 11492158}
-  - 114: {fileID: 11485892}
-  - 114: {fileID: 11460284}
-  - 114: {fileID: 11458282}
+  - 114: {fileID: 11451892}
+  - 114: {fileID: 11445120}
+  - 114: {fileID: 11463922}
+  - 114: {fileID: 11499264}
   m_Layer: 0
   m_Name: Main
   m_TagString: Untagged
@@ -104,242 +94,9 @@ Transform:
   m_Children: []
   m_Father: {fileID: 440444}
   m_RootOrder: 0
---- !u!114 &11403398
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 104236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6a5365a236805842985225b566116a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Charge
-  rate: 0
-  id: 20844
-  requirable:
-    info:
-      name: Requirable
-      path: Charge/Requirable
-      id: -39032/f4bb1939-f505-412d-bc14-1806b4234500
-      localID: f4bb1939-f505-412d-bc14-1806b4234500
-      parent: {fileID: 11403398}
-      mode: 0
-      data:
-      - {fileID: 11409516}
-      dataB: []
-      dataC: []
-  ready:
-    info:
-      name: Ready
-      path: Charge/Ready
-      id: -39032/0d441696-32a6-4748-9a57-e2a1ad86a666
-      localID: 0d441696-32a6-4748-9a57-e2a1ad86a666
-      parent: {fileID: 11403398}
-      mode: 0
-      data:
-      - {fileID: 11428108}
-      dataB: []
-      dataC: []
-  usable:
-    info:
-      name: Usable
-      path: Charge/Usable
-      id: -39032/853c7082-18a4-42d7-b480-e07c87aadbea
-      localID: 853c7082-18a4-42d7-b480-e07c87aadbea
-      parent: {fileID: 11403398}
-      mode: 0
-      data:
-      - {fileID: 11416638}
-      dataB: []
-      dataC: []
-  inUse:
-    info:
-      name: Active
-      path: Charge/Active
-      id: -39032/497c94e5-666e-4b42-b14c-2f53b14641ce
-      localID: 497c94e5-666e-4b42-b14c-2f53b14641ce
-      parent: {fileID: 11403398}
-      mode: 0
-      data:
-      - {fileID: 11406030}
-      dataB: []
-      dataC: []
-  used:
-    info:
-      name: Used
-      path: Charge/Used
-      id: -39032/b43ed484-bc5c-4bc8-8299-4d4a33d2c133
-      localID: b43ed484-bc5c-4bc8-8299-4d4a33d2c133
-      parent: {fileID: 11403398}
-      mode: 0
-      data:
-      - {fileID: 11408176}
-      dataB: []
-      dataC: []
-  endWhileUnusable:
-    info:
-      name: End While Unusable
-      path: Charge/End While Unusable
-      id: -39032/8ff4aaee-5bbd-477c-9f1d-22be0b976c22
-      localID: 8ff4aaee-5bbd-477c-9f1d-22be0b976c22
-      parent: {fileID: 11403398}
-      mode: 0
-      data:
-      - {fileID: 11469758}
-      dataB: []
-      dataC: []
---- !u!114 &11406030
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 104236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Bool Data
-  target:
-    special: []
-    specialNames: []
-    search: 
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
-    mode: 0
-  usage: 0
-  path: Charge/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: Charge/Active
-    id: -39032/497c94e5-666e-4b42-b14c-2f53b14641ce
-    localID: 497c94e5-666e-4b42-b14c-2f53b14641ce
-    parent: {fileID: 11403398}
-    mode: 0
-    data:
-    - {fileID: 11406030}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11408176
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 104236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Bool Data
-  target:
-    special: []
-    specialNames: []
-    search: 
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
-    mode: 0
-  usage: 0
-  path: Charge/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: Charge/Used
-    id: -39032/b43ed484-bc5c-4bc8-8299-4d4a33d2c133
-    localID: b43ed484-bc5c-4bc8-8299-4d4a33d2c133
-    parent: {fileID: 11403398}
-    mode: 0
-    data:
-    - {fileID: 11408176}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11409516
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 104236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Bool Data
-  target:
-    special: []
-    specialNames: []
-    search: 
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
-    mode: 0
-  usage: 0
-  path: Charge/Requirable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Requirable
-    path: Charge/Requirable
-    id: -39032/f4bb1939-f505-412d-bc14-1806b4234500
-    localID: f4bb1939-f505-412d-bc14-1806b4234500
-    parent: {fileID: 11403398}
-    mode: 0
-    data:
-    - {fileID: 11409516}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 1
 --- !u!114 &11414790
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 176944}
@@ -348,29 +105,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentPath: 
+  location: 
   alias: Attribute Game Object Data
   target:
-    special:
-    - {fileID: 176944}
-    - {fileID: 176944}
-    - {fileID: 104236}
-    - {fileID: 104236}
-    - {fileID: 176944}
-    - {fileID: 176944}
-    - {fileID: 104726}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
     search: ../../../../Visuals
     directObject: {fileID: 0}
     searchObject: {fileID: 0}
     parent: {fileID: 11477292}
     mode: 0
+    path: /Charge/@Settings/Visuals/Visuals/Target
   usage: 1
   path: Visuals/0
   referenceID: 
@@ -378,10 +122,11 @@ MonoBehaviour:
   attribute:
     name: Visuals
     path: Visuals
-    id: -39006/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+    id: -40706/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
     localID: 33bddd78-c7f6-40fe-94d8-1637fbd7fa73
     parent: {fileID: 11477292}
     mode: 0
+    linkType: 0
     data:
     - {fileID: 11414790}
     dataB: []
@@ -394,61 +139,13 @@ MonoBehaviour:
       localID: 
       parent: {fileID: 0}
       mode: 0
+      linkType: 0
       data: []
       dataB: []
       dataC: []
   operation: 0
   special: 0
   value: {fileID: 0}
---- !u!114 &11416638
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 104236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Bool Data
-  target:
-    special: []
-    specialNames: []
-    search: 
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
-    mode: 0
-  usage: 0
-  path: Charge/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: Charge/Usable
-    id: -39032/853c7082-18a4-42d7-b480-e07c87aadbea
-    localID: 853c7082-18a4-42d7-b480-e07c87aadbea
-    parent: {fileID: 11403398}
-    mode: 0
-    data:
-    - {fileID: 11416638}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 1
 --- !u!114 &11419038
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -457,47 +154,105 @@ MonoBehaviour:
   m_GameObject: {fileID: 104236}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5701b12795b13f745a1a7a75b69238fd, type: 3}
+  m_Script: {fileID: 11500000, guid: 4833115f047751b48be018c26164a652, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  total: 0
+  parentPath: /Charge/Main/
+  location: /Charge/Main/Charge
+  alias: Charge
+  rate: 1
+  occurrence: 0
+  controller: {fileID: 0}
+  id: -40686
+  usable:
+    info:
+      name: Usable
+      path: Charge/Usable
+      id: -40686/48f25591-e2b2-45d0-b56f-61464d239b6f
+      localID: 48f25591-e2b2-45d0-b56f-61464d239b6f
+      parent: {fileID: 11419038}
+      mode: 0
+      linkType: 0
+      data:
+      - {fileID: 11451892}
+      dataB: []
+      dataC: []
+  inUse:
+    info:
+      name: Active
+      path: Charge/Active
+      id: -40686/8bb3c05d-bfca-4472-9439-b04e2c5c255d
+      localID: 8bb3c05d-bfca-4472-9439-b04e2c5c255d
+      parent: {fileID: 11419038}
+      mode: 0
+      linkType: 0
+      data:
+      - {fileID: 11445120}
+      dataB: []
+      dataC: []
+  used:
+    info:
+      name: Used
+      path: Charge/Used
+      id: -40686/3546bec2-77cb-4448-a43d-6d63fe0e6fd0
+      localID: 3546bec2-77cb-4448-a43d-6d63fe0e6fd0
+      parent: {fileID: 11419038}
+      mode: 0
+      linkType: 0
+      data:
+      - {fileID: 11463922}
+      dataB: []
+      dataC: []
   table:
-  - name: '@Ready'
+  - name: '@Active'
     stateTable: {fileID: 11419038}
-    id: -359320
-    target: {fileID: 11458282}
+    id: -40686
+    target: {fileID: 11419038}
     empty: 0
+    section: 
     requirements:
     - data:
-      - name: '@Ready'
+      - name: '@Active'
         stateTable: {fileID: 11419038}
-        id: -359320
-        target: {fileID: 11458282}
+        id: -40686
+        target: {fileID: 11419038}
         requireOn: 0
         requireOff: 0
   tableOff:
-  - name: '@Ready'
+  - name: '@Active'
     stateTable: {fileID: 11419038}
-    id: -359320
-    target: {fileID: 11458282}
+    id: -40686
+    target: {fileID: 11419038}
     empty: 0
+    section: 
     requirements:
     - data:
-      - name: '@Ready'
+      - name: '@Active'
         stateTable: {fileID: 11419038}
-        id: -359320
-        target: {fileID: 11458282}
+        id: -40686
+        target: {fileID: 11419038}
         requireOn: 0
         requireOff: 0
+  manual: 0
   advanced: 0
+  external:
+    info:
+      name: External
+      path: Charge/External
+      id: -40686/f20de2af-cc9a-492e-8194-844c3cbe8bcf
+      localID: f20de2af-cc9a-492e-8194-844c3cbe8bcf
+      parent: {fileID: 11419038}
+      mode: 0
+      linkType: 0
+      data:
+      - {fileID: 11499264}
+      dataB: []
+      dataC: []
   scripts:
-  - {fileID: 11458282}
-  parts:
-  - {fileID: 11458282}
-  isFixed: 1
+  - {fileID: 11419038}
 --- !u!114 &11425570
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 176944}
@@ -506,15 +261,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3e9984a5f3f19942be359930227796e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentPath: 
+  location: 
   alias: Attribute String Data
   target:
-    special: []
-    specialNames: []
-    search: 
+    search: '[Self]'
     directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
+    searchObject: {fileID: 176944}
+    parent: {fileID: 11464674}
     mode: 0
+    path: /Charge/@Settings/Animation/Animation/Target
   usage: 0
   path: Animation/0
   referenceID: 
@@ -522,10 +278,11 @@ MonoBehaviour:
   attribute:
     name: Animation
     path: Animation
-    id: -39002/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
+    id: -40700/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
     localID: 7e894ef6-a99f-450f-b42a-e1aa6c29abb9
     parent: {fileID: 11464674}
     mode: 0
+    linkType: 0
     data:
     - {fileID: 11425570}
     dataB: []
@@ -538,6 +295,7 @@ MonoBehaviour:
       localID: 
       parent: {fileID: 0}
       mode: 0
+      linkType: 0
       data: []
       dataB: []
       dataC: []
@@ -547,55 +305,6 @@ MonoBehaviour:
   characterLimit: 0
   allowed: []
   disallowed: []
---- !u!114 &11428108
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 104236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Bool Data
-  target:
-    special: []
-    specialNames: []
-    search: 
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
-    mode: 0
-  usage: 0
-  path: Charge/Ready/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Ready
-    path: Charge/Ready
-    id: -39032/0d441696-32a6-4748-9a57-e2a1ad86a666
-    localID: 0d441696-32a6-4748-9a57-e2a1ad86a666
-    parent: {fileID: 11403398}
-    mode: 0
-    data:
-    - {fileID: 11428108}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!114 &11428936
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -607,70 +316,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e8a46b59a6b8eb489e122ad5fdef015, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentPath: /Charge/@Settings/
+  location: /Charge/@Settings/Source
   alias: Source
   value:
     info:
       name: Source
       path: Source
-      id: -39004/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+      id: -40692/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
       localID: 0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
       parent: {fileID: 11428936}
       mode: 0
+      linkType: 0
       data:
       - {fileID: 11483802}
       dataB: []
       dataC: []
   remember: 0
---- !u!114 &11434196
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 104236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Bool Data
-  target:
-    special: []
-    specialNames: []
-    search: 
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
-    mode: 0
-  usage: 0
-  path: '@Ready/Used/0'
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: '@Ready/Used'
-    id: -39046/4e9b130c-31d3-41c1-bc0e-f65ec1004914
-    localID: 4e9b130c-31d3-41c1-bc0e-f65ec1004914
-    parent: {fileID: 11458282}
-    mode: 0
-    data:
-    - {fileID: 11434196}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11458282
+--- !u!114 &11445120
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -678,118 +341,33 @@ MonoBehaviour:
   m_GameObject: {fileID: 104236}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d2c3095ed3786d4cb99a269e5e55882, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: '@Ready'
-  rate: 0
-  id: -359320
-  requirable:
-    info:
-      name: Requirable
-      path: '@Ready/Requirable'
-      id: -39046/b99cebcb-c7b2-41ce-8582-cbb6defa0fe5
-      localID: b99cebcb-c7b2-41ce-8582-cbb6defa0fe5
-      parent: {fileID: 11458282}
-      mode: 0
-      data:
-      - {fileID: 11460284}
-      dataB: []
-      dataC: []
-  ready:
-    info:
-      name: Ready
-      path: '@Ready/Ready'
-      id: -39046/9ff65a38-9f09-405c-ac08-1dc9addd7f63
-      localID: 9ff65a38-9f09-405c-ac08-1dc9addd7f63
-      parent: {fileID: 11458282}
-      mode: 0
-      data:
-      - {fileID: 11485892}
-      dataB: []
-      dataC: []
-  usable:
-    info:
-      name: Usable
-      path: '@Ready/Usable'
-      id: -39046/42a09ee4-dde9-4b7f-9872-9cba0f07a441
-      localID: 42a09ee4-dde9-4b7f-9872-9cba0f07a441
-      parent: {fileID: 11458282}
-      mode: 0
-      data:
-      - {fileID: 11492158}
-      dataB: []
-      dataC: []
-  inUse:
-    info:
-      name: Active
-      path: '@Ready/Active'
-      id: -39046/b1e9e859-f728-4397-8fa2-e55dc154a616
-      localID: b1e9e859-f728-4397-8fa2-e55dc154a616
-      parent: {fileID: 11458282}
-      mode: 0
-      data:
-      - {fileID: 11467396}
-      dataB: []
-      dataC: []
-  used:
-    info:
-      name: Used
-      path: '@Ready/Used'
-      id: -39046/4e9b130c-31d3-41c1-bc0e-f65ec1004914
-      localID: 4e9b130c-31d3-41c1-bc0e-f65ec1004914
-      parent: {fileID: 11458282}
-      mode: 0
-      data:
-      - {fileID: 11434196}
-      dataB: []
-      dataC: []
-  endWhileUnusable:
-    info:
-      name: End While Unusable
-      path: '@Ready/End While Unusable'
-      id: -39046/4275a0de-d957-48ab-86b5-177a4d283c7a
-      localID: 4275a0de-d957-48ab-86b5-177a4d283c7a
-      parent: {fileID: 11458282}
-      mode: 0
-      data:
-      - {fileID: 11493948}
-      dataB: []
-      dataC: []
-  occurrence: 0
---- !u!114 &11460284
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 104236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alias: Attribute Bool Data
+  parentPath: 
+  location: 
+  alias: 
   target:
-    special: []
-    specialNames: []
-    search: 
+    search: '[Self]'
     directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
+    searchObject: {fileID: 104236}
+    parent: {fileID: 11419038}
     mode: 0
+    path: /Charge/Main/Charge/Charge/Active/Target
   usage: 0
-  path: '@Ready/Requirable/0'
+  path: Charge/Active/0
   referenceID: 
   referencePath: 
   attribute:
-    name: Requirable
-    path: '@Ready/Requirable'
-    id: -39046/b99cebcb-c7b2-41ce-8582-cbb6defa0fe5
-    localID: b99cebcb-c7b2-41ce-8582-cbb6defa0fe5
-    parent: {fileID: 11458282}
+    name: Active
+    path: Charge/Active
+    id: -40686/8bb3c05d-bfca-4472-9439-b04e2c5c255d
+    localID: 8bb3c05d-bfca-4472-9439-b04e2c5c255d
+    parent: {fileID: 11419038}
     mode: 0
+    linkType: 0
     data:
-    - {fileID: 11460284}
+    - {fileID: 11445120}
     dataB: []
     dataC: []
   attributeRaw:
@@ -800,12 +378,117 @@ MonoBehaviour:
       localID: 
       parent: {fileID: 0}
       mode: 0
+      linkType: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
+--- !u!114 &11451892
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 104236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentPath: 
+  location: 
+  alias: 
+  target:
+    search: '[Self]'
+    directObject: {fileID: 0}
+    searchObject: {fileID: 104236}
+    parent: {fileID: 11419038}
+    mode: 0
+    path: /Charge/Main/Charge/Charge/Usable/Target
+  usage: 0
+  path: Charge/Usable/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Usable
+    path: Charge/Usable
+    id: -40686/48f25591-e2b2-45d0-b56f-61464d239b6f
+    localID: 48f25591-e2b2-45d0-b56f-61464d239b6f
+    parent: {fileID: 11419038}
+    mode: 0
+    linkType: 0
+    data:
+    - {fileID: 11451892}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      linkType: 0
       data: []
       dataB: []
       dataC: []
   operation: 0
   special: 0
   value: 1
+--- !u!114 &11463922
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 104236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentPath: 
+  location: 
+  alias: 
+  target:
+    search: '[Self]'
+    directObject: {fileID: 0}
+    searchObject: {fileID: 104236}
+    parent: {fileID: 11419038}
+    mode: 0
+    path: /Charge/Main/Charge/Charge/Used/Target
+  usage: 0
+  path: Charge/Used/0
+  referenceID: 
+  referencePath: 
+  attribute:
+    name: Used
+    path: Charge/Used
+    id: -40686/3546bec2-77cb-4448-a43d-6d63fe0e6fd0
+    localID: 3546bec2-77cb-4448-a43d-6d63fe0e6fd0
+    parent: {fileID: 11419038}
+    mode: 0
+    linkType: 0
+    data:
+    - {fileID: 11463922}
+    dataB: []
+    dataC: []
+  attributeRaw:
+    info:
+      name: 
+      path: 
+      id: 
+      localID: 
+      parent: {fileID: 0}
+      mode: 0
+      linkType: 0
+      data: []
+      dataB: []
+      dataC: []
+  operation: 0
+  special: 0
+  value: 0
 --- !u!114 &11464674
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -817,118 +500,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15dc630d7daaf4548bf1d099b9be1324, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentPath: /Charge/@Settings/
+  location: /Charge/@Settings/Animation
   alias: Animation
   value:
     info:
       name: Animation
       path: Animation
-      id: -39002/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
+      id: -40700/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
       localID: 7e894ef6-a99f-450f-b42a-e1aa6c29abb9
       parent: {fileID: 11464674}
       mode: 0
+      linkType: 0
       data:
       - {fileID: 11425570}
       dataB: []
       dataC: []
   remember: 0
---- !u!114 &11467396
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 104236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Bool Data
-  target:
-    special: []
-    specialNames: []
-    search: 
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
-    mode: 0
-  usage: 0
-  path: '@Ready/Active/0'
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: '@Ready/Active'
-    id: -39046/b1e9e859-f728-4397-8fa2-e55dc154a616
-    localID: b1e9e859-f728-4397-8fa2-e55dc154a616
-    parent: {fileID: 11458282}
-    mode: 0
-    data:
-    - {fileID: 11467396}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11469758
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 104236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Bool Data
-  target:
-    special: []
-    specialNames: []
-    search: 
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
-    mode: 0
-  usage: 0
-  path: Charge/End While Unusable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: End While Unusable
-    path: Charge/End While Unusable
-    id: -39032/8ff4aaee-5bbd-477c-9f1d-22be0b976c22
-    localID: 8ff4aaee-5bbd-477c-9f1d-22be0b976c22
-    parent: {fileID: 11403398}
-    mode: 0
-    data:
-    - {fileID: 11469758}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!114 &11477292
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -940,15 +528,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e8a46b59a6b8eb489e122ad5fdef015, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentPath: /Charge/@Settings/
+  location: /Charge/@Settings/Visuals
   alias: Visuals
   value:
     info:
       name: Visuals
       path: Visuals
-      id: -39006/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+      id: -40706/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
       localID: 33bddd78-c7f6-40fe-94d8-1637fbd7fa73
       parent: {fileID: 11477292}
       mode: 0
+      linkType: 0
       data:
       - {fileID: 11414790}
       dataB: []
@@ -956,7 +547,7 @@ MonoBehaviour:
   remember: 0
 --- !u!114 &11483802
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 176944}
@@ -965,29 +556,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentPath: 
+  location: 
   alias: Attribute Game Object Data
   target:
-    special:
-    - {fileID: 176944}
-    - {fileID: 176944}
-    - {fileID: 104236}
-    - {fileID: 104236}
-    - {fileID: 176944}
-    - {fileID: 176944}
-    - {fileID: 104726}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
     search: ../../../..
     directObject: {fileID: 0}
     searchObject: {fileID: 0}
     parent: {fileID: 11428936}
     mode: 0
+    path: /Charge/@Settings/Source/Source/Target
   usage: 1
   path: Source/0
   referenceID: 
@@ -995,10 +573,11 @@ MonoBehaviour:
   attribute:
     name: Source
     path: Source
-    id: -39004/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+    id: -40692/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
     localID: 0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
     parent: {fileID: 11428936}
     mode: 0
+    linkType: 0
     data:
     - {fileID: 11483802}
     dataB: []
@@ -1011,15 +590,16 @@ MonoBehaviour:
       localID: 
       parent: {fileID: 0}
       mode: 0
+      linkType: 0
       data: []
       dataB: []
       dataC: []
   operation: 0
   special: 0
   value: {fileID: 0}
---- !u!114 &11485892
+--- !u!114 &11499264
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 104236}
@@ -1028,28 +608,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alias: Attribute Bool Data
+  parentPath: 
+  location: 
+  alias: 
   target:
-    special: []
-    specialNames: []
-    search: 
+    search: '[Self]'
     directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
+    searchObject: {fileID: 104236}
+    parent: {fileID: 11419038}
     mode: 0
+    path: /Charge/Main/Charge/Charge/External/Target
   usage: 0
-  path: '@Ready/Ready/0'
+  path: Charge/External/0
   referenceID: 
   referencePath: 
   attribute:
-    name: Ready
-    path: '@Ready/Ready'
-    id: -39046/9ff65a38-9f09-405c-ac08-1dc9addd7f63
-    localID: 9ff65a38-9f09-405c-ac08-1dc9addd7f63
-    parent: {fileID: 11458282}
+    name: External
+    path: Charge/External
+    id: -40686/f20de2af-cc9a-492e-8194-844c3cbe8bcf
+    localID: f20de2af-cc9a-492e-8194-844c3cbe8bcf
+    parent: {fileID: 11419038}
     mode: 0
+    linkType: 0
     data:
-    - {fileID: 11485892}
+    - {fileID: 11499264}
     dataB: []
     dataC: []
   attributeRaw:
@@ -1060,110 +642,13 @@ MonoBehaviour:
       localID: 
       parent: {fileID: 0}
       mode: 0
+      linkType: 0
       data: []
       dataB: []
       dataC: []
   operation: 0
   special: 0
-  value: 0
---- !u!114 &11492158
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 104236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Bool Data
-  target:
-    special: []
-    specialNames: []
-    search: 
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
-    mode: 0
-  usage: 0
-  path: '@Ready/Usable/0'
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: '@Ready/Usable'
-    id: -39046/42a09ee4-dde9-4b7f-9872-9cba0f07a441
-    localID: 42a09ee4-dde9-4b7f-9872-9cba0f07a441
-    parent: {fileID: 11458282}
-    mode: 0
-    data:
-    - {fileID: 11492158}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11493948
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 104236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Bool Data
-  target:
-    special: []
-    specialNames: []
-    search: 
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 0}
-    mode: 0
-  usage: 0
-  path: '@Ready/End While Unusable/0'
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: End While Unusable
-    path: '@Ready/End While Unusable'
-    id: -39046/4275a0de-d957-48ab-86b5-177a4d283c7a
-    localID: 4275a0de-d957-48ab-86b5-177a4d283c7a
-    parent: {fileID: 11458282}
-    mode: 0
-    data:
-    - {fileID: 11493948}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 0
+  value: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

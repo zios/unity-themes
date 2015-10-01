@@ -70,15 +70,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c052664a50885d043b194e39441461a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentPath: /Collections/Orb Collection/
+  location: /Collections/Orb Collection/Collecting
   alias: Collecting
   value:
     info:
       name: Collecting
       path: Collecting
-      id: -66280/749bc210-bbe9-4610-b588-573a874668e1
+      id: -62028/749bc210-bbe9-4610-b588-573a874668e1
       localID: 749bc210-bbe9-4610-b588-573a874668e1
       parent: {fileID: 11460264}
       mode: 0
+      linkType: 0
       data:
       - {fileID: 11483646}
       dataB: []
@@ -86,7 +89,7 @@ MonoBehaviour:
   remember: 0
 --- !u!114 &11475112
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 121072}
@@ -95,15 +98,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d1c5738016cec84ab5d3eb4cd4f20e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentPath: 
+  location: 
   alias: Attribute Int Data
   target:
-    special: []
-    specialNames: []
-    search: 
+    search: '[Self]'
     directObject: {fileID: 0}
     searchObject: {fileID: 0}
-    parent: {fileID: 0}
+    parent: {fileID: 11488328}
     mode: 0
+    path: /Collections/Orb Collection/Items Collected/Items Collected/Target
   usage: 0
   path: Items Collected/0
   referenceID: 
@@ -111,10 +115,11 @@ MonoBehaviour:
   attribute:
     name: Items Collected
     path: Items Collected
-    id: -66278/a7c702bc-b570-4078-8b66-7a93deacde4c
+    id: -62030/a7c702bc-b570-4078-8b66-7a93deacde4c
     localID: a7c702bc-b570-4078-8b66-7a93deacde4c
     parent: {fileID: 11488328}
     mode: 0
+    linkType: 0
     data:
     - {fileID: 11475112}
     dataB: []
@@ -127,6 +132,7 @@ MonoBehaviour:
       localID: 
       parent: {fileID: 0}
       mode: 0
+      linkType: 0
       data: []
       dataB: []
       dataC: []
@@ -135,7 +141,7 @@ MonoBehaviour:
   value: 0
 --- !u!114 &11483646
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 121072}
@@ -144,15 +150,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentPath: 
+  location: 
   alias: Attribute Bool Data
   target:
-    special: []
-    specialNames: []
-    search: 
+    search: '[Self]'
     directObject: {fileID: 0}
     searchObject: {fileID: 0}
-    parent: {fileID: 0}
+    parent: {fileID: 11460264}
     mode: 0
+    path: /Collections/Orb Collection/Collecting/Collecting/Target
   usage: 0
   path: Collecting/0
   referenceID: 
@@ -160,10 +167,11 @@ MonoBehaviour:
   attribute:
     name: Collecting
     path: Collecting
-    id: -66280/749bc210-bbe9-4610-b588-573a874668e1
+    id: -62028/749bc210-bbe9-4610-b588-573a874668e1
     localID: 749bc210-bbe9-4610-b588-573a874668e1
     parent: {fileID: 11460264}
     mode: 0
+    linkType: 0
     data:
     - {fileID: 11483646}
     dataB: []
@@ -176,6 +184,7 @@ MonoBehaviour:
       localID: 
       parent: {fileID: 0}
       mode: 0
+      linkType: 0
       data: []
       dataB: []
       dataC: []
@@ -193,15 +202,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7c0e4551771ce94faea6b93123eba59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentPath: /Collections/Orb Collection/
+  location: /Collections/Orb Collection/Items Collected
   alias: Items Collected
   value:
     info:
       name: Items Collected
       path: Items Collected
-      id: -66278/a7c702bc-b570-4078-8b66-7a93deacde4c
+      id: -62030/a7c702bc-b570-4078-8b66-7a93deacde4c
       localID: a7c702bc-b570-4078-8b66-7a93deacde4c
       parent: {fileID: 11488328}
       mode: 0
+      linkType: 0
       data:
       - {fileID: 11475112}
       dataB: []

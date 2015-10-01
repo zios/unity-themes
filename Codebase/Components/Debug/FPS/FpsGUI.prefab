@@ -28,6 +28,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+  m_RootOrder: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -124,6 +125,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c834bc92ef30dd4b9aea9d51609ee77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fpsText: {fileID: 0}
+  frameTimeText: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -135,4 +138,3 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100000}
   m_IsPrefabParent: 1
-  m_IsExploded: 1

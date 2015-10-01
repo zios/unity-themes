@@ -45,29 +45,13 @@ GameObject:
   m_Component:
   - 4: {fileID: 448150}
   - 114: {fileID: 11445422}
-  - 114: {fileID: 11417450}
-  - 114: {fileID: 11442450}
   - 114: {fileID: 11464860}
-  - 114: {fileID: 11461760}
-  - 114: {fileID: 11449732}
-  - 114: {fileID: 11497670}
-  - 114: {fileID: 11408170}
-  - 114: {fileID: 11401076}
-  - 114: {fileID: 11455434}
-  - 114: {fileID: 11426254}
-  - 114: {fileID: 11438788}
-  - 114: {fileID: 11400968}
-  - 114: {fileID: 11440948}
-  - 114: {fileID: 11422554}
-  - 114: {fileID: 11442684}
   - 114: {fileID: 11494364}
   - 114: {fileID: 11435868}
   - 114: {fileID: 11427694}
   - 114: {fileID: 11402256}
   - 114: {fileID: 11402348}
   - 114: {fileID: 11408368}
-  - 114: {fileID: 11441168}
-  - 114: {fileID: 11477444}
   - 114: {fileID: 11498432}
   - 114: {fileID: 11412292}
   - 114: {fileID: 11403070}
@@ -76,12 +60,7 @@ GameObject:
   - 114: {fileID: 11486312}
   - 114: {fileID: 11463540}
   - 114: {fileID: 11465552}
-  - 114: {fileID: 11449318}
-  - 114: {fileID: 11479946}
-  - 114: {fileID: 11451174}
-  - 114: {fileID: 11465512}
   - 114: {fileID: 11475192}
-  - 114: {fileID: 11430388}
   - 114: {fileID: 11471304}
   - 114: {fileID: 11453634}
   - 114: {fileID: 11466270}
@@ -91,6 +70,11 @@ GameObject:
   - 114: {fileID: 11418792}
   - 114: {fileID: 11449336}
   - 114: {fileID: 11431790}
+  - 114: {fileID: 11439276}
+  - 114: {fileID: 11475784}
+  - 114: {fileID: 11449354}
+  - 114: {fileID: 11449264}
+  - 114: {fileID: 11478308}
   m_Layer: 10
   m_Name: Main
   m_TagString: Untagged
@@ -136,152 +120,6 @@ Transform:
   - {fileID: 448150}
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11400968
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Bool Data
-  target:
-    special:
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
-    - '[Owner]'
-    - '[Action]'
-    - '[ActionLink]'
-    - '[StateLink]'
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 190652}
-    parent: {fileID: 11442450}
-    mode: 0
-  usage: 0
-  path: '@Ready/Usable/0'
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: '@Ready/Usable'
-    id: -73228/2b001586-418a-4314-8227-21150f04396a
-    localID: 2b001586-418a-4314-8227-21150f04396a
-    parent: {fileID: 11442450}
-    mode: 0
-    linkType: 0
-    data:
-    - {fileID: 11400968}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11401076
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Bool Data
-  target:
-    special:
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
-    - '[Owner]'
-    - '[Action]'
-    - '[ActionLink]'
-    - '[StateLink]'
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 190652}
-    parent: {fileID: 11417450}
-    mode: 0
-  usage: 0
-  path: Crawl/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: Crawl/Used
-    id: -72754/e17458b7-8bf2-4c2a-8cda-344175f5fa03
-    localID: e17458b7-8bf2-4c2a-8cda-344175f5fa03
-    parent: {fileID: 11417450}
-    mode: 0
-    linkType: 0
-    data:
-    - {fileID: 11401076}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!114 &11402256
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -293,37 +131,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentPath: 
+  location: 
   alias: Attribute Float Data
   target:
-    special:
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
-    - '[Owner]'
-    - '[Action]'
-    - '[ActionLink]'
-    - '[StateLink]'
     search: ../../../Movement/@Settings
     directObject: {fileID: 0}
     searchObject: {fileID: 0}
     parent: {fileID: 11464860}
     mode: 0
+    path: /Crawl/Main/Crawl Speed/Crawl Speed/Target/Target
   usage: 1
   path: Crawl Speed/Target/0
   referenceID: -72594/dca5905a-c495-4ff2-9c6d-31ab61c97f06
@@ -331,7 +148,7 @@ MonoBehaviour:
   attribute:
     name: Target
     path: Crawl Speed/Target
-    id: -70856/fe5bb54e-8246-49df-8693-a0e506e858e8
+    id: -48202/fe5bb54e-8246-49df-8693-a0e506e858e8
     localID: fe5bb54e-8246-49df-8693-a0e506e858e8
     parent: {fileID: 11464860}
     mode: 1
@@ -366,45 +183,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentPath: 
+  location: 
   alias: Attribute Float Data
   target:
-    special:
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
-    - '[Owner]'
-    - '[Action]'
-    - '[ActionLink]'
-    - '[StateLink]'
     search: ../@Settings
     directObject: {fileID: 0}
     searchObject: {fileID: 182214}
     parent: {fileID: 11464860}
     mode: 0
+    path: /Crawl/Main/Crawl Speed/Crawl Speed/Value/Target
   usage: 1
   path: Crawl Speed/Value/0
-  referenceID: -72512/2e598b53-0a61-4a68-86b9-595f8e971990
+  referenceID: -48176/2e598b53-0a61-4a68-86b9-595f8e971990
   referencePath: Crawl Speed
   attribute:
     name: Value
     path: Crawl Speed/Value
-    id: -70856/f4fb5df0-b4c6-4ca5-a90a-0444192eb9b6
+    id: -48202/f4fb5df0-b4c6-4ca5-a90a-0444192eb9b6
     localID: f4fb5df0-b4c6-4ca5-a90a-0444192eb9b6
     parent: {fileID: 11464860}
     mode: 0
@@ -439,37 +235,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentPath: 
+  location: 
   alias: Attribute Bool Data
   target:
-    special:
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
-    - '[Owner]'
-    - '[Action]'
-    - '[ActionLink]'
-    - '[StateLink]'
     search: ../@Settings
     directObject: {fileID: 0}
     searchObject: {fileID: 182214}
     parent: {fileID: 11408368}
     mode: 0
+    path: /Crawl/Main/Sticky Check/Sticky Check/Used/Target
   usage: 0
   path: Sticky Check/Used/0
   referenceID: 
@@ -477,86 +252,13 @@ MonoBehaviour:
   attribute:
     name: Used
     path: Sticky Check/Used
-    id: -227128/1849e919-9a58-4cbf-bc32-ea0aad08a4da
+    id: -48136/1849e919-9a58-4cbf-bc32-ea0aad08a4da
     localID: 1849e919-9a58-4cbf-bc32-ea0aad08a4da
     parent: {fileID: 11408368}
     mode: 0
     linkType: 0
     data:
     - {fileID: 11403070}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11408170
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Bool Data
-  target:
-    special:
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
-    - '[Owner]'
-    - '[Action]'
-    - '[ActionLink]'
-    - '[StateLink]'
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 190652}
-    parent: {fileID: 11417450}
-    mode: 0
-  usage: 0
-  path: Crawl/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: Crawl/Usable
-    id: -72754/cf8ed2f1-8930-4f3c-9333-7acda51c68a1
-    localID: cf8ed2f1-8930-4f3c-9333-7acda51c68a1
-    parent: {fileID: 11417450}
-    mode: 0
-    linkType: 0
-    data:
-    - {fileID: 11408170}
     dataB: []
     dataC: []
   attributeRaw:
@@ -585,40 +287,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d483bbf7771b8d4eb254f917061fe72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentPath: /Crawl/Main/
+  location: /Crawl/Main/Sticky Check
   alias: Sticky Check
   rate: 1
+  occurrence: 0
+  controller: {fileID: 11445422}
   id: -53364
-  requirable:
-    info:
-      name: Requirable
-      path: Sticky Check/Requirable
-      id: -227128/5d7397f2-c2d3-4e71-9b54-a9a93e6efd81
-      localID: 5d7397f2-c2d3-4e71-9b54-a9a93e6efd81
-      parent: {fileID: 11408368}
-      mode: 0
-      linkType: 0
-      data:
-      - {fileID: 11441168}
-      dataB: []
-      dataC: []
-  ready:
-    info:
-      name: Ready
-      path: Sticky Check/Ready
-      id: -227128/53a75334-cbd5-4850-90e3-12a77e436d90
-      localID: 53a75334-cbd5-4850-90e3-12a77e436d90
-      parent: {fileID: 11408368}
-      mode: 0
-      linkType: 0
-      data:
-      - {fileID: 11477444}
-      dataB: []
-      dataC: []
   usable:
     info:
       name: Usable
       path: Sticky Check/Usable
-      id: -227128/b9411779-dfb6-4aa3-8b7f-11137379f861
+      id: -48136/b9411779-dfb6-4aa3-8b7f-11137379f861
       localID: b9411779-dfb6-4aa3-8b7f-11137379f861
       parent: {fileID: 11408368}
       mode: 0
@@ -631,7 +311,7 @@ MonoBehaviour:
     info:
       name: Active
       path: Sticky Check/Active
-      id: -227128/65595841-4880-4400-a0c5-6979d70a2518
+      id: -48136/65595841-4880-4400-a0c5-6979d70a2518
       localID: 65595841-4880-4400-a0c5-6979d70a2518
       parent: {fileID: 11408368}
       mode: 0
@@ -644,7 +324,7 @@ MonoBehaviour:
     info:
       name: Used
       path: Sticky Check/Used
-      id: -227128/1849e919-9a58-4cbf-bc32-ea0aad08a4da
+      id: -48136/1849e919-9a58-4cbf-bc32-ea0aad08a4da
       localID: 1849e919-9a58-4cbf-bc32-ea0aad08a4da
       parent: {fileID: 11408368}
       mode: 0
@@ -653,14 +333,11 @@ MonoBehaviour:
       - {fileID: 11403070}
       dataB: []
       dataC: []
-  occurrence: 0
-  stateLink: {fileID: 11417450}
-  actionTable: {fileID: 11445422}
   source:
     info:
       name: Source
       path: Sticky Check/Source
-      id: -227128/82317b72-9009-4f3d-9655-2ceb680718ca
+      id: -48136/82317b72-9009-4f3d-9655-2ceb680718ca
       localID: 82317b72-9009-4f3d-9655-2ceb680718ca
       parent: {fileID: 11408368}
       mode: 0
@@ -669,63 +346,11 @@ MonoBehaviour:
       - {fileID: 11428050}
       dataB: []
       dataC: []
-  offset:
-    info:
-      name: Offset
-      path: Sticky Check/Offset
-      id: -227128/6c9f77b2-227c-49fd-be88-38ad37c37b2d
-      localID: 6c9f77b2-227c-49fd-be88-38ad37c37b2d
-      parent: {fileID: 11408368}
-      mode: 0
-      linkType: 0
-      data:
-      - {fileID: 11449318}
-      dataB: []
-      dataC: []
-    x:
-      info:
-        name: X
-        path: Sticky Check/Offset/X
-        id: -227128/987c73f3-24ca-40e1-8a9e-3908e09b106a
-        localID: 987c73f3-24ca-40e1-8a9e-3908e09b106a
-        parent: {fileID: 11408368}
-        mode: 0
-        linkType: 0
-        data:
-        - {fileID: 11479946}
-        dataB: []
-        dataC: []
-    y:
-      info:
-        name: Y
-        path: Sticky Check/Offset/Y
-        id: -227128/a292d240-82d7-4fb0-a477-cb8483ee2962
-        localID: a292d240-82d7-4fb0-a477-cb8483ee2962
-        parent: {fileID: 11408368}
-        mode: 0
-        linkType: 0
-        data:
-        - {fileID: 11451174}
-        dataB: []
-        dataC: []
-    z:
-      info:
-        name: Z
-        path: Sticky Check/Offset/Z
-        id: -227128/0ae0399e-300c-4a4e-8854-115ba190ad68
-        localID: 0ae0399e-300c-4a4e-8854-115ba190ad68
-        parent: {fileID: 11408368}
-        mode: 0
-        linkType: 0
-        data:
-        - {fileID: 11465512}
-        dataB: []
-        dataC: []
   direction:
     info:
       name: Direction
       path: Sticky Check/Direction
-      id: -227128/9684c49a-2e2d-491b-af75-558c1753e5bb
+      id: -48136/9684c49a-2e2d-491b-af75-558c1753e5bb
       localID: 9684c49a-2e2d-491b-af75-558c1753e5bb
       parent: {fileID: 11408368}
       mode: 0
@@ -738,7 +363,7 @@ MonoBehaviour:
       info:
         name: X
         path: Sticky Check/Direction/X
-        id: -227128/1e4edaf0-92c4-4203-ae9d-564b165b401e
+        id: -48136/1e4edaf0-92c4-4203-ae9d-564b165b401e
         localID: 1e4edaf0-92c4-4203-ae9d-564b165b401e
         parent: {fileID: 11408368}
         mode: 0
@@ -751,7 +376,7 @@ MonoBehaviour:
       info:
         name: Y
         path: Sticky Check/Direction/Y
-        id: -227128/6d5d4853-83a3-437c-9b10-885c4803bf2f
+        id: -48136/6d5d4853-83a3-437c-9b10-885c4803bf2f
         localID: 6d5d4853-83a3-437c-9b10-885c4803bf2f
         parent: {fileID: 11408368}
         mode: 0
@@ -764,7 +389,7 @@ MonoBehaviour:
       info:
         name: Z
         path: Sticky Check/Direction/Z
-        id: -227128/6c073f81-a72e-4d37-9fa5-1ba7b53cce5a
+        id: -48136/6c073f81-a72e-4d37-9fa5-1ba7b53cce5a
         localID: 6c073f81-a72e-4d37-9fa5-1ba7b53cce5a
         parent: {fileID: 11408368}
         mode: 0
@@ -777,7 +402,7 @@ MonoBehaviour:
     info:
       name: Distance
       path: Sticky Check/Distance
-      id: -227128/9eeb5b0e-9283-4419-b0f6-8a87f1502506
+      id: -48136/9eeb5b0e-9283-4419-b0f6-8a87f1502506
       localID: 9eeb5b0e-9283-4419-b0f6-8a87f1502506
       parent: {fileID: 11408368}
       mode: 0
@@ -786,12 +411,15 @@ MonoBehaviour:
       - {fileID: 11475192}
       dataB: []
       dataC: []
+  layers:
+    serializedVersion: 2
+    m_Bits: 1048576
   debugColor: {r: 1, g: 0, b: 0, a: 1}
   hitPoint:
     info:
       name: Hit Point
       path: Sticky Check/Hit Point
-      id: -227128/4331e230-fef5-473b-b056-6a77dbfd748a
+      id: -48136/4331e230-fef5-473b-b056-6a77dbfd748a
       localID: 4331e230-fef5-473b-b056-6a77dbfd748a
       parent: {fileID: 11408368}
       mode: 0
@@ -804,7 +432,7 @@ MonoBehaviour:
       info:
         name: X
         path: Sticky Check/Hit Point/X
-        id: -227128/97b3e44e-af8d-4368-a2cf-c7143822458b
+        id: -48136/97b3e44e-af8d-4368-a2cf-c7143822458b
         localID: 97b3e44e-af8d-4368-a2cf-c7143822458b
         parent: {fileID: 11408368}
         mode: 0
@@ -817,7 +445,7 @@ MonoBehaviour:
       info:
         name: Y
         path: Sticky Check/Hit Point/Y
-        id: -227128/54861f07-862d-43df-b5f7-1982096e4f68
+        id: -48136/54861f07-862d-43df-b5f7-1982096e4f68
         localID: 54861f07-862d-43df-b5f7-1982096e4f68
         parent: {fileID: 11408368}
         mode: 0
@@ -830,7 +458,7 @@ MonoBehaviour:
       info:
         name: Z
         path: Sticky Check/Hit Point/Z
-        id: -227128/4ebd894d-c45c-463b-8a7f-a6b5cd41f4d9
+        id: -48136/4ebd894d-c45c-463b-8a7f-a6b5cd41f4d9
         localID: 4ebd894d-c45c-463b-8a7f-a6b5cd41f4d9
         parent: {fileID: 11408368}
         mode: 0
@@ -843,7 +471,7 @@ MonoBehaviour:
     info:
       name: Hit Normal
       path: Sticky Check/Hit Normal
-      id: -227128/61f01fbe-16db-4a40-a2f3-996b29e87f31
+      id: -48136/61f01fbe-16db-4a40-a2f3-996b29e87f31
       localID: 61f01fbe-16db-4a40-a2f3-996b29e87f31
       parent: {fileID: 11408368}
       mode: 0
@@ -856,7 +484,7 @@ MonoBehaviour:
       info:
         name: X
         path: Sticky Check/Hit Normal/X
-        id: -227128/5ed469ee-33da-4f10-918d-9ad82579d037
+        id: -48136/5ed469ee-33da-4f10-918d-9ad82579d037
         localID: 5ed469ee-33da-4f10-918d-9ad82579d037
         parent: {fileID: 11408368}
         mode: 0
@@ -869,7 +497,7 @@ MonoBehaviour:
       info:
         name: Y
         path: Sticky Check/Hit Normal/Y
-        id: -227128/35ac2e8f-8b4a-4bee-9736-d2b434cb6ecb
+        id: -48136/35ac2e8f-8b4a-4bee-9736-d2b434cb6ecb
         localID: 35ac2e8f-8b4a-4bee-9736-d2b434cb6ecb
         parent: {fileID: 11408368}
         mode: 0
@@ -882,7 +510,7 @@ MonoBehaviour:
       info:
         name: Z
         path: Sticky Check/Hit Normal/Z
-        id: -227128/accf128d-e98a-4a43-ae2b-76a72b5b1100
+        id: -48136/accf128d-e98a-4a43-ae2b-76a72b5b1100
         localID: accf128d-e98a-4a43-ae2b-76a72b5b1100
         parent: {fileID: 11408368}
         mode: 0
@@ -895,7 +523,7 @@ MonoBehaviour:
     info:
       name: Hit Distance
       path: Sticky Check/Hit Distance
-      id: -227128/7d0a0ab2-c6a4-461b-87f4-4cd0f4b91fe3
+      id: -48136/7d0a0ab2-c6a4-461b-87f4-4cd0f4b91fe3
       localID: 7d0a0ab2-c6a4-461b-87f4-4cd0f4b91fe3
       parent: {fileID: 11408368}
       mode: 0
@@ -904,20 +532,17 @@ MonoBehaviour:
       - {fileID: 11431790}
       dataB: []
       dataC: []
-  layers:
-    serializedVersion: 2
-    m_Bits: 1048576
-  relative:
+  hit:
     info:
-      name: Relative
-      path: Sticky Check/Relative
-      id: -227128/97fdc535-ccd9-4763-9532-6244bdc787ee
-      localID: 97fdc535-ccd9-4763-9532-6244bdc787ee
+      name: Hit
+      path: Sticky Check/Hit
+      id: -48136/69e6f535-adb5-4c60-b9e9-9b91a1f1b362
+      localID: 69e6f535-adb5-4c60-b9e9-9b91a1f1b362
       parent: {fileID: 11408368}
       mode: 0
       linkType: 0
       data:
-      - {fileID: 11430388}
+      - {fileID: 11439276}
       dataB: []
       dataC: []
 --- !u!114 &11409822
@@ -931,12 +556,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e8a46b59a6b8eb489e122ad5fdef015, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentPath: /Crawl/@Settings/
+  location: /Crawl/@Settings/Visuals
   alias: Visuals
   value:
     info:
       name: Visuals
       path: Visuals
-      id: -73522/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+      id: -48138/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
       localID: 33bddd78-c7f6-40fe-94d8-1637fbd7fa73
       parent: {fileID: 11409822}
       mode: 0
@@ -957,29 +584,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentPath: 
+  location: 
   alias: Attribute Game Object Data
   target:
-    special:
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 182214}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
     search: ../../../../Visuals
     directObject: {fileID: 0}
     searchObject: {fileID: 0}
     parent: {fileID: 11409822}
     mode: 0
+    path: /Crawl/@Settings/Visuals/Visuals/Target
   usage: 1
   path: Visuals/0
   referenceID: 
@@ -987,7 +601,7 @@ MonoBehaviour:
   attribute:
     name: Visuals
     path: Visuals
-    id: -73522/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+    id: -48138/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
     localID: 33bddd78-c7f6-40fe-94d8-1637fbd7fa73
     parent: {fileID: 11409822}
     mode: 0
@@ -1022,37 +636,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentPath: 
+  location: 
   alias: Attribute Bool Data
   target:
-    special:
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
-    - '[Owner]'
-    - '[Action]'
-    - '[ActionLink]'
-    - '[StateLink]'
     search: ../@Settings
     directObject: {fileID: 0}
     searchObject: {fileID: 182214}
     parent: {fileID: 11408368}
     mode: 0
+    path: /Crawl/Main/Sticky Check/Sticky Check/Active/Target
   usage: 0
   path: Sticky Check/Active/0
   referenceID: 
@@ -1060,7 +653,7 @@ MonoBehaviour:
   attribute:
     name: Active
     path: Sticky Check/Active
-    id: -227128/65595841-4880-4400-a0c5-6979d70a2518
+    id: -48136/65595841-4880-4400-a0c5-6979d70a2518
     localID: 65595841-4880-4400-a0c5-6979d70a2518
     parent: {fileID: 11408368}
     mode: 0
@@ -1095,37 +688,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentPath: 
+  location: 
   alias: Attribute Float Data
   target:
-    special:
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
-    - '[Owner]'
-    - '[Action]'
-    - '[ActionLink]'
-    - '[StateLink]'
     search: ../@Settings
     directObject: {fileID: 0}
     searchObject: {fileID: 182214}
     parent: {fileID: 11408368}
     mode: 0
+    path: /Crawl/Main/Sticky Check/Sticky Check/Hit Normal/X/Target
   usage: 0
   path: Sticky Check/Hit Normal/X/0
   referenceID: 
@@ -1133,7 +705,7 @@ MonoBehaviour:
   attribute:
     name: X
     path: Sticky Check/Hit Normal/X
-    id: -227128/5ed469ee-33da-4f10-918d-9ad82579d037
+    id: -48136/5ed469ee-33da-4f10-918d-9ad82579d037
     localID: 5ed469ee-33da-4f10-918d-9ad82579d037
     parent: {fileID: 11408368}
     mode: 0
@@ -1157,87 +729,6 @@ MonoBehaviour:
   operation: 0
   special: 0
   value: 0
---- !u!114 &11417450
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6a5365a236805842985225b566116a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Crawl
-  rate: 0
-  id: -2123296
-  requirable:
-    info:
-      name: Requirable
-      path: Crawl/Requirable
-      id: -72754/0b1fa146-1c64-44ff-a219-5604cb44329d
-      localID: 0b1fa146-1c64-44ff-a219-5604cb44329d
-      parent: {fileID: 11417450}
-      mode: 0
-      linkType: 0
-      data:
-      - {fileID: 11449732}
-      dataB: []
-      dataC: []
-  ready:
-    info:
-      name: Ready
-      path: Crawl/Ready
-      id: -72754/d71203f9-525f-47c8-bb83-38789233f45a
-      localID: d71203f9-525f-47c8-bb83-38789233f45a
-      parent: {fileID: 11417450}
-      mode: 0
-      linkType: 0
-      data:
-      - {fileID: 11497670}
-      dataB: []
-      dataC: []
-  usable:
-    info:
-      name: Usable
-      path: Crawl/Usable
-      id: -72754/cf8ed2f1-8930-4f3c-9333-7acda51c68a1
-      localID: cf8ed2f1-8930-4f3c-9333-7acda51c68a1
-      parent: {fileID: 11417450}
-      mode: 0
-      linkType: 0
-      data:
-      - {fileID: 11408170}
-      dataB: []
-      dataC: []
-  inUse:
-    info:
-      name: Active
-      path: Crawl/Active
-      id: -72754/2093493c-62e6-4b5d-affb-2f6937c8f027
-      localID: 2093493c-62e6-4b5d-affb-2f6937c8f027
-      parent: {fileID: 11417450}
-      mode: 0
-      linkType: 0
-      data:
-      - {fileID: 11461760}
-      dataB: []
-      dataC: []
-  used:
-    info:
-      name: Used
-      path: Crawl/Used
-      id: -72754/e17458b7-8bf2-4c2a-8cda-344175f5fa03
-      localID: e17458b7-8bf2-4c2a-8cda-344175f5fa03
-      parent: {fileID: 11417450}
-      mode: 0
-      linkType: 0
-      data:
-      - {fileID: 11401076}
-      dataB: []
-      dataC: []
-  stateTable: {fileID: 0}
-  owner: {fileID: 190652}
 --- !u!114 &11418792
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1249,37 +740,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentPath: 
+  location: 
   alias: Attribute Float Data
   target:
-    special:
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
-    - '[Owner]'
-    - '[Action]'
-    - '[ActionLink]'
-    - '[StateLink]'
     search: ../@Settings
     directObject: {fileID: 0}
     searchObject: {fileID: 182214}
     parent: {fileID: 11408368}
     mode: 0
+    path: /Crawl/Main/Sticky Check/Sticky Check/Hit Normal/Y/Target
   usage: 0
   path: Sticky Check/Hit Normal/Y/0
   referenceID: 
@@ -1287,7 +757,7 @@ MonoBehaviour:
   attribute:
     name: Y
     path: Sticky Check/Hit Normal/Y
-    id: -227128/35ac2e8f-8b4a-4bee-9736-d2b434cb6ecb
+    id: -48136/35ac2e8f-8b4a-4bee-9736-d2b434cb6ecb
     localID: 35ac2e8f-8b4a-4bee-9736-d2b434cb6ecb
     parent: {fileID: 11408368}
     mode: 0
@@ -1311,152 +781,6 @@ MonoBehaviour:
   operation: 0
   special: 0
   value: 0
---- !u!114 &11422554
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Bool Data
-  target:
-    special:
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
-    - '[Owner]'
-    - '[Action]'
-    - '[ActionLink]'
-    - '[StateLink]'
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 190652}
-    parent: {fileID: 11464860}
-    mode: 0
-  usage: 0
-  path: Crawl Speed/Requirable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Requirable
-    path: Crawl Speed/Requirable
-    id: -70856/238b4e15-ca0c-4a0b-b6e1-10925cc759c6
-    localID: 238b4e15-ca0c-4a0b-b6e1-10925cc759c6
-    parent: {fileID: 11464860}
-    mode: 0
-    linkType: 0
-    data:
-    - {fileID: 11422554}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11426254
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Bool Data
-  target:
-    special:
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
-    - '[Owner]'
-    - '[Action]'
-    - '[ActionLink]'
-    - '[StateLink]'
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 190652}
-    parent: {fileID: 11442450}
-    mode: 0
-  usage: 0
-  path: '@Ready/Requirable/0'
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Requirable
-    path: '@Ready/Requirable'
-    id: -73228/059cba77-4b0d-45e8-8904-031618ba6b02
-    localID: 059cba77-4b0d-45e8-8904-031618ba6b02
-    parent: {fileID: 11442450}
-    mode: 0
-    linkType: 0
-    data:
-    - {fileID: 11426254}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 1
 --- !u!114 &11427694
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1468,37 +792,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentPath: 
+  location: 
   alias: Attribute Bool Data
   target:
-    special:
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
-    - '[Owner]'
-    - '[Action]'
-    - '[ActionLink]'
-    - '[StateLink]'
     search: '[Self]'
     directObject: {fileID: 0}
     searchObject: {fileID: 190652}
     parent: {fileID: 11464860}
     mode: 0
+    path: /Crawl/Main/Crawl Speed/Crawl Speed/Used/Target
   usage: 0
   path: Crawl Speed/Used/0
   referenceID: 
@@ -1506,7 +809,7 @@ MonoBehaviour:
   attribute:
     name: Used
     path: Crawl Speed/Used
-    id: -70856/73927be3-5383-485e-ab73-6cf53e2b605c
+    id: -48202/73927be3-5383-485e-ab73-6cf53e2b605c
     localID: 73927be3-5383-485e-ab73-6cf53e2b605c
     parent: {fileID: 11464860}
     mode: 0
@@ -1541,45 +844,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentPath: 
+  location: 
   alias: Attribute Game Object Data
   target:
-    special:
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
-    - '[Owner]'
-    - '[Action]'
-    - '[ActionLink]'
-    - '[StateLink]'
     search: ../@Settings
     directObject: {fileID: 0}
     searchObject: {fileID: 182214}
     parent: {fileID: 11408368}
     mode: 0
+    path: /Crawl/Main/Sticky Check/Sticky Check/Source/Target
   usage: 1
   path: Sticky Check/Source/0
-  referenceID: -71874/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+  referenceID: -48164/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
   referencePath: Source
   attribute:
     name: Source
     path: Sticky Check/Source
-    id: -227128/82317b72-9009-4f3d-9655-2ceb680718ca
+    id: -48136/82317b72-9009-4f3d-9655-2ceb680718ca
     localID: 82317b72-9009-4f3d-9655-2ceb680718ca
     parent: {fileID: 11408368}
     mode: 0
@@ -1614,37 +896,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bd276b9f61cc614aaa69e18d0ef39ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentPath: 
+  location: 
   alias: Attribute Vector3Data
   target:
-    special:
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
-    - '[Owner]'
-    - '[Action]'
-    - '[ActionLink]'
-    - '[StateLink]'
     search: ../@Settings
     directObject: {fileID: 0}
     searchObject: {fileID: 182214}
     parent: {fileID: 11408368}
     mode: 0
+    path: /Crawl/Main/Sticky Check/Sticky Check/Hit Normal/Target
   usage: 0
   path: Sticky Check/Hit Normal/0
   referenceID: 
@@ -1652,7 +913,7 @@ MonoBehaviour:
   attribute:
     name: Hit Normal
     path: Sticky Check/Hit Normal
-    id: -227128/61f01fbe-16db-4a40-a2f3-996b29e87f31
+    id: -48136/61f01fbe-16db-4a40-a2f3-996b29e87f31
     localID: 61f01fbe-16db-4a40-a2f3-996b29e87f31
     parent: {fileID: 11408368}
     mode: 0
@@ -1676,79 +937,6 @@ MonoBehaviour:
   operation: 0
   special: 0
   value: {x: 0, y: 0, z: 0}
---- !u!114 &11430388
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Bool Data
-  target:
-    special:
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
-    - '[Owner]'
-    - '[Action]'
-    - '[ActionLink]'
-    - '[StateLink]'
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 182214}
-    parent: {fileID: 11408368}
-    mode: 0
-  usage: 0
-  path: Sticky Check/Relative/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Relative
-    path: Sticky Check/Relative
-    id: -227128/97fdc535-ccd9-4763-9532-6244bdc787ee
-    localID: 97fdc535-ccd9-4763-9532-6244bdc787ee
-    parent: {fileID: 11408368}
-    mode: 0
-    linkType: 0
-    data:
-    - {fileID: 11430388}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!114 &11431790
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1760,37 +948,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentPath: 
+  location: 
   alias: Attribute Float Data
   target:
-    special:
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
-    - '[Owner]'
-    - '[Action]'
-    - '[ActionLink]'
-    - '[StateLink]'
     search: ../@Settings
     directObject: {fileID: 0}
     searchObject: {fileID: 182214}
     parent: {fileID: 11408368}
     mode: 0
+    path: /Crawl/Main/Sticky Check/Sticky Check/Hit Distance/Target
   usage: 0
   path: Sticky Check/Hit Distance/0
   referenceID: 
@@ -1798,7 +965,7 @@ MonoBehaviour:
   attribute:
     name: Hit Distance
     path: Sticky Check/Hit Distance
-    id: -227128/7d0a0ab2-c6a4-461b-87f4-4cd0f4b91fe3
+    id: -48136/7d0a0ab2-c6a4-461b-87f4-4cd0f4b91fe3
     localID: 7d0a0ab2-c6a4-461b-87f4-4cd0f4b91fe3
     parent: {fileID: 11408368}
     mode: 0
@@ -1833,12 +1000,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e8a46b59a6b8eb489e122ad5fdef015, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentPath: /Crawl/@Settings/
+  location: /Crawl/@Settings/Source
   alias: Source
   value:
     info:
       name: Source
       path: Source
-      id: -71874/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+      id: -48164/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
       localID: 0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
       parent: {fileID: 11434848}
       mode: 0
@@ -1859,37 +1028,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentPath: 
+  location: 
   alias: Attribute Bool Data
   target:
-    special:
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
-    - '[Owner]'
-    - '[Action]'
-    - '[ActionLink]'
-    - '[StateLink]'
     search: '[Self]'
     directObject: {fileID: 0}
     searchObject: {fileID: 190652}
     parent: {fileID: 11464860}
     mode: 0
+    path: /Crawl/Main/Crawl Speed/Crawl Speed/Active/Target
   usage: 0
   path: Crawl Speed/Active/0
   referenceID: 
@@ -1897,7 +1045,7 @@ MonoBehaviour:
   attribute:
     name: Active
     path: Crawl Speed/Active
-    id: -70856/7e31aa4b-9aed-4811-aa5a-1ee41e9d01e7
+    id: -48202/7e31aa4b-9aed-4811-aa5a-1ee41e9d01e7
     localID: 7e31aa4b-9aed-4811-aa5a-1ee41e9d01e7
     parent: {fileID: 11464860}
     mode: 0
@@ -1921,7 +1069,7 @@ MonoBehaviour:
   operation: 0
   special: 0
   value: 0
---- !u!114 &11438788
+--- !u!114 &11439276
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1929,200 +1077,33 @@ MonoBehaviour:
   m_GameObject: {fileID: 190652}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
+  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alias: Attribute Bool Data
+  parentPath: 
+  location: 
+  alias: 
   target:
-    special:
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
-    - '[Owner]'
-    - '[Action]'
-    - '[ActionLink]'
-    - '[StateLink]'
     search: '[Self]'
     directObject: {fileID: 0}
     searchObject: {fileID: 190652}
-    parent: {fileID: 11442450}
-    mode: 0
-  usage: 0
-  path: '@Ready/Ready/0'
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Ready
-    path: '@Ready/Ready'
-    id: -73228/ac03eca9-7bf9-48f6-b4a4-1758e1001a68
-    localID: ac03eca9-7bf9-48f6-b4a4-1758e1001a68
-    parent: {fileID: 11442450}
-    mode: 0
-    linkType: 0
-    data:
-    - {fileID: 11438788}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11440948
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Bool Data
-  target:
-    special:
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
-    - '[Owner]'
-    - '[Action]'
-    - '[ActionLink]'
-    - '[StateLink]'
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 190652}
-    parent: {fileID: 11442450}
-    mode: 0
-  usage: 0
-  path: '@Ready/Used/0'
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: '@Ready/Used'
-    id: -73228/02e4ea24-2482-4836-b6f3-8df48b53729f
-    localID: 02e4ea24-2482-4836-b6f3-8df48b53729f
-    parent: {fileID: 11442450}
-    mode: 0
-    linkType: 0
-    data:
-    - {fileID: 11440948}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11441168
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Bool Data
-  target:
-    special:
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
-    - '[Owner]'
-    - '[Action]'
-    - '[ActionLink]'
-    - '[StateLink]'
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 182214}
     parent: {fileID: 11408368}
     mode: 0
-  usage: 0
-  path: Sticky Check/Requirable/0
+    path: /Crawl/Main/Sticky Check/Sticky Check/Hit/Target
+  usage: 1
+  path: Sticky Check/Hit/0
   referenceID: 
   referencePath: 
   attribute:
-    name: Requirable
-    path: Sticky Check/Requirable
-    id: -227128/5d7397f2-c2d3-4e71-9b54-a9a93e6efd81
-    localID: 5d7397f2-c2d3-4e71-9b54-a9a93e6efd81
+    name: Hit
+    path: Sticky Check/Hit
+    id: -48136/69e6f535-adb5-4c60-b9e9-9b91a1f1b362
+    localID: 69e6f535-adb5-4c60-b9e9-9b91a1f1b362
     parent: {fileID: 11408368}
     mode: 0
     linkType: 0
     data:
-    - {fileID: 11441168}
+    - {fileID: 11439276}
     dataB: []
     dataC: []
   attributeRaw:
@@ -2139,89 +1120,7 @@ MonoBehaviour:
       dataC: []
   operation: 0
   special: 0
-  value: 1
---- !u!114 &11442450
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d2c3095ed3786d4cb99a269e5e55882, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: '@Ready'
-  rate: 1
-  id: -1463324
-  requirable:
-    info:
-      name: Requirable
-      path: '@Ready/Requirable'
-      id: -73228/059cba77-4b0d-45e8-8904-031618ba6b02
-      localID: 059cba77-4b0d-45e8-8904-031618ba6b02
-      parent: {fileID: 11442450}
-      mode: 0
-      linkType: 0
-      data:
-      - {fileID: 11426254}
-      dataB: []
-      dataC: []
-  ready:
-    info:
-      name: Ready
-      path: '@Ready/Ready'
-      id: -73228/ac03eca9-7bf9-48f6-b4a4-1758e1001a68
-      localID: ac03eca9-7bf9-48f6-b4a4-1758e1001a68
-      parent: {fileID: 11442450}
-      mode: 0
-      linkType: 0
-      data:
-      - {fileID: 11438788}
-      dataB: []
-      dataC: []
-  usable:
-    info:
-      name: Usable
-      path: '@Ready/Usable'
-      id: -73228/2b001586-418a-4314-8227-21150f04396a
-      localID: 2b001586-418a-4314-8227-21150f04396a
-      parent: {fileID: 11442450}
-      mode: 0
-      linkType: 0
-      data:
-      - {fileID: 11400968}
-      dataB: []
-      dataC: []
-  inUse:
-    info:
-      name: Active
-      path: '@Ready/Active'
-      id: -73228/d939247b-747a-46d2-8811-8ebfc28caf43
-      localID: d939247b-747a-46d2-8811-8ebfc28caf43
-      parent: {fileID: 11442450}
-      mode: 0
-      linkType: 0
-      data:
-      - {fileID: 11455434}
-      dataB: []
-      dataC: []
-  used:
-    info:
-      name: Used
-      path: '@Ready/Used'
-      id: -73228/02e4ea24-2482-4836-b6f3-8df48b53729f
-      localID: 02e4ea24-2482-4836-b6f3-8df48b53729f
-      parent: {fileID: 11442450}
-      mode: 0
-      linkType: 0
-      data:
-      - {fileID: 11440948}
-      dataB: []
-      dataC: []
-  occurrence: 0
-  stateLink: {fileID: 11417450}
-  actionTable: {fileID: 11445422}
+  value: {fileID: 0}
 --- !u!114 &11442498
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2233,12 +1132,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73460de1a42c5d64884ae83214747f38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentPath: /Crawl/@Settings/
+  location: /Crawl/@Settings/Crawl Speed
   alias: Crawl Speed
   value:
     info:
       name: Crawl Speed
       path: Crawl Speed
-      id: -72512/2e598b53-0a61-4a68-86b9-595f8e971990
+      id: -48176/2e598b53-0a61-4a68-86b9-595f8e971990
       localID: 2e598b53-0a61-4a68-86b9-595f8e971990
       parent: {fileID: 11442498}
       mode: 0
@@ -2248,79 +1149,6 @@ MonoBehaviour:
       dataB: []
       dataC: []
   remember: 0
---- !u!114 &11442684
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Bool Data
-  target:
-    special:
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
-    - '[Owner]'
-    - '[Action]'
-    - '[ActionLink]'
-    - '[StateLink]'
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 190652}
-    parent: {fileID: 11464860}
-    mode: 0
-  usage: 0
-  path: Crawl Speed/Ready/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Ready
-    path: Crawl Speed/Ready
-    id: -70856/1448e798-1d34-4a31-bdda-a31e91298d28
-    localID: 1448e798-1d34-4a31-bdda-a31e91298d28
-    parent: {fileID: 11464860}
-    mode: 0
-    linkType: 0
-    data:
-    - {fileID: 11442684}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!114 &11445422
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2329,22 +1157,68 @@ MonoBehaviour:
   m_GameObject: {fileID: 190652}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5701b12795b13f745a1a7a75b69238fd, type: 3}
+  m_Script: {fileID: 11500000, guid: 4833115f047751b48be018c26164a652, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  total: 0
+  parentPath: /Crawl/Main/
+  location: /Crawl/Main/Crawl
+  alias: Crawl
+  rate: 1
+  occurrence: 0
+  controller: {fileID: 0}
+  id: -48180
+  usable:
+    info:
+      name: Usable
+      path: Crawl/Usable
+      id: -48180/ccae16e0-0b34-4f25-bf61-259262444178
+      localID: ccae16e0-0b34-4f25-bf61-259262444178
+      parent: {fileID: 11445422}
+      mode: 0
+      linkType: 0
+      data:
+      - {fileID: 11475784}
+      dataB: []
+      dataC: []
+  inUse:
+    info:
+      name: Active
+      path: Crawl/Active
+      id: -48180/a161f1e3-a9f0-4fd3-ab70-7f04939a6e12
+      localID: a161f1e3-a9f0-4fd3-ab70-7f04939a6e12
+      parent: {fileID: 11445422}
+      mode: 0
+      linkType: 0
+      data:
+      - {fileID: 11449354}
+      dataB: []
+      dataC: []
+  used:
+    info:
+      name: Used
+      path: Crawl/Used
+      id: -48180/ad438dad-fbb9-42e8-8ae7-c39e44d78d1c
+      localID: ad438dad-fbb9-42e8-8ae7-c39e44d78d1c
+      parent: {fileID: 11445422}
+      mode: 0
+      linkType: 0
+      data:
+      - {fileID: 11449264}
+      dataB: []
+      dataC: []
   table:
-  - name: '@Ready'
-    stateTable: {fileID: 0}
-    id: -1463324
-    target: {fileID: 11442450}
+  - name: '@Active'
+    stateTable: {fileID: 11445422}
+    id: -48180
+    target: {fileID: 11445422}
     empty: 0
+    section: 
     requirements:
     - data:
-      - name: '@Ready'
-        stateTable: {fileID: 0}
-        id: -1463324
-        target: {fileID: 11442450}
+      - name: '@Active'
+        stateTable: {fileID: 11445422}
+        id: -48180
+        target: {fileID: 11445422}
         requireOn: 0
         requireOff: 0
       - name: Crawl Speed
@@ -2364,12 +1238,13 @@ MonoBehaviour:
     id: -2125640
     target: {fileID: 11464860}
     empty: 0
+    section: 
     requirements:
     - data:
-      - name: '@Ready'
+      - name: '@Active'
         stateTable: {fileID: 11445422}
-        id: -1463324
-        target: {fileID: 11442450}
+        id: -48180
+        target: {fileID: 11445422}
         requireOn: 1
         requireOff: 0
       - name: Crawl Speed
@@ -2389,12 +1264,13 @@ MonoBehaviour:
     id: -53364
     target: {fileID: 11408368}
     empty: 0
+    section: 
     requirements:
     - data:
-      - name: '@Ready'
+      - name: '@Active'
         stateTable: {fileID: 11445422}
-        id: -1463324
-        target: {fileID: 11442450}
+        id: -48180
+        target: {fileID: 11445422}
         requireOn: 0
         requireOff: 0
       - name: Crawl Speed
@@ -2410,17 +1286,18 @@ MonoBehaviour:
         requireOn: 0
         requireOff: 0
   tableOff:
-  - name: '@Ready'
-    stateTable: {fileID: 0}
-    id: -1463324
-    target: {fileID: 11442450}
+  - name: '@Active'
+    stateTable: {fileID: 11445422}
+    id: -48180
+    target: {fileID: 11445422}
     empty: 0
+    section: 
     requirements:
     - data:
-      - name: '@Ready'
-        stateTable: {fileID: 0}
-        id: -1463324
-        target: {fileID: 11442450}
+      - name: '@Active'
+        stateTable: {fileID: 11445422}
+        id: -48180
+        target: {fileID: 11445422}
         requireOn: 0
         requireOff: 0
       - name: Crawl Speed
@@ -2440,12 +1317,13 @@ MonoBehaviour:
     id: -2125640
     target: {fileID: 11464860}
     empty: 0
+    section: 
     requirements:
     - data:
-      - name: '@Ready'
+      - name: '@Active'
         stateTable: {fileID: 11445422}
-        id: -1463324
-        target: {fileID: 11442450}
+        id: -48180
+        target: {fileID: 11445422}
         requireOn: 0
         requireOff: 0
       - name: Crawl Speed
@@ -2465,12 +1343,13 @@ MonoBehaviour:
     id: -53364
     target: {fileID: 11408368}
     empty: 0
+    section: 
     requirements:
     - data:
-      - name: '@Ready'
+      - name: '@Active'
         stateTable: {fileID: 11445422}
-        id: -1463324
-        target: {fileID: 11442450}
+        id: -48180
+        target: {fileID: 11445422}
         requireOn: 0
         requireOff: 0
       - name: Crawl Speed
@@ -2485,14 +1364,26 @@ MonoBehaviour:
         target: {fileID: 11408368}
         requireOn: 0
         requireOff: 0
+  manual: 0
   advanced: 0
+  external:
+    info:
+      name: External
+      path: Crawl/External
+      id: -48180/a73db8a4-8f8d-4fa9-8eef-c5092249c270
+      localID: a73db8a4-8f8d-4fa9-8eef-c5092249c270
+      parent: {fileID: 11445422}
+      mode: 0
+      linkType: 0
+      data:
+      - {fileID: 11478308}
+      dataB: []
+      dataC: []
   scripts:
-  - {fileID: 11442450}
+  - {fileID: 11445422}
   - {fileID: 11464860}
   - {fileID: 11408368}
-  parts: []
-  isFixed: 1
---- !u!114 &11449318
+--- !u!114 &11449264
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -2500,54 +1391,33 @@ MonoBehaviour:
   m_GameObject: {fileID: 190652}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bd276b9f61cc614aaa69e18d0ef39ee, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alias: Attribute Vector3Data
+  parentPath: 
+  location: 
+  alias: 
   target:
-    special:
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
-    - '[Owner]'
-    - '[Action]'
-    - '[ActionLink]'
-    - '[StateLink]'
-    search: ../@Settings
+    search: '[Self]'
     directObject: {fileID: 0}
-    searchObject: {fileID: 182214}
-    parent: {fileID: 11408368}
+    searchObject: {fileID: 190652}
+    parent: {fileID: 11445422}
     mode: 0
+    path: /Crawl/Main/Crawl/Crawl/Used/Target
   usage: 0
-  path: Sticky Check/Offset/0
+  path: Crawl/Used/0
   referenceID: 
   referencePath: 
   attribute:
-    name: Offset
-    path: Sticky Check/Offset
-    id: -227128/6c9f77b2-227c-49fd-be88-38ad37c37b2d
-    localID: 6c9f77b2-227c-49fd-be88-38ad37c37b2d
-    parent: {fileID: 11408368}
+    name: Used
+    path: Crawl/Used
+    id: -48180/ad438dad-fbb9-42e8-8ae7-c39e44d78d1c
+    localID: ad438dad-fbb9-42e8-8ae7-c39e44d78d1c
+    parent: {fileID: 11445422}
     mode: 0
     linkType: 0
     data:
-    - {fileID: 11449318}
+    - {fileID: 11449264}
     dataB: []
     dataC: []
   attributeRaw:
@@ -2564,7 +1434,7 @@ MonoBehaviour:
       dataC: []
   operation: 0
   special: 0
-  value: {x: 0, y: 0, z: 0}
+  value: 0
 --- !u!114 &11449336
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2576,37 +1446,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentPath: 
+  location: 
   alias: Attribute Float Data
   target:
-    special:
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
-    - '[Owner]'
-    - '[Action]'
-    - '[ActionLink]'
-    - '[StateLink]'
     search: ../@Settings
     directObject: {fileID: 0}
     searchObject: {fileID: 182214}
     parent: {fileID: 11408368}
     mode: 0
+    path: /Crawl/Main/Sticky Check/Sticky Check/Hit Normal/Z/Target
   usage: 0
   path: Sticky Check/Hit Normal/Z/0
   referenceID: 
@@ -2614,7 +1463,7 @@ MonoBehaviour:
   attribute:
     name: Z
     path: Sticky Check/Hit Normal/Z
-    id: -227128/accf128d-e98a-4a43-ae2b-76a72b5b1100
+    id: -48136/accf128d-e98a-4a43-ae2b-76a72b5b1100
     localID: accf128d-e98a-4a43-ae2b-76a72b5b1100
     parent: {fileID: 11408368}
     mode: 0
@@ -2638,7 +1487,7 @@ MonoBehaviour:
   operation: 0
   special: 0
   value: 0
---- !u!114 &11449732
+--- !u!114 &11449354
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -2649,124 +1498,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alias: Attribute Bool Data
+  parentPath: 
+  location: 
+  alias: 
   target:
-    special:
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
-    - '[Owner]'
-    - '[Action]'
-    - '[ActionLink]'
-    - '[StateLink]'
     search: '[Self]'
     directObject: {fileID: 0}
     searchObject: {fileID: 190652}
-    parent: {fileID: 11417450}
+    parent: {fileID: 11445422}
     mode: 0
+    path: /Crawl/Main/Crawl/Crawl/Active/Target
   usage: 0
-  path: Crawl/Requirable/0
+  path: Crawl/Active/0
   referenceID: 
   referencePath: 
   attribute:
-    name: Requirable
-    path: Crawl/Requirable
-    id: -72754/0b1fa146-1c64-44ff-a219-5604cb44329d
-    localID: 0b1fa146-1c64-44ff-a219-5604cb44329d
-    parent: {fileID: 11417450}
+    name: Active
+    path: Crawl/Active
+    id: -48180/a161f1e3-a9f0-4fd3-ab70-7f04939a6e12
+    localID: a161f1e3-a9f0-4fd3-ab70-7f04939a6e12
+    parent: {fileID: 11445422}
     mode: 0
     linkType: 0
     data:
-    - {fileID: 11449732}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11451174
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Float Data
-  target:
-    special:
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
-    - '[Owner]'
-    - '[Action]'
-    - '[ActionLink]'
-    - '[StateLink]'
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 182214}
-    parent: {fileID: 11408368}
-    mode: 0
-  usage: 0
-  path: Sticky Check/Offset/Y/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Y
-    path: Sticky Check/Offset/Y
-    id: -227128/a292d240-82d7-4fb0-a477-cb8483ee2962
-    localID: a292d240-82d7-4fb0-a477-cb8483ee2962
-    parent: {fileID: 11408368}
-    mode: 0
-    linkType: 0
-    data:
-    - {fileID: 11451174}
+    - {fileID: 11449354}
     dataB: []
     dataC: []
   attributeRaw:
@@ -2795,37 +1550,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentPath: 
+  location: 
   alias: Attribute Float Data
   target:
-    special:
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
-    - '[Owner]'
-    - '[Action]'
-    - '[ActionLink]'
-    - '[StateLink]'
     search: ../@Settings
     directObject: {fileID: 0}
     searchObject: {fileID: 182214}
     parent: {fileID: 11408368}
     mode: 0
+    path: /Crawl/Main/Sticky Check/Sticky Check/Hit Point/X/Target
   usage: 0
   path: Sticky Check/Hit Point/X/0
   referenceID: 
@@ -2833,159 +1567,13 @@ MonoBehaviour:
   attribute:
     name: X
     path: Sticky Check/Hit Point/X
-    id: -227128/97b3e44e-af8d-4368-a2cf-c7143822458b
+    id: -48136/97b3e44e-af8d-4368-a2cf-c7143822458b
     localID: 97b3e44e-af8d-4368-a2cf-c7143822458b
     parent: {fileID: 11408368}
     mode: 0
     linkType: 0
     data:
     - {fileID: 11453634}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11455434
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Bool Data
-  target:
-    special:
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
-    - '[Owner]'
-    - '[Action]'
-    - '[ActionLink]'
-    - '[StateLink]'
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 190652}
-    parent: {fileID: 11442450}
-    mode: 0
-  usage: 0
-  path: '@Ready/Active/0'
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: '@Ready/Active'
-    id: -73228/d939247b-747a-46d2-8811-8ebfc28caf43
-    localID: d939247b-747a-46d2-8811-8ebfc28caf43
-    parent: {fileID: 11442450}
-    mode: 0
-    linkType: 0
-    data:
-    - {fileID: 11455434}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11461760
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Bool Data
-  target:
-    special:
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
-    - '[Owner]'
-    - '[Action]'
-    - '[ActionLink]'
-    - '[StateLink]'
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 190652}
-    parent: {fileID: 11417450}
-    mode: 0
-  usage: 0
-  path: Crawl/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: Crawl/Active
-    id: -72754/2093493c-62e6-4b5d-affb-2f6937c8f027
-    localID: 2093493c-62e6-4b5d-affb-2f6937c8f027
-    parent: {fileID: 11417450}
-    mode: 0
-    linkType: 0
-    data:
-    - {fileID: 11461760}
     dataB: []
     dataC: []
   attributeRaw:
@@ -3014,37 +1602,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentPath: 
+  location: 
   alias: Attribute Float Data
   target:
-    special:
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
-    - '[Owner]'
-    - '[Action]'
-    - '[ActionLink]'
-    - '[StateLink]'
     search: ../@Settings
     directObject: {fileID: 0}
     searchObject: {fileID: 182214}
     parent: {fileID: 11408368}
     mode: 0
+    path: /Crawl/Main/Sticky Check/Sticky Check/Direction/Y/Target
   usage: 0
   path: Sticky Check/Direction/Y/0
   referenceID: 
@@ -3052,7 +1619,7 @@ MonoBehaviour:
   attribute:
     name: Y
     path: Sticky Check/Direction/Y
-    id: -227128/6d5d4853-83a3-437c-9b10-885c4803bf2f
+    id: -48136/6d5d4853-83a3-437c-9b10-885c4803bf2f
     localID: 6d5d4853-83a3-437c-9b10-885c4803bf2f
     parent: {fileID: 11408368}
     mode: 0
@@ -3087,29 +1654,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentPath: 
+  location: 
   alias: Attribute Game Object Data
   target:
-    special:
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 182214}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
     search: ../../../..
     directObject: {fileID: 0}
     searchObject: {fileID: 0}
     parent: {fileID: 11434848}
     mode: 0
+    path: /Crawl/@Settings/Source/Source/Target
   usage: 1
   path: Source/0
   referenceID: 
@@ -3117,7 +1671,7 @@ MonoBehaviour:
   attribute:
     name: Source
     path: Source
-    id: -71874/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+    id: -48164/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
     localID: 0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
     parent: {fileID: 11434848}
     mode: 0
@@ -3152,37 +1706,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentPath: 
+  location: 
   alias: Attribute Float Data
   target:
-    special:
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
-    - '[Owner]'
-    - '[Action]'
-    - '[ActionLink]'
-    - '[StateLink]'
     search: ../@Settings
     directObject: {fileID: 0}
     searchObject: {fileID: 182214}
     parent: {fileID: 11408368}
     mode: 0
+    path: /Crawl/Main/Sticky Check/Sticky Check/Hit Point/Z/Target
   usage: 0
   path: Sticky Check/Hit Point/Z/0
   referenceID: 
@@ -3190,7 +1723,7 @@ MonoBehaviour:
   attribute:
     name: Z
     path: Sticky Check/Hit Point/Z
-    id: -227128/4ebd894d-c45c-463b-8a7f-a6b5cd41f4d9
+    id: -48136/4ebd894d-c45c-463b-8a7f-a6b5cd41f4d9
     localID: 4ebd894d-c45c-463b-8a7f-a6b5cd41f4d9
     parent: {fileID: 11408368}
     mode: 0
@@ -3225,40 +1758,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2423479bf36dd4245b48e7e6a05012a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentPath: /Crawl/Main/
+  location: /Crawl/Main/Crawl Speed
   alias: Crawl Speed
   rate: 1
+  occurrence: 0
+  controller: {fileID: 11445422}
   id: -2125640
-  requirable:
-    info:
-      name: Requirable
-      path: Crawl Speed/Requirable
-      id: -70856/238b4e15-ca0c-4a0b-b6e1-10925cc759c6
-      localID: 238b4e15-ca0c-4a0b-b6e1-10925cc759c6
-      parent: {fileID: 11464860}
-      mode: 0
-      linkType: 0
-      data:
-      - {fileID: 11422554}
-      dataB: []
-      dataC: []
-  ready:
-    info:
-      name: Ready
-      path: Crawl Speed/Ready
-      id: -70856/1448e798-1d34-4a31-bdda-a31e91298d28
-      localID: 1448e798-1d34-4a31-bdda-a31e91298d28
-      parent: {fileID: 11464860}
-      mode: 0
-      linkType: 0
-      data:
-      - {fileID: 11442684}
-      dataB: []
-      dataC: []
   usable:
     info:
       name: Usable
       path: Crawl Speed/Usable
-      id: -70856/88150583-7f98-451b-8cab-ad5bd7e85ec8
+      id: -48202/88150583-7f98-451b-8cab-ad5bd7e85ec8
       localID: 88150583-7f98-451b-8cab-ad5bd7e85ec8
       parent: {fileID: 11464860}
       mode: 0
@@ -3271,7 +1782,7 @@ MonoBehaviour:
     info:
       name: Active
       path: Crawl Speed/Active
-      id: -70856/7e31aa4b-9aed-4811-aa5a-1ee41e9d01e7
+      id: -48202/7e31aa4b-9aed-4811-aa5a-1ee41e9d01e7
       localID: 7e31aa4b-9aed-4811-aa5a-1ee41e9d01e7
       parent: {fileID: 11464860}
       mode: 0
@@ -3284,7 +1795,7 @@ MonoBehaviour:
     info:
       name: Used
       path: Crawl Speed/Used
-      id: -70856/73927be3-5383-485e-ab73-6cf53e2b605c
+      id: -48202/73927be3-5383-485e-ab73-6cf53e2b605c
       localID: 73927be3-5383-485e-ab73-6cf53e2b605c
       parent: {fileID: 11464860}
       mode: 0
@@ -3293,14 +1804,11 @@ MonoBehaviour:
       - {fileID: 11427694}
       dataB: []
       dataC: []
-  occurrence: 0
-  stateLink: {fileID: 11417450}
-  actionTable: {fileID: 11445422}
   target:
     info:
       name: Target
       path: Crawl Speed/Target
-      id: -70856/fe5bb54e-8246-49df-8693-a0e506e858e8
+      id: -48202/fe5bb54e-8246-49df-8693-a0e506e858e8
       localID: fe5bb54e-8246-49df-8693-a0e506e858e8
       parent: {fileID: 11464860}
       mode: 1
@@ -3313,7 +1821,7 @@ MonoBehaviour:
     info:
       name: Value
       path: Crawl Speed/Value
-      id: -70856/f4fb5df0-b4c6-4ca5-a90a-0444192eb9b6
+      id: -48202/f4fb5df0-b4c6-4ca5-a90a-0444192eb9b6
       localID: f4fb5df0-b4c6-4ca5-a90a-0444192eb9b6
       parent: {fileID: 11464860}
       mode: 0
@@ -3322,79 +1830,6 @@ MonoBehaviour:
       - {fileID: 11402348}
       dataB: []
       dataC: []
---- !u!114 &11465512
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Float Data
-  target:
-    special:
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
-    - '[Owner]'
-    - '[Action]'
-    - '[ActionLink]'
-    - '[StateLink]'
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 182214}
-    parent: {fileID: 11408368}
-    mode: 0
-  usage: 0
-  path: Sticky Check/Offset/Z/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Z
-    path: Sticky Check/Offset/Z
-    id: -227128/0ae0399e-300c-4a4e-8854-115ba190ad68
-    localID: 0ae0399e-300c-4a4e-8854-115ba190ad68
-    parent: {fileID: 11408368}
-    mode: 0
-    linkType: 0
-    data:
-    - {fileID: 11465512}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!114 &11465552
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3406,37 +1841,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentPath: 
+  location: 
   alias: Attribute Float Data
   target:
-    special:
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
-    - '[Owner]'
-    - '[Action]'
-    - '[ActionLink]'
-    - '[StateLink]'
     search: ../@Settings
     directObject: {fileID: 0}
     searchObject: {fileID: 182214}
     parent: {fileID: 11408368}
     mode: 0
+    path: /Crawl/Main/Sticky Check/Sticky Check/Direction/Z/Target
   usage: 0
   path: Sticky Check/Direction/Z/0
   referenceID: 
@@ -3444,7 +1858,7 @@ MonoBehaviour:
   attribute:
     name: Z
     path: Sticky Check/Direction/Z
-    id: -227128/6c073f81-a72e-4d37-9fa5-1ba7b53cce5a
+    id: -48136/6c073f81-a72e-4d37-9fa5-1ba7b53cce5a
     localID: 6c073f81-a72e-4d37-9fa5-1ba7b53cce5a
     parent: {fileID: 11408368}
     mode: 0
@@ -3479,37 +1893,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentPath: 
+  location: 
   alias: Attribute Float Data
   target:
-    special:
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
-    - '[Owner]'
-    - '[Action]'
-    - '[ActionLink]'
-    - '[StateLink]'
     search: ../@Settings
     directObject: {fileID: 0}
     searchObject: {fileID: 182214}
     parent: {fileID: 11408368}
     mode: 0
+    path: /Crawl/Main/Sticky Check/Sticky Check/Hit Point/Y/Target
   usage: 0
   path: Sticky Check/Hit Point/Y/0
   referenceID: 
@@ -3517,7 +1910,7 @@ MonoBehaviour:
   attribute:
     name: Y
     path: Sticky Check/Hit Point/Y
-    id: -227128/54861f07-862d-43df-b5f7-1982096e4f68
+    id: -48136/54861f07-862d-43df-b5f7-1982096e4f68
     localID: 54861f07-862d-43df-b5f7-1982096e4f68
     parent: {fileID: 11408368}
     mode: 0
@@ -3552,37 +1945,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bd276b9f61cc614aaa69e18d0ef39ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentPath: 
+  location: 
   alias: Attribute Vector3Data
   target:
-    special:
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
-    - '[Owner]'
-    - '[Action]'
-    - '[ActionLink]'
-    - '[StateLink]'
     search: ../@Settings
     directObject: {fileID: 0}
     searchObject: {fileID: 182214}
     parent: {fileID: 11408368}
     mode: 0
+    path: /Crawl/Main/Sticky Check/Sticky Check/Hit Point/Target
   usage: 0
   path: Sticky Check/Hit Point/0
   referenceID: 
@@ -3590,7 +1962,7 @@ MonoBehaviour:
   attribute:
     name: Hit Point
     path: Sticky Check/Hit Point
-    id: -227128/4331e230-fef5-473b-b056-6a77dbfd748a
+    id: -48136/4331e230-fef5-473b-b056-6a77dbfd748a
     localID: 4331e230-fef5-473b-b056-6a77dbfd748a
     parent: {fileID: 11408368}
     mode: 0
@@ -3625,37 +1997,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentPath: 
+  location: 
   alias: Attribute Float Data
   target:
-    special:
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
-    - '[Owner]'
-    - '[Action]'
-    - '[ActionLink]'
-    - '[StateLink]'
     search: ../@Settings
     directObject: {fileID: 0}
     searchObject: {fileID: 182214}
     parent: {fileID: 11408368}
     mode: 0
+    path: /Crawl/Main/Sticky Check/Sticky Check/Distance/Target
   usage: 0
   path: Sticky Check/Distance/0
   referenceID: 
@@ -3663,7 +2014,7 @@ MonoBehaviour:
   attribute:
     name: Distance
     path: Sticky Check/Distance
-    id: -227128/9eeb5b0e-9283-4419-b0f6-8a87f1502506
+    id: -48136/9eeb5b0e-9283-4419-b0f6-8a87f1502506
     localID: 9eeb5b0e-9283-4419-b0f6-8a87f1502506
     parent: {fileID: 11408368}
     mode: 0
@@ -3687,7 +2038,7 @@ MonoBehaviour:
   operation: 0
   special: 0
   value: 1
---- !u!114 &11477444
+--- !u!114 &11475784
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -3698,51 +2049,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alias: Attribute Bool Data
+  parentPath: 
+  location: 
+  alias: 
   target:
-    special:
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
-    - '[Owner]'
-    - '[Action]'
-    - '[ActionLink]'
-    - '[StateLink]'
-    search: ../@Settings
+    search: '[Self]'
     directObject: {fileID: 0}
-    searchObject: {fileID: 182214}
-    parent: {fileID: 11408368}
+    searchObject: {fileID: 190652}
+    parent: {fileID: 11445422}
     mode: 0
+    path: /Crawl/Main/Crawl/Crawl/Usable/Target
   usage: 0
-  path: Sticky Check/Ready/0
+  path: Crawl/Usable/0
   referenceID: 
   referencePath: 
   attribute:
-    name: Ready
-    path: Sticky Check/Ready
-    id: -227128/53a75334-cbd5-4850-90e3-12a77e436d90
-    localID: 53a75334-cbd5-4850-90e3-12a77e436d90
-    parent: {fileID: 11408368}
+    name: Usable
+    path: Crawl/Usable
+    id: -48180/ccae16e0-0b34-4f25-bf61-259262444178
+    localID: ccae16e0-0b34-4f25-bf61-259262444178
+    parent: {fileID: 11445422}
     mode: 0
     linkType: 0
     data:
-    - {fileID: 11477444}
+    - {fileID: 11475784}
     dataB: []
     dataC: []
   attributeRaw:
@@ -3759,8 +2089,8 @@ MonoBehaviour:
       dataC: []
   operation: 0
   special: 0
-  value: 0
---- !u!114 &11479946
+  value: 1
+--- !u!114 &11478308
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -3768,54 +2098,33 @@ MonoBehaviour:
   m_GameObject: {fileID: 190652}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alias: Attribute Float Data
+  parentPath: 
+  location: 
+  alias: 
   target:
-    special:
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
-    - '[Owner]'
-    - '[Action]'
-    - '[ActionLink]'
-    - '[StateLink]'
-    search: ../@Settings
+    search: '[Self]'
     directObject: {fileID: 0}
-    searchObject: {fileID: 182214}
-    parent: {fileID: 11408368}
+    searchObject: {fileID: 190652}
+    parent: {fileID: 11445422}
     mode: 0
+    path: /Crawl/Main/Crawl/Crawl/External/Target
   usage: 0
-  path: Sticky Check/Offset/X/0
+  path: Crawl/External/0
   referenceID: 
   referencePath: 
   attribute:
-    name: X
-    path: Sticky Check/Offset/X
-    id: -227128/987c73f3-24ca-40e1-8a9e-3908e09b106a
-    localID: 987c73f3-24ca-40e1-8a9e-3908e09b106a
-    parent: {fileID: 11408368}
+    name: External
+    path: Crawl/External
+    id: -48180/a73db8a4-8f8d-4fa9-8eef-c5092249c270
+    localID: a73db8a4-8f8d-4fa9-8eef-c5092249c270
+    parent: {fileID: 11445422}
     mode: 0
     linkType: 0
     data:
-    - {fileID: 11479946}
+    - {fileID: 11478308}
     dataB: []
     dataC: []
   attributeRaw:
@@ -3832,7 +2141,7 @@ MonoBehaviour:
       dataC: []
   operation: 0
   special: 0
-  value: 0
+  value: 1
 --- !u!114 &11486312
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3844,37 +2153,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentPath: 
+  location: 
   alias: Attribute Float Data
   target:
-    special:
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
-    - '[Owner]'
-    - '[Action]'
-    - '[ActionLink]'
-    - '[StateLink]'
     search: ../@Settings
     directObject: {fileID: 0}
     searchObject: {fileID: 182214}
     parent: {fileID: 11408368}
     mode: 0
+    path: /Crawl/Main/Sticky Check/Sticky Check/Direction/X/Target
   usage: 0
   path: Sticky Check/Direction/X/0
   referenceID: 
@@ -3882,7 +2170,7 @@ MonoBehaviour:
   attribute:
     name: X
     path: Sticky Check/Direction/X
-    id: -227128/1e4edaf0-92c4-4203-ae9d-564b165b401e
+    id: -48136/1e4edaf0-92c4-4203-ae9d-564b165b401e
     localID: 1e4edaf0-92c4-4203-ae9d-564b165b401e
     parent: {fileID: 11408368}
     mode: 0
@@ -3917,29 +2205,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentPath: 
+  location: 
   alias: Attribute Float Data
   target:
-    special:
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 182214}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
     search: '[Self]'
     directObject: {fileID: 0}
     searchObject: {fileID: 182214}
     parent: {fileID: 11442498}
     mode: 0
+    path: /Crawl/@Settings/Crawl Speed/Crawl Speed/Target
   usage: 0
   path: Crawl Speed/0
   referenceID: 
@@ -3947,7 +2222,7 @@ MonoBehaviour:
   attribute:
     name: Crawl Speed
     path: Crawl Speed
-    id: -72512/2e598b53-0a61-4a68-86b9-595f8e971990
+    id: -48176/2e598b53-0a61-4a68-86b9-595f8e971990
     localID: 2e598b53-0a61-4a68-86b9-595f8e971990
     parent: {fileID: 11442498}
     mode: 0
@@ -3982,37 +2257,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentPath: 
+  location: 
   alias: Attribute Bool Data
   target:
-    special:
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
-    - '[Owner]'
-    - '[Action]'
-    - '[ActionLink]'
-    - '[StateLink]'
     search: '[Self]'
     directObject: {fileID: 0}
     searchObject: {fileID: 190652}
     parent: {fileID: 11464860}
     mode: 0
+    path: /Crawl/Main/Crawl Speed/Crawl Speed/Usable/Target
   usage: 0
   path: Crawl Speed/Usable/0
   referenceID: 
@@ -4020,86 +2274,13 @@ MonoBehaviour:
   attribute:
     name: Usable
     path: Crawl Speed/Usable
-    id: -70856/88150583-7f98-451b-8cab-ad5bd7e85ec8
+    id: -48202/88150583-7f98-451b-8cab-ad5bd7e85ec8
     localID: 88150583-7f98-451b-8cab-ad5bd7e85ec8
     parent: {fileID: 11464860}
     mode: 0
     linkType: 0
     data:
     - {fileID: 11494364}
-    dataB: []
-    dataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      data: []
-      dataB: []
-      dataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11497670
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alias: Attribute Bool Data
-  target:
-    special:
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
-    - '[Owner]'
-    - '[Action]'
-    - '[ActionLink]'
-    - '[StateLink]'
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 190652}
-    parent: {fileID: 11417450}
-    mode: 0
-  usage: 0
-  path: Crawl/Ready/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Ready
-    path: Crawl/Ready
-    id: -72754/d71203f9-525f-47c8-bb83-38789233f45a
-    localID: d71203f9-525f-47c8-bb83-38789233f45a
-    parent: {fileID: 11417450}
-    mode: 0
-    linkType: 0
-    data:
-    - {fileID: 11497670}
     dataB: []
     dataC: []
   attributeRaw:
@@ -4128,37 +2309,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bd276b9f61cc614aaa69e18d0ef39ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentPath: 
+  location: 
   alias: Attribute Vector3Data
   target:
-    special:
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
-    - '[Owner]'
-    - '[Action]'
-    - '[ActionLink]'
-    - '[StateLink]'
     search: ../@Settings
     directObject: {fileID: 0}
     searchObject: {fileID: 182214}
     parent: {fileID: 11408368}
     mode: 0
+    path: /Crawl/Main/Sticky Check/Sticky Check/Direction/Target
   usage: 0
   path: Sticky Check/Direction/0
   referenceID: 
@@ -4166,7 +2326,7 @@ MonoBehaviour:
   attribute:
     name: Direction
     path: Sticky Check/Direction
-    id: -227128/9684c49a-2e2d-491b-af75-558c1753e5bb
+    id: -48136/9684c49a-2e2d-491b-af75-558c1753e5bb
     localID: 9684c49a-2e2d-491b-af75-558c1753e5bb
     parent: {fileID: 11408368}
     mode: 0
@@ -4201,37 +2361,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentPath: 
+  location: 
   alias: Attribute Bool Data
   target:
-    special:
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 182214}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    - {fileID: 190652}
-    specialNames:
-    - '[This]'
-    - '[Self]'
-    - '[Next]'
-    - '[Previous]'
-    - '[NextEnabled]'
-    - '[PreviousEnabled]'
-    - '[Root]'
-    - '[Owner]'
-    - '[Action]'
-    - '[ActionLink]'
-    - '[StateLink]'
     search: ../@Settings
     directObject: {fileID: 0}
     searchObject: {fileID: 182214}
     parent: {fileID: 11408368}
     mode: 0
+    path: /Crawl/Main/Sticky Check/Sticky Check/Usable/Target
   usage: 0
   path: Sticky Check/Usable/0
   referenceID: 
@@ -4239,7 +2378,7 @@ MonoBehaviour:
   attribute:
     name: Usable
     path: Sticky Check/Usable
-    id: -227128/b9411779-dfb6-4aa3-8b7f-11137379f861
+    id: -48136/b9411779-dfb6-4aa3-8b7f-11137379f861
     localID: b9411779-dfb6-4aa3-8b7f-11137379f861
     parent: {fileID: 11408368}
     mode: 0
