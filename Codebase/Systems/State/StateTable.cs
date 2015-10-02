@@ -38,6 +38,7 @@ namespace Zios{
 			if(!Application.isPlaying){return;}
 			base.Step();
 			foreach(var script in this.scripts){
+				if(script.IsNull()){continue;}
 				if(script.nextState != null){
 					this.dirty = true;
 					script.Apply((bool)script.nextState);
@@ -168,11 +169,11 @@ namespace Zios{
 		public virtual void UpdateRows(){
 			for(int index=0;index<this.tables.Count;++index){
 				List<StateRow> rows = new List<StateRow>(this.tables[index]);
-				this.RemoveEmptyAlternatives(rows);
-				this.RemoveDuplicates<StateRow>(rows);
-				this.RepairUnmatched<StateRow>(rows);
-				this.AddUpdate<StateRow>(rows);
-				this.RemoveNull<StateRow>(rows);
+				this.RemoveEmptyAlternatives(ref rows);
+				this.RemoveDuplicates<StateRow>(ref rows);
+				this.RepairUnmatched<StateRow>(ref rows);
+				this.AddUpdate<StateRow>(ref rows);
+				this.RemoveNull<StateRow>(ref rows);
 				if(index == 0){this.table = rows.ToArray();}
 				if(index == 1){this.tableOff = rows.ToArray();}
 			}
@@ -196,10 +197,10 @@ namespace Zios{
 					}
 					foreach(StateRowData rowData in row.requirements){
 						List<StateRequirement> requirements = new List<StateRequirement>(rowData.data);
-						this.RemoveDuplicates<StateRequirement>(requirements);
-						this.RepairUnmatched<StateRequirement>(requirements);
-						this.AddUpdate<StateRequirement>(requirements);
-						this.RemoveNull<StateRequirement>(requirements);
+						this.RemoveDuplicates<StateRequirement>(ref requirements);
+						this.RepairUnmatched<StateRequirement>(ref requirements);
+						this.AddUpdate<StateRequirement>(ref requirements);
+						this.RemoveNull<StateRequirement>(ref requirements);
 						rowData.data = requirements.ToArray();
 					}
 				}
@@ -241,7 +242,7 @@ namespace Zios{
 				}
 			}
 		}
-		private void RemoveEmptyAlternatives(List<StateRow> table){
+		private void RemoveEmptyAlternatives(ref List<StateRow> table){
 			foreach(StateRow row in table){
 				List<StateRowData> cleaned = new List<StateRowData>(row.requirements);
 				bool lastDataExists = true;
@@ -261,9 +262,8 @@ namespace Zios{
 				row.requirements = cleaned.ToArray();
 			}
 		}
-		private void RemoveDuplicates<T>(List<T> items) where T : StateBase{
+		private void RemoveDuplicates<T>(ref List<T> items) where T : StateBase{
 			string typeName = typeof(T).ToString();
-
 			foreach(T targetA in items.Copy()){
 				foreach(T targetB in items.Copy()){
 					if(targetA == targetB){continue;}
@@ -280,7 +280,7 @@ namespace Zios{
 				}
 			}
 		}
-		private void RepairUnmatched<T>(List<T> items) where T : StateBase{
+		private void RepairUnmatched<T>(ref List<T> items) where T : StateBase{
 			string typeName = typeof(T).ToString();
 			foreach(T item in items.Copy()){
 				if(!this.controller.IsNull() && item.name == "@External"){continue;}
@@ -300,7 +300,7 @@ namespace Zios{
 				}
 			}
 		}
-		private void RemoveNull<T>(List<T> items) where T : StateBase{
+		private void RemoveNull<T>(ref List<T> items) where T : StateBase{
 			string typeName = typeof(T).ToString();
 			foreach(T item in items.Copy()){
 				if(item.target == null){
@@ -310,7 +310,7 @@ namespace Zios{
 				}
 			}
 		}
-		private void AddUpdate<T>(List<T> items,string[] ignore=null) where T : StateBase,new(){
+		private void AddUpdate<T>(ref List<T> items,string[] ignore=null) where T : StateBase,new(){
 			ignore = ignore ?? new string[0];
 			string typeName = typeof(T).ToString();
 			foreach(StateMonoBehaviour script in this.scripts){

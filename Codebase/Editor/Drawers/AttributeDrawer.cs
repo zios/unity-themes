@@ -225,8 +225,10 @@ namespace Zios.UI{
 					this.attributeNames = attributeNames.Order().OrderBy(item=>item.Contains("/")).ToList();
 				}
 				foreach(string name in this.attributeNames){
-					string id = lookup.Values.ToList().Find(x=>x.info.path == name).info.id;
-					attributeIDs.Add(id);
+					var attribute = lookup.Values.ToList().Find(x=>x.info.path == name);
+					if(attribute != null){
+						attributeIDs.Add(attribute.info.id);
+					}
 				}
 				if(!data.referenceID.IsEmpty()){
 					attributeIndex = attributeIDs.IndexOf(data.referenceID);
