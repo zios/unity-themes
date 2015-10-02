@@ -38,7 +38,7 @@ namespace Zios{
 				this.SetKeyword(fadeBlend);
 				this.SetKeyword(fadeGrayscale);
 				if(this.dirty){
-					Events.AddStepper("On Editor Update",this.RefreshStep,this.materialsChanged,50);
+					Events.AddStepper("On Editor Update",ShaderGlobalSettings.RefreshStep,this.materialsChanged,50);
 				}
 			}
 		}
