@@ -54,6 +54,7 @@ using Zios.UI;
 			List<Material> materials = new List<Material>();
 			var renderers = Locate.GetSceneComponents<Renderer>();
 			foreach(var renderer in renderers){materials.AddRange(renderer.sharedMaterials);}
+			materials = materials.Distinct().ToList();
 			Events.AddStepper("On Editor Update",VariableMaterialEditor.RefreshStep,materials,50);
 		}
 		[MenuItem("Zios/Process/Material/Refresh Variable Materials (All)")]

@@ -23,6 +23,9 @@ namespace Zios{
 		}
 	}
 	#endif
+	//=======================
+	// Enumerations
+	//=======================
 	[Flags]
     public enum EventDisabled : int{
 	    Add        = 0x001,
@@ -45,6 +48,9 @@ namespace Zios{
 		Global     = 0x001,
 		Scoped     = 0x002,
     }
+	//=======================
+	// Listener
+	//=======================
 	[Serializable]
 	public class EventListener{
 		public object target;
@@ -100,6 +106,9 @@ namespace Zios{
 		    else if(value is Vector3 && this.method is MethodVector3){((MethodVector3)this.method)((Vector3)value);}
 	    }
 	}
+	//=======================
+	// Stepper
+	//=======================
 	public class EventStepper{
 		public MethodStep method;
 		public string eventName;
@@ -129,6 +138,31 @@ namespace Zios{
 			}	
 		}
 	}
+	//=======================
+	// Delegates
+	//=======================
+	public delegate bool KeyShortcut(KeyCode code);
+	public delegate void Method();
+	public delegate void MethodObject(object value);
+	public delegate void MethodInt(int value);
+	public delegate void MethodFloat(float value);
+	public delegate void MethodString(string value);
+	public delegate void MethodBool(bool value);
+	public delegate void MethodVector2(Vector2 value);
+	public delegate void MethodVector3(Vector3 value);
+	public delegate void MethodFull(object[] values);
+	public delegate void MethodStep(object collection,int value);
+	public delegate object MethodReturn();
+	public delegate object MethodObjectReturn(object value);
+	public delegate object MethodIntReturn(int value);
+	public delegate object MethodFloatReturn(float value);
+	public delegate object MethodStringReturn(string value);
+	public delegate object MethodBoolReturn(bool value);
+	public delegate object MethodVector2Return(Vector2 value);
+	public delegate object MethodVector3Return(Vector3 value);
+	//=======================
+	// Main
+	//=======================
     public class Events : EventDetector{
 		[EnumMask] public static EventDisabled disabled;
 		[EnumMask] public static EventDebugScope debugScope;

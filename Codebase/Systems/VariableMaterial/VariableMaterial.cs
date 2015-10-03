@@ -34,6 +34,7 @@ public class VariableMaterial{
 				materials.Add(material);
 			}
 		}
+		materials = materials.Distinct().ToList();
 		return materials;
 	}
 	public static void Refresh(params UnityObject[] targets){

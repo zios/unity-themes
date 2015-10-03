@@ -120,6 +120,7 @@ namespace Zios{
 				if(!FileManager.assets.ContainsKey(target)){
 					string assetPath = AssetDatabase.GetAssetPath(target);
 					object asset = AssetDatabase.LoadAssetAtPath(assetPath,typeof(T));
+					if(asset == null){return default(T);}
 					FileManager.assets[target] = Convert.ChangeType(asset,typeof(T));
 				}
 				return (T)FileManager.assets[target];
