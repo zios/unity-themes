@@ -124,8 +124,12 @@ namespace Zios{
 		public override AttributeData[] GetData(){return this.info.data;}
 		public override bool HasData(){return this.info.data.Length > 0;}
 		public AttributeData GetFirst(){
+			if(this.info.data.Length < 1){this.PrepareData();}
 			if(this.info.data.Length < 1){
-				this.PrepareData();
+				if(Attribute.debug.Has("Issue")){
+					Debug.Log("[Attribute] Could not retrieve first attribute data for -- " + this.info.name);
+				}
+				return null;
 			}
 			return this.info.data[0];
 		}

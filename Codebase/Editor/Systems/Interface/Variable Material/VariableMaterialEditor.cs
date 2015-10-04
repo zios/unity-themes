@@ -5,16 +5,18 @@ using System.Linq;
 using System.Collections.Generic;
 using Zios;
 using Zios.UI;
-//namespace Zios.UI{
+namespace Zios.UI{
 	[CanEditMultipleObjects]
-	public class VariableMaterialEditor : MaterialEditor{
+	public class VariableMaterialEditor : ShaderGUI{
+		public MaterialEditor editor;
 		public Material material;
 		public Shader shader;
 		public string hash;
 		public FileData parent;
 		public static List<Material> allMaterials = new List<Material>();
-		public override void OnInspectorGUI(){
-			this.material = (Material)this.target;
+		override public void OnGUI(MaterialEditor editor,MaterialProperty[] properties){
+			this.editor = editor;
+			this.material = (Material)editor.target;
 			bool matching = this.shader == this.material.shader;
 			if(!matching || VariableMaterial.dirty){this.Reload();}
 			if(this.shader != null){
@@ -24,30 +26,30 @@ using Zios.UI;
 				bool isFlat = this.shader.name.Contains("#") && !isHook;
 				bool isUpdated = !isFlat || this.shader.name.Split("#")[1].Split(".")[0] == this.hash;
 				GUI.enabled = !this.parent.IsNull() && (isHook || this.parent.extension != "zshader");
-				if(isFlat && "Unflatten".DrawButton()){VariableMaterial.Unflatten(this.targets);}
-				if(!isFlat && "Flatten".DrawButton()){VariableMaterial.Flatten(true,this.targets);}
+				if(isFlat && "Unflatten".DrawButton()){VariableMaterial.Unflatten(editor.targets);}
+				if(!isFlat && "Flatten".DrawButton()){VariableMaterial.Flatten(true,editor.targets);}
 				GUI.enabled = Event.current.shift || !isUpdated;
 				if("Update".DrawButton()){
 					VariableMaterial.force = true;
-					var materials = this.targets.Cast<Material>().ToList();
+					var materials = editor.targets.Cast<Material>().ToList();
 					Events.AddStepper("On Editor Update",VariableMaterialEditor.RefreshStep,materials,50);
 				}
 				GUI.enabled = true;
 				EditorGUILayout.EndHorizontal();
-				base.OnInspectorGUI();
+				base.OnGUI(editor,properties);
 				if(isFlat && !keywords.SequenceEqual(this.material.shaderKeywords)){
-					VariableMaterial.Refresh(this.target);
+					VariableMaterial.Refresh(editor.target);
 				}
 			}
 		}
 		public void Reload(){
-			this.parent = VariableMaterial.GetParentShader(this.target);
+			this.parent = VariableMaterial.GetParentShader(this.material);
 			if(!this.parent.IsNull()){
 				this.hash = this.parent.GetModifiedDate("MdyyHmmff") + "-" + this.material.shaderKeywords.Join(" ").ToMD5();
 			}
 			VariableMaterial.dirty = false;
 			this.shader = this.material.shader;
-			this.Repaint();
+			this.editor.Repaint();
 		}
 		[MenuItem("Zios/Process/Material/Refresh Variable Materials (Scene)")]
 		public static void RefreshScene(){
@@ -69,4 +71,4 @@ using Zios.UI;
 			VariableMaterial.Refresh(true,materials[index]);
 		}
 	}
-//}
+}
