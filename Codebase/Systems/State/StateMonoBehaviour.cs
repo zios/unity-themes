@@ -61,11 +61,9 @@ namespace Zios{
 			this.nextState = null;
 			this.active.Set(state);
 			this.used.Set(state);
-			if(this.controller.updateMode == StateMode.Instant){
+			if(this.controller.IsEnabled() && this.controller.updateMode == StateMode.Instant){
 				this.CallEvent("On State Update");
-				if(this.controller.IsEnabled()){
-					this.controller.CallEvent("On State Update");
-				}
+				this.controller.CallEvent("On State Update");
 			}
 			this.CallEvent(state ? "On Start" : "On End");
 		}
