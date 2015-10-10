@@ -48,7 +48,7 @@ namespace Zios.UI{
 					textColor = darkSkin ? Colors.Get("White") : Colors.Get("White");
 					background = darkSkin ? "BoxBlackHighlightYellowAWarm" : "BoxBlackHighlightYellowDWarm";
 				}
-				if(script.inUse){
+				if(script.active){
 					textColor = darkSkin ? Colors.Get("White") : Colors.Get("White");
 					background = darkSkin ? "BoxBlackHighlightPurpleAWarm" : "BoxBlackHighlightPurpleDWarm";
 				}

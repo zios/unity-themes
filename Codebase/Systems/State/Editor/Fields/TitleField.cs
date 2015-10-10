@@ -27,6 +27,7 @@ namespace Zios.UI{
 			}
 			if(button == 1){
 				var menu = new GenericMenu();
+				MenuFunction markDirty = ()=>Utility.SetDirty(window.target);
 				MenuFunction toggleAdvanced = ()=>{
 					window.target.advanced = !window.target.advanced;
 					window.tableIndex = 0;
@@ -36,9 +37,13 @@ namespace Zios.UI{
 					window.target.manual = !window.target.manual;
 					window.BuildTable();
 				};
-				menu.AddItem("Advanced Mode",window.target.advanced,toggleAdvanced);
-				menu.AddItem("Manual Mode",window.target.manual,toggleManual);
-				menu.AddItem("Rebuild Table",false,window.BuildTable);
+				menu.AddItem("Advanced",window.target.advanced,toggleAdvanced+markDirty);
+				if(window.target.controller != null){
+					menu.AddItem("Manual",window.target.manual,toggleManual+markDirty);
+				}
+				menu.AddItem("Update/Instant",window.target.updateMode==StateMode.Instant,()=>window.target.updateMode = StateMode.Instant);
+				menu.AddItem("Update/Delayed",window.target.updateMode==StateMode.Delayed,()=>window.target.updateMode = StateMode.Delayed);
+				menu.AddItem("Rebuild",false,window.BuildTable);
 				menu.ShowAsContext();
 			}
 		}

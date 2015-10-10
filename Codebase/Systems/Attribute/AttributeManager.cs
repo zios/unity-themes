@@ -190,7 +190,7 @@ namespace Zios{
 					if(Attribute.debug.Has("ProcessStage")){Utility.EditorLog("[AttributeManager] Stage 1b (Validate) start...");}
 					foreach(DataMonoBehaviour entry in this.data){
 						if(!entry.IsNull() && entry is AttributeData){
-							((AttributeData)entry).Validate();
+							((AttributeData)entry).OnValidate();
 						}
 					}
 				}

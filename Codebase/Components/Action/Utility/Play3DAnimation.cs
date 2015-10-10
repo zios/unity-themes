@@ -5,8 +5,8 @@ namespace Zios{
     [AddComponentMenu("Zios/Component/Action/Play Animation (3D)")]
     public class Play3DAnimation : StateMonoBehaviour{
 	    public AttributeString animationName = "";
-	    public AttributeFloat speed = 1;
-	    public AttributeFloat weight = 1;
+	   [Advanced] public AttributeFloat speed = -1;
+	   [Advanced] public AttributeFloat weight = -1;
 	    public AttributeGameObject target = new AttributeGameObject();
 	    public override void Awake(){
 		    base.Awake();
@@ -20,8 +20,8 @@ namespace Zios{
 		    base.Use();
 		    string name = this.animationName.Get();
 			foreach(var target in this.target){
-				target.CallEvent("Set Animation Speed",name,this.speed.Get());
-				target.CallEvent("Set Animation Weight",name,this.weight.Get());
+				if(this.speed != -1){target.CallEvent("Set Animation Speed",name,this.speed.Get());}
+				if(this.weight != -1){target.CallEvent("Set Animation Weight",name,this.weight.Get());}
 				target.CallEvent("Play Animation",name);
 			}
 	    }

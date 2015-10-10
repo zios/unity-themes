@@ -13,7 +13,7 @@ namespace Zios{
 	    [Internal] public bool held;
 	    [NonSerialized] public int inputID;
 	    [NonSerialized] public bool lastHeld;
-	    [NonSerialized] public bool setup;
+	    [NonSerialized] public bool ownerSetup;
 	    public override void Awake(){
 		    base.Awake();
 		    this.inputID = this.GetInstanceID();
@@ -25,17 +25,17 @@ namespace Zios{
 	    public override void Use(){
 		    bool inputSuccess = this.CheckInput();
 		    if(inputSuccess){
-			    if(!this.setup){
-				    this.setup = true;
+			    if(!this.ownerSetup){
+				    this.ownerSetup = true;
 				    if(this.ignoreOwnership || !InputState.HasOwner(this.inputName)){
 					    InputState.SetOwner(this.inputName,this.inputID);
 				    }
 			    }
 			    base.Use();
 		    }
-		    else if(this.inUse){
+		    else if(this.active){
 			    InputState.ResetOwner(this.inputName);
-			    this.setup = false;
+			    this.ownerSetup = false;
 			    this.lastHeld = false;
 			    base.End();
 		    }

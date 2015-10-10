@@ -21,11 +21,8 @@ namespace Zios{
 			if(!this.attribute.IsNull() && !this.attribute.parent.IsNull()){
 				this.target.Setup(this.attribute.path+"/Target",this.attribute.parent);
 				if(!Application.isPlaying){
+					Events.Add("On Validate",this.Validate,this);
 					Events.Add("On Destroy",this.OnDestroy,this.attribute.parent);
-					if(this.attribute.parent is DataMonoBehaviour){
-						var parent = (DataMonoBehaviour)this.attribute.parent;
-						Events.Add("On Validate",parent.OnValidate,this);
-					}
 				}
 			}
 		}
@@ -46,6 +43,9 @@ namespace Zios{
 			else if(this.attribute.parent.gameObject != this.gameObject){this.Purge("Wrong Scope");}
 			else if(!this.hideFlags.Contains(HideFlags.HideInInspector) && PlayerPrefs.GetInt("Attribute-ShowData") == 0){this.Purge("Visible");}
 			else if(!this.attribute.data.Contains(this) && !this.attribute.dataB.Contains(this) && !this.attribute.dataC.Contains(this)){this.Purge("Not In Attribute");}
+			if(this.attribute.parent is DataMonoBehaviour){
+				this.attribute.parent.CallEvent("On Validate");
+			}
 		}
 		public void Purge(string reason){
 			if(Attribute.debug.Has("Issue")){Debug.Log("[AttributeData] Clearing defunct data -- " + reason + ".");}

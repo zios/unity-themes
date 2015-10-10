@@ -110,6 +110,7 @@ public class VariableMaterial{
 		VariableMaterial.Flatten(targets);
 	}
 	public static void Flatten(params UnityObject[] targets){
+		#if UNITY_EDITOR 
 		string originalName = "";
 		foreach(var target in targets){
 			Material material = (Material)target;
@@ -231,5 +232,6 @@ public class VariableMaterial{
 		}
 		VariableMaterial.RefreshEditor();
 		VariableMaterial.force = false;
+		#endif
 	}
 }

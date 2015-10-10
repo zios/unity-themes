@@ -39,7 +39,8 @@ namespace Zios{
 			    this.AddSpecial("[NextEnabled]",parent.gameObject.GetNextSibling());
 			    this.AddSpecial("[PreviousEnabled]",parent.gameObject.GetPreviousSibling());
 			    this.AddSpecial("[Root]",parent.gameObject.GetPrefabRoot());
-				Events.Add("On Validate",(Method)this.Search,parent);
+				Events.Add("On Validate",this.Search,parent);
+				Events.Add("On Hierarchy Changed",this.Search,parent);
 				if(parent is StateMonoBehaviour){
 					var state = (StateMonoBehaviour)parent;
 					GameObject stateObject = state.gameObject;
@@ -75,7 +76,9 @@ namespace Zios{
 		    }
 	    }
 	    public void Search(){
+			if(this.mode != TargetMode.Search){return;}
 			if(this.search.IsEmpty()){this.search = this.fallbackSearch;}
+			if(this.search.IsEmpty()){return;}
 		    string search = this.search.Replace("\\","/");
 		    if(!search.IsEmpty()){
 				for(int index=0;index<this.special.Count;++index){

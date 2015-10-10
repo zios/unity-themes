@@ -107,6 +107,8 @@ namespace Zios.UI{
 			Undo.RecordObjects(sources.ToArray(),"Attribute Changes");
 			this.Draw();
 			if(this.dirty){
+				property.serializedObject.ApplyModifiedProperties();
+				Utility.SetDirty(property.serializedObject.targetObject);
 				Utility.RepaintInspectors();
 				this.dirty = false;
 				GUI.changed = true;
@@ -133,14 +135,20 @@ namespace Zios.UI{
 					this.labelRect = this.labelRect.AddX(16);
 					this.DrawShaped(this.valueRect,firstProperty,this.label,true);
 				}
-				if(GUI.changed){Utility.SetDirty(firstData);}
+				if(GUI.changed){
+					firstData.CallEvent("On Validate");
+					Utility.SetDirty(firstData);
+				}
 			}
 			if(this.attribute.info.mode == AttributeMode.Linked){
 				this.attributeCast.usage = AttributeUsage.Shaped;
 				GUI.Box(this.iconRect,"",GUI.skin.GetStyle("IconLinked"));
 				this.labelRect = this.labelRect.AddX(16);
 				this.DrawShaped(this.valueRect,firstProperty,this.label,true);
-				if(GUI.changed){Utility.SetDirty(firstData);}
+				if(GUI.changed){
+					firstData.CallEvent("On Validate");
+					Utility.SetDirty(firstData);
+				}
 			}
 			if(this.attribute.info.mode == AttributeMode.Formula){
 				this.DrawGroup(this.label,true);
@@ -192,19 +200,15 @@ namespace Zios.UI{
 			Rect toggleRect = area.SetWidth(16);
 			bool toggleActive = this.targetMode.ContainsKey(data) ? this.targetMode[data] : !data.referenceID.IsEmpty();
 			this.targetMode[data] = toggleActive.Draw(toggleRect,"",GUI.skin.GetStyle("CheckmarkToggle"));
-			if(toggleActive != this.targetMode[data]){
-				if(this.attribute is AttributeGameObject){
-					//data.referenceID = toggleActive ? "" : data.referenceID;
-					if(!this.targetMode[data]){
-						data.referenceID = "";
-						data.referencePath = "";
-						data.reference = null;
-					}
-				}
-			}
 			if(!this.targetMode[data]){
 				Rect targetRect = area.Add(18,0,-18,0);
+				bool ticked = GUI.changed;
 				property.FindProperty("target").Draw(targetRect);
+				if(this.attribute is AttributeGameObject && !ticked && GUI.changed){
+					data.referenceID = "";
+					data.referencePath = "";
+					data.reference = null;
+				}
 				return;
 			}
 			List<string> attributeNames = new List<string>();
@@ -356,6 +360,7 @@ namespace Zios.UI{
 			}
 			this.DrawContext(data,index!=0,false);
 			if(GUI.changed){
+				currentProperty.ApplyModifiedProperties();
 				Utility.SetDirty(data);
 				this.dirty = true;
 				GUI.changed = false;

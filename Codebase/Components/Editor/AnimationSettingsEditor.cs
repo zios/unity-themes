@@ -15,6 +15,9 @@ namespace Zios.UI{
 		    if(this.listElement.shouldRepaint){
 			    this.Repaint();
 		    }
+			if(GUI.changed){
+				Utility.SetDirty(this.target);
+			}
 	    }
 	    public class ApplyChangesAction : ListAction{
 		    public override void OnAction(UnityEngine.Object target,object targetItem){

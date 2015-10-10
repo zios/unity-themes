@@ -56,6 +56,7 @@ namespace Zios.UI{
 			if(state == 1){requirement.requireOn = true;}
 			if(state == 2){requirement.requireOff = true;}
 			Utility.SetDirty(window.target,false,true);
+			window.target.UpdateStates();
 			window.Repaint();
 		}
 	}

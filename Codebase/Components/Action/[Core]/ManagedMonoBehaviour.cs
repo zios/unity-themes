@@ -7,7 +7,7 @@ namespace Zios{
     public class ManagedMonoBehaviour : DataMonoBehaviour{
 	    [Advanced] public UpdateRate rate = UpdateRate.Default;
 	    public float GetTimeOffset(){
-		    if(this.rate == UpdateRate.FixedUpdate){
+		    if(this.rate == UpdateRate.FixedUpdate || this.rate == UpdateRate.Default){
 			    return Time.fixedDeltaTime;
 		    }
 		    return Time.deltaTime;

@@ -45,12 +45,13 @@ namespace Zios.UI{
 				    Event.current.Use();
 			    }
 			    target.search = target.search.Draw(textRect);
-				if(GUI.changed){
-					target.searchObject = null;
-					target.Search();
-				}
 			    result.DrawLabel(propertyRect,GUI.skin.GetStyle("SubtleInfo"));
 		    }
+			if(GUI.changed && !target.IsNull()){
+				target.Search();
+				target.parent.CallEvent("On Validate");
+				Utility.SetDirty(target.parent,false,true);
+			}
         }
     }
 }

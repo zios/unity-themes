@@ -27,18 +27,21 @@ namespace Zios.UI{
 					foreach(var type in dependent.types){names += type.Name + " or ";}
 					message = message.Replace("[type]",names.Trim(" or "));
 				}
-				GUI.enabled = !dependent.processing;
-				message.DrawHelp("Warning");
-				GUI.enabled = true;
-				if(!dependent.processing){
-					Rect area = GUILayoutUtility.GetLastRect();
-					EditorGUIUtility.AddCursorRect(area,MouseCursor.Link);
-					if(area.Clicked(0) && dependent.method != null){
-						dependent.method();
+				if(!Application.isPlaying){
+					GUI.enabled = !dependent.processing;
+					message.DrawHelp("Warning");
+					GUI.enabled = true;
+					if(!dependent.processing){
+						Rect area = GUILayoutUtility.GetLastRect();
+						EditorGUIUtility.AddCursorRect(area,MouseCursor.Link);
+						if(area.Clicked(0) && dependent.method != null){
+							dependent.method();
+							this.Repaint();
+						}
 					}
 				}
 		    }
-			if(targetsMissing){
+			if(!Application.isPlaying && targetsMissing){
 				message = "One or more target fields are missing.";
 				message.DrawHelp("Warning");
 			}

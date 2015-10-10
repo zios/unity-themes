@@ -11,12 +11,17 @@ namespace Zios.UI{
 			GUIStyle style = new GUIStyle(GUI.skin.label);
 			var mode = (HeaderMode)EditorPrefs.GetInt("StateWindow-Mode",2);
 			bool darkSkin = EditorGUIUtility.isProSkin;
+			Color textColor = Colors.Get("Gray");
+			string background = darkSkin ? "BoxBlackAWarm30" : "BoxWhiteBWarm50";
+			if(window.target.external){
+				textColor = darkSkin ? Colors.Get("Silver") : Colors.Get("Black");
+				background = darkSkin ? "BoxBlackA30" : "BoxWhiteBWarm";
+			}
 			if(label.text == ""){
 				this.disabled = this.row.fields.Skip(1).Count(x=>!x.disabled) < 1;
 				window.headerSize = 64;
 				style.margin.left = 5;
 				style.hover = style.normal;
-				string background = darkSkin ? "BoxBlackA30" : "BoxWhiteBWarm";
 				style.normal.background = FileManager.GetAsset<Texture2D>(background);
 				if(mode == HeaderMode.Vertical){
 					window.headerSize = 35;
@@ -28,10 +33,11 @@ namespace Zios.UI{
 			}
 			bool fieldHovered = window.column == this.order;
 			if(fieldHovered){
-				string background = darkSkin ? "BoxBlackHighlightBlueAWarm" : "BoxBlackHighlightBlueDWarm";
-				style.normal.textColor = darkSkin ? Colors.Get("ZestyBlue") : Colors.Get("White");
-				style.normal.background = FileManager.GetAsset<Texture2D>(background);
+				background = darkSkin ? "BoxBlackHighlightBlueAWarm" : "BoxBlackHighlightBlueDWarm";
+				textColor = darkSkin ? Colors.Get("ZestyBlue") : Colors.Get("White");
 			}
+			style.normal.textColor = textColor;
+			style.normal.background = FileManager.GetAsset<Texture2D>(background);
 			if(mode == HeaderMode.Vertical){
 				window.cellSize = style.fixedHeight;
 				float halfWidth = style.fixedWidth / 2;

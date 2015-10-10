@@ -8,7 +8,6 @@ namespace Zios{
 	    public InputRange requirement;
 	    public AttributeString inputName = "Button1";
 	    [Internal] public AttributeBool released = true;
-	    [NonSerialized] public bool setup;
 	    public override void Awake(){
 		    base.Awake();
 		    this.inputName.Setup("Input Name",this);
@@ -16,10 +15,11 @@ namespace Zios{
 	    }
 	    public override void Use(){
 		    bool inputSuccess = this.CheckInput();
-			bool released = this.released.Get();
+			bool released = this.released;
 		    if(inputSuccess && released){
 				this.released.Set(false);
 				base.Use();
+				return;
 		    }
 		    if(!inputSuccess && !released){
 				this.released.Set(true);

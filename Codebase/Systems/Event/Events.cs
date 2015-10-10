@@ -193,6 +193,7 @@ namespace Zios{
 			Events.Cleanup();
 		}
 		public static void Cleanup(){
+			if(Application.isPlaying){return;}
 			foreach(var cached in Events.cache.Copy()){
 				foreach(var set in cached.Value.Copy()){
 					foreach(var eventPair in set.Value.Copy()){
@@ -579,6 +580,7 @@ namespace Zios{
 	    }
 	    public static void DelayEvent(this object current,string key,string name,float delay=0.5f,params object[] values){
 			if(current.IsNull()){return;}
+			key += name;
 			Utility.EditorDelayCall(key,()=>Events.Call(current,name,values),delay);
 	    }
 	    public static void CooldownEvent(this object current,string name,float seconds){

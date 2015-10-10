@@ -4,58 +4,60 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using UnityObject = UnityEngine.Object;
+public enum StateMode{Instant,Delayed};
 namespace Zios{
 	[AddComponentMenu("Zios/Component/Action/*/State Table")]
 	public class StateTable : StateMonoBehaviour{
 		public static bool debug;
 		public StateRow[] table = new StateRow[0];
 		public StateRow[] tableOff = new StateRow[0];
+		public StateMode updateMode = StateMode.Delayed;
 		public bool manual;
 		public bool advanced;
 		public AttributeBool external = true;
 		public List<StateMonoBehaviour> scripts = new List<StateMonoBehaviour>();
 		public List<StateRow[]> tables = new List<StateRow[]>();
-		private bool dirty;
+		[NonSerialized] public bool dirty;
 		public override void Awake(){
 			base.Awake();
-			this.external.Setup("External",this);
 			this.alias = this.gameObject.name.Contains("Main") ? this.transform.parent.name : this.gameObject.name;
 			Events.Register("On State Updated",this);
 			Events.Register("On State Refreshed",this);
 			Events.Add("On State Update",this.UpdateStates,this);
 			Events.Add("On State Refresh",this.Refresh,this);
-			Events.Add("On Hierarchy Changed",StateTable.RefreshTables);
-			Events.Add("On Components Changed",StateTable.RefreshTables,this.gameObject);
-		}
-		public override void Start(){
-			base.Start();
-			if(Application.isPlaying){
-				this.UpdateStates();
-				//this.RemoveEmptyRows();
+			Events.Add("On Start",StateTable.RefreshTables);
+			if(!Application.isPlaying){
+				Events.Add("On Hierarchy Changed",StateTable.RefreshTables);
+				Events.Add("On Components Changed",StateTable.RefreshTables,this.gameObject);
 			}
+			this.external.Setup("External",this);
+			this.external.Set(true);
 		}
 		public override void Step(){
 			if(!Application.isPlaying){return;}
 			base.Step();
-			foreach(var script in this.scripts){
-				if(script.IsNull()){continue;}
-				if(script.nextState != null){
-					this.dirty = true;
-					script.Apply((bool)script.nextState);
-					if(this.controller != null){this.controller.dirty = true;}
+			if(this.updateMode == StateMode.Delayed){
+				foreach(var script in this.scripts){
+					if(!script.IsEnabled()){continue;}
+					if(script.nextState != null && (bool)script.nextState != script.used){
+						this.dirty = true;
+						script.controller.dirty = true;
+						if(script is StateTable){script.As<StateTable>().dirty = true;}
+						script.Apply((bool)script.nextState);
+					}
 				}
-			}
-			if(this.dirty){
-				this.dirty = false;
-				this.CallEvent("On State Update");
+				if(this.dirty){
+					this.dirty = false;
+					this.CallEvent("On State Update");
+				}
 			}
 		}
 		public static void RefreshTables(){
-			if(Application.isPlaying){return;}
 			var tables = Locate.GetSceneComponents<StateTable>().OrderBy(x=>x.GetPath().Length);
 			tables.Reverse();
 			foreach(var table in tables){
 				table.Refresh();
+				table.UpdateStates();
 			}
 		}
 		[ContextMenu("Refresh (All)")]
@@ -63,7 +65,7 @@ namespace Zios{
 		[ContextMenu("Refresh")]
 		public virtual void Refresh(){
 			if(Application.isPlaying){return;}
-			if(this.controller.IsNull()){this.controller = null;}
+			if(!this.controller.IsEnabled()){this.controller = null;}
 			this.UpdateScripts();
 			if(this.scripts.Count > 0){
 				this.UpdateTableList();
@@ -80,42 +82,65 @@ namespace Zios{
 		public virtual void UpdateStates(){
 			if(!Application.isPlaying){return;}
 			this.UpdateTable(this.table);
-			if(this.advanced){
-				this.UpdateTable(this.tableOff,true);
-			}
+			if(this.advanced){this.UpdateTable(this.tableOff,true);}
 			Utility.SetDirty(this,false,true);
 			this.CallEvent("On State Updated");
 		}
-		public void UpdateTable(StateRow[] table,bool negative=false){
+		public void UpdateTable(StateRow[] table,bool endTable=false){
+			bool isOwnerUsable = true;
+			if(this.controller.IsEnabled() && !this.manual){
+				bool startMismatch = !endTable && !this.external;
+				bool endMismatch = endTable && !this.external;
+				if(startMismatch || endMismatch){
+					isOwnerUsable = false;
+				}
+			}
 			foreach(StateRow row in table){
 				bool isUsable = false;
 				bool isEmpty = true;
 				bool isTable = row.target is StateTable && row.target != this;
 				StateMonoBehaviour script = row.target;
-				if(script.IsNull()){continue;}
-				foreach(StateRowData requirements in row.requirements){
-					foreach(StateRequirement requirement in requirements.data){
-						bool noRequirements = !requirement.requireOn && !requirement.requireOff;
-						if(noRequirements){continue;}
-						bool state = requirement.name == "@External" ? this.external : requirement.target.inUse;
-						bool mismatchOn = requirement.requireOn && !state;
-						bool mismatchOff = requirement.requireOff && state;
-						isUsable = !(mismatchOn || mismatchOff);
-						isEmpty = false;
-						if(!isUsable){break;}
+				if(!script.IsEnabled()){continue;}
+				if(isOwnerUsable){
+					foreach(StateRowData requirements in row.requirements){
+						foreach(StateRequirement requirement in requirements.data){
+							if(!requirement.target.IsEnabled()){continue;}
+							bool isExternal = requirement.name == "@External";
+							if(isExternal && !this.manual){continue;}
+							bool noRequirements = !requirement.requireOn && !requirement.requireOff;
+							if(noRequirements){continue;}
+							bool state = requirement.target.active;
+							if(requirement.target.nextState != null){state = (bool)requirement.target.nextState;}
+							if(isExternal){state = this.external;}
+							bool mismatchOn = requirement.requireOn && !state;
+							bool mismatchOff = requirement.requireOff && state;
+							isUsable = !(mismatchOn || mismatchOff);
+							isEmpty = false;
+							if(!isUsable){break;}
+						}
+						if(isUsable){break;}
 					}
-					if(isUsable){break;}
+				}
+				else{
+					isUsable = endTable;
+					isEmpty = false;
 				}
 				var usable = isTable ? row.target.As<StateTable>().external : script.usable;
-				bool current = usable;
-				if(!negative){isUsable = (isUsable || isEmpty);}
+				bool wasUsable = usable.Get();
+				if(!endTable){isUsable = isUsable || isEmpty;}
 				if(this.advanced && isUsable){
-					usable.Set(negative ? false : true);
+					usable.Set(endTable ? false : true);
 				}
 				else if(!this.advanced){
 					usable.Set(isUsable);
 				}
-				if(isTable && usable.Get() != current){row.target.As<StateTable>().UpdateStates();}
+				bool changes = isUsable != wasUsable;
+				if(changes && isTable){
+					var tableTarget = row.target.As<StateTable>();
+					if(tableTarget.IsEnabled()){
+						tableTarget.dirty = true;
+					}
+				}
 			}
 		}
 		public void UpdateTableList(){
@@ -169,7 +194,6 @@ namespace Zios{
 		public virtual void UpdateRows(){
 			for(int index=0;index<this.tables.Count;++index){
 				List<StateRow> rows = new List<StateRow>(this.tables[index]);
-				this.RemoveEmptyAlternatives(ref rows);
 				this.RemoveDuplicates<StateRow>(ref rows);
 				this.RepairUnmatched<StateRow>(ref rows);
 				this.AddUpdate<StateRow>(ref rows);
@@ -182,7 +206,7 @@ namespace Zios{
 		public virtual void UpdateRequirements(){
 			foreach(StateRow[] table in this.tables){
 				foreach(StateRow row in table){
-					if(!this.controller.IsNull()){
+					if(this.controller.IsEnabled()){
 						var external = row.requirements.SelectMany(x=>x.data).ToList().Where(x=>x.name=="@External").FirstOrDefault();
 						if(external == null){
 							foreach(StateRowData rowData in row.requirements){
@@ -217,51 +241,13 @@ namespace Zios{
 						data[rowIndex].requirements[dataIndex].data = rowData.data.OrderBy(x=>x.name).ToArray();
 					}
 				}
-				if(index == 0){this.table = data.OrderBy(x=>x.target.alias).ToArray();}
-				if(index == 1){this.tableOff = data.OrderBy(x=>x.target.alias).ToArray();}
+				if(index == 0){this.table = data.OrderBy(x=>x.name).ToArray();}
+				if(index == 1){this.tableOff = data.OrderBy(x=>x.name).ToArray();}
 			}
 		}
 		//=============================
 		//  Internal
 		//=============================
-		private void RemoveEmptyRows(){
-			for(int tableIndex=0;tableIndex<this.tables.Count;++tableIndex){
-				StateRow[] table = this.tables[tableIndex];
-				for(int rowIndex=0;rowIndex<table.Length;++rowIndex){
-					StateRow row = table[rowIndex];
-					for(int dataIndex=0;dataIndex<row.requirements.Length;++dataIndex){
-						StateRowData rowData = row.requirements[dataIndex];
-						for(int requirementIndex=0;requirementIndex<rowData.data.Length;++requirementIndex){
-							StateRequirement requirement = rowData.data[requirementIndex];
-							if(!(requirement.requireOn || requirement.requireOff)){
-								rowData.data = rowData.data.Remove(requirement);
-								requirementIndex -= 1;
-							}
-						}
-					}
-				}
-			}
-		}
-		private void RemoveEmptyAlternatives(ref List<StateRow> table){
-			foreach(StateRow row in table){
-				List<StateRowData> cleaned = new List<StateRowData>(row.requirements);
-				bool lastDataExists = true;
-				foreach(StateRowData rowData in row.requirements){
-					bool empty = true;
-					foreach(StateRequirement requirement in rowData.data){
-						if(requirement.requireOn || requirement.requireOff){
-							empty = false;
-						}
-					}
-					if(empty && !lastDataExists){
-						if(StateTable.debug){Debug.Log("[StateTable] Removing empty alternate row in -- " + row.name,(UnityObject)row.target);}
-						cleaned.Remove(rowData);
-					}
-					lastDataExists = !empty;
-				}
-				row.requirements = cleaned.ToArray();
-			}
-		}
 		private void RemoveDuplicates<T>(ref List<T> items) where T : StateBase{
 			string typeName = typeof(T).ToString();
 			foreach(T targetA in items.Copy()){
@@ -283,7 +269,7 @@ namespace Zios{
 		private void RepairUnmatched<T>(ref List<T> items) where T : StateBase{
 			string typeName = typeof(T).ToString();
 			foreach(T item in items.Copy()){
-				if(!this.controller.IsNull() && item.name == "@External"){continue;}
+				if(this.controller.IsEnabled() && item.name == "@External"){continue;}
 				StateMonoBehaviour match = this.scripts.Find(x=>x.id==item.id);
 				if(match == null){
 					match = this.scripts.Find(x=>x.alias==item.name);

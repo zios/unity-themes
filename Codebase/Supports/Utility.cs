@@ -378,7 +378,7 @@ namespace Zios{
 	    public static void SetDirty(UnityObject target,bool delayed=false,bool forced=false){
 		    #if UNITY_EDITOR
 			if(Application.isPlaying){return;}
-			if(!forced && target.IsNull()){return;}
+			if(target.IsNull()){return;}
 			if(!forced && target.GetPrefab().IsNull()){return;}
 			if(delayed){
 				if(!Utility.delayedDirty.Contains(target)){

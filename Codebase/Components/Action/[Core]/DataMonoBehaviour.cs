@@ -82,7 +82,6 @@ namespace Zios{
 		}
 		public void CheckDependents(){
 			if(!this.setup){return;}
-			this.dependents.RemoveAll(x=>x.processing);
 			foreach(var dependent in this.dependents){
 				var currentDependent = dependent;
 				dependent.processing = false;
@@ -96,11 +95,11 @@ namespace Zios{
 					foreach(var type in types){
 						var currentType = type;
 						dependent.exists = !target.GetComponent(currentType).IsNull();
+						if(dependent.exists){break;}
 						dependent.method = ()=>{
 							var component = target.AddComponent(currentType);
 							currentDependent.processing = component != null;
 						};
-						if(dependent.exists){break;}
 					}
 				}
 			}
@@ -124,7 +123,7 @@ namespace Zios{
 			dependent.scriptName = isScript ? this.GetType().Name : "";
 			dependent.message = "[target] is missing required component : [type]. Click here to add.";
 			this.dependents.AddNew(dependent);
-			this.CheckDependents();
+			Utility.EditorDelayCall(this.CheckDependents);
 	    }
 		//===============
 		// Sorting	
