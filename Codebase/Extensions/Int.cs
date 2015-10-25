@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 namespace Zios{ 
@@ -8,7 +8,7 @@ namespace Zios{
 		//=====================
 	    public static int Modulus(this int current,int max){
 		    return (((current % max) + max) % max);
-	    }
+		}
 		//=====================
 		// Bitwise
 		//=====================
@@ -33,13 +33,13 @@ namespace Zios{
 		}
 	    public static bool Between(this int current,int start,int end){
 		    return current >= start && current <= end;
-	    }
+		}
 	    public static bool InRange(this int current,int start,int end){
 		    return current.Between(start,end);
-	    }
+		}
 	    public static bool ToBool(this int current){
 		    return current != 0;
-	    }
+		}
 		public static int Closest(this int current,params int[] values){
 			int match = int.MaxValue;
 			foreach(int value in values){
@@ -55,30 +55,30 @@ namespace Zios{
 			    if(current >= value){
 				    highest = value;
 				    break;
-			    }
-		    }
+				}
+			}
 		    foreach(int value in values){
 			    if(current >= value && value > highest){
 				    highest = value;
-			    }
-		    }
+				}
+			}
 		    return highest;
-	    }
+		}
 	    public static int RoundClosestUp(this int current,params int[] values){
 		    int lowest = -1;
 		    foreach(int value in values){
 			    if(current >= value){
 				    lowest = value;
 				    break;
-			    }
-		    }
+				}
+			}
 		    foreach(int value in values){
 			    if(current <= value && value < lowest){
 				    lowest = value;
-			    }
-		    }
+				}
+			}
 		    return lowest;
-	    }
+		}
 		public static int Mean(this IEnumerable<int> current){return (int)current.Average();}
 		public static int Median(this IEnumerable<int> current){
 			int count = current.Cast<object>().Count(); 
@@ -95,5 +95,5 @@ namespace Zios{
 		}
 		public static int Min(this int current,int value){return Math.Min(current,value);}
 		public static int Max(this int current,int value){return Math.Max(current,value);}
-    }
+	}
 }

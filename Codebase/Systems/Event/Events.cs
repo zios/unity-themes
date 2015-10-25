@@ -2,7 +2,6 @@
 using UnityEngine;
 using System;
 using System.Linq;
-using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 using UnityObject = UnityEngine.Object;
@@ -12,14 +11,24 @@ using UnityEditor;
 namespace Zios{
 	#if UNITY_EDITOR 
 	[InitializeOnLoad]
-	public static class EventsBooter{
-		static EventsBooter(){
+	public static class EventsHook{
+		static EventsHook(){
 			if(!Application.isPlaying){
-				Events.Add("On Scene Loaded",Events.Build).SetPermanent(true);
-				Events.Add("On Hierarchy Changed",Events.Build).SetPermanent(true);
-				Utility.EditorDelayCall(Events.Build);
-				Utility.EditorDelayCall(Events.Setup);
+				Events.Add("On Scene Loaded",EventsHook.Create).SetPermanent(true);
+				Events.Add("On Hierarchy Changed",EventsHook.Create).SetPermanent(true);
+				Utility.EditorDelayCall(EventsHook.Create);
 			}
+		}
+		public static void Create(){
+			if(!Application.isPlaying && Events.instance.IsNull()){
+				var eventsPath = Locate.GetScenePath("@Main");
+				if(!eventsPath.HasComponent<Events>()){
+					Debug.Log("[Events] : Auto-creating Events Manager GameObject.");
+					Events.instance = eventsPath.AddComponent<Events>();
+				}
+				Events.instance = eventsPath.GetComponent<Events>();
+			}
+			Events.Cleanup();
 		}
 	}
 	#endif
@@ -49,99 +58,8 @@ namespace Zios{
 		Scoped     = 0x002,
     }
 	//=======================
-	// Listener
-	//=======================
-	[Serializable]
-	public class EventListener{
-		public object target;
-		public object method;
-		public string name;
-		public int occurrences;
-		public bool paused;
-		public bool permanent;
-		public bool unique;
-		public bool isStatic;
-		private bool warned;
-	    public bool IsValid(){
-			bool nullTarget = this.target.IsNull() || (!this.isStatic && this.method.As<Delegate>().Target.IsNull());
-			if(nullTarget && !this.warned && Events.debug.Has("Call")){
-				Debug.LogWarning("[Events] Call attempted -- null object -- " + this.name);
-				this.warned = true;
-			}
-		    return !nullTarget;
-	    }
-		public void SetPaused(bool state){this.paused = state;}
-		public void SetPermanent(bool state){this.permanent = state;}
-		public void SetUnique(bool state){
-			Events.unique.AddNew(this.target)[this.name] = this;
-			this.unique = state;
-		}
-		public void Remove(){
-			if(Events.cache.ContainsKey(this.target) && Events.cache[this.target].ContainsKey(this.name)){
-				Events.cache[this.target][this.name].Remove(this.method);
-			}
-			if(Events.cache[Events.all].ContainsKey(this.name)){
-				Events.cache[Events.all][this.name].Remove(this.method);
-			}
-			Events.listeners.Remove(this);
-			this.paused = true;
-		}
-	    public void Call(object[] values){
-			if(Utility.IsPaused()){return;}
-			if(!this.IsValid()){return;}
-			if(this.occurrences > 0){this.occurrences -= 1;}
-			if(this.occurrences == 0){this.Remove();}
-			if(values.Length < 1 || this.method is Method){
-				((Method)this.method)();
-				return;
-			}
-		    object value = values[0];
-		    if(this.method is MethodFull){((MethodFull)this.method)(values);}
-		    else if(value is object && this.method is MethodObject){((MethodObject)this.method)((object)value);}
-		    else if(value is int && this.method is MethodInt){((MethodInt)this.method)((int)value);}
-		    else if(value is float && this.method is MethodFloat){((MethodFloat)this.method)((float)value);}
-		    else if(value is string && this.method is MethodString){((MethodString)this.method)((string)value);}
-		    else if(value is bool && this.method is MethodBool){((MethodBool)this.method)((bool)value);}
-		    else if(value is Vector2 && this.method is MethodVector2){((MethodVector2)this.method)((Vector2)value);}
-		    else if(value is Vector3 && this.method is MethodVector3){((MethodVector3)this.method)((Vector3)value);}
-	    }
-	}
-	//=======================
-	// Stepper
-	//=======================
-	public class EventStepper{
-		public MethodStep method;
-		public string eventName;
-		public IList collection;
-		public int index;
-		public bool complete;
-		public List<Method> passes = new List<Method>();
-		public void Step(){
-			bool canceled = false;
-			if(this.index != -1){
-				this.method(this.collection,this.index);
-				float percent = ((float)this.index)/this.collection.Count;
-				canceled = Utility.DisplayCancelableProgressBar(Events.stepperTitle,Events.stepperMessage,percent);
-				this.index += 1;
-			}
-			bool loading = Application.isLoadingLevel || this.passes.Count < 1;
-			bool ended = (this.index > this.collection.Count-1) || this.index == -1;
-			if((loading || canceled || ended) && !this.complete){
-				this.index = -1;
-				foreach(var pass in this.passes){
-					Events.Remove(this.eventName,pass);
-				}
-				this.complete = true;
-				this.passes.Clear();
-				Events.steppers.Remove(this.method);
-				Utility.ClearProgressBar();
-			}	
-		}
-	}
-	//=======================
 	// Delegates
 	//=======================
-	public delegate bool KeyShortcut(KeyCode code);
 	public delegate void Method();
 	public delegate void MethodObject(object value);
 	public delegate void MethodInt(int value);
@@ -181,16 +99,22 @@ namespace Zios{
 		public static string stepperMessage;
 		public static FixedList<string> eventHistory = new FixedList<string>(15);
 		public static List<EventListener> stack = new List<EventListener>();
-		public static void Build(){
-			if(Events.instance.IsNull()){
-				var eventsPath = Locate.GetScenePath("@Main");
-				if(!eventsPath.HasComponent<Events>()){
-					Debug.Log("[Events] : Auto-creating Events Manager GameObject.");
-					Events.instance = eventsPath.AddComponent<Events>();
-				}
-				Events.instance = eventsPath.GetComponent<Events>();
+	    public override void Awake(){
+			//Events.Add("On Hierarchy Changed",this.Awake);
+			Events.instance = this;
+			Events.callers.Clear();
+			Events.cache.Clear();
+			Events.listeners.RemoveAll(x=>!x.permanent||x.occurrences==0);
+			foreach(var listener in Events.listeners){
+				var scope = Events.cache.AddNew(listener.target).AddNew(listener.name);
+				scope[listener.method] = listener;
 			}
-			Events.Cleanup();
+			Events.Call("On Events Reset");
+			base.Awake();
+		}
+		public override void OnDestroy(){
+			Events.instance = null;
+			base.OnDestroy();
 		}
 		public static void Cleanup(){
 			if(Application.isPlaying){return;}
@@ -226,28 +150,6 @@ namespace Zios{
 					Events.callers.Remove(item.Key);
 				}
 			}
-		}
-		public static void Setup(){
-			Events.debug = (EventDebug)PlayerPrefs.GetInt("Events-Debug");
-			Events.debugScope = (EventDebugScope)PlayerPrefs.GetInt("Events-DebugScope");
-			Events.callers.Clear();
-			Events.cache.Clear();
-			Events.listeners.RemoveAll(x=>!x.permanent||x.occurrences==0);
-			foreach(var listener in Events.listeners){
-				var scope = Events.cache.AddNew(listener.target).AddNew(listener.name);
-				scope[listener.method] = listener;
-			}
-			Events.Call("On Events Reset");
-		}
-	    public override void Awake(){
-			//Events.Add("On Hierarchy Changed",this.Awake);
-			Events.instance = this;
-			Events.Setup();
-			base.Awake();
-		}
-		public override void OnDestroy(){
-			Events.instance = null;
-			base.OnDestroy();
 		}
 		public static object Validate(object target=null){
 			if(target.IsNull()){target = Events.global;}
@@ -580,7 +482,7 @@ namespace Zios{
 	    }
 	    public static void DelayEvent(this object current,string key,string name,float delay=0.5f,params object[] values){
 			if(current.IsNull()){return;}
-			key += name;
+			key += "/" + name;
 			Utility.EditorDelayCall(key,()=>Events.Call(current,name,values),delay);
 	    }
 	    public static void CooldownEvent(this object current,string name,float seconds){

@@ -34,19 +34,19 @@ namespace Zios{
     }
 	[Serializable]
 	public class Attribute{
-		public static bool ready;
 		[EnumMask] public static AttributeDebug debug;
-		public static List<Attribute> all = new List<Attribute>();
-		public static Dictionary<GameObject,Dictionary<string,Attribute>> lookup = new Dictionary<GameObject,Dictionary<string,Attribute>>();
-		public static Dictionary<GameObject,Dictionary<string,string>> resolve = new Dictionary<GameObject,Dictionary<string,string>>();
-		public static Dictionary<Attribute,bool> setWarning = new Dictionary<Attribute,bool>();
-		public static Dictionary<AttributeData,bool> getWarning = new Dictionary<AttributeData,bool>();
-		public AttributeInfo info = new AttributeInfo();
-		public AttributeData[] data{
+		[NonSerialized] public static bool ready;
+		[NonSerialized] public static List<Attribute> all = new List<Attribute>();
+		[NonSerialized] public static Dictionary<GameObject,Dictionary<string,Attribute>> lookup = new Dictionary<GameObject,Dictionary<string,Attribute>>();
+		[NonSerialized] public static Dictionary<GameObject,Dictionary<string,string>> resolve = new Dictionary<GameObject,Dictionary<string,string>>();
+		[NonSerialized] public static Dictionary<Attribute,bool> setWarning = new Dictionary<Attribute,bool>();
+		[NonSerialized] public static Dictionary<AttributeData,bool> getWarning = new Dictionary<AttributeData,bool>();
+		[NonSerialized] public AttributeInfo info = new AttributeInfo();
+		[NonSerialized] public AttributeData[] data{
 			get{return this.info.data;}
 			set{this.info.data = value;}
 		}
-		public int Length{
+		[NonSerialized] public int Length{
 			get{return this.info.data.Length;}
 			set{}
 		}

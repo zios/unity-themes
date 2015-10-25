@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 namespace Zios{ 
@@ -18,13 +18,13 @@ namespace Zios{
 		}
 	    public static bool Between(this decimal current,decimal start,decimal end){
 		    return current >= start && current <= end;
-	    }
+		}
 	    public static bool InRange(this decimal current,decimal start,decimal end){
 		    return current.Between(start,end);
-	    }
+		}
 	    public static bool ToBool(this decimal current){
 		    return current != 0;
-	    }
+		}
 		public static decimal Closest(this decimal current,params decimal[] values){
 			decimal match = decimal.MaxValue;
 			foreach(decimal value in values){
@@ -40,30 +40,30 @@ namespace Zios{
 			    if(current >= value){
 				    highest = value;
 				    break;
-			    }
-		    }
+				}
+			}
 		    foreach(decimal value in values){
 			    if(current >= value && value > highest){
 				    highest = value;
-			    }
-		    }
+				}
+			}
 		    return highest;
-	    }
+		}
 	    public static decimal RoundClosestUp(this decimal current,params decimal[] values){
 		    decimal lowest = -1;
 		    foreach(decimal value in values){
 			    if(current >= value){
 				    lowest = value;
 				    break;
-			    }
-		    }
+				}
+			}
 		    foreach(decimal value in values){
 			    if(current <= value && value < lowest){
 				    lowest = value;
-			    }
-		    }
+				}
+			}
 		    return lowest;
-	    }
+		}
 		public static decimal Mean(this IEnumerable<decimal> current){return (decimal)current.Average();}
 		public static decimal Median(this IEnumerable<decimal> current){
 			int count = current.Cast<object>().Count(); 
@@ -80,5 +80,5 @@ namespace Zios{
 		}
 		public static decimal Min(this decimal current,decimal value){return Math.Min(current,value);}
 		public static decimal Max(this decimal current,decimal value){return Math.Max(current,value);}
-    }
+	}
 }

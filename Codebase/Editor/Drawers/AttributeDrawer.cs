@@ -135,20 +135,16 @@ namespace Zios.UI{
 					this.labelRect = this.labelRect.AddX(16);
 					this.DrawShaped(this.valueRect,firstProperty,this.label,true);
 				}
-				if(GUI.changed){
-					firstData.CallEvent("On Validate");
-					Utility.SetDirty(firstData);
-				}
 			}
 			if(this.attribute.info.mode == AttributeMode.Linked){
 				this.attributeCast.usage = AttributeUsage.Shaped;
 				GUI.Box(this.iconRect,"",GUI.skin.GetStyle("IconLinked"));
 				this.labelRect = this.labelRect.AddX(16);
 				this.DrawShaped(this.valueRect,firstProperty,this.label,true);
-				if(GUI.changed){
-					firstData.CallEvent("On Validate");
-					Utility.SetDirty(firstData);
-				}
+			}
+			if(GUI.changed){
+				firstData.DelayEvent(firstData.location,"On Validate",1);
+				Utility.SetDirty(firstData);
 			}
 			if(this.attribute.info.mode == AttributeMode.Formula){
 				this.DrawGroup(this.label,true);

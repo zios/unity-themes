@@ -10,7 +10,7 @@ using System.Xml.Serialization;
 namespace Zios{
     public static class ObjectExtension{
 	    public const BindingFlags allFlags = BindingFlags.Static|BindingFlags.Instance|BindingFlags.NonPublic|BindingFlags.Public;
-	    public const BindingFlags staticFlags = BindingFlags.Static|BindingFlags.NonPublic|BindingFlags.Public;
+	    public const BindingFlags staticFlags = BindingFlags.Static|BindingFlags.Public;
 	    public const BindingFlags instanceFlags = BindingFlags.Instance|BindingFlags.NonPublic|BindingFlags.Public;
 	    public const BindingFlags privateFlags = BindingFlags.Instance|BindingFlags.NonPublic;
 	    public const BindingFlags publicFlags = BindingFlags.Instance|BindingFlags.Public;
@@ -181,23 +181,33 @@ namespace Zios{
 			    field.SetValue(current,value);
 		    }
 	    }
-	    public static Dictionary<string,object> GetVariables(this object current,List<Type> limitTypes = null,BindingFlags flags = allFlags){
+	    public static Dictionary<string,object> GetVariables(this object current,List<Type> onlyTypes = null,List<Type> withoutAttributes = null,BindingFlags flags = allFlags){
 		    Type type = current is Type ? (Type)current : current.GetType();
 		    object instance = current.IsStatic() || current is Type ? null : current;
 		    Dictionary<string,object> variables = new Dictionary<string,object>();
 		    foreach(FieldInfo field in type.GetFields(flags)){
-			    if(limitTypes != null && !limitTypes.Contains(field.FieldType)){continue;}
-				variables[field.Name] = field.GetValue(instance);
+			    if(onlyTypes != null && !onlyTypes.Contains(field.FieldType)){continue;}
+				if(withoutAttributes != null){
+					var attributes = System.Attribute.GetCustomAttributes(field);
+					if(attributes.Any(x=>withoutAttributes.Any(y=>y==x.GetType()))){continue;}
+					//if(attributes.Intersect(limitAttributes).Any()){continue;}
+				}
+				try{variables[field.Name] = field.GetValue(instance);}
+				catch{}
 		    }
 		    foreach(PropertyInfo property in type.GetProperties(flags)){
-			    if(limitTypes != null && !limitTypes.Contains(property.PropertyType)){continue;}
+			    if(onlyTypes != null && !onlyTypes.Contains(property.PropertyType)){continue;}
+				if(withoutAttributes != null){
+					var attributes = System.Attribute.GetCustomAttributes(property);
+					if(attributes.Any(x=>withoutAttributes.Any(y=>y==x.GetType()))){continue;}
+				}
 				try{variables[property.Name] = property.GetValue(instance,null);}
 				catch{}
 		    }
 		    return variables;
 	    }
-	    public static List<string> ListVariables(this object current,List<Type> argumentTypes = null,BindingFlags flags = allFlags){
-		    return current.GetVariables(argumentTypes,flags).Keys.ToList();
+	    public static List<string> ListVariables(this object current,List<Type> onlyTypes = null,List<Type> withoutAttributes = null,BindingFlags flags = allFlags){
+		    return current.GetVariables(onlyTypes,withoutAttributes,flags).Keys.ToList();
 	    }
 		//=========================
 		// Shortcuts - Checks
@@ -208,9 +218,6 @@ namespace Zios{
 	    public static bool IsNull(this object current){
             return current == null || current.Equals(null);
         }
-	    public static bool IsType(this object current,Type value){
-		    return current.GetType().IsType(value);
-	    }
 	    public static bool IsStatic(this object current){
 		    Type type = current is Type ? (Type)current : current.GetType();
 		    return type.IsStatic();

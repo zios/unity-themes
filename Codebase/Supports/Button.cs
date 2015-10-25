@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System;
 using System.Collections.Generic;
 namespace Zios{
@@ -68,19 +68,19 @@ namespace Zios{
 				return Event.current.keyCode == code;
 			}
 			return false;
-	    }
+		}
 	    public static bool KeyUp(string name){
 			if(Event.current.type == EventType.KeyUp){
 				KeyCode code = (KeyCode)Enum.Parse(typeof(KeyCode),name);
 				return Event.current.keyCode == code;
 			}
 			return false;
-	    }
+		}
 	    public static bool KeyDown(KeyCode code){
 		    return Event.current.type == EventType.KeyDown && Event.current.keyCode == code;
-	    }
+		}
 	    public static bool KeyUp(KeyCode code){
 		    return Event.current.type == EventType.KeyUp && Event.current.keyCode == code;
-	    }
-    }
+		}
+	}
 }

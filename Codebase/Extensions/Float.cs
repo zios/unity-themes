@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 namespace Zios{ 
@@ -18,13 +18,13 @@ namespace Zios{
 		}
 	    public static bool Between(this float current,float start,float end){
 		    return current >= start && current <= end;
-	    }
+		}
 	    public static bool InRange(this float current,float start,float end){
 		    return current.Between(start,end);
-	    }
+		}
 	    public static bool ToBool(this float current){
 		    return current != 0;
-	    }
+		}
 		public static float Closest(this float current,params float[] values){
 			float match = float.MaxValue;
 			foreach(float value in values){
@@ -40,30 +40,30 @@ namespace Zios{
 			    if(current >= value){
 				    highest = value;
 				    break;
-			    }
-		    }
+				}
+			}
 		    foreach(float value in values){
 			    if(current >= value && value > highest){
 				    highest = value;
-			    }
-		    }
+				}
+			}
 		    return highest;
-	    }
+		}
 	    public static float RoundClosestUp(this float current,params float[] values){
 		    float lowest = -1;
 		    foreach(float value in values){
 			    if(current >= value){
 				    lowest = value;
 				    break;
-			    }
-		    }
+				}
+			}
 		    foreach(float value in values){
 			    if(current <= value && value < lowest){
 				    lowest = value;
-			    }
-		    }
+				}
+			}
 		    return lowest;
-	    }
+		}
 		public static float Mean(this IEnumerable<float> current){return (float)current.Average();}
 		public static float Median(this IEnumerable<float> current){
 			int count = current.Cast<object>().Count(); 
@@ -91,5 +91,5 @@ namespace Zios{
 		}
 		public static float Min(this float current,float value){return Math.Min(current,value);}
 		public static float Max(this float current,float value){return Math.Max(current,value);}
-    }
+	}
 }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 namespace Zios{ 
@@ -18,13 +18,13 @@ namespace Zios{
 		}
 	    public static bool Between(this double current,double start,double end){
 		    return current >= start && current <= end;
-	    }
+		}
 	    public static bool InRange(this double current,double start,double end){
 		    return current.Between(start,end);
-	    }
+		}
 	    public static bool ToBool(this double current){
 		    return current != 0;
-	    }
+		}
 		public static double Closest(this double current,params double[] values){
 			double match = double.MaxValue;
 			foreach(double value in values){
@@ -40,30 +40,30 @@ namespace Zios{
 			    if(current >= value){
 				    highest = value;
 				    break;
-			    }
-		    }
+				}
+			}
 		    foreach(double value in values){
 			    if(current >= value && value > highest){
 				    highest = value;
-			    }
-		    }
+				}
+			}
 		    return highest;
-	    }
+		}
 	    public static double RoundClosestUp(this double current,params double[] values){
 		    double lowest = -1;
 		    foreach(double value in values){
 			    if(current >= value){
 				    lowest = value;
 				    break;
-			    }
-		    }
+				}
+			}
 		    foreach(double value in values){
 			    if(current <= value && value < lowest){
 				    lowest = value;
-			    }
-		    }
+				}
+			}
 		    return lowest;
-	    }
+		}
 		public static double Mean(this IEnumerable<double> current){return (double)current.Average();}
 		public static double Median(this IEnumerable<double> current){
 			int count = current.Cast<object>().Count(); 
@@ -80,5 +80,5 @@ namespace Zios{
 		}
 		public static double Min(this double current,double value){return Math.Min(current,value);}
 		public static double Max(this double current,double value){return Math.Max(current,value);}
-    }
+	}
 }

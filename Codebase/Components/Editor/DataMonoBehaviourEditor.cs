@@ -2,15 +2,16 @@
 using UnityEngine;
 using UnityEditor;
 namespace Zios.UI{
-    [CustomEditor(typeof(DataMonoBehaviour),true)][CanEditMultipleObjects]
-    public class DataMonoBehaviourEditor : MonoBehaviourEditor{
-	    public override void OnInspectorGUI(){
+	[CustomEditor(typeof(DataMonoBehaviour),true)][CanEditMultipleObjects]
+	public class DataMonoBehaviourEditor : MonoBehaviourEditor{
+		public override void OnInspectorGUI(){
 			if(!Event.current.IsUseful()){return;}
-		    DataMonoBehaviour target = (DataMonoBehaviour)this.target;
+			DataMonoBehaviour target = (DataMonoBehaviour)this.target;
 			var dependents = target.dependents;
 			bool targetsMissing = false;
 			string message = "";
-		    foreach(var dependent in dependents){
+			Events.Add("On Validate",this.Repaint,target);
+			foreach(var dependent in dependents){
 				if(dependent.exists){continue;}
 				message = dependent.message;
 				if(dependent.target.IsNull() && dependent.dynamicTarget.Get().IsNull()){

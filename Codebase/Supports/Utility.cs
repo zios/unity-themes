@@ -12,7 +12,7 @@ namespace Zios{
     public class UtilityListener : AssetPostprocessor{
 	    public static void OnPostprocessAllAssets(string[] imported,string[] deleted,string[] movedTo, string[] movedFrom){
 		    bool playing = EditorApplication.isPlaying || EditorApplication.isPlayingOrWillChangePlaymode;
-		    if(!playing){Events.Call("On Assets Changed");}
+		    if(!playing){Events.Call("On Asset Changed");}
 	    }
     }
 	public class UtilityModificationListener : AssetModificationProcessor{
@@ -46,13 +46,11 @@ namespace Zios{
 		// Editor Only
 		//============================
 	    #if UNITY_EDITOR
-		public static float sceneCheck;
-	    public static EditorWindow[] inspectors;
-	    public static List<CallbackFunction> hierarchyMethods = new List<CallbackFunction>();
-	    public static Dictionary<object,KeyValuePair<CallbackFunction,float>> delayedMethods = new Dictionary<object,KeyValuePair<CallbackFunction,float>>();
-		public static List<UnityObject> delayedDirty = new List<UnityObject>();
-		public static Dictionary<UnityObject,SerializedObject> serializedObjects = new Dictionary<UnityObject,SerializedObject>();
-		public static bool delayPaused;
+		private static float sceneCheck;
+	    private static EditorWindow[] inspectors;
+	    private static Dictionary<object,KeyValuePair<CallbackFunction,float>> delayedMethods = new Dictionary<object,KeyValuePair<CallbackFunction,float>>();
+		private static List<UnityObject> delayedDirty = new List<UnityObject>();
+		private static Dictionary<UnityObject,SerializedObject> serializedObjects = new Dictionary<UnityObject,SerializedObject>();
 	    static Utility(){
 			Events.Register("On Global Event");
 			Events.Register("On Windows Reordered");
@@ -202,7 +200,7 @@ namespace Zios{
 	    }
 	    public static void EditorDelayCall(CallbackFunction method){
 			#if UNITY_EDITOR
-			if(!Utility.IsPlaying() && !Utility.delayPaused && EditorApplication.delayCall != method){
+			if(!Utility.IsPlaying() && EditorApplication.delayCall != method){
 				EditorApplication.delayCall += method;
 			}
 			#endif
@@ -214,7 +212,7 @@ namespace Zios{
 	    }
 	    public static void EditorDelayCall(object key,CallbackFunction method,float seconds){
 			#if UNITY_EDITOR
-			if(!Utility.delayPaused && !key.IsNull() && !method.IsNull() && !Utility.delayedMethods.ContainsKey(key)){
+			if(!key.IsNull() && !method.IsNull()){
 				Utility.delayedMethods[key] = new KeyValuePair<CallbackFunction,float>(method,Time.realtimeSinceStartup + seconds);
 			}
 			#endif

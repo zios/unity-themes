@@ -1,4 +1,4 @@
-﻿#pragma warning disable 0618
+#pragma warning disable 0618
 using UnityEngine; 
 using System;
 using System.Collections;

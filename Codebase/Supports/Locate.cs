@@ -10,27 +10,29 @@ namespace Zios{
     [InitializeOnLoad]
     #endif
     public static class Locate{
-	    public static bool cleanGameObjects = false;
-	    public static List<Type> cleanSceneComponents = new List<Type>();
-	    public static List<GameObject> cleanSiblings = new List<GameObject>();
-		public static Dictionary<Type,UnityObject[]> assets = new Dictionary<Type,UnityObject[]>();
-	    public static Dictionary<GameObject,GameObject[]> siblings = new Dictionary<GameObject,GameObject[]>();
-	    public static Dictionary<GameObject,GameObject[]> enabledSiblings = new Dictionary<GameObject,GameObject[]>();
-	    public static Dictionary<GameObject,GameObject[]> disabledSiblings = new Dictionary<GameObject,GameObject[]>();
-	    public static GameObject[] rootObjects = new GameObject[0];
-	    public static GameObject[] sceneObjects = new GameObject[0];
-	    public static GameObject[] enabledObjects = new GameObject[0];
-	    public static GameObject[] disabledObjects = new GameObject[0];
-	    public static Dictionary<Type,Component[]> sceneComponents = new Dictionary<Type,Component[]>();
-	    public static Dictionary<Type,Component[]> enabledComponents = new Dictionary<Type,Component[]>();
-	    public static Dictionary<Type,Component[]> disabledComponents = new Dictionary<Type,Component[]>();
-	    public static Dictionary<GameObject,Dictionary<Type,Component[]>> objectComponents = new Dictionary<GameObject,Dictionary<Type,Component[]>>();
+	    private static bool cleanGameObjects = false;
+	    private static List<Type> cleanSceneComponents = new List<Type>();
+	    private static List<GameObject> cleanSiblings = new List<GameObject>();
+		private static Dictionary<Type,UnityObject[]> assets = new Dictionary<Type,UnityObject[]>();
+	    private static Dictionary<GameObject,GameObject[]> siblings = new Dictionary<GameObject,GameObject[]>();
+	    private static Dictionary<GameObject,GameObject[]> enabledSiblings = new Dictionary<GameObject,GameObject[]>();
+	    private static Dictionary<GameObject,GameObject[]> disabledSiblings = new Dictionary<GameObject,GameObject[]>();
+	    private static GameObject[] rootObjects = new GameObject[0];
+	    private static GameObject[] sceneObjects = new GameObject[0];
+	    private static GameObject[] enabledObjects = new GameObject[0];
+	    private static GameObject[] disabledObjects = new GameObject[0];
+	    private static Dictionary<Type,Component[]> sceneComponents = new Dictionary<Type,Component[]>();
+	    private static Dictionary<Type,Component[]> enabledComponents = new Dictionary<Type,Component[]>();
+	    private static Dictionary<Type,Component[]> disabledComponents = new Dictionary<Type,Component[]>();
+	    private static Dictionary<GameObject,Dictionary<Type,Component[]>> objectComponents = new Dictionary<GameObject,Dictionary<Type,Component[]>>();
 	    static Locate(){
-		    //Events.Add("On Application Quit",Locate.SetDirty);
-			Events.Add("On Scene Loaded",Locate.SetDirty).SetPermanent(true);
-			Events.Add("On Hierarchy Changed",Locate.SetDirty).SetPermanent(true);
-			Events.Add("On Assets Changed",()=>Locate.assets.Clear()).SetPermanent(true);
-		    Locate.SetDirty();
+			if(!Application.isPlaying){
+				//Events.Add("On Application Quit",Locate.SetDirty);
+				Events.Add("On Scene Loaded",Locate.SetDirty).SetPermanent(true);
+				Events.Add("On Hierarchy Changed",Locate.SetDirty).SetPermanent(true);
+				Events.Add("On Asset Changed",()=>Locate.assets.Clear()).SetPermanent(true);
+			}
+			Locate.SetDirty();
 	    }
 	    public static void SetDirty(){
 		    Locate.cleanGameObjects = false;

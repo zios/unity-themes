@@ -44,7 +44,8 @@ namespace Zios{
 			else if(!this.hideFlags.Contains(HideFlags.HideInInspector) && PlayerPrefs.GetInt("Attribute-ShowData") == 0){this.Purge("Visible");}
 			else if(!this.attribute.data.Contains(this) && !this.attribute.dataB.Contains(this) && !this.attribute.dataC.Contains(this)){this.Purge("Not In Attribute");}
 			if(this.attribute.parent is DataMonoBehaviour){
-				this.attribute.parent.CallEvent("On Validate");
+				var path = this.attribute.parent.As<DataMonoBehaviour>().location;
+				this.attribute.parent.DelayEvent(path,"On Validate",1);
 			}
 		}
 		public void Purge(string reason){

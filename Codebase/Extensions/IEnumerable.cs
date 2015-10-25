@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Reflection;
 using System.Collections;
@@ -15,9 +15,9 @@ namespace Zios{
 			    if(isLast){result += endTerm;}
 			    result += item.ToString();
 			    if(!isLast){result += separator;}
-		    }
+			}
 		    return result;
-	    }
+		}
 	    public static HashSet<T> ToHashSet<T>(this IEnumerable<T> current){
 		   return new HashSet<T>(current);
 		}
@@ -34,25 +34,25 @@ namespace Zios{
 		    foreach(string item in current){
 			    if(wildcard && item.Contains(text)){
 				    newList.Add(item);
-			    }
+				}
 			    else if(item == text){
 				    newList.Add(item);
-			    }
-		    }
+				}
+			}
 		    return newList;
-	    }
+		}
 	    public static List<string> Replace(this IEnumerable<string> current,string replace,string with,bool ignoreCase=true){
 		    List<string> results = new List<string>();
 		    foreach(string item in current){
 			    results.Add(item.Replace(replace,with));
-		    }
+			}
 		    return results;
-	    }
+		}
 	    public static string[] AddSuffix(this string[] current,string suffix){
 		    for(int index=0;index<current.Length;++index){
 				current[index] += suffix;
-		    }
+			}
 			return current;
 		}
-    }
+	}
 }

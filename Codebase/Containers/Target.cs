@@ -1,44 +1,44 @@
-﻿using Zios;
+using Zios;
 using System;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityObject = UnityEngine.Object;
 namespace Zios{
-    public enum TargetMode{Search,Direct};
-    [Serializable]
-    public class Target{
+	public enum TargetMode{Search,Direct};
+	[Serializable]
+	public class Target{
 		public static string defaultSearch = "[Self]";
-	    private List<GameObject> special = new List<GameObject>();
-	    private List<string> specialNames = new List<string>();
-	    public string search = "";
-	    public GameObject directObject;
-	    public GameObject searchObject;
-	    public Component parent;
-	    public TargetMode mode = TargetMode.Search;
+		private List<GameObject> special = new List<GameObject>();
+		private List<string> specialNames = new List<string>();
+		public string search = "";
+		public GameObject directObject;
+		public GameObject searchObject;
+		public Component parent;
+		public TargetMode mode = TargetMode.Search;
 		public string path;
-	    private string fallbackSearch = "";
-	    public static implicit operator Transform(Target value){return value.Get().transform;}
-	    public static implicit operator GameObject(Target value){return value.Get();}
-	    public static implicit operator UnityObject(Target value){return value.Get();}
-	    public GameObject Get(){
-		    GameObject result = this.mode == TargetMode.Search ? this.searchObject : this.directObject;
-		    if(result == null && Application.isPlaying){
-			    Debug.LogWarning("[Target] No target found for : " + this.path,this.parent);
-		    }
-		    return result;
-	    }
-	    public void Setup(string path,Component parent){
+		private string fallbackSearch = "";
+		public static implicit operator Transform(Target value){return value.Get().transform;}
+		public static implicit operator GameObject(Target value){return value.Get();}
+		public static implicit operator UnityObject(Target value){return value.Get();}
+		public GameObject Get(){
+			GameObject result = this.mode == TargetMode.Search ? this.searchObject : this.directObject;
+			if(result == null && Application.isPlaying){
+				Debug.LogWarning("[Target] No target found for : " + this.path,this.parent);
+			}
+			return result;
+		}
+		public void Setup(string path,Component parent){
 			this.path = parent.GetPath() + "/" + path;
-		    this.parent = parent;
-		    if(!Application.isPlaying){
-			    this.AddSpecial("[This]",parent.gameObject);
-			    this.AddSpecial("[Self]",parent.gameObject);
-			    this.AddSpecial("[Next]",parent.gameObject.GetNextSibling(true));
-			    this.AddSpecial("[Previous]",parent.gameObject.GetPreviousSibling(true));
-			    this.AddSpecial("[NextEnabled]",parent.gameObject.GetNextSibling());
-			    this.AddSpecial("[PreviousEnabled]",parent.gameObject.GetPreviousSibling());
-			    this.AddSpecial("[Root]",parent.gameObject.GetPrefabRoot());
+			this.parent = parent;
+			if(!Application.isPlaying){
+				this.AddSpecial("[This]",parent.gameObject);
+				this.AddSpecial("[Self]",parent.gameObject);
+				this.AddSpecial("[Next]",parent.gameObject.GetNextSibling(true));
+				this.AddSpecial("[Previous]",parent.gameObject.GetPreviousSibling(true));
+				this.AddSpecial("[NextEnabled]",parent.gameObject.GetNextSibling());
+				this.AddSpecial("[PreviousEnabled]",parent.gameObject.GetPreviousSibling());
+				this.AddSpecial("[Root]",parent.gameObject.GetPrefabRoot());
 				Events.Add("On Validate",this.Search,parent);
 				Events.Add("On Hierarchy Changed",this.Search,parent);
 				if(parent is StateMonoBehaviour){
@@ -56,31 +56,31 @@ namespace Zios{
 					this.AddSpecial("[Controller]",stateObject);
 					this.AddSpecial("[State]",state.gameObject);
 				}
-				string defaultSearch = Target.defaultSearch = PlayerPrefs.GetString("Target-DefaultSearch","[Self]");
+				string defaultSearch = Target.defaultSearch;
 				this.SetFallback(defaultSearch);
 				if(this.mode == TargetMode.Search && this.search.IsEmpty()){
 					this.Search();
 				}
-		    }
-	    }
+			}
+		}
 		public void SetFallback(string name){this.fallbackSearch = name;}
-	    public void AddSpecial(string name,GameObject target){
-		    if(target.IsNull()){target = this.parent.gameObject;}
-		    if(!this.specialNames.Any(x=>x.Contains(name,true))){
-			    this.specialNames.Add(name);
-			    this.special.Add(target);
-		    }
-		    else{
-			    int index = this.specialNames.FindIndex(x=>x.Contains(name,true));
-			    this.special[index] = target;
-		    }
-	    }
-	    public void Search(){
+		public void AddSpecial(string name,GameObject target){
+			if(target.IsNull()){target = this.parent.gameObject;}
+			if(!this.specialNames.Any(x=>x.Contains(name,true))){
+				this.specialNames.Add(name);
+				this.special.Add(target);
+			}
+			else{
+				int index = this.specialNames.FindIndex(x=>x.Contains(name,true));
+				this.special[index] = target;
+			}
+		}
+		public void Search(){
 			if(this.mode != TargetMode.Search){return;}
 			if(this.search.IsEmpty()){this.search = this.fallbackSearch;}
 			if(this.search.IsEmpty()){return;}
-		    string search = this.search.Replace("\\","/");
-		    if(!search.IsEmpty()){
+			string search = this.search.Replace("\\","/");
+			if(!search.IsEmpty()){
 				for(int index=0;index<this.special.Count;++index){
 					string specialName = this.specialNames[index];
 					GameObject special = this.special[index];
@@ -133,7 +133,7 @@ namespace Zios{
 					search = total;
 				}
 				this.searchObject = Locate.Find(search);
-		    }
-	    }
-    }
+			}
+		}
+	}
 }

@@ -16,6 +16,6 @@ namespace Zios.UI{
 				value = value.DrawInt(position);
 			}
 			property.floatValue = (float)value;
-	    }
-    }
+		}
+	}
 }

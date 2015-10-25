@@ -77,11 +77,6 @@ namespace Zios.UI{
 				StateWindow.Get().Repaint();
 				return;
 			}
-			/*var menu = new GenericMenu();
-			GUIContent toggleUpdateText = new GUIContent(" Always Update");
-			MenuFunction toggleUpdate = ()=>Utility.ToggleEditorPref("StateWindow-AlwaysUpdate");
-			menu.AddItem(toggleUpdateText,false,toggleUpdate);
-			menu.ShowAsContext();*/
 		}
 	}
 }

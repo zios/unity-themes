@@ -11,9 +11,9 @@ namespace Zios.UI{
     public class StaticInspector : EditorWindow{
 		private Vector2 scrollPosition;
 		private Rect viewArea;
-	    private string currentAssembly;
-	    private string currentNamespace;
-	    private string currentClass;
+	    public string currentAssembly;
+	    public string currentNamespace;
+	    public string currentClass;
 	    private int selectedAssembly;
 	    private int selectedNamespace;
 	    private int selectedClass;
@@ -56,9 +56,6 @@ namespace Zios.UI{
 				    this.classes.Clear();
 				    this.setupIndex = 0;
 				    this.assemblies = AppDomain.CurrentDomain.GetAssemblies().ToList();
-				    this.currentAssembly = EditorPrefs.GetString("StaticInspector-Assembly");
-				    this.currentNamespace = EditorPrefs.GetString("StaticInspector-Namespace");
-				    this.currentClass = EditorPrefs.GetString("StaticInspector-Class");
 			    }
 			    if(this.setupIndex > this.assemblies.Count-1){
 				    this.setup = true;
@@ -106,9 +103,9 @@ namespace Zios.UI{
 	    public void DrawSelectors(){
             this.titleContent = new GUIContent("Static");
 		    float fieldSize = this.position.width/3.0f - 6;
-		    Rect assemblyArea = new Rect(5,5,fieldSize,15);
-		    Rect namespaceArea = new Rect(5+(fieldSize)+2,5,fieldSize,15);
-		    Rect classArea = new Rect(5+(fieldSize*2)+4,5,fieldSize,15);
+		    var assemblyArea = new Rect(5,5,fieldSize,15);
+		    var namespaceArea = new Rect(5+(fieldSize)+2,5,fieldSize,15);
+		    var classArea = new Rect(5+(fieldSize*2)+4,5,fieldSize,15);
 		    GUI.changed = false;
 		    //=================
 		    // Assembly
@@ -139,15 +136,12 @@ namespace Zios.UI{
 		    this.activeClass = this.classes[this.currentAssembly][this.currentNamespace][this.selectedClass];
 		    if(GUI.changed){
 			    this.variables.Clear();
-			    EditorPrefs.SetString("StaticInspector-Assembly",this.currentAssembly);
-			    EditorPrefs.SetString("StaticInspector-Namespace",this.currentNamespace);
-			    EditorPrefs.SetString("StaticInspector-Class",this.currentClass);
 		    }
 	    }
 	    public void DrawInspector(){
 			this.scrollPosition = GUI.BeginScrollView(new Rect(0,25,Screen.width,Screen.height-45),this.scrollPosition,this.viewArea);
 		    if(this.activeClass != null && this.variables.Count < 1){
-			    List<string> names = this.activeClass.ListVariables(null,ObjectExtension.staticFlags);
+			    List<string> names = this.activeClass.ListVariables(null,null,ObjectExtension.staticFlags);
 			    foreach(string name in names){
 				    try{
 					    var accessor = new Accessor(this.activeClass,name);
@@ -169,28 +163,8 @@ namespace Zios.UI{
 			this.viewArea = this.viewArea.SetHeight(this.valueArea.y+22);
 			GUI.EndScrollView();
 	    }
-		public void LoadValue(Accessor accessor,object value){
-			if(accessor != null){
-				string name = this.currentClass+"-"+accessor.name.ToPascalCase();
-				if(EditorPrefs.HasKey(name)){
-					if(value is Enum){accessor.Set(EditorPrefs.GetInt(name));}
-					if(value is bool){accessor.Set(EditorPrefs.GetInt(name));}
-					if(value is int){accessor.Set(EditorPrefs.GetInt(name));}
-					if(value is string){accessor.Set(EditorPrefs.GetString(name));}
-					if(value is float){accessor.Set(EditorPrefs.GetFloat(name));}
-				}
-			}
-		}
 		public void UpdateValue(Accessor accessor,object value){
-			if(accessor != null && GUI.changed){
-				string name = this.currentClass+"-"+accessor.name.ToPascalCase();
-				if(value is Enum){EditorPrefs.SetInt(name,value.As<Enum>().ToInt());}
-				if(value is bool){EditorPrefs.SetInt(name,value.As<bool>().ToInt());}
-				if(value is int){EditorPrefs.SetInt(name,(int)value);}
-				if(value is string){EditorPrefs.SetString(name,(string)value);}
-				if(value is float){EditorPrefs.SetFloat(name,(float)value);}
-				accessor.Set(value);
-			}
+			if(accessor != null && GUI.changed){accessor.Set(value);}
 		}
 		public void DrawValue(string labelText,object value,Accessor accessor=null,int depth=0){
 			if(labelText.Contains("$cache")){return;}
@@ -200,7 +174,6 @@ namespace Zios.UI{
 			GUIContent label = new GUIContent(labelText);
 			GUI.changed = false;
 			bool common = (value is string || value is bool || value is float || value is int || value is UnityObject || value is Enum);
-			this.LoadValue(accessor,value);
 			if(common){
 				label.DrawLabel(this.labelArea);
 				labelDrawn = true;
@@ -312,7 +285,7 @@ namespace Zios.UI{
 				this.labelArea = this.labelArea.AddY(18);
 				this.valueArea = this.valueArea.AddY(18);
 				if(this.foldoutState[hash]){
-					List<string> fieldNames = value.ListVariables(null,ObjectExtension.publicFlags);
+					List<string> fieldNames = value.ListVariables(null,null,ObjectExtension.publicFlags);
 					if(fieldNames.Count < 1){return;}
 					this.labelArea = this.labelArea.AddX(10);
 					foreach(string fieldName in fieldNames){

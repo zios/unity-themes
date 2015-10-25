@@ -1,4 +1,4 @@
-﻿using Zios;
+using Zios;
 using System;
 using System.Linq;
 using UnityEngine;
@@ -24,10 +24,10 @@ namespace Zios{
 	[AddComponentMenu("Zios/Singleton/Attribute Manager")][ExecuteInEditMode]
 	public class AttributeManager : MonoBehaviour{
 		public static AttributeManager instance;
-		public static float nextRefresh;
-		public static float percentLoaded;
 		public static bool disabled = false;
-		public static bool safe = false;
+		[NonSerialized] public static float nextRefresh;
+		[NonSerialized] public static float percentLoaded;
+		[NonSerialized] public static bool safe = false;
 		public int editorRefreshPasses = -1;
 		public bool editorIncludeDisabled = true;
 		public bool refreshOnHierarchyChange = true;
@@ -46,14 +46,13 @@ namespace Zios{
 		public static void RemoveVisibleData(){AttributeManager.RemoveAttributeData(true);}
 		[MenuItem("Zios/Process/Attribute/Remove All Data")]
 		public static void RemoveAttributeData(bool visibleOnly=false){
-			foreach(UnityObject current in Selection.objects){
-				if(current is GameObject){
-					GameObject gameObject = (GameObject)current;
-					foreach(AttributeData data in Locate.GetObjectComponents<AttributeData>(gameObject)){
-						bool canDestroy = !visibleOnly || (visibleOnly && !data.hideFlags.Contains(HideFlags.HideInInspector));
-						if(canDestroy){
-							Utility.Destroy(data);
-						}
+			var objects = Locate.GetSceneObjects();
+			foreach(UnityObject current in objects){
+				GameObject gameObject = (GameObject)current;
+				foreach(AttributeData data in Locate.GetObjectComponents<AttributeData>(gameObject)){
+					bool canDestroy = !visibleOnly || (visibleOnly && !data.hideFlags.Contains(HideFlags.HideInInspector));
+					if(canDestroy){
+						Utility.Destroy(data);
 					}
 				}
 			}
@@ -83,7 +82,6 @@ namespace Zios{
 
 		}
 		public static void Build(){
-			Attribute.debug = (AttributeDebug)PlayerPrefs.GetInt("Attribute-Debug");
 			if(AttributeManager.instance.IsNull()){
 				var managerPath = Locate.GetScenePath("@Main");
 				if(!managerPath.HasComponent<AttributeManager>()){

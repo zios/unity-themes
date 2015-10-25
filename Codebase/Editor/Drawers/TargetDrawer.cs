@@ -7,7 +7,7 @@ namespace Zios.UI{
     public class TargetDrawer : PropertyDrawer{
 	    public bool setup;
         public override void OnGUI(Rect area,SerializedProperty property,GUIContent label){
-		    string skin = EditorGUIUtility.isProSkin ? "Dark" : "Light";
+			string skin = EditorGUIUtility.isProSkin ? "Dark" : "Light";
 		    GUI.skin = FileManager.GetAsset<GUISkin>("Gentleface-" + skin + ".guiskin");
 		    Target target = property.GetObject<Target>();
 		    Rect toggleRect = new Rect(area);
@@ -49,9 +49,12 @@ namespace Zios.UI{
 		    }
 			if(GUI.changed && !target.IsNull()){
 				target.Search();
-				target.parent.CallEvent("On Validate");
-				Utility.SetDirty(target.parent,false,true);
+				if(target.parent is DataMonoBehaviour){
+					var parent = target.parent.As<DataMonoBehaviour>();
+					parent.DelayEvent(parent.location,"On Validate");
+					Utility.SetDirty(parent,false,true);
+				}
 			}
-        }
-    }
+		}
+	}
 }

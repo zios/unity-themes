@@ -1,12 +1,12 @@
-﻿#pragma warning disable 0618
+#pragma warning disable 0618
 using UnityEngine;
 using System;
 using System.Collections.Generic;
 namespace Zios{
-    [AddComponentMenu("")][ExecuteInEditMode]
+	[AddComponentMenu("")][ExecuteInEditMode]
     public class EventDetector : MonoBehaviour{
 		private float loadStart;
-		public static bool loading = true;
+		[NonSerialized] public static bool loading = true;
 		public virtual void OnValidate(){
 			this.loadStart = Time.realtimeSinceStartup;
 			EventDetector.loading = true;
@@ -31,7 +31,7 @@ namespace Zios{
 		    Events.Register("On Application Pause");
 		    Events.Register("On Disconnected From Server");
 			Events.Call("On Awake");
-	    }
+		}
 	    public virtual void Start(){Events.Call("On Start");}
 	    public virtual void Update(){
 			if(!Application.isLoadingLevel && EventDetector.loading){
@@ -56,5 +56,5 @@ namespace Zios{
 		public virtual void OnDisable(){Events.Call("On Disable");}
 		public virtual void OnDestroy(){Events.Call("On Destroy");}
 		public virtual void Reset(){Events.Call("On Reset");}
-    }
+	}
 }

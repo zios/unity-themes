@@ -181,7 +181,7 @@ namespace Zios.UI{
 				var state = Events.disabled;
 				Events.disabled = (EventDisabled)(-1);
 				AttributeManager.disabled = true;
-				Utility.delayPaused = true;
+				//Utility.delayPaused = true;
 				defaults.AddNew(type);
 				var script = (MonoBehaviour)this.target;
 				var component = script.gameObject.AddComponent(type);
@@ -200,7 +200,7 @@ namespace Zios.UI{
 					catch{}
 				}
 				Utility.Destroy(component);
-				Utility.delayPaused = false;
+				//Utility.delayPaused = false;
 				Events.disabled = state;
 				AttributeManager.disabled = false;
 				MonoBehaviourEditor.resumeHierarchyTime = Time.realtimeSinceStartup + 0.5f;
