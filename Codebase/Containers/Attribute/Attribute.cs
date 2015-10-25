@@ -42,11 +42,11 @@ namespace Zios{
 		[NonSerialized] public static Dictionary<Attribute,bool> setWarning = new Dictionary<Attribute,bool>();
 		[NonSerialized] public static Dictionary<AttributeData,bool> getWarning = new Dictionary<AttributeData,bool>();
 		[NonSerialized] public AttributeInfo info = new AttributeInfo();
-		[NonSerialized] public AttributeData[] data{
+		public AttributeData[] data{
 			get{return this.info.data;}
 			set{this.info.data = value;}
 		}
-		[NonSerialized] public int Length{
+		public int Length{
 			get{return this.info.data.Length;}
 			set{}
 		}
