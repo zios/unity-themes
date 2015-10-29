@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ namespace Zios.UI{
 			this.listeners = Events.listeners.GroupBy(x=>Events.GetTargetName(x.target)).ToDictionary(x=>x.Key,x=>x.ToList());
 		}
 	    public override void OnInspectorGUI(){
-			//Events.Add("On Events Changed",()=>Utility.EditorDelayCall(this.BuildListeners)).SetUnique(true);
+			//Events.Add("On Events Changed",()=>Utility.EditorDelayCall(this.BuildListeners)).SetUnique();
 			Events.disabled = (EventDisabled)Events.disabled.DrawMask("Disabled");
 			Events.debugScope = (EventDebugScope)Events.debugScope.DrawMask("Debug Scope");
 			Events.debug = (EventDebug)Events.debug.DrawMask("Debug");

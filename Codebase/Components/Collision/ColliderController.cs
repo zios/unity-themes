@@ -42,9 +42,9 @@ namespace Zios{
     [RequireComponent(typeof(Collider))]
     [AddComponentMenu("Zios/Component/Physics/Collider Controller")]
     public class ColliderController : ManagedMonoBehaviour{
-	    public static Dictionary<GameObject,ColliderController> instances = new Dictionary<GameObject,ColliderController>();
-	    public static Collider[] triggers;
-	    public static bool triggerSetup;
+	    private static Dictionary<GameObject,ColliderController> instances = new Dictionary<GameObject,ColliderController>();
+	    private static Collider[] triggers;
+	    private static bool triggerSetup;
 	    public static ColliderController Get(GameObject gameObject){
 		    return ColliderController.instances[gameObject];
 	    }

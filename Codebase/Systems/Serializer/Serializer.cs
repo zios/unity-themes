@@ -11,13 +11,23 @@ namespace Zios{
 	using UnityEditor;
 	[InitializeOnLoad]
 	public static class SerializerHook{
+		private static bool setup;
 		static SerializerHook(){
+			if(Application.isPlaying){return;}
+			EditorApplication.delayCall += ()=>{
+				SerializerHook.Create();
+				Events.Add("On Scene Loaded",SerializerHook.Reset).SetPermanent();
+				Events.Add("On Hierarchy Changed",SerializerHook.Reset).SetPermanent();
+				Events.Add("On Exit Play",SerializerHook.Reset).SetPermanent();
+			};
+		}
+		public static void Reset(){
+			SerializerHook.setup = false;
 			SerializerHook.Create();
-			Events.Add("On Scene Loaded",SerializerHook.Create).SetPermanent(true);
-			Events.Add("On Hierarchy Changed",SerializerHook.Create).SetPermanent(true);
-			Events.Add("On Exit Play",SerializerHook.Create).SetPermanent(true);
 		}
 		public static void Create(){
+			if(SerializerHook.setup || Application.isPlaying){return;}
+			SerializerHook.setup = true;
 			if(Serializer.instance.IsNull()){
 				var path = Locate.GetScenePath("@Main");
 				if(!path.HasComponent<Serializer>()){
@@ -25,43 +35,47 @@ namespace Zios{
 					Serializer.instance = path.AddComponent<Serializer>();
 				}
 				Serializer.instance = path.GetComponent<Serializer>();
-				//Serializer.instance.Setup();
+				Serializer.instance.Setup();
 			}
 			Events.Add("On Enter Play",Serializer.instance.Save);
 			Events.Add("On Asset Saving",Serializer.instance.Save);
 			Events.Add("On Asset Changed",Serializer.instance.Save);
-			Events.Add("On Scene Loaded",Serializer.instance.Load);
+			//Events.Add("On Scene Loaded",Serializer.instance.Load);
+			Events.Add("On Level Was Loaded",Serializer.instance.Setup);
+			Events.Add("On Exit Play",Serializer.instance.Load);
 		}
 	}
 	#endif
 	[Flags] 
 	public enum SerializerDebug : int{
-		Build        = 0x001,
-		Save         = 0x002,
-		Load         = 0x004,
+		Build         = 0x001,
+		Save          = 0x002,
+		Load          = 0x004,
+		SaveDetailed  = 0x008,
+		BuildDetailed = 0x010,
+		LoadDetailed  = 0x020,
 	}
 	[ExecuteInEditMode]
 	public class Serializer : MonoBehaviour{
 		public static Serializer instance;
 		public static Serializer Get(){return Serializer.instance;}
+		public static Dictionary<Type,Dictionary<string,object>> defaults = new Dictionary<Type,Dictionary<string,object>>();
 		[EnumMask] public SerializerDebug debug;
 		private StringBuilder contents = new StringBuilder();
 		private int tabs;
 		private string path;
-		public Dictionary<Type,Dictionary<string,object>> defaults = new Dictionary<Type,Dictionary<string,object>>();
 		[ContextMenu("Refresh")]
 		public void Setup(){
-			if(!Application.isPlaying){
-				this.path = Application.dataPath+"/@Serialized/";
-				this.defaults.Clear();
-				this.BuildDefault();
-				/*Profiler.logFile = "mylog.log";
-				Profiler.enabled = true;*/
+			if(Serializer.defaults.Count < 1){
+				Serializer.instance = this;
+				if(Application.isEditor){
+					this.path = Application.dataPath+"/@Serialized/";
+					this.BuildDefault();
+				}
 			}
 			this.Load();
 		}
-		//public void OnValidate(){Utility.EditorDelayCall(this.Load);}
-		public void Start(){this.Setup();}
+		public void Awake(){this.Setup();}
 		//=================
 		// Utility
 		//=================
@@ -80,6 +94,16 @@ namespace Zios{
 			this.contents.Append("\n");
 			if(contents.Contains("{")){this.tabs += 1;}
 		}
+		public bool Skip(Type type,string name,object value){
+			if(!Serializer.defaults.ContainsKey(type) || !Serializer.defaults[type].ContainsKey(name)){
+				if(this.debug.Has("SaveDetailed")){Debug.Log("[Serializer] : Skipping save for -- " + type + " -- " + name + " -- " + value);}
+				return true;
+			}
+			var lastValue = Serializer.defaults[type][name];
+			if(this.debug.Has("SaveDetailed")){Debug.Log("[Serializer] : " + type + "." + name + " -- " + lastValue + " = " + value);}
+			if(lastValue.IsNull() || value.IsNull()){return lastValue == value;}
+			return lastValue.Equals(value);
+		}
 		//=================
 		// Defaults
 		//=================
@@ -95,11 +119,11 @@ namespace Zios{
 			}
 		}
 		public void BuildDefault(Type type){
-			if(this.defaults.ContainsKey(type)){return;}
-			if(this.debug.Has("Build")){Debug.Log("[Serializer] : Building defaults for type -- " + type.Name);}
-			this.defaults.AddNew(type);
+			if(Serializer.defaults.ContainsKey(type)){return;}
+			if(this.debug.Has("BuildDetailed")){Debug.Log("[Serializer] : Building defaults for type -- " + type.Name);}
+			Serializer.defaults.AddNew(type);
 			foreach(var item in this.GetVariables(type)){
-				this.defaults[type][item.Key] = item.Value;
+				Serializer.defaults[type][item.Key] = item.Value;
 			}
 		}
 		//=================
@@ -107,10 +131,8 @@ namespace Zios{
 		//=================
 		[ContextMenu("Save")]
 		public void Save(){
-			if(!Application.isPlaying){
-				this.Save(Assembly.Load("Assembly-CSharp"));
-				this.Save(Assembly.Load("Assembly-CSharp-Editor"));
-			}
+			this.Save(Assembly.Load("Assembly-CSharp"));
+			this.Save(Assembly.Load("Assembly-CSharp-Editor"));
 		}
 		public void Save(Assembly assembly){
 			if(this.debug.Has("Save")){Debug.Log("[Serializer] : Serializing assembly -- " + assembly.FullName.Split(",")[0]);}
@@ -125,26 +147,30 @@ namespace Zios{
 			var file = FileManager.Find(type.Name+".cs",true,false);
 			string path = file != null ? file.folder+"/" : this.path;
 			string filePath = path+type.Name+".static";
+			//string assetPath = filePath.Substring(filePath.IndexOf("Assets"));
 			this.Add(type.FullName,"{");
 			bool empty = true;
-			this.BuildDefault(type);
+			//this.BuildDefault(type);
 			foreach(var item in this.GetVariables(type)){
-				if(!this.defaults.ContainsKey(type) || !this.defaults[type].ContainsKey(item.Key)){continue;}
-				bool isNull = this.defaults[type][item.Key].IsNull();
-				bool nullMatch = isNull && item.Value.IsNull();
-				if(nullMatch || (!isNull && this.defaults[type][item.Key].Equals(item.Value))){continue;}
+				if(this.Skip(type,item.Key,item.Value)){continue;}
 				if(this.debug.Has("Save")){Debug.Log("[Serializer] : " + type.Name + "." + item.Key + " = " + item.Value);}
 				bool wasSaved = this.Save(item.Key,item.Value);
 				if(wasSaved){empty = false;}
 			}
 			this.Add("}");
 			if(!empty){
+				//bool exists = File.Exists(filePath);
 				Directory.CreateDirectory(path);
 				File.WriteAllText(filePath,this.contents.ToString());
+				//if(!exists){Utility.ImportAsset(assetPath);}
 				return;
 			}
-			//File.Delete(filePath);
-			//File.Delete(filePath+".meta");
+			if(File.Exists(filePath)){
+				if(this.debug.Has("Save")){Debug.Log("[Serializer] : Removing " + type.Name + ".static");}
+				File.Delete(filePath);
+				File.Delete(filePath+".meta");
+				//Utility.DeleteAsset(assetPath);
+			}
 		}
 		public bool Save(string name,object value){
 			var type = value.GetType();
@@ -156,12 +182,12 @@ namespace Zios{
 			if(value is IEnumerable){return false;}
 			/*foreach(var item in this.GetVariables(value,false,true)){
 				this.Add("{");
-				if(!this.defaults.ContainsKey(type)){
+				if(!Serializer.defaults.ContainsKey(type)){
 					try{
 						var instance = Activator.CreateInstance(type);
-						this.defaults.AddNew(type);
+						Serializer.defaults.AddNew(type);
 						foreach(var instanceItem in this.GetVariables(instance,false,true)){
-							this.defaults[type][instanceItem.Key] = instanceItem.Value;
+							Serializer.defaults[type][instanceItem.Key] = instanceItem.Value;
 						}
 					}
 					catch{}
@@ -198,10 +224,8 @@ namespace Zios{
 					if(dataType.IsEnum){
 						var parsed = Enum.Parse(dataType,value);
 						type.SetVariable(name,(int)parsed);
-						this.defaults.AddNew(type)[name] = parsed;
 						continue;
 					}
-					this.defaults.AddNew(type)[name] = Convert.ChangeType(value,dataType);
 				}
 			}
 		}

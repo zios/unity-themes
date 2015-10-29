@@ -10,14 +10,32 @@ namespace Zios{
 	#if UNITY_EDITOR
 	using UnityEditor;
 	[InitializeOnLoad]
-	public static class AttributeBooter{
-		static AttributeBooter(){
-			if(!Application.isPlaying){
-				Events.Add("On Editor Update",AttributeManager.EditorUpdate).SetPermanent(true);
-				Events.Add("On Hierarchy Changed",AttributeManager.Build).SetPermanent(true);
-				Events.Add("On Scene Loaded",AttributeManager.Build).SetPermanent(true);
-				Utility.EditorDelayCall(AttributeManager.Build);
+	public static class AttributeManagerHook{
+		static private bool setup;
+		static AttributeManagerHook(){
+			if(Application.isPlaying){return;}
+			EditorApplication.delayCall += ()=>{
+				AttributeManagerHook.Create();
+				Events.Add("On Hierarchy Changed",AttributeManagerHook.Reset).SetPermanent();
+				Events.Add("On Scene Loaded",AttributeManagerHook.Reset).SetPermanent();
+			};
+		}
+		public static void Reset(){
+			AttributeManagerHook.setup = false;
+			AttributeManagerHook.Create();
+		}
+		public static void Create(){
+			if(AttributeManagerHook.setup || Application.isPlaying){return;}
+			AttributeManagerHook.setup = true;
+			if(AttributeManager.instance.IsNull()){
+				var path = Locate.GetScenePath("@Main");
+				if(!path.HasComponent<AttributeManager>()){
+					Debug.Log("[AttributeManager] : Auto-creating Attribute Manager GameObject.");
+					AttributeManager.instance = path.AddComponent<AttributeManager>();
+				}
+				AttributeManager.instance = path.GetComponent<AttributeManager>();
 			}
+			Events.Add("On Editor Update",AttributeManager.instance.EditorUpdate);
 		}
 	}
 	#endif
@@ -81,37 +99,11 @@ namespace Zios{
 			AttributeManager.nextRefresh = Time.realtimeSinceStartup + 1;
 
 		}
-		public static void Build(){
-			if(AttributeManager.instance.IsNull()){
-				var managerPath = Locate.GetScenePath("@Main");
-				if(!managerPath.HasComponent<AttributeManager>()){
-					Debug.Log("[AttributeManager] : Auto-creating Attribute Manager GameObject.");
-					managerPath.AddComponent<AttributeManager>();
-				}
-				AttributeManager.instance = managerPath.GetComponent<AttributeManager>();
-			}
-		}
-		public static void EditorUpdate(){
-			if(!Application.isPlaying && AttributeManager.instance != null){
-				AttributeManager.instance.Start();
-			}
-		}
 		//==============================
 		// Unity
 		//==============================
-		public void Awake(){
-			if(!AttributeManager.disabled){
-				AttributeManager.instance = this;
-				AttributeManager.Build();
-				if(!Application.isPlaying){this.Setup();}
-			}
-		}
-		public void OnDestroy(){
-			if(!AttributeManager.disabled){
-				AttributeManager.instance = null;
-			}
-		}
-		public void Start(){
+		public void Awake(){this.EditorUpdate();}
+		public void EditorUpdate(){
 			if(AttributeManager.disabled){return;}
 			if(AttributeManager.nextRefresh > 0 && Time.realtimeSinceStartup > AttributeManager.nextRefresh){
 				if(Attribute.debug.Has("ProcessRefresh")){Utility.EditorLog("[AttributeManager] Refreshing...");}
@@ -141,13 +133,13 @@ namespace Zios{
 			this.nextIndex = 0;
 			Locate.SetDirty();
 			Attribute.ready = false;
+			AttributeManager.instance = this;
 			AttributeManager.safe = this.safeMode;
 			AttributeManager.nextRefresh = 0;
 			if(!Application.isPlaying){
 				Events.Register("On Attribute Setup");
 				Events.Register("On Attribute Ready");
 				Events.Register("On Attribute Refresh");
-				//Events.Add("On Events Refresh",this.PerformRefresh);
 				if(this.refreshOnAssetChange){Events.Add("On Asset Changed",AttributeManager.PerformRefresh);}
 				if(this.refreshOnHierarchyChange){Events.Add("On Hierarchy Changed",AttributeManager.PerformRefresh);}
 			}
@@ -188,7 +180,7 @@ namespace Zios{
 					if(Attribute.debug.Has("ProcessStage")){Utility.EditorLog("[AttributeManager] Stage 1b (Validate) start...");}
 					foreach(DataMonoBehaviour entry in this.data){
 						if(!entry.IsNull() && entry is AttributeData){
-							((AttributeData)entry).OnValidate();
+							((AttributeData)entry).Purge();
 						}
 					}
 				}

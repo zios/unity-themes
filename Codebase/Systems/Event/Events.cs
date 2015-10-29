@@ -12,21 +12,29 @@ namespace Zios{
 	#if UNITY_EDITOR 
 	[InitializeOnLoad]
 	public static class EventsHook{
+		private static bool setup;
 		static EventsHook(){
-			if(!Application.isPlaying){
-				Events.Add("On Scene Loaded",EventsHook.Create).SetPermanent(true);
-				Events.Add("On Hierarchy Changed",EventsHook.Create).SetPermanent(true);
-				Utility.EditorDelayCall(EventsHook.Create);
-			}
+			if(Application.isPlaying){return;}
+			EditorApplication.delayCall += ()=>{
+				EventsHook.Create();
+				Events.Add("On Scene Loaded",EventsHook.Reset).SetPermanent();
+				Events.Add("On Hierarchy Changed",EventsHook.Reset).SetPermanent();
+			};
+		}
+		public static void Reset(){
+			EventsHook.setup = false;
+			EventsHook.Create();
 		}
 		public static void Create(){
-			if(!Application.isPlaying && Events.instance.IsNull()){
-				var eventsPath = Locate.GetScenePath("@Main");
-				if(!eventsPath.HasComponent<Events>()){
+			if(EventsHook.setup || Application.isPlaying){return;}
+			EventsHook.setup = true;
+			if(Events.instance.IsNull()){
+				var path = Locate.GetScenePath("@Main");
+				if(!path.HasComponent<Events>()){
 					Debug.Log("[Events] : Auto-creating Events Manager GameObject.");
-					Events.instance = eventsPath.AddComponent<Events>();
+					Events.instance = path.AddComponent<Events>();
 				}
-				Events.instance = eventsPath.GetComponent<Events>();
+				Events.instance = path.GetComponent<Events>();
 			}
 			Events.Cleanup();
 		}
@@ -99,22 +107,19 @@ namespace Zios{
 		public static string stepperMessage;
 		public static FixedList<string> eventHistory = new FixedList<string>(15);
 		public static List<EventListener> stack = new List<EventListener>();
+		private bool setup;
 	    public override void Awake(){
-			//Events.Add("On Hierarchy Changed",this.Awake);
+			this.setup = true;
 			Events.instance = this;
 			Events.callers.Clear();
 			Events.cache.Clear();
-			Events.listeners.RemoveAll(x=>!x.permanent||x.occurrences==0);
+			Events.listeners.RemoveAll(x=>x.name!="On Events Reset"&&(!x.permanent||x.occurrences==0));
 			foreach(var listener in Events.listeners){
 				var scope = Events.cache.AddNew(listener.target).AddNew(listener.name);
 				scope[listener.method] = listener;
 			}
 			Events.Call("On Events Reset");
 			base.Awake();
-		}
-		public override void OnDestroy(){
-			Events.instance = null;
-			base.OnDestroy();
 		}
 		public static void Cleanup(){
 			if(Application.isPlaying){return;}
@@ -178,7 +183,7 @@ namespace Zios{
 			while(passes > 0){
 				Method pass = ()=>stepper.Step();
 				stepper.passes.Add(pass);
-				Events.Add(eventName,pass).SetPermanent(true);
+				Events.Add(eventName,pass).SetPermanent();
 				passes -= 1;
 			}
 		}
@@ -201,6 +206,16 @@ namespace Zios{
 	    public static EventListener AddLimited(string name,MethodVector2 method,int amount=1,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
 	    public static EventListener AddLimited(string name,MethodVector3 method,int amount=1,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
 	    public static EventListener Add(string name,object method,int amount,params object[] targets){
+			if(Events.instance.IsNull() || !Events.instance.setup){
+				if(Events.debug.Has("Add")){
+					Debug.Log("[Events] : System not ready.  Delaying event add -- " + Events.GetMethodName(method.As<Delegate>()) + " -- " + name);
+				}
+				Method wrapped = ()=>Events.Add(name,method,amount,targets);
+				name = "On Events Reset";
+				method = wrapped;
+				amount = 1;
+				targets = new object[0];
+			}
 			if(Events.disabled.Has("Add")){
 				if(Events.debug.Has("AddDeep")){Debug.LogWarning("[Events] : Add attempted while Events disabled. " + name);}
 				return null;
@@ -318,25 +333,34 @@ namespace Zios{
 			bool hasEvents = Events.cache.ContainsKey(target) && Events.cache[target].ContainsKey(name);
 			var events = hasEvents ? Events.cache[target][name] : null;
 			int count = hasEvents ? events.Count : 0;
-			bool debugEvent = Events.CanDebug(target,name,count);
-			float elapsed = 0;
-			if(hasEvents && (count != 0 || Events.debug.Has("CallEmpty"))){
-				float callTime = Time.realtimeSinceStartup;
+			bool canDebug = Events.CanDebug(target,name,count);
+			bool debugTime = canDebug && Events.debug.Has("CallTimer");
+			bool debugDeep = canDebug && Events.debug.Has("CallDeep");
+			float duration = Time.realtimeSinceStartup;
+			if(hasEvents){
 				foreach(var item in events.Copy()){
+					if(item.Value.paused){continue;}
 					var listener = item.Value;
-					if(listener.paused){continue;}
-					if(debugEvent && Events.debug.Has("CallDeep")){
-						string message = "[Events] : Event calling -- " + Events.GetMethodName(listener.method);
+					if(!debugTime && debugDeep){
+						string message = "[Events] : " + name + " -- " + Events.GetMethodName(listener.method);
 						Debug.Log(message,target as UnityObject);
 					}
 					Events.stack.Add(listener);
+					float eventDuration = Time.realtimeSinceStartup;
 					listener.Call(values);
+					if(debugTime && debugDeep){
+						eventDuration = Time.realtimeSinceStartup - eventDuration;
+						string time = eventDuration.ToString("F10").TrimRight("0",".").Trim() + " seconds.";
+						string message = "[Events] : " + name + " -- " + Events.GetMethodName(listener.method) + " -- " + time;
+						Debug.Log(message,target as UnityObject);
+					}
 					Events.stack.Remove(listener);
 				}
-				elapsed = Time.realtimeSinceStartup - callTime;
 			}
-			if(debugEvent && Events.debug.Has("CallTimer")){
-				string message = "[Events] : Calling complete [" + count + "] -- " + name + " -- " + elapsed + " seconds.";
+			if(debugTime && (!debugDeep || count < 1)){
+				duration = Time.realtimeSinceStartup - duration;
+				string time = duration.ToString("F10").TrimRight("0",".").Trim() + " seconds.";
+				string message = "[Events] : " + name + " -- " + count + " events -- " + time;
 				Debug.Log(message,target as UnityObject);
 			}
 	    }
@@ -414,13 +438,13 @@ namespace Zios{
 			var debug = Events.debug;
 			var scope = Events.debugScope;
 			allowed = target == Events.global ? scope.Has("Global") : scope.Has("Scoped");
-			allowed = allowed && (count > 0 || debug.Has("CallEmpty"));
+			allowed = allowed && (count > 0 || debug.HasAny("CallEmpty"));
 			if(allowed && name.ContainsAny("On Update","On Editor Update","On GUI","On Camera","On Undo Flushing")){
 				allowed = debug.Has("CallUpdate");
 			}
-			if(allowed && debug.HasAny("Call","CallUpdate","CallDeep","CallEmpty")){
-				string message = "[Events] : Calling " + count + " events -- " + Events.GetTargetName(target) + " -- " + name;
-				if(allowed){Debug.Log(message,target as UnityObject);}
+			if(allowed && !debug.Has("CallTimer") && debug.HasAny("Call","CallUpdate","CallDeep","CallEmpty")){
+				string message = "[Events] : Calling " + name + " -- " + count + " events -- " + Events.GetTargetName(target);
+				Debug.Log(message,target as UnityObject);
 			}
 			return allowed;
 		}

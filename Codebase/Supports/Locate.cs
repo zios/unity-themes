@@ -1,4 +1,4 @@
-﻿#pragma warning disable 0618
+#pragma warning disable 0618
 using UnityEngine;
 using System;
 using System.Linq;
@@ -28,9 +28,9 @@ namespace Zios{
 	    static Locate(){
 			if(!Application.isPlaying){
 				//Events.Add("On Application Quit",Locate.SetDirty);
-				Events.Add("On Scene Loaded",Locate.SetDirty).SetPermanent(true);
-				Events.Add("On Hierarchy Changed",Locate.SetDirty).SetPermanent(true);
-				Events.Add("On Asset Changed",()=>Locate.assets.Clear()).SetPermanent(true);
+				Events.Add("On Scene Loaded",Locate.SetDirty).SetPermanent();
+				Events.Add("On Hierarchy Changed",Locate.SetDirty).SetPermanent();
+				Events.Add("On Asset Changed",()=>Locate.assets.Clear()).SetPermanent();
 			}
 			Locate.SetDirty();
 	    }

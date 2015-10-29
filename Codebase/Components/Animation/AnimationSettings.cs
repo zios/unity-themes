@@ -1,10 +1,8 @@
 ﻿using UnityEngine;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 namespace Zios{
-    [AddComponentMenu("Zios/Component/Animation/Animation Settings")]
-    [ExecuteInEditMode]
+    [ExecuteInEditMode][AddComponentMenu("Zios/Component/Animation/Animation Settings")]
     public class AnimationSettings : MonoBehaviour{
 	    public List<AnimationConfiguration> animations = new List<AnimationConfiguration>();
 	    public void Reset(){
@@ -12,18 +10,20 @@ namespace Zios{
 		    this.Start();
 	    }
 	    public void Start(){
-		    if(gameObject.GetComponent<Animation>() != null){
-			    foreach(AnimationConfiguration configuration in this.animations){
-				    configuration.Apply(gameObject.GetComponent<Animation>());
-			    }
-		    }
+			this.Build();
+			foreach(var config in this.animations){
+				config.Apply();
+			}
 	    }
-	    public void Update(){
-		    if(this.animations.Count == 0 && gameObject.GetComponent<Animation>() != null){
-			    foreach(AnimationState animationState in gameObject.GetComponent<Animation>()){
-				    this.animations.Add(AnimationConfiguration.FromAnimation(animationState));
+	    public void Build(){
+			var animation = gameObject.GetComponent<Animation>();
+		    if(this.animations.Count == 0 && !animation.IsNull()){
+			    foreach(AnimationState state in animation){
+					var config = AnimationConfiguration.Create(state);
+				    this.animations.Add(config);
 			    }
 		    }
+			foreach(var config in this.animations){config.parent = animation;}
 	    }
     }
     [Serializable]
@@ -32,21 +32,22 @@ namespace Zios{
 	    public float fps;
 	    public AnimationBlendMode blendMode;
 	    public WrapMode wrapMode;
+		public Animation parent;
 	    private AnimationState animationState;
-	    public static AnimationConfiguration FromAnimation(AnimationState animationState){
-		    AnimationConfiguration configuration = new AnimationConfiguration();
-		    configuration.name = animationState.name;
-		    configuration.fps = animationState.clip.frameRate;
-		    configuration.blendMode = animationState.blendMode;
-		    configuration.wrapMode = animationState.clip.wrapMode;
-		    return configuration;
+	    public static AnimationConfiguration Create(AnimationState state){
+			var config = new AnimationConfiguration();
+			config.name = state.name;
+			config.fps = state.clip.frameRate;
+			config.blendMode = state.blendMode;
+			config.wrapMode = state.clip.wrapMode;
+			return config;
 	    }
-	    public void Apply(Animation animation){
-		    AnimationState animationState = animation[this.name];
-		    if(animationState != null && animationState.clip != null){
-			    animationState.speed = this.fps / animationState.clip.frameRate;
-			    animationState.blendMode = this.blendMode;
-			    animationState.clip.wrapMode = this.wrapMode;
+	    public void Apply(){
+		    var state = this.parent[this.name];
+		    if(state != null && state.clip != null){
+			    state.speed = this.fps / state.clip.frameRate;
+			    state.blendMode = this.blendMode;
+			    state.clip.wrapMode = this.wrapMode;
 		    }
 	    }
     }

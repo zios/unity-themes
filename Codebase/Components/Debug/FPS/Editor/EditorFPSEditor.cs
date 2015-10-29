@@ -1,16 +1,17 @@
 ﻿using UnityEngine;
 using UnityEditor;
-using System.Collections;
 namespace Zios.UI{
     [CustomEditor(typeof(EditorFPS))]
     public class EditorFPSEditor : Editor{
+		private static EditorFPSEditor instance;
 	    public string text;
 	    private int frames = 0;
 	    private float nextUpdate;
 	    private GUISkin skin;
 	    public override void OnInspectorGUI(){
 			if(!Event.current.IsUseful()){return;}
-			Events.Add("On Editor Update",this.Step);
+			EditorFPSEditor.instance = this;
+			Events.Add("On Editor Update",EditorFPSEditor.EditorUpdate);
 		    string skinName = EditorGUIUtility.isProSkin ? "Dark" : "Light";
 		    if(this.skin == null || !this.skin.name.Contains(skinName)){
 			    this.skin = FileManager.GetAsset<GUISkin>("Gentleface-" + skinName + ".guiskin");
@@ -18,11 +19,11 @@ namespace Zios.UI{
 		    GUI.skin = this.skin;
 		    this.text.DrawLabel(GUI.skin.GetStyle("LargeLabel"));
 	    }
+		public static void EditorUpdate(){
+			if(EditorFPSEditor.instance.IsNull()){return;}
+			EditorFPSEditor.instance.Step();
+		}
 	    public void Step(){
-		    if(this.target.IsNull()){
-				Events.Remove("On Editor Update",this.Step);
-			    return;
-		    }
 		    this.frames += 1;
 		    if(Time.realtimeSinceStartup >= this.nextUpdate){
 			    string color = EditorGUIUtility.isProSkin ? "white" : "black";

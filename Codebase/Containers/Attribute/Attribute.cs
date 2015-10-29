@@ -1,7 +1,6 @@
 ﻿using Zios;
 using System;
 using System.Linq;
-using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -41,7 +40,7 @@ namespace Zios{
 		[NonSerialized] public static Dictionary<GameObject,Dictionary<string,string>> resolve = new Dictionary<GameObject,Dictionary<string,string>>();
 		[NonSerialized] public static Dictionary<Attribute,bool> setWarning = new Dictionary<Attribute,bool>();
 		[NonSerialized] public static Dictionary<AttributeData,bool> getWarning = new Dictionary<AttributeData,bool>();
-		[NonSerialized] public AttributeInfo info = new AttributeInfo();
+		public AttributeInfo info = new AttributeInfo();
 		public AttributeData[] data{
 			get{return this.info.data;}
 			set{this.info.data = value;}

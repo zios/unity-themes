@@ -40,6 +40,7 @@ namespace Zios{
 		// Editor
 		//===============
 		public virtual void Reset(){
+			if(Utility.IsBusy()){return;}
 			if(this.setup){
 				this.CallEvent("On Reset");
 				return;
@@ -47,17 +48,15 @@ namespace Zios{
 			Events.Call("On Attach",this);
 		}
 		public virtual void OnDisable(){
-			if(!this.setup){return;}
-			if(this.gameObject.activeInHierarchy || this.enabled){
-				this.gameObject.DelayEvent(this.parentPath,this.alias+"/On Disabled");
+			if(!this.setup || Utility.IsBusy()){return;}
+			if(!this.gameObject.activeInHierarchy || !this.enabled){
 				this.gameObject.DelayEvent(this.parentPath,"On Disable");
 				this.gameObject.DelayEvent(this.parentPath,"On Components Changed");
 			}
 		}
 		public virtual void OnEnable(){
-			if(!this.setup){return;}
+			if(!this.setup || Utility.IsBusy()){return;}
 			if(!this.lastAlias.IsEmpty() && this.gameObject.activeInHierarchy && this.enabled){
-				this.gameObject.DelayEvent(this.parentPath,this.alias+"/On Enabled");
 				this.gameObject.DelayEvent(this.parentPath,"On Enable");
 				this.gameObject.DelayEvent(this.parentPath,"On Components Changed");
 			}
@@ -68,7 +67,7 @@ namespace Zios{
 			this.gameObject.DelayEvent(this.parentPath,"On Components Changed");
 	    }
 	    public virtual void OnDestroy(){
-			if(Application.isPlaying || Application.isLoadingLevel){return;}
+			if(Application.isPlaying || Utility.IsBusy()){return;}
 			this.CallEvent("On Destroy");
 			Events.RemoveAll(this);
 			AttributeManager.PerformRefresh();

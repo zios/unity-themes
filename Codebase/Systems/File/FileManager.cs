@@ -14,10 +14,10 @@ namespace Zios{
     }
     #endif
     public static class FileManager{
-	    public static Dictionary<string,List<FileData>> files = new Dictionary<string,List<FileData>>();
-		public static Dictionary<string,FileData> folders = new Dictionary<string,FileData>();
-		public static Dictionary<string,FileData[]> cache = new Dictionary<string,FileData[]>();
-		public static Dictionary<UnityObject,object> assets = new Dictionary<UnityObject,object>();
+	    private static Dictionary<string,List<FileData>> files = new Dictionary<string,List<FileData>>();
+		private  static Dictionary<string,FileData> folders = new Dictionary<string,FileData>();
+		private  static Dictionary<string,FileData[]> cache = new Dictionary<string,FileData[]>();
+		private  static Dictionary<UnityObject,object> assets = new Dictionary<UnityObject,object>();
 	    static FileManager(){Refresh();}
 	    public static void Refresh(){
 			FileManager.assets.Clear();

@@ -1,7 +1,12 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using UnityEngine;
 namespace Zios{
     public static class GUIStyleExtension{
+		public static GUILayoutOption[] CreateLayout(this GUIStyle current){
+			var options = new List<GUILayoutOption>();
+			if(current.fixedWidth != 0){options.Add(GUILayout.Width(current.fixedWidth));}
+			return options.ToArray();
+		}
 		public static GUIStyle Rotate90(this GUIStyle current){
 			float width = current.fixedWidth;
 			float height = current.fixedHeight;

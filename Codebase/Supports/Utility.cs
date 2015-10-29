@@ -1,4 +1,5 @@
 ﻿#pragma warning disable 0162
+#pragma warning disable 0618
 using UnityEngine;
 using System;
 using System.Linq;
@@ -51,7 +52,8 @@ namespace Zios{
 	    private static Dictionary<object,KeyValuePair<CallbackFunction,float>> delayedMethods = new Dictionary<object,KeyValuePair<CallbackFunction,float>>();
 		private static List<UnityObject> delayedDirty = new List<UnityObject>();
 		private static Dictionary<UnityObject,SerializedObject> serializedObjects = new Dictionary<UnityObject,SerializedObject>();
-	    static Utility(){
+	    static Utility(){Utility.Setup();}
+		public static void Setup(){
 			Events.Register("On Global Event");
 			Events.Register("On Windows Reordered");
 			Events.Register("On Asset Changed");
@@ -59,7 +61,7 @@ namespace Zios{
 			Events.Register("On Enter Play");
 			Events.Register("On Exit Play");
 			EditorApplication.update += ()=>{
-				if(Application.isPlaying){return;}
+				//if(Application.isPlaying){return;}
 				Events.Call("On Editor Update");
 			};
 			EditorApplication.hierarchyWindowChanged += ()=>{
@@ -254,6 +256,16 @@ namespace Zios{
 			AssetDatabase.SaveAssets();
 		    #endif
 		}
+		public static void ImportAsset(string path){
+		    #if UNITY_EDITOR
+			AssetDatabase.ImportAsset(path);
+		    #endif
+		}
+		public static void DeleteAsset(string path){
+		    #if UNITY_EDITOR
+			AssetDatabase.DeleteAsset(path);
+		    #endif
+		}
 		//============================
 		// Proxy - PrefabUtility
 		//============================
@@ -275,9 +287,15 @@ namespace Zios{
 			PrefabUtility.ReplacePrefab(root,PrefabUtility.GetPrefabParent(root),ReplacePrefabOptions.ConnectToPrefab);
 		    #endif
 	    }
+	    public static bool IsBusy(){
+		    #if UNITY_EDITOR
+		    return EventDetector.loading || Application.isLoadingLevel || EditorApplication.isPlayingOrWillChangePlaymode;	
+		    #endif
+		    return false;
+	    }
 	    public static bool IsPlaying(){
 		    #if UNITY_EDITOR
-		    return Application.isPlaying || EditorApplication.isPlayingOrWillChangePlaymode;	
+		    return Application.isPlaying || Utility.IsBusy();	
 		    #endif
 		    return Application.isPlaying;
 	    }

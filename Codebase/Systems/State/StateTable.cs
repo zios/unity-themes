@@ -53,7 +53,7 @@ namespace Zios{
 			}
 		}
 		public static void RefreshTables(){
-			var tables = Locate.GetSceneComponents<StateTable>().OrderBy(x=>x.GetPath().Length);
+			var tables = Locate.GetSceneComponents<StateTable>().Where(x=>!x.IsNull()).OrderBy(x=>x.GetPath().Length);
 			tables.Reverse();
 			foreach(var table in tables){
 				table.Refresh();

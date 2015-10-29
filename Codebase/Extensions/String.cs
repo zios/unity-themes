@@ -9,6 +9,7 @@ namespace Zios{
 		//============================
 		// Conversion
 		//============================
+		public static GUIContent ToContent(this string current){return new GUIContent(current);}
 	    public static string ToMD5(this string current){
 		    byte[] bytes = Encoding.UTF8.GetBytes(current);
 		    byte[] hash = MD5.Create().ComputeHash(bytes);
@@ -82,14 +83,24 @@ namespace Zios{
 		    }
 		    return current;
 	    }
-	    public static string TrimRight(this string current,string value,bool ignoreCase=false){
-		    if(current.EndsWith(value,ignoreCase)){
+	    public static string TrimRight(this string current,params string[] values){
+		    foreach(string value in values){current = current.TrimRight(value,true);}
+			return current;
+		}
+	    public static string TrimLeft(this string current,params string[] values){
+		    foreach(string value in values){current = current.TrimLeft(value,true);}
+			return current;
+		}
+	    public static string TrimRight(this string current,string value,bool ignoreCase){
+			if(value.IsEmpty()){return current;}
+		    while(current.EndsWith(value,ignoreCase)){
 			    current = current.Substring(0,current.Length - value.Length);
 		    }
 		    return current;
 	    }
-	    public static string TrimLeft(this string current,string value,bool ignoreCase=false){
-		    if(current.StartsWith(value,ignoreCase)){
+	    public static string TrimLeft(this string current,string value,bool ignoreCase){
+			if(value.IsEmpty()){return current;}
+		    while(current.StartsWith(value,ignoreCase)){
 			    current = current.Substring(value.Length);
 		    }
 		    return current;

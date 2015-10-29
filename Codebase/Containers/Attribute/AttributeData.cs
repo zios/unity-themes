@@ -20,9 +20,11 @@ namespace Zios{
 		public void Setup(){
 			if(!this.attribute.IsNull() && !this.attribute.parent.IsNull()){
 				this.target.Setup(this.attribute.path+"/Target",this.attribute.parent);
-				if(!Application.isPlaying){
-					Events.Add("On Validate",this.Validate,this);
-					Events.Add("On Destroy",this.OnDestroy,this.attribute.parent);
+				if(!Application.isPlaying && this.attribute.parent is DataMonoBehaviour){
+					var parent = this.attribute.parent.As<DataMonoBehaviour>();
+					Events.Add("On Destroy",this.OnDestroy,parent);
+					Events.Add("On Validate",parent.OnValidate,this);
+					Events.Add("On Validate",(Method)this.Purge,parent);
 				}
 			}
 		}
@@ -36,17 +38,13 @@ namespace Zios{
 				this.attribute.dataC = this.attribute.dataC.Remove(this);
 			}
 		}
-		public virtual void Validate(){
+		public virtual void Purge(){
 			if(this.attribute.IsNull()){this.Purge("Null Attribute");}
 			else if(this.attribute.parent.IsNull()){this.Purge("Null Parent");}
 			else if(this.attribute.parent.gameObject.IsNull()){this.Purge("Null GameObject");}
 			else if(this.attribute.parent.gameObject != this.gameObject){this.Purge("Wrong Scope");}
 			else if(!this.hideFlags.Contains(HideFlags.HideInInspector) && PlayerPrefs.GetInt("Attribute-ShowData") == 0){this.Purge("Visible");}
 			else if(!this.attribute.data.Contains(this) && !this.attribute.dataB.Contains(this) && !this.attribute.dataC.Contains(this)){this.Purge("Not In Attribute");}
-			if(this.attribute.parent is DataMonoBehaviour){
-				var path = this.attribute.parent.As<DataMonoBehaviour>().location;
-				this.attribute.parent.DelayEvent(path,"On Validate",1);
-			}
 		}
 		public void Purge(string reason){
 			if(Attribute.debug.Has("Issue")){Debug.Log("[AttributeData] Clearing defunct data -- " + reason + ".");}

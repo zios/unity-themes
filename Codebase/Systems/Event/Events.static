@@ -1,0 +1,4 @@
+Zios.Events{
+	debugScope = Global
+	debug = Call, CallTimer
+}

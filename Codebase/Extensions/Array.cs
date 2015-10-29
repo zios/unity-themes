@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 namespace Zios{
     public static class ArrayExtension{
@@ -82,6 +83,20 @@ namespace Zios{
 		    var copy = current.Copy().ToList();
 		    copy.Sort();
 		    return copy.ToArray();
+		}
+		public static bool HasAny<T>(this T[] current,params T[] values){return current.ContainsAny(values);}
+		public static bool HasAll<T>(this T[] current,params T[] values){return current.ContainsAll(values);}
+		public static bool ContainsAny<T>(this T[] current,params T[] values){
+			for(int index=0;index<values.Length;++index){
+				if(current.Contains(values[index])){return true;}
+			}
+			return false;
+		}
+		public static bool ContainsAll<T>(this T[] current,params T[] values){
+			for(int index=0;index<values.Length;++index){
+				if(!current.Contains(values[index])){return false;}
+			}
+			return true;
 		}
 		//=======================
 		// Float

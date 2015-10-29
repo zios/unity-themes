@@ -67,7 +67,7 @@ namespace Zios{
 	    public static bool Hovered(this Rect current,string cursor="Link"){
 		    Vector2 mouse = Event.current.mousePosition;
 			bool state = current.Contains(mouse);
-			if(state){
+			if(state && !cursor.IsEmpty()){
 				#if UNITY_EDITOR
 				var pointer = (MouseCursor)Enum.Parse(typeof(MouseCursor),cursor);
 				EditorGUIUtility.AddCursorRect(current,pointer);
@@ -78,7 +78,7 @@ namespace Zios{
 	    public static bool Clicked(this Rect current,int button=-1){
 		    bool eventMatch = Event.current.type == EventType.MouseDown;
 			bool buttonMatch = button == -1 ? true : Event.current.button == button;
-		    return current.Hovered() && eventMatch && buttonMatch;
+		    return current.Hovered("") && eventMatch && buttonMatch;
 	    }
 	    public static bool InFocusedWindow(this Rect current){
 		    Rect windowRect = new Rect(0,0,Screen.width,Screen.height);

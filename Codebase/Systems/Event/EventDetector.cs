@@ -7,12 +7,18 @@ namespace Zios{
     public class EventDetector : MonoBehaviour{
 		private float loadStart;
 		[NonSerialized] public static bool loading = true;
-		public virtual void OnValidate(){
+		public void Loading(){
 			this.loadStart = Time.realtimeSinceStartup;
 			EventDetector.loading = true;
+		}
+		public virtual void OnValidate(){
+			this.Loading();
 			Events.Call("On Validate");
 		}
 	    public virtual void Awake(){
+			Events.Add("On Application Quit",this.Loading);
+			Events.Add("On Enter Play",this.Loading);
+			Events.Add("On Exit Play",this.Loading);
 			Events.Register("On Awake");
 		    Events.Register("On Start");
 		    Events.Register("On Update");
@@ -37,7 +43,7 @@ namespace Zios{
 			if(!Application.isLoadingLevel && EventDetector.loading){
 				Events.Call("On Level Was Loaded");
 				float totalTime = Mathf.Max(Time.realtimeSinceStartup-this.loadStart,0);
-				Debug.Log("Load complete : " + (totalTime) + " seconds.");
+				Debug.Log("[Scene] : Load complete -- " + (totalTime) + " seconds.");
 				this.loadStart = 0;
 				EventDetector.loading = false;
 			}

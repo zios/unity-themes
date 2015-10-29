@@ -20,9 +20,9 @@ namespace Zios{
 			}
 		    return !nullTarget;
 		}
-		public void SetPaused(bool state){this.paused = state;}
-		public void SetPermanent(bool state){this.permanent = state;}
-		public void SetUnique(bool state){
+		public void SetPaused(bool state=true){this.paused = state;}
+		public void SetPermanent(bool state=true){this.permanent = state;}
+		public void SetUnique(bool state=true){
 			Events.unique.AddNew(this.target)[this.name] = this;
 			this.unique = state;
 		}
@@ -30,7 +30,7 @@ namespace Zios{
 			if(Events.cache.ContainsKey(this.target) && Events.cache[this.target].ContainsKey(this.name)){
 				Events.cache[this.target][this.name].Remove(this.method);
 			}
-			if(Events.cache[Events.all].ContainsKey(this.name)){
+			if(Events.cache.AddNew(Events.all).ContainsKey(this.name)){
 				Events.cache[Events.all][this.name].Remove(this.method);
 			}
 			Events.listeners.Remove(this);

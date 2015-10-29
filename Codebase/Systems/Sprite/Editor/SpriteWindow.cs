@@ -499,12 +499,10 @@ namespace Zios{
 	    //===========================
 	    public void LoadSpriteSheets(){
 		    SpriteManager.Clear();
-		    if(FileManager.files.ContainsKey("xml")){
-			    foreach(FileData file in FileManager.files["xml"]){
-				    TextAsset data = file.GetAsset<TextAsset>();
-				    SpriteManager.Add(data);
-			    }
-		    }
+			foreach(FileData file in FileManager.FindAll("*.xml")){
+				TextAsset data = file.GetAsset<TextAsset>();
+				SpriteManager.Add(data);
+			}
 		    foreach(var sheetData in SpriteManager.spriteSheets){ 
 			    if(EditorPrefs.GetBool(sheetData.Key + "Hide")){
 				    this.collapsed.Add(sheetData.Value);

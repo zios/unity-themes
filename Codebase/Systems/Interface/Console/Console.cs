@@ -481,7 +481,7 @@ namespace Zios{
 		}
 		public static void AddLog(string text,bool system=false){
 			if(!Console.settings.allowLogging){return;}
-			if(Application.isEditor){
+			if(!Application.isPlaying){
 				Application.logMessageReceived -= Console.HandleLog;
 				Debug.Log(text);
 				Application.logMessageReceived += Console.HandleLog;
