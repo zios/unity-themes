@@ -4,14 +4,12 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using UnityObject = UnityEngine.Object;
-public enum StateMode{Instant,Delayed};
 namespace Zios{
 	[AddComponentMenu("Zios/Component/Action/*/State Table")]
 	public class StateTable : StateMonoBehaviour{
 		public static bool debug;
 		public StateRow[] table = new StateRow[0];
 		public StateRow[] tableOff = new StateRow[0];
-		public StateMode updateMode = StateMode.Delayed;
 		public bool manual;
 		public bool advanced;
 		public AttributeBool external = true;
@@ -36,20 +34,18 @@ namespace Zios{
 		public override void Step(){
 			if(!Application.isPlaying){return;}
 			base.Step();
-			if(this.updateMode == StateMode.Delayed){
-				foreach(var script in this.scripts){
-					if(!script.IsEnabled()){continue;}
-					if(script.nextState != null && (bool)script.nextState != script.used){
-						this.dirty = true;
-						script.controller.dirty = true;
-						if(script is StateTable){script.As<StateTable>().dirty = true;}
-						script.Apply((bool)script.nextState);
-					}
+			foreach(var script in this.scripts){
+				if(!script.IsEnabled()){continue;}
+				if(script.nextState != null && (bool)script.nextState != script.used){
+					this.dirty = true;
+					script.controller.dirty = true;
+					if(script is StateTable){script.As<StateTable>().dirty = true;}
+					script.Apply((bool)script.nextState);
 				}
-				if(this.dirty){
-					this.dirty = false;
-					this.CallEvent("On State Update");
-				}
+			}
+			if(this.dirty){
+				this.dirty = false;
+				this.CallEvent("On State Update");
 			}
 		}
 		public static void RefreshTables(){

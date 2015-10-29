@@ -41,8 +41,6 @@ namespace Zios.UI{
 				if(window.target.controller != null){
 					menu.AddItem("Manual",window.target.manual,toggleManual+markDirty);
 				}
-				menu.AddItem("Update/Instant",window.target.updateMode==StateMode.Instant,()=>window.target.updateMode = StateMode.Instant);
-				menu.AddItem("Update/Delayed",window.target.updateMode==StateMode.Delayed,()=>window.target.updateMode = StateMode.Delayed);
 				menu.AddItem("Rebuild",false,window.BuildTable);
 				menu.ShowAsContext();
 			}
