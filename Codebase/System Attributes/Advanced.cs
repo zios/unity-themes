@@ -1,4 +1,4 @@
 using UnityEngine;
 namespace Zios{
-    public class AdvancedAttribute : PropertyAttribute{}
+	public class AdvancedAttribute : PropertyAttribute{}
 }

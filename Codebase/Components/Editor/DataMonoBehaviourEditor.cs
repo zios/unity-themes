@@ -1,4 +1,4 @@
-﻿using Zios;
+using Zios;
 using UnityEngine;
 using UnityEditor;
 namespace Zios.UI{
@@ -41,12 +41,12 @@ namespace Zios.UI{
 						}
 					}
 				}
-		    }
+			}
 			if(!Application.isPlaying && targetsMissing){
 				message = "One or more target fields are missing.";
 				message.DrawHelp("Warning");
 			}
-		    base.OnInspectorGUI();
-	    }
-    }
+			base.OnInspectorGUI();
+		}
+	}
 }

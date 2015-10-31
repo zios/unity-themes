@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-namespace Zios{ 
-    public static class DecimalExtension{
+namespace Zios{
+	public static class DecimalExtension{
 		//=====================
 		// Numeric
 		//=====================
@@ -16,14 +16,14 @@ namespace Zios{
 		public static decimal Distance(this decimal current,decimal end){
 			return Math.Abs(current-end);
 		}
-	    public static bool Between(this decimal current,decimal start,decimal end){
-		    return current >= start && current <= end;
+		public static bool Between(this decimal current,decimal start,decimal end){
+			return current >= start && current <= end;
 		}
-	    public static bool InRange(this decimal current,decimal start,decimal end){
-		    return current.Between(start,end);
+		public static bool InRange(this decimal current,decimal start,decimal end){
+			return current.Between(start,end);
 		}
-	    public static bool ToBool(this decimal current){
-		    return current != 0;
+		public static bool ToBool(this decimal current){
+			return current != 0;
 		}
 		public static decimal Closest(this decimal current,params decimal[] values){
 			decimal match = decimal.MaxValue;
@@ -34,40 +34,40 @@ namespace Zios{
 			}
 			return match;
 		}
-	    public static decimal RoundClosestDown(this decimal current,params decimal[] values){
-		    decimal highest = -1;
-		    foreach(decimal value in values){
-			    if(current >= value){
-				    highest = value;
-				    break;
+		public static decimal RoundClosestDown(this decimal current,params decimal[] values){
+			decimal highest = -1;
+			foreach(decimal value in values){
+				if(current >= value){
+					highest = value;
+					break;
 				}
 			}
-		    foreach(decimal value in values){
-			    if(current >= value && value > highest){
-				    highest = value;
+			foreach(decimal value in values){
+				if(current >= value && value > highest){
+					highest = value;
 				}
 			}
-		    return highest;
+			return highest;
 		}
-	    public static decimal RoundClosestUp(this decimal current,params decimal[] values){
-		    decimal lowest = -1;
-		    foreach(decimal value in values){
-			    if(current >= value){
-				    lowest = value;
-				    break;
+		public static decimal RoundClosestUp(this decimal current,params decimal[] values){
+			decimal lowest = -1;
+			foreach(decimal value in values){
+				if(current >= value){
+					lowest = value;
+					break;
 				}
 			}
-		    foreach(decimal value in values){
-			    if(current <= value && value < lowest){
-				    lowest = value;
+			foreach(decimal value in values){
+				if(current <= value && value < lowest){
+					lowest = value;
 				}
 			}
-		    return lowest;
+			return lowest;
 		}
 		public static decimal Mean(this IEnumerable<decimal> current){return (decimal)current.Average();}
 		public static decimal Median(this IEnumerable<decimal> current){
-			int count = current.Cast<object>().Count(); 
-			var sorted = current.OrderBy(n=>n); 
+			int count = current.Cast<object>().Count();
+			var sorted = current.OrderBy(n=>n);
 			decimal midValue = sorted.ElementAt(count/2);
 			decimal median = midValue;
 			if(count%2==0){

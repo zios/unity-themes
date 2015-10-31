@@ -3,13 +3,13 @@ using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
 namespace Zios.UI{
-    [CustomEditor(typeof(Events))]
-    public class EventsEditor : Editor{
+	[CustomEditor(typeof(Events))]
+	public class EventsEditor : Editor{
 		public Dictionary<string,List<EventListener>> listeners;
 		public void BuildListeners(){
 			this.listeners = Events.listeners.GroupBy(x=>Events.GetTargetName(x.target)).ToDictionary(x=>x.Key,x=>x.ToList());
 		}
-	    public override void OnInspectorGUI(){
+		public override void OnInspectorGUI(){
 			//Events.Add("On Events Changed",()=>Utility.EditorDelayCall(this.BuildListeners)).SetUnique();
 			Events.disabled = (EventDisabled)Events.disabled.DrawMask("Disabled");
 			Events.debugScope = (EventDebugScope)Events.debugScope.DrawMask("Debug Scope");
@@ -38,6 +38,6 @@ namespace Zios.UI{
 				EditorGUI.indentLevel -= 1;
 			}
 			Events.eventHistory.Draw("Event History");
-	    }
-    }
+		}
+	}
 }

@@ -444,7 +444,7 @@ namespace Zios.UI{
 				}
 				if(showRemove){
 					if(!mode.Matches("Group")){menu.AddSeparator("/");}
-					menu.AddItem(new GUIContent("Remove"),false,removeAttribute);	
+					menu.AddItem(new GUIContent("Remove"),false,removeAttribute);
 				}
 				menu.ShowAsContext();
 			}

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 namespace Zios{
 	[AddComponentMenu("")]
 	public class Instance : MonoBehaviour{

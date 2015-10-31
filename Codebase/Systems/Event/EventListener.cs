@@ -12,13 +12,13 @@ namespace Zios{
 		public bool unique;
 		public bool isStatic;
 		private bool warned;
-	    public bool IsValid(){
+		public bool IsValid(){
 			bool nullTarget = this.target.IsNull() || (!this.isStatic && this.method.As<Delegate>().Target.IsNull());
 			if(nullTarget && !this.warned && Events.debug.Has("Call")){
 				Debug.LogWarning("[Events] Call attempted -- null object -- " + this.name);
 				this.warned = true;
 			}
-		    return !nullTarget;
+			return !nullTarget;
 		}
 		public void SetPaused(bool state=true){this.paused = state;}
 		public void SetPermanent(bool state=true){this.permanent = state;}
@@ -36,7 +36,7 @@ namespace Zios{
 			Events.listeners.Remove(this);
 			this.paused = true;
 		}
-	    public void Call(object[] values){
+		public void Call(object[] values){
 			if(Utility.IsPaused()){return;}
 			if(!this.IsValid()){return;}
 			if(this.occurrences > 0){this.occurrences -= 1;}
@@ -45,15 +45,15 @@ namespace Zios{
 				((Method)this.method)();
 				return;
 			}
-		    object value = values[0];
-		    if(this.method is MethodFull){((MethodFull)this.method)(values);}
-		    else if(value is object && this.method is MethodObject){((MethodObject)this.method)((object)value);}
-		    else if(value is int && this.method is MethodInt){((MethodInt)this.method)((int)value);}
-		    else if(value is float && this.method is MethodFloat){((MethodFloat)this.method)((float)value);}
-		    else if(value is string && this.method is MethodString){((MethodString)this.method)((string)value);}
-		    else if(value is bool && this.method is MethodBool){((MethodBool)this.method)((bool)value);}
-		    else if(value is Vector2 && this.method is MethodVector2){((MethodVector2)this.method)((Vector2)value);}
-		    else if(value is Vector3 && this.method is MethodVector3){((MethodVector3)this.method)((Vector3)value);}
+			object value = values[0];
+			if(this.method is MethodFull){((MethodFull)this.method)(values);}
+			else if(value is object && this.method is MethodObject){((MethodObject)this.method)((object)value);}
+			else if(value is int && this.method is MethodInt){((MethodInt)this.method)((int)value);}
+			else if(value is float && this.method is MethodFloat){((MethodFloat)this.method)((float)value);}
+			else if(value is string && this.method is MethodString){((MethodString)this.method)((string)value);}
+			else if(value is bool && this.method is MethodBool){((MethodBool)this.method)((bool)value);}
+			else if(value is Vector2 && this.method is MethodVector2){((MethodVector2)this.method)((Vector2)value);}
+			else if(value is Vector3 && this.method is MethodVector3){((MethodVector3)this.method)((Vector3)value);}
 		}
 	}
 }

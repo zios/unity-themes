@@ -5,15 +5,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 namespace Zios{
-    public static class MaterialCleaner{
+	public static class MaterialCleaner{
 		public static bool changes;
-        [MenuItem ("Zios/Process/Material/Remove Unused Data (All)")]
-        public static void Clean(){MaterialCleaner.Clean(null);}
-        public static void Clean(FileData[] materials){
+		[MenuItem ("Zios/Process/Material/Remove Unused Data (All)")]
+		public static void Clean(){MaterialCleaner.Clean(null);}
+		public static void Clean(FileData[] materials){
 			MaterialCleaner.changes = false;
 			FileData[] files = materials ?? FileManager.FindAll("*.mat");
 			Events.AddStepper("On Editor Update",MaterialCleaner.Step,files,50);
-	    }
+		}
 		public static void Step(object collection,int itemIndex){
 			var materials = (FileData[])collection;
 			var file = materials[itemIndex];
@@ -81,5 +81,5 @@ namespace Zios{
 				Utility.EditorDelayCall(()=>AssetDatabase.Refresh(),1);
 			}
 		}
-    }
+	}
 }

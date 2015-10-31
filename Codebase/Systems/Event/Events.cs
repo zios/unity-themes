@@ -1,4 +1,4 @@
-﻿#pragma warning disable 0618
+#pragma warning disable 0618
 using UnityEngine;
 using System;
 using System.Linq;
@@ -24,7 +24,6 @@ namespace Zios{
 			if(Events.instance){
 				Events.Add("On Level Was Loaded",Events.instance.Awake);
 			}
-
 		}
 		public static void Create(){
 			if(EventsHook.setup || Application.isPlaying){return;}
@@ -45,27 +44,27 @@ namespace Zios{
 	// Enumerations
 	//=======================
 	[Flags]
-    public enum EventDisabled : int{
-	    Add        = 0x001,
-	    Call       = 0x002,
+	public enum EventDisabled : int{
+		Add        = 0x001,
+		Call       = 0x002,
 	}
 	[Flags]
-    public enum EventDebug : int{
-	    Add        = 0x001,
-	    AddDeep    = 0x002,
-	    Remove     = 0x004,
-	    Call       = 0x008,
-	    CallEmpty  = 0x010,
-	    CallDeep   = 0x020,
-	    CallTimer  = 0x040,
+	public enum EventDebug : int{
+		Add        = 0x001,
+		AddDeep    = 0x002,
+		Remove     = 0x004,
+		Call       = 0x008,
+		CallEmpty  = 0x010,
+		CallDeep   = 0x020,
+		CallTimer  = 0x040,
 		CallUpdate = 0x080,
 		Pause      = 0x100,
 		History    = 0x200,
-    }
-    public enum EventDebugScope : int{
+	}
+	public enum EventDebugScope : int{
 		Global     = 0x001,
 		Scoped     = 0x002,
-    }
+	}
 	//=======================
 	// Delegates
 	//=======================
@@ -90,19 +89,19 @@ namespace Zios{
 	//=======================
 	// Main
 	//=======================
-    public class Events : EventDetector{
+	public class Events : EventDetector{
 		[EnumMask] public static EventDisabled disabled;
 		[EnumMask] public static EventDebugScope debugScope;
 		[EnumMask] public static EventDebug debug;
 		public static Events instance;
-	    public static object all = "All";
-	    public static object global = "Global";
+		public static object all = "All";
+		public static object global = "Global";
 		public static EventListener empty = new EventListener();
 		public static Dictionary<object,Dictionary<string,EventListener>> unique = new Dictionary<object,Dictionary<string,EventListener>>();
 		public static Dictionary<object,Dictionary<string,Dictionary<object,EventListener>>> cache = new Dictionary<object,Dictionary<string,Dictionary<object,EventListener>>>();
 		public static Dictionary<object,Dictionary<string,float>> cooldown = new Dictionary<object,Dictionary<string,float>>();
-	    public static List<EventListener> listeners = new List<EventListener>();
-	    public static Dictionary<object,List<string>> callers = new Dictionary<object,List<string>>();
+		public static List<EventListener> listeners = new List<EventListener>();
+		public static Dictionary<object,List<string>> callers = new Dictionary<object,List<string>>();
 		public static Dictionary<MethodStep,EventStepper> steppers = new Dictionary<MethodStep,EventStepper>();
 		public static string stepperTitle;
 		public static string stepperMessage;
@@ -166,16 +165,16 @@ namespace Zios{
 			if(targets.Length < 1){targets = new object[1]{Events.global};}
 			return targets;
 		}
-	    public static void Empty(){}
-	    public static void Register(string name){Events.Register(name,Events.Verify());}
-	    public static void Register(string name,params object[] targets){
+		public static void Empty(){}
+		public static void Register(string name){Events.Register(name,Events.Verify());}
+		public static void Register(string name,params object[] targets){
 			if(Events.disabled.Has("Add")){return;}
-		    foreach(object target in targets){
+			foreach(object target in targets){
 				if(target.IsNull()){continue;}
 				Events.callers.AddNew(target);
 				Events.callers[target].AddNew(name);
-		    }
-	    }
+			}
+		}
 		public static void AddStepper(string eventName,MethodStep method,IList collection,int passes){
 			var stepper = Events.steppers[method] = new EventStepper();
 			stepper.eventName = eventName;
@@ -189,25 +188,25 @@ namespace Zios{
 				passes -= 1;
 			}
 		}
-	    public static EventListener Add(string name,Method method,params object[] targets){return Events.Add(name,(object)method,-1,targets);}
-	    public static EventListener Add(string name,MethodObject method,params object[] targets){return Events.Add(name,(object)method,-1,targets);}
-	    public static EventListener Add(string name,MethodFull method,params object[] targets){return Events.Add(name,(object)method,-1,targets);}
-	    public static EventListener Add(string name,MethodString method,params object[] targets){return Events.Add(name,(object)method,-1,targets);}
-	    public static EventListener Add(string name,MethodInt method,params object[] targets){return Events.Add(name,(object)method,-1,targets);}
-	    public static EventListener Add(string name,MethodFloat method,params object[] targets){return Events.Add(name,(object)method,-1,targets);}
-	    public static EventListener Add(string name,MethodBool method,params object[] targets){return Events.Add(name,(object)method,-1,targets);}
-	    public static EventListener Add(string name,MethodVector2 method,params object[] targets){return Events.Add(name,(object)method,-1,targets);}
-	    public static EventListener Add(string name,MethodVector3 method,params object[] targets){return Events.Add(name,(object)method,-1,targets);}
-	    public static EventListener AddLimited(string name,Method method,int amount=1,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
-	    public static EventListener AddLimited(string name,MethodObject method,int amount=1,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
-	    public static EventListener AddLimited(string name,MethodFull method,int amount=1,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
-	    public static EventListener AddLimited(string name,MethodString method,int amount=1,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
-	    public static EventListener AddLimited(string name,MethodInt method,int amount=1,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
-	    public static EventListener AddLimited(string name,MethodFloat method,int amount=1,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
-	    public static EventListener AddLimited(string name,MethodBool method,int amount=1,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
-	    public static EventListener AddLimited(string name,MethodVector2 method,int amount=1,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
-	    public static EventListener AddLimited(string name,MethodVector3 method,int amount=1,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
-	    public static EventListener Add(string name,object method,int amount,params object[] targets){
+		public static EventListener Add(string name,Method method,params object[] targets){return Events.Add(name,(object)method,-1,targets);}
+		public static EventListener Add(string name,MethodObject method,params object[] targets){return Events.Add(name,(object)method,-1,targets);}
+		public static EventListener Add(string name,MethodFull method,params object[] targets){return Events.Add(name,(object)method,-1,targets);}
+		public static EventListener Add(string name,MethodString method,params object[] targets){return Events.Add(name,(object)method,-1,targets);}
+		public static EventListener Add(string name,MethodInt method,params object[] targets){return Events.Add(name,(object)method,-1,targets);}
+		public static EventListener Add(string name,MethodFloat method,params object[] targets){return Events.Add(name,(object)method,-1,targets);}
+		public static EventListener Add(string name,MethodBool method,params object[] targets){return Events.Add(name,(object)method,-1,targets);}
+		public static EventListener Add(string name,MethodVector2 method,params object[] targets){return Events.Add(name,(object)method,-1,targets);}
+		public static EventListener Add(string name,MethodVector3 method,params object[] targets){return Events.Add(name,(object)method,-1,targets);}
+		public static EventListener AddLimited(string name,Method method,int amount=1,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
+		public static EventListener AddLimited(string name,MethodObject method,int amount=1,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
+		public static EventListener AddLimited(string name,MethodFull method,int amount=1,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
+		public static EventListener AddLimited(string name,MethodString method,int amount=1,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
+		public static EventListener AddLimited(string name,MethodInt method,int amount=1,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
+		public static EventListener AddLimited(string name,MethodFloat method,int amount=1,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
+		public static EventListener AddLimited(string name,MethodBool method,int amount=1,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
+		public static EventListener AddLimited(string name,MethodVector2 method,int amount=1,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
+		public static EventListener AddLimited(string name,MethodVector3 method,int amount=1,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
+		public static EventListener Add(string name,object method,int amount,params object[] targets){
 			bool delayed = false;
 			if(Events.instance.IsNull() || !Events.instance.setup){
 				if(Events.debug.Has("Add")){
@@ -222,7 +221,7 @@ namespace Zios{
 			targets = Events.VerifyAll(targets);
 			var listener = Events.empty;
 			foreach(object target in targets){
-			    if(target.IsNull()){continue;}
+				if(target.IsNull()){continue;}
 				if(Events.unique.ContainsKey(target) && Events.unique[target].ContainsKey(name)){
 					listener = Events.unique[target][name];
 					continue;
@@ -245,7 +244,7 @@ namespace Zios{
 					listener.method = (Method)(()=>{
 						var newEvent = Events.Add(name,method,amount,realTarget);
 						newEvent.SetPermanent(listener.permanent);
-						newEvent.SetUnique(listener.unique);				
+						newEvent.SetUnique(listener.unique);
 						listener.SetPermanent(false);
 						listener.SetUnique(false);
 					});
@@ -261,19 +260,19 @@ namespace Zios{
 				}
 				Events.cache.AddNew(listener.target).AddNew(listener.name)[listener.method] = listener;
 				Events.cache.AddNew(Events.all).AddNew(listener.name)[listener.method] = listener;
-		    }
+			}
 			return listener;
-	    }
+		}
 		public static void OnEventsChanged(){Events.Call("On Events Changed");}
-	    public static void Remove(string name,Method method,params object[] targets){Events.Remove(name,(object)method,targets);}
-	    public static void Remove(string name,MethodObject method,params object[] targets){Events.Remove(name,(object)method,targets);}
-	    public static void Remove(string name,MethodFull method,params object[] targets){Events.Remove(name,(object)method,targets);}
-	    public static void Remove(string name,MethodString method,params object[] targets){Events.Remove(name,(object)method,targets);}
-	    public static void Remove(string name,MethodInt method,params object[] targets){Events.Remove(name,(object)method,targets);}
-	    public static void Remove(string name,MethodFloat method,params object[] targets){Events.Remove(name,(object)method,targets);}
-	    public static void Remove(string name,MethodBool method,params object[] targets){Events.Remove(name,(object)method,targets);}
-	    public static void Remove(string name,MethodVector2 method,params object[] targets){Events.Remove(name,(object)method,targets);}
-	    public static void Remove(string name,MethodVector3 method,params object[] targets){Events.Remove(name,(object)method,targets);}
+		public static void Remove(string name,Method method,params object[] targets){Events.Remove(name,(object)method,targets);}
+		public static void Remove(string name,MethodObject method,params object[] targets){Events.Remove(name,(object)method,targets);}
+		public static void Remove(string name,MethodFull method,params object[] targets){Events.Remove(name,(object)method,targets);}
+		public static void Remove(string name,MethodString method,params object[] targets){Events.Remove(name,(object)method,targets);}
+		public static void Remove(string name,MethodInt method,params object[] targets){Events.Remove(name,(object)method,targets);}
+		public static void Remove(string name,MethodFloat method,params object[] targets){Events.Remove(name,(object)method,targets);}
+		public static void Remove(string name,MethodBool method,params object[] targets){Events.Remove(name,(object)method,targets);}
+		public static void Remove(string name,MethodVector2 method,params object[] targets){Events.Remove(name,(object)method,targets);}
+		public static void Remove(string name,MethodVector3 method,params object[] targets){Events.Remove(name,(object)method,targets);}
 		public static void Remove(string name,object method,params object[] targets){
 			if(Events.disabled.Has("Add")){return;}
 			targets = Events.VerifyAll(targets);
@@ -297,7 +296,7 @@ namespace Zios{
 			}
 			Utility.EditorDelayCall(Events.OnEventsChanged);
 		}
-	    public static void SetPause(string type,string name,object target){
+		public static void SetPause(string type,string name,object target){
 			target = Events.Verify(target);
 			if(Events.debug.Has("Pause")){
 				string message = "[Events] : " + type + " event -- " + Events.GetTargetName(target) + " -- " + name;
@@ -308,8 +307,8 @@ namespace Zios{
 				item.Value.paused = type == "Pausing";
 			}
 		}
-	    public static void Pause(string name,object target=null){Events.SetPause("Pausing",name,target);}
-	    public static void Resume(string name,object target=null){Events.SetPause("Resuming",name,target);}
+		public static void Pause(string name,object target=null){Events.SetPause("Pausing",name,target);}
+		public static void Resume(string name,object target=null){Events.SetPause("Resuming",name,target);}
 		public static void AddHistory(string name){
 			if(Events.debug.Has("History")){
 				int lastIndex = Events.eventHistory.Count-1;
@@ -329,11 +328,11 @@ namespace Zios{
 		}
 		public static void Cooldown(string name,float seconds){Events.Cooldown(Events.global,name,seconds);}
 		public static void Cooldown(object target,string name,float seconds){Events.cooldown.AddNew(target)[name] = Time.realtimeSinceStartup + seconds;}
-	    public static void Call(string name,params object[] values){
+		public static void Call(string name,params object[] values){
 			if(Events.disabled.Has("Call")){return;}
-		    Events.Call(Events.Verify(),name,values);
-	    }
-	    public static void Call(object target,string name,object[] values){
+			Events.Call(Events.Verify(),name,values);
+		}
+		public static void Call(object target,string name,object[] values){
 			if(Events.disabled.Has("Call")){return;}
 			if(Events.cooldown.ContainsKey(target) && Events.cooldown[target].ContainsKey(name)){
 				if(Time.realtimeSinceStartup < Events.cooldown[target][name]){return;}
@@ -377,10 +376,10 @@ namespace Zios{
 				string message = "[Events] : " + name + " -- " + count + " events -- " + time;
 				Debug.Log(message,target as UnityObject);
 			}
-	    }
-	    public static void CallChildren(object target,string name,object[] values,bool self=false){
+		}
+		public static void CallChildren(object target,string name,object[] values,bool self=false){
 			if(Events.disabled.Has("Call")){return;}
-		    if(self){Events.Call(target,name,values);}
+			if(self){Events.Call(target,name,values);}
 			if(target is GameObject){
 				var gameObject = (GameObject)target;
 				Transform[] children = Locate.GetObjectComponents<Transform>(gameObject);
@@ -389,10 +388,10 @@ namespace Zios{
 					Events.CallChildren(transform.gameObject,name,values,true);
 				}
 			}
-	    }
-	    public static void CallParents(object target,string name,object[] values,bool self=false){
+		}
+		public static void CallParents(object target,string name,object[] values,bool self=false){
 			if(Events.disabled.Has("Call")){return;}
-		    if(self){Events.Call(target,name,values);}
+			if(self){Events.Call(target,name,values);}
 			if(target is GameObject){
 				var gameObject = (GameObject)target;
 				Transform parent = gameObject.transform.parent;
@@ -401,13 +400,13 @@ namespace Zios{
 					parent = parent.parent;
 				}
 			}
-	    }
-	    public static void CallFamily(object target,string name,object[] values,bool self=false){
+		}
+		public static void CallFamily(object target,string name,object[] values,bool self=false){
 			if(Events.disabled.Has("Call")){return;}
-		    if(self){Events.Call(target,name,values);}
-		    Events.CallChildren(target,name,values);
-		    Events.CallParents(target,name,values);
-	    }
+			if(self){Events.Call(target,name,values);}
+			Events.CallChildren(target,name,values);
+			Events.CallParents(target,name,values);
+		}
 		//========================
 		// Editor
 		//========================
@@ -462,86 +461,86 @@ namespace Zios{
 			}
 			return allowed;
 		}
-	    public static void Clean(string ignoreName="",object target=null,object targetMethod=null){
-		    foreach(var eventListener in Events.listeners){
+		public static void Clean(string ignoreName="",object target=null,object targetMethod=null){
+			foreach(var eventListener in Events.listeners){
 				string eventName = eventListener.name;
 				object eventTarget = eventListener.target;
 				object eventMethod = eventListener.method;
 				bool duplicate = eventName != ignoreName && eventTarget == target && eventMethod.Equals(targetMethod);
 				bool invalid = eventTarget.IsNull() || eventMethod.IsNull() || (!eventListener.isStatic && ((Delegate)eventMethod).Target.IsNull());
 				if(duplicate || invalid){
-				    Utility.EditorDelayCall(()=>Events.listeners.Remove(eventListener));
+					Utility.EditorDelayCall(()=>Events.listeners.Remove(eventListener));
 					if(Events.debug.Has("Remove")){
 						string messageType = eventMethod.IsNull() ? "empty method" : "duplicate method";
 						string message = "[Events] Removing " + messageType  + " from -- " + eventTarget + "/" + eventName;
 						Debug.Log(message,target as UnityObject);
 					}
 				}
-		    }
-		    foreach(var current in Events.callers){
-			    object scope = current.Key;
-			    if(scope.IsNull()){
-				    Utility.EditorDelayCall(()=>Events.callers.Remove(scope));
-			    }
-		    }
-	    }
-	    public static bool HasEvents(string name,object target=null){
+			}
+			foreach(var current in Events.callers){
+				object scope = current.Key;
+				if(scope.IsNull()){
+					Utility.EditorDelayCall(()=>Events.callers.Remove(scope));
+				}
+			}
+		}
+		public static bool HasEvents(string name,object target=null){
 			target = Events.Verify(target);
 			return Events.cache.AddNew(target).AddNew(name).Count < 1;
-	    }
-	    public static List<string> GetEventNames(string type,object target=null){
-		    Utility.EditorCall(()=>Events.Clean());
+		}
+		public static List<string> GetEventNames(string type,object target=null){
+			Utility.EditorCall(()=>Events.Clean());
 			target = Events.Verify(target);
-		    if(type.Contains("Listen",true)){
-			    return Events.listeners.ToList().FindAll(x=>x.target==target).Select(x=>x.name).ToList();
-		    }
-		    if(Events.callers.ContainsKey(target)){
-			    return Events.callers[target];
-		    }
-		    return new List<string>();
-	    }
-    }
-    public static class ObjectEventExtensions{
-	    public static void RegisterEvent(this object current,string name,params object[] values){
+			if(type.Contains("Listen",true)){
+				return Events.listeners.ToList().FindAll(x=>x.target==target).Select(x=>x.name).ToList();
+			}
+			if(Events.callers.ContainsKey(target)){
+				return Events.callers[target];
+			}
+			return new List<string>();
+		}
+	}
+	public static class ObjectEventExtensions{
+		public static void RegisterEvent(this object current,string name,params object[] values){
 			if(current.IsNull()){return;}
-		    Events.Register(name,current);
-	    }
-	    public static EventListener AddEvent(this object current,string name,object method,int amount=-1){
+			Events.Register(name,current);
+		}
+		public static EventListener AddEvent(this object current,string name,object method,int amount=-1){
 			if(current.IsNull()){return Events.empty;}
-		    return Events.Add(name,method,amount,current);
-	    }
-	    public static void RemoveEvent(this object current,string name,object method){
+			return Events.Add(name,method,amount,current);
+		}
+		public static void RemoveEvent(this object current,string name,object method){
 			if(current.IsNull()){return;}
-		    Events.Remove(name,method,current);
-	    }
-	    public static void RemoveAllEvents(this object current,string name,object method){
+			Events.Remove(name,method,current);
+		}
+		public static void RemoveAllEvents(this object current,string name,object method){
 			if(current.IsNull()){return;}
-		    Events.RemoveAll(current);
-	    }
-	    public static void DelayEvent(this object current,string key,string name,float delay=0.5f,params object[] values){
+			Events.RemoveAll(current);
+		}
+		public static void DelayEvent(this object current,string key,string name,float delay=0.5f,params object[] values){
 			if(current.IsNull()){return;}
 			key += "/" + name;
 			Utility.EditorDelayCall(key,()=>Events.Call(current,name,values),delay);
-	    }
-	    public static void CooldownEvent(this object current,string name,float seconds){
+		}
+		public static void CooldownEvent(this object current,string name,float seconds){
 			if(current.IsNull()){return;}
-		    Events.Cooldown(current,name,seconds);
-	    }
-	    public static void CallEvent(this object current,string name,params object[] values){
+			Events.Cooldown(current,name,seconds);
+		}
+		public static void CallEvent(this object current,string name,params object[] values){
 			if(current.IsNull()){return;}
-		    Events.Call(current,name,values);
-	    }
-	    public static void CallEventChildren(this object current,string name,bool self=true,params object[] values){
+			Events.Call(current,name,values);
+		}
+		public static void CallEventChildren(this object current,string name,bool self=true,params object[] values){
 			if(current.IsNull()){return;}
-		    Events.CallChildren(current,name,values,self);
-	    }
-	    public static void CallEventParents(this object current,string name,bool self=true,params object[] values){
+			Events.CallChildren(current,name,values,self);
+		}
+		public static void CallEventParents(this object current,string name,bool self=true,params object[] values){
 			if(current.IsNull()){return;}
-		    Events.CallParents(current,name,values,self);
-	    }
-	    public static void CallEventFamily(this object current,string name,bool self=true,params object[] values){
+			Events.CallParents(current,name,values,self);
+		}
+		public static void CallEventFamily(this object current,string name,bool self=true,params object[] values){
 			if(current.IsNull()){return;}
-		    Events.CallFamily(current,name,values,self);
-	    }
-    }
+			Events.CallFamily(current,name,values,self);
+		}
+	}
 }

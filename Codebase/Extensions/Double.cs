@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-namespace Zios{ 
-    public static class DoubleExtension{
+namespace Zios{
+	public static class DoubleExtension{
 		//=====================
 		// Numeric
 		//=====================
@@ -16,14 +16,14 @@ namespace Zios{
 		public static double Distance(this double current,double end){
 			return Math.Abs(current-end);
 		}
-	    public static bool Between(this double current,double start,double end){
-		    return current >= start && current <= end;
+		public static bool Between(this double current,double start,double end){
+			return current >= start && current <= end;
 		}
-	    public static bool InRange(this double current,double start,double end){
-		    return current.Between(start,end);
+		public static bool InRange(this double current,double start,double end){
+			return current.Between(start,end);
 		}
-	    public static bool ToBool(this double current){
-		    return current != 0;
+		public static bool ToBool(this double current){
+			return current != 0;
 		}
 		public static double Closest(this double current,params double[] values){
 			double match = double.MaxValue;
@@ -34,40 +34,40 @@ namespace Zios{
 			}
 			return match;
 		}
-	    public static double RoundClosestDown(this double current,params double[] values){
-		    double highest = -1;
-		    foreach(double value in values){
-			    if(current >= value){
-				    highest = value;
-				    break;
+		public static double RoundClosestDown(this double current,params double[] values){
+			double highest = -1;
+			foreach(double value in values){
+				if(current >= value){
+					highest = value;
+					break;
 				}
 			}
-		    foreach(double value in values){
-			    if(current >= value && value > highest){
-				    highest = value;
+			foreach(double value in values){
+				if(current >= value && value > highest){
+					highest = value;
 				}
 			}
-		    return highest;
+			return highest;
 		}
-	    public static double RoundClosestUp(this double current,params double[] values){
-		    double lowest = -1;
-		    foreach(double value in values){
-			    if(current >= value){
-				    lowest = value;
-				    break;
+		public static double RoundClosestUp(this double current,params double[] values){
+			double lowest = -1;
+			foreach(double value in values){
+				if(current >= value){
+					lowest = value;
+					break;
 				}
 			}
-		    foreach(double value in values){
-			    if(current <= value && value < lowest){
-				    lowest = value;
+			foreach(double value in values){
+				if(current <= value && value < lowest){
+					lowest = value;
 				}
 			}
-		    return lowest;
+			return lowest;
 		}
 		public static double Mean(this IEnumerable<double> current){return (double)current.Average();}
 		public static double Median(this IEnumerable<double> current){
-			int count = current.Cast<object>().Count(); 
-			var sorted = current.OrderBy(n=>n); 
+			int count = current.Cast<object>().Count();
+			var sorted = current.OrderBy(n=>n);
 			double midValue = sorted.ElementAt(count/2);
 			double median = midValue;
 			if(count%2==0){

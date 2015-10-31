@@ -2,8 +2,8 @@ using System;
 using UnityEngine;
 using UnityEditor;
 namespace Zios.UI{
-    public class IntDrawer : MaterialPropertyDrawer{
-	    public override void OnGUI(Rect position,MaterialProperty property,string label,MaterialEditor editor){
+	public class IntDrawer : MaterialPropertyDrawer{
+		public override void OnGUI(Rect position,MaterialProperty property,string label,MaterialEditor editor){
 			Vector2 limits = property.rangeLimits;
 			int value = (int)property.floatValue;
 			float labelSize = Screen.width * 0.345f;

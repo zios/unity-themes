@@ -3,7 +3,7 @@ using System;
 using UnityEngine;
 namespace Zios{
 	public enum TransitionState{Idle,Acceleration,Travel,Deceleration};
-    [AddComponentMenu("")]
+	[AddComponentMenu("")]
 	public class AttributeTransition : StateMonoBehaviour{
 		[Advanced] public AnimationCurve acceleration = AnimationCurve.EaseInOut(0,0,1,1);
 		[Advanced] public AnimationCurve deceleration = AnimationCurve.EaseInOut(0,1,1,0);

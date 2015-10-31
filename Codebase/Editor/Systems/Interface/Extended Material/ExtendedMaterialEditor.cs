@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEditor;
 using System;
 using System.Collections;
@@ -134,7 +134,7 @@ namespace Zios.UI{
 		public bool DrawToggleButton(string label,bool state){
 			string skinSuffix = EditorGUIUtility.isProSkin ? "Dark" : "Light";
 			string prefix = state ? "☗ " : "☖ ";
-			skinSuffix += state ? "Active" : ""; 
+			skinSuffix += state ? "Active" : "";
 			GUIStyle buttonStyle = this.UI.GetStyle("Button"+skinSuffix);
 			if(GUILayout.Button(prefix+label,buttonStyle)){
 				this.stateChanged = "ToggleButton-"+label;
@@ -370,7 +370,7 @@ namespace Zios.UI{
 						if(showSubShaders && !Buffer.options[hash]){continue;}
 						if(showSubShaders){++EditorGUI.indentLevel;}
 						this.DrawCommon(subShader);
-						bool hideTags = !Buffer.options["ShowDefault"] && subShader.tags.IsDefault(); 
+						bool hideTags = !Buffer.options["ShowDefault"] && subShader.tags.IsDefault();
 						if(!hideTags){
 							Buffer.options[hash+"Tags"] = this.DrawFold("Tags",Buffer.options[hash+"Tags"]);
 							if(Buffer.options[hash+"Tags"]){
@@ -413,7 +413,7 @@ namespace Zios.UI{
 							if(pass.type == PassType.Normal){
 								pass.name = (string)this.Draw("Name",pass.name,"");
 								this.DrawCommon(pass);
-								bool hidePassTags = !Buffer.options["ShowDefault"] && pass.tags.IsDefault(); 
+								bool hidePassTags = !Buffer.options["ShowDefault"] && pass.tags.IsDefault();
 								if(!hidePassTags){
 									Buffer.options[passHash+"Tags"] = this.DrawFold("Tags",Buffer.options[passHash+"Tags"]);
 									if(Buffer.options[passHash+"Tags"]){
@@ -424,8 +424,8 @@ namespace Zios.UI{
 									}
 								}
 								this.DrawFog(pass.fog,passHash);
-								bool hideGPUShader = !Buffer.options["ShowDefault"] && pass.gpuShader == ""; 
-								if(!hideGPUShader){	
+								bool hideGPUShader = !Buffer.options["ShowDefault"] && pass.gpuShader == "";
+								if(!hideGPUShader){
 									EditorGUI.BeginChangeCheck();
 									pass.gpuShader = EditorGUILayout.TextArea(pass.gpuShader,GUILayout.Width(Screen.width-45));
 									this.stateChanged = EditorGUI.EndChangeCheck() ? "TextArea" : this.stateChanged;

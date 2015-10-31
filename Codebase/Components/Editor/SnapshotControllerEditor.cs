@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
@@ -132,7 +132,7 @@ namespace Zios.UI{
 				this.actions.Add(new RemoveEventAction());
 			}
 			public override void CreateItems(){
-				float width = 100f; 
+				float width = 100f;
 				this.listItems.Add(new ListItem("Component","componentName",width,ItemTypes.Label));
 				this.listItems.Add(new ListItem("Method","methodName",width,ItemTypes.Label));
 				this.listItems.Add(new ListItem("Name","name",width,ItemTypes.Label));
@@ -140,7 +140,7 @@ namespace Zios.UI{
 			public override List<object> GetList(){
 				List<object> elements = new List<object>();
 				foreach(EventItem eventItem in ((Controller)this.target).listedEvents){
-					elements.Add(eventItem); 
+					elements.Add(eventItem);
 				}
 				return elements;
 			}

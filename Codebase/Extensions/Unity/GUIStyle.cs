@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 namespace Zios{
-    public static class GUIStyleExtension{
+	public static class GUIStyleExtension{
 		public static GUILayoutOption[] CreateLayout(this GUIStyle current){
 			var options = new List<GUILayoutOption>();
 			if(current.fixedWidth != 0){options.Add(GUILayout.Width(current.fixedWidth));}

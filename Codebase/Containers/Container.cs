@@ -41,7 +41,7 @@ namespace Zios{
 		public TValue[] values;
 		private int nextIndex = 0;
 		public FixedContainer(int size){
-			this.keys = new TKey[size]; 
+			this.keys = new TKey[size];
 			this.values = new TValue[size];
 		}
 		public TValue this[TKey key]{

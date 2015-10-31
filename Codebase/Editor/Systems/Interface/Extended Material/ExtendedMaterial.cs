@@ -2,7 +2,7 @@
 // General
 //====================================
 using UnityEngine;
-#if UNITY_EDITOR  
+#if UNITY_EDITOR
 using UnityEditor;
 #endif
 using System;
@@ -14,29 +14,29 @@ using System.Text.RegularExpressions;
 using Zios;
 using Buffer = MaterialExtended.Buffer;
 namespace MaterialExtended{
-    public static class Buffer{
-	    public static Material material;
-	    public static Shader shader;
-	    public static ExtendedMaterial active;
-	    public static string originalPath = "";
-	    public static bool loaded = false;
-	    public static bool unsaved = false;
-	    public static bool branchable = true;
-	    public static bool buildPreview = false;
-	    public static bool refresh = false;
-	    public static float buildDelay = 0;
-	    public static Dictionary<string,bool> options = new Dictionary<string,bool>();
-    }
-    public class Watcher : AssetPostprocessor{
-	    public static void OnPostprocessAllAssets(string[] imported,string[] deleted,string[] moved, string[] path){
-		    if(imported.Length > 0){
-			    if(Buffer.active != null && !Buffer.refresh){
-				    Debug.Log("[ExtendedMaterial] Asset Refreshing -- " + Buffer.active.menuPath);
-				    ExtendedMaterial.DestroyImmediate(Buffer.active);
-			    }
-		    }
-	    }
-    }
+	public static class Buffer{
+		public static Material material;
+		public static Shader shader;
+		public static ExtendedMaterial active;
+		public static string originalPath = "";
+		public static bool loaded = false;
+		public static bool unsaved = false;
+		public static bool branchable = true;
+		public static bool buildPreview = false;
+		public static bool refresh = false;
+		public static float buildDelay = 0;
+		public static Dictionary<string,bool> options = new Dictionary<string,bool>();
+	}
+	public class Watcher : AssetPostprocessor{
+		public static void OnPostprocessAllAssets(string[] imported,string[] deleted,string[] moved, string[] path){
+			if(imported.Length > 0){
+				if(Buffer.active != null && !Buffer.refresh){
+					Debug.Log("[ExtendedMaterial] Asset Refreshing -- " + Buffer.active.menuPath);
+					ExtendedMaterial.DestroyImmediate(Buffer.active);
+				}
+			}
+		}
+	}
 	//====================================
 	// Enumerations
 	//====================================
@@ -263,7 +263,7 @@ namespace MaterialExtended{
 			using(StreamWriter file = new StreamWriter(path,false)){
 				file.Write(output);
 			}
-			#if UNITY_EDITOR  
+			#if UNITY_EDITOR
 			AssetDatabase.Refresh();
 			#endif
 			return Shader.Find(menuPath);

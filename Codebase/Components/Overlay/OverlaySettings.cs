@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 namespace Zios{
 	[ExecuteInEditMode][AddComponentMenu("Zios/Singleton/Overlay")]
 	public class OverlaySettings : MonoBehaviour{

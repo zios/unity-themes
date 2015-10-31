@@ -1,9 +1,9 @@
-﻿#pragma warning disable 0618
+#pragma warning disable 0618
 using Zios;
 using System;
 using System.Linq;
 using UnityEngine;
-namespace Zios{	
+namespace Zios{
 	[AddComponentMenu("")]
 	public class AttributeData : DataMonoBehaviour{
 		public Target target = new Target();
@@ -62,7 +62,7 @@ namespace Zios{
 			bool shaped = this.usage == AttributeUsage.Shaped && !this.reference.IsNull();
 			if(shaped){
 				AttributeType attribute = (AttributeType)this.reference;
-				return attribute.getMethod == null && attribute.setMethod == null;	
+				return attribute.getMethod == null && attribute.setMethod == null;
 			}
 			return false;
 		}
@@ -74,7 +74,7 @@ namespace Zios{
 				}
 				return this.value;
 			}
-			else if(attribute.mode == AttributeMode.Linked || this.usage == AttributeUsage.Shaped){	
+			else if(attribute.mode == AttributeMode.Linked || this.usage == AttributeUsage.Shaped){
 				if(Application.isPlaying && !Attribute.ready){
 					if(Attribute.debug.Has("Issue")){Debug.LogWarning("[AttributeData] Get attempt before attribute data built : " + attribute.path,attribute.parent);}
 					return default(BaseType);

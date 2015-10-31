@@ -1,8 +1,8 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System;
 using System.Collections.Generic;
 namespace Zios{
-    public static class Style{
+	public static class Style{
 		public static Dictionary<GUISkin,Dictionary<string,GUIStyle>> styles = new Dictionary<GUISkin,Dictionary<string,GUIStyle>>();
 		public static GUIStyle Get(string skin,string name,bool copy=false){
 			var guiSkin = FileManager.GetAsset<GUISkin>(skin+".guiskin");
@@ -21,5 +21,5 @@ namespace Zios{
 			return style;
 		}
 		public static GUIStyle Get(string name,bool copy=false){return Style.Get(GUI.skin,name,copy);}
-    }
+	}
 }

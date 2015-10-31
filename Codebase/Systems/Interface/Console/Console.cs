@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System;
 using System.IO;
 using System.Linq;
@@ -166,7 +166,7 @@ namespace Zios{
 			List<string> keyCodes = new List<string>(Enum.GetNames(typeof(KeyCode)));
 			if(!keyCodes.Contains(key)){
 				key = Button.GetName(key);
-				if(!keyCodes.Contains(key)){ 
+				if(!keyCodes.Contains(key)){
 					Debug.LogWarning("[Console] " + key + " could not be bound. It is not a valid key.");
 					return;
 				}
@@ -212,7 +212,7 @@ namespace Zios{
 			PlayerPrefs.DeleteKey("binds");
 			Console.AddLog("^10All stored ^3binds^10 have been cleared.");
 		}
-		public static void BindCommand(string[] values){		
+		public static void BindCommand(string[] values){
 			string data = string.Join(" ",values.Skip(2).ToArray()).Trim();
 			Console.AddBind(values[1],data);
 		}
@@ -491,7 +491,7 @@ namespace Zios{
 				string logPath = Application.persistentDataPath + "/" + Console.settings.logFile;
 				string cleanText = text;
 				for(int index=Console.color.Length-1;index>=0;--index){
-					cleanText = cleanText.Replace("^"+index,"").Replace("|","");	
+					cleanText = cleanText.Replace("^"+index,"").Replace("|","");
 				}
 				using(StreamWriter file = new StreamWriter(logPath,true)){
 					file.WriteLine(cleanText);
@@ -624,7 +624,7 @@ namespace Zios{
 					Console.dragStart[2] = Console.settings.height;
 				}
 			}
-			Console.settings.height = Mathf.Clamp(Console.settings.height,0.05f,(((float)Screen.height-30.0f)/(float)Screen.height));	
+			Console.settings.height = Mathf.Clamp(Console.settings.height,0.05f,(((float)Screen.height-30.0f)/(float)Screen.height));
 		}
 		public static void DrawElements(){
 			GUI.skin = Console.settings.skin;
@@ -647,7 +647,7 @@ namespace Zios{
 				Console.logStyle.normal.textColor = Console.color[Console.settings.logFontColor];
 				float clampedPosition = Mathf.Clamp(Console.logPosition,0,Console.logScrollLimit);
 				byte logPosition = (byte)(clampedPosition * (Console.log.Count+1));
-				for(byte lineIndex = 0;lineIndex < Console.log.Count;++lineIndex){ 
+				for(byte lineIndex = 0;lineIndex < Console.log.Count;++lineIndex){
 					if(logPosition > lineIndex){continue;}
 					if(logBounds.y + Console.settings.logFontSize > consoleBounds.yMax - 5){break;}
 					string colorCode = "";

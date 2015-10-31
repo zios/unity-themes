@@ -1,8 +1,8 @@
-﻿using Zios;
+using Zios;
 using System;
 using UnityEngine;
 namespace Zios{
-    [AddComponentMenu("Zios/Component/Action/Attribute/Transition/Transition Float")]
+	[AddComponentMenu("Zios/Component/Action/Attribute/Transition/Transition Float")]
 	public class AttributeTransitionFloat : AttributeTransition{
 		public AttributeFloat speed = 1;
 		public AttributeFloat target = 0;

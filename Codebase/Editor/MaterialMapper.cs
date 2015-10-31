@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEditor;
 using Zios;
 using System;
@@ -15,7 +15,7 @@ namespace Zios.UI{
 		public string type;
 		public string mapTo;
 	}
-    public class MaterialMapper : EditorWindow{
+	public class MaterialMapper : EditorWindow{
 		public int sourceCount = 4;
 		public Shader[] shaders = new Shader[4];
 		public Shader goal;
@@ -23,16 +23,16 @@ namespace Zios.UI{
 		public List<ShaderInfo> keywordMap = new List<ShaderInfo>();
 		public Dictionary<string,List<string>> goalProperties = new Dictionary<string,List<string>>();
 		private Vector2 scrollPosition;
-        [MenuItem ("Zios/Window/Material Mapper")]
-	    static void Init(){
-		    MaterialMapper window = (MaterialMapper)EditorWindow.GetWindow(typeof(MaterialMapper));
-		    window.position = new Rect(100,150,200,200);
-		    window.Start();
-        }
-        public void OnGUI(){
+		[MenuItem ("Zios/Window/Material Mapper")]
+		static void Init(){
+			MaterialMapper window = (MaterialMapper)EditorWindow.GetWindow(typeof(MaterialMapper));
+			window.position = new Rect(100,150,200,200);
+			window.Start();
+		}
+		public void OnGUI(){
 			this.scrollPosition = EditorGUILayout.BeginScrollView(this.scrollPosition);
 			EditorGUIUtility.labelWidth = 100;
-            this.titleContent = new GUIContent("MaterialMapper");
+			this.titleContent = new GUIContent("MaterialMapper");
 			this.shaders = this.shaders.Remove(this.goal).Resize(this.sourceCount);
 			this.labelWidth = GUILayout.Width(Screen.width/2-20);
 			this.sourceCount = Mathf.Max(1,this.sourceCount.DrawInt("Source Count"));
@@ -41,7 +41,7 @@ namespace Zios.UI{
 			if(EditorGUILayoutExtensionSpecial.DrawFoldout("Keywords")){this.DrawKeywords();}
 			if("Process".DrawButton()){this.Process();}
 			EditorGUILayout.EndScrollView();
-	    }
+		}
 		public void DrawShaders(){
 			EditorGUI.indentLevel += 1;
 			GUILayout.BeginHorizontal();
@@ -174,5 +174,5 @@ namespace Zios.UI{
 			Debug.Log("[MaterialMapper] : " + matching.Count + " materials modified.");
 		}
 		public void Start(){}
-    }
+	}
 }

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System;
 using System.IO;
 using System.Collections;
@@ -110,7 +110,7 @@ public class VariableMaterial{
 		VariableMaterial.Flatten(targets);
 	}
 	public static void Flatten(params UnityObject[] targets){
-		#if UNITY_EDITOR 
+		#if UNITY_EDITOR
 		string originalName = "";
 		foreach(var target in targets){
 			Material material = (Material)target;

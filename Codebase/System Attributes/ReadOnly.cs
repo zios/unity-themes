@@ -1,4 +1,4 @@
 using UnityEngine;
 namespace Zios{
-    public class ReadOnlyAttribute : PropertyAttribute{}
+	public class ReadOnlyAttribute : PropertyAttribute{}
 }

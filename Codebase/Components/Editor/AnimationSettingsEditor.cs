@@ -1,11 +1,11 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEditor;
 namespace Zios.UI{
-    [CustomEditor(typeof(AnimationSettings))]
-    public class AnimationSettingsEditor : Editor{
+	[CustomEditor(typeof(AnimationSettings))]
+	public class AnimationSettingsEditor : Editor{
 		public AnimationConfiguration active;
 		public float time = 0;
-	    public override void OnInspectorGUI(){
+		public override void OnInspectorGUI(){
 			var labelStyle = EditorStyles.label.FixedWidth(120);
 			var fpsStyle = EditorStyles.numberField.FixedWidth(50);
 			var blendStyle = EditorStyles.popup.FixedWidth(70);
@@ -24,12 +24,12 @@ namespace Zios.UI{
 				config.blendMode = (AnimationBlendMode)config.blendMode.Draw("",blendStyle);
 				config.wrapMode = (WrapMode)config.wrapMode.Draw("",wrapStyle);
 				if(isPlaying && "Stop".DrawButton()){
-				    this.active = null;
+					this.active = null;
 					Events.Resume("On Hierarchy Changed");
 				}
 				if(!isPlaying && "Play".DrawButton()){
-				    this.time = 0;
-				    this.active = config;
+					this.time = 0;
+					this.active = config;
 					Events.Pause("On Hierarchy Changed");
 				}
 				if(GUI.changed){
@@ -38,7 +38,7 @@ namespace Zios.UI{
 				}
 				EditorGUILayout.EndHorizontal();
 			}
-	    }
+		}
 		public void EditorUpdate(){
 			if(this.active != null){
 				var state = this.active.parent[this.active.name];
@@ -54,5 +54,5 @@ namespace Zios.UI{
 				clip.SampleAnimation(settings.gameObject,Time.realtimeSinceStartup);
 			}
 		}
-    }
+	}
 }

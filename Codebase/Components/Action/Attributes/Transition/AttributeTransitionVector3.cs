@@ -1,8 +1,8 @@
-﻿using Zios;
+using Zios;
 using System;
 using UnityEngine;
 namespace Zios{
-    [AddComponentMenu("Zios/Component/Action/Attribute/Transition/Transition Vector3")]
+	[AddComponentMenu("Zios/Component/Action/Attribute/Transition/Transition Vector3")]
 	public class AttributeTransitionVector3 : AttributeTransition{
 		public AttributeFloat speed = 1;
 		public AttributeVector3 target = Vector3.zero;

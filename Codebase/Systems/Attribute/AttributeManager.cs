@@ -95,7 +95,6 @@ namespace Zios{
 			if(Application.isPlaying || AttributeManager.disabled){return;}
 			Events.Call("On Attributes Refresh");
 			AttributeManager.nextRefresh = Time.realtimeSinceStartup + 1;
-
 		}
 		//==============================
 		// Unity
@@ -228,7 +227,7 @@ namespace Zios{
 				this.nextIndex = 0;
 				return;
 			}
-			var attribute = Attribute.all[this.nextIndex];		
+			var attribute = Attribute.all[this.nextIndex];
 			attribute.BuildData(attribute.info.data);
 			attribute.BuildData(attribute.info.dataB);
 			attribute.BuildData(attribute.info.dataC);

@@ -1,4 +1,4 @@
-﻿using Zios;
+using Zios;
 using System;
 using System.Linq;
 using System.Collections;
@@ -23,14 +23,14 @@ namespace Zios{
 		public AttributeData[] dataC = new AttributeData[0];
 	}
 	[Flags]
-    public enum AttributeDebug : int{
+	public enum AttributeDebug : int{
 		Issue          = 0x001,
-	    Add            = 0x002,
-	    Remove         = 0x004,
-	    ProcessTime    = 0x008,
-	    ProcessStage   = 0x010,
-	    ProcessRefresh = 0x020
-    }
+		Add            = 0x002,
+		Remove         = 0x004,
+		ProcessTime    = 0x008,
+		ProcessStage   = 0x010,
+		ProcessRefresh = 0x020
+	}
 	[Serializable]
 	public class Attribute{
 		[EnumMask] public static AttributeDebug debug;
@@ -59,7 +59,7 @@ namespace Zios{
 		[NonSerialized] public bool canGroup = false;
 		[NonSerialized] public bool canDirect = true;
 		[NonSerialized] public bool canShape = true;
-		[NonSerialized] public bool canLink = true;	
+		[NonSerialized] public bool canLink = true;
 		[NonSerialized] public bool isDefault = true;
 		[NonSerialized] public string defaultSet = "A";
 		[NonSerialized] public List<Attribute> dependents = new List<Attribute>();
@@ -200,7 +200,7 @@ namespace Zios{
 		public override void Setup(string path,Component parent){
 			if(parent.IsNull()){return;}
 			this.info.dataType = typeof(DataType);
-			if(!Application.isPlaying){	
+			if(!Application.isPlaying){
 				string previousID = this.info.id;
 				this.BuildInfo(path,parent);
 				this.FixDuplicates();

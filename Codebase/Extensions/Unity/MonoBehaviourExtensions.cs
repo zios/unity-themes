@@ -1,4 +1,4 @@
-﻿#pragma warning disable 0618
+#pragma warning disable 0618
 using UnityEngine;
 using System;
 using System.Collections.Generic;
@@ -6,16 +6,16 @@ using System.Collections.Generic;
 using UnityEditor;
 #endif
 namespace Zios{
-    public static class MonoBehaviourExtension{
-	    public static string GetGUID(this MonoBehaviour current){
-		    #if UNITY_EDITOR
-		    if(Application.isEditor){
-			    MonoScript scriptFile = MonoScript.FromMonoBehaviour(current);
-			    string path = AssetDatabase.GetAssetPath(scriptFile);
-			    return AssetDatabase.AssetPathToGUID(path);
-		    }
-		    #endif
-		    return "";
+	public static class MonoBehaviourExtension{
+		public static string GetGUID(this MonoBehaviour current){
+			#if UNITY_EDITOR
+			if(Application.isEditor){
+				MonoScript scriptFile = MonoScript.FromMonoBehaviour(current);
+				string path = AssetDatabase.GetAssetPath(scriptFile);
+				return AssetDatabase.AssetPathToGUID(path);
+			}
+			#endif
+			return "";
 		}
 		public static bool CanValidate(this MonoBehaviour current){
 			bool enabled = !current.IsNull() && current.gameObject.activeInHierarchy && current.enabled;
@@ -24,5 +24,5 @@ namespace Zios{
 		public static bool IsEnabled(this MonoBehaviour current){
 			return !current.IsNull() && current.enabled && current.gameObject.activeInHierarchy;
 		}
-    }
+	}
 }

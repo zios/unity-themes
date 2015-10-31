@@ -113,25 +113,25 @@ namespace Zios.UI{
 			}
 			window.Repaint();
 		}
-	    public void AddAlternativeRow(object target){
+		public void AddAlternativeRow(object target){
 			var window = StateWindow.Get();
-		    StateRow row = (StateRow)target;
-		    List<StateRowData> data = new List<StateRowData>(row.requirements);
-		    data.Add(new StateRowData());
-		    row.requirements = data.ToArray();
-		    window.target.Refresh();
-		    window.rowIndex[row] = row.requirements.Length-1;
-		    window.BuildTable();
-	    }
-	    public void RemoveAlternativeRow(object target){
+			StateRow row = (StateRow)target;
+			List<StateRowData> data = new List<StateRowData>(row.requirements);
+			data.Add(new StateRowData());
+			row.requirements = data.ToArray();
+			window.target.Refresh();
+			window.rowIndex[row] = row.requirements.Length-1;
+			window.BuildTable();
+		}
+		public void RemoveAlternativeRow(object target){
 			var window = StateWindow.Get();
-		    StateRow row = (StateRow)target;
+			StateRow row = (StateRow)target;
 			int rowIndex = window.rowIndex[row];
-		    List<StateRowData> data = new List<StateRowData>(row.requirements);
-		    data.RemoveAt(rowIndex);
-		    row.requirements = data.ToArray();
+			List<StateRowData> data = new List<StateRowData>(row.requirements);
+			data.RemoveAt(rowIndex);
+			row.requirements = data.ToArray();
 			window.rowIndex[row] = rowIndex-1;
-		    window.BuildTable();
-	    }
+			window.BuildTable();
+		}
 	}
 }

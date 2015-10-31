@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 namespace Zios{
-	[Serializable]	
+	[Serializable]
 	public class EventStepper{
 		public MethodStep method;
 		public string eventName;
@@ -31,7 +31,7 @@ namespace Zios{
 				this.passes.Clear();
 				Events.steppers.Remove(this.method);
 				Utility.ClearProgressBar();
-			}	
+			}
 		}
 	}
 }

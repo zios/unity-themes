@@ -1,6 +1,6 @@
-﻿using Zios;
+using Zios;
 using UnityEngine;
 namespace Zios{
-    [AddComponentMenu("Zios/Component/Attribute/Box/Box GameObject")]
-    public class AttributeBoxGameObject : AttributeBox<AttributeGameObject>{}
+	[AddComponentMenu("Zios/Component/Attribute/Box/Box GameObject")]
+	public class AttributeBoxGameObject : AttributeBox<AttributeGameObject>{}
 }

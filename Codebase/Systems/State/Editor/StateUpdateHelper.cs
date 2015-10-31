@@ -4,9 +4,9 @@ using System;
 using System.Linq;
 using CallbackFunction = UnityEditor.EditorApplication.CallbackFunction;
 namespace Zios{
-    public static class StateUpdateHelper{
-        [MenuItem ("Zios/Process/States/Repair (All)")]
-	    public static void FixBroken(){
+	public static class StateUpdateHelper{
+		[MenuItem ("Zios/Process/States/Repair (All)")]
+		public static void FixBroken(){
 			StateUpdateHelper.RepairGUIDs();
 			CallbackFunction delayed = ()=>{
 				StateUpdateHelper.CopyData();

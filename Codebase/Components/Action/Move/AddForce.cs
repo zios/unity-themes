@@ -1,12 +1,12 @@
-﻿using Zios;
+using Zios;
 using UnityEngine;
 namespace Zios{
-    [AddComponentMenu("Zios/Component/Action/Move/Add Force")]
-    public class AddForce : AddMove{
-	    public override void Awake(){
+	[AddComponentMenu("Zios/Component/Action/Move/Add Force")]
+	public class AddForce : AddMove{
+		public override void Awake(){
 			this.eventName = this.eventName.SetDefault("Add Force");
-		    base.Awake();
-		    this.AddDependent<Force>(this.target);
-	    }
-    }
+			base.Awake();
+			this.AddDependent<Force>(this.target);
+		}
+	}
 }

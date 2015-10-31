@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System;
 using System.IO;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 namespace Zios{
-	#if UNITY_EDITOR 
+	#if UNITY_EDITOR
 	using UnityEditor;
 	[InitializeOnLoad]
 	public static class SerializerHook{
@@ -46,7 +46,7 @@ namespace Zios{
 		}
 	}
 	#endif
-	[Flags] 
+	[Flags]
 	public enum SerializerDebug : int{
 		Build         = 0x001,
 		BuildDetailed = 0x002,

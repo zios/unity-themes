@@ -7,8 +7,8 @@ using System.Collections.Generic;
 using UnityObject = UnityEngine.Object;
 using MenuFunction = UnityEditor.GenericMenu.MenuFunction;
 namespace Zios.UI{
-    [CustomEditor(typeof(MonoBehaviour),true)][CanEditMultipleObjects]
-    public class MonoBehaviourEditor : Editor{
+	[CustomEditor(typeof(MonoBehaviour),true)][CanEditMultipleObjects]
+	public class MonoBehaviourEditor : Editor{
 		public static Dictionary<Type,Dictionary<string,object>> defaults = new Dictionary<Type,Dictionary<string,object>>();
 		public static float resumeHierarchyTime = -1;
 		public static Dictionary<Editor,bool> offScreen = new Dictionary<Editor,bool>();
@@ -25,7 +25,7 @@ namespace Zios.UI{
 		public bool showAll;
 		public bool visible = true;
 		public Method dirtyEvent;
-	    public override void OnInspectorGUI(){
+		public override void OnInspectorGUI(){
 			if(!Event.current.IsUseful()){return;}
 			if(this.target is MonoBehaviour && this.target.As<MonoBehaviour>().IsPrefab()){return;}
 			this.BeginArea();
@@ -110,7 +110,7 @@ namespace Zios.UI{
 				Utility.SetDirty(this.serializedObject.targetObject,false,true);
 			}
 			this.CheckChanges();
-	    }
+		}
 		public void CheckChanges(){
 			if(Event.current.type == EventType.Repaint){
 				bool fastInspector = EditorPrefs.GetBool("MonoBehaviourEditor-FastInspector");
@@ -261,5 +261,5 @@ namespace Zios.UI{
 			menu.ShowAsContext();
 			Event.current.Use();
 		}
-    }
+	}
 }

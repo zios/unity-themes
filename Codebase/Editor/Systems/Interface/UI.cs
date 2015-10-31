@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEditor;
 using System;
 using System.Linq;
@@ -8,7 +8,7 @@ using UnityObject = UnityEngine.Object;
 using Zios;
 using Zios.UI;
 namespace Zios.UI{
-    public static class UI{
+	public static class UI{
 		public static int DrawPrompt(this string current,ref string field,GUIStyle titleStyle=null,GUIStyle inputStyle=null){
 			int result = 0;
 			if(Button.KeyDown("KeypadEnter") || Button.KeyDown("Return")){result = 1;}
@@ -37,5 +37,5 @@ namespace Zios.UI{
 			if("No".DrawButton(button.AddX(5),buttonStyle)){result = 2;}
 			return result;
 		}
-    }
+	}
 }

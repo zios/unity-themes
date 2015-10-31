@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using UnityEngine;
 namespace Zios{
-    public static class RectOffsetExtension{
+	public static class RectOffsetExtension{
 		public static RectOffset Rotate90(RectOffset current){
 			int left = current.left;
 			int right = current.right;

@@ -1,19 +1,19 @@
-﻿using Zios;
+using Zios;
 using System.Linq;
 using UnityEngine;
 using UnityEditor;
 using MenuFunction = UnityEditor.GenericMenu.MenuFunction;
 namespace Zios.UI{
-    [CustomEditor(typeof(StateMonoBehaviourEditor),true)]
-    public class StateMonoBehaviourEditor : DataMonoBehaviourEditor{
+	[CustomEditor(typeof(StateMonoBehaviourEditor),true)]
+	public class StateMonoBehaviourEditor : DataMonoBehaviourEditor{
 		public GUISkin skin;
 		public Rect breakdownArea;
 		public bool breakdownVisible = true;
 		public virtual StateTable GetTable(){
-		    var script = (StateMonoBehaviour)this.target;
+			var script = (StateMonoBehaviour)this.target;
 			return script.controller;
 		}
-	    public override void OnInspectorGUI(){
+		public override void OnInspectorGUI(){
 			if(!Event.current.IsUseful()){return;}
 			StateTable table = this.GetTable();
 			bool showBreakdown = EditorPrefs.GetBool("StateBreakdownVisible",true);
@@ -101,8 +101,8 @@ namespace Zios.UI{
 					this.breakdownVisible = this.breakdownArea.InInspectorWindow();
 				}
 			}
-		    base.OnInspectorGUI();
-	    }
+			base.OnInspectorGUI();
+		}
 		public void DrawBreakdownMenu(){
 			GenericMenu menu = new GenericMenu();
 			MenuFunction hideBreakdown = ()=>{Utility.ToggleEditorPref("StateBreakdownVisible");};
@@ -141,5 +141,5 @@ namespace Zios.UI{
 			}
 			GUILayout.EndVertical();
 		}
-    }
+	}
 }

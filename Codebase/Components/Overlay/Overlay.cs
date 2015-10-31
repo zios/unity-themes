@@ -1,4 +1,4 @@
-﻿#if UNITY_EDITOR 
+#if UNITY_EDITOR
 using UnityEditor;
 #endif
 using UnityEngine;
@@ -15,7 +15,7 @@ namespace Zios{
 		static Overlay(){
 			if(Overlay.defaultResolution == Vector2.zero){
 				Overlay.defaultResolution = new Vector2(Screen.width,Screen.height);
-				#if UNITY_EDITOR 
+				#if UNITY_EDITOR
 				Overlay.defaultResolution = new Vector2(PlayerSettings.defaultScreenWidth,PlayerSettings.defaultScreenHeight);
 				#endif
 			}

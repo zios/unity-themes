@@ -1,36 +1,36 @@
-﻿using Zios;
+using Zios;
 using UnityEngine;
 using System;
 namespace Zios{
-    [Serializable][AddComponentMenu("")]
+	[Serializable][AddComponentMenu("")]
 	public enum StateOccurrence{Default,Constant,Once};
-    public class StateMonoBehaviour : ManagedMonoBehaviour{
+	public class StateMonoBehaviour : ManagedMonoBehaviour{
 		[Advanced] public StateOccurrence occurrence = StateOccurrence.Default;
 		[Internal] public StateTable controller;
-	    [Internal] public string id;
-	    [Internal] public AttributeBool usable = false;
-	    [Internal] public AttributeBool active = false;
-	    [Internal] public AttributeBool used = false;
+		[Internal] public string id;
+		[Internal] public AttributeBool usable = false;
+		[Internal] public AttributeBool active = false;
+		[Internal] public AttributeBool used = false;
 		[NonSerialized] public bool? nextState;
-	    public override void Awake(){
-		    base.Awake();
+		public override void Awake(){
+			base.Awake();
 			Events.Add("On Disable",this.End,this);
 			Events.Register("On Start",this);
 			Events.Register("On End",this);
-		    this.usable.Setup("Usable",this);
-		    this.active.Setup("Active",this);
-		    this.used.Setup("Used",this);
+			this.usable.Setup("Usable",this);
+			this.active.Setup("Active",this);
+			this.used.Setup("Used",this);
 			this.usable.Set(this.controller==null);
-	    }
-	    [ContextMenu("Toggle Breakdown")]
-	    public virtual void ToggleLinkBreakdown(){
+		}
+		[ContextMenu("Toggle Breakdown")]
+		public virtual void ToggleLinkBreakdown(){
 			Utility.ToggleEditorPref("StateLinkBreakdownVisible",true);
 		}
-	    public void DefaultAlias(string name){
-		    if(this.alias.IsEmpty()){
-			    this.alias = name;
-		    }
-	    }
+		public void DefaultAlias(string name){
+			if(this.alias.IsEmpty()){
+				this.alias = name;
+			}
+		}
 		public override void Step(){
 			if(!Application.isPlaying){return;}
 			bool usedOnce = this.used && this.occurrence == StateOccurrence.Once;
@@ -63,5 +63,5 @@ namespace Zios{
 			this.used.Set(state);
 			this.CallEvent(state ? "On Start" : "On End");
 		}
-    }
+	}
 }

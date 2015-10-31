@@ -1,4 +1,4 @@
 using UnityEngine;
 namespace Zios{
-    public class InternalAttribute : PropertyAttribute{}
+	public class InternalAttribute : PropertyAttribute{}
 }
