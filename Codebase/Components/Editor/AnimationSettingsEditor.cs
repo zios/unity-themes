@@ -15,7 +15,6 @@ namespace Zios.UI{
 			"FPS".DrawLabel(labelStyle.FixedWidth(30));
 			"Blend".DrawLabel(labelStyle.FixedWidth(80));
 			"Wrap".DrawLabel(labelStyle.FixedWidth(100));
-
 			EditorGUILayout.EndHorizontal();
 			foreach(var config in this.target.As<AnimationSettings>().animations){
 				EditorGUILayout.BeginHorizontal();

@@ -9,11 +9,11 @@ using UnityObject = UnityEngine.Object;
 using MenuFunction = UnityEditor.GenericMenu.MenuFunction;
 namespace Zios.UI{
     public class StaticInspector : EditorWindow{
+		public static string currentAssembly;
+		public static string currentNamespace;
+		public static string currentClass;
 		private Vector2 scrollPosition;
 		private Rect viewArea;
-	    public string currentAssembly;
-	    public string currentNamespace;
-	    public string currentClass;
 	    private int selectedAssembly;
 	    private int selectedNamespace;
 	    private int selectedClass;
@@ -111,29 +111,29 @@ namespace Zios.UI{
 		    // Assembly
 		    //=================
 		    string[] assemblyNames = this.classNames.Keys.ToArray();
-		    int assemblyIndex = assemblyNames.IndexOf(this.currentAssembly);
+		    int assemblyIndex = assemblyNames.IndexOf(StaticInspector.currentAssembly);
 		    if(assemblyIndex == -1){assemblyIndex = 0;}
 		    this.selectedAssembly = assemblyNames.Draw(assemblyArea,assemblyIndex);
 		    if(GUI.changed){this.ResetIndexes(2);}
-		    this.currentAssembly = assemblyNames[this.selectedAssembly];
+		    StaticInspector.currentAssembly = assemblyNames[this.selectedAssembly];
 		    //=================
 		    // Namespace
 		    //=================
-		    string[] namespaces = this.classNames[this.currentAssembly].Keys.ToArray();
-		    int namespaceIndex = namespaces.IndexOf(this.currentNamespace);
+		    string[] namespaces = this.classNames[StaticInspector.currentAssembly].Keys.ToArray();
+		    int namespaceIndex = namespaces.IndexOf(StaticInspector.currentNamespace);
 		    if(namespaceIndex == -1){namespaceIndex = 0;}
 		    this.selectedNamespace = namespaces.Draw(namespaceArea,namespaceIndex);
 		    if(GUI.changed){this.ResetIndexes(1);}
-		    this.currentNamespace = namespaces[this.selectedNamespace];
+		    StaticInspector.currentNamespace = namespaces[this.selectedNamespace];
 		    //=================
 		    // Class
 		    //=================
-		    string[] classes = this.classNames[this.currentAssembly][this.currentNamespace].ToArray();
-		    int classIndex = classes.IndexOf(this.currentClass);
+		    string[] classes = this.classNames[StaticInspector.currentAssembly][StaticInspector.currentNamespace].ToArray();
+		    int classIndex = classes.IndexOf(StaticInspector.currentClass);
 		    if(classIndex == -1){classIndex = 0;}
 		    this.selectedClass = classes.Draw(classArea,classIndex);
-		    this.currentClass = classes[this.selectedClass];
-		    this.activeClass = this.classes[this.currentAssembly][this.currentNamespace][this.selectedClass];
+		    StaticInspector.currentClass = classes[this.selectedClass];
+		    this.activeClass = this.classes[StaticInspector.currentAssembly][StaticInspector.currentNamespace][this.selectedClass];
 		    if(GUI.changed){
 			    this.variables.Clear();
 		    }

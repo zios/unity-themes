@@ -264,18 +264,6 @@ namespace Zios{
 			    }
 		    }
 	    }
-	    public static Type LoadType(this object current,string typeName){
-		    Assembly[] assemblies = System.AppDomain.CurrentDomain.GetAssemblies();
-		    foreach(var assembly in assemblies){
-			    Type[] types = assembly.GetTypes();
-			    foreach(Type type in types){
-				    if(type.FullName == typeName){
-					    return type;
-				    }
-			    }
-		    }
-		    return null;
-	    }
 	    public static string GetClassName(this object current){
 		    string path = current.GetClassPath();
 		    if(path.Contains(".")){

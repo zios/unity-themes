@@ -159,7 +159,6 @@ namespace Zios{
 			this.name = Path.GetFileNameWithoutExtension(path);
 			this.isFolder = Directory.Exists(path);
 	    }
-		#if UNITY_EDITOR 
 		public string GetText(){
 			return File.ReadAllText(this.path);
 		}
@@ -170,7 +169,6 @@ namespace Zios{
 		public string GetAccessedDate(string format="M-d-yy"){return File.GetLastAccessTime(this.path).ToString(format);}
 		public string GetCreatedDate(string format="M-d-yy"){return File.GetCreationTime(this.path).ToString(format);}
 		public string GetChecksum(){return this.GetText().ToMD5();}
-		#endif
 		public T GetAsset<T>(){
 		    #if UNITY_EDITOR
 		    if(Application.isEditor){

@@ -2,13 +2,12 @@
 #pragma warning disable 0618
 using UnityEngine;
 using System;
-using System.Linq;
+using System.Reflection;
 using System.Collections.Generic;
 using UnityObject = UnityEngine.Object;
 namespace Zios{
     #if UNITY_EDITOR
     using UnityEditor;
-    using UnityEditorInternal;
     using CallbackFunction = UnityEditor.EditorApplication.CallbackFunction;
     public class UtilityListener : AssetPostprocessor{
 	    public static void OnPostprocessAllAssets(string[] imported,string[] deleted,string[] movedTo, string[] movedFrom){
@@ -174,6 +173,18 @@ namespace Zios{
 		    if(!Application.isPlaying){UnityObject.DestroyImmediate(target,true);}
 		    else{UnityObject.Destroy(target);}
 	    }
+		public static Type GetType(string path){
+			Assembly[] assemblies = AppDomain.CurrentDomain.GetAssemblies();
+			foreach(var assembly in assemblies){
+				Type[] types = assembly.GetTypes();
+				foreach(Type type in types){
+					if(type.FullName == path){
+						return type;
+					}
+				}
+			}
+			return null;
+		}
 	    public static Type GetInternalType(string name){
 		    #if UNITY_EDITOR
 		    foreach(var type in typeof(UnityEditor.Editor).Assembly.GetTypes()){

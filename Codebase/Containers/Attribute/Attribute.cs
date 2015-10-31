@@ -204,7 +204,7 @@ namespace Zios{
 				string previousID = this.info.id;
 				this.BuildInfo(path,parent);
 				this.FixDuplicates();
-				this.FixIDConflict(previousID);
+				this.FixConflicts(previousID);
 				Events.Add("On Validate",this.ValidateDependents,parent);
 				Events.AddLimited("On Reset",()=>this.Setup(path,parent),1,parent);
 			}
@@ -336,9 +336,10 @@ namespace Zios{
 				AttributeManager.PerformRefresh();
 			}
 		}
-		public void FixIDConflict(string previousID){
+		public void FixConflicts(string previousID){
 			bool changedID = !previousID.IsEmpty() && this.info.id != previousID;
 			if(changedID){
+				if(Attribute.debug.Has("Issue")){Debug.Log("[Attribute] Resolving id conflict : " + this.info.path,this.info.parent.gameObject);}
 				var resolve = Attribute.resolve;
 				if(!resolve.ContainsKey(this.info.parent.gameObject)){
 					resolve[this.info.parent.gameObject] = new Dictionary<string,string>();

@@ -95,8 +95,8 @@ namespace Zios{
 				    siblings.RemoveAll(x=>x.GetParent()!=parent);
 			    }
 			    Locate.siblings[current] = siblings.ToArray();
-			    Locate.enabledSiblings[current] = Locate.siblings[current].Where(x=>x.gameObject.activeInHierarchy).Select(x=>x.gameObject).ToArray();
-			    Locate.disabledSiblings[current] = Locate.siblings[current].Where(x=>!x.gameObject.activeInHierarchy).Select(x=>x.gameObject).ToArray();
+			    Locate.enabledSiblings[current] = Locate.siblings[current].Where(x=>!x.IsNull()&&x.gameObject.activeInHierarchy).Select(x=>x.gameObject).ToArray();
+			    Locate.disabledSiblings[current] = Locate.siblings[current].Where(x=>!x.IsNull()&&!x.gameObject.activeInHierarchy).Select(x=>x.gameObject).ToArray();
 			    Locate.cleanSiblings.Add(current);
 		    }
 		    GameObject[] results = Locate.enabledSiblings[current];

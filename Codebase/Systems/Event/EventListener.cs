@@ -23,7 +23,7 @@ namespace Zios{
 		public void SetPaused(bool state=true){this.paused = state;}
 		public void SetPermanent(bool state=true){this.permanent = state;}
 		public void SetUnique(bool state=true){
-			Events.unique.AddNew(this.target)[this.name] = this;
+			if(state){Events.unique.AddNew(this.target)[this.name] = this;}
 			this.unique = state;
 		}
 		public void Remove(){

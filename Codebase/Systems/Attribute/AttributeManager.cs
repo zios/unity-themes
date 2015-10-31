@@ -1,10 +1,6 @@
-using Zios;
 using System;
 using System.Linq;
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-using Attribute = Zios.Attribute;
 using UnityObject = UnityEngine.Object;
 namespace Zios{
 	#if UNITY_EDITOR
@@ -14,28 +10,30 @@ namespace Zios{
 		static private bool setup;
 		static AttributeManagerHook(){
 			if(Application.isPlaying){return;}
-			EditorApplication.delayCall += ()=>{
-				AttributeManagerHook.Create();
-				Events.Add("On Hierarchy Changed",AttributeManagerHook.Reset).SetPermanent();
-				Events.Add("On Scene Loaded",AttributeManagerHook.Reset).SetPermanent();
-			};
+			EditorApplication.delayCall += ()=>AttributeManagerHook.Reset();
 		}
 		public static void Reset(){
+			SerializerHook.Reset();
+			Events.Add("On Scene Loaded",AttributeManagerHook.Reset).SetPermanent();
+			Events.Add("On Hierarchy Changed",AttributeManagerHook.Reset).SetPermanent();
 			AttributeManagerHook.setup = false;
 			AttributeManagerHook.Create();
+			if(AttributeManager.instance){
+				Events.Add("On Level Was Loaded",AttributeManager.instance.Awake);
+				Events.Add("On Editor Update",AttributeManager.instance.EditorUpdate);
+			}
 		}
 		public static void Create(){
 			if(AttributeManagerHook.setup || Application.isPlaying){return;}
 			AttributeManagerHook.setup = true;
 			if(AttributeManager.instance.IsNull()){
 				var path = Locate.GetScenePath("@Main");
-				if(!path.HasComponent<AttributeManager>()){
+				AttributeManager.instance = path.GetComponent<AttributeManager>();
+				if(AttributeManager.instance == null){
 					Debug.Log("[AttributeManager] : Auto-creating Attribute Manager GameObject.");
 					AttributeManager.instance = path.AddComponent<AttributeManager>();
 				}
-				AttributeManager.instance = path.GetComponent<AttributeManager>();
 			}
-			Events.Add("On Editor Update",AttributeManager.instance.EditorUpdate);
 		}
 	}
 	#endif

@@ -14,46 +14,47 @@ namespace Zios{
 		private static bool setup;
 		static SerializerHook(){
 			if(Application.isPlaying){return;}
-			EditorApplication.delayCall += ()=>{
-				SerializerHook.Create();
-				Events.Add("On Scene Loaded",SerializerHook.Reset).SetPermanent();
-				Events.Add("On Hierarchy Changed",SerializerHook.Reset).SetPermanent();
-				Events.Add("On Exit Play",SerializerHook.Reset).SetPermanent();
-			};
+			EditorApplication.delayCall += ()=>SerializerHook.Reset();
 		}
 		public static void Reset(){
+			Events.Add("On Scene Loaded",SerializerHook.Reset).SetPermanent();
+			Events.Add("On Hierarchy Changed",SerializerHook.Reset).SetPermanent();
+			Events.Add("On Exit Play",SerializerHook.Reset).SetPermanent();
 			SerializerHook.setup = false;
 			SerializerHook.Create();
+			if(Serializer.instance){
+				Events.Add("On Enter Play",Serializer.instance.Save);
+				Events.Add("On Asset Saving",Serializer.instance.Save);
+				Events.Add("On Asset Changed",Serializer.instance.Save);
+				Events.Add("On Level Was Loaded",Serializer.instance.Setup);
+				Events.Add("On Exit Play",Serializer.instance.Load);
+				//Events.Add("On Scene Loaded",Serializer.instance.Load);
+			}
 		}
 		public static void Create(){
 			if(SerializerHook.setup || Application.isPlaying){return;}
 			SerializerHook.setup = true;
 			if(Serializer.instance.IsNull()){
 				var path = Locate.GetScenePath("@Main");
-				if(!path.HasComponent<Serializer>()){
+				Serializer.instance = path.GetComponent<Serializer>();
+				if(Serializer.instance == null){
 					Debug.Log("[Serializer] : Auto-creating Serializer Manager GameObject.");
 					Serializer.instance = path.AddComponent<Serializer>();
 				}
-				Serializer.instance = path.GetComponent<Serializer>();
 				Serializer.instance.Setup();
 			}
-			Events.Add("On Enter Play",Serializer.instance.Save);
-			Events.Add("On Asset Saving",Serializer.instance.Save);
-			Events.Add("On Asset Changed",Serializer.instance.Save);
-			//Events.Add("On Scene Loaded",Serializer.instance.Load);
-			Events.Add("On Level Was Loaded",Serializer.instance.Setup);
-			Events.Add("On Exit Play",Serializer.instance.Load);
 		}
 	}
 	#endif
 	[Flags] 
 	public enum SerializerDebug : int{
 		Build         = 0x001,
-		Save          = 0x002,
+		BuildDetailed = 0x002,
 		Load          = 0x004,
-		SaveDetailed  = 0x008,
-		BuildDetailed = 0x010,
-		LoadDetailed  = 0x020,
+		LoadDetailed  = 0x008,
+		Save          = 0x010,
+		SaveType      = 0x020,
+		SaveDetailed  = 0x040,
 	}
 	[ExecuteInEditMode]
 	public class Serializer : MonoBehaviour{
@@ -135,22 +136,20 @@ namespace Zios{
 			this.Save(Assembly.Load("Assembly-CSharp-Editor"));
 		}
 		public void Save(Assembly assembly){
-			if(this.debug.Has("Save")){Debug.Log("[Serializer] : Serializing assembly -- " + assembly.FullName.Split(",")[0]);}
 			foreach(Type type in assembly.GetTypes()){
 				if(type.IsEnum || type == null || type.Name.Contains("_AnonStorey")){continue;}
 				this.Save(type);
 			}
 		}
 		public void Save(Type type){
+			if(this.debug.Has("SaveType")){Debug.Log("[Serializer] : Serializing type -- " + type.Name);}
 			this.tabs = 0;
 			this.contents.Clear();
 			var file = FileManager.Find(type.Name+".cs",true,false);
 			string path = file != null ? file.folder+"/" : this.path;
 			string filePath = path+type.Name+".static";
-			//string assetPath = filePath.Substring(filePath.IndexOf("Assets"));
 			this.Add(type.FullName,"{");
 			bool empty = true;
-			//this.BuildDefault(type);
 			foreach(var item in this.GetVariables(type)){
 				if(this.Skip(type,item.Key,item.Value)){continue;}
 				if(this.debug.Has("Save")){Debug.Log("[Serializer] : " + type.Name + "." + item.Key + " = " + item.Value);}
@@ -159,22 +158,19 @@ namespace Zios{
 			}
 			this.Add("}");
 			if(!empty){
-				//bool exists = File.Exists(filePath);
 				Directory.CreateDirectory(path);
 				File.WriteAllText(filePath,this.contents.ToString());
-				//if(!exists){Utility.ImportAsset(assetPath);}
 				return;
 			}
 			if(File.Exists(filePath)){
 				if(this.debug.Has("Save")){Debug.Log("[Serializer] : Removing " + type.Name + ".static");}
 				File.Delete(filePath);
 				File.Delete(filePath+".meta");
-				//Utility.DeleteAsset(assetPath);
 			}
 		}
 		public bool Save(string name,object value){
 			var type = value.GetType();
-			if(type.IsValueType){
+			if(type.IsValueType || value is string){
 				this.Add(name," = ",value.ToString());
 				return true;
 			}
@@ -211,7 +207,8 @@ namespace Zios{
 			foreach(var file in FileManager.FindAll("*.static",true,false)){
 				if(this.debug.Has("Load")){Debug.Log("[Serializer] : Loading "+file.fullName);}
 				string contents = file.GetText();
-				var type = Type.GetType(contents.Parse("","{"));
+				var type = Utility.GetType(contents.Parse("","{"));
+				if(type.IsNull()){continue;}
 				foreach(string line in contents.Split("\n").Skip(1)){
 					if(line.IsEmpty() || line.ContainsAny("{","}")){continue;}
 					string name = line.Parse("","=");
