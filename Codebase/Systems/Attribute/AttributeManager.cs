@@ -122,6 +122,7 @@ namespace Zios{
 				}
 			}
 		}
+		public void OnDestroy(){Events.RemoveAll(this);}
 		//==============================
 		// Main
 		//==============================

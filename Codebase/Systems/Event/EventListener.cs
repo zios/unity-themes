@@ -13,9 +13,10 @@ namespace Zios{
 		public bool isStatic;
 		private bool warned;
 		public bool IsValid(){
-			bool nullTarget = this.target.IsNull() || (!this.isStatic && this.method.As<Delegate>().Target.IsNull());
+			var method = this.method.As<Delegate>();
+			bool nullTarget = this.target.IsNull() || (!this.isStatic && method.Target.IsNull());
 			if(nullTarget && !this.warned && Events.debug.Has("Call")){
-				Debug.LogWarning("[Events] Call attempted -- null object -- " + this.name);
+				Debug.LogWarning("[Events] Null call attempted -- " + this.name + " -- " + this.target + " -- " + Events.GetMethodName(method));
 				this.warned = true;
 			}
 			return !nullTarget;
