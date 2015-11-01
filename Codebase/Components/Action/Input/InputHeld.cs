@@ -9,6 +9,7 @@ namespace Zios{
 		public AttributeString inputName = "Button1";
 		public AttributeBool heldDuringIntensity = true;
 		public AttributeBool ignoreOwnership = false;
+		[Advanced] public AttributeFloat manual = Mathf.Infinity;
 		[Internal] public AttributeFloat intensity = 0;
 		[Internal] public bool held;
 		[NonSerialized] public int inputID;
@@ -21,6 +22,7 @@ namespace Zios{
 			this.heldDuringIntensity.Setup("Held During Intensity",this);
 			this.ignoreOwnership.Setup("Ignore Ownership",this);
 			this.intensity.Setup("Intensity",this);
+			this.manual.Setup("Manual Intensity",this);
 		}
 		public override void Use(){
 			bool inputSuccess = this.CheckInput();
@@ -42,17 +44,19 @@ namespace Zios{
 		}
 		public virtual bool CheckInput(){
 			string inputName = this.inputName;
+			float manual = this.manual.Get();
+			bool isManual = manual != Mathf.Infinity;
 			bool isOwner = this.ignoreOwnership || !InputState.HasOwner(inputName) || InputState.IsOwner(inputName,this.inputID);
-			if(!isOwner){return false;}
-			this.held = Input.GetAxisRaw(inputName) != 0;
-			this.intensity.Set(Input.GetAxis(inputName));
+			if(!isManual && !isOwner){return false;}
+			this.held = isManual ? manual != 0 : Input.GetAxisRaw(inputName) != 0;
+			this.intensity.Set(isManual ? manual : Input.GetAxis(inputName));
 			bool released = !this.held && this.lastHeld;
-			bool canEnd = (!this.heldDuringIntensity && released) || (this.heldDuringIntensity && intensity == 0);
+			bool canEnd = (!this.heldDuringIntensity && released) || (this.heldDuringIntensity && this.intensity == 0);
 			if(released && isOwner){InputState.ResetOwner(inputName);}
 			if(canEnd){return false;}
-			bool requirementMet = InputState.CheckRequirement(this.requirement,intensity);
+			bool requirementMet = InputState.CheckRequirement(this.requirement,this.intensity);
 			if(requirementMet){
-				bool held = this.heldDuringIntensity ? intensity != 0 : this.held;
+				bool held = this.heldDuringIntensity ? this.intensity != 0 : this.held;
 				if(!held){requirementMet = false;}
 			}
 			this.lastHeld = this.held;
