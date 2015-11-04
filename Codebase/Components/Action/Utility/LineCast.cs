@@ -2,7 +2,7 @@ using Zios;
 using System;
 using UnityEngine;
 namespace Zios{
-	[AddComponentMenu("Zios/Component/Action/Line Cast")]
+	[AddComponentMenu("Zios/Component/Action/Collisions/Line Cast")]
 	public class LineCast : StateMonoBehaviour{
 		public Color rayColor = Color.blue;
 		public AttributeVector3 source = Vector3.zero;

@@ -2,8 +2,7 @@ using Zios;
 using UnityEngine;
 using System;
 namespace Zios{
-	[Serializable][AddComponentMenu("")]
-	public enum StateOccurrence{Default,Constant,Once};
+	[AddComponentMenu("")]
 	public class StateMonoBehaviour : ManagedMonoBehaviour{
 		[Advanced] public StateOccurrence occurrence = StateOccurrence.Default;
 		[Internal] public StateTable controller;
@@ -64,4 +63,5 @@ namespace Zios{
 			this.CallEvent(state ? "On Start" : "On End");
 		}
 	}
+	public enum StateOccurrence{Default,Constant,Once};
 }

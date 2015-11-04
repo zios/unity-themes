@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 namespace Zios{
 	[AddComponentMenu("")]
-	public class AttributeBox<AttributeType> : DataMonoBehaviour
+	public class AttributeBox<AttributeType> : AttributeBox
 	where AttributeType : Zios.Attribute,new(){
 		public AttributeType value = new AttributeType();
 		public bool remember = false;
@@ -19,4 +19,6 @@ namespace Zios{
 			if(this.remember){this.Load();}
 		}
 	}
+	[AddComponentMenu("")]
+	public class AttributeBox : DataMonoBehaviour{}
 }

@@ -3,7 +3,7 @@ using System;
 using System.Linq;
 using UnityEngine;
 namespace Zios{
-	[AddComponentMenu("Zios/Component/Action/Spherecast (Target)")]
+	[AddComponentMenu("Zios/Component/Action/Collisions/Spherecast (Target)")]
 	public class SphereCastTarget : StateMonoBehaviour{
 		public AttributeGameObject source = new AttributeGameObject();
 		public AttributeFloat radius = 1;

@@ -2,7 +2,7 @@ using Zios;
 using System;
 using UnityEngine;
 namespace Zios{
-	[AddComponentMenu("Zios/Component/Action/Sweepcast")]
+	[AddComponentMenu("Zios/Component/Action/Collisions/Sweepcast")]
 	public class SweepCast : StateMonoBehaviour{
 		public AttributeGameObject source = new AttributeGameObject();
 		public AttributeVector3 direction = -Vector3.up;

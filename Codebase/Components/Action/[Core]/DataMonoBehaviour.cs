@@ -8,7 +8,7 @@ using System.Linq;
 using UnityEditor;
 #endif
 namespace Zios{
-	[ExecuteInEditMode]
+	[ExecuteInEditMode][AddComponentMenu("")]
 	public class DataMonoBehaviour : MonoBehaviour{
 		public static GameObject[] sorting;
 		public static int processIndex;
@@ -23,6 +23,9 @@ namespace Zios{
 			this.parentPath = this.gameObject.GetPath();
 			this.location = this.GetPath();
 			this.lastAlias = this.alias = this.alias.SetDefault(name);
+			while(Locate.GetObjectComponents<DataMonoBehaviour>(this.gameObject).Exists(x=>x != this && x.alias == this.alias)){
+				this.lastAlias = this.alias = this.alias.ToLetterSequence();
+			}
 			if(!Application.isPlaying){
 				Events.Register("On Destroy",this);
 				Events.Register("On Validate",this);

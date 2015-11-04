@@ -56,7 +56,7 @@ namespace Zios{
 		SaveType      = 0x020,
 		SaveDetailed  = 0x040,
 	}
-	[ExecuteInEditMode]
+	[ExecuteInEditMode][AddComponentMenu("")]
 	public class Serializer : MonoBehaviour{
 		public static Serializer instance;
 		public static Serializer Get(){return Serializer.instance;}

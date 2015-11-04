@@ -4,6 +4,7 @@ using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityObject = UnityEngine.Object;
+[AddComponentMenu("")]
 public class PC2Controller : MonoBehaviour{
 	public UnityObject file;
 	public GameObject target;

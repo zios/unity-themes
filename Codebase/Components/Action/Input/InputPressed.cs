@@ -3,7 +3,7 @@ using Zios;
 using System;
 using System.Collections.Generic;
 namespace Zios{
-	[AddComponentMenu("Zios/Component/Action/Input Pressed")]
+	[AddComponentMenu("Zios/Component/Action/Input/Input Pressed")]
 	public class InputPressed : StateMonoBehaviour{
 		public InputRange requirement;
 		public AttributeString inputName = "Button1";

@@ -10,6 +10,14 @@ namespace Zios{
 		// Conversion
 		//============================
 		public static GUIContent ToContent(this string current){return new GUIContent(current);}
+		public static string ToLetterSequence(this string current){
+			char lastDigit = current[current.Length-1];
+			if(current.Length > 1 && current[current.Length-2] == ' ' && char.IsLetter(lastDigit)){
+				char nextLetter = (char)(char.ToUpper(lastDigit)+1);
+				return current.TrimEnd(lastDigit) + nextLetter;
+			}
+			return current + " B";
+		}
 		public static string ToMD5(this string current){
 			byte[] bytes = Encoding.UTF8.GetBytes(current);
 			byte[] hash = MD5.Create().ComputeHash(bytes);

@@ -2,7 +2,7 @@ using Zios;
 using System;
 using UnityEngine;
 namespace Zios{
-	[AddComponentMenu("Zios/Component/Action/Raycast (Target)")]
+	[AddComponentMenu("Zios/Component/Action/Collisions/Raycast (Target)")]
 	public class RayCastTarget : StateMonoBehaviour{
 		public AttributeGameObject source = new AttributeGameObject();
 		public AttributeVector3 direction = -Vector3.up;

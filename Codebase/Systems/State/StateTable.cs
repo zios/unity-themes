@@ -5,7 +5,7 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityObject = UnityEngine.Object;
 namespace Zios{
-	[AddComponentMenu("Zios/Component/Action/*/State Table")]
+	[AddComponentMenu("Zios/Component/Action/State Table")]
 	public class StateTable : StateMonoBehaviour{
 		public static bool debug;
 		public StateRow[] table = new StateRow[0];

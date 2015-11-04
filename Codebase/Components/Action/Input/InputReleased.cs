@@ -3,7 +3,7 @@ using Zios;
 using System;
 using System.Collections.Generic;
 namespace Zios{
-	[AddComponentMenu("Zios/Component/Action/Input Released")]
+	[AddComponentMenu("Zios/Component/Action/Input/Input Released")]
 	public class InputReleased : StateMonoBehaviour{
 		public AttributeString inputName = "Button1";
 		public override void Awake(){

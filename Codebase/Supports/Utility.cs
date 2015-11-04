@@ -188,6 +188,11 @@ namespace Zios{
 			#endif
 		}
 		public static void Destroy(UnityObject target){
+			if(target.IsNull()){return;}
+			if(target is Component){
+				var component = target.As<Component>();
+				if(component.gameObject.IsNull()){return;}
+			}
 			if(!Application.isPlaying){UnityObject.DestroyImmediate(target,true);}
 			else{UnityObject.Destroy(target);}
 		}

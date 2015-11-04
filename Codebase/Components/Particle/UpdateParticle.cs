@@ -1,5 +1,5 @@
 using UnityEngine;
-[ExecuteInEditMode]
+[ExecuteInEditMode][AddComponentMenu("Zios/Component/Rendering/Update Particle")]
 public class UpdateParticle : MonoBehaviour{
 	#if UNITY_EDITOR
 	public void OnWillRenderObject(){

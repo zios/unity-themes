@@ -16,6 +16,7 @@ namespace Zios{
 			return current.gameObject.GetParent();
 		}
 		public static string GetPath(this Component current,bool includeSelf=true){
+			if(current.IsNull() || current.gameObject.IsNull()){return "Null";}
 			string path = current.gameObject.GetPath();
 			if(includeSelf){path += current.GetAlias();}
 			return path;
