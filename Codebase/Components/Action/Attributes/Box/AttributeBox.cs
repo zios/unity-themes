@@ -1,10 +1,8 @@
-using Zios;
-using System.Collections;
 using UnityEngine;
 namespace Zios{
 	[AddComponentMenu("")]
 	public class AttributeBox<AttributeType> : AttributeBox
-	where AttributeType : Zios.Attribute,new(){
+	where AttributeType : Attribute,new(){
 		public AttributeType value = new AttributeType();
 		public bool remember = false;
 		public void OnApplicationQuit(){

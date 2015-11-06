@@ -89,6 +89,7 @@ namespace Zios{
 	//=======================
 	// Main
 	//=======================
+	[AddComponentMenu("")]
 	public class Events : EventDetector{
 		[EnumMask] public static EventDisabled disabled;
 		[EnumMask] public static EventDebugScope debugScope;
@@ -220,7 +221,8 @@ namespace Zios{
 			}
 			targets = Events.VerifyAll(targets);
 			var listener = Events.empty;
-			foreach(object target in targets){
+			foreach(object current in targets){
+				var target = current;
 				if(target.IsNull()){continue;}
 				if(Events.unique.ContainsKey(target) && Events.unique[target].ContainsKey(name)){
 					listener = Events.unique[target][name];
@@ -239,16 +241,15 @@ namespace Zios{
 					listener = Events.cache[target][name].AddNew(method);
 				}
 				if(delayed){
-					object realTarget = target;
 					listener.name = "On Events Reset";
 					listener.method = (Method)(()=>{
-						var newEvent = Events.Add(name,method,amount,realTarget);
+						var newEvent = Events.Add(name,method,amount,target);
 						newEvent.SetPermanent(listener.permanent);
 						newEvent.SetUnique(listener.unique);
 						listener.SetPermanent(false);
 						listener.SetUnique(false);
 					});
-					listener.target = Events.global;
+					listener.target = target = Events.global;
 					listener.occurrences = 1;
 				}
 				else{
@@ -258,7 +259,7 @@ namespace Zios{
 					listener.occurrences = amount;
 					listener.isStatic = ((Delegate)method).Target.IsNull();
 				}
-				Events.cache.AddNew(listener.target).AddNew(listener.name)[listener.method] = listener;
+				Events.cache.AddNew(target).AddNew(listener.name)[listener.method] = listener;
 				Events.cache.AddNew(Events.all).AddNew(listener.name)[listener.method] = listener;
 			}
 			return listener;
@@ -373,7 +374,7 @@ namespace Zios{
 			if(debugTime && (!debugDeep || count < 1)){
 				duration = Time.realtimeSinceStartup - duration;
 				string time = duration.ToString("F10").TrimRight("0",".").Trim() + " seconds.";
-				string message = "[Events] : " + name + " -- " + count + " events -- " + time;
+				string message = "[Events] : " + Events.GetTargetName(target) + " -- " + name + " -- " + count + " events -- " + time;
 				Debug.Log(message,target as UnityObject);
 			}
 		}

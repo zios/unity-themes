@@ -1,5 +1,4 @@
 using UnityEngine;
-using Zios;
 namespace Zios{
 	[AddComponentMenu("")]
 	public class AttributeStringData : AttributeData<string,AttributeString,AttributeStringData>{
@@ -15,5 +14,6 @@ namespace Zios{
 			else if(special == "Capitalize"){return value.Capitalize();}
 			return value;
 		}
+		public override void Serialize(){this.rawValue = this.value;}
 	}
 }

@@ -10,7 +10,6 @@ namespace Zios.UI{
 			var dependents = target.dependents;
 			bool targetsMissing = false;
 			string message = "";
-			Events.Add("On Validate",this.Repaint,target);
 			foreach(var dependent in dependents){
 				if(dependent.exists){continue;}
 				message = dependent.message;

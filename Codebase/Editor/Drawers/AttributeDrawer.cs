@@ -4,7 +4,6 @@ using UnityEditor;
 using System;
 using System.Linq;
 using System.Reflection;
-using System.Collections;
 using System.Collections.Generic;
 using MenuFunction = UnityEditor.GenericMenu.MenuFunction;
 using UnityObject = UnityEngine.Object;
@@ -100,14 +99,11 @@ namespace Zios.UI{
 			this.label = label;
 			Rect fullRect = area.SetHeight(EditorGUIUtility.singleLineHeight);
 			this.SetupAreas(fullRect);
-			List<UnityObject> sources = new List<UnityObject>(){property.serializedObject.targetObject};
-			foreach(var data in this.attribute.data){
-				if(!data.IsNull()){sources.Add(data);}
-			}
-			Undo.RecordObjects(sources.ToArray(),"Attribute Changes");
+			//Undo.RecordObject(this.attribute.info.parent,"Attribute Changes");
 			this.Draw();
-			if(this.dirty){
-				property.serializedObject.ApplyModifiedProperties();
+			if(GUI.changed || this.dirty){
+				this.attribute.info.parent.DelayEvent(this.attribute.info.fullPath,"On Validate",1);
+				property.serializedObject.Update();
 				Utility.SetDirty(property.serializedObject.targetObject);
 				Utility.RepaintInspectors();
 				this.dirty = false;
@@ -123,8 +119,6 @@ namespace Zios.UI{
 		public virtual void Draw(){
 			AttributeData firstData = this.attributeCast.GetFirst();
 			if(firstData.IsNull()){return;}
-			SerializedObject firstProperty = Utility.GetSerializedObject(firstData);
-			firstProperty.Update();
 			this.DrawContext(firstData);
 			if(this.attribute.info.mode == AttributeMode.Normal){
 				if(firstData.usage == AttributeUsage.Direct){
@@ -133,18 +127,14 @@ namespace Zios.UI{
 				if(firstData.usage == AttributeUsage.Shaped){
 					GUI.Box(this.iconRect,"",GUI.skin.GetStyle("IconShaped"));
 					this.labelRect = this.labelRect.AddX(16);
-					this.DrawShaped(this.valueRect,firstProperty,this.label,true);
+					this.DrawShaped(this.valueRect,firstData,this.label,true);
 				}
 			}
 			if(this.attribute.info.mode == AttributeMode.Linked){
 				this.attributeCast.usage = AttributeUsage.Shaped;
 				GUI.Box(this.iconRect,"",GUI.skin.GetStyle("IconLinked"));
 				this.labelRect = this.labelRect.AddX(16);
-				this.DrawShaped(this.valueRect,firstProperty,this.label,true);
-			}
-			if(GUI.changed){
-				firstData.DelayEvent(firstData.location,"On Validate",1);
-				Utility.SetDirty(firstData);
+				this.DrawShaped(this.valueRect,firstData,this.label,true);
 			}
 			if(this.attribute.info.mode == AttributeMode.Formula){
 				this.DrawGroup(this.label,true);
@@ -189,17 +179,15 @@ namespace Zios.UI{
 			}
 			EditorGUIUtility.labelWidth = labelSize;
 		}
-		public virtual void DrawShaped(Rect area,SerializedObject property,GUIContent label,bool? drawSpecial=null,bool? drawOperator=null){
+		public virtual void DrawShaped(Rect area,AttributeData data,GUIContent label,bool? drawSpecial=null,bool? drawOperator=null){
 			label.DrawLabel(labelRect);
-			AttributeData data = (AttributeData)property.targetObject;
-			Target target = data.target;
 			Rect toggleRect = area.SetWidth(16);
 			bool toggleActive = this.targetMode.ContainsKey(data) ? this.targetMode[data] : !data.referenceID.IsEmpty();
 			this.targetMode[data] = toggleActive.Draw(toggleRect,"",GUI.skin.GetStyle("CheckmarkToggle"));
 			if(!this.targetMode[data]){
 				Rect targetRect = area.Add(18,0,-18,0);
 				bool ticked = GUI.changed;
-				property.FindProperty("target").Draw(targetRect);
+				TargetDrawer.Draw(targetRect,data.target,new GUIContent(""));
 				if(this.attribute is AttributeGameObject && !ticked && GUI.changed){
 					data.referenceID = "";
 					data.referencePath = "";
@@ -210,12 +198,12 @@ namespace Zios.UI{
 			List<string> attributeNames = new List<string>();
 			List<string> attributeIDs = new List<string>();
 			int attributeIndex = -1;
-			GameObject targetScope = target.Get();
+			GameObject targetScope = data.target.Get();
 			if(!targetScope.IsNull() && Attribute.lookup.ContainsKey(targetScope)){
 				var lookup = Attribute.lookup[targetScope];
 				foreach(var item in lookup){
 					if(item.Value.data.Length < 1){continue;}
-					if(item.Value.info.dataType != data.GetType()){continue;}
+					if(item.Value.info.type != data.GetType()){continue;}
 					bool isSelf = (item.Value.info.id == this.attribute.info.id) || (item.Value.data[0].referenceID == this.attribute.info.id);
 					if(!isSelf){
 						attributeNames.Add(item.Value.info.path);
@@ -234,6 +222,7 @@ namespace Zios.UI{
 					attributeIndex = attributeIDs.IndexOf(data.referenceID);
 				}
 			}
+			else{this.attributeNames.Clear();}
 			if(this.attributeNames.Count > 0){
 				Rect line = area;
 				bool showSpecial = drawSpecial != null && (EditorPrefs.GetBool(data.path+"Advanced") || data.special != 0);
@@ -265,7 +254,7 @@ namespace Zios.UI{
 			else{
 				Rect warningRect = area.Add(18,0,-18,0);
 				string targetName = targetScope == null ? "Target" : targetScope.ToString().Remove("(UnityEngine.GameObject)").Trim();
-				string typeName = data.GetVariableType("value").Name.Replace("Single","Float").Replace("Int32","Int");
+				string typeName = data.GetType().Name.Trim("Attribute","Data");
 				string message = "<b>" + targetName.Truncate(24) + "</b> has no <b>"+typeName+"</b> attributes.";
 				message.DrawLabel(warningRect,GUI.skin.GetStyle("WarningLabel"));
 			}
@@ -338,8 +327,6 @@ namespace Zios.UI{
 		}
 		public virtual void DrawGroupRow(AttributeData data,int index,bool drawAdvanced){
 			float lineHeight = EditorGUIUtility.singleLineHeight+2;
-			SerializedObject currentProperty = Utility.GetSerializedObject(data);
-			currentProperty.Update();
 			//GUIContent formulaLabel = new GUIContent(((char)('A'+index)).ToString());
 			GUIContent formulaLabel = new GUIContent(" ");
 			this.SetupAreas(this.fullRect.AddY(lineHeight));
@@ -352,12 +339,10 @@ namespace Zios.UI{
 				this.DrawDirect(this.fullRect,this.valueRect,data,formulaLabel,drawAdvanced,operatorState);
 			}
 			else if(data.usage == AttributeUsage.Shaped){
-				this.DrawShaped(this.valueRect,currentProperty,formulaLabel,drawAdvanced,operatorState);
+				this.DrawShaped(this.valueRect,data,formulaLabel,drawAdvanced,operatorState);
 			}
 			this.DrawContext(data,index!=0,false);
 			if(GUI.changed){
-				currentProperty.ApplyModifiedProperties();
-				Utility.SetDirty(data);
 				this.dirty = true;
 				GUI.changed = false;
 			}

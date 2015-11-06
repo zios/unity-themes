@@ -1,15 +1,17 @@
 using UnityEngine;
 using UnityEditor;
-using System.Collections;
-using System.Collections.Generic;
 namespace Zios.UI{
 	[CustomPropertyDrawer(typeof(Target),true)]
 	public class TargetDrawer : PropertyDrawer{
 		public bool setup;
 		public override void OnGUI(Rect area,SerializedProperty property,GUIContent label){
+			property.serializedObject.Update();
 			string skin = EditorGUIUtility.isProSkin ? "Dark" : "Light";
 			GUI.skin = FileManager.GetAsset<GUISkin>("Gentleface-" + skin + ".guiskin");
 			Target target = property.GetObject<Target>();
+			TargetDrawer.Draw(area,target,label);
+		}
+		public static void Draw(Rect area,Target target,GUIContent label){
 			Rect toggleRect = new Rect(area);
 			Rect propertyRect = new Rect(area);
 			float labelWidth = label.text.IsEmpty() ? 0 : EditorGUIUtility.labelWidth;
@@ -51,8 +53,8 @@ namespace Zios.UI{
 				target.Search();
 				if(target.parent is DataMonoBehaviour){
 					var parent = target.parent.As<DataMonoBehaviour>();
-					parent.DelayEvent(parent.location,"On Validate");
-					Utility.SetDirty(parent,false,true);
+					parent.DelayEvent(parent.path,"On Validate");
+					Utility.SetDirty(parent);
 				}
 			}
 		}

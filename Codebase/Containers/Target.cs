@@ -56,8 +56,7 @@ namespace Zios{
 					this.AddSpecial("[Controller]",stateObject);
 					this.AddSpecial("[State]",state.gameObject);
 				}
-				string defaultSearch = Target.defaultSearch;
-				this.SetFallback(defaultSearch);
+				this.SetFallback(Target.defaultSearch);
 				if(this.mode == TargetMode.Search && this.search.IsEmpty()){
 					this.Search();
 				}
@@ -96,8 +95,8 @@ namespace Zios{
 					for(int index=0;index<parts.Length;++index){
 						string part = parts[index];
 						current = GameObject.Find(total);
-						if(part == ".." || part == "." || part.IsEmpty()){
-							if(part.IsEmpty()){continue;}
+						if(part.IsEmpty()){continue;}
+						if(part == ".." || part == "."){
 							if(total.IsEmpty()){
 								int specialIndex = this.specialNames.FindIndex(x=>x.Contains("[this]",true));
 								current = specialIndex != -1 ? this.special[index] : null;

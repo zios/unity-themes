@@ -33,5 +33,6 @@ namespace Zios{
 			}
 			return value;
 		}
+		public override void Serialize(){this.rawValue = this.value.ToString();}
 	}
 }

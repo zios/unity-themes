@@ -1,5 +1,4 @@
 #pragma warning disable 0618
-using Zios;
 using UnityEngine;
 using System;
 using System.Collections.Generic;
@@ -13,7 +12,7 @@ namespace Zios{
 		public static GameObject[] sorting;
 		public static int processIndex;
 		[Internal] public string parentPath;
-		[Internal] public string location;
+		[Internal] public string path;
 		public string alias;
 		private string lastAlias;
 		private bool setup;
@@ -21,7 +20,7 @@ namespace Zios{
 		public virtual void Awake(){
 			string name = this.GetType().Name.ToTitle();
 			this.parentPath = this.gameObject.GetPath();
-			this.location = this.GetPath();
+			this.path = this.GetPath();
 			this.lastAlias = this.alias = this.alias.SetDefault(name);
 			while(Locate.GetObjectComponents<DataMonoBehaviour>(this.gameObject).Exists(x=>x != this && x.alias == this.alias)){
 				this.lastAlias = this.alias = this.alias.ToLetterSequence();
@@ -66,7 +65,7 @@ namespace Zios{
 		}
 		public virtual void OnValidate(){
 			if(!this.CanValidate() || !this.setup){return;}
-			this.DelayEvent(this.location,"On Validate",1);
+			this.DelayEvent(this.path,"On Validate",1);
 			this.gameObject.DelayEvent(this.parentPath,"On Components Changed");
 		}
 		public virtual void OnDestroy(){

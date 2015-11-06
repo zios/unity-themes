@@ -22,6 +22,7 @@ namespace Zios{
 				Events.Add("On Level Was Loaded",AttributeManager.instance.Awake);
 				Events.Add("On Editor Update",AttributeManager.instance.EditorUpdate);
 			}
+			AttributeManager.Refresh();
 		}
 		public static void Create(){
 			if(AttributeManagerHook.setup || Application.isPlaying){return;}
@@ -58,43 +59,17 @@ namespace Zios{
 		// Editor
 		//==============================
 		#if UNITY_EDITOR
-		[MenuItem("Zios/Process/Attribute/Remove Visible Data")]
-		public static void RemoveVisibleData(){AttributeManager.RemoveAttributeData(true);}
-		[MenuItem("Zios/Process/Attribute/Remove All Data")]
-		public static void RemoveAttributeData(bool visibleOnly=false){
-			var objects = Locate.GetSceneObjects();
-			foreach(UnityObject current in objects){
-				GameObject gameObject = (GameObject)current;
-				foreach(AttributeData data in Locate.GetObjectComponents<AttributeData>(gameObject)){
-					bool canDestroy = !visibleOnly || (visibleOnly && !data.hideFlags.Contains(HideFlags.HideInInspector));
-					if(canDestroy){
-						Utility.Destroy(data);
-					}
-				}
-			}
-		}
-		[MenuItem("Zios/Process/Attribute/Hide All Data %3")]
-		public static void HideAttributeData(){
-			Debug.Log("[AttributeManager] Hiding AttributeData.");
-			PlayerPrefs.SetInt("Attribute-ShowData",0);
-			AttributeManager.PerformRefresh();
-		}
-		[MenuItem("Zios/Process/Attribute/Show All Data %2")]
-		public static void ShowAttributeData(){
-			Debug.Log("[AttributeManager] Unhiding AttributeData.");
-			PlayerPrefs.SetInt("Attribute-ShowData",1);
-			AttributeManager.PerformRefresh();
-		}
 		[ContextMenu("Refresh")]
 		public void ContextRefresh(){
 			AttributeManager.PerformRefresh();
 		}
 		[MenuItem("Zios/Process/Attribute/Full Refresh %1")]
 		#endif
-		public static void PerformRefresh(){
+		public static void PerformRefresh(){AttributeManager.Refresh();}
+		public static void Refresh(int delay = 0){
 			if(Application.isPlaying || AttributeManager.disabled){return;}
 			Events.Call("On Attributes Refresh");
-			AttributeManager.nextRefresh = Time.realtimeSinceStartup + 1;
+			AttributeManager.nextRefresh = Time.realtimeSinceStartup + delay;
 		}
 		//==============================
 		// Unity
@@ -173,16 +148,7 @@ namespace Zios{
 			if(this.nextIndex > this.data.Length-1){
 				this.stage = 2;
 				this.nextIndex = 0;
-				if(!Application.isPlaying){
-					if(Attribute.debug.Has("ProcessTime")){this.DisplayStageTime("[AttributeManager] Stage 1 (Awake)");}
-					if(Attribute.debug.Has("ProcessStage")){Utility.EditorLog("[AttributeManager] Stage 1b (Validate) start...");}
-					foreach(DataMonoBehaviour entry in this.data){
-						if(!entry.IsNull() && entry is AttributeData){
-							((AttributeData)entry).Purge();
-						}
-					}
-				}
-				if(Attribute.debug.Has("ProcessTime")){this.DisplayStageTime("[AttributeManager] Stage 1b (Validate)");}
+				if(Attribute.debug.Has("ProcessTime")){this.DisplayStageTime("[AttributeManager] Stage 1 (Awake)");}
 				if(Attribute.debug.Has("ProcessStage")){Utility.EditorLog("[AttributeManager] Stage 2 (Build Lookup) start...");}
 				return;
 			}
@@ -216,14 +182,12 @@ namespace Zios{
 						this.DisplayStageTime("[AttributeManager] Stage 3 (Build Data)");
 						Utility.EditorLog("[AttributeManager] Refresh Complete : " + (Time.realtimeSinceStartup - this.start) + " seconds.");
 					}
-					if(Attribute.debug.Has("ProcessRefresh")){
-						Utility.EditorLog("[AttributeManager] AttributeData Count : " + this.data.Count(x=>x is AttributeData));
-					}
 				}
-				Utility.RepaintInspectors();
 				Attribute.ready = true;
 				AttributeManager.percentLoaded = 1;
 				Events.Call("On Attributes Ready");
+				//Utility.RebuildInspectors();
+				Utility.RepaintInspectors();
 				this.stage = 0;
 				this.nextIndex = 0;
 				return;

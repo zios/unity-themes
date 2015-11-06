@@ -24,6 +24,7 @@ namespace Zios{
 			return BitConverter.ToString(hash).Replace("-","");
 		}
 		public static Vector3 ToVector3(this string current){
+			if(!current.Contains(",")){return Vector3.zero;}
 			string[] split = current.Remove("(",")"," ").Split(",");
 			float x = split[0].ToFloat();
 			float y = split[1].ToFloat();
@@ -43,16 +44,20 @@ namespace Zios{
 			return current[0].ToString().ToLower() + current.Substring(1).Remove(" ");
 		}
 		public static int ToInt(this string current){
+			if(current.IsEmpty()){return 0;}
 			return Convert.ToInt32(current);
 		}
 		public static float ToFloat(this string current){
+			if(current.IsEmpty()){return 0;}
 			return Convert.ToSingle(current);
 		}
 		public static bool ToBool(this string current){
+			if(current.IsEmpty()){return false;}
 			string lower = current.ToLower();
-			return lower != "false" || lower != "f" || lower != "0";
+			return lower != "false" && lower != "f" && lower != "0";
 		}
 		public static Color ToColor(this string current){
+			if(!current.Contains(",")){return Color.white;}
 			bool commaSplit = current.Contains(",");
 			bool spaceSplit = current.Contains(" ");
 			if(commaSplit || spaceSplit){

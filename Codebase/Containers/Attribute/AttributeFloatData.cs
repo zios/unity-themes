@@ -19,5 +19,6 @@ namespace Zios{
 			else if(special == "Sqrt"){return Mathf.Sqrt(value);}
 			return value;
 		}
+		public override void Serialize(){this.rawValue = this.value.ToString();}
 	}
 }

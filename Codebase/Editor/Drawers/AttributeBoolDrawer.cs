@@ -1,9 +1,5 @@
-using Zios;
 using UnityEngine;
 using UnityEditor;
-using System;
-using System.Linq;
-using System.Collections.Generic;
 namespace Zios.UI{
 	[CustomPropertyDrawer(typeof(AttributeBool),true)]
 	public class AttributeBoolDrawer : AttributeDrawer{
@@ -43,7 +39,6 @@ namespace Zios.UI{
 			this.attribute.canDirect = false;
 			this.DrawFormulaPart(data,index);
 			if(GUI.changed){
-				Utility.SetDirty(data);
 				this.dirty = true;
 				GUI.changed = false;
 			}
@@ -82,7 +77,6 @@ namespace Zios.UI{
 		}
 		public void DrawFormulaPart(AttributeData data,int index){
 			//string name = emptyLabel ? " " : ((char)('A'+index)).ToString();
-			var currentProperty = Utility.GetSerializedObject(data);
 			GUIContent formulaLabel = new GUIContent(" ");
 			bool? operatorState = index == 0 ? (bool?)false : (bool?)true;
 			if(data.usage == AttributeUsage.Direct){
@@ -90,9 +84,8 @@ namespace Zios.UI{
 				this.DrawDirect(this.fullRect,this.valueRect,data,formulaLabel,true,operatorState);
 			}
 			else if(data.usage == AttributeUsage.Shaped){
-				this.DrawShaped(this.valueRect,currentProperty,formulaLabel,true,operatorState);
+				this.DrawShaped(this.valueRect,data,formulaLabel,true,operatorState);
 			}
-			if(GUI.changed){Utility.SetDirty(data);}
 			this.DrawContext(data,index!=0,false);
 		}
 	}

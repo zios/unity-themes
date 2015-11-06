@@ -1,5 +1,5 @@
 Zios.UI.StaticInspector{
 	currentAssembly = Assembly-CSharp
 	currentNamespace = Zios
-	currentClass = Attribute
+	currentClass = Target
 }

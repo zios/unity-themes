@@ -12,7 +12,7 @@ namespace Zios{
 		public static implicit operator GameObject(AttributeGameObject current){return current.Get();}
 		public override GameObject Get(){
 			if(this.getMethod != null){return this.getMethod();}
-			AttributeGameObjectData data = this.GetFirstRaw();
+			AttributeGameObjectData data = this.GetFirst();
 			if(data.IsNull()){return null;}
 			if(this.usage == AttributeUsage.Shaped && data.reference.IsNull()){
 				return data.target.Get();

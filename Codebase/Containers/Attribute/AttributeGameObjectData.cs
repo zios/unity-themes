@@ -29,5 +29,6 @@ namespace Zios{
 			if(attribute.mode == AttributeMode.Linked){return this.value;}
 			return this.HandleSpecial();
 		}
+		public override void Serialize(){this.rawValue = this.value.GetPath();}
 	}
 }

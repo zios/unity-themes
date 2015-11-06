@@ -1,61 +1,27 @@
 #pragma warning disable 0618
-using Zios;
 using System;
-using System.Linq;
+using System.Text;
 using UnityEngine;
 namespace Zios{
-	[AddComponentMenu("")]
-	public class AttributeData : DataMonoBehaviour{
+	[Serializable][AddComponentMenu("")]
+	public class AttributeData{
 		public Target target = new Target();
 		public AttributeUsage usage;
 		public string path;
 		public string referenceID;
 		public string referencePath;
-		public AttributeInfo attribute;
-		public Attribute attributeRaw;
 		public int operation;
 		public int special;
+		public string rawValue = "";
+		public string rawType;
+		[NonSerialized] public AttributeInfo attribute;
 		[NonSerialized] public Attribute reference;
-		public override void Awake(){}
-		public void Setup(){
-			if(!this.attribute.IsNull() && !this.attribute.parent.IsNull()){
-				this.target.Setup(this.attribute.path+"/Target",this.attribute.parent);
-				if(!Application.isPlaying && this.attribute.parent is DataMonoBehaviour){
-					var parent = this.attribute.parent.As<DataMonoBehaviour>();
-					Events.Add("On Destroy",this.OnDestroy,parent);
-					Events.Add("On Validate",parent.OnValidate,this);
-					Events.Add("On Validate",(Method)this.Purge,parent);
-				}
-			}
-		}
-		public override void OnDestroy(){
-			if(Application.isPlaying || Application.isLoadingLevel){return;}
-			base.OnDestroy();
-			Events.Remove("On Destroy",this.OnDestroy,this.attribute.parent);
-			if(this.attribute != null){
-				this.attribute.data = this.attribute.data.Remove(this);
-				this.attribute.dataB = this.attribute.dataB.Remove(this);
-				this.attribute.dataC = this.attribute.dataC.Remove(this);
-			}
-		}
-		public virtual void Purge(){
-			if(this.attribute.IsNull()){this.Purge("Null Attribute");}
-			else if(this.attribute.parent.IsNull()){this.Purge("Null Parent");}
-			else if(this.attribute.parent.gameObject.IsNull()){this.Purge("Null GameObject");}
-			else if(this.attribute.parent.gameObject != this.gameObject){this.Purge("Wrong Scope");}
-			else if(!this.hideFlags.Contains(HideFlags.HideInInspector) && PlayerPrefs.GetInt("Attribute-ShowData") == 0){this.Purge("Visible");}
-			else if(!this.attribute.data.Contains(this) && !this.attribute.dataB.Contains(this) && !this.attribute.dataC.Contains(this)){this.Purge("Not In Attribute");}
-		}
-		public void Purge(string reason){
-			if(Attribute.debug.Has("Issue")){Debug.Log("[AttributeData] Clearing defunct data -- " + reason + ".");}
-			Utility.Destroy(this);
-		}
 		public virtual bool CanCache(){return true;}
-		public virtual AttributeData Copy(GameObject target){return default(AttributeData);}
+		public virtual void Serialize(){}
 	}
 	public class AttributeData<BaseType,AttributeType,DataType> : AttributeData
-		where DataType : AttributeData<BaseType,AttributeType,DataType>
-		where AttributeType : Attribute<BaseType,AttributeType,DataType>{
+		where DataType : AttributeData<BaseType,AttributeType,DataType>,new()
+		where AttributeType : Attribute<BaseType,AttributeType,DataType>,new(){
 		public BaseType value;
 		public virtual BaseType HandleSpecial(){return default(BaseType);}
 		public override bool CanCache(){
