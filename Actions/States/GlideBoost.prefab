@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentPath: 
-  location: 
+  path: 
   alias: Attribute String Data
   target:
     search: ../@Settings
@@ -160,10 +160,10 @@ MonoBehaviour:
     parent: {fileID: 11438858}
     mode: 0
     linkType: 0
-    data:
+    oldData:
     - {fileID: 11400754}
-    dataB: []
-    dataC: []
+    oldDataB: []
+    oldDataC: []
   attributeRaw:
     info:
       name: 
@@ -173,9 +173,9 @@ MonoBehaviour:
       parent: {fileID: 0}
       mode: 0
       linkType: 0
-      data: []
-      dataB: []
-      dataC: []
+      oldData: []
+      oldDataB: []
+      oldDataC: []
   operation: 0
   special: 0
   value: GlideForward
@@ -194,7 +194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentPath: /GlideBoost (1)/Main/
-  location: /GlideBoost (1)/Main/Dash Warmup
+  path: /GlideBoost (1)/Main/Dash Warmup
   alias: Dash Warmup
   rate: 2
   occurrence: 0
@@ -209,10 +209,10 @@ MonoBehaviour:
       parent: {fileID: 11408582}
       mode: 0
       linkType: 0
-      data:
+      oldData:
       - {fileID: 11453088}
-      dataB: []
-      dataC: []
+      oldDataB: []
+      oldDataC: []
   inUse:
     info:
       name: Active
@@ -222,10 +222,10 @@ MonoBehaviour:
       parent: {fileID: 11408582}
       mode: 0
       linkType: 0
-      data:
+      oldData:
       - {fileID: 11457094}
-      dataB: []
-      dataC: []
+      oldDataB: []
+      oldDataC: []
   used:
     info:
       name: Used
@@ -235,10 +235,10 @@ MonoBehaviour:
       parent: {fileID: 11408582}
       mode: 0
       linkType: 0
-      data:
+      oldData:
       - {fileID: 11417584}
-      dataB: []
-      dataC: []
+      oldDataB: []
+      oldDataC: []
   type: 0
   seconds:
     info:
@@ -249,10 +249,10 @@ MonoBehaviour:
       parent: {fileID: 11408582}
       mode: 0
       linkType: 0
-      data:
+      oldData:
       - {fileID: 11466466}
-      dataB: []
-      dataC: []
+      oldDataB: []
+      oldDataC: []
   isStarted:
     info:
       name: Is Started
@@ -262,10 +262,10 @@ MonoBehaviour:
       parent: {fileID: 11408582}
       mode: 0
       linkType: 0
-      data:
+      oldData:
       - {fileID: 11489336}
-      dataB: []
-      dataC: []
+      oldDataB: []
+      oldDataC: []
   isComplete:
     info:
       name: Is Complete
@@ -275,10 +275,10 @@ MonoBehaviour:
       parent: {fileID: 11408582}
       mode: 0
       linkType: 0
-      data:
+      oldData:
       - {fileID: 11453968}
-      dataB: []
-      dataC: []
+      oldDataB: []
+      oldDataC: []
 --- !u!114 &11410670
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -291,7 +291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentPath: 
-  location: 
+  path: 
   alias: Attribute Bool Data
   target:
     search: ../@Settings
@@ -312,10 +312,10 @@ MonoBehaviour:
     parent: {fileID: 11497042}
     mode: 0
     linkType: 0
-    data:
+    oldData:
     - {fileID: 11410670}
-    dataB: []
-    dataC: []
+    oldDataB: []
+    oldDataC: []
   attributeRaw:
     info:
       name: 
@@ -325,9 +325,9 @@ MonoBehaviour:
       parent: {fileID: 0}
       mode: 0
       linkType: 0
-      data: []
-      dataB: []
-      dataC: []
+      oldData: []
+      oldDataB: []
+      oldDataC: []
   operation: 0
   special: 0
   value: 0
@@ -343,7 +343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentPath: 
-  location: 
+  path: 
   alias: Attribute Float Data
   target:
     search: ../@Settings
@@ -364,11 +364,11 @@ MonoBehaviour:
     parent: {fileID: 11419906}
     mode: 0
     linkType: 0
-    data:
+    oldData:
     - {fileID: 11427580}
     - {fileID: 11411782}
-    dataB: []
-    dataC: []
+    oldDataB: []
+    oldDataC: []
   attributeRaw:
     info:
       name: 
@@ -378,9 +378,9 @@ MonoBehaviour:
       parent: {fileID: 0}
       mode: 0
       linkType: 0
-      data: []
-      dataB: []
-      dataC: []
+      oldData: []
+      oldDataB: []
+      oldDataC: []
   operation: 2
   special: 0
   value: 2
@@ -396,7 +396,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentPath: 
-  location: 
+  path: 
   alias: Attribute Bool Data
   target:
     search: ../@Settings
@@ -417,10 +417,10 @@ MonoBehaviour:
     parent: {fileID: 11464654}
     mode: 0
     linkType: 0
-    data:
+    oldData:
     - {fileID: 11414412}
-    dataB: []
-    dataC: []
+    oldDataB: []
+    oldDataC: []
   attributeRaw:
     info:
       name: 
@@ -430,9 +430,9 @@ MonoBehaviour:
       parent: {fileID: 0}
       mode: 0
       linkType: 0
-      data: []
-      dataB: []
-      dataC: []
+      oldData: []
+      oldDataB: []
+      oldDataC: []
   operation: 0
   special: 0
   value: 0
@@ -448,7 +448,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentPath: 
-  location: 
+  path: 
   alias: Attribute Bool Data
   target:
     search: ../@Settings
@@ -469,10 +469,10 @@ MonoBehaviour:
     parent: {fileID: 11419906}
     mode: 0
     linkType: 0
-    data:
+    oldData:
     - {fileID: 11415136}
-    dataB: []
-    dataC: []
+    oldDataB: []
+    oldDataC: []
   attributeRaw:
     info:
       name: 
@@ -482,9 +482,9 @@ MonoBehaviour:
       parent: {fileID: 0}
       mode: 0
       linkType: 0
-      data: []
-      dataB: []
-      dataC: []
+      oldData: []
+      oldDataB: []
+      oldDataC: []
   operation: 0
   special: 0
   value: 0
@@ -500,7 +500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentPath: 
-  location: 
+  path: 
   alias: Attribute Bool Data
   target:
     search: ../@Settings
@@ -521,10 +521,10 @@ MonoBehaviour:
     parent: {fileID: 11408582}
     mode: 0
     linkType: 0
-    data:
+    oldData:
     - {fileID: 11417584}
-    dataB: []
-    dataC: []
+    oldDataB: []
+    oldDataC: []
   attributeRaw:
     info:
       name: 
@@ -534,9 +534,9 @@ MonoBehaviour:
       parent: {fileID: 0}
       mode: 0
       linkType: 0
-      data: []
-      dataB: []
-      dataC: []
+      oldData: []
+      oldDataB: []
+      oldDataC: []
   operation: 0
   special: 0
   value: 0
@@ -552,7 +552,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentPath: 
-  location: 
+  path: 
   alias: Attribute Float Data
   target:
     search: ../@Settings
@@ -573,10 +573,10 @@ MonoBehaviour:
     parent: {fileID: 11425936}
     mode: 0
     linkType: 0
-    data:
+    oldData:
     - {fileID: 11417706}
-    dataB: []
-    dataC: []
+    oldDataB: []
+    oldDataC: []
   attributeRaw:
     info:
       name: 
@@ -586,9 +586,9 @@ MonoBehaviour:
       parent: {fileID: 0}
       mode: 0
       linkType: 0
-      data: []
-      dataB: []
-      dataC: []
+      oldData: []
+      oldDataB: []
+      oldDataC: []
   operation: 0
   special: 0
   value: 10
@@ -604,7 +604,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentPath: 
-  location: 
+  path: 
   alias: Attribute Game Object Data
   target:
     search: ../../../../Visuals
@@ -625,10 +625,10 @@ MonoBehaviour:
     parent: {fileID: 11478212}
     mode: 0
     linkType: 0
-    data:
+    oldData:
     - {fileID: 11418142}
-    dataB: []
-    dataC: []
+    oldDataB: []
+    oldDataC: []
   attributeRaw:
     info:
       name: 
@@ -638,9 +638,9 @@ MonoBehaviour:
       parent: {fileID: 0}
       mode: 0
       linkType: 0
-      data: []
-      dataB: []
-      dataC: []
+      oldData: []
+      oldDataB: []
+      oldDataC: []
   operation: 0
   special: 0
   value: {fileID: 0}
@@ -656,7 +656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentPath: 
-  location: 
+  path: 
   alias: Attribute Float Data
   target:
     search: ../../../Movement/@Formulas
@@ -677,12 +677,12 @@ MonoBehaviour:
     parent: {fileID: 11497042}
     mode: 2
     linkType: 0
-    data:
+    oldData:
     - {fileID: 11419596}
-    dataB:
+    oldDataB:
     - {fileID: 11437774}
     - {fileID: 11426468}
-    dataC: []
+    oldDataC: []
   attributeRaw:
     info:
       name: 
@@ -692,9 +692,9 @@ MonoBehaviour:
       parent: {fileID: 0}
       mode: 0
       linkType: 0
-      data: []
-      dataB: []
-      dataC: []
+      oldData: []
+      oldDataB: []
+      oldDataC: []
   operation: 0
   special: 0
   value: 0
@@ -710,7 +710,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentPath: /GlideBoost (1)/Main/
-  location: /GlideBoost (1)/Main/Dash Movement
+  path: /GlideBoost (1)/Main/Dash Movement
   alias: Dash Movement
   rate: 1
   occurrence: 0
@@ -725,10 +725,10 @@ MonoBehaviour:
       parent: {fileID: 11419906}
       mode: 0
       linkType: 0
-      data:
+      oldData:
       - {fileID: 11415136}
-      dataB: []
-      dataC: []
+      oldDataB: []
+      oldDataC: []
   inUse:
     info:
       name: Active
@@ -738,10 +738,10 @@ MonoBehaviour:
       parent: {fileID: 11419906}
       mode: 0
       linkType: 0
-      data:
+      oldData:
       - {fileID: 11489650}
-      dataB: []
-      dataC: []
+      oldDataB: []
+      oldDataC: []
   used:
     info:
       name: Used
@@ -751,10 +751,10 @@ MonoBehaviour:
       parent: {fileID: 11419906}
       mode: 0
       linkType: 0
-      data:
+      oldData:
       - {fileID: 11492984}
-      dataB: []
-      dataC: []
+      oldDataB: []
+      oldDataC: []
   target:
     info:
       name: Target
@@ -764,10 +764,10 @@ MonoBehaviour:
       parent: {fileID: 11419906}
       mode: 1
       linkType: 0
-      data:
+      oldData:
       - {fileID: 11458168}
-      dataB: []
-      dataC: []
+      oldDataB: []
+      oldDataC: []
   value:
     info:
       name: Value
@@ -777,11 +777,11 @@ MonoBehaviour:
       parent: {fileID: 11419906}
       mode: 0
       linkType: 0
-      data:
+      oldData:
       - {fileID: 11427580}
       - {fileID: 11411782}
-      dataB: []
-      dataC: []
+      oldDataB: []
+      oldDataC: []
 --- !u!114 &11419922
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -794,7 +794,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentPath: 
-  location: 
+  path: 
   alias: Attribute String Data
   target:
     search: ../@Settings
@@ -815,10 +815,10 @@ MonoBehaviour:
     parent: {fileID: 11464654}
     mode: 0
     linkType: 0
-    data:
+    oldData:
     - {fileID: 11419922}
-    dataB: []
-    dataC: []
+    oldDataB: []
+    oldDataC: []
   attributeRaw:
     info:
       name: 
@@ -828,9 +828,9 @@ MonoBehaviour:
       parent: {fileID: 0}
       mode: 0
       linkType: 0
-      data: []
-      dataB: []
-      dataC: []
+      oldData: []
+      oldDataB: []
+      oldDataC: []
   operation: 0
   special: 0
   value: GlideForward
@@ -849,7 +849,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentPath: 
-  location: 
+  path: 
   alias: 
   target:
     search: '[Self]'
@@ -870,10 +870,10 @@ MonoBehaviour:
     parent: {fileID: 11427760}
     mode: 0
     linkType: 0
-    data:
+    oldData:
     - {fileID: 11420846}
-    dataB: []
-    dataC: []
+    oldDataB: []
+    oldDataC: []
   attributeRaw:
     info:
       name: 
@@ -883,9 +883,9 @@ MonoBehaviour:
       parent: {fileID: 0}
       mode: 0
       linkType: 0
-      data: []
-      dataB: []
-      dataC: []
+      oldData: []
+      oldDataB: []
+      oldDataC: []
   operation: 0
   special: 0
   value: 1
@@ -901,7 +901,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentPath: /GlideBoost (1)/@Settings/
-  location: /GlideBoost (1)/@Settings/Speed
+  path: /GlideBoost (1)/@Settings/Speed
   alias: Speed
   value:
     info:
@@ -912,10 +912,10 @@ MonoBehaviour:
       parent: {fileID: 11425936}
       mode: 0
       linkType: 0
-      data:
+      oldData:
       - {fileID: 11417706}
-      dataB: []
-      dataC: []
+      oldDataB: []
+      oldDataC: []
   remember: 0
 --- !u!114 &11426468
 MonoBehaviour:
@@ -929,7 +929,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentPath: 
-  location: 
+  path: 
   alias: Attribute Float Data
   target:
     search: '[Self]'
@@ -950,12 +950,12 @@ MonoBehaviour:
     parent: {fileID: 11497042}
     mode: 2
     linkType: 0
-    data:
+    oldData:
     - {fileID: 11419596}
-    dataB:
+    oldDataB:
     - {fileID: 11437774}
     - {fileID: 11426468}
-    dataC: []
+    oldDataC: []
   attributeRaw:
     info:
       name: 
@@ -965,9 +965,9 @@ MonoBehaviour:
       parent: {fileID: 0}
       mode: 0
       linkType: 0
-      data: []
-      dataB: []
-      dataC: []
+      oldData: []
+      oldDataB: []
+      oldDataC: []
   operation: 2
   special: 0
   value: 1
@@ -983,7 +983,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentPath: 
-  location: 
+  path: 
   alias: Attribute Bool Data
   target:
     search: ../@Settings
@@ -1004,10 +1004,10 @@ MonoBehaviour:
     parent: {fileID: 11497042}
     mode: 0
     linkType: 0
-    data:
+    oldData:
     - {fileID: 11427210}
-    dataB: []
-    dataC: []
+    oldDataB: []
+    oldDataC: []
   attributeRaw:
     info:
       name: 
@@ -1017,9 +1017,9 @@ MonoBehaviour:
       parent: {fileID: 0}
       mode: 0
       linkType: 0
-      data: []
-      dataB: []
-      dataC: []
+      oldData: []
+      oldDataB: []
+      oldDataC: []
   operation: 0
   special: 0
   value: 0
@@ -1035,7 +1035,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentPath: 
-  location: 
+  path: 
   alias: Attribute Float Data
   target:
     search: ../@Settings
@@ -1056,11 +1056,11 @@ MonoBehaviour:
     parent: {fileID: 11419906}
     mode: 0
     linkType: 0
-    data:
+    oldData:
     - {fileID: 11427580}
     - {fileID: 11411782}
-    dataB: []
-    dataC: []
+    oldDataB: []
+    oldDataC: []
   attributeRaw:
     info:
       name: 
@@ -1070,9 +1070,9 @@ MonoBehaviour:
       parent: {fileID: 0}
       mode: 0
       linkType: 0
-      data: []
-      dataB: []
-      dataC: []
+      oldData: []
+      oldDataB: []
+      oldDataC: []
   operation: 0
   special: 0
   value: 10
@@ -1088,7 +1088,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentPath: /GlideBoost (1)/Main/
-  location: /GlideBoost (1)/Main/GlideBoost (1)
+  path: /GlideBoost (1)/Main/GlideBoost (1)
   alias: GlideBoost (1)
   rate: 2
   occurrence: 0
@@ -1103,10 +1103,10 @@ MonoBehaviour:
       parent: {fileID: 11427760}
       mode: 0
       linkType: 0
-      data:
+      oldData:
       - {fileID: 11484240}
-      dataB: []
-      dataC: []
+      oldDataB: []
+      oldDataC: []
   inUse:
     info:
       name: Active
@@ -1116,10 +1116,10 @@ MonoBehaviour:
       parent: {fileID: 11427760}
       mode: 0
       linkType: 0
-      data:
+      oldData:
       - {fileID: 11443168}
-      dataB: []
-      dataC: []
+      oldDataB: []
+      oldDataC: []
   used:
     info:
       name: Used
@@ -1129,10 +1129,10 @@ MonoBehaviour:
       parent: {fileID: 11427760}
       mode: 0
       linkType: 0
-      data:
+      oldData:
       - {fileID: 11468586}
-      dataB: []
-      dataC: []
+      oldDataB: []
+      oldDataC: []
   table:
   - name: Dash Movement
     stateTable: {fileID: 0}
@@ -1526,10 +1526,10 @@ MonoBehaviour:
       parent: {fileID: 11427760}
       mode: 0
       linkType: 0
-      data:
+      oldData:
       - {fileID: 11420846}
-      dataB: []
-      dataC: []
+      oldDataB: []
+      oldDataC: []
   scripts:
   - {fileID: 11427760}
   - {fileID: 11419906}
@@ -1548,7 +1548,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentPath: 
-  location: 
+  path: 
   alias: Attribute Game Object Data
   target:
     search: ../@Settings
@@ -1569,10 +1569,10 @@ MonoBehaviour:
     parent: {fileID: 11464654}
     mode: 0
     linkType: 0
-    data:
+    oldData:
     - {fileID: 11431976}
-    dataB: []
-    dataC: []
+    oldDataB: []
+    oldDataC: []
   attributeRaw:
     info:
       name: 
@@ -1582,9 +1582,9 @@ MonoBehaviour:
       parent: {fileID: 0}
       mode: 0
       linkType: 0
-      data: []
-      dataB: []
-      dataC: []
+      oldData: []
+      oldDataB: []
+      oldDataC: []
   operation: 0
   special: 0
   value: {fileID: 0}
@@ -1600,7 +1600,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentPath: 
-  location: 
+  path: 
   alias: Attribute Float Data
   target:
     search: ../@Settings
@@ -1621,10 +1621,10 @@ MonoBehaviour:
     parent: {fileID: 11496536}
     mode: 0
     linkType: 0
-    data:
+    oldData:
     - {fileID: 11434078}
-    dataB: []
-    dataC: []
+    oldDataB: []
+    oldDataC: []
   attributeRaw:
     info:
       name: 
@@ -1634,9 +1634,9 @@ MonoBehaviour:
       parent: {fileID: 0}
       mode: 0
       linkType: 0
-      data: []
-      dataB: []
-      dataC: []
+      oldData: []
+      oldDataB: []
+      oldDataC: []
   operation: 0
   special: 0
   value: 4
@@ -1652,7 +1652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentPath: 
-  location: 
+  path: 
   alias: Attribute Float Data
   target:
     search: '[Self]'
@@ -1673,12 +1673,12 @@ MonoBehaviour:
     parent: {fileID: 11497042}
     mode: 2
     linkType: 0
-    data:
+    oldData:
     - {fileID: 11419596}
-    dataB:
+    oldDataB:
     - {fileID: 11437774}
     - {fileID: 11426468}
-    dataC: []
+    oldDataC: []
   attributeRaw:
     info:
       name: 
@@ -1688,9 +1688,9 @@ MonoBehaviour:
       parent: {fileID: 0}
       mode: 0
       linkType: 0
-      data: []
-      dataB: []
-      dataC: []
+      oldData: []
+      oldDataB: []
+      oldDataC: []
   operation: 4
   special: 0
   value: 1
@@ -1706,7 +1706,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentPath: /GlideBoost (1)/@Settings/
-  location: /GlideBoost (1)/@Settings/Animation
+  path: /GlideBoost (1)/@Settings/Animation
   alias: Animation
   value:
     info:
@@ -1717,10 +1717,10 @@ MonoBehaviour:
       parent: {fileID: 11438858}
       mode: 0
       linkType: 0
-      data:
+      oldData:
       - {fileID: 11400754}
-      dataB: []
-      dataC: []
+      oldDataB: []
+      oldDataC: []
   remember: 0
 --- !u!114 &11443168
 MonoBehaviour:
@@ -1734,7 +1734,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentPath: 
-  location: 
+  path: 
   alias: 
   target:
     search: '[Self]'
@@ -1755,10 +1755,10 @@ MonoBehaviour:
     parent: {fileID: 11427760}
     mode: 0
     linkType: 0
-    data:
+    oldData:
     - {fileID: 11443168}
-    dataB: []
-    dataC: []
+    oldDataB: []
+    oldDataC: []
   attributeRaw:
     info:
       name: 
@@ -1768,9 +1768,9 @@ MonoBehaviour:
       parent: {fileID: 0}
       mode: 0
       linkType: 0
-      data: []
-      dataB: []
-      dataC: []
+      oldData: []
+      oldDataB: []
+      oldDataC: []
   operation: 0
   special: 0
   value: 0
@@ -1786,7 +1786,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentPath: 
-  location: 
+  path: 
   alias: Attribute Bool Data
   target:
     search: ../@Settings
@@ -1807,10 +1807,10 @@ MonoBehaviour:
     parent: {fileID: 11408582}
     mode: 0
     linkType: 0
-    data:
+    oldData:
     - {fileID: 11453088}
-    dataB: []
-    dataC: []
+    oldDataB: []
+    oldDataC: []
   attributeRaw:
     info:
       name: 
@@ -1820,9 +1820,9 @@ MonoBehaviour:
       parent: {fileID: 0}
       mode: 0
       linkType: 0
-      data: []
-      dataB: []
-      dataC: []
+      oldData: []
+      oldDataB: []
+      oldDataC: []
   operation: 0
   special: 0
   value: 0
@@ -1838,7 +1838,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentPath: 
-  location: 
+  path: 
   alias: Attribute Bool Data
   target:
     search: ../@Settings
@@ -1859,10 +1859,10 @@ MonoBehaviour:
     parent: {fileID: 11408582}
     mode: 0
     linkType: 0
-    data:
+    oldData:
     - {fileID: 11453968}
-    dataB: []
-    dataC: []
+    oldDataB: []
+    oldDataC: []
   attributeRaw:
     info:
       name: 
@@ -1872,9 +1872,9 @@ MonoBehaviour:
       parent: {fileID: 0}
       mode: 0
       linkType: 0
-      data: []
-      dataB: []
-      dataC: []
+      oldData: []
+      oldDataB: []
+      oldDataC: []
   operation: 0
   special: 0
   value: 0
@@ -1890,7 +1890,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentPath: 
-  location: 
+  path: 
   alias: Attribute Bool Data
   target:
     search: ../@Settings
@@ -1911,10 +1911,10 @@ MonoBehaviour:
     parent: {fileID: 11408582}
     mode: 0
     linkType: 0
-    data:
+    oldData:
     - {fileID: 11457094}
-    dataB: []
-    dataC: []
+    oldDataB: []
+    oldDataC: []
   attributeRaw:
     info:
       name: 
@@ -1924,9 +1924,9 @@ MonoBehaviour:
       parent: {fileID: 0}
       mode: 0
       linkType: 0
-      data: []
-      dataB: []
-      dataC: []
+      oldData: []
+      oldDataB: []
+      oldDataC: []
   operation: 0
   special: 0
   value: 0
@@ -1942,7 +1942,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentPath: 
-  location: 
+  path: 
   alias: Attribute Bool Data
   target:
     search: ../@Settings
@@ -1963,10 +1963,10 @@ MonoBehaviour:
     parent: {fileID: 11497042}
     mode: 0
     linkType: 0
-    data:
+    oldData:
     - {fileID: 11457838}
-    dataB: []
-    dataC: []
+    oldDataB: []
+    oldDataC: []
   attributeRaw:
     info:
       name: 
@@ -1976,9 +1976,9 @@ MonoBehaviour:
       parent: {fileID: 0}
       mode: 0
       linkType: 0
-      data: []
-      dataB: []
-      dataC: []
+      oldData: []
+      oldDataB: []
+      oldDataC: []
   operation: 0
   special: 0
   value: 0
@@ -1994,7 +1994,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentPath: 
-  location: 
+  path: 
   alias: Attribute Float Data
   target:
     search: ../../../Movement/@Settings
@@ -2015,10 +2015,10 @@ MonoBehaviour:
     parent: {fileID: 11419906}
     mode: 1
     linkType: 0
-    data:
+    oldData:
     - {fileID: 11458168}
-    dataB: []
-    dataC: []
+    oldDataB: []
+    oldDataC: []
   attributeRaw:
     info:
       name: 
@@ -2028,9 +2028,9 @@ MonoBehaviour:
       parent: {fileID: 0}
       mode: 0
       linkType: 0
-      data: []
-      dataB: []
-      dataC: []
+      oldData: []
+      oldDataB: []
+      oldDataC: []
   operation: 0
   special: 0
   value: 0
@@ -2046,7 +2046,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentPath: 
-  location: 
+  path: 
   alias: Attribute Bool Data
   target:
     search: ../@Settings
@@ -2067,10 +2067,10 @@ MonoBehaviour:
     parent: {fileID: 11464654}
     mode: 0
     linkType: 0
-    data:
+    oldData:
     - {fileID: 11461698}
-    dataB: []
-    dataC: []
+    oldDataB: []
+    oldDataC: []
   attributeRaw:
     info:
       name: 
@@ -2080,9 +2080,9 @@ MonoBehaviour:
       parent: {fileID: 0}
       mode: 0
       linkType: 0
-      data: []
-      dataB: []
-      dataC: []
+      oldData: []
+      oldDataB: []
+      oldDataC: []
   operation: 0
   special: 0
   value: 0
@@ -2098,7 +2098,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentPath: 
-  location: 
+  path: 
   alias: Attribute Float Data
   target:
     search: ../@Settings
@@ -2119,10 +2119,10 @@ MonoBehaviour:
     parent: {fileID: 11464654}
     mode: 0
     linkType: 0
-    data:
+    oldData:
     - {fileID: 11462030}
-    dataB: []
-    dataC: []
+    oldDataB: []
+    oldDataC: []
   attributeRaw:
     info:
       name: 
@@ -2132,9 +2132,9 @@ MonoBehaviour:
       parent: {fileID: 0}
       mode: 0
       linkType: 0
-      data: []
-      dataB: []
-      dataC: []
+      oldData: []
+      oldDataB: []
+      oldDataC: []
   operation: 0
   special: 0
   value: 1
@@ -2150,7 +2150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentPath: /GlideBoost (1)/Main/
-  location: /GlideBoost (1)/Main/Glide Animation
+  path: /GlideBoost (1)/Main/Glide Animation
   alias: Glide Animation
   rate: 1
   occurrence: 0
@@ -2165,10 +2165,10 @@ MonoBehaviour:
       parent: {fileID: 11464654}
       mode: 0
       linkType: 0
-      data:
+      oldData:
       - {fileID: 11489992}
-      dataB: []
-      dataC: []
+      oldDataB: []
+      oldDataC: []
   inUse:
     info:
       name: Active
@@ -2178,10 +2178,10 @@ MonoBehaviour:
       parent: {fileID: 11464654}
       mode: 0
       linkType: 0
-      data:
+      oldData:
       - {fileID: 11461698}
-      dataB: []
-      dataC: []
+      oldDataB: []
+      oldDataC: []
   used:
     info:
       name: Used
@@ -2191,10 +2191,10 @@ MonoBehaviour:
       parent: {fileID: 11464654}
       mode: 0
       linkType: 0
-      data:
+      oldData:
       - {fileID: 11414412}
-      dataB: []
-      dataC: []
+      oldDataB: []
+      oldDataC: []
   animationName:
     info:
       name: Animation Name
@@ -2204,10 +2204,10 @@ MonoBehaviour:
       parent: {fileID: 11464654}
       mode: 0
       linkType: 0
-      data:
+      oldData:
       - {fileID: 11419922}
-      dataB: []
-      dataC: []
+      oldDataB: []
+      oldDataC: []
   speed:
     info:
       name: Speed
@@ -2217,10 +2217,10 @@ MonoBehaviour:
       parent: {fileID: 11464654}
       mode: 0
       linkType: 0
-      data:
+      oldData:
       - {fileID: 11476456}
-      dataB: []
-      dataC: []
+      oldDataB: []
+      oldDataC: []
   weight:
     info:
       name: Weight
@@ -2230,10 +2230,10 @@ MonoBehaviour:
       parent: {fileID: 11464654}
       mode: 0
       linkType: 0
-      data:
+      oldData:
       - {fileID: 11462030}
-      dataB: []
-      dataC: []
+      oldDataB: []
+      oldDataC: []
   target:
     info:
       name: Target
@@ -2243,10 +2243,10 @@ MonoBehaviour:
       parent: {fileID: 11464654}
       mode: 0
       linkType: 0
-      data:
+      oldData:
       - {fileID: 11431976}
-      dataB: []
-      dataC: []
+      oldDataB: []
+      oldDataC: []
 --- !u!114 &11466466
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2259,7 +2259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentPath: 
-  location: 
+  path: 
   alias: Attribute Float Data
   target:
     search: ../@Settings
@@ -2280,10 +2280,10 @@ MonoBehaviour:
     parent: {fileID: 11408582}
     mode: 0
     linkType: 0
-    data:
+    oldData:
     - {fileID: 11466466}
-    dataB: []
-    dataC: []
+    oldDataB: []
+    oldDataC: []
   attributeRaw:
     info:
       name: 
@@ -2293,9 +2293,9 @@ MonoBehaviour:
       parent: {fileID: 0}
       mode: 0
       linkType: 0
-      data: []
-      dataB: []
-      dataC: []
+      oldData: []
+      oldDataB: []
+      oldDataC: []
   operation: 0
   special: 0
   value: 4
@@ -2311,7 +2311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentPath: 
-  location: 
+  path: 
   alias: Attribute Game Object Data
   target:
     search: ../../../..
@@ -2332,10 +2332,10 @@ MonoBehaviour:
     parent: {fileID: 11484224}
     mode: 0
     linkType: 0
-    data:
+    oldData:
     - {fileID: 11467300}
-    dataB: []
-    dataC: []
+    oldDataB: []
+    oldDataC: []
   attributeRaw:
     info:
       name: 
@@ -2345,9 +2345,9 @@ MonoBehaviour:
       parent: {fileID: 0}
       mode: 0
       linkType: 0
-      data: []
-      dataB: []
-      dataC: []
+      oldData: []
+      oldDataB: []
+      oldDataC: []
   operation: 0
   special: 0
   value: {fileID: 0}
@@ -2363,7 +2363,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentPath: 
-  location: 
+  path: 
   alias: 
   target:
     search: '[Self]'
@@ -2384,10 +2384,10 @@ MonoBehaviour:
     parent: {fileID: 11427760}
     mode: 0
     linkType: 0
-    data:
+    oldData:
     - {fileID: 11468586}
-    dataB: []
-    dataC: []
+    oldDataB: []
+    oldDataC: []
   attributeRaw:
     info:
       name: 
@@ -2397,9 +2397,9 @@ MonoBehaviour:
       parent: {fileID: 0}
       mode: 0
       linkType: 0
-      data: []
-      dataB: []
-      dataC: []
+      oldData: []
+      oldDataB: []
+      oldDataC: []
   operation: 0
   special: 0
   value: 0
@@ -2415,7 +2415,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentPath: 
-  location: 
+  path: 
   alias: Attribute Float Data
   target:
     search: ../@Settings
@@ -2436,10 +2436,10 @@ MonoBehaviour:
     parent: {fileID: 11464654}
     mode: 0
     linkType: 0
-    data:
+    oldData:
     - {fileID: 11476456}
-    dataB: []
-    dataC: []
+    oldDataB: []
+    oldDataC: []
   attributeRaw:
     info:
       name: 
@@ -2449,9 +2449,9 @@ MonoBehaviour:
       parent: {fileID: 0}
       mode: 0
       linkType: 0
-      data: []
-      dataB: []
-      dataC: []
+      oldData: []
+      oldDataB: []
+      oldDataC: []
   operation: 0
   special: 0
   value: 1
@@ -2467,7 +2467,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentPath: /GlideBoost (1)/@Settings/
-  location: /GlideBoost (1)/@Settings/Visuals
+  path: /GlideBoost (1)/@Settings/Visuals
   alias: Visuals
   value:
     info:
@@ -2478,10 +2478,10 @@ MonoBehaviour:
       parent: {fileID: 11478212}
       mode: 0
       linkType: 0
-      data:
+      oldData:
       - {fileID: 11418142}
-      dataB: []
-      dataC: []
+      oldDataB: []
+      oldDataC: []
   remember: 0
 --- !u!114 &11484224
 MonoBehaviour:
@@ -2495,7 +2495,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentPath: /GlideBoost (1)/@Settings/
-  location: /GlideBoost (1)/@Settings/Source
+  path: /GlideBoost (1)/@Settings/Source
   alias: Source
   value:
     info:
@@ -2506,10 +2506,10 @@ MonoBehaviour:
       parent: {fileID: 11484224}
       mode: 0
       linkType: 0
-      data:
+      oldData:
       - {fileID: 11467300}
-      dataB: []
-      dataC: []
+      oldDataB: []
+      oldDataC: []
   remember: 0
 --- !u!114 &11484240
 MonoBehaviour:
@@ -2523,7 +2523,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentPath: 
-  location: 
+  path: 
   alias: 
   target:
     search: '[Self]'
@@ -2544,10 +2544,10 @@ MonoBehaviour:
     parent: {fileID: 11427760}
     mode: 0
     linkType: 0
-    data:
+    oldData:
     - {fileID: 11484240}
-    dataB: []
-    dataC: []
+    oldDataB: []
+    oldDataC: []
   attributeRaw:
     info:
       name: 
@@ -2557,9 +2557,9 @@ MonoBehaviour:
       parent: {fileID: 0}
       mode: 0
       linkType: 0
-      data: []
-      dataB: []
-      dataC: []
+      oldData: []
+      oldDataB: []
+      oldDataC: []
   operation: 0
   special: 0
   value: 1
@@ -2575,7 +2575,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentPath: 
-  location: 
+  path: 
   alias: Attribute Bool Data
   target:
     search: ../@Settings
@@ -2596,10 +2596,10 @@ MonoBehaviour:
     parent: {fileID: 11408582}
     mode: 0
     linkType: 0
-    data:
+    oldData:
     - {fileID: 11489336}
-    dataB: []
-    dataC: []
+    oldDataB: []
+    oldDataC: []
   attributeRaw:
     info:
       name: 
@@ -2609,9 +2609,9 @@ MonoBehaviour:
       parent: {fileID: 0}
       mode: 0
       linkType: 0
-      data: []
-      dataB: []
-      dataC: []
+      oldData: []
+      oldDataB: []
+      oldDataC: []
   operation: 0
   special: 0
   value: 0
@@ -2627,7 +2627,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentPath: 
-  location: 
+  path: 
   alias: Attribute Bool Data
   target:
     search: ../@Settings
@@ -2648,10 +2648,10 @@ MonoBehaviour:
     parent: {fileID: 11419906}
     mode: 0
     linkType: 0
-    data:
+    oldData:
     - {fileID: 11489650}
-    dataB: []
-    dataC: []
+    oldDataB: []
+    oldDataC: []
   attributeRaw:
     info:
       name: 
@@ -2661,9 +2661,9 @@ MonoBehaviour:
       parent: {fileID: 0}
       mode: 0
       linkType: 0
-      data: []
-      dataB: []
-      dataC: []
+      oldData: []
+      oldDataB: []
+      oldDataC: []
   operation: 0
   special: 0
   value: 0
@@ -2679,7 +2679,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentPath: 
-  location: 
+  path: 
   alias: Attribute Bool Data
   target:
     search: ../@Settings
@@ -2700,10 +2700,10 @@ MonoBehaviour:
     parent: {fileID: 11464654}
     mode: 0
     linkType: 0
-    data:
+    oldData:
     - {fileID: 11489992}
-    dataB: []
-    dataC: []
+    oldDataB: []
+    oldDataC: []
   attributeRaw:
     info:
       name: 
@@ -2713,9 +2713,9 @@ MonoBehaviour:
       parent: {fileID: 0}
       mode: 0
       linkType: 0
-      data: []
-      dataB: []
-      dataC: []
+      oldData: []
+      oldDataB: []
+      oldDataC: []
   operation: 0
   special: 0
   value: 0
@@ -2731,7 +2731,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentPath: 
-  location: 
+  path: 
   alias: Attribute Bool Data
   target:
     search: ../@Settings
@@ -2752,10 +2752,10 @@ MonoBehaviour:
     parent: {fileID: 11419906}
     mode: 0
     linkType: 0
-    data:
+    oldData:
     - {fileID: 11492984}
-    dataB: []
-    dataC: []
+    oldDataB: []
+    oldDataC: []
   attributeRaw:
     info:
       name: 
@@ -2765,9 +2765,9 @@ MonoBehaviour:
       parent: {fileID: 0}
       mode: 0
       linkType: 0
-      data: []
-      dataB: []
-      dataC: []
+      oldData: []
+      oldDataB: []
+      oldDataC: []
   operation: 0
   special: 0
   value: 0
@@ -2783,7 +2783,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentPath: /GlideBoost (1)/@Settings/
-  location: /GlideBoost (1)/@Settings/Warmup Timer
+  path: /GlideBoost (1)/@Settings/Warmup Timer
   alias: Warmup Timer
   value:
     info:
@@ -2794,10 +2794,10 @@ MonoBehaviour:
       parent: {fileID: 11496536}
       mode: 0
       linkType: 0
-      data:
+      oldData:
       - {fileID: 11434078}
-      dataB: []
-      dataC: []
+      oldDataB: []
+      oldDataC: []
   remember: 0
 --- !u!114 &11497042
 MonoBehaviour:
@@ -2811,7 +2811,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentPath: /GlideBoost (1)/Main/
-  location: /GlideBoost (1)/Main/Is Full Intensity
+  path: /GlideBoost (1)/Main/Is Full Intensity
   alias: Is Full Intensity
   rate: 2
   occurrence: 0
@@ -2826,10 +2826,10 @@ MonoBehaviour:
       parent: {fileID: 11497042}
       mode: 0
       linkType: 0
-      data:
+      oldData:
       - {fileID: 11427210}
-      dataB: []
-      dataC: []
+      oldDataB: []
+      oldDataC: []
   inUse:
     info:
       name: Active
@@ -2839,10 +2839,10 @@ MonoBehaviour:
       parent: {fileID: 11497042}
       mode: 0
       linkType: 0
-      data:
+      oldData:
       - {fileID: 11457838}
-      dataB: []
-      dataC: []
+      oldDataB: []
+      oldDataC: []
   used:
     info:
       name: Used
@@ -2852,10 +2852,10 @@ MonoBehaviour:
       parent: {fileID: 11497042}
       mode: 0
       linkType: 0
-      data:
+      oldData:
       - {fileID: 11410670}
-      dataB: []
-      dataC: []
+      oldDataB: []
+      oldDataC: []
   value:
     info:
       name: Is Full Intensity
@@ -2865,12 +2865,12 @@ MonoBehaviour:
       parent: {fileID: 11497042}
       mode: 2
       linkType: 0
-      data:
+      oldData:
       - {fileID: 11419596}
-      dataB:
+      oldDataB:
       - {fileID: 11437774}
       - {fileID: 11426468}
-      dataC: []
+      oldDataC: []
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

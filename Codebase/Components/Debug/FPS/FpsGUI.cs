@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System;
 using System.Text;
 namespace Zios{
-	[AddComponentMenu("Zios/Singleton/ShowFPS")]
+	[AddComponentMenu("Zios/Singleton/Debug/FPS (GUI)")]
 	public class FpsGUI : MonoBehaviour {
 		public Text fpsText;
 		public Text frameTimeText;

@@ -22,6 +22,9 @@ namespace Zios{
 		public AttributeData[] data = new AttributeData[0];
 		public AttributeData[] dataB = new AttributeData[0];
 		public AttributeData[] dataC = new AttributeData[0];
+		public OldAttributeData[] oldData = new OldAttributeData[0];
+		public OldAttributeData[] oldDataB = new OldAttributeData[0];
+		public OldAttributeData[] oldDataC = new OldAttributeData[0];
 		[NonSerialized] public Attribute attribute;
 		public bool Contains(AttributeData data){return this.data.Contains(data) || this.dataB.Contains(data) || this.dataC.Contains(data);}
 	}
@@ -115,7 +118,7 @@ namespace Zios{
 		public override Type[] GetFormulaTypes(){return new Type[]{typeof(AttributeData)};}
 		public override bool HasData(){return this.info.data.Length > 0;}
 		public DataType GetFirst(){
-			if(this.info.data.Length < 1){this.PrepareData();}
+			if(this.info.data.Length < 1 || this.info.data[0].GetType() == typeof(AttributeData)){this.PrepareData();}
 			if(this.info.data.Length < 1){
 				if(Attribute.debug.Has("Issue")){
 					Debug.Log("[Attribute] Could not retrieve first attribute data for -- " + this.info.name);
@@ -364,6 +367,10 @@ namespace Zios{
 			}
 		}
 		public AttributeData Deserialize(AttributeData data){
+			if(data.rawType.IsEmpty()){
+				Debug.LogWarning("[Attribute] : Deserialization type is empty for : " + data.path);	
+				return data;
+			}
 			var type = Type.GetType(data.rawType);
 			var newData = data;
 			if(type == typeof(AttributeBoolData)){
