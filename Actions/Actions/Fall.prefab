@@ -11,9 +11,6 @@ GameObject:
   - 114: {fileID: 11448618}
   - 114: {fileID: 11416856}
   - 114: {fileID: 11467952}
-  - 114: {fileID: 11402116}
-  - 114: {fileID: 11469778}
-  - 114: {fileID: 11468318}
   m_Layer: 10
   m_Name: '@Settings'
   m_TagString: Untagged
@@ -46,17 +43,6 @@ GameObject:
   - 4: {fileID: 407498}
   - 114: {fileID: 11494626}
   - 114: {fileID: 11452306}
-  - 114: {fileID: 11433516}
-  - 114: {fileID: 11484176}
-  - 114: {fileID: 11471970}
-  - 114: {fileID: 11422730}
-  - 114: {fileID: 11456986}
-  - 114: {fileID: 11406412}
-  - 114: {fileID: 11488014}
-  - 114: {fileID: 11486422}
-  - 114: {fileID: 11454818}
-  - 114: {fileID: 11412938}
-  - 114: {fileID: 11435898}
   m_Layer: 10
   m_Name: Main
   m_TagString: Untagged
@@ -102,162 +88,6 @@ Transform:
   - {fileID: 407498}
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11402116
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 102488}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Game Object Data
-  target:
-    search: ../../..
-    directObject: {fileID: 0}
-    searchObject: {fileID: 127216}
-    parent: {fileID: 11416856}
-    mode: 0
-    path: /Fall/@Settings/Source/Source/Target
-  usage: 1
-  path: Source/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Source
-    path: Source
-    id: -41942/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
-    localID: 0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
-    parent: {fileID: 11416856}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11402116}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {fileID: 0}
---- !u!114 &11406412
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141992}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Game Object Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 102488}
-    parent: {fileID: 11452306}
-    mode: 0
-    path: /Fall/Main/Fall Animation/Fall Animation/Target/Target
-  usage: 1
-  path: Fall Animation/Target/0
-  referenceID: -41970/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
-  referencePath: Visuals
-  attribute:
-    name: Target
-    path: Fall Animation/Target
-    id: -41964/acae08fd-bd14-45bb-972e-50781a370be2
-    localID: acae08fd-bd14-45bb-972e-50781a370be2
-    parent: {fileID: 11452306}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11406412}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {fileID: 0}
---- !u!114 &11412938
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141992}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 141992}
-    parent: {fileID: 11494626}
-    mode: 0
-    path: /Fall/Main/Fall/Fall/Used/Target
-  usage: 0
-  path: Fall/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: Fall/Used
-    id: -41990/da498e7b-42e7-4555-867b-f5f03e5a00fc
-    localID: da498e7b-42e7-4555-867b-f5f03e5a00fc
-    parent: {fileID: 11494626}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11412938}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!114 &11416856
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -276,172 +106,34 @@ MonoBehaviour:
     info:
       name: Source
       path: Source
-      id: -41942/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+      fullPath: Fall/@Settings/Source
+      id: -88892/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
       localID: 0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
       parent: {fileID: 11416856}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11402116}
+      - target:
+          search: ../../..
+          directObject: {fileID: 0}
+          searchObject: {fileID: 127216}
+          parent: {fileID: 11416856}
+          mode: 0
+          path: /Fall/@Settings/Source/Source/Target
+        usage: 1
+        path: /Fall/@Settings/Attribute Game Object Data B
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeGameObjectData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   remember: 0
---- !u!114 &11422730
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141992}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 141992}
-    parent: {fileID: 11452306}
-    mode: 0
-    path: /Fall/Main/Fall Animation/Fall Animation/Speed/Target
-  usage: 0
-  path: Fall Animation/Speed/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Speed
-    path: Fall Animation/Speed
-    id: -41964/27835566-56e1-49de-b9ba-762ba4d45c0d
-    localID: 27835566-56e1-49de-b9ba-762ba4d45c0d
-    parent: {fileID: 11452306}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11422730}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11433516
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141992}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 141992}
-    parent: {fileID: 11452306}
-    mode: 0
-    path: /Fall/Main/Fall Animation/Fall Animation/Active/Target
-  usage: 0
-  path: Fall Animation/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: Fall Animation/Active
-    id: -41964/f8f435be-6d84-4e97-90c1-f8b80b8ce3b0
-    localID: f8f435be-6d84-4e97-90c1-f8b80b8ce3b0
-    parent: {fileID: 11452306}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11433516}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11435898
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141992}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 141992}
-    parent: {fileID: 11494626}
-    mode: 0
-    path: /Fall/Main/Fall/Fall/External/Target
-  usage: 0
-  path: Fall/External/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: External
-    path: Fall/External
-    id: -41990/21705753-bc05-4177-a93e-52e08db1ead8
-    localID: 21705753-bc05-4177-a93e-52e08db1ead8
-    parent: {fileID: 11494626}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11435898}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
 --- !u!114 &11448618
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -460,13 +152,31 @@ MonoBehaviour:
     info:
       name: Animation
       path: Animation
-      id: -41960/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
+      fullPath: Fall/@Settings/Animation
+      id: -88890/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
       localID: 7e894ef6-a99f-450f-b42a-e1aa6c29abb9
       parent: {fileID: 11448618}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11468318}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 102488}
+          parent: {fileID: 11448618}
+          mode: 0
+          path: /Fall/@Settings/Animation/Animation/Target
+        usage: 0
+        path: /Fall/@Settings/Attribute String Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: Fall
+        rawType: Zios.AttributeStringData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   remember: 0
@@ -492,197 +202,219 @@ MonoBehaviour:
     info:
       name: Usable
       path: Fall Animation/Usable
-      id: -41964/2377ed68-0f39-4d80-8103-c5150a46f05f
+      fullPath: Fall/Main/Fall Animation/Usable
+      id: -88904/2377ed68-0f39-4d80-8103-c5150a46f05f
       localID: 2377ed68-0f39-4d80-8103-c5150a46f05f
       parent: {fileID: 11452306}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11484176}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 141992}
+          parent: {fileID: 11452306}
+          mode: 0
+          path: /Fall/Main/Fall Animation/Fall Animation/Usable/Target
+        usage: 0
+        path: /Fall/Main/Attribute Bool Data C
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
       path: Fall Animation/Active
-      id: -41964/f8f435be-6d84-4e97-90c1-f8b80b8ce3b0
-      localID: f8f435be-6d84-4e97-90c1-f8b80b8ce3b0
+      fullPath: Fall/Main/Fall Animation/Active
+      id: -88904/6fc43123-348c-45d2-8846-5ae07460c0f5
+      localID: 6fc43123-348c-45d2-8846-5ae07460c0f5
       parent: {fileID: 11452306}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11433516}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: Fall/Main/Fall Animation/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
       path: Fall Animation/Used
-      id: -41964/57a90ae5-dbf9-4458-8b54-f0be7938abbc
+      fullPath: Fall/Main/Fall Animation/Used
+      id: -88904/57a90ae5-dbf9-4458-8b54-f0be7938abbc
       localID: 57a90ae5-dbf9-4458-8b54-f0be7938abbc
       parent: {fileID: 11452306}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11471970}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 141992}
+          parent: {fileID: 11452306}
+          mode: 0
+          path: /Fall/Main/Fall Animation/Fall Animation/Used/Target
+        usage: 0
+        path: /Fall/Main/Attribute Bool Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   animationName:
     info:
       name: Animation Name
       path: Fall Animation/Animation Name
-      id: -41964/10c4c93a-0903-4eb9-b563-762783b3a1dd
+      fullPath: Fall/Main/Fall Animation/Animation Name
+      id: -88904/10c4c93a-0903-4eb9-b563-762783b3a1dd
       localID: 10c4c93a-0903-4eb9-b563-762783b3a1dd
       parent: {fileID: 11452306}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11488014}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 102488}
+          parent: {fileID: 11452306}
+          mode: 0
+          path: /Fall/Main/Fall Animation/Fall Animation/Animation Name/Target
+        usage: 1
+        path: /Fall/Main/Attribute String Data
+        referenceID: -41960/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
+        referencePath: Animation
+        operation: 0
+        special: 0
+        rawValue: FlyDown
+        rawType: Zios.AttributeStringData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   speed:
     info:
       name: Speed
       path: Fall Animation/Speed
-      id: -41964/27835566-56e1-49de-b9ba-762ba4d45c0d
+      fullPath: Fall/Main/Fall Animation/Speed
+      id: -88904/27835566-56e1-49de-b9ba-762ba4d45c0d
       localID: 27835566-56e1-49de-b9ba-762ba4d45c0d
       parent: {fileID: 11452306}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11422730}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 141992}
+          parent: {fileID: 11452306}
+          mode: 0
+          path: /Fall/Main/Fall Animation/Fall Animation/Speed/Target
+        usage: 0
+        path: /Fall/Main/Attribute Float Data B
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 1
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   weight:
     info:
       name: Weight
       path: Fall Animation/Weight
-      id: -41964/efecf60c-63f6-4942-811c-d8e6ef06610b
+      fullPath: Fall/Main/Fall Animation/Weight
+      id: -88904/efecf60c-63f6-4942-811c-d8e6ef06610b
       localID: efecf60c-63f6-4942-811c-d8e6ef06610b
       parent: {fileID: 11452306}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11456986}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 141992}
+          parent: {fileID: 11452306}
+          mode: 0
+          path: /Fall/Main/Fall Animation/Fall Animation/Weight/Target
+        usage: 0
+        path: /Fall/Main/Attribute Float Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 1
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   target:
     info:
       name: Target
       path: Fall Animation/Target
-      id: -41964/acae08fd-bd14-45bb-972e-50781a370be2
+      fullPath: Fall/Main/Fall Animation/Target
+      id: -88904/acae08fd-bd14-45bb-972e-50781a370be2
       localID: acae08fd-bd14-45bb-972e-50781a370be2
       parent: {fileID: 11452306}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11406412}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 102488}
+          parent: {fileID: 11452306}
+          mode: 0
+          path: /Fall/Main/Fall Animation/Fall Animation/Target/Target
+        usage: 1
+        path: /Fall/Main/Attribute Game Object Data
+        referenceID: -41970/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+        referencePath: Visuals
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeGameObjectData
       oldDataB: []
       oldDataC: []
---- !u!114 &11454818
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141992}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 141992}
-    parent: {fileID: 11494626}
-    mode: 0
-    path: /Fall/Main/Fall/Fall/Active/Target
-  usage: 0
-  path: Fall/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: Fall/Active
-    id: -41990/c86beafe-b0c0-48ed-ac96-585d0f4509ee
-    localID: c86beafe-b0c0-48ed-ac96-585d0f4509ee
-    parent: {fileID: 11494626}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11454818}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
       oldData: []
       oldDataB: []
       oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11456986
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141992}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 141992}
-    parent: {fileID: 11452306}
-    mode: 0
-    path: /Fall/Main/Fall Animation/Fall Animation/Weight/Target
-  usage: 0
-  path: Fall Animation/Weight/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Weight
-    path: Fall Animation/Weight
-    id: -41964/efecf60c-63f6-4942-811c-d8e6ef06610b
-    localID: efecf60c-63f6-4942-811c-d8e6ef06610b
-    parent: {fileID: 11452306}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11456986}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
 --- !u!114 &11467952
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -701,334 +433,34 @@ MonoBehaviour:
     info:
       name: Visuals
       path: Visuals
-      id: -41970/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+      fullPath: Fall/@Settings/Visuals
+      id: -88894/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
       localID: 33bddd78-c7f6-40fe-94d8-1637fbd7fa73
       parent: {fileID: 11467952}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11469778}
+      - target:
+          search: ../../../Visuals
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 11467952}
+          mode: 0
+          path: /Fall/@Settings/Visuals/Visuals/Target
+        usage: 1
+        path: /Fall/@Settings/Attribute Game Object Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeGameObjectData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   remember: 0
---- !u!114 &11468318
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 102488}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3e9984a5f3f19942be359930227796e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute String Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 102488}
-    parent: {fileID: 11448618}
-    mode: 0
-    path: /Fall/@Settings/Animation/Animation/Target
-  usage: 0
-  path: Animation/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Animation
-    path: Animation
-    id: -41960/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
-    localID: 7e894ef6-a99f-450f-b42a-e1aa6c29abb9
-    parent: {fileID: 11448618}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11468318}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: Fall
-  characterLimit: 0
-  allowed: []
-  disallowed: []
---- !u!114 &11469778
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 102488}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Game Object Data
-  target:
-    search: ../../../Visuals
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 11467952}
-    mode: 0
-    path: /Fall/@Settings/Visuals/Visuals/Target
-  usage: 1
-  path: Visuals/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Visuals
-    path: Visuals
-    id: -41970/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
-    localID: 33bddd78-c7f6-40fe-94d8-1637fbd7fa73
-    parent: {fileID: 11467952}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11469778}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {fileID: 0}
---- !u!114 &11471970
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141992}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 141992}
-    parent: {fileID: 11452306}
-    mode: 0
-    path: /Fall/Main/Fall Animation/Fall Animation/Used/Target
-  usage: 0
-  path: Fall Animation/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: Fall Animation/Used
-    id: -41964/57a90ae5-dbf9-4458-8b54-f0be7938abbc
-    localID: 57a90ae5-dbf9-4458-8b54-f0be7938abbc
-    parent: {fileID: 11452306}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11471970}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11484176
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141992}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 141992}
-    parent: {fileID: 11452306}
-    mode: 0
-    path: /Fall/Main/Fall Animation/Fall Animation/Usable/Target
-  usage: 0
-  path: Fall Animation/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: Fall Animation/Usable
-    id: -41964/2377ed68-0f39-4d80-8103-c5150a46f05f
-    localID: 2377ed68-0f39-4d80-8103-c5150a46f05f
-    parent: {fileID: 11452306}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11484176}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11486422
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141992}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 141992}
-    parent: {fileID: 11494626}
-    mode: 0
-    path: /Fall/Main/Fall/Fall/Usable/Target
-  usage: 0
-  path: Fall/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: Fall/Usable
-    id: -41990/da1dd272-4b87-4371-bef0-53b26741012e
-    localID: da1dd272-4b87-4371-bef0-53b26741012e
-    parent: {fileID: 11494626}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11486422}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11488014
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141992}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3e9984a5f3f19942be359930227796e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute String Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 102488}
-    parent: {fileID: 11452306}
-    mode: 0
-    path: /Fall/Main/Fall Animation/Fall Animation/Animation Name/Target
-  usage: 1
-  path: Fall Animation/Animation Name/0
-  referenceID: -41960/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
-  referencePath: Animation
-  attribute:
-    name: Animation Name
-    path: Fall Animation/Animation Name
-    id: -41964/10c4c93a-0903-4eb9-b563-762783b3a1dd
-    localID: 10c4c93a-0903-4eb9-b563-762783b3a1dd
-    parent: {fileID: 11452306}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11488014}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: FlyDown
-  characterLimit: 0
-  allowed: []
-  disallowed: []
 --- !u!114 &11494626
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1051,39 +483,93 @@ MonoBehaviour:
     info:
       name: Usable
       path: Fall/Usable
-      id: -41990/da1dd272-4b87-4371-bef0-53b26741012e
+      fullPath: Fall/Main/Fall/Usable
+      id: -88902/da1dd272-4b87-4371-bef0-53b26741012e
       localID: da1dd272-4b87-4371-bef0-53b26741012e
       parent: {fileID: 11494626}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11486422}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 141992}
+          parent: {fileID: 11494626}
+          mode: 0
+          path: /Fall/Main/Fall/Fall/Usable/Target
+        usage: 0
+        path: /Fall/Main/Old Attribute Bool Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: True
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
       path: Fall/Active
-      id: -41990/c86beafe-b0c0-48ed-ac96-585d0f4509ee
-      localID: c86beafe-b0c0-48ed-ac96-585d0f4509ee
+      fullPath: Fall/Main/Fall/Active
+      id: -88902/f9c02983-bb00-4db8-9b11-306209963161
+      localID: f9c02983-bb00-4db8-9b11-306209963161
       parent: {fileID: 11494626}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11454818}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: Fall/Main/Fall/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
       path: Fall/Used
-      id: -41990/da498e7b-42e7-4555-867b-f5f03e5a00fc
+      fullPath: Fall/Main/Fall/Used
+      id: -88902/da498e7b-42e7-4555-867b-f5f03e5a00fc
       localID: da498e7b-42e7-4555-867b-f5f03e5a00fc
       parent: {fileID: 11494626}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11412938}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 141992}
+          parent: {fileID: 11494626}
+          mode: 0
+          path: /Fall/Main/Fall/Fall/Used/Target
+        usage: 0
+        path: /Fall/Main/Old Attribute Bool Data C
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   table:
@@ -1174,13 +660,31 @@ MonoBehaviour:
     info:
       name: External
       path: Fall/External
-      id: -41990/21705753-bc05-4177-a93e-52e08db1ead8
+      fullPath: Fall/Main/Fall/External
+      id: -88902/21705753-bc05-4177-a93e-52e08db1ead8
       localID: 21705753-bc05-4177-a93e-52e08db1ead8
       parent: {fileID: 11494626}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11435898}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 141992}
+          parent: {fileID: 11494626}
+          mode: 0
+          path: /Fall/Main/Fall/Fall/External/Target
+        usage: 0
+        path: /Fall/Main/Old Attribute Bool Data D
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: True
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   scripts:

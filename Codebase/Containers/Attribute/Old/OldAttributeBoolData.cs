@@ -6,6 +6,7 @@ namespace Zios{
 		public bool value;
 		public override AttributeData Convert(){
 			var data = new AttributeBoolData();
+			data.value = this.value;
 			data.rawValue = this.value.ToString();
 			data.rawType = typeof(AttributeBoolData).FullName;
 			return data;

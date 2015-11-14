@@ -25,90 +25,15 @@ GameObject:
   - 4: {fileID: 423170}
   - 114: {fileID: 11495662}
   - 114: {fileID: 11449072}
-  - 114: {fileID: 11406048}
-  - 114: {fileID: 11463526}
-  - 114: {fileID: 11464852}
-  - 114: {fileID: 11424238}
-  - 114: {fileID: 11475546}
-  - 114: {fileID: 11487408}
-  - 114: {fileID: 11407290}
   - 114: {fileID: 11431038}
-  - 114: {fileID: 11498852}
-  - 114: {fileID: 11495032}
-  - 114: {fileID: 11445130}
-  - 114: {fileID: 11457880}
   - 114: {fileID: 11458824}
-  - 114: {fileID: 11462106}
-  - 114: {fileID: 11487238}
-  - 114: {fileID: 11456308}
-  - 114: {fileID: 11482464}
-  - 114: {fileID: 11485460}
-  - 114: {fileID: 11445286}
-  - 114: {fileID: 11456906}
-  - 114: {fileID: 11429750}
-  - 114: {fileID: 11479798}
-  - 114: {fileID: 11458902}
-  - 114: {fileID: 11417254}
-  - 114: {fileID: 11494242}
-  - 114: {fileID: 11464254}
-  - 114: {fileID: 11455934}
-  - 114: {fileID: 11404104}
-  - 114: {fileID: 11480086}
-  - 114: {fileID: 11413274}
-  - 114: {fileID: 11475764}
-  - 114: {fileID: 11414942}
   - 114: {fileID: 11402688}
   - 114: {fileID: 11434606}
-  - 114: {fileID: 11451860}
-  - 114: {fileID: 11470190}
-  - 114: {fileID: 11489060}
-  - 114: {fileID: 11456244}
   - 114: {fileID: 11423098}
-  - 114: {fileID: 11480262}
-  - 114: {fileID: 11408678}
-  - 114: {fileID: 11402116}
-  - 114: {fileID: 11463010}
   - 114: {fileID: 11424708}
-  - 114: {fileID: 11438400}
-  - 114: {fileID: 11433706}
-  - 114: {fileID: 11418088}
-  - 114: {fileID: 11421748}
   - 114: {fileID: 11481326}
-  - 114: {fileID: 11447710}
-  - 114: {fileID: 11416238}
-  - 114: {fileID: 11462206}
-  - 114: {fileID: 11448590}
-  - 114: {fileID: 11497732}
   - 114: {fileID: 11429828}
-  - 114: {fileID: 11430074}
-  - 114: {fileID: 11495070}
-  - 114: {fileID: 11443794}
-  - 114: {fileID: 11443176}
-  - 114: {fileID: 11446908}
   - 114: {fileID: 11445304}
-  - 114: {fileID: 11491288}
-  - 114: {fileID: 11435786}
-  - 114: {fileID: 11492254}
-  - 114: {fileID: 11429658}
-  - 114: {fileID: 11472176}
-  - 114: {fileID: 11423268}
-  - 114: {fileID: 11442920}
-  - 114: {fileID: 11404960}
-  - 114: {fileID: 11439666}
-  - 114: {fileID: 11423256}
-  - 114: {fileID: 11461892}
-  - 114: {fileID: 11412568}
-  - 114: {fileID: 11428138}
-  - 114: {fileID: 11453568}
-  - 114: {fileID: 11405822}
-  - 114: {fileID: 11401164}
-  - 114: {fileID: 11499422}
-  - 114: {fileID: 11444540}
-  - 114: {fileID: 11459228}
-  - 114: {fileID: 11472006}
-  - 114: {fileID: 11473654}
-  - 114: {fileID: 11468680}
-  - 114: {fileID: 11470992}
   m_Layer: 10
   m_Name: Main
   m_TagString: Untagged
@@ -127,9 +52,6 @@ GameObject:
   - 114: {fileID: 11422890}
   - 114: {fileID: 11446288}
   - 114: {fileID: 11474918}
-  - 114: {fileID: 11422784}
-  - 114: {fileID: 11425068}
-  - 114: {fileID: 11402326}
   m_Layer: 10
   m_Name: '@Settings'
   m_TagString: Untagged
@@ -175,165 +97,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 455286}
   m_RootOrder: 0
---- !u!114 &11401164
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11445304}
-    mode: 0
-    path: /Slide (1)/Main/On Ground/On Ground/Used/Target
-  usage: 0
-  path: On Ground/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: On Ground/Used
-    id: -44604/78d4bdec-d5b0-4ca4-88f1-4f93b5051b30
-    localID: 78d4bdec-d5b0-4ca4-88f1-4f93b5051b30
-    parent: {fileID: 11445304}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11401164}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11402116
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11423098}
-    mode: 0
-    path: /Slide (1)/Main/No X Input/No X Input/Active/Target
-  usage: 0
-  path: No X Input/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: No X Input/Active
-    id: -44544/c025141e-df94-4e9c-bfb8-5494585232d1
-    localID: c025141e-df94-4e9c-bfb8-5494585232d1
-    parent: {fileID: 11423098}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11402116}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11402326
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 144134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3e9984a5f3f19942be359930227796e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute String Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11422890}
-    mode: 0
-    path: /Slide (1)/@Settings/Animation/Animation/Target
-  usage: 0
-  path: Animation/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Animation
-    path: Animation
-    id: -44542/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
-    localID: 7e894ef6-a99f-450f-b42a-e1aa6c29abb9
-    parent: {fileID: 11422890}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11402326}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: Slide
-  characterLimit: 0
-  allowed: []
-  disallowed: []
 --- !u!114 &11402688
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -345,8 +108,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d5fcf23f590acc4580a07df2010a827, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /Slide (1)/Main/
-  path: /Slide (1)/Main/Rotate Direction
+  parentPath: /Slide/Main/
+  path: /Slide/Main/Rotate Direction
   alias: Rotate Direction
   rate: 0
   occurrence: 0
@@ -356,104 +119,248 @@ MonoBehaviour:
     info:
       name: Usable
       path: Rotate Direction/Usable
-      id: -44500/85eb2244-67f0-49d8-a022-93344cc74d43
+      fullPath: Slide/Main/Rotate Direction/Usable
+      id: -90398/85eb2244-67f0-49d8-a022-93344cc74d43
       localID: 85eb2244-67f0-49d8-a022-93344cc74d43
       parent: {fileID: 11402688}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11414942}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 144134}
+          parent: {fileID: 11402688}
+          mode: 0
+          path: /Slide (1)/Main/Rotate Direction/Rotate Direction/Usable/Target
+        usage: 0
+        path: /Slide/Main/Attribute Bool Data R
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
       path: Rotate Direction/Active
-      id: -44500/cd7b88d2-6d91-432f-a7dd-60792ae2e3de
-      localID: cd7b88d2-6d91-432f-a7dd-60792ae2e3de
+      fullPath: Slide/Main/Rotate Direction/Active
+      id: -90398/45240a17-bc29-41e4-87b4-f8d306b63404
+      localID: 45240a17-bc29-41e4-87b4-f8d306b63404
       parent: {fileID: 11402688}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11475764}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: Slide/Main/Rotate Direction/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
       path: Rotate Direction/Used
-      id: -44500/3e077488-17dc-49d5-b36f-ded200b0b311
+      fullPath: Slide/Main/Rotate Direction/Used
+      id: -90398/3e077488-17dc-49d5-b36f-ded200b0b311
       localID: 3e077488-17dc-49d5-b36f-ded200b0b311
       parent: {fileID: 11402688}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11413274}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 144134}
+          parent: {fileID: 11402688}
+          mode: 0
+          path: /Slide (1)/Main/Rotate Direction/Rotate Direction/Used/Target
+        usage: 0
+        path: /Slide/Main/Attribute Bool Data P
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   source:
     info:
       name: Source
       path: Rotate Direction/Source
-      id: -44500/89eb14a4-49ff-4973-927d-673d7bf2ff3f
+      fullPath: Slide/Main/Rotate Direction/Source
+      id: -90398/89eb14a4-49ff-4973-927d-673d7bf2ff3f
       localID: 89eb14a4-49ff-4973-927d-673d7bf2ff3f
       parent: {fileID: 11402688}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11480086}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 144134}
+          parent: {fileID: 11402688}
+          mode: 0
+          path: /Slide (1)/Main/Rotate Direction/Rotate Direction/Source/Target
+        usage: 1
+        path: /Slide/Main/Attribute Game Object Data C
+        referenceID: -44606/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+        referencePath: Source
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeGameObjectData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   goal:
     info:
       name: Goal Direction
       path: Rotate Direction/Goal Direction
-      id: -44500/f4caea85-f6c1-401c-a069-f9c23822539d
+      fullPath: Slide/Main/Rotate Direction/Goal Direction
+      id: -90398/f4caea85-f6c1-401c-a069-f9c23822539d
       localID: f4caea85-f6c1-401c-a069-f9c23822539d
       parent: {fileID: 11402688}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11404104}
+      - target:
+          search: ../../../
+          directObject: {fileID: 0}
+          searchObject: {fileID: 124732}
+          parent: {fileID: 11402688}
+          mode: 0
+          path: /Slide (1)/Main/Rotate Direction/Rotate Direction/Goal Direction/Target
+        usage: 1
+        path: /Slide/Main/Attribute Vector3Data B
+        referenceID: -71222/40940ed8-9837-4b72-a9b8-128c595400a0
+        referencePath: Collider Controller/Slope Normal
+        operation: 0
+        special: 0
+        rawValue: (0.0, 0.0, 0.0)
+        rawType: Zios.AttributeVector3Data
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
     x:
       info:
         name: X
         path: Rotate Direction/Goal Direction/X
-        id: -44500/f4501521-bf4b-4c98-af10-1ee67ac85692
+        fullPath: Slide/Main/Rotate Direction/Goal Direction/X
+        id: -90398/f4501521-bf4b-4c98-af10-1ee67ac85692
         localID: f4501521-bf4b-4c98-af10-1ee67ac85692
         parent: {fileID: 11402688}
         mode: 0
         linkType: 0
         oldData:
-        - {fileID: 11455934}
+        - target:
+            search: ../@Settings
+            directObject: {fileID: 0}
+            searchObject: {fileID: 144134}
+            parent: {fileID: 11402688}
+            mode: 0
+            path: /Slide (1)/Main/Rotate Direction/Rotate Direction/Goal Direction/X/Target
+          usage: 0
+          path: /Slide/Main/Attribute Float Data J
+          referenceID: 
+          referencePath: 
+          operation: 0
+          special: 0
+          rawValue: 0
+          rawType: Zios.AttributeFloatData
+        oldDataB: []
+        oldDataC: []
+        oldData: []
         oldDataB: []
         oldDataC: []
     y:
       info:
         name: Y
         path: Rotate Direction/Goal Direction/Y
-        id: -44500/f63cb3d7-537d-4fa8-a622-c168f6f43a8d
+        fullPath: Slide/Main/Rotate Direction/Goal Direction/Y
+        id: -90398/f63cb3d7-537d-4fa8-a622-c168f6f43a8d
         localID: f63cb3d7-537d-4fa8-a622-c168f6f43a8d
         parent: {fileID: 11402688}
         mode: 0
         linkType: 0
         oldData:
-        - {fileID: 11464254}
+        - target:
+            search: ../@Settings
+            directObject: {fileID: 0}
+            searchObject: {fileID: 144134}
+            parent: {fileID: 11402688}
+            mode: 0
+            path: /Slide (1)/Main/Rotate Direction/Rotate Direction/Goal Direction/Y/Target
+          usage: 0
+          path: /Slide/Main/Attribute Float Data I
+          referenceID: 
+          referencePath: 
+          operation: 0
+          special: 0
+          rawValue: 0
+          rawType: Zios.AttributeFloatData
+        oldDataB: []
+        oldDataC: []
+        oldData: []
         oldDataB: []
         oldDataC: []
     z:
       info:
         name: Z
         path: Rotate Direction/Goal Direction/Z
-        id: -44500/805d0ab1-d9e4-4e28-99be-b07d38b7f105
+        fullPath: Slide/Main/Rotate Direction/Goal Direction/Z
+        id: -90398/805d0ab1-d9e4-4e28-99be-b07d38b7f105
         localID: 805d0ab1-d9e4-4e28-99be-b07d38b7f105
         parent: {fileID: 11402688}
         mode: 0
         linkType: 0
         oldData:
-        - {fileID: 11494242}
+        - target:
+            search: ../@Settings
+            directObject: {fileID: 0}
+            searchObject: {fileID: 144134}
+            parent: {fileID: 11402688}
+            mode: 0
+            path: /Slide (1)/Main/Rotate Direction/Rotate Direction/Goal Direction/Z/Target
+          usage: 0
+          path: /Slide/Main/Attribute Float Data H
+          referenceID: 
+          referencePath: 
+          operation: 0
+          special: 0
+          rawValue: 0
+          rawType: Zios.AttributeFloatData
+        oldDataB: []
+        oldDataC: []
+        oldData: []
         oldDataB: []
         oldDataC: []
   lerpAxes:
@@ -463,39 +370,95 @@ MonoBehaviour:
       info:
         name: Is Angle
         path: Rotate Direction/Rotate Direction/Is Angle
-        id: -44500/b360124b-b41a-4b9a-ab20-de54c0dd443b
+        fullPath: Slide/Main/Rotate Direction/Rotate Direction/Is Angle
+        id: -90398/b360124b-b41a-4b9a-ab20-de54c0dd443b
         localID: b360124b-b41a-4b9a-ab20-de54c0dd443b
         parent: {fileID: 11402688}
         mode: 0
         linkType: 0
         oldData:
-        - {fileID: 11417254}
+        - target:
+            search: ../@Settings
+            directObject: {fileID: 0}
+            searchObject: {fileID: 144134}
+            parent: {fileID: 11402688}
+            mode: 0
+            path: /Slide (1)/Main/Rotate Direction/Rotate Direction/Rotate Direction/Is
+              Angle/Target
+          usage: 0
+          path: /Slide/Main/Attribute Bool Data O
+          referenceID: 
+          referencePath: 
+          operation: 0
+          special: 0
+          rawValue: True
+          rawType: Zios.AttributeBoolData
+        oldDataB: []
+        oldDataC: []
+        oldData: []
         oldDataB: []
         oldDataC: []
     isResetOnChange:
       info:
         name: Is Reset On Change
         path: Rotate Direction/Rotate Direction/Is Reset On Change
-        id: -44500/ade47b3a-ab41-4069-9c31-e0179074fc0f
+        fullPath: Slide/Main/Rotate Direction/Rotate Direction/Is Reset On Change
+        id: -90398/ade47b3a-ab41-4069-9c31-e0179074fc0f
         localID: ade47b3a-ab41-4069-9c31-e0179074fc0f
         parent: {fileID: 11402688}
         mode: 0
         linkType: 0
         oldData:
-        - {fileID: 11458902}
+        - target:
+            search: ../@Settings
+            directObject: {fileID: 0}
+            searchObject: {fileID: 144134}
+            parent: {fileID: 11402688}
+            mode: 0
+            path: /Slide (1)/Main/Rotate Direction/Rotate Direction/Rotate Direction/Is
+              Reset On Change/Target
+          usage: 0
+          path: /Slide/Main/Attribute Bool Data N
+          referenceID: 
+          referencePath: 
+          operation: 0
+          special: 0
+          rawValue: False
+          rawType: Zios.AttributeBoolData
+        oldDataB: []
+        oldDataC: []
+        oldData: []
         oldDataB: []
         oldDataC: []
     speed:
       info:
         name: Speed
         path: Rotate Direction/Rotate Direction/Transition/Speed
-        id: -44500/0e374bad-c9d5-4ae9-9dcb-88182b19ceac
+        fullPath: Slide/Main/Rotate Direction/Rotate Direction/Transition/Speed
+        id: -90398/0e374bad-c9d5-4ae9-9dcb-88182b19ceac
         localID: 0e374bad-c9d5-4ae9-9dcb-88182b19ceac
         parent: {fileID: 11402688}
         mode: 0
         linkType: 0
         oldData:
-        - {fileID: 11479798}
+        - target:
+            search: ../@Settings
+            directObject: {fileID: 0}
+            searchObject: {fileID: 144134}
+            parent: {fileID: 11402688}
+            mode: 0
+            path: /Slide (1)/Main/Rotate Direction/Rotate Direction/Rotate Direction/Transition/Speed/Target
+          usage: 0
+          path: /Slide/Main/Attribute Float Data G
+          referenceID: 
+          referencePath: 
+          operation: 0
+          special: 0
+          rawValue: 600
+          rawType: Zios.AttributeFloatData
+        oldDataB: []
+        oldDataC: []
+        oldData: []
         oldDataB: []
         oldDataC: []
     transition:
@@ -503,13 +466,32 @@ MonoBehaviour:
         info:
           name: Duration
           path: Rotate Direction/Rotate Direction/Rotate Direction/Transition/Duration
-          id: -44500/510e549c-dd87-4750-b855-256845d3357d
+          fullPath: Slide/Main/Rotate Direction/Rotate Direction/Rotate Direction/Transition/Duration
+          id: -90398/510e549c-dd87-4750-b855-256845d3357d
           localID: 510e549c-dd87-4750-b855-256845d3357d
           parent: {fileID: 11402688}
           mode: 0
           linkType: 0
           oldData:
-          - {fileID: 11429750}
+          - target:
+              search: ../@Settings
+              directObject: {fileID: 0}
+              searchObject: {fileID: 144134}
+              parent: {fileID: 11402688}
+              mode: 0
+              path: /Slide (1)/Main/Rotate Direction/Rotate Direction/Rotate Direction/Rotate
+                Direction/Transition/Duration/Target
+            usage: 0
+            path: /Slide/Main/Attribute Float Data F
+            referenceID: 
+            referencePath: 
+            operation: 0
+            special: 0
+            rawValue: 0
+            rawType: Zios.AttributeFloatData
+          oldDataB: []
+          oldDataC: []
+          oldData: []
           oldDataB: []
           oldDataC: []
       delayStart:
@@ -517,13 +499,33 @@ MonoBehaviour:
           name: Delay Start
           path: Rotate Direction/Rotate Direction/Rotate Direction/Transition/Delay
             Start
-          id: -44500/933f9887-5975-43cd-8a3e-2d949abc978b
+          fullPath: Slide/Main/Rotate Direction/Rotate Direction/Rotate Direction/Transition/Delay
+            Start
+          id: -90398/933f9887-5975-43cd-8a3e-2d949abc978b
           localID: 933f9887-5975-43cd-8a3e-2d949abc978b
           parent: {fileID: 11402688}
           mode: 0
           linkType: 0
           oldData:
-          - {fileID: 11456906}
+          - target:
+              search: ../@Settings
+              directObject: {fileID: 0}
+              searchObject: {fileID: 144134}
+              parent: {fileID: 11402688}
+              mode: 0
+              path: /Slide (1)/Main/Rotate Direction/Rotate Direction/Rotate Direction/Rotate
+                Direction/Transition/Delay Start/Target
+            usage: 0
+            path: /Slide/Main/Attribute Float Data E
+            referenceID: 
+            referencePath: 
+            operation: 0
+            special: 0
+            rawValue: 0
+            rawType: Zios.AttributeFloatData
+          oldDataB: []
+          oldDataC: []
+          oldData: []
           oldDataB: []
           oldDataC: []
       curve:
@@ -542,737 +544,6 @@ MonoBehaviour:
         m_PreInfinity: 2
         m_PostInfinity: 2
     endProximity: 0
---- !u!114 &11404104
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83639dc7708e9ad4584145044a83425d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Vector3Data
-  target:
-    search: ../../../
-    directObject: {fileID: 0}
-    searchObject: {fileID: 124732}
-    parent: {fileID: 11402688}
-    mode: 0
-    path: /Slide (1)/Main/Rotate Direction/Rotate Direction/Goal Direction/Target
-  usage: 1
-  path: Rotate Direction/Goal Direction/0
-  referenceID: -71222/40940ed8-9837-4b72-a9b8-128c595400a0
-  referencePath: Collider Controller/Slope Normal
-  attribute:
-    name: Goal Direction
-    path: Rotate Direction/Goal Direction
-    id: -44500/f4caea85-f6c1-401c-a069-f9c23822539d
-    localID: f4caea85-f6c1-401c-a069-f9c23822539d
-    parent: {fileID: 11402688}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11404104}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {x: 0, y: 0, z: 0}
---- !u!114 &11404960
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11445304}
-    mode: 0
-    path: /Slide (1)/Main/On Ground/On Ground/Hit Point/X/Target
-  usage: 0
-  path: On Ground/Hit Point/X/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: X
-    path: On Ground/Hit Point/X
-    id: -44604/be1dd85e-137b-4549-9cb0-d81b6d9d7698
-    localID: be1dd85e-137b-4549-9cb0-d81b6d9d7698
-    parent: {fileID: 11445304}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11404960}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11405822
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Game Object Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11445304}
-    mode: 0
-    path: /Slide (1)/Main/On Ground/On Ground/Source/Target
-  usage: 1
-  path: On Ground/Source/0
-  referenceID: -44606/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
-  referencePath: Source
-  attribute:
-    name: Source
-    path: On Ground/Source
-    id: -44604/450b8f41-682b-47f9-b68a-0705b0db9b96
-    localID: 450b8f41-682b-47f9-b68a-0705b0db9b96
-    parent: {fileID: 11445304}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11405822}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {fileID: 124732}
---- !u!114 &11406048
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 136648}
-    parent: {fileID: 11449072}
-    mode: 0
-    path: /Slide (1)/Main/Animation/Animation/Active/Target
-  usage: 0
-  path: Animation/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: Animation/Active
-    id: -44614/f8f435be-6d84-4e97-90c1-f8b80b8ce3b0
-    localID: f8f435be-6d84-4e97-90c1-f8b80b8ce3b0
-    parent: {fileID: 11449072}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11406048}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11407290
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3e9984a5f3f19942be359930227796e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute String Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11449072}
-    mode: 0
-    path: /Slide (1)/Main/Animation/Animation/Animation Name/Target
-  usage: 1
-  path: Animation/Animation Name/0
-  referenceID: -44542/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
-  referencePath: Animation
-  attribute:
-    name: Animation Name
-    path: Animation/Animation Name
-    id: -44614/10c4c93a-0903-4eb9-b563-762783b3a1dd
-    localID: 10c4c93a-0903-4eb9-b563-762783b3a1dd
-    parent: {fileID: 11449072}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11407290}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: FlyDown
-  characterLimit: 0
-  allowed: []
-  disallowed: []
---- !u!114 &11408678
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11423098}
-    mode: 0
-    path: /Slide (1)/Main/No X Input/No X Input/Used/Target
-  usage: 0
-  path: No X Input/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: No X Input/Used
-    id: -44544/80ae16ae-91af-49e0-9ce8-3a651c2a4f88
-    localID: 80ae16ae-91af-49e0-9ce8-3a651c2a4f88
-    parent: {fileID: 11423098}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11408678}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11412568
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11445304}
-    mode: 0
-    path: /Slide (1)/Main/On Ground/On Ground/Direction/Y/Target
-  usage: 0
-  path: On Ground/Direction/Y/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Y
-    path: On Ground/Direction/Y
-    id: -44604/fad1f9d5-6047-4c2e-92df-f2e2f6856d22
-    localID: fad1f9d5-6047-4c2e-92df-f2e2f6856d22
-    parent: {fileID: 11445304}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11412568}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11413274
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11402688}
-    mode: 0
-    path: /Slide (1)/Main/Rotate Direction/Rotate Direction/Used/Target
-  usage: 0
-  path: Rotate Direction/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: Rotate Direction/Used
-    id: -44500/3e077488-17dc-49d5-b36f-ded200b0b311
-    localID: 3e077488-17dc-49d5-b36f-ded200b0b311
-    parent: {fileID: 11402688}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11413274}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11414942
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11402688}
-    mode: 0
-    path: /Slide (1)/Main/Rotate Direction/Rotate Direction/Usable/Target
-  usage: 0
-  path: Rotate Direction/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: Rotate Direction/Usable
-    id: -44500/85eb2244-67f0-49d8-a022-93344cc74d43
-    localID: 85eb2244-67f0-49d8-a022-93344cc74d43
-    parent: {fileID: 11402688}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11414942}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11416238
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../../../
-    directObject: {fileID: 0}
-    searchObject: {fileID: 124732}
-    parent: {fileID: 11481326}
-    mode: 0
-    path: /Slide (1)/Main/Reset Slide Angle/Reset Slide Angle/Target/Target
-  usage: 1
-  path: Reset Slide Angle/Target/0
-  referenceID: -71222/095c71b6-a842-4e5d-9734-ee7d546c077b
-  referencePath: Collider Controller/Min Slide Angle
-  attribute:
-    name: Target
-    path: Reset Slide Angle/Target
-    id: -44696/28d5066f-21a7-4267-8056-04bd9091c715
-    localID: 28d5066f-21a7-4267-8056-04bd9091c715
-    parent: {fileID: 11481326}
-    mode: 1
-    linkType: 0
-    oldData:
-    - {fileID: 11416238}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11417254
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11402688}
-    mode: 0
-    path: /Slide (1)/Main/Rotate Direction/Rotate Direction/Rotate Direction/Is Angle/Target
-  usage: 0
-  path: Rotate Direction/Rotate Direction/Is Angle/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Is Angle
-    path: Rotate Direction/Rotate Direction/Is Angle
-    id: -44500/b360124b-b41a-4b9a-ab20-de54c0dd443b
-    localID: b360124b-b41a-4b9a-ab20-de54c0dd443b
-    parent: {fileID: 11402688}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11417254}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11418088
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11424708}
-    mode: 0
-    path: /Slide (1)/Main/On Slope/On Slope/Active/Target
-  usage: 0
-  path: On Slope/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: On Slope/Active
-    id: -44552/eec8be37-9115-4a1f-b243-fbc0856cb53f
-    localID: eec8be37-9115-4a1f-b243-fbc0856cb53f
-    parent: {fileID: 11424708}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11418088}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11421748
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11424708}
-    mode: 0
-    path: /Slide (1)/Main/On Slope/On Slope/Usable/Target
-  usage: 0
-  path: On Slope/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: On Slope/Usable
-    id: -44552/03519fd9-21f7-4fb3-ab14-eb5d06524e8f
-    localID: 03519fd9-21f7-4fb3-ab14-eb5d06524e8f
-    parent: {fileID: 11424708}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11421748}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11422784
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 144134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Game Object Data
-  target:
-    search: ../../..
-    directObject: {fileID: 0}
-    searchObject: {fileID: 124732}
-    parent: {fileID: 11446288}
-    mode: 0
-    path: /Slide (1)/@Settings/Source/Source/Target
-  usage: 1
-  path: Source/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Source
-    path: Source
-    id: -44606/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
-    localID: 0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
-    parent: {fileID: 11446288}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11422784}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {fileID: 0}
 --- !u!114 &11422890
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1284,20 +555,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15dc630d7daaf4548bf1d099b9be1324, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /Slide (1)/@Settings/
-  path: /Slide (1)/@Settings/Animation
+  parentPath: /Slide/@Settings/
+  path: /Slide/@Settings/Animation
   alias: Animation
   value:
     info:
       name: Animation
       path: Animation
-      id: -44542/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
+      fullPath: Slide/@Settings/Animation
+      id: -90502/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
       localID: 7e894ef6-a99f-450f-b42a-e1aa6c29abb9
       parent: {fileID: 11422890}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11402326}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 144134}
+          parent: {fileID: 11422890}
+          mode: 0
+          path: /Slide (1)/@Settings/Animation/Animation/Target
+        usage: 0
+        path: /Slide/@Settings/Attribute String Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: Slide
+        rawType: Zios.AttributeStringData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   remember: 0
@@ -1312,8 +601,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 495b96d67a54324489cbf59d261a5ce2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /Slide (1)/Main/
-  path: /Slide (1)/Main/No X Input
+  parentPath: /Slide/Main/
+  path: /Slide/Main/No X Input
   alias: No X Input
   rate: 0
   occurrence: 0
@@ -1323,210 +612,126 @@ MonoBehaviour:
     info:
       name: Usable
       path: No X Input/Usable
-      id: -44544/5649011f-da0c-48d5-883e-f8ea8267f3d2
+      fullPath: Slide/Main/No X Input/Usable
+      id: -90410/5649011f-da0c-48d5-883e-f8ea8267f3d2
       localID: 5649011f-da0c-48d5-883e-f8ea8267f3d2
       parent: {fileID: 11423098}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11463010}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 144134}
+          parent: {fileID: 11423098}
+          mode: 0
+          path: /Slide (1)/Main/No X Input/No X Input/Usable/Target
+        usage: 0
+        path: /Slide/Main/Attribute Bool Data X
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
       path: No X Input/Active
-      id: -44544/c025141e-df94-4e9c-bfb8-5494585232d1
-      localID: c025141e-df94-4e9c-bfb8-5494585232d1
+      fullPath: Slide/Main/No X Input/Active
+      id: -90410/4756e234-34e7-42ca-b6e0-d0272cdc543b
+      localID: 4756e234-34e7-42ca-b6e0-d0272cdc543b
       parent: {fileID: 11423098}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11402116}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: Slide/Main/No X Input/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
       path: No X Input/Used
-      id: -44544/80ae16ae-91af-49e0-9ce8-3a651c2a4f88
+      fullPath: Slide/Main/No X Input/Used
+      id: -90410/80ae16ae-91af-49e0-9ce8-3a651c2a4f88
       localID: 80ae16ae-91af-49e0-9ce8-3a651c2a4f88
       parent: {fileID: 11423098}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11408678}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 144134}
+          parent: {fileID: 11423098}
+          mode: 0
+          path: /Slide (1)/Main/No X Input/No X Input/Used/Target
+        usage: 0
+        path: /Slide/Main/Attribute Bool Data V
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   inputName:
     info:
       name: Input Name
       path: No X Input/Input Name
-      id: -44544/8a9a84fa-6c52-4082-9d81-82f74edf30f4
+      fullPath: Slide/Main/No X Input/Input Name
+      id: -90410/8a9a84fa-6c52-4082-9d81-82f74edf30f4
       localID: 8a9a84fa-6c52-4082-9d81-82f74edf30f4
       parent: {fileID: 11423098}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11480262}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 144134}
+          parent: {fileID: 11423098}
+          mode: 0
+          path: /Slide (1)/Main/No X Input/No X Input/Input Name/Target
+        usage: 0
+        path: /Slide/Main/Attribute String Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: Left/Right
+        rawType: Zios.AttributeStringData
       oldDataB: []
       oldDataC: []
---- !u!114 &11423256
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11445304}
-    mode: 0
-    path: /Slide (1)/Main/On Ground/On Ground/Distance/Target
-  usage: 0
-  path: On Ground/Distance/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Distance
-    path: On Ground/Distance
-    id: -44604/493d35f3-4ddd-465d-83d3-47e32d7ce473
-    localID: 493d35f3-4ddd-465d-83d3-47e32d7ce473
-    parent: {fileID: 11445304}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11423256}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
       oldData: []
       oldDataB: []
       oldDataC: []
-  operation: 0
-  special: 0
-  value: .5
---- !u!114 &11423268
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11445304}
-    mode: 0
-    path: /Slide (1)/Main/On Ground/On Ground/Hit Point/Z/Target
-  usage: 0
-  path: On Ground/Hit Point/Z/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Z
-    path: On Ground/Hit Point/Z
-    id: -44604/8cd0cfe8-a4c3-4b6d-9968-204aa35aa808
-    localID: 8cd0cfe8-a4c3-4b6d-9968-204aa35aa808
-    parent: {fileID: 11445304}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11423268}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11424238
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 136648}
-    parent: {fileID: 11449072}
-    mode: 0
-    path: /Slide (1)/Main/Animation/Animation/Speed/Target
-  usage: 0
-  path: Animation/Speed/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Speed
-    path: Animation/Speed
-    id: -44614/27835566-56e1-49de-b9ba-762ba4d45c0d
-    localID: 27835566-56e1-49de-b9ba-762ba4d45c0d
-    parent: {fileID: 11449072}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11424238}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
 --- !u!114 &11424708
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1538,8 +743,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79abd314e71bcd8469e24be53380e4bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /Slide (1)/Main/
-  path: /Slide (1)/Main/On Slope
+  parentPath: /Slide/Main/
+  path: /Slide/Main/On Slope
   alias: On Slope
   rate: 0
   occurrence: 0
@@ -1549,263 +754,126 @@ MonoBehaviour:
     info:
       name: Usable
       path: On Slope/Usable
-      id: -44552/03519fd9-21f7-4fb3-ab14-eb5d06524e8f
+      fullPath: Slide/Main/On Slope/Usable
+      id: -90420/03519fd9-21f7-4fb3-ab14-eb5d06524e8f
       localID: 03519fd9-21f7-4fb3-ab14-eb5d06524e8f
       parent: {fileID: 11424708}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11421748}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 144134}
+          parent: {fileID: 11424708}
+          mode: 0
+          path: /Slide (1)/Main/On Slope/On Slope/Usable/Target
+        usage: 0
+        path: /Slide/Main/Attribute Bool Data [ B
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
       path: On Slope/Active
-      id: -44552/eec8be37-9115-4a1f-b243-fbc0856cb53f
-      localID: eec8be37-9115-4a1f-b243-fbc0856cb53f
+      fullPath: Slide/Main/On Slope/Active
+      id: -90420/f62e100c-d2c9-4837-b987-f67458112990
+      localID: f62e100c-d2c9-4837-b987-f67458112990
       parent: {fileID: 11424708}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11418088}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: Slide/Main/On Slope/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
       path: On Slope/Used
-      id: -44552/7994f131-b474-4dad-9e7a-cee4822ce5af
+      fullPath: Slide/Main/On Slope/Used
+      id: -90420/7994f131-b474-4dad-9e7a-cee4822ce5af
       localID: 7994f131-b474-4dad-9e7a-cee4822ce5af
       parent: {fileID: 11424708}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11433706}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 144134}
+          parent: {fileID: 11424708}
+          mode: 0
+          path: /Slide (1)/Main/On Slope/On Slope/Used/Target
+        usage: 0
+        path: /Slide/Main/Attribute Bool Data Z
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   value:
     info:
       name: On Slope
       path: On Slope
-      id: -44552/e48ac2e3-ba81-4ab9-8257-01509adec5b4
+      fullPath: Slide/Main/On Slope
+      id: -90420/e48ac2e3-ba81-4ab9-8257-01509adec5b4
       localID: e48ac2e3-ba81-4ab9-8257-01509adec5b4
       parent: {fileID: 11424708}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11438400}
+      - target:
+          search: ../../../
+          directObject: {fileID: 0}
+          searchObject: {fileID: 124732}
+          parent: {fileID: 11424708}
+          mode: 0
+          path: /Slide (1)/Main/On Slope/On Slope/Target
+        usage: 1
+        path: /Slide/Main/Attribute Bool Data Y
+        referenceID: -71222/fdcae429-1271-430b-b39d-7d3a9fd6654a
+        referencePath: Collider Controller/On Slope
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
---- !u!114 &11425068
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 144134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Game Object Data
-  target:
-    search: ../../../Visuals
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 11474918}
-    mode: 0
-    path: /Slide (1)/@Settings/Visuals/Visuals/Target
-  usage: 1
-  path: Visuals/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Visuals
-    path: Visuals
-    id: -44670/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
-    localID: 33bddd78-c7f6-40fe-94d8-1637fbd7fa73
-    parent: {fileID: 11474918}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11425068}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
       oldData: []
       oldDataB: []
       oldDataC: []
-  operation: 0
-  special: 0
-  value: {fileID: 0}
---- !u!114 &11428138
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11445304}
-    mode: 0
-    path: /Slide (1)/Main/On Ground/On Ground/Direction/X/Target
-  usage: 0
-  path: On Ground/Direction/X/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: X
-    path: On Ground/Direction/X
-    id: -44604/aae3ab1e-ca8d-41ea-b6af-1aaee7c0641a
-    localID: aae3ab1e-ca8d-41ea-b6af-1aaee7c0641a
-    parent: {fileID: 11445304}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11428138}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11429658
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11445304}
-    mode: 0
-    path: /Slide (1)/Main/On Ground/On Ground/Hit Normal/X/Target
-  usage: 0
-  path: On Ground/Hit Normal/X/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: X
-    path: On Ground/Hit Normal/X
-    id: -44604/c96aeb83-b90e-4c45-9cb1-f3e3b135a895
-    localID: c96aeb83-b90e-4c45-9cb1-f3e3b135a895
-    parent: {fileID: 11445304}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11429658}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11429750
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11402688}
-    mode: 0
-    path: /Slide (1)/Main/Rotate Direction/Rotate Direction/Rotate Direction/Rotate
-      Direction/Transition/Duration/Target
-  usage: 0
-  path: Rotate Direction/Rotate Direction/Rotate Direction/Transition/Duration/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Duration
-    path: Rotate Direction/Rotate Direction/Rotate Direction/Transition/Duration
-    id: -44500/510e549c-dd87-4750-b855-256845d3357d
-    localID: 510e549c-dd87-4750-b855-256845d3357d
-    parent: {fileID: 11402688}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11429750}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!114 &11429828
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1817,8 +885,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2423479bf36dd4245b48e7e6a05012a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /Slide (1)/Main/
-  path: /Slide (1)/Main/Extreme Slide Angle
+  parentPath: /Slide/Main/
+  path: /Slide/Main/Extreme Slide Angle
   alias: Extreme Slide Angle
   rate: 0
   occurrence: 2
@@ -1828,119 +896,157 @@ MonoBehaviour:
     info:
       name: Usable
       path: Extreme Slide Angle/Usable
-      id: -44568/1a6025f1-45b1-40dd-ba58-44b4674f507c
+      fullPath: Slide/Main/Extreme Slide Angle/Usable
+      id: -90442/1a6025f1-45b1-40dd-ba58-44b4674f507c
       localID: 1a6025f1-45b1-40dd-ba58-44b4674f507c
       parent: {fileID: 11429828}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11446908}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 144134}
+          parent: {fileID: 11429828}
+          mode: 0
+          path: /Slide (1)/Main/Extreme Slide Angle/Extreme Slide Angle/Usable/Target
+        usage: 0
+        path: /Slide/Main/Attribute Bool Data [ H
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
       path: Extreme Slide Angle/Active
-      id: -44568/4cb96978-3a8a-4f0b-b378-5b0131114e40
-      localID: 4cb96978-3a8a-4f0b-b378-5b0131114e40
+      fullPath: Slide/Main/Extreme Slide Angle/Active
+      id: -90442/1031ea24-7617-4a6e-825f-f963147d04a4
+      localID: 1031ea24-7617-4a6e-825f-f963147d04a4
       parent: {fileID: 11429828}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11443176}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: Slide/Main/Extreme Slide Angle/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
       path: Extreme Slide Angle/Used
-      id: -44568/95c457f4-9507-42c1-a918-c5eaf6e824db
+      fullPath: Slide/Main/Extreme Slide Angle/Used
+      id: -90442/95c457f4-9507-42c1-a918-c5eaf6e824db
       localID: 95c457f4-9507-42c1-a918-c5eaf6e824db
       parent: {fileID: 11429828}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11443794}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 144134}
+          parent: {fileID: 11429828}
+          mode: 0
+          path: /Slide (1)/Main/Extreme Slide Angle/Extreme Slide Angle/Used/Target
+        usage: 0
+        path: /Slide/Main/Attribute Bool Data [ F
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   target:
     info:
       name: Target
       path: Extreme Slide Angle/Target
-      id: -44568/2ba8db34-4751-471a-9bd4-ad751b8a4b5b
+      fullPath: Slide/Main/Extreme Slide Angle/Target
+      id: -90442/2ba8db34-4751-471a-9bd4-ad751b8a4b5b
       localID: 2ba8db34-4751-471a-9bd4-ad751b8a4b5b
       parent: {fileID: 11429828}
       mode: 1
       linkType: 0
       oldData:
-      - {fileID: 11495070}
+      - target:
+          search: ../../../
+          directObject: {fileID: 0}
+          searchObject: {fileID: 124732}
+          parent: {fileID: 11429828}
+          mode: 0
+          path: /Slide (1)/Main/Extreme Slide Angle/Extreme Slide Angle/Target/Target
+        usage: 1
+        path: /Slide/Main/Attribute Float Data N
+        referenceID: -71222/095c71b6-a842-4e5d-9734-ee7d546c077b
+        referencePath: Collider Controller/Min Slide Angle
+        operation: 0
+        special: 0
+        rawValue: 0
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   value:
     info:
       name: Value
       path: Extreme Slide Angle/Value
-      id: -44568/13e15812-8016-421b-9cea-cf02d9591b8f
+      fullPath: Slide/Main/Extreme Slide Angle/Value
+      id: -90442/13e15812-8016-421b-9cea-cf02d9591b8f
       localID: 13e15812-8016-421b-9cea-cf02d9591b8f
       parent: {fileID: 11429828}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11430074}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 144134}
+          parent: {fileID: 11429828}
+          mode: 0
+          path: /Slide (1)/Main/Extreme Slide Angle/Extreme Slide Angle/Value/Target
+        usage: 0
+        path: /Slide/Main/Attribute Float Data M
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 20
+        rawType: Zios.AttributeFloatData
       oldDataB: []
       oldDataC: []
---- !u!114 &11430074
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11429828}
-    mode: 0
-    path: /Slide (1)/Main/Extreme Slide Angle/Extreme Slide Angle/Value/Target
-  usage: 0
-  path: Extreme Slide Angle/Value/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Value
-    path: Extreme Slide Angle/Value
-    id: -44568/13e15812-8016-421b-9cea-cf02d9591b8f
-    localID: 13e15812-8016-421b-9cea-cf02d9591b8f
-    parent: {fileID: 11429828}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11430074}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
       oldData: []
       oldDataB: []
       oldDataC: []
-  operation: 0
-  special: 0
-  value: 20
 --- !u!114 &11431038
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1952,8 +1058,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79abd314e71bcd8469e24be53380e4bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /Slide (1)/Main/
-  path: /Slide (1)/Main/On Slide
+  parentPath: /Slide/Main/
+  path: /Slide/Main/On Slide
   alias: On Slide
   rate: 0
   occurrence: 0
@@ -1963,106 +1069,126 @@ MonoBehaviour:
     info:
       name: Usable
       path: On Slide/Usable
-      id: -44572/1b629a6a-7684-4a63-8096-5d2b36892ddf
+      fullPath: Slide/Main/On Slide/Usable
+      id: -90348/1b629a6a-7684-4a63-8096-5d2b36892ddf
       localID: 1b629a6a-7684-4a63-8096-5d2b36892ddf
       parent: {fileID: 11431038}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11498852}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 144134}
+          parent: {fileID: 11431038}
+          mode: 0
+          path: /Slide (1)/Main/On Slide/On Slide/Usable/Target
+        usage: 0
+        path: /Slide/Main/Attribute Bool Data E
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
       path: On Slide/Active
-      id: -44572/52fa4245-87b4-4934-b749-133a1efe2f64
-      localID: 52fa4245-87b4-4934-b749-133a1efe2f64
+      fullPath: Slide/Main/On Slide/Active
+      id: -90348/1c5143a0-0752-495d-9227-f14a52161d73
+      localID: 1c5143a0-0752-495d-9227-f14a52161d73
       parent: {fileID: 11431038}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11495032}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: Slide/Main/On Slide/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
       path: On Slide/Used
-      id: -44572/0946d789-df23-45e5-bf40-d753bba1a67e
+      fullPath: Slide/Main/On Slide/Used
+      id: -90348/0946d789-df23-45e5-bf40-d753bba1a67e
       localID: 0946d789-df23-45e5-bf40-d753bba1a67e
       parent: {fileID: 11431038}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11445130}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 144134}
+          parent: {fileID: 11431038}
+          mode: 0
+          path: /Slide (1)/Main/On Slide/On Slide/Used/Target
+        usage: 0
+        path: /Slide/Main/Attribute Bool Data G
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   value:
     info:
       name: On Slide
       path: On Slide
-      id: -44572/6c8f9bdf-cb5d-43aa-b2ac-fe5ccd46c995
+      fullPath: Slide/Main/On Slide
+      id: -90348/6c8f9bdf-cb5d-43aa-b2ac-fe5ccd46c995
       localID: 6c8f9bdf-cb5d-43aa-b2ac-fe5ccd46c995
       parent: {fileID: 11431038}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11457880}
+      - target:
+          search: ../../../
+          directObject: {fileID: 0}
+          searchObject: {fileID: 124732}
+          parent: {fileID: 11431038}
+          mode: 0
+          path: /Slide (1)/Main/On Slide/On Slide/Target
+        usage: 1
+        path: /Slide/Main/Attribute Bool Data H
+        referenceID: -71222/3fe328cf-5b18-4e21-881b-0405a4d02a44
+        referencePath: Collider Controller/On Slide
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
---- !u!114 &11433706
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11424708}
-    mode: 0
-    path: /Slide (1)/Main/On Slope/On Slope/Used/Target
-  usage: 0
-  path: On Slope/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: On Slope/Used
-    id: -44552/7994f131-b474-4dad-9e7a-cee4822ce5af
-    localID: 7994f131-b474-4dad-9e7a-cee4822ce5af
-    parent: {fileID: 11424708}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11433706}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
       oldData: []
       oldDataB: []
       oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!114 &11434606
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2074,8 +1200,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 495b96d67a54324489cbf59d261a5ce2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /Slide (1)/Main/
-  path: /Slide (1)/Main/No Z Input
+  parentPath: /Slide/Main/
+  path: /Slide/Main/No Z Input
   alias: No Z Input
   rate: 0
   occurrence: 0
@@ -2085,522 +1211,126 @@ MonoBehaviour:
     info:
       name: Usable
       path: No Z Input/Usable
-      id: -44576/27287d4a-64a3-4a05-a583-045fb74a477d
+      fullPath: Slide/Main/No Z Input/Usable
+      id: -90400/27287d4a-64a3-4a05-a583-045fb74a477d
       localID: 27287d4a-64a3-4a05-a583-045fb74a477d
       parent: {fileID: 11434606}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11456244}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 144134}
+          parent: {fileID: 11434606}
+          mode: 0
+          path: /Slide (1)/Main/No Z Input/No Z Input/Usable/Target
+        usage: 0
+        path: /Slide/Main/Attribute Bool Data U
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
       path: No Z Input/Active
-      id: -44576/ba3cd025-f034-4771-a76f-0d8e72d4e2ad
-      localID: ba3cd025-f034-4771-a76f-0d8e72d4e2ad
+      fullPath: Slide/Main/No Z Input/Active
+      id: -90400/2a9a66e4-e3aa-41cd-ac03-7c943a775ca3
+      localID: 2a9a66e4-e3aa-41cd-ac03-7c943a775ca3
       parent: {fileID: 11434606}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11489060}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: Slide/Main/No Z Input/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
       path: No Z Input/Used
-      id: -44576/730a7997-0191-4940-8c5f-b0d3459c7a29
+      fullPath: Slide/Main/No Z Input/Used
+      id: -90400/730a7997-0191-4940-8c5f-b0d3459c7a29
       localID: 730a7997-0191-4940-8c5f-b0d3459c7a29
       parent: {fileID: 11434606}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11470190}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 144134}
+          parent: {fileID: 11434606}
+          mode: 0
+          path: /Slide (1)/Main/No Z Input/No Z Input/Used/Target
+        usage: 0
+        path: /Slide/Main/Attribute Bool Data S
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   inputName:
     info:
       name: Input Name
       path: No Z Input/Input Name
-      id: -44576/812e55e4-ed0c-4469-a9a3-b8776b51d5f4
+      fullPath: Slide/Main/No Z Input/Input Name
+      id: -90400/812e55e4-ed0c-4469-a9a3-b8776b51d5f4
       localID: 812e55e4-ed0c-4469-a9a3-b8776b51d5f4
       parent: {fileID: 11434606}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11451860}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 144134}
+          parent: {fileID: 11434606}
+          mode: 0
+          path: /Slide (1)/Main/No Z Input/No Z Input/Input Name/Target
+        usage: 0
+        path: /Slide/Main/Attribute String Data C
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: Back/Forward
+        rawType: Zios.AttributeStringData
       oldDataB: []
       oldDataC: []
---- !u!114 &11435786
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11445304}
-    mode: 0
-    path: /Slide (1)/Main/On Ground/On Ground/Hit Normal/Z/Target
-  usage: 0
-  path: On Ground/Hit Normal/Z/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Z
-    path: On Ground/Hit Normal/Z
-    id: -44604/c7c6dc85-24d6-450b-83c5-f470d72f3bf9
-    localID: c7c6dc85-24d6-450b-83c5-f470d72f3bf9
-    parent: {fileID: 11445304}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11435786}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
       oldData: []
       oldDataB: []
       oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11438400
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../../../
-    directObject: {fileID: 0}
-    searchObject: {fileID: 124732}
-    parent: {fileID: 11424708}
-    mode: 0
-    path: /Slide (1)/Main/On Slope/On Slope/Target
-  usage: 1
-  path: On Slope/0
-  referenceID: -71222/fdcae429-1271-430b-b39d-7d3a9fd6654a
-  referencePath: Collider Controller/On Slope
-  attribute:
-    name: On Slope
-    path: On Slope
-    id: -44552/e48ac2e3-ba81-4ab9-8257-01509adec5b4
-    localID: e48ac2e3-ba81-4ab9-8257-01509adec5b4
-    parent: {fileID: 11424708}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11438400}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11439666
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83639dc7708e9ad4584145044a83425d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Vector3Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11445304}
-    mode: 0
-    path: /Slide (1)/Main/On Ground/On Ground/Hit Point/Target
-  usage: 0
-  path: On Ground/Hit Point/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Hit Point
-    path: On Ground/Hit Point
-    id: -44604/bd6c52c6-44f8-4200-a77b-fc880a92ab71
-    localID: bd6c52c6-44f8-4200-a77b-fc880a92ab71
-    parent: {fileID: 11445304}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11439666}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {x: 0, y: 0, z: 0}
---- !u!114 &11442920
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11445304}
-    mode: 0
-    path: /Slide (1)/Main/On Ground/On Ground/Hit Point/Y/Target
-  usage: 0
-  path: On Ground/Hit Point/Y/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Y
-    path: On Ground/Hit Point/Y
-    id: -44604/6b9c41b4-13de-4870-bf25-4447f7d4eaaa
-    localID: 6b9c41b4-13de-4870-bf25-4447f7d4eaaa
-    parent: {fileID: 11445304}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11442920}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11443176
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11429828}
-    mode: 0
-    path: /Slide (1)/Main/Extreme Slide Angle/Extreme Slide Angle/Active/Target
-  usage: 0
-  path: Extreme Slide Angle/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: Extreme Slide Angle/Active
-    id: -44568/4cb96978-3a8a-4f0b-b378-5b0131114e40
-    localID: 4cb96978-3a8a-4f0b-b378-5b0131114e40
-    parent: {fileID: 11429828}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11443176}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11443794
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11429828}
-    mode: 0
-    path: /Slide (1)/Main/Extreme Slide Angle/Extreme Slide Angle/Used/Target
-  usage: 0
-  path: Extreme Slide Angle/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: Extreme Slide Angle/Used
-    id: -44568/95c457f4-9507-42c1-a918-c5eaf6e824db
-    localID: 95c457f4-9507-42c1-a918-c5eaf6e824db
-    parent: {fileID: 11429828}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11443794}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11444540
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11445304}
-    mode: 0
-    path: /Slide (1)/Main/On Ground/On Ground/Usable/Target
-  usage: 0
-  path: On Ground/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: On Ground/Usable
-    id: -44604/c5a7d5cb-cf93-45c3-90bb-6067a42e0eb4
-    localID: c5a7d5cb-cf93-45c3-90bb-6067a42e0eb4
-    parent: {fileID: 11445304}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11444540}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11445130
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11431038}
-    mode: 0
-    path: /Slide (1)/Main/On Slide/On Slide/Used/Target
-  usage: 0
-  path: On Slide/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: On Slide/Used
-    id: -44572/0946d789-df23-45e5-bf40-d753bba1a67e
-    localID: 0946d789-df23-45e5-bf40-d753bba1a67e
-    parent: {fileID: 11431038}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11445130}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11445286
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11458824}
-    mode: 0
-    path: /Slide (1)/Main/On Slope Timer/On Slope Timer/Is Complete/Target
-  usage: 0
-  path: On Slope Timer/Is Complete/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Is Complete
-    path: On Slope Timer/Is Complete
-    id: -44636/e593d051-32c3-492d-96e2-6b2a5d31948a
-    localID: e593d051-32c3-492d-96e2-6b2a5d31948a
-    parent: {fileID: 11458824}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11445286}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!114 &11445304
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2612,8 +1342,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d483bbf7771b8d4eb254f917061fe72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /Slide (1)/Main/
-  path: /Slide (1)/Main/On Ground
+  parentPath: /Slide/Main/
+  path: /Slide/Main/On Ground
   alias: On Ground
   rate: 1
   occurrence: 0
@@ -2623,117 +1353,279 @@ MonoBehaviour:
     info:
       name: Usable
       path: On Ground/Usable
-      id: -44604/c5a7d5cb-cf93-45c3-90bb-6067a42e0eb4
+      fullPath: Slide/Main/On Ground/Usable
+      id: -90454/c5a7d5cb-cf93-45c3-90bb-6067a42e0eb4
       localID: c5a7d5cb-cf93-45c3-90bb-6067a42e0eb4
       parent: {fileID: 11445304}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11444540}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 144134}
+          parent: {fileID: 11445304}
+          mode: 0
+          path: /Slide (1)/Main/On Ground/On Ground/Usable/Target
+        usage: 0
+        path: /Slide/Main/Attribute Bool Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
       path: On Ground/Active
-      id: -44604/3468d95b-d180-425c-9804-b661ce07676b
-      localID: 3468d95b-d180-425c-9804-b661ce07676b
+      fullPath: Slide/Main/On Ground/Active
+      id: -90454/9222bc69-7c2a-4087-8c97-8fea1984f1bc
+      localID: 9222bc69-7c2a-4087-8c97-8fea1984f1bc
       parent: {fileID: 11445304}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11499422}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: Slide/Main/On Ground/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
       path: On Ground/Used
-      id: -44604/78d4bdec-d5b0-4ca4-88f1-4f93b5051b30
+      fullPath: Slide/Main/On Ground/Used
+      id: -90454/78d4bdec-d5b0-4ca4-88f1-4f93b5051b30
       localID: 78d4bdec-d5b0-4ca4-88f1-4f93b5051b30
       parent: {fileID: 11445304}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11401164}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 144134}
+          parent: {fileID: 11445304}
+          mode: 0
+          path: /Slide (1)/Main/On Ground/On Ground/Used/Target
+        usage: 0
+        path: /Slide/Main/Attribute Bool Data [ I
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   source:
     info:
       name: Source
       path: On Ground/Source
-      id: -44604/450b8f41-682b-47f9-b68a-0705b0db9b96
+      fullPath: Slide/Main/On Ground/Source
+      id: -90454/450b8f41-682b-47f9-b68a-0705b0db9b96
       localID: 450b8f41-682b-47f9-b68a-0705b0db9b96
       parent: {fileID: 11445304}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11405822}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 144134}
+          parent: {fileID: 11445304}
+          mode: 0
+          path: /Slide (1)/Main/On Ground/On Ground/Source/Target
+        usage: 1
+        path: /Slide/Main/Attribute Game Object Data
+        referenceID: -44606/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+        referencePath: Source
+        operation: 0
+        special: 0
+        rawValue: /Slide/
+        rawType: Zios.AttributeGameObjectData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   direction:
     info:
       name: Direction
       path: On Ground/Direction
-      id: -44604/1e2da2e9-a7e6-4304-b3f3-ed1eb9c92389
+      fullPath: Slide/Main/On Ground/Direction
+      id: -90454/1e2da2e9-a7e6-4304-b3f3-ed1eb9c92389
       localID: 1e2da2e9-a7e6-4304-b3f3-ed1eb9c92389
       parent: {fileID: 11445304}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11453568}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 144134}
+          parent: {fileID: 11445304}
+          mode: 0
+          path: /Slide (1)/Main/On Ground/On Ground/Direction/Target
+        usage: 0
+        path: /Slide/Main/Attribute Vector3Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: (0.0, -1.0, 0.0)
+        rawType: Zios.AttributeVector3Data
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
     x:
       info:
         name: X
         path: On Ground/Direction/X
-        id: -44604/aae3ab1e-ca8d-41ea-b6af-1aaee7c0641a
+        fullPath: Slide/Main/On Ground/Direction/X
+        id: -90454/aae3ab1e-ca8d-41ea-b6af-1aaee7c0641a
         localID: aae3ab1e-ca8d-41ea-b6af-1aaee7c0641a
         parent: {fileID: 11445304}
         mode: 0
         linkType: 0
         oldData:
-        - {fileID: 11428138}
+        - target:
+            search: ../@Settings
+            directObject: {fileID: 0}
+            searchObject: {fileID: 144134}
+            parent: {fileID: 11445304}
+            mode: 0
+            path: /Slide (1)/Main/On Ground/On Ground/Direction/X/Target
+          usage: 0
+          path: /Slide/Main/Attribute Float Data
+          referenceID: 
+          referencePath: 
+          operation: 0
+          special: 0
+          rawValue: 0
+          rawType: Zios.AttributeFloatData
+        oldDataB: []
+        oldDataC: []
+        oldData: []
         oldDataB: []
         oldDataC: []
     y:
       info:
         name: Y
         path: On Ground/Direction/Y
-        id: -44604/fad1f9d5-6047-4c2e-92df-f2e2f6856d22
+        fullPath: Slide/Main/On Ground/Direction/Y
+        id: -90454/fad1f9d5-6047-4c2e-92df-f2e2f6856d22
         localID: fad1f9d5-6047-4c2e-92df-f2e2f6856d22
         parent: {fileID: 11445304}
         mode: 0
         linkType: 0
         oldData:
-        - {fileID: 11412568}
+        - target:
+            search: ../@Settings
+            directObject: {fileID: 0}
+            searchObject: {fileID: 144134}
+            parent: {fileID: 11445304}
+            mode: 0
+            path: /Slide (1)/Main/On Ground/On Ground/Direction/Y/Target
+          usage: 0
+          path: /Slide/Main/Attribute Float Data X
+          referenceID: 
+          referencePath: 
+          operation: 0
+          special: 0
+          rawValue: 0
+          rawType: Zios.AttributeFloatData
+        oldDataB: []
+        oldDataC: []
+        oldData: []
         oldDataB: []
         oldDataC: []
     z:
       info:
         name: Z
         path: On Ground/Direction/Z
-        id: -44604/c670ee63-4522-4cb2-aeab-1e3afb76e344
+        fullPath: Slide/Main/On Ground/Direction/Z
+        id: -90454/c670ee63-4522-4cb2-aeab-1e3afb76e344
         localID: c670ee63-4522-4cb2-aeab-1e3afb76e344
         parent: {fileID: 11445304}
         mode: 0
         linkType: 0
         oldData:
-        - {fileID: 11461892}
+        - target:
+            search: ../@Settings
+            directObject: {fileID: 0}
+            searchObject: {fileID: 144134}
+            parent: {fileID: 11445304}
+            mode: 0
+            path: /Slide (1)/Main/On Ground/On Ground/Direction/Z/Target
+          usage: 0
+          path: /Slide/Main/Attribute Float Data W
+          referenceID: 
+          referencePath: 
+          operation: 0
+          special: 0
+          rawValue: 0
+          rawType: Zios.AttributeFloatData
+        oldDataB: []
+        oldDataC: []
+        oldData: []
         oldDataB: []
         oldDataC: []
   distance:
     info:
       name: Distance
       path: On Ground/Distance
-      id: -44604/493d35f3-4ddd-465d-83d3-47e32d7ce473
+      fullPath: Slide/Main/On Ground/Distance
+      id: -90454/493d35f3-4ddd-465d-83d3-47e32d7ce473
       localID: 493d35f3-4ddd-465d-83d3-47e32d7ce473
       parent: {fileID: 11445304}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11423256}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 144134}
+          parent: {fileID: 11445304}
+          mode: 0
+          path: /Slide (1)/Main/On Ground/On Ground/Distance/Target
+        usage: 0
+        path: /Slide/Main/Attribute Float Data V
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 0.5
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   layers:
@@ -2744,130 +1636,310 @@ MonoBehaviour:
     info:
       name: Hit Point
       path: On Ground/Hit Point
-      id: -44604/bd6c52c6-44f8-4200-a77b-fc880a92ab71
+      fullPath: Slide/Main/On Ground/Hit Point
+      id: -90454/bd6c52c6-44f8-4200-a77b-fc880a92ab71
       localID: bd6c52c6-44f8-4200-a77b-fc880a92ab71
       parent: {fileID: 11445304}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11439666}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 144134}
+          parent: {fileID: 11445304}
+          mode: 0
+          path: /Slide (1)/Main/On Ground/On Ground/Hit Point/Target
+        usage: 0
+        path: /Slide/Main/Attribute Vector3Data D
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: (0.0, 0.0, 0.0)
+        rawType: Zios.AttributeVector3Data
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
     x:
       info:
         name: X
         path: On Ground/Hit Point/X
-        id: -44604/be1dd85e-137b-4549-9cb0-d81b6d9d7698
+        fullPath: Slide/Main/On Ground/Hit Point/X
+        id: -90454/be1dd85e-137b-4549-9cb0-d81b6d9d7698
         localID: be1dd85e-137b-4549-9cb0-d81b6d9d7698
         parent: {fileID: 11445304}
         mode: 0
         linkType: 0
         oldData:
-        - {fileID: 11404960}
+        - target:
+            search: ../@Settings
+            directObject: {fileID: 0}
+            searchObject: {fileID: 144134}
+            parent: {fileID: 11445304}
+            mode: 0
+            path: /Slide (1)/Main/On Ground/On Ground/Hit Point/X/Target
+          usage: 0
+          path: /Slide/Main/Attribute Float Data U
+          referenceID: 
+          referencePath: 
+          operation: 0
+          special: 0
+          rawValue: 0
+          rawType: Zios.AttributeFloatData
+        oldDataB: []
+        oldDataC: []
+        oldData: []
         oldDataB: []
         oldDataC: []
     y:
       info:
         name: Y
         path: On Ground/Hit Point/Y
-        id: -44604/6b9c41b4-13de-4870-bf25-4447f7d4eaaa
+        fullPath: Slide/Main/On Ground/Hit Point/Y
+        id: -90454/6b9c41b4-13de-4870-bf25-4447f7d4eaaa
         localID: 6b9c41b4-13de-4870-bf25-4447f7d4eaaa
         parent: {fileID: 11445304}
         mode: 0
         linkType: 0
         oldData:
-        - {fileID: 11442920}
+        - target:
+            search: ../@Settings
+            directObject: {fileID: 0}
+            searchObject: {fileID: 144134}
+            parent: {fileID: 11445304}
+            mode: 0
+            path: /Slide (1)/Main/On Ground/On Ground/Hit Point/Y/Target
+          usage: 0
+          path: /Slide/Main/Attribute Float Data T
+          referenceID: 
+          referencePath: 
+          operation: 0
+          special: 0
+          rawValue: 0
+          rawType: Zios.AttributeFloatData
+        oldDataB: []
+        oldDataC: []
+        oldData: []
         oldDataB: []
         oldDataC: []
     z:
       info:
         name: Z
         path: On Ground/Hit Point/Z
-        id: -44604/8cd0cfe8-a4c3-4b6d-9968-204aa35aa808
+        fullPath: Slide/Main/On Ground/Hit Point/Z
+        id: -90454/8cd0cfe8-a4c3-4b6d-9968-204aa35aa808
         localID: 8cd0cfe8-a4c3-4b6d-9968-204aa35aa808
         parent: {fileID: 11445304}
         mode: 0
         linkType: 0
         oldData:
-        - {fileID: 11423268}
+        - target:
+            search: ../@Settings
+            directObject: {fileID: 0}
+            searchObject: {fileID: 144134}
+            parent: {fileID: 11445304}
+            mode: 0
+            path: /Slide (1)/Main/On Ground/On Ground/Hit Point/Z/Target
+          usage: 0
+          path: /Slide/Main/Attribute Float Data S
+          referenceID: 
+          referencePath: 
+          operation: 0
+          special: 0
+          rawValue: 0
+          rawType: Zios.AttributeFloatData
+        oldDataB: []
+        oldDataC: []
+        oldData: []
         oldDataB: []
         oldDataC: []
   hitNormal:
     info:
       name: Hit Normal
       path: On Ground/Hit Normal
-      id: -44604/e6b9ac88-e6aa-4252-8b33-26fa50f0716d
+      fullPath: Slide/Main/On Ground/Hit Normal
+      id: -90454/e6b9ac88-e6aa-4252-8b33-26fa50f0716d
       localID: e6b9ac88-e6aa-4252-8b33-26fa50f0716d
       parent: {fileID: 11445304}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11472176}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 144134}
+          parent: {fileID: 11445304}
+          mode: 0
+          path: /Slide (1)/Main/On Ground/On Ground/Hit Normal/Target
+        usage: 0
+        path: /Slide/Main/Attribute Vector3Data C
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: (0.0, 0.0, 0.0)
+        rawType: Zios.AttributeVector3Data
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
     x:
       info:
         name: X
         path: On Ground/Hit Normal/X
-        id: -44604/c96aeb83-b90e-4c45-9cb1-f3e3b135a895
+        fullPath: Slide/Main/On Ground/Hit Normal/X
+        id: -90454/c96aeb83-b90e-4c45-9cb1-f3e3b135a895
         localID: c96aeb83-b90e-4c45-9cb1-f3e3b135a895
         parent: {fileID: 11445304}
         mode: 0
         linkType: 0
         oldData:
-        - {fileID: 11429658}
+        - target:
+            search: ../@Settings
+            directObject: {fileID: 0}
+            searchObject: {fileID: 144134}
+            parent: {fileID: 11445304}
+            mode: 0
+            path: /Slide (1)/Main/On Ground/On Ground/Hit Normal/X/Target
+          usage: 0
+          path: /Slide/Main/Attribute Float Data R
+          referenceID: 
+          referencePath: 
+          operation: 0
+          special: 0
+          rawValue: 0
+          rawType: Zios.AttributeFloatData
+        oldDataB: []
+        oldDataC: []
+        oldData: []
         oldDataB: []
         oldDataC: []
     y:
       info:
         name: Y
         path: On Ground/Hit Normal/Y
-        id: -44604/35333df2-d009-4ece-a175-d1cc4c7b5006
+        fullPath: Slide/Main/On Ground/Hit Normal/Y
+        id: -90454/35333df2-d009-4ece-a175-d1cc4c7b5006
         localID: 35333df2-d009-4ece-a175-d1cc4c7b5006
         parent: {fileID: 11445304}
         mode: 0
         linkType: 0
         oldData:
-        - {fileID: 11492254}
+        - target:
+            search: ../@Settings
+            directObject: {fileID: 0}
+            searchObject: {fileID: 144134}
+            parent: {fileID: 11445304}
+            mode: 0
+            path: /Slide (1)/Main/On Ground/On Ground/Hit Normal/Y/Target
+          usage: 0
+          path: /Slide/Main/Attribute Float Data Q
+          referenceID: 
+          referencePath: 
+          operation: 0
+          special: 0
+          rawValue: 0
+          rawType: Zios.AttributeFloatData
+        oldDataB: []
+        oldDataC: []
+        oldData: []
         oldDataB: []
         oldDataC: []
     z:
       info:
         name: Z
         path: On Ground/Hit Normal/Z
-        id: -44604/c7c6dc85-24d6-450b-83c5-f470d72f3bf9
+        fullPath: Slide/Main/On Ground/Hit Normal/Z
+        id: -90454/c7c6dc85-24d6-450b-83c5-f470d72f3bf9
         localID: c7c6dc85-24d6-450b-83c5-f470d72f3bf9
         parent: {fileID: 11445304}
         mode: 0
         linkType: 0
         oldData:
-        - {fileID: 11435786}
+        - target:
+            search: ../@Settings
+            directObject: {fileID: 0}
+            searchObject: {fileID: 144134}
+            parent: {fileID: 11445304}
+            mode: 0
+            path: /Slide (1)/Main/On Ground/On Ground/Hit Normal/Z/Target
+          usage: 0
+          path: /Slide/Main/Attribute Float Data P
+          referenceID: 
+          referencePath: 
+          operation: 0
+          special: 0
+          rawValue: 0
+          rawType: Zios.AttributeFloatData
+        oldDataB: []
+        oldDataC: []
+        oldData: []
         oldDataB: []
         oldDataC: []
   hitDistance:
     info:
       name: Hit Distance
       path: On Ground/Hit Distance
-      id: -44604/cf6d2531-e098-4e78-9005-ec0bdd732bc4
+      fullPath: Slide/Main/On Ground/Hit Distance
+      id: -90454/cf6d2531-e098-4e78-9005-ec0bdd732bc4
       localID: cf6d2531-e098-4e78-9005-ec0bdd732bc4
       parent: {fileID: 11445304}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11491288}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 144134}
+          parent: {fileID: 11445304}
+          mode: 0
+          path: /Slide (1)/Main/On Ground/On Ground/Hit Distance/Target
+        usage: 0
+        path: /Slide/Main/Attribute Float Data O
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 0
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   hit:
     info:
       name: Hit
       path: On Ground/Hit
-      id: -44604/7df6e8aa-f57f-4ca1-8634-ad71592b7571
+      fullPath: Slide/Main/On Ground/Hit
+      id: -90454/7df6e8aa-f57f-4ca1-8634-ad71592b7571
       localID: 7df6e8aa-f57f-4ca1-8634-ad71592b7571
       parent: {fileID: 11445304}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11459228}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 136648}
+          parent: {fileID: 11445304}
+          mode: 0
+          path: /Slide (1)/Main/On Ground/On Ground/Hit/Target
+        usage: 1
+        path: /Slide/Main/Old Attribute Game Object Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeGameObjectData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
 --- !u!114 &11446288
@@ -2881,179 +1953,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e8a46b59a6b8eb489e122ad5fdef015, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /Slide (1)/@Settings/
-  path: /Slide (1)/@Settings/Source
+  parentPath: /Slide/@Settings/
+  path: /Slide/@Settings/Source
   alias: Source
   value:
     info:
       name: Source
       path: Source
-      id: -44606/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+      fullPath: Slide/@Settings/Source
+      id: -90504/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
       localID: 0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
       parent: {fileID: 11446288}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11422784}
+      - target:
+          search: ../../..
+          directObject: {fileID: 0}
+          searchObject: {fileID: 124732}
+          parent: {fileID: 11446288}
+          mode: 0
+          path: /Slide (1)/@Settings/Source/Source/Target
+        usage: 1
+        path: /Slide/@Settings/Attribute Game Object Data B
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeGameObjectData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   remember: 0
---- !u!114 &11446908
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11429828}
-    mode: 0
-    path: /Slide (1)/Main/Extreme Slide Angle/Extreme Slide Angle/Usable/Target
-  usage: 0
-  path: Extreme Slide Angle/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: Extreme Slide Angle/Usable
-    id: -44568/1a6025f1-45b1-40dd-ba58-44b4674f507c
-    localID: 1a6025f1-45b1-40dd-ba58-44b4674f507c
-    parent: {fileID: 11429828}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11446908}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11447710
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11481326}
-    mode: 0
-    path: /Slide (1)/Main/Reset Slide Angle/Reset Slide Angle/Value/Target
-  usage: 0
-  path: Reset Slide Angle/Value/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Value
-    path: Reset Slide Angle/Value
-    id: -44696/f6bcc7da-4052-4adb-a8c7-471c3ae763ec
-    localID: f6bcc7da-4052-4adb-a8c7-471c3ae763ec
-    parent: {fileID: 11481326}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11447710}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 50
---- !u!114 &11448590
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11481326}
-    mode: 0
-    path: /Slide (1)/Main/Reset Slide Angle/Reset Slide Angle/Active/Target
-  usage: 0
-  path: Reset Slide Angle/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: Reset Slide Angle/Active
-    id: -44696/2d5c28bf-39b5-40bb-b706-90d9fb346641
-    localID: 2d5c28bf-39b5-40bb-b706-90d9fb346641
-    parent: {fileID: 11481326}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11448590}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!114 &11449072
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3065,8 +1999,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 913766e3e62ceac4a918c0cd12f04e67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /Slide (1)/Main/
-  path: /Slide (1)/Main/Animation
+  parentPath: /Slide/Main/
+  path: /Slide/Main/Animation
   alias: Animation
   rate: 0
   occurrence: 0
@@ -3076,461 +2010,219 @@ MonoBehaviour:
     info:
       name: Usable
       path: Animation/Usable
-      id: -44614/2377ed68-0f39-4d80-8103-c5150a46f05f
+      fullPath: Slide/Main/Animation/Usable
+      id: -90332/2377ed68-0f39-4d80-8103-c5150a46f05f
       localID: 2377ed68-0f39-4d80-8103-c5150a46f05f
       parent: {fileID: 11449072}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11463526}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 136648}
+          parent: {fileID: 11449072}
+          mode: 0
+          path: /Slide (1)/Main/Animation/Animation/Usable/Target
+        usage: 0
+        path: /Slide/Main/Attribute Bool Data C
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
       path: Animation/Active
-      id: -44614/f8f435be-6d84-4e97-90c1-f8b80b8ce3b0
-      localID: f8f435be-6d84-4e97-90c1-f8b80b8ce3b0
+      fullPath: Slide/Main/Animation/Active
+      id: -90332/58e8a5e0-01be-40b4-8475-c271d294b4f6
+      localID: 58e8a5e0-01be-40b4-8475-c271d294b4f6
       parent: {fileID: 11449072}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11406048}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: Slide/Main/Animation/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
       path: Animation/Used
-      id: -44614/57a90ae5-dbf9-4458-8b54-f0be7938abbc
+      fullPath: Slide/Main/Animation/Used
+      id: -90332/57a90ae5-dbf9-4458-8b54-f0be7938abbc
       localID: 57a90ae5-dbf9-4458-8b54-f0be7938abbc
       parent: {fileID: 11449072}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11464852}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 136648}
+          parent: {fileID: 11449072}
+          mode: 0
+          path: /Slide (1)/Main/Animation/Animation/Used/Target
+        usage: 0
+        path: /Slide/Main/Attribute Bool Data D
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   animationName:
     info:
       name: Animation Name
       path: Animation/Animation Name
-      id: -44614/10c4c93a-0903-4eb9-b563-762783b3a1dd
+      fullPath: Slide/Main/Animation/Animation Name
+      id: -90332/10c4c93a-0903-4eb9-b563-762783b3a1dd
       localID: 10c4c93a-0903-4eb9-b563-762783b3a1dd
       parent: {fileID: 11449072}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11407290}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 144134}
+          parent: {fileID: 11449072}
+          mode: 0
+          path: /Slide (1)/Main/Animation/Animation/Animation Name/Target
+        usage: 1
+        path: /Slide/Main/Attribute String Data B
+        referenceID: -44542/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
+        referencePath: Animation
+        operation: 0
+        special: 0
+        rawValue: FlyDown
+        rawType: Zios.AttributeStringData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   speed:
     info:
       name: Speed
       path: Animation/Speed
-      id: -44614/27835566-56e1-49de-b9ba-762ba4d45c0d
+      fullPath: Slide/Main/Animation/Speed
+      id: -90332/27835566-56e1-49de-b9ba-762ba4d45c0d
       localID: 27835566-56e1-49de-b9ba-762ba4d45c0d
       parent: {fileID: 11449072}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11424238}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 136648}
+          parent: {fileID: 11449072}
+          mode: 0
+          path: /Slide (1)/Main/Animation/Animation/Speed/Target
+        usage: 0
+        path: /Slide/Main/Attribute Float Data B
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 1
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   weight:
     info:
       name: Weight
       path: Animation/Weight
-      id: -44614/efecf60c-63f6-4942-811c-d8e6ef06610b
+      fullPath: Slide/Main/Animation/Weight
+      id: -90332/efecf60c-63f6-4942-811c-d8e6ef06610b
       localID: efecf60c-63f6-4942-811c-d8e6ef06610b
       parent: {fileID: 11449072}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11475546}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 136648}
+          parent: {fileID: 11449072}
+          mode: 0
+          path: /Slide (1)/Main/Animation/Animation/Weight/Target
+        usage: 0
+        path: /Slide/Main/Attribute Float Data C
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 1
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   target:
     info:
       name: Target
       path: Animation/Target
-      id: -44614/acae08fd-bd14-45bb-972e-50781a370be2
+      fullPath: Slide/Main/Animation/Target
+      id: -90332/acae08fd-bd14-45bb-972e-50781a370be2
       localID: acae08fd-bd14-45bb-972e-50781a370be2
       parent: {fileID: 11449072}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11487408}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 144134}
+          parent: {fileID: 11449072}
+          mode: 0
+          path: /Slide (1)/Main/Animation/Animation/Target/Target
+        usage: 1
+        path: /Slide/Main/Attribute Game Object Data B
+        referenceID: -44670/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+        referencePath: Visuals
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeGameObjectData
       oldDataB: []
       oldDataC: []
---- !u!114 &11451860
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3e9984a5f3f19942be359930227796e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute String Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11434606}
-    mode: 0
-    path: /Slide (1)/Main/No Z Input/No Z Input/Input Name/Target
-  usage: 0
-  path: No Z Input/Input Name/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Input Name
-    path: No Z Input/Input Name
-    id: -44576/812e55e4-ed0c-4469-a9a3-b8776b51d5f4
-    localID: 812e55e4-ed0c-4469-a9a3-b8776b51d5f4
-    parent: {fileID: 11434606}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11451860}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
       oldData: []
       oldDataB: []
       oldDataC: []
-  operation: 0
-  special: 0
-  value: Back/Forward
-  characterLimit: 0
-  allowed: []
-  disallowed: []
---- !u!114 &11453568
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83639dc7708e9ad4584145044a83425d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Vector3Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11445304}
-    mode: 0
-    path: /Slide (1)/Main/On Ground/On Ground/Direction/Target
-  usage: 0
-  path: On Ground/Direction/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Direction
-    path: On Ground/Direction
-    id: -44604/1e2da2e9-a7e6-4304-b3f3-ed1eb9c92389
-    localID: 1e2da2e9-a7e6-4304-b3f3-ed1eb9c92389
-    parent: {fileID: 11445304}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11453568}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {x: -0, y: -1, z: -0}
---- !u!114 &11455934
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11402688}
-    mode: 0
-    path: /Slide (1)/Main/Rotate Direction/Rotate Direction/Goal Direction/X/Target
-  usage: 0
-  path: Rotate Direction/Goal Direction/X/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: X
-    path: Rotate Direction/Goal Direction/X
-    id: -44500/f4501521-bf4b-4c98-af10-1ee67ac85692
-    localID: f4501521-bf4b-4c98-af10-1ee67ac85692
-    parent: {fileID: 11402688}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11455934}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11456244
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11434606}
-    mode: 0
-    path: /Slide (1)/Main/No Z Input/No Z Input/Usable/Target
-  usage: 0
-  path: No Z Input/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: No Z Input/Usable
-    id: -44576/27287d4a-64a3-4a05-a583-045fb74a477d
-    localID: 27287d4a-64a3-4a05-a583-045fb74a477d
-    parent: {fileID: 11434606}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11456244}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11456308
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11458824}
-    mode: 0
-    path: /Slide (1)/Main/On Slope Timer/On Slope Timer/Used/Target
-  usage: 0
-  path: On Slope Timer/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: On Slope Timer/Used
-    id: -44636/e369316b-4ac2-48a2-ba45-890f1b7f49fc
-    localID: e369316b-4ac2-48a2-ba45-890f1b7f49fc
-    parent: {fileID: 11458824}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11456308}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11456906
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11402688}
-    mode: 0
-    path: /Slide (1)/Main/Rotate Direction/Rotate Direction/Rotate Direction/Rotate
-      Direction/Transition/Delay Start/Target
-  usage: 0
-  path: Rotate Direction/Rotate Direction/Rotate Direction/Transition/Delay Start/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Delay Start
-    path: Rotate Direction/Rotate Direction/Rotate Direction/Transition/Delay Start
-    id: -44500/933f9887-5975-43cd-8a3e-2d949abc978b
-    localID: 933f9887-5975-43cd-8a3e-2d949abc978b
-    parent: {fileID: 11402688}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11456906}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11457880
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../../../
-    directObject: {fileID: 0}
-    searchObject: {fileID: 124732}
-    parent: {fileID: 11431038}
-    mode: 0
-    path: /Slide (1)/Main/On Slide/On Slide/Target
-  usage: 1
-  path: On Slide/0
-  referenceID: -71222/3fe328cf-5b18-4e21-881b-0405a4d02a44
-  referencePath: Collider Controller/On Slide
-  attribute:
-    name: On Slide
-    path: On Slide
-    id: -44572/6c8f9bdf-cb5d-43aa-b2ac-fe5ccd46c995
-    localID: 6c8f9bdf-cb5d-43aa-b2ac-fe5ccd46c995
-    parent: {fileID: 11431038}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11457880}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!114 &11458824
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3542,8 +2234,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb780ed64906f1944b7e8d65c34757d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /Slide (1)/Main/
-  path: /Slide (1)/Main/On Slope Timer
+  parentPath: /Slide/Main/
+  path: /Slide/Main/On Slope Timer
   alias: On Slope Timer
   rate: 0
   occurrence: 0
@@ -3553,39 +2245,93 @@ MonoBehaviour:
     info:
       name: Usable
       path: On Slope Timer/Usable
-      id: -44636/eeef243e-0aab-4103-b112-914ab8d1d36e
+      fullPath: Slide/Main/On Slope Timer/Usable
+      id: -90358/eeef243e-0aab-4103-b112-914ab8d1d36e
       localID: eeef243e-0aab-4103-b112-914ab8d1d36e
       parent: {fileID: 11458824}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11462106}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 144134}
+          parent: {fileID: 11458824}
+          mode: 0
+          path: /Slide (1)/Main/On Slope Timer/On Slope Timer/Usable/Target
+        usage: 0
+        path: /Slide/Main/Attribute Bool Data I
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
       path: On Slope Timer/Active
-      id: -44636/952cfb6c-e05f-4a09-adf0-12ace07cc156
-      localID: 952cfb6c-e05f-4a09-adf0-12ace07cc156
+      fullPath: Slide/Main/On Slope Timer/Active
+      id: -90358/b5932a54-6965-4243-8a17-1276d4e28d39
+      localID: b5932a54-6965-4243-8a17-1276d4e28d39
       parent: {fileID: 11458824}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11487238}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: Slide/Main/On Slope Timer/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
       path: On Slope Timer/Used
-      id: -44636/e369316b-4ac2-48a2-ba45-890f1b7f49fc
+      fullPath: Slide/Main/On Slope Timer/Used
+      id: -90358/e369316b-4ac2-48a2-ba45-890f1b7f49fc
       localID: e369316b-4ac2-48a2-ba45-890f1b7f49fc
       parent: {fileID: 11458824}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11456308}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 144134}
+          parent: {fileID: 11458824}
+          mode: 0
+          path: /Slide (1)/Main/On Slope Timer/On Slope Timer/Used/Target
+        usage: 0
+        path: /Slide/Main/Attribute Bool Data K
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   type: 0
@@ -3593,822 +2339,95 @@ MonoBehaviour:
     info:
       name: Seconds
       path: On Slope Timer/Seconds
-      id: -44636/c4005646-c780-4c03-abf6-c55d0664a015
+      fullPath: Slide/Main/On Slope Timer/Seconds
+      id: -90358/c4005646-c780-4c03-abf6-c55d0664a015
       localID: c4005646-c780-4c03-abf6-c55d0664a015
       parent: {fileID: 11458824}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11482464}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 144134}
+          parent: {fileID: 11458824}
+          mode: 0
+          path: /Slide (1)/Main/On Slope Timer/On Slope Timer/Seconds/Target
+        usage: 0
+        path: /Slide/Main/Attribute Float Data D
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 0.5
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   isStarted:
     info:
       name: Is Started
       path: On Slope Timer/Is Started
-      id: -44636/5edbcf01-5a77-4da1-b4c6-bd541268be5e
+      fullPath: Slide/Main/On Slope Timer/Is Started
+      id: -90358/5edbcf01-5a77-4da1-b4c6-bd541268be5e
       localID: 5edbcf01-5a77-4da1-b4c6-bd541268be5e
       parent: {fileID: 11458824}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11485460}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 144134}
+          parent: {fileID: 11458824}
+          mode: 0
+          path: /Slide (1)/Main/On Slope Timer/On Slope Timer/Is Started/Target
+        usage: 0
+        path: /Slide/Main/Attribute Bool Data L
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   isComplete:
     info:
       name: Is Complete
       path: On Slope Timer/Is Complete
-      id: -44636/e593d051-32c3-492d-96e2-6b2a5d31948a
+      fullPath: Slide/Main/On Slope Timer/Is Complete
+      id: -90358/e593d051-32c3-492d-96e2-6b2a5d31948a
       localID: e593d051-32c3-492d-96e2-6b2a5d31948a
       parent: {fileID: 11458824}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11445286}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 144134}
+          parent: {fileID: 11458824}
+          mode: 0
+          path: /Slide (1)/Main/On Slope Timer/On Slope Timer/Is Complete/Target
+        usage: 0
+        path: /Slide/Main/Attribute Bool Data M
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
---- !u!114 &11458902
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11402688}
-    mode: 0
-    path: /Slide (1)/Main/Rotate Direction/Rotate Direction/Rotate Direction/Is Reset
-      On Change/Target
-  usage: 0
-  path: Rotate Direction/Rotate Direction/Is Reset On Change/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Is Reset On Change
-    path: Rotate Direction/Rotate Direction/Is Reset On Change
-    id: -44500/ade47b3a-ab41-4069-9c31-e0179074fc0f
-    localID: ade47b3a-ab41-4069-9c31-e0179074fc0f
-    parent: {fileID: 11402688}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11458902}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
       oldData: []
       oldDataB: []
       oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11459228
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 136648}
-    parent: {fileID: 11445304}
-    mode: 0
-    path: /Slide (1)/Main/On Ground/On Ground/Hit/Target
-  usage: 1
-  path: On Ground/Hit/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Hit
-    path: On Ground/Hit
-    id: -44604/7df6e8aa-f57f-4ca1-8634-ad71592b7571
-    localID: 7df6e8aa-f57f-4ca1-8634-ad71592b7571
-    parent: {fileID: 11445304}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11459228}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {fileID: 0}
---- !u!114 &11461892
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11445304}
-    mode: 0
-    path: /Slide (1)/Main/On Ground/On Ground/Direction/Z/Target
-  usage: 0
-  path: On Ground/Direction/Z/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Z
-    path: On Ground/Direction/Z
-    id: -44604/c670ee63-4522-4cb2-aeab-1e3afb76e344
-    localID: c670ee63-4522-4cb2-aeab-1e3afb76e344
-    parent: {fileID: 11445304}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11461892}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11462106
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11458824}
-    mode: 0
-    path: /Slide (1)/Main/On Slope Timer/On Slope Timer/Usable/Target
-  usage: 0
-  path: On Slope Timer/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: On Slope Timer/Usable
-    id: -44636/eeef243e-0aab-4103-b112-914ab8d1d36e
-    localID: eeef243e-0aab-4103-b112-914ab8d1d36e
-    parent: {fileID: 11458824}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11462106}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11462206
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11481326}
-    mode: 0
-    path: /Slide (1)/Main/Reset Slide Angle/Reset Slide Angle/Used/Target
-  usage: 0
-  path: Reset Slide Angle/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: Reset Slide Angle/Used
-    id: -44696/78fe96fc-e8a7-499c-a0af-f8f81b66502d
-    localID: 78fe96fc-e8a7-499c-a0af-f8f81b66502d
-    parent: {fileID: 11481326}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11462206}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11463010
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11423098}
-    mode: 0
-    path: /Slide (1)/Main/No X Input/No X Input/Usable/Target
-  usage: 0
-  path: No X Input/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: No X Input/Usable
-    id: -44544/5649011f-da0c-48d5-883e-f8ea8267f3d2
-    localID: 5649011f-da0c-48d5-883e-f8ea8267f3d2
-    parent: {fileID: 11423098}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11463010}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11463526
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 136648}
-    parent: {fileID: 11449072}
-    mode: 0
-    path: /Slide (1)/Main/Animation/Animation/Usable/Target
-  usage: 0
-  path: Animation/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: Animation/Usable
-    id: -44614/2377ed68-0f39-4d80-8103-c5150a46f05f
-    localID: 2377ed68-0f39-4d80-8103-c5150a46f05f
-    parent: {fileID: 11449072}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11463526}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11464254
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11402688}
-    mode: 0
-    path: /Slide (1)/Main/Rotate Direction/Rotate Direction/Goal Direction/Y/Target
-  usage: 0
-  path: Rotate Direction/Goal Direction/Y/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Y
-    path: Rotate Direction/Goal Direction/Y
-    id: -44500/f63cb3d7-537d-4fa8-a622-c168f6f43a8d
-    localID: f63cb3d7-537d-4fa8-a622-c168f6f43a8d
-    parent: {fileID: 11402688}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11464254}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11464852
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 136648}
-    parent: {fileID: 11449072}
-    mode: 0
-    path: /Slide (1)/Main/Animation/Animation/Used/Target
-  usage: 0
-  path: Animation/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: Animation/Used
-    id: -44614/57a90ae5-dbf9-4458-8b54-f0be7938abbc
-    localID: 57a90ae5-dbf9-4458-8b54-f0be7938abbc
-    parent: {fileID: 11449072}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11464852}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11468680
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 136648}
-    parent: {fileID: 11495662}
-    mode: 0
-    path: /Slide (1)/Main/Slide (1)/Slide (1)/Used/Target
-  usage: 0
-  path: Slide (1)/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: Slide (1)/Used
-    id: -44732/ce5061da-a7ee-46c3-8596-56590dbd0ffb
-    localID: ce5061da-a7ee-46c3-8596-56590dbd0ffb
-    parent: {fileID: 11495662}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11468680}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11470190
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11434606}
-    mode: 0
-    path: /Slide (1)/Main/No Z Input/No Z Input/Used/Target
-  usage: 0
-  path: No Z Input/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: No Z Input/Used
-    id: -44576/730a7997-0191-4940-8c5f-b0d3459c7a29
-    localID: 730a7997-0191-4940-8c5f-b0d3459c7a29
-    parent: {fileID: 11434606}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11470190}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11470992
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 136648}
-    parent: {fileID: 11495662}
-    mode: 0
-    path: /Slide (1)/Main/Slide (1)/Slide (1)/External/Target
-  usage: 0
-  path: Slide (1)/External/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: External
-    path: Slide (1)/External
-    id: -44732/3d621d6b-84fc-423e-8ad6-41301aa29759
-    localID: 3d621d6b-84fc-423e-8ad6-41301aa29759
-    parent: {fileID: 11495662}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11470992}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11472006
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 136648}
-    parent: {fileID: 11495662}
-    mode: 0
-    path: /Slide (1)/Main/Slide (1)/Slide (1)/Usable/Target
-  usage: 0
-  path: Slide (1)/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: Slide (1)/Usable
-    id: -44732/403ada1a-fa8f-4829-94df-09be0be33a98
-    localID: 403ada1a-fa8f-4829-94df-09be0be33a98
-    parent: {fileID: 11495662}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11472006}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11472176
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83639dc7708e9ad4584145044a83425d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Vector3Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11445304}
-    mode: 0
-    path: /Slide (1)/Main/On Ground/On Ground/Hit Normal/Target
-  usage: 0
-  path: On Ground/Hit Normal/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Hit Normal
-    path: On Ground/Hit Normal
-    id: -44604/e6b9ac88-e6aa-4252-8b33-26fa50f0716d
-    localID: e6b9ac88-e6aa-4252-8b33-26fa50f0716d
-    parent: {fileID: 11445304}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11472176}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {x: 0, y: 0, z: 0}
---- !u!114 &11473654
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 136648}
-    parent: {fileID: 11495662}
-    mode: 0
-    path: /Slide (1)/Main/Slide (1)/Slide (1)/Active/Target
-  usage: 0
-  path: Slide (1)/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: Slide (1)/Active
-    id: -44732/c87b6fa1-25b4-4c34-865a-3021ecdd1844
-    localID: c87b6fa1-25b4-4c34-865a-3021ecdd1844
-    parent: {fileID: 11495662}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11473654}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!114 &11474918
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4420,286 +2439,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e8a46b59a6b8eb489e122ad5fdef015, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /Slide (1)/@Settings/
-  path: /Slide (1)/@Settings/Visuals
+  parentPath: /Slide/@Settings/
+  path: /Slide/@Settings/Visuals
   alias: Visuals
   value:
     info:
       name: Visuals
       path: Visuals
-      id: -44670/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+      fullPath: Slide/@Settings/Visuals
+      id: -90506/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
       localID: 33bddd78-c7f6-40fe-94d8-1637fbd7fa73
       parent: {fileID: 11474918}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11425068}
+      - target:
+          search: ../../../Visuals
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 11474918}
+          mode: 0
+          path: /Slide (1)/@Settings/Visuals/Visuals/Target
+        usage: 1
+        path: /Slide/@Settings/Attribute Game Object Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeGameObjectData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   remember: 0
---- !u!114 &11475546
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 136648}
-    parent: {fileID: 11449072}
-    mode: 0
-    path: /Slide (1)/Main/Animation/Animation/Weight/Target
-  usage: 0
-  path: Animation/Weight/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Weight
-    path: Animation/Weight
-    id: -44614/efecf60c-63f6-4942-811c-d8e6ef06610b
-    localID: efecf60c-63f6-4942-811c-d8e6ef06610b
-    parent: {fileID: 11449072}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11475546}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11475764
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11402688}
-    mode: 0
-    path: /Slide (1)/Main/Rotate Direction/Rotate Direction/Active/Target
-  usage: 0
-  path: Rotate Direction/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: Rotate Direction/Active
-    id: -44500/cd7b88d2-6d91-432f-a7dd-60792ae2e3de
-    localID: cd7b88d2-6d91-432f-a7dd-60792ae2e3de
-    parent: {fileID: 11402688}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11475764}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11479798
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11402688}
-    mode: 0
-    path: /Slide (1)/Main/Rotate Direction/Rotate Direction/Rotate Direction/Transition/Speed/Target
-  usage: 0
-  path: Rotate Direction/Rotate Direction/Transition/Speed/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Speed
-    path: Rotate Direction/Rotate Direction/Transition/Speed
-    id: -44500/0e374bad-c9d5-4ae9-9dcb-88182b19ceac
-    localID: 0e374bad-c9d5-4ae9-9dcb-88182b19ceac
-    parent: {fileID: 11402688}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11479798}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 600
---- !u!114 &11480086
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Game Object Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11402688}
-    mode: 0
-    path: /Slide (1)/Main/Rotate Direction/Rotate Direction/Source/Target
-  usage: 1
-  path: Rotate Direction/Source/0
-  referenceID: -44606/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
-  referencePath: Source
-  attribute:
-    name: Source
-    path: Rotate Direction/Source
-    id: -44500/89eb14a4-49ff-4973-927d-673d7bf2ff3f
-    localID: 89eb14a4-49ff-4973-927d-673d7bf2ff3f
-    parent: {fileID: 11402688}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11480086}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {fileID: 0}
---- !u!114 &11480262
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3e9984a5f3f19942be359930227796e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute String Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11423098}
-    mode: 0
-    path: /Slide (1)/Main/No X Input/No X Input/Input Name/Target
-  usage: 0
-  path: No X Input/Input Name/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Input Name
-    path: No X Input/Input Name
-    id: -44544/8a9a84fa-6c52-4082-9d81-82f74edf30f4
-    localID: 8a9a84fa-6c52-4082-9d81-82f74edf30f4
-    parent: {fileID: 11423098}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11480262}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: Left/Right
-  characterLimit: 0
-  allowed: []
-  disallowed: []
 --- !u!114 &11481326
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4711,8 +2485,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2423479bf36dd4245b48e7e6a05012a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /Slide (1)/Main/
-  path: /Slide (1)/Main/Reset Slide Angle
+  parentPath: /Slide/Main/
+  path: /Slide/Main/Reset Slide Angle
   alias: Reset Slide Angle
   rate: 0
   occurrence: 2
@@ -4722,587 +2496,157 @@ MonoBehaviour:
     info:
       name: Usable
       path: Reset Slide Angle/Usable
-      id: -44696/a96f22ef-e7dd-4cd4-9116-7f242dfabad5
+      fullPath: Slide/Main/Reset Slide Angle/Usable
+      id: -90430/a96f22ef-e7dd-4cd4-9116-7f242dfabad5
       localID: a96f22ef-e7dd-4cd4-9116-7f242dfabad5
       parent: {fileID: 11481326}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11497732}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 144134}
+          parent: {fileID: 11481326}
+          mode: 0
+          path: /Slide (1)/Main/Reset Slide Angle/Reset Slide Angle/Usable/Target
+        usage: 0
+        path: /Slide/Main/Attribute Bool Data [ E
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
       path: Reset Slide Angle/Active
-      id: -44696/2d5c28bf-39b5-40bb-b706-90d9fb346641
-      localID: 2d5c28bf-39b5-40bb-b706-90d9fb346641
+      fullPath: Slide/Main/Reset Slide Angle/Active
+      id: -90430/a78ecdc3-d614-4cd0-806f-d893e6df00a4
+      localID: a78ecdc3-d614-4cd0-806f-d893e6df00a4
       parent: {fileID: 11481326}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11448590}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: Slide/Main/Reset Slide Angle/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
       path: Reset Slide Angle/Used
-      id: -44696/78fe96fc-e8a7-499c-a0af-f8f81b66502d
+      fullPath: Slide/Main/Reset Slide Angle/Used
+      id: -90430/78fe96fc-e8a7-499c-a0af-f8f81b66502d
       localID: 78fe96fc-e8a7-499c-a0af-f8f81b66502d
       parent: {fileID: 11481326}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11462206}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 144134}
+          parent: {fileID: 11481326}
+          mode: 0
+          path: /Slide (1)/Main/Reset Slide Angle/Reset Slide Angle/Used/Target
+        usage: 0
+        path: /Slide/Main/Attribute Bool Data [ C
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   target:
     info:
       name: Target
       path: Reset Slide Angle/Target
-      id: -44696/28d5066f-21a7-4267-8056-04bd9091c715
+      fullPath: Slide/Main/Reset Slide Angle/Target
+      id: -90430/28d5066f-21a7-4267-8056-04bd9091c715
       localID: 28d5066f-21a7-4267-8056-04bd9091c715
       parent: {fileID: 11481326}
       mode: 1
       linkType: 0
       oldData:
-      - {fileID: 11416238}
+      - target:
+          search: ../../../
+          directObject: {fileID: 0}
+          searchObject: {fileID: 124732}
+          parent: {fileID: 11481326}
+          mode: 0
+          path: /Slide (1)/Main/Reset Slide Angle/Reset Slide Angle/Target/Target
+        usage: 1
+        path: /Slide/Main/Attribute Float Data L
+        referenceID: -71222/095c71b6-a842-4e5d-9734-ee7d546c077b
+        referencePath: Collider Controller/Min Slide Angle
+        operation: 0
+        special: 0
+        rawValue: 0
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   value:
     info:
       name: Value
       path: Reset Slide Angle/Value
-      id: -44696/f6bcc7da-4052-4adb-a8c7-471c3ae763ec
+      fullPath: Slide/Main/Reset Slide Angle/Value
+      id: -90430/f6bcc7da-4052-4adb-a8c7-471c3ae763ec
       localID: f6bcc7da-4052-4adb-a8c7-471c3ae763ec
       parent: {fileID: 11481326}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11447710}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 144134}
+          parent: {fileID: 11481326}
+          mode: 0
+          path: /Slide (1)/Main/Reset Slide Angle/Reset Slide Angle/Value/Target
+        usage: 0
+        path: /Slide/Main/Attribute Float Data K
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 50
+        rawType: Zios.AttributeFloatData
       oldDataB: []
       oldDataC: []
---- !u!114 &11482464
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11458824}
-    mode: 0
-    path: /Slide (1)/Main/On Slope Timer/On Slope Timer/Seconds/Target
-  usage: 0
-  path: On Slope Timer/Seconds/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Seconds
-    path: On Slope Timer/Seconds
-    id: -44636/c4005646-c780-4c03-abf6-c55d0664a015
-    localID: c4005646-c780-4c03-abf6-c55d0664a015
-    parent: {fileID: 11458824}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11482464}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
       oldData: []
       oldDataB: []
       oldDataC: []
-  operation: 0
-  special: 0
-  value: .5
---- !u!114 &11485460
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11458824}
-    mode: 0
-    path: /Slide (1)/Main/On Slope Timer/On Slope Timer/Is Started/Target
-  usage: 0
-  path: On Slope Timer/Is Started/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Is Started
-    path: On Slope Timer/Is Started
-    id: -44636/5edbcf01-5a77-4da1-b4c6-bd541268be5e
-    localID: 5edbcf01-5a77-4da1-b4c6-bd541268be5e
-    parent: {fileID: 11458824}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11485460}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11487238
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11458824}
-    mode: 0
-    path: /Slide (1)/Main/On Slope Timer/On Slope Timer/Active/Target
-  usage: 0
-  path: On Slope Timer/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: On Slope Timer/Active
-    id: -44636/952cfb6c-e05f-4a09-adf0-12ace07cc156
-    localID: 952cfb6c-e05f-4a09-adf0-12ace07cc156
-    parent: {fileID: 11458824}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11487238}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11487408
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Game Object Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11449072}
-    mode: 0
-    path: /Slide (1)/Main/Animation/Animation/Target/Target
-  usage: 1
-  path: Animation/Target/0
-  referenceID: -44670/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
-  referencePath: Visuals
-  attribute:
-    name: Target
-    path: Animation/Target
-    id: -44614/acae08fd-bd14-45bb-972e-50781a370be2
-    localID: acae08fd-bd14-45bb-972e-50781a370be2
-    parent: {fileID: 11449072}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11487408}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {fileID: 0}
---- !u!114 &11489060
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11434606}
-    mode: 0
-    path: /Slide (1)/Main/No Z Input/No Z Input/Active/Target
-  usage: 0
-  path: No Z Input/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: No Z Input/Active
-    id: -44576/ba3cd025-f034-4771-a76f-0d8e72d4e2ad
-    localID: ba3cd025-f034-4771-a76f-0d8e72d4e2ad
-    parent: {fileID: 11434606}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11489060}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11491288
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11445304}
-    mode: 0
-    path: /Slide (1)/Main/On Ground/On Ground/Hit Distance/Target
-  usage: 0
-  path: On Ground/Hit Distance/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Hit Distance
-    path: On Ground/Hit Distance
-    id: -44604/cf6d2531-e098-4e78-9005-ec0bdd732bc4
-    localID: cf6d2531-e098-4e78-9005-ec0bdd732bc4
-    parent: {fileID: 11445304}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11491288}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11492254
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11445304}
-    mode: 0
-    path: /Slide (1)/Main/On Ground/On Ground/Hit Normal/Y/Target
-  usage: 0
-  path: On Ground/Hit Normal/Y/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Y
-    path: On Ground/Hit Normal/Y
-    id: -44604/35333df2-d009-4ece-a175-d1cc4c7b5006
-    localID: 35333df2-d009-4ece-a175-d1cc4c7b5006
-    parent: {fileID: 11445304}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11492254}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11494242
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11402688}
-    mode: 0
-    path: /Slide (1)/Main/Rotate Direction/Rotate Direction/Goal Direction/Z/Target
-  usage: 0
-  path: Rotate Direction/Goal Direction/Z/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Z
-    path: Rotate Direction/Goal Direction/Z
-    id: -44500/805d0ab1-d9e4-4e28-99be-b07d38b7f105
-    localID: 805d0ab1-d9e4-4e28-99be-b07d38b7f105
-    parent: {fileID: 11402688}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11494242}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11495032
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11431038}
-    mode: 0
-    path: /Slide (1)/Main/On Slide/On Slide/Active/Target
-  usage: 0
-  path: On Slide/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: On Slide/Active
-    id: -44572/52fa4245-87b4-4934-b749-133a1efe2f64
-    localID: 52fa4245-87b4-4934-b749-133a1efe2f64
-    parent: {fileID: 11431038}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11495032}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11495070
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../../../
-    directObject: {fileID: 0}
-    searchObject: {fileID: 124732}
-    parent: {fileID: 11429828}
-    mode: 0
-    path: /Slide (1)/Main/Extreme Slide Angle/Extreme Slide Angle/Target/Target
-  usage: 1
-  path: Extreme Slide Angle/Target/0
-  referenceID: -71222/095c71b6-a842-4e5d-9734-ee7d546c077b
-  referencePath: Collider Controller/Min Slide Angle
-  attribute:
-    name: Target
-    path: Extreme Slide Angle/Target
-    id: -44568/2ba8db34-4751-471a-9bd4-ad751b8a4b5b
-    localID: 2ba8db34-4751-471a-9bd4-ad751b8a4b5b
-    parent: {fileID: 11429828}
-    mode: 1
-    linkType: 0
-    oldData:
-    - {fileID: 11495070}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!114 &11495662
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5314,9 +2658,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4833115f047751b48be018c26164a652, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /Slide (1)/Main/
-  path: /Slide (1)/Main/Slide (1)
-  alias: Slide (1)
+  parentPath: /Slide/Main/
+  path: /Slide/Main/Slide
+  alias: Slide
   rate: 1
   occurrence: 0
   controller: {fileID: 0}
@@ -5324,40 +2668,94 @@ MonoBehaviour:
   usable:
     info:
       name: Usable
-      path: Slide (1)/Usable
-      id: -44732/403ada1a-fa8f-4829-94df-09be0be33a98
+      path: Slide/Usable
+      fullPath: Slide/Main/Slide/Usable
+      id: -90330/403ada1a-fa8f-4829-94df-09be0be33a98
       localID: 403ada1a-fa8f-4829-94df-09be0be33a98
       parent: {fileID: 11495662}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11472006}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 136648}
+          parent: {fileID: 11495662}
+          mode: 0
+          path: /Slide (1)/Main/Slide (1)/Slide (1)/Usable/Target
+        usage: 0
+        path: /Slide/Main/Old Attribute Bool Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: True
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
-      path: Slide (1)/Active
-      id: -44732/c87b6fa1-25b4-4c34-865a-3021ecdd1844
-      localID: c87b6fa1-25b4-4c34-865a-3021ecdd1844
+      path: Slide/Active
+      fullPath: Slide/Main/Slide/Active
+      id: -90330/dafb6d71-ca1b-4f50-b1a9-a20230dc52b8
+      localID: dafb6d71-ca1b-4f50-b1a9-a20230dc52b8
       parent: {fileID: 11495662}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11473654}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: Slide/Main/Slide/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
-      path: Slide (1)/Used
-      id: -44732/ce5061da-a7ee-46c3-8596-56590dbd0ffb
+      path: Slide/Used
+      fullPath: Slide/Main/Slide/Used
+      id: -90330/ce5061da-a7ee-46c3-8596-56590dbd0ffb
       localID: ce5061da-a7ee-46c3-8596-56590dbd0ffb
       parent: {fileID: 11495662}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11468680}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 136648}
+          parent: {fileID: 11495662}
+          mode: 0
+          path: /Slide (1)/Main/Slide (1)/Slide (1)/Used/Target
+        usage: 0
+        path: /Slide/Main/Old Attribute Bool Data C
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   table:
@@ -7062,14 +4460,32 @@ MonoBehaviour:
   external:
     info:
       name: External
-      path: Slide (1)/External
-      id: -44732/3d621d6b-84fc-423e-8ad6-41301aa29759
+      path: Slide/External
+      fullPath: Slide/Main/Slide/External
+      id: -90330/3d621d6b-84fc-423e-8ad6-41301aa29759
       localID: 3d621d6b-84fc-423e-8ad6-41301aa29759
       parent: {fileID: 11495662}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11470992}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 136648}
+          parent: {fileID: 11495662}
+          mode: 0
+          path: /Slide (1)/Main/Slide (1)/Slide (1)/External/Target
+        usage: 0
+        path: /Slide/Main/Old Attribute Bool Data D
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: True
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   scripts:
@@ -7084,162 +4500,6 @@ MonoBehaviour:
   - {fileID: 11481326}
   - {fileID: 11429828}
   - {fileID: 11445304}
---- !u!114 &11497732
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11481326}
-    mode: 0
-    path: /Slide (1)/Main/Reset Slide Angle/Reset Slide Angle/Usable/Target
-  usage: 0
-  path: Reset Slide Angle/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: Reset Slide Angle/Usable
-    id: -44696/a96f22ef-e7dd-4cd4-9116-7f242dfabad5
-    localID: a96f22ef-e7dd-4cd4-9116-7f242dfabad5
-    parent: {fileID: 11481326}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11497732}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11498852
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11431038}
-    mode: 0
-    path: /Slide (1)/Main/On Slide/On Slide/Usable/Target
-  usage: 0
-  path: On Slide/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: On Slide/Usable
-    id: -44572/1b629a6a-7684-4a63-8096-5d2b36892ddf
-    localID: 1b629a6a-7684-4a63-8096-5d2b36892ddf
-    parent: {fileID: 11431038}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11498852}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11499422
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 144134}
-    parent: {fileID: 11445304}
-    mode: 0
-    path: /Slide (1)/Main/On Ground/On Ground/Active/Target
-  usage: 0
-  path: On Ground/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: On Ground/Active
-    id: -44604/3468d95b-d180-425c-9804-b661ce07676b
-    localID: 3468d95b-d180-425c-9804-b661ce07676b
-    parent: {fileID: 11445304}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11499422}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -27,10 +27,6 @@ GameObject:
   - 114: {fileID: 11452764}
   - 114: {fileID: 11428398}
   - 114: {fileID: 11499854}
-  - 114: {fileID: 11416744}
-  - 114: {fileID: 11455194}
-  - 114: {fileID: 11483994}
-  - 114: {fileID: 11424960}
   m_Layer: 10
   m_Name: '@Settings'
   m_TagString: Untagged
@@ -49,23 +45,6 @@ GameObject:
   - 114: {fileID: 11469142}
   - 114: {fileID: 11485142}
   - 114: {fileID: 11424392}
-  - 114: {fileID: 11468920}
-  - 114: {fileID: 11494326}
-  - 114: {fileID: 11462376}
-  - 114: {fileID: 11428296}
-  - 114: {fileID: 11480020}
-  - 114: {fileID: 11481738}
-  - 114: {fileID: 11464068}
-  - 114: {fileID: 11459494}
-  - 114: {fileID: 11422884}
-  - 114: {fileID: 11448676}
-  - 114: {fileID: 11497716}
-  - 114: {fileID: 11470010}
-  - 114: {fileID: 11419778}
-  - 114: {fileID: 11449408}
-  - 114: {fileID: 11485694}
-  - 114: {fileID: 11451118}
-  - 114: {fileID: 11410464}
   m_Layer: 10
   m_Name: Main
   m_TagString: Untagged
@@ -111,217 +90,6 @@ Transform:
   - {fileID: 419934}
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11410464
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 198934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 198934}
-    parent: {fileID: 11469142}
-    mode: 0
-    path: /Land/Main/Land/Land/External/Target
-  usage: 0
-  path: Land/External/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: External
-    path: Land/External
-    id: -39258/3e35b1b5-f197-4f93-ae01-23b148350b7e
-    localID: 3e35b1b5-f197-4f93-ae01-23b148350b7e
-    parent: {fileID: 11469142}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11410464}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11416744
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 196764}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 196764}
-    parent: {fileID: 11452764}
-    mode: 0
-    path: /Land/@Settings/Land Duration/Land Duration/Target
-  usage: 0
-  path: Land Duration/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Land Duration
-    path: Land Duration
-    id: -39240/36e06670-e99b-4c51-a366-51346402a31d
-    localID: 36e06670-e99b-4c51-a366-51346402a31d
-    parent: {fileID: 11452764}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11416744}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: .400000006
---- !u!114 &11419778
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 198934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3e9984a5f3f19942be359930227796e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute String Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 196764}
-    parent: {fileID: 11485142}
-    mode: 0
-    path: /Land/Main/Land Animation/Land Animation/Animation Name/Target
-  usage: 1
-  path: Land Animation/Animation Name/0
-  referenceID: -39248/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
-  referencePath: Animation
-  attribute:
-    name: Animation Name
-    path: Land Animation/Animation Name
-    id: -39278/b054be47-1b5a-41d9-98dd-84ea37cc178a
-    localID: b054be47-1b5a-41d9-98dd-84ea37cc178a
-    parent: {fileID: 11485142}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11419778}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: LandUp
-  characterLimit: 0
-  allowed: []
-  disallowed: []
---- !u!114 &11422884
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 198934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 198934}
-    parent: {fileID: 11485142}
-    mode: 0
-    path: /Land/Main/Land Animation/Land Animation/Speed/Target
-  usage: 0
-  path: Land Animation/Speed/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Speed
-    path: Land Animation/Speed
-    id: -39278/f95b5258-61f1-448e-8eb7-506e36970161
-    localID: f95b5258-61f1-448e-8eb7-506e36970161
-    parent: {fileID: 11485142}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11422884}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
 --- !u!114 &11424392
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -344,39 +112,93 @@ MonoBehaviour:
     info:
       name: Usable
       path: Land Duration/Usable
-      id: -39226/acf92531-d2ee-4a51-a9d5-b838848bd6db
+      fullPath: Land/Main/Land Duration/Usable
+      id: -89772/acf92531-d2ee-4a51-a9d5-b838848bd6db
       localID: acf92531-d2ee-4a51-a9d5-b838848bd6db
       parent: {fileID: 11424392}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11480020}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 198934}
+          parent: {fileID: 11424392}
+          mode: 0
+          path: /Land/Main/Land Duration/Land Duration/Usable/Target
+        usage: 0
+        path: /Land/Main/Attribute Bool Data F
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
       path: Land Duration/Active
-      id: -39226/8b86446b-9560-4b44-b8a8-2405dd088b61
-      localID: 8b86446b-9560-4b44-b8a8-2405dd088b61
+      fullPath: Land/Main/Land Duration/Active
+      id: -89772/ccb56130-1a1b-49be-bff7-260f573b520d
+      localID: ccb56130-1a1b-49be-bff7-260f573b520d
       parent: {fileID: 11424392}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11428296}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: Land/Main/Land Duration/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
       path: Land Duration/Used
-      id: -39226/bf100468-2bd2-4fac-b758-9167f5506e2c
+      fullPath: Land/Main/Land Duration/Used
+      id: -89772/bf100468-2bd2-4fac-b758-9167f5506e2c
       localID: bf100468-2bd2-4fac-b758-9167f5506e2c
       parent: {fileID: 11424392}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11481738}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 198934}
+          parent: {fileID: 11424392}
+          mode: 0
+          path: /Land/Main/Land Duration/Land Duration/Used/Target
+        usage: 0
+        path: /Land/Main/Attribute Bool Data G
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   type: 1
@@ -384,148 +206,95 @@ MonoBehaviour:
     info:
       name: Seconds
       path: Land Duration/Seconds
-      id: -39226/b9f37898-e726-4aaa-82f7-e031c96d012e
+      fullPath: Land/Main/Land Duration/Seconds
+      id: -89772/b9f37898-e726-4aaa-82f7-e031c96d012e
       localID: b9f37898-e726-4aaa-82f7-e031c96d012e
       parent: {fileID: 11424392}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11497716}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 196764}
+          parent: {fileID: 11424392}
+          mode: 0
+          path: /Land/Main/Land Duration/Land Duration/Seconds/Target
+        usage: 1
+        path: /Land/Main/Attribute Float Data
+        referenceID: -39240/36e06670-e99b-4c51-a366-51346402a31d
+        referencePath: Land Duration
+        operation: 0
+        special: 0
+        rawValue: 0.4
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   isStarted:
     info:
       name: Is Started
       path: Land Duration/Is Started
-      id: -39226/0d49de0b-f55d-4773-b497-be8622600f09
+      fullPath: Land/Main/Land Duration/Is Started
+      id: -89772/0d49de0b-f55d-4773-b497-be8622600f09
       localID: 0d49de0b-f55d-4773-b497-be8622600f09
       parent: {fileID: 11424392}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11464068}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 198934}
+          parent: {fileID: 11424392}
+          mode: 0
+          path: /Land/Main/Land Duration/Land Duration/Is Started/Target
+        usage: 0
+        path: /Land/Main/Attribute Bool Data H
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   isComplete:
     info:
       name: Is Complete
       path: Land Duration/Is Complete
-      id: -39226/1ab85da4-7ea1-4918-853a-18bb70e02fb6
+      fullPath: Land/Main/Land Duration/Is Complete
+      id: -89772/1ab85da4-7ea1-4918-853a-18bb70e02fb6
       localID: 1ab85da4-7ea1-4918-853a-18bb70e02fb6
       parent: {fileID: 11424392}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11459494}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 198934}
+          parent: {fileID: 11424392}
+          mode: 0
+          path: /Land/Main/Land Duration/Land Duration/Is Complete/Target
+        usage: 0
+        path: /Land/Main/Attribute Bool Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
---- !u!114 &11424960
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 196764}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3e9984a5f3f19942be359930227796e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute String Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 196764}
-    parent: {fileID: 11461336}
-    mode: 0
-    path: /Land/@Settings/Animation/Animation/Target
-  usage: 0
-  path: Animation/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Animation
-    path: Animation
-    id: -39248/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
-    localID: 7e894ef6-a99f-450f-b42a-e1aa6c29abb9
-    parent: {fileID: 11461336}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11424960}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
       oldData: []
       oldDataB: []
       oldDataC: []
-  operation: 0
-  special: 0
-  value: Land
-  characterLimit: 0
-  allowed: []
-  disallowed: []
---- !u!114 &11428296
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 198934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 198934}
-    parent: {fileID: 11424392}
-    mode: 0
-    path: /Land/Main/Land Duration/Land Duration/Active/Target
-  usage: 0
-  path: Land Duration/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: Land Duration/Active
-    id: -39226/8b86446b-9560-4b44-b8a8-2405dd088b61
-    localID: 8b86446b-9560-4b44-b8a8-2405dd088b61
-    parent: {fileID: 11424392}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11428296}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!114 &11428398
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -544,172 +313,34 @@ MonoBehaviour:
     info:
       name: Source
       path: Source
-      id: -39232/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+      fullPath: Land/@Settings/Source
+      id: -89756/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
       localID: 0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
       parent: {fileID: 11428398}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11455194}
+      - target:
+          search: ../../..
+          directObject: {fileID: 0}
+          searchObject: {fileID: 135914}
+          parent: {fileID: 11428398}
+          mode: 0
+          path: /Land/@Settings/Source/Source/Target
+        usage: 1
+        path: /Land/@Settings/Attribute Game Object Data B
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeGameObjectData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   remember: 0
---- !u!114 &11448676
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 198934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 198934}
-    parent: {fileID: 11485142}
-    mode: 0
-    path: /Land/Main/Land Animation/Land Animation/Weight/Target
-  usage: 0
-  path: Land Animation/Weight/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Weight
-    path: Land Animation/Weight
-    id: -39278/5492b57f-aeca-4287-992c-12386ef162dd
-    localID: 5492b57f-aeca-4287-992c-12386ef162dd
-    parent: {fileID: 11485142}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11448676}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11449408
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 198934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 198934}
-    parent: {fileID: 11469142}
-    mode: 0
-    path: /Land/Main/Land/Land/Usable/Target
-  usage: 0
-  path: Land/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: Land/Usable
-    id: -39258/0db321ff-a69d-4b19-8ae9-b4de88f985cc
-    localID: 0db321ff-a69d-4b19-8ae9-b4de88f985cc
-    parent: {fileID: 11469142}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11449408}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11451118
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 198934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 198934}
-    parent: {fileID: 11469142}
-    mode: 0
-    path: /Land/Main/Land/Land/Used/Target
-  usage: 0
-  path: Land/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: Land/Used
-    id: -39258/3aaf80c3-9f42-4661-b6fa-47e66301537f
-    localID: 3aaf80c3-9f42-4661-b6fa-47e66301537f
-    parent: {fileID: 11469142}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11451118}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!114 &11452764
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -728,120 +359,34 @@ MonoBehaviour:
     info:
       name: Land Duration
       path: Land Duration
-      id: -39240/36e06670-e99b-4c51-a366-51346402a31d
+      fullPath: Land/@Settings/Land Duration
+      id: -89754/36e06670-e99b-4c51-a366-51346402a31d
       localID: 36e06670-e99b-4c51-a366-51346402a31d
       parent: {fileID: 11452764}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11416744}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 196764}
+          parent: {fileID: 11452764}
+          mode: 0
+          path: /Land/@Settings/Land Duration/Land Duration/Target
+        usage: 0
+        path: /Land/@Settings/Attribute Float Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 0.4
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   remember: 0
---- !u!114 &11455194
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 196764}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Game Object Data
-  target:
-    search: ../../..
-    directObject: {fileID: 0}
-    searchObject: {fileID: 135914}
-    parent: {fileID: 11428398}
-    mode: 0
-    path: /Land/@Settings/Source/Source/Target
-  usage: 1
-  path: Source/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Source
-    path: Source
-    id: -39232/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
-    localID: 0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
-    parent: {fileID: 11428398}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11455194}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {fileID: 0}
---- !u!114 &11459494
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 198934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 198934}
-    parent: {fileID: 11424392}
-    mode: 0
-    path: /Land/Main/Land Duration/Land Duration/Is Complete/Target
-  usage: 0
-  path: Land Duration/Is Complete/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Is Complete
-    path: Land Duration/Is Complete
-    id: -39226/1ab85da4-7ea1-4918-853a-18bb70e02fb6
-    localID: 1ab85da4-7ea1-4918-853a-18bb70e02fb6
-    parent: {fileID: 11424392}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11459494}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!114 &11461336
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -860,172 +405,34 @@ MonoBehaviour:
     info:
       name: Animation
       path: Animation
-      id: -39248/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
+      fullPath: Land/@Settings/Animation
+      id: -89752/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
       localID: 7e894ef6-a99f-450f-b42a-e1aa6c29abb9
       parent: {fileID: 11461336}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11424960}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 196764}
+          parent: {fileID: 11461336}
+          mode: 0
+          path: /Land/@Settings/Animation/Animation/Target
+        usage: 0
+        path: /Land/@Settings/Attribute String Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: Land
+        rawType: Zios.AttributeStringData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   remember: 0
---- !u!114 &11462376
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 198934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 198934}
-    parent: {fileID: 11485142}
-    mode: 0
-    path: /Land/Main/Land Animation/Land Animation/Used/Target
-  usage: 0
-  path: Land Animation/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: Land Animation/Used
-    id: -39278/cb309e2c-baac-4c2b-9092-940dd4ac8bd9
-    localID: cb309e2c-baac-4c2b-9092-940dd4ac8bd9
-    parent: {fileID: 11485142}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11462376}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11464068
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 198934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 198934}
-    parent: {fileID: 11424392}
-    mode: 0
-    path: /Land/Main/Land Duration/Land Duration/Is Started/Target
-  usage: 0
-  path: Land Duration/Is Started/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Is Started
-    path: Land Duration/Is Started
-    id: -39226/0d49de0b-f55d-4773-b497-be8622600f09
-    localID: 0d49de0b-f55d-4773-b497-be8622600f09
-    parent: {fileID: 11424392}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11464068}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11468920
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 198934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 198934}
-    parent: {fileID: 11485142}
-    mode: 0
-    path: /Land/Main/Land Animation/Land Animation/Active/Target
-  usage: 0
-  path: Land Animation/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: Land Animation/Active
-    id: -39278/a3dff532-2f41-4da9-90ad-fd20de5254c6
-    localID: a3dff532-2f41-4da9-90ad-fd20de5254c6
-    parent: {fileID: 11485142}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11468920}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!114 &11469142
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1048,39 +455,93 @@ MonoBehaviour:
     info:
       name: Usable
       path: Land/Usable
-      id: -39258/0db321ff-a69d-4b19-8ae9-b4de88f985cc
+      fullPath: Land/Main/Land/Usable
+      id: -89768/0db321ff-a69d-4b19-8ae9-b4de88f985cc
       localID: 0db321ff-a69d-4b19-8ae9-b4de88f985cc
       parent: {fileID: 11469142}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11449408}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 198934}
+          parent: {fileID: 11469142}
+          mode: 0
+          path: /Land/Main/Land/Land/Usable/Target
+        usage: 0
+        path: /Land/Main/Old Attribute Bool Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: True
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
       path: Land/Active
-      id: -39258/408e292e-81a1-4353-a4bc-9cd6dc51f436
-      localID: 408e292e-81a1-4353-a4bc-9cd6dc51f436
+      fullPath: Land/Main/Land/Active
+      id: -89768/f78f7ee2-9d5d-463a-9e5d-f004059eddf7
+      localID: f78f7ee2-9d5d-463a-9e5d-f004059eddf7
       parent: {fileID: 11469142}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11485694}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: Land/Main/Land/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
       path: Land/Used
-      id: -39258/3aaf80c3-9f42-4661-b6fa-47e66301537f
+      fullPath: Land/Main/Land/Used
+      id: -89768/3aaf80c3-9f42-4661-b6fa-47e66301537f
       localID: 3aaf80c3-9f42-4661-b6fa-47e66301537f
       parent: {fileID: 11469142}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11451118}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 198934}
+          parent: {fileID: 11469142}
+          mode: 0
+          path: /Land/Main/Land/Land/Used/Target
+        usage: 0
+        path: /Land/Main/Old Attribute Bool Data C
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   table:
@@ -1247,227 +708,37 @@ MonoBehaviour:
     info:
       name: External
       path: Land/External
-      id: -39258/3e35b1b5-f197-4f93-ae01-23b148350b7e
+      fullPath: Land/Main/Land/External
+      id: -89768/3e35b1b5-f197-4f93-ae01-23b148350b7e
       localID: 3e35b1b5-f197-4f93-ae01-23b148350b7e
       parent: {fileID: 11469142}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11410464}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 198934}
+          parent: {fileID: 11469142}
+          mode: 0
+          path: /Land/Main/Land/Land/External/Target
+        usage: 0
+        path: /Land/Main/Old Attribute Bool Data D
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: True
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   scripts:
   - {fileID: 11469142}
   - {fileID: 11485142}
   - {fileID: 11424392}
---- !u!114 &11470010
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 198934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Game Object Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 196764}
-    parent: {fileID: 11485142}
-    mode: 0
-    path: /Land/Main/Land Animation/Land Animation/Target/Target
-  usage: 1
-  path: Land Animation/Target/0
-  referenceID: -39286/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
-  referencePath: Visuals
-  attribute:
-    name: Target
-    path: Land Animation/Target
-    id: -39278/889a6357-f9cd-41a5-8c71-e5eb929735c7
-    localID: 889a6357-f9cd-41a5-8c71-e5eb929735c7
-    parent: {fileID: 11485142}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11470010}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {fileID: 0}
---- !u!114 &11480020
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 198934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 198934}
-    parent: {fileID: 11424392}
-    mode: 0
-    path: /Land/Main/Land Duration/Land Duration/Usable/Target
-  usage: 0
-  path: Land Duration/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: Land Duration/Usable
-    id: -39226/acf92531-d2ee-4a51-a9d5-b838848bd6db
-    localID: acf92531-d2ee-4a51-a9d5-b838848bd6db
-    parent: {fileID: 11424392}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11480020}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11481738
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 198934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 198934}
-    parent: {fileID: 11424392}
-    mode: 0
-    path: /Land/Main/Land Duration/Land Duration/Used/Target
-  usage: 0
-  path: Land Duration/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: Land Duration/Used
-    id: -39226/bf100468-2bd2-4fac-b758-9167f5506e2c
-    localID: bf100468-2bd2-4fac-b758-9167f5506e2c
-    parent: {fileID: 11424392}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11481738}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11483994
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 196764}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Game Object Data
-  target:
-    search: ../../../Visuals
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 11499854}
-    mode: 0
-    path: /Land/@Settings/Visuals/Visuals/Target
-  usage: 1
-  path: Visuals/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Visuals
-    path: Visuals
-    id: -39286/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
-    localID: 33bddd78-c7f6-40fe-94d8-1637fbd7fa73
-    parent: {fileID: 11499854}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11483994}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {fileID: 0}
 --- !u!114 &11485142
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1490,249 +761,219 @@ MonoBehaviour:
     info:
       name: Usable
       path: Land Animation/Usable
-      id: -39278/6029571f-cfcd-443c-9b9a-ee07da0a8d1a
+      fullPath: Land/Main/Land Animation/Usable
+      id: -89770/6029571f-cfcd-443c-9b9a-ee07da0a8d1a
       localID: 6029571f-cfcd-443c-9b9a-ee07da0a8d1a
       parent: {fileID: 11485142}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11494326}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 198934}
+          parent: {fileID: 11485142}
+          mode: 0
+          path: /Land/Main/Land Animation/Land Animation/Usable/Target
+        usage: 0
+        path: /Land/Main/Attribute Bool Data C
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
       path: Land Animation/Active
-      id: -39278/a3dff532-2f41-4da9-90ad-fd20de5254c6
-      localID: a3dff532-2f41-4da9-90ad-fd20de5254c6
+      fullPath: Land/Main/Land Animation/Active
+      id: -89770/220db921-a171-47d1-9408-f389302a86a8
+      localID: 220db921-a171-47d1-9408-f389302a86a8
       parent: {fileID: 11485142}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11468920}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: Land/Main/Land Animation/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
       path: Land Animation/Used
-      id: -39278/cb309e2c-baac-4c2b-9092-940dd4ac8bd9
+      fullPath: Land/Main/Land Animation/Used
+      id: -89770/cb309e2c-baac-4c2b-9092-940dd4ac8bd9
       localID: cb309e2c-baac-4c2b-9092-940dd4ac8bd9
       parent: {fileID: 11485142}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11462376}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 198934}
+          parent: {fileID: 11485142}
+          mode: 0
+          path: /Land/Main/Land Animation/Land Animation/Used/Target
+        usage: 0
+        path: /Land/Main/Attribute Bool Data D
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   animationName:
     info:
       name: Animation Name
       path: Land Animation/Animation Name
-      id: -39278/b054be47-1b5a-41d9-98dd-84ea37cc178a
+      fullPath: Land/Main/Land Animation/Animation Name
+      id: -89770/b054be47-1b5a-41d9-98dd-84ea37cc178a
       localID: b054be47-1b5a-41d9-98dd-84ea37cc178a
       parent: {fileID: 11485142}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11419778}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 196764}
+          parent: {fileID: 11485142}
+          mode: 0
+          path: /Land/Main/Land Animation/Land Animation/Animation Name/Target
+        usage: 1
+        path: /Land/Main/Attribute String Data
+        referenceID: -39248/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
+        referencePath: Animation
+        operation: 0
+        special: 0
+        rawValue: LandUp
+        rawType: Zios.AttributeStringData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   speed:
     info:
       name: Speed
       path: Land Animation/Speed
-      id: -39278/f95b5258-61f1-448e-8eb7-506e36970161
+      fullPath: Land/Main/Land Animation/Speed
+      id: -89770/f95b5258-61f1-448e-8eb7-506e36970161
       localID: f95b5258-61f1-448e-8eb7-506e36970161
       parent: {fileID: 11485142}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11422884}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 198934}
+          parent: {fileID: 11485142}
+          mode: 0
+          path: /Land/Main/Land Animation/Land Animation/Speed/Target
+        usage: 0
+        path: /Land/Main/Attribute Float Data B
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 1
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   weight:
     info:
       name: Weight
       path: Land Animation/Weight
-      id: -39278/5492b57f-aeca-4287-992c-12386ef162dd
+      fullPath: Land/Main/Land Animation/Weight
+      id: -89770/5492b57f-aeca-4287-992c-12386ef162dd
       localID: 5492b57f-aeca-4287-992c-12386ef162dd
       parent: {fileID: 11485142}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11448676}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 198934}
+          parent: {fileID: 11485142}
+          mode: 0
+          path: /Land/Main/Land Animation/Land Animation/Weight/Target
+        usage: 0
+        path: /Land/Main/Attribute Float Data C
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 1
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   target:
     info:
       name: Target
       path: Land Animation/Target
-      id: -39278/889a6357-f9cd-41a5-8c71-e5eb929735c7
+      fullPath: Land/Main/Land Animation/Target
+      id: -89770/889a6357-f9cd-41a5-8c71-e5eb929735c7
       localID: 889a6357-f9cd-41a5-8c71-e5eb929735c7
       parent: {fileID: 11485142}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11470010}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 196764}
+          parent: {fileID: 11485142}
+          mode: 0
+          path: /Land/Main/Land Animation/Land Animation/Target/Target
+        usage: 1
+        path: /Land/Main/Attribute Game Object Data
+        referenceID: -39286/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+        referencePath: Visuals
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeGameObjectData
       oldDataB: []
       oldDataC: []
---- !u!114 &11485694
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 198934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 198934}
-    parent: {fileID: 11469142}
-    mode: 0
-    path: /Land/Main/Land/Land/Active/Target
-  usage: 0
-  path: Land/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: Land/Active
-    id: -39258/408e292e-81a1-4353-a4bc-9cd6dc51f436
-    localID: 408e292e-81a1-4353-a4bc-9cd6dc51f436
-    parent: {fileID: 11469142}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11485694}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
       oldData: []
       oldDataB: []
       oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11494326
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 198934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 198934}
-    parent: {fileID: 11485142}
-    mode: 0
-    path: /Land/Main/Land Animation/Land Animation/Usable/Target
-  usage: 0
-  path: Land Animation/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: Land Animation/Usable
-    id: -39278/6029571f-cfcd-443c-9b9a-ee07da0a8d1a
-    localID: 6029571f-cfcd-443c-9b9a-ee07da0a8d1a
-    parent: {fileID: 11485142}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11494326}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11497716
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 198934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 196764}
-    parent: {fileID: 11424392}
-    mode: 0
-    path: /Land/Main/Land Duration/Land Duration/Seconds/Target
-  usage: 1
-  path: Land Duration/Seconds/0
-  referenceID: -39240/36e06670-e99b-4c51-a366-51346402a31d
-  referencePath: Land Duration
-  attribute:
-    name: Seconds
-    path: Land Duration/Seconds
-    id: -39226/b9f37898-e726-4aaa-82f7-e031c96d012e
-    localID: b9f37898-e726-4aaa-82f7-e031c96d012e
-    parent: {fileID: 11424392}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11497716}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: .400000006
 --- !u!114 &11499854
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1751,13 +992,31 @@ MonoBehaviour:
     info:
       name: Visuals
       path: Visuals
-      id: -39286/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+      fullPath: Land/@Settings/Visuals
+      id: -89758/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
       localID: 33bddd78-c7f6-40fe-94d8-1637fbd7fa73
       parent: {fileID: 11499854}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11483994}
+      - target:
+          search: ../../../Visuals
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 11499854}
+          mode: 0
+          path: /Land/@Settings/Visuals/Visuals/Target
+        usage: 1
+        path: /Land/@Settings/Attribute Game Object Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeGameObjectData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   remember: 0

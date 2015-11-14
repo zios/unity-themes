@@ -32,7 +32,6 @@ namespace Zios{
 			this.external.Set(true);
 		}
 		public override void Step(){
-			if(!Application.isPlaying){return;}
 			base.Step();
 			foreach(var script in this.scripts){
 				if(!script.IsEnabled()){continue;}

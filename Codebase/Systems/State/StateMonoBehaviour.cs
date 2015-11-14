@@ -31,7 +31,6 @@ namespace Zios{
 			}
 		}
 		public override void Step(){
-			if(!Application.isPlaying){return;}
 			bool usedOnce = this.used && this.occurrence == StateOccurrence.Once;
 			if(!usedOnce){
 				if(this.usable){this.Use();}

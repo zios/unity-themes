@@ -9,10 +9,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 403814}
   - 114: {fileID: 11419038}
-  - 114: {fileID: 11451892}
-  - 114: {fileID: 11445120}
-  - 114: {fileID: 11463922}
-  - 114: {fileID: 11499264}
   m_Layer: 0
   m_Name: Main
   m_TagString: Untagged
@@ -46,9 +42,6 @@ GameObject:
   - 114: {fileID: 11464674}
   - 114: {fileID: 11428936}
   - 114: {fileID: 11477292}
-  - 114: {fileID: 11483802}
-  - 114: {fileID: 11414790}
-  - 114: {fileID: 11425570}
   m_Layer: 0
   m_Name: '@Settings'
   m_TagString: Untagged
@@ -94,58 +87,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 440444}
   m_RootOrder: 0
---- !u!114 &11414790
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 176944}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Game Object Data
-  target:
-    search: ../../../../Visuals
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 11477292}
-    mode: 0
-    path: /Charge/@Settings/Visuals/Visuals/Target
-  usage: 1
-  path: Visuals/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Visuals
-    path: Visuals
-    id: -40706/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
-    localID: 33bddd78-c7f6-40fe-94d8-1637fbd7fa73
-    parent: {fileID: 11477292}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11414790}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {fileID: 0}
 --- !u!114 &11419038
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -168,39 +109,93 @@ MonoBehaviour:
     info:
       name: Usable
       path: Charge/Usable
-      id: -40686/48f25591-e2b2-45d0-b56f-61464d239b6f
+      fullPath: Charge/Main/Charge/Usable
+      id: -90818/48f25591-e2b2-45d0-b56f-61464d239b6f
       localID: 48f25591-e2b2-45d0-b56f-61464d239b6f
       parent: {fileID: 11419038}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11451892}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 104236}
+          parent: {fileID: 11419038}
+          mode: 0
+          path: /Charge/Main/Charge/Charge/Usable/Target
+        usage: 0
+        path: /Charge/Main/Old Attribute Bool Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: True
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
       path: Charge/Active
-      id: -40686/8bb3c05d-bfca-4472-9439-b04e2c5c255d
-      localID: 8bb3c05d-bfca-4472-9439-b04e2c5c255d
+      fullPath: Charge/Main/Charge/Active
+      id: -90818/32d49fca-6407-4964-954d-7f439011b372
+      localID: 32d49fca-6407-4964-954d-7f439011b372
       parent: {fileID: 11419038}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11445120}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: Charge/Main/Charge/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
       path: Charge/Used
-      id: -40686/3546bec2-77cb-4448-a43d-6d63fe0e6fd0
+      fullPath: Charge/Main/Charge/Used
+      id: -90818/3546bec2-77cb-4448-a43d-6d63fe0e6fd0
       localID: 3546bec2-77cb-4448-a43d-6d63fe0e6fd0
       parent: {fileID: 11419038}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11463922}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 104236}
+          parent: {fileID: 11419038}
+          mode: 0
+          path: /Charge/Main/Charge/Charge/Used/Target
+        usage: 0
+        path: /Charge/Main/Old Attribute Bool Data C
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   table:
@@ -239,72 +234,35 @@ MonoBehaviour:
     info:
       name: External
       path: Charge/External
-      id: -40686/f20de2af-cc9a-492e-8194-844c3cbe8bcf
+      fullPath: Charge/Main/Charge/External
+      id: -90818/f20de2af-cc9a-492e-8194-844c3cbe8bcf
       localID: f20de2af-cc9a-492e-8194-844c3cbe8bcf
       parent: {fileID: 11419038}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11499264}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 104236}
+          parent: {fileID: 11419038}
+          mode: 0
+          path: /Charge/Main/Charge/Charge/External/Target
+        usage: 0
+        path: /Charge/Main/Old Attribute Bool Data D
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: True
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   scripts:
   - {fileID: 11419038}
---- !u!114 &11425570
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 176944}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3e9984a5f3f19942be359930227796e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute String Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 176944}
-    parent: {fileID: 11464674}
-    mode: 0
-    path: /Charge/@Settings/Animation/Animation/Target
-  usage: 0
-  path: Animation/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Animation
-    path: Animation
-    id: -40700/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
-    localID: 7e894ef6-a99f-450f-b42a-e1aa6c29abb9
-    parent: {fileID: 11464674}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11425570}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: Charge
-  characterLimit: 0
-  allowed: []
-  disallowed: []
 --- !u!114 &11428936
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -323,172 +281,34 @@ MonoBehaviour:
     info:
       name: Source
       path: Source
-      id: -40692/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+      fullPath: Charge/@Settings/Source
+      id: -90830/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
       localID: 0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
       parent: {fileID: 11428936}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11483802}
+      - target:
+          search: ../../../..
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 11428936}
+          mode: 0
+          path: /Charge/@Settings/Source/Source/Target
+        usage: 1
+        path: /Charge/@Settings/Attribute Game Object Data B
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeGameObjectData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   remember: 0
---- !u!114 &11445120
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 104236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 104236}
-    parent: {fileID: 11419038}
-    mode: 0
-    path: /Charge/Main/Charge/Charge/Active/Target
-  usage: 0
-  path: Charge/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: Charge/Active
-    id: -40686/8bb3c05d-bfca-4472-9439-b04e2c5c255d
-    localID: 8bb3c05d-bfca-4472-9439-b04e2c5c255d
-    parent: {fileID: 11419038}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11445120}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11451892
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 104236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 104236}
-    parent: {fileID: 11419038}
-    mode: 0
-    path: /Charge/Main/Charge/Charge/Usable/Target
-  usage: 0
-  path: Charge/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: Charge/Usable
-    id: -40686/48f25591-e2b2-45d0-b56f-61464d239b6f
-    localID: 48f25591-e2b2-45d0-b56f-61464d239b6f
-    parent: {fileID: 11419038}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11451892}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11463922
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 104236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 104236}
-    parent: {fileID: 11419038}
-    mode: 0
-    path: /Charge/Main/Charge/Charge/Used/Target
-  usage: 0
-  path: Charge/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: Charge/Used
-    id: -40686/3546bec2-77cb-4448-a43d-6d63fe0e6fd0
-    localID: 3546bec2-77cb-4448-a43d-6d63fe0e6fd0
-    parent: {fileID: 11419038}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11463922}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!114 &11464674
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -507,13 +327,31 @@ MonoBehaviour:
     info:
       name: Animation
       path: Animation
-      id: -40700/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
+      fullPath: Charge/@Settings/Animation
+      id: -90828/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
       localID: 7e894ef6-a99f-450f-b42a-e1aa6c29abb9
       parent: {fileID: 11464674}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11425570}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 176944}
+          parent: {fileID: 11464674}
+          mode: 0
+          path: /Charge/@Settings/Animation/Animation/Target
+        usage: 0
+        path: /Charge/@Settings/Attribute String Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: Charge
+        rawType: Zios.AttributeStringData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   remember: 0
@@ -535,120 +373,34 @@ MonoBehaviour:
     info:
       name: Visuals
       path: Visuals
-      id: -40706/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+      fullPath: Charge/@Settings/Visuals
+      id: -90832/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
       localID: 33bddd78-c7f6-40fe-94d8-1637fbd7fa73
       parent: {fileID: 11477292}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11414790}
+      - target:
+          search: ../../../../Visuals
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 11477292}
+          mode: 0
+          path: /Charge/@Settings/Visuals/Visuals/Target
+        usage: 1
+        path: /Charge/@Settings/Attribute Game Object Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeGameObjectData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   remember: 0
---- !u!114 &11483802
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 176944}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Game Object Data
-  target:
-    search: ../../../..
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 11428936}
-    mode: 0
-    path: /Charge/@Settings/Source/Source/Target
-  usage: 1
-  path: Source/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Source
-    path: Source
-    id: -40692/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
-    localID: 0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
-    parent: {fileID: 11428936}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11483802}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {fileID: 0}
---- !u!114 &11499264
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 104236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 104236}
-    parent: {fileID: 11419038}
-    mode: 0
-    path: /Charge/Main/Charge/Charge/External/Target
-  usage: 0
-  path: Charge/External/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: External
-    path: Charge/External
-    id: -40686/f20de2af-cc9a-492e-8194-844c3cbe8bcf
-    localID: f20de2af-cc9a-492e-8194-844c3cbe8bcf
-    parent: {fileID: 11419038}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11499264}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -6,6 +6,7 @@ namespace Zios{
 		public GameObject value;
 		public override AttributeData Convert(){
 			var data = new AttributeGameObjectData();
+			data.value = this.value;
 			data.rawValue = this.value.GetPath();
 			data.rawType = typeof(AttributeGameObjectData).FullName;
 			return data;

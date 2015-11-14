@@ -11,9 +11,6 @@ GameObject:
   - 114: {fileID: 11416064}
   - 114: {fileID: 11493890}
   - 114: {fileID: 11464012}
-  - 114: {fileID: 11455548}
-  - 114: {fileID: 11484414}
-  - 114: {fileID: 11425776}
   m_Layer: 10
   m_Name: '@Settings'
   m_TagString: Untagged
@@ -31,19 +28,6 @@ GameObject:
   - 4: {fileID: 442950}
   - 114: {fileID: 11446912}
   - 114: {fileID: 11442354}
-  - 114: {fileID: 11475030}
-  - 114: {fileID: 11499792}
-  - 114: {fileID: 11437082}
-  - 114: {fileID: 11420236}
-  - 114: {fileID: 11464348}
-  - 114: {fileID: 11433846}
-  - 114: {fileID: 11429874}
-  - 114: {fileID: 11426278}
-  - 114: {fileID: 11477412}
-  - 114: {fileID: 11443930}
-  - 114: {fileID: 11402326}
-  - 114: {fileID: 11415704}
-  - 114: {fileID: 11434240}
   m_Layer: 10
   m_Name: Main
   m_TagString: Untagged
@@ -104,110 +88,6 @@ Transform:
   - {fileID: 442950}
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11402326
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 141626}
-    parent: {fileID: 11446912}
-    mode: 0
-    path: /Gravity/Main/Gravity/Gravity/Active/Target
-  usage: 0
-  path: Gravity/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: Gravity/Active
-    id: -36868/fc83a691-e36c-4465-8478-8ec1ec8fd837
-    localID: fc83a691-e36c-4465-8478-8ec1ec8fd837
-    parent: {fileID: 11446912}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11402326}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11415704
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 141626}
-    parent: {fileID: 11446912}
-    mode: 0
-    path: /Gravity/Main/Gravity/Gravity/Used/Target
-  usage: 0
-  path: Gravity/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: Gravity/Used
-    id: -36868/64f4c9fd-f24b-4213-944f-29303689496b
-    localID: 64f4c9fd-f24b-4213-944f-29303689496b
-    parent: {fileID: 11446912}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11415704}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!114 &11416064
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -226,381 +106,34 @@ MonoBehaviour:
     info:
       name: Scale
       path: Scale
-      id: -36838/d7a2b325-d5ca-40ef-8232-1dfe646d6d5d
+      fullPath: Gravity/@Settings/Scale
+      id: -89332/d7a2b325-d5ca-40ef-8232-1dfe646d6d5d
       localID: d7a2b325-d5ca-40ef-8232-1dfe646d6d5d
       parent: {fileID: 11416064}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11455548}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 137866}
+          parent: {fileID: 11416064}
+          mode: 0
+          path: /Gravity/@Settings/Scale/Scale/Target
+        usage: 0
+        path: /Gravity/@Settings/Attribute Float Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 1
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   remember: 0
---- !u!114 &11420236
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 141626}
-    parent: {fileID: 11442354}
-    mode: 0
-    path: /Gravity/Main/Force/Force/Amount/X/Target
-  usage: 0
-  path: Force/Amount/X/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: X
-    path: Force/Amount/X
-    id: -36862/bd25dd61-5d28-4b4a-9078-39e9f77e6663
-    localID: bd25dd61-5d28-4b4a-9078-39e9f77e6663
-    parent: {fileID: 11442354}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11420236}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11425776
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 137866}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Game Object Data
-  target:
-    search: ../../../Visuals
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 11464012}
-    mode: 0
-    path: /Gravity/@Settings/Visuals/Visuals/Target
-  usage: 1
-  path: Visuals/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Visuals
-    path: Visuals
-    id: -36874/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
-    localID: 33bddd78-c7f6-40fe-94d8-1637fbd7fa73
-    parent: {fileID: 11464012}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11425776}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {fileID: 0}
---- !u!114 &11426278
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Game Object Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 137866}
-    parent: {fileID: 11442354}
-    mode: 0
-    path: /Gravity/Main/Force/Force/Target/Target
-  usage: 1
-  path: Force/Target/0
-  referenceID: -36894/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
-  referencePath: Source
-  attribute:
-    name: Target
-    path: Force/Target
-    id: -36862/14e37c55-d55a-4024-9a8e-878560a379d5
-    localID: 14e37c55-d55a-4024-9a8e-878560a379d5
-    parent: {fileID: 11442354}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11426278}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {fileID: 149164}
---- !u!114 &11429874
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 137866}
-    parent: {fileID: 11442354}
-    mode: 0
-    path: /Gravity/Main/Force/Force/Amount/Target
-  usage: 1
-  path: Force/Amount/1
-  referenceID: -36838/d7a2b325-d5ca-40ef-8232-1dfe646d6d5d
-  referencePath: Scale
-  attribute:
-    name: Amount
-    path: Force/Amount
-    id: -36862/3e9cd8b0-ddeb-47b9-8886-071e70616ee4
-    localID: 3e9cd8b0-ddeb-47b9-8886-071e70616ee4
-    parent: {fileID: 11442354}
-    mode: 2
-    linkType: 0
-    oldData:
-    - {fileID: 11477412}
-    - {fileID: 11429874}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 2
-  special: 0
-  value: 0
---- !u!114 &11433846
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 141626}
-    parent: {fileID: 11442354}
-    mode: 0
-    path: /Gravity/Main/Force/Force/Amount/Z/Target
-  usage: 0
-  path: Force/Amount/Z/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Z
-    path: Force/Amount/Z
-    id: -36862/d33e4f0e-f645-4084-b156-cc82d39a8d32
-    localID: d33e4f0e-f645-4084-b156-cc82d39a8d32
-    parent: {fileID: 11442354}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11433846}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11434240
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 141626}
-    parent: {fileID: 11446912}
-    mode: 0
-    path: /Gravity/Main/Gravity/Gravity/External/Target
-  usage: 0
-  path: Gravity/External/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: External
-    path: Gravity/External
-    id: -36868/61472744-be9a-40b5-9d16-c225e1db8859
-    localID: 61472744-be9a-40b5-9d16-c225e1db8859
-    parent: {fileID: 11446912}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11434240}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11437082
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 141626}
-    parent: {fileID: 11442354}
-    mode: 0
-    path: /Gravity/Main/Force/Force/Used/Target
-  usage: 0
-  path: Force/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: Force/Used
-    id: -36862/60958405-1aa1-4e2a-8f31-fc212dedc9e6
-    localID: 60958405-1aa1-4e2a-8f31-fc212dedc9e6
-    parent: {fileID: 11442354}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11437082}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!114 &11442354
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -623,39 +156,93 @@ MonoBehaviour:
     info:
       name: Usable
       path: Force/Usable
-      id: -36862/c1022c4c-6e0a-43bb-b0b0-6d5b12e09419
+      fullPath: Gravity/Main/Force/Usable
+      id: -89346/c1022c4c-6e0a-43bb-b0b0-6d5b12e09419
       localID: c1022c4c-6e0a-43bb-b0b0-6d5b12e09419
       parent: {fileID: 11442354}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11475030}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 141626}
+          parent: {fileID: 11442354}
+          mode: 0
+          path: /Gravity/Main/Force/Force/Usable/Target
+        usage: 0
+        path: /Gravity/Main/Attribute Bool Data B
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
       path: Force/Active
-      id: -36862/dba719e1-bfbe-410b-8207-62cc8b190038
-      localID: dba719e1-bfbe-410b-8207-62cc8b190038
+      fullPath: Gravity/Main/Force/Active
+      id: -89346/309e281d-dd3f-4fa3-9279-2bcb39ab651c
+      localID: 309e281d-dd3f-4fa3-9279-2bcb39ab651c
       parent: {fileID: 11442354}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11499792}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: Gravity/Main/Force/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
       path: Force/Used
-      id: -36862/60958405-1aa1-4e2a-8f31-fc212dedc9e6
+      fullPath: Gravity/Main/Force/Used
+      id: -89346/60958405-1aa1-4e2a-8f31-fc212dedc9e6
       localID: 60958405-1aa1-4e2a-8f31-fc212dedc9e6
       parent: {fileID: 11442354}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11437082}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 141626}
+          parent: {fileID: 11442354}
+          mode: 0
+          path: /Gravity/Main/Force/Force/Used/Target
+        usage: 0
+        path: /Gravity/Main/Attribute Bool Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   type: 0
@@ -664,120 +251,172 @@ MonoBehaviour:
     info:
       name: Target
       path: Force/Target
-      id: -36862/14e37c55-d55a-4024-9a8e-878560a379d5
+      fullPath: Gravity/Main/Force/Target
+      id: -89346/14e37c55-d55a-4024-9a8e-878560a379d5
       localID: 14e37c55-d55a-4024-9a8e-878560a379d5
       parent: {fileID: 11442354}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11426278}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 137866}
+          parent: {fileID: 11442354}
+          mode: 0
+          path: /Gravity/Main/Force/Force/Target/Target
+        usage: 1
+        path: /Gravity/Main/Attribute Game Object Data
+        referenceID: -36894/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+        referencePath: Source
+        operation: 0
+        special: 0
+        rawValue: /Gravity/
+        rawType: Zios.AttributeGameObjectData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   amount:
     info:
       name: Amount
       path: Force/Amount
-      id: -36862/3e9cd8b0-ddeb-47b9-8886-071e70616ee4
+      fullPath: Gravity/Main/Force/Amount
+      id: -89346/3e9cd8b0-ddeb-47b9-8886-071e70616ee4
       localID: 3e9cd8b0-ddeb-47b9-8886-071e70616ee4
       parent: {fileID: 11442354}
       mode: 2
       linkType: 0
       oldData:
-      - {fileID: 11477412}
-      - {fileID: 11429874}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 141626}
+          parent: {fileID: 11442354}
+          mode: 0
+          path: /Gravity/Main/Force/Force/Amount/Target
+        usage: 0
+        path: /Gravity/Main/Attribute Vector3Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: (0.0, -9.8, 0.0)
+        rawType: Zios.AttributeVector3Data
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 137866}
+          parent: {fileID: 11442354}
+          mode: 0
+          path: /Gravity/Main/Force/Force/Amount/Target
+        usage: 1
+        path: /Gravity/Main/Attribute Float Data
+        referenceID: -36838/d7a2b325-d5ca-40ef-8232-1dfe646d6d5d
+        referencePath: Scale
+        operation: 2
+        special: 0
+        rawValue: 0
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
     x:
       info:
         name: X
         path: Force/Amount/X
-        id: -36862/bd25dd61-5d28-4b4a-9078-39e9f77e6663
+        fullPath: Gravity/Main/Force/Amount/X
+        id: -89346/bd25dd61-5d28-4b4a-9078-39e9f77e6663
         localID: bd25dd61-5d28-4b4a-9078-39e9f77e6663
         parent: {fileID: 11442354}
         mode: 0
         linkType: 0
         oldData:
-        - {fileID: 11420236}
+        - target:
+            search: '[Self]'
+            directObject: {fileID: 0}
+            searchObject: {fileID: 141626}
+            parent: {fileID: 11442354}
+            mode: 0
+            path: /Gravity/Main/Force/Force/Amount/X/Target
+          usage: 0
+          path: /Gravity/Main/Attribute Float Data B
+          referenceID: 
+          referencePath: 
+          operation: 0
+          special: 0
+          rawValue: 0
+          rawType: Zios.AttributeFloatData
+        oldDataB: []
+        oldDataC: []
+        oldData: []
         oldDataB: []
         oldDataC: []
     y:
       info:
         name: Y
         path: Force/Amount/Y
-        id: -36862/b569b5af-97dd-4fe2-8f7c-c81afc0b8910
+        fullPath: Gravity/Main/Force/Amount/Y
+        id: -89346/b569b5af-97dd-4fe2-8f7c-c81afc0b8910
         localID: b569b5af-97dd-4fe2-8f7c-c81afc0b8910
         parent: {fileID: 11442354}
         mode: 0
         linkType: 0
         oldData:
-        - {fileID: 11464348}
+        - target:
+            search: '[Self]'
+            directObject: {fileID: 0}
+            searchObject: {fileID: 141626}
+            parent: {fileID: 11442354}
+            mode: 0
+            path: /Gravity/Main/Force/Force/Amount/Y/Target
+          usage: 0
+          path: /Gravity/Main/Attribute Float Data C
+          referenceID: 
+          referencePath: 
+          operation: 0
+          special: 0
+          rawValue: 0
+          rawType: Zios.AttributeFloatData
+        oldDataB: []
+        oldDataC: []
+        oldData: []
         oldDataB: []
         oldDataC: []
     z:
       info:
         name: Z
         path: Force/Amount/Z
-        id: -36862/d33e4f0e-f645-4084-b156-cc82d39a8d32
+        fullPath: Gravity/Main/Force/Amount/Z
+        id: -89346/d33e4f0e-f645-4084-b156-cc82d39a8d32
         localID: d33e4f0e-f645-4084-b156-cc82d39a8d32
         parent: {fileID: 11442354}
         mode: 0
         linkType: 0
         oldData:
-        - {fileID: 11433846}
+        - target:
+            search: '[Self]'
+            directObject: {fileID: 0}
+            searchObject: {fileID: 141626}
+            parent: {fileID: 11442354}
+            mode: 0
+            path: /Gravity/Main/Force/Force/Amount/Z/Target
+          usage: 0
+          path: /Gravity/Main/Attribute Float Data D
+          referenceID: 
+          referencePath: 
+          operation: 0
+          special: 0
+          rawValue: 0
+          rawType: Zios.AttributeFloatData
         oldDataB: []
         oldDataC: []
---- !u!114 &11443930
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 141626}
-    parent: {fileID: 11446912}
-    mode: 0
-    path: /Gravity/Main/Gravity/Gravity/Usable/Target
-  usage: 0
-  path: Gravity/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: Gravity/Usable
-    id: -36868/d2c2dfd4-dcc5-4bd1-9511-6bd90e529f90
-    localID: d2c2dfd4-dcc5-4bd1-9511-6bd90e529f90
-    parent: {fileID: 11446912}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11443930}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
+        oldData: []
+        oldDataB: []
+        oldDataC: []
 --- !u!114 &11446912
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -800,39 +439,93 @@ MonoBehaviour:
     info:
       name: Usable
       path: Gravity/Usable
-      id: -36868/d2c2dfd4-dcc5-4bd1-9511-6bd90e529f90
+      fullPath: Gravity/Main/Gravity/Usable
+      id: -89344/d2c2dfd4-dcc5-4bd1-9511-6bd90e529f90
       localID: d2c2dfd4-dcc5-4bd1-9511-6bd90e529f90
       parent: {fileID: 11446912}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11443930}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 141626}
+          parent: {fileID: 11446912}
+          mode: 0
+          path: /Gravity/Main/Gravity/Gravity/Usable/Target
+        usage: 0
+        path: /Gravity/Main/Old Attribute Bool Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: True
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
       path: Gravity/Active
-      id: -36868/fc83a691-e36c-4465-8478-8ec1ec8fd837
-      localID: fc83a691-e36c-4465-8478-8ec1ec8fd837
+      fullPath: Gravity/Main/Gravity/Active
+      id: -89344/ba99dd9d-6b98-43d9-9328-8c1432cc0fd1
+      localID: ba99dd9d-6b98-43d9-9328-8c1432cc0fd1
       parent: {fileID: 11446912}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11402326}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: Gravity/Main/Gravity/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
       path: Gravity/Used
-      id: -36868/64f4c9fd-f24b-4213-944f-29303689496b
+      fullPath: Gravity/Main/Gravity/Used
+      id: -89344/64f4c9fd-f24b-4213-944f-29303689496b
       localID: 64f4c9fd-f24b-4213-944f-29303689496b
       parent: {fileID: 11446912}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11415704}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 141626}
+          parent: {fileID: 11446912}
+          mode: 0
+          path: /Gravity/Main/Gravity/Gravity/Used/Target
+        usage: 0
+        path: /Gravity/Main/Old Attribute Bool Data C
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   table:
@@ -923,70 +616,36 @@ MonoBehaviour:
     info:
       name: External
       path: Gravity/External
-      id: -36868/61472744-be9a-40b5-9d16-c225e1db8859
+      fullPath: Gravity/Main/Gravity/External
+      id: -89344/61472744-be9a-40b5-9d16-c225e1db8859
       localID: 61472744-be9a-40b5-9d16-c225e1db8859
       parent: {fileID: 11446912}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11434240}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 141626}
+          parent: {fileID: 11446912}
+          mode: 0
+          path: /Gravity/Main/Gravity/Gravity/External/Target
+        usage: 0
+        path: /Gravity/Main/Old Attribute Bool Data D
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: True
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   scripts:
   - {fileID: 11446912}
   - {fileID: 11442354}
---- !u!114 &11455548
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 137866}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 137866}
-    parent: {fileID: 11416064}
-    mode: 0
-    path: /Gravity/@Settings/Scale/Scale/Target
-  usage: 0
-  path: Scale/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Scale
-    path: Scale
-    id: -36838/d7a2b325-d5ca-40ef-8232-1dfe646d6d5d
-    localID: d7a2b325-d5ca-40ef-8232-1dfe646d6d5d
-    parent: {fileID: 11416064}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11455548}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
 --- !u!114 &11464012
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1005,225 +664,34 @@ MonoBehaviour:
     info:
       name: Visuals
       path: Visuals
-      id: -36874/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+      fullPath: Gravity/@Settings/Visuals
+      id: -89336/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
       localID: 33bddd78-c7f6-40fe-94d8-1637fbd7fa73
       parent: {fileID: 11464012}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11425776}
+      - target:
+          search: ../../../Visuals
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 11464012}
+          mode: 0
+          path: /Gravity/@Settings/Visuals/Visuals/Target
+        usage: 1
+        path: /Gravity/@Settings/Attribute Game Object Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeGameObjectData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   remember: 0
---- !u!114 &11464348
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 141626}
-    parent: {fileID: 11442354}
-    mode: 0
-    path: /Gravity/Main/Force/Force/Amount/Y/Target
-  usage: 0
-  path: Force/Amount/Y/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Y
-    path: Force/Amount/Y
-    id: -36862/b569b5af-97dd-4fe2-8f7c-c81afc0b8910
-    localID: b569b5af-97dd-4fe2-8f7c-c81afc0b8910
-    parent: {fileID: 11442354}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11464348}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11475030
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 141626}
-    parent: {fileID: 11442354}
-    mode: 0
-    path: /Gravity/Main/Force/Force/Usable/Target
-  usage: 0
-  path: Force/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: Force/Usable
-    id: -36862/c1022c4c-6e0a-43bb-b0b0-6d5b12e09419
-    localID: c1022c4c-6e0a-43bb-b0b0-6d5b12e09419
-    parent: {fileID: 11442354}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11475030}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11477412
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83639dc7708e9ad4584145044a83425d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Vector3Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 141626}
-    parent: {fileID: 11442354}
-    mode: 0
-    path: /Gravity/Main/Force/Force/Amount/Target
-  usage: 0
-  path: Force/Amount/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Amount
-    path: Force/Amount
-    id: -36862/3e9cd8b0-ddeb-47b9-8886-071e70616ee4
-    localID: 3e9cd8b0-ddeb-47b9-8886-071e70616ee4
-    parent: {fileID: 11442354}
-    mode: 2
-    linkType: 0
-    oldData:
-    - {fileID: 11477412}
-    - {fileID: 11429874}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {x: 0, y: -9.80000019, z: 0}
---- !u!114 &11484414
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 137866}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Game Object Data
-  target:
-    search: ../../..
-    directObject: {fileID: 0}
-    searchObject: {fileID: 149164}
-    parent: {fileID: 11493890}
-    mode: 0
-    path: /Gravity/@Settings/Source/Source/Target
-  usage: 1
-  path: Source/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Source
-    path: Source
-    id: -36894/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
-    localID: 0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
-    parent: {fileID: 11493890}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11484414}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {fileID: 0}
 --- !u!114 &11493890
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1242,68 +710,34 @@ MonoBehaviour:
     info:
       name: Source
       path: Source
-      id: -36894/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+      fullPath: Gravity/@Settings/Source
+      id: -89334/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
       localID: 0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
       parent: {fileID: 11493890}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11484414}
+      - target:
+          search: ../../..
+          directObject: {fileID: 0}
+          searchObject: {fileID: 149164}
+          parent: {fileID: 11493890}
+          mode: 0
+          path: /Gravity/@Settings/Source/Source/Target
+        usage: 1
+        path: /Gravity/@Settings/Attribute Game Object Data B
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeGameObjectData
       oldDataB: []
       oldDataC: []
-  remember: 0
---- !u!114 &11499792
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 141626}
-    parent: {fileID: 11442354}
-    mode: 0
-    path: /Gravity/Main/Force/Force/Active/Target
-  usage: 0
-  path: Force/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: Force/Active
-    id: -36862/dba719e1-bfbe-410b-8207-62cc8b190038
-    localID: dba719e1-bfbe-410b-8207-62cc8b190038
-    parent: {fileID: 11442354}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11499792}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
       oldData: []
       oldDataB: []
       oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
+  remember: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

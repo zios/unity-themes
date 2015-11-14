@@ -5,6 +5,7 @@ namespace Zios{
 		public string value;
 		public override AttributeData Convert(){
 			var data = new AttributeStringData();
+			data.value = this.value;
 			data.rawValue = this.value.ToString();
 			data.rawType = typeof(AttributeStringData).FullName;
 			return data;

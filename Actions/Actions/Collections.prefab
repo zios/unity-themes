@@ -10,8 +10,6 @@ GameObject:
   - 4: {fileID: 438744}
   - 114: {fileID: 11460264}
   - 114: {fileID: 11488328}
-  - 114: {fileID: 11483646}
-  - 114: {fileID: 11475112}
   m_Layer: 0
   m_Name: Orb Collection
   m_TagString: Untagged
@@ -77,120 +75,34 @@ MonoBehaviour:
     info:
       name: Collecting
       path: Collecting
-      id: -62028/749bc210-bbe9-4610-b588-573a874668e1
+      fullPath: Collections/Orb Collection/Collecting
+      id: -88868/749bc210-bbe9-4610-b588-573a874668e1
       localID: 749bc210-bbe9-4610-b588-573a874668e1
       parent: {fileID: 11460264}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11483646}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 11460264}
+          mode: 0
+          path: /Collections/Orb Collection/Collecting/Collecting/Target
+        usage: 0
+        path: /Collections/Orb Collection/Attribute Bool Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   remember: 0
---- !u!114 &11475112
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 121072}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5727155cfe6a2644aa866faeb7cc058e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Int Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 11488328}
-    mode: 0
-    path: /Collections/Orb Collection/Items Collected/Items Collected/Target
-  usage: 0
-  path: Items Collected/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Items Collected
-    path: Items Collected
-    id: -62030/a7c702bc-b570-4078-8b66-7a93deacde4c
-    localID: a7c702bc-b570-4078-8b66-7a93deacde4c
-    parent: {fileID: 11488328}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11475112}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11483646
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 121072}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 11460264}
-    mode: 0
-    path: /Collections/Orb Collection/Collecting/Collecting/Target
-  usage: 0
-  path: Collecting/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Collecting
-    path: Collecting
-    id: -62028/749bc210-bbe9-4610-b588-573a874668e1
-    localID: 749bc210-bbe9-4610-b588-573a874668e1
-    parent: {fileID: 11460264}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11483646}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!114 &11488328
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -209,13 +121,31 @@ MonoBehaviour:
     info:
       name: Items Collected
       path: Items Collected
-      id: -62030/a7c702bc-b570-4078-8b66-7a93deacde4c
+      fullPath: Collections/Orb Collection/Items Collected
+      id: -88870/a7c702bc-b570-4078-8b66-7a93deacde4c
       localID: a7c702bc-b570-4078-8b66-7a93deacde4c
       parent: {fileID: 11488328}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11475112}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 11488328}
+          mode: 0
+          path: /Collections/Orb Collection/Items Collected/Items Collected/Target
+        usage: 0
+        path: /Collections/Orb Collection/Attribute Int Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 0
+        rawType: Zios.AttributeIntData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   remember: 0

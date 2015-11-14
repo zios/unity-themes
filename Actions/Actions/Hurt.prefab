@@ -25,40 +25,9 @@ GameObject:
   - 4: {fileID: 417756}
   - 114: {fileID: 11495978}
   - 114: {fileID: 11496146}
-  - 114: {fileID: 11451142}
-  - 114: {fileID: 11467068}
-  - 114: {fileID: 11435012}
-  - 114: {fileID: 11499498}
-  - 114: {fileID: 11433772}
-  - 114: {fileID: 11445576}
-  - 114: {fileID: 11481392}
   - 114: {fileID: 11490038}
-  - 114: {fileID: 11478084}
-  - 114: {fileID: 11447554}
-  - 114: {fileID: 11463156}
-  - 114: {fileID: 11410222}
-  - 114: {fileID: 11499330}
-  - 114: {fileID: 11474480}
-  - 114: {fileID: 11419866}
-  - 114: {fileID: 11417108}
   - 114: {fileID: 11478524}
-  - 114: {fileID: 11464154}
-  - 114: {fileID: 11468684}
-  - 114: {fileID: 11452426}
-  - 114: {fileID: 11410594}
-  - 114: {fileID: 11482234}
-  - 114: {fileID: 11487504}
   - 114: {fileID: 11497232}
-  - 114: {fileID: 11469578}
-  - 114: {fileID: 11463590}
-  - 114: {fileID: 11412882}
-  - 114: {fileID: 11446696}
-  - 114: {fileID: 11431970}
-  - 114: {fileID: 11439444}
-  - 114: {fileID: 11408720}
-  - 114: {fileID: 11437372}
-  - 114: {fileID: 11486766}
-  - 114: {fileID: 11461842}
   m_Layer: 0
   m_Name: Main
   m_TagString: Untagged
@@ -78,14 +47,8 @@ GameObject:
   - 114: {fileID: 11438374}
   - 114: {fileID: 11426186}
   - 114: {fileID: 11401886}
-  - 114: {fileID: 11418022}
-  - 114: {fileID: 11451232}
-  - 114: {fileID: 11415852}
-  - 114: {fileID: 11459950}
   - 114: {fileID: 11421462}
-  - 114: {fileID: 11446332}
   - 114: {fileID: 11405560}
-  - 114: {fileID: 11458246}
   m_Layer: 0
   m_Name: '@Settings'
   m_TagString: Untagged
@@ -142,20 +105,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e8a46b59a6b8eb489e122ad5fdef015, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /Hurt (1)/@Settings/
-  path: /Hurt (1)/@Settings/Visuals
+  parentPath: /Hurt/@Settings/
+  path: /Hurt/@Settings/Visuals
   alias: Visuals
   value:
     info:
       name: Visuals
       path: Visuals
-      id: -37584/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+      fullPath: Hurt/@Settings/Visuals
+      id: -89394/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
       localID: 33bddd78-c7f6-40fe-94d8-1637fbd7fa73
       parent: {fileID: 11401886}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11415852}
+      - target:
+          search: ../../../../Visuals
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 11401886}
+          mode: 0
+          path: /Hurt (1)/@Settings/Visuals/Visuals/Target
+        usage: 1
+        path: /Hurt/@Settings/Attribute Game Object Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeGameObjectData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   remember: 0
@@ -170,20 +151,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15dc630d7daaf4548bf1d099b9be1324, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /Hurt (1)/@Settings/
-  path: /Hurt (1)/@Settings/Animation
+  parentPath: /Hurt/@Settings/
+  path: /Hurt/@Settings/Animation
   alias: Animation
   value:
     info:
       name: Animation
       path: Animation
-      id: -37586/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
+      fullPath: Hurt/@Settings/Animation
+      id: -89388/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
       localID: 7e894ef6-a99f-450f-b42a-e1aa6c29abb9
       parent: {fileID: 11404472}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11459950}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 190592}
+          parent: {fileID: 11404472}
+          mode: 0
+          path: /Hurt (1)/@Settings/Animation/Animation/Target
+        usage: 0
+        path: /Hurt/@Settings/Attribute String Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: Hurt
+        rawType: Zios.AttributeStringData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   remember: 0
@@ -198,439 +197,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73460de1a42c5d64884ae83214747f38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /Hurt (1)/@Settings/
-  path: /Hurt (1)/@Settings/Duration
+  parentPath: /Hurt/@Settings/
+  path: /Hurt/@Settings/Duration
   alias: Duration
   value:
     info:
       name: Duration
       path: Duration
-      id: -37588/21536505-299e-4d76-89cd-91090c83fb08
+      fullPath: Hurt/@Settings/Duration
+      id: -89408/21536505-299e-4d76-89cd-91090c83fb08
       localID: 21536505-299e-4d76-89cd-91090c83fb08
       parent: {fileID: 11405560}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11458246}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 190592}
+          parent: {fileID: 11405560}
+          mode: 0
+          path: /Hurt (1)/@Settings/Duration/Duration/Target
+        usage: 0
+        path: /Hurt/@Settings/Attribute Float Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 2
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   remember: 0
---- !u!114 &11408720
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 187420}
-    parent: {fileID: 11495978}
-    mode: 0
-    path: /Hurt (1)/Main/Hurt (1)/Hurt (1)/Usable/Target
-  usage: 0
-  path: Hurt (1)/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: Hurt (1)/Usable
-    id: -37708/a434e297-6ea8-44ea-98d5-9f70d155d27c
-    localID: a434e297-6ea8-44ea-98d5-9f70d155d27c
-    parent: {fileID: 11495978}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11408720}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11410222
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Game Object Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 190592}
-    parent: {fileID: 11490038}
-    mode: 0
-    path: /Hurt (1)/Main/Knockback Force/Knockback Force/Target/Target
-  usage: 1
-  path: Knockback Force/Target/0
-  referenceID: -37628/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
-  referencePath: Source
-  attribute:
-    name: Target
-    path: Knockback Force/Target
-    id: -37704/30aa99ca-29da-472e-9c8b-7f9283787689
-    localID: 30aa99ca-29da-472e-9c8b-7f9283787689
-    parent: {fileID: 11490038}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11410222}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {fileID: 0}
---- !u!114 &11410594
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 187420}
-    parent: {fileID: 11478524}
-    mode: 0
-    path: /Hurt (1)/Main/Damage Prepare/Damage Prepare/Used/Target
-  usage: 0
-  path: Damage Prepare/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: Damage Prepare/Used
-    id: -37694/3ea2aeed-dbb5-42da-83dd-3be2cb9e14d1
-    localID: 3ea2aeed-dbb5-42da-83dd-3be2cb9e14d1
-    parent: {fileID: 11478524}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11410594}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11412882
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 190592}
-    parent: {fileID: 11497232}
-    mode: 0
-    path: /Hurt (1)/Main/Damage Duration/Damage Duration/Seconds/Target
-  usage: 1
-  path: Damage Duration/Seconds/0
-  referenceID: -37588/21536505-299e-4d76-89cd-91090c83fb08
-  referencePath: Duration
-  attribute:
-    name: Seconds
-    path: Damage Duration/Seconds
-    id: -37714/41ddd285-14d9-4f38-80bc-eae00a54bc38
-    localID: 41ddd285-14d9-4f38-80bc-eae00a54bc38
-    parent: {fileID: 11497232}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11412882}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11415852
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Game Object Data
-  target:
-    search: ../../../../Visuals
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 11401886}
-    mode: 0
-    path: /Hurt (1)/@Settings/Visuals/Visuals/Target
-  usage: 1
-  path: Visuals/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Visuals
-    path: Visuals
-    id: -37584/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
-    localID: 33bddd78-c7f6-40fe-94d8-1637fbd7fa73
-    parent: {fileID: 11401886}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11415852}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {fileID: 0}
---- !u!114 &11417108
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 187420}
-    parent: {fileID: 11490038}
-    mode: 0
-    path: /Hurt (1)/Main/Knockback Force/Knockback Force/Amount/Z/Target
-  usage: 0
-  path: Knockback Force/Amount/Z/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Z
-    path: Knockback Force/Amount/Z
-    id: -37704/77fb3c8a-19ba-40c2-82d0-1885cfd8f2e7
-    localID: 77fb3c8a-19ba-40c2-82d0-1885cfd8f2e7
-    parent: {fileID: 11490038}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11417108}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11418022
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 190592}
-    parent: {fileID: 11426186}
-    mode: 0
-    path: /Hurt (1)/@Settings/Timer/Timer/Target
-  usage: 0
-  path: Timer/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Timer
-    path: Timer
-    id: -37616/36e06670-e99b-4c51-a366-51346402a31d
-    localID: 36e06670-e99b-4c51-a366-51346402a31d
-    parent: {fileID: 11426186}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11418022}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: .219999999
---- !u!114 &11419866
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 187420}
-    parent: {fileID: 11490038}
-    mode: 0
-    path: /Hurt (1)/Main/Knockback Force/Knockback Force/Amount/Y/Target
-  usage: 0
-  path: Knockback Force/Amount/Y/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Y
-    path: Knockback Force/Amount/Y
-    id: -37704/4c9c283e-967e-4f52-b44d-7b46f557908b
-    localID: 4c9c283e-967e-4f52-b44d-7b46f557908b
-    parent: {fileID: 11490038}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11419866}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!114 &11421462
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -642,20 +243,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73460de1a42c5d64884ae83214747f38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /Hurt (1)/@Settings/
-  path: /Hurt (1)/@Settings/Animation Speed
+  parentPath: /Hurt/@Settings/
+  path: /Hurt/@Settings/Animation Speed
   alias: Animation Speed
   value:
     info:
       name: Animation Speed
       path: Animation Speed
-      id: -37614/ec51a466-34a5-486c-9fbf-4e55a0f2341a
+      fullPath: Hurt/@Settings/Animation Speed
+      id: -89404/ec51a466-34a5-486c-9fbf-4e55a0f2341a
       localID: ec51a466-34a5-486c-9fbf-4e55a0f2341a
       parent: {fileID: 11421462}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11446332}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 190592}
+          parent: {fileID: 11421462}
+          mode: 0
+          path: /Hurt (1)/@Settings/Animation Speed/Animation Speed/Target
+        usage: 0
+        path: /Hurt/@Settings/Attribute Float Data C
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 1
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   remember: 0
@@ -670,231 +289,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73460de1a42c5d64884ae83214747f38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /Hurt (1)/@Settings/
-  path: /Hurt (1)/@Settings/Timer
+  parentPath: /Hurt/@Settings/
+  path: /Hurt/@Settings/Timer
   alias: Timer
   value:
     info:
       name: Timer
       path: Timer
-      id: -37616/36e06670-e99b-4c51-a366-51346402a31d
+      fullPath: Hurt/@Settings/Timer
+      id: -89392/36e06670-e99b-4c51-a366-51346402a31d
       localID: 36e06670-e99b-4c51-a366-51346402a31d
       parent: {fileID: 11426186}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11418022}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 190592}
+          parent: {fileID: 11426186}
+          mode: 0
+          path: /Hurt (1)/@Settings/Timer/Timer/Target
+        usage: 0
+        path: /Hurt/@Settings/Attribute Float Data B
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 0.22
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   remember: 0
---- !u!114 &11431970
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 187420}
-    parent: {fileID: 11497232}
-    mode: 0
-    path: /Hurt (1)/Main/Damage Duration/Damage Duration/Active/Target
-  usage: 0
-  path: Damage Duration/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: Damage Duration/Active
-    id: -37714/f46bdcb6-cf32-41f8-9a27-3b3725cb8006
-    localID: f46bdcb6-cf32-41f8-9a27-3b3725cb8006
-    parent: {fileID: 11497232}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11431970}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11433772
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 187420}
-    parent: {fileID: 11496146}
-    mode: 0
-    path: /Hurt (1)/Main/Damage Animation/Damage Animation/Weight/Target
-  usage: 0
-  path: Damage Animation/Weight/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Weight
-    path: Damage Animation/Weight
-    id: -37710/6dc76b7e-8264-4551-8778-9b937f8d4248
-    localID: 6dc76b7e-8264-4551-8778-9b937f8d4248
-    parent: {fileID: 11496146}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11433772}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11435012
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 187420}
-    parent: {fileID: 11496146}
-    mode: 0
-    path: /Hurt (1)/Main/Damage Animation/Damage Animation/Used/Target
-  usage: 0
-  path: Damage Animation/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: Damage Animation/Used
-    id: -37710/7b2a7695-5ad5-4171-b9cf-35c04924a8ba
-    localID: 7b2a7695-5ad5-4171-b9cf-35c04924a8ba
-    parent: {fileID: 11496146}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11435012}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11437372
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 187420}
-    parent: {fileID: 11495978}
-    mode: 0
-    path: /Hurt (1)/Main/Hurt (1)/Hurt (1)/Active/Target
-  usage: 0
-  path: Hurt (1)/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: Hurt (1)/Active
-    id: -37708/fd67decf-bddf-482e-aede-96661978eade
-    localID: fd67decf-bddf-482e-aede-96661978eade
-    parent: {fileID: 11495978}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11437372}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!114 &11438374
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -906,1014 +335,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e8a46b59a6b8eb489e122ad5fdef015, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /Hurt (1)/@Settings/
-  path: /Hurt (1)/@Settings/Source
+  parentPath: /Hurt/@Settings/
+  path: /Hurt/@Settings/Source
   alias: Source
   value:
     info:
       name: Source
       path: Source
-      id: -37628/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+      fullPath: Hurt/@Settings/Source
+      id: -89390/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
       localID: 0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
       parent: {fileID: 11438374}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11451232}
+      - target:
+          search: ../../../..
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 11438374}
+          mode: 0
+          path: /Hurt (1)/@Settings/Source/Source/Target
+        usage: 1
+        path: /Hurt/@Settings/Attribute Game Object Data B
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeGameObjectData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   remember: 0
---- !u!114 &11439444
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 187420}
-    parent: {fileID: 11497232}
-    mode: 0
-    path: /Hurt (1)/Main/Damage Duration/Damage Duration/Usable/Target
-  usage: 0
-  path: Damage Duration/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: Damage Duration/Usable
-    id: -37714/3f6545a7-db97-4462-aa06-0c8d7f177c0f
-    localID: 3f6545a7-db97-4462-aa06-0c8d7f177c0f
-    parent: {fileID: 11497232}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11439444}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11445576
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Game Object Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 190592}
-    parent: {fileID: 11496146}
-    mode: 0
-    path: /Hurt (1)/Main/Damage Animation/Damage Animation/Target/Target
-  usage: 1
-  path: Damage Animation/Target/0
-  referenceID: -37584/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
-  referencePath: Visuals
-  attribute:
-    name: Target
-    path: Damage Animation/Target
-    id: -37710/929fa23f-bb73-4896-a360-319f0be2fe7d
-    localID: 929fa23f-bb73-4896-a360-319f0be2fe7d
-    parent: {fileID: 11496146}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11445576}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {fileID: 0}
---- !u!114 &11446332
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 190592}
-    parent: {fileID: 11421462}
-    mode: 0
-    path: /Hurt (1)/@Settings/Animation Speed/Animation Speed/Target
-  usage: 0
-  path: Animation Speed/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Animation Speed
-    path: Animation Speed
-    id: -37614/ec51a466-34a5-486c-9fbf-4e55a0f2341a
-    localID: ec51a466-34a5-486c-9fbf-4e55a0f2341a
-    parent: {fileID: 11421462}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11446332}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11446696
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 187420}
-    parent: {fileID: 11497232}
-    mode: 0
-    path: /Hurt (1)/Main/Damage Duration/Damage Duration/Used/Target
-  usage: 0
-  path: Damage Duration/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: Damage Duration/Used
-    id: -37714/12f507e2-4382-4a65-803a-b388d9152314
-    localID: 12f507e2-4382-4a65-803a-b388d9152314
-    parent: {fileID: 11497232}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11446696}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11447554
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 187420}
-    parent: {fileID: 11490038}
-    mode: 0
-    path: /Hurt (1)/Main/Knockback Force/Knockback Force/Active/Target
-  usage: 0
-  path: Knockback Force/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: Knockback Force/Active
-    id: -37704/626d86bb-27da-40ca-a257-80d78d157de3
-    localID: 626d86bb-27da-40ca-a257-80d78d157de3
-    parent: {fileID: 11490038}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11447554}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11451142
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 187420}
-    parent: {fileID: 11496146}
-    mode: 0
-    path: /Hurt (1)/Main/Damage Animation/Damage Animation/Active/Target
-  usage: 0
-  path: Damage Animation/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: Damage Animation/Active
-    id: -37710/251dc569-644f-445d-9452-843638c3dd39
-    localID: 251dc569-644f-445d-9452-843638c3dd39
-    parent: {fileID: 11496146}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11451142}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11451232
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Game Object Data
-  target:
-    search: ../../../..
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 11438374}
-    mode: 0
-    path: /Hurt (1)/@Settings/Source/Source/Target
-  usage: 1
-  path: Source/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Source
-    path: Source
-    id: -37628/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
-    localID: 0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
-    parent: {fileID: 11438374}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11451232}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {fileID: 0}
---- !u!114 &11452426
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 190592}
-    parent: {fileID: 11478524}
-    mode: 0
-    path: /Hurt (1)/Main/Damage Prepare/Damage Prepare/Seconds/Target
-  usage: 1
-  path: Damage Prepare/Seconds/0
-  referenceID: -37616/36e06670-e99b-4c51-a366-51346402a31d
-  referencePath: Timer
-  attribute:
-    name: Seconds
-    path: Damage Prepare/Seconds
-    id: -37694/5dd312dc-0417-4122-a726-7efa128992bd
-    localID: 5dd312dc-0417-4122-a726-7efa128992bd
-    parent: {fileID: 11478524}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11452426}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: .219999999
---- !u!114 &11458246
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 190592}
-    parent: {fileID: 11405560}
-    mode: 0
-    path: /Hurt (1)/@Settings/Duration/Duration/Target
-  usage: 0
-  path: Duration/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Duration
-    path: Duration
-    id: -37588/21536505-299e-4d76-89cd-91090c83fb08
-    localID: 21536505-299e-4d76-89cd-91090c83fb08
-    parent: {fileID: 11405560}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11458246}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 2
---- !u!114 &11459950
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3e9984a5f3f19942be359930227796e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute String Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 190592}
-    parent: {fileID: 11404472}
-    mode: 0
-    path: /Hurt (1)/@Settings/Animation/Animation/Target
-  usage: 0
-  path: Animation/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Animation
-    path: Animation
-    id: -37586/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
-    localID: 7e894ef6-a99f-450f-b42a-e1aa6c29abb9
-    parent: {fileID: 11404472}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11459950}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: Hurt
-  characterLimit: 0
-  allowed: []
-  disallowed: []
---- !u!114 &11461842
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 187420}
-    parent: {fileID: 11495978}
-    mode: 0
-    path: /Hurt (1)/Main/Hurt (1)/Hurt (1)/External/Target
-  usage: 0
-  path: Hurt (1)/External/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: External
-    path: Hurt (1)/External
-    id: -37708/18ce8b85-bd04-43b3-a247-eafb2a47acf7
-    localID: 18ce8b85-bd04-43b3-a247-eafb2a47acf7
-    parent: {fileID: 11495978}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11461842}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11463156
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 187420}
-    parent: {fileID: 11490038}
-    mode: 0
-    path: /Hurt (1)/Main/Knockback Force/Knockback Force/Used/Target
-  usage: 0
-  path: Knockback Force/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: Knockback Force/Used
-    id: -37704/872eda80-2f43-4f6f-9ce1-f49af02824ff
-    localID: 872eda80-2f43-4f6f-9ce1-f49af02824ff
-    parent: {fileID: 11490038}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11463156}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11463590
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 187420}
-    parent: {fileID: 11497232}
-    mode: 0
-    path: /Hurt (1)/Main/Damage Duration/Damage Duration/Is Started/Target
-  usage: 0
-  path: Damage Duration/Is Started/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Is Started
-    path: Damage Duration/Is Started
-    id: -37714/f69b6229-d3f0-42a6-89ab-8f918fbb0fa8
-    localID: f69b6229-d3f0-42a6-89ab-8f918fbb0fa8
-    parent: {fileID: 11497232}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11463590}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11464154
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 187420}
-    parent: {fileID: 11478524}
-    mode: 0
-    path: /Hurt (1)/Main/Damage Prepare/Damage Prepare/Is Complete/Target
-  usage: 0
-  path: Damage Prepare/Is Complete/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Is Complete
-    path: Damage Prepare/Is Complete
-    id: -37694/2517cf2e-26ee-4d98-b938-039de2e4db5b
-    localID: 2517cf2e-26ee-4d98-b938-039de2e4db5b
-    parent: {fileID: 11478524}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11464154}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11467068
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 187420}
-    parent: {fileID: 11496146}
-    mode: 0
-    path: /Hurt (1)/Main/Damage Animation/Damage Animation/Usable/Target
-  usage: 0
-  path: Damage Animation/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: Damage Animation/Usable
-    id: -37710/855db985-26e1-4a7c-850c-5bb71aeebea0
-    localID: 855db985-26e1-4a7c-850c-5bb71aeebea0
-    parent: {fileID: 11496146}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11467068}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11468684
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 187420}
-    parent: {fileID: 11478524}
-    mode: 0
-    path: /Hurt (1)/Main/Damage Prepare/Damage Prepare/Is Started/Target
-  usage: 0
-  path: Damage Prepare/Is Started/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Is Started
-    path: Damage Prepare/Is Started
-    id: -37694/43749e1f-e8dd-4ff4-aa7c-b8f9297b6cce
-    localID: 43749e1f-e8dd-4ff4-aa7c-b8f9297b6cce
-    parent: {fileID: 11478524}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11468684}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11469578
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 187420}
-    parent: {fileID: 11497232}
-    mode: 0
-    path: /Hurt (1)/Main/Damage Duration/Damage Duration/Is Complete/Target
-  usage: 0
-  path: Damage Duration/Is Complete/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Is Complete
-    path: Damage Duration/Is Complete
-    id: -37714/ee77db0d-9b63-4a78-95eb-0ecdb6e09e9c
-    localID: ee77db0d-9b63-4a78-95eb-0ecdb6e09e9c
-    parent: {fileID: 11497232}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11469578}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11474480
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 187420}
-    parent: {fileID: 11490038}
-    mode: 0
-    path: /Hurt (1)/Main/Knockback Force/Knockback Force/Amount/X/Target
-  usage: 0
-  path: Knockback Force/Amount/X/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: X
-    path: Knockback Force/Amount/X
-    id: -37704/65264b99-a96f-4d4d-8e0a-1aa479c7360f
-    localID: 65264b99-a96f-4d4d-8e0a-1aa479c7360f
-    parent: {fileID: 11490038}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11474480}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11478084
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 187420}
-    parent: {fileID: 11490038}
-    mode: 0
-    path: /Hurt (1)/Main/Knockback Force/Knockback Force/Usable/Target
-  usage: 0
-  path: Knockback Force/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: Knockback Force/Usable
-    id: -37704/3b6aaba5-92f3-486a-ba5e-a355b372ec38
-    localID: 3b6aaba5-92f3-486a-ba5e-a355b372ec38
-    parent: {fileID: 11490038}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11478084}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!114 &11478524
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1925,8 +381,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb780ed64906f1944b7e8d65c34757d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /Hurt (1)/Main/
-  path: /Hurt (1)/Main/Damage Prepare
+  parentPath: /Hurt/Main/
+  path: /Hurt/Main/Damage Prepare
   alias: Damage Prepare
   rate: 1
   occurrence: 0
@@ -1936,39 +392,93 @@ MonoBehaviour:
     info:
       name: Usable
       path: Damage Prepare/Usable
-      id: -37694/7086f66a-1cc4-4327-a892-7ca7650f990d
+      fullPath: Hurt/Main/Damage Prepare/Usable
+      id: -89448/7086f66a-1cc4-4327-a892-7ca7650f990d
       localID: 7086f66a-1cc4-4327-a892-7ca7650f990d
       parent: {fileID: 11478524}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11487504}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 187420}
+          parent: {fileID: 11478524}
+          mode: 0
+          path: /Hurt (1)/Main/Damage Prepare/Damage Prepare/Usable/Target
+        usage: 0
+        path: /Hurt/Main/Attribute Bool Data L
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
       path: Damage Prepare/Active
-      id: -37694/503821bb-82d8-46b2-a6d3-18378c364f33
-      localID: 503821bb-82d8-46b2-a6d3-18378c364f33
+      fullPath: Hurt/Main/Damage Prepare/Active
+      id: -89448/ac45e28d-af3a-4d06-8d66-5ed9d5b6403f
+      localID: ac45e28d-af3a-4d06-8d66-5ed9d5b6403f
       parent: {fileID: 11478524}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11482234}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: Hurt/Main/Damage Prepare/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
       path: Damage Prepare/Used
-      id: -37694/3ea2aeed-dbb5-42da-83dd-3be2cb9e14d1
+      fullPath: Hurt/Main/Damage Prepare/Used
+      id: -89448/3ea2aeed-dbb5-42da-83dd-3be2cb9e14d1
       localID: 3ea2aeed-dbb5-42da-83dd-3be2cb9e14d1
       parent: {fileID: 11478524}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11410594}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 187420}
+          parent: {fileID: 11478524}
+          mode: 0
+          path: /Hurt (1)/Main/Damage Prepare/Damage Prepare/Used/Target
+        usage: 0
+        path: /Hurt/Main/Attribute Bool Data J
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   type: 0
@@ -1976,252 +486,95 @@ MonoBehaviour:
     info:
       name: Seconds
       path: Damage Prepare/Seconds
-      id: -37694/5dd312dc-0417-4122-a726-7efa128992bd
+      fullPath: Hurt/Main/Damage Prepare/Seconds
+      id: -89448/5dd312dc-0417-4122-a726-7efa128992bd
       localID: 5dd312dc-0417-4122-a726-7efa128992bd
       parent: {fileID: 11478524}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11452426}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 190592}
+          parent: {fileID: 11478524}
+          mode: 0
+          path: /Hurt (1)/Main/Damage Prepare/Damage Prepare/Seconds/Target
+        usage: 1
+        path: /Hurt/Main/Attribute Float Data G
+        referenceID: -37616/36e06670-e99b-4c51-a366-51346402a31d
+        referencePath: Timer
+        operation: 0
+        special: 0
+        rawValue: 0.22
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   isStarted:
     info:
       name: Is Started
       path: Damage Prepare/Is Started
-      id: -37694/43749e1f-e8dd-4ff4-aa7c-b8f9297b6cce
+      fullPath: Hurt/Main/Damage Prepare/Is Started
+      id: -89448/43749e1f-e8dd-4ff4-aa7c-b8f9297b6cce
       localID: 43749e1f-e8dd-4ff4-aa7c-b8f9297b6cce
       parent: {fileID: 11478524}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11468684}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 187420}
+          parent: {fileID: 11478524}
+          mode: 0
+          path: /Hurt (1)/Main/Damage Prepare/Damage Prepare/Is Started/Target
+        usage: 0
+        path: /Hurt/Main/Attribute Bool Data I
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   isComplete:
     info:
       name: Is Complete
       path: Damage Prepare/Is Complete
-      id: -37694/2517cf2e-26ee-4d98-b938-039de2e4db5b
+      fullPath: Hurt/Main/Damage Prepare/Is Complete
+      id: -89448/2517cf2e-26ee-4d98-b938-039de2e4db5b
       localID: 2517cf2e-26ee-4d98-b938-039de2e4db5b
       parent: {fileID: 11478524}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11464154}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 187420}
+          parent: {fileID: 11478524}
+          mode: 0
+          path: /Hurt (1)/Main/Damage Prepare/Damage Prepare/Is Complete/Target
+        usage: 0
+        path: /Hurt/Main/Attribute Bool Data H
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
---- !u!114 &11481392
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3e9984a5f3f19942be359930227796e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute String Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 190592}
-    parent: {fileID: 11496146}
-    mode: 0
-    path: /Hurt (1)/Main/Damage Animation/Damage Animation/Animation Name/Target
-  usage: 1
-  path: Damage Animation/Animation Name/0
-  referenceID: -37586/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
-  referencePath: Animation
-  attribute:
-    name: Animation Name
-    path: Damage Animation/Animation Name
-    id: -37710/db82c64b-dafe-45b1-9527-a91a22c9b686
-    localID: db82c64b-dafe-45b1-9527-a91a22c9b686
-    parent: {fileID: 11496146}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11481392}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
       oldData: []
       oldDataB: []
       oldDataC: []
-  operation: 0
-  special: 0
-  value: Hurt
-  characterLimit: 0
-  allowed: []
-  disallowed: []
---- !u!114 &11482234
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 187420}
-    parent: {fileID: 11478524}
-    mode: 0
-    path: /Hurt (1)/Main/Damage Prepare/Damage Prepare/Active/Target
-  usage: 0
-  path: Damage Prepare/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: Damage Prepare/Active
-    id: -37694/503821bb-82d8-46b2-a6d3-18378c364f33
-    localID: 503821bb-82d8-46b2-a6d3-18378c364f33
-    parent: {fileID: 11478524}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11482234}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11486766
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 187420}
-    parent: {fileID: 11495978}
-    mode: 0
-    path: /Hurt (1)/Main/Hurt (1)/Hurt (1)/Used/Target
-  usage: 0
-  path: Hurt (1)/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: Hurt (1)/Used
-    id: -37708/019e3b71-e87f-44cb-8db8-7a43c26ac433
-    localID: 019e3b71-e87f-44cb-8db8-7a43c26ac433
-    parent: {fileID: 11495978}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11486766}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11487504
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 187420}
-    parent: {fileID: 11478524}
-    mode: 0
-    path: /Hurt (1)/Main/Damage Prepare/Damage Prepare/Usable/Target
-  usage: 0
-  path: Damage Prepare/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: Damage Prepare/Usable
-    id: -37694/7086f66a-1cc4-4327-a892-7ca7650f990d
-    localID: 7086f66a-1cc4-4327-a892-7ca7650f990d
-    parent: {fileID: 11478524}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11487504}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!114 &11490038
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2233,8 +586,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4ba437929f5bca41b28abb66b9f3cd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /Hurt (1)/Main/
-  path: /Hurt (1)/Main/Knockback Force
+  parentPath: /Hurt/Main/
+  path: /Hurt/Main/Knockback Force
   alias: Knockback Force
   rate: 1
   occurrence: 0
@@ -2244,39 +597,93 @@ MonoBehaviour:
     info:
       name: Usable
       path: Knockback Force/Usable
-      id: -37704/3b6aaba5-92f3-486a-ba5e-a355b372ec38
+      fullPath: Hurt/Main/Knockback Force/Usable
+      id: -89430/3b6aaba5-92f3-486a-ba5e-a355b372ec38
       localID: 3b6aaba5-92f3-486a-ba5e-a355b372ec38
       parent: {fileID: 11490038}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11478084}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 187420}
+          parent: {fileID: 11490038}
+          mode: 0
+          path: /Hurt (1)/Main/Knockback Force/Knockback Force/Usable/Target
+        usage: 0
+        path: /Hurt/Main/Attribute Bool Data E
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
       path: Knockback Force/Active
-      id: -37704/626d86bb-27da-40ca-a257-80d78d157de3
-      localID: 626d86bb-27da-40ca-a257-80d78d157de3
+      fullPath: Hurt/Main/Knockback Force/Active
+      id: -89430/42cab651-6ab3-4fce-9cf9-581c545ea611
+      localID: 42cab651-6ab3-4fce-9cf9-581c545ea611
       parent: {fileID: 11490038}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11447554}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: Hurt/Main/Knockback Force/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
       path: Knockback Force/Used
-      id: -37704/872eda80-2f43-4f6f-9ce1-f49af02824ff
+      fullPath: Hurt/Main/Knockback Force/Used
+      id: -89430/872eda80-2f43-4f6f-9ce1-f49af02824ff
       localID: 872eda80-2f43-4f6f-9ce1-f49af02824ff
       parent: {fileID: 11490038}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11463156}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 187420}
+          parent: {fileID: 11490038}
+          mode: 0
+          path: /Hurt (1)/Main/Knockback Force/Knockback Force/Used/Target
+        usage: 0
+        path: /Hurt/Main/Attribute Bool Data G
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   type: 0
@@ -2285,65 +692,155 @@ MonoBehaviour:
     info:
       name: Target
       path: Knockback Force/Target
-      id: -37704/30aa99ca-29da-472e-9c8b-7f9283787689
+      fullPath: Hurt/Main/Knockback Force/Target
+      id: -89430/30aa99ca-29da-472e-9c8b-7f9283787689
       localID: 30aa99ca-29da-472e-9c8b-7f9283787689
       parent: {fileID: 11490038}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11410222}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 190592}
+          parent: {fileID: 11490038}
+          mode: 0
+          path: /Hurt (1)/Main/Knockback Force/Knockback Force/Target/Target
+        usage: 1
+        path: /Hurt/Main/Attribute Game Object Data
+        referenceID: -37628/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+        referencePath: Source
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeGameObjectData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   amount:
     info:
       name: Amount
       path: Knockback Force/Amount
-      id: -37704/4927b27c-8967-4101-b520-fa2e92c7e2d9
+      fullPath: Hurt/Main/Knockback Force/Amount
+      id: -89430/4927b27c-8967-4101-b520-fa2e92c7e2d9
       localID: 4927b27c-8967-4101-b520-fa2e92c7e2d9
       parent: {fileID: 11490038}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11499330}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 187420}
+          parent: {fileID: 11490038}
+          mode: 0
+          path: /Hurt (1)/Main/Knockback Force/Knockback Force/Amount/Target
+        usage: 0
+        path: /Hurt/Main/Attribute Vector3Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: (0.0, 0.4, 0.0)
+        rawType: Zios.AttributeVector3Data
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
     x:
       info:
         name: X
         path: Knockback Force/Amount/X
-        id: -37704/65264b99-a96f-4d4d-8e0a-1aa479c7360f
+        fullPath: Hurt/Main/Knockback Force/Amount/X
+        id: -89430/65264b99-a96f-4d4d-8e0a-1aa479c7360f
         localID: 65264b99-a96f-4d4d-8e0a-1aa479c7360f
         parent: {fileID: 11490038}
         mode: 0
         linkType: 0
         oldData:
-        - {fileID: 11474480}
+        - target:
+            search: '[Self]'
+            directObject: {fileID: 0}
+            searchObject: {fileID: 187420}
+            parent: {fileID: 11490038}
+            mode: 0
+            path: /Hurt (1)/Main/Knockback Force/Knockback Force/Amount/X/Target
+          usage: 0
+          path: /Hurt/Main/Attribute Float Data D
+          referenceID: 
+          referencePath: 
+          operation: 0
+          special: 0
+          rawValue: 0
+          rawType: Zios.AttributeFloatData
+        oldDataB: []
+        oldDataC: []
+        oldData: []
         oldDataB: []
         oldDataC: []
     y:
       info:
         name: Y
         path: Knockback Force/Amount/Y
-        id: -37704/4c9c283e-967e-4f52-b44d-7b46f557908b
+        fullPath: Hurt/Main/Knockback Force/Amount/Y
+        id: -89430/4c9c283e-967e-4f52-b44d-7b46f557908b
         localID: 4c9c283e-967e-4f52-b44d-7b46f557908b
         parent: {fileID: 11490038}
         mode: 0
         linkType: 0
         oldData:
-        - {fileID: 11419866}
+        - target:
+            search: '[Self]'
+            directObject: {fileID: 0}
+            searchObject: {fileID: 187420}
+            parent: {fileID: 11490038}
+            mode: 0
+            path: /Hurt (1)/Main/Knockback Force/Knockback Force/Amount/Y/Target
+          usage: 0
+          path: /Hurt/Main/Attribute Float Data E
+          referenceID: 
+          referencePath: 
+          operation: 0
+          special: 0
+          rawValue: 0
+          rawType: Zios.AttributeFloatData
+        oldDataB: []
+        oldDataC: []
+        oldData: []
         oldDataB: []
         oldDataC: []
     z:
       info:
         name: Z
         path: Knockback Force/Amount/Z
-        id: -37704/77fb3c8a-19ba-40c2-82d0-1885cfd8f2e7
+        fullPath: Hurt/Main/Knockback Force/Amount/Z
+        id: -89430/77fb3c8a-19ba-40c2-82d0-1885cfd8f2e7
         localID: 77fb3c8a-19ba-40c2-82d0-1885cfd8f2e7
         parent: {fileID: 11490038}
         mode: 0
         linkType: 0
         oldData:
-        - {fileID: 11417108}
+        - target:
+            search: '[Self]'
+            directObject: {fileID: 0}
+            searchObject: {fileID: 187420}
+            parent: {fileID: 11490038}
+            mode: 0
+            path: /Hurt (1)/Main/Knockback Force/Knockback Force/Amount/Z/Target
+          usage: 0
+          path: /Hurt/Main/Attribute Float Data F
+          referenceID: 
+          referencePath: 
+          operation: 0
+          special: 0
+          rawValue: 0
+          rawType: Zios.AttributeFloatData
+        oldDataB: []
+        oldDataC: []
+        oldData: []
         oldDataB: []
         oldDataC: []
 --- !u!114 &11495978
@@ -2357,9 +854,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4833115f047751b48be018c26164a652, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /Hurt (1)/Main/
-  path: /Hurt (1)/Main/Hurt (1)
-  alias: Hurt (1)
+  parentPath: /Hurt/Main/
+  path: /Hurt/Main/Hurt
+  alias: Hurt
   rate: 1
   occurrence: 0
   controller: {fileID: 0}
@@ -2367,40 +864,94 @@ MonoBehaviour:
   usable:
     info:
       name: Usable
-      path: Hurt (1)/Usable
-      id: -37708/a434e297-6ea8-44ea-98d5-9f70d155d27c
+      path: Hurt/Usable
+      fullPath: Hurt/Main/Hurt/Usable
+      id: -89412/a434e297-6ea8-44ea-98d5-9f70d155d27c
       localID: a434e297-6ea8-44ea-98d5-9f70d155d27c
       parent: {fileID: 11495978}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11408720}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 187420}
+          parent: {fileID: 11495978}
+          mode: 0
+          path: /Hurt (1)/Main/Hurt (1)/Hurt (1)/Usable/Target
+        usage: 0
+        path: /Hurt/Main/Old Attribute Bool Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: True
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
-      path: Hurt (1)/Active
-      id: -37708/fd67decf-bddf-482e-aede-96661978eade
-      localID: fd67decf-bddf-482e-aede-96661978eade
+      path: Hurt/Active
+      fullPath: Hurt/Main/Hurt/Active
+      id: -89412/02bac816-21cc-4891-b149-2f06ced199e4
+      localID: 02bac816-21cc-4891-b149-2f06ced199e4
       parent: {fileID: 11495978}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11437372}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: Hurt/Main/Hurt/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
-      path: Hurt (1)/Used
-      id: -37708/019e3b71-e87f-44cb-8db8-7a43c26ac433
+      path: Hurt/Used
+      fullPath: Hurt/Main/Hurt/Used
+      id: -89412/019e3b71-e87f-44cb-8db8-7a43c26ac433
       localID: 019e3b71-e87f-44cb-8db8-7a43c26ac433
       parent: {fileID: 11495978}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11486766}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 187420}
+          parent: {fileID: 11495978}
+          mode: 0
+          path: /Hurt (1)/Main/Hurt (1)/Hurt (1)/Used/Target
+        usage: 0
+        path: /Hurt/Main/Old Attribute Bool Data C
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   table:
@@ -2790,14 +1341,32 @@ MonoBehaviour:
   external:
     info:
       name: External
-      path: Hurt (1)/External
-      id: -37708/18ce8b85-bd04-43b3-a247-eafb2a47acf7
+      path: Hurt/External
+      fullPath: Hurt/Main/Hurt/External
+      id: -89412/18ce8b85-bd04-43b3-a247-eafb2a47acf7
       localID: 18ce8b85-bd04-43b3-a247-eafb2a47acf7
       parent: {fileID: 11495978}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11461842}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 187420}
+          parent: {fileID: 11495978}
+          mode: 0
+          path: /Hurt (1)/Main/Hurt (1)/Hurt (1)/External/Target
+        usage: 0
+        path: /Hurt/Main/Old Attribute Bool Data D
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: True
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   scripts:
@@ -2817,8 +1386,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 913766e3e62ceac4a918c0cd12f04e67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /Hurt (1)/Main/
-  path: /Hurt (1)/Main/Damage Animation
+  parentPath: /Hurt/Main/
+  path: /Hurt/Main/Damage Animation
   alias: Damage Animation
   rate: 1
   occurrence: 0
@@ -2828,91 +1397,217 @@ MonoBehaviour:
     info:
       name: Usable
       path: Damage Animation/Usable
-      id: -37710/855db985-26e1-4a7c-850c-5bb71aeebea0
+      fullPath: Hurt/Main/Damage Animation/Usable
+      id: -89414/855db985-26e1-4a7c-850c-5bb71aeebea0
       localID: 855db985-26e1-4a7c-850c-5bb71aeebea0
       parent: {fileID: 11496146}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11467068}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 187420}
+          parent: {fileID: 11496146}
+          mode: 0
+          path: /Hurt (1)/Main/Damage Animation/Damage Animation/Usable/Target
+        usage: 0
+        path: /Hurt/Main/Attribute Bool Data C
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
       path: Damage Animation/Active
-      id: -37710/251dc569-644f-445d-9452-843638c3dd39
-      localID: 251dc569-644f-445d-9452-843638c3dd39
+      fullPath: Hurt/Main/Damage Animation/Active
+      id: -89414/aeea1d18-3b45-4e5b-99c6-7797f855b941
+      localID: aeea1d18-3b45-4e5b-99c6-7797f855b941
       parent: {fileID: 11496146}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11451142}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: Hurt/Main/Damage Animation/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
       path: Damage Animation/Used
-      id: -37710/7b2a7695-5ad5-4171-b9cf-35c04924a8ba
+      fullPath: Hurt/Main/Damage Animation/Used
+      id: -89414/7b2a7695-5ad5-4171-b9cf-35c04924a8ba
       localID: 7b2a7695-5ad5-4171-b9cf-35c04924a8ba
       parent: {fileID: 11496146}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11435012}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 187420}
+          parent: {fileID: 11496146}
+          mode: 0
+          path: /Hurt (1)/Main/Damage Animation/Damage Animation/Used/Target
+        usage: 0
+        path: /Hurt/Main/Attribute Bool Data D
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   animationName:
     info:
       name: Animation Name
       path: Damage Animation/Animation Name
-      id: -37710/db82c64b-dafe-45b1-9527-a91a22c9b686
+      fullPath: Hurt/Main/Damage Animation/Animation Name
+      id: -89414/db82c64b-dafe-45b1-9527-a91a22c9b686
       localID: db82c64b-dafe-45b1-9527-a91a22c9b686
       parent: {fileID: 11496146}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11481392}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 190592}
+          parent: {fileID: 11496146}
+          mode: 0
+          path: /Hurt (1)/Main/Damage Animation/Damage Animation/Animation Name/Target
+        usage: 1
+        path: /Hurt/Main/Attribute String Data
+        referenceID: -37586/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
+        referencePath: Animation
+        operation: 0
+        special: 0
+        rawValue: Hurt
+        rawType: Zios.AttributeStringData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   speed:
     info:
       name: Speed
       path: Damage Animation/Speed
-      id: -37710/87e1ee5d-9748-421f-a38a-b08ad9d67d73
+      fullPath: Hurt/Main/Damage Animation/Speed
+      id: -89414/87e1ee5d-9748-421f-a38a-b08ad9d67d73
       localID: 87e1ee5d-9748-421f-a38a-b08ad9d67d73
       parent: {fileID: 11496146}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11499498}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 190592}
+          parent: {fileID: 11496146}
+          mode: 0
+          path: /Hurt (1)/Main/Damage Animation/Damage Animation/Speed/Target
+        usage: 1
+        path: /Hurt/Main/Attribute Float Data B
+        referenceID: -37614/ec51a466-34a5-486c-9fbf-4e55a0f2341a
+        referencePath: Animation Speed
+        operation: 0
+        special: 0
+        rawValue: 1
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   weight:
     info:
       name: Weight
       path: Damage Animation/Weight
-      id: -37710/6dc76b7e-8264-4551-8778-9b937f8d4248
+      fullPath: Hurt/Main/Damage Animation/Weight
+      id: -89414/6dc76b7e-8264-4551-8778-9b937f8d4248
       localID: 6dc76b7e-8264-4551-8778-9b937f8d4248
       parent: {fileID: 11496146}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11433772}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 187420}
+          parent: {fileID: 11496146}
+          mode: 0
+          path: /Hurt (1)/Main/Damage Animation/Damage Animation/Weight/Target
+        usage: 0
+        path: /Hurt/Main/Attribute Float Data C
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 1
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   target:
     info:
       name: Target
       path: Damage Animation/Target
-      id: -37710/929fa23f-bb73-4896-a360-319f0be2fe7d
+      fullPath: Hurt/Main/Damage Animation/Target
+      id: -89414/929fa23f-bb73-4896-a360-319f0be2fe7d
       localID: 929fa23f-bb73-4896-a360-319f0be2fe7d
       parent: {fileID: 11496146}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11445576}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 190592}
+          parent: {fileID: 11496146}
+          mode: 0
+          path: /Hurt (1)/Main/Damage Animation/Damage Animation/Target/Target
+        usage: 1
+        path: /Hurt/Main/Attribute Game Object Data B
+        referenceID: -37584/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+        referencePath: Visuals
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeGameObjectData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
 --- !u!114 &11497232
@@ -2926,8 +1621,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb780ed64906f1944b7e8d65c34757d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /Hurt (1)/Main/
-  path: /Hurt (1)/Main/Damage Duration
+  parentPath: /Hurt/Main/
+  path: /Hurt/Main/Damage Duration
   alias: Damage Duration
   rate: 1
   occurrence: 0
@@ -2937,39 +1632,93 @@ MonoBehaviour:
     info:
       name: Usable
       path: Damage Duration/Usable
-      id: -37714/3f6545a7-db97-4462-aa06-0c8d7f177c0f
+      fullPath: Hurt/Main/Damage Duration/Usable
+      id: -89462/3f6545a7-db97-4462-aa06-0c8d7f177c0f
       localID: 3f6545a7-db97-4462-aa06-0c8d7f177c0f
       parent: {fileID: 11497232}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11439444}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 187420}
+          parent: {fileID: 11497232}
+          mode: 0
+          path: /Hurt (1)/Main/Damage Duration/Damage Duration/Usable/Target
+        usage: 0
+        path: /Hurt/Main/Attribute Bool Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
       path: Damage Duration/Active
-      id: -37714/f46bdcb6-cf32-41f8-9a27-3b3725cb8006
-      localID: f46bdcb6-cf32-41f8-9a27-3b3725cb8006
+      fullPath: Hurt/Main/Damage Duration/Active
+      id: -89462/81dcff31-287f-451a-a394-d8ce3ec7357b
+      localID: 81dcff31-287f-451a-a394-d8ce3ec7357b
       parent: {fileID: 11497232}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11431970}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: Hurt/Main/Damage Duration/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
       path: Damage Duration/Used
-      id: -37714/12f507e2-4382-4a65-803a-b388d9152314
+      fullPath: Hurt/Main/Damage Duration/Used
+      id: -89462/12f507e2-4382-4a65-803a-b388d9152314
       localID: 12f507e2-4382-4a65-803a-b388d9152314
       parent: {fileID: 11497232}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11446696}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 187420}
+          parent: {fileID: 11497232}
+          mode: 0
+          path: /Hurt (1)/Main/Damage Duration/Damage Duration/Used/Target
+        usage: 0
+        path: /Hurt/Main/Attribute Bool Data O
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   type: 1
@@ -2977,145 +1726,95 @@ MonoBehaviour:
     info:
       name: Seconds
       path: Damage Duration/Seconds
-      id: -37714/41ddd285-14d9-4f38-80bc-eae00a54bc38
+      fullPath: Hurt/Main/Damage Duration/Seconds
+      id: -89462/41ddd285-14d9-4f38-80bc-eae00a54bc38
       localID: 41ddd285-14d9-4f38-80bc-eae00a54bc38
       parent: {fileID: 11497232}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11412882}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 190592}
+          parent: {fileID: 11497232}
+          mode: 0
+          path: /Hurt (1)/Main/Damage Duration/Damage Duration/Seconds/Target
+        usage: 1
+        path: /Hurt/Main/Attribute Float Data
+        referenceID: -37588/21536505-299e-4d76-89cd-91090c83fb08
+        referencePath: Duration
+        operation: 0
+        special: 0
+        rawValue: 0
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   isStarted:
     info:
       name: Is Started
       path: Damage Duration/Is Started
-      id: -37714/f69b6229-d3f0-42a6-89ab-8f918fbb0fa8
+      fullPath: Hurt/Main/Damage Duration/Is Started
+      id: -89462/f69b6229-d3f0-42a6-89ab-8f918fbb0fa8
       localID: f69b6229-d3f0-42a6-89ab-8f918fbb0fa8
       parent: {fileID: 11497232}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11463590}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 187420}
+          parent: {fileID: 11497232}
+          mode: 0
+          path: /Hurt (1)/Main/Damage Duration/Damage Duration/Is Started/Target
+        usage: 0
+        path: /Hurt/Main/Attribute Bool Data N
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   isComplete:
     info:
       name: Is Complete
       path: Damage Duration/Is Complete
-      id: -37714/ee77db0d-9b63-4a78-95eb-0ecdb6e09e9c
+      fullPath: Hurt/Main/Damage Duration/Is Complete
+      id: -89462/ee77db0d-9b63-4a78-95eb-0ecdb6e09e9c
       localID: ee77db0d-9b63-4a78-95eb-0ecdb6e09e9c
       parent: {fileID: 11497232}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11469578}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 187420}
+          parent: {fileID: 11497232}
+          mode: 0
+          path: /Hurt (1)/Main/Damage Duration/Damage Duration/Is Complete/Target
+        usage: 0
+        path: /Hurt/Main/Attribute Bool Data M
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
---- !u!114 &11499330
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83639dc7708e9ad4584145044a83425d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Vector3Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 187420}
-    parent: {fileID: 11490038}
-    mode: 0
-    path: /Hurt (1)/Main/Knockback Force/Knockback Force/Amount/Target
-  usage: 0
-  path: Knockback Force/Amount/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Amount
-    path: Knockback Force/Amount
-    id: -37704/4927b27c-8967-4101-b520-fa2e92c7e2d9
-    localID: 4927b27c-8967-4101-b520-fa2e92c7e2d9
-    parent: {fileID: 11490038}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11499330}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
       oldData: []
       oldDataB: []
       oldDataC: []
-  operation: 0
-  special: 0
-  value: {x: 0, y: .389999986, z: 0}
---- !u!114 &11499498
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 190592}
-    parent: {fileID: 11496146}
-    mode: 0
-    path: /Hurt (1)/Main/Damage Animation/Damage Animation/Speed/Target
-  usage: 1
-  path: Damage Animation/Speed/0
-  referenceID: -37614/ec51a466-34a5-486c-9fbf-4e55a0f2341a
-  referencePath: Animation Speed
-  attribute:
-    name: Speed
-    path: Damage Animation/Speed
-    id: -37710/87e1ee5d-9748-421f-a38a-b08ad9d67d73
-    localID: 87e1ee5d-9748-421f-a38a-b08ad9d67d73
-    parent: {fileID: 11496146}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11499498}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

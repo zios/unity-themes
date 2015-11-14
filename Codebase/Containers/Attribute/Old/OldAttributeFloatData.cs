@@ -6,6 +6,7 @@ namespace Zios{
 		public float value;
 		public override AttributeData Convert(){
 			var data = new AttributeFloatData();
+			data.value = this.value;
 			data.rawValue = this.value.ToString();
 			data.rawType = typeof(AttributeFloatData).FullName;
 			return data;

@@ -10,30 +10,8 @@ GameObject:
   - 4: {fileID: 444264}
   - 114: {fileID: 11490294}
   - 114: {fileID: 11432898}
-  - 114: {fileID: 11474844}
-  - 114: {fileID: 11403590}
-  - 114: {fileID: 11430934}
-  - 114: {fileID: 11497176}
-  - 114: {fileID: 11485522}
-  - 114: {fileID: 11491994}
-  - 114: {fileID: 11468020}
   - 114: {fileID: 11435594}
-  - 114: {fileID: 11420518}
-  - 114: {fileID: 11452232}
-  - 114: {fileID: 11441302}
-  - 114: {fileID: 11496734}
-  - 114: {fileID: 11410208}
-  - 114: {fileID: 11470228}
   - 114: {fileID: 11450360}
-  - 114: {fileID: 11499482}
-  - 114: {fileID: 11476418}
-  - 114: {fileID: 11475016}
-  - 114: {fileID: 11423428}
-  - 114: {fileID: 11470222}
-  - 114: {fileID: 11472130}
-  - 114: {fileID: 11459530}
-  - 114: {fileID: 11425022}
-  - 114: {fileID: 11459264}
   m_Layer: 0
   m_Name: Main
   m_TagString: Untagged
@@ -50,15 +28,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 428316}
   - 114: {fileID: 11485208}
-  - 114: {fileID: 11490534}
   - 114: {fileID: 11472080}
-  - 114: {fileID: 11420760}
   - 114: {fileID: 11435276}
-  - 114: {fileID: 11401258}
   - 114: {fileID: 11445838}
-  - 114: {fileID: 11493456}
   - 114: {fileID: 11451466}
-  - 114: {fileID: 11428498}
   m_Layer: 10
   m_Name: '@Settings'
   m_TagString: Untagged
@@ -119,477 +92,6 @@ Transform:
   - {fileID: 444264}
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11401258
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 151682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3e9984a5f3f19942be359930227796e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute String Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 151682}
-    parent: {fileID: 11435276}
-    mode: 0
-    path: /Spin/@Settings/Animation/Animation/Target
-  usage: 0
-  path: Animation/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Animation
-    path: Animation
-    id: -38246/1ae62cbb-d3a1-4b44-8a37-045d5d38181a
-    localID: 1ae62cbb-d3a1-4b44-8a37-045d5d38181a
-    parent: {fileID: 11435276}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11401258}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: Spin
-  characterLimit: 0
-  allowed: []
-  disallowed: []
---- !u!114 &11403590
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 114846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 151682}
-    parent: {fileID: 11432898}
-    mode: 0
-    path: /Spin/Main/Spin Animation/Spin Animation/Active/Target
-  usage: 0
-  path: Spin Animation/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: Spin Animation/Active
-    id: -38242/fefb8ffc-30c2-45fa-a186-e8da71fc5216
-    localID: fefb8ffc-30c2-45fa-a186-e8da71fc5216
-    parent: {fileID: 11432898}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11403590}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11410208
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 114846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 151682}
-    parent: {fileID: 11435594}
-    mode: 0
-    path: /Spin/Main/Timer State/Timer State/Is Started/Target
-  usage: 0
-  path: Timer State/Is Started/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Is Started
-    path: Timer State/Is Started
-    id: -38248/b1135f8d-069e-4ff9-9d3e-bec7e736f6d5
-    localID: b1135f8d-069e-4ff9-9d3e-bec7e736f6d5
-    parent: {fileID: 11435594}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11410208}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11420518
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 114846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 151682}
-    parent: {fileID: 11435594}
-    mode: 0
-    path: /Spin/Main/Timer State/Timer State/Usable/Target
-  usage: 0
-  path: Timer State/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: Timer State/Usable
-    id: -38248/07e94e74-14a1-4069-ad47-d710a66ac70e
-    localID: 07e94e74-14a1-4069-ad47-d710a66ac70e
-    parent: {fileID: 11435594}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11420518}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11420760
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 151682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Game Object Data
-  target:
-    search: ../../../Visuals
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 11472080}
-    mode: 0
-    path: /Spin/@Settings/Visuals/Visuals/Target
-  usage: 1
-  path: Visuals/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Visuals
-    path: Visuals
-    id: -38276/5b08a9f7-17f1-4c39-8118-5ab971f6abd6
-    localID: 5b08a9f7-17f1-4c39-8118-5ab971f6abd6
-    parent: {fileID: 11472080}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11420760}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {fileID: 0}
---- !u!114 &11423428
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 114846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 151682}
-    parent: {fileID: 11450360}
-    mode: 0
-    path: /Spin/Main/Input Pressed/Input Pressed/Active/Target
-  usage: 0
-  path: Input Pressed/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: Input Pressed/Active
-    id: -38256/23b0f359-aa60-4220-8d3d-349a4a7abfe5
-    localID: 23b0f359-aa60-4220-8d3d-349a4a7abfe5
-    parent: {fileID: 11450360}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11423428}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11425022
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 114846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 114846}
-    parent: {fileID: 11490294}
-    mode: 0
-    path: /Spin/Main/Spin/Spin/Used/Target
-  usage: 0
-  path: Spin/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: Spin/Used
-    id: -38294/14bf6d93-647a-4d57-b802-621aa96630f5
-    localID: 14bf6d93-647a-4d57-b802-621aa96630f5
-    parent: {fileID: 11490294}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11425022}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11428498
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 151682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 151682}
-    parent: {fileID: 11451466}
-    mode: 0
-    path: /Spin/@Settings/Duration/Duration/Target
-  usage: 0
-  path: Duration/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Duration
-    path: Duration
-    id: -38258/6b5e2173-1855-4bed-b508-df8c0f229240
-    localID: 6b5e2173-1855-4bed-b508-df8c0f229240
-    parent: {fileID: 11451466}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11428498}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1.75
---- !u!114 &11430934
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 114846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 151682}
-    parent: {fileID: 11432898}
-    mode: 0
-    path: /Spin/Main/Spin Animation/Spin Animation/Used/Target
-  usage: 0
-  path: Spin Animation/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: Spin Animation/Used
-    id: -38242/46d93017-61ed-4998-88af-a50ae4b5a9ec
-    localID: 46d93017-61ed-4998-88af-a50ae4b5a9ec
-    parent: {fileID: 11432898}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11430934}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!114 &11432898
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -612,91 +114,217 @@ MonoBehaviour:
     info:
       name: Usable
       path: Spin Animation/Usable
-      id: -38242/9bd2feb9-4ae9-4cc8-9b22-90ca560220a8
+      fullPath: Spin/Main/Spin Animation/Usable
+      id: -90550/9bd2feb9-4ae9-4cc8-9b22-90ca560220a8
       localID: 9bd2feb9-4ae9-4cc8-9b22-90ca560220a8
       parent: {fileID: 11432898}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11474844}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 151682}
+          parent: {fileID: 11432898}
+          mode: 0
+          path: /Spin/Main/Spin Animation/Spin Animation/Usable/Target
+        usage: 0
+        path: /Spin/Main/Attribute Bool Data B
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
       path: Spin Animation/Active
-      id: -38242/fefb8ffc-30c2-45fa-a186-e8da71fc5216
-      localID: fefb8ffc-30c2-45fa-a186-e8da71fc5216
+      fullPath: Spin/Main/Spin Animation/Active
+      id: -90550/6e2d6a61-45f9-4b75-9a73-3b01acb04198
+      localID: 6e2d6a61-45f9-4b75-9a73-3b01acb04198
       parent: {fileID: 11432898}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11403590}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: Spin/Main/Spin Animation/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
       path: Spin Animation/Used
-      id: -38242/46d93017-61ed-4998-88af-a50ae4b5a9ec
+      fullPath: Spin/Main/Spin Animation/Used
+      id: -90550/46d93017-61ed-4998-88af-a50ae4b5a9ec
       localID: 46d93017-61ed-4998-88af-a50ae4b5a9ec
       parent: {fileID: 11432898}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11430934}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 151682}
+          parent: {fileID: 11432898}
+          mode: 0
+          path: /Spin/Main/Spin Animation/Spin Animation/Used/Target
+        usage: 0
+        path: /Spin/Main/Attribute Bool Data D
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   animationName:
     info:
       name: Animation Name
       path: Spin Animation/Animation Name
-      id: -38242/5c217165-5ebc-4802-a748-3ef60106fe0d
+      fullPath: Spin/Main/Spin Animation/Animation Name
+      id: -90550/5c217165-5ebc-4802-a748-3ef60106fe0d
       localID: 5c217165-5ebc-4802-a748-3ef60106fe0d
       parent: {fileID: 11432898}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11497176}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 151682}
+          parent: {fileID: 11432898}
+          mode: 0
+          path: /Spin/Main/Spin Animation/Spin Animation/Animation Name/Target
+        usage: 1
+        path: /Spin/Main/Attribute String Data B
+        referenceID: -38246/1ae62cbb-d3a1-4b44-8a37-045d5d38181a
+        referencePath: Animation
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeStringData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   speed:
     info:
       name: Speed
       path: Spin Animation/Speed
-      id: -38242/6d64414e-c8c5-4791-9cfa-7511bb49f84a
+      fullPath: Spin/Main/Spin Animation/Speed
+      id: -90550/6d64414e-c8c5-4791-9cfa-7511bb49f84a
       localID: 6d64414e-c8c5-4791-9cfa-7511bb49f84a
       parent: {fileID: 11432898}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11485522}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 151682}
+          parent: {fileID: 11432898}
+          mode: 0
+          path: /Spin/Main/Spin Animation/Spin Animation/Speed/Target
+        usage: 0
+        path: /Spin/Main/Attribute Float Data B
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 1
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   weight:
     info:
       name: Weight
       path: Spin Animation/Weight
-      id: -38242/22f6f7dd-acd6-451f-9e67-df9251c95df9
+      fullPath: Spin/Main/Spin Animation/Weight
+      id: -90550/22f6f7dd-acd6-451f-9e67-df9251c95df9
       localID: 22f6f7dd-acd6-451f-9e67-df9251c95df9
       parent: {fileID: 11432898}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11491994}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 151682}
+          parent: {fileID: 11432898}
+          mode: 0
+          path: /Spin/Main/Spin Animation/Spin Animation/Weight/Target
+        usage: 0
+        path: /Spin/Main/Attribute Float Data C
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 1
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   target:
     info:
       name: Target
       path: Spin Animation/Target
-      id: -38242/6a3070e2-4170-4739-a6e7-8e65c7818e13
+      fullPath: Spin/Main/Spin Animation/Target
+      id: -90550/6a3070e2-4170-4739-a6e7-8e65c7818e13
       localID: 6a3070e2-4170-4739-a6e7-8e65c7818e13
       parent: {fileID: 11432898}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11468020}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 151682}
+          parent: {fileID: 11432898}
+          mode: 0
+          path: /Spin/Main/Spin Animation/Spin Animation/Target/Target
+        usage: 1
+        path: /Spin/Main/Attribute Game Object Data
+        referenceID: -38276/5b08a9f7-17f1-4c39-8118-5ab971f6abd6
+        referencePath: Visuals
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeGameObjectData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
 --- !u!114 &11435276
@@ -717,13 +345,31 @@ MonoBehaviour:
     info:
       name: Animation
       path: Animation
-      id: -38246/1ae62cbb-d3a1-4b44-8a37-045d5d38181a
+      fullPath: Spin/@Settings/Animation
+      id: -90536/1ae62cbb-d3a1-4b44-8a37-045d5d38181a
       localID: 1ae62cbb-d3a1-4b44-8a37-045d5d38181a
       parent: {fileID: 11435276}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11401258}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 151682}
+          parent: {fileID: 11435276}
+          mode: 0
+          path: /Spin/@Settings/Animation/Animation/Target
+        usage: 0
+        path: /Spin/@Settings/Attribute String Data B
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: Spin
+        rawType: Zios.AttributeStringData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   remember: 0
@@ -749,39 +395,93 @@ MonoBehaviour:
     info:
       name: Usable
       path: Timer State/Usable
-      id: -38248/07e94e74-14a1-4069-ad47-d710a66ac70e
+      fullPath: Spin/Main/Timer State/Usable
+      id: -90566/07e94e74-14a1-4069-ad47-d710a66ac70e
       localID: 07e94e74-14a1-4069-ad47-d710a66ac70e
       parent: {fileID: 11435594}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11420518}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 151682}
+          parent: {fileID: 11435594}
+          mode: 0
+          path: /Spin/Main/Timer State/Timer State/Usable/Target
+        usage: 0
+        path: /Spin/Main/Attribute Bool Data E
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
       path: Timer State/Active
-      id: -38248/baac8e12-96d8-4f03-bf58-22a7f0f8a5dc
-      localID: baac8e12-96d8-4f03-bf58-22a7f0f8a5dc
+      fullPath: Spin/Main/Timer State/Active
+      id: -90566/46374b5b-ebbb-44b5-b376-db5223274d33
+      localID: 46374b5b-ebbb-44b5-b376-db5223274d33
       parent: {fileID: 11435594}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11452232}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: Spin/Main/Timer State/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
       path: Timer State/Used
-      id: -38248/7f13c5e9-8d71-4e1f-8fc9-1e263e34c374
+      fullPath: Spin/Main/Timer State/Used
+      id: -90566/7f13c5e9-8d71-4e1f-8fc9-1e263e34c374
       localID: 7f13c5e9-8d71-4e1f-8fc9-1e263e34c374
       parent: {fileID: 11435594}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11441302}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 151682}
+          parent: {fileID: 11435594}
+          mode: 0
+          path: /Spin/Main/Timer State/Timer State/Used/Target
+        usage: 0
+        path: /Spin/Main/Attribute Bool Data G
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   type: 1
@@ -789,93 +489,95 @@ MonoBehaviour:
     info:
       name: Seconds
       path: Timer State/Seconds
-      id: -38248/c9c76c41-2c69-469b-9ff8-cba5b23bf6df
+      fullPath: Spin/Main/Timer State/Seconds
+      id: -90566/c9c76c41-2c69-469b-9ff8-cba5b23bf6df
       localID: c9c76c41-2c69-469b-9ff8-cba5b23bf6df
       parent: {fileID: 11435594}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11496734}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 151682}
+          parent: {fileID: 11435594}
+          mode: 0
+          path: /Spin/Main/Timer State/Timer State/Seconds/Target
+        usage: 1
+        path: /Spin/Main/Attribute Float Data
+        referenceID: -38258/6b5e2173-1855-4bed-b508-df8c0f229240
+        referencePath: Duration
+        operation: 0
+        special: 0
+        rawValue: 0
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   isStarted:
     info:
       name: Is Started
       path: Timer State/Is Started
-      id: -38248/b1135f8d-069e-4ff9-9d3e-bec7e736f6d5
+      fullPath: Spin/Main/Timer State/Is Started
+      id: -90566/b1135f8d-069e-4ff9-9d3e-bec7e736f6d5
       localID: b1135f8d-069e-4ff9-9d3e-bec7e736f6d5
       parent: {fileID: 11435594}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11410208}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 151682}
+          parent: {fileID: 11435594}
+          mode: 0
+          path: /Spin/Main/Timer State/Timer State/Is Started/Target
+        usage: 0
+        path: /Spin/Main/Attribute Bool Data H
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   isComplete:
     info:
       name: Is Complete
       path: Timer State/Is Complete
-      id: -38248/1762cbbd-0fd4-488f-b4b2-d433f66c8dd6
+      fullPath: Spin/Main/Timer State/Is Complete
+      id: -90566/1762cbbd-0fd4-488f-b4b2-d433f66c8dd6
       localID: 1762cbbd-0fd4-488f-b4b2-d433f66c8dd6
       parent: {fileID: 11435594}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11470228}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 151682}
+          parent: {fileID: 11435594}
+          mode: 0
+          path: /Spin/Main/Timer State/Timer State/Is Complete/Target
+        usage: 0
+        path: /Spin/Main/Attribute Bool Data I
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
---- !u!114 &11441302
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 114846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 151682}
-    parent: {fileID: 11435594}
-    mode: 0
-    path: /Spin/Main/Timer State/Timer State/Used/Target
-  usage: 0
-  path: Timer State/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: Timer State/Used
-    id: -38248/7f13c5e9-8d71-4e1f-8fc9-1e263e34c374
-    localID: 7f13c5e9-8d71-4e1f-8fc9-1e263e34c374
-    parent: {fileID: 11435594}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11441302}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
       oldData: []
       oldDataB: []
       oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!114 &11445838
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -894,13 +596,31 @@ MonoBehaviour:
     info:
       name: Key Action
       path: Key Action
-      id: -38252/d15b8eaa-04df-4361-b09b-536995547df5
+      fullPath: Spin/@Settings/Key Action
+      id: -90540/d15b8eaa-04df-4361-b09b-536995547df5
       localID: d15b8eaa-04df-4361-b09b-536995547df5
       parent: {fileID: 11445838}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11493456}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 151682}
+          parent: {fileID: 11445838}
+          mode: 0
+          path: /Spin/@Settings/Key Action/Key Action/Target
+        usage: 0
+        path: /Spin/@Settings/Attribute String Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: Action
+        rawType: Zios.AttributeStringData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   remember: 0
@@ -926,39 +646,93 @@ MonoBehaviour:
     info:
       name: Usable
       path: Input Pressed/Usable
-      id: -38256/45818455-0dcd-480c-b554-aeb966fd06bb
+      fullPath: Spin/Main/Input Pressed/Usable
+      id: -90580/45818455-0dcd-480c-b554-aeb966fd06bb
       localID: 45818455-0dcd-480c-b554-aeb966fd06bb
       parent: {fileID: 11450360}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11470222}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 151682}
+          parent: {fileID: 11450360}
+          mode: 0
+          path: /Spin/Main/Input Pressed/Input Pressed/Usable/Target
+        usage: 0
+        path: /Spin/Main/Attribute Bool Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
       path: Input Pressed/Active
-      id: -38256/23b0f359-aa60-4220-8d3d-349a4a7abfe5
-      localID: 23b0f359-aa60-4220-8d3d-349a4a7abfe5
+      fullPath: Spin/Main/Input Pressed/Active
+      id: -90580/9554415c-d8c8-4c60-8267-70e490b490e8
+      localID: 9554415c-d8c8-4c60-8267-70e490b490e8
       parent: {fileID: 11450360}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11423428}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: Spin/Main/Input Pressed/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
       path: Input Pressed/Used
-      id: -38256/14aa6a44-3a1a-4151-8e44-17855573ffaf
+      fullPath: Spin/Main/Input Pressed/Used
+      id: -90580/14aa6a44-3a1a-4151-8e44-17855573ffaf
       localID: 14aa6a44-3a1a-4151-8e44-17855573ffaf
       parent: {fileID: 11450360}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11475016}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 151682}
+          parent: {fileID: 11450360}
+          mode: 0
+          path: /Spin/Main/Input Pressed/Input Pressed/Used/Target
+        usage: 0
+        path: /Spin/Main/Attribute Bool Data K
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   requirement: 0
@@ -966,26 +740,93 @@ MonoBehaviour:
     info:
       name: Input Name
       path: Input Pressed/Input Name
-      id: -38256/8dfb6e6f-0165-4e5a-8889-8c8339865307
+      fullPath: Spin/Main/Input Pressed/Input Name
+      id: -90580/8dfb6e6f-0165-4e5a-8889-8c8339865307
       localID: 8dfb6e6f-0165-4e5a-8889-8c8339865307
       parent: {fileID: 11450360}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11476418}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 151682}
+          parent: {fileID: 11450360}
+          mode: 0
+          path: /Spin/Main/Input Pressed/Input Pressed/Input Name/Target
+        usage: 1
+        path: /Spin/Main/Attribute String Data
+        referenceID: -38252/d15b8eaa-04df-4361-b09b-536995547df5
+        referencePath: Key Action
+        operation: 0
+        special: 0
+        rawValue: Button1
+        rawType: Zios.AttributeStringData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  manual:
+    info:
+      name: Manual Intensity
+      path: Input Pressed/Manual Intensity
+      fullPath: Spin/Main/Input Pressed/Manual Intensity
+      id: -90580/e9b9d98e-5ee8-4549-adb8-50a68a01b42f
+      localID: e9b9d98e-5ee8-4549-adb8-50a68a01b42f
+      parent: {fileID: 11450360}
+      mode: 0
+      linkType: 0
+      oldData:
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: Spin/Main/Input Pressed/Manual Intensity/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   released:
     info:
       name: Released
       path: Input Pressed/Released
-      id: -38256/b2c08765-b4cc-421f-baa5-1bfe29b78bd6
+      fullPath: Spin/Main/Input Pressed/Released
+      id: -90580/b2c08765-b4cc-421f-baa5-1bfe29b78bd6
       localID: b2c08765-b4cc-421f-baa5-1bfe29b78bd6
       parent: {fileID: 11450360}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11499482}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 151682}
+          parent: {fileID: 11450360}
+          mode: 0
+          path: /Spin/Main/Input Pressed/Input Pressed/Released/Target
+        usage: 0
+        path: /Spin/Main/Attribute Bool Data J
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: True
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
 --- !u!114 &11451466
@@ -1006,328 +847,34 @@ MonoBehaviour:
     info:
       name: Duration
       path: Duration
-      id: -38258/6b5e2173-1855-4bed-b508-df8c0f229240
+      fullPath: Spin/@Settings/Duration
+      id: -90544/6b5e2173-1855-4bed-b508-df8c0f229240
       localID: 6b5e2173-1855-4bed-b508-df8c0f229240
       parent: {fileID: 11451466}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11428498}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 151682}
+          parent: {fileID: 11451466}
+          mode: 0
+          path: /Spin/@Settings/Duration/Duration/Target
+        usage: 0
+        path: /Spin/@Settings/Attribute Float Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 1.75
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   remember: 0
---- !u!114 &11452232
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 114846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 151682}
-    parent: {fileID: 11435594}
-    mode: 0
-    path: /Spin/Main/Timer State/Timer State/Active/Target
-  usage: 0
-  path: Timer State/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: Timer State/Active
-    id: -38248/baac8e12-96d8-4f03-bf58-22a7f0f8a5dc
-    localID: baac8e12-96d8-4f03-bf58-22a7f0f8a5dc
-    parent: {fileID: 11435594}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11452232}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11459264
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 114846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 114846}
-    parent: {fileID: 11490294}
-    mode: 0
-    path: /Spin/Main/Spin/Spin/External/Target
-  usage: 0
-  path: Spin/External/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: External
-    path: Spin/External
-    id: -38294/df126bf9-f009-45de-81bc-e884248f4d16
-    localID: df126bf9-f009-45de-81bc-e884248f4d16
-    parent: {fileID: 11490294}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11459264}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11459530
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 114846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 114846}
-    parent: {fileID: 11490294}
-    mode: 0
-    path: /Spin/Main/Spin/Spin/Active/Target
-  usage: 0
-  path: Spin/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: Spin/Active
-    id: -38294/6bf999cc-b8b2-459b-bd17-ae13f1ec3ddf
-    localID: 6bf999cc-b8b2-459b-bd17-ae13f1ec3ddf
-    parent: {fileID: 11490294}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11459530}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11468020
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 114846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Game Object Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 151682}
-    parent: {fileID: 11432898}
-    mode: 0
-    path: /Spin/Main/Spin Animation/Spin Animation/Target/Target
-  usage: 1
-  path: Spin Animation/Target/0
-  referenceID: -38276/5b08a9f7-17f1-4c39-8118-5ab971f6abd6
-  referencePath: Visuals
-  attribute:
-    name: Target
-    path: Spin Animation/Target
-    id: -38242/6a3070e2-4170-4739-a6e7-8e65c7818e13
-    localID: 6a3070e2-4170-4739-a6e7-8e65c7818e13
-    parent: {fileID: 11432898}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11468020}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {fileID: 0}
---- !u!114 &11470222
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 114846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 151682}
-    parent: {fileID: 11450360}
-    mode: 0
-    path: /Spin/Main/Input Pressed/Input Pressed/Usable/Target
-  usage: 0
-  path: Input Pressed/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: Input Pressed/Usable
-    id: -38256/45818455-0dcd-480c-b554-aeb966fd06bb
-    localID: 45818455-0dcd-480c-b554-aeb966fd06bb
-    parent: {fileID: 11450360}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11470222}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11470228
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 114846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 151682}
-    parent: {fileID: 11435594}
-    mode: 0
-    path: /Spin/Main/Timer State/Timer State/Is Complete/Target
-  usage: 0
-  path: Timer State/Is Complete/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Is Complete
-    path: Timer State/Is Complete
-    id: -38248/1762cbbd-0fd4-488f-b4b2-d433f66c8dd6
-    localID: 1762cbbd-0fd4-488f-b4b2-d433f66c8dd6
-    parent: {fileID: 11435594}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11470228}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!114 &11472080
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1346,227 +893,34 @@ MonoBehaviour:
     info:
       name: Visuals
       path: Visuals
-      id: -38276/5b08a9f7-17f1-4c39-8118-5ab971f6abd6
+      fullPath: Spin/@Settings/Visuals
+      id: -90532/5b08a9f7-17f1-4c39-8118-5ab971f6abd6
       localID: 5b08a9f7-17f1-4c39-8118-5ab971f6abd6
       parent: {fileID: 11472080}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11420760}
+      - target:
+          search: ../../../Visuals
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 11472080}
+          mode: 0
+          path: /Spin/@Settings/Visuals/Visuals/Target
+        usage: 1
+        path: /Spin/@Settings/Attribute Game Object Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeGameObjectData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   remember: 0
---- !u!114 &11472130
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 114846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 114846}
-    parent: {fileID: 11490294}
-    mode: 0
-    path: /Spin/Main/Spin/Spin/Usable/Target
-  usage: 0
-  path: Spin/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: Spin/Usable
-    id: -38294/d2a30212-6830-4c26-aad4-014f2e7398b6
-    localID: d2a30212-6830-4c26-aad4-014f2e7398b6
-    parent: {fileID: 11490294}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11472130}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11474844
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 114846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 151682}
-    parent: {fileID: 11432898}
-    mode: 0
-    path: /Spin/Main/Spin Animation/Spin Animation/Usable/Target
-  usage: 0
-  path: Spin Animation/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: Spin Animation/Usable
-    id: -38242/9bd2feb9-4ae9-4cc8-9b22-90ca560220a8
-    localID: 9bd2feb9-4ae9-4cc8-9b22-90ca560220a8
-    parent: {fileID: 11432898}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11474844}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11475016
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 114846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 151682}
-    parent: {fileID: 11450360}
-    mode: 0
-    path: /Spin/Main/Input Pressed/Input Pressed/Used/Target
-  usage: 0
-  path: Input Pressed/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: Input Pressed/Used
-    id: -38256/14aa6a44-3a1a-4151-8e44-17855573ffaf
-    localID: 14aa6a44-3a1a-4151-8e44-17855573ffaf
-    parent: {fileID: 11450360}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11475016}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11476418
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 114846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3e9984a5f3f19942be359930227796e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute String Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 151682}
-    parent: {fileID: 11450360}
-    mode: 0
-    path: /Spin/Main/Input Pressed/Input Pressed/Input Name/Target
-  usage: 1
-  path: Input Pressed/Input Name/0
-  referenceID: -38252/d15b8eaa-04df-4361-b09b-536995547df5
-  referencePath: Key Action
-  attribute:
-    name: Input Name
-    path: Input Pressed/Input Name
-    id: -38256/8dfb6e6f-0165-4e5a-8889-8c8339865307
-    localID: 8dfb6e6f-0165-4e5a-8889-8c8339865307
-    parent: {fileID: 11450360}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11476418}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: Button1
-  characterLimit: 0
-  allowed: []
-  disallowed: []
 --- !u!114 &11485208
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1585,68 +939,34 @@ MonoBehaviour:
     info:
       name: Source
       path: Source
-      id: -38288/c50dcbb0-4708-4bd8-8b36-665c45d0d596
+      fullPath: Spin/@Settings/Source
+      id: -90528/c50dcbb0-4708-4bd8-8b36-665c45d0d596
       localID: c50dcbb0-4708-4bd8-8b36-665c45d0d596
       parent: {fileID: 11485208}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11490534}
+      - target:
+          search: ../../..
+          directObject: {fileID: 0}
+          searchObject: {fileID: 179348}
+          parent: {fileID: 11485208}
+          mode: 0
+          path: /Spin/@Settings/Source/Source/Target
+        usage: 1
+        path: /Spin/@Settings/Attribute Game Object Data B
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeGameObjectData
       oldDataB: []
       oldDataC: []
-  remember: 0
---- !u!114 &11485522
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 114846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 151682}
-    parent: {fileID: 11432898}
-    mode: 0
-    path: /Spin/Main/Spin Animation/Spin Animation/Speed/Target
-  usage: 0
-  path: Spin Animation/Speed/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Speed
-    path: Spin Animation/Speed
-    id: -38242/6d64414e-c8c5-4791-9cfa-7511bb49f84a
-    localID: 6d64414e-c8c5-4791-9cfa-7511bb49f84a
-    parent: {fileID: 11432898}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11485522}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
       oldData: []
       oldDataB: []
       oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
+  remember: 0
 --- !u!114 &11490294
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1669,39 +989,93 @@ MonoBehaviour:
     info:
       name: Usable
       path: Spin/Usable
-      id: -38294/d2a30212-6830-4c26-aad4-014f2e7398b6
+      fullPath: Spin/Main/Spin/Usable
+      id: -90548/d2a30212-6830-4c26-aad4-014f2e7398b6
       localID: d2a30212-6830-4c26-aad4-014f2e7398b6
       parent: {fileID: 11490294}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11472130}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 114846}
+          parent: {fileID: 11490294}
+          mode: 0
+          path: /Spin/Main/Spin/Spin/Usable/Target
+        usage: 0
+        path: /Spin/Main/Old Attribute Bool Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: True
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
       path: Spin/Active
-      id: -38294/6bf999cc-b8b2-459b-bd17-ae13f1ec3ddf
-      localID: 6bf999cc-b8b2-459b-bd17-ae13f1ec3ddf
+      fullPath: Spin/Main/Spin/Active
+      id: -90548/9268e311-17d8-4716-b677-37a3914adeb0
+      localID: 9268e311-17d8-4716-b677-37a3914adeb0
       parent: {fileID: 11490294}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11459530}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: Spin/Main/Spin/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
       path: Spin/Used
-      id: -38294/14bf6d93-647a-4d57-b802-621aa96630f5
+      fullPath: Spin/Main/Spin/Used
+      id: -90548/14bf6d93-647a-4d57-b802-621aa96630f5
       localID: 14bf6d93-647a-4d57-b802-621aa96630f5
       parent: {fileID: 11490294}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11425022}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 114846}
+          parent: {fileID: 11490294}
+          mode: 0
+          path: /Spin/Main/Spin/Spin/Used/Target
+        usage: 0
+        path: /Spin/Main/Old Attribute Bool Data C
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   table:
@@ -1968,13 +1342,31 @@ MonoBehaviour:
     info:
       name: External
       path: Spin/External
-      id: -38294/df126bf9-f009-45de-81bc-e884248f4d16
+      fullPath: Spin/Main/Spin/External
+      id: -90548/df126bf9-f009-45de-81bc-e884248f4d16
       localID: df126bf9-f009-45de-81bc-e884248f4d16
       parent: {fileID: 11490294}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11459264}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 114846}
+          parent: {fileID: 11490294}
+          mode: 0
+          path: /Spin/Main/Spin/Spin/External/Target
+        usage: 0
+        path: /Spin/Main/Old Attribute Bool Data D
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: True
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   scripts:
@@ -1982,324 +1374,6 @@ MonoBehaviour:
   - {fileID: 11432898}
   - {fileID: 11435594}
   - {fileID: 11450360}
---- !u!114 &11490534
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 151682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Game Object Data
-  target:
-    search: ../../..
-    directObject: {fileID: 0}
-    searchObject: {fileID: 179348}
-    parent: {fileID: 11485208}
-    mode: 0
-    path: /Spin/@Settings/Source/Source/Target
-  usage: 1
-  path: Source/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Source
-    path: Source
-    id: -38288/c50dcbb0-4708-4bd8-8b36-665c45d0d596
-    localID: c50dcbb0-4708-4bd8-8b36-665c45d0d596
-    parent: {fileID: 11485208}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11490534}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {fileID: 0}
---- !u!114 &11491994
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 114846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 151682}
-    parent: {fileID: 11432898}
-    mode: 0
-    path: /Spin/Main/Spin Animation/Spin Animation/Weight/Target
-  usage: 0
-  path: Spin Animation/Weight/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Weight
-    path: Spin Animation/Weight
-    id: -38242/22f6f7dd-acd6-451f-9e67-df9251c95df9
-    localID: 22f6f7dd-acd6-451f-9e67-df9251c95df9
-    parent: {fileID: 11432898}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11491994}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11493456
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 151682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3e9984a5f3f19942be359930227796e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute String Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 151682}
-    parent: {fileID: 11445838}
-    mode: 0
-    path: /Spin/@Settings/Key Action/Key Action/Target
-  usage: 0
-  path: Key Action/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Key Action
-    path: Key Action
-    id: -38252/d15b8eaa-04df-4361-b09b-536995547df5
-    localID: d15b8eaa-04df-4361-b09b-536995547df5
-    parent: {fileID: 11445838}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11493456}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: Action
-  characterLimit: 0
-  allowed: []
-  disallowed: []
---- !u!114 &11496734
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 114846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 151682}
-    parent: {fileID: 11435594}
-    mode: 0
-    path: /Spin/Main/Timer State/Timer State/Seconds/Target
-  usage: 1
-  path: Timer State/Seconds/0
-  referenceID: -38258/6b5e2173-1855-4bed-b508-df8c0f229240
-  referencePath: Duration
-  attribute:
-    name: Seconds
-    path: Timer State/Seconds
-    id: -38248/c9c76c41-2c69-469b-9ff8-cba5b23bf6df
-    localID: c9c76c41-2c69-469b-9ff8-cba5b23bf6df
-    parent: {fileID: 11435594}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11496734}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11497176
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 114846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3e9984a5f3f19942be359930227796e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute String Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 151682}
-    parent: {fileID: 11432898}
-    mode: 0
-    path: /Spin/Main/Spin Animation/Spin Animation/Animation Name/Target
-  usage: 1
-  path: Spin Animation/Animation Name/0
-  referenceID: -38246/1ae62cbb-d3a1-4b44-8a37-045d5d38181a
-  referencePath: Animation
-  attribute:
-    name: Animation Name
-    path: Spin Animation/Animation Name
-    id: -38242/5c217165-5ebc-4802-a748-3ef60106fe0d
-    localID: 5c217165-5ebc-4802-a748-3ef60106fe0d
-    parent: {fileID: 11432898}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11497176}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 
-  characterLimit: 0
-  allowed: []
-  disallowed: []
---- !u!114 &11499482
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 114846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 151682}
-    parent: {fileID: 11450360}
-    mode: 0
-    path: /Spin/Main/Input Pressed/Input Pressed/Released/Target
-  usage: 0
-  path: Input Pressed/Released/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Released
-    path: Input Pressed/Released
-    id: -38256/b2c08765-b4cc-421f-baa5-1bfe29b78bd6
-    localID: b2c08765-b4cc-421f-baa5-1bfe29b78bd6
-    parent: {fileID: 11450360}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11499482}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

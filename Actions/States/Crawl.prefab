@@ -26,9 +26,6 @@ GameObject:
   - 114: {fileID: 11442498}
   - 114: {fileID: 11434848}
   - 114: {fileID: 11409822}
-  - 114: {fileID: 11487400}
-  - 114: {fileID: 11463560}
-  - 114: {fileID: 11410152}
   m_Layer: 10
   m_Name: '@Settings'
   m_TagString: Untagged
@@ -46,35 +43,7 @@ GameObject:
   - 4: {fileID: 448150}
   - 114: {fileID: 11445422}
   - 114: {fileID: 11464860}
-  - 114: {fileID: 11494364}
-  - 114: {fileID: 11435868}
-  - 114: {fileID: 11427694}
-  - 114: {fileID: 11402256}
-  - 114: {fileID: 11402348}
   - 114: {fileID: 11408368}
-  - 114: {fileID: 11498432}
-  - 114: {fileID: 11412292}
-  - 114: {fileID: 11403070}
-  - 114: {fileID: 11428050}
-  - 114: {fileID: 11497900}
-  - 114: {fileID: 11486312}
-  - 114: {fileID: 11463540}
-  - 114: {fileID: 11465552}
-  - 114: {fileID: 11475192}
-  - 114: {fileID: 11471304}
-  - 114: {fileID: 11453634}
-  - 114: {fileID: 11466270}
-  - 114: {fileID: 11464316}
-  - 114: {fileID: 11429910}
-  - 114: {fileID: 11413622}
-  - 114: {fileID: 11418792}
-  - 114: {fileID: 11449336}
-  - 114: {fileID: 11431790}
-  - 114: {fileID: 11439276}
-  - 114: {fileID: 11475784}
-  - 114: {fileID: 11449354}
-  - 114: {fileID: 11449264}
-  - 114: {fileID: 11478308}
   m_Layer: 10
   m_Name: Main
   m_TagString: Untagged
@@ -120,162 +89,6 @@ Transform:
   - {fileID: 448150}
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11402256
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../../../Movement/@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 11464860}
-    mode: 0
-    path: /Crawl/Main/Crawl Speed/Crawl Speed/Target/Target
-  usage: 1
-  path: Crawl Speed/Target/0
-  referenceID: -72594/dca5905a-c495-4ff2-9c6d-31ab61c97f06
-  referencePath: Speed
-  attribute:
-    name: Target
-    path: Crawl Speed/Target
-    id: -48202/fe5bb54e-8246-49df-8693-a0e506e858e8
-    localID: fe5bb54e-8246-49df-8693-a0e506e858e8
-    parent: {fileID: 11464860}
-    mode: 1
-    linkType: 0
-    oldData:
-    - {fileID: 11402256}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11402348
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 182214}
-    parent: {fileID: 11464860}
-    mode: 0
-    path: /Crawl/Main/Crawl Speed/Crawl Speed/Value/Target
-  usage: 1
-  path: Crawl Speed/Value/0
-  referenceID: -48176/2e598b53-0a61-4a68-86b9-595f8e971990
-  referencePath: Crawl Speed
-  attribute:
-    name: Value
-    path: Crawl Speed/Value
-    id: -48202/f4fb5df0-b4c6-4ca5-a90a-0444192eb9b6
-    localID: f4fb5df0-b4c6-4ca5-a90a-0444192eb9b6
-    parent: {fileID: 11464860}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11402348}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11403070
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 182214}
-    parent: {fileID: 11408368}
-    mode: 0
-    path: /Crawl/Main/Sticky Check/Sticky Check/Used/Target
-  usage: 0
-  path: Sticky Check/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: Sticky Check/Used
-    id: -48136/1849e919-9a58-4cbf-bc32-ea0aad08a4da
-    localID: 1849e919-9a58-4cbf-bc32-ea0aad08a4da
-    parent: {fileID: 11408368}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11403070}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!114 &11408368
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -298,117 +111,279 @@ MonoBehaviour:
     info:
       name: Usable
       path: Sticky Check/Usable
-      id: -48136/b9411779-dfb6-4aa3-8b7f-11137379f861
+      fullPath: Crawl/Main/Sticky Check/Usable
+      id: -90880/b9411779-dfb6-4aa3-8b7f-11137379f861
       localID: b9411779-dfb6-4aa3-8b7f-11137379f861
       parent: {fileID: 11408368}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11498432}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 182214}
+          parent: {fileID: 11408368}
+          mode: 0
+          path: /Crawl/Main/Sticky Check/Sticky Check/Usable/Target
+        usage: 0
+        path: /Crawl/Main/Attribute Bool Data E
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
       path: Sticky Check/Active
-      id: -48136/65595841-4880-4400-a0c5-6979d70a2518
-      localID: 65595841-4880-4400-a0c5-6979d70a2518
+      fullPath: Crawl/Main/Sticky Check/Active
+      id: -90880/ad9be72d-4ee7-4c72-8580-f83a08231ca7
+      localID: ad9be72d-4ee7-4c72-8580-f83a08231ca7
       parent: {fileID: 11408368}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11412292}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: Crawl/Main/Sticky Check/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
       path: Sticky Check/Used
-      id: -48136/1849e919-9a58-4cbf-bc32-ea0aad08a4da
+      fullPath: Crawl/Main/Sticky Check/Used
+      id: -90880/1849e919-9a58-4cbf-bc32-ea0aad08a4da
       localID: 1849e919-9a58-4cbf-bc32-ea0aad08a4da
       parent: {fileID: 11408368}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11403070}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 182214}
+          parent: {fileID: 11408368}
+          mode: 0
+          path: /Crawl/Main/Sticky Check/Sticky Check/Used/Target
+        usage: 0
+        path: /Crawl/Main/Attribute Bool Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   source:
     info:
       name: Source
       path: Sticky Check/Source
-      id: -48136/82317b72-9009-4f3d-9655-2ceb680718ca
+      fullPath: Crawl/Main/Sticky Check/Source
+      id: -90880/82317b72-9009-4f3d-9655-2ceb680718ca
       localID: 82317b72-9009-4f3d-9655-2ceb680718ca
       parent: {fileID: 11408368}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11428050}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 182214}
+          parent: {fileID: 11408368}
+          mode: 0
+          path: /Crawl/Main/Sticky Check/Sticky Check/Source/Target
+        usage: 1
+        path: /Crawl/Main/Attribute Game Object Data
+        referenceID: -48164/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+        referencePath: Source
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeGameObjectData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   direction:
     info:
       name: Direction
       path: Sticky Check/Direction
-      id: -48136/9684c49a-2e2d-491b-af75-558c1753e5bb
+      fullPath: Crawl/Main/Sticky Check/Direction
+      id: -90880/9684c49a-2e2d-491b-af75-558c1753e5bb
       localID: 9684c49a-2e2d-491b-af75-558c1753e5bb
       parent: {fileID: 11408368}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11497900}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 182214}
+          parent: {fileID: 11408368}
+          mode: 0
+          path: /Crawl/Main/Sticky Check/Sticky Check/Direction/Target
+        usage: 0
+        path: /Crawl/Main/Attribute Vector3Data B
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: (0.0, -0.3, 0.0)
+        rawType: Zios.AttributeVector3Data
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
     x:
       info:
         name: X
         path: Sticky Check/Direction/X
-        id: -48136/1e4edaf0-92c4-4203-ae9d-564b165b401e
+        fullPath: Crawl/Main/Sticky Check/Direction/X
+        id: -90880/1e4edaf0-92c4-4203-ae9d-564b165b401e
         localID: 1e4edaf0-92c4-4203-ae9d-564b165b401e
         parent: {fileID: 11408368}
         mode: 0
         linkType: 0
         oldData:
-        - {fileID: 11486312}
+        - target:
+            search: ../@Settings
+            directObject: {fileID: 0}
+            searchObject: {fileID: 182214}
+            parent: {fileID: 11408368}
+            mode: 0
+            path: /Crawl/Main/Sticky Check/Sticky Check/Direction/X/Target
+          usage: 0
+          path: /Crawl/Main/Attribute Float Data D
+          referenceID: 
+          referencePath: 
+          operation: 0
+          special: 0
+          rawValue: 0
+          rawType: Zios.AttributeFloatData
+        oldDataB: []
+        oldDataC: []
+        oldData: []
         oldDataB: []
         oldDataC: []
     y:
       info:
         name: Y
         path: Sticky Check/Direction/Y
-        id: -48136/6d5d4853-83a3-437c-9b10-885c4803bf2f
+        fullPath: Crawl/Main/Sticky Check/Direction/Y
+        id: -90880/6d5d4853-83a3-437c-9b10-885c4803bf2f
         localID: 6d5d4853-83a3-437c-9b10-885c4803bf2f
         parent: {fileID: 11408368}
         mode: 0
         linkType: 0
         oldData:
-        - {fileID: 11463540}
+        - target:
+            search: ../@Settings
+            directObject: {fileID: 0}
+            searchObject: {fileID: 182214}
+            parent: {fileID: 11408368}
+            mode: 0
+            path: /Crawl/Main/Sticky Check/Sticky Check/Direction/Y/Target
+          usage: 0
+          path: /Crawl/Main/Attribute Float Data E
+          referenceID: 
+          referencePath: 
+          operation: 0
+          special: 0
+          rawValue: 0
+          rawType: Zios.AttributeFloatData
+        oldDataB: []
+        oldDataC: []
+        oldData: []
         oldDataB: []
         oldDataC: []
     z:
       info:
         name: Z
         path: Sticky Check/Direction/Z
-        id: -48136/6c073f81-a72e-4d37-9fa5-1ba7b53cce5a
+        fullPath: Crawl/Main/Sticky Check/Direction/Z
+        id: -90880/6c073f81-a72e-4d37-9fa5-1ba7b53cce5a
         localID: 6c073f81-a72e-4d37-9fa5-1ba7b53cce5a
         parent: {fileID: 11408368}
         mode: 0
         linkType: 0
         oldData:
-        - {fileID: 11465552}
+        - target:
+            search: ../@Settings
+            directObject: {fileID: 0}
+            searchObject: {fileID: 182214}
+            parent: {fileID: 11408368}
+            mode: 0
+            path: /Crawl/Main/Sticky Check/Sticky Check/Direction/Z/Target
+          usage: 0
+          path: /Crawl/Main/Attribute Float Data F
+          referenceID: 
+          referencePath: 
+          operation: 0
+          special: 0
+          rawValue: 0
+          rawType: Zios.AttributeFloatData
+        oldDataB: []
+        oldDataC: []
+        oldData: []
         oldDataB: []
         oldDataC: []
   distance:
     info:
       name: Distance
       path: Sticky Check/Distance
-      id: -48136/9eeb5b0e-9283-4419-b0f6-8a87f1502506
+      fullPath: Crawl/Main/Sticky Check/Distance
+      id: -90880/9eeb5b0e-9283-4419-b0f6-8a87f1502506
       localID: 9eeb5b0e-9283-4419-b0f6-8a87f1502506
       parent: {fileID: 11408368}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11475192}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 182214}
+          parent: {fileID: 11408368}
+          mode: 0
+          path: /Crawl/Main/Sticky Check/Sticky Check/Distance/Target
+        usage: 0
+        path: /Crawl/Main/Attribute Float Data G
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 1
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   layers:
@@ -419,130 +394,310 @@ MonoBehaviour:
     info:
       name: Hit Point
       path: Sticky Check/Hit Point
-      id: -48136/4331e230-fef5-473b-b056-6a77dbfd748a
+      fullPath: Crawl/Main/Sticky Check/Hit Point
+      id: -90880/4331e230-fef5-473b-b056-6a77dbfd748a
       localID: 4331e230-fef5-473b-b056-6a77dbfd748a
       parent: {fileID: 11408368}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11471304}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 182214}
+          parent: {fileID: 11408368}
+          mode: 0
+          path: /Crawl/Main/Sticky Check/Sticky Check/Hit Point/Target
+        usage: 0
+        path: /Crawl/Main/Attribute Vector3Data C
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: (0.0, 0.0, 0.0)
+        rawType: Zios.AttributeVector3Data
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
     x:
       info:
         name: X
         path: Sticky Check/Hit Point/X
-        id: -48136/97b3e44e-af8d-4368-a2cf-c7143822458b
+        fullPath: Crawl/Main/Sticky Check/Hit Point/X
+        id: -90880/97b3e44e-af8d-4368-a2cf-c7143822458b
         localID: 97b3e44e-af8d-4368-a2cf-c7143822458b
         parent: {fileID: 11408368}
         mode: 0
         linkType: 0
         oldData:
-        - {fileID: 11453634}
+        - target:
+            search: ../@Settings
+            directObject: {fileID: 0}
+            searchObject: {fileID: 182214}
+            parent: {fileID: 11408368}
+            mode: 0
+            path: /Crawl/Main/Sticky Check/Sticky Check/Hit Point/X/Target
+          usage: 0
+          path: /Crawl/Main/Attribute Float Data H
+          referenceID: 
+          referencePath: 
+          operation: 0
+          special: 0
+          rawValue: 0
+          rawType: Zios.AttributeFloatData
+        oldDataB: []
+        oldDataC: []
+        oldData: []
         oldDataB: []
         oldDataC: []
     y:
       info:
         name: Y
         path: Sticky Check/Hit Point/Y
-        id: -48136/54861f07-862d-43df-b5f7-1982096e4f68
+        fullPath: Crawl/Main/Sticky Check/Hit Point/Y
+        id: -90880/54861f07-862d-43df-b5f7-1982096e4f68
         localID: 54861f07-862d-43df-b5f7-1982096e4f68
         parent: {fileID: 11408368}
         mode: 0
         linkType: 0
         oldData:
-        - {fileID: 11466270}
+        - target:
+            search: ../@Settings
+            directObject: {fileID: 0}
+            searchObject: {fileID: 182214}
+            parent: {fileID: 11408368}
+            mode: 0
+            path: /Crawl/Main/Sticky Check/Sticky Check/Hit Point/Y/Target
+          usage: 0
+          path: /Crawl/Main/Attribute Float Data I
+          referenceID: 
+          referencePath: 
+          operation: 0
+          special: 0
+          rawValue: 0
+          rawType: Zios.AttributeFloatData
+        oldDataB: []
+        oldDataC: []
+        oldData: []
         oldDataB: []
         oldDataC: []
     z:
       info:
         name: Z
         path: Sticky Check/Hit Point/Z
-        id: -48136/4ebd894d-c45c-463b-8a7f-a6b5cd41f4d9
+        fullPath: Crawl/Main/Sticky Check/Hit Point/Z
+        id: -90880/4ebd894d-c45c-463b-8a7f-a6b5cd41f4d9
         localID: 4ebd894d-c45c-463b-8a7f-a6b5cd41f4d9
         parent: {fileID: 11408368}
         mode: 0
         linkType: 0
         oldData:
-        - {fileID: 11464316}
+        - target:
+            search: ../@Settings
+            directObject: {fileID: 0}
+            searchObject: {fileID: 182214}
+            parent: {fileID: 11408368}
+            mode: 0
+            path: /Crawl/Main/Sticky Check/Sticky Check/Hit Point/Z/Target
+          usage: 0
+          path: /Crawl/Main/Attribute Float Data J
+          referenceID: 
+          referencePath: 
+          operation: 0
+          special: 0
+          rawValue: 0
+          rawType: Zios.AttributeFloatData
+        oldDataB: []
+        oldDataC: []
+        oldData: []
         oldDataB: []
         oldDataC: []
   hitNormal:
     info:
       name: Hit Normal
       path: Sticky Check/Hit Normal
-      id: -48136/61f01fbe-16db-4a40-a2f3-996b29e87f31
+      fullPath: Crawl/Main/Sticky Check/Hit Normal
+      id: -90880/61f01fbe-16db-4a40-a2f3-996b29e87f31
       localID: 61f01fbe-16db-4a40-a2f3-996b29e87f31
       parent: {fileID: 11408368}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11429910}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 182214}
+          parent: {fileID: 11408368}
+          mode: 0
+          path: /Crawl/Main/Sticky Check/Sticky Check/Hit Normal/Target
+        usage: 0
+        path: /Crawl/Main/Attribute Vector3Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: (0.0, 0.0, 0.0)
+        rawType: Zios.AttributeVector3Data
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
     x:
       info:
         name: X
         path: Sticky Check/Hit Normal/X
-        id: -48136/5ed469ee-33da-4f10-918d-9ad82579d037
+        fullPath: Crawl/Main/Sticky Check/Hit Normal/X
+        id: -90880/5ed469ee-33da-4f10-918d-9ad82579d037
         localID: 5ed469ee-33da-4f10-918d-9ad82579d037
         parent: {fileID: 11408368}
         mode: 0
         linkType: 0
         oldData:
-        - {fileID: 11413622}
+        - target:
+            search: ../@Settings
+            directObject: {fileID: 0}
+            searchObject: {fileID: 182214}
+            parent: {fileID: 11408368}
+            mode: 0
+            path: /Crawl/Main/Sticky Check/Sticky Check/Hit Normal/X/Target
+          usage: 0
+          path: /Crawl/Main/Attribute Float Data K
+          referenceID: 
+          referencePath: 
+          operation: 0
+          special: 0
+          rawValue: 0
+          rawType: Zios.AttributeFloatData
+        oldDataB: []
+        oldDataC: []
+        oldData: []
         oldDataB: []
         oldDataC: []
     y:
       info:
         name: Y
         path: Sticky Check/Hit Normal/Y
-        id: -48136/35ac2e8f-8b4a-4bee-9736-d2b434cb6ecb
+        fullPath: Crawl/Main/Sticky Check/Hit Normal/Y
+        id: -90880/35ac2e8f-8b4a-4bee-9736-d2b434cb6ecb
         localID: 35ac2e8f-8b4a-4bee-9736-d2b434cb6ecb
         parent: {fileID: 11408368}
         mode: 0
         linkType: 0
         oldData:
-        - {fileID: 11418792}
+        - target:
+            search: ../@Settings
+            directObject: {fileID: 0}
+            searchObject: {fileID: 182214}
+            parent: {fileID: 11408368}
+            mode: 0
+            path: /Crawl/Main/Sticky Check/Sticky Check/Hit Normal/Y/Target
+          usage: 0
+          path: /Crawl/Main/Attribute Float Data L
+          referenceID: 
+          referencePath: 
+          operation: 0
+          special: 0
+          rawValue: 0
+          rawType: Zios.AttributeFloatData
+        oldDataB: []
+        oldDataC: []
+        oldData: []
         oldDataB: []
         oldDataC: []
     z:
       info:
         name: Z
         path: Sticky Check/Hit Normal/Z
-        id: -48136/accf128d-e98a-4a43-ae2b-76a72b5b1100
+        fullPath: Crawl/Main/Sticky Check/Hit Normal/Z
+        id: -90880/accf128d-e98a-4a43-ae2b-76a72b5b1100
         localID: accf128d-e98a-4a43-ae2b-76a72b5b1100
         parent: {fileID: 11408368}
         mode: 0
         linkType: 0
         oldData:
-        - {fileID: 11449336}
+        - target:
+            search: ../@Settings
+            directObject: {fileID: 0}
+            searchObject: {fileID: 182214}
+            parent: {fileID: 11408368}
+            mode: 0
+            path: /Crawl/Main/Sticky Check/Sticky Check/Hit Normal/Z/Target
+          usage: 0
+          path: /Crawl/Main/Attribute Float Data M
+          referenceID: 
+          referencePath: 
+          operation: 0
+          special: 0
+          rawValue: 0
+          rawType: Zios.AttributeFloatData
+        oldDataB: []
+        oldDataC: []
+        oldData: []
         oldDataB: []
         oldDataC: []
   hitDistance:
     info:
       name: Hit Distance
       path: Sticky Check/Hit Distance
-      id: -48136/7d0a0ab2-c6a4-461b-87f4-4cd0f4b91fe3
+      fullPath: Crawl/Main/Sticky Check/Hit Distance
+      id: -90880/7d0a0ab2-c6a4-461b-87f4-4cd0f4b91fe3
       localID: 7d0a0ab2-c6a4-461b-87f4-4cd0f4b91fe3
       parent: {fileID: 11408368}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11431790}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 182214}
+          parent: {fileID: 11408368}
+          mode: 0
+          path: /Crawl/Main/Sticky Check/Sticky Check/Hit Distance/Target
+        usage: 0
+        path: /Crawl/Main/Attribute Float Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 0
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   hit:
     info:
       name: Hit
       path: Sticky Check/Hit
-      id: -48136/69e6f535-adb5-4c60-b9e9-9b91a1f1b362
+      fullPath: Crawl/Main/Sticky Check/Hit
+      id: -90880/69e6f535-adb5-4c60-b9e9-9b91a1f1b362
       localID: 69e6f535-adb5-4c60-b9e9-9b91a1f1b362
       parent: {fileID: 11408368}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11439276}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 190652}
+          parent: {fileID: 11408368}
+          mode: 0
+          path: /Crawl/Main/Sticky Check/Sticky Check/Hit/Target
+        usage: 1
+        path: /Crawl/Main/Old Attribute Game Object Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeGameObjectData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
 --- !u!114 &11409822
@@ -563,432 +718,34 @@ MonoBehaviour:
     info:
       name: Visuals
       path: Visuals
-      id: -48138/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+      fullPath: Crawl/@Settings/Visuals
+      id: -90858/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
       localID: 33bddd78-c7f6-40fe-94d8-1637fbd7fa73
       parent: {fileID: 11409822}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11410152}
+      - target:
+          search: ../../../../Visuals
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 11409822}
+          mode: 0
+          path: /Crawl/@Settings/Visuals/Visuals/Target
+        usage: 1
+        path: /Crawl/@Settings/Attribute Game Object Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeGameObjectData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   remember: 0
---- !u!114 &11410152
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 182214}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Game Object Data
-  target:
-    search: ../../../../Visuals
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 11409822}
-    mode: 0
-    path: /Crawl/@Settings/Visuals/Visuals/Target
-  usage: 1
-  path: Visuals/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Visuals
-    path: Visuals
-    id: -48138/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
-    localID: 33bddd78-c7f6-40fe-94d8-1637fbd7fa73
-    parent: {fileID: 11409822}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11410152}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {fileID: 0}
---- !u!114 &11412292
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 182214}
-    parent: {fileID: 11408368}
-    mode: 0
-    path: /Crawl/Main/Sticky Check/Sticky Check/Active/Target
-  usage: 0
-  path: Sticky Check/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: Sticky Check/Active
-    id: -48136/65595841-4880-4400-a0c5-6979d70a2518
-    localID: 65595841-4880-4400-a0c5-6979d70a2518
-    parent: {fileID: 11408368}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11412292}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11413622
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 182214}
-    parent: {fileID: 11408368}
-    mode: 0
-    path: /Crawl/Main/Sticky Check/Sticky Check/Hit Normal/X/Target
-  usage: 0
-  path: Sticky Check/Hit Normal/X/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: X
-    path: Sticky Check/Hit Normal/X
-    id: -48136/5ed469ee-33da-4f10-918d-9ad82579d037
-    localID: 5ed469ee-33da-4f10-918d-9ad82579d037
-    parent: {fileID: 11408368}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11413622}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11418792
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 182214}
-    parent: {fileID: 11408368}
-    mode: 0
-    path: /Crawl/Main/Sticky Check/Sticky Check/Hit Normal/Y/Target
-  usage: 0
-  path: Sticky Check/Hit Normal/Y/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Y
-    path: Sticky Check/Hit Normal/Y
-    id: -48136/35ac2e8f-8b4a-4bee-9736-d2b434cb6ecb
-    localID: 35ac2e8f-8b4a-4bee-9736-d2b434cb6ecb
-    parent: {fileID: 11408368}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11418792}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11427694
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 190652}
-    parent: {fileID: 11464860}
-    mode: 0
-    path: /Crawl/Main/Crawl Speed/Crawl Speed/Used/Target
-  usage: 0
-  path: Crawl Speed/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: Crawl Speed/Used
-    id: -48202/73927be3-5383-485e-ab73-6cf53e2b605c
-    localID: 73927be3-5383-485e-ab73-6cf53e2b605c
-    parent: {fileID: 11464860}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11427694}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11428050
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Game Object Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 182214}
-    parent: {fileID: 11408368}
-    mode: 0
-    path: /Crawl/Main/Sticky Check/Sticky Check/Source/Target
-  usage: 1
-  path: Sticky Check/Source/0
-  referenceID: -48164/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
-  referencePath: Source
-  attribute:
-    name: Source
-    path: Sticky Check/Source
-    id: -48136/82317b72-9009-4f3d-9655-2ceb680718ca
-    localID: 82317b72-9009-4f3d-9655-2ceb680718ca
-    parent: {fileID: 11408368}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11428050}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {fileID: 0}
---- !u!114 &11429910
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83639dc7708e9ad4584145044a83425d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Vector3Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 182214}
-    parent: {fileID: 11408368}
-    mode: 0
-    path: /Crawl/Main/Sticky Check/Sticky Check/Hit Normal/Target
-  usage: 0
-  path: Sticky Check/Hit Normal/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Hit Normal
-    path: Sticky Check/Hit Normal
-    id: -48136/61f01fbe-16db-4a40-a2f3-996b29e87f31
-    localID: 61f01fbe-16db-4a40-a2f3-996b29e87f31
-    parent: {fileID: 11408368}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11429910}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {x: 0, y: 0, z: 0}
---- !u!114 &11431790
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 182214}
-    parent: {fileID: 11408368}
-    mode: 0
-    path: /Crawl/Main/Sticky Check/Sticky Check/Hit Distance/Target
-  usage: 0
-  path: Sticky Check/Hit Distance/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Hit Distance
-    path: Sticky Check/Hit Distance
-    id: -48136/7d0a0ab2-c6a4-461b-87f4-4cd0f4b91fe3
-    localID: 7d0a0ab2-c6a4-461b-87f4-4cd0f4b91fe3
-    parent: {fileID: 11408368}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11431790}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!114 &11434848
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1007,120 +764,34 @@ MonoBehaviour:
     info:
       name: Source
       path: Source
-      id: -48164/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+      fullPath: Crawl/@Settings/Source
+      id: -90856/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
       localID: 0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
       parent: {fileID: 11434848}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11463560}
+      - target:
+          search: ../../../..
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 11434848}
+          mode: 0
+          path: /Crawl/@Settings/Source/Source/Target
+        usage: 1
+        path: /Crawl/@Settings/Attribute Game Object Data B
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeGameObjectData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   remember: 0
---- !u!114 &11435868
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 190652}
-    parent: {fileID: 11464860}
-    mode: 0
-    path: /Crawl/Main/Crawl Speed/Crawl Speed/Active/Target
-  usage: 0
-  path: Crawl Speed/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: Crawl Speed/Active
-    id: -48202/7e31aa4b-9aed-4811-aa5a-1ee41e9d01e7
-    localID: 7e31aa4b-9aed-4811-aa5a-1ee41e9d01e7
-    parent: {fileID: 11464860}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11435868}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11439276
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 190652}
-    parent: {fileID: 11408368}
-    mode: 0
-    path: /Crawl/Main/Sticky Check/Sticky Check/Hit/Target
-  usage: 1
-  path: Sticky Check/Hit/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Hit
-    path: Sticky Check/Hit
-    id: -48136/69e6f535-adb5-4c60-b9e9-9b91a1f1b362
-    localID: 69e6f535-adb5-4c60-b9e9-9b91a1f1b362
-    parent: {fileID: 11408368}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11439276}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {fileID: 0}
 --- !u!114 &11442498
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1139,13 +810,31 @@ MonoBehaviour:
     info:
       name: Crawl Speed
       path: Crawl Speed
-      id: -48176/2e598b53-0a61-4a68-86b9-595f8e971990
+      fullPath: Crawl/@Settings/Crawl Speed
+      id: -90854/2e598b53-0a61-4a68-86b9-595f8e971990
       localID: 2e598b53-0a61-4a68-86b9-595f8e971990
       parent: {fileID: 11442498}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11487400}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 182214}
+          parent: {fileID: 11442498}
+          mode: 0
+          path: /Crawl/@Settings/Crawl Speed/Crawl Speed/Target
+        usage: 0
+        path: /Crawl/@Settings/Attribute Float Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 2.5
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   remember: 0
@@ -1171,39 +860,93 @@ MonoBehaviour:
     info:
       name: Usable
       path: Crawl/Usable
-      id: -48180/ccae16e0-0b34-4f25-bf61-259262444178
+      fullPath: Crawl/Main/Crawl/Usable
+      id: -90866/ccae16e0-0b34-4f25-bf61-259262444178
       localID: ccae16e0-0b34-4f25-bf61-259262444178
       parent: {fileID: 11445422}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11475784}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 190652}
+          parent: {fileID: 11445422}
+          mode: 0
+          path: /Crawl/Main/Crawl/Crawl/Usable/Target
+        usage: 0
+        path: /Crawl/Main/Old Attribute Bool Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: True
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
       path: Crawl/Active
-      id: -48180/a161f1e3-a9f0-4fd3-ab70-7f04939a6e12
-      localID: a161f1e3-a9f0-4fd3-ab70-7f04939a6e12
+      fullPath: Crawl/Main/Crawl/Active
+      id: -90866/f8aa298f-2dc7-4e97-9b2f-9a1fbf9c8bd5
+      localID: f8aa298f-2dc7-4e97-9b2f-9a1fbf9c8bd5
       parent: {fileID: 11445422}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11449354}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: Crawl/Main/Crawl/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
       path: Crawl/Used
-      id: -48180/ad438dad-fbb9-42e8-8ae7-c39e44d78d1c
+      fullPath: Crawl/Main/Crawl/Used
+      id: -90866/ad438dad-fbb9-42e8-8ae7-c39e44d78d1c
       localID: ad438dad-fbb9-42e8-8ae7-c39e44d78d1c
       parent: {fileID: 11445422}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11449264}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 190652}
+          parent: {fileID: 11445422}
+          mode: 0
+          path: /Crawl/Main/Crawl/Crawl/Used/Target
+        usage: 0
+        path: /Crawl/Main/Old Attribute Bool Data C
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   table:
@@ -1370,383 +1113,37 @@ MonoBehaviour:
     info:
       name: External
       path: Crawl/External
-      id: -48180/a73db8a4-8f8d-4fa9-8eef-c5092249c270
+      fullPath: Crawl/Main/Crawl/External
+      id: -90866/a73db8a4-8f8d-4fa9-8eef-c5092249c270
       localID: a73db8a4-8f8d-4fa9-8eef-c5092249c270
       parent: {fileID: 11445422}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11478308}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 190652}
+          parent: {fileID: 11445422}
+          mode: 0
+          path: /Crawl/Main/Crawl/Crawl/External/Target
+        usage: 0
+        path: /Crawl/Main/Old Attribute Bool Data D
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: True
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   scripts:
   - {fileID: 11445422}
   - {fileID: 11464860}
   - {fileID: 11408368}
---- !u!114 &11449264
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 190652}
-    parent: {fileID: 11445422}
-    mode: 0
-    path: /Crawl/Main/Crawl/Crawl/Used/Target
-  usage: 0
-  path: Crawl/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: Crawl/Used
-    id: -48180/ad438dad-fbb9-42e8-8ae7-c39e44d78d1c
-    localID: ad438dad-fbb9-42e8-8ae7-c39e44d78d1c
-    parent: {fileID: 11445422}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11449264}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11449336
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 182214}
-    parent: {fileID: 11408368}
-    mode: 0
-    path: /Crawl/Main/Sticky Check/Sticky Check/Hit Normal/Z/Target
-  usage: 0
-  path: Sticky Check/Hit Normal/Z/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Z
-    path: Sticky Check/Hit Normal/Z
-    id: -48136/accf128d-e98a-4a43-ae2b-76a72b5b1100
-    localID: accf128d-e98a-4a43-ae2b-76a72b5b1100
-    parent: {fileID: 11408368}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11449336}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11449354
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 190652}
-    parent: {fileID: 11445422}
-    mode: 0
-    path: /Crawl/Main/Crawl/Crawl/Active/Target
-  usage: 0
-  path: Crawl/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: Crawl/Active
-    id: -48180/a161f1e3-a9f0-4fd3-ab70-7f04939a6e12
-    localID: a161f1e3-a9f0-4fd3-ab70-7f04939a6e12
-    parent: {fileID: 11445422}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11449354}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11453634
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 182214}
-    parent: {fileID: 11408368}
-    mode: 0
-    path: /Crawl/Main/Sticky Check/Sticky Check/Hit Point/X/Target
-  usage: 0
-  path: Sticky Check/Hit Point/X/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: X
-    path: Sticky Check/Hit Point/X
-    id: -48136/97b3e44e-af8d-4368-a2cf-c7143822458b
-    localID: 97b3e44e-af8d-4368-a2cf-c7143822458b
-    parent: {fileID: 11408368}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11453634}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11463540
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 182214}
-    parent: {fileID: 11408368}
-    mode: 0
-    path: /Crawl/Main/Sticky Check/Sticky Check/Direction/Y/Target
-  usage: 0
-  path: Sticky Check/Direction/Y/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Y
-    path: Sticky Check/Direction/Y
-    id: -48136/6d5d4853-83a3-437c-9b10-885c4803bf2f
-    localID: 6d5d4853-83a3-437c-9b10-885c4803bf2f
-    parent: {fileID: 11408368}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11463540}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11463560
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 182214}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Game Object Data
-  target:
-    search: ../../../..
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 11434848}
-    mode: 0
-    path: /Crawl/@Settings/Source/Source/Target
-  usage: 1
-  path: Source/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Source
-    path: Source
-    id: -48164/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
-    localID: 0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
-    parent: {fileID: 11434848}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11463560}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {fileID: 0}
---- !u!114 &11464316
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 182214}
-    parent: {fileID: 11408368}
-    mode: 0
-    path: /Crawl/Main/Sticky Check/Sticky Check/Hit Point/Z/Target
-  usage: 0
-  path: Sticky Check/Hit Point/Z/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Z
-    path: Sticky Check/Hit Point/Z
-    id: -48136/4ebd894d-c45c-463b-8a7f-a6b5cd41f4d9
-    localID: 4ebd894d-c45c-463b-8a7f-a6b5cd41f4d9
-    parent: {fileID: 11408368}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11464316}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!114 &11464860
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1769,639 +1166,157 @@ MonoBehaviour:
     info:
       name: Usable
       path: Crawl Speed/Usable
-      id: -48202/88150583-7f98-451b-8cab-ad5bd7e85ec8
+      fullPath: Crawl/Main/Crawl Speed/Usable
+      id: -90868/88150583-7f98-451b-8cab-ad5bd7e85ec8
       localID: 88150583-7f98-451b-8cab-ad5bd7e85ec8
       parent: {fileID: 11464860}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11494364}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 190652}
+          parent: {fileID: 11464860}
+          mode: 0
+          path: /Crawl/Main/Crawl Speed/Crawl Speed/Usable/Target
+        usage: 0
+        path: /Crawl/Main/Attribute Bool Data B
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
       path: Crawl Speed/Active
-      id: -48202/7e31aa4b-9aed-4811-aa5a-1ee41e9d01e7
-      localID: 7e31aa4b-9aed-4811-aa5a-1ee41e9d01e7
+      fullPath: Crawl/Main/Crawl Speed/Active
+      id: -90868/09074630-85f5-45c4-8193-4d89b41542d3
+      localID: 09074630-85f5-45c4-8193-4d89b41542d3
       parent: {fileID: 11464860}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11435868}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: Crawl/Main/Crawl Speed/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
       path: Crawl Speed/Used
-      id: -48202/73927be3-5383-485e-ab73-6cf53e2b605c
+      fullPath: Crawl/Main/Crawl Speed/Used
+      id: -90868/73927be3-5383-485e-ab73-6cf53e2b605c
       localID: 73927be3-5383-485e-ab73-6cf53e2b605c
       parent: {fileID: 11464860}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11427694}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 190652}
+          parent: {fileID: 11464860}
+          mode: 0
+          path: /Crawl/Main/Crawl Speed/Crawl Speed/Used/Target
+        usage: 0
+        path: /Crawl/Main/Attribute Bool Data D
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   target:
     info:
       name: Target
       path: Crawl Speed/Target
-      id: -48202/fe5bb54e-8246-49df-8693-a0e506e858e8
+      fullPath: Crawl/Main/Crawl Speed/Target
+      id: -90868/fe5bb54e-8246-49df-8693-a0e506e858e8
       localID: fe5bb54e-8246-49df-8693-a0e506e858e8
       parent: {fileID: 11464860}
       mode: 1
       linkType: 0
       oldData:
-      - {fileID: 11402256}
+      - target:
+          search: ../../../Movement/@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 11464860}
+          mode: 0
+          path: /Crawl/Main/Crawl Speed/Crawl Speed/Target/Target
+        usage: 1
+        path: /Crawl/Main/Attribute Float Data B
+        referenceID: -72594/dca5905a-c495-4ff2-9c6d-31ab61c97f06
+        referencePath: Speed
+        operation: 0
+        special: 0
+        rawValue: 0
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   value:
     info:
       name: Value
       path: Crawl Speed/Value
-      id: -48202/f4fb5df0-b4c6-4ca5-a90a-0444192eb9b6
+      fullPath: Crawl/Main/Crawl Speed/Value
+      id: -90868/f4fb5df0-b4c6-4ca5-a90a-0444192eb9b6
       localID: f4fb5df0-b4c6-4ca5-a90a-0444192eb9b6
       parent: {fileID: 11464860}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11402348}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 182214}
+          parent: {fileID: 11464860}
+          mode: 0
+          path: /Crawl/Main/Crawl Speed/Crawl Speed/Value/Target
+        usage: 1
+        path: /Crawl/Main/Attribute Float Data C
+        referenceID: -48176/2e598b53-0a61-4a68-86b9-595f8e971990
+        referencePath: Crawl Speed
+        operation: 0
+        special: 0
+        rawValue: 0
+        rawType: Zios.AttributeFloatData
       oldDataB: []
       oldDataC: []
---- !u!114 &11465552
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 182214}
-    parent: {fileID: 11408368}
-    mode: 0
-    path: /Crawl/Main/Sticky Check/Sticky Check/Direction/Z/Target
-  usage: 0
-  path: Sticky Check/Direction/Z/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Z
-    path: Sticky Check/Direction/Z
-    id: -48136/6c073f81-a72e-4d37-9fa5-1ba7b53cce5a
-    localID: 6c073f81-a72e-4d37-9fa5-1ba7b53cce5a
-    parent: {fileID: 11408368}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11465552}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
       oldData: []
       oldDataB: []
       oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11466270
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 182214}
-    parent: {fileID: 11408368}
-    mode: 0
-    path: /Crawl/Main/Sticky Check/Sticky Check/Hit Point/Y/Target
-  usage: 0
-  path: Sticky Check/Hit Point/Y/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Y
-    path: Sticky Check/Hit Point/Y
-    id: -48136/54861f07-862d-43df-b5f7-1982096e4f68
-    localID: 54861f07-862d-43df-b5f7-1982096e4f68
-    parent: {fileID: 11408368}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11466270}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11471304
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83639dc7708e9ad4584145044a83425d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Vector3Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 182214}
-    parent: {fileID: 11408368}
-    mode: 0
-    path: /Crawl/Main/Sticky Check/Sticky Check/Hit Point/Target
-  usage: 0
-  path: Sticky Check/Hit Point/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Hit Point
-    path: Sticky Check/Hit Point
-    id: -48136/4331e230-fef5-473b-b056-6a77dbfd748a
-    localID: 4331e230-fef5-473b-b056-6a77dbfd748a
-    parent: {fileID: 11408368}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11471304}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {x: 0, y: 0, z: 0}
---- !u!114 &11475192
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 182214}
-    parent: {fileID: 11408368}
-    mode: 0
-    path: /Crawl/Main/Sticky Check/Sticky Check/Distance/Target
-  usage: 0
-  path: Sticky Check/Distance/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Distance
-    path: Sticky Check/Distance
-    id: -48136/9eeb5b0e-9283-4419-b0f6-8a87f1502506
-    localID: 9eeb5b0e-9283-4419-b0f6-8a87f1502506
-    parent: {fileID: 11408368}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11475192}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11475784
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 190652}
-    parent: {fileID: 11445422}
-    mode: 0
-    path: /Crawl/Main/Crawl/Crawl/Usable/Target
-  usage: 0
-  path: Crawl/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: Crawl/Usable
-    id: -48180/ccae16e0-0b34-4f25-bf61-259262444178
-    localID: ccae16e0-0b34-4f25-bf61-259262444178
-    parent: {fileID: 11445422}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11475784}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11478308
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 190652}
-    parent: {fileID: 11445422}
-    mode: 0
-    path: /Crawl/Main/Crawl/Crawl/External/Target
-  usage: 0
-  path: Crawl/External/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: External
-    path: Crawl/External
-    id: -48180/a73db8a4-8f8d-4fa9-8eef-c5092249c270
-    localID: a73db8a4-8f8d-4fa9-8eef-c5092249c270
-    parent: {fileID: 11445422}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11478308}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11486312
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 182214}
-    parent: {fileID: 11408368}
-    mode: 0
-    path: /Crawl/Main/Sticky Check/Sticky Check/Direction/X/Target
-  usage: 0
-  path: Sticky Check/Direction/X/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: X
-    path: Sticky Check/Direction/X
-    id: -48136/1e4edaf0-92c4-4203-ae9d-564b165b401e
-    localID: 1e4edaf0-92c4-4203-ae9d-564b165b401e
-    parent: {fileID: 11408368}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11486312}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11487400
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 182214}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 182214}
-    parent: {fileID: 11442498}
-    mode: 0
-    path: /Crawl/@Settings/Crawl Speed/Crawl Speed/Target
-  usage: 0
-  path: Crawl Speed/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Crawl Speed
-    path: Crawl Speed
-    id: -48176/2e598b53-0a61-4a68-86b9-595f8e971990
-    localID: 2e598b53-0a61-4a68-86b9-595f8e971990
-    parent: {fileID: 11442498}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11487400}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 2.5
---- !u!114 &11494364
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 190652}
-    parent: {fileID: 11464860}
-    mode: 0
-    path: /Crawl/Main/Crawl Speed/Crawl Speed/Usable/Target
-  usage: 0
-  path: Crawl Speed/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: Crawl Speed/Usable
-    id: -48202/88150583-7f98-451b-8cab-ad5bd7e85ec8
-    localID: 88150583-7f98-451b-8cab-ad5bd7e85ec8
-    parent: {fileID: 11464860}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11494364}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11497900
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83639dc7708e9ad4584145044a83425d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Vector3Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 182214}
-    parent: {fileID: 11408368}
-    mode: 0
-    path: /Crawl/Main/Sticky Check/Sticky Check/Direction/Target
-  usage: 0
-  path: Sticky Check/Direction/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Direction
-    path: Sticky Check/Direction
-    id: -48136/9684c49a-2e2d-491b-af75-558c1753e5bb
-    localID: 9684c49a-2e2d-491b-af75-558c1753e5bb
-    parent: {fileID: 11408368}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11497900}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {x: -0, y: -.25, z: -0}
---- !u!114 &11498432
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 182214}
-    parent: {fileID: 11408368}
-    mode: 0
-    path: /Crawl/Main/Sticky Check/Sticky Check/Usable/Target
-  usage: 0
-  path: Sticky Check/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: Sticky Check/Usable
-    id: -48136/b9411779-dfb6-4aa3-8b7f-11137379f861
-    localID: b9411779-dfb6-4aa3-8b7f-11137379f861
-    parent: {fileID: 11408368}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11498432}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

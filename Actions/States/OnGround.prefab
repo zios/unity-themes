@@ -11,9 +11,6 @@ GameObject:
   - 114: {fileID: 11407720}
   - 114: {fileID: 11435610}
   - 114: {fileID: 11448940}
-  - 114: {fileID: 11404138}
-  - 114: {fileID: 11407628}
-  - 114: {fileID: 11454716}
   m_Layer: 10
   m_Name: '@Settings'
   m_TagString: Untagged
@@ -33,40 +30,6 @@ GameObject:
   - 114: {fileID: 11412222}
   - 114: {fileID: 11423334}
   - 114: {fileID: 11447076}
-  - 114: {fileID: 11467030}
-  - 114: {fileID: 11429096}
-  - 114: {fileID: 11439642}
-  - 114: {fileID: 11402348}
-  - 114: {fileID: 11452754}
-  - 114: {fileID: 11458178}
-  - 114: {fileID: 11411032}
-  - 114: {fileID: 11400498}
-  - 114: {fileID: 11428920}
-  - 114: {fileID: 11431884}
-  - 114: {fileID: 11471350}
-  - 114: {fileID: 11448354}
-  - 114: {fileID: 11435276}
-  - 114: {fileID: 11486532}
-  - 114: {fileID: 11440546}
-  - 114: {fileID: 11440688}
-  - 114: {fileID: 11444422}
-  - 114: {fileID: 11408332}
-  - 114: {fileID: 11486558}
-  - 114: {fileID: 11483254}
-  - 114: {fileID: 11404004}
-  - 114: {fileID: 11404394}
-  - 114: {fileID: 11455690}
-  - 114: {fileID: 11433176}
-  - 114: {fileID: 11433962}
-  - 114: {fileID: 11405112}
-  - 114: {fileID: 11472486}
-  - 114: {fileID: 11433752}
-  - 114: {fileID: 11444516}
-  - 114: {fileID: 11415104}
-  - 114: {fileID: 11438638}
-  - 114: {fileID: 11466016}
-  - 114: {fileID: 11475880}
-  - 114: {fileID: 11449724}
   m_Layer: 10
   m_Name: Main
   m_TagString: Untagged
@@ -127,370 +90,6 @@ Transform:
   - {fileID: 453170}
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11400498
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 170228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 170228}
-    parent: {fileID: 11423334}
-    mode: 0
-    path: /OnGround/Main/Ground Trigger/Ground Trigger/Is Complete/Target
-  usage: 0
-  path: Ground Trigger/Is Complete/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Is Complete
-    path: Ground Trigger/Is Complete
-    id: -39532/51412d4b-e64d-4403-88c1-5a72766d45cd
-    localID: 51412d4b-e64d-4403-88c1-5a72766d45cd
-    parent: {fileID: 11423334}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11400498}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11402348
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 170228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 170228}
-    parent: {fileID: 11423334}
-    mode: 0
-    path: /OnGround/Main/Ground Trigger/Ground Trigger/Active/Target
-  usage: 0
-  path: Ground Trigger/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: Ground Trigger/Active
-    id: -39532/d0f94c69-529a-435d-b08a-ab6855287904
-    localID: d0f94c69-529a-435d-b08a-ab6855287904
-    parent: {fileID: 11423334}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11402348}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11404004
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 170228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 170228}
-    parent: {fileID: 11412222}
-    mode: 0
-    path: /OnGround/Main/Ground Check/Ground Check/Hit Normal/Z/Target
-  usage: 0
-  path: Ground Check/Hit Normal/Z/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Z
-    path: Ground Check/Hit Normal/Z
-    id: -39518/93c7c4a3-7075-4c81-a0a2-1fc07d63168b
-    localID: 93c7c4a3-7075-4c81-a0a2-1fc07d63168b
-    parent: {fileID: 11412222}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11404004}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11404138
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 140224}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 140224}
-    parent: {fileID: 11407720}
-    mode: 0
-    path: /OnGround/@Settings/Gravity/Gravity/Target
-  usage: 0
-  path: Gravity/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Gravity
-    path: Gravity
-    id: -39510/36e06670-e99b-4c51-a366-51346402a31d
-    localID: 36e06670-e99b-4c51-a366-51346402a31d
-    parent: {fileID: 11407720}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11404138}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11404394
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 170228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 170228}
-    parent: {fileID: 11412222}
-    mode: 0
-    path: /OnGround/Main/Ground Check/Ground Check/Hit Distance/Target
-  usage: 0
-  path: Ground Check/Hit Distance/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Hit Distance
-    path: Ground Check/Hit Distance
-    id: -39518/598aae7d-85d9-4333-9b6a-1c3c17ddd8df
-    localID: 598aae7d-85d9-4333-9b6a-1c3c17ddd8df
-    parent: {fileID: 11412222}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11404394}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11405112
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 170228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Game Object Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 140224}
-    parent: {fileID: 11412222}
-    mode: 0
-    path: /OnGround/Main/Ground Check/Ground Check/Source/Target
-  usage: 1
-  path: Ground Check/Source/0
-  referenceID: -39550/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
-  referencePath: Source
-  attribute:
-    name: Source
-    path: Ground Check/Source
-    id: -39518/787877bf-0062-4e40-9855-9e127969666f
-    localID: 787877bf-0062-4e40-9855-9e127969666f
-    parent: {fileID: 11412222}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11405112}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {fileID: 0}
---- !u!114 &11407628
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 140224}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 140224}
-    parent: {fileID: 11448940}
-    mode: 0
-    path: /OnGround/@Settings/Trigger Timer/Trigger Timer/Target
-  usage: 0
-  path: Trigger Timer/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Trigger Timer
-    path: Trigger Timer
-    id: -39574/97a273bf-e503-4bfa-9c4a-d45233a5c9a8
-    localID: 97a273bf-e503-4bfa-9c4a-d45233a5c9a8
-    parent: {fileID: 11448940}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11407628}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: .0199999996
 --- !u!114 &11407720
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -509,120 +108,34 @@ MonoBehaviour:
     info:
       name: Gravity
       path: Gravity
-      id: -39510/36e06670-e99b-4c51-a366-51346402a31d
+      fullPath: OnGround/@Settings/Gravity
+      id: -91346/36e06670-e99b-4c51-a366-51346402a31d
       localID: 36e06670-e99b-4c51-a366-51346402a31d
       parent: {fileID: 11407720}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11404138}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 140224}
+          parent: {fileID: 11407720}
+          mode: 0
+          path: /OnGround/@Settings/Gravity/Gravity/Target
+        usage: 0
+        path: /OnGround/@Settings/Attribute Float Data B
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 1
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   remember: 0
---- !u!114 &11408332
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 170228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 170228}
-    parent: {fileID: 11412222}
-    mode: 0
-    path: /OnGround/Main/Ground Check/Ground Check/Hit Point/Z/Target
-  usage: 0
-  path: Ground Check/Hit Point/Z/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Z
-    path: Ground Check/Hit Point/Z
-    id: -39518/34026840-7cff-4dca-9f16-9721332c247e
-    localID: 34026840-7cff-4dca-9f16-9721332c247e
-    parent: {fileID: 11412222}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11408332}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11411032
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 170228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 170228}
-    parent: {fileID: 11423334}
-    mode: 0
-    path: /OnGround/Main/Ground Trigger/Ground Trigger/Is Started/Target
-  usage: 0
-  path: Ground Trigger/Is Started/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Is Started
-    path: Ground Trigger/Is Started
-    id: -39532/7ead2a40-5345-468a-a1a3-fe3b86977b6f
-    localID: 7ead2a40-5345-468a-a1a3-fe3b86977b6f
-    parent: {fileID: 11423334}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11411032}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!114 &11412222
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -645,117 +158,279 @@ MonoBehaviour:
     info:
       name: Usable
       path: Ground Check/Usable
-      id: -39518/2f6c9b06-34e7-4731-b7b8-a5cae118c993
+      fullPath: OnGround/Main/Ground Check/Usable
+      id: -91272/2f6c9b06-34e7-4731-b7b8-a5cae118c993
       localID: 2f6c9b06-34e7-4731-b7b8-a5cae118c993
       parent: {fileID: 11412222}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11429096}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 170228}
+          parent: {fileID: 11412222}
+          mode: 0
+          path: /OnGround/Main/Ground Check/Ground Check/Usable/Target
+        usage: 0
+        path: /OnGround/Main/Attribute Bool Data C
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
       path: Ground Check/Active
-      id: -39518/a19559d1-2e89-492c-84fe-70dd4db04a24
-      localID: a19559d1-2e89-492c-84fe-70dd4db04a24
+      fullPath: OnGround/Main/Ground Check/Active
+      id: -91272/0f831b84-c16c-4eb4-97b4-9d5506006275
+      localID: 0f831b84-c16c-4eb4-97b4-9d5506006275
       parent: {fileID: 11412222}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11467030}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: OnGround/Main/Ground Check/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
       path: Ground Check/Used
-      id: -39518/2b3721c8-0ab1-4ce4-a42b-554f9dae9288
+      fullPath: OnGround/Main/Ground Check/Used
+      id: -91272/2b3721c8-0ab1-4ce4-a42b-554f9dae9288
       localID: 2b3721c8-0ab1-4ce4-a42b-554f9dae9288
       parent: {fileID: 11412222}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11439642}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 170228}
+          parent: {fileID: 11412222}
+          mode: 0
+          path: /OnGround/Main/Ground Check/Ground Check/Used/Target
+        usage: 0
+        path: /OnGround/Main/Attribute Bool Data D
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   source:
     info:
       name: Source
       path: Ground Check/Source
-      id: -39518/787877bf-0062-4e40-9855-9e127969666f
+      fullPath: OnGround/Main/Ground Check/Source
+      id: -91272/787877bf-0062-4e40-9855-9e127969666f
       localID: 787877bf-0062-4e40-9855-9e127969666f
       parent: {fileID: 11412222}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11405112}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 140224}
+          parent: {fileID: 11412222}
+          mode: 0
+          path: /OnGround/Main/Ground Check/Ground Check/Source/Target
+        usage: 1
+        path: /OnGround/Main/Attribute Game Object Data
+        referenceID: -39550/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+        referencePath: Source
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeGameObjectData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   direction:
     info:
       name: Direction
       path: Ground Check/Direction
-      id: -39518/ae53c173-9222-419b-9ee6-02a1e939a69e
+      fullPath: OnGround/Main/Ground Check/Direction
+      id: -91272/ae53c173-9222-419b-9ee6-02a1e939a69e
       localID: ae53c173-9222-419b-9ee6-02a1e939a69e
       parent: {fileID: 11412222}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11472486}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 170228}
+          parent: {fileID: 11412222}
+          mode: 0
+          path: /OnGround/Main/Ground Check/Ground Check/Direction/Target
+        usage: 0
+        path: /OnGround/Main/Attribute Vector3 Data B
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: (0.0, -0.2, 0.0)
+        rawType: Zios.AttributeVector3Data
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
     x:
       info:
         name: X
         path: Ground Check/Direction/X
-        id: -39518/c31ea275-44c4-421e-9bf4-71e022e2c773
+        fullPath: OnGround/Main/Ground Check/Direction/X
+        id: -91272/c31ea275-44c4-421e-9bf4-71e022e2c773
         localID: c31ea275-44c4-421e-9bf4-71e022e2c773
         parent: {fileID: 11412222}
         mode: 0
         linkType: 0
         oldData:
-        - {fileID: 11435276}
+        - target:
+            search: '[Self]'
+            directObject: {fileID: 0}
+            searchObject: {fileID: 170228}
+            parent: {fileID: 11412222}
+            mode: 0
+            path: /OnGround/Main/Ground Check/Ground Check/Direction/X/Target
+          usage: 0
+          path: /OnGround/Main/Attribute Float Data C
+          referenceID: 
+          referencePath: 
+          operation: 0
+          special: 0
+          rawValue: 0
+          rawType: Zios.AttributeFloatData
+        oldDataB: []
+        oldDataC: []
+        oldData: []
         oldDataB: []
         oldDataC: []
     y:
       info:
         name: Y
         path: Ground Check/Direction/Y
-        id: -39518/ea04e345-84a7-49ad-b705-23b99c0f7a09
+        fullPath: OnGround/Main/Ground Check/Direction/Y
+        id: -91272/ea04e345-84a7-49ad-b705-23b99c0f7a09
         localID: ea04e345-84a7-49ad-b705-23b99c0f7a09
         parent: {fileID: 11412222}
         mode: 0
         linkType: 0
         oldData:
-        - {fileID: 11486532}
+        - target:
+            search: '[Self]'
+            directObject: {fileID: 0}
+            searchObject: {fileID: 170228}
+            parent: {fileID: 11412222}
+            mode: 0
+            path: /OnGround/Main/Ground Check/Ground Check/Direction/Y/Target
+          usage: 0
+          path: /OnGround/Main/Attribute Float Data D
+          referenceID: 
+          referencePath: 
+          operation: 0
+          special: 0
+          rawValue: 0
+          rawType: Zios.AttributeFloatData
+        oldDataB: []
+        oldDataC: []
+        oldData: []
         oldDataB: []
         oldDataC: []
     z:
       info:
         name: Z
         path: Ground Check/Direction/Z
-        id: -39518/b1812ca6-f001-4b2c-8760-cc0ed2082c7f
+        fullPath: OnGround/Main/Ground Check/Direction/Z
+        id: -91272/b1812ca6-f001-4b2c-8760-cc0ed2082c7f
         localID: b1812ca6-f001-4b2c-8760-cc0ed2082c7f
         parent: {fileID: 11412222}
         mode: 0
         linkType: 0
         oldData:
-        - {fileID: 11440546}
+        - target:
+            search: '[Self]'
+            directObject: {fileID: 0}
+            searchObject: {fileID: 170228}
+            parent: {fileID: 11412222}
+            mode: 0
+            path: /OnGround/Main/Ground Check/Ground Check/Direction/Z/Target
+          usage: 0
+          path: /OnGround/Main/Attribute Float Data E
+          referenceID: 
+          referencePath: 
+          operation: 0
+          special: 0
+          rawValue: 0
+          rawType: Zios.AttributeFloatData
+        oldDataB: []
+        oldDataC: []
+        oldData: []
         oldDataB: []
         oldDataC: []
   distance:
     info:
       name: Distance
       path: Ground Check/Distance
-      id: -39518/a7064b81-eacb-45c0-865a-d2ee437b46df
+      fullPath: OnGround/Main/Ground Check/Distance
+      id: -91272/a7064b81-eacb-45c0-865a-d2ee437b46df
       localID: a7064b81-eacb-45c0-865a-d2ee437b46df
       parent: {fileID: 11412222}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11448354}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 170228}
+          parent: {fileID: 11412222}
+          mode: 0
+          path: /OnGround/Main/Ground Check/Ground Check/Distance/Target
+        usage: 0
+        path: /OnGround/Main/Attribute Float Data B
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 1
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   layers:
@@ -766,184 +441,312 @@ MonoBehaviour:
     info:
       name: Hit Point
       path: Ground Check/Hit Point
-      id: -39518/e0057e2a-db3b-48e5-8eab-958358472e74
+      fullPath: OnGround/Main/Ground Check/Hit Point
+      id: -91272/e0057e2a-db3b-48e5-8eab-958358472e74
       localID: e0057e2a-db3b-48e5-8eab-958358472e74
       parent: {fileID: 11412222}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11433752}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 170228}
+          parent: {fileID: 11412222}
+          mode: 0
+          path: /OnGround/Main/Ground Check/Ground Check/Hit Point/Target
+        usage: 0
+        path: /OnGround/Main/Attribute Vector3 Data C
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: (0.0, 0.0, 0.0)
+        rawType: Zios.AttributeVector3Data
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
     x:
       info:
         name: X
         path: Ground Check/Hit Point/X
-        id: -39518/b9c6e294-3171-44f5-915e-8fff46c9072b
+        fullPath: OnGround/Main/Ground Check/Hit Point/X
+        id: -91272/b9c6e294-3171-44f5-915e-8fff46c9072b
         localID: b9c6e294-3171-44f5-915e-8fff46c9072b
         parent: {fileID: 11412222}
         mode: 0
         linkType: 0
         oldData:
-        - {fileID: 11440688}
+        - target:
+            search: '[Self]'
+            directObject: {fileID: 0}
+            searchObject: {fileID: 170228}
+            parent: {fileID: 11412222}
+            mode: 0
+            path: /OnGround/Main/Ground Check/Ground Check/Hit Point/X/Target
+          usage: 0
+          path: /OnGround/Main/Attribute Float Data F
+          referenceID: 
+          referencePath: 
+          operation: 0
+          special: 0
+          rawValue: 0
+          rawType: Zios.AttributeFloatData
+        oldDataB: []
+        oldDataC: []
+        oldData: []
         oldDataB: []
         oldDataC: []
     y:
       info:
         name: Y
         path: Ground Check/Hit Point/Y
-        id: -39518/f4006e5a-0257-41e0-bd78-d2deaa8a0630
+        fullPath: OnGround/Main/Ground Check/Hit Point/Y
+        id: -91272/f4006e5a-0257-41e0-bd78-d2deaa8a0630
         localID: f4006e5a-0257-41e0-bd78-d2deaa8a0630
         parent: {fileID: 11412222}
         mode: 0
         linkType: 0
         oldData:
-        - {fileID: 11444422}
+        - target:
+            search: '[Self]'
+            directObject: {fileID: 0}
+            searchObject: {fileID: 170228}
+            parent: {fileID: 11412222}
+            mode: 0
+            path: /OnGround/Main/Ground Check/Ground Check/Hit Point/Y/Target
+          usage: 0
+          path: /OnGround/Main/Attribute Float Data G
+          referenceID: 
+          referencePath: 
+          operation: 0
+          special: 0
+          rawValue: 0
+          rawType: Zios.AttributeFloatData
+        oldDataB: []
+        oldDataC: []
+        oldData: []
         oldDataB: []
         oldDataC: []
     z:
       info:
         name: Z
         path: Ground Check/Hit Point/Z
-        id: -39518/34026840-7cff-4dca-9f16-9721332c247e
+        fullPath: OnGround/Main/Ground Check/Hit Point/Z
+        id: -91272/34026840-7cff-4dca-9f16-9721332c247e
         localID: 34026840-7cff-4dca-9f16-9721332c247e
         parent: {fileID: 11412222}
         mode: 0
         linkType: 0
         oldData:
-        - {fileID: 11408332}
+        - target:
+            search: '[Self]'
+            directObject: {fileID: 0}
+            searchObject: {fileID: 170228}
+            parent: {fileID: 11412222}
+            mode: 0
+            path: /OnGround/Main/Ground Check/Ground Check/Hit Point/Z/Target
+          usage: 0
+          path: /OnGround/Main/Attribute Float Data H
+          referenceID: 
+          referencePath: 
+          operation: 0
+          special: 0
+          rawValue: 0
+          rawType: Zios.AttributeFloatData
+        oldDataB: []
+        oldDataC: []
+        oldData: []
         oldDataB: []
         oldDataC: []
   hitNormal:
     info:
       name: Hit Normal
       path: Ground Check/Hit Normal
-      id: -39518/9f45a6d8-1376-4116-abbe-0b7fbe25396b
+      fullPath: OnGround/Main/Ground Check/Hit Normal
+      id: -91272/9f45a6d8-1376-4116-abbe-0b7fbe25396b
       localID: 9f45a6d8-1376-4116-abbe-0b7fbe25396b
       parent: {fileID: 11412222}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11444516}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 170228}
+          parent: {fileID: 11412222}
+          mode: 0
+          path: /OnGround/Main/Ground Check/Ground Check/Hit Normal/Target
+        usage: 0
+        path: /OnGround/Main/Attribute Vector3 Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: (0.0, 0.0, 0.0)
+        rawType: Zios.AttributeVector3Data
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
     x:
       info:
         name: X
         path: Ground Check/Hit Normal/X
-        id: -39518/5fc629af-623e-4a85-8061-968486f543c9
+        fullPath: OnGround/Main/Ground Check/Hit Normal/X
+        id: -91272/5fc629af-623e-4a85-8061-968486f543c9
         localID: 5fc629af-623e-4a85-8061-968486f543c9
         parent: {fileID: 11412222}
         mode: 0
         linkType: 0
         oldData:
-        - {fileID: 11486558}
+        - target:
+            search: '[Self]'
+            directObject: {fileID: 0}
+            searchObject: {fileID: 170228}
+            parent: {fileID: 11412222}
+            mode: 0
+            path: /OnGround/Main/Ground Check/Ground Check/Hit Normal/X/Target
+          usage: 0
+          path: /OnGround/Main/Attribute Float Data I
+          referenceID: 
+          referencePath: 
+          operation: 0
+          special: 0
+          rawValue: 0
+          rawType: Zios.AttributeFloatData
+        oldDataB: []
+        oldDataC: []
+        oldData: []
         oldDataB: []
         oldDataC: []
     y:
       info:
         name: Y
         path: Ground Check/Hit Normal/Y
-        id: -39518/07cf82aa-65e7-4d7e-b2e8-adb3494708af
+        fullPath: OnGround/Main/Ground Check/Hit Normal/Y
+        id: -91272/07cf82aa-65e7-4d7e-b2e8-adb3494708af
         localID: 07cf82aa-65e7-4d7e-b2e8-adb3494708af
         parent: {fileID: 11412222}
         mode: 0
         linkType: 0
         oldData:
-        - {fileID: 11483254}
+        - target:
+            search: '[Self]'
+            directObject: {fileID: 0}
+            searchObject: {fileID: 170228}
+            parent: {fileID: 11412222}
+            mode: 0
+            path: /OnGround/Main/Ground Check/Ground Check/Hit Normal/Y/Target
+          usage: 0
+          path: /OnGround/Main/Attribute Float Data J
+          referenceID: 
+          referencePath: 
+          operation: 0
+          special: 0
+          rawValue: 0
+          rawType: Zios.AttributeFloatData
+        oldDataB: []
+        oldDataC: []
+        oldData: []
         oldDataB: []
         oldDataC: []
     z:
       info:
         name: Z
         path: Ground Check/Hit Normal/Z
-        id: -39518/93c7c4a3-7075-4c81-a0a2-1fc07d63168b
+        fullPath: OnGround/Main/Ground Check/Hit Normal/Z
+        id: -91272/93c7c4a3-7075-4c81-a0a2-1fc07d63168b
         localID: 93c7c4a3-7075-4c81-a0a2-1fc07d63168b
         parent: {fileID: 11412222}
         mode: 0
         linkType: 0
         oldData:
-        - {fileID: 11404004}
+        - target:
+            search: '[Self]'
+            directObject: {fileID: 0}
+            searchObject: {fileID: 170228}
+            parent: {fileID: 11412222}
+            mode: 0
+            path: /OnGround/Main/Ground Check/Ground Check/Hit Normal/Z/Target
+          usage: 0
+          path: /OnGround/Main/Attribute Float Data K
+          referenceID: 
+          referencePath: 
+          operation: 0
+          special: 0
+          rawValue: 0
+          rawType: Zios.AttributeFloatData
+        oldDataB: []
+        oldDataC: []
+        oldData: []
         oldDataB: []
         oldDataC: []
   hitDistance:
     info:
       name: Hit Distance
       path: Ground Check/Hit Distance
-      id: -39518/598aae7d-85d9-4333-9b6a-1c3c17ddd8df
+      fullPath: OnGround/Main/Ground Check/Hit Distance
+      id: -91272/598aae7d-85d9-4333-9b6a-1c3c17ddd8df
       localID: 598aae7d-85d9-4333-9b6a-1c3c17ddd8df
       parent: {fileID: 11412222}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11404394}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 170228}
+          parent: {fileID: 11412222}
+          mode: 0
+          path: /OnGround/Main/Ground Check/Ground Check/Hit Distance/Target
+        usage: 0
+        path: /OnGround/Main/Attribute Float Data L
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 0
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   hit:
     info:
       name: Hit
       path: Ground Check/Hit
-      id: -39518/d6f7621b-d5c0-4951-adc7-a29ec5eb6f8e
+      fullPath: OnGround/Main/Ground Check/Hit
+      id: -91272/d6f7621b-d5c0-4951-adc7-a29ec5eb6f8e
       localID: d6f7621b-d5c0-4951-adc7-a29ec5eb6f8e
       parent: {fileID: 11412222}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11415104}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 170228}
+          parent: {fileID: 11412222}
+          mode: 0
+          path: /OnGround/Main/Ground Check/Ground Check/Hit/Target
+        usage: 1
+        path: /OnGround/Main/Old Attribute Game Object Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeGameObjectData
       oldDataB: []
       oldDataC: []
---- !u!114 &11415104
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 170228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 170228}
-    parent: {fileID: 11412222}
-    mode: 0
-    path: /OnGround/Main/Ground Check/Ground Check/Hit/Target
-  usage: 1
-  path: Ground Check/Hit/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Hit
-    path: Ground Check/Hit
-    id: -39518/d6f7621b-d5c0-4951-adc7-a29ec5eb6f8e
-    localID: d6f7621b-d5c0-4951-adc7-a29ec5eb6f8e
-    parent: {fileID: 11412222}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11415104}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
       oldData: []
       oldDataB: []
       oldDataC: []
-  operation: 0
-  special: 0
-  value: {fileID: 0}
 --- !u!114 &11423334
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -966,39 +769,93 @@ MonoBehaviour:
     info:
       name: Usable
       path: Ground Trigger/Usable
-      id: -39532/c29d7109-af85-4f60-8320-0a1a248b89c9
+      fullPath: OnGround/Main/Ground Trigger/Usable
+      id: -91274/c29d7109-af85-4f60-8320-0a1a248b89c9
       localID: c29d7109-af85-4f60-8320-0a1a248b89c9
       parent: {fileID: 11423334}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11452754}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 170228}
+          parent: {fileID: 11423334}
+          mode: 0
+          path: /OnGround/Main/Ground Trigger/Ground Trigger/Usable/Target
+        usage: 0
+        path: /OnGround/Main/Attribute Bool Data F
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
       path: Ground Trigger/Active
-      id: -39532/d0f94c69-529a-435d-b08a-ab6855287904
-      localID: d0f94c69-529a-435d-b08a-ab6855287904
+      fullPath: OnGround/Main/Ground Trigger/Active
+      id: -91274/10bbb7a3-a11d-4f14-a143-dc917bbe3a9b
+      localID: 10bbb7a3-a11d-4f14-a143-dc917bbe3a9b
       parent: {fileID: 11423334}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11402348}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: OnGround/Main/Ground Trigger/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
       path: Ground Trigger/Used
-      id: -39532/79449c69-4f35-44cf-91fa-4d50f055a85f
+      fullPath: OnGround/Main/Ground Trigger/Used
+      id: -91274/79449c69-4f35-44cf-91fa-4d50f055a85f
       localID: 79449c69-4f35-44cf-91fa-4d50f055a85f
       parent: {fileID: 11423334}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11458178}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 170228}
+          parent: {fileID: 11423334}
+          mode: 0
+          path: /OnGround/Main/Ground Trigger/Ground Trigger/Used/Target
+        usage: 0
+        path: /OnGround/Main/Attribute Bool Data G
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   type: 0
@@ -1006,405 +863,95 @@ MonoBehaviour:
     info:
       name: Seconds
       path: Ground Trigger/Seconds
-      id: -39532/513cb46f-4327-4bdd-b292-f068a8caeef8
+      fullPath: OnGround/Main/Ground Trigger/Seconds
+      id: -91274/513cb46f-4327-4bdd-b292-f068a8caeef8
       localID: 513cb46f-4327-4bdd-b292-f068a8caeef8
       parent: {fileID: 11423334}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11455690}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 140224}
+          parent: {fileID: 11423334}
+          mode: 0
+          path: /OnGround/Main/Ground Trigger/Ground Trigger/Seconds/Target
+        usage: 1
+        path: /OnGround/Main/Attribute Float Data M
+        referenceID: -39574/97a273bf-e503-4bfa-9c4a-d45233a5c9a8
+        referencePath: Trigger Timer
+        operation: 0
+        special: 0
+        rawValue: 0.02
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   isStarted:
     info:
       name: Is Started
       path: Ground Trigger/Is Started
-      id: -39532/7ead2a40-5345-468a-a1a3-fe3b86977b6f
+      fullPath: OnGround/Main/Ground Trigger/Is Started
+      id: -91274/7ead2a40-5345-468a-a1a3-fe3b86977b6f
       localID: 7ead2a40-5345-468a-a1a3-fe3b86977b6f
       parent: {fileID: 11423334}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11411032}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 170228}
+          parent: {fileID: 11423334}
+          mode: 0
+          path: /OnGround/Main/Ground Trigger/Ground Trigger/Is Started/Target
+        usage: 0
+        path: /OnGround/Main/Attribute Bool Data H
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   isComplete:
     info:
       name: Is Complete
       path: Ground Trigger/Is Complete
-      id: -39532/51412d4b-e64d-4403-88c1-5a72766d45cd
+      fullPath: OnGround/Main/Ground Trigger/Is Complete
+      id: -91274/51412d4b-e64d-4403-88c1-5a72766d45cd
       localID: 51412d4b-e64d-4403-88c1-5a72766d45cd
       parent: {fileID: 11423334}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11400498}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 170228}
+          parent: {fileID: 11423334}
+          mode: 0
+          path: /OnGround/Main/Ground Trigger/Ground Trigger/Is Complete/Target
+        usage: 0
+        path: /OnGround/Main/Attribute Bool Data I
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
---- !u!114 &11428920
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 170228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 170228}
-    parent: {fileID: 11447076}
-    mode: 0
-    path: /OnGround/Main/Reset Gravity/Reset Gravity/Active/Target
-  usage: 0
-  path: Reset Gravity/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: Reset Gravity/Active
-    id: -39570/e0d56145-75cd-4d0e-a188-2866a920864f
-    localID: e0d56145-75cd-4d0e-a188-2866a920864f
-    parent: {fileID: 11447076}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11428920}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
       oldData: []
       oldDataB: []
       oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11429096
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 170228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 170228}
-    parent: {fileID: 11412222}
-    mode: 0
-    path: /OnGround/Main/Ground Check/Ground Check/Usable/Target
-  usage: 0
-  path: Ground Check/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: Ground Check/Usable
-    id: -39518/2f6c9b06-34e7-4731-b7b8-a5cae118c993
-    localID: 2f6c9b06-34e7-4731-b7b8-a5cae118c993
-    parent: {fileID: 11412222}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11429096}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11431884
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 170228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 170228}
-    parent: {fileID: 11447076}
-    mode: 0
-    path: /OnGround/Main/Reset Gravity/Reset Gravity/Usable/Target
-  usage: 0
-  path: Reset Gravity/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: Reset Gravity/Usable
-    id: -39570/1e60419a-d2e2-46f8-8192-4201db0fe1b1
-    localID: 1e60419a-d2e2-46f8-8192-4201db0fe1b1
-    parent: {fileID: 11447076}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11431884}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11433176
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 170228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../../../Gravity/@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 11447076}
-    mode: 0
-    path: /OnGround/Main/Reset Gravity/Reset Gravity/Target/Target
-  usage: 1
-  path: Reset Gravity/Target/0
-  referenceID: -34404/d7a2b325-d5ca-40ef-8232-1dfe646d6d5d
-  referencePath: Scale
-  attribute:
-    name: Target
-    path: Reset Gravity/Target
-    id: -39570/ba4e4578-99b0-4def-840c-2419df9fbad6
-    localID: ba4e4578-99b0-4def-840c-2419df9fbad6
-    parent: {fileID: 11447076}
-    mode: 1
-    linkType: 0
-    oldData:
-    - {fileID: 11433176}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11433752
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 170228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83639dc7708e9ad4584145044a83425d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Vector3 Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 170228}
-    parent: {fileID: 11412222}
-    mode: 0
-    path: /OnGround/Main/Ground Check/Ground Check/Hit Point/Target
-  usage: 0
-  path: Ground Check/Hit Point/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Hit Point
-    path: Ground Check/Hit Point
-    id: -39518/e0057e2a-db3b-48e5-8eab-958358472e74
-    localID: e0057e2a-db3b-48e5-8eab-958358472e74
-    parent: {fileID: 11412222}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11433752}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {x: 0, y: 0, z: 0}
---- !u!114 &11433962
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 170228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 140224}
-    parent: {fileID: 11447076}
-    mode: 0
-    path: /OnGround/Main/Reset Gravity/Reset Gravity/Value/Target
-  usage: 1
-  path: Reset Gravity/Value/0
-  referenceID: -39510/36e06670-e99b-4c51-a366-51346402a31d
-  referencePath: Gravity
-  attribute:
-    name: Value
-    path: Reset Gravity/Value
-    id: -39570/1164e98e-f100-4fe7-90c0-ce0fb4982ed2
-    localID: 1164e98e-f100-4fe7-90c0-ce0fb4982ed2
-    parent: {fileID: 11447076}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11433962}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11435276
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 170228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 170228}
-    parent: {fileID: 11412222}
-    mode: 0
-    path: /OnGround/Main/Ground Check/Ground Check/Direction/X/Target
-  usage: 0
-  path: Ground Check/Direction/X/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: X
-    path: Ground Check/Direction/X
-    id: -39518/c31ea275-44c4-421e-9bf4-71e022e2c773
-    localID: c31ea275-44c4-421e-9bf4-71e022e2c773
-    parent: {fileID: 11412222}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11435276}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!114 &11435610
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1423,328 +970,34 @@ MonoBehaviour:
     info:
       name: Source
       path: Source
-      id: -39550/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+      fullPath: OnGround/@Settings/Source
+      id: -91348/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
       localID: 0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
       parent: {fileID: 11435610}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11454716}
+      - target:
+          search: ../../../../
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 11435610}
+          mode: 0
+          path: /OnGround/@Settings/Source/Source/Target
+        usage: 1
+        path: /OnGround/@Settings/Attribute Game Object Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeGameObjectData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   remember: 0
---- !u!114 &11438638
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 170228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 170228}
-    parent: {fileID: 11493898}
-    mode: 0
-    path: /OnGround/Main/OnGround/OnGround/Usable/Target
-  usage: 0
-  path: OnGround/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: OnGround/Usable
-    id: -39622/2ab136fb-1970-4896-b3d4-4d8af8cc8aca
-    localID: 2ab136fb-1970-4896-b3d4-4d8af8cc8aca
-    parent: {fileID: 11493898}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11438638}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11439642
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 170228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 170228}
-    parent: {fileID: 11412222}
-    mode: 0
-    path: /OnGround/Main/Ground Check/Ground Check/Used/Target
-  usage: 0
-  path: Ground Check/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: Ground Check/Used
-    id: -39518/2b3721c8-0ab1-4ce4-a42b-554f9dae9288
-    localID: 2b3721c8-0ab1-4ce4-a42b-554f9dae9288
-    parent: {fileID: 11412222}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11439642}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11440546
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 170228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 170228}
-    parent: {fileID: 11412222}
-    mode: 0
-    path: /OnGround/Main/Ground Check/Ground Check/Direction/Z/Target
-  usage: 0
-  path: Ground Check/Direction/Z/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Z
-    path: Ground Check/Direction/Z
-    id: -39518/b1812ca6-f001-4b2c-8760-cc0ed2082c7f
-    localID: b1812ca6-f001-4b2c-8760-cc0ed2082c7f
-    parent: {fileID: 11412222}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11440546}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11440688
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 170228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 170228}
-    parent: {fileID: 11412222}
-    mode: 0
-    path: /OnGround/Main/Ground Check/Ground Check/Hit Point/X/Target
-  usage: 0
-  path: Ground Check/Hit Point/X/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: X
-    path: Ground Check/Hit Point/X
-    id: -39518/b9c6e294-3171-44f5-915e-8fff46c9072b
-    localID: b9c6e294-3171-44f5-915e-8fff46c9072b
-    parent: {fileID: 11412222}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11440688}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11444422
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 170228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 170228}
-    parent: {fileID: 11412222}
-    mode: 0
-    path: /OnGround/Main/Ground Check/Ground Check/Hit Point/Y/Target
-  usage: 0
-  path: Ground Check/Hit Point/Y/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Y
-    path: Ground Check/Hit Point/Y
-    id: -39518/f4006e5a-0257-41e0-bd78-d2deaa8a0630
-    localID: f4006e5a-0257-41e0-bd78-d2deaa8a0630
-    parent: {fileID: 11412222}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11444422}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11444516
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 170228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83639dc7708e9ad4584145044a83425d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Vector3 Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 170228}
-    parent: {fileID: 11412222}
-    mode: 0
-    path: /OnGround/Main/Ground Check/Ground Check/Hit Normal/Target
-  usage: 0
-  path: Ground Check/Hit Normal/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Hit Normal
-    path: Ground Check/Hit Normal
-    id: -39518/9f45a6d8-1376-4116-abbe-0b7fbe25396b
-    localID: 9f45a6d8-1376-4116-abbe-0b7fbe25396b
-    parent: {fileID: 11412222}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11444516}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {x: 0, y: 0, z: 0}
 --- !u!114 &11447076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1767,119 +1020,157 @@ MonoBehaviour:
     info:
       name: Usable
       path: Reset Gravity/Usable
-      id: -39570/1e60419a-d2e2-46f8-8192-4201db0fe1b1
+      fullPath: OnGround/Main/Reset Gravity/Usable
+      id: -91276/1e60419a-d2e2-46f8-8192-4201db0fe1b1
       localID: 1e60419a-d2e2-46f8-8192-4201db0fe1b1
       parent: {fileID: 11447076}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11431884}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 170228}
+          parent: {fileID: 11447076}
+          mode: 0
+          path: /OnGround/Main/Reset Gravity/Reset Gravity/Usable/Target
+        usage: 0
+        path: /OnGround/Main/Attribute Bool Data K
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
       path: Reset Gravity/Active
-      id: -39570/e0d56145-75cd-4d0e-a188-2866a920864f
-      localID: e0d56145-75cd-4d0e-a188-2866a920864f
+      fullPath: OnGround/Main/Reset Gravity/Active
+      id: -91276/8fa50a91-8d08-44a9-ab7f-7d500d25cf4d
+      localID: 8fa50a91-8d08-44a9-ab7f-7d500d25cf4d
       parent: {fileID: 11447076}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11428920}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: OnGround/Main/Reset Gravity/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
       path: Reset Gravity/Used
-      id: -39570/38861412-942c-4fc9-9aae-d2b2acaaf946
+      fullPath: OnGround/Main/Reset Gravity/Used
+      id: -91276/38861412-942c-4fc9-9aae-d2b2acaaf946
       localID: 38861412-942c-4fc9-9aae-d2b2acaaf946
       parent: {fileID: 11447076}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11471350}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 170228}
+          parent: {fileID: 11447076}
+          mode: 0
+          path: /OnGround/Main/Reset Gravity/Reset Gravity/Used/Target
+        usage: 0
+        path: /OnGround/Main/Attribute Bool Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   target:
     info:
       name: Target
       path: Reset Gravity/Target
-      id: -39570/ba4e4578-99b0-4def-840c-2419df9fbad6
+      fullPath: OnGround/Main/Reset Gravity/Target
+      id: -91276/ba4e4578-99b0-4def-840c-2419df9fbad6
       localID: ba4e4578-99b0-4def-840c-2419df9fbad6
       parent: {fileID: 11447076}
       mode: 1
       linkType: 0
       oldData:
-      - {fileID: 11433176}
+      - target:
+          search: ../../../Gravity/@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 11447076}
+          mode: 0
+          path: /OnGround/Main/Reset Gravity/Reset Gravity/Target/Target
+        usage: 1
+        path: /OnGround/Main/Attribute Float Data N
+        referenceID: -34404/d7a2b325-d5ca-40ef-8232-1dfe646d6d5d
+        referencePath: Scale
+        operation: 0
+        special: 0
+        rawValue: 0
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   value:
     info:
       name: Value
       path: Reset Gravity/Value
-      id: -39570/1164e98e-f100-4fe7-90c0-ce0fb4982ed2
+      fullPath: OnGround/Main/Reset Gravity/Value
+      id: -91276/1164e98e-f100-4fe7-90c0-ce0fb4982ed2
       localID: 1164e98e-f100-4fe7-90c0-ce0fb4982ed2
       parent: {fileID: 11447076}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11433962}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 140224}
+          parent: {fileID: 11447076}
+          mode: 0
+          path: /OnGround/Main/Reset Gravity/Reset Gravity/Value/Target
+        usage: 1
+        path: /OnGround/Main/Attribute Float Data
+        referenceID: -39510/36e06670-e99b-4c51-a366-51346402a31d
+        referencePath: Gravity
+        operation: 0
+        special: 0
+        rawValue: 1
+        rawType: Zios.AttributeFloatData
       oldDataB: []
       oldDataC: []
---- !u!114 &11448354
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 170228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 170228}
-    parent: {fileID: 11412222}
-    mode: 0
-    path: /OnGround/Main/Ground Check/Ground Check/Distance/Target
-  usage: 0
-  path: Ground Check/Distance/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Distance
-    path: Ground Check/Distance
-    id: -39518/a7064b81-eacb-45c0-865a-d2ee437b46df
-    localID: a7064b81-eacb-45c0-865a-d2ee437b46df
-    parent: {fileID: 11412222}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11448354}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
       oldData: []
       oldDataB: []
       oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
 --- !u!114 &11448940
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1898,692 +1189,34 @@ MonoBehaviour:
     info:
       name: Trigger Timer
       path: Trigger Timer
-      id: -39574/97a273bf-e503-4bfa-9c4a-d45233a5c9a8
+      fullPath: OnGround/@Settings/Trigger Timer
+      id: -91350/97a273bf-e503-4bfa-9c4a-d45233a5c9a8
       localID: 97a273bf-e503-4bfa-9c4a-d45233a5c9a8
       parent: {fileID: 11448940}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11407628}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 140224}
+          parent: {fileID: 11448940}
+          mode: 0
+          path: /OnGround/@Settings/Trigger Timer/Trigger Timer/Target
+        usage: 0
+        path: /OnGround/@Settings/Attribute Float Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 0.02
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   remember: 0
---- !u!114 &11449724
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 170228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 170228}
-    parent: {fileID: 11493898}
-    mode: 0
-    path: /OnGround/Main/OnGround/OnGround/External/Target
-  usage: 0
-  path: OnGround/External/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: External
-    path: OnGround/External
-    id: -39622/b4a57eee-ec34-45ce-949d-a8ec19ecaaab
-    localID: b4a57eee-ec34-45ce-949d-a8ec19ecaaab
-    parent: {fileID: 11493898}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11449724}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11452754
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 170228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 170228}
-    parent: {fileID: 11423334}
-    mode: 0
-    path: /OnGround/Main/Ground Trigger/Ground Trigger/Usable/Target
-  usage: 0
-  path: Ground Trigger/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: Ground Trigger/Usable
-    id: -39532/c29d7109-af85-4f60-8320-0a1a248b89c9
-    localID: c29d7109-af85-4f60-8320-0a1a248b89c9
-    parent: {fileID: 11423334}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11452754}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11454716
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 140224}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Game Object Data
-  target:
-    search: ../../../../
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 11435610}
-    mode: 0
-    path: /OnGround/@Settings/Source/Source/Target
-  usage: 1
-  path: Source/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Source
-    path: Source
-    id: -39550/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
-    localID: 0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
-    parent: {fileID: 11435610}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11454716}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {fileID: 0}
---- !u!114 &11455690
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 170228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 140224}
-    parent: {fileID: 11423334}
-    mode: 0
-    path: /OnGround/Main/Ground Trigger/Ground Trigger/Seconds/Target
-  usage: 1
-  path: Ground Trigger/Seconds/0
-  referenceID: -39574/97a273bf-e503-4bfa-9c4a-d45233a5c9a8
-  referencePath: Trigger Timer
-  attribute:
-    name: Seconds
-    path: Ground Trigger/Seconds
-    id: -39532/513cb46f-4327-4bdd-b292-f068a8caeef8
-    localID: 513cb46f-4327-4bdd-b292-f068a8caeef8
-    parent: {fileID: 11423334}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11455690}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: .0199999996
---- !u!114 &11458178
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 170228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 170228}
-    parent: {fileID: 11423334}
-    mode: 0
-    path: /OnGround/Main/Ground Trigger/Ground Trigger/Used/Target
-  usage: 0
-  path: Ground Trigger/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: Ground Trigger/Used
-    id: -39532/79449c69-4f35-44cf-91fa-4d50f055a85f
-    localID: 79449c69-4f35-44cf-91fa-4d50f055a85f
-    parent: {fileID: 11423334}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11458178}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11466016
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 170228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 170228}
-    parent: {fileID: 11493898}
-    mode: 0
-    path: /OnGround/Main/OnGround/OnGround/Active/Target
-  usage: 0
-  path: OnGround/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: OnGround/Active
-    id: -39622/f7e42a57-2aff-40e9-bbdd-8f84a4a5c310
-    localID: f7e42a57-2aff-40e9-bbdd-8f84a4a5c310
-    parent: {fileID: 11493898}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11466016}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11467030
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 170228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 170228}
-    parent: {fileID: 11412222}
-    mode: 0
-    path: /OnGround/Main/Ground Check/Ground Check/Active/Target
-  usage: 0
-  path: Ground Check/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: Ground Check/Active
-    id: -39518/a19559d1-2e89-492c-84fe-70dd4db04a24
-    localID: a19559d1-2e89-492c-84fe-70dd4db04a24
-    parent: {fileID: 11412222}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11467030}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11471350
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 170228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 170228}
-    parent: {fileID: 11447076}
-    mode: 0
-    path: /OnGround/Main/Reset Gravity/Reset Gravity/Used/Target
-  usage: 0
-  path: Reset Gravity/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: Reset Gravity/Used
-    id: -39570/38861412-942c-4fc9-9aae-d2b2acaaf946
-    localID: 38861412-942c-4fc9-9aae-d2b2acaaf946
-    parent: {fileID: 11447076}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11471350}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11472486
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 170228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83639dc7708e9ad4584145044a83425d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Vector3 Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 170228}
-    parent: {fileID: 11412222}
-    mode: 0
-    path: /OnGround/Main/Ground Check/Ground Check/Direction/Target
-  usage: 0
-  path: Ground Check/Direction/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Direction
-    path: Ground Check/Direction
-    id: -39518/ae53c173-9222-419b-9ee6-02a1e939a69e
-    localID: ae53c173-9222-419b-9ee6-02a1e939a69e
-    parent: {fileID: 11412222}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11472486}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {x: -0, y: -.200000003, z: -0}
---- !u!114 &11475880
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 170228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 170228}
-    parent: {fileID: 11493898}
-    mode: 0
-    path: /OnGround/Main/OnGround/OnGround/Used/Target
-  usage: 0
-  path: OnGround/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: OnGround/Used
-    id: -39622/d52e9a44-669c-4539-b3a4-7c2d31fc3783
-    localID: d52e9a44-669c-4539-b3a4-7c2d31fc3783
-    parent: {fileID: 11493898}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11475880}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11483254
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 170228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 170228}
-    parent: {fileID: 11412222}
-    mode: 0
-    path: /OnGround/Main/Ground Check/Ground Check/Hit Normal/Y/Target
-  usage: 0
-  path: Ground Check/Hit Normal/Y/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Y
-    path: Ground Check/Hit Normal/Y
-    id: -39518/07cf82aa-65e7-4d7e-b2e8-adb3494708af
-    localID: 07cf82aa-65e7-4d7e-b2e8-adb3494708af
-    parent: {fileID: 11412222}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11483254}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11486532
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 170228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 170228}
-    parent: {fileID: 11412222}
-    mode: 0
-    path: /OnGround/Main/Ground Check/Ground Check/Direction/Y/Target
-  usage: 0
-  path: Ground Check/Direction/Y/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Y
-    path: Ground Check/Direction/Y
-    id: -39518/ea04e345-84a7-49ad-b705-23b99c0f7a09
-    localID: ea04e345-84a7-49ad-b705-23b99c0f7a09
-    parent: {fileID: 11412222}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11486532}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11486558
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 170228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 170228}
-    parent: {fileID: 11412222}
-    mode: 0
-    path: /OnGround/Main/Ground Check/Ground Check/Hit Normal/X/Target
-  usage: 0
-  path: Ground Check/Hit Normal/X/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: X
-    path: Ground Check/Hit Normal/X
-    id: -39518/5fc629af-623e-4a85-8061-968486f543c9
-    localID: 5fc629af-623e-4a85-8061-968486f543c9
-    parent: {fileID: 11412222}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11486558}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!114 &11493898
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2606,39 +1239,93 @@ MonoBehaviour:
     info:
       name: Usable
       path: OnGround/Usable
-      id: -39622/2ab136fb-1970-4896-b3d4-4d8af8cc8aca
+      fullPath: OnGround/Main/OnGround/Usable
+      id: -91270/2ab136fb-1970-4896-b3d4-4d8af8cc8aca
       localID: 2ab136fb-1970-4896-b3d4-4d8af8cc8aca
       parent: {fileID: 11493898}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11438638}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 170228}
+          parent: {fileID: 11493898}
+          mode: 0
+          path: /OnGround/Main/OnGround/OnGround/Usable/Target
+        usage: 0
+        path: /OnGround/Main/Old Attribute Bool Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: True
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
       path: OnGround/Active
-      id: -39622/f7e42a57-2aff-40e9-bbdd-8f84a4a5c310
-      localID: f7e42a57-2aff-40e9-bbdd-8f84a4a5c310
+      fullPath: OnGround/Main/OnGround/Active
+      id: -91270/b678794a-7c87-410b-9e10-1adf07f1d566
+      localID: b678794a-7c87-410b-9e10-1adf07f1d566
       parent: {fileID: 11493898}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11466016}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: OnGround/Main/OnGround/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
       path: OnGround/Used
-      id: -39622/d52e9a44-669c-4539-b3a4-7c2d31fc3783
+      fullPath: OnGround/Main/OnGround/Used
+      id: -91270/d52e9a44-669c-4539-b3a4-7c2d31fc3783
       localID: d52e9a44-669c-4539-b3a4-7c2d31fc3783
       parent: {fileID: 11493898}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11475880}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 170228}
+          parent: {fileID: 11493898}
+          mode: 0
+          path: /OnGround/Main/OnGround/OnGround/Used/Target
+        usage: 0
+        path: /OnGround/Main/Old Attribute Bool Data C
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   table:
@@ -2905,13 +1592,31 @@ MonoBehaviour:
     info:
       name: External
       path: OnGround/External
-      id: -39622/b4a57eee-ec34-45ce-949d-a8ec19ecaaab
+      fullPath: OnGround/Main/OnGround/External
+      id: -91270/b4a57eee-ec34-45ce-949d-a8ec19ecaaab
       localID: b4a57eee-ec34-45ce-949d-a8ec19ecaaab
       parent: {fileID: 11493898}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11449724}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 170228}
+          parent: {fileID: 11493898}
+          mode: 0
+          path: /OnGround/Main/OnGround/OnGround/External/Target
+        usage: 0
+        path: /OnGround/Main/Old Attribute Bool Data D
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: True
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   scripts:

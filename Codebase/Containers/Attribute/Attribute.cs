@@ -37,9 +37,15 @@ namespace Zios{
 		ProcessStage   = 0x010,
 		ProcessRefresh = 0x020
 	}
+	[Flags]
+	public enum AttributeRepair : int{
+		SamePathAttributes  = 0x001,
+		SamePathGameObjects = 0x002,
+	}
 	[Serializable]
 	public class Attribute{
-		[EnumMask] public static AttributeDebug debug;
+		[EnumMask] public static AttributeDebug debug = 0;
+		[EnumMask] public static AttributeRepair repair = (AttributeRepair)(-1);
 		[NonSerialized] public static bool ready;
 		[NonSerialized] public static List<Attribute> all = new List<Attribute>();
 		[NonSerialized] public static Dictionary<GameObject,Dictionary<string,Attribute>> lookup = new Dictionary<GameObject,Dictionary<string,Attribute>>();
@@ -192,7 +198,8 @@ namespace Zios{
 		// Setup
 		// ======================
 		public override void Setup(string path,Component parent){
-			if(parent.IsNull()){return;}
+			bool disabled = parent.IsNull() || (Application.isPlaying && !parent.IsEnabled());
+			if(disabled){return;}
 			if(!Application.isPlaying){
 				string previousID = this.info.id;
 				this.BuildInfo(path,parent);
@@ -321,15 +328,19 @@ namespace Zios{
 			GameObject current = this.info.parent.gameObject;
 			string path = this.info.path;
 			string name = current.name;
-			while(Locate.HasDuplicate(current)){
-				current.name = current.name.ToLetterSequence();
-				Locate.SetDirty();
+			if(Attribute.repair.Has("SamePathGameObjects")){
+				while(Locate.HasDuplicate(current)){
+					current.name = current.name.ToLetterSequence();
+					Locate.SetDirty();
+				}
 			}
-			while(Attribute.all.Exists(x=>x != this && x.info.fullPath==this.info.fullPath)){
-				if(Attribute.all.Contains(this)){break;}
-				this.info.path = this.info.path.ToLetterSequence();
-				this.info.name = this.info.path.Split("/").Last();
-				this.info.fullPath = this.info.parent.GetPath() + this.info.path;
+			if(Attribute.repair.Has("SamePathAttributes")){
+				while(Attribute.all.Exists(x=>x != this && x.info.fullPath==this.info.fullPath)){
+					if(Attribute.all.Contains(this)){break;}
+					this.info.path = this.info.path.ToLetterSequence();
+					this.info.name = this.info.path.Split("/").Last();
+					this.info.fullPath = this.info.parent.GetPath().TrimLeft("/") + this.info.path.Trim(this.info.parent.GetAlias());
+				}
 			}
 			if(name != current.name && Attribute.debug.Has("Issue")){
 				Debug.Log("[Attribute] Resolving same name siblings : " + name,current);

@@ -17,6 +17,8 @@ namespace Zios{
 			this.target.Setup("Target",this);
 			this.target.SetFallback("[Owner]");
 			this.AddDependent<ColliderController>(this.target);
+		}
+		public override void Start(){
 			if(Application.isPlaying){
 				string triggerName = this.trigger.ToString().ToTitle();
 				foreach(GameObject target in this.target){

@@ -139,7 +139,6 @@ namespace Zios{
 		// Internal
 		//================================
 		public override void Step(){
-			if(!Application.isPlaying){return;}
 			bool positionAltered = this.lastPosition != this.transform.position;
 			if(this.move.Count > 0 || this.moveRaw.Count > 0 || positionAltered){
 				this.ResetBlocked();

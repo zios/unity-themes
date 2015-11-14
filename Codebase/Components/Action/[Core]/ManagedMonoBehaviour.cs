@@ -19,16 +19,19 @@ namespace Zios{
 			}
 		}
 		public virtual void FixedUpdate(){
+			if(!Application.isPlaying){return;}
 			if(this.rate == UpdateRate.FixedUpdate || this.rate == UpdateRate.Default){
 				this.Step();
 			}
 		}
 		public virtual void Update(){
+			if(!Application.isPlaying){return;}
 			if(this.rate == UpdateRate.Update){
 				this.Step();
 			}
 		}
 		public virtual void LateUpdate(){
+			if(!Application.isPlaying){return;}
 			if(this.rate == UpdateRate.LateUpdate){
 				this.Step();
 			}

@@ -11,9 +11,6 @@ GameObject:
   - 114: {fileID: 11450214}
   - 114: {fileID: 11496288}
   - 114: {fileID: 11475304}
-  - 114: {fileID: 11415610}
-  - 114: {fileID: 11423046}
-  - 114: {fileID: 11466946}
   m_Layer: 10
   m_Name: '@Settings'
   m_TagString: Untagged
@@ -31,17 +28,6 @@ GameObject:
   - 4: {fileID: 417714}
   - 114: {fileID: 11423552}
   - 114: {fileID: 11402996}
-  - 114: {fileID: 11425236}
-  - 114: {fileID: 11495418}
-  - 114: {fileID: 11486920}
-  - 114: {fileID: 11475494}
-  - 114: {fileID: 11479670}
-  - 114: {fileID: 11463304}
-  - 114: {fileID: 11406810}
-  - 114: {fileID: 11473134}
-  - 114: {fileID: 11478040}
-  - 114: {fileID: 11410188}
-  - 114: {fileID: 11421682}
   m_Layer: 10
   m_Name: Main
   m_TagString: Untagged
@@ -124,356 +110,219 @@ MonoBehaviour:
     info:
       name: Usable
       path: Float Animation/Usable
-      id: -43904/186576a6-963f-4847-bebe-9e402cd7711e
+      fullPath: FloatMove/Main/Float Animation/Usable
+      id: -91008/186576a6-963f-4847-bebe-9e402cd7711e
       localID: 186576a6-963f-4847-bebe-9e402cd7711e
       parent: {fileID: 11402996}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11495418}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 123736}
+          parent: {fileID: 11402996}
+          mode: 0
+          path: /FloatMove/Main/Float Animation/Float Animation/Usable/Target
+        usage: 0
+        path: /FloatMove/Main/Attribute Bool Data C
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
       path: Float Animation/Active
-      id: -43904/74cf7cfd-b2aa-41c0-a500-302d2b6d4c52
-      localID: 74cf7cfd-b2aa-41c0-a500-302d2b6d4c52
+      fullPath: FloatMove/Main/Float Animation/Active
+      id: -91008/4e257195-28bf-4334-bf31-08b584ee62af
+      localID: 4e257195-28bf-4334-bf31-08b584ee62af
       parent: {fileID: 11402996}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11425236}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: FloatMove/Main/Float Animation/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
       path: Float Animation/Used
-      id: -43904/5230931b-e8d0-4fe6-8ed8-60f4b4be84d5
+      fullPath: FloatMove/Main/Float Animation/Used
+      id: -91008/5230931b-e8d0-4fe6-8ed8-60f4b4be84d5
       localID: 5230931b-e8d0-4fe6-8ed8-60f4b4be84d5
       parent: {fileID: 11402996}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11486920}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 123736}
+          parent: {fileID: 11402996}
+          mode: 0
+          path: /FloatMove/Main/Float Animation/Float Animation/Used/Target
+        usage: 0
+        path: /FloatMove/Main/Attribute Bool Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   animationName:
     info:
       name: Animation Name
       path: Float Animation/Animation Name
-      id: -43904/39f43500-d0d4-44f5-b4f9-1bd7ee8a6e04
+      fullPath: FloatMove/Main/Float Animation/Animation Name
+      id: -91008/39f43500-d0d4-44f5-b4f9-1bd7ee8a6e04
       localID: 39f43500-d0d4-44f5-b4f9-1bd7ee8a6e04
       parent: {fileID: 11402996}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11406810}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 104734}
+          parent: {fileID: 11402996}
+          mode: 0
+          path: /FloatMove/Main/Float Animation/Float Animation/Animation Name/Target
+        usage: 1
+        path: /FloatMove/Main/Attribute String Data
+        referenceID: -43928/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
+        referencePath: Animation
+        operation: 0
+        special: 0
+        rawValue: Swim
+        rawType: Zios.AttributeStringData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   speed:
     info:
       name: Speed
       path: Float Animation/Speed
-      id: -43904/d742d152-6bb5-438b-a38b-f4f3db892621
+      fullPath: FloatMove/Main/Float Animation/Speed
+      id: -91008/d742d152-6bb5-438b-a38b-f4f3db892621
       localID: d742d152-6bb5-438b-a38b-f4f3db892621
       parent: {fileID: 11402996}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11475494}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 123736}
+          parent: {fileID: 11402996}
+          mode: 0
+          path: /FloatMove/Main/Float Animation/Float Animation/Speed/Target
+        usage: 0
+        path: /FloatMove/Main/Attribute Float Data B
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 1
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   weight:
     info:
       name: Weight
       path: Float Animation/Weight
-      id: -43904/cca3e596-43e9-43a8-9f9c-1831cf48638b
+      fullPath: FloatMove/Main/Float Animation/Weight
+      id: -91008/cca3e596-43e9-43a8-9f9c-1831cf48638b
       localID: cca3e596-43e9-43a8-9f9c-1831cf48638b
       parent: {fileID: 11402996}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11479670}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 123736}
+          parent: {fileID: 11402996}
+          mode: 0
+          path: /FloatMove/Main/Float Animation/Float Animation/Weight/Target
+        usage: 0
+        path: /FloatMove/Main/Attribute Float Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 1
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   target:
     info:
       name: Target
       path: Float Animation/Target
-      id: -43904/c7b83c71-518e-4bbd-bc21-0de83783f29a
+      fullPath: FloatMove/Main/Float Animation/Target
+      id: -91008/c7b83c71-518e-4bbd-bc21-0de83783f29a
       localID: c7b83c71-518e-4bbd-bc21-0de83783f29a
       parent: {fileID: 11402996}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11463304}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 104734}
+          parent: {fileID: 11402996}
+          mode: 0
+          path: /FloatMove/Main/Float Animation/Float Animation/Target/Target
+        usage: 1
+        path: /FloatMove/Main/Attribute Game Object Data
+        referenceID: -43946/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+        referencePath: Visuals
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeGameObjectData
       oldDataB: []
       oldDataC: []
---- !u!114 &11406810
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 123736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3e9984a5f3f19942be359930227796e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute String Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 104734}
-    parent: {fileID: 11402996}
-    mode: 0
-    path: /FloatMove/Main/Float Animation/Float Animation/Animation Name/Target
-  usage: 1
-  path: Float Animation/Animation Name/0
-  referenceID: -43928/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
-  referencePath: Animation
-  attribute:
-    name: Animation Name
-    path: Float Animation/Animation Name
-    id: -43904/39f43500-d0d4-44f5-b4f9-1bd7ee8a6e04
-    localID: 39f43500-d0d4-44f5-b4f9-1bd7ee8a6e04
-    parent: {fileID: 11402996}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11406810}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
       oldData: []
       oldDataB: []
       oldDataC: []
-  operation: 0
-  special: 0
-  value: Swim
-  characterLimit: 0
-  allowed: []
-  disallowed: []
---- !u!114 &11410188
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 123736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 123736}
-    parent: {fileID: 11423552}
-    mode: 0
-    path: /FloatMove/Main/FloatMove/FloatMove/Used/Target
-  usage: 0
-  path: FloatMove/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: FloatMove/Used
-    id: -43916/a78fd6d2-eaf1-40e9-9c1c-ea41b1ed7197
-    localID: a78fd6d2-eaf1-40e9-9c1c-ea41b1ed7197
-    parent: {fileID: 11423552}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11410188}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11415610
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 104734}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Game Object Data
-  target:
-    search: ../../../..
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 11496288}
-    mode: 0
-    path: /FloatMove/@Settings/Source/Source/Target
-  usage: 1
-  path: Source/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Source
-    path: Source
-    id: -43960/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
-    localID: 0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
-    parent: {fileID: 11496288}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11415610}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {fileID: 0}
---- !u!114 &11421682
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 123736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 123736}
-    parent: {fileID: 11423552}
-    mode: 0
-    path: /FloatMove/Main/FloatMove/FloatMove/External/Target
-  usage: 0
-  path: FloatMove/External/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: External
-    path: FloatMove/External
-    id: -43916/9ce98ce6-d2cc-420a-a5ef-6ff9c8ab6983
-    localID: 9ce98ce6-d2cc-420a-a5ef-6ff9c8ab6983
-    parent: {fileID: 11423552}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11421682}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11423046
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 104734}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Game Object Data
-  target:
-    search: ../../../../Visuals
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 11475304}
-    mode: 0
-    path: /FloatMove/@Settings/Visuals/Visuals/Target
-  usage: 1
-  path: Visuals/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Visuals
-    path: Visuals
-    id: -43946/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
-    localID: 33bddd78-c7f6-40fe-94d8-1637fbd7fa73
-    parent: {fileID: 11475304}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11423046}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {fileID: 0}
 --- !u!114 &11423552
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -496,39 +345,93 @@ MonoBehaviour:
     info:
       name: Usable
       path: FloatMove/Usable
-      id: -43916/5cb06605-d098-4dc7-9666-0f1baa1a079b
+      fullPath: FloatMove/Main/FloatMove/Usable
+      id: -91006/5cb06605-d098-4dc7-9666-0f1baa1a079b
       localID: 5cb06605-d098-4dc7-9666-0f1baa1a079b
       parent: {fileID: 11423552}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11473134}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 123736}
+          parent: {fileID: 11423552}
+          mode: 0
+          path: /FloatMove/Main/FloatMove/FloatMove/Usable/Target
+        usage: 0
+        path: /FloatMove/Main/Old Attribute Bool Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: True
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
       path: FloatMove/Active
-      id: -43916/ab6b2dec-15a1-458a-a96c-2eaadfd6d8d1
-      localID: ab6b2dec-15a1-458a-a96c-2eaadfd6d8d1
+      fullPath: FloatMove/Main/FloatMove/Active
+      id: -91006/47ecc5ea-7ae7-402f-acb7-46032c52fd25
+      localID: 47ecc5ea-7ae7-402f-acb7-46032c52fd25
       parent: {fileID: 11423552}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11478040}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: FloatMove/Main/FloatMove/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
       path: FloatMove/Used
-      id: -43916/a78fd6d2-eaf1-40e9-9c1c-ea41b1ed7197
+      fullPath: FloatMove/Main/FloatMove/Used
+      id: -91006/a78fd6d2-eaf1-40e9-9c1c-ea41b1ed7197
       localID: a78fd6d2-eaf1-40e9-9c1c-ea41b1ed7197
       parent: {fileID: 11423552}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11410188}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 123736}
+          parent: {fileID: 11423552}
+          mode: 0
+          path: /FloatMove/Main/FloatMove/FloatMove/Used/Target
+        usage: 0
+        path: /FloatMove/Main/Old Attribute Bool Data C
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   table:
@@ -619,70 +522,36 @@ MonoBehaviour:
     info:
       name: External
       path: FloatMove/External
-      id: -43916/9ce98ce6-d2cc-420a-a5ef-6ff9c8ab6983
+      fullPath: FloatMove/Main/FloatMove/External
+      id: -91006/9ce98ce6-d2cc-420a-a5ef-6ff9c8ab6983
       localID: 9ce98ce6-d2cc-420a-a5ef-6ff9c8ab6983
       parent: {fileID: 11423552}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11421682}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 123736}
+          parent: {fileID: 11423552}
+          mode: 0
+          path: /FloatMove/Main/FloatMove/FloatMove/External/Target
+        usage: 0
+        path: /FloatMove/Main/Old Attribute Bool Data D
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: True
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   scripts:
   - {fileID: 11423552}
   - {fileID: 11402996}
---- !u!114 &11425236
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 123736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 123736}
-    parent: {fileID: 11402996}
-    mode: 0
-    path: /FloatMove/Main/Float Animation/Float Animation/Active/Target
-  usage: 0
-  path: Float Animation/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: Float Animation/Active
-    id: -43904/74cf7cfd-b2aa-41c0-a500-302d2b6d4c52
-    localID: 74cf7cfd-b2aa-41c0-a500-302d2b6d4c52
-    parent: {fileID: 11402996}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11425236}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!114 &11450214
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -701,175 +570,34 @@ MonoBehaviour:
     info:
       name: Animation
       path: Animation
-      id: -43928/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
+      fullPath: FloatMove/@Settings/Animation
+      id: -90994/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
       localID: 7e894ef6-a99f-450f-b42a-e1aa6c29abb9
       parent: {fileID: 11450214}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11466946}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 104734}
+          parent: {fileID: 11450214}
+          mode: 0
+          path: /FloatMove/@Settings/Animation/Animation/Target
+        usage: 0
+        path: /FloatMove/@Settings/Attribute String Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: GlideForward
+        rawType: Zios.AttributeStringData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   remember: 0
---- !u!114 &11463304
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 123736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Game Object Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 104734}
-    parent: {fileID: 11402996}
-    mode: 0
-    path: /FloatMove/Main/Float Animation/Float Animation/Target/Target
-  usage: 1
-  path: Float Animation/Target/0
-  referenceID: -43946/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
-  referencePath: Visuals
-  attribute:
-    name: Target
-    path: Float Animation/Target
-    id: -43904/c7b83c71-518e-4bbd-bc21-0de83783f29a
-    localID: c7b83c71-518e-4bbd-bc21-0de83783f29a
-    parent: {fileID: 11402996}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11463304}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {fileID: 0}
---- !u!114 &11466946
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 104734}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3e9984a5f3f19942be359930227796e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute String Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 104734}
-    parent: {fileID: 11450214}
-    mode: 0
-    path: /FloatMove/@Settings/Animation/Animation/Target
-  usage: 0
-  path: Animation/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Animation
-    path: Animation
-    id: -43928/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
-    localID: 7e894ef6-a99f-450f-b42a-e1aa6c29abb9
-    parent: {fileID: 11450214}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11466946}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: GlideForward
-  characterLimit: 0
-  allowed: []
-  disallowed: []
---- !u!114 &11473134
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 123736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 123736}
-    parent: {fileID: 11423552}
-    mode: 0
-    path: /FloatMove/Main/FloatMove/FloatMove/Usable/Target
-  usage: 0
-  path: FloatMove/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: FloatMove/Usable
-    id: -43916/5cb06605-d098-4dc7-9666-0f1baa1a079b
-    localID: 5cb06605-d098-4dc7-9666-0f1baa1a079b
-    parent: {fileID: 11423552}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11473134}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
 --- !u!114 &11475304
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -888,276 +616,34 @@ MonoBehaviour:
     info:
       name: Visuals
       path: Visuals
-      id: -43946/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+      fullPath: FloatMove/@Settings/Visuals
+      id: -90998/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
       localID: 33bddd78-c7f6-40fe-94d8-1637fbd7fa73
       parent: {fileID: 11475304}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11423046}
+      - target:
+          search: ../../../../Visuals
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 11475304}
+          mode: 0
+          path: /FloatMove/@Settings/Visuals/Visuals/Target
+        usage: 1
+        path: /FloatMove/@Settings/Attribute Game Object Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeGameObjectData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   remember: 0
---- !u!114 &11475494
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 123736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 123736}
-    parent: {fileID: 11402996}
-    mode: 0
-    path: /FloatMove/Main/Float Animation/Float Animation/Speed/Target
-  usage: 0
-  path: Float Animation/Speed/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Speed
-    path: Float Animation/Speed
-    id: -43904/d742d152-6bb5-438b-a38b-f4f3db892621
-    localID: d742d152-6bb5-438b-a38b-f4f3db892621
-    parent: {fileID: 11402996}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11475494}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11478040
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 123736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 123736}
-    parent: {fileID: 11423552}
-    mode: 0
-    path: /FloatMove/Main/FloatMove/FloatMove/Active/Target
-  usage: 0
-  path: FloatMove/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: FloatMove/Active
-    id: -43916/ab6b2dec-15a1-458a-a96c-2eaadfd6d8d1
-    localID: ab6b2dec-15a1-458a-a96c-2eaadfd6d8d1
-    parent: {fileID: 11423552}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11478040}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11479670
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 123736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 123736}
-    parent: {fileID: 11402996}
-    mode: 0
-    path: /FloatMove/Main/Float Animation/Float Animation/Weight/Target
-  usage: 0
-  path: Float Animation/Weight/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Weight
-    path: Float Animation/Weight
-    id: -43904/cca3e596-43e9-43a8-9f9c-1831cf48638b
-    localID: cca3e596-43e9-43a8-9f9c-1831cf48638b
-    parent: {fileID: 11402996}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11479670}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11486920
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 123736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 123736}
-    parent: {fileID: 11402996}
-    mode: 0
-    path: /FloatMove/Main/Float Animation/Float Animation/Used/Target
-  usage: 0
-  path: Float Animation/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: Float Animation/Used
-    id: -43904/5230931b-e8d0-4fe6-8ed8-60f4b4be84d5
-    localID: 5230931b-e8d0-4fe6-8ed8-60f4b4be84d5
-    parent: {fileID: 11402996}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11486920}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11495418
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 123736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 123736}
-    parent: {fileID: 11402996}
-    mode: 0
-    path: /FloatMove/Main/Float Animation/Float Animation/Usable/Target
-  usage: 0
-  path: Float Animation/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: Float Animation/Usable
-    id: -43904/186576a6-963f-4847-bebe-9e402cd7711e
-    localID: 186576a6-963f-4847-bebe-9e402cd7711e
-    parent: {fileID: 11402996}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11495418}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!114 &11496288
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1176,13 +662,31 @@ MonoBehaviour:
     info:
       name: Source
       path: Source
-      id: -43960/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+      fullPath: FloatMove/@Settings/Source
+      id: -90996/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
       localID: 0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
       parent: {fileID: 11496288}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11415610}
+      - target:
+          search: ../../../..
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 11496288}
+          mode: 0
+          path: /FloatMove/@Settings/Source/Source/Target
+        usage: 1
+        path: /FloatMove/@Settings/Attribute Game Object Data B
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeGameObjectData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   remember: 0

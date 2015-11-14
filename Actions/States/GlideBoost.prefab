@@ -13,11 +13,6 @@ GameObject:
   - 114: {fileID: 11425936}
   - 114: {fileID: 11478212}
   - 114: {fileID: 11496536}
-  - 114: {fileID: 11417706}
-  - 114: {fileID: 11434078}
-  - 114: {fileID: 11467300}
-  - 114: {fileID: 11418142}
-  - 114: {fileID: 11400754}
   m_Layer: 0
   m_Name: '@Settings'
   m_TagString: Untagged
@@ -53,35 +48,6 @@ GameObject:
   - 114: {fileID: 11408582}
   - 114: {fileID: 11464654}
   - 114: {fileID: 11497042}
-  - 114: {fileID: 11457094}
-  - 114: {fileID: 11453088}
-  - 114: {fileID: 11417584}
-  - 114: {fileID: 11489336}
-  - 114: {fileID: 11453968}
-  - 114: {fileID: 11489650}
-  - 114: {fileID: 11415136}
-  - 114: {fileID: 11492984}
-  - 114: {fileID: 11457838}
-  - 114: {fileID: 11427210}
-  - 114: {fileID: 11410670}
-  - 114: {fileID: 11461698}
-  - 114: {fileID: 11489992}
-  - 114: {fileID: 11414412}
-  - 114: {fileID: 11466466}
-  - 114: {fileID: 11458168}
-  - 114: {fileID: 11427580}
-  - 114: {fileID: 11411782}
-  - 114: {fileID: 11437774}
-  - 114: {fileID: 11426468}
-  - 114: {fileID: 11419596}
-  - 114: {fileID: 11476456}
-  - 114: {fileID: 11462030}
-  - 114: {fileID: 11431976}
-  - 114: {fileID: 11419922}
-  - 114: {fileID: 11484240}
-  - 114: {fileID: 11443168}
-  - 114: {fileID: 11468586}
-  - 114: {fileID: 11420846}
   m_Layer: 0
   m_Name: Main
   m_TagString: Untagged
@@ -127,61 +93,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 444022}
   m_RootOrder: 0
---- !u!114 &11400754
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 112758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3e9984a5f3f19942be359930227796e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute String Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 112758}
-    parent: {fileID: 11438858}
-    mode: 0
-    path: /GlideBoost (1)/@Settings/Animation/Animation/Target
-  usage: 0
-  path: Animation/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Animation
-    path: Animation
-    id: -44178/7a624c5a-58f3-4d19-83c1-46d2d55a5a8b
-    localID: 7a624c5a-58f3-4d19-83c1-46d2d55a5a8b
-    parent: {fileID: 11438858}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11400754}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: GlideForward
-  characterLimit: 0
-  allowed: []
-  disallowed: []
 --- !u!114 &11408582
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -193,8 +104,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb780ed64906f1944b7e8d65c34757d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /GlideBoost (1)/Main/
-  path: /GlideBoost (1)/Main/Dash Warmup
+  parentPath: /GlideBoost/Main/
+  path: /GlideBoost/Main/Dash Warmup
   alias: Dash Warmup
   rate: 2
   occurrence: 0
@@ -204,39 +115,93 @@ MonoBehaviour:
     info:
       name: Usable
       path: Dash Warmup/Usable
-      id: -44122/d97439f2-83c4-4591-af5a-8d38c7f64754
+      fullPath: GlideBoost/Main/Dash Warmup/Usable
+      id: -91050/d97439f2-83c4-4591-af5a-8d38c7f64754
       localID: d97439f2-83c4-4591-af5a-8d38c7f64754
       parent: {fileID: 11408582}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11453088}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 112758}
+          parent: {fileID: 11408582}
+          mode: 0
+          path: /GlideBoost (1)/Main/Dash Warmup/Dash Warmup/Usable/Target
+        usage: 0
+        path: /GlideBoost/Main/Attribute Bool Data C
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
       path: Dash Warmup/Active
-      id: -44122/1fc29048-a039-477c-9b48-c7c152e5aa7f
-      localID: 1fc29048-a039-477c-9b48-c7c152e5aa7f
+      fullPath: GlideBoost/Main/Dash Warmup/Active
+      id: -91050/92c04e5f-e276-4678-b4ea-9de4562ad2dd
+      localID: 92c04e5f-e276-4678-b4ea-9de4562ad2dd
       parent: {fileID: 11408582}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11457094}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: GlideBoost/Main/Dash Warmup/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
       path: Dash Warmup/Used
-      id: -44122/68233ee9-cce3-413d-8d25-7c8b05420aa9
+      fullPath: GlideBoost/Main/Dash Warmup/Used
+      id: -91050/68233ee9-cce3-413d-8d25-7c8b05420aa9
       localID: 68233ee9-cce3-413d-8d25-7c8b05420aa9
       parent: {fileID: 11408582}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11417584}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 112758}
+          parent: {fileID: 11408582}
+          mode: 0
+          path: /GlideBoost (1)/Main/Dash Warmup/Dash Warmup/Used/Target
+        usage: 0
+        path: /GlideBoost/Main/Attribute Bool Data D
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   type: 0
@@ -244,460 +209,95 @@ MonoBehaviour:
     info:
       name: Seconds
       path: Dash Warmup/Seconds
-      id: -44122/32208392-87fa-4ffd-8236-36103c2ed5e5
+      fullPath: GlideBoost/Main/Dash Warmup/Seconds
+      id: -91050/32208392-87fa-4ffd-8236-36103c2ed5e5
       localID: 32208392-87fa-4ffd-8236-36103c2ed5e5
       parent: {fileID: 11408582}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11466466}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 112758}
+          parent: {fileID: 11408582}
+          mode: 0
+          path: /GlideBoost (1)/Main/Dash Warmup/Dash Warmup/Seconds/Target
+        usage: 1
+        path: /GlideBoost/Main/Attribute Float Data B
+        referenceID: -44236/a10b885f-7dab-4b8d-a122-68daf6d02795
+        referencePath: Warmup Timer
+        operation: 0
+        special: 0
+        rawValue: 4
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   isStarted:
     info:
       name: Is Started
       path: Dash Warmup/Is Started
-      id: -44122/ae1e560f-12b7-413f-a5cc-10cc4dc6016c
+      fullPath: GlideBoost/Main/Dash Warmup/Is Started
+      id: -91050/ae1e560f-12b7-413f-a5cc-10cc4dc6016c
       localID: ae1e560f-12b7-413f-a5cc-10cc4dc6016c
       parent: {fileID: 11408582}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11489336}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 112758}
+          parent: {fileID: 11408582}
+          mode: 0
+          path: /GlideBoost (1)/Main/Dash Warmup/Dash Warmup/Is Started/Target
+        usage: 0
+        path: /GlideBoost/Main/Attribute Bool Data E
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   isComplete:
     info:
       name: Is Complete
       path: Dash Warmup/Is Complete
-      id: -44122/4710ca47-327b-4d15-83bd-5db4fe7881ec
+      fullPath: GlideBoost/Main/Dash Warmup/Is Complete
+      id: -91050/4710ca47-327b-4d15-83bd-5db4fe7881ec
       localID: 4710ca47-327b-4d15-83bd-5db4fe7881ec
       parent: {fileID: 11408582}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11453968}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 112758}
+          parent: {fileID: 11408582}
+          mode: 0
+          path: /GlideBoost (1)/Main/Dash Warmup/Dash Warmup/Is Complete/Target
+        usage: 0
+        path: /GlideBoost/Main/Attribute Bool Data F
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
---- !u!114 &11410670
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 152380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 112758}
-    parent: {fileID: 11497042}
-    mode: 0
-    path: /GlideBoost (1)/Main/Is Full Intensity/Is Full Intensity/Used/Target
-  usage: 0
-  path: Is Full Intensity/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: Is Full Intensity/Used
-    id: -44238/8e08e6dc-cc40-499a-ac4f-2639db3248a3
-    localID: 8e08e6dc-cc40-499a-ac4f-2639db3248a3
-    parent: {fileID: 11497042}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11410670}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
       oldData: []
       oldDataB: []
       oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11411782
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 152380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 112758}
-    parent: {fileID: 11419906}
-    mode: 0
-    path: /GlideBoost (1)/Main/Dash Movement/Dash Movement/Value/Target
-  usage: 0
-  path: Dash Movement/Value/1
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Value
-    path: Dash Movement/Value
-    id: -44144/be952750-aabe-4267-8537-b2f6459dd214
-    localID: be952750-aabe-4267-8537-b2f6459dd214
-    parent: {fileID: 11419906}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11427580}
-    - {fileID: 11411782}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 2
-  special: 0
-  value: 2
---- !u!114 &11414412
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 152380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 112758}
-    parent: {fileID: 11464654}
-    mode: 0
-    path: /GlideBoost (1)/Main/Glide Animation/Glide Animation/Used/Target
-  usage: 0
-  path: Glide Animation/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: Glide Animation/Used
-    id: -44196/75b6d468-bf74-4ecd-963b-0b029f99a92c
-    localID: 75b6d468-bf74-4ecd-963b-0b029f99a92c
-    parent: {fileID: 11464654}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11414412}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11415136
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 152380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 112758}
-    parent: {fileID: 11419906}
-    mode: 0
-    path: /GlideBoost (1)/Main/Dash Movement/Dash Movement/Usable/Target
-  usage: 0
-  path: Dash Movement/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: Dash Movement/Usable
-    id: -44144/089d458f-ea9c-4444-962e-c0334c8adf74
-    localID: 089d458f-ea9c-4444-962e-c0334c8adf74
-    parent: {fileID: 11419906}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11415136}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11417584
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 152380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 112758}
-    parent: {fileID: 11408582}
-    mode: 0
-    path: /GlideBoost (1)/Main/Dash Warmup/Dash Warmup/Used/Target
-  usage: 0
-  path: Dash Warmup/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: Dash Warmup/Used
-    id: -44122/68233ee9-cce3-413d-8d25-7c8b05420aa9
-    localID: 68233ee9-cce3-413d-8d25-7c8b05420aa9
-    parent: {fileID: 11408582}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11417584}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11417706
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 112758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 112758}
-    parent: {fileID: 11425936}
-    mode: 0
-    path: /GlideBoost (1)/@Settings/Speed/Speed/Target
-  usage: 0
-  path: Speed/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Speed
-    path: Speed
-    id: -44152/1e76dc46-03be-4a8c-9216-edeb6024d3f2
-    localID: 1e76dc46-03be-4a8c-9216-edeb6024d3f2
-    parent: {fileID: 11425936}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11417706}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 10
---- !u!114 &11418142
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 112758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Game Object Data
-  target:
-    search: ../../../../Visuals
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 11478212}
-    mode: 0
-    path: /GlideBoost (1)/@Settings/Visuals/Visuals/Target
-  usage: 1
-  path: Visuals/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Visuals
-    path: Visuals
-    id: -44210/22233192-17af-4fef-99b2-7321ebb7cadd
-    localID: 22233192-17af-4fef-99b2-7321ebb7cadd
-    parent: {fileID: 11478212}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11418142}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {fileID: 0}
---- !u!114 &11419596
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 152380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../../../Movement/@Formulas
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 11497042}
-    mode: 0
-    path: /GlideBoost (1)/Main/Is Full Intensity/Is Full Intensity/Target
-  usage: 1
-  path: Is Full Intensity/0
-  referenceID: -71978/b126fe56-f7e4-4235-a952-5e28ea525f32
-  referencePath: Intensity
-  attribute:
-    name: Is Full Intensity
-    path: Is Full Intensity
-    id: -44238/74428eb8-804a-40b9-a9d4-a2f83ab698aa
-    localID: 74428eb8-804a-40b9-a9d4-a2f83ab698aa
-    parent: {fileID: 11497042}
-    mode: 2
-    linkType: 0
-    oldData:
-    - {fileID: 11419596}
-    oldDataB:
-    - {fileID: 11437774}
-    - {fileID: 11426468}
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!114 &11419906
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -709,8 +309,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2423479bf36dd4245b48e7e6a05012a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /GlideBoost (1)/Main/
-  path: /GlideBoost (1)/Main/Dash Movement
+  parentPath: /GlideBoost/Main/
+  path: /GlideBoost/Main/Dash Movement
   alias: Dash Movement
   rate: 1
   occurrence: 0
@@ -720,175 +320,172 @@ MonoBehaviour:
     info:
       name: Usable
       path: Dash Movement/Usable
-      id: -44144/089d458f-ea9c-4444-962e-c0334c8adf74
+      fullPath: GlideBoost/Main/Dash Movement/Usable
+      id: -91048/089d458f-ea9c-4444-962e-c0334c8adf74
       localID: 089d458f-ea9c-4444-962e-c0334c8adf74
       parent: {fileID: 11419906}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11415136}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 112758}
+          parent: {fileID: 11419906}
+          mode: 0
+          path: /GlideBoost (1)/Main/Dash Movement/Dash Movement/Usable/Target
+        usage: 0
+        path: /GlideBoost/Main/Attribute Bool Data H
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
       path: Dash Movement/Active
-      id: -44144/4fb5aca2-276e-474b-84fa-3421bd5b90c4
-      localID: 4fb5aca2-276e-474b-84fa-3421bd5b90c4
+      fullPath: GlideBoost/Main/Dash Movement/Active
+      id: -91048/ece3ff79-1cc3-41d5-9673-0b383a7c86c6
+      localID: ece3ff79-1cc3-41d5-9673-0b383a7c86c6
       parent: {fileID: 11419906}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11489650}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: GlideBoost/Main/Dash Movement/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
       path: Dash Movement/Used
-      id: -44144/b07ada2d-de5d-4c49-9c49-7886f957c472
+      fullPath: GlideBoost/Main/Dash Movement/Used
+      id: -91048/b07ada2d-de5d-4c49-9c49-7886f957c472
       localID: b07ada2d-de5d-4c49-9c49-7886f957c472
       parent: {fileID: 11419906}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11492984}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 112758}
+          parent: {fileID: 11419906}
+          mode: 0
+          path: /GlideBoost (1)/Main/Dash Movement/Dash Movement/Used/Target
+        usage: 0
+        path: /GlideBoost/Main/Attribute Bool Data I
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   target:
     info:
       name: Target
       path: Dash Movement/Target
-      id: -44144/cb94e6dc-9fc6-4a3a-b68a-5a0fe3cf60ac
+      fullPath: GlideBoost/Main/Dash Movement/Target
+      id: -91048/cb94e6dc-9fc6-4a3a-b68a-5a0fe3cf60ac
       localID: cb94e6dc-9fc6-4a3a-b68a-5a0fe3cf60ac
       parent: {fileID: 11419906}
       mode: 1
       linkType: 0
       oldData:
-      - {fileID: 11458168}
+      - target:
+          search: ../../../Movement/@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 11419906}
+          mode: 0
+          path: /GlideBoost (1)/Main/Dash Movement/Dash Movement/Target/Target
+        usage: 1
+        path: /GlideBoost/Main/Attribute Float Data C
+        referenceID: -71396/dca5905a-c495-4ff2-9c6d-31ab61c97f06
+        referencePath: Speed
+        operation: 0
+        special: 0
+        rawValue: 0
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   value:
     info:
       name: Value
       path: Dash Movement/Value
-      id: -44144/be952750-aabe-4267-8537-b2f6459dd214
+      fullPath: GlideBoost/Main/Dash Movement/Value
+      id: -91048/be952750-aabe-4267-8537-b2f6459dd214
       localID: be952750-aabe-4267-8537-b2f6459dd214
       parent: {fileID: 11419906}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11427580}
-      - {fileID: 11411782}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 112758}
+          parent: {fileID: 11419906}
+          mode: 0
+          path: /GlideBoost (1)/Main/Dash Movement/Dash Movement/Value/Target
+        usage: 1
+        path: /GlideBoost/Main/Attribute Float Data D
+        referenceID: -44152/1e76dc46-03be-4a8c-9216-edeb6024d3f2
+        referencePath: Speed
+        operation: 0
+        special: 0
+        rawValue: 10
+        rawType: Zios.AttributeFloatData
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 112758}
+          parent: {fileID: 11419906}
+          mode: 0
+          path: /GlideBoost (1)/Main/Dash Movement/Dash Movement/Value/Target
+        usage: 0
+        path: /GlideBoost/Main/Attribute Float Data E
+        referenceID: 
+        referencePath: 
+        operation: 2
+        special: 0
+        rawValue: 2
+        rawType: Zios.AttributeFloatData
       oldDataB: []
       oldDataC: []
---- !u!114 &11419922
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 152380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3e9984a5f3f19942be359930227796e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute String Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 112758}
-    parent: {fileID: 11464654}
-    mode: 0
-    path: /GlideBoost (1)/Main/Glide Animation/Glide Animation/Animation Name/Target
-  usage: 1
-  path: Glide Animation/Animation Name/0
-  referenceID: -44178/7a624c5a-58f3-4d19-83c1-46d2d55a5a8b
-  referencePath: Animation
-  attribute:
-    name: Animation Name
-    path: Glide Animation/Animation Name
-    id: -44196/14aade3f-0de5-4d6a-af15-338aa62390c6
-    localID: 14aade3f-0de5-4d6a-af15-338aa62390c6
-    parent: {fileID: 11464654}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11419922}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
       oldData: []
       oldDataB: []
       oldDataC: []
-  operation: 0
-  special: 0
-  value: GlideForward
-  characterLimit: 0
-  allowed: []
-  disallowed: []
---- !u!114 &11420846
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 152380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 152380}
-    parent: {fileID: 11427760}
-    mode: 0
-    path: /GlideBoost (1)/Main/GlideBoost (1)/GlideBoost (1)/External/Target
-  usage: 0
-  path: GlideBoost (1)/External/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: External
-    path: GlideBoost (1)/External
-    id: -44160/4f0a2a2c-7f10-4a26-b82c-4887efb1719b
-    localID: 4f0a2a2c-7f10-4a26-b82c-4887efb1719b
-    parent: {fileID: 11427760}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11420846}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
 --- !u!114 &11425936
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -900,182 +497,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73460de1a42c5d64884ae83214747f38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /GlideBoost (1)/@Settings/
-  path: /GlideBoost (1)/@Settings/Speed
+  parentPath: /GlideBoost/@Settings/
+  path: /GlideBoost/@Settings/Speed
   alias: Speed
   value:
     info:
       name: Speed
       path: Speed
-      id: -44152/1e76dc46-03be-4a8c-9216-edeb6024d3f2
+      fullPath: GlideBoost/@Settings/Speed
+      id: -91118/1e76dc46-03be-4a8c-9216-edeb6024d3f2
       localID: 1e76dc46-03be-4a8c-9216-edeb6024d3f2
       parent: {fileID: 11425936}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11417706}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 112758}
+          parent: {fileID: 11425936}
+          mode: 0
+          path: /GlideBoost (1)/@Settings/Speed/Speed/Target
+        usage: 0
+        path: /GlideBoost/@Settings/Attribute Float Data B
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 10
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   remember: 0
---- !u!114 &11426468
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 152380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 152380}
-    parent: {fileID: 11497042}
-    mode: 0
-    path: /GlideBoost (1)/Main/Is Full Intensity/Is Full Intensity/Target
-  usage: 0
-  path: Is Full Intensity/1
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Is Full Intensity
-    path: Is Full Intensity
-    id: -44238/74428eb8-804a-40b9-a9d4-a2f83ab698aa
-    localID: 74428eb8-804a-40b9-a9d4-a2f83ab698aa
-    parent: {fileID: 11497042}
-    mode: 2
-    linkType: 0
-    oldData:
-    - {fileID: 11419596}
-    oldDataB:
-    - {fileID: 11437774}
-    - {fileID: 11426468}
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 2
-  special: 0
-  value: 1
---- !u!114 &11427210
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 152380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 112758}
-    parent: {fileID: 11497042}
-    mode: 0
-    path: /GlideBoost (1)/Main/Is Full Intensity/Is Full Intensity/Usable/Target
-  usage: 0
-  path: Is Full Intensity/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: Is Full Intensity/Usable
-    id: -44238/9f0f4f88-46b7-4b77-b903-6b0c590d7bf4
-    localID: 9f0f4f88-46b7-4b77-b903-6b0c590d7bf4
-    parent: {fileID: 11497042}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11427210}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11427580
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 152380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 112758}
-    parent: {fileID: 11419906}
-    mode: 0
-    path: /GlideBoost (1)/Main/Dash Movement/Dash Movement/Value/Target
-  usage: 1
-  path: Dash Movement/Value/0
-  referenceID: -44152/1e76dc46-03be-4a8c-9216-edeb6024d3f2
-  referencePath: Speed
-  attribute:
-    name: Value
-    path: Dash Movement/Value
-    id: -44144/be952750-aabe-4267-8537-b2f6459dd214
-    localID: be952750-aabe-4267-8537-b2f6459dd214
-    parent: {fileID: 11419906}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11427580}
-    - {fileID: 11411782}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 10
 --- !u!114 &11427760
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1087,9 +543,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4833115f047751b48be018c26164a652, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /GlideBoost (1)/Main/
-  path: /GlideBoost (1)/Main/GlideBoost (1)
-  alias: GlideBoost (1)
+  parentPath: /GlideBoost/Main/
+  path: /GlideBoost/Main/GlideBoost
+  alias: GlideBoost
   rate: 2
   occurrence: 0
   controller: {fileID: 0}
@@ -1097,40 +553,94 @@ MonoBehaviour:
   usable:
     info:
       name: Usable
-      path: GlideBoost (1)/Usable
-      id: -44160/d596ca65-a352-4216-b67a-20b4bc7f0ddf
+      path: GlideBoost/Usable
+      fullPath: GlideBoost/Main/GlideBoost/Usable
+      id: -91046/d596ca65-a352-4216-b67a-20b4bc7f0ddf
       localID: d596ca65-a352-4216-b67a-20b4bc7f0ddf
       parent: {fileID: 11427760}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11484240}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 152380}
+          parent: {fileID: 11427760}
+          mode: 0
+          path: /GlideBoost (1)/Main/GlideBoost (1)/GlideBoost (1)/Usable/Target
+        usage: 0
+        path: /GlideBoost/Main/Old Attribute Bool Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: True
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
-      path: GlideBoost (1)/Active
-      id: -44160/6f7b42cd-88cc-428f-b51a-53ba82ff4c7a
-      localID: 6f7b42cd-88cc-428f-b51a-53ba82ff4c7a
+      path: GlideBoost/Active
+      fullPath: GlideBoost/Main/GlideBoost/Active
+      id: -91046/82fb898f-a246-411a-afd9-89d5b3e5dbf8
+      localID: 82fb898f-a246-411a-afd9-89d5b3e5dbf8
       parent: {fileID: 11427760}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11443168}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: GlideBoost/Main/GlideBoost/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
-      path: GlideBoost (1)/Used
-      id: -44160/144aa972-62fe-4c8b-872a-3d2270128e73
+      path: GlideBoost/Used
+      fullPath: GlideBoost/Main/GlideBoost/Used
+      id: -91046/144aa972-62fe-4c8b-872a-3d2270128e73
       localID: 144aa972-62fe-4c8b-872a-3d2270128e73
       parent: {fileID: 11427760}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11468586}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 152380}
+          parent: {fileID: 11427760}
+          mode: 0
+          path: /GlideBoost (1)/Main/GlideBoost (1)/GlideBoost (1)/Used/Target
+        usage: 0
+        path: /GlideBoost/Main/Old Attribute Bool Data C
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   table:
@@ -1520,14 +1030,32 @@ MonoBehaviour:
   external:
     info:
       name: External
-      path: GlideBoost (1)/External
-      id: -44160/4f0a2a2c-7f10-4a26-b82c-4887efb1719b
+      path: GlideBoost/External
+      fullPath: GlideBoost/Main/GlideBoost/External
+      id: -91046/4f0a2a2c-7f10-4a26-b82c-4887efb1719b
       localID: 4f0a2a2c-7f10-4a26-b82c-4887efb1719b
       parent: {fileID: 11427760}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11420846}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 152380}
+          parent: {fileID: 11427760}
+          mode: 0
+          path: /GlideBoost (1)/Main/GlideBoost (1)/GlideBoost (1)/External/Target
+        usage: 0
+        path: /GlideBoost/Main/Old Attribute Bool Data D
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: True
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   scripts:
@@ -1536,164 +1064,6 @@ MonoBehaviour:
   - {fileID: 11408582}
   - {fileID: 11464654}
   - {fileID: 11497042}
---- !u!114 &11431976
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 152380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Game Object Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 112758}
-    parent: {fileID: 11464654}
-    mode: 0
-    path: /GlideBoost (1)/Main/Glide Animation/Glide Animation/Target/Target
-  usage: 1
-  path: Glide Animation/Target/0
-  referenceID: -44210/22233192-17af-4fef-99b2-7321ebb7cadd
-  referencePath: Visuals
-  attribute:
-    name: Target
-    path: Glide Animation/Target
-    id: -44196/37836090-c1d9-4461-b6cd-7c55069f486e
-    localID: 37836090-c1d9-4461-b6cd-7c55069f486e
-    parent: {fileID: 11464654}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11431976}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {fileID: 0}
---- !u!114 &11434078
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 112758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 112758}
-    parent: {fileID: 11496536}
-    mode: 0
-    path: /GlideBoost (1)/@Settings/Warmup Timer/Warmup Timer/Target
-  usage: 0
-  path: Warmup Timer/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Warmup Timer
-    path: Warmup Timer
-    id: -44236/a10b885f-7dab-4b8d-a122-68daf6d02795
-    localID: a10b885f-7dab-4b8d-a122-68daf6d02795
-    parent: {fileID: 11496536}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11434078}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 4
---- !u!114 &11437774
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 152380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 152380}
-    parent: {fileID: 11497042}
-    mode: 0
-    path: /GlideBoost (1)/Main/Is Full Intensity/Is Full Intensity/Target
-  usage: 0
-  path: Is Full Intensity/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Is Full Intensity
-    path: Is Full Intensity
-    id: -44238/74428eb8-804a-40b9-a9d4-a2f83ab698aa
-    localID: 74428eb8-804a-40b9-a9d4-a2f83ab698aa
-    parent: {fileID: 11497042}
-    mode: 2
-    linkType: 0
-    oldData:
-    - {fileID: 11419596}
-    oldDataB:
-    - {fileID: 11437774}
-    - {fileID: 11426468}
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 4
-  special: 0
-  value: 1
 --- !u!114 &11438858
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1705,439 +1075,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15dc630d7daaf4548bf1d099b9be1324, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /GlideBoost (1)/@Settings/
-  path: /GlideBoost (1)/@Settings/Animation
+  parentPath: /GlideBoost/@Settings/
+  path: /GlideBoost/@Settings/Animation
   alias: Animation
   value:
     info:
       name: Animation
       path: Animation
-      id: -44178/7a624c5a-58f3-4d19-83c1-46d2d55a5a8b
+      fullPath: GlideBoost/@Settings/Animation
+      id: -91114/7a624c5a-58f3-4d19-83c1-46d2d55a5a8b
       localID: 7a624c5a-58f3-4d19-83c1-46d2d55a5a8b
       parent: {fileID: 11438858}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11400754}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 112758}
+          parent: {fileID: 11438858}
+          mode: 0
+          path: /GlideBoost (1)/@Settings/Animation/Animation/Target
+        usage: 0
+        path: /GlideBoost/@Settings/Attribute String Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: GlideForward
+        rawType: Zios.AttributeStringData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   remember: 0
---- !u!114 &11443168
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 152380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 152380}
-    parent: {fileID: 11427760}
-    mode: 0
-    path: /GlideBoost (1)/Main/GlideBoost (1)/GlideBoost (1)/Active/Target
-  usage: 0
-  path: GlideBoost (1)/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: GlideBoost (1)/Active
-    id: -44160/6f7b42cd-88cc-428f-b51a-53ba82ff4c7a
-    localID: 6f7b42cd-88cc-428f-b51a-53ba82ff4c7a
-    parent: {fileID: 11427760}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11443168}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11453088
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 152380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 112758}
-    parent: {fileID: 11408582}
-    mode: 0
-    path: /GlideBoost (1)/Main/Dash Warmup/Dash Warmup/Usable/Target
-  usage: 0
-  path: Dash Warmup/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: Dash Warmup/Usable
-    id: -44122/d97439f2-83c4-4591-af5a-8d38c7f64754
-    localID: d97439f2-83c4-4591-af5a-8d38c7f64754
-    parent: {fileID: 11408582}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11453088}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11453968
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 152380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 112758}
-    parent: {fileID: 11408582}
-    mode: 0
-    path: /GlideBoost (1)/Main/Dash Warmup/Dash Warmup/Is Complete/Target
-  usage: 0
-  path: Dash Warmup/Is Complete/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Is Complete
-    path: Dash Warmup/Is Complete
-    id: -44122/4710ca47-327b-4d15-83bd-5db4fe7881ec
-    localID: 4710ca47-327b-4d15-83bd-5db4fe7881ec
-    parent: {fileID: 11408582}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11453968}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11457094
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 152380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 112758}
-    parent: {fileID: 11408582}
-    mode: 0
-    path: /GlideBoost (1)/Main/Dash Warmup/Dash Warmup/Active/Target
-  usage: 0
-  path: Dash Warmup/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: Dash Warmup/Active
-    id: -44122/1fc29048-a039-477c-9b48-c7c152e5aa7f
-    localID: 1fc29048-a039-477c-9b48-c7c152e5aa7f
-    parent: {fileID: 11408582}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11457094}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11457838
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 152380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 112758}
-    parent: {fileID: 11497042}
-    mode: 0
-    path: /GlideBoost (1)/Main/Is Full Intensity/Is Full Intensity/Active/Target
-  usage: 0
-  path: Is Full Intensity/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: Is Full Intensity/Active
-    id: -44238/746be100-bd2a-4c07-9a9c-326ee3ac99ed
-    localID: 746be100-bd2a-4c07-9a9c-326ee3ac99ed
-    parent: {fileID: 11497042}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11457838}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11458168
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 152380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../../../Movement/@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 11419906}
-    mode: 0
-    path: /GlideBoost (1)/Main/Dash Movement/Dash Movement/Target/Target
-  usage: 1
-  path: Dash Movement/Target/0
-  referenceID: -71396/dca5905a-c495-4ff2-9c6d-31ab61c97f06
-  referencePath: Speed
-  attribute:
-    name: Target
-    path: Dash Movement/Target
-    id: -44144/cb94e6dc-9fc6-4a3a-b68a-5a0fe3cf60ac
-    localID: cb94e6dc-9fc6-4a3a-b68a-5a0fe3cf60ac
-    parent: {fileID: 11419906}
-    mode: 1
-    linkType: 0
-    oldData:
-    - {fileID: 11458168}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11461698
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 152380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 112758}
-    parent: {fileID: 11464654}
-    mode: 0
-    path: /GlideBoost (1)/Main/Glide Animation/Glide Animation/Active/Target
-  usage: 0
-  path: Glide Animation/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: Glide Animation/Active
-    id: -44196/dd5ea3e1-cf92-4206-90be-745f617c029d
-    localID: dd5ea3e1-cf92-4206-90be-745f617c029d
-    parent: {fileID: 11464654}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11461698}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11462030
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 152380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 112758}
-    parent: {fileID: 11464654}
-    mode: 0
-    path: /GlideBoost (1)/Main/Glide Animation/Glide Animation/Weight/Target
-  usage: 0
-  path: Glide Animation/Weight/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Weight
-    path: Glide Animation/Weight
-    id: -44196/1714878a-033f-4267-818e-5728e0e6905c
-    localID: 1714878a-033f-4267-818e-5728e0e6905c
-    parent: {fileID: 11464654}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11462030}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
 --- !u!114 &11464654
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2149,8 +1121,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 913766e3e62ceac4a918c0cd12f04e67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /GlideBoost (1)/Main/
-  path: /GlideBoost (1)/Main/Glide Animation
+  parentPath: /GlideBoost/Main/
+  path: /GlideBoost/Main/Glide Animation
   alias: Glide Animation
   rate: 1
   occurrence: 0
@@ -2160,301 +1132,219 @@ MonoBehaviour:
     info:
       name: Usable
       path: Glide Animation/Usable
-      id: -44196/55191305-fd4c-4a38-96b1-004a3e26b5eb
+      fullPath: GlideBoost/Main/Glide Animation/Usable
+      id: -91052/55191305-fd4c-4a38-96b1-004a3e26b5eb
       localID: 55191305-fd4c-4a38-96b1-004a3e26b5eb
       parent: {fileID: 11464654}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11489992}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 112758}
+          parent: {fileID: 11464654}
+          mode: 0
+          path: /GlideBoost (1)/Main/Glide Animation/Glide Animation/Usable/Target
+        usage: 0
+        path: /GlideBoost/Main/Attribute Bool Data N
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
       path: Glide Animation/Active
-      id: -44196/dd5ea3e1-cf92-4206-90be-745f617c029d
-      localID: dd5ea3e1-cf92-4206-90be-745f617c029d
+      fullPath: GlideBoost/Main/Glide Animation/Active
+      id: -91052/58a97dc0-60a2-4746-be03-dcaf76824a15
+      localID: 58a97dc0-60a2-4746-be03-dcaf76824a15
       parent: {fileID: 11464654}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11461698}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: GlideBoost/Main/Glide Animation/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
       path: Glide Animation/Used
-      id: -44196/75b6d468-bf74-4ecd-963b-0b029f99a92c
+      fullPath: GlideBoost/Main/Glide Animation/Used
+      id: -91052/75b6d468-bf74-4ecd-963b-0b029f99a92c
       localID: 75b6d468-bf74-4ecd-963b-0b029f99a92c
       parent: {fileID: 11464654}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11414412}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 112758}
+          parent: {fileID: 11464654}
+          mode: 0
+          path: /GlideBoost (1)/Main/Glide Animation/Glide Animation/Used/Target
+        usage: 0
+        path: /GlideBoost/Main/Attribute Bool Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   animationName:
     info:
       name: Animation Name
       path: Glide Animation/Animation Name
-      id: -44196/14aade3f-0de5-4d6a-af15-338aa62390c6
+      fullPath: GlideBoost/Main/Glide Animation/Animation Name
+      id: -91052/14aade3f-0de5-4d6a-af15-338aa62390c6
       localID: 14aade3f-0de5-4d6a-af15-338aa62390c6
       parent: {fileID: 11464654}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11419922}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 112758}
+          parent: {fileID: 11464654}
+          mode: 0
+          path: /GlideBoost (1)/Main/Glide Animation/Glide Animation/Animation Name/Target
+        usage: 1
+        path: /GlideBoost/Main/Attribute String Data
+        referenceID: -44178/7a624c5a-58f3-4d19-83c1-46d2d55a5a8b
+        referencePath: Animation
+        operation: 0
+        special: 0
+        rawValue: GlideForward
+        rawType: Zios.AttributeStringData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   speed:
     info:
       name: Speed
       path: Glide Animation/Speed
-      id: -44196/f8225829-3123-44d9-9897-96ea3ac779a0
+      fullPath: GlideBoost/Main/Glide Animation/Speed
+      id: -91052/f8225829-3123-44d9-9897-96ea3ac779a0
       localID: f8225829-3123-44d9-9897-96ea3ac779a0
       parent: {fileID: 11464654}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11476456}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 112758}
+          parent: {fileID: 11464654}
+          mode: 0
+          path: /GlideBoost (1)/Main/Glide Animation/Glide Animation/Speed/Target
+        usage: 0
+        path: /GlideBoost/Main/Attribute Float Data I
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 1
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   weight:
     info:
       name: Weight
       path: Glide Animation/Weight
-      id: -44196/1714878a-033f-4267-818e-5728e0e6905c
+      fullPath: GlideBoost/Main/Glide Animation/Weight
+      id: -91052/1714878a-033f-4267-818e-5728e0e6905c
       localID: 1714878a-033f-4267-818e-5728e0e6905c
       parent: {fileID: 11464654}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11462030}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 112758}
+          parent: {fileID: 11464654}
+          mode: 0
+          path: /GlideBoost (1)/Main/Glide Animation/Glide Animation/Weight/Target
+        usage: 0
+        path: /GlideBoost/Main/Attribute Float Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 1
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   target:
     info:
       name: Target
       path: Glide Animation/Target
-      id: -44196/37836090-c1d9-4461-b6cd-7c55069f486e
+      fullPath: GlideBoost/Main/Glide Animation/Target
+      id: -91052/37836090-c1d9-4461-b6cd-7c55069f486e
       localID: 37836090-c1d9-4461-b6cd-7c55069f486e
       parent: {fileID: 11464654}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11431976}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 112758}
+          parent: {fileID: 11464654}
+          mode: 0
+          path: /GlideBoost (1)/Main/Glide Animation/Glide Animation/Target/Target
+        usage: 1
+        path: /GlideBoost/Main/Attribute Game Object Data
+        referenceID: -44210/22233192-17af-4fef-99b2-7321ebb7cadd
+        referencePath: Visuals
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeGameObjectData
       oldDataB: []
       oldDataC: []
---- !u!114 &11466466
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 152380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 112758}
-    parent: {fileID: 11408582}
-    mode: 0
-    path: /GlideBoost (1)/Main/Dash Warmup/Dash Warmup/Seconds/Target
-  usage: 1
-  path: Dash Warmup/Seconds/0
-  referenceID: -44236/a10b885f-7dab-4b8d-a122-68daf6d02795
-  referencePath: Warmup Timer
-  attribute:
-    name: Seconds
-    path: Dash Warmup/Seconds
-    id: -44122/32208392-87fa-4ffd-8236-36103c2ed5e5
-    localID: 32208392-87fa-4ffd-8236-36103c2ed5e5
-    parent: {fileID: 11408582}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11466466}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
       oldData: []
       oldDataB: []
       oldDataC: []
-  operation: 0
-  special: 0
-  value: 4
---- !u!114 &11467300
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 112758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Game Object Data
-  target:
-    search: ../../../..
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 11484224}
-    mode: 0
-    path: /GlideBoost (1)/@Settings/Source/Source/Target
-  usage: 1
-  path: Source/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Source
-    path: Source
-    id: -44216/198f0aa0-63e4-409d-b967-5181ce5eedac
-    localID: 198f0aa0-63e4-409d-b967-5181ce5eedac
-    parent: {fileID: 11484224}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11467300}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {fileID: 0}
---- !u!114 &11468586
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 152380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 152380}
-    parent: {fileID: 11427760}
-    mode: 0
-    path: /GlideBoost (1)/Main/GlideBoost (1)/GlideBoost (1)/Used/Target
-  usage: 0
-  path: GlideBoost (1)/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: GlideBoost (1)/Used
-    id: -44160/144aa972-62fe-4c8b-872a-3d2270128e73
-    localID: 144aa972-62fe-4c8b-872a-3d2270128e73
-    parent: {fileID: 11427760}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11468586}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11476456
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 152380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 112758}
-    parent: {fileID: 11464654}
-    mode: 0
-    path: /GlideBoost (1)/Main/Glide Animation/Glide Animation/Speed/Target
-  usage: 0
-  path: Glide Animation/Speed/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Speed
-    path: Glide Animation/Speed
-    id: -44196/f8225829-3123-44d9-9897-96ea3ac779a0
-    localID: f8225829-3123-44d9-9897-96ea3ac779a0
-    parent: {fileID: 11464654}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11476456}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
 --- !u!114 &11478212
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2466,20 +1356,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e8a46b59a6b8eb489e122ad5fdef015, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /GlideBoost (1)/@Settings/
-  path: /GlideBoost (1)/@Settings/Visuals
+  parentPath: /GlideBoost/@Settings/
+  path: /GlideBoost/@Settings/Visuals
   alias: Visuals
   value:
     info:
       name: Visuals
       path: Visuals
-      id: -44210/22233192-17af-4fef-99b2-7321ebb7cadd
+      fullPath: GlideBoost/@Settings/Visuals
+      id: -91120/22233192-17af-4fef-99b2-7321ebb7cadd
       localID: 22233192-17af-4fef-99b2-7321ebb7cadd
       parent: {fileID: 11478212}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11418142}
+      - target:
+          search: ../../../../Visuals
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 11478212}
+          mode: 0
+          path: /GlideBoost (1)/@Settings/Visuals/Visuals/Target
+        usage: 1
+        path: /GlideBoost/@Settings/Attribute Game Object Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeGameObjectData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   remember: 0
@@ -2494,283 +1402,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e8a46b59a6b8eb489e122ad5fdef015, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /GlideBoost (1)/@Settings/
-  path: /GlideBoost (1)/@Settings/Source
+  parentPath: /GlideBoost/@Settings/
+  path: /GlideBoost/@Settings/Source
   alias: Source
   value:
     info:
       name: Source
       path: Source
-      id: -44216/198f0aa0-63e4-409d-b967-5181ce5eedac
+      fullPath: GlideBoost/@Settings/Source
+      id: -91116/198f0aa0-63e4-409d-b967-5181ce5eedac
       localID: 198f0aa0-63e4-409d-b967-5181ce5eedac
       parent: {fileID: 11484224}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11467300}
+      - target:
+          search: ../../../..
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 11484224}
+          mode: 0
+          path: /GlideBoost (1)/@Settings/Source/Source/Target
+        usage: 1
+        path: /GlideBoost/@Settings/Attribute Game Object Data B
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeGameObjectData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   remember: 0
---- !u!114 &11484240
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 152380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 152380}
-    parent: {fileID: 11427760}
-    mode: 0
-    path: /GlideBoost (1)/Main/GlideBoost (1)/GlideBoost (1)/Usable/Target
-  usage: 0
-  path: GlideBoost (1)/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: GlideBoost (1)/Usable
-    id: -44160/d596ca65-a352-4216-b67a-20b4bc7f0ddf
-    localID: d596ca65-a352-4216-b67a-20b4bc7f0ddf
-    parent: {fileID: 11427760}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11484240}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11489336
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 152380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 112758}
-    parent: {fileID: 11408582}
-    mode: 0
-    path: /GlideBoost (1)/Main/Dash Warmup/Dash Warmup/Is Started/Target
-  usage: 0
-  path: Dash Warmup/Is Started/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Is Started
-    path: Dash Warmup/Is Started
-    id: -44122/ae1e560f-12b7-413f-a5cc-10cc4dc6016c
-    localID: ae1e560f-12b7-413f-a5cc-10cc4dc6016c
-    parent: {fileID: 11408582}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11489336}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11489650
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 152380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 112758}
-    parent: {fileID: 11419906}
-    mode: 0
-    path: /GlideBoost (1)/Main/Dash Movement/Dash Movement/Active/Target
-  usage: 0
-  path: Dash Movement/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: Dash Movement/Active
-    id: -44144/4fb5aca2-276e-474b-84fa-3421bd5b90c4
-    localID: 4fb5aca2-276e-474b-84fa-3421bd5b90c4
-    parent: {fileID: 11419906}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11489650}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11489992
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 152380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 112758}
-    parent: {fileID: 11464654}
-    mode: 0
-    path: /GlideBoost (1)/Main/Glide Animation/Glide Animation/Usable/Target
-  usage: 0
-  path: Glide Animation/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: Glide Animation/Usable
-    id: -44196/55191305-fd4c-4a38-96b1-004a3e26b5eb
-    localID: 55191305-fd4c-4a38-96b1-004a3e26b5eb
-    parent: {fileID: 11464654}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11489992}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11492984
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 152380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 112758}
-    parent: {fileID: 11419906}
-    mode: 0
-    path: /GlideBoost (1)/Main/Dash Movement/Dash Movement/Used/Target
-  usage: 0
-  path: Dash Movement/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: Dash Movement/Used
-    id: -44144/b07ada2d-de5d-4c49-9c49-7886f957c472
-    localID: b07ada2d-de5d-4c49-9c49-7886f957c472
-    parent: {fileID: 11419906}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11492984}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!114 &11496536
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2782,20 +1448,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73460de1a42c5d64884ae83214747f38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /GlideBoost (1)/@Settings/
-  path: /GlideBoost (1)/@Settings/Warmup Timer
+  parentPath: /GlideBoost/@Settings/
+  path: /GlideBoost/@Settings/Warmup Timer
   alias: Warmup Timer
   value:
     info:
       name: Warmup Timer
       path: Warmup Timer
-      id: -44236/a10b885f-7dab-4b8d-a122-68daf6d02795
+      fullPath: GlideBoost/@Settings/Warmup Timer
+      id: -91122/a10b885f-7dab-4b8d-a122-68daf6d02795
       localID: a10b885f-7dab-4b8d-a122-68daf6d02795
       parent: {fileID: 11496536}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11434078}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 112758}
+          parent: {fileID: 11496536}
+          mode: 0
+          path: /GlideBoost (1)/@Settings/Warmup Timer/Warmup Timer/Target
+        usage: 0
+        path: /GlideBoost/@Settings/Attribute Float Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 4
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   remember: 0
@@ -2810,8 +1494,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79abd314e71bcd8469e24be53380e4bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /GlideBoost (1)/Main/
-  path: /GlideBoost (1)/Main/Is Full Intensity
+  parentPath: /GlideBoost/Main/
+  path: /GlideBoost/Main/Is Full Intensity
   alias: Is Full Intensity
   rate: 2
   occurrence: 0
@@ -2821,55 +1505,155 @@ MonoBehaviour:
     info:
       name: Usable
       path: Is Full Intensity/Usable
-      id: -44238/9f0f4f88-46b7-4b77-b903-6b0c590d7bf4
+      fullPath: GlideBoost/Main/Is Full Intensity/Usable
+      id: -91054/9f0f4f88-46b7-4b77-b903-6b0c590d7bf4
       localID: 9f0f4f88-46b7-4b77-b903-6b0c590d7bf4
       parent: {fileID: 11497042}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11427210}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 112758}
+          parent: {fileID: 11497042}
+          mode: 0
+          path: /GlideBoost (1)/Main/Is Full Intensity/Is Full Intensity/Usable/Target
+        usage: 0
+        path: /GlideBoost/Main/Attribute Bool Data K
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
       path: Is Full Intensity/Active
-      id: -44238/746be100-bd2a-4c07-9a9c-326ee3ac99ed
-      localID: 746be100-bd2a-4c07-9a9c-326ee3ac99ed
+      fullPath: GlideBoost/Main/Is Full Intensity/Active
+      id: -91054/84675089-8ad2-4e3e-848c-99a2a80b0935
+      localID: 84675089-8ad2-4e3e-848c-99a2a80b0935
       parent: {fileID: 11497042}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11457838}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: GlideBoost/Main/Is Full Intensity/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
       path: Is Full Intensity/Used
-      id: -44238/8e08e6dc-cc40-499a-ac4f-2639db3248a3
+      fullPath: GlideBoost/Main/Is Full Intensity/Used
+      id: -91054/8e08e6dc-cc40-499a-ac4f-2639db3248a3
       localID: 8e08e6dc-cc40-499a-ac4f-2639db3248a3
       parent: {fileID: 11497042}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11410670}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 112758}
+          parent: {fileID: 11497042}
+          mode: 0
+          path: /GlideBoost (1)/Main/Is Full Intensity/Is Full Intensity/Used/Target
+        usage: 0
+        path: /GlideBoost/Main/Attribute Bool Data L
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   value:
     info:
       name: Is Full Intensity
       path: Is Full Intensity
-      id: -44238/74428eb8-804a-40b9-a9d4-a2f83ab698aa
+      fullPath: GlideBoost/Main/Is Full Intensity
+      id: -91054/74428eb8-804a-40b9-a9d4-a2f83ab698aa
       localID: 74428eb8-804a-40b9-a9d4-a2f83ab698aa
       parent: {fileID: 11497042}
       mode: 2
       linkType: 0
       oldData:
-      - {fileID: 11419596}
+      - target:
+          search: ../../../Movement/@Formulas
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 11497042}
+          mode: 0
+          path: /GlideBoost (1)/Main/Is Full Intensity/Is Full Intensity/Target
+        usage: 1
+        path: /GlideBoost/Main/Attribute Float Data H
+        referenceID: -71978/b126fe56-f7e4-4235-a952-5e28ea525f32
+        referencePath: Intensity
+        operation: 0
+        special: 0
+        rawValue: 0
+        rawType: Zios.AttributeFloatData
       oldDataB:
-      - {fileID: 11437774}
-      - {fileID: 11426468}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 152380}
+          parent: {fileID: 11497042}
+          mode: 0
+          path: /GlideBoost (1)/Main/Is Full Intensity/Is Full Intensity/Target
+        usage: 0
+        path: /GlideBoost/Main/Attribute Float Data F
+        referenceID: 
+        referencePath: 
+        operation: 4
+        special: 0
+        rawValue: 1
+        rawType: Zios.AttributeFloatData
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 152380}
+          parent: {fileID: 11497042}
+          mode: 0
+          path: /GlideBoost (1)/Main/Is Full Intensity/Is Full Intensity/Target
+        usage: 0
+        path: /GlideBoost/Main/Attribute Float Data G
+        referenceID: 
+        referencePath: 
+        operation: 2
+        special: 0
+        rawValue: 1
+        rawType: Zios.AttributeFloatData
+      oldDataC: []
+      oldData: []
+      oldDataB: []
       oldDataC: []
 --- !u!1001 &100100000
 Prefab:

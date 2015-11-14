@@ -1,7 +1,4 @@
 using UnityEngine;
-using System;
-using System.Collections.Generic;
-using UnityObject = UnityEngine.Object;
 namespace Zios{
 	public static class ComponentExtension{
 		public static void UpdateSerialized(this Component current){
@@ -23,6 +20,11 @@ namespace Zios{
 		}
 		public static bool IsPrefab(this Component current){
 			return current.gameObject.IsPrefab();
+		}
+		public static bool IsEnabled(this Component current){
+			bool enabled = !current.IsNull() && current.gameObject.activeInHierarchy;
+			if(current is MonoBehaviour){enabled = enabled && current.As<MonoBehaviour>().enabled;}
+			return enabled;
 		}
 		public static void Move(this Component current,int amount){
 			Utility.DisconnectPrefabInstance(current);

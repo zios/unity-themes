@@ -9,7 +9,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 476826}
   - 114: {fileID: 11403940}
-  - 114: {fileID: 11499188}
   m_Layer: 10
   m_Name: '@Settings'
   m_TagString: Untagged
@@ -42,29 +41,6 @@ GameObject:
   - 4: {fileID: 495008}
   - 114: {fileID: 11496980}
   - 114: {fileID: 11424886}
-  - 114: {fileID: 11450464}
-  - 114: {fileID: 11409116}
-  - 114: {fileID: 11453296}
-  - 114: {fileID: 11482134}
-  - 114: {fileID: 11446252}
-  - 114: {fileID: 11430758}
-  - 114: {fileID: 11490886}
-  - 114: {fileID: 11466786}
-  - 114: {fileID: 11450698}
-  - 114: {fileID: 11426468}
-  - 114: {fileID: 11401856}
-  - 114: {fileID: 11490776}
-  - 114: {fileID: 11430546}
-  - 114: {fileID: 11400444}
-  - 114: {fileID: 11400934}
-  - 114: {fileID: 11443510}
-  - 114: {fileID: 11491518}
-  - 114: {fileID: 11406346}
-  - 114: {fileID: 11471182}
-  - 114: {fileID: 11466856}
-  - 114: {fileID: 11491590}
-  - 114: {fileID: 11401764}
-  - 114: {fileID: 11468460}
   m_Layer: 10
   m_Name: Main
   m_TagString: Untagged
@@ -110,214 +86,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 471380}
   m_RootOrder: 1
---- !u!114 &11400444
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 194444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 194444}
-    parent: {fileID: 11424886}
-    mode: 0
-    path: /OnWater/Main/Water Check/Water Check/Hit Distance/Target
-  usage: 0
-  path: Water Check/Hit Distance/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Hit Distance
-    path: Water Check/Hit Distance
-    id: -40354/b94f05f9-f69a-4317-ac4b-454b1ac9aa70
-    localID: b94f05f9-f69a-4317-ac4b-454b1ac9aa70
-    parent: {fileID: 11424886}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11400444}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11400934
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 194444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Game Object Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 154318}
-    parent: {fileID: 11424886}
-    mode: 0
-    path: /OnWater/Main/Water Check/Water Check/Source/Target
-  usage: 1
-  path: Water Check/Source/0
-  referenceID: -40338/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
-  referencePath: Source
-  attribute:
-    name: Source
-    path: Water Check/Source
-    id: -40354/9b3fc38c-9478-4f4d-8998-aff605f06ebf
-    localID: 9b3fc38c-9478-4f4d-8998-aff605f06ebf
-    parent: {fileID: 11424886}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11400934}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {fileID: 0}
---- !u!114 &11401764
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 194444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 194444}
-    parent: {fileID: 11496980}
-    mode: 0
-    path: /OnWater/Main/OnWater/OnWater/Used/Target
-  usage: 0
-  path: OnWater/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: OnWater/Used
-    id: -40412/96ae7478-537b-46d7-8691-5d9fecfe5e5f
-    localID: 96ae7478-537b-46d7-8691-5d9fecfe5e5f
-    parent: {fileID: 11496980}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11401764}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11401856
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 194444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 194444}
-    parent: {fileID: 11424886}
-    mode: 0
-    path: /OnWater/Main/Water Check/Water Check/Hit Normal/X/Target
-  usage: 0
-  path: Water Check/Hit Normal/X/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: X
-    path: Water Check/Hit Normal/X
-    id: -40354/e3bc0c70-f04a-4b04-befa-85524e898892
-    localID: e3bc0c70-f04a-4b04-befa-85524e898892
-    parent: {fileID: 11424886}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11401856}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!114 &11403940
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -336,120 +104,34 @@ MonoBehaviour:
     info:
       name: Source
       path: Source
-      id: -40338/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+      fullPath: OnWater/@Settings/Source
+      id: -91422/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
       localID: 0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
       parent: {fileID: 11403940}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11499188}
+      - target:
+          search: ../../../../
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 11403940}
+          mode: 0
+          path: /OnWater/@Settings/Source/Source/Target
+        usage: 1
+        path: /OnWater/@Settings/Attribute Game Object Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeGameObjectData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   remember: 0
---- !u!114 &11406346
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 194444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83639dc7708e9ad4584145044a83425d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Vector3Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 194444}
-    parent: {fileID: 11424886}
-    mode: 0
-    path: /OnWater/Main/Water Check/Water Check/Hit Normal/Target
-  usage: 0
-  path: Water Check/Hit Normal/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Hit Normal
-    path: Water Check/Hit Normal
-    id: -40354/45f8adf8-74cc-4f13-84bb-dc8f332335df
-    localID: 45f8adf8-74cc-4f13-84bb-dc8f332335df
-    parent: {fileID: 11424886}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11406346}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {x: 0, y: 0, z: 0}
---- !u!114 &11409116
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 194444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 194444}
-    parent: {fileID: 11424886}
-    mode: 0
-    path: /OnWater/Main/Water Check/Water Check/Active/Target
-  usage: 0
-  path: Water Check/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: Water Check/Active
-    id: -40354/58438cd1-bd47-402d-b543-c376a647c218
-    localID: 58438cd1-bd47-402d-b543-c376a647c218
-    parent: {fileID: 11424886}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11409116}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!114 &11424886
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -472,117 +154,279 @@ MonoBehaviour:
     info:
       name: Usable
       path: Water Check/Usable
-      id: -40354/5563bb6a-bdcf-4b19-acef-b4baa3feb793
+      fullPath: OnWater/Main/Water Check/Usable
+      id: -91374/5563bb6a-bdcf-4b19-acef-b4baa3feb793
       localID: 5563bb6a-bdcf-4b19-acef-b4baa3feb793
       parent: {fileID: 11424886}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11450464}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 194444}
+          parent: {fileID: 11424886}
+          mode: 0
+          path: /OnWater/Main/Water Check/Water Check/Usable/Target
+        usage: 0
+        path: /OnWater/Main/Attribute Bool Data B
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
       path: Water Check/Active
-      id: -40354/58438cd1-bd47-402d-b543-c376a647c218
-      localID: 58438cd1-bd47-402d-b543-c376a647c218
+      fullPath: OnWater/Main/Water Check/Active
+      id: -91374/8779fcad-ab70-4b91-8ef9-a10f07c72c7b
+      localID: 8779fcad-ab70-4b91-8ef9-a10f07c72c7b
       parent: {fileID: 11424886}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11409116}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: OnWater/Main/Water Check/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
       path: Water Check/Used
-      id: -40354/de1f00b9-c7f3-410c-8aba-99724e553d13
+      fullPath: OnWater/Main/Water Check/Used
+      id: -91374/de1f00b9-c7f3-410c-8aba-99724e553d13
       localID: de1f00b9-c7f3-410c-8aba-99724e553d13
       parent: {fileID: 11424886}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11453296}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 194444}
+          parent: {fileID: 11424886}
+          mode: 0
+          path: /OnWater/Main/Water Check/Water Check/Used/Target
+        usage: 0
+        path: /OnWater/Main/Attribute Bool Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   source:
     info:
       name: Source
       path: Water Check/Source
-      id: -40354/9b3fc38c-9478-4f4d-8998-aff605f06ebf
+      fullPath: OnWater/Main/Water Check/Source
+      id: -91374/9b3fc38c-9478-4f4d-8998-aff605f06ebf
       localID: 9b3fc38c-9478-4f4d-8998-aff605f06ebf
       parent: {fileID: 11424886}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11400934}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 154318}
+          parent: {fileID: 11424886}
+          mode: 0
+          path: /OnWater/Main/Water Check/Water Check/Source/Target
+        usage: 1
+        path: /OnWater/Main/Attribute Game Object Data
+        referenceID: -40338/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+        referencePath: Source
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeGameObjectData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   direction:
     info:
       name: Direction
       path: Water Check/Direction
-      id: -40354/d60c2381-244b-4ef5-8a1c-76d3ee3043c3
+      fullPath: OnWater/Main/Water Check/Direction
+      id: -91374/d60c2381-244b-4ef5-8a1c-76d3ee3043c3
       localID: d60c2381-244b-4ef5-8a1c-76d3ee3043c3
       parent: {fileID: 11424886}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11443510}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 194444}
+          parent: {fileID: 11424886}
+          mode: 0
+          path: /OnWater/Main/Water Check/Water Check/Direction/Target
+        usage: 0
+        path: /OnWater/Main/Attribute Vector3Data B
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: (0.0, -0.2, 0.0)
+        rawType: Zios.AttributeVector3Data
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
     x:
       info:
         name: X
         path: Water Check/Direction/X
-        id: -40354/f9c8bf6c-cd3a-45c5-8107-136f9e46239a
+        fullPath: OnWater/Main/Water Check/Direction/X
+        id: -91374/f9c8bf6c-cd3a-45c5-8107-136f9e46239a
         localID: f9c8bf6c-cd3a-45c5-8107-136f9e46239a
         parent: {fileID: 11424886}
         mode: 0
         linkType: 0
         oldData:
-        - {fileID: 11446252}
+        - target:
+            search: '[Self]'
+            directObject: {fileID: 0}
+            searchObject: {fileID: 194444}
+            parent: {fileID: 11424886}
+            mode: 0
+            path: /OnWater/Main/Water Check/Water Check/Direction/X/Target
+          usage: 0
+          path: /OnWater/Main/Attribute Float Data C
+          referenceID: 
+          referencePath: 
+          operation: 0
+          special: 0
+          rawValue: 0
+          rawType: Zios.AttributeFloatData
+        oldDataB: []
+        oldDataC: []
+        oldData: []
         oldDataB: []
         oldDataC: []
     y:
       info:
         name: Y
         path: Water Check/Direction/Y
-        id: -40354/b88d4d6d-6e03-4306-841f-4c56bfda0547
+        fullPath: OnWater/Main/Water Check/Direction/Y
+        id: -91374/b88d4d6d-6e03-4306-841f-4c56bfda0547
         localID: b88d4d6d-6e03-4306-841f-4c56bfda0547
         parent: {fileID: 11424886}
         mode: 0
         linkType: 0
         oldData:
-        - {fileID: 11430758}
+        - target:
+            search: '[Self]'
+            directObject: {fileID: 0}
+            searchObject: {fileID: 194444}
+            parent: {fileID: 11424886}
+            mode: 0
+            path: /OnWater/Main/Water Check/Water Check/Direction/Y/Target
+          usage: 0
+          path: /OnWater/Main/Attribute Float Data D
+          referenceID: 
+          referencePath: 
+          operation: 0
+          special: 0
+          rawValue: 0
+          rawType: Zios.AttributeFloatData
+        oldDataB: []
+        oldDataC: []
+        oldData: []
         oldDataB: []
         oldDataC: []
     z:
       info:
         name: Z
         path: Water Check/Direction/Z
-        id: -40354/6e90abe4-41f6-4522-954a-d5ee3b3f0b9d
+        fullPath: OnWater/Main/Water Check/Direction/Z
+        id: -91374/6e90abe4-41f6-4522-954a-d5ee3b3f0b9d
         localID: 6e90abe4-41f6-4522-954a-d5ee3b3f0b9d
         parent: {fileID: 11424886}
         mode: 0
         linkType: 0
         oldData:
-        - {fileID: 11490886}
+        - target:
+            search: '[Self]'
+            directObject: {fileID: 0}
+            searchObject: {fileID: 194444}
+            parent: {fileID: 11424886}
+            mode: 0
+            path: /OnWater/Main/Water Check/Water Check/Direction/Z/Target
+          usage: 0
+          path: /OnWater/Main/Attribute Float Data E
+          referenceID: 
+          referencePath: 
+          operation: 0
+          special: 0
+          rawValue: 0
+          rawType: Zios.AttributeFloatData
+        oldDataB: []
+        oldDataC: []
+        oldData: []
         oldDataB: []
         oldDataC: []
   distance:
     info:
       name: Distance
       path: Water Check/Distance
-      id: -40354/210345fd-dfed-4d0c-96c1-ddbf13836d4f
+      fullPath: OnWater/Main/Water Check/Distance
+      id: -91374/210345fd-dfed-4d0c-96c1-ddbf13836d4f
       localID: 210345fd-dfed-4d0c-96c1-ddbf13836d4f
       parent: {fileID: 11424886}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11482134}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 194444}
+          parent: {fileID: 11424886}
+          mode: 0
+          path: /OnWater/Main/Water Check/Water Check/Distance/Target
+        usage: 0
+        path: /OnWater/Main/Attribute Float Data B
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 1
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   layers:
@@ -593,1016 +437,312 @@ MonoBehaviour:
     info:
       name: Hit Point
       path: Water Check/Hit Point
-      id: -40354/bc95ad49-870f-4a41-b2b7-0913fc7163aa
+      fullPath: OnWater/Main/Water Check/Hit Point
+      id: -91374/bc95ad49-870f-4a41-b2b7-0913fc7163aa
       localID: bc95ad49-870f-4a41-b2b7-0913fc7163aa
       parent: {fileID: 11424886}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11491518}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 194444}
+          parent: {fileID: 11424886}
+          mode: 0
+          path: /OnWater/Main/Water Check/Water Check/Hit Point/Target
+        usage: 0
+        path: /OnWater/Main/Attribute Vector3Data C
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: (0.0, 0.0, 0.0)
+        rawType: Zios.AttributeVector3Data
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
     x:
       info:
         name: X
         path: Water Check/Hit Point/X
-        id: -40354/ea322078-1a5b-4b4e-b232-5063cc872a0f
+        fullPath: OnWater/Main/Water Check/Hit Point/X
+        id: -91374/ea322078-1a5b-4b4e-b232-5063cc872a0f
         localID: ea322078-1a5b-4b4e-b232-5063cc872a0f
         parent: {fileID: 11424886}
         mode: 0
         linkType: 0
         oldData:
-        - {fileID: 11466786}
+        - target:
+            search: '[Self]'
+            directObject: {fileID: 0}
+            searchObject: {fileID: 194444}
+            parent: {fileID: 11424886}
+            mode: 0
+            path: /OnWater/Main/Water Check/Water Check/Hit Point/X/Target
+          usage: 0
+          path: /OnWater/Main/Attribute Float Data F
+          referenceID: 
+          referencePath: 
+          operation: 0
+          special: 0
+          rawValue: 0
+          rawType: Zios.AttributeFloatData
+        oldDataB: []
+        oldDataC: []
+        oldData: []
         oldDataB: []
         oldDataC: []
     y:
       info:
         name: Y
         path: Water Check/Hit Point/Y
-        id: -40354/7c5e9c3d-00de-4753-b5b7-64c57bf301bf
+        fullPath: OnWater/Main/Water Check/Hit Point/Y
+        id: -91374/7c5e9c3d-00de-4753-b5b7-64c57bf301bf
         localID: 7c5e9c3d-00de-4753-b5b7-64c57bf301bf
         parent: {fileID: 11424886}
         mode: 0
         linkType: 0
         oldData:
-        - {fileID: 11450698}
+        - target:
+            search: '[Self]'
+            directObject: {fileID: 0}
+            searchObject: {fileID: 194444}
+            parent: {fileID: 11424886}
+            mode: 0
+            path: /OnWater/Main/Water Check/Water Check/Hit Point/Y/Target
+          usage: 0
+          path: /OnWater/Main/Attribute Float Data G
+          referenceID: 
+          referencePath: 
+          operation: 0
+          special: 0
+          rawValue: 0
+          rawType: Zios.AttributeFloatData
+        oldDataB: []
+        oldDataC: []
+        oldData: []
         oldDataB: []
         oldDataC: []
     z:
       info:
         name: Z
         path: Water Check/Hit Point/Z
-        id: -40354/881ce71a-2470-47dd-a215-4dc2077d4507
+        fullPath: OnWater/Main/Water Check/Hit Point/Z
+        id: -91374/881ce71a-2470-47dd-a215-4dc2077d4507
         localID: 881ce71a-2470-47dd-a215-4dc2077d4507
         parent: {fileID: 11424886}
         mode: 0
         linkType: 0
         oldData:
-        - {fileID: 11426468}
+        - target:
+            search: '[Self]'
+            directObject: {fileID: 0}
+            searchObject: {fileID: 194444}
+            parent: {fileID: 11424886}
+            mode: 0
+            path: /OnWater/Main/Water Check/Water Check/Hit Point/Z/Target
+          usage: 0
+          path: /OnWater/Main/Attribute Float Data H
+          referenceID: 
+          referencePath: 
+          operation: 0
+          special: 0
+          rawValue: 0
+          rawType: Zios.AttributeFloatData
+        oldDataB: []
+        oldDataC: []
+        oldData: []
         oldDataB: []
         oldDataC: []
   hitNormal:
     info:
       name: Hit Normal
       path: Water Check/Hit Normal
-      id: -40354/45f8adf8-74cc-4f13-84bb-dc8f332335df
+      fullPath: OnWater/Main/Water Check/Hit Normal
+      id: -91374/45f8adf8-74cc-4f13-84bb-dc8f332335df
       localID: 45f8adf8-74cc-4f13-84bb-dc8f332335df
       parent: {fileID: 11424886}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11406346}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 194444}
+          parent: {fileID: 11424886}
+          mode: 0
+          path: /OnWater/Main/Water Check/Water Check/Hit Normal/Target
+        usage: 0
+        path: /OnWater/Main/Attribute Vector3Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: (0.0, 0.0, 0.0)
+        rawType: Zios.AttributeVector3Data
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
     x:
       info:
         name: X
         path: Water Check/Hit Normal/X
-        id: -40354/e3bc0c70-f04a-4b04-befa-85524e898892
+        fullPath: OnWater/Main/Water Check/Hit Normal/X
+        id: -91374/e3bc0c70-f04a-4b04-befa-85524e898892
         localID: e3bc0c70-f04a-4b04-befa-85524e898892
         parent: {fileID: 11424886}
         mode: 0
         linkType: 0
         oldData:
-        - {fileID: 11401856}
+        - target:
+            search: '[Self]'
+            directObject: {fileID: 0}
+            searchObject: {fileID: 194444}
+            parent: {fileID: 11424886}
+            mode: 0
+            path: /OnWater/Main/Water Check/Water Check/Hit Normal/X/Target
+          usage: 0
+          path: /OnWater/Main/Attribute Float Data I
+          referenceID: 
+          referencePath: 
+          operation: 0
+          special: 0
+          rawValue: 0
+          rawType: Zios.AttributeFloatData
+        oldDataB: []
+        oldDataC: []
+        oldData: []
         oldDataB: []
         oldDataC: []
     y:
       info:
         name: Y
         path: Water Check/Hit Normal/Y
-        id: -40354/2f5ce897-d327-4972-8ac2-3d588cdf1ca4
+        fullPath: OnWater/Main/Water Check/Hit Normal/Y
+        id: -91374/2f5ce897-d327-4972-8ac2-3d588cdf1ca4
         localID: 2f5ce897-d327-4972-8ac2-3d588cdf1ca4
         parent: {fileID: 11424886}
         mode: 0
         linkType: 0
         oldData:
-        - {fileID: 11490776}
+        - target:
+            search: '[Self]'
+            directObject: {fileID: 0}
+            searchObject: {fileID: 194444}
+            parent: {fileID: 11424886}
+            mode: 0
+            path: /OnWater/Main/Water Check/Water Check/Hit Normal/Y/Target
+          usage: 0
+          path: /OnWater/Main/Attribute Float Data J
+          referenceID: 
+          referencePath: 
+          operation: 0
+          special: 0
+          rawValue: 0
+          rawType: Zios.AttributeFloatData
+        oldDataB: []
+        oldDataC: []
+        oldData: []
         oldDataB: []
         oldDataC: []
     z:
       info:
         name: Z
         path: Water Check/Hit Normal/Z
-        id: -40354/a3fd8ac9-d2c6-4d00-844c-e895efe63912
+        fullPath: OnWater/Main/Water Check/Hit Normal/Z
+        id: -91374/a3fd8ac9-d2c6-4d00-844c-e895efe63912
         localID: a3fd8ac9-d2c6-4d00-844c-e895efe63912
         parent: {fileID: 11424886}
         mode: 0
         linkType: 0
         oldData:
-        - {fileID: 11430546}
+        - target:
+            search: '[Self]'
+            directObject: {fileID: 0}
+            searchObject: {fileID: 194444}
+            parent: {fileID: 11424886}
+            mode: 0
+            path: /OnWater/Main/Water Check/Water Check/Hit Normal/Z/Target
+          usage: 0
+          path: /OnWater/Main/Attribute Float Data K
+          referenceID: 
+          referencePath: 
+          operation: 0
+          special: 0
+          rawValue: 0
+          rawType: Zios.AttributeFloatData
+        oldDataB: []
+        oldDataC: []
+        oldData: []
         oldDataB: []
         oldDataC: []
   hitDistance:
     info:
       name: Hit Distance
       path: Water Check/Hit Distance
-      id: -40354/b94f05f9-f69a-4317-ac4b-454b1ac9aa70
+      fullPath: OnWater/Main/Water Check/Hit Distance
+      id: -91374/b94f05f9-f69a-4317-ac4b-454b1ac9aa70
       localID: b94f05f9-f69a-4317-ac4b-454b1ac9aa70
       parent: {fileID: 11424886}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11400444}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 194444}
+          parent: {fileID: 11424886}
+          mode: 0
+          path: /OnWater/Main/Water Check/Water Check/Hit Distance/Target
+        usage: 0
+        path: /OnWater/Main/Attribute Float Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 0
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   hit:
     info:
       name: Hit
       path: Water Check/Hit
-      id: -40354/1345aa50-1ff8-42ed-ac3a-ff9c8f4826c1
+      fullPath: OnWater/Main/Water Check/Hit
+      id: -91374/1345aa50-1ff8-42ed-ac3a-ff9c8f4826c1
       localID: 1345aa50-1ff8-42ed-ac3a-ff9c8f4826c1
       parent: {fileID: 11424886}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11471182}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 194444}
+          parent: {fileID: 11424886}
+          mode: 0
+          path: /OnWater/Main/Water Check/Water Check/Hit/Target
+        usage: 1
+        path: /OnWater/Main/Old Attribute Game Object Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeGameObjectData
       oldDataB: []
       oldDataC: []
---- !u!114 &11426468
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 194444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 194444}
-    parent: {fileID: 11424886}
-    mode: 0
-    path: /OnWater/Main/Water Check/Water Check/Hit Point/Z/Target
-  usage: 0
-  path: Water Check/Hit Point/Z/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Z
-    path: Water Check/Hit Point/Z
-    id: -40354/881ce71a-2470-47dd-a215-4dc2077d4507
-    localID: 881ce71a-2470-47dd-a215-4dc2077d4507
-    parent: {fileID: 11424886}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11426468}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
       oldData: []
       oldDataB: []
       oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11430546
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 194444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 194444}
-    parent: {fileID: 11424886}
-    mode: 0
-    path: /OnWater/Main/Water Check/Water Check/Hit Normal/Z/Target
-  usage: 0
-  path: Water Check/Hit Normal/Z/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Z
-    path: Water Check/Hit Normal/Z
-    id: -40354/a3fd8ac9-d2c6-4d00-844c-e895efe63912
-    localID: a3fd8ac9-d2c6-4d00-844c-e895efe63912
-    parent: {fileID: 11424886}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11430546}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11430758
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 194444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 194444}
-    parent: {fileID: 11424886}
-    mode: 0
-    path: /OnWater/Main/Water Check/Water Check/Direction/Y/Target
-  usage: 0
-  path: Water Check/Direction/Y/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Y
-    path: Water Check/Direction/Y
-    id: -40354/b88d4d6d-6e03-4306-841f-4c56bfda0547
-    localID: b88d4d6d-6e03-4306-841f-4c56bfda0547
-    parent: {fileID: 11424886}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11430758}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11443510
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 194444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83639dc7708e9ad4584145044a83425d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Vector3Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 194444}
-    parent: {fileID: 11424886}
-    mode: 0
-    path: /OnWater/Main/Water Check/Water Check/Direction/Target
-  usage: 0
-  path: Water Check/Direction/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Direction
-    path: Water Check/Direction
-    id: -40354/d60c2381-244b-4ef5-8a1c-76d3ee3043c3
-    localID: d60c2381-244b-4ef5-8a1c-76d3ee3043c3
-    parent: {fileID: 11424886}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11443510}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {x: -0, y: -.200000003, z: -0}
---- !u!114 &11446252
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 194444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 194444}
-    parent: {fileID: 11424886}
-    mode: 0
-    path: /OnWater/Main/Water Check/Water Check/Direction/X/Target
-  usage: 0
-  path: Water Check/Direction/X/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: X
-    path: Water Check/Direction/X
-    id: -40354/f9c8bf6c-cd3a-45c5-8107-136f9e46239a
-    localID: f9c8bf6c-cd3a-45c5-8107-136f9e46239a
-    parent: {fileID: 11424886}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11446252}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11450464
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 194444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 194444}
-    parent: {fileID: 11424886}
-    mode: 0
-    path: /OnWater/Main/Water Check/Water Check/Usable/Target
-  usage: 0
-  path: Water Check/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: Water Check/Usable
-    id: -40354/5563bb6a-bdcf-4b19-acef-b4baa3feb793
-    localID: 5563bb6a-bdcf-4b19-acef-b4baa3feb793
-    parent: {fileID: 11424886}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11450464}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11450698
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 194444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 194444}
-    parent: {fileID: 11424886}
-    mode: 0
-    path: /OnWater/Main/Water Check/Water Check/Hit Point/Y/Target
-  usage: 0
-  path: Water Check/Hit Point/Y/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Y
-    path: Water Check/Hit Point/Y
-    id: -40354/7c5e9c3d-00de-4753-b5b7-64c57bf301bf
-    localID: 7c5e9c3d-00de-4753-b5b7-64c57bf301bf
-    parent: {fileID: 11424886}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11450698}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11453296
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 194444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 194444}
-    parent: {fileID: 11424886}
-    mode: 0
-    path: /OnWater/Main/Water Check/Water Check/Used/Target
-  usage: 0
-  path: Water Check/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: Water Check/Used
-    id: -40354/de1f00b9-c7f3-410c-8aba-99724e553d13
-    localID: de1f00b9-c7f3-410c-8aba-99724e553d13
-    parent: {fileID: 11424886}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11453296}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11466786
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 194444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 194444}
-    parent: {fileID: 11424886}
-    mode: 0
-    path: /OnWater/Main/Water Check/Water Check/Hit Point/X/Target
-  usage: 0
-  path: Water Check/Hit Point/X/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: X
-    path: Water Check/Hit Point/X
-    id: -40354/ea322078-1a5b-4b4e-b232-5063cc872a0f
-    localID: ea322078-1a5b-4b4e-b232-5063cc872a0f
-    parent: {fileID: 11424886}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11466786}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11466856
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 194444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 194444}
-    parent: {fileID: 11496980}
-    mode: 0
-    path: /OnWater/Main/OnWater/OnWater/Usable/Target
-  usage: 0
-  path: OnWater/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: OnWater/Usable
-    id: -40412/66ae1309-5333-4db3-b838-bfa02db53b83
-    localID: 66ae1309-5333-4db3-b838-bfa02db53b83
-    parent: {fileID: 11496980}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11466856}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11468460
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 194444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 194444}
-    parent: {fileID: 11496980}
-    mode: 0
-    path: /OnWater/Main/OnWater/OnWater/External/Target
-  usage: 0
-  path: OnWater/External/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: External
-    path: OnWater/External
-    id: -40412/0531bfbd-e4e8-4669-ae44-08c15a765476
-    localID: 0531bfbd-e4e8-4669-ae44-08c15a765476
-    parent: {fileID: 11496980}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11468460}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11471182
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 194444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 194444}
-    parent: {fileID: 11424886}
-    mode: 0
-    path: /OnWater/Main/Water Check/Water Check/Hit/Target
-  usage: 1
-  path: Water Check/Hit/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Hit
-    path: Water Check/Hit
-    id: -40354/1345aa50-1ff8-42ed-ac3a-ff9c8f4826c1
-    localID: 1345aa50-1ff8-42ed-ac3a-ff9c8f4826c1
-    parent: {fileID: 11424886}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11471182}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {fileID: 0}
---- !u!114 &11482134
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 194444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 194444}
-    parent: {fileID: 11424886}
-    mode: 0
-    path: /OnWater/Main/Water Check/Water Check/Distance/Target
-  usage: 0
-  path: Water Check/Distance/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Distance
-    path: Water Check/Distance
-    id: -40354/210345fd-dfed-4d0c-96c1-ddbf13836d4f
-    localID: 210345fd-dfed-4d0c-96c1-ddbf13836d4f
-    parent: {fileID: 11424886}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11482134}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11490776
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 194444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 194444}
-    parent: {fileID: 11424886}
-    mode: 0
-    path: /OnWater/Main/Water Check/Water Check/Hit Normal/Y/Target
-  usage: 0
-  path: Water Check/Hit Normal/Y/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Y
-    path: Water Check/Hit Normal/Y
-    id: -40354/2f5ce897-d327-4972-8ac2-3d588cdf1ca4
-    localID: 2f5ce897-d327-4972-8ac2-3d588cdf1ca4
-    parent: {fileID: 11424886}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11490776}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11490886
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 194444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 194444}
-    parent: {fileID: 11424886}
-    mode: 0
-    path: /OnWater/Main/Water Check/Water Check/Direction/Z/Target
-  usage: 0
-  path: Water Check/Direction/Z/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Z
-    path: Water Check/Direction/Z
-    id: -40354/6e90abe4-41f6-4522-954a-d5ee3b3f0b9d
-    localID: 6e90abe4-41f6-4522-954a-d5ee3b3f0b9d
-    parent: {fileID: 11424886}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11490886}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11491518
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 194444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83639dc7708e9ad4584145044a83425d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Vector3Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 194444}
-    parent: {fileID: 11424886}
-    mode: 0
-    path: /OnWater/Main/Water Check/Water Check/Hit Point/Target
-  usage: 0
-  path: Water Check/Hit Point/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Hit Point
-    path: Water Check/Hit Point
-    id: -40354/bc95ad49-870f-4a41-b2b7-0913fc7163aa
-    localID: bc95ad49-870f-4a41-b2b7-0913fc7163aa
-    parent: {fileID: 11424886}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11491518}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {x: 0, y: 0, z: 0}
---- !u!114 &11491590
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 194444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 194444}
-    parent: {fileID: 11496980}
-    mode: 0
-    path: /OnWater/Main/OnWater/OnWater/Active/Target
-  usage: 0
-  path: OnWater/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: OnWater/Active
-    id: -40412/c03c05d1-3b22-4048-b045-977c9b16afbd
-    localID: c03c05d1-3b22-4048-b045-977c9b16afbd
-    parent: {fileID: 11496980}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11491590}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!114 &11496980
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1625,39 +765,93 @@ MonoBehaviour:
     info:
       name: Usable
       path: OnWater/Usable
-      id: -40412/66ae1309-5333-4db3-b838-bfa02db53b83
+      fullPath: OnWater/Main/OnWater/Usable
+      id: -91372/66ae1309-5333-4db3-b838-bfa02db53b83
       localID: 66ae1309-5333-4db3-b838-bfa02db53b83
       parent: {fileID: 11496980}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11466856}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 194444}
+          parent: {fileID: 11496980}
+          mode: 0
+          path: /OnWater/Main/OnWater/OnWater/Usable/Target
+        usage: 0
+        path: /OnWater/Main/Old Attribute Bool Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: True
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
       path: OnWater/Active
-      id: -40412/c03c05d1-3b22-4048-b045-977c9b16afbd
-      localID: c03c05d1-3b22-4048-b045-977c9b16afbd
+      fullPath: OnWater/Main/OnWater/Active
+      id: -91372/a5cbe908-a04c-44f5-a31e-6df91781ff0c
+      localID: a5cbe908-a04c-44f5-a31e-6df91781ff0c
       parent: {fileID: 11496980}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11491590}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: OnWater/Main/OnWater/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
       path: OnWater/Used
-      id: -40412/96ae7478-537b-46d7-8691-5d9fecfe5e5f
+      fullPath: OnWater/Main/OnWater/Used
+      id: -91372/96ae7478-537b-46d7-8691-5d9fecfe5e5f
       localID: 96ae7478-537b-46d7-8691-5d9fecfe5e5f
       parent: {fileID: 11496980}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11401764}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 194444}
+          parent: {fileID: 11496980}
+          mode: 0
+          path: /OnWater/Main/OnWater/OnWater/Used/Target
+        usage: 0
+        path: /OnWater/Main/Old Attribute Bool Data C
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   table:
@@ -1748,70 +942,36 @@ MonoBehaviour:
     info:
       name: External
       path: OnWater/External
-      id: -40412/0531bfbd-e4e8-4669-ae44-08c15a765476
+      fullPath: OnWater/Main/OnWater/External
+      id: -91372/0531bfbd-e4e8-4669-ae44-08c15a765476
       localID: 0531bfbd-e4e8-4669-ae44-08c15a765476
       parent: {fileID: 11496980}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11468460}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 194444}
+          parent: {fileID: 11496980}
+          mode: 0
+          path: /OnWater/Main/OnWater/OnWater/External/Target
+        usage: 0
+        path: /OnWater/Main/Old Attribute Bool Data D
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: True
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   scripts:
   - {fileID: 11496980}
   - {fileID: 11424886}
---- !u!114 &11499188
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 154318}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Game Object Data
-  target:
-    search: ../../../../
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 11403940}
-    mode: 0
-    path: /OnWater/@Settings/Source/Source/Target
-  usage: 1
-  path: Source/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Source
-    path: Source
-    id: -40338/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
-    localID: 0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
-    parent: {fileID: 11403940}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11499188}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

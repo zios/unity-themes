@@ -6,6 +6,7 @@ namespace Zios{
 		public Vector3 value;
 		public override AttributeData Convert(){
 			var data = new AttributeVector3Data();
+			data.value = this.value;
 			data.rawValue = this.value.ToString();
 			data.rawType = typeof(AttributeVector3Data).FullName;
 			return data;

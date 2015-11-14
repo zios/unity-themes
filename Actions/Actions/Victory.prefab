@@ -17,15 +17,6 @@ GameObject:
   - 114: {fileID: 11467350}
   - 114: {fileID: 11433382}
   - 114: {fileID: 11474062}
-  - 114: {fileID: 11449520}
-  - 114: {fileID: 11491530}
-  - 114: {fileID: 11448066}
-  - 114: {fileID: 11447828}
-  - 114: {fileID: 11490330}
-  - 114: {fileID: 11461978}
-  - 114: {fileID: 11454594}
-  - 114: {fileID: 11467438}
-  - 114: {fileID: 11448832}
   m_Layer: 10
   m_Name: '@Settings'
   m_TagString: Untagged
@@ -52,72 +43,6 @@ GameObject:
   - 114: {fileID: 11403878}
   - 114: {fileID: 11409074}
   - 114: {fileID: 11467962}
-  - 114: {fileID: 11403178}
-  - 114: {fileID: 11463332}
-  - 114: {fileID: 11470258}
-  - 114: {fileID: 11483444}
-  - 114: {fileID: 11453594}
-  - 114: {fileID: 11403724}
-  - 114: {fileID: 11419994}
-  - 114: {fileID: 11448738}
-  - 114: {fileID: 11454468}
-  - 114: {fileID: 11411676}
-  - 114: {fileID: 11489570}
-  - 114: {fileID: 11454298}
-  - 114: {fileID: 11428378}
-  - 114: {fileID: 11438462}
-  - 114: {fileID: 11486006}
-  - 114: {fileID: 11448160}
-  - 114: {fileID: 11401906}
-  - 114: {fileID: 11445670}
-  - 114: {fileID: 11499456}
-  - 114: {fileID: 11438422}
-  - 114: {fileID: 11424814}
-  - 114: {fileID: 11498392}
-  - 114: {fileID: 11433112}
-  - 114: {fileID: 11462522}
-  - 114: {fileID: 11496460}
-  - 114: {fileID: 11448614}
-  - 114: {fileID: 11401234}
-  - 114: {fileID: 11407230}
-  - 114: {fileID: 11486210}
-  - 114: {fileID: 11496732}
-  - 114: {fileID: 11474720}
-  - 114: {fileID: 11453400}
-  - 114: {fileID: 11491340}
-  - 114: {fileID: 11426316}
-  - 114: {fileID: 11493386}
-  - 114: {fileID: 11412886}
-  - 114: {fileID: 11443856}
-  - 114: {fileID: 11403012}
-  - 114: {fileID: 11400414}
-  - 114: {fileID: 11457202}
-  - 114: {fileID: 11442228}
-  - 114: {fileID: 11496156}
-  - 114: {fileID: 11443948}
-  - 114: {fileID: 11408246}
-  - 114: {fileID: 11429792}
-  - 114: {fileID: 11474528}
-  - 114: {fileID: 11478998}
-  - 114: {fileID: 11451850}
-  - 114: {fileID: 11425426}
-  - 114: {fileID: 11494782}
-  - 114: {fileID: 11418840}
-  - 114: {fileID: 11479056}
-  - 114: {fileID: 11454052}
-  - 114: {fileID: 11455522}
-  - 114: {fileID: 11479694}
-  - 114: {fileID: 11408496}
-  - 114: {fileID: 11415966}
-  - 114: {fileID: 11433894}
-  - 114: {fileID: 11401346}
-  - 114: {fileID: 11474018}
-  - 114: {fileID: 11495266}
-  - 114: {fileID: 11465018}
-  - 114: {fileID: 11403348}
-  - 114: {fileID: 11423206}
-  - 114: {fileID: 11426976}
-  - 114: {fileID: 11458960}
   m_Layer: 10
   m_Name: Main
   m_TagString: Untagged
@@ -178,373 +103,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 443296}
   m_RootOrder: 1
---- !u!114 &11400414
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11409074}
-    mode: 0
-    path: /Victory (1)/Main/Start Timer/Start Timer/Used/Target
-  usage: 0
-  path: Start Timer/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: Start Timer/Used
-    id: -54684/b9e26cd4-7ce1-451d-a04b-9856075bb2fd
-    localID: b9e26cd4-7ce1-451d-a04b-9856075bb2fd
-    parent: {fileID: 11409074}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11400414}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11401234
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11421856}
-    mode: 0
-    path: /Victory (1)/Main/Item Check/Item Check/Used/Target
-  usage: 0
-  path: Item Check/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: Item Check/Used
-    id: -54710/f3a6b396-60fc-4e90-952e-bcb8a0176a5b
-    localID: f3a6b396-60fc-4e90-952e-bcb8a0176a5b
-    parent: {fileID: 11421856}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11401234}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11401346
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3e9984a5f3f19942be359930227796e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute String Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 143344}
-    parent: {fileID: 11499724}
-    mode: 0
-    path: /Victory (1)/Main/Play Victory End/Play Victory End/Animation Name/Target
-  usage: 1
-  path: Play Victory End/Animation Name/0
-  referenceID: -54836/34289d88-fb9b-458d-bfbd-417eb6d17ba3
-  referencePath: Animation (End)
-  attribute:
-    name: Animation Name
-    path: Play Victory End/Animation Name
-    id: -54900/6741c7c0-fc7e-4444-b092-b8d4f097d064
-    localID: 6741c7c0-fc7e-4444-b092-b8d4f097d064
-    parent: {fileID: 11499724}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11401346}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 
-  characterLimit: 0
-  allowed: []
-  disallowed: []
---- !u!114 &11401906
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11453526}
-    mode: 0
-    path: /Victory (1)/Main/Play Victory Start/Play Victory Start/Active/Target
-  usage: 0
-  path: Play Victory Start/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: Play Victory Start/Active
-    id: -54794/dcfabe17-89e9-46ca-bd71-ad3ac2b019d5
-    localID: dcfabe17-89e9-46ca-bd71-ad3ac2b019d5
-    parent: {fileID: 11453526}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11401906}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11403012
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11409074}
-    mode: 0
-    path: /Victory (1)/Main/Start Timer/Start Timer/Active/Target
-  usage: 0
-  path: Start Timer/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: Start Timer/Active
-    id: -54684/b1b6cd7b-445e-416c-a7fe-9748ec7abac0
-    localID: b1b6cd7b-445e-416c-a7fe-9748ec7abac0
-    parent: {fileID: 11409074}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11403012}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11403178
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11430834}
-    mode: 0
-    path: /Victory (1)/Main/Loop Timer/Loop Timer/Active/Target
-  usage: 0
-  path: Loop Timer/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: Loop Timer/Active
-    id: -54726/3d9d261b-cc16-4f7b-b23e-8df700fc14bd
-    localID: 3d9d261b-cc16-4f7b-b23e-8df700fc14bd
-    parent: {fileID: 11430834}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11403178}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11403348
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11403398}
-    mode: 0
-    path: /Victory (1)/Main/Victory (1)/Victory (1)/Usable/Target
-  usage: 0
-  path: Victory (1)/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: Victory (1)/Usable
-    id: -54668/bcfd88f7-0e49-48a5-aa56-321bffbaf4f2
-    localID: bcfd88f7-0e49-48a5-aa56-321bffbaf4f2
-    parent: {fileID: 11403398}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11403348}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
 --- !u!114 &11403398
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -556,9 +114,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4833115f047751b48be018c26164a652, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /Victory (1)/Main/
-  path: /Victory (1)/Main/Victory (1)
-  alias: Victory (1)
+  parentPath: /Victory/Main/
+  path: /Victory/Main/Victory
+  alias: Victory
   rate: 1
   occurrence: 0
   controller: {fileID: 0}
@@ -566,40 +124,94 @@ MonoBehaviour:
   usable:
     info:
       name: Usable
-      path: Victory (1)/Usable
-      id: -54668/bcfd88f7-0e49-48a5-aa56-321bffbaf4f2
+      path: Victory/Usable
+      fullPath: Victory/Main/Victory/Usable
+      id: -90650/bcfd88f7-0e49-48a5-aa56-321bffbaf4f2
       localID: bcfd88f7-0e49-48a5-aa56-321bffbaf4f2
       parent: {fileID: 11403398}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11403348}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 155490}
+          parent: {fileID: 11403398}
+          mode: 0
+          path: /Victory (1)/Main/Victory (1)/Victory (1)/Usable/Target
+        usage: 0
+        path: /Victory/Main/Old Attribute Bool Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: True
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
-      path: Victory (1)/Active
-      id: -54668/ffb9c31a-0683-42b4-8580-24ad276e2b8a
-      localID: ffb9c31a-0683-42b4-8580-24ad276e2b8a
+      path: Victory/Active
+      fullPath: Victory/Main/Victory/Active
+      id: -90650/c90cdc1d-2736-4067-8a87-e9c429175bdd
+      localID: c90cdc1d-2736-4067-8a87-e9c429175bdd
       parent: {fileID: 11403398}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11423206}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: Victory/Main/Victory/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
-      path: Victory (1)/Used
-      id: -54668/9d31e85b-a20e-43af-a85b-2f669d356b14
+      path: Victory/Used
+      fullPath: Victory/Main/Victory/Used
+      id: -90650/9d31e85b-a20e-43af-a85b-2f669d356b14
       localID: 9d31e85b-a20e-43af-a85b-2f669d356b14
       parent: {fileID: 11403398}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11426976}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 155490}
+          parent: {fileID: 11403398}
+          mode: 0
+          path: /Victory (1)/Main/Victory (1)/Victory (1)/Used/Target
+        usage: 0
+        path: /Victory/Main/Old Attribute Bool Data C
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   table:
@@ -2237,14 +1849,32 @@ MonoBehaviour:
   external:
     info:
       name: External
-      path: Victory (1)/External
-      id: -54668/495a8db9-deb7-4de3-b421-12d5f42db4cb
+      path: Victory/External
+      fullPath: Victory/Main/Victory/External
+      id: -90650/495a8db9-deb7-4de3-b421-12d5f42db4cb
       localID: 495a8db9-deb7-4de3-b421-12d5f42db4cb
       parent: {fileID: 11403398}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11458960}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 155490}
+          parent: {fileID: 11403398}
+          mode: 0
+          path: /Victory (1)/Main/Victory (1)/Victory (1)/External/Target
+        usage: 0
+        path: /Victory/Main/Old Attribute Bool Data D
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: True
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   scripts:
@@ -2259,58 +1889,6 @@ MonoBehaviour:
   - {fileID: 11403878}
   - {fileID: 11409074}
   - {fileID: 11467962}
---- !u!114 &11403724
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11431464}
-    mode: 0
-    path: /Victory (1)/Main/Loop Duration/Loop Duration/Active/Target
-  usage: 0
-  path: Loop Duration/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: Loop Duration/Active
-    id: -54730/909c1624-f8dd-450e-aa2b-81bcf7588256
-    localID: 909c1624-f8dd-450e-aa2b-81bcf7588256
-    parent: {fileID: 11431464}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11403724}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!114 &11403878
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2322,8 +1900,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 765f92e7a7e33da449cb9a0eec1627f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /Victory (1)/Main/
-  path: /Victory (1)/Main/Set Position
+  parentPath: /Victory/Main/
+  path: /Victory/Main/Set Position
   alias: Set Position
   rate: 1
   occurrence: 2
@@ -2333,39 +1911,93 @@ MonoBehaviour:
     info:
       name: Usable
       path: Set Position/Usable
-      id: -54672/9ad96db4-8dbc-4c53-91df-1388ad5df973
+      fullPath: Victory/Main/Set Position/Usable
+      id: -90666/9ad96db4-8dbc-4c53-91df-1388ad5df973
       localID: 9ad96db4-8dbc-4c53-91df-1388ad5df973
       parent: {fileID: 11403878}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11493386}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 155490}
+          parent: {fileID: 11403878}
+          mode: 0
+          path: /Victory (1)/Main/Set Position/Set Position/Usable/Target
+        usage: 0
+        path: /Victory/Main/Attribute Bool Data [ J
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
       path: Set Position/Active
-      id: -54672/2cd32190-71be-4fc7-bdfe-629a076b19ef
-      localID: 2cd32190-71be-4fc7-bdfe-629a076b19ef
+      fullPath: Victory/Main/Set Position/Active
+      id: -90666/069eb6bd-53ec-4501-8bd6-e51611fa7789
+      localID: 069eb6bd-53ec-4501-8bd6-e51611fa7789
       parent: {fileID: 11403878}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11426316}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: Victory/Main/Set Position/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
       path: Set Position/Used
-      id: -54672/125a4551-d167-41b2-85f9-fe5d307e28ef
+      fullPath: Victory/Main/Set Position/Used
+      id: -90666/125a4551-d167-41b2-85f9-fe5d307e28ef
       localID: 125a4551-d167-41b2-85f9-fe5d307e28ef
       parent: {fileID: 11403878}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11412886}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 155490}
+          parent: {fileID: 11403878}
+          mode: 0
+          path: /Victory (1)/Main/Set Position/Set Position/Used/Target
+        usage: 0
+        path: /Victory/Main/Attribute Bool Data [ K
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   mode: 0
@@ -2373,119 +2005,157 @@ MonoBehaviour:
     info:
       name: Target
       path: Set Position/Target
-      id: -54672/e425537f-3a59-44cf-b078-00122f065e58
+      fullPath: Victory/Main/Set Position/Target
+      id: -90666/e425537f-3a59-44cf-b078-00122f065e58
       localID: e425537f-3a59-44cf-b078-00122f065e58
       parent: {fileID: 11403878}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11433894}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 143344}
+          parent: {fileID: 11403878}
+          mode: 0
+          path: /Victory (1)/Main/Set Position/Set Position/Target/Target
+        usage: 1
+        path: /Victory/Main/Attribute Game Object Data
+        referenceID: -54742/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+        referencePath: Source
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeGameObjectData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   position:
     info:
       name: Position
       path: Set Position/Position
-      id: -54672/44cb6c82-e861-4c54-b884-0827b6e9d693
+      fullPath: Victory/Main/Set Position/Position
+      id: -90666/44cb6c82-e861-4c54-b884-0827b6e9d693
       localID: 44cb6c82-e861-4c54-b884-0827b6e9d693
       parent: {fileID: 11403878}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11465018}
+      - target:
+          search: Scene/Teleport
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 11403878}
+          mode: 0
+          path: /Victory (1)/Main/Set Position/Set Position/Position/Target
+        usage: 1
+        path: /Victory/Main/Attribute Vector3 Data
+        referenceID: 71286/0cc53df5-f83c-40cd-8ed0-a3c28da79733
+        referencePath: Transform/Position
+        operation: 0
+        special: 0
+        rawValue: (0.0, 0.0, 0.0)
+        rawType: Zios.AttributeVector3Data
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
     x:
       info:
         name: X
         path: Set Position/Position/X
-        id: -54672/9febf6d0-de5d-4737-a45a-0d980e2308a5
+        fullPath: Victory/Main/Set Position/Position/X
+        id: -90666/9febf6d0-de5d-4737-a45a-0d980e2308a5
         localID: 9febf6d0-de5d-4737-a45a-0d980e2308a5
         parent: {fileID: 11403878}
         mode: 0
         linkType: 0
         oldData:
-        - {fileID: 11418840}
+        - target:
+            search: '[Self]'
+            directObject: {fileID: 0}
+            searchObject: {fileID: 155490}
+            parent: {fileID: 11403878}
+            mode: 0
+            path: /Victory (1)/Main/Set Position/Set Position/Position/X/Target
+          usage: 0
+          path: /Victory/Main/Attribute Float Data K
+          referenceID: 
+          referencePath: 
+          operation: 0
+          special: 0
+          rawValue: 0
+          rawType: Zios.AttributeFloatData
+        oldDataB: []
+        oldDataC: []
+        oldData: []
         oldDataB: []
         oldDataC: []
     y:
       info:
         name: Y
         path: Set Position/Position/Y
-        id: -54672/9a4c2260-16dc-4c53-bee4-652dfa6fdf11
+        fullPath: Victory/Main/Set Position/Position/Y
+        id: -90666/9a4c2260-16dc-4c53-bee4-652dfa6fdf11
         localID: 9a4c2260-16dc-4c53-bee4-652dfa6fdf11
         parent: {fileID: 11403878}
         mode: 0
         linkType: 0
         oldData:
-        - {fileID: 11479056}
+        - target:
+            search: '[Self]'
+            directObject: {fileID: 0}
+            searchObject: {fileID: 155490}
+            parent: {fileID: 11403878}
+            mode: 0
+            path: /Victory (1)/Main/Set Position/Set Position/Position/Y/Target
+          usage: 0
+          path: /Victory/Main/Attribute Float Data L
+          referenceID: 
+          referencePath: 
+          operation: 0
+          special: 0
+          rawValue: 0
+          rawType: Zios.AttributeFloatData
+        oldDataB: []
+        oldDataC: []
+        oldData: []
         oldDataB: []
         oldDataC: []
     z:
       info:
         name: Z
         path: Set Position/Position/Z
-        id: -54672/0c89b6c1-f961-447a-a8aa-982c452bdb5c
+        fullPath: Victory/Main/Set Position/Position/Z
+        id: -90666/0c89b6c1-f961-447a-a8aa-982c452bdb5c
         localID: 0c89b6c1-f961-447a-a8aa-982c452bdb5c
         parent: {fileID: 11403878}
         mode: 0
         linkType: 0
         oldData:
-        - {fileID: 11454052}
+        - target:
+            search: '[Self]'
+            directObject: {fileID: 0}
+            searchObject: {fileID: 155490}
+            parent: {fileID: 11403878}
+            mode: 0
+            path: /Victory (1)/Main/Set Position/Set Position/Position/Z/Target
+          usage: 0
+          path: /Victory/Main/Attribute Float Data M
+          referenceID: 
+          referencePath: 
+          operation: 0
+          special: 0
+          rawValue: 0
+          rawType: Zios.AttributeFloatData
         oldDataB: []
         oldDataC: []
---- !u!114 &11407230
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../../Collections/Item Collection
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 11421856}
-    mode: 0
-    path: /Victory (1)/Main/Item Check/Item Check/Target
-  usage: 1
-  path: Item Check/0
-  referenceID: -70598/749bc210-bbe9-4610-b588-573a874668e1
-  referencePath: Collecting
-  attribute:
-    name: Item Check
-    path: Item Check
-    id: -54710/ad9ba7de-27d4-4ce0-81d8-3914cd433d87
-    localID: ad9ba7de-27d4-4ce0-81d8-3914cd433d87
-    parent: {fileID: 11421856}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11407230}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
+        oldData: []
+        oldDataB: []
+        oldDataC: []
 --- !u!114 &11407516
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2497,127 +2167,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15dc630d7daaf4548bf1d099b9be1324, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /Victory (1)/@Settings/
-  path: /Victory (1)/@Settings/Animation (Loop)
+  parentPath: /Victory/@Settings/
+  path: /Victory/@Settings/Animation (Loop)
   alias: Animation (Loop)
   value:
     info:
       name: Animation (Loop)
       path: Animation (Loop)
-      id: -54678/3c10fc08-36e5-49d2-8344-aec9dba6bca2
+      fullPath: Victory/@Settings/Animation (Loop)
+      id: -90616/3c10fc08-36e5-49d2-8344-aec9dba6bca2
       localID: 3c10fc08-36e5-49d2-8344-aec9dba6bca2
       parent: {fileID: 11407516}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11467438}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 143344}
+          parent: {fileID: 11407516}
+          mode: 0
+          path: /Victory (1)/@Settings/Animation (Loop)/Animation (Loop)/Target
+        usage: 0
+        path: /Victory/@Settings/Attribute String Data C
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: VictoryLoop
+        rawType: Zios.AttributeStringData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   remember: 0
---- !u!114 &11408246
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11499724}
-    mode: 0
-    path: /Victory (1)/Main/Play Victory End/Play Victory End/Speed/Target
-  usage: 0
-  path: Play Victory End/Speed/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Speed
-    path: Play Victory End/Speed
-    id: -54900/c5bf11f4-bdec-40ce-85e1-2d1d7f2d7e01
-    localID: c5bf11f4-bdec-40ce-85e1-2d1d7f2d7e01
-    parent: {fileID: 11499724}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11408246}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11408496
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Game Object Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 143344}
-    parent: {fileID: 11471934}
-    mode: 0
-    path: /Victory (1)/Main/Play Victory Loop/Play Victory Loop/Target/Target
-  usage: 1
-  path: Play Victory Loop/Target/0
-  referenceID: -54842/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
-  referencePath: Visuals
-  attribute:
-    name: Target
-    path: Play Victory Loop/Target
-    id: -54834/386cf129-bb4b-4193-8ad2-d786fbada21e
-    localID: 386cf129-bb4b-4193-8ad2-d786fbada21e
-    parent: {fileID: 11471934}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11408496}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {fileID: 0}
 --- !u!114 &11409074
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2629,8 +2213,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb780ed64906f1944b7e8d65c34757d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /Victory (1)/Main/
-  path: /Victory (1)/Main/Start Timer
+  parentPath: /Victory/Main/
+  path: /Victory/Main/Start Timer
   alias: Start Timer
   rate: 1
   occurrence: 0
@@ -2640,39 +2224,93 @@ MonoBehaviour:
     info:
       name: Usable
       path: Start Timer/Usable
-      id: -54684/0d63ea47-1555-4db1-a8e5-b554fffa16d9
+      fullPath: Victory/Main/Start Timer/Usable
+      id: -90668/0d63ea47-1555-4db1-a8e5-b554fffa16d9
       localID: 0d63ea47-1555-4db1-a8e5-b554fffa16d9
       parent: {fileID: 11409074}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11443856}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 155490}
+          parent: {fileID: 11409074}
+          mode: 0
+          path: /Victory (1)/Main/Start Timer/Start Timer/Usable/Target
+        usage: 0
+        path: /Victory/Main/Attribute Bool Data [ L
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
       path: Start Timer/Active
-      id: -54684/b1b6cd7b-445e-416c-a7fe-9748ec7abac0
-      localID: b1b6cd7b-445e-416c-a7fe-9748ec7abac0
+      fullPath: Victory/Main/Start Timer/Active
+      id: -90668/dba086d0-c91f-44cb-894d-ba7b897e612b
+      localID: dba086d0-c91f-44cb-894d-ba7b897e612b
       parent: {fileID: 11409074}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11403012}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: Victory/Main/Start Timer/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
       path: Start Timer/Used
-      id: -54684/b9e26cd4-7ce1-451d-a04b-9856075bb2fd
+      fullPath: Victory/Main/Start Timer/Used
+      id: -90668/b9e26cd4-7ce1-451d-a04b-9856075bb2fd
       localID: b9e26cd4-7ce1-451d-a04b-9856075bb2fd
       parent: {fileID: 11409074}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11400414}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 155490}
+          parent: {fileID: 11409074}
+          mode: 0
+          path: /Victory (1)/Main/Start Timer/Start Timer/Used/Target
+        usage: 0
+        path: /Victory/Main/Attribute Bool Data [ N
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   type: 1
@@ -2680,197 +2318,95 @@ MonoBehaviour:
     info:
       name: Seconds
       path: Start Timer/Seconds
-      id: -54684/d83983c8-cf3c-41bd-9a5d-b25ff214654d
+      fullPath: Victory/Main/Start Timer/Seconds
+      id: -90668/d83983c8-cf3c-41bd-9a5d-b25ff214654d
       localID: d83983c8-cf3c-41bd-9a5d-b25ff214654d
       parent: {fileID: 11409074}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11455522}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 143344}
+          parent: {fileID: 11409074}
+          mode: 0
+          path: /Victory (1)/Main/Start Timer/Start Timer/Seconds/Target
+        usage: 1
+        path: /Victory/Main/Attribute Float Data
+        referenceID: -54736/90810e24-637c-4b2b-9b2d-2b726666e1f6
+        referencePath: Timer (Start)
+        operation: 0
+        special: 0
+        rawValue: 1.33
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   isStarted:
     info:
       name: Is Started
       path: Start Timer/Is Started
-      id: -54684/810d0f08-b7b3-428f-989b-ded6356ac2ab
+      fullPath: Victory/Main/Start Timer/Is Started
+      id: -90668/810d0f08-b7b3-428f-989b-ded6356ac2ab
       localID: 810d0f08-b7b3-428f-989b-ded6356ac2ab
       parent: {fileID: 11409074}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11457202}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 155490}
+          parent: {fileID: 11409074}
+          mode: 0
+          path: /Victory (1)/Main/Start Timer/Start Timer/Is Started/Target
+        usage: 0
+        path: /Victory/Main/Attribute Bool Data [ O
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   isComplete:
     info:
       name: Is Complete
       path: Start Timer/Is Complete
-      id: -54684/2081472f-1f90-44ca-ae4b-20eaf3c9a3ca
+      fullPath: Victory/Main/Start Timer/Is Complete
+      id: -90668/2081472f-1f90-44ca-ae4b-20eaf3c9a3ca
       localID: 2081472f-1f90-44ca-ae4b-20eaf3c9a3ca
       parent: {fileID: 11409074}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11442228}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 155490}
+          parent: {fileID: 11409074}
+          mode: 0
+          path: /Victory (1)/Main/Start Timer/Start Timer/Is Complete/Target
+        usage: 0
+        path: /Victory/Main/Attribute Bool Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
---- !u!114 &11411676
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11431464}
-    mode: 0
-    path: /Victory (1)/Main/Loop Duration/Loop Duration/Is Complete/Target
-  usage: 0
-  path: Loop Duration/Is Complete/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Is Complete
-    path: Loop Duration/Is Complete
-    id: -54730/6b6126a0-780e-46a3-96b2-90cc9c282125
-    localID: 6b6126a0-780e-46a3-96b2-90cc9c282125
-    parent: {fileID: 11431464}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11411676}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
       oldData: []
       oldDataB: []
       oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11412886
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11403878}
-    mode: 0
-    path: /Victory (1)/Main/Set Position/Set Position/Used/Target
-  usage: 0
-  path: Set Position/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: Set Position/Used
-    id: -54672/125a4551-d167-41b2-85f9-fe5d307e28ef
-    localID: 125a4551-d167-41b2-85f9-fe5d307e28ef
-    parent: {fileID: 11403878}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11412886}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11415966
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Game Object Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 143344}
-    parent: {fileID: 11453526}
-    mode: 0
-    path: /Victory (1)/Main/Play Victory Start/Play Victory Start/Target/Target
-  usage: 1
-  path: Play Victory Start/Target/0
-  referenceID: -54842/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
-  referencePath: Visuals
-  attribute:
-    name: Target
-    path: Play Victory Start/Target
-    id: -54794/ddb5d4cd-3496-4357-bea0-955ccc53e38f
-    localID: ddb5d4cd-3496-4357-bea0-955ccc53e38f
-    parent: {fileID: 11453526}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11415966}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {fileID: 0}
 --- !u!114 &11417296
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2882,127 +2418,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73460de1a42c5d64884ae83214747f38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /Victory (1)/@Settings/
-  path: /Victory (1)/@Settings/Duration (Loop)
+  parentPath: /Victory/@Settings/
+  path: /Victory/@Settings/Duration (Loop)
   alias: Duration (Loop)
   value:
     info:
       name: Duration (Loop)
       path: Duration (Loop)
-      id: -54696/99a61bfe-40c4-471b-90a3-b3ef29549ed9
+      fullPath: Victory/@Settings/Duration (Loop)
+      id: -90620/99a61bfe-40c4-471b-90a3-b3ef29549ed9
       localID: 99a61bfe-40c4-471b-90a3-b3ef29549ed9
       parent: {fileID: 11417296}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11448066}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 143344}
+          parent: {fileID: 11417296}
+          mode: 0
+          path: /Victory (1)/@Settings/Duration (Loop)/Duration (Loop)/Target
+        usage: 0
+        path: /Victory/@Settings/Attribute Float Data D
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 3
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   remember: 0
---- !u!114 &11418840
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11403878}
-    mode: 0
-    path: /Victory (1)/Main/Set Position/Set Position/Position/X/Target
-  usage: 0
-  path: Set Position/Position/X/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: X
-    path: Set Position/Position/X
-    id: -54672/9febf6d0-de5d-4737-a45a-0d980e2308a5
-    localID: 9febf6d0-de5d-4737-a45a-0d980e2308a5
-    parent: {fileID: 11403878}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11418840}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11419994
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11431464}
-    mode: 0
-    path: /Victory (1)/Main/Loop Duration/Loop Duration/Usable/Target
-  usage: 0
-  path: Loop Duration/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: Loop Duration/Usable
-    id: -54730/d91a78fe-64a4-437f-b62a-00b70bfdd97f
-    localID: d91a78fe-64a4-437f-b62a-00b70bfdd97f
-    parent: {fileID: 11431464}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11419994}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!114 &11421856
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3014,8 +2464,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79abd314e71bcd8469e24be53380e4bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /Victory (1)/Main/
-  path: /Victory (1)/Main/Item Check
+  parentPath: /Victory/Main/
+  path: /Victory/Main/Item Check
   alias: Item Check
   rate: 1
   occurrence: 0
@@ -3025,418 +2475,126 @@ MonoBehaviour:
     info:
       name: Usable
       path: Item Check/Usable
-      id: -54710/adac8aed-a80c-497c-9292-f8276989f0bd
+      fullPath: Victory/Main/Item Check/Usable
+      id: -90658/adac8aed-a80c-497c-9292-f8276989f0bd
       localID: adac8aed-a80c-497c-9292-f8276989f0bd
       parent: {fileID: 11421856}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11448614}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 155490}
+          parent: {fileID: 11421856}
+          mode: 0
+          path: /Victory (1)/Main/Item Check/Item Check/Usable/Target
+        usage: 0
+        path: /Victory/Main/Attribute Bool Data [
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
       path: Item Check/Active
-      id: -54710/ee685b54-6e64-410a-a345-2919ad02fdd7
-      localID: ee685b54-6e64-410a-a345-2919ad02fdd7
+      fullPath: Victory/Main/Item Check/Active
+      id: -90658/72cd682d-926c-493c-bffe-d750aed8c624
+      localID: 72cd682d-926c-493c-bffe-d750aed8c624
       parent: {fileID: 11421856}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11496460}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: Victory/Main/Item Check/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
       path: Item Check/Used
-      id: -54710/f3a6b396-60fc-4e90-952e-bcb8a0176a5b
+      fullPath: Victory/Main/Item Check/Used
+      id: -90658/f3a6b396-60fc-4e90-952e-bcb8a0176a5b
       localID: f3a6b396-60fc-4e90-952e-bcb8a0176a5b
       parent: {fileID: 11421856}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11401234}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 155490}
+          parent: {fileID: 11421856}
+          mode: 0
+          path: /Victory (1)/Main/Item Check/Item Check/Used/Target
+        usage: 0
+        path: /Victory/Main/Attribute Bool Data [ B
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   value:
     info:
       name: Item Check
       path: Item Check
-      id: -54710/ad9ba7de-27d4-4ce0-81d8-3914cd433d87
+      fullPath: Victory/Main/Item Check
+      id: -90658/ad9ba7de-27d4-4ce0-81d8-3914cd433d87
       localID: ad9ba7de-27d4-4ce0-81d8-3914cd433d87
       parent: {fileID: 11421856}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11407230}
+      - target:
+          search: ../../Collections/Item Collection
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 11421856}
+          mode: 0
+          path: /Victory (1)/Main/Item Check/Item Check/Target
+        usage: 1
+        path: /Victory/Main/Attribute Bool Data [ C
+        referenceID: -70598/749bc210-bbe9-4610-b588-573a874668e1
+        referencePath: Collecting
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
---- !u!114 &11423206
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11403398}
-    mode: 0
-    path: /Victory (1)/Main/Victory (1)/Victory (1)/Active/Target
-  usage: 0
-  path: Victory (1)/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: Victory (1)/Active
-    id: -54668/ffb9c31a-0683-42b4-8580-24ad276e2b8a
-    localID: ffb9c31a-0683-42b4-8580-24ad276e2b8a
-    parent: {fileID: 11403398}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11423206}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
       oldData: []
       oldDataB: []
       oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11424814
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11467112}
-    mode: 0
-    path: /Victory (1)/Main/End Timer/End Timer/Usable/Target
-  usage: 0
-  path: End Timer/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: End Timer/Usable
-    id: -54822/2cabf08c-52f9-4020-9ee3-878a9830d7fa
-    localID: 2cabf08c-52f9-4020-9ee3-878a9830d7fa
-    parent: {fileID: 11467112}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11424814}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11425426
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11453526}
-    mode: 0
-    path: /Victory (1)/Main/Play Victory Start/Play Victory Start/Weight/Target
-  usage: 0
-  path: Play Victory Start/Weight/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Weight
-    path: Play Victory Start/Weight
-    id: -54794/fda691eb-401a-4224-bfdb-d18a9adb4c9b
-    localID: fda691eb-401a-4224-bfdb-d18a9adb4c9b
-    parent: {fileID: 11453526}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11425426}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11426316
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11403878}
-    mode: 0
-    path: /Victory (1)/Main/Set Position/Set Position/Active/Target
-  usage: 0
-  path: Set Position/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: Set Position/Active
-    id: -54672/2cd32190-71be-4fc7-bdfe-629a076b19ef
-    localID: 2cd32190-71be-4fc7-bdfe-629a076b19ef
-    parent: {fileID: 11403878}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11426316}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11426976
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11403398}
-    mode: 0
-    path: /Victory (1)/Main/Victory (1)/Victory (1)/Used/Target
-  usage: 0
-  path: Victory (1)/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: Victory (1)/Used
-    id: -54668/9d31e85b-a20e-43af-a85b-2f669d356b14
-    localID: 9d31e85b-a20e-43af-a85b-2f669d356b14
-    parent: {fileID: 11403398}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11426976}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11428378
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11499724}
-    mode: 0
-    path: /Victory (1)/Main/Play Victory End/Play Victory End/Used/Target
-  usage: 0
-  path: Play Victory End/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: Play Victory End/Used
-    id: -54900/683d3b93-315c-4be8-ab40-50cd1eb4ae69
-    localID: 683d3b93-315c-4be8-ab40-50cd1eb4ae69
-    parent: {fileID: 11499724}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11428378}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11429792
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11499724}
-    mode: 0
-    path: /Victory (1)/Main/Play Victory End/Play Victory End/Weight/Target
-  usage: 0
-  path: Play Victory End/Weight/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Weight
-    path: Play Victory End/Weight
-    id: -54900/6c65b343-9d81-40ec-8d42-88210deacac5
-    localID: 6c65b343-9d81-40ec-8d42-88210deacac5
-    parent: {fileID: 11499724}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11429792}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
 --- !u!114 &11430834
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3448,8 +2606,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb780ed64906f1944b7e8d65c34757d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /Victory (1)/Main/
-  path: /Victory (1)/Main/Loop Timer
+  parentPath: /Victory/Main/
+  path: /Victory/Main/Loop Timer
   alias: Loop Timer
   rate: 1
   occurrence: 0
@@ -3459,39 +2617,93 @@ MonoBehaviour:
     info:
       name: Usable
       path: Loop Timer/Usable
-      id: -54726/34b8fdb2-7f81-4959-ad90-506316ec8573
+      fullPath: Victory/Main/Loop Timer/Usable
+      id: -90656/34b8fdb2-7f81-4959-ad90-506316ec8573
       localID: 34b8fdb2-7f81-4959-ad90-506316ec8573
       parent: {fileID: 11430834}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11463332}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 155490}
+          parent: {fileID: 11430834}
+          mode: 0
+          path: /Victory (1)/Main/Loop Timer/Loop Timer/Usable/Target
+        usage: 0
+        path: /Victory/Main/Attribute Bool Data C
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
       path: Loop Timer/Active
-      id: -54726/3d9d261b-cc16-4f7b-b23e-8df700fc14bd
-      localID: 3d9d261b-cc16-4f7b-b23e-8df700fc14bd
+      fullPath: Victory/Main/Loop Timer/Active
+      id: -90656/a44aca30-4274-4ca9-a35e-ba75248783dc
+      localID: a44aca30-4274-4ca9-a35e-ba75248783dc
       parent: {fileID: 11430834}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11403178}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: Victory/Main/Loop Timer/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
       path: Loop Timer/Used
-      id: -54726/06750868-9ffe-4c23-85eb-af1312f3ecea
+      fullPath: Victory/Main/Loop Timer/Used
+      id: -90656/06750868-9ffe-4c23-85eb-af1312f3ecea
       localID: 06750868-9ffe-4c23-85eb-af1312f3ecea
       parent: {fileID: 11430834}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11470258}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 155490}
+          parent: {fileID: 11430834}
+          mode: 0
+          path: /Victory (1)/Main/Loop Timer/Loop Timer/Used/Target
+        usage: 0
+        path: /Victory/Main/Attribute Bool Data D
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   type: 0
@@ -3499,39 +2711,93 @@ MonoBehaviour:
     info:
       name: Seconds
       path: Loop Timer/Seconds
-      id: -54726/3eec5e98-284e-4e01-ac28-b4de2cfa2299
+      fullPath: Victory/Main/Loop Timer/Seconds
+      id: -90656/3eec5e98-284e-4e01-ac28-b4de2cfa2299
       localID: 3eec5e98-284e-4e01-ac28-b4de2cfa2299
       parent: {fileID: 11430834}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11496156}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 143344}
+          parent: {fileID: 11430834}
+          mode: 0
+          path: /Victory (1)/Main/Loop Timer/Loop Timer/Seconds/Target
+        usage: 1
+        path: /Victory/Main/Attribute Float Data B
+        referenceID: -54824/8dbae381-4ad2-4656-98e1-e09b57f6cbec
+        referencePath: Timer (Loop)
+        operation: 0
+        special: 0
+        rawValue: 1.18
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   isStarted:
     info:
       name: Is Started
       path: Loop Timer/Is Started
-      id: -54726/2492f2f2-fed9-4cc0-ba0d-62585f138fe3
+      fullPath: Victory/Main/Loop Timer/Is Started
+      id: -90656/2492f2f2-fed9-4cc0-ba0d-62585f138fe3
       localID: 2492f2f2-fed9-4cc0-ba0d-62585f138fe3
       parent: {fileID: 11430834}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11483444}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 155490}
+          parent: {fileID: 11430834}
+          mode: 0
+          path: /Victory (1)/Main/Loop Timer/Loop Timer/Is Started/Target
+        usage: 0
+        path: /Victory/Main/Attribute Bool Data E
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   isComplete:
     info:
       name: Is Complete
       path: Loop Timer/Is Complete
-      id: -54726/9c3eb329-3c0b-4f52-ad1e-4b0650df8345
+      fullPath: Victory/Main/Loop Timer/Is Complete
+      id: -90656/9c3eb329-3c0b-4f52-ad1e-4b0650df8345
       localID: 9c3eb329-3c0b-4f52-ad1e-4b0650df8345
       parent: {fileID: 11430834}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11453594}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 155490}
+          parent: {fileID: 11430834}
+          mode: 0
+          path: /Victory (1)/Main/Loop Timer/Loop Timer/Is Complete/Target
+        usage: 0
+        path: /Victory/Main/Attribute Bool Data F
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
 --- !u!114 &11431464
@@ -3545,8 +2811,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb780ed64906f1944b7e8d65c34757d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /Victory (1)/Main/
-  path: /Victory (1)/Main/Loop Duration
+  parentPath: /Victory/Main/
+  path: /Victory/Main/Loop Duration
   alias: Loop Duration
   rate: 1
   occurrence: 0
@@ -3556,39 +2822,93 @@ MonoBehaviour:
     info:
       name: Usable
       path: Loop Duration/Usable
-      id: -54730/d91a78fe-64a4-437f-b62a-00b70bfdd97f
+      fullPath: Victory/Main/Loop Duration/Usable
+      id: -90654/d91a78fe-64a4-437f-b62a-00b70bfdd97f
       localID: d91a78fe-64a4-437f-b62a-00b70bfdd97f
       parent: {fileID: 11431464}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11419994}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 155490}
+          parent: {fileID: 11431464}
+          mode: 0
+          path: /Victory (1)/Main/Loop Duration/Loop Duration/Usable/Target
+        usage: 0
+        path: /Victory/Main/Attribute Bool Data H
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
       path: Loop Duration/Active
-      id: -54730/909c1624-f8dd-450e-aa2b-81bcf7588256
-      localID: 909c1624-f8dd-450e-aa2b-81bcf7588256
+      fullPath: Victory/Main/Loop Duration/Active
+      id: -90654/2e1286df-5f13-43b2-b70e-961af6fdbe4d
+      localID: 2e1286df-5f13-43b2-b70e-961af6fdbe4d
       parent: {fileID: 11431464}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11403724}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: Victory/Main/Loop Duration/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
       path: Loop Duration/Used
-      id: -54730/85eb2c98-17ae-4278-99c5-77271ccc4c5f
+      fullPath: Victory/Main/Loop Duration/Used
+      id: -90654/85eb2c98-17ae-4278-99c5-77271ccc4c5f
       localID: 85eb2c98-17ae-4278-99c5-77271ccc4c5f
       parent: {fileID: 11431464}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11448738}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 155490}
+          parent: {fileID: 11431464}
+          mode: 0
+          path: /Victory (1)/Main/Loop Duration/Loop Duration/Used/Target
+        usage: 0
+        path: /Victory/Main/Attribute Bool Data I
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   type: 0
@@ -3596,39 +2916,93 @@ MonoBehaviour:
     info:
       name: Seconds
       path: Loop Duration/Seconds
-      id: -54730/17d8e0ee-b6e6-41ae-bb65-7f7f451b6d1b
+      fullPath: Victory/Main/Loop Duration/Seconds
+      id: -90654/17d8e0ee-b6e6-41ae-bb65-7f7f451b6d1b
       localID: 17d8e0ee-b6e6-41ae-bb65-7f7f451b6d1b
       parent: {fileID: 11431464}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11443948}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 143344}
+          parent: {fileID: 11431464}
+          mode: 0
+          path: /Victory (1)/Main/Loop Duration/Loop Duration/Seconds/Target
+        usage: 1
+        path: /Victory/Main/Attribute Float Data C
+        referenceID: -54696/99a61bfe-40c4-471b-90a3-b3ef29549ed9
+        referencePath: Duration (Loop)
+        operation: 0
+        special: 0
+        rawValue: 3
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   isStarted:
     info:
       name: Is Started
       path: Loop Duration/Is Started
-      id: -54730/67114253-bc06-4d95-bf6e-765091629ac0
+      fullPath: Victory/Main/Loop Duration/Is Started
+      id: -90654/67114253-bc06-4d95-bf6e-765091629ac0
       localID: 67114253-bc06-4d95-bf6e-765091629ac0
       parent: {fileID: 11431464}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11454468}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 155490}
+          parent: {fileID: 11431464}
+          mode: 0
+          path: /Victory (1)/Main/Loop Duration/Loop Duration/Is Started/Target
+        usage: 0
+        path: /Victory/Main/Attribute Bool Data J
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   isComplete:
     info:
       name: Is Complete
       path: Loop Duration/Is Complete
-      id: -54730/6b6126a0-780e-46a3-96b2-90cc9c282125
+      fullPath: Victory/Main/Loop Duration/Is Complete
+      id: -90654/6b6126a0-780e-46a3-96b2-90cc9c282125
       localID: 6b6126a0-780e-46a3-96b2-90cc9c282125
       parent: {fileID: 11431464}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11411676}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 155490}
+          parent: {fileID: 11431464}
+          mode: 0
+          path: /Victory (1)/Main/Loop Duration/Loop Duration/Is Complete/Target
+        usage: 0
+        path: /Victory/Main/Attribute Bool Data K
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
 --- !u!114 &11432240
@@ -3642,75 +3016,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15dc630d7daaf4548bf1d099b9be1324, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /Victory (1)/@Settings/
-  path: /Victory (1)/@Settings/Animation (Start)
+  parentPath: /Victory/@Settings/
+  path: /Victory/@Settings/Animation (Start)
   alias: Animation (Start)
   value:
     info:
       name: Animation (Start)
       path: Animation (Start)
-      id: -54732/eeba4df9-ec03-4f9d-bd47-371d414f3949
+      fullPath: Victory/@Settings/Animation (Start)
+      id: -90618/eeba4df9-ec03-4f9d-bd47-371d414f3949
       localID: eeba4df9-ec03-4f9d-bd47-371d414f3949
       parent: {fileID: 11432240}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11454594}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 143344}
+          parent: {fileID: 11432240}
+          mode: 0
+          path: /Victory (1)/@Settings/Animation (Start)/Animation (Start)/Target
+        usage: 0
+        path: /Victory/@Settings/Attribute String Data B
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: VictoryStart
+        rawType: Zios.AttributeStringData
       oldDataB: []
       oldDataC: []
-  remember: 0
---- !u!114 &11433112
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11467112}
-    mode: 0
-    path: /Victory (1)/Main/End Timer/End Timer/Is Started/Target
-  usage: 0
-  path: End Timer/Is Started/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Is Started
-    path: End Timer/Is Started
-    id: -54822/8fb03981-34df-4274-ab9b-9f1bf6cd9bec
-    localID: 8fb03981-34df-4274-ab9b-9f1bf6cd9bec
-    parent: {fileID: 11467112}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11433112}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
       oldData: []
       oldDataB: []
       oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
+  remember: 0
 --- !u!114 &11433382
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3722,75 +3062,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73460de1a42c5d64884ae83214747f38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /Victory (1)/@Settings/
-  path: /Victory (1)/@Settings/Timer (Start)
+  parentPath: /Victory/@Settings/
+  path: /Victory/@Settings/Timer (Start)
   alias: Timer (Start)
   value:
     info:
       name: Timer (Start)
       path: Timer (Start)
-      id: -54736/90810e24-637c-4b2b-9b2d-2b726666e1f6
+      fullPath: Victory/@Settings/Timer (Start)
+      id: -90628/90810e24-637c-4b2b-9b2d-2b726666e1f6
       localID: 90810e24-637c-4b2b-9b2d-2b726666e1f6
       parent: {fileID: 11433382}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11449520}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 143344}
+          parent: {fileID: 11433382}
+          mode: 0
+          path: /Victory (1)/@Settings/Timer (Start)/Timer (Start)/Target
+        usage: 0
+        path: /Victory/@Settings/Attribute Float Data B
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 1.13
+        rawType: Zios.AttributeFloatData
       oldDataB: []
       oldDataC: []
-  remember: 0
---- !u!114 &11433894
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Game Object Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 143344}
-    parent: {fileID: 11403878}
-    mode: 0
-    path: /Victory (1)/Main/Set Position/Set Position/Target/Target
-  usage: 1
-  path: Set Position/Target/0
-  referenceID: -54742/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
-  referencePath: Source
-  attribute:
-    name: Target
-    path: Set Position/Target
-    id: -54672/e425537f-3a59-44cf-b078-00122f065e58
-    localID: e425537f-3a59-44cf-b078-00122f065e58
-    parent: {fileID: 11403878}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11433894}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
       oldData: []
       oldDataB: []
       oldDataC: []
-  operation: 0
-  special: 0
-  value: {fileID: 0}
+  remember: 0
 --- !u!114 &11435762
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3802,806 +3108,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e8a46b59a6b8eb489e122ad5fdef015, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /Victory (1)/@Settings/
-  path: /Victory (1)/@Settings/Source
+  parentPath: /Victory/@Settings/
+  path: /Victory/@Settings/Source
   alias: Source
   value:
     info:
       name: Source
       path: Source
-      id: -54742/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+      fullPath: Victory/@Settings/Source
+      id: -90622/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
       localID: 0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
       parent: {fileID: 11435762}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11490330}
+      - target:
+          search: ../../..
+          directObject: {fileID: 0}
+          searchObject: {fileID: 186276}
+          parent: {fileID: 11435762}
+          mode: 0
+          path: /Victory (1)/@Settings/Source/Source/Target
+        usage: 1
+        path: /Victory/@Settings/Attribute Game Object Data B
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeGameObjectData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   remember: 0
---- !u!114 &11438422
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11467112}
-    mode: 0
-    path: /Victory (1)/Main/End Timer/End Timer/Active/Target
-  usage: 0
-  path: End Timer/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: End Timer/Active
-    id: -54822/5cd44691-a7a8-4815-8fea-f9533e386ca6
-    localID: 5cd44691-a7a8-4815-8fea-f9533e386ca6
-    parent: {fileID: 11467112}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11438422}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11438462
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11471934}
-    mode: 0
-    path: /Victory (1)/Main/Play Victory Loop/Play Victory Loop/Active/Target
-  usage: 0
-  path: Play Victory Loop/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: Play Victory Loop/Active
-    id: -54834/6694c37d-9915-41e1-8868-6709cb30dfd8
-    localID: 6694c37d-9915-41e1-8868-6709cb30dfd8
-    parent: {fileID: 11471934}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11438462}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11442228
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11409074}
-    mode: 0
-    path: /Victory (1)/Main/Start Timer/Start Timer/Is Complete/Target
-  usage: 0
-  path: Start Timer/Is Complete/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Is Complete
-    path: Start Timer/Is Complete
-    id: -54684/2081472f-1f90-44ca-ae4b-20eaf3c9a3ca
-    localID: 2081472f-1f90-44ca-ae4b-20eaf3c9a3ca
-    parent: {fileID: 11409074}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11442228}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11443856
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11409074}
-    mode: 0
-    path: /Victory (1)/Main/Start Timer/Start Timer/Usable/Target
-  usage: 0
-  path: Start Timer/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: Start Timer/Usable
-    id: -54684/0d63ea47-1555-4db1-a8e5-b554fffa16d9
-    localID: 0d63ea47-1555-4db1-a8e5-b554fffa16d9
-    parent: {fileID: 11409074}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11443856}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11443948
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 143344}
-    parent: {fileID: 11431464}
-    mode: 0
-    path: /Victory (1)/Main/Loop Duration/Loop Duration/Seconds/Target
-  usage: 1
-  path: Loop Duration/Seconds/0
-  referenceID: -54696/99a61bfe-40c4-471b-90a3-b3ef29549ed9
-  referencePath: Duration (Loop)
-  attribute:
-    name: Seconds
-    path: Loop Duration/Seconds
-    id: -54730/17d8e0ee-b6e6-41ae-bb65-7f7f451b6d1b
-    localID: 17d8e0ee-b6e6-41ae-bb65-7f7f451b6d1b
-    parent: {fileID: 11431464}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11443948}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 3
---- !u!114 &11445670
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11453526}
-    mode: 0
-    path: /Victory (1)/Main/Play Victory Start/Play Victory Start/Usable/Target
-  usage: 0
-  path: Play Victory Start/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: Play Victory Start/Usable
-    id: -54794/65a9e185-c8ce-4228-b3bf-24bafdac9ed9
-    localID: 65a9e185-c8ce-4228-b3bf-24bafdac9ed9
-    parent: {fileID: 11453526}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11445670}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11447828
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 143344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 143344}
-    parent: {fileID: 11479380}
-    mode: 0
-    path: /Victory (1)/@Settings/Timer (End)/Timer (End)/Target
-  usage: 0
-  path: Timer (End)/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Timer (End)
-    path: Timer (End)
-    id: -54858/079ac1b7-f7c2-4d35-84a2-c3f5d4ecef65
-    localID: 079ac1b7-f7c2-4d35-84a2-c3f5d4ecef65
-    parent: {fileID: 11479380}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11447828}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 2
---- !u!114 &11448066
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 143344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 143344}
-    parent: {fileID: 11417296}
-    mode: 0
-    path: /Victory (1)/@Settings/Duration (Loop)/Duration (Loop)/Target
-  usage: 0
-  path: Duration (Loop)/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Duration (Loop)
-    path: Duration (Loop)
-    id: -54696/99a61bfe-40c4-471b-90a3-b3ef29549ed9
-    localID: 99a61bfe-40c4-471b-90a3-b3ef29549ed9
-    parent: {fileID: 11417296}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11448066}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 3
---- !u!114 &11448160
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11471934}
-    mode: 0
-    path: /Victory (1)/Main/Play Victory Loop/Play Victory Loop/Used/Target
-  usage: 0
-  path: Play Victory Loop/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: Play Victory Loop/Used
-    id: -54834/3f77b643-c064-47dd-889f-cc79f5581a1a
-    localID: 3f77b643-c064-47dd-889f-cc79f5581a1a
-    parent: {fileID: 11471934}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11448160}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11448614
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11421856}
-    mode: 0
-    path: /Victory (1)/Main/Item Check/Item Check/Usable/Target
-  usage: 0
-  path: Item Check/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: Item Check/Usable
-    id: -54710/adac8aed-a80c-497c-9292-f8276989f0bd
-    localID: adac8aed-a80c-497c-9292-f8276989f0bd
-    parent: {fileID: 11421856}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11448614}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11448738
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11431464}
-    mode: 0
-    path: /Victory (1)/Main/Loop Duration/Loop Duration/Used/Target
-  usage: 0
-  path: Loop Duration/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: Loop Duration/Used
-    id: -54730/85eb2c98-17ae-4278-99c5-77271ccc4c5f
-    localID: 85eb2c98-17ae-4278-99c5-77271ccc4c5f
-    parent: {fileID: 11431464}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11448738}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11448832
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 143344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3e9984a5f3f19942be359930227796e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute String Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 143344}
-    parent: {fileID: 11472476}
-    mode: 0
-    path: /Victory (1)/@Settings/Animation (End)/Animation (End)/Target
-  usage: 0
-  path: Animation (End)/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Animation (End)
-    path: Animation (End)
-    id: -54836/34289d88-fb9b-458d-bfbd-417eb6d17ba3
-    localID: 34289d88-fb9b-458d-bfbd-417eb6d17ba3
-    parent: {fileID: 11472476}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11448832}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: VictoryEnd
-  characterLimit: 0
-  allowed: []
-  disallowed: []
---- !u!114 &11449520
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 143344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 143344}
-    parent: {fileID: 11433382}
-    mode: 0
-    path: /Victory (1)/@Settings/Timer (Start)/Timer (Start)/Target
-  usage: 0
-  path: Timer (Start)/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Timer (Start)
-    path: Timer (Start)
-    id: -54736/90810e24-637c-4b2b-9b2d-2b726666e1f6
-    localID: 90810e24-637c-4b2b-9b2d-2b726666e1f6
-    parent: {fileID: 11433382}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11449520}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1.13
---- !u!114 &11451850
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11453526}
-    mode: 0
-    path: /Victory (1)/Main/Play Victory Start/Play Victory Start/Speed/Target
-  usage: 0
-  path: Play Victory Start/Speed/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Speed
-    path: Play Victory Start/Speed
-    id: -54794/e3ab0afd-c9f2-46a1-9787-bbdac2624aa7
-    localID: e3ab0afd-c9f2-46a1-9787-bbdac2624aa7
-    parent: {fileID: 11453526}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11451850}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11453400
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: ../../Collections/Item Collection
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 11467962}
-    mode: 0
-    path: /Victory (1)/Main/Stop Collecting/Stop Collecting/Target/Target
-  usage: 1
-  path: Stop Collecting/Target/0
-  referenceID: -70598/749bc210-bbe9-4610-b588-573a874668e1
-  referencePath: Collecting
-  attribute:
-    name: Target
-    path: Stop Collecting/Target
-    id: -54828/f0971b0d-2c90-40b0-a92f-5a1e4311d790
-    localID: f0971b0d-2c90-40b0-a92f-5a1e4311d790
-    parent: {fileID: 11467962}
-    mode: 1
-    linkType: 0
-    oldData:
-    - {fileID: 11453400}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!114 &11453526
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4613,8 +3154,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 913766e3e62ceac4a918c0cd12f04e67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /Victory (1)/Main/
-  path: /Victory (1)/Main/Play Victory Start
+  parentPath: /Victory/Main/
+  path: /Victory/Main/Play Victory Start
   alias: Play Victory Start
   rate: 1
   occurrence: 0
@@ -4624,720 +3165,220 @@ MonoBehaviour:
     info:
       name: Usable
       path: Play Victory Start/Usable
-      id: -54794/65a9e185-c8ce-4228-b3bf-24bafdac9ed9
+      fullPath: Victory/Main/Play Victory Start/Usable
+      id: -90664/65a9e185-c8ce-4228-b3bf-24bafdac9ed9
       localID: 65a9e185-c8ce-4228-b3bf-24bafdac9ed9
       parent: {fileID: 11453526}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11445670}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 155490}
+          parent: {fileID: 11453526}
+          mode: 0
+          path: /Victory (1)/Main/Play Victory Start/Play Victory Start/Usable/Target
+        usage: 0
+        path: /Victory/Main/Attribute Bool Data S
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
       path: Play Victory Start/Active
-      id: -54794/dcfabe17-89e9-46ca-bd71-ad3ac2b019d5
-      localID: dcfabe17-89e9-46ca-bd71-ad3ac2b019d5
+      fullPath: Victory/Main/Play Victory Start/Active
+      id: -90664/dd82aae8-755a-4d71-9332-03fcf7f99d3a
+      localID: dd82aae8-755a-4d71-9332-03fcf7f99d3a
       parent: {fileID: 11453526}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11401906}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: Victory/Main/Play Victory Start/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
       path: Play Victory Start/Used
-      id: -54794/438659fc-7d42-4f6f-a7a4-c90c3bfaa012
+      fullPath: Victory/Main/Play Victory Start/Used
+      id: -90664/438659fc-7d42-4f6f-a7a4-c90c3bfaa012
       localID: 438659fc-7d42-4f6f-a7a4-c90c3bfaa012
       parent: {fileID: 11453526}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11499456}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 155490}
+          parent: {fileID: 11453526}
+          mode: 0
+          path: /Victory (1)/Main/Play Victory Start/Play Victory Start/Used/Target
+        usage: 0
+        path: /Victory/Main/Attribute Bool Data T
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   animationName:
     info:
       name: Animation Name
       path: Play Victory Start/Animation Name
-      id: -54794/e4793b85-f990-4356-9b15-e67340b2aff4
+      fullPath: Victory/Main/Play Victory Start/Animation Name
+      id: -90664/e4793b85-f990-4356-9b15-e67340b2aff4
       localID: e4793b85-f990-4356-9b15-e67340b2aff4
       parent: {fileID: 11453526}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11495266}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 143344}
+          parent: {fileID: 11453526}
+          mode: 0
+          path: /Victory (1)/Main/Play Victory Start/Play Victory Start/Animation
+            Name/Target
+        usage: 1
+        path: /Victory/Main/Attribute String Data
+        referenceID: -54732/eeba4df9-ec03-4f9d-bd47-371d414f3949
+        referencePath: Animation (Start)
+        operation: 0
+        special: 0
+        rawValue: VictoryStart
+        rawType: Zios.AttributeStringData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   speed:
     info:
       name: Speed
       path: Play Victory Start/Speed
-      id: -54794/e3ab0afd-c9f2-46a1-9787-bbdac2624aa7
+      fullPath: Victory/Main/Play Victory Start/Speed
+      id: -90664/e3ab0afd-c9f2-46a1-9787-bbdac2624aa7
       localID: e3ab0afd-c9f2-46a1-9787-bbdac2624aa7
       parent: {fileID: 11453526}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11451850}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 155490}
+          parent: {fileID: 11453526}
+          mode: 0
+          path: /Victory (1)/Main/Play Victory Start/Play Victory Start/Speed/Target
+        usage: 0
+        path: /Victory/Main/Attribute Float Data H
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 1
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   weight:
     info:
       name: Weight
       path: Play Victory Start/Weight
-      id: -54794/fda691eb-401a-4224-bfdb-d18a9adb4c9b
+      fullPath: Victory/Main/Play Victory Start/Weight
+      id: -90664/fda691eb-401a-4224-bfdb-d18a9adb4c9b
       localID: fda691eb-401a-4224-bfdb-d18a9adb4c9b
       parent: {fileID: 11453526}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11425426}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 155490}
+          parent: {fileID: 11453526}
+          mode: 0
+          path: /Victory (1)/Main/Play Victory Start/Play Victory Start/Weight/Target
+        usage: 0
+        path: /Victory/Main/Attribute Float Data I
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 1
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   target:
     info:
       name: Target
       path: Play Victory Start/Target
-      id: -54794/ddb5d4cd-3496-4357-bea0-955ccc53e38f
+      fullPath: Victory/Main/Play Victory Start/Target
+      id: -90664/ddb5d4cd-3496-4357-bea0-955ccc53e38f
       localID: ddb5d4cd-3496-4357-bea0-955ccc53e38f
       parent: {fileID: 11453526}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11415966}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 143344}
+          parent: {fileID: 11453526}
+          mode: 0
+          path: /Victory (1)/Main/Play Victory Start/Play Victory Start/Target/Target
+        usage: 1
+        path: /Victory/Main/Attribute Game Object Data D
+        referenceID: -54842/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+        referencePath: Visuals
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeGameObjectData
       oldDataB: []
       oldDataC: []
---- !u!114 &11453594
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11430834}
-    mode: 0
-    path: /Victory (1)/Main/Loop Timer/Loop Timer/Is Complete/Target
-  usage: 0
-  path: Loop Timer/Is Complete/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Is Complete
-    path: Loop Timer/Is Complete
-    id: -54726/9c3eb329-3c0b-4f52-ad1e-4b0650df8345
-    localID: 9c3eb329-3c0b-4f52-ad1e-4b0650df8345
-    parent: {fileID: 11430834}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11453594}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
       oldData: []
       oldDataB: []
       oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11454052
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11403878}
-    mode: 0
-    path: /Victory (1)/Main/Set Position/Set Position/Position/Z/Target
-  usage: 0
-  path: Set Position/Position/Z/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Z
-    path: Set Position/Position/Z
-    id: -54672/0c89b6c1-f961-447a-a8aa-982c452bdb5c
-    localID: 0c89b6c1-f961-447a-a8aa-982c452bdb5c
-    parent: {fileID: 11403878}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11454052}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11454298
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11499724}
-    mode: 0
-    path: /Victory (1)/Main/Play Victory End/Play Victory End/Usable/Target
-  usage: 0
-  path: Play Victory End/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: Play Victory End/Usable
-    id: -54900/f3646dc9-978c-4565-8df5-06a19adfd86c
-    localID: f3646dc9-978c-4565-8df5-06a19adfd86c
-    parent: {fileID: 11499724}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11454298}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11454468
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11431464}
-    mode: 0
-    path: /Victory (1)/Main/Loop Duration/Loop Duration/Is Started/Target
-  usage: 0
-  path: Loop Duration/Is Started/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Is Started
-    path: Loop Duration/Is Started
-    id: -54730/67114253-bc06-4d95-bf6e-765091629ac0
-    localID: 67114253-bc06-4d95-bf6e-765091629ac0
-    parent: {fileID: 11431464}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11454468}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11454594
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 143344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3e9984a5f3f19942be359930227796e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute String Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 143344}
-    parent: {fileID: 11432240}
-    mode: 0
-    path: /Victory (1)/@Settings/Animation (Start)/Animation (Start)/Target
-  usage: 0
-  path: Animation (Start)/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Animation (Start)
-    path: Animation (Start)
-    id: -54732/eeba4df9-ec03-4f9d-bd47-371d414f3949
-    localID: eeba4df9-ec03-4f9d-bd47-371d414f3949
-    parent: {fileID: 11432240}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11454594}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: VictoryStart
-  characterLimit: 0
-  allowed: []
-  disallowed: []
---- !u!114 &11455522
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 143344}
-    parent: {fileID: 11409074}
-    mode: 0
-    path: /Victory (1)/Main/Start Timer/Start Timer/Seconds/Target
-  usage: 1
-  path: Start Timer/Seconds/0
-  referenceID: -54736/90810e24-637c-4b2b-9b2d-2b726666e1f6
-  referencePath: Timer (Start)
-  attribute:
-    name: Seconds
-    path: Start Timer/Seconds
-    id: -54684/d83983c8-cf3c-41bd-9a5d-b25ff214654d
-    localID: d83983c8-cf3c-41bd-9a5d-b25ff214654d
-    parent: {fileID: 11409074}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11455522}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1.33000004
---- !u!114 &11457202
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11409074}
-    mode: 0
-    path: /Victory (1)/Main/Start Timer/Start Timer/Is Started/Target
-  usage: 0
-  path: Start Timer/Is Started/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Is Started
-    path: Start Timer/Is Started
-    id: -54684/810d0f08-b7b3-428f-989b-ded6356ac2ab
-    localID: 810d0f08-b7b3-428f-989b-ded6356ac2ab
-    parent: {fileID: 11409074}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11457202}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11458960
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: 
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11403398}
-    mode: 0
-    path: /Victory (1)/Main/Victory (1)/Victory (1)/External/Target
-  usage: 0
-  path: Victory (1)/External/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: External
-    path: Victory (1)/External
-    id: -54668/495a8db9-deb7-4de3-b421-12d5f42db4cb
-    localID: 495a8db9-deb7-4de3-b421-12d5f42db4cb
-    parent: {fileID: 11403398}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11458960}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11461978
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 143344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Game Object Data
-  target:
-    search: ../../../Visuals
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 11474062}
-    mode: 0
-    path: /Victory (1)/@Settings/Visuals/Visuals/Target
-  usage: 1
-  path: Visuals/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Visuals
-    path: Visuals
-    id: -54842/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
-    localID: 33bddd78-c7f6-40fe-94d8-1637fbd7fa73
-    parent: {fileID: 11474062}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11461978}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {fileID: 0}
---- !u!114 &11462522
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11467112}
-    mode: 0
-    path: /Victory (1)/Main/End Timer/End Timer/Is Complete/Target
-  usage: 0
-  path: End Timer/Is Complete/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Is Complete
-    path: End Timer/Is Complete
-    id: -54822/7139fddc-cab0-4c34-b28f-4153ff85c06d
-    localID: 7139fddc-cab0-4c34-b28f-4153ff85c06d
-    parent: {fileID: 11467112}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11462522}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11463332
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11430834}
-    mode: 0
-    path: /Victory (1)/Main/Loop Timer/Loop Timer/Usable/Target
-  usage: 0
-  path: Loop Timer/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: Loop Timer/Usable
-    id: -54726/34b8fdb2-7f81-4959-ad90-506316ec8573
-    localID: 34b8fdb2-7f81-4959-ad90-506316ec8573
-    parent: {fileID: 11430834}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11463332}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11465018
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83639dc7708e9ad4584145044a83425d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Vector3 Data
-  target:
-    search: Scene/Teleport
-    directObject: {fileID: 0}
-    searchObject: {fileID: 0}
-    parent: {fileID: 11403878}
-    mode: 0
-    path: /Victory (1)/Main/Set Position/Set Position/Position/Target
-  usage: 1
-  path: Set Position/Position/0
-  referenceID: 71286/0cc53df5-f83c-40cd-8ed0-a3c28da79733
-  referencePath: Transform/Position
-  attribute:
-    name: Position
-    path: Set Position/Position
-    id: -54672/44cb6c82-e861-4c54-b884-0827b6e9d693
-    localID: 44cb6c82-e861-4c54-b884-0827b6e9d693
-    parent: {fileID: 11403878}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11465018}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {x: 0, y: 0, z: 0}
 --- !u!114 &11467112
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5349,8 +3390,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb780ed64906f1944b7e8d65c34757d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /Victory (1)/Main/
-  path: /Victory (1)/Main/End Timer
+  parentPath: /Victory/Main/
+  path: /Victory/Main/End Timer
   alias: End Timer
   rate: 1
   occurrence: 0
@@ -5360,39 +3401,93 @@ MonoBehaviour:
     info:
       name: Usable
       path: End Timer/Usable
-      id: -54822/2cabf08c-52f9-4020-9ee3-878a9830d7fa
+      fullPath: Victory/Main/End Timer/Usable
+      id: -90652/2cabf08c-52f9-4020-9ee3-878a9830d7fa
       localID: 2cabf08c-52f9-4020-9ee3-878a9830d7fa
       parent: {fileID: 11467112}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11424814}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 155490}
+          parent: {fileID: 11467112}
+          mode: 0
+          path: /Victory (1)/Main/End Timer/End Timer/Usable/Target
+        usage: 0
+        path: /Victory/Main/Attribute Bool Data V
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
       path: End Timer/Active
-      id: -54822/5cd44691-a7a8-4815-8fea-f9533e386ca6
-      localID: 5cd44691-a7a8-4815-8fea-f9533e386ca6
+      fullPath: Victory/Main/End Timer/Active
+      id: -90652/23df3d45-07c7-4356-bb8f-bc2ba6796da6
+      localID: 23df3d45-07c7-4356-bb8f-bc2ba6796da6
       parent: {fileID: 11467112}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11438422}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: Victory/Main/End Timer/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
       path: End Timer/Used
-      id: -54822/684ce557-e6e2-4802-a32b-af82a0da2c4c
+      fullPath: Victory/Main/End Timer/Used
+      id: -90652/684ce557-e6e2-4802-a32b-af82a0da2c4c
       localID: 684ce557-e6e2-4802-a32b-af82a0da2c4c
       parent: {fileID: 11467112}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11498392}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 155490}
+          parent: {fileID: 11467112}
+          mode: 0
+          path: /Victory (1)/Main/End Timer/End Timer/Used/Target
+        usage: 0
+        path: /Victory/Main/Attribute Bool Data W
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   type: 0
@@ -5400,39 +3495,93 @@ MonoBehaviour:
     info:
       name: Seconds
       path: End Timer/Seconds
-      id: -54822/a9e0f953-16ee-452c-9e89-df27a151d54f
+      fullPath: Victory/Main/End Timer/Seconds
+      id: -90652/a9e0f953-16ee-452c-9e89-df27a151d54f
       localID: a9e0f953-16ee-452c-9e89-df27a151d54f
       parent: {fileID: 11467112}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11494782}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 143344}
+          parent: {fileID: 11467112}
+          mode: 0
+          path: /Victory (1)/Main/End Timer/End Timer/Seconds/Target
+        usage: 1
+        path: /Victory/Main/Attribute Float Data J
+        referenceID: -54858/079ac1b7-f7c2-4d35-84a2-c3f5d4ecef65
+        referencePath: Timer (End)
+        operation: 0
+        special: 0
+        rawValue: 2
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   isStarted:
     info:
       name: Is Started
       path: End Timer/Is Started
-      id: -54822/8fb03981-34df-4274-ab9b-9f1bf6cd9bec
+      fullPath: Victory/Main/End Timer/Is Started
+      id: -90652/8fb03981-34df-4274-ab9b-9f1bf6cd9bec
       localID: 8fb03981-34df-4274-ab9b-9f1bf6cd9bec
       parent: {fileID: 11467112}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11433112}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 155490}
+          parent: {fileID: 11467112}
+          mode: 0
+          path: /Victory (1)/Main/End Timer/End Timer/Is Started/Target
+        usage: 0
+        path: /Victory/Main/Attribute Bool Data X
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   isComplete:
     info:
       name: Is Complete
       path: End Timer/Is Complete
-      id: -54822/7139fddc-cab0-4c34-b28f-4153ff85c06d
+      fullPath: Victory/Main/End Timer/Is Complete
+      id: -90652/7139fddc-cab0-4c34-b28f-4153ff85c06d
       localID: 7139fddc-cab0-4c34-b28f-4153ff85c06d
       parent: {fileID: 11467112}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11462522}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 155490}
+          parent: {fileID: 11467112}
+          mode: 0
+          path: /Victory (1)/Main/End Timer/End Timer/Is Complete/Target
+        usage: 0
+        path: /Victory/Main/Attribute Bool Data Y
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
 --- !u!114 &11467350
@@ -5446,78 +3595,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73460de1a42c5d64884ae83214747f38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /Victory (1)/@Settings/
-  path: /Victory (1)/@Settings/Timer (Loop)
+  parentPath: /Victory/@Settings/
+  path: /Victory/@Settings/Timer (Loop)
   alias: Timer (Loop)
   value:
     info:
       name: Timer (Loop)
       path: Timer (Loop)
-      id: -54824/8dbae381-4ad2-4656-98e1-e09b57f6cbec
+      fullPath: Victory/@Settings/Timer (Loop)
+      id: -90626/8dbae381-4ad2-4656-98e1-e09b57f6cbec
       localID: 8dbae381-4ad2-4656-98e1-e09b57f6cbec
       parent: {fileID: 11467350}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11491530}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 143344}
+          parent: {fileID: 11467350}
+          mode: 0
+          path: /Victory (1)/@Settings/Timer (Loop)/Timer (Loop)/Target
+        usage: 0
+        path: /Victory/@Settings/Attribute Float Data C
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 1.18
+        rawType: Zios.AttributeFloatData
       oldDataB: []
       oldDataC: []
-  remember: 0
---- !u!114 &11467438
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 143344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3e9984a5f3f19942be359930227796e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute String Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 143344}
-    parent: {fileID: 11407516}
-    mode: 0
-    path: /Victory (1)/@Settings/Animation (Loop)/Animation (Loop)/Target
-  usage: 0
-  path: Animation (Loop)/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Animation (Loop)
-    path: Animation (Loop)
-    id: -54678/3c10fc08-36e5-49d2-8344-aec9dba6bca2
-    localID: 3c10fc08-36e5-49d2-8344-aec9dba6bca2
-    parent: {fileID: 11407516}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11467438}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
       oldData: []
       oldDataB: []
       oldDataC: []
-  operation: 0
-  special: 0
-  value: VictoryLoop
-  characterLimit: 0
-  allowed: []
-  disallowed: []
+  remember: 0
 --- !u!114 &11467962
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5529,8 +3641,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6205b1b6610985747bd84fa4e633bb7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /Victory (1)/Main/
-  path: /Victory (1)/Main/Stop Collecting
+  parentPath: /Victory/Main/
+  path: /Victory/Main/Stop Collecting
   alias: Stop Collecting
   rate: 1
   occurrence: 2
@@ -5540,119 +3652,157 @@ MonoBehaviour:
     info:
       name: Usable
       path: Stop Collecting/Usable
-      id: -54828/32620c97-c437-463a-a495-108401d9bb59
+      fullPath: Victory/Main/Stop Collecting/Usable
+      id: -90670/32620c97-c437-463a-a495-108401d9bb59
       localID: 32620c97-c437-463a-a495-108401d9bb59
       parent: {fileID: 11467962}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11496732}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 155490}
+          parent: {fileID: 11467962}
+          mode: 0
+          path: /Victory (1)/Main/Stop Collecting/Stop Collecting/Usable/Target
+        usage: 0
+        path: /Victory/Main/Attribute Bool Data [ E
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
       path: Stop Collecting/Active
-      id: -54828/97821487-c11b-4fad-ba08-3588151b48bb
-      localID: 97821487-c11b-4fad-ba08-3588151b48bb
+      fullPath: Victory/Main/Stop Collecting/Active
+      id: -90670/bd04208f-4c8d-443c-b341-ff4354303fd6
+      localID: bd04208f-4c8d-443c-b341-ff4354303fd6
       parent: {fileID: 11467962}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11486210}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: Victory/Main/Stop Collecting/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
       path: Stop Collecting/Used
-      id: -54828/d290f1d0-1d11-4858-be9e-8de152f0abfd
+      fullPath: Victory/Main/Stop Collecting/Used
+      id: -90670/d290f1d0-1d11-4858-be9e-8de152f0abfd
       localID: d290f1d0-1d11-4858-be9e-8de152f0abfd
       parent: {fileID: 11467962}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11474720}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 155490}
+          parent: {fileID: 11467962}
+          mode: 0
+          path: /Victory (1)/Main/Stop Collecting/Stop Collecting/Used/Target
+        usage: 0
+        path: /Victory/Main/Attribute Bool Data [ F
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   target:
     info:
       name: Target
       path: Stop Collecting/Target
-      id: -54828/f0971b0d-2c90-40b0-a92f-5a1e4311d790
+      fullPath: Victory/Main/Stop Collecting/Target
+      id: -90670/f0971b0d-2c90-40b0-a92f-5a1e4311d790
       localID: f0971b0d-2c90-40b0-a92f-5a1e4311d790
       parent: {fileID: 11467962}
       mode: 1
       linkType: 0
       oldData:
-      - {fileID: 11453400}
+      - target:
+          search: ../../Collections/Item Collection
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 11467962}
+          mode: 0
+          path: /Victory (1)/Main/Stop Collecting/Stop Collecting/Target/Target
+        usage: 1
+        path: /Victory/Main/Attribute Bool Data [ G
+        referenceID: -70598/749bc210-bbe9-4610-b588-573a874668e1
+        referencePath: Collecting
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   value:
     info:
       name: Value
       path: Stop Collecting/Value
-      id: -54828/390c229a-be39-49d6-8790-39dc334d9293
+      fullPath: Victory/Main/Stop Collecting/Value
+      id: -90670/390c229a-be39-49d6-8790-39dc334d9293
       localID: 390c229a-be39-49d6-8790-39dc334d9293
       parent: {fileID: 11467962}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11491340}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 155490}
+          parent: {fileID: 11467962}
+          mode: 0
+          path: /Victory (1)/Main/Stop Collecting/Stop Collecting/Value/Target
+        usage: 0
+        path: /Victory/Main/Attribute Bool Data [ H
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
---- !u!114 &11470258
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11430834}
-    mode: 0
-    path: /Victory (1)/Main/Loop Timer/Loop Timer/Used/Target
-  usage: 0
-  path: Loop Timer/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: Loop Timer/Used
-    id: -54726/06750868-9ffe-4c23-85eb-af1312f3ecea
-    localID: 06750868-9ffe-4c23-85eb-af1312f3ecea
-    parent: {fileID: 11430834}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11470258}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
       oldData: []
       oldDataB: []
       oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!114 &11471934
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5664,8 +3814,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 913766e3e62ceac4a918c0cd12f04e67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /Victory (1)/Main/
-  path: /Victory (1)/Main/Play Victory Loop
+  parentPath: /Victory/Main/
+  path: /Victory/Main/Play Victory Loop
   alias: Play Victory Loop
   rate: 1
   occurrence: 0
@@ -5675,91 +3825,217 @@ MonoBehaviour:
     info:
       name: Usable
       path: Play Victory Loop/Usable
-      id: -54834/fda0dbf2-551b-465f-9328-3732cdcb6a3c
+      fullPath: Victory/Main/Play Victory Loop/Usable
+      id: -90662/fda0dbf2-551b-465f-9328-3732cdcb6a3c
       localID: fda0dbf2-551b-465f-9328-3732cdcb6a3c
       parent: {fileID: 11471934}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11486006}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 155490}
+          parent: {fileID: 11471934}
+          mode: 0
+          path: /Victory (1)/Main/Play Victory Loop/Play Victory Loop/Usable/Target
+        usage: 0
+        path: /Victory/Main/Attribute Bool Data P
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
       path: Play Victory Loop/Active
-      id: -54834/6694c37d-9915-41e1-8868-6709cb30dfd8
-      localID: 6694c37d-9915-41e1-8868-6709cb30dfd8
+      fullPath: Victory/Main/Play Victory Loop/Active
+      id: -90662/44f7f85e-5b15-453c-be02-85bfa5891d8b
+      localID: 44f7f85e-5b15-453c-be02-85bfa5891d8b
       parent: {fileID: 11471934}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11438462}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: Victory/Main/Play Victory Loop/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
       path: Play Victory Loop/Used
-      id: -54834/3f77b643-c064-47dd-889f-cc79f5581a1a
+      fullPath: Victory/Main/Play Victory Loop/Used
+      id: -90662/3f77b643-c064-47dd-889f-cc79f5581a1a
       localID: 3f77b643-c064-47dd-889f-cc79f5581a1a
       parent: {fileID: 11471934}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11448160}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 155490}
+          parent: {fileID: 11471934}
+          mode: 0
+          path: /Victory (1)/Main/Play Victory Loop/Play Victory Loop/Used/Target
+        usage: 0
+        path: /Victory/Main/Attribute Bool Data Q
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   animationName:
     info:
       name: Animation Name
       path: Play Victory Loop/Animation Name
-      id: -54834/6f8c8d76-f7b6-4feb-aebf-f865d7293150
+      fullPath: Victory/Main/Play Victory Loop/Animation Name
+      id: -90662/6f8c8d76-f7b6-4feb-aebf-f865d7293150
       localID: 6f8c8d76-f7b6-4feb-aebf-f865d7293150
       parent: {fileID: 11471934}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11474018}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 143344}
+          parent: {fileID: 11471934}
+          mode: 0
+          path: /Victory (1)/Main/Play Victory Loop/Play Victory Loop/Animation Name/Target
+        usage: 1
+        path: /Victory/Main/Attribute String Data C
+        referenceID: -54678/3c10fc08-36e5-49d2-8344-aec9dba6bca2
+        referencePath: Animation (Loop)
+        operation: 0
+        special: 0
+        rawValue: VictoryLoop
+        rawType: Zios.AttributeStringData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   speed:
     info:
       name: Speed
       path: Play Victory Loop/Speed
-      id: -54834/4b5153ba-5d1a-41af-97ef-42b999fcade6
+      fullPath: Victory/Main/Play Victory Loop/Speed
+      id: -90662/4b5153ba-5d1a-41af-97ef-42b999fcade6
       localID: 4b5153ba-5d1a-41af-97ef-42b999fcade6
       parent: {fileID: 11471934}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11474528}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 155490}
+          parent: {fileID: 11471934}
+          mode: 0
+          path: /Victory (1)/Main/Play Victory Loop/Play Victory Loop/Speed/Target
+        usage: 0
+        path: /Victory/Main/Attribute Float Data F
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 1
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   weight:
     info:
       name: Weight
       path: Play Victory Loop/Weight
-      id: -54834/828cd3d9-4d7b-47d4-a15c-db3236173aad
+      fullPath: Victory/Main/Play Victory Loop/Weight
+      id: -90662/828cd3d9-4d7b-47d4-a15c-db3236173aad
       localID: 828cd3d9-4d7b-47d4-a15c-db3236173aad
       parent: {fileID: 11471934}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11478998}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 155490}
+          parent: {fileID: 11471934}
+          mode: 0
+          path: /Victory (1)/Main/Play Victory Loop/Play Victory Loop/Weight/Target
+        usage: 0
+        path: /Victory/Main/Attribute Float Data G
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 1
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   target:
     info:
       name: Target
       path: Play Victory Loop/Target
-      id: -54834/386cf129-bb4b-4193-8ad2-d786fbada21e
+      fullPath: Victory/Main/Play Victory Loop/Target
+      id: -90662/386cf129-bb4b-4193-8ad2-d786fbada21e
       localID: 386cf129-bb4b-4193-8ad2-d786fbada21e
       parent: {fileID: 11471934}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11408496}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 143344}
+          parent: {fileID: 11471934}
+          mode: 0
+          path: /Victory (1)/Main/Play Victory Loop/Play Victory Loop/Target/Target
+        usage: 1
+        path: /Victory/Main/Attribute Game Object Data C
+        referenceID: -54842/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+        referencePath: Visuals
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeGameObjectData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
 --- !u!114 &11472476
@@ -5773,78 +4049,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15dc630d7daaf4548bf1d099b9be1324, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /Victory (1)/@Settings/
-  path: /Victory (1)/@Settings/Animation (End)
+  parentPath: /Victory/@Settings/
+  path: /Victory/@Settings/Animation (End)
   alias: Animation (End)
   value:
     info:
       name: Animation (End)
       path: Animation (End)
-      id: -54836/34289d88-fb9b-458d-bfbd-417eb6d17ba3
+      fullPath: Victory/@Settings/Animation (End)
+      id: -90614/34289d88-fb9b-458d-bfbd-417eb6d17ba3
       localID: 34289d88-fb9b-458d-bfbd-417eb6d17ba3
       parent: {fileID: 11472476}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11448832}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 143344}
+          parent: {fileID: 11472476}
+          mode: 0
+          path: /Victory (1)/@Settings/Animation (End)/Animation (End)/Target
+        usage: 0
+        path: /Victory/@Settings/Attribute String Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: VictoryEnd
+        rawType: Zios.AttributeStringData
       oldDataB: []
       oldDataC: []
-  remember: 0
---- !u!114 &11474018
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3e9984a5f3f19942be359930227796e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute String Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 143344}
-    parent: {fileID: 11471934}
-    mode: 0
-    path: /Victory (1)/Main/Play Victory Loop/Play Victory Loop/Animation Name/Target
-  usage: 1
-  path: Play Victory Loop/Animation Name/0
-  referenceID: -54678/3c10fc08-36e5-49d2-8344-aec9dba6bca2
-  referencePath: Animation (Loop)
-  attribute:
-    name: Animation Name
-    path: Play Victory Loop/Animation Name
-    id: -54834/6f8c8d76-f7b6-4feb-aebf-f865d7293150
-    localID: 6f8c8d76-f7b6-4feb-aebf-f865d7293150
-    parent: {fileID: 11471934}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11474018}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
       oldData: []
       oldDataB: []
       oldDataC: []
-  operation: 0
-  special: 0
-  value: VictoryLoop
-  characterLimit: 0
-  allowed: []
-  disallowed: []
+  remember: 0
 --- !u!114 &11474062
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5856,231 +4095,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e8a46b59a6b8eb489e122ad5fdef015, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /Victory (1)/@Settings/
-  path: /Victory (1)/@Settings/Visuals
+  parentPath: /Victory/@Settings/
+  path: /Victory/@Settings/Visuals
   alias: Visuals
   value:
     info:
       name: Visuals
       path: Visuals
-      id: -54842/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+      fullPath: Victory/@Settings/Visuals
+      id: -90630/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
       localID: 33bddd78-c7f6-40fe-94d8-1637fbd7fa73
       parent: {fileID: 11474062}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11461978}
+      - target:
+          search: ../../../Visuals
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 11474062}
+          mode: 0
+          path: /Victory (1)/@Settings/Visuals/Visuals/Target
+        usage: 1
+        path: /Victory/@Settings/Attribute Game Object Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeGameObjectData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   remember: 0
---- !u!114 &11474528
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11471934}
-    mode: 0
-    path: /Victory (1)/Main/Play Victory Loop/Play Victory Loop/Speed/Target
-  usage: 0
-  path: Play Victory Loop/Speed/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Speed
-    path: Play Victory Loop/Speed
-    id: -54834/4b5153ba-5d1a-41af-97ef-42b999fcade6
-    localID: 4b5153ba-5d1a-41af-97ef-42b999fcade6
-    parent: {fileID: 11471934}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11474528}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11474720
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11467962}
-    mode: 0
-    path: /Victory (1)/Main/Stop Collecting/Stop Collecting/Used/Target
-  usage: 0
-  path: Stop Collecting/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: Stop Collecting/Used
-    id: -54828/d290f1d0-1d11-4858-be9e-8de152f0abfd
-    localID: d290f1d0-1d11-4858-be9e-8de152f0abfd
-    parent: {fileID: 11467962}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11474720}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11478998
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11471934}
-    mode: 0
-    path: /Victory (1)/Main/Play Victory Loop/Play Victory Loop/Weight/Target
-  usage: 0
-  path: Play Victory Loop/Weight/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Weight
-    path: Play Victory Loop/Weight
-    id: -54834/828cd3d9-4d7b-47d4-a15c-db3236173aad
-    localID: 828cd3d9-4d7b-47d4-a15c-db3236173aad
-    parent: {fileID: 11471934}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11478998}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1
---- !u!114 &11479056
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11403878}
-    mode: 0
-    path: /Victory (1)/Main/Set Position/Set Position/Position/Y/Target
-  usage: 0
-  path: Set Position/Position/Y/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Y
-    path: Set Position/Position/Y
-    id: -54672/9a4c2260-16dc-4c53-bee4-652dfa6fdf11
-    localID: 9a4c2260-16dc-4c53-bee4-652dfa6fdf11
-    parent: {fileID: 11403878}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11479056}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!114 &11479380
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6092,858 +4141,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73460de1a42c5d64884ae83214747f38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /Victory (1)/@Settings/
-  path: /Victory (1)/@Settings/Timer (End)
+  parentPath: /Victory/@Settings/
+  path: /Victory/@Settings/Timer (End)
   alias: Timer (End)
   value:
     info:
       name: Timer (End)
       path: Timer (End)
-      id: -54858/079ac1b7-f7c2-4d35-84a2-c3f5d4ecef65
+      fullPath: Victory/@Settings/Timer (End)
+      id: -90624/079ac1b7-f7c2-4d35-84a2-c3f5d4ecef65
       localID: 079ac1b7-f7c2-4d35-84a2-c3f5d4ecef65
       parent: {fileID: 11479380}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11447828}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 143344}
+          parent: {fileID: 11479380}
+          mode: 0
+          path: /Victory (1)/@Settings/Timer (End)/Timer (End)/Target
+        usage: 0
+        path: /Victory/@Settings/Attribute Float Data
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 2
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   remember: 0
---- !u!114 &11479694
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Game Object Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 143344}
-    parent: {fileID: 11499724}
-    mode: 0
-    path: /Victory (1)/Main/Play Victory End/Play Victory End/Target/Target
-  usage: 1
-  path: Play Victory End/Target/0
-  referenceID: -54842/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
-  referencePath: Visuals
-  attribute:
-    name: Target
-    path: Play Victory End/Target
-    id: -54900/55658202-4934-4966-9ad6-80172ee90fef
-    localID: 55658202-4934-4966-9ad6-80172ee90fef
-    parent: {fileID: 11499724}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11479694}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {fileID: 0}
---- !u!114 &11483444
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11430834}
-    mode: 0
-    path: /Victory (1)/Main/Loop Timer/Loop Timer/Is Started/Target
-  usage: 0
-  path: Loop Timer/Is Started/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Is Started
-    path: Loop Timer/Is Started
-    id: -54726/2492f2f2-fed9-4cc0-ba0d-62585f138fe3
-    localID: 2492f2f2-fed9-4cc0-ba0d-62585f138fe3
-    parent: {fileID: 11430834}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11483444}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11486006
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11471934}
-    mode: 0
-    path: /Victory (1)/Main/Play Victory Loop/Play Victory Loop/Usable/Target
-  usage: 0
-  path: Play Victory Loop/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: Play Victory Loop/Usable
-    id: -54834/fda0dbf2-551b-465f-9328-3732cdcb6a3c
-    localID: fda0dbf2-551b-465f-9328-3732cdcb6a3c
-    parent: {fileID: 11471934}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11486006}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11486210
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11467962}
-    mode: 0
-    path: /Victory (1)/Main/Stop Collecting/Stop Collecting/Active/Target
-  usage: 0
-  path: Stop Collecting/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: Stop Collecting/Active
-    id: -54828/97821487-c11b-4fad-ba08-3588151b48bb
-    localID: 97821487-c11b-4fad-ba08-3588151b48bb
-    parent: {fileID: 11467962}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11486210}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11489570
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11499724}
-    mode: 0
-    path: /Victory (1)/Main/Play Victory End/Play Victory End/Active/Target
-  usage: 0
-  path: Play Victory End/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: Play Victory End/Active
-    id: -54900/10b63bb7-846d-4c0f-b7e3-559c1699464b
-    localID: 10b63bb7-846d-4c0f-b7e3-559c1699464b
-    parent: {fileID: 11499724}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11489570}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11490330
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 143344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e927722d55c6f4cbeb7167b7fe7cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Game Object Data
-  target:
-    search: ../../..
-    directObject: {fileID: 0}
-    searchObject: {fileID: 186276}
-    parent: {fileID: 11435762}
-    mode: 0
-    path: /Victory (1)/@Settings/Source/Source/Target
-  usage: 1
-  path: Source/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Source
-    path: Source
-    id: -54742/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
-    localID: 0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
-    parent: {fileID: 11435762}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11490330}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: {fileID: 0}
---- !u!114 &11491340
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11467962}
-    mode: 0
-    path: /Victory (1)/Main/Stop Collecting/Stop Collecting/Value/Target
-  usage: 0
-  path: Stop Collecting/Value/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Value
-    path: Stop Collecting/Value
-    id: -54828/390c229a-be39-49d6-8790-39dc334d9293
-    localID: 390c229a-be39-49d6-8790-39dc334d9293
-    parent: {fileID: 11467962}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11491340}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11491530
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 143344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 143344}
-    parent: {fileID: 11467350}
-    mode: 0
-    path: /Victory (1)/@Settings/Timer (Loop)/Timer (Loop)/Target
-  usage: 0
-  path: Timer (Loop)/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Timer (Loop)
-    path: Timer (Loop)
-    id: -54824/8dbae381-4ad2-4656-98e1-e09b57f6cbec
-    localID: 8dbae381-4ad2-4656-98e1-e09b57f6cbec
-    parent: {fileID: 11467350}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11491530}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1.17999995
---- !u!114 &11493386
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11403878}
-    mode: 0
-    path: /Victory (1)/Main/Set Position/Set Position/Usable/Target
-  usage: 0
-  path: Set Position/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: Set Position/Usable
-    id: -54672/9ad96db4-8dbc-4c53-91df-1388ad5df973
-    localID: 9ad96db4-8dbc-4c53-91df-1388ad5df973
-    parent: {fileID: 11403878}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11493386}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11494782
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 143344}
-    parent: {fileID: 11467112}
-    mode: 0
-    path: /Victory (1)/Main/End Timer/End Timer/Seconds/Target
-  usage: 1
-  path: End Timer/Seconds/0
-  referenceID: -54858/079ac1b7-f7c2-4d35-84a2-c3f5d4ecef65
-  referencePath: Timer (End)
-  attribute:
-    name: Seconds
-    path: End Timer/Seconds
-    id: -54822/a9e0f953-16ee-452c-9e89-df27a151d54f
-    localID: a9e0f953-16ee-452c-9e89-df27a151d54f
-    parent: {fileID: 11467112}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11494782}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 2
---- !u!114 &11495266
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3e9984a5f3f19942be359930227796e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute String Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 143344}
-    parent: {fileID: 11453526}
-    mode: 0
-    path: /Victory (1)/Main/Play Victory Start/Play Victory Start/Animation Name/Target
-  usage: 1
-  path: Play Victory Start/Animation Name/0
-  referenceID: -54732/eeba4df9-ec03-4f9d-bd47-371d414f3949
-  referencePath: Animation (Start)
-  attribute:
-    name: Animation Name
-    path: Play Victory Start/Animation Name
-    id: -54794/e4793b85-f990-4356-9b15-e67340b2aff4
-    localID: e4793b85-f990-4356-9b15-e67340b2aff4
-    parent: {fileID: 11453526}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11495266}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: VictoryStart
-  characterLimit: 0
-  allowed: []
-  disallowed: []
---- !u!114 &11496156
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827b9a76e98ce6d4491e63d3fec0903d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Float Data
-  target:
-    search: ../@Settings
-    directObject: {fileID: 0}
-    searchObject: {fileID: 143344}
-    parent: {fileID: 11430834}
-    mode: 0
-    path: /Victory (1)/Main/Loop Timer/Loop Timer/Seconds/Target
-  usage: 1
-  path: Loop Timer/Seconds/0
-  referenceID: -54824/8dbae381-4ad2-4656-98e1-e09b57f6cbec
-  referencePath: Timer (Loop)
-  attribute:
-    name: Seconds
-    path: Loop Timer/Seconds
-    id: -54726/3eec5e98-284e-4e01-ac28-b4de2cfa2299
-    localID: 3eec5e98-284e-4e01-ac28-b4de2cfa2299
-    parent: {fileID: 11430834}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11496156}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 1.17999995
---- !u!114 &11496460
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11421856}
-    mode: 0
-    path: /Victory (1)/Main/Item Check/Item Check/Active/Target
-  usage: 0
-  path: Item Check/Active/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Active
-    path: Item Check/Active
-    id: -54710/ee685b54-6e64-410a-a345-2919ad02fdd7
-    localID: ee685b54-6e64-410a-a345-2919ad02fdd7
-    parent: {fileID: 11421856}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11496460}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11496732
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11467962}
-    mode: 0
-    path: /Victory (1)/Main/Stop Collecting/Stop Collecting/Usable/Target
-  usage: 0
-  path: Stop Collecting/Usable/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Usable
-    path: Stop Collecting/Usable
-    id: -54828/32620c97-c437-463a-a495-108401d9bb59
-    localID: 32620c97-c437-463a-a495-108401d9bb59
-    parent: {fileID: 11467962}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11496732}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11498392
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11467112}
-    mode: 0
-    path: /Victory (1)/Main/End Timer/End Timer/Used/Target
-  usage: 0
-  path: End Timer/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: End Timer/Used
-    id: -54822/684ce557-e6e2-4802-a32b-af82a0da2c4c
-    localID: 684ce557-e6e2-4802-a32b-af82a0da2c4c
-    parent: {fileID: 11467112}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11498392}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
---- !u!114 &11499456
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef352789bd5597469e12d3cc37e49a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPath: 
-  path: 
-  alias: Attribute Bool Data
-  target:
-    search: '[Self]'
-    directObject: {fileID: 0}
-    searchObject: {fileID: 155490}
-    parent: {fileID: 11453526}
-    mode: 0
-    path: /Victory (1)/Main/Play Victory Start/Play Victory Start/Used/Target
-  usage: 0
-  path: Play Victory Start/Used/0
-  referenceID: 
-  referencePath: 
-  attribute:
-    name: Used
-    path: Play Victory Start/Used
-    id: -54794/438659fc-7d42-4f6f-a7a4-c90c3bfaa012
-    localID: 438659fc-7d42-4f6f-a7a4-c90c3bfaa012
-    parent: {fileID: 11453526}
-    mode: 0
-    linkType: 0
-    oldData:
-    - {fileID: 11499456}
-    oldDataB: []
-    oldDataC: []
-  attributeRaw:
-    info:
-      name: 
-      path: 
-      id: 
-      localID: 
-      parent: {fileID: 0}
-      mode: 0
-      linkType: 0
-      oldData: []
-      oldDataB: []
-      oldDataC: []
-  operation: 0
-  special: 0
-  value: 0
 --- !u!114 &11499724
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6955,8 +4187,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 913766e3e62ceac4a918c0cd12f04e67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPath: /Victory (1)/Main/
-  path: /Victory (1)/Main/Play Victory End
+  parentPath: /Victory/Main/
+  path: /Victory/Main/Play Victory End
   alias: Play Victory End
   rate: 1
   occurrence: 0
@@ -6966,91 +4198,217 @@ MonoBehaviour:
     info:
       name: Usable
       path: Play Victory End/Usable
-      id: -54900/f3646dc9-978c-4565-8df5-06a19adfd86c
+      fullPath: Victory/Main/Play Victory End/Usable
+      id: -90660/f3646dc9-978c-4565-8df5-06a19adfd86c
       localID: f3646dc9-978c-4565-8df5-06a19adfd86c
       parent: {fileID: 11499724}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11454298}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 155490}
+          parent: {fileID: 11499724}
+          mode: 0
+          path: /Victory (1)/Main/Play Victory End/Play Victory End/Usable/Target
+        usage: 0
+        path: /Victory/Main/Attribute Bool Data M
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
       oldDataB: []
       oldDataC: []
-  inUse:
+      oldData: []
+      oldDataB: []
+      oldDataC: []
+  active:
     info:
       name: Active
       path: Play Victory End/Active
-      id: -54900/10b63bb7-846d-4c0f-b7e3-559c1699464b
-      localID: 10b63bb7-846d-4c0f-b7e3-559c1699464b
+      fullPath: Victory/Main/Play Victory End/Active
+      id: -90660/3cfc59bc-db60-4f16-a144-824879badaf1
+      localID: 3cfc59bc-db60-4f16-a144-824879badaf1
       parent: {fileID: 11499724}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11489570}
+      - target:
+          search: 
+          directObject: {fileID: 0}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
+          mode: 0
+          path: 
+        usage: 0
+        path: Victory/Main/Play Victory End/Active/0
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   used:
     info:
       name: Used
       path: Play Victory End/Used
-      id: -54900/683d3b93-315c-4be8-ab40-50cd1eb4ae69
+      fullPath: Victory/Main/Play Victory End/Used
+      id: -90660/683d3b93-315c-4be8-ab40-50cd1eb4ae69
       localID: 683d3b93-315c-4be8-ab40-50cd1eb4ae69
       parent: {fileID: 11499724}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11428378}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 155490}
+          parent: {fileID: 11499724}
+          mode: 0
+          path: /Victory (1)/Main/Play Victory End/Play Victory End/Used/Target
+        usage: 0
+        path: /Victory/Main/Attribute Bool Data N
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: False
+        rawType: Zios.AttributeBoolData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   animationName:
     info:
       name: Animation Name
       path: Play Victory End/Animation Name
-      id: -54900/6741c7c0-fc7e-4444-b092-b8d4f097d064
+      fullPath: Victory/Main/Play Victory End/Animation Name
+      id: -90660/6741c7c0-fc7e-4444-b092-b8d4f097d064
       localID: 6741c7c0-fc7e-4444-b092-b8d4f097d064
       parent: {fileID: 11499724}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11401346}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 143344}
+          parent: {fileID: 11499724}
+          mode: 0
+          path: /Victory (1)/Main/Play Victory End/Play Victory End/Animation Name/Target
+        usage: 1
+        path: /Victory/Main/Attribute String Data B
+        referenceID: -54836/34289d88-fb9b-458d-bfbd-417eb6d17ba3
+        referencePath: Animation (End)
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeStringData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   speed:
     info:
       name: Speed
       path: Play Victory End/Speed
-      id: -54900/c5bf11f4-bdec-40ce-85e1-2d1d7f2d7e01
+      fullPath: Victory/Main/Play Victory End/Speed
+      id: -90660/c5bf11f4-bdec-40ce-85e1-2d1d7f2d7e01
       localID: c5bf11f4-bdec-40ce-85e1-2d1d7f2d7e01
       parent: {fileID: 11499724}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11408246}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 155490}
+          parent: {fileID: 11499724}
+          mode: 0
+          path: /Victory (1)/Main/Play Victory End/Play Victory End/Speed/Target
+        usage: 0
+        path: /Victory/Main/Attribute Float Data D
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 1
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   weight:
     info:
       name: Weight
       path: Play Victory End/Weight
-      id: -54900/6c65b343-9d81-40ec-8d42-88210deacac5
+      fullPath: Victory/Main/Play Victory End/Weight
+      id: -90660/6c65b343-9d81-40ec-8d42-88210deacac5
       localID: 6c65b343-9d81-40ec-8d42-88210deacac5
       parent: {fileID: 11499724}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11429792}
+      - target:
+          search: '[Self]'
+          directObject: {fileID: 0}
+          searchObject: {fileID: 155490}
+          parent: {fileID: 11499724}
+          mode: 0
+          path: /Victory (1)/Main/Play Victory End/Play Victory End/Weight/Target
+        usage: 0
+        path: /Victory/Main/Attribute Float Data E
+        referenceID: 
+        referencePath: 
+        operation: 0
+        special: 0
+        rawValue: 1
+        rawType: Zios.AttributeFloatData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
   target:
     info:
       name: Target
       path: Play Victory End/Target
-      id: -54900/55658202-4934-4966-9ad6-80172ee90fef
+      fullPath: Victory/Main/Play Victory End/Target
+      id: -90660/55658202-4934-4966-9ad6-80172ee90fef
       localID: 55658202-4934-4966-9ad6-80172ee90fef
       parent: {fileID: 11499724}
       mode: 0
       linkType: 0
       oldData:
-      - {fileID: 11479694}
+      - target:
+          search: ../@Settings
+          directObject: {fileID: 0}
+          searchObject: {fileID: 143344}
+          parent: {fileID: 11499724}
+          mode: 0
+          path: /Victory (1)/Main/Play Victory End/Play Victory End/Target/Target
+        usage: 1
+        path: /Victory/Main/Attribute Game Object Data B
+        referenceID: -54842/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+        referencePath: Visuals
+        operation: 0
+        special: 0
+        rawValue: 
+        rawType: Zios.AttributeGameObjectData
+      oldDataB: []
+      oldDataC: []
+      oldData: []
       oldDataB: []
       oldDataC: []
 --- !u!1001 &100100000
