@@ -8,6 +8,7 @@ namespace Zios{
 		[Internal] public AttributeVector3 scale = Vector3.zero;
 		public override void Awake(){
 			this.alias = this.alias.SetDefault("Transform");
+			this.autoRename = false;
 			base.Awake();
 			this.scale.Setup("Scale",this);
 			this.scale.getMethod = ()=>this.transform.localScale;

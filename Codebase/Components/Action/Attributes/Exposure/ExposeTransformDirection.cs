@@ -13,6 +13,7 @@ namespace Zios{
 		[Internal] public AttributeVector3 directionBack = Vector3.zero;
 		public override void Awake(){
 			this.alias = this.alias.SetDefault("Transform");
+			this.autoRename = false;
 			base.Awake();
 			this.directionUp.Setup("Direction/Up",this);
 			this.directionDown.Setup("Direction/Down",this);

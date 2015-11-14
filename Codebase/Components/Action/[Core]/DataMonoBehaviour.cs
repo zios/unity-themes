@@ -15,6 +15,7 @@ namespace Zios{
 		[Internal] public string path;
 		public string alias;
 		private string lastAlias;
+		protected bool autoRename = true;
 		protected bool setup;
 		[NonSerialized] public List<DataDependency> dependents = new List<DataDependency>();
 		public virtual void Awake(){
@@ -22,8 +23,10 @@ namespace Zios{
 			this.parentPath = this.gameObject.GetPath();
 			this.path = this.GetPath();
 			this.lastAlias = this.alias = this.alias.SetDefault(name);
-			while(Locate.GetObjectComponents<DataMonoBehaviour>(this.gameObject).Exists(x=>x != this && x.alias == this.alias)){
-				this.lastAlias = this.alias = this.alias.ToLetterSequence();
+			if(this.autoRename){
+				while(Locate.GetObjectComponents<DataMonoBehaviour>(this.gameObject).Exists(x=>x != this && x.alias == this.alias)){
+					this.lastAlias = this.alias = this.alias.ToLetterSequence();
+				}
 			}
 			if(!Application.isPlaying){
 				Events.Register("On Destroy",this);

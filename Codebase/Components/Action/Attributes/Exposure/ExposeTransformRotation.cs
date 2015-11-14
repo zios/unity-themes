@@ -8,6 +8,7 @@ namespace Zios{
 		[Internal] public AttributeVector3 rotation = Vector3.zero;
 		public override void Awake(){
 			this.alias = this.alias.SetDefault("Transform");
+			this.autoRename = false;
 			base.Awake();
 			this.rotation.Setup("Rotation",this);
 			this.rotation.getMethod = ()=>this.transform.eulerAngles;
