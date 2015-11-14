@@ -21,7 +21,7 @@ namespace Zios.UI{
 			GameObject target = eventTarget.target.Get();
 			label.DrawLabel(labelRect,null,true);
 			string eventType = eventTarget.mode == EventMode.Listeners ? "Listen" : "Caller";
-			bool hasEvents = eventType == "Listen" ? !Events.HasEvents("Listen",target) : !Events.HasEvents("Caller",target);
+			bool hasEvents = eventType == "Listen" ? !Events.Exists(target,"Listen") : !Events.Exists(target,"Caller");
 			bool toggleActive = this.targetMode.ContainsKey(eventTarget) ? this.targetMode[eventTarget] : !eventTarget.name.IsEmpty();
 			this.targetMode[eventTarget] = toggleActive.Draw(valueRect.SetWidth(16),"",GUI.skin.GetStyle("CheckmarkToggle"));
 			valueRect = valueRect.Add(18,0,-18,0);

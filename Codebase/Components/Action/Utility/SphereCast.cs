@@ -26,6 +26,7 @@ namespace Zios{
 			this.Toggle(state);
 		}
 		public void OnDrawGizmosSelected(){
+			if(!Attribute.ready){return;}
 			Gizmos.color = this.debugColor;
 			Gizmos.DrawSphere(this.source,this.radius);
 		}

@@ -11,6 +11,8 @@ namespace Zios{
 		public bool permanent;
 		public bool unique;
 		public bool isStatic;
+		public float cooldown;
+		private float resting;
 		private bool warned;
 		public bool IsValid(){
 			var method = this.method.As<Delegate>();
@@ -21,6 +23,9 @@ namespace Zios{
 			}
 			return !nullTarget;
 		}
+		public bool IsResting(){return Time.realtimeSinceStartup < this.resting;}
+		public void Rest(float seconds=1){this.resting = Time.realtimeSinceStartup+seconds;}
+		public void SetCooldown(float seconds=1){this.cooldown = seconds;}
 		public void SetPaused(bool state=true){this.paused = state;}
 		public void SetPermanent(bool state=true){this.permanent = state;}
 		public void SetUnique(bool state=true){
@@ -40,6 +45,7 @@ namespace Zios{
 		public void Call(object[] values){
 			if(Utility.IsPaused()){return;}
 			if(!this.IsValid()){return;}
+			if(this.cooldown > 0){this.Rest(this.cooldown);}
 			if(this.occurrences > 0){this.occurrences -= 1;}
 			if(this.occurrences == 0){this.Remove();}
 			if(values.Length < 1 || this.method is Method){

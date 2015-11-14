@@ -40,6 +40,7 @@ namespace Zios{
 			this.Toggle(state);
 		}
 		public void OnDrawGizmosSelected(){
+			if(!Attribute.ready){return;}
 			if(!this.source.Get().IsNull()){
 				Gizmos.color = this.debugColor;
 				Vector3 start = this.source.Get().transform.position;

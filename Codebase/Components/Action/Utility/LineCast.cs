@@ -28,6 +28,7 @@ namespace Zios{
 			this.hitDistance.Set(this.cast.distance);
 		}
 		public void OnDrawGizmosSelected(){
+			if(!Attribute.ready){return;}
 			Gizmos.color = this.rayColor;
 			Gizmos.DrawLine(this.source,this.goal);
 		}

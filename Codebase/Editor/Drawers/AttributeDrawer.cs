@@ -6,7 +6,6 @@ using System.Linq;
 using System.Reflection;
 using System.Collections.Generic;
 using MenuFunction = UnityEditor.GenericMenu.MenuFunction;
-using UnityObject = UnityEngine.Object;
 namespace Zios.UI{
 	[CustomPropertyDrawer(typeof(Attribute),true)]
 	public class AttributeDrawer : PropertyDrawer{
@@ -70,7 +69,6 @@ namespace Zios.UI{
 		where DataType : AttributeData<BaseType,AttributeType,DataType>,new(){
 		public Attribute attribute;
 		public AttributeData[] activeDataset;
-		public AttributeType attributeCast;
 		public AttributeDrawer drawer;
 		public SerializedProperty property;
 		public GUIContent label;
@@ -90,7 +88,6 @@ namespace Zios.UI{
 			if(this.skin == null || !this.skin.name.Contains(skinName)){
 				this.skin = FileManager.GetAsset<GUISkin>("Gentleface-" + skinName + ".guiskin");
 				this.attribute = property.GetObject<Attribute>();
-				this.attributeCast = (AttributeType)this.attribute;
 			}
 			this.activeDataset = this.attribute.info.data;
 			GUI.skin = this.skin;
@@ -117,7 +114,7 @@ namespace Zios.UI{
 			this.valueRect = this.fullRect.Add(this.labelRect.width,0,-labelRect.width,0);
 		}
 		public virtual void Draw(){
-			AttributeData firstData = this.attributeCast.GetFirst();
+			AttributeData firstData = this.attribute.GetFirst();
 			if(firstData.IsNull()){return;}
 			this.DrawContext(firstData);
 			if(this.attribute.info.mode == AttributeMode.Normal){
@@ -131,7 +128,7 @@ namespace Zios.UI{
 				}
 			}
 			if(this.attribute.info.mode == AttributeMode.Linked){
-				this.attributeCast.usage = AttributeUsage.Shaped;
+				this.attribute.usage = AttributeUsage.Shaped;
 				GUI.Box(this.iconRect,"",GUI.skin.GetStyle("IconLinked"));
 				this.labelRect = this.labelRect.AddX(16);
 				this.DrawShaped(this.valueRect,firstData,this.label,true);
@@ -253,7 +250,7 @@ namespace Zios.UI{
 			}
 			else{
 				Rect warningRect = area.Add(18,0,-18,0);
-				string targetName = targetScope == null ? "Target" : targetScope.ToString().Remove("(UnityEngine.GameObject)").Trim();
+				string targetName = targetScope.IsNull() ? "Target" : targetScope.ToString().Remove("(UnityEngine.GameObject)").Trim();
 				string typeName = data.GetType().Name.Trim("Attribute","Data");
 				string message = "<b>" + targetName.Truncate(24) + "</b> has no <b>"+typeName+"</b> attributes.";
 				message.DrawLabel(warningRect,GUI.skin.GetStyle("WarningLabel"));
@@ -294,13 +291,13 @@ namespace Zios.UI{
 		public virtual void DrawGroup(GUIContent label,bool drawAdvanced=true){
 			Rect labelRect = this.labelRect.AddX(12);
 			EditorGUIUtility.AddCursorRect(this.fullRect,MouseCursor.ArrowPlus);
-			bool formulaExpanded = EditorPrefs.GetBool(this.attribute.info.path+"FormulaExpanded");
+			bool formulaExpanded = EditorPrefs.GetBool(this.attribute.info.fullPath+"FormulaExpanded");
 			if(this.labelRect.AddX(16).Clicked(0) || this.valueRect.Clicked(0)){
 				this.dirty = true;
 				formulaExpanded = !formulaExpanded;
 			}
 			formulaExpanded = EditorGUI.Foldout(labelRect,formulaExpanded,label,GUI.skin.GetStyle("IconFormula"));
-			EditorPrefs.SetBool(this.attribute.info.path+"FormulaExpanded",formulaExpanded);
+			EditorPrefs.SetBool(this.attribute.info.fullPath+"FormulaExpanded",formulaExpanded);
 			if(formulaExpanded){
 				float lineHeight = EditorGUIUtility.singleLineHeight+2;
 				this.SetupAreas(this.fullRect.SetX(45).AddWidth(-55));

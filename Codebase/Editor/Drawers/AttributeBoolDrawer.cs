@@ -42,7 +42,7 @@ namespace Zios.UI{
 				this.dirty = true;
 				GUI.changed = false;
 			}
-			int dataIndex = this.attributeCast.data.IndexOf(data);
+			int dataIndex = this.attribute.data.IndexOf(data);
 			AttributeData[] dataB = this.attribute.info.dataB;
 			this.SetupAreas(this.fullRect.AddX(this.fullRect.width+3));
 			this.labelRect = this.labelRect.SetWidth(1);

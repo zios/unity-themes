@@ -75,7 +75,6 @@ namespace Zios{
 		//================================
 		public override void Awake(){
 			base.Awake();
-			this.ResetBlocked(true);
 			this.blocked.forward.Setup("Blocked/Forward",this);
 			this.blocked.back.Setup("Blocked/Back",this);
 			this.blocked.up.Setup("Blocked/Up",this);
@@ -97,6 +96,7 @@ namespace Zios{
 			this.onSlope.Setup("On Slope",this);
 			this.onSlide.Setup("On Slide",this);
 			this.slopeNormal.Setup("Slope Normal",this);
+			this.ResetBlocked(true);
 			Events.Add("Add Move",(MethodVector3)this.AddMove,this.gameObject);
 			Events.Add("Add Move Raw",(MethodVector3)this.AddMoveRaw,this.gameObject);
 			Events.Register("On Trigger",this.gameObject);
@@ -126,6 +126,7 @@ namespace Zios{
 			}
 		}
 		public void OnDrawGizmosSelected(){
+			if(!Attribute.ready){return;}
 			Gizmos.color = Color.white;
 			Vector3 raise = this.transform.up * this.maxStepHeight;
 			Vector3 start = this.transform.position;

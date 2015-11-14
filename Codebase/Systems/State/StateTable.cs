@@ -62,6 +62,7 @@ namespace Zios{
 		public virtual void Refresh(){
 			if(Application.isPlaying){return;}
 			if(!this.controller.IsEnabled()){this.controller = null;}
+			if(!this.IsEnabled()){return;}
 			this.UpdateScripts();
 			if(this.scripts.Count > 0){
 				this.UpdateTableList();

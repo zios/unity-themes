@@ -37,6 +37,7 @@ namespace Zios{
 			this.Toggle(state);
 		}
 		public void OnDrawGizmosSelected(){
+			if(!Attribute.ready){return;}
 			Gizmos.color = this.debugColor;
 			GameObject source = this.source.Get();
 			if(!source.IsNull()){

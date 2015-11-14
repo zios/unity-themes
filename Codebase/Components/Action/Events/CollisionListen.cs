@@ -7,7 +7,7 @@ namespace Zios{
 		public CollisionEvent trigger;
 		[EnumMask] public CollisionSource sourceCause = (CollisionSource)(-1);
 		//[EnumMask] public CollisionDirection direction = (CollisionDirection)(-1);
-		public LayerMask layer = (LayerMask)(-1);
+		public LayerMask layer = -1;
 		public AttributeGameObject target = new AttributeGameObject();
 		//public AttributeBool forceRequired = true;
 		[Internal] public AttributeGameObject lastCollision = new AttributeGameObject();
@@ -17,13 +17,12 @@ namespace Zios{
 			this.target.Setup("Target",this);
 			this.target.SetFallback("[Owner]");
 			this.AddDependent<ColliderController>(this.target);
-			Method eventSetup = ()=>{
+			if(Application.isPlaying){
 				string triggerName = this.trigger.ToString().ToTitle();
 				foreach(GameObject target in this.target){
 					Events.Add(triggerName,(MethodObject)this.Collision,target);
 				}
-			};
-			Events.AddLimited("On Attributes Ready",eventSetup,1);
+			}
 		}
 		public override void Use(){}
 		public void Collision(object data){

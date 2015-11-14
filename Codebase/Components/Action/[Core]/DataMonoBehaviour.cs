@@ -15,7 +15,7 @@ namespace Zios{
 		[Internal] public string path;
 		public string alias;
 		private string lastAlias;
-		private bool setup;
+		protected bool setup;
 		[NonSerialized] public List<DataDependency> dependents = new List<DataDependency>();
 		public virtual void Awake(){
 			string name = this.GetType().Name.ToTitle();
@@ -30,8 +30,6 @@ namespace Zios{
 				Events.Register("On Validate",this);
 				Events.Add("On Validate",this.CheckDependents,this);
 				Events.Add("On Validate",this.CheckAlias,this);
-				Events.Add("On Hierarchy Changed",this.CheckDependents);
-				Events.Add("On Attributes Ready",this.CheckDependents);
 			}
 		}
 		public virtual void Start(){
@@ -64,6 +62,7 @@ namespace Zios{
 			}
 		}
 		public virtual void OnValidate(){
+			this.DelayEvent(this.path,"On Validate Raw",1);
 			if(!this.CanValidate() || !this.setup){return;}
 			this.DelayEvent(this.path,"On Validate",1);
 			this.gameObject.DelayEvent(this.parentPath,"On Components Changed");
@@ -107,10 +106,10 @@ namespace Zios{
 		}
 		public void AddDependent<Type>() where Type : Component{this.AddDependent<Type>(this.gameObject,true);}
 		public void AddDependent<Type>(object target,bool isScript=false) where Type : Component{
-			Method delayAdd = ()=>this.DelayAddDependent(target,isScript,typeof(Type));
-			Events.AddLimited("On Attributes Ready",delayAdd,1);
+			this.AddDependent(target,isScript,typeof(Type));
 		}
 		public void AddDependent(object target,bool isScript=false,params Type[] types){
+			if(this.dependents.Exists(x=>Enumerable.SequenceEqual(x.types,types))){return;}
 			Method delayAdd = ()=>this.DelayAddDependent(target,isScript,types);
 			Events.AddLimited("On Attributes Ready",delayAdd,1);
 		}

@@ -42,12 +42,12 @@ namespace Zios{
 			}
 			else if(attribute.mode == AttributeMode.Linked || this.usage == AttributeUsage.Shaped){
 				if(Application.isPlaying && !Attribute.ready){
-					if(Attribute.debug.Has("Issue")){Debug.LogWarning("[AttributeData] Get attempt before attribute data built : " + attribute.path,attribute.parent);}
+					if(Attribute.debug.Has("Issue")){Debug.LogWarning("[AttributeData] Get attempt before attribute data built : " + attribute.fullPath,attribute.parent);}
 					return default(BaseType);
 				}
 				else if(this.reference == null){
 					if(Application.isPlaying && !this.target.Get().IsNull() && !Attribute.getWarning.ContainsKey(this)){
-						string source = "("+attribute.path+")";
+						string source = "("+attribute.fullPath+")";
 						string goal = (this.target.Get().GetPath() + this.referencePath).Trim("/");
 						if(Attribute.debug.Has("Issue")){Debug.LogWarning("[AttributeData] Get : No reference found for " + source + " to " + goal,attribute.parent);}
 						Attribute.getWarning[this] = true;
@@ -56,7 +56,7 @@ namespace Zios{
 				}
 				else if(this.reference.info == attribute){
 					if(!Attribute.getWarning.ContainsKey(this)){
-						if(Attribute.debug.Has("Issue")){Debug.LogWarning("[AttributeData] Get : References self. (" + attribute.path + ")",attribute.parent);}
+						if(Attribute.debug.Has("Issue")){Debug.LogWarning("[AttributeData] Get : References self. (" + attribute.fullPath + ")",attribute.parent);}
 						Attribute.getWarning[this] = true;
 					}
 					return default(BaseType);
@@ -66,7 +66,7 @@ namespace Zios{
 				return this.HandleSpecial();
 			}
 			if(!Attribute.getWarning.ContainsKey(this)){
-				if(Attribute.debug.Has("Issue")){Debug.LogWarning("[AttributeData] Get : No value found. (" + attribute.path + ") to " + this.referencePath,attribute.parent);}
+				if(Attribute.debug.Has("Issue")){Debug.LogWarning("[AttributeData] Get : No value found. (" + attribute.fullPath + ") to " + this.referencePath,attribute.parent);}
 				Attribute.getWarning[this] = true;
 			}
 			return default(BaseType);

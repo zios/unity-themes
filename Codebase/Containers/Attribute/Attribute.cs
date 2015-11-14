@@ -65,12 +65,37 @@ namespace Zios{
 		[NonSerialized] public bool isDefault = true;
 		[NonSerialized] public string defaultSet = "A";
 		[NonSerialized] public List<Attribute> dependents = new List<Attribute>();
+		public AttributeUsage usage{
+			get{return this.GetFirst().usage;}
+			set{
+				foreach(AttributeData data in this.info.data){
+					data.usage = value;
+				}
+			}
+		}
+		public AttributeData GetFirst(){
+			var data = this.info.data;
+			if(data.Length < 1 || data[0].GetType() == typeof(AttributeData)){this.PrepareData();}
+			if(data[0].GetType() == typeof(AttributeData)){
+				if(Attribute.debug.Has("Issue")){
+					Debug.LogWarning("[Attribute] Could not convert first attribute for -- " + this.info.fullPath);
+				}
+			}
+			if(data.Length < 1){
+				if(Attribute.debug.Has("Issue")){
+					Debug.LogWarning("[Attribute] Could not retrieve first attribute data for -- " + this.info.fullPath);
+				}
+				return null;
+			}
+			return data[0];
+		}
 		public virtual Type[] GetFormulaTypes(){return null;}
 		public virtual bool HasData(){return false;}
 		public virtual AttributeData[] GetData(){return null;}
 		public virtual void Add<Type>(int index=-1,string set="") where Type : AttributeData,new(){}
 		public virtual void Remove(AttributeData data,string set=""){}
 		public virtual void Setup(string path,Component parent){}
+		public virtual void PrepareData(){}
 		public virtual void BuildLookup(){}
 		public virtual void BuildData(AttributeData[] dataSet){}
 		public AttributeData[] GetDataSet(){
@@ -92,14 +117,6 @@ namespace Zios{
 		public Func<IEnumerator<BaseType>> enumerateMethod;
 		public Func<BaseType> getMethod;
 		public Action<BaseType> setMethod;
-		public AttributeUsage usage{
-			get{return this.GetFirst().usage;}
-			set{
-				foreach(AttributeData data in this.info.data){
-					data.usage = value;
-				}
-			}
-		}
 		public IEnumerator<BaseType> GetEnumerator(){
 			/*if(this.cachedEnumerator == null){
 				this.cachedEnumerator = this.info.data.Where(x=>x is DataType).Select(x=>x.As<DataType>().Get()).GetEnumerator();
@@ -117,30 +134,20 @@ namespace Zios{
 		public virtual BaseType GetFormulaValue(){return default(BaseType);}
 		public override Type[] GetFormulaTypes(){return new Type[]{typeof(AttributeData)};}
 		public override bool HasData(){return this.info.data.Length > 0;}
-		public DataType GetFirst(){
-			if(this.info.data.Length < 1 || this.info.data[0].GetType() == typeof(AttributeData)){this.PrepareData();}
-			if(this.info.data.Length < 1){
-				if(Attribute.debug.Has("Issue")){
-					Debug.Log("[Attribute] Could not retrieve first attribute data for -- " + this.info.name);
-				}
-				return null;
-			}
-			return (DataType)this.info.data[0];
-		}
 		public void SetDefault(BaseType value){
 			this.PrepareData();
-			BaseType current = this.GetFirst().value;
+			BaseType current = this.GetFirst().As<DataType>().value;
 			if(current.IsEmpty()){
-				this.GetFirst().value = value;
+				this.GetFirst().As<DataType>().value = value;
 			}
 		}
 		// ======================
 		// Building
 		// ======================
 		public AttributeData[] CreateData<Type>(AttributeData[] dataArray,int index) where Type : AttributeData,new(){
-			if(Attribute.debug.Has("Add")){Debug.Log("[Attribute] Creating attribute data : " + this.info.path);}
+			if(Attribute.debug.Has("Add")){Debug.Log("[Attribute] Creating attribute data : " + this.info.fullPath);}
 			AttributeData data = new Type();
-			Events.Add("On Validate",data.Serialize,this.info.parent);
+			Events.Add("On Validate Raw",data.Serialize,this.info.parent);
 			data.rawType = typeof(Type).FullName;
 			data.attribute = this.info;
 			if(index == -1){index = dataArray.Length;}
@@ -175,7 +182,7 @@ namespace Zios{
 			if(set == "B"){entries = this.info.dataB.Where(x=>x==data).ToList();}
 			if(set == "C"){entries = this.info.dataC.Where(x=>x==data).ToList();}
 			foreach(AttributeData current in entries){
-				if(Attribute.debug.Has("Remove")){Debug.Log("[Attribute] Removing attribute data : " + this.info.path + " : " + data);}
+				if(Attribute.debug.Has("Remove")){Debug.Log("[Attribute] Removing attribute data : " + this.info.fullPath + " : " + data);}
 				if(set == "A"){this.info.data = this.info.data.RemoveAll(current);}
 				if(set == "B"){this.info.dataB = this.info.dataB.RemoveAll(current);}
 				if(set == "C"){this.info.dataC = this.info.dataC.RemoveAll(current);}
@@ -191,7 +198,7 @@ namespace Zios{
 				this.BuildInfo(path,parent);
 				if(!Utility.IsBusy()){
 					this.FixDuplicates();
-					this.FixConflicts(previousID);
+					this.FixChanged(previousID);
 				}
 				Events.Add("On Validate",this.ValidateDependents,parent);
 				Events.AddLimited("On Reset",()=>this.Setup(path,parent),1,parent);
@@ -213,7 +220,7 @@ namespace Zios{
 			this.info.parent = parent;
 			this.info.path = path;
 			this.info.name = path.Split("/").Last();
-			this.info.fullPath = parent.GetPath().TrimLeft("/") + "/" + path;
+			this.info.fullPath = parent.GetPath().TrimLeft("/") + path.Trim(parent.GetAlias());
 			this.info.localID = this.info.localID.IsEmpty() ? Guid.NewGuid().ToString() : this.info.localID;
 			this.info.id = parent.GetInstanceID()+"/"+this.info.localID;
 			dirty = dirty || this.info.id != previousID;
@@ -260,7 +267,8 @@ namespace Zios{
 						var entries = lookup[target];
 						bool resolved = false;
 						foreach(var attribute in entries){
-							if(attribute.Value.info.path == data.referencePath){
+							string path = attribute.Value.info.path;
+							if(path.Equals(data.referencePath)){
 								if(Attribute.debug.Has("Issue")){
 									string message = "[Attribute] ID missing : " + data + ".  Resolved via path : " + data.referencePath;
 									Debug.Log(message,this.info.parent.gameObject);
@@ -327,15 +335,15 @@ namespace Zios{
 				Debug.Log("[Attribute] Resolving same name siblings : " + name,current);
 			}
 			if(path != this.info.path){
-				if(Attribute.debug.Has("Issue")){Debug.Log("[Attribute] Resolving same name sibling attributes : " + this.info.path,this.info.parent.gameObject);}
+				if(Attribute.debug.Has("Issue")){Debug.Log("[Attribute] Resolving same name sibling attributes : " + this.info.fullPath,this.info.parent.gameObject);}
 				this.info.parent.CallEvent("On Validate");
 				Utility.SetDirty(this.info.parent);
 			}
 		}
-		public void FixConflicts(string previousID){
+		public void FixChanged(string previousID){
 			bool changedID = !previousID.IsEmpty() && this.info.id != previousID;
 			if(changedID){
-				if(Attribute.debug.Has("Issue")){Debug.Log("[Attribute] Resolving id conflict : " + this.info.path,this.info.parent.gameObject);}
+				if(Attribute.debug.Has("Issue")){Debug.Log("[Attribute] Resolving changed ID : " + this.info.fullPath,this.info.parent.gameObject);}
 				var resolve = Attribute.resolve;
 				if(!resolve.ContainsKey(this.info.parent.gameObject)){
 					resolve[this.info.parent.gameObject] = new Dictionary<string,string>();
@@ -343,31 +351,56 @@ namespace Zios{
 				resolve[this.info.parent.gameObject][previousID] = this.info.id;
 			}
 		}
-		public void PrepareData(){
-			if(!Application.isPlaying && this.info.mode == AttributeMode.Linked){
-				this.usage = AttributeUsage.Shaped;
+		public override void PrepareData(){
+			if(!Application.isPlaying){
+				if(this.info.mode == AttributeMode.Linked){
+					this.usage = AttributeUsage.Shaped;
+				}
+				this.info.data = this.RepairData(this.info.data);
+				this.info.dataB = this.RepairData(this.info.dataB);
+				this.info.dataC = this.RepairData(this.info.dataC);
 			}
 			if(this.info.data.Length < 1){
 				BaseType value = this.delayedValue != null ? this.delayedValue : default(BaseType);
-				if(typeof(BaseType).IsValueType && this.delayedValue == null && Attribute.debug.Has("Issue")){Debug.Log("[Attribute] Fixing unprepared data : " + this.info.path);}
-				//else{Debug.Log("[Attribute] Delayed add : " + this.info.path);}
+				if(typeof(BaseType).IsValueType && this.delayedValue == null && Attribute.debug.Has("Issue")){
+					Debug.Log("[Attribute] Fixing unprepared data : " + this.info.fullPath);
+				}
 				this.Add(value);
 			}
 			this.UpdateData(this.info.data);
 			this.UpdateData(this.info.dataB);
 			this.UpdateData(this.info.dataC);
 		}
+		public virtual AttributeData[] RepairData(AttributeData[] dataSet){
+			var newData = dataSet.Copy();
+			for(int index=0;index<dataSet.Length;++index){
+				var data = dataSet[index];
+				if(data.rawValue.IsEmpty() && data.rawType.IsEmpty()){
+					if(Attribute.debug.Has("Issue")){Debug.LogWarning("[Attribute] : Attribute data is empty. Removing : " + data.path);}
+					newData = newData.Remove(data);
+				}
+			}
+			return newData;
+		}
 		public virtual void UpdateData(AttributeData[] dataSet){
 			for(int index=0;index<dataSet.Length;++index){
-				var data = dataSet[index] = this.Deserialize(dataSet[index]);
-				Events.Add("On Validate",data.Serialize,this.info.parent);
-				data.target.Setup(index + "/Target",this.info.parent);
+				var data = dataSet[index];
+				if(data.GetType() == typeof(AttributeData)){
+					data = dataSet[index] = this.Deserialize(dataSet[index]);
+				}
+				if(!Application.isPlaying){
+					Events.Add("On Enter Play",data.Serialize);
+					Events.Add("On Scene Saving",data.Serialize);
+				}
+				if(data.usage == AttributeUsage.Shaped){
+					data.target.Setup(index + "/Target",this.info.parent);
+				}
 				data.attribute = this.info;
 				data.path = this.info.fullPath + "/" + index;
 			}
 		}
 		public AttributeData Deserialize(AttributeData data){
-			if(data.rawType.IsEmpty()){
+			if(Attribute.debug.Has("Issue") && data.rawType.IsEmpty()){
 				Debug.LogWarning("[Attribute] : Deserialization type is empty for : " + data.path);	
 				return data;
 			}
@@ -403,7 +436,9 @@ namespace Zios{
 				gameObjectData.value = Locate.Find(data.rawValue);
 				newData = gameObjectData;
 			}
-			else{Debug.LogWarning("[Attribute] : Cannot determine deserialization type for : " + data.path);}
+			else if(Attribute.debug.Has("Issue")){
+				Debug.LogWarning("[Attribute] : Cannot determine deserialization type for : " + data.path);
+			}
 			newData.target = data.target;
 			newData.usage = data.usage;
 			newData.path = data.path;
@@ -422,7 +457,7 @@ namespace Zios{
 			if(!this.isSetup){this.Setup("",null);}
 			if(this.getMethod != null){return this.getMethod();}
 			if(this.info.data.Length < 1){
-				if(Attribute.debug.Has("Issue")){Debug.LogWarning("[Attribute] Get : No data found for : " + this.info.path);}
+				if(Attribute.debug.Has("Issue")){Debug.LogWarning("[Attribute] Get : No data found for : " + this.info.fullPath);}
 				return default(BaseType);
 			}
 			if(this.info.mode != AttributeMode.Formula){
@@ -431,7 +466,7 @@ namespace Zios{
 					this.cachedValue = this.GetFirstRaw().Get();
 				}
 				return this.cachedValue;*/
-				return this.GetFirst().Get();
+				return this.GetFirst().As<DataType>().Get();
 			}
 			/*if(this.dirty){
 				this.dirty = !this.canCache;
@@ -452,14 +487,10 @@ namespace Zios{
 				this.setMethod(value);
 				return;
 			}
-			if(this.info.data.Length < 1){
-				if(Attribute.debug.Has("Issue")){Debug.LogWarning("[Attribute] Set : No data found for : " + this.info.path);}
-				return;
-			}
-			DataType data = this.GetFirst();
+			DataType data = this.GetFirst().As<DataType>();
 			if(data == null){
 				if(!Attribute.setWarning.ContainsKey(this)){
-					if(Attribute.debug.Has("Issue")){Debug.LogWarning("[Attribute] No data found. (" + this.info.path + ")");}
+					if(Attribute.debug.Has("Issue")){Debug.LogWarning("[Attribute] No data found. (" + this.info.fullPath + ")");}
 					Attribute.setWarning[this] = true;
 				}
 			}
@@ -468,15 +499,16 @@ namespace Zios{
 					this.usage = AttributeUsage.Direct;
 				}
 				data.value = value;
+				if(!Application.isPlaying){data.rawValue = value.ToString();}
 			}
 			else if(this.info.mode == AttributeMode.Linked && this.info.linkType != LinkType.Get){
 				if(!Attribute.ready && Application.isPlaying){
-					if(Attribute.debug.Has("Issue")){Debug.LogWarning("[Attribute] Set attempt before attribute data built : " + this.info.path);}
+					if(Attribute.debug.Has("Issue")){Debug.LogWarning("[Attribute] Set attempt before attribute data built : " + this.info.fullPath);}
 					return;
 				}
 				if(data.reference == null){
 					if(!Attribute.setWarning.ContainsKey(this)){
-						string source = "("+this.info.path+")";
+						string source = "("+this.info.fullPath+")";
 						string goal = (data.target.Get().GetPath() + data.referencePath).Trim("/");
 						if(Attribute.debug.Has("Issue")){Debug.LogWarning("Attribute (Set): No reference found for " + source + " to " + goal,this.info.parent);}
 						Attribute.setWarning[this] = true;
@@ -487,7 +519,7 @@ namespace Zios{
 			}
 			else if(this.info.mode == AttributeMode.Formula){
 				if(!Attribute.setWarning.ContainsKey(this)){
-					if(Attribute.debug.Has("Issue")){Debug.LogWarning("Attribute (Set): Cannot manually set values for formulas. (" + this.info.path + ")",this.info.parent);}
+					if(Attribute.debug.Has("Issue")){Debug.LogWarning("Attribute (Set): Cannot manually set values for formulas. (" + this.info.fullPath + ")",this.info.parent);}
 					Attribute.setWarning[this] = true;
 				}
 			}

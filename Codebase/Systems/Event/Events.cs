@@ -50,16 +50,16 @@ namespace Zios{
 	}
 	[Flags]
 	public enum EventDebug : int{
-		Add        = 0x001,
-		AddDeep    = 0x002,
-		Remove     = 0x004,
-		Call       = 0x008,
-		CallEmpty  = 0x010,
-		CallDeep   = 0x020,
-		CallTimer  = 0x040,
-		CallUpdate = 0x080,
-		Pause      = 0x100,
-		History    = 0x200,
+		Add            = 0x001,
+		Remove         = 0x002,
+		Call           = 0x004,
+		CallEmpty      = 0x008,
+		CallDeep       = 0x010,
+		CallTimer      = 0x020,
+		CallTimerZero  = 0x040,
+		CallUpdate     = 0x080,
+		Pause          = 0x100,
+		History        = 0x200,
 	}
 	public enum EventDebugScope : int{
 		Global     = 0x001,
@@ -100,12 +100,11 @@ namespace Zios{
 		public static EventListener empty = new EventListener();
 		public static Dictionary<object,Dictionary<string,EventListener>> unique = new Dictionary<object,Dictionary<string,EventListener>>();
 		public static Dictionary<object,Dictionary<string,Dictionary<object,EventListener>>> cache = new Dictionary<object,Dictionary<string,Dictionary<object,EventListener>>>();
-		public static Dictionary<object,Dictionary<string,float>> cooldown = new Dictionary<object,Dictionary<string,float>>();
 		public static List<EventListener> listeners = new List<EventListener>();
 		public static Dictionary<object,List<string>> callers = new Dictionary<object,List<string>>();
 		public static Dictionary<MethodStep,EventStepper> steppers = new Dictionary<MethodStep,EventStepper>();
-		public static string stepperTitle;
-		public static string stepperMessage;
+		[NonSerialized] public static string stepperTitle;
+		[NonSerialized] public static string stepperMessage;
 		public static FixedList<string> eventHistory = new FixedList<string>(15);
 		public static List<EventListener> stack = new List<EventListener>();
 		private bool setup;
@@ -176,7 +175,7 @@ namespace Zios{
 				Events.callers[target].AddNew(name);
 			}
 		}
-		public static void AddStepper(string eventName,MethodStep method,IList collection,int passes){
+		public static void AddStepper(string eventName,MethodStep method,IList collection,int passes=1){
 			var stepper = Events.steppers[method] = new EventStepper();
 			stepper.eventName = eventName;
 			stepper.method = method;
@@ -216,7 +215,7 @@ namespace Zios{
 				delayed = true;
 			}
 			if(Events.disabled.Has("Add")){
-				if(Events.debug.Has("AddDeep")){Debug.LogWarning("[Events] : Add attempted while Events disabled. " + name);}
+				Debug.LogWarning("[Events] : Add attempted while Events disabled. " + name);
 				return null;
 			}
 			targets = Events.VerifyAll(targets);
@@ -278,7 +277,7 @@ namespace Zios{
 			if(Events.disabled.Has("Add")){return;}
 			targets = Events.VerifyAll(targets);
 			foreach(var target in targets){
-				if(Events.cache.ContainsKey(target) && Events.cache[target].ContainsKey(name)){
+				if(Events.Exists(target,name)){
 					Events.cache[target][name].Select(x=>x.Value).ToList().ForEach(x=>x.Remove());
 				}
 				var removals = Events.listeners.Where(x=>x.method==method && x.target==target && x.name==name).ToList();
@@ -297,14 +296,20 @@ namespace Zios{
 			}
 			Utility.EditorDelayCall(Events.OnEventsChanged);
 		}
+		public static Dictionary<object,EventListener> Get(string name){return Events.Get(Events.global,name);}
+		public static Dictionary<object,EventListener> Get(object target,string name){
+			return Events.cache.AddNew(target).AddNew(name);
+		}
+		public static bool Exists(object target,string name){
+			return Events.cache.ContainsKey(target) && Events.cache[target].ContainsKey(name);
+		}
 		public static void SetPause(string type,string name,object target){
 			target = Events.Verify(target);
 			if(Events.debug.Has("Pause")){
 				string message = "[Events] : " + type + " event -- " + Events.GetTargetName(target) + " -- " + name;
 				Debug.Log(message,target as UnityObject);
 			}
-			var events = Events.cache.AddNew(target).AddNew(name);
-			foreach(var item in events){
+			foreach(var item in Events.Get(target,name)){
 				item.Value.paused = type == "Pausing";
 			}
 		}
@@ -327,24 +332,24 @@ namespace Zios{
 				Events.eventHistory.Add(name);
 			}
 		}
-		public static void Cooldown(string name,float seconds){Events.Cooldown(Events.global,name,seconds);}
-		public static void Cooldown(object target,string name,float seconds){Events.cooldown.AddNew(target)[name] = Time.realtimeSinceStartup + seconds;}
+		public static void Rest(string name,float seconds){Events.Rest(Events.global,name,seconds);}
+		public static void Rest(object target,string name,float seconds){
+			foreach(var item in Events.Get(target,name)){
+				item.Value.Rest(seconds);
+			}
+		}
 		public static void Call(string name,params object[] values){
 			if(Events.disabled.Has("Call")){return;}
 			Events.Call(Events.Verify(),name,values);
 		}
 		public static void Call(object target,string name,object[] values){
 			if(Events.disabled.Has("Call")){return;}
-			if(Events.cooldown.ContainsKey(target) && Events.cooldown[target].ContainsKey(name)){
-				if(Time.realtimeSinceStartup < Events.cooldown[target][name]){return;}
-			}
 			if(Events.stack.Count > 1000){
 				Debug.LogWarning("[Events] : Event stack overflow.");
 				Events.disabled = (EventDisabled)(-1);
 				return;
 			}
-			Events.AddHistory(name);
-			bool hasEvents = Events.cache.ContainsKey(target) && Events.cache[target].ContainsKey(name);
+			bool hasEvents = Events.Exists(target,name);
 			var events = hasEvents ? Events.cache[target][name] : null;
 			int count = hasEvents ? events.Count : 0;
 			bool canDebug = Events.CanDebug(target,name,count);
@@ -353,29 +358,34 @@ namespace Zios{
 			float duration = Time.realtimeSinceStartup;
 			if(hasEvents){
 				foreach(var item in events.Copy()){
-					if(item.Value.paused){continue;}
+					if(item.Value.paused || item.Value.IsResting()){continue;}
 					var listener = item.Value;
 					if(!debugTime && debugDeep){
 						string message = "[Events] : " + name + " -- " + Events.GetMethodName(listener.method);
 						Debug.Log(message,target as UnityObject);
 					}
 					Events.stack.Add(listener);
+					Events.AddHistory(name);
 					float eventDuration = Time.realtimeSinceStartup;
 					listener.Call(values);
 					if(debugTime && debugDeep){
 						eventDuration = Time.realtimeSinceStartup - eventDuration;
-						string time = eventDuration.ToString("F10").TrimRight("0",".").Trim() + " seconds.";
-						string message = "[Events] : " + name + " -- " + Events.GetMethodName(listener.method) + " -- " + time;
-						Debug.Log(message,target as UnityObject);
+						if(eventDuration > 0.001f || Events.debug.Has("CallTimerZero")){
+							string time = eventDuration.ToString("F10").TrimRight("0",".").Trim() + " seconds.";
+							string message = "[Events] : " + name + " -- " + Events.GetMethodName(listener.method) + " -- " + time;
+							Debug.Log(message,target as UnityObject);
+						}
 					}
 					Events.stack.Remove(listener);
 				}
 			}
 			if(debugTime && (!debugDeep || count < 1)){
 				duration = Time.realtimeSinceStartup - duration;
-				string time = duration.ToString("F10").TrimRight("0",".").Trim() + " seconds.";
-				string message = "[Events] : " + Events.GetTargetName(target) + " -- " + name + " -- " + count + " events -- " + time;
-				Debug.Log(message,target as UnityObject);
+				if(duration > 0.001f || Events.debug.Has("CallTimerZero")){
+					string time = duration.ToString("F10").TrimRight("0",".").Trim() + " seconds.";
+					string message = "[Events] : " + Events.GetTargetName(target) + " -- " + name + " -- " + count + " events -- " + time;
+					Debug.Log(message,target as UnityObject);
+				}
 			}
 		}
 		public static void CallChildren(object target,string name,object[] values,bool self=false){
@@ -485,10 +495,6 @@ namespace Zios{
 				}
 			}
 		}
-		public static bool HasEvents(string name,object target=null){
-			target = Events.Verify(target);
-			return Events.cache.AddNew(target).AddNew(name).Count < 1;
-		}
 		public static List<string> GetEventNames(string type,object target=null){
 			Utility.EditorCall(()=>Events.Clean());
 			target = Events.Verify(target);
@@ -525,7 +531,7 @@ namespace Zios{
 		}
 		public static void CooldownEvent(this object current,string name,float seconds){
 			if(current.IsNull()){return;}
-			Events.Cooldown(current,name,seconds);
+			Events.Rest(current,name,seconds);
 		}
 		public static void CallEvent(this object current,string name,params object[] values){
 			if(current.IsNull()){return;}

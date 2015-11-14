@@ -48,7 +48,6 @@ namespace Zios{
 		public int editorRefreshPasses = -1;
 		public bool editorIncludeDisabled = true;
 		public bool refreshOnHierarchyChange = true;
-		public bool refreshOnAssetChange = true;
 		public bool safeMode = true;
 		private float start;
 		private float block;
@@ -113,7 +112,7 @@ namespace Zios{
 				Events.Register("On Attribute Setup");
 				Events.Register("On Attribute Ready");
 				Events.Register("On Attribute Refresh");
-				if(this.refreshOnAssetChange){Events.Add("On Asset Changed",AttributeManager.PerformRefresh);}
+				Events.Add("On Events Reset",AttributeManager.PerformRefresh);
 				if(this.refreshOnHierarchyChange){Events.Add("On Hierarchy Changed",AttributeManager.PerformRefresh);}
 			}
 		}
@@ -186,8 +185,8 @@ namespace Zios{
 				Attribute.ready = true;
 				AttributeManager.percentLoaded = 1;
 				Events.Call("On Attributes Ready");
-				//Utility.RebuildInspectors();
-				Utility.RepaintInspectors();
+				Events.Rest("On Attributes Refresh",1);
+				Utility.UpdateSelection();
 				this.stage = 0;
 				this.nextIndex = 0;
 				return;

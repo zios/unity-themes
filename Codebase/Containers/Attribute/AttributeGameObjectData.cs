@@ -12,13 +12,13 @@ namespace Zios{
 		public override GameObject Get(){
 			AttributeInfo attribute = this.attribute;
 			if(!Attribute.ready && Application.isPlaying){
-				if(Attribute.debug.Has("Issue")){Debug.LogWarning("[AttributeData] Get attempt before attribute data built : " + attribute.path,attribute.parent);}
+				if(Attribute.debug.Has("Issue")){Debug.LogWarning("[AttributeData] Get attempt before attribute data built : " + attribute.fullPath,attribute.parent);}
 				return default(GameObject);
 			}
 			else if(this.reference == null){
 				GameObject target = this.target.Get();
 				if(target.IsNull() && !Attribute.getWarning.ContainsKey(this)){
-					string source = "("+attribute.path+")";
+					string source = "("+attribute.fullPath+")";
 					string goal = (target.GetPath() + this.referencePath).Trim("/");
 					if(Attribute.debug.Has("Issue")){Debug.LogWarning("[AttributeData] Get : No reference found for " + source + " to " + goal,attribute.parent);}
 					Attribute.getWarning[this] = true;

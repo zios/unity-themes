@@ -27,6 +27,7 @@ namespace Zios{
 			this.Toggle(state);
 		}
 		public void OnDrawGizmosSelected(){
+			if(!Attribute.ready){return;}
 			Gizmos.color = this.debugColor;
 			if(!this.source.Get().IsNull()){
 				Vector3 sourcePosition = this.source.Get().transform.position;

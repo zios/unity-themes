@@ -36,6 +36,7 @@ namespace Zios{
 			this.Toggle(state);
 		}
 		public void OnDrawGizmosSelected(){
+			if(!Attribute.ready){return;}
 			Gizmos.color = this.debugColor;
 			Vector3 start = this.source;
 			Vector3 end = start + (direction * this.distance);

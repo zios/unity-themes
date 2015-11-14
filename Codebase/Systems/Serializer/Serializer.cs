@@ -24,7 +24,7 @@ namespace Zios{
 			SerializerHook.Create();
 			if(Serializer.instance){
 				Events.Add("On Enter Play",Serializer.instance.Save);
-				Events.Add("On Asset Saving",Serializer.instance.Save);
+				Events.Add("On Scene Saving",Serializer.instance.Save);
 				Events.Add("On Asset Changed",Serializer.instance.Save);
 				Events.Add("On Level Was Loaded",Serializer.instance.Setup);
 				Events.Add("On Exit Play",Serializer.instance.Load);
@@ -61,7 +61,7 @@ namespace Zios{
 		public static Serializer instance;
 		public static Serializer Get(){return Serializer.instance;}
 		public static Dictionary<Type,Dictionary<string,object>> defaults = new Dictionary<Type,Dictionary<string,object>>();
-		[EnumMask] public SerializerDebug debug;
+		[EnumMask] public SerializerDebug debug = 0;
 		private StringBuilder contents = new StringBuilder();
 		private int tabs;
 		private string path;

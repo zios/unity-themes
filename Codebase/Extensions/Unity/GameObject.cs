@@ -41,9 +41,11 @@ namespace Zios{
 			return results.ToArray();
 		}
 		public static bool HasComponent<T>(this GameObject current,bool includeInactive=false) where T : Component{
+			if(current.IsNull()){return false;}
 			return !current.GetComponent<T>(includeInactive).IsNull();
 		}
 		public static T GetComponent<T>(this GameObject current,bool includeInactive=false) where T : Component{
+			if(current.IsNull()){return null;}
 			T[] results = current.GetComponentsInChildren<T>(includeInactive);
 			foreach(T item in results){
 				if(item.transform == current.transform){
@@ -53,6 +55,7 @@ namespace Zios{
 			return null;
 		}
 		public static T[] GetComponents<T>(this GameObject current,bool includeInactive=false) where T : Component{
+			if(current.IsNull()){return null;}
 			List<T> results = new List<T>();
 			T[] search = current.GetComponentsInChildren<T>(includeInactive);
 			foreach(T item in search){
@@ -63,6 +66,7 @@ namespace Zios{
 			return results.ToArray();
 		}
 		public static T GetComponentInParent<T>(this GameObject current,bool includeInactive=false) where T : Component{
+			if(current.IsNull()){return null;}
 			T[] results = current.GetComponentsInParent<T>(includeInactive);
 			if(results.Length > 0){
 				return results[0];
@@ -77,6 +81,7 @@ namespace Zios{
 			return null;
 		}
 		public static GameObject[] GetByName(this GameObject current,string name,bool includeInactive=true){
+			if(current.IsNull()){return null;}
 			Transform[] all = current.GetComponentsInChildren<Transform>(includeInactive);
 			List<GameObject> matches = new List<GameObject>();
 			foreach(Transform transform in all){

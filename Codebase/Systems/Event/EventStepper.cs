@@ -20,7 +20,7 @@ namespace Zios{
 				canceled = Utility.DisplayCancelableProgressBar(Events.stepperTitle,Events.stepperMessage,percent);
 				this.index += 1;
 			}
-			bool loading = Application.isLoadingLevel || EventDetector.loading || this.passes.Count < 1;
+			bool loading = Application.isLoadingLevel || this.passes.Count < 1;
 			bool ended = (this.index > this.collection.Count-1) || this.index == -1;
 			if((loading || canceled || ended) && !this.complete){
 				this.index = -1;

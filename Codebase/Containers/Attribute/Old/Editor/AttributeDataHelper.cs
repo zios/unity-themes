@@ -1,9 +1,23 @@
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
+using System.Linq;
 using System.Collections.Generic;
 namespace Zios{
 	public static class AttributeDataHelper{
-		[MenuItem ("Zios/Process/Attribute/Repair Data (Fix Serialized)")]
+		[MenuItem ("Zios/Process/Attribute/Repair Data [Prefabs & Scene]")]
+		public static void Repair(){
+			AttributeDataHelper.InstancePrefabs();
+			AttributeDataHelper.FixSerialized();
+			AttributeDataHelper.CopyData();
+			AttributeDataHelper.RemoveDeprecated();
+		}
+		[MenuItem ("Zios/Process/Attribute/Repair Data [Scene]")]
+		public static void RepairScene(){
+			AttributeDataHelper.FixSerialized();
+			AttributeDataHelper.CopyData();
+			AttributeDataHelper.RemoveDeprecated();
+		}
+		[MenuItem ("Zios/Process/Attribute/Repair Data [Fix Serialized]")]
 		public static void FixSerialized(){
 			int count = 0;
 			AssetDatabase.StartAssetEditing();
@@ -13,12 +27,6 @@ namespace Zios{
 			var replacements = new Dictionary<string,string>();
 			replacements["  data"] = "  oldData";
 			replacements["location"] = "path";
-			/*replacements["1855a962feb818e46abac4ccc75de4cb"] = "018096688de2d27449147b464ae44d1d"; //AttributeBool
-			replacements["3d1c5738016cec84ab5d3eb4cd4f20e5"] = "5727155cfe6a2644aa866faeb7cc058e"; //AttributeInt
-			replacements["ac4023662a7e58348afb7331af5f19cc"] = "b7c69f88de3bba44b80668fd23771e31"; //AttributeFloat
-			replacements["fc75414e79ba22b4c9583700604e7bed"] = "f0cc9f772e182d143bad917aeb602fc3"; //AttributeString
-			replacements["388517ed2859f1d45bd05e0cb90e1097"] = "1378ccc4573dce14f869ec472ba7df55"; //AttributeGameObject
-			replacements["5bd276b9f61cc614aaa69e18d0ef39ee"] = "83639dc7708e9ad4584145044a83425d"; //AttributeVector3*/
 			foreach(var file in files){
 				var text = file.GetText();
 				var original = string.Copy(text);
@@ -32,18 +40,21 @@ namespace Zios{
 			AssetDatabase.Refresh();
 			Debug.Log("[UpdateHelper] : Fixing old serialized names. " + count + " modified.");
 		}
-		[MenuItem ("Zios/Process/Attribute/Repair Data (Build New)")]
+		[MenuItem ("Zios/Process/Attribute/Repair Data [Copy Data]")]
 		public static void CopyData(){
 			int count = 0;
 			foreach(var attribute in Attribute.all){
 				var info = attribute.info;
-				info.data = new AttributeData[0];
-				info.dataB = new AttributeData[0];
-				info.dataC = new AttributeData[0];
 				if(info.oldData.Length > 0 || info.oldDataB.Length > 0 ||info.oldDataC.Length > 0){
-					foreach(var oldData in attribute.info.oldData){info.data = info.data.Add(AttributeDataHelper.CopyData(oldData));}
-					foreach(var oldData in attribute.info.oldDataB){info.dataB = info.dataB.Add(AttributeDataHelper.CopyData(oldData));}
-					foreach(var oldData in attribute.info.oldDataC){info.dataC = info.dataC.Add(AttributeDataHelper.CopyData(oldData));}
+					info.data = new AttributeData[0];
+					info.dataB = new AttributeData[0];
+					info.dataC = new AttributeData[0];
+					foreach(var oldData in attribute.info.oldData.Where(x=>!x.IsNull())){info.data = info.data.Add(AttributeDataHelper.CopyData(oldData));}
+					foreach(var oldData in attribute.info.oldDataB.Where(x=>!x.IsNull())){info.dataB = info.dataB.Add(AttributeDataHelper.CopyData(oldData));}
+					foreach(var oldData in attribute.info.oldDataC.Where(x=>!x.IsNull())){info.dataC = info.dataC.Add(AttributeDataHelper.CopyData(oldData));}
+					info.oldData = new OldAttributeData[0];
+					info.oldDataB = new OldAttributeData[0];
+					info.oldDataC = new OldAttributeData[0];
 					Utility.SetDirty(attribute.info.parent);
 				}
 			}
@@ -67,7 +78,50 @@ namespace Zios{
 			newData.special = oldData.special;
 			return newData;
 		}
-		[MenuItem ("Zios/Process/Attribute/Repair Data (Remove Old)")]
+		[MenuItem ("Zios/Process/Attribute/Repair Data [Instance Prefabs]")]
+		public static void InstancePrefabs(){
+			var prefabs = FileManager.FindAll("*.prefab").Select(x=>x.GetAsset<GameObject>()).ToArray();
+			Events.AddStepper("On Editor Update",AttributeDataHelper.InstancePrefabsStep,prefabs,1);
+			//Events.disabled = EventDisabled.Add;
+			//Events.Pause("On Hierarchy Changed");
+		}
+		public static void InstancePrefabsStep(object collection,int index){
+			var prefabs = (GameObject[])collection;
+			var prefab = prefabs[index];
+			if(prefab.IsNull()){return;}
+			Events.stepperTitle = "Instancing " + index + " ∕ " + prefabs.Length + " Prefabs.";
+			Events.stepperMessage = "Instancing prefab : " + prefab.name;
+			if(prefab.name == "Main" || prefab.name == "@Main"){return;}
+			var instance = (GameObject)PrefabUtility.InstantiatePrefab(prefab);
+			if(!instance.HasComponent<OldAttributeData>()){
+				Utility.Destroy(instance);
+			}
+			/*bool changes = false;
+			bool last = index == prefabs.Length-1;
+			if(instance.HasComponent<OldAttributeData>()){
+				Attribute.all.Clear();
+				AttributeDataHelper.CopyData();
+				AttributeDataHelper.RemoveDeprecated();
+				changes = true;
+			}
+			if(instance.HasComponent<InputHeld>()){
+				Locate.SetDirty();
+				AttributeDataHelper.FixManualIntensity();
+				changes = true;
+			}
+			if(changes){
+				Utility.SetDirty(instance);
+				PrefabUtility.ReplacePrefab(instance,prefab);
+			}
+			Utility.Destroy(instance);
+			if(last){
+				Debug.Log("[Attribute Data Helper] : Repaired all prefabs.");
+				Events.disabled = 0;
+				Events.Resume("On Hierarchy Changed");
+				Utility.EditorDelayCall(()=>AssetDatabase.Refresh(),1);
+			}*/
+		}
+		[MenuItem ("Zios/Process/Attribute/Repair Data [Remove Old]")]
 		public static void RemoveDeprecated(){
 			int count = 0;
 			foreach(var script in Locate.GetSceneComponents<OldAttributeData>()){

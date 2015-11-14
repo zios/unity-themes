@@ -14,7 +14,7 @@ namespace Zios{
 			return (inGroup && sprite != null) || (filter != null && filter.sharedMesh.name == "plane");
 		}
 		[MenuItem ("Zios/Process/Sprites/Remove Invisible")]
-		static void RemoveInvisibleSprites(){
+		public static void RemoveInvisibleSprites(){
 			GameObject[] objects = (GameObject[])Resources.FindObjectsOfTypeAll(typeof(GameObject));
 			int removed = 0;
 			Undo.RecordObjects(objects,"Remove Invisible Sprites");
@@ -36,14 +36,14 @@ namespace Zios{
 			Debug.Log("[HelperMenu]" + removed + " null game objects removed.");
 		}
 		[MenuItem ("Zios/Process/Animation/Stepped Curves")]
-		static void SteppedCurves(){
+		public static void SteppedCurves(){
 			HelperMenu.SplitAnimations(Mathf.Infinity);
 		}
 		[MenuItem ("Zios/Process/Animation/Separate Animations")]
-		static void SeparateAnimations(){
+		public static void SeparateAnimations(){
 			HelperMenu.SplitAnimations();
 		}
-		static void SplitAnimations(float forceTangent=-1){
+		public static void SplitAnimations(float forceTangent=-1){
 			foreach(Transform selection in Selection.transforms){
 				Animation animation = (Animation)selection.GetComponent("Animation");
 				if(animation != null){
@@ -91,7 +91,7 @@ namespace Zios{
 			}
 		}
 		[MenuItem ("Zios/Process/Sprites/Snap Positions")]
-		static void SnapPositions(){
+		public static void SnapPositions(){
 			GameObject[] all = (GameObject[])GameObject.FindObjectsOfType(typeof(GameObject));
 			for(int index=0;index < all.Length;++index){
 				Transform current = all[index].transform;
@@ -100,6 +100,17 @@ namespace Zios{
 				position.y = Mathf.Round(position.y);
 				position.z = Mathf.Round(position.z);
 				current.localPosition = position;
+			}
+		}
+		[MenuItem ("Zios/Process/Action/Reset Manual Input")]
+		public static void FixManualIntensity(){
+			foreach(var script in Locate.GetSceneComponents<InputHeld>()){
+				script.manual.Set(Mathf.Infinity);
+				Utility.SetDirty(script);
+			}
+			foreach(var script in Locate.GetSceneComponents<InputPressed>()){
+				script.manual.Set(Mathf.Infinity);
+				Utility.SetDirty(script);
 			}
 		}
 	}

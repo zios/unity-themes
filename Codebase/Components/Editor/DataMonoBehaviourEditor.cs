@@ -4,9 +4,16 @@ using UnityEditor;
 namespace Zios.UI{
 	[CustomEditor(typeof(DataMonoBehaviour),true)][CanEditMultipleObjects]
 	public class DataMonoBehaviourEditor : MonoBehaviourEditor{
+		public static DataMonoBehaviour current;
+		public static void CheckDependents(){
+			if(DataMonoBehaviourEditor.current.IsNull()){return;}
+			DataMonoBehaviourEditor.current.CheckDependents();
+		}
 		public override void OnInspectorGUI(){
 			if(!Event.current.IsUseful()){return;}
-			DataMonoBehaviour target = (DataMonoBehaviour)this.target;
+			Events.Add("On Hierarchy Changed",DataMonoBehaviourEditor.CheckDependents);
+			Events.Add("On Attributes Ready",DataMonoBehaviourEditor.CheckDependents);
+			var target = DataMonoBehaviourEditor.current = (DataMonoBehaviour)this.target;
 			var dependents = target.dependents;
 			bool targetsMissing = false;
 			string message = "";

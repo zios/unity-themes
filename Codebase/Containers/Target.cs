@@ -57,7 +57,7 @@ namespace Zios{
 					this.AddSpecial("[State]",state.gameObject);
 				}
 				this.SetFallback(Target.defaultSearch);
-				if(this.mode == TargetMode.Search && this.search.IsEmpty()){
+				if(this.searchObject.IsNull()){
 					this.Search();
 				}
 			}

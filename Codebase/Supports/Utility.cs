@@ -20,6 +20,7 @@ namespace Zios{
 	public class UtilityModificationListener : AssetModificationProcessor{
 		public static string[] OnWillSaveAssets(string[] paths){
 			foreach(string path in paths){Debug.Log("Saving Changes : " + path);}
+			if(paths.Exists(x=>x.Contains(".unity"))){Events.Call("On Scene Saving");}
 			Events.Call("On Asset Saving");
 			return paths;
 		}
@@ -67,7 +68,7 @@ namespace Zios{
 			};
 			EditorApplication.hierarchyWindowChanged += ()=>{
 				Events.Call("On Hierarchy Changed");
-				Events.Cooldown("On Hierarchy Changed",1);
+				Events.Rest("On Hierarchy Changed",1);
 			};
 			Camera.onPostRender += (Camera camera)=>Events.Call("On Camera Post Render",camera);
 			Camera.onPreRender += (Camera camera)=>Events.Call("On Camera Pre Render",camera);
@@ -321,30 +322,6 @@ namespace Zios{
 			PrefabUtility.ReplacePrefab(root,PrefabUtility.GetPrefabParent(root),ReplacePrefabOptions.ConnectToPrefab);
 			#endif
 		}
-		public static bool IsBusy(){
-			#if UNITY_EDITOR
-			return EventDetector.loading || Application.isLoadingLevel || EditorApplication.isPlayingOrWillChangePlaymode;
-			#endif
-			return false;
-		}
-		public static bool IsPlaying(){
-			#if UNITY_EDITOR
-			return Application.isPlaying || Utility.IsBusy();
-			#endif
-			return Application.isPlaying;
-		}
-		//============================
-		// Proxy - EditorApplication
-		//============================
-		public static bool IsPaused(){
-			#if UNITY_EDITOR
-			return EditorApplication.isPaused;
-			#endif
-			return false;
-		}
-		//============================
-		// Proxy - PrefabUtility
-		//============================
 		public static void UpdatePrefab(UnityObject target){
 			#if UNITY_EDITOR
 			PrefabUtility.RecordPrefabInstancePropertyModifications(target);
@@ -360,6 +337,27 @@ namespace Zios{
 			#if UNITY_EDITOR
 			PrefabUtility.DisconnectPrefabInstance(target);
 			#endif
+		}
+		//============================
+		// Proxy - EditorApplication
+		//============================
+		public static bool IsPaused(){
+			#if UNITY_EDITOR
+			return EditorApplication.isPaused;
+			#endif
+			return false;
+		}
+		public static bool IsBusy(){
+			#if UNITY_EDITOR
+			return EventDetector.loading || Application.isLoadingLevel || EditorApplication.isPlayingOrWillChangePlaymode;
+			#endif
+			return false;
+		}
+		public static bool IsPlaying(){
+			#if UNITY_EDITOR
+			return Application.isPlaying || Utility.IsBusy();
+			#endif
+			return Application.isPlaying;
 		}
 		//============================
 		// Proxy - Other
