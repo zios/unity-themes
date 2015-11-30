@@ -14,6 +14,5 @@ namespace Zios{
 			else if(special == "Capitalize"){return value.Capitalize();}
 			return value;
 		}
-		public override void Serialize(){this.rawValue = this.value;}
 	}
 }

@@ -22,9 +22,6 @@ namespace Zios{
 		public AttributeData[] data = new AttributeData[0];
 		public AttributeData[] dataB = new AttributeData[0];
 		public AttributeData[] dataC = new AttributeData[0];
-		public OldAttributeData[] oldData = new OldAttributeData[0];
-		public OldAttributeData[] oldDataB = new OldAttributeData[0];
-		public OldAttributeData[] oldDataC = new OldAttributeData[0];
 		[NonSerialized] public Attribute attribute;
 		public bool Contains(AttributeData data){return this.data.Contains(data) || this.dataB.Contains(data) || this.dataC.Contains(data);}
 	}
@@ -144,7 +141,7 @@ namespace Zios{
 			this.PrepareData();
 			BaseType current = this.GetFirst().As<DataType>().value;
 			if(current.IsEmpty()){
-				this.GetFirst().As<DataType>().value = value;
+				this.GetFirst().As<DataType>().Set(value);
 			}
 		}
 		// ======================
@@ -178,7 +175,7 @@ namespace Zios{
 			if(this.info.parent != null){
 				this.Add<DataType>();
 				var newData = (DataType)this.info.data.Last();
-				newData.value = value;
+				newData.Set(value);
 			}
 		}
 		public override void Remove(AttributeData data,string set=""){
@@ -509,8 +506,7 @@ namespace Zios{
 				if(this.usage == AttributeUsage.Shaped){
 					this.usage = AttributeUsage.Direct;
 				}
-				data.value = value;
-				if(!Application.isPlaying){data.rawValue = value.ToString();}
+				data.Set(value);
 			}
 			else if(this.info.mode == AttributeMode.Linked && this.info.linkType != LinkType.Get){
 				if(!Attribute.ready && Application.isPlaying){

@@ -365,9 +365,14 @@ namespace Zios{
 		public static void UpdateSelection(){
 			#if UNITY_EDITOR
 			var targets = Selection.objects;
+			var focus = GUI.GetNameOfFocusedControl();
 			if(targets.Length > 0){
 				Selection.activeObject = null;
-				Utility.EditorDelayCall(()=>Selection.objects = targets,0.05f);
+				Utility.EditorDelayCall(()=>{
+					Selection.objects = targets;
+					EditorGUI.FocusTextInControl(focus);
+					GUI.FocusControl(focus);
+				},0.05f);
 			}
 			#endif
 		}

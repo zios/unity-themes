@@ -213,7 +213,7 @@ namespace Zios{
 		// Shortcuts - Checks
 		//=========================
 		public static bool IsEmpty(this object current){
-			return current == null || current.Equals(null) || (current is string && ((string)current).IsEmpty());
+			return current.IsNull() || (current is string && ((string)current).IsEmpty());
 		}
 		public static bool IsNull(this object current){
 			return current == null || current.Equals(null);

@@ -19,6 +19,7 @@ namespace Zios.UI{
 			string message = "";
 			foreach(var dependent in dependents){
 				if(dependent.exists){continue;}
+				if(!target.IsEnabled()){break;}
 				message = dependent.message;
 				if(dependent.target.IsNull() && dependent.dynamicTarget.Get().IsNull()){
 					targetsMissing = true;

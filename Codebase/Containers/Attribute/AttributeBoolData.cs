@@ -10,6 +10,5 @@ namespace Zios{
 			else if(special == "Flip"){return !value;}
 			return value;
 		}
-		public override void Serialize(){this.rawValue = this.value.ToString();}
 	}
 }

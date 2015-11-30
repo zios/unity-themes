@@ -74,7 +74,6 @@ namespace Zios{
 			if(Application.isPlaying || Utility.IsBusy()){return;}
 			this.CallEvent("On Destroy");
 			Events.RemoveAll(this);
-			AttributeManager.PerformRefresh();
 		}
 		public void CheckAlias(){
 			if(this.lastAlias != this.alias || this.alias.IsEmpty()){

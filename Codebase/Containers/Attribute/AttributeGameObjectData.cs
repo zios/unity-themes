@@ -15,7 +15,7 @@ namespace Zios{
 				if(Attribute.debug.Has("Issue")){Debug.LogWarning("[AttributeData] Get attempt before attribute data built : " + attribute.fullPath,attribute.parent);}
 				return default(GameObject);
 			}
-			else if(this.reference == null){
+			else if(this.reference.IsNull()){
 				GameObject target = this.target.Get();
 				if(target.IsNull() && !Attribute.getWarning.ContainsKey(this)){
 					string source = "("+attribute.fullPath+")";
@@ -29,6 +29,5 @@ namespace Zios{
 			if(attribute.mode == AttributeMode.Linked){return this.value;}
 			return this.HandleSpecial();
 		}
-		public override void Serialize(){this.rawValue = this.value.GetPath();}
 	}
 }

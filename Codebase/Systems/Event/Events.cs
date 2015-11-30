@@ -338,6 +338,17 @@ namespace Zios{
 				item.Value.Rest(seconds);
 			}
 		}
+		public static void DelayCall(string name,float delay=0.5f,params object[] values){
+			Events.DelayCall(Events.global,"Global",name,delay,values);
+		}
+		public static void DelayCall(string key,string name,float delay=0.5f,params object[] values){
+			Events.DelayCall(Events.global,key,name,delay,values);
+		}
+		public static void DelayCall(object target,string key,string name,float delay=0.5f,params object[] values){
+			if(target.IsNull()){return;}
+			key += "/" + name;
+			Utility.EditorDelayCall(key,()=>Events.Call(target,name,values),delay);
+		}
 		public static void Call(string name,params object[] values){
 			if(Events.disabled.Has("Call")){return;}
 			Events.Call(Events.Verify(),name,values);
@@ -525,9 +536,7 @@ namespace Zios{
 			Events.RemoveAll(current);
 		}
 		public static void DelayEvent(this object current,string key,string name,float delay=0.5f,params object[] values){
-			if(current.IsNull()){return;}
-			key += "/" + name;
-			Utility.EditorDelayCall(key,()=>Events.Call(current,name,values),delay);
+			Events.DelayCall(current,key,name,delay,values);
 		}
 		public static void CooldownEvent(this object current,string name,float seconds){
 			if(current.IsNull()){return;}

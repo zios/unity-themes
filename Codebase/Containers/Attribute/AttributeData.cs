@@ -32,6 +32,10 @@ namespace Zios{
 			}
 			return false;
 		}
+		public virtual void Set(BaseType value){
+			this.value = value;
+			if(!Application.isPlaying){this.Serialize();}
+		}
 		public virtual BaseType Get(){
 			AttributeInfo attribute = this.attribute;
 			if(this.usage == AttributeUsage.Direct){
@@ -45,7 +49,7 @@ namespace Zios{
 					if(Attribute.debug.Has("Issue")){Debug.LogWarning("[AttributeData] Get attempt before attribute data built : " + attribute.fullPath,attribute.parent);}
 					return default(BaseType);
 				}
-				else if(this.reference == null){
+				else if(this.reference.IsNull()){
 					if(Application.isPlaying && !this.target.Get().IsNull() && !Attribute.getWarning.ContainsKey(this)){
 						string source = "("+attribute.fullPath+")";
 						string goal = (this.target.Get().GetPath() + this.referencePath).Trim("/");
@@ -70,6 +74,11 @@ namespace Zios{
 				Attribute.getWarning[this] = true;
 			}
 			return default(BaseType);
+		}
+		public override void Serialize(){
+			if(!this.value.IsEmpty()){
+				this.rawValue = this.value.ToString();
+			}
 		}
 	}
 }

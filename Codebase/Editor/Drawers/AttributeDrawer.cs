@@ -156,23 +156,23 @@ namespace Zios.UI{
 			}
 			if(data is AttributeFloatData){
 				AttributeFloatData floatData = (AttributeFloatData)data;
-				floatData.value = floatData.value.Draw(area,label);
+				floatData.Set(floatData.value.Draw(area,label));
 			}
 			if(data is AttributeIntData){
 				AttributeIntData intData = (AttributeIntData)data;
-				intData.value = intData.value.DrawInt(area,label);
+				intData.Set(intData.value.DrawInt(area,label));
 			}
 			if(data is AttributeStringData){
 				AttributeStringData stringData = (AttributeStringData)data;
-				stringData.value = stringData.value.Draw(area,label);
+				stringData.Set(stringData.value.Draw(area,label));
 			}
 			if(data is AttributeBoolData){
 				AttributeBoolData boolData = (AttributeBoolData)data;
-				boolData.value = boolData.value.Draw(area,label);
+				boolData.Set(boolData.value.Draw(area,label));
 			}
 			if(data is AttributeVector3Data){
 				AttributeVector3Data vector3Data = (AttributeVector3Data)data;
-				vector3Data.value = vector3Data.value.DrawVector3(area,label);
+				vector3Data.Set(vector3Data.value.DrawVector3(area,label));
 			}
 			EditorGUIUtility.labelWidth = labelSize;
 		}

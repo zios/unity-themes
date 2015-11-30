@@ -73,6 +73,7 @@ namespace Zios{
 		//==============================
 		// Unity
 		//==============================
+		public void OnValidate(){this.SetupEvents();}
 		public void Awake(){this.EditorUpdate();}
 		public void EditorUpdate(){
 			if(AttributeManager.disabled){return;}
@@ -108,10 +109,14 @@ namespace Zios{
 			AttributeManager.instance = this;
 			AttributeManager.safe = this.safeMode;
 			AttributeManager.nextRefresh = 0;
+			this.SetupEvents();
+		}
+		public void SetupEvents(){
 			if(!Application.isPlaying){
 				Events.Register("On Attribute Setup");
 				Events.Register("On Attribute Ready");
 				Events.Register("On Attribute Refresh");
+				Events.Remove("On Hierarchy Changed",AttributeManager.PerformRefresh);
 				Events.Add("On Events Reset",AttributeManager.PerformRefresh);
 				if(this.refreshOnHierarchyChange){Events.Add("On Hierarchy Changed",AttributeManager.PerformRefresh);}
 			}
@@ -186,7 +191,7 @@ namespace Zios{
 				AttributeManager.percentLoaded = 1;
 				Events.Call("On Attributes Ready");
 				Events.Rest("On Attributes Refresh",1);
-				Utility.UpdateSelection();
+				//Utility.UpdateSelection();
 				this.stage = 0;
 				this.nextIndex = 0;
 				return;
