@@ -3,9 +3,12 @@ using UnityEditor;
 namespace Zios.UI{
 	[CustomEditor(typeof(AnimationSettings))]
 	public class AnimationSettingsEditor : Editor{
+		public static AnimationSettingsEditor instance;
 		public AnimationConfiguration active;
 		public float time = 0;
 		public override void OnInspectorGUI(){
+			AnimationSettingsEditor.instance = this;
+			Events.Add("On Editor Update",this.EditorUpdate);
 			var labelStyle = EditorStyles.label.FixedWidth(120);
 			var fpsStyle = EditorStyles.numberField.FixedWidth(50);
 			var blendStyle = EditorStyles.popup.FixedWidth(70);
@@ -20,13 +23,10 @@ namespace Zios.UI{
 				EditorGUILayout.BeginHorizontal();
 				bool isPlaying = config == active;
 				config.name.DrawLabel(labelStyle);
-				config.fps.Draw(null,fpsStyle);
+				config.fps = config.fps.Draw(null,fpsStyle);
 				config.blendMode = (AnimationBlendMode)config.blendMode.Draw("",blendStyle);
 				config.wrapMode = (WrapMode)config.wrapMode.Draw("",wrapStyle);
-				if(isPlaying && "Stop".DrawButton()){
-					this.active = null;
-					Events.Resume("On Hierarchy Changed");
-				}
+				if(isPlaying && "Stop".DrawButton()){this.Stop();}
 				if(!isPlaying && "Play".DrawButton()){
 					this.time = 0;
 					this.active = config;
@@ -35,23 +35,27 @@ namespace Zios.UI{
 				if(GUI.changed){
 					config.Apply();
 					Utility.SetDirty(this.target);
+					
 				}
 				EditorGUILayout.EndHorizontal();
 			}
 		}
-		public void EditorUpdate(){
-			if(this.active != null){
-				var state = this.active.parent[this.active.name];
-				var clip = state.clip;
-				bool loop = clip.wrapMode == WrapMode.Loop;
-				float animationTime = clip.length * (clip.frameRate);
-				float framerate = 10000.0f / (clip.frameRate * state.speed);
-				this.time += (animationTime / framerate);
-				if(this.time >= animationTime){
-					this.time = loop ? 0 : animationTime;
+		public void Stop(){
+			this.active = null;
+			Events.Resume("On Hierarchy Changed");
+		}
+		public static void EditorUpdate(){
+			var instance = AnimationSettingsEditor.instance;
+			if(!instance.IsNull() && !instance.active.IsNull() && !instance.active.name.IsEmpty()){
+				Events.Pause("On Hierarchy Changed");
+				var state = instance.active.parent[instance.active.name];
+				instance.time += (state.clip.frameRate * state.speed) / (10000*0.4f);
+				var settings = instance.target.As<AnimationSettings>();
+				if(state.wrapMode != WrapMode.Loop && instance.time >= state.clip.length){
+					instance.Stop();
+					Utility.RepaintInspectors();
 				}
-				var settings = this.target.As<AnimationSettings>();
-				clip.SampleAnimation(settings.gameObject,Time.realtimeSinceStartup);
+				state.clip.SampleAnimation(settings.gameObject,instance.time%state.clip.length);
 			}
 		}
 	}
