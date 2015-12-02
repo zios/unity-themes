@@ -22,6 +22,7 @@ Shader "Zios/SuperCity/Sprite + Embedded"{
 			fixed4 normalMap_ST;
 			fixed normalMapSpread;
 			fixed normalMapContrast;
+			float shadingSteps;
 			struct vertexInput{
 				float4 vertex        : POSITION;
 				float4 texcoord      : TEXCOORD0;

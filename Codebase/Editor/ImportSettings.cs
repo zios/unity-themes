@@ -14,7 +14,7 @@ namespace Zios{
 				importer.meshCompression = ModelImporterMeshCompression.Off;
 				importer.optimizeMesh = true;
 				importer.importMaterials = false;
-				importer.tangentImportMode = ModelImporterTangentSpaceMode.None;
+				importer.importTangents = ModelImporterTangents.None;
 				importer.animationCompression = ModelImporterAnimationCompression.Off;
 				importer.animationType = ModelImporterAnimationType.None;
 				importer.generateAnimations = ModelImporterGenerateAnimations.None;

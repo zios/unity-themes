@@ -1,7 +1,4 @@
-﻿// Upgrade NOTE: commented out 'sampler2D unity_Lightmap', a built-in variable
-// Upgrade NOTE: replaced tex2D unity_Lightmap with UNITY_SAMPLE_TEX2D
-
-Shader "Zios/(Components)/Mappings/Shadow Lightmap"{
+﻿Shader "Zios/(Components)/Mappings/Shadow Lightmap"{
 	Properties{
 	}
 	SubShader{
@@ -12,8 +9,6 @@ Shader "Zios/(Components)/Mappings/Shadow Lightmap"{
 			#pragma fragment pixelPass
 			#pragma fragmentoption ARB_precision_hint_fastest
 			fixed4 shadowColor;
-			fixed4 unity_LightmapST;
-			// sampler2D unity_Lightmap;
 			struct vertexInput{
 				float4 vertex        : POSITION;
 				float4 texcoord      : TEXCOORD0;

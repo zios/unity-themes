@@ -1,7 +1,4 @@
-﻿// Upgrade NOTE: commented out 'sampler2D unity_Lightmap', a built-in variable
-// Upgrade NOTE: replaced tex2D unity_Lightmap with UNITY_SAMPLE_TEX2D
-
-Shader "Zios/ZEQ2/Terrain"{
+﻿Shader "Zios/ZEQ2/Terrain"{
 	Properties{
 		shadowColor("Shadow Color", Color) = (0.0,0.0,0.0,1.0)
 		diffuseColor("Diffuse Color", Color) = (0.5,0.5,0.5,1.0)
@@ -20,12 +17,10 @@ Shader "Zios/ZEQ2/Terrain"{
 			#pragma fragment pixelPass
 			#pragma multi_compile_fwdbase
 			#pragma fragmentoption ARB_precision_hint_fastest
-			// sampler2D unity_Lightmap;
 			sampler2D diffuseMap;
 			fixed diffuseCutoff;
 			fixed4 diffuseColor;
 			fixed4 diffuseMap_ST;
-			fixed4 unity_LightmapST;
 			fixed4 shadowColor;
 			struct vertexInput{
 				float4 vertex        : POSITION;

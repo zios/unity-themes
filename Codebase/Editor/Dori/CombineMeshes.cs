@@ -5,6 +5,7 @@ using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using combine = Zios.CombineMeshes;
 namespace Zios{
 	public static class CombineMeshes{
@@ -111,8 +112,8 @@ namespace Zios{
 						}
 						MeshRenderer containerRenderer = container.AddComponent<MeshRenderer>();
 						MeshFilter containerFilter = container.AddComponent<MeshFilter>();
-						string path = Path.GetDirectoryName(EditorApplication.currentScene);
-						string folder = "@" + Path.GetFileName(EditorApplication.currentScene).Replace(".unity","");
+						string path = Path.GetDirectoryName(EditorSceneManager.GetActiveScene().name);
+						string folder = "@" + Path.GetFileName(EditorSceneManager.GetActiveScene().name).Replace(".unity","");
 						Directory.CreateDirectory(path+"/"+folder+"/");
 						AssetDatabase.CreateAsset(mesh,path+"/"+folder+"/Combined"+meshNumber+".asset");
 						containerFilter.mesh = mesh;

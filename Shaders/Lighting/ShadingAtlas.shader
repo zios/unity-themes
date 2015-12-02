@@ -16,6 +16,8 @@
 			sampler2D shadingAtlas;
 			fixed4 shadingAtlas_ST;
 			fixed shadingIndex;
+			fixed indexMap;
+			fixed4 indexMap_ST;
 			struct vertexInput{
 				float4 vertex        : POSITION;
 				float3 normal        : NORMAL;

@@ -30,6 +30,7 @@ Shader "Zios/SuperCity/Sprite + Particle (Additive)"{
 			fixed4 atlasUV;
 			fixed4 atlasUVScale;
 			fixed4 paddingUV;
+			float intensity;
 			float2 clampRange(float2 min,float2 max,float2 value){return saturate((value-min)/(max-min));}
 			struct vertexInput{
 				float4 vertex        : POSITION;
