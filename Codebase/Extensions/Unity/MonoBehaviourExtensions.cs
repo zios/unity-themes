@@ -1,7 +1,5 @@
 #pragma warning disable 0618
 using UnityEngine;
-using System;
-using System.Collections.Generic;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif

@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 namespace Zios{
 	[AddComponentMenu("Zios/Component/General/Persistent")]
 	public class Persistent : MonoBehaviour{

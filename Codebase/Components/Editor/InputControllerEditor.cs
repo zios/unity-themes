@@ -1,6 +1,4 @@
-using UnityEngine;
 using UnityEditor;
-using System.Collections;
 using Zios.Inputer;
 namespace Zios.UI{
 	[CustomEditor(typeof(InputController))]

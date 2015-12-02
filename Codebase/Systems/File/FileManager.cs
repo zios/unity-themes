@@ -1,11 +1,10 @@
-using UnityEngine;
 using System;
-using System.IO;
-using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using UnityEngine;
 using UnityObject = UnityEngine.Object;
 namespace Zios{
-	#if UNITY_EDITOR
+#if UNITY_EDITOR
 	using UnityEditor;
 	public class FileManagerWatcher : AssetPostprocessor{
 		public static void OnPostprocessAllAssets(string[] imported,string[] deleted,string[] moved, string[] path){

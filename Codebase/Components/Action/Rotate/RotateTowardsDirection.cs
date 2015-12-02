@@ -1,6 +1,5 @@
-using Zios;
 using UnityEngine;
-	namespace Zios{
+namespace Zios{
 	[AddComponentMenu("Zios/Component/Action/Rotate/Towards/Rotate Towards Direction")]
 	public class RotateTowardsDirection : StateMonoBehaviour{
 		public AttributeGameObject source = new AttributeGameObject();

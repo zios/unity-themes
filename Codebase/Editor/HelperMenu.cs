@@ -1,12 +1,10 @@
+using System.Collections.Generic;
+using System.IO;
 using UnityEditor;
 using UnityEngine;
-using System;
-using System.IO;
-using System.Collections;
-using System.Collections.Generic;
 #pragma warning disable 618
 namespace Zios{
-	public static class HelperMenu {
+	public static class HelperMenu{
 		public static bool IsSprite(GameObject instance){
 			MeshFilter filter = instance.GetComponent<MeshFilter>();
 			Sprite sprite = SpriteManager.GetSprite(instance.name);

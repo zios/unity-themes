@@ -1,12 +1,12 @@
-using UnityEngine;
-using UnityEditor;
 using System;
-using System.Linq;
-using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
-using UnityObject = UnityEngine.Object;
+using System.Linq;
+using System.Reflection;
+using UnityEditor;
+using UnityEngine;
 using MenuFunction = UnityEditor.GenericMenu.MenuFunction;
+using UnityObject = UnityEngine.Object;
 namespace Zios.UI{
 	public class StaticInspector : EditorWindow{
 		public static string currentAssembly;
@@ -28,8 +28,8 @@ namespace Zios.UI{
 		private Dictionary<string,Accessor> variables = new Dictionary<string,Accessor>();
 		private SortedDictionary<string,SortedDictionary<string,List<string>>> classNames = new SortedDictionary<string,SortedDictionary<string,List<string>>>();
 		private SortedDictionary<string,SortedDictionary<string,List<Type>>> classes = new SortedDictionary<string,SortedDictionary<string,List<Type>>>();
-		[MenuItem ("Zios/Window/Static Inspector")]
-		static void Init(){
+		[MenuItem("Zios/Window/Static Inspector")]
+		private static void Init(){
 			StaticInspector window = (StaticInspector)EditorWindow.GetWindow(typeof(StaticInspector));
 			window.position = new Rect(100,150,200,200);
 			window.Start();

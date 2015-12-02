@@ -1,6 +1,5 @@
-using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 namespace Zios{
 	[AddComponentMenu("Zios/Component/Rendering/Sprite Controller")]
 	public class SpriteController : MonoBehaviour{

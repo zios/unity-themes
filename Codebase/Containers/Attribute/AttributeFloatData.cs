@@ -1,5 +1,4 @@
 using UnityEngine;
-using Zios;
 namespace Zios{
 	[AddComponentMenu("")]
 	public class AttributeFloatData : AttributeData<float,AttributeFloat,AttributeFloatData>{

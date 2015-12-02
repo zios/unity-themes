@@ -1,9 +1,6 @@
-using UnityEngine;
-using UnityEditor;
-using System;
-using System.Linq;
-using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
+using UnityEngine;
 namespace Zios.UI{
 	public class Table{
 		public string skinDark = "Table-Dark";

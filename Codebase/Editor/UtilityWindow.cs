@@ -1,7 +1,7 @@
-using UnityEngine;
-using UnityEditor;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEditor;
+using UnityEngine;
 #pragma warning disable 618
 namespace Zios{
 	public enum ReplaceOption{Prefab=0,GameObject=1};
@@ -13,7 +13,7 @@ namespace Zios{
 		public string targetPath = "";
 		public bool manual = false;
 	}
-	public class UtilityWindow : EditorWindow {
+	public class UtilityWindow : EditorWindow{
 		public bool preserveScale = true;
 		public ReplaceSelector optionA = new ReplaceSelector();
 		public ReplaceSelector optionB = new ReplaceSelector();
@@ -25,8 +25,8 @@ namespace Zios{
 		public string selectName;
 		public string selectComponent;
 		public string shaderName;
-		[MenuItem ("Zios/Window/Utilities")]
-		static void Init(){
+		[MenuItem("Zios/Window/Utilities")]
+		private static void Init(){
 			UtilityWindow window = (UtilityWindow)EditorWindow.GetWindow(typeof(UtilityWindow));
 			window.position = new Rect(100,150,200,200);
 			window.Start();

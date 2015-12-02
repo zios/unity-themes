@@ -1,10 +1,10 @@
-using Zios;
-using UnityEngine;
-using UnityEditor;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Collections.Generic;
+using UnityEditor;
+using UnityEngine;
+using Zios;
 using MenuFunction = UnityEditor.GenericMenu.MenuFunction;
 namespace Zios.UI{
 	[CustomPropertyDrawer(typeof(Attribute),true)]

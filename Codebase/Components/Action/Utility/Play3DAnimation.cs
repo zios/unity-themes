@@ -1,6 +1,4 @@
 using UnityEngine;
-using System;
-using Zios;
 namespace Zios{
 	[AddComponentMenu("Zios/Component/Action/Play Animation (3D)")]
 	public class Play3DAnimation : StateMonoBehaviour{

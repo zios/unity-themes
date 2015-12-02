@@ -1,6 +1,4 @@
-using Zios;
 using System;
-using UnityEngine;
 namespace Zios{
 	[Serializable]
 	public class LerpInt : LerpTransition{

@@ -1,5 +1,3 @@
-using Zios;
-using System;
 using UnityEngine;
 namespace Zios{
 	[AddComponentMenu("Zios/Component/Action/Attribute/Modify/Modify Float")]

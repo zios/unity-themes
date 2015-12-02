@@ -1,7 +1,6 @@
 #pragma warning disable 0618
-using UnityEngine;
 using System;
-using System.Collections.Generic;
+using UnityEngine;
 namespace Zios{
 	[AddComponentMenu("")][ExecuteInEditMode]
 	public class EventDetector : MonoBehaviour{

@@ -1,13 +1,11 @@
-using UnityEngine;
-using UnityEditor;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using Zios;
 using MaterialExtended;
-using FogMode = MaterialExtended.FogMode;
+using UnityEditor;
+using UnityEngine;
 using Buffer = MaterialExtended.Buffer;
+using FogMode = MaterialExtended.FogMode;
 #pragma warning disable 618
 namespace Zios.UI{
 	public class ExtendedMaterialEditor : MaterialEditor{

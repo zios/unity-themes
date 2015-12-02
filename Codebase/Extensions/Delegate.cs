@@ -1,6 +1,4 @@
-using UnityEngine;
 using System;
-using System.Collections.Generic;
 namespace Zios{
 	public static class DelegateExtension{
 		public static bool ContainsMethod(this Delegate current,Delegate value){

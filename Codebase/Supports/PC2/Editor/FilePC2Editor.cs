@@ -1,4 +1,3 @@
-using UnityEngine;
 using UnityEditor;
 namespace Zios.UI{
 	public class FilePC2Editor : Editor{

@@ -3,7 +3,7 @@ using UnityEngine;
 public class FPSConsole : MonoBehaviour{
 	public int frames;
 	public float nextCheck;
-	public void Start() {this.nextCheck = Time.time + 1;}
+	public void Start(){this.nextCheck = Time.time + 1;}
 	public void Update(){
 		this.frames += 1;
 		if(Time.time >= this.nextCheck){

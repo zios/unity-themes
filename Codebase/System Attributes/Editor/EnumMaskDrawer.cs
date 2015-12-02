@@ -1,6 +1,6 @@
 using System;
-using UnityEngine;
 using UnityEditor;
+using UnityEngine;
 namespace Zios.UI{
 	[CustomPropertyDrawer(typeof(EnumMaskAttribute))]
 	public class EnumMaskDrawer : PropertyDrawer{

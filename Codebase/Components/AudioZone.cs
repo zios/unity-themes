@@ -1,6 +1,4 @@
 using UnityEngine;
-using System.Collections.Generic;
-using System.Collections;
 namespace Zios{
 	[AddComponentMenu("Zios/Component/General/Audio Zone")]
 	public class AudioZone : MonoBehaviour{

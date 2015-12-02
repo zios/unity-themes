@@ -1,5 +1,4 @@
 using System;
-using UnityEngine;
 using UnityObject = UnityEngine.Object;
 namespace Zios{
 	public static class UnityObjectExtension{

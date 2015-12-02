@@ -1,6 +1,5 @@
-using Zios;
-using UnityEngine;
 using System;
+using UnityEngine;
 namespace Zios{
 	[Serializable]
 	public class Transition{

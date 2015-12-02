@@ -1,5 +1,3 @@
-using Zios;
-using System;
 using UnityEngine;
 namespace Zios{
 	public enum TransitionState{Idle,Acceleration,Travel,Deceleration};

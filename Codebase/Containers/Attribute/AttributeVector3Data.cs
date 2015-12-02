@@ -1,5 +1,4 @@
 using UnityEngine;
-using Zios;
 namespace Zios{
 	[AddComponentMenu("")]
 	public class AttributeVector3Data : AttributeData<Vector3,AttributeVector3,AttributeVector3Data>{

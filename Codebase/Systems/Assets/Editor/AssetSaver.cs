@@ -1,13 +1,11 @@
-using UnityEngine;
-using UnityEditor;
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
-using System.Xml;
 using System.Reflection;
-using System.ComponentModel;
-using System;
+using System.Xml;
 using MaterialExtended;
+using UnityEditor;
+using UnityEngine;
 namespace Zios{
 	public class AssetExport : MonoBehaviour{
 		private static string foldersPath;
@@ -32,19 +30,19 @@ namespace Zios{
 			typeof(double),
 			typeof(float)
 		};
-		[MenuItem ("Zios/Process/Export Asset/Scene")]
-		static void SaveScene(){
+		[MenuItem("Zios/Process/Export Asset/Scene")]
+		private static void SaveScene(){
 			SaveObjects((GameObject[])FindObjectsOfType(typeof(GameObject)));
 		}
-		[MenuItem ("Zios/Process/Export Asset/Selection")]
-		static void SaveSelectedObjects(){
+		[MenuItem("Zios/Process/Export Asset/Selection")]
+		private static void SaveSelectedObjects(){
 			SaveObjects(Selection.gameObjects);
 		}
-		static void SaveObjects(GameObject[] gameObjects){
+		private static void SaveObjects(GameObject[] gameObjects){
 			foldersPath = EditorUtility.SaveFolderPanel("Save objects to directory","","");
 			System.Diagnostics.Stopwatch stopWatch = new System.Diagnostics.Stopwatch();
 			stopWatch.Start();
-			mappedObjects = new Dictionary<string, NeutralEntity>();
+			mappedObjects = new Dictionary<string,NeutralEntity>();
 			exportObjects = new List<NeutralEntity>();
 			skipProperties = new Dictionary<Type,List<string>>();
 			List<string> skipInTransform = new List<string>();

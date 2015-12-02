@@ -1,6 +1,5 @@
-using Zios;
-using UnityEngine;
 using System;
+using UnityEngine;
 namespace Zios{
 	public enum UpdateRate{Default,FixedUpdate,Update,LateUpdate,None};
 	[Serializable][AddComponentMenu("")]

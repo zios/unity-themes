@@ -1,6 +1,5 @@
-using Zios;
 using UnityEngine;
-	namespace Zios{
+namespace Zios{
 	[AddComponentMenu("Zios/Component/Action/Rotate/Towards/Rotate Towards Target")]
 	public class RotateTowardsTarget : RotateTowardsPoint{
 		public AttributeGameObject target = new AttributeGameObject();

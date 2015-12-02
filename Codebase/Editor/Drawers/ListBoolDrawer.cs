@@ -1,7 +1,6 @@
-using UnityEngine;
-using UnityEditor;
-using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
+using UnityEngine;
 namespace Zios.UI{
 	[CustomPropertyDrawer(typeof(ListBool))]
 	public class ListBoolDrawer : PropertyDrawer{

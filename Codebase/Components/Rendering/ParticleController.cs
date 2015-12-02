@@ -1,6 +1,4 @@
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 namespace Zios{
 	[AddComponentMenu("Zios/Component/Rendering/Particle Controller")]
 	public class ParticleController : MonoBehaviour{

@@ -1,8 +1,5 @@
-using UnityEngine;
-using UnityEditor;
 using System;
-using System.Linq;
-using System.Reflection;
+using UnityEditor;
 namespace Zios{
 	public static class SerializedPropertyExtension{
 		public static object GetObject(this SerializedProperty current){

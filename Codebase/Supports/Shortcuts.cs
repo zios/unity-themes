@@ -1,8 +1,8 @@
-using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-namespace Zios {
+using UnityEngine;
+namespace Zios{
 	//=======================
 	// Delegates
 	//=======================

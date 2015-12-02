@@ -10,9 +10,7 @@ using System.IO;
 using System.Text;
 using System.Linq;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using Zios;
-using Buffer = MaterialExtended.Buffer;
 namespace MaterialExtended{
 	public static class Buffer{
 		public static Material material;

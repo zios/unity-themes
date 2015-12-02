@@ -1,11 +1,8 @@
-using UnityEngine;
-using UnityEditor;
-using Zios;
 using System;
-using System.Linq;
-using System.Collections;
 using System.Collections.Generic;
-using UnityObject = UnityEngine.Object;
+using System.Linq;
+using UnityEditor;
+using UnityEngine;
 using MenuFunction = UnityEditor.GenericMenu.MenuFunction;
 namespace Zios.UI{
 	[Serializable]
@@ -23,8 +20,8 @@ namespace Zios.UI{
 		public List<ShaderInfo> keywordMap = new List<ShaderInfo>();
 		public Dictionary<string,List<string>> goalProperties = new Dictionary<string,List<string>>();
 		private Vector2 scrollPosition;
-		[MenuItem ("Zios/Window/Material Mapper")]
-		static void Init(){
+		[MenuItem("Zios/Window/Material Mapper")]
+		private static void Init(){
 			MaterialMapper window = (MaterialMapper)EditorWindow.GetWindow(typeof(MaterialMapper));
 			window.position = new Rect(100,150,200,200);
 			window.Start();

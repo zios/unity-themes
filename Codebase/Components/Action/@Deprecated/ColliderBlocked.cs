@@ -1,6 +1,5 @@
-using Zios;
-using System;
 using UnityEngine;
+using Zios;
 public enum BlockType{Blocked,Unblocked}
 public enum Direction{Up,Down,Left,Right,Forward,Back}
 [AddComponentMenu("Zios/Component/Action/Blocked State")]

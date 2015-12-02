@@ -1,8 +1,5 @@
-using System;
-using System.Linq;
-using System.Reflection;
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 namespace Zios{
 	public static class IEnumerableExtension{
 		//=======================

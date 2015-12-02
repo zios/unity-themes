@@ -1,7 +1,6 @@
-using UnityEngine;
 using System;
 using System.Linq;
-using System.Collections;
+using UnityEngine;
 using Zios;
 namespace Zios{
 	[AddComponentMenu("Zios/Component/Rendering/Sprite After Image")]

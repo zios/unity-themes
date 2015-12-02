@@ -1,6 +1,5 @@
-using System;
-using UnityEngine;
 using UnityEditor;
+using UnityEngine;
 namespace Zios{
 	public static class GenericMenuExtension{
 		public static void AddItem(this GenericMenu current,string label,bool state,GenericMenu.MenuFunction method){

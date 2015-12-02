@@ -1,6 +1,4 @@
 #pragma warning disable 0169
-using Zios;
-using System;
 using UnityEngine;
 namespace Zios{
 	public class LerpTransition{

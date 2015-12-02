@@ -1,6 +1,5 @@
 #pragma warning disable 0649
 #pragma warning disable 0414
-using Zios;
 using UnityEngine;
 namespace Zios{
 	[AddComponentMenu("Zios/Component/Action/Attribute/Expose/Expose Transform (Scale)")]

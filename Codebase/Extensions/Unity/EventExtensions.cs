@@ -1,5 +1,4 @@
 using UnityEngine;
-using System;
 namespace Zios{
 	public static class EventExtension{
 		public static bool IsUseful(this Event current){

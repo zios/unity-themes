@@ -1,9 +1,7 @@
 using System;
-using System.Linq;
 using UnityEngine;
-using UnityObject = UnityEngine.Object;
 namespace Zios{
-	#if UNITY_EDITOR
+#if UNITY_EDITOR
 	using UnityEditor;
 	[InitializeOnLoad]
 	public static class AttributeManagerHook{

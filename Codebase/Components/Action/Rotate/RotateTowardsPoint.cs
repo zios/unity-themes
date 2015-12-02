@@ -1,7 +1,5 @@
-using Zios;
-using System.Collections.Generic;
 using UnityEngine;
-	namespace Zios{
+namespace Zios{
 	[AddComponentMenu("Zios/Component/Action/Rotate/Towards/Rotate Towards Point")]
 	public class RotateTowardsPoint : StateMonoBehaviour{
 		public AttributeGameObject source = new AttributeGameObject();

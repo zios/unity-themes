@@ -1,8 +1,6 @@
-using UnityEngine;
-using UnityEditor;
-using System;
 using System.Linq;
-using System.Collections;
+using UnityEditor;
+using UnityEngine;
 namespace Zios{
 	public class ImportSettings : AssetPostprocessor{
 		public void OnPreprocessModel(){

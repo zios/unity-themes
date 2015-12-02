@@ -1,6 +1,5 @@
-using Zios;
-using UnityEngine;
 using System;
+using UnityEngine;
 namespace Zios{
 	[RequireComponent(typeof(Camera))]
 	[AddComponentMenu("Zios/Component/General/Camera Advanced")]

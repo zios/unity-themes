@@ -1,9 +1,9 @@
-using UnityEngine;
 using System;
-using System.Text;
 using System.Globalization;
 using System.Security.Cryptography;
+using System.Text;
 using System.Text.RegularExpressions;
+using UnityEngine;
 namespace Zios{
 	public static class StringExtension{
 		//============================

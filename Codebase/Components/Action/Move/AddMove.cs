@@ -1,4 +1,3 @@
-using Zios;
 using UnityEngine;
 namespace Zios{
 	public enum MoveType{Absolute,Relative}

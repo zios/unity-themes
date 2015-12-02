@@ -1,8 +1,7 @@
 #pragma warning disable 0618
-using UnityEngine;
 using System;
-using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 namespace Zios.Snapshot{
 	public delegate void OnEvent(int intValue,float floatValue,string stringValue,Vector3 vectorValue,Quaternion quaternionValue,NetworkViewID networkViewId,NetworkPlayer networkPlayer);
 	[ExecuteInEditMode]

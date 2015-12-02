@@ -1,6 +1,5 @@
-using System;
-using UnityEngine;
 using UnityEditor;
+using UnityEngine;
 namespace Zios.UI{
 	public class IntDrawer : MaterialPropertyDrawer{
 		public override void OnGUI(Rect position,MaterialProperty property,string label,MaterialEditor editor){

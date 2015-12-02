@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using UnityEngine;
 namespace Zios{
 	public static class BitStreamExtension{

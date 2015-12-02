@@ -1,6 +1,4 @@
-using Zios;
 using System;
-using UnityEngine;
 using System.Collections.Generic;
 namespace Zios{
 	[Serializable]

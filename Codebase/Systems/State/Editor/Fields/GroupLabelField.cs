@@ -1,6 +1,6 @@
-using UnityEngine;
-using UnityEditor;
 using System.Linq;
+using UnityEditor;
+using UnityEngine;
 namespace Zios.UI{
 	public class GroupLabelField : LabelField{
 		public TableRow[] groupRows = new TableRow[0];

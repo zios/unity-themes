@@ -1,6 +1,4 @@
 using UnityEngine;
-using System;
-using Zios;
 namespace Zios{
 	public enum TimerType{After,During}
 	[AddComponentMenu("Zios/Component/Action/Timer State")]

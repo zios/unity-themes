@@ -1,6 +1,5 @@
-using UnityEngine;
 using UnityEditor;
-using System.Linq;
+using UnityEngine;
 using MenuFunction = UnityEditor.GenericMenu.MenuFunction;
 namespace Zios.UI{
 	public class TitleField : TableField{

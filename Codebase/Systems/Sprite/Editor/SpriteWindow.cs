@@ -1,12 +1,10 @@
-using UnityEngine;
-using UnityEditor;
-using System.Reflection;
-using System.IO;
-using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using UnityEditor;
+using UnityEngine;
 namespace Zios{
-	#pragma warning disable 618
+#pragma warning disable 618
 	public class SpriteAssets{
 		public GUISkin UI;
 		public Mesh spriteMesh;
@@ -177,8 +175,8 @@ namespace Zios{
 		//===========================
 		// Unity Specific
 		//===========================
-		[MenuItem ("Zios/Window/Sprite")]
-		static void Init(){
+		[MenuItem("Zios/Window/Sprite")]
+		private static void Init(){
 			SpriteWindow window = (SpriteWindow)EditorWindow.GetWindow(typeof(SpriteWindow));
 			EditorWindow.FocusWindowIfItsOpen(typeof(SpriteWindow));
 			window.wantsMouseMove = true;
@@ -642,7 +640,7 @@ namespace Zios{
 		}
 		public void CreateMaterial(Sprite sprite,bool forceOverwrite=false,bool forceUpdate=false){
 			string core = this.assetPrefix+sprite.fullName;
-			string[] names = {core};
+			string[] names ={core};
 			string sourcePath = AssetDatabase.GetAssetPath(sprite.parent.xml);
 			Shader spriteShader = this.assets.shaderNormal;
 			sourcePath = this.FindAssetFolder(sourcePath,sprite.name,"Materials");
@@ -687,7 +685,7 @@ namespace Zios{
 		}
 		public void CreateMesh(Sprite sprite,bool forceOverwrite=false,bool forceUpdate=false){
 			string core = this.assetPrefix+sprite.fullName;
-			string[] names = {core};
+			string[] names ={core};
 			string sourcePath = AssetDatabase.GetAssetPath(sprite.parent.xml);
 			sourcePath = this.FindAssetFolder(sourcePath,sprite.name,"Meshes");
 			foreach(string name in names){
@@ -761,7 +759,7 @@ namespace Zios{
 		}
 		public void CreatePrefab(Sprite sprite,bool forceOverwrite=false,bool forceUpdate=false){
 			string core = this.assetPrefix+sprite.fullName;
-			string[] names = {core};
+			string[] names ={core};
 			string sourcePath = AssetDatabase.GetAssetPath(sprite.parent.xml);
 			sourcePath = this.FindAssetFolder(sourcePath,sprite.name,"Prefabs");
 			foreach(string name in names){

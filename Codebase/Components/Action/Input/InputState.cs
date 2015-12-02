@@ -1,6 +1,3 @@
-using UnityEngine;
-using Zios;
-using System;
 using System.Collections.Generic;
 namespace Zios{
 	public enum InputRange{Any,Zero,Negative,Positive}

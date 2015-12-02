@@ -1,7 +1,4 @@
-using Zios;
 using UnityEngine;
-using System;
-using System.Collections;
 namespace Zios{
 	[AddComponentMenu("Zios/Component/Physics/Force")]
 	public class Force : ManagedMonoBehaviour{

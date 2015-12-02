@@ -1,6 +1,5 @@
-using UnityEngine;
 using UnityEditor;
-using Zios;
+using UnityEngine;
 namespace Zios.UI{
 	[CustomEditor(typeof(StateTable),true)]
 	public class StateTableEditor : Editor{

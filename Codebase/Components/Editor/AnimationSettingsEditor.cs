@@ -35,7 +35,6 @@ namespace Zios.UI{
 				if(GUI.changed){
 					config.Apply();
 					Utility.SetDirty(this.target);
-					
 				}
 				EditorGUILayout.EndHorizontal();
 			}

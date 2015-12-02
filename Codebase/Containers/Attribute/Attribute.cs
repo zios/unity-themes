@@ -1,9 +1,9 @@
-using Zios;
 using System;
-using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using Zios;
 namespace Zios{
 	public enum AttributeMode{Normal,Linked,Formula,Group};
 	public enum AttributeUsage{Direct,Shaped};
@@ -69,7 +69,9 @@ namespace Zios{
 		[NonSerialized] public string defaultSet = "A";
 		[NonSerialized] public List<Attribute> dependents = new List<Attribute>();
 		public AttributeUsage usage{
-			get{return this.GetFirst().usage;}
+			get{
+				return this.GetFirst().usage;
+			}
 			set{
 				foreach(AttributeData data in this.info.data){
 					data.usage = value;
@@ -409,7 +411,7 @@ namespace Zios{
 		}
 		public AttributeData Deserialize(AttributeData data){
 			if(Attribute.debug.Has("Issue") && data.rawType.IsEmpty()){
-				Debug.LogWarning("[Attribute] : Deserialization type is empty for : " + data.path);	
+				Debug.LogWarning("[Attribute] : Deserialization type is empty for : " + data.path);
 				return data;
 			}
 			var type = Type.GetType(data.rawType);

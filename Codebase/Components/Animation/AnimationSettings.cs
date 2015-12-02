@@ -1,6 +1,6 @@
-using UnityEngine;
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 namespace Zios{
 	[ExecuteInEditMode][AddComponentMenu("Zios/Component/Animation/Animation Settings")]
 	public class AnimationSettings : MonoBehaviour{

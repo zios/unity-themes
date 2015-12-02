@@ -1,6 +1,6 @@
-using UnityEngine;
-using UnityEditor;
 using System.Linq;
+using UnityEditor;
+using UnityEngine;
 namespace Zios.UI{
 	public class HeaderField : TableField{
 		public HeaderField(object target=null,TableRow row=null) : base(target,row){}

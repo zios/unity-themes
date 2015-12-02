@@ -4,7 +4,6 @@ using UnityEditor;
 #endif
 using System;
 using System.Collections.Generic;
-using UnityObject = UnityEngine.Object;
 namespace Zios{
 	public static class GameObjectExtension{
 		//====================

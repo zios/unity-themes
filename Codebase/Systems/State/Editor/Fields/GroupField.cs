@@ -1,5 +1,3 @@
-using UnityEngine;
-using UnityEditor;
 using System.Linq;
 namespace Zios.UI{
 	public class GroupField : StateField{

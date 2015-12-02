@@ -1,11 +1,9 @@
-using UnityEngine;
-using UnityEditor;
-using Zios;
-using Zios.UI;
 using System;
-using System.Linq;
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEditor;
+using UnityEngine;
+using Zios;
 namespace Zios.UI{
 	public enum HeaderMode{Vertical,Horizontal,HorizontalFit}
 	public class StateWindow : EditorWindow{

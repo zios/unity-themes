@@ -1,6 +1,5 @@
-using UnityEngine;
-using System;
 using System.Collections.Generic;
+using UnityEngine;
 namespace Zios{
 	public static class Style{
 		public static Dictionary<GUISkin,Dictionary<string,GUIStyle>> styles = new Dictionary<GUISkin,Dictionary<string,GUIStyle>>();

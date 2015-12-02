@@ -1,7 +1,5 @@
-using UnityEngine;
-using System;
 using System.Collections.Generic;
-using System.Collections;
+using UnityEngine;
 namespace Zios{
 	[AddComponentMenu("Zios/Singleton/Audio")]
 	public class AudioManager : MonoBehaviour{

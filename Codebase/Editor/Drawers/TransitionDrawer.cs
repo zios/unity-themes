@@ -1,6 +1,5 @@
 using UnityEditor;
 using UnityEngine;
-using Zios;
 namespace Zios.UI{
 	[CustomPropertyDrawer(typeof(Transition))]
 	public class TransitionDrawer : PropertyDrawer{

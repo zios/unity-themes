@@ -1,11 +1,5 @@
-using UnityEngine;
 using UnityEditor;
-using System;
-using System.Linq;
-using System.Collections;
-using System.Collections.Generic;
-using UnityObject = UnityEngine.Object;
-using Zios;
+using UnityEngine;
 using Zios.UI;
 namespace Zios.UI{
 	public static class UI{

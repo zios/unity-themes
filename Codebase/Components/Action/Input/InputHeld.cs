@@ -1,7 +1,5 @@
-using UnityEngine;
-using Zios;
 using System;
-using System.Collections.Generic;
+using UnityEngine;
 namespace Zios{
 	[AddComponentMenu("Zios/Component/Action/Input/Input Held")]
 	public class InputHeld : StateMonoBehaviour{

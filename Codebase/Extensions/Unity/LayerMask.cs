@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 namespace Zios{
 	public static class LayerMaskExtension{

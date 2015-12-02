@@ -1,7 +1,6 @@
-using UnityEngine;
 using System;
-using System.Text;
 using System.Collections.Generic;
+using System.Text;
 namespace Zios{
 	public static class EnumExtension{
 		public static Dictionary<Type,Dictionary<Enum,string>> nameCache = new Dictionary<Type,Dictionary<Enum,string>>();

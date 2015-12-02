@@ -1,5 +1,5 @@
-using UnityEngine;
 using UnityEditor;
+using UnityEngine;
 namespace Zios.UI{
 	[CustomEditor(typeof(EditorFPS))]
 	public class EditorFPSEditor : Editor{

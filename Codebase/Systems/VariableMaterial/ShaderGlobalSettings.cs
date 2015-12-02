@@ -1,6 +1,6 @@
-using UnityEngine;
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 namespace Zios{
 	[AddComponentMenu("Zios/Singleton/Shader Settings (Global)")][ExecuteInEditMode]
 	public class ShaderGlobalSettings : MonoBehaviour{

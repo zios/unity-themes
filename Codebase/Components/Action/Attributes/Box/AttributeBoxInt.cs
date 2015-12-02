@@ -1,7 +1,6 @@
-using Zios;
 using UnityEngine;
 namespace Zios{
-[AddComponentMenu("Zios/Component/Attribute/Box/Box Int")]
+	[AddComponentMenu("Zios/Component/Attribute/Box/Box Int")]
 	public class AttributeBoxInt : AttributeBox<AttributeInt>{
 		public override void Store(){
 			PlayerPrefs.SetInt(this.value.info.fullPath,this.value);

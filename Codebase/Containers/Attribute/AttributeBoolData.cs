@@ -1,5 +1,4 @@
 using UnityEngine;
-using Zios;
 namespace Zios{
 	[AddComponentMenu("")]
 	public class AttributeBoolData : AttributeData<bool,AttributeBool,AttributeBoolData>{

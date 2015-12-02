@@ -1,8 +1,5 @@
-using UnityEngine;
 using UnityEditor;
-using System.Collections;
-using System.Collections.Generic;
-using Zios;
+using UnityEngine;
 namespace Zios.UI{
 	[CustomPropertyDrawer(typeof(LayerDistances))]
 	public class LayerDistancesDrawer : PropertyDrawer{

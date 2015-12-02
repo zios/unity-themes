@@ -1,7 +1,7 @@
-using UnityEngine;
 using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 namespace Zios{
 	[AddComponentMenu("Zios/Singleton/Program")][ExecuteInEditMode]
 	public class ProgramManager : MonoBehaviour{

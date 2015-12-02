@@ -1,11 +1,8 @@
 #pragma warning disable 0618
-using UnityEngine;
-using Zios;
 using System;
-using System.Reflection;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 namespace Zios{
 	public struct NetworkEvents{
 		public const int LoadScene = 0;

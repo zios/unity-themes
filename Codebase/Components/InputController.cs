@@ -1,7 +1,5 @@
-using UnityEngine;
-using System;
 using System.Collections.Generic;
-using System.Reflection;
+using UnityEngine;
 namespace Zios.Inputer{
 	[AddComponentMenu("Zios/Component/General/InputController")]
 	public class InputController : MonoBehaviour{

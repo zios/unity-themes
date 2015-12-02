@@ -1,22 +1,20 @@
-using UnityEngine;
-using UnityEditor;
 using System;
 using System.IO;
-using System.Collections.Generic;
-using Zios;
+using UnityEditor;
+using UnityEngine;
 using bake = Zios.BakeVertexData;
 namespace Zios{
 	public static class BakeVertexData{
-		static MeshRenderer[] renderers;
-		static Transform target;
-		static int index = 0;
-		static Material baked;
-		static Material bakedOutline;
-		static Material bakedShaded;
-		static float time;
-		static bool complete;
-		[MenuItem ("Zios/Dori/Bake Vertex Colors")]
-		static void Bake(){
+		private static MeshRenderer[] renderers;
+		private static Transform target;
+		private static int index = 0;
+		private static Material baked;
+		private static Material bakedOutline;
+		private static Material bakedShaded;
+		private static float time;
+		private static bool complete;
+		[MenuItem("Zios/Dori/Bake Vertex Colors")]
+		private static void Bake(){
 			bake.complete = false;
 			if(EditorApplication.update != bake.Step && Selection.gameObjects.Length > 0){
 				bake.index = 0;
@@ -34,15 +32,15 @@ namespace Zios{
 				passesPerStep -= 1;
 			}
 		}
-		static void Step(){
-			if(bake.complete){return;}
+		private static void Step(){
+			if(bake.complete){ return; }
 			Renderer renderer = bake.renderers[bake.index];
 			int size = bake.renderers.Length;
 			GameObject current = renderer.gameObject;
 			MeshFilter filter = current.GetComponent<MeshFilter>();
 			string updateMessage = "Mesh " + bake.index + "/" + size;
-			bool canceled = EditorUtility.DisplayCancelableProgressBar("Baking Vertex Colors",updateMessage,((float)bake.index)/size);
-			if(canceled){size = 0;}
+			bool canceled = EditorUtility.DisplayCancelableProgressBar("Baking Vertex Colors",updateMessage,((float)bake.index) / size);
+			if(canceled){ size = 0; }
 			else if(filter && filter.sharedMesh && renderer.sharedMaterial){
 				bool generateMesh = true;
 				string meshPath = FileManager.GetPath(filter.sharedMesh);
@@ -64,8 +62,8 @@ namespace Zios{
 						Mesh existing = FileManager.GetAsset<Mesh>(newPath,false);
 						Material targetMaterial = bake.baked;
 						string shaderName = material.shader.name;
-						if(shaderName.Contains("Lighted",true)){targetMaterial = bake.bakedShaded;}
-						if(shaderName.Contains("Outline",true)){targetMaterial = bake.bakedOutline;}
+						if(shaderName.Contains("Lighted",true)){ targetMaterial = bake.bakedShaded; }
+						if(shaderName.Contains("Outline",true)){ targetMaterial = bake.bakedOutline; }
 						if(existing != null && !complex){
 							//Debug.Log("[Bake Vertex Colors] Already exists -- " + newPath);
 							filter.sharedMesh = existing;
@@ -85,7 +83,7 @@ namespace Zios{
 						Mesh newMesh = (Mesh)UnityEngine.Object.Instantiate(filter.sharedMesh);
 						newMesh.colors32 = colorValues;
 						//Debug.Log("[Bake Vertex Colors] Generating -- " + newPath);
-						Directory.CreateDirectory(Path.GetDirectoryName(file.path)+"/Baked");
+						Directory.CreateDirectory(Path.GetDirectoryName(file.path) + "/Baked");
 						AssetDatabase.CreateAsset(newMesh,newPath);
 						filter.sharedMesh = newMesh;
 					}

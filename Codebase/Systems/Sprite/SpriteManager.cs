@@ -1,10 +1,8 @@
-using UnityEngine;
-using System.Collections.Generic;
-using System.Collections;
-using System.Linq;
-using System.Xml;
-using System.IO;
 using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Xml;
+using UnityEngine;
 namespace Zios{
 	public class SpriteSheet{
 		public string name;

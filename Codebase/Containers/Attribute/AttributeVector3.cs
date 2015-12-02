@@ -1,7 +1,6 @@
-using Zios;
 using System;
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 namespace Zios{
 	[Serializable]
 	public class AttributeVector3 : Attribute<Vector3,AttributeVector3,AttributeVector3Data>{

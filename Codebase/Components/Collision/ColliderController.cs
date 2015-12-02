@@ -1,9 +1,8 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Zios;
-using System.Linq;
-using System.Collections;
-using System.Collections.Generic;
-using System;
 namespace Zios{
 	public enum ColliderMode{Sweep,SweepAndValidate,SweepAndValidatePrecise,Validate};
 	public class CollisionData{

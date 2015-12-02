@@ -1,7 +1,5 @@
-using UnityEngine;
-using UnityEditor;
 using System;
-using Zios;
+using UnityEditor;
 namespace Zios.UI{
 	[CustomEditor(typeof(DefaultAsset))]
 	public class DefaultAssetEditor : Editor{

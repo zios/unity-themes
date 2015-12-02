@@ -1,7 +1,4 @@
 using UnityEngine;
-using System;
-using System.Collections.Generic;
-using System.Collections;
 namespace Zios{
 	[AddComponentMenu("Zios/Component/General/Pool Controller")]
 	public class PoolController : MonoBehaviour{

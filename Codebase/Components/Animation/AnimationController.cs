@@ -1,8 +1,8 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Zios;
-using System;
-using System.Linq;
-using System.Collections.Generic;
 namespace Zios{
 	[Serializable]
 	public class AnimationData{
