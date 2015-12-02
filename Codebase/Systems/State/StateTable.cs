@@ -152,7 +152,8 @@ namespace Zios{
 		}
 		public void ScanTarget(GameObject target){
 			var states = Locate.GetObjectComponents<StateTable>(target).Cast<StateMonoBehaviour>().ToArray();
-			if(states.Contains(this) && states.Length == 1){
+			bool keepSearching = states.Length < 1 || states[0] == this;
+			if(states.Contains(this) && states.Length == 1 || states.Length == 0){
 				states = Locate.GetObjectComponents<StateMonoBehaviour>(target);
 			}
 			foreach(var state in states){
@@ -162,8 +163,7 @@ namespace Zios{
 				if(state != this){state.controller = this;}
 				this.scripts.Add(state);
 			}
-			bool onlySelf = states.Contains(this) && states.Length == 1;
-			if(states.Length < 1 || onlySelf){
+			if(keepSearching){
 				foreach(var transform in target.transform){
 					var current = transform.As<Component>().gameObject;
 					if(current != target){
