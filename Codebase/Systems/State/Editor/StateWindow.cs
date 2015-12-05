@@ -200,11 +200,9 @@ namespace Zios.UI{
 				tableRow = this.tableGUI.AddRow();
 				tableRow.AppendField(new HeaderField(""));
 				foreach(var stateRequirement in activeTable[0].requirements[0].data){
-					if(stateTable.manual || stateRequirement.name != "@External"){
-						var field = new HeaderField(stateRequirement);
-						field.disabled = !stateRequirement.target.IsEnabled();
-						tableRow.AppendField(field);
-					}
+					var field = new HeaderField(stateRequirement);
+					field.disabled = !stateRequirement.target.IsEnabled();
+					tableRow.AppendField(field);
 				}
 				foreach(StateRow stateRow in activeTable){
 					if(!this.rowIndex.ContainsKey(stateRow)){

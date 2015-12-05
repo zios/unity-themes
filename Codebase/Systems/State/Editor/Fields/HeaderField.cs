@@ -6,6 +6,8 @@ namespace Zios.UI{
 		public HeaderField(object target=null,TableRow row=null) : base(target,row){}
 		public override void Draw(){
 			var window = StateWindow.Get();
+			var hidden = !this.target.Equals("") && !window.target.manual && this.target.As<StateRequirement>().name == "@External";
+			if(hidden){return;}
 			var scroll = window.scroll;
 			var label = this.target is string ? new GUIContent("") : new GUIContent(this.target.GetVariable<string>("name"));
 			GUIStyle style = new GUIStyle(GUI.skin.label);
