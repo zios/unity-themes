@@ -1,4 +1,3 @@
 Zios.Events{
-	debugScope = -3
-	debug = Call, CallDeep, CallTimer
+	debug = Call
 }

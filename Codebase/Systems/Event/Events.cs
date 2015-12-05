@@ -10,7 +10,7 @@ namespace Zios{
 	using UnityEditor;
 	[InitializeOnLoad]
 	public static class EventsHook{
-		static private bool setup;
+		private static bool setup;
 		static EventsHook(){
 			if(Application.isPlaying){return;}
 			EditorApplication.delayCall += ()=>EventsHook.Reset();
@@ -107,6 +107,7 @@ namespace Zios{
 		[NonSerialized] public static string stepperMessage;
 		public static FixedList<string> eventHistory = new FixedList<string>(15);
 		public static List<EventListener> stack = new List<EventListener>();
+		public static Dictionary<string,bool> buffer = new Dictionary<string,bool>();
 		private bool setup;
 		public static bool IsSetup(){return !Events.instance.IsNull() && Events.instance.setup;}
 		public override void Awake(){
@@ -208,7 +209,8 @@ namespace Zios{
 		public static EventListener AddLimited(string name,MethodVector3 method,int amount=1,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
 		public static EventListener Add(string name,object method,int amount,params object[] targets){
 			bool delayed = false;
-			if(Events.instance.IsNull() || !Events.instance.setup){
+			bool systemReady = !Events.instance.IsNull() && Events.instance.setup;
+			if(!systemReady){
 				if(Events.debug.Has("Add")){
 					Debug.Log("[Events] : System not ready.  Delaying event add -- " + Events.GetMethodName(method.As<Delegate>()) + " -- " + name);
 				}
@@ -229,7 +231,7 @@ namespace Zios{
 				}
 				if(!Events.cache.AddNew(target).AddNew(name).ContainsKey(method)){
 					listener = new EventListener();
-					if(Events.debug.Has("Add")){
+					if(systemReady && Events.debug.Has("Add")){
 						var info = (Delegate)method;
 						Debug.Log("[Events] : Adding event -- " + Events.GetMethodName(info) + " -- " + name,target as UnityObject);
 					}
@@ -277,9 +279,6 @@ namespace Zios{
 			if(Events.disabled.Has("Add")){return;}
 			targets = Events.VerifyAll(targets);
 			foreach(var target in targets){
-				if(Events.Exists(target,name)){
-					Events.cache[target][name].Select(x=>x.Value).ToList().ForEach(x=>x.Remove());
-				}
 				var removals = Events.listeners.Where(x=>x.method==method && x.target==target && x.name==name).ToList();
 				removals.ForEach(x=>x.Remove());
 			}
@@ -338,6 +337,12 @@ namespace Zios{
 				item.Value.Rest(seconds);
 			}
 		}
+		public static void SetCooldown(string name,float seconds){Events.SetCooldown(Events.global,name,seconds);}
+		public static void SetCooldown(object target,string name,float seconds){
+			foreach(var item in Events.Get(target,name)){
+				item.Value.SetCooldown(seconds);
+			}
+		}
 		public static void DelayCall(string name,float delay=0.5f,params object[] values){
 			Events.DelayCall(Events.global,"Global",name,delay,values);
 		}
@@ -363,31 +368,13 @@ namespace Zios{
 			bool hasEvents = Events.Exists(target,name);
 			var events = hasEvents ? Events.cache[target][name] : null;
 			int count = hasEvents ? events.Count : 0;
-			bool canDebug = Events.CanDebug(target,name,count);
-			bool debugTime = canDebug && Events.debug.Has("CallTimer");
-			bool debugDeep = canDebug && Events.debug.Has("CallDeep");
+			bool canDebug = Events.buffer["canDebug"] = Events.CanDebug(target,name,count);
+			bool debugTime = Events.buffer["debugTime"] = canDebug && Events.debug.Has("CallTimer");
+			bool debugDeep = Events.buffer["debugDeep"] = canDebug && Events.debug.Has("CallDeep");
 			float duration = Time.realtimeSinceStartup;
 			if(hasEvents){
 				foreach(var item in events.Copy()){
-					if(item.Value.paused || item.Value.IsResting()){continue;}
-					var listener = item.Value;
-					if(!debugTime && debugDeep){
-						string message = "[Events] : " + name + " -- " + Events.GetMethodName(listener.method);
-						Debug.Log(message,target as UnityObject);
-					}
-					Events.stack.Add(listener);
-					Events.AddHistory(name);
-					float eventDuration = Time.realtimeSinceStartup;
-					listener.Call(values);
-					if(debugTime && debugDeep){
-						eventDuration = Time.realtimeSinceStartup - eventDuration;
-						if(eventDuration > 0.001f || Events.debug.Has("CallTimerZero")){
-							string time = eventDuration.ToString("F10").TrimRight("0",".").Trim() + " seconds.";
-							string message = "[Events] : " + name + " -- " + Events.GetMethodName(listener.method) + " -- " + time;
-							Debug.Log(message,target as UnityObject);
-						}
-					}
-					Events.stack.Remove(listener);
+					item.Value.Call(values);
 				}
 			}
 			if(debugTime && (!debugDeep || count < 1)){
@@ -538,9 +525,13 @@ namespace Zios{
 		public static void DelayEvent(this object current,string key,string name,float delay=0.5f,params object[] values){
 			Events.DelayCall(current,key,name,delay,values);
 		}
-		public static void CooldownEvent(this object current,string name,float seconds){
+		public static void RestEvent(this object current,string name,float seconds){
 			if(current.IsNull()){return;}
 			Events.Rest(current,name,seconds);
+		}
+		public static void CooldownEvent(this object current,string name,float seconds){
+			if(current.IsNull()){return;}
+			Events.SetCooldown(current,name,seconds);
 		}
 		public static void CallEvent(this object current,string name,params object[] values){
 			if(current.IsNull()){return;}

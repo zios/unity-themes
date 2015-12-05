@@ -1,4 +1,3 @@
 Zios.Attribute{
-	debug = Issue
 	repair = SamePathGameObjects
 }

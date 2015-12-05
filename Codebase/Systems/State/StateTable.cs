@@ -277,7 +277,7 @@ namespace Zios{
 					if(StateTable.debug){
 						string itemInfo = typeName + " -- " + item.name + " [" + item.id + "]";
 						string action = match == null ? "Removing" : "Repairing";
-						Debug.Log("[StateTable]" + action + " old " + itemInfo,this.gameObject);
+						Debug.Log("[StateTable] " + action + " old " + itemInfo,this.gameObject);
 					}
 				}
 			}

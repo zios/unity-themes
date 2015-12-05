@@ -67,8 +67,7 @@ namespace Zios{
 				Events.Call("On Editor Update");
 			};
 			EditorApplication.hierarchyWindowChanged += ()=>{
-				Events.Call("On Hierarchy Changed");
-				Events.Rest("On Hierarchy Changed",1);
+				Events.DelayCall("On Hierarchy Changed",0.25f);
 			};
 			Camera.onPostRender += (Camera camera)=>Events.Call("On Camera Post Render",camera);
 			Camera.onPreRender += (Camera camera)=>Events.Call("On Camera Pre Render",camera);

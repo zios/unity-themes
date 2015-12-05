@@ -1,11 +1,11 @@
 using System;
 using UnityEngine;
 namespace Zios{
-#if UNITY_EDITOR
+	#if UNITY_EDITOR
 	using UnityEditor;
 	[InitializeOnLoad]
 	public static class AttributeManagerHook{
-		static private bool setup;
+		private static bool setup;
 		static AttributeManagerHook(){
 			if(Application.isPlaying){return;}
 			EditorApplication.delayCall += ()=>AttributeManagerHook.Reset();
