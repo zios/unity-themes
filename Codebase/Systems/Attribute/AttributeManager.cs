@@ -19,6 +19,7 @@ namespace Zios{
 			if(AttributeManager.instance){
 				Events.Add("On Level Was Loaded",AttributeManager.instance.Awake);
 				Events.Add("On Editor Update",AttributeManager.instance.EditorUpdate);
+				Events.Add("On Exit Play",Utility.RepaintAll);
 			}
 			AttributeManager.Refresh();
 		}
@@ -189,7 +190,6 @@ namespace Zios{
 				AttributeManager.percentLoaded = 1;
 				Events.Call("On Attributes Ready");
 				Events.Rest("On Attributes Refresh",1);
-				//Utility.UpdateSelection();
 				this.stage = 0;
 				this.nextIndex = 0;
 				return;
