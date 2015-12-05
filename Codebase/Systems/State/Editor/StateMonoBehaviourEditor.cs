@@ -1,10 +1,15 @@
 using System.Linq;
+using System.IO;
 using UnityEditor;
 using UnityEngine;
 using MenuFunction = UnityEditor.GenericMenu.MenuFunction;
+using Class = Zios.UI.StateMonoBehaviourEditor;
 namespace Zios.UI{
-	[CustomEditor(typeof(StateMonoBehaviourEditor),true)]
+	[CustomEditor(typeof(StateMonoBehaviour),true)]
 	public class StateMonoBehaviourEditor : DataMonoBehaviourEditor{
+		public static bool isVisible = true;
+		public static bool isFixed;
+		public static bool isOneLine;
 		public GUISkin skin;
 		public Rect breakdownArea;
 		public bool breakdownVisible = true;
@@ -14,9 +19,19 @@ namespace Zios.UI{
 		}
 		public override void OnInspectorGUI(){
 			if(!Event.current.IsUseful()){return;}
+			this.DrawBreakdown();
+			base.OnInspectorGUI();
+		}
+		public void DrawBreakdown(){
+			string breakdown = "StateMonoBehaviourEditor-ToggleBreakdown";
+			if(EditorPrefs.HasKey(breakdown)){
+				Class.isVisible = !Class.isVisible;
+				EditorPrefs.DeleteKey(breakdown);
+			}
 			StateTable table = this.GetTable();
-			bool showBreakdown = EditorPrefs.GetBool("StateBreakdownVisible",true);
-			bool showFixed = EditorPrefs.GetBool("StateBreakdownFixed");
+			bool showBreakdown = Class.isVisible;
+			bool isFixed = Class.isFixed;
+			bool isOneLine = Class.isOneLine;
 			if((this.showAll || showBreakdown) && table != null){
 				string skinName = EditorGUIUtility.isProSkin ? "Dark" : "Light";
 				if(this.skin == null || !this.skin.name.Contains(skinName)){
@@ -39,26 +54,26 @@ namespace Zios.UI{
 					GUILayout.Space(this.breakdownArea.height);
 				}
 				else{
-					GUILayout.BeginHorizontal();
+					EditorGUILayout.BeginHorizontal();
 					if(hasOnData){
-						int fixedWidth = showFixed ? 150 : (Screen.width/2)-18;
+						int fixedWidth = isFixed ? 170 : (Screen.width/2)-18;
 						var columnStyle = GUI.skin.GetStyle("Box").FixedWidth(fixedWidth).Background("");
-						GUILayout.BeginVertical(columnStyle);
+						EditorGUILayout.BeginVertical(columnStyle);
 						for(int index=0;index<onRows.Length;++index){
 							string title = index < 1 ? "<b>ON</b> When" : "<b>OR</b> When";
 							this.DrawState(onRows,index,title);
 						}
-						GUILayout.EndVertical();
-						GUILayout.BeginVertical(columnStyle);
+						EditorGUILayout.EndVertical();
+						EditorGUILayout.BeginVertical(columnStyle);
 						if(table.advanced){
 							bool hasOffData = offRows.Select(x=>x.data).First().Where(x=>x.requireOn||x.requireOff).FirstOrDefault() != null;
 							if(!hasOffData){
-								GUIStyle boxStyle = GUI.skin.GetStyle("Box").FixedWidth(150).Background("SolidRed50.png");
-								GUILayout.BeginVertical(boxStyle);
+								GUIStyle boxStyle = GUI.skin.GetStyle("Box").Background("BoxWhiteHighlightRedA50.png");
+								EditorGUILayout.BeginVertical(boxStyle);
 								string phraseColor = EditorGUIUtility.isProSkin ? "#FF6666" : "#770000";
 								string phrase = "<color="+phraseColor+">Never turns off!</color>".ToUpper();
-								phrase.DrawLabel(GUI.skin.GetStyle("FixedLabel").Alignment("MiddleCenter"));
-								GUILayout.EndVertical();
+								phrase.DrawLabel(GUI.skin.GetStyle("Label").Alignment("MiddleCenter"));
+								EditorGUILayout.EndVertical();
 							}
 							else{
 								for(int index=0;index<offRows.Length;++index){
@@ -73,26 +88,26 @@ namespace Zios.UI{
 								this.DrawState(onRows,index,title,true);
 							}
 						}
-						GUILayout.EndVertical();
+						EditorGUILayout.EndVertical();
 					}
 					else{
-						int fixedWidth = showFixed ? 305 : Screen.width-37;
+						int fixedWidth = isFixed ? 305 : Screen.width-37;
 						var columnStyle = GUI.skin.GetStyle("Box").FixedWidth(fixedWidth);
-						GUILayout.BeginVertical(columnStyle.Background(""));
-						GUILayout.BeginVertical(columnStyle);
+						EditorGUILayout.BeginVertical(columnStyle.Background(""));
+						EditorGUILayout.BeginVertical(columnStyle);
 						string onColor = EditorGUIUtility.isProSkin ? "#95e032" : "#0000AA99";
 						string phrase = ("Always <b><color="+onColor+">On</color></b>").ToUpper();
 						phrase.DrawLabel(GUI.skin.GetStyle("FixedLabel").Alignment("MiddleCenter"));
-						GUILayout.EndVertical();
-						GUILayout.EndVertical();
+						EditorGUILayout.EndVertical();
+						EditorGUILayout.EndVertical();
 					}
-					GUILayout.EndHorizontal();
+					EditorGUILayout.EndHorizontal();
 					Rect area = GUILayoutUtility.GetLastRect();
 					if(!area.IsEmpty()){
 						if(Event.current.type == EventType.Repaint){this.breakdownArea = area;}
 						if(area.Clicked(1)){this.DrawBreakdownMenu();}
 						if(Event.current.shift && area.Clicked(0)){
-							Utility.ToggleEditorPref("StateBreakdownVisible");
+							Class.isVisible = !Class.isVisible;
 						}
 					}
 				}
@@ -100,24 +115,26 @@ namespace Zios.UI{
 					this.breakdownVisible = this.breakdownArea.InInspectorWindow();
 				}
 			}
-			base.OnInspectorGUI();
 		}
 		public void DrawBreakdownMenu(){
 			GenericMenu menu = new GenericMenu();
-			MenuFunction hideBreakdown = ()=>{Utility.ToggleEditorPref("StateBreakdownVisible");};
-			MenuFunction toggleFixed = ()=>{Utility.ToggleEditorPref("StateBreakdownFixed");};
-			menu.AddItem(new GUIContent("Fixed Layout"),EditorPrefs.GetBool("StateBreakdownFixed"),toggleFixed);
+			MenuFunction hideBreakdown = ()=>{Class.isVisible = false;};
+			MenuFunction toggleFixed = ()=>{Class.isFixed = !Class.isFixed;};
+			MenuFunction toggleOneLine = ()=>{Class.isOneLine = !Class.isOneLine;};
+			menu.AddItem(new GUIContent("Fixed Layout"),Class.isFixed,toggleFixed);
+			//menu.AddItem(new GUIContent("One Line Layout"),Class.isOneLine,toggleOneLine);
 			menu.AddItem(new GUIContent("Hide Breakdown"),false,hideBreakdown);
 			menu.ShowAsContext();
 		}
-		public void DrawState(StateRowData[] rowData,int rowIndex,string title,bool flip=false){
+		public string DrawState(StateRowData[] rowData,int rowIndex,string title,bool flip=false){
 			StateRowData row = rowData[rowIndex];
 			GUIStyle boxStyle = GUI.skin.GetStyle("Box");
 			if(rowIndex > 0){
 				string background = EditorGUIUtility.isProSkin ? "solidBlack10.png" : "solidWhite10.png";
 				boxStyle = boxStyle.Background(background);
 			}
-			GUILayout.BeginVertical(boxStyle);
+			EditorGUILayout.BeginVertical(boxStyle);
+			string phrase = "";
 			string headerColor = EditorGUIUtility.isProSkin ? "#AAAAAA" : "#555555";
 			string header = "<color="+headerColor+">"+title+"</color>";
 			header.DrawLabel(GUI.skin.GetStyle("FixedLabel").Alignment("MiddleRight"));
@@ -132,13 +149,16 @@ namespace Zios.UI{
 				string stateColor = EditorGUIUtility.isProSkin ? "#95e032" : "#0000AA99";
 				if(!stateOn){stateColor = EditorGUIUtility.isProSkin ? "#e03232" : "#a22e2e";}
 				string state = "</i><color="+stateColor+"><b>"+stateName+"</b></color><i>";
-				string phrase = name + " is " + state;
+				phrase = name + " is " + state;
 				if(hasDrawn){phrase = "and " + phrase;}
 				phrase = "<i>"+phrase.ToUpper()+"</i>";
-				phrase.DrawLabel(GUI.skin.GetStyle("FixedLabel").Alignment("MiddleRight"));
+				if(!Class.isOneLine){
+					phrase.DrawLabel(GUI.skin.GetStyle("FixedLabel").Alignment("MiddleRight"));
+				}
 				hasDrawn = true;
 			}
-			GUILayout.EndVertical();
+			EditorGUILayout.EndVertical();
+			return phrase;
 		}
 	}
 }

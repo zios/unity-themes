@@ -22,7 +22,7 @@ namespace Zios{
 		}
 		[ContextMenu("Toggle Breakdown")]
 		public virtual void ToggleLinkBreakdown(){
-			Utility.ToggleEditorPref("StateLinkBreakdownVisible",true);
+			Utility.ToggleEditorPref("StateMonoBehaviourEditor-ToggleBreakdown");
 		}
 		public void DefaultAlias(string name){
 			if(this.alias.IsEmpty()){
