@@ -129,10 +129,6 @@ namespace Zios.UI{
 		public string DrawState(StateRowData[] rowData,int rowIndex,string title,bool flip=false){
 			StateRowData row = rowData[rowIndex];
 			GUIStyle boxStyle = GUI.skin.GetStyle("Box");
-			if(rowIndex > 0){
-				string background = EditorGUIUtility.isProSkin ? "solidBlack10.png" : "solidWhite10.png";
-				boxStyle = boxStyle.Background(background);
-			}
 			EditorGUILayout.BeginVertical(boxStyle);
 			string phrase = "";
 			string headerColor = EditorGUIUtility.isProSkin ? "#AAAAAA" : "#555555";
