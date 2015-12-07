@@ -224,10 +224,10 @@ MonoBehaviour:
       m_Top: 0
       m_Bottom: 0
     m_Margin:
-      m_Left: 8
-      m_Right: 8
-      m_Top: 8
-      m_Bottom: 8
+      m_Left: 6
+      m_Right: 6
+      m_Top: 6
+      m_Bottom: 6
     m_Padding:
       m_Left: 0
       m_Right: 0
@@ -250,7 +250,7 @@ MonoBehaviour:
     m_FixedWidth: 0
     m_FixedHeight: 0
     m_StretchWidth: 1
-    m_StretchHeight: 1
+    m_StretchHeight: 0
   m_textField:
     m_Name: textfield
     m_Normal:

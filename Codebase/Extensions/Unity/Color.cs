@@ -10,5 +10,12 @@ namespace Zios{
 			color[order[2]] = UnityEngine.Random.Range(0,1.0f);
 			return new Color(color[0],color[1],color[2]);
 		}
+		public static string ToHex(this Color current){
+			var red = (current.r*255).ToInt().ToString("X2");
+			var green = (current.g*255).ToInt().ToString("X2");
+			var blue = (current.b*255).ToInt().ToString("X2");
+			var alpha = (current.a*255).ToInt().ToString("X2");
+			return "#"+red+green+blue+alpha;
+		}
 	}
 }

@@ -22,7 +22,7 @@ namespace Zios.UI{
 			int rowIndex = window.rowIndex[row];
 			var mode = (HeaderMode)EditorPrefs.GetInt("StateWindow-Mode",2);
 			GUIStyle style = new GUIStyle(GUI.skin.button);
-			value = rowIndex != 0 ? rowIndex.ToString() : "";
+			value = rowIndex != 0 ? (rowIndex+1).ToString() : "";
 			if(this.row.selected){style = Style.Get("buttonSelected",true);}
 			else if(state == -1){style = Style.Get("buttonDisabled",true);}
 			else if(state == 1){style = Style.Get("buttonOn",true);}

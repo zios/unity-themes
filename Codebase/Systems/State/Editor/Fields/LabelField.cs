@@ -14,25 +14,29 @@ namespace Zios.UI{
 				this.Clicked(1);
 				this.delayedContext = false;
 			}
+			this.CheckHovered(window.scroll.x);
 			this.CheckClicked(window.scroll.x);
 		}
 		public virtual void DrawStyle(){
 			var window = StateWindow.Get();
+			var stateRow = (StateRow)this.row.target;
 			var row = this.row.target.As<StateRow>();
 			var script = row.target;
 			bool darkSkin = EditorGUIUtility.isProSkin;
 			string name = this.target is string ? (string)this.target : this.target.As<StateRow>().name;
 			string background = darkSkin ? "BoxBlackA30" : "BoxWhiteBWarm";
-			Color textColor = darkSkin? Colors.Get("Silver") : Colors.Get("Black");
-			GUIContent content = new GUIContent(name);
+			Color textColor = darkSkin ? Colors.Get("Silver") : Colors.Get("Black");
+			string prefixColor = Colors.Get("DarkOrange").ToHex();
 			GUIStyle style = new GUIStyle(GUI.skin.label);
 			style.margin.left = 5;
-			bool fieldHovered = window.row == this.row.order;
+			bool fieldHovered = window.row == this.row.order || this.hovered;
 			if(fieldHovered){
+				prefixColor = Colors.Get("ZestyOrange").ToHex();
 				textColor = darkSkin ? Colors.Get("ZestyBlue") : Colors.Get("White");
 				background = darkSkin ? "BoxBlackHighlightBlueAWarm" : "BoxBlackHighlightBlueDWarm";
 			}
 			if(this.row.selected){
+				prefixColor = Colors.Get("ZestyOrange").ToHex();
 				textColor = darkSkin ? Colors.Get("White") : Colors.Get("White");
 				background = darkSkin ? "BoxBlackHighlightCyanA" : "BoxBlackHighlightCyanCWarm";
 			}
@@ -60,6 +64,8 @@ namespace Zios.UI{
 			style.normal.textColor = textColor;
 			style.normal.background = FileManager.GetAsset<Texture2D>(background);
 			if(this.row.selected){style.hover = style.normal;}
+			var prefix = stateRow.requirements.Length > 1 ? "<color="+prefixColor+"><i>[Row "+(window.rowIndex[stateRow]+1)+"]</i></color>  " : "";
+			GUIContent content = new GUIContent(prefix+name);
 			StateWindow.Clip(content,style,-1,window.headerSize);
 		}
 		public override void Clicked(int button){

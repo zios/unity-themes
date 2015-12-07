@@ -117,6 +117,7 @@ namespace Zios.UI{
 	}
 	public class TableField{
 		public bool hidden;
+		public bool hovered;
 		public bool disabled;
 		public bool selected;
 		public TableRow row;
@@ -129,6 +130,11 @@ namespace Zios.UI{
 		}
 		public virtual void Draw(){}
 		public virtual void Clicked(int button){}
+		public void CheckHovered(float xAdjust=0,float yAdjust=0){
+			if(Event.current.type == EventType.MouseMove){
+				this.hovered = GUILayoutUtility.GetLastRect().AddXY(xAdjust,yAdjust).Hovered();
+			}
+		}
 		public void CheckClicked(float xAdjust=0,float yAdjust=0){
 			if(GUILayoutUtility.GetLastRect().AddXY(xAdjust,yAdjust).Clicked()){
 				this.Clicked(Event.current.button);

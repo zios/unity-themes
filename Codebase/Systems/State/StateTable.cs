@@ -203,15 +203,14 @@ namespace Zios{
 			foreach(StateRow[] table in this.tables){
 				foreach(StateRow row in table){
 					if(this.controller.IsEnabled()){
-						var external = row.requirements.SelectMany(x=>x.data).ToList().Where(x=>x.name=="@External").FirstOrDefault();
-						if(external == null){
-							foreach(StateRowData rowData in row.requirements){
+						foreach(StateRowData rowData in row.requirements){
+							var external = rowData.data.Where(x=>x.name=="@External").FirstOrDefault();
+							if(external.IsNull()){
 								external = new StateRequirement("@External",this.controller,this);
 								external.requireOn = table == this.tables[0];
+								external.requireOff = table == this.tables[1];
 								rowData.data = rowData.data.Add(external);
 							}
-						}
-						if(external != null){
 							external.target = this.controller;
 						}
 					}

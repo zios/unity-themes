@@ -22,7 +22,7 @@ namespace Zios{
 		public static implicit operator UnityObject(Target value){return value.Get();}
 		public GameObject Get(){
 			GameObject result = this.mode == TargetMode.Search ? this.searchObject : this.directObject;
-			if(result == null && Application.isPlaying){
+			if(result.IsNull() && Application.isPlaying){
 				Debug.LogWarning("[Target] No target found for : " + this.path,this.parent);
 			}
 			return result;
