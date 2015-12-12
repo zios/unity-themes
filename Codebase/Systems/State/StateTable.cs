@@ -77,8 +77,8 @@ namespace Zios{
 		//=============================
 		public virtual void UpdateStates(){
 			if(!Application.isPlaying){return;}
-			this.UpdateTable(this.table);
 			if(this.advanced){this.UpdateTable(this.tableOff,true);}
+			this.UpdateTable(this.table);
 			Utility.SetDirty(this,false,true);
 			this.CallEvent("On State Updated");
 		}
