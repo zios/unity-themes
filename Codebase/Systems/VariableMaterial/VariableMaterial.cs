@@ -116,8 +116,9 @@ public class VariableMaterial{
 			FileData shaderFile = VariableMaterial.GetParentShader(target);
 			if(shaderFile.IsNull()){continue;}
 			string timestamp = shaderFile.GetModifiedDate("MdyyHmmff");
+			string projectPath = Application.dataPath+"/"+"Shaders";
 			string hash = timestamp + "-" + material.shaderKeywords.Join(" ").ToMD5();
-			string folderPath = shaderFile.folder+"/"+shaderFile.name+"/";
+			string folderPath = projectPath+"/"+shaderFile.name+"/";
 			string outputPath = folderPath+shaderFile.name+"#"+hash+".shader";
 			Action update = ()=>{
 				material.EnableKeyword("VARIABLE_MATERIAL_"+shaderFile.name.ToUpper());

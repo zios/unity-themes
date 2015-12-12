@@ -1,0 +1,615 @@
+Shader "Zios/Standalone/Megashader"{
+	Properties{
+		[Header(General)]
+			baseColor("Color",Color) = (1,1,1,1)
+			[KeywordEnum(Normal,Vertex)] colorMode("Color Mode",Float) = 0
+			[KeywordEnum(None,Front,Back)] cullMode("Cull",Float) = 2
+			[KeywordEnum(Off,On)] zWriteMode("ZWrite",Float) = 1
+			[KeywordEnum(Less,Greater,LEqual,GEqual,Equal,NotEqual,Always)] zTestMode("ZTest",Float) = 4
+		[Header(Texture)]
+			[KeywordEnum(Off,On)] textureState("State",Float) = 1
+			[KeywordEnum(UV,Triplanar)] textureMapping("Mapping",Float) = 0
+			[KeywordEnum(Multiply,Add,Lerp,Overlay,Screen,SoftLight,LinearLight)] textureBlend("Blend",Float) = 0
+			textureMap("Texture",2D) = "white"{}
+		[Header(Triplanar)]
+			triplanarScale("Scale",Range(0.05,50)) = 1
+			[Toggle] xBlending("X Blending",Float) = 1
+			[Toggle] yBlending("Y Blending",Float) = 1
+			[Toggle] zBlending("Z Blending",Float) = 1
+		[Header(Reflection)]
+			[KeywordEnum(None,Simple,Sphere,View)] reflectionType("Type",Float) = 0
+			reflectionColor("Color",Color) = (1,1,1,0.3)
+			reflectionMap("Texture",2D) = "white"{}
+		[Header(Lighting)]
+			[KeywordEnum(None,Lambert,LambertHalf,LambertStepped)] lightingType("Type",Float) = 3
+			[Int] lightingSteps("Lighting Steps",Range(2,256)) = 3
+			[KeywordEnum(Off,On)] directionalState("Use Directional Lights",Float) = 1
+			[KeywordEnum(Off,On)] pointState("Use Point Lights",Float) = 1
+		[Header(Shading)]
+			[KeywordEnum(Normal,Manual,Texture)] shadingType("Type",Float) = 1
+			[Toggle] blendLights("Blend Light Color",Float) = 0
+			shadingLitColor("Shading Manual Lit Color",Color) = (1,1,1,1)
+			shadingUnlitColor("Shading Manual Unlit Color",Color) = (0,0,0,0.5)
+			shadingTexture("Shading Texture",2D) = "white"{}
+		[Header(Shadows)]
+			[KeywordEnum(Off,On)] shadowState("State",Float) = 1
+			//shadowColor("Shadow Color", Color) = (0,0,0,1)
+		[Header(Visibility)]
+			[KeywordEnum(Off,On)] fadeState("Distance Fade",Float) = 1
+			[KeywordEnum(Off,On)] distanceCull("Distance Cull",Float) = 1
+		[Header(Atlas)]
+			[KeywordEnum(Off,On)] atlasState("State",Float) = 0
+			[HideInInspector] atlasUV("Atlas UV",Vector) = (0,0,1,1)
+			[HideInInspector] atlasUVScale("Atlas UV Scale",Vector) = (1,1,0,0)
+		[Header(Scroll)]
+			[KeywordEnum(Off,On)] scrollState("State",Float) = 0
+			scrollX("UV Scroll X",Range(0.0,5)) = 0.05
+			scrollY("UV Scroll Y",Range(0.0,5)) = 0.03
+		[Header(Warp)]
+			[KeywordEnum(None,Offset,Center)] warpType("Type",Float) = 0
+			[KeywordEnum(Off,On)] warpDistort("Distort",Float) = 0
+			warpFrequency("UV Warp Frequency",Range(0,256)) = 5
+			warpPowerX("UV Warp Speed X",Range(-5,5)) = 0.03
+			warpPowerY("UV Warp Speed Y",Range(-5,5)) = 0.03
+			warpScale("UV Warp Scale",Range(-10,10)) = 0.1
+	}
+	SubShader{
+		Tags{"LightMode"="ForwardBase" "Queue"="Geometry"}
+		Pass{
+			Cull [cullMode]
+			ZTest [zTestMode]
+			ZWrite [zWriteMode]
+			Colormask 0
+			CGPROGRAM
+			#pragma vertex vertexPass
+			#pragma fragment pixelPass
+			#pragma target 3.0
+			float cullDistance;
+			float4 vertexPass(float4 vertex:POSITION) : SV_POSITION{
+				float4 position = mul(UNITY_MATRIX_MVP,vertex);
+				#ifdef DISTANCECULL_ON
+				if(distance(_WorldSpaceCameraPos,mul(_Object2World,vertex)) > cullDistance){
+					position.w = 0;
+				}
+				#endif
+                return position;
+            }
+			fixed4 pixelPass() : SV_Target{
+				return fixed4(0,0,0,0);
+			}
+			ENDCG
+		}
+		Pass{
+			ZWrite Off
+			Blend SrcAlpha OneMinusSrcAlpha
+			Cull [cullMode]
+			ZTest [zTestMode]
+			CGPROGRAM
+			@#include "UnityCG.cginc"
+			@#include "AutoLight.cginc"
+			@#include "Lighting.cginc"
+			#include "../@Zios/Shaders/Megashader/PhotoshopBlend.cginc"
+			#pragma vertex vertexPass
+			#pragma fragment pixelPass
+			#pragma multi_compile_fwdbase
+			#pragma multi_compile COLORMODE_NORMAL COLORMODE_VERTEX
+			#pragma multi_compile TEXTUREBLEND_MULTIPLY TEXTUREBLEND_ADD TEXTUREBLEND_LERP TEXTUREBLEND_OVERLAY\
+			                      TEXTUREBLEND_SCREEN TEXTUREBLEND_SOFTLIGHT TEXTUREBLEND_LINEARLIGHT
+			#pragma multi_compile TEXTUREMAPPING_UV TEXTUREMAPPING_TRIPLANAR
+			#pragma multi_compile LIGHTINGTYPE_NONE LIGHTINGTYPE_LAMBERT LIGHTINGTYPE_LAMBERTHALF LIGHTINGTYPE_LAMBERTSTEPPED
+			#pragma multi_compile SHADINGTYPE_NORMAL SHADINGTYPE_MANUAL SHADINGTYPE_TEXTURE
+			#pragma multi_compile SHADINGBLEND_MULTIPLY SHADINGBLEND_ADD SHADINGBLEND_LERP SHADINGBLEND_OVERLAY\
+			                      SHADINGBLEND_SCREEN SHADINGBLEND_SOFTLIGHT SHADINGBLEND_LINEARLIGHT
+			#pragma multi_compile REFLECTIONTYPE_NONE REFLECTIONTYPE_SIMPLE REFLECTIONTYPE_SPHERE REFLECTIONTYPE_VIEW  
+			#pragma multi_compile WARPTYPE_NONE WARPTYPE_OFFSET WARPTYPE_CENTER
+			#pragma multi_compile FADETYPE_SMOOTH FADETYPE_STEPPED
+			#pragma multi_compile FADEBLEND_MULTIPLY FADEBLEND_ADD FADEBLEND_LERP FADEBLEND_OVERLAY\
+			                      FADEBLEND_SCREEN FADEBLEND_SOFTLIGHT FADEBLEND_LINEARLIGHT
+			#pragma multi_compile SHADOWTYPE_SMOOTH SHADOWTYPE_STEPPED
+			#pragma multi_compile SHADOWMODE_SHADED SHADOWMODE_BLENDED
+			#pragma multi_compile SHADOWBLEND_LERP SHADOWBLEND_MULTIPLY SHADOWBLEND_SUBTRACT
+			#pragma multi_compile __ WARPDISTORT_ON
+			#pragma multi_compile __ TEXTURESTATE_ON
+			#pragma multi_compile __ ATLASSTATE_ON
+			#pragma multi_compile __ SCROLLSTATE_ON
+			#pragma multi_compile __ FADESTATE_ON
+			#pragma multi_compile __ DISTANCECULL_ON
+			#pragma multi_compile __ BLENDLIGHTS_ON
+			#pragma multi_compile __ DIRECTIONALSTATE_ON
+			#pragma multi_compile __ POINTSTATE_ON
+			#pragma multi_compile __ SHADOWSTATE_ON
+			#pragma multi_compile __ FADEGRAYSCALE_ON
+			#pragma target 3.0
+			#pragma fragmentoption ARB_precision_hint_fastest
+			#define pi = 3.14159265f
+			#define doublePi 6.28318548f
+			struct vertexInput{
+				float4 vertex        : POSITION;
+				float3 normal        : NORMAL;
+				#ifdef TEXTUREMAPPING_UV
+				float4 texcoord      : TEXCOORD0;
+				#endif
+				#ifdef COLORMODE_VERTEX
+				float4 color         : COLOR;
+				#endif
+			};
+			struct vertexOutput{
+				float4 pos           : SV_POSITION;
+				#ifdef COLORMODE_VERTEX
+				float4 color         : COLOR;
+				#endif
+				#ifdef TEXTUREMAPPING_UV
+				float2 UV            : TEXCOORD0;
+				#endif
+				#ifndef REFLECTIONTYPE_NONE
+				float3 reflectionUV  : TEXCOORD1;
+				#endif
+				#ifndef LIGHTINGTYPE_NONE
+				float4 lightNormal   : TEXCOORD2;
+				float3 normal        : TEXCOORD3;
+				#endif
+				#if !defined(LIGHTINGTYPE_NONE) || defined(TEXTUREMAPPING_TRIPLANAR) || defined(FADESTATE_ON)
+				float3 worldNormal   : TEXCOORD4;
+				float3 worldPosition : TEXCOORD5;
+				#endif
+				#ifdef SHADOWSTATE_ON
+				float3 _LightCoord   : TEXCOORD6;
+				float4 _ShadowCoord  : TEXCOORD7;
+				#endif
+			};
+			struct pixelOutput{
+				float4 color         : COLOR0;
+			};
+			static vertexOutput input;
+			static pixelOutput output;
+			float timeConstant;
+			fixed ClampRange(fixed min,fixed max,fixed value){return saturate((value-min)/(max-min));}
+			//===========================
+			// Atlas
+			//===========================
+			fixed4 atlasUV;
+			fixed4 atlasUVScale;
+			void SetupAtlas(){
+				#if defined(TEXTUREMAPPING_UV) && defined(ATLASSTATE_ON)
+				input.UV = lerp(atlasUV.xy,atlasUV.zw,fmod(input.UV.xy*atlasUVScale.xy,1));
+				#endif
+			}
+			//===========================
+			// Scroll
+			//===========================
+			float scrollX;
+			float scrollY;
+			float2 SetupScroll(float2 uv){
+				#if defined(TEXTURESTATE_ON) && defined(SCROLLSTATE_ON)
+					#ifdef TEXTUREMAPPING_TRIPLANAR
+					uv.x -= scrollY * timeConstant;
+					uv.y -= scrollX * timeConstant;
+					#else
+					uv.x += scrollX * timeConstant;
+					uv.y += scrollY * timeConstant;
+					#endif
+				#endif
+				return uv;
+			}
+			//===========================
+			// Warp
+			//===========================
+			float warpFrequency;
+			float warpScale;
+			float warpPowerX;
+			float warpPowerY;
+			float2 SetupWarp(float2 uv){
+				#if !defined(WARPTYPE_NONE)
+					//uv.xy += float2(warpScale,0)*sin(timeConstant*warpPower+uv.y)*warpFrequency;
+					float speed = timeConstant*warpFrequency;
+					#if defined(WARPTYPE_OFFSET)
+						uv.x += (sin(uv.y + speed) * warpPowerX) * warpScale;
+						uv.y += (sin(uv.x + speed) * warpPowerY) * warpScale;
+					#elif defined(WARPTYPE_CENTER)
+						float x = (uv.x-0.5);
+						float y = (uv.y-0.5);
+						float distort = x*x + y*y;
+						uv.x += (sin(distort + speed) * warpPowerX) * warpScale;
+						uv.y += (sin(distort + speed) * warpPowerY) * warpScale;	
+					#endif
+				#endif
+				return uv;
+			}
+			//===========================
+			// Texture
+			//===========================
+			sampler2D textureMap;
+			fixed4 textureMap_ST;
+			float2 GetUV(float2 uv,float2 scale,float2 offset){
+				#ifdef WARPDISTORT_ON
+					uv = SetupWarp(uv * scale + offset);
+					uv = SetupScroll(uv);
+				#else
+					uv = SetupWarp(uv);
+					uv = SetupScroll(uv) * scale + offset;
+				#endif
+				return uv;
+			}
+			void BlendTexture(fixed4 color){
+				#if defined(TEXTUREBLEND_ADD)
+				output.color += color;
+				#elif defined(TEXTUREBLEND_LERP)
+				output.color.rgb = lerp(output.color,color,1-output.color.a);
+				output.color.a = color.a;
+				#elif defined(TEXTUREBLEND_OVERLAY)
+				output.color.rgb = BlendOverlayf(output.color,color);
+				#elif defined(TEXTUREBLEND_SCREEN)
+				output.color.rgb = BlendScreenf(output.color,color);
+				#elif defined(TEXTUREBLEND_SOFTLIGHT)
+				output.color.rgb = BlendSoftLightf(output.color,color);
+				#elif defined(TEXTUREBLEND_LINEARLIGHT)
+				output.color.rgb = BlendLinearLightf(output.color,color);
+				#else
+				output.color *= color;
+				#endif
+			}
+			void ApplyTexture(){
+				#ifdef TEXTURESTATE_ON
+					#ifdef TEXTUREMAPPING_UV
+						float2 uv = GetUV(input.UV.xy,textureMap_ST.xy,textureMap_ST.zw);
+						float4 lookup = tex2D(textureMap,uv);
+						BlendTexture(lookup);
+					#endif
+				#endif
+			}
+			//===========================
+			// Reflection
+			//===========================
+			sampler2D reflectionMap;
+			fixed4 reflectionColor;
+			fixed4 reflectionMap_ST;
+			void ApplyReflection(){
+				#ifndef REFLECTIONTYPE_NONE
+					float4 lookup = tex2D(reflectionMap,input.reflectionUV.xy * reflectionMap_ST.xy + reflectionMap_ST.zw);
+					output.color += (lookup*reflectionColor.a) * reflectionColor;
+				#endif
+			}
+			//===========================
+			// Triplanar
+			//===========================
+			fixed xBlending;
+			fixed yBlending;
+			fixed zBlending;
+			fixed triplanarScale;
+			float4 SetupTriplanarMap(sampler2D triplanar,float2 scale,float2 offset){
+				#ifdef TEXTUREMAPPING_TRIPLANAR
+				scale *= 1/triplanarScale;
+				offset *= -1;
+				float4 color1 = tex2D(triplanar,GetUV(input.worldPosition.xy,scale,offset));
+				float4 color2 = tex2D(triplanar,GetUV(input.worldPosition.zx,scale,offset));
+				float4 color3 = tex2D(triplanar,GetUV(input.worldPosition.zy,scale,offset));
+				float3 projectedNormal = saturate(pow(input.worldNormal*1.5,4));
+				if(xBlending != 0){projectedNormal.x = ceil(projectedNormal.x-0.5f);}
+				if(yBlending != 0){projectedNormal.y = ceil(projectedNormal.y-0.5f);}
+				if(zBlending != 0){projectedNormal.z = ceil(projectedNormal.z-0.5f);}
+				float4 color = lerp(color2,color1,projectedNormal.z);
+				color = lerp(color,color3,projectedNormal.x);
+				return color;
+				#else
+				return float4(1,1,1,1);
+				#endif
+			}
+			void ApplyTextureTriplanar(){
+				#if defined(TEXTURESTATE_ON) && defined(TEXTUREMAPPING_TRIPLANAR)
+				fixed4 lookup = SetupTriplanarMap(textureMap,textureMap_ST.xy,textureMap_ST.zw);
+				BlendTexture(lookup);
+				#endif
+			}
+			//===========================
+			// Color
+			//===========================
+			fixed4 baseColor;
+			void ApplyColor(){
+				#ifdef COLORMODE_VERTEX
+				output.color = input.color;
+				#else
+				output.color = baseColor;
+				#endif
+			}
+			//===========================
+			// Lighting
+			//===========================
+			fixed lighting;
+			fixed lightingSteps;
+			fixed3 pointColor;
+			fixed4 pointIntensity;
+			fixed pointAverageIntensity;
+			fixed directionalIntensity;
+			fixed3 directionalColor;
+			fixed SetupHalf(fixed intensity){return pow(intensity * 0.5f + 0.5f,2);}
+			fixed SetupStepped(fixed intensity,fixed steps){return saturate(ceil((intensity / steps)-0.5) * steps);}
+			fixed4 SetupHalf(fixed4 intensity){return pow(intensity * 0.5f + 0.5f,2);}
+			fixed4 SetupStepped(fixed4 intensity,fixed steps){return saturate(ceil((intensity / steps)-0.5) * steps);}
+			void SetupDirectionalLighting(){
+				#if !defined(LIGHTINGTYPE_NONE) && defined(DIRECTIONALSTATE_ON)
+					directionalIntensity = _WorldSpaceLightPos0.w == 0 ? saturate(dot(input.normal,input.lightNormal)) : 0;
+					#if defined(LIGHTINGTYPE_LAMBERTHALF)
+						directionalIntensity = SetupHalf(directionalIntensity);
+					#elif defined(LIGHTINGTYPE_LAMBERTSTEPPED)
+						directionalIntensity = SetupStepped(directionalIntensity,lightingSteps);
+					#endif
+					#if defined(BLENDLIGHTS_ON)
+						directionalColor = _LightColor0/2;
+					#else
+						directionalColor = fixed4(1,1,1,1);
+					#endif
+					lighting = max(directionalIntensity,lighting);
+				#endif
+			}
+			void SetupPointLighting(){
+				#if !defined(LIGHTINGTYPE_NONE) && defined(POINTSTATE_ON)
+					if(input.lightNormal.w < 0){
+						float4 lightX = unity_4LightPosX0 - input.worldPosition.x;
+						float4 lightY = unity_4LightPosY0 - input.worldPosition.y;
+						float4 lightZ = unity_4LightPosZ0 - input.worldPosition.z;
+						float4 distance = lightX * lightX;
+						distance += lightY * lightY;
+						distance += lightZ * lightZ;
+						float4 fixedDistance = rsqrt(distance);
+						float4 intensity = lightX * input.worldNormal.x;
+						intensity += lightY * input.worldNormal.y;
+						intensity += lightZ * input.worldNormal.z;
+						intensity = max(float4(0,0,0,0),intensity*fixedDistance);
+						float4 attenuation = 1.0 / (1.0 + distance * unity_4LightAtten0);
+						pointIntensity = saturate(intensity * attenuation * 2);;
+						#if defined(LIGHTINGTYPE_LAMBERTSTEPPED)
+							pointIntensity = SetupStepped(pointIntensity,lightingSteps);
+						#endif
+						#if defined(BLENDLIGHTS_ON)
+							pointColor  = unity_LightColor[0]*pointIntensity.x;
+							pointColor += unity_LightColor[1]*pointIntensity.y;
+							pointColor += unity_LightColor[2]*pointIntensity.z;
+							pointColor += unity_LightColor[3]*pointIntensity.w;
+						#else
+							pointColor = fixed4(1,1,1,1);
+						#endif
+						pointAverageIntensity = pointIntensity.x+pointIntensity.y+pointIntensity.z+pointIntensity.w;
+						#if defined(LIGHTINGTYPE_LAMBERTHALF)
+							pointAverageIntensity = SetupHalf(pointAverageIntensity);
+						#elif defined(LIGHTINGTYPE_LAMBERTSTEPPED)
+							pointAverageIntensity = SetupStepped(pointAverageIntensity,lightingSteps);
+						#endif
+						lighting = max(pointAverageIntensity,lighting);
+					}
+				#endif
+			}
+			void SetupLighting(){
+				#if !defined(LIGHTINGTYPE_NONE)
+					#ifdef LIGHTINGTYPE_LAMBERTSTEPPED
+					lightingSteps = 1.0 / (lightingSteps-1);
+					#endif
+					SetupDirectionalLighting();
+					SetupPointLighting();
+					lighting = saturate(lighting);
+				#endif
+			}
+			//===========================
+			// Shading
+			//===========================
+			sampler2D shadingTexture;
+			fixed4 shadingTexture_ST;
+			fixed3 shadingColor;
+			fixed4 shadingLitColor;
+			fixed4 shadingUnlitColor;
+			void SetupShadingLights(){
+				#if !defined(LIGHTINGTYPE_NONE)
+					#if defined(SHADINGTYPE_MANUAL)
+						shadingLitColor.rgb = lerp(shadingLitColor,pointColor,pointAverageIntensity);
+						shadingLitColor.rgb = lerp(shadingLitColor,directionalColor,saturate(directionalIntensity-pointAverageIntensity));
+					#else
+						shadingColor = pointColor*pointAverageIntensity;
+						shadingColor += directionalColor*saturate(directionalIntensity-pointAverageIntensity);
+					#endif
+				#endif
+			}
+			fixed3 BlendShading(fixed3 base,fixed3 color){
+				#if defined(SHADINGBLEND_ADD)
+				base.rgb += color;
+				#elif defined(SHADINGBLEND_LERP)
+				base.rgb = lerp(base,color,lighting);
+				#elif defined(SHADINGBLEND_OVERLAY)
+				base.rgb = BlendOverlayf(base.rgb,color.rgb);
+				#elif defined(SHADINGBLEND_SCREEN)
+				base.rgb = BlendScreenf(base.rgb,color.rgb);
+				#elif defined(SHADINGBLEND_SOFTLIGHT)
+				base.rgb = BlendSoftLightf(base.rgb,color.rgb);
+				#elif defined(SHADINGBLEND_LINEARLIGHT)
+				base.rgb = BlendLinearLightf(base.rgb,color.rgb);
+				#else
+				base.rgb *= color;
+				#endif
+				return base;
+			}
+			void ApplyShading(){
+				#if !defined(LIGHTINGTYPE_NONE)
+					SetupShadingLights();
+					#if defined(SHADINGTYPE_NORMAL)
+						shadingColor = lerp(fixed4(0,0,0,1),shadingColor,lighting);
+					#elif defined(SHADINGTYPE_MANUAL)
+						lighting = saturate(lighting-(1-shadingLitColor.a)+(1-shadingUnlitColor.a));
+						#if defined(LIGHTINGTYPE_LAMBERTHALF)
+							lighting = SetupHalf(lighting);
+						#elif defined(LIGHTINGTYPE_LAMBERTSTEPPED)
+							lighting = SetupStepped(lighting,lightingSteps);
+						#endif
+						shadingColor = lerp(shadingUnlitColor,shadingLitColor,lighting);
+					#elif defined(SHADINGTYPE_TEXTURE)
+						fixed4 lookup = tex2D(shadingTexture,float2(lighting,0));
+						shadingColor = BlendShading(lookup.rgb*lookup.a,shadingColor);
+					#endif
+					output.color.rgb = BlendShading(output.color,shadingColor);
+				#endif
+			}
+			//===========================
+			// Shadows
+			//===========================
+			fixed4 shadowColor;
+			fixed4 globalShadowColor;
+			fixed globalShadowSteps;
+			fixed shadowIntensity;
+			fixed shadowFactor;
+			void PrepareShadows(){
+				#ifdef SHADOWSTATE_ON
+					shadowColor = length(shadowColor.rgb) > 0 ? shadowColor : globalShadowColor;
+					#if defined(SHADOWTYPE_SMOOTH)
+					shadowIntensity = LIGHT_ATTENUATION(input);
+					#elif defined(SHADOWTYPE_STEPPED)
+					globalShadowSteps = 1.0 / globalShadowSteps;
+					shadowIntensity = SetupStepped(LIGHT_ATTENUATION(input),globalShadowSteps);
+					#endif
+					shadowFactor = saturate(((1-shadowIntensity)*shadowColor.a)-pointAverageIntensity);
+				#endif
+			}
+			void SetupShadows(){
+				#if defined(SHADOWSTATE_ON) 
+				@#if defined(SHADOWS_SCREEN)
+					PrepareShadows();
+					lighting = min(lighting,lighting-shadowFactor);
+					#if defined(SHADOWMODE_SHADED)
+					if(1-shadowIntensity > 0){
+						#if defined(SHADOWBLEND_LERP)
+							shadingUnlitColor.rgb = lerp(shadingUnlitColor,shadowColor,shadowFactor);
+						#elif defined(SHADOWBLEND_MULTIPLY)
+							shadingUnlitColor.rgb = lerp(shadingUnlitColor,shadowColor*shadingUnlitColor,shadowFactor);
+						#elif defined(SHADOWBLEND_SUBTRACT)
+							shadingUnlitColor.rgb = lerp(shadingUnlitColor,shadowColor-shadingUnlitColor,shadowFactor);
+						#endif
+						shadingUnlitColor.a = max(shadingUnlitColor.a,lerp(shadingUnlitColor.a,shadowColor.a,1-shadowIntensity));
+					}
+					#endif
+				@#endif
+				#endif
+			}
+			void ApplyShadows(){
+				#if defined(SHADOWSTATE_ON) && defined(SHADOWMODE_BLENDED)
+				@#if defined(SHADOWS_SCREEN)
+					#if defined(SHADOWBLEND_LERP)
+						output.color.rgb = lerp(output.color,shadowColor,shadowFactor);
+					#elif defined(SHADOWBLEND_MULTIPLY)
+						output.color.rgb = lerp(output.color,shadowColor*output.color,shadowFactor);
+					#elif defined(SHADOWBLEND_SUBTRACT)
+						output.color.rgb = lerp(output.color,shadowColor-output.color,shadowFactor);
+					#endif
+				@#endif
+				#endif
+			}
+			//===========================
+			// Visibility
+			//===========================
+			float cullDistance;
+			fixed4 fadeStartColor;
+			fixed4 fadeEndColor;
+			fixed fadeStartDistance;
+			fixed fadeEndDistance;
+			fixed fadeSteps;
+			void ApplyFade(){
+				#if defined(FADESTATE_ON)
+					fixed travel = distance(_WorldSpaceCameraPos,input.worldPosition);
+					fixed amount = ClampRange(fadeStartDistance,fadeEndDistance,travel);
+					#ifdef FADETYPE_STEPPED
+					fixed steps = 1.0 / (fadeSteps-1);
+					amount = saturate(ceil((amount / steps)-0.5) * steps);
+					#endif
+					fixed4 color = lerp(fadeStartColor,fadeEndColor,amount);
+					#if defined(FADEGRAYSCALE_ON)
+					fixed4 grayscale = dot(output.color,float3(0.3,0.59,0.11));
+					output.color.rgb = lerp(output.color,grayscale,amount);
+					#endif
+					#if defined(FADEBLEND_MULTIPLY)
+					output.color *= color;
+					#elif defined(FADEBLEND_LERP)
+					output.color = lerp(output.color,color,amount);
+					#elif defined(FADEBLEND_ADD)
+					output.color.rgb += color.rgb;
+					output.color.a *= color.a;
+					#elif defined(FADEBLEND_OVERLAY)
+					output.color.rgb = BlendOverlayf(output.color.rgb,color.rgb);
+					output.color.a *= color.a;
+					#elif defined(FADEBLEND_SCREEN)
+					output.color.rgb = BlendScreenf(output.color.rgb,color.rgb);
+					output.color.a *= color.a;
+					#elif defined(FADEBLEND_SOFTLIGHT)
+					output.color.rgb = BlendSoftLightf(output.color.rgb,color.rgb);
+					output.color.a *= color.a;
+					#elif defined(FADEBLEND_LINEARLIGHT)
+					output.color.rgb = BlendLinearLightf(output.color.rgb,color.rgb);
+					output.color.a *= color.a;
+					#endif
+				#endif
+			}
+			//===========================
+			// Main
+			//===========================
+			vertexOutput vertexPass(vertexInput input){
+				vertexOutput output;
+				UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
+				output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
+				#ifdef DISTANCECULL_ON
+				if(distance(_WorldSpaceCameraPos,mul(_Object2World,input.vertex)) > cullDistance){
+					output.pos.w = 0;
+					return output;
+				}
+				#endif
+				#ifdef TEXTUREMAPPING_UV
+					output.UV = input.texcoord;
+				#endif
+				#ifdef REFLECTIONTYPE_SIMPLE
+					float3 view = normalize(ObjSpaceViewDir(input.vertex));
+					output.reflectionUV = normalize(reflect(view,input.normal));
+				#endif
+				#ifdef REFLECTIONTYPE_SPHERE
+					float3 view = normalize(ObjSpaceViewDir(input.vertex));
+					float3 reflection = normalize(reflect(normalize(view),input.normal));
+					reflection = mul((float3x3)UNITY_MATRIX_MV,reflection);
+					reflection.z += 1;
+					output.reflectionUV = float3((reflection.xy / (2 * length(reflection))) + 0.5,0);
+				#endif
+				#ifdef REFLECTIONTYPE_VIEW
+					output.reflectionUV = normalize(mul(UNITY_MATRIX_MV,input.vertex));
+				#endif
+				#if defined(TEXTUREMAPPING_TRIPLANAR) || !defined(LIGHTINGTYPE_NONE) || defined(FADESTATE_ON)
+					output.worldNormal = UnityObjectToWorldNormal(input.normal);
+					output.worldPosition = mul(_Object2World,input.vertex);
+				#endif
+				#ifndef LIGHTINGTYPE_NONE
+					output.normal = normalize(input.normal);
+					output.lightNormal.xyz = normalize(ObjSpaceLightDir(input.vertex));
+					@#if defined(VERTEXLIGHT_ON)
+					output.lightNormal.w = -1;
+					@#endif
+				#endif
+				#ifdef COLORMODE_VERTEX
+					output.color = input.color;
+				#endif
+				#ifdef SHADOWSTATE_ON
+					vertexInput v = input;
+					TRANSFER_VERTEX_TO_FRAGMENT(output);
+				#endif
+				return output;
+			}
+			pixelOutput pixelPass(vertexOutput pixelInput){
+				input = pixelInput;
+				UNITY_INITIALIZE_OUTPUT(pixelOutput,output)
+				SetupAtlas();
+				SetupLighting();
+				SetupShadows();
+				ApplyColor();
+				ApplyTexture();
+				ApplyTextureTriplanar();
+				ApplyReflection();
+				ApplyShading();
+				ApplyShadows();
+				ApplyFade();
+				return output;
+			}
+			ENDCG
+		}
+	}
+	Fallback "Hidden/Zios/Fallback/Vertex Lit"
+	CustomEditor "Zios.UI.VariableMaterialEditor"
+}
