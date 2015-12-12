@@ -64,7 +64,9 @@ namespace Zios.UI{
 			style.normal.textColor = textColor;
 			style.normal.background = FileManager.GetAsset<Texture2D>(background);
 			if(this.row.selected){style.hover = style.normal;}
-			var prefix = stateRow.requirements.Length > 1 ? "<color="+prefixColor+"><i>[Row "+(window.rowIndex[stateRow]+1)+"]</i></color>  " : "";
+			int currentRow = window.rowIndex[stateRow]+1;
+			int totalRows = stateRow.requirements.Length;
+			var prefix = stateRow.requirements.Length > 1 ? "<color="+prefixColor+"><i>["+currentRow+"/"+totalRows+"]</i></color>  " : "";
 			GUIContent content = new GUIContent(prefix+name);
 			StateWindow.Clip(content,style,-1,window.headerSize);
 		}
