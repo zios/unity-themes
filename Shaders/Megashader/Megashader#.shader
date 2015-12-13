@@ -2,6 +2,7 @@ Shader "Zios/Standalone/Megashader#"{
 	Properties{
 		[Header(General)]
 			baseColor("Color",Color) = (1,1,1,1)
+			[KeywordEnum(Normal,Vertex)] colorMode("Color Mode",Float) = 0
 			[KeywordEnum(None,Front,Back)] cullMode("Cull",Float) = 2
 			[KeywordEnum(Off,On)] zWriteMode("ZWrite",Float) = 1
 			[KeywordEnum(Less,Greater,LEqual,GEqual,Equal,NotEqual,Always)] zTestMode("ZTest",Float) = 4
@@ -21,8 +22,9 @@ Shader "Zios/Standalone/Megashader#"{
 			reflectionMap("Texture",2D) = "white"{}
 		[Header(Lighting)]
 			[KeywordEnum(None,Lambert,LambertHalf,LambertStepped)] lightingType("Type",Float) = 3
-			[KeywordEnum(Off,On)] pointState("Use Point Lights",Float) = 1
 			[Int] lightingSteps("Lighting Steps",Range(2,16)) = 3
+			[KeywordEnum(Off,On)] directionalState("Use Directional Lights",Float) = 1
+			[KeywordEnum(Off,On)] pointState("Use Point Lights",Float) = 1
 		[Header(Shading)]
 			[KeywordEnum(Normal,Manual,Texture)] shadingType("Type",Float) = 1
 			[Toggle] blendLights("Blend Light Color",Float) = 0
