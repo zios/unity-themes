@@ -9,6 +9,9 @@ namespace Zios{
 		[Header("Shadows")]
 		public Color shadowColor = new Color(0,0,0,0.25f);
 		[Range(1,32)] public int shadowSteps = 3;
+		[Header("Lightmap")]
+		public Color lightmapColor = new Color(0,0,0,0.25f);
+		[Range(1,32)] public int lightmapSteps = 3;
 		[Header("Visibility")]
 		public int cullDistance = 150;
 		[Range(1,32)] public int fadeSteps = 3;
@@ -27,6 +30,8 @@ namespace Zios{
 			Shader.SetGlobalFloat("globalAlphaCutoff",this.alphaCutoff);
 			Shader.SetGlobalColor("globalShadowColor",this.shadowColor);
 			Shader.SetGlobalFloat("globalShadowSteps",this.shadowSteps);
+			Shader.SetGlobalColor("globalLightmapColor",this.lightmapColor);
+			Shader.SetGlobalFloat("globalLightmapSteps",this.lightmapSteps);
 			Shader.SetGlobalFloat("cullDistance",this.cullDistance);
 			Shader.SetGlobalFloat("fadeSteps",this.fadeSteps);
 			Shader.SetGlobalFloat("fadeStartDistance",this.fadeStartDistance);

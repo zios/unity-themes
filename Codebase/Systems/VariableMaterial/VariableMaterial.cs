@@ -29,7 +29,7 @@ public class VariableMaterial{
 			var material = file.GetAsset<Material>();
 			if(material.IsNull()){continue;}
 			string editorName = material.shader.GetVariable<string>("customEditor");
-			if(editorName == "VariableMaterialEditor" || VariableMaterial.IsBroken(material)){
+			if(editorName.Contains("VariableMaterialEditor") || VariableMaterial.IsBroken(material)){
 				materials.Add(material);
 			}
 		}

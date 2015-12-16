@@ -34,6 +34,8 @@ Shader "Zios/Standalone/Megashader"{
 		[Header(Shadows)]
 			[KeywordEnum(Off,On)] shadowState("State",Float) = 1
 			//shadowColor("Shadow Color", Color) = (0,0,0,1)
+		[Header(Lightmap)]
+			[KeywordEnum(Off,On)] lightmapState("State",Float) = 1
 		[Header(Visibility)]
 			[KeywordEnum(Off,On)] fadeState("Distance Fade",Float) = 1
 			[KeywordEnum(Off,On)] distanceCull("Distance Cull",Float) = 1
@@ -108,6 +110,9 @@ Shader "Zios/Standalone/Megashader"{
 			#pragma multi_compile SHADOWTYPE_SMOOTH SHADOWTYPE_STEPPED
 			#pragma multi_compile SHADOWMODE_SHADED SHADOWMODE_BLENDED
 			#pragma multi_compile SHADOWBLEND_LERP SHADOWBLEND_MULTIPLY SHADOWBLEND_SUBTRACT
+			#pragma multi_compile LIGHTMAPTYPE_SMOOTH LIGHTMAPTYPE_STEPPED
+			#pragma multi_compile LIGHTMAPMODE_SHADED LIGHTMAPMODE_BLENDED
+			#pragma multi_compile LIGHTMAPBLEND_LERP LIGHTMAPBLEND_MULTIPLY LIGHTMAPBLEND_SUBTRACT
 			#pragma multi_compile __ WARPDISTORT_ON
 			#pragma multi_compile __ TEXTURESTATE_ON
 			#pragma multi_compile __ ATLASSTATE_ON
@@ -118,6 +123,7 @@ Shader "Zios/Standalone/Megashader"{
 			#pragma multi_compile __ DIRECTIONALSTATE_ON
 			#pragma multi_compile __ POINTSTATE_ON
 			#pragma multi_compile __ SHADOWSTATE_ON
+			#pragma multi_compile __ LIGHTMAPSTATE_ON
 			#pragma multi_compile __ FADEGRAYSCALE_ON
 			#pragma target 3.0
 			#pragma fragmentoption ARB_precision_hint_fastest
@@ -129,6 +135,9 @@ Shader "Zios/Standalone/Megashader"{
 				#ifdef TEXTUREMAPPING_UV
 				float4 texcoord      : TEXCOORD0;
 				#endif
+				#ifdef LIGHTMAPSTATE_ON
+				float4 texcoord1     : TEXCOORD1;
+				#endif
 				#ifdef COLORMODE_VERTEX
 				float4 color         : COLOR;
 				#endif
@@ -138,8 +147,8 @@ Shader "Zios/Standalone/Megashader"{
 				#ifdef COLORMODE_VERTEX
 				float4 color         : COLOR;
 				#endif
-				#ifdef TEXTUREMAPPING_UV
-				float2 UV            : TEXCOORD0;
+				#if defined(TEXTUREMAPPING_UV) || defined(LIGHTMAPSTATE_ON)
+				float4 UV            : TEXCOORD0;
 				#endif
 				#ifndef REFLECTIONTYPE_NONE
 				float3 reflectionUV  : TEXCOORD1;
@@ -455,12 +464,11 @@ Shader "Zios/Standalone/Megashader"{
 			fixed shadowFactor;
 			void PrepareShadows(){
 				#ifdef SHADOWSTATE_ON
-					shadowColor = length(shadowColor.rgb) > 0 ? shadowColor : globalShadowColor;
-					#if defined(SHADOWTYPE_SMOOTH)
+					shadowColor = length(shadowColor.rgba) > 0 ? shadowColor : globalShadowColor;
 					shadowIntensity = LIGHT_ATTENUATION(input);
-					#elif defined(SHADOWTYPE_STEPPED)
+					#if defined(SHADOWTYPE_STEPPED)
 					globalShadowSteps = 1.0 / globalShadowSteps;
-					shadowIntensity = SetupStepped(LIGHT_ATTENUATION(input),globalShadowSteps);
+					shadowIntensity = SetupStepped(shadowIntensity,globalShadowSteps);
 					#endif
 					shadowFactor = saturate(((1-shadowIntensity)*shadowColor.a)-pointAverageIntensity);
 				#endif
@@ -496,6 +504,48 @@ Shader "Zios/Standalone/Megashader"{
 						output.color.rgb = lerp(output.color,shadowColor-output.color,shadowFactor);
 					#endif
 				@#endif
+				#endif
+			}
+			//===========================
+			// Lightmap
+			//===========================
+			fixed lightmapIntensity;
+			fixed4 lightmapColor;
+			fixed4 globalLightmapColor;
+			fixed globalLightmapSteps;
+			void SetupLightmap(){
+				#if defined(LIGHTMAPSTATE_ON)
+					lightmapColor = length(lightmapColor.rgba) > 0 ? lightmapColor : globalLightmapColor;
+					lightmapIntensity = 1-saturate(DecodeLightmap(UNITY_SAMPLE_TEX2D(unity_Lightmap,input.UV.zw)));
+					#if defined(LIGHTMAPTYPE_STEPPED)
+					globalLightmapSteps = 1.0 / globalLightmapSteps;
+					lightmapIntensity = SetupStepped(lightmapIntensity,globalLightmapSteps);
+					#endif
+					#if defined(LIGHTMAPMODE_SHADED)
+					if(1-lightmapIntensity > 0){
+						fixed lightmapFactor = saturate((1-lightmapIntensity)*lightmapColor.a);
+						lighting = min(lighting,lighting-lightmapFactor);
+						#if defined(LIGHTMAPBLEND_LERP)
+							shadingUnlitColor.rgb = lerp(shadingUnlitColor,lightmapColor,lightmapFactor);
+						#elif defined(LIGHTMAPBLEND_MULTIPLY)
+							shadingUnlitColor.rgb = lerp(shadingUnlitColor,lightmapColor*shadingUnlitColor,lightmapFactor);
+						#elif defined(LIGHTMAPBLEND_SUBTRACT)
+							shadingUnlitColor.rgb = lerp(shadingUnlitColor,lightmapColor-shadingUnlitColor,lightmapFactor);
+						#endif
+						shadingUnlitColor.a = max(shadingUnlitColor.a,lerp(shadingUnlitColor.a,lightmapColor.a,1-lightmapIntensity));
+					}
+					#endif
+				#endif
+			}
+			void ApplyLightmap(){
+				#if defined(LIGHTMAPSTATE_ON)
+				#if defined(LIGHTMAPBLEND_LERP)
+					output.color.rgb = lerp(output.color,lightmapColor,lightmapIntensity);
+				#elif defined(LIGHTMAPBLEND_MULTIPLY)
+					output.color.rgb = lerp(output.color,lightmapColor*output.color,lightmapIntensity);
+				#elif defined(LIGHTMAPBLEND_SUBTRACT)
+					output.color.rgb = lerp(output.color,lightmapColor-output.color,lightmapIntensity);
+				#endif
 				#endif
 			}
 			//===========================
@@ -556,7 +606,11 @@ Shader "Zios/Standalone/Megashader"{
 				}
 				#endif
 				#ifdef TEXTUREMAPPING_UV
-					output.UV = input.texcoord;
+					output.UV.xy = input.texcoord;
+				#endif
+				#ifdef LIGHTMAPSTATE_ON
+					float2 lightmapUV = input.texcoord1.xy * unity_LightmapST.xy + unity_LightmapST.zw;
+					output.UV.zw = float2(lightmapUV.x,lightmapUV.y);
 				#endif
 				#ifdef REFLECTIONTYPE_SIMPLE
 					float3 view = normalize(ObjSpaceViewDir(input.vertex));
@@ -597,11 +651,13 @@ Shader "Zios/Standalone/Megashader"{
 				UNITY_INITIALIZE_OUTPUT(pixelOutput,output)
 				SetupAtlas();
 				SetupLighting();
+				SetupLightmap();
 				SetupShadows();
 				ApplyColor();
 				ApplyTexture();
 				ApplyTextureTriplanar();
 				ApplyReflection();
+				ApplyLightmap();
 				ApplyShading();
 				ApplyShadows();
 				ApplyFade();

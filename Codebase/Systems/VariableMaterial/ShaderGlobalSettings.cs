@@ -11,6 +11,10 @@ namespace Zios{
 		public ShadowType shadowType = ShadowType.Stepped;
 		public ShadowMode shadowMode;
 		public ShadowBlend shadowBlend;
+		[Header("Lightmap")]
+		public LightmapType lightmapType = LightmapType.Stepped;
+		public LightmapMode lightmapMode;
+		public LightmapBlend lightmapBlend;
 		[Header("Visibility")]
 		public FadeType fadeType;
 		public FadeGrayscale fadeGrayscale;
@@ -34,6 +38,9 @@ namespace Zios{
 				this.SetKeyword(shadowType);
 				this.SetKeyword(shadowMode);
 				this.SetKeyword(shadowBlend);
+				this.SetKeyword(lightmapType);
+				this.SetKeyword(lightmapMode);
+				this.SetKeyword(lightmapBlend);
 				this.SetKeyword(fadeType);
 				this.SetKeyword(fadeBlend);
 				this.SetKeyword(fadeGrayscale);
@@ -73,6 +80,9 @@ namespace Zios{
 	public enum ShadowType{Smooth,Stepped};
 	public enum ShadowMode{Shaded,Blended};
 	public enum ShadowBlend{Lerp,Multiply,Subtract};
+	public enum LightmapType{Smooth,Stepped};
+	public enum LightmapMode{Shaded,Blended};
+	public enum LightmapBlend{Lerp,Multiply,Subtract};
 	public enum FadeGrayscale{Off,On};
 	public enum FadeType{Smooth,Stepped};
 	public enum FadeBlend{Multiply,Add,Lerp,Overlay,Screen,SoftLight,LinearLight};
