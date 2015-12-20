@@ -34,6 +34,8 @@ Shader "Zios/Standalone/Megashader#"{
 		[Header(Shadows)]
 			[KeywordEnum(Off,On)] shadowState("State",Float) = 1
 			//shadowColor("Shadow Color", Color) = (0,0,0,1)
+		[Header(Lightmap)]
+			[KeywordEnum(Off,On)] lightmapState("State",Float) = 1
 		[Header(Visibility)]
 			[KeywordEnum(Off,On)] fadeState("Distance Fade",Float) = 1
 			[KeywordEnum(Off,On)] distanceCull("Distance Cull",Float) = 1
