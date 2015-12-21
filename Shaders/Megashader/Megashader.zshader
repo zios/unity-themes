@@ -1,4 +1,4 @@
-Shader "Zios/Standalone/Megashader"{
+Shader "Zios/Standalone/(Megashader)"{
 	Properties{
 		[Header(General)]
 			baseColor("Color",Color) = (1,1,1,1)
