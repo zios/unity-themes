@@ -70,6 +70,7 @@ namespace Zios{
 				this.UpdateRequirements();
 				this.UpdateOrder();
 			}
+			Utility.SetDirty(this);
 			this.CallEvent("On State Refreshed");
 		}
 		//=============================
@@ -79,35 +80,28 @@ namespace Zios{
 			if(!Application.isPlaying){return;}
 			if(this.advanced){this.UpdateTable(this.tableOff,true);}
 			this.UpdateTable(this.table);
-			Utility.SetDirty(this,false,true);
+			Utility.SetDirty(this);
 			this.CallEvent("On State Updated");
 		}
 		public void UpdateTable(StateRow[] table,bool endTable=false){
-			bool isOwnerUsable = true;
-			if(this.controller.IsEnabled() && !this.manual){
-				bool startMismatch = !endTable && !this.external;
-				bool endMismatch = endTable && !this.external;
-				if(startMismatch || endMismatch){
-					isOwnerUsable = false;
-				}
-			}
+			bool isOwnerUsable = this.controller.IsNull() || this.controller.IsEnabled() && this.external || this.manual;
 			foreach(StateRow row in table){
 				bool isUsable = false;
 				bool isEmpty = true;
-				bool isTable = row.target is StateTable && row.target != this;
+				bool isExternal = row.target is StateTable && row.target != this;
 				StateMonoBehaviour script = row.target;
 				if(!script.IsEnabled()){continue;}
 				if(isOwnerUsable){
 					foreach(StateRowData requirements in row.requirements){
 						foreach(StateRequirement requirement in requirements.data){
 							if(!requirement.target.IsEnabled()){continue;}
-							bool isExternal = requirement.name == "@External";
-							if(isExternal && !this.manual){continue;}
 							bool noRequirements = !requirement.requireOn && !requirement.requireOff;
 							if(noRequirements){continue;}
+							bool isExternalColumn = requirement.name == "@External";
+							if(isExternalColumn && !this.manual){continue;}
 							bool state = requirement.target.active;
 							if(requirement.target.nextState != null){state = (bool)requirement.target.nextState;}
-							if(isExternal){state = this.external;}
+							if(isExternalColumn){state = this.external.Get();}
 							bool mismatchOn = requirement.requireOn && !state;
 							bool mismatchOff = requirement.requireOff && state;
 							isUsable = !(mismatchOn || mismatchOff);
@@ -121,17 +115,12 @@ namespace Zios{
 					isUsable = endTable;
 					isEmpty = false;
 				}
-				var usable = isTable ? row.target.As<StateTable>().external : script.usable;
+				var usable = isExternal ? row.target.As<StateTable>().external : script.usable;
 				bool wasUsable = usable.Get();
-				if(!endTable){isUsable = isUsable || isEmpty;}
-				if(this.advanced && isUsable){
-					usable.Set(endTable ? false : true);
-				}
-				else if(!this.advanced){
-					usable.Set(isUsable);
-				}
+				isUsable = endTable ? !isUsable : isUsable || isEmpty;
+				usable.Set(isUsable);
 				bool changes = isUsable != wasUsable;
-				if(changes && isTable){
+				if(changes && isExternal){
 					var tableTarget = row.target.As<StateTable>();
 					if(tableTarget.IsEnabled()){
 						tableTarget.dirty = true;
