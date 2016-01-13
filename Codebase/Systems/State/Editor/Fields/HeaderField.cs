@@ -8,6 +8,8 @@ namespace Zios.UI{
 			var window = StateWindow.Get();
 			var hidden = !this.target.Equals("") && !window.target.manual && this.target.As<StateRequirement>().name == "@External";
 			if(hidden){return;}
+			var target = this.target is StateRequirement ? this.target.As<StateRequirement>() : null;
+			var script = !target.IsNull() ? target.target.As<StateMonoBehaviour>() : null;
 			var scroll = window.scroll;
 			var label = this.target is string ? new GUIContent("") : new GUIContent(this.target.GetVariable<string>("name"));
 			GUIStyle style = new GUIStyle(GUI.skin.label);
@@ -37,6 +39,24 @@ namespace Zios.UI{
 			if(fieldHovered){
 				background = darkSkin ? "BoxBlackHighlightBlueAWarm" : "BoxBlackHighlightBlueDWarm";
 				textColor = darkSkin ? Colors.Get("ZestyBlue") : Colors.Get("White");
+			}
+			if(Application.isPlaying && !script.IsNull()){
+				textColor = Colors.Get("Gray");
+				background = darkSkin ? "BoxBlackAWarm30" : "BoxWhiteBWarm50";
+				bool usable = target.name == "@External" ? script.As<StateTable>().external : script.usable;
+				bool active = target.name == "@External" ? script.As<StateTable>().external : script.active;
+				if(usable){
+					textColor = darkSkin ? Colors.Get("Silver") : Colors.Get("Black");
+					background = darkSkin ? "BoxBlackA30" : "BoxWhiteBWarm";
+				}
+				if(script.used){
+					textColor = darkSkin ? Colors.Get("White") : Colors.Get("White");
+					background = darkSkin ? "BoxBlackHighlightYellowAWarm" : "BoxBlackHighlightYellowDWarm";
+				}
+				if(active){
+					textColor = darkSkin ? Colors.Get("White") : Colors.Get("White");
+					background = darkSkin ? "BoxBlackHighlightPurpleAWarm" : "BoxBlackHighlightPurpleDWarm";
+				}
 			}
 			style.normal.textColor = textColor;
 			style.normal.background = FileManager.GetAsset<Texture2D>(background);

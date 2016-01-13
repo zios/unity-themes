@@ -75,13 +75,16 @@ namespace Zios{
 				else if(value is Vector2 && this.method is MethodVector2){((MethodVector2)this.method)((Vector2)value);}
 				else if(value is Vector3 && this.method is MethodVector3){((MethodVector3)this.method)((Vector3)value);}
 			}
-			if(Events.buffer["debugTime"] && Events.buffer["debugDeep"]){
-				duration = Time.realtimeSinceStartup - duration;
-				if(duration > 0.001f || Events.debug.Has("CallTimerZero")){
-					string time = duration.ToString("F10").TrimRight("0",".").Trim() + " seconds.";
-					string message = "[Events] : " + name + " -- " + Events.GetMethodName(this.method) + " -- " + time;
-					Debug.Log(message,target as UnityObject);
+			if(Events.buffer["debugDeep"]){
+				string message = "[Events] : " + name + " -- " + Events.GetMethodName(this.method);
+				if(Events.buffer["debugTime"]){
+					duration = Time.realtimeSinceStartup - duration;
+					if(duration > 0.001f || Events.debug.Has("CallTimerZero")){
+						string time = duration.ToString("F10").TrimRight("0",".").Trim() + " seconds.";
+						message = message + " -- " + time;
+					}
 				}
+				Debug.Log(message,target as UnityObject);
 			}
 			Events.stack.Remove(this);
 		}
