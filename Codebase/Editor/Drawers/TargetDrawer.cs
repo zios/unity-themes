@@ -12,6 +12,7 @@ namespace Zios.UI{
 			TargetDrawer.Draw(area,target,label);
 		}
 		public static void Draw(Rect area,Target target,GUIContent label){
+			if(target.parent.IsNull()){return;}
 			Rect toggleRect = new Rect(area);
 			Rect propertyRect = new Rect(area);
 			float labelWidth = label.text.IsEmpty() ? 0 : EditorGUIUtility.labelWidth;
@@ -25,6 +26,7 @@ namespace Zios.UI{
 				target.mode = target.mode == TargetMode.Direct ? TargetMode.Search : TargetMode.Direct;
 			}
 			label.DrawLabel(area,null,true);
+			Utility.RecordObject(target.parent,"Target Changes");
 			if(target.mode == TargetMode.Direct){
 				target.directObject = target.directObject.Draw<GameObject>(propertyRect,"",true);
 			}

@@ -107,7 +107,6 @@ namespace Zios{
 		[NonSerialized] public static string stepperMessage;
 		public static FixedList<string> eventHistory = new FixedList<string>(15);
 		public static List<EventListener> stack = new List<EventListener>();
-		public static Dictionary<string,bool> buffer = new Dictionary<string,bool>();
 		private bool setup;
 		public static bool IsSetup(){return !Events.instance.IsNull() && Events.instance.setup;}
 		public override void Awake(){
@@ -368,13 +367,13 @@ namespace Zios{
 			bool hasEvents = Events.Exists(target,name);
 			var events = hasEvents ? Events.cache[target][name] : null;
 			int count = hasEvents ? events.Count : 0;
-			bool canDebug = Events.buffer["canDebug"] = Events.CanDebug(target,name,count);
-			bool debugTime = Events.buffer["debugTime"] = canDebug && Events.debug.Has("CallTimer");
-			bool debugDeep = Events.buffer["debugDeep"] = canDebug && Events.debug.Has("CallDeep");
+			bool canDebug = Events.CanDebug(target,name,count);
+			bool debugDeep = canDebug && Events.debug.Has("CallDeep");
+			bool debugTime = canDebug && Events.debug.Has("CallTimer");
 			float duration = Time.realtimeSinceStartup;
 			if(hasEvents){
 				foreach(var item in events.Copy()){
-					item.Value.Call(values);
+					item.Value.Call(debugDeep,debugTime,values);
 				}
 			}
 			if(debugTime && (!debugDeep || count < 1)){

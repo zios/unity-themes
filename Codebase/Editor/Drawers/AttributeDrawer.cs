@@ -89,17 +89,19 @@ namespace Zios.UI{
 				this.skin = FileManager.GetAsset<GUISkin>("Gentleface-" + skinName + ".guiskin");
 				this.attribute = property.GetObject<Attribute>();
 			}
-			this.activeDataset = this.attribute.info.data;
+			var info = this.attribute.info;
+			this.activeDataset = info.data;
 			GUI.skin = this.skin;
 			this.drawer = drawer;
 			this.property = property;
 			this.label = label;
 			Rect fullRect = area.SetHeight(EditorGUIUtility.singleLineHeight);
 			this.SetupAreas(fullRect);
-			//Undo.RecordObject(this.attribute.info.parent,"Attribute Changes");
+			Utility.RecordObject(info.parent,"Attribute Changes");
 			this.Draw();
 			if(GUI.changed || this.dirty){
-				this.attribute.info.parent.DelayEvent(this.attribute.info.fullPath,"On Validate",1);
+				this.attribute.Setup(info.relativePath,info.parent);
+				info.parent.DelayEvent(info.fullPath,"On Validate",1);
 				property.serializedObject.Update();
 				Utility.SetDirty(property.serializedObject.targetObject);
 				Utility.RepaintInspectors();

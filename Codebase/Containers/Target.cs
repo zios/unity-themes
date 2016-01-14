@@ -27,6 +27,10 @@ namespace Zios{
 			}
 			return result;
 		}
+		public void Clear(){
+			Events.Remove("On Validate",this.Search,parent);
+			Events.Remove("On Hierarchy Changed",this.Search,parent);
+		}
 		public void Setup(string path,Component parent){
 			this.path = parent.GetPath() + "/" + path;
 			this.parent = parent;

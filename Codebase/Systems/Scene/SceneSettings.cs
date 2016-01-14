@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
 namespace Zios{
 	[AddComponentMenu("Zios/Singleton/Scene Settings")][ExecuteInEditMode]
 	public class SceneSettings : MonoBehaviour{

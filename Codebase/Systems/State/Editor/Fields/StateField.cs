@@ -44,6 +44,7 @@ namespace Zios.UI{
 		}
 		public override void Clicked(int button){
 			var window = StateWindow.Get();
+			Utility.RecordObject(window.target,"State Window - Field Toggle");
 			this.row.selected = false;
 			int state = 0;
 			var requirement = (StateRequirement)this.target;
@@ -56,7 +57,7 @@ namespace Zios.UI{
 			requirement.requireOff = false;
 			if(state == 1){requirement.requireOn = true;}
 			if(state == 2){requirement.requireOff = true;}
-			Utility.SetDirty(window.target,false,true);
+			Utility.SetDirty(window.target);
 			window.target.UpdateStates();
 			window.Repaint();
 		}

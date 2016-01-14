@@ -13,6 +13,7 @@ namespace Zios{
 		public string name;
 		public string path;
 		public string fullPath;
+		public string relativePath;
 		public string id;
 		public string localID;
 		public Component parent;
@@ -165,6 +166,7 @@ namespace Zios{
 		public override void Add<Type>(int index=-1,string set=""){
 			this.isDefault = false;
 			if(this.info.parent != null){
+				Utility.RecordObject(this.info.parent,"Attribute - Add Data");
 				if(set.IsEmpty()){set = this.defaultSet;}
 				if(set == "A"){this.info.data = this.CreateData<Type>(this.info.data,index);}
 				if(set == "B"){this.info.dataB = this.CreateData<Type>(this.info.dataB,index);}
@@ -217,7 +219,9 @@ namespace Zios{
 			this.isSetup = true;
 		}
 		public void BuildInfo(string path,Component parent){
+			Utility.RecordObject(parent,"Attribute - Info Changes");
 			string previousID = this.info.id;
+			this.info.relativePath = path;
 			path = (parent.GetAlias() + "/" + path.Trim("/")).Trim("/");
 			bool dirty = this.info.parent != parent;
 			dirty = dirty || this.info.path != path;
@@ -261,6 +265,7 @@ namespace Zios{
 						if(resolve.ContainsKey(target) && resolve[target].ContainsKey(data.referenceID)){
 							string resolvedID = resolve[target][data.referenceID];
 							if(resolvedID != data.referenceID){
+								Utility.RecordObject(this.info.parent,"Attribute - Fix ID");
 								data.referenceID = resolvedID;
 								Utility.SetDirty(this.info.parent);
 							}
@@ -279,6 +284,8 @@ namespace Zios{
 									string message = "[Attribute] ID missing : " + data + ".  Resolved via path : " + data.referencePath;
 									Debug.Log(message,this.info.parent.gameObject);
 								}
+								Utility.RecordObject(this.info.parent,"Attribute - Fix Reference");
+								Utility.RecordObject(attribute.Value.info.parent,"Attribute - Fix Reference");
 								data.referenceID = attribute.Value.info.id;
 								data.reference = attribute.Value;
 								Utility.SetDirty(this.info.parent);
@@ -324,6 +331,7 @@ namespace Zios{
 		// Repair
 		// ======================
 		public void FixDuplicates(){
+			Utility.RecordObject(this.info.parent,"Attribute - Fix Duplicates");
 			GameObject current = this.info.parent.gameObject;
 			string path = this.info.path;
 			string name = current.name;
@@ -402,9 +410,8 @@ namespace Zios{
 					Events.Add("On Enter Play",data.Serialize);
 					Events.Add("On Scene Saving",data.Serialize);
 				}
-				if(data.usage == AttributeUsage.Shaped){
-					data.target.Setup(index + "/Target",this.info.parent);
-				}
+				if(data.usage == AttributeUsage.Shaped){data.target.Setup(index + "/Target",this.info.parent);}
+				if(data.usage == AttributeUsage.Direct){data.target.Clear();}
 				data.attribute = this.info;
 				data.path = this.info.fullPath + "/" + index;
 			}

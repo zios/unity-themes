@@ -103,10 +103,12 @@ namespace Zios{
 		[MenuItem ("Zios/Process/Action/Reset Manual Input")]
 		public static void FixManualIntensity(){
 			foreach(var script in Locate.GetSceneComponents<InputHeld>()){
+				Utility.RecordObject(script,"Reset Manual Input");
 				script.manual.Set(Mathf.Infinity);
 				Utility.SetDirty(script);
 			}
 			foreach(var script in Locate.GetSceneComponents<InputPressed>()){
+				Utility.RecordObject(script,"Reset Manual Input");
 				script.manual.Set(Mathf.Infinity);
 				Utility.SetDirty(script);
 			}

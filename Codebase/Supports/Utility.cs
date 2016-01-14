@@ -359,6 +359,14 @@ namespace Zios{
 			return Application.isPlaying;
 		}
 		//============================
+		// Proxy - Undo
+		//============================
+		public static void RecordObject(UnityObject target,string name){
+			#if UNITY_EDITOR
+			Undo.RecordObject(target,name);
+			#endif
+		}
+		//============================
 		// Proxy - Other
 		//============================
 		public static void UpdateSelection(){
@@ -442,7 +450,6 @@ namespace Zios{
 			}
 			EditorUtility.SetDirty(target);
 			Utility.UpdatePrefab(target);
-			EditorApplication.MarkSceneDirty();
 			#endif
 		}
 		public static void SetAssetDirty(UnityObject target){

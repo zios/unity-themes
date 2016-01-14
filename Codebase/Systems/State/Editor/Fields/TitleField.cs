@@ -28,11 +28,13 @@ namespace Zios.UI{
 				var menu = new GenericMenu();
 				MenuFunction markDirty = ()=>Utility.SetDirty(window.target);
 				MenuFunction toggleAdvanced = ()=>{
+					Utility.RecordObject(window.target,"State Window - Advanced Toggle");
 					window.target.advanced = !window.target.advanced;
 					window.tableIndex = 0;
 					window.BuildTable();
 				};
 				MenuFunction toggleManual = ()=>{
+					Utility.RecordObject(window.target,"State Window - Manual Toggle");
 					window.target.manual = !window.target.manual;
 					window.BuildTable();
 				};

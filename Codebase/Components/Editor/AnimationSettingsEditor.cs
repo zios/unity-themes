@@ -33,6 +33,7 @@ namespace Zios.UI{
 					Events.Pause("On Hierarchy Changed");
 				}
 				if(GUI.changed){
+					Utility.RecordObject(this.target,"Animation Settings Changed");
 					config.Apply();
 					Utility.SetDirty(this.target);
 				}

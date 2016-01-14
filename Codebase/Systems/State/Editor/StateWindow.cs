@@ -108,6 +108,7 @@ namespace Zios.UI{
 			if(prompted){
 				int state = "Group Name?".DrawPrompt(ref this.newSection);
 				if(state > 0){
+					Utility.RecordObject(this.target,"State Window - Group Assignment");
 					var selected = this.tableGUI.rows.Where(x=>x.selected).ToArray();
 					foreach(var row in selected){
 						row.target.As<StateRow>().section = this.newSection;
@@ -167,6 +168,7 @@ namespace Zios.UI{
 		}
 		public void UngroupSelected(){
 			var selected = this.tableGUI.rows.Where(x=>x.selected).ToArray();
+			Utility.RecordObject(this.target,"State Window - Group Assignment");
 			foreach(var row in selected){
 				var stateRow = (StateRow)row.target;
 				stateRow.section = "";

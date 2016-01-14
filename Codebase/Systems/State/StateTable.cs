@@ -22,14 +22,13 @@ namespace Zios{
 			Events.Register("On State Updated",this);
 			Events.Register("On State Refreshed",this);
 			Events.Add("On State Update",this.UpdateStates,this);
-			Events.Add("On State Refresh",this.Refresh,this);
 			Events.Add("On Start",StateTable.RefreshTables);
 			if(!Application.isPlaying){
 				Events.Add("On Hierarchy Changed",StateTable.RefreshTables);
 				Events.Add("On Components Changed",StateTable.RefreshTables,this.gameObject);
 			}
 			this.external.Setup("External",this);
-			this.external.Set(true);
+			this.external.Set(false);
 		}
 		public override void Step(){
 			base.Step();
@@ -62,6 +61,7 @@ namespace Zios{
 			if(Application.isPlaying){return;}
 			if(!this.controller.IsEnabled()){this.controller = null;}
 			if(!this.IsEnabled()){return;}
+			Utility.RecordObject(this,"State Table - Refresh");
 			this.UpdateScripts();
 			if(this.scripts.Count > 0){
 				this.UpdateTableList();
@@ -80,7 +80,6 @@ namespace Zios{
 			if(!Application.isPlaying){return;}
 			if(this.advanced){this.UpdateTable(this.tableOff,true);}
 			this.UpdateTable(this.table);
-			Utility.SetDirty(this);
 			this.CallEvent("On State Updated");
 		}
 		public void UpdateTable(StateRow[] table,bool endTable=false){

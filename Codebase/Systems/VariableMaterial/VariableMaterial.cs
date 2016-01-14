@@ -121,6 +121,7 @@ public class VariableMaterial{
 			string folderPath = projectPath+"/"+shaderFile.name+"/";
 			string outputPath = folderPath+shaderFile.name+"#"+hash+".shader";
 			Action update = ()=>{
+				Utility.RecordObject(material,"Variable Material - Shader Set");
 				material.EnableKeyword("VARIABLE_MATERIAL_"+shaderFile.name.ToUpper());
 				material.shader = FileManager.GetAsset<Shader>(outputPath);
 				Utility.SetAssetDirty(material);
