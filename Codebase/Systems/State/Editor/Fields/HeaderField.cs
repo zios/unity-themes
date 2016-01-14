@@ -43,8 +43,8 @@ namespace Zios.UI{
 			if(Application.isPlaying && !script.IsNull()){
 				textColor = Colors.Get("Gray");
 				background = darkSkin ? "BoxBlackAWarm30" : "BoxWhiteBWarm50";
-				bool usable = target.name == "@External" ? script.As<StateTable>().external : script.usable;
-				bool active = target.name == "@External" ? script.As<StateTable>().external : script.active;
+				bool usable = target.name == "@External" ? window.target.external : script.usable;
+				bool active = target.name == "@External" ? window.target.external : script.active;
 				if(usable){
 					textColor = darkSkin ? Colors.Get("Silver") : Colors.Get("Black");
 					background = darkSkin ? "BoxBlackA30" : "BoxWhiteBWarm";

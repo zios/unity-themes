@@ -28,7 +28,6 @@ namespace Zios{
 				Events.Add("On Components Changed",StateTable.RefreshTables,this.gameObject);
 			}
 			this.external.Setup("External",this);
-			this.external.Set(false);
 		}
 		public override void Step(){
 			base.Step();
@@ -86,8 +85,8 @@ namespace Zios{
 			bool isOwnerUsable = this.controller.IsNull() || this.controller.IsEnabled() && this.external || this.manual;
 			foreach(StateRow row in table){
 				bool isUsable = false;
-				bool isEmpty = true;
-				bool isExternal = row.target is StateTable && row.target != this;
+				bool isEmpty = isOwnerUsable;
+				bool isChild = row.target is StateTable && row.target != this;
 				StateMonoBehaviour script = row.target;
 				if(!script.IsEnabled()){continue;}
 				if(isOwnerUsable){
@@ -110,16 +109,17 @@ namespace Zios{
 						if(isUsable){break;}
 					}
 				}
-				else{
-					isUsable = endTable;
-					isEmpty = false;
-				}
-				var usable = isExternal ? row.target.As<StateTable>().external : script.usable;
+				var usable = isChild ? row.target.As<StateTable>().external : script.usable;
+				bool automaticOff = endTable && !this.manual && !isOwnerUsable;
 				bool wasUsable = usable.Get();
-				isUsable = endTable ? !isUsable : isUsable || isEmpty;
-				usable.Set(isUsable);
-				bool changes = isUsable != wasUsable;
-				if(changes && isExternal){
+				if(automaticOff){isUsable = true;}
+				if(!endTable){isUsable = isUsable || isEmpty;}
+				if((this.advanced && isUsable) || !this.advanced){
+					if(endTable){isUsable = !isUsable;}
+					usable.Set(isUsable);
+				}
+				bool changes = usable.Get() != wasUsable;
+				if(changes && isChild){
 					var tableTarget = row.target.As<StateTable>();
 					if(tableTarget.IsEnabled()){
 						tableTarget.dirty = true;
