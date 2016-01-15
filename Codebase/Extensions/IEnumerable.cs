@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System;
 using System.Linq;
 namespace Zios{
 	public static class IEnumerableExtension{
@@ -17,6 +18,18 @@ namespace Zios{
 		}
 		public static HashSet<T> ToHashSet<T>(this IEnumerable<T> current){
 		   return new HashSet<T>(current);
+		}
+		//=======================
+		// LINQ-ish
+		//=======================
+		public static List<Type> If<Type>(this IEnumerable<Type> current,Func<Type,bool> comparer){
+			var results = new List<Type>();
+			foreach(var item in current){
+				if(comparer(item)){
+					results.Add(item);
+				}
+			}
+			return results;
 		}
 		//=======================
 		// String

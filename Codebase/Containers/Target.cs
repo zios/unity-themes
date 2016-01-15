@@ -10,6 +10,7 @@ namespace Zios{
 		public static string defaultSearch = "[Self]";
 		private List<GameObject> special = new List<GameObject>();
 		private List<string> specialNames = new List<string>();
+		public bool disabled;
 		public string search = "";
 		public GameObject directObject;
 		public GameObject searchObject;
@@ -28,10 +29,14 @@ namespace Zios{
 			return result;
 		}
 		public void Clear(){
-			Events.Remove("On Validate",this.Search,parent);
-			Events.Remove("On Hierarchy Changed",this.Search,parent);
+			if(!this.disabled){
+				Events.Remove("On Validate",this.Search,this.parent);
+				Events.Remove("On Hierarchy Changed",this.Search,this.parent);
+				this.disabled = true;
+			}
 		}
 		public void Setup(string path,Component parent){
+			this.disabled = false;
 			this.path = parent.GetPath() + "/" + path;
 			this.parent = parent;
 			if(!Application.isPlaying){

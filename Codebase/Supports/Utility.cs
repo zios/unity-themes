@@ -126,7 +126,7 @@ namespace Zios{
 			var serialized = Utility.GetSerializedObject(target);
 			serialized.Update();
 			serialized.ApplyModifiedProperties();
-			Utility.UpdatePrefab(target);
+			//Utility.UpdatePrefab(target);
 		}
 		public static EditorWindow[] GetInspectors(){
 			if(Utility.inspectors == null){
@@ -449,7 +449,7 @@ namespace Zios{
 				return;
 			}
 			EditorUtility.SetDirty(target);
-			Utility.UpdatePrefab(target);
+			//Utility.UpdatePrefab(target);
 			#endif
 		}
 		public static void SetAssetDirty(UnityObject target){

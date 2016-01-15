@@ -35,8 +35,8 @@ namespace Zios{
 					Debug.Log("[Events] : Auto-creating Events Manager GameObject.");
 					Events.instance = path.AddComponent<Events>();
 				}
+				Events.Cleanup();
 			}
-			Events.Cleanup();
 		}
 	}
 	#endif

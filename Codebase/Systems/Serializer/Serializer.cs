@@ -157,15 +157,9 @@ namespace Zios{
 				if(wasSaved){empty = false;}
 			}
 			this.Add("}");
-			if(!empty){
+			if(File.Exists(filePath) || !empty){
 				Directory.CreateDirectory(path);
 				File.WriteAllText(filePath,this.contents.ToString());
-				return;
-			}
-			if(File.Exists(filePath)){
-				if(this.debug.Has("Save")){Debug.Log("[Serializer] : Removing " + type.Name + ".static");}
-				File.Delete(filePath);
-				File.Delete(filePath+".meta");
 			}
 		}
 		public bool Save(string name,object value){

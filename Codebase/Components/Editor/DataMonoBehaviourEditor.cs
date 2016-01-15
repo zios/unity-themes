@@ -43,9 +43,9 @@ namespace Zios.UI{
 						EditorGUIUtility.AddCursorRect(area,MouseCursor.Link);
 						if(area.Clicked(0) && dependent.method != null){
 							dependent.method();
-							this.Repaint();
 						}
 					}
+					Utility.EditorDelayCall(this.Repaint,0.25f);
 				}
 			}
 			if(!Application.isPlaying && targetsMissing){

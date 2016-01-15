@@ -18,7 +18,7 @@ namespace Zios{
 		[NonSerialized] public bool dirty;
 		public override void Awake(){
 			base.Awake();
-			this.alias = this.gameObject.name.Contains("Main") ? this.transform.parent.name : this.gameObject.name;
+			this.alias = this.gameObject.name.Contains("Main") && !this.transform.parent.IsNull() ? this.transform.parent.name : this.gameObject.name;
 			Events.Register("On State Updated",this);
 			Events.Register("On State Refreshed",this);
 			Events.Add("On State Update",this.UpdateStates,this);

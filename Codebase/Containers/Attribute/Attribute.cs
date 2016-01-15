@@ -198,6 +198,7 @@ namespace Zios{
 		// ======================
 		// Setup
 		// ======================
+		public void Reset(){this.Setup(this.info.relativePath,this.info.parent);}
 		public override void Setup(string path,Component parent){
 			bool disabled = parent.IsNull() || (Application.isPlaying && !parent.IsEnabled());
 			if(disabled){return;}
@@ -209,7 +210,7 @@ namespace Zios{
 					this.FixChanged(previousID);
 				}
 				Events.Add("On Validate",this.ValidateDependents,parent);
-				Events.AddLimited("On Reset",()=>this.Setup(path,parent),1,parent);
+				Events.AddLimited("On Reset",this.Reset,1,parent);
 			}
 			this.info.type = typeof(DataType);
 			this.PrepareData();
