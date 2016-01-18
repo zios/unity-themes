@@ -42,13 +42,8 @@ namespace Zios{
 	[AddComponentMenu("Zios/Component/Physics/Collider Controller")]
 	public class ColliderController : ManagedMonoBehaviour{
 		private static Dictionary<GameObject,ColliderController> instances = new Dictionary<GameObject,ColliderController>();
-		private static Collider[] triggers;
-		private static bool triggerSetup;
 		public static ColliderController Get(GameObject gameObject){
 			return ColliderController.instances[gameObject];
-		}
-		public static bool HasTrigger(Collider collider){
-			return Array.IndexOf(ColliderController.triggers,collider) != -1;
 		}
 		private Dictionary<GameObject,CollisionData> collisions = new Dictionary<GameObject,CollisionData>();
 		private Dictionary<GameObject,CollisionData> frameCollisions = new Dictionary<GameObject,CollisionData>();
@@ -101,26 +96,12 @@ namespace Zios{
 			Events.Register("On Trigger",this.gameObject);
 			Events.Register("On Collide",this.gameObject);
 			if(Application.isPlaying){
-				if(this.GetComponent<Rigidbody>() == null){
-					this.gameObject.AddComponent<Rigidbody>();
-				}
-				this.GetComponent<Rigidbody>().useGravity = false;
-				this.GetComponent<Rigidbody>().freezeRotation = this.mode != ColliderMode.Sweep;
-				this.GetComponent<Rigidbody>().isKinematic = this.mode == ColliderMode.Sweep;
+				var body = this.gameObject.AddComponent<Rigidbody>();
+				body.useGravity = false;
+				body.freezeRotation = true;
+				body.isKinematic = false;
 				this.CheckActive("Sleep");
 				ColliderController.instances[this.gameObject] = this;
-				if(!ColliderController.triggerSetup){
-					Collider[] colliders = (Collider[])Resources.FindObjectsOfTypeAll(typeof(Collider));
-					List<Collider> triggers = new List<Collider>();
-					foreach(Collider collider in colliders){
-						if(collider.isTrigger){
-							collider.isTrigger = false;
-							triggers.Add(collider);
-						}
-					}
-					ColliderController.triggers = triggers.ToArray();
-					ColliderController.triggerSetup = true;
-				}
 				Time.fixedDeltaTime = this.fixedTimestep;
 			}
 		}
@@ -202,33 +183,29 @@ namespace Zios{
 			Vector3 direction = move.normalized;
 			float distance = Vector3.Distance(startPosition,startPosition+move) + this.hoverDistance*2;
 			bool contact = this.GetComponent<Rigidbody>().SweepTest(direction,out hit,distance);
-			bool isTrigger = ColliderController.HasTrigger(hit.collider);
-			if(this.CheckSlope(current)){return;}
-			if(contact && this.CheckSlope(current,hit)){return;}
-			if(contact){
-				if(this.CheckStep(current)){return;}
-				if(isTrigger){
-					hit.transform.gameObject.CallEvent("On Trigger",this.GetComponent<Collider>());
-					return;
-				}
-				this.SetPosition(this.GetComponent<Rigidbody>().position + (direction * (hit.distance-this.hoverDistance*2)));
-				CollisionData otherCollision = new CollisionData(this,this.gameObject,-direction,distance,false);
-				CollisionData selfCollision = new CollisionData(this,hit.transform.gameObject,direction,distance,true);
-				if(direction.z > 0){this.blocked.forward.Set(true);}
-				if(direction.z < 0){this.blocked.back.Set(true);}
-				if(direction.y > 0){this.blocked.up.Set(true);}
-				if(direction.y < 0){this.blocked.down.Set(true);}
-				if(direction.x > 0){this.blocked.right.Set(true);}
-				if(direction.x < 0){this.blocked.left.Set(true);}
-				GameObject hitObject = hit.transform.gameObject;
-				hitObject.CallEvent("On Collision",otherCollision);
-				this.gameObject.CallEvent("On Collision",selfCollision);
-				if(!this.frameCollisions.ContainsKey(hitObject)){
-					this.frameCollisions[hitObject] = otherCollision;
-				}
-			}
-			else{
+			bool isTrigger = !hit.collider.IsNull() ? hit.collider.isTrigger : false;
+			if(!contact || isTrigger){
+				if(isTrigger){hit.transform.gameObject.CallEvent("On Trigger",this.GetComponent<Collider>());}
 				this.SetPosition(startPosition + move);
+				return;
+			}
+			if(this.CheckSlope(current)){return;}
+			if(this.CheckSlope(current,hit)){return;}
+			if(this.CheckStep(current)){return;}
+			this.SetPosition(this.GetComponent<Rigidbody>().position + (direction * (hit.distance-this.hoverDistance*2)));
+			CollisionData otherCollision = new CollisionData(this,this.gameObject,-direction,distance,false);
+			CollisionData selfCollision = new CollisionData(this,hit.transform.gameObject,direction,distance,true);
+			if(direction.z > 0){this.blocked.forward.Set(true);}
+			if(direction.z < 0){this.blocked.back.Set(true);}
+			if(direction.y > 0){this.blocked.up.Set(true);}
+			if(direction.y < 0){this.blocked.down.Set(true);}
+			if(direction.x > 0){this.blocked.right.Set(true);}
+			if(direction.x < 0){this.blocked.left.Set(true);}
+			GameObject hitObject = hit.transform.gameObject;
+			hitObject.CallEvent("On Collision",otherCollision);
+			this.gameObject.CallEvent("On Collision",selfCollision);
+			if(!this.frameCollisions.ContainsKey(hitObject)){
+				this.frameCollisions[hitObject] = otherCollision;
 			}
 		}
 		private bool CheckSlope(Vector3 current,RaycastHit slopeHit){
@@ -298,9 +275,7 @@ namespace Zios{
 			this.GetComponent<Rigidbody>().MovePosition(position);
 		}
 		private void CheckActive(string state){
-			if(this.mode == ColliderMode.Sweep){
-				if(state == "Sleep"){this.GetComponent<Rigidbody>().Sleep();}
-			}
+			if(state == "Sleep"){this.GetComponent<Rigidbody>().Sleep();}
 			if(state == "Wake"){this.GetComponent<Rigidbody>().WakeUp();}
 		}
 		private void CheckBlocked(){
