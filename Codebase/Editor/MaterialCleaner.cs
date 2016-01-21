@@ -75,7 +75,7 @@ namespace Zios{
 			if(last){
 				if(!MaterialCleaner.changes){Debug.Log("[MaterialCleaner] : All files already clean.");}
 				else{Debug.Log("[MaterialCleaner] : Cleaned all materials.");}
-				Utility.EditorDelayCall(()=>AssetDatabase.Refresh(),1);
+				Utility.DelayCall(()=>AssetDatabase.Refresh(),1);
 			}
 		}
 	}

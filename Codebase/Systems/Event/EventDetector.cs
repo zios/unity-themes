@@ -21,6 +21,8 @@ namespace Zios{
 			Events.Register("On Awake");
 			Events.Register("On Start");
 			Events.Register("On Update");
+			Events.Register("On Fixed Update");
+			Events.Register("On Late Update");
 			Events.Register("On Enable");
 			Events.Register("On Disable");
 			Events.Register("On GUI");
@@ -48,6 +50,8 @@ namespace Zios{
 			}
 			Events.Call("On Update");
 		}
+		public virtual void FixedUpdate(){Events.Call("On Fixed Update");}
+		public virtual void LateUpdate(){Events.Call("On Late Update");}
 		public virtual void OnPlayerConnected(){Events.Call("On Player Connected");}
 		public virtual void OnPlayerDisconnected(){Events.Call("On Player Disconnected");}
 		public virtual void OnLevelWasLoaded(int level){Events.Call("On Level Was Loaded",level);}

@@ -11,7 +11,7 @@ namespace Zios{
 			this.name.Setup(name+"/Name",component);
 			this.target.Setup(name+"/Target",component);
 		}
-		public void SetupCatch(Method method){
+		public void Listen(Method method){
 			GameObject target = this.target.Get();
 			if(!this.name.IsEmpty() && !target.IsNull()){
 				Events.Add(this.name,method,target);

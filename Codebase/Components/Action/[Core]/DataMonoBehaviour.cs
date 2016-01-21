@@ -9,8 +9,8 @@ using UnityEditor;
 namespace Zios{
 	[ExecuteInEditMode][AddComponentMenu("")]
 	public class DataMonoBehaviour : MonoBehaviour{
-		public static GameObject[] sorting;
-		public static int processIndex;
+		private static GameObject[] sorting;
+		private static int processIndex;
 		[Internal] public string parentPath;
 		[Internal] public string path;
 		public string alias;
@@ -106,11 +106,18 @@ namespace Zios{
 				}
 			}
 		}
+		//===============
+		// Editor - Dependents
+		//===============
+		public void RemoveDependent<Type>() where Type : Component{this.RemoveDependent<Type>(this.gameObject);}
+		public void RemoveDependent<Type>(object target) where Type : Component{this.RemoveDependent(target,typeof(Type));}
+		public void RemoveDependent(object target,params Type[] types){this.dependents.RemoveAll(x=>Enumerable.SequenceEqual(x.types,types));}
 		public void AddDependent<Type>() where Type : Component{this.AddDependent<Type>(this.gameObject,true);}
 		public void AddDependent<Type>(object target,bool isScript=false) where Type : Component{
 			this.AddDependent(target,isScript,typeof(Type));
 		}
 		public void AddDependent(object target,bool isScript=false,params Type[] types){
+			if(!Application.isEditor){return;}
 			if(this.dependents.Exists(x=>Enumerable.SequenceEqual(x.types,types))){return;}
 			Method delayAdd = ()=>this.DelayAddDependent(target,isScript,types);
 			Events.AddLimited("On Attributes Ready",delayAdd,1);
@@ -125,10 +132,10 @@ namespace Zios{
 			dependent.scriptName = isScript ? this.GetType().Name : "";
 			dependent.message = "[target] is missing required component : [type]. Click here to add.";
 			this.dependents.AddNew(dependent);
-			Utility.EditorDelayCall(this.CheckDependents);
+			Utility.DelayCall(this.CheckDependents);
 		}
 		//===============
-		// Sorting
+		// Editor - Sorting
 		//===============
 		#if UNITY_EDITOR
 		[MenuItem("Zios/Process/GameObject/Apply Prefab (Selected) %4")]
@@ -155,13 +162,16 @@ namespace Zios{
 			Events.Pause("On Hierarchy Changed");
 			int index = DataMonoBehaviour.processIndex;
 			var sorting = DataMonoBehaviour.sorting;
-			var current = DataMonoBehaviour.sorting[index];
-			float total = (float)index/sorting.Length;
-			string message = index + " / " + sorting.Length + " -- " + current.GetPath();
-			bool canceled = EditorUtility.DisplayCancelableProgressBar("Sorting All Components",message,total);
-			current.PauseValidate();
-			DataMonoBehaviour.SortSmartTarget(current);
-			current.ResumeValidate();
+			bool canceled = true;
+			if(index < DataMonoBehaviour.sorting.Length-1){
+				var current = DataMonoBehaviour.sorting[index];
+				float total = (float)index/sorting.Length;
+				string message = index + " / " + sorting.Length + " -- " + current.GetPath();
+				canceled = EditorUtility.DisplayCancelableProgressBar("Sorting All Components",message,total);
+				current.PauseValidate();
+				DataMonoBehaviour.SortSmartTarget(current);
+				current.ResumeValidate();
+			}
 			DataMonoBehaviour.processIndex += 1;
 			if(canceled || index+1 > sorting.Length-1){
 				EditorUtility.ClearProgressBar();

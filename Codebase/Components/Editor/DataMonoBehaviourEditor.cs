@@ -45,7 +45,7 @@ namespace Zios.UI{
 							dependent.method();
 						}
 					}
-					Utility.EditorDelayCall(this.Repaint,0.25f);
+					Utility.DelayCall(this.Repaint,0.25f);
 				}
 			}
 			if(!Application.isPlaying && targetsMissing){

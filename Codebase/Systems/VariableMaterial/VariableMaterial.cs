@@ -228,7 +228,7 @@ public class VariableMaterial{
 			Debug.Log("[VariableMaterial] " + originalName + " -- " + targets.Length + " flattened.");
 		}
 		if(VariableMaterial.delay){
-			Utility.EditorDelayCall(VariableMaterial.RefreshEditor,0.5f);
+			Utility.DelayCall(VariableMaterial.RefreshEditor,0.5f);
 			return;
 		}
 		VariableMaterial.RefreshEditor();

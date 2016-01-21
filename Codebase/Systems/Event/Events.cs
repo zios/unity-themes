@@ -235,7 +235,7 @@ namespace Zios{
 						Debug.Log("[Events] : Adding event -- " + Events.GetMethodName(info) + " -- " + name,target as UnityObject);
 					}
 					Events.listeners.Add(listener);
-					Utility.EditorDelayCall(Events.OnEventsChanged);
+					Utility.DelayCall(Events.OnEventsChanged);
 				}
 				else{
 					listener = Events.cache[target][name].AddNew(method);
@@ -281,7 +281,7 @@ namespace Zios{
 				var removals = Events.listeners.Where(x=>x.method==method && x.target==target && x.name==name).ToList();
 				removals.ForEach(x=>x.Remove());
 			}
-			Utility.EditorDelayCall(Events.OnEventsChanged);
+			Utility.DelayCall(Events.OnEventsChanged);
 		}
 		public static void RemoveAll(params object[] targets){
 			if(Events.disabled.Has("Add")){return;}
@@ -292,14 +292,21 @@ namespace Zios{
 				Events.cache.AddNew(target).SelectMany(x=>x.Value).Select(x=>x.Value).ToList().ForEach(x=>x.Remove());
 				Events.cache.Remove(target);
 			}
-			Utility.EditorDelayCall(Events.OnEventsChanged);
+			Utility.DelayCall(Events.OnEventsChanged);
 		}
 		public static Dictionary<object,EventListener> Get(string name){return Events.Get(Events.global,name);}
 		public static Dictionary<object,EventListener> Get(object target,string name){
 			return Events.cache.AddNew(target).AddNew(name);
 		}
-		public static bool Exists(object target,string name){
+		public static bool HasListeners(object target,string name="*"){
+			target = Events.Verify(target);
+			if(name == "*"){return Events.cache.ContainsKey(target);}
 			return Events.cache.ContainsKey(target) && Events.cache[target].ContainsKey(name);
+		}
+		public static bool HasCallers(object target,string name="*"){
+			target = Events.Verify(target);
+			if(name == "*"){return Events.callers.ContainsKey(target);}
+			return Events.callers.ContainsKey(target) && Events.callers[target].Contains(name);
 		}
 		public static void SetPause(string type,string name,object target){
 			target = Events.Verify(target);
@@ -351,7 +358,7 @@ namespace Zios{
 		public static void DelayCall(object target,string key,string name,float delay=0.5f,params object[] values){
 			if(target.IsNull()){return;}
 			key += "/" + name;
-			Utility.EditorDelayCall(key,()=>Events.Call(target,name,values),delay);
+			Utility.DelayCall(key,()=>Events.Call(target,name,values),delay);
 		}
 		public static void Call(string name,params object[] values){
 			if(Events.disabled.Has("Call")){return;}
@@ -364,7 +371,7 @@ namespace Zios{
 				Events.disabled = (EventDisabled)(-1);
 				return;
 			}
-			bool hasEvents = Events.Exists(target,name);
+			bool hasEvents = Events.HasListeners(target,name);
 			var events = hasEvents ? Events.cache[target][name] : null;
 			int count = hasEvents ? events.Count : 0;
 			bool canDebug = Events.CanDebug(target,name,count);
@@ -477,7 +484,7 @@ namespace Zios{
 				bool duplicate = eventName != ignoreName && eventTarget == target && eventMethod.Equals(targetMethod);
 				bool invalid = eventTarget.IsNull() || eventMethod.IsNull() || (!eventListener.isStatic && ((Delegate)eventMethod).Target.IsNull());
 				if(duplicate || invalid){
-					Utility.EditorDelayCall(()=>Events.listeners.Remove(eventListener));
+					Utility.DelayCall(()=>Events.listeners.Remove(eventListener));
 					if(Events.debug.Has("Remove")){
 						string messageType = eventMethod.IsNull() ? "empty method" : "duplicate method";
 						string message = "[Events] Removing " + messageType  + " from -- " + eventTarget + "/" + eventName;
@@ -488,7 +495,7 @@ namespace Zios{
 			foreach(var current in Events.callers){
 				object scope = current.Key;
 				if(scope.IsNull()){
-					Utility.EditorDelayCall(()=>Events.callers.Remove(scope));
+					Utility.DelayCall(()=>Events.callers.Remove(scope));
 				}
 			}
 		}

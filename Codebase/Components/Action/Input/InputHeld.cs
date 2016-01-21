@@ -42,12 +42,12 @@ namespace Zios{
 		}
 		public virtual bool CheckInput(){
 			string inputName = this.inputName;
-			float manual = this.manual.Get();
-			bool isManual = manual != Mathf.Infinity;
+			bool isManual = this.manual.Get() != Mathf.Infinity;
 			bool isOwner = this.ignoreOwnership || !InputState.HasOwner(inputName) || InputState.IsOwner(inputName,this.inputID);
 			if(!isManual && !isOwner){return false;}
-			this.held = isManual ? manual != 0 : Input.GetAxisRaw(inputName) != 0;
-			this.intensity.Set(isManual ? manual : Input.GetAxis(inputName));
+			float intensity = isManual ? this.manual.Get() : Input.GetAxis(inputName);
+			this.held = intensity != 0;
+			this.intensity.Set(intensity);
 			bool released = !this.held && this.lastHeld;
 			bool canEnd = (!this.heldDuringIntensity && released) || (this.heldDuringIntensity && this.intensity == 0);
 			if(released && isOwner){InputState.ResetOwner(inputName);}

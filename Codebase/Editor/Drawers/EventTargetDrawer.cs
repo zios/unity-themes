@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
@@ -6,7 +6,8 @@ using Zios;
 namespace Zios.UI{
 	[CustomPropertyDrawer(typeof(EventTarget))]
 	public class EventTargetDrawer : PropertyDrawer{
-		public Dictionary<EventTarget,bool> targetMode = new Dictionary<EventTarget,bool>();
+		public bool targeted = true;
+		public bool manual;
 		public override void OnGUI(Rect area,SerializedProperty property,GUIContent label){
 			if(!Attribute.ready){
 				EditorGUI.ProgressBar(area,AttributeManager.percentLoaded,"Updating");
@@ -20,41 +21,45 @@ namespace Zios.UI{
 			string eventName = eventTarget.name;
 			GameObject target = eventTarget.target.Get();
 			label.DrawLabel(labelRect,null,true);
-			string eventType = eventTarget.mode == EventMode.Listeners ? "Listen" : "Caller";
-			bool hasEvents = eventType == "Listen" ? !Events.Exists(target,"Listen") : !Events.Exists(target,"Caller");
-			bool toggleActive = this.targetMode.ContainsKey(eventTarget) ? this.targetMode[eventTarget] : !eventTarget.name.IsEmpty();
-			this.targetMode[eventTarget] = toggleActive.Draw(valueRect.SetWidth(16),"",GUI.skin.GetStyle("CheckmarkToggle"));
-			valueRect = valueRect.Add(18,0,-18,0);
-			if(!this.targetMode[eventTarget]){
+			if(target.IsNull()){this.targeted = false;}
+			string targetLabel = this.targeted ? "+" : "-";
+			string manualLabel = this.manual ? "M" : "S";
+			var buttonArea = valueRect.SetWidth(16);
+			if(targetLabel.DrawButton(buttonArea)){this.targeted = !this.targeted;}
+			if(manualLabel.DrawButton(buttonArea.AddX(18))){this.manual = !this.manual;}
+			valueRect = valueRect.Add(36,0,-36,0);
+			if(!this.targeted){
 				property.FindPropertyRelative("target").Draw(valueRect);
+				return;
 			}
-			else if(!target.IsNull() && hasEvents){
-				string error = "No <b>"+eventType+"</b> events found for target -- " + target.name;
-				error.DrawLabel(valueRect,GUI.skin.GetStyle("WarningLabel"));
-			}
-			else{
+			if(!this.manual){
+				string eventType = eventTarget.mode == EventMode.Listeners ? "Listen" : "Caller";
+				bool hasEvents = eventType == "Listen" ? Events.HasListeners(target) : Events.HasCallers(target);
+				if(!hasEvents){
+					string error = "";
+					if(!target.IsNull()){error = "No <b>"+eventType+"</b> events found for target -- " + target.name;}
+					if(target.IsNull()){error = "No global <b>"+eventType+"</b> events exist.";}
+					error.DrawLabel(valueRect,GUI.skin.GetStyle("WarningLabel"));
+					return;
+				}
 				List<string> events = eventType == "Listen" ? Events.GetEventNames("Listen",target) : Events.GetEventNames("Caller",target);
-				if(events.Count > 0){
-					events.Sort();
-					events = events.OrderBy(item=>item.Contains("/")).ToList();
-					events.RemoveAll(item=>item.StartsWith("@"));
-					int index = events.IndexOf(eventName);
-					bool missing = false;
-					if(index == -1){
-						missing = true;
-						events.Insert(0,"[Missing] " + eventName);
-						index = 0;
-					}
-					index = events.Draw(valueRect,index);
-					if(!missing || index != 0){
-						eventTarget.name.Set(events[index]);
-					}
+				events.Sort();
+				events = events.OrderBy(item=>item.Contains("/")).ToList();
+				events.RemoveAll(item=>item.StartsWith("@"));
+				int index = eventName.IsEmpty() ? 0 : events.IndexOf(eventName);
+				bool missing = index == -1;
+				if(index == -1){
+					events.Insert(0,"[Missing] " + eventName);
+					index = 0;
 				}
-				else{
-					string error = "No global <b>"+eventType+"</b> events exist.";
-					error.Draw(valueRect,"",GUI.skin.GetStyle("WarningLabel"));
+				index = events.Draw(valueRect,index);
+				if(!missing || index != 0){
+					eventTarget.name.Set(events[index]);
 				}
+				return;
 			}
+			string name = eventTarget.name.Get().Draw(valueRect);
+			eventTarget.name.Set(name);
 		}
 	}
 }

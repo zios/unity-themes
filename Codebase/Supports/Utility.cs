@@ -57,18 +57,25 @@ namespace Zios{
 		static Utility(){Utility.Setup();}
 		public static void Setup(){
 			Events.Register("On Global Event");
+			Events.Register("On Editor Update");
+			Events.Register("On Prefab Changed");
+			Events.Register("On Lightmap Baked");
 			Events.Register("On Windows Reordered");
+			Events.Register("On Hierarchy Changed");
 			Events.Register("On Asset Changed");
+			Events.Register("On Asset Saving");
+			Events.Register("On Asset Creating");
+			Events.Register("On Asset Deleting");
+			Events.Register("On Asset Moving");
 			Events.Register("On Scene Loaded");
+			Events.Register("On Mode Changed");
 			Events.Register("On Enter Play");
 			Events.Register("On Exit Play");
-			EditorApplication.update += ()=>{
-				//if(Application.isPlaying){return;}
-				Events.Call("On Editor Update");
-			};
-			EditorApplication.hierarchyWindowChanged += ()=>{
-				Events.DelayCall("On Hierarchy Changed",0.25f);
-			};
+			Events.Register("On Undo Flushing");
+			Events.Register("On Undo");
+			Events.Register("On Redo");
+			Events.Add("On Late Update",(Method)Utility.CheckLoaded);
+			Events.Add("On Late Update",(Method)Utility.CheckDelayed);
 			Camera.onPostRender += (Camera camera)=>Events.Call("On Camera Post Render",camera);
 			Camera.onPreRender += (Camera camera)=>Events.Call("On Camera Pre Render",camera);
 			Camera.onPreCull += (Camera camera)=>Events.Call("On Camera Pre Cull",camera);
@@ -79,38 +86,48 @@ namespace Zios{
 			Lightmapping.completed += ()=>Events.Call("On Lightmap Baked");
 			EditorApplication.projectWindowChanged += ()=>Events.Call("On Project Changed");
 			EditorApplication.playmodeStateChanged += ()=>Events.Call("On Mode Changed");
-			CallbackFunction windowEvent = ()=>Events.Call("On Window Reordered");
-			CallbackFunction globalEvent = ()=>Events.Call("On Global Event");
-			var windowsReordered = typeof(EditorApplication).GetVariable<CallbackFunction>("windowsReordered");
-			typeof(EditorApplication).SetVariable("windowsReordered",windowsReordered+windowEvent);
-			var globalEventHandler = typeof(EditorApplication).GetVariable<CallbackFunction>("globalEventHandler");
-			typeof(EditorApplication).SetVariable("globalEventHandler",globalEventHandler+globalEvent);
 			EditorApplication.playmodeStateChanged += ()=>{
 				bool changing = EditorApplication.isPlayingOrWillChangePlaymode;
 				bool playing = Application.isPlaying;
 				if(changing && !playing){Events.Call("On Enter Play");}
 				if(!changing && playing){Events.Call("On Exit Play");}
 			};
-			EditorApplication.update += ()=>{
-				if(Time.realtimeSinceStartup < 0.5 && Utility.sceneCheck == 0){
-					Events.Call("On Scene Loaded");
-					Utility.sceneCheck = 1;
+			EditorApplication.hierarchyWindowChanged += ()=>Events.DelayCall("On Hierarchy Changed",0.25f);
+			EditorApplication.update += ()=>Events.Call("On Editor Update");
+			EditorApplication.update += ()=>Utility.CheckLoaded(true);
+			EditorApplication.update += ()=>Utility.CheckDelayed(true);
+			CallbackFunction windowEvent = ()=>Events.Call("On Window Reordered");
+			CallbackFunction globalEvent = ()=>Events.Call("On Global Event");
+			var windowsReordered = typeof(EditorApplication).GetVariable<CallbackFunction>("windowsReordered");
+			typeof(EditorApplication).SetVariable("windowsReordered",windowsReordered+windowEvent);
+			var globalEventHandler = typeof(EditorApplication).GetVariable<CallbackFunction>("globalEventHandler");
+			typeof(EditorApplication).SetVariable("globalEventHandler",globalEventHandler+globalEvent);
+		}
+		public static void CheckLoaded(){Utility.CheckLoaded(false);}
+		public static void CheckLoaded(bool editor){
+			if(editor && Application.isPlaying){return;}
+			if(!editor && !Application.isPlaying){return;}
+			if(Time.realtimeSinceStartup < 0.5 && Utility.sceneCheck == 0){
+				Events.Call("On Scene Loaded");
+				Utility.sceneCheck = 1;
+			}
+			if(Time.realtimeSinceStartup > Utility.sceneCheck){
+				Utility.sceneCheck = 0;
+			}
+		}
+		public static void CheckDelayed(){Utility.CheckDelayed(false);}
+		public static void CheckDelayed(bool editor){
+			if(editor && Application.isPlaying){return;}
+			if(!editor && !Application.isPlaying){return;}
+			if(Utility.delayedMethods.Count < 1){return;}
+			foreach(var item in Utility.delayedMethods.Copy()){
+				var method = item.Value.Key;
+				float callTime = item.Value.Value;
+				if(Time.realtimeSinceStartup > callTime){
+					method();
+					Utility.delayedMethods.Remove(item.Key);
 				}
-				if(Time.realtimeSinceStartup > Utility.sceneCheck){
-					Utility.sceneCheck = 0;
-				}
-			};
-			EditorApplication.update += ()=>{
-				if(Utility.delayedMethods.Count < 1){return;}
-				foreach(var item in Utility.delayedMethods.Copy()){
-					var method = item.Value.Key;
-					float callTime = item.Value.Value;
-					if(Time.realtimeSinceStartup > callTime){
-						method();
-						Utility.delayedMethods.Remove(item.Key);
-					}
-				}
-			};
+			}
 		}
 		public static SerializedObject GetSerializedObject(UnityObject target){
 			if(!Utility.serializedObjects.ContainsKey(target)){
@@ -234,24 +251,22 @@ namespace Zios{
 			}
 			#endif
 		}
-		public static void EditorDelayCall(CallbackFunction method){
+		public static void DelayCall(CallbackFunction method){
 			#if UNITY_EDITOR
 			if(!Utility.IsPlaying() && EditorApplication.delayCall != method){
 				EditorApplication.delayCall += method;
 			}
+			return;
 			#endif
+			Utility.DelayCall(method,0);
 		}
-		public static void EditorDelayCall(CallbackFunction method,float seconds){
-			#if UNITY_EDITOR
-			Utility.EditorDelayCall(method,method,seconds);
-			#endif
+		public static void DelayCall(CallbackFunction method,float seconds){
+			Utility.DelayCall(method,method,seconds);
 		}
-		public static void EditorDelayCall(object key,CallbackFunction method,float seconds){
-			#if UNITY_EDITOR
+		public static void DelayCall(object key,CallbackFunction method,float seconds){
 			if(!key.IsNull() && !method.IsNull()){
 				Utility.delayedMethods[key] = new KeyValuePair<CallbackFunction,float>(method,Time.realtimeSinceStartup + seconds);
 			}
-			#endif
 		}
 		//============================
 		// Proxy - EditorUtility
@@ -375,7 +390,7 @@ namespace Zios{
 			var focus = GUI.GetNameOfFocusedControl();
 			if(targets.Length > 0){
 				Selection.activeObject = null;
-				Utility.EditorDelayCall(()=>{
+				Utility.DelayCall(()=>{
 					Selection.objects = targets;
 					EditorGUI.FocusTextInControl(focus);
 					GUI.FocusControl(focus);

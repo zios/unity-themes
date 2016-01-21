@@ -91,7 +91,7 @@ namespace Zios{
 			}
 			else if(this.stage != 0){
 				for(int index=1;index<=this.editorRefreshPasses;++index){
-					Utility.EditorDelayCall(this.Process);
+					Utility.DelayCall(this.Process);
 				}
 			}
 		}

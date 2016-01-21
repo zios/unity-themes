@@ -49,7 +49,7 @@ namespace Zios{
 			if(this.IsResting()){
 				if(!this.delayed){
 					float remaining = this.resting-Time.realtimeSinceStartup;
-					Utility.EditorDelayCall(this.method,()=>this.Call(debugDeep,debugTime,values),remaining);
+					Utility.DelayCall(this.method,()=>this.Call(debugDeep,debugTime,values),remaining);
 					this.delayed = true;
 				}
 				return;

@@ -9,7 +9,7 @@ namespace Zios.UI{
 				try{this.instance.OnInspectorGUI();}
 				catch{
 					Selection.activeObject = null;
-					Utility.EditorDelayCall(()=>{Selection.activeObject = this.target;});
+					Utility.DelayCall(()=>{Selection.activeObject = this.target;});
 				}
 				return;
 			}
