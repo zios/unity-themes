@@ -74,7 +74,7 @@ namespace Zios.UI{
 						if(Event.current.shift){
 							bool canHide = (this.properties.Count - this.hidden.Count) > 1;
 							if(this.propertyArea[property].Clicked(0) && canHide){
-									string path = "InspectorPropertyHide-"+this.target.GetInstanceID()+"-"+property.propertyPath;
+									string path = "MonoBehaviourEditor-PropertyHide-"+this.target.GetInstanceID()+"-"+property.propertyPath;
 									EditorPrefs.SetBool(path,true);
 									this.hidden.Add(property);
 							}
@@ -163,7 +163,7 @@ namespace Zios.UI{
 		public void Setup(){
 			if(this.properties.Count > 0 && !this.setup){
 				foreach(var property in this.properties){
-					string path = "InspectorPropertyHide-"+this.target.GetInstanceID()+"-"+property.propertyPath;
+					string path = "MonoBehaviourEditor-PropertyHide-"+this.target.GetInstanceID()+"-"+property.propertyPath;
 					if(EditorPrefs.GetBool(path,false)){
 						this.hidden.Add(property);
 					}

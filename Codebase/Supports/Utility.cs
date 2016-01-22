@@ -381,6 +381,11 @@ namespace Zios{
 			Undo.RecordObject(target,name);
 			#endif
 		}
+		public static void RegisterCompleteObjectUndo(UnityObject target,string name){
+			#if UNITY_EDITOR
+			Undo.RegisterCompleteObjectUndo(target,name);
+			#endif
+		}
 		//============================
 		// Proxy - Other
 		//============================

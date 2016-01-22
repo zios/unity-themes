@@ -5,7 +5,7 @@ namespace Zios{
 		public AttributeFloat speed = 1;
 		public AttributeVector3 target = Vector3.zero;
 		public AttributeVector3 goal = Vector3.zero;
-		[Advanced][ReadOnly] public AttributeVector3 delta = Vector3.zero;
+		[Internal] public AttributeVector3 delta = Vector3.zero;
 		private Vector3 start;
 		private Vector3 lastGoal;
 		public override void Awake(){

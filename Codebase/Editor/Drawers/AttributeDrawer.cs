@@ -103,7 +103,7 @@ namespace Zios.UI{
 				this.attribute.Setup(info.relativePath,info.parent);
 				info.parent.DelayEvent(info.fullPath,"On Validate",1);
 				property.serializedObject.Update();
-				Utility.SetDirty(property.serializedObject.targetObject);
+				Utility.SetDirty(info.parent);
 				Utility.RepaintInspectors();
 				this.dirty = false;
 				GUI.changed = true;

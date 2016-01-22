@@ -44,7 +44,6 @@ namespace Zios{
 	[RequireComponent(typeof(Collider))]
 	[AddComponentMenu("Zios/Component/Physics/Collider Controller")]
 	public class ColliderController : ManagedMonoBehaviour{
-		public bool hasTriggers;
 		private Dictionary<GameObject,CollisionData> collisions = new Dictionary<GameObject,CollisionData>();
 		private Dictionary<GameObject,CollisionData> frameCollisions = new Dictionary<GameObject,CollisionData>();
 		private Vector3 lastPosition;
@@ -59,11 +58,12 @@ namespace Zios{
 		public AttributeFloat minSlideAngle = 50;
 		public AttributeFloat hoverDistance = 0.02f;
 		public AttributeFloat collisionPersist = 0.2f;
-		[Advanced][ReadOnly] public AttributeBool onSlope = false;
-		[Advanced][ReadOnly] public AttributeBool onSlide = false;
-		[Advanced][ReadOnly] public AttributeVector3 slopeNormal = Vector3.zero;
-		[ReadOnly] public BlockedDirection blocked = new BlockedDirection();
-		[ReadOnly] public BlockedTime lastBlockedTime = new BlockedTime();
+		[Internal] public bool hasTriggers;
+		[Internal] public AttributeBool onSlope = false;
+		[Internal] public AttributeBool onSlide = false;
+		[Internal] public AttributeVector3 slopeNormal = Vector3.zero;
+		[Internal] public BlockedDirection blocked = new BlockedDirection();
+		[Internal] public BlockedTime lastBlockedTime = new BlockedTime();
 		//================================
 		// Static
 		//================================
@@ -221,11 +221,12 @@ namespace Zios{
 			bool isTrigger = !hit.collider.IsNull() ? hit.collider.isTrigger : false;
 			if(!contact || isTrigger){
 				this.SetPosition(startPosition + move);
+				if(this.CheckStepDown()){return;}
 			}
 			else{
-				if(this.CheckSlope(current)){return;}
+				if(this.CheckSlopeUnder(current)){return;}
 				if(this.CheckSlope(current,hit)){return;}
-				if(this.CheckStep(current)){return;}
+				if(this.CheckStepUp(current)){return;}
 				this.SetPosition(rigidbody.position + (direction * (hit.distance-this.hoverDistance*2)));
 				if(direction.z > 0){this.blocked.forward.Set(true);}
 				if(direction.z < 0){this.blocked.back.Set(true);}
@@ -285,7 +286,7 @@ namespace Zios{
 			}
 			return false;
 		}
-		private bool CheckStep(Vector3 current){
+		private bool CheckStepUp(Vector3 current){
 			if(this.maxStepHeight != 0 && current.y == 0){
 				var rigidbody = this.GetComponent<Rigidbody>();
 				RaycastHit stepHit;
@@ -298,11 +299,21 @@ namespace Zios{
 				if(!stepTest){
 					this.SetPosition(rigidbody.position + move);
 					rigidbody.SweepTest(-Vector3.up,out stepHit);
-					this.SetPosition(rigidbody.position + (-Vector3.up*(stepHit.distance-0.01f)));
+					this.SetPosition(rigidbody.position + -Vector3.up*(stepHit.distance-this.hoverDistance));
 					this.blocked.down.Set(true);
 					return true;
 				}
 				this.SetPosition(position);
+			}
+			return false;
+		}
+		private bool CheckStepDown(){
+			RaycastHit stepHit;
+			var rigidbody = this.GetComponent<Rigidbody>();
+			if(rigidbody.SweepTest(-Vector3.up,out stepHit,this.maxStepHeight)){
+				this.SetPosition(rigidbody.position + (-Vector3.up*(stepHit.distance-this.hoverDistance)));
+				this.blocked.down.Set(true);
+				return true;
 			}
 			return false;
 		}
