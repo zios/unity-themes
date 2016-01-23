@@ -275,7 +275,7 @@ namespace Zios{
 			}
 			return false;
 		}
-		private bool CheckSlope(Vector3 current){
+		private bool CheckSlopeUnder(Vector3 current){
 			if(this.maxSlopeAngle != 0 || this.minSlideAngle != 0){
 				var rigidbody = this.GetComponent<Rigidbody>();
 				RaycastHit slopeHit;
