@@ -7,21 +7,15 @@ using System.Reflection;
 using System.Text;
 using UnityEngine;
 namespace Zios{
-	#if UNITY_EDITOR
-	using UnityEditor;
 	[InitializeOnLoad]
 	public static class SerializerHook{
-		private static bool setup;
+		public static Hook<Serializer> hook;
 		static SerializerHook(){
 			if(Application.isPlaying){return;}
-			EditorApplication.delayCall += ()=>SerializerHook.Reset();
+			SerializerHook.hook = new Hook<Serializer>(SerializerHook.Reset,SerializerHook.Create);
 		}
 		public static void Reset(){
-			Events.Add("On Scene Loaded",SerializerHook.Reset).SetPermanent();
-			Events.Add("On Hierarchy Changed",SerializerHook.Reset).SetPermanent();
-			Events.Add("On Exit Play",SerializerHook.Reset).SetPermanent();
-			SerializerHook.setup = false;
-			SerializerHook.Create();
+			SerializerHook.hook.Reset();
 			if(Serializer.instance){
 				Events.Add("On Enter Play",Serializer.instance.Save);
 				Events.Add("On Scene Saving",Serializer.instance.Save);
@@ -32,20 +26,11 @@ namespace Zios{
 			}
 		}
 		public static void Create(){
-			if(SerializerHook.setup || Application.isPlaying){return;}
-			SerializerHook.setup = true;
-			if(Serializer.instance.IsNull()){
-				var path = Locate.GetScenePath("@Main");
-				Serializer.instance = path.GetComponent<Serializer>();
-				if(Serializer.instance == null){
-					Debug.Log("[Serializer] : Auto-creating Serializer Manager GameObject.");
-					Serializer.instance = path.AddComponent<Serializer>();
-				}
-				Serializer.instance.Setup();
-			}
+			bool wasNull = Serializer.instance.IsNull();
+			SerializerHook.hook.Create();
+			if(wasNull){Serializer.instance.Setup();}
 		}
 	}
-	#endif
 	[Flags]
 	public enum SerializerDebug : int{
 		Build         = 0x001,

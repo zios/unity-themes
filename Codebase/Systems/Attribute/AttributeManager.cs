@@ -1,41 +1,26 @@
 using System;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 namespace Zios{
-	#if UNITY_EDITOR
-	using UnityEditor;
 	[InitializeOnLoad]
 	public static class AttributeManagerHook{
-		private static bool setup;
+		public static Hook<AttributeManager> hook;
 		static AttributeManagerHook(){
 			if(Application.isPlaying){return;}
-			EditorApplication.delayCall += ()=>AttributeManagerHook.Reset();
+			AttributeManagerHook.hook = new Hook<AttributeManager>(AttributeManagerHook.Reset);
 		}
 		public static void Reset(){
-			SerializerHook.Reset();
-			Events.Add("On Scene Loaded",AttributeManagerHook.Reset).SetPermanent();
-			Events.Add("On Hierarchy Changed",AttributeManagerHook.Reset).SetPermanent();
-			AttributeManagerHook.setup = false;
-			AttributeManagerHook.Create();
+			SerializerHook.hook.Reset();
+			AttributeManagerHook.hook.Reset();
 			if(AttributeManager.instance){
 				Events.Add("On Level Was Loaded",AttributeManager.instance.Awake);
 				Events.Add("On Editor Update",AttributeManager.instance.EditorUpdate);
 			}
 			AttributeManager.Refresh();
 		}
-		public static void Create(){
-			if(AttributeManagerHook.setup || Application.isPlaying){return;}
-			AttributeManagerHook.setup = true;
-			if(AttributeManager.instance.IsNull()){
-				var path = Locate.GetScenePath("@Main");
-				AttributeManager.instance = path.GetComponent<AttributeManager>();
-				if(AttributeManager.instance == null){
-					Debug.Log("[AttributeManager] : Auto-creating Attribute Manager GameObject.");
-					AttributeManager.instance = path.AddComponent<AttributeManager>();
-				}
-			}
-		}
 	}
-	#endif
 	[AddComponentMenu("Zios/Singleton/Attribute Manager")][ExecuteInEditMode]
 	public class AttributeManager : MonoBehaviour{
 		public static AttributeManager instance;

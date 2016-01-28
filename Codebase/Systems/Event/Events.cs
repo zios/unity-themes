@@ -6,40 +6,26 @@ using System.Linq;
 using UnityEngine;
 using UnityObject = UnityEngine.Object;
 namespace Zios{
-	#if UNITY_EDITOR
-	using UnityEditor;
 	[InitializeOnLoad]
 	public static class EventsHook{
-		private static bool setup;
+		public static Hook<Events> hook;
 		static EventsHook(){
 			if(Application.isPlaying){return;}
-			EditorApplication.delayCall += ()=>EventsHook.Reset();
+			EventsHook.hook = new Hook<Events>(EventsHook.Reset,EventsHook.Create);
 		}
 		public static void Reset(){
-			SerializerHook.Reset();
-			Events.Add("On Scene Loaded",EventsHook.Reset).SetPermanent();
-			Events.Add("On Hierarchy Changed",EventsHook.Reset).SetPermanent();
-			EventsHook.setup = false;
-			EventsHook.Create();
+			EventsHook.hook.Reset();
 			if(Events.instance){
 				Events.Add("On Level Was Loaded",Events.instance.Awake);
 			}
 		}
 		public static void Create(){
-			if(EventsHook.setup || Application.isPlaying){return;}
-			EventsHook.setup = true;
+			EventsHook.hook.Create();
 			if(Events.instance.IsNull()){
-				var path = Locate.GetScenePath("@Main");
-				Events.instance = path.GetComponent<Events>();
-				if(Events.instance == null){
-					Debug.Log("[Events] : Auto-creating Events Manager GameObject.");
-					Events.instance = path.AddComponent<Events>();
-				}
 				Events.Cleanup();
 			}
 		}
 	}
-	#endif
 	//=======================
 	// Enumerations
 	//=======================

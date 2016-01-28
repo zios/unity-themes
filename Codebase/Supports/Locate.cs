@@ -5,10 +5,7 @@ using System.Linq;
 using UnityEngine;
 using UnityObject = UnityEngine.Object;
 namespace Zios{
-	#if UNITY_EDITOR
-	using UnityEditor;
 	[InitializeOnLoad]
-	#endif
 	public static class Locate{
 		private static bool cleanGameObjects = false;
 		private static List<Type> cleanSceneComponents = new List<Type>();

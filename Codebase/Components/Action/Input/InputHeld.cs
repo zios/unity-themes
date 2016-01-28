@@ -41,6 +41,7 @@ namespace Zios{
 			}
 		}
 		public virtual bool CheckInput(){
+			if(InputState.disabled){return false;}
 			string inputName = this.inputName;
 			bool isManual = this.manual.Get() != Mathf.Infinity;
 			bool isOwner = this.ignoreOwnership || !InputState.HasOwner(inputName) || InputState.IsOwner(inputName,this.inputID);

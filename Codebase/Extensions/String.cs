@@ -56,6 +56,8 @@ namespace Zios{
 			string lower = current.ToLower();
 			return lower != "false" && lower != "f" && lower != "0";
 		}
+		public static byte ToByte(this string current){return (byte)current[0];}
+		public static byte[] ToBytes(this string current){return Encoding.ASCII.GetBytes(current);}
 		public static Color ToColor(this string current){
 			if(!current.Contains(",")){return Color.white;}
 			bool commaSplit = current.Contains(",");

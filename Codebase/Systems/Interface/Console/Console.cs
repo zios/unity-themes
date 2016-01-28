@@ -51,7 +51,7 @@ namespace Zios{
 		public static Dictionary<string,string> shortcuts = new Dictionary<string,string>();
 		public static Dictionary<string,ConsoleCallback> keywords = new Dictionary<string,ConsoleCallback>();
 		public static Dictionary<string,Cvar> cvars = new Dictionary<string,Cvar>();
-		private static FixedList<string> autocomplete = new FixedList<string>(256);
+		private static List<string> autocomplete = new List<string>();
 		private static byte status = 0;
 		private static float logScrollLimit = 0;
 		private static float logPosition = 0;
@@ -64,6 +64,9 @@ namespace Zios{
 		private static List<string> configOutput = new List<string>();
 		private static Vector3 dragStart = Vector3.zero;
 		private static GUIStyle logStyle;
+		private static bool logFileUsable;
+		private static bool disableLogging;
+		private static bool mouseHeld;
 		private static string[] help = new string[]{
 			"^3consoleFontSize ^9<^7number^9> :^10 The font size of the log.",
 			"^3consoleSize ^9<^7decimal^9> :^10 The height percent that the console is visible.",
@@ -88,12 +91,19 @@ namespace Zios{
 		// Unity Specific
 		//===========================
 		public static void Awake(){
-			if(Console.settings.allowLogging && !Application.isWebPlayer){
+			if(!Console.settings.logFile.IsEmpty() && !Application.isWebPlayer){
 				string logPath = Application.persistentDataPath + "/" + Console.settings.logFile;
-				using(StreamWriter file = new StreamWriter(logPath,true)){
-					file.WriteLine("-----------------------");
-					file.WriteLine(DateTime.Now);
-					file.WriteLine("-----------------------");
+				try{
+					using(StreamWriter file = new StreamWriter(logPath,true)){
+						file.WriteLine("-----------------------");
+						file.WriteLine(DateTime.Now);
+						file.WriteLine("-----------------------");
+					}
+					Console.logFileUsable = true;
+				}
+				catch{
+					Console.logFileUsable = false;
+					Console.AddLog("Log file is not writable. File in use or has bad path.");
 				}
 			}
 		}
@@ -114,6 +124,7 @@ namespace Zios{
 			Console.Setup();
 			Console.CheckTrigger();
 			Console.CheckBinds();
+			InputState.disabled = Console.status >= 3;
 			if(Console.status > 0){
 				Console.CheckHotkeys();
 				Console.CheckDrag();
@@ -155,7 +166,7 @@ namespace Zios{
 			Console.AddShortcut(new string[]{"showFonts","listFonts"},"consoleListFonts");
 			Console.AddShortcut(new string[]{"showBinds","listBinds"},"consoleListBinds");
 			Console.LoadBinds();
-			Console.LoadConfig(Console.settings.configFile);
+			Utility.DelayCall(()=>Console.LoadConfig(Console.settings.configFile));
 		}
 		//===========================
 		// Binds
@@ -450,7 +461,7 @@ namespace Zios{
 				using(StreamReader file = new StreamReader(name)){
 					string line = "";
 					while((line = file.ReadLine()) != null){
-						Console.AddCommand(line,false);
+						Console.AddCommand(line,true);
 					}
 				}
 			}
@@ -472,21 +483,22 @@ namespace Zios{
 				Console.logStyle = new GUIStyle(Console.settings.skin.textField);
 			}
 		}
-		public static void AddCommand(string text,bool allowLogging=true){
-			Console.settings.allowLogging = allowLogging;
+		public static void AddCommand(string text,bool disableLogging=false){
+			var usable = Console.disableLogging;
+			Console.disableLogging = disableLogging;
 			Console.lastCommand = text;
 			Console.ManageInput();
-			Console.settings.allowLogging = true;
+			Console.disableLogging = usable;
 		}
 		public static void AddLog(string text,bool system=false){
-			if(!Console.settings.allowLogging){return;}
+			if(Console.disableLogging){return;}
 			if(!Application.isPlaying){
 				Application.logMessageReceived -= Console.HandleLog;
 				Debug.Log(text);
 				Application.logMessageReceived += Console.HandleLog;
 				if(system){return;}
 			}
-			if(Console.settings.allowLogging && !Application.isWebPlayer){
+			if(Console.logFileUsable){
 				string logPath = Application.persistentDataPath + "/" + Console.settings.logFile;
 				string cleanText = text;
 				for(int index=Console.color.Length-1;index>=0;--index){
@@ -496,11 +508,13 @@ namespace Zios{
 					file.WriteLine(cleanText);
 				}
 			}
+			float lastPosition = Console.log.Count * Console.logPosition;
 			while(text.Length > 0){
 				int max = text.Length > Console.settings.logLineSize ? Console.settings.logLineSize : text.Length;
 				Console.log.Add(text.Substring(0,max));
 				text = text.Substring(max);
 			}
+			Console.logPosition = !Console.mouseHeld ? 1.0f : lastPosition / Console.log.Count;
 		}
 		public static void HandleLog(string text,string trace,LogType type){
 			if(type == LogType.Error){text = "^1" + text + "^10 -- ^7" + trace;}
@@ -534,9 +548,10 @@ namespace Zios{
 				}
 			}
 			if(Console.autocomplete.Count > 0){
+				var lastPosition = Console.log.Count * Console.logPosition;
 				if(Console.autocomplete.Count > 1){
 					Console.AddLog("^5>> ^7" + Console.inputText);
-					foreach(string name in Console.autocomplete){
+					foreach(string name in Console.autocomplete.Distinct()){
 						string type = Console.cvars.ContainsKey(name,true) ? "^8 " : "^17 ";
 						string shortcuts = "^9";
 						foreach(var data in Console.shortcuts){
@@ -548,7 +563,7 @@ namespace Zios{
 				else{
 					Console.inputText = Console.autocomplete[0];
 				}
-				Console.logPosition = 1.0f;
+				Console.logPosition = !Console.mouseHeld ? 1.0f : lastPosition / Console.log.Count;
 				Console.autocomplete.Clear();
 			}
 		}
@@ -587,10 +602,13 @@ namespace Zios{
 				Console.AddLog("^5>> ^7" + Console.inputText);
 				Console.inputText = "";
 			}
+			else if(Event.current.type == EventType.MouseDown){Console.mouseHeld = true;}
+			else if(Event.current.type == EventType.MouseUp){Console.mouseHeld = false;}
 			else if(Event.current.type == EventType.ScrollWheel){
 				if(control){Console.settings.logFontSize -= (int)Event.current.delta[1];}
 				else if(shift){Console.settings.height += Math.Sign(Event.current.delta[1]) * 0.02f;}
 				else{Console.logPosition += (float)(Event.current.delta[1]) / (float)(Console.log.Count);}
+				Event.current.Use();
 			}
 			else if(Button.KeyDown(KeyCode.PageDown)){Console.logPosition += Console.logScrollLimit * 0.25f;}
 			else if(Button.KeyDown(KeyCode.PageUp)){Console.logPosition -= Console.logScrollLimit * 0.25f;}
@@ -605,7 +623,7 @@ namespace Zios{
 		}
 		public static void CheckDrag(){
 			float consoleHeight = (Screen.height * Console.offset)*Console.settings.height;
-			Rect dragBounds = new Rect(0,consoleHeight+Console.settings.inputBackground.height-9,Screen.width,9);
+			Rect dragBounds = new Rect(0,consoleHeight,Screen.width,30);
 			Vector3 mouse = UnityInput.mousePosition;
 			mouse[1] = Screen.height - mouse[1];
 			if(Console.dragStart != Vector3.zero){
@@ -628,7 +646,6 @@ namespace Zios{
 		public static void DrawElements(){
 			GUI.skin = Console.settings.skin;
 			float consoleHeight = (Screen.height * Console.offset)*Console.settings.height;
-			float alternate = Time.time % 1.5f;
 			byte logLinesShown = 0;
 			int logTextOffset = 15 - Console.settings.logFontSize;
 			Rect logBounds = new Rect(-10,5,Screen.width-20,18);
@@ -636,12 +653,18 @@ namespace Zios{
 			Rect consoleBounds = new Rect(0,0,Screen.width,consoleHeight);
 			Rect inputBounds = new Rect(0,consoleHeight,Screen.width,30);
 			Rect inputArrowBounds = new Rect(2,consoleHeight+6,12,12);
-			Rect tiling = new Rect(alternate,alternate,Screen.width/Console.settings.background.width,consoleHeight/Console.settings.background.height);
-			Rect tilingInput = new Rect(0,0,Screen.width/Console.settings.inputBackground.width,1);
 			Console.logStyle.fontSize = Console.settings.logFontSize;
-			GUI.DrawTextureWithTexCoords(consoleBounds,Console.settings.background,tiling);
-			GUI.DrawTextureWithTexCoords(inputBounds,Console.settings.inputBackground,tilingInput);
-			GUI.DrawTexture(inputArrowBounds,Console.settings.textArrow);
+			if(Event.current.type == EventType.Repaint){
+				var backgroundTexture = Console.settings.background.GetTexture("textureMap");
+				var inputTexture = Console.settings.inputBackground.GetTexture("textureMap");
+				backgroundTexture.wrapMode = TextureWrapMode.Repeat;
+				backgroundTexture.filterMode = FilterMode.Bilinear;
+				inputTexture.wrapMode = TextureWrapMode.Repeat;
+				inputTexture.filterMode = FilterMode.Bilinear;
+				Graphics.DrawTexture(consoleBounds,Texture2D.whiteTexture,Console.settings.background);
+				Graphics.DrawTexture(inputBounds,Texture2D.whiteTexture,Console.settings.inputBackground);
+				Graphics.DrawTexture(inputArrowBounds,Texture2D.whiteTexture,Console.settings.textArrow);
+			}
 			if(Console.status == ConsoleState.open && Console.log.Count > 0){
 				Console.logStyle.normal.textColor = Console.color[Console.settings.logFontColor];
 				float clampedPosition = Mathf.Clamp(Console.logPosition,0,Console.logScrollLimit);
@@ -722,25 +745,22 @@ namespace Zios{
 			Console.offset = Mathf.Clamp(Console.offset,-1.0f,1.0f);
 		}
 		public static void ManageInput(){
-			Console.lastCommand = Console.lastCommand.Trim('#').Trim();
-			if(Console.lastCommand == " "){
+			var command = Console.lastCommand.Trim('#').Trim();
+			if(command == " "){
 				Console.logPosition = 1.0f;
-				Console.lastCommand = "";
+				command = "";
 			}
-			else if(Console.lastCommand != ""){
+			else if(!command.IsEmpty()){
 				foreach(var item in Console.shortcuts){
-					if(Console.lastCommand.IndexOf(item.Key+" ",true) == 0 || Console.lastCommand.Matches(item.Key,true)){
-						Console.lastCommand = item.Value + Console.lastCommand.Remove(0,item.Key.Length);
+					if(command.IndexOf(item.Key+" ",true) == 0 || command.Matches(item.Key,true)){
+						command = item.Value + command.Remove(0,item.Key.Length);
 					}
 				}
-				int endCheck = Console.lastCommand.Length > 1 ? 2 : 1;
-				string lineEnd = Console.lastCommand.Substring(Console.lastCommand.Length-endCheck);
 				bool commandFound = false;
-				bool wildcard = lineEnd.Contains("*");
-				bool helpMode = lineEnd.Contains("?");
-				if(helpMode){Console.lastCommand = Console.lastCommand.Replace("?","");}
-				if(wildcard){Console.lastCommand = Console.lastCommand.Replace("*","");}
-				string firstWord = Console.lastCommand.Split(' ')[0];
+				bool wildcard = command.EndsWith("*");
+				bool helpMode = command.EndsWith("?");
+				command = command.Remove("?","*");
+				string firstWord = command.TrySplit(' ',0);
 				foreach(var item in Console.keywords){
 					string name = item.Key.Trim('#');
 					ConsoleCallback method = item.Value;
@@ -748,23 +768,25 @@ namespace Zios{
 						if(wildcard && method.full != Console.HandleCvar){continue;}
 						if(name.StartsWith("!")){continue;}
 						if(name.StartsWith(firstWord,true)){
-							if(method.minimumParameters > 0 && method.help != ""){
-								Console.AddLog(method.help);
+							if(!helpMode){
+								if(!method.simple.IsNull()){method.simple();}
+								if(!method.basic.IsNull()){method.basic(new string[2]{item.Key,""});}
+								if(!method.full.IsNull()){method.full(new string[2]{item.Key,""},false);}
+								continue;
 							}
-							else if(method.simple != null){method.simple();}
-							else if(method.basic != null){method.basic(new string[2]{item.Key,""});}
-							else if(method.full != null){method.full(new string[2]{item.Key,""},helpMode);}
+							if(!method.help.IsEmpty()){Console.AddLog(method.help);}
+							if(!method.full.IsNull()){method.full(new string[2]{item.Key,""},true);}
 							commandFound = true;
 						}
 					}
-					else if(firstWord.StartsWith(name,true)){
-						Console.lastCommand = Console.lastCommand.Replace(name,"",true).Trim();
+					else if(name.Matches(firstWord,true)){
+						command = command.Replace(name,"",true).Trim();
 						List<string> options = new List<string>();
 						options.Add(item.Key);
-						if(Console.lastCommand != ""){
-							options.AddRange(Console.lastCommand.Split(' '));
+						if(command != ""){
+							options.AddRange(command.Split(' '));
 						}
-						if(method.minimumParameters > options.Count-1 && method.help != ""){
+						if(method.minimumParameters > options.Count-1 && !method.help.IsEmpty()){
 							Console.AddLog(method.help);
 						}
 						else if(method.simple != null){method.simple();}
@@ -774,7 +796,7 @@ namespace Zios{
 						break;
 					}
 				}
-				if(!commandFound){Console.AddLog("^1No command found -- " + Console.lastCommand);}
+				if(!wildcard && !commandFound){Console.AddLog("^1No command found -- " + command);}
 				Console.logPosition = 1.0f;
 				Console.lastCommand = "";
 			}

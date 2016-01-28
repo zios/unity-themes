@@ -40,22 +40,26 @@ namespace Zios{
 			return path;
 		}
 	}
-	[InitializeOnLoad]
 	#else
 		public delegate void CallbackFunction();
 	#endif
+	[InitializeOnLoad]
 	public static class Utility{
 		//============================
 		// Editor Only
 		//============================
-		#if UNITY_EDITOR
 		private static float sceneCheck;
-		private static EditorWindow[] inspectors;
 		private static Dictionary<object,KeyValuePair<CallbackFunction,float>> delayedMethods = new Dictionary<object,KeyValuePair<CallbackFunction,float>>();
+		#if UNITY_EDITOR
+		private static EditorWindow[] inspectors;
 		private static List<UnityObject> delayedDirty = new List<UnityObject>();
 		private static Dictionary<UnityObject,SerializedObject> serializedObjects = new Dictionary<UnityObject,SerializedObject>();
+		#endif
 		static Utility(){Utility.Setup();}
 		public static void Setup(){
+			Events.Add("On Late Update",(Method)Utility.CheckLoaded);
+			Events.Add("On Late Update",(Method)Utility.CheckDelayed);
+			#if UNITY_EDITOR
 			Events.Register("On Global Event");
 			Events.Register("On Editor Update");
 			Events.Register("On Prefab Changed");
@@ -74,8 +78,6 @@ namespace Zios{
 			Events.Register("On Undo Flushing");
 			Events.Register("On Undo");
 			Events.Register("On Redo");
-			Events.Add("On Late Update",(Method)Utility.CheckLoaded);
-			Events.Add("On Late Update",(Method)Utility.CheckDelayed);
 			Camera.onPostRender += (Camera camera)=>Events.Call("On Camera Post Render",camera);
 			Camera.onPreRender += (Camera camera)=>Events.Call("On Camera Pre Render",camera);
 			Camera.onPreCull += (Camera camera)=>Events.Call("On Camera Pre Cull",camera);
@@ -102,6 +104,7 @@ namespace Zios{
 			typeof(EditorApplication).SetVariable("windowsReordered",windowsReordered+windowEvent);
 			var globalEventHandler = typeof(EditorApplication).GetVariable<CallbackFunction>("globalEventHandler");
 			typeof(EditorApplication).SetVariable("globalEventHandler",globalEventHandler+globalEvent);
+			#endif
 		}
 		public static void CheckLoaded(){Utility.CheckLoaded(false);}
 		public static void CheckLoaded(bool editor){
@@ -129,6 +132,7 @@ namespace Zios{
 				}
 			}
 		}
+		#if UNITY_EDITOR
 		public static SerializedObject GetSerializedObject(UnityObject target){
 			if(!Utility.serializedObjects.ContainsKey(target)){
 				Utility.serializedObjects[target] = new SerializedObject(target);

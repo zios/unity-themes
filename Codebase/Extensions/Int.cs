@@ -19,6 +19,13 @@ namespace Zios{
 			return (current & mask) != 0;
 		}
 		//=====================
+		// Conversion
+		//=====================
+		public static bool ToBool(this int current){return current != 0;}
+		public static byte ToByte(this int current){return (byte)current;}
+		public static short ToShort(this int current){return (short)current;}
+		public static byte[] ToBytes(this int current){return BitConverter.GetBytes(current);}
+		//=====================
 		// Numeric
 		//=====================
 		public static int MoveTowards(this int current,int end,int speed){
@@ -36,9 +43,6 @@ namespace Zios{
 		}
 		public static bool InRange(this int current,int start,int end){
 			return current.Between(start,end);
-		}
-		public static bool ToBool(this int current){
-			return current != 0;
 		}
 		public static int Closest(this int current,params int[] values){
 			int match = int.MaxValue;

@@ -244,6 +244,7 @@ MonoBehaviour:
     m_MinSize: 10
     m_MaxSize: 25
     m_Alignment: 4
+    m_AlignByGeometry: 0
     m_RichText: 0
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
@@ -276,6 +277,7 @@ MonoBehaviour:
     m_MinSize: 10
     m_MaxSize: 30
     m_Alignment: 4
+    m_AlignByGeometry: 0
     m_RichText: 0
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
@@ -319,8 +321,8 @@ MonoBehaviour:
   m_Script: {fileID: 1573420865, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: .80392158}
-  m_EffectDistance: {x: 1, y: -1.99000001}
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.8039216}
+  m_EffectDistance: {x: 1, y: -1.99}
   m_UseGraphicAlpha: 1
 --- !u!114 &11414640
 MonoBehaviour:
@@ -349,6 +351,7 @@ MonoBehaviour:
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 1
+    m_AlignByGeometry: 0
     m_RichText: 0
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
@@ -366,7 +369,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
-  m_EffectDistance: {x: 1, y: -1.99000001}
+  m_EffectDistance: {x: 1, y: -1.99}
   m_UseGraphicAlpha: 1
 --- !u!114 &11437074
 MonoBehaviour:
@@ -379,8 +382,8 @@ MonoBehaviour:
   m_Script: {fileID: 1573420865, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: .670588255}
-  m_EffectDistance: {x: 1.40999997, y: -1.94000006}
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.67058825}
+  m_EffectDistance: {x: 1.41, y: -1.94}
   m_UseGraphicAlpha: 1
 --- !u!114 &11450762
 MonoBehaviour:
@@ -394,18 +397,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skin: {fileID: 11400000, guid: abfe5ab11a13f5e4b8e1f01e6716e334, type: 2}
-  background: {fileID: 2800000, guid: e6bdf29c1f693a9468a85587fcb13154, type: 3}
-  inputBackground: {fileID: 2800000, guid: 14e648cfe6f80344da95b003e8a1d14c, type: 3}
-  textArrow: {fileID: 2800000, guid: 3bec0e21ee59a614ea03aac084d7e3db, type: 3}
+  background: {fileID: 2100000, guid: 747ba6f61fef5714a89b8a56ed41f654, type: 2}
+  inputBackground: {fileID: 2100000, guid: fc4e786b04678cb488415f0d8fa2b62d, type: 2}
+  textArrow: {fileID: 2100000, guid: 20b6fb5e9b63f0645a924a0c929bd7f3, type: 2}
   triggerKey: 293
   speed: 5
-  height: .25
+  height: 0.25
   configFile: Game.cfg
   logFile: Log.txt
   logLineSize: 150
   logFontSize: 15
-  logFontAllowColors: 1
   logFontColor: 7
+  logFontAllowColors: 1
   allowLogging: 1
 --- !u!114 &11468750
 MonoBehaviour:
@@ -418,8 +421,8 @@ MonoBehaviour:
   m_Script: {fileID: 1573420865, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: .670588255}
-  m_EffectDistance: {x: 1.40999997, y: -1.94000006}
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.67058825}
+  m_EffectDistance: {x: 1.41, y: -1.94}
   m_UseGraphicAlpha: 1
 --- !u!114 &11473888
 MonoBehaviour:
@@ -433,7 +436,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .838235259, g: .838235259, b: .838235259, a: 1}
+  m_Color: {r: 0.83823526, g: 0.83823526, b: 0.83823526, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -445,9 +448,10 @@ MonoBehaviour:
     m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 1
-    m_MinSize: 10
+    m_MinSize: 0
     m_MaxSize: 25
     m_Alignment: 4
+    m_AlignByGeometry: 0
     m_RichText: 0
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
@@ -496,6 +500,7 @@ MonoBehaviour:
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 1
+    m_AlignByGeometry: 0
     m_RichText: 0
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
@@ -526,7 +531,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .835294127, g: .835294127, b: .835294127, a: 1}
+  m_Color: {r: 0.8352941, g: 0.8352941, b: 0.8352941, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -541,6 +546,7 @@ MonoBehaviour:
     m_MinSize: 10
     m_MaxSize: 25
     m_Alignment: 4
+    m_AlignByGeometry: 0
     m_RichText: 0
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
@@ -558,7 +564,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
-  m_EffectDistance: {x: 1, y: -1.99000001}
+  m_EffectDistance: {x: 1, y: -1.99}
   m_UseGraphicAlpha: 1
 --- !u!114 &11494218
 MonoBehaviour:
@@ -571,8 +577,8 @@ MonoBehaviour:
   m_Script: {fileID: 1573420865, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: .80392158}
-  m_EffectDistance: {x: 1, y: -1.99000001}
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.8039216}
+  m_EffectDistance: {x: 1, y: -1.99}
   m_UseGraphicAlpha: 1
 --- !u!114 &11499666
 MonoBehaviour:
@@ -666,6 +672,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!224 &22405380
 RectTransform:
   m_ObjectHideFlags: 1
@@ -680,9 +687,9 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 56.9000015, y: -.400000006}
-  m_SizeDelta: {x: -144.5, y: 3.94998169}
-  m_Pivot: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 56.9, y: -0.4}
+  m_SizeDelta: {x: -144.5, y: 3.9499817}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22411150
 RectTransform:
   m_ObjectHideFlags: 1
@@ -700,9 +707,9 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -101.800003, y: -18.2999992}
-  m_SizeDelta: {x: 194.100006, y: 30.8500004}
-  m_Pivot: {x: .5, y: .5}
+  m_AnchoredPosition: {x: -101.8, y: -18.3}
+  m_SizeDelta: {x: 194.1, y: 30.85}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22414152
 RectTransform:
   m_ObjectHideFlags: 1
@@ -717,9 +724,9 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -38.7000008, y: -.100000001}
-  m_SizeDelta: {x: -86.6500244, y: 2.50006104}
-  m_Pivot: {x: .5, y: .5}
+  m_AnchoredPosition: {x: -38.7, y: -0.1}
+  m_SizeDelta: {x: -86.650024, y: 2.500061}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22436492
 RectTransform:
   m_ObjectHideFlags: 1
@@ -734,9 +741,9 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -8, y: 1.39999998}
-  m_SizeDelta: {x: -113.049927, y: 2.5}
-  m_Pivot: {x: .5, y: .5}
+  m_AnchoredPosition: {x: -8, y: 1.4}
+  m_SizeDelta: {x: -113.04993, y: 2.5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22450352
 RectTransform:
   m_ObjectHideFlags: 1
@@ -754,9 +761,9 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -73.5749969, y: -52}
-  m_SizeDelta: {x: 137.649994, y: 32.2999992}
-  m_Pivot: {x: .5, y: .5}
+  m_AnchoredPosition: {x: -73.57501, y: -52}
+  m_SizeDelta: {x: 137.65002, y: 32.3}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22452214
 RectTransform:
   m_ObjectHideFlags: 1
@@ -771,9 +778,9 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 19.8000488, y: .675048828}
-  m_SizeDelta: {x: -169.5, y: 3.94998169}
-  m_Pivot: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 19.800049, y: 0.6750488}
+  m_SizeDelta: {x: -169.5, y: 3.9499817}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22454810
 RectTransform:
   m_ObjectHideFlags: 1
@@ -788,9 +795,9 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 29.8999996, y: -.5}
+  m_AnchoredPosition: {x: 29.9, y: -0.5}
   m_SizeDelta: {x: -89.25, y: 2.5}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22475382
 RectTransform:
   m_ObjectHideFlags: 1
@@ -805,9 +812,9 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -37.7000008, y: -.200000003}
-  m_SizeDelta: {x: -64.6999512, y: .25}
-  m_Pivot: {x: .5, y: .5}
+  m_AnchoredPosition: {x: -37.7, y: -0.2}
+  m_SizeDelta: {x: -64.69995, y: 0.25}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22496964
 RectTransform:
   m_ObjectHideFlags: 1

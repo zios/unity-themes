@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 namespace Zios{
 	public enum InputRange{Any,Zero,Negative,Positive}
 	public static class InputState{
+		[NonSerialized] public static bool disabled;
 		public static Dictionary<string,int> owner = new Dictionary<string,int>();
 		public static void SetOwner(string key,int id){
 			InputState.owner[key] = id;

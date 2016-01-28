@@ -3,9 +3,9 @@ namespace Zios{
 	[AddComponentMenu("Zios/Singleton/Console")]
 	public class ConsoleSettings : MonoBehaviour{
 		public GUISkin skin;
-		public Texture2D background;
-		public Texture2D inputBackground;
-		public Texture2D textArrow;
+		public Material background;
+		public Material inputBackground;
+		public Material textArrow;
 		public KeyCode triggerKey = KeyCode.F12;
 		public float speed = 5.0f;
 		public float height = 0.25f;
@@ -13,9 +13,8 @@ namespace Zios{
 		public string logFile = "Log.txt";
 		public int logLineSize = 150;
 		public int logFontSize = 15;
-		public bool logFontAllowColors = true;
 		public byte logFontColor = 7;
-		public bool allowLogging = true;
+		public bool logFontAllowColors = true;
 		public void Awake(){
 			Zios.Console.settings = this;
 			Zios.Console.Awake();

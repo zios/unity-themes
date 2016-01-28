@@ -143,9 +143,7 @@ namespace Zios.UI{
 			GenericMenu menu = new GenericMenu();
 			MenuFunction hideBreakdown = ()=>{Class.isVisible = false;};
 			MenuFunction toggleFixed = ()=>{Class.isFixed = !Class.isFixed;};
-			MenuFunction toggleOneLine = ()=>{Class.isOneLine = !Class.isOneLine;};
 			menu.AddItem(new GUIContent("Fixed Layout"),Class.isFixed,toggleFixed);
-			//menu.AddItem(new GUIContent("One Line Layout"),Class.isOneLine,toggleOneLine);
 			menu.AddItem(new GUIContent("Hide Breakdown"),false,hideBreakdown);
 			menu.ShowAsContext();
 		}

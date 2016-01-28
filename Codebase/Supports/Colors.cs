@@ -30,8 +30,8 @@ namespace Zios{
 			names["white"]    = numbers[7]  = new Color(1.00f,1.00f,1.00f,1.00f);
 			names["orange"]   = numbers[8]  = new Color(1.00f,0.50f,0.00f,1.00f);
 			names["gray"]     = numbers[9]  = new Color(0.50f,0.50f,0.50f,1.00f);
-			names["darkgray"] = numbers[10] = new Color(0.35f,0.35f,0.35f,1.00f);
-			names["silver"]   = numbers[11] = new Color(0.80f,0.80f,0.80f,1.00f);
+			names["silver"]   = numbers[10] = new Color(0.80f,0.80f,0.80f,1.00f);
+			names["darkgray"] = numbers[11] = new Color(0.35f,0.35f,0.35f,1.00f);
 			names["violet"]   = numbers[12] = new Color(0.50f,0.00f,1.00f,1.00f);
 			//=======================
 			// Pastel

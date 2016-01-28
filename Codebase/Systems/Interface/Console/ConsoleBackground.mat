@@ -1,0 +1,317 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: ConsoleBackground
+  m_Shader: {fileID: 4800000, guid: dc9957c7d1d092f4a94657d5039c4f0f, type: 3}
+  m_ShaderKeywords: ATLASSTATE_OFF COLORMODE_NORMAL CULLMODE_BACK DIRECTIONALSTATE_OFF
+    DISTANCECULL_OFF FADEGRAYSCALE_OFF FADESTATE_OFF FADETYPE_SMOOTH LIGHTINGTYPE_NONE
+    LIGHTMAPBLEND_LERP LIGHTMAPMODE_SHADED LIGHTMAPSTATE_OFF LIGHTMAPTYPE_STEPPED
+    POINTSTATE_OFF REFLECTIONTYPE_NONE SCROLLSTATE_ON SHADINGBLEND_MULTIPLY SHADINGTYPE_NORMAL
+    SHADOWBLEND_LERP SHADOWSTATE_OFF SHADOWTYPE_STEPPED TEXTUREBLEND_MULTIPLY TEXTUREMAPPING_TRIPLANAR
+    TEXTURESTATE_ON VARIABLE_MATERIAL_MEGASHADER WARPDISTORT_ON WARPTYPE_OFFSET XBLENDING_ON
+    YBLENDING_ON ZBLENDING_ON ZTESTMODE_EQUAL ZWRITEMODE_ON
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: 2000
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+      data:
+        first:
+          name: _MainTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _BumpMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DetailNormalMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _ParallaxMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _OcclusionMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _EmissionMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DetailMask
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DetailAlbedoMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _MetallicGlossMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: textureMap
+        second:
+          m_Texture: {fileID: 2800000, guid: 2c667a1cb359554488e79fcfe3e5e4d1, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: reflectionMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: shadingTexture
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+    m_Floats:
+      data:
+        first:
+          name: _SrcBlend
+        second: 1
+      data:
+        first:
+          name: _DstBlend
+        second: 0
+      data:
+        first:
+          name: _Cutoff
+        second: 0.5
+      data:
+        first:
+          name: _Parallax
+        second: 0.02
+      data:
+        first:
+          name: _ZWrite
+        second: 1
+      data:
+        first:
+          name: _Glossiness
+        second: 0.5
+      data:
+        first:
+          name: _BumpScale
+        second: 1
+      data:
+        first:
+          name: _OcclusionStrength
+        second: 1
+      data:
+        first:
+          name: _DetailNormalMapScale
+        second: 1
+      data:
+        first:
+          name: _UVSec
+        second: 0
+      data:
+        first:
+          name: _Mode
+        second: 0
+      data:
+        first:
+          name: _Metallic
+        second: 0
+      data:
+        first:
+          name: cullMode
+        second: 2
+      data:
+        first:
+          name: zWriteMode
+        second: 1
+      data:
+        first:
+          name: zTestMode
+        second: 4
+      data:
+        first:
+          name: textureState
+        second: 1
+      data:
+        first:
+          name: textureMapping
+        second: 1
+      data:
+        first:
+          name: textureBlend
+        second: 0
+      data:
+        first:
+          name: triplanarScale
+        second: 16
+      data:
+        first:
+          name: xBlending
+        second: 1
+      data:
+        first:
+          name: yBlending
+        second: 1
+      data:
+        first:
+          name: zBlending
+        second: 1
+      data:
+        first:
+          name: reflectionType
+        second: 0
+      data:
+        first:
+          name: lightingType
+        second: 0
+      data:
+        first:
+          name: pointState
+        second: 0
+      data:
+        first:
+          name: lightingSteps
+        second: 3
+      data:
+        first:
+          name: shadingType
+        second: 0
+      data:
+        first:
+          name: blendLights
+        second: 0
+      data:
+        first:
+          name: shadowState
+        second: 0
+      data:
+        first:
+          name: fadeState
+        second: 0
+      data:
+        first:
+          name: distanceCull
+        second: 0
+      data:
+        first:
+          name: atlasState
+        second: 0
+      data:
+        first:
+          name: scrollState
+        second: 1
+      data:
+        first:
+          name: scrollX
+        second: 0.5
+      data:
+        first:
+          name: scrollY
+        second: 0.5
+      data:
+        first:
+          name: warpType
+        second: 1
+      data:
+        first:
+          name: warpDistort
+        second: 1
+      data:
+        first:
+          name: warpFrequency
+        second: 0
+      data:
+        first:
+          name: warpPowerX
+        second: 5
+      data:
+        first:
+          name: warpPowerY
+        second: -1.67
+      data:
+        first:
+          name: warpScale
+        second: -0.73
+      data:
+        first:
+          name: colorMode
+        second: 0
+      data:
+        first:
+          name: directionalState
+        second: 0
+      data:
+        first:
+          name: lightmapState
+        second: 0
+    m_Colors:
+      data:
+        first:
+          name: _EmissionColor
+        second: {r: 0, g: 0, b: 0, a: 1}
+      data:
+        first:
+          name: _Color
+        second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: baseColor
+        second: {r: 0.16858754, g: 0.0034061454, b: 0.46323532, a: 1}
+      data:
+        first:
+          name: reflectionColor
+        second: {r: 1, g: 1, b: 1, a: 0.3}
+      data:
+        first:
+          name: shadingLitColor
+        second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: shadingUnlitColor
+        second: {r: 0, g: 0, b: 0, a: 0.5}
+      data:
+        first:
+          name: atlasUV
+        second: {r: 0, g: 0, b: 1, a: 1}
+      data:
+        first:
+          name: atlasUVScale
+        second: {r: 1, g: 1, b: 0, a: 0}

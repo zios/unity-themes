@@ -209,6 +209,11 @@ namespace Zios{
 		public static List<string> ListVariables(this object current,List<Type> onlyTypes = null,List<Type> withoutAttributes = null,BindingFlags flags = allFlags){
 			return current.GetVariables(onlyTypes,withoutAttributes,flags).Keys.ToList();
 		}
+		public static void UseVariables<T>(this T current,T other,BindingFlags flags = publicFlags) where T : class{
+			foreach(var name in current.ListVariables(null,null,flags)){
+				current.SetVariable(name,other.GetVariable(name));
+			}
+		}
 		//=========================
 		// Shortcuts - Checks
 		//=========================
@@ -251,6 +256,17 @@ namespace Zios{
 		}
 		public static List<T> AsList<T>(this T current){
 			return new List<T>{current};
+		}
+		public static byte[] ToBytes(this object current){
+			if(current is Vector3){return current.As<Vector3>().ToBytes();}
+			else if(current is float){return current.As<float>().ToBytes();}
+			else if(current is int){return current.As<int>().ToBytes();}
+			else if(current is bool){return current.As<bool>().ToBytes();}
+			else if(current is string){return current.As<string>().ToBytes();}
+			else if(current is byte){return current.As<byte>().ToBytes();}
+			else if(current is short){return current.As<short>().ToBytes();}
+			else if(current is double){return current.As<double>().ToBytes();}
+			return new byte[0];
 		}
 		//=========================
 		// Other

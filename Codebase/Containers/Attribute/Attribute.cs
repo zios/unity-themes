@@ -314,7 +314,7 @@ namespace Zios{
 					}
 				}
 			}
-			if(this.canCache){
+			if(this.canCache && this.info.mode != AttributeMode.Linked){
 				foreach(AttributeData data in dataSet){
 					if(!data.reference.IsNull()){
 						data.reference.dependents.AddNew(this);
@@ -324,8 +324,10 @@ namespace Zios{
 		}
 		public void ValidateDependents(){
 			foreach(var dependent in this.dependents){
-				var parent = dependent.info.parent;
-				parent.CallEvent("On Validate");
+				if(!dependent.dependents.Contains(this)){
+					var parent = dependent.info.parent;
+					parent.CallEvent("On Validate");
+				}
 			}
 		}
 		// ======================

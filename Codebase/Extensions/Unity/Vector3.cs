@@ -1,6 +1,30 @@
 using UnityEngine;
 namespace Zios{
 	public static class Vector3Extension{
+		//=====================
+		// Conversion
+		//=====================
+		public static byte[] ToBytes(this Vector3 current){return current.ToBytes(false);}
+		public static byte[] ToBytes(this Vector3 current,bool pack){
+			if(pack){return Store.PackFloats(current.x,current.y,current.z).ToBytes();}
+			return current.x.ToBytes().Append(current.y).Append(current.z);
+		}
+		public static Vector3 ToRadian(this Vector3 vector){
+			Vector3 copy = vector;
+			copy.x = vector.x / 360.0f;
+			copy.y = vector.y / 360.0f;
+			copy.z = vector.z / 360.0f;
+			return copy;
+		}
+		public static Quaternion ToRotation(this Vector3 current){
+			return Quaternion.Euler(current[1],current[0],current[2]);
+		}
+		public static float[] ToFloat(this Vector3 current){
+			return new float[3]{current.x,current.y,current.z};
+		}
+		//=====================
+		// General
+		//=====================
 		public static string Print(this Vector3 current){
 			return "("+current.x+","+current.y+","+current.z+")";
 		}
@@ -15,9 +39,6 @@ namespace Zios{
 		}
 		public static float Distance(this Vector3 current,Vector3 end){
 			return Vector3.Distance(current,end);
-		}
-		public static float[] ToFloat(this Vector3 current){
-			return new float[3]{current.x,current.y,current.z};
 		}
 		public static Vector3 ScaleBy(this Vector3 current,Vector3 other){
 			return Vector3.Scale(current,other);
@@ -55,16 +76,6 @@ namespace Zios{
 			clamp.y = Mathf.Clamp(clamp.y,min[1],max[1]);
 			clamp.z = Mathf.Clamp(clamp.z,min[2],max[2]);
 			return clamp;
-		}
-		public static Vector3 ToRadian(this Vector3 vector){
-			Vector3 copy = vector;
-			copy.x = vector.x / 360.0f;
-			copy.y = vector.y / 360.0f;
-			copy.z = vector.z / 360.0f;
-			return copy;
-		}
-		public static Quaternion ToRotation(this Vector3 current){
-			return Quaternion.Euler(current[1],current[0],current[2]);
 		}
 		public static Vector3 Abs(this Vector3 vector){
 			Vector3 copy = vector;

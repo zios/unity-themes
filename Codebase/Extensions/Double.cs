@@ -4,6 +4,13 @@ using System.Linq;
 namespace Zios{
 	public static class DoubleExtension{
 		//=====================
+		// Conversion
+		//=====================
+		public static bool ToBool(this double current){return current != 0;}
+		public static int ToInt(this double current){return (int)current;}
+		public static byte ToByte(this double current){return (byte)current;}
+		public static byte[] ToBytes(this double current){return BitConverter.GetBytes(current);}
+		//=====================
 		// Numeric
 		//=====================
 		public static double MoveTowards(this double current,double end,double speed){
@@ -21,9 +28,6 @@ namespace Zios{
 		}
 		public static bool InRange(this double current,double start,double end){
 			return current.Between(start,end);
-		}
-		public static bool ToBool(this double current){
-			return current != 0;
 		}
 		public static double Closest(this double current,params double[] values){
 			double match = double.MaxValue;

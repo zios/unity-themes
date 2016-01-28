@@ -4,6 +4,14 @@ using System.Linq;
 namespace Zios{
 	public static class FloatExtension{
 		//=====================
+		// Conversion
+		//=====================
+		public static bool ToBool(this float current){return current != 0;}
+		public static int ToInt(this float current){return (int)current;}
+		public static byte ToByte(this float current){return (byte)current;}
+		public static short ToShort(this float current){return (short)current;}
+		public static byte[] ToBytes(this float current){return BitConverter.GetBytes(current);}
+		//=====================
 		// Numeric
 		//=====================
 		public static float MoveTowards(this float current,float end,float speed){
@@ -21,9 +29,6 @@ namespace Zios{
 		}
 		public static bool InRange(this float current,float start,float end){
 			return current.Between(start,end);
-		}
-		public static bool ToBool(this float current){
-			return current != 0;
 		}
 		public static float Closest(this float current,params float[] values){
 			float match = float.MaxValue;
@@ -91,6 +96,5 @@ namespace Zios{
 		}
 		public static float Min(this float current,float value){return Math.Min(current,value);}
 		public static float Max(this float current,float value){return Math.Max(current,value);}
-		public static int ToInt(this float current){return (int)current;}
 	}
 }

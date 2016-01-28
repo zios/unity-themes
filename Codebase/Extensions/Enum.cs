@@ -20,7 +20,7 @@ namespace Zios{
 				StringBuilder names = new StringBuilder();
 				for(int index=0;index<allNames.Length;++index){
 					string currentName = allNames[index];
-					Enum value = current.Parse(currentName);
+					Enum value = current.ParseEnum(currentName);
 					if(current.Contains(value)){
 						names.Append(currentName + " ");
 					}
@@ -53,12 +53,12 @@ namespace Zios{
 		public static string[] GetNames(this Enum current){
 			return Enum.GetNames(current.GetType());
 		}
-		public static T Parse<T>(this T current,string value){
+		public static T ParseEnum<T>(this T current,string value){
 			return (T)Enum.Parse(current.GetType(),value);
 		}
 		public static bool Within(this Enum current,params string[] values){
 			for(int index=0;index<values.Length;++index){
-				Enum value = current.Parse(values[index]);
+				Enum value = current.ParseEnum(values[index]);
 				if(current.Contains(value)){return true;}
 			}
 			return false;

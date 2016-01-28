@@ -37,7 +37,9 @@ namespace Zios{
 		}
 		public virtual void Start(){
 			this.setup = true;
-			this.CheckDependents();
+			if(Application.isEditor){
+				this.CheckDependents();
+			}
 		}
 		//===============
 		// Editor

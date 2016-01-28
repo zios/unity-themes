@@ -26,6 +26,7 @@ namespace Zios{
 			base.End();
 		}
 		public virtual bool CheckInput(){
+			if(InputState.disabled){return false;}
 			float intensity = Input.GetAxis(this.inputName);
 			return InputState.CheckRequirement(this.requirement,intensity);
 		}
