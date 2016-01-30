@@ -4,6 +4,6 @@ namespace Zios{
 	using UnityEditor;
 	public class InitializeOnLoadAttribute : UnityEditor.InitializeOnLoadAttribute{}
 	#else
-	public class InitializeOnLoadAttribute : System.Attribute{}	
+	public class InitializeOnLoadAttribute : System.Attribute{}
 	#endif
 }

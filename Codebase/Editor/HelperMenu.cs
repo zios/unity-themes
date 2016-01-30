@@ -3,7 +3,9 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 #pragma warning disable 618
-namespace Zios{
+namespace Zios.Editors{
+	using Sprites;
+	using Actions.InputComponents;
 	public static class HelperMenu{
 		public static bool IsSprite(GameObject instance){
 			MeshFilter filter = instance.GetComponent<MeshFilter>();

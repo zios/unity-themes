@@ -1,6 +1,10 @@
 using UnityEditor;
 using UnityEngine;
-namespace Zios.UI{
+using UnityEvent = UnityEngine.Event;
+namespace Zios.Editors{
+	using Containers;
+	using Interface;
+	using Events;
 	[CustomPropertyDrawer(typeof(Target),true)]
 	public class TargetDrawer : PropertyDrawer{
 		public bool setup;
@@ -46,7 +50,7 @@ namespace Zios.UI{
 				EditorGUIUtility.AddCursorRect(propertyRect,MouseCursor.Zoom);
 				if(!target.searchObject.IsNull() && propertyRect.Clicked(0)){
 					Selection.activeGameObject = target.searchObject;
-					Event.current.Use();
+					UnityEvent.current.Use();
 				}
 				target.search = target.search.Draw(textRect);
 				result.DrawLabel(propertyRect,GUI.skin.GetStyle("SubtleInfo"));

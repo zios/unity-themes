@@ -1,6 +1,7 @@
 using UnityEngine;
-namespace Zios{
-	[AddComponentMenu("Zios/Component/Network/Sync Vector3")]
+namespace Zios.Actions.NetworkComponents{
+	using Attributes;
+	[AddComponentMenu("Zios/Component/Action/Network/Sync Vector3")]
 	public class NetworkerSyncVector3 : NetworkerSync<AttributeVector3,Vector3>{
 		public override void Set(Vector3 value){this.receiveAttribute.Set(value);}
 		public override Vector3 Read(byte[] data){return data.ReadVector3();}

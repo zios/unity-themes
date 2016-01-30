@@ -1,6 +1,8 @@
 using UnityEngine;
-namespace Zios{
-	[AddComponentMenu("Zios/Component/Physics/Force")]
+namespace Zios.Motion{
+	using Attributes;
+	using Events;
+	[AddComponentMenu("Zios/Component/Motion/Force")]
 	public class Force : ManagedMonoBehaviour{
 		public AttributeVector3 velocity = Vector3.zero;
 		public AttributeVector3 terminalVelocity = new Vector3(20,20,20);
@@ -14,11 +16,11 @@ namespace Zios{
 			this.resistence.Setup("Resistence",this);
 			this.minimumImpactVelocity.Setup("Minimum Impact Velocity",this);
 			this.disabled.Setup("Disabled",this);
-			Events.Register("On Impact",this.gameObject);
-			Events.Register("Add Move",this.gameObject);
-			Events.Add("On Collision",(MethodObject)this.OnCollide,this.gameObject);
-			Events.Add("Add Force",(MethodVector3)this.AddForce,this.gameObject);
-			Events.Add("Add Force Raw",(MethodVector3)this.AddForceRaw,this.gameObject);
+			Event.Register("On Impact",this.gameObject);
+			Event.Register("Add Move",this.gameObject);
+			Event.Add("On Collision",(MethodObject)this.OnCollide,this.gameObject);
+			Event.Add("Add Force",(MethodVector3)this.AddForce,this.gameObject);
+			Event.Add("Add Force Raw",(MethodVector3)this.AddForceRaw,this.gameObject);
 			this.AddDependent<ColliderController>(this.gameObject);
 		}
 		public override void Step(){

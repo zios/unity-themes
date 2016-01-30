@@ -1,5 +1,5 @@
 using UnityEngine;
-namespace Zios.UI{
+namespace Zios.Editors.DebugEditors{
 	[AddComponentMenu("Zios/Component/Debug/Editor FPS")]
 	public class EditorFPS : MonoBehaviour{}
 }

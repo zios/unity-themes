@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Zios{
+namespace Zios.Animations{
 	[ExecuteInEditMode][AddComponentMenu("Zios/Component/Animation/Animation Settings")]
 	public class AnimationSettings : MonoBehaviour{
 		public List<AnimationConfiguration> animations = new List<AnimationConfiguration>();

@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 namespace Zios{
+	using Events;
 	#if UNITY_EDITOR
 	using UnityEditor;
 	using CallbackFunction = UnityEditor.EditorApplication.CallbackFunction;
@@ -18,9 +19,9 @@ namespace Zios{
 			#endif
 		}
 		public void Reset(){
-			Events.Add("On Scene Loaded",new Method(this.resetMethod)).SetPermanent();
-			Events.Add("On Hierarchy Changed",new Method(this.resetMethod)).SetPermanent();
-			Events.Add("On Exit Play",new Method(this.resetMethod)).SetPermanent();
+			Event.Add("On Scene Loaded",new Method(this.resetMethod)).SetPermanent();
+			Event.Add("On Hierarchy Changed",new Method(this.resetMethod)).SetPermanent();
+			Event.Add("On Exit Play",new Method(this.resetMethod)).SetPermanent();
 			this.setup = false;
 			this.createMethod();
 		}

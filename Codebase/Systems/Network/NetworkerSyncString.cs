@@ -1,6 +1,7 @@
 using UnityEngine;
-namespace Zios{
-	[AddComponentMenu("Zios/Component/Network/Sync String")]
+namespace Zios.Actions.NetworkComponents{
+	using Attributes;
+	[AddComponentMenu("Zios/Component/Action/Network/Sync String")]
 	public class NetworkerSyncString : NetworkerSync<AttributeString,string>{
 		public override void Set(string value){this.receiveAttribute.Set(value);}
 		public override string Read(byte[] data){return data.ReadString();}

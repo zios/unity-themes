@@ -1,13 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using MaterialExtended;
 using UnityEditor;
 using UnityEngine;
-using Buffer = MaterialExtended.Buffer;
-using FogMode = MaterialExtended.FogMode;
+using UnityEvent = UnityEngine.Event;
 #pragma warning disable 618
-namespace Zios.UI{
+namespace Zios.Editors.MaterialEditors{
 	public class ExtendedMaterialEditor : MaterialEditor{
 		public GUISkin UI;
 		public int drawn;
@@ -147,9 +145,9 @@ namespace Zios.UI{
 			return result;
 		}
 		public bool CheckHover(){
-			if(Event.current.type == EventType.Repaint){
+			if(UnityEvent.current.type == EventType.Repaint){
 				Rect last = GUILayoutUtility.GetLastRect();
-				Vector2 mousePosition = Event.current.mousePosition;
+				Vector2 mousePosition = UnityEvent.current.mousePosition;
 				return last.Contains(mousePosition);
 			}
 			return false;
@@ -204,7 +202,7 @@ namespace Zios.UI{
 			}
 		}
 		public void CheckContext(){
-			if(Event.current.type == EventType.ContextClick && this.hoverObject != null){
+			if(UnityEvent.current.type == EventType.ContextClick && this.hoverObject != null){
 				object hover = this.hoverObject;
 				string typeName = "";
 				GenericMenu menu = new GenericMenu();
@@ -232,11 +230,11 @@ namespace Zios.UI{
 				menu.ShowAsContext();
 				Buffer.unsaved = true;
 				this.hoverObject = null;
-				Event.current.Use();
+				UnityEvent.current.Use();
 			}
 		}
 		public override void OnInspectorGUI(){
-			if(!Event.current.IsUseful()){return;}
+			if(!UnityEvent.current.IsUseful()){return;}
 			this.Setup(true);
 			if(this.isVisible && Buffer.active != null){
 				Material material = Buffer.material;

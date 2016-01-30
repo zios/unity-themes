@@ -1,10 +1,12 @@
+#pragma warning disable 618
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
-namespace Zios{
-#pragma warning disable 618
+using UnityEvent = UnityEngine.Event;
+namespace Zios.Editors.SpriteEditors{
+	using Sprites;
 	public class SpriteAssets{
 		public GUISkin UI;
 		public Mesh spriteMesh;
@@ -257,19 +259,19 @@ namespace Zios{
 		}
 		public void CheckHotkeys(){
 			bool useEvent = false;
-			//bool mouseMove = Event.current.type == EventType.MouseMove;
-			bool control = Event.current.control;
-			bool shift = Event.current.shift;
-			bool alt = Event.current.alt;
-			bool mouseMove = Event.current.type == EventType.MouseMove;
-			Vector2 mouseChange = mouseMove ? Event.current.delta : new Vector2(0,0);
+			//bool mouseMove = UnityEvent.current.type == EventType.MouseMove;
+			bool control = UnityEvent.current.control;
+			bool shift = UnityEvent.current.shift;
+			bool alt = UnityEvent.current.alt;
+			bool mouseMove = UnityEvent.current.type == EventType.MouseMove;
+			Vector2 mouseChange = mouseMove ? UnityEvent.current.delta : new Vector2(0,0);
 			Cursor.visible = !((control || alt || shift) && placementMode);
-			KeyShortcut CheckKey = Button.KeyDown;
+			KeyShortcut CheckKey = Button.EventKeyDown;
 			Transform[] selected = this.placementMode && this.brush != null ? new Transform[1]{this.brush.transform} : Selection.transforms;
 			if((control||alt||shift) && mouseMove){
 				if(this.controlPosition == Vector2.zero){
 					Undo.RegisterUndo(Selection.transforms,"Brush Operation");
-					this.controlPosition = Event.current.mousePosition;
+					this.controlPosition = UnityEvent.current.mousePosition;
 				}
 			}
 			else if(!control && !alt && !shift){
@@ -300,7 +302,7 @@ namespace Zios{
 				useEvent = true;
 			}
 			if(!this.editMode && !this.placementMode){
-				if(useEvent){Event.current.Use();}
+				if(useEvent){UnityEvent.current.Use();}
 				return;
 			}
 			foreach(Transform active in selected){
@@ -328,9 +330,9 @@ namespace Zios{
 					newObject.transform.parent = active;
 					useEvent = true;
 				}
-				if(Event.current.type == EventType.ScrollWheel){
+				if(UnityEvent.current.type == EventType.ScrollWheel){
 					useEvent = true;
-					float scroll = Event.current.delta[1];
+					float scroll = UnityEvent.current.delta[1];
 					if(control){scale *= Mathf.Sign(scroll) >= 0 ? 0.95f : 1.05f;}
 					else if(shift){position.y -= scroll*0.5f;}
 					else{useEvent = false;}
@@ -385,7 +387,7 @@ namespace Zios{
 					if(scale != active.localScale){active.localScale = scale;}
 				}
 			}
-			if(useEvent){Event.current.Use();}
+			if(useEvent){UnityEvent.current.Use();}
 		}
 		public void FixScene(bool allowForce = false){
 			Debug.Log("[SpriteWindow] Fixing Scene = " + (allowForce?"Full":"Repair"));
@@ -1062,20 +1064,20 @@ namespace Zios{
 			this.DrawAnimated();
 			this.visible = false;
 			if(this.disabled){return;}
-			KeyShortcut CheckKeyDown = Button.KeyDown;
+			KeyShortcut CheckKeyDown = Button.EventKeyDown;
 			bool useEvent = false;
 			bool brushUsable = EditorWindow.mouseOverWindow == view;
 			if((!this.placementMode || !brushUsable) && this.brush != null && this.brush.activeSelf){
 				//DestroyImmediate(this.brush);
 				this.brush.SetActive(false);
 			}
-			if(this.placementMode && brushUsable && Event.current.type != EventType.Repaint && Event.current.type != EventType.Layout){
-				bool alt = Event.current.alt;
-				bool control = Event.current.control;
-				bool shift = Event.current.shift;
-				bool mouseMove = Event.current.type == EventType.MouseMove;
+			if(this.placementMode && brushUsable && UnityEvent.current.type != EventType.Repaint && UnityEvent.current.type != EventType.Layout){
+				bool alt = UnityEvent.current.alt;
+				bool control = UnityEvent.current.control;
+				bool shift = UnityEvent.current.shift;
+				bool mouseMove = UnityEvent.current.type == EventType.MouseMove;
 				float brushXRotate = this.brushFlat ? 270 : 0;
-				Vector2 mouse = Event.current.mousePosition;
+				Vector2 mouse = UnityEvent.current.mousePosition;
 				Vector3 brushPosition = new Vector3(0,0,0);
 				Vector3 brushRotation = new Vector3(brushXRotate,180,0);
 				if((control||alt||shift) && mouseMove){
@@ -1099,15 +1101,15 @@ namespace Zios{
 					brushPosition = collision.point;
 					brushPosition += collision.normal;
 				}
-				if(Event.current.type == EventType.MouseDown && this.mouseState < 2){
+				if(UnityEvent.current.type == EventType.MouseDown && this.mouseState < 2){
 					this.mouseState = 2;
 					mousePressed = true;
 				}
-				else if(Event.current.type == EventType.MouseUp && this.mouseState != 1){
+				else if(UnityEvent.current.type == EventType.MouseUp && this.mouseState != 1){
 					this.mouseState = 1;
 				}
-				if(Event.current.type == EventType.ScrollWheel){
-					float scroll = Event.current.delta[1];
+				if(UnityEvent.current.type == EventType.ScrollWheel){
+					float scroll = UnityEvent.current.delta[1];
 					if(control){
 						float amount = 1.0f - (scroll * 0.015f);
 						this.brushScale *= amount;
@@ -1120,10 +1122,10 @@ namespace Zios{
 				else if(CheckKeyDown(KeyCode.R)){
 					this.ResetBrush();
 				}
-				else if(CheckKeyDown(KeyCode.Return) || mousePressed && Event.current.button == 2){
+				else if(CheckKeyDown(KeyCode.Return) || mousePressed && UnityEvent.current.button == 2){
 					this.brushFlat = !this.brushFlat;
 				}
-				else if(Event.current.button == 1){
+				else if(UnityEvent.current.button == 1){
 					if(mousePressed){
 						string prefabName = this.selected.name.Replace("@Bottom","").Replace("@Top","");
 						GameObject path = Locate.GetScenePath("Scene/SpriteGroup-"+prefabName);
@@ -1150,7 +1152,7 @@ namespace Zios{
 				this.brush.transform.localScale = this.brushScale;
 				view.Repaint();
 			}
-			if(useEvent){Event.current.Use();}
+			if(useEvent){UnityEvent.current.Use();}
 		}
 		public void DrawResetButton(float x,float y,float width,float height){
 			if(GUI.Button(new Rect(x,y,width,height),"Reset")){

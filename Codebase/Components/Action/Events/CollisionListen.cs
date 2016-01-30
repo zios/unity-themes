@@ -1,5 +1,8 @@
 using UnityEngine;
-namespace Zios{
+namespace Zios.Actions.EventComponents{
+	using Attributes;
+	using Events;
+	using Motion;
 	[AddComponentMenu("Zios/Component/Action/Event/Collision Listen")]
 	public class CollisionListen : StateMonoBehaviour{
 		public CollisionEvent collisionEvent;
@@ -20,9 +23,9 @@ namespace Zios{
 			if(Application.isPlaying){
 				string triggerName = this.collisionEvent.ToString().ToTitle();
 				foreach(GameObject target in this.target){
-					Events.Add(triggerName,(MethodObject)this.Collision,target);
+					Event.Add(triggerName,(MethodObject)this.Collision,target);
 					if(triggerName == "On Collision"){
-						Events.Add("On Collision End",this.EndCollision,target);
+						Event.Add("On Collision End",this.EndCollision,target);
 					}
 				}
 			}

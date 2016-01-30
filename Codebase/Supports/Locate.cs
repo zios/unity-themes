@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEngine;
 using UnityObject = UnityEngine.Object;
 namespace Zios{
+	using Events;
 	[InitializeOnLoad]
 	public static class Locate{
 		private static bool cleanGameObjects = false;
@@ -24,10 +25,10 @@ namespace Zios{
 		private static Dictionary<GameObject,Dictionary<Type,Component[]>> objectComponents = new Dictionary<GameObject,Dictionary<Type,Component[]>>();
 		static Locate(){
 			if(!Application.isPlaying){
-				//Events.Add("On Application Quit",Locate.SetDirty);
-				Events.Add("On Scene Loaded",Locate.SetDirty).SetPermanent();
-				Events.Add("On Hierarchy Changed",Locate.SetDirty).SetPermanent();
-				Events.Add("On Asset Changed",()=>Locate.assets.Clear()).SetPermanent();
+				//Event.Add("On Application Quit",Locate.SetDirty);
+				Event.Add("On Scene Loaded",Locate.SetDirty).SetPermanent();
+				Event.Add("On Hierarchy Changed",Locate.SetDirty).SetPermanent();
+				Event.Add("On Asset Changed",()=>Locate.assets.Clear()).SetPermanent();
 			}
 			Locate.SetDirty();
 		}

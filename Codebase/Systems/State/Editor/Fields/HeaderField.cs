@@ -1,7 +1,9 @@
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
-namespace Zios.UI{
+namespace Zios.Editors.StateEditors{
+	using Interface;
+	using Actions;
 	public class HeaderField : TableField{
 		public HeaderField(object target=null,TableRow row=null) : base(target,row){}
 		public override void Draw(){

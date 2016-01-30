@@ -1,5 +1,5 @@
 using UnityEngine;
-namespace Zios{
+namespace Zios.Attributes{
 	[AddComponentMenu("")]
 	public class AttributeBoolData : AttributeData<bool,AttributeBool,AttributeBoolData>{
 		public override bool HandleSpecial(){

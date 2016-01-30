@@ -1,6 +1,9 @@
 #pragma warning disable 0169
 using UnityEngine;
-namespace Zios{
+namespace Zios.Containers.Math{
+	using Attributes;
+	using Actions;
+	using Events;
 	public class LerpTransition{
 		public AttributeBool isAngle = true;
 		public AttributeBool isResetOnChange = true;
@@ -22,9 +25,9 @@ namespace Zios{
 			}
 			if(this.parent is StateMonoBehaviour){
 				var script = (StateMonoBehaviour)parent;
-				Events.Add(script.alias+"/On End",this.Reset,parent.gameObject);
+				Event.Add(script.alias+"/On End",this.Reset,parent.gameObject);
 			}
-			Events.Add(path+"/Transition/On Reset",this.Reset,parent.gameObject);
+			Event.Add(path+"/Transition/On Reset",this.Reset,parent.gameObject);
 			this.isAngle.Setup(path+"/Is Angle",parent);
 			this.isResetOnChange.Setup(path+"/Is Reset On Change",parent);
 			this.speed.Setup(path+"/Transition/Speed",parent);

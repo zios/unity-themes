@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
-using UnityObject = UnityEngine.Object;
-namespace Zios{
+namespace Zios.Events{
 	[Serializable]
 	public class EventListener{
 		public object target;
@@ -19,8 +18,8 @@ namespace Zios{
 		public bool IsValid(){
 			var method = this.method.As<Delegate>();
 			bool nullTarget = this.target.IsNull() || (!this.isStatic && method.Target.IsNull());
-			if(nullTarget && !this.warned && Events.debug.Has("Call")){
-				Debug.LogWarning("[Events] Null call attempted -- " + this.name + " -- " + this.target + " -- " + Events.GetMethodName(method));
+			if(nullTarget && !this.warned && Event.debug.Has("Call")){
+				Debug.LogWarning("[Events] Null call attempted -- " + this.name + " -- " + this.target + " -- " + Event.GetMethodName(method));
 				this.warned = true;
 			}
 			return !nullTarget;
@@ -31,17 +30,17 @@ namespace Zios{
 		public void SetPaused(bool state=true){this.paused = state;}
 		public void SetPermanent(bool state=true){this.permanent = state;}
 		public void SetUnique(bool state=true){
-			if(state){Events.unique.AddNew(this.target)[this.name] = this;}
+			if(state){Event.unique.AddNew(this.target)[this.name] = this;}
 			this.unique = state;
 		}
 		public void Remove(){
-			if(Events.cache.ContainsKey(this.target) && Events.cache[this.target].ContainsKey(this.name)){
-				Events.cache[this.target][this.name].Remove(this.method);
+			if(Event.cache.ContainsKey(this.target) && Event.cache[this.target].ContainsKey(this.name)){
+				Event.cache[this.target][this.name].Remove(this.method);
 			}
-			if(Events.cache.AddNew(Events.all).ContainsKey(this.name)){
-				Events.cache[Events.all][this.name].Remove(this.method);
+			if(Event.cache.AddNew(Event.all).ContainsKey(this.name)){
+				Event.cache[Event.all][this.name].Remove(this.method);
 			}
-			Events.listeners.Remove(this);
+			Event.listeners.Remove(this);
 			this.paused = true;
 		}
 		public void Call(bool debugDeep,bool debugTime,object[] values){
@@ -55,8 +54,8 @@ namespace Zios{
 				return;
 			}
 			this.delayed = false;
-			Events.stack.Add(this);
-			Events.AddHistory(this.name);
+			Event.stack.Add(this);
+			Event.AddHistory(this.name);
 			float duration = Time.realtimeSinceStartup;
 			if(this.cooldown > 0){this.Rest(this.cooldown);}
 			if(this.occurrences > 0){this.occurrences -= 1;}
@@ -76,17 +75,17 @@ namespace Zios{
 				else if(value is Vector3 && this.method is MethodVector3){((MethodVector3)this.method)((Vector3)value);}
 			}
 			if(debugDeep){
-				string message = "[Events] : " + name + " -- " + Events.GetMethodName(this.method);
+				string message = "[Events] : " + name + " -- " + Event.GetMethodName(this.method);
 				if(debugTime){
 					duration = Time.realtimeSinceStartup - duration;
-					if(duration > 0.001f || Events.debug.Has("CallTimerZero")){
+					if(duration > 0.001f || Event.debug.Has("CallTimerZero")){
 						string time = duration.ToString("F10").TrimRight("0",".").Trim() + " seconds.";
 						message = message + " -- " + time;
 					}
 				}
 				Debug.Log(message);
 			}
-			Events.stack.Remove(this);
+			Event.stack.Remove(this);
 		}
 	}
 }

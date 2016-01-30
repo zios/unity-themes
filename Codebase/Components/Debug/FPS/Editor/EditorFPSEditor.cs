@@ -1,6 +1,9 @@
 using UnityEditor;
 using UnityEngine;
-namespace Zios.UI{
+using UnityEvent = UnityEngine.Event;
+namespace Zios.Editors.DebugEditors{
+	using Interface;
+	using Events;
 	[CustomEditor(typeof(EditorFPS))]
 	public class EditorFPSEditor : Editor{
 		private static EditorFPSEditor instance;
@@ -9,9 +12,9 @@ namespace Zios.UI{
 		private float nextUpdate;
 		private GUISkin skin;
 		public override void OnInspectorGUI(){
-			if(!Event.current.IsUseful()){return;}
+			if(!UnityEvent.current.IsUseful()){return;}
 			EditorFPSEditor.instance = this;
-			Events.Add("On Editor Update",EditorFPSEditor.EditorUpdate);
+			Event.Add("On Editor Update",EditorFPSEditor.EditorUpdate);
 			string skinName = EditorGUIUtility.isProSkin ? "Dark" : "Light";
 			if(this.skin == null || !this.skin.name.Contains(skinName)){
 				this.skin = FileManager.GetAsset<GUISkin>("Gentleface-" + skinName + ".guiskin");

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-namespace Zios{
+namespace Zios.Sprites{
 	[AddComponentMenu("Zios/Component/Rendering/Sprite Controller")]
 	public class SpriteController : MonoBehaviour{
 		public Texture2D spriteTexture;

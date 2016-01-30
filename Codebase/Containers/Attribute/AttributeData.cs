@@ -1,7 +1,8 @@
 #pragma warning disable 0618
 using System;
 using UnityEngine;
-namespace Zios{
+namespace Zios.Attributes{
+	using Containers;
 	[Serializable][AddComponentMenu("")]
 	public class AttributeData{
 		public Target target = new Target();

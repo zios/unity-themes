@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-namespace Zios{
+namespace Zios.Interface{
 	[AddComponentMenu("Zios/Singleton/Debug/FPS (GUI)")]
 	public class FpsGUI : MonoBehaviour{
 		public Text fpsText;

@@ -3,8 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using Zios;
-namespace Zios{
+namespace Zios.Attributes{
+	using Events;
 	public enum AttributeMode{Normal,Linked,Formula,Group};
 	public enum AttributeUsage{Direct,Shaped};
 	public enum LinkType{Both,Get};
@@ -153,7 +153,7 @@ namespace Zios{
 		public AttributeData[] CreateData<Type>(AttributeData[] dataArray,int index) where Type : AttributeData,new(){
 			if(Attribute.debug.Has("Add")){Debug.Log("[Attribute] Creating attribute data : " + this.info.fullPath);}
 			AttributeData data = new Type();
-			Events.Add("On Validate Raw",data.Serialize,this.info.parent);
+			Event.Add("On Validate Raw",data.Serialize,this.info.parent);
 			data.rawType = typeof(Type).FullName;
 			data.attribute = this.info;
 			if(index == -1){index = dataArray.Length;}
@@ -209,8 +209,8 @@ namespace Zios{
 					this.FixDuplicates();
 					this.FixChanged(previousID);
 				}
-				Events.Add("On Validate",this.ValidateDependents,parent);
-				Events.AddLimited("On Reset",this.Reset,1,parent);
+				Event.Add("On Validate",this.ValidateDependents,parent);
+				Event.AddLimited("On Reset",this.Reset,1,parent);
 			}
 			this.info.type = typeof(DataType);
 			this.PrepareData();
@@ -410,8 +410,8 @@ namespace Zios{
 					data = dataSet[index] = this.Deserialize(dataSet[index]);
 				}
 				if(!Application.isPlaying){
-					Events.Add("On Enter Play",data.Serialize);
-					Events.Add("On Scene Saving",data.Serialize);
+					Event.Add("On Enter Play",data.Serialize);
+					Event.Add("On Scene Saving",data.Serialize);
 				}
 				if(data.usage == AttributeUsage.Shaped){data.target.Setup(index + "/Target",this.info.parent);}
 				if(data.usage == AttributeUsage.Direct){data.target.Clear();}

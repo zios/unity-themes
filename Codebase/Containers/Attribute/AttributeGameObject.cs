@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-namespace Zios{
+namespace Zios.Attributes{
 	[Serializable]
 	public class AttributeGameObject : Attribute<GameObject,AttributeGameObject,AttributeGameObjectData>{
 		public static string[] specialList = new string[]{"Copy","Parent"};

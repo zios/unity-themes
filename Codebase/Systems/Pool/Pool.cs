@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 namespace Zios{
+	using Events;
 	[Serializable]
 	public class PoolPrefab{
 		[Internal] public string name;

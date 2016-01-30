@@ -1,5 +1,5 @@
 using UnityEngine;
-namespace Zios{
+namespace Zios.Interface{
 	[AddComponentMenu("Zios/Singleton/Console")]
 	public class ConsoleSettings : MonoBehaviour{
 		public GUISkin skin;
@@ -16,23 +16,23 @@ namespace Zios{
 		public byte logFontColor = 7;
 		public bool logFontAllowColors = true;
 		public void Awake(){
-			Zios.Console.settings = this;
-			Zios.Console.Awake();
+			Console.settings = this;
+			Console.Awake();
 		}
 		public void Start(){
-			Zios.Console.Start();
+			Console.Start();
 		}
 		public void OnEnable(){
-			Zios.Console.OnEnable();
+			Console.OnEnable();
 		}
 		public void OnDisable(){
-			Zios.Console.OnDisable();
+			Console.OnDisable();
 		}
 		public void OnApplicationQuit(){
-			Zios.Console.OnApplicationQuit();
+			Console.OnApplicationQuit();
 		}
 		public void OnGUI(){
-			Zios.Console.OnGUI();
+			Console.OnGUI();
 		}
 	}
 }

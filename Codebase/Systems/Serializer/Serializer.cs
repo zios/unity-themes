@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Text;
 using UnityEngine;
 namespace Zios{
+	using Events;
 	[InitializeOnLoad]
 	public static class SerializerHook{
 		public static Hook<Serializer> hook;
@@ -17,12 +18,12 @@ namespace Zios{
 		public static void Reset(){
 			SerializerHook.hook.Reset();
 			if(Serializer.instance){
-				Events.Add("On Enter Play",Serializer.instance.Save);
-				Events.Add("On Scene Saving",Serializer.instance.Save);
-				Events.Add("On Asset Changed",Serializer.instance.Save);
-				Events.Add("On Level Was Loaded",Serializer.instance.Setup);
-				Events.Add("On Exit Play",Serializer.instance.Load);
-				//Events.Add("On Scene Loaded",Serializer.instance.Load);
+				Event.Add("On Enter Play",Serializer.instance.Save);
+				Event.Add("On Scene Saving",Serializer.instance.Save);
+				Event.Add("On Asset Changed",Serializer.instance.Save);
+				Event.Add("On Level Was Loaded",Serializer.instance.Setup);
+				Event.Add("On Exit Play",Serializer.instance.Load);
+				//Event.Add("On Scene Loaded",Serializer.instance.Load);
 			}
 		}
 		public static void Create(){

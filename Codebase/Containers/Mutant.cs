@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-namespace Zios{
+namespace Zios.Containers{
 	public class Mutant{
 		public object original;
 		public object current;

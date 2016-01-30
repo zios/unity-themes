@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
-using Zios;
-namespace Zios.UI{
+using UnityEvent = UnityEngine.Event;
+namespace Zios.Editors.StateEditors{
+	using Interface;
+	using Actions;
+	using Events;
 	public enum HeaderMode{Vertical,Horizontal,HorizontalFit}
 	public class StateWindow : EditorWindow{
 		//===================================
@@ -43,9 +46,9 @@ namespace Zios.UI{
 			this.wantsMouseMove = true;
 			this.CheckTarget();
 			if(this.target.IsNull()){return;}
-			Events.Add("On State Refreshed",this.BuildTable,this.target);
+			Event.Add("On State Refreshed",this.BuildTable,this.target);
 			if(Application.isPlaying){
-				Events.Add("On State Updated",this.Repaint,this.target);
+				Event.Add("On State Updated",this.Repaint,this.target);
 				this.row = -1;
 				this.column = -1;
 			}
@@ -53,10 +56,10 @@ namespace Zios.UI{
 		public void OnGUI(){
 			if(this.target.IsNull()){return;}
 			this.tableGUI.scroll.Set(this.scroll);
-			//if(!Event.current.IsUseful()){return;}
-			if(Event.current.type == EventType.ScrollWheel){
-				this.scroll += Event.current.delta*5;
-				Event.current.Use();
+			//if(!UnityEvent.current.IsUseful()){return;}
+			if(UnityEvent.current.type == EventType.ScrollWheel){
+				this.scroll += UnityEvent.current.delta*5;
+				UnityEvent.current.Use();
 				this.Repaint();
 			}
 			if(!this.prompted){
@@ -68,9 +71,9 @@ namespace Zios.UI{
 				GUILayout.EndScrollView();
 			}
 			this.CheckHotkeys();
-			if(Event.current.type == EventType.MouseDown && !Event.current.control && !Event.current.shift){this.DeselectAll();}
-			if(Event.current.type == EventType.MouseMove){this.Repaint();}
-			if(Event.current.type == EventType.Repaint){
+			if(UnityEvent.current.type == EventType.MouseDown && !UnityEvent.current.control && !UnityEvent.current.shift){this.DeselectAll();}
+			if(UnityEvent.current.type == EventType.MouseMove){this.Repaint();}
+			if(UnityEvent.current.type == EventType.Repaint){
 				this.repaintHooks();
 				this.repaintHooks = ()=>{};
 				if(!this.hovered){
@@ -90,11 +93,11 @@ namespace Zios.UI{
 				bool changed = table != this.target || this.target.IsNull();
 				if(changed && !table.IsNull()){
 					if(!this.target.IsNull()){
-						Events.Remove("On State Updated",this.Repaint,this.target);
-						Events.Remove("On State Refreshed",this.BuildTable,this.target);
-						Events.Remove("On Components Changed",this.BuildTable,this.target.gameObject);
+						Event.Remove("On State Updated",this.Repaint,this.target);
+						Event.Remove("On State Refreshed",this.BuildTable,this.target);
+						Event.Remove("On Components Changed",this.BuildTable,this.target.gameObject);
 					}
-					Events.Add("On Components Changed",this.BuildTable,table.gameObject);
+					Event.Add("On Components Changed",this.BuildTable,table.gameObject);
 					this.target = table;
 					this.tableIndex = 0;
 					this.BuildTable();
@@ -122,10 +125,10 @@ namespace Zios.UI{
 				}
 				return;
 			}
-			if(Button.KeyUp("A")){this.SelectAll();}
-			if(Button.KeyUp("I")){this.InvertSelection();}
-			if(Button.KeyUp("G")){this.GroupSelected();}
-			if(Button.KeyUp("Escape")){this.DeselectAll();}
+			if(Button.EventKeyUp("A")){this.SelectAll();}
+			if(Button.EventKeyUp("I")){this.InvertSelection();}
+			if(Button.EventKeyUp("G")){this.GroupSelected();}
+			if(Button.EventKeyUp("Escape")){this.DeselectAll();}
 		}
 		//===================================
 		// Operations

@@ -1,5 +1,7 @@
 using UnityEditor;
-namespace Zios.UI{
+namespace Zios.Editors{
+	using Animations;
+	using Interface;
 	public class FilePC2Editor : Editor{
 		public PC2Data data;
 		public override void OnInspectorGUI(){

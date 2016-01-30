@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
-using Zios;
-namespace Zios.UI{
+namespace Zios.Editors{
+	using Interface;
+	using Attributes;
+	using Events;
 	[CustomPropertyDrawer(typeof(EventTarget))]
 	public class EventTargetDrawer : PropertyDrawer{
 		public bool targeted = true;
@@ -34,7 +36,7 @@ namespace Zios.UI{
 			}
 			if(!this.manual){
 				string eventType = eventTarget.mode == EventMode.Listeners ? "Listen" : "Caller";
-				bool hasEvents = eventType == "Listen" ? Events.HasListeners(target) : Events.HasCallers(target);
+				bool hasEvents = eventType == "Listen" ? Event.HasListeners(target) : Event.HasCallers(target);
 				if(!hasEvents){
 					string error = "";
 					if(!target.IsNull()){error = "No <b>"+eventType+"</b> events found for target -- " + target.name;}
@@ -42,7 +44,7 @@ namespace Zios.UI{
 					error.DrawLabel(valueRect,GUI.skin.GetStyle("WarningLabel"));
 					return;
 				}
-				List<string> events = eventType == "Listen" ? Events.GetEventNames("Listen",target) : Events.GetEventNames("Caller",target);
+				List<string> events = eventType == "Listen" ? Event.GetEventNames("Listen",target) : Event.GetEventNames("Caller",target);
 				events.Sort();
 				events = events.OrderBy(item=>item.Contains("/")).ToList();
 				events.RemoveAll(item=>item.StartsWith("@"));

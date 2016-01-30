@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
-namespace Zios{
+namespace Zios.Actions.NetworkComponents{
+	using Attributes;
 	[AddComponentMenu("")]
 	public class NetworkerSync<AttributeType,DataType> : NetworkSync
 	where AttributeType : Attribute,new(){

@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-namespace Zios{
+namespace Zios.Containers{
 	public class FixedList<T> : List<T>{
 		public int maxSize = 0;
 		public FixedList(int size) : base(size){

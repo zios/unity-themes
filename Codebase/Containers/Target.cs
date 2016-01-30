@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityObject = UnityEngine.Object;
-namespace Zios{
+namespace Zios.Containers{
+	using Attributes;
+	using Actions;
+	using Events;
 	public enum TargetMode{Search,Direct};
 	[Serializable]
 	public class Target{
@@ -30,8 +33,8 @@ namespace Zios{
 		}
 		public void Clear(){
 			if(!this.disabled){
-				Events.Remove("On Validate",this.Search,this.parent);
-				Events.Remove("On Hierarchy Changed",this.Search,this.parent);
+				Event.Remove("On Validate",this.Search,this.parent);
+				Event.Remove("On Hierarchy Changed",this.Search,this.parent);
 				this.disabled = true;
 			}
 		}
@@ -47,8 +50,8 @@ namespace Zios{
 				this.AddSpecial("[NextEnabled]",parent.gameObject.GetNextSibling());
 				this.AddSpecial("[PreviousEnabled]",parent.gameObject.GetPreviousSibling());
 				this.AddSpecial("[Root]",parent.gameObject.GetPrefabRoot());
-				Events.Add("On Validate",this.Search,parent);
-				Events.Add("On Hierarchy Changed",this.Search,parent);
+				Event.Add("On Validate",this.Search,parent);
+				Event.Add("On Hierarchy Changed",this.Search,parent);
 				if(parent is StateMonoBehaviour){
 					var state = (StateMonoBehaviour)parent;
 					GameObject stateObject = state.gameObject;

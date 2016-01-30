@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-namespace Zios{
+namespace Zios.Attributes{
 	[Serializable]
 	public class AttributeString : Attribute<string,AttributeString,AttributeStringData>{
 		public static string[] specialList = new string[]{"Copy","Lower","Upper","Capitalize"};

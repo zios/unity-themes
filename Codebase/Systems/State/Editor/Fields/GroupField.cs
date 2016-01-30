@@ -1,5 +1,6 @@
 using System.Linq;
-namespace Zios.UI{
+namespace Zios.Editors.StateEditors{
+	using Actions;
 	public class GroupField : StateField{
 		public StateField[] columnFields = new StateField[0];
 		public GroupField(object target=null,TableRow row=null) : base(target,row){}

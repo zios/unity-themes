@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-namespace Zios{
+namespace Zios.Shaders{
 	[AddComponentMenu("Zios/Component/Rendering/Shader Settings (Local)")][ExecuteInEditMode]
 	public class ShaderLocalSettings : MonoBehaviour{
 		public static ShaderLocalSettings instance;

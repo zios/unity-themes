@@ -96,7 +96,7 @@ MonoBehaviour:
         operation: 0
         special: 0
         rawValue: False
-        rawType: Zios.AttributeBoolData
+        rawType: Zios.Attributes.AttributeBoolData
       oldDataB: []
       oldDataC: []
       oldData: []
@@ -142,7 +142,7 @@ MonoBehaviour:
         operation: 0
         special: 0
         rawValue: 0
-        rawType: Zios.AttributeIntData
+        rawType: Zios.Attributes.AttributeIntData
       oldDataB: []
       oldDataC: []
       oldData: []

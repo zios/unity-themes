@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
-namespace Zios{
+namespace Zios.Containers.Math{
+	using Events;
 	[Serializable]
 	public class LerpQuaternion : LerpTransition{
 		public float endProximity;
@@ -8,8 +9,8 @@ namespace Zios{
 		private Quaternion? lastEnd;
 		public override void Setup(string path,Component parent){
 			base.Setup(path,parent);
-			Events.Register(this.path+"/Transition/On End",this.parent.gameObject);
-			Events.Register(this.path+"/Transition/On Start",this.parent.gameObject);
+			Event.Register(this.path+"/Transition/On End",this.parent.gameObject);
+			Event.Register(this.path+"/Transition/On Start",this.parent.gameObject);
 		}
 		public virtual Quaternion Step(Quaternion current){
 			return this.Step(current,current);

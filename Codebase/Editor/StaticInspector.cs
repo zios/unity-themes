@@ -7,7 +7,10 @@ using UnityEditor;
 using UnityEngine;
 using MenuFunction = UnityEditor.GenericMenu.MenuFunction;
 using UnityObject = UnityEngine.Object;
-namespace Zios.UI{
+namespace Zios.Editors{
+	using Containers;
+	using Interface;
+	using Events;
 	public class StaticInspector : EditorWindow{
 		public static string currentAssembly;
 		public static string currentNamespace;
@@ -35,7 +38,7 @@ namespace Zios.UI{
 			window.Start();
 		}
 		public void OnGUI(){
-			Events.Add("On Editor Update",this.Setup);
+			Event.Add("On Editor Update",this.Setup);
 			if(this.assemblies.Count < 1){this.setup = false;}
 			if(this.setup){
 				this.DrawContext();

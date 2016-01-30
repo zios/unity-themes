@@ -1,5 +1,6 @@
 using UnityEngine;
-namespace Zios{
+namespace Zios.Actions.AttributeComponents{
+	using Attributes;
 	[AddComponentMenu("Zios/Component/Action/Attribute/Modify/Modify Vector3")]
 	public class AttributeModifyVector3 : StateMonoBehaviour{
 		public AttributeVector3 target = Vector3.zero;

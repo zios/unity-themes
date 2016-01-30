@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using UnityObject = UnityEngine.Object;
-namespace Zios.UI{
+namespace Zios.Interface{
 	public static class EditorGUILayoutExtension{
 		public static string Draw(this string current,UnityLabel label=null,GUIStyle style=null,bool indention=false){
 			style = style ?? EditorStyles.textField;

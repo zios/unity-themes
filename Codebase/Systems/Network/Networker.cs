@@ -1,10 +1,12 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.Networking.Types;
 namespace Zios{
+	using Events;
+	using Interface;
 	[InitializeOnLoad]
 	public static class NetworkerHook{
 		static NetworkerHook(){
@@ -93,13 +95,11 @@ namespace Zios{
 			int maxSize = 1024;
 			byte[] buffer = new byte[1024];
 			if(this.syncBufferToServer.Count > 0){
-				//Console.AddLog("Syncing " + this.syncBufferToServer.Count + " data events to server");
 				Networker.SendMessage("SyncData",this.syncBufferToServer.SelectMany(x=>x.Value).ToArray(),this.syncChannel,this.connectionID,-1,false);
 				this.syncBufferToServer.Clear();
 			}
 			if(this.syncBufferToClients.Count > 0){
 				foreach(var clientBuffer in this.syncBufferToClients){
-					//Console.AddLog("Syncing " + clientBuffer.Value.Count + " data events to clients");
 					Networker.SendMessage("SyncData",clientBuffer.Value.SelectMany(x=>x.Value).ToArray(),this.syncChannel,clientBuffer.Key,-1,false);
 				}
 				this.syncBufferToClients.Clear();
@@ -120,11 +120,11 @@ namespace Zios{
 				else if(networkEvent == NetworkEventType.DataEvent){
 					var eventID = buffer.ReadShort();
 					//Debug.Log("Network event received from -- " + this.GetClientName(this.receivedID) + " -- " + this.events[eventID].name);
-					//Console.AddLog("Network event received from -- " + this.GetClientName(this.receivedID) + " -- " + this.events[eventID].name);
 					this.events[eventID].method(buffer);
 				}
 				else if(networkEvent == NetworkEventType.DisconnectEvent){
-					if(this.connectionID == this.receivedID){
+					if(this.connectionID == this.receivedID && this.setup){
+						this.Disconnect();
 						return;
 					}
 					Debug.Log("[Server] Client disconnected -- " + this.GetClientName(this.receivedID));
@@ -182,6 +182,7 @@ namespace Zios{
 		//==============
 		public void SyncData(byte [] data){
 			int index = 2;
+			//int bufferSize = data.ReadShort(2);
 			while(index < this.bufferSize){
 				int eventID = data.ReadShort(index);
 				if(eventID == 0){return;}
@@ -220,14 +221,14 @@ namespace Zios{
 			this.clients.Add(client);
 			Debug.Log("Client connected -- " + name + ".");
 			string eventName = id == this.connectionID ? "Network Connection Success" : "Network Client Connected";
-			Events.Call(eventName,id);
+			Event.Call(eventName,id);
 		}
 		public void RemoveClient(byte[] data){
 			int id = data.ReadInt(2);
 			var client = this.clients.Find(x=>x.id==id);
 			this.clients.Remove(client);
 			Debug.Log("Client disconnected -- " + client.name + ".");
-			Events.Call("Network Client Disconnected",id);
+			Event.Call("Network Client Disconnected",id);
 		}
 		//==============
 		// Commands
@@ -268,6 +269,10 @@ namespace Zios{
 			}
 			NetworkTransport.Disconnect(0,this.connectionID,out this.errorCode);
 			NetworkTransport.RemoveHost(this.socketID);
+			/*NetworkTransport.Shutdown();
+			NetworkTransport.Init();*/
+			Networker.mode = NetworkerMode.None;
+			this.settings.Channels.Clear();
 			this.clients.Clear();
 			this.setup = false;
 			Debug.Log("Disconnected.");

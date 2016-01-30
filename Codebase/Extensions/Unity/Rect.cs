@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using UnityEngine;
+using UnityEvent = UnityEngine.Event;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -65,7 +66,7 @@ namespace Zios{
 			return result;
 		}
 		public static bool Hovered(this Rect current,string cursor="Link"){
-			Vector2 mouse = Event.current.mousePosition;
+			Vector2 mouse = UnityEvent.current.mousePosition;
 			bool state = current.Contains(mouse);
 			if(state && !cursor.IsEmpty()){
 				#if UNITY_EDITOR
@@ -76,8 +77,8 @@ namespace Zios{
 			return state;
 		}
 		public static bool Clicked(this Rect current,int button=-1){
-			bool eventMatch = Event.current.type == EventType.MouseDown;
-			bool buttonMatch = button == -1 ? true : Event.current.button == button;
+			bool eventMatch = UnityEvent.current.type == EventType.MouseDown;
+			bool buttonMatch = button == -1 ? true : UnityEvent.current.button == button;
 			return current.Hovered("") && eventMatch && buttonMatch;
 		}
 		public static bool InFocusedWindow(this Rect current){

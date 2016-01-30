@@ -1,7 +1,10 @@
 using UnityEngine;
-namespace Zios{
+namespace Zios.Actions.MoveComponents{
+	using Attributes;
+	using Events;
+	using Motion;
 	public enum MoveType{Absolute,Relative}
-	[AddComponentMenu("Zios/Component/Action/Move/Add Move")]
+	[AddComponentMenu("Zios/Component/Action/Motion/Add Move")]
 	public class AddMove : StateMonoBehaviour{
 		public MoveType type;
 		[Advanced] public string eventName;

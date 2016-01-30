@@ -1,5 +1,7 @@
 using UnityEngine;
-namespace Zios{
+namespace Zios.Actions.TransitionComponents{
+	using Attributes;
+	using Events;
 	public enum TransitionState{Idle,Acceleration,Travel,Deceleration};
 	[AddComponentMenu("")]
 	public class AttributeTransition : StateMonoBehaviour{
@@ -15,8 +17,8 @@ namespace Zios{
 		public override void Awake(){
 			base.Awake();
 			this.transitionSeconds.Setup("Speed Transition Seconds",this);
-			Events.Register(this.alias+"/Start",this.gameObject);
-			Events.Register(this.alias+"/End",this.gameObject);
+			Event.Register(this.alias+"/Start",this.gameObject);
+			Event.Register(this.alias+"/End",this.gameObject);
 		}
 	}
 }

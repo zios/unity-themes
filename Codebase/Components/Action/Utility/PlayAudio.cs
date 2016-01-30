@@ -1,8 +1,9 @@
 using UnityEngine;
-namespace Zios{
+namespace Zios.Actions.AudioComponents{
+	using Attributes;
 	using Random = UnityEngine.Random;
 	public enum AudioOrder{PlayOnlyFirst,PlaySequence,PlayRandom}
-	[AddComponentMenu("Zios/Component/Action/Play Audio")]
+	[AddComponentMenu("Zios/Component/Action/General/Play Audio")]
 	public class PlayAudio : StateMonoBehaviour{
 		public AudioOrder order;
 		public AudioSource[] sources = new AudioSource[1];

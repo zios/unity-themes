@@ -1,6 +1,7 @@
 using UnityEditor;
 using UnityEngine;
-namespace Zios.UI{
+namespace Zios.Editors{
+	using Interface;
 	[CustomPropertyDrawer(typeof(LayerDistances))]
 	public class LayerDistancesDrawer : PropertyDrawer{
 		public int drawn;

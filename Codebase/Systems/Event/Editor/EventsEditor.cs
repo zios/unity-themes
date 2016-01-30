@@ -2,17 +2,19 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
-namespace Zios.UI{
-	[CustomEditor(typeof(Events))]
+namespace Zios.Editors{
+	using Interface;
+	using Events;
+	[CustomEditor(typeof(Event))]
 	public class EventsEditor : Editor{
 		public Dictionary<string,List<EventListener>> listeners;
 		public void BuildListeners(){
-			this.listeners = Events.listeners.GroupBy(x=>Events.GetTargetName(x.target)).ToDictionary(x=>x.Key,x=>x.ToList());
+			this.listeners = Event.listeners.GroupBy(x=>Event.GetTargetName(x.target)).ToDictionary(x=>x.Key,x=>x.ToList());
 		}
 		public override void OnInspectorGUI(){
-			Events.disabled = (EventDisabled)Events.disabled.DrawMask("Disabled");
-			Events.debugScope = (EventDebugScope)Events.debugScope.DrawMask("Debug Scope");
-			Events.debug = (EventDebug)Events.debug.DrawMask("Debug");
+			Event.disabled = (EventDisabled)Event.disabled.DrawMask("Disabled");
+			Event.debugScope = (EventDebugScope)Event.debugScope.DrawMask("Debug Scope");
+			Event.debug = (EventDebug)Event.debug.DrawMask("Debug");
 			if("Listeners".DrawFoldout(true)){
 				EditorGUI.indentLevel += 1;
 				if(this.listeners == null){this.BuildListeners();}
@@ -25,7 +27,7 @@ namespace Zios.UI{
 						foreach(var listener in item.Value){
 							GUILayout.BeginHorizontal();
 							listener.name.DrawLabel(labelStyle,true);
-							Events.GetMethodName(listener.method).DrawLabel(valueStyle);
+							Event.GetMethodName(listener.method).DrawLabel(valueStyle);
 							listener.isStatic.Draw(null,checkStyle);
 							listener.permanent.Draw(null,checkStyle);
 							listener.unique.Draw(null,checkStyle);
@@ -36,7 +38,7 @@ namespace Zios.UI{
 				}
 				EditorGUI.indentLevel -= 1;
 			}
-			Events.eventHistory.Draw("Event History");
+			Event.eventHistory.Draw("Event History");
 		}
 	}
 }

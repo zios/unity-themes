@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
-namespace Zios{
+namespace Zios.Audio{
+	using Interface;
 	[AddComponentMenu("Zios/Singleton/Audio")]
 	public class AudioManager : MonoBehaviour{
 		public AudioListener listener;
@@ -22,9 +23,9 @@ namespace Zios{
 			this.startDelay = Time.time + 0.1f;
 		}
 		public void Start(){
-			Zios.Console.AddCvarMethod("soundVolume",this,"soundVolume","Sound Volume",this.help[0],this.SetSoundVolume);
-			Zios.Console.AddCvarMethod("musicVolume",this,"musicVolume","Music Volume",this.help[1],this.SetMusicVolume);
-			Zios.Console.AddKeyword("mute",this.ToggleMute);
+			Console.AddCvarMethod("soundVolume",this,"soundVolume","Sound Volume",this.help[0],this.SetSoundVolume);
+			Console.AddCvarMethod("musicVolume",this,"musicVolume","Music Volume",this.help[1],this.SetMusicVolume);
+			Console.AddKeyword("mute",this.ToggleMute);
 			foreach(AudioSource sound in FindObjectsOfType(typeof(AudioSource))){
 				if(sound.clip == null){continue;}
 				this.sounds[sound.clip.name] = sound;

@@ -1,6 +1,8 @@
 using UnityEditor;
 using UnityEngine;
-namespace Zios.UI{
+namespace Zios.Editors.StateEditors{
+	using Interface;
+	using Actions;
 	[CustomEditor(typeof(StateTable),true)]
 	public class StateTableEditor : StateMonoBehaviourEditor{
 		public override void OnInspectorGUI(){

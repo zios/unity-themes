@@ -1,5 +1,5 @@
 using UnityEngine;
-namespace Zios{
+namespace Zios.Attributes{
 	[AddComponentMenu("Zios/Component/Attribute/Box/Box Float")]
 	public class AttributeBoxFloat : AttributeBox<AttributeFloat>{
 		public override void Store(){

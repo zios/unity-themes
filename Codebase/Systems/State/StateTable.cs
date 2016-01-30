@@ -1,10 +1,11 @@
-using Zios;
 using UnityEngine;
 using System;
 using System.Linq;
 using System.Collections.Generic;
 using UnityObject = UnityEngine.Object;
-namespace Zios{
+namespace Zios.Actions{
+	using Attributes;
+	using Events;
 	[AddComponentMenu("Zios/Component/Action/State Table")]
 	public class StateTable : StateMonoBehaviour{
 		public static bool debug;
@@ -19,13 +20,13 @@ namespace Zios{
 		public override void Awake(){
 			base.Awake();
 			this.alias = this.gameObject.name.Contains("Main") && !this.transform.parent.IsNull() ? this.transform.parent.name : this.gameObject.name;
-			Events.Register("On State Updated",this);
-			Events.Register("On State Refreshed",this);
-			Events.Add("On State Update",this.UpdateStates,this);
-			Events.Add("On Start",StateTable.RefreshTables);
+			Event.Register("On State Updated",this);
+			Event.Register("On State Refreshed",this);
+			Event.Add("On State Update",this.UpdateStates,this);
+			Event.Add("On Start",StateTable.RefreshTables);
 			if(!Application.isPlaying){
-				Events.Add("On Hierarchy Changed",StateTable.RefreshTables);
-				Events.Add("On Components Changed",StateTable.RefreshTables,this.gameObject);
+				Events.Event.Add("On Hierarchy Changed",StateTable.RefreshTables);
+				Events.Event.Add("On Components Changed",StateTable.RefreshTables,this.gameObject);
 			}
 			this.external.Setup("External",this);
 		}

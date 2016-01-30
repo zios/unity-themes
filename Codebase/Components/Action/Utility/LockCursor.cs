@@ -1,6 +1,6 @@
 using UnityEngine;
-namespace Zios{
-	[AddComponentMenu("Zios/Component/Action/Lock Cursor")]
+namespace Zios.Actions.UtilityComponents{
+	[AddComponentMenu("Zios/Component/Action/General/Lock Cursor")]
 	public class LockCursor : StateMonoBehaviour{
 		public override void Use(){
 			base.Use();

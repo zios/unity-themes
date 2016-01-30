@@ -2,9 +2,10 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
-using Zios;
-using Zios.UI;
-namespace Zios.UI{
+using UnityEvent = UnityEngine.Event;
+namespace Zios.Editors{
+	using Interface;
+	using Events;
 	[CanEditMultipleObjects]
 	public class VariableMaterialEditor : ShaderGUI{
 		public MaterialEditor editor;
@@ -27,11 +28,11 @@ namespace Zios.UI{
 				GUI.enabled = !this.parent.IsNull() && (isHook || this.parent.extension != "zshader");
 				if(isFlat && "Unflatten".DrawButton()){VariableMaterial.Unflatten(editor.targets);}
 				if(!isFlat && "Flatten".DrawButton()){VariableMaterial.Flatten(true,editor.targets);}
-				GUI.enabled = Event.current.shift || !isUpdated;
+				GUI.enabled = UnityEvent.current.shift || !isUpdated;
 				if("Update".DrawButton()){
 					VariableMaterial.force = true;
 					var materials = editor.targets.Cast<Material>().ToList();
-					Events.AddStepper("On Editor Update",VariableMaterialEditor.RefreshStep,materials,50);
+					Event.AddStepper("On Editor Update",VariableMaterialEditor.RefreshStep,materials,50);
 				}
 				GUI.enabled = true;
 				EditorGUILayout.EndHorizontal();
@@ -56,17 +57,17 @@ namespace Zios.UI{
 			var renderers = Locate.GetSceneComponents<Renderer>();
 			foreach(var renderer in renderers){materials.AddRange(renderer.sharedMaterials);}
 			materials = materials.Distinct().ToList();
-			Events.AddStepper("On Editor Update",VariableMaterialEditor.RefreshStep,materials,50);
+			Event.AddStepper("On Editor Update",VariableMaterialEditor.RefreshStep,materials,50);
 		}
 		[MenuItem("Zios/Process/Material/Refresh Variable Materials (All)")]
 		public static void RefreshAll(){
 			var materials = VariableMaterial.GetAll();
-			Events.AddStepper("On Editor Update",VariableMaterialEditor.RefreshStep,materials,50);
+			Event.AddStepper("On Editor Update",VariableMaterialEditor.RefreshStep,materials,50);
 		}
 		public static void RefreshStep(object collection,int index){
 			var materials = (List<Material>)collection;
-			Events.stepperTitle = "Updating " + materials.Count + " Materials";
-			Events.stepperMessage = "Updating material : " + materials[index].name;
+			Event.stepperTitle = "Updating " + materials.Count + " Materials";
+			Event.stepperMessage = "Updating material : " + materials[index].name;
 			VariableMaterial.Refresh(true,materials[index]);
 		}
 	}

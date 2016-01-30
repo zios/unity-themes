@@ -1,9 +1,12 @@
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
+using UnityEvent = UnityEngine.Event;
 using MenuFunction = UnityEditor.GenericMenu.MenuFunction;
-using Class = Zios.UI.StateMonoBehaviourEditor;
-namespace Zios.UI{
+namespace Zios.Editors.StateEditors{
+	using Interface;
+	using Actions;
+	using Class = StateMonoBehaviourEditor;
 	[CustomEditor(typeof(StateMonoBehaviour),true)]
 	public class StateMonoBehaviourEditor : DataMonoBehaviourEditor{
 		public static bool isVisible = true;
@@ -27,7 +30,7 @@ namespace Zios.UI{
 			return script.controller;
 		}
 		public override void OnInspectorGUI(){
-			if(!Event.current.IsUseful()){return;}
+			if(!UnityEvent.current.IsUseful()){return;}
 			this.SetupStyles();
 			this.DrawBreakdown();
 			base.OnInspectorGUI();
@@ -127,14 +130,14 @@ namespace Zios.UI{
 					EditorGUILayout.EndHorizontal();
 					Rect area = GUILayoutUtility.GetLastRect();
 					if(!area.IsEmpty()){
-						if(Event.current.type == EventType.Repaint){this.breakdownArea = area;}
+						if(UnityEvent.current.type == EventType.Repaint){this.breakdownArea = area;}
 						if(area.Clicked(1)){this.DrawBreakdownMenu();}
-						if(Event.current.shift && area.Clicked(0)){
+						if(UnityEvent.current.shift && area.Clicked(0)){
 							Class.isVisible = !Class.isVisible;
 						}
 					}
 				}
-				if(Event.current.type == EventType.Repaint && !this.breakdownArea.IsEmpty()){
+				if(UnityEvent.current.type == EventType.Repaint && !this.breakdownArea.IsEmpty()){
 					this.breakdownVisible = this.breakdownArea.InInspectorWindow();
 				}
 			}

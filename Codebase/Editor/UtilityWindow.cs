@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 #pragma warning disable 618
-namespace Zios{
+namespace Zios.Editors{
 	public enum ReplaceOption{Prefab=0,GameObject=1};
 	public class ReplaceSelector{
 		public ReplaceOption type;

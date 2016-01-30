@@ -1,5 +1,5 @@
 using UnityEngine;
-namespace Zios{
+namespace Zios.Attributes{
 	[AddComponentMenu("")]
 	public class AttributeVector3Data : AttributeData<Vector3,AttributeVector3,AttributeVector3Data>{
 		public override Vector3 HandleSpecial(){

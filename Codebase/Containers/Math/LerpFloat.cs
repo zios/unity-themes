@@ -1,5 +1,5 @@
 using System;
-namespace Zios{
+namespace Zios.Containers.Math{
 	[Serializable]
 	public class LerpFloat : LerpTransition{
 		private float start;

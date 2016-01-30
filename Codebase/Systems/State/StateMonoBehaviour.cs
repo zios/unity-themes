@@ -1,6 +1,8 @@
 using System;
 using UnityEngine;
-namespace Zios{
+namespace Zios.Actions{
+	using Events;
+	using Attributes;
 	[AddComponentMenu("")]
 	public class StateMonoBehaviour : ManagedMonoBehaviour{
 		[Advanced] public StateOccurrence occurrence = StateOccurrence.Default;
@@ -12,9 +14,9 @@ namespace Zios{
 		[NonSerialized] public bool? nextState;
 		public override void Awake(){
 			base.Awake();
-			Events.Add("On Disable",this.End,this);
-			Events.Register("On Start",this);
-			Events.Register("On End",this);
+			Event.Add("On Disable",this.End,this);
+			Event.Register("On Start",this);
+			Event.Register("On End",this);
 			this.usable.Setup("Usable",this);
 			this.active.Setup("Active",this);
 			this.used.Setup("Used",this);

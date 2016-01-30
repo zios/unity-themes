@@ -127,7 +127,7 @@ MonoBehaviour:
         operation: 0
         special: 0
         rawValue: 
-        rawType: Zios.AttributeGameObjectData
+        rawType: Zios.Attributes.AttributeGameObjectData
       oldDataB: []
       oldDataC: []
       oldData: []
@@ -177,7 +177,7 @@ MonoBehaviour:
         operation: 0
         special: 0
         rawValue: True
-        rawType: Zios.AttributeBoolData
+        rawType: Zios.Attributes.AttributeBoolData
       oldDataB: []
       oldDataC: []
       oldData: []
@@ -208,7 +208,7 @@ MonoBehaviour:
         operation: 0
         special: 0
         rawValue: 
-        rawType: Zios.AttributeBoolData
+        rawType: Zios.Attributes.AttributeBoolData
       oldDataB: []
       oldDataC: []
       oldData: []
@@ -239,7 +239,7 @@ MonoBehaviour:
         operation: 0
         special: 0
         rawValue: False
-        rawType: Zios.AttributeBoolData
+        rawType: Zios.Attributes.AttributeBoolData
       oldDataB: []
       oldDataC: []
       oldData: []
@@ -354,7 +354,7 @@ MonoBehaviour:
         operation: 0
         special: 0
         rawValue: True
-        rawType: Zios.AttributeBoolData
+        rawType: Zios.Attributes.AttributeBoolData
       oldDataB: []
       oldDataC: []
       oldData: []
@@ -406,7 +406,7 @@ MonoBehaviour:
         operation: 0
         special: 0
         rawValue: False
-        rawType: Zios.AttributeBoolData
+        rawType: Zios.Attributes.AttributeBoolData
       oldDataB: []
       oldDataC: []
       oldData: []
@@ -437,7 +437,7 @@ MonoBehaviour:
         operation: 0
         special: 0
         rawValue: 
-        rawType: Zios.AttributeBoolData
+        rawType: Zios.Attributes.AttributeBoolData
       oldDataB: []
       oldDataC: []
       oldData: []
@@ -468,7 +468,7 @@ MonoBehaviour:
         operation: 0
         special: 0
         rawValue: False
-        rawType: Zios.AttributeBoolData
+        rawType: Zios.Attributes.AttributeBoolData
       oldDataB: []
       oldDataC: []
       oldData: []
@@ -499,7 +499,7 @@ MonoBehaviour:
         operation: 0
         special: 0
         rawValue: Idle
-        rawType: Zios.AttributeStringData
+        rawType: Zios.Attributes.AttributeStringData
       oldDataB: []
       oldDataC: []
       oldData: []
@@ -530,7 +530,7 @@ MonoBehaviour:
         operation: 0
         special: 0
         rawValue: 1
-        rawType: Zios.AttributeFloatData
+        rawType: Zios.Attributes.AttributeFloatData
       oldDataB: []
       oldDataC: []
       oldData: []
@@ -561,7 +561,7 @@ MonoBehaviour:
         operation: 0
         special: 0
         rawValue: 1
-        rawType: Zios.AttributeFloatData
+        rawType: Zios.Attributes.AttributeFloatData
       oldDataB: []
       oldDataC: []
       oldData: []
@@ -592,7 +592,7 @@ MonoBehaviour:
         operation: 0
         special: 0
         rawValue: 
-        rawType: Zios.AttributeGameObjectData
+        rawType: Zios.Attributes.AttributeGameObjectData
       oldDataB: []
       oldDataC: []
       oldData: []
@@ -637,7 +637,7 @@ MonoBehaviour:
         operation: 0
         special: 0
         rawValue: Idle
-        rawType: Zios.AttributeStringData
+        rawType: Zios.Attributes.AttributeStringData
       oldDataB: []
       oldDataC: []
       oldData: []
@@ -683,7 +683,7 @@ MonoBehaviour:
         operation: 0
         special: 0
         rawValue: 
-        rawType: Zios.AttributeGameObjectData
+        rawType: Zios.Attributes.AttributeGameObjectData
       oldDataB: []
       oldDataC: []
       oldData: []

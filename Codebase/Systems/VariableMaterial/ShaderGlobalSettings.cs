@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Zios{
+namespace Zios.Shaders{
+	using Events;
 	[AddComponentMenu("Zios/Singleton/Shader Settings (Global)")][ExecuteInEditMode]
 	public class ShaderGlobalSettings : MonoBehaviour{
 		public static ShaderGlobalSettings instance;
@@ -45,14 +46,14 @@ namespace Zios{
 				this.SetKeyword(fadeBlend);
 				this.SetKeyword(fadeGrayscale);
 				if(this.dirty){
-					Events.AddStepper("On Editor Update",ShaderGlobalSettings.RefreshStep,this.materialsChanged,50);
+					Event.AddStepper("On Editor Update",ShaderGlobalSettings.RefreshStep,this.materialsChanged,50);
 				}
 			}
 		}
 		public static void RefreshStep(object collection,int index){
 			var materials = (List<Material>)collection;
-			Events.stepperTitle = "Updating " + materials.Count + " Materials";
-			Events.stepperMessage = "Updating material : " + materials[index].name;
+			Event.stepperTitle = "Updating " + materials.Count + " Materials";
+			Event.stepperMessage = "Updating material : " + materials[index].name;
 			VariableMaterial.Refresh(true,materials[index]);
 		}
 		public void SetKeyword(Enum target){

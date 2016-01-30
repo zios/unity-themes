@@ -4,9 +4,12 @@ using System.Linq;
 using System.Reflection;
 using UnityEditor;
 using UnityEngine;
-using Zios;
+using UnityEvent = UnityEngine.Event;
 using MenuFunction = UnityEditor.GenericMenu.MenuFunction;
-namespace Zios.UI{
+namespace Zios.Editors{
+	using Interface;
+	using Attributes;
+	using Events;
 	[CustomPropertyDrawer(typeof(Attribute),true)]
 	public class AttributeDrawer : PropertyDrawer{
 		public IAttributeAccess access;
@@ -432,7 +435,7 @@ namespace Zios.UI{
 				}
 				menu.ShowAsContext();
 			}
-			if(this.contextOpen && Event.current.button == 0){
+			if(this.contextOpen && UnityEvent.current.button == 0){
 				this.dirty = true;
 				this.contextOpen = false;
 			}

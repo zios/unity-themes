@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Zios{
+namespace Zios.Containers.Math{
 	[Serializable]
 	public class Bezier{
 		public float[] data;

@@ -1,8 +1,8 @@
 using System;
 using System.Linq;
 using UnityEngine;
-using Zios;
-namespace Zios{
+namespace Zios.Sprites{
+	using Containers.Math;
 	[AddComponentMenu("Zios/Component/Rendering/Sprite After Image")]
 	public class SpriteAfterImage : MonoBehaviour{
 		public bool active = false;

@@ -1,5 +1,5 @@
 using UnityEngine;
-namespace Zios{
+namespace Zios.Rendering{
 	[AddComponentMenu("Zios/Component/Rendering/Render Order")]
 	[RequireComponent(typeof(Renderer))][ExecuteInEditMode]
 	public class RenderOrder : MonoBehaviour{

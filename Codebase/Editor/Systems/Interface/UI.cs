@@ -1,12 +1,11 @@
 using UnityEditor;
 using UnityEngine;
-using Zios.UI;
-namespace Zios.UI{
+namespace Zios.Interface{
 	public static class UI{
 		public static int DrawPrompt(this string current,ref string field,GUIStyle titleStyle=null,GUIStyle inputStyle=null){
 			int result = 0;
-			if(Button.KeyDown("KeypadEnter") || Button.KeyDown("Return")){result = 1;}
-			if(Button.KeyDown("Escape")){result = -1;}
+			if(Button.EventKeyDown("KeypadEnter") || Button.EventKeyDown("Return")){result = 1;}
+			if(Button.EventKeyDown("Escape")){result = -1;}
 			if(titleStyle == null){titleStyle = Style.Get("Prompt","DialogQuestion");}
 			if(inputStyle == null){inputStyle = Style.Get("Prompt","DialogInput");}
 			float width = (Screen.width/2).Max(150);
@@ -21,7 +20,7 @@ namespace Zios.UI{
 		}
 		public static int DrawButtonPrompt(this string current,GUIStyle titleStyle=null,GUIStyle buttonStyle=null){
 			int result = 0;
-			if(Button.KeyDown("Escape")){result = -1;}
+			if(Button.EventKeyDown("Escape")){result = -1;}
 			if(titleStyle == null){titleStyle = Style.Get("Prompt","DialogQuestion");}
 			if(buttonStyle == null){buttonStyle = Style.Get("Prompt","DialogButton");}
 			Rect full = new Rect(0,0,Screen.width,Screen.height);

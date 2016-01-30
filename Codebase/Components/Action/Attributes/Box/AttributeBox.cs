@@ -1,5 +1,5 @@
 using UnityEngine;
-namespace Zios{
+namespace Zios.Attributes{
 	[AddComponentMenu("")]
 	public class AttributeBox<AttributeType> : AttributeBox
 	where AttributeType : Attribute,new(){

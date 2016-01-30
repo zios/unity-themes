@@ -3,7 +3,8 @@ using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
-namespace Zios{
+namespace Zios.Attributes{
+	using Events;
 	[InitializeOnLoad]
 	public static class AttributeManagerHook{
 		public static Hook<AttributeManager> hook;
@@ -15,8 +16,8 @@ namespace Zios{
 			SerializerHook.hook.Reset();
 			AttributeManagerHook.hook.Reset();
 			if(AttributeManager.instance){
-				Events.Add("On Level Was Loaded",AttributeManager.instance.Awake);
-				Events.Add("On Editor Update",AttributeManager.instance.EditorUpdate);
+				Event.Add("On Level Was Loaded",AttributeManager.instance.Awake);
+				Event.Add("On Editor Update",AttributeManager.instance.EditorUpdate);
 			}
 			AttributeManager.Refresh();
 		}
@@ -50,7 +51,7 @@ namespace Zios{
 		public static void PerformRefresh(){AttributeManager.Refresh();}
 		public static void Refresh(int delay = 0){
 			if(Application.isPlaying || AttributeManager.disabled){return;}
-			Events.Call("On Attributes Refresh");
+			Event.Call("On Attributes Refresh");
 			AttributeManager.nextRefresh = Time.realtimeSinceStartup + delay;
 		}
 		//==============================
@@ -69,7 +70,7 @@ namespace Zios{
 					this.Setup();
 					this.SceneRefresh();
 					if(Attribute.debug.Has("ProcessStage")){Utility.EditorLog("[AttributeManager] Stage 1 (Awake) start...");}
-					Events.Call("On Attributes Setup");
+					Event.Call("On Attributes Setup");
 					this.block = Time.realtimeSinceStartup;
 					while(this.stage != 0){this.Process();}
 				}
@@ -80,7 +81,7 @@ namespace Zios{
 				}
 			}
 		}
-		public void OnDestroy(){Events.RemoveAll(this);}
+		public void OnDestroy(){Event.RemoveAll(this);}
 		//==============================
 		// Main
 		//==============================
@@ -96,12 +97,12 @@ namespace Zios{
 		}
 		public void SetupEvents(){
 			if(!Application.isPlaying){
-				Events.Register("On Attribute Setup");
-				Events.Register("On Attribute Ready");
-				Events.Register("On Attribute Refresh");
-				Events.Remove("On Hierarchy Changed",AttributeManager.PerformRefresh);
-				Events.Add("On Events Reset",AttributeManager.PerformRefresh);
-				if(this.refreshOnHierarchyChange){Events.Add("On Hierarchy Changed",AttributeManager.PerformRefresh);}
+				Event.Register("On Attribute Setup");
+				Event.Register("On Attribute Ready");
+				Event.Register("On Attribute Refresh");
+				Event.Remove("On Hierarchy Changed",AttributeManager.PerformRefresh);
+				Event.Add("On Events Reset",AttributeManager.PerformRefresh);
+				if(this.refreshOnHierarchyChange){Event.Add("On Hierarchy Changed",AttributeManager.PerformRefresh);}
 			}
 		}
 		public void Process(){
@@ -173,8 +174,8 @@ namespace Zios{
 				Attribute.ready = true;
 				AttributeManager.percentLoaded = 1;
 				Utility.RepaintInspectors();
-				Events.Call("On Attributes Ready");
-				Events.Rest("On Attributes Refresh",1);
+				Event.Call("On Attributes Ready");
+				Event.Rest("On Attributes Refresh",1);
 				this.stage = 0;
 				this.nextIndex = 0;
 				return;

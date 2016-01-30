@@ -1,5 +1,5 @@
 using UnityEngine;
-namespace Zios{
+namespace Zios.Attributes{
 	[AddComponentMenu("")]
 	public class AttributeStringData : AttributeData<string,AttributeString,AttributeStringData>{
 		public int characterLimit;

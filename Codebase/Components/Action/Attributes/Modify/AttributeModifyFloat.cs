@@ -1,5 +1,6 @@
 using UnityEngine;
-namespace Zios{
+namespace Zios.Actions.AttributeComponents{
+	using Attributes;
 	[AddComponentMenu("Zios/Component/Action/Attribute/Modify/Modify Float")]
 	public class AttributeModifyFloat : StateMonoBehaviour{
 		public AttributeFloat target = 0;

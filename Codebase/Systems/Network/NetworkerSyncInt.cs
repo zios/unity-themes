@@ -1,6 +1,7 @@
 using UnityEngine;
-namespace Zios{
-	[AddComponentMenu("Zios/Component/Network/Sync Int")]
+namespace Zios.Actions.NetworkComponents{
+	using Attributes;
+	[AddComponentMenu("Zios/Component/Action/Network/Sync Int")]
 	public class NetworkerSyncInt : NetworkerSync<AttributeInt,int>{
 		public override void Set(int value){this.receiveAttribute.Set(value);}
 		public override int Read(byte[] data){return data.ReadInt();}

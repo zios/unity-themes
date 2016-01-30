@@ -1,5 +1,7 @@
 using UnityEngine;
-namespace Zios{
+namespace Zios.Actions.TransitionComponents{
+	using Attributes;
+	using Events;
 	[AddComponentMenu("Zios/Component/Action/Attribute/Transition/Transition Float")]
 	public class AttributeTransitionFloat : AttributeTransition{
 		public AttributeFloat speed = 1;

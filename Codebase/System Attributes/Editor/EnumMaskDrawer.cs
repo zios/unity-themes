@@ -1,7 +1,8 @@
 using System;
 using UnityEditor;
 using UnityEngine;
-namespace Zios.UI{
+namespace Zios.Editors{
+	using Interface;
 	[CustomPropertyDrawer(typeof(EnumMaskAttribute))]
 	public class EnumMaskDrawer : PropertyDrawer{
 		public override void OnGUI(Rect position,SerializedProperty property,GUIContent label){

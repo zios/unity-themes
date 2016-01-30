@@ -1,5 +1,5 @@
 using UnityEngine;
-namespace Zios{
+namespace Zios.Attributes{
 	[AddComponentMenu("Zios/Component/Attribute/Box/Box Int")]
 	public class AttributeBoxInt : AttributeBox<AttributeInt>{
 		public override void Store(){

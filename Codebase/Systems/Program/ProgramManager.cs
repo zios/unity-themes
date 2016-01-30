@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 namespace Zios{
+	using Utilities;
+	using Events;
 	[AddComponentMenu("Zios/Singleton/Program")][ExecuteInEditMode]
 	public class ProgramManager : MonoBehaviour{
 		public static ProgramManager instance;
@@ -20,7 +22,7 @@ namespace Zios{
 		}
 		public void Setup(){
 			ProgramManager.instance = this;
-			Events.Register("On Resolution Change");
+			Event.Register("On Resolution Change");
 			Application.targetFrameRate = this.targetFPS;
 			Resolution screen = Screen.currentResolution;
 			this.resolution = new int[3]{Screen.width,Screen.height,screen.refreshRate};
@@ -29,7 +31,7 @@ namespace Zios{
 		}
 		public void Update(){
 			this.DetectResolution();
-			Events.Add("On Editor Update",this.EditorUpdate);
+			Event.Add("On Editor Update",this.EditorUpdate);
 		}
 		public void OnValidate(){
 			if(!this.CanValidate()){return;}
@@ -70,7 +72,7 @@ namespace Zios{
 			bool changedHeight = Screen.height != size[1];
 			bool changedRefresh = screen.refreshRate != size[2];
 			if(changedWidth || changedHeight || changedRefresh){
-				Events.Call("On Resolution Change");
+				Event.Call("On Resolution Change");
 				if(!this.allowResolution){
 					this.allowResolution = true;
 					if(Application.isPlaying){Debug.Log("^7Screen settings auto-adjusted to closest allowed values.");}

@@ -1,5 +1,6 @@
 using UnityEngine;
-namespace Zios{
+namespace Zios.Actions.InputComponents{
+	using Attributes;
 	[AddComponentMenu("Zios/Component/Action/Input/Input Pressed")]
 	public class InputPressed : StateMonoBehaviour{
 		public InputRange requirement;

@@ -1,6 +1,3 @@
-//====================================
-// General
-//====================================
 using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -10,8 +7,7 @@ using System.IO;
 using System.Text;
 using System.Linq;
 using System.Collections.Generic;
-using Zios;
-namespace MaterialExtended{
+namespace Zios.Editors.MaterialEditors{
 	public static class Buffer{
 		public static Material material;
 		public static Shader shader;

@@ -1,5 +1,5 @@
 using UnityEngine;
-[AddComponentMenu("Zios/Rendering/Parallax")]
+[AddComponentMenu("Zios/Component/Rendering/Parallax")]
 public class Parallax : MonoBehaviour{
 	public float scrollSpeedX = 0.5f;
 	public float scrollSpeedY = 0.0f;

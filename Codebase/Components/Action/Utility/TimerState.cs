@@ -1,7 +1,8 @@
 using UnityEngine;
-namespace Zios{
+namespace Zios.Actions.UtilityComponents{
+	using Attributes;
 	public enum TimerType{After,During}
-	[AddComponentMenu("Zios/Component/Action/Timer State")]
+	[AddComponentMenu("Zios/Component/Action/General/Timer State")]
 	public class TimerState : StateMonoBehaviour{
 		public TimerType type;
 		public AttributeFloat seconds = 0;

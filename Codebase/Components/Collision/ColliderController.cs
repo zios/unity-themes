@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using Zios;
-namespace Zios{
+namespace Zios.Motion{
+	using Attributes;
+	using Events;
 	public enum ColliderMode{Sweep,SweepAndValidate};
 	public class CollisionData{
 		public bool isSource;
@@ -42,7 +43,7 @@ namespace Zios{
 		public AttributeFloat left = 0;
 	}
 	[RequireComponent(typeof(Collider))]
-	[AddComponentMenu("Zios/Component/Physics/Collider Controller")]
+	[AddComponentMenu("Zios/Component/Motion/Collider Controller")]
 	public class ColliderController : ManagedMonoBehaviour{
 		private Dictionary<GameObject,CollisionData> collisions = new Dictionary<GameObject,CollisionData>();
 		private Dictionary<GameObject,CollisionData> frameCollisions = new Dictionary<GameObject,CollisionData>();
@@ -70,12 +71,12 @@ namespace Zios{
 		private static Dictionary<GameObject,ColliderController> instances = new Dictionary<GameObject,ColliderController>();
 		public static void SetupColliders(){
 			foreach(var collider in Locate.GetSceneComponents<Collider>()){
-				Events.Register("On Collision",collider.gameObject);
-				Events.Register("On Collision Start",collider.gameObject);
-				Events.Register("On Collision End",collider.gameObject);
+				Event.Register("On Collision",collider.gameObject);
+				Event.Register("On Collision Start",collider.gameObject);
+				Event.Register("On Collision End",collider.gameObject);
 			}
-			Events.Add("On Scene Loaded",ColliderController.SetupColliders).SetPermanent();
-			Events.Add("On Hierarchy Changed",ColliderController.SetupColliders).SetPermanent();
+			Event.Add("On Scene Loaded",ColliderController.SetupColliders).SetPermanent();
+			Event.Add("On Hierarchy Changed",ColliderController.SetupColliders).SetPermanent();
 		}
 		//================================
 		// Unity-Specific
@@ -104,11 +105,11 @@ namespace Zios{
 			this.onSlide.Setup("On Slide",this);
 			this.slopeNormal.Setup("Slope Normal",this);
 			this.ResetBlocked(true);
-			Events.Add("Add Move",(MethodVector3)this.AddMove,this.gameObject);
-			Events.Add("Add Move Raw",(MethodVector3)this.AddMoveRaw,this.gameObject);
-			Events.Add("On Collision",(MethodObject)this.OnCollision,this.gameObject);
-			Events.Add("On Collision Start",(MethodObject)this.OnCollisionStart,this.gameObject);
-			Events.Add("On Collision End",(MethodObject)this.OnCollisionEnd,this.gameObject);
+			Event.Add("Add Move",(MethodVector3)this.AddMove,this.gameObject);
+			Event.Add("Add Move Raw",(MethodVector3)this.AddMoveRaw,this.gameObject);
+			Event.Add("On Collision",(MethodObject)this.OnCollision,this.gameObject);
+			Event.Add("On Collision Start",(MethodObject)this.OnCollisionStart,this.gameObject);
+			Event.Add("On Collision End",(MethodObject)this.OnCollisionEnd,this.gameObject);
 			ColliderController.SetupColliders();
 			if(Application.isPlaying){
 				var body = this.gameObject.AddComponent<Rigidbody>();

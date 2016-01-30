@@ -1,7 +1,9 @@
 using UnityEditor;
 using UnityEngine;
 using MenuFunction = UnityEditor.GenericMenu.MenuFunction;
-namespace Zios.UI{
+namespace Zios.Editors.StateEditors{
+	using Interface;
+	using Actions;
 	public class TitleField : TableField{
 		public TitleField(object target=null,TableRow row=null) : base(target,row){}
 		public override void Draw(){

@@ -1,6 +1,8 @@
 using System;
 using UnityEngine;
-namespace Zios{
+namespace Zios.Events{
+	using Containers;
+	using Attributes;
 	public enum EventMode{Listeners,Callers}
 	[Serializable]
 	public class EventTarget{
@@ -14,7 +16,7 @@ namespace Zios{
 		public void Listen(Method method){
 			GameObject target = this.target.Get();
 			if(!this.name.IsEmpty() && !target.IsNull()){
-				Events.Add(this.name,method,target);
+				Event.Add(this.name,method,target);
 			}
 		}
 		public void Call(){

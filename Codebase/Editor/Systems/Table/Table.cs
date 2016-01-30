@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-namespace Zios.UI{
+using UnityEvent = UnityEngine.Event;
+namespace Zios.Editors{
+	using Containers;
 	public class Table{
 		public string skinDark = "Table-Dark";
 		public string skinLight = "Table-Light";
@@ -131,14 +133,14 @@ namespace Zios.UI{
 		public virtual void Draw(){}
 		public virtual void Clicked(int button){}
 		public void CheckHovered(float xAdjust=0,float yAdjust=0){
-			if(Event.current.type == EventType.MouseMove){
+			if(UnityEvent.current.type == EventType.MouseMove){
 				this.hovered = GUILayoutUtility.GetLastRect().AddXY(xAdjust,yAdjust).Hovered();
 			}
 		}
 		public void CheckClicked(float xAdjust=0,float yAdjust=0){
 			if(GUILayoutUtility.GetLastRect().AddXY(xAdjust,yAdjust).Clicked()){
-				this.Clicked(Event.current.button);
-				Event.current.Use();
+				this.Clicked(UnityEvent.current.button);
+				UnityEvent.current.Use();
 			}
 		}
 	}

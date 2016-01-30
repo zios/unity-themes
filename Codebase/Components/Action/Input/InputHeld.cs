@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
-namespace Zios{
+namespace Zios.Actions.InputComponents{
+	using Attributes;
 	[AddComponentMenu("Zios/Component/Action/Input/Input Held")]
 	public class InputHeld : StateMonoBehaviour{
 		public InputRange requirement;

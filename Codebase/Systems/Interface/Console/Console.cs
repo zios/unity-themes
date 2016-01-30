@@ -4,8 +4,11 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using UnityEvent = UnityEngine.Event;
 using UnityInput = UnityEngine.Input;
-namespace Zios{
+namespace Zios.Interface{
+	using Containers;
+	using Events;
 	public delegate void ConsoleMethod(string[] values);
 	public delegate void ConsoleMethodFull(string[] values,bool help);
 	public struct ConsoleState{
@@ -264,7 +267,7 @@ namespace Zios{
 			foreach(var item in Console.binds){
 				Bind data = item.Value;
 				if(Console.status > 0 && !data.action.Contains("consoleShow",true)){continue;}
-				bool keyDown = Button.KeyDown(data.key);
+				bool keyDown = Button.EventKeyDown(data.key);
 				if(keyDown && data.repeat && data.nextRepeat > Time.time){
 					Console.AddCommand(data.action);
 					data.nextRepeat += Time.time + data.repeatDelay;
@@ -281,7 +284,7 @@ namespace Zios{
 					Console.AddCommand(data.action);
 				}
 				if(Console.lastCommand.Matches(data.action,true)){
-					Event.current.Use();
+					UnityEvent.current.Use();
 				}
 				data.released = !keyDown;
 			}
@@ -568,17 +571,17 @@ namespace Zios{
 			}
 		}
 		public static void CheckTrigger(){
-			if(Button.KeyDown(Console.settings.triggerKey)){
+			if(Button.EventKeyDown(Console.settings.triggerKey)){
 				Console.ShowConsole();
-				Event.current.Use();
+				UnityEvent.current.Use();
 			}
 		}
 		public static void CheckHotkeys(){
-			bool control = Event.current.control;
-			bool shift = Event.current.shift;
-			bool alt = Event.current.alt;
+			bool control = UnityEvent.current.control;
+			bool shift = UnityEvent.current.shift;
+			bool alt = UnityEvent.current.alt;
 			if(control && alt){
-				string keyName = Convert.ToString(Event.current.keyCode);
+				string keyName = Convert.ToString(UnityEvent.current.keyCode);
 				if(Console.keyDetection == ""){Console.keyDetection = "###";}
 				if(Console.keyDetection != keyName && !keyName.ContainsAny("Control","Alt","None")){
 					if(Console.keyDetection != "" && Console.keyDetection != "###"){
@@ -587,12 +590,12 @@ namespace Zios{
 					Console.keyDetection = keyName;
 					Console.inputText += keyName;
 				}
-				if(Event.current.type == EventType.KeyDown){
-					Event.current.Use();
+				if(UnityEvent.current.type == EventType.KeyDown){
+					UnityEvent.current.Use();
 				}
 			}
 			else{Console.keyDetection = "";}
-			if(Button.KeyDown(KeyCode.Return)){
+			if(Button.EventKeyDown(KeyCode.Return)){
 				Console.inputText = Console.inputText.TrimStart('\\').TrimStart('/');
 				Console.lastCommand = Console.inputText == "" ? " " : Console.inputText;
 				if(Console.inputText != ""){
@@ -602,20 +605,20 @@ namespace Zios{
 				Console.AddLog("^5>> ^7" + Console.inputText);
 				Console.inputText = "";
 			}
-			else if(Event.current.type == EventType.MouseDown){Console.mouseHeld = true;}
-			else if(Event.current.type == EventType.MouseUp){Console.mouseHeld = false;}
-			else if(Event.current.type == EventType.ScrollWheel){
-				if(control){Console.settings.logFontSize -= (int)Event.current.delta[1];}
-				else if(shift){Console.settings.height += Math.Sign(Event.current.delta[1]) * 0.02f;}
-				else{Console.logPosition += (float)(Event.current.delta[1]) / (float)(Console.log.Count);}
-				Event.current.Use();
+			else if(UnityEvent.current.type == EventType.MouseDown){Console.mouseHeld = true;}
+			else if(UnityEvent.current.type == EventType.MouseUp){Console.mouseHeld = false;}
+			else if(UnityEvent.current.type == EventType.ScrollWheel){
+				if(control){Console.settings.logFontSize -= (int)UnityEvent.current.delta[1];}
+				else if(shift){Console.settings.height += Math.Sign(UnityEvent.current.delta[1]) * 0.02f;}
+				else{Console.logPosition += (float)(UnityEvent.current.delta[1]) / (float)(Console.log.Count);}
+				UnityEvent.current.Use();
 			}
-			else if(Button.KeyDown(KeyCode.PageDown)){Console.logPosition += Console.logScrollLimit * 0.25f;}
-			else if(Button.KeyDown(KeyCode.PageUp)){Console.logPosition -= Console.logScrollLimit * 0.25f;}
-			else if(Button.KeyDown(KeyCode.Tab)){Console.CheckAutocomplete();}
-			if(Console.history.Count > 0 && (Button.KeyDown(KeyCode.UpArrow) || Button.KeyDown(KeyCode.DownArrow))){
-				if(Button.KeyDown(KeyCode.UpArrow) && Console.historyIndex > 0){--Console.historyIndex;}
-				if(Button.KeyDown(KeyCode.DownArrow)){++Console.historyIndex;}
+			else if(Button.EventKeyDown(KeyCode.PageDown)){Console.logPosition += Console.logScrollLimit * 0.25f;}
+			else if(Button.EventKeyDown(KeyCode.PageUp)){Console.logPosition -= Console.logScrollLimit * 0.25f;}
+			else if(Button.EventKeyDown(KeyCode.Tab)){Console.CheckAutocomplete();}
+			if(Console.history.Count > 0 && (Button.EventKeyDown(KeyCode.UpArrow) || Button.EventKeyDown(KeyCode.DownArrow))){
+				if(Button.EventKeyDown(KeyCode.UpArrow) && Console.historyIndex > 0){--Console.historyIndex;}
+				if(Button.EventKeyDown(KeyCode.DownArrow)){++Console.historyIndex;}
 				Console.historyIndex = (byte)Mathf.Clamp(Console.historyIndex,0,Console.history.Count-1);
 				Console.inputText = Console.history[Console.historyIndex];
 			}
@@ -654,7 +657,7 @@ namespace Zios{
 			Rect inputBounds = new Rect(0,consoleHeight,Screen.width,30);
 			Rect inputArrowBounds = new Rect(2,consoleHeight+6,12,12);
 			Console.logStyle.fontSize = Console.settings.logFontSize;
-			if(Event.current.type == EventType.Repaint){
+			if(UnityEvent.current.type == EventType.Repaint){
 				var backgroundTexture = Console.settings.background.GetTexture("textureMap");
 				var inputTexture = Console.settings.inputBackground.GetTexture("textureMap");
 				backgroundTexture.wrapMode = TextureWrapMode.Repeat;

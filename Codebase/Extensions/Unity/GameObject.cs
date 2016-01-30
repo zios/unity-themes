@@ -5,6 +5,7 @@ using UnityEditor;
 using System;
 using System.Collections.Generic;
 namespace Zios{
+	using Events;
 	public static class GameObjectExtension{
 		//====================
 		// Retrieval
@@ -213,13 +214,13 @@ namespace Zios{
 		//====================
 		public static void PauseValidate(this GameObject current){
 			var components = current.GetComponentsInChildren<Component>();
-			foreach(var component in components){Events.Pause("On Validate",component);}
-			Events.Pause("On Validate",current);
+			foreach(var component in components){Event.Pause("On Validate",component);}
+			Event.Pause("On Validate",current);
 		}
 		public static void ResumeValidate(this GameObject current){
 			var components = current.GetComponentsInChildren<Component>();
-			foreach(var component in components){Events.Resume("On Validate",component);}
-			Events.Resume("On Validate",current);
+			foreach(var component in components){Event.Resume("On Validate",component);}
+			Event.Resume("On Validate",current);
 		}
 		public static void MoveTo(this GameObject current,Vector3 location,bool useX=true,bool useY=true,bool useZ=true){
 			Vector3 position = current.transform.position;

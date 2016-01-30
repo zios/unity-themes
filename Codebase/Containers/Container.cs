@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-namespace Zios{
+namespace Zios.Containers{
 	[Serializable]
 	public class Container<TKey,TValue>{
 		public List<TKey> keys = new List<TKey>();

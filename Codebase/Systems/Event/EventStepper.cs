@@ -3,7 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Zios{
+namespace Zios.Events{
 	[Serializable]
 	public class EventStepper{
 		public MethodStep method;
@@ -17,7 +17,7 @@ namespace Zios{
 			if(this.index != -1){
 				this.method(this.collection,this.index);
 				float percent = ((float)this.index)/this.collection.Count;
-				canceled = Utility.DisplayCancelableProgressBar(Events.stepperTitle,Events.stepperMessage,percent);
+				canceled = Utility.DisplayCancelableProgressBar(Event.stepperTitle,Event.stepperMessage,percent);
 				this.index += 1;
 			}
 			bool loading = Application.isLoadingLevel || this.passes.Count < 1;
@@ -25,11 +25,11 @@ namespace Zios{
 			if((loading || canceled || ended) && !this.complete){
 				this.index = -1;
 				foreach(var pass in this.passes){
-					Events.Remove(this.eventName,pass);
+					Event.Remove(this.eventName,pass);
 				}
 				this.complete = true;
 				this.passes.Clear();
-				Events.steppers.Remove(this.method);
+				Event.steppers.Remove(this.method);
 				Utility.ClearProgressBar();
 			}
 		}

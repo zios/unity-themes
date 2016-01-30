@@ -1,6 +1,7 @@
 using UnityEngine;
-namespace Zios{
-	[AddComponentMenu("Zios/Component/Action/Distance Range")]
+namespace Zios.Actions.NetworkComponents{
+	using Attributes;
+	[AddComponentMenu("Zios/Component/Action/General/Distance Range")]
 	public class DistanceRange : StateMonoBehaviour{
 		public AttributeGameObject source = new AttributeGameObject();
 		public AttributeGameObject target = new AttributeGameObject();

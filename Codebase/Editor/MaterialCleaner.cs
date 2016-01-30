@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-namespace Zios{
+namespace Zios.Editors{
+	using Events;
 	public static class MaterialCleaner{
 		public static bool changes;
 		[MenuItem ("Zios/Process/Material/Remove Unused Data (All)")]
@@ -9,14 +10,14 @@ namespace Zios{
 		public static void Clean(FileData[] materials){
 			MaterialCleaner.changes = false;
 			FileData[] files = materials ?? FileManager.FindAll("*.mat");
-			Events.AddStepper("On Editor Update",MaterialCleaner.Step,files,50);
+			Event.AddStepper("On Editor Update",MaterialCleaner.Step,files,50);
 		}
 		public static void Step(object collection,int itemIndex){
 			var materials = (FileData[])collection;
 			var file = materials[itemIndex];
 			bool last = itemIndex == materials.Length-1;
-			Events.stepperTitle = "Updating " + materials.Length + " Materials";
-			Events.stepperMessage = "Updating material : " + file.name;
+			Event.stepperTitle = "Updating " + materials.Length + " Materials";
+			Event.stepperMessage = "Updating material : " + file.name;
 			string text = file.GetText();
 			string copy = text;
 			int index = 0;

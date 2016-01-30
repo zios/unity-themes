@@ -1,5 +1,6 @@
 using UnityEngine;
-namespace Zios{
+namespace Zios.Actions.AttributeComponents{
+	using Attributes;
 	[AddComponentMenu("Zios/Component/Action/Attribute/Modify/Modify GameObject")]
 	public class AttributeModifyGameObject : StateMonoBehaviour{
 		public AttributeGameObject target;

@@ -1,6 +1,7 @@
 using UnityEngine;
-namespace Zios{
-	[AddComponentMenu("Zios/Component/Action/Move/Link Objects")]
+namespace Zios.Actions.MoveComponents{
+	using Attributes;
+	[AddComponentMenu("Zios/Component/Action/Motion/Link Objects")]
 	public class LinkObject : StateMonoBehaviour{
 		public LinkMode mode;
 		[EnumMask] public LinkOptions options = (LinkOptions)(-1);

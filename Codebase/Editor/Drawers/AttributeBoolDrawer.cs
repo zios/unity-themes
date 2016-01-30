@@ -1,6 +1,8 @@
 using UnityEditor;
 using UnityEngine;
-namespace Zios.UI{
+namespace Zios.Editors{
+	using Attributes;
+	using Interface;
 	[CustomPropertyDrawer(typeof(AttributeBool),true)]
 	public class AttributeBoolDrawer : AttributeDrawer{
 		public override void OnGUI(Rect area,SerializedProperty property,GUIContent label){

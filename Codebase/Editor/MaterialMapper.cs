@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
+using UnityEvent = UnityEngine.Event;
 using MenuFunction = UnityEditor.GenericMenu.MenuFunction;
-namespace Zios.UI{
+namespace Zios.Editors{
+	using Interface;
 	[Serializable]
 	public class ShaderInfo{
 		public bool found;
@@ -57,7 +59,7 @@ namespace Zios.UI{
 				MenuFunction loadUsed = ()=>this.LoadUsed();
 				menu.AddItem(new GUIContent("Load Used Shaders"),false,loadUsed);
 				menu.ShowAsContext();
-				Event.current.Use();
+				UnityEvent.current.Use();
 			}
 		}
 		public void DrawKeywords(){

@@ -1,6 +1,7 @@
 using UnityEditor;
 using UnityEngine;
-namespace Zios.UI{
+namespace Zios.Editors{
+	using Interface;
 	public class IntDrawer : MaterialPropertyDrawer{
 		public override void OnGUI(Rect position,MaterialProperty property,string label,MaterialEditor editor){
 			Vector2 limits = property.rangeLimits;

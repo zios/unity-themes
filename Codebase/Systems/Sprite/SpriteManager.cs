@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 using UnityEngine;
-namespace Zios{
+namespace Zios.Sprites{
 	public class SpriteSheet{
 		public string name;
 		public string imagePath;

@@ -1,6 +1,9 @@
 using UnityEngine;
-namespace Zios{
-	[AddComponentMenu("Zios/Component/Action/Play Animation (3D)")]
+namespace Zios.Actions.AnimationComponents{
+	using Animations;
+	using Attributes;
+	using Events;
+	[AddComponentMenu("Zios/Component/Action/General/Play Animation (3D)")]
 	public class Play3DAnimation : StateMonoBehaviour{
 		public AttributeString animationName = "";
 	   [Advanced] public AttributeFloat speed = -1;

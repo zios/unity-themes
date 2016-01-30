@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEvent = UnityEngine.Event;
 using UnityEngine;
 namespace Zios{
 	public static class Button{
@@ -62,25 +63,25 @@ namespace Zios{
 		public static string GetName(string name){
 			return Button.keyNames.ContainsValue(name) ? Button.keyNames.GetKey(name) : name;
 		}
-		public static bool KeyDown(string name){
-			if(Event.current.type == EventType.KeyDown){
+		public static bool EventKeyDown(string name){
+			if(UnityEvent.current.type == EventType.KeyDown){
 				KeyCode code = (KeyCode)Enum.Parse(typeof(KeyCode),name);
-				return Event.current.keyCode == code;
+				return UnityEvent.current.keyCode == code;
 			}
 			return false;
 		}
-		public static bool KeyUp(string name){
-			if(Event.current.type == EventType.KeyUp){
+		public static bool EventKeyUp(string name){
+			if(UnityEvent.current.type == EventType.KeyUp){
 				KeyCode code = (KeyCode)Enum.Parse(typeof(KeyCode),name);
-				return Event.current.keyCode == code;
+				return UnityEvent.current.keyCode == code;
 			}
 			return false;
 		}
-		public static bool KeyDown(KeyCode code){
-			return Event.current.type == EventType.KeyDown && Event.current.keyCode == code;
+		public static bool EventKeyDown(KeyCode code){
+			return UnityEvent.current.type == EventType.KeyDown && UnityEvent.current.keyCode == code;
 		}
-		public static bool KeyUp(KeyCode code){
-			return Event.current.type == EventType.KeyUp && Event.current.keyCode == code;
+		public static bool EventKeyUp(KeyCode code){
+			return UnityEvent.current.type == EventType.KeyUp && UnityEvent.current.keyCode == code;
 		}
 	}
 }

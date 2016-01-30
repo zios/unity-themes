@@ -1,7 +1,9 @@
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
-namespace Zios.UI{
+using UnityEvent = UnityEngine.Event;
+namespace Zios.Editors.StateEditors{
+	using Actions;
 	public class GroupLabelField : LabelField{
 		public TableRow[] groupRows = new TableRow[0];
 		public GroupLabelField(object target=null,TableRow row=null) : base(target,row){}
@@ -45,7 +47,7 @@ namespace Zios.UI{
 			if(GUILayoutUtility.GetLastRect().AddX(window.scroll.x).Clicked()){
 				Utility.ToggleEditorPref("StateWindow-GroupRow-"+row.section);
 				foreach(var groupRow in this.groupRows){groupRow.disabled = !groupRow.disabled;}
-				Event.current.Use();
+				UnityEvent.current.Use();
 				window.tableGUI.ShowAll();
 				window.Repaint();
 			}
@@ -64,7 +66,7 @@ namespace Zios.UI{
 			var window = StateWindow.Get();
 			if(button == 0){
 				var multiple = window.tableGUI.rows.Count(x=>x.selected && !this.groupRows.Contains(x)) > 0;
-				if(!multiple && !Event.current.control){window.DeselectAll();}
+				if(!multiple && !UnityEvent.current.control){window.DeselectAll();}
 				this.SelectGroup(true);
 				this.row.selected = this.groupRows.Count(x=>x.selected) > 0;
 			}

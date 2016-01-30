@@ -2,8 +2,8 @@ using System;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
-using bake = Zios.BakeVertexData;
-namespace Zios{
+namespace Zios.Editors{
+	using bake = BakeVertexData;
 	public static class BakeVertexData{
 		private static MeshRenderer[] renderers;
 		private static Transform target;

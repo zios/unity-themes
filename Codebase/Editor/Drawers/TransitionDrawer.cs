@@ -1,6 +1,8 @@
 using UnityEditor;
 using UnityEngine;
-namespace Zios.UI{
+namespace Zios.Editors{
+	using Containers.Math;
+	using Interface;
 	[CustomPropertyDrawer(typeof(Transition))]
 	public class TransitionDrawer : PropertyDrawer{
 		public override void OnGUI(Rect area,SerializedProperty property,GUIContent label){

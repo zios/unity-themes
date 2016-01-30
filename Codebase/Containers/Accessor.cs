@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Reflection;
 using UnityEngine;
-namespace Zios{
+namespace Zios.Containers{
 	public class Accessor{
 		public FieldInfo field;
 		public PropertyInfo property;

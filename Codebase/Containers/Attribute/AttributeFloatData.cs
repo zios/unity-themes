@@ -1,5 +1,5 @@
 using UnityEngine;
-namespace Zios{
+namespace Zios.Attributes{
 	[AddComponentMenu("")]
 	public class AttributeFloatData : AttributeData<float,AttributeFloat,AttributeFloatData>{
 		public override float HandleSpecial(){

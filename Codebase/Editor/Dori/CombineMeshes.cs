@@ -5,8 +5,8 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using UnityEditor.SceneManagement;
-using combine = Zios.CombineMeshes;
-namespace Zios{
+namespace Zios.Editors{
+	using combine = CombineMeshes;
 	public static class CombineMeshes{
 		private static List<Mesh> meshes = new List<Mesh>();
 		private static GameObject[] selection;

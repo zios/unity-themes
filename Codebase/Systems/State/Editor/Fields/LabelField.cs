@@ -2,8 +2,10 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
+using UnityEvent = UnityEngine.Event;
 using MenuFunction2 = UnityEditor.GenericMenu.MenuFunction2;
-namespace Zios.UI{
+namespace Zios.Editors.StateEditors{
+	using Actions;
 	public class LabelField : TableField{
 		public bool delayedContext;
 		public LabelField(object target=null,TableRow row=null) : base(target,row){}
@@ -75,7 +77,7 @@ namespace Zios.UI{
 			var stateRow = (StateRow)this.row.target;
 			int rowIndex = window.rowIndex[stateRow];
 			var selected = this.row.table.rows.Where(x=>x.selected).ToArray();
-			if(Event.current.alt && stateRow.requirements.Length > 1){
+			if(UnityEvent.current.alt && stateRow.requirements.Length > 1){
 				int length = stateRow.requirements.Length;
 				rowIndex += button == 1 ? -1 : 1;
 				if(rowIndex < 0){rowIndex = length-1;}
@@ -86,7 +88,7 @@ namespace Zios.UI{
 			}
 			if(!this.row.selected && button == 1){this.delayedContext = true;}
 			if(button == 0 || !this.row.selected){
-				if(Event.current.shift){
+				if(UnityEvent.current.shift){
 					var allRows = this.row.table.rows;
 					int firstIndex = selected.Length < 1 ? allRows.Count-1 : allRows.FindIndex(x=>x==selected.First());
 					int lastIndex = selected.Length < 1 ? 0 : allRows.FindIndex(x=>x==selected.Last());
@@ -98,7 +100,7 @@ namespace Zios.UI{
 				}
 				else{
 					bool state = !this.row.selected;
-					if(!Event.current.control){window.DeselectAll();}
+					if(!UnityEvent.current.control){window.DeselectAll();}
 					this.row.selected = state;
 				}
 			}

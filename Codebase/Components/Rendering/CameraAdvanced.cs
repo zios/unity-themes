@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 namespace Zios{
 	[RequireComponent(typeof(Camera))]
-	[AddComponentMenu("Zios/Component/General/Camera Advanced")]
+	[AddComponentMenu("Zios/Component/Rendering/Camera Advanced")]
 	public class CameraAdvanced : MonoBehaviour{
 		[Internal] public Camera target;
 		[ReadOnly] public Vector3 velocity;

@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
-namespace Zios{
+namespace Zios.Containers.Math{
+	using Attributes;
 	[Serializable]
 	public class Transition{
 		public AttributeFloat duration = 0.5f;

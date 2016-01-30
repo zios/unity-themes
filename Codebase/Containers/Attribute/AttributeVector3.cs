@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Zios{
+namespace Zios.Attributes{
 	[Serializable]
 	public class AttributeVector3 : Attribute<Vector3,AttributeVector3,AttributeVector3Data>{
 		public static string[] specialList = new string[]{"Copy","Flip","Abs","Sign","Floor","Ceil","Normalized","Magnitude","SqrMagnitude"};

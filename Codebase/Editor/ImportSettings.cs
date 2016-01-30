@@ -1,7 +1,7 @@
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
-namespace Zios{
+namespace Zios.Editors{
 	public class ImportSettings : AssetPostprocessor{
 		public void OnPreprocessModel(){
 			ModelImporter importer = (ModelImporter)assetImporter;
