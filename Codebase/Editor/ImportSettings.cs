@@ -37,7 +37,9 @@ namespace Zios.Editors{
 				importer.mipmapEnabled = false;
 			}
 			if(assetName.Contains("Index") || assetName.Contains("Shading") || importer.assetPath.Contains("Interface")){
-				importer.filterMode = FilterMode.Point;
+				if(!importer.assetPath.Contains("Interface")){
+					importer.filterMode = FilterMode.Point;
+				}
 				importer.wrapMode = TextureWrapMode.Clamp;
 				importer.mipmapEnabled = false;
 				//if(importer.assetPath.Contains("Index")){

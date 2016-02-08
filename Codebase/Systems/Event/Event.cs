@@ -110,6 +110,14 @@ namespace Zios.Events{
 			Event.Call("On Events Reset");
 			base.Awake();
 		}
+		[ContextMenu("Reset All")]
+		public void ResetAll(){
+			Event.listeners.Clear();
+			Event.cache.Clear();
+			Event.callers.Clear();
+			Event.unique.Clear();
+			Event.steppers.Clear();
+		}
 		public static void Cleanup(){
 			if(Application.isPlaying){return;}
 			foreach(var cached in Event.cache.Copy()){
@@ -455,7 +463,7 @@ namespace Zios.Events{
 			var scope = Event.debugScope;
 			allowed = target == Event.global ? scope.Has("Global") : scope.Has("Scoped");
 			allowed = allowed && (count > 0 || debug.HasAny("CallEmpty"));
-			if(allowed && name.ContainsAny("On Update","On Editor Update","On GUI","On Camera","On Undo Flushing")){
+			if(allowed && name.ContainsAny("On Update","On Late Update","On Fixed Update","On Editor Update","On GUI","On Camera","On Undo Flushing")){
 				allowed = debug.Has("CallUpdate");
 			}
 			if(allowed && !debug.Has("CallTimer") && debug.HasAny("Call","CallUpdate","CallDeep","CallEmpty")){

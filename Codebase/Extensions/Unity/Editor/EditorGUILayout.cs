@@ -61,24 +61,35 @@ namespace Zios.Interface{
 				if(!header.IsEmpty()){EditorGUI.indentLevel -= 1;}
 			}
 		}
+		public static void Draw(this IDictionary current,UnityLabel label=null,GUIStyle style=null,bool indention=false){
+			var open = EditorGUILayoutExtensionSpecial.DrawFoldout(label.ToString().ToTitle());
+			if(!open){return;}
+			EditorGUI.indentLevel += 1;
+			foreach(DictionaryEntry item in current){
+				item.Value.DrawAuto(item.Key.ToString(),style,true);
+			}
+			EditorGUI.indentLevel -= 1;
+		}
 	}
 	public static class EditorGUILayoutExtensionSpecial{
-		public static void DrawAuto(this object current,UnityLabel label=null,GUIStyle style=null){
-			if(current is string){current.As<string>().Draw(label,style);}
-			if(current is int){current.As<int>().DrawInt(label);}
-			if(current is float){current.As<float>().Draw(label,style);}
-			if(current is Enum){current.As<Enum>().Draw(label,style);}
-			if(current is SerializedProperty){current.As<SerializedProperty>().Draw(label);}
-			if(current is AnimationCurve){current.As<AnimationCurve>().Draw(label);}
-			if(current is Color){current.As<Color>().Draw(label);}
-			if(current is Rect){current.As<Rect>().Draw(label);}
-			if(current is GameObject){current.As<GameObject>().Draw<GameObject>(label);}
-			if(current is Component){current.As<UnityObject>().Draw<Component>(label);}
-			if(current is Material){current.As<UnityObject>().Draw<Material>(label);}
-			if(current is Shader){current.As<UnityObject>().Draw<Shader>(label);}
-			if(current is Vector2){current.As<Vector2>().DrawVector2(label);}
-			if(current is Vector3){current.As<Vector3>().DrawVector3(label);}
-			if(current is Vector4){current.As<Vector4>().DrawVector4(label);}
+		public static void DrawAuto(this object current,UnityLabel label=null,GUIStyle style=null,bool indention=false){
+			bool isDictionary = current.GetType().IsGenericType && current.GetType().GetGenericTypeDefinition() == typeof(Dictionary<,>);
+			if(current is string){current.As<string>().Draw(label,style,indention);}
+			if(current is int){current.As<int>().DrawInt(label,style,indention);}
+			if(current is float){current.As<float>().Draw(label,style,indention);}
+			if(current is Enum){current.As<Enum>().Draw(label,style,indention);}
+			if(current is SerializedProperty){current.As<SerializedProperty>().Draw(label,indention);}
+			if(current is AnimationCurve){current.As<AnimationCurve>().Draw(label,indention);}
+			if(current is Color){current.As<Color>().Draw(label,indention);}
+			if(current is Rect){current.As<Rect>().Draw(label,indention);}
+			if(current is GameObject){current.As<GameObject>().Draw<GameObject>(label,indention);}
+			if(current is Component){current.As<UnityObject>().Draw<Component>(label,indention);}
+			if(current is Material){current.As<UnityObject>().Draw<Material>(label,indention);}
+			if(current is Shader){current.As<UnityObject>().Draw<Shader>(label,indention);}
+			if(current is Vector2){current.As<Vector2>().DrawVector2(label,indention);}
+			if(current is Vector3){current.As<Vector3>().DrawVector3(label,indention);}
+			if(current is Vector4){current.As<Vector4>().DrawVector4(label,indention);}
+			if(isDictionary){current.As<IDictionary>().Draw(label,style,indention);}
 		}
 		public static void DrawFields(this object current,string header="Fields"){
 			if(header.IsEmpty() || EditorGUILayoutExtensionSpecial.DrawFoldout(header)){

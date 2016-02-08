@@ -120,9 +120,9 @@ namespace Zios{
 			}
 		}
 		public static void CheckDelayed(){Utility.CheckDelayed(false);}
-		public static void CheckDelayed(bool editor){
-			if(editor && Application.isPlaying){return;}
-			if(!editor && !Application.isPlaying){return;}
+		public static void CheckDelayed(bool editorCheck){
+			if(editorCheck && Application.isPlaying){return;}
+			if(!editorCheck && !Application.isPlaying){return;}
 			if(Utility.delayedMethods.Count < 1){return;}
 			foreach(var item in Utility.delayedMethods.Copy()){
 				var method = item.Value.Key;

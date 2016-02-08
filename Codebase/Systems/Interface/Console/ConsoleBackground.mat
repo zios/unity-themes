@@ -9,11 +9,11 @@ Material:
   m_Name: ConsoleBackground
   m_Shader: {fileID: 4800000, guid: c68603677811e3344939dbfb020d2d79, type: 3}
   m_ShaderKeywords: ATLASSTATE_OFF COLORMODE_NORMAL CULLMODE_BACK DIRECTIONALSTATE_OFF
-    DISTANCECULL_OFF FADEGRAYSCALE_OFF FADESTATE_OFF FADETYPE_SMOOTH LIGHTINGTYPE_NONE
-    LIGHTMAPBLEND_LERP LIGHTMAPMODE_SHADED LIGHTMAPSTATE_OFF LIGHTMAPTYPE_STEPPED
-    POINTSTATE_OFF REFLECTIONTYPE_NONE SCROLLSTATE_ON SHADINGBLEND_MULTIPLY SHADINGTYPE_NORMAL
-    SHADOWBLEND_LERP SHADOWMODE_BLENDED SHADOWSTATE_OFF SHADOWTYPE_STEPPED TEXTUREBLEND_MULTIPLY
-    TEXTUREMAPPING_TRIPLANAR TEXTURESTATE_ON VARIABLE_MATERIAL_MEGASHADER WARPDISTORT_ON
+    DISTANCECULL_OFF FADESTATE_OFF LIGHTINGTYPE_NONE
+    LIGHTMAPSTATE_OFF
+    POINTSTATE_OFF REFLECTIONTYPE_NONE SCROLLSTATE_ON SHADINGTYPE_NORMAL
+    SHADOWSTATE_OFF TEXTUREBLEND_MULTIPLY
+    TEXTUREMAPPING_TRIPLANAR TEXTURESTATE_ON WARPDISTORT_ON
     WARPTYPE_OFFSET XBLENDING_ON YBLENDING_ON ZBLENDING_ON ZTESTMODE_EQUAL ZWRITEMODE_ON
   m_LightmapFlags: 5
   m_CustomRenderQueue: 2000
@@ -21,69 +21,6 @@ Material:
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
-      data:
-        first:
-          name: _MainTex
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _BumpMap
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _DetailNormalMap
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _ParallaxMap
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _OcclusionMap
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _EmissionMap
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _DetailMask
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _DetailAlbedoMap
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _MetallicGlossMap
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
       data:
         first:
           name: textureMap
@@ -106,54 +43,6 @@ Material:
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
-      data:
-        first:
-          name: _SrcBlend
-        second: 1
-      data:
-        first:
-          name: _DstBlend
-        second: 0
-      data:
-        first:
-          name: _Cutoff
-        second: 0.5
-      data:
-        first:
-          name: _Parallax
-        second: 0.02
-      data:
-        first:
-          name: _ZWrite
-        second: 1
-      data:
-        first:
-          name: _Glossiness
-        second: 0.5
-      data:
-        first:
-          name: _BumpScale
-        second: 1
-      data:
-        first:
-          name: _OcclusionStrength
-        second: 1
-      data:
-        first:
-          name: _DetailNormalMapScale
-        second: 1
-      data:
-        first:
-          name: _UVSec
-        second: 0
-      data:
-        first:
-          name: _Mode
-        second: 0
-      data:
-        first:
-          name: _Metallic
-        second: 0
       data:
         first:
           name: cullMode
@@ -283,14 +172,6 @@ Material:
           name: lightmapState
         second: 0
     m_Colors:
-      data:
-        first:
-          name: _EmissionColor
-        second: {r: 0, g: 0, b: 0, a: 1}
-      data:
-        first:
-          name: _Color
-        second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
           name: baseColor

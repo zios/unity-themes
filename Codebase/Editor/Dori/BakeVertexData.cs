@@ -83,7 +83,7 @@ namespace Zios.Editors{
 						Mesh newMesh = (Mesh)UnityEngine.Object.Instantiate(filter.sharedMesh);
 						newMesh.colors32 = colorValues;
 						//Debug.Log("[Bake Vertex Colors] Generating -- " + newPath);
-						Directory.CreateDirectory(Path.GetDirectoryName(file.path) + "/Baked");
+						Directory.CreateDirectory(file.path.GetDirectory() + "/Baked");
 						AssetDatabase.CreateAsset(newMesh,newPath);
 						filter.sharedMesh = newMesh;
 					}

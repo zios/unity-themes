@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
@@ -18,6 +19,7 @@ namespace Zios.Editors{
 		public bool setup;
 		public List<SerializedProperty> properties = new List<SerializedProperty>();
 		public List<SerializedProperty> hidden = new List<SerializedProperty>();
+		public Dictionary<string,object> dictionaries = new Dictionary<string,object>();
 		public Dictionary<SerializedProperty,Rect> propertyArea = new Dictionary<SerializedProperty,Rect>();
 		public Dictionary<SerializedProperty,bool> propertyVisible = new Dictionary<SerializedProperty,bool>();
 		public Rect area;
@@ -104,6 +106,11 @@ namespace Zios.Editors{
 					}
 				}
 			}
+			GUI.enabled = false;
+			foreach(var item in this.dictionaries){
+				item.Value.DrawAuto(item.Key,null,true);
+			}
+			GUI.enabled = true;
 			EditorGUILayout.EndVertical();
 			this.EndArea();
 			if(changed){
@@ -223,6 +230,13 @@ namespace Zios.Editors{
 					this.properties.Add(realProperty);
 				}
 				this.properties = this.properties.OrderBy(x=>target.HasAttribute(x.name,typeof(InternalAttribute))).ToList();
+				foreach(var item in target.GetVariables(null,null,ObjectExtension.publicFlags)){
+					if(item.Value == null){continue;}
+					var type = item.Value.GetType();
+					if(type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Dictionary<,>)){
+						this.dictionaries[item.Key] = item.Value;
+					}
+				}
 			}
 		}
 		public void AddDirty(Method method){this.dirtyEvent += method;}

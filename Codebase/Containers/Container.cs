@@ -1,13 +1,17 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 namespace Zios.Containers{
 	[Serializable]
 	public class Container<TKey,TValue>{
 		public List<TKey> keys = new List<TKey>();
 		public List<TValue> values = new List<TValue>();
-		public int Count = 0;
-		private Dictionary<TKey,TValue> iterator = new Dictionary<TKey,TValue>();
+		public Dictionary<TKey,TValue> collection = new Dictionary<TKey,TValue>();
+		public int Count{
+			get{return this.collection.Count;}
+			set{}
+		}
 		public TValue this[TKey key]{
 			get{
 				int index = this.keys.IndexOf(key);
@@ -18,8 +22,7 @@ namespace Zios.Containers{
 				if(index == -1){
 					this.keys.Add(key);
 					this.values.Add(value);
-					this.iterator = this.keys.ToDictionary(x => x,x => this.values[this.keys.IndexOf(x)]);
-					this.Count = this.keys.Count;
+					this.collection = this.keys.ToDictionary(x => x,x => this.values[this.keys.IndexOf(x)]);
 				}
 				else{
 					this.values[index] = value;
@@ -29,12 +32,17 @@ namespace Zios.Containers{
 		public void Clear(){
 			this.keys.Clear();
 			this.values.Clear();
-			this.iterator.Clear();
+			this.collection.Clear();
 		}
 		public IEnumerator<KeyValuePair<TKey,TValue>> GetEnumerator(){
-			return this.iterator.GetEnumerator();
+			return this.collection.GetEnumerator();
 		}
 	}
+	[Serializable] public class IntContainer : Container<string,int>{}
+	[Serializable] public class StringContainer : Container<string,string>{}
+	[Serializable] public class FloatContainer : Container<string,float>{}
+	[Serializable] public class BoolContainer : Container<string,bool>{}
+	[Serializable] public class GameObjectContainer : Container<string,GameObject>{}
 	[Serializable]
 	public class FixedContainer<TKey,TValue>{
 		public TKey[] keys;

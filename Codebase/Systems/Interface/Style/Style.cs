@@ -3,6 +3,13 @@ using UnityEngine;
 namespace Zios{
 	public static class Style{
 		public static Dictionary<GUISkin,Dictionary<string,GUIStyle>> styles = new Dictionary<GUISkin,Dictionary<string,GUIStyle>>();
+		public static GUISkin defaultSkin;
+		public static GUISkin GetSkin(string name=""){
+			if(name.IsEmpty() && Style.defaultSkin.IsNull()){
+				Style.defaultSkin = typeof(GUI).GetVariable<GUISkin>("s_Skin");
+			}
+			return Style.defaultSkin;
+		}
 		public static GUIStyle Get(string skin,string name,bool copy=false){
 			var guiSkin = FileManager.GetAsset<GUISkin>(skin+".guiskin");
 			return Style.Get(guiSkin,name,copy);

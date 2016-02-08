@@ -111,8 +111,8 @@ namespace Zios.Editors{
 						}
 						MeshRenderer containerRenderer = container.AddComponent<MeshRenderer>();
 						MeshFilter containerFilter = container.AddComponent<MeshFilter>();
-						string path = Path.GetDirectoryName(EditorSceneManager.GetActiveScene().name);
-						string folder = "@" + Path.GetFileName(EditorSceneManager.GetActiveScene().name).Replace(".unity","");
+						string path = EditorSceneManager.GetActiveScene().name.GetDirectory();
+						string folder = "@" + EditorSceneManager.GetActiveScene().name.GetFileName();
 						Directory.CreateDirectory(path + "/" + folder + "/");
 						AssetDatabase.CreateAsset(mesh,path + "/" + folder + "/Combined" + meshNumber + ".asset");
 						containerFilter.mesh = mesh;

@@ -58,7 +58,7 @@ namespace Zios.Editors{
 						}
 						string clipPath = clip.name + ".anim";
 						string originalPath = AssetDatabase.GetAssetPath(clip);
-						string savePath = Path.GetDirectoryName(originalPath) + "/" + clipPath;
+						string savePath = originalPath.GetDirectory() + "/" + clipPath;
 						AnimationClip newClip = new AnimationClip();
 						if(originalPath.Contains(".anim")){
 							Debug.Log("[HelperMenu] [" + clipIndex + "] " + clip.name + " skipped.  Already separate .anim file.");

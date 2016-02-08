@@ -7,7 +7,7 @@ namespace Zios.Editors{
 	using Events;
 	[CustomEditor(typeof(Event))]
 	public class EventsEditor : Editor{
-		public Dictionary<string,List<EventListener>> listeners;
+		public Dictionary<string,List<EventListener>> listeners = new Dictionary<string,List<EventListener>>();
 		public void BuildListeners(){
 			this.listeners = Event.listeners.GroupBy(x=>Event.GetTargetName(x.target)).ToDictionary(x=>x.Key,x=>x.ToList());
 		}
@@ -17,7 +17,7 @@ namespace Zios.Editors{
 			Event.debug = (EventDebug)Event.debug.DrawMask("Debug");
 			if("Listeners".DrawFoldout(true)){
 				EditorGUI.indentLevel += 1;
-				if(this.listeners == null){this.BuildListeners();}
+				if(this.listeners.Count != Event.listeners.Count){this.BuildListeners();}
 				var labelStyle = GUI.skin.label.FixedWidth(200);
 				var valueStyle = GUI.skin.label.FixedWidth(350);
 				var checkStyle = GUI.skin.toggle.FixedWidth(16);

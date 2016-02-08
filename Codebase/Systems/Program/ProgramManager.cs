@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 namespace Zios{
+	using Interface;
 	using Utilities;
 	using Events;
 	[AddComponentMenu("Zios/Singleton/Program")][ExecuteInEditMode]
@@ -16,13 +17,24 @@ namespace Zios{
 		public void OnEnable(){this.Setup();}
 		public void Awake(){this.Setup();}
 		public void Start(){
-			/*Zios.Console.AddShortcut("vsync","verticalSync");
-			Zios.Console.AddCvar("maxfps",typeof(Application),"targetFrameRate","Maximum FPS");
-			Zios.Console.AddCvar("verticalSync",typeof(QualitySettings),"vSyncCount","Vertical Sync");*/
+			Console.AddShortcut(new string[]{"res","resolution"},"resolution");
+			Console.AddShortcut("quit","closeProgram");
+			Console.AddShortcut("vsync","verticalSync");
+			Console.AddKeyword("hide",this.DisableGameObject,1);
+			Console.AddKeyword("show",this.EnableGameObject,1);
+			Console.AddKeyword("form",this.ToggleGameObject,1);
+			Console.AddKeyword("instance",this.InstanceGameObject,1);
+			Console.AddKeyword("destroy",this.DestroyGameObject,1);
+			Console.AddCvar("closeProgram",this,"CloseProgram","Close Program");
+			Console.AddCvar("changeResolution",this,"ChangeResolution","Change Resolution");
+			Console.AddCvar("maxfps",typeof(Application),"targetFrameRate","Maximum FPS");
+			Console.AddCvar("verticalSync",typeof(QualitySettings),"vSyncCount","Vertical Sync");
 		}
 		public void Setup(){
 			ProgramManager.instance = this;
 			Event.Register("On Resolution Change");
+			Event.Add("On Editor Update",this.EditorUpdate);
+			Event.Add("On Enter Play",this.UpdateEffects);
 			Application.targetFrameRate = this.targetFPS;
 			Resolution screen = Screen.currentResolution;
 			this.resolution = new int[3]{Screen.width,Screen.height,screen.refreshRate};
@@ -31,7 +43,6 @@ namespace Zios{
 		}
 		public void Update(){
 			this.DetectResolution();
-			Event.Add("On Editor Update",this.EditorUpdate);
 		}
 		public void OnValidate(){
 			if(!this.CanValidate()){return;}
@@ -40,30 +51,43 @@ namespace Zios{
 		public void EditorUpdate(){
 			#if UNITY_EDITOR
 			if(this.CanValidate()){
-				bool updateShaders = UnityEditor.EditorPrefs.GetBool("EditorSettings-AlwaysUpdateShaders");
-				bool updateParticles = UnityEditor.EditorPrefs.GetBool("EditorSettings-AlwaysUpdateParticles");
-				float time = Time.realtimeSinceStartup;
-				if(updateShaders){Shader.SetGlobalFloat("timeConstant",time);}
-				foreach(var system in Locate.GetSceneComponents<ParticleSystem>(true,false)){
-					var updater = system.gameObject.GetComponent<UpdateParticle>();
-					if(updateParticles && updater.IsNull()){
-						updater = system.gameObject.AddComponent<UpdateParticle>();
-						updater.hideFlags = HideFlags.DontSaveInBuild | HideFlags.NotEditable | HideFlags.HideInInspector;
-					}
-				}
-				foreach(var system in Locate.GetSceneComponents<ParticleSystem>()){
-					var updater = system.gameObject.GetComponent<UpdateParticle>();
-					if(!updateParticles && !updater.IsNull()){
-						DestroyImmediate(updater);
-					}
-				}
-				if(updateShaders || updateParticles){Utility.RepaintSceneView();}
+				this.UpdateEffects();
 			}
+			#endif
+		}
+		public void UpdateEffects(){
+			#if UNITY_EDITOR
+			bool updateShaders = UnityEditor.EditorPrefs.GetBool("EditorSettings-AlwaysUpdateShaders");
+			bool updateParticles = UnityEditor.EditorPrefs.GetBool("EditorSettings-AlwaysUpdateParticles");
+			if(updateShaders){Shader.SetGlobalFloat("timeConstant",Time.realtimeSinceStartup);}
+			foreach(var system in Locate.GetSceneComponents<ParticleSystem>()){
+				if(system.IsNull()){continue;}
+				var updater = system.gameObject.GetComponent<UpdateParticle>();
+				if(updateParticles && updater.IsNull()){
+					updater = system.gameObject.AddComponent<UpdateParticle>();
+					updater.hideFlags = HideFlags.DontSaveInBuild | HideFlags.NotEditable | HideFlags.HideInInspector;
+				}
+				if(!updateParticles && !updater.IsNull()){
+					DestroyImmediate(updater);
+				}
+			}
+			if(updateShaders || updateParticles){Utility.RepaintSceneView();}
 			#endif
 		}
 		//================================
 		// Internal
 		//================================
+		public void InstanceGameObject(string[] values){
+			var target = Locate.GetAssets<GameObject>().Where(x=>x.name==values[1]).FirstOrDefault();
+			if(!target.IsNull()){
+				var instance = GameObject.Instantiate<GameObject>(target);
+				instance.SetActive(true);
+			}
+		}
+		public void DestroyGameObject(string[] values){Locate.GetSceneObjects().Where(x=>x.name==values[1]).ToList().ForEach(x=>Destroy(x));}
+		public void DisableGameObject(string[] values){Locate.GetSceneObjects().Where(x=>x.name==values[1]).ToList().ForEach(x=>x.SetActive(false));}
+		public void EnableGameObject(string[] values){Locate.GetSceneObjects().Where(x=>x.name==values[1]).ToList().ForEach(x=>x.SetActive(true));}
+		public void ToggleGameObject(string[] values){Locate.GetSceneObjects().Where(x=>x.name==values[1]).ToList().ForEach(x=>x.SetActive(!x.activeInHierarchy));}
 		public void DetectResolution(){
 			if(!Application.isPlaying){return;}
 			Resolution screen = Screen.currentResolution;

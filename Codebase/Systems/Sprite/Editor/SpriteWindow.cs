@@ -611,7 +611,7 @@ namespace Zios.Editors.SpriteEditors{
 			}
 		}
 		public string FindAssetFolder(string path,string assetName,string assetType){
-			string folderPath = Path.GetDirectoryName(path) + "/";
+			string folderPath = path.GetDirectory() + "/";
 			string targetPath = folderPath;
 			string[] folders = Directory.GetDirectories(folderPath);
 			foreach(string subFolder in folders){
@@ -1213,7 +1213,7 @@ namespace Zios.Editors.SpriteEditors{
 					FileData materialFile = FileManager.Find(atlasName);
 					if(materialFile == null){
 						string atlasPath = AssetDatabase.GetAssetPath(sprite.parent.xml);
-						atlasPath = Path.GetDirectoryName(atlasPath) + "/" + atlasName;
+						atlasPath = atlasPath.GetDirectory() + "/" + atlasName;
 						AssetDatabase.CreateAsset(atlasMaterial,atlasPath);
 						AssetDatabase.Refresh();
 						atlasMaterial = (Material)AssetDatabase.LoadMainAssetAtPath(atlasPath);

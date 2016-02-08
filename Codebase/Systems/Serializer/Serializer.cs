@@ -47,6 +47,7 @@ namespace Zios{
 		public static Serializer instance;
 		public static Serializer Get(){return Serializer.instance;}
 		public static Dictionary<Type,Dictionary<string,object>> defaults = new Dictionary<Type,Dictionary<string,object>>();
+		public bool disabled;
 		[EnumMask] public SerializerDebug debug = 0;
 		private StringBuilder contents = new StringBuilder();
 		private int tabs;
@@ -55,8 +56,8 @@ namespace Zios{
 		public void Setup(){
 			if(Serializer.defaults.Count < 1){
 				Serializer.instance = this;
+				this.path = Application.dataPath+"/@Serialized/";
 				if(Application.isEditor){
-					this.path = Application.dataPath+"/@Serialized/";
 					this.BuildDefault();
 				}
 			}
@@ -95,10 +96,12 @@ namespace Zios{
 		// Defaults
 		//=================
 		public void BuildDefault(){
+			if(this.disabled){return;}
 			this.BuildDefault(Assembly.Load("Assembly-CSharp"));
 			this.BuildDefault(Assembly.Load("Assembly-CSharp-Editor"));
 		}
 		public void BuildDefault(Assembly assembly){
+			if(this.disabled){return;}
 			if(this.debug.Has("Build")){Debug.Log("[Serializer] : Building defaults for assembly -- " + assembly.FullName.Split(",")[0]);}
 			foreach(Type type in assembly.GetTypes()){
 				if(type.IsEnum || type == null || type.Name.Contains("_AnonStorey")){continue;}
@@ -106,6 +109,7 @@ namespace Zios{
 			}
 		}
 		public void BuildDefault(Type type){
+			if(this.disabled){return;}
 			if(Serializer.defaults.ContainsKey(type)){return;}
 			if(this.debug.Has("BuildDetailed")){Debug.Log("[Serializer] : Building defaults for type -- " + type.Name);}
 			Serializer.defaults.AddNew(type);
@@ -118,16 +122,19 @@ namespace Zios{
 		//=================
 		[ContextMenu("Save")]
 		public void Save(){
+			if(this.disabled){return;}
 			this.Save(Assembly.Load("Assembly-CSharp"));
 			this.Save(Assembly.Load("Assembly-CSharp-Editor"));
 		}
 		public void Save(Assembly assembly){
+			if(this.disabled){return;}
 			foreach(Type type in assembly.GetTypes()){
 				if(type.IsEnum || type == null || type.Name.Contains("_AnonStorey")){continue;}
 				this.Save(type);
 			}
 		}
 		public void Save(Type type){
+			if(this.disabled){return;}
 			if(this.debug.Has("SaveType")){Debug.Log("[Serializer] : Serializing type -- " + type.Name);}
 			this.tabs = 0;
 			this.contents.Clear();
@@ -149,6 +156,7 @@ namespace Zios{
 			}
 		}
 		public bool Save(string name,object value){
+			if(this.disabled){return false;}
 			var type = value.GetType();
 			if(type.IsValueType || value is string){
 				this.Add(name," = ",value.ToString());
@@ -178,11 +186,13 @@ namespace Zios{
 		//=================
 		[ContextMenu("Load")]
 		public void Load(){
+			if(this.disabled){return;}
 			this.LoadStatic();
 			//this.LoadScene();
 			//this.LoadInstance();
 		}
 		public void LoadStatic(){
+			if(this.disabled){return;}
 			if(this.debug.Has("Load")){Debug.Log("[Serializer] : Loading .static files");}
 			foreach(var file in FileManager.FindAll("*.static",true,false)){
 				if(this.debug.Has("Load")){Debug.Log("[Serializer] : Loading "+file.fullName);}

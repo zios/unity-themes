@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.IO;
 using UnityEngine;
 using UnityObject = UnityEngine.Object;
@@ -14,33 +15,30 @@ namespace Zios{
 	#endif
 	public static class FileManager{
 		private static Dictionary<string,List<FileData>> files = new Dictionary<string,List<FileData>>();
-		private  static Dictionary<string,FileData> folders = new Dictionary<string,FileData>();
-		private  static Dictionary<string,FileData[]> cache = new Dictionary<string,FileData[]>();
-		private  static Dictionary<UnityObject,object> assets = new Dictionary<UnityObject,object>();
+		private static Dictionary<string,FileData> folders = new Dictionary<string,FileData>();
+		private static Dictionary<string,FileData[]> cache = new Dictionary<string,FileData[]>();
+		private static Dictionary<UnityObject,object> assets = new Dictionary<UnityObject,object>();
 		static FileManager(){Refresh();}
 		public static void Refresh(){
 			FileManager.assets.Clear();
 			FileManager.files.Clear();
 			FileManager.folders.Clear();
 			FileManager.cache.Clear();
+			FileManager.Scan(Application.dataPath.GetDirectory(),false);
 			FileManager.Scan(Application.dataPath);
 		}
-		public static void Scan(string directory){
+		public static void Scan(string directory,bool deep=true){
 			string[] fileEntries = Directory.GetFiles(directory);
 			string[] folderEntries = Directory.GetDirectories(directory);
 			foreach(string filePath in fileEntries){
-				string path = filePath.Replace("\\","/");
-				string type = path.Substring(filePath.LastIndexOf(".")+1).ToLower();
-				if(!files.ContainsKey(type)){
-					files[type] = new List<FileData>();
-				}
-				files[type].Add(new FileData(path));
+				var data = new FileData(filePath.Replace("\\","/"));
+				FileManager.files.AddNew(data.extension).Add(data);
 			}
 			foreach(string folderPath in folderEntries){
 				if(folderPath.Contains(".svn")){continue;}
 				string fixedPath = folderPath.Replace("\\","/");
-				folders[fixedPath] = new FileData(fixedPath);
-				FileManager.Scan(fixedPath);
+				FileManager.folders[fixedPath] = new FileData(fixedPath);
+				if(deep){FileManager.Scan(fixedPath);}
 			}
 		}
 		public static FileData[] FindAll(string name,bool ignoreCase=true,bool showWarnings=true){
@@ -52,10 +50,14 @@ namespace Zios{
 			if(FileManager.cache.ContainsKey(searchKey)){
 				return FileManager.cache[searchKey];
 			}
-			string fileName = Path.GetFileName(name);
-			string type = Path.GetExtension(name).Trim(".").ToLower();
-			string path = Path.GetDirectoryName(name);
-			bool wildcard = fileName.Length > 0 && fileName[0] == '*';
+			if(name.ContainsAny("<",">","?",":","|")){
+				Debug.LogWarning("[FileManager] Path has invalid characters -- " + name);
+				return new FileData[0];
+			}
+			string fileName = name.GetFileName();
+			string type = name.GetExtension().ToLower();
+			string path = name.GetDirectory();
+			bool wildcard = fileName.Length > 0 && fileName.Contains("*");
 			List<FileData> results = new List<FileData>();
 			foreach(var item in FileManager.folders){
 				FileData folder = item.Value;
@@ -70,7 +72,8 @@ namespace Zios{
 						type = fileGroup.Key;
 						foreach(FileData file in FileManager.files[type]){
 							bool correctPath = path != "" ? file.path.Contains(path,ignoreCase) : true;
-							if(correctPath && (file.name.Matches(fileName,ignoreCase) || wildcard)){
+							bool wildMatch = wildcard && (fileName.IsEmpty() || file.name.Contains(fileName.Remove("*"),ignoreCase));
+							if(correctPath && (wildMatch || file.fullName.Matches(fileName,ignoreCase))){
 								results.Add(file);
 							}
 						}
@@ -79,7 +82,8 @@ namespace Zios{
 				else if(FileManager.files.ContainsKey(type)){
 					foreach(FileData file in FileManager.files[type]){
 						bool correctPath = path != "" ? file.path.Contains(path,ignoreCase) : true;
-						if(correctPath && (file.fullName.Matches(fileName,ignoreCase) || wildcard)){
+						bool wildMatch = wildcard && (fileName.IsEmpty() || file.name.Contains(fileName.Remove("*"),ignoreCase));
+						if(correctPath && (wildMatch || file.name.Matches(fileName,ignoreCase))){
 							results.Add(file);
 						}
 					}
@@ -132,6 +136,11 @@ namespace Zios{
 			if(file != null){return file.GetAsset<T>();}
 			return default(T);
 		}
+		public static T[] GetAssets<T>(string name,bool showWarnings=true){
+			var files = FileManager.FindAll(name,true,showWarnings);
+			if(files.Length < 1){return new T[0];}
+			return files.Select(x=>x.GetAsset<T>()).Where(x=>!x.IsNull()).ToArray();
+		}
 		public static void WriteFile(string path,byte[] bytes){
 			FileStream stream = new FileStream(path,FileMode.Create);
 			BinaryWriter file = new BinaryWriter(stream);
@@ -150,12 +159,13 @@ namespace Zios{
 		public string fullName;
 		public string extension;
 		public bool isFolder;
+		public FileData(){}
 		public FileData(string path){
 			this.path = path;
-			this.folder = Path.GetDirectoryName(path);
-			this.fullName = Path.GetFileName(path);
-			this.extension = Path.GetExtension(path).Trim(".");
-			this.name = Path.GetFileNameWithoutExtension(path);
+			this.folder = path.GetDirectory();
+			this.extension = path.GetExtension();
+			this.name = path.GetFileName();
+			this.fullName = this.name + "." + this.extension;
 			this.isFolder = Directory.Exists(path);
 		}
 		public string GetText(){

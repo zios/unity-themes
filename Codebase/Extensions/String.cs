@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Globalization;
 using System.Security.Cryptography;
 using System.Text;
@@ -216,6 +217,27 @@ namespace Zios{
 		public static bool IsNumber(this string current){
 			double result;
 			return double.TryParse(current,out result);
+		}
+		//============================
+		// Path
+		//============================
+		public static string GetDirectory(this string current){
+			int last = current.LastIndexOf('/');
+			if(last < 0){
+				if(current.Contains(".")){return "";}
+				return current;
+			}
+			return current.Substring(0,last);
+		}
+		public static string GetFileName(this string current){
+			var term = current.Split("/").Last();
+			if(term.Contains(".")){return term.Split(".")[0];}
+			return term;
+		}
+		public static string GetExtension(this string current){
+			var term = current.Split("/").Last();
+			if(term.Contains(".")){return term.Split(".")[1];}
+			return term;
 		}
 		//============================
 		// Extension

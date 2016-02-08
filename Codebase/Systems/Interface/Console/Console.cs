@@ -11,6 +11,13 @@ namespace Zios.Interface{
 	using Events;
 	public delegate void ConsoleMethod(string[] values);
 	public delegate void ConsoleMethodFull(string[] values,bool help);
+	public class ConsoleCallback{
+		public Method simple;
+		public ConsoleMethod basic;
+		public ConsoleMethodFull full;
+		public int minimumParameters = -1;
+		public string help;
+	}
 	public struct ConsoleState{
 		public const byte closed = 0;
 		public const byte closeBegin = 1;
@@ -18,13 +25,6 @@ namespace Zios.Interface{
 		public const byte open = 3;
 		public const byte openBegin = 4;
 		public const byte opening = 5;
-	}
-	public class ConsoleCallback{
-		public Method simple;
-		public ConsoleMethod basic;
-		public ConsoleMethodFull full;
-		public int minimumParameters = -1;
-		public string help;
 	}
 	public struct Cvar{
 		public Accessor value;
@@ -46,8 +46,117 @@ namespace Zios.Interface{
 		public bool released;
 		public bool toggleActive;
 	}
-	public static class Console{
-		public static ConsoleSettings settings;
+	[InitializeOnLoad]
+	public static class ConsoleHook{
+		public static Hook<Console> hook;
+		static ConsoleHook(){
+			if(Application.isPlaying){return;}
+			new Hook<Console>();
+		}
+	}
+	[ExecuteInEditMode][AddComponentMenu("Zios/Singleton/Console")]
+	public partial class Console : MonoBehaviour{
+		public GUISkin skin;
+		public Material background;
+		public Material inputBackground;
+		public Material textArrow;
+		public KeyCode triggerKey = KeyCode.F12;
+		public float speed = 5.0f;
+		public float height = 0.25f;
+		public string configFile = "Game.cfg";
+		public string logFile = "Log.txt";
+		public int logLineSize = 150;
+		public int logFontSize = 15;
+		public byte logFontColor = 7;
+		public bool logFontAllowColors = true;
+		public void OnValidate(){
+			if(this.skin.IsNull()){
+				this.skin = FileManager.GetAsset<GUISkin>("Console.guiskin");
+				this.background = FileManager.GetAsset<Material>("ConsoleBackground.mat");
+				this.inputBackground = FileManager.GetAsset<Material>("ConsoleInput.mat");
+				this.textArrow = FileManager.GetAsset<Material>("ConsoleArrow.mat");
+			}
+		}
+		public void Awake(){
+			this.OnValidate();
+			Console.instance = this;
+			if(!this.logFile.IsEmpty() && !Application.isWebPlayer){
+				string logPath = Application.persistentDataPath + "/" + this.logFile;
+				try{
+					using(StreamWriter file = new StreamWriter(logPath,true)){
+						file.WriteLine("-----------------------");
+						file.WriteLine(DateTime.Now);
+						file.WriteLine("-----------------------");
+					}
+					Console.logFileUsable = true;
+				}
+				catch{
+					Console.logFileUsable = false;
+					Console.AddLog("Log file is not writable. File in use or has bad path.");
+				}
+			}
+		}
+		public void OnEnable(){Application.logMessageReceived += Console.HandleLog;}
+		public void OnDisable(){Application.logMessageReceived -= Console.HandleLog;}
+		public void OnApplicationQuit(){
+			Console.SaveCvars();
+			if(Console.configOutput.Count > 0){
+				Console.SaveBinds();
+				Console.SaveConfig();
+			}
+		}
+		public void OnGUI(){
+			if(Console.instance.IsNull()){return;}
+			Console.Setup();
+			Console.CheckTrigger();
+			Console.CheckBinds();
+			InputState.disabled = Console.status >= 3;
+			if(!Console.hidden && Console.status > 0){
+				Console.CheckHotkeys();
+				Console.CheckDrag();
+				Console.DrawElements();
+				Console.ManageState();
+				Console.ManageInput();
+			}
+		}
+		public void Start(){
+			Console.AddCvar("consoleFontColor",this,"logFontColor","Console Font color",Console.help[5]);
+			Console.AddCvar("consoleFontSize",this,"logFontSize","Console Font size",Console.help[0]);
+			Console.AddCvar("consoleSize",this,"height","Console Height percent",Console.help[1]);
+			Console.AddCvar("consoleSpeed",this,"speed","Console Speed",Console.help[2]);
+			Console.AddCvar("consoleLineSize",this,"logLineSize","Console Line size",Console.help[6]);
+			Console.AddCvar("consoleLogFile",this,"logFile","Console Log name");
+			Console.AddCvar("consoleConfigFile",this,"configFile","Console Config name");
+			Console.AddKeyword("console",Console.Toggle,0,Console.help[11]);
+			Console.AddKeyword("consoleListFonts",Console.ListConsoleFonts,0,Console.help[4]);
+			Console.AddKeyword("consoleListColors",Console.ListConsoleColors,0,Console.help[3]);
+			Console.AddKeyword("consoleListBinds",Console.ListConsoleBinds,0,Console.help[10]);
+			Console.AddKeyword("consoleBind",Console.BindCommand,2,Console.help[7]);
+			Console.AddKeyword("consoleToggle",Console.ToggleCommand,2,Console.help[8]);
+			Console.AddKeyword("consoleRepeat",Console.RepeatCommand,2,Console.help[9]);
+			Console.AddKeyword("consoleResetValue",Console.ResetValue,1,Console.help[12]);
+			Console.AddKeyword("consoleResetCvars",Console.ResetCvars,0,Console.help[13]);
+			Console.AddKeyword("consoleResetBinds",Console.ResetBinds,0,Console.help[14]);
+			Console.AddKeyword("consoleDump",Console.SaveConsoleFile,0,Console.help[15]);
+			Console.AddKeyword("consoleClear",Console.ClearConsole,0,Console.help[16]);
+			Console.AddKeyword("consoleLoadConfig",Console.LoadConfig,1,Console.help[17]);
+			Console.AddShortcut("repeat","consoleRepeat");
+			Console.AddShortcut("con","console");
+			Console.AddShortcut("reset","consoleResetValue");
+			Console.AddShortcut("resetCvars","consoleResetCvars");
+			Console.AddShortcut("resetBinds","consoleResetBinds");
+			Console.AddShortcut(new string[]{"clear","cls"},"consoleClear");
+			Console.AddShortcut(new string[]{"keyToggle","switch"},"consoleToggle");
+			Console.AddShortcut(new string[]{"bind","trigger"},"consoleBind");
+			Console.AddShortcut(new string[]{"showColors","listColors"},"consoleListColors");
+			Console.AddShortcut(new string[]{"showFonts","listFonts"},"consoleListFonts");
+			Console.AddShortcut(new string[]{"showBinds","listBinds"},"consoleListBinds");
+			Console.LoadBinds();
+			Utility.DelayCall(()=>Console.LoadConfig(this.configFile));
+		}
+	}
+	public partial class Console{
+		public static Console instance;
 		public static FixedList<string> log = new FixedList<string>(256);
 		public static FixedList<string> history = new FixedList<string>(256);
 		public static Dictionary<string,Bind> binds = new Dictionary<string,Bind>();
@@ -70,6 +179,7 @@ namespace Zios.Interface{
 		private static bool logFileUsable;
 		private static bool disableLogging;
 		private static bool mouseHeld;
+		private static bool hidden;
 		private static string[] help = new string[]{
 			"^3consoleFontSize ^9<^7number^9> :^10 The font size of the log.",
 			"^3consoleSize ^9<^7decimal^9> :^10 The height percent that the console is visible.",
@@ -82,7 +192,7 @@ namespace Zios.Interface{
 			"^3consoleToggle ^9<^7key^9><^7action^9> :^10 Binds a target key to toggle processing an action string in the console when pressed.",
 			"^3consoleRepeat ^9<^7key^9><^7action^9> :^10 Binds a target key to continually process an action string in the console while held.",
 			"^3consoleListBinds :^10 Displays all bound keys with their relative action.",
-			"^3consoleShow :^10 Toggles display of the console.",
+			"^3console :^10 Toggles display of the console.",
 			"^3consoleResetValue ^9<^7cvar/bind^9> :^10 Resets the given cvar/bind name to its default state.",
 			"^3consoleResetCvars :^10 Resets all console cvars to their default value states.",
 			"^3consoleResetBinds :^10 Removes all existing console binds.",
@@ -90,87 +200,6 @@ namespace Zios.Interface{
 			"^3consoleClear :^10 Removes all current console log history.",
 			"^3consoleLoadConfig ^9<^7name^9>:^10 Adds an existing file's contents as console commands."
 		};
-		//===========================
-		// Unity Specific
-		//===========================
-		public static void Awake(){
-			if(!Console.settings.logFile.IsEmpty() && !Application.isWebPlayer){
-				string logPath = Application.persistentDataPath + "/" + Console.settings.logFile;
-				try{
-					using(StreamWriter file = new StreamWriter(logPath,true)){
-						file.WriteLine("-----------------------");
-						file.WriteLine(DateTime.Now);
-						file.WriteLine("-----------------------");
-					}
-					Console.logFileUsable = true;
-				}
-				catch{
-					Console.logFileUsable = false;
-					Console.AddLog("Log file is not writable. File in use or has bad path.");
-				}
-			}
-		}
-		public static void OnEnable(){
-			Application.logMessageReceived += Console.HandleLog;
-		}
-		public static void OnDisable(){
-			Application.logMessageReceived -= Console.HandleLog;
-		}
-		public static void OnApplicationQuit(){
-			Console.SaveCvars();
-			if(Console.configOutput.Count > 0){
-				Console.SaveBinds();
-				Console.SaveConfig();
-			}
-		}
-		public static void OnGUI(){
-			Console.Setup();
-			Console.CheckTrigger();
-			Console.CheckBinds();
-			InputState.disabled = Console.status >= 3;
-			if(Console.status > 0){
-				Console.CheckHotkeys();
-				Console.CheckDrag();
-				Console.DrawElements();
-				Console.ManageState();
-				Console.ManageInput();
-			}
-		}
-		public static void Start(){
-			Console.AddCvar("consoleFontColor",Console.settings,"logFontColor","Console Font color",Console.help[5]);
-			Console.AddCvar("consoleFontSize",Console.settings,"logFontSize","Console Font size",Console.help[0]);
-			Console.AddCvar("consoleSize",Console.settings,"height","Console Height percent",Console.help[1]);
-			Console.AddCvar("consoleSpeed",Console.settings,"speed","Console Speed",Console.help[2]);
-			Console.AddCvar("consoleLineSize",Console.settings,"logLineSize","Console Line size",Console.help[6]);
-			Console.AddCvar("consoleLogFile",Console.settings,"logFile","Console Log name");
-			Console.AddCvar("consoleConfigFile",Console.settings,"configFile","Console Config name");
-			Console.AddKeyword("consoleListFonts",Console.ListConsoleFonts,0,Console.help[4]);
-			Console.AddKeyword("consoleListColors",Console.ListConsoleColors,0,Console.help[3]);
-			Console.AddKeyword("consoleListBinds",Console.ListConsoleBinds,0,Console.help[10]);
-			Console.AddKeyword("consoleBind",Console.BindCommand,2,Console.help[7]);
-			Console.AddKeyword("consoleToggle",Console.ToggleCommand,2,Console.help[8]);
-			Console.AddKeyword("consoleRepeat",Console.RepeatCommand,2,Console.help[9]);
-			Console.AddKeyword("consoleShow",Console.ShowConsole,0,Console.help[11]);
-			Console.AddKeyword("consoleResetValue",Console.ResetValue,1,Console.help[12]);
-			Console.AddKeyword("consoleResetCvars",Console.ResetCvars,0,Console.help[13]);
-			Console.AddKeyword("consoleResetBinds",Console.ResetBinds,0,Console.help[14]);
-			Console.AddKeyword("consoleDump",Console.SaveConsoleFile,0,Console.help[15]);
-			Console.AddKeyword("consoleClear",Console.ClearConsole,0,Console.help[16]);
-			Console.AddKeyword("consoleLoadConfig",Console.LoadConfig,1,Console.help[17]);
-			Console.AddShortcut("repeat","consoleRepeat");
-			Console.AddShortcut("showConsole","consoleShow");
-			Console.AddShortcut("reset","consoleResetValue");
-			Console.AddShortcut("resetCvars","consoleResetCvars");
-			Console.AddShortcut("resetBinds","consoleResetBinds");
-			Console.AddShortcut(new string[]{"clear","cls"},"consoleClear");
-			Console.AddShortcut(new string[]{"toggle","switch"},"consoleToggle");
-			Console.AddShortcut(new string[]{"bind","trigger"},"consoleBind");
-			Console.AddShortcut(new string[]{"showColors","listColors"},"consoleListColors");
-			Console.AddShortcut(new string[]{"showFonts","listFonts"},"consoleListFonts");
-			Console.AddShortcut(new string[]{"showBinds","listBinds"},"consoleListBinds");
-			Console.LoadBinds();
-			Utility.DelayCall(()=>Console.LoadConfig(Console.settings.configFile));
-		}
 		//===========================
 		// Binds
 		//===========================
@@ -189,7 +218,7 @@ namespace Zios.Interface{
 			data.name = "bind-"+key;
 			if(toggle){data.name = "toggle-"+key;}
 			if(repeat){data.name = "repeat-"+key;}
-			data.action = action.Replace("showconsole","consoleshow",true);
+			data.action = action;
 			data.toggle = toggle;
 			data.repeat = repeat;
 			data.repeatDelay = repeatDelay;
@@ -202,8 +231,8 @@ namespace Zios.Interface{
 			Console.binds.Add(key,data);
 		}
 		public static void LoadBinds(){
-			Console.AddBind("BackQuote","showConsole");
-			if(!Application.isWebPlayer && Console.settings.configFile != ""){return;}
+			Console.AddBind("BackQuote","console");
+			if(!Application.isWebPlayer && Console.instance.configFile != ""){return;}
 			if(!PlayerPrefs.HasKey("binds")){
 				PlayerPrefs.SetString("binds","|");
 			}
@@ -254,7 +283,7 @@ namespace Zios.Interface{
 				if(data.repeat){bindString += "-" + data.repeatDelay;}
 				bindString += "|";
 			}
-			if(Application.isWebPlayer || Console.settings.configFile == ""){
+			if(Application.isWebPlayer || Console.instance.configFile == ""){
 				bindString = bindString.Trim('|') + "|";
 				PlayerPrefs.SetString("binds",bindString);
 			}
@@ -266,7 +295,7 @@ namespace Zios.Interface{
 			if(Console.keyDetection != ""){return;}
 			foreach(var item in Console.binds){
 				Bind data = item.Value;
-				if(Console.status > 0 && !data.action.Contains("consoleShow",true)){continue;}
+				if(Console.status > 0 && !data.action.Contains("console",true)){continue;}
 				bool keyDown = Button.EventKeyDown(data.key);
 				if(keyDown && data.repeat && data.nextRepeat > Time.time){
 					Console.AddCommand(data.action);
@@ -339,7 +368,7 @@ namespace Zios.Interface{
 			Console.AddKeyword(name,Console.HandleCvar);
 		}
 		public static void LoadCvar(Cvar data){
-			if(!Application.isWebPlayer && Console.settings.configFile != ""){return;}
+			if(!Application.isWebPlayer && Console.instance.configFile != ""){return;}
 			if(PlayerPrefs.HasKey(data.fullName)){
 				object value = data.value.Get();
 				Type type = data.value.type;
@@ -366,7 +395,7 @@ namespace Zios.Interface{
 				if(item.Key.StartsWith("#")){continue;}
 				Cvar data = item.Value;
 				object current = data.value.Get();
-				if(Application.isWebPlayer || Console.settings.configFile == ""){
+				if(Application.isWebPlayer || Console.instance.configFile == ""){
 					Type type = current.GetType();
 					if(type == typeof(float)){PlayerPrefs.SetFloat(data.fullName,(float)current);}
 					else if(type == typeof(string)){PlayerPrefs.SetString(data.fullName,(string)current);}
@@ -452,7 +481,7 @@ namespace Zios.Interface{
 		//===========================
 		public static void SaveConfig(){
 			if(!Application.isWebPlayer){
-				using(StreamWriter file = new StreamWriter(Console.settings.configFile,false)){
+				using(StreamWriter file = new StreamWriter(Console.instance.configFile,false)){
 					foreach(string line in Console.configOutput){
 						file.WriteLine(line);
 					}
@@ -482,8 +511,8 @@ namespace Zios.Interface{
 		//===========================
 		public static void Setup(){
 			if(Console.logStyle == null){
-				if(Console.settings.skin == null){Console.settings.skin = GUI.skin;}
-				Console.logStyle = new GUIStyle(Console.settings.skin.textField);
+				if(Console.instance.skin == null){Console.instance.skin = GUI.skin;}
+				Console.logStyle = new GUIStyle(Console.instance.skin.textField);
 			}
 		}
 		public static void AddCommand(string text,bool disableLogging=false){
@@ -502,7 +531,7 @@ namespace Zios.Interface{
 				if(system){return;}
 			}
 			if(Console.logFileUsable){
-				string logPath = Application.persistentDataPath + "/" + Console.settings.logFile;
+				string logPath = Application.persistentDataPath + "/" + Console.instance.logFile;
 				string cleanText = text;
 				for(int index=Console.color.Length-1;index>=0;--index){
 					cleanText = cleanText.Replace("^"+index,"").Replace("|","");
@@ -513,7 +542,7 @@ namespace Zios.Interface{
 			}
 			float lastPosition = Console.log.Count * Console.logPosition;
 			while(text.Length > 0){
-				int max = text.Length > Console.settings.logLineSize ? Console.settings.logLineSize : text.Length;
+				int max = text.Length > Console.instance.logLineSize ? Console.instance.logLineSize : text.Length;
 				Console.log.Add(text.Substring(0,max));
 				text = text.Substring(max);
 			}
@@ -571,8 +600,8 @@ namespace Zios.Interface{
 			}
 		}
 		public static void CheckTrigger(){
-			if(Button.EventKeyDown(Console.settings.triggerKey)){
-				Console.ShowConsole();
+			if(Button.EventKeyDown(Console.instance.triggerKey)){
+				Console.Toggle();
 				UnityEvent.current.Use();
 			}
 		}
@@ -608,8 +637,8 @@ namespace Zios.Interface{
 			else if(UnityEvent.current.type == EventType.MouseDown){Console.mouseHeld = true;}
 			else if(UnityEvent.current.type == EventType.MouseUp){Console.mouseHeld = false;}
 			else if(UnityEvent.current.type == EventType.ScrollWheel){
-				if(control){Console.settings.logFontSize -= (int)UnityEvent.current.delta[1];}
-				else if(shift){Console.settings.height += Math.Sign(UnityEvent.current.delta[1]) * 0.02f;}
+				if(control){Console.instance.logFontSize -= (int)UnityEvent.current.delta[1];}
+				else if(shift){Console.instance.height += Math.Sign(UnityEvent.current.delta[1]) * 0.02f;}
 				else{Console.logPosition += (float)(UnityEvent.current.delta[1]) / (float)(Console.log.Count);}
 				UnityEvent.current.Use();
 			}
@@ -622,10 +651,10 @@ namespace Zios.Interface{
 				Console.historyIndex = (byte)Mathf.Clamp(Console.historyIndex,0,Console.history.Count-1);
 				Console.inputText = Console.history[Console.historyIndex];
 			}
-			Console.settings.logFontSize = Mathf.Clamp(Console.settings.logFontSize,9,128);
+			Console.instance.logFontSize = Mathf.Clamp(Console.instance.logFontSize,9,128);
 		}
 		public static void CheckDrag(){
-			float consoleHeight = (Screen.height * Console.offset)*Console.settings.height;
+			float consoleHeight = (Screen.height * Console.offset)*Console.instance.height;
 			Rect dragBounds = new Rect(0,consoleHeight,Screen.width,30);
 			Vector3 mouse = UnityInput.mousePosition;
 			mouse[1] = Screen.height - mouse[1];
@@ -635,49 +664,49 @@ namespace Zios.Interface{
 				}
 				else{
 					Vector3 changed = mouse - Console.dragStart;
-					Console.settings.height = Console.dragStart[2] + (changed.y/Screen.height);
+					Console.instance.height = Console.dragStart[2] + (changed.y/Screen.height);
 				}
 			}
 			else if(UnityInput.GetMouseButtonDown(0)){
 				if(dragBounds.Contains(mouse)){
 					Console.dragStart = mouse;
-					Console.dragStart[2] = Console.settings.height;
+					Console.dragStart[2] = Console.instance.height;
 				}
 			}
-			Console.settings.height = Mathf.Clamp(Console.settings.height,0.05f,(((float)Screen.height-30.0f)/(float)Screen.height));
+			Console.instance.height = Mathf.Clamp(Console.instance.height,0.05f,(((float)Screen.height-30.0f)/(float)Screen.height));
 		}
 		public static void DrawElements(){
-			GUI.skin = Console.settings.skin;
-			float consoleHeight = (Screen.height * Console.offset)*Console.settings.height;
+			GUI.skin = Console.instance.skin;
+			float consoleHeight = (Screen.height * Console.offset)*Console.instance.height;
 			byte logLinesShown = 0;
-			int logTextOffset = 15 - Console.settings.logFontSize;
+			int logTextOffset = 15 - Console.instance.logFontSize;
 			Rect logBounds = new Rect(-10,5,Screen.width-20,18);
 			Rect scrollBounds = new Rect(Screen.width-15,0,20,consoleHeight);
 			Rect consoleBounds = new Rect(0,0,Screen.width,consoleHeight);
 			Rect inputBounds = new Rect(0,consoleHeight,Screen.width,30);
 			Rect inputArrowBounds = new Rect(2,consoleHeight+6,12,12);
-			Console.logStyle.fontSize = Console.settings.logFontSize;
+			Console.logStyle.fontSize = Console.instance.logFontSize;
 			if(UnityEvent.current.type == EventType.Repaint){
-				var backgroundTexture = Console.settings.background.GetTexture("textureMap");
-				var inputTexture = Console.settings.inputBackground.GetTexture("textureMap");
+				var backgroundTexture = Console.instance.background.GetTexture("textureMap");
+				var inputTexture = Console.instance.inputBackground.GetTexture("textureMap");
 				backgroundTexture.wrapMode = TextureWrapMode.Repeat;
 				backgroundTexture.filterMode = FilterMode.Bilinear;
 				inputTexture.wrapMode = TextureWrapMode.Repeat;
 				inputTexture.filterMode = FilterMode.Bilinear;
-				Graphics.DrawTexture(consoleBounds,Texture2D.whiteTexture,Console.settings.background);
-				Graphics.DrawTexture(inputBounds,Texture2D.whiteTexture,Console.settings.inputBackground);
-				Graphics.DrawTexture(inputArrowBounds,Texture2D.whiteTexture,Console.settings.textArrow);
+				Graphics.DrawTexture(consoleBounds,Texture2D.whiteTexture,Console.instance.background);
+				Graphics.DrawTexture(inputBounds,Texture2D.whiteTexture,Console.instance.inputBackground);
+				Graphics.DrawTexture(inputArrowBounds,Texture2D.whiteTexture,Console.instance.textArrow);
 			}
 			if(Console.status == ConsoleState.open && Console.log.Count > 0){
-				Console.logStyle.normal.textColor = Console.color[Console.settings.logFontColor];
+				Console.logStyle.normal.textColor = Console.color[Console.instance.logFontColor];
 				float clampedPosition = Mathf.Clamp(Console.logPosition,0,Console.logScrollLimit);
 				byte logPosition = (byte)(clampedPosition * (Console.log.Count+1));
 				for(byte lineIndex = 0;lineIndex < Console.log.Count;++lineIndex){
 					if(logPosition > lineIndex){continue;}
-					if(logBounds.y + Console.settings.logFontSize > consoleBounds.yMax - 5){break;}
+					if(logBounds.y + Console.instance.logFontSize > consoleBounds.yMax - 5){break;}
 					string colorCode = "";
 					StringBuilder word = new StringBuilder();
-					Console.logStyle.normal.textColor = Console.color[Console.settings.logFontColor];
+					Console.logStyle.normal.textColor = Console.color[Console.instance.logFontColor];
 					foreach(char letter in Console.log[lineIndex]){
 						if(logBounds.x > Screen.width){break;}
 						if(letter == '^'){
@@ -686,17 +715,17 @@ namespace Zios.Interface{
 						}
 						else if(colorCode.Length > 0){
 							if(Char.IsNumber(letter)){
-								if(Console.settings.logFontAllowColors){colorCode += letter;}
+								if(Console.instance.logFontAllowColors){colorCode += letter;}
 								continue;
 							}
-							if(Console.settings.logFontAllowColors){
+							if(Console.instance.logFontAllowColors){
 								if(word.Length > 0){
 									logBounds.width = Console.logStyle.CalcSize(new GUIContent(word.ToString()))[0];
 									GUI.Label(logBounds,word.ToString().Replace("|",""),Console.logStyle);
 									logBounds.x += logBounds.width - (15+logTextOffset/2);
 									word = new StringBuilder();
 								}
-								colorCode = colorCode.Length < 2 ? Console.settings.logFontColor.ToString() : colorCode;
+								colorCode = colorCode.Length < 2 ? Console.instance.logFontColor.ToString() : colorCode;
 								if(colorCode.IsInt()){
 									int colorIndex = Mathf.Clamp(Convert.ToInt32(colorCode),0,Console.color.Length-1);
 									Console.logStyle.normal.textColor = Console.color[colorIndex];
@@ -723,7 +752,7 @@ namespace Zios.Interface{
 			Console.inputText = GUI.TextField(inputBounds,Console.inputText);
 		}
 		public static void ManageState(){
-			float slideStep = Console.settings.speed * Time.deltaTime;
+			float slideStep = Console.instance.speed * Time.deltaTime;
 			if(Console.status == ConsoleState.open && Console.keyDetection == ""){
 				GUI.FocusControl("inputText");
 			}
@@ -848,11 +877,20 @@ namespace Zios.Interface{
 			Console.logPosition = 0;
 			Console.logScrollLimit = 0;
 		}
-		public static void ShowConsole(){
+		public static void Toggle(){
 			if(Console.status != ConsoleState.openBegin  && Console.status != ConsoleState.closeBegin){
-				Console.status = Console.status < ConsoleState.open ? ConsoleState.openBegin : ConsoleState.closeBegin;
+				if(Console.status < ConsoleState.open){Console.Open();}
+				else{Console.Close();}
 			}
 		}
+		public static void Open(bool immediate=false){
+			Console.status = immediate ? ConsoleState.open : ConsoleState.openBegin;
+		}
+		public static void Close(bool immediate=false){
+			Console.status = immediate ? ConsoleState.closed : ConsoleState.closeBegin;
+		}
+		public static void Hide(){Console.hidden = true;}
+		public static void Show(){Console.hidden = false;}
 		public static void ListConsoleColors(){
 			string listing = "^10Console Font colors available : ";
 			for(byte index = 0;index < Console.color.Length;++index){
