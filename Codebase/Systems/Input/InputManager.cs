@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using UnityEvent = UnityEngine.Event;
 namespace Zios.Inputs{
 	using Interface;
+	using Events;
 	[InitializeOnLoad]
 	public static class InputHook{
 		public static Hook<InputManager> hook;
@@ -20,7 +21,6 @@ namespace Zios.Inputs{
 		}
 	}
 	public enum InputUIState{None,SelectProfile,EditProfile}
-	public enum GamepadKey{None,Up,Down,Left,Right,Square,X,Triangle,Circle,L1,L2,R1,R2,Start,Select,LeftAnalog,LeftAnalogXAxis,LeftAnalogYAxis,LeftAnalogUp,LeftAnalogRight,LeftAnalogDown,LeftAnalogLeft,RightAnalog,RightAnalogXAxis,RightAnalogYAxis,RightAnalogUp,RightAnalogRight,RightAnalogDown,RightAnalogLeft}
 	public class InputManager : MonoBehaviour{
 		public static InputManager instance;
 		public float deadZone = 0.1f;
@@ -44,7 +44,6 @@ namespace Zios.Inputs{
 		private int uiIndex;
 		private bool hasGroups;
 		public void Setup(){
-			this.sprites = FileManager.GetAssets<Sprite>("Gamepad*.png");
 			this.uiObject = Locate.Find("@Main/InputUI");
 			if(this.uiObject.IsNull()){
 				this.uiObject = GameObject.Instantiate(FileManager.GetAsset<GameObject>("InputUI.prefab"));
@@ -55,19 +54,20 @@ namespace Zios.Inputs{
 		public void Awake(){
 			InputManager.instance = this;
 			this.hasGroups = this.groups.Count > 0 && this.groups[0].actions.Count > 0;
-			this.CheckJoysticks();
+			this.FindGamepads();
+			//Event.Call("Add Console Keyword","createProfile",this.CreateProfile);
 			Console.AddKeyword("createProfile",this.CreateProfile);
 			Console.AddKeyword("editProfile",this.EditProfile);
 			Console.AddKeyword("removeProfile",this.RemoveProfile);
 			InputProfile.Load();
-			if(this.profiles.Count < 1){Utility.DelayCall(this.DefaultProfile,0.5f);}
+			if(this.profiles.Count < 1){Utility.DelayCall(this.CreateDefaultProfile,0.5f);}
 		}
 		public void Update(){
-			this.UpdateMouse();
-			this.CheckConfigure();
+			this.DetectMouse();
+			this.DetectKey();
 		}
 		public void FixedUpdate(){
-			this.CheckJoysticks();
+			this.FindGamepads();
 		}
 		public void OnGUI(){
 			if(!Application.isPlaying){return;}
@@ -83,11 +83,10 @@ namespace Zios.Inputs{
 				var group = this.groups[this.uiGroupIndex];
 				var action = group.actions[this.uiIndex];
 				var path = "@Main/InputUI/ProfileCreate/";
-				var iconName = "Gamepad-"+action.recommendedGamepadKey.ToName();
 				Locate.Find(path+"Text-Key").GetComponent<Text>().text = action.name;
 				Locate.Find(path+"Text-Profile").GetComponent<Text>().text = "<size=100><color=#888888FF>"+profile.name+"</color></size>\nProfile";
-				Locate.Find(path+"Icon-Gamepad").GetComponent<Image>().sprite = this.sprites.Where(x=>x.name==iconName).FirstOrDefault();
-				Locate.Find(path+"Icon-Gamepad").SetActive(action.recommendedGamepadKey != GamepadKey.None);
+				Locate.Find(path+"Icon-Gamepad").GetComponent<Image>().sprite = action.suggestion;
+				Locate.Find(path+"Icon-Gamepad").SetActive(!action.suggestion.IsNull());
 				if(!this.lastInput.IsEmpty() && this.lastInputTime + 0.1f < Time.realtimeSinceStartup){
 					string device = "Keyboard";
 					string groupName = group.name.ToPascalCase();
@@ -121,7 +120,7 @@ namespace Zios.Inputs{
 				}
 			}
 		}
-		public void CheckConfigure(){
+		public void DetectKey(){
 			if(this.uiState == InputUIState.EditProfile){
 				Console.Close(true);
 				for(int joystickNumber=1;joystickNumber<5;++joystickNumber){
@@ -157,7 +156,7 @@ namespace Zios.Inputs{
 				}
 			}
 		}
-		public void CheckJoysticks(){
+		public void FindGamepads(){
 			var names = Input.GetJoystickNames();
 			if(!Enumerable.SequenceEqual(names,this.joystickNames)){
 				foreach(var change in names.Except(this.joystickNames)){
@@ -175,7 +174,7 @@ namespace Zios.Inputs{
 				this.joystickNames = names;
 			}
 		}
-		public void UpdateMouse(){
+		public void DetectMouse(){
 			this.mouseScroll = Input.mouseScrollDelta != Vector2.zero ? -Input.mouseScrollDelta : Vector2.zero;
 			if(this.mouseScroll != Vector2.zero){
 				this.lastInputTime = Time.realtimeSinceStartup;
@@ -206,7 +205,7 @@ namespace Zios.Inputs{
 			this.mouseChange = Vector3.zero;
 			this.mouseChangeAverage = Vector3.zero;
 		}
-		public void DefaultProfile(){this.CreateProfile("Default".AsArray());}
+		public void CreateDefaultProfile(){this.CreateProfile("Default".AsArray());}
 		public void CreateProfile(string[] values){
 			if(values.Length < 2 || !this.hasGroups){return;}
 			var name = values[1];

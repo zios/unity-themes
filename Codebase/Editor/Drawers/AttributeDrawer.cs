@@ -161,28 +161,28 @@ namespace Zios.Editors{
 			}
 			if(data is AttributeFloatData){
 				AttributeFloatData floatData = (AttributeFloatData)data;
-				floatData.Set(floatData.value.Draw(area,label));
+				floatData.Set(floatData.value.Draw(area,label,null,true));
 			}
 			if(data is AttributeIntData){
 				AttributeIntData intData = (AttributeIntData)data;
-				intData.Set(intData.value.DrawInt(area,label));
+				intData.Set(intData.value.DrawInt(area,label,null,true));
 			}
 			if(data is AttributeStringData){
 				AttributeStringData stringData = (AttributeStringData)data;
-				stringData.Set(stringData.value.Draw(area,label));
+				stringData.Set(stringData.value.Draw(area,label,null,true));
 			}
 			if(data is AttributeBoolData){
 				AttributeBoolData boolData = (AttributeBoolData)data;
-				boolData.Set(boolData.value.Draw(area,label));
+				boolData.Set(boolData.value.Draw(area,label,null,true));
 			}
 			if(data is AttributeVector3Data){
 				AttributeVector3Data vector3Data = (AttributeVector3Data)data;
-				vector3Data.Set(vector3Data.value.DrawVector3(area,label));
+				vector3Data.Set(vector3Data.value.DrawVector3(area,label,true));
 			}
 			EditorGUIUtility.labelWidth = labelSize;
 		}
 		public virtual void DrawShaped(Rect area,AttributeData data,GUIContent label,bool? drawSpecial=null,bool? drawOperator=null){
-			label.DrawLabel(labelRect);
+			label.DrawLabel(this.labelRect);
 			Rect toggleRect = area.SetWidth(16);
 			bool toggleActive = this.targetMode.ContainsKey(data) ? this.targetMode[data] : !data.referenceID.IsEmpty();
 			this.targetMode[data] = toggleActive.Draw(toggleRect,"",GUI.skin.GetStyle("CheckmarkToggle"));
