@@ -51,8 +51,10 @@ namespace Zios{
 				return FileManager.cache[searchKey];
 			}
 			if(name.ContainsAny("<",">","?",":","|")){
-				Debug.LogWarning("[FileManager] Path has invalid characters -- " + name);
-				return new FileData[0];
+				if(name[1] != ':') {
+					Debug.LogWarning("[FileManager] Path has invalid characters -- " + name);
+					return new FileData[0];
+				}
 			}
 			string fileName = name.GetFileName();
 			string type = name.GetExtension().ToLower();
