@@ -1,21 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &104028
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 446250}
-  - 114: {fileID: 11450762}
-  m_Layer: 0
-  m_Name: Console
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &105634
 GameObject:
   m_ObjectHideFlags: 0
@@ -50,7 +34,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &136876
 GameObject:
   m_ObjectHideFlags: 1
@@ -191,18 +175,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &446250
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 104028}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 477624}
-  m_RootOrder: 0
 --- !u!4 &477624
 Transform:
   m_ObjectHideFlags: 1
@@ -213,7 +185,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 446250}
   - {fileID: 22496964}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -385,31 +356,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.67058825}
   m_EffectDistance: {x: 1.41, y: -1.94}
   m_UseGraphicAlpha: 1
---- !u!114 &11450762
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 104028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a53695fe1f968c4180793c81ca7955d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skin: {fileID: 11400000, guid: abfe5ab11a13f5e4b8e1f01e6716e334, type: 2}
-  background: {fileID: 2100000, guid: 747ba6f61fef5714a89b8a56ed41f654, type: 2}
-  inputBackground: {fileID: 2100000, guid: fc4e786b04678cb488415f0d8fa2b62d, type: 2}
-  textArrow: {fileID: 2100000, guid: 20b6fb5e9b63f0645a924a0c929bd7f3, type: 2}
-  triggerKey: 293
-  speed: 5
-  height: 0.25
-  configFile: Game.cfg
-  logFile: Log.txt
-  logLineSize: 150
-  logFontSize: 15
-  logFontColor: 7
-  logFontAllowColors: 1
-  allowLogging: 1
 --- !u!114 &11468750
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -761,7 +707,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -73.57501, y: -52}
+  m_AnchoredPosition: {x: -73.57501, y: -20.43}
   m_SizeDelta: {x: 137.65002, y: 32.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22452214
@@ -828,7 +774,7 @@ RectTransform:
   - {fileID: 22450352}
   - {fileID: 22411150}
   m_Father: {fileID: 477624}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}

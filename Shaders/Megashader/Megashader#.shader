@@ -67,5 +67,5 @@ Shader "Zios/(Megashader)#"{
 		}
 	}
 	Fallback "Hidden/Zios/Fallback/Vertex Lit"
-	CustomEditor "Zios.UI.VariableMaterialEditor"
+	CustomEditor "Zios.Editors.VariableMaterialEditor"
 }
