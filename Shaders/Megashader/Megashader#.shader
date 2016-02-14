@@ -9,7 +9,7 @@ Shader "Zios/(Megashader)#"{
 		[Header(Texture)]
 			[KeywordEnum(Off,On)] textureState("State",Float) = 1
 			[KeywordEnum(UV,Triplanar)] textureMapping("Mapping",Float) = 0
-			[KeywordEnum(Multiply,Add,Lerp)] textureBlend("Blend",Float) = 0
+			[KeywordEnum(Multiply,Add,Lerp,Overlay,Screen,SoftLight,LinearLight)] textureBlend("Blend",Float) = 0
 			textureMap("Texture",2D) = "white"{}
 		[Header(Triplanar)]
 			triplanarScale("Scale",Range(0.05,50)) = 1
@@ -22,7 +22,7 @@ Shader "Zios/(Megashader)#"{
 			reflectionMap("Texture",2D) = "white"{}
 		[Header(Lighting)]
 			[KeywordEnum(None,Lambert,LambertHalf,LambertStepped)] lightingType("Type",Float) = 3
-			[Int] lightingSteps("Lighting Steps",Range(2,16)) = 3
+			[Int] lightingSteps("Lighting Steps",Range(2,256)) = 3
 			[KeywordEnum(Off,On)] directionalState("Use Directional Lights",Float) = 1
 			[KeywordEnum(Off,On)] pointState("Use Point Lights",Float) = 1
 		[Header(Shading)]
