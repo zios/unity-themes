@@ -10,10 +10,10 @@ namespace Zios.Actions.TransitionComponents{
 		public AttributeFloat speed = 1;
 		[Advanced] public AnimationCurve acceleration = AnimationCurve.EaseInOut(0,0,1,1);
 		[Advanced] public AnimationCurve deceleration = AnimationCurve.EaseInOut(0,1,1,0);
-		[Advanced][Internal] public AttributeFloat delta = 0;
 		[NonSerialized] public TransitionState state;
-		protected string path;
+		protected AttributeFloat delta = 0;
 		protected Component parent;
+		protected string path;
 		protected float startValue;
 		protected float startTime;
 		protected float endTime;

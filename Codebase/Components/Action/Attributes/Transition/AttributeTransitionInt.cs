@@ -1,10 +1,10 @@
 using UnityEngine;
 namespace Zios.Actions.TransitionComponents{
 	using Attributes;
-	[AddComponentMenu("Zios/Component/Action/Attribute/Transition/Transition Float")]
-	public class AttributeTransitionFloat : StateMonoBehaviour{
-		public AttributeFloat target = 0;
-		public AttributeFloat goal = 0;
+	[AddComponentMenu("Zios/Component/Action/Attribute/Transition/Transition Int")]
+	public class AttributeTransitionInt: StateMonoBehaviour{
+		public AttributeInt target = 0;
+		public AttributeInt goal = 0;
 		public Transition transition;
 		public override void Awake(){
 			base.Awake();
