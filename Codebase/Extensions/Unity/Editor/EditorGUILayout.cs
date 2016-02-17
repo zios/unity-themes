@@ -62,7 +62,7 @@ namespace Zios.Interface{
 			}
 		}
 		public static void Draw(this IDictionary current,UnityLabel label=null,GUIStyle style=null,bool indention=false){
-			var open = EditorGUILayoutExtensionSpecial.DrawFoldout(label.ToString().ToTitle());
+			var open = EditorGUILayoutExtensionSpecial.DrawFoldout(label.ToString().ToTitleCase());
 			if(!open){return;}
 			EditorGUI.indentLevel += 1;
 			foreach(DictionaryEntry item in current){
@@ -95,7 +95,7 @@ namespace Zios.Interface{
 			if(header.IsEmpty() || EditorGUILayoutExtensionSpecial.DrawFoldout(header)){
 				if(!header.IsEmpty()){EditorGUI.indentLevel += 1;}
 				foreach(var item in current.GetVariables()){
-					string label = item.Key.ToTitle();
+					string label = item.Key.ToTitleCase();
 					object field = item.Value;
 					if(field is ICollection){
 						var enumerable = field as IEnumerable;
@@ -116,8 +116,8 @@ namespace Zios.Interface{
 		}
 		//public static bool DrawFoldout(this string current,bool indention=false){return new UnityLabel(current).DrawFoldout(indention);}
 		//public static bool DrawFoldout(this GUIContent current,bool indention=false){return new UnityLabel(current).DrawFoldout(indention);}
-		public static bool DrawFoldout(this UnityLabel current,bool indention=false){
-			string name = current + "Foldout";
+		public static bool DrawFoldout(this UnityLabel current,object key=null,bool indention=false){
+			string name = key.IsNull() ? current + "Foldout" : key.GetHashCode().ToString();
 			bool previous = EditorPrefs.GetBool(name);
 			bool state = EditorGUIExtension.Draw<bool>(()=>EditorGUILayout.Foldout(previous,current),indention);
 			if(previous != state){EditorPrefs.SetBool(name,state);}

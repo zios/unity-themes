@@ -28,7 +28,7 @@ namespace Zios.Inputs{
 		public static void Load(){
 			foreach(var file in FileManager.FindAll("*.profile",true,false)){
 				var profile = new InputProfile(file.name);
-				var text = file.GetText().Split("\n");
+				var text = file.GetText().GetLines();
 				int mode = 0;
 				string group = "";
 				foreach(var line in text){

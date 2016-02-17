@@ -186,7 +186,7 @@ namespace Zios{
 			foreach(var file in FileManager.FindAll("*.cs")){
 				var contents = file.GetText();
 				output.Clear();
-				foreach(var line in contents.Split("\n")){
+				foreach(var line in contents.GetLines()){
 					var leading = line.Substring(0,line.TakeWhile(char.IsWhiteSpace).Count()).Replace("    ","\t");
 					current = leading+line.Trim();
 					if(line.Trim().IsEmpty()){continue;}

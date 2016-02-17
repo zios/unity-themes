@@ -5,8 +5,7 @@ namespace Zios.Inputs{
 	[Serializable]
 	public class InputAction{
 		public string name;
-		public Transition acceleration = new Transition();
-		public Transition deceleration = new Transition();
-		public Sprite suggestion;
+		public Sprite helpImage;
+		public Transition transition;
 	}
 }

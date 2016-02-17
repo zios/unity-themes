@@ -15,6 +15,7 @@ namespace Zios{
 			if(this.rate == UpdateRate.Default){
 				if(rate == "FixedUpdate"){this.rate = UpdateRate.FixedUpdate;}
 				if(rate == "LateUpdate"){this.rate = UpdateRate.LateUpdate;}
+				if(rate == "Update"){this.rate = UpdateRate.Update;}
 			}
 		}
 		public virtual void FixedUpdate(){

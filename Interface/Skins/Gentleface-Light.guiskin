@@ -77,7 +77,7 @@ MonoBehaviour:
       m_Background: {fileID: 2800000, guid: fda40e95474573a4998b8b5f3085da38, type: 3}
       m_TextColor: {r: 1, g: 1, b: 1, a: 1}
     m_Hover:
-      m_Background: {fileID: 2800000, guid: fda40e95474573a4998b8b5f3085da38, type: 3}
+      m_Background: {fileID: 2800000, guid: ff2161b22f373b84a87bc00e25ca3175, type: 3}
       m_TextColor: {r: 1, g: 1, b: 1, a: 1}
     m_Active:
       m_Background: {fileID: 2019887702, guid: 0000000000000000d000000000000000, type: 0}
@@ -131,7 +131,7 @@ MonoBehaviour:
     m_FixedWidth: 0
     m_FixedHeight: 0
     m_StretchWidth: 0
-    m_StretchHeight: 0
+    m_StretchHeight: 1
   m_toggle:
     m_Name: toggle
     m_Normal:

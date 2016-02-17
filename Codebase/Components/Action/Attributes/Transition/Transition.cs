@@ -5,15 +5,15 @@ namespace Zios.Actions.TransitionComponents{
 	using Events;
 	[Serializable]
 	public class Transition{
-		public TransitionType type;
-		public AttributeFloat time = 1;
-		public AttributeFloat speed = 1;
+		//public TransitionType type;
+		public AttributeFloat time = 0.5f;
+		public AttributeFloat speed = 3;
 		[Advanced] public AnimationCurve acceleration = AnimationCurve.EaseInOut(0,0,1,1);
-		[Advanced] public AnimationCurve deceleration = AnimationCurve.EaseInOut(0,1,1,0);
+		[Advanced] public AnimationCurve deceleration = AnimationCurve.EaseInOut(1,1,1,1);
 		[NonSerialized] public TransitionState state;
-		protected AttributeFloat delta = 0;
-		protected Component parent;
-		protected string path;
+		[HideInInspector] public AttributeFloat delta = 0;
+		[HideInInspector] public Component parent;
+		[HideInInspector] public string path;
 		protected float startValue;
 		protected float startTime;
 		protected float endTime;
@@ -21,6 +21,11 @@ namespace Zios.Actions.TransitionComponents{
 		protected float totalDistance;
 		protected float previousGoal;
 		protected bool finished;
+		public Transition(){}
+		public Transition(float time,float speed){
+			this.time.delayedValue = time;
+			this.speed.delayedValue = speed;
+		}
 		public void Setup(string path,Component parent){
 			this.path = path;
 			this.parent = parent;
@@ -36,50 +41,52 @@ namespace Zios.Actions.TransitionComponents{
 		public float Step(float current,float goal){
 			float output = 0;
 			float speed = this.speed.Get();
-			float remainingDistance = current.Distance(goal);
-			if(speed <= 0){
+			float time = this.time.Get();
+			if(time == 0 && speed == 0){
 				current = goal;
 				output = goal;
+				return goal;
 			}
-			if(current == goal){
+			float remainingDistance = current.Distance(goal);
+			if(remainingDistance <= 0){
 				if(!this.finished){this.parent.CallEvent(this.path+"/End");}
 				this.finished = true;
 				this.delta.Set(0);
 				this.state = TransitionState.Idle;
-				return output;
+				return goal;
 			}
 			if(this.state == TransitionState.Idle){
+				this.parent.CallEvent(this.path+"/Start");
 				this.finished = false;
 				this.totalDistance = remainingDistance;
-				this.startTime = Time.time + this.time;
-				this.parent.CallEvent(this.path+"/Start");
-				this.state = this.time <= 0 ? TransitionState.Travel : TransitionState.Acceleration;
+				this.startTime = Time.time + time;
+				this.state = time <= 0 ? TransitionState.Travel : TransitionState.Acceleration;
 				this.startValue = current;
 				this.previousGoal = goal;
 				speed = 0;
 			}
 			else if(this.state == TransitionState.Acceleration){
 				bool halfTraveled = remainingDistance <= this.totalDistance * 0.5f;
-				float transitionIn = (this.time - (this.startTime - Time.time)) / this.time;
+				float transitionIn = (time - (this.startTime - Time.time)) / time;
 				speed *= this.acceleration.Evaluate(transitionIn);
 				if(transitionIn >= 1 || halfTraveled){
 					this.currentDistance = this.startValue.Distance(current);
 					this.state = TransitionState.Travel;
 					if(halfTraveled){
 						this.state = TransitionState.Deceleration;
-						this.endTime = Time.time + (transitionIn*this.time);
+						this.endTime = Time.time + (transitionIn*time);
 					}
 				}
 			}
 			else if(this.state == TransitionState.Travel){
-				if(this.time > 0 && remainingDistance <= this.currentDistance){
+				if(time > 0 && remainingDistance <= this.currentDistance){
 					float percentRemaining = remainingDistance / this.currentDistance;
 					this.state = TransitionState.Deceleration;
-					this.endTime = Time.time + (this.time * percentRemaining);
+					this.endTime = Time.time + (time * percentRemaining);
 				}
 			}
 			else if(this.state == TransitionState.Deceleration){
-				float transitionOut = (this.time - (this.endTime - Time.time)) / this.time;
+				float transitionOut = (time - (this.endTime - Time.time)) / time;
 				speed *= this.deceleration.Evaluate(transitionOut);
 			}
 			if(this.previousGoal != goal){

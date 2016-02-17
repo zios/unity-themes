@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,49 +18,63 @@ namespace Zios.Inputs{
 		public static void Create(){
 			bool wasNull = InputManager.instance.IsNull();
 			InputHook.hook.Create();
-			if(wasNull){InputManager.instance.Setup();}
+			if(wasNull){
+				var instance = InputManager.instance;
+				instance.uiObject = Locate.Find("@Main/InputUI");
+				if(instance.uiObject.IsNull()){
+					instance.uiObject = GameObject.Instantiate(FileManager.GetAsset<GameObject>("InputUI.prefab"));
+					instance.uiObject.name = instance.uiObject.name.Remove("(Clone)");
+					instance.uiObject.transform.SetParent(Locate.Find("@Main").transform);
+				}
+				InputGroup.Load();
+			}
 		}
 	}
 	public enum InputUIState{None,SelectProfile,EditProfile}
 	public class InputManager : MonoBehaviour{
-		public static InputManager instance;
+		[NonSerialized] public static InputManager instance;
+		[NonSerialized] public static Vector3 mouseChange;
+		[NonSerialized] public static Vector2 mouseScroll;
+		[NonSerialized] public static Vector3 mousePosition;
+		[NonSerialized] public static Vector3 mouseChangeAverage;
 		public float deadZone = 0.1f;
 		public List<InputGroup> groups = new List<InputGroup>();
+		[Internal] public Dictionary<string,InputProfile> instanceProfile = new Dictionary<string,InputProfile>();
 		[Internal] public List<InputDevice> devices = new List<InputDevice>();
 		[Internal] public List<InputProfile> profiles = new List<InputProfile>();
-		[Internal] public List<InputInstance> instances = new List<InputInstance>();
 		[Internal] public string[] joystickNames = new string[0];
-		[Internal] public Sprite[] sprites = new Sprite[0];
 		[Internal] public GameObject uiObject;
 		private Dictionary<string,bool> joystickAxis = new Dictionary<string,bool>();
+		private InputInstance activeInstance;
 		private InputProfile activeProfile;
 		private string lastInput;
 		private float lastInputTime;
-		private Vector3 mousePosition;
-		private Vector3 mouseChange;
-		private Vector3 mouseChangeAverage;
-		private Vector2 mouseScroll;
 		private InputUIState uiState;
 		private int uiGroupIndex;
 		private int uiIndex;
 		private bool hasGroups;
-		public void Setup(){
-			this.uiObject = Locate.Find("@Main/InputUI");
-			if(this.uiObject.IsNull()){
-				this.uiObject = GameObject.Instantiate(FileManager.GetAsset<GameObject>("InputUI.prefab"));
-				this.uiObject.name = this.uiObject.name.Remove("(Clone)");
-				this.uiObject.transform.SetParent(Locate.Find("@Main").transform);
-			}
+		//===============
+		// Unity
+		//===============
+		public void OnValidate(){
+			InputManager.instance = this;
+			InputGroup.Setup();
 		}
 		public void Awake(){
 			InputManager.instance = this;
+			InputProfile.Load();
+			InputInstance.Load();
+			InputGroup.Load();
+			InputGroup.Setup();
 			this.hasGroups = this.groups.Count > 0 && this.groups[0].actions.Count > 0;
-			this.FindGamepads();
+			this.DetectGamepads();
 			//Event.Call("Add Console Keyword","createProfile",this.CreateProfile);
+			Console.AddKeyword("showProfiles",this.ShowProfiles);
 			Console.AddKeyword("createProfile",this.CreateProfile);
 			Console.AddKeyword("editProfile",this.EditProfile);
 			Console.AddKeyword("removeProfile",this.RemoveProfile);
-			InputProfile.Load();
+			Event.Add("On Hierarchy Changed",InputGroup.Save);
+			Event.Add("On Enter Play",InputGroup.Save);
 			if(this.profiles.Count < 1){Utility.DelayCall(this.CreateDefaultProfile,0.5f);}
 		}
 		public void Update(){
@@ -67,7 +82,7 @@ namespace Zios.Inputs{
 			this.DetectKey();
 		}
 		public void FixedUpdate(){
-			this.FindGamepads();
+			this.DetectGamepads();
 		}
 		public void OnGUI(){
 			if(!Application.isPlaying){return;}
@@ -77,16 +92,48 @@ namespace Zios.Inputs{
 					this.devices.Add(new InputDevice("Keyboard"));
 				}
 			}
-			this.uiObject.SetActive(this.uiState != InputUIState.None);
+			bool uiActive = this.uiState != InputUIState.None;
+			if(uiActive){Console.Close(true);}
+			this.uiObject.SetActive(uiActive);
+			Locate.Find("@Main/InputUI/ProfileCreate/").SetActive(false);
+			Locate.Find("@Main/InputUI/ProfileSelect/").SetActive(false);
+			this.DrawProfileSelect();
+			this.DrawProfileEdit();
+		}
+		//===============
+		// GUI
+		//===============
+		[ContextMenu("Save Settings")] public static void Save(){InputGroup.Save();}
+		[ContextMenu("Load Settings")] public static void Load(){InputGroup.Load();}
+		public void DrawProfileSelect(){
+			if(this.uiState == InputUIState.SelectProfile){
+				//var path = "@Main/InputUI/ProfileSelect/";
+				//Locate.Find(path).SetActive(true);
+				var buttonWidth = Screen.width * 0.5f;
+				var buttonHeight = Screen.height * 0.09f;
+				var area = new Rect((Screen.width/2)-buttonWidth/2,10,buttonWidth,buttonHeight);
+				GUI.skin = FileManager.GetAsset<GUISkin>("Gentleface-Light.guiskin");
+				var style = GUI.skin.button.Font("Bombardier.otf").FontSize((int)(buttonHeight*0.7f));
+				foreach(var profile in this.profiles){
+					if(GUI.Button(area,profile.name,style)){
+						this.activeProfile = profile;
+						this.uiState = InputUIState.None;
+					}
+					area = area.AddY(buttonHeight+5);
+				}
+			}
+		}
+		public void DrawProfileEdit(){
 			if(this.uiState == InputUIState.EditProfile){
 				var profile = this.activeProfile;
 				var group = this.groups[this.uiGroupIndex];
 				var action = group.actions[this.uiIndex];
 				var path = "@Main/InputUI/ProfileCreate/";
+				Locate.Find(path).SetActive(true);
 				Locate.Find(path+"Text-Key").GetComponent<Text>().text = action.name;
 				Locate.Find(path+"Text-Profile").GetComponent<Text>().text = "<size=100><color=#888888FF>"+profile.name+"</color></size>\nProfile";
-				Locate.Find(path+"Icon-Gamepad").GetComponent<Image>().sprite = action.suggestion;
-				Locate.Find(path+"Icon-Gamepad").SetActive(!action.suggestion.IsNull());
+				Locate.Find(path+"Icon-Gamepad").GetComponent<Image>().sprite = action.helpImage;
+				Locate.Find(path+"Icon-Gamepad").SetActive(!action.helpImage.IsNull());
 				if(!this.lastInput.IsEmpty() && this.lastInputTime + 0.1f < Time.realtimeSinceStartup){
 					string device = "Keyboard";
 					string groupName = group.name.ToPascalCase();
@@ -120,9 +167,11 @@ namespace Zios.Inputs{
 				}
 			}
 		}
+		//===============
+		// Detection
+		//===============
 		public void DetectKey(){
 			if(this.uiState == InputUIState.EditProfile){
-				Console.Close(true);
 				for(int joystickNumber=1;joystickNumber<5;++joystickNumber){
 					for(int axisNumber=1;axisNumber<9;++axisNumber){
 						string axisName = "Joystick"+joystickNumber+"-Axis"+ axisNumber;
@@ -156,7 +205,7 @@ namespace Zios.Inputs{
 				}
 			}
 		}
-		public void FindGamepads(){
+		public void DetectGamepads(){
 			var names = Input.GetJoystickNames();
 			if(!Enumerable.SequenceEqual(names,this.joystickNames)){
 				foreach(var change in names.Except(this.joystickNames)){
@@ -175,37 +224,73 @@ namespace Zios.Inputs{
 			}
 		}
 		public void DetectMouse(){
-			this.mouseScroll = Input.mouseScrollDelta != Vector2.zero ? -Input.mouseScrollDelta : Vector2.zero;
-			if(this.mouseScroll != Vector2.zero){
+			InputManager.mouseScroll = Input.mouseScrollDelta != Vector2.zero ? -Input.mouseScrollDelta : Vector2.zero;
+			if(InputManager.mouseScroll != Vector2.zero){
 				this.lastInputTime = Time.realtimeSinceStartup;
-				if(this.mouseScroll.y < 0){this.lastInput = "MouseScrollUp";}
-				if(this.mouseScroll.y > 0){this.lastInput = "MouseScrollDown";}
+				if(InputManager.mouseScroll.y < 0){this.lastInput = "MouseScrollUp";}
+				if(InputManager.mouseScroll.y > 0){this.lastInput = "MouseScrollDown";}
 			}
-			if(Input.mousePosition != this.mousePosition){
+			if(Input.mousePosition != InputManager.mousePosition){
 				this.lastInputTime = Time.realtimeSinceStartup;
 				if(!this.devices.Exists(x=>x.name=="Mouse")){
 					this.devices.Add(new InputDevice("Mouse"));
 				}
-				this.mouseChange = this.mousePosition - Input.mousePosition;
-				this.mouseChange.x *= -1;
-				this.mouseChangeAverage = (this.mouseChangeAverage+this.mouseChange)/2;
-				this.mousePosition = Input.mousePosition;
+				InputManager.mouseChange = InputManager.mousePosition - Input.mousePosition;
+				InputManager.mouseChange.x *= -1;
+				InputManager.mouseChangeAverage = (InputManager.mouseChangeAverage+InputManager.mouseChange)/2;
+				InputManager.mousePosition = Input.mousePosition;
 				if(this.uiState != InputUIState.EditProfile){return;}
-				var change = this.mouseChangeAverage.Abs();
+				var change = InputManager.mouseChangeAverage.Abs();
 				if(change.x >= change.y){
-					if(this.mouseChangeAverage.x < 0){this.lastInput = "MouseX-";}
-					if(this.mouseChangeAverage.x > 0){this.lastInput = "MouseX+";}
+					if(InputManager.mouseChangeAverage.x < 0){this.lastInput = "MouseX-";}
+					if(InputManager.mouseChangeAverage.x > 0){this.lastInput = "MouseX+";}
 				}
 				else{
-					if(this.mouseChangeAverage.y < 0){this.lastInput = "MouseY-";}
-					if(this.mouseChangeAverage.y > 0){this.lastInput = "MouseY+";}
+					if(InputManager.mouseChangeAverage.y < 0){this.lastInput = "MouseY-";}
+					if(InputManager.mouseChangeAverage.y > 0){this.lastInput = "MouseY+";}
 				}
 				return;
 			}
-			this.mouseChange = Vector3.zero;
-			this.mouseChangeAverage = Vector3.zero;
+			InputManager.mouseChange = Vector3.zero;
+			InputManager.mouseChangeAverage = Vector3.zero;
 		}
-		public void CreateDefaultProfile(){this.CreateProfile("Default".AsArray());}
+		//===============
+		// Interface
+		//===============
+		public InputProfile GetInstanceProfile(string name){
+			if(this.instanceProfile.ContainsKey(name)){
+				return this.instanceProfile[name];
+			}
+			return null;
+		}
+		public void SelectProfile(InputInstance instance){
+			if(this.profiles.Count > 0 && !this.activeInstance.IsNull() && this.activeInstance != instance){return;}
+			this.activeInstance = instance;
+			instance.profile = this.activeProfile;
+			if(instance.profile.IsNull()){
+				if(this.profiles.Count > 1){
+					this.ShowProfiles();
+					return;
+				}
+				this.activeProfile = this.profiles[0];
+			}
+			else{
+				instance.Save();
+				string gamepad = this.activeProfile.requiredDevices.Find(x=>!x.MatchesAny("Keyboard","Mouse")).Trim();
+				for(int index=0;index<this.joystickNames.Length;++index){
+					string name = this.joystickNames[index].Trim();
+					if(name == gamepad){
+						instance.joystickID = (index+1).ToString();
+					}
+				}
+				
+			}
+		}
+		public void ShowProfiles(){
+			this.activeProfile = null;
+			this.uiState = InputUIState.SelectProfile;
+		}
+		public void CreateDefaultProfile(){this.CreateProfile(new string[2]{"CreateProfile","Default"});}
 		public void CreateProfile(string[] values){
 			if(values.Length < 2 || !this.hasGroups){return;}
 			var name = values[1];

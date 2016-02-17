@@ -199,7 +199,7 @@ namespace Zios{
 				string contents = file.GetText();
 				var type = Utility.GetType(contents.Parse("","{"));
 				if(type.IsNull()){continue;}
-				foreach(string line in contents.Split("\n").Skip(1)){
+				foreach(string line in contents.GetLines().Skip(1)){
 					if(line.IsEmpty() || line.ContainsAny("{","}")){continue;}
 					string name = line.Parse("","=");
 					string value = line.Parse("=","");

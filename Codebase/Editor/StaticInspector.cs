@@ -171,7 +171,7 @@ namespace Zios.Editors{
 		}
 		public void DrawValue(string labelText,object value,Accessor accessor=null,int depth=0){
 			if(labelText.Contains("$cache")){return;}
-			labelText = labelText.ToTitle();
+			labelText = labelText.ToTitleCase();
 			if(value is UnityObject){labelText = labelText + " (" + value.GetType().Name + ")";}
 			bool labelDrawn = false;
 			GUIContent label = new GUIContent(labelText);

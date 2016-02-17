@@ -143,6 +143,12 @@ namespace Zios{
 			if(files.Length < 1){return new T[0];}
 			return files.Select(x=>x.GetAsset<T>()).Where(x=>!x.IsNull()).ToArray();
 		}
+		public static FileData Create(string path){
+			File.Create(path).Dispose();
+			var data = new FileData(path.Replace("\\","/"));
+			FileManager.files.AddNew(data.extension).Add(data);
+			return data;
+		}
 		public static void WriteFile(string path,byte[] bytes){
 			FileStream stream = new FileStream(path,FileMode.Create);
 			BinaryWriter file = new BinaryWriter(stream);

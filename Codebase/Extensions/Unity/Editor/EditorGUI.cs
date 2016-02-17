@@ -70,6 +70,13 @@ namespace Zios.Interface{
 		}
 	}
 	public static class EditorGUIExtensionSpecial{
+		public static bool DrawFoldout(this UnityLabel current,Rect area,object key=null,bool indention=false){
+			string name = key.IsNull() ? current + "Foldout" : key.GetHashCode().ToString();
+			bool previous = EditorPrefs.GetBool(name);
+			bool state = EditorGUIExtension.Draw<bool>(()=>EditorGUI.Foldout(area,previous,current),indention);
+			if(previous != state){EditorPrefs.SetBool(name,state);}
+			return state;
+		}
 		//public static void DrawLabel(this string current,Rect area,GUIStyle style=null,bool indention=false){new UnityLabel(current).DrawLabel(area,style,indention);}
 		//public static void DrawLabel(this GUIContent current,Rect area,GUIStyle style=null,bool indention=false){new UnityLabel(current).DrawLabel(area,style,indention);}
 		public static void DrawLabel(this UnityLabel current,Rect area,GUIStyle style=null,bool indention=false){

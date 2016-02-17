@@ -32,7 +32,7 @@ namespace Zios{
 			float z = split[2].ToFloat();
 			return new Vector3(x,y,z);
 		}
-		public static string ToTitle(this string current){
+		public static string ToTitleCase(this string current){
 			string text = Regex.Replace(current,"(\\B[A-Z])"," $1");
 			text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(text);
 			text = text.Replace("3 D","3D").Replace("2 D","2D");
@@ -242,6 +242,9 @@ namespace Zios{
 		//============================
 		// Extension
 		//============================
+		public static string[] GetLines(this string current){
+			return current.Split("\n");
+		}
 		public static string Implode(this string current,string separator=" "){
 			StringBuilder builder = new StringBuilder(current.Length * 2);
 			foreach(char letter in current){

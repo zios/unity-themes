@@ -23,7 +23,7 @@ namespace Zios{
 		[NonSerialized] public List<DataDependency> dependents = new List<DataDependency>();
 		[NonSerialized] public List<string> warnings = new List<string>();
 		public virtual void Awake(){
-			string name = this.GetType().Name.ToTitle();
+			string name = this.GetType().Name.ToTitleCase();
 			this.parentPath = this.gameObject.GetPath();
 			this.path = this.GetPath();
 			this.lastAlias = this.alias = this.alias.SetDefault(name);

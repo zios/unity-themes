@@ -21,7 +21,7 @@ namespace Zios.Actions.EventComponents{
 		public override void Start(){
 			base.Start();
 			if(Application.isPlaying){
-				string triggerName = this.collisionEvent.ToString().ToTitle();
+				string triggerName = this.collisionEvent.ToString().ToTitleCase();
 				foreach(GameObject target in this.target){
 					Event.Add(triggerName,(MethodObject)this.Collision,target);
 					if(triggerName == "On Collision"){

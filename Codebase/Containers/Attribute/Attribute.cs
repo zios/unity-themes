@@ -119,7 +119,7 @@ namespace Zios.Attributes{
 	where DataType : AttributeData<BaseType,AttributeType,DataType>,new(){
 		private BaseType cachedValue;
 		private IEnumerator<BaseType> cachedEnumerator;
-		protected BaseType delayedValue = default(BaseType);
+		public BaseType delayedValue = default(BaseType);
 		public Func<IEnumerator<BaseType>> enumerateMethod;
 		public Func<BaseType> getMethod;
 		public Action<BaseType> setMethod;
