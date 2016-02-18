@@ -50,6 +50,7 @@ namespace Zios.Editors{
 			bool changed = false;
 			bool showAdvanced = EditorPrefs.GetBool("MonoBehaviourEditor-Advanced");
 			bool showInternal = EditorPrefs.GetBool("MonoBehaviourEditor-Internal");
+			bool showDictionary = EditorPrefs.GetBool("MonoBehaviourEditor-Dictionary");
 			EditorGUILayout.BeginVertical();
 			foreach(var property in this.properties){
 				string[] attributes = this.serializedObject.targetObject.ListAttributes(property.name).Select(x=>x.GetType().Name).ToArray();
@@ -106,11 +107,13 @@ namespace Zios.Editors{
 					}
 				}
 			}
-			GUI.enabled = false;
-			foreach(var item in this.dictionaries){
-				item.Value.DrawAuto(item.Key,null,true);
+			if(showDictionary){
+				GUI.enabled = false;
+				foreach(var item in this.dictionaries){
+					item.Value.DrawAuto(item.Key,null,true);
+				}
+				GUI.enabled = true;
 			}
-			GUI.enabled = true;
 			EditorGUILayout.EndVertical();
 			this.EndArea();
 			if(changed){
@@ -244,6 +247,7 @@ namespace Zios.Editors{
 			GenericMenu menu = new GenericMenu();
 			MenuFunction toggleAdvanced = ()=>Utility.ToggleEditorPref("MonoBehaviourEditor-Advanced");
 			MenuFunction toggleInternal = ()=>Utility.ToggleEditorPref("MonoBehaviourEditor-Internal");
+			MenuFunction toggleDictionary = ()=>Utility.ToggleEditorPref("MonoBehaviourEditor-Dictionary");
 			MenuFunction hideAllDefaults = ()=>Utility.ToggleEditorPref("MonoBehaviourEditor-HideAllDefault");
 			MenuFunction hideLocalDefaults = ()=>{
 				this.hideDefault = !this.hideDefault;
@@ -251,6 +255,7 @@ namespace Zios.Editors{
 			};
 			menu.AddItem(new GUIContent("Advanced"),EditorPrefs.GetBool("MonoBehaviourEditor-Advanced"),toggleAdvanced);
 			menu.AddItem(new GUIContent("Internal"),EditorPrefs.GetBool("MonoBehaviourEditor-Internal"),toggleInternal);
+			menu.AddItem(new GUIContent("Dictionary"),EditorPrefs.GetBool("MonoBehaviourEditor-Dictionary"),toggleDictionary);
 			menu.AddSeparator("");
 			menu.AddItem(new GUIContent("Defaults/Hide All"),EditorPrefs.GetBool("MonoBehaviourEditor-HideAllDefault"),hideAllDefaults);
 			menu.AddItem(new GUIContent("Defaults/Hide Local"),this.hideDefault,hideLocalDefaults);

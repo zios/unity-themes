@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 namespace Zios.Inputs{
@@ -20,8 +21,8 @@ namespace Zios.Inputs{
 			var contents = file.GetText().GetLines();
 			foreach(var line in contents){
 				if(line.IsEmpty()){continue;}
-				var instanceName = line.Parse(""," ").ToTitleCase();
-				var profileName = line.Parse(" ").ToTitleCase();
+				var instanceName = line.Parse(""," ");
+				var profileName = line.Parse(" ");
 				var profile = InputManager.instance.profiles.Find(x=>x.name==profileName);
 				InputManager.instance.instanceProfile[instanceName] = profile;
 			}
@@ -48,7 +49,7 @@ namespace Zios.Inputs{
 			base.Awake();
 			this.DefaultRate("Update");
 			this.state.Setup("State",this);
-			this.profile = InputManager.instance.GetInstanceProfile(this.alias.ToTitleCase());
+			this.profile = InputManager.instance.GetInstanceProfile(this);
 			Event.Add("Hold Input",this.HoldInput);
 			Event.Add("Release Input",this.ReleaseInput);
 		}
@@ -65,9 +66,23 @@ namespace Zios.Inputs{
 				InputManager.instance.SelectProfile(this);
 				return;
 			}
+			this.PrepareGamepad();
 			this.PrepareInput();
 			this.CheckInput();
 			this.StepInput();
+		}
+		public void PrepareGamepad(){
+			if(!this.joystickID.IsEmpty()){return;}
+			string gamepad = this.profile.requiredDevices.Find(x=>!x.MatchesAny("Keyboard","Mouse")).Trim();
+			var allGamepads = InputManager.instance.joystickNames;
+			for(int index=0;index<allGamepads.Length;++index){
+				string name = allGamepads[index].Trim();
+				if(name == gamepad){
+					this.joystickID = (index+1).ToString();
+					return;
+				}
+			}
+			this.joystickID = "[None]";
 		}
 		public void PrepareInput(){
 			if(this.actions.Count < 1){
@@ -126,6 +141,8 @@ namespace Zios.Inputs{
 		//===============
 		// Interface
 		//===============
+		public float GetIntensity(string name){return this.intensity.Get(name);}
+		public bool GetHeld(string name){return this.active.Get(name);}
 		public void HoldInput(string name){this.active[name] = true;}
 		public void ReleaseInput(string name){this.active[name] = false;}
 	}

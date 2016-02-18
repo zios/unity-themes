@@ -39,7 +39,7 @@ namespace Zios{
 			return text;
 		}
 		public static string ToPascalCase(this string current){
-			return current.Remove(" ").Capitalize();
+			return current.ToTitleCase().Remove(" ");
 		}
 		public static string ToCamelCase(this string current){
 			return current[0].ToString().ToLower() + current.Substring(1).Remove(" ");

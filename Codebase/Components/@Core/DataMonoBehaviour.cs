@@ -18,6 +18,7 @@ namespace Zios{
 		[Internal] public string path;
 		public string alias;
 		private string lastAlias;
+		private bool alwaysDrawInspector;
 		protected bool autoRename = true;
 		protected bool setup;
 		[NonSerialized] public List<DataDependency> dependents = new List<DataDependency>();
@@ -43,6 +44,11 @@ namespace Zios{
 			this.setup = true;
 			if(Application.isEditor){
 				this.CheckDependents();
+			}
+		}
+		public virtual void OnGUI(){
+			if(this.alwaysDrawInspector){
+				Utility.RepaintInspectors();
 			}
 		}
 		//===============
@@ -238,6 +244,8 @@ namespace Zios{
 		public void MoveTop(){this.MoveToTop();}
 		[ContextMenu("Apply Prefab")]
 		public void ApplyPrefab(){DataMonoBehaviour.ApplyPrefabTarget(this.gameObject);}
+		[ContextMenu("Always Draw Inspector")]
+		public void AlwaysDraw(){this.alwaysDrawInspector = !this.alwaysDrawInspector;}
 		#endif
 	}
 	public class DataDependency{

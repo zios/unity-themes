@@ -7,6 +7,12 @@ namespace Zios{
 		public static Dictionary<TKey,TValue> Copy<TKey,TValue>(this Dictionary<TKey,TValue> current){
 			return new Dictionary<TKey,TValue>(current);
 		}
+		public static TValue Get<TKey,TValue>(this IDictionary<TKey,TValue> current,TKey key,TValue value=default(TValue)) where TValue : new(){
+			if(!current.ContainsKey(key)){
+				return value;
+			}
+			return current[key];
+		}
 		public static TValue AddNew<TKey,TValue>(this IDictionary<TKey,TValue> current,TKey key) where TValue : new(){
 			if(!current.ContainsKey(key)){
 				current[key] = new TValue();

@@ -1,5 +1,4 @@
 using System;
-using System.IO;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
@@ -257,7 +256,8 @@ namespace Zios.Inputs{
 		//===============
 		// Interface
 		//===============
-		public InputProfile GetInstanceProfile(string name){
+		public InputProfile GetInstanceProfile(InputInstance instance){
+			string name = instance.alias.ToPascalCase();
 			if(this.instanceProfile.ContainsKey(name)){
 				return this.instanceProfile[name];
 			}
@@ -273,18 +273,9 @@ namespace Zios.Inputs{
 					return;
 				}
 				this.activeProfile = this.profiles[0];
+				return;
 			}
-			else{
-				instance.Save();
-				string gamepad = this.activeProfile.requiredDevices.Find(x=>!x.MatchesAny("Keyboard","Mouse")).Trim();
-				for(int index=0;index<this.joystickNames.Length;++index){
-					string name = this.joystickNames[index].Trim();
-					if(name == gamepad){
-						instance.joystickID = (index+1).ToString();
-					}
-				}
-				
-			}
+			instance.Save();
 		}
 		public void ShowProfiles(){
 			this.activeProfile = null;

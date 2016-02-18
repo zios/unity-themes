@@ -496,6 +496,10 @@ namespace Zios.Attributes{
 			return this.GetFormulaValue();
 		}
 		public virtual void Set(BaseType value){
+			if(!this.isSetup){
+				this.delayedValue = value;
+				return;
+			}
 			this.isDefault = false;
 			if(!this.canCache || !value.Equals(this.cachedValue)){
 				this.cachedValue = value;
