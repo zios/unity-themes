@@ -261,16 +261,14 @@ namespace Zios{
 			if(startIndex != -1){
 				if(end == ""){return current.Substring(startIndex);}
 				int endIndex = current.IndexOf(end,startIndex + 1,ignoreCase);
-				if(endIndex != -1){
-					while(repeatEnd > 1){
-						if(endIndex == -1){return "";}
-						endIndex = current.IndexOf(end,endIndex + 1,ignoreCase);
-						--repeatEnd;
-					}
-					int distance = endIndex - startIndex + end.Length;
-					return current.Substring(startIndex,distance);
+				if(endIndex == -1){endIndex = current.Length-1;}
+				while(repeatEnd > 1){
+					if(endIndex == -1){return "";}
+					endIndex = current.IndexOf(end,endIndex + 1,ignoreCase);
+					--repeatEnd;
 				}
-				return "";
+				int distance = endIndex - startIndex + end.Length;
+				return current.Substring(startIndex,distance);
 			}
 			return "";
 		}

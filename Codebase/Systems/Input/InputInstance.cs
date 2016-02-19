@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,8 +11,8 @@ namespace Zios.Inputs{
 		public Dictionary<string,float> maxIntensity = new Dictionary<string,float>();
 		public Dictionary<string,InputAction> actions = new Dictionary<string,InputAction>();
 		public bool manuallyControlled;
-		[Internal] public AttributeInt state = 0;
-		[Internal] public InputProfile profile;
+		[NonSerialized] public AttributeInt state = 0;
+		[NonSerialized] public InputProfile profile;
 		[Internal] public string joystickID;
 		//===============
 		// Storage
@@ -28,17 +29,18 @@ namespace Zios.Inputs{
 			}
 		}
 		public void Save(){
-			if(this.profile.IsNull() || this.profile.name.IsEmpty()){return;}
+			if(this.profile.IsNull() || this.profile.name.IsEmpty() || this.profile.mappings.Count < 1){return;}
 			var file = FileManager.Find("InputDefaults.cfg",true,false) ?? FileManager.Create("InputDefaults.cfg");
 			var contents = file.GetText();
 			var alias = this.alias.ToPascalCase();
 			var profile = this.profile.name.ToPascalCase();
-			if(contents.Contains(this.alias)){
+			var phrase = alias+" "+profile+"\r\n";
+			if(contents.Contains(alias)){
 				var existing = contents.Cut(alias,"\n");
-				contents = contents.Replace(existing,alias+" "+profile+"\n");
+				contents = contents.Replace(existing,phrase);
 			}
 			else{
-				contents += alias+" "+profile+"\r\n";
+				contents += phrase;
 			}
 			file.WriteText(contents);
 		}
@@ -52,6 +54,11 @@ namespace Zios.Inputs{
 			this.profile = InputManager.instance.GetInstanceProfile(this);
 			Event.Add("Hold Input",this.HoldInput);
 			Event.Add("Release Input",this.ReleaseInput);
+			if(Application.isPlaying){
+				if(this.profile.IsNull() || this.profile.name.IsEmpty()){
+					InputManager.instance.SelectProfile(this);
+				}
+			}
 		}
 		//===============
 		// General
@@ -62,22 +69,20 @@ namespace Zios.Inputs{
 				this.StepInput();
 				return;
 			}
-			if(this.profile.IsNull() || this.profile.name.IsEmpty()){
-				InputManager.instance.SelectProfile(this);
-				return;
+			if(!this.profile.IsNull()){
+				this.PrepareGamepad();
+				this.PrepareInput();
+				this.CheckInput();
+				this.StepInput();
 			}
-			this.PrepareGamepad();
-			this.PrepareInput();
-			this.CheckInput();
-			this.StepInput();
 		}
 		public void PrepareGamepad(){
 			if(!this.joystickID.IsEmpty()){return;}
-			string gamepad = this.profile.requiredDevices.Find(x=>!x.MatchesAny("Keyboard","Mouse")).Trim();
+			string gamepad = this.profile.requiredDevices.Find(x=>!x.MatchesAny("Keyboard","Mouse")) ?? "";
 			var allGamepads = InputManager.instance.joystickNames;
 			for(int index=0;index<allGamepads.Length;++index){
 				string name = allGamepads[index].Trim();
-				if(name == gamepad){
+				if(name == gamepad.Trim()){
 					this.joystickID = (index+1).ToString();
 					return;
 				}
@@ -98,7 +103,7 @@ namespace Zios.Inputs{
 			}
 		}
 		public void CheckInput(){
-			foreach(var item in profile.mappings){
+			foreach(var item in this.profile.mappings){
 				string action = item.Key;
 				string input = item.Value.Replace("*",this.joystickID);
 				this.active[action] = false;
@@ -132,6 +137,8 @@ namespace Zios.Inputs{
 			}
 		}
 		public void StepInput(){
+			//int packed = Store.PackInts(this.active.Values.Select(x=>x?1:0).ToArray());
+			//this.state.Set(packed);
 			foreach(var item in this.active){
 				var action = item.Key;
 				float goal = item.Value ? this.maxIntensity[action] : 0;

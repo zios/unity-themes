@@ -279,6 +279,11 @@ namespace Zios.Events{
 			}
 			Utility.DelayCall(Event.OnEventsChanged);
 		}
+		public static void RemoveAll(string name,params object[] targets){
+			foreach(var target in targets){
+				Event.listeners.Where(x=>x.target==target&&x.name== name).ToList().ForEach(x=>x.Remove());
+			}
+		}
 		public static void RemoveAll(params object[] targets){
 			if(Event.disabled.Has("Add")){return;}
 			targets = Event.VerifyAll(targets);
@@ -360,7 +365,10 @@ namespace Zios.Events{
 			if(Event.disabled.Has("Call")){return;}
 			Event.Call(Event.Verify(),name,values);
 		}
-		public static void Call(object target,string name,object[] values){
+		public static void Call(object target,string name,params object[] values){
+			if(values.Length > 0){
+				Debug.Log(name + " -- " + values.Length + " -- " + values[0].GetType());
+			}
 			if(Event.disabled.Has("Call")){return;}
 			if(Event.stack.Count > 1000){
 				Debug.LogWarning("[Events] : Event stack overflow.");

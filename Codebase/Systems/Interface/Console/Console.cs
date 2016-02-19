@@ -180,6 +180,7 @@ namespace Zios.Interface{
 		private static bool disableLogging;
 		private static bool mouseHeld;
 		private static bool hidden;
+		private static bool moveCursor;
 		private static string[] help = new string[]{
 			"^3consoleFontSize ^9<^7number^9> :^10 The font size of the log.",
 			"^3consoleSize ^9<^7decimal^9> :^10 The height percent that the console is visible.",
@@ -595,6 +596,7 @@ namespace Zios.Interface{
 				else{
 					Console.inputText = Console.autocomplete[0];
 				}
+				Console.moveCursor = true;
 				Console.logPosition = !Console.mouseHeld ? 1.0f : lastPosition / Console.log.Count;
 				Console.autocomplete.Clear();
 			}
@@ -750,6 +752,10 @@ namespace Zios.Interface{
 			}
 			GUI.SetNextControlName("inputText");
 			Console.inputText = GUI.TextField(inputBounds,Console.inputText);
+			if(Console.moveCursor){
+				GUIUtility.GetStateObject(typeof(TextEditor),GUIUtility.keyboardControl).As<TextEditor>().MoveTextEnd();
+				Console.moveCursor = false;
+			}
 		}
 		public static void ManageState(){
 			float slideStep = Console.instance.speed * Time.deltaTime;

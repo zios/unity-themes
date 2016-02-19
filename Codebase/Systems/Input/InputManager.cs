@@ -43,15 +43,14 @@ namespace Zios.Inputs{
 		[Internal] public List<InputProfile> profiles = new List<InputProfile>();
 		[Internal] public string[] joystickNames = new string[0];
 		[Internal] public GameObject uiObject;
+		[NonSerialized] public InputUIState uiState;
 		private Dictionary<string,bool> joystickAxis = new Dictionary<string,bool>();
-		private InputInstance activeInstance;
+		private string selectionHeader;
 		private InputProfile activeProfile;
 		private string lastInput;
 		private float lastInputTime;
-		private InputUIState uiState;
 		private int uiGroupIndex;
 		private int uiIndex;
-		private bool hasGroups;
 		//===============
 		// Unity
 		//===============
@@ -65,16 +64,16 @@ namespace Zios.Inputs{
 			InputInstance.Load();
 			InputGroup.Load();
 			InputGroup.Setup();
-			this.hasGroups = this.groups.Count > 0 && this.groups[0].actions.Count > 0;
-			this.DetectGamepads();
-			//Event.Call("Add Console Keyword","createProfile",this.CreateProfile);
 			Console.AddKeyword("showProfiles",this.ShowProfiles);
+			Console.AddKeyword("assignProfile",this.AssignProfile);
 			Console.AddKeyword("createProfile",this.CreateProfile);
 			Console.AddKeyword("editProfile",this.EditProfile);
 			Console.AddKeyword("removeProfile",this.RemoveProfile);
+			Event.Register("On Profile Selected",this);
+			Event.Register("On Profile Edited",this);
 			Event.Add("On Hierarchy Changed",InputGroup.Save);
 			Event.Add("On Enter Play",InputGroup.Save);
-			if(this.profiles.Count < 1){Utility.DelayCall(this.CreateDefaultProfile,0.5f);}
+			this.DetectGamepads();
 		}
 		public void Update(){
 			this.DetectMouse();
@@ -98,6 +97,12 @@ namespace Zios.Inputs{
 			Locate.Find("@Main/InputUI/ProfileSelect/").SetActive(false);
 			this.DrawProfileSelect();
 			this.DrawProfileEdit();
+			if(this.uiState != InputUIState.None){
+				bool hitEscape = UnityEvent.current.keyCode == KeyCode.Escape;
+				if(UnityEvent.current.type == EventType.KeyDown && hitEscape){
+					this.uiState = InputUIState.None;
+				}
+			}
 		}
 		//===============
 		// GUI
@@ -113,10 +118,13 @@ namespace Zios.Inputs{
 				var area = new Rect((Screen.width/2)-buttonWidth/2,10,buttonWidth,buttonHeight);
 				GUI.skin = FileManager.GetAsset<GUISkin>("Gentleface-Light.guiskin");
 				var style = GUI.skin.button.Font("Bombardier.otf").FontSize((int)(buttonHeight*0.7f));
+				GUI.Label(area,this.selectionHeader,style.Background(""));
+				area = area.AddY(buttonHeight+8);
 				foreach(var profile in this.profiles){
 					if(GUI.Button(area,profile.name,style)){
 						this.activeProfile = profile;
 						this.uiState = InputUIState.None;
+						this.CallEvent("On Profile Selected");
 					}
 					area = area.AddY(buttonHeight+5);
 				}
@@ -161,6 +169,7 @@ namespace Zios.Inputs{
 							profile.Save();
 							this.activeProfile = null;
 							this.uiState = InputUIState.None;
+							this.CallEvent("On Profile Edited");
 						}
 					}
 				}
@@ -180,7 +189,6 @@ namespace Zios.Inputs{
 							if(axisName == this.lastInput){continue;}
 							if(this.joystickAxis.AddNew(axisName)){continue;}
 							this.joystickAxis[axisName] = true;
-							//Debug.Log("[InputManager] Joystick Axis -- " + axisName);
 							this.lastInput = axisName;
 							this.lastInputTime = Time.realtimeSinceStartup;
 							continue;
@@ -195,7 +203,6 @@ namespace Zios.Inputs{
 						if(keyName.Contains("JoystickButton")){continue;}
 						if(keyName == this.lastInput){continue;}
 						if(Input.GetKeyDown(keyCode)){
-							//Debug.Log("[InputManager] Button press -- " + keyCode);
 							this.lastInput = keyCode.ToName();
 							this.lastInputTime = Time.realtimeSinceStartup;
 							break;
@@ -264,54 +271,80 @@ namespace Zios.Inputs{
 			return null;
 		}
 		public void SelectProfile(InputInstance instance){
-			if(this.profiles.Count > 0 && !this.activeInstance.IsNull() && this.activeInstance != instance){return;}
-			this.activeInstance = instance;
-			instance.profile = this.activeProfile;
-			if(instance.profile.IsNull()){
-				if(this.profiles.Count > 1){
-					this.ShowProfiles();
-					return;
-				}
-				this.activeProfile = this.profiles[0];
+			if(instance.IsNull()){return;}
+			if(this.profiles.Count < 1){
+				this.CreateProfile("Default");
+				Event.AddLimited("On Profile Edited",()=>this.SelectProfile(instance),1,this);
 				return;
 			}
-			instance.Save();
+			if(this.uiState == InputUIState.SelectProfile){
+				Event.AddLimited("On Profile Selected",()=>this.SelectProfile(instance),1,this);
+				return;
+			}
+			this.ShowProfiles();
+			this.selectionHeader = instance.alias;
+			Method selected = ()=>{
+				instance.joystickID = "";
+				instance.profile = this.activeProfile;
+				instance.Save();
+			};
+			Event.AddLimited("On Profile Selected",selected,1,this);
 		}
 		public void ShowProfiles(){
 			this.activeProfile = null;
+			this.selectionHeader = "";
 			this.uiState = InputUIState.SelectProfile;
 		}
-		public void CreateDefaultProfile(){this.CreateProfile(new string[2]{"CreateProfile","Default"});}
-		public void CreateProfile(string[] values){
-			if(values.Length < 2 || !this.hasGroups){return;}
-			var name = values[1];
-			int index = 2;
-			while(this.profiles.Exists(x=>x.name==name)){
-				name = "Profile"+index;
-				index += 1;
+		public void RemoveProfile(string name){
+			if(FileManager.Find(name+".profile").IsNull()){
+				this.ShowProfiles();
+				this.selectionHeader = "Remove Profile";
+				Event.AddLimited("On Profile Selected",()=>this.RemoveProfile(this.activeProfile.name),1,this);
+				return;
 			}
-			var newProfile = this.profiles.AddNew(new InputProfile(name));
-			this.EditProfile(newProfile);
+			FileManager.DeleteFile(name+".profile");
 		}
-		public void EditProfile(InputProfile profile){
-			if(!this.hasGroups){return;}
+		public void EditProfile(string name){
 			this.lastInput = "";
 			this.uiState = InputUIState.EditProfile;
 			this.uiGroupIndex = 0;
 			this.uiIndex = 0;
-			this.activeProfile = profile;
-		}
-		public void EditProfile(string[] values){
-			if(!this.hasGroups){return;}
-			if(values.Length > 1){
-				var profile = this.profiles.Find(x=>x.name==values[1]);
-				if(profile.IsNull()){
-					Console.AddLog("[InputManager] : Profile not found -- " + values[1]);
-					return;
-				}
-				this.EditProfile(profile);
+			this.activeProfile = this.profiles.Find(x=>x.name==name);
+			if(this.activeProfile.IsNull()){
+				this.ShowProfiles();
+				this.selectionHeader = "Edit Profile";
+				Event.AddLimited("On Profile Selected",()=>this.EditProfile(this.activeProfile.name),1,this);
 			}
 		}
-		public void RemoveProfile(string[] values){}
+		public void CreateProfile(string name){
+			int index = 0;
+			while(this.profiles.Exists(x=>x.name==name)){
+				name = "Profile"+index;
+				index += 1;
+			}
+			this.profiles.AddNew(new InputProfile(name));
+			this.EditProfile(name);
+		}
+		//===============
+		// Console
+		//===============
+		public void CreateProfile(string[] values){
+			var profileName = values.Length > 1 ? values[1] : "Default";
+			this.CreateProfile(profileName);
+		}
+		public void EditProfile(string[] values){
+			var profileName = values.Length > 1 ? values[1] : "#%^@&$";
+			this.EditProfile(profileName);
+		}
+		public void AssignProfile(string[] values){
+			if(values.Length < 2){return;}
+			var inputInstances = Locate.GetSceneComponents<InputInstance>().ToList();
+			var instance = inputInstances.Find(x=>x.alias==values[1]);		
+			this.SelectProfile(instance);
+		}
+		public void RemoveProfile(string[] values){
+			var profileName = values.Length > 1 ? values[1] : "#%^@&$";
+			this.RemoveProfile(profileName);
+		}
 	}
 }

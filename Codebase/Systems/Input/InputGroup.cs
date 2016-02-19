@@ -21,6 +21,7 @@ namespace Zios.Inputs{
 			action.transition.Setup("InputManager/"+action.name+"/",InputManager.instance);
 		}
 		public static void Save(){
+			if(InputManager.instance.groups.Count < 1){return;}
 			using(var file = new StreamWriter("InputControls.cfg",false)){
 				foreach(var group in InputManager.instance.groups){
 					foreach(var action in group.actions){

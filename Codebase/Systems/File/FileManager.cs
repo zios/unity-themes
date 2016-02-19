@@ -157,6 +157,10 @@ namespace Zios{
 			stream.Close();
 		}
 		public static void DeleteFile(string path){
+			if(!File.Exists(path)){
+				var file = FileManager.Find(path);
+				path = !file.IsNull() ? file.path : path;
+			}
 			File.Delete(path);
 		}
 	}
