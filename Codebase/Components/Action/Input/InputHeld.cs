@@ -8,9 +8,9 @@ namespace Zios.Actions.InputComponents{
 	public class InputHeld : StateMonoBehaviour{
 		[Advanced] public InputRange requirement;
 		public AttributeGameObject target;
+		[InputName] public AttributeString inputName = "";
 		[Advanced] public AttributeBool heldDuringIntensity = true;
 		[Internal] public bool held;
-		[Internal] public AttributeString inputName = "Button1";
 		[Internal] public AttributeFloat intensity = 0;
 		[NonSerialized] public InputInstance instance;
 		private bool lastHeld;

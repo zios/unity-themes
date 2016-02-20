@@ -1,5 +1,5 @@
 using System;
-namespace Zios{
+namespace Zios.Inputs{
 	public enum InputRange{Any,Zero,Negative,Positive}
 	public static class InputState{
 		[NonSerialized] public static bool disabled;

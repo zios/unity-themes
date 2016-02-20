@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,13 @@ namespace Zios{
 				return value;
 			}
 			return current[key];
+		}
+		public static void SetValues<TKey,TValue>(this IDictionary<TKey,TValue> current,IList<TValue> values) where TValue : new(){
+			int index = 0;
+			foreach(var key in current.Keys.ToList()){
+				current[key] = values[index];
+				++index;
+			}
 		}
 		public static TValue AddNew<TKey,TValue>(this IDictionary<TKey,TValue> current,TKey key) where TValue : new(){
 			if(!current.ContainsKey(key)){

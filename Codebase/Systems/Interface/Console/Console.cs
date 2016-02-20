@@ -9,6 +9,7 @@ using UnityInput = UnityEngine.Input;
 namespace Zios.Interface{
 	using Containers;
 	using Events;
+	using Inputs;
 	public delegate void ConsoleMethod(string[] values);
 	public delegate void ConsoleMethodFull(string[] values,bool help);
 	public class ConsoleCallback{

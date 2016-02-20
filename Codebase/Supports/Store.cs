@@ -2,6 +2,24 @@ using System;
 using System.Collections.Generic;
 namespace Zios{
 	public static class Store{
+        public static int PackBools(params bool[] values){
+            int packed = 0;
+            int slot = 0;
+            for(int index=values.Length-1;index>=0;--index){
+                packed |= (values[slot] ? 1 : 0) << index;
+                ++slot;
+            }
+            return packed;
+        }
+		public static bool[] UnpackBools(int amount,int value){
+			List<bool> unpacked = new List<bool>();
+			for(int index=amount-1;index>=0;--index){
+				int mask = 1<<index;
+				bool isActive = (value & mask) == mask;
+				unpacked.Add(isActive);
+			}
+			return unpacked.ToArray();
+		}
 		public static float PackFloats(params float[] values){
 			int packed = 0;
 			int amount = values.Length;

@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,14 +10,14 @@ namespace Zios.Inputs{
 		public Dictionary<string,float> maxIntensity = new Dictionary<string,float>();
 		public Dictionary<string,InputAction> actions = new Dictionary<string,InputAction>();
 		public bool manuallyControlled;
-		[NonSerialized] public AttributeInt state = 0;
-		[NonSerialized] public InputProfile profile;
+		[Internal] public AttributeInt state = -1;
+		[Internal] public InputProfile profile;
 		[Internal] public string joystickID;
 		//===============
 		// Storage
 		//===============
 		public static void Load(){
-			var file = FileManager.Find("InputDefaults.cfg",true,false) ?? FileManager.Create("InputDefaults.cfg");
+			var file = FileManager.Find("InputDefaults.cfg",true,false) ?? FileManager.CreateFile("InputDefaults.cfg");
 			var contents = file.GetText().GetLines();
 			foreach(var line in contents){
 				if(line.IsEmpty()){continue;}
@@ -30,7 +29,7 @@ namespace Zios.Inputs{
 		}
 		public void Save(){
 			if(this.profile.IsNull() || this.profile.name.IsEmpty() || this.profile.mappings.Count < 1){return;}
-			var file = FileManager.Find("InputDefaults.cfg",true,false) ?? FileManager.Create("InputDefaults.cfg");
+			var file = FileManager.Find("InputDefaults.cfg",true,false) ?? FileManager.CreateFile("InputDefaults.cfg");
 			var contents = file.GetText();
 			var alias = this.alias.ToPascalCase();
 			var profile = this.profile.name.ToPascalCase();
@@ -52,8 +51,8 @@ namespace Zios.Inputs{
 			this.DefaultRate("Update");
 			this.state.Setup("State",this);
 			this.profile = InputManager.instance.GetInstanceProfile(this);
-			Event.Add("Hold Input",this.HoldInput);
-			Event.Add("Release Input",this.ReleaseInput);
+			Event.Add("Hold Input",this.HoldInput,this);
+			Event.Add("Release Input",this.ReleaseInput,this);
 			if(Application.isPlaying){
 				if(this.profile.IsNull() || this.profile.name.IsEmpty()){
 					InputManager.instance.SelectProfile(this);
@@ -65,11 +64,15 @@ namespace Zios.Inputs{
 		//===============
 		public override void Step(){
 			if(this.manuallyControlled){
+				if(this.state != -1){
+					this.active.SetValues(Store.UnpackBools(this.active.Count,this.state));
+					this.state = -1;
+				}
 				this.PrepareInput();
 				this.StepInput();
 				return;
 			}
-			if(!this.profile.IsNull()){
+			if(!this.profile.IsNull() && !this.profile.name.IsEmpty()){
 				this.PrepareGamepad();
 				this.PrepareInput();
 				this.CheckInput();
@@ -137,8 +140,8 @@ namespace Zios.Inputs{
 			}
 		}
 		public void StepInput(){
-			//int packed = Store.PackInts(this.active.Values.Select(x=>x?1:0).ToArray());
-			//this.state.Set(packed);
+			int packed = Store.PackBools(this.active.Values.ToArray());
+			this.state.Set(packed);
 			foreach(var item in this.active){
 				var action = item.Key;
 				float goal = item.Value ? this.maxIntensity[action] : 0;
