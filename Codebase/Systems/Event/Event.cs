@@ -366,9 +366,6 @@ namespace Zios.Events{
 			Event.Call(Event.Verify(),name,values);
 		}
 		public static void Call(object target,string name,params object[] values){
-			if(values.Length > 0){
-				Debug.Log(name + " -- " + values.Length + " -- " + values[0].GetType());
-			}
 			if(Event.disabled.Has("Call")){return;}
 			if(Event.stack.Count > 1000){
 				Debug.LogWarning("[Events] : Event stack overflow.");

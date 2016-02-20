@@ -1,10 +1,11 @@
+using System;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 namespace Zios.Editors{
 	using Events;
 	public static class MaterialCleaner{
-		public static bool changes;
+		[NonSerialized] public static bool changes;
 		[MenuItem ("Zios/Process/Material/Remove Unused Data (All)")]
 		public static void Clean(){MaterialCleaner.Clean(null);}
 		public static void Clean(FileData[] materials){

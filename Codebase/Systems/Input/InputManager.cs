@@ -339,7 +339,7 @@ namespace Zios.Inputs{
 		public void AssignProfile(string[] values){
 			if(values.Length < 2){return;}
 			var inputInstances = Locate.GetSceneComponents<InputInstance>().ToList();
-			var instance = inputInstances.Find(x=>x.alias==values[1]);		
+			var instance = inputInstances.Find(x=>x.alias==values[1]);
 			this.SelectProfile(instance);
 		}
 		public void RemoveProfile(string[] values){

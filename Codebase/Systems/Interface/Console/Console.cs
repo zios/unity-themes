@@ -691,10 +691,14 @@ namespace Zios.Interface{
 			if(UnityEvent.current.type == EventType.Repaint){
 				var backgroundTexture = Console.instance.background.GetTexture("textureMap");
 				var inputTexture = Console.instance.inputBackground.GetTexture("textureMap");
-				backgroundTexture.wrapMode = TextureWrapMode.Repeat;
-				backgroundTexture.filterMode = FilterMode.Bilinear;
-				inputTexture.wrapMode = TextureWrapMode.Repeat;
-				inputTexture.filterMode = FilterMode.Bilinear;
+				if(!backgroundTexture.IsNull()){
+					backgroundTexture.wrapMode = TextureWrapMode.Repeat;
+					backgroundTexture.filterMode = FilterMode.Bilinear;
+				}
+				if(!inputTexture.IsNull()){
+					inputTexture.wrapMode = TextureWrapMode.Repeat;
+					inputTexture.filterMode = FilterMode.Bilinear;
+				}
 				Graphics.DrawTexture(consoleBounds,Texture2D.whiteTexture,Console.instance.background);
 				Graphics.DrawTexture(inputBounds,Texture2D.whiteTexture,Console.instance.inputBackground);
 				Graphics.DrawTexture(inputArrowBounds,Texture2D.whiteTexture,Console.instance.textArrow);
