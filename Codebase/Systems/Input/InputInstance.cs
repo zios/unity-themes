@@ -55,7 +55,7 @@ namespace Zios.Inputs{
 			Event.Add("Release Input",this.ReleaseInput,this);
 			if(Application.isPlaying){
 				if(this.profile.IsNull() || this.profile.name.IsEmpty()){
-					InputManager.instance.SelectProfile(this);
+					Utility.DelayCall(()=>InputManager.instance.SelectProfile(this),0.1f);
 				}
 			}
 		}
