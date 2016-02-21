@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
@@ -124,7 +125,7 @@ namespace Zios.Inputs{
 					if(GUI.Button(area,profile.name,style)){
 						this.activeProfile = profile;
 						this.uiState = InputUIState.None;
-						this.CallEvent("On Profile Selected");
+						this.DelayEvent("On Profile Selected",0);
 					}
 					area = area.AddY(buttonHeight+5);
 				}
@@ -169,7 +170,7 @@ namespace Zios.Inputs{
 							profile.Save();
 							this.activeProfile = null;
 							this.uiState = InputUIState.None;
-							this.CallEvent("On Profile Edited");
+							this.DelayEvent("On Profile Edited",0);
 						}
 					}
 				}
@@ -284,8 +285,10 @@ namespace Zios.Inputs{
 			this.ShowProfiles();
 			this.selectionHeader = instance.alias;
 			Method selected = ()=>{
+				this.instanceProfile[instance.name] = this.activeProfile;
 				instance.joystickID = "";
 				instance.profile = this.activeProfile;
+				instance.actions.Clear();
 				instance.Save();
 			};
 			Event.AddLimited("On Profile Selected",selected,1,this);
@@ -293,16 +296,24 @@ namespace Zios.Inputs{
 		public void ShowProfiles(){
 			this.activeProfile = null;
 			this.selectionHeader = "";
+			this.profiles.RemoveAll(x=>!File.Exists(x.name+".profile"));
 			this.uiState = InputUIState.SelectProfile;
 		}
 		public void RemoveProfile(string name){
-			if(FileManager.Find(name+".profile").IsNull()){
+			if(FileManager.Find(name+".profile",true,false).IsNull()){
 				this.ShowProfiles();
 				this.selectionHeader = "Remove Profile";
 				Event.AddLimited("On Profile Selected",()=>this.RemoveProfile(this.activeProfile.name),1,this);
 				return;
 			}
+			this.profiles.RemoveAll(x=>x.name==name);
 			FileManager.DeleteFile(name+".profile");
+			foreach(var instance in Locate.GetSceneComponents<InputInstance>()){
+				if(!instance.profile.IsNull() && instance.profile.name == name){
+					this.instanceProfile.Remove(instance.alias);
+					InputManager.instance.SelectProfile(instance);
+				}
+			}
 		}
 		public void EditProfile(string name){
 			this.lastInput = "";

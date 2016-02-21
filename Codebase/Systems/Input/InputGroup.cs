@@ -22,28 +22,30 @@ namespace Zios.Inputs{
 		}
 		public static void Save(){
 			if(InputManager.instance.groups.Count < 1){return;}
-			using(var file = new StreamWriter("InputControls.cfg",false)){
-				foreach(var group in InputManager.instance.groups){
-					foreach(var action in group.actions){
-						var helpPath = FileManager.GetPath(action.helpImage);
-						file.WriteLine("["+group.name.ToPascalCase()+"-"+action.name.ToPascalCase()+"]");
-						if(!helpPath.IsEmpty()){file.WriteLine("HelpImage " + helpPath);}
-						var transition = action.transition;
-						if(transition.time.Get() != 0.5f){file.WriteLine("Transition-Time " + transition.time.Get());}
-						if(transition.speed.Get() != 3){file.WriteLine("Transition-Speed " + transition.speed.Get());}
-						if(transition.acceleration.Serialize() != "0-0-0-0|1-1-0-0"){file.WriteLine("Transition-Acceleration " + transition.acceleration.Serialize());}
-						if(transition.deceleration.Serialize() != "1-1-0-0|1-1-0-0"){file.WriteLine("Transition-Deceleration " + transition.deceleration.Serialize());}
-					}
+			var contents = "";
+			var file = FileManager.Find("InputControls.cfg",true,false) ?? FileManager.CreateFile("InputControls.cfg");
+			foreach(var group in InputManager.instance.groups){
+				foreach(var action in group.actions){
+					var helpPath = FileManager.GetPath(action.helpImage);
+					contents = contents.AddLine("["+group.name.ToPascalCase()+"-"+action.name.ToPascalCase()+"]");
+					if(!helpPath.IsEmpty()){contents = contents.AddLine("HelpImage " + helpPath);}
+					var transition = action.transition;
+					if(transition.time.Get() != 0.5f){contents = contents.AddLine("Transition-Time " + transition.time.Get());}
+					if(transition.speed.Get() != 3){contents = contents.AddLine("Transition-Speed " + transition.speed.Get());}
+					if(transition.acceleration.Serialize() != "0-0-0-0|1-1-0-0"){contents = contents.AddLine("Transition-Acceleration " + transition.acceleration.Serialize());}
+					if(transition.acceleration.Serialize() != "0-0-0-0|1-1-0-0"){contents = contents.AddLine("Transition-Acceleration " + transition.acceleration.Serialize());}
+					if(transition.deceleration.Serialize() != "1-1-0-0|1-1-0-0"){contents = contents.AddLine("Transition-Deceleration " + transition.deceleration.Serialize());}
 				}
 			}
+			file.WriteText(contents);
 		}
 		public static void Load(){
 			if(!Application.isEditor){return;}
-			var settings = FileManager.Find("InputControls.cfg",true,false);
-			if(settings.IsNull()){return;}
+			var file = FileManager.Find("InputControls.cfg",true,false) ?? FileManager.CreateFile("InputControls.cfg");
+			if(file.IsNull()){return;}
 			string group = "";
 			string action = "";
-			var text = settings.GetText().GetLines();
+			var text = file.GetText().GetLines();
 			foreach(var line in text){
 				if(line.IsEmpty()){continue;}
 				if(line.ContainsAll("[","-")){

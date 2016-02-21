@@ -1,6 +1,6 @@
 using System;
-using System.IO;
 using System.Collections.Generic;
+using UnityEngine;
 namespace Zios.Inputs{
 	using Containers;
 	[Serializable]
@@ -10,20 +10,21 @@ namespace Zios.Inputs{
 		public StringContainer mappings = new StringContainer();
 		public InputProfile(string name){this.name = name;}
 		public void Save(){
-			using(var file = new StreamWriter(this.name+".profile",false)){
-				file.WriteLine("[Input-Devices]");
-				this.requiredDevices.ForEach(x=>file.WriteLine(x));
-				var activeGroup = "";
-				foreach(var item in this.mappings){
-					var name = item.Key.Split("-");
-					var groupName = name[0];
-					if(activeGroup != groupName){
-						activeGroup = groupName;
-						file.WriteLine("[InputGroup-"+groupName+"]");
-					}
-					file.WriteLine(name[1] + " " + item.Value);
+			var contents = "";
+			var file = FileManager.Find(this.name+".profile",true,false) ?? FileManager.CreateFile(this.name+".profile");
+			contents = contents.AddLine("[Input-Devices]");
+			this.requiredDevices.ForEach(x=>contents = contents.AddLine(x));
+			var activeGroup = "";
+			foreach(var item in this.mappings){
+				var name = item.Key.Split("-");
+				var groupName = name[0];
+				if(activeGroup != groupName){
+					activeGroup = groupName;
+					contents = contents.AddLine("[InputGroup-"+groupName+"]");
 				}
+				contents = contents.AddLine(name[1] + " " + item.Value);
 			}
+			file.WriteText(contents);
 		}
 		public static void Load(){
 			foreach(var file in FileManager.FindAll("*.profile",true,false)){

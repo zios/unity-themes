@@ -139,7 +139,7 @@ namespace Zios{
 			this.tabs = 0;
 			this.contents.Clear();
 			var file = FileManager.Find(type.Name+".cs",true,false);
-			string path = file != null ? file.folder+"/" : this.path;
+			string path = file != null ? file.directory+"/" : this.path;
 			string filePath = path+type.Name+".static";
 			this.Add(type.FullName,"{");
 			bool empty = true;

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
@@ -70,6 +71,23 @@ namespace Zios.Interface{
 		}
 	}
 	public static class EditorGUIExtensionSpecial{
+		public static void DrawAuto(this object current,Rect area,UnityLabel label=null,GUIStyle style=null,bool indention=false){
+			if(current is string){current.As<string>().Draw(area,label,style,indention);}
+			if(current is int){current.As<int>().DrawInt(area,label,style,indention);}
+			if(current is float){current.As<float>().Draw(area,label,style,indention);}
+			if(current is Enum){current.As<Enum>().Draw(area,label,style,indention);}
+			if(current is SerializedProperty){current.As<SerializedProperty>().Draw(area,label,indention);}
+			if(current is AnimationCurve){current.As<AnimationCurve>().Draw(area,label,indention);}
+			if(current is Color){current.As<Color>().Draw(area,label,indention);}
+			if(current is Rect){current.As<Rect>().Draw(area,label,indention);}
+			if(current is GameObject){current.As<GameObject>().Draw<GameObject>(area,label,indention);}
+			if(current is Component){current.As<UnityObject>().Draw<Component>(area,label,indention);}
+			if(current is Material){current.As<UnityObject>().Draw<Material>(area,label,indention);}
+			if(current is Shader){current.As<UnityObject>().Draw<Shader>(area,label,indention);}
+			if(current is Vector2){current.As<Vector2>().DrawVector2(area,label,indention);}
+			if(current is Vector3){current.As<Vector3>().DrawVector3(area,label,indention);}
+			if(current is Vector4){current.As<Vector4>().DrawVector4(area,label,indention);}
+		}
 		public static bool DrawFoldout(this UnityLabel current,Rect area,object key=null,bool indention=false){
 			string name = key.IsNull() ? current + "Foldout" : key.GetHashCode().ToString();
 			bool previous = EditorPrefs.GetBool(name);

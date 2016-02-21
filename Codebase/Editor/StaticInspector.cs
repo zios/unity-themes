@@ -176,7 +176,7 @@ namespace Zios.Editors{
 			bool labelDrawn = false;
 			GUIContent label = new GUIContent(labelText);
 			GUI.changed = false;
-			bool common = (value is string || value is bool || value is float || value is int || value is UnityObject || value is Enum);
+			bool common = (value is string || value is bool || value is float || value is int || value is UnityObject || value is Enum || value is Vector2 || value is Vector3);
 			if(common){
 				label.DrawLabel(this.labelArea);
 				labelDrawn = true;
@@ -222,6 +222,12 @@ namespace Zios.Editors{
 			else if(value is int){
 				int newValue = ((int)value).DrawInt(this.valueArea);
 				this.UpdateValue(accessor,newValue);
+			}
+			else if(value is Vector2){
+				value.As<Vector2>().DrawAuto(this.valueArea);
+			}
+			else if(value is Vector3){
+				value.As<Vector3>().DrawAuto(this.valueArea);
 			}
 			else if(value is IList && depth < 9){
 				IList items = (IList)value;

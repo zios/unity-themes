@@ -353,10 +353,10 @@ namespace Zios.Events{
 		public static void DelayCall(string name,float delay=0.5f,params object[] values){
 			Event.DelayCall(Event.global,"Global",name,delay,values);
 		}
-		public static void DelayCall(string key,string name,float delay=0.5f,params object[] values){
+		public static void DelayCall(object key,string name,float delay=0.5f,params object[] values){
 			Event.DelayCall(Event.global,key,name,delay,values);
 		}
-		public static void DelayCall(object target,string key,string name,float delay=0.5f,params object[] values){
+		public static void DelayCall(object target,object key,string name,float delay=0.5f,params object[] values){
 			if(target.IsNull()){return;}
 			key += "/" + name;
 			Utility.DelayCall(key,()=>Event.Call(target,name,values),delay);
@@ -529,7 +529,10 @@ namespace Zios.Events{
 			if(current.IsNull()){return;}
 			Event.RemoveAll(current);
 		}
-		public static void DelayEvent(this object current,string key,string name,float delay=0.5f,params object[] values){
+		public static void DelayEvent(this object current,string name,float delay=0.5f,params object[] values){
+			Event.DelayCall(current,current,name,delay,values);
+		}
+		public static void DelayEvent(this object current,object key,string name,float delay=0.5f,params object[] values){
 			Event.DelayCall(current,key,name,delay,values);
 		}
 		public static void RestEvent(this object current,string name,float seconds){

@@ -231,17 +231,20 @@ namespace Zios{
 		}
 		public static string GetFileName(this string current){
 			var term = current.Split("/").Last();
-			if(term.Contains(".")){return term.Split(".")[0];}
+			if(term.Contains(".")){return term.Replace("."+current.GetExtension(),"");}
 			return term;
 		}
 		public static string GetExtension(this string current){
 			var term = current.Split("/").Last();
-			if(term.Contains(".")){return term.Split(".")[1];}
+			if(term.Contains(".")){return term.Split(".").Last();}
 			return term;
 		}
 		//============================
 		// Extension
 		//============================
+		public static string AddLine(this string current,string value){
+			return current + value + "\r\n";
+		}
 		public static string[] GetLines(this string current){
 			return current.Split("\n");
 		}
