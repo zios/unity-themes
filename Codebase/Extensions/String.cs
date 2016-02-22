@@ -237,7 +237,7 @@ namespace Zios{
 		public static string GetExtension(this string current){
 			var term = current.Split("/").Last();
 			if(term.Contains(".")){return term.Split(".").Last();}
-			return term;
+			return "";
 		}
 		//============================
 		// Extension

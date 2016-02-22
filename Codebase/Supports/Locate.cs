@@ -11,6 +11,7 @@ namespace Zios{
 		private static bool cleanGameObjects = false;
 		private static List<Type> cleanSceneComponents = new List<Type>();
 		private static List<GameObject> cleanSiblings = new List<GameObject>();
+		private static Dictionary<string,GameObject> searchCache = new Dictionary<string,GameObject>();
 		private static Dictionary<Type,UnityObject[]> assets = new Dictionary<Type,UnityObject[]>();
 		private static Dictionary<GameObject,GameObject[]> siblings = new Dictionary<GameObject,GameObject[]>();
 		private static Dictionary<GameObject,GameObject[]> enabledSiblings = new Dictionary<GameObject,GameObject[]>();
@@ -37,6 +38,7 @@ namespace Zios{
 			Locate.cleanSceneComponents.Clear();
 			Locate.cleanSiblings.Clear();
 			Locate.objectComponents.Clear();
+			Locate.searchCache.Clear();
 		}
 		public static void SetComponentsDirty<Type>() where Type : Component{Locate.cleanSceneComponents.Remove(typeof(Type));}
 		public static void SetComponentsDirty<Type>(GameObject target) where Type : Component{Locate.objectComponents[target].Remove(typeof(Type));}
@@ -146,11 +148,13 @@ namespace Zios{
 			if(Application.isLoadingLevel){return null;}
 			if(!Locate.cleanGameObjects){Locate.Build<Transform>();}
 			name = name.Trim("/");
+			if(Locate.searchCache.ContainsKey(name)){return Locate.searchCache[name];}
 			GameObject[] all = includeHidden ? Locate.sceneObjects : Locate.enabledObjects;
 			foreach(GameObject current in all){
 				if(current.IsNull()){continue;}
 				string path = current.GetPath().Trim("/");
 				if(path == name){
+					Locate.searchCache[name] = current;
 					return current;
 				}
 			}

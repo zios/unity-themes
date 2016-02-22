@@ -114,9 +114,11 @@ namespace Zios.Inputs{
 				if(input.ContainsAll("Joystick","Axis") && !this.joystickID.IsEmpty()){
 					string axisName = input.Remove("Negative","Positive");
 					float axis = Input.GetAxisRaw(axisName);
-					if(axis < 0 && input.Contains("Negative")){this.active[action] = true;}
-					if(axis > 0 && input.Contains("Positive")){this.active[action] = true;}
-					this.maxIntensity[action] = axis.Abs();
+					if(Mathf.Abs(axis) > InputManager.instance.deadZone){
+						if(axis < 0 && input.Contains("Negative")){this.active[action] = true;}
+						if(axis > 0 && input.Contains("Positive")){this.active[action] = true;}
+						this.maxIntensity[action] = axis.Abs();
+					}
 				}
 				else if(input.ContainsAny("MouseScroll","MouseX","MouseY")){
 					if(input.Contains("Scroll")){
@@ -130,12 +132,14 @@ namespace Zios.Inputs{
 						if(change.x <= 0 && input.Contains("X+")){continue;}
 						if(change.y >= 0 && input.Contains("Y-")){continue;}
 						if(change.y <= 0 && input.Contains("Y+")){continue;}
+						if(change.x != 0 && input.Contains("X")){this.maxIntensity[action] = change.x.Abs();}
+						if(change.y != 0 && input.Contains("Y")){this.maxIntensity[action] = change.y.Abs();}
 						this.active[action] = true;
 					}
 				}
 				else{
 					var key = new KeyCode().ParseEnum(input);
-					this.active[action] = Input.GetKey(key);
+					this.active[action] = Input.GetKeyDown(key) || Input.GetKey(key);
 				}
 			}
 		}

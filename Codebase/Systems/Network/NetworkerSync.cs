@@ -83,8 +83,8 @@ namespace Zios.Actions.NetworkComponents{
 		public virtual bool HasChanged(){return false;}
 	}
 	public enum SyncUpdateRate{UpdateAtRate,UpdateImmediate}
-	[Flags] public enum ServerSyncOptions{ExcludeOwner=1,OnlyOwner,SendUponReceiving}
-	[Flags] public enum ClientSyncType{SendToServer=1,ReceiveFromServer}
-	[Flags] public enum ServerSyncType{SendToClients=1,ReceiveFromClients}
+	[Flags] public enum ServerSyncOptions{ExcludeOwner=1,OnlyOwner=2,SendUponReceiving=4}
+	[Flags] public enum ClientSyncType{SendToServer=1,ReceiveFromServer=2}
+	[Flags] public enum ServerSyncType{SendToClients=1,ReceiveFromClients=2}
 	[AddComponentMenu("")] public class NetworkSync : StateMonoBehaviour{}
 }

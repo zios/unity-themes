@@ -33,11 +33,12 @@ namespace Zios.Inputs{
 	public enum InputUIState{None,SelectProfile,EditProfile}
 	public class InputManager : MonoBehaviour{
 		[NonSerialized] public static InputManager instance;
-		[NonSerialized] public static Vector3 mouseChange;
+		[NonSerialized] public static Vector2 mouseChange;
 		[NonSerialized] public static Vector2 mouseScroll;
-		[NonSerialized] public static Vector3 mousePosition;
-		[NonSerialized] public static Vector3 mouseChangeAverage;
+		[NonSerialized] public static Vector2 mousePosition;
+		[NonSerialized] public static Vector2 mouseChangeAverage;
 		public float deadZone = 0.1f;
+		public float mouseSensitivity = 0.5f;
 		public List<InputGroup> groups = new List<InputGroup>();
 		[Internal] public Dictionary<string,InputProfile> instanceProfile = new Dictionary<string,InputProfile>();
 		[Internal] public List<InputDevice> devices = new List<InputDevice>();
@@ -92,16 +93,18 @@ namespace Zios.Inputs{
 				}
 			}
 			bool uiActive = this.uiState != InputUIState.None;
-			if(uiActive){Console.Close(true);}
 			this.uiObject.SetActive(uiActive);
 			Locate.Find("@Main/InputUI/ProfileCreate/").SetActive(false);
 			Locate.Find("@Main/InputUI/ProfileSelect/").SetActive(false);
-			this.DrawProfileSelect();
-			this.DrawProfileEdit();
-			if(this.uiState != InputUIState.None){
+			if(uiActive){
+				Console.Close(true);
+				InputState.disabled = true;
+				this.DrawProfileSelect();
+				this.DrawProfileEdit();
 				bool hitEscape = UnityEvent.current.keyCode == KeyCode.Escape;
 				if(UnityEvent.current.type == EventType.KeyDown && hitEscape){
 					this.uiState = InputUIState.None;
+					InputState.disabled = false;
 				}
 			}
 		}
@@ -125,6 +128,7 @@ namespace Zios.Inputs{
 					if(GUI.Button(area,profile.name,style)){
 						this.activeProfile = profile;
 						this.uiState = InputUIState.None;
+						InputState.disabled = false;
 						this.DelayEvent("On Profile Selected",0);
 					}
 					area = area.AddY(buttonHeight+5);
@@ -170,6 +174,7 @@ namespace Zios.Inputs{
 							profile.Save();
 							this.activeProfile = null;
 							this.uiState = InputUIState.None;
+							InputState.disabled = false;
 							this.DelayEvent("On Profile Edited",0);
 						}
 					}
@@ -232,34 +237,31 @@ namespace Zios.Inputs{
 		}
 		public void DetectMouse(){
 			InputManager.mouseScroll = Input.mouseScrollDelta != Vector2.zero ? -Input.mouseScrollDelta : Vector2.zero;
-			if(InputManager.mouseScroll != Vector2.zero){
-				this.lastInputTime = Time.realtimeSinceStartup;
-				if(InputManager.mouseScroll.y < 0){this.lastInput = "MouseScrollUp";}
-				if(InputManager.mouseScroll.y > 0){this.lastInput = "MouseScrollDown";}
-			}
-			if(Input.mousePosition != InputManager.mousePosition){
+			InputManager.mouseChange =  new Vector2(Input.GetAxisRaw("MouseX"),-Input.GetAxisRaw("MouseY")) * this.mouseSensitivity;
+			InputManager.mousePosition = Input.mousePosition;
+			if(InputManager.mouseChange != Vector2.zero || InputManager.mouseScroll != Vector2.zero){
 				this.lastInputTime = Time.realtimeSinceStartup;
 				if(!this.devices.Exists(x=>x.name=="Mouse")){
 					this.devices.Add(new InputDevice("Mouse"));
 				}
-				InputManager.mouseChange = InputManager.mousePosition - Input.mousePosition;
-				InputManager.mouseChange.x *= -1;
 				InputManager.mouseChangeAverage = (InputManager.mouseChangeAverage+InputManager.mouseChange)/2;
-				InputManager.mousePosition = Input.mousePosition;
-				if(this.uiState != InputUIState.EditProfile){return;}
-				var change = InputManager.mouseChangeAverage.Abs();
-				if(change.x >= change.y){
-					if(InputManager.mouseChangeAverage.x < 0){this.lastInput = "MouseX-";}
-					if(InputManager.mouseChangeAverage.x > 0){this.lastInput = "MouseX+";}
-				}
-				else{
-					if(InputManager.mouseChangeAverage.y < 0){this.lastInput = "MouseY-";}
-					if(InputManager.mouseChangeAverage.y > 0){this.lastInput = "MouseY+";}
+				if(this.uiState == InputUIState.EditProfile){
+					var average = InputManager.mouseChangeAverage;
+					var change = new Vector2(average.x.Abs(),average.y.Abs());
+					if(InputManager.mouseScroll.y < 0){this.lastInput = "MouseScrollUp";}
+					if(InputManager.mouseScroll.y > 0){this.lastInput = "MouseScrollDown";}
+					if(change.x >= change.y){
+						if(average.x < 0){this.lastInput = "MouseX-";}
+						if(average.x > 0){this.lastInput = "MouseX+";}
+					}
+					else{
+						if(average.y < 0){this.lastInput = "MouseY-";}
+						if(average.y > 0){this.lastInput = "MouseY+";}
+					}
 				}
 				return;
 			}
-			InputManager.mouseChange = Vector3.zero;
-			InputManager.mouseChangeAverage = Vector3.zero;
+			InputManager.mouseChangeAverage = Vector2.zero;
 		}
 		//===============
 		// Interface

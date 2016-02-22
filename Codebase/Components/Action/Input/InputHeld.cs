@@ -10,10 +10,8 @@ namespace Zios.Actions.InputComponents{
 		public AttributeGameObject target;
 		[InputName] public AttributeString inputName = "";
 		[Advanced] public AttributeBool heldDuringIntensity = true;
-		[Internal] public bool held;
 		[Internal] public AttributeFloat intensity = 0;
 		[NonSerialized] public InputInstance instance;
-		private bool lastHeld;
 		public override void Awake(){
 			base.Awake();
 			this.inputName.Setup("Input Name",this);
@@ -33,25 +31,15 @@ namespace Zios.Actions.InputComponents{
 				base.Use();
 			}
 			else if(this.active){
-				this.lastHeld = false;
 				base.End();
 			}
 		}
 		public virtual bool CheckInput(){
 			if(InputState.disabled || this.instance.IsNull()){return false;}
 			float intensity = this.instance.GetIntensity(this.inputName);
-			this.held = this.instance.GetHeld(this.inputName);
+			bool valid = (this.heldDuringIntensity && intensity != 0) || (!this.heldDuringIntensity && this.instance.GetHeld(this.inputName));
 			this.intensity.Set(intensity);
-			bool released = !this.held && this.lastHeld;
-			bool canEnd = (!this.heldDuringIntensity && released) || (this.heldDuringIntensity && this.intensity == 0);
-			if(canEnd){return false;}
-			bool requirementMet = InputState.CheckRequirement(this.requirement,this.intensity);
-			if(requirementMet){
-				bool held = this.heldDuringIntensity ? this.intensity != 0 : this.held;
-				if(!held){requirementMet = false;}
-			}
-			this.lastHeld = this.held;
-			return requirementMet;
+			return valid && InputState.CheckRequirement(this.requirement,this.intensity);
 		}
 	}
 }
