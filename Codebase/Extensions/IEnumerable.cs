@@ -58,11 +58,20 @@ namespace Zios{
 			}
 			return results;
 		}
-		public static string[] AddSuffix(this string[] current,string suffix){
-			for(int index=0;index<current.Length;++index){
-				current[index] += suffix;
+		public static List<string> AddSuffix(this IEnumerable<string> current,string suffix){
+			List<string> results = new List<string>();
+			foreach(string item in current){
+				results.Add(item+suffix);
 			}
-			return current;
+			return results;
 		}
+		public static string[] Trim(this IEnumerable<string> current,string values){return current.Select(x=>x.Trim(values)).ToArray();}
+		public static string[] ToTitleCase(this IEnumerable<string> current){return current.Select(x=>x.ToTitleCase()).ToArray();}
+		public static string[] ToCamelCase(this IEnumerable<string> current){return current.Select(x=>x.ToCamelCase()).ToArray();}
+		public static string[] ToPascalCase(this IEnumerable<string> current){return current.Select(x=>x.ToPascalCase()).ToArray();}
+		public static int[] ToInt(this IEnumerable<string> current){return current.Select(x=>x.ToInt()).ToArray();}
+		public static bool[] ToBool(this IEnumerable<string> current){return current.Select(x=>x.ToBool()).ToArray();}
+		public static float[] ToFloat(this IEnumerable<string> current){return current.Select(x=>x.ToFloat()).ToArray();}
+		public static UnityEngine.Color[] ToColor(this IEnumerable<string> current){return current.Select(x=>x.ToColor()).ToArray();}
 	}
 }

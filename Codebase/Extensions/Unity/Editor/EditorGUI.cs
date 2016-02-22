@@ -51,10 +51,25 @@ namespace Zios.Interface{
 			style = style ?? EditorStyles.popup;
 			return EditorGUIExtension.Draw<Enum>(()=>EditorGUI.EnumPopup(area,label,current,style),indention);
 		}
-		public static int Draw(this IList<string> current,Rect area,int index,UnityLabel label=null,GUIStyle style=null,bool indention=false){
+		public static int Draw(this IEnumerable<string> current,Rect area,int index,UnityLabel label=null,GUIStyle style=null,bool indention=false){
 			style = style ?? EditorStyles.popup;
 			string name = label.IsNull() ? "" : label.ToString();
 			return EditorGUIExtension.Draw<int>(()=>EditorGUI.Popup(area,name,index,current.ToArray(),style),indention);
+		}
+		public static void DrawMenu(this IEnumerable<string> current,Rect area,GenericMenu.MenuFunction2 callback,IEnumerable<string> selected=null,IEnumerable<string> disabled=null){
+			if(selected.IsNull()){selected = new List<string>();}
+			if(disabled.IsNull()){disabled = new List<string>();}
+			var menu = new GenericMenu();
+			var index = 0;
+			foreach(var item in current){
+				++index;
+				if(!disabled.Contains(item)){
+					menu.AddItem(item,selected.Contains(item),callback,index-1);
+					continue;
+				}
+				menu.AddDisabledItem(item.ToContent());
+			}
+			menu.DropDown(area);
 		}
 		public static void Draw(this SerializedProperty current,Rect area,UnityLabel label=null,bool allowScene=true,bool indention=false){
 			if(label != null && label.value.text.IsEmpty()){label = new GUIContent(current.displayName);}
@@ -71,6 +86,8 @@ namespace Zios.Interface{
 		}
 	}
 	public static class EditorGUIExtensionSpecial{
+		public static Rect menuArea;
+		public static object menuValue;
 		public static void DrawAuto(this object current,Rect area,UnityLabel label=null,GUIStyle style=null,bool indention=false){
 			if(current is string){current.As<string>().Draw(area,label,style,indention);}
 			if(current is int){current.As<int>().DrawInt(area,label,style,indention);}
@@ -129,6 +146,30 @@ namespace Zios.Interface{
 			return (Type)EditorGUIExtension.Draw<UnityObject>(()=>EditorGUI.ObjectField(area,label,current,typeof(Type),allowScene),indention);
 		}
 		public static Enum DrawMask(this Enum current,Rect area,UnityLabel label=null,GUIStyle style=null,bool indention=false){
+			style = style ?? EditorStyles.popup;
+			Rect labelArea = area.AddWidth(-EditorGUIUtility.labelWidth);
+			Rect valueArea = labelArea.AddX(EditorGUIUtility.labelWidth);
+			string value = current.ToName().Replace(" "," | ").ToTitleCase();
+			if(value.IsEmpty()){value = "None";}
+			label.DrawLabel(labelArea,null,true);
+			if(GUI.Button(valueArea,value.Trim("| "),style)){
+				var items = current.ToName().Split(" ").ToTitleCase();
+				GenericMenu.MenuFunction2 callback = index=>{
+					EditorGUIExtensionSpecial.menuArea = area;
+					EditorGUIExtensionSpecial.menuValue = current.GetValues().GetValue((int)index);
+				};
+				current.GetNames().ToTitleCase().DrawMenu(valueArea,callback,items);
+			}
+			if(EditorGUIExtensionSpecial.menuArea == area && !EditorGUIExtensionSpecial.menuValue.IsNull()){
+				var menuValue = (Enum)EditorGUIExtensionSpecial.menuValue;
+				var newValue = current.ToInt() ^ menuValue.ToInt();
+				current = (Enum)Enum.ToObject(current.GetType(),newValue);
+				EditorGUIExtensionSpecial.menuValue = null;
+				EditorGUIExtensionSpecial.menuArea = new Rect();
+			}
+			return current;
+		}
+		public static Enum DrawMaskField(this Enum current,Rect area,UnityLabel label=null,GUIStyle style=null,bool indention=false){
 			style = style ?? EditorStyles.popup;
 			return EditorGUIExtension.Draw<Enum>(()=>EditorGUI.EnumMaskField(area,label,current,style),indention);
 		}

@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Text;
 namespace Zios{
@@ -30,6 +31,9 @@ namespace Zios{
 			cache.AddNew(type)[current] = name;
 			return name;
 		}
+		public static int GetIndex(this Enum current){
+			return current.GetNames().IndexOf(current.ToName());
+		}
 		public static int ToInt(this Enum current){
 			return Convert.ToInt32(current);
 		}
@@ -52,6 +56,12 @@ namespace Zios{
 		}
 		public static string[] GetNames(this Enum current){
 			return Enum.GetNames(current.GetType());
+		}
+		public static Array GetValues(this Enum current){
+			return Enum.GetValues(current.GetType());
+		}
+		public static T[] GetValues<T>(this Enum current){
+			return (T[])Enum.GetValues(typeof(T));
 		}
 		public static T ParseEnum<T>(this T current,string value){
 			return (T)Enum.Parse(current.GetType(),value);
