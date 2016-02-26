@@ -19,6 +19,9 @@ namespace Zios{
 		public static HashSet<T> ToHashSet<T>(this IEnumerable<T> current){
 		   return new HashSet<T>(current);
 		}
+		public static bool ContainsAll<T>(this IEnumerable<T> current,IEnumerable<T> other){
+			return !other.Except(current).Any();
+		}
 		//=======================
 		// LINQ-ish
 		//=======================

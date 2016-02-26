@@ -154,10 +154,14 @@ namespace Zios{
 			return current.IndexOf(value,start);
 		}
 		public static int IndexOf(this string current,string value,bool ignoreCase){
-			if(ignoreCase){
-				return current.IndexOf(value,StringComparison.OrdinalIgnoreCase);
+			return current.IndexOf(value,0,ignoreCase);
+		}
+		public static int IndexOf(this string current,string value,int start,int occurrence,bool ignoreCase){
+			while(occurrence > 0){
+				start = current.IndexOf(value,start+1,ignoreCase)+1;
+				occurrence -= 1;
 			}
-			return current.IndexOf(value);
+			return Mathf.Max(start-1,-1);
 		}
 		public static bool StartsWith(this string current,string value,bool ignoreCase){
 			if(ignoreCase){

@@ -39,7 +39,7 @@ namespace Zios.Inputs{
 						mode = 2;
 						group = line.Parse("-","]");
 					}
-					else if(mode == 1){profile.requiredDevices.Add(line);}
+					else if(mode == 1){profile.requiredDevices.Add(line.Trim());}
 					else if(mode == 2){
 						var actionName = line.Parse(""," ");
 						var buttonName = line.Parse(" ");

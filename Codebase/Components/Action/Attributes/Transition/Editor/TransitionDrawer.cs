@@ -7,14 +7,15 @@ namespace Zios.Editors{
 	[CustomPropertyDrawer(typeof(Transition))]
 	public class TransitionDrawer : PropertyDrawer{
 		public override float GetPropertyHeight(SerializedProperty property,GUIContent label){
-			var hash = property.GetObject<Transition>().GetHashCode().ToString();
+			var hash = property.GetObject<Transition>().path;
 			if(EditorPrefs.GetBool(hash)){return EditorGUIUtility.singleLineHeight*5+8;}
 			return base.GetPropertyHeight(property,label);
 		}
 		public override void OnGUI(Rect area,SerializedProperty property,GUIContent label){
 			Transition transition = property.GetObject<Transition>();
 			var spacing = area.height = EditorGUIUtility.singleLineHeight;
-			if("Transition".DrawFoldout(area,transition,true)){
+			if(!transition.time.isSetup){return;}
+			if("Transition".DrawFoldout(area,transition.path,true)){
 				EditorGUI.indentLevel += 1;
 				transition.time.Set(transition.time.Get().Draw(area.AddY(spacing+2),"Time",null,true));
 				transition.speed.Set(transition.speed.Get().Draw(area.AddY(spacing*2+4),"Speed",null,true));
@@ -23,6 +24,7 @@ namespace Zios.Editors{
 				EditorGUI.indentLevel -= 1;
 			}
 			if(GUI.changed){
+				property.serializedObject.targetObject.CallEvent("On Validate");
 				transition.Setup(transition.path,transition.parent);
 			}
 		}

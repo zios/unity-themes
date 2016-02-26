@@ -35,7 +35,10 @@ namespace Zios.Actions.InputComponents{
 			}
 		}
 		public virtual bool CheckInput(){
-			if(InputState.disabled || this.instance.IsNull()){return false;}
+			if(InputState.disabled || this.instance.IsNull()){
+				this.intensity.Set(0);
+				return false;
+			}
 			float intensity = this.instance.GetIntensity(this.inputName);
 			bool valid = (this.heldDuringIntensity && intensity != 0) || (!this.heldDuringIntensity && this.instance.GetHeld(this.inputName));
 			this.intensity.Set(intensity);

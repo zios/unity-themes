@@ -18,8 +18,8 @@ namespace Zios.Inputs{
 		public static void Create(){
 			bool wasNull = InputManager.instance.IsNull();
 			InputHook.hook.Create();
+			var instance = InputManager.instance;
 			if(wasNull){
-				var instance = InputManager.instance;
 				instance.uiObject = Locate.Find("@Main/InputUI");
 				if(instance.uiObject.IsNull()){
 					instance.uiObject = GameObject.Instantiate(FileManager.GetAsset<GameObject>("InputUI.prefab"));
@@ -28,17 +28,22 @@ namespace Zios.Inputs{
 				}
 				InputGroup.Load();
 			}
+			Event.Add("On Enter Play",InputGroup.Save).SetPermanent();
+			Event.Add("On Validate",instance.Refresh,instance).SetPermanent();
 		}
 	}
 	public enum InputUIState{None,SelectProfile,EditProfile}
+	public enum InputInstanceOptions{AllowCurrentlyUsedProfiles=1,AllowMultipleProfiles=2,ReassignInvalidProfiles=4}
 	public class InputManager : MonoBehaviour{
 		[NonSerialized] public static InputManager instance;
 		[NonSerialized] public static Vector2 mouseChange;
 		[NonSerialized] public static Vector2 mouseScroll;
 		[NonSerialized] public static Vector2 mousePosition;
 		[NonSerialized] public static Vector2 mouseChangeAverage;
-		public float deadZone = 0.1f;
-		public float mouseSensitivity = 0.5f;
+		[EnumMask] public InputInstanceOptions instanceOptions = (InputInstanceOptions)(2);
+		public float gamepadDeadZone = 0.1f;
+		public float gamepadSensitivity = 1;
+		public float mouseSensitivity = 1;
 		public List<InputGroup> groups = new List<InputGroup>();
 		[Internal] public Dictionary<string,InputProfile> instanceProfile = new Dictionary<string,InputProfile>();
 		[Internal] public List<InputDevice> devices = new List<InputDevice>();
@@ -57,8 +62,15 @@ namespace Zios.Inputs{
 		// Unity
 		//===============
 		public void OnValidate(){
-			InputManager.instance = this;
-			InputGroup.Setup();
+			this.DelayEvent("InputManager","On Validate",1);
+		}
+		public void Refresh(){
+			if(Application.isEditor){
+				InputManager.instance = this;
+				InputGroup.Setup();
+				InputGroup.Save();
+				InputGroup.Load();
+			}
 		}
 		public void Awake(){
 			InputManager.instance = this;
@@ -73,8 +85,6 @@ namespace Zios.Inputs{
 			Console.AddKeyword("removeProfile",this.RemoveProfile);
 			Event.Register("On Profile Selected",this);
 			Event.Register("On Profile Edited",this);
-			Event.Add("On Hierarchy Changed",InputGroup.Save);
-			Event.Add("On Enter Play",InputGroup.Save);
 			this.DetectGamepads();
 		}
 		public void Update(){
@@ -111,8 +121,9 @@ namespace Zios.Inputs{
 		//===============
 		// GUI
 		//===============
-		[ContextMenu("Save Settings")] public static void Save(){InputGroup.Save();}
-		[ContextMenu("Load Settings")] public static void Load(){InputGroup.Load();}
+		[ContextMenu("Prepare Settings")] public void Setup(){InputGroup.Setup();}
+		[ContextMenu("Save Settings")] public void Save(){InputGroup.Save();}
+		[ContextMenu("Load Settings")] public void Load(){InputGroup.Load();}
 		public void DrawProfileSelect(){
 			if(this.uiState == InputUIState.SelectProfile){
 				//var path = "@Main/InputUI/ProfileSelect/";
@@ -125,12 +136,15 @@ namespace Zios.Inputs{
 				GUI.Label(area,this.selectionHeader,style.Background(""));
 				area = area.AddY(buttonHeight+8);
 				foreach(var profile in this.profiles){
+					bool usable = this.devices.Select(x=>x.name).ContainsAll(profile.requiredDevices);
+					if(!usable){GUI.enabled = false;}
 					if(GUI.Button(area,profile.name,style)){
 						this.activeProfile = profile;
 						this.uiState = InputUIState.None;
 						InputState.disabled = false;
 						this.DelayEvent("On Profile Selected",0);
 					}
+					GUI.enabled = true;
 					area = area.AddY(buttonHeight+5);
 				}
 			}
@@ -190,7 +204,7 @@ namespace Zios.Inputs{
 					for(int axisNumber=1;axisNumber<9;++axisNumber){
 						string axisName = "Joystick"+joystickNumber+"-Axis"+ axisNumber;
 						float value = Input.GetAxisRaw(axisName);
-						if(Mathf.Abs(value) > this.deadZone){
+						if(Mathf.Abs(value) > this.gamepadDeadZone){
 							axisName += value < 0 ? "Negative" : "Positive";
 							if(axisName == this.lastInput){continue;}
 							if(this.joystickAxis.AddNew(axisName)){continue;}
@@ -237,7 +251,7 @@ namespace Zios.Inputs{
 		}
 		public void DetectMouse(){
 			InputManager.mouseScroll = Input.mouseScrollDelta != Vector2.zero ? -Input.mouseScrollDelta : Vector2.zero;
-			InputManager.mouseChange =  new Vector2(Input.GetAxisRaw("MouseX"),-Input.GetAxisRaw("MouseY")) * this.mouseSensitivity;
+			InputManager.mouseChange =  new Vector2(Input.GetAxis("MouseX"),-Input.GetAxis("MouseY")) * this.mouseSensitivity;
 			InputManager.mousePosition = Input.mousePosition;
 			if(InputManager.mouseChange != Vector2.zero || InputManager.mouseScroll != Vector2.zero){
 				this.lastInputTime = Time.realtimeSinceStartup;

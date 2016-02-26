@@ -66,7 +66,6 @@ namespace Zios.Attributes{
 		[NonSerialized] public bool canDirect = true;
 		[NonSerialized] public bool canShape = true;
 		[NonSerialized] public bool canLink = true;
-		[NonSerialized] public bool isDefault = true;
 		[NonSerialized] public string defaultSet = "A";
 		[NonSerialized] public List<Attribute> dependents = new List<Attribute>();
 		public AttributeUsage usage{
@@ -164,7 +163,6 @@ namespace Zios.Attributes{
 			return dataArray;
 		}
 		public override void Add<Type>(int index=-1,string set=""){
-			this.isDefault = false;
 			if(this.info.parent != null){
 				Utility.RecordObject(this.info.parent,"Attribute - Add Data");
 				if(set.IsEmpty()){set = this.defaultSet;}
@@ -175,7 +173,6 @@ namespace Zios.Attributes{
 			}
 		}
 		public void Add(BaseType value){
-			this.isDefault = false;
 			if(this.info.parent != null){
 				this.Add<DataType>();
 				var newData = (DataType)this.info.data.Last();
@@ -500,7 +497,6 @@ namespace Zios.Attributes{
 				this.delayedValue = value;
 				return;
 			}
-			this.isDefault = false;
 			if(!this.canCache || !value.Equals(this.cachedValue)){
 				this.cachedValue = value;
 				foreach(Attribute dependent in this.dependents){

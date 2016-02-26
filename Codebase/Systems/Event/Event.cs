@@ -90,6 +90,7 @@ namespace Zios.Events{
 		public static Dictionary<object,Dictionary<string,Dictionary<object,EventListener>>> cache = new Dictionary<object,Dictionary<string,Dictionary<object,EventListener>>>();
 		public static List<EventListener> listeners = new List<EventListener>();
 		public static Dictionary<object,List<string>> callers = new Dictionary<object,List<string>>();
+		public static Dictionary<object,List<string>> active = new Dictionary<object,List<string>>();
 		public static Dictionary<MethodStep,EventStepper> steppers = new Dictionary<MethodStep,EventStepper>();
 		[NonSerialized] public static string stepperTitle;
 		[NonSerialized] public static string stepperMessage;
@@ -358,7 +359,6 @@ namespace Zios.Events{
 		}
 		public static void DelayCall(object target,object key,string name,float delay=0.5f,params object[] values){
 			if(target.IsNull()){return;}
-			key += "/" + name;
 			Utility.DelayCall(key,()=>Event.Call(target,name,values),delay);
 		}
 		public static void Call(string name,params object[] values){
@@ -367,11 +367,13 @@ namespace Zios.Events{
 		}
 		public static void Call(object target,string name,params object[] values){
 			if(Event.disabled.Has("Call")){return;}
+			if(Event.active.AddNew(target).Contains(name)){return;}
 			if(Event.stack.Count > 1000){
 				Debug.LogWarning("[Events] : Event stack overflow.");
 				Event.disabled = (EventDisabled)(-1);
 				return;
 			}
+			Event.active[target].Add(name);
 			bool hasEvents = Event.HasListeners(target,name);
 			var events = hasEvents ? Event.cache[target][name] : null;
 			int count = hasEvents ? events.Count : 0;
@@ -392,6 +394,7 @@ namespace Zios.Events{
 					Debug.Log(message,target as UnityObject);
 				}
 			}
+			Event.active[target].Remove(name);
 		}
 		public static void CallChildren(object target,string name,object[] values,bool self=false){
 			if(Event.disabled.Has("Call")){return;}

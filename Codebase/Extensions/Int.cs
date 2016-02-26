@@ -21,12 +21,8 @@ namespace Zios{
 		//=====================
 		// Conversion
 		//=====================
-		public static Enum ToEnum(this int current,Type enumType){
-			return (Enum)Enum.GetValues(enumType).GetValue(current);
-		}
-		public static T ToEnum<T>(this int current){
-			return Enum.GetValues(typeof(T)).As<T[]>()[current];
-		}
+		public static Enum ToEnum(this int current,Type enumType){return (Enum)Enum.ToObject(enumType,current);}
+		public static T ToEnum<T>(this int current){return (T)Enum.ToObject(typeof(T),current);}
 		public static bool ToBool(this int current){return current != 0;}
 		public static byte ToByte(this int current){return (byte)current;}
 		public static short ToShort(this int current){return (short)current;}

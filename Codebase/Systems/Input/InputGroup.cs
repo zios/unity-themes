@@ -10,24 +10,26 @@ namespace Zios.Inputs{
 		public static void Setup(){
 			foreach(var group in InputManager.instance.groups){
 				foreach(var action in group.actions){
-					InputGroup.SetupTransition(action);
+					action.Setup(group.name,InputManager.instance);
 				}
 			}
 		}
-		public static void SetupTransition(InputAction action){
-			if(action.transition.IsNull() || action.transition.acceleration.keys.Length < 1){
-				action.transition = new Actions.TransitionComponents.Transition();
-			}
-			action.transition.Setup("InputManager/"+action.name+"/",InputManager.instance);
-		}
 		public static void Save(){
 			if(InputManager.instance.groups.Count < 1){return;}
+			var manager = InputManager.instance;
 			var contents = "";
 			var file = FileManager.Find("InputControls.cfg",true,false) ?? FileManager.CreateFile("InputControls.cfg");
+			contents = contents.AddLine("[InputSettings]");
+			if(manager.instanceOptions.ToInt() != 2){contents = contents.AddLine("InstanceOptions " + manager.instanceOptions.ToInt());}
+			if(manager.gamepadDeadZone != 0.1f){contents = contents.AddLine("GamepadDeadZone " + manager.gamepadDeadZone);}
+			if(manager.gamepadSensitivity != 1){contents = contents.AddLine("GamepadSensitivity " + manager.gamepadSensitivity);}
+			if(manager.mouseSensitivity != 1){contents = contents.AddLine("MouseSensitivity " + manager.mouseSensitivity);}
 			foreach(var group in InputManager.instance.groups){
 				foreach(var action in group.actions){
 					var helpPath = FileManager.GetPath(action.helpImage);
+					var options = action.options.ToInt();
 					contents = contents.AddLine("["+group.name.ToPascalCase()+"-"+action.name.ToPascalCase()+"]");
+					if(options != 0){contents = contents.AddLine("Options " + options);}
 					if(!helpPath.IsEmpty()){contents = contents.AddLine("HelpImage " + helpPath);}
 					var transition = action.transition;
 					if(transition.time.Get() != 0.5f){contents = contents.AddLine("Transition-Time " + transition.time.Get());}
@@ -41,12 +43,24 @@ namespace Zios.Inputs{
 		}
 		public static void Load(){
 			if(!Application.isEditor){return;}
-			var file = FileManager.Find("InputControls.cfg",true,false) ?? FileManager.CreateFile("InputControls.cfg");
+			var file = FileManager.Find("InputControls.cfg",true,false);
 			if(file.IsNull()){return;}
 			string group = "";
 			string action = "";
-			var text = file.GetText().GetLines();
-			foreach(var line in text){
+			var fileText = file.GetText();
+			var settings = fileText.Parse("[InputSettings]","[").GetLines();
+			var remaining = fileText.Contains("[InputSettings]") ? fileText.Substring(fileText.IndexOf("[",0,2,true)).GetLines() : fileText.GetLines();
+			var manager = InputManager.instance;
+			foreach(var line in settings){
+				if(line.IsEmpty()){continue;}
+				var name = line.Parse(""," ").Trim();
+				var value = line.Parse(" ").Trim();
+				if(name.Contains("InstanceOptions")){manager.instanceOptions = value.ToInt().ToEnum<InputInstanceOptions>();}
+				if(name.Contains("GamepadDeadZone")){manager.gamepadDeadZone = value.ToFloat();}
+				if(name.Contains("GamepadSensitivity")){manager.gamepadSensitivity = value.ToFloat();}
+				if(name.Contains("MouseSensitivity")){manager.mouseSensitivity = value.ToFloat();}
+			}
+			foreach(var line in remaining){
 				if(line.IsEmpty()){continue;}
 				if(line.ContainsAll("[","-")){
 					var parts = line.Remove("[","]").Split("-");
@@ -56,11 +70,12 @@ namespace Zios.Inputs{
 				}
 				var name = line.Parse(""," ").Trim();
 				var value = line.Parse(" ").Trim();
-				var inputGroup = InputManager.instance.groups.Find(x=>x.name.Trim()==group) ?? InputManager.instance.groups.AddNew();
+				var inputGroup = manager.groups.Find(x=>x.name.Trim()==group) ?? manager.groups.AddNew();
 				var inputAction = inputGroup.actions.Find(x=>x.name.Trim()==action) ?? inputGroup.actions.AddNew();
 				inputGroup.name = group;
 				inputAction.name = action;
-				InputGroup.SetupTransition(inputAction);
+				inputAction.Setup("InputGroup",manager);
+				if(name.Contains("Options")){inputAction.options = value.ToInt().ToEnum<InputActionOptions>();}
 				if(name.Contains("HelpImage")){inputAction.helpImage = FileManager.GetAsset<Sprite>(value);}
 				if(name.Contains("Time")){inputAction.transition.time.Set(value.ToFloat());}
 				if(name.Contains("Speed")){inputAction.transition.speed.Set(value.ToFloat());}

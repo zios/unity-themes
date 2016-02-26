@@ -156,7 +156,7 @@ namespace Zios{
 		}
 		public static void DelayCall(CallbackFunction method){
 			#if UNITY_EDITOR
-			if(!Utility.IsPlaying() && EditorApplication.delayCall != method){
+			if(EditorApplication.delayCall != method){
 				EditorApplication.delayCall += method;
 			}
 			return;

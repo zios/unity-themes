@@ -100,7 +100,8 @@ namespace Zios.Inputs{
 						this.intensity[actionName] = 0;
 						this.maxIntensity[actionName] = 1;
 						this.active[actionName] = false;
-						this.actions[actionName] = action;
+						this.actions[actionName] = action.Copy();
+						this.actions[actionName].Setup(this.alias,this);
 					}
 				}
 			}
@@ -113,11 +114,12 @@ namespace Zios.Inputs{
 				if(input.Contains("*")){continue;}
 				if(input.ContainsAll("Joystick","Axis") && !this.joystickID.IsEmpty()){
 					string axisName = input.Remove("Negative","Positive");
-					float axis = Input.GetAxisRaw(axisName);
-					if(Mathf.Abs(axis) > InputManager.instance.deadZone){
+					float axis = Input.GetAxis(axisName);
+					if(Mathf.Abs(axis) > InputManager.instance.gamepadDeadZone){
 						if(axis < 0 && input.Contains("Negative")){this.active[action] = true;}
 						if(axis > 0 && input.Contains("Positive")){this.active[action] = true;}
-						this.maxIntensity[action] = axis.Abs();
+						this.maxIntensity[action] = axis.Abs() * InputManager.instance.gamepadSensitivity;
+						this.ClampIntensity(action);
 					}
 				}
 				else if(input.ContainsAny("MouseScroll","MouseX","MouseY")){
@@ -134,6 +136,7 @@ namespace Zios.Inputs{
 						if(change.y <= 0 && input.Contains("Y+")){continue;}
 						if(change.x != 0 && input.Contains("X")){this.maxIntensity[action] = change.x.Abs();}
 						if(change.y != 0 && input.Contains("Y")){this.maxIntensity[action] = change.y.Abs();}
+						this.ClampIntensity(action);
 						this.active[action] = true;
 					}
 				}
@@ -150,6 +153,11 @@ namespace Zios.Inputs{
 				var action = item.Key;
 				float goal = item.Value ? this.maxIntensity[action] : 0;
 				this.intensity[action] = this.actions[action].transition.Step(this.intensity[action],goal);
+			}
+		}
+		public void ClampIntensity(string name){
+			if(!this.actions[name].options.Contains(InputActionOptions.Unclamped)){
+				this.maxIntensity[name] = this.maxIntensity[name].Clamp(0,1);
 			}
 		}
 		//===============

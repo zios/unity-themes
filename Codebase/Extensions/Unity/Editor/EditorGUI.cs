@@ -107,6 +107,7 @@ namespace Zios.Interface{
 		}
 		public static bool DrawFoldout(this UnityLabel current,Rect area,object key=null,bool indention=false){
 			string name = key.IsNull() ? current + "Foldout" : key.GetHashCode().ToString();
+			if(key is string){name = (string)key;}
 			bool previous = EditorPrefs.GetBool(name);
 			bool state = EditorGUIExtension.Draw<bool>(()=>EditorGUI.Foldout(area,previous,current),indention);
 			if(previous != state){EditorPrefs.SetBool(name,state);}
