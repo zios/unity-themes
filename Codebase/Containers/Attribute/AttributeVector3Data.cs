@@ -34,7 +34,7 @@ namespace Zios.Attributes{
 		}
 		public override void Serialize(){
 			if(!this.value.IsEmpty()){
-				this.rawValue = this.value.Print();
+				this.rawValue = this.value.Serialize();
 			}
 		}
 	}

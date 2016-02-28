@@ -25,8 +25,8 @@ namespace Zios.Actions{
 			Event.Add("On State Update",this.UpdateStates,this);
 			Event.Add("On Start",StateTable.RefreshTables);
 			if(!Application.isPlaying){
-				Events.Event.Add("On Hierarchy Changed",StateTable.RefreshTables);
-				Events.Event.Add("On Components Changed",StateTable.RefreshTables,this.gameObject);
+				Event.Add("On Components Changed",StateTable.RefreshTables);
+				Event.Add("On Components Changed",StateTable.RefreshTables,this.gameObject);
 			}
 			this.external.Setup("External",this);
 		}
@@ -61,7 +61,7 @@ namespace Zios.Actions{
 			if(Application.isPlaying){return;}
 			if(!this.controller.IsEnabled()){this.controller = null;}
 			if(!this.IsEnabled()){return;}
-			Utility.RecordObject(this,"State Table - Refresh");
+			//Utility.RecordObject(this,"State Table - Refresh");
 			this.UpdateScripts();
 			if(this.scripts.Count > 0){
 				this.UpdateTableList();

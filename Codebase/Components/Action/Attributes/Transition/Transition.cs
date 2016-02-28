@@ -22,6 +22,12 @@ namespace Zios.Actions.TransitionComponents{
 		protected float previousGoal;
 		protected bool finished;
 		public Transition(){}
+		public Transition(Transition transition){
+			this.time.delayedValue = transition.time;
+			this.speed.delayedValue = transition.speed;
+			this.acceleration = new AnimationCurve().Deserialize(transition.acceleration.Serialize());
+			this.deceleration = new AnimationCurve().Deserialize(transition.deceleration.Serialize());
+		}
 		public Transition(float time,float speed){
 			this.time.delayedValue = time;
 			this.speed.delayedValue = speed;

@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Collections;
 using System.Globalization;
 using System.Security.Cryptography;
 using System.Text;
@@ -24,41 +25,6 @@ namespace Zios{
 			byte[] hash = MD5.Create().ComputeHash(bytes);
 			return BitConverter.ToString(hash).Replace("-","");
 		}
-		public static Vector3 ToVector3(this string current){
-			if(!current.Contains(",")){return Vector3.zero;}
-			string[] split = current.Remove("(",")"," ").Split(",");
-			float x = split[0].ToFloat();
-			float y = split[1].ToFloat();
-			float z = split[2].ToFloat();
-			return new Vector3(x,y,z);
-		}
-		public static string ToTitleCase(this string current){
-			string text = Regex.Replace(current,"(\\B[A-Z])"," $1");
-			text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(text);
-			text = text.Replace("3 D","3D").Replace("2 D","2D");
-			return text;
-		}
-		public static string ToPascalCase(this string current){
-			return current.ToTitleCase().Remove(" ");
-		}
-		public static string ToCamelCase(this string current){
-			return current[0].ToString().ToLower() + current.Substring(1).Remove(" ");
-		}
-		public static int ToInt(this string current){
-			if(current.IsEmpty()){return 0;}
-			return Convert.ToInt32(current);
-		}
-		public static float ToFloat(this string current){
-			if(current.IsEmpty()){return 0;}
-			return Convert.ToSingle(current);
-		}
-		public static bool ToBool(this string current){
-			if(current.IsEmpty()){return false;}
-			string lower = current.ToLower();
-			return lower != "false" && lower != "f" && lower != "0";
-		}
-		public static byte ToByte(this string current){return (byte)current[0];}
-		public static byte[] ToBytes(this string current){return Encoding.ASCII.GetBytes(current);}
 		public static Color ToColor(this string current){
 			if(!current.Contains(",")){return Color.white;}
 			bool commaSplit = current.Contains(",");
@@ -86,8 +52,62 @@ namespace Zios{
 				return new Color(255,0,255);
 			}
 		}
-		public static string Capitalize(this string current){
+		public static Vector3 ToVector3(this string current){
+			if(!current.Contains(",")){return Vector3.zero;}
+			var values = current.Trim("(",")").Split(",").Convert<float>().ToArray();
+			return new Vector3(values[0],values[1],values[2]);
+		}
+		public static string ToCapitalCase(this string current){
 			return current[0].ToString().ToUpper() + current.Substring(1);
+		}
+		public static string ToTitleCase(this string current){
+			string text = Regex.Replace(current,"(\\B[A-Z])"," $1");
+			text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(text);
+			text = text.Replace("3 D","3D").Replace("2 D","2D");
+			return text;
+		}
+		public static string ToPascalCase(this string current){
+			return current.ToTitleCase().Remove(" ");
+		}
+		public static string ToCamelCase(this string current){
+			return current[0].ToString().ToLower() + current.Substring(1).Remove(" ");
+		}
+		public static short ToShort(this string current){
+			if(current.IsEmpty()){return 0;}
+			return Convert.ToInt16(current);
+		}
+		public static int ToInt(this string current){
+			if(current.IsEmpty()){return 0;}
+			return Convert.ToInt32(current);
+		}
+		public static float ToFloat(this string current){
+			if(current.IsEmpty()){return 0;}
+			return Convert.ToSingle(current);
+		}
+		public static double ToDouble(this string current){
+			if(current.IsEmpty()){return 0;}
+			return Convert.ToDouble(current);
+		}
+		public static bool ToBool(this string current){
+			if(current.IsEmpty()){return false;}
+			string lower = current.ToLower();
+			return lower != "false" && lower != "f" && lower != "0";
+		}
+		public static byte ToByte(this string current){return (byte)current[0];}
+		public static byte[] ToBytes(this string current){return Encoding.ASCII.GetBytes(current);}
+		public static string Serialize(this string current){return current;}
+		public static string Deserialize(this string current,string value){return value;}
+		public static object Deserialize<Type>(this string current){
+			if(typeof(Type) == typeof(Vector3)){return Vector3.zero.Deserialize(current);}
+			else if(typeof(Type) == typeof(float)){return new Single().Deserialize(current);}
+			else if(typeof(Type) == typeof(int)){return new Int32().Deserialize(current);}
+			else if(typeof(Type) == typeof(bool)){return new Boolean().Deserialize(current);}
+			else if(typeof(Type) == typeof(string)){return String.Empty.Deserialize(current);}
+			else if(typeof(Type) == typeof(byte)){return new Byte().Deserialize(current);}
+			else if(typeof(Type) == typeof(short)){return new Int16().Deserialize(current);}
+			else if(typeof(Type) == typeof(double)){return new Double().Deserialize(current);}
+			else if(typeof(Type).IsCollection()){return new Type[0].Deserialize(current);}
+			return null;
 		}
 		//============================
 		// Standard

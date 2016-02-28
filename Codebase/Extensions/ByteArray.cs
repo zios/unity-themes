@@ -26,7 +26,7 @@ namespace Zios{
 		public static double ToDouble(this byte[] current){return BitConverter.ToDouble(current,0);}
 		public static bool ToBool(this byte[] current){return current[0] == 1 ? true : false;}
 		public static char ToChar(this byte[] current){return BitConverter.ToChar(current,0);}
-		public static string ToString(this byte[] current){return Encoding.UTF8.GetString(current);}
+		public static string ToUTFString(this byte[] current){return Encoding.UTF8.GetString(current);}
 		public static Vector3 ToVector3(this byte[] current){return current.ReadVector3();}
 		public static byte[] Append(this byte[] current,object value){
 			current = current.Concat(value.ToBytes());
@@ -36,5 +36,7 @@ namespace Zios{
 			current = value.ToBytes().Concat(current);
 			return current;
 		}
+		public static string Serialize(this byte[] current){return current.ToUTFString();}
+		public static byte[] Deserialize(this byte[] current,string value){return value.ToBytes();}
 	}
 }

@@ -148,11 +148,14 @@ namespace Zios.Interface{
 		}
 		public static Enum DrawMask(this Enum current,Rect area,UnityLabel label=null,GUIStyle style=null,bool indention=false){
 			style = style ?? EditorStyles.popup;
-			Rect labelArea = area.AddWidth(-EditorGUIUtility.labelWidth);
-			Rect valueArea = labelArea.AddX(EditorGUIUtility.labelWidth);
 			string value = current.ToName().Replace(" "," | ").ToTitleCase();
-			if(value.IsEmpty()){value = "None";}
-			label.DrawLabel(labelArea,null,true);
+			Rect valueArea = area;
+			if(!label.IsNull()){
+				Rect labelArea = area.AddWidth(-EditorGUIUtility.labelWidth);
+				valueArea = labelArea.AddX(EditorGUIUtility.labelWidth);
+				if(value.IsEmpty()){value = "None";}
+				label.DrawLabel(labelArea,null,true);
+			}
 			if(GUI.Button(valueArea,value.Trim("| "),style)){
 				var items = current.ToName().Split(" ").ToTitleCase();
 				GenericMenu.MenuFunction2 callback = index=>{
@@ -167,6 +170,7 @@ namespace Zios.Interface{
 				current = (Enum)Enum.ToObject(current.GetType(),newValue);
 				EditorGUIExtensionSpecial.menuValue = null;
 				EditorGUIExtensionSpecial.menuArea = new Rect();
+				GUI.changed = true;
 			}
 			return current;
 		}

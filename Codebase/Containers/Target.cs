@@ -34,7 +34,7 @@ namespace Zios.Containers{
 		public void Clear(){
 			if(!this.disabled){
 				Event.Remove("On Validate",this.Search,this.parent);
-				Event.Remove("On Hierarchy Changed",this.Search,this.parent);
+				Event.Remove("On Components Changed",this.Search,this.parent);
 				this.disabled = true;
 			}
 		}
@@ -51,7 +51,7 @@ namespace Zios.Containers{
 				this.AddSpecial("[PreviousEnabled]",parent.gameObject.GetPreviousSibling());
 				this.AddSpecial("[Root]",parent.gameObject.GetPrefabRoot());
 				Event.Add("On Validate",this.Search,parent);
-				Event.Add("On Hierarchy Changed",this.Search,parent);
+				Event.Add("On Components Changed",this.Search,parent);
 				if(parent is StateMonoBehaviour){
 					var state = (StateMonoBehaviour)parent;
 					GameObject stateObject = state.gameObject;

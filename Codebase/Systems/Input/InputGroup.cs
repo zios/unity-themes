@@ -24,6 +24,7 @@ namespace Zios.Inputs{
 			if(manager.gamepadDeadZone != 0.1f){contents = contents.AddLine("GamepadDeadZone " + manager.gamepadDeadZone);}
 			if(manager.gamepadSensitivity != 1){contents = contents.AddLine("GamepadSensitivity " + manager.gamepadSensitivity);}
 			if(manager.mouseSensitivity != 1){contents = contents.AddLine("MouseSensitivity " + manager.mouseSensitivity);}
+			InputGroup.Setup();
 			foreach(var group in InputManager.instance.groups){
 				foreach(var action in group.actions){
 					var helpPath = FileManager.GetPath(action.helpImage);
@@ -60,6 +61,7 @@ namespace Zios.Inputs{
 				if(name.Contains("GamepadSensitivity")){manager.gamepadSensitivity = value.ToFloat();}
 				if(name.Contains("MouseSensitivity")){manager.mouseSensitivity = value.ToFloat();}
 			}
+			InputGroup.Setup();
 			foreach(var line in remaining){
 				if(line.IsEmpty()){continue;}
 				if(line.ContainsAll("[","-")){

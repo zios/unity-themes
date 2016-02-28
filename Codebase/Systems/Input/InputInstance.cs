@@ -8,8 +8,9 @@ namespace Zios.Inputs{
 		public Dictionary<string,bool> active = new Dictionary<string,bool>();
 		public Dictionary<string,float> intensity = new Dictionary<string,float>();
 		public Dictionary<string,float> maxIntensity = new Dictionary<string,float>();
-		public Dictionary<string,InputAction> actions = new Dictionary<string,InputAction>();
+		public Dictionary<string,InputAction> lookup = new Dictionary<string,InputAction>();
 		public bool manuallyControlled;
+		[Internal] public List<InputAction> actions = new List<InputAction>();
 		[Internal] public AttributeInt state = -1;
 		[Internal] public InputProfile profile;
 		[Internal] public string joystickID;
@@ -50,14 +51,16 @@ namespace Zios.Inputs{
 			base.Awake();
 			this.DefaultRate("Update");
 			this.state.Setup("State",this);
-			this.profile = InputManager.instance.GetInstanceProfile(this);
 			Event.Add("Hold Input",this.HoldInput,this);
 			Event.Add("Release Input",this.ReleaseInput,this);
 			if(Application.isPlaying){
+				this.profile = InputManager.instance.GetInstanceProfile(this);
 				if(this.profile.IsNull() || this.profile.name.IsEmpty()){
 					Utility.DelayCall(()=>InputManager.instance.SelectProfile(this),0.1f);
 				}
 			}
+			Event.Add("On Validate",this.PrepareInput,InputManager.instance);
+			this.PrepareInput();
 		}
 		//===============
 		// General
@@ -68,13 +71,11 @@ namespace Zios.Inputs{
 					this.active.SetValues(Store.UnpackBools(this.active.Count,this.state));
 					this.state = -1;
 				}
-				this.PrepareInput();
 				this.StepInput();
 				return;
 			}
 			if(!this.profile.IsNull() && !this.profile.name.IsEmpty()){
 				this.PrepareGamepad();
-				this.PrepareInput();
 				this.CheckInput();
 				this.StepInput();
 			}
@@ -93,16 +94,24 @@ namespace Zios.Inputs{
 			this.joystickID = "[None]";
 		}
 		public void PrepareInput(){
-			if(this.actions.Count < 1){
+			if(!Application.isPlaying){
+				this.actions.Clear();
 				foreach(var group in InputManager.instance.groups){
 					foreach(var action in group.actions){
-						var actionName = group.name.ToPascalCase() + "-" + action.name.ToPascalCase();
-						this.intensity[actionName] = 0;
-						this.maxIntensity[actionName] = 1;
-						this.active[actionName] = false;
-						this.actions[actionName] = action.Copy();
-						this.actions[actionName].Setup(this.alias,this);
+						var newAction = action.Copy();
+						newAction.name = group.name.ToPascalCase() + "-" + action.name.ToPascalCase();
+						newAction.Setup(this.alias,this);
+						this.actions.Add(newAction);
 					}
+				}
+			}
+			if(this.lookup.Count < 1){
+				foreach(var action in this.actions){
+					action.Setup(this.alias,this);
+					this.lookup[action.name] = action;
+					this.intensity[action.name] = 0;
+					this.maxIntensity[action.name] = 1;
+					this.active[action.name] = false;
 				}
 			}
 		}
@@ -152,11 +161,11 @@ namespace Zios.Inputs{
 			foreach(var item in this.active){
 				var action = item.Key;
 				float goal = item.Value ? this.maxIntensity[action] : 0;
-				this.intensity[action] = this.actions[action].transition.Step(this.intensity[action],goal);
+				this.intensity[action] = this.lookup[action].transition.Step(this.intensity[action],goal);
 			}
 		}
 		public void ClampIntensity(string name){
-			if(!this.actions[name].options.Contains(InputActionOptions.Unclamped)){
+			if(!this.lookup[name].options.Contains(InputActionOptions.Unclamped)){
 				this.maxIntensity[name] = this.maxIntensity[name].Clamp(0,1);
 			}
 		}

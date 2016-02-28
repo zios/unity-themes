@@ -15,6 +15,7 @@ namespace Zios.Events{
 			Event.Call("On Validate");
 		}
 		public virtual void Awake(){
+			Event.Add("On Asset Modifying",this.Loading);
 			Event.Add("On Application Quit",this.Loading);
 			Event.Add("On Enter Play",this.Loading);
 			Event.Add("On Exit Play",this.Loading);
@@ -41,6 +42,7 @@ namespace Zios.Events{
 		}
 		public virtual void Start(){Event.Call("On Start");}
 		public virtual void Update(){
+			Utility.CheckLoaded(false);
 			if(!Application.isLoadingLevel && EventDetector.loading){
 				Event.Call("On Level Was Loaded");
 				float totalTime = Mathf.Max(Time.realtimeSinceStartup-this.loadStart,0);

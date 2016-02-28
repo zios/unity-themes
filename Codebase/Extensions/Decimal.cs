@@ -66,7 +66,7 @@ namespace Zios{
 		}
 		public static decimal Mean(this IEnumerable<decimal> current){return (decimal)current.Average();}
 		public static decimal Median(this IEnumerable<decimal> current){
-			int count = current.Cast<object>().Count();
+			int count = current.Count();
 			var sorted = current.OrderBy(n=>n);
 			decimal midValue = sorted.ElementAt(count/2);
 			decimal median = midValue;

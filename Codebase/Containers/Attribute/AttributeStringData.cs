@@ -11,7 +11,7 @@ namespace Zios.Attributes{
 			if(this.attribute.mode == AttributeMode.Linked){return value;}
 			else if(special == "Lower"){return value.ToLower();}
 			else if(special == "Upper"){return value.ToUpper();}
-			else if(special == "Capitalize"){return value.Capitalize();}
+			else if(special == "Capitalize"){return value.ToCapitalCase();}
 			return value;
 		}
 	}

@@ -29,11 +29,12 @@ namespace Zios.Attributes{
 	[Flags]
 	public enum AttributeDebug : int{
 		Issue          = 0x001,
-		Add            = 0x002,
-		Remove         = 0x004,
-		ProcessTime    = 0x008,
-		ProcessStage   = 0x010,
-		ProcessRefresh = 0x020
+		IssueMinor     = 0x002,
+		Add            = 0x004,
+		Remove         = 0x008,
+		ProcessTime    = 0x010,
+		ProcessStage   = 0x020,
+		ProcessRefresh = 0x040
 	}
 	[Flags]
 	public enum AttributeRepair : int{
@@ -256,7 +257,7 @@ namespace Zios.Attributes{
 				GameObject target = data.target.Get();
 				if(data.reference.IsNull() && !data.referenceID.IsEmpty() && !target.IsNull()){
 					if(!lookup.ContainsKey(target)){
-						if(Attribute.debug.Has("Issue")){Debug.Log("[Attribute] Lookup attempted on -- " + target + " before table built");}
+						if(Attribute.debug.Has("IssueMinor")){Debug.Log("[Attribute] Lookup attempted on -- " + target + " before table built");}
 						break;
 					}
 					if(!Application.isPlaying){
@@ -278,7 +279,7 @@ namespace Zios.Attributes{
 						foreach(var attribute in entries){
 							string path = attribute.Value.info.path;
 							if(path.Equals(data.referencePath)){
-								if(Attribute.debug.Has("Issue")){
+								if(Attribute.debug.Has("IssueMinor")){
 									string message = "[Attribute] ID missing : " + data + ".  Resolved via path : " + data.referencePath;
 									Debug.Log(message,this.info.parent.gameObject);
 								}
@@ -293,7 +294,7 @@ namespace Zios.Attributes{
 							}
 						}
 						if(!resolved && Attribute.debug.Has("Issue")){
-							string message = "[Attribute] ID missing : " + data + ".  Unable to resolve : " + data.referencePath;
+							string message = "[Attribute] ID missing : " + data.path + ".  Unable to find : " + data.referencePath;
 							Debug.LogWarning(message,this.info.parent.gameObject);
 						}
 					}
@@ -353,7 +354,7 @@ namespace Zios.Attributes{
 				Debug.Log("[Attribute] Resolving same name siblings : " + name,current);
 			}
 			if(path != this.info.path){
-				if(Attribute.debug.Has("Issue")){Debug.Log("[Attribute] Resolving same name sibling attributes : " + this.info.fullPath,this.info.parent.gameObject);}
+				if(Attribute.debug.Has("IssueMinor")){Debug.Log("[Attribute] Resolving same name sibling attributes : " + this.info.fullPath,this.info.parent.gameObject);}
 				this.info.parent.CallEvent("On Validate");
 				Utility.SetDirty(this.info.parent);
 			}
@@ -361,7 +362,7 @@ namespace Zios.Attributes{
 		public void FixChanged(string previousID){
 			bool changedID = !previousID.IsEmpty() && this.info.id != previousID;
 			if(changedID){
-				if(Attribute.debug.Has("Issue")){Debug.Log("[Attribute] Resolving changed ID : " + this.info.fullPath,this.info.parent.gameObject);}
+				if(Attribute.debug.Has("IssueMinor")){Debug.Log("[Attribute] Resolving changed ID : " + this.info.fullPath,this.info.parent.gameObject);}
 				var resolve = Attribute.resolve;
 				if(!resolve.ContainsKey(this.info.parent.gameObject)){
 					resolve[this.info.parent.gameObject] = new Dictionary<string,string>();
@@ -471,7 +472,6 @@ namespace Zios.Attributes{
 		// Functionality
 		// ======================
 		public virtual BaseType Get(){
-			if(!this.isSetup){this.Setup("",null);}
 			if(this.getMethod != null){return this.getMethod();}
 			if(this.info.data.Length < 1){
 				if(Attribute.debug.Has("Issue")){Debug.LogWarning("[Attribute] Get : No data found for : " + this.info.fullPath);}

@@ -21,21 +21,25 @@ namespace Zios{
 			foreach(string path in paths){Debug.Log("Saving Changes : " + path);}
 			if(paths.Exists(x=>x.Contains(".unity"))){Event.Call("On Scene Saving");}
 			Event.Call("On Asset Saving");
+			Event.Call("On Asset Modifying");
 			return paths;
 		}
 		public static string OnWillCreateAssets(string path){
 			Debug.Log("Creating : " + path);
 			Event.Call("On Asset Creating");
+			Event.Call("On Asset Modifying");
 			return path;
 		}
 		public static string[] OnWillDeleteAssets(string[] paths,RemoveAssetOptions option){
 			foreach(string path in paths){Debug.Log("Deleting : " + path);}
 			Event.Call("On Asset Deleting");
+			Event.Call("On Asset Modifying");
 			return paths;
 		}
 		public static string OnWillMoveAssets(string path,string destination){
 			Debug.Log("Moving : " + path + " to " + destination);
 			Event.Call("On Asset Moving");
+			Event.Call("On Asset Modifying");
 			return path;
 		}
 	}

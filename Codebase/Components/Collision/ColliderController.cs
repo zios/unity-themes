@@ -75,8 +75,8 @@ namespace Zios.Motion{
 				Event.Register("On Collision Start",collider.gameObject);
 				Event.Register("On Collision End",collider.gameObject);
 			}
-			Event.Add("On Scene Loaded",ColliderController.SetupColliders).SetPermanent();
-			Event.Add("On Hierarchy Changed",ColliderController.SetupColliders).SetPermanent();
+			Event.Add("On Level Was Loaded",ColliderController.SetupColliders).SetPermanent();
+			Event.Add("On Components Changed",ColliderController.SetupColliders).SetPermanent();
 		}
 		//================================
 		// Unity-Specific

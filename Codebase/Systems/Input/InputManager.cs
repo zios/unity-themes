@@ -67,7 +67,6 @@ namespace Zios.Inputs{
 		public void Refresh(){
 			if(Application.isEditor){
 				InputManager.instance = this;
-				InputGroup.Setup();
 				InputGroup.Save();
 				InputGroup.Load();
 			}
@@ -77,7 +76,6 @@ namespace Zios.Inputs{
 			InputProfile.Load();
 			InputInstance.Load();
 			InputGroup.Load();
-			InputGroup.Setup();
 			Console.AddKeyword("showProfiles",this.ShowProfiles);
 			Console.AddKeyword("assignProfile",this.AssignProfile);
 			Console.AddKeyword("createProfile",this.CreateProfile);
@@ -304,7 +302,6 @@ namespace Zios.Inputs{
 				this.instanceProfile[instance.name] = this.activeProfile;
 				instance.joystickID = "";
 				instance.profile = this.activeProfile;
-				instance.actions.Clear();
 				instance.Save();
 			};
 			Event.AddLimited("On Profile Selected",selected,1,this);

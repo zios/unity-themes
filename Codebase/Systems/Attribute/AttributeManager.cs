@@ -31,7 +31,8 @@ namespace Zios.Attributes{
 		[NonSerialized] public static bool safe = false;
 		public int editorRefreshPasses = -1;
 		public bool editorIncludeDisabled = true;
-		public bool refreshOnHierarchyChange = true;
+		public bool refreshOnHierarchyChanged = false;
+		public bool refreshOnComponentsChanged = true;
 		public bool safeMode = true;
 		private float start;
 		private float block;
@@ -88,7 +89,6 @@ namespace Zios.Attributes{
 		public void Setup(){
 			this.stage = 1;
 			this.nextIndex = 0;
-			Locate.SetDirty();
 			Attribute.ready = false;
 			AttributeManager.instance = this;
 			AttributeManager.safe = this.safeMode;
@@ -100,9 +100,10 @@ namespace Zios.Attributes{
 				Event.Register("On Attribute Setup");
 				Event.Register("On Attribute Ready");
 				Event.Register("On Attribute Refresh");
-				Event.Remove("On Hierarchy Changed",AttributeManager.PerformRefresh);
+				Event.Remove("On Components Changed",AttributeManager.PerformRefresh);
 				Event.Add("On Events Reset",AttributeManager.PerformRefresh);
-				if(this.refreshOnHierarchyChange){Event.Add("On Hierarchy Changed",AttributeManager.PerformRefresh);}
+				//if(this.refreshOnHierarchyChanged){Event.Add("On Hierarchy Changed",AttributeManager.PerformRefresh);}
+				if(this.refreshOnComponentsChanged){Event.Add("On Components Changed",AttributeManager.PerformRefresh);}
 			}
 		}
 		public void Process(){

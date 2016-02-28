@@ -23,7 +23,7 @@ namespace Zios{
 				Event.Add("On Asset Changed",Serializer.instance.Save);
 				Event.Add("On Level Was Loaded",Serializer.instance.Setup);
 				Event.Add("On Exit Play",Serializer.instance.Load);
-				//Event.Add("On Scene Loaded",Serializer.instance.Load);
+				//Event.Add("On Level Was Loaded",Serializer.instance.Load);
 			}
 		}
 		public static void Create(){

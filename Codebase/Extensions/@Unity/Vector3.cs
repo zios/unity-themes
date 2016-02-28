@@ -1,9 +1,11 @@
 using UnityEngine;
+using System.Linq;
 namespace Zios{
 	public static class Vector3Extension{
 		//=====================
 		// Conversion
 		//=====================
+		public static string ToString(this Vector3 current){return "("+current.x+","+current.y+","+current.z+")";}
 		public static byte[] ToBytes(this Vector3 current){return current.ToBytes(false);}
 		public static byte[] ToBytes(this Vector3 current,bool pack){
 			if(pack){return Store.PackFloats(current.x,current.y,current.z).ToBytes();}
@@ -22,12 +24,11 @@ namespace Zios{
 		public static float[] ToFloat(this Vector3 current){
 			return new float[3]{current.x,current.y,current.z};
 		}
+		public static string Serialize(this Vector3 current){return current.ToString();}
+		public static Vector3 Deserialize(this Vector3 current,string value){return value.ToVector3();}
 		//=====================
 		// General
 		//=====================
-		public static string Print(this Vector3 current){
-			return "("+current.x+","+current.y+","+current.z+")";
-		}
 		public static Vector3 MoveTowards(this Vector3 current,Vector3 end,Vector3 speed){
 			current.x = current.x.MoveTowards(end.x,speed.x);
 			current.y = current.y.MoveTowards(end.y,speed.y);

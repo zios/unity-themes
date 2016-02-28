@@ -13,7 +13,7 @@ namespace Zios.Inputs{
 		public InputAction(InputAction action){
 			this.name = action.name;
 			this.options = action.options;
-			this.transition = new Transition();
+			this.transition = new Transition(action.transition);
 		}
 		public void Setup(string path,Component parent){
 			this.path = path + "/" + this.name;

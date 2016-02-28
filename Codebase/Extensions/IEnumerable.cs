@@ -22,6 +22,16 @@ namespace Zios{
 		public static bool ContainsAll<T>(this IEnumerable<T> current,IEnumerable<T> other){
 			return !other.Except(current).Any();
 		}
+		public static string Serialize<T>(this IEnumerable<T> current){
+			string output = "";
+			foreach(var value in current){
+				output += value.Serialize()+"-";
+			}
+			return output.TrimRight("-");
+		}
+		public static IEnumerable<T> Deserialize<T>(this IEnumerable<T> current,string value){
+			return value.Split("-").Select(x=>x.Deserialize<T>().As<T>()).ToArray();
+		}
 		//=======================
 		// LINQ-ish
 		//=======================

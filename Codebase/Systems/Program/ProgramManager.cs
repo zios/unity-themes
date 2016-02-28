@@ -17,16 +17,16 @@ namespace Zios{
 		public void OnEnable(){this.Setup();}
 		public void Awake(){this.Setup();}
 		public void Start(){
-			Console.AddShortcut(new string[]{"res","resolution"},"resolution");
-			Console.AddShortcut("quit","closeProgram");
-			Console.AddShortcut("vsync","verticalSync");
+			Console.AddShortcut("changeResolution","res","resolution");
+			Console.AddShortcut("closeProgram","quit");
+			Console.AddShortcut("verticalSync","vsync");
 			Console.AddKeyword("hide",this.DisableGameObject,1);
 			Console.AddKeyword("show",this.EnableGameObject,1);
 			Console.AddKeyword("form",this.ToggleGameObject,1);
 			Console.AddKeyword("instance",this.InstanceGameObject,1);
 			Console.AddKeyword("destroy",this.DestroyGameObject,1);
-			Console.AddCvar("closeProgram",this,"CloseProgram","Close Program");
-			Console.AddCvar("changeResolution",this,"ChangeResolution","Change Resolution");
+			Console.AddKeyword("closeProgram",this.CloseProgram);
+			Console.AddCvarMethod("changeResolution",this,"resolution","Change Resolution","",this.ChangeResolution);
 			Console.AddCvar("maxfps",typeof(Application),"targetFrameRate","Maximum FPS");
 			Console.AddCvar("verticalSync",typeof(QualitySettings),"vSyncCount","Vertical Sync");
 		}
@@ -111,8 +111,8 @@ namespace Zios{
 			}
 			else if(!this.allowResolution){
 				this.allowResolution = true;
-				string log = "^10Program resolution is : ^8| " + size[0] + "^7x^8|" + size[1];
-				if(Application.isPlaying){Debug.Log(log);}
+				//string log = "^10Program resolution is : ^8| " + size[0] + "^7x^8|" + size[1];
+				//if(Application.isPlaying){Debug.Log(log);}
 			}
 		}
 		public void ChangeResolution(string[] values){

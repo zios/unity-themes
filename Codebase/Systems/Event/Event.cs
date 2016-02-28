@@ -92,6 +92,7 @@ namespace Zios.Events{
 		public static Dictionary<object,List<string>> callers = new Dictionary<object,List<string>>();
 		public static Dictionary<object,List<string>> active = new Dictionary<object,List<string>>();
 		public static Dictionary<MethodStep,EventStepper> steppers = new Dictionary<MethodStep,EventStepper>();
+		[NonSerialized] public static string current;
 		[NonSerialized] public static string stepperTitle;
 		[NonSerialized] public static string stepperMessage;
 		public static FixedList<string> eventHistory = new FixedList<string>(15);
@@ -373,6 +374,7 @@ namespace Zios.Events{
 				Event.disabled = (EventDisabled)(-1);
 				return;
 			}
+			Event.current = name;
 			Event.active[target].Add(name);
 			bool hasEvents = Event.HasListeners(target,name);
 			var events = hasEvents ? Event.cache[target][name] : null;
@@ -394,6 +396,7 @@ namespace Zios.Events{
 					Debug.Log(message,target as UnityObject);
 				}
 			}
+			Event.current = "";
 			Event.active[target].Remove(name);
 		}
 		public static void CallChildren(object target,string name,object[] values,bool self=false){

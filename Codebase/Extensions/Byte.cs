@@ -1,4 +1,3 @@
-using System;
 namespace Zios{
 	public static class ByteExtension{
 		//=====================
@@ -11,5 +10,7 @@ namespace Zios{
 		public static double ToDouble(this byte current){return (double)current;}
 		public static bool ToBool(this byte current){return current.ToInt().ToBool();}
 		public static byte[] ToBytes(this byte current){return new byte[1]{current};}
+		public static string Serialize(this byte current){return current.ToString();}
+		public static short Deserialize(this byte current,string value){return value.ToByte();}
 	}
 }

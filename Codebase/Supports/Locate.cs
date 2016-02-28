@@ -8,6 +8,7 @@ namespace Zios{
 	using Events;
 	[InitializeOnLoad]
 	public static class Locate{
+		private static bool setup;
 		private static bool cleanGameObjects = false;
 		private static List<Type> cleanSceneComponents = new List<Type>();
 		private static List<GameObject> cleanSiblings = new List<GameObject>();
@@ -20,6 +21,7 @@ namespace Zios{
 		private static GameObject[] sceneObjects = new GameObject[0];
 		private static GameObject[] enabledObjects = new GameObject[0];
 		private static GameObject[] disabledObjects = new GameObject[0];
+		private static Component[] allComponents = new Component[0];
 		private static Dictionary<Type,Component[]> sceneComponents = new Dictionary<Type,Component[]>();
 		private static Dictionary<Type,Component[]> enabledComponents = new Dictionary<Type,Component[]>();
 		private static Dictionary<Type,Component[]> disabledComponents = new Dictionary<Type,Component[]>();
@@ -27,18 +29,28 @@ namespace Zios{
 		static Locate(){
 			if(!Application.isPlaying){
 				//Event.Add("On Application Quit",Locate.SetDirty);
-				Event.Add("On Scene Loaded",Locate.SetDirty).SetPermanent();
+				Event.Add("On Level Was Loaded",Locate.SetDirty).SetPermanent();
 				Event.Add("On Hierarchy Changed",Locate.SetDirty).SetPermanent();
 				Event.Add("On Asset Changed",()=>Locate.assets.Clear()).SetPermanent();
 			}
-			Locate.SetDirty();
+			Event.Register("On Components Changed");
+			if(!Locate.setup){Locate.SetDirty();}
+		}
+		public static void CheckChanges(){
+			var components = Resources.FindObjectsOfTypeAll<Component>();
+			if(components.Length != Locate.allComponents.Count() && !Locate.allComponents.SequenceEqual(components)){
+				if(Locate.setup){Event.Call("On Components Changed");}
+				Locate.allComponents = components;
+			}
 		}
 		public static void SetDirty(){
+			Locate.CheckChanges();
 			Locate.cleanGameObjects = false;
 			Locate.cleanSceneComponents.Clear();
 			Locate.cleanSiblings.Clear();
 			Locate.objectComponents.Clear();
 			Locate.searchCache.Clear();
+			Locate.setup = true;
 		}
 		public static void SetComponentsDirty<Type>() where Type : Component{Locate.cleanSceneComponents.Remove(typeof(Type));}
 		public static void SetComponentsDirty<Type>(GameObject target) where Type : Component{Locate.objectComponents[target].Remove(typeof(Type));}

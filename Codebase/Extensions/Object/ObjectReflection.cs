@@ -1,33 +1,18 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Security.Cryptography;
-using System.Xml.Serialization;
 using UnityEngine;
 namespace Zios{
-	public static class ObjectExtension{
+	public static partial class ObjectExtension{
 		public const BindingFlags allFlags = BindingFlags.Static|BindingFlags.Instance|BindingFlags.NonPublic|BindingFlags.Public;
 		public const BindingFlags staticFlags = BindingFlags.Static|BindingFlags.Public;
 		public const BindingFlags instanceFlags = BindingFlags.Instance|BindingFlags.NonPublic|BindingFlags.Public;
 		public const BindingFlags privateFlags = BindingFlags.Instance|BindingFlags.NonPublic;
 		public const BindingFlags publicFlags = BindingFlags.Instance|BindingFlags.Public;
-		public static T Clone<T>(this T target) where T : class{
-			if(target == null){
-				return null;
-			}
-			MethodInfo method = target.GetType().GetMethod("MemberwiseClone",privateFlags);
-			if(method != null){
-				return (T)method.Invoke(target,null);
-			}
-			else{
-				return null;
-			}
-		}
 		//=========================
-		// Reflection - Methods
+		// Methods
 		//=========================
 		public static object CallExactMethod(this object current,string name,params object[] parameters){
 			return current.CallExactMethod<object>(name,allFlags,parameters);
@@ -101,22 +86,22 @@ namespace Zios{
 			return current.GetMethods(argumentTypes,"",flags).Select(x=>x.Name).ToList();
 		}
 		//=========================
-		// Reflection - Attributes
+		// Attributes
 		//=========================
 		public static bool HasAttribute(this object current,string name,Type attribute){
 			return current.ListAttributes(name).Exists(x=>x.GetType()==attribute);
 		}
-		public static System.Attribute[] ListAttributes(this object current,string name){
+		public static Attribute[] ListAttributes(this object current,string name){
 			Type type = current is Type ? (Type)current : current.GetType();
 			var property = type.GetProperty(name,allFlags);
 			var field = type.GetField(name,allFlags);
-			System.Attribute[] attributes = new System.Attribute[0];
-			if(field != null){attributes = System.Attribute.GetCustomAttributes(field);}
-			if(property != null){attributes = System.Attribute.GetCustomAttributes(property);}
+			Attribute[] attributes = new Attribute[0];
+			if(field != null){attributes = Attribute.GetCustomAttributes(field);}
+			if(property != null){attributes = Attribute.GetCustomAttributes(property);}
 			return attributes;
 		}
 		//=========================
-		// Reflection - Variables
+		// Variables
 		//=========================
 		public static bool HasVariable(this object current,string name,BindingFlags flags = allFlags){
 			Type type = current is Type ? (Type)current : current.GetType();
@@ -188,7 +173,7 @@ namespace Zios{
 			foreach(FieldInfo field in type.GetFields(flags)){
 				if(onlyTypes != null && !onlyTypes.Contains(field.FieldType)){continue;}
 				if(withoutAttributes != null){
-					var attributes = System.Attribute.GetCustomAttributes(field);
+					var attributes = Attribute.GetCustomAttributes(field);
 					if(attributes.Any(x=>withoutAttributes.Any(y=>y==x.GetType()))){continue;}
 					//if(attributes.Intersect(limitAttributes).Any()){continue;}
 				}
@@ -198,7 +183,7 @@ namespace Zios{
 			foreach(PropertyInfo property in type.GetProperties(flags)){
 				if(onlyTypes != null && !onlyTypes.Contains(property.PropertyType)){continue;}
 				if(withoutAttributes != null){
-					var attributes = System.Attribute.GetCustomAttributes(property);
+					var attributes = Attribute.GetCustomAttributes(property);
 					if(attributes.Any(x=>withoutAttributes.Any(y=>y==x.GetType()))){continue;}
 				}
 				try{variables[property.Name] = property.GetValue(instance,null);}
@@ -213,87 +198,6 @@ namespace Zios{
 			foreach(var name in current.ListVariables(null,null,flags)){
 				current.SetVariable(name,other.GetVariable(name));
 			}
-		}
-		//=========================
-		// Shortcuts - Checks
-		//=========================
-		public static bool IsEmpty(this object current){
-			return current.IsNull() || (current is string && ((string)current).IsEmpty());
-		}
-		public static bool IsNull(this object current){
-			return current == null || current.Equals(null);
-		}
-		public static bool IsStatic(this object current){
-			Type type = current is Type ? (Type)current : current.GetType();
-			return type.IsStatic();
-		}
-		//=========================
-		// Shortcuts - Casts
-		//=========================
-		public static T ChangeType<T>(this object current,T type){
-			return (T)Convert.ChangeType(current,typeof(T));
-		}
-		public static T ChangeType<T>(this object current){
-			return (T)Convert.ChangeType(current,typeof(T));
-		}
-		public static object Box<T>(this T current){
-			return current.AsBox();
-		}
-		public static object AsBox<T>(this T current){
-			return (object)current;
-		}
-		public static object[] AsBoxedArray<T>(this T current){
-			return new object[]{current};
-		}
-		public static List<object> AsBoxedList<T>(this T current){
-			return new List<object>{(object)current};
-		}
-		public static T As<T>(this object current){
-			return (T)current;
-		}
-		public static T[] AsArray<T>(this T current){
-			return new T[]{current};
-		}
-		public static List<T> AsList<T>(this T current){
-			return new List<T>{current};
-		}
-		public static byte[] ToBytes(this object current){
-			if(current is Vector3){return current.As<Vector3>().ToBytes();}
-			else if(current is float){return current.As<float>().ToBytes();}
-			else if(current is int){return current.As<int>().ToBytes();}
-			else if(current is bool){return current.As<bool>().ToBytes();}
-			else if(current is string){return current.As<string>().ToBytes();}
-			else if(current is byte){return current.As<byte>().ToBytes();}
-			else if(current is short){return current.As<short>().ToBytes();}
-			else if(current is double){return current.As<double>().ToBytes();}
-			return new byte[0];
-		}
-		//=========================
-		// Other
-		//=========================
-		public static byte[] CreateHash<T>(this T current) where T : class{
-			using(MemoryStream stream = new MemoryStream()){
-				using(SHA512Managed hash = new SHA512Managed()){
-					XmlSerializer serialize = new XmlSerializer(typeof(T));
-					serialize.Serialize(stream,current);
-					return hash.ComputeHash(stream);
-				}
-			}
-		}
-		public static string GetClassName(this object current){
-			string path = current.GetClassPath();
-			if(path.Contains(".")){
-				return path.Split(".").Last();
-			}
-			return path;
-		}
-		public static string GetClassPath(this object current){
-			return current.GetType().ToString();
-		}
-		public static string GetAlias(this object current){
-			if(current.HasVariable("alias")){return current.GetVariable<string>("alias");}
-			//if(current.HasVariable("name")){return current.GetVariable<string>("name");}
-			return current.GetType().Name;
 		}
 	}
 }

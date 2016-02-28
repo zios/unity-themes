@@ -33,7 +33,7 @@ namespace Zios{
 			Event.Register("On Asset Creating");
 			Event.Register("On Asset Deleting");
 			Event.Register("On Asset Moving");
-			Event.Register("On Scene Loaded");
+			Event.Register("On Scene Started");
 			Event.Register("On Mode Changed");
 			Event.Register("On Enter Play");
 			Event.Register("On Exit Play");
@@ -73,7 +73,7 @@ namespace Zios{
 			if(editor && Application.isPlaying){return;}
 			if(!editor && !Application.isPlaying){return;}
 			if(Time.realtimeSinceStartup < 0.5 && Utility.sceneCheck == 0){
-				Event.Call("On Scene Loaded");
+				Event.Call("On Scene Started");
 				Utility.sceneCheck = 1;
 			}
 			if(Time.realtimeSinceStartup > Utility.sceneCheck){

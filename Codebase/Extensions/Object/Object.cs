@@ -1,0 +1,136 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Collections;
+using System.Security.Cryptography;
+using System.Xml.Serialization;
+using UnityEngine;
+namespace Zios{
+	public static partial class ObjectExtension{
+		//============================
+		// Checks
+		//============================
+		public static T Real<T>(this T current){
+			if(current.IsNull()){return default(T);}
+			return current;
+		}
+		public static T Real<T>(this object current){
+			if(current.IsNull()){return default(T);}
+			return (T)current;
+		}
+		public static bool IsDefault<T>(this T current){
+			return current == null || current.Equals(default(T));
+		}
+		public static bool IsEmpty(this object current){
+			bool isEmptyString = (current is string && ((string)current).IsEmpty());
+			return current.IsNull() || isEmptyString;
+		}
+		public static bool IsNumber(this object current){
+			bool isByte = current is sbyte || current is byte;
+			bool isInteger = current is short || current is ushort || current is int || current is uint || current is long || current is ulong;
+			bool isDecimal = current is float || current is double || current is decimal;
+			return isInteger || isDecimal || isByte;
+		}
+		public static bool IsNull(this object current){
+			return current == null || current.Equals(null);
+		}
+		public static bool IsStatic(this object current){
+			Type type = current is Type ? (Type)current : current.GetType();
+			return type.IsStatic();
+		}
+		//============================
+		// Casts
+		//============================
+		public static object Box<T>(this T current){
+			return current.AsBox();
+		}
+		public static object AsBox<T>(this T current){
+			return (object)current;
+		}
+		public static object[] AsBoxedArray<T>(this T current){
+			return new object[]{current};
+		}
+		public static List<object> AsBoxedList<T>(this T current){
+			return new List<object>{(object)current};
+		}
+		public static T As<T>(this object current){
+			if(current.IsNull()){return default(T);}
+			return (T)current;
+		}
+		public static T[] AsArray<T>(this T current){
+			if(current.IsNull()){return default(T[]);}
+			return new T[]{current};
+		}
+		public static List<T> AsList<T>(this T current){
+			if(current.IsNull()){return default(List<T>);}
+			return new List<T>{current};
+		}
+		//============================
+		// Conversions
+		//============================
+		public static byte[] ToBytes(this object current){
+			if(current is Vector3){return current.As<Vector3>().ToBytes();}
+			else if(current is float){return current.As<float>().ToBytes();}
+			else if(current is int){return current.As<int>().ToBytes();}
+			else if(current is bool){return current.As<bool>().ToBytes();}
+			else if(current is string){return current.As<string>().ToBytes();}
+			else if(current is byte){return current.As<byte>().ToBytes();}
+			else if(current is short){return current.As<short>().ToBytes();}
+			else if(current is double){return current.As<double>().ToBytes();}
+			return new byte[0];
+		}
+		public static string Serialize(this object current){
+			if(current is Vector3){return current.As<Vector3>().Serialize();}
+			else if(current is float){return current.As<float>().Serialize();}
+			else if(current is int){return current.As<int>().Serialize();}
+			else if(current is bool){return current.As<bool>().Serialize();}
+			else if(current is string){return current.As<string>().Serialize();}
+			else if(current is byte){return current.As<byte>().Serialize();}
+			else if(current is short){return current.As<short>().Serialize();}
+			else if(current is double){return current.As<double>().Serialize();}
+			else if(current is ICollection){return current.As<IEnumerable<object>>().Serialize();}
+			return current.ToString();
+		}
+		//============================
+		// Other
+		//============================
+		public static T Clone<T>(this T target) where T : class{
+			if(target == null){
+				return null;
+			}
+			MethodInfo method = target.GetType().GetMethod("MemberwiseClone",privateFlags);
+			if(method != null){
+				return (T)method.Invoke(target,null);
+			}
+			else{
+				return null;
+			}
+		}
+		public static byte[] CreateHash<T>(this T current) where T : class{
+			using(MemoryStream stream = new MemoryStream()){
+				using(SHA512Managed hash = new SHA512Managed()){
+					XmlSerializer serialize = new XmlSerializer(typeof(T));
+					serialize.Serialize(stream,current);
+					return hash.ComputeHash(stream);
+				}
+			}
+		}
+		public static string GetClassName(this object current){
+			string path = current.GetClassPath();
+			if(path.Contains(".")){
+				return path.Split(".").Last();
+			}
+			return path;
+		}
+		public static string GetClassPath(this object current){
+			return current.GetType().ToString();
+		}
+		public static string GetAlias(this object current){
+			if(current.HasVariable("alias")){return current.GetVariable<string>("alias");}
+			//if(current.HasVariable("name")){return current.GetVariable<string>("name");}
+			return current.GetType().Name;
+		}
+	}
+}

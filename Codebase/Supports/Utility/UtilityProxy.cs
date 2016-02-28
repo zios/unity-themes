@@ -1,6 +1,7 @@
 #pragma warning disable 0162
 #pragma warning disable 0618
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityObject = UnityEngine.Object;
 namespace Zios{
@@ -10,7 +11,7 @@ namespace Zios{
 	#endif
 	public static partial class Utility{
 		//============================
-		// Proxy - EditorUtility
+		// EditorUtility
 		//============================
 		public static bool DisplayCancelableProgressBar(string title,string message,float percent){
 			#if UNITY_EDITOR
@@ -24,7 +25,7 @@ namespace Zios{
 			#endif
 		}
 		//============================
-		// Proxy - AssetDatabase
+		// AssetDatabase
 		//============================
 		public static void StartAssetEditing(){
 			#if UNITY_EDITOR
@@ -57,7 +58,7 @@ namespace Zios{
 			#endif
 		}
 		//============================
-		// Proxy - PrefabUtility
+		// PrefabUtility
 		//============================
 		public static UnityObject GetPrefab(UnityObject target){
 			#if UNITY_EDITOR
@@ -94,7 +95,7 @@ namespace Zios{
 			#endif
 		}
 		//============================
-		// Proxy - EditorApplication
+		// EditorApplication
 		//============================
 		public static bool IsPaused(){
 			#if UNITY_EDITOR
@@ -115,7 +116,7 @@ namespace Zios{
 			return Application.isPlaying;
 		}
 		//============================
-		// Proxy - Undo
+		// Undo
 		//============================
 		public static void RecordObject(UnityObject target,string name){
 			#if UNITY_EDITOR
@@ -128,7 +129,33 @@ namespace Zios{
 			#endif
 		}
 		//============================
-		// Proxy - Other
+		// Prefs
+		//============================
+		public static void SavePlayerPref(string name,object value){
+			if(value is Vector3){PlayerPrefs.SetString(name,value.As<Vector3>().ToString());}
+			else if(value is float){PlayerPrefs.SetFloat(name,value.As<float>());}
+			else if(value is int){PlayerPrefs.SetInt(name,value.As<int>());}
+			else if(value is bool){PlayerPrefs.SetInt(name,value.As<bool>().ToInt());}
+			else if(value is string){PlayerPrefs.SetString(name,value.As<string>().ToString());}
+			else if(value is byte){PlayerPrefs.SetString(name,value.As<byte>().ToString());}
+			else if(value is short){PlayerPrefs.SetInt(name,value.As<short>().ToInt());}
+			else if(value is double){PlayerPrefs.SetFloat(name,value.As<double>().ToFloat());}
+			else if(value is ICollection){PlayerPrefs.SetString(name,value.As<IEnumerable>().Serialize());}
+		}
+		public static Type LoadPlayerPref<Type>(string name,object fallback=null){
+			if(typeof(Type) == typeof(Vector3)){return (Type)PlayerPrefs.GetString(name,fallback.Real<Vector3>().Serialize()).Deserialize<Vector3>().Box();}
+			else if(typeof(Type) == typeof(float)){return (Type)PlayerPrefs.GetFloat(name,fallback.Real<float>()).Box();}
+			else if(typeof(Type) == typeof(int)){return (Type)PlayerPrefs.GetInt(name,fallback.Real<int>()).Box();}
+			else if(typeof(Type) == typeof(bool)){return (Type)PlayerPrefs.GetInt(name,fallback.Real<int>()).Box();}
+			else if(typeof(Type) == typeof(string)){return (Type)PlayerPrefs.GetString(name,fallback.Real<string>()).Box();}
+			else if(typeof(Type) == typeof(byte)){return (Type)PlayerPrefs.GetString(name,fallback.Real<byte>().Serialize()).Box();}
+			else if(typeof(Type) == typeof(short)){return (Type)PlayerPrefs.GetInt(name,fallback.Real<short>().ToInt()).Box();}
+			else if(typeof(Type) == typeof(double)){return (Type)PlayerPrefs.GetFloat(name,fallback.Real<double>().ToFloat()).Box();}
+			else if(typeof(Type).IsCollection()){return (Type)PlayerPrefs.GetString(name,fallback.Real<IEnumerable>().Serialize()).Deserialize<Type>().Box();}
+			return default(Type);
+		}
+		//============================
+		// Other
 		//============================
 		public static void UpdateSelection(){
 			#if UNITY_EDITOR
@@ -228,7 +255,7 @@ namespace Zios{
 		}
 		public static int GetLocalID(int instanceID){
 			#if UNITY_EDITOR
-			return UnityEditor.Unsupported.GetLocalIdentifierInFile(instanceID);
+			return Unsupported.GetLocalIdentifierInFile(instanceID);
 			#endif
 			return 0;
 		}
@@ -245,4 +272,5 @@ namespace Zios{
 			return false;
 		}
 	}
+	
 }

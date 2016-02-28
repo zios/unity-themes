@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using UnityEngine;
 namespace Zios{
 	using Events;
@@ -24,9 +25,8 @@ namespace Zios{
 		}
 		public void Reset(){
 			if(this.disabled || Hook.disabled){return;}
-			Event.Add("On Scene Loaded",new Method(this.resetMethod)).SetPermanent();
-			Event.Add("On Hierarchy Changed",new Method(this.resetMethod)).SetPermanent();
-			Event.Add("On Exit Play",new Method(this.resetMethod)).SetPermanent();
+			Event.Add("On Level Was Loaded",new Method(this.resetMethod)).SetPermanent();
+			Event.Add("On Components Changed",new Method(this.resetMethod)).SetPermanent();
 			this.setup = false;
 			this.createMethod();
 		}
@@ -35,6 +35,8 @@ namespace Zios{
 			this.setup = true;
 			Func<Singleton> getInstance = ()=>typeof(Singleton).GetVariable<Singleton>("instance");
 			Action<Singleton> setInstance = (Singleton value)=>typeof(Singleton).SetVariable("instance",value);
+			var rootObjects = Locate.GetSceneObjects().Where(x=>!x.IsNull()&&x.transform.parent.IsNull());
+			rootObjects.Where(x=>x.name!="@Main"&&x.name.Contains("@Main")).ToList().ForEach(x=>Utility.Destroy(x));
 			if(getInstance().IsNull()){
 				var path = Locate.GetScenePath("@Main");
 				setInstance(path.GetComponent<Singleton>());

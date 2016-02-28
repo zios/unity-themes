@@ -11,6 +11,8 @@ namespace Zios{
 		public static byte ToByte(this float current){return (byte)current;}
 		public static short ToShort(this float current){return (short)current;}
 		public static byte[] ToBytes(this float current){return BitConverter.GetBytes(current);}
+		public static string Serialize(this float current){return current.ToString();}
+		public static float Deserialize(this float current,string value){return value.ToFloat();}
 		//=====================
 		// Numeric
 		//=====================
@@ -71,7 +73,7 @@ namespace Zios{
 		}
 		public static float Mean(this IEnumerable<float> current){return (float)current.Average();}
 		public static float Median(this IEnumerable<float> current){
-			int count = current.Cast<object>().Count();
+			int count = current.Count();
 			var sorted = current.OrderBy(n=>n);
 			float midValue = sorted.ElementAt(count/2);
 			float median = midValue;

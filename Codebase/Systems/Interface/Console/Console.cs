@@ -141,17 +141,17 @@ namespace Zios.Interface{
 			Console.AddKeyword("consoleDump",Console.SaveConsoleFile,0,Console.help[15]);
 			Console.AddKeyword("consoleClear",Console.ClearConsole,0,Console.help[16]);
 			Console.AddKeyword("consoleLoadConfig",Console.LoadConfig,1,Console.help[17]);
-			Console.AddShortcut("repeat","consoleRepeat");
-			Console.AddShortcut("con","console");
-			Console.AddShortcut("reset","consoleResetValue");
-			Console.AddShortcut("resetCvars","consoleResetCvars");
-			Console.AddShortcut("resetBinds","consoleResetBinds");
-			Console.AddShortcut(new string[]{"clear","cls"},"consoleClear");
-			Console.AddShortcut(new string[]{"keyToggle","switch"},"consoleToggle");
-			Console.AddShortcut(new string[]{"bind","trigger"},"consoleBind");
-			Console.AddShortcut(new string[]{"showColors","listColors"},"consoleListColors");
-			Console.AddShortcut(new string[]{"showFonts","listFonts"},"consoleListFonts");
-			Console.AddShortcut(new string[]{"showBinds","listBinds"},"consoleListBinds");
+			Console.AddShortcut("consoleRepeat","repeat");
+			Console.AddShortcut("console","con");
+			Console.AddShortcut("consoleResetValue","reset");
+			Console.AddShortcut("consoleResetCvars","resetCvars");
+			Console.AddShortcut("consoleResetBinds","resetBinds");
+			Console.AddShortcut("consoleClear","clear","cls");
+			Console.AddShortcut("consoleToggle","keyToggle","switch");
+			Console.AddShortcut("consoleBind","bind","trigger");
+			Console.AddShortcut("consoleListColors","showColors","listColors");
+			Console.AddShortcut("consoleListFonts","showFonts","listFonts");
+			Console.AddShortcut("consoleListBinds","showBinds","listBinds");
 			Console.LoadBinds();
 			Utility.DelayCall(()=>Console.LoadConfig(this.configFile));
 		}
@@ -398,15 +398,10 @@ namespace Zios.Interface{
 				Cvar data = item.Value;
 				object current = data.value.Get();
 				if(Application.isWebPlayer || Console.instance.configFile == ""){
-					Type type = current.GetType();
-					if(type == typeof(float)){PlayerPrefs.SetFloat(data.fullName,(float)current);}
-					else if(type == typeof(string)){PlayerPrefs.SetString(data.fullName,(string)current);}
-					else if(type == typeof(int)){PlayerPrefs.SetInt(data.fullName,(int)current);}
-					else if(type == typeof(byte)){PlayerPrefs.SetInt(data.fullName,Convert.ToInt16(current));}
-					else if(type == typeof(bool)){PlayerPrefs.SetInt(data.fullName,(bool)current == true ? 1 : 0);}
+					Utility.SavePlayerPref(data.fullName,current);
 				}
 				else{
-					Console.configOutput.Add(item.Key + " " + current);
+					Console.configOutput.Add(item.Key + " " + current.Serialize());
 				}
 			}
 		}
@@ -464,19 +459,19 @@ namespace Zios.Interface{
 			call.minimumParameters = minimumParameters;
 			Console.AddKeyword(name,call);
 		}
-		public static void AddShortcut(string[] names,string replace){
+		public static void AddShortcut(string term,params string[] shortcuts){
 			if(!Application.isPlaying){return;}
-			foreach(string name in names){
-				Console.AddShortcut(name,replace);
+			foreach(string name in shortcuts){
+				Console.AddShortcut(term,name);
 			}
 		}
-		public static void AddShortcut(string name,string replace){
+		public static void AddShortcut(string term,string shortcut){
 			if(!Application.isPlaying){return;}
-			if(Console.shortcuts.ContainsKey(name)){
-				Debug.LogWarning("[Console] Already has registered Shortcut for -- " + name);
+			if(Console.shortcuts.ContainsKey(shortcut)){
+				Debug.LogWarning("[Console] Already has registered Shortcut for -- " + shortcut);
 				return;
 			}
-			Console.shortcuts.Add(name,replace);
+			Console.shortcuts[shortcut] = term;
 		}
 		//===========================
 		// Config

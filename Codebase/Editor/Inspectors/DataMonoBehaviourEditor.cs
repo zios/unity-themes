@@ -13,7 +13,7 @@ namespace Zios.Editors{
 		}
 		public override void OnInspectorGUI(){
 			if(!UnityEvent.current.IsUseful()){return;}
-			Event.Add("On Hierarchy Changed",DataMonoBehaviourEditor.CheckDependents);
+			Event.Add("On Components Changed",DataMonoBehaviourEditor.CheckDependents);
 			Event.Add("On Attributes Ready",DataMonoBehaviourEditor.CheckDependents);
 			var target = DataMonoBehaviourEditor.current = (DataMonoBehaviour)this.target;
 			bool targetsMissing = false;
