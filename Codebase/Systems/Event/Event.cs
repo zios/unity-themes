@@ -374,8 +374,7 @@ namespace Zios.Events{
 				Event.disabled = (EventDisabled)(-1);
 				return;
 			}
-			Event.current = name;
-			Event.active[target].Add(name);
+			target = Event.Verify(target);
 			bool hasEvents = Event.HasListeners(target,name);
 			var events = hasEvents ? Event.cache[target][name] : null;
 			int count = hasEvents ? events.Count : 0;
@@ -384,9 +383,13 @@ namespace Zios.Events{
 			bool debugTime = canDebug && Event.debug.Has("CallTimer");
 			float duration = Time.realtimeSinceStartup;
 			if(hasEvents){
+				Event.current = name;
+				Event.active[target].Add(name);
 				foreach(var item in events.Copy()){
 					item.Value.Call(debugDeep,debugTime,values);
 				}
+				Event.current = "";
+				Event.active[target].Remove(name);
 			}
 			if(debugTime && (!debugDeep || count < 1)){
 				duration = Time.realtimeSinceStartup - duration;
@@ -396,8 +399,6 @@ namespace Zios.Events{
 					Debug.Log(message,target as UnityObject);
 				}
 			}
-			Event.current = "";
-			Event.active[target].Remove(name);
 		}
 		public static void CallChildren(object target,string name,object[] values,bool self=false){
 			if(Event.disabled.Has("Call")){return;}

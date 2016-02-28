@@ -63,7 +63,7 @@ namespace Zios.Editors{
 			string name = eventTarget.name.Get().Draw(valueRect);
 			eventTarget.name.Set(name);
 			if(GUI.changed){
-				property.serializedObject.targetObject.CallEvent("On Validate");
+				property.serializedObject.targetObject.DelayEvent("On Validate",1);
 			}
 		}
 	}
