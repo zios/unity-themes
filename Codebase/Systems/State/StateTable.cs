@@ -14,8 +14,9 @@ namespace Zios.Actions{
 		public bool manual;
 		public bool advanced;
 		public AttributeBool external = true;
-		public List<StateMonoBehaviour> scripts = new List<StateMonoBehaviour>();
 		public List<StateRow[]> tables = new List<StateRow[]>();
+		public List<StateMonoBehaviour> scripts = new List<StateMonoBehaviour>();
+		public Dictionary<StateMonoBehaviour,bool> scriptUsed = new Dictionary<StateMonoBehaviour,bool>();
 		[NonSerialized] public bool dirty;
 		public override void Awake(){
 			base.Awake();
@@ -33,18 +34,31 @@ namespace Zios.Actions{
 		public override void Step(){
 			base.Step();
 			foreach(var script in this.scripts){
-				if(!script.IsEnabled()){continue;}
-				if(script.nextState != null && (bool)script.nextState != script.used){
+				if(!script.IsEnabled() || script.nextState.IsNull()){continue;}
+				bool nextState = (bool)script.nextState;
+				if(nextState != script.used){
 					this.dirty = true;
 					script.controller.dirty = true;
 					if(script is StateTable){script.As<StateTable>().dirty = true;}
-					script.Apply((bool)script.nextState);
+					if(script.used && !nextState){
+						this.scriptUsed[script] = true;
+					}
+					script.Apply(nextState);
 				}
 			}
 			if(this.dirty){
 				this.dirty = false;
 				this.CallEvent("On State Update");
 			}
+		}
+		public override void Apply(bool state){
+			if(this.active && !state){
+				if(!this.controller.IsNull()){
+					this.controller.scriptUsed[this] = true;
+				}
+				this.scriptUsed.Clear();
+			}
+			base.Apply(state);
 		}
 		public static void RefreshTables(){
 			var tables = Locate.GetSceneComponents<StateTable>().Where(x=>!x.IsNull()).OrderBy(x=>x.GetPath().Length);
@@ -94,7 +108,7 @@ namespace Zios.Actions{
 					foreach(StateRowData requirements in row.requirements){
 						foreach(StateRequirement requirement in requirements.data){
 							if(!requirement.target.IsEnabled()){continue;}
-							bool noRequirements = !requirement.requireOn && !requirement.requireOff;
+							bool noRequirements = !requirement.requireOn && !requirement.requireOff && !requirement.requireUsed;
 							if(noRequirements){continue;}
 							bool isExternalColumn = requirement.name == "@External";
 							if(isExternalColumn && !this.manual){continue;}
@@ -103,7 +117,8 @@ namespace Zios.Actions{
 							if(isExternalColumn){state = this.external.Get();}
 							bool mismatchOn = requirement.requireOn && !state;
 							bool mismatchOff = requirement.requireOff && state;
-							isUsable = !(mismatchOn || mismatchOff);
+							bool mismatchUsed = requirement.requireUsed && !this.scriptUsed.AddNew(requirement.target);
+							isUsable = !(mismatchOn || mismatchOff || mismatchUsed);
 							isEmpty = false;
 							if(!isUsable){break;}
 						}
@@ -347,6 +362,7 @@ namespace Zios.Actions{
 	public class StateRequirement : StateBase{
 		public bool requireOn;
 		public bool requireOff;
+		public bool requireUsed;
 		public StateRequirement(){}
 		public StateRequirement(string name="",StateMonoBehaviour script=null,StateTable stateTable=null){
 			this.Setup(name,script,stateTable);

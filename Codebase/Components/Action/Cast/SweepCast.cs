@@ -2,6 +2,7 @@ using UnityEngine;
 namespace Zios.Actions.CastComponents{
 	using Attributes;
 	using Motion;
+	using Events;
 	[AddComponentMenu("Zios/Component/Action/Cast/Sweepcast")]
 	public class SweepCast : StateMonoBehaviour{
 		public AttributeGameObject source = new AttributeGameObject();
@@ -22,14 +23,18 @@ namespace Zios.Actions.CastComponents{
 			this.hitPoint.Setup("Hit Point",this);
 			this.hitNormal.Setup("Hit Normal",this);
 			this.hitDistance.Setup("Hit Distance",this);
+			Event.Add("On Validate",this.FixDistance,this);
 			this.AddDependent(this.source,false,typeof(Rigidbody),typeof(ColliderController));
+			this.FixDistance();
+		}
+		public void FixDistance(){
+			if(this.distance.Get() <= 0){this.distance.Set(Mathf.Infinity);}
 		}
 		public override void Use(){
 			bool state = false;
 			if(!this.source.Get().IsNull() && !this.source.Get().GetComponent<Rigidbody>().IsNull()){
-				var rigidBody = this.source.Get().GetComponent<Rigidbody>();
-				float distance = this.distance == -1 ? Mathf.Infinity : this.distance.Get();
-				state = rigidBody.SweepTest(this.goal,out this.castHit,distance);
+				var rigidbody = this.source.Get().GetComponent<Rigidbody>();
+				state = rigidbody.SweepTest(this.goal,out this.castHit,distance);
 				if(state){
 					this.hit.Set(this.castHit.collider.gameObject);
 					this.hitPoint.Set(this.castHit.point);

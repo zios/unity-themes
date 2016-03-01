@@ -12,6 +12,7 @@ namespace Zios.Editors.StateEditors{
 			if(window.target.manual || requirement.name != "@External"){
 				if(requirement.requireOn){state = 1;}
 				if(requirement.requireOff){state = 2;}
+				if(requirement.requireUsed){state = 3;}
 				this.DrawStyle(state);
 				this.CheckClicked();
 			}
@@ -22,13 +23,14 @@ namespace Zios.Editors.StateEditors{
 			var stateRow = (StateRow)this.row.target;
 			var row = this.row.target.As<StateRow>();
 			int rowIndex = window.rowIndex[row];
-			var mode = (HeaderMode)EditorPrefs.GetInt("StateWindow-Mode",2);
+			var mode = (HeaderMode)EditorPrefs.GetInt("StateWindow-Mode",3);
 			GUIStyle style = new GUIStyle(GUI.skin.button);
 			value = stateRow.requirements.Length > 1 ? (rowIndex+1).ToString() : "";
 			if(this.row.selected){style = Style.Get("buttonSelected",true);}
 			else if(state == -1){style = Style.Get("buttonDisabled",true);}
 			else if(state == 1){style = Style.Get("buttonOn",true);}
 			else if(state == 2){style = Style.Get("buttonOff",true);}
+			else if(state == 3){style = Style.Get("buttonUsed",true);}
 			style.fixedWidth = window.cellSize;
 			if(mode == HeaderMode.HorizontalFit){
 				bool lastEnabled = this.row.fields.Last(x=>!x.disabled) == this;
@@ -51,13 +53,16 @@ namespace Zios.Editors.StateEditors{
 			var requirement = (StateRequirement)this.target;
 			if(requirement.requireOn){state = 1;}
 			if(requirement.requireOff){state = 2;}
+			if(requirement.requireUsed){state = 3;}
 			int amount = button == 0 ? 1 : -1;
 			state += amount;
-			state = state.Modulus(3);
+			state = state.Modulus(4);
 			requirement.requireOn = false;
 			requirement.requireOff = false;
+			requirement.requireUsed = false;
 			if(state == 1){requirement.requireOn = true;}
 			if(state == 2){requirement.requireOff = true;}
+			if(state == 3){requirement.requireUsed = true;}
 			Utility.SetDirty(window.target);
 			window.target.UpdateStates();
 			window.Repaint();
