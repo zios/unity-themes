@@ -71,6 +71,7 @@ namespace Zios.Motion{
 		private static Dictionary<GameObject,ColliderController> instances = new Dictionary<GameObject,ColliderController>();
 		public static void SetupColliders(){
 			foreach(var collider in Locate.GetSceneComponents<Collider>()){
+				if(collider.IsNull() || collider.gameObject.IsNull()){continue;}
 				Event.Register("On Collision",collider.gameObject);
 				Event.Register("On Collision Start",collider.gameObject);
 				Event.Register("On Collision End",collider.gameObject);

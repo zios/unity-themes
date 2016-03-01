@@ -94,7 +94,7 @@ namespace Zios.Inputs{
 			this.joystickID = "[None]";
 		}
 		public void PrepareInput(){
-			if(!Application.isPlaying){
+			if(!Application.isPlaying && !InputManager.instance.IsNull()){
 				this.actions.Clear();
 				foreach(var group in InputManager.instance.groups){
 					foreach(var action in group.actions){

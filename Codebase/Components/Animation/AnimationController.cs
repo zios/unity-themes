@@ -12,6 +12,7 @@ namespace Zios.Animations{
 		public float weight = -1;
 		public float transitionIn = -1;
 		public float transitionOut = -1;
+		public bool rewindOnPlay = true;
 		public AnimationData currentAnimation;
 		public AnimationState state;
 		[NonSerialized] public float originalWeight;
@@ -188,7 +189,7 @@ namespace Zios.Animations{
 				}
 				this.current[name] = this.lookup[name];
 				this.current[name].active = true;
-				this.GetComponent<Animation>().Rewind(name);
+				if(this.current[name].rewindOnPlay){this.GetComponent<Animation>().Rewind(name);}
 				this.GetComponent<Animation>().Blend(name,this.lookup[name].weight,this.lookup[name].transitionIn);
 			}
 		}
