@@ -190,7 +190,6 @@ namespace Zios{
 				bool correctPath = path != "" ? file.path.Contains(path,ignoreCase) : true;
 				bool wildMatch = wildcard && (name.IsEmpty() || file.name.Contains(name.Remove("*"),ignoreCase));
 				if(correctPath && (wildMatch || file.name.Matches(name,ignoreCase))){
-
 					results.Add(file);
 				}
 			}
@@ -205,6 +204,9 @@ namespace Zios{
 			}
 			#endif
 			return "";
+		}
+		public static FileData GetFile(UnityObject target){
+			return FileManager.Find(FileManager.GetPath(target,false));
 		}
 		public static T GetAsset<T>(UnityObject target){
 			#if UNITY_EDITOR

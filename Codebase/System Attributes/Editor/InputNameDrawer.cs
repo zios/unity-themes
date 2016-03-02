@@ -37,7 +37,7 @@ namespace Zios.Editors{
 				if(target is string){property.stringValue = value;}
 				parent.CallEvent("On Validate");
 				property.serializedObject.Update();
-				Utility.SetDirty(parent); 
+				Utility.SetDirty(parent);
 			}
 		}
 	}

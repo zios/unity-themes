@@ -35,9 +35,9 @@ namespace Zios.Editors{
 			this.shaders = this.shaders.Remove(this.goal).Resize(this.sourceCount);
 			this.labelWidth = GUILayout.Width(Screen.width/2-20);
 			this.sourceCount = Mathf.Max(1,this.sourceCount.DrawInt("Source Count"));
-			if(EditorGUILayoutExtensionSpecial.DrawFoldout("Shaders")){this.DrawShaders();}
+			if("Shaders".DrawFoldout()){this.DrawShaders();}
 			this.BuildKeywords();
-			if(EditorGUILayoutExtensionSpecial.DrawFoldout("Keywords")){this.DrawKeywords();}
+			if("Keywords".DrawFoldout()){this.DrawKeywords();}
 			if("Process".DrawButton()){this.Process();}
 			EditorGUILayout.EndScrollView();
 		}
@@ -69,7 +69,7 @@ namespace Zios.Editors{
 			GUI.enabled = false;
 			foreach(var info in this.keywordMap){
 				GUILayout.BeginHorizontal();
-				info.name.Draw(info.type,GUI.skin.GetStyle("TextField").Alignment("MiddleRight"),true);
+				info.name.Draw(info.type,GUI.skin.GetStyle("TextField").Alignment("MiddleRight"));
 				GUILayout.EndHorizontal();
 			}
 			GUI.enabled = true;

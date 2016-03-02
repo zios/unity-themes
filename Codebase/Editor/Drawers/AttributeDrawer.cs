@@ -161,7 +161,7 @@ namespace Zios.Editors{
 			}
 			if(data is AttributeFloatData){
 				AttributeFloatData floatData = (AttributeFloatData)data;
-				floatData.Set(floatData.value.Draw(area,label,null,true));
+				floatData.Set(floatData.value.Draw(area,label));
 			}
 			if(data is AttributeIntData){
 				AttributeIntData intData = (AttributeIntData)data;
@@ -169,11 +169,11 @@ namespace Zios.Editors{
 			}
 			if(data is AttributeStringData){
 				AttributeStringData stringData = (AttributeStringData)data;
-				stringData.Set(stringData.value.Draw(area,label,null,true));
+				stringData.Set(stringData.value.Draw(area,label));
 			}
 			if(data is AttributeBoolData){
 				AttributeBoolData boolData = (AttributeBoolData)data;
-				boolData.Set(boolData.value.Draw(area,label,null,true));
+				boolData.Set(boolData.value.Draw(area,label));
 			}
 			if(data is AttributeVector3Data){
 				AttributeVector3Data vector3Data = (AttributeVector3Data)data;

@@ -18,10 +18,10 @@ namespace Zios.Editors{
 			if("Transition".DrawFoldout(area,transition.path,true)){
 				GUI.changed = false;
 				EditorGUI.indentLevel += 1;
-				transition.time.Set(transition.time.Get().Draw(area.AddY(spacing+2),"Time",null,true));
-				transition.speed.Set(transition.speed.Get().Draw(area.AddY(spacing*2+4),"Speed",null,true));
-				transition.acceleration = transition.acceleration.Draw(area.AddY(spacing*3+6),"Acceleration",true);
-				transition.deceleration = transition.deceleration.Draw(area.AddY(spacing*4+8),"Deceleration",true);
+				transition.time.Set(transition.time.Get().Draw(area.AddY(spacing+2),"Time"));
+				transition.speed.Set(transition.speed.Get().Draw(area.AddY(spacing*2+4),"Speed"));
+				transition.acceleration = transition.acceleration.Draw(area.AddY(spacing*3+6),"Acceleration");
+				transition.deceleration = transition.deceleration.Draw(area.AddY(spacing*4+8),"Deceleration");
 				EditorGUI.indentLevel -= 1;
 				if(GUI.changed){
 					property.serializedObject.targetObject.DelayEvent("On Validate",1);

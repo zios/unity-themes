@@ -40,7 +40,7 @@ namespace Zios.Actions{
 			else if(!this.usable){this.End();}
 			else if(this.active){
 				this.active.Set(false);
-				this.controller.dirty = true;
+				if(!this.controller.IsNull()){this.controller.dirty = true;}
 			}
 		}
 		public virtual void Use(){this.Toggle(true);}

@@ -139,7 +139,9 @@ public class VariableMaterial{
 			var allowed = new Stack<bool?>();
 			int tabs = -1;
 			text = text.Replace("\\\r\n","");
+			int lineNumber = 0;
 			foreach(string current in text.Split("\r\n").Skip(1)){
+				lineNumber += 1;
 				if(current.IsEmpty()){continue;}
 				string line = current;
 				bool hideBlock = allowed.Count > 0 && allowed.Peek() != true;
