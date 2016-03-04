@@ -30,6 +30,7 @@ namespace Zios.Editors{
 		public bool visible = true;
 		public Method dirtyEvent;
 		public override void OnInspectorGUI(){
+			Utility.GetInspectors().ForEach(x=>x.wantsMouseMove = true);
 			if(!UnityEvent.current.IsUseful()){return;}
 			if(this.target is MonoBehaviour && this.target.As<MonoBehaviour>().IsPrefab()){return;}
 			this.BeginArea();
@@ -39,6 +40,9 @@ namespace Zios.Editors{
 				this.CheckChanges();
 				return;
 			}*/
+			if(UnityEvent.current.type == EventType.MouseMove){
+				Utility.GetInspectors().ForEach(x=>Utility.DelayCall(x.Repaint,0.01f));
+			}
 			bool hideAllDefault = EditorPrefs.GetBool("MonoBehaviourEditor-HideAllDefault",false);
 			this.hideDefault = EditorPrefs.GetBool("MonoBehaviourEditor-"+this.target.GetInstanceID()+"HideDefault",false);
 			bool hideDefault = hideAllDefault || this.hideDefault;

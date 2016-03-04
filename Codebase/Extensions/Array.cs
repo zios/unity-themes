@@ -98,6 +98,11 @@ namespace Zios{
 			}
 			return true;
 		}
+		public static void ForEach<T>(this T[] current,Action<T> method){
+			for(int index=0;index<current.Length;++index){
+				method(current[index]);
+			}
+		}
 		//=======================
 		// Float
 		//=======================
