@@ -20,6 +20,7 @@ namespace Zios.Editors.StateEditors{
 		private string headerColor;
 		private string onColor;
 		private string offColor;
+		private string usedColor;
 		private GUIStyle labelStyle;
 		private GUIStyle warningStyle;
 		private GUIStyle boxStyle;
@@ -41,12 +42,13 @@ namespace Zios.Editors.StateEditors{
 				this.skin = FileManager.GetAsset<GUISkin>("Gentleface-" + skinName + ".guiskin");
 			}
 			GUI.skin = this.skin;
-			int fixedWidth = Class.isFixed ? 170 : (Screen.width/2)-18;
+			int fixedWidth = Class.isFixed ? 200 : (Screen.width/2)-18;
 			this.headerColor = EditorGUIUtility.isProSkin ? "#AAAAAA" : "#555555";
 			this.nameColor = EditorGUIUtility.isProSkin ? "#CCCCCC" : "#000000";
 			this.warningColor = EditorGUIUtility.isProSkin ? "#FF6666" : "#770000";
 			this.onColor = EditorGUIUtility.isProSkin ? "#95e032" : "#0000AA99";
 			this.offColor = EditorGUIUtility.isProSkin ? "#e03232" : "#a22e2e";
+			this.usedColor = EditorGUIUtility.isProSkin ? "#E0C532" : "#8F7E21";
 			this.boxStyle = GUI.skin.GetStyle("Box");
 			this.columnStyle = GUI.skin.GetStyle("Box").FixedWidth(fixedWidth);
 			this.containerStyle = GUI.skin.GetStyle("Box").FixedWidth(fixedWidth).Background("");
@@ -146,8 +148,8 @@ namespace Zios.Editors.StateEditors{
 			GenericMenu menu = new GenericMenu();
 			MenuFunction hideBreakdown = ()=>{Class.isVisible = false;};
 			MenuFunction toggleFixed = ()=>{Class.isFixed = !Class.isFixed;};
-			menu.AddItem(new GUIContent("Fixed Layout"),Class.isFixed,toggleFixed);
-			menu.AddItem(new GUIContent("Hide Breakdown"),false,hideBreakdown);
+			menu.AddItem(new GUIContent("Settings/Fixed"),Class.isFixed,toggleFixed);
+			menu.AddItem(new GUIContent("Settings/Hide"),false,hideBreakdown);
 			menu.ShowAsContext();
 		}
 		public string DrawState(StateRowData[] rowData,int rowIndex,string title,bool flip=false){
@@ -160,13 +162,22 @@ namespace Zios.Editors.StateEditors{
 			for(int index=0;index<row.data.Length;++index){
 				StateRequirement requirement = row.data[index];
 				if(flip && requirement.name == "@External"){continue;}
-				if(!requirement.requireOn && !requirement.requireOff){continue;}
+				if(!requirement.requireOn && !requirement.requireOff && !requirement.requireUsed){continue;}
 				string name = "</i><color="+nameColor+">"+requirement.name+"</color><i>";
-				bool stateOn = flip ? !requirement.requireOn : requirement.requireOn;
-				string stateName = stateOn ? "ON" : "OFF";
-				string stateColor = stateOn ? this.onColor : this.offColor;
+				string stateName = "ON";
+				string stateColor = this.onColor;
+				string term = "is";
+				if(requirement.requireOff || (flip && requirement.requireOn)){
+					stateName = "OFF";
+					stateColor = this.offColor;
+				}
+				if(requirement.requireUsed){
+					stateName = "USED";
+					stateColor = this.usedColor;
+					term = "has";
+				}
 				string state = "</i><color="+stateColor+"><b>"+stateName+"</b></color><i>";
-				phrase = name + " is " + state;
+				phrase = name + " " + term + " " + state;
 				if(hasDrawn){phrase = (flip ? "or " : "and ") + phrase;}
 				phrase = "<i>"+phrase.ToUpper()+"</i>";
 				if(!Class.isOneLine){
