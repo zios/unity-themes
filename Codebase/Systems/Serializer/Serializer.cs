@@ -72,7 +72,7 @@ namespace Zios{
 			var flags = BindingFlags.Public;
 			if(getStatic){flags |= BindingFlags.Static;}
 			if(getInstance){flags |= BindingFlags.Instance;}
-			return scope.GetVariables(null,ignoreAttributes,flags);
+			return scope.GetVariables(ignoreAttributes,flags);
 		}
 		public void Add(params string[] contents){
 			if(contents.Contains("}")){this.tabs -= 1;}

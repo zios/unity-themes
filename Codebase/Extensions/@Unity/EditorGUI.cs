@@ -1,3 +1,4 @@
+﻿#if UNITY_EDITOR
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -64,7 +65,7 @@ namespace Zios.Interface{
 			foreach(var item in current){
 				++index;
 				if(!disabled.Contains(item)){
-					menu.AddItem(item,selected.Contains(item),callback,index-1);
+					menu.AddItem(item.ToContent(),selected.Contains(item),callback,index-1);
 					continue;
 				}
 				menu.AddDisabledItem(item.ToContent());
@@ -112,6 +113,19 @@ namespace Zios.Interface{
 			bool previous = EditorPrefs.GetBool(name);
 			bool state = EditorGUIExtension.Draw<bool>(()=>EditorGUI.Foldout(area,previous,current,style),indention);
 			if(previous != state){EditorPrefs.SetBool(name,state);}
+			return state;
+		}
+		public static bool DrawHeader(this UnityLabel current,Rect area,object key,GUIStyle style=null,bool indention=true){
+			string stateName = key.IsNull() ? current + "Foldout" : key.GetHashCode().ToString();
+			if(key is string){stateName = (string)key;}
+			bool state = EditorPrefs.GetBool(stateName);
+			current = state ? "▼ " + current : "▶ " + current;
+			var currentStyle = style.IsNull() ? null : new GUIStyle(style);
+			if(state){currentStyle.normal = currentStyle.active;}
+			if(current.DrawButton(area,currentStyle,indention)){
+				state = !state;
+				EditorPrefs.SetBool(stateName,state);
+			}
 			return state;
 		}
 		//public static void DrawLabel(this string current,Rect area,GUIStyle style=null,bool indention=true){new UnityLabel(current).DrawLabel(area,style,indention);}
@@ -193,3 +207,4 @@ namespace Zios.Interface{
 		}
 	}
 }
+#endif

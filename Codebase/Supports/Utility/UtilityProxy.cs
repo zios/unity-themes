@@ -201,6 +201,7 @@ namespace Zios{
 		}
 		public static void RepaintAll(){
 			#if UNITY_EDITOR
+			Utility.RepaintInspectors();
 			UnityEditorInternal.InternalEditorUtility.RepaintAllViews();
 			#endif
 		}

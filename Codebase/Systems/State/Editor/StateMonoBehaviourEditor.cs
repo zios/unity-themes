@@ -107,7 +107,7 @@ namespace Zios.Editors.StateEditors{
 						else{
 							EditorGUILayout.BeginVertical(this.columnStyle);
 							string header = "<color="+this.headerColor+"><b>OFF</b> When</color>";
-							string phrase = "<color="+this.nameColor+">@External</color><i> is </i><color="+this.offColor+"><b>OFF</b></color>";
+							string phrase = "<color="+this.nameColor+">@EXTERNAL</color><i> is </i><color="+this.offColor+"><b>OFF</b></color>";
 							header.DrawLabel(this.labelStyle);
 							phrase.DrawLabel(this.labelStyle);
 							EditorGUILayout.EndVertical();

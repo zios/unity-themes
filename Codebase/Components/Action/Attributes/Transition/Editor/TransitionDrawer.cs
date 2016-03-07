@@ -15,7 +15,7 @@ namespace Zios.Editors{
 			Transition transition = property.GetObject<Transition>();
 			var spacing = area.height = EditorGUIUtility.singleLineHeight;
 			if(!transition.time.isSetup){return;}
-			if("Transition".DrawFoldout(area,transition.path,true)){
+			if("Transition".DrawFoldout(area,transition.path,null,true)){
 				GUI.changed = false;
 				EditorGUI.indentLevel += 1;
 				transition.time.Set(transition.time.Get().Draw(area.AddY(spacing+2),"Time"));

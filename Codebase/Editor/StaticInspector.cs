@@ -144,7 +144,7 @@ namespace Zios.Editors{
 		public void DrawInspector(){
 			this.scrollPosition = GUI.BeginScrollView(new Rect(0,25,Screen.width,Screen.height-45),this.scrollPosition,this.viewArea);
 			if(this.activeClass != null && this.variables.Count < 1){
-				List<string> names = this.activeClass.ListVariables(null,null,ObjectExtension.staticFlags);
+				List<string> names = this.activeClass.ListVariables(null,ObjectExtension.staticFlags);
 				foreach(string name in names){
 					try{
 						var accessor = new Accessor(this.activeClass,name);
@@ -294,7 +294,7 @@ namespace Zios.Editors{
 				this.labelArea = this.labelArea.AddY(18);
 				this.valueArea = this.valueArea.AddY(18);
 				if(this.foldoutState[hash]){
-					List<string> fieldNames = value.ListVariables(null,null,ObjectExtension.publicFlags);
+					List<string> fieldNames = value.ListVariables(null,ObjectExtension.publicFlags);
 					if(fieldNames.Count < 1){return;}
 					this.labelArea = this.labelArea.AddX(10);
 					foreach(string fieldName in fieldNames){

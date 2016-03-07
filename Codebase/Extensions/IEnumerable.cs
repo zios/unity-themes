@@ -1,11 +1,20 @@
 using System.Collections.Generic;
 using System;
+using System.Text;
 using System.Linq;
 namespace Zios{
 	public static class IEnumerableExtension{
 		//=======================
 		// General
 		//=======================
+		public static string ToText<T>(this IEnumerable<T> current){
+			var value = new StringBuilder();
+			foreach(var item in current){
+				value.Append(item.ToString());
+				value.Append(" | ");
+			}
+			return value.ToString().TrimRight(" | ");
+		}
 		public static string ToString<T>(this IEnumerable<T> current,string separator=" ",string endTerm="or"){
 			string result = "";
 			foreach(var item in current){

@@ -60,7 +60,7 @@ namespace Zios{
 			Type type = current is Type ? (Type)current : current.GetType();
 			return type.GetMethod(name,flags);
 		}
-		public static List<MethodInfo> GetMethods(this object current,List<Type> argumentTypes=null,string name="",BindingFlags flags=allFlags){
+		public static List<MethodInfo> GetMethods(this object current,IList<Type> argumentTypes=null,string name="",BindingFlags flags=allFlags){
 			Type type = current is Type ? (Type)current : current.GetType();
 			List<MethodInfo> methods = new List<MethodInfo>();
 			foreach(MethodInfo method in type.GetMethods(flags)){
@@ -69,8 +69,8 @@ namespace Zios{
 					ParameterInfo[] parameters = method.GetParameters();
 					bool match = parameters.Length == argumentTypes.Count;
 					if(match){
-						for(int i = 0;i < parameters.Length;i++){
-							if(!parameters[i].ParameterType.Equals(argumentTypes[i])){
+						for(int index=0;index<parameters.Length;++index){
+							if(!argumentTypes[index].Is(parameters[index].ParameterType)){
 								match = false;
 								break;
 							}
@@ -82,7 +82,7 @@ namespace Zios{
 			}
 			return methods;
 		}
-		public static List<string> ListMethods(this object current,List<Type> argumentTypes=null,BindingFlags flags=allFlags){
+		public static List<string> ListMethods(this object current,IList<Type> argumentTypes=null,BindingFlags flags=allFlags){
 			return current.GetMethods(argumentTypes,"",flags).Select(x=>x.Name).ToList();
 		}
 		//=========================
@@ -103,13 +103,13 @@ namespace Zios{
 		//=========================
 		// Variables
 		//=========================
-		public static bool HasVariable(this object current,string name,BindingFlags flags = allFlags){
+		public static bool HasVariable(this object current,string name,BindingFlags flags=allFlags){
 			Type type = current is Type ? (Type)current : current.GetType();
 			bool hasProperty = type.GetProperty(name,flags) != null;
 			bool hasField = type.GetField(name,flags) != null;
 			return hasProperty || hasField;
 		}
-		public static Type GetVariableType(this object current,string name,int index=-1,BindingFlags flags = allFlags){
+		public static Type GetVariableType(this object current,string name,int index=-1,BindingFlags flags=allFlags){
 			Type type = current is Type ? (Type)current : current.GetType();
 			PropertyInfo property = type.GetProperty(name,flags);
 			FieldInfo field = type.GetField(name,flags);
@@ -122,10 +122,10 @@ namespace Zios{
 			if(field != null){return field.FieldType;}
 			return typeof(Type);
 		}
-		public static object GetVariable(this object current,string name,int index=-1,BindingFlags flags = allFlags){
+		public static object GetVariable(this object current,string name,int index=-1,BindingFlags flags=allFlags){
 			return current.GetVariable<object>(name,index,flags);
 		}
-		public static T GetVariable<T>(this object current,string name,int index=-1,BindingFlags flags = allFlags){
+		public static T GetVariable<T>(this object current,string name,int index=-1,BindingFlags flags=allFlags){
 			Type type = current is Type ? (Type)current : current.GetType();
 			object instance = current.IsStatic() || current is Type ? null : current;
 			PropertyInfo property = type.GetProperty(name,flags);
@@ -146,7 +146,12 @@ namespace Zios{
 			}
 			return default(T);
 		}
-		public static void SetVariable<T>(this object current,string name,T value,int index=-1,BindingFlags flags = allFlags){
+		public static void SetVariables<T>(this object current,IDictionary<string,T> values,BindingFlags flags=allFlags){
+			foreach(var item in values){
+				current.SetVariable<T>(item.Key,item.Value,-1,flags);
+			}
+		}
+		public static void SetVariable<T>(this object current,string name,T value,int index=-1,BindingFlags flags=allFlags){
 			Type type = current is Type ? (Type)current : current.GetType();
 			current = current.IsStatic() ? null : current;
 			PropertyInfo property = type.GetProperty(name,flags);
@@ -159,19 +164,30 @@ namespace Zios{
 				Array currentArray = (Array)current;
 				currentArray.SetValue(value,index);
 			}
-			if(property != null){
+			if(property != null && property.CanWrite){
 				property.SetValue(current,value,null);
 			}
 			if(field != null){
 				field.SetValue(current,value);
 			}
 		}
-		public static Dictionary<string,object> GetVariables(this object current,List<Type> onlyTypes = null,List<Type> withoutAttributes = null,BindingFlags flags = allFlags){
+		public static Dictionary<string,T> GetVariables<T>(this object current,IList<Type> withoutAttributes=null,BindingFlags flags=allFlags){
+			var allVariables = current.GetVariables(withoutAttributes,flags);
+			var output = new Dictionary<string,T>();
+			foreach(var item in allVariables){
+				var name = item.Key;
+				var variable = item.Value;
+				if(variable.Is<T>()){
+					output[name] = (T)variable;
+				}
+			}
+			return output;
+		}
+		public static Dictionary<string,object> GetVariables(this object current,IList<Type> withoutAttributes=null,BindingFlags flags=allFlags){
 			Type type = current is Type ? (Type)current : current.GetType();
 			object instance = current.IsStatic() || current is Type ? null : current;
 			Dictionary<string,object> variables = new Dictionary<string,object>();
 			foreach(FieldInfo field in type.GetFields(flags)){
-				if(onlyTypes != null && !onlyTypes.Contains(field.FieldType)){continue;}
 				if(withoutAttributes != null){
 					var attributes = Attribute.GetCustomAttributes(field);
 					if(attributes.Any(x=>withoutAttributes.Any(y=>y==x.GetType()))){continue;}
@@ -181,7 +197,6 @@ namespace Zios{
 				catch{}
 			}
 			foreach(PropertyInfo property in type.GetProperties(flags)){
-				if(onlyTypes != null && !onlyTypes.Contains(property.PropertyType)){continue;}
 				if(withoutAttributes != null){
 					var attributes = Attribute.GetCustomAttributes(property);
 					if(attributes.Any(x=>withoutAttributes.Any(y=>y==x.GetType()))){continue;}
@@ -191,13 +206,29 @@ namespace Zios{
 			}
 			return variables;
 		}
-		public static List<string> ListVariables(this object current,List<Type> onlyTypes = null,List<Type> withoutAttributes = null,BindingFlags flags = allFlags){
-			return current.GetVariables(onlyTypes,withoutAttributes,flags).Keys.ToList();
+		public static List<string> ListVariables(this object current,IList<Type> withoutAttributes=null,BindingFlags flags=allFlags){
+			return current.GetVariables(withoutAttributes,flags).Keys.ToList();
 		}
 		public static void UseVariables<T>(this T current,T other,BindingFlags flags = publicFlags) where T : class{
-			foreach(var name in current.ListVariables(null,null,flags)){
+			foreach(var name in current.ListVariables(null,flags)){
 				current.SetVariable(name,other.GetVariable(name));
 			}
+		}
+		//=========================
+		// Values
+		//=========================
+		public static void SetValuesByType<T>(this object current,IList<T> values,IList<Type> withoutAttributes=null,BindingFlags flags=allFlags){
+			var existing = current.GetVariables<T>(withoutAttributes,flags);
+			int index = 0;
+			foreach(var item in existing){
+				if(index >= values.Count){break;}
+				current.SetVariable<T>(item.Key,values[index]);
+				++index;
+			}
+		}
+		public static T[] GetValues<T>(this object current,IList<Type> withoutAttributes=null,BindingFlags flags=allFlags){
+			var allVariables = current.GetVariables<T>(withoutAttributes,flags);
+			return allVariables.Values.ToArray();
 		}
 	}
 }

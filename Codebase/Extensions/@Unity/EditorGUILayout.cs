@@ -1,3 +1,4 @@
+﻿#if UNITY_EDITOR
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -118,11 +119,31 @@ namespace Zios.Interface{
 		//public static bool DrawFoldout(this GUIContent current,bool indention=true){return new UnityLabel(current).DrawFoldout(indention);}
 		public static bool DrawFoldout(this UnityLabel current,object key=null,GUIStyle style=null,bool indention=true){
 			style = style ?? EditorStyles.foldout;
-			string name = key.IsNull() ? current + "Foldout" : key.GetHashCode().ToString();
+			string name = key.IsNull() ? current + "Header" : key.GetHashCode().ToString();
 			if(key is string){name = (string)key;}
 			bool previous = EditorPrefs.GetBool(name);
 			bool state = EditorGUIExtension.Draw<bool>(()=>EditorGUILayout.Foldout(previous,current,style),indention);
 			if(previous != state){EditorPrefs.SetBool(name,state);}
+			return state;
+		}
+		public static bool DrawHeader(this UnityLabel current,object key=null,GUIStyle style=null,bool editable=false,Action callback=null,bool indention=true){
+			string stateName = key.IsNull() ? current + "Header" : key.GetHashCode().ToString();
+			if(key is string){stateName = (string)key;}
+			bool state = EditorPrefs.GetBool(stateName);
+			//current = state ? "▼ " + current : "▶ " + current;
+			var fallback = editable ? EditorStyles.textField : EditorStyles.label;
+			var currentStyle = style.IsNull() ? fallback: new GUIStyle(style);
+			if(state){currentStyle.normal = currentStyle.onNormal;}
+			if(!editable){
+				if(current.DrawButton(currentStyle,indention)){
+					state = !state;
+					EditorPrefs.SetBool(stateName,state);
+					if(!callback.IsNull()){callback();}
+				}
+			}
+			else{
+				current.value.text = current.value.text.Draw(null,currentStyle,indention);
+			}
 			return state;
 		}
 		//public static void DrawLabel(this string current,GUIStyle style=null,bool indention=true){new UnityLabel(current).DrawLabel(style,indention);}
@@ -179,3 +200,4 @@ namespace Zios.Interface{
 		}
 	}
 }
+#endif

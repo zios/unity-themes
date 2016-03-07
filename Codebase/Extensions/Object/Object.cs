@@ -40,6 +40,29 @@ namespace Zios{
 			Type type = current is Type ? (Type)current : current.GetType();
 			return type.IsStatic();
 		}
+		public static bool Is<T>(this object current){
+			var type = current.GetType();
+			var value = typeof(T);
+			return (type.Equals(value)) || (type.IsSubclassOf(value));
+		}
+		public static bool Is(this Type current,Type value){
+			return (current.Equals(value)) || (current.IsSubclassOf(value));
+		}
+		public static bool Is<T>(this T current,Type value){
+			var type = typeof(T);
+			return (type.Equals(value)) || (type.IsSubclassOf(value));
+		}
+		public static bool Is<T>(this T current,string name){
+			var type = typeof(T);
+			var value = Type.GetType(name);
+			if(value.IsNull()){
+				Debug.Log("[ObjectExtension] Type -- " + name + " not found.");
+				return false;
+			}
+			return (type == value) || (type.IsSubclassOf(value));
+		}
+		public static bool IsNot<T>(this T current,Type value){return !current.Is(value);}
+		public static bool IsNot<T>(this T current,string name){return !current.Is(name);}
 		//============================
 		// Casts
 		//============================
