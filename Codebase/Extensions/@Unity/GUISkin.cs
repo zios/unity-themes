@@ -26,7 +26,41 @@ namespace Zios{
 			copy.verticalScrollbarUpButton = new GUIStyle(current.verticalScrollbarUpButton);
 			copy.verticalScrollbarDownButton = new GUIStyle(current.verticalScrollbarDownButton);
 			copy.scrollView = new GUIStyle(current.scrollView);
+			copy.settings.doubleClickSelectsWord = current.settings.doubleClickSelectsWord;
+			copy.settings.tripleClickSelectsLine = current.settings.tripleClickSelectsLine;
+			copy.settings.cursorColor = current.settings.cursorColor;
+			copy.settings.cursorFlashSpeed = current.settings.cursorFlashSpeed;
+			copy.settings.selectionColor = current.settings.selectionColor;
 			return copy;
+		}
+		public static GUISkin Use(this GUISkin current,GUISkin other){
+			if(other.IsNull()){return current;}
+			current.customStyles = other.customStyles;
+			current.box = other.box;
+			current.button = other.button;
+			current.toggle = other.toggle;
+			current.label = other.label;
+			current.textField = other.textField;
+			current.textArea = other.textArea;
+			current.window = other.window;
+			current.horizontalSlider = other.horizontalSlider;
+			current.horizontalSliderThumb = other.horizontalSliderThumb;
+			current.verticalSlider = other.verticalSlider;
+			current.verticalSliderThumb = other.verticalScrollbarThumb;
+			current.horizontalScrollbar = other.horizontalScrollbar;
+			current.horizontalScrollbarLeftButton = other.horizontalScrollbarLeftButton;
+			current.horizontalScrollbarRightButton = other.horizontalScrollbarRightButton;
+			current.verticalScrollbar = other.verticalScrollbar;
+			current.verticalScrollbarThumb = other.verticalScrollbarThumb;
+			current.verticalScrollbarUpButton = other.verticalScrollbarUpButton;
+			current.verticalScrollbarDownButton = other.verticalScrollbarDownButton;
+			current.scrollView = other.scrollView;
+			current.settings.doubleClickSelectsWord = other.settings.doubleClickSelectsWord;
+			current.settings.tripleClickSelectsLine = other.settings.tripleClickSelectsLine;
+			current.settings.cursorColor = other.settings.cursorColor;
+			current.settings.cursorFlashSpeed = other.settings.cursorFlashSpeed;
+			current.settings.selectionColor = other.settings.selectionColor;
+			return current;
 		}
 	}
 }

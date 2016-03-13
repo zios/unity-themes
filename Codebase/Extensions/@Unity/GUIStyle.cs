@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Text;
+using System;
 using UnityEngine;
 namespace Zios{
 	public static class GUIStyleExtension{
@@ -186,6 +188,26 @@ namespace Zios{
 		public static GUIStyle WordWrap(this GUIStyle current,bool value,bool asCopy=true){
 			if(asCopy){current = new GUIStyle(current);}
 			current.wordWrap = value;
+			return current;
+		}
+		public static GUIStyleState[] GetStates(this GUIStyle current,bool offStates=true,bool onStates=true){
+			var states = new List<GUIStyleState>();
+			if(offStates){
+				states.Add(current.normal);
+				states.Add(current.hover);
+				states.Add(current.active);
+				states.Add(current.focused);
+			}
+			if(onStates){
+				states.Add(current.onNormal);
+				states.Add(current.onHover);
+				states.Add(current.onActive);
+				states.Add(current.onFocused);
+			}
+			return states.ToArray();
+		}
+		public static GUIStyle Rename(this GUIStyle current,string name){
+			current.name = name;
 			return current;
 		}
 	}

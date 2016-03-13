@@ -1,0 +1,5623 @@
+box{
+	border : 2 3 2 3
+	margin : 4 4 4 4
+	padding : 3 3 3 3
+	alignment : upperCenter
+	word-wrap : true
+	rich-text : false
+	text-clipping : clip
+	stretch-width : false
+}
+box:normal{
+	background : OL box
+}
+label{
+	margin : 2 4 2 4
+	padding : 1 2 2 2
+	font : Lucida Grande
+	rich-text : false
+	text-clipping : clip
+}
+label:normal{
+	background : OL box
+}
+textfield{
+	border : 3 3 3 3
+	margin : 2 4 2 4
+	padding : 1 3 2 3
+	rich-text : false
+	text-clipping : clip
+	image-position : textOnly
+}
+textfield:normal{
+	background : OL box
+}
+textarea{
+	border : 3 3 3 3
+	margin : 2 4 2 4
+	padding : 1 3 2 3
+	word-wrap : true
+	rich-text : false
+	text-clipping : clip
+}
+textarea:normal{
+	background : OL box
+}
+button{
+	border : 4 6 4 6
+	margin : 3 4 3 4
+	padding : 2 6 3 6
+	overflow : 0 0 1 0
+	alignment : middleCenter
+	rich-text : false
+	text-clipping : clip
+}
+button:normal{
+	background : OL box
+}
+toggle{
+	border : 13 0 0 15
+	margin : 2 4 2 4
+	padding : 1 3 2 15
+	overflow : -2 0 2 0
+	rich-text : false
+	text-clipping : clip
+}
+toggle:normal{
+	background : OL box
+}
+window{
+	border : 20 11 10 11
+	padding : 20 5 5 5
+	overflow : 3 6 8 6
+	alignment : upperCenter
+	rich-text : false
+	text-clipping : clip
+	content-offset : 0 -18
+	stretch-height : true
+}
+window:normal{
+	background : OL box
+}
+horizontalslider{
+	border : 0 3 0 3
+	margin : 2 4 2 4
+	padding : 0 -1 0 -1
+	overflow : -7 0 -6 0
+	rich-text : false
+	text-clipping : clip
+	image-position : imageOnly
+	fixed-height : 18
+}
+horizontalslider:normal{
+	background : OL box
+}
+horizontalsliderthumb{
+	overflow : -4 1 4 1
+	rich-text : false
+	text-clipping : clip
+	image-position : imageOnly
+	fixed-width : 10
+	fixed-height : 12
+}
+horizontalsliderthumb:normal{
+	background : OL box
+}
+verticalslider{
+	border : 3 0 3 0
+	margin : 2 2 2 2
+	padding : -1 0 -1 0
+	overflow : 0 -3 0 -2
+	rich-text : false
+	fixed-width : 12
+	stretch-width : false
+	stretch-height : true
+}
+verticalslider:normal{
+	background : OL box
+}
+verticalsliderthumb{
+	border : 8 0 8 0
+	padding : 10 0 10 0
+	rich-text : false
+	text-clipping : clip
+	image-position : imageOnly
+	fixed-width : 15
+	stretch-width : false
+	stretch-height : true
+}
+verticalsliderthumb:normal{
+	background : OL box
+}
+horizontalscrollbar{
+	border : 0 25 0 25
+	padding : 0 -1 0 -1
+	overflow : 0 1 0 1
+	rich-text : false
+	text-clipping : clip
+	image-position : imageOnly
+	fixed-height : 15
+}
+horizontalscrollbar:normal{
+	background : OL box
+}
+horizontalscrollbarthumb:normal{
+	background : OL box
+}
+horizontalscrollbarleftbutton{
+	overflow : 0 8 0 0
+	rich-text : false
+	text-clipping : clip
+	fixed-width : 17
+	fixed-height : 15
+}
+horizontalscrollbarleftbutton:normal{
+	background : OL box
+}
+horizontalscrollbarrightbutton{
+	overflow : 0 0 0 8
+	rich-text : false
+	text-clipping : clip
+	fixed-width : 17.24739
+	fixed-height : 15
+}
+horizontalscrollbarrightbutton:normal{
+	background : OL box
+}
+verticalscrollbar{
+	border : 9 0 9 0
+	padding : -1 0 -1 0
+	overflow : 1 0 1 0
+	rich-text : false
+	text-clipping : clip
+	fixed-width : 15
+}
+verticalscrollbar:normal{
+	background : OL box
+}
+verticalscrollbarthumb{
+	border : 8 0 8 0
+	padding : 10 0 10 0
+	rich-text : false
+	text-clipping : clip
+	image-position : imageOnly
+	fixed-width : 15
+	stretch-width : false
+	stretch-height : true
+}
+verticalscrollbarthumb:normal{
+	background : OL box
+}
+verticalscrollbarupbutton{
+	overflow : 0 0 8 0
+	rich-text : false
+	text-clipping : clip
+	fixed-width : 15
+	fixed-height : 17
+}
+verticalscrollbarupbutton:normal{
+	background : OL box
+}
+verticalscrollbardownbutton{
+	overflow : 8 0 0 0
+	rich-text : false
+	text-clipping : clip
+	fixed-width : 15
+	fixed-height : 17
+}
+verticalscrollbardownbutton:normal{
+	background : OL box
+}
+scrollview{
+	rich-text : false
+	text-clipping : clip
+}
+scrollview:normal{
+	background : OL box
+}
+.AboutWIndowLicenseLabel{
+	border : 2 0 2 0
+	margin : 1 1 1 1
+	padding : 3 0 0 0
+	font : Lucida Grande small
+	word-wrap : true
+	text-clipping : clip
+	stretch-width : false
+}
+.AboutWIndowLicenseLabel:normal{
+	background : OL box
+}
+.AC LeftArrow{
+	text-clipping : clip
+	stretch-height : true
+}
+.AC LeftArrow:normal{
+	background : OL box
+}
+.AC RightArrow{
+	alignment : middleCenter
+	image-position : imageOnly
+	stretch-height : true
+}
+.AC RightArrow:normal{
+	background : OL box
+}
+.AnimationCurveEditorBackground{
+	border : 16 13 13 13
+	padding : 0 1 0 0
+	font : Lucida Grande small
+	word-wrap : true
+	text-clipping : clip
+	stretch-height : true
+}
+.AnimationCurveEditorBackground:normal{
+	background : OL box
+}
+.AnimationEventBackground{
+	border : 0 8 2 8
+	padding : 0 1 0 0
+	overflow : 1 0 0 0
+	font : Lucida Grande small
+	word-wrap : true
+	text-clipping : clip
+	stretch-height : true
+}
+.AnimationEventBackground:normal{
+	background : OL box
+}
+.AnimationEventTooltip{
+	border : 9 9 9 9
+	padding : 6 6 6 6
+	overflow : 0 -16 0 30
+	font : Lucida Grande
+	image-position : textOnly
+	content-offset : -21 0
+}
+.AnimationEventTooltip:normal{
+	background : OL box
+}
+.AnimationEventTooltipArrow{
+	overflow : 0 8 0 -8
+	font : Lucida Grande small
+	word-wrap : true
+	text-clipping : clip
+	fixed-width : 49
+	fixed-height : 24
+	stretch-width : false
+}
+.AnimationEventTooltipArrow:normal{
+	background : OL box
+}
+.AnimationKeyframeBackground{
+	border : 0 5 2 5
+	padding : 0 1 0 0
+	font : Lucida Grande small
+	word-wrap : true
+	text-clipping : clip
+	stretch-height : true
+}
+.AnimationKeyframeBackground:normal{
+	background : OL box
+}
+.AnimationRowEven{
+	font : Lucida Grande small
+	image-position : imageOnly
+	stretch-width : false
+}
+.AnimationRowEven:normal{
+	background : OL box
+}
+.AnimationRowOdd{
+	font : Lucida Grande small
+	image-position : imageOnly
+	stretch-width : false
+}
+.AnimationRowOdd:normal{
+	background : OL box
+}
+.AnimationSelectionTextField{
+	border : 2 3 2 3
+	padding : 1 3 1 3
+	font : Lucida Grande small
+	text-clipping : clip
+	fixed-height : 12
+	stretch-width : false
+}
+.AnimationSelectionTextField:normal{
+	background : OL box
+}
+.AnimationTimelineTick{
+	border : 2 0 2 0
+	margin : 1 1 1 1
+	padding : 3 0 0 0
+	font : Lucida Grande small
+	text-clipping : clip
+	content-offset : 0 2
+	stretch-width : false
+}
+.AnimationTimelineTick:normal{
+	background : OL box
+}
+.AnimPropDropdown{
+	alignment : middleLeft
+	text-clipping : clip
+	fixed-width : 22
+	fixed-height : 12
+	stretch-width : false
+}
+.AnimPropDropdown:normal{
+	background : OL box
+}
+.AppToolbar{
+	border : 3 3 3 3
+	rich-text : false
+	text-clipping : clip
+	stretch-width : false
+}
+.AppToolbar:normal{
+	background : OL box
+}
+.AS TextArea{
+	border : 4 4 4 4
+	padding : 2 2 2 2
+	word-wrap : true
+	rich-text : false
+	text-clipping : clip
+	stretch-height : true
+}
+.AS TextArea:normal{
+	background : OL box
+}
+.AssetLabel{
+	border : 0 7 0 7
+	margin : 0 3 0 3
+	padding : 2 6 0 6
+	font : Lucida Grande small
+	rich-text : false
+	text-clipping : clip
+	image-position : textOnly
+	fixed-height : 15
+	stretch-width : false
+}
+.AssetLabel:normal{
+	background : OL box
+}
+.AssetLabel Icon{
+	margin : 0 4 0 4
+	padding : 2 3 2 3
+	rich-text : false
+	text-clipping : clip
+	image-position : textOnly
+	fixed-width : 20
+	fixed-height : 15
+	stretch-width : false
+}
+.AssetLabel Icon:normal{
+	background : OL box
+}
+.AssetLabel Partial{
+	border : 0 7 0 7
+	margin : 0 3 0 3
+	padding : 2 6 0 6
+	font : Lucida Grande small
+	rich-text : false
+	text-clipping : clip
+	image-position : textOnly
+	fixed-height : 15
+	stretch-width : false
+}
+.AssetLabel Partial:normal{
+	background : OL box
+}
+.AudioKnobOverlay{
+	fixed-width : 40
+	fixed-height : 40
+	stretch-width : false
+}
+.AudioKnobOverlay:normal{
+	background : OL box
+}
+.BoldLabel{
+	margin : 6 4 4 4
+	padding : 1 2 2 2
+	font : Lucida Grande Bold
+	rich-text : false
+	text-clipping : clip
+}
+.BoldLabel:normal{
+	background : OL box
+}
+.BoldToggle{
+	border : 13 0 0 14
+	margin : 6 4 0 4
+	padding : 2 0 2 17
+	overflow : -2 0 0 0
+	font : Lucida Grande Bold
+	rich-text : false
+	text-clipping : clip
+}
+.BoldToggle:normal{
+	background : OL box
+}
+.ButtonLeft{
+	border : 3 2 4 5
+	margin : 3 0 3 4
+	padding : 2 6 3 6
+	overflow : -1 0 2 1
+	alignment : middleCenter
+	rich-text : false
+	text-clipping : clip
+}
+.ButtonLeft:normal{
+	background : OL box
+}
+.ButtonMid{
+	border : 3 3 4 3
+	margin : 3 0 3 0
+	padding : 2 6 3 6
+	overflow : -1 0 2 0
+	alignment : middleCenter
+	rich-text : false
+	text-clipping : clip
+}
+.ButtonMid:normal{
+	background : OL box
+}
+.ButtonRight{
+	border : 3 5 4 2
+	margin : 3 4 3 0
+	padding : 2 6 3 6
+	overflow : -1 1 2 0
+	alignment : middleCenter
+	rich-text : false
+	text-clipping : clip
+}
+.ButtonRight:normal{
+	background : OL box
+}
+.BypassToggle{
+	font : Lucida Grande Bold
+	rich-text : false
+	fixed-width : 21
+	fixed-height : 21
+	stretch-width : false
+}
+.BypassToggle:normal{
+	background : OL box
+}
+.ChannelStripAttenuationBar{
+	font : Lucida Grande
+	alignment : middleRight
+	rich-text : false
+	fixed-height : 16
+}
+.ChannelStripAttenuationBar:normal{
+	background : OL box
+}
+.ChannelStripAttenuationMarkerSquare{
+	border : 0 4 0 12
+	padding : 0 5 0 0
+	font : Lucida Grande small bold
+	alignment : middleRight
+	rich-text : false
+	fixed-height : 15
+}
+.ChannelStripAttenuationMarkerSquare:normal{
+	background : OL box
+}
+.ChannelStripBg{
+	border : 25 5 9 5
+	overflow : 0 2 4 2
+	font : Lucida Grande Bold
+	rich-text : false
+	stretch-height : true
+}
+.ChannelStripBg:normal{
+	background : OL box
+}
+.ChannelStripDuckingMarker{
+	font : Lucida Grande Bold
+	rich-text : false
+	fixed-width : 8
+	fixed-height : 15
+	stretch-width : false
+}
+.ChannelStripDuckingMarker:normal{
+	background : OL box
+}
+.ChannelStripEffectBar{
+	border : 0 3 0 0
+	alignment : middleRight
+	rich-text : false
+	fixed-height : 16
+}
+.ChannelStripEffectBar:normal{
+	background : OL box
+}
+.ChannelStripSendReturnBar{
+	border : 0 3 0 0
+	alignment : middleRight
+	rich-text : false
+	fixed-height : 16
+}
+.ChannelStripSendReturnBar:normal{
+	background : OL box
+}
+.ChannelStripVUMeterBg{
+	font : Lucida Grande Bold
+	rich-text : false
+	fixed-width : 90
+	fixed-height : 170
+	stretch-width : false
+}
+.ChannelStripVUMeterBg:normal{
+	background : OL box
+}
+.CircularToggle{
+	font : Lucida Grande Bold
+	rich-text : false
+	fixed-width : 6
+	fixed-height : 6
+	stretch-width : false
+}
+.CircularToggle:normal{
+	background : OL box
+}
+.CN Box{
+	border : 2 17 17 2
+	overflow : 0 1 1 0
+	text-clipping : clip
+	stretch-height : true
+}
+.CN Box:normal{
+	background : OL box
+}
+.CN CountBadge{
+	border : 10 10 10 10
+	padding : 6 7 4 7
+	alignment : lowerRight
+	text-clipping : clip
+	fixed-height : 20
+}
+.CN CountBadge:normal{
+	background : OL box
+}
+.CN EntryBackEven{
+	border : 3 3 3 30
+	margin : 10 10 10 10
+	padding : 0 0 0 32
+	text-clipping : clip
+	image-position : textOnly
+}
+.CN EntryBackEven:normal{
+	background : OL box
+}
+.CN EntryBackOdd{
+	border : 3 3 3 30
+	margin : 10 10 10 10
+	padding : 0 0 0 32
+	text-clipping : clip
+	image-position : textOnly
+}
+.CN EntryBackOdd:normal{
+	background : OL box
+}
+.CN EntryError{
+	border : 3 3 3 30
+	margin : 10 10 10 10
+	padding : 3 0 0 32
+	text-clipping : clip
+	image-position : textOnly
+	fixed-height : 32
+}
+.CN EntryError:normal{
+	background : OL box
+}
+.CN EntryInfo{
+	border : 3 3 3 30
+	margin : 10 10 10 10
+	padding : 3 0 0 32
+	text-clipping : clip
+	image-position : textOnly
+	fixed-height : 32
+}
+.CN EntryInfo:normal{
+	background : OL box
+}
+.CN EntryWarn{
+	border : 3 3 3 30
+	margin : 10 10 10 10
+	padding : 3 0 0 32
+	text-clipping : clip
+	image-position : textOnly
+	fixed-height : 32
+}
+.CN EntryWarn:normal{
+	background : OL box
+}
+.CN Message{
+	border : 3 3 3 3
+	padding : 2 2 2 2
+	word-wrap : true
+	text-clipping : clip
+	stretch-width : false
+}
+.CN Message:normal{
+	background : OL box
+}
+.CN StatusError{
+	border : 3 3 3 3
+	text-clipping : clip
+	fixed-height : 17
+	stretch-width : false
+}
+.CN StatusError:normal{
+	background : OL box
+}
+.CN StatusInfo{
+	border : 3 3 3 3
+	text-clipping : clip
+	fixed-height : 17
+	stretch-width : false
+}
+.CN StatusInfo:normal{
+	background : OL box
+}
+.CN StatusWarn{
+	border : 3 3 3 3
+	alignment : middleLeft
+	text-clipping : clip
+	stretch-width : false
+}
+.CN StatusWarn:normal{
+	background : OL box
+}
+.ColorField{
+	border : 3 21 3 4
+	margin : 2 4 2 4
+	padding : 1 19 1 1
+	overflow : 1 0 1 1
+}
+.ColorField:normal{
+	background : OL box
+}
+.ColorPicker2DThumb{
+	border : 4 4 4 4
+	padding : 4 4 4 4
+	text-clipping : clip
+	fixed-width : 8
+	fixed-height : 8
+}
+.ColorPicker2DThumb:normal{
+	background : OL box
+}
+.ColorPickerBackground{
+	border : 2 2 2 2
+	padding : 0 10 10 10
+	overflow : 3 0 0 0
+	word-wrap : true
+	text-clipping : clip
+}
+.ColorPickerBackground:normal{
+	background : OL box
+}
+.ColorPickerBox{
+	border : 4 3 3 3
+	padding : -2 -2 -2 -2
+	stretch-width : false
+}
+.ColorPickerBox:normal{
+	background : OL box
+}
+.ColorPickerHorizThumb{
+	border : 6 0 6 7
+	padding : 4 4 4 4
+	overflow : 1 0 1 0
+	text-clipping : clip
+	fixed-width : 7
+	stretch-width : false
+}
+.ColorPickerHorizThumb:normal{
+	background : OL box
+}
+.ColorPickerVertThumb{
+	border : 7 6 0 6
+	padding : 4 4 4 4
+	overflow : 0 3 0 3
+	text-clipping : clip
+	fixed-height : 7
+}
+.ColorPickerVertThumb:normal{
+	background : OL box
+}
+.Command{
+	border : 3 5 3 5
+	margin : 4 4 4 4
+	padding : 0 3 0 3
+	overflow : 0 0 1 0
+	font : Lucida Grande Big
+	alignment : middleCenter
+	rich-text : false
+	text-clipping : clip
+	image-position : imageOnly
+	fixed-width : 32
+	fixed-height : 22
+	stretch-width : false
+}
+.Command:normal{
+	background : OL box
+}
+.CommandLeft{
+	border : 3 2 4 5
+	margin : 4 0 4 4
+	overflow : 0 0 1 0
+	font : Lucida Grande Big
+	alignment : middleCenter
+	rich-text : false
+	text-clipping : clip
+	fixed-width : 32
+	fixed-height : 22
+	stretch-width : false
+}
+.CommandLeft:normal{
+	background : OL box
+}
+.CommandMid{
+	border : 3 2 4 2
+	margin : 4 0 4 0
+	padding : 0 3 0 3
+	overflow : 0 0 1 0
+	font : Lucida Grande Big
+	alignment : middleCenter
+	rich-text : false
+	text-clipping : clip
+	fixed-width : 32
+	fixed-height : 22
+	stretch-width : false
+}
+.CommandMid:normal{
+	background : OL box
+}
+.CommandRight{
+	border : 3 5 4 2
+	margin : 4 4 4 0
+	padding : 0 3 0 3
+	overflow : 0 0 1 0
+	font : Lucida Grande Big
+	alignment : middleCenter
+	rich-text : false
+	text-clipping : clip
+	fixed-width : 32
+	fixed-height : 22
+}
+.CommandRight:normal{
+	background : OL box
+}
+.ControlHighlight{
+	border : 17 17 21 17
+	padding : 6 6 6 6
+	overflow : 6 6 10 6
+	stretch-height : true
+}
+.ControlHighlight:normal{
+	background : OL box
+}
+.ControlLabel{
+	margin : 2 4 2 4
+	padding : 1 2 2 2
+	rich-text : false
+	text-clipping : clip
+}
+.ControlLabel:normal{
+	background : OL box
+}
+.CurveEditorLabelTickmarks{
+	border : 2 0 2 0
+	margin : 1 1 1 1
+	padding : 3 0 0 0
+	font : Lucida Grande small
+	alignment : upperRight
+	text-clipping : clip
+	content-offset : -25 0
+	stretch-width : false
+}
+.CurveEditorLabelTickmarks:normal{
+	background : OL box
+}
+.debug_layout_box{
+	border : 3 3 3 3
+	padding : 0 2 0 2
+	rich-text : false
+	stretch-height : true
+}
+.debug_layout_box:normal{
+	background : OL box
+}
+.dockarea{
+	border : 0 6 4 6
+	margin : 2 0 0 0
+	padding : 0 1 0 1
+	overflow : 2 0 0 0
+	font : Lucida Grande
+	alignment : middleCenter
+	text-clipping : clip
+	content-offset : 0 -2
+	fixed-height : 17
+}
+.dockarea:normal{
+	background : OL box
+}
+.dockareaOverlay{
+	border : 2 4 4 4
+	overflow : -17 0 0 0
+	font : Lucida Grande
+	alignment : middleCenter
+	text-clipping : clip
+	content-offset : 0 -2
+}
+.dockareaOverlay:normal{
+	background : OL box
+}
+.dockareaStandalone{
+	border : 0 6 0 6
+	margin : 5 0 0 0
+	overflow : 5 0 0 0
+	font : Lucida Grande
+	alignment : middleCenter
+	text-clipping : clip
+	content-offset : 0 -2
+	fixed-height : 17
+}
+.dockareaStandalone:normal{
+	background : OL box
+}
+.Dopesheetkeyframe{
+	border : 2 2 2 2
+	padding : 0 14 0 0
+	alignment : upperRight
+	image-position : textOnly
+	stretch-height : true
+}
+.Dopesheetkeyframe:normal{
+	background : OL box
+}
+.dragtab{
+	border : 0 6 0 6
+	padding : 0 7 0 7
+	alignment : middleLeft
+	text-clipping : clip
+	fixed-height : 17
+}
+.dragtab:normal{
+	background : OL box
+}
+.dragtabbright{
+	border : 0 6 0 6
+	padding : 0 7 0 7
+	alignment : middleLeft
+	text-clipping : clip
+}
+.dragtabbright:normal{
+	background : OL box
+}
+.dragtabdropwindow{
+	border : 20 6 5 103
+	padding : 3 0 0 7
+	text-clipping : clip
+}
+.dragtabdropwindow:normal{
+	background : OL box
+}
+.DropDown{
+	border : 3 15 3 4
+	margin : 3 4 3 4
+	padding : 2 14 3 6
+	overflow : -1 0 2 0
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 18
+}
+.DropDown:normal{
+	background : OL box
+}
+.DropDownButton{
+	border : 3 20 3 4
+	margin : 3 4 3 4
+	padding : 2 22 3 6
+	overflow : -1 0 2 0
+	alignment : middleCenter
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 18
+}
+.DropDownButton:normal{
+	background : OL box
+}
+.ErrorLabel{
+	border : 3 3 3 3
+	padding : 3 0 0 0
+	font : Lucida Grande Bold
+	word-wrap : true
+	rich-text : false
+	text-clipping : clip
+	stretch-width : false
+}
+.ErrorLabel:normal{
+	background : OL box
+}
+.ExposablePopupItem{
+	border : 0 7 0 7
+	padding : 0 7 0 7
+	font : Lucida Grande
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 15
+}
+.ExposablePopupItem:normal{
+	background : OL box
+}
+.ExposablePopupMenu{
+	border : 0 12 0 7
+	padding : 0 15 0 7
+	font : Lucida Grande
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 15
+}
+.ExposablePopupMenu:normal{
+	background : OL box
+}
+.EyeDropperHorizontalLine{
+	border : 2 0 0 0
+	padding : -2 -2 -2 -2
+	stretch-width : false
+}
+.EyeDropperHorizontalLine:normal{
+	background : OL box
+}
+.EyeDropperPickedPixel{
+	border : 2 2 2 2
+	padding : -2 -2 -2 -2
+	overflow : 1 2 2 1
+	stretch-width : false
+}
+.EyeDropperPickedPixel:normal{
+	background : OL box
+}
+.EyeDropperVerticalLine{
+	border : 0 0 0 2
+	padding : -2 -2 -2 -2
+	stretch-width : false
+}
+.EyeDropperVerticalLine:normal{
+	background : OL box
+}
+.flow background{
+	border : 12 12 12 12
+	rich-text : false
+}
+.flow background:normal{
+	background : OL box
+}
+.flow navbar back{
+	rich-text : false
+	stretch-width : false
+}
+.flow navbar back:normal{
+	background : OL box
+}
+.flow navbar button{
+	padding : 4 5 0 5
+	rich-text : false
+	stretch-width : false
+}
+.flow navbar button:normal{
+	background : OL box
+}
+.flow navbar separator{
+	margin : 0 5 0 5
+	rich-text : false
+	fixed-width : 10
+	fixed-height : 19
+	stretch-width : false
+}
+.flow navbar separator:normal{
+	background : OL box
+}
+.flow node 0{
+	border : 11 11 15 11
+	padding : 29 0 0 0
+	overflow : 6 7 9 7
+	alignment : upperCenter
+	rich-text : false
+	content-offset : 0 -22
+	stretch-width : false
+}
+.flow node 0:normal{
+	background : OL box
+}
+.flow node 0 on{
+	border : 11 11 15 11
+	padding : 29 0 0 0
+	overflow : 6 7 9 7
+	alignment : upperCenter
+	rich-text : false
+	content-offset : 0 -22
+	stretch-width : false
+}
+.flow node 0 on:normal{
+	background : OL box
+}
+.flow node 1{
+	border : 11 11 15 11
+	padding : 29 0 0 0
+	overflow : 6 7 9 7
+	alignment : upperCenter
+	rich-text : false
+	content-offset : 0 -22
+	stretch-width : false
+}
+.flow node 1:normal{
+	background : OL box
+}
+.flow node 1 on{
+	border : 11 11 15 11
+	padding : 29 0 0 0
+	overflow : 6 7 9 7
+	alignment : upperCenter
+	rich-text : false
+	content-offset : 0 -22
+	stretch-width : false
+}
+.flow node 1 on:normal{
+	background : OL box
+}
+.flow node 2{
+	border : 11 11 15 11
+	padding : 29 0 0 0
+	overflow : 6 7 9 7
+	alignment : upperCenter
+	rich-text : false
+	content-offset : 0 -22
+	stretch-width : false
+}
+.flow node 2:normal{
+	background : OL box
+}
+.flow node 2 on{
+	border : 11 11 15 11
+	padding : 29 0 0 0
+	overflow : 6 7 9 7
+	alignment : upperCenter
+	rich-text : false
+	content-offset : 0 -22
+	stretch-width : false
+}
+.flow node 2 on:normal{
+	background : OL box
+}
+.flow node 3{
+	border : 11 11 15 11
+	padding : 29 0 0 0
+	overflow : 6 7 9 7
+	alignment : upperCenter
+	rich-text : false
+	content-offset : 0 -22
+	stretch-width : false
+}
+.flow node 3:normal{
+	background : OL box
+}
+.flow node 3 on{
+	border : 11 11 15 11
+	padding : 29 0 0 0
+	overflow : 6 7 9 7
+	alignment : upperCenter
+	rich-text : false
+	content-offset : 0 -22
+	stretch-width : false
+}
+.flow node 3 on:normal{
+	background : OL box
+}
+.flow node 4{
+	border : 11 11 15 11
+	padding : 29 0 0 0
+	overflow : 6 7 9 7
+	alignment : upperCenter
+	rich-text : false
+	content-offset : 0 -22
+	stretch-width : false
+}
+.flow node 4:normal{
+	background : OL box
+}
+.flow node 4 on{
+	border : 11 11 15 11
+	padding : 29 0 0 0
+	overflow : 6 7 9 7
+	alignment : upperCenter
+	rich-text : false
+	content-offset : 0 -22
+	stretch-width : false
+}
+.flow node 4 on:normal{
+	background : OL box
+}
+.flow node 5{
+	border : 11 11 15 11
+	padding : 29 0 0 0
+	overflow : 6 7 9 7
+	alignment : upperCenter
+	rich-text : false
+	content-offset : 0 -22
+	stretch-width : false
+}
+.flow node 5:normal{
+	background : OL box
+}
+.flow node 5 on{
+	border : 11 11 15 11
+	padding : 29 0 0 0
+	overflow : 6 7 9 7
+	alignment : upperCenter
+	rich-text : false
+	content-offset : 0 -22
+	stretch-width : false
+}
+.flow node 5 on:normal{
+	background : OL box
+}
+.flow node 6{
+	border : 11 11 15 11
+	padding : 29 0 0 0
+	overflow : 6 7 9 7
+	alignment : upperCenter
+	rich-text : false
+	content-offset : 0 -22
+	stretch-width : false
+}
+.flow node 6:normal{
+	background : OL box
+}
+.flow node 6 on{
+	border : 11 11 15 11
+	padding : 29 0 0 0
+	overflow : 6 7 9 7
+	alignment : upperCenter
+	rich-text : false
+	content-offset : 0 -22
+	stretch-width : false
+}
+.flow node 6 on:normal{
+	background : OL box
+}
+.flow node hex 0{
+	border : 46 25 0 25
+	padding : 34 23 0 23
+	alignment : middleCenter
+	rich-text : false
+	content-offset : 0 -14
+	stretch-width : false
+}
+.flow node hex 0:normal{
+	background : OL box
+}
+.flow node hex 0 on{
+	border : 46 25 0 25
+	padding : 34 23 0 23
+	alignment : middleCenter
+	rich-text : false
+	content-offset : 0 -13
+	stretch-width : false
+}
+.flow node hex 0 on:normal{
+	background : OL box
+}
+.flow node hex 1{
+	border : 46 25 0 25
+	padding : 34 23 0 23
+	alignment : middleCenter
+	rich-text : false
+	content-offset : 0 -13
+	stretch-width : false
+}
+.flow node hex 1:normal{
+	background : OL box
+}
+.flow node hex 1 on{
+	border : 46 25 0 25
+	padding : 34 23 0 23
+	alignment : middleCenter
+	rich-text : false
+	content-offset : 0 -13
+	stretch-width : false
+}
+.flow node hex 1 on:normal{
+	background : OL box
+}
+.flow node hex 2{
+	border : 46 25 0 25
+	padding : 34 23 0 23
+	alignment : middleCenter
+	rich-text : false
+	content-offset : 0 -13
+	stretch-width : false
+}
+.flow node hex 2:normal{
+	background : OL box
+}
+.flow node hex 2 on{
+	border : 46 25 0 25
+	padding : 34 23 0 23
+	alignment : middleCenter
+	rich-text : false
+	content-offset : 0 -13
+	stretch-width : false
+}
+.flow node hex 2 on:normal{
+	background : OL box
+}
+.flow node hex 3{
+	border : 46 25 0 25
+	padding : 34 23 0 23
+	alignment : middleCenter
+	rich-text : false
+	content-offset : 0 -13
+	stretch-width : false
+}
+.flow node hex 3:normal{
+	background : OL box
+}
+.flow node hex 3 on{
+	border : 46 25 0 25
+	padding : 34 23 0 23
+	alignment : middleCenter
+	rich-text : false
+	content-offset : 0 -13
+	stretch-width : false
+}
+.flow node hex 3 on:normal{
+	background : OL box
+}
+.flow node hex 4{
+	border : 46 25 0 25
+	padding : 34 23 0 23
+	alignment : middleCenter
+	rich-text : false
+	content-offset : 0 -13
+	stretch-width : false
+}
+.flow node hex 4:normal{
+	background : OL box
+}
+.flow node hex 4 on{
+	border : 46 25 0 25
+	padding : 34 23 0 23
+	alignment : middleCenter
+	rich-text : false
+	content-offset : 0 -13
+	stretch-width : false
+}
+.flow node hex 4 on:normal{
+	background : OL box
+}
+.flow node hex 5{
+	border : 46 25 0 25
+	padding : 34 23 0 23
+	alignment : middleCenter
+	rich-text : false
+	content-offset : 0 -13
+	stretch-width : false
+}
+.flow node hex 5:normal{
+	background : OL box
+}
+.flow node hex 5 on{
+	border : 46 25 0 25
+	padding : 34 23 0 23
+	alignment : middleCenter
+	rich-text : false
+	content-offset : 0 -13
+	stretch-width : false
+}
+.flow node hex 5 on:normal{
+	background : OL box
+}
+.flow node hex 6{
+	border : 46 25 0 25
+	padding : 34 23 0 23
+	alignment : middleCenter
+	rich-text : false
+	content-offset : 0 -13
+	stretch-width : false
+}
+.flow node hex 6:normal{
+	background : OL box
+}
+.flow node hex 6 on{
+	border : 46 25 0 25
+	padding : 34 23 0 23
+	alignment : middleCenter
+	rich-text : false
+	content-offset : 0 -13
+	stretch-width : false
+}
+.flow node hex 6 on:normal{
+	background : OL box
+}
+.flow node titlebar{
+	border : 0 0 4 0
+	padding : 0 15 0 15
+	overflow : -6 0 -2 0
+	font : Lucida Grande small bold
+	alignment : upperCenter
+	rich-text : false
+	image-position : textOnly
+	content-offset : 0 1
+	fixed-height : 12
+}
+.flow node titlebar:normal{
+	background : OL box
+}
+.flow overlay area left{
+	padding : 1 4 0 0
+	font : Lucida Grande small bold
+	alignment : upperCenter
+	rich-text : false
+	stretch-width : false
+}
+.flow overlay area left:normal{
+	background : OL box
+}
+.flow overlay area right{
+	padding : 0 0 0 4
+	font : Lucida Grande small bold
+	alignment : upperCenter
+	rich-text : false
+	stretch-width : false
+}
+.flow overlay area right:normal{
+	background : OL box
+}
+.flow overlay box{
+	border : 4 9 14 9
+	padding : 1 2 2 1
+	overflow : 0 4 9 4
+	font : Lucida Grande
+	alignment : upperCenter
+	rich-text : false
+	content-offset : 0 3
+	stretch-width : false
+}
+.flow overlay box:normal{
+	background : OL box
+}
+.flow overlay foldout{
+	border : 13 0 0 14
+	margin : 0 0 0 3
+	padding : 0 0 6 0
+	overflow : -3 0 0 0
+	alignment : middleCenter
+	rich-text : false
+	fixed-width : 15
+	stretch-width : false
+}
+.flow overlay foldout:normal{
+	background : OL box
+}
+.flow overlay header lower left{
+	border : 12 16 12 8
+	padding : 0 2 0 1
+	overflow : 0 4 9 4
+	font : Lucida Grande
+	alignment : middleLeft
+	rich-text : false
+	content-offset : 4 -1
+	fixed-height : 22
+	stretch-width : false
+}
+.flow overlay header lower left:normal{
+	background : OL box
+}
+.flow overlay header lower right{
+	border : 12 8 12 16
+	padding : 0 2 0 1
+	overflow : 0 4 9 4
+	font : Lucida Grande
+	alignment : middleRight
+	rich-text : false
+	content-offset : -4 -1
+	fixed-height : 22
+	stretch-width : false
+}
+.flow overlay header lower right:normal{
+	background : OL box
+}
+.flow overlay header upper left{
+	border : 8 16 22 8
+	padding : 0 2 0 1
+	overflow : 0 4 10 4
+	font : Lucida Grande
+	alignment : middleLeft
+	rich-text : false
+	content-offset : 4 0
+	fixed-height : 21
+	stretch-width : false
+}
+.flow overlay header upper left:normal{
+	background : OL box
+}
+.flow overlay header upper right{
+	border : 8 8 22 16
+	padding : 0 2 0 1
+	overflow : -1 4 10 4
+	font : Lucida Grande
+	alignment : middleRight
+	rich-text : false
+	content-offset : -4 0
+	fixed-height : 21
+	stretch-width : false
+}
+.flow overlay header upper right:normal{
+	background : OL box
+}
+.flow shader in 0{
+	border : 0 0 0 12
+	padding : 0 5 0 8
+	font : Lucida Grande small bold
+	rich-text : false
+	image-position : textOnly
+	fixed-height : 12
+}
+.flow shader in 0:normal{
+	background : OL box
+}
+.flow shader in 1{
+	border : 0 0 0 12
+	padding : 0 5 0 8
+	font : Lucida Grande small bold
+	rich-text : false
+	image-position : textOnly
+	fixed-height : 12
+}
+.flow shader in 1:normal{
+	background : OL box
+}
+.flow shader in 2{
+	border : 0 0 0 12
+	padding : 0 5 0 8
+	font : Lucida Grande small bold
+	rich-text : false
+	image-position : textOnly
+	fixed-height : 12
+}
+.flow shader in 2:normal{
+	background : OL box
+}
+.flow shader in 3{
+	border : 0 0 0 12
+	padding : 0 5 0 8
+	font : Lucida Grande small bold
+	rich-text : false
+	image-position : textOnly
+	fixed-height : 12
+}
+.flow shader in 3:normal{
+	background : OL box
+}
+.flow shader in 4{
+	border : 0 0 0 12
+	padding : 0 5 0 8
+	font : Lucida Grande small bold
+	rich-text : false
+	image-position : textOnly
+	fixed-height : 12
+}
+.flow shader in 4:normal{
+	background : OL box
+}
+.flow shader in 5{
+	border : 0 0 0 12
+	padding : 0 5 0 8
+	font : Lucida Grande small bold
+	rich-text : false
+	image-position : textOnly
+	fixed-height : 12
+}
+.flow shader in 5:normal{
+	background : OL box
+}
+.flow shader node 0{
+	border : 21 20 20 20
+	padding : 0 0 4 0
+	overflow : 5 9 13 9
+	font : Lucida Grande small bold
+	alignment : upperCenter
+	rich-text : false
+	image-position : textOnly
+}
+.flow shader node 0:normal{
+	background : OL box
+}
+.flow shader node 0 on{
+	border : 21 20 20 20
+	padding : 0 0 4 0
+	overflow : 5 9 13 9
+	font : Lucida Grande small bold
+	alignment : upperCenter
+	rich-text : false
+	image-position : textOnly
+}
+.flow shader node 0 on:normal{
+	background : OL box
+}
+.flow shader out 0{
+	border : 0 11 0 0
+	padding : 0 7 0 5
+	font : Lucida Grande small bold
+	alignment : upperRight
+	rich-text : false
+	image-position : textOnly
+	fixed-height : 12
+}
+.flow shader out 0:normal{
+	background : OL box
+}
+.flow shader out 1{
+	border : 0 11 0 0
+	padding : 0 7 0 5
+	font : Lucida Grande small bold
+	alignment : upperRight
+	rich-text : false
+	image-position : textOnly
+	fixed-height : 12
+}
+.flow shader out 1:normal{
+	background : OL box
+}
+.flow shader out 2{
+	border : 0 11 0 0
+	padding : 0 7 0 5
+	font : Lucida Grande small bold
+	alignment : upperRight
+	rich-text : false
+	image-position : textOnly
+	fixed-height : 12
+}
+.flow shader out 2:normal{
+	background : OL box
+}
+.flow shader out 3{
+	border : 0 11 0 0
+	padding : 0 7 0 5
+	font : Lucida Grande small bold
+	alignment : upperRight
+	rich-text : false
+	image-position : textOnly
+	fixed-height : 12
+}
+.flow shader out 3:normal{
+	background : OL box
+}
+.flow shader out 4{
+	border : 0 11 0 0
+	padding : 0 7 0 5
+	font : Lucida Grande small bold
+	alignment : upperRight
+	rich-text : false
+	image-position : textOnly
+	fixed-height : 12
+}
+.flow shader out 4:normal{
+	background : OL box
+}
+.flow shader out 5{
+	border : 0 11 0 0
+	padding : 0 7 0 5
+	font : Lucida Grande small bold
+	alignment : upperRight
+	rich-text : false
+	image-position : textOnly
+	fixed-height : 12
+}
+.flow shader out 5:normal{
+	background : OL box
+}
+.flow target in{
+	border : 0 0 4 7
+	padding : 0 0 0 11
+	overflow : -6 0 -2 -1
+	font : Lucida Grande small
+	rich-text : false
+	image-position : textOnly
+	content-offset : 0 1
+	fixed-height : 12
+}
+.flow target in:normal{
+	background : OL box
+}
+.flow triggerPin in{
+	border : 0 0 6 8
+	padding : 0 0 0 11
+	overflow : -5 0 -1 0
+	font : Lucida Grande small bold
+	rich-text : false
+	image-position : textOnly
+	content-offset : 0 1
+}
+.flow triggerPin in:normal{
+	background : OL box
+}
+.flow triggerPin out{
+	border : 0 8 4 0
+	padding : 0 11 0 0
+	overflow : -5 0 -1 0
+	font : Lucida Grande small bold
+	alignment : upperRight
+	rich-text : false
+	image-position : textOnly
+	content-offset : 0 1
+	fixed-height : 12
+}
+.flow triggerPin out:normal{
+	background : OL box
+}
+.flow var 0{
+	border : 0 24 0 24
+	padding : 1 0 2 0
+	overflow : 8 12 16 12
+	font : Lucida Grande small
+	rich-text : false
+	content-offset : 10 0
+	stretch-width : false
+}
+.flow var 0:normal{
+	background : OL box
+}
+.flow var 0 on{
+	border : 0 24 0 24
+	padding : 1 0 2 0
+	overflow : 8 12 16 12
+	font : Lucida Grande small
+	rich-text : false
+	content-offset : 10 -1
+	stretch-width : false
+}
+.flow var 0 on:normal{
+	background : OL box
+}
+.flow var 1{
+	border : 0 24 0 24
+	padding : 1 0 2 0
+	overflow : 8 12 16 12
+	font : Lucida Grande small
+	rich-text : false
+	content-offset : 10 -1
+	stretch-width : false
+}
+.flow var 1:normal{
+	background : OL box
+}
+.flow var 1 on{
+	border : 0 24 0 24
+	padding : 1 0 2 0
+	overflow : 8 12 16 12
+	font : Lucida Grande small
+	rich-text : false
+	content-offset : 10 -1
+	stretch-width : false
+}
+.flow var 1 on:normal{
+	background : OL box
+}
+.flow var 2{
+	border : 0 24 0 24
+	padding : 1 0 2 0
+	overflow : 8 12 16 12
+	font : Lucida Grande small
+	rich-text : false
+	content-offset : 10 -1
+	stretch-width : false
+}
+.flow var 2:normal{
+	background : OL box
+}
+.flow var 2 on{
+	border : 0 24 0 24
+	padding : 1 0 2 0
+	overflow : 8 12 16 12
+	font : Lucida Grande small
+	rich-text : false
+	content-offset : 10 -1
+	stretch-width : false
+}
+.flow var 2 on:normal{
+	background : OL box
+}
+.flow var 3{
+	border : 0 24 0 24
+	padding : 1 0 2 0
+	overflow : 8 12 16 12
+	font : Lucida Grande small
+	rich-text : false
+	content-offset : 10 -1
+	stretch-width : false
+}
+.flow var 3:normal{
+	background : OL box
+}
+.flow var 3 on{
+	border : 0 24 0 24
+	padding : 1 0 2 0
+	overflow : 8 12 16 12
+	font : Lucida Grande small
+	rich-text : false
+	content-offset : 10 -1
+	stretch-width : false
+}
+.flow var 3 on:normal{
+	background : OL box
+}
+.flow var 4{
+	border : 0 24 0 24
+	padding : 1 0 2 0
+	overflow : 8 12 16 12
+	font : Lucida Grande small
+	rich-text : false
+	content-offset : 10 -1
+	stretch-width : false
+}
+.flow var 4:normal{
+	background : OL box
+}
+.flow var 4 on{
+	border : 0 24 0 24
+	padding : 1 0 2 0
+	overflow : 8 12 16 12
+	font : Lucida Grande small
+	rich-text : false
+	content-offset : 10 -1
+	stretch-width : false
+}
+.flow var 4 on:normal{
+	background : OL box
+}
+.flow var 5{
+	border : 0 24 0 24
+	padding : 1 0 2 0
+	overflow : 8 12 16 12
+	font : Lucida Grande small
+	rich-text : false
+	content-offset : 10 -1
+	stretch-width : false
+}
+.flow var 5:normal{
+	background : OL box
+}
+.flow var 5 on{
+	border : 0 24 0 24
+	padding : 1 0 2 0
+	overflow : 8 12 16 12
+	font : Lucida Grande small
+	rich-text : false
+	content-offset : 10 -1
+	stretch-width : false
+}
+.flow var 5 on:normal{
+	background : OL box
+}
+.flow var 6{
+	border : 0 24 0 24
+	padding : 1 0 2 0
+	overflow : 8 12 16 12
+	font : Lucida Grande small
+	rich-text : false
+	content-offset : 10 -1
+	stretch-width : false
+}
+.flow var 6:normal{
+	background : OL box
+}
+.flow var 6 on{
+	border : 0 24 0 24
+	padding : 1 0 2 0
+	overflow : 8 12 16 12
+	font : Lucida Grande small
+	rich-text : false
+	content-offset : 10 -1
+	stretch-width : false
+}
+.flow var 6 on:normal{
+	background : OL box
+}
+.flow varPin in{
+	border : 0 0 4 7
+	padding : 0 0 0 11
+	overflow : -6 0 -2 -1
+	font : Lucida Grande small
+	rich-text : false
+	image-position : textOnly
+	content-offset : 0 1
+	fixed-height : 12
+}
+.flow varPin in:normal{
+	background : OL box
+}
+.flow varPin out{
+	border : 0 7 4 0
+	padding : 0 11 0 0
+	overflow : -6 -1 -2 0
+	font : Lucida Grande small
+	alignment : upperRight
+	rich-text : false
+	image-position : textOnly
+	content-offset : 0 1
+	fixed-height : 12
+}
+.flow varPin out:normal{
+	background : OL box
+}
+.flow varPin tooltip{
+	border : 1 18 1 3
+	padding : 2 18 0 2
+	overflow : 1 1 1 1
+	font : Lucida Grande small
+	rich-text : false
+	fixed-height : 14
+	stretch-width : false
+}
+.flow varPin tooltip:normal{
+	background : OL box
+}
+.Foldout{
+	border : 13 0 0 14
+	margin : 2 4 2 4
+	padding : 1 2 2 14
+	overflow : -1 0 0 0
+	rich-text : false
+}
+.Foldout:normal{
+	background : OL box
+}
+.FoldOutPreDrop{
+	border : 13 9 0 14
+	margin : 0 4 0 3
+	padding : 2 0 0 14
+	rich-text : false
+}
+.FoldOutPreDrop:normal{
+	background : OL box
+}
+.GameViewBackground{
+	border : 20 16 10 16
+	font : Lucida Grande Bold
+	text-clipping : clip
+}
+.GameViewBackground:normal{
+	background : OL box
+}
+.Grad Down Swatch{
+	fixed-width : 11
+	fixed-height : 16
+}
+.Grad Down Swatch:normal{
+	background : OL box
+}
+.Grad Down Swatch Overlay{
+	fixed-width : 11
+	fixed-height : 16
+}
+.Grad Down Swatch Overlay:normal{
+	background : OL box
+}
+.Grad Up Swatch{
+	fixed-width : 11
+	fixed-height : 16
+}
+.Grad Up Swatch:normal{
+	background : OL box
+}
+.Grad Up Swatch Overlay{
+	fixed-width : 11
+	fixed-height : 16
+}
+.Grad Up Swatch Overlay:normal{
+	background : OL box
+}
+.grey_border{
+	border : 2 2 2 2
+	alignment : lowerCenter
+	text-clipping : clip
+	stretch-height : true
+}
+.grey_border:normal{
+	background : OL box
+}
+.GridList{
+	margin : 3 4 3 4
+	alignment : upperRight
+	rich-text : false
+	text-clipping : clip
+}
+.GridList:normal{
+	background : OL box
+}
+.GridListText{
+	border : 2 17 17 2
+	padding : 1 1 1 1
+	overflow : 0 1 1 0
+	font : Lucida Grande small
+	alignment : lowerCenter
+	rich-text : false
+	text-clipping : clip
+	image-position : imageAbove
+	stretch-height : true
+}
+.GridListText:normal{
+	background : OL box
+}
+.GridToggle{
+	alignment : middleLeft
+	fixed-width : 15
+	fixed-height : 15
+}
+.GridToggle:normal{
+	background : OL box
+}
+.GroupBox{
+	border : 3 3 3 3
+	margin : 10 10 10 10
+	padding : 10 10 10 10
+	alignment : upperCenter
+	rich-text : false
+	text-clipping : clip
+	stretch-width : false
+}
+.GroupBox:normal{
+	background : OL box
+}
+.GUIEditor.BreadcrumbLeft{
+	border : 0 10 0 3
+	padding : 2 11 0 5
+	overflow : 0 7 0 6
+	text-clipping : clip
+	fixed-height : 18
+	stretch-width : false
+}
+.GUIEditor.BreadcrumbLeft:normal{
+	background : OL box
+}
+.GUIEditor.BreadcrumbMid{
+	border : 0 10 0 10
+	padding : 2 10 0 10
+	overflow : 0 7 0 5
+	text-clipping : clip
+	fixed-height : 18
+	stretch-width : false
+}
+.GUIEditor.BreadcrumbMid:normal{
+	background : OL box
+}
+.GV Gizmo DropDown{
+	border : 0 13 0 2
+	padding : 0 15 0 6
+	overflow : 0 1 0 0
+	font : Lucida Grande small
+	alignment : middleLeft
+	text-clipping : clip
+	fixed-height : 18
+}
+.GV Gizmo DropDown:normal{
+	background : OL box
+}
+.HeaderLabel{
+	border : 2 2 2 2
+	margin : 6 4 0 4
+	padding : 2 0 2 0
+	font : Lucida Grande Bold
+	rich-text : false
+	text-clipping : clip
+}
+.HeaderLabel:normal{
+	background : OL box
+}
+.HelpBox{
+	border : 4 4 4 4
+	margin : 4 4 4 4
+	padding : 3 4 3 4
+	font : Lucida Grande small
+	word-wrap : true
+	rich-text : false
+	text-clipping : clip
+}
+.HelpBox:normal{
+	background : OL box
+}
+.Hi Label{
+	border : 8 9 8 9
+	margin : 0 4 0 3
+	padding : 0 0 0 16
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 16
+	stretch-width : false
+}
+.Hi Label:normal{
+	background : OL box
+}
+.HorizontalMinMaxScrollbarThumb{
+	border : 0 17 0 17
+	padding : 0 13 0 13
+	overflow : 0 1 0 1
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 15
+}
+.HorizontalMinMaxScrollbarThumb:normal{
+	background : OL box
+}
+.hostview{
+	padding : 10 0 0 0
+	font : Lucida Grande
+	alignment : middleCenter
+	content-offset : 0 -2
+	stretch-height : true
+}
+.hostview:normal{
+	background : OL box
+}
+.IN BigTitle{
+	border : 3 0 3 0
+	margin : 6 0 4 0
+	padding : 6 6 5 6
+	font : Lucida Grande small
+	alignment : upperCenter
+	text-clipping : clip
+	content-offset : 0 -1
+	stretch-width : false
+}
+.IN BigTitle:normal{
+	background : OL box
+}
+.IN BigTitle Inner{
+	font : Lucida Grande small
+	alignment : upperCenter
+	text-clipping : clip
+	stretch-width : false
+}
+.IN BigTitle Inner:normal{
+	background : OL box
+}
+.IN ColorField{
+	border : 0 20 0 0
+	margin : 0 4 0 0
+	padding : 2 20 2 0
+}
+.IN ColorField:normal{
+	background : OL box
+}
+.IN DropDown{
+	border : 0 9 0 0
+	margin : 0 4 0 0
+	padding : 0 13 0 0
+	alignment : middleLeft
+	text-clipping : clip
+	fixed-height : 16
+}
+.IN DropDown:normal{
+	background : OL box
+}
+.IN Foldout{
+	border : 13 0 0 14
+	margin : 0 4 0 3
+	padding : 2 0 2 14
+	overflow : -2 0 0 0
+}
+.IN Foldout:normal{
+	background : OL box
+}
+.IN FoldoutStatic{
+	alignment : middleCenter
+	image-position : imageOnly
+	fixed-width : 9
+	fixed-height : 5
+	stretch-width : false
+}
+.IN FoldoutStatic:normal{
+	background : OL box
+}
+.IN Label{
+	margin : 0 4 0 4
+	padding : 2 2 0 0
+	overflow : 0 1000 0 1000
+	text-clipping : clip
+}
+.IN Label:normal{
+	background : OL box
+}
+.IN LockButton{
+	fixed-width : 11
+	fixed-height : 11
+}
+.IN LockButton:normal{
+	background : OL box
+}
+.IN ObjectField{
+	border : 0 11 0 9
+	margin : 0 4 0 0
+	padding : 0 13 0 0
+	overflow : 0 -1 0 0
+	alignment : middleLeft
+	text-clipping : clip
+	fixed-height : 16
+}
+.IN ObjectField:normal{
+	background : OL box
+}
+.IN Popup{
+	border : 0 9 0 0
+	margin : 0 4 0 0
+	padding : 0 13 0 0
+	overflow : 0 -4 0 0
+	alignment : middleLeft
+	text-clipping : clip
+	fixed-height : 16
+}
+.IN Popup:normal{
+	background : OL box
+}
+.IN RenderLayer{
+	border : 13 0 0 14
+	overflow : -5 -7 -7 -3
+	alignment : middleCenter
+	rich-text : false
+}
+.IN RenderLayer:normal{
+	background : OL box
+}
+.IN SelectedLine{
+	border : 0 10 0 10
+	margin : 0 4 0 4
+	padding : 0 0 0 10
+	overflow : -2 0 0 0
+}
+.IN SelectedLine:normal{
+	background : OL box
+}
+.IN TextField{
+	border : 3 3 3 3
+	padding : 1 0 1 0
+	overflow : 1 0 1 2
+	text-clipping : clip
+}
+.IN TextField:normal{
+	background : OL box
+}
+.IN ThumbnailSelection{
+	border : 3 4 3 4
+	padding : 1 0 0 0
+	overflow : 0 2 0 2
+	font : Lucida Grande small
+	alignment : upperCenter
+	text-clipping : clip
+	fixed-height : 14
+}
+.IN ThumbnailSelection:normal{
+	background : OL box
+}
+.IN ThumbnailShadow{
+	border : 10 10 13 10
+	overflow : 4 5 7 5
+}
+.IN ThumbnailShadow:normal{
+	background : OL box
+}
+.IN Title{
+	border : 17 0 0 15
+	margin : 2 0 0 0
+	padding : 2 0 0 16
+	overflow : 0 0 2 0
+	font : Lucida Grande Bold
+	text-clipping : clip
+	content-offset : 0 -1
+	fixed-height : 17
+}
+.IN Title:normal{
+	background : OL box
+}
+.IN TitleText{
+	border : 10 0 0 15
+	padding : 0 0 0 -2
+	overflow : 0 3 0 16
+	font : Lucida Grande Bold
+	alignment : lowerLeft
+	text-clipping : clip
+	content-offset : 0 -1
+	fixed-height : 16
+}
+.IN TitleText:normal{
+	background : OL box
+}
+.IN Toggle{
+	border : 13 0 0 16
+	padding : 2 0 0 0
+	overflow : -2 0 0 0
+	text-clipping : clip
+}
+.IN Toggle:normal{
+	background : OL box
+}
+.InnerShadowBg{
+	border : 18 2 13 2
+	alignment : middleLeft
+	rich-text : false
+	stretch-height : true
+}
+.InnerShadowBg:normal{
+	background : OL box
+}
+.InvisibleButton{
+	border : 1 1 1 1
+	padding : 2 2 2 2
+	alignment : middleCenter
+	rich-text : false
+	text-clipping : clip
+	stretch-height : true
+}
+.InvisibleButton:normal{
+	background : OL box
+}
+.LargeButton{
+	border : 3 5 3 5
+	margin : 3 4 3 4
+	padding : 3 20 5 20
+	overflow : -1 0 2 0
+	font : Lucida Grande Big
+	alignment : middleCenter
+	rich-text : false
+	text-clipping : clip
+}
+.LargeButton:normal{
+	background : OL box
+}
+.LargeButtonLeft{
+	border : 3 2 4 5
+	margin : 3 0 3 4
+	padding : 3 6 5 6
+	overflow : -1 0 2 0
+	font : Lucida Grande Big
+	alignment : middleCenter
+	rich-text : false
+	text-clipping : clip
+}
+.LargeButtonLeft:normal{
+	background : OL box
+}
+.LargeButtonMid{
+	border : 3 2 3 2
+	margin : 3 0 3 0
+	padding : 3 10 5 10
+	overflow : -1 0 2 0
+	font : Lucida Grande Big
+	alignment : middleCenter
+	rich-text : false
+	text-clipping : clip
+}
+.LargeButtonMid:normal{
+	background : OL box
+}
+.LargeButtonRight{
+	border : 3 6 3 3
+	margin : 3 4 3 0
+	padding : 3 10 5 10
+	overflow : -1 0 2 0
+	font : Lucida Grande Big
+	alignment : middleCenter
+	rich-text : false
+	text-clipping : clip
+}
+.LargeButtonRight:normal{
+	background : OL box
+}
+.LargeDropDown{
+	border : 0 15 0 6
+	margin : 3 10 3 10
+	padding : 0 20 0 8
+	font : Lucida Grande Big
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 22
+}
+.LargeDropDown:normal{
+	background : OL box
+}
+.LargeLabel{
+	margin : 4 4 4 4
+	padding : 2 2 2 2
+	font : Lucida Grande Big
+	rich-text : false
+	text-clipping : clip
+}
+.LargeLabel:normal{
+	background : OL box
+}
+.LargePopup{
+	border : 0 15 0 6
+	margin : 3 4 3 4
+	padding : 0 20 0 8
+	overflow : 0 0 1 0
+	font : Lucida Grande Big
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 22
+}
+.LargePopup:normal{
+	background : OL box
+}
+.LargeTextField{
+	border : 3 3 3 3
+	margin : 2 4 2 4
+	padding : 2 3 2 3
+	font : Lucida Grande Big
+	rich-text : false
+	text-clipping : clip
+	image-position : textOnly
+	fixed-height : 18
+}
+.LargeTextField:normal{
+	background : OL box
+}
+.LightmapEditorSelectedHighlight{
+	border : 12 11 12 11
+	overflow : 6 7 8 7
+	alignment : middleLeft
+	rich-text : false
+	stretch-width : false
+}
+.LightmapEditorSelectedHighlight:normal{
+	background : OL box
+}
+.ListToggle{
+	alignment : middleLeft
+	fixed-width : 15
+	fixed-height : 15
+}
+.ListToggle:normal{
+	background : OL box
+}
+.LockedHeaderBackground{
+	border : 1 0 1 0
+	padding : 9 6 7 6
+	overflow : 0 0 8 0
+	font : Lucida Grande small
+	alignment : upperCenter
+	text-clipping : clip
+	stretch-width : false
+}
+.LockedHeaderBackground:normal{
+	background : OL box
+}
+.LockedHeaderButton{
+	border : 0 6 0 6
+	margin : 0 4 0 4
+	padding : 2 6 2 6
+	font : Lucida Grande small
+	alignment : middleCenter
+	text-clipping : clip
+}
+.LockedHeaderButton:normal{
+	background : OL box
+}
+.LockedHeaderLabel{
+	font : Lucida Grande
+	alignment : upperCenter
+	text-clipping : clip
+	stretch-width : false
+}
+.LockedHeaderLabel:normal{
+	background : OL box
+}
+.LODBlackBox{
+	rich-text : false
+}
+.LODBlackBox:normal{
+	background : OL box
+}
+.LODCameraLine{
+	border : 1 1 1 1
+	padding : 3 0 0 3
+	font-size : 10
+	font-style : bold
+	rich-text : false
+	text-clipping : clip
+}
+.LODCameraLine:normal{
+	background : OL box
+}
+.LODLevelNotifyText{
+	padding : 3 0 0 3
+	font-size : 23
+	alignment : middleCenter
+	rich-text : false
+	text-clipping : clip
+}
+.LODLevelNotifyText:normal{
+	background : OL box
+}
+.LODRendererAddButton{
+	border : 2 2 2 2
+	padding : 2 2 2 2
+	font-size : 10
+	font-style : bold
+	alignment : middleCenter
+	rich-text : false
+	text-clipping : clip
+}
+.LODRendererAddButton:normal{
+	background : OL box
+}
+.LODRendererButton{
+	border : 2 2 2 2
+	padding : 2 2 2 2
+	font-size : 8
+	font-style : bold
+	word-wrap : true
+	rich-text : false
+	text-clipping : clip
+}
+.LODRendererButton:normal{
+	background : OL box
+}
+.LODRendererRemove{
+	font-size : 10
+	font-style : bold
+	alignment : middleCenter
+	rich-text : false
+	text-clipping : clip
+}
+.LODRendererRemove:normal{
+	background : OL box
+}
+.LODRenderersText{
+	border : 1 1 1 1
+	padding : 3 0 0 3
+	font-size : 10
+	font-style : bold
+	rich-text : false
+	text-clipping : clip
+}
+.LODRenderersText:normal{
+	background : OL box
+}
+.LODSceneText{
+	padding : 3 0 0 3
+	font-size : 10
+	font-style : bold
+	rich-text : false
+	text-clipping : clip
+}
+.LODSceneText:normal{
+	background : OL box
+}
+.LODSliderBG{
+	border : 2 2 2 2
+	rich-text : false
+}
+.LODSliderBG:normal{
+	background : OL box
+}
+.LODSliderRange{
+	padding : 3 0 0 3
+	rich-text : false
+}
+.LODSliderRange:normal{
+	background : OL box
+}
+.LODSliderRangeSelected{
+	border : 2 2 2 2
+	margin : 2 2 2 2
+	rich-text : false
+}
+.LODSliderRangeSelected:normal{
+	background : OL box
+}
+.LODSliderText{
+	padding : 3 0 0 3
+	font-size : 10
+	rich-text : false
+	text-clipping : clip
+}
+.LODSliderText:normal{
+	background : OL box
+}
+.LODSliderTextSelected{
+	padding : 3 0 0 3
+	font-size : 10
+	font-style : bold
+	rich-text : false
+	text-clipping : clip
+}
+.LODSliderTextSelected:normal{
+	background : OL box
+}
+.MeBlendBackground{
+	rich-text : false
+	fixed-height : 40
+}
+.MeBlendBackground:normal{
+	background : OL box
+}
+.MeBlendPosition{
+	rich-text : false
+	fixed-width : 9
+	fixed-height : 42
+	stretch-width : false
+}
+.MeBlendPosition:normal{
+	background : OL box
+}
+.MeBlendTriangleLeft{
+	rich-text : false
+	fixed-height : 39
+}
+.MeBlendTriangleLeft:normal{
+	background : OL box
+}
+.MeBlendTriangleRight{
+	rich-text : false
+	fixed-height : 39
+}
+.MeBlendTriangleRight:normal{
+	background : OL box
+}
+.MeLivePlayBackground{
+	border : 0 3 0 3
+	margin : 0 2 2 2
+	padding : 0 1 0 1
+	rich-text : false
+	fixed-height : 8
+}
+.MeLivePlayBackground:normal{
+	background : OL box
+}
+.MeLivePlayBar{
+	rich-text : false
+	fixed-height : 8
+}
+.MeLivePlayBar:normal{
+	background : OL box
+}
+.MenuItem{
+	border : 0 0 0 15
+	padding : 1 22 2 22
+	font : Lucida Grande
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	image-position : textOnly
+	fixed-height : 16
+}
+.MenuItem:normal{
+	background : OL box
+}
+.MenuItemMixed{
+	border : 0 0 0 15
+	padding : 1 22 2 22
+	font : Lucida Grande
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	image-position : textOnly
+	fixed-height : 16
+}
+.MenuItemMixed:normal{
+	background : OL box
+}
+.MeTimeLabel{
+	border : 4 4 4 4
+	alignment : middleCenter
+	rich-text : false
+	stretch-height : true
+}
+.MeTimeLabel:normal{
+	background : OL box
+}
+.MeTransBGOver{
+	alignment : middleLeft
+	word-wrap : true
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 132
+}
+.MeTransBGOver:normal{
+	background : OL box
+}
+.MeTransitionBack{
+	border : 0 2 0 2
+	alignment : middleCenter
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 132
+}
+.MeTransitionBack:normal{
+	background : OL box
+}
+.MeTransitionBlock{
+	border : 0 3 0 3
+	padding : 0 0 0 4
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 33
+}
+.MeTransitionBlock:normal{
+	background : OL box
+}
+.MeTransitionHandleLeft{
+	alignment : middleCenter
+	rich-text : false
+	text-clipping : clip
+	fixed-width : 9
+	fixed-height : 13
+	stretch-width : false
+}
+.MeTransitionHandleLeft:normal{
+	background : OL box
+}
+.MeTransitionHandleLeftPrev{
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	image-position : imageOnly
+	fixed-width : 9
+	fixed-height : 13
+	stretch-width : false
+}
+.MeTransitionHandleLeftPrev:normal{
+	background : OL box
+}
+.MeTransitionHandleRight{
+	alignment : middleCenter
+	rich-text : false
+	text-clipping : clip
+	fixed-width : 9
+	fixed-height : 13
+	stretch-width : false
+}
+.MeTransitionHandleRight:normal{
+	background : OL box
+}
+.MeTransitionHead{
+	border : 0 2 0 2
+	alignment : middleCenter
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 18
+}
+.MeTransitionHead:normal{
+	background : OL box
+}
+.MeTransitionSelect{
+	border : 0 1 0 1
+	alignment : middleCenter
+	rich-text : false
+	text-clipping : clip
+	stretch-height : true
+}
+.MeTransitionSelect:normal{
+	background : OL box
+}
+.MeTransitionSelectHead{
+	alignment : middleCenter
+	rich-text : false
+	text-clipping : clip
+	stretch-height : true
+}
+.MeTransitionSelectHead:normal{
+	background : OL box
+}
+.MeTransOff2On{
+	border : 3 0 3 0
+	padding : 0 0 0 4
+	alignment : middleLeft
+	word-wrap : true
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 33
+}
+.MeTransOff2On:normal{
+	background : OL box
+}
+.MeTransOffLeft{
+	border : 3 0 3 3
+	padding : 0 0 0 4
+	alignment : middleLeft
+	word-wrap : true
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 33
+}
+.MeTransOffLeft:normal{
+	background : OL box
+}
+.MeTransOffRight{
+	border : 3 3 3 0
+	alignment : middleLeft
+	word-wrap : true
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 33
+}
+.MeTransOffRight:normal{
+	background : OL box
+}
+.MeTransOn2Off{
+	border : 3 0 3 0
+	padding : 0 0 0 4
+	alignment : middleLeft
+	word-wrap : true
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 33
+}
+.MeTransOn2Off:normal{
+	background : OL box
+}
+.MeTransOnLeft{
+	border : 3 0 3 3
+	padding : 0 0 0 4
+	alignment : middleLeft
+	word-wrap : true
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 33
+}
+.MeTransOnLeft:normal{
+	background : OL box
+}
+.MeTransOnRight{
+	border : 3 3 3 0
+	padding : 0 0 0 4
+	alignment : middleLeft
+	word-wrap : true
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 33
+}
+.MeTransOnRight:normal{
+	background : OL box
+}
+.MeTransPlayhead{
+	border : 4 4 4 4
+	alignment : middleCenter
+	rich-text : false
+	image-position : imageOnly
+	fixed-width : 15
+	fixed-height : 15
+	stretch-width : false
+}
+.MeTransPlayhead:normal{
+	background : OL box
+}
+.MiniBoldLabel{
+	margin : 6 4 4 4
+	padding : 3 2 2 2
+	font : Lucida Grande small bold
+	rich-text : false
+	text-clipping : clip
+}
+.MiniBoldLabel:normal{
+	background : OL box
+}
+.minibutton{
+	border : 12 6 4 6
+	margin : 2 4 2 4
+	padding : 2 6 2 6
+	overflow : -1 0 2 0
+	font : Lucida Grande small
+	alignment : middleCenter
+	rich-text : false
+	text-clipping : clip
+}
+.minibutton:normal{
+	background : OL box
+}
+.minibuttonleft{
+	border : 12 2 4 4
+	margin : 2 0 2 4
+	padding : 2 6 2 6
+	overflow : -1 0 2 0
+	font : Lucida Grande small
+	alignment : middleCenter
+	rich-text : false
+	text-clipping : clip
+}
+.minibuttonleft:normal{
+	background : OL box
+}
+.minibuttonmid{
+	border : 12 3 4 3
+	margin : 2 0 2 0
+	padding : 2 6 2 6
+	overflow : -1 0 2 0
+	font : Lucida Grande small
+	alignment : middleCenter
+	rich-text : false
+	text-clipping : clip
+}
+.minibuttonmid:normal{
+	background : OL box
+}
+.minibuttonright{
+	border : 12 4 4 2
+	margin : 2 4 2 0
+	padding : 2 6 2 6
+	overflow : -1 0 2 0
+	font : Lucida Grande small
+	alignment : middleCenter
+	rich-text : false
+	text-clipping : clip
+}
+.minibuttonright:normal{
+	background : OL box
+}
+.MiniLabel{
+	margin : 2 4 2 4
+	padding : 3 2 2 2
+	font : Lucida Grande small
+	rich-text : false
+	text-clipping : clip
+}
+.MiniLabel:normal{
+	background : OL box
+}
+.MiniLabelRight{
+	margin : 2 4 2 4
+	padding : 3 2 2 2
+	font : Lucida Grande small
+	alignment : upperRight
+	rich-text : false
+	text-clipping : clip
+}
+.MiniLabelRight:normal{
+	background : OL box
+}
+.MiniMinMaxSliderHorizontal{
+	border : 0 10 0 10
+	padding : 0 10 0 10
+	overflow : -5 -1 -4 -1
+	image-position : imageOnly
+	fixed-height : 15
+	stretch-width : false
+}
+.MiniMinMaxSliderHorizontal:normal{
+	background : OL box
+}
+.MiniMinMaxSliderVertical{
+	border : 10 0 10 0
+	padding : 10 0 10 0
+	overflow : -1 -4 -1 -5
+	image-position : imageOnly
+	fixed-width : 15
+	stretch-width : false
+}
+.MiniMinMaxSliderVertical:normal{
+	background : OL box
+}
+.MiniPopup{
+	border : 12 14 4 6
+	margin : 2 4 2 4
+	padding : 2 12 2 6
+	overflow : -1 0 2 0
+	font : Lucida Grande small
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 15
+}
+.MiniPopup:normal{
+	background : OL box
+}
+.MiniPullDown{
+	border : 12 14 4 6
+	margin : 2 4 2 4
+	padding : 2 12 2 6
+	overflow : -1 0 2 0
+	font : Lucida Grande small
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 15
+}
+.MiniPullDown:normal{
+	background : OL box
+}
+.MiniPullDownLeft{
+	border : 12 14 4 6
+	margin : 2 0 2 4
+	padding : 2 12 2 6
+	overflow : -1 0 2 0
+	font : Lucida Grande small
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 15
+}
+.MiniPullDownLeft:normal{
+	background : OL box
+}
+.MiniTextField{
+	border : 2 2 2 2
+	margin : 1 2 1 2
+	padding : 2 2 1 2
+	font : Lucida Grande small
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 13
+	stretch-width : false
+}
+.MiniTextField:normal{
+	background : OL box
+}
+.MiniToolbarButton{
+	border : 0 10 0 3
+	padding : 0 10 0 5
+	overflow : 0 1 0 0
+	font : Lucida Grande small
+	alignment : middleCenter
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 15
+}
+.MiniToolbarButton:normal{
+	background : OL box
+}
+.MiniToolbarButtonLeft{
+	border : 0 10 0 3
+	padding : 0 10 0 5
+	overflow : 0 1 0 0
+	font : Lucida Grande small
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 15
+}
+.MiniToolbarButtonLeft:normal{
+	background : OL box
+}
+.MiniToolbarPopup{
+	border : 0 10 0 3
+	padding : 0 10 0 5
+	overflow : 0 1 0 0
+	font : Lucida Grande small
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 15
+}
+.MiniToolbarPopup:normal{
+	background : OL box
+}
+.MinMaxHorizontalSliderThumb{
+	border : 0 7 0 7
+	padding : 0 6 0 6
+	overflow : -4 1 4 1
+	rich-text : false
+	text-clipping : clip
+	image-position : imageOnly
+	fixed-height : 12
+}
+.MinMaxHorizontalSliderThumb:normal{
+	background : OL box
+}
+.MuteToggle{
+	font : Lucida Grande Bold
+	rich-text : false
+	fixed-width : 21
+	fixed-height : 21
+	stretch-width : false
+}
+.MuteToggle:normal{
+	background : OL box
+}
+.NotificationBackground{
+	border : 16 16 16 16
+	margin : 30 30 30 30
+	padding : 40 40 40 40
+	font : Lucida Grande Warning
+	alignment : upperCenter
+	word-wrap : true
+	rich-text : false
+	text-clipping : clip
+	stretch-width : false
+}
+.NotificationBackground:normal{
+	background : OL box
+}
+.NotificationText{
+	border : 16 16 16 16
+	margin : 30 30 30 30
+	padding : 40 40 40 40
+	font : Lucida Grande Warning
+	alignment : upperCenter
+	word-wrap : true
+	rich-text : false
+	text-clipping : clip
+	stretch-width : false
+}
+.NotificationText:normal{
+	background : OL box
+}
+.ObjectField{
+	border : 4 23 4 4
+	margin : 2 4 2 4
+	padding : 1 20 2 3
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+}
+.ObjectField:normal{
+	background : OL box
+}
+.ObjectFieldMiniThumb{
+	border : 4 18 4 4
+	rich-text : false
+	fixed-width : 32
+	fixed-height : 18
+	stretch-width : false
+}
+.ObjectFieldMiniThumb:normal{
+	background : OL box
+}
+.ObjectFieldThumb{
+	border : 4 4 4 4
+	margin : 4 4 4 4
+	padding : 3 3 3 3
+	overflow : 1 1 1 1
+	font : Lucida Grande small
+	alignment : middleLeft
+	text-clipping : clip
+}
+.ObjectFieldThumb:normal{
+	background : OL box
+}
+.ObjectFieldThumbOverlay{
+	border : 3 3 3 3
+	margin : 4 4 4 4
+	padding : 2 0 3 0
+	font : Lucida Grande small
+	alignment : upperCenter
+	word-wrap : true
+	text-clipping : clip
+	image-position : textOnly
+	stretch-width : false
+}
+.ObjectFieldThumbOverlay:normal{
+	background : OL box
+}
+.ObjectFieldThumbOverlay2{
+	border : 0 31 16 8
+	margin : 4 4 4 4
+	padding : 0 3 1 0
+	overflow : 0 -1 -1 -24
+	font : Lucida Grande small
+	alignment : lowerRight
+	image-position : textOnly
+	stretch-width : false
+}
+.ObjectFieldThumbOverlay2:normal{
+	background : OL box
+}
+.ObjectPickerBackground{
+	font : Lucida Grande small
+	alignment : middleLeft
+	text-clipping : clip
+	stretch-width : false
+}
+.ObjectPickerBackground:normal{
+	background : OL box
+}
+.ObjectPickerGroupHeader{
+	padding : 0 6 0 6
+	alignment : middleLeft
+	text-clipping : clip
+	stretch-width : false
+}
+.ObjectPickerGroupHeader:normal{
+	background : OL box
+}
+.ObjectPickerLargeStatus{
+	padding : 6 3 10 3
+	font : Lucida Grande Bold
+	alignment : lowerCenter
+	text-clipping : clip
+	image-position : textOnly
+	stretch-width : false
+}
+.ObjectPickerLargeStatus:normal{
+	background : OL box
+}
+.ObjectPickerPreviewBackground{
+	font : Lucida Grande small
+	alignment : middleLeft
+	text-clipping : clip
+	stretch-width : false
+}
+.ObjectPickerPreviewBackground:normal{
+	background : OL box
+}
+.ObjectPickerResultsEven{
+	padding : 0 6 0 6
+	alignment : middleLeft
+	text-clipping : clip
+	stretch-width : false
+}
+.ObjectPickerResultsEven:normal{
+	background : OL box
+}
+.ObjectPickerResultsGrid{
+	alignment : middleCenter
+	text-clipping : clip
+	stretch-width : false
+}
+.ObjectPickerResultsGrid:normal{
+	background : OL box
+}
+.ObjectPickerResultsGridLabel{
+	padding : 1 3 1 3
+	font : Lucida Grande small
+	alignment : middleLeft
+	text-clipping : clip
+	fixed-height : 14
+	stretch-width : false
+}
+.ObjectPickerResultsGridLabel:normal{
+	background : OL box
+}
+.ObjectPickerResultsOdd{
+	padding : 0 6 0 6
+	alignment : middleLeft
+	text-clipping : clip
+	stretch-width : false
+}
+.ObjectPickerResultsOdd:normal{
+	background : OL box
+}
+.ObjectPickerSmallStatus{
+	padding : 3 3 0 0
+	text-clipping : clip
+	image-position : textOnly
+	stretch-width : false
+}
+.ObjectPickerSmallStatus:normal{
+	background : OL box
+}
+.ObjectPickerTab{
+	border : 0 5 0 5
+	padding : 0 7 0 7
+	alignment : middleLeft
+	fixed-height : 18
+	stretch-width : false
+}
+.ObjectPickerTab:normal{
+	background : OL box
+}
+.ObjectPickerToolbar:normal{
+	background : OL box
+}
+.OL box{
+	border : 2 17 17 2
+	overflow : 0 1 1 0
+	rich-text : false
+	text-clipping : clip
+	stretch-height : true
+}
+.OL box:normal{
+	background : OL box
+}
+.OL box NoExpand{
+	border : 2 17 17 2
+	overflow : 0 1 1 0
+	rich-text : false
+	text-clipping : clip
+	stretch-width : false
+}
+.OL box NoExpand:normal{
+	background : OL box
+}
+.OL Elem{
+	border : 2 2 2 2
+	padding : 0 10 0 23
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 16
+}
+.OL Elem:normal{
+	background : OL box
+}
+.OL EntryBackEven{
+	border : 3 3 3 30
+	margin : 10 10 10 10
+	padding : 0 0 0 32
+	rich-text : false
+	text-clipping : clip
+	image-position : textOnly
+}
+.OL EntryBackEven:normal{
+	background : OL box
+}
+.OL EntryBackOdd{
+	border : 3 3 3 30
+	margin : 10 10 10 10
+	padding : 0 0 0 32
+	rich-text : false
+	text-clipping : clip
+	image-position : textOnly
+}
+.OL EntryBackOdd:normal{
+	background : OL box
+}
+.OL header{
+	border : 2 2 2 2
+	margin : 6 0 0 0
+	padding : 0 10 0 10
+	font : Lucida Grande Bold
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 16
+}
+.OL header:normal{
+	background : OL box
+}
+.OL Label{
+	margin : 0 4 0 4
+	padding : 1 0 0 0
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+}
+.OL Label:normal{
+	background : OL box
+}
+.OL Minus{
+	border : 12 0 0 12
+	padding : 0 3 0 15
+	overflow : -2 0 0 -2
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 17
+}
+.OL Minus:normal{
+	background : OL box
+}
+.OL Plus{
+	border : 12 0 0 12
+	padding : 0 3 0 15
+	overflow : -2 0 0 -2
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 17
+}
+.OL Plus:normal{
+	background : OL box
+}
+.OL TextField{
+	border : 2 2 2 2
+	padding : 0 3 0 3
+	overflow : 0 1 1 0
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 17
+}
+.OL TextField:normal{
+	background : OL box
+}
+.OL Title{
+	border : 2 2 2 2
+	padding : 0 3 0 5
+	overflow : 0 1 1 0
+	font : Lucida Grande Bold
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 17
+}
+.OL Title:normal{
+	background : OL box
+}
+.OL Title TextRight{
+	border : 2 2 2 2
+	padding : 0 3 0 3
+	overflow : 0 1 1 0
+	font : Lucida Grande Bold
+	alignment : middleRight
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 17
+}
+.OL Title TextRight:normal{
+	background : OL box
+}
+.OL Titleleft{
+	border : 2 2 2 2
+	padding : 0 10 0 10
+	font : Lucida Grande Bold
+	alignment : middleCenter
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 17
+}
+.OL Titleleft:normal{
+	background : OL box
+}
+.OL Titlemid{
+	border : 2 2 2 2
+	padding : 0 10 0 10
+	font : Lucida Grande Bold
+	alignment : middleCenter
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 17
+}
+.OL Titlemid:normal{
+	background : OL box
+}
+.OL Titleright{
+	border : 2 2 2 2
+	padding : 0 10 0 10
+	font : Lucida Grande Bold
+	alignment : middleCenter
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 17
+}
+.OL Titleright:normal{
+	background : OL box
+}
+.OL Toggle{
+	border : 12 0 0 12
+	padding : 0 3 0 15
+	overflow : -2 0 0 -2
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 17
+}
+.OL Toggle:normal{
+	background : OL box
+}
+.OL ToggleWhite{
+	border : 12 0 0 12
+	padding : 0 3 0 15
+	overflow : -2 0 0 -2
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 17
+}
+.OL ToggleWhite:normal{
+	background : OL box
+}
+.PaneOptions{
+	margin : 3 4 3 4
+	padding : 2 0 2 0
+	word-wrap : true
+	text-clipping : clip
+	fixed-width : 16
+	fixed-height : 11
+}
+.PaneOptions:normal{
+	background : OL box
+}
+.PlayerSettingsLevel{
+	border : 3 3 3 3
+	margin : 3 4 0 4
+	padding : 2 0 2 0
+	rich-text : false
+	text-clipping : clip
+}
+.PlayerSettingsLevel:normal{
+	background : OL box
+}
+.PlayerSettingsPlatform{
+	border : 3 3 3 30
+	margin : 10 10 10 10
+	padding : 3 0 0 42
+	font : Lucida Grande Big
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	image-position : textOnly
+	fixed-height : 32
+}
+.PlayerSettingsPlatform:normal{
+	background : OL box
+}
+.Popup{
+	border : 3 15 3 4
+	margin : 3 4 3 4
+	padding : 2 14 3 6
+	overflow : -1 0 2 0
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 18
+}
+.Popup:normal{
+	background : OL box
+}
+.PopupBackground{
+	border : 4 4 4 4
+	margin : 0 6 0 6
+	overflow : 0 6 0 6
+	image-position : imageOnly
+	stretch-width : false
+}
+.PopupBackground:normal{
+	background : OL box
+}
+.PopupCurveDropdown{
+	border : 0 9 0 0
+	padding : 0 14 0 0
+	alignment : upperRight
+	image-position : textOnly
+	stretch-width : false
+}
+.PopupCurveDropdown:normal{
+	background : OL box
+}
+.PopupCurveEditorBackground{
+	image-position : imageOnly
+	stretch-width : false
+}
+.PopupCurveEditorBackground:normal{
+	background : OL box
+}
+.PopupCurveEditorSwatch{
+	border : 4 4 4 4
+	margin : 0 6 0 6
+	padding : 3 2 1 2
+	image-position : imageOnly
+	stretch-width : false
+}
+.PopupCurveEditorSwatch:normal{
+	background : OL box
+}
+.PopupCurveSwatchBackground{
+	border : 2 0 0 0
+	padding : 0 14 0 0
+	alignment : upperRight
+	image-position : textOnly
+	stretch-width : false
+}
+.PopupCurveSwatchBackground:normal{
+	background : OL box
+}
+.PR BrokenPrefabLabel{
+	border : 8 9 8 9
+	margin : 0 4 0 3
+	padding : 0 0 0 16
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 16
+	stretch-width : false
+}
+.PR BrokenPrefabLabel:normal{
+	background : OL box
+}
+.PR DigDownArrow{
+	margin : 0 4 0 3
+	overflow : -2 -2 -1 -1
+	rich-text : false
+	fixed-width : 16
+	fixed-height : 16
+}
+.PR DigDownArrow:normal{
+	background : OL box
+}
+.PR DisabledBrokenPrefabLabel{
+	border : 8 9 8 9
+	margin : 0 4 0 3
+	padding : 0 0 0 16
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 16
+	stretch-width : false
+}
+.PR DisabledBrokenPrefabLabel:normal{
+	background : OL box
+}
+.PR DisabledLabel{
+	border : 8 9 8 9
+	margin : 0 4 0 3
+	padding : 0 0 0 16
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 16
+	stretch-width : false
+}
+.PR DisabledLabel:normal{
+	background : OL box
+}
+.PR DisabledPrefabLabel{
+	border : 8 9 8 9
+	margin : 0 4 0 3
+	padding : 0 0 0 16
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 16
+	stretch-width : false
+}
+.PR DisabledPrefabLabel:normal{
+	background : OL box
+}
+.PR Insertion{
+	border : 0 2 0 8
+	margin : 0 4 0 3
+	overflow : -12 0 12 6
+	rich-text : false
+	fixed-height : 8
+	stretch-width : false
+}
+.PR Insertion:normal{
+	background : OL box
+}
+.PR Insertion Above{
+	border : 0 2 0 8
+	margin : 0 4 0 3
+	overflow : 4 0 -4 6
+	rich-text : false
+	fixed-height : 8
+	stretch-width : false
+}
+.PR Insertion Above:normal{
+	background : OL box
+}
+.PR Label{
+	border : 8 9 8 9
+	margin : 0 4 0 3
+	padding : 0 0 0 16
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 16
+	stretch-width : false
+}
+.PR Label:normal{
+	background : OL box
+}
+.PR Ping{
+	border : 8 9 8 9
+	margin : 0 4 0 3
+	padding : 0 8 0 8
+	overflow : 2 0 5 0
+	alignment : middleLeft
+	rich-text : false
+	stretch-width : false
+}
+.PR Ping:normal{
+	background : OL box
+}
+.PR PrefabLabel{
+	border : 8 9 8 9
+	margin : 0 4 0 3
+	padding : 0 0 0 16
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 16
+	stretch-width : false
+}
+.PR PrefabLabel:normal{
+	background : OL box
+}
+.PR TextField{
+	border : 3 3 3 3
+	padding : 0 2 1 2
+	overflow : 0 0 1 0
+	alignment : lowerLeft
+	rich-text : false
+	text-clipping : clip
+}
+.PR TextField:normal{
+	background : OL box
+}
+.PreBackground{
+	border : 20 16 10 16
+	padding : 3 3 3 3
+	font : Lucida Grande Bold
+	rich-text : false
+	text-clipping : clip
+}
+.PreBackground:normal{
+	background : OL box
+}
+.PreButton{
+	border : 0 3 0 3
+	padding : 0 4 0 4
+	overflow : 0 0 0 1
+	font : Lucida Grande Bold
+	alignment : middleCenter
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 17
+}
+.PreButton:normal{
+	background : OL box
+}
+.PreDropDown{
+	border : 0 11 0 2
+	padding : 0 13 0 4
+	font : Lucida Grande Bold
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 17
+}
+.PreDropDown:normal{
+	background : OL box
+}
+.PreferencesKeysElement{
+	border : 2 2 2 2
+	padding : 0 5 0 5
+	text-clipping : clip
+	content-offset : 0 2
+	fixed-height : 16
+}
+.PreferencesKeysElement:normal{
+	background : OL box
+}
+.PreferencesSection{
+	padding : 0 10 0 10
+	font : Lucida Grande Big
+	alignment : middleRight
+	text-clipping : clip
+	fixed-height : 32
+}
+.PreferencesSection:normal{
+	background : OL box
+}
+.PreferencesSectionBox{
+	border : 2 17 17 2
+	padding : 0 0 0 1
+	overflow : 1 1 0 0
+	text-clipping : clip
+	stretch-height : true
+}
+.PreferencesSectionBox:normal{
+	background : OL box
+}
+.PreHorizontalScrollbar{
+	word-wrap : true
+	rich-text : false
+	fixed-height : 8
+}
+.PreHorizontalScrollbar:normal{
+	background : OL box
+}
+.PreHorizontalScrollbarThumb{
+	border : 0 5 0 5
+	margin : 0 4 0 4
+	padding : 2 0 2 0
+	word-wrap : true
+	rich-text : false
+}
+.PreHorizontalScrollbarThumb:normal{
+	background : OL box
+}
+.PreLabel{
+	padding : 0 1 0 1
+	font : Lucida Grande Bold
+	alignment : middleCenter
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 17
+}
+.PreLabel:normal{
+	background : OL box
+}
+.PreOverlayLabel{
+	padding : 0 1 0 1
+	font : Lucida Grande Bold
+	alignment : lowerCenter
+	rich-text : false
+	text-clipping : clip
+}
+.PreOverlayLabel:normal{
+	background : OL box
+}
+.PreSlider{
+	border : 0 5 0 5
+	margin : 0 3 0 3
+	padding : 0 -1 0 -1
+	overflow : -7 0 -5 0
+	font : Lucida Grande Bold
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 17
+}
+.PreSlider:normal{
+	background : OL box
+}
+.PreSliderThumb{
+	border : 0 5 0 5
+	padding : 0 0 0 5
+	overflow : -4 0 -1 0
+	font : Lucida Grande Bold
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	fixed-width : 12
+	fixed-height : 17
+}
+.PreSliderThumb:normal{
+	background : OL box
+}
+.PreToolbar{
+	padding : 0 5 0 5
+	font : Lucida Grande Bold
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 17
+}
+.PreToolbar:normal{
+	background : OL box
+}
+.PreToolbar2{
+	font : Lucida Grande Bold
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 17
+}
+.PreToolbar2:normal{
+	background : OL box
+}
+.PreVerticalScrollbar{
+	word-wrap : true
+	rich-text : false
+	fixed-width : 8
+}
+.PreVerticalScrollbar:normal{
+	background : OL box
+}
+.PreVerticalScrollbarThumb{
+	border : 5 0 7 0
+	word-wrap : true
+	rich-text : false
+	fixed-width : 8
+}
+.PreVerticalScrollbarThumb:normal{
+	background : OL box
+}
+.ProfilerBadge{
+	border : 0 5 0 5
+	padding : 1 3 2 3
+	font : Lucida Grande small
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 12
+	stretch-width : false
+}
+.ProfilerBadge:normal{
+	background : OL box
+}
+.ProfilerLeftPane{
+	border : 3 3 3 0
+	padding : 13 3 3 50
+	overflow : 1 0 0 0
+	font : Lucida Grande Big
+	rich-text : false
+	text-clipping : clip
+	stretch-width : false
+	stretch-height : true
+}
+.ProfilerLeftPane:normal{
+	background : OL box
+}
+.ProfilerLeftPaneOverlay{
+	border : 2 3 2 0
+	padding : 3 3 3 40
+	overflow : 1 0 0 0
+	font : Lucida Grande Big
+	rich-text : false
+	text-clipping : clip
+	stretch-width : false
+	stretch-height : true
+}
+.ProfilerLeftPaneOverlay:normal{
+	background : OL box
+}
+.ProfilerPaneLeftBackground{
+	border : 0 3 0 0
+	font : Lucida Grande Big
+	rich-text : false
+	text-clipping : clip
+	stretch-width : false
+	stretch-height : true
+}
+.ProfilerPaneLeftBackground:normal{
+	background : OL box
+}
+.ProfilerPaneSubLabel{
+	border : 0 0 0 8
+	padding : 0 0 0 12
+	overflow : 0 0 -4 0
+	font : Lucida Grande small
+	word-wrap : true
+	rich-text : false
+	text-clipping : clip
+	content-offset : 0 -2
+	fixed-height : 11
+	stretch-height : true
+}
+.ProfilerPaneSubLabel:normal{
+	background : OL box
+}
+.ProfilerRightPane{
+	border : 0 0 2 0
+	alignment : upperCenter
+	word-wrap : true
+	rich-text : false
+	text-clipping : clip
+	stretch-height : true
+}
+.ProfilerRightPane:normal{
+	background : OL box
+}
+.ProfilerScrollviewBackground{
+	border : 16 13 13 13
+	padding : 0 1 0 0
+	overflow : 0 0 0 -160
+	font : Lucida Grande small
+	word-wrap : true
+	rich-text : false
+	text-clipping : clip
+	stretch-height : true
+}
+.ProfilerScrollviewBackground:normal{
+	background : OL box
+}
+.ProfilerSelectedLabel{
+	margin : 0 4 0 4
+	padding : 2 0 2 0
+	font : Lucida Grande Bold
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+}
+.ProfilerSelectedLabel:normal{
+	background : OL box
+}
+.ProfilerTimelineBar{
+	border : 1 1 1 1
+	overflow : -1 0 2 0
+	font : Lucida Grande small
+	alignment : middleCenter
+	rich-text : false
+	text-clipping : clip
+}
+.ProfilerTimelineBar:normal{
+	background : OL box
+}
+.ProfilerTimelineFoldout{
+	border : 13 0 0 14
+	margin : 0 4 0 3
+	padding : 2 0 -1 14
+	overflow : -2 0 0 0
+	text-clipping : clip
+}
+.ProfilerTimelineFoldout:normal{
+	background : OL box
+}
+.ProfilerTimelineLeftPane{
+	border : 3 3 3 0
+	padding : 4 3 3 10
+	overflow : 1 0 0 0
+	rich-text : false
+	text-clipping : clip
+	stretch-width : false
+	stretch-height : true
+}
+.ProfilerTimelineLeftPane:normal{
+	background : OL box
+}
+.ProgressBarBack{
+	border : 2 3 2 3
+	margin : 4 4 4 4
+	padding : 3 3 3 3
+	alignment : upperCenter
+	word-wrap : true
+	rich-text : false
+	text-clipping : clip
+	stretch-width : false
+}
+.ProgressBarBack:normal{
+	background : OL box
+}
+.ProgressBarBar{
+	border : 2 0 2 0
+	margin : 4 4 4 4
+	padding : 3 3 3 3
+	overflow : -1 -1 -1 -1
+	alignment : upperCenter
+	word-wrap : true
+	rich-text : false
+	text-clipping : clip
+	stretch-width : false
+}
+.ProgressBarBar:normal{
+	background : OL box
+}
+.ProgressBarText{
+	border : 2 3 2 3
+	margin : 4 4 4 4
+	padding : 3 3 3 3
+	overflow : -1 -1 -1 -1
+	font : Lucida Grande small
+	alignment : upperCenter
+	rich-text : false
+	text-clipping : clip
+	stretch-width : false
+}
+.ProgressBarText:normal{
+	background : OL box
+}
+.ProjectBrowserBottomBarBg{
+	border : 2 0 0 0
+	font : Lucida Grande small
+	alignment : middleCenter
+	rich-text : false
+	stretch-height : true
+}
+.ProjectBrowserBottomBarBg:normal{
+	background : OL box
+}
+.ProjectBrowserGridLabel{
+	border : 0 9 0 9
+	overflow : 0 7 3 7
+	font : Lucida Grande small
+	alignment : middleCenter
+	rich-text : false
+	fixed-height : 14
+}
+.ProjectBrowserGridLabel:normal{
+	background : OL box
+}
+.ProjectBrowserHeaderBgMiddle{
+	font : Lucida Grande small
+	alignment : middleCenter
+	rich-text : false
+	fixed-height : 18
+}
+.ProjectBrowserHeaderBgMiddle:normal{
+	background : OL box
+}
+.ProjectBrowserHeaderBgTop{
+	font : Lucida Grande small
+	alignment : middleCenter
+	rich-text : false
+	fixed-height : 18
+}
+.ProjectBrowserHeaderBgTop:normal{
+	background : OL box
+}
+.ProjectBrowserIconAreaBg{
+	font : Lucida Grande small
+	alignment : middleLeft
+	rich-text : false
+	stretch-height : true
+}
+.ProjectBrowserIconAreaBg:normal{
+	background : OL box
+}
+.ProjectBrowserIconDropShadow{
+	font : Lucida Grande small
+	alignment : middleLeft
+	rich-text : false
+	stretch-height : true
+}
+.ProjectBrowserIconDropShadow:normal{
+	background : OL box
+}
+.ProjectBrowserPreviewBg{
+	font : Lucida Grande small
+	alignment : middleLeft
+	rich-text : false
+	stretch-height : true
+}
+.ProjectBrowserPreviewBg:normal{
+	background : OL box
+}
+.ProjectBrowserSubAssetBg{
+	alignment : middleLeft
+	rich-text : false
+	stretch-height : true
+}
+.ProjectBrowserSubAssetBg:normal{
+	background : OL box
+}
+.ProjectBrowserSubAssetBgCloseEnded{
+	alignment : middleLeft
+	rich-text : false
+	stretch-height : true
+}
+.ProjectBrowserSubAssetBgCloseEnded:normal{
+	background : OL box
+}
+.ProjectBrowserSubAssetBgDivider{
+	alignment : middleLeft
+	rich-text : false
+	stretch-height : true
+}
+.ProjectBrowserSubAssetBgDivider:normal{
+	background : OL box
+}
+.ProjectBrowserSubAssetBgMiddle{
+	alignment : middleLeft
+	rich-text : false
+	stretch-height : true
+}
+.ProjectBrowserSubAssetBgMiddle:normal{
+	background : OL box
+}
+.ProjectBrowserSubAssetBgOpenEnded{
+	alignment : middleLeft
+	rich-text : false
+	stretch-height : true
+}
+.ProjectBrowserSubAssetBgOpenEnded:normal{
+	background : OL box
+}
+.ProjectBrowserSubAssetExpandBtn{
+	alignment : middleLeft
+	rich-text : false
+	stretch-height : true
+}
+.ProjectBrowserSubAssetExpandBtn:normal{
+	background : OL box
+}
+.ProjectBrowserTextureIconDropShadow{
+	border : 3 4 5 4
+	font : Lucida Grande
+	alignment : middleLeft
+	rich-text : false
+	stretch-height : true
+}
+.ProjectBrowserTextureIconDropShadow:normal{
+	background : OL box
+}
+.ProjectBrowserTopBarBg{
+	font : Lucida Grande small
+	alignment : middleCenter
+	rich-text : false
+	fixed-height : 18
+}
+.ProjectBrowserTopBarBg:normal{
+	background : OL box
+}
+.QualitySettingsDefault{
+	overflow : -5 -7 -7 -3
+	alignment : middleCenter
+	image-position : imageOnly
+	stretch-width : false
+}
+.QualitySettingsDefault:normal{
+	background : OL box
+}
+.Radio{
+	border : 13 0 0 14
+	margin : 3 4 3 4
+	padding : 2 0 2 15
+	overflow : -3 0 1 0
+	rich-text : false
+	text-clipping : clip
+}
+.Radio:normal{
+	background : OL box
+}
+.RegionBg{
+	border : 21 13 17 13
+	padding : 21 8 12 8
+	font : Lucida Grande Bold
+	content-offset : 13 8
+	stretch-width : false
+}
+.RegionBg:normal{
+	background : OL box
+}
+.RightLabel{
+	margin : 2 4 2 4
+	padding : 1 2 2 2
+	alignment : upperRight
+	rich-text : false
+	text-clipping : clip
+}
+.RightLabel:normal{
+	background : OL box
+}
+.RL Background{
+	border : 0 3 6 6
+	rich-text : false
+	stretch-height : true
+}
+.RL Background:normal{
+	background : OL box
+}
+.RL DragHandle{
+	padding : 6 6 6 6
+	font : Lucida Grande Bold
+	alignment : lowerCenter
+	rich-text : false
+	text-clipping : clip
+	image-position : textOnly
+	fixed-height : 6
+	stretch-width : false
+}
+.RL DragHandle:normal{
+	background : OL box
+}
+.RL Element{
+	border : 0 3 3 2
+	rich-text : false
+	text-clipping : clip
+	stretch-height : true
+}
+.RL Element:normal{
+	background : OL box
+}
+.RL Footer{
+	border : 3 4 4 4
+	overflow : 3 0 0 0
+	font : Lucida Grande Bold
+	alignment : middleCenter
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 13
+}
+.RL Footer:normal{
+	background : OL box
+}
+.RL FooterButton{
+	overflow : -3 0 0 0
+	font : Lucida Grande Bold
+	alignment : middleCenter
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 17
+}
+.RL FooterButton:normal{
+	background : OL box
+}
+.RL Header{
+	border : 3 4 2 4
+	font : Lucida Grande small
+	alignment : upperCenter
+	rich-text : false
+	text-clipping : clip
+	content-offset : 0 -1
+	fixed-height : 18
+	stretch-width : false
+}
+.RL Header:normal{
+	background : OL box
+}
+.SC ViewAxisLabel{
+	font : Lucida Grande Bold
+	alignment : middleCenter
+	text-clipping : clip
+	content-offset : 0 -2
+	fixed-width : 16
+	fixed-height : 16
+}
+.SC ViewAxisLabel:normal{
+	background : OL box
+}
+.SC ViewLabel{
+	alignment : upperCenter
+	text-clipping : clip
+}
+.SC ViewLabel:normal{
+	background : OL box
+}
+.SceneViewOverlayTransparentBackground{
+	padding : 10 10 10 10
+	font : Lucida Grande Bold
+	alignment : lowerCenter
+	text-clipping : clip
+	image-position : textOnly
+	stretch-width : false
+}
+.SceneViewOverlayTransparentBackground:normal{
+	background : OL box
+}
+.ScriptText{
+	border : 2 17 17 2
+	padding : 3 3 3 3
+	overflow : 0 1 1 0
+	word-wrap : true
+	rich-text : false
+	text-clipping : clip
+	stretch-height : true
+}
+.ScriptText:normal{
+	background : OL box
+}
+.SearchCancelButton{
+	margin : 2 2 0 0
+	padding : 0 0 0 14
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	fixed-width : 16
+	fixed-height : 18
+	stretch-width : false
+}
+.SearchCancelButton:normal{
+	background : OL box
+}
+.SearchCancelButtonEmpty{
+	margin : 2 2 0 0
+	padding : 0 0 0 14
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	fixed-width : 17
+	fixed-height : 18
+	stretch-width : false
+}
+.SearchCancelButtonEmpty:normal{
+	background : OL box
+}
+.SearchModeFilter{
+	border : 3 3 3 3
+	margin : 3 5 3 5
+	padding : 3 6 3 4
+	overflow : 0 1 1 0
+	font : Lucida Grande small
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 22
+}
+.SearchModeFilter:normal{
+	background : OL box
+}
+.SearchTextField{
+	border : 0 0 0 17
+	margin : 2 0 0 2
+	padding : 2 0 2 22
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 18
+}
+.SearchTextField:normal{
+	background : OL box
+}
+.SelectionRect{
+	border : 2 2 2 2
+	padding : 3 3 3 3
+	rich-text : false
+	stretch-width : false
+}
+.SelectionRect:normal{
+	background : OL box
+}
+.ServerChangeCount{
+	margin : 0 4 4 10
+	padding : 3 0 3 0
+	font : Lucida Grande
+	word-wrap : true
+	rich-text : false
+	text-clipping : clip
+}
+.ServerChangeCount:normal{
+	background : OL box
+}
+.ServerUpdateChangeset{
+	border : 3 3 3 3
+	margin : 6 4 0 4
+	padding : 0 0 5 0
+	font : Lucida Grande Bold
+	rich-text : false
+	text-clipping : clip
+}
+.ServerUpdateChangeset:normal{
+	background : OL box
+}
+.ServerUpdateChangesetOn{
+	border : 3 3 3 3
+	margin : 6 4 0 4
+	padding : 0 0 5 0
+	font : Lucida Grande Bold
+	rich-text : false
+	text-clipping : clip
+}
+.ServerUpdateChangesetOn:normal{
+	background : OL box
+}
+.ServerUpdateInfo{
+	margin : 0 6 0 6
+	font : Lucida Grande
+	rich-text : false
+	text-clipping : clip
+}
+.ServerUpdateInfo:normal{
+	background : OL box
+}
+.ServerUpdateLog{
+	margin : 0 6 1 6
+	font : Lucida Grande Bold
+	rich-text : false
+	text-clipping : clip
+}
+.ServerUpdateLog:normal{
+	background : OL box
+}
+.ShurikenCheckMark{
+	alignment : lowerLeft
+	content-offset : 30 -2
+	fixed-width : 12
+	fixed-height : 12
+	stretch-width : false
+}
+.ShurikenCheckMark:normal{
+	background : OL box
+}
+.ShurikenDropdown{
+	border : 3 10 3 3
+	padding : 0 12 1 5
+	font : Lucida Grande small
+	alignment : middleLeft
+	text-clipping : clip
+	fixed-height : 13
+}
+.ShurikenDropdown:normal{
+	background : OL box
+}
+.ShurikenEffectBg{
+	border : 9 9 9 9
+	margin : 4 4 4 4
+	padding : 1 1 1 1
+	alignment : lowerLeft
+	content-offset : 30 -2
+	stretch-height : true
+}
+.ShurikenEffectBg:normal{
+	background : OL box
+}
+.ShurikenEmitterTitle{
+	border : 0 7 0 29
+	padding : 0 45 0 0
+	font : Lucida Grande small bold
+	alignment : lowerLeft
+	text-clipping : clip
+	content-offset : 30 -14
+	fixed-height : 28
+}
+.ShurikenEmitterTitle:normal{
+	background : OL box
+}
+.ShurikenLabel{
+	padding : 0 0 1 0
+	font : Lucida Grande small
+	alignment : middleLeft
+	text-clipping : clip
+	stretch-height : true
+}
+.ShurikenLabel:normal{
+	background : OL box
+}
+.ShurikenLine{
+	border : 0 2 0 2
+	alignment : lowerLeft
+	content-offset : 30 -2
+	fixed-height : 1
+}
+.ShurikenLine:normal{
+	background : OL box
+}
+.ShurikenMinus{
+	alignment : lowerLeft
+	content-offset : 30 -2
+	fixed-width : 6
+	fixed-height : 6
+	stretch-width : false
+}
+.ShurikenMinus:normal{
+	background : OL box
+}
+.ShurikenModuleBg{
+	border : 7 7 7 7
+	alignment : lowerLeft
+	content-offset : 30 -2
+	stretch-height : true
+}
+.ShurikenModuleBg:normal{
+	background : OL box
+}
+.ShurikenModuleTitle{
+	border : 0 7 0 15
+	font : Lucida Grande small
+	alignment : middleLeft
+	content-offset : 16 -2
+	fixed-height : 18
+}
+.ShurikenModuleTitle:normal{
+	background : OL box
+}
+.ShurikenObjectField{
+	border : 3 17 3 3
+	padding : 0 19 1 5
+	font : Lucida Grande small
+	alignment : middleLeft
+	text-clipping : clip
+	fixed-height : 13
+}
+.ShurikenObjectField:normal{
+	background : OL box
+}
+.ShurikenPlus{
+	alignment : lowerLeft
+	fixed-width : 6
+	fixed-height : 6
+	stretch-width : false
+}
+.ShurikenPlus:normal{
+	background : OL box
+}
+.ShurikenPopup{
+	border : 3 10 3 3
+	padding : 0 12 1 5
+	font : Lucida Grande small
+	alignment : middleLeft
+	text-clipping : clip
+	fixed-height : 13
+}
+.ShurikenPopup:normal{
+	background : OL box
+}
+.ShurikenToggle{
+	border : 0 0 0 11
+	alignment : lowerLeft
+	fixed-height : 13
+	stretch-width : false
+}
+.ShurikenToggle:normal{
+	background : OL box
+}
+.ShurikenValue{
+	border : 3 3 3 3
+	padding : 0 2 1 2
+	font : Lucida Grande small
+	alignment : middleLeft
+	text-clipping : clip
+	fixed-height : 13
+}
+.ShurikenValue:normal{
+	background : OL box
+}
+.SimplePopup{
+	border : 0 8 0 0
+	padding : 1 9 0 0
+	overflow : -1 0 2 0
+	font : Lucida Grande small
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 13
+}
+.SimplePopup:normal{
+	background : OL box
+}
+.SliderMixed{
+	rich-text : false
+	text-clipping : clip
+	fixed-width : -1
+	fixed-height : -1
+	stretch-width : false
+}
+.SliderMixed:normal{
+	background : OL box
+}
+.SoloToggle{
+	font : Lucida Grande Bold
+	rich-text : false
+	fixed-width : 21
+	fixed-height : 21
+	stretch-width : false
+}
+.SoloToggle:normal{
+	background : OL box
+}
+.StaticDropdown{
+	overflow : -7 0 -2 0
+	rich-text : false
+	text-clipping : clip
+	image-position : imageOnly
+	fixed-width : 9
+	stretch-width : false
+}
+.StaticDropdown:normal{
+	background : OL box
+}
+.sv_iconselector_back{
+	border : 2 2 2 2
+	alignment : lowerCenter
+	text-clipping : clip
+	stretch-height : true
+}
+.sv_iconselector_back:normal{
+	background : OL box
+}
+.sv_iconselector_button{
+	stretch-width : false
+}
+.sv_iconselector_button:normal{
+	background : OL box
+}
+.sv_iconselector_labelselection{
+	border : 6 6 6 6
+	alignment : lowerCenter
+	stretch-height : true
+}
+.sv_iconselector_labelselection:normal{
+	background : OL box
+}
+.sv_iconselector_selection{
+	border : 4 4 4 4
+	alignment : lowerCenter
+	stretch-height : true
+}
+.sv_iconselector_selection:normal{
+	background : OL box
+}
+.sv_iconselector_sep{
+	alignment : lowerCenter
+	fixed-height : 3
+}
+.sv_iconselector_sep:normal{
+	background : OL box
+}
+.sv_label_0{
+	border : 0 8 0 8
+	padding : 2 9 2 7
+	font : Lucida Grande small
+	alignment : lowerCenter
+	text-clipping : clip
+	fixed-height : 14
+}
+.sv_label_0:normal{
+	background : OL box
+}
+.sv_label_1{
+	border : 0 8 0 8
+	padding : 2 9 2 7
+	font : Lucida Grande small
+	alignment : lowerCenter
+	text-clipping : clip
+	fixed-height : 14
+}
+.sv_label_1:normal{
+	background : OL box
+}
+.sv_label_2{
+	border : 0 8 0 8
+	padding : 2 9 2 7
+	font : Lucida Grande small
+	alignment : lowerCenter
+	text-clipping : clip
+	fixed-height : 14
+}
+.sv_label_2:normal{
+	background : OL box
+}
+.sv_label_3{
+	border : 0 8 0 8
+	padding : 2 9 2 7
+	font : Lucida Grande small
+	alignment : lowerCenter
+	text-clipping : clip
+	fixed-height : 14
+}
+.sv_label_3:normal{
+	background : OL box
+}
+.sv_label_4{
+	border : 0 8 0 8
+	padding : 2 9 2 7
+	font : Lucida Grande small
+	alignment : lowerCenter
+	text-clipping : clip
+	fixed-height : 14
+}
+.sv_label_4:normal{
+	background : OL box
+}
+.sv_label_5{
+	border : 0 8 0 8
+	padding : 2 9 2 7
+	font : Lucida Grande small
+	alignment : lowerCenter
+	text-clipping : clip
+	fixed-height : 14
+}
+.sv_label_5:normal{
+	background : OL box
+}
+.sv_label_6{
+	border : 0 8 0 8
+	padding : 2 9 2 7
+	font : Lucida Grande small
+	alignment : lowerCenter
+	text-clipping : clip
+	fixed-height : 14
+}
+.sv_label_6:normal{
+	background : OL box
+}
+.sv_label_7{
+	border : 0 8 0 8
+	padding : 2 9 2 7
+	font : Lucida Grande small
+	alignment : lowerCenter
+	text-clipping : clip
+	fixed-height : 14
+}
+.sv_label_7:normal{
+	background : OL box
+}
+.TabWindowBackground{
+	border : 2 0 2 0
+	margin : 3 4 3 4
+	font : Lucida Grande small
+	alignment : upperCenter
+	rich-text : false
+	text-clipping : clip
+	content-offset : 0 -1
+	stretch-width : false
+}
+.TabWindowBackground:normal{
+	background : OL box
+}
+.Tag MenuItem{
+	border : 3 0 0 0
+	padding : 1 4 1 4
+	rich-text : false
+	text-clipping : clip
+	image-position : textOnly
+	fixed-height : 16
+	stretch-width : false
+}
+.Tag MenuItem:normal{
+	background : OL box
+}
+.Tag TextField{
+	border : 0 7 0 7
+	margin : 0 3 0 3
+	padding : 2 6 0 6
+	font : Lucida Grande small
+	rich-text : false
+	text-clipping : clip
+	image-position : textOnly
+	fixed-height : 16
+	stretch-width : false
+}
+.Tag TextField:normal{
+	background : OL box
+}
+.Tag TextField Button{
+	margin : 0 4 0 4
+	padding : 2 3 2 3
+	rich-text : false
+	text-clipping : clip
+	image-position : textOnly
+	fixed-width : 16
+	fixed-height : 16
+}
+.Tag TextField Button:normal{
+	background : OL box
+}
+.Tag TextField Empty{
+	border : 3 0 3 0
+	font : Lucida Grande small
+	alignment : upperCenter
+	rich-text : false
+	text-clipping : clip
+	image-position : textOnly
+	fixed-width : 2
+	stretch-width : false
+}
+.Tag TextField Empty:normal{
+	background : OL box
+}
+.TE NodeBackground{
+	border : 12 12 12 12
+}
+.TE NodeBackground:normal{
+	background : OL box
+}
+.TE NodeBox{
+	border : 10 24 17 24
+	padding : 0 0 2 0
+	overflow : 9 12 17 12
+	font : Lucida Grande small bold
+	word-wrap : true
+	content-offset : 10 -14
+	stretch-width : false
+}
+.TE NodeBox:normal{
+	background : OL box
+}
+.TE NodeBoxSelected{
+	border : 10 24 17 24
+	padding : 0 0 2 0
+	overflow : 9 12 17 12
+	font : Lucida Grande small bold
+	word-wrap : true
+	content-offset : 10 -14
+	stretch-width : false
+}
+.TE NodeBoxSelected:normal{
+	background : OL box
+}
+.TE NodeLabelBot{
+	alignment : lowerRight
+	word-wrap : true
+	text-clipping : clip
+}
+.TE NodeLabelBot:normal{
+	background : OL box
+}
+.TE NodeLabelTop{
+	alignment : upperRight
+	word-wrap : true
+	text-clipping : clip
+}
+.TE NodeLabelTop:normal{
+	background : OL box
+}
+.TE PinLabel{
+	alignment : upperCenter
+	word-wrap : true
+	text-clipping : clip
+	fixed-width : 8
+	fixed-height : 4
+}
+.TE PinLabel:normal{
+	background : OL box
+}
+.TE Toolbar{
+	border : 2 2 2 2
+	padding : 0 6 0 6
+	font : Lucida Grande small
+	alignment : upperCenter
+	text-clipping : clip
+	content-offset : 0 -1
+	fixed-height : 18
+	stretch-width : false
+}
+.TE Toolbar:normal{
+	background : OL box
+}
+.TE toolbarbutton{
+	border : 0 6 0 6
+	padding : 0 5 0 5
+	overflow : 0 1 0 0
+	font : Lucida Grande small
+	alignment : middleCenter
+	text-clipping : clip
+	fixed-height : 18
+}
+.TE toolbarbutton:normal{
+	background : OL box
+}
+.TE ToolbarDropDown{
+	border : 0 10 0 2
+	padding : 0 12 0 6
+	overflow : 0 1 0 0
+	font : Lucida Grande small
+	alignment : middleLeft
+	text-clipping : clip
+	fixed-height : 18
+}
+.TE ToolbarDropDown:normal{
+	background : OL box
+}
+.TextFieldDropDown{
+	border : 2 2 2 0
+	margin : 3 4 3 0
+	alignment : middleLeft
+	fixed-width : 12
+	fixed-height : 16
+	stretch-width : false
+}
+.TextFieldDropDown:normal{
+	background : OL box
+}
+.TextFieldDropDownText{
+	border : 2 2 2 2
+	margin : 3 0 3 4
+	padding : 1 3 2 3
+	alignment : middleLeft
+	text-clipping : clip
+	fixed-height : 16
+}
+.TextFieldDropDownText:normal{
+	background : OL box
+}
+.TimeScrubber{
+	border : 1 1 11 1
+	overflow : 0 0 10 0
+	rich-text : false
+	fixed-height : 21
+}
+.TimeScrubber:normal{
+	background : OL box
+}
+.TimeScrubberButton{
+	border : 4 4 4 4
+	alignment : middleCenter
+	rich-text : false
+	fixed-width : 33
+	fixed-height : 21
+}
+.TimeScrubberButton:normal{
+	background : OL box
+}
+.TL BaseStateLogicBarOverlay{
+	border : 3 3 3 3
+	padding : 0 3 0 5
+	overflow : 1 1 0 1
+	font : Lucida Grande small
+	alignment : middleLeft
+	rich-text : false
+}
+.TL BaseStateLogicBarOverlay:normal{
+	background : OL box
+}
+.TL EndPoint{
+	border : 3 3 3 3
+	padding : 3 3 0 5
+	overflow : -1 0 1 0
+	rich-text : false
+	fixed-width : 9
+	fixed-height : 16
+}
+.TL EndPoint:normal{
+	background : OL box
+}
+.TL InPoint{
+	border : 3 3 3 3
+	padding : 3 3 0 5
+	overflow : -1 -9 1 9
+	rich-text : false
+	fixed-width : 9
+	fixed-height : 16
+}
+.TL InPoint:normal{
+	background : OL box
+}
+.TL ItemTitle{
+	border : 0 0 2 0
+	padding : 3 3 3 3
+	rich-text : false
+	text-clipping : clip
+}
+.TL ItemTitle:normal{
+	background : OL box
+}
+.TL LeftColumn{
+	rich-text : false
+}
+.TL LeftColumn:normal{
+	background : OL box
+}
+.TL LeftItem{
+	border : 0 2 2 0
+	padding : 0 0 0 3
+	overflow : 0 1 0 1
+	rich-text : false
+}
+.TL LeftItem:normal{
+	background : OL box
+}
+.TL LogicBar 0{
+	border : 3 3 3 3
+	padding : 2 1 0 5
+	overflow : 1 1 0 1
+	font : Lucida Grande small
+	rich-text : false
+	text-clipping : clip
+}
+.TL LogicBar 0:normal{
+	background : OL box
+}
+.TL LogicBar 1{
+	border : 3 3 3 3
+	padding : 3 1 0 5
+	overflow : 1 1 0 1
+	font : Lucida Grande small
+	rich-text : false
+	text-clipping : clip
+}
+.TL LogicBar 1:normal{
+	background : OL box
+}
+.TL LogicBar parentgrey{
+	rich-text : false
+}
+.TL LogicBar parentgrey:normal{
+	background : OL box
+}
+.TL LoopSection{
+	border : 5 0 0 0
+	padding : 3 3 0 5
+	overflow : 0 0 1 0
+	rich-text : false
+}
+.TL LoopSection:normal{
+	background : OL box
+}
+.TL OutPoint{
+	border : 3 3 3 3
+	padding : 3 3 0 5
+	overflow : -1 0 1 0
+	rich-text : false
+	fixed-width : 9
+	fixed-height : 16
+}
+.TL OutPoint:normal{
+	background : OL box
+}
+.TL Playhead{
+	border : 3 3 3 3
+	padding : 3 3 0 5
+	overflow : 0 -7 0 7
+	rich-text : false
+	fixed-width : 15
+	fixed-height : 15
+}
+.TL Playhead:normal{
+	background : OL box
+}
+.TL Range Overlay{
+	rich-text : false
+	stretch-width : false
+}
+.TL Range Overlay:normal{
+	background : OL box
+}
+.TL RightLine{
+	border : 0 0 2 0
+	rich-text : false
+}
+.TL RightLine:normal{
+	background : OL box
+}
+.TL Selection H1{
+	padding : 10 0 18 0
+	font-size : 25
+	alignment : middleCenter
+	rich-text : false
+}
+.TL Selection H1:normal{
+	background : OL box
+}
+.TL Selection H2{
+	margin : 18 0 11 0
+	font-size : 18
+	alignment : middleCenter
+	rich-text : false
+}
+.TL Selection H2:normal{
+	background : OL box
+}
+.TL SelectionBarCloseButton{
+	padding : 0 0 10 0
+	font-size : 5
+	rich-text : false
+	text-clipping : clip
+	fixed-width : 31
+	fixed-height : 31
+}
+.TL SelectionBarCloseButton:normal{
+	background : OL box
+}
+.TL SelectionBarPreview{
+	padding : 0 0 10 0
+	alignment : middleCenter
+	rich-text : false
+}
+.TL SelectionBarPreview:normal{
+	background : OL box
+}
+.TL SelectionBarText{
+	padding : 0 0 10 0
+	font-size : 5
+	rich-text : false
+	text-clipping : clip
+}
+.TL SelectionBarText:normal{
+	background : OL box
+}
+.TL SelectionButton{
+	border : 5 4 3 4
+	padding : 0 0 2 0
+	alignment : lowerCenter
+	rich-text : false
+}
+.TL SelectionButton:normal{
+	background : OL box
+}
+.TL SelectionButton PreDropGlow{
+	border : 11 11 11 11
+	overflow : 7 7 7 7
+	alignment : lowerCenter
+	rich-text : false
+}
+.TL SelectionButton PreDropGlow:normal{
+	background : OL box
+}
+.TL SelectionButtonName{
+	padding : 0 0 2 0
+	alignment : lowerCenter
+	rich-text : false
+}
+.TL SelectionButtonName:normal{
+	background : OL box
+}
+.TL SelectionButtonNew{
+	padding : 0 0 10 0
+	font-size : 18
+	alignment : middleCenter
+	rich-text : false
+}
+.TL SelectionButtonNew:normal{
+	background : OL box
+}
+.TL tab left{
+	border : 0 3 0 4
+	padding : 4 8 0 8
+	overflow : 0 0 0 1
+	rich-text : false
+	fixed-height : 21
+	stretch-width : false
+}
+.TL tab left:normal{
+	background : OL box
+}
+.TL tab mid{
+	border : 0 3 0 3
+	padding : 4 9 0 9
+	rich-text : false
+	fixed-height : 21
+	stretch-width : false
+}
+.TL tab mid:normal{
+	background : OL box
+}
+.TL tab plus left{
+	padding : 3 3 0 5
+	rich-text : false
+	fixed-width : 21
+	fixed-height : 21
+	stretch-width : false
+}
+.TL tab plus left:normal{
+	background : OL box
+}
+.TL tab plus right{
+	padding : 3 3 0 5
+	rich-text : false
+	fixed-width : 21
+	fixed-height : 21
+	stretch-width : false
+}
+.TL tab plus right:normal{
+	background : OL box
+}
+.TL tab right{
+	border : 0 5 0 3
+	padding : 4 10 0 9
+	overflow : 0 1 0 0
+	rich-text : false
+	fixed-height : 21
+	stretch-width : false
+}
+.TL tab right:normal{
+	background : OL box
+}
+.ToggleMixed{
+	border : 15 0 0 16
+	margin : 2 4 2 4
+	padding : 1 3 2 15
+	overflow : -3 0 1 0
+	rich-text : false
+	text-clipping : clip
+}
+.ToggleMixed:normal{
+	background : OL box
+}
+.Toolbar{
+	border : 2 0 2 0
+	padding : 0 6 0 6
+	font : Lucida Grande small
+	alignment : upperCenter
+	rich-text : false
+	text-clipping : clip
+	content-offset : 0 -1
+	fixed-height : 18
+	stretch-width : false
+}
+.Toolbar:normal{
+	background : OL box
+}
+.toolbarbutton{
+	border : 0 6 0 6
+	padding : 0 5 0 5
+	overflow : 0 1 0 0
+	font : Lucida Grande small
+	alignment : middleCenter
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 18
+}
+.toolbarbutton:normal{
+	background : OL box
+}
+.ToolbarDropDown{
+	border : 0 10 0 2
+	padding : 0 12 0 6
+	overflow : 0 1 0 0
+	font : Lucida Grande small
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 18
+}
+.ToolbarDropDown:normal{
+	background : OL box
+}
+.ToolbarPopup{
+	border : 0 10 0 2
+	padding : 0 12 0 6
+	overflow : 0 1 0 0
+	font : Lucida Grande small
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 18
+}
+.ToolbarPopup:normal{
+	background : OL box
+}
+.ToolbarSeachCancelButton{
+	margin : 2 2 0 0
+	padding : 0 0 0 14
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	fixed-width : 14
+	fixed-height : 14
+	stretch-width : false
+}
+.ToolbarSeachCancelButton:normal{
+	background : OL box
+}
+.ToolbarSeachCancelButtonEmpty{
+	margin : 2 2 0 0
+	padding : 0 0 0 14
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	fixed-width : 14
+	fixed-height : 14
+	stretch-width : false
+}
+.ToolbarSeachCancelButtonEmpty:normal{
+	background : OL box
+}
+.ToolbarSeachTextField{
+	border : 0 0 0 15
+	margin : 2 0 0 2
+	padding : 1 0 2 16
+	font : Lucida Grande small
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 14
+}
+.ToolbarSeachTextField:normal{
+	background : OL box
+}
+.ToolbarSeachTextFieldPopup{
+	border : 0 0 0 16
+	margin : 2 0 0 2
+	padding : 1 0 2 16
+	font : Lucida Grande small
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 14
+}
+.ToolbarSeachTextFieldPopup:normal{
+	background : OL box
+}
+.ToolbarSearchField{
+	border : 0 14 0 15
+	margin : 2 5 1 5
+	padding : 2 17 1 17
+	font : Lucida Grande small
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 14
+	stretch-width : false
+}
+.ToolbarSearchField:normal{
+	background : OL box
+}
+.ToolbarTextField{
+	border : 2 2 2 2
+	margin : 2 4 1 4
+	padding : 1 2 1 2
+	font : Lucida Grande small
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 14
+	stretch-width : false
+}
+.ToolbarTextField:normal{
+	background : OL box
+}
+.Tooltip{
+	border : 3 3 3 3
+	padding : 3 3 3 3
+	rich-text : false
+	stretch-width : false
+}
+.Tooltip:normal{
+	background : OL box
+}
+.U2D.createRect{
+	border : 3 3 3 3
+	padding : 6 6 6 6
+	stretch-width : false
+}
+.U2D.createRect:normal{
+	background : OL box
+}
+.U2D.dragDot{
+	fixed-width : 10
+	fixed-height : 10
+	stretch-width : false
+}
+.U2D.dragDot:normal{
+	background : OL box
+}
+.U2D.dragDotActive{
+	fixed-width : 10
+	fixed-height : 10
+	stretch-width : false
+}
+.U2D.dragDotActive:normal{
+	background : OL box
+}
+.U2D.dragDotDimmed{
+	fixed-width : 10
+	fixed-height : 10
+	stretch-width : false
+}
+.U2D.dragDotDimmed:normal{
+	background : OL box
+}
+.U2D.pivotDot{
+	fixed-width : 16
+	fixed-height : 16
+	stretch-width : false
+}
+.U2D.pivotDot:normal{
+	background : OL box
+}
+.U2D.pivotDotActive{
+	fixed-width : 16
+	fixed-height : 16
+	stretch-width : false
+}
+.U2D.pivotDotActive:normal{
+	background : OL box
+}
+.VCS_StickyNote{
+	border : 1 3 3 3
+	overflow : 0 1 2 1
+	font : Lucida Grande small
+	alignment : middleCenter
+	word-wrap : true
+	text-clipping : clip
+	stretch-height : true
+}
+.VCS_StickyNote:normal{
+	background : OL box
+}
+.VCS_StickyNoteArrow{
+	font : Lucida Grande small
+	alignment : lowerCenter
+	word-wrap : true
+	text-clipping : clip
+	image-position : imageOnly
+	fixed-height : 14
+	stretch-width : false
+}
+.VCS_StickyNoteArrow:normal{
+	background : OL box
+}
+.VCS_StickyNoteLabel{
+	padding : 4 10 4 4
+	font : Lucida Grande
+	alignment : middleLeft
+	word-wrap : true
+	text-clipping : clip
+	image-position : textOnly
+	stretch-width : false
+}
+.VCS_StickyNoteLabel:normal{
+	background : OL box
+}
+.VCS_StickyNoteP4{
+	font : Lucida Grande small
+	alignment : lowerCenter
+	word-wrap : true
+	text-clipping : clip
+	image-position : imageOnly
+	fixed-width : 64
+	fixed-height : 64
+	stretch-width : false
+}
+.VCS_StickyNoteP4:normal{
+	background : OL box
+}
+.VerticalMinMaxScrollbarThumb{
+	border : 17 0 17 0
+	padding : 13 0 13 0
+	overflow : 1 0 1 0
+	rich-text : false
+	text-clipping : clip
+	fixed-width : 15
+}
+.VerticalMinMaxScrollbarThumb:normal{
+	background : OL box
+}
+.VisibilityToggle{
+	border : 2 2 2 2
+	padding : 3 3 3 3
+	overflow : -2 1 2 -1
+	rich-text : false
+	fixed-width : 13
+	fixed-height : 11
+	stretch-width : false
+}
+.VisibilityToggle:normal{
+	background : OL box
+}
+.WarningOverlay{
+	border : 0 10 0 10
+	padding : 0 13 0 13
+	font : Lucida Grande
+	alignment : middleCenter
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 20
+}
+.WarningOverlay:normal{
+	background : OL box
+}
+.WhiteBoldLabel{
+	margin : 6 4 4 4
+	padding : 1 2 2 2
+	font : Lucida Grande Bold
+	rich-text : false
+	text-clipping : clip
+}
+.WhiteBoldLabel:normal{
+	background : OL box
+}
+.WhiteLabel{
+	margin : 2 4 2 4
+	padding : 1 2 2 2
+	font : Lucida Grande
+	rich-text : false
+	text-clipping : clip
+}
+.WhiteLabel:normal{
+	background : OL box
+}
+.WhiteLargeLabel{
+	margin : 4 4 4 4
+	padding : 2 2 2 2
+	font : Lucida Grande Big
+	rich-text : false
+	text-clipping : clip
+}
+.WhiteLargeLabel:normal{
+	background : OL box
+}
+.WhiteMiniLabel{
+	margin : 2 4 2 4
+	padding : 3 2 2 2
+	font : Lucida Grande small
+	rich-text : false
+	text-clipping : clip
+}
+.WhiteMiniLabel:normal{
+	background : OL box
+}
+.WinBtnClose{
+	word-wrap : true
+	stretch-width : false
+}
+.WinBtnClose:normal{
+	background : OL box
+}
+.WinBtnCloseActiveMac{
+	word-wrap : true
+	stretch-width : false
+}
+.WinBtnCloseActiveMac:normal{
+	background : OL box
+}
+.WinBtnCloseMac{
+	word-wrap : true
+	stretch-width : false
+}
+.WinBtnCloseMac:normal{
+	background : OL box
+}
+.WinBtnInactiveMac{
+	word-wrap : true
+	stretch-width : false
+}
+.WinBtnInactiveMac:normal{
+	background : OL box
+}
+.WinBtnMax{
+	word-wrap : true
+	stretch-width : false
+}
+.WinBtnMax:normal{
+	background : OL box
+}
+.WinBtnMaxActiveMac{
+	word-wrap : true
+	stretch-width : false
+}
+.WinBtnMaxActiveMac:normal{
+	background : OL box
+}
+.WinBtnMaxMac{
+	word-wrap : true
+	stretch-width : false
+}
+.WinBtnMaxMac:normal{
+	background : OL box
+}
+.WinBtnMin{
+	word-wrap : true
+	stretch-width : false
+}
+.WinBtnMin:normal{
+	background : OL box
+}
+.WinBtnMinActiveMac{
+	word-wrap : true
+	stretch-width : false
+}
+.WinBtnMinActiveMac:normal{
+	background : OL box
+}
+.WinBtnMinMac{
+	word-wrap : true
+	stretch-width : false
+}
+.WinBtnMinMac:normal{
+	background : OL box
+}
+.WindowBackground{
+	border : 2 17 17 2
+	padding : 10 10 10 10
+	overflow : 1 1 1 1
+	text-clipping : clip
+	stretch-height : true
+}
+.WindowBackground:normal{
+	background : OL box
+}
+.WindowBottomResize{
+	padding : 6 6 6 6
+	font : Lucida Grande Bold
+	alignment : lowerCenter
+	text-clipping : clip
+	image-position : textOnly
+	fixed-height : 6
+	stretch-width : false
+}
+.WindowBottomResize:normal{
+	background : OL box
+}
+.Wizard Box{
+	border : 2 17 17 2
+	overflow : 0 1 1 0
+	rich-text : false
+	text-clipping : clip
+	stretch-height : true
+}
+.Wizard Box:normal{
+	background : OL box
+}
+.Wizard Error{
+	border : 3 3 3 30
+	padding : 3 0 0 32
+	word-wrap : true
+	rich-text : false
+	text-clipping : clip
+	image-position : textOnly
+	fixed-height : 32
+}
+.Wizard Error:normal{
+	background : OL box
+}
+.WordWrapLabel{
+	margin : 2 4 2 4
+	padding : 1 2 2 2
+	word-wrap : true
+	rich-text : false
+	text-clipping : clip
+}
+.WordWrapLabel:normal{
+	background : OL box
+}
+.WordWrappedLabel{
+	margin : 2 4 2 4
+	padding : 1 2 2 2
+	word-wrap : true
+	rich-text : false
+	text-clipping : clip
+}
+.WordWrappedLabel:normal{
+	background : OL box
+}
+.WordWrappedMiniLabel{
+	margin : 2 4 2 4
+	padding : 3 2 2 2
+	font : Lucida Grande small
+	word-wrap : true
+	rich-text : false
+	text-clipping : clip
+}
+.WordWrappedMiniLabel:normal{
+	background : OL box
+}
+.WrappedLabel{
+	margin : 2 4 2 4
+	padding : 1 2 2 2
+	word-wrap : true
+	rich-text : false
+}
+.WrappedLabel:normal{
+	background : OL box
+}

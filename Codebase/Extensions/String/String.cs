@@ -11,7 +11,6 @@ namespace Zios{
 		//============================
 		// Conversion
 		//============================
-		public static GUIContent ToContent(this string current){return new GUIContent(current);}
 		public static string ToLetterSequence(this string current){
 			char lastDigit = current[current.Length-1];
 			if(current.Length > 1 && current[current.Length-2] == ' ' && char.IsLetter(lastDigit)){
@@ -24,38 +23,6 @@ namespace Zios{
 			byte[] bytes = Encoding.UTF8.GetBytes(current);
 			byte[] hash = MD5.Create().ComputeHash(bytes);
 			return BitConverter.ToString(hash).Replace("-","");
-		}
-		public static Color ToColor(this string current){
-			if(!current.Contains(",")){return Color.white;}
-			bool commaSplit = current.Contains(",");
-			bool spaceSplit = current.Contains(" ");
-			if(commaSplit || spaceSplit){
-				string[] part = current.Split(commaSplit ? ',' : ' ');
-				float r = Convert.ToSingle(part[0]) / 255.0f;
-				float g = Convert.ToSingle(part[1]) / 255.0f;
-				float b = Convert.ToSingle(part[2]) / 255.0f;
-				float a = part.Length > 3 ? Convert.ToSingle(part[3]) / 255.0f : 1;
-				return new Color(r,g,b,a);
-			}
-			else if(current.Length == 8 || current.Length == 6 || current.Length == 3){
-				if(current.Length == 3){
-					current += current;
-				}
-				float r = (float)Convert.ToInt32(current.Substring(0,2),16) / 255.0f;
-				float g = (float)Convert.ToInt32(current.Substring(2,2),16) / 255.0f;
-				float b = (float)Convert.ToInt32(current.Substring(4,2),16) / 255.0f;
-				float a = current.Length == 8 ? (float)Convert.ToInt32(current.Substring(6,2),16) / 255.0f : 1;
-				return new Color(r,g,b,a);
-			}
-			else{
-				Debug.LogError("[StringExtension] Color strings can only be converted from Hexidecimal or comma/space separated Decimal.");
-				return new Color(255,0,255);
-			}
-		}
-		public static Vector3 ToVector3(this string current){
-			if(!current.Contains(",")){return Vector3.zero;}
-			var values = current.Trim("(",")").Split(",").Convert<float>().ToArray();
-			return new Vector3(values[0],values[1],values[2]);
 		}
 		public static string ToCapitalCase(this string current){
 			return current[0].ToString().ToUpper() + current.Substring(1);
@@ -97,17 +64,74 @@ namespace Zios{
 		public static byte[] ToBytes(this string current){return Encoding.ASCII.GetBytes(current);}
 		public static string Serialize(this string current){return current;}
 		public static string Deserialize(this string current,string value){return value;}
-		public static object Deserialize<Type>(this string current){
-			if(typeof(Type) == typeof(Vector3)){return Vector3.zero.Deserialize(current);}
-			else if(typeof(Type) == typeof(float)){return new Single().Deserialize(current);}
-			else if(typeof(Type) == typeof(int)){return new Int32().Deserialize(current);}
-			else if(typeof(Type) == typeof(bool)){return new Boolean().Deserialize(current);}
-			else if(typeof(Type) == typeof(string)){return String.Empty.Deserialize(current);}
-			else if(typeof(Type) == typeof(byte)){return new Byte().Deserialize(current);}
-			else if(typeof(Type) == typeof(short)){return new Int16().Deserialize(current);}
-			else if(typeof(Type) == typeof(double)){return new Double().Deserialize(current);}
-			else if(typeof(Type).IsCollection()){return new Type[0].Deserialize(current);}
-			return null;
+		public static Type Deserialize<Type>(this string current){
+			if(typeof(Type) == typeof(Vector3)){return (Type)Vector3.zero.Deserialize(current).Box();}
+			else if(typeof(Type) == typeof(Color)){return (Type) Color.white.Deserialize(current).Box();}
+			else if(typeof(Type) == typeof(float)){return (Type) new Single().Deserialize(current).Box();}
+			else if(typeof(Type) == typeof(int)){return (Type) new Int32().Deserialize(current).Box();}
+			else if(typeof(Type) == typeof(bool)){return (Type) new Boolean().Deserialize(current).Box();}
+			else if(typeof(Type) == typeof(string)){return (Type) String.Empty.Deserialize(current).Box();}
+			else if(typeof(Type) == typeof(byte)){return (Type) new Byte().Deserialize(current).Box();}
+			else if(typeof(Type) == typeof(short)){return (Type) new Int16().Deserialize(current).Box();}
+			else if(typeof(Type) == typeof(double)){return (Type) new Double().Deserialize(current).Box();}
+			else if(typeof(Type).IsCollection()){return (Type) new Type[0].Deserialize(current).Box();}
+			return default(Type);
+		}
+		//============================
+		// Conversion - Unity
+		//============================
+		public static Rect ToRect(this string current,string separator=","){
+			var values = current.Split(separator).Convert<float>();
+			return new Rect(values[3],values[1],values[0],values[2]);
+		}
+		public static RectOffset ToRectOffset(this string current,string separator=","){
+			var values = current.Split(separator).Convert<int>();
+			return new RectOffset(values[3],values[1],values[0],values[2]);
+		}
+		public static GUIContent ToContent(this string current){return new GUIContent(current);}
+		public static Color ToColor(this string current,string separator=","){
+			current = current.Remove("#").Remove("0x");
+			if(current.Contains(separator)){
+				var parts = current.Split(separator).Convert<float>();
+				bool normalized = !parts.Exists(x=>x>1);
+				if(!normalized){
+					parts = parts.Select(x=>x/255.0f).ToArray();
+				}
+				float r = parts[0];
+				float g = parts[1];
+				float b = parts[2];
+				float a = parts.Length > 3 ? parts[3] : 1;
+				return new Color(r,g,b,a);
+			}
+			else if(current.Length == 8 || current.Length == 6 || current.Length == 3){
+				if(current.Length == 3){
+					current += current;
+				}
+				float r = (float)Convert.ToInt32(current.Substring(0,2),16) / 255.0f;
+				float g = (float)Convert.ToInt32(current.Substring(2,2),16) / 255.0f;
+				float b = (float)Convert.ToInt32(current.Substring(4,2),16) / 255.0f;
+				float a = current.Length == 8 ? (float)Convert.ToInt32(current.Substring(6,2),16) / 255.0f : 1;
+				return new Color(r,g,b,a);
+			}
+			else{
+				Debug.LogError("[StringExtension] Color strings can only be converted from Hexidecimal or comma/space separated Decimal.");
+				return new Color(255,0,255);
+			}
+		}
+		public static Vector3 ToVector2(this string current,string separator=","){
+			if(!current.Contains(separator)){return Vector2.zero;}
+			var values = current.Trim("(",")").Split(separator).Convert<float>().ToArray();
+			return new Vector3(values[0],values[1]);
+		}
+		public static Vector3 ToVector3(this string current,string separator=","){
+			if(!current.Contains(separator)){return Vector3.zero;}
+			var values = current.Trim("(",")").Split(separator).Convert<float>().ToArray();
+			return new Vector3(values[0],values[1],values[2]);
+		}
+		public static Vector3 ToVector4(this string current,string separator=","){
+			if(!current.Contains(separator)){return Vector4.zero;}
+			var values = current.Trim("(",")").Split(separator).Convert<float>().ToArray();
+			return new Vector4(values[0],values[1],values[2],values[3]);
 		}
 		//============================
 		// Standard
@@ -256,12 +280,12 @@ namespace Zios{
 		public static string GetFileName(this string current){
 			var term = current.Split("/").Last();
 			if(term.Contains(".")){return term.Replace("."+current.GetExtension(),"");}
-			return term;
+			return "";
 		}
 		public static string GetExtension(this string current){
 			var term = current.Split("/").Last();
 			if(term.Contains(".")){return term.Split(".").Last();}
-			return "";
+			return term;
 		}
 		//============================
 		// Extension
@@ -270,7 +294,7 @@ namespace Zios{
 			return current + value + "\r\n";
 		}
 		public static string[] GetLines(this string current){
-			return current.Split("\n");
+			return current.Remove("\r").Split("\n");
 		}
 		public static string Implode(this string current,string separator=" "){
 			StringBuilder builder = new StringBuilder(current.Length * 2);

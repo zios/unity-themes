@@ -21,8 +21,20 @@ namespace Zios{
 				++index;
 			}
 		}
+		public static TValue AddDefault<TKey,TValue>(this IDictionary<TKey,TValue> current,TKey key){
+			if(!current.ContainsKey(key)){
+				current[key] = default(TValue);
+			}
+			return current[key];
+		}
 		public static TValue AddNew<TKey,TValue>(this IDictionary<TKey,TValue> current,TKey key) where TValue : new(){
 			if(!current.ContainsKey(key)){
+				current[key] = new TValue();
+			}
+			return current[key];
+		}
+		public static TValue AddNewSequence<TKey,TValue>(this IDictionary<IList<TKey>,TValue> current,IList<TKey> key) where TValue : new(){
+			if(!current.Keys.ToArray().Exists(x=>x.SequenceEqual(key))){
 				current[key] = new TValue();
 			}
 			return current[key];

@@ -17,6 +17,7 @@ namespace Zios{
 	public static partial class Utility{
 		private static float sceneCheck;
 		private static Dictionary<object,KeyValuePair<CallbackFunction,float>> delayedMethods = new Dictionary<object,KeyValuePair<CallbackFunction,float>>();
+		private static Dictionary<string,Type> internalTypes = new Dictionary<string,Type>();
 		static Utility(){Utility.Setup();}
 		public static void Setup(){
 			Event.Add("On Late Update",(Method)Utility.CheckLoaded);
@@ -131,12 +132,20 @@ namespace Zios{
 			return null;
 		}
 		public static Type GetInternalType(string name){
+			if(Utility.internalTypes.ContainsKey(name)){return Utility.internalTypes[name];}
 			#if UNITY_EDITOR
+			bool full = name.ContainsAny(".","+");
 			foreach(var type in typeof(UnityEditor.Editor).Assembly.GetTypes()){
-				if(type.Name == name){return type;}
+				if(full ? type.FullName.Contains(name) : type.Name == name){
+					Utility.internalTypes[name] = type;
+					return type;
+				}
 			}
 			foreach(var type in typeof(UnityEngine.Object).Assembly.GetTypes()){
-				if(type.Name == name){return type;}
+				if(full ? type.FullName.Contains(name) : type.Name == name){
+					Utility.internalTypes[name] = type;
+					return type;
+				}
 			}
 			#endif
 			return null;

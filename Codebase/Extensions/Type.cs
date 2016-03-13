@@ -7,6 +7,9 @@ namespace Zios{
 			if(value.IsInterface){return current.GetInterface(value.Name) != null;}
 			return current.IsSubclassOf(typeof(Type));
 		}
+		public static bool HasEmptyConstructor(this Type current){
+			return typeof(Type).GetConstructor(Type.EmptyTypes) != null;
+		}
 		public static bool IsCollection(this Type current){
 			return current.Has(typeof(ICollection));
 		}

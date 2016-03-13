@@ -193,6 +193,11 @@ namespace Zios{
 		//=====================
 		// Assets
 		//=====================
+		public static object[] GetAssets(Type type){
+			if(Application.isLoadingLevel){return new Type[0];}
+			if(!Locate.assets.ContainsKey(type)){Locate.assets[type] = Resources.FindObjectsOfTypeAll(type);}
+			return Locate.assets[type];
+		}
 		public static Type[] GetAssets<Type>() where Type : UnityObject{
 			if(Application.isLoadingLevel){return new Type[0];}
 			if(!Locate.assets.ContainsKey(typeof(Type))){Locate.assets[typeof(Type)] = Resources.FindObjectsOfTypeAll(typeof(Type));}

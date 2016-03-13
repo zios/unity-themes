@@ -7,6 +7,9 @@ namespace Zios{
 		//=======================
 		// General
 		//=======================
+		public static Dictionary<TKey,TValue> ToDictionary<TKey,TValue>(this IEnumerable<KeyValuePair<TKey,TValue>> current){
+			return current.ToDictionary(x=>x.Key,x=>x.Value);
+		}
 		public static string ToText<T>(this IEnumerable<T> current){
 			var value = new StringBuilder();
 			foreach(var item in current){
@@ -39,7 +42,7 @@ namespace Zios{
 			return output.TrimRight("-");
 		}
 		public static IEnumerable<T> Deserialize<T>(this IEnumerable<T> current,string value){
-			return value.Split("-").Select(x=>x.Deserialize<T>().As<T>()).ToArray();
+			return value.Split("-").Select(x=>x.Deserialize<T>()).ToArray();
 		}
 		//=======================
 		// LINQ-ish

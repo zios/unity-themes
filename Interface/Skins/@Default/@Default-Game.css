@@ -1,0 +1,220 @@
+box{
+	border : 2 3 2 3
+	margin : 4 4 4 4
+	padding : 3 3 3 3
+	alignment : upperCenter
+	word-wrap : true
+	rich-text : false
+	text-clipping : clip
+	stretch-width : false
+}
+box:normal{
+	background : OL box
+}
+label{
+	margin : 2 4 2 4
+	padding : 1 2 2 2
+	font : Lucida Grande
+	rich-text : false
+	text-clipping : clip
+}
+label:normal{
+	background : OL box
+}
+textfield{
+	border : 3 3 3 3
+	margin : 2 4 2 4
+	padding : 1 3 2 3
+	rich-text : false
+	text-clipping : clip
+	image-position : textOnly
+}
+textfield:normal{
+	background : OL box
+}
+textarea{
+	border : 3 3 3 3
+	margin : 2 4 2 4
+	padding : 1 3 2 3
+	word-wrap : true
+	rich-text : false
+	text-clipping : clip
+}
+textarea:normal{
+	background : OL box
+}
+button{
+	border : 4 6 4 6
+	margin : 3 4 3 4
+	padding : 2 6 3 6
+	overflow : 0 0 1 0
+	alignment : middleCenter
+	rich-text : false
+	text-clipping : clip
+}
+button:normal{
+	background : OL box
+}
+toggle{
+	border : 13 0 0 15
+	margin : 2 4 2 4
+	padding : 1 3 2 15
+	overflow : -2 0 2 0
+	rich-text : false
+	text-clipping : clip
+}
+toggle:normal{
+	background : OL box
+}
+window{
+	border : 20 11 10 11
+	padding : 20 5 5 5
+	overflow : 3 6 8 6
+	alignment : upperCenter
+	rich-text : false
+	text-clipping : clip
+	content-offset : 0 -18
+	stretch-height : true
+}
+window:normal{
+	background : OL box
+}
+horizontalslider{
+	border : 0 3 0 3
+	margin : 2 4 2 4
+	padding : 0 -1 0 -1
+	overflow : -7 0 -6 0
+	rich-text : false
+	text-clipping : clip
+	image-position : imageOnly
+	fixed-height : 18
+}
+horizontalslider:normal{
+	background : OL box
+}
+horizontalsliderthumb{
+	overflow : -4 1 4 1
+	rich-text : false
+	text-clipping : clip
+	image-position : imageOnly
+	fixed-width : 10
+	fixed-height : 12
+}
+horizontalsliderthumb:normal{
+	background : OL box
+}
+verticalslider{
+	border : 3 0 3 0
+	margin : 2 2 2 2
+	padding : -1 0 -1 0
+	overflow : 0 -3 0 -2
+	rich-text : false
+	fixed-width : 12
+	stretch-width : false
+	stretch-height : true
+}
+verticalslider:normal{
+	background : OL box
+}
+verticalsliderthumb{
+	border : 8 0 8 0
+	padding : 10 0 10 0
+	rich-text : false
+	text-clipping : clip
+	image-position : imageOnly
+	fixed-width : 15
+	stretch-width : false
+	stretch-height : true
+}
+verticalsliderthumb:normal{
+	background : OL box
+}
+horizontalscrollbar{
+	border : 0 25 0 25
+	padding : 0 -1 0 -1
+	overflow : 0 1 0 1
+	rich-text : false
+	text-clipping : clip
+	image-position : imageOnly
+	fixed-height : 15
+}
+horizontalscrollbar:normal{
+	background : OL box
+}
+horizontalscrollbarthumb:normal{
+	background : OL box
+}
+horizontalscrollbarleftbutton{
+	overflow : 0 8 0 0
+	rich-text : false
+	text-clipping : clip
+	fixed-width : 17
+	fixed-height : 15
+}
+horizontalscrollbarleftbutton:normal{
+	background : OL box
+}
+horizontalscrollbarrightbutton{
+	overflow : 0 0 0 8
+	rich-text : false
+	text-clipping : clip
+	fixed-width : 17.24739
+	fixed-height : 15
+}
+horizontalscrollbarrightbutton:normal{
+	background : OL box
+}
+verticalscrollbar{
+	border : 9 0 9 0
+	padding : -1 0 -1 0
+	overflow : 1 0 1 0
+	rich-text : false
+	text-clipping : clip
+	fixed-width : 15
+}
+verticalscrollbar:normal{
+	background : OL box
+}
+verticalscrollbarthumb{
+	border : 8 0 8 0
+	padding : 10 0 10 0
+	rich-text : false
+	text-clipping : clip
+	image-position : imageOnly
+	fixed-width : 15
+	stretch-width : false
+	stretch-height : true
+}
+verticalscrollbarthumb:normal{
+	background : OL box
+}
+verticalscrollbarupbutton{
+	overflow : 0 0 8 0
+	rich-text : false
+	text-clipping : clip
+	fixed-width : 15
+	fixed-height : 17
+}
+verticalscrollbarupbutton:normal{
+	background : OL box
+}
+verticalscrollbardownbutton{
+	overflow : 8 0 0 0
+	rich-text : false
+	text-clipping : clip
+	fixed-width : 15
+	fixed-height : 17
+}
+verticalscrollbardownbutton:normal{
+	background : OL box
+}
+scrollview{
+	rich-text : false
+	text-clipping : clip
+}
+scrollview:normal{
+	background : OL box
+}
+.:normal{
+	background : OL box
+}

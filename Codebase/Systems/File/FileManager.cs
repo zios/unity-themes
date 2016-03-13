@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityObject = UnityEngine.Object;
 namespace Zios{
 	using Events;
+	using Containers;
 	#if UNITY_EDITOR
 	using UnityEditor;
 	#endif
@@ -17,6 +18,7 @@ namespace Zios{
 		public static Dictionary<string,FileData> folders = new Dictionary<string,FileData>();
 		public static Dictionary<string,FileData[]> cache = new Dictionary<string,FileData[]>();
 		public static Dictionary<UnityObject,object> assets = new Dictionary<UnityObject,object>();
+		public static Hierarchy<Type,string,string,UnityObject> namedAssets = new Hierarchy<Type,string,string,UnityObject>();
 		//===============
 		// Storage
 		//===============
@@ -159,10 +161,10 @@ namespace Zios{
 					return new FileData[0];
 				}
 			}
+			if(!name.Contains(".") && name.EndsWith("*")){name = name + ".*";}
 			string fileName = name.GetFileName();
 			string path = name.GetDirectory();
 			string type = name.GetExtension().ToLower();
-			bool wildcard = fileName.Length > 0 && fileName.Contains("*");
 			var results = new List<FileData>();
 			foreach(var item in FileManager.folders){
 				FileData folder = item.Value;
@@ -172,24 +174,28 @@ namespace Zios{
 				}
 			}
 			if(results.Count == 0){
-				if(type.IsEmpty()){
-					foreach(var fileType in FileManager.files){
-						FileManager.SearchType(fileName,fileType.Key,path,ignoreCase,wildcard,ref results);
-					}
-				}
-				else if(FileManager.files.ContainsKey(type)){
-					FileManager.SearchType(fileName,type,path,ignoreCase,wildcard,ref results);
+				var types = new List<string>();
+				var allTypes = FileManager.files.Keys;
+				if(type.IsEmpty() || type == "*"){types = allTypes.ToList();}
+				if(type.StartsWith("*")){types.AddRange(allTypes.Where(x=>x.EndsWith(type.Remove("*"),ignoreCase)));}
+				if(type.EndsWith("*")){types.AddRange(allTypes.Where(x=>x.StartsWith(type.Remove("*"),ignoreCase)));}
+				if(FileManager.files.ContainsKey(type)){types.Add(type);}
+				foreach(var typeName in types){
+					FileManager.SearchType(fileName,typeName,path,ignoreCase,ref results);
 				}
 			}
 			if(results.Count == 0 && showWarnings){Debug.LogWarning("[FileManager] Path [" + name + "] could not be found.");}
 			FileManager.cache[searchKey] = results.ToArray();
 			return results.ToArray();
 		}
-		public static void SearchType(string name,string type,string path,bool ignoreCase,bool wildcard,ref List<FileData> results){
-			foreach(FileData file in FileManager.files[type]){
-				bool correctPath = path != "" ? file.path.Contains(path,ignoreCase) : true;
-				bool wildMatch = wildcard && (name.IsEmpty() || file.name.Contains(name.Remove("*"),ignoreCase));
-				if(correctPath && (wildMatch || file.name.Matches(name,ignoreCase))){
+		public static void SearchType(string name,string type,string path,bool ignoreCase,ref List<FileData> results){
+			var files = FileManager.files[type];
+			foreach(FileData file in files){
+				bool correctPath = path.IsEmpty() ? true : file.path.Contains(path,ignoreCase);
+				bool wildcard = name.IsEmpty() || name == "*";
+				wildcard = wildcard || name.StartsWith("*") && file.name.EndsWith(name.Remove("*"),ignoreCase);
+				wildcard = wildcard || (name.EndsWith("*") && file.name.StartsWith(name.Remove("*"),ignoreCase));
+				if(correctPath && (wildcard || file.name.Matches(name,ignoreCase))){
 					results.Add(file);
 				}
 			}
@@ -241,6 +247,8 @@ namespace Zios{
 			}
 		}
 		public static void WriteFile(string path,byte[] bytes){
+			var folder = path.GetDirectory();
+			if(!Directory.Exists(folder)){Directory.CreateDirectory(folder);}
 			FileStream stream = new FileStream(path,FileMode.Create);
 			BinaryWriter file = new BinaryWriter(stream);
 			file.Write(bytes);
@@ -269,10 +277,17 @@ namespace Zios{
 			if(file != null){return file.GetAsset<T>();}
 			return default(T);
 		}
-		public static T[] GetAssets<T>(string name,bool showWarnings=true){
+		public static T[] GetAssets<T>(string name="*",bool showWarnings=true){
 			var files = FileManager.FindAll(name,true,showWarnings);
 			if(files.Length < 1){return new T[0];}
 			return files.Select(x=>x.GetAsset<T>()).Where(x=>!x.IsNull()).ToArray();
+		}
+		public static Dictionary<string,T> GetNamedAssets<T>(string name="*",bool showWarnings=true) where T : UnityObject{
+			if(!FileManager.namedAssets.AddNew(typeof(T)).ContainsKey(name)){
+				var files = FileManager.GetAssets<T>(name,showWarnings).GroupBy(x=>x.name).Select(x=>x.First());
+				FileManager.namedAssets[typeof(T)][name] = files.ToDictionary(x=>x.name,x=>(UnityObject)x);
+			}
+			return FileManager.namedAssets[typeof(T)][name].ToDictionary(x=>x.Key,x=>(T)x.Value);
 		}
 	}
 	[Serializable]
@@ -307,9 +322,8 @@ namespace Zios{
 		public string GetChecksum(){return this.GetText().ToMD5();}
 		public T GetAsset<T>(){
 			#if UNITY_EDITOR
-			if(Application.isEditor){
-				object asset = AssetDatabase.LoadAssetAtPath(this.GetAssetPath(),typeof(T));
-				return (T)Convert.ChangeType(asset,typeof(T));
+			if(Application.isEditor && this.path.IndexOf("Assets") != -1){
+				return (T)AssetDatabase.LoadAssetAtPath(this.GetAssetPath(),typeof(T)).Box();
 			}
 			#endif
 			return default(T);

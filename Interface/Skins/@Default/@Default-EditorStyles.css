@@ -1,0 +1,984 @@
+box{
+	border : 2 3 2 3
+	margin : 4 4 4 4
+	padding : 3 3 3 3
+	alignment : upperCenter
+	word-wrap : true
+	rich-text : false
+	text-clipping : clip
+	stretch-width : false
+}
+box:normal{
+	background : OL box
+}
+label{
+	margin : 2 4 2 4
+	padding : 1 2 2 2
+	font : Lucida Grande
+	rich-text : false
+	text-clipping : clip
+}
+label:normal{
+	background : OL box
+}
+textfield{
+	border : 3 3 3 3
+	margin : 2 4 2 4
+	padding : 1 3 2 3
+	rich-text : false
+	text-clipping : clip
+	image-position : textOnly
+}
+textfield:normal{
+	background : OL box
+}
+textarea{
+	border : 3 3 3 3
+	margin : 2 4 2 4
+	padding : 1 3 2 3
+	word-wrap : true
+	rich-text : false
+	text-clipping : clip
+}
+textarea:normal{
+	background : OL box
+}
+button{
+	border : 4 6 4 6
+	margin : 3 4 3 4
+	padding : 2 6 3 6
+	overflow : 0 0 1 0
+	alignment : middleCenter
+	rich-text : false
+	text-clipping : clip
+}
+button:normal{
+	background : OL box
+}
+toggle{
+	border : 13 0 0 15
+	margin : 2 4 2 4
+	padding : 1 3 2 15
+	overflow : -2 0 2 0
+	rich-text : false
+	text-clipping : clip
+}
+toggle:normal{
+	background : OL box
+}
+window{
+	border : 20 11 10 11
+	padding : 20 5 5 5
+	overflow : 3 6 8 6
+	alignment : upperCenter
+	rich-text : false
+	text-clipping : clip
+	content-offset : 0 -18
+	stretch-height : true
+}
+window:normal{
+	background : OL box
+}
+horizontalslider{
+	border : 0 3 0 3
+	margin : 2 4 2 4
+	padding : 0 -1 0 -1
+	overflow : -7 0 -6 0
+	rich-text : false
+	text-clipping : clip
+	image-position : imageOnly
+	fixed-height : 18
+}
+horizontalslider:normal{
+	background : OL box
+}
+horizontalsliderthumb{
+	overflow : -4 1 4 1
+	rich-text : false
+	text-clipping : clip
+	image-position : imageOnly
+	fixed-width : 10
+	fixed-height : 12
+}
+horizontalsliderthumb:normal{
+	background : OL box
+}
+verticalslider{
+	border : 3 0 3 0
+	margin : 2 2 2 2
+	padding : -1 0 -1 0
+	overflow : 0 -3 0 -2
+	rich-text : false
+	fixed-width : 12
+	stretch-width : false
+	stretch-height : true
+}
+verticalslider:normal{
+	background : OL box
+}
+verticalsliderthumb{
+	border : 8 0 8 0
+	padding : 10 0 10 0
+	rich-text : false
+	text-clipping : clip
+	image-position : imageOnly
+	fixed-width : 15
+	stretch-width : false
+	stretch-height : true
+}
+verticalsliderthumb:normal{
+	background : OL box
+}
+horizontalscrollbar{
+	border : 0 25 0 25
+	padding : 0 -1 0 -1
+	overflow : 0 1 0 1
+	rich-text : false
+	text-clipping : clip
+	image-position : imageOnly
+	fixed-height : 15
+}
+horizontalscrollbar:normal{
+	background : OL box
+}
+horizontalscrollbarthumb:normal{
+	background : OL box
+}
+horizontalscrollbarleftbutton{
+	overflow : 0 8 0 0
+	rich-text : false
+	text-clipping : clip
+	fixed-width : 17
+	fixed-height : 15
+}
+horizontalscrollbarleftbutton:normal{
+	background : OL box
+}
+horizontalscrollbarrightbutton{
+	overflow : 0 0 0 8
+	rich-text : false
+	text-clipping : clip
+	fixed-width : 17.24739
+	fixed-height : 15
+}
+horizontalscrollbarrightbutton:normal{
+	background : OL box
+}
+verticalscrollbar{
+	border : 9 0 9 0
+	padding : -1 0 -1 0
+	overflow : 1 0 1 0
+	rich-text : false
+	text-clipping : clip
+	fixed-width : 15
+}
+verticalscrollbar:normal{
+	background : OL box
+}
+verticalscrollbarthumb{
+	border : 8 0 8 0
+	padding : 10 0 10 0
+	rich-text : false
+	text-clipping : clip
+	image-position : imageOnly
+	fixed-width : 15
+	stretch-width : false
+	stretch-height : true
+}
+verticalscrollbarthumb:normal{
+	background : OL box
+}
+verticalscrollbarupbutton{
+	overflow : 0 0 8 0
+	rich-text : false
+	text-clipping : clip
+	fixed-width : 15
+	fixed-height : 17
+}
+verticalscrollbarupbutton:normal{
+	background : OL box
+}
+verticalscrollbardownbutton{
+	overflow : 8 0 0 0
+	rich-text : false
+	text-clipping : clip
+	fixed-width : 15
+	fixed-height : 17
+}
+verticalscrollbardownbutton:normal{
+	background : OL box
+}
+scrollview{
+	rich-text : false
+	text-clipping : clip
+}
+scrollview:normal{
+	background : OL box
+}
+.m_Label{
+	margin : 2 4 2 4
+	padding : 1 2 2 2
+	rich-text : false
+	text-clipping : clip
+}
+.m_Label:normal{
+	background : OL box
+}
+.m_MiniLabel{
+	margin : 2 4 2 4
+	padding : 3 2 2 2
+	font : Lucida Grande small
+	rich-text : false
+	text-clipping : clip
+}
+.m_MiniLabel:normal{
+	background : OL box
+}
+.m_LargeLabel{
+	margin : 4 4 4 4
+	padding : 2 2 2 2
+	font : Lucida Grande Big
+	rich-text : false
+	text-clipping : clip
+}
+.m_LargeLabel:normal{
+	background : OL box
+}
+.m_BoldLabel{
+	margin : 6 4 4 4
+	padding : 1 2 2 2
+	font : Lucida Grande Bold
+	rich-text : false
+	text-clipping : clip
+}
+.m_BoldLabel:normal{
+	background : OL box
+}
+.m_MiniBoldLabel{
+	margin : 6 4 4 4
+	padding : 3 2 2 2
+	font : Lucida Grande small bold
+	rich-text : false
+	text-clipping : clip
+}
+.m_MiniBoldLabel:normal{
+	background : OL box
+}
+.m_CenteredGreyMiniLabel{
+	margin : 2 4 2 4
+	padding : 3 2 2 2
+	font : Lucida Grande small
+	alignment : middleCenter
+	rich-text : false
+	text-clipping : clip
+}
+.m_CenteredGreyMiniLabel:normal{
+	background : OL box
+}
+.m_WordWrappedMiniLabel{
+	margin : 2 4 2 4
+	padding : 3 2 2 2
+	font : Lucida Grande small
+	word-wrap : true
+	rich-text : false
+	text-clipping : clip
+}
+.m_WordWrappedMiniLabel:normal{
+	background : OL box
+}
+.m_WordWrappedLabel{
+	margin : 2 4 2 4
+	padding : 1 2 2 2
+	word-wrap : true
+	rich-text : false
+	text-clipping : clip
+}
+.m_WordWrappedLabel:normal{
+	background : OL box
+}
+.m_LinkLabel{
+	margin : 2 4 2 4
+	padding : 1 2 2 2
+	rich-text : false
+	text-clipping : clip
+	stretch-width : false
+}
+.m_LinkLabel:normal{
+	background : OL box
+}
+.m_WhiteLabel{
+	margin : 2 4 2 4
+	padding : 1 2 2 2
+	font : Lucida Grande
+	rich-text : false
+	text-clipping : clip
+}
+.m_WhiteLabel:normal{
+	background : OL box
+}
+.m_WhiteMiniLabel{
+	margin : 2 4 2 4
+	padding : 3 2 2 2
+	font : Lucida Grande small
+	rich-text : false
+	text-clipping : clip
+}
+.m_WhiteMiniLabel:normal{
+	background : OL box
+}
+.m_WhiteLargeLabel{
+	margin : 4 4 4 4
+	padding : 2 2 2 2
+	font : Lucida Grande Big
+	rich-text : false
+	text-clipping : clip
+}
+.m_WhiteLargeLabel:normal{
+	background : OL box
+}
+.m_WhiteBoldLabel{
+	margin : 6 4 4 4
+	padding : 1 2 2 2
+	font : Lucida Grande Bold
+	rich-text : false
+	text-clipping : clip
+}
+.m_WhiteBoldLabel:normal{
+	background : OL box
+}
+.m_RadioButton{
+	border : 13 0 0 14
+	margin : 3 4 3 4
+	padding : 2 0 2 15
+	overflow : -3 0 1 0
+	rich-text : false
+	text-clipping : clip
+}
+.m_RadioButton:normal{
+	background : OL box
+}
+.m_MiniButton{
+	border : 0 6 0 6
+	margin : 2 4 2 4
+	padding : 2 6 2 6
+	overflow : 0 0 1 0
+	font : Lucida Grande small
+	alignment : middleCenter
+	rich-text : false
+	text-clipping : clip
+}
+.m_MiniButton:normal{
+	background : OL box
+}
+.m_MiniButtonLeft{
+	border : 0 6 0 6
+	margin : 2 0 2 4
+	padding : 2 6 2 6
+	overflow : 0 0 1 0
+	font : Lucida Grande small
+	alignment : middleCenter
+	rich-text : false
+	text-clipping : clip
+}
+.m_MiniButtonLeft:normal{
+	background : OL box
+}
+.m_MiniButtonMid{
+	border : 0 6 0 6
+	margin : 2 0 2 0
+	padding : 2 6 2 6
+	overflow : 0 0 1 0
+	font : Lucida Grande small
+	alignment : middleCenter
+	rich-text : false
+	text-clipping : clip
+}
+.m_MiniButtonMid:normal{
+	background : OL box
+}
+.m_MiniButtonRight{
+	border : 0 6 0 6
+	margin : 2 4 2 0
+	padding : 2 6 2 6
+	overflow : 0 0 1 0
+	font : Lucida Grande small
+	alignment : middleCenter
+	rich-text : false
+	text-clipping : clip
+}
+.m_MiniButtonRight:normal{
+	background : OL box
+}
+.m_TextField{
+	border : 3 3 3 3
+	margin : 2 4 2 4
+	padding : 1 3 2 3
+	rich-text : false
+	text-clipping : clip
+	image-position : textOnly
+}
+.m_TextField:normal{
+	background : OL box
+}
+.m_TextArea{
+	border : 3 3 3 3
+	margin : 2 4 2 4
+	padding : 1 3 2 3
+	word-wrap : true
+	rich-text : false
+	text-clipping : clip
+	image-position : textOnly
+}
+.m_TextArea:normal{
+	background : OL box
+}
+.m_MiniTextField{
+	border : 2 2 2 2
+	margin : 1 2 1 2
+	padding : 2 2 1 2
+	font : Lucida Grande small
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 13
+	stretch-width : false
+}
+.m_MiniTextField:normal{
+	background : OL box
+}
+.m_NumberField{
+	border : 3 3 3 3
+	margin : 2 4 2 4
+	padding : 1 3 2 3
+	rich-text : false
+	text-clipping : clip
+	image-position : textOnly
+}
+.m_NumberField:normal{
+	background : OL box
+}
+.m_Popup{
+	border : 0 14 0 6
+	margin : 2 4 2 4
+	padding : 2 12 2 6
+	overflow : 0 0 1 0
+	font : Lucida Grande small
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 15
+}
+.m_Popup:normal{
+	background : OL box
+}
+.m_ObjectField{
+	border : 4 23 4 4
+	margin : 2 4 2 4
+	padding : 1 20 2 3
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+}
+.m_ObjectField:normal{
+	background : OL box
+}
+.m_ObjectFieldThumb{
+	border : 4 4 4 4
+	margin : 4 4 4 4
+	padding : 3 3 3 3
+	overflow : 1 1 1 1
+	font : Lucida Grande small
+	alignment : middleLeft
+	text-clipping : clip
+}
+.m_ObjectFieldThumb:normal{
+	background : OL box
+}
+.m_ObjectFieldMiniThumb{
+	border : 4 18 4 4
+	rich-text : false
+	fixed-width : 32
+	fixed-height : 18
+	stretch-width : false
+}
+.m_ObjectFieldMiniThumb:normal{
+	background : OL box
+}
+.m_ColorField{
+	border : 3 21 3 4
+	margin : 2 4 2 4
+	padding : 1 19 1 1
+	overflow : 1 0 1 1
+}
+.m_ColorField:normal{
+	background : OL box
+}
+.m_LayerMaskField{
+	border : 0 14 0 6
+	margin : 2 4 2 4
+	padding : 2 12 2 6
+	overflow : 0 0 1 0
+	font : Lucida Grande small
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 15
+}
+.m_LayerMaskField:normal{
+	background : OL box
+}
+.m_Toggle{
+	border : 13 0 0 15
+	margin : 2 4 2 4
+	padding : 1 3 2 15
+	overflow : -2 0 2 0
+	rich-text : false
+	text-clipping : clip
+}
+.m_Toggle:normal{
+	background : OL box
+}
+.m_ToggleMixed{
+	border : 13 0 0 15
+	margin : 2 4 2 4
+	padding : 1 3 2 15
+	overflow : -2 0 2 0
+	rich-text : false
+	text-clipping : clip
+}
+.m_ToggleMixed:normal{
+	background : OL box
+}
+.m_Foldout{
+	border : 13 0 0 14
+	margin : 2 4 2 4
+	padding : 1 2 2 14
+	overflow : -1 0 0 0
+	rich-text : false
+}
+.m_Foldout:normal{
+	background : OL box
+}
+.m_FoldoutPreDrop{
+	border : 13 9 0 14
+	margin : 0 4 0 3
+	padding : 2 0 0 14
+	rich-text : false
+}
+.m_FoldoutPreDrop:normal{
+	background : OL box
+}
+.m_ToggleGroup{
+	border : 13 0 0 14
+	margin : 6 4 0 4
+	padding : 2 0 2 17
+	overflow : -2 0 0 0
+	font : Lucida Grande Bold
+	rich-text : false
+	text-clipping : clip
+}
+.m_ToggleGroup:normal{
+	background : OL box
+}
+.m_TextFieldDropDown{
+	border : 2 2 2 0
+	margin : 3 4 3 0
+	alignment : middleLeft
+	fixed-width : 12
+	fixed-height : 16
+	stretch-width : false
+}
+.m_TextFieldDropDown:normal{
+	background : OL box
+}
+.m_TextFieldDropDownText{
+	border : 2 2 2 2
+	margin : 3 0 3 4
+	padding : 1 3 2 3
+	alignment : middleLeft
+	text-clipping : clip
+	fixed-height : 16
+}
+.m_TextFieldDropDownText:normal{
+	background : OL box
+}
+.m_Toolbar{
+	border : 2 0 2 0
+	padding : 0 6 0 6
+	font : Lucida Grande small
+	alignment : upperCenter
+	rich-text : false
+	text-clipping : clip
+	content-offset : 0 -1
+	fixed-height : 18
+	stretch-width : false
+}
+.m_Toolbar:normal{
+	background : OL box
+}
+.m_ToolbarButton{
+	border : 0 6 0 6
+	padding : 0 5 0 5
+	overflow : 0 1 0 0
+	font : Lucida Grande small
+	alignment : middleCenter
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 18
+}
+.m_ToolbarButton:normal{
+	background : OL box
+}
+.m_ToolbarPopup{
+	border : 0 10 0 2
+	padding : 0 12 0 6
+	overflow : 0 1 0 0
+	font : Lucida Grande small
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 18
+}
+.m_ToolbarPopup:normal{
+	background : OL box
+}
+.m_ToolbarDropDown{
+	border : 0 10 0 2
+	padding : 0 12 0 6
+	overflow : 0 1 0 0
+	font : Lucida Grande small
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 18
+}
+.m_ToolbarDropDown:normal{
+	background : OL box
+}
+.m_ToolbarTextField{
+	border : 2 2 2 2
+	margin : 2 4 1 4
+	padding : 1 2 1 2
+	font : Lucida Grande small
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 14
+	stretch-width : false
+}
+.m_ToolbarTextField:normal{
+	background : OL box
+}
+.m_InspectorDefaultMargins{
+	padding : 0 4 0 14
+}
+.m_InspectorDefaultMargins:normal{
+	background : OL box
+}
+.m_InspectorFullWidthMargins{
+	padding : 0 4 0 5
+}
+.m_InspectorFullWidthMargins:normal{
+	background : OL box
+}
+.m_HelpBox{
+	border : 4 4 4 4
+	margin : 4 4 4 4
+	padding : 3 4 3 4
+	font : Lucida Grande small
+	word-wrap : true
+	rich-text : false
+	text-clipping : clip
+}
+.m_HelpBox:normal{
+	background : OL box
+}
+.m_ToolbarSearchField{
+	border : 0 0 0 15
+	margin : 2 0 0 2
+	padding : 1 0 2 16
+	font : Lucida Grande small
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 14
+}
+.m_ToolbarSearchField:normal{
+	background : OL box
+}
+.m_ToolbarSearchFieldPopup{
+	border : 0 0 0 16
+	margin : 2 0 0 2
+	padding : 1 0 2 16
+	font : Lucida Grande small
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 14
+}
+.m_ToolbarSearchFieldPopup:normal{
+	background : OL box
+}
+.m_ToolbarSearchFieldCancelButton{
+	margin : 2 2 0 0
+	padding : 0 0 0 14
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	fixed-width : 14
+	fixed-height : 14
+	stretch-width : false
+}
+.m_ToolbarSearchFieldCancelButton:normal{
+	background : OL box
+}
+.m_ToolbarSearchFieldCancelButtonEmpty{
+	margin : 2 2 0 0
+	padding : 0 0 0 14
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	fixed-width : 14
+	fixed-height : 14
+	stretch-width : false
+}
+.m_ToolbarSearchFieldCancelButtonEmpty:normal{
+	background : OL box
+}
+.m_ColorPickerBox{
+	border : 4 3 3 3
+	padding : -2 -2 -2 -2
+	stretch-width : false
+}
+.m_ColorPickerBox:normal{
+	background : OL box
+}
+.m_InspectorBig{
+	border : 3 0 3 0
+	margin : 6 0 4 0
+	padding : 6 6 5 6
+	font : Lucida Grande small
+	alignment : upperCenter
+	text-clipping : clip
+	content-offset : 0 -1
+	stretch-width : false
+}
+.m_InspectorBig:normal{
+	background : OL box
+}
+.m_InspectorTitlebar{
+	border : 17 0 0 15
+	margin : 2 0 0 0
+	padding : 2 0 0 16
+	overflow : 0 0 2 0
+	font : Lucida Grande Bold
+	text-clipping : clip
+	content-offset : 0 -1
+	fixed-height : 17
+}
+.m_InspectorTitlebar:normal{
+	background : OL box
+}
+.m_InspectorTitlebarText{
+	border : 10 0 0 15
+	padding : 0 0 0 -2
+	overflow : 0 3 0 16
+	font : Lucida Grande Bold
+	alignment : lowerLeft
+	text-clipping : clip
+	content-offset : 0 -1
+	fixed-height : 16
+}
+.m_InspectorTitlebarText:normal{
+	background : OL box
+}
+.m_FoldoutSelected:normal{
+	background : OL box
+}
+.m_Tooltip{
+	border : 3 3 3 3
+	padding : 3 3 3 3
+	rich-text : false
+	stretch-width : false
+}
+.m_Tooltip:normal{
+	background : OL box
+}
+.m_NotificationText{
+	border : 16 16 16 16
+	margin : 30 30 30 30
+	padding : 40 40 40 40
+	font : Lucida Grande Warning
+	alignment : upperCenter
+	word-wrap : true
+	rich-text : false
+	text-clipping : clip
+	stretch-width : false
+}
+.m_NotificationText:normal{
+	background : OL box
+}
+.m_NotificationBackground{
+	border : 16 16 16 16
+	margin : 30 30 30 30
+	padding : 40 40 40 40
+	font : Lucida Grande Warning
+	alignment : upperCenter
+	word-wrap : true
+	rich-text : false
+	text-clipping : clip
+	stretch-width : false
+}
+.m_NotificationBackground:normal{
+	background : OL box
+}
+.m_AssetLabel{
+	border : 0 7 0 7
+	margin : 0 3 0 3
+	padding : 2 6 0 6
+	font : Lucida Grande small
+	rich-text : false
+	text-clipping : clip
+	image-position : textOnly
+	fixed-height : 15
+	stretch-width : false
+}
+.m_AssetLabel:normal{
+	background : OL box
+}
+.m_AssetLabelPartial{
+	border : 0 7 0 7
+	margin : 0 3 0 3
+	padding : 2 6 0 6
+	font : Lucida Grande small
+	rich-text : false
+	text-clipping : clip
+	image-position : textOnly
+	fixed-height : 15
+	stretch-width : false
+}
+.m_AssetLabelPartial:normal{
+	background : OL box
+}
+.m_AssetLabelIcon{
+	margin : 0 4 0 4
+	padding : 2 3 2 3
+	rich-text : false
+	text-clipping : clip
+	image-position : textOnly
+	fixed-width : 20
+	fixed-height : 15
+	stretch-width : false
+}
+.m_AssetLabelIcon:normal{
+	background : OL box
+}
+.m_SearchField{
+	border : 0 0 0 17
+	margin : 2 0 0 2
+	padding : 2 0 2 22
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 18
+}
+.m_SearchField:normal{
+	background : OL box
+}
+.m_SearchFieldCancelButton{
+	margin : 2 2 0 0
+	padding : 0 0 0 14
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	fixed-width : 16
+	fixed-height : 18
+	stretch-width : false
+}
+.m_SearchFieldCancelButton:normal{
+	background : OL box
+}
+.m_SearchFieldCancelButtonEmpty{
+	margin : 2 2 0 0
+	padding : 0 0 0 14
+	alignment : middleLeft
+	rich-text : false
+	text-clipping : clip
+	fixed-width : 17
+	fixed-height : 18
+	stretch-width : false
+}
+.m_SearchFieldCancelButtonEmpty:normal{
+	background : OL box
+}
+.m_SelectionRect{
+	border : 2 2 2 2
+	padding : 3 3 3 3
+	rich-text : false
+	stretch-width : false
+}
+.m_SelectionRect:normal{
+	background : OL box
+}
+.m_MinMaxHorizontalSliderThumb{
+	border : 0 7 0 7
+	padding : 0 6 0 6
+	overflow : -4 1 4 1
+	rich-text : false
+	text-clipping : clip
+	image-position : imageOnly
+	fixed-height : 12
+}
+.m_MinMaxHorizontalSliderThumb:normal{
+	background : OL box
+}
+.m_DropDownList{
+	border : 3 20 3 4
+	margin : 3 4 3 4
+	padding : 2 22 3 6
+	overflow : 0 0 1 0
+	alignment : middleCenter
+	rich-text : false
+	text-clipping : clip
+	fixed-height : 18
+}
+.m_DropDownList:normal{
+	background : OL box
+}
+.m_ProgressBarBar{
+	border : 2 0 2 0
+	margin : 4 4 4 4
+	padding : 3 3 3 3
+	overflow : -1 -1 -1 -1
+	alignment : upperCenter
+	word-wrap : true
+	rich-text : false
+	text-clipping : clip
+	stretch-width : false
+}
+.m_ProgressBarBar:normal{
+	background : OL box
+}
+.m_ProgressBarText{
+	border : 2 3 2 3
+	margin : 4 4 4 4
+	padding : 3 3 3 3
+	overflow : -1 -1 -1 -1
+	font : Lucida Grande small
+	alignment : upperCenter
+	rich-text : false
+	text-clipping : clip
+	stretch-width : false
+}
+.m_ProgressBarText:normal{
+	background : OL box
+}
+.m_ProgressBarBack{
+	border : 2 3 2 3
+	margin : 4 4 4 4
+	padding : 3 3 3 3
+	alignment : upperCenter
+	word-wrap : true
+	rich-text : false
+	text-clipping : clip
+	stretch-width : false
+}
+.m_ProgressBarBack:normal{
+	background : OL box
+}

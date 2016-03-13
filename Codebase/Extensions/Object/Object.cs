@@ -41,6 +41,7 @@ namespace Zios{
 			return type.IsStatic();
 		}
 		public static bool Is<T>(this object current){
+			if(current.IsNull()){return false;}
 			var type = current.GetType();
 			var value = typeof(T);
 			return (type.Equals(value)) || (type.IsSubclassOf(value));
@@ -83,12 +84,24 @@ namespace Zios{
 			return (T)current;
 		}
 		public static T[] AsArray<T>(this T current){
-			if(current.IsNull()){return default(T[]);}
+			if(current.IsNull()){return new T[0];}
 			return new T[]{current};
 		}
+		public static T[] AsArray<T>(this T current,int amount){
+			return current.AsList().ToArray();
+		}
 		public static List<T> AsList<T>(this T current){
-			if(current.IsNull()){return default(List<T>);}
+			if(current.IsNull()){return new List<T>();}
 			return new List<T>{current};
+		}
+		public static List<T> AsList<T>(this T current,int amount){
+			if(current.IsNull()){return new List<T>();}
+			var collection = new List<T>();
+			while(amount > 0){
+				collection.Add(current);
+				amount -= 1;
+			}
+			return collection;
 		}
 		//============================
 		// Conversions
@@ -106,6 +119,7 @@ namespace Zios{
 		}
 		public static string Serialize(this object current){
 			if(current is Vector3){return current.As<Vector3>().Serialize();}
+			if(current is Color){return current.As<Color>().Serialize();}
 			else if(current is float){return current.As<float>().Serialize();}
 			else if(current is int){return current.As<int>().Serialize();}
 			else if(current is bool){return current.As<bool>().Serialize();}
