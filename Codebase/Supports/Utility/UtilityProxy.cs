@@ -173,7 +173,7 @@ namespace Zios{
 		}
 		public static void RebuildInspectors(){
 			#if UNITY_EDITOR
-			Type inspectorType = Utility.GetInternalType("InspectorWindow");
+			Type inspectorType = Utility.GetUnityType("InspectorWindow");
 			var windows = inspectorType.CallMethod<EditorWindow[]>("GetAllInspectorWindows");
 			for(int index=0;index<windows.Length;++index){
 				var tracker = windows[index].CallMethod<ActiveEditorTracker>("GetTracker");
@@ -183,7 +183,7 @@ namespace Zios{
 		}
 		public static void ShowInspectors(){
 			#if UNITY_EDITOR
-			Type inspectorType = Utility.GetInternalType("InspectorWindow");
+			Type inspectorType = Utility.GetUnityType("InspectorWindow");
 			var windows = inspectorType.CallMethod<EditorWindow[]>("GetAllInspectorWindows");
 			for(int index=0;index<windows.Length;++index){
 				var tracker = windows[index].CallMethod<ActiveEditorTracker>("GetTracker");
@@ -195,7 +195,7 @@ namespace Zios{
 		}
 		public static void RepaintInspectors(){
 			#if UNITY_EDITOR
-			Type inspectorType = Utility.GetInternalType("InspectorWindow");
+			Type inspectorType = Utility.GetUnityType("InspectorWindow");
 			inspectorType.CallMethod("RepaintAllInspectors");
 			#endif
 		}
@@ -207,7 +207,7 @@ namespace Zios{
 		}
 		public static void RepaintGameView(){
 			#if UNITY_EDITOR
-			Type viewType = Utility.GetInternalType("GameView");
+			Type viewType = Utility.GetUnityType("GameView");
 			EditorWindow gameview = EditorWindow.GetWindow(viewType);
 			gameview.Repaint();
 			#endif
@@ -262,13 +262,13 @@ namespace Zios{
 		}
 		public static bool MoveComponentUp(Component component){
 			#if UNITY_EDITOR
-			return (bool)Utility.GetInternalType("ComponentUtility").CallMethod("MoveComponentUp",component.AsArray());
+			return (bool)Utility.GetUnityType("ComponentUtility").CallMethod("MoveComponentUp",component.AsArray());
 			#endif
 			return false;
 		}
 		public static bool MoveComponentDown(Component component){
 			#if UNITY_EDITOR
-			return (bool)Utility.GetInternalType("ComponentUtility").CallMethod("MoveComponentDown",component.AsArray());
+			return (bool)Utility.GetUnityType("ComponentUtility").CallMethod("MoveComponentDown",component.AsArray());
 			#endif
 			return false;
 		}

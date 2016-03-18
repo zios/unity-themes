@@ -134,16 +134,12 @@ namespace Zios{
 		// Other
 		//============================
 		public static T Clone<T>(this T target) where T : class{
-			if(target == null){
-				return null;
-			}
+			if(target.IsNull()){return null;}
 			MethodInfo method = target.GetType().GetMethod("MemberwiseClone",privateFlags);
 			if(method != null){
 				return (T)method.Invoke(target,null);
 			}
-			else{
-				return null;
-			}
+			return null;
 		}
 		public static byte[] CreateHash<T>(this T current) where T : class{
 			using(MemoryStream stream = new MemoryStream()){

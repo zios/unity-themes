@@ -21,6 +21,7 @@ namespace Zios{
 		//=====================
 		// Conversion
 		//=====================
+		public static string ToHex(this int current){return current.ToString("X6");}
 		public static Enum ToEnum(this int current,Type enumType){return (Enum)Enum.ToObject(enumType,current);}
 		public static T ToEnum<T>(this int current){return (T)Enum.ToObject(typeof(T),current);}
 		public static bool ToBool(this int current){return current != 0;}

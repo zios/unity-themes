@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 12001, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: '@Default-Inspector'
   m_EditorClassIdentifier: 
-  m_Font: {fileID: 0}
+  m_Font: {fileID: 3459068928204737762, guid: 0000000000000000d000000000000000, type: 0}
   m_box:
     m_Name: box
     m_Normal:
@@ -749,7 +749,8 @@ MonoBehaviour:
   m_horizontalScrollbarThumb:
     m_Name: horizontalscrollbarthumb
     m_Normal:
-      m_Background: {fileID: 0}
+      m_Background: {fileID: -7716058669073582569, guid: 0000000000000000d000000000000000,
+        type: 0}
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Hover:
       m_Background: {fileID: 0}
@@ -773,8 +774,8 @@ MonoBehaviour:
       m_Background: {fileID: 0}
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Border:
-      m_Left: 0
-      m_Right: 0
+      m_Left: 8
+      m_Right: 8
       m_Top: 0
       m_Bottom: 0
     m_Margin:
@@ -783,8 +784,8 @@ MonoBehaviour:
       m_Top: 0
       m_Bottom: 0
     m_Padding:
-      m_Left: 0
-      m_Right: 0
+      m_Left: 8
+      m_Right: 8
       m_Top: 0
       m_Bottom: 0
     m_Overflow:
@@ -797,12 +798,12 @@ MonoBehaviour:
     m_FontStyle: 0
     m_Alignment: 0
     m_WordWrap: 0
-    m_RichText: 1
-    m_TextClipping: 0
+    m_RichText: 0
+    m_TextClipping: 1
     m_ImagePosition: 0
     m_ContentOffset: {x: 0, y: 0}
     m_FixedWidth: 0
-    m_FixedHeight: 0
+    m_FixedHeight: 15
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_horizontalScrollbarLeftButton:
@@ -2013,7 +2014,8 @@ MonoBehaviour:
     m_StretchHeight: 0
   - m_Name: AppToolbar
     m_Normal:
-      m_Background: {fileID: 2800000, guid: ddb0eb7bdb8ccfe4abe8a0db5576b66b, type: 3}
+      m_Background: {fileID: 4313343300465785975, guid: 0000000000000000d000000000000000,
+        type: 0}
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Hover:
       m_Background: {fileID: 0}
@@ -31689,6 +31691,6 @@ MonoBehaviour:
   m_Settings:
     m_DoubleClickSelectsWord: 1
     m_TripleClickSelectsLine: 1
-    m_CursorColor: {r: 1, g: 1, b: 1, a: 1}
-    m_CursorFlashSpeed: 1.8867924
-    m_SelectionColor: {r: 1, g: 0.38403907, b: 0, a: 0.7}
+    m_CursorColor: {r: 0.56, g: 0.56, b: 0.56, a: 1}
+    m_CursorFlashSpeed: 0
+    m_SelectionColor: {r: 0.56, g: 0.56, b: 0.56, a: 1}

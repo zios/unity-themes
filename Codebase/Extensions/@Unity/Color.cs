@@ -44,11 +44,10 @@ namespace Zios{
 			return "#"+red+green+blue+alpha;
 		}
 		public static string Serialize(this Color current){
-			return current.r+"-"+current.g+"-"+current.b+"-"+current.a;
+			return current.ToHex(false);
 		}
 		public static Color Deserialize(this Color current,string value){
-			var values = value.Split("-").Convert<float>();
-			return new Color(values[0],values[1],values[2],values[3]);
+			return value.ToColor("-");
 		}
 	}
 }

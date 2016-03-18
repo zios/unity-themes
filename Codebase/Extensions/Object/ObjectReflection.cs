@@ -15,7 +15,7 @@ namespace Zios{
 		public static Hierarchy<Type,BindingFlags,string,FieldInfo> fields = new Hierarchy<Type,BindingFlags,string,FieldInfo>();
 		public static Hierarchy<Type,BindingFlags,string,MethodInfo> methods = new Hierarchy<Type,BindingFlags,string,MethodInfo>();
 		public const BindingFlags allFlags = BindingFlags.Static|BindingFlags.Instance|BindingFlags.NonPublic|BindingFlags.Public;
-		public const BindingFlags staticFlags = BindingFlags.Static|BindingFlags.Public;
+		public const BindingFlags staticFlags = BindingFlags.Static|BindingFlags.Public|BindingFlags.NonPublic;
 		public const BindingFlags instanceFlags = BindingFlags.Instance|BindingFlags.NonPublic|BindingFlags.Public;
 		public const BindingFlags privateFlags = BindingFlags.Instance|BindingFlags.NonPublic;
 		public const BindingFlags publicFlags = BindingFlags.Instance|BindingFlags.Public;
@@ -111,6 +111,11 @@ namespace Zios{
 		//=========================
 		// Variables
 		//=========================
+		public static void ResetCache(){
+			Class.properties.Clear();
+			Class.methods.Clear();
+			Class.fields.Clear();
+		}
 		public static PropertyInfo GetProperty(Type type,string name,BindingFlags flags=allFlags){
 			var target = Class.properties.AddNew(type).AddNew(flags);
 			if(!target.ContainsKey(name)){target[name] = type.GetProperty(name,flags);}
@@ -192,17 +197,17 @@ namespace Zios{
 				return;
 			}
 			if(index != -1){
-				if(current is Vector3){
-					Vector3 currentVector3 = (Vector3)current;
+				if(type == typeof(Vector3)){
+					Vector3 currentVector3 = (Vector3)field.GetValue(current);
 					currentVector3[index] = (float)Convert.ChangeType(value,typeof(float));
 				}
-				Array currentArray = (Array)current;
-				currentArray.SetValue(value,index);
+				field.GetValue(current).As<Array>().SetValue(value,index);
+				return;
 			}
 			if(property != null && property.CanWrite){
 				property.SetValue(current,value,null);
 			}
-			if(field != null){
+			if(field != null && !field.FieldType.IsGenericType){
 				field.SetValue(current,value);
 			}
 		}
@@ -250,9 +255,23 @@ namespace Zios{
 		public static List<string> ListVariables(this object current,IList<Type> withoutAttributes=null,BindingFlags flags=allFlags){
 			return current.GetVariables(withoutAttributes,flags).Keys.ToList();
 		}
-		public static void UseVariables<T>(this T current,T other,BindingFlags flags = publicFlags) where T : class{
-			foreach(var name in current.ListVariables(null,flags)){
+		public static void UseVariables<T>(this T current,T other,IList<Type> withoutAttributes=null,BindingFlags flags = publicFlags) where T : class{
+			foreach(var name in current.ListVariables(withoutAttributes,flags)){
 				current.SetVariable(name,other.GetVariable(name));
+			}
+		}
+		public static void ClearVariable(this object current,string name,BindingFlags flags=allFlags){
+			Type type = current is Type ? (Type)current : current.GetType();
+			current = current.IsStatic() ? null : current;
+			;
+			FieldInfo field = Class.GetField(type,name,flags);
+			if(!field.IsNull() && !field.FieldType.IsGenericType){
+				field.SetValue(current,null);
+				return;
+			}
+			PropertyInfo property = Class.GetProperty(type,name,flags);
+			if(!property.IsNull() && property.CanWrite){
+				property.SetValue(current,null,null);
 			}
 		}
 		//=========================

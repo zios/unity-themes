@@ -316,6 +316,7 @@ namespace Zios{
 		public void Delete(){
 			File.Delete(this.path);
 		}
+		public void MarkDirty(){File.SetLastWriteTime(this.path,DateTime.Now);}
 		public string GetModifiedDate(string format="M-d-yy"){return File.GetLastWriteTime(this.path).ToString(format);}
 		public string GetAccessedDate(string format="M-d-yy"){return File.GetLastAccessTime(this.path).ToString(format);}
 		public string GetCreatedDate(string format="M-d-yy"){return File.GetCreationTime(this.path).ToString(format);}

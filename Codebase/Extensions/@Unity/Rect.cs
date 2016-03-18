@@ -99,7 +99,7 @@ namespace Zios{
 		}
 		#if UNITY_EDITOR
 		public static EditorWindow GetInspectorWindow(this Rect current){
-			Type inspectorWindow = Utility.GetInternalType("InspectorWindow");
+			Type inspectorWindow = Utility.GetUnityType("InspectorWindow");
 			return EditorWindow.GetWindowWithRect(inspectorWindow,current);
 		}
 		public static Rect GetInspectorArea(this Rect current,EditorWindow window=null){

@@ -24,7 +24,7 @@ namespace Zios.Interface{
 			style = style ?? EditorStyles.popup;
 			return EditorGUIExtension.Draw<Enum>(()=>EditorGUILayout.EnumPopup(label,current,style,style.CreateLayout()),indention);
 		}
-		public static int Draw(this IList<string> current,int index,UnityLabel label=null,GUIStyle style=null,bool indention=true){
+		public static int Draw(this IEnumerable<string> current,int index,UnityLabel label=null,GUIStyle style=null,bool indention=true){
 			style = style ?? EditorStyles.popup;
 			return EditorGUIExtension.Draw<int>(()=>EditorGUILayout.Popup(label.ToString(),index,current.ToArray(),style),indention);
 		}

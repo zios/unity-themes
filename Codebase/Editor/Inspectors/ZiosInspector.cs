@@ -1,13 +1,10 @@
-using System;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-using UnityObject = UnityEngine.Object;
 using UnityEvent = UnityEngine.Event;
 namespace Zios.Editors{
 	using Interface;
-	using Events;
 	public class ZiosInspector : EditorWindow{
 		public GameObject target;
 		public Component[] components = new Component[0];
@@ -26,7 +23,7 @@ namespace Zios.Editors{
 			window.autoRepaintOnSceneChange = true;
 		}
 		public void OnGUI(){
-			Style.LoadTheme("Grayson");
+			Themes.Apply("Grayson");
 			GUI.skin = Style.GetSkin("EditorStyles-Grayson");
 			var headerStyle = Style.Get("m_InspectorTitlebar").Padding(32,0,4,0);
 			var containerStyle = Style.Get("m_InspectorDefaultMargins");
@@ -77,10 +74,10 @@ namespace Zios.Editors{
 			EditorGUILayout.EndScrollView();
 			if("Add Component".DrawButton()){
 				//var area = GUILayoutUtility.GetLastRect();
-				var componentWindow = Utility.GetInternalType("AddComponentWindow");
+				var componentWindow = Utility.GetUnityType("AddComponentWindow");
 				componentWindow.CallExactMethod("Show",cursorArea,this.target.AsArray());
 			}
-			Style.LoadTheme();
+			Themes.Apply();
 			if(this.dirty){this.Repaint();}
 		}
 		public void OnSelectionChange(){

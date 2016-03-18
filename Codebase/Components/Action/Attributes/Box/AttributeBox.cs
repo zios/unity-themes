@@ -4,7 +4,7 @@ namespace Zios.Attributes{
 	public class AttributeBox<AttributeType> : AttributeBox
 	where AttributeType : Attribute,new(){
 		public AttributeType value = new AttributeType();
-		public bool remember = false;
+		[Advanced] public bool remember = false;
 		public void OnApplicationQuit(){
 			if(this.remember){this.Store();}
 		}

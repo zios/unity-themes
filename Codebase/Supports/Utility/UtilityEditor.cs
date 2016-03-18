@@ -65,18 +65,18 @@ namespace Zios{
 		}
 		public static EditorWindow[] GetInspectors(){
 			if(Utility.inspectors == null){
-				Type inspectorType = Utility.GetInternalType("InspectorWindow");
+				Type inspectorType = Utility.GetUnityType("InspectorWindow");
 				Utility.inspectors = inspectorType.CallMethod<EditorWindow[]>("GetAllInspectorWindows");
 			}
 			return Utility.inspectors;
 		}
 		public static Vector2 GetInspectorScroll(){
-			Type inspectorWindow = Utility.GetInternalType("InspectorWindow");
+			Type inspectorWindow = Utility.GetUnityType("InspectorWindow");
 			var window = EditorWindow.GetWindow(inspectorWindow);
 			return window.GetVariable<Vector2>("m_ScrollPosition");
 		}
 		public static Vector2 GetInspectorScroll(this Rect current){
-			Type inspectorWindow = Utility.GetInternalType("InspectorWindow");
+			Type inspectorWindow = Utility.GetUnityType("InspectorWindow");
 			var window = EditorWindow.GetWindowWithRect(inspectorWindow,current);
 			return window.GetVariable<Vector2>("m_ScrollPosition");
 		}

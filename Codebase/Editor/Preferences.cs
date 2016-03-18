@@ -14,7 +14,6 @@ namespace Zios.Editors{
 			alwaysUpdateShadersHelp.tooltip = "Forces the scene view to repaint every frame.  Huge performance cost, but will allow shaders based on time to update in realtime.";
 			alwaysUpdateParticlesHelp.tooltip = "Forces the scene view to repaint every frame.  Huge performance cost, but will continually ensure particles are simulated.";
 			particleUpdateRangeHelp.tooltip = "Range at which editor-updated particles will simulate.  Higher values will cost more performance.";
-			Style.SelectTheme();
 			bool fastInspector = EditorPrefs.GetBool("MonoBehaviourEditor-FastInspector").Draw(fastInspectorHelp);
 			bool alwaysUpdateShaders = EditorPrefs.GetBool("EditorSettings-AlwaysUpdateShaders").Draw(alwaysUpdateShadersHelp);
 			bool alwaysUpdateParticles = EditorPrefs.GetBool("EditorSettings-AlwaysUpdateParticles").Draw(alwaysUpdateParticlesHelp);

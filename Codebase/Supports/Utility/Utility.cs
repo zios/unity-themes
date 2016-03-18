@@ -100,6 +100,11 @@ namespace Zios{
 		//============================
 		// General
 		//============================
+		public static void RebuildCode(){
+			string path = "Assets/@Zios/Codebase/RebuildCode.cs";
+			if(FileManager.Find(path).IsNull()){FileManager.CreateFile(path);}
+			AssetDatabase.ImportAsset(path);
+		}
 		public static void TogglePlayerPref(string name,bool fallback=false){
 			bool value = !(PlayerPrefs.GetInt(name) == fallback.ToInt());
 			PlayerPrefs.SetInt(name,value.ToInt());
@@ -131,10 +136,11 @@ namespace Zios{
 			}
 			return null;
 		}
-		public static Type GetInternalType(string name){
+		public static Type GetUnityType(string name){
 			if(Utility.internalTypes.ContainsKey(name)){return Utility.internalTypes[name];}
 			#if UNITY_EDITOR
-			bool full = name.ContainsAny(".","+");
+			name = name.Replace(".","+");
+			bool full = name.ContainsAny("+");
 			foreach(var type in typeof(UnityEditor.Editor).Assembly.GetTypes()){
 				if(full ? type.FullName.Contains(name) : type.Name == name){
 					Utility.internalTypes[name] = type;
@@ -181,6 +187,10 @@ namespace Zios{
 			if(!key.IsNull() && !method.IsNull()){
 				Utility.delayedMethods[key] = new KeyValuePair<CallbackFunction,float>(method,Time.realtimeSinceStartup + seconds);
 			}
+		}
+		public static void RepeatCall(CallbackFunction method,float seconds){
+			CallbackFunction repeat = ()=>Utility.DelayCall(()=>Utility.RepeatCall(method,seconds));
+			Utility.DelayCall(method+repeat,seconds);
 		}
 	}
 }

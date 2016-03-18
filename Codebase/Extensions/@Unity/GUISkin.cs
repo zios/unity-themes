@@ -5,6 +5,7 @@ namespace Zios{
 	public static class GUISkinExtension{
 		public static GUISkin Copy(this GUISkin current){
 			var copy = ScriptableObject.CreateInstance<GUISkin>();
+			copy.font = current.font;
 			copy.name = current.name;
 			copy.customStyles = current.customStyles.Copy();
 			copy.box = new GUIStyle(current.box);
@@ -19,6 +20,7 @@ namespace Zios{
 			copy.verticalSlider = new GUIStyle(current.verticalSlider);
 			copy.verticalSliderThumb = new GUIStyle(current.verticalScrollbarThumb);
 			copy.horizontalScrollbar = new GUIStyle(current.horizontalScrollbar);
+			copy.horizontalScrollbarThumb = new GUIStyle(current.horizontalScrollbarThumb);
 			copy.horizontalScrollbarLeftButton = new GUIStyle(current.horizontalScrollbarLeftButton);
 			copy.horizontalScrollbarRightButton = new GUIStyle(current.horizontalScrollbarRightButton);
 			copy.verticalScrollbar = new GUIStyle(current.verticalScrollbar);
@@ -35,6 +37,7 @@ namespace Zios{
 		}
 		public static GUISkin Use(this GUISkin current,GUISkin other){
 			if(other.IsNull()){return current;}
+			current.font = other.font;
 			current.customStyles = other.customStyles;
 			current.box = other.box;
 			current.button = other.button;
@@ -48,6 +51,7 @@ namespace Zios{
 			current.verticalSlider = other.verticalSlider;
 			current.verticalSliderThumb = other.verticalScrollbarThumb;
 			current.horizontalScrollbar = other.horizontalScrollbar;
+			current.horizontalScrollbarThumb = other.horizontalScrollbarThumb;
 			current.horizontalScrollbarLeftButton = other.horizontalScrollbarLeftButton;
 			current.horizontalScrollbarRightButton = other.horizontalScrollbarRightButton;
 			current.verticalScrollbar = other.verticalScrollbar;

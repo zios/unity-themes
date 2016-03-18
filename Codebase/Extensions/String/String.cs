@@ -89,7 +89,8 @@ namespace Zios{
 			return new RectOffset(values[3],values[1],values[0],values[2]);
 		}
 		public static GUIContent ToContent(this string current){return new GUIContent(current);}
-		public static Color ToColor(this string current,string separator=","){
+		public static Color ToColor(this string current,bool flipOrder){return current.ToColor(",",flipOrder);}
+		public static Color ToColor(this string current,string separator=",",bool flipOrder=false){
 			current = current.Remove("#").Remove("0x");
 			if(current.Contains(separator)){
 				var parts = current.Split(separator).Convert<float>();
@@ -111,10 +112,11 @@ namespace Zios{
 				float g = (float)Convert.ToInt32(current.Substring(2,2),16) / 255.0f;
 				float b = (float)Convert.ToInt32(current.Substring(4,2),16) / 255.0f;
 				float a = current.Length == 8 ? (float)Convert.ToInt32(current.Substring(6,2),16) / 255.0f : 1;
+				if(flipOrder){return new Color(b,g,r,a);}
 				return new Color(r,g,b,a);
 			}
 			else{
-				Debug.LogError("[StringExtension] Color strings can only be converted from Hexidecimal or comma/space separated Decimal.");
+				Debug.LogError("[StringExtension] Color strings can only be converted from Hexidecimal or comma/space separated Decimal -- " + current);
 				return new Color(255,0,255);
 			}
 		}
