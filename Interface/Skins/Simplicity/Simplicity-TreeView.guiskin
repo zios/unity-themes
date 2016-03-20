@@ -1196,7 +1196,7 @@ MonoBehaviour:
   - m_Name: foldout
     m_Normal:
       m_Background: {fileID: 2800000, guid: f332d66dbffd3744e85b38ed963a176e, type: 3}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_TextColor: {r: 1, g: 1, b: 1, a: 0.65882355}
     m_Hover:
       m_Background: {fileID: 0}
       m_TextColor: {r: 1, g: 1, b: 1, a: 1}
@@ -1208,7 +1208,7 @@ MonoBehaviour:
       m_TextColor: {r: 1, g: 1, b: 1, a: 1}
     m_OnNormal:
       m_Background: {fileID: 2800000, guid: d04f1bf57ee9de249b28b58641d76e91, type: 3}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_TextColor: {r: 1, g: 1, b: 1, a: 1}
     m_OnHover:
       m_Background: {fileID: 0}
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
@@ -1238,8 +1238,8 @@ MonoBehaviour:
       m_Right: 0
       m_Top: 0
       m_Bottom: 0
-    m_Font: {fileID: 0}
-    m_FontSize: 0
+    m_Font: {fileID: 12800000, guid: 07bd6fcae00768641b3c45a81455a356, type: 3}
+    m_FontSize: 12
     m_FontStyle: 0
     m_Alignment: 0
     m_WordWrap: 0

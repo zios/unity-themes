@@ -1,13 +1,9 @@
 [Base]
-PreloadDefaultTheme True
 UseSystemColor True
 AllowSystemColor True
 AllowCustomization True
 AllowColorCustomization True
-SpacingScale 1.1
-Color #002B36
-DarkColor #005553
-LightColor #2C7777
+Palette SolarizedSea
 
 [+Brushed]
 WindowBackgroundOverride CircleWhite10.png

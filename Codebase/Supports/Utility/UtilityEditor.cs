@@ -108,6 +108,11 @@ namespace Zios{
 				file.WriteText(output.ToString().TrimEnd(null));
 			}
 		}
+		[MenuItem("Zios/Process/Recompile Code")]
+		public static void RecompileCode(){
+			string path = "Assets/@Zios/Codebase/Supports/Utility/UtilityEditor.cs";
+			AssetDatabase.ImportAsset(path);
+		}
 	}
 	#endif
 }

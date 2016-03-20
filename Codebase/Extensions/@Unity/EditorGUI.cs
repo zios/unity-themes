@@ -23,10 +23,15 @@ namespace Zios.Interface{
 	}
 	public static class EditorGUIExtension{
 		public static bool render = true;
+		public static bool lastChanged;
 		public static Type Draw<Type>(Func<Type> method,bool indention=true){
 			int indentValue = EditorGUI.indentLevel;
 			if(!indention){EditorGUI.indentLevel = 0;}
+			bool wasChanged = GUI.changed;
+			GUI.changed = false;
 			Type value = (Type)method();
+			EditorGUIExtension.lastChanged = GUI.changed;
+			GUI.changed = GUI.changed || wasChanged;
 			EditorGUI.indentLevel = indentValue;
 			return value;
 		}

@@ -100,11 +100,6 @@ namespace Zios{
 		//============================
 		// General
 		//============================
-		public static void RebuildCode(){
-			string path = "Assets/@Zios/Codebase/RebuildCode.cs";
-			if(FileManager.Find(path).IsNull()){FileManager.CreateFile(path);}
-			AssetDatabase.ImportAsset(path);
-		}
 		public static void TogglePlayerPref(string name,bool fallback=false){
 			bool value = !(PlayerPrefs.GetInt(name) == fallback.ToInt());
 			PlayerPrefs.SetInt(name,value.ToInt());

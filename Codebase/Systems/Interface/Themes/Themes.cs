@@ -1,84 +1,42 @@
 using System;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Collections.Generic;
 using UnityEngine;
 namespace Zios{
+	using Events;
 	using Interface;
 	#if UNITY_EDITOR
 	using UnityEditor;
 	#if UNITY_EDITOR_WIN
 	using Microsoft.Win32;
 	#endif
-	public class Theme{
-		[Internal] public string name;
-		[Internal] public string path;
-		[Internal] public List<Texture2D> colorImages = new List<Texture2D>();
-		[Internal] public List<GUIStyle> colorStyles = new List<GUIStyle>();
-		[Internal] public List<Theme> variants = new List<Theme>();
-		[Internal] public bool useSystemColor;
-		[Internal] public Color color = new Color(0.7f,0.7f,0.7f);
-		[Internal] public RelativeColor colorDark = 0.8f;
-		[Internal] public RelativeColor colorLight = 1.3f;
-		public bool allowCustomization;
-		public bool allowColorCustomization;
-		public bool allowSystemColor;
-		public bool useColorAssets = true;
-		public Texture2D windowBackgroundOverride;
-		public Font fontOverride;
-		public float fontScale = 1;
-		public float spacingScale = 1;
-		public void Use(Theme other){
-			this.UseVariables(other,typeof(InternalAttribute).AsList());
-			//this.color = other.color;
-			//this.colorDark = new RelativeColor(other.colorDark);
-			//this.colorLight = new RelativeColor(other.colorLight);
-		}
-	}
-	public class RelativeColor{
-		public Color value;
-		public float offset;
-		public static implicit operator RelativeColor(string value){
-			return value.IsNumber() ? new RelativeColor(value.ToFloat()) : new RelativeColor(value.ToColor());
-		}
-		public static implicit operator RelativeColor(float value){return new RelativeColor(value);}
-		public static implicit operator RelativeColor(Color value){return new RelativeColor(value);}
-		public static implicit operator Color(RelativeColor current){return current.value;}
-		public static implicit operator string(RelativeColor current){return current.offset != 0 ? current.offset.Serialize() : current.value.Serialize();}
-		public RelativeColor(float offset){this.offset = offset;}
-		public RelativeColor(Color manual){this.value = manual;}
-		public void Update(Color initial){this.value = this.offset != 0 ? initial.Multiply(this.offset) : this.value;}
-	}
 	public static class Themes{
+		public static List<ThemePalette> palettes = new List<ThemePalette>();
 		public static List<Theme> all = new List<Theme>();
 		public static Theme active;
-		[NonSerialized] public static int activeIndex;
+		[NonSerialized] public static int themeIndex;
+		[NonSerialized] public static int paletteIndex;
 		[NonSerialized] public static string storagePath = "Assets/@Zios/Interface/Skins/";
 		[NonSerialized] public static bool setup;
 		[NonSerialized] public static bool needsRefresh;
 		[NonSerialized] public static bool needsRebuild;
 		[NonSerialized] private static Color lastSystemColor = Color.clear;
 		[NonSerialized] private static float nextUpdate;
+		//[NonSerialized] public static float verticalSpacing = 2.0f;
 		static Themes(){
 			//SceneView.onSceneGUIDelegate += (a)=>Themes.Setup();
 			EditorApplication.projectWindowItemOnGUI += (a,b)=>Themes.Setup();
 			EditorApplication.hierarchyWindowItemOnGUI += (a,b)=>Themes.Setup();
 			EditorApplication.update += ()=>{
-				if(Time.realtimeSinceStartup < Themes.nextUpdate){return;}
+				if(Time.realtimeSinceStartup < Themes.nextUpdate || !Themes.setup){return;}
 				Themes.UpdateColors();
 				Utility.RepaintAll();
 				Themes.nextUpdate = Time.realtimeSinceStartup + 0.1f;
 			};
-			Themes.Load();
+			Event.Add("On Asset Changed",()=>{Themes.setup = false;});
 		}
 		public static void Setup(){
-			if(!Themes.setup && !EditorApplication.isCompiling){
-				Themes.UpdateColors();
-				Themes.Apply();
-				Utility.RepaintAll();
-				Themes.setup = true;
-			}
 			if(Themes.needsRefresh){
 				Themes.UpdateSettings();
 				Utility.RepaintAll();
@@ -86,14 +44,24 @@ namespace Zios{
 			}
 			if(Themes.needsRebuild){
 				Themes.UpdateSettings();
-				Themes.RebuildStyles();
+				Themes.RebuildStyles(true);
 				Themes.needsRebuild = false;
 				Themes.needsRefresh = true;
 			}
+			if(!Themes.setup && !EditorApplication.isCompiling){
+				Themes.Load();
+				Themes.UpdateSettings();
+				Themes.UpdateColors();
+				Themes.Apply();
+				Utility.RepaintAll();
+				Themes.setup = true;
+			}
 		}
-		public static void RebuildStyles(){
+		public static void RebuildStyles(bool skipTree=false){
 			foreach(var type in typeof(UnityEditor.Editor).Assembly.GetTypes()){
+				if(skipTree && type.Name == "TreeViewGUI"){continue;}
 				if(type.IsNull()){continue;}
+				type.ClearVariable("Styles",ObjectExtension.staticFlags);
 				type.ClearVariable("styles",ObjectExtension.staticFlags);
 				type.ClearVariable("s_GOStyles",ObjectExtension.staticFlags);
 				type.ClearVariable("s_Styles",ObjectExtension.staticFlags);
@@ -101,10 +69,6 @@ namespace Zios{
 				type.ClearVariable("ms_Styles",ObjectExtension.staticFlags);
 				type.ClearVariable("constants",ObjectExtension.staticFlags);
 			}
-			Utility.GetUnityType("AppStatusBar").ClearVariable("background");
-			var console = Utility.GetUnityType("ConsoleWindow.Constants");
-			console.SetVariable("ms_Loaded",false);
-			console.CallMethod("Init");
 			typeof(EditorStyles).SetVariable<EditorStyles>("s_CachedStyles",null,0);
 			typeof(EditorStyles).SetVariable<EditorStyles>("s_CachedStyles",null,1);
 			typeof(EditorGUIUtility).CallMethod("SkinChanged");
@@ -126,34 +90,54 @@ namespace Zios{
 		//=================================
 		[PreferenceItem("Themes")]
 		public static void ShowPreferences(){
-			var active = Themes.active;
-			var current = Themes.activeIndex;
-			Themes.activeIndex = Themes.all.Select(x=>x.name).Draw(Themes.activeIndex,"Theme");
+			var theme = Themes.active;
+			var current = Themes.themeIndex;
+			Themes.themeIndex = Themes.all.Select(x=>x.name).Draw(Themes.themeIndex,"Theme");
 			GUILayout.Space(3);
-			foreach(var toggle in active.variants.Where(x=>x.name.StartsWith("+"))){
-				var toggleName = "EditorTheme-"+active.name+toggle.name.Remove("+");
-				EditorPrefs.SetBool(toggleName,EditorPrefs.GetBool(toggleName).Draw(toggle.name.Remove("+")));
-				GUILayout.Space(2);
-			}
-			if(active.allowColorCustomization){
-				if(active.allowSystemColor){
-					active.useSystemColor = active.useSystemColor.Draw("Use System Color");
-					EditorPrefs.SetBool("EditorTheme-"+active.name+"-UseSystemColor",active.useSystemColor);
-					if(GUI.changed && !active.useSystemColor){Themes.LoadColors();}
+			if(theme.allowCustomization){
+				bool altered = !theme.palette.Matches(Themes.palettes[Themes.paletteIndex]);
+				if(theme.allowColorCustomization){
+					var paletteNames = Themes.palettes.Select(x=>x.name).ToList();
+					if(altered){paletteNames[Themes.paletteIndex] = "[Custom]";}
+					GUI.enabled = !theme.useSystemColor;
+					Themes.paletteIndex = paletteNames.Draw(Themes.paletteIndex,"Palette");
+					GUI.enabled = true;
+					GUILayout.Space(3);
+					if(EditorGUIExtension.lastChanged){
+						var selectedPalette = Themes.palettes[Themes.paletteIndex];
+						theme.palette = new ThemePalette().Use(selectedPalette);
+						EditorPrefs.SetString("EditorPalette",selectedPalette.name);
+						Themes.SaveColors();
+					}
 				}
-				if(!active.useSystemColor){
-					active.color = active.color.Draw("Color");
-					active.colorDark.value = active.colorDark.value.Draw("Color Dark");
-					active.colorLight.value = active.colorLight.value.Draw("Color Light");
-					if(GUILayout.Button("Reset",GUILayout.Width(120))){Themes.LoadColors(true);}
-					EditorPrefs.SetString("EditorTheme-"+active.name+"Color",active.color.Serialize());
-					EditorPrefs.SetString("EditorTheme-"+active.name+"ColorDark",active.colorDark);
-					EditorPrefs.SetString("EditorTheme-"+active.name+"ColorLight",active.colorLight);
+				foreach(var toggle in theme.variants.Where(x=>x.name.StartsWith("+"))){
+					var toggleName = "EditorTheme-"+theme.name+toggle.name.Remove("+");
+					EditorPrefs.SetBool(toggleName,EditorPrefs.GetBool(toggleName).Draw(toggle.name.Remove("+")));
+					GUILayout.Space(2);
+				}
+				if(theme.allowColorCustomization){
+					if(theme.allowSystemColor){
+						theme.useSystemColor = theme.useSystemColor.Draw("Use System Color");
+						EditorPrefs.SetBool("EditorTheme-"+theme.name+"-UseSystemColor",theme.useSystemColor);
+						if(EditorGUIExtension.lastChanged && !theme.useSystemColor){Themes.LoadColors();}
+					}
+					if(!theme.useSystemColor){
+						theme.palette.background = theme.palette.background.Draw("Background");
+						theme.palette.backgroundDark.value = theme.palette.backgroundDark.value.Draw("Background Dark");
+						theme.palette.backgroundLight.value = theme.palette.backgroundLight.value.Draw("Background Light");
+						if(altered){
+							EditorGUILayout.BeginHorizontal();
+							if(GUILayout.Button("Save",GUILayout.Width(100))){Themes.SavePalette();}
+							if(GUILayout.Button("Reset",GUILayout.Width(100))){Themes.LoadColors(true);}
+							EditorGUILayout.EndHorizontal();
+						}
+						Themes.SaveColors();
+					}
+					//Themes.verticalSpacing = Themes.verticalSpacing.Draw("Vertical Spacing");
 				}
 			}
-			if(current != Themes.activeIndex){
-				Themes.active = Themes.all[Themes.activeIndex].Clone();
-				EditorPrefs.SetString("EditorTheme",Themes.active.name);
+			if(current != Themes.themeIndex){
+				EditorPrefs.SetString("EditorTheme",Themes.all[Themes.themeIndex].name);
 				Themes.UpdateSettings();
 				Themes.RebuildStyles();
 			}
@@ -161,6 +145,7 @@ namespace Zios{
 				//Themes.Create();
 				Themes.lastSystemColor = Color.clear;
 				Themes.needsRefresh = true;
+				Utility.RepaintAll();
 			}
 		}
 		//=================================
@@ -203,12 +188,43 @@ namespace Zios{
 			AssetDatabase.StopAssetEditing();
 			return skins.ToArray();
 		}
+		public static void SavePalette(){
+			var path = EditorUtility.SaveFilePanel("Save Palette",Themes.storagePath+"@Palettes","TheColorsDuke","unitypalette");
+			if(path.Length > 0){
+				Themes.LoadColors();
+				var palette = Themes.active.palette;
+				var file = FileManager.CreateFile(path);
+				var contents = "";
+				contents = contents.AddLine("Color "+palette.background.ToHex(false));
+				contents = contents.AddLine("DarkColor "+palette.backgroundDark.value.Serialize());
+				contents = contents.AddLine("LightColor "+palette.backgroundLight.value.Serialize());
+				file.WriteText(contents);
+				EditorPrefs.SetString("EditorPalette",path.GetFileName());
+				FileManager.Refresh();
+				Themes.setup = false;
+			}
+		}
 		//=================================
 		// Loading
 		//=================================
 		public static void Load(){
-			var configs = FileManager.FindAll("*.unitytheme");
-			foreach(var file in configs){
+			Themes.all.Clear();
+			Themes.palettes.Clear();
+			foreach(var file in FileManager.FindAll("*.unitypalette")){
+				var palette = Themes.palettes.AddNew();
+				palette.name = file.name;
+				foreach(var line in file.GetText().GetLines()){
+					if(line.Trim().IsEmpty()){continue;}
+					var term = line.Parse(""," ").Trim();
+					var value = line.Parse(" ").Trim();
+					if(term.Matches("Color",true)){palette.background = value.ToColor();}
+					else if(term.Matches("DarkColor",true)){palette.backgroundDark = value;}
+					else if(term.Matches("LightColor",true)){palette.backgroundLight = value;}
+				}
+
+			}
+			var themes = FileManager.FindAll("*.unitytheme");
+			foreach(var file in themes){
 				Theme theme = null;
 				Theme root = null;
 				foreach(var line in file.GetText().GetLines()){
@@ -236,28 +252,31 @@ namespace Zios{
 					else if(term.Matches("FontOverride",true)){theme.fontOverride = FileManager.GetAsset<Font>(value);}
 					else if(term.Matches("WindowBackgroundOverride",true)){theme.windowBackgroundOverride = FileManager.GetAsset<Texture2D>(value);}
 					else if(term.Matches("FontScale",true)){theme.fontScale = value.ToFloat();}
-					else if(term.Matches("Color",true)){theme.color = value.ToColor();}
-					else if(term.Matches("DarkColor",true)){theme.colorDark = value;}
-					else if(term.Matches("LightColor",true)){theme.colorLight = value;}
+					else if(term.Matches("Palette",true)){theme.palette = palettes.Find(x=>x.name==value) ?? new ThemePalette();}
 				}
 			}
 			var activeThemeName = EditorPrefs.GetString("EditorTheme","@Default");
-			Themes.activeIndex = Themes.all.FindIndex(x=>x.name==activeThemeName).Max(0);
-			Themes.active = Themes.all[Themes.activeIndex].Clone();
-			Themes.UpdateSettings();
+			var activePaletteName = EditorPrefs.GetString("EditorPalette","Slate");
+			Themes.themeIndex = Themes.all.FindIndex(x=>x.name==activeThemeName).Max(0);
+			Themes.paletteIndex = Themes.palettes.FindIndex(x=>x.name==activePaletteName).Max(0);
+		}
+		public static void SaveColors(){
+			var theme = Themes.active;
+			EditorPrefs.SetString("EditorTheme-"+theme.name+"Color",theme.palette.background.Serialize());
+			EditorPrefs.SetString("EditorTheme-"+theme.name+"ColorDark",theme.palette.backgroundDark);
+			EditorPrefs.SetString("EditorTheme-"+theme.name+"ColorLight",theme.palette.backgroundLight);
 		}
 		public static void LoadColors(bool reset=false){
-			if(!active.useSystemColor){
-				if(!reset && active.allowColorCustomization){
-					active.color = EditorPrefs.GetString("EditorTheme-"+active.name+"Color",active.color.Serialize()).Deserialize<Color>();
-					active.colorDark = EditorPrefs.GetString("EditorTheme-"+active.name+"ColorDark",active.colorDark);
-					active.colorLight = EditorPrefs.GetString("EditorTheme-"+active.name+"ColorLight",active.colorLight);
+			var theme = Themes.active;
+			if(!theme.useSystemColor){
+				if(reset){
+					var original = Themes.palettes[Themes.paletteIndex];
+					theme.palette = new ThemePalette().Use(original);
 				}
-				else{
-					var original = Themes.all[Themes.activeIndex];
-					active.color = original.color;
-					active.colorDark = original.colorDark.Clone();
-					active.colorLight = original.colorLight.Clone();
+				else if(theme.allowColorCustomization){
+					theme.palette.background = EditorPrefs.GetString("EditorTheme-"+theme.name+"Color",theme.palette.background.Serialize()).Deserialize<Color>();
+					theme.palette.backgroundDark = EditorPrefs.GetString("EditorTheme-"+theme.name+"ColorDark",theme.palette.backgroundDark);
+					theme.palette.backgroundLight = EditorPrefs.GetString("EditorTheme-"+theme.name+"ColorLight",theme.palette.backgroundLight);
 				}
 			}
 		}
@@ -265,50 +284,57 @@ namespace Zios{
 		// Updating
 		//=================================
 		public static void UpdateColors(){
-			if(Themes.active.allowSystemColor && Themes.active.useSystemColor){
-				Themes.active.colorDark.offset = 0.8f;
-				Themes.active.colorLight.offset = 1.3f;
+			var theme = Themes.active;
+			if(theme.allowSystemColor && theme.useSystemColor){
+				theme.palette.backgroundDark.offset = 0.8f;
+				theme.palette.backgroundLight.offset = 1.3f;
 				Color color;
+				object key;
 				int systemColor = -1;
 				#if UNITY_EDITOR_WIN
-				systemColor = Registry.GetValue("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\DWM\\","AccentColor","-1").As<int>();
+				key = Registry.GetValue("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\DWM\\","AccentColor",null);
+				//if(key.IsNull()){key = Registry.GetValue("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\DWM\\","AccentColor",null);}
+				if(!key.IsNull()){systemColor = key.As<int>();}
 				#endif
-				color = systemColor != -1 ? systemColor.ToHex().ToColor(true) : Themes.active.color;
+				color = systemColor != -1 ? systemColor.ToHex().ToColor(true) : theme.palette.background;
 				if(color != Themes.lastSystemColor){
 					Themes.lastSystemColor = color;
-					Themes.active.color = color;
-					Themes.active.colorDark.Update(Themes.active.color);
-					Themes.active.colorLight.Update(Themes.active.color);
-					Themes.UpdateSettings();
+					theme.palette.background = color;
+					theme.palette.backgroundDark.Update(theme.palette.background);
+					theme.palette.backgroundLight.Update(theme.palette.background);
+					Themes.needsRefresh = true;
 				}
 				return;
 			}
-			Themes.active.colorDark.Update(Themes.active.color);
-			Themes.active.colorLight.Update(Themes.active.color);
+			theme.palette.backgroundDark.Update(theme.palette.background);
+			theme.palette.backgroundLight.Update(theme.palette.background);
 		}
 		public static void UpdateSettings(){
-			var active = Themes.active;
-			active.Use(Themes.all[Themes.activeIndex]);
-			active.useSystemColor = EditorPrefs.GetBool("EditorTheme-"+active.name+"-UseSystemColor",false);
+			var baseTheme = Themes.all[Themes.themeIndex];
+			var theme = Themes.active = new Theme().Use(baseTheme);
+			theme.palette = new ThemePalette().Use(baseTheme.palette);
+			theme.useSystemColor = EditorPrefs.GetBool("EditorTheme-"+theme.name+"-UseSystemColor",false);
 			Themes.LoadColors();
 			Themes.UpdateColors();
-			active.colorStyles.Clear();
-			active.colorImages.Clear();
-			foreach(var toggle in active.variants.Where(x=>x.name.StartsWith("+"))){
-				var toggleName = "EditorTheme-"+active.name+toggle.name.Remove("+");
-				if(EditorPrefs.GetBool(toggleName)){
-					active.Use(toggle);
+			foreach(Theme variant in theme.variants.Where(x=>x.name.StartsWith("+"))){
+				var variantName = "EditorTheme-"+theme.name+variant.name.Remove("+");
+				if(EditorPrefs.GetBool(variantName)){
+					theme.Use(variant);
 				}
-			}			
-			Themes.UpdateAssets("ThemeColor",Themes.active.color);
-			Themes.UpdateAssets("ThemeColorDark",Themes.active.colorDark);
-			Themes.UpdateAssets("ThemeColorLight",Themes.active.colorLight);
+			}
+			if(Themes.active.useColorAssets){
+				theme.colorStyles.Clear();
+				theme.colorImages.Clear();
+				Themes.UpdateAssets("ThemeColor",theme.palette.background);
+				Themes.UpdateAssets("ThemeColorDark",theme.palette.backgroundDark);
+				Themes.UpdateAssets("ThemeColorLight",theme.palette.backgroundLight);
+			}
 			Themes.Apply();
 		}
 		public static void UpdateAssets(string colorName,Color color){
-			if(!Themes.active.useColorAssets){return;}
-			var imagePath = Themes.active.path+"/"+Themes.active.name+colorName+".png";
-			var borderPath = Themes.active.path+"/"+Themes.active.name+colorName+"Border.png";
+			var theme = Themes.active;
+			var imagePath = theme.path+"/"+theme.name+colorName+".png";
+			var borderPath = theme.path+"/"+theme.name+colorName+"Border.png";
 			var image = AssetDatabase.LoadAssetAtPath<Texture2D>(imagePath);
 			var border = AssetDatabase.LoadAssetAtPath<Texture2D>(borderPath);
 			if(image.IsNull()){
@@ -321,8 +347,8 @@ namespace Zios{
 				border.SaveAs(borderPath);
 				AssetDatabase.ImportAsset(borderPath);
 			}
-			Themes.active.colorStyles.AddNew().GetStates().ForEach(x=>x.background = image);
-			Themes.active.colorImages.AddNew(image);
+			theme.colorStyles.AddNew().GetStates().ForEach(x=>x.background = image);
+			theme.colorImages.AddNew(image);
 			image.SetPixel(0,0,color);
 			image.Apply();
 			border.SetPixels(new Color[]{color,color,color,color,Color.clear,color,color,color,color});
@@ -331,7 +357,8 @@ namespace Zios{
 			border.SaveAs(borderPath);
 		}
 		public static void Apply(string name=""){
-			if(name.IsEmpty()){name = Themes.active.name;}
+			var theme = Themes.active;
+			if(name.IsEmpty()){name = theme.name;}
 			GUISkin skin;
 			object styles;
 			skin = Style.GetSkin(name+"-EditorStyles",false);
@@ -354,13 +381,20 @@ namespace Zios{
 			}
 			skin = EditorGUIUtility.GetBuiltinSkin(EditorSkin.Inspector);
 			skin.Use(Style.GetSkin(name+"-Inspector",false));
-			skin.settings.selectionColor = skin.settings.cursorColor = Themes.active.colorDark;
-			skin.GetStyle("TabWindowBackground").normal.background = Themes.active.windowBackgroundOverride;
-			typeof(EditorGUIUtility).SetVariable("kDarkViewBackground",Themes.active.color);
-			typeof(EditorGUI).SetVariable("kCurveColor",Themes.active.colorDark.value);
-			typeof(EditorGUI).SetVariable("kCurveBGColor",Themes.active.colorLight.value);
+			skin.settings.cursorColor = theme.palette.backgroundLight;
+			skin.settings.selectionColor = theme.palette.backgroundDark;
+			skin.GetStyle("TabWindowBackground").normal.background = theme.windowBackgroundOverride;
+			Utility.GetUnityType("SceneRenderModeWindow.Styles").SetVariable("sMenuItem",skin.GetStyle("MenuItem"));
+			Utility.GetUnityType("SceneRenderModeWindow.Styles").SetVariable("sSeparator",skin.GetStyle("sv_iconselector_sep"));
+			typeof(EditorGUIUtility).SetVariable("kDarkViewBackground",theme.palette.background);
+			typeof(EditorGUI).SetVariable("kCurveColor",theme.palette.backgroundDark.value);
+			typeof(EditorGUI).SetVariable("kCurveBGColor",theme.palette.backgroundLight.value);
+			Utility.GetUnityType("AppStatusBar").ClearVariable("background");
+			var console = Utility.GetUnityType("ConsoleWindow.Constants");
+			console.SetVariable("ms_Loaded",false);
+			console.CallMethod("Init");
 			var hostView = Utility.GetUnityType("HostView");
-			hostView.SetVariable<Color>("kViewColor",Themes.active.color);
+			hostView.SetVariable<Color>("kViewColor",theme.palette.background);
 			foreach(var view in Resources.FindObjectsOfTypeAll(hostView)){
 				view.ClearVariable("background");
 			}
@@ -371,6 +405,63 @@ namespace Zios{
 				window.autoRepaintOnSceneChange = true;
 			}
 		}
+	}
+	public class Theme{
+		[Internal] public string name;
+		[Internal] public string path;
+		[Internal] public List<Texture2D> colorImages = new List<Texture2D>();
+		[Internal] public List<GUIStyle> colorStyles = new List<GUIStyle>();
+		[Internal] public bool useSystemColor;
+		[Internal] public ThemePalette palette = new ThemePalette();
+		public List<Theme> variants = new List<Theme>();
+		public bool allowCustomization;
+		public bool allowColorCustomization;
+		public bool allowSystemColor;
+		public bool useColorAssets = true;
+		public Texture2D windowBackgroundOverride;
+		public Font fontOverride;
+		public float fontScale = 1;
+		public float spacingScale = 1;
+		public Theme Use(Theme other){
+			this.UseVariables(other,typeof(InternalAttribute).AsList());
+			if(this.name.IsEmpty()){this.name = other.name;}
+			if(this.path.IsEmpty()){this.path = other.path;}
+			this.variants = other.variants;
+			return this;
+		}
+	}
+	public class ThemePalette{
+		public string name;
+		public Color background = new Color(0.7f,0.7f,0.7f);
+		public RelativeColor backgroundDark = 0.8f;
+		public RelativeColor backgroundLight = 1.3f;
+		public ThemePalette Use(ThemePalette other){
+			this.background = other.background;
+			this.backgroundDark = other.backgroundDark.Serialize();
+			this.backgroundLight = other.backgroundLight.Serialize();
+			return this;
+		}
+		public bool Matches(ThemePalette other){
+			var match = this.background == other.background;
+			var matchDark = this.backgroundDark.value == other.backgroundDark.value;
+			var matchLight = this.backgroundLight.value == other.backgroundLight.value;
+			return match && matchDark && matchLight;
+		}
+	}
+	public class RelativeColor{
+		public Color value;
+		public float offset;
+		public static implicit operator RelativeColor(string value){
+			return value.IsNumber() ? new RelativeColor(value.ToFloat()) : new RelativeColor(value.ToColor());
+		}
+		public static implicit operator RelativeColor(float value){return new RelativeColor(value);}
+		public static implicit operator RelativeColor(Color value){return new RelativeColor(value);}
+		public static implicit operator Color(RelativeColor current){return current.value;}
+		public static implicit operator string(RelativeColor current){return current.Serialize();}
+		public RelativeColor(float offset){this.offset = offset;}
+		public RelativeColor(Color manual){this.value = manual;}
+		public string Serialize(){return this.offset != 0 ? this.offset.Serialize() : this.value.Serialize();}
+		public void Update(Color initial){this.value = this.offset != 0 ? initial.Multiply(this.offset) : this.value;}
 	}
 	public class ColorImportSettings : AssetPostprocessor{
 		public void OnPreprocessTexture(){
