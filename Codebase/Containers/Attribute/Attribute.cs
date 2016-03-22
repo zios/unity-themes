@@ -52,6 +52,10 @@ namespace Zios.Attributes{
 		[NonSerialized] public static Dictionary<Attribute,bool> setWarning = new Dictionary<Attribute,bool>();
 		[NonSerialized] public static Dictionary<AttributeData,bool> getWarning = new Dictionary<AttributeData,bool>();
 		public AttributeInfo info = new AttributeInfo();
+		public string path{
+			get{return this.info.fullPath;}
+			set{this.info.fullPath = value;}
+		}
 		public AttributeData[] data{
 			get{return this.info.data;}
 			set{this.info.data = value;}

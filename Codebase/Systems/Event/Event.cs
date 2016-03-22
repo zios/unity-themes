@@ -6,7 +6,6 @@ using System.Linq;
 using UnityEngine;
 using UnityObject = UnityEngine.Object;
 namespace Zios.Events{
-	using Attributes;
 	using Containers;
 	[InitializeOnLoad]
 	public static class EventsHook{
@@ -438,17 +437,8 @@ namespace Zios.Events{
 			string targetName = "";
 			if(target is string){targetName = target.ToString();}
 			if(target is GameObject){targetName = ((GameObject)target).GetPath();}
-			if(target is Component){targetName = ((Component)target).GetPath();}
-			if(target is Attribute){
-				var info = ((Attribute)target).info;
-				if(info.IsNull()){return "Null";}
-				targetName = info.parent.GetPath() + "/" + info.name;
-			}
-			if(target is AttributeData){
-				var info = ((AttributeData)target).attribute;
-				if(info.IsNull()){return "Null";}
-				targetName = info.parent.GetPath() + "/" + info.name;
-			}
+			else if(target is Component){targetName = ((Component)target).GetPath();}
+			else if(target.HasVariable("path")){targetName = target.GetVariable<string>("path");}
 			if(targetName.IsEmpty()){targetName = target.GetType().Name;}
 			targetName = targetName.Trim("/");
 			if(targetName.Contains("__")){targetName = "Anonymous";}
