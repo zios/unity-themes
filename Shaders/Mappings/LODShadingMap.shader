@@ -54,7 +54,7 @@
 			}
 			vertexOutput prepareLODShadingMap(vertexInput input,vertexOutput output){
 				float zMax = zRange*zMin;
-				float4 cameraPosition = mul(_World2Object,float4(_WorldSpaceCameraPos,1.0));
+				float4 cameraPosition = mul(unity_WorldToObject,float4(_WorldSpaceCameraPos,1.0));
 				float z = distance(cameraPosition,input.vertex);
 				output.normal.a = 1 - log(z/zMin)/log(zMax/zMin);
 				return output;

@@ -156,7 +156,7 @@ Shader "Zios/Standalone/Megashader UI"{
 				UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
 				output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
 				output.worldNormal = UnityObjectToWorldNormal(input.normal);
-				output.worldPosition = mul(_Object2World,input.vertex);
+				output.worldPosition = mul(unity_ObjectToWorld,input.vertex);
 				return output;
 			}
 			pixelOutput pixelPass(vertexOutput pixelInput){

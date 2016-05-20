@@ -150,8 +150,8 @@
 				output.lightNormal = ObjSpaceLightDir(input.vertex);
 				output.view = ObjSpaceViewDir(input.vertex);
 				output.normal = float4(input.normal,0);
-				output.worldNormal = mul(_Object2World,float4(input.normal,0.0f)).xyz;
-				output.worldPosition = mul(_Object2World,input.vertex);
+				output.worldNormal = mul(unity_ObjectToWorld,float4(input.normal,0.0f)).xyz;
+				output.worldPosition = mul(unity_ObjectToWorld,input.vertex);
 				return output;
 			}
 			pixelOutput pixelPass(vertexOutput input){

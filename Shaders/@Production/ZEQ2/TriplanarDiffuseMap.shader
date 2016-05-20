@@ -66,8 +66,8 @@
 				UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
 				output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
 				output.UV = float4(input.texcoord.x,input.texcoord.y,0,0);
-				output.worldNormal = mul(_Object2World,float4(input.normal,0.0f)).xyz;
-				output.worldPosition = mul(_Object2World,input.vertex);
+				output.worldNormal = mul(unity_ObjectToWorld,float4(input.normal,0.0f)).xyz;
+				output.worldPosition = mul(unity_ObjectToWorld,input.vertex);
 				TRANSFER_VERTEX_TO_FRAGMENT(output);
 				return output;
 			}
