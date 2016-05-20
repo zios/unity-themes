@@ -1,0 +1,31 @@
+[fileUnitLabel]
+text = Unit conversion
+tooltip = Length measurement to unit conversion. The value in Scale Factor is calculated based on the value here
+
+[generateBackFaceLabel]
+text = Generate Back Face
+tooltip = Enable/disable generation of back facing polygons
+
+[latitudeLabel]
+text = Latitude
+tooltip = Latitude Geo-location
+
+[longitudeLabel]
+text = Longitude
+tooltip = Longitude Geo-location
+
+[mergeCoplanarFaces]
+text = Merge Coplanar Faces
+tooltip = Enable/disable merging of coplanar faces when generating meshes
+
+[northCorrectionLabel]
+text = North Correction
+tooltip = The angle which will rotate the north direction to the z-axis for a the model
+
+[selectNodeButton]
+text = Select Nodes...
+tooltip = Brings up the node selection dialog box
+
+[sketchUpLabel]
+text = SketchUp
+tooltip = SketchUp import settings

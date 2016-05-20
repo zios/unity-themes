@@ -1,0 +1,11 @@
+[alphaText]
+text = Alpha
+
+[colorText]
+text = Color
+
+[locationText]
+text = Location
+
+[percentText]
+text = %

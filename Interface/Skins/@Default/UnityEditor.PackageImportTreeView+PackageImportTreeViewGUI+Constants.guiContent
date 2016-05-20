@@ -1,0 +1,13 @@
+[badgeChange]
+image = playLoopOff
+tooltip = This file is new or has changed.
+
+[badgeDelete]
+image = AS Badge Delete
+
+[badgeNew]
+image = AS Badge New
+
+[badgeWarn]
+image = console.warnicon
+tooltip = Warning: File exists in project, but with different GUID. Will override existing asset which may be undesired.

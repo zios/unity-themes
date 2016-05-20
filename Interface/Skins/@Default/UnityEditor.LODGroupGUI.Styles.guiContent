@@ -1,0 +1,37 @@
+[m_AnimateBetweenPreviousLOD]
+text = Animate Between Previous LOD
+tooltip = Cross-fade animation plays when transits between this LOD and the previous (lower) LOD.
+
+[m_AnimatedCrossFadeInconsistentText]
+text = Animated cross-fading is currently disabled. "Animate Between Next LOD" is enabled but the next LOD is not in Animated Cross Fade mode.
+
+[m_AnimatedCrossFadeInvalidText]
+text = Animated cross-fading is currently disabled. Please enable "Animate Between Next LOD" on either the current or the previous LOD.
+
+[m_CameraIcon]
+image = Camera Icon
+
+[m_IconRendererMinus]
+image = Toolbar Minus
+
+[m_IconRendererPlus]
+image = Toolbar Plus
+
+[m_LightmapScale]
+text = Lightmap Scale
+tooltip = Set the lightmap scale to match the LOD percentages.
+
+[m_RecalculateBounds]
+text = Bounds
+tooltip = Recalculate bounds for the current LOD group.
+
+[m_RendersTitle]
+text = Renderers:
+
+[m_UploadToImporter]
+text = Upload to Importer
+tooltip = Upload the modified screen percentages to the model importer.
+
+[m_UploadToImporterDisabled]
+text = Upload to Importer
+tooltip = Number of LOD's in the scene instance differ from the number of LOD's in the imported model.

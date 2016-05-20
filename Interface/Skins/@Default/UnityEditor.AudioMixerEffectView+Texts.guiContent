@@ -1,0 +1,24 @@
+[addEffect]
+text = Add Effect
+
+[bus]
+text = Receive
+
+[editInPlaymode]
+text = Edit in Playmode
+
+[none]
+text = None
+
+[pitch]
+text = Pitch
+
+[sendLevel]
+text = Send level
+
+[volume]
+text = Volume
+
+[wet]
+text = Wet
+tooltip = Enables/disables wet/dry ratio on this effect. Note that this makes the DSP graph more complex and requires additional CPU and memory, so use it only when necessary.

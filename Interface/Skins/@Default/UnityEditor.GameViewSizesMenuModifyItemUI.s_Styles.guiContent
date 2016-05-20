@@ -1,0 +1,20 @@
+[cancel]
+text = Cancel
+
+[headerAdd]
+text = Add
+
+[headerEdit]
+text = Edit
+
+[ok]
+text = OK
+
+[optionalText]
+text = Label
+
+[typeName]
+text = Type
+
+[widthHeightText]
+text = Width & Height

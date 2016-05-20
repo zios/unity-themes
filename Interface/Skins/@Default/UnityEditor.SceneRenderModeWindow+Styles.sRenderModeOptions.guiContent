@@ -1,0 +1,62 @@
+[0]
+text = Shaded
+
+[1]
+text = Wireframe
+
+[10]
+text = Smoothness
+
+[11]
+text = Normal
+
+[12]
+text = UV Charts
+
+[13]
+text = Systems
+
+[14]
+text = Albedo
+
+[15]
+text = Emissive
+
+[16]
+text = Irradiance
+
+[17]
+text = Directionality
+
+[18]
+text = Baked
+
+[19]
+text = Clustering
+
+[2]
+text = Shaded Wireframe
+
+[20]
+text = Lit Clustering
+
+[3]
+text = Shadow Cascades
+
+[4]
+text = Render Paths
+
+[5]
+text = Alpha Channel
+
+[6]
+text = Overdraw
+
+[7]
+text = Mipmaps
+
+[8]
+text = Albedo
+
+[9]
+text = Specular

@@ -14,8 +14,8 @@ namespace Zios{
 		private static bool setup;
 		private static string path;
 		private static DateTime pathModifyTime;
-		public static Dictionary<string,List<FileData>> files = new Dictionary<string,List<FileData>>();
-		public static Dictionary<string,FileData> folders = new Dictionary<string,FileData>();
+		public static Dictionary<string,List<FileData>> files = new Dictionary<string,List<FileData>>(StringComparer.InvariantCultureIgnoreCase);
+		public static Dictionary<string,FileData> folders = new Dictionary<string,FileData>(StringComparer.InvariantCultureIgnoreCase);
 		public static Dictionary<string,FileData[]> cache = new Dictionary<string,FileData[]>();
 		public static Dictionary<UnityObject,object> assets = new Dictionary<UnityObject,object>();
 		public static Hierarchy<Type,string,string,UnityObject> namedAssets = new Hierarchy<Type,string,string,UnityObject>();

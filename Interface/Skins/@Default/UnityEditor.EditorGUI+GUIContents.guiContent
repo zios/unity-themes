@@ -1,0 +1,11 @@
+[<helpIcon>k__BackingField]
+image = _Help
+
+[<titleSettingsIcon>k__BackingField]
+image = _Popup
+
+[helpIcon]
+image = _Help
+
+[titleSettingsIcon]
+image = _Popup

@@ -1,0 +1,9 @@
+[createContent]
+text = Create
+
+[defaultSortingContent]
+image = CustomSorting
+
+[fetchWarning]
+image = console.warnicon.sml
+tooltip = The current sorting method is taking a lot of time. Consider using 'Transform Sort' in playmode for better performance.

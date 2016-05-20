@@ -1,0 +1,27 @@
+[0]
+image = MoveTool
+tooltip = Move the selected objects.
+
+[1]
+image = RotateTool
+tooltip = Rotate the selected objects.
+
+[2]
+image = ScaleTool
+tooltip = Scale the selected objects.
+
+[3]
+image = RectTool
+
+[4]
+image = MoveTool on
+tooltip = Move the selected objects.
+
+[5]
+image = RotateTool On
+
+[6]
+image = ScaleTool On
+
+[7]
+image = RectTool On

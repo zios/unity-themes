@@ -1,0 +1,5 @@
+[PickingTexture]
+image = BodyPartPicker
+
+[UnityDude]
+image = BodySilhouette

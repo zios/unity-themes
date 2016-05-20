@@ -10,10 +10,10 @@ namespace Zios{
 			if(Style.skins.ContainsKey(name)){
 				return Style.skins[name];
 			}
-			var cssFile = FileManager.Find(name+".css",true,false);
+			/*var cssFile = FileManager.Find(name+".css",true,false);
 			if(!cssFile.IsNull()){
-				//return Style.LoadCSS(name,cssFile.GetText());
-			}
+				return Style.LoadCSS(name,cssFile.GetText());
+			}*/
 			Style.defaultSkin = Style.defaultSkin ?? typeof(GUI).GetVariable<GUISkin>("s_Skin");
 			var defaultSkin = defaultFallback ? Style.defaultSkin : null;
 			return FileManager.GetAsset<GUISkin>(name+".guiskin",defaultFallback) ?? defaultSkin;

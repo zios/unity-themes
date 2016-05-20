@@ -1,9 +1,9 @@
 [Base]
-UseSystemColor True
-AllowSystemColor True
-AllowCustomization True
-AllowColorCustomization True
-Palette SolarizedSea
+UseSystemColor = True
+AllowSystemColor = True
+AllowCustomization = True
+AllowColorCustomization = True
+Palette = SolarizedSea
 
 [+Brushed]
-WindowBackgroundOverride CircleWhite10.png
+WindowBackgroundOverride = CircleWhite10.png

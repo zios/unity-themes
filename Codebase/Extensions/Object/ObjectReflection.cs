@@ -15,6 +15,7 @@ namespace Zios{
 		public static Hierarchy<Type,BindingFlags,string,FieldInfo> fields = new Hierarchy<Type,BindingFlags,string,FieldInfo>();
 		public static Hierarchy<Type,BindingFlags,string,MethodInfo> methods = new Hierarchy<Type,BindingFlags,string,MethodInfo>();
 		public const BindingFlags allFlags = BindingFlags.Static|BindingFlags.Instance|BindingFlags.NonPublic|BindingFlags.Public;
+		public const BindingFlags allFlatFlags = BindingFlags.Static|BindingFlags.Instance|BindingFlags.NonPublic|BindingFlags.Public|BindingFlags.FlattenHierarchy;
 		public const BindingFlags staticFlags = BindingFlags.Static|BindingFlags.Public|BindingFlags.NonPublic;
 		public const BindingFlags instanceFlags = BindingFlags.Instance|BindingFlags.NonPublic|BindingFlags.Public;
 		public const BindingFlags privateFlags = BindingFlags.Instance|BindingFlags.NonPublic;
@@ -160,7 +161,7 @@ namespace Zios{
 			var property = Class.GetProperty(type,name,flags);
 			var field = Class.GetField(type,name,flags);
 			if(property.IsNull() && field.IsNull() && !Class.warned.AddNew(current).AddNew(name)){
-				Debug.LogWarning("[ObjectReflection] Could not find variable to get -- " + name);
+				Debug.LogWarning("[ObjectReflection] Could not find variable to get -- " + type.Name + "." + name);
 				Class.warned[current][name] = true;
 				return default(T);
 			}

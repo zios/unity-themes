@@ -1,0 +1,11 @@
+[applyRootMotion]
+text = Apply Root Motion
+tooltip = Automatically move the object using the root motion from the animations
+
+[cullingMode]
+text = Culling Mode
+tooltip = Controls what is updated when the object has been culled
+
+[updateMode]
+text = Update Mode
+tooltip = Controls when and how often the Animator is updated

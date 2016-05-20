@@ -1,0 +1,14 @@
+[sDeferredHeader]
+text = Deferred
+
+[sGlobalIlluminationHeader]
+text = Global Illumination
+
+[sMiscellaneous]
+text = Miscellaneous
+
+[sResolutionToggle]
+text = Show Lightmap Resolution
+
+[sShadedHeader]
+text = Shading Mode

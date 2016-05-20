@@ -1,6 +1,7 @@
 #pragma warning disable 0162
 #pragma warning disable 0618
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
@@ -134,16 +135,19 @@ namespace Zios{
 		public static Type GetUnityType(string name){
 			if(Utility.internalTypes.ContainsKey(name)){return Utility.internalTypes[name];}
 			#if UNITY_EDITOR
-			name = name.Replace(".","+");
-			bool full = name.ContainsAny("+");
+			var fullCheck = name.ContainsAny(".","+");
+			var alternative = name.ReplaceLast(".","+");
+			var term = alternative.Split("+").Last();
 			foreach(var type in typeof(UnityEditor.Editor).Assembly.GetTypes()){
-				if(full ? type.FullName.Contains(name) : type.Name == name){
+				bool match = fullCheck && (type.FullName.Contains(name) || type.FullName.Contains(alternative)) && term.Matches(type.Name,true);
+				if(type.Name == name || match){
 					Utility.internalTypes[name] = type;
 					return type;
 				}
 			}
 			foreach(var type in typeof(UnityEngine.Object).Assembly.GetTypes()){
-				if(full ? type.FullName.Contains(name) : type.Name == name){
+				bool match = fullCheck && (type.FullName.Contains(name) || type.FullName.Contains(alternative)) && term.Matches(type.Name,true);
+				if(type.Name == name || match){
 					Utility.internalTypes[name] = type;
 					return type;
 				}

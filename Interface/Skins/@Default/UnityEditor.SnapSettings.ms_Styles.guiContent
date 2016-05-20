@@ -1,0 +1,35 @@
+[moveX]
+text = Move X
+tooltip = Grid spacing X
+
+[moveY]
+text = Move Y
+tooltip = Grid spacing Y
+
+[moveZ]
+text = Move Z
+tooltip = Grid spacing Z
+
+[rotation]
+text = Rotation
+tooltip = Grid spacing for rotation in degrees
+
+[scale]
+text = Scale
+tooltip = Grid spacing for scaling
+
+[snapAllAxes]
+text = Snap All Axes
+tooltip = Snaps selected objects to the grid
+
+[snapX]
+text = X
+tooltip = Snaps selected objects to the grid on the x axis
+
+[snapY]
+text = Y
+tooltip = Snaps selected objects to the grid on the y axis
+
+[snapZ]
+text = Z
+tooltip = Snaps selected objects to the grid on the z axis

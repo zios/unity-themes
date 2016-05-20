@@ -1,0 +1,11 @@
+[allText]
+text = All
+
+[header]
+text = Items to Export
+
+[includeDependenciesText]
+text = Include dependencies
+
+[noneText]
+text = None

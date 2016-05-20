@@ -1,0 +1,10 @@
+[addButton]
+text = +
+
+[header]
+text = Snapshots
+tooltip = A snapshot is a set of values for all parameters in the mixer. When using the mixer you modify parameters in the selected snapshot. Blend between multiple snapshots at runtime.
+
+[starIcon]
+image = Favorite
+tooltip = Start snapshot

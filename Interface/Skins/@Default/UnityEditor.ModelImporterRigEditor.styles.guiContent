@@ -1,0 +1,38 @@
+[AnimationType]
+text = Animation Type
+tooltip = The type of animation to support / import.
+
+[AnimLabel]
+text = Generation
+tooltip = Controls how animations are imported.
+
+[avatar]
+text = Animator
+
+[AvatarDefinition]
+text = Avatar Definition
+tooltip = Choose between Create From This Model or Copy From Other Avatar. The first one create an Avatar for this file and the second one use an Avatar from another file to import animation.
+
+[avatarInvalid]
+text = ✕
+
+[avatarPending]
+text = ...
+
+[avatarValid]
+text = ✓
+
+[configureAvatar]
+text = Configure...
+
+[RootNode]
+text = Root node
+tooltip = Specify the root node used to extract the animation translation.
+
+[UpdateMuscleDefinitionFromSource]
+text = Update
+tooltip = Update the copy of the muscle definition from the source.
+
+[UpdateReferenceClips]
+text = Update reference clips
+tooltip = Click on this button to update all the @convention file referencing this file. Should set all these files to Copy From Other Avatar, set the source Avatar to this one and reimport all these files.

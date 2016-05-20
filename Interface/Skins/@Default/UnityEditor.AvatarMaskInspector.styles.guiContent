@@ -1,0 +1,11 @@
+[BodyMask]
+text = Humanoid
+tooltip = Define which body part are active. Also define which animation curves will be imported for an Animation Clip.
+
+[MaskDefinition]
+text = Definition
+tooltip = Choose between Create From This Model, Copy From Other Avatar. The first one create a Mask for this file and the second one use a Mask from another file to import animation.
+
+[TransformMask]
+text = Transform
+tooltip = Define which transform are active. Also define which animation curves will be imported for an Animation Clip.

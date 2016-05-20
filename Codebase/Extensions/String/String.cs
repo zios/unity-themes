@@ -193,6 +193,13 @@ namespace Zios{
 			}
 			return current.Substring(0,position) + replace + current.Substring(position + search.Length);
 		}
+		public static string ReplaceLast(this string current,string search,string replace,bool ignoreCase=false){
+			int position = current.LastIndexOf(search,ignoreCase);
+			if(position == -1){
+				return current;
+			}
+			return current.Substring(0,position) + replace + current.Substring(position + search.Length);
+		}
 		public static int IndexOf(this string current,string value,int start,bool ignoreCase){
 			if(ignoreCase){
 				return current.IndexOf(value,start,StringComparison.OrdinalIgnoreCase);
@@ -205,6 +212,22 @@ namespace Zios{
 		public static int IndexOf(this string current,string value,int start,int occurrence,bool ignoreCase){
 			while(occurrence > 0){
 				start = current.IndexOf(value,start+1,ignoreCase)+1;
+				occurrence -= 1;
+			}
+			return Mathf.Max(start-1,-1);
+		}
+		public static int LastIndexOf(this string current,string value,int start,bool ignoreCase){
+			if(ignoreCase){
+				return current.LastIndexOf(value,start,StringComparison.OrdinalIgnoreCase);
+			}
+			return current.LastIndexOf(value,start);
+		}
+		public static int LastIndexOf(this string current,string value,bool ignoreCase){
+			return current.LastIndexOf(value,current.Length-1,ignoreCase);
+		}
+		public static int LastIndexOf(this string current,string value,int start,int occurrence,bool ignoreCase){
+			while(occurrence > 0){
+				start = current.LastIndexOf(value,start+1,ignoreCase)+1;
 				occurrence -= 1;
 			}
 			return Mathf.Max(start-1,-1);

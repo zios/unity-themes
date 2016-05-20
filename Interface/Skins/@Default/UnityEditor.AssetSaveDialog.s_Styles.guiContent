@@ -1,0 +1,11 @@
+[close]
+text = Close
+
+[dontSave]
+text = Don't Save
+
+[saveAll]
+text = Save All
+
+[saveSelected]
+text = Save Selected

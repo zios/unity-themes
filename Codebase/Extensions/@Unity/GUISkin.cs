@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System;
 using System.Linq;
 using UnityEngine;
 namespace Zios{
@@ -65,6 +66,44 @@ namespace Zios{
 			current.settings.cursorFlashSpeed = other.settings.cursorFlashSpeed;
 			current.settings.selectionColor = other.settings.selectionColor;
 			return current;
+		}
+		public static void SaveBackgrounds(this GUISkin current,string path){
+			Action<GUIStyleState> SaveState = (state)=>{
+				if(!state.background.IsNull()){
+					state.background.SaveAs(path+state.background.name+".png",true);
+				}
+			};
+			Action<GUIStyle> SaveStyle = (style)=>{
+				SaveState(style.normal);
+				SaveState(style.hover);
+				SaveState(style.focused);
+				SaveState(style.active);
+				SaveState(style.onNormal);
+				SaveState(style.onHover);
+				SaveState(style.onFocused);
+				SaveState(style.onActive);
+			};
+			SaveStyle(current.box);
+			SaveStyle(current.button);
+			SaveStyle(current.toggle);
+			SaveStyle(current.label);
+			SaveStyle(current.textField);
+			SaveStyle(current.textArea);
+			SaveStyle(current.window);
+			SaveStyle(current.horizontalSlider);
+			SaveStyle(current.horizontalSliderThumb);
+			SaveStyle(current.verticalSlider);
+			SaveStyle(current.verticalSliderThumb);
+			SaveStyle(current.horizontalScrollbar);
+			SaveStyle(current.horizontalScrollbarThumb);
+			SaveStyle(current.horizontalScrollbarLeftButton);
+			SaveStyle(current.horizontalScrollbarRightButton);
+			SaveStyle(current.verticalScrollbar);
+			SaveStyle(current.verticalScrollbarThumb);
+			SaveStyle(current.verticalScrollbarUpButton);
+			SaveStyle(current.verticalScrollbarDownButton);
+			SaveStyle(current.scrollView);
+			foreach(var style in current.customStyles){SaveStyle(style);}
 		}
 	}
 }

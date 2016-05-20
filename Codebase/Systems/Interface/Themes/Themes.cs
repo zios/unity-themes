@@ -6,6 +6,7 @@ using UnityEngine;
 namespace Zios{
 	using Events;
 	using Interface;
+	using Containers;
 	#if UNITY_EDITOR
 	using UnityEditor;
 	#if UNITY_EDITOR_WIN
@@ -23,6 +24,9 @@ namespace Zios{
 		[NonSerialized] public static bool needsRebuild;
 		[NonSerialized] private static Color lastSystemColor = Color.clear;
 		[NonSerialized] private static float nextUpdate;
+		[NonSerialized] public static string createName;
+		[NonSerialized] public static Dictionary<string,object> styleGroupBuffer = new Dictionary<string,object>();
+		[NonSerialized] public static Hierarchy<string,string,GUIContent> contentBuffer = new Hierarchy<string,string,GUIContent>();
 		//[NonSerialized] public static float verticalSpacing = 2.0f;
 		static Themes(){
 			//SceneView.onSceneGUIDelegate += (a)=>Themes.Setup();
@@ -54,7 +58,10 @@ namespace Zios{
 				Themes.UpdateColors();
 				Themes.Apply();
 				Utility.RepaintAll();
-				Themes.setup = true;
+				if(!Themes.setup){
+					Themes.setup = true;
+					Themes.needsRebuild = true;
+				}
 			}
 		}
 		public static void RebuildStyles(bool skipTree=false){
@@ -64,6 +71,7 @@ namespace Zios{
 				type.ClearVariable("Styles",ObjectExtension.staticFlags);
 				type.ClearVariable("styles",ObjectExtension.staticFlags);
 				type.ClearVariable("s_GOStyles",ObjectExtension.staticFlags);
+				type.ClearVariable("s_Current",ObjectExtension.staticFlags);
 				type.ClearVariable("s_Styles",ObjectExtension.staticFlags);
 				type.ClearVariable("m_Styles",ObjectExtension.staticFlags);
 				type.ClearVariable("ms_Styles",ObjectExtension.staticFlags);
@@ -83,7 +91,7 @@ namespace Zios{
 		[MenuItem("Zios/Process/Theme/Refresh %2")]
 		public static void Refresh(){
 			Debug.Log("Force Theme Refresh");
-			Themes.needsRebuild = true;
+			Themes.setup = false;
 		}
 		//=================================
 		// Menu Preferences
@@ -92,6 +100,7 @@ namespace Zios{
 		public static void ShowPreferences(){
 			var theme = Themes.active;
 			var current = Themes.themeIndex;
+			if(theme.IsNull()){return;}
 			Themes.themeIndex = Themes.all.Select(x=>x.name).Draw(Themes.themeIndex,"Theme");
 			GUILayout.Space(3);
 			if(theme.allowCustomization){
@@ -151,42 +160,100 @@ namespace Zios{
 		//=================================
 		// Saving
 		//=================================
-		public static GUISkin[] Create(string name="@Default",bool save=true){
-			GUISkin skin = ScriptableObject.CreateInstance<GUISkin>();
-			var styles = new Dictionary<string,GUIStyle>();
-			var sorted = new List<GUIStyle>();
-			var skins = new List<GUISkin>();
-			var savePath = Themes.storagePath+name;
-			AssetDatabase.StartAssetEditing();
-			Action<string,bool> SaveSkin = (type,sort)=>{
-				skin.name = name+"-"+type;
-				if(sort){
-					foreach(var item in styles){
-						var style = new GUIStyle(item.Value).Rename(item.Key);
-						sorted.Add(style);
+		public static void Create(string name="@Default"){
+			Themes.createName = name;
+			Themes.styleGroupBuffer.Clear();
+			var allTypes = typeof(UnityEditor.Editor).Assembly.GetTypes().Where(x=>!x.IsNull()).ToArray();
+			Event.AddStepper("On Editor Update",Themes.CreateStep,allTypes,50);
+		}
+		public static void CreateStep(object collection,int itemIndex){
+			var types = (Type[])collection;
+			var type = types[itemIndex];
+			if(!type.Name.ContainsAny("$","__Anon","<")){
+				Event.stepperTitle = "Scanning " + types.Length + " Types";
+				Event.stepperMessage = "Analyzing : " + type.Name;
+				var terms = new string[]{"Styles","styles","s_GOStyles","s_Current","s_Styles","m_Styles","ms_Styles","constants"};
+				foreach(var term in terms){
+					if(!type.HasVariable(term,ObjectExtension.staticFlags)){continue;}
+					try{
+						var styleGroup = type.GetVariable(term,-1,ObjectExtension.staticFlags) ?? Activator.CreateInstance(type.GetVariableType(term));
+						Themes.styleGroupBuffer[type.FullName+"."+term] = styleGroup;
+					}
+					catch{}
+				}
+				try{
+					var styles = type.GetVariables<GUIStyle>(null,ObjectExtension.staticFlags);
+					var content = type.GetVariables<GUIContent>(null,ObjectExtension.staticFlags);
+					var contentGroups = type.GetVariables<GUIContent[]>(null,ObjectExtension.staticFlags);
+					if(styles.Count > 0){Themes.styleGroupBuffer[type.FullName] = styles;}
+					if(content.Count > 0){Themes.contentBuffer[type.FullName] = content;}
+					foreach(var contentSet in contentGroups){
+						if(contentSet.Value.IsNull() || contentSet.Value.Length < 1){continue;}
+						var contents = Themes.contentBuffer[type.FullName+"."+contentSet.Key] = new Dictionary<string,GUIContent>();
+						for(int index=0;index<contentSet.Value.Length;++index){
+							contents[index.ToString()] = contentSet.Value[index];
+						}
 					}
 				}
-				if(sorted.Count > 0){skin.customStyles = sorted.ToArray();}
-				if(save && !File.Exists(savePath)){
-					AssetDatabase.CreateAsset(skin,savePath+"/"+skin.name+".guiskin");
-					//Styles.SaveCSS(savePath,skin);
+				catch{}
+			}
+			if(itemIndex >= types.Length-1){
+				var savePath = Themes.storagePath+Themes.createName;
+				EditorUtility.ClearProgressBar();
+				Directory.CreateDirectory(savePath);
+				Directory.CreateDirectory(savePath+"/GUIContent");
+				Directory.CreateDirectory(savePath+"/Background");
+				foreach(var buffer in Themes.styleGroupBuffer){
+					var customStyles = new List<GUIStyle>();
+					var skinPath = savePath+"/"+buffer.Key+".guiskin";
+					var contentPath = savePath+"/"+buffer.Key+".guicontent";
+					var styles = buffer.Value is Dictionary<string,GUIStyle> ? (Dictionary<string,GUIStyle>)buffer.Value : buffer.Value.GetVariables<GUIStyle>().Distinct();
+					foreach(var styleData in styles){
+						var style = new GUIStyle(styleData.Value);
+						if(!buffer.Key.Contains("s_Current")){style.Rename(styleData.Key);}
+						customStyles.Add(style);
+					}
+					if(customStyles.Count > 0){
+						GUISkin newSkin = ScriptableObject.CreateInstance<GUISkin>();
+						newSkin.name = buffer.Key;
+						newSkin.customStyles = customStyles.ToArray();
+						AssetDatabase.CreateAsset(newSkin,skinPath);
+						newSkin.SaveBackgrounds(savePath+"/Background/");
+					}
+					Themes.SaveGUIContent(contentPath,buffer.Value.GetVariables<GUIContent>());
 				}
-				skins.Add(skin);
-				sorted.Clear();
-				styles.Clear();
-				skin = ScriptableObject.CreateInstance<GUISkin>();
-			};
-			if(save){Directory.CreateDirectory(savePath);}
-			skin = EditorGUIUtility.GetBuiltinSkin(EditorSkin.Inspector).Copy();
-			SaveSkin("Inspector",false);
-			styles = typeof(EditorStyles).GetVariable<EditorStyles>("s_Current").GetVariables<GUIStyle>(null,ObjectExtension.privateFlags);
-			SaveSkin("EditorStyles",true);
-			styles = Utility.GetUnityType("TreeViewGUI").GetVariable("s_Styles").GetVariables<GUIStyle>();
-			SaveSkin("TreeView",true);
-			styles = Utility.GetUnityType("GameObjectTreeViewGUI").GetVariable("s_GOStyles").GetVariables<GUIStyle>();
-			SaveSkin("GameObjectTreeView",true);
-			AssetDatabase.StopAssetEditing();
-			return skins.ToArray();
+				foreach(var buffer in Themes.contentBuffer){
+					var contentPath = savePath+"/"+buffer.Key+".guicontent";
+					Themes.SaveGUIContent(contentPath,buffer.Value);
+				}
+				var skin = EditorGUIUtility.GetBuiltinSkin(EditorSkin.Inspector);
+				skin = ScriptableObject.CreateInstance<GUISkin>().Use(skin);
+				skin.SaveBackgrounds(savePath+"/Background/");
+				AssetDatabase.CreateAsset(skin,savePath+"/"+Themes.createName+".guiskin");
+			}
+		}
+		public static void SaveGUIContent(string path,Dictionary<string,GUIContent> data){
+			if(data.Count < 1){return;}
+			var contents = "";
+			var keys = data.Keys.ToList();
+			keys.Sort();
+			foreach(var key in keys){
+				if(key.ContainsAny("<",">")){continue;}
+				GUIContent value = data[key];
+				contents = contents.AddLine("["+key+"]");
+				if(!value.text.IsEmpty()){contents = contents.AddLine("text = "+value.text);}
+				if(!value.image.IsNull()){
+					var image = value.image;
+					var imagePath = path.GetDirectory()+"/GUIContent/"+image.name+".png";
+					contents = contents.AddLine("image = "+image.name);
+					if(!File.Exists(imagePath)){
+						image.SaveAs(imagePath,true);
+					}
+				}
+				if(!value.tooltip.IsEmpty()){contents = contents.AddLine("tooltip = "+value.tooltip);}
+				contents = contents.AddLine("");
+			}
+			FileManager.CreateFile(path).WriteText(contents.Trim());
 		}
 		public static void SavePalette(){
 			var path = EditorUtility.SaveFilePanel("Save Palette",Themes.storagePath+"@Palettes","TheColorsDuke","unitypalette");
@@ -216,7 +283,7 @@ namespace Zios{
 				foreach(var line in file.GetText().GetLines()){
 					if(line.Trim().IsEmpty()){continue;}
 					var term = line.Parse(""," ").Trim();
-					var value = line.Parse(" ").Trim();
+					var value = line.Parse(" ").Trim().Trim("=").Trim();
 					if(term.Matches("Color",true)){palette.background = value.ToColor();}
 					else if(term.Matches("DarkColor",true)){palette.backgroundDark = value;}
 					else if(term.Matches("LightColor",true)){palette.backgroundLight = value;}
@@ -242,7 +309,7 @@ namespace Zios{
 					}
 					if(theme.IsNull()){continue;}
 					var term = line.Parse(""," ").Trim();
-					var value = line.Parse(" ").Trim();
+					var value = line.Parse(" ").Trim().Trim("=").Trim();
 					if(value.Matches("None",true)){continue;}
 					else if(term.Matches("AllowSystemColor",true)){theme.allowSystemColor = value.ToBool();}
 					else if(term.Matches("AllowCustomization",true)){theme.allowCustomization = value.ToBool();}
@@ -359,28 +426,61 @@ namespace Zios{
 		public static void Apply(string name=""){
 			var theme = Themes.active;
 			if(name.IsEmpty()){name = theme.name;}
-			GUISkin skin;
-			object styles;
-			skin = Style.GetSkin(name+"-EditorStyles",false);
-			if(!skin.IsNull()){
-				styles = typeof(EditorStyles).GetVariable("s_Current");
-				styles.SetValuesByType<GUIStyle>(skin.customStyles,null,ObjectExtension.privateFlags);
-				if(name != "@Default"){
-					Utility.GetUnityType("PreferencesWindow").GetVariable("constants").SetVariable("sectionHeader",skin.GetStyle("m_LargeLabel"));
+			var loadPath = Themes.storagePath+name;
+			foreach(var skinFile in FileManager.FindAll(loadPath+"/*.guiskin",true,false)){
+				if(skinFile.name == name){continue;}
+				var field = skinFile.name.Split(".").Last();
+				var parent = skinFile.name.Replace("."+field,"");
+				var whole = Utility.GetUnityType(skinFile.name);
+				var partial = Utility.GetUnityType(parent);
+				var styles = skinFile.GetAsset<GUISkin>().customStyles;
+				var flags = field.Contains("s_Current") ? ObjectExtension.privateFlags : ObjectExtension.staticFlags;
+				if(whole.IsNull() && (partial.IsNull() || !partial.HasVariable(field))){
+					Debug.LogWarning("[Themes] No matching class/field found for GUISkin -- " + skinFile.name);
+					continue;
+				}
+				if(!whole.IsNull()){
+					whole.SetValuesByType<GUIStyle>(styles,null,flags);
+				}
+				if(!partial.IsNull()){
+					partial.GetVariable(field).SetValuesByType<GUIStyle>(styles);
 				}
 			}
-			skin = Style.GetSkin(name+"-TreeView",false);
-			if(!skin.IsNull()){
-				styles = Utility.GetUnityType("TreeViewGUI").GetVariable("s_Styles");
-				styles.SetValuesByType<GUIStyle>(skin.customStyles);
-			}
-			skin = Style.GetSkin(name+"-GameObjectTreeView",false);
-			if(!skin.IsNull()){
-				styles = Utility.GetUnityType("GameObjectTreeViewGUI").GetVariable("s_GOStyles");
-				styles.SetValuesByType<GUIStyle>(skin.customStyles);
-			}
-			skin = EditorGUIUtility.GetBuiltinSkin(EditorSkin.Inspector);
-			skin.Use(Style.GetSkin(name+"-Inspector",false));
+			/*foreach(var contentFile in FileManager.FindAll(loadPath+"/*.guicontent",true,false)){
+				var field = contentFile.name.Split(".").Last();
+				var parent = contentFile.name.Replace("."+field,"");
+				var whole = Utility.GetUnityType(contentFile.name);
+				var partial = Utility.GetUnityType(parent);
+				if(whole.IsNull() && (partial.IsNull() || !partial.HasVariable(field))){
+					Debug.LogWarning("[Themes] No matching class/field found for GUIContent -- " + contentFile.name);
+					continue;
+				}
+				object target = partial.IsNull() ? whole : partial.GetVariable(field) ?? Activator.CreateInstance(partial.GetVariableType(field));
+				var content = new GUIContent();
+				var contentName = "";
+				foreach(var line in contentFile.GetText().GetLines()){
+					if(line.Trim().IsEmpty()){continue;}
+					if(line.ContainsAll("[","]")){
+						if(!contentName.IsEmpty() && target.HasVariable(contentName)){
+							target.SetVariable<GUIContent>(contentName,content);
+						}
+						content = new GUIContent();
+						contentName = line.Parse("[","]");
+					}
+					else{
+						var term = line.Parse("","=").Trim();
+						var value = line.Parse("=").Trim();
+						if(term == "image"){content.image = FileManager.GetAsset<Texture2D>(name+"/GUIContent/"+value+".png");}
+						else if(term == "text"){content.text = value;}
+						else if(term == "tooltip"){content.tooltip = value;}
+					}
+				}
+				if(!contentName.IsEmpty() && target.HasVariable(contentName)){
+					target.SetVariable<GUIContent>(contentName,content);
+				}
+			}*/
+			var skin = EditorGUIUtility.GetBuiltinSkin(EditorSkin.Inspector);
+			skin.Use(Style.GetSkin(name,false));
 			skin.settings.cursorColor = theme.palette.backgroundLight;
 			skin.settings.selectionColor = theme.palette.backgroundDark;
 			skin.GetStyle("TabWindowBackground").normal.background = theme.windowBackgroundOverride;
@@ -403,6 +503,12 @@ namespace Zios{
 				window.minSize = new Vector2(100,20);
 				window.wantsMouseMove = true;
 				window.autoRepaintOnSceneChange = true;
+			}
+			if(name != "@Default"){
+				skin = Style.GetSkin(name+"/UnityEditor.EditorStyles.s_Current");
+				if(!skin.IsNull()){
+					Utility.GetUnityType("PreferencesWindow").GetVariable("constants").SetVariable("sectionHeader",skin.GetStyle("m_LargeLabel"));
+				}
 			}
 		}
 	}

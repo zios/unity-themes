@@ -1,0 +1,50 @@
+[addEventContent]
+image = Animation.AddEvent
+tooltip = Add Event.
+
+[addKeyframeContent]
+image = Animation.AddKeyframe
+tooltip = Add Keyframe.
+
+[animationClip]
+text = an Animation Clip
+
+[animatorAndAnimationClip]
+text = an Animator and an Animation Clip
+
+[create]
+text = Create
+
+[createNewClip]
+text = Create New Clip...
+
+[curves]
+text = Curves
+
+[dopesheet]
+text = Dopesheet
+
+[formatIsMissing]
+text = To begin animating {0}, create {1}.
+
+[nextKeyContent]
+image = Animation.NextKey
+tooltip = Go to next key frame.
+
+[noAnimatableObjectSelectedText]
+text = No animatable object selected.
+
+[playContent]
+image = Animation.Play
+tooltip = Play the animation clip, looping in the shown range.
+
+[prevKeyContent]
+image = Animation.PrevKey
+tooltip = Go to previous key frame.
+
+[recordContent]
+image = Animation.Record
+tooltip = Are scene and inspector changes recorded into the animation curves?
+
+[samples]
+text = Samples
