@@ -7,6 +7,16 @@ using UnityEditor;
 using UnityEngine;
 using UnityObject = UnityEngine.Object;
 namespace Zios.Interface{
+    public static class LabelExtensions{
+		public static UnityLabel ToLabel(this string current){
+			return new UnityLabel(current);
+		}
+	}
+	public static class GUIExtensions{
+		public static UnityLabel ToLabel(this GUIContent current){
+			return new UnityLabel(current);
+		}
+	}
 	public class UnityLabel{
 		public GUIContent value = new GUIContent("");
 		public UnityLabel(string value){this.value = new GUIContent(value);}

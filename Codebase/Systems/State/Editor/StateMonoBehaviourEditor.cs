@@ -94,7 +94,7 @@ namespace Zios.Editors.StateEditors{
 								GUIStyle boxStyle = this.columnStyle.Background("BoxWhiteHighlightRedA50.png");
 								EditorGUILayout.BeginVertical(boxStyle);
 								string phrase = "<color="+this.warningColor+">Never turns off!</color>".ToUpper();
-								phrase.DrawLabel(this.warningStyle);
+								phrase.ToLabel().DrawLabel(this.warningStyle);
 								EditorGUILayout.EndVertical();
 							}
 							else{
@@ -108,8 +108,8 @@ namespace Zios.Editors.StateEditors{
 							EditorGUILayout.BeginVertical(this.columnStyle);
 							string header = "<color="+this.headerColor+"><b>OFF</b> When</color>";
 							string phrase = "<color="+this.nameColor+">@EXTERNAL</color><i> is </i><color="+this.offColor+"><b>OFF</b></color>";
-							header.DrawLabel(this.labelStyle);
-							phrase.DrawLabel(this.labelStyle);
+							header.ToLabel().DrawLabel(this.labelStyle);
+							phrase.ToLabel().DrawLabel(this.labelStyle);
 							EditorGUILayout.EndVertical();
 							if(onRows.SelectMany(x=>x.data).ToList().Exists(x=>x.name!="@External"&&(x.requireOn||x.requireOff))){
 								for(int index=0;index<onRows.Length;++index){
@@ -125,7 +125,7 @@ namespace Zios.Editors.StateEditors{
 						EditorGUILayout.BeginVertical(this.containerStyle);
 						EditorGUILayout.BeginVertical(this.columnStyle.FixedWidth(size));
 						string phrase = ("Always <b><color="+this.onColor+">On</color></b>").ToUpper();
-						phrase.DrawLabel(this.labelStyle.Alignment("MiddleCenter"));
+						phrase.ToLabel().DrawLabel(this.labelStyle.Alignment("MiddleCenter"));
 						EditorGUILayout.EndVertical();
 						EditorGUILayout.EndVertical();
 					}
@@ -157,7 +157,7 @@ namespace Zios.Editors.StateEditors{
 			EditorGUILayout.BeginVertical(this.boxStyle);
 			string phrase = "";
 			string header = "<color="+this.headerColor+">"+title+"</color>";
-			header.DrawLabel(this.labelStyle);
+			header.ToLabel().DrawLabel(this.labelStyle);
 			bool hasDrawn = false;
 			for(int index=0;index<row.data.Length;++index){
 				StateRequirement requirement = row.data[index];
@@ -181,7 +181,7 @@ namespace Zios.Editors.StateEditors{
 				if(hasDrawn){phrase = (flip ? "or " : "and ") + phrase;}
 				phrase = "<i>"+phrase.ToUpper()+"</i>";
 				if(!Class.isOneLine){
-					phrase.DrawLabel(this.labelStyle);
+					phrase.ToLabel().DrawLabel(this.labelStyle);
 				}
 				hasDrawn = true;
 			}

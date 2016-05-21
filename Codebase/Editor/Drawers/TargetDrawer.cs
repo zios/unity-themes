@@ -29,7 +29,7 @@ namespace Zios.Editors{
 			if(previousMode != currentMode){
 				target.mode = target.mode == TargetMode.Direct ? TargetMode.Search : TargetMode.Direct;
 			}
-			label.DrawLabel(area,null,true);
+			label.ToLabel().DrawLabel(area,null,true);
 			Utility.RecordObject(target.parent,"Target Changes");
 			if(target.mode == TargetMode.Direct){
 				target.directObject = target.directObject.Draw<GameObject>(propertyRect,"",true);
@@ -53,7 +53,7 @@ namespace Zios.Editors{
 					UnityEvent.current.Use();
 				}
 				target.search = target.search.Draw(textRect);
-				result.DrawLabel(propertyRect,GUI.skin.GetStyle("SubtleInfo"));
+				result.ToLabel().DrawLabel(propertyRect,GUI.skin.GetStyle("SubtleInfo"));
 			}
 			if(GUI.changed && !target.IsNull()){
 				target.Search();

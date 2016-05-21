@@ -74,7 +74,7 @@ namespace Zios.Editors.StateEditors{
 				position.y += -halfHeight+halfWidth;
 				style.overflow.left = (int)-scroll.y;
 				label.text = style.overflow.left >= -(position.width/4)-9 ? label.text : "";
-				label.DrawLabel(position,style);
+				label.ToLabel().DrawLabel(position,style);
 				GUI.matrix = Matrix4x4.identity;
 			}
 			else{

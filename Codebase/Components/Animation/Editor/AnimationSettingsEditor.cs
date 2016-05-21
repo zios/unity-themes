@@ -17,20 +17,20 @@ namespace Zios.Editors.AnimationEditors{
 			var blendStyle = EditorStyles.popup.FixedWidth(70);
 			var wrapStyle = EditorStyles.popup.FixedWidth(100);
 			EditorGUILayout.BeginHorizontal();
-			"Name".DrawLabel(labelStyle);
-			"FPS".DrawLabel(labelStyle.FixedWidth(30));
-			"Blend".DrawLabel(labelStyle.FixedWidth(80));
-			"Wrap".DrawLabel(labelStyle.FixedWidth(100));
+			"Name".ToLabel().DrawLabel(labelStyle);
+			"FPS".ToLabel().DrawLabel(labelStyle.FixedWidth(30));
+			"Blend".ToLabel().DrawLabel(labelStyle.FixedWidth(80));
+			"Wrap".ToLabel().DrawLabel(labelStyle.FixedWidth(100));
 			EditorGUILayout.EndHorizontal();
 			foreach(var config in this.target.As<AnimationSettings>().animations){
 				EditorGUILayout.BeginHorizontal();
 				bool isPlaying = config == active;
-				config.name.DrawLabel(labelStyle);
+				config.name.ToLabel().DrawLabel(labelStyle);
 				config.fps = config.fps.Draw(null,fpsStyle);
 				config.blendMode = (AnimationBlendMode)config.blendMode.Draw("",blendStyle);
 				config.wrapMode = (WrapMode)config.wrapMode.Draw("",wrapStyle);
-				if(isPlaying && "Stop".DrawButton()){this.Stop();}
-				if(!isPlaying && "Play".DrawButton()){
+				if(isPlaying && "Stop".ToLabel().DrawButton()){this.Stop();}
+				if(!isPlaying && "Play".ToLabel().DrawButton()){
 					this.time = 0;
 					this.active = config;
 					Event.Pause("On Hierarchy Changed");

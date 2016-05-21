@@ -7,7 +7,7 @@ namespace Zios.Editors{
 			Vector2 limits = property.rangeLimits;
 			float value = property.floatValue;
 			float labelSize = Screen.width * 0.345f;
-			property.displayName.DrawLabel(position.SetWidth(labelSize));
+			property.displayName.ToLabel().DrawLabel(position.SetWidth(labelSize));
 			position = position.AddX(labelSize).AddWidth(-labelSize-69);
 			if(limits != Vector2.zero){
 				value = value.DrawSlider(position,limits.x,limits.y);

@@ -178,7 +178,7 @@ namespace Zios.Editors{
 			GUI.changed = false;
 			bool common = (value is string || value is bool || value is float || value is int || value is UnityObject || value is Enum || value is Vector2 || value is Vector3);
 			if(common){
-				label.DrawLabel(this.labelArea);
+				label.ToLabel().DrawLabel(this.labelArea);
 				labelDrawn = true;
 			}
 			int hash = 0;

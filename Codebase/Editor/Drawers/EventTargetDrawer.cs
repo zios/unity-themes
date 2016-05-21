@@ -22,13 +22,13 @@ namespace Zios.Editors{
 			EventTarget eventTarget = property.GetObject<EventTarget>();
 			string eventName = eventTarget.name;
 			GameObject target = eventTarget.target.Get();
-			label.DrawLabel(labelRect,null,true);
+			label.ToLabel().DrawLabel(labelRect,null,true);
 			if(target.IsNull()){this.targeted = false;}
 			string targetLabel = this.targeted ? "+" : "-";
 			string manualLabel = this.manual ? "M" : "S";
 			var buttonArea = valueRect.SetWidth(16);
-			if(targetLabel.DrawButton(buttonArea)){this.targeted = !this.targeted;}
-			if(manualLabel.DrawButton(buttonArea.AddX(18))){this.manual = !this.manual;}
+			if(targetLabel.ToLabel().DrawButton(buttonArea)){this.targeted = !this.targeted;}
+			if(manualLabel.ToLabel().DrawButton(buttonArea.AddX(18))){this.manual = !this.manual;}
 			valueRect = valueRect.Add(36,0,-36,0);
 			if(!this.targeted){
 				property.FindPropertyRelative("target").Draw(valueRect);
@@ -41,7 +41,7 @@ namespace Zios.Editors{
 					string error = "";
 					if(!target.IsNull()){error = "No <b>"+eventType+"</b> events found for target -- " + target.name;}
 					if(target.IsNull()){error = "No global <b>"+eventType+"</b> events exist.";}
-					error.DrawLabel(valueRect,GUI.skin.GetStyle("WarningLabel"));
+					error.ToLabel().DrawLabel(valueRect,GUI.skin.GetStyle("WarningLabel"));
 					return;
 				}
 				List<string> events = eventType == "Listen" ? Event.GetEventNames("Listen",target) : Event.GetEventNames("Caller",target);

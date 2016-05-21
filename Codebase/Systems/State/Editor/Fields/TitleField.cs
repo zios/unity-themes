@@ -15,7 +15,7 @@ namespace Zios.Editors.StateEditors{
 			}
 			style.fixedWidth = Screen.width-24;
 			Rect next = GUILayoutUtility.GetRect(title,style);
-			title.DrawLabel(next.AddXY(window.scroll),style);
+			title.ToLabel().DrawLabel(next.AddXY(window.scroll),style);
 			this.CheckClicked();
 		}
 		public override void Clicked(int button){

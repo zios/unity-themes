@@ -26,10 +26,10 @@ namespace Zios.Editors{
 				bool isFlat = this.shader.name.Contains("#") && !isHook;
 				bool isUpdated = !isFlat || this.shader.name.Split("#")[1].Split(".")[0] == this.hash;
 				GUI.enabled = !this.parent.IsNull() && (isHook || this.parent.extension != "zshader");
-				if(isFlat && "Unflatten".DrawButton()){VariableMaterial.Unflatten(editor.targets);}
-				if(!isFlat && "Flatten".DrawButton()){VariableMaterial.Flatten(true,editor.targets);}
+				if(isFlat && "Unflatten".ToLabel().DrawButton()){VariableMaterial.Unflatten(editor.targets);}
+				if(!isFlat && "Flatten".ToLabel().DrawButton()){VariableMaterial.Flatten(true,editor.targets);}
 				GUI.enabled = UnityEvent.current.shift || !isUpdated;
-				if("Update".DrawButton()){
+				if("Update".ToLabel().DrawButton()){
 					VariableMaterial.force = true;
 					var materials = editor.targets.Cast<Material>().ToList();
 					Event.AddStepper("On Editor Update",VariableMaterialEditor.RefreshStep,materials,50);

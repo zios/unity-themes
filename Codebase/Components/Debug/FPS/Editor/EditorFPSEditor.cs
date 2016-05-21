@@ -20,7 +20,7 @@ namespace Zios.Editors.DebugEditors{
 				this.skin = FileManager.GetAsset<GUISkin>("Gentleface-" + skinName + ".guiskin");
 			}
 			GUI.skin = this.skin;
-			this.text.DrawLabel(GUI.skin.GetStyle("LargeLabel"));
+			this.text.ToLabel().DrawLabel(GUI.skin.GetStyle("LargeLabel"));
 		}
 		public static void EditorUpdate(){
 			if(EditorFPSEditor.instance.IsNull()){return;}

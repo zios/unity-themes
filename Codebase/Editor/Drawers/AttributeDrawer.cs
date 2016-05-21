@@ -182,7 +182,7 @@ namespace Zios.Editors{
 			EditorGUIUtility.labelWidth = labelSize;
 		}
 		public virtual void DrawShaped(Rect area,AttributeData data,GUIContent label,bool? drawSpecial=null,bool? drawOperator=null){
-			label.DrawLabel(this.labelRect);
+			label.ToLabel().DrawLabel(this.labelRect);
 			Rect toggleRect = area.SetWidth(16);
 			bool toggleActive = this.targetMode.ContainsKey(data) ? this.targetMode[data] : !data.referenceID.IsEmpty();
 			this.targetMode[data] = toggleActive.Draw(toggleRect,"",GUI.skin.GetStyle("CheckmarkToggle"));
@@ -258,7 +258,7 @@ namespace Zios.Editors{
 				string targetName = targetScope.IsNull() ? "Target" : targetScope.ToString().Remove("(UnityEngine.GameObject)").Trim();
 				string typeName = data.GetType().Name.Trim("Attribute","Data");
 				string message = "<b>" + targetName.Truncate(24) + "</b> has no <b>"+typeName+"</b> attributes.";
-				message.DrawLabel(warningRect,GUI.skin.GetStyle("WarningLabel"));
+				message.ToLabel().DrawLabel(warningRect,GUI.skin.GetStyle("WarningLabel"));
 			}
 		}
 		public virtual void DrawSpecial(Rect area,AttributeData data){
@@ -324,7 +324,7 @@ namespace Zios.Editors{
 			}
 			else{
 				string message = "[expand for details]";
-				message.DrawLabel(this.valueRect,GUI.skin.GetStyle("WarningLabel"));
+				message.ToLabel().DrawLabel(this.valueRect,GUI.skin.GetStyle("WarningLabel"));
 			}
 		}
 		public virtual void DrawGroupRow(AttributeData data,int index,bool drawAdvanced){

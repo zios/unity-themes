@@ -35,10 +35,10 @@ namespace Zios.Editors{
 			this.shaders = this.shaders.Remove(this.goal).Resize(this.sourceCount);
 			this.labelWidth = GUILayout.Width(Screen.width/2-20);
 			this.sourceCount = Mathf.Max(1,this.sourceCount.DrawInt("Source Count"));
-			if("Shaders".DrawFoldout()){this.DrawShaders();}
+			if("Shaders".ToLabel().DrawFoldout()){this.DrawShaders();}
 			this.BuildKeywords();
-			if("Keywords".DrawFoldout()){this.DrawKeywords();}
-			if("Process".DrawButton()){this.Process();}
+			if("Keywords".ToLabel().DrawFoldout()){this.DrawKeywords();}
+			if("Process".ToLabel().DrawButton()){this.Process();}
 			EditorGUILayout.EndScrollView();
 		}
 		public void DrawShaders(){

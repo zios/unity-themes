@@ -15,19 +15,19 @@ namespace Zios.Editors{
 			Event.disabled = (EventDisabled)Event.disabled.DrawMask("Disabled");
 			Event.debugScope = (EventDebugScope)Event.debugScope.DrawMask("Debug Scope");
 			Event.debug = (EventDebug)Event.debug.DrawMask("Debug");
-			if("Listeners".DrawFoldout()){
+			if("Listeners".ToLabel().DrawFoldout()){
 				EditorGUI.indentLevel += 1;
 				if(this.listeners.Count != Event.listeners.Count){this.BuildListeners();}
 				var labelStyle = GUI.skin.label.FixedWidth(200);
 				var valueStyle = GUI.skin.label.FixedWidth(350);
 				var checkStyle = GUI.skin.toggle.FixedWidth(16);
 				foreach(var item in this.listeners){
-					if(item.Key.DrawFoldout()){
+					if(item.Key.ToLabel().DrawFoldout()){
 						EditorGUI.indentLevel += 1;
 						foreach(var listener in item.Value){
 							GUILayout.BeginHorizontal();
-							listener.name.DrawLabel(labelStyle,true);
-							Event.GetMethodName(listener.method).DrawLabel(valueStyle);
+							listener.name.ToLabel().DrawLabel(labelStyle,true);
+							Event.GetMethodName(listener.method).ToLabel().DrawLabel(valueStyle);
 							listener.isStatic.Draw(null,checkStyle);
 							listener.permanent.Draw(null,checkStyle);
 							listener.unique.Draw(null,checkStyle);

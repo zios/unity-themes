@@ -72,7 +72,7 @@ namespace Zios.Editors{
 				GUILayout.Space(1);
 			}
 			EditorGUILayout.EndScrollView();
-			if("Add Component".DrawButton()){
+			if("Add Component".ToLabel().DrawButton()){
 				//var area = GUILayoutUtility.GetLastRect();
 				var componentWindow = Utility.GetUnityType("AddComponentWindow");
 				componentWindow.CallExactMethod("Show",cursorArea,this.target.AsArray());
