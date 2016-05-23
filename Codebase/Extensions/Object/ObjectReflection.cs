@@ -264,7 +264,6 @@ namespace Zios{
 		public static void ClearVariable(this object current,string name,BindingFlags flags=allFlags){
 			Type type = current is Type ? (Type)current : current.GetType();
 			current = current.IsStatic() ? null : current;
-			;
 			FieldInfo field = Class.GetField(type,name,flags);
 			if(!field.IsNull() && !field.FieldType.IsGenericType){
 				field.SetValue(current,null);

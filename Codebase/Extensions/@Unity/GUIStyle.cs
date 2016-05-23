@@ -210,5 +210,34 @@ namespace Zios{
 			current.name = name;
 			return current;
 		}
+		public static GUIStyle Use(this GUIStyle current,GUIStyle other){
+			if(other.IsNull()){return current;}
+			current.normal = other.normal;
+			current.hover = other.hover;
+			current.focused = other.focused;
+			current.active = other.active;
+			current.onNormal = other.onNormal;
+			current.onHover = other.onHover;
+			current.onFocused = other.onFocused;
+			current.onActive = other.onActive;
+			current.border = other.border;
+			current.margin = other.margin;
+			current.padding = other.padding;
+			current.overflow = other.overflow;
+			current.font = other.font;
+			current.fontSize = other.fontSize;
+			current.fontStyle = other.fontStyle;
+			current.alignment = other.alignment;
+			current.wordWrap = other.wordWrap;
+			current.richText = other.richText;
+			current.clipping = other.clipping;
+			current.imagePosition = other.imagePosition;
+			current.contentOffset = other.contentOffset;
+			current.fixedWidth = other.fixedWidth;
+			current.fixedHeight = other.fixedHeight;
+			current.stretchWidth = other.stretchWidth;
+			current.stretchHeight = other.stretchHeight;
+			return current;
+		}
 	}
 }

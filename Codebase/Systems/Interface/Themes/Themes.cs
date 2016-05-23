@@ -42,27 +42,23 @@ namespace Zios{
 		}
 		public static void Setup(){
 			if(Themes.needsRefresh){
-				Debug.Log("if(Themes.needsRefresh) - lines 43-47");
 				Themes.UpdateSettings();
 				Utility.RepaintAll();
 				Themes.needsRefresh = false;
 			}
 			if(Themes.needsRebuild){
-				Debug.Log("if(Themes.needsRebuild) - lines 49-55");
 				Themes.UpdateSettings();
 				Themes.RebuildStyles(true);
 				Themes.needsRebuild = false;
 				Themes.needsRefresh = true;
 			}
 			if(!Themes.setup && !EditorApplication.isCompiling){
-				Debug.Log("if(!Themes.setup && !EditorApplication.isCompiling) - lines 56-68");
 				Themes.Load();
 				Themes.UpdateSettings();
 				Themes.UpdateColors();
 				Themes.Apply();
 				Utility.RepaintAll();
 				if(!Themes.setup){
-					Debug.Log("if(!Themes.setup) inside if(!Themes.setup && !EditorApplication.isCompiling - lines 63-67");
 					Themes.setup = true;
 					Themes.needsRebuild = true;
 				}
@@ -488,6 +484,8 @@ namespace Zios{
 			skin.settings.cursorColor = theme.palette.backgroundLight;
 			skin.settings.selectionColor = theme.palette.backgroundDark;
 			skin.GetStyle("TabWindowBackground").normal.background = theme.windowBackgroundOverride;
+			Utility.GetUnityType("Toolbar.Styles").GetVariable<GUIStyle>("appToolbar").Use(skin.GetStyle("AppToolbar"));
+			Utility.GetUnityType("Toolbar.Styles").GetVariable<GUIStyle>("dropdown").Use(skin.GetStyle("Dropdown"));
 			Utility.GetUnityType("SceneRenderModeWindow.Styles").SetVariable("sMenuItem",skin.GetStyle("MenuItem"));
 			Utility.GetUnityType("SceneRenderModeWindow.Styles").SetVariable("sSeparator",skin.GetStyle("sv_iconselector_sep"));
 			typeof(EditorGUIUtility).SetVariable("kDarkViewBackground",theme.palette.background);
