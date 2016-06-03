@@ -119,10 +119,9 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy $(TargetPath) $(ProjectDir)
-rmdir /q /s ..\obj
-move ZiosThemes.dll ..
-del ZiosThemes.pdb</PostBuildEvent>
+    <PostBuildEvent>rmdir /q /s $(ProjectDir)obj
+move $(TargetPath) $(ProjectDir)
+del $(TargetDir)ZiosThemes.pdb</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
