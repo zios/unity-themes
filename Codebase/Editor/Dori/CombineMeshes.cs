@@ -113,7 +113,7 @@ namespace Zios.Editors{
 						MeshFilter containerFilter = container.AddComponent<MeshFilter>();
 						string path = EditorSceneManager.GetActiveScene().name.GetDirectory();
 						string folder = "@" + EditorSceneManager.GetActiveScene().name.GetFileName();
-						Directory.CreateDirectory(path + "/" + folder + "/");
+						FileManager.Create(path + "/" + folder + "/");
 						AssetDatabase.CreateAsset(mesh,path + "/" + folder + "/Combined" + meshNumber + ".asset");
 						containerFilter.mesh = mesh;
 						containerRenderer.material = new Material(material);

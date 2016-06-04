@@ -8,7 +8,25 @@ namespace Zios{
 	using CallbackFunction = UnityEditor.EditorApplication.CallbackFunction;
 	#endif
 	public static class Hook{
-		public static bool disabled = false;
+		public static bool disabled;
+		public static bool hidden;
+		static Hook(){
+			#if UNITY_EDITOR
+			Hook.hidden = EditorPrefs.GetBool("EditorSettings-HideHooks",false);
+			//Hook.hidden = true;
+			#endif
+		}
+		public static void SetHidden(bool state){
+			foreach(var current in Locate.GetSceneObjects()){
+				if(current.name != "@Main"){continue;}
+				current.hideFlags = state ? HideFlags.HideInHierarchy : HideFlags.None;
+				foreach(var component in Locate.GetObjectComponents<Component>(current)){
+					component.hideFlags = current.hideFlags;
+				}
+			}
+			Hook.hidden = state;
+			Utility.Destroy(new GameObject("@*#&"));
+		}
 	}
 	public class Hook<Singleton> where Singleton : Component{
 		private bool setup;
@@ -40,11 +58,12 @@ namespace Zios{
 			if(getInstance().IsNull()){
 				var path = Locate.GetScenePath("@Main");
 				setInstance(path.GetComponent<Singleton>());
-				if(getInstance().IsNull()){
+				if(getInstance().IsNull() && !Hook.hidden){
 					Debug.Log("[Hook] : Auto-creating " + typeof(Singleton).Name + " Singleton.");
 					setInstance(path.AddComponent<Singleton>());
 				}
 			}
+			Hook.SetHidden(Hook.hidden);
 		}
 	}
 }

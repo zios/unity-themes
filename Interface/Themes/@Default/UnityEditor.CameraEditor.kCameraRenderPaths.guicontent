@@ -1,0 +1,14 @@
+[0]
+text = Use Player Settings
+
+[1]
+text = Forward
+
+[2]
+text = Deferred
+
+[3]
+text = Legacy Vertex Lit
+
+[4]
+text = Legacy Deferred (light prepass)

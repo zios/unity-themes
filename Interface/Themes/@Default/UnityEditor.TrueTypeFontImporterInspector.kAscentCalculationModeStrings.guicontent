@@ -1,0 +1,8 @@
+[0]
+text = Legacy version 2 mode (glyph bounding boxes)
+
+[1]
+text = Face ascender metric
+
+[2]
+text = Face bounding box metric

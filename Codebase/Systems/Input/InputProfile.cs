@@ -11,7 +11,7 @@ namespace Zios.Inputs{
 		public InputProfile(string name){this.name = name;}
 		public void Save(){
 			var contents = "";
-			var file = FileManager.Find(this.name+".profile",true,false) ?? FileManager.CreateFile(this.name+".profile");
+			var file = FileManager.Find(this.name+".profile",true,false) ?? FileManager.Create(this.name+".profile");
 			contents = contents.AddLine("[Input-Devices]");
 			this.requiredDevices.ForEach(x=>contents = contents.AddLine(x));
 			var activeGroup = "";

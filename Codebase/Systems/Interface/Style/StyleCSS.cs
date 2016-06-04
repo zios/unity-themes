@@ -18,7 +18,7 @@ namespace Zios{
 				output.Append(Style.SaveCSS(style,null,false));
 			}
 			if(output.Length > 0){
-				var file = FileManager.CreateFile(path+"/"+skin.name.Split("-")[0]+"/"+skin.name+".css");
+				var file = FileManager.Create(path+"/"+skin.name.Split("-")[0]+"/"+skin.name+".css");
 				file.WriteText(output.ToString().Trim());
 			}
 		}

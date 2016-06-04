@@ -253,7 +253,7 @@ namespace Zios.Editors.MaterialEditors{
 		public Shader Save(string path,string menuPath){
 			string output = this.Generate(menuPath);
 			string folder =	path.Substring(0,path.LastIndexOf("/")) + "/";
-			Directory.CreateDirectory(folder);
+			FileManager.Create(folder);
 			using(StreamWriter file = new StreamWriter(path,false)){
 				file.Write(output);
 			}
@@ -426,7 +426,7 @@ namespace Zios.Editors.MaterialEditors{
 			this.Load(assetPath);
 		}
 		public void Load(string path){
-			path = File.Exists(path) ? path : FileManager.Find(path).path;
+			path = FileManager.Exists(path) ? path : FileManager.Find(path).path;
 			string contents = "";
 			int parsePass = 0;
 			using(StreamReader file = new StreamReader(path)){

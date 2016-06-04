@@ -1,32 +1,28 @@
 using System;
-using System.IO;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 namespace Zios{
 	using Events;
 	using Interface;
-	using Containers;
 	#if UNITY_EDITOR
 	using UnityEditor;
 	#if UNITY_EDITOR_WIN
 	using Microsoft.Win32;
 	#endif
-	public static class Themes{
+	[InitializeOnLoad]
+	public static partial class Themes{
 		public static List<ThemePalette> palettes = new List<ThemePalette>();
 		public static List<Theme> all = new List<Theme>();
 		public static Theme active;
 		[NonSerialized] public static int themeIndex;
 		[NonSerialized] public static int paletteIndex;
-		[NonSerialized] public static string storagePath = "Assets/@Zios/Interface/Skins/";
+		[NonSerialized] public static string storagePath;
 		[NonSerialized] public static bool setup;
 		[NonSerialized] public static bool needsRefresh;
 		[NonSerialized] public static bool needsRebuild;
 		[NonSerialized] private static Color lastSystemColor = Color.clear;
 		[NonSerialized] private static float nextUpdate;
-		[NonSerialized] public static string createName;
-		[NonSerialized] public static Dictionary<string,object> styleGroupBuffer = new Dictionary<string,object>();
-		[NonSerialized] public static Hierarchy<string,string,GUIContent> contentBuffer = new Hierarchy<string,string,GUIContent>();
 		//[NonSerialized] public static float verticalSpacing = 2.0f;
 		static Themes(){
 			//SceneView.onSceneGUIDelegate += (a)=>Themes.Setup();
@@ -53,6 +49,7 @@ namespace Zios{
 				Themes.needsRefresh = true;
 			}
 			if(!Themes.setup && !EditorApplication.isCompiling){
+				Themes.storagePath = FileManager.Find("*.unitytheme").GetFolderPath().Trim("/","\\").GetDirectory()+"/";
 				Themes.Load();
 				Themes.UpdateSettings();
 				Themes.UpdateColors();
@@ -149,6 +146,7 @@ namespace Zios{
 				EditorPrefs.SetString("EditorTheme",Themes.all[Themes.themeIndex].name);
 				Themes.UpdateSettings();
 				Themes.RebuildStyles();
+				Themes.Apply();
 			}
 			if(GUI.changed){
 				//Themes.Create();
@@ -156,176 +154,6 @@ namespace Zios{
 				Themes.needsRefresh = true;
 				Utility.RepaintAll();
 			}
-		}
-		//=================================
-		// Saving
-		//=================================
-		public static void Create(string name="@Default"){
-			Themes.createName = name;
-			Themes.styleGroupBuffer.Clear();
-			var allTypes = typeof(UnityEditor.Editor).Assembly.GetTypes().Where(x=>!x.IsNull()).ToArray();
-			Event.AddStepper("On Editor Update",Themes.CreateStep,allTypes,50);
-		}
-		public static void CreateStep(object collection,int itemIndex){
-			var types = (Type[])collection;
-			var type = types[itemIndex];
-			if(!type.Name.ContainsAny("$","__Anon","<")){
-				Event.stepperTitle = "Scanning " + types.Length + " Types";
-				Event.stepperMessage = "Analyzing : " + type.Name;
-				var terms = new string[]{"Styles","styles","s_GOStyles","s_Current","s_Styles","m_Styles","ms_Styles","constants"};
-				foreach(var term in terms){
-					if(!type.HasVariable(term,ObjectExtension.staticFlags)){continue;}
-					try{
-						var styleGroup = type.GetVariable(term,-1,ObjectExtension.staticFlags) ?? Activator.CreateInstance(type.GetVariableType(term));
-						Themes.styleGroupBuffer[type.FullName+"."+term] = styleGroup;
-					}
-					catch{}
-				}
-				try{
-					var styles = type.GetVariables<GUIStyle>(null,ObjectExtension.staticFlags);
-					var content = type.GetVariables<GUIContent>(null,ObjectExtension.staticFlags);
-					var contentGroups = type.GetVariables<GUIContent[]>(null,ObjectExtension.staticFlags);
-					if(styles.Count > 0){Themes.styleGroupBuffer[type.FullName] = styles;}
-					if(content.Count > 0){Themes.contentBuffer[type.FullName] = content;}
-					foreach(var contentSet in contentGroups){
-						if(contentSet.Value.IsNull() || contentSet.Value.Length < 1){continue;}
-						var contents = Themes.contentBuffer[type.FullName+"."+contentSet.Key] = new Dictionary<string,GUIContent>();
-						for(int index=0;index<contentSet.Value.Length;++index){
-							contents[index.ToString()] = contentSet.Value[index];
-						}
-					}
-				}
-				catch{}
-			}
-			if(itemIndex >= types.Length-1){
-				var savePath = Themes.storagePath+Themes.createName;
-				EditorUtility.ClearProgressBar();
-				Directory.CreateDirectory(savePath);
-				Directory.CreateDirectory(savePath+"/GUIContent");
-				Directory.CreateDirectory(savePath+"/Background");
-				foreach(var buffer in Themes.styleGroupBuffer){
-					var customStyles = new List<GUIStyle>();
-					var skinPath = savePath+"/"+buffer.Key+".guiskin";
-					var contentPath = savePath+"/"+buffer.Key+".guicontent";
-					var styles = buffer.Value is Dictionary<string,GUIStyle> ? (Dictionary<string,GUIStyle>)buffer.Value : buffer.Value.GetVariables<GUIStyle>().Distinct();
-					foreach(var styleData in styles){
-						var style = new GUIStyle(styleData.Value);
-						if(!buffer.Key.Contains("s_Current")){style.Rename(styleData.Key);}
-						customStyles.Add(style);
-					}
-					if(customStyles.Count > 0){
-						GUISkin newSkin = ScriptableObject.CreateInstance<GUISkin>();
-						newSkin.name = buffer.Key;
-						newSkin.customStyles = customStyles.ToArray();
-						AssetDatabase.CreateAsset(newSkin,skinPath);
-						newSkin.SaveBackgrounds(savePath+"/Background/");
-					}
-					Themes.SaveGUIContent(contentPath,buffer.Value.GetVariables<GUIContent>());
-				}
-				foreach(var buffer in Themes.contentBuffer){
-					var contentPath = savePath+"/"+buffer.Key+".guicontent";
-					Themes.SaveGUIContent(contentPath,buffer.Value);
-				}
-				var skin = EditorGUIUtility.GetBuiltinSkin(EditorSkin.Inspector);
-				skin = ScriptableObject.CreateInstance<GUISkin>().Use(skin);
-				skin.SaveBackgrounds(savePath+"/Background/");
-				AssetDatabase.CreateAsset(skin,savePath+"/"+Themes.createName+".guiskin");
-			}
-		}
-		public static void SaveGUIContent(string path,Dictionary<string,GUIContent> data){
-			if(data.Count < 1){return;}
-			var contents = "";
-			var keys = data.Keys.ToList();
-			keys.Sort();
-			foreach(var key in keys){
-				if(key.ContainsAny("<",">")){continue;}
-				GUIContent value = data[key];
-				contents = contents.AddLine("["+key+"]");
-				if(!value.text.IsEmpty()){contents = contents.AddLine("text = "+value.text);}
-				if(!value.image.IsNull()){
-					var image = value.image;
-					var imagePath = path.GetDirectory()+"/GUIContent/"+image.name+".png";
-					contents = contents.AddLine("image = "+image.name);
-					if(!File.Exists(imagePath)){
-						image.SaveAs(imagePath,true);
-					}
-				}
-				if(!value.tooltip.IsEmpty()){contents = contents.AddLine("tooltip = "+value.tooltip);}
-				contents = contents.AddLine("");
-			}
-			FileManager.CreateFile(path).WriteText(contents.Trim());
-		}
-		public static void SavePalette(){
-			var path = EditorUtility.SaveFilePanel("Save Palette",Themes.storagePath+"@Palettes","TheColorsDuke","unitypalette");
-			if(path.Length > 0){
-				Themes.LoadColors();
-				var palette = Themes.active.palette;
-				var file = FileManager.CreateFile(path);
-				var contents = "";
-				contents = contents.AddLine("Color "+palette.background.ToHex(false));
-				contents = contents.AddLine("DarkColor "+palette.backgroundDark.value.Serialize());
-				contents = contents.AddLine("LightColor "+palette.backgroundLight.value.Serialize());
-				file.WriteText(contents);
-				EditorPrefs.SetString("EditorPalette",path.GetFileName());
-				FileManager.Refresh();
-				Themes.setup = false;
-			}
-		}
-		//=================================
-		// Loading
-		//=================================
-		public static void Load(){
-			Themes.all.Clear();
-			Themes.palettes.Clear();
-			foreach(var file in FileManager.FindAll("*.unitypalette")){
-				var palette = Themes.palettes.AddNew();
-				palette.name = file.name;
-				foreach(var line in file.GetText().GetLines()){
-					if(line.Trim().IsEmpty()){continue;}
-					var term = line.Parse(""," ").Trim();
-					var value = line.Parse(" ").Trim().Trim("=").Trim();
-					if(term.Matches("Color",true)){palette.background = value.ToColor();}
-					else if(term.Matches("DarkColor",true)){palette.backgroundDark = value;}
-					else if(term.Matches("LightColor",true)){palette.backgroundLight = value;}
-				}
-
-			}
-			var themes = FileManager.FindAll("*.unitytheme");
-			foreach(var file in themes){
-				Theme theme = null;
-				Theme root = null;
-				foreach(var line in file.GetText().GetLines()){
-					if(line.Trim().IsEmpty()){continue;}
-					if(line.Contains("[")){
-						string name = theme.IsNull() ? file.name : line.Parse("[","]");
-						theme = root.IsNull() ? Themes.all.AddNew() : root.variants.AddNew();
-						theme.name = name.ToPascalCase();
-						theme.path = file.GetAssetPath().GetDirectory();
-						if(root.IsNull()){root = theme;}
-						if(root.variants.Count > 0){
-							root.variants.Last().Use(root);
-						}
-						continue;
-					}
-					if(theme.IsNull()){continue;}
-					var term = line.Parse(""," ").Trim();
-					var value = line.Parse(" ").Trim().Trim("=").Trim();
-					if(value.Matches("None",true)){continue;}
-					else if(term.Matches("AllowSystemColor",true)){theme.allowSystemColor = value.ToBool();}
-					else if(term.Matches("AllowCustomization",true)){theme.allowCustomization = value.ToBool();}
-					else if(term.Matches("AllowColorCustomization",true)){theme.allowColorCustomization = value.ToBool();}
-					else if(term.Matches("UseSystemColor",true)){theme.useSystemColor = value.ToBool();}
-					else if(term.Matches("UseColorAssets",true)){theme.useColorAssets = value.ToBool();}
-					else if(term.Matches("FontOverride",true)){theme.fontOverride = FileManager.GetAsset<Font>(value);}
-					else if(term.Matches("WindowBackgroundOverride",true)){theme.windowBackgroundOverride = FileManager.GetAsset<Texture2D>(value);}
-					else if(term.Matches("FontScale",true)){theme.fontScale = value.ToFloat();}
-					else if(term.Matches("Palette",true)){theme.palette = palettes.Find(x=>x.name==value) ?? new ThemePalette();}
-				}
-			}
-			var activeThemeName = EditorPrefs.GetString("EditorTheme","@Default");
-			var activePaletteName = EditorPrefs.GetString("EditorPalette","Slate");
-			Themes.themeIndex = Themes.all.FindIndex(x=>x.name==activeThemeName).Max(0);
-			Themes.paletteIndex = Themes.palettes.FindIndex(x=>x.name==activePaletteName).Max(0);
 		}
 		public static void SaveColors(){
 			var theme = Themes.active;
@@ -400,8 +228,9 @@ namespace Zios{
 		}
 		public static void UpdateAssets(string colorName,Color color){
 			var theme = Themes.active;
-			var imagePath = theme.path+"/"+theme.name+colorName+".png";
-			var borderPath = theme.path+"/"+theme.name+colorName+"Border.png";
+			FileManager.Create(theme.path+"/Background");
+			var imagePath = theme.path+"/Background/"+theme.name+colorName+".png";
+			var borderPath = theme.path+"/Background/"+theme.name+colorName+"Border.png";
 			var image = AssetDatabase.LoadAssetAtPath<Texture2D>(imagePath);
 			var border = AssetDatabase.LoadAssetAtPath<Texture2D>(borderPath);
 			if(image.IsNull()){

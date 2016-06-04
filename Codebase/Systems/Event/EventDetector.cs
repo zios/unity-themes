@@ -4,6 +4,7 @@ using UnityEngine;
 namespace Zios.Events{
 	[AddComponentMenu("")][ExecuteInEditMode]
 	public class EventDetector : MonoBehaviour{
+		private static bool showTime = false;
 		private float loadStart;
 		[NonSerialized] public static bool loading = true;
 		public void Loading(){
@@ -46,7 +47,9 @@ namespace Zios.Events{
 			if(!Application.isLoadingLevel && EventDetector.loading){
 				Event.Call("On Level Was Loaded");
 				float totalTime = Mathf.Max(Time.realtimeSinceStartup-this.loadStart,0);
-				Debug.Log("[Scene] : Load complete -- " + (totalTime) + " seconds.");
+				if(EventDetector.showTime){
+					Debug.Log("[Scene] : Load complete -- " + (totalTime) + " seconds.");
+				}
 				this.loadStart = 0;
 				EventDetector.loading = false;
 			}
@@ -56,7 +59,7 @@ namespace Zios.Events{
 		public virtual void LateUpdate(){Event.Call("On Late Update");}
 		public virtual void OnPlayerConnected(){Event.Call("On Player Connected");}
 		public virtual void OnPlayerDisconnected(){Event.Call("On Player Disconnected");}
-		public virtual void OnLevelWasLoaded(int level){Event.Call("On Level Was Loaded",level);}
+		//public virtual void OnLevelWasLoaded(int level){Event.Call("On Level Was Loaded",level);}
 		public virtual void OnMasterServerEvent(){Event.Call("On Master Server Event");}
 		public virtual void OnApplicationQuit(){Event.Call("On Application Quit");}
 		public virtual void OnApplicationFocus(){Event.Call("On Application Focus");}

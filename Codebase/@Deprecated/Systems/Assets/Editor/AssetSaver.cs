@@ -307,7 +307,7 @@ namespace Zios{
 		private static void SaveXml(string foldersPath,NeutralEntity neutralEntity){
 			String path = foldersPath + "\\" + neutralEntity.entityType;
 			List<string> serializedCodes = new List<string>();
-			System.IO.Directory.CreateDirectory(path);
+			FileManager.Create(path);
 			XmlDocument xmlDoc = new XmlDocument();
 			XmlElement xmlElement = BuildXml(xmlDoc,neutralEntity.entityType,neutralEntity,serializedCodes);
 			xmlDoc.AppendChild(xmlElement);

@@ -1,0 +1,66 @@
+[builtinSettings]
+text = Built-in shader settings
+
+[fogExp]
+text = Exponential
+tooltip = Include support for Exponential fog.
+
+[fogExp2]
+text = Exponential Squared
+tooltip = Include support for Exponential Squared fog.
+
+[fogFromScene]
+text = From current scene
+tooltip = Calculate fog modes used by the current scene.
+
+[fogLinear]
+text = Linear
+tooltip = Include support for Linear fog.
+
+[fogModes]
+text = Fog modes
+
+[lightmapDirCombined]
+text = Baked Directional
+tooltip = Include support for baked directional lightmaps.
+
+[lightmapDirSeparate]
+text = Baked Directional Specular
+tooltip = Include support for baked directional specular lightmaps.
+
+[lightmapDynamicDirCombined]
+text = Realtime Directional
+tooltip = Include support for realtime directional lightmaps.
+
+[lightmapDynamicDirSeparate]
+text = Realtime Directional Specular
+tooltip = Include support for realtime directional specular lightmaps.
+
+[lightmapDynamicPlain]
+text = Realtime Non-Directional
+tooltip = Include support for realtime non-directional lightmaps.
+
+[lightmapFromScene]
+text = From current scene
+tooltip = Calculate lightmap modes used by the current scene.
+
+[lightmapModes]
+text = Lightmap modes
+
+[lightmapPlain]
+text = Baked Non-Directional
+tooltip = Include support for baked non-directional lightmaps.
+
+[shaderPreloadClear]
+text = Clear
+tooltip = Clear currently tracked shader variant information.
+
+[shaderPreloadSave]
+text = Save to asset...
+tooltip = Save currently tracked shaders into a Shader Variant Manifest asset.
+
+[shaderPreloadSettings]
+text = Shader preloading
+
+[shaderStrippingSettings]
+text = Shader stripping

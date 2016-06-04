@@ -1,0 +1,7 @@
+[m_EnableSuspendLabel]
+text = Auto Mixer Suspend
+tooltip = Enables/disables suspending of processing in order to save CPU when the RMS signal level falls under the defined threshold (in dB). Mixers resume processing when an AudioSource referencing them starts playing again.
+
+[m_SuspendThresholdLabel]
+text =     Threshold Volume
+tooltip = The level of the Master Group at which the mixer suspends processing in order to save CPU. Mixers resume processing when an AudioSource referencing them starts playing again.

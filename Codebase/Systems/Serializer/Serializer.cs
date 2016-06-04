@@ -150,8 +150,8 @@ namespace Zios{
 				if(wasSaved){empty = false;}
 			}
 			this.Add("}");
-			if(File.Exists(filePath) || !empty){
-				Directory.CreateDirectory(path);
+			if(FileManager.Exists(filePath) || !empty){
+				FileManager.Create(path);
 				File.WriteAllText(filePath,this.contents.ToString());
 			}
 		}

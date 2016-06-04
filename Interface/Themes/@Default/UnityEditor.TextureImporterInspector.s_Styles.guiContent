@@ -1,0 +1,136 @@
+[alphaIsTransparency]
+text = Alpha Is Transparency
+
+[borderMipMaps]
+text = Border Mip Maps
+
+[bumpFiltering]
+text = Filtering
+
+[bumpiness]
+text = Bumpiness
+
+[compressionQuality]
+text = Compression Quality
+
+[compressionQualitySlider]
+text = Compression Quality
+tooltip = Use the slider to adjust compression quality from 0 (Fastest) to 100 (Best)
+
+[cookieType]
+text = Light Type
+
+[cubemap]
+text = Mapping
+
+[cubemapConvolution]
+text = Convolution Type
+
+[cubemapConvolutionExp]
+text = Exponent
+tooltip = Defines smoothness curve (x^exponent) for convolution.
+
+[cubemapConvolutionSimple]
+text = Glossy Reflection
+
+[cubemapConvolutionSteps]
+text = Steps
+tooltip = Number of smoothness steps represented in mip maps of the cubemap.
+
+[defaultPlatform]
+text = Default
+
+[etc1Compression]
+text = Compress using ETC1 (split alpha channel)
+tooltip = This texture will be placed in an atlas that will be compressed using ETC1 compression, provided that the Texture Compression for Android build settings is set to 'ETC (default)'.
+
+[filterMode]
+text = Filter Mode
+
+[generateAlphaFromGrayscale]
+text = Alpha from Grayscale
+tooltip = Generate texture's alpha channel from grayscale.
+
+[generateBumpmap]
+text = Create bump map
+
+[generateCubemap]
+text = Generate Cubemap
+
+[generateFromBump]
+text = Create from Grayscale
+tooltip = The grayscale of the image is used as a heightmap for generating the normal map.
+
+[generateMipMaps]
+text = Generate Mip Maps
+
+[lightmap]
+text = Lightmap
+tooltip = Enable if this is a lightmap (best if stored in EXR format).
+
+[linearTexture]
+text = Bypass sRGB Sampling
+tooltip = Texture will not be converted from gamma space to linear when sampled. Enable for IMGUI textures and non-color textures.
+
+[mipmapFadeOut]
+text = Fade Range
+
+[mipmapFadeOutToggle]
+text = Fadeout Mip Maps
+
+[mipMapFilter]
+text = Mip Map Filtering
+
+[mipMapsInLinearSpace]
+text = In Linear Space
+tooltip = Perform mip map generation in linear space.
+
+[normalmap]
+text = Normal Map
+tooltip = Enable if this texture is a normal map baked out of a 3D package.
+
+[npot]
+text = Non Power of 2
+tooltip = How non-power-of-two textures are scaled on import.
+
+[readWrite]
+text = Read/Write Enabled
+tooltip = Enable to be able to access the raw pixel data from code.
+
+[rgbmEncoding]
+text = Encode as RGBM
+tooltip = Encode texture as RGBM (for HDR textures).
+
+[seamlessCubemap]
+text = Fixup Edge Seams
+tooltip = Enable if this texture is used for glossy reflections.
+
+[spriteAlignment]
+text = Pivot
+tooltip = Sprite pivot point in its localspace. May be used for syncing animation frames of different sizes.
+
+[spriteExtrude]
+text = Extrude Edges
+tooltip = How much empty area to leave around the sprite in the generated mesh.
+
+[spriteMeshType]
+text = Mesh Type
+tooltip = Type of sprite mesh to generate.
+
+[spriteMode]
+text = Sprite Mode
+
+[spritePackingTag]
+text = Packing Tag
+tooltip = Tag for the Sprite Packing system.
+
+[spritePixelsPerUnit]
+text = Pixels Per Unit
+tooltip = How many pixels in the sprite correspond to one unit in the world.
+
+[textureFormat]
+text = Format
+
+[textureType]
+text = Texture Type
+tooltip = What will this texture be used for?

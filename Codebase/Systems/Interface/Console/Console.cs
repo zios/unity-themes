@@ -486,7 +486,7 @@ namespace Zios.Interface{
 			}
 		}
 		public static void LoadConfig(string name){
-			if(name != "" && !Application.isWebPlayer && File.Exists(name)){
+			if(name != "" && !Application.isWebPlayer && FileManager.Exists(name)){
 				using(StreamReader file = new StreamReader(name)){
 					string line = "";
 					while((line = file.ReadLine()) != null){
@@ -499,7 +499,7 @@ namespace Zios.Interface{
 			Console.LoadConfig(values[1]);
 		}
 		public static void DeleteConfig(string name){
-			if(name != "" && File.Exists(name)){
+			if(name != "" && FileManager.Exists(name)){
 				File.Delete(name);
 			}
 		}

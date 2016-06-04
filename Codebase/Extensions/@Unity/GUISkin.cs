@@ -1,7 +1,9 @@
-using System.Collections.Generic;
 using System;
-using System.Linq;
+using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 namespace Zios{
 	public static class GUISkinExtension{
 		public static GUISkin Copy(this GUISkin current){
@@ -67,43 +69,63 @@ namespace Zios{
 			current.settings.selectionColor = other.settings.selectionColor;
 			return current;
 		}
-		public static void SaveBackgrounds(this GUISkin current,string path){
-			Action<GUIStyleState> SaveState = (state)=>{
-				if(!state.background.IsNull()){
-					state.background.SaveAs(path+state.background.name+".png",true);
-				}
-			};
-			Action<GUIStyle> SaveStyle = (style)=>{
-				SaveState(style.normal);
-				SaveState(style.hover);
-				SaveState(style.focused);
-				SaveState(style.active);
-				SaveState(style.onNormal);
-				SaveState(style.onHover);
-				SaveState(style.onFocused);
-				SaveState(style.onActive);
-			};
-			SaveStyle(current.box);
-			SaveStyle(current.button);
-			SaveStyle(current.toggle);
-			SaveStyle(current.label);
-			SaveStyle(current.textField);
-			SaveStyle(current.textArea);
-			SaveStyle(current.window);
-			SaveStyle(current.horizontalSlider);
-			SaveStyle(current.horizontalSliderThumb);
-			SaveStyle(current.verticalSlider);
-			SaveStyle(current.verticalSliderThumb);
-			SaveStyle(current.horizontalScrollbar);
-			SaveStyle(current.horizontalScrollbarThumb);
-			SaveStyle(current.horizontalScrollbarLeftButton);
-			SaveStyle(current.horizontalScrollbarRightButton);
-			SaveStyle(current.verticalScrollbar);
-			SaveStyle(current.verticalScrollbarThumb);
-			SaveStyle(current.verticalScrollbarUpButton);
-			SaveStyle(current.verticalScrollbarDownButton);
-			SaveStyle(current.scrollView);
-			foreach(var style in current.customStyles){SaveStyle(style);}
+		public static GUIStyle[] GetStyles(this GUISkin current){
+			var styles = new List<GUIStyle>();
+			styles.Add(current.box);
+			styles.Add(current.button);
+			styles.Add(current.toggle);
+			styles.Add(current.label);
+			styles.Add(current.textField);
+			styles.Add(current.textArea);
+			styles.Add(current.window);
+			styles.Add(current.horizontalSlider);
+			styles.Add(current.horizontalSliderThumb);
+			styles.Add(current.verticalSlider);
+			styles.Add(current.verticalSliderThumb);
+			styles.Add(current.horizontalScrollbar);
+			styles.Add(current.horizontalScrollbarThumb);
+			styles.Add(current.horizontalScrollbarLeftButton);
+			styles.Add(current.horizontalScrollbarRightButton);
+			styles.Add(current.verticalScrollbar);
+			styles.Add(current.verticalScrollbarThumb);
+			styles.Add(current.verticalScrollbarUpButton);
+			styles.Add(current.verticalScrollbarDownButton);
+			styles.Add(current.scrollView);
+			styles.AddRange(current.customStyles);
+			return styles.ToArray();
 		}
+		public static void SaveBackgrounds(this GUISkin current,string path,bool includeBuiltin=true){
+			foreach(var style in current.GetStyles()){
+				foreach(var state in style.GetStates()){
+					if(!state.background.IsNull()){
+						string savePath = path+"/"+state.background.name+".png";
+						string assetPath = AssetDatabase.GetAssetPath(state.background);
+						if(!includeBuiltin && assetPath.Contains("unity editor resources")){continue;}
+						if(!FileManager.Exists(savePath)){
+							if(!savePath.GetFileName().IsEmpty()){
+								Debug.Log(current.name+"."+style.name + " = " + savePath.GetFileName());
+							}
+							state.background.SaveAs(savePath,true);
+						}
+					}
+				}
+			}
+		}
+		#if UNITY_EDITOR
+		public static void SaveFonts(this GUISkin current,string path){
+			foreach(var style in current.GetStyles()){
+				if(!style.font.IsNull()){
+					var fontPath = AssetDatabase.GetAssetPath(style.font);
+					var savePath = path+"/"+fontPath.GetPathTerm();
+					if(!FileManager.Exists(savePath)){
+						if(!fontPath.GetFileName().IsEmpty()){
+							Debug.Log(current.name+"."+style.name + " = " + fontPath.GetFileName());
+						}
+						AssetDatabase.CopyAsset(fontPath,savePath);
+					}
+				}
+			}
+		}
+		#endif
 	}
 }

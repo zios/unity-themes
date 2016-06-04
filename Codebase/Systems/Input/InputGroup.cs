@@ -18,7 +18,7 @@ namespace Zios.Inputs{
 			if(InputManager.instance.groups.Count < 1){return;}
 			var manager = InputManager.instance;
 			var contents = "";
-			var file = FileManager.Find("InputControls.cfg",true,false) ?? FileManager.CreateFile("InputControls.cfg");
+			var file = FileManager.Find("InputControls.cfg",true,false) ?? FileManager.Create("InputControls.cfg");
 			contents = contents.AddLine("[InputSettings]");
 			if(manager.instanceOptions.ToInt() != 2){contents = contents.AddLine("InstanceOptions " + manager.instanceOptions.ToInt());}
 			if(manager.gamepadDeadZone != 0.1f){contents = contents.AddLine("GamepadDeadZone " + manager.gamepadDeadZone);}

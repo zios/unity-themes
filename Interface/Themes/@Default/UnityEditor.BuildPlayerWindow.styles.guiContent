@@ -1,0 +1,65 @@
+[allowDebugging]
+text = Script Debugging
+
+[architecture]
+text = Architecture
+tooltip = Build architecture for standalone
+
+[build]
+text = Build
+
+[buildAndRun]
+text = Build And Run
+
+[buildScriptsOnly]
+text = Scripts Only Build
+
+[copyPdbFiles]
+text = Copy PDB files
+tooltip = Copy pdb files to final destination, contains debugging symbols
+
+[debugBuild]
+text = Development Build
+
+[enableHeadlessMode]
+text = Headless Mode
+
+[explicitDivideByZeroChecks]
+text = Divide By Zero Checks
+
+[explicitNullChecks]
+text = Explicit Null Checks
+
+[export]
+text = Export
+
+[forceOptimizeScriptCompilation]
+text = Build Optimized Scripts
+tooltip = Compile IL2CPP using full compiler optimizations. Note this will obfuscate callstack output.
+
+[learnAboutUnityCloudBuild]
+text = Learn about Unity Cloud Build
+
+[noSessionDialogText]
+text = In order to publish your build to UDN, you need to sign in via the AssetStore and tick the 'Stay signed in' checkbox.
+
+[platformTitle]
+text = Platform
+tooltip = Which platform to build for
+
+[profileBuild]
+text = Autoconnect Profiler
+
+[scenesInBuild]
+text = Scenes In Build
+tooltip = Which scenes to include in the build
+
+[standaloneTarget]
+text = Target Platform
+tooltip = Destination platform for standalone build
+
+[switchPlatform]
+text = Switch Platform
+
+[symlinkiOSLibraries]
+text = Symlink Unity libraries

@@ -648,7 +648,7 @@ namespace Zios.Editors.SpriteEditors{
 			sourcePath = this.FindAssetFolder(sourcePath,sprite.name,"Materials");
 			foreach(string name in names){
 				string materialPath = sourcePath+name+".mat";
-				if(!File.Exists(materialPath) || forceOverwrite || forceUpdate){
+				if(!FileManager.Exists(materialPath) || forceOverwrite || forceUpdate){
 					if(forceOverwrite){
 						AssetDatabase.DeleteAsset(materialPath);
 					}
@@ -692,7 +692,7 @@ namespace Zios.Editors.SpriteEditors{
 			sourcePath = this.FindAssetFolder(sourcePath,sprite.name,"Meshes");
 			foreach(string name in names){
 				string meshPath = sourcePath+name+".asset";
-				if(!File.Exists(meshPath) || forceOverwrite || forceUpdate){
+				if(!FileManager.Exists(meshPath) || forceOverwrite || forceUpdate){
 					if(forceOverwrite){
 						AssetDatabase.DeleteAsset(meshPath);
 					}
@@ -768,7 +768,7 @@ namespace Zios.Editors.SpriteEditors{
 				string prefabName = name.EndsWith("@Bottom") ? name.Replace("@Bottom","") : name;
 				prefabName = prefabName.EndsWith("@Top") ? prefabName.Replace("@Top","") : prefabName;
 				string prefabPath = sourcePath+prefabName+".prefab";
-				if(!File.Exists(prefabPath) || forceOverwrite || forceUpdate){
+				if(!FileManager.Exists(prefabPath) || forceOverwrite || forceUpdate){
 					if(forceOverwrite){
 						AssetDatabase.DeleteAsset(prefabPath);
 					}

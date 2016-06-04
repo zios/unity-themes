@@ -1,0 +1,3 @@
+[maxSize]
+text = Max Size
+tooltip = Textures larger than this will be scaled down.

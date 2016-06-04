@@ -1,0 +1,11 @@
+[alphaIcon]
+image = PreTextureAlpha
+
+[largeZoom]
+image = PreTextureMipMapHigh
+
+[RGBIcon]
+image = PreTextureRGB
+
+[smallZoom]
+image = PreTextureMipMapLow

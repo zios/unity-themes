@@ -1,0 +1,28 @@
+[frameDebuggerOnContent]
+text = Frame Debugger on
+
+[gizmosContent]
+text = Gizmos
+
+[loadRenderDocContent]
+text = Load RenderDoc
+
+[maximizeOnPlayContent]
+text = Maximize on Play
+
+[muteContent]
+text = Mute audio
+
+[noCamerasWarningContent]
+text = No Cameras Rendering
+
+[renderdocContent]
+image = renderdoc
+tooltip = Capture the current view and open in RenderDoc
+
+[statsContent]
+text = Stats
+
+[zoomSliderContent]
+text = Scale
+tooltip = Size of the game view on the screen

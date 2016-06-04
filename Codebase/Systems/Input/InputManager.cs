@@ -309,7 +309,7 @@ namespace Zios.Inputs{
 		public void ShowProfiles(){
 			this.activeProfile = null;
 			this.selectionHeader = "";
-			this.profiles.RemoveAll(x=>!File.Exists(x.name+".profile"));
+			this.profiles.RemoveAll(x=>!FileManager.Exists(x.name+".profile"));
 			this.uiState = InputUIState.SelectProfile;
 		}
 		public void RemoveProfile(string name){
@@ -320,7 +320,7 @@ namespace Zios.Inputs{
 				return;
 			}
 			this.profiles.RemoveAll(x=>x.name==name);
-			FileManager.DeleteFile(name+".profile");
+			FileManager.Delete(name+".profile");
 			foreach(var instance in Locate.GetSceneComponents<InputInstance>()){
 				if(!instance.profile.IsNull() && instance.profile.name == name){
 					this.instanceProfile.Remove(instance.alias);

@@ -112,6 +112,8 @@
     <Compile Include="Systems\Interface\Style\StyleCSS.cs" />
     <Compile Include="Systems\Interface\Themes\Editor\ThemeVerticalSpace.cs" />
     <Compile Include="Systems\Interface\Themes\Themes.cs" />
+    <Compile Include="Systems\Interface\Themes\ThemesLoading.cs" />
+    <Compile Include="Systems\Interface\Themes\ThemesSaving.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Systems\Event\Event.static" />

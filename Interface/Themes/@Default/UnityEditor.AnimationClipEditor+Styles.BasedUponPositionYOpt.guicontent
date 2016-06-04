@@ -1,0 +1,6 @@
+[0]
+text = Original
+tooltip = Keeps the vertical position as it is authored in the source file.
+
+[1]
+text = Root Node Position

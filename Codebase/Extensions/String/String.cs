@@ -302,12 +302,18 @@ namespace Zios{
 			}
 			return current.Substring(0,last);
 		}
+		public static string GetAssetPath(this string current){
+			return "Assets" + current.Split("/Assets")[1];
+		}
+		public static string GetPathTerm(this string current){
+			return current.Split("/").Last();
+		}
 		public static string GetFileName(this string current){
 			var term = current.Split("/").Last();
-			if(term.Contains(".")){return term.Replace("."+current.GetExtension(),"");}
+			if(term.Contains(".")){return term.Replace("."+current.GetFileExtension(),"");}
 			return "";
 		}
-		public static string GetExtension(this string current){
+		public static string GetFileExtension(this string current){
 			var term = current.Split("/").Last();
 			if(term.Contains(".")){return term.Split(".").Last();}
 			return term;

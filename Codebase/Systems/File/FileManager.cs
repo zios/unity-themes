@@ -23,7 +23,7 @@ namespace Zios{
 		// Storage
 		//===============
 		public static void Load(){
-			if(File.Exists("FileManager.data")){
+			if(FileManager.Exists("FileManager.data")){
 				int mode = 0;
 				string extension = "";
 				string lastPath = "";
@@ -164,7 +164,7 @@ namespace Zios{
 			if(!name.Contains(".") && name.EndsWith("*")){name = name + ".*";}
 			string fileName = name.GetFileName();
 			string path = name.GetDirectory();
-			string type = name.GetExtension().ToLower();
+			string type = name.GetFileExtension().ToLower();
 			var results = new List<FileData>();
 			foreach(var item in FileManager.folders){
 				FileData folder = item.Value;
@@ -229,26 +229,30 @@ namespace Zios{
 			#endif
 			return default(T);
 		}
-		public static FileData CreateFile(string path){
-			File.Create(path).Dispose();
+		public static FileData Create(string path){
 			path = Path.GetFullPath(path).Replace("\\","/");
 			var data = new FileData(path);
-			FileManager.files.AddNew(data.extension).Add(data);
+			if(!path.GetFileName().IsEmpty()){
+				File.Create(path).Dispose();
+				FileManager.files.AddNew(data.extension).Add(data);
+			}
+			else{
+				data.isFolder = true;
+				Directory.CreateDirectory(path);
+				FileManager.folders[path] = data;
+			}
 			FileManager.cache.Clear();
 			return data;
 		}
-		public static void DeleteFile(string path){
+		public static void Delete(string path){
 			var file = FileManager.Find(path);
 			if(!file.IsNull()){
 				file.Delete();
-				FileManager.cache.Clear();
-				FileManager.assets.Clear();
-				FileManager.files[file.extension].Remove(file);
 			}
 		}
 		public static void WriteFile(string path,byte[] bytes){
 			var folder = path.GetDirectory();
-			if(!Directory.Exists(folder)){Directory.CreateDirectory(folder);}
+			if(!FileManager.Exists(folder)){FileManager.Create(folder);}
 			FileStream stream = new FileStream(path,FileMode.Create);
 			BinaryWriter file = new BinaryWriter(stream);
 			file.Write(bytes);
@@ -258,6 +262,7 @@ namespace Zios{
 		//===============
 		// Shorthand
 		//===============
+		public static bool Exists(string path){return File.Exists(path) || Directory.Exists(path);}
 		public static FileData Find(string name,bool ignoreCase=true,bool showWarnings=true){
 			FileData[] results = FileManager.FindAll(name,ignoreCase,showWarnings);
 			if(results.Length > 0){return results[0];}
@@ -302,7 +307,7 @@ namespace Zios{
 		public FileData(string path,bool isFolder=false){
 			this.path = path;
 			this.directory = path.GetDirectory();
-			this.extension = path.GetExtension();
+			this.extension = path.GetFileExtension();
 			this.name = path.GetFileName();
 			this.fullName = this.name + "." + this.extension;
 			this.isFolder = isFolder;
@@ -314,7 +319,15 @@ namespace Zios{
 			File.WriteAllText(this.path,contents);
 		}
 		public void Delete(){
+			FileManager.cache.Clear();
+			FileManager.assets.Clear();
+			if(this.isFolder){
+				Directory.Delete(this.path);
+				FileManager.folders.Remove(this.path);
+				return;
+			}
 			File.Delete(this.path);
+			FileManager.files[this.extension].Remove(this);
 		}
 		public void MarkDirty(){File.SetLastWriteTime(this.path,DateTime.Now);}
 		public string GetModifiedDate(string format="M-d-yy"){return File.GetLastWriteTime(this.path).ToString(format);}

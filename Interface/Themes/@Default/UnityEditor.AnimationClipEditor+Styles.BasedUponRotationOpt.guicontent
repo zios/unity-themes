@@ -1,0 +1,7 @@
+[0]
+text = Original
+tooltip = Keeps the rotation as it is authored in the source file.
+
+[1]
+text = Root Node Rotation
+tooltip = Keeps the upper body pointing forward.

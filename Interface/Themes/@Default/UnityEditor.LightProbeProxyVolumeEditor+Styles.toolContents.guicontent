@@ -1,0 +1,6 @@
+[0]
+image = EditCollider
+
+[1]
+image = MoveTool
+tooltip = Move the selected objects.

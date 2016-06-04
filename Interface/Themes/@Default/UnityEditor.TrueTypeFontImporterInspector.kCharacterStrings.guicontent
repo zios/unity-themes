@@ -1,0 +1,17 @@
+[0]
+text = Dynamic
+
+[1]
+text = Unicode
+
+[2]
+text = ASCII default set
+
+[3]
+text = ASCII upper case
+
+[4]
+text = ASCII lower case
+
+[5]
+text = Custom set
