@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 #if UNITY_EDITOR
@@ -38,66 +37,89 @@ namespace Zios{
 			copy.settings.selectionColor = current.settings.selectionColor;
 			return copy;
 		}
-		public static GUISkin Use(this GUISkin current,GUISkin other,bool deep=false){
+		public static GUISkin Use(this GUISkin current,GUISkin other,bool inline=false){
 			if(other.IsNull()){return current;}
 			current.font = other.font;
-			current.box = other.box;
-			current.button = other.button;
-			current.toggle = other.toggle;
-			current.label = other.label;
-			current.textField = other.textField;
-			current.textArea = other.textArea;
-			current.window = other.window;
-			current.horizontalSlider = other.horizontalSlider;
-			current.horizontalSliderThumb = other.horizontalSliderThumb;
-			current.verticalSlider = other.verticalSlider;
-			current.verticalSliderThumb = other.verticalScrollbarThumb;
-			current.horizontalScrollbar = other.horizontalScrollbar;
-			current.horizontalScrollbarThumb = other.horizontalScrollbarThumb;
-			current.horizontalScrollbarLeftButton = other.horizontalScrollbarLeftButton;
-			current.horizontalScrollbarRightButton = other.horizontalScrollbarRightButton;
-			current.verticalScrollbar = other.verticalScrollbar;
-			current.verticalScrollbarThumb = other.verticalScrollbarThumb;
-			current.verticalScrollbarUpButton = other.verticalScrollbarUpButton;
-			current.verticalScrollbarDownButton = other.verticalScrollbarDownButton;
-			current.scrollView = other.scrollView;
 			current.settings.doubleClickSelectsWord = other.settings.doubleClickSelectsWord;
 			current.settings.tripleClickSelectsLine = other.settings.tripleClickSelectsLine;
 			current.settings.cursorColor = other.settings.cursorColor;
 			current.settings.cursorFlashSpeed = other.settings.cursorFlashSpeed;
 			current.settings.selectionColor = other.settings.selectionColor;
-			if(deep){
-				for(int index=0;index<current.customStyles.Length;++index){
-					current.customStyles[index].Use(other.customStyles[index]);
+			if(inline){
+				var currentStyles = current.GetNamedStyles();
+				var otherStyles = other.GetNamedStyles();
+				foreach(var style in currentStyles){
+					if(otherStyles.ContainsKey(style.Key)){
+						style.Value.Use(otherStyles[style.Key]);
+					}
 				}
-				return current;
 			}
-			current.customStyles = other.customStyles;
+			else{
+				current.box = other.box;
+				current.button = other.button;
+				current.toggle = other.toggle;
+				current.label = other.label;
+				current.textField = other.textField;
+				current.textArea = other.textArea;
+				current.window = other.window;
+				current.horizontalSlider = other.horizontalSlider;
+				current.horizontalSliderThumb = other.horizontalSliderThumb;
+				current.verticalSlider = other.verticalSlider;
+				current.verticalSliderThumb = other.verticalScrollbarThumb;
+				current.horizontalScrollbar = other.horizontalScrollbar;
+				current.horizontalScrollbarThumb = other.horizontalScrollbarThumb;
+				current.horizontalScrollbarLeftButton = other.horizontalScrollbarLeftButton;
+				current.horizontalScrollbarRightButton = other.horizontalScrollbarRightButton;
+				current.verticalScrollbar = other.verticalScrollbar;
+				current.verticalScrollbarThumb = other.verticalScrollbarThumb;
+				current.verticalScrollbarUpButton = other.verticalScrollbarUpButton;
+				current.verticalScrollbarDownButton = other.verticalScrollbarDownButton;
+				current.scrollView = other.scrollView;
+				current.customStyles = other.customStyles;
+			}
 			return current;
 		}
-		public static GUIStyle[] GetStyles(this GUISkin current){
+		public static Dictionary<string,GUIStyle> GetNamedStyles(this GUISkin current,bool includeStandard=true,bool includeCustom=true){
+			var data = new Dictionary<string,GUIStyle>();
+			var styles = current.GetStyles(includeStandard,includeCustom);
+			for(int index=0;index<styles.Length;++index){
+				var style = styles[index];
+				if(style.name.IsEmpty()){
+					data["Element "+index] = style;
+					continue;
+				}
+				while(data.ContainsKey(style.name)){
+					style.name = style.name.ToLetterSequence();
+				}
+				data[style.name] = style;
+			}
+			return data;
+		}
+		public static GUIStyle[] GetStyles(this GUISkin current,bool includeStandard=true,bool includeCustom=true){
 			var styles = new List<GUIStyle>();
-			styles.Add(current.box);
-			styles.Add(current.button);
-			styles.Add(current.toggle);
-			styles.Add(current.label);
-			styles.Add(current.textField);
-			styles.Add(current.textArea);
-			styles.Add(current.window);
-			styles.Add(current.horizontalSlider);
-			styles.Add(current.horizontalSliderThumb);
-			styles.Add(current.verticalSlider);
-			styles.Add(current.verticalSliderThumb);
-			styles.Add(current.horizontalScrollbar);
-			styles.Add(current.horizontalScrollbarThumb);
-			styles.Add(current.horizontalScrollbarLeftButton);
-			styles.Add(current.horizontalScrollbarRightButton);
-			styles.Add(current.verticalScrollbar);
-			styles.Add(current.verticalScrollbarThumb);
-			styles.Add(current.verticalScrollbarUpButton);
-			styles.Add(current.verticalScrollbarDownButton);
-			styles.Add(current.scrollView);
-			styles.AddRange(current.customStyles);
+			if(includeStandard){
+				styles.Add(current.box);
+				styles.Add(current.button);
+				styles.Add(current.toggle);
+				styles.Add(current.label);
+				styles.Add(current.textField);
+				styles.Add(current.textArea);
+				styles.Add(current.window);
+				styles.Add(current.horizontalSlider);
+				styles.Add(current.horizontalSliderThumb);
+				styles.Add(current.verticalSlider);
+				styles.Add(current.verticalSliderThumb);
+				styles.Add(current.horizontalScrollbar);
+				styles.Add(current.horizontalScrollbarThumb);
+				styles.Add(current.horizontalScrollbarLeftButton);
+				styles.Add(current.horizontalScrollbarRightButton);
+				styles.Add(current.verticalScrollbar);
+				styles.Add(current.verticalScrollbarThumb);
+				styles.Add(current.verticalScrollbarUpButton);
+				styles.Add(current.verticalScrollbarDownButton);
+				styles.Add(current.scrollView);
+			}
+			if(includeCustom){styles.AddRange(current.customStyles);}
 			return styles.ToArray();
 		}
 		public static void SaveBackgrounds(this GUISkin current,string path,bool includeBuiltin=true){

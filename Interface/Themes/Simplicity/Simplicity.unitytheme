@@ -3,7 +3,7 @@ UseSystemColor = True
 AllowSystemColor = True
 AllowCustomization = True
 AllowColorCustomization = True
-Palette = SolarizedSea
+Palette = Slate
 
 [+Brushed]
 WindowBackgroundOverride = CircleWhite10.png

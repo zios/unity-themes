@@ -5654,21 +5654,21 @@ MonoBehaviour:
       m_ScaledBackgrounds: []
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_OnNormal:
-      m_Background: {fileID: 2800000, guid: 13681ce404b7cc14ebb0c9332a539341, type: 3}
+      m_Background: {fileID: 2800000, guid: ce78abb8ab919214dac8811eff90991f, type: 3}
       m_ScaledBackgrounds: []
-      m_TextColor: {r: 1, g: 1, b: 1, a: 0.65882355}
+      m_TextColor: {r: 1, g: 1, b: 1, a: 0.534}
     m_OnHover:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_OnActive:
-      m_Background: {fileID: 0}
+      m_Background: {fileID: 2800000, guid: ce78abb8ab919214dac8811eff90991f, type: 3}
       m_ScaledBackgrounds: []
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_TextColor: {r: 1, g: 1, b: 1, a: 1}
     m_OnFocused:
-      m_Background: {fileID: 0}
+      m_Background: {fileID: 2800000, guid: ce78abb8ab919214dac8811eff90991f, type: 3}
       m_ScaledBackgrounds: []
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_TextColor: {r: 1, g: 1, b: 1, a: 1}
     m_Border:
       m_Left: 1
       m_Right: 1
@@ -5720,21 +5720,21 @@ MonoBehaviour:
       m_ScaledBackgrounds: []
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_OnNormal:
-      m_Background: {fileID: 2800000, guid: 13681ce404b7cc14ebb0c9332a539341, type: 3}
+      m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
-      m_TextColor: {r: 1, g: 1, b: 1, a: 0.65882355}
+      m_TextColor: {r: 1, g: 1, b: 1, a: 0.53333336}
     m_OnHover:
       m_Background: {fileID: 2800000, guid: 13681ce404b7cc14ebb0c9332a539341, type: 3}
       m_ScaledBackgrounds: []
       m_TextColor: {r: 1, g: 1, b: 1, a: 0.65882355}
     m_OnActive:
-      m_Background: {fileID: 2800000, guid: 13681ce404b7cc14ebb0c9332a539341, type: 3}
+      m_Background: {fileID: 2800000, guid: ce78abb8ab919214dac8811eff90991f, type: 3}
       m_ScaledBackgrounds: []
-      m_TextColor: {r: 1, g: 1, b: 1, a: 0.65882355}
+      m_TextColor: {r: 1, g: 1, b: 1, a: 1}
     m_OnFocused:
-      m_Background: {fileID: 2800000, guid: 13681ce404b7cc14ebb0c9332a539341, type: 3}
+      m_Background: {fileID: 2800000, guid: ce78abb8ab919214dac8811eff90991f, type: 3}
       m_ScaledBackgrounds: []
-      m_TextColor: {r: 1, g: 1, b: 1, a: 0.65882355}
+      m_TextColor: {r: 1, g: 1, b: 1, a: 1}
     m_Border:
       m_Left: 1
       m_Right: 1
@@ -5754,7 +5754,7 @@ MonoBehaviour:
       m_Left: 0
       m_Right: 0
       m_Top: 3
-      m_Bottom: 3
+      m_Bottom: 1
     m_Font: {fileID: 12800000, guid: 0ae89de2f1555c348985242f045d89f5, type: 3}
     m_FontSize: 13
     m_FontStyle: 0

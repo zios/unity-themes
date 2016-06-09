@@ -8,6 +8,7 @@ namespace Zios{
 	using Containers;
 	using Class = ObjectExtension;
 	public static partial class ObjectExtension{
+		[NonSerialized] public static bool debug;
 		public static List<Type> emptyList = new List<Type>();
 		public static Hierarchy<object,string,bool> warned = new Hierarchy<object,string,bool>();
 		public static Hierarchy<Type,BindingFlags,IList<Type>,string,object> variables = new Hierarchy<Type,BindingFlags,IList<Type>,string,object>();
@@ -36,7 +37,7 @@ namespace Zios{
 			}
 			var methods = current.GetMethods(argumentTypes,name,flags);
 			if(methods.Count < 1){
-				Debug.LogWarning("[Object] No method found to call -- " + name);
+				if(ObjectExtension.debug){Debug.LogWarning("[Object] No method found to call -- " + name);}
 				return default(V);
 			}
 			if(current.IsStatic() || current is Type){
@@ -53,7 +54,7 @@ namespace Zios{
 		public static V CallMethod<V>(this object current,string name,BindingFlags flags,params object[] parameters){
 			var method = current.GetMethod(name,flags);
 			if(method == null){
-				Debug.LogWarning("[Object] No method found to call -- " + name);
+				if(ObjectExtension.debug){Debug.LogWarning("[Object] No method found to call -- " + name);}
 				return default(V);
 			}
 			if(current.IsStatic() || current is Type){
@@ -162,7 +163,7 @@ namespace Zios{
 			var property = Class.GetProperty(type,name,flags);
 			var field = Class.GetField(type,name,flags);
 			if(property.IsNull() && field.IsNull() && !Class.warned.AddNew(current).AddNew(name)){
-				Debug.LogWarning("[ObjectReflection] Could not find variable to get -- " + type.Name + "." + name);
+				if(ObjectExtension.debug){Debug.LogWarning("[ObjectReflection] Could not find variable to get -- " + type.Name + "." + name);}
 				Class.warned[current][name] = true;
 				return default(T);
 			}
@@ -194,7 +195,7 @@ namespace Zios{
 			var property = Class.GetProperty(type,name,flags);
 			var field = Class.GetField(type,name,flags);
 			if(property.IsNull() && field.IsNull() && !Class.warned.AddNew(current).AddNew(name)){
-				Debug.LogWarning("[ObjectReflection] Could not find variable to set -- " + name);
+				if(ObjectExtension.debug){Debug.LogWarning("[ObjectReflection] Could not find variable to set -- " + name);}
 				Class.warned[current][name] = true;
 				return;
 			}
@@ -292,7 +293,7 @@ namespace Zios{
 			var existing = current.GetVariables<T>(withoutAttributes,flags);
 			foreach(var item in existing){
 				if(!values.ContainsKey(item.Key)){
-					Debug.Log("[ObjectReflection] : No key found when attempting to assign values by name -- " + item.Key);
+					if(ObjectExtension.debug){Debug.Log("[ObjectReflection] : No key found when attempting to assign values by name -- " + item.Key);}
 					continue;
 				}
 				current.SetVariable(item.Key,values[item.Key]);

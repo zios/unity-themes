@@ -114,6 +114,7 @@
     <Compile Include="..\Systems\Interface\Themes\Themes.cs" />
     <Compile Include="..\Systems\Interface\Themes\ThemesLoading.cs" />
     <Compile Include="..\Systems\Interface\Themes\ThemesSaving.cs" />
+    <Compile Include="..\Systems\Interface\Themes\ThemesUtility.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

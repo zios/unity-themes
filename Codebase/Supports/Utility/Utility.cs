@@ -43,14 +43,16 @@ namespace Zios{
 			Event.Register("On Undo Flushing");
 			Event.Register("On Undo");
 			Event.Register("On Redo");
+			#if UNITY_5
 			Camera.onPostRender += (Camera camera)=>Event.Call("On Camera Post Render",camera);
 			Camera.onPreRender += (Camera camera)=>Event.Call("On Camera Pre Render",camera);
 			Camera.onPreCull += (Camera camera)=>Event.Call("On Camera Pre Cull",camera);
+			Lightmapping.completed += ()=>Event.Call("On Lightmap Baked");
+			#endif
 			Undo.willFlushUndoRecord += ()=>Event.Call("On Undo Flushing");
 			Undo.undoRedoPerformed += ()=>Event.Call("On Undo");
 			Undo.undoRedoPerformed += ()=>Event.Call("On Redo");
 			PrefabUtility.prefabInstanceUpdated += (GameObject target)=>Event.Call("On Prefab Changed",target);
-			Lightmapping.completed += ()=>Event.Call("On Lightmap Baked");
 			EditorApplication.projectWindowChanged += ()=>Event.Call("On Project Changed");
 			EditorApplication.playmodeStateChanged += ()=>Event.Call("On Mode Changed");
 			EditorApplication.playmodeStateChanged += ()=>{
