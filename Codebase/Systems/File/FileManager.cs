@@ -96,6 +96,7 @@ namespace Zios{
 		public static void Monitor(){
 			var modifyTime = Directory.GetLastWriteTime(FileManager.path);
 			if(FileManager.pathModifyTime != modifyTime){
+				Debug.Log("[FileManager] : Root changes detected. Refreshing.");
 				FileManager.pathModifyTime = modifyTime;
 				if(Application.isPlaying){
 					var rootFiles = FileManager.files.SelectMany(x=>x.Value).Where(x=>x.directory==FileManager.path).ToArray();

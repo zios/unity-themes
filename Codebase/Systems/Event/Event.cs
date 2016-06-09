@@ -12,7 +12,9 @@ namespace Zios.Events{
 		public static Hook<Event> hook;
 		static EventsHook(){
 			if(Application.isPlaying){return;}
+			#if !UNITY_THEMES
 			EventsHook.hook = new Hook<Event>(EventsHook.Reset,EventsHook.Create);
+			#endif
 		}
 		public static void Reset(){
 			EventsHook.hook.Reset();

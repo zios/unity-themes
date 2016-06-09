@@ -38,10 +38,9 @@ namespace Zios{
 			copy.settings.selectionColor = current.settings.selectionColor;
 			return copy;
 		}
-		public static GUISkin Use(this GUISkin current,GUISkin other){
+		public static GUISkin Use(this GUISkin current,GUISkin other,bool deep=false){
 			if(other.IsNull()){return current;}
 			current.font = other.font;
-			current.customStyles = other.customStyles;
 			current.box = other.box;
 			current.button = other.button;
 			current.toggle = other.toggle;
@@ -67,6 +66,13 @@ namespace Zios{
 			current.settings.cursorColor = other.settings.cursorColor;
 			current.settings.cursorFlashSpeed = other.settings.cursorFlashSpeed;
 			current.settings.selectionColor = other.settings.selectionColor;
+			if(deep){
+				for(int index=0;index<current.customStyles.Length;++index){
+					current.customStyles[index].Use(other.customStyles[index]);
+				}
+				return current;
+			}
+			current.customStyles = other.customStyles;
 			return current;
 		}
 		public static GUIStyle[] GetStyles(this GUISkin current){
@@ -98,13 +104,10 @@ namespace Zios{
 			foreach(var style in current.GetStyles()){
 				foreach(var state in style.GetStates()){
 					if(!state.background.IsNull()){
-						string savePath = path+"/"+state.background.name+".png";
 						string assetPath = AssetDatabase.GetAssetPath(state.background);
+						string savePath = path+"/"+state.background.name+".png";
 						if(!includeBuiltin && assetPath.Contains("unity editor resources")){continue;}
 						if(!FileManager.Exists(savePath)){
-							if(!savePath.GetFileName().IsEmpty()){
-								Debug.Log(current.name+"."+style.name + " = " + savePath.GetFileName());
-							}
 							state.background.SaveAs(savePath,true);
 						}
 					}
@@ -112,16 +115,14 @@ namespace Zios{
 			}
 		}
 		#if UNITY_EDITOR
-		public static void SaveFonts(this GUISkin current,string path){
+		public static void SaveFonts(this GUISkin current,string path,bool includeBuiltin=true){
 			foreach(var style in current.GetStyles()){
 				if(!style.font.IsNull()){
-					var fontPath = AssetDatabase.GetAssetPath(style.font);
-					var savePath = path+"/"+fontPath.GetPathTerm();
+					string assetPath = AssetDatabase.GetAssetPath(style.font);
+					string savePath = path+"/"+assetPath.GetPathTerm();
+					if(!includeBuiltin && assetPath.Contains("unity editor resources")){continue;}
 					if(!FileManager.Exists(savePath)){
-						if(!fontPath.GetFileName().IsEmpty()){
-							Debug.Log(current.name+"."+style.name + " = " + fontPath.GetFileName());
-						}
-						AssetDatabase.CopyAsset(fontPath,savePath);
+						AssetDatabase.CopyAsset(assetPath,savePath);
 					}
 				}
 			}

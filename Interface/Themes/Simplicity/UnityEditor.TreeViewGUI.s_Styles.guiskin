@@ -1353,7 +1353,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: foldout
+  - m_Name: IN Foldout
     m_Normal:
       m_Background: {fileID: 2800000, guid: 1accb3fd952abf447b7dbda9e3727030, type: 3}
       m_ScaledBackgrounds: []
@@ -1419,7 +1419,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: insertion
+  - m_Name: PR Insertion
     m_Normal:
       m_Background: {fileID: 2800000, guid: b3ca573c654339945878ddeb3c2c956d, type: 3}
       m_ScaledBackgrounds: []
@@ -1485,7 +1485,7 @@ MonoBehaviour:
     m_FixedHeight: 2
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: insertionAbove
+  - m_Name: PR Insertion Above
     m_Normal:
       m_Background: {fileID: 2800000, guid: b3ca573c654339945878ddeb3c2c956d, type: 3}
       m_ScaledBackgrounds: []
@@ -1551,12 +1551,11 @@ MonoBehaviour:
     m_FixedHeight: 2
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: ping
+  - m_Name: PR Ping
     m_Normal:
-      m_Background: {fileID: 6213669389590737800, guid: 0000000000000000d000000000000000,
-        type: 0}
+      m_Background: {fileID: 2800000, guid: 13681ce404b7cc14ebb0c9332a539341, type: 3}
       m_ScaledBackgrounds: []
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_TextColor: {r: 1, g: 1, b: 1, a: 1}
     m_Hover:
       m_Background: {fileID: 6114084012503912583, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1625,7 +1624,7 @@ MonoBehaviour:
     m_FixedHeight: 16
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: toolbarButton
+  - m_Name: toolbarbutton
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1695,7 +1694,7 @@ MonoBehaviour:
     m_FixedHeight: 18
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: lineStyle
+  - m_Name: PR Label
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1765,7 +1764,7 @@ MonoBehaviour:
     m_FixedHeight: 24
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: lineBoldStyle
+  - m_Name: PR Label
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1831,7 +1830,7 @@ MonoBehaviour:
     m_FixedHeight: 16
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: selectionStyle
+  - m_Name: PR Label
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []

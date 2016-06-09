@@ -132,6 +132,7 @@ namespace Zios{
 			}
 			return null;
 		}
+		public static void ResetTypeCache(){Utility.internalTypes.Clear();}
 		public static Type GetUnityType(string name){
 			if(Utility.internalTypes.ContainsKey(name)){return Utility.internalTypes[name];}
 			#if UNITY_EDITOR

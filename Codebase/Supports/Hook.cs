@@ -11,12 +11,10 @@ namespace Zios{
 		public static bool disabled;
 		public static bool hidden;
 		static Hook(){
-			#if UNITY_EDITOR
 			Hook.hidden = EditorPrefs.GetBool("EditorSettings-HideHooks",false);
-			//Hook.hidden = true;
-			#endif
 		}
 		public static void SetHidden(bool state){
+			Locate.SetDirty();
 			foreach(var current in Locate.GetSceneObjects()){
 				if(current.name != "@Main"){continue;}
 				current.hideFlags = state ? HideFlags.HideInHierarchy : HideFlags.None;

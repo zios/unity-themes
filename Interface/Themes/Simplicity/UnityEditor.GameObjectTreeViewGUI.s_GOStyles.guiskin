@@ -1353,7 +1353,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: disabledLabel
+  - m_Name: PR DisabledLabel
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1419,7 +1419,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: prefabLabel
+  - m_Name: PR PrefabLabel
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1485,7 +1485,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: disabledPrefabLabel
+  - m_Name: PR DisabledPrefabLabel
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1551,7 +1551,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: brokenPrefabLabel
+  - m_Name: PR BrokenPrefabLabel
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1624,7 +1624,7 @@ MonoBehaviour:
     m_FixedHeight: 16
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: disabledBrokenPrefabLabel
+  - m_Name: PR DisabledBrokenPrefabLabel
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1697,7 +1697,7 @@ MonoBehaviour:
     m_FixedHeight: 16
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: optionsButtonStyle
+  - m_Name: PaneOptions
     m_Normal:
       m_Background: {fileID: 2708824800493199966, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1764,10 +1764,9 @@ MonoBehaviour:
     m_FixedHeight: 11
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: sceneHeaderBg
+  - m_Name: ProjectBrowserTopBarBg
     m_Normal:
-      m_Background: {fileID: 4284679893348600371, guid: 0000000000000000d000000000000000,
-        type: 0}
+      m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Hover:

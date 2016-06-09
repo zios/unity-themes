@@ -114,6 +114,7 @@ namespace Zios{
 		//=========================
 		public static void ResetCache(){
 			Class.properties.Clear();
+			Class.variables.Clear();
 			Class.methods.Clear();
 			Class.fields.Clear();
 		}
@@ -241,6 +242,7 @@ namespace Zios{
 					variables[field.Name] = field.GetValue(instance);
 				}
 				foreach(PropertyInfo property in type.GetProperties(flags).Where(x=>x.CanRead)){
+					if(!property.CanWrite){continue;}
 					if(withoutAttributes.Count > 0){
 						var attributes = Attribute.GetCustomAttributes(property);
 						if(attributes.Any(x=>withoutAttributes.Any(y=>y==x.GetType()))){continue;}
@@ -284,6 +286,16 @@ namespace Zios{
 				if(index >= values.Count){break;}
 				current.SetVariable(item.Key,values[index]);
 				++index;
+			}
+		}
+		public static void SetValuesByName<T>(this object current,Dictionary<string,T> values,IList<Type> withoutAttributes=null,BindingFlags flags=allFlags){
+			var existing = current.GetVariables<T>(withoutAttributes,flags);
+			foreach(var item in existing){
+				if(!values.ContainsKey(item.Key)){
+					Debug.Log("[ObjectReflection] : No key found when attempting to assign values by name -- " + item.Key);
+					continue;
+				}
+				current.SetVariable(item.Key,values[item.Key]);
 			}
 		}
 		public static T[] GetValues<T>(this object current,IList<Type> withoutAttributes=null,BindingFlags flags=allFlags){
