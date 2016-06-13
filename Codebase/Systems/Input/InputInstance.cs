@@ -18,7 +18,7 @@ namespace Zios.Inputs{
 		// Storage
 		//===============
 		public static void Load(){
-			var file = FileManager.Find("InputDefaults.cfg",true,false) ?? FileManager.Create("InputDefaults.cfg");
+			var file = FileManager.Find("InputDefaults.cfg",false) ?? FileManager.Create("InputDefaults.cfg");
 			var contents = file.GetText().GetLines();
 			foreach(var line in contents){
 				if(line.IsEmpty()){continue;}
@@ -30,7 +30,7 @@ namespace Zios.Inputs{
 		}
 		public void Save(){
 			if(this.profile.IsNull() || this.profile.name.IsEmpty() || this.profile.mappings.Count < 1){return;}
-			var file = FileManager.Find("InputDefaults.cfg",true,false) ?? FileManager.Create("InputDefaults.cfg");
+			var file = FileManager.Find("InputDefaults.cfg",false) ?? FileManager.Create("InputDefaults.cfg");
 			var contents = file.GetText();
 			var alias = this.alias.ToPascalCase();
 			var profile = this.profile.name.ToPascalCase();

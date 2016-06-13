@@ -142,7 +142,7 @@ namespace Zios.Editors{
 			FileData[] allMaterials = FileManager.FindAll("*.mat");
 			foreach(var shader in this.shaders){
 				if(shader == null){continue;}
-				var path = AssetDatabase.GetAssetPath(shader);
+				var path = FileManager.GetPath(shader);
 				guids.AddNew(AssetDatabase.AssetPathToGUID(path));
 			}
 			AssetDatabase.StartAssetEditing();

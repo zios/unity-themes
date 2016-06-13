@@ -1353,7 +1353,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: buttonClose
+  - m_Name: buttonClose [WinBtnClose]
     m_Normal:
       m_Background: {fileID: 5692466967435527465, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1422,7 +1422,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: buttonMin
+  - m_Name: buttonMin [WinBtnClose]
     m_Normal:
       m_Background: {fileID: 5692466967435527465, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1491,7 +1491,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: buttonMax
+  - m_Name: buttonMax [WinBtnMax]
     m_Normal:
       m_Background: {fileID: -4734577261032170469, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1560,7 +1560,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: buttonInactive
+  - m_Name: buttonInactive [WinBtnInactiveMac]
     m_Normal:
       m_Background: {fileID: 7621731839674880053, guid: 0000000000000000d000000000000000,
         type: 0}

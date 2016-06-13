@@ -1353,7 +1353,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: link
+  - m_Name: link [m_MiniLabel [MiniLabel]]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []

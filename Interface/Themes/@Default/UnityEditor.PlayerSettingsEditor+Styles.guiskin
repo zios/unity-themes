@@ -1353,7 +1353,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: categoryBox
+  - m_Name: categoryBox [m_HelpBox [HelpBox]]
     m_Normal:
       m_Background: {fileID: 2845149559452096714, guid: 0000000000000000d000000000000000,
         type: 0}

@@ -1353,7 +1353,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: dragdot
+  - m_Name: dragdot [U2D.dragDot]
     m_Normal:
       m_Background: {fileID: 5382817295167241883, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1420,7 +1420,7 @@ MonoBehaviour:
     m_FixedHeight: 10
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: pivotdot
+  - m_Name: pivotdot [U2D.pivotDot]
     m_Normal:
       m_Background: {fileID: -4454984800559177240, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1487,7 +1487,7 @@ MonoBehaviour:
     m_FixedHeight: 16
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: dragdotactive
+  - m_Name: dragdotactive [U2D.dragDotActive]
     m_Normal:
       m_Background: {fileID: 8889901539490732676, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1554,7 +1554,7 @@ MonoBehaviour:
     m_FixedHeight: 10
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: pivotdotactive
+  - m_Name: pivotdotactive [U2D.pivotDotActive]
     m_Normal:
       m_Background: {fileID: -7346624300586097497, guid: 0000000000000000d000000000000000,
         type: 0}

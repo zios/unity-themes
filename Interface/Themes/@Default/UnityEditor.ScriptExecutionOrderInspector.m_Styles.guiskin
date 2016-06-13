@@ -1353,7 +1353,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: toolbar
+  - m_Name: toolbar [TE Toolbar]
     m_Normal:
       m_Background: {fileID: 2133734017690824248, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1421,7 +1421,7 @@ MonoBehaviour:
     m_FixedHeight: 18
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: toolbarDropDown
+  - m_Name: toolbarDropDown [TE ToolbarDropDown]
     m_Normal:
       m_Background: {fileID: -5946686598143573609, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1490,7 +1490,7 @@ MonoBehaviour:
     m_FixedHeight: 18
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: boxBackground
+  - m_Name: boxBackground [TE NodeBackground]
     m_Normal:
       m_Background: {fileID: -341762447361974832, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1557,7 +1557,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: removeButton
+  - m_Name: removeButton [InvisibleButton]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1624,7 +1624,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 1
-  - m_Name: elementBackground
+  - m_Name: elementBackground [OL box]
     m_Normal:
       m_Background: {fileID: 2575269581626704993, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1692,7 +1692,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 1
-  - m_Name: defaultTime
+  - m_Name: defaultTime [m_InspectorBig [IN BigTitle]]
     m_Normal:
       m_Background: {fileID: -1546782194512641569, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1760,7 +1760,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: draggingHandle
+  - m_Name: draggingHandle [WindowBottomResize]
     m_Normal:
       m_Background: {fileID: -126394901853745249, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1828,7 +1828,7 @@ MonoBehaviour:
     m_FixedHeight: 6
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: dropField
+  - m_Name: dropField [m_ObjectFieldThumb [ObjectFieldThumb]]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []

@@ -41,6 +41,7 @@ namespace Zios{
 		Save          = 0x010,
 		SaveType      = 0x020,
 		SaveDetailed  = 0x040,
+		Time          = 0x080,
 	}
 	[ExecuteInEditMode][AddComponentMenu("")]
 	public class Serializer : MonoBehaviour{
@@ -97,8 +98,10 @@ namespace Zios{
 		//=================
 		public void BuildDefault(){
 			if(this.disabled){return;}
+			var time = Time.realtimeSinceStartup;
 			this.BuildDefault(Assembly.Load("Assembly-CSharp"));
 			this.BuildDefault(Assembly.Load("Assembly-CSharp-Editor"));
+			if(this.debug.Has("Time")){Debug.Log("[Serializer] : Build Default complete -- " + (Time.realtimeSinceStartup - time) + " seconds.");}
 		}
 		public void BuildDefault(Assembly assembly){
 			if(this.disabled){return;}
@@ -123,8 +126,10 @@ namespace Zios{
 		[ContextMenu("Save")]
 		public void Save(){
 			if(this.disabled){return;}
+			var time = Time.realtimeSinceStartup;
 			this.Save(Assembly.Load("Assembly-CSharp"));
 			this.Save(Assembly.Load("Assembly-CSharp-Editor"));
+			if(this.debug.Has("Time")){Debug.Log("[Serializer] : Save complete -- " + (Time.realtimeSinceStartup - time) + " seconds.");}
 		}
 		public void Save(Assembly assembly){
 			if(this.disabled){return;}
@@ -138,7 +143,7 @@ namespace Zios{
 			if(this.debug.Has("SaveType")){Debug.Log("[Serializer] : Serializing type -- " + type.Name);}
 			this.tabs = 0;
 			this.contents.Clear();
-			var file = FileManager.Find(type.Name+".cs",true,false);
+			var file = FileManager.Find(type.Name+".cs",false);
 			string path = file != null ? file.directory+"/" : this.path;
 			string filePath = path+type.Name+".static";
 			this.Add(type.FullName,"{");
@@ -187,9 +192,11 @@ namespace Zios{
 		[ContextMenu("Load")]
 		public void Load(){
 			if(this.disabled){return;}
+			var time = Time.realtimeSinceStartup;
 			this.LoadStatic();
 			//this.LoadScene();
 			//this.LoadInstance();
+			if(this.debug.Has("Time")){Debug.Log("[Serializer] : Load complete -- " + (Time.realtimeSinceStartup - time) + " seconds.");}
 		}
 		public void LoadStatic(){
 			if(this.disabled){return;}

@@ -1353,7 +1353,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: thumbnail
+  - m_Name: thumbnail [IN ThumbnailShadow]
     m_Normal:
       m_Background: {fileID: -9203537401436773534, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1423,7 +1423,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: thumbnailLabel
+  - m_Name: thumbnailLabel [IN ThumbnailSelection]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []

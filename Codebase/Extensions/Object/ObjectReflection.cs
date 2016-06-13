@@ -158,30 +158,33 @@ namespace Zios{
 		}
 		public static T GetVariable<T>(this object current,string name,int index=-1,BindingFlags flags=allFlags){
 			if(current.IsNull()){return default(T);}
-			Type type = current is Type ? (Type)current : current.GetType();
-			object instance = current.IsStatic() || current is Type ? null : current;
+			if(name.IsNumber()){
+				index = name.ToInt();
+				name = "";
+			}
+			var value = default(T);
+			object instance = current is Type || current.IsStatic() ? null : current;
+			var type = current is Type ? (Type)current : current.GetType();
 			var property = Class.GetProperty(type,name,flags);
 			var field = Class.GetField(type,name,flags);
-			if(property.IsNull() && field.IsNull() && !Class.warned.AddNew(current).AddNew(name)){
-				if(ObjectExtension.debug){Debug.LogWarning("[ObjectReflection] Could not find variable to get -- " + type.Name + "." + name);}
-				Class.warned[current][name] = true;
-				return default(T);
-			}
-			if(index != -1){
-				if(current is Vector3){
-					//return current.Cast<Vector3>()[index].Cast<object>().Cast<T>();
-					return (T)((object)(((Vector3)current)[index]));
+			if(!name.IsEmpty() && property.IsNull() && field.IsNull()){
+				if(ObjectExtension.debug && !Class.warned.AddNew(current).AddNew(name)){
+					Debug.LogWarning("[ObjectReflection] Could not find variable to get -- " + type.Name + "." + name);
+					Class.warned[current][name] = true;
 				}
-				IList list = (IList)field.GetValue(instance);
-				return (T)list[index];
+				return value;
 			}
-			if(property != null){
-				return (T)property.GetValue(instance,null);
+			if(property != null){value = (T)property.GetValue(instance,null);}
+			if(field != null){value = (T)field.GetValue(instance);}
+			if(index != -1){
+				if(name.IsEmpty()){
+					if(current is IList){return current.As<IList<T>>()[index];}
+					if(current is Vector3){return current.As<Vector3>()[index].As<T>();}
+				}
+				if(value is Vector3){return value.As<Vector3>()[index].As<T>();}
+				return value.As<IList>()[index].As<T>();
 			}
-			if(field != null){
-				return (T)field.GetValue(instance);
-			}
-			return default(T);
+			return value;
 		}
 		public static void SetVariables<T>(this object current,IDictionary<string,T> values,BindingFlags flags=allFlags){
 			foreach(var item in values){
@@ -190,28 +193,44 @@ namespace Zios{
 		}
 		public static void SetVariable<T>(this object current,string name,T value,int index=-1,BindingFlags flags=allFlags){
 			if(current.IsNull()){return;}
-			Type type = current is Type ? (Type)current : current.GetType();
-			current = current.IsStatic() ? null : current;
+			if(name.IsNumber()){
+				index = name.ToInt();
+				name = "";
+			}
+			var instance = current is Type || current.IsStatic() ? null : current;
+			var type = current is Type ? (Type)current : current.GetType();
 			var property = Class.GetProperty(type,name,flags);
 			var field = Class.GetField(type,name,flags);
-			if(property.IsNull() && field.IsNull() && !Class.warned.AddNew(current).AddNew(name)){
+			if(!name.IsNull() && property.IsNull() && field.IsNull() && !Class.warned.AddNew(current).AddNew(name)){
 				if(ObjectExtension.debug){Debug.LogWarning("[ObjectReflection] Could not find variable to set -- " + name);}
 				Class.warned[current][name] = true;
 				return;
 			}
 			if(index != -1){
-				if(type == typeof(Vector3)){
-					Vector3 currentVector3 = (Vector3)field.GetValue(current);
-					currentVector3[index] = (float)Convert.ChangeType(value,typeof(float));
+				if(name.IsEmpty()){
+					if(current is IList){current.As<IList<T>>()[index] = value;}
+					if(current is Vector3){
+						var goal = current.As<Vector3>();
+						goal[index] = value.ToFloat();
+						current.As<Vector3>().Set(goal.x,goal.y,goal.z);
+					}
+					return;
 				}
-				field.GetValue(current).As<Array>().SetValue(value,index);
+				object existing = field.IsNull() ? property.GetValue(instance,null) : field.GetValue(instance);
+				if(existing is Vector3){
+					var goal = existing.As<Vector3>();
+					goal[index] = value.ToFloat();
+					existing.As<Vector3>().Set(goal.x,goal.y,goal.z);
+					return;
+				}
+				existing.As<Array>().SetValue(value,index);
 				return;
 			}
 			if(property != null && property.CanWrite){
-				property.SetValue(current,value,null);
+				property.SetValue(instance,value,null);
 			}
 			if(field != null && !field.FieldType.IsGenericType){
-				field.SetValue(current,value);
+				field.SetValue(instance,value);
 			}
 		}
 		public static Dictionary<string,T> GetVariables<T>(this object current,IList<Type> withoutAttributes=null,BindingFlags flags=allFlags){

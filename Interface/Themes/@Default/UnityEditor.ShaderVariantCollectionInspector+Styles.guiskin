@@ -1353,7 +1353,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: invisibleButton
+  - m_Name: invisibleButton [InvisibleButton]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []

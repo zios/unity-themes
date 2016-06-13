@@ -1353,7 +1353,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: background
+  - m_Name: background [sv_iconselector_back]
     m_Normal:
       m_Background: {fileID: -8759786513751719754, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1421,7 +1421,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 1
-  - m_Name: seperator
+  - m_Name: seperator [sv_iconselector_sep]
     m_Normal:
       m_Background: {fileID: 960651902464285215, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1489,7 +1489,7 @@ MonoBehaviour:
     m_FixedHeight: 3
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: selection
+  - m_Name: selection [sv_iconselector_selection]
     m_Normal:
       m_Background: {fileID: 5980657527770481894, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1557,7 +1557,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 1
-  - m_Name: selectionLabel
+  - m_Name: selectionLabel [sv_iconselector_labelselection]
     m_Normal:
       m_Background: {fileID: 8282683022238804769, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1625,7 +1625,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 1
-  - m_Name: noneButton
+  - m_Name: noneButton [sv_iconselector_button]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []

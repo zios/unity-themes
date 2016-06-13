@@ -1353,7 +1353,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: background
+  - m_Name: background [OL box]
     m_Normal:
       m_Background: {fileID: 2575269581626704993, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1421,7 +1421,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 1
-  - m_Name: leftPane
+  - m_Name: leftPane [ProfilerLeftPane]
     m_Normal:
       m_Background: {fileID: -3886800699518575594, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1490,7 +1490,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 1
-  - m_Name: rightPane
+  - m_Name: rightPane [ProfilerRightPane]
     m_Normal:
       m_Background: {fileID: -7932753358935034755, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1558,7 +1558,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 1
-  - m_Name: paneSubLabel
+  - m_Name: paneSubLabel [ProfilerPaneSubLabel]
     m_Normal:
       m_Background: {fileID: 5630025067347494750, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1626,7 +1626,7 @@ MonoBehaviour:
     m_FixedHeight: 11
     m_StretchWidth: 1
     m_StretchHeight: 1
-  - m_Name: closeButton
+  - m_Name: closeButton [WinBtnClose]
     m_Normal:
       m_Background: {fileID: 5692466967435527465, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1695,7 +1695,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: whiteLabel
+  - m_Name: whiteLabel [ProfilerBadge]
     m_Normal:
       m_Background: {fileID: -674514151301517983, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1763,7 +1763,7 @@ MonoBehaviour:
     m_FixedHeight: 12
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: selectedLabel
+  - m_Name: selectedLabel [ProfilerSelectedLabel]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []

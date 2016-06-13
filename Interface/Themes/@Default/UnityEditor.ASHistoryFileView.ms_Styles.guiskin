@@ -1353,7 +1353,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: foldout
+  - m_Name: foldout [IN Foldout]
     m_Normal:
       m_Background: {fileID: -3169759088934609965, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1425,7 +1425,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: insertion
+  - m_Name: insertion [PR Insertion]
     m_Normal:
       m_Background: {fileID: -5197095626509473278, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1492,7 +1492,7 @@ MonoBehaviour:
     m_FixedHeight: 8
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: label
+  - m_Name: label [PR Label]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1565,7 +1565,7 @@ MonoBehaviour:
     m_FixedHeight: 16
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: ping
+  - m_Name: ping [PR Ping]
     m_Normal:
       m_Background: {fileID: 6213669389590737800, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1639,7 +1639,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: toolbarButton
+  - m_Name: toolbarButton [toolbarbutton]
     m_Normal:
       m_Background: {fileID: 6029984632204043670, guid: 0000000000000000d000000000000000,
         type: 0}

@@ -1353,7 +1353,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: Box
+  - m_Name: Box [CN Box]
     m_Normal:
       m_Background: {fileID: -2595257409002968663, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1421,7 +1421,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 1
-  - m_Name: Button
+  - m_Name: Button [button]
     m_Normal:
       m_Background: {fileID: -573041650897247223, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1493,7 +1493,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: MiniButton
+  - m_Name: MiniButton [toolbarbutton]
     m_Normal:
       m_Background: {fileID: 6029984632204043670, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1564,7 +1564,7 @@ MonoBehaviour:
     m_FixedHeight: 18
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: MiniButtonLeft
+  - m_Name: MiniButtonLeft [toolbarbutton]
     m_Normal:
       m_Background: {fileID: 6029984632204043670, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1635,7 +1635,7 @@ MonoBehaviour:
     m_FixedHeight: 18
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: MiniButtonMiddle
+  - m_Name: MiniButtonMiddle [toolbarbutton]
     m_Normal:
       m_Background: {fileID: 6029984632204043670, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1706,7 +1706,7 @@ MonoBehaviour:
     m_FixedHeight: 18
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: MiniButtonRight
+  - m_Name: MiniButtonRight [toolbarbutton]
     m_Normal:
       m_Background: {fileID: 6029984632204043670, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1777,7 +1777,7 @@ MonoBehaviour:
     m_FixedHeight: 18
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: LogStyle
+  - m_Name: LogStyle [CN EntryInfo]
     m_Normal:
       m_Background: {fileID: -7150409940516424707, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1845,7 +1845,7 @@ MonoBehaviour:
     m_FixedHeight: 32
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: WarningStyle
+  - m_Name: WarningStyle [CN EntryWarn]
     m_Normal:
       m_Background: {fileID: 2655493458141633029, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1913,7 +1913,7 @@ MonoBehaviour:
     m_FixedHeight: 32
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: ErrorStyle
+  - m_Name: ErrorStyle [CN EntryError]
     m_Normal:
       m_Background: {fileID: 1715859669443758926, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1981,7 +1981,7 @@ MonoBehaviour:
     m_FixedHeight: 32
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: EvenBackground
+  - m_Name: EvenBackground [CN EntryBackEven]
     m_Normal:
       m_Background: {fileID: 1178275909477605523, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2049,7 +2049,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: OddBackground
+  - m_Name: OddBackground [CN EntryBackOdd]
     m_Normal:
       m_Background: {fileID: -6611788727337487407, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2117,7 +2117,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: MessageStyle
+  - m_Name: MessageStyle [CN Message]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -2184,7 +2184,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: StatusError
+  - m_Name: StatusError [CN StatusError]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -2251,7 +2251,7 @@ MonoBehaviour:
     m_FixedHeight: 17
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: StatusWarn
+  - m_Name: StatusWarn [CN StatusWarn]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -2318,7 +2318,7 @@ MonoBehaviour:
     m_FixedHeight: 17
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: StatusLog
+  - m_Name: StatusLog [CN StatusInfo]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -2385,7 +2385,7 @@ MonoBehaviour:
     m_FixedHeight: 17
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: Toolbar
+  - m_Name: Toolbar [Toolbar]
     m_Normal:
       m_Background: {fileID: -8748538222344408585, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2453,7 +2453,7 @@ MonoBehaviour:
     m_FixedHeight: 18
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: CountBadge
+  - m_Name: CountBadge [CN CountBadge]
     m_Normal:
       m_Background: {fileID: -5292227847342108761, guid: 0000000000000000d000000000000000,
         type: 0}

@@ -270,7 +270,7 @@ namespace Zios{
 			return result;
 		}
 		public static string[] Split(this string current,string value){
-			if(value.Length == 0){return new string[1]{current};}
+			if(value.Length == 0 || !current.Contains(value)){return new string[1]{current};}
 			return current.Split(new string[]{value},StringSplitOptions.None);
 		}
 		//============================

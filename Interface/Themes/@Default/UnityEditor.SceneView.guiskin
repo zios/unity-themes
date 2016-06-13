@@ -1353,7 +1353,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: s_DropDownStyle
+  - m_Name: s_DropDownStyle [GV Gizmo DropDown]
     m_Normal:
       m_Background: {fileID: -752904529894253385, guid: 0000000000000000d000000000000000,
         type: 0}

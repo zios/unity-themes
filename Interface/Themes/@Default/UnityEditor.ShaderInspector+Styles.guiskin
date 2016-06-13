@@ -1353,7 +1353,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: messageStyle
+  - m_Name: messageStyle [CN StatusInfo]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1420,7 +1420,7 @@ MonoBehaviour:
     m_FixedHeight: 17
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: evenBackground
+  - m_Name: evenBackground [CN EntryBackEven]
     m_Normal:
       m_Background: {fileID: 1178275909477605523, guid: 0000000000000000d000000000000000,
         type: 0}

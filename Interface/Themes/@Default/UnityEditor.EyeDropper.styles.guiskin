@@ -1353,7 +1353,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: eyeDropperHorizontalLine
+  - m_Name: eyeDropperHorizontalLine [EyeDropperHorizontalLine]
     m_Normal:
       m_Background: {fileID: 5904063552244190870, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1420,7 +1420,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: eyeDropperVerticalLine
+  - m_Name: eyeDropperVerticalLine [EyeDropperVerticalLine]
     m_Normal:
       m_Background: {fileID: 1520247048926888149, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1487,7 +1487,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: eyeDropperPickedPixel
+  - m_Name: eyeDropperPickedPixel [EyeDropperPickedPixel]
     m_Normal:
       m_Background: {fileID: -4547434557182929469, guid: 0000000000000000d000000000000000,
         type: 0}

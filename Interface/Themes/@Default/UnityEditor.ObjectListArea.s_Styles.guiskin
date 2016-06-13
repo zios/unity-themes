@@ -1353,7 +1353,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: resultsLabel
+  - m_Name: resultsLabel [PR Label]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1426,7 +1426,7 @@ MonoBehaviour:
     m_FixedHeight: 16
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: resultsGridLabel
+  - m_Name: resultsGridLabel [ProjectBrowserGridLabel]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1497,7 +1497,7 @@ MonoBehaviour:
     m_FixedHeight: 14
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: resultsGrid
+  - m_Name: resultsGrid [ObjectPickerResultsGrid]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1563,7 +1563,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: background
+  - m_Name: background [ObjectPickerBackground]
     m_Normal:
       m_Background: {fileID: -3788104686929986237, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1631,7 +1631,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: previewTextureBackground
+  - m_Name: previewTextureBackground [ObjectPickerPreviewBackground]
     m_Normal:
       m_Background: {fileID: 7001268526759109792, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1699,7 +1699,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: groupHeaderMiddle
+  - m_Name: groupHeaderMiddle [ProjectBrowserHeaderBgMiddle]
     m_Normal:
       m_Background: {fileID: 379221616895759543, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1767,7 +1767,7 @@ MonoBehaviour:
     m_FixedHeight: 18
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: groupHeaderTop
+  - m_Name: groupHeaderTop [ProjectBrowserHeaderBgTop]
     m_Normal:
       m_Background: {fileID: 1207797449824739058, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1835,7 +1835,7 @@ MonoBehaviour:
     m_FixedHeight: 18
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: groupHeaderLabel
+  - m_Name: groupHeaderLabel [label]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1902,7 +1902,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: groupHeaderLabelCount
+  - m_Name: groupHeaderLabelCount [MiniLabel]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1969,7 +1969,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: groupFoldout
+  - m_Name: groupFoldout [Foldout]
     m_Normal:
       m_Background: {fileID: -3169759088934609965, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2041,7 +2041,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: toolbarBack
+  - m_Name: toolbarBack [ObjectPickerToolbar]
     m_Normal:
       m_Background: {fileID: -1998699353846966862, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2108,7 +2108,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: resultsFocusMarker
+  - m_Name: resultsFocusMarker [ProjectBrowserGridLabel]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -2179,7 +2179,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: miniRenameField
+  - m_Name: miniRenameField [PR TextField]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -2247,7 +2247,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: ping
+  - m_Name: ping [PR Ping]
     m_Normal:
       m_Background: {fileID: 6213669389590737800, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2321,7 +2321,7 @@ MonoBehaviour:
     m_FixedHeight: 16
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: miniPing
+  - m_Name: miniPing [PR Ping]
     m_Normal:
       m_Background: {fileID: 6213669389590737800, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2396,7 +2396,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: iconDropShadow
+  - m_Name: iconDropShadow [ProjectBrowserIconDropShadow]
     m_Normal:
       m_Background: {fileID: 7521090244005078151, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2466,7 +2466,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 1
-  - m_Name: textureIconDropShadow
+  - m_Name: textureIconDropShadow [ProjectBrowserTextureIconDropShadow]
     m_Normal:
       m_Background: {fileID: -6272110685175122832, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2536,7 +2536,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 1
-  - m_Name: iconAreaBg
+  - m_Name: iconAreaBg [ProjectBrowserIconAreaBg]
     m_Normal:
       m_Background: {fileID: 8477472853372924405, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2604,7 +2604,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 1
-  - m_Name: previewBg
+  - m_Name: previewBg [ProjectBrowserPreviewBg]
     m_Normal:
       m_Background: {fileID: -7567498616864308183, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2672,7 +2672,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 1
-  - m_Name: subAssetBg
+  - m_Name: subAssetBg [ProjectBrowserSubAssetBg]
     m_Normal:
       m_Background: {fileID: -1893447772220209498, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2739,7 +2739,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 1
-  - m_Name: subAssetBgOpenEnded
+  - m_Name: subAssetBgOpenEnded [ProjectBrowserSubAssetBgOpenEnded]
     m_Normal:
       m_Background: {fileID: 3398375956905085532, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2806,7 +2806,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 1
-  - m_Name: subAssetBgCloseEnded
+  - m_Name: subAssetBgCloseEnded [ProjectBrowserSubAssetBgCloseEnded]
     m_Normal:
       m_Background: {fileID: -7195902004640624855, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2873,7 +2873,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 1
-  - m_Name: subAssetBgMiddle
+  - m_Name: subAssetBgMiddle [ProjectBrowserSubAssetBgMiddle]
     m_Normal:
       m_Background: {fileID: -1878720456393189266, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2940,7 +2940,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 1
-  - m_Name: subAssetBgDivider
+  - m_Name: subAssetBgDivider [ProjectBrowserSubAssetBgDivider]
     m_Normal:
       m_Background: {fileID: -8004073508713016461, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -3007,7 +3007,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 1
-  - m_Name: subAssetExpandButton
+  - m_Name: subAssetExpandButton [ProjectBrowserSubAssetExpandBtn]
     m_Normal:
       m_Background: {fileID: 5384518758785649545, guid: 0000000000000000d000000000000000,
         type: 0}

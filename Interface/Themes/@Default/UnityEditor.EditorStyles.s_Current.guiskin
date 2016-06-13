@@ -1353,7 +1353,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: ControlLabel
+  - m_Name: m_Label [ControlLabel]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1423,7 +1423,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: MiniLabel
+  - m_Name: m_MiniLabel [MiniLabel]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1490,7 +1490,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: LargeLabel
+  - m_Name: m_LargeLabel [LargeLabel]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1557,7 +1557,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: BoldLabel
+  - m_Name: m_BoldLabel [BoldLabel]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1625,7 +1625,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: MiniBoldLabel
+  - m_Name: m_MiniBoldLabel [MiniBoldLabel]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1692,7 +1692,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: MiniLabel
+  - m_Name: m_CenteredGreyMiniLabel [MiniLabel]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1759,7 +1759,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: WordWrappedMiniLabel
+  - m_Name: m_WordWrappedMiniLabel [WordWrappedMiniLabel]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1826,7 +1826,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: WordWrappedLabel
+  - m_Name: m_WordWrappedLabel [WordWrappedLabel]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1892,7 +1892,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: ControlLabel
+  - m_Name: m_LinkLabel [ControlLabel]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1962,7 +1962,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: WhiteLabel
+  - m_Name: m_WhiteLabel [WhiteLabel]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -2029,7 +2029,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: WhiteMiniLabel
+  - m_Name: m_WhiteMiniLabel [WhiteMiniLabel]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -2096,7 +2096,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: WhiteLargeLabel
+  - m_Name: m_WhiteLargeLabel [WhiteLargeLabel]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -2163,7 +2163,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: WhiteBoldLabel
+  - m_Name: m_WhiteBoldLabel [WhiteBoldLabel]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -2230,7 +2230,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: Radio
+  - m_Name: m_RadioButton [Radio]
     m_Normal:
       m_Background: {fileID: 3243321240896732753, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2300,7 +2300,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: minibutton
+  - m_Name: m_MiniButton [minibutton]
     m_Normal:
       m_Background: {fileID: 9174848017576406294, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2373,7 +2373,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: minibuttonleft
+  - m_Name: m_MiniButtonLeft [minibuttonleft]
     m_Normal:
       m_Background: {fileID: -8895800549191456393, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2446,7 +2446,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: minibuttonmid
+  - m_Name: m_MiniButtonMid [minibuttonmid]
     m_Normal:
       m_Background: {fileID: 136263117181185360, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2519,7 +2519,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: minibuttonright
+  - m_Name: m_MiniButtonRight [minibuttonright]
     m_Normal:
       m_Background: {fileID: -6973417629754500713, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2592,7 +2592,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: textfield
+  - m_Name: m_TextField [textfield]
     m_Normal:
       m_Background: {fileID: 2597227618725028271, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2660,7 +2660,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: textfield
+  - m_Name: m_TextArea [textfield]
     m_Normal:
       m_Background: {fileID: 2597227618725028271, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2728,7 +2728,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: MiniTextField
+  - m_Name: m_MiniTextField [MiniTextField]
     m_Normal:
       m_Background: {fileID: 2597227618725028271, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2796,7 +2796,7 @@ MonoBehaviour:
     m_FixedHeight: 13
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: textfield
+  - m_Name: m_NumberField [textfield]
     m_Normal:
       m_Background: {fileID: 2597227618725028271, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2864,7 +2864,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: MiniPopup
+  - m_Name: m_Popup [MiniPopup]
     m_Normal:
       m_Background: {fileID: -5766891875766568439, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2934,7 +2934,7 @@ MonoBehaviour:
     m_FixedHeight: 15
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: ObjectField
+  - m_Name: m_ObjectField [ObjectField]
     m_Normal:
       m_Background: {fileID: 5306377892023789964, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -3003,7 +3003,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: ObjectFieldThumb
+  - m_Name: m_ObjectFieldThumb [ObjectFieldThumb]
     m_Normal:
       m_Background: {fileID: 6195845723091580647, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -3073,7 +3073,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: ObjectFieldMiniThumb
+  - m_Name: m_ObjectFieldMiniThumb [ObjectFieldMiniThumb]
     m_Normal:
       m_Background: {fileID: -4869207544785599640, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -3143,7 +3143,7 @@ MonoBehaviour:
     m_FixedHeight: 18
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: ColorField
+  - m_Name: m_ColorField [ColorField]
     m_Normal:
       m_Background: {fileID: -4090197485841274061, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -3211,7 +3211,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: MiniPopup
+  - m_Name: m_LayerMaskField [MiniPopup]
     m_Normal:
       m_Background: {fileID: -5766891875766568439, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -3281,7 +3281,7 @@ MonoBehaviour:
     m_FixedHeight: 15
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: toggle
+  - m_Name: m_Toggle [toggle]
     m_Normal:
       m_Background: {fileID: -5335821736339326178, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -3353,7 +3353,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: ToggleMixed
+  - m_Name: m_ToggleMixed [ToggleMixed]
     m_Normal:
       m_Background: {fileID: 5714350254458304630, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -3425,7 +3425,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: Foldout
+  - m_Name: m_Foldout [Foldout]
     m_Normal:
       m_Background: {fileID: -3169759088934609965, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -3497,7 +3497,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: FoldOutPreDrop
+  - m_Name: m_FoldoutPreDrop [FoldOutPreDrop]
     m_Normal:
       m_Background: {fileID: -2056841594357348428, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -3569,7 +3569,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: BoldToggle
+  - m_Name: m_ToggleGroup [BoldToggle]
     m_Normal:
       m_Background: {fileID: -5335821736339326178, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -3640,7 +3640,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: TextFieldDropDown
+  - m_Name: m_TextFieldDropDown [TextFieldDropDown]
     m_Normal:
       m_Background: {fileID: -8674671441739955047, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -3709,7 +3709,7 @@ MonoBehaviour:
     m_FixedHeight: 16
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: TextFieldDropDownText
+  - m_Name: m_TextFieldDropDownText [TextFieldDropDownText]
     m_Normal:
       m_Background: {fileID: -7107494609865159550, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -3776,7 +3776,7 @@ MonoBehaviour:
     m_FixedHeight: 16
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: Toolbar
+  - m_Name: m_Toolbar [Toolbar]
     m_Normal:
       m_Background: {fileID: -8748538222344408585, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -3844,7 +3844,7 @@ MonoBehaviour:
     m_FixedHeight: 18
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: toolbarbutton
+  - m_Name: m_ToolbarButton [toolbarbutton]
     m_Normal:
       m_Background: {fileID: 6029984632204043670, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -3915,7 +3915,7 @@ MonoBehaviour:
     m_FixedHeight: 18
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: ToolbarPopup
+  - m_Name: m_ToolbarPopup [ToolbarPopup]
     m_Normal:
       m_Background: {fileID: -25369699679472599, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -3984,7 +3984,7 @@ MonoBehaviour:
     m_FixedHeight: 18
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: ToolbarDropDown
+  - m_Name: m_ToolbarDropDown [ToolbarDropDown]
     m_Normal:
       m_Background: {fileID: 208224623009839701, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -4053,7 +4053,7 @@ MonoBehaviour:
     m_FixedHeight: 18
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: ToolbarTextField
+  - m_Name: m_ToolbarTextField [ToolbarTextField]
     m_Normal:
       m_Background: {fileID: 2597227618725028271, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -4121,7 +4121,7 @@ MonoBehaviour:
     m_FixedHeight: 14
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: 
+  - m_Name: m_InspectorDefaultMargins
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -4187,7 +4187,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: 
+  - m_Name: m_InspectorFullWidthMargins
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -4253,7 +4253,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: HelpBox
+  - m_Name: m_HelpBox [HelpBox]
     m_Normal:
       m_Background: {fileID: 2845149559452096714, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -4322,7 +4322,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: ToolbarSeachTextField
+  - m_Name: m_ToolbarSearchField [ToolbarSeachTextField]
     m_Normal:
       m_Background: {fileID: 5536387647129856127, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -4391,7 +4391,7 @@ MonoBehaviour:
     m_FixedHeight: 14
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: ToolbarSeachTextFieldPopup
+  - m_Name: m_ToolbarSearchFieldPopup [ToolbarSeachTextFieldPopup]
     m_Normal:
       m_Background: {fileID: 3886108115689711771, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -4460,7 +4460,7 @@ MonoBehaviour:
     m_FixedHeight: 14
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: ToolbarSeachCancelButton
+  - m_Name: m_ToolbarSearchFieldCancelButton [ToolbarSeachCancelButton]
     m_Normal:
       m_Background: {fileID: -3451398671104148073, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -4529,7 +4529,7 @@ MonoBehaviour:
     m_FixedHeight: 14
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: ToolbarSeachCancelButtonEmpty
+  - m_Name: m_ToolbarSearchFieldCancelButtonEmpty [ToolbarSeachCancelButtonEmpty]
     m_Normal:
       m_Background: {fileID: -267529291006661227, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -4597,7 +4597,7 @@ MonoBehaviour:
     m_FixedHeight: 14
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: ColorPickerBox
+  - m_Name: m_ColorPickerBox [ColorPickerBox]
     m_Normal:
       m_Background: {fileID: -4982604230453974774, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -4665,7 +4665,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: IN BigTitle
+  - m_Name: m_InspectorBig [IN BigTitle]
     m_Normal:
       m_Background: {fileID: -1546782194512641569, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -4733,7 +4733,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: IN Title
+  - m_Name: m_InspectorTitlebar [IN Title]
     m_Normal:
       m_Background: {fileID: -4750106681349864266, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -4806,7 +4806,7 @@ MonoBehaviour:
     m_FixedHeight: 17
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: IN TitleText
+  - m_Name: m_InspectorTitlebarText [IN TitleText]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -4873,7 +4873,7 @@ MonoBehaviour:
     m_FixedHeight: 16
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: 
+  - m_Name: m_FoldoutSelected
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -4939,7 +4939,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: Tooltip
+  - m_Name: m_Tooltip [Tooltip]
     m_Normal:
       m_Background: {fileID: 2575269581626704993, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -5006,7 +5006,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: NotificationText
+  - m_Name: m_NotificationText [NotificationText]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -5073,7 +5073,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: NotificationBackground
+  - m_Name: m_NotificationBackground [NotificationBackground]
     m_Normal:
       m_Background: {fileID: 6083469233733858383, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -5141,7 +5141,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: AssetLabel
+  - m_Name: m_AssetLabel [AssetLabel]
     m_Normal:
       m_Background: {fileID: 6824356191489133313, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -5209,7 +5209,7 @@ MonoBehaviour:
     m_FixedHeight: 15
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: AssetLabel Partial
+  - m_Name: m_AssetLabelPartial [AssetLabel Partial]
     m_Normal:
       m_Background: {fileID: 5343974186623882845, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -5277,7 +5277,7 @@ MonoBehaviour:
     m_FixedHeight: 15
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: AssetLabel Icon
+  - m_Name: m_AssetLabelIcon [AssetLabel Icon]
     m_Normal:
       m_Background: {fileID: -8218726002110163042, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -5344,7 +5344,7 @@ MonoBehaviour:
     m_FixedHeight: 15
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: SearchTextField
+  - m_Name: m_SearchField [SearchTextField]
     m_Normal:
       m_Background: {fileID: -5042367405998179000, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -5412,7 +5412,7 @@ MonoBehaviour:
     m_FixedHeight: 18
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: SearchCancelButton
+  - m_Name: m_SearchFieldCancelButton [SearchCancelButton]
     m_Normal:
       m_Background: {fileID: 1153446836801096815, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -5480,7 +5480,7 @@ MonoBehaviour:
     m_FixedHeight: 18
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: SearchCancelButtonEmpty
+  - m_Name: m_SearchFieldCancelButtonEmpty [SearchCancelButtonEmpty]
     m_Normal:
       m_Background: {fileID: -3806537407343805325, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -5547,7 +5547,7 @@ MonoBehaviour:
     m_FixedHeight: 18
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: SelectionRect
+  - m_Name: m_SelectionRect [SelectionRect]
     m_Normal:
       m_Background: {fileID: -6175662131787910117, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -5614,7 +5614,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: MinMaxHorizontalSliderThumb
+  - m_Name: m_MinMaxHorizontalSliderThumb [MinMaxHorizontalSliderThumb]
     m_Normal:
       m_Background: {fileID: 2239002581368989096, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -5682,7 +5682,7 @@ MonoBehaviour:
     m_FixedHeight: 12
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: DropDownButton
+  - m_Name: m_DropDownList [DropDownButton]
     m_Normal:
       m_Background: {fileID: -2315437465859441965, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -5750,7 +5750,7 @@ MonoBehaviour:
     m_FixedHeight: 18
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: ProgressBarBar
+  - m_Name: m_ProgressBarBar [ProgressBarBar]
     m_Normal:
       m_Background: {fileID: 4914472245283442168, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -5817,7 +5817,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: ProgressBarText
+  - m_Name: m_ProgressBarText [ProgressBarText]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -5884,7 +5884,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: ProgressBarBack
+  - m_Name: m_ProgressBarBack [ProgressBarBack]
     m_Normal:
       m_Background: {fileID: 3262792639726449503, guid: 0000000000000000d000000000000000,
         type: 0}

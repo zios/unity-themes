@@ -1353,7 +1353,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: curveEditorBackground
+  - m_Name: curveEditorBackground [AnimationCurveEditorBackground]
     m_Normal:
       m_Background: {fileID: -341762447361974832, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1421,7 +1421,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 1
-  - m_Name: curveSwatch
+  - m_Name: curveSwatch [PopupCurveEditorSwatch]
     m_Normal:
       m_Background: {fileID: -3973930495159453876, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1488,7 +1488,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: curveSwatchArea
+  - m_Name: curveSwatchArea [PopupCurveSwatchBackground]
     m_Normal:
       m_Background: {fileID: -685672140601229974, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1555,7 +1555,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: minus
+  - m_Name: minus [OL Minus]
     m_Normal:
       m_Background: {fileID: -6668816640785016826, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1623,7 +1623,7 @@ MonoBehaviour:
     m_FixedHeight: 17
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: plus
+  - m_Name: plus [OL Plus]
     m_Normal:
       m_Background: {fileID: 9153059873348083557, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1691,7 +1691,7 @@ MonoBehaviour:
     m_FixedHeight: 17
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: yAxisHeader
+  - m_Name: yAxisHeader [ShurikenLabel]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []

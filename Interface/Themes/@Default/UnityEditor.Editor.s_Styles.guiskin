@@ -1353,7 +1353,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: inspectorBig
+  - m_Name: inspectorBig [m_InspectorBig[IN BigTitle]]
     m_Normal:
       m_Background: {fileID: -1546782194512641569, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1421,7 +1421,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: inspectorBigInner
+  - m_Name: inspectorBigInner [IN BigTitle Inner]
     m_Normal:
       m_Background: {fileID: -1057368265428512106, guid: 0000000000000000d000000000000000,
         type: 0}

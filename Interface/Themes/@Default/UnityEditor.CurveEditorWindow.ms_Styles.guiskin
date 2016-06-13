@@ -1353,7 +1353,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: curveEditorBackground
+  - m_Name: curveEditorBackground [PopupCurveEditorBackground]
     m_Normal:
       m_Background: {fileID: 7977687820518168867, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1420,7 +1420,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: miniToolbarPopup
+  - m_Name: miniToolbarPopup [MiniToolbarPopup]
     m_Normal:
       m_Background: {fileID: -1567158217291676450, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1489,7 +1489,7 @@ MonoBehaviour:
     m_FixedHeight: 15
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: miniToolbarButton
+  - m_Name: miniToolbarButton [MiniToolbarButtonLeft]
     m_Normal:
       m_Background: {fileID: -5207888601925974466, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1558,7 +1558,7 @@ MonoBehaviour:
     m_FixedHeight: 15
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: curveSwatch
+  - m_Name: curveSwatch [PopupCurveEditorSwatch]
     m_Normal:
       m_Background: {fileID: -3973930495159453876, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1625,7 +1625,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: curveSwatchArea
+  - m_Name: curveSwatchArea [PopupCurveSwatchBackground]
     m_Normal:
       m_Background: {fileID: -685672140601229974, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1692,7 +1692,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: curveWrapPopup
+  - m_Name: curveWrapPopup [PopupCurveDropdown]
     m_Normal:
       m_Background: {fileID: 5743722335770374059, guid: 0000000000000000d000000000000000,
         type: 0}

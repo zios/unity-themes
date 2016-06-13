@@ -313,7 +313,7 @@ namespace Zios.Inputs{
 			this.uiState = InputUIState.SelectProfile;
 		}
 		public void RemoveProfile(string name){
-			if(FileManager.Find(name+".profile",true,false).IsNull()){
+			if(FileManager.Find(name+".profile",false).IsNull()){
 				this.ShowProfiles();
 				this.selectionHeader = "Remove Profile";
 				Event.AddLimited("On Profile Selected",()=>this.RemoveProfile(this.activeProfile.name),1,this);

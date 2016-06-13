@@ -1353,7 +1353,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: box
+  - m_Name: box [CN Box]
     m_Normal:
       m_Background: {fileID: -2595257409002968663, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1421,7 +1421,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 1
-  - m_Name: bottomBarBg
+  - m_Name: bottomBarBg [ProjectBrowserBottomBarBg]
     m_Normal:
       m_Background: {fileID: -7534259249680964811, guid: 0000000000000000d000000000000000,
         type: 0}

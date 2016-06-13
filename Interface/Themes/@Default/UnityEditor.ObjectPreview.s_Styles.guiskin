@@ -1353,7 +1353,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: preBackground
+  - m_Name: preBackground [PreBackground]
     m_Normal:
       m_Background: {fileID: -8510489415617907483, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1421,7 +1421,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: preBackgroundSolid
+  - m_Name: preBackgroundSolid [PreBackground]
     m_Normal:
       m_Background: {fileID: -8510489415617907483, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1489,7 +1489,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: previewMiniLabel
+  - m_Name: previewMiniLabel [m_WhiteMiniLabel [WhiteMiniLabel]]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1556,7 +1556,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: dropShadowLabelStyle
+  - m_Name: dropShadowLabelStyle [PreOverlayLabel]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []

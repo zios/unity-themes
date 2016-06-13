@@ -1353,7 +1353,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: pickerBox
+  - m_Name: pickerBox [ColorPickerBox]
     m_Normal:
       m_Background: {fileID: -4982604230453974774, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1421,7 +1421,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: thumb2D
+  - m_Name: thumb2D [ColorPicker2DThumb]
     m_Normal:
       m_Background: {fileID: 1775649822027241308, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1488,7 +1488,7 @@ MonoBehaviour:
     m_FixedHeight: 8
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: thumbHoriz
+  - m_Name: thumbHoriz [ColorPickerHorizThumb]
     m_Normal:
       m_Background: {fileID: -3760968096278322537, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1555,7 +1555,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: thumbVert
+  - m_Name: thumbVert [ColorPickerVertThumb]
     m_Normal:
       m_Background: {fileID: -2004902796438436480, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1622,7 +1622,7 @@ MonoBehaviour:
     m_FixedHeight: 7
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: headerLine
+  - m_Name: headerLine [IN Title]
     m_Normal:
       m_Background: {fileID: -4750106681349864266, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1695,7 +1695,7 @@ MonoBehaviour:
     m_FixedHeight: 17
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: colorPickerBox
+  - m_Name: colorPickerBox [ColorPickerBox]
     m_Normal:
       m_Background: {fileID: -4982604230453974774, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1763,7 +1763,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: background
+  - m_Name: background [ColorPickerBackground]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1829,7 +1829,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: label
+  - m_Name: label [m_MiniLabel [MiniLabel]]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1896,7 +1896,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: axisLabelNumberField
+  - m_Name: axisLabelNumberField [m_MiniTextField [MiniTextField]]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1963,7 +1963,7 @@ MonoBehaviour:
     m_FixedHeight: 13
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: foldout
+  - m_Name: foldout [m_Foldout [Foldout]]
     m_Normal:
       m_Background: {fileID: -3169759088934609965, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2035,7 +2035,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: toggle
+  - m_Name: toggle [m_Toggle [toggle]]
     m_Normal:
       m_Background: {fileID: -5335821736339326178, guid: 0000000000000000d000000000000000,
         type: 0}

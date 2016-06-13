@@ -1353,7 +1353,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: lockStyle
+  - m_Name: lockStyle [m_MiniButton [minibutton]]
     m_Normal:
       m_Background: {fileID: 9174848017576406294, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1426,7 +1426,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: measuringLabelStyle
+  - m_Name: measuringLabelStyle [PreOverlayLabel]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []

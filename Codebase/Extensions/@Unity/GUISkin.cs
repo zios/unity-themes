@@ -84,6 +84,7 @@ namespace Zios{
 			var styles = current.GetStyles(includeStandard,includeCustom);
 			for(int index=0;index<styles.Length;++index){
 				var style = styles[index];
+				var name = style.name.Split("[")[0].Trim();
 				if(style.name.IsEmpty()){
 					data["Element "+index] = style;
 					continue;
@@ -91,7 +92,7 @@ namespace Zios{
 				while(data.ContainsKey(style.name)){
 					style.name = style.name.ToLetterSequence();
 				}
-				data[style.name] = style;
+				data[name] = style;
 			}
 			return data;
 		}
@@ -126,7 +127,7 @@ namespace Zios{
 			foreach(var style in current.GetStyles()){
 				foreach(var state in style.GetStates()){
 					if(!state.background.IsNull()){
-						string assetPath = AssetDatabase.GetAssetPath(state.background);
+						string assetPath = FileManager.GetPath(state.background);
 						string savePath = path+"/"+state.background.name+".png";
 						if(!includeBuiltin && assetPath.Contains("unity editor resources")){continue;}
 						if(!FileManager.Exists(savePath)){
@@ -136,11 +137,21 @@ namespace Zios{
 				}
 			}
 		}
+		public static GUIStyle AddStyle(this GUISkin current,GUIStyle style){
+			if(style.IsNull()){return null;}
+			return current.AddStyle(style.name,style);
+		}
+		public static GUIStyle AddStyle(this GUISkin current,string name,GUIStyle style){
+			if(!style.IsNull() && !current.customStyles.Exists(x=>x.name==name)){
+				current.customStyles = current.customStyles.Add(style);
+			}
+			return style;
+		}
 		#if UNITY_EDITOR
 		public static void SaveFonts(this GUISkin current,string path,bool includeBuiltin=true){
 			foreach(var style in current.GetStyles()){
 				if(!style.font.IsNull()){
-					string assetPath = AssetDatabase.GetAssetPath(style.font);
+					string assetPath = FileManager.GetPath(style.font);
 					string savePath = path+"/"+assetPath.GetPathTerm();
 					if(!includeBuiltin && assetPath.Contains("unity editor resources")){continue;}
 					if(!FileManager.Exists(savePath)){

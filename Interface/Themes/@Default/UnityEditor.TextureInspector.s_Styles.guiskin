@@ -1353,7 +1353,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: previewButton
+  - m_Name: previewButton [PreButton]
     m_Normal:
       m_Background: {fileID: 1350811191632198258, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1424,7 +1424,7 @@ MonoBehaviour:
     m_FixedHeight: 17
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: previewSlider
+  - m_Name: previewSlider [PreSlider]
     m_Normal:
       m_Background: {fileID: 3931787746312372454, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1492,7 +1492,7 @@ MonoBehaviour:
     m_FixedHeight: 17
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: previewSliderThumb
+  - m_Name: previewSliderThumb [PreSliderThumb]
     m_Normal:
       m_Background: {fileID: -243871211682115806, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1560,7 +1560,7 @@ MonoBehaviour:
     m_FixedHeight: 17
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: previewLabel
+  - m_Name: previewLabel [PreLabel]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []

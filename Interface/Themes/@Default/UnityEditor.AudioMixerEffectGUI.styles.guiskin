@@ -1353,7 +1353,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: headerStyle
+  - m_Name: headerStyle [m_BoldLabel [BoldLabel]]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1421,7 +1421,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: reorderableListLabel
+  - m_Name: reorderableListLabel [PR Label]
     m_Normal:
       m_Background: {fileID: 6114084012503912583, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1495,7 +1495,7 @@ MonoBehaviour:
     m_FixedHeight: 16
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: regionBg
+  - m_Name: regionBg [RegionBg]
     m_Normal:
       m_Background: {fileID: 1840687699928693038, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1563,7 +1563,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: channelStripVUMeterBg
+  - m_Name: channelStripVUMeterBg [ChannelStripVUMeterBg]
     m_Normal:
       m_Background: {fileID: 7909347443896792696, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1631,7 +1631,7 @@ MonoBehaviour:
     m_FixedHeight: 170
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: channelStripAreaBackground
+  - m_Name: channelStripAreaBackground [AnimationCurveEditorBackground]
     m_Normal:
       m_Background: {fileID: -341762447361974832, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1699,7 +1699,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 1
-  - m_Name: channelStripBg
+  - m_Name: channelStripBg [ChannelStripBg]
     m_Normal:
       m_Background: {fileID: 5714066788390831906, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1768,7 +1768,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 1
-  - m_Name: duckingMarker
+  - m_Name: duckingMarker [ChannelStripDuckingMarker]
     m_Normal:
       m_Background: {fileID: -5377444150710333725, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1843,7 +1843,7 @@ MonoBehaviour:
     m_FixedHeight: 15
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: channelStripAttenuationMarkerSquare
+  - m_Name: channelStripAttenuationMarkerSquare [ChannelStripAttenuationMarkerSquare]
     m_Normal:
       m_Background: {fileID: 3140274644908383529, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1911,7 +1911,7 @@ MonoBehaviour:
     m_FixedHeight: 15
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: channelStripHeaderStyle
+  - m_Name: channelStripHeaderStyle [m_BoldLabel [BoldLabel]]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1979,7 +1979,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: soloToggle
+  - m_Name: soloToggle [SoloToggle]
     m_Normal:
       m_Background: {fileID: -2643858270892318411, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2054,7 +2054,7 @@ MonoBehaviour:
     m_FixedHeight: 21
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: muteToggle
+  - m_Name: muteToggle [MuteToggle]
     m_Normal:
       m_Background: {fileID: 7506753645954630052, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2129,7 +2129,7 @@ MonoBehaviour:
     m_FixedHeight: 21
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: bypassToggle
+  - m_Name: bypassToggle [BypassToggle]
     m_Normal:
       m_Background: {fileID: 4395856873029979197, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2204,7 +2204,7 @@ MonoBehaviour:
     m_FixedHeight: 21
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: circularToggle
+  - m_Name: circularToggle [CircularToggle]
     m_Normal:
       m_Background: {fileID: -1957759246816190516, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2273,7 +2273,7 @@ MonoBehaviour:
     m_FixedHeight: 6
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: totalVULevel
+  - m_Name: totalVULevel [m_Label [ControlLabel]]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -2343,7 +2343,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: attenuationBar
+  - m_Name: attenuationBar [ChannelStripAttenuationBar]
     m_Normal:
       m_Background: {fileID: 5796115159397303847, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2418,7 +2418,7 @@ MonoBehaviour:
     m_FixedHeight: 16
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: effectBar
+  - m_Name: effectBar [ChannelStripEffectBar]
     m_Normal:
       m_Background: {fileID: 6658556879324817063, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2488,7 +2488,7 @@ MonoBehaviour:
     m_FixedHeight: 16
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: sendReturnBar
+  - m_Name: sendReturnBar [ChannelStripSendReturnBar]
     m_Normal:
       m_Background: {fileID: -2757380720433128512, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2558,7 +2558,7 @@ MonoBehaviour:
     m_FixedHeight: 16
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: effectName
+  - m_Name: effectName [m_MiniLabel [MiniLabel]]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -2625,7 +2625,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: vuValue
+  - m_Name: vuValue [m_MiniLabel [MiniLabel]]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -2692,7 +2692,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: mixerHeader
+  - m_Name: mixerHeader [m_LargeLabel [LargeLabel]]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -2759,7 +2759,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: warningOverlay
+  - m_Name: warningOverlay [WarningOverlay]
     m_Normal:
       m_Background: {fileID: 9031297498810265056, guid: 0000000000000000d000000000000000,
         type: 0}

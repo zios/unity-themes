@@ -1353,7 +1353,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: s_CascadeSliderBG
+  - m_Name: s_CascadeSliderBG [LODSliderRange]
     m_Normal:
       m_Background: {fileID: -2359511589518885748, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1420,7 +1420,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: s_TextCenteredStyle
+  - m_Name: s_TextCenteredStyle [m_WhiteMiniLabel [WhiteMiniLabel]]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []

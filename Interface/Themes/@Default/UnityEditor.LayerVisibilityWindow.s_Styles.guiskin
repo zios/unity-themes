@@ -1353,7 +1353,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: background
+  - m_Name: background [grey_border]
     m_Normal:
       m_Background: {fileID: 4573103925955609575, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1421,7 +1421,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 1
-  - m_Name: menuItem
+  - m_Name: menuItem [MenuItem]
     m_Normal:
       m_Background: {fileID: 3884095062680598941, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1492,7 +1492,7 @@ MonoBehaviour:
     m_FixedHeight: 16
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: listEvenBg
+  - m_Name: listEvenBg [ObjectPickerResultsOdd]
     m_Normal:
       m_Background: {fileID: -2359511589518885748, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1564,7 +1564,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: listOddBg
+  - m_Name: listOddBg [ObjectPickerResultsEven]
     m_Normal:
       m_Background: {fileID: 374491421478905856, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1636,7 +1636,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: separator
+  - m_Name: separator [sv_iconselector_sep]
     m_Normal:
       m_Background: {fileID: 960651902464285215, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1704,7 +1704,7 @@ MonoBehaviour:
     m_FixedHeight: 3
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: lockButton
+  - m_Name: lockButton [IN LockButton]
     m_Normal:
       m_Background: {fileID: 4307262231531160263, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1774,7 +1774,7 @@ MonoBehaviour:
     m_FixedHeight: 11
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: listTextStyle
+  - m_Name: listTextStyle [m_Label [ControlLabel]]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1844,7 +1844,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: listHeaderStyle
+  - m_Name: listHeaderStyle [m_BoldLabel [BoldLabel]]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []

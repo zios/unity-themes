@@ -1353,7 +1353,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: labelStyle
+  - m_Name: labelStyle [ProfilerBadge]
     m_Normal:
       m_Background: {fileID: -674514151301517983, guid: 0000000000000000d000000000000000,
         type: 0}

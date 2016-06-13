@@ -1353,7 +1353,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: m_LODSliderBG
+  - m_Name: m_LODSliderBG [LODSliderBG]
     m_Normal:
       m_Background: {fileID: 2575269581626704993, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1420,7 +1420,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: m_LODSliderRange
+  - m_Name: m_LODSliderRange [LODSliderRange]
     m_Normal:
       m_Background: {fileID: -2359511589518885748, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1487,7 +1487,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: m_LODSliderRangeSelected
+  - m_Name: m_LODSliderRangeSelected [LODSliderRangeSelected]
     m_Normal:
       m_Background: {fileID: 4688687928543740334, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1554,7 +1554,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: m_LODSliderText
+  - m_Name: m_LODSliderText [LODSliderText]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1620,7 +1620,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: m_LODSliderTextSelected
+  - m_Name: m_LODSliderTextSelected [LODSliderTextSelected]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1686,7 +1686,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: m_LODStandardButton
+  - m_Name: m_LODStandardButton [button]
     m_Normal:
       m_Background: {fileID: -573041650897247223, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1758,7 +1758,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: m_LODRendererButton
+  - m_Name: m_LODRendererButton [LODRendererButton]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1824,7 +1824,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: m_LODRendererAddButton
+  - m_Name: m_LODRendererAddButton [LODRendererAddButton]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1890,7 +1890,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: m_LODRendererRemove
+  - m_Name: m_LODRendererRemove [LODRendererRemove]
     m_Normal:
       m_Background: {fileID: 2575269581626704993, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1957,7 +1957,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: m_LODBlackBox
+  - m_Name: m_LODBlackBox [LODBlackBox]
     m_Normal:
       m_Background: {fileID: 7977687820518168867, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2024,7 +2024,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: m_LODCameraLine
+  - m_Name: m_LODCameraLine [LODCameraLine]
     m_Normal:
       m_Background: {fileID: 2575269581626704993, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2091,7 +2091,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: m_LODSceneText
+  - m_Name: m_LODSceneText [LODSceneText]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -2157,7 +2157,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: m_LODRenderersText
+  - m_Name: m_LODRenderersText [LODRenderersText]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -2223,7 +2223,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: m_LODLevelNotifyText
+  - m_Name: m_LODLevelNotifyText [LODLevelNotifyText]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []

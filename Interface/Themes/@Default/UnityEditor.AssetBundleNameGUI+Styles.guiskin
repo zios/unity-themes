@@ -1353,7 +1353,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: label
+  - m_Name: label [ControlLabel]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1423,7 +1423,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: popup
+  - m_Name: popup [MiniPopup]
     m_Normal:
       m_Background: {fileID: -960318459295091702, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1493,7 +1493,7 @@ MonoBehaviour:
     m_FixedHeight: 15
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: textField
+  - m_Name: textField [textfield]
     m_Normal:
       m_Background: {fileID: 4072351054032163450, guid: 0000000000000000d000000000000000,
         type: 0}

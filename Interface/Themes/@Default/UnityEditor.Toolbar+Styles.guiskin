@@ -1353,7 +1353,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: collabButtonStyle
+  - m_Name: collabButtonStyle [DropDown]
     m_Normal:
       m_Background: {fileID: -5303125600194034958, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1422,7 +1422,7 @@ MonoBehaviour:
     m_FixedHeight: 18
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: dropdown
+  - m_Name: dropdown [DropDown]
     m_Normal:
       m_Background: {fileID: -5303125600194034958, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1491,7 +1491,7 @@ MonoBehaviour:
     m_FixedHeight: 18
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: appToolbar
+  - m_Name: appToolbar [AppToolbar]
     m_Normal:
       m_Background: {fileID: 4313343300465785975, guid: 0000000000000000d000000000000000,
         type: 0}

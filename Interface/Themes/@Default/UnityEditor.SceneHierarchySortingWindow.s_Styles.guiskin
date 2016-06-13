@@ -1353,7 +1353,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: background
+  - m_Name: background [grey_border]
     m_Normal:
       m_Background: {fileID: 4573103925955609575, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1421,7 +1421,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 1
-  - m_Name: menuItem
+  - m_Name: menuItem [MenuItem]
     m_Normal:
       m_Background: {fileID: 3884095062680598941, guid: 0000000000000000d000000000000000,
         type: 0}

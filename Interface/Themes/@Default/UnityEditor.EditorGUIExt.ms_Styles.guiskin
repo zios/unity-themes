@@ -1353,7 +1353,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: selectionRect
+  - m_Name: selectionRect [SelectionRect]
     m_Normal:
       m_Background: {fileID: -6175662131787910117, guid: 0000000000000000d000000000000000,
         type: 0}

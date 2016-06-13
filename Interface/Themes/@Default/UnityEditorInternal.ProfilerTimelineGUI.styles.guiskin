@@ -1353,7 +1353,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: background
+  - m_Name: background [OL box]
     m_Normal:
       m_Background: {fileID: 2575269581626704993, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1421,7 +1421,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 1
-  - m_Name: tooltip
+  - m_Name: tooltip [AnimationEventTooltip]
     m_Normal:
       m_Background: {fileID: -7852208213302404783, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1489,7 +1489,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: tooltipArrow
+  - m_Name: tooltipArrow [AnimationEventTooltipArrow]
     m_Normal:
       m_Background: {fileID: -9167016833098334808, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1557,7 +1557,7 @@ MonoBehaviour:
     m_FixedHeight: 24
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: bar
+  - m_Name: bar [ProfilerTimelineBar]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1628,7 +1628,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: leftPane
+  - m_Name: leftPane [ProfilerTimelineLeftPane]
     m_Normal:
       m_Background: {fileID: -3886800699518575594, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1696,7 +1696,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 1
-  - m_Name: rightPane
+  - m_Name: rightPane [ProfilerRightPane]
     m_Normal:
       m_Background: {fileID: -7932753358935034755, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1764,7 +1764,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 1
-  - m_Name: foldout
+  - m_Name: foldout [ProfilerTimelineFoldout]
     m_Normal:
       m_Background: {fileID: -3169759088934609965, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1836,7 +1836,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: profilerGraphBackground
+  - m_Name: profilerGraphBackground [ProfilerScrollviewBackground]
     m_Normal:
       m_Background: {fileID: -341762447361974832, guid: 0000000000000000d000000000000000,
         type: 0}

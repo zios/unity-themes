@@ -108,7 +108,7 @@ namespace Zios{
 					var image = value.image;
 					var imagePath = path.GetDirectory()+"/GUIContent/"+image.name+".png";
 					contents = contents.AddLine("image = "+image.name);
-					if(Themes.includeBuiltin || !AssetDatabase.GetAssetPath(image).Contains("unity editor resources")){
+					if(Themes.includeBuiltin || !FileManager.GetPath(image).Contains("unity editor resources")){
 						if(!FileManager.Exists(imagePath)){
 							image.SaveAs(imagePath,true);
 						}

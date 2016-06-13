@@ -1353,7 +1353,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: preToolbar
+  - m_Name: preToolbar [PreToolbar]
     m_Normal:
       m_Background: {fileID: -2576367469998695440, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1424,7 +1424,7 @@ MonoBehaviour:
     m_FixedHeight: 17
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: preToolbar2
+  - m_Name: preToolbar2 [PreToolbar2]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1493,7 +1493,7 @@ MonoBehaviour:
     m_FixedHeight: 17
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: preDropDown
+  - m_Name: preDropDown [PreDropDown]
     m_Normal:
       m_Background: {fileID: 3746778274885917440, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1564,7 +1564,7 @@ MonoBehaviour:
     m_FixedHeight: 17
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: dragHandle
+  - m_Name: dragHandle [RL DragHandle]
     m_Normal:
       m_Background: {fileID: -126394901853745249, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1632,7 +1632,7 @@ MonoBehaviour:
     m_FixedHeight: 6
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: lockButton
+  - m_Name: lockButton [IN LockButton]
     m_Normal:
       m_Background: {fileID: 4307262231531160263, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1702,7 +1702,7 @@ MonoBehaviour:
     m_FixedHeight: 11
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: preBackground
+  - m_Name: preBackground [PreBackground]
     m_Normal:
       m_Background: {fileID: -8510489415617907483, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1770,7 +1770,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: addComponentArea
+  - m_Name: addComponentArea [m_InspectorTitlebar [IN Title]]
     m_Normal:
       m_Background: {fileID: -4750106681349864266, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1843,7 +1843,7 @@ MonoBehaviour:
     m_FixedHeight: 17
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: addComponentButtonStyle
+  - m_Name: addComponentButtonStyle [LargeButton]
     m_Normal:
       m_Background: {fileID: 9098617087583456627, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1916,7 +1916,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: previewMiniLabel
+  - m_Name: previewMiniLabel [m_WhiteMiniLabel[WhiteMiniLabel]]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1983,7 +1983,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: typeSelection
+  - m_Name: typeSelection [PR Label]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -2056,7 +2056,7 @@ MonoBehaviour:
     m_FixedHeight: 16
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: lockedHeaderButton
+  - m_Name: lockedHeaderButton [PreButton]
     m_Normal:
       m_Background: {fileID: 1350811191632198258, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2127,7 +2127,7 @@ MonoBehaviour:
     m_FixedHeight: 17
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: stickyNote
+  - m_Name: stickyNote [VCS_StickyNote]
     m_Normal:
       m_Background: {fileID: 1896154900761346321, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2195,7 +2195,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 1
-  - m_Name: stickyNoteArrow
+  - m_Name: stickyNoteArrow [VCS_StickyNoteArrow]
     m_Normal:
       m_Background: {fileID: -2329137992670565757, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2263,7 +2263,7 @@ MonoBehaviour:
     m_FixedHeight: 14
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: stickyNotePerforce
+  - m_Name: stickyNotePerforce [VCS_StickyNoteP4]
     m_Normal:
       m_Background: {fileID: -8094030825707286382, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2331,7 +2331,7 @@ MonoBehaviour:
     m_FixedHeight: 64
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: stickyNoteLabel
+  - m_Name: stickyNoteLabel [VCS_StickyNoteLabel]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []

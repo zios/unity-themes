@@ -1353,7 +1353,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: viewLabelStyleLeftAligned
+  - m_Name: viewLabelStyleLeftAligned [SC ViewLabel]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1419,7 +1419,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: viewLabelStyleCentered
+  - m_Name: viewLabelStyleCentered [SC ViewLabel]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1485,7 +1485,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: viewAxisLabelStyle
+  - m_Name: viewAxisLabelStyle [SC ViewAxisLabel]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []

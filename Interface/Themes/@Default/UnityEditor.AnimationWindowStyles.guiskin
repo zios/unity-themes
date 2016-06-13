@@ -1353,7 +1353,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: curveEditorBackground
+  - m_Name: curveEditorBackground [AnimationCurveEditorBackground]
     m_Normal:
       m_Background: {fileID: -341762447361974832, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1421,7 +1421,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 1
-  - m_Name: eventBackground
+  - m_Name: eventBackground [AnimationEventBackground]
     m_Normal:
       m_Background: {fileID: -5868217337437714234, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1489,7 +1489,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 1
-  - m_Name: keyframeBackground
+  - m_Name: keyframeBackground [AnimationKeyframeBackground]
     m_Normal:
       m_Background: {fileID: -7816601121424284418, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1557,7 +1557,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 1
-  - m_Name: rowOdd
+  - m_Name: rowOdd [AnimationRowEven]
     m_Normal:
       m_Background: {fileID: 374491421478905856, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1627,7 +1627,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: rowEven
+  - m_Name: rowEven [AnimationRowOdd]
     m_Normal:
       m_Background: {fileID: -2359511589518885748, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1697,7 +1697,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: TimelineTick
+  - m_Name: TimelineTick [AnimationTimelineTick]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1765,7 +1765,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: miniToolbar
+  - m_Name: miniToolbar [m_Toolbar [Toolbar]]
     m_Normal:
       m_Background: {fileID: -8748538222344408585, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1833,7 +1833,7 @@ MonoBehaviour:
     m_FixedHeight: 18
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: miniToolbarButton
+  - m_Name: miniToolbarButton [m_ToolbarButton [toolbarbutton]]
     m_Normal:
       m_Background: {fileID: 6029984632204043670, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1904,7 +1904,7 @@ MonoBehaviour:
     m_FixedHeight: 18
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: toolbarLabel
+  - m_Name: toolbarLabel [m_ToolbarPopup [ToolbarPopup]]
     m_Normal:
       m_Background: {fileID: -25369699679472599, guid: 0000000000000000d000000000000000,
         type: 0}

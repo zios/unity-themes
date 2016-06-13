@@ -9,7 +9,7 @@ namespace Zios{
 			#if UNITY_EDITOR
 			if(Application.isEditor){
 				MonoScript scriptFile = MonoScript.FromMonoBehaviour(current);
-				string path = AssetDatabase.GetAssetPath(scriptFile);
+				string path = FileManager.GetPath(scriptFile);
 				return AssetDatabase.AssetPathToGUID(path);
 			}
 			#endif

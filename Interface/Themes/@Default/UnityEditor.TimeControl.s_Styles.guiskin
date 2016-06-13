@@ -1353,7 +1353,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: playButton
+  - m_Name: playButton [TimeScrubberButton]
     m_Normal:
       m_Background: {fileID: 880600624506180710, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1423,7 +1423,7 @@ MonoBehaviour:
     m_FixedHeight: 21
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: timeScrubber
+  - m_Name: timeScrubber [TimeScrubber]
     m_Normal:
       m_Background: {fileID: 6165646413920163968, guid: 0000000000000000d000000000000000,
         type: 0}

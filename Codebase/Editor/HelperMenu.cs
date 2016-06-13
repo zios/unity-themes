@@ -57,7 +57,7 @@ namespace Zios.Editors{
 							continue;
 						}
 						string clipPath = clip.name + ".anim";
-						string originalPath = AssetDatabase.GetAssetPath(clip);
+						string originalPath = FileManager.GetPath(clip);
 						string savePath = originalPath.GetDirectory() + "/" + clipPath;
 						AnimationClip newClip = new AnimationClip();
 						if(originalPath.Contains(".anim")){

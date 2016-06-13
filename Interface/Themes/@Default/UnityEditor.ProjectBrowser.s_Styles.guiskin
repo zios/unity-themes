@@ -1353,7 +1353,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: smallStatus
+  - m_Name: smallStatus [ObjectPickerSmallStatus]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1419,7 +1419,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: largeStatus
+  - m_Name: largeStatus [ObjectPickerLargeStatus]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1486,7 +1486,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: toolbarBack
+  - m_Name: toolbarBack [ObjectPickerToolbar]
     m_Normal:
       m_Background: {fileID: -1998699353846966862, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1553,7 +1553,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: tab
+  - m_Name: tab [ObjectPickerTab]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1621,7 +1621,7 @@ MonoBehaviour:
     m_FixedHeight: 18
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: bottomResize
+  - m_Name: bottomResize [WindowBottomResize]
     m_Normal:
       m_Background: {fileID: -126394901853745249, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1689,7 +1689,7 @@ MonoBehaviour:
     m_FixedHeight: 6
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: background
+  - m_Name: background [ObjectPickerBackground]
     m_Normal:
       m_Background: {fileID: -3788104686929986237, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1757,7 +1757,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: previewBackground
+  - m_Name: previewBackground [PopupCurveSwatchBackground]
     m_Normal:
       m_Background: {fileID: -685672140601229974, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1824,7 +1824,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: previewTextureBackground
+  - m_Name: previewTextureBackground [ObjectPickerPreviewBackground]
     m_Normal:
       m_Background: {fileID: 7001268526759109792, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1892,7 +1892,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: bottomBarBg
+  - m_Name: bottomBarBg [ProjectBrowserBottomBarBg]
     m_Normal:
       m_Background: {fileID: -7534259249680964811, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1960,7 +1960,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 1
-  - m_Name: topBarBg
+  - m_Name: topBarBg [ProjectBrowserTopBarBg]
     m_Normal:
       m_Background: {fileID: 4284679893348600371, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2028,7 +2028,7 @@ MonoBehaviour:
     m_FixedHeight: 18
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: selectedPathLabel
+  - m_Name: selectedPathLabel [label]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -2095,7 +2095,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: exposablePopup
+  - m_Name: exposablePopup [ExposablePopupMenu]
     m_Normal:
       m_Background: {fileID: 2530269388163302210, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2163,7 +2163,7 @@ MonoBehaviour:
     m_FixedHeight: 15
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: lockButton
+  - m_Name: lockButton [IN LockButton]
     m_Normal:
       m_Background: {fileID: 4307262231531160263, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2233,7 +2233,7 @@ MonoBehaviour:
     m_FixedHeight: 11
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: foldout
+  - m_Name: foldout [AC RightArrow]
     m_Normal:
       m_Background: {fileID: -1024337226193420218, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2300,7 +2300,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 1
-  - m_Name: exposablePopupItem
+  - m_Name: exposablePopupItem [ExposablePopupItem]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []

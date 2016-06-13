@@ -1353,7 +1353,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: reorderableListLabel
+  - m_Name: reorderableListLabel [PR Label]
     m_Normal:
       m_Background: {fileID: 6114084012503912583, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1427,7 +1427,7 @@ MonoBehaviour:
     m_FixedHeight: 16
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: reorderableListLabelRightAligned
+  - m_Name: reorderableListLabelRightAligned [PR Label]
     m_Normal:
       m_Background: {fileID: 6114084012503912583, guid: 0000000000000000d000000000000000,
         type: 0}

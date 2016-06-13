@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace Zios{
 	public static class DictionaryExtension{
+		public static SortedList<TKey,TValue> ToSortedList<TKey,TValue>(this Dictionary<TKey,TValue> current){
+			return new SortedList<TKey,TValue>(current);
+		}
 		public static Dictionary<TKey,TValue> Copy<TKey,TValue>(this Dictionary<TKey,TValue> current){
 			return new Dictionary<TKey,TValue>(current);
 		}

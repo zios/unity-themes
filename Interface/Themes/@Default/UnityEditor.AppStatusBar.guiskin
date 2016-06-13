@@ -1353,7 +1353,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: background
+  - m_Name: background [AppToolbar]
     m_Normal:
       m_Background: {fileID: 4313343300465785975, guid: 0000000000000000d000000000000000,
         type: 0}

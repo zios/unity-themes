@@ -1353,7 +1353,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: upSwatch
+  - m_Name: upSwatch [Grad Up Swatch]
     m_Normal:
       m_Background: {fileID: -1139454097201953581, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1420,7 +1420,7 @@ MonoBehaviour:
     m_FixedHeight: 16
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: upSwatchOverlay
+  - m_Name: upSwatchOverlay [Grad Up Swatch Overlay]
     m_Normal:
       m_Background: {fileID: 1258615952922016373, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1488,7 +1488,7 @@ MonoBehaviour:
     m_FixedHeight: 16
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: downSwatch
+  - m_Name: downSwatch [Grad Down Swatch]
     m_Normal:
       m_Background: {fileID: -8041863566862849525, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1555,7 +1555,7 @@ MonoBehaviour:
     m_FixedHeight: 16
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: downSwatchOverlay
+  - m_Name: downSwatchOverlay [Grad Down Swatch Overlay]
     m_Normal:
       m_Background: {fileID: 6253863986041141562, guid: 0000000000000000d000000000000000,
         type: 0}

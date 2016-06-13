@@ -56,8 +56,8 @@ namespace Zios{
 				foreach(string keyword in material.shaderKeywords){
 					if(keyword.Contains("VARIABLE_MATERIAL_")){
 						string shaderName = keyword.Split("_").Skip(2).Join("_").ToLower();
-						file = FileManager.Find(shaderName+".shader",true,false);
-						if(file.IsNull()){file = FileManager.Find(shaderName+".zshader",true,false);}
+						file = FileManager.Find(shaderName+".shader",false);
+						if(file.IsNull()){file = FileManager.Find(shaderName+".zshader",false);}
 						if(file.IsNull()){Debug.LogWarning("[VariableMaterial] : Parent recovery shader missing : " + shaderName);}
 						return file;
 					}
@@ -67,8 +67,8 @@ namespace Zios{
 			file = FileManager.Get(material.shader);
 			if(!file.IsNull() && file.name.Contains("#")){
 				string shaderName = file.name.Split("#")[0];
-				file = FileManager.Find(shaderName+".shader",true,false);
-				if(file.IsNull()){file = FileManager.Find(shaderName+".zshader",true,false);}
+				file = FileManager.Find(shaderName+".shader",false);
+				if(file.IsNull()){file = FileManager.Find(shaderName+".zshader",false);}
 				if(file.IsNull()){Debug.LogWarning("[VariableMaterial] : Parent shader/zshader not found : " + shaderName);}
 			}
 			return file;

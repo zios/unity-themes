@@ -1353,7 +1353,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: gridList
+  - m_Name: gridList [GridList]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1420,7 +1420,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: gridListText
+  - m_Name: gridListText [GridListText]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1488,7 +1488,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 1
-  - m_Name: label
+  - m_Name: label [RightLabel]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1554,7 +1554,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: largeSquare
+  - m_Name: largeSquare [button]
     m_Normal:
       m_Background: {fileID: -573041650897247223, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1626,7 +1626,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: command
+  - m_Name: command [Command]
     m_Normal:
       m_Background: {fileID: 9098617087583456627, guid: 0000000000000000d000000000000000,
         type: 0}

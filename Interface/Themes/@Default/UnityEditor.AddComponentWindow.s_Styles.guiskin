@@ -1353,7 +1353,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: header
+  - m_Name: header [m_InspectorBig [IN BigTitle]]
     m_Normal:
       m_Background: {fileID: -1546782194512641569, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1421,7 +1421,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: componentButton
+  - m_Name: componentButton [PR Label]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1494,7 +1494,7 @@ MonoBehaviour:
     m_FixedHeight: 20
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: groupButton
+  - m_Name: groupButton [PR Label]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1567,7 +1567,7 @@ MonoBehaviour:
     m_FixedHeight: 20
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: background
+  - m_Name: background [grey_border]
     m_Normal:
       m_Background: {fileID: 4573103925955609575, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1635,7 +1635,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 1
-  - m_Name: previewBackground
+  - m_Name: previewBackground [PopupCurveSwatchBackground]
     m_Normal:
       m_Background: {fileID: -685672140601229974, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1702,7 +1702,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: previewHeader
+  - m_Name: previewHeader [m_Label [ControlLabel]]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1772,7 +1772,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: previewText
+  - m_Name: previewText [m_WordWrappedLabel [WordWrappedLabel]]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1838,7 +1838,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: rightArrow
+  - m_Name: rightArrow [AC RightArrow]
     m_Normal:
       m_Background: {fileID: -1024337226193420218, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1905,7 +1905,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 1
-  - m_Name: leftArrow
+  - m_Name: leftArrow [AC LeftArrow]
     m_Normal:
       m_Background: {fileID: -7587691099990578721, guid: 0000000000000000d000000000000000,
         type: 0}

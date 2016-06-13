@@ -243,7 +243,7 @@ namespace Zios{
 		}
 		public static void SetAssetDirty(UnityObject target){
 			#if UNITY_EDITOR
-			string path = AssetDatabase.GetAssetPath(target);
+			string path = FileManager.GetPath(target);
 			UnityObject asset = AssetDatabase.LoadMainAssetAtPath(path);
 			Utility.SetDirty(asset,false,true);
 			#endif

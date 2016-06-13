@@ -730,7 +730,7 @@ MonoBehaviour:
     m_StretchWidth: 0
     m_StretchHeight: 1
   m_verticalSliderThumb:
-    m_Name: verticalscrollbarthumb
+    m_Name: verticalsliderthumb
     m_Normal:
       m_Background: {fileID: 944833255956038975, guid: 0000000000000000d000000000000000,
         type: 0}

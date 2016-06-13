@@ -1353,7 +1353,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: background
+  - m_Name: background [OL box]
     m_Normal:
       m_Background: {fileID: 2575269581626704993, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1421,7 +1421,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 1
-  - m_Name: header
+  - m_Name: header [OL Title]
     m_Normal:
       m_Background: {fileID: -2739426759134481697, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1492,7 +1492,7 @@ MonoBehaviour:
     m_FixedHeight: 17
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: rightHeader
+  - m_Name: rightHeader [OL Title TextRight]
     m_Normal:
       m_Background: {fileID: -2739426759134481697, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1563,7 +1563,7 @@ MonoBehaviour:
     m_FixedHeight: 17
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: entryEven
+  - m_Name: entryEven [OL EntryBackEven]
     m_Normal:
       m_Background: {fileID: 1178275909477605523, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1631,7 +1631,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: entryOdd
+  - m_Name: entryOdd [OL EntryBackOdd]
     m_Normal:
       m_Background: {fileID: -6611788727337487407, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1699,7 +1699,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: numberLabel
+  - m_Name: numberLabel [OL Label]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1766,7 +1766,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: foldout
+  - m_Name: foldout [IN Foldout]
     m_Normal:
       m_Background: {fileID: -3169759088934609965, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1838,7 +1838,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: miniPullDown
+  - m_Name: miniPullDown [MiniPullDown]
     m_Normal:
       m_Background: {fileID: -7655743461927396663, guid: 0000000000000000d000000000000000,
         type: 0}

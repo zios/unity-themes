@@ -1353,7 +1353,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: background
+  - m_Name: background [OL box]
     m_Normal:
       m_Background: {fileID: 2575269581626704993, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1553,7 +1553,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: contentBox
+  - m_Name: contentBox [GroupBox]
     m_Normal:
       m_Background: {fileID: 2575269581626704993, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1620,7 +1620,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: entrySelected
+  - m_Name: entrySelected [ServerUpdateChangesetOn]
     m_Normal:
       m_Background: {fileID: -174692938186236039, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1688,7 +1688,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: entryNormal
+  - m_Name: entryNormal [ServerUpdateChangeset]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1755,7 +1755,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: element
+  - m_Name: element [OL Elem]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1822,7 +1822,7 @@ MonoBehaviour:
     m_FixedHeight: 16
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: header
+  - m_Name: header [OL header]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1890,7 +1890,7 @@ MonoBehaviour:
     m_FixedHeight: 16
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: title
+  - m_Name: title [OL Title]
     m_Normal:
       m_Background: {fileID: -2739426759134481697, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1961,7 +1961,7 @@ MonoBehaviour:
     m_FixedHeight: 17
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: columnHeader
+  - m_Name: columnHeader [OL Title]
     m_Normal:
       m_Background: {fileID: -2739426759134481697, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2032,7 +2032,7 @@ MonoBehaviour:
     m_FixedHeight: 17
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: serverUpdateLog
+  - m_Name: serverUpdateLog [ServerUpdateLog]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -2099,7 +2099,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: serverUpdateInfo
+  - m_Name: serverUpdateInfo [ServerUpdateInfo]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -2166,7 +2166,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: smallButton
+  - m_Name: smallButton [button]
     m_Normal:
       m_Background: {fileID: -573041650897247223, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2238,7 +2238,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: errorLabel
+  - m_Name: errorLabel [ErrorLabel]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -2306,7 +2306,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: miniButton
+  - m_Name: miniButton [minibutton]
     m_Normal:
       m_Background: {fileID: 9174848017576406294, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2379,7 +2379,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: button
+  - m_Name: button [button]
     m_Normal:
       m_Background: {fileID: -573041650897247223, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2451,7 +2451,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: largeButton
+  - m_Name: largeButton [ButtonMid]
     m_Normal:
       m_Background: {fileID: 6070648720424352284, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2523,7 +2523,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: bigButton
+  - m_Name: bigButton [LargeButton]
     m_Normal:
       m_Background: {fileID: 9098617087583456627, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2596,7 +2596,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: entryEven
+  - m_Name: entryEven [CN EntryBackEven]
     m_Normal:
       m_Background: {fileID: 1178275909477605523, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2664,7 +2664,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: entryOdd
+  - m_Name: entryOdd [CN EntryBackOdd]
     m_Normal:
       m_Background: {fileID: -6611788727337487407, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2732,7 +2732,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: dropDown
+  - m_Name: dropDown [MiniPullDown]
     m_Normal:
       m_Background: {fileID: -7655743461927396663, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2802,7 +2802,7 @@ MonoBehaviour:
     m_FixedHeight: 15
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: toggle
+  - m_Name: toggle [toggle]
     m_Normal:
       m_Background: {fileID: -5335821736339326178, guid: 0000000000000000d000000000000000,
         type: 0}
