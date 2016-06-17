@@ -52,8 +52,8 @@ namespace Zios.Shaders{
 		}
 		public static void RefreshStep(object collection,int index){
 			var materials = (List<Material>)collection;
-			Event.stepperTitle = "Updating " + materials.Count + " Materials";
-			Event.stepperMessage = "Updating material : " + materials[index].name;
+			EventStepper.title = "Updating " + materials.Count + " Materials";
+			EventStepper.message = "Updating material : " + materials[index].name;
 			VariableMaterial.Refresh(true,materials[index]);
 		}
 		public void SetKeyword(Enum target){

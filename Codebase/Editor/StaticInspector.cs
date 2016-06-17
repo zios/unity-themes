@@ -31,7 +31,7 @@ namespace Zios.Editors{
 		private Dictionary<string,Accessor> variables = new Dictionary<string,Accessor>();
 		private SortedDictionary<string,SortedDictionary<string,List<string>>> classNames = new SortedDictionary<string,SortedDictionary<string,List<string>>>();
 		private SortedDictionary<string,SortedDictionary<string,List<Type>>> classes = new SortedDictionary<string,SortedDictionary<string,List<Type>>>();
-		[MenuItem("Zios/Window/Static Inspector")]
+		[MenuItem("Zios/Window/Static Inspector",false,0)]
 		private static void Init(){
 			StaticInspector window = (StaticInspector)EditorWindow.GetWindow(typeof(StaticInspector));
 			window.position = new Rect(100,150,200,200);

@@ -177,7 +177,7 @@ namespace Zios.Editors.SpriteEditors{
 		//===========================
 		// Unity Specific
 		//===========================
-		[MenuItem("Zios/Window/Sprite")]
+		[MenuItem("Zios/Window/Sprite (Unstable)",false,0)]
 		private static void Init(){
 			SpriteWindow window = (SpriteWindow)EditorWindow.GetWindow(typeof(SpriteWindow));
 			EditorWindow.FocusWindowIfItsOpen(typeof(SpriteWindow));

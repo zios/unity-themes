@@ -86,16 +86,13 @@ namespace Zios.Events{
 		public static Event instance;
 		public static object all = "All";
 		public static object global = "Global";
-		public static EventListener empty = new EventListener();
+		public static EventListener emptyListener = new EventListener();
 		public static Dictionary<object,Dictionary<string,EventListener>> unique = new Dictionary<object,Dictionary<string,EventListener>>();
 		public static Dictionary<object,Dictionary<string,Dictionary<object,EventListener>>> cache = new Dictionary<object,Dictionary<string,Dictionary<object,EventListener>>>();
 		public static List<EventListener> listeners = new List<EventListener>();
 		public static Dictionary<object,List<string>> callers = new Dictionary<object,List<string>>();
 		public static Dictionary<object,List<string>> active = new Dictionary<object,List<string>>();
-		public static Dictionary<MethodStep,EventStepper> steppers = new Dictionary<MethodStep,EventStepper>();
-		[NonSerialized] public static string current;
-		[NonSerialized] public static string stepperTitle;
-		[NonSerialized] public static string stepperMessage;
+		[NonSerialized] public static string lastCalled;
 		public static FixedList<string> eventHistory = new FixedList<string>(15);
 		public static List<EventListener> stack = new List<EventListener>();
 		private bool setup;
@@ -119,7 +116,7 @@ namespace Zios.Events{
 			Event.cache.Clear();
 			Event.callers.Clear();
 			Event.unique.Clear();
-			Event.steppers.Clear();
+			EventStepper.instances.Clear();
 		}
 		public static void Cleanup(){
 			if(Application.isPlaying){return;}
@@ -175,17 +172,9 @@ namespace Zios.Events{
 			}
 		}
 		public static void AddStepper(string eventName,MethodStep method,IList collection,int passes=1){
-			var stepper = Event.steppers[method] = new EventStepper();
-			stepper.eventName = eventName;
-			stepper.method = method;
-			stepper.collection = collection;
-			stepper.index = 0;
-			while(passes > 0){
-				Method pass = ()=>stepper.Step();
-				stepper.passes.Add(pass);
-				Event.Add(eventName,pass).SetPermanent();
-				passes -= 1;
-			}
+			var stepper = new EventStepper(method,null,collection,passes);
+			stepper.onComplete = ()=>Event.Remove(eventName,stepper.Step);
+			Event.Add(eventName,stepper.Step).SetPermanent();
 		}
 		public static EventListener Add(string name,Method method,params object[] targets){return Event.Add(name,(object)method,-1,targets);}
 		public static EventListener Add(string name,MethodObject method,params object[] targets){return Event.Add(name,(object)method,-1,targets);}
@@ -219,7 +208,7 @@ namespace Zios.Events{
 				return null;
 			}
 			targets = Event.VerifyAll(targets);
-			var listener = Event.empty;
+			var listener = Event.emptyListener;
 			foreach(object current in targets){
 				var target = current;
 				if(target.IsNull()){continue;}
@@ -384,12 +373,12 @@ namespace Zios.Events{
 			bool debugTime = canDebug && Event.debug.Has("CallTimer");
 			float duration = Time.realtimeSinceStartup;
 			if(hasEvents){
-				Event.current = name;
+				Event.lastCalled = name;
 				Event.active[target].Add(name);
 				foreach(var item in events.Copy()){
 					item.Value.Call(debugDeep,debugTime,values);
 				}
-				Event.current = "";
+				Event.lastCalled = "";
 				Event.active[target].Remove(name);
 			}
 			if(debugTime && (!debugDeep || count < 1)){
@@ -517,7 +506,7 @@ namespace Zios.Events{
 			Event.Register(name,current);
 		}
 		public static EventListener AddEvent(this object current,string name,object method,int amount=-1){
-			if(current.IsNull()){return Event.empty;}
+			if(current.IsNull()){return Event.emptyListener;}
 			return Event.Add(name,method,amount,current);
 		}
 		public static void RemoveEvent(this object current,string name,object method){

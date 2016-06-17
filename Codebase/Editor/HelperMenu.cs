@@ -13,7 +13,7 @@ namespace Zios.Editors{
 			bool inGroup = instance.transform.parent != null && instance.transform.parent.name.Contains("SpriteGroup");
 			return (inGroup && sprite != null) || (filter != null && filter.sharedMesh.name == "plane");
 		}
-		[MenuItem ("Zios/Process/Sprites/Remove Invisible")]
+		[MenuItem ("Zios/Sprites/Remove Invisible")]
 		public static void RemoveInvisibleSprites(){
 			GameObject[] objects = (GameObject[])Resources.FindObjectsOfTypeAll(typeof(GameObject));
 			int removed = 0;
@@ -35,11 +35,11 @@ namespace Zios.Editors{
 			}
 			Debug.Log("[HelperMenu]" + removed + " null game objects removed.");
 		}
-		[MenuItem ("Zios/Process/Animation/Stepped Curves")]
+		[MenuItem ("Zios/Animation/Stepped Curves")]
 		public static void SteppedCurves(){
 			HelperMenu.SplitAnimations(Mathf.Infinity);
 		}
-		[MenuItem ("Zios/Process/Animation/Separate Animations")]
+		[MenuItem ("Zios/Animation/Separate Animations")]
 		public static void SeparateAnimations(){
 			HelperMenu.SplitAnimations();
 		}
@@ -90,7 +90,7 @@ namespace Zios.Editors{
 				}
 			}
 		}
-		[MenuItem ("Zios/Process/Sprites/Snap Positions")]
+		[MenuItem ("Zios/Sprites/Snap Positions")]
 		public static void SnapPositions(){
 			GameObject[] all = (GameObject[])GameObject.FindObjectsOfType(typeof(GameObject));
 			for(int index=0;index < all.Length;++index){

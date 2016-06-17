@@ -12,24 +12,25 @@ namespace Zios{
 		[NonSerialized] public static bool includeBuiltin;
 		[NonSerialized] public static Dictionary<string,object> styleGroupBuffer = new Dictionary<string,object>();
 		[NonSerialized] public static Hierarchy<string,string,GUIContent> contentBuffer = new Hierarchy<string,string,GUIContent>();
-		[MenuItem("Zios/Process/Theme/Development/Save All [GUISkin + GUIContent]")]
+		[MenuItem("Zios/Theme/Development/Save All [GUISkin + GUIContent]")]
 		public static void SaveGUIAll(){Themes.SaveGUI("",true);}
-		[MenuItem("Zios/Process/Theme/Development/Save All [Assets]")]
+		[MenuItem("Zios/Theme/Development/Save All [Assets]")]
 		public static void SaveAssetsAll(){Themes.SaveAssets("",true);}
-		[MenuItem("Zios/Process/Theme/Development/Save [GUISkin + GUIContent]")]
+		[MenuItem("Zios/Theme/Development/Save [GUISkin + GUIContent]")]
 		public static void SaveGUI(){Themes.SaveGUI("");}
 		public static void SaveGUI(string path,bool includeBuiltin=false){
 			Themes.includeBuiltin = includeBuiltin;
 			Themes.createPath = path.IsEmpty() ? EditorUtility.SaveFolderPanel("Save Theme [GUISkin/GUIContent]",Themes.storagePath,"@Default") : path;
 			var allTypes = typeof(Editor).Assembly.GetTypes().Where(x=>!x.IsNull()).ToArray();
-			Event.AddStepper("On Editor Update",Themes.SaveGUIStep,allTypes,50);
+			var stepper = new EventStepper(Themes.SaveGUIStep,Themes.SaveGUIComplete,allTypes,50);
+			EditorApplication.update += stepper.Step;
 		}
 		public static void SaveGUIStep(object collection,int itemIndex){
 			var types = (Type[])collection;
 			var type = types[itemIndex];
 			if(!type.Name.ContainsAny("$","__Anon","<","AudioMixerDraw")){
-				Event.stepperTitle = "Scanning " + types.Length + " Types";
-				Event.stepperMessage = "Analyzing : " + type.Name;
+				EventStepper.title = "Scanning " + types.Length + " Types";
+				EventStepper.message = "Analyzing : " + type.Name;
 				var terms = new string[]{"Styles","styles","s_GOStyles","s_Current","s_Styles","m_Styles","ms_Styles","constants"};
 				foreach(var term in terms){
 					if(!type.HasVariable(term,ObjectExtension.staticFlags)){continue;}
@@ -55,28 +56,29 @@ namespace Zios{
 				}
 				catch{}
 			}
-			if(itemIndex >= types.Length-1){
-				var savePath = Themes.createPath.GetAssetPath();
-				var themeName = savePath.Split("/").Last();
-				AssetDatabase.StartAssetEditing();
-				EditorUtility.ClearProgressBar();
-				foreach(var buffer in Themes.styleGroupBuffer){
-					var skinPath = savePath+"/"+buffer.Key+".guiskin";
-					var contentPath = savePath+"/"+buffer.Key+".guicontent";
-					Themes.SaveGUISkin(skinPath,buffer);
-					Themes.SaveGUIContent(contentPath,buffer.Value.GetVariables<GUIContent>());
-				}
-				foreach(var buffer in Themes.contentBuffer){
-					var contentPath = savePath+"/"+buffer.Key+".guicontent";
-					Themes.SaveGUIContent(contentPath,buffer.Value);
-				}
-				var skin = EditorGUIUtility.GetBuiltinSkin(EditorSkin.Inspector);
-				skin = ScriptableObject.CreateInstance<GUISkin>().Use(skin);
-				AssetDatabase.CreateAsset(skin,savePath+"/"+themeName+".guiskin");
-				AssetDatabase.StopAssetEditing();
-				Themes.styleGroupBuffer.Clear();
-				Themes.contentBuffer.Clear();
+		}
+		public static void SaveGUIComplete(){
+			var savePath = Themes.createPath.GetAssetPath();
+			var themeName = savePath.Split("/").Last();
+			AssetDatabase.StartAssetEditing();
+			EditorUtility.ClearProgressBar();
+			EditorApplication.update -= EventStepper.active.Step;
+			foreach(var buffer in Themes.styleGroupBuffer){
+				var skinPath = savePath+"/"+buffer.Key+".guiskin";
+				var contentPath = savePath+"/"+buffer.Key+".guicontent";
+				Themes.SaveGUISkin(skinPath,buffer);
+				Themes.SaveGUIContent(contentPath,buffer.Value.GetVariables<GUIContent>());
 			}
+			foreach(var buffer in Themes.contentBuffer){
+				var contentPath = savePath+"/"+buffer.Key+".guicontent";
+				Themes.SaveGUIContent(contentPath,buffer.Value);
+			}
+			var skin = EditorGUIUtility.GetBuiltinSkin(EditorSkin.Inspector);
+			skin = ScriptableObject.CreateInstance<GUISkin>().Use(skin);
+			AssetDatabase.CreateAsset(skin,savePath+"/"+themeName+".guiskin");
+			AssetDatabase.StopAssetEditing();
+			Themes.styleGroupBuffer.Clear();
+			Themes.contentBuffer.Clear();
 		}
 		public static void SaveGUISkin(string path,KeyValuePair<string,object> buffer){
 			var customStyles = new List<GUIStyle>();
@@ -119,7 +121,7 @@ namespace Zios{
 			}
 			FileManager.Create(path).WriteText(contents.Trim());
 		}
-		[MenuItem("Zios/Process/Theme/Development/Save [Palette]")]
+		[MenuItem("Zios/Theme/Development/Save [Palette]")]
 		public static void SavePalette(){Themes.SavePalette("");}
 		public static void SavePalette(string path){
 			path = path.IsEmpty() ? EditorUtility.SaveFilePanel("Save Theme [Palette]",Themes.storagePath+"@Palettes","TheColorsDuke","unitypalette") : path;
@@ -137,7 +139,7 @@ namespace Zios{
 				Themes.setup = false;
 			}
 		}
-		[MenuItem("Zios/Process/Theme/Development/Save [Assets]")]
+		[MenuItem("Zios/Theme/Development/Save [Assets]")]
 		public static void SaveAssets(){Themes.SaveAssets("");}
 		public static void SaveAssets(string path,bool includeBuiltin=false){
 			path = path.IsEmpty() ? EditorUtility.SaveFolderPanel("Save Theme [Assets]",Themes.storagePath,"").GetAssetPath() : path;

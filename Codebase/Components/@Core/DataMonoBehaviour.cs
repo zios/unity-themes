@@ -150,19 +150,20 @@ namespace Zios{
 		// Editor - Sorting
 		//===============
 		#if UNITY_EDITOR
-		[MenuItem("Zios/Process/GameObject/Apply Prefab (Selected) %4")]
+		[MenuItem("Zios/GameObject/Apply Prefab (Selected) &#P")]
 		public static void ApplyPrefabSelected(){
+			Debug.Log("[DataMonoBehaviour] Applying prefab");
 			foreach(var target in Selection.gameObjects){
 				DataMonoBehaviour.ApplyPrefabTarget(target);
 			}
 		}
-		[MenuItem("Zios/Process/GameObject/Sort Components (Selected)")]
+		[MenuItem("Zios/GameObject/Sort Components (Selected)")]
 		public static void SortSmartSelected(){
 			foreach(var target in Selection.gameObjects){
 				DataMonoBehaviour.SortSmartTarget(target);
 			}
 		}
-		[MenuItem("Zios/Process/GameObject/Sort Components (All)")]
+		[MenuItem("Zios/GameObject/Sort Components (All)")]
 		public static void SortSmartAll(){
 			DataMonoBehaviour.sorting = Locate.GetSceneObjects();
 			if(DataMonoBehaviour.sorting.Length > 0){

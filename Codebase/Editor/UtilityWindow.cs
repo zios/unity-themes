@@ -25,7 +25,7 @@ namespace Zios.Editors{
 		public string selectName;
 		public string selectComponent;
 		public string shaderName;
-		[MenuItem("Zios/Window/Utilities")]
+		[MenuItem("Zios/Window/Utilities",false,0)]
 		private static void Init(){
 			UtilityWindow window = (UtilityWindow)EditorWindow.GetWindow(typeof(UtilityWindow));
 			window.position = new Rect(100,150,200,200);

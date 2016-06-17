@@ -4,7 +4,7 @@ using System.Linq;
 using System.Collections.Generic;
 namespace Zios.Attributes{
 	public static class AttributePathFixer{
-		[MenuItem ("Zios/Process/Attribute/Fix RawType Serializations")]
+		[MenuItem ("Zios/Attribute/Fix RawType Serializations")]
 		public static void FixSerialized(){
 			int count = 0;
 			AssetDatabase.StartAssetEditing();

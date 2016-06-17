@@ -22,7 +22,7 @@ namespace Zios.Editors{
 		public List<ShaderInfo> keywordMap = new List<ShaderInfo>();
 		public Dictionary<string,List<string>> goalProperties = new Dictionary<string,List<string>>();
 		private Vector2 scrollPosition;
-		[MenuItem("Zios/Window/Material Mapper")]
+		[MenuItem("Zios/Window/Material Mapper",false,0)]
 		private static void Init(){
 			MaterialMapper window = (MaterialMapper)EditorWindow.GetWindow(typeof(MaterialMapper));
 			window.position = new Rect(100,150,200,200);

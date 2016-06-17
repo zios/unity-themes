@@ -133,7 +133,7 @@ namespace Zios.Editors.StateEditors{
 		//===================================
 		// Operations
 		//===================================
-		[MenuItem ("Zios/Window/State")]
+		[MenuItem ("Zios/Window/State",false,0)]
 		public static void Begin(){
 			var window = EditorWindow.GetWindow<StateWindow>();
 			if(StateWindow.instance == null){

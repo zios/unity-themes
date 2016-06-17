@@ -14,7 +14,7 @@ namespace Zios{
 		public static List<ThemePalette> palettes = new List<ThemePalette>();
 		public static List<Theme> all = new List<Theme>();
 		public static Theme active;
-		[NonSerialized] public static string revision = "484";
+		[NonSerialized] public static string revision = "1 [r485]";
 		[NonSerialized] public static int themeIndex;
 		[NonSerialized] public static int paletteIndex;
 		[NonSerialized] public static string storagePath;
@@ -28,7 +28,6 @@ namespace Zios{
 		[NonSerialized] private static float nextUpdate;
 		//[NonSerialized] public static float verticalSpacing = 2.0f;
 		static Themes(){
-			//SceneView.onSceneGUIDelegate += (a)=>Themes.Setup();
 			EditorApplication.projectWindowItemOnGUI += (a,b)=>Themes.Setup();
 			EditorApplication.hierarchyWindowItemOnGUI += (a,b)=>Themes.Setup();
 			EditorApplication.playmodeStateChanged += ()=>Themes.nextUpdate = 0;
@@ -43,8 +42,8 @@ namespace Zios{
 			if(EditorApplication.isCompiling || EditorApplication.isUpdating){return;}
 			if(Themes.needsRefresh){
 				Themes.UpdateSettings();
+				Themes.ApplyContents();
 				Utility.RepaintAll();
-				Utility.DelayCall(()=>{foreach(var content in Themes.active.contents){content.Apply();}},0.5f);
 				Themes.needsRefresh = false;
 			}
 			if(Themes.needsRebuild){
@@ -54,7 +53,6 @@ namespace Zios{
 				Themes.needsRebuild = false;
 				Themes.needsRefresh = true;
 			}
-
 			if(!Themes.setup){
 				var themes = FileManager.Find("*.unitytheme",Themes.debug);
 				if(themes.IsNull()){
@@ -86,31 +84,40 @@ namespace Zios{
 			typeof(EditorStyles).SetVariable<EditorStyles>("s_CachedStyles",null,0);
 			typeof(EditorStyles).SetVariable<EditorStyles>("s_CachedStyles",null,1);
 			typeof(EditorGUIUtility).CallMethod("SkinChanged");
-			var buildWindow = Utility.GetUnityType("BuildPlayerWindow");
-			var aboutWindow = Utility.GetUnityType("AboutWindow");
-			foreach(var window in Resources.FindObjectsOfTypeAll<EditorWindow>()){
-				if(window.GetType() == buildWindow || window.GetType() == aboutWindow){
-					window.Close();
-				}
-			}
 		}
-		[MenuItem("Zios/Process/Theme/Refresh %2")]
+		[MenuItem("Zios/Theme/Refresh _`1")]
 		public static void Refresh(){
 			Debug.Log("[Themes] Forced Refresh.");
 			Themes.setup = false;
 			Themes.disabled = false;
 			Utility.RepaintAll();
 		}
-		[MenuItem("Zios/Process/Theme/Development/Toggle Live Edit %3")]
+		[MenuItem("Zios/Theme/Development/Toggle Live Edit _`2")]
 		public static void ToggleEdit(){
 			Themes.liveEdit = !Themes.liveEdit;
 			Debug.Log("[Themes] Live editing : " + Themes.liveEdit);
 			Themes.Refresh();
 		}
-		[MenuItem("Zios/Process/Theme/Development/Toggle Debug %4")]
+		[MenuItem("Zios/Theme/Development/Toggle Debug _`3")]
 		public static void ToggleDebug(){
-			Themes.debug= !Themes.debug;
+			Themes.debug = !Themes.debug;
 			Debug.Log("[Themes] Debug messages : " + Themes.debug);
+		}
+		[MenuItem("Zios/Theme/Next Palette &F2")]
+		public static void NextPalette(){Themes.AdjustPalette(1);}
+		[MenuItem("Zios/Theme/Previous Palette &F1")]
+		public static void PreviousPalette(){Themes.AdjustPalette(-1);}
+		public static void AdjustPalette(int adjust){
+			if(Themes.active.allowCustomization && Themes.active.allowColorCustomization){
+				Themes.paletteIndex = (Themes.paletteIndex + adjust) % Themes.palettes.Count;
+				if(Themes.paletteIndex < 0){Themes.paletteIndex = Themes.palettes.Count-1;}
+				var palette = Themes.palettes[Themes.paletteIndex];
+				Themes.active.palette = new ThemePalette().Use(palette);
+				EditorPrefs.SetString("EditorPalette",palette.name);
+				Themes.SaveColors();
+				Utility.RepaintAll();
+				Themes.needsRefresh = true;
+			}
 		}
 		//=================================
 		// Menu Preferences
@@ -207,15 +214,24 @@ namespace Zios{
 			if(theme.allowSystemColor && theme.useSystemColor){
 				theme.palette.backgroundDark.offset = 0.8f;
 				theme.palette.backgroundLight.offset = 1.3f;
-				Color color;
-				object key;
-				int systemColor = -1;
+				Color color = theme.palette.background;
+				object key = null;
 				#if UNITY_EDITOR_WIN
 				key = Registry.GetValue("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\DWM\\","AccentColor",null);
-				//if(key.IsNull()){key = Registry.GetValue("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\DWM\\","AccentColor",null);}
-				if(!key.IsNull()){systemColor = key.As<int>();}
+				key = key ?? Registry.GetValue("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Accent","AccentColor",null);
+				if(!key.IsNull()){
+					int value = key.As<int>();
+					color = value  != -1 ? value.ToHex().ToColor(true) : color;
+				}
+				else{
+					key = Registry.GetValue("HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\Personalization","PersonalColor_Accent",null);
+					key = key ?? Registry.GetValue("HKEY_CURRENT_USER\\Control Panel\\Colors","WindowFrame",null);
+					if(!key.IsNull()){
+						string value = key.As<string>();
+						color = value != "" ? value.ToColor(" ",false,false) : color;
+					}
+				}
 				#endif
-				color = systemColor != -1 ? systemColor.ToHex().ToColor(true) : theme.palette.background;
 				if(color != theme.palette.background){
 					theme.palette.background = color;
 					theme.palette.backgroundDark.Update(theme.palette.background);
@@ -291,14 +307,11 @@ namespace Zios{
 				skin.settings.cursorColor = theme.palette.backgroundLight;
 				skin.settings.selectionColor = theme.palette.backgroundDark;
 				skin.GetStyle("TabWindowBackground").normal.background = theme.windowBackgroundOverride;
-				if(!skin.FindStyle("ObjectFieldThumbOverlay").IsNull()){skin.FindStyle("ObjectFieldThumbOverlay").name = "m_ObjectFieldThumbOverlay";}
-				if(!skin.FindStyle("ObjectFieldThumbOverlay2").IsNull()){skin.FindStyle("ObjectFieldThumbOverlay2").name = "m_ObjectFieldThumbOverlay2";}
-				//skin.AddStyle("m_ObjectFieldThumbOverlay",skin.FindStyle("ObjectFieldThumbOverlay"));
-				//skin.AddStyle("m_ObjectFieldThumbOverlay2",skin.FindStyle("ObjectFieldThumbOverlay2"));
 				Utility.GetUnityType("AppStatusBar").ClearVariable("background");
-				Utility.GetUnityType("Toolbar").CallMethod("RepaintToolbar");
 				Utility.GetUnityType("SceneRenderModeWindow.Styles").SetVariable("sMenuItem",skin.GetStyle("MenuItem"));
 				Utility.GetUnityType("SceneRenderModeWindow.Styles").SetVariable("sSeparator",skin.GetStyle("sv_iconselector_sep"));
+				Utility.GetUnityType("GameView.Styles").SetVariable("gizmoButtonStyle",skin.GetStyle("GV Gizmo DropDown"));
+				typeof(SceneView).SetVariable<GUIStyle>("s_DropDownStyle",skin.GetStyle("GV Gizmo DropDown"));
 				typeof(EditorGUIUtility).SetVariable("kDarkViewBackground",theme.palette.background);
 				typeof(EditorGUI).SetVariable("kCurveColor",theme.palette.backgroundDark.value);
 				typeof(EditorGUI).SetVariable("kCurveBGColor",theme.palette.backgroundLight.value);
@@ -335,7 +348,7 @@ namespace Zios{
 				var parent = skinFile.name.Replace("."+field,"");
 				var typeDirect = Utility.GetUnityType(skinFile.name);
 				var typeParent = Utility.GetUnityType(parent);
-				var styles = skinFile.GetAsset<GUISkin>().GetNamedStyles(false);
+				var styles = skinFile.GetAsset<GUISkin>().GetNamedStyles(false,true,true);
 				var flags = field.Contains("s_Current") ? ObjectExtension.privateFlags : ObjectExtension.staticFlags;
 				if(Themes.debug && typeDirect.IsNull() && (typeParent.IsNull() || !typeParent.HasVariable(field))){
 					Debug.LogWarning("[Themes] No matching class/field found for GUISkin -- " + skinFile.name + ". Possible version conflict.");
@@ -347,7 +360,10 @@ namespace Zios{
 					}
 					foreach(var item in current){
 						if(styles.ContainsKey(item.Key)){
-							scope.SetVariable(item.Key,styles[item.Key]);
+							var baseName = styles[item.Key].name.Parse("[","]");
+							var replacement = styles[item.Key];
+							var newStyle = Themes.liveEdit ? replacement : new GUIStyle(replacement).Rename(baseName);
+							scope.SetVariable(item.Key,newStyle);
 						}
 					}
 				};
@@ -364,9 +380,12 @@ namespace Zios{
 				}
 			}
 		}
+		public static void ApplyContents(){
+			Utility.DelayCall(()=>{foreach(var content in Themes.active.contents){content.Apply();}},0.5f);
+		}
 	}
 	public class ThemesAbout :EditorWindow{
-		[MenuItem("Zios/Process/Theme/About",false,1)]
+		[MenuItem("Zios/Theme/About",false,1)]
 		public static void Init(){
 			var window = ScriptableObject.CreateInstance<ThemesAbout>();
 			window.position = new Rect(100,100,1,1);

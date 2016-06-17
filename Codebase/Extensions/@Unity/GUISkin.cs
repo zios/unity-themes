@@ -79,18 +79,19 @@ namespace Zios{
 			}
 			return current;
 		}
-		public static Dictionary<string,GUIStyle> GetNamedStyles(this GUISkin current,bool includeStandard=true,bool includeCustom=true){
+		public static Dictionary<string,GUIStyle> GetNamedStyles(this GUISkin current,bool includeStandard=true,bool includeCustom=true,bool trimBaseName=false){
 			var data = new Dictionary<string,GUIStyle>();
 			var styles = current.GetStyles(includeStandard,includeCustom);
 			for(int index=0;index<styles.Length;++index){
 				var style = styles[index];
-				var name = style.name.Split("[")[0].Trim();
-				if(style.name.IsEmpty()){
+				var name = trimBaseName ? style.name.Split("[")[0].Trim() : style.name;
+				if(name.IsEmpty()){
 					data["Element "+index] = style;
 					continue;
 				}
-				while(data.ContainsKey(style.name)){
-					style.name = style.name.ToLetterSequence();
+				while(data.ContainsKey(name)){
+					name = name.ToLetterSequence();
+					style.name = name;
 				}
 				data[name] = style;
 			}

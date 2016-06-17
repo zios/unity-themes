@@ -80,19 +80,20 @@ namespace Zios{
 			var window = EditorWindow.GetWindowWithRect(inspectorWindow,current);
 			return window.GetVariable<Vector2>("m_ScrollPosition");
 		}
-		[MenuItem("Zios/Process/Prefs/Clear Player")]
+		#if !UNITY_THEMES
+		[MenuItem("Zios/Prefs/Clear Player")]
 		public static void DeletePlayerPrefs(){
 			if(EditorUtility.DisplayDialog("Clear Player Prefs","Delete all the player preferences?","Yes","No")){
 				PlayerPrefs.DeleteAll();
 			}
 		}
-		[MenuItem("Zios/Process/Prefs/Clear Editor")]
+		[MenuItem("Zios/Prefs/Clear Editor")]
 		public static void DeleteEditorPrefs(){
 			if(EditorUtility.DisplayDialog("Clear Editor Prefs","Delete all the editor preferences?","Yes","No")){
 				EditorPrefs.DeleteAll();
 			}
 		}
-		[MenuItem("Zios/Process/Format Code")]
+		//[MenuItem("Zios/Format Code")]
 		public static void FormatCode(){
 			var output = new StringBuilder();
 			var current = "";
@@ -101,18 +102,19 @@ namespace Zios{
 				output.Clear();
 				foreach(var line in contents.GetLines()){
 					var leading = line.Substring(0,line.TakeWhile(char.IsWhiteSpace).Count()).Replace("    ","\t");
-					current = leading+line.Trim();
+					current = leading+line.Trim().Replace("//","////");
 					if(line.Trim().IsEmpty()){continue;}
 					output.AppendLine(current);
 				}
 				file.WriteText(output.ToString().TrimEnd(null));
 			}
 		}
-		[MenuItem("Zios/Process/Recompile Code")]
+		[MenuItem("Zios/Recompile Code")]
 		public static void RecompileCode(){
 			string path = "Assets/@Zios/Codebase/Supports/Utility/UtilityEditor.cs";
 			AssetDatabase.ImportAsset(path);
 		}
+		#endif
 	}
 	#endif
 }

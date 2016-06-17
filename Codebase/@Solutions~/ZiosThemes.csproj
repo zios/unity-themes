@@ -37,26 +37,18 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="..\Containers\Container.cs" />
-    <Compile Include="..\Extensions\%40Unity\AnimationCurve.cs" />
-    <Compile Include="..\Extensions\%40Unity\AnimationExtensions.cs" />
     <Compile Include="..\Extensions\%40Unity\Color.cs" />
     <Compile Include="..\Extensions\%40Unity\ComponentExtensions.cs" />
     <Compile Include="..\Extensions\%40Unity\EditorGUI.cs" />
     <Compile Include="..\Extensions\%40Unity\EditorGUILayout.cs" />
     <Compile Include="..\Extensions\%40Unity\Editor\GenericMenu.cs" />
-    <Compile Include="..\Extensions\%40Unity\Editor\SerializedProperty.cs" />
-    <Compile Include="..\Extensions\%40Unity\EventExtensions.cs" />
     <Compile Include="..\Extensions\%40Unity\GameObject.cs" />
     <Compile Include="..\Extensions\%40Unity\GUIContent.cs" />
     <Compile Include="..\Extensions\%40Unity\GUISkin.cs" />
     <Compile Include="..\Extensions\%40Unity\GUIStyle.cs" />
-    <Compile Include="..\Extensions\%40Unity\LayerMask.cs" />
-    <Compile Include="..\Extensions\%40Unity\Mesh.cs" />
-    <Compile Include="..\Extensions\%40Unity\MonoBehaviourExtensions.cs" />
     <Compile Include="..\Extensions\%40Unity\Rect.cs" />
     <Compile Include="..\Extensions\%40Unity\RectOffset.cs" />
     <Compile Include="..\Extensions\%40Unity\Texture.cs" />
-    <Compile Include="..\Extensions\%40Unity\TransformExtensions.cs" />
     <Compile Include="..\Extensions\%40Unity\UnityObjectExtensions.cs" />
     <Compile Include="..\Extensions\%40Unity\Vector3.cs" />
     <Compile Include="..\Extensions\Array.cs" />
@@ -93,7 +85,6 @@
     <Compile Include="..\System Attributes\EnumMask.cs" />
     <Compile Include="..\System Attributes\Internal.cs" />
     <Compile Include="..\System Attributes\Unity\InitializeOnLoad.cs" />
-    <Compile Include="..\Systems\Event\Editor\EventsEditor.cs" />
     <Compile Include="..\Systems\Event\Event.cs" />
     <Compile Include="..\Systems\Event\EventDetector.cs" />
     <Compile Include="..\Systems\Event\EventListener.cs" />
@@ -112,11 +103,4 @@
   <PropertyGroup>
     <PostBuildEvent>rmdir /q /s $(ProjectDir)obj</PostBuildEvent>
   </PropertyGroup>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

@@ -13,7 +13,7 @@ namespace Zios.Editors{
 		private Dictionary<Component,Rect> componentArea = new Dictionary<Component,Rect>();
 		private Dictionary<Component,Rect> headerArea = new Dictionary<Component,Rect>();
 		private Vector2 scrollPosition;
-		[MenuItem("Zios/Window/Inspector")]
+		[MenuItem("Zios/Window/Inspector",false,0)]
 		private static void Init(){
 			ZiosInspector window = (ZiosInspector)EditorWindow.GetWindow(typeof(ZiosInspector));
 			var icon = FileManager.GetAsset<Texture2D>("IconZiosInspector.png");

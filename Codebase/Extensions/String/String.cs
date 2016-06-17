@@ -90,12 +90,12 @@ namespace Zios{
 		}
 		public static GUIContent ToContent(this string current){return new GUIContent(current);}
 		public static Color ToColor(this string current,bool flipOrder){return current.ToColor(",",flipOrder);}
-		public static Color ToColor(this string current,string separator=",",bool flipOrder=false){
+		public static Color ToColor(this string current,string separator=",",bool flipOrder=false,bool? normalized=null){
 			current = current.Remove("#").Remove("0x");
 			if(current.Contains(separator)){
 				var parts = current.Split(separator).Convert<float>();
-				bool normalized = !parts.Exists(x=>x>1);
-				if(!normalized){
+				normalized = normalized.IsNull() ? current.Contains(".") : normalized;
+				if(!normalized.As<bool>()){
 					parts = parts.Select(x=>x/255.0f).ToArray();
 				}
 				float r = parts[0];
@@ -338,24 +338,23 @@ namespace Zios{
 		public static string Cut(this string current,int startIndex=0,int endIndex=-1){
 			return current.Substring(startIndex,endIndex - startIndex + 1);
 		}
-		public static string Cut(this string current,string start="",string end="",int offset=0,bool ignoreCase=true,int repeatEnd=1){
+		public static string Cut(this string current,string start="",string end="",int offset=0,bool ignoreCase=true,int endCount=1){
 			int startIndex = start == "" ? 0 : current.IndexOf(start,offset,ignoreCase);
 			if(startIndex != -1){
 				if(end == ""){return current.Substring(startIndex);}
 				int endIndex = current.IndexOf(end,startIndex + 1,ignoreCase);
-				if(endIndex == -1){endIndex = current.Length-1;}
-				while(repeatEnd > 1){
-					if(endIndex == -1){return "";}
+				if(endIndex == -1){return current.Substring(startIndex);}
+				while(endCount > 1){
 					endIndex = current.IndexOf(end,endIndex + 1,ignoreCase);
-					--repeatEnd;
+					--endCount;
 				}
 				int distance = endIndex - startIndex + end.Length;
 				return current.Substring(startIndex,distance);
 			}
 			return "";
 		}
-		public static string Parse(this string current,string start="",string end="",int offset=0,bool ignoreCase=true,int repeatEnd=1){
-			string value = current.Cut(start,end,offset,ignoreCase,repeatEnd);
+		public static string Parse(this string current,string start="",string end="",int offset=0,bool ignoreCase=true,int endCount=1){
+			string value = current.Cut(start,end,offset,ignoreCase,endCount);
 			if(value.IsEmpty()){return "";}
 			return value.Substring(start.Length).TrimRight(end).Trim();
 		}

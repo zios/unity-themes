@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,6 +7,34 @@ namespace Zios{
 	#if UNITY_EDITOR
 	using UnityEditor;
 	public static partial class Themes{
+		[MenuItem("Zios/Theme/Development/Sync Names [GUISkin]")]
+		public static void SyncSkinNames(){Themes.SyncSkinNames("");}
+		public static void SyncSkinNames(string path=""){
+			path = path.IsEmpty() ? EditorUtility.SaveFolderPanel("Sync Names [GUISkin]",Themes.storagePath,"").GetAssetPath() : path;
+			var files = FileManager.FindAll(path+"/*.guiSkin");
+			foreach(var file in files){
+				var stylesSkin = file.GetAsset<GUISkin>().customStyles;
+				var stylesReflected = file.name.Contains(".") ? Themes.ReflectStyles(file.name) : null;
+				var stylesInternal = file.name.Contains(".") ? stylesReflected.Values.ToArray() : EditorGUIUtility.GetBuiltinSkin(EditorSkin.Inspector).customStyles;
+				if(stylesSkin.Length == stylesInternal.Length){
+					for(int index=0;index<stylesSkin.Length;++index){
+						var name = stylesSkin[index].name;
+						var goal = stylesInternal[index].name;
+						if(file.name.Contains(".")){
+							if(!goal.IsEmpty()){goal = " ["+goal.Split("[")[0].Trim()+"]";}
+							goal = stylesReflected.Keys.ToArray()[index] + goal;
+						}
+						if(name != goal){
+							Debug.Log("[Themes] Fixed style name in " + file.name + ". Was " + name + ". Now " + goal);
+							stylesSkin[index].name = goal;
+						}
+					}
+					Utility.SetAssetDirty(file.GetAsset<GUISkin>());
+					continue;
+				}
+				Debug.LogWarning("[Themes] Mismatched number of styles -- " + file.name + ". Found " + stylesSkin.Length + ", but expected " + stylesInternal.Length + ". Possible version conflict.");
+			}
+		}
 		public static Dictionary<string,GUIStyle> ReflectStyles(string path,bool showWarnings=true){
 			var empty = new Dictionary<string,GUIStyle>();
 			var fieldName = path.Split(".").Last();
@@ -27,35 +55,7 @@ namespace Zios{
 			if(showWarnings){Debug.LogWarning("[Themes] No matching class/field found for GUISkin -- " + path + ". Possible version conflict.");}
 			return empty;
 		}
-		[MenuItem("Zios/Process/Theme/Development/Sync Names [GUISkin]")]
-		public static void SyncSkins(){Themes.SyncSkins("");}
-		public static void SyncSkins(string path=""){
-			path = path.IsEmpty() ? EditorUtility.SaveFolderPanel("Sync Names [GUISkin]",Themes.storagePath,"").GetAssetPath() : path;
-			var files = FileManager.FindAll(path+"/*.guiSkin");
-			foreach(var file in files){
-				var stylesSkin = file.GetAsset<GUISkin>().customStyles;
-				var stylesReflected = file.name.Contains(".") ? Themes.ReflectStyles(file.name) : null;
-				var stylesInternal = file.name.Contains(".") ? stylesReflected.Values.ToArray() : EditorGUIUtility.GetBuiltinSkin(EditorSkin.Inspector).customStyles;
-				if(stylesSkin.Length == stylesInternal.Length){
-					for(int index=0;index<stylesSkin.Length;++index){
-						var name = stylesSkin[index].name; 
-						var goal = stylesInternal[index].name;
-						if(file.name.Contains(".")){
-							if(!goal.IsEmpty()){goal = " ["+goal+"]";}
-							goal = stylesReflected.Keys.ToArray()[index] + goal;
-						}
-						if(name != goal){
-							Debug.Log("[Themes] Fixed style name in " + file.name + ". Was " + name + ". Now " + goal);
-							stylesSkin[index].name = goal;
-						}
-					}
-					Utility.SetAssetDirty(file.GetAsset<GUISkin>());
-					continue;
-				}
-				Debug.LogWarning("[Themes] Mismatched number of styles -- " + file.name + ". Found " + stylesSkin.Length + ", but expected " + stylesInternal.Length + ". Possible version conflict.");
-			}
-		}
-		[MenuItem("Zios/Process/Theme/Development/Localize [Assets]")]
+		[MenuItem("Zios/Theme/Development/Localize [Assets]")]
 		public static void LocalizeAssets(){Themes.LocalizeAssets("");}
 		public static void LocalizeAssets(string path="",bool includeBuiltin=false){
 			path = path.IsEmpty() ? EditorUtility.SaveFolderPanel("Localize Theme [Assets]",Themes.storagePath,"").GetAssetPath() : path;

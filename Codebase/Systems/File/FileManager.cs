@@ -157,7 +157,7 @@ namespace Zios{
 			if(FileManager.cache.ContainsKey(searchKey)){
 				return FileManager.cache[searchKey];
 			}
-			if(name.StartsWith("!")){return new FileData[0];}
+			if(name.StartsWith("!")){name = name.ReplaceFirst("!","");}
 			if(name.ContainsAny("<",">","?",":","|")){
 				if(name[1] != ':') {
 					Debug.LogWarning("[FileManager] Path has invalid characters -- " + name);

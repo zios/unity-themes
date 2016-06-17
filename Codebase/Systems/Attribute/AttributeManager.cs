@@ -47,9 +47,12 @@ namespace Zios.Attributes{
 		public void ContextRefresh(){
 			AttributeManager.PerformRefresh();
 		}
-		[MenuItem("Zios/Process/Attribute/Full Refresh %1")]
+		[MenuItem("Zios/Attribute/Full Refresh %&R")]
 		#endif
-		public static void PerformRefresh(){AttributeManager.Refresh();}
+		public static void PerformRefresh(){
+			Debug.Log("[AttributeManager] Refresh.");
+			AttributeManager.Refresh();
+		}
 		public static void Refresh(int delay = 0){
 			if(Application.isPlaying || AttributeManager.disabled){return;}
 			Event.Call("On Attributes Refresh");

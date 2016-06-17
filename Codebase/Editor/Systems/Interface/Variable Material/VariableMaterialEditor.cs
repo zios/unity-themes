@@ -51,7 +51,7 @@ namespace Zios.Editors{
 			this.shader = this.material.shader;
 			this.editor.Repaint();
 		}
-		[MenuItem("Zios/Process/Material/Refresh Variable Materials (Scene)")]
+		[MenuItem("Zios/Material/Refresh Variable Materials (Scene)")]
 		public static void RefreshScene(){
 			List<Material> materials = new List<Material>();
 			var renderers = Locate.GetSceneComponents<Renderer>();
@@ -59,15 +59,15 @@ namespace Zios.Editors{
 			materials = materials.Distinct().ToList();
 			Event.AddStepper("On Editor Update",VariableMaterialEditor.RefreshStep,materials,50);
 		}
-		[MenuItem("Zios/Process/Material/Refresh Variable Materials (All)")]
+		[MenuItem("Zios/Material/Refresh Variable Materials (All)")]
 		public static void RefreshAll(){
 			var materials = VariableMaterial.GetAll();
 			Event.AddStepper("On Editor Update",VariableMaterialEditor.RefreshStep,materials,50);
 		}
 		public static void RefreshStep(object collection,int index){
 			var materials = (List<Material>)collection;
-			Event.stepperTitle = "Updating " + materials.Count + " Materials";
-			Event.stepperMessage = "Updating material : " + materials[index].name;
+			EventStepper.title = "Updating " + materials.Count + " Materials";
+			EventStepper.message = "Updating material : " + materials[index].name;
 			VariableMaterial.Refresh(true,materials[index]);
 		}
 	}

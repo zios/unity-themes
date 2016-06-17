@@ -30,11 +30,11 @@ namespace Zios{
 			typeof(double),
 			typeof(float)
 		};
-		[MenuItem("Zios/Process/Export Asset/Scene")]
+		[MenuItem("Zios/Export Asset/Scene")]
 		private static void SaveScene(){
 			SaveObjects((GameObject[])FindObjectsOfType(typeof(GameObject)));
 		}
-		[MenuItem("Zios/Process/Export Asset/Selection")]
+		[MenuItem("Zios/Export Asset/Selection")]
 		private static void SaveSelectedObjects(){
 			SaveObjects(Selection.gameObjects);
 		}

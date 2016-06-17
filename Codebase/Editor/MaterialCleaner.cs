@@ -6,7 +6,7 @@ namespace Zios.Editors{
 	using Events;
 	public static class MaterialCleaner{
 		[NonSerialized] public static bool changes;
-		[MenuItem ("Zios/Process/Material/Remove Unused Data (All)")]
+		[MenuItem ("Zios/Material/Remove Unused Data (All)")]
 		public static void Clean(){MaterialCleaner.Clean(null);}
 		public static void Clean(FileData[] materials){
 			MaterialCleaner.changes = false;
@@ -17,8 +17,8 @@ namespace Zios.Editors{
 			var materials = (FileData[])collection;
 			var file = materials[itemIndex];
 			bool last = itemIndex == materials.Length-1;
-			Event.stepperTitle = "Updating " + materials.Length + " Materials";
-			Event.stepperMessage = "Updating material : " + file.name;
+			EventStepper.title = "Updating " + materials.Length + " Materials";
+			EventStepper.message = "Updating material : " + file.name;
 			string text = file.GetText();
 			string copy = text;
 			int index = 0;
