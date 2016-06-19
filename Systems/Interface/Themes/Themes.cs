@@ -85,20 +85,20 @@ namespace Zios{
 			typeof(EditorStyles).SetVariable<EditorStyles>("s_CachedStyles",null,1);
 			typeof(EditorGUIUtility).CallMethod("SkinChanged");
 		}
-		[MenuItem("Zios/Theme/Refresh _`1")]
+		[MenuItem("Zios/Theme/Refresh #F1")]
 		public static void Refresh(){
 			Debug.Log("[Themes] Forced Refresh.");
 			Themes.setup = false;
 			Themes.disabled = false;
 			Utility.RepaintAll();
 		}
-		[MenuItem("Zios/Theme/Development/Toggle Live Edit _`2")]
+		[MenuItem("Zios/Theme/Development/Toggle Live Edit #F2")]
 		public static void ToggleEdit(){
 			Themes.liveEdit = !Themes.liveEdit;
 			Debug.Log("[Themes] Live editing : " + Themes.liveEdit);
 			Themes.Refresh();
 		}
-		[MenuItem("Zios/Theme/Development/Toggle Debug _`3")]
+		[MenuItem("Zios/Theme/Development/Toggle Debug #F3")]
 		public static void ToggleDebug(){
 			Themes.debug = !Themes.debug;
 			Debug.Log("[Themes] Debug messages : " + Themes.debug);
