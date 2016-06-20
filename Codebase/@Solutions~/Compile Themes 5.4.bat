@@ -1,6 +1,6 @@
 @ECHO OFF
 copy /Y 5.4\* . >NUL
-del ZiosThemes.dll
+del ZiosThemes*.dll
 IF EXIST "%programfiles%\MSBuild\14.0\Bin" GOTO USE_VS14_X32
 IF EXIST "%programfiles(x86)%\MSBuild\14.0\Bin" GOTO USE_VS14_X64
 IF EXIST "%programfiles%\MSBuild\15.0\Bin" GOTO USE_VS15_X32

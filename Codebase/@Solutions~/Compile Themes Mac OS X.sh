@@ -1,5 +1,4 @@
 #!/bin/sh
-
-rm ZiosThemes.dll
-/Applications/Unity/Unity.app/Contents/MonoBleedingEdge/bin/xbuild ZiosThemesMono.sln
+rm ZiosThemes*.dll
+/Applications/Unity/Unity.app/Contents/MonoBleedingEdge/bin/xbuild ZiosThemes.sln
 rm -R obj

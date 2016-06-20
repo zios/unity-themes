@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{90C40447-C2B4-4725-9CEA-9E0E8199EEFC}</ProjectGuid>
+    <ProjectGuid>{181349BA-06EE-47B5-928A-AA3413A8C2DA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ZiosThemes</RootNamespace>
-    <AssemblyName>ZiosThemes</AssemblyName>
+    <RootNamespace>ZiosThemesEditor</RootNamespace>
+    <AssemblyName>ZiosThemesEditor</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -17,11 +17,14 @@
     <OutputPath>.</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DefineConstants>UNITY_STANDALONE;UNITY_THEMES</DefineConstants>
+    <DefineConstants>UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;UNITY_THEMES</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
+    <Reference Include="UnityEditor">
+      <HintPath>UnityEditor.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine">
       <HintPath>UnityEngine.dll</HintPath>
     </Reference>
@@ -31,6 +34,9 @@
     <Compile Include="..\Containers\Container.cs" />
     <Compile Include="..\Extensions\%40Unity\Color.cs" />
     <Compile Include="..\Extensions\%40Unity\ComponentExtensions.cs" />
+    <Compile Include="..\Extensions\%40Unity\EditorGUI.cs" />
+    <Compile Include="..\Extensions\%40Unity\EditorGUILayout.cs" />
+    <Compile Include="..\Extensions\%40Unity\Editor\GenericMenu.cs" />
     <Compile Include="..\Extensions\%40Unity\GameObject.cs" />
     <Compile Include="..\Extensions\%40Unity\GUIContent.cs" />
     <Compile Include="..\Extensions\%40Unity\GUISkin.cs" />
@@ -69,6 +75,7 @@
     <Compile Include="..\Supports\Locate.cs" />
     <Compile Include="..\Supports\Store.cs" />
     <Compile Include="..\Supports\Utility\Utility.cs" />
+    <Compile Include="..\Supports\Utility\UtilityEditor.cs" />
     <Compile Include="..\Supports\Utility\UtilityProxy.cs" />
     <Compile Include="..\System Attributes\EnumMask.cs" />
     <Compile Include="..\System Attributes\Internal.cs" />
@@ -80,6 +87,11 @@
     <Compile Include="..\Systems\File\FileManager.cs" />
     <Compile Include="..\Systems\Interface\Style\Style.cs" />
     <Compile Include="..\Systems\Interface\Style\StyleCSS.cs" />
+    <Compile Include="..\Systems\Interface\Themes\Editor\ThemeVerticalSpace.cs" />
+    <Compile Include="..\Systems\Interface\Themes\Themes.cs" />
+    <Compile Include="..\Systems\Interface\Themes\ThemesLoading.cs" />
+    <Compile Include="..\Systems\Interface\Themes\ThemesSaving.cs" />
+    <Compile Include="..\Systems\Interface\Themes\ThemesUtility.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
