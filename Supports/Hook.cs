@@ -10,9 +10,11 @@ namespace Zios{
 	public static class Hook{
 		public static bool disabled;
 		public static bool hidden;
+		#if UNITY_EDITOR
 		static Hook(){
 			Hook.hidden = EditorPrefs.GetBool("EditorSettings-HideHooks",false);
 		}
+		#endif
 		public static void SetHidden(bool state){
 			Locate.SetDirty();
 			foreach(var current in Locate.GetSceneObjects()){
