@@ -1,0 +1,18 @@
+[Main]
+Font = OrkneyMedium
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
+[Button]
+Font = OrkneyMedium
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
+[Code]
+Font = OrkneyMedium
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+

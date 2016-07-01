@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 using UnityEngine;
 namespace Zios{
 	using Events;
@@ -10,19 +9,19 @@ namespace Zios{
 	public static class Hook{
 		public static bool disabled;
 		public static bool hidden;
-		#if UNITY_EDITOR
+		public static bool debug;
+		public static GameObject main;
 		static Hook(){
 			Hook.hidden = EditorPrefs.GetBool("EditorSettings-HideHooks",false);
+			#if UNITY_THEMES
+			Hook.hidden = true;
+			#endif
 		}
-		#endif
 		public static void SetHidden(bool state){
 			Locate.SetDirty();
 			foreach(var current in Locate.GetSceneObjects()){
 				if(current.name != "@Main"){continue;}
 				current.hideFlags = state ? HideFlags.HideInHierarchy : HideFlags.None;
-				foreach(var component in Locate.GetObjectComponents<Component>(current)){
-					component.hideFlags = current.hideFlags;
-				}
 			}
 			Hook.hidden = state;
 			Utility.Destroy(new GameObject("@*#&"));
@@ -51,16 +50,16 @@ namespace Zios{
 		public void Create(){
 			if(this.disabled || Hook.disabled || this.setup || Application.isPlaying){return;}
 			this.setup = true;
+			Locate.SetDirty();
 			Func<Singleton> getInstance = ()=>typeof(Singleton).GetVariable<Singleton>("instance");
 			Action<Singleton> setInstance = (Singleton value)=>typeof(Singleton).SetVariable("instance",value);
-			var rootObjects = Locate.GetSceneObjects().Where(x=>!x.IsNull()&&x.transform.parent.IsNull());
-			rootObjects.Where(x=>x.name!="@Main"&&x.name.Contains("@Main")).ToList().ForEach(x=>Utility.Destroy(x));
+			Hook.main = Hook.main ?? Locate.Find("@Main");
+			Hook.main = Hook.main.IsNull() ? Locate.GetScenePath("@Main") : Hook.main;
 			if(getInstance().IsNull()){
-				var path = Locate.GetScenePath("@Main");
-				setInstance(path.GetComponent<Singleton>());
-				if(getInstance().IsNull() && !Hook.hidden){
-					Debug.Log("[Hook] : Auto-creating " + typeof(Singleton).Name + " Singleton.");
-					setInstance(path.AddComponent<Singleton>());
+				setInstance(Hook.main.GetComponent<Singleton>());
+				if(getInstance().IsNull()){
+					if(!Hook.hidden && Hook.debug){Debug.Log("[Hook] : Auto-creating " + typeof(Singleton).Name + " Singleton.");}
+					setInstance(Hook.main.AddComponent<Singleton>());
 				}
 			}
 			Hook.SetHidden(Hook.hidden);

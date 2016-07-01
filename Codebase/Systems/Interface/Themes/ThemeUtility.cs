@@ -1,20 +1,19 @@
 using System;
 using System.Linq;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Zios{
+namespace Zios.Interface{
 	#if UNITY_EDITOR
 	using UnityEditor;
-	public static partial class Themes{
+	public partial class Theme{
 		[MenuItem("Zios/Theme/Development/Sync Names [GUISkin]")]
-		public static void SyncSkinNames(){Themes.SyncSkinNames("");}
+		public static void SyncSkinNames(){Theme.SyncSkinNames("");}
 		public static void SyncSkinNames(string path=""){
-			path = path.IsEmpty() ? EditorUtility.SaveFolderPanel("Sync Names [GUISkin]",Themes.storagePath,"").GetAssetPath() : path;
+			path = path.IsEmpty() ? EditorUtility.SaveFolderPanel("Sync Names [GUISkin]",Theme.storagePath,"").GetAssetPath() : path;
 			var files = FileManager.FindAll(path+"/*.guiSkin");
 			foreach(var file in files){
 				var stylesSkin = file.GetAsset<GUISkin>().customStyles;
-				var stylesReflected = file.name.Contains(".") ? Themes.ReflectStyles(file.name) : null;
+				var stylesReflected = file.name.Contains(".") ? Theme.ReflectStyles(file.name) : null;
 				var stylesInternal = file.name.Contains(".") ? stylesReflected.Values.ToArray() : EditorGUIUtility.GetBuiltinSkin(EditorSkin.Inspector).customStyles;
 				if(stylesSkin.Length == stylesInternal.Length){
 					for(int index=0;index<stylesSkin.Length;++index){
@@ -56,9 +55,9 @@ namespace Zios{
 			return empty;
 		}
 		[MenuItem("Zios/Theme/Development/Localize [Assets]")]
-		public static void LocalizeAssets(){Themes.LocalizeAssets("");}
+		public static void LocalizeAssets(){Theme.LocalizeAssets("");}
 		public static void LocalizeAssets(string path="",bool includeBuiltin=false){
-			path = path.IsEmpty() ? EditorUtility.SaveFolderPanel("Localize Theme [Assets]",Themes.storagePath,"").GetAssetPath() : path;
+			path = path.IsEmpty() ? EditorUtility.SaveFolderPanel("Localize Theme [Assets]",Theme.storagePath,"").GetAssetPath() : path;
 			var files = FileManager.FindAll(path+"/*.guiSkin");
 			foreach(var file in files){
 				string assetPath = "";
@@ -81,6 +80,20 @@ namespace Zios{
 				Utility.SetDirty(skin,false,true);
 			}
 			AssetDatabase.SaveAssets();
+		}
+		[MenuItem("Zios/Theme/Development/Sync Style [GUISkin]")]
+		public static void SyncStyle(){
+			var source = FileManager.GetAsset<GUISkin>(EditorUtility.OpenFilePanel("Apply From [GUISkin]",Theme.storagePath,"guiskin"));
+			var destination = FileManager.GetAsset<GUISkin>(EditorUtility.OpenFilePanel("Apply To [GUISkin]",Theme.storagePath,"guiskin"));
+			var skinStyles = destination.GetNamedStyles();
+			foreach(var style in source.GetStyles()){
+				var name = style.name.Parse("[","]");
+				if(skinStyles.ContainsKey(name)){
+					Debug.Log("[Themes] Applied " + source.name + "." + style.name.Parse("","[").Trim() + " to " + destination.name + "." + name);
+					skinStyles[name].Use(style);
+				}
+			}
+			Utility.SetAssetDirty(destination);
 		}
 	}
 	#endif

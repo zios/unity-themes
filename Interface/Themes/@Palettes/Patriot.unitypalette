@@ -1,3 +1,11 @@
-Color #632323
-DarkColor #182E58
-LightColor #303B7F
+[Textured]
+Main            : #632323
+Border          : #182E58
+Highlight       : #303B7F
+
+[NonTextured]
+Window          : Main
+Cursor          : Highlight
+Selection       : Border
+Curve           : Border
+CurveBackground : Highlight

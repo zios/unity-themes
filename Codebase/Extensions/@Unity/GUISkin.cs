@@ -4,12 +4,13 @@ using UnityEngine;
 using UnityEditor;
 #endif
 namespace Zios{
+	using Containers;
 	public static class GUISkinExtension{
+		public static Hierarchy<GUISkin,string,GUIStyle> cachedStyles = new Hierarchy<GUISkin,string,GUIStyle>();
 		public static GUISkin Copy(this GUISkin current){
 			var copy = ScriptableObject.CreateInstance<GUISkin>();
 			copy.font = current.font;
 			copy.name = current.name;
-			copy.customStyles = current.customStyles.Copy();
 			copy.box = new GUIStyle(current.box);
 			copy.button = new GUIStyle(current.button);
 			copy.toggle = new GUIStyle(current.toggle);
@@ -35,7 +36,24 @@ namespace Zios{
 			copy.settings.cursorColor = current.settings.cursorColor;
 			copy.settings.cursorFlashSpeed = current.settings.cursorFlashSpeed;
 			copy.settings.selectionColor = current.settings.selectionColor;
+			var styles = new List<GUIStyle>();
+			foreach(var style in current.customStyles){
+				styles.Add(new GUIStyle(style));
+			}
+			copy.customStyles = styles.ToArray();
 			return copy;
+		}
+		public static GUIStyle Get(this GUISkin current,string name){
+			if(GUISkinExtension.cachedStyles.AddNew(current).ContainsKey(name)){
+				return GUISkinExtension.cachedStyles[current][name];
+			}
+			foreach(var style in current.GetStyles()){
+				if(style.name == name){
+					GUISkinExtension.cachedStyles[current][name] = style;
+					return style;
+				}
+			}
+			return null;
 		}
 		public static GUISkin Use(this GUISkin current,GUISkin other,bool inline=false){
 			if(other.IsNull()){return current;}
@@ -123,6 +141,13 @@ namespace Zios{
 			}
 			if(includeCustom){styles.AddRange(current.customStyles);}
 			return styles.ToArray();
+		}
+		public static void InvertTextColors(this GUISkin current,float intensityCompare,float difference=1.0f){
+			foreach(var style in current.GetStyles()){
+				foreach(var state in style.GetStates()){
+					state.InvertTextColor(intensityCompare,difference);
+				}
+			}
 		}
 		public static void SaveBackgrounds(this GUISkin current,string path,bool includeBuiltin=true){
 			foreach(var style in current.GetStyles()){

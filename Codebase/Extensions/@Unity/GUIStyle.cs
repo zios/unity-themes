@@ -1,12 +1,13 @@
 using System.Collections.Generic;
-using System.Text;
-using System;
 using UnityEngine;
 namespace Zios{
 	public static class GUIStyleExtension{
+		public static bool autoLayout = true;
 		public static GUILayoutOption[] CreateLayout(this GUIStyle current){
 			var options = new List<GUILayoutOption>();
-			if(current.fixedWidth != 0){options.Add(GUILayout.Width(current.fixedWidth));}
+			if(GUIStyleExtension.autoLayout){
+				if(current.fixedWidth != 0){options.Add(GUILayout.Width(current.fixedWidth));}
+			}
 			return options.ToArray();
 		}
 		public static GUIStyle Rotate90(this GUIStyle current){

@@ -1,3 +1,11 @@
-Color #121212
-DarkColor #4A1515
-LightColor #000000
+[Textured]
+Main            : #121212
+Border          : #4A1515
+Highlight       : #000000
+
+[NonTextured]
+Window          : Main
+Cursor          : Highlight
+Selection       : Border
+Curve           : Border
+CurveBackground : Highlight

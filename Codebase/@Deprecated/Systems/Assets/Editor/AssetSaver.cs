@@ -1,3 +1,4 @@
+#pragma warning disable 0618
 using System;
 using System.Collections;
 using System.Collections.Generic;

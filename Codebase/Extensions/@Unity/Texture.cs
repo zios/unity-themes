@@ -2,6 +2,13 @@ using UnityEngine;
 using System;
 namespace Zios{
 	public static class TextureExtensions{
+		public static string Serialize(this Texture2D current){
+			return current.GetRawTextureData().Serialize();
+		}
+		public static Texture2D Deserialize(this Texture2D current,string data){
+			current.LoadImage(new byte[0].Deserialize(data));
+			return current;
+		}
 		public static void SaveAs(this Texture current,string path,bool useBlit=false){
 			var texture = current is Texture2D ? (Texture2D)current : new Texture2D(1,1);
 			if(useBlit){

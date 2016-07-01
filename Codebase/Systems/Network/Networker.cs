@@ -112,7 +112,7 @@ namespace Zios{
 					if(this.connectionID == this.receivedID){
 						Networker.mode = NetworkerMode.Client;
 						Debug.Log("Connection successful.");
-						Networker.SendEventToServer("SyncClient",this.clientName.ToBytes());
+						Networker.SendEventToServer("SyncClient",this.clientName.ToStringBytes());
 						return;
 					}
 					Debug.Log("[Server] Client connected.");

@@ -35,6 +35,7 @@
     <Compile Include="..\Extensions\%40Unity\GUIContent.cs" />
     <Compile Include="..\Extensions\%40Unity\GUISkin.cs" />
     <Compile Include="..\Extensions\%40Unity\GUIStyle.cs" />
+    <Compile Include="..\Extensions\%40Unity\GUIStyleState.cs" />
     <Compile Include="..\Extensions\%40Unity\Rect.cs" />
     <Compile Include="..\Extensions\%40Unity\RectOffset.cs" />
     <Compile Include="..\Extensions\%40Unity\Texture.cs" />

@@ -36,7 +36,9 @@ namespace Zios{
 			current = value.ToBytes().Concat(current);
 			return current;
 		}
-		public static string Serialize(this byte[] current){return current.ToUTFString();}
-		public static byte[] Deserialize(this byte[] current,string value){return value.ToBytes();}
+		public static string SerializeString(this byte[] current){return current.ToUTFString();}
+		public static byte[] DeserializeString(this byte[] current,string value){return value.ToStringBytes();}
+		public static string Serialize(this byte[] current){return Convert.ToBase64String(current);}
+		public static byte[] Deserialize(this byte[] current,string value){return Convert.FromBase64String(value);}
 	}
 }

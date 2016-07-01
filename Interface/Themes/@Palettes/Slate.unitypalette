@@ -1,3 +1,11 @@
-Color #2C3747
-DarkColor #414A56
-LightColor #69788B
+[Textured]
+Main            : #2C3747
+Border          : #414A56
+Highlight       : #69788B
+
+[NonTextured]
+Window          : Main
+Cursor          : Highlight
+Selection       : Border
+Curve           : Border
+CurveBackground : Highlight

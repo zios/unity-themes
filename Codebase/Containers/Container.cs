@@ -12,6 +12,10 @@ namespace Zios.Containers{
 			get{return this.collection.Count;}
 			set{}
 		}
+		public TValue this[int index]{
+			get{return this.values[index];}
+			set{this.values[index] = value;}
+		}
 		public TValue this[TKey key]{
 			get{
 				int index = this.keys.IndexOf(key);

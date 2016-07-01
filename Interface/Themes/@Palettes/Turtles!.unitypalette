@@ -1,3 +1,11 @@
-Color #37433C
-DarkColor #39543A
-LightColor #606531
+[Textured]
+Main            : #7A9937
+Border          : #2A773F
+Highlight       : #9B8B2C
+
+[NonTextured]
+Window          : Main
+Cursor          : Highlight
+Selection       : Border
+Curve           : Border
+CurveBackground : Highlight

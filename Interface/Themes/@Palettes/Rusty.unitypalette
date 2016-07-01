@@ -1,3 +1,11 @@
-Color #3B201D
-DarkColor #683535
-LightColor #722F2F
+[Textured]
+Main            : #3B201D
+Border          : #683535
+Highlight       : #722F2F
+
+[NonTextured]
+Window          : Main
+Cursor          : Highlight
+Selection       : Border
+Curve           : Border
+CurveBackground : Highlight

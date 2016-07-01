@@ -48,11 +48,12 @@ namespace Zios.Attributes{
 			AttributeManager.PerformRefresh();
 		}
 		[MenuItem("Zios/Attribute/Full Refresh %&R")]
-		#endif
-		public static void PerformRefresh(){
-			Debug.Log("[AttributeManager] Refresh.");
+		public static void FullRefresh(){
+			Debug.Log("[AttributeManager] Manual Refresh.");
 			AttributeManager.Refresh();
 		}
+		#endif
+		public static void PerformRefresh(){AttributeManager.Refresh();}
 		public static void Refresh(int delay = 0){
 			if(Application.isPlaying || AttributeManager.disabled){return;}
 			Event.Call("On Attributes Refresh");

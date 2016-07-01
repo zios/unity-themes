@@ -1,3 +1,11 @@
-Color #1D1D1D
-DarkColor #101010
-LightColor #2E2E2E
+[Textured]
+Main            : #1D1D1D
+Border          : #101010
+Highlight       : #2E2E2E
+
+[NonTextured]
+Window          : Main
+Cursor          : Highlight
+Selection       : Border
+Curve           : Border
+CurveBackground : Highlight

@@ -61,20 +61,22 @@ namespace Zios{
 			return lower != "false" && lower != "f" && lower != "0";
 		}
 		public static byte ToByte(this string current){return (byte)current[0];}
-		public static byte[] ToBytes(this string current){return Encoding.ASCII.GetBytes(current);}
+		public static byte[] ToStringBytes(this string current){return Encoding.ASCII.GetBytes(current);}
 		public static string Serialize(this string current){return current;}
 		public static string Deserialize(this string current,string value){return value;}
 		public static Type Deserialize<Type>(this string current){
-			if(typeof(Type) == typeof(Vector3)){return (Type)Vector3.zero.Deserialize(current).Box();}
-			else if(typeof(Type) == typeof(Color)){return (Type) Color.white.Deserialize(current).Box();}
-			else if(typeof(Type) == typeof(float)){return (Type) new Single().Deserialize(current).Box();}
-			else if(typeof(Type) == typeof(int)){return (Type) new Int32().Deserialize(current).Box();}
-			else if(typeof(Type) == typeof(bool)){return (Type) new Boolean().Deserialize(current).Box();}
-			else if(typeof(Type) == typeof(string)){return (Type) String.Empty.Deserialize(current).Box();}
-			else if(typeof(Type) == typeof(byte)){return (Type) new Byte().Deserialize(current).Box();}
-			else if(typeof(Type) == typeof(short)){return (Type) new Int16().Deserialize(current).Box();}
-			else if(typeof(Type) == typeof(double)){return (Type) new Double().Deserialize(current).Box();}
-			else if(typeof(Type).IsCollection()){return (Type) new Type[0].Deserialize(current).Box();}
+			if(typeof(Type) == typeof(Texture2D)){return (Type)new Texture2D(1,1).Deserialize(current).Box();}
+			else if(typeof(Type) == typeof(GUIContent)){return (Type)new GUIContent().Deserialize(current).Box();}
+			else if(typeof(Type) == typeof(Vector3)){return (Type)Vector3.zero.Deserialize(current).Box();}
+			else if(typeof(Type) == typeof(Color)){return (Type)Color.white.Deserialize(current).Box();}
+			else if(typeof(Type) == typeof(float)){return (Type)new Single().Deserialize(current).Box();}
+			else if(typeof(Type) == typeof(int)){return (Type)new Int32().Deserialize(current).Box();}
+			else if(typeof(Type) == typeof(bool)){return (Type)new Boolean().Deserialize(current).Box();}
+			else if(typeof(Type) == typeof(string)){return (Type)String.Empty.Deserialize(current).Box();}
+			else if(typeof(Type) == typeof(byte)){return (Type)new Byte().Deserialize(current).Box();}
+			else if(typeof(Type) == typeof(short)){return (Type)new Int16().Deserialize(current).Box();}
+			else if(typeof(Type) == typeof(double)){return (Type)new Double().Deserialize(current).Box();}
+			else if(typeof(Type).IsCollection()){return (Type)new Type[0].Deserialize(current).Box();}
 			return default(Type);
 		}
 		//============================
@@ -91,7 +93,7 @@ namespace Zios{
 		public static GUIContent ToContent(this string current){return new GUIContent(current);}
 		public static Color ToColor(this string current,bool flipOrder){return current.ToColor(",",flipOrder);}
 		public static Color ToColor(this string current,string separator=",",bool flipOrder=false,bool? normalized=null){
-			current = current.Remove("#").Remove("0x");
+			current = current.Remove("#").Remove("0x").Trim();
 			if(current.Contains(separator)){
 				var parts = current.Split(separator).Convert<float>();
 				normalized = normalized.IsNull() ? current.Contains(".") : normalized;
@@ -291,6 +293,9 @@ namespace Zios{
 			double result;
 			return double.TryParse(current,out result);
 		}
+		public static bool IsColor(this string current){
+			return current.ContainsAny(",","#");
+		}
 		//============================
 		// Path
 		//============================
@@ -306,15 +311,15 @@ namespace Zios{
 			return "Assets" + current.Split("/Assets")[1];
 		}
 		public static string GetPathTerm(this string current){
-			return current.Split("/").Last();
+			return current.Split("/").LastOrDefault() ?? "";
 		}
 		public static string GetFileName(this string current){
-			var term = current.Split("/").Last();
+			var term = current.Split("/").LastOrDefault();
 			if(term.Contains(".")){return term.Replace("."+current.GetFileExtension(),"");}
 			return "";
 		}
 		public static string GetFileExtension(this string current){
-			var term = current.Split("/").Last();
+			var term = current.Split("/").LastOrDefault();
 			if(term.Contains(".")){return term.Split(".").Last();}
 			return term;
 		}

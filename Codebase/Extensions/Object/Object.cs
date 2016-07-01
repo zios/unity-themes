@@ -116,15 +116,17 @@ namespace Zios{
 			else if(current is float){return current.As<float>().ToBytes();}
 			else if(current is int){return current.As<int>().ToBytes();}
 			else if(current is bool){return current.As<bool>().ToBytes();}
-			else if(current is string){return current.As<string>().ToBytes();}
+			else if(current is string){return current.As<string>().ToStringBytes();}
 			else if(current is byte){return current.As<byte>().ToBytes();}
 			else if(current is short){return current.As<short>().ToBytes();}
 			else if(current is double){return current.As<double>().ToBytes();}
 			return new byte[0];
 		}
 		public static string Serialize(this object current){
-			if(current is Vector3){return current.As<Vector3>().Serialize();}
-			if(current is Color){return current.As<Color>().Serialize();}
+			if(current is Texture2D){return current.As<Texture2D>().Serialize();}
+			else if(current is GUIContent){return current.As<GUIContent>().Serialize();}
+			else if(current is Vector3){return current.As<Vector3>().Serialize();}
+			else if(current is Color){return current.As<Color>().Serialize();}
 			else if(current is float){return current.As<float>().Serialize();}
 			else if(current is int){return current.As<int>().Serialize();}
 			else if(current is bool){return current.As<bool>().Serialize();}

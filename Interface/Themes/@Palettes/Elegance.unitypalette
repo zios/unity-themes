@@ -1,3 +1,11 @@
-Color #0C1320
-DarkColor #1D2232
-LightColor #87400080
+[Textured]
+Main            : #0C1320
+Border          : #1D2232
+Highlight       : #87400080
+
+[NonTextured]
+Window          : Main
+Cursor          : Highlight
+Selection       : Border
+Curve           : Border
+CurveBackground : Highlight

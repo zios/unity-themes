@@ -1,3 +1,11 @@
-Color #002B36
-DarkColor #005553
-LightColor #2C7777
+[Textured]
+Main            : #002B36
+Border          : #005553
+Highlight       : #2C7777
+
+[NonTextured]
+Window          : Main
+Cursor          : Highlight
+Selection       : Border
+Curve           : Border
+CurveBackground : Highlight

@@ -28,11 +28,11 @@ namespace Zios{
 		//===============
 		public static void Load(){
 			var time = Time.realtimeSinceStartup;
-			if(FileManager.Exists("FileManager.data")){
+			if(FileManager.Exists("Temp/FileManager.data")){
 				int mode = 0;
 				string extension = "";
 				string lastPath = "";
-				var lines = File.ReadAllLines("FileManager.data");
+				var lines = File.ReadAllLines("Temp/FileManager.data");
 				for(int index=0;index<lines.Length;++index){
 					var line = lines[index];
 					if(line.Contains("[Files]")){mode = 1;}
@@ -62,7 +62,8 @@ namespace Zios{
 		public static void Save(){
 			string lastPath = ")@#(*$";
 			var time = Time.realtimeSinceStartup;
-			using(var output = new StreamWriter("FileManager.data",false)){
+			FileManager.Create("Temp");
+			using(var output = new StreamWriter("Temp/FileManager.data",false)){
 				output.WriteLine("[Files]");
 				foreach(var item in FileManager.filesByType){
 					var extension = item.Key;
@@ -160,7 +161,7 @@ namespace Zios{
 			if(name.StartsWith("!")){name = name.ReplaceFirst("!","");}
 			if(name.ContainsAny("<",">","?",":","|")){
 				if(name[1] != ':') {
-					Debug.LogWarning("[FileManager] Path has invalid characters -- " + name);
+					if(FileManager.debug){Debug.LogWarning("[FileManager] Path has invalid characters -- " + name);}
 					return new FileData[0];
 				}
 			}
@@ -221,9 +222,6 @@ namespace Zios{
 			#endif
 			return "";
 		}
-		public static FileData GetFile(UnityObject target){
-			return FileManager.Find(FileManager.GetPath(target,false));
-		}
 		public static T GetAsset<T>(UnityObject target){
 			#if UNITY_EDITOR
 			if(Application.isEditor){
@@ -242,7 +240,7 @@ namespace Zios{
 		public static FileData Create(string path){
 			path = Path.GetFullPath(path).Replace("\\","/");
 			var data = new FileData(path);
-			if(!path.GetFileName().IsEmpty()){
+			if(!data.name.IsEmpty()){
 				File.Create(path).Dispose();
 			}
 			else{
@@ -251,6 +249,9 @@ namespace Zios{
 			}
 			data.BuildCache();
 			return data;
+		}
+		public static void Copy(string path,string destination){
+			File.Copy(path,destination,true);
 		}
 		public static void Delete(string path){
 			var file = FileManager.Find(path);
@@ -285,6 +286,9 @@ namespace Zios{
 			FileData file = FileManager.Find(name,showWarnings);
 			if(file != null){return file.GetGUID();}
 			return "";
+		}
+		public static string GetGUID(UnityObject target){
+			return AssetDatabase.AssetPathToGUID(FileManager.GetPath(target));
 		}
 		public static T GetAsset<T>(string name,bool showWarnings=true){
 			FileData file = FileManager.Find(name,showWarnings);
@@ -360,6 +364,7 @@ namespace Zios{
 		public string GetAccessedDate(string format="M-d-yy"){return File.GetLastAccessTime(this.path).ToString(format);}
 		public string GetCreatedDate(string format="M-d-yy"){return File.GetCreationTime(this.path).ToString(format);}
 		public string GetChecksum(){return this.GetText().ToMD5();}
+		public long GetSize(){return new FileInfo(this.path).Length;}
 		public T GetAsset<T>(){
 			#if UNITY_EDITOR
 			if(Application.isEditor && this.path.IndexOf("Assets") != -1){

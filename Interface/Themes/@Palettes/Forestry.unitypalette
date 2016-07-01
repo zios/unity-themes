@@ -1,3 +1,11 @@
-Color #093616
-DarkColor #2B6A33
-LightColor #004A22
+[Textured]
+Main            : #093616
+Border          : #2B6A33
+Highlight       : #004A22
+
+[NonTextured]
+Window          : Main
+Cursor          : Highlight
+Selection       : Border
+Curve           : Border
+CurveBackground : Highlight

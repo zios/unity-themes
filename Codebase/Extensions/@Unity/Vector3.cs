@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Linq;
 namespace Zios{
 	public static class Vector3Extension{
 		//=====================
@@ -21,9 +20,10 @@ namespace Zios{
 		public static Quaternion ToRotation(this Vector3 current){
 			return Quaternion.Euler(current[1],current[0],current[2]);
 		}
-		public static float[] ToFloat(this Vector3 current){
+		public static float[] ToFloatArray(this Vector3 current){
 			return new float[3]{current.x,current.y,current.z};
 		}
+		public static Color ToColor(this Vector3 current){return new Color(current.x,current.y,current.z);}
 		public static string Serialize(this Vector3 current){return current.ToString();}
 		public static Vector3 Deserialize(this Vector3 current,string value){return value.ToVector3();}
 		//=====================

@@ -24,7 +24,7 @@ namespace Zios.Inputs{
 				if(instance.uiObject.IsNull()){
 					instance.uiObject = GameObject.Instantiate(FileManager.GetAsset<GameObject>("InputUI.prefab"));
 					instance.uiObject.name = instance.uiObject.name.Remove("(Clone)");
-					instance.uiObject.transform.SetParent(Locate.Find("@Main").transform);
+					instance.uiObject.transform.SetParent(Hook.main.transform);
 				}
 				InputGroup.Load();
 			}

@@ -1,3 +1,11 @@
-Color #14245D
-DarkColor #25427B
-LightColor #1A1A1A
+[Textured]
+Main            : #14245D
+Border          : #25427B
+Highlight       : #1A1A1A
+
+[NonTextured]
+Window          : Main
+Cursor          : Highlight
+Selection       : Border
+Curve           : Border
+CurveBackground : Highlight
