@@ -87,7 +87,7 @@ namespace Zios.Editors{
 		public Dictionary<AttributeData,List<string>> attributeNames = new Dictionary<AttributeData,List<string>>();
 		public Dictionary<AttributeData,bool> targetMode = new Dictionary<AttributeData,bool>();
 		public virtual void Setup(AttributeDrawer drawer,Rect area,SerializedProperty property,GUIContent label){
-			string skinName = EditorGUIUtility.isProSkin ? "Dark" : "Light";
+			string skinName = EditorGUIUtility.isProSkin || EditorPrefs.GetBool("EditorTheme-Dark",false) ? "Dark" : "Light";
 			if(this.skin == null || !this.skin.name.Contains(skinName)){
 				this.skin = FileManager.GetAsset<GUISkin>("Gentleface-" + skinName + ".guiskin");
 				this.attribute = property.GetObject<Attribute>();

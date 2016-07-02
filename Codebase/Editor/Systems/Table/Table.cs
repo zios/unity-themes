@@ -17,7 +17,7 @@ namespace Zios.Editors{
 			return row;
 		}
 		public GUISkin GetSkin(){
-			string skin = EditorGUIUtility.isProSkin ? this.skinDark : this.skinLight;
+			string skin = EditorGUIUtility.isProSkin || EditorPrefs.GetBool("EditorTheme-Dark",false) ? this.skinDark : this.skinLight;
 			return FileManager.GetAsset<GUISkin>(skin+".guiskin");
 		}
 		public TableRow AddRow(object target=null){

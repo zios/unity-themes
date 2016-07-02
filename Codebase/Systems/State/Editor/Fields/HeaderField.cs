@@ -16,7 +16,7 @@ namespace Zios.Editors.StateEditors{
 			var label = this.target is string ? new GUIContent("") : new GUIContent(this.target.GetVariable<string>("name"));
 			GUIStyle style = new GUIStyle(GUI.skin.label);
 			var mode = (HeaderMode)EditorPrefs.GetInt("StateWindow-Mode",2);
-			bool darkSkin = EditorGUIUtility.isProSkin;
+			bool darkSkin = EditorGUIUtility.isProSkin || EditorPrefs.GetBool("EditorTheme-Dark",false);
 			Color textColor = Colors.Get("Gray");
 			string background = darkSkin ? "BoxBlackAWarm30" : "BoxWhiteBWarm50";
 			if(window.target.external){

@@ -16,7 +16,7 @@ namespace Zios.Editors.StateEditors{
 			var window = StateWindow.Get();
 			var row = this.row.target.As<StateRow>();
 			var script = row.target;
-			bool darkSkin = EditorGUIUtility.isProSkin;
+			bool darkSkin = EditorGUIUtility.isProSkin || EditorPrefs.GetBool("EditorTheme-Dark",false);
 			string name = this.target is string ? (string)this.target : script.alias;
 			string background = darkSkin ? "BoxBlackA30" : "BoxWhiteBWarm";
 			Color textColor = darkSkin? Colors.Get("Silver") : Colors.Get("Black");

@@ -10,7 +10,7 @@ namespace Zios.Editors{
 		public bool setup;
 		public override void OnGUI(Rect area,SerializedProperty property,GUIContent label){
 			property.serializedObject.Update();
-			string skin = EditorGUIUtility.isProSkin ? "Dark" : "Light";
+			string skin = EditorGUIUtility.isProSkin || EditorPrefs.GetBool("EditorTheme-Dark",false) ? "Dark" : "Light";
 			GUI.skin = FileManager.GetAsset<GUISkin>("Gentleface-" + skin + ".guiskin");
 			Target target = property.GetObject<Target>();
 			TargetDrawer.Draw(area,target,label);

@@ -152,6 +152,7 @@ namespace Zios.Interface{
 			foreach(var color in theme.palette.colors){
 				color.Value.ApplyOffset();
 			}
+			EditorPrefs.SetBool("EditorTheme-Dark",Theme.active.palette.Get("Window").GetIntensity() < 0.4f);
 		}
 		public static void UpdateSettings(){
 			if(Theme.all.Count < 1){return;}
