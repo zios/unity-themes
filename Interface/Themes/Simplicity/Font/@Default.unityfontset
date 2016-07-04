@@ -1,0 +1,8 @@
+[Main]
+Font = Orkney-Medium
+
+[Button]
+Font = ChubGothic
+
+[Code]
+Font = AurulentSansMono

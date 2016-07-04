@@ -1,11 +1,11 @@
 [Textured]
 Main            : #3A2E1C
-Border          : #4C331B
-Highlight       : #714E2F
+Border          : #4C331B : 0.8
+Highlight       : #714E2F : 1.2
 
 [NonTextured]
 Window          : Main
 Cursor          : Highlight
 Selection       : Border
-Curve           : Border
-CurveBackground : Highlight
+Curve           : Highlight : 1.5
+CurveBackground : Border    : 0.5

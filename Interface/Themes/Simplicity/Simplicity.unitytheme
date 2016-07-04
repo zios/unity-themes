@@ -5,10 +5,7 @@ AllowCustomization = True
 AllowColorCustomization = True
 AllowFontsetCustomization = True
 Palette = Slate
-Fontset = Caps
+Fontset = @Default
 
 [+Brushed]
 WindowBackgroundOverride = CircleWhite10.png
-
-[+SimpleFonts]
-Fontset = Basic

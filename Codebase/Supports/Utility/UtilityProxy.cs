@@ -201,8 +201,8 @@ namespace Zios{
 		}
 		public static void RepaintAll(){
 			#if UNITY_EDITOR
-			Utility.RepaintInspectors();
-			//Utility.GetUnityType("Toolbar").CallMethod("RepaintToolbar");
+			//foreach(var window in Locate.GetAssets<EditorWindow>()){window.Repaint();}
+			Utility.GetUnityType("Toolbar").CallMethod("RepaintToolbar");
 			UnityEditorInternal.InternalEditorUtility.RepaintAllViews();
 			#endif
 		}

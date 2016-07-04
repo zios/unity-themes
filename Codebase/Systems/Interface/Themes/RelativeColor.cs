@@ -36,7 +36,8 @@ namespace Zios.Interface{
 		}
 		public string Serialize(){
 			var contents = this.name + " : " + this.value.Serialize();
-			if(!this.sourceName.IsEmpty()){contents += " : " + this.sourceName + " : " + this.offset;}
+			if(!this.sourceName.IsEmpty()){contents += " : " + this.sourceName;}
+			if(this.offset != 1){contents += " : " + this.offset;}
 			return contents;
 		}
 		public RelativeColor Deserialize(string data){

@@ -1,0 +1,18 @@
+[Main]
+Font = PixelOperator
+SizeOffset = 4
+OffsetX = 0
+OffsetY = -2
+
+[Button]
+Font = PixelOperatorSC
+SizeOffset = 3
+OffsetX = 0
+OffsetY = -2
+
+[Code]
+Font = PixelOperatorMono
+SizeOffset = 4
+OffsetX = 0
+OffsetY = 0
+
