@@ -74,40 +74,20 @@ namespace Zios.Interface{
 				}
 			}
 		}
-
-		public void Apply(){
-			this.SyncScope();
-			this.SyncTarget();
-			this.target.text = this.value.text;
-			this.target.tooltip = this.value.tooltip;
-			this.target.image = this.value.image;
+		public static void Apply(){
+			if(Theme.active.IsNull()){return;}
+			ThemeContent.Revert();
+			Utility.DelayCall(()=>{
+				foreach(var content in Theme.active.contents){
+					content.SyncScope();
+					content.SyncTarget();
+					content.target.text = content.value.text;
+					content.target.tooltip = content.value.tooltip;
+					content.target.image = content.value.image;
+				}
+			},0.5f);
 		}
-		public static void Revert(){
-			var index = 1;
-			var name = "EditorTheme-Content-"+index;
-			while(EditorPrefs.HasKey(name)){
-				var buffer = new ThemeContent();
-				var value = EditorPrefs.GetString(name);
-				var fullPath = value.Parse("","||");
-				var content = value.TrimLeft(fullPath+"||").Deserialize<GUIContent>();
-				buffer.path = fullPath.Split("-")[0];
-				buffer.name = fullPath.Split("-")[1];
-				buffer.SyncScope();
-				buffer.SyncTarget();
-				buffer.target.text = content.text;
-				buffer.target.tooltip = content.tooltip;
-				buffer.target.image = content.image;
-				EditorPrefs.DeleteKey(name);
-				index += 1;
-			}
-			index = 1;
-			foreach(var content in Theme.active.contents){
-				name = "EditorTheme-Content-"+index;
-				var path = content.path+"-"+content.name;
-				EditorPrefs.SetString(name,path+"||"+content.target.Serialize());
-				index += 1;
-			}
-		}
+		public static void Revert(){}
 	}
 	#endif
 }

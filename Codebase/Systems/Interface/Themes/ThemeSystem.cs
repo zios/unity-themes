@@ -59,7 +59,7 @@ namespace Zios.Interface{
 			if(Theme.needsRefresh){
 				Theme.UpdateSettings();
 				Utility.RepaintAll();
-				//ThemeContent.Apply();
+				ThemeContent.Apply();
 				Theme.needsRefresh = false;
 			}
 			if(Theme.needsRebuild){
