@@ -10,7 +10,7 @@ namespace Zios{
 	public static partial class ObjectExtension{
 		[NonSerialized] public static bool debug;
 		public static List<Type> emptyList = new List<Type>();
-		public static Hierarchy<Assembly,Type[]> lookup = new Hierarchy<Assembly,Type[]>();
+		public static Hierarchy<Assembly,string,Type> lookup = new Hierarchy<Assembly,string,Type>();
 		public static Hierarchy<object,string,bool> warned = new Hierarchy<object,string,bool>();
 		public static Hierarchy<Type,BindingFlags,IList<Type>,string,object> variables = new Hierarchy<Type,BindingFlags,IList<Type>,string,object>();
 		public static Hierarchy<Type,BindingFlags,string,PropertyInfo> properties = new Hierarchy<Type,BindingFlags,string,PropertyInfo>();
@@ -39,10 +39,6 @@ namespace Zios{
 			var target = Class.methods.AddNew(type).AddNew(flags);
 			if(!target.ContainsKey(name)){target[name] = type.GetMethod(name,flags);}
 			return target[name];
-		}
-		public static MethodInfo GetMethod(this object current,string name,BindingFlags flags=allFlags){
-			Type type = current is Type ? (Type)current : current.GetType();
-			return Class.GetMethod(type,name,flags);
 		}
 		public static bool HasMethod(this object current,string name,BindingFlags flags=allFlags){
 			Type type = current is Type ? (Type)current : current.GetType();
@@ -98,16 +94,31 @@ namespace Zios{
 		}
 		public static object CallMethod(this string current,params object[] parameters){
 			if(Class.lookup.Count < 1){
-				var names = new string[]{"Assembly-CSharp","Assembly-CSharp-Editor"};
-				foreach(var name in names){
-					var assembly = Assembly.Load(name);
-					Class.lookup[assembly] = assembly.GetTypes();			
+				var assemblyNames = new string[]{"UnityEditor","UnityEngine","Assembly-CSharp","Assembly-CSharp-Editor"};
+				foreach(var assemblyName in assemblyNames){
+					var assembly = Assembly.Load(assemblyName);
+					var types = assembly.GetTypes();
+					foreach(var type in types){
+						Class.lookup.AddNew(assembly)[type.FullName] = type;
+					}
 				}
 			}
+			var name = current.Split(".").Last();
+			var path = current.Remove("."+name);
 			foreach(var item in Class.lookup){
-				var assembly = item.Key;
-				foreach(var type in item.Value){
-					Class.GetMethods(type);
+				var assembly = item.Value;
+				if(assembly.ContainsKey(path)){
+					var method = Class.GetMethod(assembly[path],name);
+					if(method.IsNull()){
+						Debug.Log("[ObjectReflection] Cannot call. Method does not exist -- " + current + "()");
+						return null;
+					}
+					if(!method.IsStatic){
+						Debug.Log("[ObjectReflection] Cannot call. Method is not static -- " + current + "()");
+						return null;
+					}
+					var value = assembly[path].CallExactMethod(name,parameters);
+					return value ?? true;
 				}
 			}
 			return null;
@@ -119,7 +130,8 @@ namespace Zios{
 			return current.CallMethod<V>(name,allFlags,parameters);
 		}
 		public static V CallMethod<V>(this object current,string name,BindingFlags flags,params object[] parameters){
-			var method = current.GetMethod(name,flags);
+			Type type = current is Type ? (Type)current : current.GetType();
+			var method = Class.GetMethod(type,name,flags);
 			if(method == null){
 				if(ObjectExtension.debug){Debug.LogWarning("[Object] No method found to call -- " + name);}
 				return default(V);

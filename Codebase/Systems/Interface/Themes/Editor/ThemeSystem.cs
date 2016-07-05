@@ -47,7 +47,7 @@ namespace Zios.Interface{
 				//Themes.CheckPaste();
 				Theme.UpdateColors();
 				Utility.RepaintAll();
-				Theme.nextUpdate = time + (Theme.responsive ? 0.05f : 0.5f);
+				Theme.nextUpdate = time + (Theme.responsive ? 0.05f : 1f);
 			};
 		}
 		public static void Setup(){
@@ -400,10 +400,10 @@ namespace Zios.Interface{
 							var index = fonts.IndexOf(themeFont.font);
 							var offsetStyle = EditorStyles.numberField.FixedWidth(35).Margin(0,0,2,0);
 							themeFont.font = fonts[fontNames.Draw(index,item.Key)];
-							EditorGUIUtility.labelWidth = 30;
+							EditorGUIUtility.labelWidth = 38;
 							EditorGUIUtility.fieldWidth = 25;
 							themeFont.sizeOffset = themeFont.sizeOffset.DrawInt("Size",offsetStyle.FixedWidth(25),false);
-							EditorGUIUtility.labelWidth = 15;
+							EditorGUIUtility.labelWidth = 20;
 							EditorGUIUtility.fieldWidth = 35;
 							themeFont.offsetX = themeFont.offsetX.Draw("X",offsetStyle,false);
 							themeFont.offsetY = themeFont.offsetY.Draw("Y",offsetStyle,false);
@@ -548,9 +548,9 @@ namespace Zios.Interface{
 				Theme.needsRefresh = true;
 			}
 		}
-		[MenuItem("Zios/Theme/Previous Palette &F3")]
+		[MenuItem("Zios/Theme/Previous Fontset %F1")]
 		public static void PreviousFontset(){Theme.AdjustFontset(-1);}
-		[MenuItem("Zios/Theme/Next Fontset &F4")]
+		[MenuItem("Zios/Theme/Next Fontset %F2")]
 		public static void NextFontset(){Theme.AdjustFontset(1);}
 		public static void AdjustFontset(int adjust){
 			var theme = Theme.active;

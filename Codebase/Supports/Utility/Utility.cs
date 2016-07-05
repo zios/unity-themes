@@ -107,11 +107,15 @@ namespace Zios{
 			#if UNITY_EDITOR
 			var callbacks = EditorPrefs.GetString(name);
 			var called = new List<string>();
+			var success = new List<string>();
 			foreach(var method in callbacks.Split("|")){
 				if(called.Contains(method)){continue;}
-				//method.Call();
+				if(!method.CallMethod().IsNull()){
+					success.Add(method);	
+				}
 				called.Add(method);
 			}
+			EditorPrefs.SetString(name,success.Join("|"));
 			#endif
 		}
 		public static void TogglePlayerPref(string name,bool fallback=false){

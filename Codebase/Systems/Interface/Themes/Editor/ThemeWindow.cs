@@ -1,4 +1,3 @@
-using UnityEngine;
 using UnityEditor;
 namespace Zios.Interface{
 	public class ThemeWindow : EditorWindow{
