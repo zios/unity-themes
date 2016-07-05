@@ -288,7 +288,11 @@ namespace Zios{
 			return "";
 		}
 		public static string GetGUID(UnityObject target){
+			#if UNITY_EDITOR
 			return AssetDatabase.AssetPathToGUID(FileManager.GetPath(target));
+			#else
+			return "";
+			#endif
 		}
 		public static T GetAsset<T>(string name,bool showWarnings=true){
 			FileData file = FileManager.Find(name,showWarnings);

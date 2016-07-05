@@ -41,11 +41,13 @@
     <Compile Include="..\Extensions\%40Unity\GUIContent.cs" />
     <Compile Include="..\Extensions\%40Unity\GUISkin.cs" />
     <Compile Include="..\Extensions\%40Unity\GUIStyle.cs" />
+    <Compile Include="..\Extensions\%40Unity\GUIStyleState.cs" />
     <Compile Include="..\Extensions\%40Unity\Rect.cs" />
     <Compile Include="..\Extensions\%40Unity\RectOffset.cs" />
     <Compile Include="..\Extensions\%40Unity\Texture.cs" />
     <Compile Include="..\Extensions\%40Unity\UnityObjectExtensions.cs" />
     <Compile Include="..\Extensions\%40Unity\Vector3.cs" />
+    <Compile Include="..\Extensions\%40Unity\Vector4.cs" />
     <Compile Include="..\Extensions\Array.cs" />
     <Compile Include="..\Extensions\BitArray.cs" />
     <Compile Include="..\Extensions\BitStream.cs" />
@@ -66,6 +68,7 @@
     <Compile Include="..\Extensions\Object\ObjectReflection.cs" />
     <Compile Include="..\Extensions\Serializable.cs" />
     <Compile Include="..\Extensions\Short.cs" />
+    <Compile Include="..\Extensions\SortedList.cs" />
     <Compile Include="..\Extensions\StringBuilder.cs" />
     <Compile Include="..\Extensions\String\String.cs" />
     <Compile Include="..\Extensions\Type.cs" />
@@ -87,11 +90,15 @@
     <Compile Include="..\Systems\File\FileManager.cs" />
     <Compile Include="..\Systems\Interface\Style\Style.cs" />
     <Compile Include="..\Systems\Interface\Style\StyleCSS.cs" />
-    <Compile Include="..\Systems\Interface\Themes\Editor\ThemeVerticalSpace.cs" />
-    <Compile Include="..\Systems\Interface\Themes\Themes.cs" />
-    <Compile Include="..\Systems\Interface\Themes\ThemesLoading.cs" />
-    <Compile Include="..\Systems\Interface\Themes\ThemesSaving.cs" />
-    <Compile Include="..\Systems\Interface\Themes\ThemesUtility.cs" />
+    <Compile Include="..\Systems\Interface\Themes\Editor\RelativeColor.cs" />
+    <Compile Include="..\Systems\Interface\Themes\Editor\Theme.cs" />
+    <Compile Include="..\Systems\Interface\Themes\Editor\ThemeContent.cs" />
+    <Compile Include="..\Systems\Interface\Themes\Editor\ThemeFontset.cs" />
+    <Compile Include="..\Systems\Interface\Themes\Editor\ThemePalette.cs" />
+    <Compile Include="..\Systems\Interface\Themes\Editor\ThemeSaving.cs" />
+    <Compile Include="..\Systems\Interface\Themes\Editor\ThemeSystem.cs" />
+    <Compile Include="..\Systems\Interface\Themes\Editor\ThemeUtility.cs" />
+    <Compile Include="..\Systems\Interface\Themes\Editor\ThemeWindow.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

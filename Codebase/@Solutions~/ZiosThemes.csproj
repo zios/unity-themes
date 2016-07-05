@@ -41,6 +41,7 @@
     <Compile Include="..\Extensions\%40Unity\Texture.cs" />
     <Compile Include="..\Extensions\%40Unity\UnityObjectExtensions.cs" />
     <Compile Include="..\Extensions\%40Unity\Vector3.cs" />
+    <Compile Include="..\Extensions\%40Unity\Vector4.cs" />
     <Compile Include="..\Extensions\Array.cs" />
     <Compile Include="..\Extensions\BitArray.cs" />
     <Compile Include="..\Extensions\BitStream.cs" />
@@ -61,6 +62,7 @@
     <Compile Include="..\Extensions\Object\ObjectReflection.cs" />
     <Compile Include="..\Extensions\Serializable.cs" />
     <Compile Include="..\Extensions\Short.cs" />
+    <Compile Include="..\Extensions\SortedList.cs" />
     <Compile Include="..\Extensions\StringBuilder.cs" />
     <Compile Include="..\Extensions\String\String.cs" />
     <Compile Include="..\Extensions\Type.cs" />

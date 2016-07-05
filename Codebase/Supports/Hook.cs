@@ -12,7 +12,9 @@ namespace Zios{
 		public static bool debug;
 		public static GameObject main;
 		static Hook(){
+			#if UNITY_EDITOR
 			Hook.hidden = EditorPrefs.GetBool("EditorSettings-HideHooks",false);
+			#endif
 			#if UNITY_THEMES
 			Hook.hidden = true;
 			#endif
