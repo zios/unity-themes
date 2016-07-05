@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System;
 namespace Zios.Interface{
-	#if UNITY_EDITOR
 	using UnityEngine;
 	using UnityEditor;
 	[Serializable]
@@ -133,4 +132,3 @@ namespace Zios.Interface{
 		}
 	}
 }
-#endif

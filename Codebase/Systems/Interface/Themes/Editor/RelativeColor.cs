@@ -2,7 +2,6 @@
 using System.Linq;
 using UnityEngine;
 namespace Zios.Interface{
-	#if UNITY_EDITOR
 	using UnityEditor;
 	[Serializable]
 	public class RelativeColor{
@@ -101,5 +100,4 @@ namespace Zios.Interface{
 			return image;
 		}
 	}
-	#endif
 }

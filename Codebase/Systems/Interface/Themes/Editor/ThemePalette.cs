@@ -2,7 +2,6 @@
 using System;
 using System.Linq;
 namespace Zios.Interface{
-	#if UNITY_EDITOR
 	using UnityEngine;
 	using UnityEditor;
 	[Serializable]
@@ -52,10 +51,10 @@ namespace Zios.Interface{
 			foreach(var item in this.colors){
 				var name = item.Key;
 				bool mismatchedName = !other.colors.ContainsKey(name);
-				bool mismatchedValue = mismatchedName || this.colors[name].value != other.colors[name].value;
+				bool mismatchedOriginal = mismatchedName || this.colors[name].original != other.colors[name].original;
 				bool mismatchedOffset = mismatchedName || this.colors[name].offset != other.colors[name].offset;
 				bool mismatchedSource = mismatchedName || this.colors[name].sourceName != other.colors[name].sourceName;
-				if(mismatchedName || mismatchedValue || mismatchedSource || mismatchedOffset){
+				if(mismatchedName || mismatchedOriginal || mismatchedSource || mismatchedOffset){
 					return false;
 				}
 			}
@@ -85,4 +84,3 @@ namespace Zios.Interface{
 		}
 	}
 }
-#endif

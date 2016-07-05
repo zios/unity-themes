@@ -3,7 +3,6 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 namespace Zios.Interface{
-	#if UNITY_EDITOR
 	using UnityEditor;
 	public partial class Theme{
 		[MenuItem("Zios/Theme/Development/Sync Names [GUISkin]")]
@@ -96,5 +95,4 @@ namespace Zios.Interface{
 			Utility.SetAssetDirty(destination);
 		}
 	}
-	#endif
 }

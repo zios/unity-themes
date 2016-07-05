@@ -10,11 +10,13 @@ namespace Zios{
 	public static partial class ObjectExtension{
 		[NonSerialized] public static bool debug;
 		public static List<Type> emptyList = new List<Type>();
+		public static Hierarchy<Assembly,Type[]> lookup = new Hierarchy<Assembly,Type[]>();
 		public static Hierarchy<object,string,bool> warned = new Hierarchy<object,string,bool>();
 		public static Hierarchy<Type,BindingFlags,IList<Type>,string,object> variables = new Hierarchy<Type,BindingFlags,IList<Type>,string,object>();
 		public static Hierarchy<Type,BindingFlags,string,PropertyInfo> properties = new Hierarchy<Type,BindingFlags,string,PropertyInfo>();
 		public static Hierarchy<Type,BindingFlags,string,FieldInfo> fields = new Hierarchy<Type,BindingFlags,string,FieldInfo>();
 		public static Hierarchy<Type,BindingFlags,string,MethodInfo> methods = new Hierarchy<Type,BindingFlags,string,MethodInfo>();
+		public static Hierarchy<Type,BindingFlags,IList<Type>,string,MethodInfo> exactMethods = new Hierarchy<Type,BindingFlags,IList<Type>,string,MethodInfo>();
 		public const BindingFlags allFlags = BindingFlags.Static|BindingFlags.Instance|BindingFlags.NonPublic|BindingFlags.Public;
 		public const BindingFlags allFlatFlags = BindingFlags.Static|BindingFlags.Instance|BindingFlags.NonPublic|BindingFlags.Public|BindingFlags.FlattenHierarchy;
 		public const BindingFlags staticFlags = BindingFlags.Static|BindingFlags.Public|BindingFlags.NonPublic;
@@ -24,6 +26,55 @@ namespace Zios{
 		//=========================
 		// Methods
 		//=========================
+		public static List<MethodInfo> GetMethods(Type type,BindingFlags flags=allFlags){
+			var target = Class.methods.AddNew(type).AddNew(flags);
+			if(target.Count < 1){
+				foreach(var method in type.GetMethods(flags)){
+					target[method.Name] = method;
+				}
+			}
+			return target.Values.ToList();
+		}
+		public static MethodInfo GetMethod(Type type,string name,BindingFlags flags=allFlags){
+			var target = Class.methods.AddNew(type).AddNew(flags);
+			if(!target.ContainsKey(name)){target[name] = type.GetMethod(name,flags);}
+			return target[name];
+		}
+		public static MethodInfo GetMethod(this object current,string name,BindingFlags flags=allFlags){
+			Type type = current is Type ? (Type)current : current.GetType();
+			return Class.GetMethod(type,name,flags);
+		}
+		public static bool HasMethod(this object current,string name,BindingFlags flags=allFlags){
+			Type type = current is Type ? (Type)current : current.GetType();
+			return Class.GetMethod(type,name,flags) != null;
+		}
+		public static List<MethodInfo> GetExactMethods(this object current,IList<Type> argumentTypes=null,string name="",BindingFlags flags=allFlags){
+			Type type = current is Type ? (Type)current : current.GetType();
+			var methods = Class.exactMethods.AddNew(type).AddNew(flags).AddNew(argumentTypes);
+			if(name.IsEmpty() && methods.Count > 0){return methods.Select(x=>x.Value).ToList();}
+			if(methods.ContainsKey(name)){return methods[name].AsList();}
+			foreach(var method in Class.GetMethods(type,flags)){
+				if(!name.IsEmpty() && !method.Name.Matches(name,true)){continue;}
+				if(argumentTypes != null){
+					ParameterInfo[] parameters = method.GetParameters();
+					bool match = parameters.Length == argumentTypes.Count;
+					if(match){
+						for(int index=0;index<parameters.Length;++index){
+							if(!argumentTypes[index].Is(parameters[index].ParameterType)){
+								match = false;
+								break;
+							}
+						}
+					}
+					if(!match){continue;}
+				}
+				methods[method.Name] = method;
+			}
+			return methods.Values.ToList();
+		}
+		public static List<string> ListMethods(this object current,IList<Type> argumentTypes=null,BindingFlags flags=allFlags){
+			return current.GetExactMethods(argumentTypes,"",flags).Select(x=>x.Name).ToList();
+		}
 		public static object CallExactMethod(this object current,string name,params object[] parameters){
 			return current.CallExactMethod<object>(name,allFlags,parameters);
 		}
@@ -35,7 +86,7 @@ namespace Zios{
 			foreach(var parameter in parameters){
 				argumentTypes.Add(parameter.GetType());
 			}
-			var methods = current.GetMethods(argumentTypes,name,flags);
+			var methods = current.GetExactMethods(argumentTypes,name,flags);
 			if(methods.Count < 1){
 				if(ObjectExtension.debug){Debug.LogWarning("[Object] No method found to call -- " + name);}
 				return default(V);
@@ -44,6 +95,22 @@ namespace Zios{
 				return (V)methods[0].Invoke(null,parameters);
 			}
 			return (V)methods[0].Invoke(current,parameters);
+		}
+		public static object CallMethod(this string current,params object[] parameters){
+			if(Class.lookup.Count < 1){
+				var names = new string[]{"Assembly-CSharp","Assembly-CSharp-Editor"};
+				foreach(var name in names){
+					var assembly = Assembly.Load(name);
+					Class.lookup[assembly] = assembly.GetTypes();			
+				}
+			}
+			foreach(var item in Class.lookup){
+				var assembly = item.Key;
+				foreach(var type in item.Value){
+					Class.GetMethods(type);
+				}
+			}
+			return null;
 		}
 		public static object CallMethod(this object current,string name,params object[] parameters){
 			return current.CallMethod<object>(name,allFlags,parameters);
@@ -61,39 +128,6 @@ namespace Zios{
 				return (V)method.Invoke(null,parameters);
 			}
 			return (V)method.Invoke(current,parameters);
-		}
-		public static bool HasMethod(this object current,string name,BindingFlags flags=allFlags){
-			Type type = current is Type ? (Type)current : current.GetType();
-			return Class.GetMethod(type,name,flags) != null;
-		}
-		public static MethodInfo GetMethod(this object current,string name,BindingFlags flags=allFlags){
-			Type type = current is Type ? (Type)current : current.GetType();
-			return Class.GetMethod(type,name,flags);
-		}
-		public static List<MethodInfo> GetMethods(this object current,IList<Type> argumentTypes=null,string name="",BindingFlags flags=allFlags){
-			Type type = current is Type ? (Type)current : current.GetType();
-			List<MethodInfo> methods = new List<MethodInfo>();
-			foreach(MethodInfo method in type.GetMethods(flags)){
-				if(!name.IsEmpty() && !method.Name.Matches(name,true)){continue;}
-				if(argumentTypes != null){
-					ParameterInfo[] parameters = method.GetParameters();
-					bool match = parameters.Length == argumentTypes.Count;
-					if(match){
-						for(int index=0;index<parameters.Length;++index){
-							if(!argumentTypes[index].Is(parameters[index].ParameterType)){
-								match = false;
-								break;
-							}
-						}
-					}
-					if(!match){continue;}
-				}
-				methods.Add(method);
-			}
-			return methods;
-		}
-		public static List<string> ListMethods(this object current,IList<Type> argumentTypes=null,BindingFlags flags=allFlags){
-			return current.GetMethods(argumentTypes,"",flags).Select(x=>x.Name).ToList();
 		}
 		//=========================
 		// Attributes
@@ -127,11 +161,6 @@ namespace Zios{
 		public static FieldInfo GetField(Type type,string name,BindingFlags flags=allFlags){
 			var target = Class.fields.AddNew(type).AddNew(flags);
 			if(!target.ContainsKey(name)){target[name] = type.GetField(name,flags);}
-			return target[name];
-		}
-		public static MethodInfo GetMethod(Type type,string name,BindingFlags flags=allFlags){
-			var target = Class.methods.AddNew(type).AddNew(flags);
-			if(!target.ContainsKey(name)){target[name] = type.GetMethod(name,flags);}
 			return target[name];
 		}
 		public static bool HasVariable(this object current,string name,BindingFlags flags=allFlags){

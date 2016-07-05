@@ -3,7 +3,6 @@ using System.Linq;
 using System;
 using UnityEngine;
 namespace Zios.Interface{
-	#if UNITY_EDITOR
 	[Serializable]
 	public partial class Theme{
 		public static List<Theme> all = new List<Theme>();
@@ -69,5 +68,4 @@ namespace Zios.Interface{
 			return this;
 		}
 	}
-	#endif
 }

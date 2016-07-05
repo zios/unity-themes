@@ -103,6 +103,17 @@ namespace Zios{
 		//============================
 		// General
 		//============================
+		public static void CallEditorPref(string name,bool fallback=false){
+			#if UNITY_EDITOR
+			var callbacks = EditorPrefs.GetString(name);
+			var called = new List<string>();
+			foreach(var method in callbacks.Split("|")){
+				if(called.Contains(method)){continue;}
+				//method.Call();
+				called.Add(method);
+			}
+			#endif
+		}
 		public static void TogglePlayerPref(string name,bool fallback=false){
 			bool value = !(PlayerPrefs.GetInt(name) == fallback.ToInt());
 			PlayerPrefs.SetInt(name,value.ToInt());

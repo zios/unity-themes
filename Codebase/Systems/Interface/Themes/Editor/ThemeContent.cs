@@ -2,7 +2,6 @@
 using System.Linq;
 using UnityEngine;
 namespace Zios.Interface{
-	#if UNITY_EDITOR
 	using UnityEditor;
 	public class ThemeContent{
 		public string name;
@@ -89,5 +88,4 @@ namespace Zios.Interface{
 		}
 		public static void Revert(){}
 	}
-	#endif
 }

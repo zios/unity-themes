@@ -5,7 +5,6 @@ using UnityEngine;
 namespace Zios.Interface{
 	using Events;
 	using Containers;
-	#if UNITY_EDITOR
 	using UnityEditor;
 	public partial class Theme{
 		[NonSerialized] public static string createPath;
@@ -139,5 +138,4 @@ namespace Zios.Interface{
 			AssetDatabase.StopAssetEditing();
 		}
 	}
-	#endif
 }
