@@ -1,0 +1,20 @@
+[BakedShadowAngle]
+text = Baked Shadow Angle
+
+[BakedShadowRadius]
+text = Baked Shadow Radius
+
+[LightBounceIntensity]
+text = Bounce Intensity
+tooltip = Indirect light intensity multiplier.
+
+[LightmappingModeLabel]
+text = Baking
+
+[ShadowNearPlane]
+text = Shadow Near Plane
+tooltip = Shadow near plane, clamped to 0.1 units or 1% of light range, whichever is lower.
+
+[ShadowType]
+text = Shadow Type
+tooltip = Shadow cast options

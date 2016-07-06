@@ -1,0 +1,6 @@
+[addButton]
+text = +
+
+[header]
+text = Views
+tooltip = A view is the saved visiblity state of the current Mixer Groups. Use views to setup often used combinations of Mixer Groups.

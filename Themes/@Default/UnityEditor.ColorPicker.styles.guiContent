@@ -1,0 +1,23 @@
+[colorCycle]
+image = ColorPicker.CycleColor
+
+[colorToggle]
+text = Colors
+
+[eyeDropper]
+image = eyeDropper.Large
+tooltip = Pick a color from the screen.
+
+[presetsToggle]
+text = Presets
+
+[sliderCycle]
+image = ColorPicker.CycleSlider
+
+[sliderToggle]
+text = Sliders
+tooltip = The RGB or HSV color sliders.
+
+[tonemappingToggle]
+text = Tonemapped Preview
+tooltip = When enabled preview colors are tonemapped using Photographic Tonemapping

@@ -1,0 +1,72 @@
+[albedoText]
+text = Albedo
+tooltip = Albedo (RGB) and Transparency (A)
+
+[alphaCutoffText]
+text = Alpha Cutoff
+tooltip = Threshold for alpha cutoff
+
+[detailAlbedoText]
+text = Detail Albedo x2
+tooltip = Albedo (RGB) multiplied by 2
+
+[detailMaskText]
+text = Detail Mask
+tooltip = Mask for Secondary Maps (A)
+
+[detailNormalMapText]
+text = Normal Map
+tooltip = Normal Map
+
+[emissionText]
+text = Emission
+tooltip = Emission (RGB)
+
+[emissiveColorWarning]
+text = Ensure emissive color is non-black for emission to have effect.
+
+[emissiveWarning]
+text = Emissive value is animated but the material has not been configured to support emissive. Please make sure the material itself has some amount of emissive.
+
+[heightMapText]
+text = Height Map
+tooltip = Height Map (G)
+
+[highlightsText]
+text = Specular Highlights
+tooltip = Specular Highlights
+
+[metallicMapText]
+text = Metallic
+tooltip = Metallic (R) and Smoothness (A)
+
+[normalMapText]
+text = Normal Map
+tooltip = Normal Map
+
+[occlusionText]
+text = Occlusion
+tooltip = Occlusion (G)
+
+[reflectionsText]
+text = Reflections
+tooltip = Glossy Reflections
+
+[smoothnessMapChannelText]
+text = Source
+tooltip = Smoothness texture and channel
+
+[smoothnessScaleText]
+text = Smoothness
+tooltip = Smoothness scale factor
+
+[smoothnessText]
+text = Smoothness
+tooltip = Smoothness value
+
+[specularMapText]
+text = Specular
+tooltip = Specular (RGB) and Smoothness (A)
+
+[uvSetLabel]
+text = UV Set

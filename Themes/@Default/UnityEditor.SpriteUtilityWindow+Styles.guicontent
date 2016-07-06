@@ -1,0 +1,8 @@
+[s_NoSelectionWarning]
+text = No texture or sprite selected
+
+[s_PivotLabel]
+text = Pivot
+
+[s_SpriteTessellationDetail]
+text = Tessellation Detail

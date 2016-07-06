@@ -1,0 +1,7 @@
+[0]
+text = Create From This Model
+tooltip = Create a Mask based on the model from this file. For Humanoid rig all the human transform are always imported and converted to muscle curve, thus they cannot be unchecked.
+
+[1]
+text = Copy From Other Mask
+tooltip = Copy a Mask from another file to import animation clip.

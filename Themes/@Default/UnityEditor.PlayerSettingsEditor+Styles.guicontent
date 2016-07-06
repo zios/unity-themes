@@ -1,0 +1,15 @@
+[colorSpaceWarning]
+text = Selected color space is not supported on this hardware.
+
+[cursorHotspot]
+text = Cursor Hotspot
+
+[defaultCursor]
+text = Default Cursor
+
+[defaultIcon]
+text = Default Icon
+
+[vertexChannelCompressionMask]
+text = Vertex Compression
+tooltip = Select which vertex channels should be compressed. Compression can save memory and bandwidth but precision will be lower.

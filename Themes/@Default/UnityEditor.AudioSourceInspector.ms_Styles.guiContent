@@ -1,0 +1,61 @@
+[audioClipLabel]
+text = AudioClip
+tooltip = The AudioClip asset played by the AudioSource. Can be undefined if the AudioSource is generating a live stream of audio via OnAudioFilterRead.
+
+[dopplerLevelLabel]
+text = Doppler Level
+tooltip = Specifies how much the pitch is changed based on the relative velocity between AudioListener and AudioSource.
+
+[outputMixerGroupLabel]
+text = Output
+tooltip = Set whether the sound should play through an Audio Mixer first or directly to the Audio Listener
+
+[panLeftLabel]
+text = Left
+
+[panRightLabel]
+text = Right
+
+[panStereoLabel]
+text = Stereo Pan
+tooltip = Only valid for Mono and Stereo AudioClips. Mono sounds will be panned at constant power left and right. Stereo sounds will Stereo sounds have each left/right value faded up and down according to the specified pan value.
+
+[pitchLabel]
+text = Pitch
+tooltip = Sets the frequency of the sound. Use this to slow down or speed up the sound.
+
+[priorityLabel]
+text = Priority
+tooltip = Sets the priority of the source. Note that a sound with a larger priority value will more likely be stolen by sounds with smaller priority values.
+
+[priorityLeftLabel]
+text = High
+
+[priorityRightLabel]
+text = Low
+
+[reverbZoneMixLabel]
+text = Reverb Zone Mix
+tooltip = Sets how much of the signal this AudioSource is mixing into the global reverb associated with the zones. [0, 1] is a linear range (like volume) while [1, 1.1] lets you boost the reverb mix by 10 dB.
+
+[rolloffLabel]
+text = Volume Rolloff
+tooltip = Which type of rolloff curve to use
+
+[spatialBlendLabel]
+text = Spatial Blend
+tooltip = Sets how much this AudioSource is treated as a 3D source. 3D sources are affected by spatial position and spread. If 3D Pan Level is 0, all spatial attenuation is ignored.
+
+[spatialLeftLabel]
+text = 2D
+
+[spatialRightLabel]
+text = 3D
+
+[spreadLabel]
+text = Spread
+tooltip = Sets the spread of a 3d sound in speaker space
+
+[volumeLabel]
+text = Volume
+tooltip = Sets the overall volume of the sound.

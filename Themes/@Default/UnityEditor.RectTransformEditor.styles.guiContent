@@ -1,0 +1,36 @@
+[anchorMaxContent]
+text = Max
+tooltip = The normalized position in the parent rectangle that the upper right corner is anchored to.
+
+[anchorMinContent]
+text = Min
+tooltip = The normalized position in the parent rectangle that the lower left corner is anchored to.
+
+[anchorsContent]
+text = Anchors
+
+[blueprintContent]
+image = RectTransformBlueprint
+
+[pivotContent]
+text = Pivot
+tooltip = The pivot point specified in normalized values between 0 and 1. The pivot point is the origin of this rectangle. Rotation and scaling is around this point.
+
+[positionContent]
+text = Position
+tooltip = The local position of the rectangle. The position specifies this rectangle's pivot relative to the anchor reference point.
+
+[rawEditContent]
+image = RectTransformRaw
+
+[sizeContent]
+text = Size
+tooltip = The size of the rectangle.
+
+[transformPositionZContent]
+text = Pos Z
+tooltip = Distance to offset the rectangle along the Z axis of the parent. The effect is visible if the Canvas uses a perspective camera, or if a parent RectTransform is rotated along the X or Y axis.
+
+[transformScaleContent]
+text = Scale
+tooltip = The local scaling of this Game Object relative to the parent. This scales everything including image borders and text.

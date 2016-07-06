@@ -1,0 +1,19 @@
+[0]
+text = All
+tooltip = Show all (RGB) color channels
+
+[1]
+text = R
+tooltip = Show red channel only
+
+[2]
+text = G
+tooltip = Show green channel only
+
+[3]
+text = B
+tooltip = Show blue channel only
+
+[4]
+text = A
+tooltip = Show alpha channel only

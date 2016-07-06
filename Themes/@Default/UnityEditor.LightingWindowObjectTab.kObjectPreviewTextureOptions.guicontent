@@ -1,0 +1,20 @@
+[0]
+text = Charting
+
+[1]
+text = Albedo
+
+[2]
+text = Emissive
+
+[3]
+text = Realtime Intensity
+
+[4]
+text = Realtime Direction
+
+[5]
+text = Baked Intensity
+
+[6]
+text = Baked Direction

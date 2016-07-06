@@ -1,0 +1,110 @@
+[AddEventContent]
+image = Animation.AddEvent
+tooltip = Add Event.
+
+[AdditiveReferencePoseFrame]
+text = Pose Frame
+tooltip = Pose Frame.
+
+[AddKeyframeContent]
+image = Animation.AddKeyframe
+tooltip = Add Keyframe.
+
+[BakeIntoPoseOrientation]
+text = Bake Into Pose
+tooltip = Enable to make root rotation be baked into the movement of the bones. Disable to make root rotation be stored as root motion.
+
+[BakeIntoPosePositionXZ]
+text = Bake Into Pose
+tooltip = Enable to make horizontal root motion be baked into the movement of the bones. Disable to make horizontal root motion be stored as root motion.
+
+[BakeIntoPosePositionY]
+text = Bake Into Pose
+tooltip = Enable to make vertical root motion be baked into the movement of the bones. Disable to make vertical root motion be stored as root motion.
+
+[BasedUponOrientation]
+text = Based Upon
+tooltip = What the root rotation is based upon.
+
+[BasedUponPositionXZ]
+text = Based Upon
+tooltip = What the horizontal root position is based upon.
+
+[BasedUponPositionY]
+text = Based Upon
+tooltip = What the vertical root position is based upon.
+
+[BasedUponStartOrientation]
+text = Based Upon (at Start)
+tooltip = What the root rotation is based upon.
+
+[BasedUponStartPositionXZ]
+text = Based Upon (at Start)
+tooltip = What the horizontal root position is based upon.
+
+[BasedUponStartPositionY]
+text = Based Upon (at Start)
+tooltip = What the vertical root position is based upon.
+
+[Curves]
+text = Curves
+tooltip = Parameter-related curves.
+
+[EndFrame]
+text = End
+tooltip = End frame of the clip.
+
+[GreenLightIcon]
+image = greenLight
+
+[HasAdditiveReferencePose]
+text = Additive Reference Pose
+tooltip = Enable to define the additive reference pose frame.
+
+[LightRimIcon]
+image = lightRim
+
+[LoopCycleOffset]
+text = Cycle Offset
+tooltip = Offset to the cycle of a looping animation, if we want to start it at a different time.
+
+[LoopPose]
+text = Loop Pose
+tooltip = Enable to make the animation loop seamlessly.
+
+[LoopTime]
+text = Loop Time
+tooltip = Enable to make the animation plays through and then restarts when the end is reached.
+
+[Mirror]
+text = Mirror
+tooltip = Mirror left and right in this clip.
+
+[MotionCurves]
+text = Root Motion is driven by curves
+
+[NextKeyContent]
+image = Animation.NextKey
+tooltip = Go to next key frame.
+
+[OrangeLightIcon]
+image = orangeLight
+
+[OrientationOffsetY]
+text = Offset
+tooltip = Offset to the root rotation (in degrees).
+
+[PositionOffsetY]
+text = Offset
+tooltip = Offset to the vertical root position.
+
+[PrevKeyContent]
+image = Animation.PrevKey
+tooltip = Go to previous key frame.
+
+[RedLightIcon]
+image = redLight
+
+[StartFrame]
+text = Start
+tooltip = Start frame of the clip.

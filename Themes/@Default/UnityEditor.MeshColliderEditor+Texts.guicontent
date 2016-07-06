@@ -1,0 +1,7 @@
+[convextText]
+text = Convex
+tooltip = Is this collider convex?
+
+[isTriggerText]
+text = Is Trigger
+tooltip = Is this collider a trigger? Triggers are only supported on convex colliders.

@@ -1,0 +1,7 @@
+[mirrorIcon]
+image = Mirror
+tooltip = Mirror animation.
+
+[speedIcon]
+image = SpeedScale
+tooltip = Changes animation speed.

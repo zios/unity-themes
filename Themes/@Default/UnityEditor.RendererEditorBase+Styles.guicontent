@@ -1,0 +1,7 @@
+[m_SortingLayerStyle]
+text = Sorting Layer
+tooltip = Name of the Renderer's sorting layer
+
+[m_SortingOrderStyle]
+text = Order in Layer
+tooltip = Renderer's order within a sorting layer

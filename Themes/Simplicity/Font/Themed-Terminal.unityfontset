@@ -1,0 +1,18 @@
+[Main]
+Font = Squares Bold Free
+SizeOffset = -2
+OffsetX = 0
+OffsetY = -1
+
+[Button]
+Font = Squares Bold Free
+SizeOffset = -3
+OffsetX = 0
+OffsetY = -1
+
+[Code]
+Font = AurulentSansMono
+SizeOffset = 1
+OffsetX = 0
+OffsetY = 0
+

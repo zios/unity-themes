@@ -1,0 +1,11 @@
+[Base]
+UseSystemColor = True
+AllowSystemColor = True
+AllowCustomization = True
+AllowColorCustomization = True
+AllowFontsetCustomization = True
+Palette = Slate
+Fontset = @Default
+
+[+Brushed]
+WindowBackgroundOverride = CircleWhite10.png

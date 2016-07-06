@@ -1,0 +1,2 @@
+[m_ButtonContent]
+tooltip = Audio Mixer parameters can be exposed to scripting. Select an Audio Mixer Group, right click one of its properties in the Inspector and select 'Expose ..'.

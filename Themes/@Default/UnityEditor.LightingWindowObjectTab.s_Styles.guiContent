@@ -1,0 +1,96 @@
+[Atlas]
+text = Baked Lightmap
+
+[AtlasIndex]
+text = Lightmap Index
+
+[AtlasOffsetX]
+text = Offset X
+
+[AtlasOffsetY]
+text = Offset Y
+
+[AtlasTilingX]
+text = Tiling X
+
+[AtlasTilingY]
+text = Tiling Y
+
+[AutoUVMaxAngle]
+text = Auto UV Max Angle
+tooltip = Enlighten automatically generates simplified UVs by merging UV charts. Charts will only be simplified if the angle between the charts is smaller than this value.
+
+[AutoUVMaxDistance]
+text = Auto UV Max Distance
+tooltip = Enlighten automatically generates simplified UVs by merging UV charts. Charts will only be simplified if the worldspace distance between the charts is smaller than this value.
+
+[ChunkSize]
+text = Chunk Size
+
+[ClampedPackingResolution]
+text = Object's size in the realtime lightmap has reached the maximum size.
+tooltip = If you need higher resolution for this object, divide it into smaller meshes.
+
+[ClampedSize]
+text = Object's size in lightmap has reached the max atlas size.
+tooltip = If you need higher resolution for this object, divide it into smaller meshes or set higher max atlas size via the LightmapEditorSettings class.
+
+[EmptySelection]
+text = Select a Light, Mesh Renderer or a Terrain from the scene.
+
+[IgnoreNormalsForChartDetection]
+text = Ignore Normals
+tooltip = Do not compare normals when detecting charts for realtime GI. This can be necessary when using hand authored UVs to avoid unnecessary chart splits.
+
+[ImportantGI]
+text = Important GI
+tooltip = Make all other objects dependent upon this object. Useful for objects that will be strongly emissive to make sure that other objects will be illuminated by it.
+
+[LightmapParameters]
+text = Advanced Parameters
+tooltip = Lets you configure per instance lightmapping parameters. Objects will be automatically grouped by unique parameter sets.
+
+[MinimumChartSize]
+text = Min Chart Size
+tooltip = Directionality is generated at half resolution so in order to stitch properly at least 4x4 texels are needed in a chart so that a gradient can be generated on all sides of the chart. If stitching is not needed set this value to 2 in order to save texels for better performance at runtime and a faster lighting build.
+
+[NoNormalsNoLightmapping]
+text = Mesh used by the renderer doesn't have normals. Normals are needed for lightmapping.
+
+[PreserveUVs]
+text = Preserve UVs
+tooltip = Preserve the incoming lightmap UVs when generating realtime GI UVs. The incoming UVs are packed but charts are not scaled or merged. This is necessary for correct edge stitching of axis aligned chart edges.
+
+[RealtimeLM]
+text = Realtime Lightmap
+
+[RealtimeLMGeometryHash]
+text = Geometry Hash
+tooltip = The hash of the realtime GI geometry that the renderer is using.
+
+[RealtimeLMInputSystemHash]
+text = System Hash
+tooltip = The hash of the realtime system that the renderer belongs to.
+
+[RealtimeLMInstanceHash]
+text = Instance Hash
+tooltip = The hash of the realtime GI instance.
+
+[RealtimeLMInstanceResolution]
+text = Instance Resolution
+tooltip = The resolution in texels of the realtime lightmap packed instance.
+
+[RealtimeLMResolution]
+text = System Resolution
+tooltip = The resolution in texels of the realtime lightmap that this renderer belongs to.
+
+[ScaleInLightmap]
+text = Scale In Lightmap
+tooltip = Object's surface multiplied by this value determines it's size in the lightmap. 0 - don't lightmap this object.
+
+[TerrainLightmapSize]
+text = Lightmap Size
+tooltip = Defines the size of the lightmap that will be used only by this terrain.
+
+[ZeroAreaPackingMesh]
+text = Mesh used by the renderer has zero UV or surface area. Non zero area is required for lightmapping.

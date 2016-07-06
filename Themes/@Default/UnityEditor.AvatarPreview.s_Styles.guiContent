@@ -1,0 +1,12 @@
+[avatarIcon]
+image = Avatar Icon
+
+[ik]
+text = IK
+tooltip = Activates feet IK preview
+
+[pivot]
+image = AvatarPivot
+
+[speedScale]
+image = SpeedScale

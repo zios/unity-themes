@@ -1,0 +1,11 @@
+[Textured]
+Main            : #240034
+Border          : #4C0055 : 0.8
+Highlight       : #722C77 : 1.2
+
+[NonTextured]
+Window          : Main
+Cursor          : Highlight
+Selection       : Border
+Curve           : Highlight : 1.5
+CurveBackground : Border    : 0.5
