@@ -31,6 +31,7 @@
     <Compile Include="..\Containers\Container.cs" />
     <Compile Include="..\Extensions\%40Unity\Color.cs" />
     <Compile Include="..\Extensions\%40Unity\ComponentExtensions.cs" />
+    <Compile Include="..\Extensions\%40Unity\EventExtensions.cs" />
     <Compile Include="..\Extensions\%40Unity\GameObject.cs" />
     <Compile Include="..\Extensions\%40Unity\GUIContent.cs" />
     <Compile Include="..\Extensions\%40Unity\GUISkin.cs" />

@@ -38,6 +38,7 @@
     <Compile Include="..\Extensions\%40Unity\EditorGUI.cs" />
     <Compile Include="..\Extensions\%40Unity\EditorGUILayout.cs" />
     <Compile Include="..\Extensions\%40Unity\Editor\GenericMenu.cs" />
+    <Compile Include="..\Extensions\%40Unity\EventExtensions.cs" />
     <Compile Include="..\Extensions\%40Unity\GameObject.cs" />
     <Compile Include="..\Extensions\%40Unity\GUIContent.cs" />
     <Compile Include="..\Extensions\%40Unity\GUISkin.cs" />
