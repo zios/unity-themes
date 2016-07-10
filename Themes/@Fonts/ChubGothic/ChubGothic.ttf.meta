@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: cb67271f49ffeb740bc6dfb662b61019
-timeCreated: 1467650209
+guid: 2ccf1b86cc03a5a4691c36c02b7f2e31
+timeCreated: 1468107279
 licenseType: Free
 TrueTypeFontImporter:
   serializedVersion: 3
@@ -10,7 +10,7 @@ TrueTypeFontImporter:
   characterPadding: 0
   includeFontData: 1
   fontNames:
-  - Jolly Lodger
+  - Chub Gothic
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

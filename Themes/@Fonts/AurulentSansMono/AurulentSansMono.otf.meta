@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5ba0a9c28e7c9404491cba2899be7439
+guid: 56055b51707fdbc4e912862ce2177bee
 timeCreated: 1467624975
 licenseType: Free
 TrueTypeFontImporter:
@@ -10,10 +10,10 @@ TrueTypeFontImporter:
   characterPadding: 0
   includeFontData: 1
   fontNames:
-  - Chub Gothic
+  - Aurulent Sans Mono
   fallbackFontReferences:
-  - {fileID: 12800000, guid: 0ae89de2f1555c348985242f045d89f5, type: 3}
-  - {fileID: 12800000, guid: 6b10ccecb895da64a9e765cc01c0bf83, type: 3}
+  - {fileID: 12800000, guid: 1a2880e1cd8b01e45b514e2e79ba1eb0, type: 3}
+  - {fileID: 12800000, guid: 66801deb78197fe4fafe20d5d2e70c92, type: 3}
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
