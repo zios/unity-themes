@@ -90,13 +90,13 @@ namespace Zios.Interface{
 		public static void SyncStyle(bool flipPattern=false){
 			var source = FileManager.GetAsset<GUISkin>(EditorUtility.OpenFilePanel("Apply From [GUISkin]",Theme.storagePath,"guiskin"));
 			var destination = FileManager.GetAsset<GUISkin>(EditorUtility.OpenFilePanel("Apply To [GUISkin]",Theme.storagePath,"guiskin"));
-			var skinStyles = destination.GetNamedStyles();
+			var skinStyles = destination.GetStyles();
 			foreach(var style in source.GetStyles()){
 				var name = flipPattern ? style.name : style.name.Parse("[","]");
-				var styleMatch = flipPattern ? skinStyles.Where(x=>x.Key.Contains(name)).FirstOrDefault().Value : skinStyles.Get(name);
-				if(!styleMatch.IsNull()){
-					Debug.Log("[Themes] Applied " + source.name + "." + name.Parse("","[").Trim() + " to " + destination.name + "." + name);
-					styleMatch.Use(style);
+				var styleMatch = flipPattern ? skinStyles.Where(x=>x.name.Contains(name)) : skinStyles.Where(x=>x.name==name);
+				foreach(var match in styleMatch){
+					Debug.Log("[Themes] Applied " + source.name + "." + style.name + " to " + destination.name + "." + match.name);
+					match.Use(style);
 				}
 			}
 			Utility.SetAssetDirty(destination);

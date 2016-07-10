@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System;
-using System.Linq;
 namespace Zios.Interface{
 	using UnityEngine;
 	using UnityEditor;
@@ -10,13 +9,15 @@ namespace Zios.Interface{
 		public string name;
 		public string path;
 		public Dictionary<string,ThemeFont> fonts = new Dictionary<string,ThemeFont>();
-		public static void Import(string themeName,string path){
+		public static List<ThemeFontset> Import(string path){
+			var imported = new List<ThemeFontset>();
 			foreach(var file in FileManager.FindAll(path+"/Font/*.unityfontset",false)){
-				var active = ThemeFontset.all.AddNew(themeName).AddNew();
+				var active = imported.AddNew();
 				active.name = file.name;
 				active.path = file.directory;
 				active.Deserialize(file.GetText());
 			}
+			return imported;
 		}
 		public void Export(string path=""){
 			var theme = Theme.active;

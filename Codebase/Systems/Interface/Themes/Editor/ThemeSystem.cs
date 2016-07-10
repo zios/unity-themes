@@ -57,7 +57,7 @@ namespace Zios.Interface{
 			if(EditorApplication.isCompiling || EditorApplication.isUpdating){return;}
 			if(Theme.needsRefresh){
 				Theme.UpdateSettings();
-				ThemeContent.Apply();
+				Utility.DelayCall(ThemeContent.Apply,0.5f);
 				if(Theme.needsRebuild){
 					Theme.needsRebuild = false;
 					return;

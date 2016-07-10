@@ -33,10 +33,11 @@ namespace Zios.Interface{
 						theme = root.IsNull() ? Theme.all.AddNew() : root.options.AddNew();
 						theme.name = name.ToPascalCase();
 						theme.path = themeFile.GetAssetPath().GetDirectory();
+						if(theme.name == "@Default"){continue;}
 						if(root.IsNull()){
 							root = theme;
-							ThemeContent.Import(theme,themeFile.directory);
-							ThemeFontset.Import(root.name,themeFile.directory);
+							theme.contents = ThemeContent.Import(themeFile.directory);
+							ThemeFontset.all[root.name] = ThemeFontset.Import(themeFile.directory);
 						}
 						if(root.options.Count > 0){
 							root.options.Last().Use(root);
