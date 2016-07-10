@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Linq;
 using System.IO;
 using UnityEngine;
@@ -12,22 +13,44 @@ namespace Zios{
 	[InitializeOnLoad]
 	public static class FileManager{
 		private static string path;
+		private static string dataPath;
 		private static bool debug = false;
 		private static bool clock = false;
 		private static bool fullScan = true;
-		private static Dictionary<string,FileSystemWatcher> watchers = new Dictionary<string,FileSystemWatcher>();
+		private static float lastMonitor;
+		private static Dictionary<string,FileMonitor> monitors = new Dictionary<string,FileMonitor>();
 		public static Dictionary<string,List<FileData>> filesByPath = new Dictionary<string,List<FileData>>(StringComparer.InvariantCultureIgnoreCase);
 		public static Dictionary<string,List<FileData>> filesByType = new Dictionary<string,List<FileData>>(StringComparer.InvariantCultureIgnoreCase);
 		public static Dictionary<string,FileData> folders = new Dictionary<string,FileData>(StringComparer.InvariantCultureIgnoreCase);
 		public static Dictionary<string,FileData[]> cache = new Dictionary<string,FileData[]>();
 		public static Dictionary<UnityObject,object> assets = new Dictionary<UnityObject,object>();
 		public static Hierarchy<Type,string,string,UnityObject> namedAssets = new Hierarchy<Type,string,string,UnityObject>();
-		static FileManager(){FileManager.Refresh();}
+		static FileManager(){
+			FileManager.dataPath = Application.dataPath;
+			FileManager.Refresh();
+			EditorApplication.update += FileManager.Step;
+		}
+		public static void Step(){
+			var time = FileManager.GetTime();
+			if(time>FileManager.lastMonitor){
+				foreach(var item in FileManager.monitors){
+					if(item.Value.WasChanged()){
+						FileManager.Refresh();
+						break;
+					}
+				}
+				FileManager.lastMonitor = time + 0.3f;
+			}
+		}
 		//===============
 		// Storage
 		//===============
+		public static float GetTime(){
+			//if(FileManager.inThread){return 0;}
+			return Time.realtimeSinceStartup;
+		}
 		public static void Load(){
-			var time = Time.realtimeSinceStartup;
+			var time = FileManager.GetTime();
 			if(FileManager.Exists("Temp/FileManager.data")){
 				int mode = 0;
 				string extension = "";
@@ -57,11 +80,11 @@ namespace Zios{
 					}
 				}
 			}
-			if(FileManager.clock){Debug.Log("[FileManager] : Load cache complete -- " + (Time.realtimeSinceStartup-time) + " seconds.");}
+			if(FileManager.clock){Debug.Log("[FileManager] : Load cache complete -- " + (FileManager.GetTime()-time) + " seconds.");}
 		}
 		public static void Save(){
 			string lastPath = ")@#(*$";
-			var time = Time.realtimeSinceStartup;
+			var time = FileManager.GetTime();
 			FileManager.Create("Temp");
 			using(var output = new StreamWriter("Temp/FileManager.data",false)){
 				output.WriteLine("[Files]");
@@ -78,7 +101,7 @@ namespace Zios{
 					FileManager.SaveData(item.Value,output,ref lastPath);
 				}
 			}
-			if(FileManager.clock){Debug.Log("[FileManager] : Save cache complete -- " + (Time.realtimeSinceStartup-time) + " seconds.");}
+			if(FileManager.clock){Debug.Log("[FileManager] : Save cache complete -- " + (FileManager.GetTime()-time) + " seconds.");}
 		}
 		public static void SaveData(FileData data,StreamWriter output,ref string lastPath){
 			var directory = data.directory.Replace(FileManager.path,"$");
@@ -97,43 +120,27 @@ namespace Zios{
 		//===============
 		// Setup
 		//===============
-		public static void FileChanged(object source,FileSystemEventArgs data){
-			if(data.FullPath.ContainsAny(".svn","~",".meta","unitytemp","unitylock")){return;}
-			Utility.DelayCall(()=>FileManager.Refresh());
-			/*var path = Path.GetFullPath(data.FullPath).Replace("\\","/");
-			if(data.ChangeType == WatcherChangeTypes.Deleted){
-				FileManager.cache["!"+path.ToLower()][0].Delete(true);
-			}
-			if(data.ChangeType == WatcherChangeTypes.Created){
-				var fileData = new FileData(path);
-				fileData.isFolder = fileData.name.IsEmpty();
-				fileData.BuildCache();
-			}*/
-		}
 		public static void Refresh(){
-			var time = Time.realtimeSinceStartup;
+			var time = FileManager.GetTime();
 			FileManager.assets.Clear();
 			FileManager.filesByPath.Clear();
 			FileManager.filesByType.Clear();
 			FileManager.folders.Clear();
 			FileManager.cache.Clear();
-			FileManager.path = Application.dataPath.GetDirectory();
+			FileManager.path = FileManager.dataPath.GetDirectory();
 			FileManager.Scan(FileManager.path);
 			FileManager.Scan(FileManager.path+"/Temp",true);
-			if(!Application.isPlaying){
-				if(FileManager.fullScan){FileManager.Scan(Application.dataPath,true);}
-				FileManager.Save();
-			}
-			else{
-				FileManager.Load();
-			}
-			if(FileManager.clock){Debug.Log("[FileManager] : Refresh complete -- " + (Time.realtimeSinceStartup-time) + " seconds.");}
+			if(FileManager.fullScan){FileManager.Scan(FileManager.dataPath,true);}
+			FileManager.Save();
+			if(FileManager.clock){Debug.Log("[FileManager] : Refresh complete -- " + (FileManager.GetTime()-time) + " seconds.");}
 		}
 		public static void Scan(string directory,bool deep=false){
 			if(!Directory.Exists(directory)){return;}
 			string[] fileEntries = Directory.GetFiles(directory);
 			string[] folderEntries = Directory.GetDirectories(directory);
-			FileManager.Monitor(directory);
+			if(!FileManager.monitors.ContainsKey(directory)){
+				FileManager.monitors[directory] = new FileMonitor(directory);
+			}
 			FileManager.filesByPath.AddNew(directory);
 			foreach(string filePath in fileEntries){
 				if(filePath.ContainsAny(".meta","unitytemp","unitylock")){continue;}
@@ -147,19 +154,11 @@ namespace Zios{
 				if(deep){FileManager.Scan(path,true);}
 			}
 		}
-		public static void Monitor(string path){
-			if(!FileManager.watchers.ContainsKey(path)){
-				var watcher = FileManager.watchers[path] = new FileSystemWatcher(path);
-				watcher.Created += new FileSystemEventHandler(FileManager.FileChanged);
-				watcher.Deleted += new FileSystemEventHandler(FileManager.FileChanged);
-				watcher.EnableRaisingEvents = true;
-			}
-		}
 		//===============
 		// Primary
 		//===============
 		public static FileData[] FindAll(string name,bool showWarnings=true,bool firstOnly=false){
-			var time = Time.realtimeSinceStartup;
+			var time = FileManager.GetTime();
 			if(name == "" && showWarnings){
 				Debug.LogWarning("[FileManager] No path given for search.");
 				return null;
@@ -202,7 +201,7 @@ namespace Zios{
 			}
 			if(results.Count == 0 && showWarnings){Debug.LogWarning("[FileManager] Path [" + name + "] could not be found.");}
 			FileManager.cache[searchKey] = results.ToArray();
-			if(FileManager.clock){Debug.Log("[FileManager] : Find [" + name + "] complete (" + results.Count + ") -- " + (Time.realtimeSinceStartup-time) + " seconds.");}
+			if(FileManager.clock){Debug.Log("[FileManager] : Find [" + name + "] complete (" + results.Count + ") -- " + (FileManager.GetTime()-time) + " seconds.");}
 			return results.ToArray();
 		}
 		public static void SearchType(string name,string type,string path,bool firstOnly,ref List<FileData> results){
@@ -225,7 +224,7 @@ namespace Zios{
 			#if UNITY_EDITOR
 			if(Application.isEditor){
 				string assetPath = AssetDatabase.GetAssetPath(target);
-				if(!relative){assetPath = Application.dataPath.Replace("Assets","") + assetPath;}
+				if(!relative){assetPath = FileManager.dataPath.Replace("Assets","") + assetPath;}
 				return assetPath;
 			}
 			#endif
@@ -318,6 +317,22 @@ namespace Zios{
 				FileManager.namedAssets[typeof(T)][name] = files.ToDictionary(x=>x.name,x=>(UnityObject)x);
 			}
 			return FileManager.namedAssets[typeof(T)][name].ToDictionary(x=>x.Key,x=>(T)x.Value);
+		}
+	}
+	public class FileMonitor{
+		public string path;
+		public DateTime lastModify;
+		public FileMonitor(string path){
+			this.path = path;
+			this.lastModify = Directory.GetLastWriteTime(this.path);
+		}
+		public bool WasChanged(){
+			var modifyTime = Directory.GetLastWriteTime(this.path);
+			if(this.lastModify != modifyTime){
+				this.lastModify = modifyTime;
+				return true;
+			}
+			return false;
 		}
 	}
 	[Serializable]

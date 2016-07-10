@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Linq;
+using System.Collections.Generic;
 using UnityEngine;
 namespace Zios.Interface{
-	using UnityEditor;
 	public class ThemeContent{
 		public string name;
 		public string path;
 		public object scope;
 		public GUIContent target = new GUIContent();
 		public GUIContent value = new GUIContent();
-		public static void Import(Theme theme,string path){
-			if(theme.name == "@Default"){return;}
+		public static List<ThemeContent> Import(string path){
 			var contents = FileManager.FindAll(path+"/*.guiContent",true,false);
+			var imported = new List<ThemeContent>();
 			foreach(var contentFile in contents){
 				var content = new ThemeContent();
 				var contentName = "";
@@ -20,7 +20,7 @@ namespace Zios.Interface{
 					if(line.ContainsAll("[","]")){
 						if(!contentName.IsEmpty()){
 							content.Setup(contentFile.name,contentName);
-							theme.contents.Add(content);
+							imported.Add(content);
 						}
 						content = new ThemeContent();
 						contentName = line.Parse("[","]");
@@ -35,9 +35,10 @@ namespace Zios.Interface{
 				}
 				if(!contentName.IsEmpty()){
 					content.Setup(contentFile.name,contentName);
-					theme.contents.Add(content);
+					imported.Add(content);
 				}
 			}
+			return imported;
 		}
 		public void Setup(string path,string contentName){
 			this.path = path;
@@ -74,16 +75,14 @@ namespace Zios.Interface{
 		}
 		public static void Apply(){
 			if(Theme.active.IsNull()){return;}
-			Utility.DelayCall(()=>{
-				//ThemeContent.Revert();
-				foreach(var content in Theme.active.contents){
-					content.SyncScope();
-					content.SyncTarget();
-					content.target.text = content.value.text;
-					content.target.tooltip = content.value.tooltip;
-					content.target.image = content.value.image;
-				}
-			},0.5f);
+			//ThemeContent.Revert();
+			foreach(var content in Theme.active.contents){
+				content.SyncScope();
+				content.SyncTarget();
+				content.target.text = content.value.text;
+				content.target.tooltip = content.value.tooltip;
+				content.target.image = content.value.image;
+			}
 		}
 		public static void Revert(){
 			FileManager.Create("Temp");
