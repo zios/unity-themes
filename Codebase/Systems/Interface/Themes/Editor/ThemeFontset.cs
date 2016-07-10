@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System;
+using System.Linq;
 namespace Zios.Interface{
 	using UnityEngine;
 	using UnityEditor;
@@ -9,12 +10,24 @@ namespace Zios.Interface{
 		public string name;
 		public string path;
 		public Dictionary<string,ThemeFont> fonts = new Dictionary<string,ThemeFont>();
-		public static void Parse(string themeName,string path){
+		public static void Import(string themeName,string path){
 			foreach(var file in FileManager.FindAll(path+"/Font/*.unityfontset",false)){
 				var active = ThemeFontset.all.AddNew(themeName).AddNew();
 				active.name = file.name;
 				active.path = file.directory;
 				active.Deserialize(file.GetText());
+			}
+		}
+		public void Export(string path=""){
+			var theme = Theme.active;
+			var defaultPath = Theme.storagePath+theme.name+"/Fonts/";
+			var defaultName = theme.fontset.name+"-Variant";
+			path = path.IsEmpty() ? EditorUtility.SaveFilePanel("Save Theme [Fonts]",defaultPath,defaultName,"unityfontset") : path;
+			if(path.Length > 0){
+				var file = FileManager.Create(path);
+				file.WriteText(this.Serialize());
+				EditorPrefs.SetString("EditorFontset-"+theme.name,path.GetFileName());
+				Theme.setup = false;
 			}
 		}
 		public string Serialize(){
@@ -89,24 +102,11 @@ namespace Zios.Interface{
 					if(style.font == themeFont.proxy){
 						style.font = themeFont.font;
 						style.fontSize += themeFont.sizeOffset;
-						style.contentOffset = new Vector2(themeFont.offsetX,themeFont.offsetY);
+						style.contentOffset += new Vector2(themeFont.offsetX,themeFont.offsetY);
 					}
 				}
 			}
 			return modified;
-		}
-		public void Save(string path=""){
-			var theme = Theme.active;
-			var defaultPath = Theme.storagePath+theme.name+"/Fonts/";
-			var defaultName = theme.fontset.name+"-Variant";
-			path = path.IsEmpty() ? EditorUtility.SaveFilePanel("Save Theme [Fonts]",defaultPath,defaultName,"unityfontset") : path;
-			if(path.Length > 0){
-				var file = FileManager.Create(path);
-				file.WriteText(this.Serialize());
-				EditorPrefs.SetString("EditorFontset-"+theme.name,path.GetFileName());
-				FileManager.Refresh();
-				Theme.setup = false;
-			}
 		}
 	}
 	[Serializable]
@@ -124,11 +124,6 @@ namespace Zios.Interface{
 			this.sizeOffset = sizeOffset;
 			this.offsetX = offsetX;
 			this.offsetY = offsetY;
-		}
-		public ThemeFont Copy(){
-			var copy = new ThemeFont();
-			copy.UseVariables(this);
-			return copy;
 		}
 	}
 }

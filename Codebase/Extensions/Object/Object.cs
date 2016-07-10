@@ -140,6 +140,9 @@ namespace Zios{
 		//============================
 		// Other
 		//============================
+		public static T Copy<T>(this T target) where T : class,new(){
+			return new T().UseVariables(target);
+		}
 		public static T Clone<T>(this T target) where T : class{
 			if(target.IsNull()){return null;}
 			MethodInfo method = target.GetType().GetMethod("MemberwiseClone",privateFlags);

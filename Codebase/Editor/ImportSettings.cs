@@ -39,8 +39,8 @@ namespace Zios.Editors{
 			if(assetName.Contains("Index") || assetName.Contains("Shading") || importer.assetPath.Contains("Interface")){
 				if(!importer.assetPath.Contains("Interface")){
 					importer.filterMode = FilterMode.Point;
+					importer.wrapMode = TextureWrapMode.Clamp;
 				}
-				importer.wrapMode = TextureWrapMode.Clamp;
 				importer.mipmapEnabled = false;
 				//if(importer.assetPath.Contains("Index")){
 				//	importer.textureFormat = TextureImporterFormat.DXT1;

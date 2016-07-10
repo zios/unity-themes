@@ -20,9 +20,9 @@ namespace Zios.Interface{
 		public bool useColorAssets = true;
 		public Texture2D windowBackgroundOverride;
 		public float spacingScale = 1;
-		public static void Parse(){
-			var themes = FileManager.FindAll("*.unitytheme");
-			foreach(var themeFile in themes){
+		public static void Import(string path=null){
+			path = path ?? "*.unitytheme";
+			foreach(var themeFile in FileManager.FindAll(path)){
 				Theme theme = null;
 				Theme root = null;
 				string name = "";
@@ -35,8 +35,8 @@ namespace Zios.Interface{
 						theme.path = themeFile.GetAssetPath().GetDirectory();
 						if(root.IsNull()){
 							root = theme;
-							ThemeContent.Parse(theme,themeFile.directory);
-							ThemeFontset.Parse(root.name,themeFile.directory);
+							ThemeContent.Import(theme,themeFile.directory);
+							ThemeFontset.Import(root.name,themeFile.directory);
 						}
 						if(root.options.Count > 0){
 							root.options.Last().Use(root);

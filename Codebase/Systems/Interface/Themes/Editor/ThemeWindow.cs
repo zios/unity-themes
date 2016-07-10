@@ -2,7 +2,9 @@ using UnityEditor;
 namespace Zios.Interface{
 	public class ThemeWindow : EditorWindow{
 		public void OnGUI(){
-			Theme.Setup();
+			EditorApplication.update -= Theme.ShowWindow;
+			Theme.Step();
+			Theme.Update();
 			this.Repaint();
 		}
 	}

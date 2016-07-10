@@ -10,6 +10,7 @@ namespace Zios{
 	public static partial class ObjectExtension{
 		[NonSerialized] public static bool debug;
 		public static List<Type> emptyList = new List<Type>();
+		public static List<Assembly> assemblies = new List<Assembly>();
 		public static Hierarchy<Assembly,string,Type> lookup = new Hierarchy<Assembly,string,Type>();
 		public static Hierarchy<object,string,bool> warned = new Hierarchy<object,string,bool>();
 		public static Hierarchy<Type,BindingFlags,IList<Type>,string,object> variables = new Hierarchy<Type,BindingFlags,IList<Type>,string,object>();
@@ -23,6 +24,13 @@ namespace Zios{
 		public const BindingFlags instanceFlags = BindingFlags.Instance|BindingFlags.NonPublic|BindingFlags.Public;
 		public const BindingFlags privateFlags = BindingFlags.Instance|BindingFlags.NonPublic;
 		public const BindingFlags publicFlags = BindingFlags.Instance|BindingFlags.Public;
+		//=========================
+		// Assemblies
+		//=========================
+		public static List<Assembly> GetAssemblies(){
+			if(Class.assemblies.Count < 1){Class.assemblies = AppDomain.CurrentDomain.GetAssemblies().ToList();}
+			return Class.assemblies;
+		}
 		//=========================
 		// Methods
 		//=========================
@@ -94,9 +102,7 @@ namespace Zios{
 		}
 		public static object CallMethod(this string current,params object[] parameters){
 			if(Class.lookup.Count < 1){
-				var assemblyNames = new string[]{"UnityEditor","UnityEngine","Assembly-CSharp","Assembly-CSharp-Editor"};
-				foreach(var assemblyName in assemblyNames){
-					var assembly = Assembly.Load(assemblyName);
+				foreach(var assembly in Class.GetAssemblies()){
 					var types = assembly.GetTypes();
 					foreach(var type in types){
 						Class.lookup.AddNew(assembly)[type.FullName] = type;
@@ -121,6 +127,7 @@ namespace Zios{
 					return value ?? true;
 				}
 			}
+			Debug.Log("[ObjectReflection] Cannot call. Path not found -- " + current + "()");
 			return null;
 		}
 		public static object CallMethod(this object current,string name,params object[] parameters){
@@ -319,10 +326,11 @@ namespace Zios{
 		public static List<string> ListVariables(this object current,IList<Type> withoutAttributes=null,BindingFlags flags=allFlags){
 			return current.GetVariables(withoutAttributes,flags).Keys.ToList();
 		}
-		public static void UseVariables<T>(this T current,T other,IList<Type> withoutAttributes=null,BindingFlags flags = publicFlags) where T : class{
+		public static T UseVariables<T>(this T current,T other,IList<Type> withoutAttributes=null,BindingFlags flags = publicFlags) where T : class{
 			foreach(var name in current.ListVariables(withoutAttributes,flags)){
 				current.SetVariable(name,other.GetVariable(name));
 			}
+			return current;
 		}
 		public static void ClearVariable(this object current,string name,BindingFlags flags=allFlags){
 			Type type = current is Type ? (Type)current : current.GetType();

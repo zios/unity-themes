@@ -1,11 +1,11 @@
 [Main]
-Font = Squares Bold Free
+Font = SquaresBoldFree
 SizeOffset = -2
 OffsetX = 0
 OffsetY = -1
 
 [Button]
-Font = Squares Bold Free
+Font = SquaresBoldFree
 SizeOffset = -3
 OffsetX = 0
 OffsetY = -1
