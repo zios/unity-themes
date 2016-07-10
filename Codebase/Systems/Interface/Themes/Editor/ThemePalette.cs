@@ -9,8 +9,9 @@ namespace Zios.Interface{
 		public static List<ThemePalette> all = new List<ThemePalette>();
 		public string name;
 		public Dictionary<string,RelativeColor> colors = new Dictionary<string,RelativeColor>(){{"Window","#B1B1B1"}};
-		public static void Parse(){
-			foreach(var file in FileManager.FindAll("*.unitypalette")){
+		public static void Import(string path=null){
+			path = path ?? "*.unitypalette";
+			foreach(var file in FileManager.FindAll(path)){
 				bool skipTexture = false;
 				var palette = ThemePalette.all.AddNew();
 				var sourceMap = new Dictionary<string,string>();
@@ -32,6 +33,27 @@ namespace Zios.Interface{
 					var source = palette.colors.Get(item.Value);
 					palette.colors[item.Key].Assign(source);
 				}
+			}
+		}
+		public void Export(string path=""){
+			path = path.IsEmpty() ? EditorUtility.SaveFilePanel("Save Theme [Palette]",Theme.storagePath+"@Palettes","TheColorsDuke","unitypalette") : path;
+			if(path.Length > 0){
+				var file = FileManager.Create(path);
+				var contents = "";
+				var textured = this.colors.Where(x=>!x.Value.skipTexture);
+				var nonTextured = this.colors.Where(x=>x.Value.skipTexture);
+				contents = contents.AddLine("[Textured]");
+				foreach(var color in textured){
+					contents = contents.AddLine(color.Value.Serialize());
+				}
+				contents = contents.AddLine("");
+				contents = contents.AddLine("[NonTextured]");
+				foreach(var color in nonTextured){
+					contents = contents.AddLine(color.Value.Serialize());
+				}
+				file.WriteText(contents);
+				EditorPrefs.SetString("EditorPalette",path.GetFileName());
+				Theme.setup = false;
 			}
 		}
 		public bool Has(string name){return this.colors.ContainsKey(name);}
@@ -59,28 +81,6 @@ namespace Zios.Interface{
 				}
 			}
 			return true;
-		}
-		public void Save(string path=""){
-			path = path.IsEmpty() ? EditorUtility.SaveFilePanel("Save Theme [Palette]",Theme.storagePath+"@Palettes","TheColorsDuke","unitypalette") : path;
-			if(path.Length > 0){
-				var file = FileManager.Create(path);
-				var contents = "";
-				var textured = this.colors.Where(x=>!x.Value.skipTexture);
-				var nonTextured = this.colors.Where(x=>x.Value.skipTexture);
-				contents = contents.AddLine("[Textured]");
-				foreach(var color in textured){
-					contents = contents.AddLine(color.Value.Serialize());
-				}
-				contents = contents.AddLine("");
-				contents = contents.AddLine("[NonTextured]");
-				foreach(var color in nonTextured){
-					contents = contents.AddLine(color.Value.Serialize());
-				}
-				file.WriteText(contents);
-				EditorPrefs.SetString("EditorPalette",path.GetFileName());
-				FileManager.Refresh();
-				Theme.setup = false;
-			}
 		}
 	}
 }

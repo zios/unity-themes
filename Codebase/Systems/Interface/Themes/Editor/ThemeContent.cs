@@ -9,7 +9,7 @@ namespace Zios.Interface{
 		public object scope;
 		public GUIContent target = new GUIContent();
 		public GUIContent value = new GUIContent();
-		public static void Parse(Theme theme,string path){
+		public static void Import(Theme theme,string path){
 			if(theme.name == "@Default"){return;}
 			var contents = FileManager.FindAll(path+"/*.guiContent",true,false);
 			foreach(var contentFile in contents){
@@ -49,8 +49,7 @@ namespace Zios.Interface{
 			var typeDirect = Utility.GetUnityType(this.path);
 			var typeParent = Utility.GetUnityType(parent);
 			if(typeDirect.IsNull() && (typeParent.IsNull() || !typeParent.HasVariable(field))){
-				if(Theme.debug){
-					Debug.LogWarning("[Themes] No matching class/field found for GUIContent -- " + this.path);}
+				if(Theme.debug){Debug.LogWarning("[Themes] No matching class/field found for GUIContent -- " + this.path);}
 				return;
 			}
 			this.scope = typeDirect ?? typeParent.GetVariable(field);
@@ -75,8 +74,8 @@ namespace Zios.Interface{
 		}
 		public static void Apply(){
 			if(Theme.active.IsNull()){return;}
-			ThemeContent.Revert();
 			Utility.DelayCall(()=>{
+				//ThemeContent.Revert();
 				foreach(var content in Theme.active.contents){
 					content.SyncScope();
 					content.SyncTarget();
@@ -86,6 +85,35 @@ namespace Zios.Interface{
 				}
 			},0.5f);
 		}
-		public static void Revert(){}
+		public static void Revert(){
+			FileManager.Create("Temp");
+			var cache = FileManager.Find("ThemeContent.data") ?? FileManager.Create("Temp/ThemeContent.data");
+			foreach(var entry in cache.GetText().GetLines()){
+				if(entry.IsEmpty()){continue;}
+				var buffer = new ThemeContent();
+				var fullPath = entry.Parse("","||");
+				var content = entry.TrimLeft(fullPath+"||").Deserialize<GUIContent>();
+				//Debug.Log(fullPath + " -- " + entry.TrimLeft(fullPath+"||").Length);
+				buffer.path = fullPath.Split("-")[0];
+				buffer.name = fullPath.Split("-")[1];
+				buffer.SyncScope();
+				buffer.SyncTarget();
+				buffer.target.text = content.text;
+				buffer.target.tooltip = content.tooltip;
+				buffer.target.image = content.image;
+				var size = buffer.target.image.IsNull() ? 0 : buffer.target.image.As<Texture2D>().GetRawTextureData().Count();
+				if(size > 0){Debug.Log("Loading " + fullPath + " -- " + size);}
+			}
+			var output = "";
+			foreach(var content in Theme.active.contents){
+				content.SyncScope();
+				content.SyncTarget();
+				var path = content.path+"-"+content.name;
+				output = output.AddLine(path+"||"+content.target.Serialize());
+				var size = content.target.image.IsNull() ? 0 : content.target.image.As<Texture2D>().GetRawTextureData().Count();
+				if(size > 0){Debug.Log("Saving : " + path + " -- " + size);}
+			}
+			cache.WriteText(output);
+		}
 	}
 }

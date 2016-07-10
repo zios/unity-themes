@@ -30,11 +30,12 @@ namespace Zios.Interface{
 			if(!type.Name.ContainsAny("$","__Anon","<","AudioMixerDraw")){
 				EventStepper.title = "Scanning " + types.Length + " Types";
 				EventStepper.message = "Analyzing : " + type.Name;
-				var terms = new string[]{"Styles","styles","s_GOStyles","s_Current","s_Styles","m_Styles","ms_Styles","constants"};
+				var terms = new string[]{"Styles","styles","s_GOStyles","s_Current","s_Styles","m_Styles","ms_Styles","constants","s_Defaults"};
 				foreach(var term in terms){
 					if(!type.HasVariable(term,ObjectExtension.staticFlags)){continue;}
 					try{
 						var styleGroup = type.GetVariable(term,-1,ObjectExtension.staticFlags) ?? Activator.CreateInstance(type.GetVariableType(term));
+						type.SetVariable(term,styleGroup);
 						Theme.styleGroupBuffer[type.FullName+"."+term] = styleGroup;
 					}
 					catch{}
@@ -121,7 +122,7 @@ namespace Zios.Interface{
 			FileManager.Create(path).WriteText(contents.Trim());
 		}
 		[MenuItem("Zios/Theme/Development/Save [Palette]")]
-		public static void SavePalette(){Theme.active.palette.Save("");}
+		public static void SavePalette(){Theme.active.palette.Export("");}
 		[MenuItem("Zios/Theme/Development/Save [Assets]")]
 		public static void SaveAssets(){Theme.SaveAssets("");}
 		public static void SaveAssets(string path,bool includeBuiltin=false){

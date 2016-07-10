@@ -8,6 +8,7 @@ namespace Zios{
 	#endif
 	public static class Hook{
 		public static bool disabled;
+		public static bool temporary;
 		public static bool hidden;
 		public static bool debug;
 		public static GameObject main;
@@ -17,15 +18,20 @@ namespace Zios{
 			#endif
 			#if UNITY_THEMES
 			Hook.hidden = true;
+			Hook.temporary = true;
 			#endif
 		}
-		public static void SetHidden(bool state){
+		public static void SetState(bool hidden,bool temporary){
 			Locate.SetDirty();
 			foreach(var current in Locate.GetSceneObjects()){
 				if(current.name != "@Main"){continue;}
-				current.hideFlags = state ? HideFlags.HideInHierarchy : HideFlags.None;
+				current.hideFlags = hidden ? HideFlags.HideInHierarchy : HideFlags.None;
+				if(temporary){
+					current.hideFlags = hidden ? HideFlags.HideAndDontSave : HideFlags.DontSave;
+				}
 			}
-			Hook.hidden = state;
+			Hook.hidden = hidden;
+			Hook.hidden = temporary;
 			Utility.Destroy(new GameObject("@*#&"));
 		}
 	}
@@ -64,7 +70,7 @@ namespace Zios{
 					setInstance(Hook.main.AddComponent<Singleton>());
 				}
 			}
-			Hook.SetHidden(Hook.hidden);
+			Hook.SetState(Hook.hidden,Hook.temporary);
 		}
 	}
 }

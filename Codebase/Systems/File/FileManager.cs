@@ -5,24 +5,24 @@ using System.IO;
 using UnityEngine;
 using UnityObject = UnityEngine.Object;
 namespace Zios{
-	using Events;
 	using Containers;
 	#if UNITY_EDITOR
 	using UnityEditor;
 	#endif
+	[InitializeOnLoad]
 	public static class FileManager{
 		private static string path;
-		private static bool setup;
 		private static bool debug = false;
 		private static bool clock = false;
 		private static bool fullScan = true;
-		private static DateTime pathModifyTime;
+		private static Dictionary<string,FileSystemWatcher> watchers = new Dictionary<string,FileSystemWatcher>();
 		public static Dictionary<string,List<FileData>> filesByPath = new Dictionary<string,List<FileData>>(StringComparer.InvariantCultureIgnoreCase);
 		public static Dictionary<string,List<FileData>> filesByType = new Dictionary<string,List<FileData>>(StringComparer.InvariantCultureIgnoreCase);
 		public static Dictionary<string,FileData> folders = new Dictionary<string,FileData>(StringComparer.InvariantCultureIgnoreCase);
 		public static Dictionary<string,FileData[]> cache = new Dictionary<string,FileData[]>();
 		public static Dictionary<UnityObject,object> assets = new Dictionary<UnityObject,object>();
 		public static Hierarchy<Type,string,string,UnityObject> namedAssets = new Hierarchy<Type,string,string,UnityObject>();
+		static FileManager(){FileManager.Refresh();}
 		//===============
 		// Storage
 		//===============
@@ -97,14 +97,18 @@ namespace Zios{
 		//===============
 		// Setup
 		//===============
-		public static void Monitor(){
-			var time = Time.realtimeSinceStartup;
-			var modifyTime = Directory.GetLastWriteTime(FileManager.path);
-			if(FileManager.pathModifyTime != modifyTime){
-				FileManager.pathModifyTime = modifyTime;
-				FileManager.Refresh();
-				if(FileManager.clock){Debug.Log("[FileManager] : Monitor sync complete -- " + (Time.realtimeSinceStartup-time) + " seconds.");}
+		public static void FileChanged(object source,FileSystemEventArgs data){
+			if(data.FullPath.ContainsAny(".svn","~",".meta","unitytemp","unitylock")){return;}
+			Utility.DelayCall(()=>FileManager.Refresh());
+			/*var path = Path.GetFullPath(data.FullPath).Replace("\\","/");
+			if(data.ChangeType == WatcherChangeTypes.Deleted){
+				FileManager.cache["!"+path.ToLower()][0].Delete(true);
 			}
+			if(data.ChangeType == WatcherChangeTypes.Created){
+				var fileData = new FileData(path);
+				fileData.isFolder = fileData.name.IsEmpty();
+				fileData.BuildCache();
+			}*/
 		}
 		public static void Refresh(){
 			var time = Time.realtimeSinceStartup;
@@ -114,8 +118,8 @@ namespace Zios{
 			FileManager.folders.Clear();
 			FileManager.cache.Clear();
 			FileManager.path = Application.dataPath.GetDirectory();
-			FileManager.pathModifyTime = Directory.GetLastWriteTime(FileManager.path);
 			FileManager.Scan(FileManager.path);
+			FileManager.Scan(FileManager.path+"/Temp",true);
 			if(!Application.isPlaying){
 				if(FileManager.fullScan){FileManager.Scan(Application.dataPath,true);}
 				FileManager.Save();
@@ -123,32 +127,38 @@ namespace Zios{
 			else{
 				FileManager.Load();
 			}
-			FileManager.setup = true;
-			Event.Add("On Editor Update",FileManager.Monitor).SetPermanent();
-			Event.Add("On Asset Changed",FileManager.Refresh).SetPermanent();
 			if(FileManager.clock){Debug.Log("[FileManager] : Refresh complete -- " + (Time.realtimeSinceStartup-time) + " seconds.");}
 		}
 		public static void Scan(string directory,bool deep=false){
+			if(!Directory.Exists(directory)){return;}
 			string[] fileEntries = Directory.GetFiles(directory);
 			string[] folderEntries = Directory.GetDirectories(directory);
+			FileManager.Monitor(directory);
 			FileManager.filesByPath.AddNew(directory);
 			foreach(string filePath in fileEntries){
-				if(filePath.Contains(".meta")){continue;}
+				if(filePath.ContainsAny(".meta","unitytemp","unitylock")){continue;}
 				var path = filePath.Replace("\\","/");
 				new FileData(path).BuildCache();
 			}
 			foreach(string folderPath in folderEntries){
-				if(folderPath.ContainsAny(".svn","~","Temp")){continue;}
+				if(folderPath.ContainsAny(".svn","~")){continue;}
 				var path = folderPath.Replace("\\","/");
 				new FileData(path,true).BuildCache();
 				if(deep){FileManager.Scan(path,true);}
+			}
+		}
+		public static void Monitor(string path){
+			if(!FileManager.watchers.ContainsKey(path)){
+				var watcher = FileManager.watchers[path] = new FileSystemWatcher(path);
+				watcher.Created += new FileSystemEventHandler(FileManager.FileChanged);
+				watcher.Deleted += new FileSystemEventHandler(FileManager.FileChanged);
+				watcher.EnableRaisingEvents = true;
 			}
 		}
 		//===============
 		// Primary
 		//===============
 		public static FileData[] FindAll(string name,bool showWarnings=true,bool firstOnly=false){
-			if(!FileManager.setup){FileManager.Refresh();}
 			var time = Time.realtimeSinceStartup;
 			if(name == "" && showWarnings){
 				Debug.LogWarning("[FileManager] No path given for search.");
@@ -212,7 +222,6 @@ namespace Zios{
 			}
 		}
 		public static string GetPath(UnityObject target,bool relative=true){
-			if(!FileManager.setup){FileManager.Refresh();}
 			#if UNITY_EDITOR
 			if(Application.isEditor){
 				string assetPath = AssetDatabase.GetAssetPath(target);
@@ -225,7 +234,6 @@ namespace Zios{
 		public static T GetAsset<T>(UnityObject target){
 			#if UNITY_EDITOR
 			if(Application.isEditor){
-				if(!FileManager.setup){FileManager.Refresh();}
 				if(!FileManager.assets.ContainsKey(target)){
 					string assetPath = FileManager.GetPath(target);
 					object asset = AssetDatabase.LoadAssetAtPath(assetPath,typeof(T));
@@ -324,9 +332,9 @@ namespace Zios{
 		public FileData(string path,bool isFolder=false){
 			this.path = path;
 			this.directory = path.GetDirectory();
-			this.extension = path.GetFileExtension();
 			this.name = path.GetFileName();
-			this.fullName = this.name + "." + this.extension;
+			this.extension = isFolder ? "" : path.GetFileExtension();
+			this.fullName = isFolder ? this.name : this.name + "." + this.extension;
 			this.isFolder = isFolder;
 		}
 		public void BuildCache(){
@@ -345,7 +353,7 @@ namespace Zios{
 		public void WriteText(string contents){
 			File.WriteAllText(this.path,contents);
 		}
-		public void Delete(){
+		public void Delete(bool cacheOnly=false){
 			foreach(var item in FileManager.cache.Copy()){
 				if(item.Value.Contains(this)){
 					FileManager.cache[item.Key] = item.Value.Remove(this);
@@ -355,12 +363,12 @@ namespace Zios{
 				}
 			}
 			if(!this.isFolder){
-				File.Delete(this.path);
+				if(!cacheOnly){File.Delete(this.path);}
 				FileManager.filesByType[this.extension].Remove(this);
-				FileManager.filesByPath[this.path].Remove(this);
+				FileManager.filesByPath[this.directory].Remove(this);
 				return;
 			}
-			Directory.Delete(this.path);
+			if(!cacheOnly){Directory.Delete(this.path);}
 			FileManager.folders.Remove(this.path);
 		}
 		public void MarkDirty(){File.SetLastWriteTime(this.path,DateTime.Now);}

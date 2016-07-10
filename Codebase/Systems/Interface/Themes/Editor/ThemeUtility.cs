@@ -45,7 +45,10 @@ namespace Zios.Interface{
 			if(!typeInstance.IsNull()){
 				var target = typeInstance.GetVariable(fieldName);
 				if(target.IsNull()){
-					try{target = Activator.CreateInstance(typeInstance.GetVariableType(fieldName));}
+					try{
+						target = Activator.CreateInstance(typeInstance.GetVariableType(fieldName));
+						typeInstance.SetVariable(fieldName,target);
+					}
 					catch{return empty;}
 				}
 				return target.GetVariables<GUIStyle>();
@@ -80,16 +83,20 @@ namespace Zios.Interface{
 			}
 			AssetDatabase.SaveAssets();
 		}
-		[MenuItem("Zios/Theme/Development/Sync Style [GUISkin]")]
-		public static void SyncStyle(){
+		[MenuItem("Zios/Theme/Development/Sync to Base Style [GUISkin]")]
+		public static void SyncToBase(){Theme.SyncStyle();}
+		[MenuItem("Zios/Theme/Development/Sync from Base Style [GUISkin]")]
+		public static void SyncFromBase(){Theme.SyncStyle(true);}
+		public static void SyncStyle(bool flipPattern=false){
 			var source = FileManager.GetAsset<GUISkin>(EditorUtility.OpenFilePanel("Apply From [GUISkin]",Theme.storagePath,"guiskin"));
 			var destination = FileManager.GetAsset<GUISkin>(EditorUtility.OpenFilePanel("Apply To [GUISkin]",Theme.storagePath,"guiskin"));
 			var skinStyles = destination.GetNamedStyles();
 			foreach(var style in source.GetStyles()){
-				var name = style.name.Parse("[","]");
-				if(skinStyles.ContainsKey(name)){
-					Debug.Log("[Themes] Applied " + source.name + "." + style.name.Parse("","[").Trim() + " to " + destination.name + "." + name);
-					skinStyles[name].Use(style);
+				var name = flipPattern ? style.name : style.name.Parse("[","]");
+				var styleMatch = flipPattern ? skinStyles.Where(x=>x.Key.Contains(name)).FirstOrDefault().Value : skinStyles.Get(name);
+				if(!styleMatch.IsNull()){
+					Debug.Log("[Themes] Applied " + source.name + "." + name.Parse("","[").Trim() + " to " + destination.name + "." + name);
+					styleMatch.Use(style);
 				}
 			}
 			Utility.SetAssetDirty(destination);

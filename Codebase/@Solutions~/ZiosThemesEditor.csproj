@@ -32,6 +32,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="..\Containers\Container.cs" />
+    <Compile Include="..\Editor\Preferences.cs" />
     <Compile Include="..\Extensions\%40Unity\Color.cs" />
     <Compile Include="..\Extensions\%40Unity\ComponentExtensions.cs" />
     <Compile Include="..\Extensions\%40Unity\EditorGUI.cs" />
