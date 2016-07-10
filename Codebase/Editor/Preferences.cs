@@ -37,7 +37,7 @@ namespace Zios.Editors{
 				EditorPrefs.SetBool("EditorSettings-AlwaysUpdateShaders",alwaysUpdateShaders);
 				EditorPrefs.SetBool("EditorSettings-AlwaysUpdateParticles",alwaysUpdateParticles);
 				EditorPrefs.SetFloat("EditorSettings-ParticleUpdateRange",particleUpdateRange);
-				Hook.SetState(hideHooks,temporaryHooks);
+				Hook.SetState();
 			}
 		}
 	}

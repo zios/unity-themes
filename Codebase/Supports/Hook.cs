@@ -14,24 +14,28 @@ namespace Zios{
 		public static GameObject main;
 		static Hook(){
 			#if UNITY_EDITOR
-			Hook.hidden = EditorPrefs.GetBool("EditorSettings-HideHooks",false);
+			Hook.LoadSettings();
 			#endif
 			#if UNITY_THEMES
 			Hook.hidden = true;
 			Hook.temporary = true;
 			#endif
 		}
-		public static void SetState(bool hidden,bool temporary){
+		public static void LoadSettings(){
+			Hook.hidden = EditorPrefs.GetBool("EditorSettings-HideHooks",false);
+			Hook.disabled = EditorPrefs.GetBool("EditorSettings-DisableHooks",false);
+			Hook.temporary = EditorPrefs.GetBool("EditorSettings-TemporaryHooks",false);
+		}
+		public static void SetState(){
 			Locate.SetDirty();
+			Hook.LoadSettings();
 			foreach(var current in Locate.GetSceneObjects()){
 				if(current.name != "@Main"){continue;}
-				current.hideFlags = hidden ? HideFlags.HideInHierarchy : HideFlags.None;
-				if(temporary){
-					current.hideFlags = hidden ? HideFlags.HideAndDontSave : HideFlags.DontSave;
+				current.hideFlags = Hook.hidden ? HideFlags.HideInHierarchy : HideFlags.None;
+				if(Hook.temporary){
+					current.hideFlags = Hook.hidden ? HideFlags.HideAndDontSave : HideFlags.DontSave;
 				}
 			}
-			Hook.hidden = hidden;
-			Hook.hidden = temporary;
 			Utility.Destroy(new GameObject("@*#&"));
 		}
 	}
@@ -70,7 +74,7 @@ namespace Zios{
 					setInstance(Hook.main.AddComponent<Singleton>());
 				}
 			}
-			Hook.SetState(Hook.hidden,Hook.temporary);
+			Hook.SetState();
 		}
 	}
 }

@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
-using System.Threading;
 using System.Linq;
 using System.IO;
 using UnityEngine;
 using UnityObject = UnityEngine.Object;
 namespace Zios{
+	using Events;
 	using Containers;
 	#if UNITY_EDITOR
 	using UnityEditor;
@@ -28,9 +28,8 @@ namespace Zios{
 		static FileManager(){
 			FileManager.dataPath = Application.dataPath;
 			FileManager.Refresh();
-			EditorApplication.update += FileManager.Step;
 		}
-		public static void Step(){
+		public static void Monitor(){
 			var time = FileManager.GetTime();
 			if(time>FileManager.lastMonitor){
 				foreach(var item in FileManager.monitors){
@@ -122,6 +121,8 @@ namespace Zios{
 		//===============
 		public static void Refresh(){
 			var time = FileManager.GetTime();
+			Event.Add("On Editor Update",FileManager.Monitor).SetPermanent();
+			Event.Add("On Asset Changed",FileManager.Refresh).SetPermanent();
 			FileManager.assets.Clear();
 			FileManager.filesByPath.Clear();
 			FileManager.filesByType.Clear();
