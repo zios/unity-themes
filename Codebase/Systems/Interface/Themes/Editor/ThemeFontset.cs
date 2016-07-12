@@ -9,6 +9,9 @@ namespace Zios.Interface{
 		public string name;
 		public string path;
 		public Dictionary<string,ThemeFont> fonts = new Dictionary<string,ThemeFont>();
+		public GUISkin buffer;
+		public ThemeFontset(){}
+		public ThemeFontset(ThemeFontset other){this.Use(other);}
 		public static List<ThemeFontset> Import(string path){
 			var imported = new List<ThemeFontset>();
 			foreach(var file in FileManager.FindAll(path+"/Font/*.unityfontset",false)){
@@ -87,6 +90,10 @@ namespace Zios.Interface{
 			}
 			return true;
 		}
+		public ThemeFontset UseBuffer(ThemeFontset other){
+			this.buffer = other.buffer;
+			return this;
+		}
 		public ThemeFontset Use(ThemeFontset other){
 			this.name = other.name;
 			this.path = other.path;
@@ -96,8 +103,11 @@ namespace Zios.Interface{
 			return this;
 		}
 		public GUISkin Apply(GUISkin skin){
-			var modified = skin.Copy();
-			foreach(var style in modified.GetStyles()){
+			if(!this.buffer.IsNull()){
+				ScriptableObject.DestroyImmediate(this.buffer);
+			}
+			this.buffer = skin.Copy();
+			foreach(var style in this.buffer.GetStyles()){
 				foreach(var item in this.fonts){
 					var themeFont = item.Value;
 					if(style.font == themeFont.proxy){
@@ -107,7 +117,7 @@ namespace Zios.Interface{
 					}
 				}
 			}
-			return modified;
+			return this.buffer;
 		}
 	}
 	[Serializable]

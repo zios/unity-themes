@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityObject = UnityEngine.Object;
 namespace Zios.Interface{
 	using UnityEditor;
 	#if UNITY_EDITOR_WIN
@@ -63,6 +64,7 @@ namespace Zios.Interface{
 					return;
 				}
 				Utility.CallEditorPref("EditorTheme-Refresh");
+				Theme.Cleanup();
 				Theme.needsRefresh = false;
 			}
 			if(Theme.needsRebuild){
@@ -169,7 +171,7 @@ namespace Zios.Interface{
 			}
 			if(theme.allowFontsetCustomization && ThemeFontset.all.AddNew(baseTheme.name).Count > 0){
 				var baseFontset = ThemeFontset.all[baseTheme.name][Theme.fontsetIndex];
-				theme.fontset = new ThemeFontset().Use(baseFontset);
+				theme.fontset = new ThemeFontset(baseFontset).UseBuffer(theme.fontset);
 				Theme.LoadFontset();
 			}
 			foreach(Theme option in theme.options.Where(x=>x.name.StartsWith("+"))){
@@ -246,7 +248,8 @@ namespace Zios.Interface{
 				var parent = skinFile.name.Replace("."+field,"");
 				var typeDirect = Utility.GetUnityType(skinFile.name);
 				var typeParent = Utility.GetUnityType(parent);
-				skin = isDefault || Theme.liveEdit ? skinFile.GetAsset<GUISkin>() : theme.fontset.Apply(skinFile.GetAsset<GUISkin>());
+				skin = skinFile.GetAsset<GUISkin>();
+				if(!isDefault && !Theme.liveEdit){skin = theme.fontset.Apply(skin);}
 				var styles = skin.GetNamedStyles(false,true,true);
 				var flags = field.Contains("s_Current") ? ObjectExtension.privateFlags : ObjectExtension.staticFlags;
 				if(Theme.debug && typeDirect.IsNull() && (typeParent.IsNull() || !typeParent.HasVariable(field))){
@@ -281,6 +284,14 @@ namespace Zios.Interface{
 					SetStyles(target.GetVariables<GUIStyle>(),target);
 				}
 			}
+		}
+		public static void Cleanup(){
+			foreach(var guiSkin in Resources.FindObjectsOfTypeAll<GUISkin>().Where(x=>x.name.Contains("EditorStyles"))){
+				if(!Utility.IsAsset(guiSkin)){
+					UnityObject.DestroyImmediate(guiSkin);
+				}
+			}
+			GC.Collect();
 		}
 		//=================================
 		// Preferences
@@ -326,7 +337,7 @@ namespace Zios.Interface{
 					GUILayout.Space(3);
 					if(EditorGUIExtension.lastChanged){
 						var selectedFontset = ThemeFontset.all[theme.name][Theme.fontsetIndex];
-						theme.fontset = new ThemeFontset().Use(selectedFontset);
+						theme.fontset = new ThemeFontset(selectedFontset).UseBuffer(theme.fontset);
 						EditorPrefs.SetString("EditorFontset-"+theme.name,selectedFontset.name);
 						Theme.SaveFontset();
 						Theme.Rebuild();
@@ -467,7 +478,7 @@ namespace Zios.Interface{
 			var theme = Theme.active;
 			if(reset){
 				var original = ThemeFontset.all[theme.name][Theme.fontsetIndex];
-				theme.fontset = new ThemeFontset().Use(original);
+				theme.fontset = new ThemeFontset(original).UseBuffer(theme.fontset);
 			}
 			else if(theme.allowFontsetCustomization){
 				var value = EditorPrefs.GetString("EditorTheme-"+theme.name+"-Fontset",null);
@@ -579,9 +590,9 @@ namespace Zios.Interface{
 			if(!theme.IsNull() && theme.allowCustomization && theme.allowFontsetCustomization){
 				Theme.fontsetIndex = (Theme.fontsetIndex + adjust) % ThemeFontset.all[theme.name].Count;
 				if(Theme.fontsetIndex < 0){Theme.fontsetIndex = ThemeFontset.all[theme.name].Count-1;}
-				var fontset = ThemeFontset.all[theme.name][Theme.fontsetIndex];
-				theme.fontset = new ThemeFontset().Use(fontset);
-				EditorPrefs.SetString("EditorFontset-"+theme.name,fontset.name);
+				var defaultFontset = ThemeFontset.all[theme.name][Theme.fontsetIndex];
+				theme.fontset = new ThemeFontset(defaultFontset).UseBuffer(theme.fontset);
+				EditorPrefs.SetString("EditorFontset-"+theme.name,defaultFontset.name);
 				Theme.SaveFontset();
 				Theme.Refresh();
 				Utility.DelayCall(Theme.Rebuild,0.25f);

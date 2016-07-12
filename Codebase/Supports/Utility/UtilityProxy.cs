@@ -27,6 +27,12 @@ namespace Zios{
 		//============================
 		// AssetDatabase
 		//============================
+		public static bool IsAsset(UnityObject target){
+			#if UNITY_EDITOR
+			return !AssetDatabase.GetAssetPath(target).IsEmpty();
+			#endif
+			return false;
+		}
 		public static void StartAssetEditing(){
 			#if UNITY_EDITOR
 			AssetDatabase.StartAssetEditing();
@@ -202,7 +208,7 @@ namespace Zios{
 		public static void RepaintAll(){
 			#if UNITY_EDITOR
 			//foreach(var window in Locate.GetAssets<EditorWindow>()){window.Repaint();}
-			Utility.GetUnityType("Toolbar").CallMethod("RepaintToolbar");
+			//Utility.GetUnityType("Toolbar").CallMethod("RepaintToolbar");
 			UnityEditorInternal.InternalEditorUtility.RepaintAllViews();
 			#endif
 		}
