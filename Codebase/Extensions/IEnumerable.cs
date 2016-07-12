@@ -34,6 +34,9 @@ namespace Zios{
 		public static bool ContainsAll<T>(this IEnumerable<T> current,IEnumerable<T> other){
 			return !other.Except(current).Any();
 		}
+		public static IEnumerable<T> Diff<T>(this IEnumerable<T> current,IEnumerable<T> other){
+			return current.Except(other).Concat(other.Except(current));
+		}
 		public static string Serialize<T>(this IEnumerable<T> current){
 			string output = "";
 			foreach(var value in current){
@@ -55,6 +58,12 @@ namespace Zios{
 				}
 			}
 			return results;
+		}
+		public static IEnumerable<Type> SkipLast<Type>(this IEnumerable<Type> current){
+			return current.SkipRight(1);
+		}
+		public static IEnumerable<Type> SkipRight<Type>(this IEnumerable<Type> current,int amount){
+			return current.Take(current.Count() - amount);
 		}
 		//=======================
 		// String

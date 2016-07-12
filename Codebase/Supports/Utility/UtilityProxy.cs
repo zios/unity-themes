@@ -27,6 +27,12 @@ namespace Zios{
 		//============================
 		// AssetDatabase
 		//============================
+		public static bool IsAsset(UnityObject target){
+			#if UNITY_EDITOR
+			return !AssetDatabase.GetAssetPath(target).IsEmpty();
+			#endif
+			return false;
+		}
 		public static void StartAssetEditing(){
 			#if UNITY_EDITOR
 			AssetDatabase.StartAssetEditing();

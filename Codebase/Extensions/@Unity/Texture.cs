@@ -16,6 +16,7 @@ namespace Zios{
 				Graphics.Blit(current,RenderTexture.active);
 				texture = new Texture2D(current.width,current.height);
 				texture.ReadPixels(new Rect(0,0,current.width,current.height),0,0);
+				RenderTexture.Destroy(RenderTexture.active);
 			}
 			FileManager.WriteFile(path,texture.EncodeToPNG());
 		}
