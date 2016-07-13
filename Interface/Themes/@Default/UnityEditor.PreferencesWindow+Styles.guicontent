@@ -33,5 +33,5 @@ tooltip = The size of the GI Cache folder will be kept below this maximum value 
 text = Please wait...
 
 [spriteMaxCacheSize]
-text = Maximum Sprite Atlas Cache Size (GB)
+text = Max Sprite Atlas Cache Size (GB)
 tooltip = The size of the Sprite Atlas Cache folder will be kept below this maximum value when possible. Change requires Editor restart

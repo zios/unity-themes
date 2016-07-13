@@ -49,6 +49,7 @@ tooltip = Which platform to build for
 
 [profileBuild]
 text = Autoconnect Profiler
+tooltip = Profiling only enabled in Development Player
 
 [scenesInBuild]
 text = Scenes In Build

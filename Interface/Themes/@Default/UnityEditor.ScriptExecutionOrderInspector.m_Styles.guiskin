@@ -1692,7 +1692,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 1
-  - m_Name: defaultTime [m_InspectorBig [IN BigTitle]]
+  - m_Name: defaultTime [IN BigTitle]
     m_Normal:
       m_Background: {fileID: -1546782194512641569, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1828,7 +1828,7 @@ MonoBehaviour:
     m_FixedHeight: 6
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: dropField [m_ObjectFieldThumb [ObjectFieldThumb]]
+  - m_Name: dropField [ObjectFieldThumb]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []

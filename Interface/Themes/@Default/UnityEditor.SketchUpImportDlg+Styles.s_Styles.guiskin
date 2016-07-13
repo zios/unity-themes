@@ -1353,7 +1353,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: headerStyle [m_ToolbarButton [toolbarbutton]]
+  - m_Name: headerStyle [toolbarbutton]
     m_Normal:
       m_Background: {fileID: 6029984632204043670, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1424,7 +1424,7 @@ MonoBehaviour:
     m_FixedHeight: 18
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: toggleStyle [m_Toggle [toggle]]
+  - m_Name: toggleStyle [toggle]
     m_Normal:
       m_Background: {fileID: -5335821736339326178, guid: 0000000000000000d000000000000000,
         type: 0}

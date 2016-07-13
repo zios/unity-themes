@@ -1774,7 +1774,7 @@ MonoBehaviour:
     m_FixedHeight: 11
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: listTextStyle [m_Label [ControlLabel]]
+  - m_Name: listTextStyle [ControlLabel]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1844,7 +1844,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: listHeaderStyle [m_BoldLabel [BoldLabel]]
+  - m_Name: listHeaderStyle [BoldLabel]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []

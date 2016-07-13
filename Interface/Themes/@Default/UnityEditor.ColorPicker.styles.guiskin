@@ -1829,7 +1829,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: label [m_MiniLabel [MiniLabel]]
+  - m_Name: label [MiniLabel]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1896,7 +1896,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: axisLabelNumberField [m_MiniTextField [MiniTextField]]
+  - m_Name: axisLabelNumberField [MiniTextField]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1963,7 +1963,7 @@ MonoBehaviour:
     m_FixedHeight: 13
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: foldout [m_Foldout [Foldout]]
+  - m_Name: foldout [Foldout]
     m_Normal:
       m_Background: {fileID: -3169759088934609965, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -2035,7 +2035,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: toggle [m_Toggle [toggle]]
+  - m_Name: toggle [toggle]
     m_Normal:
       m_Background: {fileID: -5335821736339326178, guid: 0000000000000000d000000000000000,
         type: 0}

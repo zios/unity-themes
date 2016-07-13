@@ -1765,7 +1765,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: miniToolbar [m_Toolbar [Toolbar]]
+  - m_Name: miniToolbar [Toolbar]
     m_Normal:
       m_Background: {fileID: -8748538222344408585, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1833,7 +1833,7 @@ MonoBehaviour:
     m_FixedHeight: 18
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: miniToolbarButton [m_ToolbarButton [toolbarbutton]]
+  - m_Name: miniToolbarButton [toolbarbutton]
     m_Normal:
       m_Background: {fileID: 6029984632204043670, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1904,7 +1904,7 @@ MonoBehaviour:
     m_FixedHeight: 18
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: toolbarLabel [m_ToolbarPopup [ToolbarPopup]]
+  - m_Name: toolbarLabel [ToolbarPopup]
     m_Normal:
       m_Background: {fileID: -25369699679472599, guid: 0000000000000000d000000000000000,
         type: 0}
