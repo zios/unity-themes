@@ -13,9 +13,6 @@ text = Maximize on Play
 [muteContent]
 text = Mute audio
 
-[noCamerasWarningContent]
-text = No Cameras Rendering
-
 [renderdocContent]
 image = renderdoc
 tooltip = Capture the current view and open in RenderDoc

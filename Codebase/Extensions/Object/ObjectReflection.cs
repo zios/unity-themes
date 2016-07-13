@@ -201,9 +201,8 @@ namespace Zios{
 			if(field != null){return field.FieldType;}
 			return typeof(Type);
 		}
-		public static object GetVariable(this object current,string name,int index=-1,BindingFlags flags=allFlags){
-			return current.GetVariable<object>(name,index,flags);
-		}
+		public static object GetVariable(this object current,string name,int index=-1,BindingFlags flags=allFlags){return current.GetVariable<object>(name,index,flags);}
+		public static T GetVariable<T>(this object current,string name,BindingFlags flags){return current.GetVariable<T>(name,-1,flags);}
 		public static T GetVariable<T>(this object current,string name,int index=-1,BindingFlags flags=allFlags){
 			if(current.IsNull()){return default(T);}
 			if(name.IsNumber()){
@@ -344,6 +343,19 @@ namespace Zios{
 			if(!property.IsNull() && property.CanWrite){
 				property.SetValue(current,null,null);
 			}
+		}
+		public static object InstanceVariable(this object current,string name,bool force){return current.InstanceVariable(name,-1,allFlags,force);}
+		public static object InstanceVariable(this object current,string name,BindingFlags flags,bool force=false){return current.InstanceVariable(name,-1,flags,force);}
+		public static object InstanceVariable(this object current,string name,int index=-1,BindingFlags flags=allFlags,bool force=false){
+			object instance = current.GetVariable(name,index,flags);
+			if(force || instance.IsNull()){
+				var instanceType = current.GetVariableType(name,index,flags);
+				if(!instanceType.GetConstructor(Type.EmptyTypes).IsNull()){
+					instance = Activator.CreateInstance(instanceType);
+					current.SetVariable(name,instance,index,flags);
+				}
+			}
+			return instance;
 		}
 		//=========================
 		// Values

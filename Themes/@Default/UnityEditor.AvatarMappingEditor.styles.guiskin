@@ -1557,7 +1557,7 @@ MonoBehaviour:
     m_FixedHeight: 18
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: errorLabel [m_WordWrappedMiniLabel [WordWrappedMiniLabel]]
+  - m_Name: errorLabel [WordWrappedMiniLabel]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []

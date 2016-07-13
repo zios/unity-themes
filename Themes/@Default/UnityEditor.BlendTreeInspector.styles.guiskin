@@ -1624,7 +1624,7 @@ MonoBehaviour:
     m_FixedHeight: 42
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: clickDragFloatFieldLeft [m_MiniTextField [MiniTextField]]
+  - m_Name: clickDragFloatFieldLeft [MiniTextField]
     m_Normal:
       m_Background: {fileID: 2597227618725028271, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1692,7 +1692,7 @@ MonoBehaviour:
     m_FixedHeight: 13
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: clickDragFloatFieldRight [m_MiniTextField [MiniTextField]]
+  - m_Name: clickDragFloatFieldRight [MiniTextField]
     m_Normal:
       m_Background: {fileID: 2597227618725028271, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1760,7 +1760,7 @@ MonoBehaviour:
     m_FixedHeight: 13
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: clickDragFloatLabelLeft [m_MiniLabel [MiniLabel]]
+  - m_Name: clickDragFloatLabelLeft [MiniLabel]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1827,7 +1827,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: clickDragFloatLabelRight [m_MiniLabel [MiniLabel]]
+  - m_Name: clickDragFloatLabelRight [MiniLabel]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1960,7 +1960,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: errorStyle [m_WordWrappedLabel [WordWrappedLabel]]
+  - m_Name: errorStyle [WordWrappedLabel]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []

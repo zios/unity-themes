@@ -223,7 +223,6 @@ namespace Zios.Interface{
 					hostView.SetVariable<Color>("kViewColor",palette.Get("Window"));
 				}
 				foreach(var view in Resources.FindObjectsOfTypeAll(hostView)){
-					//view.SetVariable<GUIStyle>("background",skin.Get("hostview"));
 					view.ClearVariable("background");
 				}
 				foreach(var window in Locate.GetAssets<EditorWindow>()){
@@ -233,14 +232,9 @@ namespace Zios.Interface{
 					window.autoRepaintOnSceneChange = Theme.responsive;
 				}
 				if(!isDefault){
-					var preferences = Utility.GetUnityType("PreferencesWindow");
-					var constants = preferences.GetVariable("constants");
-					if(constants.IsNull()){
-						var instance = Activator.CreateInstance(preferences.GetVariableType("constants"));
-						preferences.SetVariable("constants",instance);
-					}
-					preferences.GetVariable("constants").SetVariable("sectionHeader",skin.Get("LargeLabel"));
+					Utility.GetUnityType("PreferencesWindow").InstanceVariable("constants").SetVariable("sectionHeader",skin.Get("LargeLabel"));
 				}
+				Utility.GetUnityType("BuildPlayerWindow").InstanceVariable("styles").SetVariable("toggleSize",new Vector2(24,16));
 			}
 			foreach(var skinFile in FileManager.FindAll(loadPath+"/*.guiskin",true,false)){
 				if(skinFile.name == themeName){continue;}
@@ -273,14 +267,7 @@ namespace Zios.Interface{
 					SetStyles(typeDirect.GetVariables<GUIStyle>(null,flags),typeDirect);
 				}
 				if(!typeParent.IsNull()){
-					var target = typeParent.GetVariable(field);
-					if(target.IsNull()){
-						try{
-							target = Activator.CreateInstance(typeParent.GetVariableType(field));
-							typeParent.SetVariable(field,target);
-						}
-						catch{continue;}
-					}
+					var target = typeParent.InstanceVariable(field);
 					SetStyles(target.GetVariables<GUIStyle>(),target);
 				}
 			}
