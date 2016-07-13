@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 2bc9e373c53b49049bc521c4727c9ac5
-timeCreated: 1460315128
+guid: 80d23a6b8e58782429e7817edceb648c
+timeCreated: 1468373931
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
@@ -32,7 +32,7 @@ TextureImporter:
     filterMode: -1
     aniso: -1
     mipBias: -1
-    wrapMode: 1
+    wrapMode: -1
   nPOTScale: 0
   lightmap: 0
   rGBM: 0
@@ -50,7 +50,6 @@ TextureImporter:
   textureType: 5
   buildTargetSettings: []
   spriteSheet:
-    serializedVersion: 2
     sprites: []
     outline: []
   spritePackingTag: 

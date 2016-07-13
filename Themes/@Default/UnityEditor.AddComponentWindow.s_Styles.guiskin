@@ -1353,7 +1353,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: header [m_InspectorBig [IN BigTitle]]
+  - m_Name: header [IN BigTitle]
     m_Normal:
       m_Background: {fileID: -1546782194512641569, guid: 0000000000000000d000000000000000,
         type: 0}
@@ -1702,7 +1702,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: previewHeader [m_Label [ControlLabel]]
+  - m_Name: previewHeader [ControlLabel]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1772,7 +1772,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: previewText [m_WordWrappedLabel [WordWrappedLabel]]
+  - m_Name: previewText [WordWrappedLabel]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []

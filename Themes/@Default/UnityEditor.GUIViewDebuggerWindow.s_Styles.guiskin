@@ -1630,7 +1630,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 1
-  - m_Name: stackframeStyle [m_Label [ControlLabel]]
+  - m_Name: stackframeStyle [ControlLabel]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []

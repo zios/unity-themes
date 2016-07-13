@@ -1353,7 +1353,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: headerStyle [m_BoldLabel [BoldLabel]]
+  - m_Name: headerStyle [BoldLabel]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1911,7 +1911,7 @@ MonoBehaviour:
     m_FixedHeight: 15
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: channelStripHeaderStyle [m_BoldLabel [BoldLabel]]
+  - m_Name: channelStripHeaderStyle [BoldLabel]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -2273,7 +2273,7 @@ MonoBehaviour:
     m_FixedHeight: 6
     m_StretchWidth: 0
     m_StretchHeight: 0
-  - m_Name: totalVULevel [m_Label [ControlLabel]]
+  - m_Name: totalVULevel [ControlLabel]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -2558,7 +2558,7 @@ MonoBehaviour:
     m_FixedHeight: 16
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: effectName [m_MiniLabel [MiniLabel]]
+  - m_Name: effectName [MiniLabel]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -2625,7 +2625,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: vuValue [m_MiniLabel [MiniLabel]]
+  - m_Name: vuValue [MiniLabel]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -2692,7 +2692,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: mixerHeader [m_LargeLabel [LargeLabel]]
+  - m_Name: mixerHeader [LargeLabel]
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []

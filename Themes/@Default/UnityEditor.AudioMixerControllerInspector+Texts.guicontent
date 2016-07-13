@@ -5,3 +5,7 @@ tooltip = Enables/disables suspending of processing in order to save CPU when th
 [m_SuspendThresholdLabel]
 text =     Threshold Volume
 tooltip = The level of the Master Group at which the mixer suspends processing in order to save CPU. Mixers resume processing when an AudioSource referencing them starts playing again.
+
+[m_UpdateModeLabel]
+text = Update Mode
+tooltip = Update AudioMixer transitions with game time or unscaled realtime.
