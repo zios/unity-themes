@@ -4,9 +4,27 @@ SizeOffset = 1
 OffsetX = 0
 OffsetY = -1
 
+[Border]
+Font = DroidSans
+SizeOffset = 0
+OffsetX = 0
+OffsetY = -1
+
 [Button]
 Font = DroidSans
 SizeOffset = 0
+OffsetX = 0
+OffsetY = -1
+
+[Highlight]
+Font = DroidSans
+SizeOffset = 0
+OffsetX = 0
+OffsetY = -1
+
+[Search]
+Font = DroidSans
+SizeOffset = 1
 OffsetX = 0
 OffsetY = -1
 

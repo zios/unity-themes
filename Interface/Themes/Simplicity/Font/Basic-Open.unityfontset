@@ -4,9 +4,27 @@ SizeOffset = 1
 OffsetX = 0
 OffsetY = -1
 
+[Border]
+Font = OpenSans-Regular
+SizeOffset = 0
+OffsetX = 0
+OffsetY = -1
+
 [Button]
 Font = OpenSans-Regular
 SizeOffset = 0
+OffsetX = 0
+OffsetY = -1
+
+[Highlight]
+Font = OpenSans-Regular
+SizeOffset = 0
+OffsetX = 0
+OffsetY = -1
+
+[Search]
+Font = OpenSans-Regular
+SizeOffset = 1
 OffsetX = 0
 OffsetY = -1
 

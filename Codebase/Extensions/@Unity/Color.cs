@@ -31,6 +31,9 @@ namespace Zios{
 		Luminosity
 	}
 	public static class ColorExtension{
+		public static bool Matches(this Color current,Color other,bool matchAlpha=true){
+			return matchAlpha ? current == other : (current.r == other.r && current.g == other.g && current.b == other.b);
+		}
 		public static Color Blend(this Color current,string name,float amount){
 			var mode = Enum.Parse(typeof(ColorBlend),name).As<ColorBlend>();
 			return current.Blend(current,mode,amount);

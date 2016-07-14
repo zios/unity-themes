@@ -4,9 +4,27 @@ SizeOffset = -2
 OffsetX = 0
 OffsetY = -1
 
+[Border]
+Font = SquaresBoldFree
+SizeOffset = -3
+OffsetX = 0
+OffsetY = -1
+
 [Button]
 Font = SquaresBoldFree
 SizeOffset = -3
+OffsetX = 0
+OffsetY = -1
+
+[Highlight]
+Font = SquaresBoldFree
+SizeOffset = -3
+OffsetX = 0
+OffsetY = -1
+
+[Search]
+Font = SquaresBoldFree
+SizeOffset = -2
 OffsetX = 0
 OffsetY = -1
 

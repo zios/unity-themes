@@ -1,9 +1,17 @@
 [Textured]
 Main            : #252D32
+Button          : #FFFFFF20 : 0.8
 Border          : #1C3A59 : 0.8
 Highlight       : #2F4A71 : 1.2
+Scrollbar       : #FFFFFF10
+ScrollbarThumb  : #FFFFFF2A
 
 [NonTextured]
+Text            : #FFFFFF88 : 1.2
+TextActive      : #FFFFFF   : 1.8
+TextButton      : #FFFFFF88 : 1.2
+TextBorder      : #FFFFFFC7 : 1.2
+TextHighlight   : #FFFFFF88 : 1.
 Window          : Main
 Cursor          : Highlight
 Selection       : Border

@@ -4,9 +4,27 @@ SizeOffset = -2
 OffsetX = 0
 OffsetY = 0
 
+[Border]
+Font = SFPixelate-Bold
+SizeOffset = -3
+OffsetX = 0
+OffsetY = 0
+
 [Button]
 Font = SFPixelate-Bold
 SizeOffset = -3
+OffsetX = 0
+OffsetY = 0
+
+[Highlight]
+Font = SFPixelate-Bold
+SizeOffset = -3
+OffsetX = 0
+OffsetY = 0
+
+[Search]
+Font = SFPixelate
+SizeOffset = -2
 OffsetX = 0
 OffsetY = 0
 

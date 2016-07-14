@@ -4,11 +4,29 @@ SizeOffset = 1
 OffsetX = 0
 OffsetY = 0
 
+[Border]
+Font = NovaOval
+SizeOffset = 0
+OffsetX = 0
+OffsetY = -1
+
 [Button]
 Font = NovaOval
 SizeOffset = 0
 OffsetX = 0
 OffsetY = -1
+
+[Highlight]
+Font = NovaOval
+SizeOffset = 0
+OffsetX = 0
+OffsetY = -1
+
+[Search]
+Font = NovaOval
+SizeOffset = 1
+OffsetX = 0
+OffsetY = 0
 
 [Code]
 Font = NovaMono

@@ -4,9 +4,27 @@ SizeOffset = 0
 OffsetX = 0
 OffsetY = 0
 
+[Border]
+Font = JosefinSans-Bold
+SizeOffset = 1
+OffsetX = 0
+OffsetY = 0
+
 [Button]
 Font = JosefinSans-Bold
 SizeOffset = 1
+OffsetX = 0
+OffsetY = 0
+
+[Highlight]
+Font = JosefinSans-Bold
+SizeOffset = 1
+OffsetX = 0
+OffsetY = 0
+
+[Search]
+Font = Laila-Regular
+SizeOffset = 0
 OffsetX = 0
 OffsetY = 0
 

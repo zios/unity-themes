@@ -4,9 +4,27 @@ SizeOffset = 4
 OffsetX = 0
 OffsetY = -1
 
+[Border]
+Font = Oswald-Regular
+SizeOffset = 0
+OffsetX = 0
+OffsetY = -1
+
 [Button]
 Font = Oswald-Regular
 SizeOffset = 0
+OffsetX = 0
+OffsetY = -1
+
+[Highlight]
+Font = Oswald-Regular
+SizeOffset = 0
+OffsetX = 0
+OffsetY = -1
+
+[Search]
+Font = Homenaje-Regular
+SizeOffset = 4
 OffsetX = 0
 OffsetY = -1
 

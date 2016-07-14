@@ -1,0 +1,19 @@
+[Textured]
+Main : #D8D9DF
+Button : #00000015 : 0.8
+Border : #C4C6CC : 0.8
+Highlight : #D0D3DB : 1.2
+Scrollbar : #00000010
+ScrollbarThumb : #00000038
+
+[NonTextured]
+Text : #000000A8 : 1.2
+TextActive : #000000BC : 1.8
+TextButton : #00000088 : 1.2
+TextBorder : #0000008E : 1.2
+TextHighlight : #00000081 : 1.8
+Window : #D8D9DF : Main
+Cursor : #D0D3DB : Highlight
+Selection : #C4C6CC : Border
+Curve : #D0D3DB : Highlight : 1.5
+CurveBackground : #C4C6CC : Border : 0.5

@@ -8,6 +8,7 @@ namespace Zios.Interface{
 	public class ThemePalette{
 		public static List<ThemePalette> all = new List<ThemePalette>();
 		public string name;
+		public Dictionary<Color,RelativeColor> swap = new Dictionary<Color,RelativeColor>();
 		public Dictionary<string,RelativeColor> colors = new Dictionary<string,RelativeColor>(){{"Window","#B1B1B1"}};
 		public static void Import(string path=null){
 			path = path ?? "*.unitypalette";
@@ -81,6 +82,42 @@ namespace Zios.Interface{
 				}
 			}
 			return true;
+		}
+		public void Build(){
+			var active = new Color32(0,255,255,0);
+			foreach(var color in this.colors){
+				active.r += 1;
+				this.swap[active] = color.Value.value;
+			}
+			active = new Color32(255,0,255,0);
+			foreach(var color in this.colors.Where(x=>x.Value.skipTexture)){
+				active.g += 1;
+				this.swap[active] = color.Value.value;
+			}
+		}
+		public void Apply(GUISkin skin){
+			if(this.swap.Count < 1 && this.colors.Count > 0){this.Build();}
+			var styles = skin.GetStyles();
+			foreach(var style in styles){
+				foreach(var state in style.GetStates()){
+					foreach(var swap in this.swap){
+						var color = swap.Value.value;
+						if(state.textColor.Matches(swap.Key,false)){
+							state.textColor = state.textColor.a == 0 ? color : new Color(color.r,color.g,color.b,state.textColor.a);
+						}
+					}
+				}
+			}
+			foreach(var swap in this.swap){
+				var color = swap.Value.value;
+				var settings = skin.settings;
+				if(settings.selectionColor.Matches(swap.Key,false)){
+					settings.selectionColor = settings.selectionColor.a == 0 ? color : new Color(color.r,color.g,color.b,settings.selectionColor.a);
+				}
+				if(settings.cursorColor.Matches(swap.Key,false)){
+					settings.cursorColor = settings.cursorColor.a == 0 ? color : new Color(color.r,color.g,color.b,settings.cursorColor.a);
+				}
+			}
 		}
 	}
 }

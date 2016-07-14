@@ -18,7 +18,7 @@ namespace Zios{
 	}
 	public class UtilityModificationListener : AssetModificationProcessor{
 		public static string[] OnWillSaveAssets(string[] paths){
-			foreach(string path in paths){Debug.Log("Saving Changes : " + path);}
+			//foreach(string path in paths){Debug.Log("Saving Changes : " + path);}
 			if(paths.Exists(x=>x.Contains(".unity"))){Event.Call("On Scene Saving");}
 			Event.Call("On Asset Saving");
 			Event.Call("On Asset Modifying");

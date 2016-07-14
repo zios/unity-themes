@@ -4,7 +4,25 @@ SizeOffset = 0
 OffsetX = 0
 OffsetY = 0
 
+[Border]
+Font = 8bitOperatorPlus8-Regular
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
 [Button]
+Font = 8bitOperatorPlus8-Regular
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
+[Highlight]
+Font = 8bitOperatorPlus8-Regular
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
+[Search]
 Font = 8bitOperatorPlus8-Regular
 SizeOffset = 0
 OffsetX = 0

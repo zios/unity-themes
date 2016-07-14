@@ -4,9 +4,27 @@ SizeOffset = 1
 OffsetX = 0
 OffsetY = -1
 
+[Border]
+Font = LiberationSans-Regular
+SizeOffset = 0
+OffsetX = 0
+OffsetY = -1
+
 [Button]
 Font = LiberationSans-Regular
 SizeOffset = 0
+OffsetX = 0
+OffsetY = -1
+
+[Highlight]
+Font = LiberationSans-Regular
+SizeOffset = 0
+OffsetX = 0
+OffsetY = -1
+
+[Search]
+Font = LiberationSans-Regular
+SizeOffset = 1
 OffsetX = 0
 OffsetY = -1
 
