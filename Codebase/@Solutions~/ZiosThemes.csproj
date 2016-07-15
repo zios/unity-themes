@@ -17,7 +17,7 @@
     <OutputPath>.</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DefineConstants>UNITY_STANDALONE;UNITY_THEMES</DefineConstants>
+    <DefineConstants>UNITY_5;UNITY_EDITOR;UNITY_EDITOR_WIN;UNITY_THEMES</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -25,12 +25,18 @@
     <Reference Include="UnityEngine">
       <HintPath>UnityEngine.dll</HintPath>
     </Reference>
+        <Reference Include="UnityEngine">
+      <HintPath>UnityEditor.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="..\Containers\Container.cs" />
     <Compile Include="..\Extensions\%40Unity\Color.cs" />
     <Compile Include="..\Extensions\%40Unity\ComponentExtensions.cs" />
+    <Compile Include="..\Extensions\%40Unity\EditorGUI.cs" />
+    <Compile Include="..\Extensions\%40Unity\EditorGUILayout.cs" />
+    <Compile Include="..\Extensions\%40Unity\EventExtensions.cs" />
     <Compile Include="..\Extensions\%40Unity\GameObject.cs" />
     <Compile Include="..\Extensions\%40Unity\GUIContent.cs" />
     <Compile Include="..\Extensions\%40Unity\GUISkin.cs" />
@@ -72,6 +78,7 @@
     <Compile Include="..\Supports\Locate.cs" />
     <Compile Include="..\Supports\Store.cs" />
     <Compile Include="..\Supports\Utility\Utility.cs" />
+    <Compile Include="..\Supports\Utility\UtilityEditor.cs" />
     <Compile Include="..\Supports\Utility\UtilityProxy.cs" />
     <Compile Include="..\System Attributes\EnumMask.cs" />
     <Compile Include="..\System Attributes\Internal.cs" />
@@ -83,6 +90,17 @@
     <Compile Include="..\Systems\File\FileManager.cs" />
     <Compile Include="..\Systems\Interface\Style\Style.cs" />
     <Compile Include="..\Systems\Interface\Style\StyleCSS.cs" />
+    <Compile Include="..\Editor\Preferences.cs" />
+    <Compile Include="..\Extensions\%40Unity\Editor\GenericMenu.cs" />
+    <Compile Include="..\Systems\Interface\Themes\Editor\RelativeColor.cs" />
+    <Compile Include="..\Systems\Interface\Themes\Editor\Theme.cs" />
+    <Compile Include="..\Systems\Interface\Themes\Editor\ThemeContent.cs" />
+    <Compile Include="..\Systems\Interface\Themes\Editor\ThemeFontset.cs" />
+    <Compile Include="..\Systems\Interface\Themes\Editor\ThemePalette.cs" />
+    <Compile Include="..\Systems\Interface\Themes\Editor\ThemeSaving.cs" />
+    <Compile Include="..\Systems\Interface\Themes\Editor\ThemeSystem.cs" />
+    <Compile Include="..\Systems\Interface\Themes\Editor\ThemeUtility.cs" />
+    <Compile Include="..\Systems\Interface\Themes\Editor\ThemeWindow.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

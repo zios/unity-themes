@@ -11,7 +11,7 @@ namespace Zios.Interface{
 	[InitializeOnLoad]
 	public partial class Theme{
 		public static Theme active;
-		[NonSerialized] public static string revision = "2 [r487]";
+		[NonSerialized] public static string revision = "3 [r506]";
 		[NonSerialized] public static int themeIndex;
 		[NonSerialized] public static int paletteIndex;
 		[NonSerialized] public static int fontsetIndex;
