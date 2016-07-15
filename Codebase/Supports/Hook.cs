@@ -14,13 +14,12 @@ namespace Zios{
 		public static GameObject main;
 		static Hook(){
 			Hook.SetState();
+		}
+		public static void LoadSettings(){
 			#if UNITY_THEMES
 			Hook.hidden = true;
 			Hook.temporary = true;
-			#endif
-		}
-		public static void LoadSettings(){
-			#if UNITY_EDITOR
+			elif UNITY_EDITOR
 			Hook.hidden = EditorPrefs.GetBool("EditorSettings-HideHooks",false);
 			Hook.disabled = EditorPrefs.GetBool("EditorSettings-DisableHooks",false);
 			Hook.temporary = EditorPrefs.GetBool("EditorSettings-TemporaryHooks",false);
