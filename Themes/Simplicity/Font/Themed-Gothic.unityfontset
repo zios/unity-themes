@@ -4,7 +4,25 @@ SizeOffset = 2
 OffsetX = 0
 OffsetY = 0
 
+[Border]
+Font = GrecoRomanLubedWrestling
+SizeOffset = 2
+OffsetX = 0
+OffsetY = 0
+
 [Button]
+Font = GrecoRomanLubedWrestling
+SizeOffset = 2
+OffsetX = 0
+OffsetY = 0
+
+[Highlight]
+Font = GrecoRomanLubedWrestling
+SizeOffset = 2
+OffsetX = 0
+OffsetY = 0
+
+[Search]
 Font = GrecoRomanLubedWrestling
 SizeOffset = 2
 OffsetX = 0

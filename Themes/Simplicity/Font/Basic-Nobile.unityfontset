@@ -4,11 +4,29 @@ SizeOffset = -1
 OffsetX = 0
 OffsetY = 1
 
+[Border]
+Font = Nobile-Medium
+SizeOffset = -1
+OffsetX = 0
+OffsetY = 0
+
 [Button]
 Font = Nobile-Medium
 SizeOffset = -1
 OffsetX = 0
 OffsetY = 0
+
+[Highlight]
+Font = Nobile-Medium
+SizeOffset = -1
+OffsetX = 0
+OffsetY = 0
+
+[Search]
+Font = Nobile-Medium
+SizeOffset = -1
+OffsetX = 0
+OffsetY = 1
 
 [Code]
 Font = AurulentSansMono

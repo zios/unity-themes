@@ -75,19 +75,19 @@ namespace Zios.Interface{
 		public void ApplyColor(Color target){this.value = target;}
 		public Texture2D UpdateTexture(string path){
 			var color = this.value;
-			var parentName = path.GetPathTerm().Trim("/");
-			FileManager.Create(path+"/Background");
-			var imagePath = path+"/Background/"+parentName+"Color"+this.name+".png";
-			var borderPath = path+"/Background/"+parentName+"Color"+this.name+"Outline.png";
+			path = path.GetAssetPath();
+			FileManager.Create(path+"@Palettes/Generated/");
+			var imagePath = path+"@Palettes/Generated/Color"+this.name+".png";
+			var borderPath = path+"@Palettes/Generated/Color"+this.name+"Outline.png";
 			var image = this.texture = (Texture2D)AssetDatabase.LoadAssetAtPath(imagePath,typeof(Texture2D));
 			var border = (Texture2D)AssetDatabase.LoadAssetAtPath(borderPath,typeof(Texture2D));
 			if(image.IsNull()){
-				image = this.texture = new Texture2D(1,1);
+				image = this.texture = new Texture2D(1,1,TextureFormat.RGBA32,false);
 				image.SaveAs(imagePath);
 				AssetDatabase.ImportAsset(imagePath);
 			}
 			if(border.IsNull()){
-				border = new Texture2D(3,3);
+				border = new Texture2D(3,3,TextureFormat.RGBA32,false);
 				border.SaveAs(borderPath);
 				AssetDatabase.ImportAsset(borderPath);
 			}

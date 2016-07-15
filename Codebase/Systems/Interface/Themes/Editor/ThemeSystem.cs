@@ -11,7 +11,7 @@ namespace Zios.Interface{
 	[InitializeOnLoad]
 	public partial class Theme{
 		public static Theme active;
-		[NonSerialized] public static string revision = "3 [r504]";
+		[NonSerialized] public static string revision = "3 [r506]";
 		[NonSerialized] public static int themeIndex;
 		[NonSerialized] public static int paletteIndex;
 		[NonSerialized] public static int fontsetIndex;
@@ -63,14 +63,14 @@ namespace Zios.Interface{
 					Theme.needsRebuild = false;
 					return;
 				}
-				Utility.CallEditorPref("EditorTheme-Refresh");
+				Utility.CallEditorPref("EditorTheme-Refresh",Theme.debug);
 				Theme.Cleanup();
 				Theme.needsRefresh = false;
 			}
 			if(Theme.needsRebuild){
 				Theme.RebuildStyles();
 				Theme.Refresh();
-				Utility.CallEditorPref("EditorTheme-Rebuild");
+				Utility.CallEditorPref("EditorTheme-Rebuild",Theme.debug);
 			}
 			if(!Theme.setup){
 				var themes = FileManager.Find("*.unitytheme",Theme.debug);
@@ -85,7 +85,7 @@ namespace Zios.Interface{
 				Theme.UpdateSettings();
 				Theme.UpdateColors();
 				if(!Theme.setup){
-					Utility.CallEditorPref("EditorTheme-Setup");
+					Utility.CallEditorPref("EditorTheme-Setup",Theme.debug);
 					Theme.setup = true;
 					Theme.Rebuild();
 				}
@@ -183,7 +183,7 @@ namespace Zios.Interface{
 			if(theme.useColorAssets){
 				foreach(var color in theme.palette.colors){
 					if(color.Value.skipTexture){continue;}
-					color.Value.UpdateTexture(Theme.active.path);
+					color.Value.UpdateTexture(Theme.storagePath);
 				}
 			}
 			Theme.Apply();
@@ -201,7 +201,10 @@ namespace Zios.Interface{
 			}
 			if(!main.IsNull()){
 				var palette = theme.palette;
-				if(!isDefault && !Theme.liveEdit){main = theme.fontset.Apply(main);}
+				if(!isDefault && !Theme.liveEdit){
+					main = theme.fontset.Apply(main);
+					theme.palette.Apply(main);
+				}
 				skin.Use(main,!Theme.liveEdit);
 				Utility.GetUnityType("AppStatusBar").ClearVariable("background");
 				Utility.GetUnityType("RenameOverlay").SetVariable("s_DefaultTextFieldStyle",skin.textField);
@@ -220,7 +223,7 @@ namespace Zios.Interface{
 				if(palette.Has("CurveBackground")){typeof(EditorGUI).SetVariable("kCurveBGColor",palette.Get("CurveBackground"));}
 				if(palette.Has("Window")){
 					typeof(EditorGUIUtility).SetVariable("kDarkViewBackground",palette.Get("Window"));
-					hostView.SetVariable<Color>("kViewColor",palette.Get("Window"));
+					hostView.SetVariable("kViewColor",palette.Get("Window"));
 				}
 				foreach(var view in Resources.FindObjectsOfTypeAll(hostView)){
 					view.ClearVariable("background");
@@ -243,7 +246,10 @@ namespace Zios.Interface{
 				var typeDirect = Utility.GetUnityType(skinFile.name);
 				var typeParent = Utility.GetUnityType(parent);
 				skin = skinFile.GetAsset<GUISkin>();
-				if(!isDefault && !Theme.liveEdit){skin = theme.fontset.Apply(skin);}
+				if(!isDefault && !Theme.liveEdit){
+					skin = theme.fontset.Apply(skin);
+					theme.palette.Apply(skin);
+				}
 				var styles = skin.GetNamedStyles(false,true,true);
 				var flags = field.Contains("s_Current") ? ObjectExtension.privateFlags : ObjectExtension.staticFlags;
 				if(Theme.debug && typeDirect.IsNull() && (typeParent.IsNull() || !typeParent.HasVariable(field))){
@@ -364,7 +370,7 @@ namespace Zios.Interface{
 										EditorGUILayout.BeginHorizontal();
 										var index = names.IndexOf(color.sourceName);
 										var offsetStyle = EditorStyles.numberField.FixedWidth(35).Margin(0,0,2,0);
-										color.sourceName = names[names.Draw(index,color.name)];
+										color.sourceName = names[names.Draw(index,color.name.ToTitleCase())];
 										EditorGUIUtility.labelWidth = 5;
 										color.offset = color.offset.Draw(" ",offsetStyle,false);
 										EditorGUIUtility.labelWidth = 140;
@@ -374,7 +380,7 @@ namespace Zios.Interface{
 										GUILayout.Space(2);
 										continue;
 									}
-									theme.palette.colors[color.name].value = color.value.Draw(color.name);
+									theme.palette.colors[color.name].value = color.value.Draw(color.name.ToTitleCase());
 								}
 								if(paletteAltered){
 									EditorGUILayout.BeginHorizontal();
@@ -400,7 +406,6 @@ namespace Zios.Interface{
 						var fontNames = fonts.Select(x=>x.name).ToArray();
 						if(fontNames.Length < 1){fontNames = fontNames.Add("No fonts found.");}
 						GUIStyleExtension.autoLayout = false;
-						bool existingChanges = GUI.changed;
 						foreach(var item in theme.fontset.fonts){
 							if(item.Value.font.IsNull()){continue;}
 							var themeFont = item.Value;
@@ -409,12 +414,12 @@ namespace Zios.Interface{
 							if(index == -1){
 								EditorGUILayout.EndHorizontal();
 								var message = "[" + themeFont.name + " not found]";
-								index = fontNames.Unshift(message).Draw(0,item.Key);
+								index = fontNames.Unshift(message).Draw(0,item.Key.ToTitleCase());
 								if(index != 0){themeFont.font = fonts[index-1];}
 								continue;
 							}
 							var offsetStyle = EditorStyles.numberField.FixedWidth(35).Margin(0,0,2,0);
-							themeFont.font = fonts[fontNames.Draw(index,item.Key)];
+							themeFont.font = fonts[fontNames.Draw(index,item.Key.ToTitleCase())];
 							EditorGUIUtility.labelWidth = 38;
 							EditorGUIUtility.fieldWidth = 25;
 							themeFont.sizeOffset = themeFont.sizeOffset.DrawInt("Size",offsetStyle.FixedWidth(25),false);
@@ -433,9 +438,6 @@ namespace Zios.Interface{
 							if(GUILayout.Button("Reset",GUILayout.Width(100))){Theme.LoadFontset(true);}
 							EditorGUILayout.EndHorizontal();
 						}
-						if(GUI.changed && !existingChanges){
-							Utility.DelayCall(Theme.Rebuild,0.5f);
-						}
 						EditorGUI.indentLevel -=1;
 						Theme.SaveFontset();
 						GUILayout.Space(10);
@@ -449,8 +451,8 @@ namespace Zios.Interface{
 				Utility.RebuildInspectors();
 			}
 			if(!Theme.needsRebuild && GUI.changed){
-				if(!Theme.responsive){Utility.DelayCall(Theme.Refresh,0.5f);}
-				else{Theme.Refresh();}
+				if(Theme.responsive){Theme.Refresh();}
+				Utility.DelayCall(Theme.Rebuild,0.5f);
 			}
 			EditorGUILayout.EndScrollView();
 		}
@@ -566,6 +568,7 @@ namespace Zios.Interface{
 				else{Theme.paletteChangeCount = 0;}
 				Theme.paletteChangeTime = time + 0.3f;
 				Theme.Refresh();
+				Utility.DelayCall(Theme.Rebuild,0.25f);
 			}
 		}
 		[MenuItem("Zios/Theme/Previous Fontset %F1")]

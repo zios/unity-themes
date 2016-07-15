@@ -4,9 +4,27 @@ SizeOffset = 4
 OffsetX = 0
 OffsetY = -2
 
+[Border]
+Font = PixelOperatorSC
+SizeOffset = 3
+OffsetX = 0
+OffsetY = -2
+
 [Button]
 Font = PixelOperatorSC
 SizeOffset = 3
+OffsetX = 0
+OffsetY = -2
+
+[Highlight]
+Font = PixelOperatorSC
+SizeOffset = 3
+OffsetX = 0
+OffsetY = -2
+
+[Search]
+Font = PixelOperator
+SizeOffset = 4
 OffsetX = 0
 OffsetY = -2
 

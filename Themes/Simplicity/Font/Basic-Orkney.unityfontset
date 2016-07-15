@@ -4,7 +4,25 @@ SizeOffset = 0
 OffsetX = 0
 OffsetY = 0
 
+[Border]
+Font = Orkney-Medium
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
 [Button]
+Font = Orkney-Medium
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
+[Highlight]
+Font = Orkney-Medium
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
+[Search]
 Font = Orkney-Medium
 SizeOffset = 0
 OffsetX = 0

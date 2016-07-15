@@ -4,11 +4,29 @@ SizeOffset = 0
 OffsetX = 0
 OffsetY = -1
 
+[Border]
+Font = JosefinSans-SemiBoldItalic
+SizeOffset = 1
+OffsetX = 0
+OffsetY = 0
+
 [Button]
 Font = JosefinSans-SemiBoldItalic
 SizeOffset = 1
 OffsetX = 0
 OffsetY = 0
+
+[Highlight]
+Font = JosefinSans-SemiBoldItalic
+SizeOffset = 1
+OffsetX = 0
+OffsetY = 0
+
+[Search]
+Font = Paprika-Regular
+SizeOffset = 0
+OffsetX = 0
+OffsetY = -1
 
 [Code]
 Font = AurulentSansMono

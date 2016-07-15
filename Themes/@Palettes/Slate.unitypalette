@@ -1,11 +1,19 @@
 [Textured]
-Main            : #2C3747
-Border          : #414A56 : 0.8
-Highlight       : #69788B : 1.2
+Main : #2C3747
+Button : #FFFFFF20 : 0.8
+Border : #414A56 : 0.8
+Highlight : #69788B : 1.2
+Scrollbar : #FFFFFF10
+ScrollbarThumb : #FFFFFF2A
 
 [NonTextured]
-Window          : Main
-Cursor          : Highlight
-Selection       : Border
-Curve           : Highlight : 1.5
-CurveBackground : Border    : 0.5
+Text : #FFFFFF88 : 1.2
+TextActive : #FFFFFF : 1.8
+TextButton : #FFFFFF88 : 1.2
+TextBorder : #FFFFFFC7 : 1.2
+TextHighlight : #FFFFFFB4 : 1.8
+Window : #2C3747 : Main
+Cursor : #69788B : Highlight
+Selection : #414A56 : Border
+Curve : #69788B : Highlight : 1.5
+CurveBackground : #414A56 : Border : 0.5

@@ -116,18 +116,18 @@ namespace Zios{
 				if(assembly.ContainsKey(path)){
 					var method = Class.GetMethod(assembly[path],name);
 					if(method.IsNull()){
-						Debug.Log("[ObjectReflection] Cannot call. Method does not exist -- " + current + "()");
+						if(ObjectExtension.debug){Debug.Log("[ObjectReflection] Cannot call. Method does not exist -- " + current + "()");}
 						return null;
 					}
 					if(!method.IsStatic){
-						Debug.Log("[ObjectReflection] Cannot call. Method is not static -- " + current + "()");
+						if(ObjectExtension.debug){Debug.Log("[ObjectReflection] Cannot call. Method is not static -- " + current + "()");}
 						return null;
 					}
 					var value = assembly[path].CallExactMethod(name,parameters);
 					return value ?? true;
 				}
 			}
-			Debug.Log("[ObjectReflection] Cannot call. Path not found -- " + current + "()");
+			if(ObjectExtension.debug){Debug.Log("[ObjectReflection] Cannot call. Path not found -- " + current + "()");}
 			return null;
 		}
 		public static object CallMethod(this object current,string name,params object[] parameters){

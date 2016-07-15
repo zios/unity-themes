@@ -4,9 +4,27 @@ SizeOffset = 2
 OffsetX = 0
 OffsetY = -1
 
+[Border]
+Font = Iceland-Regular
+SizeOffset = 4
+OffsetX = 0
+OffsetY = -1
+
 [Button]
 Font = Iceland-Regular
 SizeOffset = 4
+OffsetX = 0
+OffsetY = -1
+
+[Highlight]
+Font = Iceland-Regular
+SizeOffset = 4
+OffsetX = 0
+OffsetY = -1
+
+[Search]
+Font = Iceberg-Regular
+SizeOffset = 2
 OffsetX = 0
 OffsetY = -1
 

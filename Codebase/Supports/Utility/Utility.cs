@@ -103,11 +103,13 @@ namespace Zios{
 		//============================
 		// General
 		//============================
-		public static void CallEditorPref(string name,bool fallback=false){
+		public static void CallEditorPref(string name,bool showWarnings=false){
 			#if UNITY_EDITOR
 			var callbacks = EditorPrefs.GetString(name);
 			var called = new List<string>();
 			var success = new List<string>();
+			bool debug = ObjectExtension.debug;
+			ObjectExtension.debug = showWarnings;
 			foreach(var method in callbacks.Split("|")){
 				if(called.Contains(method) || method.IsEmpty()){continue;}
 				if(!method.CallMethod().IsNull()){
@@ -115,6 +117,7 @@ namespace Zios{
 				}
 				called.Add(method);
 			}
+			ObjectExtension.debug = debug;
 			var value = success.Count > 0 ? success.Join("|") : "";
 			EditorPrefs.SetString(name,value);
 			#endif
