@@ -20,13 +20,13 @@ OffsetY = 0
 Font = JosefinSans-Bold
 SizeOffset = 1
 OffsetX = 0
-OffsetY = 0
+OffsetY = 1
 
 [Search]
-Font = Laila-Regular
-SizeOffset = 0
+Font = JosefinSans-Italic
+SizeOffset = 1
 OffsetX = 0
-OffsetY = 0
+OffsetY = 1
 
 [Code]
 Font = AurulentSansMono

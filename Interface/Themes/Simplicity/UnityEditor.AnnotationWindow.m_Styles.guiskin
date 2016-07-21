@@ -1359,7 +1359,7 @@ MonoBehaviour:
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
-      m_TextColor: {r: 1, g: 1, b: 1, a: 0.65882355}
+      m_TextColor: {r: 1, g: 0.015686275, b: 1, a: 0}
     m_Hover:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1375,7 +1375,7 @@ MonoBehaviour:
     m_OnNormal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
-      m_TextColor: {r: 0.9019608, g: 0.9019608, b: 0.9019608, a: 1}
+      m_TextColor: {r: 1, g: 0.019607844, b: 1, a: 0}
     m_OnHover:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []

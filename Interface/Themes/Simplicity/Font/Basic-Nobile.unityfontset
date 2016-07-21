@@ -5,8 +5,8 @@ OffsetX = 0
 OffsetY = 1
 
 [Border]
-Font = Nobile-Medium
-SizeOffset = -1
+Font = Nobile-Bold
+SizeOffset = -2
 OffsetX = 0
 OffsetY = 0
 
@@ -20,13 +20,13 @@ OffsetY = 0
 Font = Nobile-Medium
 SizeOffset = -1
 OffsetX = 0
-OffsetY = 0
+OffsetY = 2
 
 [Search]
-Font = Nobile-Medium
+Font = Nobile-Italic
 SizeOffset = -1
 OffsetX = 0
-OffsetY = 1
+OffsetY = 0
 
 [Code]
 Font = AurulentSansMono

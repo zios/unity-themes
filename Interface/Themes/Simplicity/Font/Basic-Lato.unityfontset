@@ -20,13 +20,13 @@ OffsetY = -1
 Font = Lato-Regular
 SizeOffset = 0
 OffsetX = 0
-OffsetY = -1
+OffsetY = 0
 
 [Search]
-Font = Lato-Regular
-SizeOffset = 1
+Font = Lato-Italic
+SizeOffset = 0
 OffsetX = 0
-OffsetY = -1
+OffsetY = 0
 
 [Code]
 Font = AurulentSansMono

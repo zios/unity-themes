@@ -20,13 +20,13 @@ OffsetY = -1
 Font = Aubrey-Regular
 SizeOffset = 3
 OffsetX = 0
-OffsetY = -1
+OffsetY = 0
 
 [Search]
 Font = Aubrey-Regular
-SizeOffset = 4
+SizeOffset = 2
 OffsetX = 0
-OffsetY = -1
+OffsetY = 0
 
 [Code]
 Font = LiberationMono-Italic

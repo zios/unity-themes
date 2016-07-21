@@ -14,19 +14,19 @@ OffsetY = -2
 Font = PixelOperatorSC
 SizeOffset = 3
 OffsetX = 0
-OffsetY = -2
+OffsetY = -1
 
 [Highlight]
 Font = PixelOperatorSC
 SizeOffset = 3
 OffsetX = 0
-OffsetY = -2
+OffsetY = -1
 
 [Search]
 Font = PixelOperator
-SizeOffset = 4
+SizeOffset = 3
 OffsetX = 0
-OffsetY = -2
+OffsetY = -1
 
 [Code]
 Font = PixelOperatorMono

@@ -23,10 +23,10 @@ OffsetX = 0
 OffsetY = -1
 
 [Search]
-Font = SourceSerifPro-Semibold
-SizeOffset = 1
+Font = SourceSansPro-Italic
+SizeOffset = 0
 OffsetX = 0
-OffsetY = 0
+OffsetY = -1
 
 [Code]
 Font = SourceCodePro-Semibold

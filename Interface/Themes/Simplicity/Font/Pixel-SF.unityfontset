@@ -5,7 +5,7 @@ OffsetX = 0
 OffsetY = 0
 
 [Border]
-Font = SFPixelate-Bold
+Font = SFPixelate-BoldOblique
 SizeOffset = -3
 OffsetX = 0
 OffsetY = 0
@@ -23,8 +23,8 @@ OffsetX = 0
 OffsetY = 0
 
 [Search]
-Font = SFPixelate
-SizeOffset = -2
+Font = SFPixelate-Oblique
+SizeOffset = -3
 OffsetX = 0
 OffsetY = 0
 

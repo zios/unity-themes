@@ -20,11 +20,11 @@ OffsetY = -1
 Font = NovaSquare
 SizeOffset = 0
 OffsetX = 0
-OffsetY = -1
+OffsetY = 0
 
 [Search]
-Font = NovaSquare
-SizeOffset = 1
+Font = NovaScript
+SizeOffset = 0
 OffsetX = 0
 OffsetY = 0
 

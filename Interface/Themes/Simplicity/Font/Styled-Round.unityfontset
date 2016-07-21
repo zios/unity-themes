@@ -8,7 +8,7 @@ OffsetY = 0
 Font = Comfortaa-Bold
 SizeOffset = 0
 OffsetX = 0
-OffsetY = -1
+OffsetY = -2
 
 [Button]
 Font = Comfortaa-Bold
@@ -20,10 +20,10 @@ OffsetY = -1
 Font = Comfortaa-Bold
 SizeOffset = 0
 OffsetX = 0
-OffsetY = -1
+OffsetY = 0
 
 [Search]
-Font = Comfortaa-Bold
+Font = Comfortaa-Regular
 SizeOffset = 0
 OffsetX = 0
 OffsetY = 0
