@@ -89,7 +89,7 @@ namespace Zios.Inputs{
 			this.DetectGamepads();
 		}
 		public static bool Validate(){
-			try{Input.GetAxis("Joystick1Axis1Positive");}
+			try{Input.GetAxis("Joystick1-Axis1Positive");}
 			catch{
 				Debug.LogWarning("[InputManager] Unity input not setup. Please copy provided InputManager.asset to Assets/ProjectSettings");
 				InputManager.disabled = true;
