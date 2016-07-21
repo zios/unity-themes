@@ -47,7 +47,7 @@ namespace Zios.Editors{
 				if(meshPath.Contains(".fbx",true)){
 					FileData file = FileManager.Find(meshPath);
 					int subMeshIndex = 0;
-					string newPath = file.GetAssetPath(false) + "Baked/" + file.name + "%%.asset";
+					string newPath = file.path.GetAssetPath() + "Baked/" + file.name + "%%.asset";
 					int vertexCount = filter.sharedMesh.vertices.Length;
 					Color32[] colorValues = new Color32[vertexCount];
 					Material[] materials = renderer.sharedMaterials;

@@ -35,6 +35,7 @@ namespace Zios.Inputs{
 	public enum InputUIState{None,SelectProfile,EditProfile}
 	public enum InputInstanceOptions{AllowCurrentlyUsedProfiles=1,AllowMultipleProfiles=2,ReassignInvalidProfiles=4}
 	public class InputManager : MonoBehaviour{
+		[NonSerialized] public static bool disabled;
 		[NonSerialized] public static InputManager instance;
 		[NonSerialized] public static Vector2 mouseChange;
 		[NonSerialized] public static Vector2 mouseScroll;
@@ -73,6 +74,8 @@ namespace Zios.Inputs{
 		}
 		public void Awake(){
 			InputManager.instance = this;
+			InputManager.Validate();
+			if(InputManager.disabled){return;}
 			InputProfile.Load();
 			InputInstance.Load();
 			InputGroup.Load();
@@ -85,15 +88,26 @@ namespace Zios.Inputs{
 			Event.Register("On Profile Edited",this);
 			this.DetectGamepads();
 		}
+		public static bool Validate(){
+			try{Input.GetAxis("Joystick1Axis1Positive");}
+			catch{
+				Debug.LogWarning("[InputManager] Unity input not setup. Please copy provided InputManager.asset to Assets/ProjectSettings");
+				InputManager.disabled = true;
+				return false;
+			}
+			return true;
+		}
 		public void Update(){
+			if(InputManager.disabled){return;}
 			this.DetectMouse();
 			this.DetectKey();
 		}
 		public void FixedUpdate(){
+			if(InputManager.disabled){return;}
 			this.DetectGamepads();
 		}
 		public void OnGUI(){
-			if(!Application.isPlaying){return;}
+			if(!Application.isPlaying || InputManager.disabled){return;}
 			var current = UnityEvent.current;
 			if(current.isKey || current.shift || current.alt || current.control || current.command){
 				if(!this.devices.Exists(x=>x.name=="Keyboard")){

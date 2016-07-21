@@ -60,6 +60,7 @@ namespace Zios.Interface{
 				Theme.UpdateSettings();
 				Utility.DelayCall(ThemeContent.Apply,0.5f);
 				if(Theme.needsRebuild){
+					Utility.RebuildInspectors();
 					Theme.needsRebuild = false;
 					return;
 				}
@@ -123,8 +124,8 @@ namespace Zios.Interface{
 		public static void UpdateColors(){
 			if(Theme.active.IsNull()){return;}
 			var theme = Theme.active;
-			if(theme.allowSystemColor && theme.useSystemColor && theme.palette.colors.Count > 0){
-				var mainColor = theme.palette.colors.First().Value;
+			if(theme.allowSystemColor && theme.useSystemColor){
+				var mainColor = theme.palette.colors["*"].First().Value;
 				var parsedColor = mainColor.value;
 				object key = null;
 				#if UNITY_EDITOR_WIN
@@ -145,14 +146,14 @@ namespace Zios.Interface{
 				#endif
 				if(parsedColor != mainColor.value){
 					mainColor.ApplyColor(parsedColor);
-					foreach(var color in theme.palette.colors){
+					foreach(var color in theme.palette.colors["*"]){
 						color.Value.ApplyOffset(mainColor);
 					}
 					Theme.Refresh();
 				}
 				return;
 			}
-			foreach(var color in theme.palette.colors){
+			foreach(var color in theme.palette.colors["*"]){
 				color.Value.ApplyOffset();
 			}
 			EditorPrefs.SetBool("EditorTheme-Dark",Theme.active.palette.Get("Window").GetIntensity() < 0.4f);
@@ -180,12 +181,6 @@ namespace Zios.Interface{
 					theme.Use(option);
 				}
 			}
-			if(theme.useColorAssets){
-				foreach(var color in theme.palette.colors){
-					if(color.Value.skipTexture){continue;}
-					color.Value.UpdateTexture(Theme.storagePath);
-				}
-			}
 			Theme.Apply();
 		}
 		public static void Apply(string themeName=""){
@@ -206,8 +201,9 @@ namespace Zios.Interface{
 					theme.palette.Apply(main);
 				}
 				skin.Use(main,!Theme.liveEdit);
+				EditorGUIUtility.GetBuiltinSkin(EditorSkin.Game).Use(main,!Theme.liveEdit);
+				EditorGUIUtility.GetBuiltinSkin(EditorSkin.Scene).Use(main,!Theme.liveEdit);
 				Utility.GetUnityType("AppStatusBar").ClearVariable("background");
-				Utility.GetUnityType("RenameOverlay").SetVariable("s_DefaultTextFieldStyle",skin.textField);
 				Utility.GetUnityType("SceneRenderModeWindow.Styles").SetVariable("sMenuItem",skin.Get("MenuItem"));
 				Utility.GetUnityType("SceneRenderModeWindow.Styles").SetVariable("sSeparator",skin.Get("sv_iconselector_sep"));
 				Utility.GetUnityType("GameView.Styles").SetVariable("gizmoButtonStyle",skin.Get("GV Gizmo DropDown"));
@@ -277,6 +273,18 @@ namespace Zios.Interface{
 					SetStyles(target.GetVariables<GUIStyle>(),target);
 				}
 			}
+			if(theme.useColorAssets){
+				foreach(var color in theme.palette.colors["*"]){
+					if(color.Value.skipTexture){continue;}
+					color.Value.UpdateTexture(Theme.storagePath);
+				}
+			}
+			Utility.DelayCall("UpdateDynamicTextures",()=>{
+				if(theme.palette.swap.Count < 1){return;}
+				foreach(var file in FileManager.FindAll("#*.png")){
+					theme.palette.ApplyTexture(file.path,file.GetAsset<Texture2D>());
+				}
+			},0.1f);
 		}
 		public static void Cleanup(){
 			foreach(var guiSkin in Resources.FindObjectsOfTypeAll<GUISkin>().Where(x=>x.name.Contains("EditorStyles"))){
@@ -300,7 +308,7 @@ namespace Zios.Interface{
 				window.minSize = new Vector2(600,100);
 			}
 			Theme.scroll = EditorGUILayout.BeginScrollView(Theme.scroll);
-			EditorGUIUtility.labelWidth = 140;
+			EditorGUIUtility.labelWidth = 200;
 			Theme.themeIndex = Theme.all.Select(x=>x.name).Draw(Theme.themeIndex,"Theme");
 			GUILayout.Space(3);
 			if(theme.allowCustomization){
@@ -363,24 +371,39 @@ namespace Zios.Interface{
 								if(EditorGUIExtension.lastChanged && !theme.useSystemColor){Theme.LoadColors();}
 							}
 							if(!theme.useSystemColor){
-								var names = theme.palette.colors.Keys.ToList();
-								foreach(var item in theme.palette.colors){
-									var color = item.Value;
-									if(!color.sourceName.IsEmpty()){
-										EditorGUILayout.BeginHorizontal();
-										var index = names.IndexOf(color.sourceName);
-										var offsetStyle = EditorStyles.numberField.FixedWidth(35).Margin(0,0,2,0);
-										color.sourceName = names[names.Draw(index,color.name.ToTitleCase())];
-										EditorGUIUtility.labelWidth = 5;
-										color.offset = color.offset.Draw(" ",offsetStyle,false);
-										EditorGUIUtility.labelWidth = 140;
-										color.Assign(theme.palette.colors[color.sourceName]);
-										GUILayout.Space(15);
-										EditorGUILayout.EndHorizontal();
-										GUILayout.Space(2);
-										continue;
+								foreach(var group in theme.palette.colors.Where(x=>x.Key!="*")){
+									var groupName = group.Key;
+									var isGroup = groupName != "Default";
+									if(!isGroup || groupName.ToLabel().DrawFoldout("Theme.Colors."+groupName)){
+										if(isGroup){EditorGUI.indentLevel += 1;}
+										var names = theme.palette.colors["*"].Keys.ToList();
+										foreach(var item in theme.palette.colors[groupName]){
+											var color = item.Value;
+											if(!color.sourceName.IsEmpty()){
+												EditorGUILayout.BeginHorizontal();
+												var index = names.IndexOf(color.sourceName);
+												var offsetStyle = EditorStyles.numberField.FixedWidth(35).Margin(0,0,2,0);
+												if(index == -1){
+													EditorGUILayout.EndHorizontal();
+													var message = "[" + color.sourceName + " not found]";
+													index = names.Unshift(message).Draw(0,item.Key.ToTitleCase());
+													if(index != 0){color.sourceName = names[index];}
+													continue;
+												}
+												color.sourceName = names[names.Draw(index,color.name.ToTitleCase())];
+												EditorGUIUtility.labelWidth = 5;
+												color.offset = color.offset.Draw(" ",offsetStyle,false);
+												EditorGUIUtility.labelWidth = 200;
+												color.Assign(theme.palette.colors["*"][color.sourceName]);
+												GUILayout.Space(15);
+												EditorGUILayout.EndHorizontal();
+												GUILayout.Space(2);
+												continue;
+											}
+											theme.palette.colors["*"][color.name].value = color.value.Draw(color.name.ToTitleCase());
+										}
+										if(isGroup){EditorGUI.indentLevel -= 1;}
 									}
-									theme.palette.colors[color.name].value = color.value.Draw(color.name.ToTitleCase());
 								}
 								if(paletteAltered){
 									EditorGUILayout.BeginHorizontal();
@@ -389,7 +412,7 @@ namespace Zios.Interface{
 									if(GUILayout.Button("Reset",GUILayout.Width(100))){Theme.LoadColors(true);}
 									EditorGUILayout.EndHorizontal();
 								}
-								Theme.SaveColors();
+								if(GUI.changed){Theme.SaveColors();}
 							}
 							EditorGUI.indentLevel -=1;
 						}
@@ -427,7 +450,7 @@ namespace Zios.Interface{
 							EditorGUIUtility.fieldWidth = 35;
 							themeFont.offsetX = themeFont.offsetX.Draw("X",offsetStyle,false);
 							themeFont.offsetY = themeFont.offsetY.Draw("Y",offsetStyle,false);
-							EditorGUIUtility.labelWidth = 140;
+							EditorGUIUtility.labelWidth = 200;
 							EditorGUILayout.EndHorizontal();
 						}
 						GUIStyleExtension.autoLayout = true;
@@ -439,7 +462,7 @@ namespace Zios.Interface{
 							EditorGUILayout.EndHorizontal();
 						}
 						EditorGUI.indentLevel -=1;
-						Theme.SaveFontset();
+						if(GUI.changed){Theme.SaveFontset();}
 						GUILayout.Space(10);
 					}
 				}
@@ -479,8 +502,10 @@ namespace Zios.Interface{
 		//=================================
 		public static void SaveColors(){
 			var theme = Theme.active;
-			foreach(var color in theme.palette.colors){
-				EditorPrefs.SetString("EditorTheme-"+theme.name+"-Color-"+color.Key,color.Value.Serialize());
+			foreach(var group in theme.palette.colors.Where(x=>x.Key!="*")){
+				foreach(var color in group.Value){
+					EditorPrefs.SetString("EditorTheme-"+theme.name+"-Color-"+group.Key+"-"+color.Key,color.Value.Serialize());
+				}
 			}
 		}
 		public static void LoadColors(bool reset=false){
@@ -491,16 +516,16 @@ namespace Zios.Interface{
 					theme.palette = new ThemePalette().Use(original);
 				}
 				else if(theme.allowColorCustomization){
-					var colors = theme.palette.colors;
-					foreach(var color in colors){
-						var name = color.Key;
-						var value = EditorPrefs.GetString("EditorTheme-"+theme.name+"-Color-"+name,color.Value.Serialize());
-						colors[name].Deserialize(value);
+					foreach(var group in theme.palette.colors.Where(x=>x.Key!="*")){
+						foreach(var color in group.Value){
+							var value = EditorPrefs.GetString("EditorTheme-"+theme.name+"-Color-"+group.Key+"-"+color.Key,color.Value.Serialize());
+							theme.palette.colors["*"][color.Key] = theme.palette.colors[group.Key][color.Key].Deserialize(value);
+						}
 					}
-					foreach(var color in colors){
+					foreach(var color in theme.palette.colors["*"].Copy()){
 						if(color.Value.sourceName.IsEmpty()){continue;}
-						var source = colors[color.Value.sourceName];
-						colors[color.Key].Assign(source);
+						var source = theme.palette.colors["*"][color.Value.sourceName];
+						theme.palette.colors["*"][color.Key].Assign(source);
 					}
 				}
 			}
@@ -619,8 +644,9 @@ namespace Zios.Interface{
 		}
 		public void OnPreprocessTexture(){
 			TextureImporter importer = (TextureImporter)this.assetImporter;
-			if(importer.assetPath.Contains("Color")){
+			if(importer.assetPath.ContainsAny("Themes")){
 				importer.isReadable = true;
+				importer.textureFormat = TextureImporterFormat.RGBA32;
 				if(importer.assetPath.Contains("Border")){
 					importer.filterMode = FilterMode.Point;
 				}
