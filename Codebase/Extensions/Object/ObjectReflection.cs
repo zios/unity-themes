@@ -209,6 +209,9 @@ namespace Zios{
 				index = name.ToInt();
 				name = "";
 			}
+			if(current is IDictionary){return current.As<IDictionary>()[name].As<T>();}
+			if(index != -1 && current is Vector3){return current.As<Vector3>()[index].As<T>();}
+			if(index != -1 && current is IList){return current.As<IList>()[index].As<T>();}
 			var value = default(T);
 			object instance = current is Type || current.IsStatic() ? null : current;
 			var type = current is Type ? (Type)current : current.GetType();
@@ -223,13 +226,8 @@ namespace Zios{
 			}
 			if(property != null){value = (T)property.GetValue(instance,null);}
 			if(field != null){value = (T)field.GetValue(instance);}
-			if(index != -1){
-				if(name.IsEmpty()){
-					if(current is IList){return current.As<IList<T>>()[index];}
-					if(current is Vector3){return current.As<Vector3>()[index].As<T>();}
-				}
-				if(value is Vector3){return value.As<Vector3>()[index].As<T>();}
-				return value.As<IList>()[index].As<T>();
+			if(index != -1 && (value is IList || value is Vector3)){
+				return value.GetVariable<T>(name,index,flags);
 			}
 			return value;
 		}
@@ -244,6 +242,20 @@ namespace Zios{
 				index = name.ToInt();
 				name = "";
 			}
+			if(current is IDictionary){
+				current.As<IDictionary>()[name] = value;
+				return;
+			}
+			if(index != -1 && current is IList){
+				current.As<IList>()[index] = value;
+				return;
+			}
+			if(index != -1 && current is Vector3){
+				var goal = current.As<Vector3>();
+				goal[index] = value.ToFloat();
+				current.As<Vector3>().Set(goal.x,goal.y,goal.z);
+				return;
+			}
 			var instance = current is Type || current.IsStatic() ? null : current;
 			var type = current is Type ? (Type)current : current.GetType();
 			var property = Class.GetProperty(type,name,flags);
@@ -254,24 +266,11 @@ namespace Zios{
 				return;
 			}
 			if(index != -1){
-				if(name.IsEmpty()){
-					if(current is IList){current.As<IList<T>>()[index] = value;}
-					if(current is Vector3){
-						var goal = current.As<Vector3>();
-						goal[index] = value.ToFloat();
-						current.As<Vector3>().Set(goal.x,goal.y,goal.z);
-					}
+				var targetValue = property.IsNull() ? field.GetValue(instance) : property.GetValue(instance,null);
+				if(targetValue is IList || targetValue is Vector3){
+					targetValue.SetVariable<T>(name,value,index,flags);
 					return;
 				}
-				object existing = field.IsNull() ? property.GetValue(instance,null) : field.GetValue(instance);
-				if(existing is Vector3){
-					var goal = existing.As<Vector3>();
-					goal[index] = value.ToFloat();
-					existing.As<Vector3>().Set(goal.x,goal.y,goal.z);
-					return;
-				}
-				existing.As<Array>().SetValue(value,index);
-				return;
 			}
 			if(property != null && property.CanWrite){
 				property.SetValue(instance,value,null);

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using System.Linq;
 using System;
+using UnityEditor;
 using UnityEngine;
 namespace Zios.Interface{
 	[Serializable]
@@ -8,64 +8,58 @@ namespace Zios.Interface{
 		public static List<Theme> all = new List<Theme>();
 		[Internal] public string name;
 		[Internal] public string path;
-		[Internal] public bool useSystemColor;
 		[Internal] public ThemePalette palette = new ThemePalette();
 		[Internal] public ThemeFontset fontset = new ThemeFontset();
-		[Internal] public List<ThemeContent> contents = new List<ThemeContent>();
-		[Internal] public List<Theme> options = new List<Theme>();
-		public bool allowCustomization;
-		public bool allowColorCustomization;
-		public bool allowFontsetCustomization;
-		public bool allowSystemColor;
-		public bool useColorAssets = true;
-		public Texture2D windowBackgroundOverride;
-		public float spacingScale = 1;
-		public static void Import(string path=null){
+		[Internal] public ThemeIconset iconset = new ThemeIconset();
+		[Internal] public ThemeSkinset skinset = new ThemeSkinset();
+		public bool customizablePalette;
+		public bool customizableFontset;
+		public bool customizableIconset;
+		public static List<Theme> Import(string path=null){
 			path = path ?? "*.unitytheme";
-			foreach(var themeFile in FileManager.FindAll(path)){
-				Theme theme = null;
-				Theme root = null;
-				string name = "";
-				foreach(var line in themeFile.GetText().GetLines()){
-					if(line.Trim().IsEmpty()){continue;}
-					if(line.Contains("[")){
-						name = theme.IsNull() ? themeFile.name : line.Parse("[","]");
-						theme = root.IsNull() ? Theme.all.AddNew() : root.options.AddNew();
-						theme.name = name.ToPascalCase();
-						theme.path = themeFile.GetAssetPath().GetDirectory();
-						if(theme.name == "@Default"){continue;}
-						if(root.IsNull()){
-							root = theme;
-							theme.contents = ThemeContent.Import(themeFile.directory);
-							ThemeFontset.all[root.name] = ThemeFontset.Import(themeFile.directory);
-						}
-						if(root.options.Count > 0){
-							root.options.Last().Use(root);
-						}
-						continue;
-					}
-					if(theme.IsNull()){continue;}
-					var term = line.Parse(""," ").Trim();
-					var value = line.Parse(" ").Trim().Trim("=").Trim();
-					if(value.Matches("None",true)){continue;}
-					else if(term.Matches("AllowSystemColor",true)){theme.allowSystemColor = value.ToBool();}
-					else if(term.Matches("AllowCustomization",true)){theme.allowCustomization = value.ToBool();}
-					else if(term.Matches("AllowColorCustomization",true)){theme.allowColorCustomization = value.ToBool();}
-					else if(term.Matches("AllowFontsetCustomization",true)){theme.allowFontsetCustomization = value.ToBool();}
-					else if(term.Matches("UseSystemColor",true)){theme.useSystemColor = value.ToBool();}
-					else if(term.Matches("UseColorAssets",true)){theme.useColorAssets = value.ToBool();}
-					else if(term.Matches("WindowBackgroundOverride",true)){theme.windowBackgroundOverride = FileManager.GetAsset<Texture2D>(value);}
-					else if(term.Matches("Palette",true)){theme.palette = ThemePalette.all.Find(x=>x.name==value) ?? new ThemePalette();}
-					else if(term.Matches("Fontset",true)){theme.fontset = ThemeFontset.all.AddNew(root.name).Find(x=>x.name==value) ?? new ThemeFontset();}
-				}
+			var imported = new List<Theme>();
+			foreach(var file in FileManager.FindAll(path,false)){
+				var active = imported.AddNew();
+				active.name = file.name.ToPascalCase();
+				active.path = file.path;
+				active.Deserialize(file.GetText());
+			}
+			return imported;
+		}
+		public void Export(string path=null){
+			var theme = Theme.active;
+			var targetPath = path ?? Theme.storagePath;
+			var targetName = theme.name+"-Variant";
+			path = path.IsEmpty() ? EditorUtility.SaveFilePanel("Save Theme",targetPath,targetName,"unitytheme") : path;
+			if(path.Length > 0){
+				var file = FileManager.Create(path);
+				file.WriteText(this.Serialize());
+				EditorPrefs.SetString("EditorTheme",theme.name);
+				Theme.setup = false;
+			}
+		}
+		public string Serialize(){return "";}
+		public void Deserialize(string data){
+			this.iconset = ThemeIconset.Import(this.path.GetDirectory());
+			foreach(var line in data.GetLines()){
+				if(line.Trim().IsEmpty()){continue;}
+				var term = line.Parse(""," ").Trim();
+				var value = line.Parse(" ").Trim().Trim("=").Trim();
+				if(term.Matches("CustomizablePalette",true)){this.customizablePalette = value.ToBool();}
+				else if(term.Matches("CustomizableFontset",true)){this.customizableFontset = value.ToBool();}
+				else if(term.Matches("CustomizableIconset",true)){this.customizableIconset = value.ToBool();}
+				else if(term.Matches("Palette",true)){this.palette = ThemePalette.all.Find(x=>x.name==value) ?? new ThemePalette();}
+				else if(term.Matches("Fontset",true)){this.fontset = ThemeFontset.all.Find(x=>x.name==value) ?? new ThemeFontset();}
+				else if(term.Matches("Iconset",true)){this.iconset = ThemeIconset.all.Find(x=>x.name==value) ?? new ThemeIconset();}
+				else if(term.Matches("Skinset",true)){this.skinset = ThemeSkinset.all.Find(x=>x.name==value) ?? new ThemeSkinset();}
 			}
 		}
 		public Theme Use(Theme other){
 			this.UseVariables(other,typeof(InternalAttribute).AsList());
 			if(this.name.IsEmpty()){this.name = other.name;}
 			if(this.path.IsEmpty()){this.path = other.path;}
-			this.options = other.options;
-			this.contents = other.contents;
+			this.skinset = other.skinset;
+			this.iconset = other.iconset;
 			return this;
 		}
 	}

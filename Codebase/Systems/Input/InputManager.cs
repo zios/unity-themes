@@ -35,7 +35,7 @@ namespace Zios.Inputs{
 	public enum InputUIState{None,SelectProfile,EditProfile}
 	public enum InputInstanceOptions{AllowCurrentlyUsedProfiles=1,AllowMultipleProfiles=2,ReassignInvalidProfiles=4}
 	public class InputManager : MonoBehaviour{
-		[NonSerialized] public static bool disabled;
+		[NonSerialized] public static bool disabled = true;
 		[NonSerialized] public static InputManager instance;
 		[NonSerialized] public static Vector2 mouseChange;
 		[NonSerialized] public static Vector2 mouseScroll;
@@ -89,12 +89,13 @@ namespace Zios.Inputs{
 			this.DetectGamepads();
 		}
 		public static bool Validate(){
-			try{Input.GetAxis("Joystick1-Axis1Positive");}
+			try{Input.GetAxis("Joystick1-Axis1");}
 			catch{
 				Debug.LogWarning("[InputManager] Unity input not setup. Please copy provided InputManager.asset to Assets/ProjectSettings");
 				InputManager.disabled = true;
 				return false;
 			}
+			InputManager.disabled = false;
 			return true;
 		}
 		public void Update(){

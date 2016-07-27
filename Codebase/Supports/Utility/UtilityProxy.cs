@@ -208,9 +208,9 @@ namespace Zios{
 		public static void RepaintAll(){
 			#if UNITY_EDITOR
 			//foreach(var window in Locate.GetAssets<EditorWindow>()){window.Repaint();}
-			//Utility.GetUnityType("Toolbar").CallMethod("RepaintToolbar");
+			Utility.GetUnityType("Toolbar").CallMethod("RepaintToolbar");
 			UnityEditorInternal.InternalEditorUtility.RepaintAllViews();
-			//Utility.RebuildInspectors();
+			Utility.RebuildInspectors();
 			#endif
 		}
 		public static void RepaintGameView(){

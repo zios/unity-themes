@@ -1,9 +1,0 @@
-[0]
-text = Local
-image = ToolHandleLocal
-tooltip = Tool handles are in active object's rotation.
-
-[1]
-text = Global
-image = ToolHandleGlobal
-tooltip = Tool handles are in global rotation.

@@ -132,13 +132,13 @@ namespace Zios{
 			EditorPrefs.SetBool(name,value);
 			#endif
 		}
-		public static void Destroy(UnityObject target){
+		public static void Destroy(UnityObject target,bool destroyAssets=false){
 			if(target.IsNull()){return;}
 			if(target is Component){
 				var component = target.As<Component>();
 				if(component.gameObject.IsNull()){return;}
 			}
-			if(!Application.isPlaying){UnityObject.DestroyImmediate(target,true);}
+			if(!Application.isPlaying){UnityObject.DestroyImmediate(target,destroyAssets);}
 			else{UnityObject.Destroy(target);}
 		}
 		public static Type GetType(string path){
@@ -185,6 +185,12 @@ namespace Zios{
 		//============================
 		// Callbacks
 		//============================
+		public static void RepeatCall(CallbackFunction method,int amount){
+			var repeat = Enumerable.Range(0,amount).GetEnumerator();
+			while(repeat.MoveNext()){
+				method();
+			}
+		}
 		public static void EditorCall(CallbackFunction method){
 			#if UNITY_EDITOR
 			if(!Utility.IsPlaying()){

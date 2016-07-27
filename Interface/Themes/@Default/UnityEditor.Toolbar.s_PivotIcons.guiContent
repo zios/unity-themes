@@ -1,9 +1,0 @@
-[0]
-text = Center
-image = ToolHandleCenter
-tooltip = The tool handle is placed at the center of the selection.
-
-[1]
-text = Pivot
-image = ToolHandlePivot
-tooltip = The tool handle is placed at the active object's pivot point.

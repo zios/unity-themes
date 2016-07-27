@@ -42,16 +42,14 @@ namespace Zios{
 		}
 		public static bool Is<T>(this object current){
 			if(current.IsNull()){return false;}
-			var type = current.GetType();
-			var value = typeof(T);
-			return (type.Equals(value)) || (type.IsSubclassOf(value));
+			var type = current is Type ? (Type)current : current.GetType();
+			return type.IsSubclassOf(typeof(T)) || type.IsAssignableFrom(typeof(T));
 		}
 		public static bool Is(this Type current,Type value){
-			return (current.Equals(value)) || (current.IsSubclassOf(value));
+			return current.IsSubclassOf(value) || current.IsAssignableFrom(value);
 		}
 		public static bool Is<T>(this T current,Type value){
-			var type = typeof(T);
-			return (type.Equals(value)) || (type.IsSubclassOf(value));
+			return typeof(T).IsSubclassOf(value) || typeof(T).IsAssignableFrom(value);
 		}
 		public static bool Is<T>(this T current,string name){
 			var type = typeof(T);
@@ -60,7 +58,7 @@ namespace Zios{
 				Debug.Log("[ObjectExtension] Type -- " + name + " not found.");
 				return false;
 			}
-			return (type == value) || (type.IsSubclassOf(value));
+			return type.IsSubclassOf(value) || type.IsAssignableFrom(value);
 		}
 		public static bool IsNot<T>(this T current,Type value){return !current.Is(value);}
 		public static bool IsNot<T>(this T current,string name){return !current.Is(name);}

@@ -1,3 +1,0 @@
-[performanceWarning]
-image = console.warnicon.sml
-tooltip = Collecting GPU Profiler data might have overhead. Close graph if you don't need its data

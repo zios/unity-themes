@@ -1,7 +1,0 @@
-[0]
-text = Original
-tooltip = Keeps the horizontal position as it is authored in the source file.
-
-[1]
-text = Center of Mass
-tooltip = Keeps the center of mass aligned with root transform position.

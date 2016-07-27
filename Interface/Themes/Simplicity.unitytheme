@@ -1,0 +1,7 @@
+CustomizablePalette = True
+CustomizableFontset = True
+CustomizableIconset = True
+Palette = Zone
+Fontset = 8bitOperator
+Iconset = Simplicity
+Skinset = Simplicity
