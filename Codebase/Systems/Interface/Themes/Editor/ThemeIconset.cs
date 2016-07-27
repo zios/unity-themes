@@ -27,10 +27,11 @@ namespace Zios.Interface{
 			iconset.contents.AddRange(ThemeContent.Import(path));
 			return iconset;
 		}
-		public void Apply(){
+		public void Apply(){this.Apply(true);}
+		public void Apply(bool includeBuiltin){
 			foreach(var content in this.contents){
-				content.SyncScope();
-				content.SyncTarget();
+				if(!includeBuiltin && content.builtin){continue;}
+				content.Sync();
 				content.target.text = content.value.text;
 				content.target.tooltip = content.value.tooltip;
 				content.target.image = content.value.image;
@@ -52,6 +53,7 @@ namespace Zios.Interface{
 					file.WriteText(contents);
 				}
 				Theme.setup = false;
+				Theme.loaded = false;
 			}
 		}
 		public string Serialize(){
@@ -73,6 +75,7 @@ namespace Zios.Interface{
 		public object targetScope;
 		public string targetPath;
 		public ThemeIconset iconset;
+		public bool builtin;
 		public GUIContent target = new GUIContent();
 		public GUIContent value = new GUIContent();
 		public static List<ThemeContent> Import(string path){
@@ -95,6 +98,7 @@ namespace Zios.Interface{
 					content.targetPath = "EditorGUIUtility.s_IconGUIContents";
 					content.value = new GUIContent(item.Value.As<GUIContent>());
 					content.value.image = FileManager.GetAsset<Texture2D>(fileName);
+					content.builtin = true;
 				}
 			}
 			return imported;
@@ -129,9 +133,11 @@ namespace Zios.Interface{
 			if(!value.tooltip.IsEmpty()){contents = contents.AddLine("tooltip = "+target.tooltip);}
 			return contents;
 		}
+
 		public void Setup(string path){
 			if(this.imageName.IsEmpty()){return;}
-			if(!FileManager.Exists(path+"/GUIContent/")){
+			this.value.image = FileManager.GetAsset<Texture2D>(path+"/"+this.imageName+".png");
+			if(this.value.image.IsNull()){
 				foreach(var texture in Locate.GetAssets<Texture2D>()){
 					if(texture.name == this.imageName && AssetDatabase.GetAssetPath(texture).Contains("Library/unity")){
 						this.value.image = texture;
@@ -139,9 +145,8 @@ namespace Zios.Interface{
 					}
 				}
 			}
-			this.value.image = FileManager.GetAsset<Texture2D>(path+"/GUIContent/"+this.imageName+".png");
 		}
-		public void SyncScope(){
+		public void Sync(){
 			string field = this.targetPath.Split(".").Last();
 			string parent =  this.targetPath.Replace("."+field,"");
 			var typeDirect = Utility.GetUnityType(this.targetPath);
@@ -150,23 +155,10 @@ namespace Zios.Interface{
 				if(Theme.debug){Debug.LogWarning("[Themes] No matching class/field found for GUIContent -- " + this.targetPath);}
 				return;
 			}
-			this.targetScope = typeDirect ?? typeParent.GetVariable(field);
-			if(this.targetScope.IsNull()){
-				try{
-					this.targetScope = Activator.CreateInstance(typeParent.GetVariableType(field));
-					typeParent.SetVariable(field,this.targetScope);
-				}
-				catch{}
-			}
-		}
-		public void SyncTarget(){
+			this.targetScope = typeDirect ?? typeParent.InstanceVariable(field);
 			if(this.targetScope.IsNull()){return;}
 			if(this.targetScope.Is<GUIContent[]>() || this.targetScope.Is<Hashtable>() || this.targetScope.HasVariable(this.name)){
-				this.target = this.targetScope.GetVariable<GUIContent>(this.name);
-				if(this.target.IsNull()){
-					this.target = new GUIContent();
-					this.targetScope.SetVariable(this.name,this.target);
-				}
+				this.target = this.targetScope.InstanceVariable(this.name).As<GUIContent>();
 			}
 		}
 		[MenuItem("Zios/Theme/Development/Dump [GUIContent]")]

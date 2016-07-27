@@ -1,0 +1,25 @@
+(UnityEditor.ProjectBrowser.s_Styles)
+[m_CreateDropdownContent]
+text = Create
+
+[m_EmptyFolderText]
+text = This folder is empty
+
+[m_FilterByLabel]
+image = FilterByLabel
+tooltip = Search by Label
+
+[m_FilterByType]
+image = FilterByType
+tooltip = Search by Type
+
+[m_SaveFilterContent]
+image = Favorite
+tooltip = Save search
+
+[m_SearchIn]
+text = Search:
+
+[m_ShowChildAssetsContent]
+image = UnityEditor.HierarchyWindow
+tooltip = Toggle visibility of child assets in folders

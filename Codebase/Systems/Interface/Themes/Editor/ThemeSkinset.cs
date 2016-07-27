@@ -8,10 +8,12 @@ namespace Zios.Interface{
 	[Serializable]
 	public class ThemeSkinset{
 		public static List<ThemeSkinset> all = new List<ThemeSkinset>();
+		public bool active = true;
 		public string name;
 		public string path;
 		public ThemeSkin main;
 		public List<ThemeSkin> skins = new List<ThemeSkin>();
+		public List<ThemeSkinset> variants = new List<ThemeSkinset>();
 		//=================================
 		// Files
 		//=================================
@@ -25,9 +27,11 @@ namespace Zios.Interface{
 		public static ThemeSkinset Import(string path){
 			path = path.Replace("\\","/");
 			var skinset = new ThemeSkinset();
-			skinset.name = path.GetPathTerm();
+			var isVariant = path.GetPathTerm().Contains("+");
+			skinset.name = path.GetPathTerm().Remove("+");
 			skinset.path = path;
 			foreach(var skinFile in FileManager.FindAll(path+"/*.guiskin",true,false)){
+				if(!isVariant && skinFile.path.Contains("+")){continue;}
 				var active = skinset.skins.AddNew();
 				if(skinFile.name == skinset.name){
 					skinset.skins.Remove(active);
@@ -45,10 +49,13 @@ namespace Zios.Interface{
 					if(Theme.debug){Debug.LogWarning("[Themes] No matching class/field found for GUISkin -- " + skinFile.name + ". Possible version conflict.");}
 					continue;
 				}
-				active.scope = !typeDirect.IsNull() ? typeDirect : typeParent.InstanceVariable(field);
-				active.scopedStyles = !typeDirect.IsNull() ? active.scope.GetVariables<GUIStyle>(null,flags) : active.scope.GetVariables<GUIStyle>();
-				var styles = new List<GUIStyle>();
-				foreach(var style in active.scopedStyles){styles.Add(style.Value.Copy());}
+				active.GetScope = ()=>{return !typeDirect.IsNull() ? typeDirect : typeParent.InstanceVariable(field);};
+				active.scopedStyles = !typeDirect.IsNull() ? active.GetScope().GetVariables<GUIStyle>(null,flags) : active.GetScope().GetVariables<GUIStyle>();
+			}
+			foreach(var variantPath in Directory.GetDirectories(path).Where(x=>x.Contains("+"))){
+				var variant = ThemeSkinset.Import(variantPath);
+				variant.active = false;
+				skinset.variants.Add(variant);
 			}
 			return skinset;
 		}
@@ -62,12 +69,16 @@ namespace Zios.Interface{
 				file.WriteText(this.Serialize());
 				EditorPrefs.SetString("EditorTheme",theme.name);
 				Theme.setup = false;
+				Theme.loaded = false;
 			}
 		}
 		public void Apply(Theme theme){
 			this.ApplyMain(theme);
 			foreach(var skin in this.skins){
 				skin.Apply(theme);
+			}
+			foreach(var variant in this.variants.Where(x=>x.active)){
+				variant.Apply(theme);
 			}
 		}
 		public void ApplyMain(Theme theme){
@@ -81,8 +92,8 @@ namespace Zios.Interface{
 				theme.palette.Apply(main);
 			}
 			skin.Use(main,!Theme.liveEdit);
-			EditorGUIUtility.GetBuiltinSkin(EditorSkin.Game).Use(main,!Theme.liveEdit);
-			EditorGUIUtility.GetBuiltinSkin(EditorSkin.Scene).Use(main,!Theme.liveEdit);
+			EditorGUIUtility.GetBuiltinSkin(EditorSkin.Game).Use(skin,!Theme.liveEdit);
+			EditorGUIUtility.GetBuiltinSkin(EditorSkin.Scene).Use(skin,!Theme.liveEdit);
 			Utility.GetUnityType("AppStatusBar").ClearVariable("background");
 			Utility.GetUnityType("SceneRenderModeWindow.Styles").SetVariable("sMenuItem",skin.Get("MenuItem"));
 			Utility.GetUnityType("SceneRenderModeWindow.Styles").SetVariable("sSeparator",skin.Get("sv_iconselector_sep"));
@@ -118,24 +129,24 @@ namespace Zios.Interface{
 	[Serializable]
 	public class ThemeSkin{
 		public Dictionary<string,GUIStyle> scopedStyles;
-		public object scope;
+		public Func<object> GetScope;
 		public GUISkin skin;
 		public string name;
 		public string path;
 		public void Apply(Theme theme){
 			var isDefault = this.name == "Default";
-			var styles = this.skin.GetNamedStyles(false,true,true);
 			var skin = this.skin;
-			if(isDefault && !Theme.liveEdit){
+			if(!isDefault && !Theme.liveEdit){
 				skin = theme.fontset.Apply(skin);
 				theme.palette.Apply(skin);
 			}
+			var styles = skin.GetNamedStyles(false,true,true);
 			foreach(var item in this.scopedStyles){
 				if(styles.ContainsKey(item.Key)){
 					var baseName = styles[item.Key].name.Parse("[","]");
 					var replacement = styles[item.Key];
 					var newStyle = Theme.liveEdit ? replacement : new GUIStyle(replacement).Rename(baseName);
-					scope.SetVariable(item.Key,newStyle);
+					this.GetScope().SetVariable(item.Key,newStyle);
 				}
 			}
 		}
