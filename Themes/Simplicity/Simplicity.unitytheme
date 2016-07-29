@@ -8,4 +8,4 @@ Palette = Slate
 Fontset = @Default
 
 [+Brushed]
-WindowBackgroundOverride = CircleWhite10.png
+WindowBackgroundOverride = Brushed.png

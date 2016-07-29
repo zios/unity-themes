@@ -24,7 +24,7 @@ OffsetY = 0
 
 [Search]
 Font = Orkney-Medium
-SizeOffset = 0
+SizeOffset = -1
 OffsetX = 0
 OffsetY = 0
 

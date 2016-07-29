@@ -20,11 +20,11 @@ OffsetY = -1
 Font = NovaOval
 SizeOffset = 0
 OffsetX = 0
-OffsetY = -1
+OffsetY = 0
 
 [Search]
-Font = NovaOval
-SizeOffset = 1
+Font = NovaScript
+SizeOffset = 0
 OffsetX = 0
 OffsetY = 0
 

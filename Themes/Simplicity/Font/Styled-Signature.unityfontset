@@ -20,11 +20,11 @@ OffsetY = -1
 Font = DeliusSwashCaps-Regular
 SizeOffset = 1
 OffsetX = 0
-OffsetY = -1
+OffsetY = 0
 
 [Search]
 Font = Delius-Regular
-SizeOffset = 1
+SizeOffset = 0
 OffsetX = 0
 OffsetY = 0
 

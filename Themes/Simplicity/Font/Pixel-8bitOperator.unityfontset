@@ -24,9 +24,9 @@ OffsetY = -2
 
 [Search]
 Font = 8bitOperatorPlus-Regular
-SizeOffset = 0
+SizeOffset = -2
 OffsetX = 0
-OffsetY = -2
+OffsetY = -1
 
 [Code]
 Font = 8bitOperatorPlus-Regular

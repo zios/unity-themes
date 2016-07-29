@@ -20,13 +20,13 @@ OffsetY = 0
 Font = JosefinSans-SemiBoldItalic
 SizeOffset = 1
 OffsetX = 0
-OffsetY = 0
+OffsetY = 1
 
 [Search]
 Font = Paprika-Regular
-SizeOffset = 0
+SizeOffset = -3
 OffsetX = 0
-OffsetY = -1
+OffsetY = 1
 
 [Code]
 Font = AurulentSansMono

@@ -5,28 +5,28 @@ OffsetX = 0
 OffsetY = -1
 
 [Border]
-Font = Orkney-Regular
-SizeOffset = 0
+Font = Ubuntu-BoldItalic
+SizeOffset = -1
 OffsetX = 0
-OffsetY = 0
+OffsetY = -1
 
 [Button]
-Font = Orkney-Regular
+Font = Ubuntu-Bold
 SizeOffset = 0
 OffsetX = 0
 OffsetY = 0
 
 [Highlight]
-Font = Orkney-Regular
+Font = Ubuntu-BoldItalic
+SizeOffset = -1
+OffsetX = 0
+OffsetY = -1
+
+[Search]
+Font = Ubuntu-Italic
 SizeOffset = 0
 OffsetX = 0
 OffsetY = 0
-
-[Search]
-Font = Ubuntu-Regular
-SizeOffset = 1
-OffsetX = 0
-OffsetY = -1
 
 [Code]
 Font = AurulentSansMono

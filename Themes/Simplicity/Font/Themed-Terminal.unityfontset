@@ -8,7 +8,7 @@ OffsetY = -1
 Font = SquaresBoldFree
 SizeOffset = -3
 OffsetX = 0
-OffsetY = -1
+OffsetY = -2
 
 [Button]
 Font = SquaresBoldFree
@@ -20,13 +20,13 @@ OffsetY = -1
 Font = SquaresBoldFree
 SizeOffset = -3
 OffsetX = 0
-OffsetY = -1
+OffsetY = 0
 
 [Search]
 Font = SquaresBoldFree
-SizeOffset = -2
+SizeOffset = -4
 OffsetX = 0
-OffsetY = -1
+OffsetY = 0
 
 [Code]
 Font = AurulentSansMono

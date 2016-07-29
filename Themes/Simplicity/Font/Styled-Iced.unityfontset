@@ -23,10 +23,10 @@ OffsetX = 0
 OffsetY = -1
 
 [Search]
-Font = Iceberg-Regular
+Font = Iceland-Regular
 SizeOffset = 2
 OffsetX = 0
-OffsetY = -1
+OffsetY = 0
 
 [Code]
 Font = SourceCodePro-Semibold

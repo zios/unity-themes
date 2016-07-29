@@ -20,13 +20,13 @@ OffsetY = -1
 Font = DroidSans
 SizeOffset = 0
 OffsetX = 0
-OffsetY = -1
+OffsetY = 1
 
 [Search]
 Font = DroidSans
-SizeOffset = 1
+SizeOffset = -2
 OffsetX = 0
-OffsetY = -1
+OffsetY = 1
 
 [Code]
 Font = AurulentSansMono

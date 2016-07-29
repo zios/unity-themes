@@ -20,13 +20,13 @@ OffsetY = -1
 Font = LiberationSans-Regular
 SizeOffset = 0
 OffsetX = 0
-OffsetY = -1
+OffsetY = 0
 
 [Search]
-Font = LiberationSans-Regular
-SizeOffset = 1
+Font = LiberationSans-Italic
+SizeOffset = 0
 OffsetX = 0
-OffsetY = -1
+OffsetY = 0
 
 [Code]
 Font = LiberationMono-Regular

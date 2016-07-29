@@ -8,7 +8,7 @@ OffsetY = -1
 Font = Oswald-Regular
 SizeOffset = 0
 OffsetX = 0
-OffsetY = -1
+OffsetY = -2
 
 [Button]
 Font = Oswald-Regular
@@ -20,13 +20,13 @@ OffsetY = -1
 Font = Oswald-Regular
 SizeOffset = 0
 OffsetX = 0
-OffsetY = -1
+OffsetY = 0
 
 [Search]
 Font = Homenaje-Regular
-SizeOffset = 4
+SizeOffset = 2
 OffsetX = 0
-OffsetY = -1
+OffsetY = 0
 
 [Code]
 Font = AurulentSansMono
