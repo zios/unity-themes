@@ -31,6 +31,14 @@ namespace Zios{
 		Luminosity
 	}
 	public static class ColorExtension{
+		public static Color Lerp(this Color current,Color other,float amount){
+			var result = new Color();
+			result.r = Mathf.Lerp(current.r,other.r,amount);
+			result.g = Mathf.Lerp(current.g,other.g,amount);
+			result.b = Mathf.Lerp(current.b,other.b,amount);
+			result.a = Mathf.Lerp(current.a,other.a,amount);
+			return result;
+		}
 		public static bool Matches(this Color current,Color other,bool matchAlpha=true){
 			return matchAlpha ? current == other : (current.r == other.r && current.g == other.g && current.b == other.b);
 		}
@@ -160,6 +168,17 @@ namespace Zios{
 		}
 		public static Color Divide(this Color current,float amount){
 			return current.Divide(new Color(amount,amount,amount));
+		}
+		public static Color Set(this Color current,float r,float g=-1,float b=-1,float a=-1){
+			if(r!=-1){current.r = r;}
+			if(g!=-1){current.g = g;}
+			if(b!=-1){current.b = b;}
+			if(a!=-1){current.a = a;}
+			return current;
+		}
+		public static Color SetAlpha(this Color current,float a){
+			current.a = a;
+			return current;
 		}
 		public static Color Random(this Color current,float intensity=1.0f){
 			int[] order = (new List<int>(){0,1,2}).Shuffle().ToArray();

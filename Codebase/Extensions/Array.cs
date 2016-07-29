@@ -42,12 +42,6 @@ namespace Zios{
 			list.CopyTo(result,current.Length);
 			return result;
 		}
-		public static T[] Unshift<T>(this T[] current,T item){
-			T[] result = new T[1 + current.Length];
-			new T[]{item}.CopyTo(result,0);
-			current.CopyTo(result,1);
-			return result;
-		}
 		public static bool Exists<T>(this T[] current,Predicate<T> predicate){
 			return Array.Exists(current,predicate);
 		}

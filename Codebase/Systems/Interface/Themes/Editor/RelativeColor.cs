@@ -10,7 +10,7 @@ namespace Zios.Interface{
 		public Color original;
 		public float offset = 1;
 		public bool skipTexture;
-		public string sourceName;
+		public string sourceName = "";
 		public RelativeColor source;
 		public Texture2D texture;
 		public ColorBlend blend = ColorBlend.Multiply;
@@ -33,17 +33,21 @@ namespace Zios.Interface{
 			copy.UseVariables(this);
 			return copy;
 		}
-		public string Serialize(){
-			var contents = this.name + " : " + this.value.Serialize();
-			if(!this.sourceName.IsEmpty()){contents += " : " + this.sourceName;}
+		public string Serialize(int nameLength=0,int sourceNameLength=0){
+			var name = nameLength < 1 ? this.name : this.name.PadRight(nameLength,' ');
+			var contents = name + " : " + this.value.Serialize().PadRight(9,' ');
+			if(!this.sourceName.IsEmpty()){
+				var sourceName = sourceNameLength < 1 ? this.sourceName : this.sourceName.PadRight(sourceNameLength,' ');	
+				contents += " : " + sourceName;
+			}
 			if(this.offset != 1){contents += " : " + this.offset;}
 			return contents;
 		}
 		public RelativeColor Deserialize(string data){
-			var terms = data.Remove(":","=").Split(" ").Where(x=>!x.IsEmpty()).ToArray();
+			var terms = data.Trim().Replace("\t"," ").Remove(":","=").Split(" ").Where(x=>!x.IsEmpty()).ToArray();
 			var main = terms.Skip(1);
 			this.name = terms[0];
-			this.sourceName = main.Where(x=>!x.IsColor() && !x.IsNumber()).FirstOrDefault();
+			this.sourceName = main.Where(x=>!x.IsColor() && !x.IsNumber()).FirstOrDefault() ?? "";
 			var colorValue = main.Where(x=>x.IsColor()).FirstOrDefault();
 			var offsetValue = main.Where(x=>x.IsNumber()).FirstOrDefault();
 			var color = !colorValue.IsEmpty() ? colorValue.ToColor() : Color.magenta;
@@ -78,25 +82,15 @@ namespace Zios.Interface{
 			path = path.GetAssetPath();
 			FileManager.Create(path+"@Palettes/Generated/");
 			var imagePath = path+"@Palettes/Generated/Color"+this.name+".png";
-			var borderPath = path+"@Palettes/Generated/Color"+this.name+"Outline.png";
 			var image = this.texture = (Texture2D)AssetDatabase.LoadAssetAtPath(imagePath,typeof(Texture2D));
-			var border = (Texture2D)AssetDatabase.LoadAssetAtPath(borderPath,typeof(Texture2D));
 			if(image.IsNull()){
 				image = this.texture = new Texture2D(1,1,TextureFormat.RGBA32,false);
 				image.SaveAs(imagePath);
 				AssetDatabase.ImportAsset(imagePath);
 			}
-			if(border.IsNull()){
-				border = new Texture2D(3,3,TextureFormat.RGBA32,false);
-				border.SaveAs(borderPath);
-				AssetDatabase.ImportAsset(borderPath);
-			}
 			image.SetPixel(0,0,color);
 			image.Apply();
-			border.SetPixels(new Color[]{color,color,color,color,Color.clear,color,color,color,color});
-			border.Apply();
 			image.SaveAs(imagePath);
-			border.SaveAs(borderPath);
 			return image;
 		}
 	}

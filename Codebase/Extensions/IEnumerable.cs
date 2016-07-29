@@ -5,7 +5,7 @@ using System.Linq;
 namespace Zios{
 	public static class IEnumerableExtension{
 		//=======================
-		// General
+		// Conversion
 		//=======================
 		public static Dictionary<TKey,TValue> ToDictionary<TKey,TValue>(this IEnumerable<KeyValuePair<TKey,TValue>> current){
 			return current.ToDictionary(x=>x.Key,x=>x.Value);
@@ -31,6 +31,9 @@ namespace Zios{
 		public static HashSet<T> ToHashSet<T>(this IEnumerable<T> current){
 		   return new HashSet<T>(current);
 		}
+		//=======================
+		// General
+		//=======================
 		public static bool ContainsAll<T>(this IEnumerable<T> current,IEnumerable<T> other){
 			return !other.Except(current).Any();
 		}
@@ -46,6 +49,11 @@ namespace Zios{
 		}
 		public static IEnumerable<T> Deserialize<T>(this IEnumerable<T> current,string value){
 			return value.Split("-").Select(x=>x.Deserialize<T>()).ToArray();
+		}
+		public static IEnumerable<T> Unshift<T>(this IEnumerable<T> current,T item){
+			var result = current.ToList();
+			result.Insert(0,item);
+			return result;
 		}
 		//=======================
 		// LINQ-ish

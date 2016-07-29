@@ -210,6 +210,7 @@ namespace Zios{
 			//foreach(var window in Locate.GetAssets<EditorWindow>()){window.Repaint();}
 			//Utility.GetUnityType("Toolbar").CallMethod("RepaintToolbar");
 			UnityEditorInternal.InternalEditorUtility.RepaintAllViews();
+			//Utility.RebuildInspectors();
 			#endif
 		}
 		public static void RepaintGameView(){

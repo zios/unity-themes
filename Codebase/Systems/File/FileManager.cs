@@ -302,12 +302,12 @@ namespace Zios{
 			return "";
 			#endif
 		}
-		public static T GetAsset<T>(string name,bool showWarnings=true){
+		public static T GetAsset<T>(string name,bool showWarnings=true) where T : UnityObject{
 			FileData file = FileManager.Find(name,showWarnings);
 			if(file != null){return file.GetAsset<T>();}
 			return default(T);
 		}
-		public static T[] GetAssets<T>(string name="*",bool showWarnings=true){
+		public static T[] GetAssets<T>(string name="*",bool showWarnings=true) where T : UnityObject{
 			var files = FileManager.FindAll(name,true,showWarnings);
 			if(files.Length < 1){return new T[0];}
 			return files.Select(x=>x.GetAsset<T>()).Where(x=>!x.IsNull()).ToArray();
@@ -363,12 +363,8 @@ namespace Zios{
 			}
 			FileManager.folders[this.path] = this;
 		}
-		public string GetText(){
-			return File.ReadAllText(this.path);
-		}
-		public void WriteText(string contents){
-			File.WriteAllText(this.path,contents);
-		}
+		public string GetText(){return File.ReadAllText(this.path);}
+		public void WriteText(string contents){File.WriteAllText(this.path,contents);}
 		public void Delete(bool cacheOnly=false){
 			foreach(var item in FileManager.cache.Copy()){
 				if(item.Value.Contains(this)){
@@ -393,10 +389,10 @@ namespace Zios{
 		public string GetCreatedDate(string format="M-d-yy"){return File.GetCreationTime(this.path).ToString(format);}
 		public string GetChecksum(){return this.GetText().ToMD5();}
 		public long GetSize(){return new FileInfo(this.path).Length;}
-		public T GetAsset<T>(){
+		public T GetAsset<T>() where T : UnityObject{
 			#if UNITY_EDITOR
 			if(Application.isEditor && this.path.IndexOf("Assets") != -1){
-				return (T)AssetDatabase.LoadAssetAtPath(this.GetAssetPath(),typeof(T)).Box();
+				return AssetDatabase.LoadAssetAtPath<T>(this.GetAssetPath());
 			}
 			#endif
 			return default(T);
@@ -409,11 +405,7 @@ namespace Zios{
 			#endif
 			return "";
 		}
-		public string GetAssetPath(bool full=true){
-			string path = this.path.Substring(this.path.IndexOf("Assets"));
-			if(full){return path;}
-			return path.Cut(0,path.LastIndexOf("/"));
-		}
+		public string GetAssetPath(){return this.path.GetAssetPath();}
 		public string GetFolderPath(){
 			return this.path.Substring(0,this.path.LastIndexOf("/")) + "/";
 		}
