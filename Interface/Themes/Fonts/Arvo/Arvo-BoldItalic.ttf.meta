@@ -3,18 +3,18 @@ guid: 116133d664f0f90478b1ceeecc517e9d
 timeCreated: 1467623693
 licenseType: Free
 TrueTypeFontImporter:
-  serializedVersion: 3
+  serializedVersion: 4
   fontSize: 16
   forceTextureCase: -2
-  characterSpacing: 1
-  characterPadding: 0
+  characterSpacing: 0
+  characterPadding: 1
   includeFontData: 1
   fontNames:
   - Arvo
   fallbackFontReferences:
   - {fileID: 12800000, guid: 0a1e756097eacd44581d2fdac5c3ea93, type: 3}
   customCharacters: 
-  fontRenderingMode: 0
+  fontRenderingMode: 3
   ascentCalculationMode: 1
   userData: 
   assetBundleName: 

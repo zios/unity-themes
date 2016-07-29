@@ -3,17 +3,19 @@ guid: 6b7ac624f37d4db4f9fca9f4bab446df
 timeCreated: 1458145696
 licenseType: Free
 TrueTypeFontImporter:
-  serializedVersion: 2
+  serializedVersion: 4
   fontSize: 16
   forceTextureCase: -2
-  characterSpacing: 1
-  characterPadding: 0
+  characterSpacing: 0
+  characterPadding: 1
   includeFontData: 1
-  use2xBehaviour: 0
-  fontNames: []
-  fallbackFontReferences: []
+  fontNames:
+  - HK Grotesk
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 4eaac5e3cfc7e304c926fd494920ea48, type: 3}
   customCharacters: 
-  fontRenderingMode: 0
+  fontRenderingMode: 3
+  ascentCalculationMode: 1
   userData: 
   assetBundleName: 
   assetBundleVariant: 

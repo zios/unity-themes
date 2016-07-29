@@ -3,17 +3,17 @@ guid: f97f69ade5458c149aeb72d10c3e8f40
 timeCreated: 1467650210
 licenseType: Free
 TrueTypeFontImporter:
-  serializedVersion: 3
+  serializedVersion: 4
   fontSize: 16
   forceTextureCase: -2
-  characterSpacing: 1
-  characterPadding: 0
+  characterSpacing: 0
+  characterPadding: 1
   includeFontData: 1
   fontNames:
   - Iceland
   fallbackFontReferences: []
   customCharacters: 
-  fontRenderingMode: 0
+  fontRenderingMode: 3
   ascentCalculationMode: 1
   userData: 
   assetBundleName: 

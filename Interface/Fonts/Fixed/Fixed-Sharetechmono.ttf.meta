@@ -3,17 +3,19 @@ guid: 6ed3d9990f4326347966405f61da4c18
 timeCreated: 1457271195
 licenseType: Free
 TrueTypeFontImporter:
-  serializedVersion: 2
+  serializedVersion: 4
   fontSize: 16
   forceTextureCase: -2
-  characterSpacing: 1
-  characterPadding: 0
+  characterSpacing: 0
+  characterPadding: 1
   includeFontData: 1
-  use2xBehaviour: 0
-  fontNames: []
-  fallbackFontReferences: []
+  fontNames:
+  - Share-TechMono
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 52261bfc6eb36e44192d74d35c189b9a, type: 3}
   customCharacters: 
-  fontRenderingMode: 0
+  fontRenderingMode: 3
+  ascentCalculationMode: 1
   userData: 
   assetBundleName: 
   assetBundleVariant: 

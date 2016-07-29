@@ -3,11 +3,11 @@ guid: ef09737c895e48642af2e3742eff8f26
 timeCreated: 1467623702
 licenseType: Free
 TrueTypeFontImporter:
-  serializedVersion: 3
+  serializedVersion: 4
   fontSize: 16
   forceTextureCase: -2
-  characterSpacing: 1
-  characterPadding: 0
+  characterSpacing: 0
+  characterPadding: 1
   includeFontData: 1
   fontNames:
   - Ubuntu
@@ -20,7 +20,7 @@ TrueTypeFontImporter:
   - {fileID: 12800000, guid: 64b3363e230f3204eaf7305e721e2ea7, type: 3}
   - {fileID: 12800000, guid: 8644fe6ffbc83da468fc63e9eb07bf27, type: 3}
   customCharacters: 
-  fontRenderingMode: 0
+  fontRenderingMode: 3
   ascentCalculationMode: 1
   userData: 
   assetBundleName: 

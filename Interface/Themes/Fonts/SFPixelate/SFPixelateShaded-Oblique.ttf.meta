@@ -3,11 +3,11 @@ guid: 1b80aa71c497c0f4ea12dc4ed156dab2
 timeCreated: 1467650208
 licenseType: Free
 TrueTypeFontImporter:
-  serializedVersion: 3
-  fontSize: 16
+  serializedVersion: 4
+  fontSize: 10
   forceTextureCase: -2
-  characterSpacing: 1
-  characterPadding: 0
+  characterSpacing: 0
+  characterPadding: 1
   includeFontData: 1
   fontNames:
   - SF Pixelate Shaded

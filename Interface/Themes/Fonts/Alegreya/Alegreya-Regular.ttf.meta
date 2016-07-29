@@ -3,11 +3,11 @@ guid: 9af5f15f08067ca47953d1d9508d0dbb
 timeCreated: 1467623700
 licenseType: Free
 TrueTypeFontImporter:
-  serializedVersion: 3
+  serializedVersion: 4
   fontSize: 16
   forceTextureCase: -2
-  characterSpacing: 1
-  characterPadding: 0
+  characterSpacing: 0
+  characterPadding: 1
   includeFontData: 1
   fontNames:
   - Alegreya
@@ -18,7 +18,7 @@ TrueTypeFontImporter:
   - {fileID: 12800000, guid: 2deddc9cbe658ec43849f905c4c85367, type: 3}
   - {fileID: 12800000, guid: 13e1067d6b3c0004f857b1f15e7c17bb, type: 3}
   customCharacters: 
-  fontRenderingMode: 0
+  fontRenderingMode: 3
   ascentCalculationMode: 1
   userData: 
   assetBundleName: 

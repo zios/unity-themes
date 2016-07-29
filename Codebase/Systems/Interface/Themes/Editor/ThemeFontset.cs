@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System;
+using System.Linq;
 namespace Zios.Interface{
 	using UnityEngine;
 	using UnityEditor;
@@ -34,7 +35,7 @@ namespace Zios.Interface{
 			if(path.Length > 0){
 				var file = FileManager.Create(path);
 				file.WriteText(this.Serialize());
-				EditorPrefs.SetString("EditorFontset-"+theme.name,path.GetFileName());
+				EditorPrefs.SetString("EditorFontset"+Theme.suffix,path.GetFileName());
 				Theme.setup = false;
 				Theme.loaded = false;
 			}
@@ -77,6 +78,7 @@ namespace Zios.Interface{
 				if(term.Matches("Font",true)){
 					themeFont.font = FileManager.GetAsset<Font>(value+".ttf",false);
 					themeFont.font = themeFont.font ?? FileManager.GetAsset<Font>(value+".otf",false);	
+					themeFont.font = themeFont.font ?? Resources.FindObjectsOfTypeAll<Font>().Where(x=>x.name==value).FirstOrDefault();
 				}
 				else if(term.Matches("SizeOffset",true)){themeFont.sizeOffset = value.ToInt();}
 				else if(term.Matches("OffsetX",true)){themeFont.offsetX = value.ToFloat();}

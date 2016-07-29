@@ -3,17 +3,21 @@ guid: e4a7f9da2d7bf8342a44f5bd12a1e676
 timeCreated: 1458145697
 licenseType: Free
 TrueTypeFontImporter:
-  serializedVersion: 2
+  serializedVersion: 4
   fontSize: 16
   forceTextureCase: -2
-  characterSpacing: 1
-  characterPadding: 0
+  characterSpacing: 0
+  characterPadding: 1
   includeFontData: 1
-  use2xBehaviour: 0
-  fontNames: []
-  fallbackFontReferences: []
+  fontNames:
+  - TeX Gyre Heros
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: a1753031884b21743ab7fa26d85f6d3e, type: 3}
+  - {fileID: 12800000, guid: 0f1747c11e06c124c834f05ab98ca529, type: 3}
+  - {fileID: 12800000, guid: a037c642376d7724aa3a25d056b1764b, type: 3}
   customCharacters: 
-  fontRenderingMode: 0
+  fontRenderingMode: 3
+  ascentCalculationMode: 1
   userData: 
   assetBundleName: 
   assetBundleVariant: 

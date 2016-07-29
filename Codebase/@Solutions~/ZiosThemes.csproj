@@ -94,7 +94,8 @@
     <Compile Include="..\Extensions\%40Unity\Editor\GenericMenu.cs" />
     <Compile Include="..\Systems\Interface\Themes\Editor\RelativeColor.cs" />
     <Compile Include="..\Systems\Interface\Themes\Editor\Theme.cs" />
-    <Compile Include="..\Systems\Interface\Themes\Editor\ThemeContent.cs" />
+    <Compile Include="..\Systems\Interface\Themes\Editor\ThemeIconset.cs" />
+    <Compile Include="..\Systems\Interface\Themes\Editor\ThemeSkinset.cs" />
     <Compile Include="..\Systems\Interface\Themes\Editor\ThemeFontset.cs" />
     <Compile Include="..\Systems\Interface\Themes\Editor\ThemePalette.cs" />
     <Compile Include="..\Systems\Interface\Themes\Editor\ThemeSaving.cs" />

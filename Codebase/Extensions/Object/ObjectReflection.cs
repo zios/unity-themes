@@ -350,8 +350,11 @@ namespace Zios{
 			if(force || instance.IsNull()){
 				var instanceType = current.GetVariableType(name,index,flags);
 				if(!instanceType.GetConstructor(Type.EmptyTypes).IsNull()){
-					instance = Activator.CreateInstance(instanceType);
-					current.SetVariable(name,instance,index,flags);
+					try{
+						instance = Activator.CreateInstance(instanceType);
+						current.SetVariable(name,instance,index,flags);
+					}
+					catch{}
 				}
 			}
 			return instance;

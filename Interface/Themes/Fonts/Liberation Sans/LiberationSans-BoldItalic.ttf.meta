@@ -3,11 +3,11 @@ guid: 04a409fa534e9104c8cd0d1fb914fca5
 timeCreated: 1467623692
 licenseType: Free
 TrueTypeFontImporter:
-  serializedVersion: 3
+  serializedVersion: 4
   fontSize: 16
   forceTextureCase: -2
-  characterSpacing: 1
-  characterPadding: 0
+  characterSpacing: 0
+  characterPadding: 1
   includeFontData: 1
   fontNames:
   - Liberation Sans
@@ -18,7 +18,7 @@ TrueTypeFontImporter:
   - {fileID: 12800000, guid: 5274e49efd24b69429132b4e45c529f3, type: 3}
   - {fileID: 12800000, guid: d3fe1a9ec5bc82d4685ba1950c02ba47, type: 3}
   customCharacters: 
-  fontRenderingMode: 0
+  fontRenderingMode: 3
   ascentCalculationMode: 1
   userData: 
   assetBundleName: 

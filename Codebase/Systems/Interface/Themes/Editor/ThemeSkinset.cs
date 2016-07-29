@@ -31,7 +31,7 @@ namespace Zios.Interface{
 			skinset.name = path.GetPathTerm().Remove("+");
 			skinset.path = path;
 			foreach(var skinFile in FileManager.FindAll(path+"/*.guiskin",true,false)){
-				if(!isVariant && skinFile.path.Contains("+")){continue;}
+				if(!isVariant && skinFile.path.Contains("/+")){continue;}
 				var active = skinset.skins.AddNew();
 				if(skinFile.name == skinset.name){
 					skinset.skins.Remove(active);
@@ -67,7 +67,7 @@ namespace Zios.Interface{
 			if(path.Length > 0){
 				var file = FileManager.Create(path);
 				file.WriteText(this.Serialize());
-				EditorPrefs.SetString("EditorTheme",theme.name);
+				EditorPrefs.SetString("EditorTheme"+Theme.suffix,theme.name);
 				Theme.setup = false;
 				Theme.loaded = false;
 			}
@@ -90,6 +90,7 @@ namespace Zios.Interface{
 			if(!isDefault && !Theme.liveEdit){
 				main = theme.fontset.Apply(main);
 				theme.palette.Apply(main);
+				ThemeSkin.RemoveHover(main);
 			}
 			skin.Use(main,!Theme.liveEdit);
 			EditorGUIUtility.GetBuiltinSkin(EditorSkin.Game).Use(skin,!Theme.liveEdit);
@@ -117,8 +118,6 @@ namespace Zios.Interface{
 			foreach(var window in Locate.GetAssets<EditorWindow>()){
 				window.antiAlias = 1;
 				window.minSize = window.GetType().Name.Contains("Preferences") ? window.minSize : new Vector2(100,20);
-				window.wantsMouseMove = Theme.responsive;
-				window.autoRepaintOnSceneChange = Theme.responsive;
 			}
 			if(!isDefault){
 				Utility.GetUnityType("PreferencesWindow").InstanceVariable("constants").SetVariable("sectionHeader",skin.Get("HeaderLabel"));
@@ -139,6 +138,7 @@ namespace Zios.Interface{
 			if(!isDefault && !Theme.liveEdit){
 				skin = theme.fontset.Apply(skin);
 				theme.palette.Apply(skin);
+				ThemeSkin.RemoveHover(skin);
 			}
 			var styles = skin.GetNamedStyles(false,true,true);
 			foreach(var item in this.scopedStyles){
@@ -148,6 +148,12 @@ namespace Zios.Interface{
 					var newStyle = Theme.liveEdit ? replacement : new GUIStyle(replacement).Rename(baseName);
 					this.GetScope().SetVariable(item.Key,newStyle);
 				}
+			}
+		}
+		public static void RemoveHover(GUISkin skin){
+			if(Theme.hoverResponse != HoverResponse.None){return;}
+			foreach(var style in skin.GetStyles()){
+				style.hover = style.normal;
 			}
 		}
 	}

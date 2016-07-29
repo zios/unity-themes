@@ -3,11 +3,11 @@ guid: 6c6853736f0553c42b80b50eab2be2d5
 timeCreated: 1467623698
 licenseType: Free
 TrueTypeFontImporter:
-  serializedVersion: 3
+  serializedVersion: 4
   fontSize: 16
   forceTextureCase: -2
-  characterSpacing: 1
-  characterPadding: 0
+  characterSpacing: 0
+  characterPadding: 1
   includeFontData: 1
   fontNames:
   - Josefin Sans
@@ -15,7 +15,7 @@ TrueTypeFontImporter:
   - {fileID: 12800000, guid: 326b3913b1d3c974d82c509bb6988c2a, type: 3}
   - {fileID: 12800000, guid: 635affa4a053ec6469df65122f3db01d, type: 3}
   customCharacters: 
-  fontRenderingMode: 0
+  fontRenderingMode: 3
   ascentCalculationMode: 1
   userData: 
   assetBundleName: 

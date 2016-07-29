@@ -70,6 +70,7 @@ namespace Zios.Interface{
 		}
 	}
 	public class ThemeContent{
+		public static int iconAmount;
 		public string name;
 		public string imageName;
 		public object targetScope;
@@ -87,9 +88,17 @@ namespace Zios.Interface{
 			}
 			return imported;
 		}
+		public static void Monitor(){
+			var contents = typeof(EditorGUIUtility).GetVariable<Hashtable>("s_IconGUIContents");
+			if(contents.Count != ThemeContent.iconAmount){
+				ThemeContent.iconAmount = contents.Count;
+				Theme.Reset(true);
+			}
+		}
 		public static List<ThemeContent> ImportDefaults(string path){
 			var imported = new List<ThemeContent>();
 			var contents = typeof(EditorGUIUtility).GetVariable<Hashtable>("s_IconGUIContents");
+			ThemeContent.iconAmount = contents.Count;
 			foreach(DictionaryEntry item in contents){
 				var fileName = path+"/"+item.Value.As<GUIContent>().image.name+".png";
 				if(FileManager.Exists(fileName)){

@@ -3,17 +3,21 @@ guid: dc13aedf31fe81844a748cfde432b3eb
 timeCreated: 1457271196
 licenseType: Free
 TrueTypeFontImporter:
-  serializedVersion: 2
+  serializedVersion: 4
   fontSize: 16
   forceTextureCase: -2
-  characterSpacing: 1
-  characterPadding: 0
+  characterSpacing: 0
+  characterPadding: 1
   includeFontData: 1
-  use2xBehaviour: 0
-  fontNames: []
-  fallbackFontReferences: []
+  fontNames:
+  - Unispace
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: d46aaf7795e064249a37bb006d54dff1, type: 3}
+  - {fileID: 12800000, guid: b99fbda8d6d0c8d468092389047bb8d4, type: 3}
+  - {fileID: 12800000, guid: 05e920e912d2c6948bb23cdfd0dd994c, type: 3}
   customCharacters: 
-  fontRenderingMode: 0
+  fontRenderingMode: 3
+  ascentCalculationMode: 1
   userData: 
   assetBundleName: 
   assetBundleVariant: 

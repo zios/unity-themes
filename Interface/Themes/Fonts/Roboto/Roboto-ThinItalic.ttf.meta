@@ -3,11 +3,11 @@ guid: 5ff26003d62c86c44a3ee12a492f9481
 timeCreated: 1467635624
 licenseType: Free
 TrueTypeFontImporter:
-  serializedVersion: 3
+  serializedVersion: 4
   fontSize: 16
   forceTextureCase: -2
-  characterSpacing: 1
-  characterPadding: 0
+  characterSpacing: 0
+  characterPadding: 1
   includeFontData: 1
   fontNames:
   - Roboto
@@ -15,7 +15,7 @@ TrueTypeFontImporter:
   - {fileID: 12800000, guid: 4a02d7048f5ed9142a8f4883c72254fc, type: 3}
   - {fileID: 12800000, guid: 2160c53cd4df0cb4bb361b8ee9caff75, type: 3}
   customCharacters: 
-  fontRenderingMode: 0
+  fontRenderingMode: 3
   ascentCalculationMode: 1
   userData: 
   assetBundleName: 

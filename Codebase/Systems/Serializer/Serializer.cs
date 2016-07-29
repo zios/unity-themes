@@ -201,7 +201,7 @@ namespace Zios{
 		public void LoadStatic(){
 			if(this.disabled){return;}
 			if(this.debug.Has("Load")){Debug.Log("[Serializer] : Loading .static files");}
-			foreach(var file in FileManager.FindAll("*.static",true,false)){
+			foreach(var file in FileManager.FindAll("*.static",false)){
 				if(this.debug.Has("Load")){Debug.Log("[Serializer] : Loading "+file.fullName);}
 				string contents = file.GetText();
 				var type = Utility.GetType(contents.Parse("","{"));

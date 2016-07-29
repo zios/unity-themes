@@ -34,13 +34,12 @@ namespace Zios.Interface{
 			if(path.Length > 0){
 				var file = FileManager.Create(path);
 				file.WriteText(this.Serialize());
-				EditorPrefs.SetString("EditorTheme",theme.name);
+				EditorPrefs.SetString("EditorTheme"+Theme.suffix,theme.name);
 				Theme.setup = false;
 			}
 		}
 		public string Serialize(){return "";}
 		public void Deserialize(string data){
-			this.iconset = ThemeIconset.Import(this.path.GetDirectory());
 			foreach(var line in data.GetLines()){
 				if(line.Trim().IsEmpty()){continue;}
 				var term = line.Parse(""," ").Trim();

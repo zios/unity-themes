@@ -207,11 +207,16 @@ namespace Zios{
 			#endif
 			Utility.DelayCall(method,0);
 		}
-		public static void DelayCall(CallbackFunction method,float seconds){
-			Utility.DelayCall(method,method,seconds);
+		public static void DelayCall(CallbackFunction method,float seconds,bool overwrite=true){
+			Utility.DelayCall(method,method,seconds,overwrite);
 		}
-		public static void DelayCall(object key,CallbackFunction method,float seconds){
+		public static void DelayCall(object key,CallbackFunction method,float seconds,bool overwrite=true){
 			if(!key.IsNull() && !method.IsNull()){
+				if(seconds <= 0){
+					method();
+					return;
+				}
+				if(Utility.delayedMethods.ContainsKey(key) && !overwrite){return;}
 				Utility.delayedMethods[key] = new KeyValuePair<CallbackFunction,float>(method,Time.realtimeSinceStartup + seconds);
 			}
 		}
