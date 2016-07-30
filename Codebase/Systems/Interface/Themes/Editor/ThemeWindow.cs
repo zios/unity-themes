@@ -1,5 +1,6 @@
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.EventSystems;
 namespace Zios.Interface{
 	public class ThemeWindow : EditorWindow{
 		public Vector2 lastMouse;
@@ -10,7 +11,6 @@ namespace Zios.Interface{
 			this.Repaint();
 			bool validTheme = !Theme.active.IsNull() && Theme.active.name != "Default";
 			bool mouseChanged = this.lastMouse != Event.current.mousePosition;
-			Debug.Log(GUI.GetNameOfFocusedControl());
 			if(validTheme && mouseChanged){
 				this.lastMouse = Event.current.mousePosition;
 				float delay = 0;
