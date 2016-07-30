@@ -1,9 +1,0 @@
-[s_AccountContent]
-text = Account
-
-[s_CloudIcon]
-image = CloudConnect
-
-[s_LayerContent]
-text = Layers
-tooltip = Which layers are visible in the Scene views.

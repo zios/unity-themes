@@ -11,20 +11,20 @@ namespace Zios.Interface{
 		[NonSerialized] public static bool includeBuiltin;
 		[NonSerialized] public static Dictionary<string,object> styleGroupBuffer = new Dictionary<string,object>();
 		[NonSerialized] public static Hierarchy<string,string,GUIContent> contentBuffer = new Hierarchy<string,string,GUIContent>();
-		[MenuItem("Zios/Theme/Development/Save All [GUISkin + GUIContent]")]
-		public static void SaveGUIAll(){Theme.SaveGUI("",true);}
-		[MenuItem("Zios/Theme/Development/Save All [Assets]")]
-		public static void SaveAssetsAll(){Theme.SaveAssets("",true);}
-		[MenuItem("Zios/Theme/Development/Save [GUISkin + GUIContent]")]
-		public static void SaveGUI(){Theme.SaveGUI("");}
-		public static void SaveGUI(string path,bool includeBuiltin=false){
+		[MenuItem("Zios/Theme/Development/Dump All [GUISkin + GUIContent]")]
+		public static void DumpGUIAll(){Theme.DumpGUI("",true);}
+		[MenuItem("Zios/Theme/Development/Dump All [Assets]")]
+		public static void DumpAssetsAll(){Theme.DumpAssets("",true);}
+		[MenuItem("Zios/Theme/Development/Dump [GUISkin + GUIContent]")]
+		public static void DumpGUI(){Theme.DumpGUI("");}
+		public static void DumpGUI(string path,bool includeBuiltin=false){
 			Theme.includeBuiltin = includeBuiltin;
 			Theme.createPath = path.IsEmpty() ? EditorUtility.SaveFolderPanel("Save Theme [GUISkin/GUIContent]",Theme.storagePath,"@Default") : path;
 			var allTypes = typeof(Editor).Assembly.GetTypes().Where(x=>!x.IsNull()).ToArray();
-			var stepper = new EventStepper(Theme.SaveGUIStep,Theme.SaveGUIComplete,allTypes,50);
+			var stepper = new EventStepper(Theme.DumpGUIStep,Theme.DumpGUIComplete,allTypes,50);
 			EditorApplication.update += stepper.Step;
 		}
-		public static void SaveGUIStep(object collection,int itemIndex){
+		public static void DumpGUIStep(object collection,int itemIndex){
 			var types = (Type[])collection;
 			var type = types[itemIndex];
 			if(!type.Name.ContainsAny("$","__Anon","<","AudioMixerDraw")){
@@ -57,7 +57,7 @@ namespace Zios.Interface{
 				catch{}
 			}
 		}
-		public static void SaveGUIComplete(){
+		public static void DumpGUIComplete(){
 			var savePath = Theme.createPath.GetAssetPath();
 			var themeName = savePath.Split("/").Last();
 			AssetDatabase.StartAssetEditing();
@@ -66,12 +66,12 @@ namespace Zios.Interface{
 			foreach(var buffer in Theme.styleGroupBuffer){
 				var skinPath = savePath+"/"+buffer.Key+".guiskin";
 				var contentPath = savePath+"/"+buffer.Key+".guicontent";
-				Theme.SaveGUISkin(skinPath,buffer);
-				Theme.SaveGUIContent(contentPath,buffer.Value.GetVariables<GUIContent>());
+				Theme.DumpGUISkin(skinPath,buffer);
+				Theme.DumpGUIContent(contentPath,buffer.Value.GetVariables<GUIContent>());
 			}
 			foreach(var buffer in Theme.contentBuffer){
 				var contentPath = savePath+"/"+buffer.Key+".guicontent";
-				Theme.SaveGUIContent(contentPath,buffer.Value);
+				Theme.DumpGUIContent(contentPath,buffer.Value);
 			}
 			var skin = EditorGUIUtility.GetBuiltinSkin(EditorSkin.Inspector);
 			skin = ScriptableObject.CreateInstance<GUISkin>().Use(skin);
@@ -80,7 +80,7 @@ namespace Zios.Interface{
 			Theme.styleGroupBuffer.Clear();
 			Theme.contentBuffer.Clear();
 		}
-		public static void SaveGUISkin(string path,KeyValuePair<string,object> buffer){
+		public static void DumpGUISkin(string path,KeyValuePair<string,object> buffer){
 			var customStyles = new List<GUIStyle>();
 			var styles = buffer.Value is Dictionary<string,GUIStyle> ? (Dictionary<string,GUIStyle>)buffer.Value : buffer.Value.GetVariables<GUIStyle>().Distinct();
 			foreach(var styleData in styles){
@@ -95,7 +95,7 @@ namespace Zios.Interface{
 				AssetDatabase.CreateAsset(newSkin,path);
 			}
 		}
-		public static void SaveGUIContent(string path,Dictionary<string,GUIContent> data){
+		public static void DumpGUIContent(string path,Dictionary<string,GUIContent> data){
 			if(data.Count < 1){return;}
 			var contents = "";
 			var keys = data.Keys.ToList();
@@ -121,11 +121,9 @@ namespace Zios.Interface{
 			}
 			FileManager.Create(path).WriteText(contents.Trim());
 		}
-		[MenuItem("Zios/Theme/Development/Save [Palette]")]
-		public static void SavePalette(){Theme.active.palette.Export("");}
-		[MenuItem("Zios/Theme/Development/Save [Assets]")]
-		public static void SaveAssets(){Theme.SaveAssets("");}
-		public static void SaveAssets(string path,bool includeBuiltin=false){
+		[MenuItem("Zios/Theme/Development/Dump [Assets]")]
+		public static void DumpAssets(){Theme.DumpAssets("");}
+		public static void DumpAssets(string path,bool includeBuiltin=false){
 			path = path.IsEmpty() ? EditorUtility.SaveFolderPanel("Save Theme [Assets]",Theme.storagePath,"").GetAssetPath() : path;
 			var files = FileManager.FindAll(path+"/*.guiSkin");
 			FileManager.Create(path+"/Background");
@@ -138,5 +136,9 @@ namespace Zios.Interface{
 			}
 			AssetDatabase.StopAssetEditing();
 		}
+		[MenuItem("Zios/Theme/Development/Export [Palette]")]
+		public static void ExportPalette(){Theme.active.palette.Export();}
+		[MenuItem("Zios/Theme/Development/Export [Fontset]")]
+		public static void ExportFontset(){Theme.active.fontset.Export();}
 	}
 }

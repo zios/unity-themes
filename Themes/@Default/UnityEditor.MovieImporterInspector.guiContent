@@ -1,3 +1,0 @@
-[linearTextureContent]
-text = Bypass sRGB Sampling
-tooltip = Texture will not be converted from gamma space to linear when sampled. Enable for IMGUI textures and non-color textures.

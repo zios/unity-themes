@@ -1,0 +1,36 @@
+[Main]
+Font = 8bitOperatorPlus8-Regular
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
+[Border]
+Font = 8bitOperatorPlus8-Regular
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 1
+
+[Button]
+Font = 8bitOperatorPlus8-Regular
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
+[Highlight]
+Font = 8bitOperatorPlus8-Regular
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 1
+
+[Search]
+Font = 8bitOperatorPlus8-Regular
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 1
+
+[Code]
+Font = 8bitOperatorPlus-Regular
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+

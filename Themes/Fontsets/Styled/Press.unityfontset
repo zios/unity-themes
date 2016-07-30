@@ -1,0 +1,36 @@
+[Main]
+Font = SourceSerifPro-Semibold
+SizeOffset = 1
+OffsetX = 0
+OffsetY = 0
+
+[Border]
+Font = Alegreya-BoldItalic
+SizeOffset = 1
+OffsetX = 0
+OffsetY = 0
+
+[Button]
+Font = Alegreya-BoldItalic
+SizeOffset = 1
+OffsetX = 0
+OffsetY = -1
+
+[Highlight]
+Font = Alegreya-BoldItalic
+SizeOffset = 1
+OffsetX = 0
+OffsetY = 0
+
+[Search]
+Font = SourceSansPro-Italic
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
+[Code]
+Font = SourceCodePro-Semibold
+SizeOffset = 2
+OffsetX = 0
+OffsetY = 0
+

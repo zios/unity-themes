@@ -6,20 +6,8 @@ namespace Zios{
 		public static Dictionary<string,GUISkin> skins = new Dictionary<string,GUISkin>();
 		public static Dictionary<GUISkin,Dictionary<string,GUIStyle>> styles = new Dictionary<GUISkin,Dictionary<string,GUIStyle>>();
 		public static GUISkin defaultSkin;
-		public static GUISkin GetSkin(string name="",bool defaultFallback=true){
-			if(Style.skins.ContainsKey(name)){
-				return Style.skins[name];
-			}
-			/*var cssFile = FileManager.Find(name+".css",true,false);
-			if(!cssFile.IsNull()){
-				return Style.LoadCSS(name,cssFile.GetText());
-			}*/
-			Style.defaultSkin = Style.defaultSkin ?? typeof(GUI).GetVariable<GUISkin>("s_Skin");
-			var defaultSkin = defaultFallback ? Style.defaultSkin : null;
-			return FileManager.GetAsset<GUISkin>(name+".guiskin",defaultFallback) ?? defaultSkin;
-		}
 		public static GUIStyle Get(string skin,string name,bool copy=false){
-			var guiSkin = Style.GetSkin(skin);
+			var guiSkin = FileManager.GetAsset<GUISkin>(skin);
 			return Style.Get(guiSkin,name,copy);
 		}
 		public static GUIStyle Get(GUISkin skin,string name,bool copy=false){

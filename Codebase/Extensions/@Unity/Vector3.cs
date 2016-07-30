@@ -29,6 +29,13 @@ namespace Zios{
 		//=====================
 		// General
 		//=====================
+		public static Vector3 Set(this Vector3 current,Vector3 target){return current.Use(target);}
+		public static Vector3 Use(this Vector3 current,Vector3 target){
+			current.x = target.x;
+			current.y = target.y;
+			current.z = target.z;
+			return current;
+		}
 		public static Vector3 MoveTowards(this Vector3 current,Vector3 end,Vector3 speed){
 			current.x = current.x.MoveTowards(end.x,speed.x);
 			current.y = current.y.MoveTowards(end.y,speed.y);

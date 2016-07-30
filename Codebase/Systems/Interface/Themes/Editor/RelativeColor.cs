@@ -12,7 +12,6 @@ namespace Zios.Interface{
 		public bool skipTexture;
 		public string sourceName = "";
 		public RelativeColor source;
-		public Texture2D texture;
 		public ColorBlend blend = ColorBlend.Multiply;
 		public static implicit operator RelativeColor(string value){
 			return value.IsNumber() ? new RelativeColor(value.ToFloat()) : new RelativeColor(value.ToColor());
@@ -80,17 +79,16 @@ namespace Zios.Interface{
 		public Texture2D UpdateTexture(string path){
 			var color = this.value;
 			path = path.GetAssetPath();
-			FileManager.Create(path+"@Palettes/Generated/");
-			var imagePath = path+"@Palettes/Generated/Color"+this.name+".png";
-			var image = this.texture = (Texture2D)AssetDatabase.LoadAssetAtPath(imagePath,typeof(Texture2D));
+			FileManager.Create(path+"Palettes/@Generated/");
+			var imagePath = path+"Palettes/@Generated/Color"+this.name+".png";
+			var image = (Texture2D)AssetDatabase.LoadAssetAtPath(imagePath,typeof(Texture2D));
 			if(image.IsNull()){
-				image = this.texture = new Texture2D(1,1,TextureFormat.RGBA32,false);
+				image = new Texture2D(1,1,TextureFormat.RGBA32,false);
 				image.SaveAs(imagePath);
 				AssetDatabase.ImportAsset(imagePath);
 			}
 			image.SetPixel(0,0,color);
 			image.Apply();
-			image.SaveAs(imagePath);
 			return image;
 		}
 	}

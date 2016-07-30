@@ -1,3 +1,0 @@
-[spriteAlignment]
-text = Pivot
-tooltip = Sprite pivot point in its localspace. May be used for syncing animation frames of different sizes.

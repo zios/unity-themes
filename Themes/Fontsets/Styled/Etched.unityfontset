@@ -1,0 +1,36 @@
+[Main]
+Font = Aubrey-Regular
+SizeOffset = 4
+OffsetX = 0
+OffsetY = -1
+
+[Border]
+Font = Aubrey-Regular
+SizeOffset = 3
+OffsetX = 0
+OffsetY = -1
+
+[Button]
+Font = Aubrey-Regular
+SizeOffset = 3
+OffsetX = 0
+OffsetY = -1
+
+[Highlight]
+Font = Aubrey-Regular
+SizeOffset = 3
+OffsetX = 0
+OffsetY = 0
+
+[Search]
+Font = Aubrey-Regular
+SizeOffset = 2
+OffsetX = 0
+OffsetY = 1
+
+[Code]
+Font = LiberationMono-Italic
+SizeOffset = 2
+OffsetX = 0
+OffsetY = 0
+
