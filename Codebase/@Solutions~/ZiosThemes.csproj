@@ -82,6 +82,7 @@
     <Compile Include="..\Supports\Utility\UtilityProxy.cs" />
     <Compile Include="..\System Attributes\EnumMask.cs" />
     <Compile Include="..\System Attributes\Internal.cs" />
+    <Compile Include="..\System Attributes\NotSerialized.cs" />
     <Compile Include="..\System Attributes\Unity\InitializeOnLoad.cs" />
     <Compile Include="..\Systems\Event\Event.cs" />
     <Compile Include="..\Systems\Event\EventDetector.cs" />
@@ -95,10 +96,10 @@
     <Compile Include="..\Systems\Interface\Themes\Editor\RelativeColor.cs" />
     <Compile Include="..\Systems\Interface\Themes\Editor\Theme.cs" />
     <Compile Include="..\Systems\Interface\Themes\Editor\ThemeIconset.cs" />
-    <Compile Include="..\Systems\Interface\Themes\Editor\ThemeSkinset.cs" />
     <Compile Include="..\Systems\Interface\Themes\Editor\ThemeFontset.cs" />
     <Compile Include="..\Systems\Interface\Themes\Editor\ThemePalette.cs" />
     <Compile Include="..\Systems\Interface\Themes\Editor\ThemeSaving.cs" />
+    <Compile Include="..\Systems\Interface\Themes\Editor\ThemeSkinset.cs" />
     <Compile Include="..\Systems\Interface\Themes\Editor\ThemeSystem.cs" />
     <Compile Include="..\Systems\Interface\Themes\Editor\ThemeUtility.cs" />
     <Compile Include="..\Systems\Interface\Themes\Editor\ThemeWindow.cs" />

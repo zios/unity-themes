@@ -15,7 +15,7 @@ namespace Zios.Interface{
 	[InitializeOnLoad][NotSerialized]
 	public partial class Theme{
 		public static Theme active;
-		public static string revision = "3 [r506]";
+		public static string revision = "3 [r514]";
 		public static int themeIndex;
 		public static int paletteIndex;
 		public static int fontsetIndex;
@@ -33,8 +33,6 @@ namespace Zios.Interface{
 		public static string suffix;
 		private static bool needsRefresh;
 		private static bool needsRebuild;
-		private static float nextSync;
-		private static float setupDelay;
 		private static Vector2 scroll = Vector2.zero;
 		private static float paletteChangeTime;
 		private static int paletteChangeCount;
