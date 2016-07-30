@@ -11,7 +11,7 @@
 	Highlight           : #805AB6  
 	HighlightActive     : #727276  
 	HighlightButton     : #ACA8E1  
-	HighlightIcons      : #805AB6  
+	HighlightIcons      : #ACA8E1  
 	Scrollbar           : #ACA9AD5B
 	ScrollbarThumb      : #5B5A5E  
 	Header              : #805AB665
@@ -35,6 +35,6 @@
 	Window              : #C0BFC0   : Main     
 	Details             : #CDCCD1   : Border   
 	Cursor              : #805AB6   : Highlight
-	Selection           : #CDCCD1   : Border    : 0.5
-	Curve               : #805AB6   : Highlight : 1.5
-	CurveBackground     : #CDCCD1   : Border    : 0.5
+	Selection           : #666668   : Border    : 0.5
+	Curve               : #C087FF   : Highlight : 1.5
+	CurveBackground     : #666668   : Border    : 0.5

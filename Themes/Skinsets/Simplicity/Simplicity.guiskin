@@ -26646,7 +26646,7 @@ MonoBehaviour:
     m_ImagePosition: 0
     m_ContentOffset: {x: 0, y: 0}
     m_FixedWidth: 0
-    m_FixedHeight: 20
+    m_FixedHeight: 19
     m_StretchWidth: 0
     m_StretchHeight: 0
   - m_Name: SearchCancelButtonEmpty
@@ -26712,7 +26712,7 @@ MonoBehaviour:
     m_ImagePosition: 0
     m_ContentOffset: {x: 0, y: 0}
     m_FixedWidth: 17
-    m_FixedHeight: 20
+    m_FixedHeight: 19
     m_StretchWidth: 0
     m_StretchHeight: 0
   - m_Name: SearchModeFilter
@@ -32582,7 +32582,7 @@ MonoBehaviour:
       m_Left: 0
       m_Right: 0
       m_Top: 0
-      m_Bottom: 0
+      m_Bottom: -1
     m_Font: {fileID: 3021071571035331536, guid: 0000000000000000d000000000000000,
       type: 0}
     m_FontSize: 0
@@ -32594,7 +32594,7 @@ MonoBehaviour:
     m_ImagePosition: 0
     m_ContentOffset: {x: 0, y: 0}
     m_FixedWidth: 0
-    m_FixedHeight: 19
+    m_FixedHeight: 20
     m_StretchWidth: 0
     m_StretchHeight: 0
   - m_Name: toolbarbutton
