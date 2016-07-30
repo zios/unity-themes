@@ -3,11 +3,11 @@ guid: 6b8a069e8b50bcb4895af85f26d9343b
 timeCreated: 1467623698
 licenseType: Free
 TrueTypeFontImporter:
-  serializedVersion: 3
+  serializedVersion: 4
   fontSize: 16
   forceTextureCase: -2
-  characterSpacing: 1
-  characterPadding: 0
+  characterSpacing: 0
+  characterPadding: 1
   includeFontData: 1
   fontNames:
   - Source Sans Pro
@@ -19,7 +19,7 @@ TrueTypeFontImporter:
   - {fileID: 12800000, guid: 5963fdc95fbcb214bb16f680ffbfc72b, type: 3}
   - {fileID: 12800000, guid: 13eb8e0f522398748900304acee82fa8, type: 3}
   customCharacters: 
-  fontRenderingMode: 0
+  fontRenderingMode: 3
   ascentCalculationMode: 1
   userData: 
   assetBundleName: 

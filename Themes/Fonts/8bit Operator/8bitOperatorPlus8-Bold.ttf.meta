@@ -3,18 +3,18 @@ guid: f11a470d60b062142bc30d99dffee684
 timeCreated: 1467650210
 licenseType: Free
 TrueTypeFontImporter:
-  serializedVersion: 3
+  serializedVersion: 4
   fontSize: 16
   forceTextureCase: -2
-  characterSpacing: 1
-  characterPadding: 0
+  characterSpacing: 0
+  characterPadding: 1
   includeFontData: 1
   fontNames:
   - 8-bit Operator+ 8
   fallbackFontReferences:
   - {fileID: 12800000, guid: a1a0673506707d143a5a4efd8d905ee3, type: 3}
   customCharacters: 
-  fontRenderingMode: 0
+  fontRenderingMode: 3
   ascentCalculationMode: 1
   userData: 
   assetBundleName: 

@@ -3,11 +3,11 @@ guid: 1dafa3e861337964c972460f634cb032
 timeCreated: 1467623696
 licenseType: Free
 TrueTypeFontImporter:
-  serializedVersion: 3
+  serializedVersion: 4
   fontSize: 16
   forceTextureCase: -2
-  characterSpacing: 1
-  characterPadding: 0
+  characterSpacing: 0
+  characterPadding: 1
   includeFontData: 1
   fontNames:
   - Orkney
@@ -20,7 +20,7 @@ TrueTypeFontImporter:
   - {fileID: 12800000, guid: 1eda6269f4754174b872356e141c3181, type: 3}
   - {fileID: 12800000, guid: 07bd6fcae00768641b3c45a81455a356, type: 3}
   customCharacters: 
-  fontRenderingMode: 0
+  fontRenderingMode: 3
   ascentCalculationMode: 1
   userData: 
   assetBundleName: 

@@ -3,11 +3,11 @@ guid: 1ad56714bfffaad4ebeab46754d21d2e
 timeCreated: 1468503038
 licenseType: Free
 TrueTypeFontImporter:
-  serializedVersion: 3
+  serializedVersion: 4
   fontSize: 16
   forceTextureCase: -2
-  characterSpacing: 1
-  characterPadding: 0
+  characterSpacing: 0
+  characterPadding: 1
   includeFontData: 1
   fontNames:
   - Chub Gothic
@@ -18,7 +18,7 @@ TrueTypeFontImporter:
   - {fileID: 12800000, guid: 738a905c6d49b4746851fd735c4c6eff, type: 3}
   - {fileID: 12800000, guid: 6b10ccecb895da64a9e765cc01c0bf83, type: 3}
   customCharacters: 
-  fontRenderingMode: 0
+  fontRenderingMode: 3
   ascentCalculationMode: 1
   userData: 
   assetBundleName: 

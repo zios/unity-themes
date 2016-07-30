@@ -3,18 +3,18 @@ guid: cc904c8998782d44c81f952bbc651225
 timeCreated: 1467650209
 licenseType: Free
 TrueTypeFontImporter:
-  serializedVersion: 3
+  serializedVersion: 4
   fontSize: 16
   forceTextureCase: -2
-  characterSpacing: 1
-  characterPadding: 0
+  characterSpacing: 0
+  characterPadding: 1
   includeFontData: 1
   fontNames:
   - PixAntiqua
   fallbackFontReferences: []
   customCharacters: 
-  fontRenderingMode: 0
-  ascentCalculationMode: 1
+  fontRenderingMode: 3
+  ascentCalculationMode: 2
   userData: 
   assetBundleName: 
   assetBundleVariant: 

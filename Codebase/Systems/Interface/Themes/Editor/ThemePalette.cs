@@ -34,7 +34,7 @@ namespace Zios.Interface{
 			if(path.Length > 0){
 				var file = FileManager.Create(path);
 				file.WriteText(this.Serialize());
-				EditorPrefs.SetString("EditorPalette",path.GetFileName());
+				EditorPrefs.SetString("EditorPalette"+Theme.suffix,path.GetFileName());
 				Theme.setup = false;
 				Theme.loaded = false;
 			}

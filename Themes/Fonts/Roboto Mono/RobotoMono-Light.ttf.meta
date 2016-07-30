@@ -3,11 +3,11 @@ guid: ea70c9e89c2d2f948800660def5295ec
 timeCreated: 1467664883
 licenseType: Free
 TrueTypeFontImporter:
-  serializedVersion: 3
+  serializedVersion: 4
   fontSize: 16
   forceTextureCase: -2
-  characterSpacing: 1
-  characterPadding: 0
+  characterSpacing: 0
+  characterPadding: 1
   includeFontData: 1
   fontNames:
   - Roboto Mono
@@ -20,7 +20,7 @@ TrueTypeFontImporter:
   - {fileID: 12800000, guid: 599f546cf84230c47ae50b35b0591eaf, type: 3}
   - {fileID: 12800000, guid: 7314a97fadb856448b691ba185e66231, type: 3}
   customCharacters: 
-  fontRenderingMode: 0
+  fontRenderingMode: 3
   ascentCalculationMode: 1
   userData: 
   assetBundleName: 

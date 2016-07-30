@@ -3,11 +3,11 @@ guid: 929e180cd94ff7043a6899c3e474921e
 timeCreated: 1467623699
 licenseType: Free
 TrueTypeFontImporter:
-  serializedVersion: 3
+  serializedVersion: 4
   fontSize: 16
   forceTextureCase: -2
-  characterSpacing: 1
-  characterPadding: 0
+  characterSpacing: 0
+  characterPadding: 1
   includeFontData: 1
   fontNames:
   - Open Sans
@@ -20,7 +20,7 @@ TrueTypeFontImporter:
   - {fileID: 12800000, guid: 28707f3b19beea145b6da12d7fdc76d2, type: 3}
   - {fileID: 12800000, guid: 2156562ea2316b848afb2f3cf1c76a42, type: 3}
   customCharacters: 
-  fontRenderingMode: 0
+  fontRenderingMode: 3
   ascentCalculationMode: 1
   userData: 
   assetBundleName: 

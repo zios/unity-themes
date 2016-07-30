@@ -3,11 +3,11 @@ guid: 9eb433585f1816d40b118ec25a470c94
 timeCreated: 1467623700
 licenseType: Free
 TrueTypeFontImporter:
-  serializedVersion: 3
+  serializedVersion: 4
   fontSize: 16
   forceTextureCase: -2
-  characterSpacing: 1
-  characterPadding: 0
+  characterSpacing: 0
+  characterPadding: 1
   includeFontData: 1
   fontNames:
   - Raleway
@@ -23,7 +23,7 @@ TrueTypeFontImporter:
   - {fileID: 12800000, guid: 4096098dd12f4c645a5e4cf4987808a9, type: 3}
   - {fileID: 12800000, guid: 2bc9fd4f038ba7a46a09dfaad869b117, type: 3}
   customCharacters: 
-  fontRenderingMode: 0
+  fontRenderingMode: 3
   ascentCalculationMode: 1
   userData: 
   assetBundleName: 

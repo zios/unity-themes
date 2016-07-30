@@ -15,7 +15,7 @@ MonoBehaviour:
   m_box:
     m_Name: box
     m_Normal:
-      m_Background: {fileID: 2800000, guid: 5350563619047e44ab91ce873c7d6764, type: 3}
+      m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
       m_TextColor: {r: 1, g: 0.015686275, b: 1, a: 0}
     m_Hover:
@@ -57,7 +57,7 @@ MonoBehaviour:
       m_Top: 0
       m_Bottom: 0
     m_Padding:
-      m_Left: 3
+      m_Left: 20
       m_Right: 3
       m_Top: 4
       m_Bottom: 4
@@ -2636,9 +2636,9 @@ MonoBehaviour:
     m_StretchHeight: 0
   - m_Name: BoldLabel
     m_Normal:
-      m_Background: {fileID: 2800000, guid: 5350563619047e44ab91ce873c7d6764, type: 3}
+      m_Background: {fileID: 2800000, guid: 72859692be4ec4d47950a1cd4ab2be1f, type: 3}
       m_ScaledBackgrounds: []
-      m_TextColor: {r: 1, g: 0.015686275, b: 1, a: 0}
+      m_TextColor: {r: 1, g: 0.007843138, b: 1, a: 0}
     m_Hover:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -2671,7 +2671,7 @@ MonoBehaviour:
       m_Left: 0
       m_Right: 0
       m_Top: 0
-      m_Bottom: 0
+      m_Bottom: 1
     m_Margin:
       m_Left: 0
       m_Right: 0
@@ -2683,12 +2683,12 @@ MonoBehaviour:
       m_Top: 4
       m_Bottom: 4
     m_Overflow:
-      m_Left: -1
+      m_Left: 0
       m_Right: 0
       m_Top: 0
       m_Bottom: 0
-    m_Font: {fileID: 12800000, guid: 5ba0a9c28e7c9404491cba2899be7439, type: 3}
-    m_FontSize: 13
+    m_Font: {fileID: 12800000, guid: 34d23e265a76d2146b73a2b47ea46b98, type: 3}
+    m_FontSize: 12
     m_FontStyle: 0
     m_Alignment: 3
     m_WordWrap: 0
@@ -2697,7 +2697,7 @@ MonoBehaviour:
     m_ImagePosition: 0
     m_ContentOffset: {x: 0, y: 0}
     m_FixedWidth: 0
-    m_FixedHeight: 0
+    m_FixedHeight: 16
     m_StretchWidth: 1
     m_StretchHeight: 0
   - m_Name: BoldToggle
@@ -6007,7 +6007,7 @@ MonoBehaviour:
     m_StretchHeight: 0
   - m_Name: ExposablePopupItem
     m_Normal:
-      m_Background: {fileID: 0}
+      m_Background: {fileID: 2800000, guid: 1accb3fd952abf447b7dbda9e3727030, type: 3}
       m_ScaledBackgrounds: []
       m_TextColor: {r: 1, g: 0.003921569, b: 1, a: 0}
     m_Hover:
@@ -6023,7 +6023,7 @@ MonoBehaviour:
       m_ScaledBackgrounds: []
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_OnNormal:
-      m_Background: {fileID: 2800000, guid: 5350563619047e44ab91ce873c7d6764, type: 3}
+      m_Background: {fileID: 2800000, guid: 1accb3fd952abf447b7dbda9e3727030, type: 3}
       m_ScaledBackgrounds: []
       m_TextColor: {r: 1, g: 0.007843138, b: 1, a: 0}
     m_OnHover:
@@ -6039,9 +6039,9 @@ MonoBehaviour:
       m_ScaledBackgrounds: []
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Border:
-      m_Left: 7
-      m_Right: 7
-      m_Top: 0
+      m_Left: 0
+      m_Right: 16
+      m_Top: 16
       m_Bottom: 0
     m_Margin:
       m_Left: 0
@@ -6055,7 +6055,7 @@ MonoBehaviour:
       m_Bottom: 0
     m_Overflow:
       m_Left: 0
-      m_Right: 0
+      m_Right: 12
       m_Top: 0
       m_Bottom: 0
     m_Font: {fileID: 12800000, guid: 34d23e265a76d2146b73a2b47ea46b98, type: 3}
@@ -6068,7 +6068,7 @@ MonoBehaviour:
     m_ImagePosition: 0
     m_ContentOffset: {x: 0, y: 0}
     m_FixedWidth: 0
-    m_FixedHeight: 15
+    m_FixedHeight: 16
     m_StretchWidth: 1
     m_StretchHeight: 0
   - m_Name: ExposablePopupMenu
@@ -13881,7 +13881,7 @@ MonoBehaviour:
     m_OnNormal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
-      m_TextColor: {r: 0.9019608, g: 0.9019608, b: 0.9019608, a: 1}
+      m_TextColor: {r: 1, g: 0.047058824, b: 1, a: 0}
     m_OnHover:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -13895,10 +13895,10 @@ MonoBehaviour:
       m_ScaledBackgrounds: []
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Border:
-      m_Left: 0
-      m_Right: 0
-      m_Top: 0
-      m_Bottom: 0
+      m_Left: 1
+      m_Right: 1
+      m_Top: 1
+      m_Bottom: 1
     m_Margin:
       m_Left: 0
       m_Right: 0
@@ -22420,7 +22420,7 @@ MonoBehaviour:
     m_Overflow:
       m_Left: 0
       m_Right: 0
-      m_Top: 0
+      m_Top: -2
       m_Bottom: 0
     m_Font: {fileID: 12800000, guid: 34d23e265a76d2146b73a2b47ea46b98, type: 3}
     m_FontSize: 12
@@ -22620,7 +22620,7 @@ MonoBehaviour:
     m_Overflow:
       m_Left: 5000
       m_Right: 0
-      m_Top: 0
+      m_Top: -2
       m_Bottom: 1
     m_Font: {fileID: 12800000, guid: 34d23e265a76d2146b73a2b47ea46b98, type: 3}
     m_FontSize: 12
@@ -25585,7 +25585,7 @@ MonoBehaviour:
     m_StretchHeight: 1
   - m_Name: ProjectBrowserTopBarBg
     m_Normal:
-      m_Background: {fileID: 2800000, guid: 8ac5c69f786ff674bb69a5f9b5898c49, type: 3}
+      m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Hover:
@@ -32978,7 +32978,7 @@ MonoBehaviour:
     m_Overflow:
       m_Left: 0
       m_Right: 0
-      m_Top: 0
+      m_Top: -1
       m_Bottom: 0
     m_Font: {fileID: 12800000, guid: 1ad56714bfffaad4ebeab46754d21d2e, type: 3}
     m_FontSize: 13
@@ -33044,7 +33044,7 @@ MonoBehaviour:
     m_Overflow:
       m_Left: 0
       m_Right: 0
-      m_Top: 0
+      m_Top: -1
       m_Bottom: 0
     m_Font: {fileID: 12800000, guid: 1ad56714bfffaad4ebeab46754d21d2e, type: 3}
     m_FontSize: 13
@@ -33056,7 +33056,7 @@ MonoBehaviour:
     m_ImagePosition: 0
     m_ContentOffset: {x: 0, y: 0}
     m_FixedWidth: 0
-    m_FixedHeight: 19
+    m_FixedHeight: 20
     m_StretchWidth: 1
     m_StretchHeight: 0
   - m_Name: ToolbarSearchField

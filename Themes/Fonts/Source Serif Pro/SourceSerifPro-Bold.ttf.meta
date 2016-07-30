@@ -3,18 +3,18 @@ guid: bb9db4c2a505ab044ae1f41798b981ad
 timeCreated: 1467623701
 licenseType: Free
 TrueTypeFontImporter:
-  serializedVersion: 3
+  serializedVersion: 4
   fontSize: 16
   forceTextureCase: -2
-  characterSpacing: 1
-  characterPadding: 0
+  characterSpacing: 0
+  characterPadding: 1
   includeFontData: 1
   fontNames:
   - Source Serif Pro
   fallbackFontReferences:
   - {fileID: 12800000, guid: 6966d0ec30e814c4387c0a2dd150f322, type: 3}
   customCharacters: 
-  fontRenderingMode: 0
+  fontRenderingMode: 3
   ascentCalculationMode: 1
   userData: 
   assetBundleName: 

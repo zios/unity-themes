@@ -3,11 +3,11 @@ guid: 8acbfc7d0b44a57498f4dd4f4cf6f993
 timeCreated: 1467623699
 licenseType: Free
 TrueTypeFontImporter:
-  serializedVersion: 3
+  serializedVersion: 4
   fontSize: 16
   forceTextureCase: -2
-  characterSpacing: 1
-  characterPadding: 0
+  characterSpacing: 0
+  characterPadding: 1
   includeFontData: 1
   fontNames:
   - Arvo
@@ -16,7 +16,7 @@ TrueTypeFontImporter:
   - {fileID: 12800000, guid: 2973cda391c04824688a5113070efc08, type: 3}
   - {fileID: 12800000, guid: 116133d664f0f90478b1ceeecc517e9d, type: 3}
   customCharacters: 
-  fontRenderingMode: 0
+  fontRenderingMode: 3
   ascentCalculationMode: 1
   userData: 
   assetBundleName: 
