@@ -1,4 +1,4 @@
-﻿Shader "Zios/Olio/Sprite + Flat"{
+Shader "Zios/Olio/Sprite + Flat"{
 	Properties{
 		alpha("Alpha",Range(0.0,1.0)) = 1.0
 		diffuseMap("Diffuse Map",2D) = "white"{}

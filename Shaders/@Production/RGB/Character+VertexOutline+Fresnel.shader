@@ -1,4 +1,4 @@
-﻿Shader "Zios/RGB/Character + Vertex Outlines + Fresnel"{
+Shader "Zios/RGB/Character + Vertex Outlines + Fresnel"{
 	Properties{
 		outlineColor("Outline Color",Color) = (0.0,0.0,0.0,1.0)
 		outlineLength("Outline Length",float) = 0.004

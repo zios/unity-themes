@@ -1,4 +1,4 @@
-﻿Shader "Zios/Dori/Diffuse Map + Alpha"{
+Shader "Zios/Dori/Diffuse Map + Alpha"{
 	Properties{
 		diffuseMap("Diffuse Map",2D) = "white"{}
 		alpha("Alpha",Range(0.0,1.5)) = 0.5

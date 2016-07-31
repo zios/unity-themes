@@ -1,4 +1,4 @@
-﻿Shader "Zios/Olio/Mesh + Outline"{
+Shader "Zios/Olio/Mesh + Outline"{
 	Properties{
 		alpha("Alpha",Range(0.0,1.0)) = 1.0
 		diffuseMap("Diffuse Map",2D) = "white"{}

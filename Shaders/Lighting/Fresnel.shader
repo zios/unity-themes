@@ -1,4 +1,4 @@
-﻿Shader "Zios/(Components)/Lighting/Fresnel"{
+Shader "Zios/(Components)/Lighting/Fresnel"{
 	Properties{
 		fresnelSize("Fresnel Size",Float) = 2.0
 		fresnelIntensity("Fresnel Intensity",Float) = 6.0

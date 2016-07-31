@@ -1,4 +1,4 @@
-﻿Shader "Zios/Olio/Transparent + Scrolling"{
+Shader "Zios/Olio/Transparent + Scrolling"{
 	Properties{
 		diffuseMap("Diffuse Map",2D) = "white"{}
 		lerpColor("Lerp Color",Color) = (0,0,0,0)

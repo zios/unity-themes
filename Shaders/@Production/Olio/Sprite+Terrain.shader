@@ -1,4 +1,4 @@
-﻿Shader "Zios/Olio/Sprite + Terrain"{
+Shader "Zios/Olio/Sprite + Terrain"{
 	Properties{
 		alpha("Alpha",Range(0.0,1.0)) = 1.0
 		diffuseMap("Diffuse Map",2D) = "white"{}

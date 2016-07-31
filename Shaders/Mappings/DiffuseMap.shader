@@ -1,4 +1,4 @@
-﻿Shader "Zios/(Components)/Mappings/Diffuse Map"{
+Shader "Zios/(Components)/Mappings/Diffuse Map"{
 	Properties{
 		diffuseMap("Diffuse Map",2D) = "white"{}
 	}

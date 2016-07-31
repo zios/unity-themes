@@ -1,4 +1,4 @@
-﻿Shader "Zios/(Components)/Utility/Atlas Padding"{
+Shader "Zios/(Components)/Utility/Atlas Padding"{
 	Properties{
 		paddingUV("Padding UV",Vector) = (0,0,0,0)
 	}

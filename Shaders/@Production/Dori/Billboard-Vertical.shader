@@ -1,4 +1,4 @@
-﻿Shader "Zios/Dori/Billboard (Vertical Orientation)"{
+Shader "Zios/Dori/Billboard (Vertical Orientation)"{
 	Properties{
 		diffuseMap("Diffuse Map",2D) = "white"{}
 		alpha("Alpha",Range(0.0,1.0)) = 0.5

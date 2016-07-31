@@ -1,4 +1,4 @@
-﻿Shader "Zios/Olio/Division + Alpha"{
+Shader "Zios/Olio/Division + Alpha"{
 	Properties{
 		intensity("Intensity",Range(0.0,2.0)) = 1.0
 		diffuseMap("Diffuse Map",2D) = "white"{}

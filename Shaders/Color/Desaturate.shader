@@ -1,4 +1,4 @@
-﻿Shader "Zios/(Components)/Color/Desaturate"{
+Shader "Zios/(Components)/Color/Desaturate"{
 	Properties{
 		desaturateAmount("Desaturate Amount",Range(0.0,1)) = 0.0
 	}

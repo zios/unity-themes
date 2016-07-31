@@ -1,4 +1,4 @@
-﻿Shader "Zios/(Components)/Lighting/Fixed Rim"{
+Shader "Zios/(Components)/Lighting/Fixed Rim"{
 	Properties{
 		rimSpread("Rim Spread",Range(1.0,2.0)) = 1.0
 		rimSoftness("Rim Softness",Range(0.0,20.0)) = 5.0

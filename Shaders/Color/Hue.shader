@@ -1,4 +1,4 @@
-﻿Shader "Zios/(Components)/Color/Hue"{
+Shader "Zios/(Components)/Color/Hue"{
 	Properties{
 		hueIntensity("Hue Intensity",Range(0.0,1)) = 0.0
 	}

@@ -1,4 +1,4 @@
-﻿Shader "Zios/Olio/Solid Color"{
+Shader "Zios/Olio/Solid Color"{
 	Properties{
 		alpha("Alpha",Range(0.0,1.0)) = 1.0
 		lerpColor("Lerp Color",Color) = (0,0,0,0)

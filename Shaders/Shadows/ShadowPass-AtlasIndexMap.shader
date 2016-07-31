@@ -1,4 +1,4 @@
-﻿Shader "Hidden/Zios/Shadow Pass/Atlas Index Map"{
+Shader "Hidden/Zios/Shadow Pass/Atlas Index Map"{
 	Properties{
 		atlasUV("Atlas UV",Vector) = (0,0,0,0)
 	}

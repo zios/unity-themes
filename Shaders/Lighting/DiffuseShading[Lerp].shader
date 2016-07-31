@@ -1,4 +1,4 @@
-﻿Shader "Zios/(Components)/Lighting/Diffuse Shading [Lerp]"{
+Shader "Zios/(Components)/Lighting/Diffuse Shading [Lerp]"{
 	Properties{
 		shadingColor("Diffuse Shading Color",Color) = (0.5,0.5,0.5,1)
 		shadingCutoff("Diffuse Shading Cutoff",Range(0.0,1.0)) = 0

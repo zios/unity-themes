@@ -1,4 +1,4 @@
-﻿Shader "Hidden/Zios/Shadow Pass/Atlas Padded Diffuse Map"{
+Shader "Hidden/Zios/Shadow Pass/Atlas Padded Diffuse Map"{
 	Properties{
 		atlasUV("Atlas UV",Vector) = (0,0,0,0)
 		paddingUV("Padding UV",Vector) = (0,0,0,0)

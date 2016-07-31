@@ -1,4 +1,4 @@
-﻿Shader "Zios/RGB/Mesh + Non Culled"{
+Shader "Zios/RGB/Mesh + Non Culled"{
 	Properties{
 		diffuseMap("Diffuse Map",2D) = "white"{}
 		shadingColor("Shading Color",Color) = (0.5,0.5,0.5,1)

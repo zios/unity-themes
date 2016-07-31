@@ -1,4 +1,4 @@
-﻿Shader "Hidden/Zios/Shadow Pass/Alpha Map"{
+Shader "Hidden/Zios/Shadow Pass/Alpha Map"{
 	Properties{
 	}
 	SubShader{

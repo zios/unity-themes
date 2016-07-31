@@ -1,4 +1,4 @@
-﻿Shader "Hidden/Zios/Shadow Pass/Basic"{
+Shader "Hidden/Zios/Shadow Pass/Basic"{
 	Properties{
 	}
 	SubShader{

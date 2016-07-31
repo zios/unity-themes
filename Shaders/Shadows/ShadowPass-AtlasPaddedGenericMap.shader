@@ -1,4 +1,4 @@
-﻿Shader "Hidden/Zios/Shadow Pass/Generic Map"{
+Shader "Hidden/Zios/Shadow Pass/Generic Map"{
 	Properties{
 		atlasUV("Atlas UV",Vector) = (0,0,0,0)
 		paddingUV("Padding UV",Vector) = (0,0,0,0)

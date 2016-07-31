@@ -1,4 +1,4 @@
-﻿Shader "Zios/(Components)/Color/Alpha"{
+Shader "Zios/(Components)/Color/Alpha"{
 	Properties{
 		alpha("Alpha",Range(0.0,1.0)) = 0.5
 		alphaCutoff("Alpha Cutoff",Range(-0.001,1.0)) = 0

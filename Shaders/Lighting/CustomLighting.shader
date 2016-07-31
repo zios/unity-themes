@@ -1,4 +1,4 @@
-﻿Shader "Hidden/Zios/(Components)/Lighting/CustomLighting"{
+Shader "Hidden/Zios/(Components)/Lighting/CustomLighting"{
 	Properties{
 	}
 	SubShader{

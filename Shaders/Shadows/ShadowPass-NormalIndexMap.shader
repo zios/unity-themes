@@ -1,4 +1,4 @@
-﻿Shader "Hidden/Zios/Shadow Pass/Normal Index Map"{
+Shader "Hidden/Zios/Shadow Pass/Normal Index Map"{
 	Properties{
 	}
 	SubShader{

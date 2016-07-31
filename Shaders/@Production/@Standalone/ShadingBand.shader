@@ -1,4 +1,4 @@
-﻿Shader "Zios/Standalone/Shading Band"{
+Shader "Zios/Standalone/Shading Band"{
 	Properties{
 		diffuseMap("Diffuse Map",2D) = "white"{}
 		shadingBand("Shading Band",2D) = "white"{}
