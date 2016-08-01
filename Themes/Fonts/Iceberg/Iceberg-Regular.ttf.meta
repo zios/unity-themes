@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: d4bab0c8b3df090499e6042b7767e319
-timeCreated: 1467650209
+timeCreated: 1469981364
 licenseType: Free
 TrueTypeFontImporter:
   serializedVersion: 4
@@ -13,7 +13,7 @@ TrueTypeFontImporter:
   - Iceberg
   fallbackFontReferences: []
   customCharacters: 
-  fontRenderingMode: 3
+  fontRenderingMode: 0
   ascentCalculationMode: 1
   userData: 
   assetBundleName: 

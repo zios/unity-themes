@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 04d19cc4d063e6d438a2ea9d2314f59e
-timeCreated: 1467635623
+timeCreated: 1469981357
 licenseType: Free
 TrueTypeFontImporter:
   serializedVersion: 4
@@ -13,7 +13,7 @@ TrueTypeFontImporter:
   - Paprika
   fallbackFontReferences: []
   customCharacters: 
-  fontRenderingMode: 3
+  fontRenderingMode: 0
   ascentCalculationMode: 1
   userData: 
   assetBundleName: 

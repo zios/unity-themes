@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: ebb827b1119039249a68fa1cc798c205
-timeCreated: 1467635625
+timeCreated: 1469981365
 licenseType: Free
 TrueTypeFontImporter:
   serializedVersion: 4
@@ -13,7 +13,7 @@ TrueTypeFontImporter:
   - Nova Cut
   fallbackFontReferences: []
   customCharacters: 
-  fontRenderingMode: 3
+  fontRenderingMode: 0
   ascentCalculationMode: 1
   userData: 
   assetBundleName: 

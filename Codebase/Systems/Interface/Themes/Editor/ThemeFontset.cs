@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System;
 using System.Linq;
 namespace Zios.Interface{
@@ -7,6 +7,7 @@ namespace Zios.Interface{
 	[Serializable]
 	public class ThemeFontset{
 		public static List<ThemeFontset> all = new List<ThemeFontset>();
+		public FontRenderingMode rendering = FontRenderingMode.Smooth;
 		public string name;
 		public string path;
 		public Dictionary<string,ThemeFont> fonts = new Dictionary<string,ThemeFont>();
@@ -29,7 +30,7 @@ namespace Zios.Interface{
 		}
 		public void Export(string path=null){
 			var theme = Theme.active;
-			var targetPath = path ?? Theme.storagePath+theme.name+"/Font/";
+			var targetPath = path ?? theme.fontset.path;
 			var targetName = theme.fontset.name+"-Variant";
 			path = path.IsEmpty() ? EditorUtility.SaveFilePanel("Save Theme [Fonts]",targetPath,targetName,"unityfontset") : path;
 			if(path.Length > 0){

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 170b492c08534ca4cbb75601652e6e90
-timeCreated: 1467650208
+timeCreated: 1469981358
 licenseType: Free
 TrueTypeFontImporter:
   serializedVersion: 4
@@ -13,7 +13,7 @@ TrueTypeFontImporter:
   - Spaceport 2006
   fallbackFontReferences: []
   customCharacters: 
-  fontRenderingMode: 3
+  fontRenderingMode: 0
   ascentCalculationMode: 1
   userData: 
   assetBundleName: 

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 25ea464ebbcbdaf4a80d91391f19e318
-timeCreated: 1467623696
+timeCreated: 1469981359
 licenseType: Free
 TrueTypeFontImporter:
   serializedVersion: 4
@@ -11,9 +11,11 @@ TrueTypeFontImporter:
   includeFontData: 1
   fontNames:
   - Oswald
-  fallbackFontReferences: []
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 75abeba27942f3548a880decf7a665dd, type: 3}
+  - {fileID: 12800000, guid: 40fd6215c537ea74d88baacac24afccc, type: 3}
   customCharacters: 
-  fontRenderingMode: 3
+  fontRenderingMode: 0
   ascentCalculationMode: 1
   userData: 
   assetBundleName: 

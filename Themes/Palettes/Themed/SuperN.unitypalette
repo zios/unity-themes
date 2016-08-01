@@ -29,12 +29,12 @@
 	TextHighlightButton : #7B5EA5  
 	TextWarning         : #946223  
 	TextError           : #AE4747  
-	TextHeader          : #FFFFFF  
+	TextHeader          : #55338D  
 (Other)
 	Frame               : #CDCCD1   : Border   
 	Window              : #C0BFC0   : Main     
 	Details             : #CDCCD1   : Border   
 	Cursor              : #805AB6   : Highlight
-	Selection           : #666668   : Border    : 0.5
-	Curve               : #C087FF   : Highlight : 1.5
-	CurveBackground     : #666668   : Border    : 0.5
+	Selection           : #805AB6   : Highlight : 0.5
+	Curve               : #805AB6   : Highlight : 1.5
+	CurveBackground     : #CDCCD1   : Border    : 0.5

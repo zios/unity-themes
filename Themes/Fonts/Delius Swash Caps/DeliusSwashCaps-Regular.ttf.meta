@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 15e9078209324404ab6d01d90d15ddf3
-timeCreated: 1467635623
+timeCreated: 1469981358
 licenseType: Free
 TrueTypeFontImporter:
   serializedVersion: 4
@@ -13,7 +13,7 @@ TrueTypeFontImporter:
   - Delius Swash Caps
   fallbackFontReferences: []
   customCharacters: 
-  fontRenderingMode: 3
+  fontRenderingMode: 0
   ascentCalculationMode: 1
   userData: 
   assetBundleName: 

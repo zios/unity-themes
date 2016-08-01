@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 80d26eb7cd1b29b4082f431f317022eb
-timeCreated: 1467635624
+timeCreated: 1469981362
 licenseType: Free
 TrueTypeFontImporter:
   serializedVersion: 4
@@ -13,7 +13,7 @@ TrueTypeFontImporter:
   - Merienda One
   fallbackFontReferences: []
   customCharacters: 
-  fontRenderingMode: 3
+  fontRenderingMode: 0
   ascentCalculationMode: 1
   userData: 
   assetBundleName: 

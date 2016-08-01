@@ -35,6 +35,6 @@
 	Window              : #494038   : Main     
 	Details             : #A49054   : Border   
 	Cursor              : #FCDC84   : Highlight
-	Selection           : #A49054   : Border   
-	Curve               : #FFFFC6   : Highlight : 1.5
-	CurveBackground     : #52482A   : Border    : 0.5
+	Selection           : #FCDC84   : Highlight : 0.5
+	Curve               : #FCDC84   : Highlight : 1.5
+	CurveBackground     : #A49054   : Border    : 0.5

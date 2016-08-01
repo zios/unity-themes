@@ -12,8 +12,8 @@
 	HighlightActive     : #000000  
 	HighlightButton     : #659797  
 	HighlightIcons      : #000000  
-	Scrollbar           : #FFFFFF10
-	ScrollbarThumb      : #FFFFFF2A
+	Scrollbar           : #436F6F  
+	ScrollbarThumb      : #689090  
 	Header              : #65979765
 
 [NonTextured]
@@ -23,7 +23,7 @@
 	TextButton          : #FFFFFF  
 	TextBorder          : #93D2C7  
 	TextBorderActive    : #FFFFFF  
-	TextBorderButton    : #FFFFFF33
+	TextBorderButton    : #93D2C7  
 	TextHighlight       : #000000  
 	TextHighlightActive : #FFFFFF  
 	TextHighlightButton : #F8FFBD  

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 933a8c57815b82246a294b380ea852fa
-timeCreated: 1467650209
+timeCreated: 1469981362
 licenseType: Free
 TrueTypeFontImporter:
   serializedVersion: 4
@@ -13,7 +13,7 @@ TrueTypeFontImporter:
   - Pixel Operator HB 8
   fallbackFontReferences: []
   customCharacters: 
-  fontRenderingMode: 3
+  fontRenderingMode: 0
   ascentCalculationMode: 1
   userData: 
   assetBundleName: 

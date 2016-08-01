@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: f97f69ade5458c149aeb72d10c3e8f40
-timeCreated: 1467650210
+timeCreated: 1469981365
 licenseType: Free
 TrueTypeFontImporter:
   serializedVersion: 4
@@ -13,7 +13,7 @@ TrueTypeFontImporter:
   - Iceland
   fallbackFontReferences: []
   customCharacters: 
-  fontRenderingMode: 3
+  fontRenderingMode: 0
   ascentCalculationMode: 1
   userData: 
   assetBundleName: 

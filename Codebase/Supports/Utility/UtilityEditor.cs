@@ -109,10 +109,10 @@ namespace Zios{
 				file.WriteText(output.ToString().TrimEnd(null));
 			}
 		}
-		[MenuItem("Zios/Recompile Code")]
-		public static void RecompileCode(){
-			string path = "Assets/@Zios/Codebase/Supports/Utility/UtilityEditor.cs";
-			AssetDatabase.ImportAsset(path);
+		[MenuItem("Zios/Reload Scripts &#R")]
+		public static void ReloadScripts(){
+			Debug.Log("[Utility] : Forced Reload Scripts.");
+			typeof(UnityEditorInternal.InternalEditorUtility).CallMethod("RequestScriptReload");
 		}
 		#endif
 	}
