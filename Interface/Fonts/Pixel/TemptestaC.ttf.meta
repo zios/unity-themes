@@ -9,9 +9,10 @@ TrueTypeFontImporter:
   includeFontData: 1
   fontNames:
   - PF Tempesta Seven Condensed
-  fallbackFontReferences: []
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: c6cc1109ee3364c4191bee187b040a78, type: 3}
   customCharacters: 
-  fontRenderingMode: 3
+  fontRenderingMode: 0
   ascentCalculationMode: 1
   userData: 
   assetBundleName: 

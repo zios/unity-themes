@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: cc904c8998782d44c81f952bbc651225
-timeCreated: 1467650209
+timeCreated: 1469981363
 licenseType: Free
 TrueTypeFontImporter:
   serializedVersion: 4
@@ -13,7 +13,7 @@ TrueTypeFontImporter:
   - PixAntiqua
   fallbackFontReferences: []
   customCharacters: 
-  fontRenderingMode: 3
+  fontRenderingMode: 0
   ascentCalculationMode: 2
   userData: 
   assetBundleName: 

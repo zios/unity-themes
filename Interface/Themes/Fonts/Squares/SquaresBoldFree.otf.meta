@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: cdd1742989af05a49bb3507aeb068d77
-timeCreated: 1467650209
+timeCreated: 1469981363
 licenseType: Free
 TrueTypeFontImporter:
   serializedVersion: 4
@@ -13,7 +13,7 @@ TrueTypeFontImporter:
   - Squares Bold
   fallbackFontReferences: []
   customCharacters: 
-  fontRenderingMode: 3
+  fontRenderingMode: 0
   ascentCalculationMode: 1
   userData: 
   assetBundleName: 

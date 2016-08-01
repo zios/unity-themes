@@ -11,9 +11,10 @@ TrueTypeFontImporter:
   includeFontData: 1
   fontNames:
   - Anke
-  fallbackFontReferences: []
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: c6dd6b6f00227624d86f5389f9d91e78, type: 3}
   customCharacters: 
-  fontRenderingMode: 3
+  fontRenderingMode: 0
   ascentCalculationMode: 1
   userData: 
   assetBundleName: 

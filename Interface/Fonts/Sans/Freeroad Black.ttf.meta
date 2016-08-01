@@ -11,9 +11,10 @@ TrueTypeFontImporter:
   includeFontData: 1
   fontNames:
   - Freeroad Black
-  fallbackFontReferences: []
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 9f991e0e915331b45821723792512ab8, type: 3}
   customCharacters: 
-  fontRenderingMode: 3
+  fontRenderingMode: 0
   ascentCalculationMode: 1
   userData: 
   assetBundleName: 

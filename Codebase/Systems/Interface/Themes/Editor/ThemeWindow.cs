@@ -7,6 +7,7 @@ namespace Zios.Interface{
 			EditorApplication.update -= Theme.ShowWindow;
 			Theme.Step();
 			Theme.Update();
+			ThemeContent.Monitor();
 			this.Repaint();
 			bool validTheme = !Theme.active.IsNull() && Theme.active.name != "Default";
 			bool mouseChanged = this.lastMouse != Event.current.mousePosition;
@@ -17,7 +18,6 @@ namespace Zios.Interface{
 				if(Theme.hoverResponse == HoverResponse.Slow){delay = 0.2f;}
 				if(Theme.hoverResponse == HoverResponse.Moderate){delay = 0.05f;}
 				Utility.DelayCall("Redraw",()=>{
-					ThemeContent.Monitor();
 					Theme.UpdateColors();
 					Utility.RepaintAll();
 				},delay,false);

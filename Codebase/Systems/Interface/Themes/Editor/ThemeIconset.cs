@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Linq;
 using System.Collections;
@@ -92,7 +92,8 @@ namespace Zios.Interface{
 			var contents = typeof(EditorGUIUtility).GetVariable<Hashtable>("s_IconGUIContents");
 			if(contents.Count != ThemeContent.iconAmount){
 				ThemeContent.iconAmount = contents.Count;
-				Theme.Reset(true);
+				Theme.loaded = false;
+				Theme.InstantRefresh();
 			}
 		}
 		public static List<ThemeContent> ImportDefaults(string path){

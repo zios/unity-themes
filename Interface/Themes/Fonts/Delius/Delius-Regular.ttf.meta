@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 06d153200b488ad409897eadbbf21914
-timeCreated: 1467635623
+timeCreated: 1469981357
 licenseType: Free
 TrueTypeFontImporter:
   serializedVersion: 4
@@ -13,7 +13,7 @@ TrueTypeFontImporter:
   - Delius
   fallbackFontReferences: []
   customCharacters: 
-  fontRenderingMode: 3
+  fontRenderingMode: 0
   ascentCalculationMode: 1
   userData: 
   assetBundleName: 

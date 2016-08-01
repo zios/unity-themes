@@ -11,9 +11,12 @@ TrueTypeFontImporter:
   includeFontData: 1
   fontNames:
   - TeX Gyre Heros
-  fallbackFontReferences: []
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: a1753031884b21743ab7fa26d85f6d3e, type: 3}
+  - {fileID: 12800000, guid: a037c642376d7724aa3a25d056b1764b, type: 3}
+  - {fileID: 12800000, guid: e4a7f9da2d7bf8342a44f5bd12a1e676, type: 3}
   customCharacters: 
-  fontRenderingMode: 3
+  fontRenderingMode: 0
   ascentCalculationMode: 1
   userData: 
   assetBundleName: 

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 7836980aa78c1104f8902c176d1d4466
-timeCreated: 1467623699
+timeCreated: 1469981361
 licenseType: Free
 TrueTypeFontImporter:
   serializedVersion: 4
@@ -13,7 +13,7 @@ TrueTypeFontImporter:
   - Righteous
   fallbackFontReferences: []
   customCharacters: 
-  fontRenderingMode: 3
+  fontRenderingMode: 0
   ascentCalculationMode: 1
   userData: 
   assetBundleName: 

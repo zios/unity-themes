@@ -11,9 +11,11 @@ TrueTypeFontImporter:
   includeFontData: 1
   fontNames:
   - Aurulent Sans Mono
-  fallbackFontReferences: []
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 56055b51707fdbc4e912862ce2177bee, type: 3}
+  - {fileID: 12800000, guid: 978c6519f99130946b3e8c07e6bdc387, type: 3}
   customCharacters: 
-  fontRenderingMode: 3
+  fontRenderingMode: 0
   ascentCalculationMode: 1
   userData: 
   assetBundleName: 

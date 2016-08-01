@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: f5c13560ed1b5bf438d15ebec9f38559
-timeCreated: 1467635625
+timeCreated: 1469981365
 licenseType: Free
 TrueTypeFontImporter:
   serializedVersion: 4
@@ -13,7 +13,7 @@ TrueTypeFontImporter:
   - Nova Square
   fallbackFontReferences: []
   customCharacters: 
-  fontRenderingMode: 3
+  fontRenderingMode: 0
   ascentCalculationMode: 1
   userData: 
   assetBundleName: 

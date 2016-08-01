@@ -23,7 +23,7 @@
 	TextButton          : #FFFFFF  
 	TextBorder          : #FFFFFFC7
 	TextBorderActive    : #FFFFFF  
-	TextBorderButton    : #FFFFFF33
+	TextBorderButton    : #FFFFFFC7
 	TextHighlight       : #000000A0
 	TextHighlightActive : #FFFFFF  
 	TextHighlightButton : #FFFFFF  
@@ -31,10 +31,10 @@
 	TextError           : #FF9797  
 	TextHeader          : #FFFFFF  
 (Other)
-	Frame               : #000000   : Border  
-	Window              : #14245D   : Main  
-	Details             : #000000   : Border  
+	Frame               : #581845   : Border   
+	Window              : #900C3F   : Main     
+	Details             : #581845   : Border   
 	Cursor              : #FF5733   : Highlight
-	Selection           : #581845   : Border   
+	Selection           : #FF5733   : Highlight : 0.8
 	Curve               : #FF5733   : Highlight : 1.5
 	CurveBackground     : #581845   : Border    : 0.5

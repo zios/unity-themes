@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 07dcc0a8c30455448851152b0f57782d
-timeCreated: 1467650207
+timeCreated: 1469981357
 licenseType: Free
 TrueTypeFontImporter:
   serializedVersion: 4
@@ -13,7 +13,7 @@ TrueTypeFontImporter:
   - Aubrey
   fallbackFontReferences: []
   customCharacters: 
-  fontRenderingMode: 3
+  fontRenderingMode: 0
   ascentCalculationMode: 1
   userData: 
   assetBundleName: 

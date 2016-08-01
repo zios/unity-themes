@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 2c8c4b7988f91d84280175ac76fe1583
-timeCreated: 1467623697
+timeCreated: 1469981359
 licenseType: Free
 TrueTypeFontImporter:
   serializedVersion: 4
@@ -13,7 +13,7 @@ TrueTypeFontImporter:
   - Homenaje
   fallbackFontReferences: []
   customCharacters: 
-  fontRenderingMode: 3
+  fontRenderingMode: 0
   ascentCalculationMode: 1
   userData: 
   assetBundleName: 

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: c7da734d00597d54ba4fbc3614decd51
-timeCreated: 1467650209
+timeCreated: 1469981363
 licenseType: Free
 TrueTypeFontImporter:
   serializedVersion: 4
@@ -13,7 +13,7 @@ TrueTypeFontImporter:
   - GRECOromanLubedWrestling
   fallbackFontReferences: []
   customCharacters: 
-  fontRenderingMode: 3
+  fontRenderingMode: 0
   ascentCalculationMode: 1
   userData: 
   assetBundleName: 

@@ -23,7 +23,7 @@
 	TextButton          : #FFFFFF  
 	TextBorder          : #FFFFFFC7
 	TextBorderActive    : #FFFFFF  
-	TextBorderButton    : #FFFFFF33
+	TextBorderButton    : #FFFFFFC7
 	TextHighlight       : #FFFFFF88
 	TextHighlightActive : #FFFFFF  
 	TextHighlightButton : #FFFFFF  
@@ -35,6 +35,6 @@
 	Window              : #002B36   : Main     
 	Details             : #005553   : Border   
 	Cursor              : #2C7777   : Highlight
-	Selection           : #005553   : Border   
+	Selection           : #2C7777   : Highlight
 	Curve               : #2C7777   : Highlight : 1.5
 	CurveBackground     : #005553   : Border    : 0.5

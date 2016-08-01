@@ -31,10 +31,10 @@
 	TextError           : #FFD3DD  
 	TextHeader          : #FEFC5D  
 (Other)
-	Frame               : #A5E430   : BorderActive
-	Window              : #1F96CA   : Main        
-	Details             : #DA4F93   : Border      
-	Cursor              : #000000   : Highlight    : 0
-	Selection           : #A5E430   : BorderActive
-	Curve               : #FFFF8B   : Highlight    : 1.5
-	CurveBackground     : #6D2749   : Border       : 0.5
+	Frame               : #A5E430   : BorderActive   
+	Window              : #1F96CA   : Main           
+	Details             : #DA4F93   : Border         
+	Cursor              : #FEFC5D   : Highlight       : 0
+	Selection           : #E56A31   : HighlightActive : 0.5
+	Curve               : #FEFC5D   : Highlight       : 1.5
+	CurveBackground     : #DA4F93   : Border          : 0.5

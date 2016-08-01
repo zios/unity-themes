@@ -95,6 +95,7 @@ namespace Zios.Interface{
 				}
 				Theme.storagePath = themes.path.GetDirectory()+"/";
 				Theme.Load();
+				Theme.LoadSettings();
 				Theme.UpdateSettings();
 				Theme.UpdateColors();
 				Theme.Rebuild();
@@ -115,12 +116,14 @@ namespace Zios.Interface{
 			ThemeSkinset.all = ThemeSkinset.Import();
 			ThemeIconset.all = ThemeIconset.Import();
 			Theme.all = Theme.Import().OrderBy(x=>x.name!="Default").ToList();
-			Theme.hoverResponse = EditorPrefs.GetInt("EditorTheme-HoverResponse",2).As<HoverResponse>();
+		}
+		public static void LoadSettings(){
+			Theme.hoverResponse = EditorPrefs.GetInt("EditorTheme-HoverResponse",3).As<HoverResponse>();
 			Theme.separatePlaymodeSettings = EditorPrefs.GetBool("EditorTheme-SeparatePlaymodeSettings",false);
 			Theme.suffix = EditorApplication.isPlayingOrWillChangePlaymode && Theme.separatePlaymodeSettings ? "-Playmode" : "";
 			Theme.themeIndex = Theme.all.FindIndex(x=>x.name==EditorPrefs.GetString("EditorTheme"+Theme.suffix,"Default")).Max(0);
-			var theme = Theme.all[themeIndex];
-			Theme.suffix = "-"+theme.name+suffix;
+			var theme = Theme.all[Theme.themeIndex];
+			Theme.suffix = "-"+theme.name+Theme.suffix;
 			Theme.fontsetIndex = ThemeFontset.all.FindIndex(x=>x.name==EditorPrefs.GetString("EditorFontset"+Theme.suffix,theme.fontset.name)).Max(0);
 			Theme.paletteIndex = ThemePalette.all.FindIndex(x=>x.name==EditorPrefs.GetString("EditorPalette"+Theme.suffix,theme.palette.name)).Max(0);
 			Theme.skinsetIndex = ThemeSkinset.all.FindIndex(x=>x.name==EditorPrefs.GetString("EditorSkinset"+Theme.suffix,theme.skinset.name)).Max(0);
@@ -183,6 +186,7 @@ namespace Zios.Interface{
 			if(theme.customizableFontset && ThemeFontset.all.Count > 0){
 				var baseFontset = ThemeFontset.all[Theme.fontsetIndex];
 				theme.fontset = new ThemeFontset(baseFontset).UseBuffer(theme.fontset);
+				theme.fontset.rendering = EditorPrefs.GetInt("EditorTheme-FontRendering-"+theme.fontset.name,1).As<FontRenderingMode>();
 				Theme.LoadFontset();
 			}
 			foreach(var variant in theme.skinset.variants){
@@ -210,7 +214,7 @@ namespace Zios.Interface{
 			}
 		}
 		public static void Cleanup(){
-			foreach(var guiSkin in Resources.FindObjectsOfTypeAll<UnityObject>().Where(x=>x.name.Contains("EditorStyles"))){
+			foreach(var guiSkin in Resources.FindObjectsOfTypeAll<GUISkin>()){
 				if(!Utility.IsAsset(guiSkin)){
 					UnityObject.DestroyImmediate(guiSkin);
 				}
@@ -298,8 +302,8 @@ namespace Zios.Interface{
 			bool fontsetAltered = !theme.fontset.Matches(ThemeFontset.all[Theme.fontsetIndex]);
 			if(theme.customizableFontset && hasFontsets){
 				if(Theme.fontsetNames.Count < 1){
-					var palettePath = Theme.storagePath+"Fontsets/";
-					Theme.fontsetNames = ThemeFontset.all.Select(x=>x.path.Remove(palettePath,".unityfontset")).ToList();
+					var fontsetsPath = Theme.storagePath+"Fontsets/";
+					Theme.fontsetNames = ThemeFontset.all.Select(x=>x.path.Remove(fontsetsPath,".unityfontset")).ToList();
 				}
 				var fontsetNames = Theme.fontsetNames.Copy();
 				var popupStyle = EditorStyles.popup;
@@ -425,9 +429,7 @@ namespace Zios.Interface{
 				if(!open){return;}
 				EditorGUI.indentLevel += 1;
 				var builtin = Resources.FindObjectsOfTypeAll<Font>().Where(x=>AssetDatabase.GetAssetPath(x).Contains("Library/unity")).ToArray();
-				var ttf = FileManager.FindAll("Themes/Fonts/*.ttf");
-				var otf = FileManager.FindAll("Themes/Fonts/*.otf");
-				var fontFiles = ttf.Concat(otf);
+				var fontFiles = FileManager.FindAll("Themes/Fonts/*.*tf");
 				var fonts = builtin.Concat(fontFiles.Select(x=>x.GetAsset<Font>())).ToArray();
 				if(Theme.fontNames.Count < 1){
 					var fontPath = Theme.storagePath+"Fonts/";
@@ -448,6 +450,21 @@ namespace Zios.Interface{
 				}
 				var fontNames = Theme.fontNames.Copy();
 				if(fontNames.Count < 1){fontNames.Add("No fonts found.");}
+				theme.fontset.rendering = theme.fontset.rendering.Draw("Rendering Mode").As<FontRenderingMode>();
+				EditorPrefs.SetInt("EditorTheme-FontRendering-"+theme.fontset.name,theme.fontset.rendering.ToInt());
+				if(EditorGUIExtension.lastChanged){
+					var path = Theme.storagePath+"Fonts";
+					AssetDatabase.StartAssetEditing();
+					foreach(var item in theme.fontset.fonts){
+						var font = item.Value.font;
+						path = AssetDatabase.GetAssetPath(font);
+						var importer = TrueTypeFontImporter.GetAtPath(path).As<TrueTypeFontImporter>();
+						importer.fontRenderingMode = theme.fontset.rendering;
+						AssetDatabase.WriteImportSettingsIfDirty(path);
+					}
+					AssetDatabase.StopAssetEditing();
+					AssetDatabase.Refresh();
+				}
 				GUIStyleExtension.autoLayout = false;
 				foreach(var item in theme.fontset.fonts){
 					if(item.Value.font.IsNull()){continue;}
@@ -566,7 +583,7 @@ namespace Zios.Interface{
 		}
 		[MenuItem("Zios/Theme/Development/Refresh #F1")]
 		public static void DebugRefresh(){
-			Debug.Log("[Themes] Forced Refresh.");
+			Debug.Log("[Themes] Example Info message.");
 			Debug.LogError("[Themes] Example Error message.");
 			Debug.LogWarning("[Themes] Example Warning message.");
 			Theme.setup = false;
@@ -652,7 +669,7 @@ namespace Zios.Interface{
 		}
 	}
 	public class ColorImportSettings : AssetPostprocessor{
-		public static void OnPostprocessAllAssets(string[] imported,string[] deleted,string[] movedTo, string[] movedFrom){
+		public static void OnPostprocessAllAssets(string[] imported,string[] deleted,string[] movedTo,string[] movedFrom){
 			Theme.setup = false;
 			Theme.loaded = false;
 		}

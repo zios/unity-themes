@@ -9,9 +9,10 @@ TrueTypeFontImporter:
   includeFontData: 1
   fontNames:
   - Sansation
-  fallbackFontReferences: []
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 5f19a353e8fbce64e90dfbb47ddf3436, type: 3}
   customCharacters: 
-  fontRenderingMode: 3
+  fontRenderingMode: 0
   ascentCalculationMode: 1
   userData: 
   assetBundleName: 

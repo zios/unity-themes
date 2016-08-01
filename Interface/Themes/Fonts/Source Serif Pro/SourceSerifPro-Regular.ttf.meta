@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 6966d0ec30e814c4387c0a2dd150f322
-timeCreated: 1467623698
+timeCreated: 1469981361
 licenseType: Free
 TrueTypeFontImporter:
   serializedVersion: 4
@@ -11,9 +11,11 @@ TrueTypeFontImporter:
   includeFontData: 1
   fontNames:
   - Source Serif Pro
-  fallbackFontReferences: []
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: bb9db4c2a505ab044ae1f41798b981ad, type: 3}
+  - {fileID: 12800000, guid: bd529039b328a9248a5fe90fa180f190, type: 3}
   customCharacters: 
-  fontRenderingMode: 3
+  fontRenderingMode: 0
   ascentCalculationMode: 1
   userData: 
   assetBundleName: 

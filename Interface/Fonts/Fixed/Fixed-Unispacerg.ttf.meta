@@ -11,9 +11,12 @@ TrueTypeFontImporter:
   includeFontData: 1
   fontNames:
   - Unispace
-  fallbackFontReferences: []
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: d46aaf7795e064249a37bb006d54dff1, type: 3}
+  - {fileID: 12800000, guid: b99fbda8d6d0c8d468092389047bb8d4, type: 3}
+  - {fileID: 12800000, guid: dc13aedf31fe81844a748cfde432b3eb, type: 3}
   customCharacters: 
-  fontRenderingMode: 3
+  fontRenderingMode: 0
   ascentCalculationMode: 1
   userData: 
   assetBundleName: 

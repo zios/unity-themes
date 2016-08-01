@@ -11,9 +11,10 @@ TrueTypeFontImporter:
   includeFontData: 1
   fontNames:
   - Share-TechMono
-  fallbackFontReferences: []
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 6ed3d9990f4326347966405f61da4c18, type: 3}
   customCharacters: 
-  fontRenderingMode: 3
+  fontRenderingMode: 0
   ascentCalculationMode: 1
   userData: 
   assetBundleName: 

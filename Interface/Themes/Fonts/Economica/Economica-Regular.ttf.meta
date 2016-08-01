@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: d67336c27602e4f4499ac6379c5cac64
-timeCreated: 1467623702
+timeCreated: 1469981364
 licenseType: Free
 TrueTypeFontImporter:
   serializedVersion: 4
@@ -16,7 +16,7 @@ TrueTypeFontImporter:
   - {fileID: 12800000, guid: 6efa57b329464fd41922cc7e4ad7abc0, type: 3}
   - {fileID: 12800000, guid: d2f9b19c16753a24285e378f1294f1c9, type: 3}
   customCharacters: 
-  fontRenderingMode: 3
+  fontRenderingMode: 0
   ascentCalculationMode: 1
   userData: 
   assetBundleName: 

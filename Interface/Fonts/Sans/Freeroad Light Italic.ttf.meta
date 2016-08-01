@@ -11,9 +11,10 @@ TrueTypeFontImporter:
   includeFontData: 1
   fontNames:
   - Freeroad Light
-  fallbackFontReferences: []
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 11ba5ab450455a443ba2facccc8539a5, type: 3}
   customCharacters: 
-  fontRenderingMode: 3
+  fontRenderingMode: 0
   ascentCalculationMode: 1
   userData: 
   assetBundleName: 

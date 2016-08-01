@@ -13,7 +13,7 @@ TrueTypeFontImporter:
   - 8BIT WONDER
   fallbackFontReferences: []
   customCharacters: 
-  fontRenderingMode: 3
+  fontRenderingMode: 0
   ascentCalculationMode: 1
   userData: 
   assetBundleName: 
