@@ -658,9 +658,9 @@ namespace Zios.Interface{
 			this.titleContent = "About Themes".ToContent();
 			box = EditorStyles.helpBox;
 			#endif
-			string buildText = "Build <b><color=#FFFFFF>"+ Theme.revision+"</color></b>";
+			string buildText = "Build <b>"+ Theme.revision+"</b>";
 			EditorGUILayout.BeginVertical(box.Background(""));
-			buildText.ToLabel().DrawLabel(EditorStyles.miniLabel.RichText(true).Clipping("Overflow").FontSize(15).Alignment("UpperCenter"));
+			buildText.ToLabel().DrawLabel(EditorStyles.label.RichText(true).Clipping("Overflow").FontSize(15).Alignment("UpperCenter"));
 			"Part of the <i>Zios</i> framework. Developed by Brad Smithee.".ToLabel().DrawLabel(EditorStyles.wordWrappedLabel.FontSize(12).RichText(true));
 			if("Source Repository".ToLabel().DrawButton(GUI.skin.button.FixedWidth(150).Margin(12,0,5,0))){
 				Application.OpenURL("https://github.com/zios/unity-themes");
