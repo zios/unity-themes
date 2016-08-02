@@ -6,7 +6,7 @@
 	MainIcons           : #FFFB00  
 	Border              : #DA4F93  
 	BorderActive        : #A5E430  
-	BorderButton        : #EA86C16A
+	BorderButton        : #DA4F93   : Border         
 	BorderIcons         : #FEFC5D  
 	Highlight           : #FEFC5D  
 	HighlightActive     : #E56A31  
@@ -34,7 +34,7 @@
 	Frame               : #A5E430   : BorderActive   
 	Window              : #1F96CA   : Main           
 	Details             : #DA4F93   : Border         
-	Cursor              : #FEFC5D   : Highlight       : 0
-	Selection           : #E56A31   : HighlightActive : 0.5
-	Curve               : #FEFC5D   : Highlight       : 1.5
-	CurveBackground     : #DA4F93   : Border          : 0.5
+	Cursor              : #000000   : Highlight       : 0
+	Selection           : #723518   : HighlightActive : 0.5
+	Curve               : #FFFF8B   : Highlight       : 1.5
+	CurveBackground     : #6D2749   : Border          : 0.5

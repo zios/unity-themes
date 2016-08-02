@@ -100,9 +100,6 @@ namespace Zios.Interface{
 			Utility.GetUnityType("SceneRenderModeWindow.Styles").SetVariable("sSeparator",skin.Get("sv_iconselector_sep"));
 			Utility.GetUnityType("GameView.Styles").SetVariable("gizmoButtonStyle",skin.Get("GV Gizmo DropDown"));
 			typeof(SceneView).SetVariable<GUIStyle>("s_DropDownStyle",skin.Get("GV Gizmo DropDown"));
-			var console = Utility.GetUnityType("ConsoleWindow.Constants");
-			console.SetVariable("ms_Loaded",false);
-			console.CallMethod("Init");
 			var hostView = Utility.GetUnityType("HostView");
 			if(palette.Has("Cursor")){skin.settings.cursorColor = palette.Get("Cursor");}
 			if(palette.Has("Selection")){skin.settings.selectionColor = palette.Get("Selection");}
