@@ -6,7 +6,7 @@
 	MainIcons           : #818181  
 	Border              : #C4C6CC  
 	BorderActive        : #818181  
-	BorderButton        : #81818115
+	BorderButton        : #C4C6CC  
 	BorderIcons         : #81818166
 	Highlight           : #D0D3DB  
 	HighlightActive     : #818181  
