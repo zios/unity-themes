@@ -5,10 +5,11 @@ namespace Zios.Interface{
 		public Vector2 lastMouse;
 		public void OnGUI(){
 			EditorApplication.update -= Theme.ShowWindow;
-			Theme.Step();
+			Theme.ShowWindow();
 			Theme.Update();
 			ThemeContent.Monitor();
 			this.Repaint();
+			Utility.DelayCall(RelativeColor.UpdateSystem,0.2f,false);
 			bool validTheme = !Theme.active.IsNull() && Theme.active.name != "Default";
 			bool mouseChanged = this.lastMouse != Event.current.mousePosition;
 			if(validTheme && mouseChanged){

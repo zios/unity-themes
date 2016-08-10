@@ -27,7 +27,7 @@ namespace Zios.Containers{
 		public GameObject Get(){
 			GameObject result = this.mode == TargetMode.Search ? this.searchObject : this.directObject;
 			if(result.IsNull() && Application.isPlaying){
-				Debug.LogWarning("[Target] No target found for : " + this.path,this.parent);
+				Utility.LogWarning(this.path+"Missing","[Target] No target found for : " + this.path,this.parent,1);
 			}
 			return result;
 		}

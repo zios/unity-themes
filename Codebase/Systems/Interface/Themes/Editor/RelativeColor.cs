@@ -1,18 +1,26 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+#if UNITY_EDITOR_WIN
+using Microsoft.Win32;
+#endif
 namespace Zios.Interface{
 	using UnityEditor;
+	public enum AutoBalance{Off,Intensity,Luminance}
 	[Serializable]
 	public class RelativeColor{
+		public static AutoBalance autoBalance = AutoBalance.Intensity;
+		public static List<RelativeColor> lookupBuffer = new List<RelativeColor>();
+		public static RelativeColor system = new RelativeColor();
 		public string name;
 		public Color value;
-		public Color original;
+		public Color blend;
 		public float offset = 1;
 		public bool skipTexture;
 		public string sourceName = "";
 		public RelativeColor source;
-		public ColorBlend blend = ColorBlend.Multiply;
+		public ColorBlend blendMode = ColorBlend.Normal;
 		public static implicit operator RelativeColor(string value){
 			return value.IsNumber() ? new RelativeColor(value.ToFloat()) : new RelativeColor(value.ToColor());
 		}
@@ -27,6 +35,31 @@ namespace Zios.Interface{
 		public static RelativeColor Create(string data){
 			return new RelativeColor().Deserialize(data);
 		}
+		public static void UpdateSystem(){
+			object key = null;
+			var system = RelativeColor.system;
+			var current = system.value;
+			system.name = "@System";
+			#if UNITY_EDITOR_WIN
+			key = Registry.GetValue("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\DWM\\","AccentColor",null);
+			key = key ?? Registry.GetValue("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Accent","AccentColor",null);
+			if(!key.IsNull()){
+				int value = key.As<int>();
+				 system.value = value != -1 ? value.ToHex().ToColor(true) : RelativeColor.system.value;
+			}
+			else{
+				key = Registry.GetValue("HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\Personalization","PersonalColor_Accent",null);
+				key = key ?? Registry.GetValue("HKEY_CURRENT_USER\\Control Panel\\Colors","WindowFrame",null);
+				if(!key.IsNull()){
+					string value = key.As<string>();
+					system.value = value != "" ? value.ToColor(" ",false,false) : RelativeColor.system.value;
+				}
+			}
+			#endif
+			if(system.value != current){
+				Theme.Rebuild();
+			}
+		}
 		public RelativeColor Copy(){
 			var copy = new RelativeColor(this.value,this.offset,this.source);
 			copy.UseVariables(this);
@@ -40,6 +73,9 @@ namespace Zios.Interface{
 				contents += " : " + sourceName;
 			}
 			if(this.offset != 1){contents += " : " + this.offset;}
+			if(this.blendMode != ColorBlend.Normal){
+				contents += " : *" + this.blendMode.ToName()+"-"+this.blend.Serialize().Trim("#");
+			}
 			return contents;
 		}
 		public RelativeColor Deserialize(string data){
@@ -48,34 +84,66 @@ namespace Zios.Interface{
 			this.name = terms[0];
 			this.sourceName = main.Where(x=>!x.IsColor() && !x.IsNumber()).FirstOrDefault() ?? "";
 			var colorValue = main.Where(x=>x.IsColor()).FirstOrDefault();
-			var offsetValue = main.Where(x=>x.IsNumber()).FirstOrDefault();
+			var offsetValue = main.Where(x=>x.IsFloat()).FirstOrDefault();
+			var blendValue = main.LastOrDefault();
 			var color = !colorValue.IsEmpty() ? colorValue.ToColor() : Color.magenta;
 			var offset = !offsetValue.IsEmpty() ? offsetValue.ToFloat() : 1;
 			this.Assign(color,offset,null);
+			if(blendValue.StartsWith("*")){
+				var value = blendValue.Trim("*").Split("-");
+				this.blendMode = ColorBlend.Normal.ParseEnum(value[0]);
+				this.blend = value[1].ToColor();
+			}
 			return this;
 		}
 		public void Assign(Color color,float offset,RelativeColor source){
 			this.source = source;
-			this.original = color;
 			this.value = color;
 			this.offset = offset;
 			this.Assign(source);
 		}
+		public void Assign(ThemePalette palette,string sourceName){
+			var source = sourceName == "@System" ? RelativeColor.system : palette.colors["*"][sourceName];
+			this.Assign(source);
+		}
 		public void Assign(RelativeColor source){
 			if(!source.IsNull()){
+				var alpha = this.value.a;
 				this.value = source.value;
-				this.original = source.value;
+				this.value.a = alpha;
 			}
 			this.source = source;
 		}
-		public void ApplyOffset(){
-			if(!this.source.IsNull()){
-				this.value = this.source.original.Multiply(this.offset);
+		public Color ApplyOffset(bool allowBalance=true){
+			var processed = RelativeColor.lookupBuffer.Contains(this.source);
+			if(!this.source.IsNull() && this.source != this && !processed){
+				RelativeColor.lookupBuffer.Add(this.source);
+				var offset = this.offset;
+				var source = this.source.ApplyOffset();
+				RelativeColor.lookupBuffer.Remove(this.source);
+				if(this.blendMode != ColorBlend.Normal){
+					this.value = this.blend.Blend(source,this.blendMode,offset);
+					return this.value;
+				}
+				if(offset != 1 && allowBalance && RelativeColor.autoBalance != AutoBalance.Off){
+					var sourceIntensity = RelativeColor.autoBalance.Matches("Intensity") ? source.GetIntensity() : source.GetLuminance();
+					var result = offset * sourceIntensity;
+					var tooDark = sourceIntensity < 0.3f && result.Distance(sourceIntensity) < 0.2f;
+					var tooBright = result > 1.25f;
+					if(tooDark){
+						var natural = source.ToVector3().normalized.ToColor();
+						source = natural.Lerp(source,sourceIntensity.LerpRelative(0,0.2f));
+						if(sourceIntensity == 0){source = new Color(0.25f,0.25f,0.25f);}
+					}
+					var difference = source.Multiply(offset).Difference(source);
+					if(tooBright || difference < 0.05f){offset = 1/offset;}
+				}
+				var alpha = this.value.a;
+				this.value = source.Multiply(offset);
+				this.value.a = this.source.value.a == 1 ? alpha : this.value.a;
 			}
+			return this.value;
 		}
-		public void ApplyOffset(Color target){this.value = target.Multiply(this.offset);}
-		public void ApplyColor(){this.value = this.source ?? this.value;}
-		public void ApplyColor(Color target){this.value = target;}
 		public Texture2D UpdateTexture(string path){
 			var color = this.value;
 			path = path.GetAssetPath();

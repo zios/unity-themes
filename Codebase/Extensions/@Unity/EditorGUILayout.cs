@@ -6,8 +6,39 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using UnityObject = UnityEngine.Object;
+using Class = Zios.Interface.EditorGUILayoutExtension;
 namespace Zios.Interface{
 	public static class EditorGUILayoutExtension{
+		public static float width = 0;
+		public static float height = 0;
+		public static float maxWidth = 0;
+		public static float maxHeight = 0;
+		public static bool? autoWidth = null;
+		public static bool? autoHeight = null;
+		public static void SetLayout(float width,float height,float maxWidth,float maxHeight,bool autoWidth,bool autoHeight){
+			EditorGUILayoutExtension.SetLayout(width,height,maxWidth,maxHeight,(bool?)autoWidth,(bool?)autoHeight);
+		}
+		public static void SetLayout(float width=0,float height=0,float maxWidth=0,float maxHeight=0,bool? autoWidth=null,bool? autoHeight=null){
+			EditorGUILayoutExtension.width = width;
+			EditorGUILayoutExtension.height = height;
+			EditorGUILayoutExtension.maxWidth = maxWidth;
+			EditorGUILayoutExtension.maxHeight = maxHeight;
+			EditorGUILayoutExtension.autoWidth = autoWidth;
+			EditorGUILayoutExtension.autoHeight = autoHeight;
+		}
+		public static GUILayoutOption[] CreateLayout(){
+			var options = new List<GUILayoutOption>();
+			var style = new GUIStyle();
+			if(GUIStyleExtension.autoLayout){
+				if(EditorGUILayoutExtension.width != 0){options.Add(GUILayout.Width(EditorGUILayoutExtension.width));}
+				if(EditorGUILayoutExtension.height != 0){options.Add(GUILayout.Height(EditorGUILayoutExtension.height));}
+				if(EditorGUILayoutExtension.maxWidth != 0){options.Add(GUILayout.MaxWidth(EditorGUILayoutExtension.maxWidth));}
+				if(EditorGUILayoutExtension.maxHeight != 0){options.Add(GUILayout.MaxHeight(EditorGUILayoutExtension.maxHeight));}
+				if(EditorGUILayoutExtension.autoWidth != null){options.Add(GUILayout.ExpandWidth(EditorGUILayoutExtension.autoWidth.As<bool>()));}
+				if(EditorGUILayoutExtension.autoHeight != null){options.Add(GUILayout.ExpandHeight(EditorGUILayoutExtension.autoHeight.As<bool>()));}
+			}
+			return options.ToArray();
+		}
 		public static string Draw(this string current,UnityLabel label=null,GUIStyle style=null,bool indention=true){
 			style = style ?? EditorStyles.textField;
 			return EditorGUIExtension.Draw<string>(()=>EditorGUILayout.TextField(label,current,style,style.CreateLayout()),indention);
@@ -30,17 +61,17 @@ namespace Zios.Interface{
 		}
 		public static void Draw(this SerializedProperty current,UnityLabel label=null,bool allowScene=true,bool indention=true){
 			if(label != null && label.value.text.IsEmpty()){label = new GUIContent(current.displayName);}
-			Action action = ()=>EditorGUILayout.PropertyField(current,label,allowScene);
+			Action action = ()=>EditorGUILayout.PropertyField(current,label,allowScene,Class.CreateLayout());
 			EditorGUIExtension.Draw(action,indention);
 		}
 		public static Rect Draw(this Rect current,UnityLabel label=null,bool indention=true){
-			return EditorGUIExtension.Draw<Rect>(()=>EditorGUILayout.RectField(label,current),indention);
+			return EditorGUIExtension.Draw<Rect>(()=>EditorGUILayout.RectField(label,current,Class.CreateLayout()),indention);
 		}
 		public static AnimationCurve Draw(this AnimationCurve current,UnityLabel label=null,bool indention=true){
-			return EditorGUIExtension.Draw<AnimationCurve>(()=>EditorGUILayout.CurveField(label,current),indention);
+			return EditorGUIExtension.Draw<AnimationCurve>(()=>EditorGUILayout.CurveField(label,current,Class.CreateLayout()),indention);
 		}
 		public static Color Draw(this Color current,UnityLabel label=null,bool indention=true){
-			return EditorGUIExtension.Draw<Color>(()=>EditorGUILayout.ColorField(label,current),indention);
+			return EditorGUIExtension.Draw<Color>(()=>EditorGUILayout.ColorField(label,current,Class.CreateLayout()),indention);
 		}
 		public static void Draw<T>(this IList<T> current,string header="List"){
 			if(header.IsEmpty() || EditorGUILayoutExtensionSpecial.DrawFoldout(header)){
@@ -63,7 +94,7 @@ namespace Zios.Interface{
 			}
 		}
 		public static void Draw(this IDictionary current,UnityLabel label=null,GUIStyle style=null,bool indention=true){
-			var open = EditorGUILayoutExtensionSpecial.DrawFoldout(label.ToString().ToTitleCase());
+			var open = EditorGUILayoutExtensionSpecial.DrawFoldout(label.ToString().ToTitleCase(),Class.CreateLayout());
 			if(!open){return;}
 			EditorGUI.indentLevel += 1;
 			foreach(DictionaryEntry item in current){
@@ -115,8 +146,6 @@ namespace Zios.Interface{
 				if(!header.IsEmpty()){EditorGUI.indentLevel -= 1;}
 			}
 		}
-		//public static bool DrawFoldout(this string current,bool indention=true){return new UnityLabel(current).DrawFoldout(indention);}
-		//public static bool DrawFoldout(this GUIContent current,bool indention=true){return new UnityLabel(current).DrawFoldout(indention);}
 		public static bool DrawFoldout(this UnityLabel current,object key=null,GUIStyle style=null,bool indention=true){
 			style = style ?? EditorStyles.foldout;
 			string name = key.IsNull() ? current + "Header" : key.GetHashCode().ToString();
@@ -146,14 +175,10 @@ namespace Zios.Interface{
 			}
 			return state;
 		}
-		//public static void DrawLabel(this string current,GUIStyle style=null,bool indention=true){new UnityLabel(current).DrawLabel(style,indention);}
-		//public static void DrawLabel(this GUIContent current,GUIStyle style=null,bool indention=true){new UnityLabel(current).DrawLabel(style,indention);}
 		public static void DrawLabel(this UnityLabel current,GUIStyle style=null,bool indention=true){
 			style = style ?? EditorStyles.label;
 			if(indention){
-				var options = new List<GUILayoutOption>();
-				if(style.fixedWidth != 0){options.Add(GUILayout.Width(style.fixedWidth));}
-				EditorGUIExtension.Draw(()=>EditorGUILayout.LabelField(current,style,options.ToArray()),indention);
+				EditorGUIExtension.Draw(()=>EditorGUILayout.LabelField(current,style,style.CreateLayout()),indention);
 				return;
 			}
 			EditorGUIExtension.Draw(()=>GUILayout.Label(current,style),indention);
@@ -167,36 +192,37 @@ namespace Zios.Interface{
 		}
 		public static string DrawTextArea(this string current,UnityLabel label=null,GUIStyle style=null,bool indention=true){
 			style = style ?? EditorStyles.textField;
-			return EditorGUIExtension.Draw<string>(()=>EditorGUILayout.TextField(label,current,style),indention);
+			return EditorGUIExtension.Draw<string>(()=>EditorGUILayout.TextField(label,current,style,Class.CreateLayout()),indention);
 		}
-		//public static bool DrawButton(this string current,GUIStyle style=null,bool indention=true){return new UnityLabel(current).DrawButton(style,indention);}
-		//public static bool DrawButton(this GUIContent current,GUIStyle style=null,bool indention=true){return new UnityLabel(current).DrawButton(style,indention);}
 		public static bool DrawButton(this UnityLabel current,GUIStyle style=null,bool indention=true){
 			style = style ?? GUI.skin.button;
-			return EditorGUIExtension.Draw<bool>(()=>GUILayout.Button(current,style),indention);
+			return EditorGUIExtension.Draw<bool>(()=>GUILayout.Button(current,style,Class.CreateLayout()),indention);
 		}
 		public static int DrawInt(this int current,UnityLabel label=null,GUIStyle style=null,bool indention=true){
 			style = style ?? EditorStyles.numberField;
 			return EditorGUIExtension.Draw<int>(()=>EditorGUILayout.IntField(label,current,style,style.CreateLayout()),indention);
 		}
 		public static int DrawSlider(this int current,int min,int max,UnityLabel label=null,bool indention=true){
-			return EditorGUIExtension.Draw<int>(()=>EditorGUILayout.IntSlider(label,current,min,max),indention);
+			return EditorGUIExtension.Draw<int>(()=>EditorGUILayout.IntSlider(label,current,min,max,Class.CreateLayout()),indention);
+		}
+		public static float DrawSlider(this float current,float min,float max,UnityLabel label=null,bool indention=true){
+			return EditorGUIExtension.Draw<float>(()=>EditorGUILayout.Slider(label,current,min,max,Class.CreateLayout()),indention);
 		}
 		public static Type Draw<Type>(this UnityObject current,UnityLabel label=null,bool allowScene=true,bool indention=true) where Type : UnityObject{
-			return (Type)EditorGUIExtension.Draw<UnityObject>(()=>EditorGUILayout.ObjectField(label,current,typeof(Type),allowScene),indention);
+			return (Type)EditorGUIExtension.Draw<UnityObject>(()=>EditorGUILayout.ObjectField(label,current,typeof(Type),allowScene,Class.CreateLayout()),indention);
 		}
 		public static Enum DrawMask(this Enum current,UnityLabel label=null,GUIStyle style=null,bool indention=true){
 			style = style ?? EditorStyles.popup;
 			return EditorGUIExtension.Draw<Enum>(()=>EditorGUILayout.EnumMaskField(label,current,style,style.CreateLayout()),indention);
 		}
 		public static Vector2 DrawVector2(this Vector2 current,UnityLabel label=null,bool indention=true){
-			return EditorGUIExtension.Draw<Vector2>(()=>EditorGUILayout.Vector2Field(label,current),indention);
+			return EditorGUIExtension.Draw<Vector2>(()=>EditorGUILayout.Vector2Field(label,current,Class.CreateLayout()),indention);
 		}
 		public static Vector3 DrawVector3(this Vector3 current,UnityLabel label=null,bool indention=true){
-			return EditorGUIExtension.Draw<Vector3>(()=>EditorGUILayout.Vector3Field(label,current),indention);
+			return EditorGUIExtension.Draw<Vector3>(()=>EditorGUILayout.Vector3Field(label,current,Class.CreateLayout()),indention);
 		}
 		public static Vector4 DrawVector4(this Vector4 current,UnityLabel label=null,bool indention=true){
-			return EditorGUIExtension.Draw<Vector4>(()=>EditorGUILayout.Vector4Field(label.ToString(),current),indention);
+			return EditorGUIExtension.Draw<Vector4>(()=>EditorGUILayout.Vector4Field(label.ToString(),current,Class.CreateLayout()),indention);
 		}
 	}
 }

@@ -1,53 +1,57 @@
 Shader "Zios/Standalone/(Megashader)"{
 	Properties{
-		[Header(General)]
+		[Section(General)]
 			baseColor("Color",Color) = (1,1,1,1)
-			[KeywordEnum(Normal,Vertex)] colorMode("Color Mode",Float) = 0
-			[KeywordEnum(None,Front,Back)] cullMode("Cull",Float) = 2
-			[KeywordEnum(Off,On)] zWriteMode("ZWrite",Float) = 1
-			[KeywordEnum(Less,Greater,LEqual,GEqual,Equal,NotEqual,Always)] zTestMode("ZTest",Float) = 4
-		[Header(Texture)]
-			[KeywordEnum(Off,On)] textureState("State",Float) = 1
-			[KeywordEnum(UV,Triplanar)] textureMapping("Mapping",Float) = 0
+			alphaClip("Alpha Clip",Range(0,1)) = 0.1
+			[KeywordToggle(Normal,Vertex)] colorMode("Color Mode",Float) = 0
+			[Enum(None,0,Front,1,Back,2)] cullMode("Cull",Float) = 2
+			[Enum(Off,0,On,1)] zWriteMode("ZWrite",Float) = 1
+			[Enum(Less,0,Greater,1,LEqual,2,GEqual,3,Equal,4,NotEqual,5,Always,6)] zTestMode("ZTest",Float) = 4
+		[Section(Toggle)]
+			textureState("State",Float) = 1
+			[KeywordToggle(UV,Triplanar)] textureMapping("Mapping",Float) = 0
 			[KeywordEnum(Multiply,Add,Lerp,Overlay,Screen,SoftLight,LinearLight)] textureBlend("Blend",Float) = 0
+			[KeywordToggle(All,Shadows,Midtones,Highlights)] textureBlendZone("Blend Range",Float) = 0
 			textureMap("Texture",2D) = "white"{}
-		[Header(Triplanar)]
+		[Section(Triplanar)]
 			triplanarScale("Scale",Range(0.05,50)) = 1
-			[Toggle] xBlending("X Blending",Float) = 1
-			[Toggle] yBlending("Y Blending",Float) = 1
-			[Toggle] zBlending("Z Blending",Float) = 1
-		[Header(Reflection)]
-			[KeywordEnum(None,Simple,Sphere,View)] reflectionType("Type",Float) = 0
+			[AxisToggle] triplanarBlending("Blending",Vector) = (0,0,0,0)
+		[Section(Mask)]
+			[KeywordToggle(Off,On)] textureMaskState("State",Float) = 1
+			textureMaskMap("Mask Texture",2D) = "white"{}
+			textureBlendMap("Blend Texture",2D) = "white"{}
+		[Section(Reflection)]
+			[KeywordToggle(None,Simple,Sphere,View)] reflectionType("Type",Float) = 0
 			reflectionColor("Color",Color) = (1,1,1,0.3)
 			reflectionMap("Texture",2D) = "white"{}
-		[Header(Lighting)]
-			[KeywordEnum(None,Lambert,LambertHalf,LambertStepped)] lightingType("Type",Float) = 3
+		[Section(Lighting)]
+			[KeywordToggle(None,Lambert,LambertHalf,LambertStepped)] lightingType("Type",Float) = 3
 			[Int] lightingSteps("Lighting Steps",Range(2,256)) = 3
-			[KeywordEnum(Off,On)] directionalState("Use Directional Lights",Float) = 1
-			[KeywordEnum(Off,On)] pointState("Use Point Lights",Float) = 1
-		[Header(Shading)]
-			[KeywordEnum(Normal,Manual,Texture)] shadingType("Type",Float) = 1
+			[KeywordToggle] directionalState("Use Directional Lights",Float) = 1
+			[KeywordToggle] pointState("Use Point Lights",Float) = 1
+		[Section(Shading)]
+			[KeywordEnum(None,Normal,Manual,Texture)] shadingType("Type",Float) = 0
 			[Toggle] blendLights("Blend Light Color",Float) = 0
 			shadingLitColor("Shading Manual Lit Color",Color) = (1,1,1,1)
 			shadingUnlitColor("Shading Manual Unlit Color",Color) = (0,0,0,0.5)
 			shadingTexture("Shading Texture",2D) = "white"{}
-		[Header(Shadows)]
-			[KeywordEnum(Off,On)] shadowState("State",Float) = 1
+		[Section(Shadows)]
+			[KeywordEnum(Off,On)] shadowState("State",Float) = 0
 			//shadowColor("Shadow Color", Color) = (0,0,0,1)
-		[Header(Lightmap)]
-			[KeywordEnum(Off,On)] lightmapState("State",Float) = 1
-		[Header(Visibility)]
-			[KeywordEnum(Off,On)] fadeState("Distance Fade",Float) = 1
-			[KeywordEnum(Off,On)] distanceCull("Distance Cull",Float) = 1
-		[Header(Atlas)]
+		[Section(Lightmap)]
+			[KeywordEnum(Off,On)] lightmapState("State",Float) = 0
+		[Section(Visibility)]
+			[KeywordEnum(Off,On)] fadeState("Distance Fade",Float) = 0
+			[KeywordEnum(Off,On)] distanceCull("Distance Cull",Float) = 0
+		[Section(Atlas)]
 			[KeywordEnum(Off,On)] atlasState("State",Float) = 0
-			[HideInInspector] atlasUV("Atlas UV",Vector) = (0,0,1,1)
-			[HideInInspector] atlasUVScale("Atlas UV Scale",Vector) = (1,1,0,0)
-		[Header(Scroll)]
+			atlasUV("Atlas UV",Vector) = (0,0,1,1)
+			atlasUVScale("Atlas UV Scale",Vector) = (1,1,0,0)
+		[Section(Scroll)]
 			[KeywordEnum(Off,On)] scrollState("State",Float) = 0
 			scrollX("UV Scroll X",Range(0.0,5)) = 0.05
 			scrollY("UV Scroll Y",Range(0.0,5)) = 0.03
-		[Header(Warp)]
+		[Section(Warp)]
 			[KeywordEnum(None,Offset,Center)] warpType("Type",Float) = 0
 			[KeywordEnum(Off,On)] warpDistort("Distort",Float) = 0
 			warpFrequency("UV Warp Frequency",Range(0,256)) = 5
@@ -57,7 +61,7 @@ Shader "Zios/Standalone/(Megashader)"{
 	}
 	SubShader{
 		Tags{"LightMode"="ForwardBase" "Queue"="Geometry"}
-		Pass{
+		/*Pass{
 			Cull [cullMode]
 			ZTest [zTestMode]
 			ZWrite [zWriteMode]
@@ -80,12 +84,15 @@ Shader "Zios/Standalone/(Megashader)"{
 				return fixed4(0,0,0,0);
 			}
 			ENDCG
-		}
+		}*/
 		Pass{
-			ZWrite Off
-			Blend SrcAlpha OneMinusSrcAlpha
+			/*ZWrite Off
+			Cull [cullMode]
+			ZTest [zTestMode]*/
 			Cull [cullMode]
 			ZTest [zTestMode]
+			ZWrite [zWriteMode]
+			Blend SrcAlpha OneMinusSrcAlpha
 			CGPROGRAM
 			@#include "UnityCG.cginc"
 			@#include "AutoLight.cginc"
@@ -93,38 +100,6 @@ Shader "Zios/Standalone/(Megashader)"{
 			#include "../@Zios/Shaders/Megashader/PhotoshopBlend.cginc"
 			#pragma vertex vertexPass
 			#pragma fragment pixelPass
-			#pragma multi_compile_fwdbase
-			#pragma multi_compile COLORMODE_NORMAL COLORMODE_VERTEX
-			#pragma multi_compile TEXTUREBLEND_MULTIPLY TEXTUREBLEND_ADD TEXTUREBLEND_LERP TEXTUREBLEND_OVERLAY\
-			                      TEXTUREBLEND_SCREEN TEXTUREBLEND_SOFTLIGHT TEXTUREBLEND_LINEARLIGHT
-			#pragma multi_compile TEXTUREMAPPING_UV TEXTUREMAPPING_TRIPLANAR
-			#pragma multi_compile LIGHTINGTYPE_NONE LIGHTINGTYPE_LAMBERT LIGHTINGTYPE_LAMBERTHALF LIGHTINGTYPE_LAMBERTSTEPPED
-			#pragma multi_compile SHADINGTYPE_NORMAL SHADINGTYPE_MANUAL SHADINGTYPE_TEXTURE
-			#pragma multi_compile SHADINGBLEND_MULTIPLY SHADINGBLEND_ADD SHADINGBLEND_LERP SHADINGBLEND_OVERLAY\
-			                      SHADINGBLEND_SCREEN SHADINGBLEND_SOFTLIGHT SHADINGBLEND_LINEARLIGHT
-			#pragma multi_compile REFLECTIONTYPE_NONE REFLECTIONTYPE_SIMPLE REFLECTIONTYPE_SPHERE REFLECTIONTYPE_VIEW  
-			#pragma multi_compile WARPTYPE_NONE WARPTYPE_OFFSET WARPTYPE_CENTER
-			#pragma multi_compile FADETYPE_SMOOTH FADETYPE_STEPPED
-			#pragma multi_compile FADEBLEND_MULTIPLY FADEBLEND_ADD FADEBLEND_LERP FADEBLEND_OVERLAY\
-			                      FADEBLEND_SCREEN FADEBLEND_SOFTLIGHT FADEBLEND_LINEARLIGHT
-			#pragma multi_compile SHADOWTYPE_SMOOTH SHADOWTYPE_STEPPED
-			#pragma multi_compile SHADOWMODE_SHADED SHADOWMODE_BLENDED
-			#pragma multi_compile SHADOWBLEND_LERP SHADOWBLEND_MULTIPLY SHADOWBLEND_SUBTRACT
-			#pragma multi_compile LIGHTMAPTYPE_SMOOTH LIGHTMAPTYPE_STEPPED
-			#pragma multi_compile LIGHTMAPMODE_SHADED LIGHTMAPMODE_BLENDED
-			#pragma multi_compile LIGHTMAPBLEND_LERP LIGHTMAPBLEND_MULTIPLY LIGHTMAPBLEND_SUBTRACT
-			#pragma multi_compile __ WARPDISTORT_ON
-			#pragma multi_compile __ TEXTURESTATE_ON
-			#pragma multi_compile __ ATLASSTATE_ON
-			#pragma multi_compile __ SCROLLSTATE_ON
-			#pragma multi_compile __ FADESTATE_ON
-			#pragma multi_compile __ DISTANCECULL_ON
-			#pragma multi_compile __ BLENDLIGHTS_ON
-			#pragma multi_compile __ DIRECTIONALSTATE_ON
-			#pragma multi_compile __ POINTSTATE_ON
-			#pragma multi_compile __ SHADOWSTATE_ON
-			#pragma multi_compile __ LIGHTMAPSTATE_ON
-			#pragma multi_compile __ FADEGRAYSCALE_ON
 			#pragma target 3.0
 			#pragma fragmentoption ARB_precision_hint_fastest
 			#define pi = 3.14159265f
@@ -132,7 +107,7 @@ Shader "Zios/Standalone/(Megashader)"{
 			struct vertexInput{
 				float4 vertex        : POSITION;
 				float3 normal        : NORMAL;
-				#ifdef TEXTUREMAPPING_UV
+				#if defined(TEXTUREMAPPING_UV) || defined(TEXTUREMASKSTATE_ON)
 				float4 texcoord      : TEXCOORD0;
 				#endif
 				#ifdef LIGHTMAPSTATE_ON
@@ -147,7 +122,7 @@ Shader "Zios/Standalone/(Megashader)"{
 				#ifdef COLORMODE_VERTEX
 				float4 color         : COLOR;
 				#endif
-				#if defined(TEXTUREMAPPING_UV) || defined(LIGHTMAPSTATE_ON)
+				#if defined(TEXTUREMAPPING_UV) || defined(TEXTUREMASKSTATE_ON) || defined(LIGHTMAPSTATE_ON)
 				float4 UV            : TEXCOORD0;
 				#endif
 				#ifndef REFLECTIONTYPE_NONE
@@ -239,43 +214,46 @@ Shader "Zios/Standalone/(Megashader)"{
 				#endif
 				return uv;
 			}
-			void BlendTexture(fixed4 color){
+			fixed4 BlendColor(fixed4 color){
+				fixed4 newColor = output.color;
 				#if defined(TEXTUREBLEND_ADD)
-				output.color += color;
+				newColor += color;
 				#elif defined(TEXTUREBLEND_LERP)
-				output.color.rgb = lerp(output.color,color,1-output.color.a);
-				output.color.a = color.a;
+				newColor = lerp(newColor,color,1-newColor.a);
 				#elif defined(TEXTUREBLEND_OVERLAY)
-				output.color.rgb = BlendOverlayf(output.color,color);
+				newColor = BlendOverlayf(newColor,color);
 				#elif defined(TEXTUREBLEND_SCREEN)
-				output.color.rgb = BlendScreenf(output.color,color);
+				newColor = BlendScreenf(newColor,color);
 				#elif defined(TEXTUREBLEND_SOFTLIGHT)
-				output.color.rgb = BlendSoftLightf(output.color,color);
+				newColor = BlendSoftLightf(newColor,color);
 				#elif defined(TEXTUREBLEND_LINEARLIGHT)
-				output.color.rgb = BlendLinearLightf(output.color,color);
+				newColor = BlendLinearLightf(newColor,color);
 				#else
-				output.color *= color;
+				newColor *= color;
 				#endif
+				newColor.a *= color.a;
+				return newColor;
 			}
 			void ApplyTexture(){
 				#ifdef TEXTURESTATE_ON
 					#ifdef TEXTUREMAPPING_UV
 						float2 uv = GetUV(input.UV.xy,textureMap_ST.xy,textureMap_ST.zw);
 						float4 lookup = tex2D(textureMap,uv);
-						BlendTexture(lookup);
+						float4 blend = BlendColor(lookup);
+						#ifndef TEXTUREBLENDZONE_ALL
+							fixed range = length(lookup.rgb);
+							#ifdef TEXTUREBLENDZONE_SHADOWS
+							if(range >= 0.33){blend = lookup;}
+							#endif
+							#ifdef TEXTUREBLENDZONE_MIDTONES
+							if(range <= 0.33 || range >= 0.66){blend = lookup;}
+							#endif
+							#ifdef TEXTUREBLENDZONE_HIGHLIGHTS
+							if(range <= 0.66){blend = lookup;}
+							#endif
+						#endif
+						output.color = blend;
 					#endif
-				#endif
-			}
-			//===========================
-			// Reflection
-			//===========================
-			sampler2D reflectionMap;
-			fixed4 reflectionColor;
-			fixed4 reflectionMap_ST;
-			void ApplyReflection(){
-				#ifndef REFLECTIONTYPE_NONE
-					float4 lookup = tex2D(reflectionMap,input.reflectionUV.xy * reflectionMap_ST.xy + reflectionMap_ST.zw);
-					output.color += (lookup*reflectionColor.a) * reflectionColor;
 				#endif
 			}
 			//===========================
@@ -306,7 +284,40 @@ Shader "Zios/Standalone/(Megashader)"{
 			void ApplyTextureTriplanar(){
 				#if defined(TEXTURESTATE_ON) && defined(TEXTUREMAPPING_TRIPLANAR)
 				fixed4 lookup = SetupTriplanarMap(textureMap,textureMap_ST.xy,textureMap_ST.zw);
-				BlendTexture(lookup);
+				output.color = BlendColor(lookup);
+				#endif
+			}
+			//===========================
+			// Mask
+			//===========================
+			sampler2D textureMaskMap;
+			fixed4 textureMaskMap_ST;
+			sampler2D textureBlendMap;
+			fixed4 textureBlendMap_ST;
+			void ApplyMask(){
+				#ifdef TEXTUREMASKSTATE_ON
+					float2 uv = GetUV(input.UV.xy,textureMaskMap_ST.xy,textureMaskMap_ST.zw);
+					float4 maskLookup = tex2D(textureMaskMap,uv);
+					#ifdef TEXTUREMAPPING_UV
+					float4 blendLookup = tex2D(textureBlendMap,uv);
+					#endif
+					#ifdef TEXTUREMAPPING_TRIPLANAR
+					float4 blendLookup = SetupTriplanarMap(textureBlendMap,textureBlendMap_ST.xy,textureBlendMap_ST.zw);
+					#endif
+					output.color.rgb = lerp(output.color.rgb,blendLookup,maskLookup.r);
+					output.color.a += maskLookup.r;
+				#endif
+			}
+			//===========================
+			// Reflection
+			//===========================
+			sampler2D reflectionMap;
+			fixed4 reflectionColor;
+			fixed4 reflectionMap_ST;
+			void ApplyReflection(){
+				#ifndef REFLECTIONTYPE_NONE
+					float4 lookup = tex2D(reflectionMap,input.reflectionUV.xy * reflectionMap_ST.xy + reflectionMap_ST.zw);
+					output.color += (lookup*reflectionColor.a) * reflectionColor;
 				#endif
 			}
 			//===========================
@@ -315,10 +326,17 @@ Shader "Zios/Standalone/(Megashader)"{
 			fixed4 baseColor;
 			void ApplyColor(){
 				#ifdef COLORMODE_VERTEX
-				output.color = input.color;
+				output.color = input.color * baseColor;
 				#else
 				output.color = baseColor;
 				#endif
+			}
+			//===========================
+			// Alpha Clip
+			//===========================
+			float alphaClip;
+			void ApplyAlphaClip(){
+				if(output.color.a <= alphaClip){clip(-1);}
 			}
 			//===========================
 			// Lighting
@@ -605,7 +623,7 @@ Shader "Zios/Standalone/(Megashader)"{
 					return output;
 				}
 				#endif
-				#ifdef TEXTUREMAPPING_UV
+				#if defined(TEXTUREMAPPING_UV) || defined(TEXTUREMASKSTATE_ON)
 					output.UV.xy = input.texcoord;
 				#endif
 				#ifdef LIGHTMAPSTATE_ON
@@ -656,11 +674,13 @@ Shader "Zios/Standalone/(Megashader)"{
 				ApplyColor();
 				ApplyTexture();
 				ApplyTextureTriplanar();
+				ApplyMask();
 				ApplyReflection();
 				ApplyLightmap();
 				ApplyShading();
 				ApplyShadows();
 				ApplyFade();
+				ApplyAlphaClip();
 				return output;
 			}
 			ENDCG
