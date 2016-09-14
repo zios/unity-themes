@@ -17,6 +17,7 @@ namespace Zios{
 	[InitializeOnLoad]
 	public static partial class Utility{
 		private static float sceneCheck;
+		private static Dictionary<object,int> messages = new Dictionary<object,int>();
 		private static Dictionary<object,KeyValuePair<CallbackFunction,float>> delayedMethods = new Dictionary<object,KeyValuePair<CallbackFunction,float>>();
 		private static Dictionary<string,Type> internalTypes = new Dictionary<string,Type>();
 		static Utility(){Utility.Setup();}
@@ -177,11 +178,27 @@ namespace Zios{
 			#endif
 			return null;
 		}
+		//============================
+		// Logging
+		//============================
 		public static void EditorLog(string text){
 			if(!Application.isPlaying){
 				Debug.Log(text);
 			}
 		}
+		public enum LogType{Debug,Warning,Error};
+		public static void Log(object key,string text,UnityObject target,LogType type,int limit){
+			if(Utility.messages.AddNew(key) < limit || limit == -1){
+				Utility.messages[key] += 1;
+				if(type==LogType.Debug){Debug.Log(text,target);}
+				else if(type==LogType.Warning){Debug.LogWarning(text,target);}
+				else if(type==LogType.Error){Debug.LogError(text,target);}
+			}
+		}
+		public static void LogWarning(object key,string text,UnityObject target=null,int limit=-1){Utility.Log(key,text,target,LogType.Warning,limit);}
+		public static void LogError(object key,string text,UnityObject target=null,int limit=-1){Utility.Log(key,text,target,LogType.Error,limit);}
+		public static void LogWarning(string text,UnityObject target=null,int limit=-1){Utility.Log(text,text,target,LogType.Warning,limit);}
+		public static void LogError(string text,UnityObject target=null,int limit=-1){Utility.Log(text,text,target,LogType.Error,limit);}
 		//============================
 		// Callbacks
 		//============================

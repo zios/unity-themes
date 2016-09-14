@@ -10,6 +10,7 @@ namespace Zios.Interface{
 		public static List<ThemePalette> all = new List<ThemePalette>();
 		public string name;
 		public string path;
+		public bool usesSystem;
 		public Dictionary<Color,RelativeColor> swap = new Dictionary<Color,RelativeColor>();
 		public Hierarchy<string,string,RelativeColor> colors = new Hierarchy<string,string,RelativeColor>(){{"*",new Dictionary<string,RelativeColor>(){{"Window","#C0C0C0"}}}};
 		//=================================
@@ -65,10 +66,16 @@ namespace Zios.Interface{
 				this.colors.AddNew("*")[color.name] = color;
 				sourceMap[color.name] = color.sourceName;
 			}
+			RelativeColor.UpdateSystem();
 			foreach(var item in sourceMap){
 				if(item.Value.IsEmpty()){continue;}
-				var source = this.colors["*"].Get(item.Value);
-				this.colors["*"][item.Key].Assign(source);
+				this.colors["*"][item.Key].Assign(this,item.Value);
+				if(this.colors["*"][item.Key].source == RelativeColor.system){
+					this.usesSystem = true;
+				}
+			}
+			foreach(var color in this.colors["*"]){
+				color.Value.ApplyOffset();
 			}
 		}
 		public string Serialize(){
@@ -120,11 +127,16 @@ namespace Zios.Interface{
 		public bool Matches(ThemePalette other){
 			foreach(var item in this.colors["*"]){
 				var name = item.Key;
-				bool mismatchedName = !other.colors["*"].ContainsKey(name);
-				bool mismatchedOriginal = mismatchedName || this.colors["*"][name].original != other.colors["*"][name].original;
-				bool mismatchedOffset = mismatchedName || this.colors["*"][name].offset != other.colors["*"][name].offset;
-				bool mismatchedSource = mismatchedName || this.colors["*"][name].sourceName != other.colors["*"][name].sourceName;
-				if(mismatchedName || mismatchedOriginal || mismatchedSource || mismatchedOffset){
+				if(!other.colors["*"].ContainsKey(name)){return false;}
+				var colorA = this.colors["*"][name];
+				var colorB = other.colors["*"][name];
+				var isBlended = colorA.blendMode != ColorBlend.Normal;
+				var isSystem = colorA.source == RelativeColor.system;
+				bool mismatchedValue = !isSystem && !isBlended && (colorA.value != colorB.value);
+				bool mismatchedBlend = isBlended && (colorA.blendMode.ToInt() != colorB.blendMode.ToInt());
+				bool mismatchedOffset = colorA.offset != colorB.offset;
+				bool mismatchedSource = colorA.sourceName != colorB.sourceName;
+				if(mismatchedBlend || mismatchedValue || mismatchedSource || mismatchedOffset){
 					return false;
 				}
 			}

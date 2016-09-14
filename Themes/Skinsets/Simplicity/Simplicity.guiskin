@@ -32931,7 +32931,7 @@ MonoBehaviour:
     m_Alignment: 3
     m_WordWrap: 0
     m_RichText: 0
-    m_TextClipping: 0
+    m_TextClipping: 1
     m_ImagePosition: 0
     m_ContentOffset: {x: 0, y: 0}
     m_FixedWidth: 0

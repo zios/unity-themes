@@ -1,7 +1,7 @@
 CustomizablePalette = True
 CustomizableFontset = True
 CustomizableIconset = True
-Palette = Zone
+Palette = Loch
 Fontset = Operator
 Iconset = Simplicity
 Skinset = Simplicity

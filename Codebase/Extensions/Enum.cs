@@ -66,6 +66,9 @@ namespace Zios{
 		public static int GetMaskFull(this Enum current){
 			return current.GetValues().Cast<int>().Sum();
 		}
+		public static T Parse<T>(string value){
+			return (T)Enum.Parse(typeof(T),value);
+		}
 		public static T ParseEnum<T>(this T current,string value){
 			return (T)Enum.Parse(current.GetType(),value);
 		}
