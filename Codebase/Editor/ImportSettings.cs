@@ -29,7 +29,7 @@ namespace Zios.Editors{
 		public void OnPreprocessTexture(){
 			TextureImporter importer = (TextureImporter)assetImporter;
 			string assetName = importer.assetPath.Split("/").Last();
-			importer.textureType = TextureImporterType.Advanced;
+			importer.textureType = TextureImporterType.Default;
 			importer.npotScale = TextureImporterNPOTScale.None;
 			if(assetName.Contains("Outlines")){
 				importer.wrapMode = TextureWrapMode.Clamp;

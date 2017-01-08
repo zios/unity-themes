@@ -45,7 +45,7 @@ namespace Zios.Interface{
 			key = key ?? Registry.GetValue("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Accent","AccentColor",null);
 			if(!key.IsNull()){
 				int value = key.As<int>();
-				 system.value = value != -1 ? value.ToHex().ToColor(true) : RelativeColor.system.value;
+				system.value = value != -1 ? value.ToHex().ToColor(true) : RelativeColor.system.value;
 			}
 			else{
 				key = Registry.GetValue("HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\Personalization","PersonalColor_Accent",null);
@@ -69,7 +69,7 @@ namespace Zios.Interface{
 			var name = nameLength < 1 ? this.name : this.name.PadRight(nameLength,' ');
 			var contents = name + " : " + this.value.Serialize().PadRight(9,' ');
 			if(!this.sourceName.IsEmpty()){
-				var sourceName = sourceNameLength < 1 ? this.sourceName : this.sourceName.PadRight(sourceNameLength,' ');	
+				var sourceName = sourceNameLength < 1 ? this.sourceName : this.sourceName.PadRight(sourceNameLength,' ');
 				contents += " : " + sourceName;
 			}
 			if(this.offset != 1){contents += " : " + this.offset;}

@@ -12,13 +12,14 @@ namespace Zios.Interface{
 	[InitializeOnLoad][NotSerialized]
 	public partial class Theme{
 		public static Theme active;
-		public static string revision = "3 [r514]";
+		public static string revision = "4 [r522]";
 		public static int themeIndex;
 		public static int paletteIndex;
 		public static int fontsetIndex;
 		public static int iconsetIndex;
 		public static int skinsetIndex;
 		public static string storagePath;
+		public static bool editMode;
 		public static bool liveEdit;
 		public static HoverResponse hoverResponse = HoverResponse.Moderate;
 		public static bool separatePlaymodeSettings = false;
@@ -54,8 +55,10 @@ namespace Zios.Interface{
 					Theme.window.ShowPopup();
 				}
 			}
-			Theme.window.position = new Rect(9001,9001,1,1);
-			Theme.window.minSize = new Vector2(1,1);
+			var hiddenPosition = new Rect(9001,9001,1,1);
+			var hiddenSize = new Vector2(1,1);
+			if(Theme.window.position != hiddenPosition){Theme.window.position = hiddenPosition;}
+			if(Theme.window.minSize != hiddenSize){Theme.window.minSize = hiddenSize;}
 		}
 		public static void Update(){
 			if(EditorApplication.isCompiling || EditorApplication.isUpdating){return;}
@@ -115,6 +118,7 @@ namespace Zios.Interface{
 			RelativeColor.autoBalance = EditorPrefs.GetInt("EditorTheme-AutobalanceColors",1).As<AutoBalance>();
 			Theme.showAdvanced = EditorPrefs.GetBool("EditorTheme-ShowAdvancedColors",false);
 			Theme.hoverResponse = EditorPrefs.GetInt("EditorTheme-HoverResponse",3).As<HoverResponse>();
+			Theme.editMode = FileManager.monitor = EditorPrefs.GetBool("EditorTheme-EditMode",false);
 			Theme.separatePlaymodeSettings = EditorPrefs.GetBool("EditorTheme-SeparatePlaymodeSettings",false);
 			Theme.suffix = EditorApplication.isPlayingOrWillChangePlaymode && Theme.separatePlaymodeSettings ? "-Playmode" : "";
 			Theme.themeIndex = Theme.all.FindIndex(x=>x.name==EditorPrefs.GetString("EditorTheme"+Theme.suffix,"Default")).Max(0);
@@ -130,6 +134,7 @@ namespace Zios.Interface{
 		public static void RebuildStyles(){
 			var terms = new string[]{"Styles","styles","s_GOStyles","s_Current","s_Styles","m_Styles","ms_Styles","constants","s_Defaults"};
 			foreach(var type in typeof(Editor).Assembly.GetTypes()){
+				if(type.Name.Contains("LookDev")){continue;}
 				foreach(var term in terms){
 					type.ClearVariable(term,ObjectExtension.staticFlags);
 				}
@@ -318,6 +323,12 @@ namespace Zios.Interface{
 					Theme.Reset(true);
 					return;
 				}
+				Theme.editMode = FileManager.monitor = Theme.editMode.Draw("Edit Mode");
+				if(EditorGUIExtension.lastChanged && Application.isPlaying){
+					EditorPrefs.SetBool("EditorTheme-SeparatePlaymodeSettings",Theme.separatePlaymodeSettings);
+					Theme.Reset(true);
+					return;
+				}
 				foreach(var variant in theme.skinset.variants){
 					variant.active = variant.active.Draw(variant.name);
 					if(EditorGUIExtension.lastChanged){
@@ -328,6 +339,7 @@ namespace Zios.Interface{
 				Theme.window.wantsMouseMove = Theme.hoverResponse != HoverResponse.None;
 				EditorPrefs.SetInt("EditorTheme-HoverResponse",Theme.hoverResponse.ToInt());
 				EditorPrefs.SetBool("EditorTheme-SeparatePlaymodeSettings",Theme.separatePlaymodeSettings);
+				EditorPrefs.SetBool("EditorTheme-EditMode",Theme.editMode);
 				GUILayout.Space(2);
 				EditorGUI.indentLevel -= 1;
 			}
@@ -602,6 +614,7 @@ namespace Zios.Interface{
 			Debug.LogError("[Themes] Example Error message.");
 			Debug.LogWarning("[Themes] Example Warning message.");
 			Theme.setup = false;
+			Theme.loaded = false;
 			Theme.disabled = false;
 		}
 		[MenuItem("Zios/Theme/Development/Toggle Live Edit")]
@@ -691,9 +704,16 @@ namespace Zios.Interface{
 		}
 		public void OnPreprocessTexture(){
 			TextureImporter importer = (TextureImporter)this.assetImporter;
-			if(importer.assetPath.ContainsAny("Themes")){
+			if(importer.assetPath.Contains("Themes")){
 				importer.isReadable = true;
+				#if UNITY_5_5_OR_NEWER
+				importer.textureCompression = TextureImporterCompression.Uncompressed;
+				var settings = importer.GetDefaultPlatformTextureSettings();
+				settings.overridden = true;
+				settings.format = TextureImporterFormat.RGBA32;
+				#else
 				importer.textureFormat = TextureImporterFormat.RGBA32;
+				#endif
 				if(importer.assetPath.Contains("Border")){
 					importer.filterMode = FilterMode.Point;
 				}
