@@ -13,9 +13,9 @@ TrueTypeFontImporter:
   - Passion One
   fallbackFontReferences:
   - {fileID: 12800000, guid: c6fd37999f391924787f7fa9f3856615, type: 3}
-  customCharacters: 
+  customCharacters:
   fontRenderingMode: 0
   ascentCalculationMode: 1
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
+  userData:
+  assetBundleName:
+  assetBundleVariant:

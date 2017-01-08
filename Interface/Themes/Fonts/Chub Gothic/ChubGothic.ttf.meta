@@ -13,9 +13,9 @@ TrueTypeFontImporter:
   - Chub Gothic
   fallbackFontReferences:
   - {fileID: 12800000, guid: 1ad56714bfffaad4ebeab46754d21d2e, type: 3}
-  customCharacters: 
+  customCharacters:
   fontRenderingMode: 0
   ascentCalculationMode: 1
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
+  userData:
+  assetBundleName:
+  assetBundleVariant:

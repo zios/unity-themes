@@ -13,9 +13,9 @@ TrueTypeFontImporter:
   - Sintony
   fallbackFontReferences:
   - {fileID: 12800000, guid: 5de156f9d42f50f4b9fd4133d02d507d, type: 3}
-  customCharacters: 
+  customCharacters:
   fontRenderingMode: 0
   ascentCalculationMode: 1
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
+  userData:
+  assetBundleName:
+  assetBundleVariant:

@@ -36,5 +36,5 @@
 	Details             : #FFFFFF37 : Header   
 	Cursor              : #B36100   : Highlight
 	Selection           : #B36100   : Highlight
-	Curve               : #FF9100   : Highlight : 1.5
-	CurveBackground     : #310000   : Border    : 0.5
+	Curve               : #B36100   : Highlight : 1.5
+	CurveBackground     : #630100   : Border    : 0.5

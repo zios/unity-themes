@@ -13,9 +13,9 @@ TrueTypeFontImporter:
   - Source Serif Pro
   fallbackFontReferences:
   - {fileID: 12800000, guid: 6966d0ec30e814c4387c0a2dd150f322, type: 3}
-  customCharacters: 
+  customCharacters:
   fontRenderingMode: 0
   ascentCalculationMode: 1
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
+  userData:
+  assetBundleName:
+  assetBundleVariant:
