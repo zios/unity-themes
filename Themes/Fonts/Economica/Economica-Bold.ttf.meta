@@ -13,9 +13,9 @@ TrueTypeFontImporter:
   - Economica
   fallbackFontReferences:
   - {fileID: 12800000, guid: 6efa57b329464fd41922cc7e4ad7abc0, type: 3}
-  customCharacters: 
+  customCharacters:
   fontRenderingMode: 0
   ascentCalculationMode: 1
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
+  userData:
+  assetBundleName:
+  assetBundleVariant:

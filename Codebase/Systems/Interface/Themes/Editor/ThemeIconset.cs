@@ -143,7 +143,6 @@ namespace Zios.Interface{
 			if(!value.tooltip.IsEmpty()){contents = contents.AddLine("tooltip = "+target.tooltip);}
 			return contents;
 		}
-
 		public void Setup(string path){
 			if(this.imageName.IsEmpty()){return;}
 			this.value.image = FileManager.GetAsset<Texture2D>(path+"/"+this.imageName+".png");

@@ -28,7 +28,6 @@ namespace Zios.Interface{
 		}
 		public static GUILayoutOption[] CreateLayout(){
 			var options = new List<GUILayoutOption>();
-			var style = new GUIStyle();
 			if(GUIStyleExtension.autoLayout){
 				if(EditorGUILayoutExtension.width != 0){options.Add(GUILayout.Width(EditorGUILayoutExtension.width));}
 				if(EditorGUILayoutExtension.height != 0){options.Add(GUILayout.Height(EditorGUILayoutExtension.height));}

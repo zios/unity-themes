@@ -13,9 +13,9 @@ TrueTypeFontImporter:
   - Open Sans
   fallbackFontReferences:
   - {fileID: 12800000, guid: 1c2be6c9e91b59e41921bab407c441ca, type: 3}
-  customCharacters: 
+  customCharacters:
   fontRenderingMode: 0
   ascentCalculationMode: 1
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
+  userData:
+  assetBundleName:
+  assetBundleVariant:

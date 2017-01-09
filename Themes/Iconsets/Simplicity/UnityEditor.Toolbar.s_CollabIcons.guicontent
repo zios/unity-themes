@@ -1,0 +1,45 @@
+(UnityEditor.Toolbar.s_CollabIcons)
+[0]
+text = Collab
+image = Collab
+tooltip = You need to enable collab.
+
+[1]
+text = Collab
+image = Collab
+tooltip = You are up to date.
+
+[2]
+text = Collab
+image = Collab
+tooltip = Please fix your conflicts prior to publishing.
+
+[3]
+text = Collab
+image = Collab
+tooltip = Last operation failed. Please retry later.
+
+[4]
+text = Collab
+image = Collab
+tooltip = Please update, there are server changes.
+
+[5]
+text = Collab
+image = Collab
+tooltip = You have files to publish.
+
+[6]
+text = Collab
+image = Collab
+tooltip = Operation in progress.
+
+[7]
+text = Collab
+image = Collab
+tooltip = Collab is disabled.
+
+[8]
+text = Collab
+image = Collab
+tooltip = Please check your network connection.

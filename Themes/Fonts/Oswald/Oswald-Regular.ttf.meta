@@ -13,9 +13,9 @@ TrueTypeFontImporter:
   - Oswald
   fallbackFontReferences:
   - {fileID: 12800000, guid: 25ea464ebbcbdaf4a80d91391f19e318, type: 3}
-  customCharacters: 
+  customCharacters:
   fontRenderingMode: 0
   ascentCalculationMode: 1
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
+  userData:
+  assetBundleName:
+  assetBundleVariant:

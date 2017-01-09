@@ -14,6 +14,7 @@ namespace Zios{
 	public static class FileManager{
 		private static string path;
 		private static string dataPath;
+		public static bool monitor = true;
 		private static bool debug = false;
 		private static bool clock = false;
 		private static bool fullScan = true;
@@ -30,6 +31,7 @@ namespace Zios{
 			FileManager.Refresh();
 		}
 		public static void Monitor(){
+			if(!FileManager.monitor){return;}
 			var time = FileManager.GetTime();
 			if(time>FileManager.lastMonitor){
 				foreach(var item in FileManager.monitors){

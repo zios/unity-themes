@@ -182,6 +182,7 @@ namespace Zios{
 			Type inspectorType = Utility.GetUnityType("InspectorWindow");
 			var windows = inspectorType.CallMethod<EditorWindow[]>("GetAllInspectorWindows");
 			for(int index=0;index<windows.Length;++index){
+				if(windows[index].IsNull()){continue;}
 				var tracker = windows[index].CallMethod<ActiveEditorTracker>("GetTracker");
 				tracker.ForceRebuild();
 			}

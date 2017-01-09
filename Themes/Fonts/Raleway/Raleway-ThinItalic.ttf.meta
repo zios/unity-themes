@@ -13,9 +13,9 @@ TrueTypeFontImporter:
   - Raleway
   fallbackFontReferences:
   - {fileID: 12800000, guid: 06466d1c4e8178e4f9eea27c7fa29df4, type: 3}
-  customCharacters: 
+  customCharacters:
   fontRenderingMode: 0
   ascentCalculationMode: 1
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
+  userData:
+  assetBundleName:
+  assetBundleVariant:

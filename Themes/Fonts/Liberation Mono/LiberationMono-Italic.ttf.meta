@@ -13,9 +13,9 @@ TrueTypeFontImporter:
   - Liberation Mono
   fallbackFontReferences:
   - {fileID: 12800000, guid: 03126ab8db3b5ae49998e9048a9f05e9, type: 3}
-  customCharacters: 
+  customCharacters:
   fontRenderingMode: 0
   ascentCalculationMode: 1
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
+  userData:
+  assetBundleName:
+  assetBundleVariant:

@@ -17,7 +17,7 @@
     <OutputPath>.</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DefineConstants>UNITY_5;UNITY_EDITOR;UNITY_EDITOR_WIN;UNITY_THEMES</DefineConstants>
+    <DefineConstants>UNITY_EDITOR;UNITY_EDITOR_WIN;UNITY_THEMES</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

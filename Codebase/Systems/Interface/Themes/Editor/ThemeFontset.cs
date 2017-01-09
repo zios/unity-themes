@@ -78,7 +78,7 @@ namespace Zios.Interface{
 				var value = current.Parse("=").Trim();
 				if(term.Matches("Font",true)){
 					themeFont.font = FileManager.GetAsset<Font>(value+".ttf",false);
-					themeFont.font = themeFont.font ?? FileManager.GetAsset<Font>(value+".otf",false);	
+					themeFont.font = themeFont.font ?? FileManager.GetAsset<Font>(value+".otf",false);
 					themeFont.font = themeFont.font ?? Resources.FindObjectsOfTypeAll<Font>().Where(x=>x.name==value).FirstOrDefault();
 				}
 				else if(term.Matches("SizeOffset",true)){themeFont.sizeOffset = value.ToInt();}

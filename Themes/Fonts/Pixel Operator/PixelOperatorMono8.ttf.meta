@@ -13,9 +13,9 @@ TrueTypeFontImporter:
   - Pixel Operator Mono 8
   fallbackFontReferences:
   - {fileID: 12800000, guid: e9a384f04c0206a4ba9ff82e8fe365d0, type: 3}
-  customCharacters: 
+  customCharacters:
   fontRenderingMode: 0
   ascentCalculationMode: 1
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
+  userData:
+  assetBundleName:
+  assetBundleVariant:

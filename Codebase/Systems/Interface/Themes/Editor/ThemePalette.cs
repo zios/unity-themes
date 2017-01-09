@@ -205,7 +205,10 @@ namespace Zios.Interface{
 			}
 			name = isSplat ? parts.Skip(3).Join("-") : parts.Join("-");
 			var original = FileManager.Find(path.GetDirectory().GetDirectory()+"/"+name);
-			if(original.IsNull()){return;}
+			if(original.IsNull()){
+				Debug.Log("[ThemePallete] : Unable to find original asset for dynamic texture  -- " + name);
+				return;
+			}
 			int index = 0;
 			var pixels = texture.GetPixels();
 			foreach(var pixel in pixels.Copy()){

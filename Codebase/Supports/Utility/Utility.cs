@@ -114,7 +114,7 @@ namespace Zios{
 			foreach(var method in callbacks.Split("|")){
 				if(called.Contains(method) || method.IsEmpty()){continue;}
 				if(!method.CallMethod().IsNull()){
-					success.Add(method);	
+					success.Add(method);
 				}
 				called.Add(method);
 			}
