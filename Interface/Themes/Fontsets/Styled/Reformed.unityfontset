@@ -14,23 +14,29 @@ OffsetY = 0
 Font = NovaSquare
 SizeOffset = 0
 OffsetX = 0
-OffsetY = -1
+OffsetY = 0
 
 [Highlight]
 Font = NovaSquare
 SizeOffset = 0
 OffsetX = 0
-OffsetY = 0
+OffsetY = 1
 
 [Search]
 Font = NovaScript
 SizeOffset = 0
 OffsetX = 0
-OffsetY = 0
+OffsetY = 1
 
 [Code]
 Font = NovaMono
 SizeOffset = 2
 OffsetX = 0
 OffsetY = 0
+
+[Header]
+Font = NovaSquare
+SizeOffset = 0
+OffsetX = 0
+OffsetY = -1
 

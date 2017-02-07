@@ -1,40 +1,40 @@
 [Textured]
 (Main)
-	Main                : #34393A   : 1.1
-	MainActive          : #9CABAE   : Main            : 3
-	MainButton          : #4E5557   : Main            : 1.5
-	MainIcons           : #EAFFFF   : Main            : 4.5
-	Border              : #272829   : 0.5
-	BorderActive        : #474747   : Highlight      
-	BorderButton        : #5C5E6135 : Border          : 1.5
-	BorderIcons         : #7B7E81   : Border          : 2
-	Highlight           : #474747   : 1.5
-	HighlightActive     : #D5D5D5   : Highlight       : 3
-	HighlightButton     : #232323   : Highlight       : 0.5
-	HighlightIcons      : #B1B1B1   : Highlight       : 2.5
-	Scrollbar           : #68727446 : Main            : 2
-	ScrollbarThumb      : #4E5557   : Main            : 1.5
-	Header              : #68727446 : Main            : 2
+	Main                : #242829   : 1.1
+	MainActive          : #242829   : Main            : 3
+	MainButton          : #242829   : Main            : 1.5
+	MainIcons           : #242829   : Main            : 4.5
+	Border              : #1F150C   : 0.5
+	BorderActive        : #232120   : Highlight      
+	BorderButton        : #1F150C35 : Border          : 1.5
+	BorderIcons         : #1F150C   : Border          : 2
+	Highlight           : #232120   : 1.5
+	HighlightActive     : #232120   : Highlight       : 3
+	HighlightButton     : #232120   : Highlight       : 0.5
+	HighlightIcons      : #232120   : Highlight       : 2.5
+	Scrollbar           : #24282946 : Main            : 2
+	ScrollbarThumb      : #242829   : Main            : 1.5
+	Header              : #24282946 : Main            : 2
 
 [NonTextured]
 (Text)
-	Text                : #9CABAE   : Main            : 3
-	TextActive          : #9CABAE   : MainButton      : 2
-	TextButton          : #4E5557   : MainActive      : 2
-	TextBorder          : #7B7E81   : Border          : 2
-	TextBorderActive    : #8E8E8E   : TextHighlight  
-	TextBorderButton    : #7B7E81   : Border          : 2
-	TextHighlight       : #8E8E8E   : Highlight       : 2
-	TextHighlightActive : #6A6A6A   : HighlightActive : 2
-	TextHighlightButton : #8A8A8A   : HighlightButton : 2
+	Text                : #6C787B   : Main            : 3
+	TextActive          : #B1C4C9   : MainButton      : 2
+	TextButton          : #D8F0F6   : MainActive      : 2
+	TextBorder          : #FCAA61   : Border          : 2
+	TextBorderActive    : #988F8B   : TextHighlight  
+	TextBorderButton    : #FCAA61   : Border          : 2
+	TextHighlight       : #988F8B   : Highlight       : 2
+	TextHighlightActive : #D2C6C0   : HighlightActive : 2
+	TextHighlightButton : #8F8682   : HighlightButton : 2
 	TextWarning         : #FFF700   : Main            : *Balance-FFF700
 	TextError           : #FF7F7F   : Main            : *Balance-FF0000
-	TextHeader          : #EAFFFF   : Text            : 1.5
+	TextHeader          : #A2B4B8   : Text            : 1.5
 (Other)
-	Frame               : #272829   : Border          : *Multiply-FFFFFF
-	Window              : #34393A   : Main           
-	Details             : #272829   : Border          : *Multiply-FFFFFF
-	Cursor              : #474747   : Highlight       : *Multiply-FFFFFF
-	Selection           : #D0E4E8   : Main            : 4
-	Curve               : #6A6A6A   : Highlight       : 1.5
-	CurveBackground     : #1E1F20   : Border          : 0.5
+	Frame               : #1F150C   : Border          : *Multiply-FFFFFF
+	Window              : #242829   : Main           
+	Details             : #1F150C   : Border          : *Multiply-FFFFFF
+	Cursor              : #232120   : Highlight       : *Multiply-FFFFFF
+	Selection           : #242829   : Main            : 4
+	Curve               : #232120   : Highlight       : 1.5
+	CurveBackground     : #1F150C   : Border          : 0.5

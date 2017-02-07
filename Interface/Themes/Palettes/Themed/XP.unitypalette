@@ -33,7 +33,7 @@
 (Other)
 	Frame               : #094A9F   : MainIcons
 	Window              : #D3E5FB   : Main     
-	Details             : #CCC3C35D : Header   
+	Details             : #1869D3   : Border   
 	Cursor              : #EFEDDF   : Highlight
 	Selection           : #1869D3   : Border   
 	Curve               : #EFEDDF   : Highlight : 1.5

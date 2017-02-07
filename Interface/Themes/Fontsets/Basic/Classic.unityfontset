@@ -34,3 +34,9 @@ SizeOffset = -2
 OffsetX = 0
 OffsetY = 0
 
+[Header]
+Font = Lucida Grande Bold
+SizeOffset = -2
+OffsetX = -2
+OffsetY = -1
+

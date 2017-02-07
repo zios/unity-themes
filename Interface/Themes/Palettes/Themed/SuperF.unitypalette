@@ -1,14 +1,14 @@
 [Textured]
 (Main)
 	Main                : #D0D1D1  
-	MainActive          : #F94444  
+	MainActive          : #B21616  
 	MainButton          : #9795A0DE
-	MainIcons           : #F94444  
+	MainIcons           : #B20B0B  
 	Border              : #B7B8B8  
 	BorderActive        : #0C5ABD  
 	BorderButton        : #0000000F
 	BorderIcons         : #454F558B
-	Highlight           : #00B37F  
+	Highlight           : #02815C  
 	HighlightActive     : #FFD61B  
 	HighlightButton     : #F94141  
 	HighlightIcons      : #FFD61B  
@@ -34,7 +34,7 @@
 	Frame               : #B7B8B8   : Border   
 	Window              : #D0D1D1   : Main     
 	Details             : #B7B8B8   : Border   
-	Cursor              : #00B37F   : Highlight
+	Cursor              : #02815C   : Highlight
 	Selection           : #454F55   : Text     
-	Curve               : #00B37F   : Highlight : 1.5
-	CurveBackground     : #B7B8B8   : Border    : 0.5
+	Curve               : #03C18A   : Highlight : 1.5
+	CurveBackground     : #5B5C5C   : Border    : 0.5

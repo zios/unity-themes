@@ -1,0 +1,7 @@
+CustomizablePalette = True
+CustomizableFontset = True
+CustomizableIconset = True
+Palette = ObsidianB
+Fontset = Orkney
+Iconset = Simplicity
+Skinset = Simplicity+Classy

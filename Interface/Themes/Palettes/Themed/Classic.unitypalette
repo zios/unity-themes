@@ -1,7 +1,7 @@
 [Textured]
 (Main)
 	Main                : #C0C0C0  
-	MainActive          : #818181  
+	MainActive          : #3C6AB2  
 	MainButton          : #D2D2D2  
 	MainIcons           : #272727  
 	Border              : #A2A2A2  
@@ -13,7 +13,7 @@
 	HighlightButton     : #FFFFFF  
 	HighlightIcons      : #81818183
 	Scrollbar           : #81818110
-	ScrollbarThumb      : #81818138
+	ScrollbarThumb      : #7C8EA7  
 	Header              : #8181811B
 
 [NonTextured]

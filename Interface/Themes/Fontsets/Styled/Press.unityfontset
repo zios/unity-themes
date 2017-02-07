@@ -20,13 +20,13 @@ OffsetY = -1
 Font = Alegreya-BoldItalic
 SizeOffset = 1
 OffsetX = 0
-OffsetY = 0
+OffsetY = 1
 
 [Search]
 Font = SourceSansPro-Italic
 SizeOffset = 0
 OffsetX = 0
-OffsetY = 0
+OffsetY = -1
 
 [Code]
 Font = SourceCodePro-Semibold
@@ -34,3 +34,8 @@ SizeOffset = 2
 OffsetX = 0
 OffsetY = 0
 
+[Header]
+Font = Alegreya-BoldItalic
+SizeOffset = 1
+OffsetX = 0
+OffsetY = -1

@@ -5,7 +5,7 @@
 	MainButton          : #FFFFFF20
 	MainIcons           : #FFFFFF  
 	Border              : #26382B  
-	BorderActive        : #000000  
+	BorderActive        : #1D211E  
 	BorderButton        : #FFFFFF20
 	BorderIcons         : #FFFFFF60
 	Highlight           : #2F7134  
@@ -18,7 +18,7 @@
 
 [NonTextured]
 (Text)
-	Text                : #FFFFFF88
+	Text                : #FFFFFFC0
 	TextActive          : #FFFFFF  
 	TextButton          : #FFFFFF  
 	TextBorder          : #FFFFFFC7

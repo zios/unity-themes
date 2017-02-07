@@ -1,14 +1,14 @@
 [Main]
 Font = Homenaje-Regular
-SizeOffset = 4
+SizeOffset = 3
 OffsetX = 0
-OffsetY = -1
+OffsetY = 0
 
 [Border]
 Font = Oswald-Regular
-SizeOffset = 0
+SizeOffset = -1
 OffsetX = 0
-OffsetY = -1
+OffsetY = 0
 
 [Button]
 Font = Oswald-Regular
@@ -18,7 +18,7 @@ OffsetY = -1
 
 [Highlight]
 Font = Oswald-Regular
-SizeOffset = 0
+SizeOffset = -1
 OffsetX = 0
 OffsetY = 0
 
@@ -33,4 +33,10 @@ Font = AurulentSansMono
 SizeOffset = 0
 OffsetX = 0
 OffsetY = 0
+
+[Header]
+Font = Oswald-Bold
+SizeOffset = 0
+OffsetX = 0
+OffsetY = -2
 

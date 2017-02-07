@@ -34,3 +34,9 @@ SizeOffset = 0
 OffsetX = 0
 OffsetY = 0
 
+[Header]
+Font = Nobile-Bold
+SizeOffset = -2
+OffsetX = 0
+OffsetY = 0
+

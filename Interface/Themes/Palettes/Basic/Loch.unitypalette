@@ -36,5 +36,5 @@
 	Details             : #1C1F21   : Border   
 	Cursor              : #245F4E   : Highlight
 	Selection           : #245F4E80
-	Curve               : #245F4E   : Highlight : 1.5
-	CurveBackground     : #1C1F21   : Border    : 0.5
+	Curve               : #368E75   : Highlight : 1.5
+	CurveBackground     : #232729   : Border    : 0.5

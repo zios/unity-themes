@@ -1,15 +1,15 @@
 [Textured]
 (Main)
 	Main                : #2C3747  
-	MainActive          : #000000  
+	MainActive          : #2C2C2C  
 	MainButton          : #FFFFFF20
-	MainIcons           : #FFFFFF  
+	MainIcons           : #A5B5CE  
 	Border              : #414A56  
-	BorderActive        : #000000  
+	BorderActive        : #2C2C2C  
 	BorderButton        : #FFFFFF20
 	BorderIcons         : #FFFFFF60
 	Highlight           : #69788B  
-	HighlightActive     : #000000  
+	HighlightActive     : #2C2C2C  
 	HighlightButton     : #00000080
 	HighlightIcons      : #FFFFFF83
 	Scrollbar           : #FFFFFF10
@@ -18,7 +18,7 @@
 
 [NonTextured]
 (Text)
-	Text                : #FFFFFF88
+	Text                : #FFFFFFC0
 	TextActive          : #FFFFFF  
 	TextButton          : #FFFFFF  
 	TextBorder          : #FFFFFFC7
@@ -36,5 +36,5 @@
 	Details             : #414A56   : Border   
 	Cursor              : #69788B   : Highlight
 	Selection           : #69788B   : Highlight
-	Curve               : #69788B   : Highlight : 1.5
-	CurveBackground     : #414A56   : Border    : 0.5
+	Curve               : #9DB4D0   : Highlight : 1.5
+	CurveBackground     : #20252B   : Border    : 0.5

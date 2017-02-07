@@ -34,3 +34,8 @@ SizeOffset = 1
 OffsetX = 0
 OffsetY = 0
 
+[Header]
+Font = SquaresBoldFree
+SizeOffset = -3
+OffsetX = 0
+OffsetY = -1

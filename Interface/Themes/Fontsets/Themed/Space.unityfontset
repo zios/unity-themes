@@ -1,26 +1,26 @@
 [Main]
 Font = Orbitron-Bold
-SizeOffset = -1
+SizeOffset = -2
 OffsetX = 0
 OffsetY = 0
 
 [Border]
 Font = Orbitron-Bold
-SizeOffset = -1
+SizeOffset = -2
 OffsetX = 0
-OffsetY = 1
+OffsetY = 2
 
 [Button]
 Font = Orbitron-Bold
-SizeOffset = -1
+SizeOffset = -2
 OffsetX = 0
 OffsetY = 1
 
 [Highlight]
 Font = Orbitron-Bold
-SizeOffset = -1
+SizeOffset = -2
 OffsetX = 0
-OffsetY = 1
+OffsetY = 2
 
 [Search]
 Font = Orbitron-Regular
@@ -33,4 +33,10 @@ Font = ShareTechMono-Regular
 SizeOffset = 3
 OffsetX = 0
 OffsetY = 0
+
+[Header]
+Font = Orbitron-Bold
+SizeOffset = -2
+OffsetX = 0
+OffsetY = 1
 

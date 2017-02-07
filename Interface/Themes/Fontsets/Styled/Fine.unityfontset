@@ -8,7 +8,7 @@ OffsetY = 0
 Font = JosefinSans-Bold
 SizeOffset = 1
 OffsetX = 0
-OffsetY = 0
+OffsetY = 1
 
 [Button]
 Font = JosefinSans-Bold
@@ -30,6 +30,12 @@ OffsetY = 1
 
 [Code]
 Font = AurulentSansMono
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
+[Header]
+Font = JosefinSans-Bold
 SizeOffset = 0
 OffsetX = 0
 OffsetY = 0

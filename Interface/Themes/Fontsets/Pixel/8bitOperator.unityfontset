@@ -1,8 +1,8 @@
 [Main]
 Font = 8bitOperatorPlus-Regular
-SizeOffset = 0
+SizeOffset = -1
 OffsetX = 0
-OffsetY = -2
+OffsetY = -1
 
 [Border]
 Font = 8bitOperatorPlusSC-Regular
@@ -33,4 +33,10 @@ Font = 8bitOperatorPlus-Regular
 SizeOffset = -1
 OffsetX = 0
 OffsetY = 0
+
+[Header]
+Font = 8bitOperatorPlusSC-Bold
+SizeOffset = -2
+OffsetX = 0
+OffsetY = -1
 

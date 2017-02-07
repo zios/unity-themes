@@ -2,13 +2,13 @@
 Font = Aubrey-Regular
 SizeOffset = 4
 OffsetX = 0
-OffsetY = -1
+OffsetY = 0
 
 [Border]
 Font = Aubrey-Regular
 SizeOffset = 3
 OffsetX = 0
-OffsetY = -1
+OffsetY = 0
 
 [Button]
 Font = Aubrey-Regular
@@ -20,7 +20,7 @@ OffsetY = -1
 Font = Aubrey-Regular
 SizeOffset = 3
 OffsetX = 0
-OffsetY = 0
+OffsetY = 1
 
 [Search]
 Font = Aubrey-Regular
@@ -33,4 +33,10 @@ Font = LiberationMono-Italic
 SizeOffset = 2
 OffsetX = 0
 OffsetY = 0
+
+[Header]
+Font = Aubrey-Regular
+SizeOffset = 3
+OffsetX = 0
+OffsetY = -1
 

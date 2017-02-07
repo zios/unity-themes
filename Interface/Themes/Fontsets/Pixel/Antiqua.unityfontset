@@ -34,3 +34,9 @@ SizeOffset = 4
 OffsetX = 0
 OffsetY = 0
 
+[Header]
+Font = PixAntiqua
+SizeOffset = -1
+OffsetX = 0
+OffsetY = 0
+

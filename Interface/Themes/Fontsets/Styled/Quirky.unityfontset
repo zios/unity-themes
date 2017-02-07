@@ -20,13 +20,13 @@ OffsetY = -1
 Font = NovaOval
 SizeOffset = 0
 OffsetX = 0
-OffsetY = 0
+OffsetY = 1
 
 [Search]
 Font = NovaScript
 SizeOffset = 0
 OffsetX = 0
-OffsetY = 0
+OffsetY = 1
 
 [Code]
 Font = NovaMono
@@ -34,3 +34,8 @@ SizeOffset = 2
 OffsetX = 0
 OffsetY = 0
 
+[Header]
+Font = NovaOval
+SizeOffset = 0
+OffsetX = 0
+OffsetY = -1

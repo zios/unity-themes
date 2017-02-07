@@ -18,7 +18,7 @@
 
 [NonTextured]
 (Text)
-	Text                : #FFFFFF88
+	Text                : #FFFFFFC0
 	TextActive          : #FFFFFF  
 	TextButton          : #FFFFFF88
 	TextBorder          : #FFFFFFC7

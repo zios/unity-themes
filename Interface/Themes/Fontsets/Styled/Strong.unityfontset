@@ -1,8 +1,8 @@
 [Main]
 Font = Righteous-Regular
-SizeOffset = 1
+SizeOffset = 0
 OffsetX = 0
-OffsetY = 0
+OffsetY = -1
 
 [Border]
 Font = Righteous-Regular
@@ -34,3 +34,8 @@ SizeOffset = 0
 OffsetX = 0
 OffsetY = 0
 
+[Header]
+Font = Righteous-Regular
+SizeOffset = 0
+OffsetX = 0
+OffsetY = -1

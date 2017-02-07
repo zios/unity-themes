@@ -5,7 +5,7 @@
 	MainButton          : #FFFFFF20
 	MainIcons           : #FFFFFF  
 	Border              : #4C331B  
-	BorderActive        : #000000  
+	BorderActive        : #342313  
 	BorderButton        : #FFFFFF20
 	BorderIcons         : #FFFFFF60
 	Highlight           : #714E2F  
@@ -18,7 +18,7 @@
 
 [NonTextured]
 (Text)
-	Text                : #FFFFFF88
+	Text                : #FFFFFFC0
 	TextActive          : #FFFFFF  
 	TextButton          : #FFFFFF88
 	TextBorder          : #FFFFFFC7
@@ -36,5 +36,5 @@
 	Details             : #4C331B   : Border   
 	Cursor              : #714E2F   : Highlight
 	Selection           : #714E2F   : Highlight
-	Curve               : #714E2F   : Highlight : 1.5
-	CurveBackground     : #4C331B   : Border    : 0.5
+	Curve               : #A97546   : Highlight : 1.5
+	CurveBackground     : #26190D   : Border    : 0.5

@@ -1,12 +1,12 @@
 [Main]
 Font = Delius-Regular
-SizeOffset = 1
+SizeOffset = 0
 OffsetX = 0
 OffsetY = 0
 
 [Border]
 Font = DeliusSwashCaps-Regular
-SizeOffset = 1
+SizeOffset = 0
 OffsetX = 0
 OffsetY = 0
 
@@ -18,7 +18,7 @@ OffsetY = -1
 
 [Highlight]
 Font = DeliusSwashCaps-Regular
-SizeOffset = 1
+SizeOffset = 0
 OffsetX = 0
 OffsetY = 0
 
@@ -34,3 +34,8 @@ SizeOffset = 0
 OffsetX = 0
 OffsetY = 0
 
+[Header]
+Font = DeliusSwashCaps-Regular
+SizeOffset = 1
+OffsetX = 0
+OffsetY = -1

@@ -31,10 +31,10 @@
 	TextError           : #D9581E  
 	TextHeader          : #FFFFFFCB
 (Other)
-	Frame               : #555577   : Highlight
+	Frame               : #2A2A3F   : Border   
 	Window              : #131314   : Main     
 	Details             : #2A2A3F   : Border   
 	Cursor              : #C8B383   : MainIcons
-	Selection           : #645941   : MainIcons : 0.5
-	Curve               : #7F7FB2   : Highlight : 1.5
-	CurveBackground     : #15151F   : Border    : 0.5
+	Selection           : #C8B383   : MainIcons : 0.5
+	Curve               : #555577   : Highlight : 1.5
+	CurveBackground     : #2A2A3F   : Border    : 0.5

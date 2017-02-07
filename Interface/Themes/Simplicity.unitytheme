@@ -2,6 +2,6 @@ CustomizablePalette = True
 CustomizableFontset = True
 CustomizableIconset = True
 Palette = Loch
-Fontset = Operator
+Fontset = Liberation
 Iconset = Simplicity
 Skinset = Simplicity

@@ -6,7 +6,7 @@ OffsetY = 0
 
 [Border]
 Font = ChubGothic
-SizeOffset = 0
+SizeOffset = -1
 OffsetX = 0
 OffsetY = 1
 
@@ -18,7 +18,7 @@ OffsetY = 0
 
 [Highlight]
 Font = ChubGothic
-SizeOffset = 0
+SizeOffset = -1
 OffsetX = 0
 OffsetY = 2
 
@@ -34,3 +34,8 @@ SizeOffset = 0
 OffsetX = 0
 OffsetY = 0
 
+[Header]
+Font = ChubGothic
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0

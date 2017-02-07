@@ -2,7 +2,7 @@
 Font = PixelOperator
 SizeOffset = 4
 OffsetX = 0
-OffsetY = -2
+OffsetY = -1
 
 [Border]
 Font = PixelOperatorSC
@@ -33,4 +33,10 @@ Font = PixelOperatorMono
 SizeOffset = 4
 OffsetX = 0
 OffsetY = 0
+
+[Header]
+Font = PixelOperatorSC-Bold
+SizeOffset = 3
+OffsetX = 0
+OffsetY = -2
 

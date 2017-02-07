@@ -2,7 +2,7 @@
 (Main)
 	Main                : #1F96CA  
 	MainActive          : #FEFC5D  
-	MainButton          : #AA4E24  
+	MainButton          : #922E00  
 	MainIcons           : #FFFB00  
 	Border              : #DA4F93  
 	BorderActive        : #A5E430  
@@ -14,7 +14,7 @@
 	HighlightIcons      : #7C00FF  
 	Scrollbar           : #A5E430  
 	ScrollbarThumb      : #7C00FF  
-	Header              : #A5E4303A
+	Header              : #FFFFFF1D
 
 [NonTextured]
 (Text)
@@ -36,5 +36,5 @@
 	Details             : #DA4F93   : Border         
 	Cursor              : #000000   : Highlight       : 0
 	Selection           : #723518   : HighlightActive : 0.5
-	Curve               : #FFFF8B   : Highlight       : 1.5
+	Curve               : #A9A83E   : Highlight       : 1.5
 	CurveBackground     : #6D2749   : Border          : 0.5

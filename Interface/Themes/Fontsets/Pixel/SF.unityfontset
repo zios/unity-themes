@@ -34,3 +34,9 @@ SizeOffset = 4
 OffsetX = 0
 OffsetY = 0
 
+[Header]
+Font = SFPixelate-Bold
+SizeOffset = -3
+OffsetX = 0
+OffsetY = 0
+
