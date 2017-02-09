@@ -12,7 +12,11 @@ namespace Zios.Editors{
 				importer.meshCompression = ModelImporterMeshCompression.Off;
 				importer.optimizeMesh = true;
 				importer.importMaterials = false;
+				#if UNITY_5_3_OR_NEWER
 				importer.importTangents = ModelImporterTangents.None;
+				#else
+				importer.tangentImportMode = ModelImporterTangentSpaceMode.None;
+				#endif
 				importer.animationCompression = ModelImporterAnimationCompression.Off;
 				importer.animationType = ModelImporterAnimationType.None;
 				importer.generateAnimations = ModelImporterGenerateAnimations.None;
@@ -29,11 +33,11 @@ namespace Zios.Editors{
 		public void OnPreprocessTexture(){
 			TextureImporter importer = (TextureImporter)assetImporter;
 			string assetName = importer.assetPath.Split("/").Last();
-			importer.textureType = TextureImporterType.Default;
+			//importer.textureType = TextureImporterType.Default;
 			importer.npotScale = TextureImporterNPOTScale.None;
 			if(assetName.Contains("Outlines")){
 				importer.wrapMode = TextureWrapMode.Clamp;
-				importer.textureFormat = TextureImporterFormat.DXT5;
+				importer.SetTextureFormat(TextureImporterFormat.DXT5);
 				importer.mipmapEnabled = false;
 			}
 			if(assetName.Contains("Index") || assetName.Contains("Shading") || importer.assetPath.Contains("Interface")){
@@ -43,10 +47,10 @@ namespace Zios.Editors{
 				}
 				importer.mipmapEnabled = false;
 				//if(importer.assetPath.Contains("Index")){
-				//	importer.textureFormat = TextureImporterFormat.DXT1;
+				//  importer.SetTextureFormat(TextureImporterFormat.DXT1);
 				//}
 				if(assetName.Contains("Shading")){
-					importer.textureFormat = TextureImporterFormat.DXT5;
+					importer.SetTextureFormat(TextureImporterFormat.DXT5);
 				}
 			}
 		}

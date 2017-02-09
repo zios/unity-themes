@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 namespace Zios{
 	[AddComponentMenu("Zios/Singleton/Scene Settings")][ExecuteInEditMode]
 	public class SceneSettings : MonoBehaviour{
@@ -19,10 +18,10 @@ namespace Zios{
 			return -1;
 		}
 		public static void LoadMap(string[] values){
-			string mapName = SceneManager.GetActiveScene().name;
+			string mapName = SceneSettings.currentMap;
 			if(values.Length > 1){
 				try{
-					SceneManager.LoadScene(values[1]);
+					Utility.LoadScene(values[1]);
 					mapName = values[1];
 				}
 				catch{

@@ -15,7 +15,7 @@ namespace Zios.Editors{
 				EditorGUI.ProgressBar(area,AttributeManager.percentLoaded,"Updating");
 				return;
 			}
-			string skin = EditorGUIUtility.isProSkin || EditorPrefs.GetBool("EditorTheme-Dark",false) ? "Dark" : "Light";
+			string skin = EditorGUIUtility.isProSkin || Utility.GetPref<bool>("EditorTheme-Dark",false) ? "Dark" : "Light";
 			GUI.skin = FileManager.GetAsset<GUISkin>("Gentleface-" + skin + ".guiskin");
 			Rect labelRect = area.SetWidth(EditorGUIUtility.labelWidth);
 			Rect valueRect = area.Add(labelRect.width,0,-labelRect.width,0);

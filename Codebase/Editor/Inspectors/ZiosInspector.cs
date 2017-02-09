@@ -17,7 +17,7 @@ namespace Zios.Editors{
 		private static void Init(){
 			ZiosInspector window = (ZiosInspector)EditorWindow.GetWindow(typeof(ZiosInspector));
 			var icon = FileManager.GetAsset<Texture2D>("IconZiosInspector.png");
-			window.titleContent = new GUIContent("Inspector",icon);
+			window.SetTitle("Inspector",icon);
 			window.position = new Rect(100,150,200,200);
 			window.wantsMouseMove = true;
 			window.autoRepaintOnSceneChange = true;

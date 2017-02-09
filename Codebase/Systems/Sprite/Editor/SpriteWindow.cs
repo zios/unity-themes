@@ -245,7 +245,7 @@ namespace Zios.Editors.SpriteEditors{
 			//this.LoadPalettes();
 			if(SpriteManager.sequences.Count > 0){
 				this.selected = SpriteManager.sequences.First().Value;
-				string lastSprite = PlayerPrefs.GetString("SpriteWindow-Selected");
+				string lastSprite = Utility.GetPlayerPref<string>("SpriteWindow-Selected");
 				Sprite knownSprite = SpriteManager.GetSprite(lastSprite);
 				if(knownSprite != null){
 					this.selected = knownSprite;
@@ -504,7 +504,7 @@ namespace Zios.Editors.SpriteEditors{
 				SpriteManager.Add(data);
 			}
 			foreach(var sheetData in SpriteManager.spriteSheets){
-				if(EditorPrefs.GetBool(sheetData.Key + "Hide")){
+				if(Utility.GetPref<bool>(sheetData.Key + "Hide")){
 					this.collapsed.Add(sheetData.Value);
 				}
 			}
@@ -1361,7 +1361,7 @@ namespace Zios.Editors.SpriteEditors{
 						if(iscollapsed){this.collapsed.Remove(sheet);}
 						else{this.collapsed.Add(sheet);}
 						this.activeSheet = sheet;
-						EditorPrefs.SetBool(sheetData.Key + "Hide",!iscollapsed);
+						Utility.SetPref<bool>(sheetData.Key + "Hide",!iscollapsed);
 					}
 					currentY += 33;
 					if(this.collapsed.Contains(sheet)){
@@ -1454,7 +1454,7 @@ namespace Zios.Editors.SpriteEditors{
 				GameObject target = this.placementMode ? this.brush : null;
 				this.activeSheet = sprite.parent;
 				this.selected = sprite;
-				PlayerPrefs.SetString("SpriteWindow-Selected",sprite.fullName);
+				Utility.SetPlayerPref<string>("SpriteWindow-Selected",sprite.fullName);
 				if(this.applyOnSelection){
 					if(target != this.brush){Undo.RegisterSceneUndo("Apply Sprites");}
 					this.ApplySprite(target);

@@ -104,7 +104,7 @@ namespace Zios.Editors{
 			}
 		}
 		public void DrawSelectors(){
-			this.titleContent = new GUIContent("Static");
+			this.SetTitle("Static");
 			float fieldSize = this.position.width/3.0f - 6;
 			var assemblyArea = new Rect(5,5,fieldSize,15);
 			var namespaceArea = new Rect(5+(fieldSize)+2,5,fieldSize,15);

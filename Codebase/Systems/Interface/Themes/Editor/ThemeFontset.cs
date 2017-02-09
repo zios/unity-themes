@@ -7,7 +7,6 @@ namespace Zios.Interface{
 	[Serializable]
 	public class ThemeFontset{
 		public static List<ThemeFontset> all = new List<ThemeFontset>();
-		public FontRenderingMode rendering = FontRenderingMode.Smooth;
 		public string name;
 		public string path;
 		public Dictionary<string,ThemeFont> fonts = new Dictionary<string,ThemeFont>();
@@ -36,7 +35,7 @@ namespace Zios.Interface{
 			if(path.Length > 0){
 				var file = FileManager.Create(path);
 				file.WriteText(this.Serialize());
-				EditorPrefs.SetString("EditorFontset"+Theme.suffix,path.GetFileName());
+				Utility.SetPref<string>("EditorFontset"+Theme.suffix,path.GetFileName());
 				Theme.setup = false;
 				Theme.loaded = false;
 			}
@@ -117,6 +116,7 @@ namespace Zios.Interface{
 			return this;
 		}
 		public GUISkin Apply(GUISkin skin){
+			if(skin.IsNull()){return skin;}
 			if(!this.buffer.IsNull()){
 				ScriptableObject.DestroyImmediate(this.buffer);
 			}

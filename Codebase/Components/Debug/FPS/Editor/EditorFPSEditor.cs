@@ -1,6 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 using UnityEvent = UnityEngine.Event;
+using Zios;
 namespace Zios.Editors.DebugEditors{
 	using Interface;
 	using Events;
@@ -15,12 +16,9 @@ namespace Zios.Editors.DebugEditors{
 			if(!UnityEvent.current.IsUseful()){return;}
 			EditorFPSEditor.instance = this;
 			Event.Add("On Editor Update",EditorFPSEditor.EditorUpdate);
-			string skinName = EditorGUIUtility.isProSkin || EditorPrefs.GetBool("EditorTheme-Dark",false) ? "Dark" : "Light";
-			if(this.skin == null || !this.skin.name.Contains(skinName)){
-				this.skin = FileManager.GetAsset<GUISkin>("Gentleface-" + skinName + ".guiskin");
-			}
-			GUI.skin = this.skin;
-			this.text.ToLabel().DrawLabel(GUI.skin.GetStyle("LargeLabel"));
+			var style = GUI.skin.textField.RichText(true).FixedHeight(40).Alignment("MiddleCenter").FontSize(24);
+			style.normal = style.focused;
+			this.text.ToLabel().DrawLabel(style);
 		}
 		public static void EditorUpdate(){
 			if(EditorFPSEditor.instance.IsNull()){return;}
@@ -29,10 +27,9 @@ namespace Zios.Editors.DebugEditors{
 		public void Step(){
 			this.frames += 1;
 			if(Time.realtimeSinceStartup >= this.nextUpdate){
-				string color = EditorGUIUtility.isProSkin || EditorPrefs.GetBool("EditorTheme-Dark",false) ? "white" : "black";
-				string frameText = "<color="+color+">" + this.frames.ToString() + "</color>";
+				string frameText = "<b>" + this.frames.ToString() + "</b>";
 				this.nextUpdate = Time.realtimeSinceStartup + 0.5f;
-				this.text = frameText + " fps";
+				this.text = frameText + " <i>fps</i>";
 				this.frames = 0;
 				this.Repaint();
 			}

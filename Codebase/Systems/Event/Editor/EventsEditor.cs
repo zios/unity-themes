@@ -19,7 +19,7 @@ namespace Zios.Editors{
 				EditorGUI.indentLevel += 1;
 				if(this.listeners.Count != Event.listeners.Count){this.BuildListeners();}
 				var labelStyle = GUI.skin.label.FixedWidth(200);
-				var valueStyle = GUI.skin.label.FixedWidth(350);
+				var valueStyle = GUI.skin.label.FixedWidth(250);
 				var checkStyle = GUI.skin.toggle.FixedWidth(16);
 				foreach(var item in this.listeners){
 					if(item.Key.ToLabel().DrawFoldout()){
@@ -27,10 +27,10 @@ namespace Zios.Editors{
 						foreach(var listener in item.Value){
 							GUILayout.BeginHorizontal();
 							listener.name.ToLabel().DrawLabel(labelStyle,true);
-							Event.GetMethodName(listener.method).ToLabel().DrawLabel(valueStyle);
-							listener.isStatic.Draw(null,checkStyle);
-							listener.permanent.Draw(null,checkStyle);
-							listener.unique.Draw(null,checkStyle);
+							Event.GetMethodName(listener.method).ToLabel().DrawLabel(valueStyle,false);
+							listener.isStatic.Draw(null,checkStyle,false);
+							listener.permanent.Draw(null,checkStyle,false);
+							listener.unique.Draw(null,checkStyle,false);
 							GUILayout.EndHorizontal();
 						}
 						EditorGUI.indentLevel -= 1;

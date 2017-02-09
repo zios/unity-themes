@@ -57,8 +57,8 @@ namespace Zios{
 		}
 		public void UpdateEffects(){
 			#if UNITY_EDITOR
-			bool updateShaders = UnityEditor.EditorPrefs.GetBool("EditorSettings-AlwaysUpdateShaders");
-			bool updateParticles = UnityEditor.EditorPrefs.GetBool("EditorSettings-AlwaysUpdateParticles");
+			bool updateShaders = Utility.GetPref<bool>("EditorSettings-AlwaysUpdateShaders");
+			bool updateParticles = Utility.GetPref<bool>("EditorSettings-AlwaysUpdateParticles");
 			if(updateShaders){Shader.SetGlobalFloat("timeConstant",Time.realtimeSinceStartup);}
 			foreach(var system in Locate.GetSceneComponents<ParticleSystem>()){
 				if(system.IsNull()){continue;}

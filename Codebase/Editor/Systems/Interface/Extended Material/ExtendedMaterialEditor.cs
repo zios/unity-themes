@@ -45,28 +45,28 @@ namespace Zios.Editors.MaterialEditors{
 		}
 		public void LoadSettings(){
 			string name = Buffer.material.name;
-			bool firstOpen = !PlayerPrefs.HasKey(name+"-Material");
-			Buffer.options["ShowDefault"] = firstOpen ? true : PlayerPrefs.GetInt("ExtendedMaterial-ShowDefault").ToBool();
-			Buffer.options["ShowPreview"] = firstOpen ? true : PlayerPrefs.GetInt("ExtendedMaterial-ShowPreview").ToBool();
-			Buffer.options["ShaderUnity"] = PlayerPrefs.GetInt(name+"-ShaderUnity").ToBool();
-			Buffer.options["ShaderGPU"] = PlayerPrefs.GetInt(name+"-ShaderGPU").ToBool();
-			Buffer.options["Properties"] = PlayerPrefs.GetInt(name+"-Properties").ToBool();
-			Buffer.options["Material"] = firstOpen ? true : PlayerPrefs.GetInt(name+"-Material").ToBool();
+			bool firstOpen = !Utility.HasPref(name+"-Material");
+			Buffer.options["ShowDefault"] = firstOpen ? true : Utility.GetPref<int>("ExtendedMaterial-ShowDefault").ToBool();
+			Buffer.options["ShowPreview"] = firstOpen ? true : Utility.GetPref<int>("ExtendedMaterial-ShowPreview").ToBool();
+			Buffer.options["ShaderUnity"] = Utility.GetPref<int>(name+"-ShaderUnity").ToBool();
+			Buffer.options["ShaderGPU"] = Utility.GetPref<int>(name+"-ShaderGPU").ToBool();
+			Buffer.options["Properties"] = Utility.GetPref<int>(name+"-Properties").ToBool();
+			Buffer.options["Material"] = firstOpen ? true : Utility.GetPref<int>(name+"-Material").ToBool();
 			int shaderIndex = 0;
 			int passIndex = 0;
 			foreach(SubShader subShader in Buffer.active.subShaders){
 				shaderIndex += 1;
 				string shaderHash = "Sub"+shaderIndex;
-				Buffer.options[shaderHash] = firstOpen ? true : PlayerPrefs.GetInt(name+"-"+shaderHash).ToBool();
-				Buffer.options[shaderHash+"Tags"] = PlayerPrefs.GetInt(name+"-"+shaderHash+"Tags").ToBool();
-				Buffer.options[shaderHash+"Fog"] = PlayerPrefs.GetInt(name+"-"+shaderHash+"Fog").ToBool();
+				Buffer.options[shaderHash] = firstOpen ? true : Utility.GetPref<int>(name+"-"+shaderHash).ToBool();
+				Buffer.options[shaderHash+"Tags"] = Utility.GetPref<int>(name+"-"+shaderHash+"Tags").ToBool();
+				Buffer.options[shaderHash+"Fog"] = Utility.GetPref<int>(name+"-"+shaderHash+"Fog").ToBool();
 				foreach(var item in subShader.passes){
 					passIndex += 1;
 					item.Value.name = item.Value.name;
 					string passHash = "Pass"+passIndex;
-					Buffer.options[passHash] = firstOpen ? true : PlayerPrefs.GetInt(name+"-"+passHash).ToBool();
-					Buffer.options[passHash+"Tags"] = PlayerPrefs.GetInt(name+"-"+passHash+"Tags").ToBool();
-					Buffer.options[passHash+"Fog"] = PlayerPrefs.GetInt(name+"-"+passHash+"Fog").ToBool();
+					Buffer.options[passHash] = firstOpen ? true : Utility.GetPref<int>(name+"-"+passHash).ToBool();
+					Buffer.options[passHash+"Tags"] = Utility.GetPref<int>(name+"-"+passHash+"Tags").ToBool();
+					Buffer.options[passHash+"Fog"] = Utility.GetPref<int>(name+"-"+passHash+"Fog").ToBool();
 				}
 			}
 		}
@@ -118,7 +118,7 @@ namespace Zios.Editors.MaterialEditors{
 		}
 		public bool DrawTitle(string title,bool current){
 			EditorGUI.BeginChangeCheck();
-			string skinSuffix = EditorGUIUtility.isProSkin || EditorPrefs.GetBool("EditorTheme-Dark",false) ? "Dark" : "Light";
+			string skinSuffix = EditorGUIUtility.isProSkin || Utility.GetPref<bool>("EditorTheme-Dark",false) ? "Dark" : "Light";
 			skinSuffix += current ? "Open" : "";
 			GUIStyle styleTitle = this.UI.GetStyle("Title"+skinSuffix);
 			string arrow = "<color=#008ffeFF>▼</color>";
@@ -128,7 +128,7 @@ namespace Zios.Editors.MaterialEditors{
 			return pressed;
 		}
 		public bool DrawToggleButton(string label,bool state){
-			string skinSuffix = EditorGUIUtility.isProSkin || EditorPrefs.GetBool("EditorTheme-Dark",false) ? "Dark" : "Light";
+			string skinSuffix = EditorGUIUtility.isProSkin || Utility.GetPref<bool>("EditorTheme-Dark",false) ? "Dark" : "Light";
 			string prefix = state ? "☗ " : "☖ ";
 			skinSuffix += state ? "Active" : "";
 			GUIStyle buttonStyle = this.UI.GetStyle("Button"+skinSuffix);
@@ -465,7 +465,7 @@ namespace Zios.Editors.MaterialEditors{
 						string key = item.Key;
 						int value = item.Value.ToInt();
 						string settingPrefix = key.ContainsAny("ShowDefault","ShowPreview") ? "ExtendedMaterial-" : Buffer.material.name+"-";
-						PlayerPrefs.SetInt(settingPrefix+key,value);
+						Utility.SetPref<int>(settingPrefix+key,value);
 					}
 					this.warning = "";
 					EditorUtility.SetDirty(material);

@@ -235,10 +235,10 @@ namespace Zios.Interface{
 		public static void LoadBinds(){
 			Console.AddBind("BackQuote","console");
 			if(!Application.isWebPlayer && Console.instance.configFile != ""){return;}
-			if(!PlayerPrefs.HasKey("binds")){
-				PlayerPrefs.SetString("binds","|");
+			if(!Utility.HasPlayerPref("binds")){
+				Utility.SetPlayerPref<string>("binds","|");
 			}
-			string binds = PlayerPrefs.GetString("binds");
+			string binds = Utility.GetPlayerPref<string>("binds");
 			string[] bindList = binds.Split('|');
 			foreach(string item in bindList){
 				string[] dataList = item.Split('-');
@@ -287,7 +287,7 @@ namespace Zios.Interface{
 			}
 			if(Application.isWebPlayer || Console.instance.configFile == ""){
 				bindString = bindString.Trim('|') + "|";
-				PlayerPrefs.SetString("binds",bindString);
+				Utility.SetPlayerPref<string>("binds",bindString);
 			}
 			else{
 				Console.configOutput.Add(bindString.Replace("-"," ").Replace("|","\r\n"));
@@ -371,20 +371,20 @@ namespace Zios.Interface{
 		}
 		public static void LoadCvar(Cvar data){
 			if(!Application.isWebPlayer && Console.instance.configFile != ""){return;}
-			if(PlayerPrefs.HasKey(data.fullName)){
+			if(Utility.HasPlayerPref(data.fullName)){
 				object value = data.value.Get();
 				Type type = data.value.type;
-				if(type == typeof(float)){value = PlayerPrefs.GetFloat(data.fullName);}
-				else if(type == typeof(string)){value = PlayerPrefs.GetString(data.fullName);}
-				else if(type == typeof(int) || type == typeof(byte)){value = PlayerPrefs.GetInt(data.fullName);}
-				else if(type == typeof(bool)){value = PlayerPrefs.GetInt(data.fullName) == 1 ? true : false;}
+				if(type == typeof(float)){value = Utility.GetPlayerPref<float>(data.fullName);}
+				else if(type == typeof(string)){value = Utility.GetPlayerPref<string>(data.fullName);}
+				else if(type == typeof(int) || type == typeof(byte)){value = Utility.GetPlayerPref<int>(data.fullName);}
+				else if(type == typeof(bool)){value = Utility.GetPlayerPref<int>(data.fullName) == 1 ? true : false;}
 				data.value.Set(value);
 			}
 		}
 		public static void ResetCvars(string[] values){
-			string binds = PlayerPrefs.GetString("binds");
-			PlayerPrefs.DeleteAll();
-			PlayerPrefs.SetString("binds",binds);
+			string binds = Utility.GetPlayerPref<string>("binds");
+			Utility.DeletePlayerPrefs();
+			Utility.SetPlayerPref<string>("binds",binds);
 			foreach(var item in Console.cvars){
 				Cvar data = item.Value;
 				data.value.Set(data.defaultValue);
@@ -398,7 +398,7 @@ namespace Zios.Interface{
 				Cvar data = item.Value;
 				object current = data.value.Get();
 				if(Application.isWebPlayer || Console.instance.configFile == ""){
-					Utility.SavePlayerPref(data.fullName,current);
+					Utility.SetPlayerPref(data.fullName,current);
 				}
 				else{
 					Console.configOutput.Add(item.Key + " " + current.Serialize());

@@ -31,7 +31,7 @@ namespace Zios.Editors{
 		public void OnGUI(){
 			this.scrollPosition = EditorGUILayout.BeginScrollView(this.scrollPosition);
 			EditorGUIUtility.labelWidth = 100;
-			this.titleContent = new GUIContent("MaterialMapper");
+			this.SetTitle("MaterialMapper");
 			this.shaders = this.shaders.Remove(this.goal).Resize(this.sourceCount);
 			this.labelWidth = GUILayout.Width(Screen.width/2-20);
 			this.sourceCount = Mathf.Max(1,this.sourceCount.DrawInt("Source Count"));

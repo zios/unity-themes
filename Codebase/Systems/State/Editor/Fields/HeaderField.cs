@@ -15,8 +15,8 @@ namespace Zios.Editors.StateEditors{
 			var scroll = window.scroll;
 			var label = this.target is string ? new GUIContent("") : new GUIContent(this.target.GetVariable<string>("name"));
 			GUIStyle style = new GUIStyle(GUI.skin.label);
-			var mode = (HeaderMode)EditorPrefs.GetInt("StateWindow-Mode",2);
-			bool darkSkin = EditorGUIUtility.isProSkin || EditorPrefs.GetBool("EditorTheme-Dark",false);
+			var mode = (HeaderMode)Utility.GetPref<int>("StateWindow-Mode",2);
+			bool darkSkin = EditorGUIUtility.isProSkin || Utility.GetPref<bool>("EditorTheme-Dark",false);
 			Color textColor = Colors.Get("Gray");
 			string background = darkSkin ? "BoxBlackAWarm30" : "BoxWhiteBWarm50";
 			if(window.target.external){
@@ -95,8 +95,8 @@ namespace Zios.Editors.StateEditors{
 		}
 		public override void Clicked(int button){
 			if(button == 0){
-				int mode = (EditorPrefs.GetInt("StateWindow-Mode",2)+1)%3;
-				EditorPrefs.SetInt("StateWindow-Mode",mode);
+				int mode = (Utility.GetPref<int>("StateWindow-Mode",2)+1)%3;
+				Utility.SetPref<int>("StateWindow-Mode",mode);
 				this.row.table.ShowAll();
 				StateWindow.Get().Repaint();
 				return;

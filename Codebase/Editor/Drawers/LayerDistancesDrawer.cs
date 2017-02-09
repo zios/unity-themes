@@ -6,7 +6,7 @@ namespace Zios.Editors{
 	public class LayerDistancesDrawer : PropertyDrawer{
 		public int drawn;
 		public override float GetPropertyHeight(SerializedProperty property,GUIContent label){
-			if(EditorPrefs.GetBool("layerDistancesExpanded")){
+			if(Utility.GetPref<bool>("layerDistancesExpanded")){
 				return ((EditorGUIUtility.singleLineHeight+2) * this.drawn) + 16;
 			}
 			return base.GetPropertyHeight(property,label);
@@ -14,9 +14,9 @@ namespace Zios.Editors{
 		public override void OnGUI(Rect area,SerializedProperty property,GUIContent label){
 			float singleLine = EditorGUIUtility.singleLineHeight;
 			area = area.SetHeight(singleLine);
-			bool expanded = EditorPrefs.GetBool("layerDistancesExpanded");
+			bool expanded = Utility.GetPref<bool>("layerDistancesExpanded");
 			expanded = EditorGUI.Foldout(area,expanded,"Layer Cull Distances");
-			EditorPrefs.SetBool("layerDistancesExpanded",expanded);
+			Utility.SetPref<bool>("layerDistancesExpanded",expanded);
 			if(expanded){
 				EditorGUI.indentLevel += 1;
 				this.drawn = 0;

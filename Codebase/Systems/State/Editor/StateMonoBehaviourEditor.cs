@@ -37,18 +37,18 @@ namespace Zios.Editors.StateEditors{
 			base.OnInspectorGUI();
 		}
 		public void SetupStyles(){
-			string skinName = EditorGUIUtility.isProSkin || EditorPrefs.GetBool("EditorTheme-Dark",false) ? "Dark" : "Light";
+			string skinName = EditorGUIUtility.isProSkin || Utility.GetPref<bool>("EditorTheme-Dark",false) ? "Dark" : "Light";
 			if(this.skin == null || !this.skin.name.Contains(skinName)){
 				this.skin = FileManager.GetAsset<GUISkin>("Gentleface-" + skinName + ".guiskin");
 			}
 			GUI.skin = this.skin;
 			int fixedWidth = Class.isFixed ? 200 : (Screen.width/2)-18;
-			this.headerColor = EditorGUIUtility.isProSkin || EditorPrefs.GetBool("EditorTheme-Dark",false) ? "#AAAAAA" : "#555555";
-			this.nameColor = EditorGUIUtility.isProSkin || EditorPrefs.GetBool("EditorTheme-Dark",false) ? "#CCCCCC" : "#000000";
-			this.warningColor = EditorGUIUtility.isProSkin || EditorPrefs.GetBool("EditorTheme-Dark",false) ? "#FF6666" : "#770000";
-			this.onColor = EditorGUIUtility.isProSkin || EditorPrefs.GetBool("EditorTheme-Dark",false) ? "#95e032" : "#0000AA99";
-			this.offColor = EditorGUIUtility.isProSkin || EditorPrefs.GetBool("EditorTheme-Dark",false) ? "#e03232" : "#a22e2e";
-			this.usedColor = EditorGUIUtility.isProSkin || EditorPrefs.GetBool("EditorTheme-Dark",false) ? "#E0C532" : "#8F7E21";
+			this.headerColor = EditorGUIUtility.isProSkin || Utility.GetPref<bool>("EditorTheme-Dark",false) ? "#AAAAAA" : "#555555";
+			this.nameColor = EditorGUIUtility.isProSkin || Utility.GetPref<bool>("EditorTheme-Dark",false) ? "#CCCCCC" : "#000000";
+			this.warningColor = EditorGUIUtility.isProSkin || Utility.GetPref<bool>("EditorTheme-Dark",false) ? "#FF6666" : "#770000";
+			this.onColor = EditorGUIUtility.isProSkin || Utility.GetPref<bool>("EditorTheme-Dark",false) ? "#95e032" : "#0000AA99";
+			this.offColor = EditorGUIUtility.isProSkin || Utility.GetPref<bool>("EditorTheme-Dark",false) ? "#e03232" : "#a22e2e";
+			this.usedColor = EditorGUIUtility.isProSkin || Utility.GetPref<bool>("EditorTheme-Dark",false) ? "#E0C532" : "#8F7E21";
 			this.boxStyle = GUI.skin.GetStyle("Box");
 			this.columnStyle = GUI.skin.GetStyle("Box").FixedWidth(fixedWidth);
 			this.containerStyle = GUI.skin.GetStyle("Box").FixedWidth(fixedWidth).Background("");
@@ -57,7 +57,7 @@ namespace Zios.Editors.StateEditors{
 		}
 		public void DrawBreakdown(){
 			string breakdown = "StateMonoBehaviourEditor-ToggleBreakdown";
-			if(EditorPrefs.HasKey(breakdown)){
+			if(Utility.HasPref(breakdown)){
 				Class.isVisible = !Class.isVisible;
 				EditorPrefs.DeleteKey(breakdown);
 			}
@@ -74,7 +74,7 @@ namespace Zios.Editors.StateEditors{
 					hasOnData = onRows.Select(x=>x.data).First().Where(x=>x.requireOn||x.requireOff).FirstOrDefault() != null;
 				}
 				this.BeginArea();
-				bool fastInspector = EditorPrefs.GetBool("MonoBehaviourEditor-FastInspector");
+				bool fastInspector = Utility.GetPref<bool>("MonoBehaviourEditor-FastInspector");
 				if(fastInspector && !this.breakdownVisible){
 					GUILayout.Space(this.breakdownArea.height);
 				}

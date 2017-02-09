@@ -26,12 +26,13 @@ namespace Zios.Events{
 		}
 		public bool IsResting(){return Time.realtimeSinceStartup < this.resting;}
 		public void Rest(float seconds=1){this.resting = Time.realtimeSinceStartup+seconds;}
-		public void SetCooldown(float seconds=1){this.cooldown = seconds;}
-		public void SetPaused(bool state=true){this.paused = state;}
-		public void SetPermanent(bool state=true){this.permanent = state;}
-		public void SetUnique(bool state=true){
+		public EventListener SetCooldown(float seconds=1){this.cooldown = seconds;return this;}
+		public EventListener SetPaused(bool state=true){this.paused = state;return this;}
+		public EventListener SetPermanent(bool state=true){this.permanent = state;return this;}
+		public EventListener SetUnique(bool state=true){
 			if(state){Event.unique.AddNew(this.target)[this.name] = this;}
 			this.unique = state;
+			return this;
 		}
 		public void Remove(){
 			if(Event.cache.ContainsKey(this.target) && Event.cache[this.target].ContainsKey(this.name)){

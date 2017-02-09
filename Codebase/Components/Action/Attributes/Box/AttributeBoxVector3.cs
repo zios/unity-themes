@@ -4,15 +4,15 @@ namespace Zios.Attributes{
 	public class AttributeBoxVector3 : AttributeBox<AttributeVector3>{
 		public override void Store(){
 			string path = this.value.info.fullPath;
-			PlayerPrefs.SetFloat(path+"x",this.value.x);
-			PlayerPrefs.SetFloat(path+"y",this.value.y);
-			PlayerPrefs.SetFloat(path+"z",this.value.z);
+			Utility.SetPlayerPref<float>(path+"x",this.value.x);
+			Utility.SetPlayerPref<float>(path+"y",this.value.y);
+			Utility.SetPlayerPref<float>(path+"z",this.value.z);
 		}
 		public override void Load(){
 			string path = this.value.info.fullPath;
-			this.value.x = PlayerPrefs.GetFloat(path+"x");
-			this.value.y = PlayerPrefs.GetFloat(path+"y");
-			this.value.z = PlayerPrefs.GetFloat(path+"z");
+			this.value.x = Utility.GetPlayerPref<float>(path+"x");
+			this.value.y = Utility.GetPlayerPref<float>(path+"y");
+			this.value.z = Utility.GetPlayerPref<float>(path+"z");
 		}
 	}
 }

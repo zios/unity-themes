@@ -185,6 +185,13 @@ namespace Zios{
 		public static Color Divide(this Color current,float amount){
 			return current.Divide(new Color(amount,amount,amount));
 		}
+		public static Color Flatten(this Color current){
+			current.r *= current.a;
+			current.g *= current.a;
+			current.b *= current.a;
+			current.a = 1;
+			return current;
+		}
 		public static Color Set(this Color current,float r,float g=-1,float b=-1,float a=-1){
 			if(r!=-1){current.r = r;}
 			if(g!=-1){current.g = g;}
@@ -194,6 +201,21 @@ namespace Zios{
 		}
 		public static Color SetAlpha(this Color current,float a){
 			current.a = a;
+			return current;
+		}
+		public enum ColorOrder{RGBA,ARGB,BGRA,ABGR};
+		public static Color Order(this Color current,string orderText){
+			var order = orderText.ToEnum<ColorOrder>();
+			return current.Order(order);
+		}
+		public static Color Order(this Color current,ColorOrder order){
+			var r = current.r;
+			var g = current.g;
+			var b = current.b;
+			var a = current.a;
+			if(order==ColorOrder.BGRA){return new Color(b,g,r,a);}
+			if(order==ColorOrder.ARGB){return new Color(a,r,g,b);}
+			if(order==ColorOrder.ABGR){return new Color(a,b,g,r);}
 			return current;
 		}
 		public static Color Random(this Color current,float intensity=1.0f){
@@ -211,6 +233,14 @@ namespace Zios{
 			var alpha = (current.a*255).ToInt().ToString("X2");
 			if(alpha == "FF" && !alwaysAlpha){alpha = "";}
 			return "#"+red+green+blue+alpha;
+		}
+		public static string ToDecimal(this Color current,bool alwaysAlpha=true){
+			var red = (current.r*255).ToInt();
+			var green = (current.g*255).ToInt();
+			var blue = (current.b*255).ToInt();
+			var alpha = " " + (current.a*255).ToInt();
+			if(alpha=="255" && !alwaysAlpha){alpha = "";}
+			return red+" "+green+" "+blue+alpha;
 		}
 		public static string Serialize(this Color current){
 			return current.ToHex(false);

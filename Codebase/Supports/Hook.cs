@@ -20,9 +20,9 @@ namespace Zios{
 			Hook.hidden = true;
 			Hook.temporary = true;
 			#elif UNITY_EDITOR
-			Hook.hidden = EditorPrefs.GetBool("EditorSettings-HideHooks",false);
-			Hook.disabled = EditorPrefs.GetBool("EditorSettings-DisableHooks",false);
-			Hook.temporary = EditorPrefs.GetBool("EditorSettings-TemporaryHooks",false);
+			Hook.hidden = Utility.GetPref<bool>("EditorSettings-HideHooks",false);
+			Hook.disabled = Utility.GetPref<bool>("EditorSettings-DisableHooks",false);
+			Hook.temporary = Utility.GetPref<bool>("EditorSettings-TemporaryHooks",false);
 			#endif
 		}
 		public static void SetState(){
@@ -47,9 +47,7 @@ namespace Zios{
 			if(this.disabled || Hook.disabled || Application.isPlaying){return;}
 			this.resetMethod = reset ?? this.Reset;
 			this.createMethod = create ?? this.Create;
-			#if UNITY_EDITOR
-			EditorApplication.delayCall += this.resetMethod;
-			#endif
+			Utility.DelayCall(this.resetMethod);
 		}
 		public void Reset(){
 			if(this.disabled || Hook.disabled){return;}

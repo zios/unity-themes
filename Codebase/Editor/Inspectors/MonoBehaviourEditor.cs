@@ -33,7 +33,7 @@ namespace Zios.Editors{
 			if(!UnityEvent.current.IsUseful()){return;}
 			if(this.target is MonoBehaviour && this.target.As<MonoBehaviour>().IsPrefab()){return;}
 			this.BeginArea();
-			bool fastInspector = EditorPrefs.GetBool("MonoBehaviourEditor-FastInspector");
+			bool fastInspector = Utility.GetPref<bool>("MonoBehaviourEditor-FastInspector");
 			/*if(fastInspector && MonoBehaviourEditor.offScreen.ContainsKey(this)){
 				GUILayout.Space(this.area.height);
 				this.CheckChanges();
@@ -42,8 +42,8 @@ namespace Zios.Editors{
 			if(UnityEvent.current.type == EventType.MouseMove){
 				Utility.GetInspectors().ForEach(x=>Utility.DelayCall(x.Repaint,0.01f));
 			}
-			bool hideAllDefault = EditorPrefs.GetBool("MonoBehaviourEditor-HideAllDefault",false);
-			this.hideDefault = EditorPrefs.GetBool("MonoBehaviourEditor-"+this.target.GetInstanceID()+"HideDefault",false);
+			bool hideAllDefault = Utility.GetPref<bool>("MonoBehaviourEditor-HideAllDefault",false);
+			this.hideDefault = Utility.GetPref<bool>("MonoBehaviourEditor-"+this.target.GetInstanceID()+"HideDefault",false);
 			bool hideDefault = hideAllDefault || this.hideDefault;
 			if(hideDefault){this.SortDefaults();}
 			this.serializedObject.Update();
@@ -51,9 +51,9 @@ namespace Zios.Editors{
 			this.Setup();
 			Type type = this.target.GetType();
 			bool changed = false;
-			bool showAdvanced = EditorPrefs.GetBool("MonoBehaviourEditor-Advanced");
-			bool showInternal = EditorPrefs.GetBool("MonoBehaviourEditor-Internal");
-			bool showDictionary = EditorPrefs.GetBool("MonoBehaviourEditor-Dictionary");
+			bool showAdvanced = Utility.GetPref<bool>("MonoBehaviourEditor-Advanced");
+			bool showInternal = Utility.GetPref<bool>("MonoBehaviourEditor-Internal");
+			bool showDictionary = Utility.GetPref<bool>("MonoBehaviourEditor-Dictionary");
 			EditorGUILayout.BeginVertical();
 			foreach(var property in this.properties){
 				string[] attributes = this.serializedObject.targetObject.ListAttributes(property.name).Select(x=>x.GetType().Name).ToArray();
@@ -84,7 +84,7 @@ namespace Zios.Editors{
 							bool canHide = (this.properties.Count - this.hidden.Count) > 1;
 							if(this.propertyArea[property].Clicked(0) && canHide){
 									string path = "MonoBehaviourEditor-PropertyHide-"+this.target.GetInstanceID()+"-"+property.propertyPath;
-									EditorPrefs.SetBool(path,true);
+									Utility.SetPref<bool>(path,true);
 									this.hidden.Add(property);
 							}
 							if(this.propertyArea[property].Clicked(1)){this.DrawMenu();}
@@ -128,7 +128,7 @@ namespace Zios.Editors{
 		}
 		public void CheckChanges(){
 			if(UnityEvent.current.type == EventType.Repaint){
-				bool fastInspector = EditorPrefs.GetBool("MonoBehaviourEditor-FastInspector");
+				bool fastInspector = Utility.GetPref<bool>("MonoBehaviourEditor-FastInspector");
 				Vector2 mousePosition = UnityEvent.current.mousePosition;
 				this.showAll = UnityEvent.current.alt && this.area.Contains(mousePosition);
 				if(this.dirtyEvent != null){
@@ -180,7 +180,7 @@ namespace Zios.Editors{
 			if(this.properties.Count > 0 && !this.setup){
 				foreach(var property in this.properties){
 					string path = "MonoBehaviourEditor-PropertyHide-"+this.target.GetInstanceID()+"-"+property.propertyPath;
-					if(EditorPrefs.GetBool(path,false)){
+					if(Utility.GetPref<bool>(path,false)){
 						this.hidden.Add(property);
 					}
 				}
@@ -254,19 +254,19 @@ namespace Zios.Editors{
 			MenuFunction hideAllDefaults = ()=>Utility.ToggleEditorPref("MonoBehaviourEditor-HideAllDefault");
 			MenuFunction hideLocalDefaults = ()=>{
 				this.hideDefault = !this.hideDefault;
-				EditorPrefs.SetBool("MonoBehaviourEditor-"+this.target.GetInstanceID()+"HideDefault",this.hideDefault);
+				Utility.SetPref<bool>("MonoBehaviourEditor-"+this.target.GetInstanceID()+"HideDefault",this.hideDefault);
 			};
-			menu.AddItem(new GUIContent("Advanced"),EditorPrefs.GetBool("MonoBehaviourEditor-Advanced"),toggleAdvanced);
-			menu.AddItem(new GUIContent("Internal"),EditorPrefs.GetBool("MonoBehaviourEditor-Internal"),toggleInternal);
-			menu.AddItem(new GUIContent("Dictionary"),EditorPrefs.GetBool("MonoBehaviourEditor-Dictionary"),toggleDictionary);
+			menu.AddItem(new GUIContent("Advanced"),Utility.GetPref<bool>("MonoBehaviourEditor-Advanced"),toggleAdvanced);
+			menu.AddItem(new GUIContent("Internal"),Utility.GetPref<bool>("MonoBehaviourEditor-Internal"),toggleInternal);
+			menu.AddItem(new GUIContent("Dictionary"),Utility.GetPref<bool>("MonoBehaviourEditor-Dictionary"),toggleDictionary);
 			menu.AddSeparator("");
-			menu.AddItem(new GUIContent("Defaults/Hide All"),EditorPrefs.GetBool("MonoBehaviourEditor-HideAllDefault"),hideAllDefaults);
+			menu.AddItem(new GUIContent("Defaults/Hide All"),Utility.GetPref<bool>("MonoBehaviourEditor-HideAllDefault"),hideAllDefaults);
 			menu.AddItem(new GUIContent("Defaults/Hide Local"),this.hideDefault,hideLocalDefaults);
 			if(this.hidden.Count > 0){
 				MenuFunction unhideAll = ()=>{
 					foreach(var property in this.hidden){
 						string path = "MonoBehaviourEditor-PropertyHide-"+this.target.GetInstanceID()+"-"+property.propertyPath;
-						EditorPrefs.SetBool(path,false);
+						Utility.SetPref<bool>(path,false);
 					}
 					this.hidden.Clear();
 				};
@@ -276,7 +276,7 @@ namespace Zios.Editors{
 					SerializedProperty target = property;
 					MenuFunction unhide = ()=>{
 						string path = "MonoBehaviourEditor-PropertyHide-"+this.target.GetInstanceID()+"-"+property.propertyPath;
-						EditorPrefs.SetBool(path,false);
+						Utility.SetPref<bool>(path,false);
 						this.hidden.Remove(target);
 					};
 					menu.AddItem(new GUIContent("Unhide/"+property.displayName),false,unhide);

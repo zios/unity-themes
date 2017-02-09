@@ -23,7 +23,7 @@ namespace Zios{
 				Event.Add("On Asset Changed",Serializer.instance.Save);
 				Event.Add("On Level Was Loaded",Serializer.instance.Setup);
 				Event.Add("On Exit Play",Serializer.instance.Load);
-				//Event.Add("On Level Was Loaded",Serializer.instance.Load);
+				Event.Add("On Level Was Loaded",Serializer.instance.Load);
 			}
 		}
 		public static void Create(){
@@ -48,8 +48,8 @@ namespace Zios{
 		public static Serializer instance;
 		public static Serializer Get(){return Serializer.instance;}
 		public static Dictionary<Type,Dictionary<string,object>> defaults = new Dictionary<Type,Dictionary<string,object>>();
-		public bool disabled;
-		[EnumMask] public SerializerDebug debug = 0;
+		public bool disabled = true;
+		[EnumMask] public SerializerDebug debug;
 		private StringBuilder contents = new StringBuilder();
 		private int tabs;
 		private string path;

@@ -101,38 +101,12 @@ namespace Zios{
 				}
 			}
 		}
+		public static bool IsRepainting(){
+			return UnityEngine.Event.current.type == EventType.Repaint;
+		}
 		//============================
 		// General
 		//============================
-		public static void CallEditorPref(string name,bool showWarnings=false){
-			#if UNITY_EDITOR
-			var callbacks = EditorPrefs.GetString(name);
-			var called = new List<string>();
-			var success = new List<string>();
-			bool debug = ObjectExtension.debug;
-			ObjectExtension.debug = showWarnings;
-			foreach(var method in callbacks.Split("|")){
-				if(called.Contains(method) || method.IsEmpty()){continue;}
-				if(!method.CallMethod().IsNull()){
-					success.Add(method);
-				}
-				called.Add(method);
-			}
-			ObjectExtension.debug = debug;
-			var value = success.Count > 0 ? success.Join("|") : "";
-			EditorPrefs.SetString(name,value);
-			#endif
-		}
-		public static void TogglePlayerPref(string name,bool fallback=false){
-			bool value = !(PlayerPrefs.GetInt(name) == fallback.ToInt());
-			PlayerPrefs.SetInt(name,value.ToInt());
-		}
-		public static void ToggleEditorPref(string name,bool fallback=false){
-			#if UNITY_EDITOR
-			bool value = !EditorPrefs.GetBool(name,fallback);
-			EditorPrefs.SetBool(name,value);
-			#endif
-		}
 		public static void Destroy(UnityObject target,bool destroyAssets=false){
 			if(target.IsNull()){return;}
 			if(target is Component){
@@ -236,10 +210,6 @@ namespace Zios{
 				if(Utility.delayedMethods.ContainsKey(key) && !overwrite){return;}
 				Utility.delayedMethods[key] = new KeyValuePair<CallbackFunction,float>(method,Time.realtimeSinceStartup + seconds);
 			}
-		}
-		public static void RepeatCall(CallbackFunction method,float seconds){
-			CallbackFunction repeat = ()=>Utility.DelayCall(()=>Utility.RepeatCall(method,seconds));
-			Utility.DelayCall(method+repeat,seconds);
 		}
 	}
 }

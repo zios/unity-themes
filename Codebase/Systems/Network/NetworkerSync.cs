@@ -1,3 +1,4 @@
+#if UNITY_5_4_OR_NEWER
 using UnityEngine;
 using System;
 namespace Zios.Actions.NetworkComponents{
@@ -88,3 +89,4 @@ namespace Zios.Actions.NetworkComponents{
 	[Flags] public enum ServerSyncType{SendToClients=1,ReceiveFromClients=2}
 	[AddComponentMenu("")] public class NetworkSync : StateMonoBehaviour{}
 }
+#endif

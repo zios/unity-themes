@@ -87,7 +87,7 @@ namespace Zios.Editors{
 		public Dictionary<AttributeData,List<string>> attributeNames = new Dictionary<AttributeData,List<string>>();
 		public Dictionary<AttributeData,bool> targetMode = new Dictionary<AttributeData,bool>();
 		public virtual void Setup(AttributeDrawer drawer,Rect area,SerializedProperty property,GUIContent label){
-			string skinName = EditorGUIUtility.isProSkin || EditorPrefs.GetBool("EditorTheme-Dark",false) ? "Dark" : "Light";
+			string skinName = EditorGUIUtility.isProSkin || Utility.GetPref<bool>("EditorTheme-Dark",false) ? "Dark" : "Light";
 			if(this.skin == null || !this.skin.name.Contains(skinName)){
 				this.skin = FileManager.GetAsset<GUISkin>("Gentleface-" + skinName + ".guiskin");
 				this.attribute = property.GetObject<Attribute>();
@@ -148,7 +148,7 @@ namespace Zios.Editors{
 		public virtual void DrawDirect(Rect area,Rect extraArea,AttributeData data,GUIContent label,bool? drawSpecial=null,bool? drawOperator=null){
 			float labelSize = EditorGUIUtility.labelWidth;
 			EditorGUIUtility.labelWidth = this.labelRect.width;
-			bool showSpecial = drawSpecial != null && (EditorPrefs.GetBool(data.path+"Advanced") || data.special != 0);
+			bool showSpecial = drawSpecial != null && (Utility.GetPref<bool>(data.path+"Advanced") || data.special != 0);
 			if(drawOperator != null){EditorGUIUtility.labelWidth += 71;}
 			if(showSpecial){EditorGUIUtility.labelWidth += 91;}
 			if(drawOperator != null){
@@ -227,7 +227,7 @@ namespace Zios.Editors{
 			else{this.attributeNames.Clear();}
 			if(this.attributeNames.Count > 0){
 				Rect line = area;
-				bool showSpecial = drawSpecial != null && (EditorPrefs.GetBool(data.path+"Advanced") || data.special != 0);
+				bool showSpecial = drawSpecial != null && (Utility.GetPref<bool>(data.path+"Advanced") || data.special != 0);
 				if(attributeIndex == -1){
 					string message = data.referenceID.IsEmpty() ? "[Not Set]" : "[Missing] " + data.referencePath;
 					attributeIndex = 0;
@@ -296,13 +296,13 @@ namespace Zios.Editors{
 		public virtual void DrawGroup(GUIContent label,bool drawAdvanced=true){
 			Rect labelRect = this.labelRect.AddX(12);
 			EditorGUIUtility.AddCursorRect(this.fullRect,MouseCursor.ArrowPlus);
-			bool formulaExpanded = EditorPrefs.GetBool(this.attribute.info.fullPath+"FormulaExpanded");
+			bool formulaExpanded = Utility.GetPref<bool>(this.attribute.info.fullPath+"FormulaExpanded");
 			if(this.labelRect.AddX(16).Clicked(0) || this.valueRect.Clicked(0)){
 				this.dirty = true;
 				formulaExpanded = !formulaExpanded;
 			}
 			formulaExpanded = EditorGUI.Foldout(labelRect,formulaExpanded,label,GUI.skin.GetStyle("IconFormula"));
-			EditorPrefs.SetBool(this.attribute.info.fullPath+"FormulaExpanded",formulaExpanded);
+			Utility.SetPref<bool>(this.attribute.info.fullPath+"FormulaExpanded",formulaExpanded);
 			if(formulaExpanded){
 				float lineHeight = EditorGUIUtility.singleLineHeight+2;
 				this.SetupAreas(this.fullRect.SetX(45).AddWidth(-55));
@@ -389,8 +389,8 @@ namespace Zios.Editors{
 				GenericMenu menu = new GenericMenu();
 				AttributeMode mode = this.attribute.info.mode;
 				AttributeUsage usage = data.usage;
-				bool advanced = EditorPrefs.GetBool(data.path+"Advanced");
-				MenuFunction toggleAdvanced = ()=>{EditorPrefs.SetBool(data.path+"Advanced",!advanced);};
+				bool advanced = Utility.GetPref<bool>(data.path+"Advanced");
+				MenuFunction toggleAdvanced = ()=>{Utility.SetPref<bool>(data.path+"Advanced",!advanced);};
 				MenuFunction removeAttribute = ()=>{this.attribute.Remove(data);};
 				MenuFunction modeNormal  = ()=>{this.attribute.info.mode = AttributeMode.Normal;};
 				MenuFunction modeLinked  = ()=>{this.attribute.info.mode = AttributeMode.Linked;};

@@ -35,7 +35,7 @@ namespace Zios.Interface{
 			if(path.Length > 0){
 				var file = FileManager.Create(path);
 				file.WriteText(this.Serialize());
-				EditorPrefs.SetString("EditorPalette"+Theme.suffix,path.GetFileName());
+				Utility.SetPref<string>("EditorPalette"+Theme.suffix,path.GetFileName());
 				Theme.setup = false;
 				Theme.loaded = false;
 			}
@@ -143,6 +143,10 @@ namespace Zios.Interface{
 			return true;
 		}
 		public void Build(){
+			if(this.colors.Values.Count < 3){
+				Debug.LogWarning("[ThemePalette] Colors attempted build before initialized.");
+				return;
+			}
 			var active = new Color32(0,255,255,0);
 			foreach(var color in this.colors["*"]){
 				active.r += 1;
@@ -186,38 +190,73 @@ namespace Zios.Interface{
 				}
 			}
 		}
+		public Color ParseColor(string term){
+			var index = term.Remove("S","O","I").Split("A").First();
+			var offset = index.IsNumber() ? index.ToInt() : -1;
+			var swap = this.swap.ElementAtOrDefault(offset-1);
+			var current = swap.IsNull() || offset == -1 ? Color.clear : swap.Value.value;
+			if(term.StartsWith("C")){current = Color.clear;}
+			if(term.StartsWith("W")){current = Color.white;}
+			if(term.StartsWith("B")){current = Color.black;}
+			if(current != Color.clear){
+				if(term.StartsWith("S")){current = current.GetIntensity() < 0.33f ? Color.black : Color.white;}
+				if(term.StartsWith("O")){current = current.GetIntensity() < 0.33f ? Color.white : Color.black;}
+				if(term.StartsWith("I")){current = current.Invert();}
+				if(term.Contains("A")){
+					if(term.Split("A")[1].IsEmpty()){current.a = 1;}
+					else{current.a *= term.Split("A")[1].ToFloat() / 10.0f;}
+				}
+			}
+			return current;
+		}
 		public void ApplyTexture(string path,Texture2D texture){
+			if(texture.IsNull()){return;}
 			var name = path.GetPathTerm().TrimLeft("#");
 			var isSplat = name.StartsWith("!");
 			var parts = name.TrimLeft("!").Split("-");
-			var offsetX = isSplat && parts[0].IsNumber() ? parts[0].ToInt() : -1;
-			var offsetY = isSplat && parts[1].IsNumber() ? parts[1].ToInt() : -1;
-			var offsetZ = isSplat && parts[2].IsNumber() ? parts[2].ToInt() : -1;
-			var swapA = this.swap.ElementAtOrDefault(offsetX-1);
-			var swapB = this.swap.ElementAtOrDefault(offsetY-1);
-			var swapC = this.swap.ElementAtOrDefault(offsetZ-1);
-			var colorA = !isSplat || swapA.IsNull() ? Color.clear : swapA.Value.value;
-			var colorB = !isSplat ||swapB.IsNull() ? Color.clear : swapB.Value.value;
-			var colorC = !isSplat ||swapC.IsNull() ? Color.clear : swapC.Value.value;
-			if(isSplat && (swapA.IsNull() || swapB.IsNull() || swapC.IsNull())){
-				Debug.Log("[ThemePallete] : Invalid splat texture offset -- " + path + " -- " + offsetX + " -- " + offsetY + " -- " + offsetZ);
+			if(isSplat && parts.Length < 2){
+				Debug.LogWarning("[ThemePalette] : Improperly formed splat texture -- " + path.GetPathTerm());
 				return;
 			}
-			name = isSplat ? parts.Skip(3).Join("-") : parts.Join("-");
-			var original = FileManager.Find(path.GetDirectory().GetDirectory()+"/"+name);
-			if(original.IsNull()){
-				Debug.Log("[ThemePallete] : Unable to find original asset for dynamic texture  -- " + name);
-				return;
+			var colorA = isSplat ? this.ParseColor(parts[0]) : Color.clear;
+			var colorB = isSplat ? this.ParseColor(parts[1]) : Color.clear;
+			var colorC = isSplat ? this.ParseColor(parts[2]) : Color.clear;
+			if(isSplat){
+				parts = parts.Skip(3).ToArray();
 			}
+			name = parts.Join("-");
 			int index = 0;
+			bool changes = false;
+			var originalPath = path.GetDirectory().GetDirectory()+"/"+name;
+			var originalImage = FileManager.GetAsset<Texture2D>(originalPath,false);
 			var pixels = texture.GetPixels();
-			foreach(var pixel in pixels.Copy()){
+			if(originalImage.IsNull() || pixels.Length != originalImage.GetPixels().Length){
+				Debug.Log("[TexturePalette] : Generating source for index/splat --" + originalPath.GetPathTerm());
+				texture.SaveAs(originalPath);
+				AssetDatabase.Refresh();
+				originalImage = FileManager.GetAsset<Texture2D>(originalPath,false);
+			}
+			if(Theme.debug && originalImage.format != TextureFormat.RGBA32){
+				Debug.Log("[ThemePalette] Original image is not an RGBA32 texture -- " + originalPath);
+			}
+			var originalPixels = pixels.Copy();
+			foreach(var pixel in pixels){
 				if(isSplat){
-					var splatA = Color.clear.Lerp(colorA,pixel.r);
-					var splatB = Color.clear.Lerp(colorB,pixel.g);
-					var splatC = Color.clear.Lerp(colorC,pixel.b);
-					pixels[index] = splatA + splatB + splatC;
-					pixels[index].a *= pixel.a;
+					var emptyRed = pixel.r == 0 || colorA.a == 0;
+					var emptyGreen = pixel.g == 0 || colorB.a == 0;
+					var emptyBlue = pixel.b == 0 || colorC.a == 0;
+					var colorAStart = emptyGreen && emptyBlue ? colorA.SetAlpha(0) : Color.clear;
+					var colorBStart = emptyRed && emptyBlue ? colorB.SetAlpha(0) : Color.clear;
+					var colorCStart = emptyRed && emptyGreen ? colorC.SetAlpha(0) : Color.clear;
+					var splatA = colorAStart.Lerp(colorA,pixel.r);
+					var splatB = colorBStart.Lerp(colorB,pixel.g);
+					var splatC = colorCStart.Lerp(colorC,pixel.b);
+					var pixelColor = splatA + splatB + splatC;
+					pixelColor.a *= pixel.a;
+					if(originalPixels[index] != pixelColor){
+						originalPixels[index] = pixelColor;
+						changes = true;
+					}
 					index += 1;
 					continue;
 				}
@@ -225,18 +264,19 @@ namespace Zios.Interface{
 					if(pixel.Matches(swap.Key,false)){
 						var color = swap.Value.value;
 						color.a *= pixel.a;
-						pixels[index] = color;
+						if(originalPixels[index] != color){
+							originalPixels[index] = color;
+							changes = true;
+						}
 					}
 				}
 				index += 1;
 			}
-			var originalImage = original.GetAsset<Texture2D>();
-			if(pixels.Length != originalImage.GetPixels().Length){
-				Debug.LogWarning("[ThemePalette] : Dynamic texture and source are different sizes -- " + name);
-				return;
+			if(changes){
+				originalImage.SetPixels(originalPixels);
+				originalImage.Apply();
+				//originalImage.SaveAs(originalPath);
 			}
-			originalImage.SetPixels(pixels);
-			originalImage.Apply();
 		}
 	}
 }

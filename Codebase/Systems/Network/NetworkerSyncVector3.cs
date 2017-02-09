@@ -1,3 +1,4 @@
+#if UNITY_5_4_OR_NEWER
 using UnityEngine;
 namespace Zios.Actions.NetworkComponents{
 	using Attributes;
@@ -16,3 +17,4 @@ namespace Zios.Actions.NetworkComponents{
 		}
 	}
 }
+#endif

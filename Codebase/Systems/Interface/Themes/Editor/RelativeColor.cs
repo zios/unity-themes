@@ -14,7 +14,7 @@ namespace Zios.Interface{
 		public static List<RelativeColor> lookupBuffer = new List<RelativeColor>();
 		public static RelativeColor system = new RelativeColor();
 		public string name;
-		public Color value;
+		public Color value = Color.clear;
 		public Color blend;
 		public float offset = 1;
 		public bool skipTexture;
@@ -43,16 +43,14 @@ namespace Zios.Interface{
 			#if UNITY_EDITOR_WIN
 			key = Registry.GetValue("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\DWM\\","AccentColor",null);
 			key = key ?? Registry.GetValue("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Accent","AccentColor",null);
-			if(!key.IsNull()){
-				int value = key.As<int>();
-				system.value = value != -1 ? value.ToHex().ToColor(true) : RelativeColor.system.value;
+			if(!key.IsNull() && key.As<int>() != -1){
+				system.value = key.As<int>().ToHex().ToColor().Order("ABGR").SetAlpha(1);
 			}
 			else{
 				key = Registry.GetValue("HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\Personalization","PersonalColor_Accent",null);
 				key = key ?? Registry.GetValue("HKEY_CURRENT_USER\\Control Panel\\Colors","WindowFrame",null);
-				if(!key.IsNull()){
-					string value = key.As<string>();
-					system.value = value != "" ? value.ToColor(" ",false,false) : RelativeColor.system.value;
+				if(!key.IsNull() && !key.As<string>().IsEmpty()){
+					system.value = key.As<string>().ToColor(" ",false);
 				}
 			}
 			#endif

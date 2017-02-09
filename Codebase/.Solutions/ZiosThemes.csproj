@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{90C40447-C2B4-4725-9CEA-9E0E8199EEFC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ZiosThemes</RootNamespace>
+    <AssemblyName>ZiosThemes</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>.</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DefineConstants>UNITY_5;UNITY_EDITOR;UNITY_EDITOR_WIN;UNITY_THEMES</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine">
+      <HintPath>UnityEngine.dll</HintPath>
+    </Reference>
+        <Reference Include="UnityEngine">
+      <HintPath>UnityEditor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="..\Containers\Container.cs" />
+    <Compile Include="..\Extensions\%40Unity\Color.cs" />
+    <Compile Include="..\Extensions\%40Unity\ComponentExtensions.cs" />
+    <Compile Include="..\Extensions\%40Unity\EditorGUI.cs" />
+    <Compile Include="..\Extensions\%40Unity\EditorGUILayout.cs" />
+    <Compile Include="..\Extensions\%40Unity\EventExtensions.cs" />
+    <Compile Include="..\Extensions\%40Unity\GameObject.cs" />
+    <Compile Include="..\Extensions\%40Unity\GUIContent.cs" />
+    <Compile Include="..\Extensions\%40Unity\GUISkin.cs" />
+    <Compile Include="..\Extensions\%40Unity\GUIStyle.cs" />
+    <Compile Include="..\Extensions\%40Unity\GUIStyleState.cs" />
+    <Compile Include="..\Extensions\%40Unity\Rect.cs" />
+    <Compile Include="..\Extensions\%40Unity\RectOffset.cs" />
+    <Compile Include="..\Extensions\%40Unity\Texture.cs" />
+    <Compile Include="..\Extensions\%40Unity\UnityObjectExtensions.cs" />
+    <Compile Include="..\Extensions\%40Unity\Vector3.cs" />
+    <Compile Include="..\Extensions\%40Unity\Vector4.cs" />
+    <Compile Include="..\Extensions\%40Unity\Editor\EditorWindow.cs" />
+    <Compile Include="..\Extensions\%40Unity\Editor\TextureImporter.cs" />
+    <Compile Include="..\Extensions\Array.cs" />
+    <Compile Include="..\Extensions\BitArray.cs" />
+    <Compile Include="..\Extensions\BitStream.cs" />
+    <Compile Include="..\Extensions\Bool.cs" />
+    <Compile Include="..\Extensions\Byte.cs" />
+    <Compile Include="..\Extensions\ByteArray.cs" />
+    <Compile Include="..\Extensions\DateTime.cs" />
+    <Compile Include="..\Extensions\Decimal.cs" />
+    <Compile Include="..\Extensions\Delegate.cs" />
+    <Compile Include="..\Extensions\Dictionary.cs" />
+    <Compile Include="..\Extensions\Double.cs" />
+    <Compile Include="..\Extensions\Enum.cs" />
+    <Compile Include="..\Extensions\Float.cs" />
+    <Compile Include="..\Extensions\IEnumerable.cs" />
+    <Compile Include="..\Extensions\Int.cs" />
+    <Compile Include="..\Extensions\List.cs" />
+    <Compile Include="..\Extensions\Object\Object.cs" />
+    <Compile Include="..\Extensions\Object\ObjectReflection.cs" />
+    <Compile Include="..\Extensions\Serializable.cs" />
+    <Compile Include="..\Extensions\Short.cs" />
+    <Compile Include="..\Extensions\SortedList.cs" />
+    <Compile Include="..\Extensions\StringBuilder.cs" />
+    <Compile Include="..\Extensions\String\String.cs" />
+    <Compile Include="..\Extensions\Type.cs" />
+    <Compile Include="..\Supports\Button.cs" />
+    <Compile Include="..\Supports\Colors.cs" />
+    <Compile Include="..\Supports\Hook.cs" />
+    <Compile Include="..\Supports\Locate.cs" />
+    <Compile Include="..\Supports\Store.cs" />
+    <Compile Include="..\Supports\Utility\Utility.cs" />
+    <Compile Include="..\Supports\Utility\UtilityPref.cs" />
+    <Compile Include="..\Supports\Utility\UtilityEditor.cs" />
+    <Compile Include="..\Supports\Utility\UtilityProxy.cs" />
+    <Compile Include="..\System Attributes\EnumMask.cs" />
+    <Compile Include="..\System Attributes\Internal.cs" />
+    <Compile Include="..\System Attributes\NotSerialized.cs" />
+    <Compile Include="..\System Attributes\Unity\InitializeOnLoad.cs" />
+    <Compile Include="..\Systems\Event\Event.cs" />
+    <Compile Include="..\Systems\Event\EventDetector.cs" />
+    <Compile Include="..\Systems\Event\EventListener.cs" />
+    <Compile Include="..\Systems\Event\EventStepper.cs" />
+    <Compile Include="..\Systems\File\FileManager.cs" />
+    <Compile Include="..\Systems\Interface\Undo\Undo.cs" />
+    <Compile Include="..\Systems\Interface\Style\StyleCSS.cs" />
+    <Compile Include="..\Editor\Preferences.cs" />
+    <Compile Include="..\Extensions\%40Unity\Editor\GenericMenu.cs" />
+    <Compile Include="ThemeSystem.cs" />
+    <Compile Include="..\Systems\Interface\Themes\Editor\RelativeColor.cs" />
+    <Compile Include="..\Systems\Interface\Themes\Editor\Theme.cs" />
+    <Compile Include="..\Systems\Interface\Themes\Editor\ThemeIconset.cs" />
+    <Compile Include="..\Systems\Interface\Themes\Editor\ThemeFontset.cs" />
+    <Compile Include="..\Systems\Interface\Themes\Editor\ThemePalette.cs" />
+    <Compile Include="..\Systems\Interface\Themes\Editor\ThemeSkinset.cs" />
+    <Compile Include="..\Systems\Interface\Themes\Editor\ThemeUtility.cs" />
+    <Compile Include="..\Systems\Interface\Themes\Editor\ThemeWindow.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -55,6 +55,10 @@ namespace Zios{
 			result.Insert(0,item);
 			return result;
 		}
+		public static IEnumerable<T> ReverseOrder<T>(this IEnumerable<T> current){
+			current.Reverse();
+			return current;
+		}
 		//=======================
 		// LINQ-ish
 		//=======================
@@ -72,6 +76,9 @@ namespace Zios{
 		}
 		public static IEnumerable<Type> SkipRight<Type>(this IEnumerable<Type> current,int amount){
 			return current.Take(current.Count() - amount);
+		}
+		public static IEnumerable<Type> TakeRight<Type>(this IEnumerable<Type> current,int amount){
+			return current.Skip(current.Count() - amount).Take(amount);
 		}
 		//=======================
 		// String

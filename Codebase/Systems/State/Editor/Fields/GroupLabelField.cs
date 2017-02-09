@@ -16,7 +16,7 @@ namespace Zios.Editors.StateEditors{
 			var window = StateWindow.Get();
 			var row = this.row.target.As<StateRow>();
 			var script = row.target;
-			bool darkSkin = EditorGUIUtility.isProSkin || EditorPrefs.GetBool("EditorTheme-Dark",false);
+			bool darkSkin = EditorGUIUtility.isProSkin || Utility.GetPref<bool>("EditorTheme-Dark",false);
 			string name = this.target is string ? (string)this.target : script.alias;
 			string background = darkSkin ? "BoxBlackA30" : "BoxWhiteBWarm";
 			Color textColor = darkSkin? Colors.Get("Silver") : Colors.Get("Black");
@@ -41,7 +41,7 @@ namespace Zios.Editors.StateEditors{
 				expand.hover = expand.normal;
 				style.hover = style.normal;
 			}
-			bool open = EditorPrefs.GetBool("StateWindow-GroupRow-"+row.section,false);
+			bool open = Utility.GetPref<bool>("StateWindow-GroupRow-"+row.section,false);
 			string symbol = open ? "-" : "+";
 			StateWindow.Clip(symbol,expand,-1,window.headerSize);
 			if(GUILayoutUtility.GetLastRect().AddX(window.scroll.x).Clicked()){

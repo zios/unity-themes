@@ -23,7 +23,7 @@ namespace Zios.Editors.StateEditors{
 			var stateRow = (StateRow)this.row.target;
 			var row = this.row.target.As<StateRow>();
 			int rowIndex = window.rowIndex[row];
-			var mode = (HeaderMode)EditorPrefs.GetInt("StateWindow-Mode",3);
+			var mode = (HeaderMode)Utility.GetPref<int>("StateWindow-Mode",3);
 			GUIStyle style = new GUIStyle(GUI.skin.button);
 			value = stateRow.requirements.Length > 1 ? (rowIndex+1).ToString() : "";
 			if(this.row.selected){style = Style.Get("buttonSelected",true);}

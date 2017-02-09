@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Zios.Interface{
 	using UnityEditor;
 	public partial class Theme{
-		[MenuItem("Zios/Theme/Development/Sync Names [GUISkin]")]
+		[MenuItem("Edit/Themes/Development/Sync/Names [GUISkin]")]
 		public static void SyncSkinNames(){Theme.SyncSkinNames("");}
 		public static void SyncSkinNames(string path=""){
 			path = path.IsEmpty() ? EditorUtility.SaveFolderPanel("Sync Names [GUISkin]",Theme.storagePath,"").GetAssetPath() : path;
@@ -56,7 +56,7 @@ namespace Zios.Interface{
 			if(showWarnings){Debug.LogWarning("[Themes] No matching class/field found for GUISkin -- " + path + ". Possible version conflict.");}
 			return empty;
 		}
-		[MenuItem("Zios/Theme/Development/Localize [Assets]")]
+		[MenuItem("Edit/Themes/Development/Localize [Assets]")]
 		public static void LocalizeAssets(){Theme.LocalizeAssets("");}
 		public static void LocalizeAssets(string path="",bool includeBuiltin=false){
 			path = path.IsEmpty() ? EditorUtility.SaveFolderPanel("Localize Theme [Assets]",Theme.storagePath,"").GetAssetPath() : path;
@@ -83,9 +83,9 @@ namespace Zios.Interface{
 			}
 			AssetDatabase.SaveAssets();
 		}
-		[MenuItem("Zios/Theme/Development/Sync to Base Style [GUISkin]")]
+		[MenuItem("Edit/Themes/Development/Sync/To Base Style [GUISkin]")]
 		public static void SyncToBase(){Theme.SyncStyle();}
-		[MenuItem("Zios/Theme/Development/Sync from Base Style [GUISkin]")]
+		[MenuItem("Edit/Themes/Development/Sync/From Base Style [GUISkin]")]
 		public static void SyncFromBase(){Theme.SyncStyle(true);}
 		public static void SyncStyle(bool flipPattern=false){
 			var source = FileManager.GetAsset<GUISkin>(EditorUtility.OpenFilePanel("Apply From [GUISkin]",Theme.storagePath,"guiskin"));

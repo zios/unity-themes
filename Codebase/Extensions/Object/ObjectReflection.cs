@@ -21,6 +21,7 @@ namespace Zios{
 		public const BindingFlags allFlags = BindingFlags.Static|BindingFlags.Instance|BindingFlags.NonPublic|BindingFlags.Public;
 		public const BindingFlags allFlatFlags = BindingFlags.Static|BindingFlags.Instance|BindingFlags.NonPublic|BindingFlags.Public|BindingFlags.FlattenHierarchy;
 		public const BindingFlags staticFlags = BindingFlags.Static|BindingFlags.Public|BindingFlags.NonPublic;
+		public const BindingFlags staticPublicFlags = BindingFlags.Static|BindingFlags.Public;
 		public const BindingFlags instanceFlags = BindingFlags.Instance|BindingFlags.NonPublic|BindingFlags.Public;
 		public const BindingFlags privateFlags = BindingFlags.Instance|BindingFlags.NonPublic;
 		public const BindingFlags publicFlags = BindingFlags.Instance|BindingFlags.Public;
@@ -275,7 +276,7 @@ namespace Zios{
 			if(property != null && property.CanWrite){
 				property.SetValue(instance,value,null);
 			}
-			if(field != null && !field.FieldType.IsGenericType){
+			if(field != null && !field.FieldType.IsGeneric()){
 				field.SetValue(instance,value);
 			}
 		}
@@ -301,6 +302,7 @@ namespace Zios{
 				object instance = current.IsStatic() || current is Type ? null : current;
 				Dictionary<string,object> variables = new Dictionary<string,object>();
 				foreach(FieldInfo field in type.GetFields(flags)){
+					if(field.FieldType.IsGeneric()){continue;}
 					if(withoutAttributes.Count > 0){
 						var attributes = Attribute.GetCustomAttributes(field);
 						if(attributes.Any(x=>withoutAttributes.Any(y=>y==x.GetType()))){continue;}
@@ -308,7 +310,7 @@ namespace Zios{
 					variables[field.Name] = field.GetValue(instance);
 				}
 				foreach(PropertyInfo property in type.GetProperties(flags).Where(x=>x.CanRead)){
-					if(!property.CanWrite){continue;}
+					if(!property.CanWrite || property.PropertyType.IsGeneric()){continue;}
 					if(withoutAttributes.Count > 0){
 						var attributes = Attribute.GetCustomAttributes(property);
 						if(attributes.Any(x=>withoutAttributes.Any(y=>y==x.GetType()))){continue;}
@@ -334,7 +336,7 @@ namespace Zios{
 			Type type = current is Type ? (Type)current : current.GetType();
 			current = current.IsStatic() ? null : current;
 			FieldInfo field = Class.GetField(type,name,flags);
-			if(!field.IsNull() && !field.FieldType.IsGenericType){
+			if(!field.IsNull() && !field.FieldType.IsGeneric()){
 				field.SetValue(current,null);
 				return;
 			}

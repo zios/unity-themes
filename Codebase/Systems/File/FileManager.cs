@@ -262,6 +262,8 @@ namespace Zios{
 			path = Path.GetFullPath(path).Replace("\\","/");
 			var data = new FileData(path);
 			if(!data.name.IsEmpty()){
+				var folder = path.GetDirectory();
+				if(!FileManager.Exists(folder)){FileManager.Create(folder);}
 				File.Create(path).Dispose();
 			}
 			else{
@@ -281,8 +283,7 @@ namespace Zios{
 			}
 		}
 		public static void WriteFile(string path,byte[] bytes){
-			var folder = path.GetDirectory();
-			if(!FileManager.Exists(folder)){FileManager.Create(folder);}
+			if(!FileManager.Exists(path)){FileManager.Create(path);}
 			FileStream stream = new FileStream(path,FileMode.Create);
 			BinaryWriter file = new BinaryWriter(stream);
 			file.Write(bytes);
@@ -321,7 +322,7 @@ namespace Zios{
 			return default(T);
 		}
 		public static T[] GetAssets<T>(string name="*",bool showWarnings=true) where T : UnityObject{
-			var files = FileManager.FindAll(name,true,showWarnings);
+			var files = FileManager.FindAll(name,showWarnings);
 			if(files.Length < 1){return new T[0];}
 			return files.Select(x=>x.GetAsset<T>()).Where(x=>!x.IsNull()).ToArray();
 		}
@@ -395,7 +396,7 @@ namespace Zios{
 		public T GetAsset<T>() where T : UnityObject{
 			#if UNITY_EDITOR
 			if(Application.isEditor && this.path.IndexOf("Assets") != -1){
-				return AssetDatabase.LoadAssetAtPath<T>(this.GetAssetPath());
+				return AssetDatabase.LoadAssetAtPath(this.GetAssetPath(),typeof(T)).As<T>();
 			}
 			#endif
 			return default(T);

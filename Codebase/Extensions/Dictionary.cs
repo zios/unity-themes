@@ -67,5 +67,23 @@ namespace Zios{
 				}
 			}
 		}
+		public static Dictionary<Key,Value> Difference<Key,Value>(this Dictionary<Key,Value> current,Dictionary<Key,Value> other){
+			var output = new Dictionary<Key,Value>();
+			foreach(var item in other){
+				var key = item.Key;
+				if(current.ContainsKey(key)){
+					bool nullMatch = current[key].IsNull() && other[key].IsNull();
+					bool referenceMatch = !nullMatch && !other[key].GetType().IsValueType;
+					bool valueMatch = !nullMatch && other[key].Equals(current[key]);
+					bool match = nullMatch || referenceMatch || valueMatch;
+					/*if(current[key] is IEnumerable){
+						match = current[key].As<IEnumerable>().SequenceEqual(other[key]);
+					}*/
+					if(match){continue;}
+				}
+				output[item.Key] = item.Value;
+			}
+			return output;
+		}
 	}
 }

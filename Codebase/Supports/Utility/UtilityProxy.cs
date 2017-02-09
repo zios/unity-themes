@@ -111,7 +111,7 @@ namespace Zios{
 		}
 		public static bool IsBusy(){
 			#if UNITY_EDITOR
-			return EventDetector.loading || Application.isLoadingLevel || EditorApplication.isPlayingOrWillChangePlaymode;
+			return EventDetector.loading || Application.isLoadingLevel || EditorApplication.isPlayingOrWillChangePlaymode || EditorApplication.isCompiling || EditorApplication.isUpdating;
 			#endif
 			return false;
 		}
@@ -135,32 +135,6 @@ namespace Zios{
 			#endif
 		}
 		//============================
-		// Prefs
-		//============================
-		public static void SavePlayerPref(string name,object value){
-			if(value is Vector3){PlayerPrefs.SetString(name,value.As<Vector3>().ToString());}
-			else if(value is float){PlayerPrefs.SetFloat(name,value.As<float>());}
-			else if(value is int){PlayerPrefs.SetInt(name,value.As<int>());}
-			else if(value is bool){PlayerPrefs.SetInt(name,value.As<bool>().ToInt());}
-			else if(value is string){PlayerPrefs.SetString(name,value.As<string>().ToString());}
-			else if(value is byte){PlayerPrefs.SetString(name,value.As<byte>().ToString());}
-			else if(value is short){PlayerPrefs.SetInt(name,value.As<short>().ToInt());}
-			else if(value is double){PlayerPrefs.SetFloat(name,value.As<double>().ToFloat());}
-			else if(value is ICollection){PlayerPrefs.SetString(name,value.As<IEnumerable>().Serialize());}
-		}
-		public static Type LoadPlayerPref<Type>(string name,object fallback=null){
-			if(typeof(Type) == typeof(Vector3)){return (Type)PlayerPrefs.GetString(name,fallback.Real<Vector3>().Serialize()).Deserialize<Vector3>().Box();}
-			else if(typeof(Type) == typeof(float)){return (Type)PlayerPrefs.GetFloat(name,fallback.Real<float>()).Box();}
-			else if(typeof(Type) == typeof(int)){return (Type)PlayerPrefs.GetInt(name,fallback.Real<int>()).Box();}
-			else if(typeof(Type) == typeof(bool)){return (Type)PlayerPrefs.GetInt(name,fallback.Real<int>()).Box();}
-			else if(typeof(Type) == typeof(string)){return (Type)PlayerPrefs.GetString(name,fallback.Real<string>()).Box();}
-			else if(typeof(Type) == typeof(byte)){return (Type)PlayerPrefs.GetString(name,fallback.Real<byte>().Serialize()).Box();}
-			else if(typeof(Type) == typeof(short)){return (Type)PlayerPrefs.GetInt(name,fallback.Real<short>().ToInt()).Box();}
-			else if(typeof(Type) == typeof(double)){return (Type)PlayerPrefs.GetFloat(name,fallback.Real<double>().ToFloat()).Box();}
-			else if(typeof(Type).IsCollection()){return (Type)PlayerPrefs.GetString(name,fallback.Real<IEnumerable>().Serialize()).Deserialize<Type>().Box();}
-			return default(Type);
-		}
-		//============================
 		// Other
 		//============================
 		public static void UpdateSelection(){
@@ -177,13 +151,26 @@ namespace Zios{
 			}
 			#endif
 		}
+		public static void RebuildAll(){
+			#if UNITY_EDITOR
+			var windows = Locate.GetAssets<EditorWindow>();
+			foreach(var window in windows){
+				if(windows.IsNull()){continue;}
+				var tracker = window.GetVariable<ActiveEditorTracker>("m_Tracker");
+				if(tracker == null){continue;}
+				tracker.ForceRebuild();
+			}
+			#endif
+		}
 		public static void RebuildInspectors(){
 			#if UNITY_EDITOR
+			//typeof(EditorUtility).CallMethod("ForceRebuildInspectors");
 			Type inspectorType = Utility.GetUnityType("InspectorWindow");
 			var windows = inspectorType.CallMethod<EditorWindow[]>("GetAllInspectorWindows");
 			for(int index=0;index<windows.Length;++index){
 				if(windows[index].IsNull()){continue;}
-				var tracker = windows[index].CallMethod<ActiveEditorTracker>("GetTracker");
+				var tracker = windows[index].GetVariable<ActiveEditorTracker>("m_Tracker");
+				if(tracker == null){continue;}
 				tracker.ForceRebuild();
 			}
 			#endif
@@ -193,7 +180,8 @@ namespace Zios{
 			Type inspectorType = Utility.GetUnityType("InspectorWindow");
 			var windows = inspectorType.CallMethod<EditorWindow[]>("GetAllInspectorWindows");
 			for(int index=0;index<windows.Length;++index){
-				var tracker = windows[index].CallMethod<ActiveEditorTracker>("GetTracker");
+				var tracker = windows[index].GetVariable<ActiveEditorTracker>("m_Tracker");
+				if(tracker == null){continue;}
 				for(int editorIndex=0;editorIndex<tracker.activeEditors.Length;++editorIndex){
 					tracker.SetVisible(editorIndex,1);
 				}
@@ -206,12 +194,18 @@ namespace Zios{
 			inspectorType.CallMethod("RepaintAllInspectors");
 			#endif
 		}
+		public static void RepaintToolbar(){
+			#if UNITY_EDITOR
+			Utility.GetUnityType("Toolbar").CallMethod("RepaintToolbar");
+			#endif
+		}
 		public static void RepaintAll(){
 			#if UNITY_EDITOR
 			//foreach(var window in Locate.GetAssets<EditorWindow>()){window.Repaint();}
-			//UnityEditorInternal.InternalEditorUtility.RepaintAllViews();
-			typeof(EditorApplication).CallMethod("RequestRepaintAllViews");
-			Utility.GetUnityType("Toolbar").CallMethod("RepaintToolbar");
+			UnityEditorInternal.InternalEditorUtility.RepaintAllViews();
+			//typeof(EditorApplication).CallMethod("RequestRepaintAllViews");
+			//Utility.GetUnityType("InspectorWindow").CallMethod("RepaintAllInspectors");
+			Utility.RepaintToolbar();
 			#endif
 		}
 		public static void RepaintGameView(){
@@ -247,6 +241,11 @@ namespace Zios{
 				return;
 			}
 			EditorUtility.SetDirty(target);
+			#if UNITY_5_3_OR_NEWER
+			UnityEditor.SceneManagement.EditorSceneManager.MarkAllScenesDirty();
+			#else
+			EditorApplication.MarkSceneDirty();
+			#endif
 			//Utility.UpdatePrefab(target);
 			#endif
 		}
@@ -280,6 +279,13 @@ namespace Zios{
 			return (bool)Utility.GetUnityType("ComponentUtility").CallMethod("MoveComponentDown",component.AsArray());
 			#endif
 			return false;
+		}
+		public static void LoadScene(string name){
+			#if UNITY_5_3_OR_NEWER
+			UnityEngine.SceneManagement.SceneManager.LoadScene(name);
+			#else
+			Application.LoadLevel(name);
+			#endif
 		}
 	}
 }

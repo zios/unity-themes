@@ -60,6 +60,9 @@ namespace Zios{
 			string lower = current.ToLower();
 			return lower != "false" && lower != "f" && lower != "0";
 		}
+		public static T ToEnum<T>(this string current){
+			return (T)Enum.Parse(typeof(T),current,true);
+		}
 		public static byte ToByte(this string current){return (byte)current[0];}
 		public static byte[] ToStringBytes(this string current){return Encoding.ASCII.GetBytes(current);}
 		public static string Serialize(this string current){return current;}
@@ -91,8 +94,7 @@ namespace Zios{
 			return new RectOffset(values[3],values[1],values[0],values[2]);
 		}
 		public static GUIContent ToContent(this string current){return new GUIContent(current);}
-		public static Color ToColor(this string current,bool flipOrder){return current.ToColor(",",flipOrder);}
-		public static Color ToColor(this string current,string separator=",",bool flipOrder=false,bool? normalized=null){
+		public static Color ToColor(this string current,string separator=",",bool? normalized=null){
 			current = current.Remove("#").Remove("0x").Trim();
 			if(current.Contains(separator)){
 				var parts = current.Split(separator).Convert<float>();
@@ -114,7 +116,6 @@ namespace Zios{
 				float g = (float)Convert.ToInt32(current.Substring(2,2),16) / 255.0f;
 				float b = (float)Convert.ToInt32(current.Substring(4,2),16) / 255.0f;
 				float a = current.Length == 8 ? (float)Convert.ToInt32(current.Substring(6,2),16) / 255.0f : 1;
-				if(flipOrder){return new Color(b,g,r,a);}
 				return new Color(r,g,b,a);
 			}
 			else{
@@ -122,17 +123,17 @@ namespace Zios{
 				return new Color(255,0,255);
 			}
 		}
-		public static Vector3 ToVector2(this string current,string separator=","){
+		public static Vector2 ToVector2(this string current,string separator=","){
 			if(!current.Contains(separator)){return Vector2.zero;}
 			var values = current.Trim("(",")").Split(separator).Convert<float>().ToArray();
-			return new Vector3(values[0],values[1]);
+			return new Vector2(values[0],values[1]);
 		}
 		public static Vector3 ToVector3(this string current,string separator=","){
 			if(!current.Contains(separator)){return Vector3.zero;}
 			var values = current.Trim("(",")").Split(separator).Convert<float>().ToArray();
 			return new Vector3(values[0],values[1],values[2]);
 		}
-		public static Vector3 ToVector4(this string current,string separator=","){
+		public static Vector4 ToVector4(this string current,string separator=","){
 			if(!current.Contains(separator)){return Vector4.zero;}
 			var values = current.Trim("(",")").Split(separator).Convert<float>().ToArray();
 			return new Vector4(values[0],values[1],values[2],values[3]);
@@ -299,8 +300,11 @@ namespace Zios{
 		//============================
 		// Path
 		//============================
+		public static string FixPath(this string current){
+			return current.Replace("\\","/");
+		}
 		public static string GetDirectory(this string current){
-			int last = current.LastIndexOf('/');
+			int last = current.FixPath().LastIndexOf('/');
 			if(last < 0){
 				if(current.Contains(".")){return "";}
 				return current;
@@ -308,18 +312,18 @@ namespace Zios{
 			return current.Substring(0,last);
 		}
 		public static string GetAssetPath(this string current){
-			return "Assets" + current.Split("/Assets")[1];
+			return "Assets" + current.FixPath().Split("/Assets")[1];
 		}
 		public static string GetPathTerm(this string current){
-			return current.Split("/").LastOrDefault() ?? "";
+			return current.FixPath().Split("/").LastOrDefault() ?? "";
 		}
 		public static string GetFileName(this string current){
-			var term = current.Split("/").LastOrDefault();
+			var term = current.FixPath().Split("/").LastOrDefault();
 			if(term.Contains(".")){return term.Replace("."+current.GetFileExtension(),"");}
 			return "";
 		}
 		public static string GetFileExtension(this string current){
-			var term = current.Split("/").LastOrDefault();
+			var term = current.FixPath().Split("/").LastOrDefault();
 			if(term.Contains(".")){return term.Split(".").Last();}
 			return term;
 		}

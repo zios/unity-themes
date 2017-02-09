@@ -139,7 +139,7 @@ namespace Zios.Editors.StateEditors{
 			if(StateWindow.instance == null){
 				window.position = new Rect(100,150,600,500);
 			}
-			window.titleContent = new GUIContent("State");
+			window.SetTitle("State");
 		}
 		public void SelectAll(){
 			foreach(var row in this.tableGUI.rows.Skip(2)){
@@ -230,7 +230,7 @@ namespace Zios.Editors.StateEditors{
 					var stateRow = row.target.As<StateRow>();
 					string section = stateRow.section;
 					if(!section.IsEmpty() && !this.setupSections.Contains(section)){
-						bool open = EditorPrefs.GetBool("StateWindow-GroupRow-"+section,false);
+						bool open = Utility.GetPref<bool>("StateWindow-GroupRow-"+section,false);
 						var groupRow = new TableRow(stateRow,this.tableGUI);
 						var groupLabel = new GroupLabelField(section);
 						var groupRows = tableRows.Where(x=>x.target.As<StateRow>().section==section).ToArray();

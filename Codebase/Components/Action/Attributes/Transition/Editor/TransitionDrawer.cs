@@ -8,7 +8,7 @@ namespace Zios.Editors{
 	public class TransitionDrawer : PropertyDrawer{
 		public override float GetPropertyHeight(SerializedProperty property,GUIContent label){
 			var hash = property.GetObject<Transition>().path;
-			if(EditorPrefs.GetBool(hash)){return EditorGUIUtility.singleLineHeight*5+8;}
+			if(Utility.GetPref<bool>(hash)){return EditorGUIUtility.singleLineHeight*5+8;}
 			return base.GetPropertyHeight(property,label);
 		}
 		public override void OnGUI(Rect area,SerializedProperty property,GUIContent label){
