@@ -9,6 +9,7 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
+  fontName: Alegreya
   fontNames:
   - Alegreya
   fallbackFontReferences:
@@ -17,9 +18,9 @@ TrueTypeFontImporter:
   - {fileID: 12800000, guid: 2deddc9cbe658ec43849f905c4c85367, type: 3}
   - {fileID: 12800000, guid: 13e1067d6b3c0004f857b1f15e7c17bb, type: 3}
   - {fileID: 12800000, guid: 9af5f15f08067ca47953d1d9508d0dbb, type: 3}
-  customCharacters:
+  customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
-  userData:
-  assetBundleName:
-  assetBundleVariant:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

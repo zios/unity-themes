@@ -9,14 +9,15 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
+  fontName: Comfortaa
   fontNames:
   - Comfortaa
   fallbackFontReferences:
   - {fileID: 12800000, guid: cff5a5057cefc9042b6d4dc4bd53c59e, type: 3}
   - {fileID: 12800000, guid: ef7c7c55bd311004ab43c660575dd83c, type: 3}
-  customCharacters:
+  customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
-  userData:
-  assetBundleName:
-  assetBundleVariant:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

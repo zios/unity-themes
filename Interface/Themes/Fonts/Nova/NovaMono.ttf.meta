@@ -9,12 +9,13 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
+  fontName: NovaMono
   fontNames:
   - NovaMono
   fallbackFontReferences: []
-  customCharacters:
-  fontRenderingMode: 0
+  customCharacters: 
+  fontRenderingMode: 1
   ascentCalculationMode: 1
-  userData:
-  assetBundleName:
-  assetBundleVariant:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

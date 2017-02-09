@@ -693,7 +693,7 @@ MonoBehaviour:
       m_ScaledBackgrounds: []
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Active:
-      m_Background: {fileID: 2800000, guid: 68d49b2f8e0229745aa9e5544e45c7e1, type: 3}
+      m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Focused:
@@ -19989,7 +19989,7 @@ MonoBehaviour:
     m_Alignment: 7
     m_WordWrap: 1
     m_RichText: 1
-    m_TextClipping: 0
+    m_TextClipping: 1
     m_ImagePosition: 1
     m_ContentOffset: {x: 0, y: 0}
     m_FixedWidth: 0
@@ -20396,40 +20396,40 @@ MonoBehaviour:
     m_StretchHeight: 0
   - m_Name: ObjectPickerTab
     m_Normal:
-      m_Background: {fileID: 0}
+      m_Background: {fileID: 2800000, guid: cf3dd8a81fc129b46a75fd56fa6b74f0, type: 3}
       m_ScaledBackgrounds: []
       m_TextColor: {r: 1, g: 0.015686275, b: 1, a: 0}
     m_Hover:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_TextColor: {r: 1, g: 0.019607844, b: 1, a: 0}
     m_Active:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_TextColor: {r: 1, g: 0.015686275, b: 1, a: 0}
     m_Focused:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_OnNormal:
-      m_Background: {fileID: 0}
+      m_Background: {fileID: 2800000, guid: 593b258e64b779f42b801764c78f2f4c, type: 3}
       m_ScaledBackgrounds: []
-      m_TextColor: {r: 1, g: 0.015686275, b: 1, a: 0}
+      m_TextColor: {r: 1, g: 0.019607844, b: 1, a: 0}
     m_OnHover:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_TextColor: {r: 1, g: 1, b: 1, a: 1}
     m_OnActive:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_TextColor: {r: 1, g: 0.015686275, b: 1, a: 0}
     m_OnFocused:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_TextColor: {r: 1, g: 0.015686275, b: 1, a: 0}
     m_Border:
-      m_Left: 5
-      m_Right: 5
+      m_Left: 0
+      m_Right: 1
       m_Top: 0
       m_Bottom: 0
     m_Margin:
@@ -20438,31 +20438,31 @@ MonoBehaviour:
       m_Top: 0
       m_Bottom: 0
     m_Padding:
-      m_Left: 7
-      m_Right: 7
+      m_Left: 9
+      m_Right: 9
       m_Top: 0
       m_Bottom: 0
     m_Overflow:
       m_Left: 0
       m_Right: 0
-      m_Top: 0
-      m_Bottom: 0
-    m_Font: {fileID: 12800000, guid: 5ba0a9c28e7c9404491cba2899be7439, type: 3}
+      m_Top: 3
+      m_Bottom: -1
+    m_Font: {fileID: 12800000, guid: cdc152662dd567b4aac56b960d250bf7, type: 3}
     m_FontSize: 13
     m_FontStyle: 0
-    m_Alignment: 3
+    m_Alignment: 4
     m_WordWrap: 0
     m_RichText: 1
-    m_TextClipping: 0
-    m_ImagePosition: 0
+    m_TextClipping: 1
+    m_ImagePosition: 3
     m_ContentOffset: {x: 0, y: 0}
     m_FixedWidth: 0
-    m_FixedHeight: 18
+    m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
   - m_Name: ObjectPickerToolbar
     m_Normal:
-      m_Background: {fileID: 2800000, guid: 13db0ec4bf21a354584812596763581f, type: 3}
+      m_Background: {fileID: 2800000, guid: 5350563619047e44ab91ce873c7d6764, type: 3}
       m_ScaledBackgrounds: []
       m_TextColor: {r: 1, g: 0.02745098, b: 1, a: 0}
     m_Hover:
@@ -20512,7 +20512,7 @@ MonoBehaviour:
       m_Left: 0
       m_Right: 0
       m_Top: 0
-      m_Bottom: -1
+      m_Bottom: 0
     m_Font: {fileID: 3021071571035331536, guid: 0000000000000000d000000000000000,
       type: 0}
     m_FontSize: 0
@@ -20524,7 +20524,7 @@ MonoBehaviour:
     m_ImagePosition: 0
     m_ContentOffset: {x: 0, y: 0}
     m_FixedWidth: 0
-    m_FixedHeight: 20
+    m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
   - m_Name: OL box
@@ -27813,7 +27813,7 @@ MonoBehaviour:
     m_StretchHeight: 0
   - m_Name: SearchCancelButtonEmpty
     m_Normal:
-      m_Background: {fileID: 2800000, guid: 47dfb9a2f007d2940936f006eb4802aa, type: 3}
+      m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
       m_TextColor: {r: 0.9411765, g: 0.9411765, b: 0.9411765, a: 1}
     m_Hover:
@@ -27993,7 +27993,7 @@ MonoBehaviour:
       m_Bottom: 0
     m_Overflow:
       m_Left: 0
-      m_Right: 0
+      m_Right: 16
       m_Top: 0
       m_Bottom: 0
     m_Font: {fileID: 12800000, guid: 1ad56714bfffaad4ebeab46754d21d2e, type: 3}

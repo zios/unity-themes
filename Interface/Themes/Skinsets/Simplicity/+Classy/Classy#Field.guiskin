@@ -2295,29 +2295,29 @@ MonoBehaviour:
     m_StretchHeight: 0
   - m_Name: SearchTextField
     m_Normal:
-      m_Background: {fileID: 2800000, guid: 9eb7de61112029f42b5680513bce8367, type: 3}
+      m_Background: {fileID: 2800000, guid: dd77db41d46da77479233a0f73d1a69b, type: 3}
       m_ScaledBackgrounds: []
-      m_TextColor: {r: 1, g: 0.03137255, b: 1, a: 1}
+      m_TextColor: {r: 1, g: 0.02745098, b: 1, a: 0}
     m_Hover:
-      m_Background: {fileID: 0}
+      m_Background: {fileID: 2800000, guid: dd77db41d46da77479233a0f73d1a69b, type: 3}
       m_ScaledBackgrounds: []
-      m_TextColor: {r: 0.9411765, g: 0.9411765, b: 0.9411765, a: 1}
+      m_TextColor: {r: 1, g: 0.03137255, b: 1, a: 0}
     m_Active:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
-      m_TextColor: {r: 0.9411765, g: 0.9411765, b: 0.9411765, a: 1}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Focused:
-      m_Background: {fileID: 0}
+      m_Background: {fileID: 2800000, guid: dd77db41d46da77479233a0f73d1a69b, type: 3}
       m_ScaledBackgrounds: []
-      m_TextColor: {r: 1, g: 0.007843138, b: 1, a: 0}
+      m_TextColor: {r: 1, g: 0.03137255, b: 1, a: 0}
     m_OnNormal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_TextColor: {r: 0.9019608, g: 0.9019608, b: 0.9019608, a: 1}
     m_OnHover:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_TextColor: {r: 1, g: 0.007843138, b: 1, a: 0}
     m_OnActive:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -2327,9 +2327,9 @@ MonoBehaviour:
       m_ScaledBackgrounds: []
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Border:
-      m_Left: 24
-      m_Right: 0
-      m_Top: 19
+      m_Left: 16
+      m_Right: 6
+      m_Top: 3
       m_Bottom: 0
     m_Margin:
       m_Left: 0
@@ -2337,15 +2337,15 @@ MonoBehaviour:
       m_Top: 0
       m_Bottom: 0
     m_Padding:
-      m_Left: 22
+      m_Left: 24
       m_Right: 0
       m_Top: 0
       m_Bottom: 0
     m_Overflow:
       m_Left: 0
-      m_Right: 0
-      m_Top: 0
-      m_Bottom: 0
+      m_Right: 16
+      m_Top: 3
+      m_Bottom: -3
     m_Font: {fileID: 12800000, guid: 1ad56714bfffaad4ebeab46754d21d2e, type: 3}
     m_FontSize: 13
     m_FontStyle: 0
@@ -2354,10 +2354,10 @@ MonoBehaviour:
     m_RichText: 0
     m_TextClipping: 1
     m_ImagePosition: 0
-    m_ContentOffset: {x: 0, y: 0}
+    m_ContentOffset: {x: 0, y: -3}
     m_FixedWidth: 0
     m_FixedHeight: 19
-    m_StretchWidth: 1
+    m_StretchWidth: 0
     m_StretchHeight: 0
   - m_Name: ShurikenObjectField
     m_Normal:

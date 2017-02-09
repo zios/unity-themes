@@ -3,17 +3,19 @@ guid: 014645207efbedb4d8ca1892c43725f3
 timeCreated: 1469981356
 licenseType: Free
 TrueTypeFontImporter:
-  serializedVersion: 3
+  serializedVersion: 4
   fontSize: 16
   forceTextureCase: -2
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontNames: []
+  fontName: 8-bit Operator+
+  fontNames:
+  - 8-bit Operator+
   fallbackFontReferences:
   - {fileID: 12800000, guid: 004087b93041bec4281c3a5cfcf93e91, type: 3}
   customCharacters: 
-  fontRenderingMode: 1
+  fontRenderingMode: 2
   ascentCalculationMode: 1
   userData: 
   assetBundleName: 
