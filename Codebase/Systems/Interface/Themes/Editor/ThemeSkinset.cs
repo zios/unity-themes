@@ -95,7 +95,7 @@ namespace Zios.Interface{
 		public static void DumpExtended(){
 			var warning = "Dumping all GUISkin will deep scan the editor assembly for GUIStyles.  ";
 			warning += "This will produce warnings/errors and could cause Unity to become unresponsible at end of operation.  Continue?";
-			if(EditorUtility.DisplayDialog("Scan/Dump All GUIStyles?",warning,"Yes","Cancel")){
+			if(EditorUI.DrawDialog("Scan/Dump All GUIStyles?",warning,"Yes","Cancel")){
 				ThemeSkinset.dumpPath = EditorUtility.SaveFolderPanel("Dump GUISkin [Extended]",Theme.storagePath,"Default");
 				var allTypes = typeof(Editor).Assembly.GetTypes().Where(x=>!x.IsNull()).ToArray();
 				var stepper = new EventStepper(ThemeSkinset.DumpExtendedStep,ThemeSkinset.DumpExtendedComplete,allTypes,50);
@@ -124,7 +124,7 @@ namespace Zios.Interface{
 			var savePath = path.GetAssetPath();
 			var themeName = savePath.Split("/").Last();
 			AssetDatabase.StartAssetEditing();
-			EditorUtility.ClearProgressBar();
+			EditorUI.ClearProgressBar();
 			EditorApplication.update -= EventStepper.active.Step;
 			foreach(var buffer in ThemeSkinset.dumpBuffer){
 				var skinPath = savePath+"/"+buffer.Key+".guiskin";

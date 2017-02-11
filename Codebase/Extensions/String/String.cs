@@ -312,6 +312,7 @@ namespace Zios{
 			return current.Substring(0,last);
 		}
 		public static string GetAssetPath(this string current){
+			if(!current.Contains("Assets")){return current;}
 			return "Assets" + current.FixPath().Split("/Assets")[1];
 		}
 		public static string GetPathTerm(this string current){

@@ -6,7 +6,9 @@ using UnityEditor;
 using UnityEngine;
 using UnityEvent = UnityEngine.Event;
 namespace Zios.Editors.SpriteEditors{
+	using Interface;
 	using Sprites;
+	using Undo = UnityEditor.Undo;
 	public class SpriteAssets{
 		public GUISkin UI;
 		public Mesh spriteMesh;
@@ -835,7 +837,7 @@ namespace Zios.Editors.SpriteEditors{
 				if(this.spritePrefabs[name] == null){
 					this.spritePrefabs.Remove(name);
 					if(forceOverwrite){continue;}
-					bool deleted = EditorUtility.DisplayDialog("Delete Corrupt Prefab",path + " appears corrupt.  Delete file?","Yes","No");
+					bool deleted = EditorUI.DrawDialog("Delete Corrupt Prefab",path + " appears corrupt.  Delete file?","Yes","No");
 					if(deleted){
 						this.CreatePrefab(sprite,true);
 					}

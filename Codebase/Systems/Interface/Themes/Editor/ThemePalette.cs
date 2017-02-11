@@ -31,13 +31,13 @@ namespace Zios.Interface{
 			var theme = Theme.active;
 			var savePath = path ?? Theme.storagePath+"Palettes";
 			var saveName = theme.palette.name+"-Variant";
-			path = path.IsEmpty() ? EditorUtility.SaveFilePanel("Save Theme [Palette]",savePath,saveName,"unitypalette") : path;
+			path = path.IsEmpty() ? EditorUtility.SaveFilePanel("Save Theme [Palette]",savePath.GetAssetPath(),saveName,"unitypalette") : path;
 			if(path.Length > 0){
 				var file = FileManager.Create(path);
 				file.WriteText(this.Serialize());
+				AssetDatabase.ImportAsset(path.GetAssetPath());
 				Utility.SetPref<string>("EditorPalette"+Theme.suffix,path.GetFileName());
-				Theme.setup = false;
-				Theme.loaded = false;
+				Theme.Reset(true);
 			}
 		}
 		//=================================

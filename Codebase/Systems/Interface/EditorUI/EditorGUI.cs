@@ -2,40 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Zios.Containers;
 using UnityEditor;
 using UnityEngine;
 using UnityObject = UnityEngine.Object;
-using UnityEvent = UnityEngine.Event;
-using MenuFunction = UnityEditor.GenericMenu.MenuFunction;
 namespace Zios.Interface{
-	public static class LabelExtensions{
-		public static UnityLabel ToLabel(this GUIContent current){
-			return new UnityLabel(current);
-		}
-		public static UnityLabel ToLabel(this string current){
-			return new UnityLabel(current);
-		}
-	}
-	public class UnityLabel{
-		public GUIContent value = new GUIContent("");
-		public UnityLabel(string value){this.value = new GUIContent(value);}
-		public UnityLabel(GUIContent value){this.value = value;}
-		public override string ToString(){return this.value.text;}
-		public GUIContent ToContent(){return this.value;}
-		//public static implicit operator string(UnityLabel current){return current.value.text;}
-		public static implicit operator GUIContent(UnityLabel current){
-			if(current == null){return GUIContent.none;}
-			return current.value;
-		}
-		public static implicit operator UnityLabel(GUIContent current){return new UnityLabel(current);}
-		public static implicit operator UnityLabel(string current){return new UnityLabel(current);}
-	}
+	//============================
+	// Core
+	//============================
 	public static partial class EditorUI{
-		public static bool render = true;
-		public static bool foldoutChanged;
-		public static bool lastChanged;
-		public static bool anyChanged;
 		public static Type Draw<Type>(Func<Type> method,bool indention=true){
 			int indentValue = EditorGUI.indentLevel;
 			if(indention && EditorUI.space!=0){GUILayout.Space(EditorUI.space);}
@@ -54,6 +28,11 @@ namespace Zios.Interface{
 			if(EditorUI.render){method();}
 			if(!indention){EditorGUI.indentLevel = indentValue;}
 		}
+	}
+	//============================
+	// Proxy
+	//============================
+	public static partial class EditorUI{
 		public static string Draw(this string current,Rect area,UnityLabel label=null,GUIStyle style=null,bool indention=true){
 			style = style ?? EditorStyles.textField;
 			return EditorUI.Draw<string>(()=>EditorGUI.TextField(area,label,current,style),indention);
@@ -75,21 +54,6 @@ namespace Zios.Interface{
 			string name = label.IsNull() ? "" : label.ToString();
 			return EditorUI.Draw<int>(()=>EditorGUI.Popup(area,name,index,current.ToArray(),style),indention);
 		}
-		public static void DrawMenu(this IEnumerable<string> current,Rect area,GenericMenu.MenuFunction2 callback,IEnumerable<string> selected=null,IEnumerable<string> disabled=null){
-			if(selected.IsNull()){selected = new List<string>();}
-			if(disabled.IsNull()){disabled = new List<string>();}
-			var menu = new GenericMenu();
-			var index = 0;
-			foreach(var item in current){
-				++index;
-				if(!disabled.Contains(item)){
-					menu.AddItem(item.ToContent(),selected.Contains(item),callback,index-1);
-					continue;
-				}
-				menu.AddDisabledItem(item.ToContent());
-			}
-			menu.DropDown(area);
-		}
 		public static void Draw(this SerializedProperty current,Rect area,UnityLabel label=null,bool allowScene=true,bool indention=true){
 			if(label != null && label.value.text.IsEmpty()){label = new GUIContent(current.displayName);}
 			EditorUI.Draw(()=> EditorGUI.PropertyField(area,current,label,allowScene),indention);
@@ -102,6 +66,52 @@ namespace Zios.Interface{
 		}
 		public static Color Draw(this Color current,Rect area,UnityLabel label=null,bool indention=true){
 			return EditorUI.Draw<Color>(()=> EditorGUI.ColorField(area,label,current),indention);
+		}
+		public static void DrawLabel(this UnityLabel current,Rect area,GUIStyle style=null,bool indention=true){
+			style = style ?? EditorStyles.label;
+			EditorUI.Draw(()=> EditorGUI.LabelField(area,current,style),indention);
+		}
+		public static void DrawHelp(this string current,Rect area,string textType,bool indention=true){
+			MessageType type = MessageType.None;
+			if(textType.Contains("Info",true)){type = MessageType.Info;}
+			if(textType.Contains("Error",true)){type = MessageType.Error;}
+			if(textType.Contains("Warning",true)){type = MessageType.Warning;}
+			EditorUI.Draw(()=> EditorGUI.HelpBox(area,current,type),indention);
+		}
+		public static string DrawTextArea(this string current,Rect area,UnityLabel label=null,GUIStyle style=null,bool indention=true){
+			style = style ?? EditorStyles.textField;
+			return EditorUI.Draw<string>(()=> EditorGUI.TextField(area,label,current,style),indention);
+		}
+		public static bool DrawButton(this UnityLabel current,Rect area,GUIStyle style=null,bool indention=true){
+			style = style ?? GUI.skin.button;
+			return EditorUI.Draw<bool>(()=> GUI.Button(area,current,style),indention);
+		}
+		public static int DrawInt(this int current,Rect area,UnityLabel label=null,GUIStyle style=null,bool indention=true){
+			style = style ?? EditorStyles.numberField;
+			return EditorUI.Draw<int>(()=> EditorGUI.IntField(area,label,current,style),indention);
+		}
+		public static float DrawSlider(this float current,Rect area,float min,float max,bool indention=true){
+			var value = EditorUI.Draw<float>(()=> GUI.HorizontalSlider(area,current,min,max),indention);
+			if(value != current){
+				GUI.FocusControl("");}
+			return value;
+		}
+		public static Enum DrawMaskField(this Enum current,Rect area,UnityLabel label=null,GUIStyle style=null,bool indention=true){
+			style = style ?? EditorStyles.popup;
+			return EditorUI.Draw<Enum>(()=> EditorGUI.EnumMaskField(area,label,current,style),indention);
+		}
+		public static Vector2 DrawVector2(this Vector2 current,Rect area,UnityLabel label=null,bool indention=true){
+			return EditorUI.Draw<Vector2>(()=> EditorGUI.Vector2Field(area,label,current),indention);
+		}
+		public static Vector3 DrawVector3(this Vector3 current,Rect area,UnityLabel label=null,bool indention=true){
+			return EditorUI.Draw<Vector3>(()=> EditorGUI.Vector3Field(area,label,current),indention);
+		}
+		public static Vector4 DrawVector4(this Vector4 current,Rect area,UnityLabel label=null,bool indention=true){
+			string name = label.IsNull() ? null : label.ToString();
+			return EditorUI.Draw<Vector3>(()=> EditorGUI.Vector4Field(area,name,current),indention);
+		}
+		public static Type Draw<Type>(this UnityObject current,Rect area,UnityLabel label=null,bool allowScene=true,bool indention=true) where Type : UnityObject{
+			return (Type)EditorUI.Draw<UnityObject>(()=> EditorGUI.ObjectField(area,label,current,typeof(Type),allowScene),indention);
 		}
 	}
 	public static partial class EditorUI{
@@ -146,42 +156,6 @@ namespace Zios.Interface{
 			}
 			return state;
 		}
-		//public static void DrawLabel(this string current,Rect area,GUIStyle style=null,bool indention=true){new UnityLabel(current).DrawLabel(area,style,indention);}
-		//public static void DrawLabel(this GUIContent current,Rect area,GUIStyle style=null,bool indention=true){new UnityLabel(current).DrawLabel(area,style,indention);}
-		public static void DrawLabel(this UnityLabel current,Rect area,GUIStyle style=null,bool indention=true){
-			style = style ?? EditorStyles.label;
-			EditorUI.Draw(()=> EditorGUI.LabelField(area,current,style),indention);
-		}
-		public static void DrawHelp(this string current,Rect area,string textType,bool indention=true){
-			MessageType type = MessageType.None;
-			if(textType.Contains("Info",true)){type = MessageType.Info;}
-			if(textType.Contains("Error",true)){type = MessageType.Error;}
-			if(textType.Contains("Warning",true)){type = MessageType.Warning;}
-			EditorUI.Draw(()=> EditorGUI.HelpBox(area,current,type),indention);
-		}
-		public static string DrawTextArea(this string current,Rect area,UnityLabel label=null,GUIStyle style=null,bool indention=true){
-			style = style ?? EditorStyles.textField;
-			return EditorUI.Draw<string>(()=> EditorGUI.TextField(area,label,current,style),indention);
-		}
-		//public static bool DrawButton(this string current,Rect area,GUIStyle style=null,bool indention=true){return new UnityLabel(current).DrawButton(area,style,indention);}
-		//public static bool DrawButton(this GUIContent current,Rect area,GUIStyle style=null,bool indention=true){return new UnityLabel(current).DrawButton(area,style,indention);}
-		public static bool DrawButton(this UnityLabel current,Rect area,GUIStyle style=null,bool indention=true){
-			style = style ?? GUI.skin.button;
-			return EditorUI.Draw<bool>(()=> GUI.Button(area,current,style),indention);
-		}
-		public static int DrawInt(this int current,Rect area,UnityLabel label=null,GUIStyle style=null,bool indention=true){
-			style = style ?? EditorStyles.numberField;
-			return EditorUI.Draw<int>(()=> EditorGUI.IntField(area,label,current,style),indention);
-		}
-		public static float DrawSlider(this float current,Rect area,float min,float max,bool indention=true){
-			var value = EditorUI.Draw<float>(()=> GUI.HorizontalSlider(area,current,min,max),indention);
-			if(value != current){
-				GUI.FocusControl("");}
-			return value;
-		}
-		public static Type Draw<Type>(this UnityObject current,Rect area,UnityLabel label=null,bool allowScene=true,bool indention=true) where Type : UnityObject{
-			return (Type)EditorUI.Draw<UnityObject>(()=> EditorGUI.ObjectField(area,label,current,typeof(Type),allowScene),indention);
-		}
 		public static Enum DrawMask(this Enum current,Rect area,UnityLabel label=null,GUIStyle style=null,bool indention=true){
 			style = style ?? EditorStyles.popup;
 			string value = current.ToName().Replace(" "," | ").ToTitleCase();
@@ -209,56 +183,6 @@ namespace Zios.Interface{
 				GUI.changed = true;
 			}
 			return current;
-		}
-		public static Enum DrawMaskField(this Enum current,Rect area,UnityLabel label=null,GUIStyle style=null,bool indention=true){
-			style = style ?? EditorStyles.popup;
-			return EditorUI.Draw<Enum>(()=> EditorGUI.EnumMaskField(area,label,current,style),indention);
-		}
-		public static Vector2 DrawVector2(this Vector2 current,Rect area,UnityLabel label=null,bool indention=true){
-			return EditorUI.Draw<Vector2>(()=> EditorGUI.Vector2Field(area,label,current),indention);
-		}
-		public static Vector3 DrawVector3(this Vector3 current,Rect area,UnityLabel label=null,bool indention=true){
-			return EditorUI.Draw<Vector3>(()=> EditorGUI.Vector3Field(area,label,current),indention);
-		}
-		public static Vector4 DrawVector4(this Vector4 current,Rect area,UnityLabel label=null,bool indention=true){
-			string name = label.IsNull() ? null : label.ToString();
-			return EditorUI.Draw<Vector3>(()=> EditorGUI.Vector4Field(area,name,current),indention);
-		}
-	}
-	public class EditorAction{
-		public Action action;
-		public bool active;
-		public static implicit operator EditorAction(Action current){return new EditorAction(current);}
-		public static implicit operator EditorAction(Delegate current){return new EditorAction((Action)current);}
-		public EditorAction(Action action){
-			this.action = action;
-		}
-		public EditorAction(Action action,bool active){
-			this.action = action;
-			this.active = active;
-		}
-	}
-	public class EditorMenu : Dictionary<string,EditorAction>{
-		public void Add(string key,bool active,Action value){
-			base.Add(key,new EditorAction(value,active));
-		}
-		public void Add(string key,Action value,bool active=false){
-			base.Add(key,new EditorAction(value,active));
-		}
-		public void Draw(){
-			var menu = new GenericMenu();
-			foreach(var item in this){
-				var name = item.Key;
-				if(name.StartsWith("!")){continue;}
-				if(item.Value == null){
-					menu.AddSeparator("/");
-					continue;
-				}
-				MenuFunction method = new MenuFunction(item.Value.action);
-				menu.AddItem(new GUIContent(name),item.Value.active,method);
-			}
-			menu.ShowAsContext();
-			UnityEvent.current.Use();
 		}
 	}
 }

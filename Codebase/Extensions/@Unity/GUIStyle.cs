@@ -4,14 +4,6 @@ using UnityEngine;
 namespace Zios{
 	using Zios.Interface;
 	public static class GUIStyleExtension{
-		public static GUILayoutOption[] CreateLayout(this GUIStyle current){
-			var options = new List<GUILayoutOption>();
-			if(EditorUI.autoLayout){
-				if(current.fixedWidth != 0){options.Add(GUILayout.Width(current.fixedWidth));}
-				if(current.fixedHeight != 0){options.Add(GUILayout.Height(current.fixedHeight));}
-			}
-			return options.ToArray();
-		}
 		public static GUIStyle Rotate90(this GUIStyle current){
 			float width = current.fixedWidth;
 			float height = current.fixedHeight;

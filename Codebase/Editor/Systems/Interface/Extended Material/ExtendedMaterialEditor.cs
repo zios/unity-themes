@@ -6,6 +6,8 @@ using UnityEngine;
 using UnityEvent = UnityEngine.Event;
 #pragma warning disable 618
 namespace Zios.Editors.MaterialEditors{
+	using Interface;
+	using Undo = UnityEditor.Undo;
 	public class ExtendedMaterialEditor : MaterialEditor{
 		public GUISkin UI;
 		public int drawn;
@@ -252,7 +254,7 @@ namespace Zios.Editors.MaterialEditors{
 					if(!isBranch && GUILayout.Button("Save")){
 						string warning = "Saving will overwrite the original shader and effect all materials that use it.";
 						warning += "  It is advised to instead use the Save As or Branch option.";
-						bool confirm = EditorUtility.DisplayDialog("Are you sure?",warning,"Save","Cancel");
+						bool confirm = EditorUI.DrawDialog("Are you sure?",warning,"Save","Cancel");
 						if(confirm){
 							this.EndPreview();
 							Buffer.unsaved = false;
@@ -277,7 +279,7 @@ namespace Zios.Editors.MaterialEditors{
 					}
 					if((Buffer.unsaved || isPreview) && GUILayout.Button("Revert")){
 						string warning = "Changes will be lost.";
-						bool confirm = EditorUtility.DisplayDialog("Revert shader to defaults?",warning,"Revert","Cancel");
+						bool confirm = EditorUI.DrawDialog("Revert shader to defaults?",warning,"Revert","Cancel");
 						if(confirm){
 							Undo.RegisterUndo(Buffer.material,"Shader Edit - Revert");
 							this.EndPreview();
@@ -468,7 +470,7 @@ namespace Zios.Editors.MaterialEditors{
 						Utility.SetPref<int>(settingPrefix+key,value);
 					}
 					this.warning = "";
-					EditorUtility.SetDirty(material);
+					Utility.SetDirty(material);
 				}
 				if(this.titleChanged != "" || this.stateChanged.Contains("ToggleButton")){
 					GUI.FocusControl("Menu");

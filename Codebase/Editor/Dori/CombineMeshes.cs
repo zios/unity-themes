@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 namespace Zios.Editors{
+	using Interface;
 	using Class = CombineMeshes;
 	public static class CombineMeshes{
 		private static List<Mesh> meshes = new List<Mesh>();
@@ -58,7 +59,7 @@ namespace Zios.Editors{
 			int index = Class.index;
 			MeshFilter filter = Class.filters[index];
 			string updateMessage = "Mesh " + index + "/" + Class.meshCount;
-			bool canceled = EditorUtility.DisplayCancelableProgressBar("Combining Meshes",updateMessage,((float)index) / Class.meshCount);
+			bool canceled = EditorUI.DrawProgressBar("Combining Meshes",updateMessage,((float)index) / Class.meshCount);
 			if(canceled){ Class.meshCount = 0; }
 			else if(filter != null && filter.sharedMesh != null){
 				if((Class.vertexCount + filter.sharedMesh.vertexCount) >= 65534){
@@ -126,7 +127,7 @@ namespace Zios.Editors{
 				Debug.Log("[Combine Meshes] Reduced " + Class.meshCount + " meshes to " + Class.meshes.Count + ".");
 				Debug.Log("[Combine Meshes] Completed in " + totalTime + ".");
 				AssetDatabase.SaveAssets();
-				EditorUtility.ClearProgressBar();
+				EditorUI.ClearProgressBar();
 				Class.complete = true;
 				while(EditorApplication.update == Class.Step){
 					EditorApplication.update -= Class.Step;

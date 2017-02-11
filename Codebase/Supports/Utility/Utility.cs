@@ -18,7 +18,7 @@ namespace Zios{
 	public static partial class Utility{
 		private static float sceneCheck;
 		private static Dictionary<object,int> messages = new Dictionary<object,int>();
-		private static Dictionary<object,KeyValuePair<CallbackFunction,float>> delayedMethods = new Dictionary<object,KeyValuePair<CallbackFunction,float>>();
+		private static Dictionary<object,KeyValuePair<Action,float>> delayedMethods = new Dictionary<object,KeyValuePair<Action,float>>();
 		private static Dictionary<string,Type> internalTypes = new Dictionary<string,Type>();
 		static Utility(){Utility.Setup();}
 		public static void Setup(){
@@ -182,33 +182,34 @@ namespace Zios{
 				method();
 			}
 		}
-		public static void EditorCall(CallbackFunction method){
+		public static void EditorCall(Action method){
 			#if UNITY_EDITOR
 			if(!Utility.IsPlaying()){
 				method();
 			}
 			#endif
 		}
-		public static void DelayCall(CallbackFunction method){
+		public static void DelayCall(Action method){
 			#if UNITY_EDITOR
-			if(EditorApplication.delayCall != method){
-				EditorApplication.delayCall += method;
+			CallbackFunction callback = new CallbackFunction(method);
+			if(EditorApplication.delayCall != callback){
+				EditorApplication.delayCall += callback;
 			}
 			return;
 			#endif
 			Utility.DelayCall(method,0);
 		}
-		public static void DelayCall(CallbackFunction method,float seconds,bool overwrite=true){
+		public static void DelayCall(Action method,float seconds,bool overwrite=true){
 			Utility.DelayCall(method,method,seconds,overwrite);
 		}
-		public static void DelayCall(object key,CallbackFunction method,float seconds,bool overwrite=true){
+		public static void DelayCall(object key,Action method,float seconds,bool overwrite=true){
 			if(!key.IsNull() && !method.IsNull()){
 				if(seconds <= 0){
 					method();
 					return;
 				}
 				if(Utility.delayedMethods.ContainsKey(key) && !overwrite){return;}
-				Utility.delayedMethods[key] = new KeyValuePair<CallbackFunction,float>(method,Time.realtimeSinceStartup + seconds);
+				Utility.delayedMethods[key] = new KeyValuePair<Action,float>(method,Time.realtimeSinceStartup + seconds);
 			}
 		}
 	}

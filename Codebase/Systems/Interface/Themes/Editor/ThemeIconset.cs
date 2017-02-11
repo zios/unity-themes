@@ -52,8 +52,7 @@ namespace Zios.Interface{
 					var file = FileManager.Create(savePath+"/"+savePath.GetPathTerm()+".guiContent");
 					file.WriteText(contents);
 				}
-				Theme.setup = false;
-				Theme.loaded = false;
+				Theme.Reset(true);
 			}
 		}
 		public string Serialize(){

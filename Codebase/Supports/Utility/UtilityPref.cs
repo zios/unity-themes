@@ -1,8 +1,11 @@
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using System.Collections;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 namespace Zios{
+	using Interface;
 	public static partial class Utility{
 		#if UNITY_EDITOR
 		public static Dictionary<string,object> cache = new Dictionary<string,object>();
@@ -46,10 +49,14 @@ namespace Zios{
 			Utility.SetPref(name,value);
 		}
 		public static void DeleteEditorPrefs(bool prompt){
-			if(!prompt || EditorUtility.DisplayDialog("Clear Editor Prefs","Delete all the editor preferences?","Yes","No")){
+			if(!prompt || EditorUI.DrawDialog("Clear Editor Prefs","Delete all the editor preferences?","Yes","No")){
 				EditorPrefs.DeleteAll();
 			}
 		}
+		#if !UNITY_THEMES
+		[MenuItem("Zios/Prefs/Clear Editor")]
+		public static void DeleteEditorPrefs(){Utility.DeleteEditorPrefs(true);}
+		#endif
 		#endif
 		//============================
 		// Player Pref
@@ -88,15 +95,13 @@ namespace Zios{
 			Utility.SetPlayerPref<int>(name,value.ToInt());
 		}
 		public static void DeletePlayerPrefs(bool prompt){
-			if(!prompt || EditorUtility.DisplayDialog("Clear Player Prefs","Delete all the player preferences?","Yes","No")){
+			if(!prompt || EditorUI.DrawDialog("Clear Player Prefs","Delete all the player preferences?","Yes","No")){
 				PlayerPrefs.DeleteAll();
 			}
 		}
 		#if !UNITY_THEMES
 		[MenuItem("Zios/Prefs/Clear Player")]
 		public static void DeletePlayerPrefs(){Utility.DeletePlayerPrefs(true);}
-		[MenuItem("Zios/Prefs/Clear Editor")]
-		public static void DeleteEditorPrefs(){Utility.DeleteEditorPrefs(true);}
 		#endif
 	}
 }

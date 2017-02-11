@@ -130,6 +130,10 @@ namespace Zios{
 			Debug.Log("[Utility] : Forced Reload Scripts.");
 			typeof(UnityEditorInternal.InternalEditorUtility).CallMethod("RequestScriptReload");
 		}
+		[MenuItem("Assets/Build AssetBundles")]
+		public static void BuildAssetBundles(){
+			BuildPipeline.BuildAssetBundles("Assets/",BuildAssetBundleOptions.None,BuildTarget.StandaloneWindows64);
+		}
 		#endif
 	}
 	#endif

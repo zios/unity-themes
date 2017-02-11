@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityObject = UnityEngine.Object;
 using UnityEvent= UnityEngine.Event;
-using CallbackFunction = UnityEditor.EditorApplication.CallbackFunction;
 namespace Zios.Interface{
 	using UnityEditor;
 	using Events;
@@ -18,7 +17,6 @@ namespace Zios.Interface{
 		public static int fontsetIndex;
 		public static int iconsetIndex;
 		public static int skinsetIndex;
-		public static bool editMode;
 		public static HoverResponse hoverResponse = HoverResponse.None;
 		public static bool singleUpdate;
 		public static bool separatePlaymodeSettings;
@@ -44,7 +42,6 @@ namespace Zios.Interface{
 		private static List<string> fontNames = new List<string>();
 		private static Font[] fonts = new Font[0];
 		private static Font[] builtinFonts = new Font[0];
-		//public static float verticalSpacing = 2.0f;
 		static Theme(){
 			EditorApplication.playmodeStateChanged += Theme.CheckUpdate;
 			EditorApplication.update += ThemeWindow.ShowWindow;
@@ -103,11 +100,11 @@ namespace Zios.Interface{
 			Theme.loaded = true;
 		}
 		public static void LoadSettings(){
+			FileManager.monitor = false;
 			RelativeColor.autoBalance = Utility.GetPref<int>("EditorTheme-AutobalanceColors",1).As<AutoBalance>();
 			Theme.showColorsAdvanced = Utility.GetPref<bool>("EditorTheme-ShowAdvancedColors",false);
 			Theme.showFontsAdvanced = Utility.GetPref<bool>("EditorTheme-ShowAdvancedFonts",false);
 			Theme.hoverResponse = Utility.GetPref<int>("EditorTheme-HoverResponse",1).As<HoverResponse>();
-			Theme.editMode = FileManager.monitor = Utility.GetPref<bool>("EditorTheme-EditMode",false);
 			Theme.separatePlaymodeSettings = Utility.GetPref<bool>("EditorTheme-SeparatePlaymodeSettings",false);
 			Theme.suffix = EditorApplication.isPlayingOrWillChangePlaymode && Theme.separatePlaymodeSettings ? "-Playmode" : "";
 			Theme.themeIndex = Theme.all.FindIndex(x=>x.name==Utility.GetPref<string>("EditorTheme"+Theme.suffix,"Default")).Max(0);
@@ -184,7 +181,7 @@ namespace Zios.Interface{
 					if(color.Value.skipTexture){continue;}
 					color.Value.UpdateTexture(Theme.storagePath);
 				}
-				CallbackFunction UpdateDynamic = ()=>{
+				Action UpdateDynamic = ()=>{
 					if(theme.palette.swap.Count < 1){return;}
 					foreach(var file in FileManager.FindAll("#*.png")){
 						theme.palette.ApplyTexture(file.path,file.GetAsset<Texture2D>());
@@ -328,7 +325,7 @@ namespace Zios.Interface{
 			if(theme.customizableFontset && hasFontsets){
 				if(Theme.fontsetNames.Count < 1){
 					var fontsetsPath = Theme.storagePath+"Fontsets/";
-					Theme.fontsetNames = ThemeFontset.all.Select(x=>x.path.Remove(fontsetsPath,".unityfontset")).ToList();
+					Theme.fontsetNames = ThemeFontset.all.Select(x=>x.path.Remove(fontsetsPath,".unityfontset").GetAssetPath()).ToList();
 				}
 				var fontsetNames = Theme.fontsetNames.Copy();
 				var popupStyle = EditorStyles.popup;
@@ -405,12 +402,10 @@ namespace Zios.Interface{
 					Theme.Reset(true);
 					return;
 				}
-				Theme.editMode = FileManager.monitor = Theme.editMode.Draw("Edit Mode");
 				Theme.disabled = Theme.disabled.Draw("Disable System");
 				Theme.window.wantsMouseMove = Theme.hoverResponse != HoverResponse.None;
 				Undo.RecordPref<int>("EditorTheme-HoverResponse",Theme.hoverResponse.ToInt());
 				Undo.RecordPref<bool>("EditorTheme-SeparatePlaymodeSettings",Theme.separatePlaymodeSettings);
-				Undo.RecordPref<bool>("EditorTheme-EditMode",Theme.editMode);
 				Undo.RecordPref<bool>("EditorTheme-Disabled",Theme.disabled);
 				Theme.DrawVariants();
 				GUILayout.Space(2);
@@ -538,7 +533,7 @@ namespace Zios.Interface{
 						data = folder;
 					}
 				}
-				return data.Trim("/");
+				return data.GetAssetPath().Trim("/");
 			};
 			Theme.fontNames = Theme.fontNames.Select(x=>FixFontNames(x)).ToList();
 			Theme.fonts = Theme.builtinFonts.Concat(fontFiles.Select(x=>x.GetAsset<Font>())).ToArray();
@@ -575,7 +570,7 @@ namespace Zios.Interface{
 					if(showRenderMode){
 						var fontPath = AssetDatabase.GetAssetPath(themeFont.font);
 						var importer = TrueTypeFontImporter.GetAtPath(fontPath).As<TrueTypeFontImporter>();
-						UnityEditor.Undo.RecordObject(item.Value.font,"Font Render Mode");
+						Utility.RecordObject(item.Value.font,"Font Render Mode");
 						importer.fontRenderingMode = importer.fontRenderingMode.Draw(fontName).As<FontRenderingMode>();
 						if(EditorUI.lastChanged){
 							AssetDatabase.WriteImportSettingsIfDirty(fontPath);
@@ -700,8 +695,7 @@ namespace Zios.Interface{
 			Debug.Log("[Themes] Example Info message.");
 			Debug.LogError("[Themes] Example Error message.");
 			Debug.LogWarning("[Themes] Example Warning message.");
-			Theme.setup = false;
-			Theme.loaded = false;
+			Theme.Reset(true);
 			Theme.disabled = false;
 		}
 		[MenuItem("Edit/Themes/Development/Toggle Debug #F2")]
@@ -788,8 +782,7 @@ namespace Zios.Interface{
 	}
 	public class ColorImportSettings : AssetPostprocessor{
 		public static void OnPostprocessAllAssets(string[] imported,string[] deleted,string[] movedTo,string[] movedFrom){
-			Theme.setup = false;
-			Theme.loaded = false;
+			Theme.Reset(true);
 		}
 		public void OnPreprocessTexture(){
 			TextureImporter importer = (TextureImporter)this.assetImporter;

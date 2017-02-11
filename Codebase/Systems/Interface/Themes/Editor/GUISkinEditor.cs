@@ -1,12 +1,11 @@
 ﻿using UnityEditor;
 using UnityEngine;
-using Zios.Interface;
 using System;
 using System.Text;
 using System.Linq;
 using System.Collections.Generic;
+using Zios.Interface;
 using UnityEvent = UnityEngine.Event;
-using Undo = UnityEditor.Undo;
 namespace Zios.Editors{
 	[CustomEditor(typeof(GUISkin))]
 	public partial class GUISkinEditor : Editor{
@@ -35,9 +34,9 @@ namespace Zios.Editors{
 				return;
 			}
 			if(!UnityEvent.current.type.MatchesAny("Repaint","Layout","scrollWheel","used")){
-				Undo.RecordObject(this.skin,"GUI Skin Changes");
+				Utility.RecordObject(this.skin,"GUI Skin Changes");
 				foreach(var fragment in this.fragments){
-					Undo.RecordObject(fragment,"GUI Skin Changes");
+					Utility.RecordObject(fragment,"GUI Skin Changes");
 				}
 			}
 			GUI.changed = false;
@@ -380,7 +379,7 @@ namespace Zios.Editors{
 	}
 }
 namespace Zios.Interface{
-	public static class EditorGUILayoutStyleExtensions{
+	public static partial class GUISkinEditorExtensions{
 		public static void Draw(this GUIStyle current,string key,bool compact=false,bool grouped=false,bool headers=false){
 			EditorGUILayout.BeginVertical();
 			var styleKey = key + "." + current.name;

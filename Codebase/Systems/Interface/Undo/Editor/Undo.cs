@@ -30,10 +30,7 @@ namespace Zios.Interface{
 			Undo.Setup();
 			if(Utility.IsBusy() || Undo.instance.IsNull() || (undo.IsEmpty() && redo.IsEmpty())){return;}
 			var instance = Undo.instance;
-			//var total = instance.callback.Count()*2;
-			//instance.buffer = instance.buffer.Take(total).ToList();
-			//instance.cache = instance.cache.Take(total).ToList();
-			UnityEditor.Undo.RecordObject(instance,operation);
+			Utility.RecordObject(instance,operation);
 			var seed = UnityEngine.Random.Range(0.0f,100.0f).ToString() + "!";
 			undo = seed + undo;
 			redo = seed + redo;
@@ -59,7 +56,6 @@ namespace Zios.Interface{
 				var change = instance.buffer.Except(instance.cache).LastOrDefault();
 				if(!change.IsEmpty()){
 					change = change.Split("!")[1];
-					//Debug.Log("Redo" + change);
 					Undo.position += 1;
 					instance.callback[Undo.position](change);
 				}
@@ -68,7 +64,6 @@ namespace Zios.Interface{
 				var change = instance.cache.Except(instance.buffer).FirstOrDefault();
 				if(!change.IsEmpty()){
 					change = change.Split("!")[1];
-					//Debug.Log("Undo" + change);
 					instance.callback[Undo.position](change);
 					Undo.position -= 1;
 				}
@@ -132,7 +127,6 @@ namespace Zios.Interface{
 					else if(type == typeof(float)){scope.SetVariable(field,value.ToFloat());}
 					else if(type == typeof(bool)){scope.SetVariable(field,value.ToBool());}
 					Undo.snapshot.Remove(scope);
-					//Debug.Log(scope+"."+field + " : " + type + " = " + value);
 				}
 				else{
 					var key = change.Split("|||")[0];
@@ -142,7 +136,6 @@ namespace Zios.Interface{
 					else if(type.Contains("Int")){Utility.SetPref<int>(key,value.ToInt());}
 					else if(type.Contains("String")){Utility.SetPref<string>(key,value);}
 					else if(type.Contains("Float")){Utility.SetPref<float>(key,value.ToFloat());}
-					//Debug.Log("Pref : " + key + " : " + type + " = "  + value);
 				}
 			}
 			Undo.snapshotPrefs.Clear();

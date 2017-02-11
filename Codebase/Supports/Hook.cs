@@ -2,10 +2,6 @@ using System;
 using UnityEngine;
 namespace Zios{
 	using Events;
-	#if UNITY_EDITOR
-	using UnityEditor;
-	using CallbackFunction = UnityEditor.EditorApplication.CallbackFunction;
-	#endif
 	public static class Hook{
 		public static bool disabled;
 		public static bool temporary;
@@ -41,9 +37,9 @@ namespace Zios{
 	public class Hook<Singleton> where Singleton : Component{
 		private bool setup;
 		public bool disabled;
-		public CallbackFunction resetMethod;
-		public CallbackFunction createMethod;
-		public Hook(CallbackFunction reset=null,CallbackFunction create=null){
+		public Action resetMethod;
+		public Action createMethod;
+		public Hook(Action reset=null,Action create=null){
 			if(this.disabled || Hook.disabled || Application.isPlaying){return;}
 			this.resetMethod = reset ?? this.Reset;
 			this.createMethod = create ?? this.Create;

@@ -29,15 +29,15 @@ namespace Zios.Interface{
 		}
 		public void Export(string path=null){
 			var theme = Theme.active;
-			var targetPath = path ?? theme.fontset.path;
-			var targetName = theme.fontset.name+"-Variant";
-			path = path.IsEmpty() ? EditorUtility.SaveFilePanel("Save Theme [Fonts]",targetPath,targetName,"unityfontset") : path;
+			var savePath = path ?? Theme.storagePath+"Fontsets";
+			var saveName = theme.fontset.name+"-Variant";
+			path = path.IsEmpty() ? EditorUtility.SaveFilePanel("Save Theme [Fonts]",savePath.GetAssetPath(),saveName,"unityfontset") : path;
 			if(path.Length > 0){
 				var file = FileManager.Create(path);
 				file.WriteText(this.Serialize());
+				AssetDatabase.ImportAsset(path.GetAssetPath());
 				Utility.SetPref<string>("EditorFontset"+Theme.suffix,path.GetFileName());
-				Theme.setup = false;
-				Theme.loaded = false;
+				Theme.Reset(true);
 			}
 		}
 		//=================================
@@ -67,7 +67,7 @@ namespace Zios.Interface{
 					name = line.Parse("[","]");
 					themeFont = this.fonts.AddNew(name);
 					themeFont.name = name;
-					themeFont.path = this.path.GetDirectory().GetDirectory()+"/"+name+".ttf";
+					themeFont.path = name+".ttf";
 					themeFont.proxy = FileManager.GetAsset<Font>(themeFont.path);
 					continue;
 				}

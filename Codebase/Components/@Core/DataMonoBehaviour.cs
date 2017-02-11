@@ -1,4 +1,5 @@
 #pragma warning disable 0618
+#pragma warning disable 0649
 using UnityEngine;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ namespace Zios{
 	using Actions;
 	using Attributes;
 	using Events;
+	using Interface;
 	[ExecuteInEditMode][AddComponentMenu("")]
 	public class DataMonoBehaviour : MonoBehaviour{
 		private static GameObject[] sorting;
@@ -44,11 +46,6 @@ namespace Zios{
 			this.setup = true;
 			if(Application.isEditor){
 				this.CheckDependents();
-			}
-		}
-		public virtual void OnGUI(){
-			if(this.alwaysDrawInspector){
-				Utility.RepaintInspectors();
 			}
 		}
 		//===============
@@ -147,9 +144,14 @@ namespace Zios{
 			Utility.DelayCall(this.CheckDependents);
 		}
 		//===============
-		// Editor - Sorting
+		// Editor
 		//===============
 		#if UNITY_EDITOR
+		public virtual void OnGUI(){
+			if(this.alwaysDrawInspector){
+				Utility.RepaintInspectors();
+			}
+		}
 		[MenuItem("Zios/GameObject/Apply Prefab (Selected) &#P")]
 		public static void ApplyPrefabSelected(){
 			Debug.Log("[DataMonoBehaviour] Applying prefab");
@@ -180,14 +182,14 @@ namespace Zios{
 				var current = DataMonoBehaviour.sorting[index];
 				float total = (float)index/sorting.Length;
 				string message = index + " / " + sorting.Length + " -- " + current.GetPath();
-				canceled = EditorUtility.DisplayCancelableProgressBar("Sorting All Components",message,total);
+				canceled = EditorUI.DrawProgressBar("Sorting All Components",message,total);
 				current.PauseValidate();
 				DataMonoBehaviour.SortSmartTarget(current);
 				current.ResumeValidate();
 			}
 			DataMonoBehaviour.processIndex += 1;
 			if(canceled || index+1 > sorting.Length-1){
-				EditorUtility.ClearProgressBar();
+				EditorUI.ClearProgressBar();
 				Event.Remove("On Editor Update",DataMonoBehaviour.SortSmartNext);
 				Event.Resume("On Hierarchy Changed");
 			}

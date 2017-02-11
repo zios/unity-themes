@@ -68,7 +68,7 @@ namespace Zios.Editors{
 							this.classNames[assemblyItem.Key][namespaceItem.Key].Sort();
 						}
 					}
-					EditorUtility.ClearProgressBar();
+					EditorUI.ClearProgressBar();
 					this.Repaint();
 					return;
 				}
@@ -82,7 +82,7 @@ namespace Zios.Editors{
 					this.classNames.AddNew(assemblyName).AddNew(space).Add(type.Name);
 				}
 				float percent = (float)this.setupIndex/(float)this.assemblies.Count;
-				EditorUtility.DisplayProgressBar("Loading","Sorting Data",percent);
+				EditorUI.DrawProgressBar("Loading","Sorting Data",percent);
 				this.setupIndex += 1;
 			}
 			if(Time.realtimeSinceStartup > this.nextRepaint){

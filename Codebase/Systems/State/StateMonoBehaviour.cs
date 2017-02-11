@@ -22,10 +22,12 @@ namespace Zios.Actions{
 			this.used.Setup("Used",this);
 			this.usable.Set(this.controller==null);
 		}
+		#if UNITY_EDITOR
 		[ContextMenu("Toggle Breakdown")]
 		public virtual void ToggleLinkBreakdown(){
 			Utility.ToggleEditorPref("StateMonoBehaviourEditor-ToggleBreakdown");
 		}
+		#endif
 		public void DefaultAlias(string name){
 			if(this.alias.IsEmpty()){
 				this.alias = name;
