@@ -9,15 +9,16 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
+  fontName: Open Sans
   fontNames:
   - Open Sans
   fallbackFontReferences:
   - {fileID: 12800000, guid: 2621f587e2061b24c8934f4c4c7d5e04, type: 3}
   - {fileID: 12800000, guid: 1c2be6c9e91b59e41921bab407c441ca, type: 3}
   - {fileID: 12800000, guid: 2156562ea2316b848afb2f3cf1c76a42, type: 3}
-  customCharacters:
+  customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
-  userData:
-  assetBundleName:
-  assetBundleVariant:
+  userData: 
+  assetBundleName: themeassets
+  assetBundleVariant: 

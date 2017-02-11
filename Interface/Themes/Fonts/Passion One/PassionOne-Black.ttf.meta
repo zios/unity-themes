@@ -9,13 +9,14 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
+  fontName: Passion One
   fontNames:
   - Passion One
   fallbackFontReferences:
   - {fileID: 12800000, guid: de4c68415cfae2346a610938a9f56d34, type: 3}
-  customCharacters:
+  customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
-  userData:
-  assetBundleName:
-  assetBundleVariant:
+  userData: 
+  assetBundleName: themeassets
+  assetBundleVariant: 

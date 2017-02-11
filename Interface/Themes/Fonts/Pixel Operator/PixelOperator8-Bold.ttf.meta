@@ -9,13 +9,14 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
+  fontName: Pixel Operator 8
   fontNames:
   - Pixel Operator 8
   fallbackFontReferences:
   - {fileID: 12800000, guid: b0581da865ba31249b191e6cf9178766, type: 3}
-  customCharacters:
+  customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
-  userData:
-  assetBundleName:
-  assetBundleVariant:
+  userData: 
+  assetBundleName: themeassets
+  assetBundleVariant: 

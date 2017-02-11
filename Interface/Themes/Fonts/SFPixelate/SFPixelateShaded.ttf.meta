@@ -9,15 +9,16 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
+  fontName: SF Pixelate Shaded
   fontNames:
   - SF Pixelate Shaded
   fallbackFontReferences:
   - {fileID: 12800000, guid: 1b80aa71c497c0f4ea12dc4ed156dab2, type: 3}
   - {fileID: 12800000, guid: 36673d3b094359046a16db3f132df2a1, type: 3}
   - {fileID: 12800000, guid: df4589efce271a1488bc8957039880f1, type: 3}
-  customCharacters:
+  customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
-  userData:
-  assetBundleName:
-  assetBundleVariant:
+  userData: 
+  assetBundleName: themeassets
+  assetBundleVariant: 

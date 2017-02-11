@@ -9,13 +9,14 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
+  fontName: Laila
   fontNames:
   - Laila
   fallbackFontReferences:
   - {fileID: 12800000, guid: 55bc5baa5add52c44ae754e4a1556e75, type: 3}
-  customCharacters:
+  customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
-  userData:
-  assetBundleName:
-  assetBundleVariant:
+  userData: 
+  assetBundleName: themeassets
+  assetBundleVariant: 

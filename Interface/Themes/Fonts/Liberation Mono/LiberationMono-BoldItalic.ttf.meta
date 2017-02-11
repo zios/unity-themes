@@ -9,15 +9,16 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
+  fontName: Liberation Mono
   fontNames:
   - Liberation Mono
   fallbackFontReferences:
   - {fileID: 12800000, guid: 32cb797ba75542547b1045225dcb7b0c, type: 3}
   - {fileID: 12800000, guid: 5e93453de1c6e5046b4ee04daca39605, type: 3}
   - {fileID: 12800000, guid: 6926786d1f109e74ab95d6999b664d32, type: 3}
-  customCharacters:
+  customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
-  userData:
-  assetBundleName:
-  assetBundleVariant:
+  userData: 
+  assetBundleName: themeassets
+  assetBundleVariant: 

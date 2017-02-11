@@ -9,13 +9,14 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
+  fontName: Arvo
   fontNames:
   - Arvo
   fallbackFontReferences:
   - {fileID: 12800000, guid: 0a1e756097eacd44581d2fdac5c3ea93, type: 3}
-  customCharacters:
+  customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
-  userData:
-  assetBundleName:
-  assetBundleVariant:
+  userData: 
+  assetBundleName: themeassets
+  assetBundleVariant: 

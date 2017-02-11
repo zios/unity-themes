@@ -9,6 +9,7 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
+  fontName: Chub Gothic
   fontNames:
   - Chub Gothic
   fallbackFontReferences:
@@ -21,5 +22,5 @@ TrueTypeFontImporter:
   fontRenderingMode: 0
   ascentCalculationMode: 1
   userData: 
-  assetBundleName: 
+  assetBundleName: themeassets
   assetBundleVariant: 

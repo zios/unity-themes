@@ -9,13 +9,14 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
+  fontName: 8-bit Operator+
   fontNames:
   - 8-bit Operator+
   fallbackFontReferences:
   - {fileID: 12800000, guid: 014645207efbedb4d8ca1892c43725f3, type: 3}
-  customCharacters:
+  customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
-  userData:
-  assetBundleName:
-  assetBundleVariant:
+  userData: 
+  assetBundleName: themeassets
+  assetBundleVariant: 

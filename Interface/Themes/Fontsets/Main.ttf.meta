@@ -9,6 +9,7 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
+  fontName: Orkney
   fontNames:
   - Orkney
   fallbackFontReferences:
@@ -21,9 +22,9 @@ TrueTypeFontImporter:
   - {fileID: 12800000, guid: 1eda6269f4754174b872356e141c3181, type: 3}
   - {fileID: 12800000, guid: 07bd6fcae00768641b3c45a81455a356, type: 3}
   - {fileID: 12800000, guid: 6de10debaa4a79149afa922a88ff0d8a, type: 3}
-  customCharacters:
+  customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
-  userData:
-  assetBundleName:
-  assetBundleVariant:
+  userData: 
+  assetBundleName: themeassets
+  assetBundleVariant: 

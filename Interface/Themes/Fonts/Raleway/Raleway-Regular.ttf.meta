@@ -9,6 +9,7 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
+  fontName: Raleway
   fontNames:
   - Raleway
   fallbackFontReferences:
@@ -29,9 +30,9 @@ TrueTypeFontImporter:
   - {fileID: 12800000, guid: f8e3e5de42fbdc546a0871009de3ca20, type: 3}
   - {fileID: 12800000, guid: d41abb1f57b28f14cbaefd7b7f940f4f, type: 3}
   - {fileID: 12800000, guid: 2bc9fd4f038ba7a46a09dfaad869b117, type: 3}
-  customCharacters:
+  customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
-  userData:
-  assetBundleName:
-  assetBundleVariant:
+  userData: 
+  assetBundleName: themeassets
+  assetBundleVariant: 
