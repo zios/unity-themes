@@ -14,9 +14,9 @@ TrueTypeFontImporter:
   - Droid Sans
   fallbackFontReferences:
   - {fileID: 12800000, guid: 439a755a24d7c3746a5981187a9e2a1c, type: 3}
-  customCharacters: 
+  customCharacters:
   fontRenderingMode: 1
   ascentCalculationMode: 1
-  userData: 
+  userData:
   assetBundleName: themeassets
-  assetBundleVariant: 
+  assetBundleVariant:

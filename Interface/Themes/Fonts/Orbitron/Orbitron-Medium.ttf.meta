@@ -14,9 +14,9 @@ TrueTypeFontImporter:
   - Orbitron
   fallbackFontReferences:
   - {fileID: 12800000, guid: 08b847be65eeb094ba2627b7a8e8818c, type: 3}
-  customCharacters: 
+  customCharacters:
   fontRenderingMode: 0
   ascentCalculationMode: 1
-  userData: 
+  userData:
   assetBundleName: themeassets
-  assetBundleVariant: 
+  assetBundleVariant:

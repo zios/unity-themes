@@ -14,9 +14,9 @@ TrueTypeFontImporter:
   - Merienda
   fallbackFontReferences:
   - {fileID: 12800000, guid: b97833ad041fcc34b80505fc281d347c, type: 3}
-  customCharacters: 
+  customCharacters:
   fontRenderingMode: 0
   ascentCalculationMode: 1
-  userData: 
+  userData:
   assetBundleName: themeassets
-  assetBundleVariant: 
+  assetBundleVariant:

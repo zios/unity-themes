@@ -14,9 +14,9 @@ TrueTypeFontImporter:
   - 8-bit Operator+ 8
   fallbackFontReferences:
   - {fileID: 12800000, guid: f11a470d60b062142bc30d99dffee684, type: 3}
-  customCharacters: 
+  customCharacters:
   fontRenderingMode: 2
   ascentCalculationMode: 1
-  userData: 
+  userData:
   assetBundleName: themeassets
-  assetBundleVariant: 
+  assetBundleVariant:

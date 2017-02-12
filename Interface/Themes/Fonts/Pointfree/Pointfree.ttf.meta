@@ -14,9 +14,9 @@ TrueTypeFontImporter:
   - Pointfree
   fallbackFontReferences:
   - {fileID: 12800000, guid: f3df864cad68cfe41b44bf29da7c4a29, type: 3}
-  customCharacters: 
+  customCharacters:
   fontRenderingMode: 0
   ascentCalculationMode: 1
-  userData: 
+  userData:
   assetBundleName: themeassets
-  assetBundleVariant: 
+  assetBundleVariant:

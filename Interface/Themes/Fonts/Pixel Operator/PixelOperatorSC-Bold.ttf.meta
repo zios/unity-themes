@@ -14,9 +14,9 @@ TrueTypeFontImporter:
   - Pixel Operator SC
   fallbackFontReferences:
   - {fileID: 12800000, guid: 6598f74b1c7171f4ab25dc280eb16c85, type: 3}
-  customCharacters: 
+  customCharacters:
   fontRenderingMode: 0
   ascentCalculationMode: 1
-  userData: 
+  userData:
   assetBundleName: themeassets
-  assetBundleVariant: 
+  assetBundleVariant:

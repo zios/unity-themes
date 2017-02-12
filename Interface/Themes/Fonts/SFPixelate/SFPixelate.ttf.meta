@@ -14,9 +14,9 @@ TrueTypeFontImporter:
   - SF Pixelate
   fallbackFontReferences:
   - {fileID: 12800000, guid: 3816bf29de3d02f45beb8825893c09bb, type: 3}
-  customCharacters: 
+  customCharacters:
   fontRenderingMode: 0
   ascentCalculationMode: 1
-  userData: 
+  userData:
   assetBundleName: themeassets
-  assetBundleVariant: 
+  assetBundleVariant:

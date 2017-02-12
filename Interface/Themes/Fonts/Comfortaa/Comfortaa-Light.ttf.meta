@@ -14,9 +14,9 @@ TrueTypeFontImporter:
   - Comfortaa
   fallbackFontReferences:
   - {fileID: 12800000, guid: 0a3ca864f5c07aa46ab6247bfb67aea0, type: 3}
-  customCharacters: 
+  customCharacters:
   fontRenderingMode: 0
   ascentCalculationMode: 1
-  userData: 
+  userData:
   assetBundleName: themeassets
-  assetBundleVariant: 
+  assetBundleVariant:

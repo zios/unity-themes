@@ -1461,7 +1461,7 @@ MonoBehaviour:
       m_Bottom: 0
     m_Margin:
       m_Left: 10
-      m_Right: 10
+      m_Right: 15
       m_Top: 0
       m_Bottom: 5
     m_Padding:

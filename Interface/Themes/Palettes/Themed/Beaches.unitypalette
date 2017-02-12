@@ -2,7 +2,7 @@
 (Main)
 	Main                : #E0E4CC  
 	MainActive          : #C43131  
-	MainButton          : #FFFFFF4E
+	MainButton          : #FFF4D3  
 	MainIcons           : #C43131  
 	Border              : #A7DBD8  
 	BorderActive        : #C43131  

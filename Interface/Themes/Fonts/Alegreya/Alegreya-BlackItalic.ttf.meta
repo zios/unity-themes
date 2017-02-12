@@ -14,9 +14,9 @@ TrueTypeFontImporter:
   - Alegreya
   fallbackFontReferences:
   - {fileID: 12800000, guid: 0244c3b70c9850846bb96462241c6a55, type: 3}
-  customCharacters: 
+  customCharacters:
   fontRenderingMode: 0
   ascentCalculationMode: 1
-  userData: 
+  userData:
   assetBundleName: themeassets
-  assetBundleVariant: 
+  assetBundleVariant:

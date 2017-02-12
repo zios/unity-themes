@@ -14,9 +14,9 @@ TrueTypeFontImporter:
   - Nobile
   fallbackFontReferences:
   - {fileID: 12800000, guid: 40dc031751363484ea82a9976454a325, type: 3}
-  customCharacters: 
+  customCharacters:
   fontRenderingMode: 0
   ascentCalculationMode: 1
-  userData: 
+  userData:
   assetBundleName: themeassets
-  assetBundleVariant: 
+  assetBundleVariant:

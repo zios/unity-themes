@@ -14,9 +14,9 @@ TrueTypeFontImporter:
   - PT Sans
   fallbackFontReferences:
   - {fileID: 12800000, guid: 42ddbb26bbefee54ebce984fa96dcef2, type: 3}
-  customCharacters: 
+  customCharacters:
   fontRenderingMode: 0
   ascentCalculationMode: 1
-  userData: 
+  userData:
   assetBundleName: themeassets
-  assetBundleVariant: 
+  assetBundleVariant:
