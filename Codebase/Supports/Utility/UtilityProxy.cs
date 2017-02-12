@@ -94,7 +94,7 @@ namespace Zios{
 			foreach(var window in windows){
 				if(windows.IsNull()){continue;}
 				var tracker = window.GetVariable<ActiveEditorTracker>("m_Tracker");
-				if(tracker == null){continue;}
+				if(tracker == null || System.Object.Equals(tracker,null)){continue;}
 				tracker.ForceRebuild();
 			}
 		}
@@ -105,11 +105,8 @@ namespace Zios{
 			for(int index=0;index<windows.Length;++index){
 				if(windows[index].IsNull()){continue;}
 				var tracker = windows[index].GetVariable<ActiveEditorTracker>("m_Tracker");
-				if(tracker == null){continue;}
-				try{
-					tracker.ForceRebuild();
-				}
-				catch{}
+				if(tracker == null || System.Object.Equals(tracker,null)){continue;}
+				tracker.ForceRebuild();
 			}
 		}
 		public static void ShowInspectors(){
@@ -117,7 +114,7 @@ namespace Zios{
 			var windows = inspectorType.CallMethod<EditorWindow[]>("GetAllInspectorWindows");
 			for(int index=0;index<windows.Length;++index){
 				var tracker = windows[index].GetVariable<ActiveEditorTracker>("m_Tracker");
-				if(tracker == null){continue;}
+				if(tracker == null || System.Object.Equals(tracker,null)){continue;}
 				for(int editorIndex=0;editorIndex<tracker.activeEditors.Length;++editorIndex){
 					tracker.SetVisible(editorIndex,1);
 				}

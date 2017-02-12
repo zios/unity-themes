@@ -36,6 +36,7 @@ namespace Zios.Interface{
 			return new RelativeColor().Deserialize(data);
 		}
 		public static void UpdateSystem(){
+			//if(Theme.active.IsNull() || !Theme.active.palette.usesSystem){return;}
 			object key = null;
 			var system = RelativeColor.system;
 			var current = system.value;

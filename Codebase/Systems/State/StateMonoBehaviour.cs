@@ -20,7 +20,7 @@ namespace Zios.Actions{
 			this.usable.Setup("Usable",this);
 			this.active.Setup("Active",this);
 			this.used.Setup("Used",this);
-			this.usable.Set(this.controller==null);
+			this.usable.Set(this.controller.IsNull());
 		}
 		#if UNITY_EDITOR
 		[ContextMenu("Toggle Breakdown")]

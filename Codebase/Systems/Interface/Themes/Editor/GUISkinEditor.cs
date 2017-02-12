@@ -57,12 +57,12 @@ namespace Zios.Editors{
 		}
 		public void DrawViewMode(){
 			var term = "Default";
-			this.viewMode = Utility.GetPref<int>("GUISkin-Mode-"+this.hash,0);
+			this.viewMode = Utility.GetPref<int>("GUISkin-Mode",0);
 			if(this.viewMode == 1){term = "Replica";}
 			if(this.viewMode == 2){term = "Compact";}
 			if(term.ToLabel().DrawButton(GUI.skin.button.FixedHeight(30))){
 				this.viewMode = (this.viewMode + 1) % 3;
-				Utility.SetPref<int>("GUISkin-Mode-"+this.hash,this.viewMode);
+				Utility.SetPref<int>("GUISkin-Mode",this.viewMode);
 				EditorUI.foldoutChanged = true;
 			}
 		}
@@ -114,7 +114,8 @@ namespace Zios.Editors{
 				GUILayout.Space(10);
 			}
 			if(this.inputTerms[0] != "Search"){
-				if(inputChanged){this.searchResults = this.PerformSearch();}
+				var isFragment = this.skin.name.Contains("#");
+				if(inputChanged){this.searchResults = this.PerformSearch(null,isFragment);}
 				if(this.searchResults.Length < 1){
 					EditorGUI.indentLevel += 1;
 					"No results found.".ToLabel().DrawLabel(EditorStyles.label.Alignment("MiddleCenter"),false);
@@ -155,6 +156,7 @@ namespace Zios.Editors{
 			EditorGUI.indentLevel -= 1;
 		}
 		public void DrawStandard(){
+			if(this.skin.name.Contains("#")){return;}
 			EditorGUI.indentLevel += 1;
 			if("Standard".ToLabel().DrawFoldout("GUISkin-Standard-"+this.hash)){
 				this.DrawStyles(this.hash,this.skin.GetStyles(true,false),false);
@@ -162,8 +164,9 @@ namespace Zios.Editors{
 			EditorGUI.indentLevel -= 1;
 		}
 		public void DrawCustom(){
-			EditorGUI.indentLevel += 1;
-			if("Custom".ToLabel().DrawFoldout("GUISkin-Custom-"+this.hash)){
+			var isFragment = this.skin.name.Contains("#");
+			if(!isFragment){EditorGUI.indentLevel += 1;}
+			if(isFragment || "Custom".ToLabel().DrawFoldout("GUISkin-Custom-"+this.hash)){
 				EditorGUI.indentLevel += 1;
 				var size = this.skin.customStyles.Length.DrawIntDelayed("Size");
 				EditorGUI.indentLevel -= 1;
@@ -173,7 +176,7 @@ namespace Zios.Editors{
 				}
 				this.DrawStyles(this.hash,this.skin.customStyles);
 			}
-			EditorGUI.indentLevel -= 1;
+			if(!isFragment){EditorGUI.indentLevel -= 1;}
 		}
 		public void DrawFragmented(){
 			if(this.fragments.Length > 0){
@@ -418,6 +421,7 @@ namespace Zios.Interface{
 					current.stretchHeight = current.stretchHeight.Draw("Stretch Height");
 					EditorGUIUtility.labelWidth = 0;
 				}
+				EditorGUIUtility.labelWidth = 0;
 				EditorGUI.indentLevel -= 1;
 			}
 			EditorGUILayout.EndVertical();

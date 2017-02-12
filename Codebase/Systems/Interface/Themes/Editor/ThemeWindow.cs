@@ -15,8 +15,6 @@ namespace Zios.Interface{
 			if(Theme.disabled || !ThemeWindow.setup || EditorApplication.isCompiling || EditorApplication.isUpdating){
 				return;
 			}
-			EditorApplication.update -= ThemeWindow.ShowWindow;
-			ThemeWindow.ShowWindow();
 			Theme.Update();
 			ThemeContent.Monitor();
 			bool validTheme = !Theme.active.IsNull() && Theme.active.name != "Default";
@@ -51,10 +49,6 @@ namespace Zios.Interface{
 			}
 			if(Theme.window.position != ThemeWindow.hiddenPosition){Theme.window.position = ThemeWindow.hiddenPosition;}
 			if(Theme.window.minSize != ThemeWindow.hiddenSize){Theme.window.minSize = ThemeWindow.hiddenSize;}
-		}
-		public static void ResetWindow(){
-			Theme.window = null;
-			ThemeWindow.ShowWindow();
 		}
 	}
 }

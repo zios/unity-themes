@@ -209,11 +209,12 @@ namespace Zios.Interface{
 			}
 			return current;
 		}
-		public void ApplyTexture(string path,Texture2D texture){
+		public void ApplyTexture(string path,Texture2D texture,bool writeToDisk=false){
 			if(texture.IsNull()){return;}
 			var name = path.GetPathTerm().TrimLeft("#");
+			var ignoreAlpha = name.StartsWith("A-");
 			var isSplat = name.StartsWith("!");
-			var parts = name.TrimLeft("!").Split("-");
+			var parts = name.TrimLeft("!","A-").Split("-");
 			if(isSplat && parts.Length < 2){
 				Debug.LogWarning("[ThemePalette] : Improperly formed splat texture -- " + path.GetPathTerm());
 				return;
@@ -233,7 +234,7 @@ namespace Zios.Interface{
 			if(originalImage.IsNull() || pixels.Length != originalImage.GetPixels().Length){
 				Debug.Log("[TexturePalette] : Generating source for index/splat --" + originalPath.GetPathTerm());
 				texture.SaveAs(originalPath);
-				AssetDatabase.Refresh();
+				AssetDatabase.ImportAsset(originalPath.GetAssetPath());
 				originalImage = FileManager.GetAsset<Texture2D>(originalPath,false);
 			}
 			if(Theme.debug && originalImage.format != TextureFormat.RGBA32){
@@ -263,7 +264,7 @@ namespace Zios.Interface{
 				foreach(var swap in this.swap){
 					if(pixel.Matches(swap.Key,false)){
 						var color = swap.Value.value;
-						color.a *= pixel.a;
+						color.a = ignoreAlpha ? pixel.a : color.a * pixel.a;
 						if(originalPixels[index] != color){
 							originalPixels[index] = color;
 							changes = true;
@@ -275,7 +276,7 @@ namespace Zios.Interface{
 			if(changes){
 				originalImage.SetPixels(originalPixels);
 				originalImage.Apply();
-				//originalImage.SaveAs(originalPath);
+				if(writeToDisk){originalImage.SaveAs(originalPath);}
 			}
 		}
 	}

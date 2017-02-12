@@ -101,5 +101,7 @@ namespace Zios.Interface{
 			}
 			Utility.SetAssetDirty(destination);
 		}
+		[MenuItem("Edit/Themes/Development/Sync/Dynamic Textures")]
+		public static void SyncTextures(){Theme.Apply("",true);}
 	}
 }
