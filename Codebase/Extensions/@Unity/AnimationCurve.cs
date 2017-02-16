@@ -21,7 +21,7 @@ namespace Zios{
 		public static AnimationCurve Deserialize(this AnimationCurve current,string value){
 			var keys = new List<Keyframe>();
 			foreach(var keyData in value.Split("|")){
-				var data = keyData.Split("-").Convert<float>();
+				var data = keyData.Split("-").ConvertAll<float>();
 				keys.Add(new Keyframe(data[0],data[1],data[2],data[3]));
 			}
 			current.keys = keys.ToArray();

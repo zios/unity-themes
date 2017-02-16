@@ -239,7 +239,7 @@ namespace Zios{
 			var green = (current.g*255).ToInt();
 			var blue = (current.b*255).ToInt();
 			var alpha = " " + (current.a*255).ToInt();
-			if(alpha=="255" && !alwaysAlpha){alpha = "";}
+			if(alpha==" 255" && !alwaysAlpha){alpha = "";}
 			return red+" "+green+" "+blue+alpha;
 		}
 		public static string Serialize(this Color current){

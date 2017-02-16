@@ -11,7 +11,7 @@ namespace Zios{
 		// AssetDatabase
 		//============================
 		public static bool IsAsset(UnityObject target){
-			return !AssetDatabase.GetAssetPath(target).IsEmpty();
+			return !FileManager.GetPath(target).IsEmpty();
 		}
 		public static void StartAssetEditing(){
 			AssetDatabase.StartAssetEditing();
@@ -59,11 +59,14 @@ namespace Zios{
 		public static bool IsPaused(){
 			return EditorApplication.isPaused;
 		}
+		public static bool IsSwitching(){
+			return EditorApplication.isPlayingOrWillChangePlaymode && !Application.isPlaying;
+		}
 		public static bool IsBusy(){
 			return EventDetector.loading || Application.isLoadingLevel || EditorApplication.isPlayingOrWillChangePlaymode || EditorApplication.isCompiling || EditorApplication.isUpdating;
 		}
 		public static bool IsPlaying(){
-			return Application.isPlaying || Utility.IsBusy();
+			return Application.isPlaying || EditorApplication.isPlayingOrWillChangePlaymode;
 		}
 		//============================
 		// Undo

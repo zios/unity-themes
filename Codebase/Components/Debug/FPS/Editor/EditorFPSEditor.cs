@@ -1,7 +1,6 @@
 using UnityEditor;
 using UnityEngine;
 using UnityEvent = UnityEngine.Event;
-using Zios;
 namespace Zios.Editors.DebugEditors{
 	using Interface;
 	using Events;
@@ -16,9 +15,11 @@ namespace Zios.Editors.DebugEditors{
 			if(!UnityEvent.current.IsUseful()){return;}
 			EditorFPSEditor.instance = this;
 			Event.Add("On Editor Update",EditorFPSEditor.EditorUpdate);
-			var style = GUI.skin.textField.RichText(true).FixedHeight(40).Alignment("MiddleCenter").FontSize(24);
+			var style = GUI.skin.textField.RichText(true).Alignment("MiddleCenter").FixedHeight(0).FontSize(24);
 			style.normal = style.focused;
+			EditorUI.SetLayoutOnce(-1,40);
 			this.text.ToLabel().DrawLabel(style);
+			GUILayout.Space(3);
 		}
 		public static void EditorUpdate(){
 			if(EditorFPSEditor.instance.IsNull()){return;}

@@ -7,15 +7,24 @@ using System.Collections.Generic;
 using Zios.Interface;
 using UnityEvent = UnityEngine.Event;
 namespace Zios.Editors{
+	using Containers;
+	using Events;
 	[CustomEditor(typeof(GUISkin))]
 	public partial class GUISkinEditor : Editor{
 		public static GUIStyle focus;
 		public static string action;
+		public bool refocus;
 		public bool advanced;
+		public bool changes;
+		public bool isFragment;
 		public int viewMode;
 		public int inputMode;
+		public string queue;
+		public string queueSplit;
+		public Action queueMethod = ()=>{};
 		public string hash;
-		public string[] inputTerms = new string[0];
+		public List<string> inputTerms = new List<string>();
+		public List<SearchAttribute> searchAttributes = new List<SearchAttribute>();
 		public GUIStyle[] searchResults = new GUIStyle[0];
 		public GUISkin[] fragments = new GUISkin[0];
 		public GUISkin skin;
@@ -23,10 +32,11 @@ namespace Zios.Editors{
 		// Main
 		//=================================
 		public override void OnInspectorGUI(){
-			if(UnityEvent.current.type.MatchesAny("mouseMove")){return;}
-			//this.optimize = Utility.GetPref<bool>("GUISkinEditor-Optimize",false);
+			if(UnityEvent.current.type.MatchesAny("mouseMove") || Utility.IsBusy()){return;}
 			this.hash = this.hash ?? Utility.GetInspector(this).GetInstanceID().ToString();
 			this.skin = this.skin ?? this.target.As<GUISkin>();
+			this.isFragment = this.skin.name.Contains("#");
+			//this.optimize = Utility.GetPref<bool>("GUISkinEditor-Optimize",false);
 			EditorUI.foldoutChanged = false;
 			this.DrawViewMode();
 			if(this.viewMode == 0){
@@ -45,8 +55,8 @@ namespace Zios.Editors{
 			this.fragments = FileManager.GetAssets<GUISkin>(this.skin.name+"#*.guiSkin",false);
 			this.ProcessMenu();
 			this.DrawSearch();
-			this.DrawSplit();
-			if(this.inputMode == 0 && this.inputTerms[0] == "Search"){
+			//this.DrawSplit();
+			if(this.inputMode == 0 && this.inputTerms.Count == 0 || this.inputTerms[0] == "Search"){
 				this.DrawStandard();
 				this.DrawCustom();
 				this.DrawFragmented();
@@ -67,28 +77,24 @@ namespace Zios.Editors{
 			}
 		}
 		public bool DrawInputMode(string fallback="Search",string splitBy=" ",string endSymbol="+"){
-			var search = Utility.GetPref("GUISkin-"+fallback+"-"+this.hash,fallback).Split(splitBy);
-			var inputChanged = false;
-			if(!this.inputTerms.SequenceEqual(search)){
-				this.inputTerms = search;
-				inputChanged = true;
-			}
 			EditorGUILayout.BeginHorizontal();
 			var color = EditorStyles.textField.normal.textColor.SetAlpha(0.5f);
-			var baseStyle = EditorStyles.textField.Alignment("MiddleCenter").FixedHeight(30);
+			var baseStyle = EditorStyles.textField.Alignment("MiddleCenter");
 			var symbolStyle = baseStyle.FixedWidth(24).FontSize(16).TextColor(color);
 			var inputStyle = baseStyle.FontStyle("BoldAndItalic");
+			EditorUI.SetLayout(-1,30);
 			if("∗".ToLabel().DrawButton(symbolStyle.ContentOffset(1,0).Overflow(0,3,0,0),false)){
 				var menu = new EditorMenu();
-				Action clear = ()=>this.inputTerms.Clear();
+				Action clear = ()=>this.queue="";
 				menu.Add("Search",this.inputMode==0,(()=>{this.inputMode=0;})+clear);
-				menu.Add("Split",this.inputMode==1,(()=>{this.inputMode=1;})+clear);
+				//menu.Add("Split",this.inputMode==1,(()=>{this.inputMode=1;})+clear);
 				menu.Draw();
 			}
 			var filter = this.inputTerms.Join(splitBy).Replace("~"," ").Draw(null,inputStyle);
-			inputChanged = inputChanged || EditorUI.lastChanged;
+			var inputChanged = EditorUI.lastChanged;
 			EditorUI.lastChanged = false;
 			endSymbol.ToLabel().DrawButton(symbolStyle.ContentOffset(-2,0).Overflow(3,0,0,0),false);
+			EditorUI.SetLayout(-1,0);
 			EditorGUILayout.EndHorizontal();
 			bool open = false;
 			var output = new StringBuilder();
@@ -97,25 +103,20 @@ namespace Zios.Editors{
 				if(symbol==']'){open=false;}
 				output.Append(symbol==' ' && open ? '~' : symbol);
 			}
-			this.inputTerms = output.ToString().Split(splitBy);
-			if(this.inputTerms.Join(splitBy).IsEmpty()){
-				this.inputTerms = new string[1]{fallback};
-				EditorUI.foldoutChanged = true;
-			}
+			this.queue = this.queue ?? (output.ToString().Trim().IsEmpty() ? fallback : output.ToString());
+			this.queueSplit = splitBy;
 			Utility.SetPref<string>("GUISkin-"+fallback+"-"+this.hash,this.inputTerms.Join(splitBy));
+			GUI.changed = false;
 			return inputChanged;
 		}
 		public void DrawSearch(){
 			if(this.inputMode != 0){return;}
 			var inputChanged = this.DrawInputMode();
 			this.advanced = EditorUI.lastChanged ? !this.advanced : this.advanced;
-			if(this.advanced){
-				"Advanced form searching goes here.".DrawHelp();
-				GUILayout.Space(10);
+			if(inputChanged || (this.advanced && this.DrawAdvancedSearch())){
+				this.queueMethod = ()=>{this.searchResults = this.PerformSearch(null,!this.isFragment);};
 			}
-			if(this.inputTerms[0] != "Search"){
-				var isFragment = this.skin.name.Contains("#");
-				if(inputChanged){this.searchResults = this.PerformSearch(null,isFragment);}
+			if(this.inputTerms.Count > 0 && this.inputTerms[0] != "Search"){
 				if(this.searchResults.Length < 1){
 					EditorGUI.indentLevel += 1;
 					"No results found.".ToLabel().DrawLabel(EditorStyles.label.Alignment("MiddleCenter"),false);
@@ -124,6 +125,103 @@ namespace Zios.Editors{
 				this.DrawStyles(this.hash,this.searchResults);
 			}
 		}
+		public bool DrawAdvancedSearch(){
+			EditorGUILayout.BeginVertical(GUI.skin.box.Margin(20,15,4,4).Padding(0,0,0,0));
+			EditorUI.anyChanged = false;
+			var queue = new List<string>();
+			var refocus = false;
+			foreach(var term in this.inputTerms){
+				GUI.changed = false;
+				var attribute = term.Contains("=") ? term.Split("=")[0].Trim("[") : "name";
+				var value = term.Contains("=") ? term.Split("=")[1].Trim("]").Replace("~"," ") : term;
+				attribute = attribute.Replace("textClipping","clipping").Replace("color","textColor");
+				if(attribute=="name" && value=="Search"){continue;}
+				if(attribute.IsEnum<GUIStyleField>()){
+					EditorGUILayout.BeginHorizontal();
+					EditorUI.SetLayoutOnce(25,16);
+					if("x".ToLabel().DrawButton(GUI.skin.button.Margin(4,2,2,2).Padding(0,0,-2,0))){
+						EditorUI.ResetLayout();
+						EditorGUILayout.EndHorizontal();
+						continue;
+					}
+					EditorUI.SetLayoutOnce(150);
+					var field = attribute.ToEnum<GUIStyleField>();
+					attribute = field.As<GUIStyleField>().Draw().ToName();
+					if(GUI.changed || value.IsEmpty()){
+						field = attribute.ToEnum<GUIStyleField>();
+						value = "0";
+					}
+					var lookup = field.ToInt();
+					EditorUI.SetLayoutOnce((Screen.width-255),16);
+					if(lookup.MatchesAny(1,21)){
+						value = value == "0" ? "#FFF" : value;
+						if(value.IsColor(" ")){
+							value = value.Contains(" ") ? value.ToColor(" ").Draw().ToDecimal(false) : value.ToColor(" ").Draw().ToHex(false);
+						}
+						else{value = value.Draw();}
+					}
+					if(lookup == 2){
+						value = value == "0" ? "UnityWhite" : value;
+						var image = value == "UnityWhite" ? Texture2D.whiteTexture : FileManager.GetAsset<Texture2D>(value+"*",false);
+						if(!image.IsNull()){
+							image = image.Draw<Texture2D>();
+							value = image.IsNull() ? "" : image.name;
+						}
+						else{value = value.Draw();}
+					}
+					if(lookup == 7){
+						value = value == "0" ? "Arial" : value;
+						var font = FileManager.GetAsset<Font>(value+".ttf",false) ?? FileManager.GetAsset<Font>(value+".otf",false);
+						if(!font.IsNull()){
+							font = font.Draw<Font>();
+							value = font.IsNull() ? "" : font.name;
+						}
+						else{value = value.Draw();}
+					}
+					try{
+						if(lookup == 0){
+							value = value == "0" ? "button" : value;
+							GUI.SetNextControlName("name");
+							value = value.Draw();
+							if(this.refocus){GUI.FocusControl("name");}
+							if(value.Contains(" ")){refocus = true;}
+						}
+						if(lookup.Between(3,6)){
+							value = value == "0" ? "0 0 0 0" : value;
+							EditorUI.SetLayoutOnce(26);
+							value = value.ToRectOffset().Draw("",true).Serialize();
+						}
+						if(lookup.MatchesAny(8,16,17)){value = value.ToFloat().Draw().ToString();}
+						if(lookup == 9){value = value.ToEnum<FontStyle>().Draw().ToName();}
+						if(lookup == 10){value = value.ToEnum<TextAnchor>().Draw().ToName();}
+						if(lookup.MatchesAny(11,12,18,19)){value = value.ToBool().Draw().Serialize();}
+						if(lookup.MatchesAny(13,20)){value = value.ToEnum<TextClipping>().Draw().ToName();}
+						if(lookup == 14){value = value.ToEnum<ImagePosition>().Draw().ToName();}
+						if(lookup == 15){
+							value = value == "0" ? "0 0" : value;
+							value = value.Replace(" ",",").ToVector2().DrawVector2().ToString().Remove("(",")",",",".0");
+						}
+					}
+					catch{
+						EditorUI.SetLayoutOnce((Screen.width-255),16);
+						value = value.Draw();
+					}
+					EditorGUILayout.EndHorizontal();
+					var command = lookup == 0 ? value : "["+attribute+"="+value.Replace(" ","~")+"]";
+					queue.Add(command);
+					continue;
+				}
+				queue.Add(term);
+			}
+			this.refocus = refocus;
+            if("Add".ToLabel().DrawButton()){
+				GUI.FocusControl("");
+				queue.Add("[textColor=#FFF]");
+            }
+			this.queue = queue.Count > 0 ? queue.Join(" ") : "Search";
+			EditorGUILayout.EndVertical();
+			return EditorUI.anyChanged;
+		}
 		public void DrawSplit(){
 			if(this.inputMode != 1){return;}
 			this.DrawInputMode("Split | By | Terms"," | ","•");
@@ -131,7 +229,7 @@ namespace Zios.Editors{
 				var original = this.inputTerms.Copy();
 				GUIStyle[] styles = null;
 				foreach(var term in original){
-					this.inputTerms = term.AsArray();
+					this.inputTerms = term.AsList();
 					styles = this.PerformSearch(styles,false,false);
 					Debug.Log(this.inputTerms[0] + " -- " + this.searchResults.Length);
 				}
@@ -139,12 +237,15 @@ namespace Zios.Editors{
 		}
 		public void DrawStyles(string key,GUIStyle[] styles,bool editable=true){
 			var compact = this.viewMode == 2;
+			var changes = false;
 			EditorGUI.indentLevel += 1;
 			for(int index=0;index<styles.Length;++index){
 				var style = styles[index];
 				style = styles[index] = style ?? EditorStyles.label.Copy();
 				if(this.CheckBounds(style)){
+					GUI.changed = false;
 					style.Draw(key,compact);
+					changes = changes || GUI.changed;
 					if(this.rebuild && Utility.IsRepainting()){
 						this.allRect.Add(GUILayoutUtility.GetLastRect());
 					}
@@ -153,6 +254,7 @@ namespace Zios.Editors{
 				else if(this.drawn){break;}
 				this.count += 1;
 			}
+			this.changes = this.changes || changes;
 			EditorGUI.indentLevel -= 1;
 		}
 		public void DrawStandard(){
@@ -164,9 +266,8 @@ namespace Zios.Editors{
 			EditorGUI.indentLevel -= 1;
 		}
 		public void DrawCustom(){
-			var isFragment = this.skin.name.Contains("#");
-			if(!isFragment){EditorGUI.indentLevel += 1;}
-			if(isFragment || "Custom".ToLabel().DrawFoldout("GUISkin-Custom-"+this.hash)){
+			if(!this.isFragment){EditorGUI.indentLevel += 1;}
+			if(this.isFragment || "Custom".ToLabel().DrawFoldout("GUISkin-Custom-"+this.hash)){
 				EditorGUI.indentLevel += 1;
 				var size = this.skin.customStyles.Length.DrawIntDelayed("Size");
 				EditorGUI.indentLevel -= 1;
@@ -176,7 +277,7 @@ namespace Zios.Editors{
 				}
 				this.DrawStyles(this.hash,this.skin.customStyles);
 			}
-			if(!isFragment){EditorGUI.indentLevel -= 1;}
+			if(!this.isFragment){EditorGUI.indentLevel -= 1;}
 		}
 		public void DrawFragmented(){
 			if(this.fragments.Length > 0){
@@ -212,6 +313,7 @@ namespace Zios.Editors{
 			}
 		}
 		public GUIStyle[] PerformSearch(GUIStyle[] styles=null,bool includeStandard=true,bool includeFragments=true){
+			this.BuildAttributes();
 			if(styles.IsNull()){
 				styles = this.skin.GetStyles(includeStandard,true);
 				if(includeFragments){
@@ -220,47 +322,87 @@ namespace Zios.Editors{
 				}
 			}
 			EditorUI.foldoutChanged = true;
-			return styles.Where(x=>this.ContainsAttributes(x) && x.name.ContainsAll(this.FilterSearch())).ToArray();
+			return styles.Where(x=>x.name.ContainsAll(this.FilterSearch()) && this.ContainsAttributes(x)).ToArray();
+		}
+		public void BuildAttributes(){
+			this.searchAttributes.Clear();
+			foreach(var input in this.inputTerms){
+				if(!input.ContainsAll("[","]","=")){continue;}
+				var term = input.Replace("~"," ").Replace(","," ");
+				var state = term.Contains("/") ? term.Parse("[","/") : "";
+				var name = term.Parse("[","=").Split("/").Last();
+				var value = term.Parse("=","]");
+				var search = value.Remove("*","#");
+				var wild = value.Contains("*");
+				var wildStart = wild && value.StartsWith("*");
+				var wildEnd = wild && value.EndsWith("*");
+				var wildSplit = wild ? value.Split("*") : new string[1]{""};
+				Func<string,bool> method = (x)=>{return false;};
+				if(!wild){method = (data)=>data.Matches(search,true);}
+				else if(wildStart && wildEnd && wildSplit.Length > 2){method = (data)=>data.Contains(search,true);}
+				else if(wildEnd){method = (data)=>data.StartsWith(search,true);}
+				else if(wildStart){method = (data)=>data.EndsWith(search,true);}
+				else{
+					method = (data)=>{
+						var startCheck = data.StartsWith(wildSplit.First(),true);
+						var endCheck = data.EndsWith(wildSplit.Last(),true);
+						return startCheck && endCheck;
+					};
+				};
+				var searchAttribute = new SearchAttribute();
+				searchAttribute.name = name;
+				searchAttribute.value = value;
+				searchAttribute.method = method;
+				searchAttribute.state = state;
+				this.searchAttributes.Add(searchAttribute);
+			}
 		}
 		public bool ContainsAttributes(GUIStyle style){
-			foreach(var term in this.inputTerms){
-				if(!term.ContainsAll("[","]","=")){continue;}
-				var data = term.Remove("[","]").Replace("~"," ").Split("=").Trim(" ");
-				var name = data[0];
-				var value = data[1];
+			foreach(var input in this.searchAttributes){
+				var name = input.name;
+				var rawValue = input.value;
+				var value = rawValue.Remove("*","#");
+				var state = input.state;
+				var CheckMatch = input.method;
 				if(value.IsEmpty()){continue;}
 				if(name.ContainsAny("textColor","background")){
 					var found = false;
-					foreach(var state in style.GetStates()){
-						var current = state.GetVariable(name);
-						var type = state.GetVariableType(name);
-						if(current.IsNull()){continue;}
-						if(type.Is<Color>()){
-							bool hexMatch = current.As<Color>().ToHex().StartsWith(value,true);
-							bool decimalMatch = current.As<Color>().ToDecimal().StartsWith(value,true);
+					var states = style.GetNamedStates();
+					if(!state.IsEmpty() && states.ContainsKey(state)){
+						states = states[state].AsArray().ToDictionary(x=>state,x=>x);
+					}
+					foreach(var item in states){
+						var styleState = item.Value;
+						if(name.Matches("textColor",true)){
+							bool hasAlpha = !rawValue.Contains(" ") ? value.Length > 6 : value.Split(" ").Length == 4;
+							bool hexMatch = !rawValue.Contains(" ") && CheckMatch(styleState.textColor.ToHex(hasAlpha));
+							bool decimalMatch = rawValue.Contains(" ") && CheckMatch(styleState.textColor.ToDecimal(hasAlpha));
 							if(hexMatch || decimalMatch){found = true;}
 						}
-						if(type.Is<Texture>() && current.As<Texture>().name.Contains(value,true)){found=true;}
+						if(name.Matches("background",true) && !styleState.background.IsNull() && CheckMatch(styleState.background.name)){
+							found = true;
+						}
 					}
 					if(found){continue;}
 					return false;
 				}
-				if(style.HasVariable(name)){
+				name = name.Replace("textClipping","clipping").Replace("color","textColor");
+				if(name.IsEnum<GUIStyleField>()){
 					var current = style.GetVariable(name);
 					var type = style.GetVariableType(name);
 					if(current.IsNull()){return false;}
 					if(type.Is<RectOffset>()){
-						if(!current.As<RectOffset>().Serialize().Contains(value)){
+						if(!CheckMatch(current.As<RectOffset>().Serialize())){
 							return false;
 						}
 					}
 					else if(type.Is<Vector2>()){
-						if(!current.As<Vector2>().ToString().Remove(".0",",").Contains(value)){
+						if(!CheckMatch(current.As<Vector2>().ToString().Remove(".0",",","(",")"))){
 							return false;
 						}
 					}
 					else if(type.Is<bool>()){
-						if(!current.As<bool>().ToString().Contains(value)){
+						if(value.ToBool()!=current.As<bool>()){
 							return false;
 						}
 					}
@@ -269,7 +411,12 @@ namespace Zios.Editors{
 							return false;
 						}
 					}
-					else if(!current.ToString().Contains(value,true)){
+					else if(type.Is<Font>()){
+						if(!CheckMatch(current.As<Font>().name)){
+							return false;
+						}
+					}
+					else if(!CheckMatch(current.ToString()) && !CheckMatch(current.ToString().ToTitleCase())){
 						return false;
 					}
 				}
@@ -304,6 +451,12 @@ namespace Zios.Editors{
 				GUI.changed = true;
 			}
 		}
+	}
+	public struct SearchAttribute{
+		public string name;
+		public string value;
+		public string state;
+		public Func<string,bool> method;
 	}
 	//=================================
 	// Optimize GUI Clipping
@@ -345,11 +498,23 @@ namespace Zios.Editors{
 			Utility.DelayCall(this.Repaint,0.25f);
 		}
 		public void CheckChanges(){
-			if(GUI.changed){
+			if(this.changes){
 				Utility.SetAssetDirty(this.target.As<GUISkin>());
 				foreach(var fragment in fragments){
 					Utility.SetAssetDirty(fragment);
 				}
+				Event.Call("On GUISkin Changed");
+				this.changes = false;
+			}
+			if(!this.queue.IsNull()){
+				var newTerms = this.queue.Split(this.queueSplit).ToList();
+				if(!this.inputTerms.SequenceEqual(newTerms)){
+					EditorUI.foldoutChanged = true;
+					this.inputTerms = newTerms;
+					this.queueMethod();
+				}
+				this.queue = null;
+				this.queueMethod = ()=>{};
 			}
 		}
 		public void CheckReset(){
@@ -388,17 +553,17 @@ namespace Zios.Interface{
 			var styleKey = key + "." + current.name;
 			var styleFoldout = current.name.ToLabel().DrawFoldout(styleKey);
 			if(styleFoldout){
+				var labelWidth = compact ? 140 : 0;
 				EditorGUI.indentLevel += 1;
-				EditorGUIUtility.labelWidth = compact ? 130 : 0;
+				EditorUI.SetFieldSize(-1,labelWidth,false);
 				current.name = current.name.Draw("Name".ToLabel());
 				Utility.SetPref<bool>(key+"."+current.name,true);
-				if(compact){
+				if(compact && headers){
 					EditorGUILayout.BeginHorizontal();
-					GUILayout.Space(130);
-					if(headers){
-						"Text".ToLabel().DrawLabel(EditorStyles.boldLabel.FixedWidth(120),false);
-						"Background".ToLabel().DrawLabel(EditorStyles.boldLabel,false);
-					}
+					GUILayout.Space(140);
+					EditorUI.SetLayout(120);
+					"Text".ToLabel().DrawLabel(EditorStyles.boldLabel,false);
+					"Background".ToLabel().DrawLabel(EditorStyles.boldLabel,false);
 					EditorGUILayout.EndHorizontal();
 				}
 				foreach(var state in current.GetNamedStates()){
@@ -412,35 +577,31 @@ namespace Zios.Interface{
 					current.DrawTextSettings(compact);
 				}
 				if(!grouped || "Position & Size".ToTitleCase().ToLabel().DrawFoldout(key+"Area")){
-					EditorGUIUtility.labelWidth = compact ? 130 : 0;
 					current.imagePosition = current.imagePosition.Draw("Image Position").As<ImagePosition>();
 					current.contentOffset = current.contentOffset.DrawVector2("Content Offset");
 					current.fixedWidth = current.fixedWidth.Draw("Fixed Width");
 					current.fixedHeight = current.fixedHeight.Draw("Fixed Height");
 					current.stretchWidth = current.stretchWidth.Draw("Stretch Width");
 					current.stretchHeight = current.stretchHeight.Draw("Stretch Height");
-					EditorGUIUtility.labelWidth = 0;
 				}
-				EditorGUIUtility.labelWidth = 0;
+				EditorUI.ResetFieldSize();
 				EditorGUI.indentLevel -= 1;
 			}
 			EditorGUILayout.EndVertical();
 		}
-		public static void Draw(this RectOffset current,string name="RectOffset",bool compact=false,string key=null){
+		public static RectOffset Draw(this RectOffset current,string name="RectOffset",bool compact=false,string key=null){
 			if(compact){
 				EditorGUILayout.BeginHorizontal();
-				EditorGUIUtility.labelWidth = 130;
-				EditorGUIUtility.fieldWidth = 26;
-				var style = EditorStyles.numberField.FixedWidth(26);
+				EditorUI.SetFieldSize(26);
 				current.left = current.left.DrawInt(name);
-				current.right = current.right.DrawInt(null,style,false);
-				current.top = current.top.DrawInt(null,style,false);
-				current.bottom = current.bottom.DrawInt(null,style,false);
-				EditorGUIUtility.labelWidth = 0;
-				EditorGUIUtility.fieldWidth = 0;
+				EditorUI.SetLayout(26);
+				current.right = current.right.DrawInt(null,null,false);
+				current.top = current.top.DrawInt(null,null,false);
+				current.bottom = current.bottom.DrawInt(null,null,false);
+				EditorUI.SetLayout(0);
 				GUILayout.FlexibleSpace();
 				EditorGUILayout.EndHorizontal();
-				return;
+				return current;
 			}
 			if(name.ToTitleCase().ToLabel().DrawFoldout(key)){
 				EditorGUI.indentLevel += 1;
@@ -450,26 +611,18 @@ namespace Zios.Interface{
 				current.bottom = current.bottom.DrawInt("Bottom");
 				EditorGUI.indentLevel -= 1;
 			}
+			return current;
 		}
 		public static void DrawTextSettings(this GUIStyle current,bool compact=false){
 			if(compact){
 				EditorGUILayout.BeginHorizontal();
-				EditorGUIUtility.labelWidth = 130;
-				EditorGUIUtility.fieldWidth = 30;
-				EditorUI.autoLayout = false;
-				current.fontSize = current.fontSize.DrawInt("Font",EditorStyles.textField.FixedWidth(40).FixedHeight(EditorStyles.popup.fixedHeight));
-				EditorGUIUtility.labelWidth = 0.00000000001f;
-				EditorGUIUtility.fieldWidth = 75;
-				GUILayout.Space(4);
-				var original = new GUIStyle(EditorStyles.popup);
-				EditorStyles.popup.Use(EditorStyles.popup.Margin(0));
-				current.fontStyle = current.fontStyle.Draw(null,EditorStyles.popup.Margin(0,0,2,0).FixedWidth(80),false).As<FontStyle>();
-				EditorGUIUtility.fieldWidth = 0;
+				EditorUI.SetLayoutOnce(171);
+				current.fontSize = current.fontSize.DrawInt("Font",EditorStyles.textField);
+				EditorUI.SetLayoutOnce(80);
+				current.fontStyle = current.fontStyle.Draw(null,null,false).As<FontStyle>();
+				EditorUI.SetLayoutOnce(Screen.width-305+EditorStyles.inspectorDefaultMargins.padding.left);
 				current.font = current.font.Draw<Font>(null,false,false);
-				EditorStyles.popup.Use(original);
 				EditorGUILayout.EndHorizontal();
-				EditorUI.autoLayout = true;
-				EditorGUIUtility.labelWidth = 130;
 			}
 			else{
 				current.font = current.font.Draw<Font>("Font");
@@ -480,25 +633,20 @@ namespace Zios.Interface{
 			current.wordWrap = current.wordWrap.Draw("Word Wrap");
 			current.richText = current.richText.Draw("Rich Text");
 			current.clipping = current.clipping.Draw("Text Clipping").As<TextClipping>();
-			EditorGUIUtility.labelWidth = 0;
 		}
 		public static void Draw(this GUIStyleState current,string name="GUIStyleState",bool compact=false,string key=null){
-			EditorUI.height = 15;
 			if(compact){
 				EditorGUILayout.BeginHorizontal();
-				EditorGUIUtility.labelWidth = 130;
-				EditorUI.width = 200;
+				EditorUI.SetLayoutOnce(200);
 				current.textColor = current.textColor.Draw(name.ToTitleCase());
-				EditorUI.width = 0;
-				EditorGUIUtility.labelWidth = 0.00001f;
+				EditorUI.SetLayoutOnce(Screen.width-240,16);
 				current.background = current.background.Draw<Texture2D>(null,true,false).As<Texture2D>();
-				EditorGUIUtility.labelWidth = 0;
 				EditorGUILayout.EndHorizontal();
-				EditorUI.height = 0;
 				return;
 			}
 			if(name.ToTitleCase().ToLabel().DrawFoldout(key)){
 				EditorGUI.indentLevel += 1;
+				EditorUI.SetLayoutOnce(0,15);
 				current.background = current.background.Draw<Texture2D>("Background").As<Texture2D>();
 				current.textColor = current.textColor.Draw("Text Color");
 				#if UNITY_5_4_OR_NEWER
@@ -512,6 +660,7 @@ namespace Zios.Interface{
 					}
 					for(int index=0;index<current.scaledBackgrounds.Length;++index){
 						var background = current.scaledBackgrounds[index];
+						EditorUI.SetLayoutOnce(0,15);
 						current.scaledBackgrounds[index] = background.Draw<Texture2D>("Background").As<Texture2D>();
 					}
 					EditorGUI.indentLevel -= 1;
@@ -519,7 +668,6 @@ namespace Zios.Interface{
 				#endif
 				EditorGUI.indentLevel -= 1;
 			}
-			EditorUI.height = 0;
 		}
 	}
 }

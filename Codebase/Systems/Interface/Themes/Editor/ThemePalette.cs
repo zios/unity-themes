@@ -19,7 +19,7 @@ namespace Zios.Interface{
 		public static List<ThemePalette> Import(string path=null){
 			path = path ?? "*.unitypalette";
 			var imported = new List<ThemePalette>();
-			foreach(var file in FileManager.FindAll(path,false)){
+			foreach(var file in FileManager.FindAll(path,Theme.debug)){
 				var active = imported.AddNew();
 				active.name = file.name;
 				active.path = file.path;
@@ -232,7 +232,7 @@ namespace Zios.Interface{
 			var originalImage = FileManager.GetAsset<Texture2D>(originalPath,false);
 			var pixels = texture.GetPixels();
 			if(originalImage.IsNull() || pixels.Length != originalImage.GetPixels().Length){
-				Debug.Log("[TexturePalette] : Generating source for index/splat --" + originalPath.GetPathTerm());
+				Debug.Log("[TexturePalette] : Generating source for index/splat -- " + originalPath.GetPathTerm());
 				texture.SaveAs(originalPath);
 				AssetDatabase.ImportAsset(originalPath.GetAssetPath());
 				originalImage = FileManager.GetAsset<Texture2D>(originalPath,false);
@@ -276,7 +276,9 @@ namespace Zios.Interface{
 			if(changes){
 				originalImage.SetPixels(originalPixels);
 				originalImage.Apply();
-				if(writeToDisk){originalImage.SaveAs(originalPath);}
+				if(writeToDisk){
+					Utility.DelayCall(originalImage,()=>originalImage.SaveAs(originalPath),0.5f);
+				}
 			}
 		}
 	}

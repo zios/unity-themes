@@ -21,7 +21,7 @@ namespace Zios.Interface{
 		public static List<Theme> Import(string path=null){
 			path = path ?? "*.unitytheme";
 			var imported = new List<Theme>();
-			foreach(var file in FileManager.FindAll(path,false)){
+			foreach(var file in FileManager.FindAll(path,Theme.debug)){
 				var active = imported.AddNew();
 				active.name = file.name.ToPascalCase();
 				active.path = file.path;

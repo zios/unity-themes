@@ -27,48 +27,48 @@ namespace Zios.Editors.MaterialEditors{
 			}
 			Material material = (Material)this.target;
 			bool targetReady = material != null && material.shader != null;
-			bool targetMismatch = Buffer.active == null || Buffer.material == null || (material.shader != Buffer.shader);
-			bool newMaterial = Buffer.material != material;
-			if(targetReady && (Buffer.refresh || targetMismatch)){
-				if(newMaterial){Buffer.originalPath = "";}
-				Buffer.material = material;
-				Buffer.shader = material.shader;
-				if(!Buffer.refresh || Buffer.active == null){
-					if(Buffer.active != null){DestroyImmediate(Buffer.active);}
-					Buffer.active = ScriptableObject.CreateInstance<ExtendedMaterial>();
+			bool targetMismatch = MaterialBuffer.active == null || MaterialBuffer.material == null || (material.shader != MaterialBuffer.shader);
+			bool newMaterial = MaterialBuffer.material != material;
+			if(targetReady && (MaterialBuffer.refresh || targetMismatch)){
+				if(newMaterial){MaterialBuffer.originalPath = "";}
+				MaterialBuffer.material = material;
+				MaterialBuffer.shader = material.shader;
+				if(!MaterialBuffer.refresh || MaterialBuffer.active == null){
+					if(MaterialBuffer.active != null){DestroyImmediate(MaterialBuffer.active);}
+					MaterialBuffer.active = ScriptableObject.CreateInstance<ExtendedMaterial>();
 				}
-				Buffer.active.Clear();
-				Buffer.active.Load(material.shader);
-				Buffer.refresh = false;
-				Buffer.unsaved = false;
+				MaterialBuffer.active.Clear();
+				MaterialBuffer.active.Load(material.shader);
+				MaterialBuffer.refresh = false;
+				MaterialBuffer.unsaved = false;
 				this.LoadSettings();
 				Debug.Log("[ExtendedMaterial] Material loaded -- " + material.name + " [" + material.shader.name + "]");
 			}
 		}
 		public void LoadSettings(){
-			string name = Buffer.material.name;
+			string name = MaterialBuffer.material.name;
 			bool firstOpen = !Utility.HasPref(name+"-Material");
-			Buffer.options["ShowDefault"] = firstOpen ? true : Utility.GetPref<int>("ExtendedMaterial-ShowDefault").ToBool();
-			Buffer.options["ShowPreview"] = firstOpen ? true : Utility.GetPref<int>("ExtendedMaterial-ShowPreview").ToBool();
-			Buffer.options["ShaderUnity"] = Utility.GetPref<int>(name+"-ShaderUnity").ToBool();
-			Buffer.options["ShaderGPU"] = Utility.GetPref<int>(name+"-ShaderGPU").ToBool();
-			Buffer.options["Properties"] = Utility.GetPref<int>(name+"-Properties").ToBool();
-			Buffer.options["Material"] = firstOpen ? true : Utility.GetPref<int>(name+"-Material").ToBool();
+			MaterialBuffer.options["ShowDefault"] = firstOpen ? true : Utility.GetPref<int>("ExtendedMaterial-ShowDefault").ToBool();
+			MaterialBuffer.options["ShowPreview"] = firstOpen ? true : Utility.GetPref<int>("ExtendedMaterial-ShowPreview").ToBool();
+			MaterialBuffer.options["ShaderUnity"] = Utility.GetPref<int>(name+"-ShaderUnity").ToBool();
+			MaterialBuffer.options["ShaderGPU"] = Utility.GetPref<int>(name+"-ShaderGPU").ToBool();
+			MaterialBuffer.options["Properties"] = Utility.GetPref<int>(name+"-Properties").ToBool();
+			MaterialBuffer.options["Material"] = firstOpen ? true : Utility.GetPref<int>(name+"-Material").ToBool();
 			int shaderIndex = 0;
 			int passIndex = 0;
-			foreach(SubShader subShader in Buffer.active.subShaders){
+			foreach(SubShader subShader in MaterialBuffer.active.subShaders){
 				shaderIndex += 1;
 				string shaderHash = "Sub"+shaderIndex;
-				Buffer.options[shaderHash] = firstOpen ? true : Utility.GetPref<int>(name+"-"+shaderHash).ToBool();
-				Buffer.options[shaderHash+"Tags"] = Utility.GetPref<int>(name+"-"+shaderHash+"Tags").ToBool();
-				Buffer.options[shaderHash+"Fog"] = Utility.GetPref<int>(name+"-"+shaderHash+"Fog").ToBool();
+				MaterialBuffer.options[shaderHash] = firstOpen ? true : Utility.GetPref<int>(name+"-"+shaderHash).ToBool();
+				MaterialBuffer.options[shaderHash+"Tags"] = Utility.GetPref<int>(name+"-"+shaderHash+"Tags").ToBool();
+				MaterialBuffer.options[shaderHash+"Fog"] = Utility.GetPref<int>(name+"-"+shaderHash+"Fog").ToBool();
 				foreach(var item in subShader.passes){
 					passIndex += 1;
 					item.Value.name = item.Value.name;
 					string passHash = "Pass"+passIndex;
-					Buffer.options[passHash] = firstOpen ? true : Utility.GetPref<int>(name+"-"+passHash).ToBool();
-					Buffer.options[passHash+"Tags"] = Utility.GetPref<int>(name+"-"+passHash+"Tags").ToBool();
-					Buffer.options[passHash+"Fog"] = Utility.GetPref<int>(name+"-"+passHash+"Fog").ToBool();
+					MaterialBuffer.options[passHash] = firstOpen ? true : Utility.GetPref<int>(name+"-"+passHash).ToBool();
+					MaterialBuffer.options[passHash+"Tags"] = Utility.GetPref<int>(name+"-"+passHash+"Tags").ToBool();
+					MaterialBuffer.options[passHash+"Fog"] = Utility.GetPref<int>(name+"-"+passHash+"Fog").ToBool();
 				}
 			}
 		}
@@ -78,7 +78,7 @@ namespace Zios.Editors.MaterialEditors{
 			GUILayoutOption[] half = new GUILayoutOption[]{GUILayout.Width(80),GUILayout.Height(18)};
 			bool hideDefault = (field is Enum && (int)field == 0);
 			hideDefault = hideDefault || (ignore != default(object) && ignore.Equals(field));
-			if(hideDefault && !Buffer.options["ShowDefault"]){return field;}
+			if(hideDefault && !MaterialBuffer.options["ShowDefault"]){return field;}
 			int indent = EditorGUI.indentLevel;
 			EditorGUILayout.BeginHorizontal();
 			Type type = field.GetType();
@@ -114,7 +114,7 @@ namespace Zios.Editors.MaterialEditors{
 			bool currentChanged = EditorGUI.EndChangeCheck();
 			this.stateChanged = currentChanged ? typeName+"-"+label : this.stateChanged;
 			if(currentChanged){
-				Undo.RegisterUndo(Buffer.active,"Shader Edit - " + label);
+				Undo.RegisterUndo(MaterialBuffer.active,"Shader Edit - " + label);
 			}
 			return field;
 		}
@@ -168,7 +168,7 @@ namespace Zios.Editors.MaterialEditors{
 			common.blendPreset = (BlendPreset)this.Draw("Blend Preset",common.blendPreset);
 			bool custom = common.blendPreset == BlendPreset.Custom;
 			bool extended = common.blendPreset == BlendPreset.CustomExtended;
-			bool showBlend = Buffer.options["ShowDefault"] || (custom || extended);
+			bool showBlend = MaterialBuffer.options["ShowDefault"] || (custom || extended);
 			if(preset != common.blendPreset && custom){
 				common.blend = new Blend[2]{Blend.One,Blend.Zero};
 			}
@@ -176,8 +176,8 @@ namespace Zios.Editors.MaterialEditors{
 				++EditorGUI.indentLevel;
 				EditorGUI.BeginDisabledGroup(!custom && !extended);
 				string blendName = extended ? "Color" : "Color & Alpha";
-				common.blend = this.Draw(blendName,common.blend).As<Array>().Convert<Blend>();
-				if(extended){common.blendAlpha = this.Draw("Alpha",common.blendAlpha).As<Array>().Convert<Blend>();}
+				common.blend = this.Draw(blendName,common.blend).As<List<object>>().ConvertAll<object,Blend>();
+				if(extended){common.blendAlpha = this.Draw("Alpha",common.blendAlpha).As<List<object>>().ConvertAll<object,Blend>();}
 				EditorGUI.EndDisabledGroup();
 				--EditorGUI.indentLevel;
 			}
@@ -188,10 +188,10 @@ namespace Zios.Editors.MaterialEditors{
 		}
 		public void DrawFog(Fog fog,string hash){
 			bool fogModeDefault = fog.mode ==  FogMode.Default;
-			bool hideFog = !Buffer.options["ShowDefault"] && (fog.IsDefault() || fogModeDefault);
+			bool hideFog = !MaterialBuffer.options["ShowDefault"] && (fog.IsDefault() || fogModeDefault);
 			if(!hideFog){
-				Buffer.options[hash+"Fog"] = EditorGUILayout.Foldout(Buffer.options[hash+"Fog"],"Fog");
-				if(Buffer.options[hash+"Fog"]){
+				MaterialBuffer.options[hash+"Fog"] = EditorGUILayout.Foldout(MaterialBuffer.options[hash+"Fog"],"Fog");
+				if(MaterialBuffer.options[hash+"Fog"]){
 					++EditorGUI.indentLevel;
 					fog.mode = (FogMode)this.Draw("Mode",fog.mode);
 					if(!fogModeDefault){
@@ -209,11 +209,11 @@ namespace Zios.Editors.MaterialEditors{
 				string typeName = "";
 				GenericMenu menu = new GenericMenu();
 				Action removeMethod = ()=>Debug.Log("No Context Found.");
-				Action flagDirty = ()=> Buffer.buildPreview = true;
+				Action flagDirty = ()=> MaterialBuffer.buildPreview = true;
 				if(hover is Property){
 					Property property = (Property)hover;
 					typeName = "Property ["+property.name+"]";
-					removeMethod = ()=>Buffer.active.properties.RemoveValue(property);
+					removeMethod = ()=>MaterialBuffer.active.properties.RemoveValue(property);
 				}
 				else if(hover is object[]){
 					object[] items = (object[])hover;
@@ -225,12 +225,12 @@ namespace Zios.Editors.MaterialEditors{
 				else if(hover is SubShader){
 					SubShader subShader = (SubShader)hover;
 					typeName = "SubShader";
-					removeMethod = ()=>Buffer.active.RemoveSubShader(subShader);
+					removeMethod = ()=>MaterialBuffer.active.RemoveSubShader(subShader);
 				}
 				GUIContent field = new GUIContent("Remove "+typeName);
 				menu.AddItem(field,false,new GenericMenu.MenuFunction(removeMethod+flagDirty));
 				menu.ShowAsContext();
-				Buffer.unsaved = true;
+				MaterialBuffer.unsaved = true;
 				this.hoverObject = null;
 				UnityEvent.current.Use();
 			}
@@ -238,17 +238,17 @@ namespace Zios.Editors.MaterialEditors{
 		public override void OnInspectorGUI(){
 			if(!UnityEvent.current.IsUseful()){return;}
 			this.Setup(true);
-			if(this.isVisible && Buffer.active != null){
-				Material material = Buffer.material;
+			if(this.isVisible && MaterialBuffer.active != null){
+				Material material = MaterialBuffer.material;
 				this.stateChanged = "";
 				this.titleChanged = "";
-				string unsaved = Buffer.unsaved ? "*" : "";
-				Buffer.options["ShaderUnity"] = this.DrawTitle("Unity Shader"+unsaved,Buffer.options["ShaderUnity"]);
-				if(Buffer.options["ShaderUnity"]){
+				string unsaved = MaterialBuffer.unsaved ? "*" : "";
+				MaterialBuffer.options["ShaderUnity"] = this.DrawTitle("Unity Shader"+unsaved,MaterialBuffer.options["ShaderUnity"]);
+				if(MaterialBuffer.options["ShaderUnity"]){
 					this.drawn = -2;
-					bool isPreview = Buffer.active.menuPath.Contains("Hidden/Preview/");
-					bool isBranch = Buffer.active.fileName.Contains("#");
-					bool exists = Shader.Find(Buffer.active.menuPath) != null;
+					bool isPreview = MaterialBuffer.active.menuPath.Contains("Hidden/Preview/");
+					bool isBranch = MaterialBuffer.active.fileName.Contains("#");
+					bool exists = Shader.Find(MaterialBuffer.active.menuPath) != null;
 					EditorGUIUtility.labelWidth = Screen.width - 207;
 					EditorGUILayout.BeginHorizontal();
 					if(!isBranch && GUILayout.Button("Save")){
@@ -257,9 +257,9 @@ namespace Zios.Editors.MaterialEditors{
 						bool confirm = EditorUI.DrawDialog("Are you sure?",warning,"Save","Cancel");
 						if(confirm){
 							this.EndPreview();
-							Buffer.unsaved = false;
-							Buffer.material.shader = Buffer.active.Save();
-							Debug.Log("[ExtendedMaterial] Shader saved -- " + Buffer.active.path);
+							MaterialBuffer.unsaved = false;
+							MaterialBuffer.material.shader = MaterialBuffer.active.Save();
+							Debug.Log("[ExtendedMaterial] Shader saved -- " + MaterialBuffer.active.path);
 							return;
 						}
 					}
@@ -270,18 +270,18 @@ namespace Zios.Editors.MaterialEditors{
 						}
 						else{
 							this.EndPreview();
-							Buffer.unsaved = false;
-							string path = EditorUtility.SaveFilePanel("Save Shader",Buffer.active.path,Buffer.active.fileName,"shader");
-							Buffer.material.shader = Buffer.active.Save(path);
+							MaterialBuffer.unsaved = false;
+							string path = EditorUtility.SaveFilePanel("Save Shader",MaterialBuffer.active.path,MaterialBuffer.active.fileName,"shader");
+							MaterialBuffer.material.shader = MaterialBuffer.active.Save(path);
 							Debug.Log("[ExtendedMaterial] Shader saved -- " + path);
 							return;
 						}
 					}
-					if((Buffer.unsaved || isPreview) && GUILayout.Button("Revert")){
+					if((MaterialBuffer.unsaved || isPreview) && GUILayout.Button("Revert")){
 						string warning = "Changes will be lost.";
 						bool confirm = EditorUI.DrawDialog("Revert shader to defaults?",warning,"Revert","Cancel");
 						if(confirm){
-							Undo.RegisterUndo(Buffer.material,"Shader Edit - Revert");
+							Undo.RegisterUndo(MaterialBuffer.material,"Shader Edit - Revert");
 							this.EndPreview();
 							this.FixPreviewShader(true);
 							return;
@@ -289,26 +289,26 @@ namespace Zios.Editors.MaterialEditors{
 					}
 					if(GUILayout.Button("Branch")){
 						this.EndPreview();
-						Buffer.unsaved = false;
-						Buffer.active.Branch();
-						Debug.Log("[ExtendedMaterial] Shader branched -- " + Buffer.active.path);
+						MaterialBuffer.unsaved = false;
+						MaterialBuffer.active.Branch();
+						Debug.Log("[ExtendedMaterial] Shader branched -- " + MaterialBuffer.active.path);
 						return;
 					}
 					EditorGUILayout.EndHorizontal();
 					EditorGUILayout.BeginHorizontal();
-					Buffer.options["ShowDefault"] = this.DrawToggleButton("Show Default",Buffer.options["ShowDefault"]);
-					Buffer.options["ShowPreview"] = this.DrawToggleButton("Show Preview",Buffer.options["ShowPreview"]);
+					MaterialBuffer.options["ShowDefault"] = this.DrawToggleButton("Show Default",MaterialBuffer.options["ShowDefault"]);
+					MaterialBuffer.options["ShowPreview"] = this.DrawToggleButton("Show Preview",MaterialBuffer.options["ShowPreview"]);
 					EditorGUILayout.EndHorizontal();
 					if(this.warning != ""){EditorGUILayout.HelpBox(this.warning,MessageType.Warning);}
 					EditorGUI.BeginDisabledGroup(true);
-					Buffer.active.fileName = (string)this.Draw("File",Buffer.active.fileName.Remove("-Preview"));
+					MaterialBuffer.active.fileName = (string)this.Draw("File",MaterialBuffer.active.fileName.Remove("-Preview"));
 					EditorGUI.EndDisabledGroup();
 					string pathPrefix = isPreview ? "Hidden/Preview/" : "";
-					Buffer.active.menuPath = pathPrefix+(string)this.Draw("Menu",Buffer.active.menuPath.Remove("\\","Hidden/Preview/"));
-					Buffer.active.fallback = (string)this.Draw("Fallback",Buffer.active.fallback,"");
-					Buffer.active.editor = (string)this.Draw("Editor",Buffer.active.editor,"");
-					Buffer.options["Properties"] = this.DrawFold("Properties",Buffer.options["Properties"]);
-					if(Buffer.options["Properties"]){
+					MaterialBuffer.active.menuPath = pathPrefix+(string)this.Draw("Menu",MaterialBuffer.active.menuPath.Remove("\\","Hidden/Preview/"));
+					MaterialBuffer.active.fallback = (string)this.Draw("Fallback",MaterialBuffer.active.fallback,"");
+					MaterialBuffer.active.editor = (string)this.Draw("Editor",MaterialBuffer.active.editor,"");
+					MaterialBuffer.options["Properties"] = this.DrawFold("Properties",MaterialBuffer.options["Properties"]);
+					if(MaterialBuffer.options["Properties"]){
 						EditorGUI.BeginChangeCheck();
 						EditorGUILayout.BeginHorizontal();
 						EditorGUILayout.LabelField("\t",GUILayout.Width(10));
@@ -317,7 +317,7 @@ namespace Zios.Editors.MaterialEditors{
 						EditorGUILayout.LabelField("Name",GUILayout.Width(100));
 						EditorGUILayout.LabelField("Default",GUILayout.Width(100));
 						EditorGUILayout.EndHorizontal();
-						foreach(var item in Buffer.active.properties){
+						foreach(var item in MaterialBuffer.active.properties){
 							EditorGUILayout.BeginHorizontal();
 							Property property = item.Value;
 							string type = property.type.ToString();
@@ -348,30 +348,30 @@ namespace Zios.Editors.MaterialEditors{
 						bool changes = EditorGUI.EndChangeCheck();
 						if(GUILayout.Button("Add Property",this.UI.button,GUILayout.Width(115))){
 							//Undo.RegisterUndo(Buffer.active,"Shader - Add Property");
-							Buffer.active.AddProperty();
+							MaterialBuffer.active.AddProperty();
 							this.stateChanged = "Event-AddProperty";
 						}
 						this.stateChanged = changes ? "Property" : this.stateChanged;
-						Buffer.branchable = !changes;
+						MaterialBuffer.branchable = !changes;
 					}
 					int shaderIndex = 0;
 					int passIndex = 0;
-					foreach(SubShader subShader in Buffer.active.subShaders){
+					foreach(SubShader subShader in MaterialBuffer.active.subShaders){
 						shaderIndex += 1;
 						string hash = "Sub"+shaderIndex;
-						bool showSubShaders = Buffer.active.subShaders.Count > 0;
-						if(!Buffer.options.ContainsKey(hash)){continue;}
+						bool showSubShaders = MaterialBuffer.active.subShaders.Count > 0;
+						if(!MaterialBuffer.options.ContainsKey(hash)){continue;}
 						int passAmount = subShader.passes.Count;
 						string passInfo = passAmount > 1 ? " ["+passAmount+" passes]" : " [1 pass]";
-						if(showSubShaders){Buffer.options[hash] = this.DrawFold("SubShader"+passInfo,Buffer.options[hash]);}
+						if(showSubShaders){MaterialBuffer.options[hash] = this.DrawFold("SubShader"+passInfo,MaterialBuffer.options[hash]);}
 						this.hoverObject = this.CheckHover() ? subShader : this.hoverObject;
-						if(showSubShaders && !Buffer.options[hash]){continue;}
+						if(showSubShaders && !MaterialBuffer.options[hash]){continue;}
 						if(showSubShaders){++EditorGUI.indentLevel;}
 						this.DrawCommon(subShader);
-						bool hideTags = !Buffer.options["ShowDefault"] && subShader.tags.IsDefault();
+						bool hideTags = !MaterialBuffer.options["ShowDefault"] && subShader.tags.IsDefault();
 						if(!hideTags){
-							Buffer.options[hash+"Tags"] = this.DrawFold("Tags",Buffer.options[hash+"Tags"]);
-							if(Buffer.options[hash+"Tags"]){
+							MaterialBuffer.options[hash+"Tags"] = this.DrawFold("Tags",MaterialBuffer.options[hash+"Tags"]);
+							if(MaterialBuffer.options[hash+"Tags"]){
 								++EditorGUI.indentLevel;
 								subShader.tags.lightMode = (LightMode)this.Draw("Light Mode",subShader.tags.lightMode);
 								subShader.tags.require = (Require)this.Draw("Require",subShader.tags.require);
@@ -397,9 +397,9 @@ namespace Zios.Editors.MaterialEditors{
 							string passName = pass.name != "" && !pass.name.Contains("!") ? "Pass ["+pass.name+"]" : "Pass";
 							if(pass.type == PassType.Use){passName = "UsePass";}
 							if(pass.type == PassType.Grab){passName = "GrabPass";}
-							Buffer.options[passHash] = this.DrawFold(passName,Buffer.options[passHash]);
+							MaterialBuffer.options[passHash] = this.DrawFold(passName,MaterialBuffer.options[passHash]);
 							this.hoverObject = this.CheckHover() ? new object[]{subShader,pass} : this.hoverObject;
-							if(!Buffer.options[passHash]){continue;}
+							if(!MaterialBuffer.options[passHash]){continue;}
 							++EditorGUI.indentLevel;
 							PassType passType = pass.type;
 							pass.type = (PassType)this.Draw("Type",pass.type);
@@ -411,10 +411,10 @@ namespace Zios.Editors.MaterialEditors{
 							if(pass.type == PassType.Normal){
 								pass.name = (string)this.Draw("Name",pass.name,"");
 								this.DrawCommon(pass);
-								bool hidePassTags = !Buffer.options["ShowDefault"] && pass.tags.IsDefault();
+								bool hidePassTags = !MaterialBuffer.options["ShowDefault"] && pass.tags.IsDefault();
 								if(!hidePassTags){
-									Buffer.options[passHash+"Tags"] = this.DrawFold("Tags",Buffer.options[passHash+"Tags"]);
-									if(Buffer.options[passHash+"Tags"]){
+									MaterialBuffer.options[passHash+"Tags"] = this.DrawFold("Tags",MaterialBuffer.options[passHash+"Tags"]);
+									if(MaterialBuffer.options[passHash+"Tags"]){
 										++EditorGUI.indentLevel;
 										pass.tags.lightMode = (LightMode)this.Draw("Light Mode",pass.tags.lightMode);
 										pass.tags.require = (Require)this.Draw("Require",pass.tags.require);
@@ -422,7 +422,7 @@ namespace Zios.Editors.MaterialEditors{
 									}
 								}
 								this.DrawFog(pass.fog,passHash);
-								bool hideGPUShader = !Buffer.options["ShowDefault"] && pass.gpuShader == "";
+								bool hideGPUShader = !MaterialBuffer.options["ShowDefault"] && pass.gpuShader == "";
 								if(!hideGPUShader){
 									EditorGUI.BeginChangeCheck();
 									pass.gpuShader = EditorGUILayout.TextArea(pass.gpuShader,GUILayout.Width(Screen.width-45));
@@ -451,22 +451,22 @@ namespace Zios.Editors.MaterialEditors{
 					}
 					if(GUILayout.Button("Add SubShader",GUILayout.Width(115))){
 						//Undo.RegisterUndo(Buffer.active,"Shader - Add SubShader");
-						Buffer.active.AddSubShader();
+						MaterialBuffer.active.AddSubShader();
 						this.LoadSettings();
 						this.stateChanged = "Event-AddSubShader";
 					}
 				}
 				//Buffer.options["ShaderGPU"] = this.DrawTitle("GPU Shader",Buffer.options["ShaderGPU"]);
-				Buffer.options["Material"] = this.DrawTitle("Material",Buffer.options["Material"]);
-				if(Buffer.options["Material"]){
+				MaterialBuffer.options["Material"] = this.DrawTitle("Material",MaterialBuffer.options["Material"]);
+				if(MaterialBuffer.options["Material"]){
 					EditorGUIUtility.labelWidth = Screen.width - 84;
 					base.OnInspectorGUI();
 				}
 				if(this.stateChanged != "" || this.titleChanged != ""){
-					foreach(var item in Buffer.options){
+					foreach(var item in MaterialBuffer.options){
 						string key = item.Key;
 						int value = item.Value.ToInt();
-						string settingPrefix = key.ContainsAny("ShowDefault","ShowPreview") ? "ExtendedMaterial-" : Buffer.material.name+"-";
+						string settingPrefix = key.ContainsAny("ShowDefault","ShowPreview") ? "ExtendedMaterial-" : MaterialBuffer.material.name+"-";
 						Utility.SetPref<int>(settingPrefix+key,value);
 					}
 					this.warning = "";
@@ -476,53 +476,53 @@ namespace Zios.Editors.MaterialEditors{
 					GUI.FocusControl("Menu");
 				}
 				if(this.stateChanged != ""){
-					Buffer.unsaved = true;
-					if(Buffer.options["ShowPreview"]){
-						Buffer.buildDelay = Time.realtimeSinceStartup;
-						Buffer.buildPreview = true;
+					MaterialBuffer.unsaved = true;
+					if(MaterialBuffer.options["ShowPreview"]){
+						MaterialBuffer.buildDelay = Time.realtimeSinceStartup;
+						MaterialBuffer.buildPreview = true;
 					}
-					if(this.stateChanged.Contains("TextArea")){Buffer.buildDelay += 2.0f;}
-					if(this.stateChanged.Contains("Field")){Buffer.buildDelay += 1.5f;}
-					if(this.stateChanged.Contains("Color")){Buffer.buildDelay += 0.5f;}
+					if(this.stateChanged.Contains("TextArea")){MaterialBuffer.buildDelay += 2.0f;}
+					if(this.stateChanged.Contains("Field")){MaterialBuffer.buildDelay += 1.5f;}
+					if(this.stateChanged.Contains("Color")){MaterialBuffer.buildDelay += 0.5f;}
 					//Debug.Log("[ExtendedMaterial] Value changed -- " + this.stateChanged);
 				}
 			}
 			this.CheckContext();
 		}
 		public static void CheckPreview(){
-			if(Buffer.buildPreview && Buffer.material != null && Time.realtimeSinceStartup > Buffer.buildDelay){
-				string path = Buffer.material.shader.name;
-				if(!path.Contains("Hidden/Preview/")){Buffer.originalPath = path;}
-				Buffer.active.path = Buffer.active.path.Remove("-Preview").Replace(".shader","-Preview.shader");
-				Buffer.active.menuPath = "Hidden/Preview/"+Buffer.active.menuPath.Remove("Hidden/Preview/");
-				Buffer.refresh = true;
-				Buffer.material.shader = Buffer.active.Save();
-				Buffer.shader = Buffer.material.shader;
-				Buffer.buildPreview = false;
+			if(MaterialBuffer.buildPreview && MaterialBuffer.material != null && Time.realtimeSinceStartup > MaterialBuffer.buildDelay){
+				string path = MaterialBuffer.material.shader.name;
+				if(!path.Contains("Hidden/Preview/")){MaterialBuffer.originalPath = path;}
+				MaterialBuffer.active.path = MaterialBuffer.active.path.Remove("-Preview").Replace(".shader","-Preview.shader");
+				MaterialBuffer.active.menuPath = "Hidden/Preview/"+MaterialBuffer.active.menuPath.Remove("Hidden/Preview/");
+				MaterialBuffer.refresh = true;
+				MaterialBuffer.material.shader = MaterialBuffer.active.Save();
+				MaterialBuffer.shader = MaterialBuffer.material.shader;
+				MaterialBuffer.buildPreview = false;
 			}
 		}
 		public void EndPreview(){
-			Buffer.active.path = Buffer.active.path.Remove("-Preview");
-			Buffer.active.menuPath = Buffer.active.menuPath.Remove("Hidden/Preview/");
+			MaterialBuffer.active.path = MaterialBuffer.active.path.Remove("-Preview");
+			MaterialBuffer.active.menuPath = MaterialBuffer.active.menuPath.Remove("Hidden/Preview/");
 		}
 		public void FixPreviewShader(bool force=false){
 			Material material = (Material)this.target;
-			if(force || (Buffer.material != material && Buffer.material != null)){
+			if(force || (MaterialBuffer.material != material && MaterialBuffer.material != null)){
 				string name = material.shader.name;
 				if(name.Contains("Hidden/Preview/")){
-					Shader shader = Shader.Find(Buffer.originalPath);
+					Shader shader = Shader.Find(MaterialBuffer.originalPath);
 					Func<Shader,bool> Validate = item => item == null || item.name.Contains("Hidden/Preview");
-					if(Validate(shader) && Buffer.active != null){shader = Shader.Find(Buffer.active.menuPath);}
-					if(Validate(shader) && Buffer.material != null){shader = Shader.Find(Buffer.material.shader.name.Remove("Hidden/Preview/"));}
+					if(Validate(shader) && MaterialBuffer.active != null){shader = Shader.Find(MaterialBuffer.active.menuPath);}
+					if(Validate(shader) && MaterialBuffer.material != null){shader = Shader.Find(MaterialBuffer.material.shader.name.Remove("Hidden/Preview/"));}
 					if(Validate(shader)){shader = Shader.Find(material.shader.name.Remove("Hidden/Preview/"));}
 					if(shader == null){
 						Debug.LogWarning("Shader for material is a 'preview' shader, but original path could not be found to revert.  Please fix manually.");
 						return;
 					}
-					if(Buffer.material != null){Buffer.material.shader = shader;}
+					if(MaterialBuffer.material != null){MaterialBuffer.material.shader = shader;}
 					Debug.Log("[ExtendedMaterial] Shader reverted -- " + shader.name);
 					material.shader = shader;
-					Buffer.unsaved = false;
+					MaterialBuffer.unsaved = false;
 				}
 			}
 		}

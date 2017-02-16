@@ -9,6 +9,7 @@ namespace Zios{
 			Event.Add("On Disable",this.OnDeactivate,this);
 		}
 		public void OnDeactivate(){
+			if(this.gameObject.IsNull()){return;}
 			this.gameObject.SetActive(false);
 			this.free = true;
 		}

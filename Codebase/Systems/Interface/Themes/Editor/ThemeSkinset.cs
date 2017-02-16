@@ -33,7 +33,7 @@ namespace Zios.Interface{
 			var isVariant = path.GetPathTerm().Contains("+");
 			skinset.name = path.GetPathTerm().Remove("+");
 			skinset.path = path;
-			foreach(var skinFile in FileManager.FindAll(path+"/*.guiskin",true,false)){
+			foreach(var skinFile in FileManager.FindAll(path+"/*.guiskin",Theme.debug,false)){
 				if(!isVariant && skinFile.path.Contains("/+")){continue;}
 				var active = skinset.skins.AddNew();
 				var filter = skinFile.name.Contains("#") ? skinFile.name.Parse("#",".") : "";

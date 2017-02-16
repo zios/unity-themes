@@ -11,7 +11,7 @@ namespace Zios{
 	[InitializeOnLoad]
 	public static class NetworkerHook{
 		static NetworkerHook(){
-			if(Application.isPlaying){return;}
+			if(Utility.IsPlaying()){return;}
 			new Hook<Networker>();
 		}
 	}

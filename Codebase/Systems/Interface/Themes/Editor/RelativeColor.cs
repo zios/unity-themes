@@ -81,8 +81,8 @@ namespace Zios.Interface{
 			var terms = data.Trim().Replace("\t"," ").Remove(":","=").Split(" ").Where(x=>!x.IsEmpty()).ToArray();
 			var main = terms.Skip(1);
 			this.name = terms[0];
-			this.sourceName = main.Where(x=>!x.IsColor() && !x.IsNumber()).FirstOrDefault() ?? "";
-			var colorValue = main.Where(x=>x.IsColor()).FirstOrDefault();
+			this.sourceName = main.Where(x=>!x.IsColorData() && !x.IsNumber()).FirstOrDefault() ?? "";
+			var colorValue = main.Where(x=>x.IsColorData()).FirstOrDefault();
 			var offsetValue = main.Where(x=>x.IsFloat()).FirstOrDefault();
 			var blendValue = main.LastOrDefault();
 			var color = !colorValue.IsEmpty() ? colorValue.ToColor() : Color.magenta;

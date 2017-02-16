@@ -9,7 +9,7 @@ namespace Zios.Attributes{
 	public static class AttributeManagerHook{
 		public static Hook<AttributeManager> hook;
 		static AttributeManagerHook(){
-			if(Application.isPlaying){return;}
+			if(Utility.IsPlaying()){return;}
 			AttributeManagerHook.hook = new Hook<AttributeManager>(AttributeManagerHook.Reset);
 		}
 		public static void Reset(){

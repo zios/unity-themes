@@ -1,5 +1,6 @@
 using UnityEditor;
 using UnityEngine;
+using System;
 using System.Linq;
 using UnityEvent = UnityEngine.Event;
 namespace Zios.Interface{
@@ -37,18 +38,34 @@ namespace Zios.Interface{
 		}
 		public static void ShowWindow(){
 			if(Theme.window.IsNull()){
-				Theme.window = Resources.FindObjectsOfTypeAll<ThemeWindow>().FirstOrDefault();
+				Theme.window = Locate.GetAssets<ThemeWindow>().FirstOrDefault();
 				if(Theme.window.IsNull()){
-					Theme.setup = false;
 					Theme.window = ScriptableObject.CreateInstance<ThemeWindow>();
 					Theme.window.position = ThemeWindow.hiddenPosition;
 					Theme.window.minSize = ThemeWindow.hiddenSize;
+					Theme.window.maxSize = ThemeWindow.hiddenSize;
 					Theme.window.wantsMouseMove = Theme.hoverResponse != HoverResponse.None;
 					Theme.window.ShowPopup();
 				}
 			}
 			if(Theme.window.position != ThemeWindow.hiddenPosition){Theme.window.position = ThemeWindow.hiddenPosition;}
-			if(Theme.window.minSize != ThemeWindow.hiddenSize){Theme.window.minSize = ThemeWindow.hiddenSize;}
+			if(Theme.window.maxSize != ThemeWindow.hiddenSize){
+				Theme.window.minSize = ThemeWindow.hiddenSize;
+				Theme.window.maxSize = ThemeWindow.hiddenSize;
+			}
+		}
+		public static void CloseWindow(object sender,EventArgs arguments){
+			if(!EditorApplication.isPlayingOrWillChangePlaymode){
+				ThemeWindow.CloseWindow();
+			}
+		}
+		public static void CloseWindow(){
+			var windows = Theme.window.IsNull() ? Resources.FindObjectsOfTypeAll<ThemeWindow>() : Theme.window.AsArray();
+			foreach(var window in windows){
+				window.Close();
+			}
+			Theme.window = null;
+			ThemeWindow.setup = false;
 		}
 	}
 }

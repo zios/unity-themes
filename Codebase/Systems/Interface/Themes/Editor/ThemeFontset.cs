@@ -19,7 +19,7 @@ namespace Zios.Interface{
 		public static List<ThemeFontset> Import(string path=null){
 			path = path ?? "*.unityfontset";
 			var imported = new List<ThemeFontset>();
-			foreach(var file in FileManager.FindAll(path,false)){
+			foreach(var file in FileManager.FindAll(path,Theme.debug)){
 				var active = imported.AddNew();
 				active.name = file.name;
 				active.path = file.path;
@@ -78,7 +78,7 @@ namespace Zios.Interface{
 				if(term.Matches("Font",true)){
 					themeFont.font = FileManager.GetAsset<Font>(value+".ttf",false);
 					themeFont.font = themeFont.font ?? FileManager.GetAsset<Font>(value+".otf",false);
-					themeFont.font = themeFont.font ?? Resources.FindObjectsOfTypeAll<Font>().Where(x=>x.name==value).FirstOrDefault();
+					themeFont.font = themeFont.font ?? Locate.GetAssets<Font>().Where(x=>x.name==value).FirstOrDefault();
 				}
 				else if(term.Matches("SizeOffset",true)){themeFont.sizeOffset = value.ToInt();}
 				else if(term.Matches("OffsetX",true)){themeFont.offsetX = value.ToFloat();}

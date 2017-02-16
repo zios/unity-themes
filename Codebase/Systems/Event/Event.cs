@@ -11,7 +11,7 @@ namespace Zios.Events{
 	public static class EventsHook{
 		public static Hook<Event> hook;
 		static EventsHook(){
-			if(Application.isPlaying){return;}
+			if(Utility.IsPlaying()){return;}
 			EventsHook.hook = new Hook<Event>(EventsHook.Reset,EventsHook.Create);
 		}
 		public static void Reset(){

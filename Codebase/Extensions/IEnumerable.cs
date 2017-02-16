@@ -7,6 +7,13 @@ namespace Zios{
 		//=======================
 		// Conversion
 		//=======================
+		public static To[] ConvertAll<To>(this IEnumerable<string> current){
+			return current.ConvertAll<string,To>();
+		}
+		public static To[] ConvertAll<From,To>(this IEnumerable<From> current){
+			var source = current.ToArray<From>();
+			return Array.ConvertAll(source,x=>x.Convert<To>()).ToArray();
+		}
 		public static Dictionary<TKey,TValue> ToDictionary<TKey,TValue>(this IEnumerable<KeyValuePair<TKey,TValue>> current){
 			return current.ToDictionary(x=>x.Key,x=>x.Value);
 		}

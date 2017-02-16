@@ -10,8 +10,10 @@ namespace Zios.Interface{
 	// Core
 	//============================
 	public static partial class EditorUI{
+		public static bool allowIndention = true;
 		public static Type Draw<Type>(Func<Type> method,bool indention=true){
 			int indentValue = EditorGUI.indentLevel;
+			indention = EditorUI.allowIndention && indention;
 			if(indention && EditorUI.space!=0){GUILayout.Space(EditorUI.space);}
 			if(!indention){EditorGUI.indentLevel = 0;}
 			bool wasChanged = GUI.changed;
@@ -20,6 +22,8 @@ namespace Zios.Interface{
 			EditorUI.lastChanged = GUI.changed;
 			EditorUI.anyChanged = GUI.changed = GUI.changed || wasChanged;
 			EditorGUI.indentLevel = indentValue;
+			if(EditorUI.resetField){EditorUI.SetFieldSize(EditorUI.resetFieldSize,false);}
+			if(EditorUI.resetLayout){EditorUI.ResetLayout();}
 			return value;
 		}
 		public static void Draw(Action method,bool indention=true){

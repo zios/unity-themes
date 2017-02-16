@@ -12,6 +12,7 @@ namespace Zios{
 		public int maximum = 8;
 		public bool uniqueMaterial;
 	}
+	[InitializeOnLoad]
 	public static class Pool{
 		public static Instance empty;
 		public static List<PoolPrefab> prefabs = new List<PoolPrefab>();

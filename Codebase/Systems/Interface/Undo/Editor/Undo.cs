@@ -13,12 +13,15 @@ namespace Zios.Interface{
 		private List<string> cache = new List<string>();
 		private List<Action<string>> callback = new List<Action<string>>();
 		public void OnEnable(){Undo.Setup();}
+		public static void Reset(){
+			Undo.instance.buffer.Clear();
+			Undo.instance.cache.Clear();
+		}
 		public static void Setup(){
-			if(!Utility.IsBusy() && Undo.instance.IsNull()){
+			if(Undo.instance.IsNull()){
 				Undo.instance = FileManager.GetAsset<Undo>("Undo.asset");
 				if(!Undo.instance.IsNull()){
-					Undo.instance.buffer.Clear();
-					Undo.instance.cache.Clear();
+					Undo.Reset();
 					UnityEditor.Undo.undoRedoPerformed += Undo.Process;
 				}
 			}
@@ -126,6 +129,7 @@ namespace Zios.Interface{
 					else if(type == typeof(int)){scope.SetVariable(field,value.ToInt());}
 					else if(type == typeof(float)){scope.SetVariable(field,value.ToFloat());}
 					else if(type == typeof(bool)){scope.SetVariable(field,value.ToBool());}
+					else if(type.IsEnum){scope.SetVariable(field,Enum.Parse(type,value));}
 					Undo.snapshot.Remove(scope);
 				}
 				else{

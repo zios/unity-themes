@@ -80,7 +80,7 @@ namespace Zios.Interface{
 		public GUIContent value = new GUIContent();
 		public static List<ThemeContent> Import(string path){
 			var imported = new List<ThemeContent>();
-			foreach(var file in FileManager.FindAll(path+"/*.guiContent",false)){
+			foreach(var file in FileManager.FindAll(path+"/*.guiContent",Theme.debug)){
 				var contents = ThemeContent.DeserializeGroup(file.GetText());
 				foreach(var content in contents){content.Setup(path);}
 				imported.AddRange(contents);
@@ -146,7 +146,7 @@ namespace Zios.Interface{
 			this.value.image = FileManager.GetAsset<Texture2D>(path+"/"+this.imageName+".png");
 			if(this.value.image.IsNull()){
 				foreach(var texture in Locate.GetAssets<Texture2D>()){
-					if(texture.name == this.imageName && AssetDatabase.GetAssetPath(texture).Contains("Library/unity")){
+					if(texture.name == this.imageName && FileManager.GetPath(texture).Contains("Library/unity")){
 						this.value.image = texture;
 						return;
 					}

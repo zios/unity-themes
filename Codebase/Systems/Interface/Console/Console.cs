@@ -51,7 +51,7 @@ namespace Zios.Interface{
 	public static class ConsoleHook{
 		public static Hook<Console> hook;
 		static ConsoleHook(){
-			if(Application.isPlaying){return;}
+			if(Utility.IsPlaying()){return;}
 			new Hook<Console>();
 		}
 	}

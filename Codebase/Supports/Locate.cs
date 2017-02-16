@@ -4,8 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityObject = UnityEngine.Object;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 namespace Zios{
 	using Events;
+	using Containers;
 	[InitializeOnLoad]
 	public static class Locate{
 		private static bool setup;
@@ -13,6 +17,7 @@ namespace Zios{
 		private static List<Type> cleanSceneComponents = new List<Type>();
 		private static List<GameObject> cleanSiblings = new List<GameObject>();
 		private static Dictionary<string,GameObject> searchCache = new Dictionary<string,GameObject>();
+		private static Dictionary<string,AssetImporter> importers = new Dictionary<string,AssetImporter>();
 		private static Dictionary<Type,UnityObject[]> assets = new Dictionary<Type,UnityObject[]>();
 		private static Dictionary<GameObject,GameObject[]> siblings = new Dictionary<GameObject,GameObject[]>();
 		private static Dictionary<GameObject,GameObject[]> enabledSiblings = new Dictionary<GameObject,GameObject[]>();
@@ -25,7 +30,7 @@ namespace Zios{
 		private static Dictionary<Type,Component[]> sceneComponents = new Dictionary<Type,Component[]>();
 		private static Dictionary<Type,Component[]> enabledComponents = new Dictionary<Type,Component[]>();
 		private static Dictionary<Type,Component[]> disabledComponents = new Dictionary<Type,Component[]>();
-		private static Dictionary<GameObject,Dictionary<Type,Component[]>> objectComponents = new Dictionary<GameObject,Dictionary<Type,Component[]>>();
+		private static Hierarchy<GameObject,Type,Component[]> objectComponents = new Hierarchy<GameObject,Type,Component[]>();
 		static Locate(){
 			if(!Application.isPlaying){
 				//Event.Add("On Application Quit",Locate.SetDirty);
@@ -202,6 +207,14 @@ namespace Zios{
 			if(Application.isLoadingLevel){return new Type[0];}
 			if(!Locate.assets.ContainsKey(typeof(Type))){Locate.assets[typeof(Type)] = Resources.FindObjectsOfTypeAll(typeof(Type));}
 			return (Type[])Locate.assets[typeof(Type)];
+		}
+		//=====================
+		// Importers
+		//=====================
+		public static Type GetImporter<Type>(string path) where Type : AssetImporter{
+			if(Application.isLoadingLevel){return default(Type);}
+			if(!Locate.importers.ContainsKey(path)){Locate.importers[path] = AssetImporter.GetAtPath(path);}
+			return Locate.importers[path].As<Type>();
 		}
 	}
 }

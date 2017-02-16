@@ -95,10 +95,10 @@ namespace Zios{
 					if(term.Contains("text-color")){state.textColor = value.ToColor();}
 					continue;
 				}
-				if(term.Contains("border")){active.border = value.ToRectOffset(" ");}
-				if(term.Contains("margin")){active.margin = value.ToRectOffset(" ");}
-				if(term.Contains("padding")){active.padding = value.ToRectOffset(" ");}
-				if(term.Contains("overflow")){active.overflow = value.ToRectOffset(" ");}
+				if(term.Contains("border")){active.border = value.ToRectOffset();}
+				if(term.Contains("margin")){active.margin = value.ToRectOffset();}
+				if(term.Contains("padding")){active.padding = value.ToRectOffset();}
+				if(term.Contains("overflow")){active.overflow = value.ToRectOffset();}
 				if(term.Contains("font")){active.font = fonts.ContainsKey(value) ? fonts[value] : null;}
 				if(term.Contains("font-size")){active.fontSize = value.ToInt();}
 				if(term.Contains("font-style")){active.fontStyle = (FontStyle)Enum.Parse(typeof(FontStyle),value);}

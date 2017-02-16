@@ -12,10 +12,11 @@ namespace Zios{
 			return new Dictionary<TKey,TValue>(current);
 		}
 		public static TValue Get<TKey,TValue>(this IDictionary<TKey,TValue> current,TKey key,TValue value=default(TValue)) where TValue : new(){
-			if(!current.ContainsKey(key)){
+			TValue output;
+			if(!current.TryGetValue(key,out output)){
 				return value;
 			}
-			return current[key];
+			return output;
 		}
 		public static void SetValues<TKey,TValue>(this IDictionary<TKey,TValue> current,IList<TValue> values) where TValue : new(){
 			int index = 0;
@@ -25,16 +26,18 @@ namespace Zios{
 			}
 		}
 		public static TValue AddDefault<TKey,TValue>(this IDictionary<TKey,TValue> current,TKey key){
-			if(!current.ContainsKey(key)){
-				current[key] = default(TValue);
+			TValue output;
+			if(!current.TryGetValue(key,out output)){
+				current[key] = output = default(TValue);
 			}
-			return current[key];
+			return output;
 		}
 		public static TValue AddNew<TKey,TValue>(this IDictionary<TKey,TValue> current,TKey key) where TValue : new(){
-			if(!current.ContainsKey(key)){
-				current[key] = new TValue();
+			TValue output;
+			if(!current.TryGetValue(key,out output)){
+				current[key] = output = new TValue();
 			}
-			return current[key];
+			return output;
 		}
 		public static TValue AddNewSequence<TKey,TValue>(this IDictionary<IList<TKey>,TValue> current,IList<TKey> key) where TValue : new(){
 			if(!current.Keys.ToArray().Exists(x=>x.SequenceEqual(key))){
@@ -71,8 +74,9 @@ namespace Zios{
 			var output = new Dictionary<Key,Value>();
 			foreach(var item in other){
 				var key = item.Key;
-				if(current.ContainsKey(key)){
-					bool nullMatch = current[key].IsNull() && other[key].IsNull();
+				Value value;
+				if(current.TryGetValue(key,out value)){
+					bool nullMatch = value.IsNull() && other[key].IsNull();
 					bool referenceMatch = !nullMatch && !other[key].GetType().IsValueType;
 					bool valueMatch = !nullMatch && other[key].Equals(current[key]);
 					bool match = nullMatch || referenceMatch || valueMatch;

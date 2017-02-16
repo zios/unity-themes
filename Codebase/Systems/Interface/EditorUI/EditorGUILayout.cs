@@ -14,22 +14,22 @@ namespace Zios.Interface{
 	public static partial class EditorUI{
 		public static string Draw(this string current,UnityLabel label=null,GUIStyle style=null,bool indention=true){
 			style = style ?? EditorStyles.textField;
-			var layout = !style.IsNull() ? style.CreateLayout() : Class.CreateLayout();
+			var layout = style.CreateLayout() ?? Class.CreateLayout();
 			return EditorUI.Draw<string>(()=>EditorGUILayout.TextField(label,current,style,layout),indention);
 		}
 		public static float Draw(this float current,UnityLabel label=null,GUIStyle style=null,bool indention=true){
 			style = style ?? EditorStyles.numberField;
-			var layout = !style.IsNull() ? style.CreateLayout() : Class.CreateLayout();
+			var layout = style.CreateLayout() ?? Class.CreateLayout();
 			return EditorUI.Draw<float>(()=>EditorGUILayout.FloatField(label,current,style,layout),indention);
 		}
 		public static bool Draw(this bool current,UnityLabel label=null,GUIStyle style=null,bool indention=true){
 			style = style ?? EditorStyles.toggle;
-			var layout = !style.IsNull() ? style.CreateLayout() : Class.CreateLayout();
+			var layout = style.CreateLayout() ?? Class.CreateLayout();
 			return EditorUI.Draw<bool>(()=>EditorGUILayout.Toggle(label,current,style,layout),indention);
 		}
 		public static Enum Draw(this Enum current,UnityLabel label=null,GUIStyle style=null,bool indention=true){
 			style = style ?? EditorStyles.popup;
-			var layout = !style.IsNull() ? style.CreateLayout() : Class.CreateLayout();
+			var layout = style.CreateLayout() ?? Class.CreateLayout();
 			return EditorUI.Draw<Enum>(()=>EditorGUILayout.EnumPopup(label,current,style,layout),indention);
 		}
 		public static int Draw(this IEnumerable<string> current,int index,UnityLabel label=null,GUIStyle style=null,bool indention=true){
@@ -39,21 +39,21 @@ namespace Zios.Interface{
 		}
 		public static void Draw(this SerializedProperty current,UnityLabel label=null,bool allowScene=true,bool indention=true){
 			if(label != null && label.value.text.IsEmpty()){label = new GUIContent(current.displayName);}
-			Action action = ()=>EditorGUILayout.PropertyField(current,label,allowScene,(GUILayoutOption[])EditorUI.CreateLayout());
+			Action action = ()=>EditorGUILayout.PropertyField(current,label,allowScene,EditorUI.CreateLayout());
 			EditorUI.Draw(action,indention);
 		}
 		public static Rect Draw(this Rect current,UnityLabel label=null,bool indention=true){
-			return EditorUI.Draw<Rect>(()=>EditorGUILayout.RectField(label,current,(GUILayoutOption[])EditorUI.CreateLayout()),indention);
+			return EditorUI.Draw<Rect>(()=>EditorGUILayout.RectField(label,current,EditorUI.CreateLayout()),indention);
 		}
 		public static AnimationCurve Draw(this AnimationCurve current,UnityLabel label=null,bool indention=true){
-			return EditorUI.Draw<AnimationCurve>(()=>EditorGUILayout.CurveField(label,current,(GUILayoutOption[])EditorUI.CreateLayout()),indention);
+			return EditorUI.Draw<AnimationCurve>(()=>EditorGUILayout.CurveField(label,current,EditorUI.CreateLayout()),indention);
 		}
 		public static Color Draw(this Color current,UnityLabel label=null,bool indention=true){
-			return EditorUI.Draw<Color>(()=>EditorGUILayout.ColorField(label,current,(GUILayoutOption[])EditorUI.CreateLayout()),indention);
+			return EditorUI.Draw<Color>(()=>EditorGUILayout.ColorField(label,current,EditorUI.CreateLayout()),indention);
 		}
 		public static void DrawLabel(this UnityLabel current,GUIStyle style=null,bool indention=true){
 			style = style ?? EditorStyles.label;
-			var layout = !style.IsNull() ? style.CreateLayout() : Class.CreateLayout();
+			var layout = style.CreateLayout() ?? Class.CreateLayout();
 			if(indention){
 				EditorUI.Draw(()=>EditorGUILayout.LabelField(current,style,layout),indention);
 				return;
@@ -69,39 +69,41 @@ namespace Zios.Interface{
 		}
 		public static string DrawTextArea(this string current,UnityLabel label=null,GUIStyle style=null,bool indention=true){
 			style = style ?? EditorStyles.textField;
-			return EditorUI.Draw<string>(()=>EditorGUILayout.TextField(label,current,style,(GUILayoutOption[])EditorUI.CreateLayout()),indention);
+			var layout = style.CreateLayout() ?? Class.CreateLayout();
+			return EditorUI.Draw<string>(()=>EditorGUILayout.TextField(label,current,style,layout),indention);
 		}
 		public static bool DrawButton(this UnityLabel current,GUIStyle style=null,bool indention=true){
 			style = style ?? GUI.skin.button;
-			return EditorUI.Draw<bool>(()=>GUILayout.Button(current,style,Class.CreateLayout()),indention);
+			var layout = style.CreateLayout() ?? Class.CreateLayout();
+			return EditorUI.Draw<bool>(()=>GUILayout.Button(current,style,layout),indention);
 		}
 		public static int DrawInt(this int current,UnityLabel label=null,GUIStyle style=null,bool indention=true){
 			style = style ?? EditorStyles.numberField;
-			var layout = !style.IsNull() ? style.CreateLayout() : Class.CreateLayout();
+			var layout = style.CreateLayout() ?? Class.CreateLayout();
 			return EditorUI.Draw<int>(()=>EditorGUILayout.IntField(label,current,style,layout),indention);
 		}
 		public static int DrawSlider(this int current,int min,int max,UnityLabel label=null,bool indention=true){
-			return EditorUI.Draw<int>(()=>EditorGUILayout.IntSlider(label,current,min,max,(GUILayoutOption[])EditorUI.CreateLayout()),indention);
+			return EditorUI.Draw<int>(()=>EditorGUILayout.IntSlider(label,current,min,max,EditorUI.CreateLayout()),indention);
 		}
 		public static float DrawSlider(this float current,float min,float max,UnityLabel label=null,bool indention=true){
-			return EditorUI.Draw<float>(()=>EditorGUILayout.Slider(label,current,min,max,(GUILayoutOption[])EditorUI.CreateLayout()),indention);
+			return EditorUI.Draw<float>(()=>EditorGUILayout.Slider(label,current,min,max,EditorUI.CreateLayout()),indention);
 		}
 		public static Type Draw<Type>(this UnityObject current,UnityLabel label=null,bool allowScene=true,bool indention=true) where Type : UnityObject{
-			return (Type)EditorUI.Draw<UnityObject>(()=>EditorGUILayout.ObjectField(label,current,typeof(Type),allowScene,(GUILayoutOption[])EditorUI.CreateLayout()),indention);
+			return (Type)EditorUI.Draw<UnityObject>(()=>EditorGUILayout.ObjectField(label,current,typeof(Type),allowScene,EditorUI.CreateLayout()),indention);
 		}
 		public static Enum DrawMask(this Enum current,UnityLabel label=null,GUIStyle style=null,bool indention=true){
 			style = style ?? EditorStyles.popup;
-			var layout = !style.IsNull() ? style.CreateLayout() : Class.CreateLayout();
+			var layout = style.CreateLayout() ?? Class.CreateLayout();
 			return EditorUI.Draw<Enum>(()=>EditorGUILayout.EnumMaskField(label,current,style,layout),indention);
 		}
 		public static Vector2 DrawVector2(this Vector2 current,UnityLabel label=null,bool indention=true){
-			return EditorUI.Draw<Vector2>(()=>EditorGUILayout.Vector2Field(label,current,(GUILayoutOption[])EditorUI.CreateLayout()),indention);
+			return EditorUI.Draw<Vector2>(()=>EditorGUILayout.Vector2Field(label,current,EditorUI.CreateLayout()),indention);
 		}
 		public static Vector3 DrawVector3(this Vector3 current,UnityLabel label=null,bool indention=true){
-			return EditorUI.Draw<Vector3>(()=>EditorGUILayout.Vector3Field(label,current,(GUILayoutOption[])EditorUI.CreateLayout()),indention);
+			return EditorUI.Draw<Vector3>(()=>EditorGUILayout.Vector3Field(label,current,EditorUI.CreateLayout()),indention);
 		}
 		public static Vector4 DrawVector4(this Vector4 current,UnityLabel label=null,bool indention=true){
-			return EditorUI.Draw<Vector4>(()=>EditorGUILayout.Vector4Field(label.ToString(),current,(GUILayoutOption[])EditorUI.CreateLayout()),indention);
+			return EditorUI.Draw<Vector4>(()=>EditorGUILayout.Vector4Field(label.ToString(),current,EditorUI.CreateLayout()),indention);
 		}
 	}
 	//============================
@@ -110,7 +112,7 @@ namespace Zios.Interface{
 	public static partial class EditorUI{
 		public static string DrawDelayed(this string current,UnityLabel label=null,GUIStyle style=null,bool indention=true){
 			style = style ?? EditorStyles.textField;
-			var layout = !style.IsNull() ? style.CreateLayout() : Class.CreateLayout();
+			var layout = style.CreateLayout() ?? Class.CreateLayout();
 			#if UNITY_5_5_OR_NEWER
 			return EditorUI.Draw<string>(()=>EditorGUILayout.DelayedTextField(label,current,style,layout),indention);
 			#else
@@ -119,7 +121,7 @@ namespace Zios.Interface{
 		}
 		public static float DrawDelayed(this float current,UnityLabel label=null,GUIStyle style=null,bool indention=true){
 			style = style ?? EditorStyles.numberField;
-			var layout = !style.IsNull() ? style.CreateLayout() : Class.CreateLayout();
+			var layout = style.CreateLayout() ?? Class.CreateLayout();
 			#if UNITY_5_5_OR_NEWER
 			return EditorUI.Draw<float>(()=>EditorGUILayout.DelayedFloatField(label,current,style,layout),indention);
 			#else
@@ -128,7 +130,7 @@ namespace Zios.Interface{
 		}
 		public static int DrawIntDelayed(this int current,UnityLabel label=null,GUIStyle style=null,bool indention=true){
 			style = style ?? EditorStyles.numberField;
-			var layout = !style.IsNull() ? style.CreateLayout() : Class.CreateLayout();
+			var layout = style.CreateLayout() ?? Class.CreateLayout();
 			#if UNITY_5_5_OR_NEWER
 			return EditorUI.Draw<int>(()=>EditorGUILayout.DelayedIntField(label,current,style,layout),indention);
 			#else
@@ -255,6 +257,7 @@ namespace Zios.Interface{
 	//============================
 	// Layout
 	//============================
+	public enum EditorUILayout{Auto,Global,Style,None}
 	public static partial class EditorUI{
 		public static float width = 0;
 		public static float height = 0;
@@ -264,54 +267,67 @@ namespace Zios.Interface{
 		public static float maxHeight = 0;
 		public static bool? autoWidth = null;
 		public static bool? autoHeight = null;
-		public static bool autoLayout = true;
-		public static bool autoLayoutReset = false;
-		public static void SetLayout(float width,float height,float maxWidth,float maxHeight,float minWidth,float minHeight,bool autoWidth,bool autoHeight){
-			EditorUI.SetLayout(width,height,maxWidth,maxHeight,minWidth,minHeight,(bool?)autoWidth,(bool?)autoHeight);
+		public static bool resetLayout;
+		public static bool resetField;
+		public static Vector2 resetFieldSize;
+		public static EditorUILayout layoutType = EditorUILayout.Global;
+		public static void ResetFieldSize(){EditorUI.SetFieldSize(0,0,false);}
+		public static void SetFieldSize(Vector2 size,bool nextOnly=true){EditorUI.SetFieldSize(size.x,size.y,nextOnly);}
+		public static void SetFieldSize(float valueWidth=-1,float labelWidth=-1,bool nextOnly=true){
+			var reset = new Vector2(-1,-1);
+			EditorUI.resetField = nextOnly;
+			if(valueWidth != -1){
+				EditorGUIUtility.fieldWidth = valueWidth;
+				reset.x = 0;
+			}
+			if(labelWidth != -1){
+				EditorGUIUtility.labelWidth = labelWidth;
+				reset.y = 0;
+			}
+			EditorUI.resetFieldSize = reset;
 		}
-		public static void SetLayout(float width=0,float height=0,float maxWidth=0,float maxHeight=0,float minWidth=0,float minHeight=0,bool? autoWidth=null,bool? autoHeight=null){
-			EditorUI.width = width;
-			EditorUI.height = height;
-			EditorUI.maxWidth = maxWidth;
-			EditorUI.maxHeight = maxHeight;
-			EditorUI.minWidth = minWidth;
-			EditorUI.minHeight = minHeight;
+		public static void SetLayoutOnce(float width=-1,float height=-1,float maxWidth=-1,float maxHeight=-1,float minWidth=-1,float minHeight=-1,bool? autoWidth=null,bool? autoHeight=null){
+			EditorUI.SetLayout(width,height,maxWidth,maxHeight,minWidth,minHeight,autoWidth,autoHeight,true);
+		}
+		public static void SetLayout(float width=-1,float height=-1,float maxWidth=-1,float maxHeight=-1,float minWidth=-1,float minHeight=-1,bool? autoWidth=null,bool? autoHeight=null,bool nextOnly=false){
+			if(width != -1){EditorUI.width = width;}
+			if(height != -1){EditorUI.height = height;}
+			if(maxWidth != -1){EditorUI.maxWidth = maxWidth;}
+			if(maxHeight != -1){EditorUI.maxHeight = maxHeight;}
+			if(minWidth != -1){EditorUI.minWidth = minWidth;}
+			if(minHeight != -1){EditorUI.minHeight = minHeight;}
 			EditorUI.autoWidth = autoWidth;
 			EditorUI.autoHeight = autoHeight;
+			EditorUI.resetLayout = nextOnly;
 		}
 		public static GUILayoutOption[] CreateLayout(this GUIStyle current){
-			var options = new List<GUILayoutOption>();
-			if(EditorUI.autoLayout){
-				if(current.fixedWidth != 0){options.Add(GUILayout.Width(current.fixedWidth));}
-				if(current.fixedHeight != 0){options.Add(GUILayout.Height(current.fixedHeight));}
-				if(current.stretchWidth){options.Add(GUILayout.ExpandWidth(current.stretchWidth));}
-				if(current.stretchHeight){options.Add(GUILayout.ExpandHeight(current.stretchHeight));}
+			var options = new GUILayoutOption[0];
+			if(!current.IsNull() && EditorUI.layoutType.MatchesAny("Style","Auto")){
+				options = EditorUI.GenerateLayout(current.fixedWidth,current.fixedHeight,0,0,0,0,current.stretchWidth,current.stretchHeight);
 			}
-			return options.ToArray();
+			return options.Length < 1 && EditorUI.layoutType.Matches("Style") ? options.ToArray() : null;
 		}
 		public static GUILayoutOption[] CreateLayout(){
+			var options = new GUILayoutOption[0];
+			if(EditorUI.layoutType.MatchesAny("Global","Auto")){
+				options = EditorUI.GenerateLayout(EditorUI.width,EditorUI.height,EditorUI.maxWidth,EditorUI.maxHeight,EditorUI.minWidth,EditorUI.minHeight,EditorUI.autoWidth,EditorUI.autoHeight);
+			}
+			return options.Length < 1 ? null : options.ToArray();
+		}
+		public static GUILayoutOption[] GenerateLayout(float width=0,float height=0,float maxWidth=0,float maxHeight=0,float minWidth=0,float minHeight=0,bool? autoWidth=null,bool? autoHeight=null){
 			var options = new List<GUILayoutOption>();
-			if(EditorUI.autoLayout){
-				if(EditorUI.width != 0){options.Add(GUILayout.Width(EditorUI.width));}
-				if(EditorUI.height != 0){options.Add(GUILayout.Height(EditorUI.height));}
-				if(EditorUI.maxWidth != 0){options.Add(GUILayout.MaxWidth(EditorUI.maxWidth));}
-				if(EditorUI.maxHeight != 0){options.Add(GUILayout.MaxHeight(EditorUI.maxHeight));}
-				if(EditorUI.minWidth != 0){options.Add(GUILayout.MinWidth(EditorUI.minWidth));}
-				if(EditorUI.minHeight != 0){options.Add(GUILayout.MinHeight(EditorUI.minHeight));}
-				if(EditorUI.autoWidth != null){options.Add(GUILayout.ExpandWidth(EditorUI.autoWidth.As<bool>()));}
-				if(EditorUI.autoHeight != null){options.Add(GUILayout.ExpandHeight(EditorUI.autoHeight.As<bool>()));}
-			}
-			if(EditorUI.autoLayoutReset){
-				EditorUI.width = 0;
-				EditorUI.height = 0;
-				EditorUI.maxWidth = 0;
-				EditorUI.maxHeight = 0;
-				EditorUI.minWidth = 0;
-				EditorUI.minHeight = 0;
-				EditorUI.autoWidth = null;
-				EditorUI.autoHeight = null;
-			}
+			if(width != 0){options.Add(GUILayout.Width(width));}
+			if(height != 0){options.Add(GUILayout.Height(height));}
+			if(maxWidth != 0){options.Add(GUILayout.MaxWidth(maxWidth));}
+			if(maxHeight != 0){options.Add(GUILayout.MaxHeight(maxHeight));}
+			if(minWidth != 0){options.Add(GUILayout.MinWidth(minWidth));}
+			if(minHeight != 0){options.Add(GUILayout.MinHeight(minHeight));}
+			if(autoWidth != null){options.Add(GUILayout.ExpandWidth(autoWidth.As<bool>()));}
+			if(autoHeight != null){options.Add(GUILayout.ExpandHeight(autoHeight.As<bool>()));}
 			return options.ToArray();
+		}
+		public static void ResetLayout(){
+			EditorUI.SetLayout(0,0,0,0,0,0,null,null,false);
 		}
 	}
 }

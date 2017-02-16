@@ -257,9 +257,8 @@ namespace Zios{
 				return true;
 			}
 			#if UNITY_EDITOR
-			string assetPath = FileManager.GetPath(current.transform.root.gameObject);
-			if(!assetPath.IsEmpty()){
-				return true;
+			if(Application.isEditor){
+				return !PrefabUtility.GetPrefabParent(current.transform.root.gameObject).IsNull();
 			}
 			#endif
 			return false;

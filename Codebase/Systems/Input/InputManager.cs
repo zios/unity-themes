@@ -12,7 +12,7 @@ namespace Zios.Inputs{
 	public static class InputHook{
 		public static Hook<InputManager> hook;
 		static InputHook(){
-			if(Application.isPlaying){return;}
+			if(Utility.IsPlaying()){return;}
 			InputHook.hook = new Hook<InputManager>(null,InputHook.Create);
 		}
 		public static void Create(){

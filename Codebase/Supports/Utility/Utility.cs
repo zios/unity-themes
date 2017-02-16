@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 using UnityObject = UnityEngine.Object;
+using UnityAction = UnityEngine.Events.UnityAction;
 namespace Zios{
 	using Events;
 	#if UNITY_EDITOR
@@ -38,6 +39,7 @@ namespace Zios{
 			Event.Register("On Asset Moving");
 			Event.Register("On Scene Loaded");
 			Event.Register("On Editor Scene Loaded");
+			Event.Register("On Editor Quit");
 			Event.Register("On Mode Changed");
 			Event.Register("On Enter Play");
 			Event.Register("On Exit Play");
@@ -66,12 +68,15 @@ namespace Zios{
 			EditorApplication.update += ()=>Event.Call("On Editor Update");
 			EditorApplication.update += ()=>Utility.CheckLoaded(true);
 			EditorApplication.update += ()=>Utility.CheckDelayed(true);
+			UnityAction editorQuitEvent = new UnityAction(()=>Event.Call("On Editor Quit"));
 			CallbackFunction windowEvent = ()=>Event.Call("On Window Reordered");
 			CallbackFunction globalEvent = ()=>Event.Call("On Global Event");
 			var windowsReordered = typeof(EditorApplication).GetVariable<CallbackFunction>("windowsReordered");
 			typeof(EditorApplication).SetVariable("windowsReordered",windowsReordered+windowEvent);
 			var globalEventHandler = typeof(EditorApplication).GetVariable<CallbackFunction>("globalEventHandler");
 			typeof(EditorApplication).SetVariable("globalEventHandler",globalEventHandler+globalEvent);
+			var editorQuitHandler = typeof(EditorApplication).GetVariable<UnityAction>("editorApplicationQuit");
+			typeof(EditorApplication).SetVariable("editorApplicationQuit",editorQuitHandler+editorQuitEvent);
 			#endif
 		}
 		public static void CheckLoaded(){Utility.CheckLoaded(false);}

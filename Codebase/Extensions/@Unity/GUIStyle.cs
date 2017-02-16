@@ -2,7 +2,28 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 namespace Zios{
-	using Zios.Interface;
+	public enum GUIStyleField{
+		name,
+		textColor,
+		background,
+		border,
+		margin,
+		padding,
+		overflow,
+		font,
+		fontSize,
+		fontStyle,
+		alignment,
+		wordWrap,
+		richText,
+		clipping,
+		imagePosition,
+		contentOffset,
+		fixedWidth,
+		fixedHeight,
+		stretchWidth,
+		stretchHeight,
+	}
 	public static class GUIStyleExtension{
 		public static GUIStyle Rotate90(this GUIStyle current){
 			float width = current.fixedWidth;
@@ -206,6 +227,21 @@ namespace Zios{
 		}
 		public static GUIStyle Rename(this GUIStyle current,string name){
 			current.name = name;
+			return current;
+		}
+		public static GUIStyle UseState(this GUIStyle current,string find,string replace="normal",bool asCopy=true){
+			if(asCopy){current = new GUIStyle(current);}
+			var states = current.GetNamedStates();
+			if(states.ContainsKey(replace)){
+				states[replace].textColor = states[find].textColor;
+				states[replace].background = states[find].background;
+			}
+			if(replace.ContainsAny("*","all")){
+				foreach(var item in states){
+					states[item.Key].textColor = states[find].textColor;
+					states[item.Key].background = states[find].background;
+				}
+			}
 			return current;
 		}
 		public static GUIStyle Use(this GUIStyle current,GUIStyle other){

@@ -7,20 +7,6 @@ namespace Zios{
 		//=======================
 		// Default
 		//=======================
-		public static T[] Convert<T>(this Array current){
-			List<T> casted = new List<T>();
-			Type type = typeof(T);
-			foreach(var item in current){
-				if(type == typeof(Single)){
-					float value = System.Convert.ToSingle(item);
-					casted.Add((T)System.Convert.ChangeType(value,type));
-				}
-				else{
-					casted.Add((T)item);
-				}
-			}
-			return casted.ToArray();
-		}
 		public static List<T> ToList<T>(this T[] current){
 			return new List<T>(current);
 		}

@@ -8,7 +8,7 @@ using System.Text;
 using System.Linq;
 using System.Collections.Generic;
 namespace Zios.Editors.MaterialEditors{
-	public static class Buffer{
+	public static class MaterialBuffer{
 		public static Material material;
 		public static Shader shader;
 		public static ExtendedMaterial active;
@@ -24,9 +24,9 @@ namespace Zios.Editors.MaterialEditors{
 	public class Watcher : AssetPostprocessor{
 		public static void OnPostprocessAllAssets(string[] imported,string[] deleted,string[] moved, string[] path){
 			if(imported.Length > 0){
-				if(Buffer.active != null && !Buffer.refresh){
-					Debug.Log("[ExtendedMaterial] Asset Refreshing -- " + Buffer.active.menuPath);
-					ExtendedMaterial.DestroyImmediate(Buffer.active);
+				if(MaterialBuffer.active != null && !MaterialBuffer.refresh){
+					Debug.Log("[ExtendedMaterial] Asset Refreshing -- " + MaterialBuffer.active.menuPath);
+					ExtendedMaterial.DestroyImmediate(MaterialBuffer.active);
 				}
 			}
 		}
@@ -463,7 +463,7 @@ namespace Zios.Editors.MaterialEditors{
 						property.defaultValue = value;
 						if(type == "Range" || type == "Float"){property.defaultValue = Convert.ToSingle(value);}
 						if(type == "Color" || type == "Vector"){
-							float[] values = value.Remove("(",")").Split(',').Convert<float>();
+							float[] values = value.Remove("(",")").Split(',').ConvertAll<float>();
 							property.defaultValue = values;
 							if(type == "Color"){property.defaultValue = values.ToColor();}
 							if(type == "Vector"){property.defaultValue = values.ToVector4();}
@@ -616,7 +616,7 @@ namespace Zios.Editors.MaterialEditors{
 					common.fog.range = new Vector2(start,end);
 				}
 				if(fogColor != ""){
-					common.fog.color = fogColor.Split(',').Convert<float>().ToColor();
+					common.fog.color = fogColor.Split(',').ConvertAll<float>().ToColor();
 				}
 				common.fog.mode = (FogMode)common.fog.mode.Get(fogMode,0);
 				if(fogDensity !=""){common.fog.density = Convert.ToSingle(fogDensity);}

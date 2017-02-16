@@ -113,11 +113,12 @@ namespace Zios{
 		//============================
 		// Conversions
 		//============================
-		public static float ToFloat(this object current){return Convert.ChangeType(current,typeof(float)).As<float>();}
-		public static int ToInt(this object current){return Convert.ChangeType(current,typeof(int)).As<int>();}
-		public static double ToDouble(this object current){return Convert.ChangeType(current,typeof(double)).As<double>();}
-		public static string ToString(this object current){return Convert.ChangeType(current,typeof(string)).As<string>();}
-		public static bool ToBool(this object current){return Convert.ChangeType(current,typeof(bool)).As<bool>();}
+		public static Type Convert<Type>(this object current){return System.Convert.ChangeType(current,typeof(Type)).As<Type>();}
+		public static float ToFloat(this object current){return System.Convert.ChangeType(current,typeof(float)).As<float>();}
+		public static int ToInt(this object current){return System.Convert.ChangeType(current,typeof(int)).As<int>();}
+		public static double ToDouble(this object current){return System.Convert.ChangeType(current,typeof(double)).As<double>();}
+		public static string ToString(this object current){return System.Convert.ChangeType(current,typeof(string)).As<string>();}
+		public static bool ToBool(this object current){return System.Convert.ChangeType(current,typeof(bool)).As<bool>();}
 		public static byte[] ToBytes(this object current){
 			if(current is Vector3){return current.As<Vector3>().ToBytes();}
 			else if(current is float){return current.As<float>().ToBytes();}
@@ -132,6 +133,7 @@ namespace Zios{
 		public static string Serialize(this object current){
 			if(current is Texture2D){return current.As<Texture2D>().Serialize();}
 			else if(current is GUIContent){return current.As<GUIContent>().Serialize();}
+			else if(current is Vector2){return current.As<Vector2>().Serialize();}
 			else if(current is Vector3){return current.As<Vector3>().Serialize();}
 			else if(current is Color){return current.As<Color>().Serialize();}
 			else if(current is float){return current.As<float>().Serialize();}

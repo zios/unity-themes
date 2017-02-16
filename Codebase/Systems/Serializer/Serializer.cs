@@ -12,7 +12,7 @@ namespace Zios{
 	public static class SerializerHook{
 		public static Hook<Serializer> hook;
 		static SerializerHook(){
-			if(Application.isPlaying){return;}
+			if(Utility.IsPlaying()){return;}
 			SerializerHook.hook = new Hook<Serializer>(SerializerHook.Reset,SerializerHook.Create);
 		}
 		public static void Reset(){
@@ -55,6 +55,7 @@ namespace Zios{
 		private string path;
 		[ContextMenu("Refresh")]
 		public void Setup(){
+			if(this.disabled){return;}
 			if(Serializer.defaults.Count < 1){
 				Serializer.instance = this;
 				this.path = Application.dataPath+"/@Serialized/";
