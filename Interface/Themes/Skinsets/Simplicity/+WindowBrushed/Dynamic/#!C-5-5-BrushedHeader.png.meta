@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: ee0a9cca08e1c48419e5d72c6e010ef1
-timeCreated: 1464976870
+guid: 1c2b13088b6d3944a91050387ac70bc9
+timeCreated: 1486967486
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
@@ -24,13 +24,13 @@ TextureImporter:
   generateCubemap: 6
   cubemapConvolution: 0
   seamlessCubemap: 0
-  textureFormat: 4
+  textureFormat: 1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: 0
-    aniso: 6
+    filterMode: -1
+    aniso: -1
     mipBias: -1
-    wrapMode: 1
+    wrapMode: -1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -52,12 +52,12 @@ TextureImporter:
   platformSettings:
   - buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
-    textureFormat: -1
-    textureCompression: 0
+    textureFormat: 4
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
-    overridden: 0
+    overridden: 1
   - buildTarget: Standalone
     maxTextureSize: 2048
     textureFormat: 4
@@ -72,5 +72,5 @@ TextureImporter:
     outline: []
   spritePackingTag: 
   userData: 
-  assetBundleName: themeassets
+  assetBundleName: 
   assetBundleVariant: 

@@ -9,8 +9,8 @@
 	BorderButton        : #C4C6CC  
 	BorderIcons         : #00000066
 	Highlight           : #83868E  
-	HighlightActive     : #818181  
-	HighlightButton     : #1B2F3F00
+	HighlightActive     : #1B2F3F  
+	HighlightButton     : #1726326D
 	HighlightIcons      : #FFFFFF83
 	Scrollbar           : #81818110
 	ScrollbarThumb      : #0E599738
@@ -26,7 +26,7 @@
 	TextBorderButton    : #0000008E
 	TextHighlight       : #FFFFFFC9
 	TextHighlightActive : #FFFFFF  
-	TextHighlightButton : #00000066
+	TextHighlightButton : #FFFFFFB4
 	TextWarning         : #8F9700  
 	TextError           : #B00000  
 	TextHeader          : #00000088
@@ -36,5 +36,5 @@
 	Details             : #C4C6CC   : Border   
 	Cursor              : #83868E   : Highlight
 	Selection           : #C4C6CCA4 : Border   
-	Curve               : #83868E   : Highlight : 1.5
-	CurveBackground     : #C4C6CC   : Border    : 0.5
+	Curve               : #C4C9D5   : Highlight : 1.5
+	CurveBackground     : #626366   : Border    : 0.5

@@ -1734,10 +1734,10 @@ MonoBehaviour:
       m_Top: 0
       m_Bottom: 0
     m_Overflow:
-      m_Left: 0
-      m_Right: 0
-      m_Top: 5
-      m_Bottom: -5
+      m_Left: -2
+      m_Right: 2
+      m_Top: 2
+      m_Bottom: -2
     m_Font: {fileID: 0}
     m_FontSize: 0
     m_FontStyle: 0
@@ -1747,8 +1747,8 @@ MonoBehaviour:
     m_TextClipping: 1
     m_ImagePosition: 0
     m_ContentOffset: {x: 0, y: 0}
-    m_FixedWidth: 16
-    m_FixedHeight: 16
+    m_FixedWidth: 13
+    m_FixedHeight: 13
     m_StretchWidth: 0
     m_StretchHeight: 0
   - m_Name: sceneHeaderBg [ProjectBrowserTopBarBg]

@@ -344,7 +344,7 @@ MonoBehaviour:
     m_ImagePosition: 3
     m_ContentOffset: {x: 2, y: 0}
     m_FixedWidth: 0
-    m_FixedHeight: 15
+    m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_textArea:
@@ -2898,7 +2898,7 @@ MonoBehaviour:
     m_ImagePosition: 0
     m_ContentOffset: {x: 0, y: 0}
     m_FixedWidth: 0
-    m_FixedHeight: 19
+    m_FixedHeight: 18
     m_StretchWidth: 1
     m_StretchHeight: 0
   - m_Name: ButtonMid
@@ -2964,7 +2964,7 @@ MonoBehaviour:
     m_ImagePosition: 0
     m_ContentOffset: {x: 0, y: 0}
     m_FixedWidth: 0
-    m_FixedHeight: 19
+    m_FixedHeight: 18
     m_StretchWidth: 1
     m_StretchHeight: 0
   - m_Name: ButtonRight
@@ -3030,7 +3030,7 @@ MonoBehaviour:
     m_ImagePosition: 0
     m_ContentOffset: {x: 0, y: 0}
     m_FixedWidth: 0
-    m_FixedHeight: 19
+    m_FixedHeight: 18
     m_StretchWidth: 1
     m_StretchHeight: 0
   - m_Name: BypassToggle
@@ -5472,7 +5472,7 @@ MonoBehaviour:
     m_StretchHeight: 1
   - m_Name: dockarea
     m_Normal:
-      m_Background: {fileID: 2800000, guid: 6c602406d02b01849ace547192ac0b6e, type: 3}
+      m_Background: {fileID: 2800000, guid: 5350563619047e44ab91ce873c7d6764, type: 3}
       m_ScaledBackgrounds: []
       m_TextColor: {r: 1, g: 0.007843138, b: 1, a: 0}
     m_Hover:
@@ -5511,7 +5511,7 @@ MonoBehaviour:
     m_Margin:
       m_Left: 0
       m_Right: 0
-      m_Top: 6
+      m_Top: 2
       m_Bottom: 0
     m_Padding:
       m_Left: 1
@@ -5521,7 +5521,7 @@ MonoBehaviour:
     m_Overflow:
       m_Left: 0
       m_Right: 0
-      m_Top: 6
+      m_Top: 2
       m_Bottom: 0
     m_Font: {fileID: 3459068928204737762, guid: 0000000000000000d000000000000000,
       type: 0}
@@ -5991,7 +5991,7 @@ MonoBehaviour:
       m_Left: 0
       m_Right: 0
       m_Top: 3
-      m_Bottom: -1
+      m_Bottom: 0
     m_Font: {fileID: 12800000, guid: cdc152662dd567b4aac56b960d250bf7, type: 3}
     m_FontSize: 13
     m_FontStyle: 0
@@ -6000,7 +6000,7 @@ MonoBehaviour:
     m_RichText: 1
     m_TextClipping: 1
     m_ImagePosition: 3
-    m_ContentOffset: {x: 0, y: -2}
+    m_ContentOffset: {x: 0, y: -1}
     m_FixedWidth: 0
     m_FixedHeight: 0
     m_StretchWidth: 1
@@ -6054,7 +6054,7 @@ MonoBehaviour:
       m_Top: 0
       m_Bottom: 0
     m_Overflow:
-      m_Left: 0
+      m_Left: -1
       m_Right: 0
       m_Top: 3
       m_Bottom: -1
@@ -6105,10 +6105,10 @@ MonoBehaviour:
       m_ScaledBackgrounds: []
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Border:
-      m_Left: 103
-      m_Right: 6
-      m_Top: 20
-      m_Bottom: 5
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
     m_Margin:
       m_Left: 0
       m_Right: 0
@@ -6120,7 +6120,7 @@ MonoBehaviour:
       m_Top: 3
       m_Bottom: 0
     m_Overflow:
-      m_Left: 0
+      m_Left: -1
       m_Right: 0
       m_Top: 0
       m_Bottom: 0
@@ -6448,16 +6448,16 @@ MonoBehaviour:
       m_Bottom: 2
     m_Padding:
       m_Left: 6
-      m_Right: 12
+      m_Right: 7
       m_Top: 0
       m_Bottom: 0
     m_Overflow:
       m_Left: 0
-      m_Right: 0
+      m_Right: 5
       m_Top: 0
-      m_Bottom: -3
+      m_Bottom: 0
     m_Font: {fileID: 12800000, guid: 34d23e265a76d2146b73a2b47ea46b98, type: 3}
-    m_FontSize: 11
+    m_FontSize: 12
     m_FontStyle: 0
     m_Alignment: 3
     m_WordWrap: 0
@@ -6466,7 +6466,7 @@ MonoBehaviour:
     m_ImagePosition: 0
     m_ContentOffset: {x: 0, y: 0}
     m_FixedWidth: 0
-    m_FixedHeight: 0
+    m_FixedHeight: 15
     m_StretchWidth: 1
     m_StretchHeight: 0
   - m_Name: EyeDropperHorizontalLine
@@ -13760,10 +13760,10 @@ MonoBehaviour:
       m_Top: 0
       m_Bottom: 0
     m_Overflow:
-      m_Left: 0
-      m_Right: 0
-      m_Top: 6
-      m_Bottom: -6
+      m_Left: -2
+      m_Right: 2
+      m_Top: 3
+      m_Bottom: -3
     m_Font: {fileID: 0}
     m_FontSize: 0
     m_FontStyle: 0
@@ -13773,8 +13773,8 @@ MonoBehaviour:
     m_TextClipping: 0
     m_ImagePosition: 0
     m_ContentOffset: {x: 0, y: 0}
-    m_FixedWidth: 16
-    m_FixedHeight: 16
+    m_FixedWidth: 13
+    m_FixedHeight: 13
     m_StretchWidth: 1
     m_StretchHeight: 0
   - m_Name: IN ObjectField
@@ -21727,8 +21727,8 @@ MonoBehaviour:
     m_TextClipping: 1
     m_ImagePosition: 0
     m_ContentOffset: {x: 0, y: 0}
-    m_FixedWidth: 16
-    m_FixedHeight: 16
+    m_FixedWidth: 13
+    m_FixedHeight: 13
     m_StretchWidth: 0
     m_StretchHeight: 0
   - m_Name: PlayerSettingsLevel
@@ -30536,10 +30536,10 @@ MonoBehaviour:
       m_ScaledBackgrounds: []
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Border:
-      m_Left: 0
-      m_Right: 0
-      m_Top: 0
-      m_Bottom: 0
+      m_Left: 1
+      m_Right: 1
+      m_Top: 1
+      m_Bottom: 1
     m_Margin:
       m_Left: 0
       m_Right: 0
@@ -30551,10 +30551,10 @@ MonoBehaviour:
       m_Top: 0
       m_Bottom: 0
     m_Overflow:
-      m_Left: 2
-      m_Right: 2
-      m_Top: 2
-      m_Bottom: 2
+      m_Left: 1
+      m_Right: 1
+      m_Top: 1
+      m_Bottom: 1
     m_Font: {fileID: 0}
     m_FontSize: 0
     m_FontStyle: 0
@@ -36192,7 +36192,7 @@ MonoBehaviour:
     m_StretchHeight: 0
   - m_Name: WindowBackground
     m_Normal:
-      m_Background: {fileID: 2800000, guid: 8ac5c69f786ff674bb69a5f9b5898c49, type: 3}
+      m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Hover:
@@ -36239,7 +36239,7 @@ MonoBehaviour:
       m_Top: 10
       m_Bottom: 10
     m_Overflow:
-      m_Left: 1
+      m_Left: 0
       m_Right: 1
       m_Top: 1
       m_Bottom: 1
@@ -36726,6 +36726,6 @@ MonoBehaviour:
   m_Settings:
     m_DoubleClickSelectsWord: 1
     m_TripleClickSelectsLine: 1
-    m_CursorColor: {r: 0.14117648, g: 0.37254903, b: 0.30588236, a: 1}
-    m_CursorFlashSpeed: 0
-    m_SelectionColor: {r: 0.14117648, g: 0.37254903, b: 0.30588236, a: 0.5019608}
+    m_CursorColor: {r: 1, g: 0, b: 1, a: 0}
+    m_CursorFlashSpeed: -1
+    m_SelectionColor: {r: 1, g: 0, b: 1, a: 0}

@@ -1357,7 +1357,7 @@ MonoBehaviour:
   m_CustomStyles:
   - m_Name: dockarea
     m_Normal:
-      m_Background: {fileID: 2800000, guid: 6c602406d02b01849ace547192ac0b6e, type: 3}
+      m_Background: {fileID: 2800000, guid: a509398142faa5b4d9aa26656d00272f, type: 3}
       m_ScaledBackgrounds: []
       m_TextColor: {r: 1, g: 0.007843138, b: 1, a: 0}
     m_Hover:
@@ -1484,7 +1484,7 @@ MonoBehaviour:
     m_RichText: 1
     m_TextClipping: 1
     m_ImagePosition: 0
-    m_ContentOffset: {x: 0, y: -2}
+    m_ContentOffset: {x: 0, y: 0}
     m_FixedWidth: 0
     m_FixedHeight: 0
     m_StretchWidth: 1
