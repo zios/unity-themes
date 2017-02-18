@@ -162,8 +162,8 @@ namespace Zios.Editors{
 					}
 					if(lookup == 2){
 						value = value == "0" ? "UnityWhite" : value;
-						var image = value == "UnityWhite" ? Texture2D.whiteTexture : FileManager.GetAsset<Texture2D>(value+"*",false);
-						if(!image.IsNull()){
+						var image = value == "UnityWhite" ? Texture2D.whiteTexture : FileManager.GetAsset<Texture2D>(value+".*",false);
+						if(!image.IsNull() && !value.Contains("*")){
 							image = image.Draw<Texture2D>();
 							value = image.IsNull() ? "" : image.name;
 						}
@@ -172,7 +172,7 @@ namespace Zios.Editors{
 					if(lookup == 7){
 						value = value == "0" ? "Arial" : value;
 						var font = FileManager.GetAsset<Font>(value+".ttf",false) ?? FileManager.GetAsset<Font>(value+".otf",false);
-						if(!font.IsNull()){
+						if(!font.IsNull() && !value.Contains("*")){
 							font = font.Draw<Font>();
 							value = font.IsNull() ? "" : font.name;
 						}
