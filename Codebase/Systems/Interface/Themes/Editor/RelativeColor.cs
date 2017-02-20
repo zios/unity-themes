@@ -37,11 +37,11 @@ namespace Zios.Interface{
 		}
 		public static void UpdateSystem(){
 			//if(Theme.active.IsNull() || !Theme.active.palette.usesSystem){return;}
-			object key = null;
 			var system = RelativeColor.system;
 			var current = system.value;
 			system.name = "@System";
 			#if UNITY_EDITOR_WIN
+			object key = null;
 			key = Registry.GetValue("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\DWM\\","AccentColor",null);
 			key = key ?? Registry.GetValue("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Accent","AccentColor",null);
 			if(!key.IsNull() && key.As<int>() != -1){
