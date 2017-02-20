@@ -366,6 +366,7 @@ namespace Zios{
 		public string fullName;
 		public string extension;
 		public bool isFolder;
+		public object asset;
 		public FileData(){}
 		public FileData(string path,bool isFolder=false){
 			this.path = path;
@@ -403,8 +404,11 @@ namespace Zios{
 		public long GetSize(){return new FileInfo(this.path).Length;}
 		public T GetAsset<T>() where T : UnityObject{
 			#if UNITY_EDITOR
-			if(Application.isEditor && this.path.IndexOf("Assets") != -1){
-				return AssetDatabase.LoadAssetAtPath(this.GetAssetPath(),typeof(T)).As<T>();
+			if(Application.isEditor){
+				if(this.asset.IsNull()){
+					this.asset = AssetDatabase.LoadAssetAtPath(this.GetAssetPath(),typeof(T)).As<T>();
+				}
+				return this.asset.As<T>();
 			}
 			#endif
 			return default(T);

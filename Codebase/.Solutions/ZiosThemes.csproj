@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -17,20 +17,20 @@
     <OutputPath>.</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DefineConstants>UNITY_5;UNITY_EDITOR;UNITY_EDITOR_WIN;UNITY_THEMES</DefineConstants>
+    <DefineConstants>UNITY_EDITOR;UNITY_THEMES</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
-    <Reference Include="UnityEngine">
-      <HintPath>UnityEngine.dll</HintPath>
+    <Reference Include="UnityEditor">
+      <HintPath>.\UnityEditor.dll</HintPath>
     </Reference>
-        <Reference Include="UnityEngine">
-      <HintPath>UnityEditor.dll</HintPath>
+    <Reference Include="UnityEngine">
+      <HintPath>.\UnityEngine.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="AssemblyInfo.cs" />
     <Compile Include="..\Containers\Container.cs" />
     <Compile Include="..\Extensions\%40Unity\Color.cs" />
     <Compile Include="..\Extensions\%40Unity\ComponentExtensions.cs" />
@@ -46,6 +46,7 @@
     <Compile Include="..\Extensions\%40Unity\Vector3.cs" />
     <Compile Include="..\Extensions\%40Unity\Vector4.cs" />
     <Compile Include="..\Extensions\%40Unity\Editor\EditorWindow.cs" />
+    <Compile Include="..\Extensions\%40Unity\Editor\GenericMenu.cs" />
     <Compile Include="..\Extensions\%40Unity\Editor\TextureImporter.cs" />
     <Compile Include="..\Extensions\Array.cs" />
     <Compile Include="..\Extensions\BitArray.cs" />
@@ -77,8 +78,8 @@
     <Compile Include="..\Supports\Locate.cs" />
     <Compile Include="..\Supports\Store.cs" />
     <Compile Include="..\Supports\Utility\Utility.cs" />
-    <Compile Include="..\Supports\Utility\UtilityPref.cs" />
     <Compile Include="..\Supports\Utility\UtilityEditor.cs" />
+    <Compile Include="..\Supports\Utility\UtilityPref.cs" />
     <Compile Include="..\Supports\Utility\UtilityProxy.cs" />
     <Compile Include="..\System Attributes\EnumMask.cs" />
     <Compile Include="..\System Attributes\Internal.cs" />
@@ -93,13 +94,11 @@
     <Compile Include="..\Systems\Interface\EditorUI\EditorUI.cs" />
     <Compile Include="..\Systems\Interface\EditorUI\EditorGUI.cs" />
     <Compile Include="..\Systems\Interface\EditorUI\EditorGUILayout.cs" />
-    <Compile Include="..\Editor\Preferences.cs" />
-    <Compile Include="..\Extensions\%40Unity\Editor\GenericMenu.cs" />
     <Compile Include="ThemeSystem.cs" />
     <Compile Include="..\Systems\Interface\Themes\Editor\RelativeColor.cs" />
     <Compile Include="..\Systems\Interface\Themes\Editor\Theme.cs" />
-    <Compile Include="..\Systems\Interface\Themes\Editor\ThemeIconset.cs" />
     <Compile Include="..\Systems\Interface\Themes\Editor\ThemeFontset.cs" />
+    <Compile Include="..\Systems\Interface\Themes\Editor\ThemeIconset.cs" />
     <Compile Include="..\Systems\Interface\Themes\Editor\ThemePalette.cs" />
     <Compile Include="..\Systems\Interface\Themes\Editor\ThemeSkinset.cs" />
     <Compile Include="..\Systems\Interface\Themes\Editor\ThemeUtility.cs" />

@@ -11,13 +11,14 @@ namespace Zios.Interface{
 	[InitializeOnLoad][NotSerialized]
 	public partial class Theme{
 		public static string revision = "[r{revision}]";
-		public static string storagePath = "Assets/Themes/";
+		public static string storagePath = "Assets/@Themes/";
 		public static int themeIndex;
 		public static int paletteIndex;
 		public static int fontsetIndex;
 		public static int iconsetIndex;
 		public static int skinsetIndex;
 		public static HoverResponse hoverResponse = HoverResponse.None;
+		public static bool delayUpdate;
 		public static bool singleUpdate;
 		public static bool separatePlaymodeSettings;
 		public static bool showColorsAdvanced;
@@ -34,8 +35,8 @@ namespace Zios.Interface{
 		private static bool needsInstantRefresh;
 		private static bool setupPreferences;
 		private static Vector2 scroll = Vector2.zero;
-		private static float paletteChangeTime;
-		private static int paletteChangeCount;
+		private static float colorChangeTime;
+		private static int colorChangeCount;
 		private static Action undoCallback;
 		private static List<string> paletteNames = new List<string>();
 		private static List<string> fontsetNames = new List<string>();
@@ -146,9 +147,9 @@ namespace Zios.Interface{
 			RelativeColor.UpdateSystem();
 			foreach(var color in Theme.active.palette.colors["*"]){
 				color.Value.ApplyOffset();
-				Undo.RecordPref<bool>("EditorTheme-Dark-"+color.Key,color.Value.value.GetIntensity() < 0.4f);
+				Utility.SetPref<bool>("EditorTheme-Dark-"+color.Key,color.Value.value.GetIntensity() < 0.4f);
 			}
-			Undo.RecordPref<bool>("EditorTheme-Dark",Theme.active.palette.Get("Window").GetIntensity() < 0.4f);
+			Utility.SetPref<bool>("EditorTheme-Dark",Theme.active.palette.Get("Window").GetIntensity() < 0.4f);
 		}
 		public static void UpdateSettings(){
 			if(Theme.all.Count < 1){return;}
@@ -180,7 +181,7 @@ namespace Zios.Interface{
 			var theme = Theme.active;
 			theme.skinset.Apply(theme);
 			forceWrite = !Utility.IsPlaying() && (forceWrite || Theme.singleUpdate);
-			var shouldUpdate = !EditorApplication.isPlayingOrWillChangePlaymode || Theme.singleUpdate || Theme.separatePlaymodeSettings;
+			var shouldUpdate = !Utility.IsPlaying() || Theme.singleUpdate || Theme.separatePlaymodeSettings;
 			if(theme.name != "Default" && shouldUpdate){
 				foreach(var color in theme.palette.colors["*"]){
 					if(color.Value.skipTexture){continue;}
@@ -188,12 +189,17 @@ namespace Zios.Interface{
 				}
 				Action UpdateDynamic = ()=>{
 					if(theme.palette.swap.Count < 1){return;}
+					var variants = Theme.active.skinset.variants.Where(x=>x.active).Select(x=>x.name).ToArray();
 					foreach(var file in FileManager.FindAll("#*.png")){
+						 if(file.path.Contains("+") && !variants.Contains(file.path.Parse("+","/"))){
+							continue;
+						}
 						theme.palette.ApplyTexture(file.path,file.GetAsset<Texture2D>(),forceWrite);
 					}
 				};
-				UpdateDynamic();
+				Utility.DelayCall("UpdateDynamic",UpdateDynamic,Theme.delayUpdate ? 0.25f : 0);
 			}
+			Theme.delayUpdate = false;
 			Theme.singleUpdate = false;
 		}
 		public static void Cleanup(){
@@ -255,7 +261,10 @@ namespace Zios.Interface{
 				Theme.changed = true;
 				Theme.InstantRefresh();
 				Utility.DelayCall(Theme.Rebuild,0.25f);
-				Theme.undoCallback = Theme.DelayedInstantRefresh;
+				Theme.undoCallback = ()=>{
+					Theme.DelayedInstantRefresh();
+					Utility.DelayCall(Theme.Rebuild,0.25f);
+				};
 			}
 			else if(!Theme.needsRebuild && GUI.changed){
 				Theme.Rebuild();
@@ -729,14 +738,6 @@ namespace Zios.Interface{
 				theme.palette = new ThemePalette().Use(palette);
 				Undo.RecordPref<string>("EditorPalette"+Theme.suffix,palette.name);
 				Theme.SaveColors();
-				var time = Time.realtimeSinceStartup;
-				if(Theme.paletteChangeCount > 35){
-					Application.OpenURL("https://goo.gl/gg9609");
-					Theme.paletteChangeCount = -9609;
-				}
-				if(time < Theme.paletteChangeTime){Theme.paletteChangeCount += 1;}
-				else{Theme.paletteChangeCount = 0;}
-				Theme.paletteChangeTime = time + 0.3f;
 				Theme.singleUpdate = true;
 				Theme.UpdateColors();
 				Theme.Refresh();
@@ -744,6 +745,24 @@ namespace Zios.Interface{
 				Theme.Rebuild();
 				#endif
 			}
+		}
+		[MenuItem("Edit/Themes/Development/Randomize Colors &F3")]
+		public static void RandomizeColors(){
+			foreach(var color in Theme.active.palette.colors["*"]){
+				if(color.Value.skipTexture || !color.Value.sourceName.IsEmpty()){continue;}
+				color.Value.value = Color.white.Random(0);
+			}
+			Theme.SaveColors();
+			Theme.Refresh();
+			Theme.delayUpdate = true;
+			var time = Time.realtimeSinceStartup;
+			if(Theme.colorChangeCount > 35){
+				Application.OpenURL("https://goo.gl/gg9609");
+				Theme.colorChangeCount = -9609;
+			}
+			if(time < Theme.colorChangeTime){Theme.colorChangeCount += 1;}
+			else if(Theme.colorChangeCount > 0){Theme.colorChangeCount = 0;}
+			Theme.colorChangeTime = time + 1;
 		}
 		[MenuItem("Edit/Themes/Previous Fontset %F1")]
 		public static void PreviousFontset(){Theme.RecordAction(()=>Theme.AdjustFontset(-1));}
@@ -797,6 +816,7 @@ namespace Zios.Interface{
 			if(importer.assetPath.Contains("Themes")){
 				importer.SetTextureType("Advanced");
 				importer.SetTextureFormat(TextureImporterFormat.RGBA32);
+				importer.npotScale = TextureImporterNPOTScale.None;
 				importer.isReadable = true;
 				importer.mipmapEnabled = false;
 			}
