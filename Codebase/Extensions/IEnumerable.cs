@@ -50,7 +50,7 @@ namespace Zios{
 		public static string Serialize<T>(this IEnumerable<T> current){
 			string output = "";
 			foreach(var value in current){
-				output += value.Serialize()+"-";
+				output += value.SerializeAuto()+"-";
 			}
 			return output.TrimRight("-");
 		}

@@ -12,5 +12,11 @@ namespace Zios{
 			current.textureFormat = format;
 			#endif
 		}
+		public static void SetTextureType(this TextureImporter current,string type){
+			#if UNITY_5_5_OR_NEWER
+			if(type == "Advanced"){type = "Default";}
+			#endif
+			current.textureType = type.ToEnum<TextureImporterType>();
+		}
 	}
 }

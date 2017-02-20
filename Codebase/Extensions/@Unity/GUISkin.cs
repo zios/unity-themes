@@ -58,6 +58,10 @@ namespace Zios{
 		}
 		public static GUISkin Use(this GUISkin current,GUISkin other,bool useBuiltin=true,bool inline=false){
 			if(other.IsNull()){return current;}
+			other.customStyles = other.customStyles ?? new GUIStyle[0];
+			other.customStyles = other.customStyles.Where(x=>!x.IsNull()).ToArray();
+			current.customStyles = current.customStyles ?? new GUIStyle[0];
+			current.customStyles = current.customStyles.Where(x=>!x.IsNull()).ToArray();
 			if(useBuiltin){
 				current.font = other.font;
 				current.settings.doubleClickSelectsWord = other.settings.doubleClickSelectsWord;
@@ -98,8 +102,7 @@ namespace Zios{
 					current.verticalScrollbarDownButton = other.verticalScrollbarDownButton;
 					current.scrollView = other.scrollView;
 				}
-				current.customStyles = current.customStyles ?? new GUIStyle[0];
-				current.customStyles = current.customStyles.ToDictionary(x=>x.name,x=>x).Intersect(other.customStyles.ToDictionary(x=>x.name,x=>x)).ToDictionary().Values.ToArray();
+				current.customStyles = current.customStyles.ToDictionary(x=>x.name,x=>x).Merge(other.customStyles.ToDictionary(x=>x.name,x=>x)).ToDictionary().Values.ToArray();
 			}
 			return current;
 		}

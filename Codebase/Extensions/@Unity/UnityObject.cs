@@ -14,6 +14,9 @@ namespace Zios{
 			Type editorUtility = Utility.GetUnityType("InternalEditorUtility");
 			editorUtility.CallMethod("SetIsInspectorExpanded",current,state);
 		}
+		public static string GetAssetPath(this UnityObject current){
+			return FileManager.GetPath(current);
+		}
 		#endif
 	}
 }

@@ -105,8 +105,8 @@ namespace Zios.Interface{
 				foreach(var pref in Undo.snapshotPrefs){
 					var current = Utility.GetPref(pref.Key,pref.Value);
 					var head = "&&&"+pref.Key+"|||"+pref.Value.GetType().Name+"---";
-					undo += head+pref.Value.Serialize();
-					redo += head+current.Serialize();
+					undo += head+pref.Value.SerializeAuto();
+					redo += head+current.SerializeAuto();
 				}
 				Undo.snapshotPrefs.Clear();
 			}

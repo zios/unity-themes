@@ -73,7 +73,7 @@ namespace Zios{
 			else if(value is byte){PlayerPrefs.SetString(name,value.As<byte>().ToString());}
 			else if(value is short){PlayerPrefs.SetInt(name,value.As<short>().ToInt());}
 			else if(value is double){PlayerPrefs.SetFloat(name,value.As<double>().ToFloat());}
-			else if(value is ICollection){PlayerPrefs.SetString(name,value.As<IEnumerable>().Serialize());}
+			else if(value is ICollection){PlayerPrefs.SetString(name,value.As<IEnumerable>().SerializeAuto());}
 		}
 		public static T GetPlayerPref<T>(string name,T fallback=default(T)){
 			if(Utility.cachePlayer.ContainsKey(name)){return Utility.cachePlayer[name].As<T>();}
@@ -86,7 +86,7 @@ namespace Zios{
 			else if(fallback is byte){value = PlayerPrefs.GetString(name,fallback.As<byte>().Serialize());}
 			else if(fallback is short){value = PlayerPrefs.GetInt(name,fallback.As<short>().ToInt());}
 			else if(fallback is double){value = PlayerPrefs.GetFloat(name,fallback.As<double>().ToFloat());}
-			else if(fallback is ICollection){value = PlayerPrefs.GetString(name,fallback.As<IEnumerable>().Serialize());}
+			else if(fallback is ICollection){value = PlayerPrefs.GetString(name,fallback.As<IEnumerable>().SerializeAuto());}
 			Utility.cachePlayer[name] = value;
 			return value.As<T>();
 		}

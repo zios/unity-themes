@@ -2,7 +2,7 @@
 setlocal ENABLEDELAYEDEXPANSION
 set unity=%1
 set editor=%2
-svn info --show-item revision > revision.txt
+svn info -r HEAD --show-item revision > revision.txt
 set /p revision=<revision.txt
 if "%unity%"=="" set /p unity=Unity Version? 
 if "%editor%"=="" set /p editor=WIN/OSX? 

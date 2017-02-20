@@ -70,6 +70,12 @@ namespace Zios{
 				}
 			}
 		}
+		public static Dictionary<Key,Value> Merge<Key,Value>(this Dictionary<Key,Value> current,Dictionary<Key,Value> other){
+			foreach(var item in other){
+				current[item.Key] = item.Value;
+			}
+			return current;
+		}
 		public static Dictionary<Key,Value> Difference<Key,Value>(this Dictionary<Key,Value> current,Dictionary<Key,Value> other){
 			var output = new Dictionary<Key,Value>();
 			foreach(var item in other){

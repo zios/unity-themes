@@ -55,14 +55,18 @@ namespace Zios.Interface{
 			}
 		}
 		public static void CloseWindow(object sender,EventArgs arguments){
+			#if UNITY_5_3_4_OR_NEWER
 			if(!EditorApplication.isPlayingOrWillChangePlaymode){
 				ThemeWindow.CloseWindow();
 			}
+			#endif
 		}
 		public static void CloseWindow(){
 			var windows = Theme.window.IsNull() ? Resources.FindObjectsOfTypeAll<ThemeWindow>() : Theme.window.AsArray();
 			foreach(var window in windows){
-				window.Close();
+				if(!window.IsNull()){
+					window.Close();
+				}
 			}
 			Theme.window = null;
 			ThemeWindow.setup = false;

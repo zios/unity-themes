@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using Zios.Interface;
 using UnityEvent = UnityEngine.Event;
 namespace Zios.Editors{
-	using Containers;
 	using Events;
 	[CustomEditor(typeof(GUISkin))]
 	public partial class GUISkinEditor : Editor{

@@ -235,7 +235,6 @@ namespace Zios.Interface{
 				Theme.setupPreferences = true;
 			}
 			if(Theme.active.name != "Default" && !window.IsNull() && window.GetType().Name.Contains("Preferences")){
-				window.minSize = new Vector2(600,100);
 				window.maxSize = new Vector2(9999999,9999999);
 			}
 			Undo.RecordStart(typeof(Theme));
@@ -255,12 +254,12 @@ namespace Zios.Interface{
 				Undo.RecordPref<string>("EditorTheme"+suffix,Theme.all[Theme.themeIndex].name);
 				Theme.changed = true;
 				Theme.InstantRefresh();
-				Utility.DelayCall(Theme.Rebuild,0.25f);;
+				Utility.DelayCall(Theme.Rebuild,0.25f);
 				Theme.undoCallback = Theme.DelayedInstantRefresh;
 			}
 			else if(!Theme.needsRebuild && GUI.changed){
 				Theme.Rebuild();
-				Theme.undoCallback += ()=>Utility.DelayCall(Theme.Rebuild,0.25f);
+				Theme.undoCallback += Theme.Rebuild;
 			}
 			EditorGUILayout.EndScrollView();
 			Undo.RecordEnd("Theme Changes",typeof(Theme),Theme.undoCallback);
@@ -327,7 +326,7 @@ namespace Zios.Interface{
 							theme.palette.Deserialize(clipboard);
 							Theme.SaveColors();
 							Theme.UpdateColors();
-							Utility.DelayCall(Theme.Rebuild,0.25f);
+							Theme.Rebuild();
 						});
 					});
 				}
@@ -741,6 +740,9 @@ namespace Zios.Interface{
 				Theme.singleUpdate = true;
 				Theme.UpdateColors();
 				Theme.Refresh();
+				#if !UNITY_5_6_OR_NEWER
+				Theme.Rebuild();
+				#endif
 			}
 		}
 		[MenuItem("Edit/Themes/Previous Fontset %F1")]
@@ -761,8 +763,7 @@ namespace Zios.Interface{
 		}
 		public static void RecordAction(Action method){
 			Undo.RecordStart(typeof(Theme));
-			Theme.undoCallback = Theme.Refresh;
-			Theme.undoCallback += ()=>Utility.DelayCall(Theme.Rebuild,0.25f);
+			Theme.undoCallback = Theme.Rebuild;
 			method();
 			Undo.RecordEnd("Theme Changes",typeof(Theme),Theme.undoCallback);
 		}
@@ -794,9 +795,10 @@ namespace Zios.Interface{
 		public void OnPreprocessTexture(){
 			TextureImporter importer = (TextureImporter)this.assetImporter;
 			if(importer.assetPath.Contains("Themes")){
+				importer.SetTextureType("Advanced");
+				importer.SetTextureFormat(TextureImporterFormat.RGBA32);
 				importer.isReadable = true;
 				importer.mipmapEnabled = false;
-				importer.SetTextureFormat(TextureImporterFormat.RGBA32);
 			}
 		}
 	}

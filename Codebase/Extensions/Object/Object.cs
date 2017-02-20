@@ -130,10 +130,9 @@ namespace Zios{
 			else if(current is double){return current.As<double>().ToBytes();}
 			return new byte[0];
 		}
-		public static string Serialize(this object current){
+		public static string SerializeAuto(this object current){
 			if(current is Texture2D){return current.As<Texture2D>().Serialize();}
 			else if(current is GUIContent){return current.As<GUIContent>().Serialize();}
-			else if(current is Vector2){return current.As<Vector2>().Serialize();}
 			else if(current is Vector3){return current.As<Vector3>().Serialize();}
 			else if(current is Color){return current.As<Color>().Serialize();}
 			else if(current is float){return current.As<float>().Serialize();}

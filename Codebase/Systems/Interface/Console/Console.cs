@@ -401,7 +401,7 @@ namespace Zios.Interface{
 					Utility.SetPlayerPref(data.fullName,current);
 				}
 				else{
-					Console.configOutput.Add(item.Key + " " + current.Serialize());
+					Console.configOutput.Add(item.Key + " " + current.SerializeAuto());
 				}
 			}
 		}
