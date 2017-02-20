@@ -16,6 +16,7 @@ if %unity% geq 5.4 if %unity% lss 5.5 set versions=%versions%UNITY_5_4;
 if %unity% geq 5.5 if %unity% lss 5.6 set versions=%versions%UNITY_5_5;
 if %unity% geq 5.6 if %unity% lss 5.7 set versions=%versions%UNITY_5_6;
 if %unity% geq 5.3 set versions=%versions%UNITY_5_3_OR_NEWER;
+if %unity% geq 5.3.4 set versions=%versions%UNITY_5_3_4_OR_NEWER;
 if %unity% geq 5.4 set versions=%versions%UNITY_5_4_OR_NEWER;
 if %unity% geq 5.5 set versions=%versions%UNITY_5_5_OR_NEWER;
 if %unity% geq 5.6 set versions=%versions%UNITY_5_6_OR_NEWER;
