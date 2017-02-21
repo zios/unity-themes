@@ -52,6 +52,9 @@ namespace Zios.Interface{
 		}
 	}
 	public class EditorMenu : Dictionary<string,EditorAction>{
+		public void AddSeparator(){
+			base.Add(System.IO.Path.GetRandomFileName(),null);
+		}
 		public void Add(string key,bool active,Action value){
 			base.Add(key,new EditorAction(value,active));
 		}

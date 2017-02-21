@@ -90,7 +90,8 @@ namespace Zios.Interface{
 		public static void Monitor(){
 			var contents = typeof(EditorGUIUtility).GetVariable<Hashtable>("s_IconGUIContents");
 			if(contents.Count != ThemeContent.iconAmount){
-				ThemeIconset.all = ThemeIconset.Import();
+				var path = ThemeIconset.all.Count == 1 ? ThemeIconset.all[0].path : null;
+				ThemeIconset.all = path.IsNull() ? ThemeIconset.Import() : ThemeIconset.Import(path).AsList();
 				Theme.ApplyIconset();
 			}
 		}

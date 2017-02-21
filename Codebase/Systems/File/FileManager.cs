@@ -53,30 +53,28 @@ namespace Zios{
 		public static void Load(){
 			var time = FileManager.GetTime();
 			if(FileManager.Exists("Temp/FileManager.data")){
-				int mode = 0;
 				string extension = "";
 				string lastPath = "";
 				var lines = File.ReadAllLines("Temp/FileManager.data");
 				for(int index=0;index<lines.Length;++index){
 					var line = lines[index];
-					if(line.Contains("[Files]")){mode = 1;}
-					else if(line.Contains("[Folders]")){mode = 2;}
-					else if(line.StartsWith("(")){extension = line.Parse("(",")");}
-					else if(line.StartsWith("=")){lastPath = line.TrimLeft("=").Replace("$",FileManager.path);}
-					else if(line.StartsWith("+")){lastPath += line.TrimLeft("+");}
+					if(line.StartsWith("(")){extension = line.Parse("(",")");}
+					else if(line.StartsWith("=") || line.StartsWith("+")){
+						lastPath = line.StartsWith("=") ? line.TrimLeft("=").Replace("$",FileManager.path) : lastPath + line.TrimLeft("+");
+						var folderData = new FileData();
+						folderData.name = lastPath.GetPathTerm();
+						folderData.directory = lastPath.GetDirectory();
+						folderData.path = lastPath;
+						folderData.isFolder = true;
+						FileManager.BuildCache(folderData);
+					}
 					else{
 						var fileData = new FileData();
 						fileData.directory = lastPath;
 						fileData.name = line;
-						if(mode == 1){
-							fileData.fullName = fileData.name+"."+extension;
-							fileData.path = fileData.directory+"/"+fileData.fullName;
-							fileData.extension = extension;
-						}
-						else if(mode == 2){
-							fileData.path = fileData.directory+"/"+fileData.name;
-							fileData.isFolder = true;
-						}
+						fileData.fullName = fileData.name+"."+extension;
+						fileData.path = fileData.directory+"/"+fileData.fullName;
+						fileData.extension = extension;
 						FileManager.BuildCache(fileData);
 					}
 				}
@@ -88,7 +86,6 @@ namespace Zios{
 			var time = FileManager.GetTime();
 			FileManager.Create("Temp");
 			using(var output = new StreamWriter("Temp/FileManager.data",false)){
-				output.WriteLine("[Files]");
 				foreach(var item in FileManager.filesByType){
 					var extension = item.Key;
 					var files = item.Value;
@@ -96,10 +93,6 @@ namespace Zios{
 					foreach(var file in files){
 						FileManager.SaveData(file,output,ref lastPath);
 					}
-				}
-				output.WriteLine("[Folders]");
-				foreach(var item in FileManager.folders){
-					FileManager.SaveData(item.Value,output,ref lastPath);
 				}
 			}
 			if(FileManager.clock){Debug.Log("[FileManager] : Save cache complete -- " + (FileManager.GetTime()-time) + " seconds.");}
@@ -215,7 +208,7 @@ namespace Zios{
 				foreach(var item in FileManager.folders){
 					FileData folder = item.Value;
 					string folderPath = item.Key;
-					if(folderPath.Matches(name,true)){
+					if(folderPath.Matches(name,true) || folderPath.EndsWith(name,true)){
 						results.Add(folder);
 					}
 				}
