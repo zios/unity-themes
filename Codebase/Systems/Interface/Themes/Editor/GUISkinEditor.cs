@@ -32,6 +32,8 @@ namespace Zios.Editors{
 		//=================================
 		public override void OnInspectorGUI(){
 			if(UnityEvent.current.type.MatchesAny("mouseMove") || Utility.IsBusy()){return;}
+			EditorUI.ResetFieldSize();
+			EditorUI.ResetLayout();
 			this.hash = this.hash ?? Utility.GetInspector(this).GetInstanceID().ToString();
 			this.skin = this.skin ?? this.target.As<GUISkin>();
 			this.isFragment = this.skin.name.Contains("#");
