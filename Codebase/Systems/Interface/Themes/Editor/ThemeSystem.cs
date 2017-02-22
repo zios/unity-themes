@@ -115,19 +115,12 @@ namespace Zios.Interface{
 			var fontset = lazy ? Utility.GetPref("EditorFontset"+suffix,"Classic") + ".unityFontset" : null;
 			var palette = lazy ? Utility.GetPref("EditorPalette"+suffix,"Classic") + ".unityPalette" : null;
 			var iconset = lazy ? FileManager.Find("Iconsets/"+Utility.GetPref("EditorIconset"+suffix,"Default")) : null;
-			var skinPaths = Utility.GetPref("EditorSkinset"+suffix,"").Split("|");
+			var skinset = lazy ? FileManager.Find("Skinsets/"+Utility.GetPref("EditorSkinset"+suffix,"Default")) : null;
 			var unityTheme = lazy ? theme + ".unitytheme" : null;
 			ThemeFontset.all = ThemeFontset.Import(fontset);
 			ThemePalette.all = ThemePalette.Import(palette);
-			if(lazy && !skinPaths.IsEmpty()){
-				var skinsets = new List<ThemeSkinset>();
-				foreach(var path in skinPaths){skinsets.Add(ThemeSkinset.Import(path));}
-				ThemeSkinset.all = skinsets.ToList();
-			}
-			else{
-				ThemeSkinset.all = ThemeSkinset.Import();
-			}
-			ThemeIconset.all = lazy && !iconset.IsNull()? ThemeIconset.Import(iconset.path).AsList() : ThemeIconset.Import();
+			ThemeSkinset.all = skinset.IsNull() ? ThemeSkinset.Import() : ThemeSkinset.Import(skinset.path).AsList();
+			ThemeIconset.all = iconset.IsNull() ? ThemeIconset.Import() : ThemeIconset.Import(iconset.path).AsList();
 			Theme.all = Theme.Import(unityTheme).OrderBy(x=>x.name!="Default").ToList();
 			Theme.loaded = true;
 			Theme.lazyLoaded = lazy;
@@ -199,12 +192,10 @@ namespace Zios.Interface{
 				foreach(var variant in Theme.active.defaultVariants){Undo.RecordPref<bool>("EditorVariant"+Theme.suffix+"-"+variant,true);}
 				Theme.changed = false;
 			}
-			var skinsets = theme.skinset.path;
 			foreach(var variant in theme.skinset.variants){
 				variant.active = Utility.GetPref<bool>("EditorVariant"+Theme.suffix+"-"+variant.name,false);
-				if(variant.active){skinsets += "|" + variant.path;}
 			}
-			Utility.SetPref<string>("EditorSkinset"+Theme.suffix,skinsets);
+			Utility.SetPref<string>("EditorSkinset"+Theme.suffix,theme.skinset.name);
 			if(!Utility.HasPref("EditorFontset"+Theme.suffix)){Utility.SetPref<string>("EditorFontset"+Theme.suffix,theme.fontset.name);}
 			if(!Utility.HasPref("EditorPalette"+Theme.suffix)){Utility.SetPref<string>("EditorPalette"+Theme.suffix,theme.palette.name);}
 			if(!Utility.HasPref("EditorIconset"+Theme.suffix)){Utility.SetPref<string>("EditorIconset"+Theme.suffix,theme.iconset.name);}
