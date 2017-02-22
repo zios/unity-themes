@@ -1555,7 +1555,7 @@ MonoBehaviour:
     m_StretchHeight: 1
   - m_Name: IN BigTitle
     m_Normal:
-      m_Background: {fileID: 2800000, guid: f5fe807f725159447832782d684b3b6f, type: 3}
+      m_Background: {fileID: 2800000, guid: c7dd5b317fa27334c824c073bb5e6cef, type: 3}
       m_ScaledBackgrounds: []
       m_TextColor: {r: 1, g: 0.015686275, b: 1, a: 0}
     m_Hover:
@@ -1590,7 +1590,7 @@ MonoBehaviour:
       m_Left: 0
       m_Right: 0
       m_Top: 0
-      m_Bottom: 0
+      m_Bottom: 10
     m_Margin:
       m_Left: 0
       m_Right: 0
@@ -1605,7 +1605,7 @@ MonoBehaviour:
       m_Left: 0
       m_Right: 0
       m_Top: 0
-      m_Bottom: 8
+      m_Bottom: 6
     m_Font: {fileID: 12800000, guid: cdc152662dd567b4aac56b960d250bf7, type: 3}
     m_FontSize: 13
     m_FontStyle: 0
@@ -1621,7 +1621,7 @@ MonoBehaviour:
     m_StretchHeight: 0
   - m_Name: IN GameObjectHeader
     m_Normal:
-      m_Background: {fileID: 2800000, guid: 381089d7921fd8244bb313ac6c29d69f, type: 3}
+      m_Background: {fileID: 2800000, guid: c7dd5b317fa27334c824c073bb5e6cef, type: 3}
       m_ScaledBackgrounds: []
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Hover:
@@ -1655,8 +1655,8 @@ MonoBehaviour:
     m_Border:
       m_Left: 0
       m_Right: 0
-      m_Top: 3
-      m_Bottom: 3
+      m_Top: 0
+      m_Bottom: 10
     m_Margin:
       m_Left: 0
       m_Right: 0
@@ -1671,7 +1671,7 @@ MonoBehaviour:
       m_Left: 0
       m_Right: 0
       m_Top: 0
-      m_Bottom: 3
+      m_Bottom: 6
     m_Font: {fileID: 3021071571035331536, guid: 0000000000000000d000000000000000,
       type: 0}
     m_FontSize: 0
