@@ -69,7 +69,7 @@ namespace Zios.Interface{
 				Theme.Update();
 			}
 			else if(Theme.needsRefresh){
-				Theme.UpdateSettings();
+				Theme.ApplySettings();
 				Utility.CallEditorPref("EditorTheme-Refresh",Theme.debug);
 				Utility.RepaintAll();
 				Utility.DelayCall(Utility.RepaintAll,0.25f);
@@ -92,6 +92,7 @@ namespace Zios.Interface{
 				Theme.fontsetNames.Clear();
 				Theme.paletteNames.Clear();
 				Theme.setupPreferences = false;
+				if(Theme.separatePlaymodeSettings){Utility.DelayCall(Theme.Rebuild,0.25f);}
 				Utility.CallEditorPref("EditorTheme-Setup",Theme.debug);
 				Theme.setup = true;
 				Theme.initialized = true;
@@ -102,7 +103,7 @@ namespace Zios.Interface{
 			if(Theme.lazyLoaded){
 				Theme.Load(false);
 				Theme.LoadSettings();
-				Theme.UpdateSettings();
+				Theme.ApplySettings();
 			}
 		}
 		public static void Load(bool lazy=false){
@@ -178,7 +179,7 @@ namespace Zios.Interface{
 			}
 			Utility.SetPref<bool>("EditorTheme-Dark",Theme.active.palette.Get("Window").GetIntensity() < 0.4f);
 		}
-		public static void UpdateSettings(){
+		public static void ApplySettings(){
 			if(Theme.all.Count < 1){return;}
 			var baseTheme = Theme.all[Theme.themeIndex];
 			var theme = Theme.active = new Theme().Use(baseTheme);
@@ -198,12 +199,15 @@ namespace Zios.Interface{
 				foreach(var variant in Theme.active.defaultVariants){Undo.RecordPref<bool>("EditorVariant"+Theme.suffix+"-"+variant,true);}
 				Theme.changed = false;
 			}
-			var skinsets = Theme.active.skinset.path;
+			var skinsets = theme.skinset.path;
 			foreach(var variant in theme.skinset.variants){
 				variant.active = Utility.GetPref<bool>("EditorVariant"+Theme.suffix+"-"+variant.name,false);
 				if(variant.active){skinsets += "|" + variant.path;}
 			}
 			Utility.SetPref<string>("EditorSkinset"+Theme.suffix,skinsets);
+			if(!Utility.HasPref("EditorFontset"+Theme.suffix)){Utility.SetPref<string>("EditorFontset"+Theme.suffix,theme.fontset.name);}
+			if(!Utility.HasPref("EditorPalette"+Theme.suffix)){Utility.SetPref<string>("EditorPalette"+Theme.suffix,theme.palette.name);}
+			if(!Utility.HasPref("EditorIconset"+Theme.suffix)){Utility.SetPref<string>("EditorIconset"+Theme.suffix,theme.iconset.name);}
 			Theme.Apply();
 		}
 		public static void Apply(string themeName="",bool forceWrite=false){
@@ -484,7 +488,6 @@ namespace Zios.Interface{
 				if(!open){return;}
 				EditorGUI.indentLevel += 1;
 				Theme.showColorsAdvanced = Theme.showColorsAdvanced.Draw("Advanced");
-				if(EditorUI.lastChanged){GUI.changed=false;}
 				if(Theme.showColorsAdvanced){RelativeColor.autoBalance = RelativeColor.autoBalance.Draw("Autobalance").As<AutoBalance>();}
 				foreach(var group in theme.palette.colors.Where(x=>x.Key!="*")){
 					var groupName = group.Key;
@@ -613,7 +616,10 @@ namespace Zios.Interface{
 				var fontNames = Theme.fontNames.Copy();
 				if(fontNames.Count < 1){fontNames.Add("No fonts found.");}
 				Theme.showFontsAdvanced = Theme.showFontsAdvanced.Draw("Advanced");
-				if(EditorUI.lastChanged){GUI.changed=false;}
+				if(EditorUI.lastChanged){
+					Theme.SaveFontset();
+					GUI.changed = false;
+				}
 				foreach(var item in theme.fontset.fonts){
 					if(item.Value.font.IsNull()){continue;}
 					var themeFont = item.Value;
@@ -695,7 +701,7 @@ namespace Zios.Interface{
 				theme.fontset = new ThemeFontset(original).UseBuffer(theme.fontset);
 				return;
 			}
-			var value = Utility.GetPref<string>("EditorFontset-Settings"+Theme.suffix,null);
+			var value = Utility.GetPref<string>("EditorFontset-Settings"+Theme.suffix,"");
 			theme.fontset.Deserialize(value);
 		}
 		[MenuItem("Edit/Themes/Development/Export/Fontset")]
@@ -707,7 +713,7 @@ namespace Zios.Interface{
 			var theme = Theme.active;
 			foreach(var group in theme.palette.colors.Where(x=>x.Key!="*")){
 				foreach(var color in group.Value){
-					Undo.RecordPref<string>("EditorTheme-"+theme.name+"-Color-"+group.Key+"-"+color.Key+Theme.suffix,color.Value.Serialize());
+					Undo.RecordPref<string>("EditorTheme"+Theme.suffix+"-Color-"+group.Key+"-"+color.Key,color.Value.Serialize());
 				}
 			}
 		}
@@ -720,7 +726,7 @@ namespace Zios.Interface{
 			}
 			foreach(var group in theme.palette.colors.Where(x=>x.Key!="*")){
 				foreach(var color in group.Value){
-					var value = Utility.GetPref<string>("EditorTheme-"+theme.name+"-Color-"+group.Key+"-"+color.Key+Theme.suffix,color.Value.Serialize());
+					var value = Utility.GetPref<string>("EditorTheme"+Theme.suffix+"-Color-"+group.Key+"-"+color.Key,color.Value.Serialize());
 					theme.palette.colors["*"][color.Key] = theme.palette.colors[group.Key][color.Key].Deserialize(value);
 				}
 			}
@@ -789,9 +795,7 @@ namespace Zios.Interface{
 				Theme.singleUpdate = true;
 				Theme.UpdateColors();
 				Theme.Refresh();
-				#if !UNITY_5_6_OR_NEWER
-				Theme.Rebuild();
-				#endif
+				Utility.DelayCall(Theme.Rebuild,0.5f);
 			}
 		}
 		[MenuItem("Edit/Themes/Development/Randomize Colors &F3")]
@@ -803,6 +807,7 @@ namespace Zios.Interface{
 			Theme.SaveColors();
 			Theme.Refresh();
 			Theme.delayUpdate = true;
+			Theme.singleUpdate = true;
 			var time = Time.realtimeSinceStartup;
 			if(Theme.colorChangeCount > 35){
 				Application.OpenURL("https://goo.gl/gg9609");
