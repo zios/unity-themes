@@ -29,6 +29,6 @@ If you'd like to make a direct inquiry regarding my work or if you just want a f
 
 <h2>Preview <sup><em>(What does it look like?)</em></sup></h2>
 Visual Studio next to Unity Editor.
-![Visual Studio and Unity](https://07906478c5d64a19a632faef819333dab85fabd1.googledrive.com/host/0BzQITCeh4tPAbllLSzM4VUJhNUk/shared/Uniformity.jpg)
+![Visual Studio and Unity](http://bradsmithee.com/shared/Uniformity.jpg)
 
 See the [Wiki page](https://github.com/zios/unity-themes/wiki) for an extended form of this document.
