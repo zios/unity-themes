@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: d7ead15309c03bf479ca374e0c3d8d30
+timeCreated: 1469981364
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: VT323
+  fontNames:
+  - VT323
+  fallbackFontReferences: []
+  customCharacters:
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData:
+  assetBundleName: themeassets
+  assetBundleVariant:

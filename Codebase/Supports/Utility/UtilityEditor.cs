@@ -44,7 +44,9 @@ namespace Zios{
 		}
 	}
 	public static partial class Utility{
+		private static EditorWindow inspector;
 		private static EditorWindow[] inspectors;
+		private static Dictionary<Editor,EditorWindow> editorInspectors = new Dictionary<Editor,EditorWindow>();
 		private static List<UnityObject> delayedDirty = new List<UnityObject>();
 		private static Dictionary<UnityObject,SerializedObject> serializedObjects = new Dictionary<UnityObject,SerializedObject>();
 		public static SerializedObject GetSerializedObject(UnityObject target){
@@ -70,10 +72,36 @@ namespace Zios{
 			}
 			return Utility.inspectors;
 		}
+		public static EditorWindow GetInspector(Editor editor){
+			#if UNITY_EDITOR
+			if(!Utility.editorInspectors.ContainsKey(editor)){
+				Type inspectorType = Utility.GetUnityType("InspectorWindow");
+				var windows = inspectorType.CallMethod<EditorWindow[]>("GetAllInspectorWindows");
+				for(int index=0;index<windows.Length;++index){
+					var tracker = windows[index].GetVariable<ActiveEditorTracker>("m_Tracker");
+					if(tracker == null){continue;}
+					for(int editorIndex=0;editorIndex<tracker.activeEditors.Length;++editorIndex){
+						var current = tracker.activeEditors[editorIndex];
+						Utility.editorInspectors[current] = windows[index];
+					}
+				}
+			}
+			return Utility.editorInspectors[editor];
+			#endif
+			return null;
+		}
+		public static Vector2 GetInspectorScroll(Editor editor){
+			#if UNITY_EDITOR
+			return Utility.GetInspector(editor).GetVariable<Vector2>("m_ScrollPosition");
+			#endif
+			return Vector2.zero;
+		}
 		public static Vector2 GetInspectorScroll(){
-			Type inspectorWindow = Utility.GetUnityType("InspectorWindow");
-			var window = EditorWindow.GetWindow(inspectorWindow);
-			return window.GetVariable<Vector2>("m_ScrollPosition");
+			if(Utility.inspector.IsNull()){
+				Type inspectorWindow = Utility.GetUnityType("InspectorWindow");
+				Utility.inspector = EditorWindow.GetWindow(inspectorWindow);
+			}
+			return Utility.inspector.GetVariable<Vector2>("m_ScrollPosition");
 		}
 		public static Vector2 GetInspectorScroll(this Rect current){
 			Type inspectorWindow = Utility.GetUnityType("InspectorWindow");
@@ -81,18 +109,6 @@ namespace Zios{
 			return window.GetVariable<Vector2>("m_ScrollPosition");
 		}
 		#if !UNITY_THEMES
-		[MenuItem("Zios/Prefs/Clear Player")]
-		public static void DeletePlayerPrefs(){
-			if(EditorUtility.DisplayDialog("Clear Player Prefs","Delete all the player preferences?","Yes","No")){
-				PlayerPrefs.DeleteAll();
-			}
-		}
-		[MenuItem("Zios/Prefs/Clear Editor")]
-		public static void DeleteEditorPrefs(){
-			if(EditorUtility.DisplayDialog("Clear Editor Prefs","Delete all the editor preferences?","Yes","No")){
-				EditorPrefs.DeleteAll();
-			}
-		}
 		//[MenuItem("Zios/Format Code")]
 		public static void FormatCode(){
 			var output = new StringBuilder();
@@ -113,6 +129,10 @@ namespace Zios{
 		public static void ReloadScripts(){
 			Debug.Log("[Utility] : Forced Reload Scripts.");
 			typeof(UnityEditorInternal.InternalEditorUtility).CallMethod("RequestScriptReload");
+		}
+		[MenuItem("Assets/Build AssetBundles")]
+		public static void BuildAssetBundles(){
+			BuildPipeline.BuildAssetBundles("Assets/",BuildAssetBundleOptions.None,BuildTarget.StandaloneWindows64);
 		}
 		#endif
 	}

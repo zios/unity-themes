@@ -2,10 +2,6 @@ using System;
 using UnityEngine;
 namespace Zios{
 	using Events;
-	#if UNITY_EDITOR
-	using UnityEditor;
-	using CallbackFunction = UnityEditor.EditorApplication.CallbackFunction;
-	#endif
 	public static class Hook{
 		public static bool disabled;
 		public static bool temporary;
@@ -20,9 +16,9 @@ namespace Zios{
 			Hook.hidden = true;
 			Hook.temporary = true;
 			#elif UNITY_EDITOR
-			Hook.hidden = EditorPrefs.GetBool("EditorSettings-HideHooks",false);
-			Hook.disabled = EditorPrefs.GetBool("EditorSettings-DisableHooks",false);
-			Hook.temporary = EditorPrefs.GetBool("EditorSettings-TemporaryHooks",false);
+			Hook.hidden = Utility.GetPref<bool>("EditorSettings-HideHooks",false);
+			Hook.disabled = Utility.GetPref<bool>("EditorSettings-DisableHooks",false);
+			Hook.temporary = Utility.GetPref<bool>("EditorSettings-TemporaryHooks",false);
 			#endif
 		}
 		public static void SetState(){
@@ -41,15 +37,13 @@ namespace Zios{
 	public class Hook<Singleton> where Singleton : Component{
 		private bool setup;
 		public bool disabled;
-		public CallbackFunction resetMethod;
-		public CallbackFunction createMethod;
-		public Hook(CallbackFunction reset=null,CallbackFunction create=null){
+		public Action resetMethod;
+		public Action createMethod;
+		public Hook(Action reset=null,Action create=null){
 			if(this.disabled || Hook.disabled || Application.isPlaying){return;}
 			this.resetMethod = reset ?? this.Reset;
 			this.createMethod = create ?? this.Create;
-			#if UNITY_EDITOR
-			EditorApplication.delayCall += this.resetMethod;
-			#endif
+			Utility.DelayCall(this.resetMethod);
 		}
 		public void Reset(){
 			if(this.disabled || Hook.disabled){return;}

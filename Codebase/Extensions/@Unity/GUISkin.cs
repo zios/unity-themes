@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -55,17 +56,23 @@ namespace Zios{
 			}
 			return null;
 		}
-		public static GUISkin Use(this GUISkin current,GUISkin other,bool inline=false){
+		public static GUISkin Use(this GUISkin current,GUISkin other,bool useBuiltin=true,bool inline=false){
 			if(other.IsNull()){return current;}
-			current.font = other.font;
-			current.settings.doubleClickSelectsWord = other.settings.doubleClickSelectsWord;
-			current.settings.tripleClickSelectsLine = other.settings.tripleClickSelectsLine;
-			current.settings.cursorColor = other.settings.cursorColor;
-			current.settings.cursorFlashSpeed = other.settings.cursorFlashSpeed;
-			current.settings.selectionColor = other.settings.selectionColor;
+			other.customStyles = other.customStyles ?? new GUIStyle[0];
+			other.customStyles = other.customStyles.Where(x=>!x.IsNull()).ToArray();
+			current.customStyles = current.customStyles ?? new GUIStyle[0];
+			current.customStyles = current.customStyles.Where(x=>!x.IsNull()).ToArray();
+			if(useBuiltin){
+				current.font = other.font;
+				current.settings.doubleClickSelectsWord = other.settings.doubleClickSelectsWord;
+				current.settings.tripleClickSelectsLine = other.settings.tripleClickSelectsLine;
+				current.settings.cursorColor = other.settings.cursorColor;
+				current.settings.cursorFlashSpeed = other.settings.cursorFlashSpeed;
+				current.settings.selectionColor = other.settings.selectionColor;
+			}
 			if(inline){
-				var currentStyles = current.GetNamedStyles();
-				var otherStyles = other.GetNamedStyles();
+				var currentStyles = current.GetNamedStyles(useBuiltin);
+				var otherStyles = other.GetNamedStyles(useBuiltin);
 				foreach(var style in currentStyles){
 					if(otherStyles.ContainsKey(style.Key)){
 						style.Value.Use(otherStyles[style.Key]);
@@ -73,27 +80,29 @@ namespace Zios{
 				}
 			}
 			else{
-				current.box = other.box;
-				current.button = other.button;
-				current.toggle = other.toggle;
-				current.label = other.label;
-				current.textField = other.textField;
-				current.textArea = other.textArea;
-				current.window = other.window;
-				current.horizontalSlider = other.horizontalSlider;
-				current.horizontalSliderThumb = other.horizontalSliderThumb;
-				current.verticalSlider = other.verticalSlider;
-				current.verticalSliderThumb = other.verticalScrollbarThumb;
-				current.horizontalScrollbar = other.horizontalScrollbar;
-				current.horizontalScrollbarThumb = other.horizontalScrollbarThumb;
-				current.horizontalScrollbarLeftButton = other.horizontalScrollbarLeftButton;
-				current.horizontalScrollbarRightButton = other.horizontalScrollbarRightButton;
-				current.verticalScrollbar = other.verticalScrollbar;
-				current.verticalScrollbarThumb = other.verticalScrollbarThumb;
-				current.verticalScrollbarUpButton = other.verticalScrollbarUpButton;
-				current.verticalScrollbarDownButton = other.verticalScrollbarDownButton;
-				current.scrollView = other.scrollView;
-				current.customStyles = other.customStyles;
+				if(useBuiltin){
+					current.box = other.box;
+					current.button = other.button;
+					current.toggle = other.toggle;
+					current.label = other.label;
+					current.textField = other.textField;
+					current.textArea = other.textArea;
+					current.window = other.window;
+					current.horizontalSlider = other.horizontalSlider;
+					current.horizontalSliderThumb = other.horizontalSliderThumb;
+					current.verticalSlider = other.verticalSlider;
+					current.verticalSliderThumb = other.verticalScrollbarThumb;
+					current.horizontalScrollbar = other.horizontalScrollbar;
+					current.horizontalScrollbarThumb = other.horizontalScrollbarThumb;
+					current.horizontalScrollbarLeftButton = other.horizontalScrollbarLeftButton;
+					current.horizontalScrollbarRightButton = other.horizontalScrollbarRightButton;
+					current.verticalScrollbar = other.verticalScrollbar;
+					current.verticalScrollbarThumb = other.verticalScrollbarThumb;
+					current.verticalScrollbarUpButton = other.verticalScrollbarUpButton;
+					current.verticalScrollbarDownButton = other.verticalScrollbarDownButton;
+					current.scrollView = other.scrollView;
+				}
+				current.customStyles = current.customStyles.ToDictionary(x=>x.name,x=>x).Merge(other.customStyles.ToDictionary(x=>x.name,x=>x)).ToDictionary().Values.ToArray();
 			}
 			return current;
 		}

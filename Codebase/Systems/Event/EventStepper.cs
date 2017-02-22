@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 namespace Zios.Events{
+	using Interface;
 	[Serializable]
 	public class EventStepper{
 		[NonSerialized] public static List<EventStepper> instances = new List<EventStepper>();
@@ -32,7 +33,7 @@ namespace Zios.Events{
 				if(this.index != -1){
 					this.method(this.collection,this.index);
 					float percent = ((float)this.index)/this.collection.Count;
-					canceled = Utility.DisplayCancelableProgressBar(EventStepper.title,EventStepper.message,percent);
+					canceled = EditorUI.DrawProgressBar(EventStepper.title,EventStepper.message,percent);
 					this.index += 1;
 				}
 				bool loading = Application.isLoadingLevel;
@@ -42,7 +43,7 @@ namespace Zios.Events{
 					this.complete = true;
 					this.onComplete();
 					EventStepper.instances.Remove(this);
-					Utility.ClearProgressBar();
+					EditorUI.ClearProgressBar();
 					break;
 				}
 			}

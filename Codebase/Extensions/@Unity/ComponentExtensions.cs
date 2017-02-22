@@ -7,9 +7,11 @@ namespace Zios{
 			#endif
 		}
 		public static GameObject GetPrefabRoot(this Component current){
+			if(current.IsNull()){return null;}
 			return current.gameObject.GetPrefabRoot();
 		}
 		public static GameObject GetParent(this Component current){
+			if(current.IsNull()){return null;}
 			return current.gameObject.GetParent();
 		}
 		public static string GetPath(this Component current,bool includeSelf=true){
@@ -19,7 +21,7 @@ namespace Zios{
 			return path;
 		}
 		public static bool IsPrefab(this Component current){
-			return current.gameObject.IsPrefab();
+			return !current.IsNull() && current.gameObject.IsPrefab();
 		}
 		public static bool IsEnabled(this Component current){
 			bool enabled = !current.IsNull() && current.gameObject.activeInHierarchy;
@@ -27,6 +29,7 @@ namespace Zios{
 			return enabled;
 		}
 		public static void Move(this Component current,int amount){
+			if(current.IsNull()){return;}
 			Utility.DisconnectPrefabInstance(current);
 			while(amount != 0){
 				if(amount > 0){
@@ -40,6 +43,7 @@ namespace Zios{
 			}
 		}
 		public static void MoveUp(this Component current){
+			if(current.IsNull()){return;}
 			Component[] components = current.GetComponents<Component>();
 			int position = components.IndexOf(current);
 			int amount = 1;
@@ -52,6 +56,7 @@ namespace Zios{
 			current.Move(-amount);
 		}
 		public static void MoveDown(this Component current){
+			if(current.IsNull()){return;}
 			Component[] components = current.GetComponents<Component>();
 			int position = components.IndexOf(current);
 			int amount = 1;
@@ -64,12 +69,14 @@ namespace Zios{
 			current.Move(amount);
 		}
 		public static void MoveToTop(this Component current){
+			if(current.IsNull()){return;}
 			Utility.DisconnectPrefabInstance(current);
 			Component[] components = current.GetComponents<Component>();
 			int position = components.IndexOf(current);
 			current.Move(-position);
 		}
 		public static void MoveToBottom(this Component current){
+			if(current.IsNull()){return;}
 			Utility.DisconnectPrefabInstance(current);
 			Component[] components = current.GetComponents<Component>();
 			int position = components.IndexOf(current);
@@ -79,18 +86,23 @@ namespace Zios{
 		// Interface
 		//====================
 		public static Component[] GetComponentsByInterface<T>(this Component current) where T : Component{
+			if(current.IsNull()){return new Component[0];}
 			return current.gameObject.GetComponentsByInterface<T>();
 		}
 		public static T GetComponent<T>(this Component current,bool includeInactive) where T : Component{
+			if(current.IsNull()){return null;}
 			return current.gameObject.GetComponent<T>(includeInactive);
 		}
 		public static T[] GetComponents<T>(this Component current,bool includeInactive) where T : Component{
+			if(current.IsNull()){return new T[0];}
 			return current.gameObject.GetComponents<T>(includeInactive);
 		}
 		public static T GetComponentInParent<T>(this Component current,bool includeInactive) where T : Component{
+			if(current.IsNull()){return null;}
 			return current.gameObject.GetComponentInParent<T>(includeInactive);
 		}
 		public static T GetComponentInChildren<T>(this Component current,bool includeInactive) where T : Component{
+			if(current.IsNull()){return null;}
 			return current.gameObject.GetComponentInChildren<T>(includeInactive);
 		}
 	}

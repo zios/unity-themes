@@ -7,7 +7,6 @@ namespace Zios.Interface{
 	[Serializable]
 	public class ThemeFontset{
 		public static List<ThemeFontset> all = new List<ThemeFontset>();
-		public FontRenderingMode rendering = FontRenderingMode.Smooth;
 		public string name;
 		public string path;
 		public Dictionary<string,ThemeFont> fonts = new Dictionary<string,ThemeFont>();
@@ -20,7 +19,7 @@ namespace Zios.Interface{
 		public static List<ThemeFontset> Import(string path=null){
 			path = path ?? "*.unityfontset";
 			var imported = new List<ThemeFontset>();
-			foreach(var file in FileManager.FindAll(path,false)){
+			foreach(var file in FileManager.FindAll(path,Theme.debug)){
 				var active = imported.AddNew();
 				active.name = file.name;
 				active.path = file.path;
@@ -30,15 +29,15 @@ namespace Zios.Interface{
 		}
 		public void Export(string path=null){
 			var theme = Theme.active;
-			var targetPath = path ?? theme.fontset.path;
-			var targetName = theme.fontset.name+"-Variant";
-			path = path.IsEmpty() ? EditorUtility.SaveFilePanel("Save Theme [Fonts]",targetPath,targetName,"unityfontset") : path;
+			var savePath = path ?? Theme.storagePath+"Fontsets";
+			var saveName = theme.fontset.name+"-Variant";
+			path = path.IsEmpty() ? EditorUtility.SaveFilePanel("Save Theme [Fonts]",savePath.GetAssetPath(),saveName,"unityfontset") : path;
 			if(path.Length > 0){
 				var file = FileManager.Create(path);
 				file.WriteText(this.Serialize());
-				EditorPrefs.SetString("EditorFontset"+Theme.suffix,path.GetFileName());
-				Theme.setup = false;
-				Theme.loaded = false;
+				AssetDatabase.ImportAsset(path.GetAssetPath());
+				Utility.SetPref<string>("EditorFontset"+Theme.suffix,path.GetFileName());
+				Theme.Reset(true);
 			}
 		}
 		//=================================
@@ -68,7 +67,7 @@ namespace Zios.Interface{
 					name = line.Parse("[","]");
 					themeFont = this.fonts.AddNew(name);
 					themeFont.name = name;
-					themeFont.path = this.path.GetDirectory().GetDirectory()+"/"+name+".ttf";
+					themeFont.path = name+".ttf";
 					themeFont.proxy = FileManager.GetAsset<Font>(themeFont.path);
 					continue;
 				}
@@ -79,7 +78,7 @@ namespace Zios.Interface{
 				if(term.Matches("Font",true)){
 					themeFont.font = FileManager.GetAsset<Font>(value+".ttf",false);
 					themeFont.font = themeFont.font ?? FileManager.GetAsset<Font>(value+".otf",false);
-					themeFont.font = themeFont.font ?? Resources.FindObjectsOfTypeAll<Font>().Where(x=>x.name==value).FirstOrDefault();
+					themeFont.font = themeFont.font ?? Locate.GetAssets<Font>().Where(x=>x.name==value).FirstOrDefault();
 				}
 				else if(term.Matches("SizeOffset",true)){themeFont.sizeOffset = value.ToInt();}
 				else if(term.Matches("OffsetX",true)){themeFont.offsetX = value.ToFloat();}
@@ -117,6 +116,7 @@ namespace Zios.Interface{
 			return this;
 		}
 		public GUISkin Apply(GUISkin skin){
+			if(skin.IsNull()){return skin;}
 			if(!this.buffer.IsNull()){
 				ScriptableObject.DestroyImmediate(this.buffer);
 			}

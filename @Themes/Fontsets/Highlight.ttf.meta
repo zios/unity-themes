@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: 738a905c6d49b4746851fd735c4c6eff
+timeCreated: 1468448136
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Chub Gothic
+  fontNames:
+  - Chub Gothic
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 5ba0a9c28e7c9404491cba2899be7439, type: 3}
+  - {fileID: 12800000, guid: 2ccf1b86cc03a5a4691c36c02b7f2e31, type: 3}
+  - {fileID: 12800000, guid: 6b10ccecb895da64a9e765cc01c0bf83, type: 3}
+  customCharacters:
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData:
+  assetBundleName: themeassets
+  assetBundleVariant:

@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 32cb797ba75542547b1045225dcb7b0c
+timeCreated: 1469981359
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Liberation Mono
+  fontNames:
+  - Liberation Mono
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 03126ab8db3b5ae49998e9048a9f05e9, type: 3}
+  customCharacters:
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData:
+  assetBundleName: themeassets
+  assetBundleVariant:

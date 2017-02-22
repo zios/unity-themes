@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: f97f69ade5458c149aeb72d10c3e8f40
+timeCreated: 1469981365
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Iceland
+  fontNames:
+  - Iceland
+  fallbackFontReferences: []
+  customCharacters:
+  fontRenderingMode: 1
+  ascentCalculationMode: 1
+  userData:
+  assetBundleName: themeassets
+  assetBundleVariant:

@@ -52,8 +52,7 @@ namespace Zios.Interface{
 					var file = FileManager.Create(savePath+"/"+savePath.GetPathTerm()+".guiContent");
 					file.WriteText(contents);
 				}
-				Theme.setup = false;
-				Theme.loaded = false;
+				Theme.Reset(true);
 			}
 		}
 		public string Serialize(){
@@ -81,7 +80,7 @@ namespace Zios.Interface{
 		public GUIContent value = new GUIContent();
 		public static List<ThemeContent> Import(string path){
 			var imported = new List<ThemeContent>();
-			foreach(var file in FileManager.FindAll(path+"/*.guiContent",false)){
+			foreach(var file in FileManager.FindAll(path+"/*.guiContent",Theme.debug)){
 				var contents = ThemeContent.DeserializeGroup(file.GetText());
 				foreach(var content in contents){content.Setup(path);}
 				imported.AddRange(contents);
@@ -91,9 +90,9 @@ namespace Zios.Interface{
 		public static void Monitor(){
 			var contents = typeof(EditorGUIUtility).GetVariable<Hashtable>("s_IconGUIContents");
 			if(contents.Count != ThemeContent.iconAmount){
-				ThemeContent.iconAmount = contents.Count;
-				Theme.loaded = false;
-				Theme.InstantRefresh();
+				var path = ThemeIconset.all.Count == 1 ? ThemeIconset.all[0].path : null;
+				ThemeIconset.all = path.IsNull() ? ThemeIconset.Import() : ThemeIconset.Import(path).AsList();
+				Theme.ApplyIconset();
 			}
 		}
 		public static List<ThemeContent> ImportDefaults(string path){
@@ -148,7 +147,7 @@ namespace Zios.Interface{
 			this.value.image = FileManager.GetAsset<Texture2D>(path+"/"+this.imageName+".png");
 			if(this.value.image.IsNull()){
 				foreach(var texture in Locate.GetAssets<Texture2D>()){
-					if(texture.name == this.imageName && AssetDatabase.GetAssetPath(texture).Contains("Library/unity")){
+					if(texture.name == this.imageName && FileManager.GetPath(texture).Contains("Library/unity")){
 						this.value.image = texture;
 						return;
 					}
@@ -167,16 +166,19 @@ namespace Zios.Interface{
 			this.targetScope = typeDirect ?? typeParent.InstanceVariable(field);
 			if(this.targetScope.IsNull()){return;}
 			if(this.targetScope.Is<GUIContent[]>() || this.targetScope.Is<Hashtable>() || this.targetScope.HasVariable(this.name)){
+				if(this.targetScope.Is<GUIContent[]>() && this.name.ToInt() >= this.targetScope.As<IList>().Count){
+					return;
+				}
 				this.target = this.targetScope.InstanceVariable(this.name).As<GUIContent>();
 			}
 		}
-		[MenuItem("Zios/Theme/Development/Dump [GUIContent]")]
+		[MenuItem("Edit/Themes/Development/Dump/Active/GUIContent")]
 		public static void Dump(){ThemeContent.Dump(Theme.active);}
 		public static void Dump(Theme theme){
 			var path = theme.path.GetDirectory()+"/Dump/";
 			FileManager.Create(path);
 			foreach(var targetName in new string[2]{"s_IconGUIContents","s_TextGUIContents"}){
-				var target = "UnityEditor.EditorGUIUtility."+targetName;
+				var target = "EditorGUIUtility."+targetName;
 				var iconContents = typeof(EditorGUIUtility).GetVariable<Hashtable>(targetName);
 				var contents = "".AddLine("("+target+")");
 				foreach(DictionaryEntry item in iconContents){

@@ -1,0 +1,41 @@
+[Main]
+Font = NovaOval
+SizeOffset = 1
+OffsetX = 0
+OffsetY = 0
+
+[Border]
+Font = NovaOval
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
+[Button]
+Font = NovaOval
+SizeOffset = 0
+OffsetX = 0
+OffsetY = -1
+
+[Highlight]
+Font = NovaOval
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 1
+
+[Search]
+Font = NovaScript
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 1
+
+[Code]
+Font = NovaMono
+SizeOffset = 2
+OffsetX = 0
+OffsetY = 0
+
+[Header]
+Font = NovaOval
+SizeOffset = 0
+OffsetX = 0
+OffsetY = -1

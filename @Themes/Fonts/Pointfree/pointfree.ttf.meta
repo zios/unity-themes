@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: cb139a8ab60c95d4cbb39e54449022dd
+timeCreated: 1469981363
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Pointfree
+  fontNames:
+  - Pointfree
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: f3df864cad68cfe41b44bf29da7c4a29, type: 3}
+  customCharacters:
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData:
+  assetBundleName: themeassets
+  assetBundleVariant:

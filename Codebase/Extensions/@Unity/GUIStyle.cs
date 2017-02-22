@@ -1,15 +1,30 @@
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 namespace Zios{
+	public enum GUIStyleField{
+		name,
+		textColor,
+		background,
+		border,
+		margin,
+		padding,
+		overflow,
+		font,
+		fontSize,
+		fontStyle,
+		alignment,
+		wordWrap,
+		richText,
+		clipping,
+		imagePosition,
+		contentOffset,
+		fixedWidth,
+		fixedHeight,
+		stretchWidth,
+		stretchHeight,
+	}
 	public static class GUIStyleExtension{
-		public static bool autoLayout = true;
-		public static GUILayoutOption[] CreateLayout(this GUIStyle current){
-			var options = new List<GUILayoutOption>();
-			if(GUIStyleExtension.autoLayout){
-				if(current.fixedWidth != 0){options.Add(GUILayout.Width(current.fixedWidth));}
-			}
-			return options.ToArray();
-		}
 		public static GUIStyle Rotate90(this GUIStyle current){
 			float width = current.fixedWidth;
 			float height = current.fixedHeight;
@@ -164,7 +179,7 @@ namespace Zios{
 			return current;
 		}
 		public static GUIStyle Background(this GUIStyle current,string value,bool asCopy=true){
-			if(value.IsEmpty()){return current.Background(default(Texture2D),asCopy);}
+			if(value.IsEmpty()){return current.Background(new Texture2D(0,0),asCopy);}
 			Texture2D texture = FileManager.GetAsset<Texture2D>(value);
 			if(texture != null){return current.Background(texture,asCopy);}
 			return current;
@@ -191,28 +206,46 @@ namespace Zios{
 			current.wordWrap = value;
 			return current;
 		}
-		public static GUIStyleState[] GetStates(this GUIStyle current,bool offStates=true,bool onStates=true){
-			var states = new List<GUIStyleState>();
+		public static Dictionary<string,GUIStyleState> GetNamedStates(this GUIStyle current,bool offStates=true,bool onStates=true){
+			var states = new Dictionary<string,GUIStyleState>();
 			if(offStates){
-				states.Add(current.normal);
-				states.Add(current.hover);
-				states.Add(current.active);
-				states.Add(current.focused);
+				states["normal"] = current.normal;
+				states["hover"] = current.hover;
+				states["active"] = current.active;
+				states["focused"] = current.focused;
 			}
 			if(onStates){
-				states.Add(current.onNormal);
-				states.Add(current.onHover);
-				states.Add(current.onActive);
-				states.Add(current.onFocused);
+				states["onNormal"] = current.onNormal;
+				states["onHover"] = current.onHover;
+				states["onActive"] = current.onActive;
+				states["onFocused"] = current.onFocused;
 			}
-			return states.ToArray();
+			return states;
+		}
+		public static GUIStyleState[] GetStates(this GUIStyle current,bool offStates=true,bool onStates=true){
+			return current.GetNamedStates(offStates,onStates).Values.ToArray();
 		}
 		public static GUIStyle Rename(this GUIStyle current,string name){
 			current.name = name;
 			return current;
 		}
+		public static GUIStyle UseState(this GUIStyle current,string find,string replace="normal",bool asCopy=true){
+			if(asCopy){current = new GUIStyle(current);}
+			var states = current.GetNamedStates();
+			if(states.ContainsKey(replace)){
+				states[replace].textColor = states[find].textColor;
+				states[replace].background = states[find].background;
+			}
+			if(replace.ContainsAny("*","all")){
+				foreach(var item in states){
+					states[item.Key].textColor = states[find].textColor;
+					states[item.Key].background = states[find].background;
+				}
+			}
+			return current;
+		}
 		public static GUIStyle Use(this GUIStyle current,GUIStyle other){
-			if(other.IsNull()){return current;}
+			if(current.IsNull() || other.IsNull()){return current;}
 			current.normal = other.normal;
 			current.hover = other.hover;
 			current.focused = other.focused;

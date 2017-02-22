@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 using UnityObject = UnityEngine.Object;
+using UnityAction = UnityEngine.Events.UnityAction;
 namespace Zios{
 	using Events;
 	#if UNITY_EDITOR
@@ -18,7 +19,7 @@ namespace Zios{
 	public static partial class Utility{
 		private static float sceneCheck;
 		private static Dictionary<object,int> messages = new Dictionary<object,int>();
-		private static Dictionary<object,KeyValuePair<CallbackFunction,float>> delayedMethods = new Dictionary<object,KeyValuePair<CallbackFunction,float>>();
+		private static Dictionary<object,KeyValuePair<Action,float>> delayedMethods = new Dictionary<object,KeyValuePair<Action,float>>();
 		private static Dictionary<string,Type> internalTypes = new Dictionary<string,Type>();
 		static Utility(){Utility.Setup();}
 		public static void Setup(){
@@ -38,6 +39,7 @@ namespace Zios{
 			Event.Register("On Asset Moving");
 			Event.Register("On Scene Loaded");
 			Event.Register("On Editor Scene Loaded");
+			Event.Register("On Editor Quit");
 			Event.Register("On Mode Changed");
 			Event.Register("On Enter Play");
 			Event.Register("On Exit Play");
@@ -66,12 +68,15 @@ namespace Zios{
 			EditorApplication.update += ()=>Event.Call("On Editor Update");
 			EditorApplication.update += ()=>Utility.CheckLoaded(true);
 			EditorApplication.update += ()=>Utility.CheckDelayed(true);
+			UnityAction editorQuitEvent = new UnityAction(()=>Event.Call("On Editor Quit"));
 			CallbackFunction windowEvent = ()=>Event.Call("On Window Reordered");
 			CallbackFunction globalEvent = ()=>Event.Call("On Global Event");
 			var windowsReordered = typeof(EditorApplication).GetVariable<CallbackFunction>("windowsReordered");
 			typeof(EditorApplication).SetVariable("windowsReordered",windowsReordered+windowEvent);
 			var globalEventHandler = typeof(EditorApplication).GetVariable<CallbackFunction>("globalEventHandler");
 			typeof(EditorApplication).SetVariable("globalEventHandler",globalEventHandler+globalEvent);
+			var editorQuitHandler = typeof(EditorApplication).GetVariable<UnityAction>("editorApplicationQuit");
+			typeof(EditorApplication).SetVariable("editorApplicationQuit",editorQuitHandler+editorQuitEvent);
 			#endif
 		}
 		public static void CheckLoaded(){Utility.CheckLoaded(false);}
@@ -101,38 +106,12 @@ namespace Zios{
 				}
 			}
 		}
+		public static bool IsRepainting(){
+			return UnityEngine.Event.current.type == EventType.Repaint;
+		}
 		//============================
 		// General
 		//============================
-		public static void CallEditorPref(string name,bool showWarnings=false){
-			#if UNITY_EDITOR
-			var callbacks = EditorPrefs.GetString(name);
-			var called = new List<string>();
-			var success = new List<string>();
-			bool debug = ObjectExtension.debug;
-			ObjectExtension.debug = showWarnings;
-			foreach(var method in callbacks.Split("|")){
-				if(called.Contains(method) || method.IsEmpty()){continue;}
-				if(!method.CallMethod().IsNull()){
-					success.Add(method);
-				}
-				called.Add(method);
-			}
-			ObjectExtension.debug = debug;
-			var value = success.Count > 0 ? success.Join("|") : "";
-			EditorPrefs.SetString(name,value);
-			#endif
-		}
-		public static void TogglePlayerPref(string name,bool fallback=false){
-			bool value = !(PlayerPrefs.GetInt(name) == fallback.ToInt());
-			PlayerPrefs.SetInt(name,value.ToInt());
-		}
-		public static void ToggleEditorPref(string name,bool fallback=false){
-			#if UNITY_EDITOR
-			bool value = !EditorPrefs.GetBool(name,fallback);
-			EditorPrefs.SetBool(name,value);
-			#endif
-		}
 		public static void Destroy(UnityObject target,bool destroyAssets=false){
 			if(target.IsNull()){return;}
 			if(target is Component){
@@ -208,38 +187,35 @@ namespace Zios{
 				method();
 			}
 		}
-		public static void EditorCall(CallbackFunction method){
+		public static void EditorCall(Action method){
 			#if UNITY_EDITOR
 			if(!Utility.IsPlaying()){
 				method();
 			}
 			#endif
 		}
-		public static void DelayCall(CallbackFunction method){
+		public static void DelayCall(Action method){
 			#if UNITY_EDITOR
-			if(EditorApplication.delayCall != method){
-				EditorApplication.delayCall += method;
+			CallbackFunction callback = new CallbackFunction(method);
+			if(EditorApplication.delayCall != callback){
+				EditorApplication.delayCall += callback;
 			}
 			return;
 			#endif
 			Utility.DelayCall(method,0);
 		}
-		public static void DelayCall(CallbackFunction method,float seconds,bool overwrite=true){
+		public static void DelayCall(Action method,float seconds,bool overwrite=true){
 			Utility.DelayCall(method,method,seconds,overwrite);
 		}
-		public static void DelayCall(object key,CallbackFunction method,float seconds,bool overwrite=true){
+		public static void DelayCall(object key,Action method,float seconds,bool overwrite=true){
 			if(!key.IsNull() && !method.IsNull()){
 				if(seconds <= 0){
 					method();
 					return;
 				}
 				if(Utility.delayedMethods.ContainsKey(key) && !overwrite){return;}
-				Utility.delayedMethods[key] = new KeyValuePair<CallbackFunction,float>(method,Time.realtimeSinceStartup + seconds);
+				Utility.delayedMethods[key] = new KeyValuePair<Action,float>(method,Time.realtimeSinceStartup + seconds);
 			}
-		}
-		public static void RepeatCall(CallbackFunction method,float seconds){
-			CallbackFunction repeat = ()=>Utility.DelayCall(()=>Utility.RepeatCall(method,seconds));
-			Utility.DelayCall(method+repeat,seconds);
 		}
 	}
 }

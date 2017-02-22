@@ -1,0 +1,42 @@
+[Main]
+Font = PixAntiqua
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
+[Border]
+Font = PixAntiqua
+SizeOffset = -1
+OffsetX = 0
+OffsetY = 0
+
+[Button]
+Font = PixAntiqua
+SizeOffset = -1
+OffsetX = 0
+OffsetY = 0
+
+[Highlight]
+Font = PixAntiqua
+SizeOffset = -1
+OffsetX = 0
+OffsetY = 0
+
+[Search]
+Font = PixAntiqua
+SizeOffset = -1
+OffsetX = 0
+OffsetY = 0
+
+[Code]
+Font = PixelOperatorMono
+SizeOffset = 4
+OffsetX = 0
+OffsetY = 0
+
+[Header]
+Font = PixAntiqua
+SizeOffset = -1
+OffsetX = 0
+OffsetY = 0
+

@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using System;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 namespace Zios.Interface{
 	[Serializable]
 	public partial class Theme{
+		public static Theme active;
 		public static List<Theme> all = new List<Theme>();
 		[Internal] public string name;
 		[Internal] public string path;
@@ -12,13 +14,14 @@ namespace Zios.Interface{
 		[Internal] public ThemeFontset fontset = new ThemeFontset();
 		[Internal] public ThemeIconset iconset = new ThemeIconset();
 		[Internal] public ThemeSkinset skinset = new ThemeSkinset();
+		public string[] defaultVariants = new string[0];
 		public bool customizablePalette;
 		public bool customizableFontset;
 		public bool customizableIconset;
 		public static List<Theme> Import(string path=null){
 			path = path ?? "*.unitytheme";
 			var imported = new List<Theme>();
-			foreach(var file in FileManager.FindAll(path,false)){
+			foreach(var file in FileManager.FindAll(path,Theme.debug)){
 				var active = imported.AddNew();
 				active.name = file.name.ToPascalCase();
 				active.path = file.path;
@@ -34,7 +37,7 @@ namespace Zios.Interface{
 			if(path.Length > 0){
 				var file = FileManager.Create(path);
 				file.WriteText(this.Serialize());
-				EditorPrefs.SetString("EditorTheme"+Theme.suffix,theme.name);
+				Utility.SetPref<string>("EditorTheme"+Theme.suffix,theme.name);
 				Theme.setup = false;
 			}
 		}
@@ -50,7 +53,11 @@ namespace Zios.Interface{
 				else if(term.Matches("Palette",true)){this.palette = ThemePalette.all.Find(x=>x.name==value) ?? new ThemePalette();}
 				else if(term.Matches("Fontset",true)){this.fontset = ThemeFontset.all.Find(x=>x.name==value) ?? new ThemeFontset();}
 				else if(term.Matches("Iconset",true)){this.iconset = ThemeIconset.all.Find(x=>x.name==value) ?? new ThemeIconset();}
-				else if(term.Matches("Skinset",true)){this.skinset = ThemeSkinset.all.Find(x=>x.name==value) ?? new ThemeSkinset();}
+				else if(term.Matches("Skinset",true)){
+					var variants = value.Split("+");
+					this.defaultVariants = variants.Skip(1).ToArray();
+					this.skinset = ThemeSkinset.all.Find(x=>x.name==variants[0]) ?? new ThemeSkinset();
+				}
 			}
 		}
 		public Theme Use(Theme other){

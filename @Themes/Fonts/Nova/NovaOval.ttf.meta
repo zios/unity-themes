@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 5ea17dc8c3f1eaa4786d012875df40c2
+timeCreated: 1469981361
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Nova Oval
+  fontNames:
+  - Nova Oval
+  fallbackFontReferences: []
+  customCharacters:
+  fontRenderingMode: 1
+  ascentCalculationMode: 1
+  userData:
+  assetBundleName: themeassets
+  assetBundleVariant:

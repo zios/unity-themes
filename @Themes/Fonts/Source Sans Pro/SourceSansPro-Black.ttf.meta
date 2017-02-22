@@ -1,0 +1,31 @@
+fileFormatVersion: 2
+guid: d29e1c41ba476454e8537a8ed7b9da9b
+timeCreated: 1469981363
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Source Sans Pro
+  fontNames:
+  - Source Sans Pro
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 596d7ab1e3c57904e99aa5a4153eb87b, type: 3}
+  - {fileID: 12800000, guid: 56938a6296da8894887a6035ebfaadb8, type: 3}
+  - {fileID: 12800000, guid: 8f568a355494ed643a8bba86b24f8d23, type: 3}
+  - {fileID: 12800000, guid: 07d2f2f694b536e489799f1f605006c9, type: 3}
+  - {fileID: 12800000, guid: 3727e15983c04c149965e585a81d0cbc, type: 3}
+  - {fileID: 12800000, guid: 5963fdc95fbcb214bb16f680ffbfc72b, type: 3}
+  - {fileID: 12800000, guid: c5bac00d79c32c245a636e1da7bd9b24, type: 3}
+  - {fileID: 12800000, guid: 6b8a069e8b50bcb4895af85f26d9343b, type: 3}
+  - {fileID: 12800000, guid: b219bebe7f00fc6429dc83f3d3fd0b3b, type: 3}
+  - {fileID: 12800000, guid: 13eb8e0f522398748900304acee82fa8, type: 3}
+  customCharacters:
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData:
+  assetBundleName: themeassets
+  assetBundleVariant:

@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 978c6519f99130946b3e8c07e6bdc387
+timeCreated: 1467624975
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Aurulent Sans Mono
+  fontNames:
+  - Aurulent Sans Mono
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 1a2880e1cd8b01e45b514e2e79ba1eb0, type: 3}
+  - {fileID: 12800000, guid: 66801deb78197fe4fafe20d5d2e70c92, type: 3}
+  customCharacters:
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData:
+  assetBundleName: themeassets
+  assetBundleVariant:

@@ -1,0 +1,41 @@
+[Main]
+Font = DroidSans-Normal
+SizeOffset = 1
+OffsetX = 0
+OffsetY = -1
+
+[Border]
+Font = DroidSans-Normal
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
+[Button]
+Font = DroidSans-Normal
+SizeOffset = 0
+OffsetX = 0
+OffsetY = -1
+
+[Highlight]
+Font = DroidSans-Normal
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 1
+
+[Search]
+Font = DroidSans-Normal
+SizeOffset = -2
+OffsetX = 0
+OffsetY = 1
+
+[Code]
+Font = AurulentSansMono
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
+[Header]
+Font = DroidSans-Normal
+SizeOffset = 0
+OffsetX = 0
+OffsetY = -1

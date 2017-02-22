@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 0aece09c9b28b484688d2090d70ca826
+timeCreated: 1469981357
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Crushed
+  fontNames:
+  - Crushed
+  fallbackFontReferences: []
+  customCharacters:
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData:
+  assetBundleName: themeassets
+  assetBundleVariant:

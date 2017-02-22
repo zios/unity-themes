@@ -22,8 +22,8 @@ namespace Zios{
 			if(current.bottom != other.bottom){return false;}
 			return true;
 		}
-		public static string Serialize(this RectOffset current,string separator="-"){
-			return current.top+separator+current.right+separator+current.bottom+separator+current.left;
+		public static string Serialize(this RectOffset current,string separator=" "){
+			return current.left+separator+current.right+separator+current.top+separator+current.bottom;
 		}
 	}
 }

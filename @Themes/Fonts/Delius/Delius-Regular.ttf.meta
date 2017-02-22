@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 06d153200b488ad409897eadbbf21914
+timeCreated: 1469981357
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Delius
+  fontNames:
+  - Delius
+  fallbackFontReferences: []
+  customCharacters:
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData:
+  assetBundleName: themeassets
+  assetBundleVariant:

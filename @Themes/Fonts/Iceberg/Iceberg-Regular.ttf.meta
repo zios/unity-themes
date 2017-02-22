@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: d4bab0c8b3df090499e6042b7767e319
+timeCreated: 1469981364
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Iceberg
+  fontNames:
+  - Iceberg
+  fallbackFontReferences: []
+  customCharacters:
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData:
+  assetBundleName: themeassets
+  assetBundleVariant:

@@ -7,20 +7,6 @@ namespace Zios{
 		//=======================
 		// Default
 		//=======================
-		public static T[] Convert<T>(this Array current){
-			List<T> casted = new List<T>();
-			Type type = typeof(T);
-			foreach(var item in current){
-				if(type == typeof(Single)){
-					float value = System.Convert.ToSingle(item);
-					casted.Add((T)System.Convert.ChangeType(value,type));
-				}
-				else{
-					casted.Add((T)item);
-				}
-			}
-			return casted.ToArray();
-		}
 		public static List<T> ToList<T>(this T[] current){
 			return new List<T>(current);
 		}
@@ -126,41 +112,29 @@ namespace Zios{
 			return Color.white;
 		}
 		public static Vector2 ToVector2(this float[] current){
-			if(current.Length >= 2){
-				float a = current[0];
-				float b = current[1];
-				return new Vector2(a,b);
-			}
-			return Vector2.zero;
+			float x = current.Length >= 1 ? current[0] : 0;
+			float y = current.Length >= 2 ? current[1] : 0;
+			return new Vector2(x,y);
 		}
 		public static Vector3 ToVector3(this float[] current){
-			if(current.Length >= 3){
-				float a = current[0];
-				float b = current[1];
-				float c = current[2];
-				return new Vector3(a,b,c);
-			}
-			return Vector3.zero;
+			float x = current.Length >= 1 ? current[0] : 0;
+			float y = current.Length >= 2 ? current[1] : 0;
+			float z = current.Length >= 3 ? current[2] : 0;
+			return new Vector3(x,y,z);
 		}
 		public static Vector4 ToVector4(this float[] current){
-			if(current.Length >= 4){
-				float a = current[0];
-				float b = current[1];
-				float c = current[2];
-				float d = current[3];
-				return new Vector4(a,b,c,d);
-			}
-			return Vector4.zero;
+			float x = current.Length >= 1 ? current[0] : 0;
+			float y = current.Length >= 2 ? current[1] : 0;
+			float z = current.Length >= 3 ? current[2] : 0;
+			float w = current.Length >= 4 ? current[3] : 0;
+			return new Vector4(x,y,z,w);
 		}
 		public static Rect ToRect(this float[] current){
 			Rect result = new Rect();
-			for(int index=0;index<current.Length;++index){
-				if(index > 3){break;}
-				if(index == 0){result.x = current[index];}
-				if(index == 1){result.y = current[index];}
-				if(index == 2){result.width = current[index];}
-				if(index == 3){result.height = current[index];}
-			}
+			result.x = current.Length >= 1 ? current[0] : 0;
+			result.y = current.Length >= 2 ? current[1] : 0;
+			result.width = current.Length >= 3 ? current[2] : 0;
+			result.height = current.Length >= 4 ? current[3] : 0;
 			return result;
 		}
 	}

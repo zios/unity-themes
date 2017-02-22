@@ -105,5 +105,11 @@ namespace Zios{
 		public static int Min(this int current,int value){return Math.Min(current,value);}
 		public static int Max(this int current,int value){return Math.Max(current,value);}
 		public static int Abs(this int current){return Math.Abs(current);}
+		public static bool MatchesAny(this int current,params int[] values){
+			foreach(int value in values){
+				if(current==value){return true;}
+			}
+			return false;
+		}
 	}
 }

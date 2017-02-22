@@ -25,7 +25,8 @@ namespace Zios{
 		}
 		public static bool IsEmpty(this object current){
 			bool isEmptyString = (current is string && ((string)current).IsEmpty());
-			return current.IsNull() || isEmptyString;
+			bool isEmptyCollection = (current is IList && ((IList)current).Count == 0);
+			return current.IsNull() || isEmptyCollection || isEmptyString;
 		}
 		public static bool IsNumber(this object current){
 			bool isByte = current is sbyte || current is byte;
@@ -40,6 +41,14 @@ namespace Zios{
 			Type type = current is Type ? (Type)current : current.GetType();
 			return type.IsStatic();
 		}
+		public static bool IsGeneric(this object current){
+			Type type = current is Type ? (Type)current : current.GetType();
+			return type.ContainsGenericParameters || type.IsGenericType;
+		}
+		public static bool IsAny<A,B>(this object current){return current.Is<A>() || current.Is<B>();}
+		public static bool IsAny<A,B,C>(this object current){return current.Is<A>() || current.Is<B>() || current.Is<C>();}
+		public static bool IsAny<A,B,C,D>(this object current){return current.Is<A>() || current.Is<B>() || current.Is<C>() || current.Is<D>();}
+		public static bool IsAny<A,B,C,D,E>(this object current){return current.Is<A>() || current.Is<D>() || current.Is<C>() || current.Is<D>() || current.Is<E>();}
 		public static bool Is<T>(this object current){
 			if(current.IsNull()){return false;}
 			var type = current is Type ? (Type)current : current.GetType();
@@ -104,11 +113,12 @@ namespace Zios{
 		//============================
 		// Conversions
 		//============================
-		public static float ToFloat(this object current){return Convert.ChangeType(current,typeof(float)).As<float>();}
-		public static int ToInt(this object current){return Convert.ChangeType(current,typeof(int)).As<int>();}
-		public static double ToDouble(this object current){return Convert.ChangeType(current,typeof(double)).As<double>();}
-		public static string ToString(this object current){return Convert.ChangeType(current,typeof(string)).As<string>();}
-		public static bool ToBool(this object current){return Convert.ChangeType(current,typeof(bool)).As<bool>();}
+		public static Type Convert<Type>(this object current){return System.Convert.ChangeType(current,typeof(Type)).As<Type>();}
+		public static float ToFloat(this object current){return System.Convert.ChangeType(current,typeof(float)).As<float>();}
+		public static int ToInt(this object current){return System.Convert.ChangeType(current,typeof(int)).As<int>();}
+		public static double ToDouble(this object current){return System.Convert.ChangeType(current,typeof(double)).As<double>();}
+		public static string ToString(this object current){return System.Convert.ChangeType(current,typeof(string)).As<string>();}
+		public static bool ToBool(this object current){return System.Convert.ChangeType(current,typeof(bool)).As<bool>();}
 		public static byte[] ToBytes(this object current){
 			if(current is Vector3){return current.As<Vector3>().ToBytes();}
 			else if(current is float){return current.As<float>().ToBytes();}
@@ -120,7 +130,7 @@ namespace Zios{
 			else if(current is double){return current.As<double>().ToBytes();}
 			return new byte[0];
 		}
-		public static string Serialize(this object current){
+		public static string SerializeAuto(this object current){
 			if(current is Texture2D){return current.As<Texture2D>().Serialize();}
 			else if(current is GUIContent){return current.As<GUIContent>().Serialize();}
 			else if(current is Vector3){return current.As<Vector3>().Serialize();}

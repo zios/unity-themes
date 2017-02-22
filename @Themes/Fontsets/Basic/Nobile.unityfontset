@@ -1,0 +1,42 @@
+[Main]
+Font = Nobile-Medium
+SizeOffset = -1
+OffsetX = 0
+OffsetY = 1
+
+[Border]
+Font = Nobile-Bold
+SizeOffset = -2
+OffsetX = 0
+OffsetY = 1
+
+[Button]
+Font = Nobile-Medium
+SizeOffset = -1
+OffsetX = 0
+OffsetY = 0
+
+[Highlight]
+Font = Nobile-Medium
+SizeOffset = -1
+OffsetX = 0
+OffsetY = 2
+
+[Search]
+Font = Nobile-Italic
+SizeOffset = -1
+OffsetX = 0
+OffsetY = 0
+
+[Code]
+Font = AurulentSansMono
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
+[Header]
+Font = Nobile-Bold
+SizeOffset = -2
+OffsetX = 0
+OffsetY = 0
+

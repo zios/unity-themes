@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: bd529039b328a9248a5fe90fa180f190
+timeCreated: 1469981363
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Source Serif Pro
+  fontNames:
+  - Source Serif Pro
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: bb9db4c2a505ab044ae1f41798b981ad, type: 3}
+  - {fileID: 12800000, guid: 6966d0ec30e814c4387c0a2dd150f322, type: 3}
+  customCharacters:
+  fontRenderingMode: 1
+  ascentCalculationMode: 1
+  userData:
+  assetBundleName: themeassets
+  assetBundleVariant:

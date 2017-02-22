@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: f11a470d60b062142bc30d99dffee684
+timeCreated: 1469981365
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: 8-bit Operator+ 8
+  fontNames:
+  - 8-bit Operator+ 8
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: a1a0673506707d143a5a4efd8d905ee3, type: 3}
+  customCharacters:
+  fontRenderingMode: 2
+  ascentCalculationMode: 1
+  userData:
+  assetBundleName: themeassets
+  assetBundleVariant:

@@ -70,5 +70,13 @@ namespace Zios{
 			copy.AddRange(values);
 			return copy;
 		}
+		public static List<T> Delete<T>(this List<T> current,T value){
+			current.Remove(value);
+			return current;
+		}
+		public static List<T> Append<T>(this List<T> current,T value){
+			current.Add(value);
+			return current;
+		}
 	}
 }

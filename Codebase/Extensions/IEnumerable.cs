@@ -7,6 +7,13 @@ namespace Zios{
 		//=======================
 		// Conversion
 		//=======================
+		public static To[] ConvertAll<To>(this IEnumerable<string> current){
+			return current.ConvertAll<string,To>();
+		}
+		public static To[] ConvertAll<From,To>(this IEnumerable<From> current){
+			var source = current.ToArray<From>();
+			return Array.ConvertAll(source,x=>x.Convert<To>()).ToArray();
+		}
 		public static Dictionary<TKey,TValue> ToDictionary<TKey,TValue>(this IEnumerable<KeyValuePair<TKey,TValue>> current){
 			return current.ToDictionary(x=>x.Key,x=>x.Value);
 		}
@@ -43,7 +50,7 @@ namespace Zios{
 		public static string Serialize<T>(this IEnumerable<T> current){
 			string output = "";
 			foreach(var value in current){
-				output += value.Serialize()+"-";
+				output += value.SerializeAuto()+"-";
 			}
 			return output.TrimRight("-");
 		}
@@ -54,6 +61,10 @@ namespace Zios{
 			var result = current.ToList();
 			result.Insert(0,item);
 			return result;
+		}
+		public static IEnumerable<T> ReverseOrder<T>(this IEnumerable<T> current){
+			current.Reverse();
+			return current;
 		}
 		//=======================
 		// LINQ-ish
@@ -72,6 +83,9 @@ namespace Zios{
 		}
 		public static IEnumerable<Type> SkipRight<Type>(this IEnumerable<Type> current,int amount){
 			return current.Take(current.Count() - amount);
+		}
+		public static IEnumerable<Type> TakeRight<Type>(this IEnumerable<Type> current,int amount){
+			return current.Skip(current.Count() - amount).Take(amount);
 		}
 		//=======================
 		// String

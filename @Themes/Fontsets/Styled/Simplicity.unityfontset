@@ -1,0 +1,41 @@
+[Main]
+Font = Orkney-Medium
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
+[Border]
+Font = ChubGothic
+SizeOffset = -1
+OffsetX = 0
+OffsetY = 1
+
+[Button]
+Font = ChubGothic
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
+[Highlight]
+Font = ChubGothic
+SizeOffset = -1
+OffsetX = 0
+OffsetY = 2
+
+[Search]
+Font = LiberationSans-Italic
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 1
+
+[Code]
+Font = AurulentSansMono
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
+[Header]
+Font = ChubGothic
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0

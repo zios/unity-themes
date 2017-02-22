@@ -1,6 +1,7 @@
-/Codebase/@Solutions~/ZiosThemesEditor.dll
-/Codebase/@Solutions~/ZiosThemes.dll
-/Codebase/@Solutions~/.vs
-/Codebase/@Solutions~/obj
 /License.txt.meta
 /README.md.meta
+/Codebase/.Solutions/UnityEditor.dll
+/Codebase/.Solutions/UnityEngine.dll
+/Codebase/.Solutions/obj
+/Codebase/.Solutions/Release/*.dll
+/Codebase/.Solutions/.vs

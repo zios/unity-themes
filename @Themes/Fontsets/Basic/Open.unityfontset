@@ -1,0 +1,42 @@
+[Main]
+Font = OpenSans-Regular
+SizeOffset = 1
+OffsetX = 0
+OffsetY = -1
+
+[Border]
+Font = OpenSans-Semibold
+SizeOffset = 0
+OffsetX = 0
+OffsetY = -1
+
+[Button]
+Font = OpenSans-Regular
+SizeOffset = 0
+OffsetX = 0
+OffsetY = -1
+
+[Highlight]
+Font = OpenSans-Regular
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
+[Search]
+Font = OpenSans-Italic
+SizeOffset = 0
+OffsetX = 1
+OffsetY = 0
+
+[Code]
+Font = AurulentSansMono
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
+[Header]
+Font = OpenSans-Bold
+SizeOffset = -1
+OffsetX = 0
+OffsetY = -1
+

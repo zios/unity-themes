@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 15e9078209324404ab6d01d90d15ddf3
+timeCreated: 1469981358
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Delius Swash Caps
+  fontNames:
+  - Delius Swash Caps
+  fallbackFontReferences: []
+  customCharacters:
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData:
+  assetBundleName: themeassets
+  assetBundleVariant:

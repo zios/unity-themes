@@ -1,0 +1,42 @@
+[Main]
+Font = LiberationSans-Regular
+SizeOffset = 1
+OffsetX = 0
+OffsetY = -1
+
+[Border]
+Font = LiberationSans-Regular
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
+[Button]
+Font = LiberationSans-Regular
+SizeOffset = 0
+OffsetX = 0
+OffsetY = -1
+
+[Highlight]
+Font = LiberationSans-Regular
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 1
+
+[Search]
+Font = LiberationSans-Italic
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 1
+
+[Code]
+Font = LiberationMono-Regular
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
+[Header]
+Font = LiberationSans-Bold
+SizeOffset = 0
+OffsetX = 0
+OffsetY = -1
+

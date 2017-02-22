@@ -1,0 +1,42 @@
+[Main]
+Font = Laila-Regular
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
+[Border]
+Font = JosefinSans-Bold
+SizeOffset = 1
+OffsetX = 0
+OffsetY = 1
+
+[Button]
+Font = JosefinSans-Bold
+SizeOffset = 1
+OffsetX = 0
+OffsetY = 0
+
+[Highlight]
+Font = JosefinSans-Bold
+SizeOffset = 1
+OffsetX = 0
+OffsetY = 1
+
+[Search]
+Font = JosefinSans-Italic
+SizeOffset = 1
+OffsetX = 0
+OffsetY = 1
+
+[Code]
+Font = AurulentSansMono
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
+[Header]
+Font = JosefinSans-Bold
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
