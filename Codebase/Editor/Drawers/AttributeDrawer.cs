@@ -15,7 +15,7 @@ namespace Zios.Editors{
 		public IAttributeAccess access;
 		public new Attribute attribute;
 		public float overallHeight;
-		public bool isPrefab;
+		public bool isPrefabFile;
 		public float GetBaseHeight(SerializedProperty property,GUIContent label){
 			return base.GetPropertyHeight(property,label);
 		}
@@ -27,13 +27,13 @@ namespace Zios.Editors{
 			if(this.attribute == null){
 				this.attribute = property.GetObject<Attribute>();
 				MonoBehaviour script = (MonoBehaviour)property.serializedObject.targetObject;
-				this.isPrefab = script.IsPrefab();
+				this.isPrefabFile = script.InPrefabFile();
 			}
 			if(!this.attribute.showInEditor || !this.attribute.isSetup){
 				this.overallHeight = -2;
 				return;
 			}
-			if(this.isPrefab){
+			if(this.isPrefabFile){
 				/*this.overallHeight = EditorGUIUtility.singleLineHeight;
 				//base.OnGUI(area,property,label);
 				Type utility = Utility.GetEditorType("ScriptAttributeUtility");

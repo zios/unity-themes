@@ -31,7 +31,7 @@ namespace Zios.Editors{
 		public override void OnInspectorGUI(){
 			Utility.GetInspectors().ForEach(x=>x.wantsMouseMove = true);
 			if(!UnityEvent.current.IsUseful()){return;}
-			if(this.target is MonoBehaviour && this.target.As<MonoBehaviour>().IsPrefab()){return;}
+			if(this.target is MonoBehaviour && this.target.As<MonoBehaviour>().InPrefabFile()){return;}
 			this.BeginArea();
 			bool fastInspector = Utility.GetPref<bool>("MonoBehaviourEditor-FastInspector");
 			/*if(fastInspector && MonoBehaviourEditor.offScreen.ContainsKey(this)){

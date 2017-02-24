@@ -10,27 +10,25 @@ namespace Zios.Editors.AnimationEditors{
 		public AnimationConfiguration active;
 		public float time = 0;
 		public override void OnInspectorGUI(){
+			EditorUI.Reset();
+			EditorUI.allowIndention = false;
 			AnimationSettingsEditor.instance = this;
 			Event.Add("On Editor Update",AnimationSettingsEditor.EditorUpdate);
-			var labelStyle = EditorStyles.label.FixedWidth(120);
-			var fpsStyle = EditorStyles.numberField.FixedWidth(50);
-			var blendStyle = EditorStyles.popup.FixedWidth(70);
-			var wrapStyle = EditorStyles.popup.FixedWidth(100);
 			EditorGUILayout.BeginHorizontal();
-			"Name".ToLabel().DrawLabel(labelStyle);
-			"FPS".ToLabel().DrawLabel(labelStyle.FixedWidth(30));
-			"Blend".ToLabel().DrawLabel(labelStyle.FixedWidth(80));
-			"Wrap".ToLabel().DrawLabel(labelStyle.FixedWidth(100));
+			"Name".ToLabel().Layout(120).DrawLabel();
+			"FPS".ToLabel().Layout(30).DrawLabel();
+			"Blend".ToLabel().Layout(80).DrawLabel();
+			"Wrap".ToLabel().Layout(100).DrawLabel();
 			EditorGUILayout.EndHorizontal();
 			foreach(var config in this.target.As<AnimationSettings>().animations){
 				EditorGUILayout.BeginHorizontal();
 				bool isPlaying = config == active;
-				config.name.ToLabel().DrawLabel(labelStyle);
-				config.fps = config.fps.Draw(null,fpsStyle);
-				config.blendMode = (AnimationBlendMode)config.blendMode.Draw("",blendStyle);
-				config.wrapMode = (WrapMode)config.wrapMode.Draw("",wrapStyle);
-				if(isPlaying && "Stop".ToLabel().DrawButton()){this.Stop();}
-				if(!isPlaying && "Play".ToLabel().DrawButton()){
+				config.name.ToLabel().Layout(120).DrawLabel();
+				config.fps = config.fps.Layout(30).Draw();
+				config.blendMode = config.blendMode.Layout(80).Draw().As<AnimationBlendMode>();
+				config.wrapMode = config.wrapMode.Layout(100).Draw().As<WrapMode>();
+				if(isPlaying && "Stop".ToLabel().Layout(0,17).DrawButton()){this.Stop();}
+				if(!isPlaying && "Play".ToLabel().Layout(0,17).DrawButton()){
 					this.time = 0;
 					this.active = config;
 					Event.Pause("On Hierarchy Changed");

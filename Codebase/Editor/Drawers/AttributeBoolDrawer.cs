@@ -9,13 +9,13 @@ namespace Zios.Editors{
 			if(this.attribute == null){
 				this.attribute = property.GetObject<Attribute>();
 				MonoBehaviour script = (MonoBehaviour)property.serializedObject.targetObject;
-				this.isPrefab = script.IsPrefab();
+				this.isPrefabFile = script.InPrefabFile();
 			}
 			if(!this.attribute.showInEditor || !this.attribute.isSetup){
 				this.overallHeight = -2;
 				return;
 			}
-			if(this.isPrefab){return;}
+			if(this.isPrefabFile){return;}
 			this.overallHeight = this.GetBaseHeight(property,label);
 			if(!Attribute.ready && AttributeManager.safe){
 				EditorGUI.ProgressBar(area,AttributeManager.percentLoaded,"Updating");

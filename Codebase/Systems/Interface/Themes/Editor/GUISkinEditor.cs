@@ -32,8 +32,7 @@ namespace Zios.Editors{
 		//=================================
 		public override void OnInspectorGUI(){
 			if(UnityEvent.current.type.MatchesAny("mouseMove") || Utility.IsBusy()){return;}
-			EditorUI.ResetFieldSize();
-			EditorUI.ResetLayout();
+			EditorUI.Reset();
 			this.hash = this.hash ?? Utility.GetInspector(this).GetInstanceID().ToString();
 			this.skin = this.skin ?? this.target.As<GUISkin>();
 			this.isFragment = this.skin.name.Contains("#");
@@ -71,7 +70,7 @@ namespace Zios.Editors{
 			this.viewMode = Utility.GetPref<int>("GUISkin-Mode",0);
 			if(this.viewMode == 1){term = "Replica";}
 			if(this.viewMode == 2){term = "Compact";}
-			if(term.ToLabel().DrawButton(GUI.skin.button.FixedHeight(30))){
+			if(term.ToLabel().Layout(0,30).DrawButton()){
 				this.viewMode = (this.viewMode + 1) % 3;
 				Utility.SetPref<int>("GUISkin-Mode",this.viewMode);
 				EditorUI.foldoutChanged = true;
@@ -139,15 +138,13 @@ namespace Zios.Editors{
 				if(attribute=="name" && value=="Search"){continue;}
 				if(attribute.IsEnum<GUIStyleField>()){
 					EditorGUILayout.BeginHorizontal();
-					EditorUI.SetLayoutOnce(25,16);
-					if("x".ToLabel().DrawButton(GUI.skin.button.Margin(4,2,2,2).Padding(0,0,-2,0))){
+					if("x".ToLabel().Layout(25,16).DrawButton(GUI.skin.button.Margin(4,2,2,2).Padding(0,0,-2,0))){
 						EditorUI.ResetLayout();
 						EditorGUILayout.EndHorizontal();
 						continue;
 					}
-					EditorUI.SetLayoutOnce(150);
 					var field = attribute.ToEnum<GUIStyleField>();
-					attribute = field.As<GUIStyleField>().Draw().ToName();
+					attribute = field.As<GUIStyleField>().Layout(150).Draw().ToName();
 					if(GUI.changed || value.IsEmpty()){
 						field = attribute.ToEnum<GUIStyleField>();
 						value = "0";
@@ -189,8 +186,7 @@ namespace Zios.Editors{
 						}
 						if(lookup.Between(3,6)){
 							value = value == "0" ? "0 0 0 0" : value;
-							EditorUI.SetLayoutOnce(26);
-							value = value.ToRectOffset().Draw("",true).Serialize();
+							value = value.ToRectOffset().Layout(26).Draw("",true).Serialize();
 						}
 						if(lookup.MatchesAny(8,16,17)){value = value.ToFloat().Draw().ToString();}
 						if(lookup == 9){value = value.ToEnum<FontStyle>().Draw().ToName();}
@@ -283,7 +279,7 @@ namespace Zios.Editors{
 		public void DrawFragmented(){
 			if(this.fragments.Length > 0){
 				GUILayout.Space(10);
-				if("Fragments".ToLabel().DrawHeader("GUISkin-Fragments-"+this.hash,GUI.skin.GetStyle("LargeButton").FixedHeight(30))){
+				if("Fragments".ToLabel().Layout(0,30).DrawHeader("GUISkin-Fragments-"+this.hash,GUI.skin.GetStyle("LargeButton"))){
 					GUILayout.Space(5);
 					foreach(var fragment in fragments){
 						EditorGUI.indentLevel += 1;
@@ -617,10 +613,8 @@ namespace Zios.Interface{
 		public static void DrawTextSettings(this GUIStyle current,bool compact=false){
 			if(compact){
 				EditorGUILayout.BeginHorizontal();
-				EditorUI.SetLayoutOnce(171);
-				current.fontSize = current.fontSize.DrawInt("Font",EditorStyles.textField);
-				EditorUI.SetLayoutOnce(80);
-				current.fontStyle = current.fontStyle.Draw(null,null,false).As<FontStyle>();
+				current.fontSize = current.fontSize.Layout(171).DrawInt("Font",EditorStyles.textField);
+				current.fontStyle = current.fontStyle.Layout(80).Draw(null,null,false).As<FontStyle>();
 				EditorUI.SetLayoutOnce(Screen.width-305+EditorStyles.inspectorDefaultMargins.padding.left);
 				current.font = current.font.Draw<Font>(null,false,false);
 				EditorGUILayout.EndHorizontal();
@@ -638,8 +632,7 @@ namespace Zios.Interface{
 		public static void Draw(this GUIStyleState current,string name="GUIStyleState",bool compact=false,string key=null){
 			if(compact){
 				EditorGUILayout.BeginHorizontal();
-				EditorUI.SetLayoutOnce(200);
-				current.textColor = current.textColor.Draw(name.ToTitleCase());
+				current.textColor = current.textColor.Layout(200).Draw(name.ToTitleCase());
 				EditorUI.SetLayoutOnce(Screen.width-240,16);
 				current.background = current.background.Draw<Texture2D>(null,true,false).As<Texture2D>();
 				EditorGUILayout.EndHorizontal();
@@ -647,8 +640,7 @@ namespace Zios.Interface{
 			}
 			if(name.ToTitleCase().ToLabel().DrawFoldout(key)){
 				EditorGUI.indentLevel += 1;
-				EditorUI.SetLayoutOnce(0,15);
-				current.background = current.background.Draw<Texture2D>("Background").As<Texture2D>();
+				current.background = current.background.Layout(0,15).Draw<Texture2D>("Background").As<Texture2D>();
 				current.textColor = current.textColor.Draw("Text Color");
 				#if UNITY_5_4_OR_NEWER
 				if("Scaled Backgrounds".ToLabel().DrawFoldout(key+".Scaled")){
@@ -661,8 +653,7 @@ namespace Zios.Interface{
 					}
 					for(int index=0;index<current.scaledBackgrounds.Length;++index){
 						var background = current.scaledBackgrounds[index];
-						EditorUI.SetLayoutOnce(0,15);
-						current.scaledBackgrounds[index] = background.Draw<Texture2D>("Background").As<Texture2D>();
+						current.scaledBackgrounds[index] = background.Layout(0,15).Draw<Texture2D>("Background").As<Texture2D>();
 					}
 					EditorGUI.indentLevel -= 1;
 				}

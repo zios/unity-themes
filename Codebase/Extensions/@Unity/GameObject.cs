@@ -253,12 +253,24 @@ namespace Zios{
 		}
 		public static bool IsPrefab(this GameObject current){
 			if(current.IsNull()){return false;}
+			#if UNITY_EDITOR
+			if(Application.isEditor){
+				return !PrefabUtility.GetPrefabParent(current.transform.root.gameObject).IsNull();
+			}
+			#endif
+			return false;
+		}
+		public static bool IsPrefabFile(this GameObject current){
+			if(current.IsNull()){return false;}
 			if(current.hideFlags == HideFlags.NotEditable || current.hideFlags == HideFlags.HideAndDontSave){
 				return true;
 			}
 			#if UNITY_EDITOR
 			if(Application.isEditor){
-				return !PrefabUtility.GetPrefabParent(current.transform.root.gameObject).IsNull();
+				string assetPath = FileManager.GetPath(current.transform.root.gameObject);
+				if(!assetPath.IsEmpty()){
+					return true;
+				}
 			}
 			#endif
 			return false;

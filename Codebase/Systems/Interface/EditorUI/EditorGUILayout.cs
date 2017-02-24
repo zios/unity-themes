@@ -271,7 +271,6 @@ namespace Zios.Interface{
 		public static bool resetField;
 		public static Vector2 resetFieldSize;
 		public static EditorUILayout layoutType = EditorUILayout.Global;
-		public static void ResetFieldSize(){EditorUI.SetFieldSize(0,0,false);}
 		public static void SetFieldSize(Vector2 size,bool nextOnly=true){EditorUI.SetFieldSize(size.x,size.y,nextOnly);}
 		public static void SetFieldSize(float valueWidth=-1,float labelWidth=-1,bool nextOnly=true){
 			var reset = new Vector2(-1,-1);
@@ -300,6 +299,10 @@ namespace Zios.Interface{
 			EditorUI.autoHeight = autoHeight;
 			EditorUI.resetLayout = nextOnly;
 		}
+		public static T Layout<T>(this T current,float width=-1,float height=-1,float maxWidth=-1,float maxHeight=-1,float minWidth=-1,float minHeight=-1,bool? autoWidth=null,bool? autoHeight=null,bool nextOnly=true){
+			EditorUI.SetLayout(width,height,maxWidth,maxHeight,minWidth,minHeight,autoWidth,autoHeight,nextOnly);
+			return current;
+		}
 		public static GUILayoutOption[] CreateLayout(this GUIStyle current){
 			var options = new GUILayoutOption[0];
 			if(!current.IsNull() && EditorUI.layoutType.MatchesAny("Style","Auto")){
@@ -325,6 +328,30 @@ namespace Zios.Interface{
 			if(autoWidth != null){options.Add(GUILayout.ExpandWidth(autoWidth.As<bool>()));}
 			if(autoHeight != null){options.Add(GUILayout.ExpandHeight(autoHeight.As<bool>()));}
 			return options.ToArray();
+		}
+		public static void Status(){
+			Debug.Log("------------------------------");
+			Debug.Log("Width      : " + EditorUI.width);
+			Debug.Log("Height     : " + EditorUI.height);
+			Debug.Log("MaxWidth   : " + EditorUI.maxWidth);
+			Debug.Log("MaxHeight  : " + EditorUI.maxHeight);
+			Debug.Log("MinWidth   : " + EditorUI.minWidth);
+			Debug.Log("MinHeight  : " + EditorUI.minHeight);
+			Debug.Log("AutoWidth  : " + EditorUI.autoWidth);
+			Debug.Log("AutoHeight : " + EditorUI.autoHeight);
+			Debug.Log("Reset      : " + EditorUI.resetLayout);
+		}
+		public static void Reset(){
+			EditorUI.space = 0;
+			EditorUI.allowIndention = true;
+			EditorUI.anyChanged = false;
+			EditorUI.lastChanged = false;
+			EditorUI.foldoutChanged = false;
+			EditorUI.ResetFieldSize();
+			EditorUI.ResetLayout();
+		}
+		public static void ResetFieldSize(){
+			EditorUI.SetFieldSize(0,0,false);
 		}
 		public static void ResetLayout(){
 			EditorUI.SetLayout(0,0,0,0,0,0,null,null,false);

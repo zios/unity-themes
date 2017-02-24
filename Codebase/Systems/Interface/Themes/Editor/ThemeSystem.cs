@@ -240,6 +240,7 @@ namespace Zios.Interface{
 		//=================================
 		[PreferenceItem("Themes")]
 		public static void DrawPreferences(){
+			EditorUI.Reset();
 			Theme.LoadCheck();
 			if(!Theme.separatePlaymodeSettings && EditorApplication.isPlayingOrWillChangePlaymode){
 				"Theme Settings are not available while in play mode unless \"Separate play mode\" active.".DrawHelp();
