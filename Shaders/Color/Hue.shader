@@ -8,6 +8,7 @@ Shader "Zios/(Components)/Color/Hue"{
 			#pragma vertex vertexPass
 			#pragma fragment pixelPass
 			#pragma fragmentoption ARB_precision_hint_fastest
+			#include "UnityCG.cginc"
 			fixed hue;
 			fixed hueIntensity;
 			struct vertexInput{
@@ -38,7 +39,7 @@ Shader "Zios/(Components)/Color/Hue"{
 			vertexOutput vertexPass(vertexInput input){
 				vertexOutput output;
 				UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
-				output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
+				output.pos = UnityObjectToClipPos(input.vertex);
 				return output;
 			}
 			pixelOutput pixelPass(vertexOutput input){

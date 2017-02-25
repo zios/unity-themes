@@ -25,7 +25,7 @@ Shader "Zios/General/Diffuse Map + Lighting"{
 			};
 			vertexOutput vertexPass(vertexInput input){
 				vertexOutput output;
-				output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
+				output.pos = UnityObjectToClipPos(input.vertex);
 				output.lighting = dot(input.normal,ObjSpaceLightDir(input.vertex)) * intensity;
 				output.UV = input.texcoord;
 				return output;

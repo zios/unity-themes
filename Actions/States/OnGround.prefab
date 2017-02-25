@@ -5,12 +5,12 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 465398}
-  - 114: {fileID: 11407720}
-  - 114: {fileID: 11435610}
-  - 114: {fileID: 11448940}
+  - component: {fileID: 465398}
+  - component: {fileID: 11407720}
+  - component: {fileID: 11435610}
+  - component: {fileID: 11448940}
   m_Layer: 10
   m_Name: '@Settings'
   m_TagString: Untagged
@@ -23,13 +23,13 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 453170}
-  - 114: {fileID: 11493898}
-  - 114: {fileID: 11412222}
-  - 114: {fileID: 11423334}
-  - 114: {fileID: 11447076}
+  - component: {fileID: 453170}
+  - component: {fileID: 11493898}
+  - component: {fileID: 11412222}
+  - component: {fileID: 11423334}
+  - component: {fileID: 11447076}
   m_Layer: 10
   m_Name: Main
   m_TagString: Untagged
@@ -42,9 +42,9 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 470250}
+  - component: {fileID: 470250}
   m_Layer: 10
   m_Name: OnGround
   m_TagString: Untagged
@@ -64,6 +64,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 470250}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &465398
 Transform:
   m_ObjectHideFlags: 1
@@ -76,6 +77,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 470250}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &470250
 Transform:
   m_ObjectHideFlags: 1
@@ -90,6 +92,7 @@ Transform:
   - {fileID: 453170}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &11407720
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -109,32 +112,32 @@ MonoBehaviour:
       name: Gravity
       path: Gravity
       fullPath: OnGround/@Settings/Gravity
-      id: -91346/36e06670-e99b-4c51-a366-51346402a31d
+      relativePath: 
+      id: -24128/36e06670-e99b-4c51-a366-51346402a31d
       localID: 36e06670-e99b-4c51-a366-51346402a31d
       parent: {fileID: 11407720}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 140224}
-          parent: {fileID: 11407720}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /OnGround/@Settings/Gravity/Gravity/Target
+          path: 
         usage: 0
-        path: /OnGround/@Settings/Attribute Float Data B
+        path: OnGround/@Settings/Gravity/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
-        rawValue: 1
+        rawValue: 0
         rawType: Zios.Attributes.AttributeFloatData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   remember: 0
 --- !u!114 &11412222
 MonoBehaviour:
@@ -159,44 +162,46 @@ MonoBehaviour:
       name: Usable
       path: Ground Check/Usable
       fullPath: OnGround/Main/Ground Check/Usable
-      id: -91272/2f6c9b06-34e7-4731-b7b8-a5cae118c993
+      relativePath: Usable
+      id: -24130/2f6c9b06-34e7-4731-b7b8-a5cae118c993
       localID: 2f6c9b06-34e7-4731-b7b8-a5cae118c993
       parent: {fileID: 11412222}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 170228}
-          parent: {fileID: 11412222}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /OnGround/Main/Ground Check/Ground Check/Usable/Target
+          path: 
         usage: 0
-        path: /OnGround/Main/Attribute Bool Data C
+        path: OnGround/Main/Ground Check/Usable/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   active:
     info:
       name: Active
       path: Ground Check/Active
       fullPath: OnGround/Main/Ground Check/Active
-      id: -91272/0f831b84-c16c-4eb4-97b4-9d5506006275
+      relativePath: Active
+      id: -24130/0f831b84-c16c-4eb4-97b4-9d5506006275
       localID: 0f831b84-c16c-4eb4-97b4-9d5506006275
       parent: {fileID: 11412222}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
+          disabled: 1
           search: 
           directObject: {fileID: 0}
           searchObject: {fileID: 0}
@@ -209,544 +214,542 @@ MonoBehaviour:
         referencePath: 
         operation: 0
         special: 0
-        rawValue: 
+        rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   used:
     info:
       name: Used
       path: Ground Check/Used
       fullPath: OnGround/Main/Ground Check/Used
-      id: -91272/2b3721c8-0ab1-4ce4-a42b-554f9dae9288
+      relativePath: Used
+      id: -24130/2b3721c8-0ab1-4ce4-a42b-554f9dae9288
       localID: 2b3721c8-0ab1-4ce4-a42b-554f9dae9288
       parent: {fileID: 11412222}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 170228}
-          parent: {fileID: 11412222}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /OnGround/Main/Ground Check/Ground Check/Used/Target
+          path: 
         usage: 0
-        path: /OnGround/Main/Attribute Bool Data D
+        path: OnGround/Main/Ground Check/Used/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   source:
     info:
       name: Source
       path: Ground Check/Source
       fullPath: OnGround/Main/Ground Check/Source
-      id: -91272/787877bf-0062-4e40-9855-9e127969666f
+      relativePath: Source
+      id: -24130/787877bf-0062-4e40-9855-9e127969666f
       localID: 787877bf-0062-4e40-9855-9e127969666f
       parent: {fileID: 11412222}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 0
+          search: '[Self]'
           directObject: {fileID: 0}
-          searchObject: {fileID: 140224}
+          searchObject: {fileID: 170228}
           parent: {fileID: 11412222}
           mode: 0
-          path: /OnGround/Main/Ground Check/Ground Check/Source/Target
+          path: /OnGround/Main/Ground Check/0/Target
         usage: 1
-        path: /OnGround/Main/Attribute Game Object Data
-        referenceID: -39550/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
-        referencePath: Source
+        path: OnGround/Main/Ground Check/Source/0
+        referenceID: 
+        referencePath: 
         operation: 0
         special: 0
         rawValue: 
         rawType: Zios.Attributes.AttributeGameObjectData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: {fileID: 0}
   direction:
     info:
       name: Direction
       path: Ground Check/Direction
       fullPath: OnGround/Main/Ground Check/Direction
-      id: -91272/ae53c173-9222-419b-9ee6-02a1e939a69e
+      relativePath: Direction
+      id: -24130/ae53c173-9222-419b-9ee6-02a1e939a69e
       localID: ae53c173-9222-419b-9ee6-02a1e939a69e
       parent: {fileID: 11412222}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 170228}
-          parent: {fileID: 11412222}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /OnGround/Main/Ground Check/Ground Check/Direction/Target
+          path: 
         usage: 0
-        path: /OnGround/Main/Attribute Vector3 Data B
+        path: OnGround/Main/Ground Check/Direction/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
-        rawValue: (0.0, -0.2, 0.0)
+        rawValue: (0.0, -1.0, 0.0)
         rawType: Zios.Attributes.AttributeVector3Data
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: {x: -0, y: -1, z: -0}
     x:
       info:
         name: X
         path: Ground Check/Direction/X
         fullPath: OnGround/Main/Ground Check/Direction/X
-        id: -91272/c31ea275-44c4-421e-9bf4-71e022e2c773
+        relativePath: Direction/X
+        id: -24130/c31ea275-44c4-421e-9bf4-71e022e2c773
         localID: c31ea275-44c4-421e-9bf4-71e022e2c773
         parent: {fileID: 11412222}
         mode: 0
         linkType: 0
-        oldData:
+        data:
         - target:
-            search: '[Self]'
+            disabled: 1
+            search: 
             directObject: {fileID: 0}
-            searchObject: {fileID: 170228}
-            parent: {fileID: 11412222}
+            searchObject: {fileID: 0}
+            parent: {fileID: 0}
             mode: 0
-            path: /OnGround/Main/Ground Check/Ground Check/Direction/X/Target
+            path: 
           usage: 0
-          path: /OnGround/Main/Attribute Float Data C
+          path: OnGround/Main/Ground Check/Direction/X/0
           referenceID: 
           referencePath: 
           operation: 0
           special: 0
           rawValue: 0
           rawType: Zios.Attributes.AttributeFloatData
-        oldDataB: []
-        oldDataC: []
-        oldData: []
-        oldDataB: []
-        oldDataC: []
+        dataB: []
+        dataC: []
+      delayedValue: 0
     y:
       info:
         name: Y
         path: Ground Check/Direction/Y
         fullPath: OnGround/Main/Ground Check/Direction/Y
-        id: -91272/ea04e345-84a7-49ad-b705-23b99c0f7a09
+        relativePath: Direction/Y
+        id: -24130/ea04e345-84a7-49ad-b705-23b99c0f7a09
         localID: ea04e345-84a7-49ad-b705-23b99c0f7a09
         parent: {fileID: 11412222}
         mode: 0
         linkType: 0
-        oldData:
+        data:
         - target:
-            search: '[Self]'
+            disabled: 1
+            search: 
             directObject: {fileID: 0}
-            searchObject: {fileID: 170228}
-            parent: {fileID: 11412222}
+            searchObject: {fileID: 0}
+            parent: {fileID: 0}
             mode: 0
-            path: /OnGround/Main/Ground Check/Ground Check/Direction/Y/Target
+            path: 
           usage: 0
-          path: /OnGround/Main/Attribute Float Data D
+          path: OnGround/Main/Ground Check/Direction/Y/0
           referenceID: 
           referencePath: 
           operation: 0
           special: 0
           rawValue: 0
           rawType: Zios.Attributes.AttributeFloatData
-        oldDataB: []
-        oldDataC: []
-        oldData: []
-        oldDataB: []
-        oldDataC: []
+        dataB: []
+        dataC: []
+      delayedValue: 0
     z:
       info:
         name: Z
         path: Ground Check/Direction/Z
         fullPath: OnGround/Main/Ground Check/Direction/Z
-        id: -91272/b1812ca6-f001-4b2c-8760-cc0ed2082c7f
+        relativePath: Direction/Z
+        id: -24130/b1812ca6-f001-4b2c-8760-cc0ed2082c7f
         localID: b1812ca6-f001-4b2c-8760-cc0ed2082c7f
         parent: {fileID: 11412222}
         mode: 0
         linkType: 0
-        oldData:
+        data:
         - target:
-            search: '[Self]'
+            disabled: 1
+            search: 
             directObject: {fileID: 0}
-            searchObject: {fileID: 170228}
-            parent: {fileID: 11412222}
+            searchObject: {fileID: 0}
+            parent: {fileID: 0}
             mode: 0
-            path: /OnGround/Main/Ground Check/Ground Check/Direction/Z/Target
+            path: 
           usage: 0
-          path: /OnGround/Main/Attribute Float Data E
+          path: OnGround/Main/Ground Check/Direction/Z/0
           referenceID: 
           referencePath: 
           operation: 0
           special: 0
           rawValue: 0
           rawType: Zios.Attributes.AttributeFloatData
-        oldDataB: []
-        oldDataC: []
-        oldData: []
-        oldDataB: []
-        oldDataC: []
+        dataB: []
+        dataC: []
+      delayedValue: 0
   distance:
     info:
       name: Distance
       path: Ground Check/Distance
       fullPath: OnGround/Main/Ground Check/Distance
-      id: -91272/a7064b81-eacb-45c0-865a-d2ee437b46df
+      relativePath: Distance
+      id: -24130/a7064b81-eacb-45c0-865a-d2ee437b46df
       localID: a7064b81-eacb-45c0-865a-d2ee437b46df
       parent: {fileID: 11412222}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 170228}
-          parent: {fileID: 11412222}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /OnGround/Main/Ground Check/Ground Check/Distance/Target
+          path: 
         usage: 0
-        path: /OnGround/Main/Attribute Float Data B
+        path: OnGround/Main/Ground Check/Distance/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: 1
         rawType: Zios.Attributes.AttributeFloatData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 1
   layers:
     serializedVersion: 2
     m_Bits: 4294967295
-  debugColor: {r: .200000003, g: 0, b: .992156863, a: 1}
+  debugColor: {r: 0.2, g: 0, b: 0.99215686, a: 1}
   hitPoint:
     info:
       name: Hit Point
       path: Ground Check/Hit Point
       fullPath: OnGround/Main/Ground Check/Hit Point
-      id: -91272/e0057e2a-db3b-48e5-8eab-958358472e74
+      relativePath: Hit Point
+      id: -24130/e0057e2a-db3b-48e5-8eab-958358472e74
       localID: e0057e2a-db3b-48e5-8eab-958358472e74
       parent: {fileID: 11412222}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 170228}
-          parent: {fileID: 11412222}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /OnGround/Main/Ground Check/Ground Check/Hit Point/Target
+          path: 
         usage: 0
-        path: /OnGround/Main/Attribute Vector3 Data C
+        path: OnGround/Main/Ground Check/Hit Point/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: (0.0, 0.0, 0.0)
         rawType: Zios.Attributes.AttributeVector3Data
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: {x: 0, y: 0, z: 0}
     x:
       info:
         name: X
         path: Ground Check/Hit Point/X
         fullPath: OnGround/Main/Ground Check/Hit Point/X
-        id: -91272/b9c6e294-3171-44f5-915e-8fff46c9072b
+        relativePath: Hit Point/X
+        id: -24130/b9c6e294-3171-44f5-915e-8fff46c9072b
         localID: b9c6e294-3171-44f5-915e-8fff46c9072b
         parent: {fileID: 11412222}
         mode: 0
         linkType: 0
-        oldData:
+        data:
         - target:
-            search: '[Self]'
+            disabled: 1
+            search: 
             directObject: {fileID: 0}
-            searchObject: {fileID: 170228}
-            parent: {fileID: 11412222}
+            searchObject: {fileID: 0}
+            parent: {fileID: 0}
             mode: 0
-            path: /OnGround/Main/Ground Check/Ground Check/Hit Point/X/Target
+            path: 
           usage: 0
-          path: /OnGround/Main/Attribute Float Data F
+          path: OnGround/Main/Ground Check/Hit Point/X/0
           referenceID: 
           referencePath: 
           operation: 0
           special: 0
           rawValue: 0
           rawType: Zios.Attributes.AttributeFloatData
-        oldDataB: []
-        oldDataC: []
-        oldData: []
-        oldDataB: []
-        oldDataC: []
+        dataB: []
+        dataC: []
+      delayedValue: 0
     y:
       info:
         name: Y
         path: Ground Check/Hit Point/Y
         fullPath: OnGround/Main/Ground Check/Hit Point/Y
-        id: -91272/f4006e5a-0257-41e0-bd78-d2deaa8a0630
+        relativePath: Hit Point/Y
+        id: -24130/f4006e5a-0257-41e0-bd78-d2deaa8a0630
         localID: f4006e5a-0257-41e0-bd78-d2deaa8a0630
         parent: {fileID: 11412222}
         mode: 0
         linkType: 0
-        oldData:
+        data:
         - target:
-            search: '[Self]'
+            disabled: 1
+            search: 
             directObject: {fileID: 0}
-            searchObject: {fileID: 170228}
-            parent: {fileID: 11412222}
+            searchObject: {fileID: 0}
+            parent: {fileID: 0}
             mode: 0
-            path: /OnGround/Main/Ground Check/Ground Check/Hit Point/Y/Target
+            path: 
           usage: 0
-          path: /OnGround/Main/Attribute Float Data G
+          path: OnGround/Main/Ground Check/Hit Point/Y/0
           referenceID: 
           referencePath: 
           operation: 0
           special: 0
           rawValue: 0
           rawType: Zios.Attributes.AttributeFloatData
-        oldDataB: []
-        oldDataC: []
-        oldData: []
-        oldDataB: []
-        oldDataC: []
+        dataB: []
+        dataC: []
+      delayedValue: 0
     z:
       info:
         name: Z
         path: Ground Check/Hit Point/Z
         fullPath: OnGround/Main/Ground Check/Hit Point/Z
-        id: -91272/34026840-7cff-4dca-9f16-9721332c247e
+        relativePath: Hit Point/Z
+        id: -24130/34026840-7cff-4dca-9f16-9721332c247e
         localID: 34026840-7cff-4dca-9f16-9721332c247e
         parent: {fileID: 11412222}
         mode: 0
         linkType: 0
-        oldData:
+        data:
         - target:
-            search: '[Self]'
+            disabled: 1
+            search: 
             directObject: {fileID: 0}
-            searchObject: {fileID: 170228}
-            parent: {fileID: 11412222}
+            searchObject: {fileID: 0}
+            parent: {fileID: 0}
             mode: 0
-            path: /OnGround/Main/Ground Check/Ground Check/Hit Point/Z/Target
+            path: 
           usage: 0
-          path: /OnGround/Main/Attribute Float Data H
+          path: OnGround/Main/Ground Check/Hit Point/Z/0
           referenceID: 
           referencePath: 
           operation: 0
           special: 0
           rawValue: 0
           rawType: Zios.Attributes.AttributeFloatData
-        oldDataB: []
-        oldDataC: []
-        oldData: []
-        oldDataB: []
-        oldDataC: []
+        dataB: []
+        dataC: []
+      delayedValue: 0
   hitNormal:
     info:
       name: Hit Normal
       path: Ground Check/Hit Normal
       fullPath: OnGround/Main/Ground Check/Hit Normal
-      id: -91272/9f45a6d8-1376-4116-abbe-0b7fbe25396b
+      relativePath: Hit Normal
+      id: -24130/9f45a6d8-1376-4116-abbe-0b7fbe25396b
       localID: 9f45a6d8-1376-4116-abbe-0b7fbe25396b
       parent: {fileID: 11412222}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 170228}
-          parent: {fileID: 11412222}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /OnGround/Main/Ground Check/Ground Check/Hit Normal/Target
+          path: 
         usage: 0
-        path: /OnGround/Main/Attribute Vector3 Data
+        path: OnGround/Main/Ground Check/Hit Normal/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: (0.0, 0.0, 0.0)
         rawType: Zios.Attributes.AttributeVector3Data
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: {x: 0, y: 0, z: 0}
     x:
       info:
         name: X
         path: Ground Check/Hit Normal/X
         fullPath: OnGround/Main/Ground Check/Hit Normal/X
-        id: -91272/5fc629af-623e-4a85-8061-968486f543c9
+        relativePath: Hit Normal/X
+        id: -24130/5fc629af-623e-4a85-8061-968486f543c9
         localID: 5fc629af-623e-4a85-8061-968486f543c9
         parent: {fileID: 11412222}
         mode: 0
         linkType: 0
-        oldData:
+        data:
         - target:
-            search: '[Self]'
+            disabled: 1
+            search: 
             directObject: {fileID: 0}
-            searchObject: {fileID: 170228}
-            parent: {fileID: 11412222}
+            searchObject: {fileID: 0}
+            parent: {fileID: 0}
             mode: 0
-            path: /OnGround/Main/Ground Check/Ground Check/Hit Normal/X/Target
+            path: 
           usage: 0
-          path: /OnGround/Main/Attribute Float Data I
+          path: OnGround/Main/Ground Check/Hit Normal/X/0
           referenceID: 
           referencePath: 
           operation: 0
           special: 0
           rawValue: 0
           rawType: Zios.Attributes.AttributeFloatData
-        oldDataB: []
-        oldDataC: []
-        oldData: []
-        oldDataB: []
-        oldDataC: []
+        dataB: []
+        dataC: []
+      delayedValue: 0
     y:
       info:
         name: Y
         path: Ground Check/Hit Normal/Y
         fullPath: OnGround/Main/Ground Check/Hit Normal/Y
-        id: -91272/07cf82aa-65e7-4d7e-b2e8-adb3494708af
+        relativePath: Hit Normal/Y
+        id: -24130/07cf82aa-65e7-4d7e-b2e8-adb3494708af
         localID: 07cf82aa-65e7-4d7e-b2e8-adb3494708af
         parent: {fileID: 11412222}
         mode: 0
         linkType: 0
-        oldData:
+        data:
         - target:
-            search: '[Self]'
+            disabled: 1
+            search: 
             directObject: {fileID: 0}
-            searchObject: {fileID: 170228}
-            parent: {fileID: 11412222}
+            searchObject: {fileID: 0}
+            parent: {fileID: 0}
             mode: 0
-            path: /OnGround/Main/Ground Check/Ground Check/Hit Normal/Y/Target
+            path: 
           usage: 0
-          path: /OnGround/Main/Attribute Float Data J
+          path: OnGround/Main/Ground Check/Hit Normal/Y/0
           referenceID: 
           referencePath: 
           operation: 0
           special: 0
           rawValue: 0
           rawType: Zios.Attributes.AttributeFloatData
-        oldDataB: []
-        oldDataC: []
-        oldData: []
-        oldDataB: []
-        oldDataC: []
+        dataB: []
+        dataC: []
+      delayedValue: 0
     z:
       info:
         name: Z
         path: Ground Check/Hit Normal/Z
         fullPath: OnGround/Main/Ground Check/Hit Normal/Z
-        id: -91272/93c7c4a3-7075-4c81-a0a2-1fc07d63168b
+        relativePath: Hit Normal/Z
+        id: -24130/93c7c4a3-7075-4c81-a0a2-1fc07d63168b
         localID: 93c7c4a3-7075-4c81-a0a2-1fc07d63168b
         parent: {fileID: 11412222}
         mode: 0
         linkType: 0
-        oldData:
+        data:
         - target:
-            search: '[Self]'
+            disabled: 1
+            search: 
             directObject: {fileID: 0}
-            searchObject: {fileID: 170228}
-            parent: {fileID: 11412222}
+            searchObject: {fileID: 0}
+            parent: {fileID: 0}
             mode: 0
-            path: /OnGround/Main/Ground Check/Ground Check/Hit Normal/Z/Target
+            path: 
           usage: 0
-          path: /OnGround/Main/Attribute Float Data K
+          path: OnGround/Main/Ground Check/Hit Normal/Z/0
           referenceID: 
           referencePath: 
           operation: 0
           special: 0
           rawValue: 0
           rawType: Zios.Attributes.AttributeFloatData
-        oldDataB: []
-        oldDataC: []
-        oldData: []
-        oldDataB: []
-        oldDataC: []
+        dataB: []
+        dataC: []
+      delayedValue: 0
   hitDistance:
     info:
       name: Hit Distance
       path: Ground Check/Hit Distance
       fullPath: OnGround/Main/Ground Check/Hit Distance
-      id: -91272/598aae7d-85d9-4333-9b6a-1c3c17ddd8df
+      relativePath: Hit Distance
+      id: -24130/598aae7d-85d9-4333-9b6a-1c3c17ddd8df
       localID: 598aae7d-85d9-4333-9b6a-1c3c17ddd8df
       parent: {fileID: 11412222}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 170228}
-          parent: {fileID: 11412222}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /OnGround/Main/Ground Check/Ground Check/Hit Distance/Target
+          path: 
         usage: 0
-        path: /OnGround/Main/Attribute Float Data L
+        path: OnGround/Main/Ground Check/Hit Distance/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: 0
         rawType: Zios.Attributes.AttributeFloatData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   hit:
     info:
       name: Hit
       path: Ground Check/Hit
       fullPath: OnGround/Main/Ground Check/Hit
-      id: -91272/d6f7621b-d5c0-4951-adc7-a29ec5eb6f8e
+      relativePath: Hit
+      id: -24130/d6f7621b-d5c0-4951-adc7-a29ec5eb6f8e
       localID: d6f7621b-d5c0-4951-adc7-a29ec5eb6f8e
       parent: {fileID: 11412222}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
+          disabled: 0
           search: '[Self]'
           directObject: {fileID: 0}
           searchObject: {fileID: 170228}
           parent: {fileID: 11412222}
           mode: 0
-          path: /OnGround/Main/Ground Check/Ground Check/Hit/Target
+          path: /OnGround/Main/Ground Check/0/Target
         usage: 1
-        path: /OnGround/Main/Old Attribute Game Object Data
+        path: OnGround/Main/Ground Check/Hit/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: 
         rawType: Zios.Attributes.AttributeGameObjectData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: {fileID: 0}
 --- !u!114 &11423334
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -770,44 +773,46 @@ MonoBehaviour:
       name: Usable
       path: Ground Trigger/Usable
       fullPath: OnGround/Main/Ground Trigger/Usable
-      id: -91274/c29d7109-af85-4f60-8320-0a1a248b89c9
+      relativePath: Usable
+      id: -24132/c29d7109-af85-4f60-8320-0a1a248b89c9
       localID: c29d7109-af85-4f60-8320-0a1a248b89c9
       parent: {fileID: 11423334}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 170228}
-          parent: {fileID: 11423334}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /OnGround/Main/Ground Trigger/Ground Trigger/Usable/Target
+          path: 
         usage: 0
-        path: /OnGround/Main/Attribute Bool Data F
+        path: OnGround/Main/Ground Trigger/Usable/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   active:
     info:
       name: Active
       path: Ground Trigger/Active
       fullPath: OnGround/Main/Ground Trigger/Active
-      id: -91274/10bbb7a3-a11d-4f14-a143-dc917bbe3a9b
+      relativePath: Active
+      id: -24132/10bbb7a3-a11d-4f14-a143-dc917bbe3a9b
       localID: 10bbb7a3-a11d-4f14-a143-dc917bbe3a9b
       parent: {fileID: 11423334}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
+          disabled: 1
           search: 
           directObject: {fileID: 0}
           searchObject: {fileID: 0}
@@ -820,138 +825,136 @@ MonoBehaviour:
         referencePath: 
         operation: 0
         special: 0
-        rawValue: 
+        rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   used:
     info:
       name: Used
       path: Ground Trigger/Used
       fullPath: OnGround/Main/Ground Trigger/Used
-      id: -91274/79449c69-4f35-44cf-91fa-4d50f055a85f
+      relativePath: Used
+      id: -24132/79449c69-4f35-44cf-91fa-4d50f055a85f
       localID: 79449c69-4f35-44cf-91fa-4d50f055a85f
       parent: {fileID: 11423334}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 170228}
-          parent: {fileID: 11423334}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /OnGround/Main/Ground Trigger/Ground Trigger/Used/Target
+          path: 
         usage: 0
-        path: /OnGround/Main/Attribute Bool Data G
+        path: OnGround/Main/Ground Trigger/Used/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   type: 0
   seconds:
     info:
       name: Seconds
       path: Ground Trigger/Seconds
       fullPath: OnGround/Main/Ground Trigger/Seconds
-      id: -91274/513cb46f-4327-4bdd-b292-f068a8caeef8
+      relativePath: Seconds
+      id: -24132/513cb46f-4327-4bdd-b292-f068a8caeef8
       localID: 513cb46f-4327-4bdd-b292-f068a8caeef8
       parent: {fileID: 11423334}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 140224}
-          parent: {fileID: 11423334}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /OnGround/Main/Ground Trigger/Ground Trigger/Seconds/Target
-        usage: 1
-        path: /OnGround/Main/Attribute Float Data M
-        referenceID: -39574/97a273bf-e503-4bfa-9c4a-d45233a5c9a8
-        referencePath: Trigger Timer
+          path: 
+        usage: 0
+        path: OnGround/Main/Ground Trigger/Seconds/0
+        referenceID: 
+        referencePath: 
         operation: 0
         special: 0
-        rawValue: 0.02
+        rawValue: 0
         rawType: Zios.Attributes.AttributeFloatData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   isStarted:
     info:
       name: Is Started
       path: Ground Trigger/Is Started
       fullPath: OnGround/Main/Ground Trigger/Is Started
-      id: -91274/7ead2a40-5345-468a-a1a3-fe3b86977b6f
+      relativePath: Is Started
+      id: -24132/7ead2a40-5345-468a-a1a3-fe3b86977b6f
       localID: 7ead2a40-5345-468a-a1a3-fe3b86977b6f
       parent: {fileID: 11423334}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 170228}
-          parent: {fileID: 11423334}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /OnGround/Main/Ground Trigger/Ground Trigger/Is Started/Target
+          path: 
         usage: 0
-        path: /OnGround/Main/Attribute Bool Data H
+        path: OnGround/Main/Ground Trigger/Is Started/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   isComplete:
     info:
       name: Is Complete
       path: Ground Trigger/Is Complete
       fullPath: OnGround/Main/Ground Trigger/Is Complete
-      id: -91274/51412d4b-e64d-4403-88c1-5a72766d45cd
+      relativePath: Is Complete
+      id: -24132/51412d4b-e64d-4403-88c1-5a72766d45cd
       localID: 51412d4b-e64d-4403-88c1-5a72766d45cd
       parent: {fileID: 11423334}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 170228}
-          parent: {fileID: 11423334}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /OnGround/Main/Ground Trigger/Ground Trigger/Is Complete/Target
+          path: 
         usage: 0
-        path: /OnGround/Main/Attribute Bool Data I
+        path: OnGround/Main/Ground Trigger/Is Complete/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
 --- !u!114 &11435610
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -971,32 +974,32 @@ MonoBehaviour:
       name: Source
       path: Source
       fullPath: OnGround/@Settings/Source
-      id: -91348/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+      relativePath: 
+      id: -24134/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
       localID: 0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
       parent: {fileID: 11435610}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../../../../
+          disabled: 0
+          search: '[Self]'
           directObject: {fileID: 0}
-          searchObject: {fileID: 0}
+          searchObject: {fileID: 140224}
           parent: {fileID: 11435610}
           mode: 0
-          path: /OnGround/@Settings/Source/Source/Target
+          path: /OnGround/@Settings/Source/0/Target
         usage: 1
-        path: /OnGround/@Settings/Attribute Game Object Data
+        path: OnGround/@Settings/Source/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: 
         rawType: Zios.Attributes.AttributeGameObjectData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: {fileID: 0}
   remember: 0
 --- !u!114 &11447076
 MonoBehaviour:
@@ -1021,44 +1024,46 @@ MonoBehaviour:
       name: Usable
       path: Reset Gravity/Usable
       fullPath: OnGround/Main/Reset Gravity/Usable
-      id: -91276/1e60419a-d2e2-46f8-8192-4201db0fe1b1
+      relativePath: Usable
+      id: -24136/1e60419a-d2e2-46f8-8192-4201db0fe1b1
       localID: 1e60419a-d2e2-46f8-8192-4201db0fe1b1
       parent: {fileID: 11447076}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 170228}
-          parent: {fileID: 11447076}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /OnGround/Main/Reset Gravity/Reset Gravity/Usable/Target
+          path: 
         usage: 0
-        path: /OnGround/Main/Attribute Bool Data K
+        path: OnGround/Main/Reset Gravity/Usable/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   active:
     info:
       name: Active
       path: Reset Gravity/Active
       fullPath: OnGround/Main/Reset Gravity/Active
-      id: -91276/8fa50a91-8d08-44a9-ab7f-7d500d25cf4d
+      relativePath: Active
+      id: -24136/8fa50a91-8d08-44a9-ab7f-7d500d25cf4d
       localID: 8fa50a91-8d08-44a9-ab7f-7d500d25cf4d
       parent: {fileID: 11447076}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
+          disabled: 1
           search: 
           directObject: {fileID: 0}
           searchObject: {fileID: 0}
@@ -1071,106 +1076,104 @@ MonoBehaviour:
         referencePath: 
         operation: 0
         special: 0
-        rawValue: 
+        rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   used:
     info:
       name: Used
       path: Reset Gravity/Used
       fullPath: OnGround/Main/Reset Gravity/Used
-      id: -91276/38861412-942c-4fc9-9aae-d2b2acaaf946
+      relativePath: Used
+      id: -24136/38861412-942c-4fc9-9aae-d2b2acaaf946
       localID: 38861412-942c-4fc9-9aae-d2b2acaaf946
       parent: {fileID: 11447076}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 170228}
-          parent: {fileID: 11447076}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /OnGround/Main/Reset Gravity/Reset Gravity/Used/Target
+          path: 
         usage: 0
-        path: /OnGround/Main/Attribute Bool Data
+        path: OnGround/Main/Reset Gravity/Used/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   target:
     info:
       name: Target
       path: Reset Gravity/Target
       fullPath: OnGround/Main/Reset Gravity/Target
-      id: -91276/ba4e4578-99b0-4def-840c-2419df9fbad6
+      relativePath: Target
+      id: -24136/ba4e4578-99b0-4def-840c-2419df9fbad6
       localID: ba4e4578-99b0-4def-840c-2419df9fbad6
       parent: {fileID: 11447076}
       mode: 1
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../../../Gravity/@Settings
+          disabled: 0
+          search: '[Self]'
           directObject: {fileID: 0}
-          searchObject: {fileID: 0}
+          searchObject: {fileID: 170228}
           parent: {fileID: 11447076}
           mode: 0
-          path: /OnGround/Main/Reset Gravity/Reset Gravity/Target/Target
+          path: /OnGround/Main/Reset Gravity/0/Target
         usage: 1
-        path: /OnGround/Main/Attribute Float Data N
-        referenceID: -34404/d7a2b325-d5ca-40ef-8232-1dfe646d6d5d
-        referencePath: Scale
+        path: OnGround/Main/Reset Gravity/Target/0
+        referenceID: 
+        referencePath: 
         operation: 0
         special: 0
         rawValue: 0
         rawType: Zios.Attributes.AttributeFloatData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   value:
     info:
       name: Value
       path: Reset Gravity/Value
       fullPath: OnGround/Main/Reset Gravity/Value
-      id: -91276/1164e98e-f100-4fe7-90c0-ce0fb4982ed2
+      relativePath: Value
+      id: -24136/1164e98e-f100-4fe7-90c0-ce0fb4982ed2
       localID: 1164e98e-f100-4fe7-90c0-ce0fb4982ed2
       parent: {fileID: 11447076}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 140224}
-          parent: {fileID: 11447076}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /OnGround/Main/Reset Gravity/Reset Gravity/Value/Target
-        usage: 1
-        path: /OnGround/Main/Attribute Float Data
-        referenceID: -39510/36e06670-e99b-4c51-a366-51346402a31d
-        referencePath: Gravity
+          path: 
+        usage: 0
+        path: OnGround/Main/Reset Gravity/Value/0
+        referenceID: 
+        referencePath: 
         operation: 0
         special: 0
-        rawValue: 1
+        rawValue: 0
         rawType: Zios.Attributes.AttributeFloatData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
 --- !u!114 &11448940
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1190,32 +1193,32 @@ MonoBehaviour:
       name: Trigger Timer
       path: Trigger Timer
       fullPath: OnGround/@Settings/Trigger Timer
-      id: -91350/97a273bf-e503-4bfa-9c4a-d45233a5c9a8
+      relativePath: 
+      id: -24138/97a273bf-e503-4bfa-9c4a-d45233a5c9a8
       localID: 97a273bf-e503-4bfa-9c4a-d45233a5c9a8
       parent: {fileID: 11448940}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 140224}
-          parent: {fileID: 11448940}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /OnGround/@Settings/Trigger Timer/Trigger Timer/Target
+          path: 
         usage: 0
-        path: /OnGround/@Settings/Attribute Float Data
+        path: OnGround/@Settings/Trigger Timer/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
-        rawValue: 0.02
+        rawValue: 0
         rawType: Zios.Attributes.AttributeFloatData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   remember: 0
 --- !u!114 &11493898
 MonoBehaviour:
@@ -1240,44 +1243,46 @@ MonoBehaviour:
       name: Usable
       path: OnGround/Usable
       fullPath: OnGround/Main/OnGround/Usable
-      id: -91270/2ab136fb-1970-4896-b3d4-4d8af8cc8aca
+      relativePath: Usable
+      id: -24140/2ab136fb-1970-4896-b3d4-4d8af8cc8aca
       localID: 2ab136fb-1970-4896-b3d4-4d8af8cc8aca
       parent: {fileID: 11493898}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 170228}
-          parent: {fileID: 11493898}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /OnGround/Main/OnGround/OnGround/Usable/Target
+          path: 
         usage: 0
-        path: /OnGround/Main/Old Attribute Bool Data
+        path: OnGround/Main/OnGround/Usable/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: True
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   active:
     info:
       name: Active
       path: OnGround/Active
       fullPath: OnGround/Main/OnGround/Active
-      id: -91270/b678794a-7c87-410b-9e10-1adf07f1d566
+      relativePath: Active
+      id: -24140/b678794a-7c87-410b-9e10-1adf07f1d566
       localID: b678794a-7c87-410b-9e10-1adf07f1d566
       parent: {fileID: 11493898}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
+          disabled: 1
           search: 
           directObject: {fileID: 0}
           searchObject: {fileID: 0}
@@ -1290,109 +1295,43 @@ MonoBehaviour:
         referencePath: 
         operation: 0
         special: 0
-        rawValue: 
+        rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   used:
     info:
       name: Used
       path: OnGround/Used
       fullPath: OnGround/Main/OnGround/Used
-      id: -91270/d52e9a44-669c-4539-b3a4-7c2d31fc3783
+      relativePath: Used
+      id: -24140/d52e9a44-669c-4539-b3a4-7c2d31fc3783
       localID: d52e9a44-669c-4539-b3a4-7c2d31fc3783
       parent: {fileID: 11493898}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 170228}
-          parent: {fileID: 11493898}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /OnGround/Main/OnGround/OnGround/Used/Target
+          path: 
         usage: 0
-        path: /OnGround/Main/Old Attribute Bool Data C
+        path: OnGround/Main/OnGround/Used/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   table:
-  - name: Ground Check
-    stateTable: {fileID: 0}
-    id: -124444
-    target: {fileID: 11412222}
-    empty: 0
-    section: 
-    requirements:
-    - data:
-      - name: '@Active'
-        stateTable: {fileID: 11493898}
-        id: -39622
-        target: {fileID: 11493898}
-        requireOn: 0
-        requireOff: 0
-      - name: Ground Check
-        stateTable: {fileID: 0}
-        id: -124444
-        target: {fileID: 11412222}
-        requireOn: 0
-        requireOff: 0
-      - name: Ground Trigger
-        stateTable: {fileID: 0}
-        id: -130100
-        target: {fileID: 11423334}
-        requireOn: 0
-        requireOff: 0
-      - name: Reset Gravity
-        stateTable: {fileID: 0}
-        id: -152548
-        target: {fileID: 11447076}
-        requireOn: 0
-        requireOff: 0
-  - name: Ground Trigger
-    stateTable: {fileID: 0}
-    id: -130100
-    target: {fileID: 11423334}
-    empty: 0
-    section: 
-    requirements:
-    - data:
-      - name: '@Active'
-        stateTable: {fileID: 11493898}
-        id: -39622
-        target: {fileID: 11493898}
-        requireOn: 0
-        requireOff: 0
-      - name: Ground Check
-        stateTable: {fileID: 0}
-        id: -124444
-        target: {fileID: 11412222}
-        requireOn: 1
-        requireOff: 0
-      - name: Ground Trigger
-        stateTable: {fileID: 0}
-        id: -130100
-        target: {fileID: 11423334}
-        requireOn: 0
-        requireOff: 0
-      - name: Reset Gravity
-        stateTable: {fileID: 0}
-        id: -152548
-        target: {fileID: 11447076}
-        requireOn: 0
-        requireOff: 0
   - name: '@Active'
     stateTable: {fileID: 11493898}
     id: -39622
@@ -1407,24 +1346,100 @@ MonoBehaviour:
         target: {fileID: 11493898}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: Ground Check
         stateTable: {fileID: 0}
         id: -124444
         target: {fileID: 11412222}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: Ground Trigger
         stateTable: {fileID: 0}
         id: -130100
         target: {fileID: 11423334}
         requireOn: 1
         requireOff: 0
+        requireUsed: 0
       - name: Reset Gravity
         stateTable: {fileID: 0}
         id: -152548
         target: {fileID: 11447076}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
+  - name: Ground Check
+    stateTable: {fileID: 0}
+    id: -124444
+    target: {fileID: 11412222}
+    empty: 0
+    section: 
+    requirements:
+    - data:
+      - name: '@Active'
+        stateTable: {fileID: 11493898}
+        id: -39622
+        target: {fileID: 11493898}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Ground Check
+        stateTable: {fileID: 0}
+        id: -124444
+        target: {fileID: 11412222}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Ground Trigger
+        stateTable: {fileID: 0}
+        id: -130100
+        target: {fileID: 11423334}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Reset Gravity
+        stateTable: {fileID: 0}
+        id: -152548
+        target: {fileID: 11447076}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+  - name: Ground Trigger
+    stateTable: {fileID: 0}
+    id: -130100
+    target: {fileID: 11423334}
+    empty: 0
+    section: 
+    requirements:
+    - data:
+      - name: '@Active'
+        stateTable: {fileID: 11493898}
+        id: -39622
+        target: {fileID: 11493898}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Ground Check
+        stateTable: {fileID: 0}
+        id: -124444
+        target: {fileID: 11412222}
+        requireOn: 1
+        requireOff: 0
+        requireUsed: 0
+      - name: Ground Trigger
+        stateTable: {fileID: 0}
+        id: -130100
+        target: {fileID: 11423334}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Reset Gravity
+        stateTable: {fileID: 0}
+        id: -152548
+        target: {fileID: 11447076}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
   - name: Reset Gravity
     stateTable: {fileID: 0}
     id: -152548
@@ -1439,89 +1454,29 @@ MonoBehaviour:
         target: {fileID: 11493898}
         requireOn: 1
         requireOff: 0
+        requireUsed: 0
       - name: Ground Check
         stateTable: {fileID: 0}
         id: -124444
         target: {fileID: 11412222}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: Ground Trigger
         stateTable: {fileID: 0}
         id: -130100
         target: {fileID: 11423334}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: Reset Gravity
         stateTable: {fileID: 0}
         id: -152548
         target: {fileID: 11447076}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
   tableOff:
-  - name: Ground Check
-    stateTable: {fileID: 0}
-    id: -124444
-    target: {fileID: 11412222}
-    empty: 0
-    section: 
-    requirements:
-    - data:
-      - name: '@Active'
-        stateTable: {fileID: 11493898}
-        id: -39622
-        target: {fileID: 11493898}
-        requireOn: 0
-        requireOff: 0
-      - name: Ground Check
-        stateTable: {fileID: 0}
-        id: -124444
-        target: {fileID: 11412222}
-        requireOn: 0
-        requireOff: 0
-      - name: Ground Trigger
-        stateTable: {fileID: 0}
-        id: -130100
-        target: {fileID: 11423334}
-        requireOn: 0
-        requireOff: 0
-      - name: Reset Gravity
-        stateTable: {fileID: 0}
-        id: -152548
-        target: {fileID: 11447076}
-        requireOn: 0
-        requireOff: 0
-  - name: Ground Trigger
-    stateTable: {fileID: 0}
-    id: -130100
-    target: {fileID: 11423334}
-    empty: 0
-    section: 
-    requirements:
-    - data:
-      - name: '@Active'
-        stateTable: {fileID: 11493898}
-        id: -39622
-        target: {fileID: 11493898}
-        requireOn: 0
-        requireOff: 0
-      - name: Ground Check
-        stateTable: {fileID: 0}
-        id: -124444
-        target: {fileID: 11412222}
-        requireOn: 0
-        requireOff: 0
-      - name: Ground Trigger
-        stateTable: {fileID: 0}
-        id: -130100
-        target: {fileID: 11423334}
-        requireOn: 0
-        requireOff: 0
-      - name: Reset Gravity
-        stateTable: {fileID: 0}
-        id: -152548
-        target: {fileID: 11447076}
-        requireOn: 0
-        requireOff: 0
   - name: '@Active'
     stateTable: {fileID: 11493898}
     id: -39622
@@ -1536,24 +1491,100 @@ MonoBehaviour:
         target: {fileID: 11493898}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: Ground Check
         stateTable: {fileID: 0}
         id: -124444
         target: {fileID: 11412222}
         requireOn: 0
         requireOff: 1
+        requireUsed: 0
       - name: Ground Trigger
         stateTable: {fileID: 0}
         id: -130100
         target: {fileID: 11423334}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: Reset Gravity
         stateTable: {fileID: 0}
         id: -152548
         target: {fileID: 11447076}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
+  - name: Ground Check
+    stateTable: {fileID: 0}
+    id: -124444
+    target: {fileID: 11412222}
+    empty: 0
+    section: 
+    requirements:
+    - data:
+      - name: '@Active'
+        stateTable: {fileID: 11493898}
+        id: -39622
+        target: {fileID: 11493898}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Ground Check
+        stateTable: {fileID: 0}
+        id: -124444
+        target: {fileID: 11412222}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Ground Trigger
+        stateTable: {fileID: 0}
+        id: -130100
+        target: {fileID: 11423334}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Reset Gravity
+        stateTable: {fileID: 0}
+        id: -152548
+        target: {fileID: 11447076}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+  - name: Ground Trigger
+    stateTable: {fileID: 0}
+    id: -130100
+    target: {fileID: 11423334}
+    empty: 0
+    section: 
+    requirements:
+    - data:
+      - name: '@Active'
+        stateTable: {fileID: 11493898}
+        id: -39622
+        target: {fileID: 11493898}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Ground Check
+        stateTable: {fileID: 0}
+        id: -124444
+        target: {fileID: 11412222}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Ground Trigger
+        stateTable: {fileID: 0}
+        id: -130100
+        target: {fileID: 11423334}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Reset Gravity
+        stateTable: {fileID: 0}
+        id: -152548
+        target: {fileID: 11447076}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
   - name: Reset Gravity
     stateTable: {fileID: 0}
     id: -152548
@@ -1568,24 +1599,28 @@ MonoBehaviour:
         target: {fileID: 11493898}
         requireOn: 0
         requireOff: 1
+        requireUsed: 0
       - name: Ground Check
         stateTable: {fileID: 0}
         id: -124444
         target: {fileID: 11412222}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: Ground Trigger
         stateTable: {fileID: 0}
         id: -130100
         target: {fileID: 11423334}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: Reset Gravity
         stateTable: {fileID: 0}
         id: -152548
         target: {fileID: 11447076}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
   manual: 0
   advanced: 0
   external:
@@ -1593,32 +1628,32 @@ MonoBehaviour:
       name: External
       path: OnGround/External
       fullPath: OnGround/Main/OnGround/External
-      id: -91270/b4a57eee-ec34-45ce-949d-a8ec19ecaaab
+      relativePath: External
+      id: -24140/b4a57eee-ec34-45ce-949d-a8ec19ecaaab
       localID: b4a57eee-ec34-45ce-949d-a8ec19ecaaab
       parent: {fileID: 11493898}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 170228}
-          parent: {fileID: 11493898}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /OnGround/Main/OnGround/OnGround/External/Target
+          path: 
         usage: 0
-        path: /OnGround/Main/Old Attribute Bool Data D
+        path: OnGround/Main/OnGround/External/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: True
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 1
   scripts:
   - {fileID: 11493898}
   - {fileID: 11412222}

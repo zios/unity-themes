@@ -5,12 +5,12 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 431900}
-  - 114: {fileID: 11448618}
-  - 114: {fileID: 11416856}
-  - 114: {fileID: 11467952}
+  - component: {fileID: 431900}
+  - component: {fileID: 11448618}
+  - component: {fileID: 11416856}
+  - component: {fileID: 11467952}
   m_Layer: 10
   m_Name: '@Settings'
   m_TagString: Untagged
@@ -23,9 +23,9 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 467232}
+  - component: {fileID: 467232}
   m_Layer: 10
   m_Name: Fall
   m_TagString: Untagged
@@ -38,11 +38,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 407498}
-  - 114: {fileID: 11494626}
-  - 114: {fileID: 11452306}
+  - component: {fileID: 407498}
+  - component: {fileID: 11494626}
+  - component: {fileID: 11452306}
   m_Layer: 10
   m_Name: Main
   m_TagString: Untagged
@@ -62,6 +62,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 467232}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &431900
 Transform:
   m_ObjectHideFlags: 1
@@ -74,6 +75,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 467232}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &467232
 Transform:
   m_ObjectHideFlags: 1
@@ -88,6 +90,7 @@ Transform:
   - {fileID: 407498}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &11416856
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -107,32 +110,32 @@ MonoBehaviour:
       name: Source
       path: Source
       fullPath: Fall/@Settings/Source
-      id: -88892/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+      relativePath: 
+      id: -15306/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
       localID: 0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
       parent: {fileID: 11416856}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../../..
+          disabled: 0
+          search: '[Self]'
           directObject: {fileID: 0}
-          searchObject: {fileID: 127216}
+          searchObject: {fileID: 102488}
           parent: {fileID: 11416856}
           mode: 0
-          path: /Fall/@Settings/Source/Source/Target
+          path: /Fall/@Settings/Source/0/Target
         usage: 1
-        path: /Fall/@Settings/Attribute Game Object Data B
+        path: Fall/@Settings/Source/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: 
         rawType: Zios.Attributes.AttributeGameObjectData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: {fileID: 0}
   remember: 0
 --- !u!114 &11448618
 MonoBehaviour:
@@ -153,32 +156,32 @@ MonoBehaviour:
       name: Animation
       path: Animation
       fullPath: Fall/@Settings/Animation
-      id: -88890/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
+      relativePath: 
+      id: -15308/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
       localID: 7e894ef6-a99f-450f-b42a-e1aa6c29abb9
       parent: {fileID: 11448618}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 102488}
-          parent: {fileID: 11448618}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Fall/@Settings/Animation/Animation/Target
+          path: 
         usage: 0
-        path: /Fall/@Settings/Attribute String Data
+        path: Fall/@Settings/Animation/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
-        rawValue: Fall
+        rawValue: 
         rawType: Zios.Attributes.AttributeStringData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 
   remember: 0
 --- !u!114 &11452306
 MonoBehaviour:
@@ -203,44 +206,46 @@ MonoBehaviour:
       name: Usable
       path: Fall Animation/Usable
       fullPath: Fall/Main/Fall Animation/Usable
-      id: -88904/2377ed68-0f39-4d80-8103-c5150a46f05f
+      relativePath: Usable
+      id: -15310/2377ed68-0f39-4d80-8103-c5150a46f05f
       localID: 2377ed68-0f39-4d80-8103-c5150a46f05f
       parent: {fileID: 11452306}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 141992}
-          parent: {fileID: 11452306}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Fall/Main/Fall Animation/Fall Animation/Usable/Target
+          path: 
         usage: 0
-        path: /Fall/Main/Attribute Bool Data C
+        path: Fall/Main/Fall Animation/Usable/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   active:
     info:
       name: Active
       path: Fall Animation/Active
       fullPath: Fall/Main/Fall Animation/Active
-      id: -88904/6fc43123-348c-45d2-8846-5ae07460c0f5
+      relativePath: Active
+      id: -15310/6fc43123-348c-45d2-8846-5ae07460c0f5
       localID: 6fc43123-348c-45d2-8846-5ae07460c0f5
       parent: {fileID: 11452306}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
+          disabled: 1
           search: 
           directObject: {fileID: 0}
           searchObject: {fileID: 0}
@@ -253,168 +258,166 @@ MonoBehaviour:
         referencePath: 
         operation: 0
         special: 0
-        rawValue: 
+        rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   used:
     info:
       name: Used
       path: Fall Animation/Used
       fullPath: Fall/Main/Fall Animation/Used
-      id: -88904/57a90ae5-dbf9-4458-8b54-f0be7938abbc
+      relativePath: Used
+      id: -15310/57a90ae5-dbf9-4458-8b54-f0be7938abbc
       localID: 57a90ae5-dbf9-4458-8b54-f0be7938abbc
       parent: {fileID: 11452306}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 141992}
-          parent: {fileID: 11452306}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Fall/Main/Fall Animation/Fall Animation/Used/Target
+          path: 
         usage: 0
-        path: /Fall/Main/Attribute Bool Data
+        path: Fall/Main/Fall Animation/Used/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   animationName:
     info:
       name: Animation Name
       path: Fall Animation/Animation Name
       fullPath: Fall/Main/Fall Animation/Animation Name
-      id: -88904/10c4c93a-0903-4eb9-b563-762783b3a1dd
+      relativePath: Animation Name
+      id: -15310/10c4c93a-0903-4eb9-b563-762783b3a1dd
       localID: 10c4c93a-0903-4eb9-b563-762783b3a1dd
       parent: {fileID: 11452306}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 102488}
-          parent: {fileID: 11452306}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Fall/Main/Fall Animation/Fall Animation/Animation Name/Target
-        usage: 1
-        path: /Fall/Main/Attribute String Data
-        referenceID: -41960/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
-        referencePath: Animation
+          path: 
+        usage: 0
+        path: Fall/Main/Fall Animation/Animation Name/0
+        referenceID: 
+        referencePath: 
         operation: 0
         special: 0
-        rawValue: FlyDown
+        rawValue: 
         rawType: Zios.Attributes.AttributeStringData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 
   speed:
     info:
       name: Speed
       path: Fall Animation/Speed
       fullPath: Fall/Main/Fall Animation/Speed
-      id: -88904/27835566-56e1-49de-b9ba-762ba4d45c0d
+      relativePath: Speed
+      id: -15310/27835566-56e1-49de-b9ba-762ba4d45c0d
       localID: 27835566-56e1-49de-b9ba-762ba4d45c0d
       parent: {fileID: 11452306}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 141992}
-          parent: {fileID: 11452306}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Fall/Main/Fall Animation/Fall Animation/Speed/Target
+          path: 
         usage: 0
-        path: /Fall/Main/Attribute Float Data B
+        path: Fall/Main/Fall Animation/Speed/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
-        rawValue: 1
+        rawValue: -1
         rawType: Zios.Attributes.AttributeFloatData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: -1
   weight:
     info:
       name: Weight
       path: Fall Animation/Weight
       fullPath: Fall/Main/Fall Animation/Weight
-      id: -88904/efecf60c-63f6-4942-811c-d8e6ef06610b
+      relativePath: Weight
+      id: -15310/efecf60c-63f6-4942-811c-d8e6ef06610b
       localID: efecf60c-63f6-4942-811c-d8e6ef06610b
       parent: {fileID: 11452306}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 141992}
-          parent: {fileID: 11452306}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Fall/Main/Fall Animation/Fall Animation/Weight/Target
+          path: 
         usage: 0
-        path: /Fall/Main/Attribute Float Data
+        path: Fall/Main/Fall Animation/Weight/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
-        rawValue: 1
+        rawValue: -1
         rawType: Zios.Attributes.AttributeFloatData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: -1
   target:
     info:
       name: Target
       path: Fall Animation/Target
       fullPath: Fall/Main/Fall Animation/Target
-      id: -88904/acae08fd-bd14-45bb-972e-50781a370be2
+      relativePath: Target
+      id: -15310/acae08fd-bd14-45bb-972e-50781a370be2
       localID: acae08fd-bd14-45bb-972e-50781a370be2
       parent: {fileID: 11452306}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 0
+          search: '[Self]'
           directObject: {fileID: 0}
-          searchObject: {fileID: 102488}
+          searchObject: {fileID: 141992}
           parent: {fileID: 11452306}
           mode: 0
-          path: /Fall/Main/Fall Animation/Fall Animation/Target/Target
+          path: /Fall/Main/Fall Animation/0/Target
         usage: 1
-        path: /Fall/Main/Attribute Game Object Data
-        referenceID: -41970/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
-        referencePath: Visuals
+        path: Fall/Main/Fall Animation/Target/0
+        referenceID: 
+        referencePath: 
         operation: 0
         special: 0
         rawValue: 
         rawType: Zios.Attributes.AttributeGameObjectData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: {fileID: 0}
 --- !u!114 &11467952
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -434,32 +437,32 @@ MonoBehaviour:
       name: Visuals
       path: Visuals
       fullPath: Fall/@Settings/Visuals
-      id: -88894/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+      relativePath: 
+      id: -15312/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
       localID: 33bddd78-c7f6-40fe-94d8-1637fbd7fa73
       parent: {fileID: 11467952}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../../../Visuals
+          disabled: 0
+          search: '[Self]'
           directObject: {fileID: 0}
-          searchObject: {fileID: 0}
+          searchObject: {fileID: 102488}
           parent: {fileID: 11467952}
           mode: 0
-          path: /Fall/@Settings/Visuals/Visuals/Target
+          path: /Fall/@Settings/Visuals/0/Target
         usage: 1
-        path: /Fall/@Settings/Attribute Game Object Data
+        path: Fall/@Settings/Visuals/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: 
         rawType: Zios.Attributes.AttributeGameObjectData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: {fileID: 0}
   remember: 0
 --- !u!114 &11494626
 MonoBehaviour:
@@ -484,44 +487,46 @@ MonoBehaviour:
       name: Usable
       path: Fall/Usable
       fullPath: Fall/Main/Fall/Usable
-      id: -88902/da1dd272-4b87-4371-bef0-53b26741012e
+      relativePath: Usable
+      id: -15314/da1dd272-4b87-4371-bef0-53b26741012e
       localID: da1dd272-4b87-4371-bef0-53b26741012e
       parent: {fileID: 11494626}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 141992}
-          parent: {fileID: 11494626}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Fall/Main/Fall/Fall/Usable/Target
+          path: 
         usage: 0
-        path: /Fall/Main/Old Attribute Bool Data
+        path: Fall/Main/Fall/Usable/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: True
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   active:
     info:
       name: Active
       path: Fall/Active
       fullPath: Fall/Main/Fall/Active
-      id: -88902/f9c02983-bb00-4db8-9b11-306209963161
+      relativePath: Active
+      id: -15314/f9c02983-bb00-4db8-9b11-306209963161
       localID: f9c02983-bb00-4db8-9b11-306209963161
       parent: {fileID: 11494626}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
+          disabled: 1
           search: 
           directObject: {fileID: 0}
           searchObject: {fileID: 0}
@@ -534,44 +539,42 @@ MonoBehaviour:
         referencePath: 
         operation: 0
         special: 0
-        rawValue: 
+        rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   used:
     info:
       name: Used
       path: Fall/Used
       fullPath: Fall/Main/Fall/Used
-      id: -88902/da498e7b-42e7-4555-867b-f5f03e5a00fc
+      relativePath: Used
+      id: -15314/da498e7b-42e7-4555-867b-f5f03e5a00fc
       localID: da498e7b-42e7-4555-867b-f5f03e5a00fc
       parent: {fileID: 11494626}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 141992}
-          parent: {fileID: 11494626}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Fall/Main/Fall/Fall/Used/Target
+          path: 
         usage: 0
-        path: /Fall/Main/Old Attribute Bool Data C
+        path: Fall/Main/Fall/Used/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   table:
   - name: '@Active'
     stateTable: {fileID: 11494626}
@@ -587,12 +590,14 @@ MonoBehaviour:
         target: {fileID: 11494626}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: Fall Animation
         stateTable: {fileID: 0}
         id: -1627016
         target: {fileID: 11452306}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
   - name: Fall Animation
     stateTable: {fileID: 0}
     id: -1627016
@@ -607,12 +612,14 @@ MonoBehaviour:
         target: {fileID: 11494626}
         requireOn: 1
         requireOff: 0
+        requireUsed: 0
       - name: Fall Animation
         stateTable: {fileID: 0}
         id: -1627016
         target: {fileID: 11452306}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
   tableOff:
   - name: '@Active'
     stateTable: {fileID: 11494626}
@@ -628,12 +635,14 @@ MonoBehaviour:
         target: {fileID: 11494626}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: Fall Animation
         stateTable: {fileID: 0}
         id: -1627016
         target: {fileID: 11452306}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
   - name: Fall Animation
     stateTable: {fileID: 0}
     id: -1627016
@@ -648,12 +657,14 @@ MonoBehaviour:
         target: {fileID: 11494626}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: Fall Animation
         stateTable: {fileID: 0}
         id: -1627016
         target: {fileID: 11452306}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
   manual: 0
   advanced: 0
   external:
@@ -661,32 +672,32 @@ MonoBehaviour:
       name: External
       path: Fall/External
       fullPath: Fall/Main/Fall/External
-      id: -88902/21705753-bc05-4177-a93e-52e08db1ead8
+      relativePath: External
+      id: -15314/21705753-bc05-4177-a93e-52e08db1ead8
       localID: 21705753-bc05-4177-a93e-52e08db1ead8
       parent: {fileID: 11494626}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 141992}
-          parent: {fileID: 11494626}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Fall/Main/Fall/Fall/External/Target
+          path: 
         usage: 0
-        path: /Fall/Main/Old Attribute Bool Data D
+        path: Fall/Main/Fall/External/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: True
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 1
   scripts:
   - {fileID: 11494626}
   - {fileID: 11452306}

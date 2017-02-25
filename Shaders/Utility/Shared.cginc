@@ -161,7 +161,7 @@ vertexOutput vertexPass(vertexInput input){
 	vertexOutput output;
 	UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
 	float2 lightmapUV = input.texcoord1.xy * unity_LightmapST.xy + unity_LightmapST.zw;
-	output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
+	output.pos = UnityObjectToClipPos(input.vertex);
 	output.lightNormal = ObjSpaceLightDir(input.vertex);
 	output.view = ObjSpaceViewDir(input.vertex);
 	output.UV = float4(input.texcoord.x,input.texcoord.y,lightmapUV.x,lightmapUV.y);
@@ -174,14 +174,14 @@ vertexOutput vertexPass(vertexInput input){
 vertexOutput vertexPassTrimmed(vertexInputTrimmed input){
 	vertexOutput output;
 	UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
-	output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
+	output.pos = UnityObjectToClipPos(input.vertex);
 	output.UV = input.texcoord;
 	return output;
 }
 vertexOutput vertexPassSprite(vertexInput input){
 	vertexOutput output;
 	UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
-	output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
+	output.pos = UnityObjectToClipPos(input.vertex);
 	output.lightNormal = ObjSpaceLightDir(input.vertex);
 	output.view = ObjSpaceViewDir(input.vertex);
 	output.UV = float4(input.texcoord.x,input.texcoord.y,input.texcoord1.x,input.texcoord1.y);
@@ -195,7 +195,7 @@ vertexOutput vertexPassManual(vertexInput input){
 	UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
 	input.normal = meshNormal.xyz;
 	float2 lightmapUV = input.texcoord1.xy * unity_LightmapST.xy + unity_LightmapST.zw;
-	output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
+	output.pos = UnityObjectToClipPos(input.vertex);
 	output.lightNormal = ObjSpaceLightDir(input.vertex);
 	output.view = ObjSpaceViewDir(input.vertex);
 	output.UV = float4(input.texcoord.x,input.texcoord.y,lightmapUV.x,lightmapUV.y);
@@ -207,7 +207,7 @@ vertexOutput vertexPassManual(vertexInput input){
 vertexOutput vertexPassSimple(vertexInput input){
 	vertexOutput output;
 	UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
-	output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
+	output.pos = UnityObjectToClipPos(input.vertex);
 	output.lightNormal = ObjSpaceLightDir(input.vertex);
 	output.UV.xy = float2(input.texcoord.x,input.texcoord.y);
 	output.normal = float4(input.normal+meshNormal.xyz,0);
@@ -218,7 +218,7 @@ vertexOutput vertexPassOutline(vertexInput input){
 	UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
 	float3 view = ObjSpaceViewDir(input.vertex);
     float3 outline = input.vertex + input.normal * outlineLength;
-	output.pos = mul(UNITY_MATRIX_MVP,float4(outline,1));
+	output.pos = UnityObjectToClipPos,float4(outline,1));
 	output.UV.xy = float2(input.texcoord.x,input.texcoord.y);
 	return output;
 }
@@ -228,14 +228,14 @@ vertexOutput vertexPassOutlineFull(vertexInput input){
 	float3 view = ObjSpaceViewDir(input.vertex);
     float shrinker = 1 - log(distance(view,input.vertex)/outlineShrinkStart)/log(outlineShrinkEnd/outlineShrinkStart);
     float3 outline = input.vertex + input.normal * outlineLength * shrinker;
-	output.pos = mul(UNITY_MATRIX_MVP,float4(outline,1));
+	output.pos = UnityObjectToClipPos,float4(outline,1));
 	output.UV.xy = float2(input.texcoord.x,input.texcoord.y);
 	return output;
 }
 vertexOutput vertexPassBillboard(vertexInput input){
 	vertexOutput output;
 	UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
-	output.pos = mul(UNITY_MATRIX_P,mul(UNITY_MATRIX_MV, float4(0.0f, 0.0f, 0.0f, 1.0f)) + float4(input.vertex.x, input.vertex.y, 0.0f, 0.0f));
+	output.pos = mul(UNITY_MATRIX_P,UnityObjectToViewPos, float4(0.0f, 0.0f, 0.0f, 1.0f)) + float4(input.vertex.x, input.vertex.y, 0.0f, 0.0f));
 	output.lightNormal = ObjSpaceLightDir(input.vertex);
 	output.UV.xy = float2(input.texcoord.x,input.texcoord.y);
 	output.normal = float4(input.normal+meshNormal.xyz,0);

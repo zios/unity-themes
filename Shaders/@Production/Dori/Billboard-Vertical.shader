@@ -48,7 +48,7 @@ Shader "Zios/Dori/Billboard (Vertical Orientation)"{
 			vertexOutput vertexPass(vertexInput input){
 				vertexOutput output;
 				UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
-				output.pos = mul(UNITY_MATRIX_P,mul(UNITY_MATRIX_MV,float4(input.vertex.x,0.0f,input.vertex.z,1.0f))+float4(0.0f,input.vertex.y,0.0f,0.0f));
+				output.pos = mul(UNITY_MATRIX_P,UnityObjectToViewPos(float4(input.vertex.x,0.0f,input.vertex.z,1.0f))+float4(0.0f,input.vertex.y,0.0f,0.0f));
 				output.UV.xy = float2(input.texcoord.x,input.texcoord.y);
 				return output;
 			}

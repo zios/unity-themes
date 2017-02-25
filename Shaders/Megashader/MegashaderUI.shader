@@ -24,12 +24,13 @@ Shader "Zios/Standalone/Megashader UI"{
 			ZWrite On
 			Colormask 0
 			CGPROGRAM
+			#include "UnityCG.cginc"
 			#pragma vertex vertexPass
 			#pragma fragment pixelPass
 			#pragma target 3.0
 			float cullDistance;
 			float4 vertexPass(float4 vertex:POSITION) : SV_POSITION{
-				float4 position = mul(UNITY_MATRIX_MVP,vertex);
+				float4 position = UnityObjectToClipPos(vertex);
                 return position;
             }
 			fixed4 pixelPass() : SV_Target{return fixed4(0,0,0,0);}
@@ -154,7 +155,7 @@ Shader "Zios/Standalone/Megashader UI"{
 			vertexOutput vertexPass(vertexInput input){
 				vertexOutput output;
 				UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
-				output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
+				output.pos = UnityObjectToClipPos(input.vertex);
 				output.worldNormal = UnityObjectToWorldNormal(input.normal);
 				output.worldPosition = mul(unity_ObjectToWorld,input.vertex);
 				return output;

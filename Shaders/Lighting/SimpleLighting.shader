@@ -30,7 +30,7 @@ Shader "Hidden/Zios/(Components)/Lighting/SimpleLighting"{
 			vertexOutput vertexPass(vertexInput input){
 				vertexOutput output;
 				UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
-				output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
+				output.pos = UnityObjectToClipPos(input.vertex);
 				return output;
 			}
 			pixelOutput pixelPass(vertexOutput input){

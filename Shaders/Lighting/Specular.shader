@@ -70,7 +70,7 @@ Shader "Zios/(Components)/Lighting/Specular"{
 			vertexOutput vertexPass(vertexInput input){
 				vertexOutput output;
 				UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
-				output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
+				output.pos = UnityObjectToClipPos(input.vertex);
 				output.lightNormal = ObjSpaceLightDir(input.vertex) + lightOffset;
 				output.view = ObjSpaceViewDir(input.vertex);
 				output.normal = float4(input.normal,0);

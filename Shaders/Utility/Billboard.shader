@@ -30,7 +30,7 @@ Shader "Zios/(Components)/Utility/Billboard"{
 			vertexOutput vertexPass(vertexInput input){
 				vertexOutput output;
 				UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
-				output.pos = mul(UNITY_MATRIX_P,mul(UNITY_MATRIX_MV,float4(0.0f,0.0f,0.0f,1.0f))+float4(input.vertex.x,input.vertex.y,0.0f,0.0f));
+				output.pos = mul(UNITY_MATRIX_P, UnityObjectToViewPos(float4(0.0f,0.0f,0.0f,1.0f))+float4(input.vertex.x,input.vertex.y,0.0f,0.0f));
 				output.UV = float4(input.texcoord.xy,0.0f,0.0f);
 				return output;
 			}

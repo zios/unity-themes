@@ -66,7 +66,7 @@ Shader "Zios/Dori/Vertex Color + Shading"{
 				vertexOutput output;
 				UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
 				output.UV = float4(input.texcoord.xy,0,0);
-				output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
+				output.pos = UnityObjectToClipPos(input.vertex);
 				output.color = input.color;
 				output.normal = float4(input.normal,0);
 				output.lightNormal = ObjSpaceLightDir(input.vertex);

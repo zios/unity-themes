@@ -115,7 +115,7 @@ Shader "Zios/Olio/Mesh + Scrolling"{
 			vertexOutput vertexPass(vertexInput input){
 				vertexOutput output;
 				UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
-				output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
+				output.pos = UnityObjectToClipPos(input.vertex);
 				output.UV = float4(input.texcoord.xy,0,0);
 				output.lightNormal = ObjSpaceLightDir(input.vertex);
 				output.view = ObjSpaceViewDir(input.vertex);

@@ -34,7 +34,7 @@ Shader "Zios/(Components)/Utility/Atlas Padding"{
 			}
 			vertexOutput vertexPass(vertexInput input){
 				vertexOutput output;
-				output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
+				output.pos = UnityObjectToClipPos(input.vertex);
 				output.UV = float4(input.texcoord.x,input.texcoord.y,0,0);
 				return output;
 			}

@@ -5,13 +5,13 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 465916}
-  - 114: {fileID: 11448026}
-  - 114: {fileID: 11459280}
-  - 114: {fileID: 11472416}
-  - 114: {fileID: 11422430}
+  - component: {fileID: 465916}
+  - component: {fileID: 11448026}
+  - component: {fileID: 11459280}
+  - component: {fileID: 11472416}
+  - component: {fileID: 11422430}
   m_Layer: 10
   m_Name: '@Settings'
   m_TagString: Untagged
@@ -24,9 +24,9 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 480216}
+  - component: {fileID: 480216}
   m_Layer: 10
   m_Name: IdleExtended
   m_TagString: Untagged
@@ -39,12 +39,12 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 461436}
-  - 114: {fileID: 11462134}
-  - 114: {fileID: 11422884}
-  - 114: {fileID: 11402308}
+  - component: {fileID: 461436}
+  - component: {fileID: 11462134}
+  - component: {fileID: 11422884}
+  - component: {fileID: 11402308}
   m_Layer: 10
   m_Name: Main
   m_TagString: Untagged
@@ -64,6 +64,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 480216}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &465916
 Transform:
   m_ObjectHideFlags: 1
@@ -76,6 +77,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 480216}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &480216
 Transform:
   m_ObjectHideFlags: 1
@@ -90,6 +92,7 @@ Transform:
   - {fileID: 461436}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &11402308
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -113,44 +116,46 @@ MonoBehaviour:
       name: Usable
       path: Timer Prepare/Usable
       fullPath: IdleExtended/Main/Timer Prepare/Usable
-      id: -91220/819562ce-f350-429f-bdb4-cc4475f61191
+      relativePath: Usable
+      id: -24100/819562ce-f350-429f-bdb4-cc4475f61191
       localID: 819562ce-f350-429f-bdb4-cc4475f61191
       parent: {fileID: 11402308}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 192652}
-          parent: {fileID: 11402308}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /IdleExtended/Main/Timer Prepare/Timer Prepare/Usable/Target
+          path: 
         usage: 0
-        path: /IdleExtended/Main/Attribute Bool Data E
+        path: IdleExtended/Main/Timer Prepare/Usable/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   active:
     info:
       name: Active
       path: Timer Prepare/Active
       fullPath: IdleExtended/Main/Timer Prepare/Active
-      id: -91220/9fed9fd6-dfa9-4a7e-8132-1194f5da2757
+      relativePath: Active
+      id: -24100/9fed9fd6-dfa9-4a7e-8132-1194f5da2757
       localID: 9fed9fd6-dfa9-4a7e-8132-1194f5da2757
       parent: {fileID: 11402308}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
+          disabled: 1
           search: 
           directObject: {fileID: 0}
           searchObject: {fileID: 0}
@@ -163,138 +168,136 @@ MonoBehaviour:
         referencePath: 
         operation: 0
         special: 0
-        rawValue: 
+        rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   used:
     info:
       name: Used
       path: Timer Prepare/Used
       fullPath: IdleExtended/Main/Timer Prepare/Used
-      id: -91220/aa77b508-acbe-457f-b9dc-e1174fb652dc
+      relativePath: Used
+      id: -24100/aa77b508-acbe-457f-b9dc-e1174fb652dc
       localID: aa77b508-acbe-457f-b9dc-e1174fb652dc
       parent: {fileID: 11402308}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 192652}
-          parent: {fileID: 11402308}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /IdleExtended/Main/Timer Prepare/Timer Prepare/Used/Target
+          path: 
         usage: 0
-        path: /IdleExtended/Main/Attribute Bool Data G
+        path: IdleExtended/Main/Timer Prepare/Used/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   type: 0
   seconds:
     info:
       name: Seconds
       path: Timer Prepare/Seconds
       fullPath: IdleExtended/Main/Timer Prepare/Seconds
-      id: -91220/961ac3db-021c-4be0-bb4a-6f6208c2664d
+      relativePath: Seconds
+      id: -24100/961ac3db-021c-4be0-bb4a-6f6208c2664d
       localID: 961ac3db-021c-4be0-bb4a-6f6208c2664d
       parent: {fileID: 11402308}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 121924}
-          parent: {fileID: 11402308}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /IdleExtended/Main/Timer Prepare/Timer Prepare/Seconds/Target
-        usage: 1
-        path: /IdleExtended/Main/Attribute Float Data
-        referenceID: -39370/bd1f87cf-0ee9-417e-bbc1-427b77ae28cb
-        referencePath: Timer
+          path: 
+        usage: 0
+        path: IdleExtended/Main/Timer Prepare/Seconds/0
+        referenceID: 
+        referencePath: 
         operation: 0
         special: 0
         rawValue: 0
         rawType: Zios.Attributes.AttributeFloatData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   isStarted:
     info:
       name: Is Started
       path: Timer Prepare/Is Started
       fullPath: IdleExtended/Main/Timer Prepare/Is Started
-      id: -91220/9b1f9484-b702-4a42-aeef-f41fb52e7b3e
+      relativePath: Is Started
+      id: -24100/9b1f9484-b702-4a42-aeef-f41fb52e7b3e
       localID: 9b1f9484-b702-4a42-aeef-f41fb52e7b3e
       parent: {fileID: 11402308}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 192652}
-          parent: {fileID: 11402308}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /IdleExtended/Main/Timer Prepare/Timer Prepare/Is Started/Target
+          path: 
         usage: 0
-        path: /IdleExtended/Main/Attribute Bool Data H
+        path: IdleExtended/Main/Timer Prepare/Is Started/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   isComplete:
     info:
       name: Is Complete
       path: Timer Prepare/Is Complete
       fullPath: IdleExtended/Main/Timer Prepare/Is Complete
-      id: -91220/7c0a834f-33a9-4059-b8a1-596f56beb614
+      relativePath: Is Complete
+      id: -24100/7c0a834f-33a9-4059-b8a1-596f56beb614
       localID: 7c0a834f-33a9-4059-b8a1-596f56beb614
       parent: {fileID: 11402308}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 192652}
-          parent: {fileID: 11402308}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /IdleExtended/Main/Timer Prepare/Timer Prepare/Is Complete/Target
+          path: 
         usage: 0
-        path: /IdleExtended/Main/Attribute Bool Data
+        path: IdleExtended/Main/Timer Prepare/Is Complete/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
 --- !u!114 &11422430
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -314,32 +317,32 @@ MonoBehaviour:
       name: Visuals
       path: Visuals
       fullPath: IdleExtended/@Settings/Visuals
-      id: -91206/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+      relativePath: 
+      id: -24102/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
       localID: 33bddd78-c7f6-40fe-94d8-1637fbd7fa73
       parent: {fileID: 11422430}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../../../../Visuals
+          disabled: 0
+          search: '[Self]'
           directObject: {fileID: 0}
-          searchObject: {fileID: 0}
+          searchObject: {fileID: 121924}
           parent: {fileID: 11422430}
           mode: 0
-          path: /IdleExtended/@Settings/Visuals/Visuals/Target
+          path: /IdleExtended/@Settings/Visuals/0/Target
         usage: 1
-        path: /IdleExtended/@Settings/Attribute Game Object Data
+        path: IdleExtended/@Settings/Visuals/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: 
         rawType: Zios.Attributes.AttributeGameObjectData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: {fileID: 0}
   remember: 0
 --- !u!114 &11422884
 MonoBehaviour:
@@ -364,44 +367,46 @@ MonoBehaviour:
       name: Usable
       path: Play Idle Animation/Usable
       fullPath: IdleExtended/Main/Play Idle Animation/Usable
-      id: -91218/e351b306-bbbb-47f8-880d-d7b866a6ebe9
+      relativePath: Usable
+      id: -24104/e351b306-bbbb-47f8-880d-d7b866a6ebe9
       localID: e351b306-bbbb-47f8-880d-d7b866a6ebe9
       parent: {fileID: 11422884}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 192652}
-          parent: {fileID: 11422884}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /IdleExtended/Main/Play Idle Animation/Play Idle Animation/Usable/Target
+          path: 
         usage: 0
-        path: /IdleExtended/Main/Attribute Bool Data C
+        path: IdleExtended/Main/Play Idle Animation/Usable/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   active:
     info:
       name: Active
       path: Play Idle Animation/Active
       fullPath: IdleExtended/Main/Play Idle Animation/Active
-      id: -91218/89ce6081-c07e-41e1-850b-87275be13705
+      relativePath: Active
+      id: -24104/89ce6081-c07e-41e1-850b-87275be13705
       localID: 89ce6081-c07e-41e1-850b-87275be13705
       parent: {fileID: 11422884}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
+          disabled: 1
           search: 
           directObject: {fileID: 0}
           searchObject: {fileID: 0}
@@ -414,169 +419,166 @@ MonoBehaviour:
         referencePath: 
         operation: 0
         special: 0
-        rawValue: 
+        rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   used:
     info:
       name: Used
       path: Play Idle Animation/Used
       fullPath: IdleExtended/Main/Play Idle Animation/Used
-      id: -91218/19351f76-3633-47f5-b082-8dfb2b786432
+      relativePath: Used
+      id: -24104/19351f76-3633-47f5-b082-8dfb2b786432
       localID: 19351f76-3633-47f5-b082-8dfb2b786432
       parent: {fileID: 11422884}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 192652}
-          parent: {fileID: 11422884}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /IdleExtended/Main/Play Idle Animation/Play Idle Animation/Used/Target
+          path: 
         usage: 0
-        path: /IdleExtended/Main/Attribute Bool Data D
+        path: IdleExtended/Main/Play Idle Animation/Used/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   animationName:
     info:
       name: Animation Name
       path: Play Idle Animation/Animation Name
       fullPath: IdleExtended/Main/Play Idle Animation/Animation Name
-      id: -91218/10c2af6a-8790-478b-8b35-9071ff9fa06b
+      relativePath: Animation Name
+      id: -24104/10c2af6a-8790-478b-8b35-9071ff9fa06b
       localID: 10c2af6a-8790-478b-8b35-9071ff9fa06b
       parent: {fileID: 11422884}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 121924}
-          parent: {fileID: 11422884}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /IdleExtended/Main/Play Idle Animation/Play Idle Animation/Animation
-            Name/Target
-        usage: 1
-        path: /IdleExtended/Main/Attribute String Data
-        referenceID: -39348/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
-        referencePath: Animation
+          path: 
+        usage: 0
+        path: IdleExtended/Main/Play Idle Animation/Animation Name/0
+        referenceID: 
+        referencePath: 
         operation: 0
         special: 0
-        rawValue: Idle
+        rawValue: 
         rawType: Zios.Attributes.AttributeStringData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 
   speed:
     info:
       name: Speed
       path: Play Idle Animation/Speed
       fullPath: IdleExtended/Main/Play Idle Animation/Speed
-      id: -91218/b11b4576-242d-431c-a7c1-4683167a760d
+      relativePath: Speed
+      id: -24104/b11b4576-242d-431c-a7c1-4683167a760d
       localID: b11b4576-242d-431c-a7c1-4683167a760d
       parent: {fileID: 11422884}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 192652}
-          parent: {fileID: 11422884}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /IdleExtended/Main/Play Idle Animation/Play Idle Animation/Speed/Target
+          path: 
         usage: 0
-        path: /IdleExtended/Main/Attribute Float Data B
+        path: IdleExtended/Main/Play Idle Animation/Speed/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
-        rawValue: 1
+        rawValue: -1
         rawType: Zios.Attributes.AttributeFloatData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: -1
   weight:
     info:
       name: Weight
       path: Play Idle Animation/Weight
       fullPath: IdleExtended/Main/Play Idle Animation/Weight
-      id: -91218/3e374ef8-b26c-40a6-972b-f269764dc5aa
+      relativePath: Weight
+      id: -24104/3e374ef8-b26c-40a6-972b-f269764dc5aa
       localID: 3e374ef8-b26c-40a6-972b-f269764dc5aa
       parent: {fileID: 11422884}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 192652}
-          parent: {fileID: 11422884}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /IdleExtended/Main/Play Idle Animation/Play Idle Animation/Weight/Target
+          path: 
         usage: 0
-        path: /IdleExtended/Main/Attribute Float Data C
+        path: IdleExtended/Main/Play Idle Animation/Weight/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
-        rawValue: 1
+        rawValue: -1
         rawType: Zios.Attributes.AttributeFloatData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: -1
   target:
     info:
       name: Target
       path: Play Idle Animation/Target
       fullPath: IdleExtended/Main/Play Idle Animation/Target
-      id: -91218/858f73b3-0307-423f-9f6d-73e471fc3e38
+      relativePath: Target
+      id: -24104/858f73b3-0307-423f-9f6d-73e471fc3e38
       localID: 858f73b3-0307-423f-9f6d-73e471fc3e38
       parent: {fileID: 11422884}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 0
+          search: '[Self]'
           directObject: {fileID: 0}
-          searchObject: {fileID: 121924}
+          searchObject: {fileID: 192652}
           parent: {fileID: 11422884}
           mode: 0
-          path: /IdleExtended/Main/Play Idle Animation/Play Idle Animation/Target/Target
+          path: /IdleExtended/Main/Play Idle Animation/0/Target
         usage: 1
-        path: /IdleExtended/Main/Attribute Game Object Data
-        referenceID: -39324/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
-        referencePath: Visuals
+        path: IdleExtended/Main/Play Idle Animation/Target/0
+        referenceID: 
+        referencePath: 
         operation: 0
         special: 0
         rawValue: 
         rawType: Zios.Attributes.AttributeGameObjectData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: {fileID: 0}
 --- !u!114 &11448026
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -596,32 +598,32 @@ MonoBehaviour:
       name: Animation
       path: Animation
       fullPath: IdleExtended/@Settings/Animation
-      id: -91200/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
+      relativePath: 
+      id: -24106/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
       localID: 7e894ef6-a99f-450f-b42a-e1aa6c29abb9
       parent: {fileID: 11448026}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 121924}
-          parent: {fileID: 11448026}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /IdleExtended/@Settings/Animation/Animation/Target
+          path: 
         usage: 0
-        path: /IdleExtended/@Settings/Attribute String Data
+        path: IdleExtended/@Settings/Animation/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
-        rawValue: IdleExtended
+        rawValue: 
         rawType: Zios.Attributes.AttributeStringData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 
   remember: 0
 --- !u!114 &11459280
 MonoBehaviour:
@@ -642,32 +644,32 @@ MonoBehaviour:
       name: Source
       path: Source
       fullPath: IdleExtended/@Settings/Source
-      id: -91202/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+      relativePath: 
+      id: -24108/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
       localID: 0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
       parent: {fileID: 11459280}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../../../..
+          disabled: 0
+          search: '[Self]'
           directObject: {fileID: 0}
-          searchObject: {fileID: 0}
+          searchObject: {fileID: 121924}
           parent: {fileID: 11459280}
           mode: 0
-          path: /IdleExtended/@Settings/Source/Source/Target
+          path: /IdleExtended/@Settings/Source/0/Target
         usage: 1
-        path: /IdleExtended/@Settings/Attribute Game Object Data B
+        path: IdleExtended/@Settings/Source/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: 
         rawType: Zios.Attributes.AttributeGameObjectData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: {fileID: 0}
   remember: 0
 --- !u!114 &11462134
 MonoBehaviour:
@@ -692,44 +694,46 @@ MonoBehaviour:
       name: Usable
       path: IdleExtended/Usable
       fullPath: IdleExtended/Main/IdleExtended/Usable
-      id: -91216/6843ecae-9b77-445d-aea5-32431b9db7b6
+      relativePath: Usable
+      id: -24110/6843ecae-9b77-445d-aea5-32431b9db7b6
       localID: 6843ecae-9b77-445d-aea5-32431b9db7b6
       parent: {fileID: 11462134}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 192652}
-          parent: {fileID: 11462134}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /IdleExtended/Main/IdleExtended/IdleExtended/Usable/Target
+          path: 
         usage: 0
-        path: /IdleExtended/Main/Old Attribute Bool Data
+        path: IdleExtended/Main/IdleExtended/Usable/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: True
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   active:
     info:
       name: Active
       path: IdleExtended/Active
       fullPath: IdleExtended/Main/IdleExtended/Active
-      id: -91216/24383769-7241-4915-a8d1-b1d101efbcb5
+      relativePath: Active
+      id: -24110/24383769-7241-4915-a8d1-b1d101efbcb5
       localID: 24383769-7241-4915-a8d1-b1d101efbcb5
       parent: {fileID: 11462134}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
+          disabled: 1
           search: 
           directObject: {fileID: 0}
           searchObject: {fileID: 0}
@@ -742,44 +746,42 @@ MonoBehaviour:
         referencePath: 
         operation: 0
         special: 0
-        rawValue: 
+        rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   used:
     info:
       name: Used
       path: IdleExtended/Used
       fullPath: IdleExtended/Main/IdleExtended/Used
-      id: -91216/6f51081c-b425-44a1-8e3a-1ded9a64a72c
+      relativePath: Used
+      id: -24110/6f51081c-b425-44a1-8e3a-1ded9a64a72c
       localID: 6f51081c-b425-44a1-8e3a-1ded9a64a72c
       parent: {fileID: 11462134}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 192652}
-          parent: {fileID: 11462134}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /IdleExtended/Main/IdleExtended/IdleExtended/Used/Target
+          path: 
         usage: 0
-        path: /IdleExtended/Main/Old Attribute Bool Data C
+        path: IdleExtended/Main/IdleExtended/Used/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   table:
   - name: '@Active'
     stateTable: {fileID: 11462134}
@@ -795,18 +797,21 @@ MonoBehaviour:
         target: {fileID: 11462134}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: Play Idle Animation
         stateTable: {fileID: 0}
         id: -1001040
         target: {fileID: 11422884}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: Timer Prepare
         stateTable: {fileID: 11462134}
         id: -8114
         target: {fileID: 11402308}
         requireOn: 1
         requireOff: 0
+        requireUsed: 0
   - name: Play Idle Animation
     stateTable: {fileID: 0}
     id: -1001040
@@ -821,18 +826,21 @@ MonoBehaviour:
         target: {fileID: 11462134}
         requireOn: 1
         requireOff: 0
+        requireUsed: 0
       - name: Play Idle Animation
         stateTable: {fileID: 0}
         id: -1001040
         target: {fileID: 11422884}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: Timer Prepare
         stateTable: {fileID: 11462134}
         id: -8114
         target: {fileID: 11402308}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
   - name: Timer Prepare
     stateTable: {fileID: 11462134}
     id: -8114
@@ -847,18 +855,21 @@ MonoBehaviour:
         target: {fileID: 11462134}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: Play Idle Animation
         stateTable: {fileID: 11462134}
         id: -1001040
         target: {fileID: 11422884}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: Timer Prepare
         stateTable: {fileID: 11462134}
         id: -8114
         target: {fileID: 11402308}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
   tableOff:
   - name: '@Active'
     stateTable: {fileID: 11462134}
@@ -874,18 +885,21 @@ MonoBehaviour:
         target: {fileID: 11462134}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: Play Idle Animation
         stateTable: {fileID: 0}
         id: -1001040
         target: {fileID: 11422884}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: Timer Prepare
         stateTable: {fileID: 11462134}
         id: -8114
         target: {fileID: 11402308}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
   - name: Play Idle Animation
     stateTable: {fileID: 0}
     id: -1001040
@@ -900,18 +914,21 @@ MonoBehaviour:
         target: {fileID: 11462134}
         requireOn: 1
         requireOff: 0
+        requireUsed: 0
       - name: Play Idle Animation
         stateTable: {fileID: 0}
         id: -1001040
         target: {fileID: 11422884}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: Timer Prepare
         stateTable: {fileID: 11462134}
         id: -8114
         target: {fileID: 11402308}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
   - name: Timer Prepare
     stateTable: {fileID: 11462134}
     id: -8114
@@ -926,18 +943,21 @@ MonoBehaviour:
         target: {fileID: 11462134}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: Play Idle Animation
         stateTable: {fileID: 11462134}
         id: -1001040
         target: {fileID: 11422884}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: Timer Prepare
         stateTable: {fileID: 11462134}
         id: -8114
         target: {fileID: 11402308}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
   manual: 0
   advanced: 0
   external:
@@ -945,32 +965,32 @@ MonoBehaviour:
       name: External
       path: IdleExtended/External
       fullPath: IdleExtended/Main/IdleExtended/External
-      id: -91216/b102313d-5ea0-435f-85f9-03320928f4b7
+      relativePath: External
+      id: -24110/b102313d-5ea0-435f-85f9-03320928f4b7
       localID: b102313d-5ea0-435f-85f9-03320928f4b7
       parent: {fileID: 11462134}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 192652}
-          parent: {fileID: 11462134}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /IdleExtended/Main/IdleExtended/IdleExtended/External/Target
+          path: 
         usage: 0
-        path: /IdleExtended/Main/Old Attribute Bool Data D
+        path: IdleExtended/Main/IdleExtended/External/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: True
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 1
   scripts:
   - {fileID: 11462134}
   - {fileID: 11422884}
@@ -994,32 +1014,32 @@ MonoBehaviour:
       name: Timer
       path: Timer
       fullPath: IdleExtended/@Settings/Timer
-      id: -91204/bd1f87cf-0ee9-417e-bbc1-427b77ae28cb
+      relativePath: 
+      id: -24112/bd1f87cf-0ee9-417e-bbc1-427b77ae28cb
       localID: bd1f87cf-0ee9-417e-bbc1-427b77ae28cb
       parent: {fileID: 11472416}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 121924}
-          parent: {fileID: 11472416}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /IdleExtended/@Settings/Timer/Timer/Target
+          path: 
         usage: 0
-        path: /IdleExtended/@Settings/Attribute Float Data
+        path: IdleExtended/@Settings/Timer/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
-        rawValue: 5
+        rawValue: 0
         rawType: Zios.Attributes.AttributeFloatData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   remember: 0
 --- !u!1001 &100100000
 Prefab:

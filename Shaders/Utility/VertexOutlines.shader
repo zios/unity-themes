@@ -32,7 +32,7 @@ Shader "Hidden/Zios/(Components)/Utility/Vertex Outlines"{
 				UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
 				float3 view = ObjSpaceViewDir(input.vertex);
 				float3 outline = input.vertex + input.normal * outlineLength;
-				output.pos = mul(UNITY_MATRIX_MVP,float4(outline,1));
+				output.pos = UnityObjectToClipPos(float4(outline,1));
 				output.UV.xy = float2(input.texcoord.x,input.texcoord.y);
 				return output;
 			}
@@ -116,7 +116,7 @@ Shader "Hidden/Zios/(Components)/Utility/Vertex Outlines"{
 				UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
 				float3 view = ObjSpaceViewDir(input.vertex);
 				float3 outline = input.vertex + input.normal * outlineLength;
-				output.pos = mul(UNITY_MATRIX_MVP,float4(outline,1));
+				output.pos = UnityObjectToClipPos(float4(outline,1));
 				output.UV.xy = float2(input.texcoord.x,input.texcoord.y);
 				return output;
 			}

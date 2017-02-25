@@ -10,6 +10,7 @@ Shader "Zios/(Components)/Color/Simple Alpha"{
 			#pragma vertex vertexPass
 			#pragma fragment pixelPass
 			#pragma fragmentoption ARB_precision_hint_fastest
+			#include "UnityCG.cginc"
 			fixed alpha;
 			struct vertexInput{
 				float4 vertex        : POSITION;
@@ -33,7 +34,7 @@ Shader "Zios/(Components)/Color/Simple Alpha"{
 			vertexOutput vertexPass(vertexInput input){
 				vertexOutput output;
 				UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
-				output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
+				output.pos = UnityObjectToClipPos(input.vertex);
 				return output;
 			}
 			pixelOutput pixelPass(vertexOutput input){

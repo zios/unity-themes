@@ -36,7 +36,7 @@ Shader "Zios/(Components)/Mappings/Shadow Lightmap"{
 				vertexOutput output;
 				UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
 				float2 lightmapUV = input.texcoord1.xy * unity_LightmapST.xy + unity_LightmapST.zw;
-				output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
+				output.pos = UnityObjectToClipPos(input.vertex);
 				return output;
 			}
 			pixelOutput pixelPass(vertexOutput input){

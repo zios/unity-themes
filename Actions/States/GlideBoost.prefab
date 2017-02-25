@@ -5,14 +5,14 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 481402}
-  - 114: {fileID: 11438858}
-  - 114: {fileID: 11484224}
-  - 114: {fileID: 11425936}
-  - 114: {fileID: 11478212}
-  - 114: {fileID: 11496536}
+  - component: {fileID: 481402}
+  - component: {fileID: 11438858}
+  - component: {fileID: 11484224}
+  - component: {fileID: 11425936}
+  - component: {fileID: 11478212}
+  - component: {fileID: 11496536}
   m_Layer: 0
   m_Name: '@Settings'
   m_TagString: Untagged
@@ -25,9 +25,9 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 444022}
+  - component: {fileID: 444022}
   m_Layer: 10
   m_Name: GlideBoost
   m_TagString: Untagged
@@ -40,14 +40,14 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 470708}
-  - 114: {fileID: 11427760}
-  - 114: {fileID: 11419906}
-  - 114: {fileID: 11408582}
-  - 114: {fileID: 11464654}
-  - 114: {fileID: 11497042}
+  - component: {fileID: 470708}
+  - component: {fileID: 11427760}
+  - component: {fileID: 11419906}
+  - component: {fileID: 11408582}
+  - component: {fileID: 11464654}
+  - component: {fileID: 11497042}
   m_Layer: 0
   m_Name: Main
   m_TagString: Untagged
@@ -69,6 +69,7 @@ Transform:
   - {fileID: 470708}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &470708
 Transform:
   m_ObjectHideFlags: 1
@@ -81,6 +82,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 444022}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &481402
 Transform:
   m_ObjectHideFlags: 1
@@ -93,6 +95,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 444022}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &11408582
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -116,44 +119,46 @@ MonoBehaviour:
       name: Usable
       path: Dash Warmup/Usable
       fullPath: GlideBoost/Main/Dash Warmup/Usable
-      id: -91050/d97439f2-83c4-4591-af5a-8d38c7f64754
+      relativePath: Usable
+      id: -24042/d97439f2-83c4-4591-af5a-8d38c7f64754
       localID: d97439f2-83c4-4591-af5a-8d38c7f64754
       parent: {fileID: 11408582}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 112758}
-          parent: {fileID: 11408582}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /GlideBoost (1)/Main/Dash Warmup/Dash Warmup/Usable/Target
+          path: 
         usage: 0
-        path: /GlideBoost/Main/Attribute Bool Data C
+        path: GlideBoost/Main/Dash Warmup/Usable/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   active:
     info:
       name: Active
       path: Dash Warmup/Active
       fullPath: GlideBoost/Main/Dash Warmup/Active
-      id: -91050/92c04e5f-e276-4678-b4ea-9de4562ad2dd
+      relativePath: Active
+      id: -24042/92c04e5f-e276-4678-b4ea-9de4562ad2dd
       localID: 92c04e5f-e276-4678-b4ea-9de4562ad2dd
       parent: {fileID: 11408582}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
+          disabled: 1
           search: 
           directObject: {fileID: 0}
           searchObject: {fileID: 0}
@@ -166,138 +171,136 @@ MonoBehaviour:
         referencePath: 
         operation: 0
         special: 0
-        rawValue: 
+        rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   used:
     info:
       name: Used
       path: Dash Warmup/Used
       fullPath: GlideBoost/Main/Dash Warmup/Used
-      id: -91050/68233ee9-cce3-413d-8d25-7c8b05420aa9
+      relativePath: Used
+      id: -24042/68233ee9-cce3-413d-8d25-7c8b05420aa9
       localID: 68233ee9-cce3-413d-8d25-7c8b05420aa9
       parent: {fileID: 11408582}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 112758}
-          parent: {fileID: 11408582}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /GlideBoost (1)/Main/Dash Warmup/Dash Warmup/Used/Target
+          path: 
         usage: 0
-        path: /GlideBoost/Main/Attribute Bool Data D
+        path: GlideBoost/Main/Dash Warmup/Used/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   type: 0
   seconds:
     info:
       name: Seconds
       path: Dash Warmup/Seconds
       fullPath: GlideBoost/Main/Dash Warmup/Seconds
-      id: -91050/32208392-87fa-4ffd-8236-36103c2ed5e5
+      relativePath: Seconds
+      id: -24042/32208392-87fa-4ffd-8236-36103c2ed5e5
       localID: 32208392-87fa-4ffd-8236-36103c2ed5e5
       parent: {fileID: 11408582}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 112758}
-          parent: {fileID: 11408582}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /GlideBoost (1)/Main/Dash Warmup/Dash Warmup/Seconds/Target
-        usage: 1
-        path: /GlideBoost/Main/Attribute Float Data B
-        referenceID: -44236/a10b885f-7dab-4b8d-a122-68daf6d02795
-        referencePath: Warmup Timer
+          path: 
+        usage: 0
+        path: GlideBoost/Main/Dash Warmup/Seconds/0
+        referenceID: 
+        referencePath: 
         operation: 0
         special: 0
-        rawValue: 4
+        rawValue: 0
         rawType: Zios.Attributes.AttributeFloatData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   isStarted:
     info:
       name: Is Started
       path: Dash Warmup/Is Started
       fullPath: GlideBoost/Main/Dash Warmup/Is Started
-      id: -91050/ae1e560f-12b7-413f-a5cc-10cc4dc6016c
+      relativePath: Is Started
+      id: -24042/ae1e560f-12b7-413f-a5cc-10cc4dc6016c
       localID: ae1e560f-12b7-413f-a5cc-10cc4dc6016c
       parent: {fileID: 11408582}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 112758}
-          parent: {fileID: 11408582}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /GlideBoost (1)/Main/Dash Warmup/Dash Warmup/Is Started/Target
+          path: 
         usage: 0
-        path: /GlideBoost/Main/Attribute Bool Data E
+        path: GlideBoost/Main/Dash Warmup/Is Started/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   isComplete:
     info:
       name: Is Complete
       path: Dash Warmup/Is Complete
       fullPath: GlideBoost/Main/Dash Warmup/Is Complete
-      id: -91050/4710ca47-327b-4d15-83bd-5db4fe7881ec
+      relativePath: Is Complete
+      id: -24042/4710ca47-327b-4d15-83bd-5db4fe7881ec
       localID: 4710ca47-327b-4d15-83bd-5db4fe7881ec
       parent: {fileID: 11408582}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 112758}
-          parent: {fileID: 11408582}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /GlideBoost (1)/Main/Dash Warmup/Dash Warmup/Is Complete/Target
+          path: 
         usage: 0
-        path: /GlideBoost/Main/Attribute Bool Data F
+        path: GlideBoost/Main/Dash Warmup/Is Complete/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
 --- !u!114 &11419906
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -321,44 +324,46 @@ MonoBehaviour:
       name: Usable
       path: Dash Movement/Usable
       fullPath: GlideBoost/Main/Dash Movement/Usable
-      id: -91048/089d458f-ea9c-4444-962e-c0334c8adf74
+      relativePath: Usable
+      id: -24044/089d458f-ea9c-4444-962e-c0334c8adf74
       localID: 089d458f-ea9c-4444-962e-c0334c8adf74
       parent: {fileID: 11419906}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 112758}
-          parent: {fileID: 11419906}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /GlideBoost (1)/Main/Dash Movement/Dash Movement/Usable/Target
+          path: 
         usage: 0
-        path: /GlideBoost/Main/Attribute Bool Data H
+        path: GlideBoost/Main/Dash Movement/Usable/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   active:
     info:
       name: Active
       path: Dash Movement/Active
       fullPath: GlideBoost/Main/Dash Movement/Active
-      id: -91048/ece3ff79-1cc3-41d5-9673-0b383a7c86c6
+      relativePath: Active
+      id: -24044/ece3ff79-1cc3-41d5-9673-0b383a7c86c6
       localID: ece3ff79-1cc3-41d5-9673-0b383a7c86c6
       parent: {fileID: 11419906}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
+          disabled: 1
           search: 
           directObject: {fileID: 0}
           searchObject: {fileID: 0}
@@ -371,121 +376,104 @@ MonoBehaviour:
         referencePath: 
         operation: 0
         special: 0
-        rawValue: 
+        rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   used:
     info:
       name: Used
       path: Dash Movement/Used
       fullPath: GlideBoost/Main/Dash Movement/Used
-      id: -91048/b07ada2d-de5d-4c49-9c49-7886f957c472
+      relativePath: Used
+      id: -24044/b07ada2d-de5d-4c49-9c49-7886f957c472
       localID: b07ada2d-de5d-4c49-9c49-7886f957c472
       parent: {fileID: 11419906}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 112758}
-          parent: {fileID: 11419906}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /GlideBoost (1)/Main/Dash Movement/Dash Movement/Used/Target
+          path: 
         usage: 0
-        path: /GlideBoost/Main/Attribute Bool Data I
+        path: GlideBoost/Main/Dash Movement/Used/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   target:
     info:
       name: Target
       path: Dash Movement/Target
       fullPath: GlideBoost/Main/Dash Movement/Target
-      id: -91048/cb94e6dc-9fc6-4a3a-b68a-5a0fe3cf60ac
+      relativePath: Target
+      id: -24044/cb94e6dc-9fc6-4a3a-b68a-5a0fe3cf60ac
       localID: cb94e6dc-9fc6-4a3a-b68a-5a0fe3cf60ac
       parent: {fileID: 11419906}
       mode: 1
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../../../Movement/@Settings
+          disabled: 0
+          search: '[Self]'
           directObject: {fileID: 0}
-          searchObject: {fileID: 0}
+          searchObject: {fileID: 152380}
           parent: {fileID: 11419906}
           mode: 0
-          path: /GlideBoost (1)/Main/Dash Movement/Dash Movement/Target/Target
+          path: /GlideBoost/Main/Dash Movement/0/Target
         usage: 1
-        path: /GlideBoost/Main/Attribute Float Data C
-        referenceID: -71396/dca5905a-c495-4ff2-9c6d-31ab61c97f06
-        referencePath: Speed
+        path: GlideBoost/Main/Dash Movement/Target/0
+        referenceID: 
+        referencePath: 
         operation: 0
         special: 0
         rawValue: 0
         rawType: Zios.Attributes.AttributeFloatData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   value:
     info:
       name: Value
       path: Dash Movement/Value
       fullPath: GlideBoost/Main/Dash Movement/Value
-      id: -91048/be952750-aabe-4267-8537-b2f6459dd214
+      relativePath: Value
+      id: -24044/be952750-aabe-4267-8537-b2f6459dd214
       localID: be952750-aabe-4267-8537-b2f6459dd214
       parent: {fileID: 11419906}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 112758}
-          parent: {fileID: 11419906}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /GlideBoost (1)/Main/Dash Movement/Dash Movement/Value/Target
-        usage: 1
-        path: /GlideBoost/Main/Attribute Float Data D
-        referenceID: -44152/1e76dc46-03be-4a8c-9216-edeb6024d3f2
-        referencePath: Speed
-        operation: 0
-        special: 0
-        rawValue: 10
-        rawType: Zios.Attributes.AttributeFloatData
-      - target:
-          search: ../@Settings
-          directObject: {fileID: 0}
-          searchObject: {fileID: 112758}
-          parent: {fileID: 11419906}
-          mode: 0
-          path: /GlideBoost (1)/Main/Dash Movement/Dash Movement/Value/Target
+          path: 
         usage: 0
-        path: /GlideBoost/Main/Attribute Float Data E
+        path: GlideBoost/Main/Dash Movement/Value/0
         referenceID: 
         referencePath: 
-        operation: 2
+        operation: 0
         special: 0
-        rawValue: 2
+        rawValue: 0
         rawType: Zios.Attributes.AttributeFloatData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
 --- !u!114 &11425936
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -505,32 +493,32 @@ MonoBehaviour:
       name: Speed
       path: Speed
       fullPath: GlideBoost/@Settings/Speed
-      id: -91118/1e76dc46-03be-4a8c-9216-edeb6024d3f2
+      relativePath: 
+      id: -24046/1e76dc46-03be-4a8c-9216-edeb6024d3f2
       localID: 1e76dc46-03be-4a8c-9216-edeb6024d3f2
       parent: {fileID: 11425936}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 112758}
-          parent: {fileID: 11425936}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /GlideBoost (1)/@Settings/Speed/Speed/Target
+          path: 
         usage: 0
-        path: /GlideBoost/@Settings/Attribute Float Data B
+        path: GlideBoost/@Settings/Speed/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
-        rawValue: 10
+        rawValue: 0
         rawType: Zios.Attributes.AttributeFloatData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   remember: 0
 --- !u!114 &11427760
 MonoBehaviour:
@@ -555,44 +543,46 @@ MonoBehaviour:
       name: Usable
       path: GlideBoost/Usable
       fullPath: GlideBoost/Main/GlideBoost/Usable
-      id: -91046/d596ca65-a352-4216-b67a-20b4bc7f0ddf
+      relativePath: Usable
+      id: -24048/d596ca65-a352-4216-b67a-20b4bc7f0ddf
       localID: d596ca65-a352-4216-b67a-20b4bc7f0ddf
       parent: {fileID: 11427760}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 152380}
-          parent: {fileID: 11427760}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /GlideBoost (1)/Main/GlideBoost (1)/GlideBoost (1)/Usable/Target
+          path: 
         usage: 0
-        path: /GlideBoost/Main/Old Attribute Bool Data
+        path: GlideBoost/Main/GlideBoost/Usable/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: True
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   active:
     info:
       name: Active
       path: GlideBoost/Active
       fullPath: GlideBoost/Main/GlideBoost/Active
-      id: -91046/82fb898f-a246-411a-afd9-89d5b3e5dbf8
+      relativePath: Active
+      id: -24048/82fb898f-a246-411a-afd9-89d5b3e5dbf8
       localID: 82fb898f-a246-411a-afd9-89d5b3e5dbf8
       parent: {fileID: 11427760}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
+          disabled: 1
           search: 
           directObject: {fileID: 0}
           searchObject: {fileID: 0}
@@ -605,159 +595,43 @@ MonoBehaviour:
         referencePath: 
         operation: 0
         special: 0
-        rawValue: 
+        rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   used:
     info:
       name: Used
       path: GlideBoost/Used
       fullPath: GlideBoost/Main/GlideBoost/Used
-      id: -91046/144aa972-62fe-4c8b-872a-3d2270128e73
+      relativePath: Used
+      id: -24048/144aa972-62fe-4c8b-872a-3d2270128e73
       localID: 144aa972-62fe-4c8b-872a-3d2270128e73
       parent: {fileID: 11427760}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 152380}
-          parent: {fileID: 11427760}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /GlideBoost (1)/Main/GlideBoost (1)/GlideBoost (1)/Used/Target
+          path: 
         usage: 0
-        path: /GlideBoost/Main/Old Attribute Bool Data C
+        path: GlideBoost/Main/GlideBoost/Used/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   table:
-  - name: Dash Movement
-    stateTable: {fileID: 0}
-    id: -626844
-    target: {fileID: 11419906}
-    empty: 0
-    section: 
-    requirements:
-    - data:
-      - name: '@Active'
-        stateTable: {fileID: 11427760}
-        id: -44160
-        target: {fileID: 11427760}
-        requireOn: 0
-        requireOff: 0
-      - name: Dash Movement
-        stateTable: {fileID: 0}
-        id: -626844
-        target: {fileID: 11419906}
-        requireOn: 0
-        requireOff: 0
-      - name: Dash Warmup
-        stateTable: {fileID: 0}
-        id: -620850
-        target: {fileID: 11408582}
-        requireOn: 1
-        requireOff: 0
-      - name: Glide Animation
-        stateTable: {fileID: 0}
-        id: -1045046
-        target: {fileID: 11464654}
-        requireOn: 0
-        requireOff: 0
-      - name: Is Full Intensity
-        stateTable: {fileID: 0}
-        id: -847582
-        target: {fileID: 11497042}
-        requireOn: 0
-        requireOff: 0
-  - name: Dash Warmup
-    stateTable: {fileID: 0}
-    id: -620850
-    target: {fileID: 11408582}
-    empty: 0
-    section: 
-    requirements:
-    - data:
-      - name: '@Active'
-        stateTable: {fileID: 11427760}
-        id: -44160
-        target: {fileID: 11427760}
-        requireOn: 0
-        requireOff: 0
-      - name: Dash Movement
-        stateTable: {fileID: 0}
-        id: -626844
-        target: {fileID: 11419906}
-        requireOn: 0
-        requireOff: 0
-      - name: Dash Warmup
-        stateTable: {fileID: 0}
-        id: -620850
-        target: {fileID: 11408582}
-        requireOn: 0
-        requireOff: 0
-      - name: Glide Animation
-        stateTable: {fileID: 0}
-        id: -1045046
-        target: {fileID: 11464654}
-        requireOn: 0
-        requireOff: 0
-      - name: Is Full Intensity
-        stateTable: {fileID: 0}
-        id: -847582
-        target: {fileID: 11497042}
-        requireOn: 1
-        requireOff: 0
-  - name: Glide Animation
-    stateTable: {fileID: 0}
-    id: -1045046
-    target: {fileID: 11464654}
-    empty: 0
-    section: 
-    requirements:
-    - data:
-      - name: '@Active'
-        stateTable: {fileID: 11427760}
-        id: -44160
-        target: {fileID: 11427760}
-        requireOn: 1
-        requireOff: 0
-      - name: Dash Movement
-        stateTable: {fileID: 0}
-        id: -626844
-        target: {fileID: 11419906}
-        requireOn: 0
-        requireOff: 0
-      - name: Dash Warmup
-        stateTable: {fileID: 0}
-        id: -620850
-        target: {fileID: 11408582}
-        requireOn: 0
-        requireOff: 0
-      - name: Glide Animation
-        stateTable: {fileID: 0}
-        id: -1045046
-        target: {fileID: 11464654}
-        requireOn: 0
-        requireOff: 0
-      - name: Is Full Intensity
-        stateTable: {fileID: 0}
-        id: -847582
-        target: {fileID: 11497042}
-        requireOn: 0
-        requireOff: 0
   - name: '@Active'
     stateTable: {fileID: 11427760}
     id: -44160
@@ -772,30 +646,164 @@ MonoBehaviour:
         target: {fileID: 11427760}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: Dash Movement
         stateTable: {fileID: 11427760}
         id: -626844
         target: {fileID: 11419906}
         requireOn: 1
         requireOff: 0
+        requireUsed: 0
       - name: Dash Warmup
         stateTable: {fileID: 11427760}
         id: -620850
         target: {fileID: 11408582}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: Glide Animation
         stateTable: {fileID: 11427760}
         id: -1045046
         target: {fileID: 11464654}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: Is Full Intensity
         stateTable: {fileID: 11427760}
         id: -847582
         target: {fileID: 11497042}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
+  - name: Dash Movement
+    stateTable: {fileID: 0}
+    id: -626844
+    target: {fileID: 11419906}
+    empty: 0
+    section: 
+    requirements:
+    - data:
+      - name: '@Active'
+        stateTable: {fileID: 11427760}
+        id: -44160
+        target: {fileID: 11427760}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Dash Movement
+        stateTable: {fileID: 0}
+        id: -626844
+        target: {fileID: 11419906}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Dash Warmup
+        stateTable: {fileID: 0}
+        id: -620850
+        target: {fileID: 11408582}
+        requireOn: 1
+        requireOff: 0
+        requireUsed: 0
+      - name: Glide Animation
+        stateTable: {fileID: 0}
+        id: -1045046
+        target: {fileID: 11464654}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Is Full Intensity
+        stateTable: {fileID: 0}
+        id: -847582
+        target: {fileID: 11497042}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+  - name: Dash Warmup
+    stateTable: {fileID: 0}
+    id: -620850
+    target: {fileID: 11408582}
+    empty: 0
+    section: 
+    requirements:
+    - data:
+      - name: '@Active'
+        stateTable: {fileID: 11427760}
+        id: -44160
+        target: {fileID: 11427760}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Dash Movement
+        stateTable: {fileID: 0}
+        id: -626844
+        target: {fileID: 11419906}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Dash Warmup
+        stateTable: {fileID: 0}
+        id: -620850
+        target: {fileID: 11408582}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Glide Animation
+        stateTable: {fileID: 0}
+        id: -1045046
+        target: {fileID: 11464654}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Is Full Intensity
+        stateTable: {fileID: 0}
+        id: -847582
+        target: {fileID: 11497042}
+        requireOn: 1
+        requireOff: 0
+        requireUsed: 0
+  - name: Glide Animation
+    stateTable: {fileID: 0}
+    id: -1045046
+    target: {fileID: 11464654}
+    empty: 0
+    section: 
+    requirements:
+    - data:
+      - name: '@Active'
+        stateTable: {fileID: 11427760}
+        id: -44160
+        target: {fileID: 11427760}
+        requireOn: 1
+        requireOff: 0
+        requireUsed: 0
+      - name: Dash Movement
+        stateTable: {fileID: 0}
+        id: -626844
+        target: {fileID: 11419906}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Dash Warmup
+        stateTable: {fileID: 0}
+        id: -620850
+        target: {fileID: 11408582}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Glide Animation
+        stateTable: {fileID: 0}
+        id: -1045046
+        target: {fileID: 11464654}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Is Full Intensity
+        stateTable: {fileID: 0}
+        id: -847582
+        target: {fileID: 11497042}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
   - name: Is Full Intensity
     stateTable: {fileID: 0}
     id: -847582
@@ -810,145 +818,36 @@ MonoBehaviour:
         target: {fileID: 11427760}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: Dash Movement
         stateTable: {fileID: 0}
         id: -626844
         target: {fileID: 11419906}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: Dash Warmup
         stateTable: {fileID: 0}
         id: -620850
         target: {fileID: 11408582}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: Glide Animation
         stateTable: {fileID: 0}
         id: -1045046
         target: {fileID: 11464654}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: Is Full Intensity
         stateTable: {fileID: 0}
         id: -847582
         target: {fileID: 11497042}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
   tableOff:
-  - name: Dash Movement
-    stateTable: {fileID: 0}
-    id: -626844
-    target: {fileID: 11419906}
-    empty: 0
-    section: 
-    requirements:
-    - data:
-      - name: '@Active'
-        stateTable: {fileID: 11427760}
-        id: -44160
-        target: {fileID: 11427760}
-        requireOn: 0
-        requireOff: 0
-      - name: Dash Movement
-        stateTable: {fileID: 0}
-        id: -626844
-        target: {fileID: 11419906}
-        requireOn: 0
-        requireOff: 0
-      - name: Dash Warmup
-        stateTable: {fileID: 0}
-        id: -620850
-        target: {fileID: 11408582}
-        requireOn: 0
-        requireOff: 0
-      - name: Glide Animation
-        stateTable: {fileID: 0}
-        id: -1045046
-        target: {fileID: 11464654}
-        requireOn: 0
-        requireOff: 0
-      - name: Is Full Intensity
-        stateTable: {fileID: 0}
-        id: -847582
-        target: {fileID: 11497042}
-        requireOn: 0
-        requireOff: 0
-  - name: Dash Warmup
-    stateTable: {fileID: 0}
-    id: -620850
-    target: {fileID: 11408582}
-    empty: 0
-    section: 
-    requirements:
-    - data:
-      - name: '@Active'
-        stateTable: {fileID: 11427760}
-        id: -44160
-        target: {fileID: 11427760}
-        requireOn: 0
-        requireOff: 0
-      - name: Dash Movement
-        stateTable: {fileID: 0}
-        id: -626844
-        target: {fileID: 11419906}
-        requireOn: 0
-        requireOff: 0
-      - name: Dash Warmup
-        stateTable: {fileID: 0}
-        id: -620850
-        target: {fileID: 11408582}
-        requireOn: 0
-        requireOff: 0
-      - name: Glide Animation
-        stateTable: {fileID: 0}
-        id: -1045046
-        target: {fileID: 11464654}
-        requireOn: 0
-        requireOff: 0
-      - name: Is Full Intensity
-        stateTable: {fileID: 0}
-        id: -847582
-        target: {fileID: 11497042}
-        requireOn: 0
-        requireOff: 0
-  - name: Glide Animation
-    stateTable: {fileID: 0}
-    id: -1045046
-    target: {fileID: 11464654}
-    empty: 0
-    section: 
-    requirements:
-    - data:
-      - name: '@Active'
-        stateTable: {fileID: 11427760}
-        id: -44160
-        target: {fileID: 11427760}
-        requireOn: 0
-        requireOff: 0
-      - name: Dash Movement
-        stateTable: {fileID: 0}
-        id: -626844
-        target: {fileID: 11419906}
-        requireOn: 0
-        requireOff: 0
-      - name: Dash Warmup
-        stateTable: {fileID: 0}
-        id: -620850
-        target: {fileID: 11408582}
-        requireOn: 0
-        requireOff: 0
-      - name: Glide Animation
-        stateTable: {fileID: 0}
-        id: -1045046
-        target: {fileID: 11464654}
-        requireOn: 0
-        requireOff: 0
-      - name: Is Full Intensity
-        stateTable: {fileID: 0}
-        id: -847582
-        target: {fileID: 11497042}
-        requireOn: 0
-        requireOff: 0
   - name: '@Active'
     stateTable: {fileID: 11427760}
     id: -44160
@@ -963,30 +862,164 @@ MonoBehaviour:
         target: {fileID: 11427760}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: Dash Movement
         stateTable: {fileID: 11427760}
         id: -626844
         target: {fileID: 11419906}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: Dash Warmup
         stateTable: {fileID: 11427760}
         id: -620850
         target: {fileID: 11408582}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: Glide Animation
         stateTable: {fileID: 11427760}
         id: -1045046
         target: {fileID: 11464654}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: Is Full Intensity
         stateTable: {fileID: 11427760}
         id: -847582
         target: {fileID: 11497042}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
+  - name: Dash Movement
+    stateTable: {fileID: 0}
+    id: -626844
+    target: {fileID: 11419906}
+    empty: 0
+    section: 
+    requirements:
+    - data:
+      - name: '@Active'
+        stateTable: {fileID: 11427760}
+        id: -44160
+        target: {fileID: 11427760}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Dash Movement
+        stateTable: {fileID: 0}
+        id: -626844
+        target: {fileID: 11419906}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Dash Warmup
+        stateTable: {fileID: 0}
+        id: -620850
+        target: {fileID: 11408582}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Glide Animation
+        stateTable: {fileID: 0}
+        id: -1045046
+        target: {fileID: 11464654}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Is Full Intensity
+        stateTable: {fileID: 0}
+        id: -847582
+        target: {fileID: 11497042}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+  - name: Dash Warmup
+    stateTable: {fileID: 0}
+    id: -620850
+    target: {fileID: 11408582}
+    empty: 0
+    section: 
+    requirements:
+    - data:
+      - name: '@Active'
+        stateTable: {fileID: 11427760}
+        id: -44160
+        target: {fileID: 11427760}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Dash Movement
+        stateTable: {fileID: 0}
+        id: -626844
+        target: {fileID: 11419906}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Dash Warmup
+        stateTable: {fileID: 0}
+        id: -620850
+        target: {fileID: 11408582}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Glide Animation
+        stateTable: {fileID: 0}
+        id: -1045046
+        target: {fileID: 11464654}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Is Full Intensity
+        stateTable: {fileID: 0}
+        id: -847582
+        target: {fileID: 11497042}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+  - name: Glide Animation
+    stateTable: {fileID: 0}
+    id: -1045046
+    target: {fileID: 11464654}
+    empty: 0
+    section: 
+    requirements:
+    - data:
+      - name: '@Active'
+        stateTable: {fileID: 11427760}
+        id: -44160
+        target: {fileID: 11427760}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Dash Movement
+        stateTable: {fileID: 0}
+        id: -626844
+        target: {fileID: 11419906}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Dash Warmup
+        stateTable: {fileID: 0}
+        id: -620850
+        target: {fileID: 11408582}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Glide Animation
+        stateTable: {fileID: 0}
+        id: -1045046
+        target: {fileID: 11464654}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Is Full Intensity
+        stateTable: {fileID: 0}
+        id: -847582
+        target: {fileID: 11497042}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
   - name: Is Full Intensity
     stateTable: {fileID: 0}
     id: -847582
@@ -1001,30 +1034,35 @@ MonoBehaviour:
         target: {fileID: 11427760}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: Dash Movement
         stateTable: {fileID: 0}
         id: -626844
         target: {fileID: 11419906}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: Dash Warmup
         stateTable: {fileID: 0}
         id: -620850
         target: {fileID: 11408582}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: Glide Animation
         stateTable: {fileID: 0}
         id: -1045046
         target: {fileID: 11464654}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: Is Full Intensity
         stateTable: {fileID: 0}
         id: -847582
         target: {fileID: 11497042}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
   manual: 0
   advanced: 0
   external:
@@ -1032,32 +1070,32 @@ MonoBehaviour:
       name: External
       path: GlideBoost/External
       fullPath: GlideBoost/Main/GlideBoost/External
-      id: -91046/4f0a2a2c-7f10-4a26-b82c-4887efb1719b
+      relativePath: External
+      id: -24048/4f0a2a2c-7f10-4a26-b82c-4887efb1719b
       localID: 4f0a2a2c-7f10-4a26-b82c-4887efb1719b
       parent: {fileID: 11427760}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 152380}
-          parent: {fileID: 11427760}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /GlideBoost (1)/Main/GlideBoost (1)/GlideBoost (1)/External/Target
+          path: 
         usage: 0
-        path: /GlideBoost/Main/Old Attribute Bool Data D
+        path: GlideBoost/Main/GlideBoost/External/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: True
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 1
   scripts:
   - {fileID: 11427760}
   - {fileID: 11419906}
@@ -1083,32 +1121,32 @@ MonoBehaviour:
       name: Animation
       path: Animation
       fullPath: GlideBoost/@Settings/Animation
-      id: -91114/7a624c5a-58f3-4d19-83c1-46d2d55a5a8b
+      relativePath: 
+      id: -24050/7a624c5a-58f3-4d19-83c1-46d2d55a5a8b
       localID: 7a624c5a-58f3-4d19-83c1-46d2d55a5a8b
       parent: {fileID: 11438858}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 112758}
-          parent: {fileID: 11438858}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /GlideBoost (1)/@Settings/Animation/Animation/Target
+          path: 
         usage: 0
-        path: /GlideBoost/@Settings/Attribute String Data
+        path: GlideBoost/@Settings/Animation/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
-        rawValue: GlideForward
+        rawValue: 
         rawType: Zios.Attributes.AttributeStringData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 
   remember: 0
 --- !u!114 &11464654
 MonoBehaviour:
@@ -1133,44 +1171,46 @@ MonoBehaviour:
       name: Usable
       path: Glide Animation/Usable
       fullPath: GlideBoost/Main/Glide Animation/Usable
-      id: -91052/55191305-fd4c-4a38-96b1-004a3e26b5eb
+      relativePath: Usable
+      id: -24052/55191305-fd4c-4a38-96b1-004a3e26b5eb
       localID: 55191305-fd4c-4a38-96b1-004a3e26b5eb
       parent: {fileID: 11464654}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 112758}
-          parent: {fileID: 11464654}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /GlideBoost (1)/Main/Glide Animation/Glide Animation/Usable/Target
+          path: 
         usage: 0
-        path: /GlideBoost/Main/Attribute Bool Data N
+        path: GlideBoost/Main/Glide Animation/Usable/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   active:
     info:
       name: Active
       path: Glide Animation/Active
       fullPath: GlideBoost/Main/Glide Animation/Active
-      id: -91052/58a97dc0-60a2-4746-be03-dcaf76824a15
+      relativePath: Active
+      id: -24052/58a97dc0-60a2-4746-be03-dcaf76824a15
       localID: 58a97dc0-60a2-4746-be03-dcaf76824a15
       parent: {fileID: 11464654}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
+          disabled: 1
           search: 
           directObject: {fileID: 0}
           searchObject: {fileID: 0}
@@ -1183,168 +1223,166 @@ MonoBehaviour:
         referencePath: 
         operation: 0
         special: 0
-        rawValue: 
+        rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   used:
     info:
       name: Used
       path: Glide Animation/Used
       fullPath: GlideBoost/Main/Glide Animation/Used
-      id: -91052/75b6d468-bf74-4ecd-963b-0b029f99a92c
+      relativePath: Used
+      id: -24052/75b6d468-bf74-4ecd-963b-0b029f99a92c
       localID: 75b6d468-bf74-4ecd-963b-0b029f99a92c
       parent: {fileID: 11464654}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 112758}
-          parent: {fileID: 11464654}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /GlideBoost (1)/Main/Glide Animation/Glide Animation/Used/Target
+          path: 
         usage: 0
-        path: /GlideBoost/Main/Attribute Bool Data
+        path: GlideBoost/Main/Glide Animation/Used/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   animationName:
     info:
       name: Animation Name
       path: Glide Animation/Animation Name
       fullPath: GlideBoost/Main/Glide Animation/Animation Name
-      id: -91052/14aade3f-0de5-4d6a-af15-338aa62390c6
+      relativePath: Animation Name
+      id: -24052/14aade3f-0de5-4d6a-af15-338aa62390c6
       localID: 14aade3f-0de5-4d6a-af15-338aa62390c6
       parent: {fileID: 11464654}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 112758}
-          parent: {fileID: 11464654}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /GlideBoost (1)/Main/Glide Animation/Glide Animation/Animation Name/Target
-        usage: 1
-        path: /GlideBoost/Main/Attribute String Data
-        referenceID: -44178/7a624c5a-58f3-4d19-83c1-46d2d55a5a8b
-        referencePath: Animation
+          path: 
+        usage: 0
+        path: GlideBoost/Main/Glide Animation/Animation Name/0
+        referenceID: 
+        referencePath: 
         operation: 0
         special: 0
-        rawValue: GlideForward
+        rawValue: 
         rawType: Zios.Attributes.AttributeStringData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 
   speed:
     info:
       name: Speed
       path: Glide Animation/Speed
       fullPath: GlideBoost/Main/Glide Animation/Speed
-      id: -91052/f8225829-3123-44d9-9897-96ea3ac779a0
+      relativePath: Speed
+      id: -24052/f8225829-3123-44d9-9897-96ea3ac779a0
       localID: f8225829-3123-44d9-9897-96ea3ac779a0
       parent: {fileID: 11464654}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 112758}
-          parent: {fileID: 11464654}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /GlideBoost (1)/Main/Glide Animation/Glide Animation/Speed/Target
+          path: 
         usage: 0
-        path: /GlideBoost/Main/Attribute Float Data I
+        path: GlideBoost/Main/Glide Animation/Speed/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
-        rawValue: 1
+        rawValue: -1
         rawType: Zios.Attributes.AttributeFloatData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: -1
   weight:
     info:
       name: Weight
       path: Glide Animation/Weight
       fullPath: GlideBoost/Main/Glide Animation/Weight
-      id: -91052/1714878a-033f-4267-818e-5728e0e6905c
+      relativePath: Weight
+      id: -24052/1714878a-033f-4267-818e-5728e0e6905c
       localID: 1714878a-033f-4267-818e-5728e0e6905c
       parent: {fileID: 11464654}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 112758}
-          parent: {fileID: 11464654}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /GlideBoost (1)/Main/Glide Animation/Glide Animation/Weight/Target
+          path: 
         usage: 0
-        path: /GlideBoost/Main/Attribute Float Data
+        path: GlideBoost/Main/Glide Animation/Weight/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
-        rawValue: 1
+        rawValue: -1
         rawType: Zios.Attributes.AttributeFloatData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: -1
   target:
     info:
       name: Target
       path: Glide Animation/Target
       fullPath: GlideBoost/Main/Glide Animation/Target
-      id: -91052/37836090-c1d9-4461-b6cd-7c55069f486e
+      relativePath: Target
+      id: -24052/37836090-c1d9-4461-b6cd-7c55069f486e
       localID: 37836090-c1d9-4461-b6cd-7c55069f486e
       parent: {fileID: 11464654}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 0
+          search: '[Self]'
           directObject: {fileID: 0}
-          searchObject: {fileID: 112758}
+          searchObject: {fileID: 152380}
           parent: {fileID: 11464654}
           mode: 0
-          path: /GlideBoost (1)/Main/Glide Animation/Glide Animation/Target/Target
+          path: /GlideBoost/Main/Glide Animation/0/Target
         usage: 1
-        path: /GlideBoost/Main/Attribute Game Object Data
-        referenceID: -44210/22233192-17af-4fef-99b2-7321ebb7cadd
-        referencePath: Visuals
+        path: GlideBoost/Main/Glide Animation/Target/0
+        referenceID: 
+        referencePath: 
         operation: 0
         special: 0
         rawValue: 
         rawType: Zios.Attributes.AttributeGameObjectData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: {fileID: 0}
 --- !u!114 &11478212
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1364,32 +1402,32 @@ MonoBehaviour:
       name: Visuals
       path: Visuals
       fullPath: GlideBoost/@Settings/Visuals
-      id: -91120/22233192-17af-4fef-99b2-7321ebb7cadd
+      relativePath: 
+      id: -24054/22233192-17af-4fef-99b2-7321ebb7cadd
       localID: 22233192-17af-4fef-99b2-7321ebb7cadd
       parent: {fileID: 11478212}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../../../../Visuals
+          disabled: 0
+          search: '[Self]'
           directObject: {fileID: 0}
-          searchObject: {fileID: 0}
+          searchObject: {fileID: 112758}
           parent: {fileID: 11478212}
           mode: 0
-          path: /GlideBoost (1)/@Settings/Visuals/Visuals/Target
+          path: /GlideBoost/@Settings/Visuals/0/Target
         usage: 1
-        path: /GlideBoost/@Settings/Attribute Game Object Data
+        path: GlideBoost/@Settings/Visuals/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: 
         rawType: Zios.Attributes.AttributeGameObjectData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: {fileID: 0}
   remember: 0
 --- !u!114 &11484224
 MonoBehaviour:
@@ -1410,32 +1448,32 @@ MonoBehaviour:
       name: Source
       path: Source
       fullPath: GlideBoost/@Settings/Source
-      id: -91116/198f0aa0-63e4-409d-b967-5181ce5eedac
+      relativePath: 
+      id: -24056/198f0aa0-63e4-409d-b967-5181ce5eedac
       localID: 198f0aa0-63e4-409d-b967-5181ce5eedac
       parent: {fileID: 11484224}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../../../..
+          disabled: 0
+          search: '[Self]'
           directObject: {fileID: 0}
-          searchObject: {fileID: 0}
+          searchObject: {fileID: 112758}
           parent: {fileID: 11484224}
           mode: 0
-          path: /GlideBoost (1)/@Settings/Source/Source/Target
+          path: /GlideBoost/@Settings/Source/0/Target
         usage: 1
-        path: /GlideBoost/@Settings/Attribute Game Object Data B
+        path: GlideBoost/@Settings/Source/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: 
         rawType: Zios.Attributes.AttributeGameObjectData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: {fileID: 0}
   remember: 0
 --- !u!114 &11496536
 MonoBehaviour:
@@ -1456,32 +1494,32 @@ MonoBehaviour:
       name: Warmup Timer
       path: Warmup Timer
       fullPath: GlideBoost/@Settings/Warmup Timer
-      id: -91122/a10b885f-7dab-4b8d-a122-68daf6d02795
+      relativePath: 
+      id: -24058/a10b885f-7dab-4b8d-a122-68daf6d02795
       localID: a10b885f-7dab-4b8d-a122-68daf6d02795
       parent: {fileID: 11496536}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 112758}
-          parent: {fileID: 11496536}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /GlideBoost (1)/@Settings/Warmup Timer/Warmup Timer/Target
+          path: 
         usage: 0
-        path: /GlideBoost/@Settings/Attribute Float Data
+        path: GlideBoost/@Settings/Warmup Timer/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
-        rawValue: 4
+        rawValue: 0
         rawType: Zios.Attributes.AttributeFloatData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   remember: 0
 --- !u!114 &11497042
 MonoBehaviour:
@@ -1506,44 +1544,46 @@ MonoBehaviour:
       name: Usable
       path: Is Full Intensity/Usable
       fullPath: GlideBoost/Main/Is Full Intensity/Usable
-      id: -91054/9f0f4f88-46b7-4b77-b903-6b0c590d7bf4
+      relativePath: Usable
+      id: -24060/9f0f4f88-46b7-4b77-b903-6b0c590d7bf4
       localID: 9f0f4f88-46b7-4b77-b903-6b0c590d7bf4
       parent: {fileID: 11497042}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 112758}
-          parent: {fileID: 11497042}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /GlideBoost (1)/Main/Is Full Intensity/Is Full Intensity/Usable/Target
+          path: 
         usage: 0
-        path: /GlideBoost/Main/Attribute Bool Data K
+        path: GlideBoost/Main/Is Full Intensity/Usable/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   active:
     info:
       name: Active
       path: Is Full Intensity/Active
       fullPath: GlideBoost/Main/Is Full Intensity/Active
-      id: -91054/84675089-8ad2-4e3e-848c-99a2a80b0935
+      relativePath: Active
+      id: -24060/84675089-8ad2-4e3e-848c-99a2a80b0935
       localID: 84675089-8ad2-4e3e-848c-99a2a80b0935
       parent: {fileID: 11497042}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
+          disabled: 1
           search: 
           directObject: {fileID: 0}
           searchObject: {fileID: 0}
@@ -1556,105 +1596,73 @@ MonoBehaviour:
         referencePath: 
         operation: 0
         special: 0
-        rawValue: 
+        rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   used:
     info:
       name: Used
       path: Is Full Intensity/Used
       fullPath: GlideBoost/Main/Is Full Intensity/Used
-      id: -91054/8e08e6dc-cc40-499a-ac4f-2639db3248a3
+      relativePath: Used
+      id: -24060/8e08e6dc-cc40-499a-ac4f-2639db3248a3
       localID: 8e08e6dc-cc40-499a-ac4f-2639db3248a3
       parent: {fileID: 11497042}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 112758}
-          parent: {fileID: 11497042}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /GlideBoost (1)/Main/Is Full Intensity/Is Full Intensity/Used/Target
+          path: 
         usage: 0
-        path: /GlideBoost/Main/Attribute Bool Data L
+        path: GlideBoost/Main/Is Full Intensity/Used/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   value:
     info:
       name: Is Full Intensity
       path: Is Full Intensity
       fullPath: GlideBoost/Main/Is Full Intensity
-      id: -91054/74428eb8-804a-40b9-a9d4-a2f83ab698aa
+      relativePath: 
+      id: -24060/74428eb8-804a-40b9-a9d4-a2f83ab698aa
       localID: 74428eb8-804a-40b9-a9d4-a2f83ab698aa
       parent: {fileID: 11497042}
       mode: 2
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../../../Movement/@Formulas
+          disabled: 0
+          search: '[Self]'
           directObject: {fileID: 0}
-          searchObject: {fileID: 0}
+          searchObject: {fileID: 152380}
           parent: {fileID: 11497042}
           mode: 0
-          path: /GlideBoost (1)/Main/Is Full Intensity/Is Full Intensity/Target
+          path: /GlideBoost/Main/Is Full Intensity/0/Target
         usage: 1
-        path: /GlideBoost/Main/Attribute Float Data H
-        referenceID: -71978/b126fe56-f7e4-4235-a952-5e28ea525f32
-        referencePath: Intensity
+        path: GlideBoost/Main/Is Full Intensity/0
+        referenceID: 
+        referencePath: 
         operation: 0
         special: 0
-        rawValue: 0
-        rawType: Zios.Attributes.AttributeFloatData
-      oldDataB:
-      - target:
-          search: '[Self]'
-          directObject: {fileID: 0}
-          searchObject: {fileID: 152380}
-          parent: {fileID: 11497042}
-          mode: 0
-          path: /GlideBoost (1)/Main/Is Full Intensity/Is Full Intensity/Target
-        usage: 0
-        path: /GlideBoost/Main/Attribute Float Data F
-        referenceID: 
-        referencePath: 
-        operation: 4
-        special: 0
-        rawValue: 1
-        rawType: Zios.Attributes.AttributeFloatData
-      - target:
-          search: '[Self]'
-          directObject: {fileID: 0}
-          searchObject: {fileID: 152380}
-          parent: {fileID: 11497042}
-          mode: 0
-          path: /GlideBoost (1)/Main/Is Full Intensity/Is Full Intensity/Target
-        usage: 0
-        path: /GlideBoost/Main/Attribute Float Data G
-        referenceID: 
-        referencePath: 
-        operation: 2
-        special: 0
-        rawValue: 1
-        rawType: Zios.Attributes.AttributeFloatData
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+        rawValue: False
+        rawType: Zios.Attributes.AttributeBoolData
+      dataB: []
+      dataC: []
+    delayedValue: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

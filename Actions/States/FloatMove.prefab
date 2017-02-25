@@ -5,12 +5,12 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 402588}
-  - 114: {fileID: 11450214}
-  - 114: {fileID: 11496288}
-  - 114: {fileID: 11475304}
+  - component: {fileID: 402588}
+  - component: {fileID: 11450214}
+  - component: {fileID: 11496288}
+  - component: {fileID: 11475304}
   m_Layer: 10
   m_Name: '@Settings'
   m_TagString: Untagged
@@ -23,11 +23,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 417714}
-  - 114: {fileID: 11423552}
-  - 114: {fileID: 11402996}
+  - component: {fileID: 417714}
+  - component: {fileID: 11423552}
+  - component: {fileID: 11402996}
   m_Layer: 10
   m_Name: Main
   m_TagString: Untagged
@@ -40,9 +40,9 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 450268}
+  - component: {fileID: 450268}
   m_Layer: 10
   m_Name: FloatMove
   m_TagString: Untagged
@@ -62,6 +62,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 450268}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &417714
 Transform:
   m_ObjectHideFlags: 1
@@ -74,6 +75,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 450268}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &450268
 Transform:
   m_ObjectHideFlags: 1
@@ -88,6 +90,7 @@ Transform:
   - {fileID: 417714}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &11402996
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -111,44 +114,46 @@ MonoBehaviour:
       name: Usable
       path: Float Animation/Usable
       fullPath: FloatMove/Main/Float Animation/Usable
-      id: -91008/186576a6-963f-4847-bebe-9e402cd7711e
+      relativePath: Usable
+      id: -24018/186576a6-963f-4847-bebe-9e402cd7711e
       localID: 186576a6-963f-4847-bebe-9e402cd7711e
       parent: {fileID: 11402996}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 123736}
-          parent: {fileID: 11402996}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /FloatMove/Main/Float Animation/Float Animation/Usable/Target
+          path: 
         usage: 0
-        path: /FloatMove/Main/Attribute Bool Data C
+        path: FloatMove/Main/Float Animation/Usable/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   active:
     info:
       name: Active
       path: Float Animation/Active
       fullPath: FloatMove/Main/Float Animation/Active
-      id: -91008/4e257195-28bf-4334-bf31-08b584ee62af
+      relativePath: Active
+      id: -24018/4e257195-28bf-4334-bf31-08b584ee62af
       localID: 4e257195-28bf-4334-bf31-08b584ee62af
       parent: {fileID: 11402996}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
+          disabled: 1
           search: 
           directObject: {fileID: 0}
           searchObject: {fileID: 0}
@@ -161,168 +166,166 @@ MonoBehaviour:
         referencePath: 
         operation: 0
         special: 0
-        rawValue: 
+        rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   used:
     info:
       name: Used
       path: Float Animation/Used
       fullPath: FloatMove/Main/Float Animation/Used
-      id: -91008/5230931b-e8d0-4fe6-8ed8-60f4b4be84d5
+      relativePath: Used
+      id: -24018/5230931b-e8d0-4fe6-8ed8-60f4b4be84d5
       localID: 5230931b-e8d0-4fe6-8ed8-60f4b4be84d5
       parent: {fileID: 11402996}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 123736}
-          parent: {fileID: 11402996}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /FloatMove/Main/Float Animation/Float Animation/Used/Target
+          path: 
         usage: 0
-        path: /FloatMove/Main/Attribute Bool Data
+        path: FloatMove/Main/Float Animation/Used/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   animationName:
     info:
       name: Animation Name
       path: Float Animation/Animation Name
       fullPath: FloatMove/Main/Float Animation/Animation Name
-      id: -91008/39f43500-d0d4-44f5-b4f9-1bd7ee8a6e04
+      relativePath: Animation Name
+      id: -24018/39f43500-d0d4-44f5-b4f9-1bd7ee8a6e04
       localID: 39f43500-d0d4-44f5-b4f9-1bd7ee8a6e04
       parent: {fileID: 11402996}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 104734}
-          parent: {fileID: 11402996}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /FloatMove/Main/Float Animation/Float Animation/Animation Name/Target
-        usage: 1
-        path: /FloatMove/Main/Attribute String Data
-        referenceID: -43928/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
-        referencePath: Animation
+          path: 
+        usage: 0
+        path: FloatMove/Main/Float Animation/Animation Name/0
+        referenceID: 
+        referencePath: 
         operation: 0
         special: 0
-        rawValue: Swim
+        rawValue: 
         rawType: Zios.Attributes.AttributeStringData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 
   speed:
     info:
       name: Speed
       path: Float Animation/Speed
       fullPath: FloatMove/Main/Float Animation/Speed
-      id: -91008/d742d152-6bb5-438b-a38b-f4f3db892621
+      relativePath: Speed
+      id: -24018/d742d152-6bb5-438b-a38b-f4f3db892621
       localID: d742d152-6bb5-438b-a38b-f4f3db892621
       parent: {fileID: 11402996}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 123736}
-          parent: {fileID: 11402996}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /FloatMove/Main/Float Animation/Float Animation/Speed/Target
+          path: 
         usage: 0
-        path: /FloatMove/Main/Attribute Float Data B
+        path: FloatMove/Main/Float Animation/Speed/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
-        rawValue: 1
+        rawValue: -1
         rawType: Zios.Attributes.AttributeFloatData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: -1
   weight:
     info:
       name: Weight
       path: Float Animation/Weight
       fullPath: FloatMove/Main/Float Animation/Weight
-      id: -91008/cca3e596-43e9-43a8-9f9c-1831cf48638b
+      relativePath: Weight
+      id: -24018/cca3e596-43e9-43a8-9f9c-1831cf48638b
       localID: cca3e596-43e9-43a8-9f9c-1831cf48638b
       parent: {fileID: 11402996}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 123736}
-          parent: {fileID: 11402996}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /FloatMove/Main/Float Animation/Float Animation/Weight/Target
+          path: 
         usage: 0
-        path: /FloatMove/Main/Attribute Float Data
+        path: FloatMove/Main/Float Animation/Weight/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
-        rawValue: 1
+        rawValue: -1
         rawType: Zios.Attributes.AttributeFloatData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: -1
   target:
     info:
       name: Target
       path: Float Animation/Target
       fullPath: FloatMove/Main/Float Animation/Target
-      id: -91008/c7b83c71-518e-4bbd-bc21-0de83783f29a
+      relativePath: Target
+      id: -24018/c7b83c71-518e-4bbd-bc21-0de83783f29a
       localID: c7b83c71-518e-4bbd-bc21-0de83783f29a
       parent: {fileID: 11402996}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 0
+          search: '[Self]'
           directObject: {fileID: 0}
-          searchObject: {fileID: 104734}
+          searchObject: {fileID: 123736}
           parent: {fileID: 11402996}
           mode: 0
-          path: /FloatMove/Main/Float Animation/Float Animation/Target/Target
+          path: /FloatMove/Main/Float Animation/0/Target
         usage: 1
-        path: /FloatMove/Main/Attribute Game Object Data
-        referenceID: -43946/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
-        referencePath: Visuals
+        path: FloatMove/Main/Float Animation/Target/0
+        referenceID: 
+        referencePath: 
         operation: 0
         special: 0
         rawValue: 
         rawType: Zios.Attributes.AttributeGameObjectData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: {fileID: 0}
 --- !u!114 &11423552
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -346,44 +349,46 @@ MonoBehaviour:
       name: Usable
       path: FloatMove/Usable
       fullPath: FloatMove/Main/FloatMove/Usable
-      id: -91006/5cb06605-d098-4dc7-9666-0f1baa1a079b
+      relativePath: Usable
+      id: -24020/5cb06605-d098-4dc7-9666-0f1baa1a079b
       localID: 5cb06605-d098-4dc7-9666-0f1baa1a079b
       parent: {fileID: 11423552}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 123736}
-          parent: {fileID: 11423552}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /FloatMove/Main/FloatMove/FloatMove/Usable/Target
+          path: 
         usage: 0
-        path: /FloatMove/Main/Old Attribute Bool Data
+        path: FloatMove/Main/FloatMove/Usable/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: True
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   active:
     info:
       name: Active
       path: FloatMove/Active
       fullPath: FloatMove/Main/FloatMove/Active
-      id: -91006/47ecc5ea-7ae7-402f-acb7-46032c52fd25
+      relativePath: Active
+      id: -24020/47ecc5ea-7ae7-402f-acb7-46032c52fd25
       localID: 47ecc5ea-7ae7-402f-acb7-46032c52fd25
       parent: {fileID: 11423552}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
+          disabled: 1
           search: 
           directObject: {fileID: 0}
           searchObject: {fileID: 0}
@@ -396,45 +401,65 @@ MonoBehaviour:
         referencePath: 
         operation: 0
         special: 0
-        rawValue: 
+        rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   used:
     info:
       name: Used
       path: FloatMove/Used
       fullPath: FloatMove/Main/FloatMove/Used
-      id: -91006/a78fd6d2-eaf1-40e9-9c1c-ea41b1ed7197
+      relativePath: Used
+      id: -24020/a78fd6d2-eaf1-40e9-9c1c-ea41b1ed7197
       localID: a78fd6d2-eaf1-40e9-9c1c-ea41b1ed7197
       parent: {fileID: 11423552}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 123736}
-          parent: {fileID: 11423552}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /FloatMove/Main/FloatMove/FloatMove/Used/Target
+          path: 
         usage: 0
-        path: /FloatMove/Main/Old Attribute Bool Data C
+        path: FloatMove/Main/FloatMove/Used/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   table:
+  - name: '@Active'
+    stateTable: {fileID: 11423552}
+    id: -43916
+    target: {fileID: 11423552}
+    empty: 0
+    section: 
+    requirements:
+    - data:
+      - name: '@Active'
+        stateTable: {fileID: 11423552}
+        id: -43916
+        target: {fileID: 11423552}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Float Animation
+        stateTable: {fileID: 0}
+        id: -1496966
+        target: {fileID: 11402996}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
   - name: Float Animation
     stateTable: {fileID: 0}
     id: -1496966
@@ -449,12 +474,15 @@ MonoBehaviour:
         target: {fileID: 11423552}
         requireOn: 1
         requireOff: 0
+        requireUsed: 0
       - name: Float Animation
         stateTable: {fileID: 0}
         id: -1496966
         target: {fileID: 11402996}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
+  tableOff:
   - name: '@Active'
     stateTable: {fileID: 11423552}
     id: -43916
@@ -469,13 +497,14 @@ MonoBehaviour:
         target: {fileID: 11423552}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: Float Animation
         stateTable: {fileID: 0}
         id: -1496966
         target: {fileID: 11402996}
         requireOn: 0
         requireOff: 0
-  tableOff:
+        requireUsed: 0
   - name: Float Animation
     stateTable: {fileID: 0}
     id: -1496966
@@ -490,32 +519,14 @@ MonoBehaviour:
         target: {fileID: 11423552}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: Float Animation
         stateTable: {fileID: 0}
         id: -1496966
         target: {fileID: 11402996}
         requireOn: 0
         requireOff: 0
-  - name: '@Active'
-    stateTable: {fileID: 11423552}
-    id: -43916
-    target: {fileID: 11423552}
-    empty: 0
-    section: 
-    requirements:
-    - data:
-      - name: '@Active'
-        stateTable: {fileID: 11423552}
-        id: -43916
-        target: {fileID: 11423552}
-        requireOn: 0
-        requireOff: 0
-      - name: Float Animation
-        stateTable: {fileID: 0}
-        id: -1496966
-        target: {fileID: 11402996}
-        requireOn: 0
-        requireOff: 0
+        requireUsed: 0
   manual: 0
   advanced: 0
   external:
@@ -523,32 +534,32 @@ MonoBehaviour:
       name: External
       path: FloatMove/External
       fullPath: FloatMove/Main/FloatMove/External
-      id: -91006/9ce98ce6-d2cc-420a-a5ef-6ff9c8ab6983
+      relativePath: External
+      id: -24020/9ce98ce6-d2cc-420a-a5ef-6ff9c8ab6983
       localID: 9ce98ce6-d2cc-420a-a5ef-6ff9c8ab6983
       parent: {fileID: 11423552}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 123736}
-          parent: {fileID: 11423552}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /FloatMove/Main/FloatMove/FloatMove/External/Target
+          path: 
         usage: 0
-        path: /FloatMove/Main/Old Attribute Bool Data D
+        path: FloatMove/Main/FloatMove/External/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: True
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 1
   scripts:
   - {fileID: 11423552}
   - {fileID: 11402996}
@@ -571,32 +582,32 @@ MonoBehaviour:
       name: Animation
       path: Animation
       fullPath: FloatMove/@Settings/Animation
-      id: -90994/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
+      relativePath: 
+      id: -24022/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
       localID: 7e894ef6-a99f-450f-b42a-e1aa6c29abb9
       parent: {fileID: 11450214}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 104734}
-          parent: {fileID: 11450214}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /FloatMove/@Settings/Animation/Animation/Target
+          path: 
         usage: 0
-        path: /FloatMove/@Settings/Attribute String Data
+        path: FloatMove/@Settings/Animation/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
-        rawValue: GlideForward
+        rawValue: 
         rawType: Zios.Attributes.AttributeStringData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 
   remember: 0
 --- !u!114 &11475304
 MonoBehaviour:
@@ -617,32 +628,32 @@ MonoBehaviour:
       name: Visuals
       path: Visuals
       fullPath: FloatMove/@Settings/Visuals
-      id: -90998/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+      relativePath: 
+      id: -24024/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
       localID: 33bddd78-c7f6-40fe-94d8-1637fbd7fa73
       parent: {fileID: 11475304}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../../../../Visuals
+          disabled: 0
+          search: '[Self]'
           directObject: {fileID: 0}
-          searchObject: {fileID: 0}
+          searchObject: {fileID: 104734}
           parent: {fileID: 11475304}
           mode: 0
-          path: /FloatMove/@Settings/Visuals/Visuals/Target
+          path: /FloatMove/@Settings/Visuals/0/Target
         usage: 1
-        path: /FloatMove/@Settings/Attribute Game Object Data
+        path: FloatMove/@Settings/Visuals/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: 
         rawType: Zios.Attributes.AttributeGameObjectData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: {fileID: 0}
   remember: 0
 --- !u!114 &11496288
 MonoBehaviour:
@@ -663,32 +674,32 @@ MonoBehaviour:
       name: Source
       path: Source
       fullPath: FloatMove/@Settings/Source
-      id: -90996/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+      relativePath: 
+      id: -24026/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
       localID: 0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
       parent: {fileID: 11496288}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../../../..
+          disabled: 0
+          search: '[Self]'
           directObject: {fileID: 0}
-          searchObject: {fileID: 0}
+          searchObject: {fileID: 104734}
           parent: {fileID: 11496288}
           mode: 0
-          path: /FloatMove/@Settings/Source/Source/Target
+          path: /FloatMove/@Settings/Source/0/Target
         usage: 1
-        path: /FloatMove/@Settings/Attribute Game Object Data B
+        path: FloatMove/@Settings/Source/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: 
         rawType: Zios.Attributes.AttributeGameObjectData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: {fileID: 0}
   remember: 0
 --- !u!1001 &100100000
 Prefab:

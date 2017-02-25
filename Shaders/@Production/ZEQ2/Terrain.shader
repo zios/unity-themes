@@ -64,7 +64,7 @@ Shader "Zios/ZEQ2/Terrain"{
 				vertexOutput output;
 				UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
 				float2 lightmapUV = input.texcoord1.xy * unity_LightmapST.xy + unity_LightmapST.zw;
-				output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
+				output.pos = UnityObjectToClipPos(input.vertex);
 				output.UV = float4(input.texcoord.x,input.texcoord.y,lightmapUV.x,lightmapUV.y);
 				TRANSFER_VERTEX_TO_FRAGMENT(output);
 				return output;

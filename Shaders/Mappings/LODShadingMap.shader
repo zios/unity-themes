@@ -67,7 +67,7 @@ Shader "Zios/(Components)/Mappings/LOD Shading Map"{
 			vertexOutput vertexPass(vertexInput input){
 				vertexOutput output;
 				UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
-				output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
+				output.pos = UnityObjectToClipPos(input.vertex);
 				output.lightNormal = ObjSpaceLightDir(input.vertex);
 				output.view = ObjSpaceViewDir(input.vertex);
 				output.normal = float4(input.normal,0);

@@ -5,10 +5,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 403814}
-  - 114: {fileID: 11419038}
+  - component: {fileID: 403814}
+  - component: {fileID: 11419038}
   m_Layer: 0
   m_Name: Main
   m_TagString: Untagged
@@ -21,9 +21,9 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 440444}
+  - component: {fileID: 440444}
   m_Layer: 0
   m_Name: Charge
   m_TagString: Untagged
@@ -36,12 +36,12 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 473756}
-  - 114: {fileID: 11464674}
-  - 114: {fileID: 11428936}
-  - 114: {fileID: 11477292}
+  - component: {fileID: 473756}
+  - component: {fileID: 11464674}
+  - component: {fileID: 11428936}
+  - component: {fileID: 11477292}
   m_Layer: 0
   m_Name: '@Settings'
   m_TagString: Untagged
@@ -61,6 +61,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 440444}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &440444
 Transform:
   m_ObjectHideFlags: 1
@@ -75,6 +76,7 @@ Transform:
   - {fileID: 403814}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &473756
 Transform:
   m_ObjectHideFlags: 1
@@ -87,6 +89,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 440444}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &11419038
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -110,44 +113,46 @@ MonoBehaviour:
       name: Usable
       path: Charge/Usable
       fullPath: Charge/Main/Charge/Usable
-      id: -90818/48f25591-e2b2-45d0-b56f-61464d239b6f
+      relativePath: Usable
+      id: -23946/48f25591-e2b2-45d0-b56f-61464d239b6f
       localID: 48f25591-e2b2-45d0-b56f-61464d239b6f
       parent: {fileID: 11419038}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 104236}
-          parent: {fileID: 11419038}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Charge/Main/Charge/Charge/Usable/Target
+          path: 
         usage: 0
-        path: /Charge/Main/Old Attribute Bool Data
+        path: Charge/Main/Charge/Usable/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: True
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   active:
     info:
       name: Active
       path: Charge/Active
       fullPath: Charge/Main/Charge/Active
-      id: -90818/32d49fca-6407-4964-954d-7f439011b372
+      relativePath: Active
+      id: -23946/32d49fca-6407-4964-954d-7f439011b372
       localID: 32d49fca-6407-4964-954d-7f439011b372
       parent: {fileID: 11419038}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
+          disabled: 1
           search: 
           directObject: {fileID: 0}
           searchObject: {fileID: 0}
@@ -160,44 +165,42 @@ MonoBehaviour:
         referencePath: 
         operation: 0
         special: 0
-        rawValue: 
+        rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   used:
     info:
       name: Used
       path: Charge/Used
       fullPath: Charge/Main/Charge/Used
-      id: -90818/3546bec2-77cb-4448-a43d-6d63fe0e6fd0
+      relativePath: Used
+      id: -23946/3546bec2-77cb-4448-a43d-6d63fe0e6fd0
       localID: 3546bec2-77cb-4448-a43d-6d63fe0e6fd0
       parent: {fileID: 11419038}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 104236}
-          parent: {fileID: 11419038}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Charge/Main/Charge/Charge/Used/Target
+          path: 
         usage: 0
-        path: /Charge/Main/Old Attribute Bool Data C
+        path: Charge/Main/Charge/Used/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   table:
   - name: '@Active'
     stateTable: {fileID: 11419038}
@@ -213,6 +216,7 @@ MonoBehaviour:
         target: {fileID: 11419038}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
   tableOff:
   - name: '@Active'
     stateTable: {fileID: 11419038}
@@ -228,6 +232,7 @@ MonoBehaviour:
         target: {fileID: 11419038}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
   manual: 0
   advanced: 0
   external:
@@ -235,32 +240,32 @@ MonoBehaviour:
       name: External
       path: Charge/External
       fullPath: Charge/Main/Charge/External
-      id: -90818/f20de2af-cc9a-492e-8194-844c3cbe8bcf
+      relativePath: External
+      id: -23946/f20de2af-cc9a-492e-8194-844c3cbe8bcf
       localID: f20de2af-cc9a-492e-8194-844c3cbe8bcf
       parent: {fileID: 11419038}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 104236}
-          parent: {fileID: 11419038}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Charge/Main/Charge/Charge/External/Target
+          path: 
         usage: 0
-        path: /Charge/Main/Old Attribute Bool Data D
+        path: Charge/Main/Charge/External/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: True
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 1
   scripts:
   - {fileID: 11419038}
 --- !u!114 &11428936
@@ -282,32 +287,32 @@ MonoBehaviour:
       name: Source
       path: Source
       fullPath: Charge/@Settings/Source
-      id: -90830/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+      relativePath: 
+      id: -23948/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
       localID: 0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
       parent: {fileID: 11428936}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../../../..
+          disabled: 0
+          search: '[Self]'
           directObject: {fileID: 0}
-          searchObject: {fileID: 0}
+          searchObject: {fileID: 176944}
           parent: {fileID: 11428936}
           mode: 0
-          path: /Charge/@Settings/Source/Source/Target
+          path: /Charge/@Settings/Source/0/Target
         usage: 1
-        path: /Charge/@Settings/Attribute Game Object Data B
+        path: Charge/@Settings/Source/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: 
         rawType: Zios.Attributes.AttributeGameObjectData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: {fileID: 0}
   remember: 0
 --- !u!114 &11464674
 MonoBehaviour:
@@ -328,32 +333,32 @@ MonoBehaviour:
       name: Animation
       path: Animation
       fullPath: Charge/@Settings/Animation
-      id: -90828/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
+      relativePath: 
+      id: -23950/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
       localID: 7e894ef6-a99f-450f-b42a-e1aa6c29abb9
       parent: {fileID: 11464674}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 176944}
-          parent: {fileID: 11464674}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Charge/@Settings/Animation/Animation/Target
+          path: 
         usage: 0
-        path: /Charge/@Settings/Attribute String Data
+        path: Charge/@Settings/Animation/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
-        rawValue: Charge
+        rawValue: 
         rawType: Zios.Attributes.AttributeStringData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 
   remember: 0
 --- !u!114 &11477292
 MonoBehaviour:
@@ -374,32 +379,32 @@ MonoBehaviour:
       name: Visuals
       path: Visuals
       fullPath: Charge/@Settings/Visuals
-      id: -90832/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+      relativePath: 
+      id: -23952/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
       localID: 33bddd78-c7f6-40fe-94d8-1637fbd7fa73
       parent: {fileID: 11477292}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../../../../Visuals
+          disabled: 0
+          search: '[Self]'
           directObject: {fileID: 0}
-          searchObject: {fileID: 0}
+          searchObject: {fileID: 176944}
           parent: {fileID: 11477292}
           mode: 0
-          path: /Charge/@Settings/Visuals/Visuals/Target
+          path: /Charge/@Settings/Visuals/0/Target
         usage: 1
-        path: /Charge/@Settings/Attribute Game Object Data
+        path: Charge/@Settings/Visuals/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: 
         rawType: Zios.Attributes.AttributeGameObjectData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: {fileID: 0}
   remember: 0
 --- !u!1001 &100100000
 Prefab:

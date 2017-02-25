@@ -5,11 +5,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 438744}
-  - 114: {fileID: 11460264}
-  - 114: {fileID: 11488328}
+  - component: {fileID: 438744}
+  - component: {fileID: 11460264}
+  - component: {fileID: 11488328}
   m_Layer: 0
   m_Name: Orb Collection
   m_TagString: Untagged
@@ -22,9 +22,9 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 419992}
+  - component: {fileID: 419992}
   m_Layer: 0
   m_Name: Collections
   m_TagString: Untagged
@@ -45,6 +45,7 @@ Transform:
   - {fileID: 438744}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &438744
 Transform:
   m_ObjectHideFlags: 1
@@ -57,6 +58,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 419992}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &11460264
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -76,32 +78,32 @@ MonoBehaviour:
       name: Collecting
       path: Collecting
       fullPath: Collections/Orb Collection/Collecting
-      id: -88868/749bc210-bbe9-4610-b588-573a874668e1
+      relativePath: 
+      id: -11364/749bc210-bbe9-4610-b588-573a874668e1
       localID: 749bc210-bbe9-4610-b588-573a874668e1
       parent: {fileID: 11460264}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
           searchObject: {fileID: 0}
-          parent: {fileID: 11460264}
+          parent: {fileID: 0}
           mode: 0
-          path: /Collections/Orb Collection/Collecting/Collecting/Target
+          path: 
         usage: 0
-        path: /Collections/Orb Collection/Attribute Bool Data
+        path: Collections/Orb Collection/Collecting/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   remember: 0
 --- !u!114 &11488328
 MonoBehaviour:
@@ -122,32 +124,32 @@ MonoBehaviour:
       name: Items Collected
       path: Items Collected
       fullPath: Collections/Orb Collection/Items Collected
-      id: -88870/a7c702bc-b570-4078-8b66-7a93deacde4c
+      relativePath: 
+      id: -11366/a7c702bc-b570-4078-8b66-7a93deacde4c
       localID: a7c702bc-b570-4078-8b66-7a93deacde4c
       parent: {fileID: 11488328}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
           searchObject: {fileID: 0}
-          parent: {fileID: 11488328}
+          parent: {fileID: 0}
           mode: 0
-          path: /Collections/Orb Collection/Items Collected/Items Collected/Target
+          path: 
         usage: 0
-        path: /Collections/Orb Collection/Attribute Int Data
+        path: Collections/Orb Collection/Items Collected/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: 0
         rawType: Zios.Attributes.AttributeIntData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   remember: 0
 --- !u!1001 &100100000
 Prefab:

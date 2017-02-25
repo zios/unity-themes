@@ -52,7 +52,7 @@ Shader "Zios/(Components)/Mappings/Triplanar Map"{
 			vertexOutput vertexPass(vertexInput input){
 				vertexOutput output;
 				UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
-				output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
+				output.pos = UnityObjectToClipPos(input.vertex);
 				output.UV = float4(input.texcoord.x,input.texcoord.y,0,0);
 				output.normal = float4(input.normal,0);
 				output.original = input.vertex;

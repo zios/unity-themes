@@ -53,7 +53,7 @@ Shader "Zios/(Components)/Lighting/Diffuse Shading [Lerp]"{
 			vertexOutput vertexPass(vertexInput input){
 				vertexOutput output;
 				UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
-				output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
+				output.pos = UnityObjectToClipPos(input.vertex);
 				output.lightNormal = ObjSpaceLightDir(input.vertex);
 				output.normal = float4(input.normal,0);
 				return output;

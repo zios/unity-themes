@@ -84,7 +84,7 @@ Shader "Zios/SuperCity/Sprite + Particle (Multiply)"{
 			vertexOutput vertexPass(vertexInput input){
 				vertexOutput output;
 				UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
-				output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
+				output.pos = UnityObjectToClipPos(input.vertex);
 				output.lightNormal = ObjSpaceLightDir(input.vertex);
 				output.UV.xy = float2(input.texcoord.x,input.texcoord.y);
 				output.normal = float4(input.normal+meshNormal.xyz,0);

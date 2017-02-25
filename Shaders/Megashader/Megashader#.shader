@@ -65,9 +65,10 @@ Shader "Zios/(Megashader)#"{
 		Tags{"LightMode"="ForwardBase" "Queue"="Geometry"}
 		Pass{
 			CGPROGRAM
+			#include "UnityCG.cginc"
 			#pragma vertex vertexPass
 			#pragma fragment pixelPass
-			float4 vertexPass(float4 vertex:POSITION) : SV_POSITION{return mul(UNITY_MATRIX_MVP,vertex);}
+			float4 vertexPass(float4 vertex:POSITION) : SV_POSITION{return UnityObjectToClipPos(vertex);}
 			fixed4 pixelPass() : SV_Target{return fixed4(0,0,0,1);}
 			ENDCG
 		}

@@ -58,7 +58,7 @@ Shader "Zios/(Components)/Mappings/Normal Map"{
 			vertexOutput vertexPass(vertexInput input){
 				vertexOutput output;
 				UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
-				output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
+				output.pos = UnityObjectToClipPos(input.vertex);
 				output.normal = float4(input.normal,0);
 				output.view = ObjSpaceViewDir(input.vertex);
 				return output;

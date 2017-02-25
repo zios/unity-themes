@@ -3,6 +3,7 @@ Shader "Zios/SuperCity/Debug"{
 	SubShader{
 		Pass{
 			CGPROGRAM
+			#include "UnityCG.cginc"
 			#pragma vertex vertexPass
 			#pragma fragment pixelPass
 			struct vertexInput{
@@ -23,7 +24,7 @@ Shader "Zios/SuperCity/Debug"{
 			vertexOutput vertexPass(vertexInput input){
 				vertexOutput output;
 				UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
-				output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
+				output.pos = UnityObjectToClipPos(input.vertex);
 				return output;
 			}
 			pixelOutput pixelPass(vertexOutput input){

@@ -9,6 +9,7 @@ Shader "Zios/(Components)/Color/Ambient"{
 			#pragma vertex vertexPass
 			#pragma fragment pixelPass
 			#pragma fragmentoption ARB_precision_hint_fastest
+			#include "UnityCG.cginc"
 			fixed4 ambientColor;
 			fixed ambientCutoff;
 			struct vertexInput{
@@ -39,7 +40,7 @@ Shader "Zios/(Components)/Color/Ambient"{
 			vertexOutput vertexPass(vertexInput input){
 				vertexOutput output;
 				UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
-				output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
+				output.pos = UnityObjectToClipPos(input.vertex);
 				return output;
 			}
 			pixelOutput pixelPass(vertexOutput input){

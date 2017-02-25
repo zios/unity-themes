@@ -32,7 +32,7 @@ Shader "Zios/Dori/Vertex Color"{
 			vertexOutput vertexPassSimple(vertexInput input){
 				vertexOutput output;
 				UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
-				output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
+				output.pos = UnityObjectToClipPos(input.vertex);
 				output.color = input.color;
 				return output;
 			}

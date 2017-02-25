@@ -5,9 +5,9 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 455286}
+  - component: {fileID: 455286}
   m_Layer: 10
   m_Name: Slide
   m_TagString: Untagged
@@ -20,20 +20,20 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 423170}
-  - 114: {fileID: 11495662}
-  - 114: {fileID: 11449072}
-  - 114: {fileID: 11431038}
-  - 114: {fileID: 11458824}
-  - 114: {fileID: 11402688}
-  - 114: {fileID: 11434606}
-  - 114: {fileID: 11423098}
-  - 114: {fileID: 11424708}
-  - 114: {fileID: 11481326}
-  - 114: {fileID: 11429828}
-  - 114: {fileID: 11445304}
+  - component: {fileID: 423170}
+  - component: {fileID: 11495662}
+  - component: {fileID: 11449072}
+  - component: {fileID: 11431038}
+  - component: {fileID: 11458824}
+  - component: {fileID: 11402688}
+  - component: {fileID: 11434606}
+  - component: {fileID: 11423098}
+  - component: {fileID: 11424708}
+  - component: {fileID: 11481326}
+  - component: {fileID: 11429828}
+  - component: {fileID: 11445304}
   m_Layer: 10
   m_Name: Main
   m_TagString: Untagged
@@ -46,12 +46,12 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 470272}
-  - 114: {fileID: 11422890}
-  - 114: {fileID: 11446288}
-  - 114: {fileID: 11474918}
+  - component: {fileID: 470272}
+  - component: {fileID: 11422890}
+  - component: {fileID: 11446288}
+  - component: {fileID: 11474918}
   m_Layer: 10
   m_Name: '@Settings'
   m_TagString: Untagged
@@ -71,6 +71,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 455286}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &455286
 Transform:
   m_ObjectHideFlags: 1
@@ -85,6 +86,7 @@ Transform:
   - {fileID: 423170}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &470272
 Transform:
   m_ObjectHideFlags: 1
@@ -97,6 +99,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 455286}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &11402688
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -120,44 +123,46 @@ MonoBehaviour:
       name: Usable
       path: Rotate Direction/Usable
       fullPath: Slide/Main/Rotate Direction/Usable
-      id: -90398/85eb2244-67f0-49d8-a022-93344cc74d43
+      relativePath: Usable
+      id: -15678/85eb2244-67f0-49d8-a022-93344cc74d43
       localID: 85eb2244-67f0-49d8-a022-93344cc74d43
       parent: {fileID: 11402688}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 144134}
-          parent: {fileID: 11402688}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Slide (1)/Main/Rotate Direction/Rotate Direction/Usable/Target
+          path: 
         usage: 0
-        path: /Slide/Main/Attribute Bool Data R
+        path: Slide/Main/Rotate Direction/Usable/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   active:
     info:
       name: Active
       path: Rotate Direction/Active
       fullPath: Slide/Main/Rotate Direction/Active
-      id: -90398/45240a17-bc29-41e4-87b4-f8d306b63404
+      relativePath: Active
+      id: -15678/45240a17-bc29-41e4-87b4-f8d306b63404
       localID: 45240a17-bc29-41e4-87b4-f8d306b63404
       parent: {fileID: 11402688}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
+          disabled: 1
           search: 
           directObject: {fileID: 0}
           searchObject: {fileID: 0}
@@ -170,199 +175,197 @@ MonoBehaviour:
         referencePath: 
         operation: 0
         special: 0
-        rawValue: 
+        rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   used:
     info:
       name: Used
       path: Rotate Direction/Used
       fullPath: Slide/Main/Rotate Direction/Used
-      id: -90398/3e077488-17dc-49d5-b36f-ded200b0b311
+      relativePath: Used
+      id: -15678/3e077488-17dc-49d5-b36f-ded200b0b311
       localID: 3e077488-17dc-49d5-b36f-ded200b0b311
       parent: {fileID: 11402688}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 144134}
-          parent: {fileID: 11402688}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Slide (1)/Main/Rotate Direction/Rotate Direction/Used/Target
+          path: 
         usage: 0
-        path: /Slide/Main/Attribute Bool Data P
+        path: Slide/Main/Rotate Direction/Used/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   source:
     info:
       name: Source
       path: Rotate Direction/Source
       fullPath: Slide/Main/Rotate Direction/Source
-      id: -90398/89eb14a4-49ff-4973-927d-673d7bf2ff3f
+      relativePath: Source
+      id: -15678/89eb14a4-49ff-4973-927d-673d7bf2ff3f
       localID: 89eb14a4-49ff-4973-927d-673d7bf2ff3f
       parent: {fileID: 11402688}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 0
+          search: '[Self]'
           directObject: {fileID: 0}
-          searchObject: {fileID: 144134}
+          searchObject: {fileID: 136648}
           parent: {fileID: 11402688}
           mode: 0
-          path: /Slide (1)/Main/Rotate Direction/Rotate Direction/Source/Target
+          path: /Slide/Main/Rotate Direction/0/Target
         usage: 1
-        path: /Slide/Main/Attribute Game Object Data C
-        referenceID: -44606/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
-        referencePath: Source
+        path: Slide/Main/Rotate Direction/Source/0
+        referenceID: 
+        referencePath: 
         operation: 0
         special: 0
         rawValue: 
         rawType: Zios.Attributes.AttributeGameObjectData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: {fileID: 0}
   goal:
     info:
       name: Goal Direction
       path: Rotate Direction/Goal Direction
       fullPath: Slide/Main/Rotate Direction/Goal Direction
-      id: -90398/f4caea85-f6c1-401c-a069-f9c23822539d
+      relativePath: Goal Direction
+      id: -15678/f4caea85-f6c1-401c-a069-f9c23822539d
       localID: f4caea85-f6c1-401c-a069-f9c23822539d
       parent: {fileID: 11402688}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../../../
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 124732}
-          parent: {fileID: 11402688}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Slide (1)/Main/Rotate Direction/Rotate Direction/Goal Direction/Target
-        usage: 1
-        path: /Slide/Main/Attribute Vector3Data B
-        referenceID: -71222/40940ed8-9837-4b72-a9b8-128c595400a0
-        referencePath: Collider Controller/Slope Normal
+          path: 
+        usage: 0
+        path: Slide/Main/Rotate Direction/Goal Direction/0
+        referenceID: 
+        referencePath: 
         operation: 0
         special: 0
         rawValue: (0.0, 0.0, 0.0)
         rawType: Zios.Attributes.AttributeVector3Data
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: {x: 0, y: 0, z: 0}
     x:
       info:
         name: X
         path: Rotate Direction/Goal Direction/X
         fullPath: Slide/Main/Rotate Direction/Goal Direction/X
-        id: -90398/f4501521-bf4b-4c98-af10-1ee67ac85692
+        relativePath: Goal Direction/X
+        id: -15678/f4501521-bf4b-4c98-af10-1ee67ac85692
         localID: f4501521-bf4b-4c98-af10-1ee67ac85692
         parent: {fileID: 11402688}
         mode: 0
         linkType: 0
-        oldData:
+        data:
         - target:
-            search: ../@Settings
+            disabled: 1
+            search: 
             directObject: {fileID: 0}
-            searchObject: {fileID: 144134}
-            parent: {fileID: 11402688}
+            searchObject: {fileID: 0}
+            parent: {fileID: 0}
             mode: 0
-            path: /Slide (1)/Main/Rotate Direction/Rotate Direction/Goal Direction/X/Target
+            path: 
           usage: 0
-          path: /Slide/Main/Attribute Float Data J
+          path: Slide/Main/Rotate Direction/Goal Direction/X/0
           referenceID: 
           referencePath: 
           operation: 0
           special: 0
           rawValue: 0
           rawType: Zios.Attributes.AttributeFloatData
-        oldDataB: []
-        oldDataC: []
-        oldData: []
-        oldDataB: []
-        oldDataC: []
+        dataB: []
+        dataC: []
+      delayedValue: 0
     y:
       info:
         name: Y
         path: Rotate Direction/Goal Direction/Y
         fullPath: Slide/Main/Rotate Direction/Goal Direction/Y
-        id: -90398/f63cb3d7-537d-4fa8-a622-c168f6f43a8d
+        relativePath: Goal Direction/Y
+        id: -15678/f63cb3d7-537d-4fa8-a622-c168f6f43a8d
         localID: f63cb3d7-537d-4fa8-a622-c168f6f43a8d
         parent: {fileID: 11402688}
         mode: 0
         linkType: 0
-        oldData:
+        data:
         - target:
-            search: ../@Settings
+            disabled: 1
+            search: 
             directObject: {fileID: 0}
-            searchObject: {fileID: 144134}
-            parent: {fileID: 11402688}
+            searchObject: {fileID: 0}
+            parent: {fileID: 0}
             mode: 0
-            path: /Slide (1)/Main/Rotate Direction/Rotate Direction/Goal Direction/Y/Target
+            path: 
           usage: 0
-          path: /Slide/Main/Attribute Float Data I
+          path: Slide/Main/Rotate Direction/Goal Direction/Y/0
           referenceID: 
           referencePath: 
           operation: 0
           special: 0
           rawValue: 0
           rawType: Zios.Attributes.AttributeFloatData
-        oldDataB: []
-        oldDataC: []
-        oldData: []
-        oldDataB: []
-        oldDataC: []
+        dataB: []
+        dataC: []
+      delayedValue: 0
     z:
       info:
         name: Z
         path: Rotate Direction/Goal Direction/Z
         fullPath: Slide/Main/Rotate Direction/Goal Direction/Z
-        id: -90398/805d0ab1-d9e4-4e28-99be-b07d38b7f105
+        relativePath: Goal Direction/Z
+        id: -15678/805d0ab1-d9e4-4e28-99be-b07d38b7f105
         localID: 805d0ab1-d9e4-4e28-99be-b07d38b7f105
         parent: {fileID: 11402688}
         mode: 0
         linkType: 0
-        oldData:
+        data:
         - target:
-            search: ../@Settings
+            disabled: 1
+            search: 
             directObject: {fileID: 0}
-            searchObject: {fileID: 144134}
-            parent: {fileID: 11402688}
+            searchObject: {fileID: 0}
+            parent: {fileID: 0}
             mode: 0
-            path: /Slide (1)/Main/Rotate Direction/Rotate Direction/Goal Direction/Z/Target
+            path: 
           usage: 0
-          path: /Slide/Main/Attribute Float Data H
+          path: Slide/Main/Rotate Direction/Goal Direction/Z/0
           referenceID: 
           referencePath: 
           operation: 0
           special: 0
           rawValue: 0
           rawType: Zios.Attributes.AttributeFloatData
-        oldDataB: []
-        oldDataC: []
-        oldData: []
-        oldDataB: []
-        oldDataC: []
+        dataB: []
+        dataC: []
+      delayedValue: 0
   lerpAxes:
     value: 010000
   rotation:
@@ -371,129 +374,126 @@ MonoBehaviour:
         name: Is Angle
         path: Rotate Direction/Rotate Direction/Is Angle
         fullPath: Slide/Main/Rotate Direction/Rotate Direction/Is Angle
-        id: -90398/b360124b-b41a-4b9a-ab20-de54c0dd443b
+        relativePath: Rotate Direction/Is Angle
+        id: -15678/b360124b-b41a-4b9a-ab20-de54c0dd443b
         localID: b360124b-b41a-4b9a-ab20-de54c0dd443b
         parent: {fileID: 11402688}
         mode: 0
         linkType: 0
-        oldData:
+        data:
         - target:
-            search: ../@Settings
+            disabled: 1
+            search: 
             directObject: {fileID: 0}
-            searchObject: {fileID: 144134}
-            parent: {fileID: 11402688}
+            searchObject: {fileID: 0}
+            parent: {fileID: 0}
             mode: 0
-            path: /Slide (1)/Main/Rotate Direction/Rotate Direction/Rotate Direction/Is
-              Angle/Target
+            path: 
           usage: 0
-          path: /Slide/Main/Attribute Bool Data O
+          path: Slide/Main/Rotate Direction/Rotate Direction/Is Angle/0
           referenceID: 
           referencePath: 
           operation: 0
           special: 0
           rawValue: True
           rawType: Zios.Attributes.AttributeBoolData
-        oldDataB: []
-        oldDataC: []
-        oldData: []
-        oldDataB: []
-        oldDataC: []
+        dataB: []
+        dataC: []
+      delayedValue: 1
     isResetOnChange:
       info:
         name: Is Reset On Change
         path: Rotate Direction/Rotate Direction/Is Reset On Change
         fullPath: Slide/Main/Rotate Direction/Rotate Direction/Is Reset On Change
-        id: -90398/ade47b3a-ab41-4069-9c31-e0179074fc0f
+        relativePath: Rotate Direction/Is Reset On Change
+        id: -15678/ade47b3a-ab41-4069-9c31-e0179074fc0f
         localID: ade47b3a-ab41-4069-9c31-e0179074fc0f
         parent: {fileID: 11402688}
         mode: 0
         linkType: 0
-        oldData:
+        data:
         - target:
-            search: ../@Settings
+            disabled: 1
+            search: 
             directObject: {fileID: 0}
-            searchObject: {fileID: 144134}
-            parent: {fileID: 11402688}
+            searchObject: {fileID: 0}
+            parent: {fileID: 0}
             mode: 0
-            path: /Slide (1)/Main/Rotate Direction/Rotate Direction/Rotate Direction/Is
-              Reset On Change/Target
+            path: 
           usage: 0
-          path: /Slide/Main/Attribute Bool Data N
+          path: Slide/Main/Rotate Direction/Rotate Direction/Is Reset On Change/0
           referenceID: 
           referencePath: 
           operation: 0
           special: 0
           rawValue: False
           rawType: Zios.Attributes.AttributeBoolData
-        oldDataB: []
-        oldDataC: []
-        oldData: []
-        oldDataB: []
-        oldDataC: []
+        dataB: []
+        dataC: []
+      delayedValue: 1
     speed:
       info:
         name: Speed
         path: Rotate Direction/Rotate Direction/Transition/Speed
         fullPath: Slide/Main/Rotate Direction/Rotate Direction/Transition/Speed
-        id: -90398/0e374bad-c9d5-4ae9-9dcb-88182b19ceac
+        relativePath: Rotate Direction/Transition/Speed
+        id: -15678/0e374bad-c9d5-4ae9-9dcb-88182b19ceac
         localID: 0e374bad-c9d5-4ae9-9dcb-88182b19ceac
         parent: {fileID: 11402688}
         mode: 0
         linkType: 0
-        oldData:
+        data:
         - target:
-            search: ../@Settings
+            disabled: 1
+            search: 
             directObject: {fileID: 0}
-            searchObject: {fileID: 144134}
-            parent: {fileID: 11402688}
+            searchObject: {fileID: 0}
+            parent: {fileID: 0}
             mode: 0
-            path: /Slide (1)/Main/Rotate Direction/Rotate Direction/Rotate Direction/Transition/Speed/Target
+            path: 
           usage: 0
-          path: /Slide/Main/Attribute Float Data G
+          path: Slide/Main/Rotate Direction/Rotate Direction/Transition/Speed/0
           referenceID: 
           referencePath: 
           operation: 0
           special: 0
-          rawValue: 600
+          rawValue: 0
           rawType: Zios.Attributes.AttributeFloatData
-        oldDataB: []
-        oldDataC: []
-        oldData: []
-        oldDataB: []
-        oldDataC: []
+        dataB: []
+        dataC: []
+      delayedValue: 0
     transition:
       duration:
         info:
           name: Duration
           path: Rotate Direction/Rotate Direction/Rotate Direction/Transition/Duration
           fullPath: Slide/Main/Rotate Direction/Rotate Direction/Rotate Direction/Transition/Duration
-          id: -90398/510e549c-dd87-4750-b855-256845d3357d
+          relativePath: Rotate Direction/Rotate Direction/Transition/Duration
+          id: -15678/510e549c-dd87-4750-b855-256845d3357d
           localID: 510e549c-dd87-4750-b855-256845d3357d
           parent: {fileID: 11402688}
           mode: 0
           linkType: 0
-          oldData:
+          data:
           - target:
-              search: ../@Settings
+              disabled: 1
+              search: 
               directObject: {fileID: 0}
-              searchObject: {fileID: 144134}
-              parent: {fileID: 11402688}
+              searchObject: {fileID: 0}
+              parent: {fileID: 0}
               mode: 0
-              path: /Slide (1)/Main/Rotate Direction/Rotate Direction/Rotate Direction/Rotate
-                Direction/Transition/Duration/Target
+              path: 
             usage: 0
-            path: /Slide/Main/Attribute Float Data F
+            path: Slide/Main/Rotate Direction/Rotate Direction/Rotate Direction/Transition/Duration/0
             referenceID: 
             referencePath: 
             operation: 0
             special: 0
-            rawValue: 0
+            rawValue: 0.5
             rawType: Zios.Attributes.AttributeFloatData
-          oldDataB: []
-          oldDataC: []
-          oldData: []
-          oldDataB: []
-          oldDataC: []
+          dataB: []
+          dataC: []
+        delayedValue: 0.5
       delayStart:
         info:
           name: Delay Start
@@ -501,48 +501,51 @@ MonoBehaviour:
             Start
           fullPath: Slide/Main/Rotate Direction/Rotate Direction/Rotate Direction/Transition/Delay
             Start
-          id: -90398/933f9887-5975-43cd-8a3e-2d949abc978b
+          relativePath: Rotate Direction/Rotate Direction/Transition/Delay Start
+          id: -15678/933f9887-5975-43cd-8a3e-2d949abc978b
           localID: 933f9887-5975-43cd-8a3e-2d949abc978b
           parent: {fileID: 11402688}
           mode: 0
           linkType: 0
-          oldData:
+          data:
           - target:
-              search: ../@Settings
+              disabled: 1
+              search: 
               directObject: {fileID: 0}
-              searchObject: {fileID: 144134}
-              parent: {fileID: 11402688}
+              searchObject: {fileID: 0}
+              parent: {fileID: 0}
               mode: 0
-              path: /Slide (1)/Main/Rotate Direction/Rotate Direction/Rotate Direction/Rotate
-                Direction/Transition/Delay Start/Target
+              path: 
             usage: 0
-            path: /Slide/Main/Attribute Float Data E
+            path: Slide/Main/Rotate Direction/Rotate Direction/Rotate Direction/Transition/Delay
+              Start/0
             referenceID: 
             referencePath: 
             operation: 0
             special: 0
             rawValue: 0
             rawType: Zios.Attributes.AttributeFloatData
-          oldDataB: []
-          oldDataC: []
-          oldData: []
-          oldDataB: []
-          oldDataC: []
+          dataB: []
+          dataC: []
+        delayedValue: 0
       curve:
         serializedVersion: 2
         m_Curve:
-        - time: 0
+        - serializedVersion: 2
+          time: 0
           value: 0
           inSlope: 0
           outSlope: 1
           tangentMode: 0
-        - time: 1
+        - serializedVersion: 2
+          time: 1
           value: 1
           inSlope: 1
           outSlope: 0
           tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
+        m_RotationOrder: 4
     endProximity: 0
 --- !u!114 &11422890
 MonoBehaviour:
@@ -563,32 +566,32 @@ MonoBehaviour:
       name: Animation
       path: Animation
       fullPath: Slide/@Settings/Animation
-      id: -90502/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
+      relativePath: 
+      id: -15680/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
       localID: 7e894ef6-a99f-450f-b42a-e1aa6c29abb9
       parent: {fileID: 11422890}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 144134}
-          parent: {fileID: 11422890}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Slide (1)/@Settings/Animation/Animation/Target
+          path: 
         usage: 0
-        path: /Slide/@Settings/Attribute String Data
+        path: Slide/@Settings/Animation/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
-        rawValue: Slide
+        rawValue: 
         rawType: Zios.Attributes.AttributeStringData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 
   remember: 0
 --- !u!114 &11423098
 MonoBehaviour:
@@ -613,44 +616,46 @@ MonoBehaviour:
       name: Usable
       path: No X Input/Usable
       fullPath: Slide/Main/No X Input/Usable
-      id: -90410/5649011f-da0c-48d5-883e-f8ea8267f3d2
+      relativePath: Usable
+      id: -15682/5649011f-da0c-48d5-883e-f8ea8267f3d2
       localID: 5649011f-da0c-48d5-883e-f8ea8267f3d2
       parent: {fileID: 11423098}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 144134}
-          parent: {fileID: 11423098}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Slide (1)/Main/No X Input/No X Input/Usable/Target
+          path: 
         usage: 0
-        path: /Slide/Main/Attribute Bool Data X
+        path: Slide/Main/No X Input/Usable/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   active:
     info:
       name: Active
       path: No X Input/Active
       fullPath: Slide/Main/No X Input/Active
-      id: -90410/4756e234-34e7-42ca-b6e0-d0272cdc543b
+      relativePath: Active
+      id: -15682/4756e234-34e7-42ca-b6e0-d0272cdc543b
       localID: 4756e234-34e7-42ca-b6e0-d0272cdc543b
       parent: {fileID: 11423098}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
+          disabled: 1
           search: 
           directObject: {fileID: 0}
           searchObject: {fileID: 0}
@@ -663,75 +668,73 @@ MonoBehaviour:
         referencePath: 
         operation: 0
         special: 0
-        rawValue: 
+        rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   used:
     info:
       name: Used
       path: No X Input/Used
       fullPath: Slide/Main/No X Input/Used
-      id: -90410/80ae16ae-91af-49e0-9ce8-3a651c2a4f88
+      relativePath: Used
+      id: -15682/80ae16ae-91af-49e0-9ce8-3a651c2a4f88
       localID: 80ae16ae-91af-49e0-9ce8-3a651c2a4f88
       parent: {fileID: 11423098}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 144134}
-          parent: {fileID: 11423098}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Slide (1)/Main/No X Input/No X Input/Used/Target
+          path: 
         usage: 0
-        path: /Slide/Main/Attribute Bool Data V
+        path: Slide/Main/No X Input/Used/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   inputName:
     info:
       name: Input Name
       path: No X Input/Input Name
       fullPath: Slide/Main/No X Input/Input Name
-      id: -90410/8a9a84fa-6c52-4082-9d81-82f74edf30f4
+      relativePath: Input Name
+      id: -15682/8a9a84fa-6c52-4082-9d81-82f74edf30f4
       localID: 8a9a84fa-6c52-4082-9d81-82f74edf30f4
       parent: {fileID: 11423098}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 144134}
-          parent: {fileID: 11423098}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Slide (1)/Main/No X Input/No X Input/Input Name/Target
+          path: 
         usage: 0
-        path: /Slide/Main/Attribute String Data
+        path: Slide/Main/No X Input/Input Name/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
-        rawValue: Left/Right
+        rawValue: Button1
         rawType: Zios.Attributes.AttributeStringData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: Button1
 --- !u!114 &11424708
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -755,44 +758,46 @@ MonoBehaviour:
       name: Usable
       path: On Slope/Usable
       fullPath: Slide/Main/On Slope/Usable
-      id: -90420/03519fd9-21f7-4fb3-ab14-eb5d06524e8f
+      relativePath: Usable
+      id: -15684/03519fd9-21f7-4fb3-ab14-eb5d06524e8f
       localID: 03519fd9-21f7-4fb3-ab14-eb5d06524e8f
       parent: {fileID: 11424708}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 144134}
-          parent: {fileID: 11424708}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Slide (1)/Main/On Slope/On Slope/Usable/Target
+          path: 
         usage: 0
-        path: /Slide/Main/Attribute Bool Data [ B
+        path: Slide/Main/On Slope/Usable/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   active:
     info:
       name: Active
       path: On Slope/Active
       fullPath: Slide/Main/On Slope/Active
-      id: -90420/f62e100c-d2c9-4837-b987-f67458112990
+      relativePath: Active
+      id: -15684/f62e100c-d2c9-4837-b987-f67458112990
       localID: f62e100c-d2c9-4837-b987-f67458112990
       parent: {fileID: 11424708}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
+          disabled: 1
           search: 
           directObject: {fileID: 0}
           searchObject: {fileID: 0}
@@ -805,75 +810,73 @@ MonoBehaviour:
         referencePath: 
         operation: 0
         special: 0
-        rawValue: 
+        rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   used:
     info:
       name: Used
       path: On Slope/Used
       fullPath: Slide/Main/On Slope/Used
-      id: -90420/7994f131-b474-4dad-9e7a-cee4822ce5af
+      relativePath: Used
+      id: -15684/7994f131-b474-4dad-9e7a-cee4822ce5af
       localID: 7994f131-b474-4dad-9e7a-cee4822ce5af
       parent: {fileID: 11424708}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 144134}
-          parent: {fileID: 11424708}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Slide (1)/Main/On Slope/On Slope/Used/Target
+          path: 
         usage: 0
-        path: /Slide/Main/Attribute Bool Data Z
+        path: Slide/Main/On Slope/Used/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   value:
     info:
       name: On Slope
       path: On Slope
       fullPath: Slide/Main/On Slope
-      id: -90420/e48ac2e3-ba81-4ab9-8257-01509adec5b4
+      relativePath: 
+      id: -15684/e48ac2e3-ba81-4ab9-8257-01509adec5b4
       localID: e48ac2e3-ba81-4ab9-8257-01509adec5b4
       parent: {fileID: 11424708}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../../../
+          disabled: 0
+          search: '[Self]'
           directObject: {fileID: 0}
-          searchObject: {fileID: 124732}
+          searchObject: {fileID: 136648}
           parent: {fileID: 11424708}
           mode: 0
-          path: /Slide (1)/Main/On Slope/On Slope/Target
+          path: /Slide/Main/On Slope/0/Target
         usage: 1
-        path: /Slide/Main/Attribute Bool Data Y
-        referenceID: -71222/fdcae429-1271-430b-b39d-7d3a9fd6654a
-        referencePath: Collider Controller/On Slope
+        path: Slide/Main/On Slope/0
+        referenceID: 
+        referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
 --- !u!114 &11429828
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -897,44 +900,46 @@ MonoBehaviour:
       name: Usable
       path: Extreme Slide Angle/Usable
       fullPath: Slide/Main/Extreme Slide Angle/Usable
-      id: -90442/1a6025f1-45b1-40dd-ba58-44b4674f507c
+      relativePath: Usable
+      id: -15686/1a6025f1-45b1-40dd-ba58-44b4674f507c
       localID: 1a6025f1-45b1-40dd-ba58-44b4674f507c
       parent: {fileID: 11429828}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 144134}
-          parent: {fileID: 11429828}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Slide (1)/Main/Extreme Slide Angle/Extreme Slide Angle/Usable/Target
+          path: 
         usage: 0
-        path: /Slide/Main/Attribute Bool Data [ H
+        path: Slide/Main/Extreme Slide Angle/Usable/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   active:
     info:
       name: Active
       path: Extreme Slide Angle/Active
       fullPath: Slide/Main/Extreme Slide Angle/Active
-      id: -90442/1031ea24-7617-4a6e-825f-f963147d04a4
+      relativePath: Active
+      id: -15686/1031ea24-7617-4a6e-825f-f963147d04a4
       localID: 1031ea24-7617-4a6e-825f-f963147d04a4
       parent: {fileID: 11429828}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
+          disabled: 1
           search: 
           directObject: {fileID: 0}
           searchObject: {fileID: 0}
@@ -947,106 +952,104 @@ MonoBehaviour:
         referencePath: 
         operation: 0
         special: 0
-        rawValue: 
+        rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   used:
     info:
       name: Used
       path: Extreme Slide Angle/Used
       fullPath: Slide/Main/Extreme Slide Angle/Used
-      id: -90442/95c457f4-9507-42c1-a918-c5eaf6e824db
+      relativePath: Used
+      id: -15686/95c457f4-9507-42c1-a918-c5eaf6e824db
       localID: 95c457f4-9507-42c1-a918-c5eaf6e824db
       parent: {fileID: 11429828}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 144134}
-          parent: {fileID: 11429828}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Slide (1)/Main/Extreme Slide Angle/Extreme Slide Angle/Used/Target
+          path: 
         usage: 0
-        path: /Slide/Main/Attribute Bool Data [ F
+        path: Slide/Main/Extreme Slide Angle/Used/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   target:
     info:
       name: Target
       path: Extreme Slide Angle/Target
       fullPath: Slide/Main/Extreme Slide Angle/Target
-      id: -90442/2ba8db34-4751-471a-9bd4-ad751b8a4b5b
+      relativePath: Target
+      id: -15686/2ba8db34-4751-471a-9bd4-ad751b8a4b5b
       localID: 2ba8db34-4751-471a-9bd4-ad751b8a4b5b
       parent: {fileID: 11429828}
       mode: 1
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../../../
+          disabled: 0
+          search: '[Self]'
           directObject: {fileID: 0}
-          searchObject: {fileID: 124732}
+          searchObject: {fileID: 136648}
           parent: {fileID: 11429828}
           mode: 0
-          path: /Slide (1)/Main/Extreme Slide Angle/Extreme Slide Angle/Target/Target
+          path: /Slide/Main/Extreme Slide Angle/0/Target
         usage: 1
-        path: /Slide/Main/Attribute Float Data N
-        referenceID: -71222/095c71b6-a842-4e5d-9734-ee7d546c077b
-        referencePath: Collider Controller/Min Slide Angle
+        path: Slide/Main/Extreme Slide Angle/Target/0
+        referenceID: 
+        referencePath: 
         operation: 0
         special: 0
         rawValue: 0
         rawType: Zios.Attributes.AttributeFloatData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   value:
     info:
       name: Value
       path: Extreme Slide Angle/Value
       fullPath: Slide/Main/Extreme Slide Angle/Value
-      id: -90442/13e15812-8016-421b-9cea-cf02d9591b8f
+      relativePath: Value
+      id: -15686/13e15812-8016-421b-9cea-cf02d9591b8f
       localID: 13e15812-8016-421b-9cea-cf02d9591b8f
       parent: {fileID: 11429828}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 144134}
-          parent: {fileID: 11429828}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Slide (1)/Main/Extreme Slide Angle/Extreme Slide Angle/Value/Target
+          path: 
         usage: 0
-        path: /Slide/Main/Attribute Float Data M
+        path: Slide/Main/Extreme Slide Angle/Value/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
-        rawValue: 20
+        rawValue: 0
         rawType: Zios.Attributes.AttributeFloatData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
 --- !u!114 &11431038
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1070,44 +1073,46 @@ MonoBehaviour:
       name: Usable
       path: On Slide/Usable
       fullPath: Slide/Main/On Slide/Usable
-      id: -90348/1b629a6a-7684-4a63-8096-5d2b36892ddf
+      relativePath: Usable
+      id: -15688/1b629a6a-7684-4a63-8096-5d2b36892ddf
       localID: 1b629a6a-7684-4a63-8096-5d2b36892ddf
       parent: {fileID: 11431038}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 144134}
-          parent: {fileID: 11431038}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Slide (1)/Main/On Slide/On Slide/Usable/Target
+          path: 
         usage: 0
-        path: /Slide/Main/Attribute Bool Data E
+        path: Slide/Main/On Slide/Usable/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   active:
     info:
       name: Active
       path: On Slide/Active
       fullPath: Slide/Main/On Slide/Active
-      id: -90348/1c5143a0-0752-495d-9227-f14a52161d73
+      relativePath: Active
+      id: -15688/1c5143a0-0752-495d-9227-f14a52161d73
       localID: 1c5143a0-0752-495d-9227-f14a52161d73
       parent: {fileID: 11431038}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
+          disabled: 1
           search: 
           directObject: {fileID: 0}
           searchObject: {fileID: 0}
@@ -1120,75 +1125,73 @@ MonoBehaviour:
         referencePath: 
         operation: 0
         special: 0
-        rawValue: 
+        rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   used:
     info:
       name: Used
       path: On Slide/Used
       fullPath: Slide/Main/On Slide/Used
-      id: -90348/0946d789-df23-45e5-bf40-d753bba1a67e
+      relativePath: Used
+      id: -15688/0946d789-df23-45e5-bf40-d753bba1a67e
       localID: 0946d789-df23-45e5-bf40-d753bba1a67e
       parent: {fileID: 11431038}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 144134}
-          parent: {fileID: 11431038}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Slide (1)/Main/On Slide/On Slide/Used/Target
+          path: 
         usage: 0
-        path: /Slide/Main/Attribute Bool Data G
+        path: Slide/Main/On Slide/Used/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   value:
     info:
       name: On Slide
       path: On Slide
       fullPath: Slide/Main/On Slide
-      id: -90348/6c8f9bdf-cb5d-43aa-b2ac-fe5ccd46c995
+      relativePath: 
+      id: -15688/6c8f9bdf-cb5d-43aa-b2ac-fe5ccd46c995
       localID: 6c8f9bdf-cb5d-43aa-b2ac-fe5ccd46c995
       parent: {fileID: 11431038}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../../../
+          disabled: 0
+          search: '[Self]'
           directObject: {fileID: 0}
-          searchObject: {fileID: 124732}
+          searchObject: {fileID: 136648}
           parent: {fileID: 11431038}
           mode: 0
-          path: /Slide (1)/Main/On Slide/On Slide/Target
+          path: /Slide/Main/On Slide/0/Target
         usage: 1
-        path: /Slide/Main/Attribute Bool Data H
-        referenceID: -71222/3fe328cf-5b18-4e21-881b-0405a4d02a44
-        referencePath: Collider Controller/On Slide
+        path: Slide/Main/On Slide/0
+        referenceID: 
+        referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
 --- !u!114 &11434606
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1212,44 +1215,46 @@ MonoBehaviour:
       name: Usable
       path: No Z Input/Usable
       fullPath: Slide/Main/No Z Input/Usable
-      id: -90400/27287d4a-64a3-4a05-a583-045fb74a477d
+      relativePath: Usable
+      id: -15690/27287d4a-64a3-4a05-a583-045fb74a477d
       localID: 27287d4a-64a3-4a05-a583-045fb74a477d
       parent: {fileID: 11434606}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 144134}
-          parent: {fileID: 11434606}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Slide (1)/Main/No Z Input/No Z Input/Usable/Target
+          path: 
         usage: 0
-        path: /Slide/Main/Attribute Bool Data U
+        path: Slide/Main/No Z Input/Usable/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   active:
     info:
       name: Active
       path: No Z Input/Active
       fullPath: Slide/Main/No Z Input/Active
-      id: -90400/2a9a66e4-e3aa-41cd-ac03-7c943a775ca3
+      relativePath: Active
+      id: -15690/2a9a66e4-e3aa-41cd-ac03-7c943a775ca3
       localID: 2a9a66e4-e3aa-41cd-ac03-7c943a775ca3
       parent: {fileID: 11434606}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
+          disabled: 1
           search: 
           directObject: {fileID: 0}
           searchObject: {fileID: 0}
@@ -1262,75 +1267,73 @@ MonoBehaviour:
         referencePath: 
         operation: 0
         special: 0
-        rawValue: 
+        rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   used:
     info:
       name: Used
       path: No Z Input/Used
       fullPath: Slide/Main/No Z Input/Used
-      id: -90400/730a7997-0191-4940-8c5f-b0d3459c7a29
+      relativePath: Used
+      id: -15690/730a7997-0191-4940-8c5f-b0d3459c7a29
       localID: 730a7997-0191-4940-8c5f-b0d3459c7a29
       parent: {fileID: 11434606}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 144134}
-          parent: {fileID: 11434606}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Slide (1)/Main/No Z Input/No Z Input/Used/Target
+          path: 
         usage: 0
-        path: /Slide/Main/Attribute Bool Data S
+        path: Slide/Main/No Z Input/Used/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   inputName:
     info:
       name: Input Name
       path: No Z Input/Input Name
       fullPath: Slide/Main/No Z Input/Input Name
-      id: -90400/812e55e4-ed0c-4469-a9a3-b8776b51d5f4
+      relativePath: Input Name
+      id: -15690/812e55e4-ed0c-4469-a9a3-b8776b51d5f4
       localID: 812e55e4-ed0c-4469-a9a3-b8776b51d5f4
       parent: {fileID: 11434606}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 144134}
-          parent: {fileID: 11434606}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Slide (1)/Main/No Z Input/No Z Input/Input Name/Target
+          path: 
         usage: 0
-        path: /Slide/Main/Attribute String Data C
+        path: Slide/Main/No Z Input/Input Name/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
-        rawValue: Back/Forward
+        rawValue: Button1
         rawType: Zios.Attributes.AttributeStringData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: Button1
 --- !u!114 &11445304
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1354,44 +1357,46 @@ MonoBehaviour:
       name: Usable
       path: On Ground/Usable
       fullPath: Slide/Main/On Ground/Usable
-      id: -90454/c5a7d5cb-cf93-45c3-90bb-6067a42e0eb4
+      relativePath: Usable
+      id: -15692/c5a7d5cb-cf93-45c3-90bb-6067a42e0eb4
       localID: c5a7d5cb-cf93-45c3-90bb-6067a42e0eb4
       parent: {fileID: 11445304}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 144134}
-          parent: {fileID: 11445304}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Slide (1)/Main/On Ground/On Ground/Usable/Target
+          path: 
         usage: 0
-        path: /Slide/Main/Attribute Bool Data
+        path: Slide/Main/On Ground/Usable/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   active:
     info:
       name: Active
       path: On Ground/Active
       fullPath: Slide/Main/On Ground/Active
-      id: -90454/9222bc69-7c2a-4087-8c97-8fea1984f1bc
+      relativePath: Active
+      id: -15692/9222bc69-7c2a-4087-8c97-8fea1984f1bc
       localID: 9222bc69-7c2a-4087-8c97-8fea1984f1bc
       parent: {fileID: 11445304}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
+          disabled: 1
           search: 
           directObject: {fileID: 0}
           searchObject: {fileID: 0}
@@ -1404,230 +1409,228 @@ MonoBehaviour:
         referencePath: 
         operation: 0
         special: 0
-        rawValue: 
+        rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   used:
     info:
       name: Used
       path: On Ground/Used
       fullPath: Slide/Main/On Ground/Used
-      id: -90454/78d4bdec-d5b0-4ca4-88f1-4f93b5051b30
+      relativePath: Used
+      id: -15692/78d4bdec-d5b0-4ca4-88f1-4f93b5051b30
       localID: 78d4bdec-d5b0-4ca4-88f1-4f93b5051b30
       parent: {fileID: 11445304}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 144134}
-          parent: {fileID: 11445304}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Slide (1)/Main/On Ground/On Ground/Used/Target
+          path: 
         usage: 0
-        path: /Slide/Main/Attribute Bool Data [ I
+        path: Slide/Main/On Ground/Used/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   source:
     info:
       name: Source
       path: On Ground/Source
       fullPath: Slide/Main/On Ground/Source
-      id: -90454/450b8f41-682b-47f9-b68a-0705b0db9b96
+      relativePath: Source
+      id: -15692/450b8f41-682b-47f9-b68a-0705b0db9b96
       localID: 450b8f41-682b-47f9-b68a-0705b0db9b96
       parent: {fileID: 11445304}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 0
+          search: '[Self]'
           directObject: {fileID: 0}
-          searchObject: {fileID: 144134}
+          searchObject: {fileID: 136648}
           parent: {fileID: 11445304}
           mode: 0
-          path: /Slide (1)/Main/On Ground/On Ground/Source/Target
+          path: /Slide/Main/On Ground/0/Target
         usage: 1
-        path: /Slide/Main/Attribute Game Object Data
-        referenceID: -44606/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
-        referencePath: Source
+        path: Slide/Main/On Ground/Source/0
+        referenceID: 
+        referencePath: 
         operation: 0
         special: 0
-        rawValue: /Slide/
+        rawValue: 
         rawType: Zios.Attributes.AttributeGameObjectData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: {fileID: 0}
   direction:
     info:
       name: Direction
       path: On Ground/Direction
       fullPath: Slide/Main/On Ground/Direction
-      id: -90454/1e2da2e9-a7e6-4304-b3f3-ed1eb9c92389
+      relativePath: Direction
+      id: -15692/1e2da2e9-a7e6-4304-b3f3-ed1eb9c92389
       localID: 1e2da2e9-a7e6-4304-b3f3-ed1eb9c92389
       parent: {fileID: 11445304}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 144134}
-          parent: {fileID: 11445304}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Slide (1)/Main/On Ground/On Ground/Direction/Target
+          path: 
         usage: 0
-        path: /Slide/Main/Attribute Vector3Data
+        path: Slide/Main/On Ground/Direction/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: (0.0, -1.0, 0.0)
         rawType: Zios.Attributes.AttributeVector3Data
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: {x: -0, y: -1, z: -0}
     x:
       info:
         name: X
         path: On Ground/Direction/X
         fullPath: Slide/Main/On Ground/Direction/X
-        id: -90454/aae3ab1e-ca8d-41ea-b6af-1aaee7c0641a
+        relativePath: Direction/X
+        id: -15692/aae3ab1e-ca8d-41ea-b6af-1aaee7c0641a
         localID: aae3ab1e-ca8d-41ea-b6af-1aaee7c0641a
         parent: {fileID: 11445304}
         mode: 0
         linkType: 0
-        oldData:
+        data:
         - target:
-            search: ../@Settings
+            disabled: 1
+            search: 
             directObject: {fileID: 0}
-            searchObject: {fileID: 144134}
-            parent: {fileID: 11445304}
+            searchObject: {fileID: 0}
+            parent: {fileID: 0}
             mode: 0
-            path: /Slide (1)/Main/On Ground/On Ground/Direction/X/Target
+            path: 
           usage: 0
-          path: /Slide/Main/Attribute Float Data
+          path: Slide/Main/On Ground/Direction/X/0
           referenceID: 
           referencePath: 
           operation: 0
           special: 0
           rawValue: 0
           rawType: Zios.Attributes.AttributeFloatData
-        oldDataB: []
-        oldDataC: []
-        oldData: []
-        oldDataB: []
-        oldDataC: []
+        dataB: []
+        dataC: []
+      delayedValue: 0
     y:
       info:
         name: Y
         path: On Ground/Direction/Y
         fullPath: Slide/Main/On Ground/Direction/Y
-        id: -90454/fad1f9d5-6047-4c2e-92df-f2e2f6856d22
+        relativePath: Direction/Y
+        id: -15692/fad1f9d5-6047-4c2e-92df-f2e2f6856d22
         localID: fad1f9d5-6047-4c2e-92df-f2e2f6856d22
         parent: {fileID: 11445304}
         mode: 0
         linkType: 0
-        oldData:
+        data:
         - target:
-            search: ../@Settings
+            disabled: 1
+            search: 
             directObject: {fileID: 0}
-            searchObject: {fileID: 144134}
-            parent: {fileID: 11445304}
+            searchObject: {fileID: 0}
+            parent: {fileID: 0}
             mode: 0
-            path: /Slide (1)/Main/On Ground/On Ground/Direction/Y/Target
+            path: 
           usage: 0
-          path: /Slide/Main/Attribute Float Data X
+          path: Slide/Main/On Ground/Direction/Y/0
           referenceID: 
           referencePath: 
           operation: 0
           special: 0
           rawValue: 0
           rawType: Zios.Attributes.AttributeFloatData
-        oldDataB: []
-        oldDataC: []
-        oldData: []
-        oldDataB: []
-        oldDataC: []
+        dataB: []
+        dataC: []
+      delayedValue: 0
     z:
       info:
         name: Z
         path: On Ground/Direction/Z
         fullPath: Slide/Main/On Ground/Direction/Z
-        id: -90454/c670ee63-4522-4cb2-aeab-1e3afb76e344
+        relativePath: Direction/Z
+        id: -15692/c670ee63-4522-4cb2-aeab-1e3afb76e344
         localID: c670ee63-4522-4cb2-aeab-1e3afb76e344
         parent: {fileID: 11445304}
         mode: 0
         linkType: 0
-        oldData:
+        data:
         - target:
-            search: ../@Settings
+            disabled: 1
+            search: 
             directObject: {fileID: 0}
-            searchObject: {fileID: 144134}
-            parent: {fileID: 11445304}
+            searchObject: {fileID: 0}
+            parent: {fileID: 0}
             mode: 0
-            path: /Slide (1)/Main/On Ground/On Ground/Direction/Z/Target
+            path: 
           usage: 0
-          path: /Slide/Main/Attribute Float Data W
+          path: Slide/Main/On Ground/Direction/Z/0
           referenceID: 
           referencePath: 
           operation: 0
           special: 0
           rawValue: 0
           rawType: Zios.Attributes.AttributeFloatData
-        oldDataB: []
-        oldDataC: []
-        oldData: []
-        oldDataB: []
-        oldDataC: []
+        dataB: []
+        dataC: []
+      delayedValue: 0
   distance:
     info:
       name: Distance
       path: On Ground/Distance
       fullPath: Slide/Main/On Ground/Distance
-      id: -90454/493d35f3-4ddd-465d-83d3-47e32d7ce473
+      relativePath: Distance
+      id: -15692/493d35f3-4ddd-465d-83d3-47e32d7ce473
       localID: 493d35f3-4ddd-465d-83d3-47e32d7ce473
       parent: {fileID: 11445304}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 144134}
-          parent: {fileID: 11445304}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Slide (1)/Main/On Ground/On Ground/Distance/Target
+          path: 
         usage: 0
-        path: /Slide/Main/Attribute Float Data V
+        path: Slide/Main/On Ground/Distance/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
-        rawValue: 0.5
+        rawValue: 1
         rawType: Zios.Attributes.AttributeFloatData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 1
   layers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -1637,311 +1640,311 @@ MonoBehaviour:
       name: Hit Point
       path: On Ground/Hit Point
       fullPath: Slide/Main/On Ground/Hit Point
-      id: -90454/bd6c52c6-44f8-4200-a77b-fc880a92ab71
+      relativePath: Hit Point
+      id: -15692/bd6c52c6-44f8-4200-a77b-fc880a92ab71
       localID: bd6c52c6-44f8-4200-a77b-fc880a92ab71
       parent: {fileID: 11445304}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 144134}
-          parent: {fileID: 11445304}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Slide (1)/Main/On Ground/On Ground/Hit Point/Target
+          path: 
         usage: 0
-        path: /Slide/Main/Attribute Vector3Data D
+        path: Slide/Main/On Ground/Hit Point/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: (0.0, 0.0, 0.0)
         rawType: Zios.Attributes.AttributeVector3Data
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: {x: 0, y: 0, z: 0}
     x:
       info:
         name: X
         path: On Ground/Hit Point/X
         fullPath: Slide/Main/On Ground/Hit Point/X
-        id: -90454/be1dd85e-137b-4549-9cb0-d81b6d9d7698
+        relativePath: Hit Point/X
+        id: -15692/be1dd85e-137b-4549-9cb0-d81b6d9d7698
         localID: be1dd85e-137b-4549-9cb0-d81b6d9d7698
         parent: {fileID: 11445304}
         mode: 0
         linkType: 0
-        oldData:
+        data:
         - target:
-            search: ../@Settings
+            disabled: 1
+            search: 
             directObject: {fileID: 0}
-            searchObject: {fileID: 144134}
-            parent: {fileID: 11445304}
+            searchObject: {fileID: 0}
+            parent: {fileID: 0}
             mode: 0
-            path: /Slide (1)/Main/On Ground/On Ground/Hit Point/X/Target
+            path: 
           usage: 0
-          path: /Slide/Main/Attribute Float Data U
+          path: Slide/Main/On Ground/Hit Point/X/0
           referenceID: 
           referencePath: 
           operation: 0
           special: 0
           rawValue: 0
           rawType: Zios.Attributes.AttributeFloatData
-        oldDataB: []
-        oldDataC: []
-        oldData: []
-        oldDataB: []
-        oldDataC: []
+        dataB: []
+        dataC: []
+      delayedValue: 0
     y:
       info:
         name: Y
         path: On Ground/Hit Point/Y
         fullPath: Slide/Main/On Ground/Hit Point/Y
-        id: -90454/6b9c41b4-13de-4870-bf25-4447f7d4eaaa
+        relativePath: Hit Point/Y
+        id: -15692/6b9c41b4-13de-4870-bf25-4447f7d4eaaa
         localID: 6b9c41b4-13de-4870-bf25-4447f7d4eaaa
         parent: {fileID: 11445304}
         mode: 0
         linkType: 0
-        oldData:
+        data:
         - target:
-            search: ../@Settings
+            disabled: 1
+            search: 
             directObject: {fileID: 0}
-            searchObject: {fileID: 144134}
-            parent: {fileID: 11445304}
+            searchObject: {fileID: 0}
+            parent: {fileID: 0}
             mode: 0
-            path: /Slide (1)/Main/On Ground/On Ground/Hit Point/Y/Target
+            path: 
           usage: 0
-          path: /Slide/Main/Attribute Float Data T
+          path: Slide/Main/On Ground/Hit Point/Y/0
           referenceID: 
           referencePath: 
           operation: 0
           special: 0
           rawValue: 0
           rawType: Zios.Attributes.AttributeFloatData
-        oldDataB: []
-        oldDataC: []
-        oldData: []
-        oldDataB: []
-        oldDataC: []
+        dataB: []
+        dataC: []
+      delayedValue: 0
     z:
       info:
         name: Z
         path: On Ground/Hit Point/Z
         fullPath: Slide/Main/On Ground/Hit Point/Z
-        id: -90454/8cd0cfe8-a4c3-4b6d-9968-204aa35aa808
+        relativePath: Hit Point/Z
+        id: -15692/8cd0cfe8-a4c3-4b6d-9968-204aa35aa808
         localID: 8cd0cfe8-a4c3-4b6d-9968-204aa35aa808
         parent: {fileID: 11445304}
         mode: 0
         linkType: 0
-        oldData:
+        data:
         - target:
-            search: ../@Settings
+            disabled: 1
+            search: 
             directObject: {fileID: 0}
-            searchObject: {fileID: 144134}
-            parent: {fileID: 11445304}
+            searchObject: {fileID: 0}
+            parent: {fileID: 0}
             mode: 0
-            path: /Slide (1)/Main/On Ground/On Ground/Hit Point/Z/Target
+            path: 
           usage: 0
-          path: /Slide/Main/Attribute Float Data S
+          path: Slide/Main/On Ground/Hit Point/Z/0
           referenceID: 
           referencePath: 
           operation: 0
           special: 0
           rawValue: 0
           rawType: Zios.Attributes.AttributeFloatData
-        oldDataB: []
-        oldDataC: []
-        oldData: []
-        oldDataB: []
-        oldDataC: []
+        dataB: []
+        dataC: []
+      delayedValue: 0
   hitNormal:
     info:
       name: Hit Normal
       path: On Ground/Hit Normal
       fullPath: Slide/Main/On Ground/Hit Normal
-      id: -90454/e6b9ac88-e6aa-4252-8b33-26fa50f0716d
+      relativePath: Hit Normal
+      id: -15692/e6b9ac88-e6aa-4252-8b33-26fa50f0716d
       localID: e6b9ac88-e6aa-4252-8b33-26fa50f0716d
       parent: {fileID: 11445304}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 144134}
-          parent: {fileID: 11445304}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Slide (1)/Main/On Ground/On Ground/Hit Normal/Target
+          path: 
         usage: 0
-        path: /Slide/Main/Attribute Vector3Data C
+        path: Slide/Main/On Ground/Hit Normal/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: (0.0, 0.0, 0.0)
         rawType: Zios.Attributes.AttributeVector3Data
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: {x: 0, y: 0, z: 0}
     x:
       info:
         name: X
         path: On Ground/Hit Normal/X
         fullPath: Slide/Main/On Ground/Hit Normal/X
-        id: -90454/c96aeb83-b90e-4c45-9cb1-f3e3b135a895
+        relativePath: Hit Normal/X
+        id: -15692/c96aeb83-b90e-4c45-9cb1-f3e3b135a895
         localID: c96aeb83-b90e-4c45-9cb1-f3e3b135a895
         parent: {fileID: 11445304}
         mode: 0
         linkType: 0
-        oldData:
+        data:
         - target:
-            search: ../@Settings
+            disabled: 1
+            search: 
             directObject: {fileID: 0}
-            searchObject: {fileID: 144134}
-            parent: {fileID: 11445304}
+            searchObject: {fileID: 0}
+            parent: {fileID: 0}
             mode: 0
-            path: /Slide (1)/Main/On Ground/On Ground/Hit Normal/X/Target
+            path: 
           usage: 0
-          path: /Slide/Main/Attribute Float Data R
+          path: Slide/Main/On Ground/Hit Normal/X/0
           referenceID: 
           referencePath: 
           operation: 0
           special: 0
           rawValue: 0
           rawType: Zios.Attributes.AttributeFloatData
-        oldDataB: []
-        oldDataC: []
-        oldData: []
-        oldDataB: []
-        oldDataC: []
+        dataB: []
+        dataC: []
+      delayedValue: 0
     y:
       info:
         name: Y
         path: On Ground/Hit Normal/Y
         fullPath: Slide/Main/On Ground/Hit Normal/Y
-        id: -90454/35333df2-d009-4ece-a175-d1cc4c7b5006
+        relativePath: Hit Normal/Y
+        id: -15692/35333df2-d009-4ece-a175-d1cc4c7b5006
         localID: 35333df2-d009-4ece-a175-d1cc4c7b5006
         parent: {fileID: 11445304}
         mode: 0
         linkType: 0
-        oldData:
+        data:
         - target:
-            search: ../@Settings
+            disabled: 1
+            search: 
             directObject: {fileID: 0}
-            searchObject: {fileID: 144134}
-            parent: {fileID: 11445304}
+            searchObject: {fileID: 0}
+            parent: {fileID: 0}
             mode: 0
-            path: /Slide (1)/Main/On Ground/On Ground/Hit Normal/Y/Target
+            path: 
           usage: 0
-          path: /Slide/Main/Attribute Float Data Q
+          path: Slide/Main/On Ground/Hit Normal/Y/0
           referenceID: 
           referencePath: 
           operation: 0
           special: 0
           rawValue: 0
           rawType: Zios.Attributes.AttributeFloatData
-        oldDataB: []
-        oldDataC: []
-        oldData: []
-        oldDataB: []
-        oldDataC: []
+        dataB: []
+        dataC: []
+      delayedValue: 0
     z:
       info:
         name: Z
         path: On Ground/Hit Normal/Z
         fullPath: Slide/Main/On Ground/Hit Normal/Z
-        id: -90454/c7c6dc85-24d6-450b-83c5-f470d72f3bf9
+        relativePath: Hit Normal/Z
+        id: -15692/c7c6dc85-24d6-450b-83c5-f470d72f3bf9
         localID: c7c6dc85-24d6-450b-83c5-f470d72f3bf9
         parent: {fileID: 11445304}
         mode: 0
         linkType: 0
-        oldData:
+        data:
         - target:
-            search: ../@Settings
+            disabled: 1
+            search: 
             directObject: {fileID: 0}
-            searchObject: {fileID: 144134}
-            parent: {fileID: 11445304}
+            searchObject: {fileID: 0}
+            parent: {fileID: 0}
             mode: 0
-            path: /Slide (1)/Main/On Ground/On Ground/Hit Normal/Z/Target
+            path: 
           usage: 0
-          path: /Slide/Main/Attribute Float Data P
+          path: Slide/Main/On Ground/Hit Normal/Z/0
           referenceID: 
           referencePath: 
           operation: 0
           special: 0
           rawValue: 0
           rawType: Zios.Attributes.AttributeFloatData
-        oldDataB: []
-        oldDataC: []
-        oldData: []
-        oldDataB: []
-        oldDataC: []
+        dataB: []
+        dataC: []
+      delayedValue: 0
   hitDistance:
     info:
       name: Hit Distance
       path: On Ground/Hit Distance
       fullPath: Slide/Main/On Ground/Hit Distance
-      id: -90454/cf6d2531-e098-4e78-9005-ec0bdd732bc4
+      relativePath: Hit Distance
+      id: -15692/cf6d2531-e098-4e78-9005-ec0bdd732bc4
       localID: cf6d2531-e098-4e78-9005-ec0bdd732bc4
       parent: {fileID: 11445304}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 144134}
-          parent: {fileID: 11445304}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Slide (1)/Main/On Ground/On Ground/Hit Distance/Target
+          path: 
         usage: 0
-        path: /Slide/Main/Attribute Float Data O
+        path: Slide/Main/On Ground/Hit Distance/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: 0
         rawType: Zios.Attributes.AttributeFloatData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   hit:
     info:
       name: Hit
       path: On Ground/Hit
       fullPath: Slide/Main/On Ground/Hit
-      id: -90454/7df6e8aa-f57f-4ca1-8634-ad71592b7571
+      relativePath: Hit
+      id: -15692/7df6e8aa-f57f-4ca1-8634-ad71592b7571
       localID: 7df6e8aa-f57f-4ca1-8634-ad71592b7571
       parent: {fileID: 11445304}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
+          disabled: 0
           search: '[Self]'
           directObject: {fileID: 0}
           searchObject: {fileID: 136648}
           parent: {fileID: 11445304}
           mode: 0
-          path: /Slide (1)/Main/On Ground/On Ground/Hit/Target
+          path: /Slide/Main/On Ground/0/Target
         usage: 1
-        path: /Slide/Main/Old Attribute Game Object Data
+        path: Slide/Main/On Ground/Hit/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: 
         rawType: Zios.Attributes.AttributeGameObjectData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: {fileID: 0}
 --- !u!114 &11446288
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1961,32 +1964,32 @@ MonoBehaviour:
       name: Source
       path: Source
       fullPath: Slide/@Settings/Source
-      id: -90504/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
+      relativePath: 
+      id: -15694/0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
       localID: 0ca1fc6a-2a0a-479b-b8b3-b48a83fc3200
       parent: {fileID: 11446288}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../../..
+          disabled: 0
+          search: '[Self]'
           directObject: {fileID: 0}
-          searchObject: {fileID: 124732}
+          searchObject: {fileID: 144134}
           parent: {fileID: 11446288}
           mode: 0
-          path: /Slide (1)/@Settings/Source/Source/Target
+          path: /Slide/@Settings/Source/0/Target
         usage: 1
-        path: /Slide/@Settings/Attribute Game Object Data B
+        path: Slide/@Settings/Source/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: 
         rawType: Zios.Attributes.AttributeGameObjectData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: {fileID: 0}
   remember: 0
 --- !u!114 &11449072
 MonoBehaviour:
@@ -2011,44 +2014,46 @@ MonoBehaviour:
       name: Usable
       path: Animation/Usable
       fullPath: Slide/Main/Animation/Usable
-      id: -90332/2377ed68-0f39-4d80-8103-c5150a46f05f
+      relativePath: Usable
+      id: -15696/2377ed68-0f39-4d80-8103-c5150a46f05f
       localID: 2377ed68-0f39-4d80-8103-c5150a46f05f
       parent: {fileID: 11449072}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 136648}
-          parent: {fileID: 11449072}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Slide (1)/Main/Animation/Animation/Usable/Target
+          path: 
         usage: 0
-        path: /Slide/Main/Attribute Bool Data C
+        path: Slide/Main/Animation/Usable/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   active:
     info:
       name: Active
       path: Animation/Active
       fullPath: Slide/Main/Animation/Active
-      id: -90332/58e8a5e0-01be-40b4-8475-c271d294b4f6
+      relativePath: Active
+      id: -15696/58e8a5e0-01be-40b4-8475-c271d294b4f6
       localID: 58e8a5e0-01be-40b4-8475-c271d294b4f6
       parent: {fileID: 11449072}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
+          disabled: 1
           search: 
           directObject: {fileID: 0}
           searchObject: {fileID: 0}
@@ -2061,168 +2066,166 @@ MonoBehaviour:
         referencePath: 
         operation: 0
         special: 0
-        rawValue: 
+        rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   used:
     info:
       name: Used
       path: Animation/Used
       fullPath: Slide/Main/Animation/Used
-      id: -90332/57a90ae5-dbf9-4458-8b54-f0be7938abbc
+      relativePath: Used
+      id: -15696/57a90ae5-dbf9-4458-8b54-f0be7938abbc
       localID: 57a90ae5-dbf9-4458-8b54-f0be7938abbc
       parent: {fileID: 11449072}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 136648}
-          parent: {fileID: 11449072}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Slide (1)/Main/Animation/Animation/Used/Target
+          path: 
         usage: 0
-        path: /Slide/Main/Attribute Bool Data D
+        path: Slide/Main/Animation/Used/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   animationName:
     info:
       name: Animation Name
       path: Animation/Animation Name
       fullPath: Slide/Main/Animation/Animation Name
-      id: -90332/10c4c93a-0903-4eb9-b563-762783b3a1dd
+      relativePath: Animation Name
+      id: -15696/10c4c93a-0903-4eb9-b563-762783b3a1dd
       localID: 10c4c93a-0903-4eb9-b563-762783b3a1dd
       parent: {fileID: 11449072}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 144134}
-          parent: {fileID: 11449072}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Slide (1)/Main/Animation/Animation/Animation Name/Target
-        usage: 1
-        path: /Slide/Main/Attribute String Data B
-        referenceID: -44542/7e894ef6-a99f-450f-b42a-e1aa6c29abb9
-        referencePath: Animation
+          path: 
+        usage: 0
+        path: Slide/Main/Animation/Animation Name/0
+        referenceID: 
+        referencePath: 
         operation: 0
         special: 0
-        rawValue: FlyDown
+        rawValue: 
         rawType: Zios.Attributes.AttributeStringData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 
   speed:
     info:
       name: Speed
       path: Animation/Speed
       fullPath: Slide/Main/Animation/Speed
-      id: -90332/27835566-56e1-49de-b9ba-762ba4d45c0d
+      relativePath: Speed
+      id: -15696/27835566-56e1-49de-b9ba-762ba4d45c0d
       localID: 27835566-56e1-49de-b9ba-762ba4d45c0d
       parent: {fileID: 11449072}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 136648}
-          parent: {fileID: 11449072}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Slide (1)/Main/Animation/Animation/Speed/Target
+          path: 
         usage: 0
-        path: /Slide/Main/Attribute Float Data B
+        path: Slide/Main/Animation/Speed/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
-        rawValue: 1
+        rawValue: -1
         rawType: Zios.Attributes.AttributeFloatData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: -1
   weight:
     info:
       name: Weight
       path: Animation/Weight
       fullPath: Slide/Main/Animation/Weight
-      id: -90332/efecf60c-63f6-4942-811c-d8e6ef06610b
+      relativePath: Weight
+      id: -15696/efecf60c-63f6-4942-811c-d8e6ef06610b
       localID: efecf60c-63f6-4942-811c-d8e6ef06610b
       parent: {fileID: 11449072}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 136648}
-          parent: {fileID: 11449072}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Slide (1)/Main/Animation/Animation/Weight/Target
+          path: 
         usage: 0
-        path: /Slide/Main/Attribute Float Data C
+        path: Slide/Main/Animation/Weight/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
-        rawValue: 1
+        rawValue: -1
         rawType: Zios.Attributes.AttributeFloatData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: -1
   target:
     info:
       name: Target
       path: Animation/Target
       fullPath: Slide/Main/Animation/Target
-      id: -90332/acae08fd-bd14-45bb-972e-50781a370be2
+      relativePath: Target
+      id: -15696/acae08fd-bd14-45bb-972e-50781a370be2
       localID: acae08fd-bd14-45bb-972e-50781a370be2
       parent: {fileID: 11449072}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 0
+          search: '[Self]'
           directObject: {fileID: 0}
-          searchObject: {fileID: 144134}
+          searchObject: {fileID: 136648}
           parent: {fileID: 11449072}
           mode: 0
-          path: /Slide (1)/Main/Animation/Animation/Target/Target
+          path: /Slide/Main/Animation/0/Target
         usage: 1
-        path: /Slide/Main/Attribute Game Object Data B
-        referenceID: -44670/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
-        referencePath: Visuals
+        path: Slide/Main/Animation/Target/0
+        referenceID: 
+        referencePath: 
         operation: 0
         special: 0
         rawValue: 
         rawType: Zios.Attributes.AttributeGameObjectData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: {fileID: 0}
 --- !u!114 &11458824
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2246,44 +2249,46 @@ MonoBehaviour:
       name: Usable
       path: On Slope Timer/Usable
       fullPath: Slide/Main/On Slope Timer/Usable
-      id: -90358/eeef243e-0aab-4103-b112-914ab8d1d36e
+      relativePath: Usable
+      id: -15698/eeef243e-0aab-4103-b112-914ab8d1d36e
       localID: eeef243e-0aab-4103-b112-914ab8d1d36e
       parent: {fileID: 11458824}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 144134}
-          parent: {fileID: 11458824}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Slide (1)/Main/On Slope Timer/On Slope Timer/Usable/Target
+          path: 
         usage: 0
-        path: /Slide/Main/Attribute Bool Data I
+        path: Slide/Main/On Slope Timer/Usable/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   active:
     info:
       name: Active
       path: On Slope Timer/Active
       fullPath: Slide/Main/On Slope Timer/Active
-      id: -90358/b5932a54-6965-4243-8a17-1276d4e28d39
+      relativePath: Active
+      id: -15698/b5932a54-6965-4243-8a17-1276d4e28d39
       localID: b5932a54-6965-4243-8a17-1276d4e28d39
       parent: {fileID: 11458824}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
+          disabled: 1
           search: 
           directObject: {fileID: 0}
           searchObject: {fileID: 0}
@@ -2296,138 +2301,136 @@ MonoBehaviour:
         referencePath: 
         operation: 0
         special: 0
-        rawValue: 
+        rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   used:
     info:
       name: Used
       path: On Slope Timer/Used
       fullPath: Slide/Main/On Slope Timer/Used
-      id: -90358/e369316b-4ac2-48a2-ba45-890f1b7f49fc
+      relativePath: Used
+      id: -15698/e369316b-4ac2-48a2-ba45-890f1b7f49fc
       localID: e369316b-4ac2-48a2-ba45-890f1b7f49fc
       parent: {fileID: 11458824}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 144134}
-          parent: {fileID: 11458824}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Slide (1)/Main/On Slope Timer/On Slope Timer/Used/Target
+          path: 
         usage: 0
-        path: /Slide/Main/Attribute Bool Data K
+        path: Slide/Main/On Slope Timer/Used/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   type: 0
   seconds:
     info:
       name: Seconds
       path: On Slope Timer/Seconds
       fullPath: Slide/Main/On Slope Timer/Seconds
-      id: -90358/c4005646-c780-4c03-abf6-c55d0664a015
+      relativePath: Seconds
+      id: -15698/c4005646-c780-4c03-abf6-c55d0664a015
       localID: c4005646-c780-4c03-abf6-c55d0664a015
       parent: {fileID: 11458824}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 144134}
-          parent: {fileID: 11458824}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Slide (1)/Main/On Slope Timer/On Slope Timer/Seconds/Target
+          path: 
         usage: 0
-        path: /Slide/Main/Attribute Float Data D
+        path: Slide/Main/On Slope Timer/Seconds/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
-        rawValue: 0.5
+        rawValue: 0
         rawType: Zios.Attributes.AttributeFloatData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   isStarted:
     info:
       name: Is Started
       path: On Slope Timer/Is Started
       fullPath: Slide/Main/On Slope Timer/Is Started
-      id: -90358/5edbcf01-5a77-4da1-b4c6-bd541268be5e
+      relativePath: Is Started
+      id: -15698/5edbcf01-5a77-4da1-b4c6-bd541268be5e
       localID: 5edbcf01-5a77-4da1-b4c6-bd541268be5e
       parent: {fileID: 11458824}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 144134}
-          parent: {fileID: 11458824}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Slide (1)/Main/On Slope Timer/On Slope Timer/Is Started/Target
+          path: 
         usage: 0
-        path: /Slide/Main/Attribute Bool Data L
+        path: Slide/Main/On Slope Timer/Is Started/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   isComplete:
     info:
       name: Is Complete
       path: On Slope Timer/Is Complete
       fullPath: Slide/Main/On Slope Timer/Is Complete
-      id: -90358/e593d051-32c3-492d-96e2-6b2a5d31948a
+      relativePath: Is Complete
+      id: -15698/e593d051-32c3-492d-96e2-6b2a5d31948a
       localID: e593d051-32c3-492d-96e2-6b2a5d31948a
       parent: {fileID: 11458824}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 144134}
-          parent: {fileID: 11458824}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Slide (1)/Main/On Slope Timer/On Slope Timer/Is Complete/Target
+          path: 
         usage: 0
-        path: /Slide/Main/Attribute Bool Data M
+        path: Slide/Main/On Slope Timer/Is Complete/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
 --- !u!114 &11474918
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2447,32 +2450,32 @@ MonoBehaviour:
       name: Visuals
       path: Visuals
       fullPath: Slide/@Settings/Visuals
-      id: -90506/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
+      relativePath: 
+      id: -15700/33bddd78-c7f6-40fe-94d8-1637fbd7fa73
       localID: 33bddd78-c7f6-40fe-94d8-1637fbd7fa73
       parent: {fileID: 11474918}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../../../Visuals
+          disabled: 0
+          search: '[Self]'
           directObject: {fileID: 0}
-          searchObject: {fileID: 0}
+          searchObject: {fileID: 144134}
           parent: {fileID: 11474918}
           mode: 0
-          path: /Slide (1)/@Settings/Visuals/Visuals/Target
+          path: /Slide/@Settings/Visuals/0/Target
         usage: 1
-        path: /Slide/@Settings/Attribute Game Object Data
+        path: Slide/@Settings/Visuals/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: 
         rawType: Zios.Attributes.AttributeGameObjectData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: {fileID: 0}
   remember: 0
 --- !u!114 &11481326
 MonoBehaviour:
@@ -2497,44 +2500,46 @@ MonoBehaviour:
       name: Usable
       path: Reset Slide Angle/Usable
       fullPath: Slide/Main/Reset Slide Angle/Usable
-      id: -90430/a96f22ef-e7dd-4cd4-9116-7f242dfabad5
+      relativePath: Usable
+      id: -15702/a96f22ef-e7dd-4cd4-9116-7f242dfabad5
       localID: a96f22ef-e7dd-4cd4-9116-7f242dfabad5
       parent: {fileID: 11481326}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 144134}
-          parent: {fileID: 11481326}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Slide (1)/Main/Reset Slide Angle/Reset Slide Angle/Usable/Target
+          path: 
         usage: 0
-        path: /Slide/Main/Attribute Bool Data [ E
+        path: Slide/Main/Reset Slide Angle/Usable/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   active:
     info:
       name: Active
       path: Reset Slide Angle/Active
       fullPath: Slide/Main/Reset Slide Angle/Active
-      id: -90430/a78ecdc3-d614-4cd0-806f-d893e6df00a4
+      relativePath: Active
+      id: -15702/a78ecdc3-d614-4cd0-806f-d893e6df00a4
       localID: a78ecdc3-d614-4cd0-806f-d893e6df00a4
       parent: {fileID: 11481326}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
+          disabled: 1
           search: 
           directObject: {fileID: 0}
           searchObject: {fileID: 0}
@@ -2547,106 +2552,104 @@ MonoBehaviour:
         referencePath: 
         operation: 0
         special: 0
-        rawValue: 
+        rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   used:
     info:
       name: Used
       path: Reset Slide Angle/Used
       fullPath: Slide/Main/Reset Slide Angle/Used
-      id: -90430/78fe96fc-e8a7-499c-a0af-f8f81b66502d
+      relativePath: Used
+      id: -15702/78fe96fc-e8a7-499c-a0af-f8f81b66502d
       localID: 78fe96fc-e8a7-499c-a0af-f8f81b66502d
       parent: {fileID: 11481326}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 144134}
-          parent: {fileID: 11481326}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Slide (1)/Main/Reset Slide Angle/Reset Slide Angle/Used/Target
+          path: 
         usage: 0
-        path: /Slide/Main/Attribute Bool Data [ C
+        path: Slide/Main/Reset Slide Angle/Used/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   target:
     info:
       name: Target
       path: Reset Slide Angle/Target
       fullPath: Slide/Main/Reset Slide Angle/Target
-      id: -90430/28d5066f-21a7-4267-8056-04bd9091c715
+      relativePath: Target
+      id: -15702/28d5066f-21a7-4267-8056-04bd9091c715
       localID: 28d5066f-21a7-4267-8056-04bd9091c715
       parent: {fileID: 11481326}
       mode: 1
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../../../
+          disabled: 0
+          search: '[Self]'
           directObject: {fileID: 0}
-          searchObject: {fileID: 124732}
+          searchObject: {fileID: 136648}
           parent: {fileID: 11481326}
           mode: 0
-          path: /Slide (1)/Main/Reset Slide Angle/Reset Slide Angle/Target/Target
+          path: /Slide/Main/Reset Slide Angle/0/Target
         usage: 1
-        path: /Slide/Main/Attribute Float Data L
-        referenceID: -71222/095c71b6-a842-4e5d-9734-ee7d546c077b
-        referencePath: Collider Controller/Min Slide Angle
+        path: Slide/Main/Reset Slide Angle/Target/0
+        referenceID: 
+        referencePath: 
         operation: 0
         special: 0
         rawValue: 0
         rawType: Zios.Attributes.AttributeFloatData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   value:
     info:
       name: Value
       path: Reset Slide Angle/Value
       fullPath: Slide/Main/Reset Slide Angle/Value
-      id: -90430/f6bcc7da-4052-4adb-a8c7-471c3ae763ec
+      relativePath: Value
+      id: -15702/f6bcc7da-4052-4adb-a8c7-471c3ae763ec
       localID: f6bcc7da-4052-4adb-a8c7-471c3ae763ec
       parent: {fileID: 11481326}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: ../@Settings
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 144134}
-          parent: {fileID: 11481326}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Slide (1)/Main/Reset Slide Angle/Reset Slide Angle/Value/Target
+          path: 
         usage: 0
-        path: /Slide/Main/Attribute Float Data K
+        path: Slide/Main/Reset Slide Angle/Value/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
-        rawValue: 50
+        rawValue: 0
         rawType: Zios.Attributes.AttributeFloatData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
 --- !u!114 &11495662
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2670,44 +2673,46 @@ MonoBehaviour:
       name: Usable
       path: Slide/Usable
       fullPath: Slide/Main/Slide/Usable
-      id: -90330/403ada1a-fa8f-4829-94df-09be0be33a98
+      relativePath: Usable
+      id: -15704/403ada1a-fa8f-4829-94df-09be0be33a98
       localID: 403ada1a-fa8f-4829-94df-09be0be33a98
       parent: {fileID: 11495662}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 136648}
-          parent: {fileID: 11495662}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Slide (1)/Main/Slide (1)/Slide (1)/Usable/Target
+          path: 
         usage: 0
-        path: /Slide/Main/Old Attribute Bool Data
+        path: Slide/Main/Slide/Usable/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: True
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   active:
     info:
       name: Active
       path: Slide/Active
       fullPath: Slide/Main/Slide/Active
-      id: -90330/dafb6d71-ca1b-4f50-b1a9-a20230dc52b8
+      relativePath: Active
+      id: -15704/dafb6d71-ca1b-4f50-b1a9-a20230dc52b8
       localID: dafb6d71-ca1b-4f50-b1a9-a20230dc52b8
       parent: {fileID: 11495662}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
+          disabled: 1
           search: 
           directObject: {fileID: 0}
           searchObject: {fileID: 0}
@@ -2720,785 +2725,43 @@ MonoBehaviour:
         referencePath: 
         operation: 0
         special: 0
-        rawValue: 
+        rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   used:
     info:
       name: Used
       path: Slide/Used
       fullPath: Slide/Main/Slide/Used
-      id: -90330/ce5061da-a7ee-46c3-8596-56590dbd0ffb
+      relativePath: Used
+      id: -15704/ce5061da-a7ee-46c3-8596-56590dbd0ffb
       localID: ce5061da-a7ee-46c3-8596-56590dbd0ffb
       parent: {fileID: 11495662}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 136648}
-          parent: {fileID: 11495662}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Slide (1)/Main/Slide (1)/Slide (1)/Used/Target
+          path: 
         usage: 0
-        path: /Slide/Main/Old Attribute Bool Data C
+        path: Slide/Main/Slide/Used/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: False
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 0
   table:
-  - name: Animation
-    stateTable: {fileID: 0}
-    id: -1627016
-    target: {fileID: 11449072}
-    empty: 0
-    section: 
-    requirements:
-    - data:
-      - name: '@Active'
-        stateTable: {fileID: 11495662}
-        id: -44732
-        target: {fileID: 11495662}
-        requireOn: 1
-        requireOff: 0
-      - name: Animation
-        stateTable: {fileID: 0}
-        id: -1627016
-        target: {fileID: 11449072}
-        requireOn: 0
-        requireOff: 0
-      - name: Extreme Slide Angle
-        stateTable: {fileID: 11495662}
-        id: -980926
-        target: {fileID: 11429828}
-        requireOn: 0
-        requireOff: 0
-      - name: No X Input
-        stateTable: {fileID: 11495662}
-        id: -149450
-        target: {fileID: 11423098}
-        requireOn: 0
-        requireOff: 0
-      - name: No Z Input
-        stateTable: {fileID: 11495662}
-        id: -147728
-        target: {fileID: 11434606}
-        requireOn: 0
-        requireOff: 0
-      - name: On Ground
-        stateTable: {fileID: 11495662}
-        id: -36544
-        target: {fileID: 11445304}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slide
-        stateTable: {fileID: 11495662}
-        id: -2393936
-        target: {fileID: 11431038}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slope
-        stateTable: {fileID: 11495662}
-        id: -951092
-        target: {fileID: 11424708}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slope Timer
-        stateTable: {fileID: 11495662}
-        id: -2397260
-        target: {fileID: 11458824}
-        requireOn: 0
-        requireOff: 0
-      - name: Reset Slide Angle
-        stateTable: {fileID: 11495662}
-        id: -981684
-        target: {fileID: 11481326}
-        requireOn: 0
-        requireOff: 0
-      - name: Rotate Direction
-        stateTable: {fileID: 11495662}
-        id: -2628708
-        target: {fileID: 11402688}
-        requireOn: 0
-        requireOff: 0
-  - name: Extreme Slide Angle
-    stateTable: {fileID: 11495662}
-    id: -980926
-    target: {fileID: 11429828}
-    empty: 0
-    section: 
-    requirements:
-    - data:
-      - name: '@Active'
-        stateTable: {fileID: 11495662}
-        id: -44732
-        target: {fileID: 11495662}
-        requireOn: 1
-        requireOff: 0
-      - name: Animation
-        stateTable: {fileID: 11495662}
-        id: -1627016
-        target: {fileID: 11449072}
-        requireOn: 0
-        requireOff: 0
-      - name: Extreme Slide Angle
-        stateTable: {fileID: 11495662}
-        id: -980926
-        target: {fileID: 11429828}
-        requireOn: 0
-        requireOff: 0
-      - name: No X Input
-        stateTable: {fileID: 11495662}
-        id: -149450
-        target: {fileID: 11423098}
-        requireOn: 0
-        requireOff: 0
-      - name: No Z Input
-        stateTable: {fileID: 11495662}
-        id: -147728
-        target: {fileID: 11434606}
-        requireOn: 0
-        requireOff: 0
-      - name: On Ground
-        stateTable: {fileID: 11495662}
-        id: -36544
-        target: {fileID: 11445304}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slide
-        stateTable: {fileID: 11495662}
-        id: -2393936
-        target: {fileID: 11431038}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slope
-        stateTable: {fileID: 11495662}
-        id: -951092
-        target: {fileID: 11424708}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slope Timer
-        stateTable: {fileID: 11495662}
-        id: -2397260
-        target: {fileID: 11458824}
-        requireOn: 0
-        requireOff: 0
-      - name: Reset Slide Angle
-        stateTable: {fileID: 11495662}
-        id: -981684
-        target: {fileID: 11481326}
-        requireOn: 0
-        requireOff: 0
-      - name: Rotate Direction
-        stateTable: {fileID: 11495662}
-        id: -2628708
-        target: {fileID: 11402688}
-        requireOn: 0
-        requireOff: 0
-  - name: No X Input
-    stateTable: {fileID: 11495662}
-    id: -149450
-    target: {fileID: 11423098}
-    empty: 0
-    section: 
-    requirements:
-    - data:
-      - name: '@Active'
-        stateTable: {fileID: 11495662}
-        id: -44732
-        target: {fileID: 11495662}
-        requireOn: 0
-        requireOff: 0
-      - name: Animation
-        stateTable: {fileID: 11495662}
-        id: -1627016
-        target: {fileID: 11449072}
-        requireOn: 0
-        requireOff: 0
-      - name: Extreme Slide Angle
-        stateTable: {fileID: 11495662}
-        id: -980926
-        target: {fileID: 11429828}
-        requireOn: 0
-        requireOff: 0
-      - name: No X Input
-        stateTable: {fileID: 11495662}
-        id: -149450
-        target: {fileID: 11423098}
-        requireOn: 0
-        requireOff: 0
-      - name: No Z Input
-        stateTable: {fileID: 11495662}
-        id: -147728
-        target: {fileID: 11434606}
-        requireOn: 0
-        requireOff: 0
-      - name: On Ground
-        stateTable: {fileID: 11495662}
-        id: -36544
-        target: {fileID: 11445304}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slide
-        stateTable: {fileID: 11495662}
-        id: -2393936
-        target: {fileID: 11431038}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slope
-        stateTable: {fileID: 11495662}
-        id: -951092
-        target: {fileID: 11424708}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slope Timer
-        stateTable: {fileID: 11495662}
-        id: -2397260
-        target: {fileID: 11458824}
-        requireOn: 0
-        requireOff: 0
-      - name: Reset Slide Angle
-        stateTable: {fileID: 11495662}
-        id: -981684
-        target: {fileID: 11481326}
-        requireOn: 0
-        requireOff: 0
-      - name: Rotate Direction
-        stateTable: {fileID: 11495662}
-        id: -2628708
-        target: {fileID: 11402688}
-        requireOn: 0
-        requireOff: 0
-  - name: No Z Input
-    stateTable: {fileID: 11495662}
-    id: -147728
-    target: {fileID: 11434606}
-    empty: 0
-    section: 
-    requirements:
-    - data:
-      - name: '@Active'
-        stateTable: {fileID: 11495662}
-        id: -44732
-        target: {fileID: 11495662}
-        requireOn: 0
-        requireOff: 0
-      - name: Animation
-        stateTable: {fileID: 11495662}
-        id: -1627016
-        target: {fileID: 11449072}
-        requireOn: 0
-        requireOff: 0
-      - name: Extreme Slide Angle
-        stateTable: {fileID: 11495662}
-        id: -980926
-        target: {fileID: 11429828}
-        requireOn: 0
-        requireOff: 0
-      - name: No X Input
-        stateTable: {fileID: 11495662}
-        id: -149450
-        target: {fileID: 11423098}
-        requireOn: 0
-        requireOff: 0
-      - name: No Z Input
-        stateTable: {fileID: 11495662}
-        id: -147728
-        target: {fileID: 11434606}
-        requireOn: 0
-        requireOff: 0
-      - name: On Ground
-        stateTable: {fileID: 11495662}
-        id: -36544
-        target: {fileID: 11445304}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slide
-        stateTable: {fileID: 11495662}
-        id: -2393936
-        target: {fileID: 11431038}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slope
-        stateTable: {fileID: 11495662}
-        id: -951092
-        target: {fileID: 11424708}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slope Timer
-        stateTable: {fileID: 11495662}
-        id: -2397260
-        target: {fileID: 11458824}
-        requireOn: 0
-        requireOff: 0
-      - name: Reset Slide Angle
-        stateTable: {fileID: 11495662}
-        id: -981684
-        target: {fileID: 11481326}
-        requireOn: 0
-        requireOff: 0
-      - name: Rotate Direction
-        stateTable: {fileID: 11495662}
-        id: -2628708
-        target: {fileID: 11402688}
-        requireOn: 0
-        requireOff: 0
-  - name: On Ground
-    stateTable: {fileID: 11495662}
-    id: -36544
-    target: {fileID: 11445304}
-    empty: 0
-    section: 
-    requirements:
-    - data:
-      - name: '@Active'
-        stateTable: {fileID: 11495662}
-        id: -44732
-        target: {fileID: 11495662}
-        requireOn: 0
-        requireOff: 0
-      - name: Animation
-        stateTable: {fileID: 11495662}
-        id: -1627016
-        target: {fileID: 11449072}
-        requireOn: 0
-        requireOff: 0
-      - name: Extreme Slide Angle
-        stateTable: {fileID: 11495662}
-        id: -980926
-        target: {fileID: 11429828}
-        requireOn: 0
-        requireOff: 0
-      - name: No X Input
-        stateTable: {fileID: 11495662}
-        id: -149450
-        target: {fileID: 11423098}
-        requireOn: 0
-        requireOff: 0
-      - name: No Z Input
-        stateTable: {fileID: 11495662}
-        id: -147728
-        target: {fileID: 11434606}
-        requireOn: 0
-        requireOff: 0
-      - name: On Ground
-        stateTable: {fileID: 11495662}
-        id: -36544
-        target: {fileID: 11445304}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slide
-        stateTable: {fileID: 11495662}
-        id: -2393936
-        target: {fileID: 11431038}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slope
-        stateTable: {fileID: 11495662}
-        id: -951092
-        target: {fileID: 11424708}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slope Timer
-        stateTable: {fileID: 11495662}
-        id: -2397260
-        target: {fileID: 11458824}
-        requireOn: 0
-        requireOff: 0
-      - name: Reset Slide Angle
-        stateTable: {fileID: 11495662}
-        id: -981684
-        target: {fileID: 11481326}
-        requireOn: 0
-        requireOff: 0
-      - name: Rotate Direction
-        stateTable: {fileID: 11495662}
-        id: -2628708
-        target: {fileID: 11402688}
-        requireOn: 0
-        requireOff: 0
-  - name: On Slide
-    stateTable: {fileID: 11495662}
-    id: -2393936
-    target: {fileID: 11431038}
-    empty: 0
-    section: 
-    requirements:
-    - data:
-      - name: '@Active'
-        stateTable: {fileID: 11495662}
-        id: -44732
-        target: {fileID: 11495662}
-        requireOn: 0
-        requireOff: 0
-      - name: Animation
-        stateTable: {fileID: 11495662}
-        id: -1627016
-        target: {fileID: 11449072}
-        requireOn: 0
-        requireOff: 0
-      - name: Extreme Slide Angle
-        stateTable: {fileID: 11495662}
-        id: -980926
-        target: {fileID: 11429828}
-        requireOn: 0
-        requireOff: 0
-      - name: No X Input
-        stateTable: {fileID: 11495662}
-        id: -149450
-        target: {fileID: 11423098}
-        requireOn: 0
-        requireOff: 0
-      - name: No Z Input
-        stateTable: {fileID: 11495662}
-        id: -147728
-        target: {fileID: 11434606}
-        requireOn: 0
-        requireOff: 0
-      - name: On Ground
-        stateTable: {fileID: 11495662}
-        id: -36544
-        target: {fileID: 11445304}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slide
-        stateTable: {fileID: 11495662}
-        id: -2393936
-        target: {fileID: 11431038}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slope
-        stateTable: {fileID: 11495662}
-        id: -951092
-        target: {fileID: 11424708}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slope Timer
-        stateTable: {fileID: 11495662}
-        id: -2397260
-        target: {fileID: 11458824}
-        requireOn: 0
-        requireOff: 0
-      - name: Reset Slide Angle
-        stateTable: {fileID: 11495662}
-        id: -981684
-        target: {fileID: 11481326}
-        requireOn: 0
-        requireOff: 0
-      - name: Rotate Direction
-        stateTable: {fileID: 11495662}
-        id: -2628708
-        target: {fileID: 11402688}
-        requireOn: 0
-        requireOff: 0
-  - name: On Slope
-    stateTable: {fileID: 11495662}
-    id: -951092
-    target: {fileID: 11424708}
-    empty: 0
-    section: 
-    requirements:
-    - data:
-      - name: '@Active'
-        stateTable: {fileID: 11495662}
-        id: -44732
-        target: {fileID: 11495662}
-        requireOn: 0
-        requireOff: 0
-      - name: Animation
-        stateTable: {fileID: 11495662}
-        id: -1627016
-        target: {fileID: 11449072}
-        requireOn: 0
-        requireOff: 0
-      - name: Extreme Slide Angle
-        stateTable: {fileID: 11495662}
-        id: -980926
-        target: {fileID: 11429828}
-        requireOn: 0
-        requireOff: 0
-      - name: No X Input
-        stateTable: {fileID: 11495662}
-        id: -149450
-        target: {fileID: 11423098}
-        requireOn: 0
-        requireOff: 0
-      - name: No Z Input
-        stateTable: {fileID: 11495662}
-        id: -147728
-        target: {fileID: 11434606}
-        requireOn: 0
-        requireOff: 0
-      - name: On Ground
-        stateTable: {fileID: 11495662}
-        id: -36544
-        target: {fileID: 11445304}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slide
-        stateTable: {fileID: 11495662}
-        id: -2393936
-        target: {fileID: 11431038}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slope
-        stateTable: {fileID: 11495662}
-        id: -951092
-        target: {fileID: 11424708}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slope Timer
-        stateTable: {fileID: 11495662}
-        id: -2397260
-        target: {fileID: 11458824}
-        requireOn: 0
-        requireOff: 0
-      - name: Reset Slide Angle
-        stateTable: {fileID: 11495662}
-        id: -981684
-        target: {fileID: 11481326}
-        requireOn: 0
-        requireOff: 0
-      - name: Rotate Direction
-        stateTable: {fileID: 11495662}
-        id: -2628708
-        target: {fileID: 11402688}
-        requireOn: 0
-        requireOff: 0
-  - name: On Slope Timer
-    stateTable: {fileID: 11495662}
-    id: -2397260
-    target: {fileID: 11458824}
-    empty: 0
-    section: 
-    requirements:
-    - data:
-      - name: '@Active'
-        stateTable: {fileID: 11495662}
-        id: -44732
-        target: {fileID: 11495662}
-        requireOn: 0
-        requireOff: 0
-      - name: Animation
-        stateTable: {fileID: 11495662}
-        id: -1627016
-        target: {fileID: 11449072}
-        requireOn: 0
-        requireOff: 0
-      - name: Extreme Slide Angle
-        stateTable: {fileID: 11495662}
-        id: -980926
-        target: {fileID: 11429828}
-        requireOn: 0
-        requireOff: 0
-      - name: No X Input
-        stateTable: {fileID: 11495662}
-        id: -149450
-        target: {fileID: 11423098}
-        requireOn: 0
-        requireOff: 0
-      - name: No Z Input
-        stateTable: {fileID: 11495662}
-        id: -147728
-        target: {fileID: 11434606}
-        requireOn: 0
-        requireOff: 0
-      - name: On Ground
-        stateTable: {fileID: 11495662}
-        id: -36544
-        target: {fileID: 11445304}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slide
-        stateTable: {fileID: 11495662}
-        id: -2393936
-        target: {fileID: 11431038}
-        requireOn: 1
-        requireOff: 0
-      - name: On Slope
-        stateTable: {fileID: 11495662}
-        id: -951092
-        target: {fileID: 11424708}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slope Timer
-        stateTable: {fileID: 11495662}
-        id: -2397260
-        target: {fileID: 11458824}
-        requireOn: 0
-        requireOff: 0
-      - name: Reset Slide Angle
-        stateTable: {fileID: 11495662}
-        id: -981684
-        target: {fileID: 11481326}
-        requireOn: 0
-        requireOff: 0
-      - name: Rotate Direction
-        stateTable: {fileID: 11495662}
-        id: -2628708
-        target: {fileID: 11402688}
-        requireOn: 0
-        requireOff: 0
-  - name: Reset Slide Angle
-    stateTable: {fileID: 11495662}
-    id: -981684
-    target: {fileID: 11481326}
-    empty: 0
-    section: 
-    requirements:
-    - data:
-      - name: '@Active'
-        stateTable: {fileID: 11495662}
-        id: -44732
-        target: {fileID: 11495662}
-        requireOn: 0
-        requireOff: 1
-      - name: Animation
-        stateTable: {fileID: 11495662}
-        id: -1627016
-        target: {fileID: 11449072}
-        requireOn: 0
-        requireOff: 0
-      - name: Extreme Slide Angle
-        stateTable: {fileID: 11495662}
-        id: -980926
-        target: {fileID: 11429828}
-        requireOn: 0
-        requireOff: 0
-      - name: No X Input
-        stateTable: {fileID: 11495662}
-        id: -149450
-        target: {fileID: 11423098}
-        requireOn: 0
-        requireOff: 0
-      - name: No Z Input
-        stateTable: {fileID: 11495662}
-        id: -147728
-        target: {fileID: 11434606}
-        requireOn: 0
-        requireOff: 0
-      - name: On Ground
-        stateTable: {fileID: 11495662}
-        id: -36544
-        target: {fileID: 11445304}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slide
-        stateTable: {fileID: 11495662}
-        id: -2393936
-        target: {fileID: 11431038}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slope
-        stateTable: {fileID: 11495662}
-        id: -951092
-        target: {fileID: 11424708}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slope Timer
-        stateTable: {fileID: 11495662}
-        id: -2397260
-        target: {fileID: 11458824}
-        requireOn: 0
-        requireOff: 0
-      - name: Reset Slide Angle
-        stateTable: {fileID: 11495662}
-        id: -981684
-        target: {fileID: 11481326}
-        requireOn: 0
-        requireOff: 0
-      - name: Rotate Direction
-        stateTable: {fileID: 11495662}
-        id: -2628708
-        target: {fileID: 11402688}
-        requireOn: 0
-        requireOff: 0
-  - name: Rotate Direction
-    stateTable: {fileID: 11495662}
-    id: -2628708
-    target: {fileID: 11402688}
-    empty: 0
-    section: 
-    requirements:
-    - data:
-      - name: '@Active'
-        stateTable: {fileID: 11495662}
-        id: -44732
-        target: {fileID: 11495662}
-        requireOn: 1
-        requireOff: 0
-      - name: Animation
-        stateTable: {fileID: 11495662}
-        id: -1627016
-        target: {fileID: 11449072}
-        requireOn: 0
-        requireOff: 0
-      - name: Extreme Slide Angle
-        stateTable: {fileID: 11495662}
-        id: -980926
-        target: {fileID: 11429828}
-        requireOn: 0
-        requireOff: 0
-      - name: No X Input
-        stateTable: {fileID: 11495662}
-        id: -149450
-        target: {fileID: 11423098}
-        requireOn: 0
-        requireOff: 0
-      - name: No Z Input
-        stateTable: {fileID: 11495662}
-        id: -147728
-        target: {fileID: 11434606}
-        requireOn: 0
-        requireOff: 0
-      - name: On Ground
-        stateTable: {fileID: 11495662}
-        id: -36544
-        target: {fileID: 11445304}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slide
-        stateTable: {fileID: 11495662}
-        id: -2393936
-        target: {fileID: 11431038}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slope
-        stateTable: {fileID: 11495662}
-        id: -951092
-        target: {fileID: 11424708}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slope Timer
-        stateTable: {fileID: 11495662}
-        id: -2397260
-        target: {fileID: 11458824}
-        requireOn: 0
-        requireOff: 0
-      - name: Reset Slide Angle
-        stateTable: {fileID: 11495662}
-        id: -981684
-        target: {fileID: 11481326}
-        requireOn: 0
-        requireOff: 0
-      - name: Rotate Direction
-        stateTable: {fileID: 11495662}
-        id: -2628708
-        target: {fileID: 11402688}
-        requireOn: 0
-        requireOff: 0
   - name: '@Active'
     stateTable: {fileID: 11495662}
     id: -44732
@@ -3513,66 +2776,77 @@ MonoBehaviour:
         target: {fileID: 11495662}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: Animation
         stateTable: {fileID: 0}
         id: -1627016
         target: {fileID: 11449072}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: Extreme Slide Angle
         stateTable: {fileID: 11495662}
         id: -980926
         target: {fileID: 11429828}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: No X Input
         stateTable: {fileID: 11495662}
         id: -149450
         target: {fileID: 11423098}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: No Z Input
         stateTable: {fileID: 11495662}
         id: -147728
         target: {fileID: 11434606}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: On Ground
         stateTable: {fileID: 11495662}
         id: -36544
         target: {fileID: 11445304}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: On Slide
         stateTable: {fileID: 11495662}
         id: -2393936
         target: {fileID: 11431038}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: On Slope
         stateTable: {fileID: 11495662}
         id: -951092
         target: {fileID: 11424708}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: On Slope Timer
         stateTable: {fileID: 11495662}
         id: -2397260
         target: {fileID: 11458824}
         requireOn: 1
         requireOff: 0
+        requireUsed: 0
       - name: Reset Slide Angle
         stateTable: {fileID: 11495662}
         id: -981684
         target: {fileID: 11481326}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: Rotate Direction
         stateTable: {fileID: 11495662}
         id: -2628708
         target: {fileID: 11402688}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
     - data:
       - name: '@Active'
         stateTable: {fileID: 11495662}
@@ -3580,807 +2854,928 @@ MonoBehaviour:
         target: {fileID: 11495662}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: Animation
         stateTable: {fileID: 11495662}
         id: -1627016
         target: {fileID: 11449072}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: Extreme Slide Angle
         stateTable: {fileID: 11495662}
         id: -980926
         target: {fileID: 11429828}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: No X Input
         stateTable: {fileID: 11495662}
         id: -149450
         target: {fileID: 11423098}
         requireOn: 1
         requireOff: 0
+        requireUsed: 0
       - name: No Z Input
         stateTable: {fileID: 11495662}
         id: -147728
         target: {fileID: 11434606}
         requireOn: 1
         requireOff: 0
+        requireUsed: 0
       - name: On Ground
         stateTable: {fileID: 11495662}
         id: -36544
         target: {fileID: 11445304}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: On Slide
         stateTable: {fileID: 11495662}
         id: -2393936
         target: {fileID: 11431038}
         requireOn: 1
         requireOff: 0
+        requireUsed: 0
       - name: On Slope
         stateTable: {fileID: 11495662}
         id: -951092
         target: {fileID: 11424708}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: On Slope Timer
         stateTable: {fileID: 11495662}
         id: -2397260
         target: {fileID: 11458824}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: Reset Slide Angle
         stateTable: {fileID: 11495662}
         id: -981684
         target: {fileID: 11481326}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: Rotate Direction
         stateTable: {fileID: 11495662}
         id: -2628708
         target: {fileID: 11402688}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
+  - name: Animation
+    stateTable: {fileID: 0}
+    id: -1627016
+    target: {fileID: 11449072}
+    empty: 0
+    section: 
+    requirements:
+    - data:
+      - name: '@Active'
+        stateTable: {fileID: 11495662}
+        id: -44732
+        target: {fileID: 11495662}
+        requireOn: 1
+        requireOff: 0
+        requireUsed: 0
+      - name: Animation
+        stateTable: {fileID: 0}
+        id: -1627016
+        target: {fileID: 11449072}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Extreme Slide Angle
+        stateTable: {fileID: 11495662}
+        id: -980926
+        target: {fileID: 11429828}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: No X Input
+        stateTable: {fileID: 11495662}
+        id: -149450
+        target: {fileID: 11423098}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: No Z Input
+        stateTable: {fileID: 11495662}
+        id: -147728
+        target: {fileID: 11434606}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Ground
+        stateTable: {fileID: 11495662}
+        id: -36544
+        target: {fileID: 11445304}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slide
+        stateTable: {fileID: 11495662}
+        id: -2393936
+        target: {fileID: 11431038}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slope
+        stateTable: {fileID: 11495662}
+        id: -951092
+        target: {fileID: 11424708}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slope Timer
+        stateTable: {fileID: 11495662}
+        id: -2397260
+        target: {fileID: 11458824}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Reset Slide Angle
+        stateTable: {fileID: 11495662}
+        id: -981684
+        target: {fileID: 11481326}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Rotate Direction
+        stateTable: {fileID: 11495662}
+        id: -2628708
+        target: {fileID: 11402688}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+  - name: Extreme Slide Angle
+    stateTable: {fileID: 11495662}
+    id: -980926
+    target: {fileID: 11429828}
+    empty: 0
+    section: 
+    requirements:
+    - data:
+      - name: '@Active'
+        stateTable: {fileID: 11495662}
+        id: -44732
+        target: {fileID: 11495662}
+        requireOn: 1
+        requireOff: 0
+        requireUsed: 0
+      - name: Animation
+        stateTable: {fileID: 11495662}
+        id: -1627016
+        target: {fileID: 11449072}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Extreme Slide Angle
+        stateTable: {fileID: 11495662}
+        id: -980926
+        target: {fileID: 11429828}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: No X Input
+        stateTable: {fileID: 11495662}
+        id: -149450
+        target: {fileID: 11423098}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: No Z Input
+        stateTable: {fileID: 11495662}
+        id: -147728
+        target: {fileID: 11434606}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Ground
+        stateTable: {fileID: 11495662}
+        id: -36544
+        target: {fileID: 11445304}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slide
+        stateTable: {fileID: 11495662}
+        id: -2393936
+        target: {fileID: 11431038}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slope
+        stateTable: {fileID: 11495662}
+        id: -951092
+        target: {fileID: 11424708}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slope Timer
+        stateTable: {fileID: 11495662}
+        id: -2397260
+        target: {fileID: 11458824}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Reset Slide Angle
+        stateTable: {fileID: 11495662}
+        id: -981684
+        target: {fileID: 11481326}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Rotate Direction
+        stateTable: {fileID: 11495662}
+        id: -2628708
+        target: {fileID: 11402688}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+  - name: No X Input
+    stateTable: {fileID: 11495662}
+    id: -149450
+    target: {fileID: 11423098}
+    empty: 0
+    section: 
+    requirements:
+    - data:
+      - name: '@Active'
+        stateTable: {fileID: 11495662}
+        id: -44732
+        target: {fileID: 11495662}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Animation
+        stateTable: {fileID: 11495662}
+        id: -1627016
+        target: {fileID: 11449072}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Extreme Slide Angle
+        stateTable: {fileID: 11495662}
+        id: -980926
+        target: {fileID: 11429828}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: No X Input
+        stateTable: {fileID: 11495662}
+        id: -149450
+        target: {fileID: 11423098}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: No Z Input
+        stateTable: {fileID: 11495662}
+        id: -147728
+        target: {fileID: 11434606}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Ground
+        stateTable: {fileID: 11495662}
+        id: -36544
+        target: {fileID: 11445304}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slide
+        stateTable: {fileID: 11495662}
+        id: -2393936
+        target: {fileID: 11431038}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slope
+        stateTable: {fileID: 11495662}
+        id: -951092
+        target: {fileID: 11424708}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slope Timer
+        stateTable: {fileID: 11495662}
+        id: -2397260
+        target: {fileID: 11458824}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Reset Slide Angle
+        stateTable: {fileID: 11495662}
+        id: -981684
+        target: {fileID: 11481326}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Rotate Direction
+        stateTable: {fileID: 11495662}
+        id: -2628708
+        target: {fileID: 11402688}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+  - name: No Z Input
+    stateTable: {fileID: 11495662}
+    id: -147728
+    target: {fileID: 11434606}
+    empty: 0
+    section: 
+    requirements:
+    - data:
+      - name: '@Active'
+        stateTable: {fileID: 11495662}
+        id: -44732
+        target: {fileID: 11495662}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Animation
+        stateTable: {fileID: 11495662}
+        id: -1627016
+        target: {fileID: 11449072}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Extreme Slide Angle
+        stateTable: {fileID: 11495662}
+        id: -980926
+        target: {fileID: 11429828}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: No X Input
+        stateTable: {fileID: 11495662}
+        id: -149450
+        target: {fileID: 11423098}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: No Z Input
+        stateTable: {fileID: 11495662}
+        id: -147728
+        target: {fileID: 11434606}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Ground
+        stateTable: {fileID: 11495662}
+        id: -36544
+        target: {fileID: 11445304}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slide
+        stateTable: {fileID: 11495662}
+        id: -2393936
+        target: {fileID: 11431038}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slope
+        stateTable: {fileID: 11495662}
+        id: -951092
+        target: {fileID: 11424708}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slope Timer
+        stateTable: {fileID: 11495662}
+        id: -2397260
+        target: {fileID: 11458824}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Reset Slide Angle
+        stateTable: {fileID: 11495662}
+        id: -981684
+        target: {fileID: 11481326}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Rotate Direction
+        stateTable: {fileID: 11495662}
+        id: -2628708
+        target: {fileID: 11402688}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+  - name: On Ground
+    stateTable: {fileID: 11495662}
+    id: -36544
+    target: {fileID: 11445304}
+    empty: 0
+    section: 
+    requirements:
+    - data:
+      - name: '@Active'
+        stateTable: {fileID: 11495662}
+        id: -44732
+        target: {fileID: 11495662}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Animation
+        stateTable: {fileID: 11495662}
+        id: -1627016
+        target: {fileID: 11449072}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Extreme Slide Angle
+        stateTable: {fileID: 11495662}
+        id: -980926
+        target: {fileID: 11429828}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: No X Input
+        stateTable: {fileID: 11495662}
+        id: -149450
+        target: {fileID: 11423098}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: No Z Input
+        stateTable: {fileID: 11495662}
+        id: -147728
+        target: {fileID: 11434606}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Ground
+        stateTable: {fileID: 11495662}
+        id: -36544
+        target: {fileID: 11445304}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slide
+        stateTable: {fileID: 11495662}
+        id: -2393936
+        target: {fileID: 11431038}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slope
+        stateTable: {fileID: 11495662}
+        id: -951092
+        target: {fileID: 11424708}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slope Timer
+        stateTable: {fileID: 11495662}
+        id: -2397260
+        target: {fileID: 11458824}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Reset Slide Angle
+        stateTable: {fileID: 11495662}
+        id: -981684
+        target: {fileID: 11481326}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Rotate Direction
+        stateTable: {fileID: 11495662}
+        id: -2628708
+        target: {fileID: 11402688}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+  - name: On Slide
+    stateTable: {fileID: 11495662}
+    id: -2393936
+    target: {fileID: 11431038}
+    empty: 0
+    section: 
+    requirements:
+    - data:
+      - name: '@Active'
+        stateTable: {fileID: 11495662}
+        id: -44732
+        target: {fileID: 11495662}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Animation
+        stateTable: {fileID: 11495662}
+        id: -1627016
+        target: {fileID: 11449072}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Extreme Slide Angle
+        stateTable: {fileID: 11495662}
+        id: -980926
+        target: {fileID: 11429828}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: No X Input
+        stateTable: {fileID: 11495662}
+        id: -149450
+        target: {fileID: 11423098}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: No Z Input
+        stateTable: {fileID: 11495662}
+        id: -147728
+        target: {fileID: 11434606}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Ground
+        stateTable: {fileID: 11495662}
+        id: -36544
+        target: {fileID: 11445304}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slide
+        stateTable: {fileID: 11495662}
+        id: -2393936
+        target: {fileID: 11431038}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slope
+        stateTable: {fileID: 11495662}
+        id: -951092
+        target: {fileID: 11424708}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slope Timer
+        stateTable: {fileID: 11495662}
+        id: -2397260
+        target: {fileID: 11458824}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Reset Slide Angle
+        stateTable: {fileID: 11495662}
+        id: -981684
+        target: {fileID: 11481326}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Rotate Direction
+        stateTable: {fileID: 11495662}
+        id: -2628708
+        target: {fileID: 11402688}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+  - name: On Slope
+    stateTable: {fileID: 11495662}
+    id: -951092
+    target: {fileID: 11424708}
+    empty: 0
+    section: 
+    requirements:
+    - data:
+      - name: '@Active'
+        stateTable: {fileID: 11495662}
+        id: -44732
+        target: {fileID: 11495662}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Animation
+        stateTable: {fileID: 11495662}
+        id: -1627016
+        target: {fileID: 11449072}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Extreme Slide Angle
+        stateTable: {fileID: 11495662}
+        id: -980926
+        target: {fileID: 11429828}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: No X Input
+        stateTable: {fileID: 11495662}
+        id: -149450
+        target: {fileID: 11423098}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: No Z Input
+        stateTable: {fileID: 11495662}
+        id: -147728
+        target: {fileID: 11434606}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Ground
+        stateTable: {fileID: 11495662}
+        id: -36544
+        target: {fileID: 11445304}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slide
+        stateTable: {fileID: 11495662}
+        id: -2393936
+        target: {fileID: 11431038}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slope
+        stateTable: {fileID: 11495662}
+        id: -951092
+        target: {fileID: 11424708}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slope Timer
+        stateTable: {fileID: 11495662}
+        id: -2397260
+        target: {fileID: 11458824}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Reset Slide Angle
+        stateTable: {fileID: 11495662}
+        id: -981684
+        target: {fileID: 11481326}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Rotate Direction
+        stateTable: {fileID: 11495662}
+        id: -2628708
+        target: {fileID: 11402688}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+  - name: On Slope Timer
+    stateTable: {fileID: 11495662}
+    id: -2397260
+    target: {fileID: 11458824}
+    empty: 0
+    section: 
+    requirements:
+    - data:
+      - name: '@Active'
+        stateTable: {fileID: 11495662}
+        id: -44732
+        target: {fileID: 11495662}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Animation
+        stateTable: {fileID: 11495662}
+        id: -1627016
+        target: {fileID: 11449072}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Extreme Slide Angle
+        stateTable: {fileID: 11495662}
+        id: -980926
+        target: {fileID: 11429828}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: No X Input
+        stateTable: {fileID: 11495662}
+        id: -149450
+        target: {fileID: 11423098}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: No Z Input
+        stateTable: {fileID: 11495662}
+        id: -147728
+        target: {fileID: 11434606}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Ground
+        stateTable: {fileID: 11495662}
+        id: -36544
+        target: {fileID: 11445304}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slide
+        stateTable: {fileID: 11495662}
+        id: -2393936
+        target: {fileID: 11431038}
+        requireOn: 1
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slope
+        stateTable: {fileID: 11495662}
+        id: -951092
+        target: {fileID: 11424708}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slope Timer
+        stateTable: {fileID: 11495662}
+        id: -2397260
+        target: {fileID: 11458824}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Reset Slide Angle
+        stateTable: {fileID: 11495662}
+        id: -981684
+        target: {fileID: 11481326}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Rotate Direction
+        stateTable: {fileID: 11495662}
+        id: -2628708
+        target: {fileID: 11402688}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+  - name: Reset Slide Angle
+    stateTable: {fileID: 11495662}
+    id: -981684
+    target: {fileID: 11481326}
+    empty: 0
+    section: 
+    requirements:
+    - data:
+      - name: '@Active'
+        stateTable: {fileID: 11495662}
+        id: -44732
+        target: {fileID: 11495662}
+        requireOn: 0
+        requireOff: 1
+        requireUsed: 0
+      - name: Animation
+        stateTable: {fileID: 11495662}
+        id: -1627016
+        target: {fileID: 11449072}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Extreme Slide Angle
+        stateTable: {fileID: 11495662}
+        id: -980926
+        target: {fileID: 11429828}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: No X Input
+        stateTable: {fileID: 11495662}
+        id: -149450
+        target: {fileID: 11423098}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: No Z Input
+        stateTable: {fileID: 11495662}
+        id: -147728
+        target: {fileID: 11434606}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Ground
+        stateTable: {fileID: 11495662}
+        id: -36544
+        target: {fileID: 11445304}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slide
+        stateTable: {fileID: 11495662}
+        id: -2393936
+        target: {fileID: 11431038}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slope
+        stateTable: {fileID: 11495662}
+        id: -951092
+        target: {fileID: 11424708}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slope Timer
+        stateTable: {fileID: 11495662}
+        id: -2397260
+        target: {fileID: 11458824}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Reset Slide Angle
+        stateTable: {fileID: 11495662}
+        id: -981684
+        target: {fileID: 11481326}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Rotate Direction
+        stateTable: {fileID: 11495662}
+        id: -2628708
+        target: {fileID: 11402688}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+  - name: Rotate Direction
+    stateTable: {fileID: 11495662}
+    id: -2628708
+    target: {fileID: 11402688}
+    empty: 0
+    section: 
+    requirements:
+    - data:
+      - name: '@Active'
+        stateTable: {fileID: 11495662}
+        id: -44732
+        target: {fileID: 11495662}
+        requireOn: 1
+        requireOff: 0
+        requireUsed: 0
+      - name: Animation
+        stateTable: {fileID: 11495662}
+        id: -1627016
+        target: {fileID: 11449072}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Extreme Slide Angle
+        stateTable: {fileID: 11495662}
+        id: -980926
+        target: {fileID: 11429828}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: No X Input
+        stateTable: {fileID: 11495662}
+        id: -149450
+        target: {fileID: 11423098}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: No Z Input
+        stateTable: {fileID: 11495662}
+        id: -147728
+        target: {fileID: 11434606}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Ground
+        stateTable: {fileID: 11495662}
+        id: -36544
+        target: {fileID: 11445304}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slide
+        stateTable: {fileID: 11495662}
+        id: -2393936
+        target: {fileID: 11431038}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slope
+        stateTable: {fileID: 11495662}
+        id: -951092
+        target: {fileID: 11424708}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slope Timer
+        stateTable: {fileID: 11495662}
+        id: -2397260
+        target: {fileID: 11458824}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Reset Slide Angle
+        stateTable: {fileID: 11495662}
+        id: -981684
+        target: {fileID: 11481326}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Rotate Direction
+        stateTable: {fileID: 11495662}
+        id: -2628708
+        target: {fileID: 11402688}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
   tableOff:
-  - name: Animation
-    stateTable: {fileID: 0}
-    id: -1627016
-    target: {fileID: 11449072}
-    empty: 0
-    section: 
-    requirements:
-    - data:
-      - name: '@Active'
-        stateTable: {fileID: 11495662}
-        id: -44732
-        target: {fileID: 11495662}
-        requireOn: 0
-        requireOff: 1
-      - name: Animation
-        stateTable: {fileID: 0}
-        id: -1627016
-        target: {fileID: 11449072}
-        requireOn: 0
-        requireOff: 0
-      - name: Extreme Slide Angle
-        stateTable: {fileID: 11495662}
-        id: -980926
-        target: {fileID: 11429828}
-        requireOn: 0
-        requireOff: 0
-      - name: No X Input
-        stateTable: {fileID: 11495662}
-        id: -149450
-        target: {fileID: 11423098}
-        requireOn: 0
-        requireOff: 0
-      - name: No Z Input
-        stateTable: {fileID: 11495662}
-        id: -147728
-        target: {fileID: 11434606}
-        requireOn: 0
-        requireOff: 0
-      - name: On Ground
-        stateTable: {fileID: 11495662}
-        id: -36544
-        target: {fileID: 11445304}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slide
-        stateTable: {fileID: 11495662}
-        id: -2393936
-        target: {fileID: 11431038}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slope
-        stateTable: {fileID: 11495662}
-        id: -951092
-        target: {fileID: 11424708}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slope Timer
-        stateTable: {fileID: 11495662}
-        id: -2397260
-        target: {fileID: 11458824}
-        requireOn: 0
-        requireOff: 0
-      - name: Reset Slide Angle
-        stateTable: {fileID: 11495662}
-        id: -981684
-        target: {fileID: 11481326}
-        requireOn: 0
-        requireOff: 0
-      - name: Rotate Direction
-        stateTable: {fileID: 11495662}
-        id: -2628708
-        target: {fileID: 11402688}
-        requireOn: 0
-        requireOff: 0
-  - name: Extreme Slide Angle
-    stateTable: {fileID: 11495662}
-    id: -980926
-    target: {fileID: 11429828}
-    empty: 0
-    section: 
-    requirements:
-    - data:
-      - name: '@Active'
-        stateTable: {fileID: 11495662}
-        id: -44732
-        target: {fileID: 11495662}
-        requireOn: 0
-        requireOff: 1
-      - name: Animation
-        stateTable: {fileID: 11495662}
-        id: -1627016
-        target: {fileID: 11449072}
-        requireOn: 0
-        requireOff: 0
-      - name: Extreme Slide Angle
-        stateTable: {fileID: 11495662}
-        id: -980926
-        target: {fileID: 11429828}
-        requireOn: 0
-        requireOff: 0
-      - name: No X Input
-        stateTable: {fileID: 11495662}
-        id: -149450
-        target: {fileID: 11423098}
-        requireOn: 0
-        requireOff: 0
-      - name: No Z Input
-        stateTable: {fileID: 11495662}
-        id: -147728
-        target: {fileID: 11434606}
-        requireOn: 0
-        requireOff: 0
-      - name: On Ground
-        stateTable: {fileID: 11495662}
-        id: -36544
-        target: {fileID: 11445304}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slide
-        stateTable: {fileID: 11495662}
-        id: -2393936
-        target: {fileID: 11431038}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slope
-        stateTable: {fileID: 11495662}
-        id: -951092
-        target: {fileID: 11424708}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slope Timer
-        stateTable: {fileID: 11495662}
-        id: -2397260
-        target: {fileID: 11458824}
-        requireOn: 0
-        requireOff: 0
-      - name: Reset Slide Angle
-        stateTable: {fileID: 11495662}
-        id: -981684
-        target: {fileID: 11481326}
-        requireOn: 0
-        requireOff: 0
-      - name: Rotate Direction
-        stateTable: {fileID: 11495662}
-        id: -2628708
-        target: {fileID: 11402688}
-        requireOn: 0
-        requireOff: 0
-  - name: No X Input
-    stateTable: {fileID: 11495662}
-    id: -149450
-    target: {fileID: 11423098}
-    empty: 0
-    section: 
-    requirements:
-    - data:
-      - name: '@Active'
-        stateTable: {fileID: 11495662}
-        id: -44732
-        target: {fileID: 11495662}
-        requireOn: 0
-        requireOff: 0
-      - name: Animation
-        stateTable: {fileID: 11495662}
-        id: -1627016
-        target: {fileID: 11449072}
-        requireOn: 0
-        requireOff: 0
-      - name: Extreme Slide Angle
-        stateTable: {fileID: 11495662}
-        id: -980926
-        target: {fileID: 11429828}
-        requireOn: 0
-        requireOff: 0
-      - name: No X Input
-        stateTable: {fileID: 11495662}
-        id: -149450
-        target: {fileID: 11423098}
-        requireOn: 0
-        requireOff: 0
-      - name: No Z Input
-        stateTable: {fileID: 11495662}
-        id: -147728
-        target: {fileID: 11434606}
-        requireOn: 0
-        requireOff: 0
-      - name: On Ground
-        stateTable: {fileID: 11495662}
-        id: -36544
-        target: {fileID: 11445304}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slide
-        stateTable: {fileID: 11495662}
-        id: -2393936
-        target: {fileID: 11431038}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slope
-        stateTable: {fileID: 11495662}
-        id: -951092
-        target: {fileID: 11424708}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slope Timer
-        stateTable: {fileID: 11495662}
-        id: -2397260
-        target: {fileID: 11458824}
-        requireOn: 0
-        requireOff: 0
-      - name: Reset Slide Angle
-        stateTable: {fileID: 11495662}
-        id: -981684
-        target: {fileID: 11481326}
-        requireOn: 0
-        requireOff: 0
-      - name: Rotate Direction
-        stateTable: {fileID: 11495662}
-        id: -2628708
-        target: {fileID: 11402688}
-        requireOn: 0
-        requireOff: 0
-  - name: No Z Input
-    stateTable: {fileID: 11495662}
-    id: -147728
-    target: {fileID: 11434606}
-    empty: 0
-    section: 
-    requirements:
-    - data:
-      - name: '@Active'
-        stateTable: {fileID: 11495662}
-        id: -44732
-        target: {fileID: 11495662}
-        requireOn: 0
-        requireOff: 0
-      - name: Animation
-        stateTable: {fileID: 11495662}
-        id: -1627016
-        target: {fileID: 11449072}
-        requireOn: 0
-        requireOff: 0
-      - name: Extreme Slide Angle
-        stateTable: {fileID: 11495662}
-        id: -980926
-        target: {fileID: 11429828}
-        requireOn: 0
-        requireOff: 0
-      - name: No X Input
-        stateTable: {fileID: 11495662}
-        id: -149450
-        target: {fileID: 11423098}
-        requireOn: 0
-        requireOff: 0
-      - name: No Z Input
-        stateTable: {fileID: 11495662}
-        id: -147728
-        target: {fileID: 11434606}
-        requireOn: 0
-        requireOff: 0
-      - name: On Ground
-        stateTable: {fileID: 11495662}
-        id: -36544
-        target: {fileID: 11445304}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slide
-        stateTable: {fileID: 11495662}
-        id: -2393936
-        target: {fileID: 11431038}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slope
-        stateTable: {fileID: 11495662}
-        id: -951092
-        target: {fileID: 11424708}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slope Timer
-        stateTable: {fileID: 11495662}
-        id: -2397260
-        target: {fileID: 11458824}
-        requireOn: 0
-        requireOff: 0
-      - name: Reset Slide Angle
-        stateTable: {fileID: 11495662}
-        id: -981684
-        target: {fileID: 11481326}
-        requireOn: 0
-        requireOff: 0
-      - name: Rotate Direction
-        stateTable: {fileID: 11495662}
-        id: -2628708
-        target: {fileID: 11402688}
-        requireOn: 0
-        requireOff: 0
-  - name: On Ground
-    stateTable: {fileID: 11495662}
-    id: -36544
-    target: {fileID: 11445304}
-    empty: 0
-    section: 
-    requirements:
-    - data:
-      - name: '@Active'
-        stateTable: {fileID: 11495662}
-        id: -44732
-        target: {fileID: 11495662}
-        requireOn: 0
-        requireOff: 0
-      - name: Animation
-        stateTable: {fileID: 11495662}
-        id: -1627016
-        target: {fileID: 11449072}
-        requireOn: 0
-        requireOff: 0
-      - name: Extreme Slide Angle
-        stateTable: {fileID: 11495662}
-        id: -980926
-        target: {fileID: 11429828}
-        requireOn: 0
-        requireOff: 0
-      - name: No X Input
-        stateTable: {fileID: 11495662}
-        id: -149450
-        target: {fileID: 11423098}
-        requireOn: 0
-        requireOff: 0
-      - name: No Z Input
-        stateTable: {fileID: 11495662}
-        id: -147728
-        target: {fileID: 11434606}
-        requireOn: 0
-        requireOff: 0
-      - name: On Ground
-        stateTable: {fileID: 11495662}
-        id: -36544
-        target: {fileID: 11445304}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slide
-        stateTable: {fileID: 11495662}
-        id: -2393936
-        target: {fileID: 11431038}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slope
-        stateTable: {fileID: 11495662}
-        id: -951092
-        target: {fileID: 11424708}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slope Timer
-        stateTable: {fileID: 11495662}
-        id: -2397260
-        target: {fileID: 11458824}
-        requireOn: 0
-        requireOff: 0
-      - name: Reset Slide Angle
-        stateTable: {fileID: 11495662}
-        id: -981684
-        target: {fileID: 11481326}
-        requireOn: 0
-        requireOff: 0
-      - name: Rotate Direction
-        stateTable: {fileID: 11495662}
-        id: -2628708
-        target: {fileID: 11402688}
-        requireOn: 0
-        requireOff: 0
-  - name: On Slide
-    stateTable: {fileID: 11495662}
-    id: -2393936
-    target: {fileID: 11431038}
-    empty: 0
-    section: 
-    requirements:
-    - data:
-      - name: '@Active'
-        stateTable: {fileID: 11495662}
-        id: -44732
-        target: {fileID: 11495662}
-        requireOn: 0
-        requireOff: 0
-      - name: Animation
-        stateTable: {fileID: 11495662}
-        id: -1627016
-        target: {fileID: 11449072}
-        requireOn: 0
-        requireOff: 0
-      - name: Extreme Slide Angle
-        stateTable: {fileID: 11495662}
-        id: -980926
-        target: {fileID: 11429828}
-        requireOn: 0
-        requireOff: 0
-      - name: No X Input
-        stateTable: {fileID: 11495662}
-        id: -149450
-        target: {fileID: 11423098}
-        requireOn: 0
-        requireOff: 0
-      - name: No Z Input
-        stateTable: {fileID: 11495662}
-        id: -147728
-        target: {fileID: 11434606}
-        requireOn: 0
-        requireOff: 0
-      - name: On Ground
-        stateTable: {fileID: 11495662}
-        id: -36544
-        target: {fileID: 11445304}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slide
-        stateTable: {fileID: 11495662}
-        id: -2393936
-        target: {fileID: 11431038}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slope
-        stateTable: {fileID: 11495662}
-        id: -951092
-        target: {fileID: 11424708}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slope Timer
-        stateTable: {fileID: 11495662}
-        id: -2397260
-        target: {fileID: 11458824}
-        requireOn: 0
-        requireOff: 0
-      - name: Reset Slide Angle
-        stateTable: {fileID: 11495662}
-        id: -981684
-        target: {fileID: 11481326}
-        requireOn: 0
-        requireOff: 0
-      - name: Rotate Direction
-        stateTable: {fileID: 11495662}
-        id: -2628708
-        target: {fileID: 11402688}
-        requireOn: 0
-        requireOff: 0
-  - name: On Slope
-    stateTable: {fileID: 11495662}
-    id: -951092
-    target: {fileID: 11424708}
-    empty: 0
-    section: 
-    requirements:
-    - data:
-      - name: '@Active'
-        stateTable: {fileID: 11495662}
-        id: -44732
-        target: {fileID: 11495662}
-        requireOn: 0
-        requireOff: 0
-      - name: Animation
-        stateTable: {fileID: 11495662}
-        id: -1627016
-        target: {fileID: 11449072}
-        requireOn: 0
-        requireOff: 0
-      - name: Extreme Slide Angle
-        stateTable: {fileID: 11495662}
-        id: -980926
-        target: {fileID: 11429828}
-        requireOn: 0
-        requireOff: 0
-      - name: No X Input
-        stateTable: {fileID: 11495662}
-        id: -149450
-        target: {fileID: 11423098}
-        requireOn: 0
-        requireOff: 0
-      - name: No Z Input
-        stateTable: {fileID: 11495662}
-        id: -147728
-        target: {fileID: 11434606}
-        requireOn: 0
-        requireOff: 0
-      - name: On Ground
-        stateTable: {fileID: 11495662}
-        id: -36544
-        target: {fileID: 11445304}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slide
-        stateTable: {fileID: 11495662}
-        id: -2393936
-        target: {fileID: 11431038}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slope
-        stateTable: {fileID: 11495662}
-        id: -951092
-        target: {fileID: 11424708}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slope Timer
-        stateTable: {fileID: 11495662}
-        id: -2397260
-        target: {fileID: 11458824}
-        requireOn: 0
-        requireOff: 0
-      - name: Reset Slide Angle
-        stateTable: {fileID: 11495662}
-        id: -981684
-        target: {fileID: 11481326}
-        requireOn: 0
-        requireOff: 0
-      - name: Rotate Direction
-        stateTable: {fileID: 11495662}
-        id: -2628708
-        target: {fileID: 11402688}
-        requireOn: 0
-        requireOff: 0
-  - name: On Slope Timer
-    stateTable: {fileID: 11495662}
-    id: -2397260
-    target: {fileID: 11458824}
-    empty: 0
-    section: 
-    requirements:
-    - data:
-      - name: '@Active'
-        stateTable: {fileID: 11495662}
-        id: -44732
-        target: {fileID: 11495662}
-        requireOn: 0
-        requireOff: 0
-      - name: Animation
-        stateTable: {fileID: 11495662}
-        id: -1627016
-        target: {fileID: 11449072}
-        requireOn: 0
-        requireOff: 0
-      - name: Extreme Slide Angle
-        stateTable: {fileID: 11495662}
-        id: -980926
-        target: {fileID: 11429828}
-        requireOn: 0
-        requireOff: 0
-      - name: No X Input
-        stateTable: {fileID: 11495662}
-        id: -149450
-        target: {fileID: 11423098}
-        requireOn: 0
-        requireOff: 0
-      - name: No Z Input
-        stateTable: {fileID: 11495662}
-        id: -147728
-        target: {fileID: 11434606}
-        requireOn: 0
-        requireOff: 0
-      - name: On Ground
-        stateTable: {fileID: 11495662}
-        id: -36544
-        target: {fileID: 11445304}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slide
-        stateTable: {fileID: 11495662}
-        id: -2393936
-        target: {fileID: 11431038}
-        requireOn: 0
-        requireOff: 1
-      - name: On Slope
-        stateTable: {fileID: 11495662}
-        id: -951092
-        target: {fileID: 11424708}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slope Timer
-        stateTable: {fileID: 11495662}
-        id: -2397260
-        target: {fileID: 11458824}
-        requireOn: 0
-        requireOff: 0
-      - name: Reset Slide Angle
-        stateTable: {fileID: 11495662}
-        id: -981684
-        target: {fileID: 11481326}
-        requireOn: 0
-        requireOff: 0
-      - name: Rotate Direction
-        stateTable: {fileID: 11495662}
-        id: -2628708
-        target: {fileID: 11402688}
-        requireOn: 0
-        requireOff: 0
-  - name: Reset Slide Angle
-    stateTable: {fileID: 11495662}
-    id: -981684
-    target: {fileID: 11481326}
-    empty: 0
-    section: 
-    requirements:
-    - data:
-      - name: '@Active'
-        stateTable: {fileID: 11495662}
-        id: -44732
-        target: {fileID: 11495662}
-        requireOn: 1
-        requireOff: 0
-      - name: Animation
-        stateTable: {fileID: 11495662}
-        id: -1627016
-        target: {fileID: 11449072}
-        requireOn: 0
-        requireOff: 0
-      - name: Extreme Slide Angle
-        stateTable: {fileID: 11495662}
-        id: -980926
-        target: {fileID: 11429828}
-        requireOn: 0
-        requireOff: 0
-      - name: No X Input
-        stateTable: {fileID: 11495662}
-        id: -149450
-        target: {fileID: 11423098}
-        requireOn: 0
-        requireOff: 0
-      - name: No Z Input
-        stateTable: {fileID: 11495662}
-        id: -147728
-        target: {fileID: 11434606}
-        requireOn: 0
-        requireOff: 0
-      - name: On Ground
-        stateTable: {fileID: 11495662}
-        id: -36544
-        target: {fileID: 11445304}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slide
-        stateTable: {fileID: 11495662}
-        id: -2393936
-        target: {fileID: 11431038}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slope
-        stateTable: {fileID: 11495662}
-        id: -951092
-        target: {fileID: 11424708}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slope Timer
-        stateTable: {fileID: 11495662}
-        id: -2397260
-        target: {fileID: 11458824}
-        requireOn: 0
-        requireOff: 0
-      - name: Reset Slide Angle
-        stateTable: {fileID: 11495662}
-        id: -981684
-        target: {fileID: 11481326}
-        requireOn: 0
-        requireOff: 0
-      - name: Rotate Direction
-        stateTable: {fileID: 11495662}
-        id: -2628708
-        target: {fileID: 11402688}
-        requireOn: 0
-        requireOff: 0
-  - name: Rotate Direction
-    stateTable: {fileID: 11495662}
-    id: -2628708
-    target: {fileID: 11402688}
-    empty: 0
-    section: 
-    requirements:
-    - data:
-      - name: '@Active'
-        stateTable: {fileID: 11495662}
-        id: -44732
-        target: {fileID: 11495662}
-        requireOn: 0
-        requireOff: 1
-      - name: Animation
-        stateTable: {fileID: 11495662}
-        id: -1627016
-        target: {fileID: 11449072}
-        requireOn: 0
-        requireOff: 0
-      - name: Extreme Slide Angle
-        stateTable: {fileID: 11495662}
-        id: -980926
-        target: {fileID: 11429828}
-        requireOn: 0
-        requireOff: 0
-      - name: No X Input
-        stateTable: {fileID: 11495662}
-        id: -149450
-        target: {fileID: 11423098}
-        requireOn: 0
-        requireOff: 0
-      - name: No Z Input
-        stateTable: {fileID: 11495662}
-        id: -147728
-        target: {fileID: 11434606}
-        requireOn: 0
-        requireOff: 0
-      - name: On Ground
-        stateTable: {fileID: 11495662}
-        id: -36544
-        target: {fileID: 11445304}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slide
-        stateTable: {fileID: 11495662}
-        id: -2393936
-        target: {fileID: 11431038}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slope
-        stateTable: {fileID: 11495662}
-        id: -951092
-        target: {fileID: 11424708}
-        requireOn: 0
-        requireOff: 0
-      - name: On Slope Timer
-        stateTable: {fileID: 11495662}
-        id: -2397260
-        target: {fileID: 11458824}
-        requireOn: 0
-        requireOff: 0
-      - name: Reset Slide Angle
-        stateTable: {fileID: 11495662}
-        id: -981684
-        target: {fileID: 11481326}
-        requireOn: 0
-        requireOff: 0
-      - name: Rotate Direction
-        stateTable: {fileID: 11495662}
-        id: -2628708
-        target: {fileID: 11402688}
-        requireOn: 0
-        requireOff: 0
   - name: '@Active'
     stateTable: {fileID: 11495662}
     id: -44732
@@ -4395,66 +3790,927 @@ MonoBehaviour:
         target: {fileID: 11495662}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: Animation
         stateTable: {fileID: 0}
         id: -1627016
         target: {fileID: 11449072}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: Extreme Slide Angle
         stateTable: {fileID: 11495662}
         id: -980926
         target: {fileID: 11429828}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: No X Input
         stateTable: {fileID: 11495662}
         id: -149450
         target: {fileID: 11423098}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: No Z Input
         stateTable: {fileID: 11495662}
         id: -147728
         target: {fileID: 11434606}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: On Ground
         stateTable: {fileID: 11495662}
         id: -36544
         target: {fileID: 11445304}
         requireOn: 1
         requireOff: 0
+        requireUsed: 0
       - name: On Slide
         stateTable: {fileID: 11495662}
         id: -2393936
         target: {fileID: 11431038}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: On Slope
         stateTable: {fileID: 11495662}
         id: -951092
         target: {fileID: 11424708}
         requireOn: 0
         requireOff: 1
+        requireUsed: 0
       - name: On Slope Timer
         stateTable: {fileID: 11495662}
         id: -2397260
         target: {fileID: 11458824}
         requireOn: 0
         requireOff: 1
+        requireUsed: 0
       - name: Reset Slide Angle
         stateTable: {fileID: 11495662}
         id: -981684
         target: {fileID: 11481326}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
       - name: Rotate Direction
         stateTable: {fileID: 11495662}
         id: -2628708
         target: {fileID: 11402688}
         requireOn: 0
         requireOff: 0
+        requireUsed: 0
+  - name: Animation
+    stateTable: {fileID: 0}
+    id: -1627016
+    target: {fileID: 11449072}
+    empty: 0
+    section: 
+    requirements:
+    - data:
+      - name: '@Active'
+        stateTable: {fileID: 11495662}
+        id: -44732
+        target: {fileID: 11495662}
+        requireOn: 0
+        requireOff: 1
+        requireUsed: 0
+      - name: Animation
+        stateTable: {fileID: 0}
+        id: -1627016
+        target: {fileID: 11449072}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Extreme Slide Angle
+        stateTable: {fileID: 11495662}
+        id: -980926
+        target: {fileID: 11429828}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: No X Input
+        stateTable: {fileID: 11495662}
+        id: -149450
+        target: {fileID: 11423098}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: No Z Input
+        stateTable: {fileID: 11495662}
+        id: -147728
+        target: {fileID: 11434606}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Ground
+        stateTable: {fileID: 11495662}
+        id: -36544
+        target: {fileID: 11445304}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slide
+        stateTable: {fileID: 11495662}
+        id: -2393936
+        target: {fileID: 11431038}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slope
+        stateTable: {fileID: 11495662}
+        id: -951092
+        target: {fileID: 11424708}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slope Timer
+        stateTable: {fileID: 11495662}
+        id: -2397260
+        target: {fileID: 11458824}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Reset Slide Angle
+        stateTable: {fileID: 11495662}
+        id: -981684
+        target: {fileID: 11481326}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Rotate Direction
+        stateTable: {fileID: 11495662}
+        id: -2628708
+        target: {fileID: 11402688}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+  - name: Extreme Slide Angle
+    stateTable: {fileID: 11495662}
+    id: -980926
+    target: {fileID: 11429828}
+    empty: 0
+    section: 
+    requirements:
+    - data:
+      - name: '@Active'
+        stateTable: {fileID: 11495662}
+        id: -44732
+        target: {fileID: 11495662}
+        requireOn: 0
+        requireOff: 1
+        requireUsed: 0
+      - name: Animation
+        stateTable: {fileID: 11495662}
+        id: -1627016
+        target: {fileID: 11449072}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Extreme Slide Angle
+        stateTable: {fileID: 11495662}
+        id: -980926
+        target: {fileID: 11429828}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: No X Input
+        stateTable: {fileID: 11495662}
+        id: -149450
+        target: {fileID: 11423098}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: No Z Input
+        stateTable: {fileID: 11495662}
+        id: -147728
+        target: {fileID: 11434606}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Ground
+        stateTable: {fileID: 11495662}
+        id: -36544
+        target: {fileID: 11445304}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slide
+        stateTable: {fileID: 11495662}
+        id: -2393936
+        target: {fileID: 11431038}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slope
+        stateTable: {fileID: 11495662}
+        id: -951092
+        target: {fileID: 11424708}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slope Timer
+        stateTable: {fileID: 11495662}
+        id: -2397260
+        target: {fileID: 11458824}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Reset Slide Angle
+        stateTable: {fileID: 11495662}
+        id: -981684
+        target: {fileID: 11481326}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Rotate Direction
+        stateTable: {fileID: 11495662}
+        id: -2628708
+        target: {fileID: 11402688}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+  - name: No X Input
+    stateTable: {fileID: 11495662}
+    id: -149450
+    target: {fileID: 11423098}
+    empty: 0
+    section: 
+    requirements:
+    - data:
+      - name: '@Active'
+        stateTable: {fileID: 11495662}
+        id: -44732
+        target: {fileID: 11495662}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Animation
+        stateTable: {fileID: 11495662}
+        id: -1627016
+        target: {fileID: 11449072}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Extreme Slide Angle
+        stateTable: {fileID: 11495662}
+        id: -980926
+        target: {fileID: 11429828}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: No X Input
+        stateTable: {fileID: 11495662}
+        id: -149450
+        target: {fileID: 11423098}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: No Z Input
+        stateTable: {fileID: 11495662}
+        id: -147728
+        target: {fileID: 11434606}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Ground
+        stateTable: {fileID: 11495662}
+        id: -36544
+        target: {fileID: 11445304}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slide
+        stateTable: {fileID: 11495662}
+        id: -2393936
+        target: {fileID: 11431038}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slope
+        stateTable: {fileID: 11495662}
+        id: -951092
+        target: {fileID: 11424708}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slope Timer
+        stateTable: {fileID: 11495662}
+        id: -2397260
+        target: {fileID: 11458824}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Reset Slide Angle
+        stateTable: {fileID: 11495662}
+        id: -981684
+        target: {fileID: 11481326}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Rotate Direction
+        stateTable: {fileID: 11495662}
+        id: -2628708
+        target: {fileID: 11402688}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+  - name: No Z Input
+    stateTable: {fileID: 11495662}
+    id: -147728
+    target: {fileID: 11434606}
+    empty: 0
+    section: 
+    requirements:
+    - data:
+      - name: '@Active'
+        stateTable: {fileID: 11495662}
+        id: -44732
+        target: {fileID: 11495662}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Animation
+        stateTable: {fileID: 11495662}
+        id: -1627016
+        target: {fileID: 11449072}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Extreme Slide Angle
+        stateTable: {fileID: 11495662}
+        id: -980926
+        target: {fileID: 11429828}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: No X Input
+        stateTable: {fileID: 11495662}
+        id: -149450
+        target: {fileID: 11423098}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: No Z Input
+        stateTable: {fileID: 11495662}
+        id: -147728
+        target: {fileID: 11434606}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Ground
+        stateTable: {fileID: 11495662}
+        id: -36544
+        target: {fileID: 11445304}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slide
+        stateTable: {fileID: 11495662}
+        id: -2393936
+        target: {fileID: 11431038}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slope
+        stateTable: {fileID: 11495662}
+        id: -951092
+        target: {fileID: 11424708}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slope Timer
+        stateTable: {fileID: 11495662}
+        id: -2397260
+        target: {fileID: 11458824}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Reset Slide Angle
+        stateTable: {fileID: 11495662}
+        id: -981684
+        target: {fileID: 11481326}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Rotate Direction
+        stateTable: {fileID: 11495662}
+        id: -2628708
+        target: {fileID: 11402688}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+  - name: On Ground
+    stateTable: {fileID: 11495662}
+    id: -36544
+    target: {fileID: 11445304}
+    empty: 0
+    section: 
+    requirements:
+    - data:
+      - name: '@Active'
+        stateTable: {fileID: 11495662}
+        id: -44732
+        target: {fileID: 11495662}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Animation
+        stateTable: {fileID: 11495662}
+        id: -1627016
+        target: {fileID: 11449072}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Extreme Slide Angle
+        stateTable: {fileID: 11495662}
+        id: -980926
+        target: {fileID: 11429828}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: No X Input
+        stateTable: {fileID: 11495662}
+        id: -149450
+        target: {fileID: 11423098}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: No Z Input
+        stateTable: {fileID: 11495662}
+        id: -147728
+        target: {fileID: 11434606}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Ground
+        stateTable: {fileID: 11495662}
+        id: -36544
+        target: {fileID: 11445304}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slide
+        stateTable: {fileID: 11495662}
+        id: -2393936
+        target: {fileID: 11431038}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slope
+        stateTable: {fileID: 11495662}
+        id: -951092
+        target: {fileID: 11424708}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slope Timer
+        stateTable: {fileID: 11495662}
+        id: -2397260
+        target: {fileID: 11458824}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Reset Slide Angle
+        stateTable: {fileID: 11495662}
+        id: -981684
+        target: {fileID: 11481326}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Rotate Direction
+        stateTable: {fileID: 11495662}
+        id: -2628708
+        target: {fileID: 11402688}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+  - name: On Slide
+    stateTable: {fileID: 11495662}
+    id: -2393936
+    target: {fileID: 11431038}
+    empty: 0
+    section: 
+    requirements:
+    - data:
+      - name: '@Active'
+        stateTable: {fileID: 11495662}
+        id: -44732
+        target: {fileID: 11495662}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Animation
+        stateTable: {fileID: 11495662}
+        id: -1627016
+        target: {fileID: 11449072}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Extreme Slide Angle
+        stateTable: {fileID: 11495662}
+        id: -980926
+        target: {fileID: 11429828}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: No X Input
+        stateTable: {fileID: 11495662}
+        id: -149450
+        target: {fileID: 11423098}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: No Z Input
+        stateTable: {fileID: 11495662}
+        id: -147728
+        target: {fileID: 11434606}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Ground
+        stateTable: {fileID: 11495662}
+        id: -36544
+        target: {fileID: 11445304}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slide
+        stateTable: {fileID: 11495662}
+        id: -2393936
+        target: {fileID: 11431038}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slope
+        stateTable: {fileID: 11495662}
+        id: -951092
+        target: {fileID: 11424708}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slope Timer
+        stateTable: {fileID: 11495662}
+        id: -2397260
+        target: {fileID: 11458824}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Reset Slide Angle
+        stateTable: {fileID: 11495662}
+        id: -981684
+        target: {fileID: 11481326}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Rotate Direction
+        stateTable: {fileID: 11495662}
+        id: -2628708
+        target: {fileID: 11402688}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+  - name: On Slope
+    stateTable: {fileID: 11495662}
+    id: -951092
+    target: {fileID: 11424708}
+    empty: 0
+    section: 
+    requirements:
+    - data:
+      - name: '@Active'
+        stateTable: {fileID: 11495662}
+        id: -44732
+        target: {fileID: 11495662}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Animation
+        stateTable: {fileID: 11495662}
+        id: -1627016
+        target: {fileID: 11449072}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Extreme Slide Angle
+        stateTable: {fileID: 11495662}
+        id: -980926
+        target: {fileID: 11429828}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: No X Input
+        stateTable: {fileID: 11495662}
+        id: -149450
+        target: {fileID: 11423098}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: No Z Input
+        stateTable: {fileID: 11495662}
+        id: -147728
+        target: {fileID: 11434606}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Ground
+        stateTable: {fileID: 11495662}
+        id: -36544
+        target: {fileID: 11445304}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slide
+        stateTable: {fileID: 11495662}
+        id: -2393936
+        target: {fileID: 11431038}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slope
+        stateTable: {fileID: 11495662}
+        id: -951092
+        target: {fileID: 11424708}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slope Timer
+        stateTable: {fileID: 11495662}
+        id: -2397260
+        target: {fileID: 11458824}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Reset Slide Angle
+        stateTable: {fileID: 11495662}
+        id: -981684
+        target: {fileID: 11481326}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Rotate Direction
+        stateTable: {fileID: 11495662}
+        id: -2628708
+        target: {fileID: 11402688}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+  - name: On Slope Timer
+    stateTable: {fileID: 11495662}
+    id: -2397260
+    target: {fileID: 11458824}
+    empty: 0
+    section: 
+    requirements:
+    - data:
+      - name: '@Active'
+        stateTable: {fileID: 11495662}
+        id: -44732
+        target: {fileID: 11495662}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Animation
+        stateTable: {fileID: 11495662}
+        id: -1627016
+        target: {fileID: 11449072}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Extreme Slide Angle
+        stateTable: {fileID: 11495662}
+        id: -980926
+        target: {fileID: 11429828}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: No X Input
+        stateTable: {fileID: 11495662}
+        id: -149450
+        target: {fileID: 11423098}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: No Z Input
+        stateTable: {fileID: 11495662}
+        id: -147728
+        target: {fileID: 11434606}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Ground
+        stateTable: {fileID: 11495662}
+        id: -36544
+        target: {fileID: 11445304}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slide
+        stateTable: {fileID: 11495662}
+        id: -2393936
+        target: {fileID: 11431038}
+        requireOn: 0
+        requireOff: 1
+        requireUsed: 0
+      - name: On Slope
+        stateTable: {fileID: 11495662}
+        id: -951092
+        target: {fileID: 11424708}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slope Timer
+        stateTable: {fileID: 11495662}
+        id: -2397260
+        target: {fileID: 11458824}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Reset Slide Angle
+        stateTable: {fileID: 11495662}
+        id: -981684
+        target: {fileID: 11481326}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Rotate Direction
+        stateTable: {fileID: 11495662}
+        id: -2628708
+        target: {fileID: 11402688}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+  - name: Reset Slide Angle
+    stateTable: {fileID: 11495662}
+    id: -981684
+    target: {fileID: 11481326}
+    empty: 0
+    section: 
+    requirements:
+    - data:
+      - name: '@Active'
+        stateTable: {fileID: 11495662}
+        id: -44732
+        target: {fileID: 11495662}
+        requireOn: 1
+        requireOff: 0
+        requireUsed: 0
+      - name: Animation
+        stateTable: {fileID: 11495662}
+        id: -1627016
+        target: {fileID: 11449072}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Extreme Slide Angle
+        stateTable: {fileID: 11495662}
+        id: -980926
+        target: {fileID: 11429828}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: No X Input
+        stateTable: {fileID: 11495662}
+        id: -149450
+        target: {fileID: 11423098}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: No Z Input
+        stateTable: {fileID: 11495662}
+        id: -147728
+        target: {fileID: 11434606}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Ground
+        stateTable: {fileID: 11495662}
+        id: -36544
+        target: {fileID: 11445304}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slide
+        stateTable: {fileID: 11495662}
+        id: -2393936
+        target: {fileID: 11431038}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slope
+        stateTable: {fileID: 11495662}
+        id: -951092
+        target: {fileID: 11424708}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slope Timer
+        stateTable: {fileID: 11495662}
+        id: -2397260
+        target: {fileID: 11458824}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Reset Slide Angle
+        stateTable: {fileID: 11495662}
+        id: -981684
+        target: {fileID: 11481326}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Rotate Direction
+        stateTable: {fileID: 11495662}
+        id: -2628708
+        target: {fileID: 11402688}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+  - name: Rotate Direction
+    stateTable: {fileID: 11495662}
+    id: -2628708
+    target: {fileID: 11402688}
+    empty: 0
+    section: 
+    requirements:
+    - data:
+      - name: '@Active'
+        stateTable: {fileID: 11495662}
+        id: -44732
+        target: {fileID: 11495662}
+        requireOn: 0
+        requireOff: 1
+        requireUsed: 0
+      - name: Animation
+        stateTable: {fileID: 11495662}
+        id: -1627016
+        target: {fileID: 11449072}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Extreme Slide Angle
+        stateTable: {fileID: 11495662}
+        id: -980926
+        target: {fileID: 11429828}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: No X Input
+        stateTable: {fileID: 11495662}
+        id: -149450
+        target: {fileID: 11423098}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: No Z Input
+        stateTable: {fileID: 11495662}
+        id: -147728
+        target: {fileID: 11434606}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Ground
+        stateTable: {fileID: 11495662}
+        id: -36544
+        target: {fileID: 11445304}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slide
+        stateTable: {fileID: 11495662}
+        id: -2393936
+        target: {fileID: 11431038}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slope
+        stateTable: {fileID: 11495662}
+        id: -951092
+        target: {fileID: 11424708}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: On Slope Timer
+        stateTable: {fileID: 11495662}
+        id: -2397260
+        target: {fileID: 11458824}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Reset Slide Angle
+        stateTable: {fileID: 11495662}
+        id: -981684
+        target: {fileID: 11481326}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
+      - name: Rotate Direction
+        stateTable: {fileID: 11495662}
+        id: -2628708
+        target: {fileID: 11402688}
+        requireOn: 0
+        requireOff: 0
+        requireUsed: 0
   manual: 0
   advanced: 1
   external:
@@ -4462,32 +4718,32 @@ MonoBehaviour:
       name: External
       path: Slide/External
       fullPath: Slide/Main/Slide/External
-      id: -90330/3d621d6b-84fc-423e-8ad6-41301aa29759
+      relativePath: External
+      id: -15704/3d621d6b-84fc-423e-8ad6-41301aa29759
       localID: 3d621d6b-84fc-423e-8ad6-41301aa29759
       parent: {fileID: 11495662}
       mode: 0
       linkType: 0
-      oldData:
+      data:
       - target:
-          search: '[Self]'
+          disabled: 1
+          search: 
           directObject: {fileID: 0}
-          searchObject: {fileID: 136648}
-          parent: {fileID: 11495662}
+          searchObject: {fileID: 0}
+          parent: {fileID: 0}
           mode: 0
-          path: /Slide (1)/Main/Slide (1)/Slide (1)/External/Target
+          path: 
         usage: 0
-        path: /Slide/Main/Old Attribute Bool Data D
+        path: Slide/Main/Slide/External/0
         referenceID: 
         referencePath: 
         operation: 0
         special: 0
         rawValue: True
         rawType: Zios.Attributes.AttributeBoolData
-      oldDataB: []
-      oldDataC: []
-      oldData: []
-      oldDataB: []
-      oldDataC: []
+      dataB: []
+      dataC: []
+    delayedValue: 1
   scripts:
   - {fileID: 11495662}
   - {fileID: 11449072}

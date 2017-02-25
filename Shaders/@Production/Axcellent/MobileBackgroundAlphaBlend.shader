@@ -23,7 +23,7 @@ Shader "Zios/Mobile/Background Alpha Blend"{
 			};
 			vertexOutput vertexPass(vertexInput input){
 				vertexOutput output;
-				output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
+				output.pos = UnityObjectToClipPos(input.vertex);
 				output.UV = input.texcoord;
 				return output;
 			}

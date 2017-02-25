@@ -72,9 +72,9 @@ Shader "Zios/Standalone/(Megashader)"{
 			#pragma target 3.0
 			float cullDistance;
 			float4 vertexPass(float4 vertex:POSITION) : SV_POSITION{
-				float4 position = mul(UNITY_MATRIX_MVP,vertex);
+				float4 position = UnityObjectToClipPos(vertex);
 				#ifdef DISTANCECULL_ON
-				if(distance(_WorldSpaceCameraPos,mul(_Object2World,vertex)) > cullDistance){
+				if(distance(_WorldSpaceCameraPos,mul(unity_ObjectToWorld,vertex)) > cullDistance){
 					position.w = 0;
 				}
 				#endif
@@ -616,9 +616,9 @@ Shader "Zios/Standalone/(Megashader)"{
 			vertexOutput vertexPass(vertexInput input){
 				vertexOutput output;
 				UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
-				output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
+				output.pos = UnityObjectToClipPos(input.vertex);
 				#ifdef DISTANCECULL_ON
-				if(distance(_WorldSpaceCameraPos,mul(_Object2World,input.vertex)) > cullDistance){
+				if(distance(_WorldSpaceCameraPos,mul(unity_ObjectToWorld,input.vertex)) > cullDistance){
 					output.pos.w = 0;
 					return output;
 				}
@@ -646,7 +646,7 @@ Shader "Zios/Standalone/(Megashader)"{
 				#endif
 				#if defined(TEXTUREMAPPING_TRIPLANAR) || !defined(LIGHTINGTYPE_NONE) || defined(FADESTATE_ON)
 					output.worldNormal = UnityObjectToWorldNormal(input.normal);
-					output.worldPosition = mul(_Object2World,input.vertex);
+					output.worldPosition = mul(unity_ObjectToWorld,input.vertex);
 				#endif
 				#ifndef LIGHTINGTYPE_NONE
 					output.normal = normalize(input.normal);

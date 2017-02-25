@@ -34,7 +34,7 @@ Shader "Zios/Dori/Vertex Color + Outline + Shading"{
 			vertexOutput vertexPass(vertexInput input){
 				vertexOutput output;
 				UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
-				output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
+				output.pos = UnityObjectToClipPos(input.vertex);
 				if(distance(ObjSpaceViewDir(input.vertex),output.pos) > cullDistance){
 					output.pos.w = -1;
 					return output;
@@ -113,7 +113,7 @@ Shader "Zios/Dori/Vertex Color + Outline + Shading"{
 			vertexOutput vertexPass(vertexInput input){
 				vertexOutput output;
 				UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
-				output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
+				output.pos = UnityObjectToClipPos(input.vertex);
 				if(distance(ObjSpaceViewDir(input.vertex),output.pos) > cullDistance){
 					output.pos.w = -1;
 					return output;

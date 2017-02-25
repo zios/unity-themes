@@ -64,7 +64,7 @@ Shader "Zios/ZEQ2/Triplanar Diffuse Map"{
 			vertexOutput vertexPass(vertexInput input){
 				vertexOutput output;
 				UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
-				output.pos = mul(UNITY_MATRIX_MVP,input.vertex);
+				output.pos = UnityObjectToClipPos(input.vertex);
 				output.UV = float4(input.texcoord.x,input.texcoord.y,0,0);
 				output.worldNormal = mul(unity_ObjectToWorld,float4(input.normal,0.0f)).xyz;
 				output.worldPosition = mul(unity_ObjectToWorld,input.vertex);
