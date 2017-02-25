@@ -34,7 +34,10 @@ namespace Zios.Editors{
 			TextureImporter importer = (TextureImporter)assetImporter;
 			string assetName = importer.assetPath.Split("/").Last();
 			//importer.textureType = TextureImporterType.Default;
-			importer.npotScale = TextureImporterNPOTScale.None;
+			if(assetName.Contains(".exr")){
+				importer.npotScale = TextureImporterNPOTScale.ToNearest;}
+			else{
+				importer.npotScale = TextureImporterNPOTScale.None;}
 			if(assetName.Contains("Outlines")){
 				importer.wrapMode = TextureWrapMode.Clamp;
 				importer.SetTextureFormat(TextureImporterFormat.DXT5);

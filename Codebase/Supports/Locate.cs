@@ -17,7 +17,6 @@ namespace Zios{
 		private static List<Type> cleanSceneComponents = new List<Type>();
 		private static List<GameObject> cleanSiblings = new List<GameObject>();
 		private static Dictionary<string,GameObject> searchCache = new Dictionary<string,GameObject>();
-		private static Dictionary<string,AssetImporter> importers = new Dictionary<string,AssetImporter>();
 		private static Dictionary<Type,UnityObject[]> assets = new Dictionary<Type,UnityObject[]>();
 		private static Dictionary<GameObject,GameObject[]> siblings = new Dictionary<GameObject,GameObject[]>();
 		private static Dictionary<GameObject,GameObject[]> enabledSiblings = new Dictionary<GameObject,GameObject[]>();
@@ -31,6 +30,9 @@ namespace Zios{
 		private static Dictionary<Type,Component[]> enabledComponents = new Dictionary<Type,Component[]>();
 		private static Dictionary<Type,Component[]> disabledComponents = new Dictionary<Type,Component[]>();
 		private static Hierarchy<GameObject,Type,Component[]> objectComponents = new Hierarchy<GameObject,Type,Component[]>();
+		#if UNITY_EDITOR
+		private static Dictionary<string,AssetImporter> importers = new Dictionary<string,AssetImporter>();
+		#endif
 		static Locate(){
 			if(!Application.isPlaying){
 				//Event.Add("On Application Quit",Locate.SetDirty);
@@ -211,10 +213,12 @@ namespace Zios{
 		//=====================
 		// Importers
 		//=====================
+		#if UNITY_EDITOR
 		public static Type GetImporter<Type>(string path) where Type : AssetImporter{
 			if(Application.isLoadingLevel){return default(Type);}
 			if(!Locate.importers.ContainsKey(path)){Locate.importers[path] = AssetImporter.GetAtPath(path);}
 			return Locate.importers[path].As<Type>();
 		}
+		#endif
 	}
 }
