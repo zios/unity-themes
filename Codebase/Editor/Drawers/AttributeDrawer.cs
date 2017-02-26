@@ -24,6 +24,7 @@ namespace Zios.Editors{
 			return this.overallHeight;
 		}
 		public override void OnGUI(Rect area,SerializedProperty property,GUIContent label){
+			EditorUI.Reset();
 			if(this.attribute == null){
 				this.attribute = property.GetObject<Attribute>();
 				MonoBehaviour script = (MonoBehaviour)property.serializedObject.targetObject;

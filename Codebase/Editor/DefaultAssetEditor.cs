@@ -1,10 +1,12 @@
 using System;
 using UnityEditor;
 namespace Zios.Editors{
+	using Interface;
 	[CustomEditor(typeof(DefaultAsset))]
 	public class DefaultAssetEditor : Editor{
 		public Editor instance;
 		public override void OnInspectorGUI(){
+			EditorUI.Reset();
 			if(!this.instance.IsNull()){
 				try{this.instance.OnInspectorGUI();}
 				catch{

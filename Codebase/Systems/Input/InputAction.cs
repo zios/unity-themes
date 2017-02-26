@@ -24,5 +24,5 @@ namespace Zios.Inputs{
 		}
 		public InputAction Copy(){return new InputAction(this);}
 	}
-	public enum InputActionOptions{Unclamped=1,AxisMode=2}
+	public enum InputActionOptions{Unclamped=1,AxisMode=2,AllowMouseMove=3}
 }

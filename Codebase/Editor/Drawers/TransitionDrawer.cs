@@ -6,6 +6,7 @@ namespace Zios.Editors{
 	[CustomPropertyDrawer(typeof(Transition))]
 	public class OldTransitionDrawer : PropertyDrawer{
 		public override void OnGUI(Rect area,SerializedProperty property,GUIContent label){
+			EditorUI.Reset();
 			Transition transition = property.GetObject<Transition>();
 			float durationValue = transition.duration.Get();
 			float delayValue = transition.delayStart.Get();

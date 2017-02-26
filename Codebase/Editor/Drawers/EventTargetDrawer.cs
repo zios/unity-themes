@@ -11,6 +11,7 @@ namespace Zios.Editors{
 		public bool targeted = true;
 		public bool manual;
 		public override void OnGUI(Rect area,SerializedProperty property,GUIContent label){
+			EditorUI.Reset();
 			if(!Attribute.ready){
 				EditorGUI.ProgressBar(area,AttributeManager.percentLoaded,"Updating");
 				return;

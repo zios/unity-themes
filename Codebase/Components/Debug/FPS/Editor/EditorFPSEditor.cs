@@ -13,6 +13,7 @@ namespace Zios.Editors.DebugEditors{
 		private GUISkin skin;
 		public override void OnInspectorGUI(){
 			if(!UnityEvent.current.IsUseful()){return;}
+			EditorUI.Reset();
 			EditorFPSEditor.instance = this;
 			Event.Add("On Editor Update",EditorFPSEditor.EditorUpdate);
 			var style = GUI.skin.textField.RichText(true).Alignment("MiddleCenter").FixedHeight(0).FontSize(24);

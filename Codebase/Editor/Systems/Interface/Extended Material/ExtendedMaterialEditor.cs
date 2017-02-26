@@ -237,6 +237,7 @@ namespace Zios.Editors.MaterialEditors{
 		}
 		public override void OnInspectorGUI(){
 			if(!UnityEvent.current.IsUseful()){return;}
+			EditorUI.Reset();
 			this.Setup(true);
 			if(this.isVisible && MaterialBuffer.active != null){
 				Material material = MaterialBuffer.material;

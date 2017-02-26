@@ -12,6 +12,7 @@ namespace Zios.Editors{
 			return base.GetPropertyHeight(property,label);
 		}
 		public override void OnGUI(Rect area,SerializedProperty property,GUIContent label){
+			EditorUI.Reset();
 			float singleLine = EditorGUIUtility.singleLineHeight;
 			area = area.SetHeight(singleLine);
 			bool expanded = Utility.GetPref<bool>("layerDistancesExpanded");

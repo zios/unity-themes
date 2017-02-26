@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 namespace Zios.Inputs{
@@ -49,7 +50,7 @@ namespace Zios.Inputs{
 			string action = "";
 			var fileText = file.GetText();
 			var settings = fileText.Parse("[InputSettings]","[").GetLines();
-			var remaining = fileText.Contains("[InputSettings]") ? fileText.Substring(fileText.IndexOf("[",0,2,true)).GetLines() : fileText.GetLines();
+			var remaining = fileText.GetLines().Skip(settings.Length+1);
 			var manager = InputManager.instance;
 			foreach(var line in settings){
 				if(line.IsEmpty()){continue;}

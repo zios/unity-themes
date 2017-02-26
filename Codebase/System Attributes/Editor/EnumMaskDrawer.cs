@@ -6,6 +6,7 @@ namespace Zios.Editors{
 	[CustomPropertyDrawer(typeof(EnumMaskAttribute))]
 	public class EnumMaskDrawer : PropertyDrawer{
 		public override void OnGUI(Rect position,SerializedProperty property,GUIContent label){
+			EditorUI.Reset();
 			Enum value = property.GetObject<Enum>();
 			value = value.DrawMask(position,label,null,true);
 			property.intValue = value.ToInt();

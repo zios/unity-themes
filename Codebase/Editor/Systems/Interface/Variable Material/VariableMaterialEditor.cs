@@ -15,6 +15,7 @@ namespace Zios.Editors{
 		public FileData parent;
 		public static List<Material> allMaterials = new List<Material>();
 		override public void OnGUI(MaterialEditor editor,MaterialProperty[] properties){
+			EditorUI.Reset();
 			this.editor = editor;
 			this.material = (Material)editor.target;
 			bool matching = this.shader == this.material.shader;

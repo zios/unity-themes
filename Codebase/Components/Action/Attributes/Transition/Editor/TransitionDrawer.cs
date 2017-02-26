@@ -12,6 +12,7 @@ namespace Zios.Editors{
 			return base.GetPropertyHeight(property,label);
 		}
 		public override void OnGUI(Rect area,SerializedProperty property,GUIContent label){
+			EditorUI.Reset();
 			Transition transition = property.GetObject<Transition>();
 			var spacing = area.height = EditorGUIUtility.singleLineHeight;
 			if(!transition.time.isSetup){return;}

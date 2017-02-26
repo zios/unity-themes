@@ -29,6 +29,7 @@ namespace Zios.Editors{
 		public bool visible = true;
 		public Method dirtyEvent;
 		public override void OnInspectorGUI(){
+			EditorUI.Reset();
 			Utility.GetInspectors().ForEach(x=>x.wantsMouseMove = true);
 			if(!UnityEvent.current.IsUseful()){return;}
 			if(this.target is MonoBehaviour && this.target.As<MonoBehaviour>().InPrefabFile()){return;}

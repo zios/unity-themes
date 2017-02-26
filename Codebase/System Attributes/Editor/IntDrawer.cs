@@ -4,6 +4,7 @@ namespace Zios.Editors{
 	using Interface;
 	public class IntDrawer : MaterialPropertyDrawer{
 		public override void OnGUI(Rect position,MaterialProperty property,string label,MaterialEditor editor){
+			EditorUI.Reset();
 			Vector2 limits = property.rangeLimits;
 			float value = property.floatValue;
 			float labelSize = Screen.width * 0.345f;

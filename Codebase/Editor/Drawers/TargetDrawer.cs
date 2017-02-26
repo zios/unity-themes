@@ -9,6 +9,7 @@ namespace Zios.Editors{
 	public class TargetDrawer : PropertyDrawer{
 		public bool setup;
 		public override void OnGUI(Rect area,SerializedProperty property,GUIContent label){
+			EditorUI.Reset();
 			property.serializedObject.Update();
 			string skin = EditorGUIUtility.isProSkin || Utility.GetPref<bool>("EditorTheme-Dark",false) ? "Dark" : "Light";
 			GUI.skin = FileManager.GetAsset<GUISkin>("Gentleface-" + skin + ".guiskin");
@@ -35,8 +36,9 @@ namespace Zios.Editors{
 				target.directObject = target.directObject.Draw<GameObject>(propertyRect,"",true);
 			}
 			else{
+				target.Verify();
 				Rect textRect = propertyRect;
-				string result = target.searchObject != null ? target.searchObject.GetPath().Trim("/") : "Not Found.";
+				string result = !target.searchObject.IsNull() ? target.searchObject.GetPath().Trim("/") : "Not Found.";
 				Vector2 textSize = GUI.skin.textField.CalcSize(new GUIContent(target.search));
 				Vector2 subtleSize = GUI.skin.GetStyle("SubtleInfo").CalcSize(new GUIContent(result));
 				float subtleX = propertyRect.x+propertyRect.width-subtleSize.x;

@@ -8,6 +8,7 @@ using UnityEvent = UnityEngine.Event;
 namespace Zios.Inputs{
 	using Interface;
 	using Events;
+	using Containers;
 	[InitializeOnLoad]
 	public static class InputHook{
 		public static Hook<InputManager> hook;
@@ -41,6 +42,8 @@ namespace Zios.Inputs{
 		[NonSerialized] public static Vector2 mouseScroll;
 		[NonSerialized] public static Vector2 mousePosition;
 		[NonSerialized] public static Vector2 mouseChangeAverage;
+		[NonSerialized] public static float lastMouseChange;
+		[NonSerialized] public static float registerTime = 1;
 		[EnumMask] public InputInstanceOptions instanceOptions = (InputInstanceOptions)(2);
 		public float gamepadDeadZone = 0.1f;
 		public float gamepadSensitivity = 1;
@@ -53,10 +56,10 @@ namespace Zios.Inputs{
 		[Internal] public GameObject uiObject;
 		[NonSerialized] public InputUIState uiState;
 		private Dictionary<string,bool> joystickAxis = new Dictionary<string,bool>();
+		private bool waitForRelease;
 		private string selectionHeader;
 		private InputProfile activeProfile;
-		private string lastInput;
-		private float lastInputTime;
+		private Dictionary<string,float> lastInput = new Dictionary<string,float>();
 		private int uiGroupIndex;
 		private int uiIndex;
 		//===============
@@ -79,11 +82,11 @@ namespace Zios.Inputs{
 			InputProfile.Load();
 			InputInstance.Load();
 			InputGroup.Load();
-			Console.AddKeyword("showProfiles",this.ShowProfiles);
-			Console.AddKeyword("assignProfile",this.AssignProfile);
-			Console.AddKeyword("createProfile",this.CreateProfile);
-			Console.AddKeyword("editProfile",this.EditProfile);
-			Console.AddKeyword("removeProfile",this.RemoveProfile);
+			Console.AddKeyword("inputShowProfiles",this.ShowProfiles);
+			Console.AddKeyword("inputAssignProfile",this.AssignProfile);
+			Console.AddKeyword("inputCreateProfile",this.CreateProfile);
+			Console.AddKeyword("inputEditProfile",this.EditProfile);
+			Console.AddKeyword("inputRemoveProfile",this.RemoveProfile);
 			Event.Register("On Profile Selected",this);
 			Event.Register("On Profile Edited",this);
 			this.DetectGamepads();
@@ -173,27 +176,37 @@ namespace Zios.Inputs{
 				Locate.Find(path+"Text-Profile").GetComponent<Text>().text = "<size=100><color=#888888FF>"+profile.name+"</color></size>\nProfile";
 				Locate.Find(path+"Icon-Gamepad").GetComponent<Image>().sprite = action.helpImage;
 				Locate.Find(path+"Icon-Gamepad").SetActive(!action.helpImage.IsNull());
-				if(!this.lastInput.IsEmpty() && this.lastInputTime + 0.1f < Time.realtimeSinceStartup){
+				if(this.waitForRelease){
+					foreach(var key in this.lastInput.Keys.ToList()){this.lastInput[key] = 0;}
+					this.waitForRelease = this.waitForRelease && this.lastInput.Count != 0;
+				}
+				var progress = Locate.Find(path+"Image-Timer");
+				var highest = this.lastInput.OrderBy(x=>x.Value).FirstOrDefault();
+				var timeHeld = highest.Key.IsEmpty() ? Time.realtimeSinceStartup + InputManager.registerTime : highest.Value;
+				var targetInput = this.lastInput.Where(x=>Time.realtimeSinceStartup>x.Value).FirstOrDefault();
+				progress.SetActive(highest.Value > 0);
+				progress.GetComponent<Image>().fillAmount = InputManager.registerTime-(timeHeld-Time.realtimeSinceStartup);
+				if(!this.waitForRelease && !targetInput.Key.IsEmpty()){
+					this.waitForRelease = true;
+					var inputName = targetInput.Key;
 					string device = "Keyboard";
 					string groupName = group.name.ToPascalCase();
 					string actionName = action.name.ToPascalCase();
-					if(this.lastInput.Contains("Joystick")){
-						int id = (int)Char.GetNumericValue(this.lastInput.Remove("Joystick")[0]);
+					if(inputName.Contains("Joystick")){
+						int id = (int)Char.GetNumericValue(inputName.Remove("Joystick")[0]);
 						device = this.joystickNames[id-1];
-						this.lastInput = this.lastInput.ReplaceFirst(id.ToString(),"*");
+						inputName = inputName.ReplaceFirst(id.ToString(),"*");
 					}
-					else if(this.lastInput.Contains("Mouse")){device = "Mouse";}
+					else if(inputName.Contains("Mouse")){device = "Mouse";}
 					var existsText = Locate.Find(path+"Text-Exists");
-					var match = profile.mappings.collection.Where(x=>x.Key.Contains(groupName) && x.Value.Contains(this.lastInput)).FirstOrDefault();
+					var match = profile.mappings.collection.Where(x=>x.Key.Contains(groupName) && x.Value.Contains(inputName)).FirstOrDefault();
 					existsText.SetActive(!match.Key.IsEmpty());
 					if(!match.Key.IsEmpty()){
-						existsText.GetComponent<Text>().text = this.lastInput.Remove("*") + " already mapped to : <color=#FF9999FF>" + match.Key.Split("-")[1] + "</color>";
-						this.lastInput = "";
+						existsText.GetComponent<Text>().text = inputName.Remove("*") + " already mapped to : <color=#FF9999FF>" + match.Key.Split("-")[1] + "</color>";
 						return;
 					}
 					profile.requiredDevices.AddNew(device);
-					profile.mappings[groupName+"-"+actionName] = this.lastInput;
-					this.lastInput = "";
+					profile.mappings[groupName+"-"+actionName] = inputName;
 					this.uiIndex += 1;
 					if(this.uiIndex >= group.actions.Count){
 						this.uiGroupIndex += 1;
@@ -215,32 +228,38 @@ namespace Zios.Inputs{
 			if(this.uiState == InputUIState.EditProfile){
 				for(int joystickNumber=1;joystickNumber<5;++joystickNumber){
 					for(int axisNumber=1;axisNumber<9;++axisNumber){
-						string axisName = "Joystick"+joystickNumber+"-Axis"+ axisNumber;
+						string axisName = "Joystick"+joystickNumber+"-Axis"+axisNumber;
 						float value = Input.GetAxisRaw(axisName);
 						if(Mathf.Abs(value) > this.gamepadDeadZone){
 							axisName += value < 0 ? "Negative" : "Positive";
-							if(axisName == this.lastInput){continue;}
-							if(this.joystickAxis.AddNew(axisName)){continue;}
 							this.joystickAxis[axisName] = true;
-							this.lastInput = axisName;
-							this.lastInputTime = Time.realtimeSinceStartup;
+							if(!this.lastInput.ContainsKey(axisName)){
+								this.lastInput[axisName] = Time.realtimeSinceStartup + InputManager.registerTime;
+							}
 							continue;
 						}
-						this.joystickAxis[axisName+"Negative"] = false;
+						this.lastInput.Remove(axisName+"Positive");
+						this.lastInput.Remove(axisName+"Negative");
 						this.joystickAxis[axisName+"Positive"] = false;
+						this.joystickAxis[axisName+"Negative"] = false;
 					}
 				}
-				if(Input.anyKeyDown){
+				if(this.joystickAxis.ContainsValue(true)){return;}
+				if(Input.anyKey){
 					foreach(var keyCode in Enum.GetValues(typeof(KeyCode)).Cast<KeyCode>()){
 						var keyName = keyCode.ToName();
 						if(keyName.Contains("JoystickButton")){continue;}
-						if(keyName == this.lastInput){continue;}
-						if(Input.GetKeyDown(keyCode)){
-							this.lastInput = keyCode.ToName();
-							this.lastInputTime = Time.realtimeSinceStartup;
-							break;
+						if(Input.GetKey(keyCode)){
+							if(!this.lastInput.ContainsKey(keyName)){
+								this.lastInput[keyName] = Time.realtimeSinceStartup + InputManager.registerTime;
+							}
+							continue;
 						}
+						this.lastInput.Remove(keyName);
 					}
+				}
+				else{
+					this.lastInput = this.lastInput.Where(x=>x.Key.ContainsAny("MouseX","MouseY","MouseScroll")).ToDictionary();
 				}
 			}
 		}
@@ -266,29 +285,45 @@ namespace Zios.Inputs{
 			InputManager.mouseScroll = Input.mouseScrollDelta != Vector2.zero ? -Input.mouseScrollDelta : Vector2.zero;
 			InputManager.mouseChange =  new Vector2(Input.GetAxis("MouseX"),-Input.GetAxis("MouseY")) * this.mouseSensitivity;
 			InputManager.mousePosition = Input.mousePosition;
-			if(InputManager.mouseChange != Vector2.zero || InputManager.mouseScroll != Vector2.zero){
-				this.lastInputTime = Time.realtimeSinceStartup;
-				if(!this.devices.Exists(x=>x.name=="Mouse")){
-					this.devices.Add(new InputDevice("Mouse"));
-				}
+			var editing = this.uiState == InputUIState.EditProfile;
+			var mouseChanges = InputManager.mouseChange != Vector2.zero || InputManager.mouseScroll != Vector2.zero;
+			if(editing || mouseChanges){
 				InputManager.mouseChangeAverage = (InputManager.mouseChangeAverage+InputManager.mouseChange)/2;
-				if(this.uiState == InputUIState.EditProfile){
+				if(mouseChanges){
+					InputManager.lastMouseChange = Time.realtimeSinceStartup;
+					if(!this.devices.Exists(x=>x.name=="Mouse")){
+						this.devices.Add(new InputDevice("Mouse"));
+					}
+				}
+				if(editing){
+					var inputName = "";
+					var group = this.groups[this.uiGroupIndex];
+					var action = group.actions[this.uiIndex];
 					var average = InputManager.mouseChangeAverage;
 					var change = new Vector2(average.x.Abs(),average.y.Abs());
-					if(InputManager.mouseScroll.y < 0){this.lastInput = "MouseScrollUp";}
-					if(InputManager.mouseScroll.y > 0){this.lastInput = "MouseScrollDown";}
-					if(change.x >= change.y){
-						if(average.x < 0){this.lastInput = "MouseX-";}
-						if(average.x > 0){this.lastInput = "MouseX+";}
+					if(InputManager.mouseScroll.y < 0){inputName = "MouseScrollUp";}
+					else if(InputManager.mouseScroll.y > 0){inputName = "MouseScrollDown";}
+					else if(action.options.Has("AllowMouseMove")){
+						if(change.x >= change.y){
+							if(average.x < 0){inputName = "MouseX-";}
+							if(average.x > 0){inputName = "MouseX+";}
+						}
+						else{
+							if(average.y < 0){inputName = "MouseY-";}
+							if(average.y > 0){inputName = "MouseY+";}
+						}
 					}
-					else{
-						if(average.y < 0){this.lastInput = "MouseY-";}
-						if(average.y > 0){this.lastInput = "MouseY+";}
+					if(!inputName.IsEmpty() && !this.lastInput.ContainsKey(inputName)){
+						var time = inputName.Contains("Scroll") ? 0 : Time.realtimeSinceStartup + InputManager.registerTime;
+						this.lastInput.Clear();
+						this.lastInput[inputName] = time;
 					}
 				}
-				return;
 			}
-			InputManager.mouseChangeAverage = Vector2.zero;
+			if((Time.realtimeSinceStartup-InputManager.lastMouseChange) > 0.1f){
+				InputManager.mouseChangeAverage = Vector2.zero;
+				this.lastInput = this.lastInput.Where(x=>!x.Key.ContainsAny("MouseX","MouseY","MouseScroll")).ToDictionary();
+			}
 		}
 		//===============
 		// Interface
@@ -344,7 +379,7 @@ namespace Zios.Inputs{
 			}
 		}
 		public void EditProfile(string name){
-			this.lastInput = "";
+			this.lastInput.Clear();
 			this.uiState = InputUIState.EditProfile;
 			this.uiGroupIndex = 0;
 			this.uiIndex = 0;

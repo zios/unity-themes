@@ -170,7 +170,7 @@ namespace Zios{
 		//===============
 		// Primary
 		//===============
-		public static FileData[] FindAll(string name,bool showWarnings=true,bool firstOnly=false){
+		public static FileData[] FindAll(string name,bool showWarnings=true,bool returnFirstMatch=false){
 			name = name.Replace("\\","/");
 			var time = FileManager.GetTime();
 			if(name == "" && showWarnings){
@@ -188,9 +188,6 @@ namespace Zios{
 					return new FileData[0];
 				}
 			}
-			if(!name.Contains(".") && name.EndsWith("*")){name = name + ".*";}
-			if(name.Contains("*")){firstOnly = false;}
-			else if(name.Contains(":")){firstOnly = true;}
 			string fileName = name.GetFileName();
 			string path = name.GetDirectory();
 			string type = name.GetFileExtension().ToLower();
@@ -202,7 +199,7 @@ namespace Zios{
 			else if(type.EndsWith("*")){types.AddRange(allTypes.Where(x=>x.StartsWith(type.Remove("*"),true)));}
 			else if(FileManager.filesByType.ContainsKey(type)){types.Add(type);}
 			foreach(var typeName in types){
-				FileManager.SearchType(fileName,typeName,path,firstOnly,ref results);
+				FileManager.SearchType(fileName,typeName,path,returnFirstMatch,ref results);
 			}
 			if(results.Count == 0){
 				foreach(var item in FileManager.folders){
@@ -213,6 +210,7 @@ namespace Zios{
 					}
 				}
 			}
+			if(results.Count == 0 && !name.Contains(".")){return FileManager.FindAll(name+".*",showWarnings,returnFirstMatch);}
 			if(results.Count == 0 && showWarnings){Debug.LogWarning("[FileManager] Path [" + name + "] could not be found.");}
 			FileManager.cache[searchKey] = results.ToArray();
 			if(FileManager.clock){Debug.Log("[FileManager] : Find [" + name + "] complete (" + results.Count + ") -- " + (FileManager.GetTime()-time) + " seconds.");}
@@ -297,7 +295,7 @@ namespace Zios{
 		public static bool Exists(string path){return File.Exists(path) || Directory.Exists(path);}
 		public static FileData Find(string name,bool showWarnings=true){
 			name = !name.ContainsAny("*") ? "!"+name : name;
-			var results = FileManager.FindAll(name,showWarnings,true);
+			var results = FileManager.FindAll(name,showWarnings,!name.Contains("*"));
 			if(results.Length > 0){return results[0];}
 			return null;
 		}

@@ -13,7 +13,7 @@ namespace Zios.Attributes{
 			AttributeManagerHook.hook = new Hook<AttributeManager>(AttributeManagerHook.Reset);
 		}
 		public static void Reset(){
-			SerializerHook.hook.Reset();
+			//SerializerHook.hook.Reset();
 			AttributeManagerHook.hook.Reset();
 			if(AttributeManager.instance){
 				Event.Add("On Level Was Loaded",AttributeManager.instance.Awake);

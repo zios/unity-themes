@@ -32,6 +32,7 @@ namespace Zios.Interface{
 		public static bool debug;
 		public static ThemeWindow window;
 		public static string suffix;
+		private static bool liveEdit;
 		private static bool needsRefresh;
 		private static bool needsRebuild;
 		private static bool needsInstantRefresh;
@@ -50,7 +51,11 @@ namespace Zios.Interface{
 			EditorApplication.update += ThemeWindow.ShowWindow;
 			AppDomain.CurrentDomain.DomainUnload += ThemeWindow.CloseWindow;
 			Event.Add("On Window Reordered",ThemeWindow.CloseWindow);
-			Event.Add("On GUISkin Changed",()=>Utility.DelayCall(Theme.DelayedInstantRefresh,0.5f));
+			Event.Add("On GUISkin Changed",()=>{
+				if(Theme.liveEdit){
+					Utility.DelayCall(Theme.DelayedInstantRefresh,0.5f);
+				}
+			});
 		}
 		public static void Update(){
 			if(Theme.disabled){return;}
@@ -763,6 +768,11 @@ namespace Zios.Interface{
 		public static void ToggleDebug(){
 			Theme.debug = !Theme.debug;
 			Debug.Log("[Themes] Debug messages : " + Theme.debug);
+		}
+		[MenuItem("Edit/Themes/Development/Toggle Live Edit #F3")]
+		public static void ToggleLiveEdit(){
+			Theme.liveEdit = !Theme.liveEdit;
+			Debug.Log("[Themes] Live edit : " + Theme.liveEdit);
 		}
 		[MenuItem("Edit/Themes/Previous Palette &F1")]
 		public static void PreviousPalette(){Theme.RecordAction(()=>Theme.AdjustPalette(-1));}

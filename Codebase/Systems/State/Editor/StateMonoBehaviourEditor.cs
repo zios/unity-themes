@@ -32,6 +32,7 @@ namespace Zios.Editors.StateEditors{
 		}
 		public override void OnInspectorGUI(){
 			if(!UnityEvent.current.IsUseful()){return;}
+			EditorUI.Reset();
 			this.SetupStyles();
 			this.DrawBreakdown();
 			base.OnInspectorGUI();

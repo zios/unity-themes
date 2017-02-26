@@ -20,16 +20,24 @@ namespace Zios.Containers{
 		public Component parent;
 		public TargetMode mode = TargetMode.Search;
 		public string path;
+		private bool verified;
 		private string fallbackSearch = "";
 		public static implicit operator Transform(Target value){return value.Get().transform;}
 		public static implicit operator GameObject(Target value){return value.Get();}
 		public static implicit operator UnityObject(Target value){return value.Get();}
 		public GameObject Get(){
+			this.Verify();
 			GameObject result = this.mode == TargetMode.Search ? this.searchObject : this.directObject;
 			if(result.IsNull() && Application.isPlaying){
 				Utility.LogWarning(this.path+"Missing","[Target] No target found for : " + this.path,this.parent,1);
 			}
 			return result;
+		}
+		public void Verify(){
+			if(!this.verified && this.mode == TargetMode.Search && this.searchObject.IsNull()){
+				this.Search();
+				this.verified = false;
+			}
 		}
 		public void Clear(){
 			if(!this.disabled){

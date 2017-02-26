@@ -5,6 +5,7 @@ namespace Zios.Editors{
 	public class FilePC2Editor : Editor{
 		public PC2Data data;
 		public override void OnInspectorGUI(){
+			EditorUI.Reset();
 			//GUI.enabled = true;
 			if(this.data == null){
 				FileData file = FileManager.Get(this.target);

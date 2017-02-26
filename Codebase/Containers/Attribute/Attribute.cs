@@ -487,7 +487,7 @@ namespace Zios.Attributes{
 					this.cachedValue = this.GetFirstRaw().Get();
 				}
 				return this.cachedValue;*/
-				return this.GetFirst().As<DataType>().Get();
+				return ((DataType)(this.GetFirst())).Get();
 			}
 			/*if(this.dirty){
 				this.dirty = !this.canCache;

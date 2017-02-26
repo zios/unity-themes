@@ -13,7 +13,7 @@ namespace Zios{
 		public static Hook<Serializer> hook;
 		static SerializerHook(){
 			if(Utility.IsPlaying()){return;}
-			SerializerHook.hook = new Hook<Serializer>(SerializerHook.Reset,SerializerHook.Create);
+			//SerializerHook.hook = new Hook<Serializer>(SerializerHook.Reset,SerializerHook.Create);
 		}
 		public static void Reset(){
 			SerializerHook.hook.Reset();

@@ -298,7 +298,7 @@ namespace Zios.Interface{
 			foreach(var item in Console.binds){
 				Bind data = item.Value;
 				if(Console.status > 0 && !data.action.Contains("console",true)){continue;}
-				bool keyDown = Button.EventKeyDown(data.key);
+				bool keyDown = Button.EventKeyUp(data.key);
 				if(keyDown && data.repeat && data.nextRepeat > Time.time){
 					Console.AddCommand(data.action);
 					data.nextRepeat += Time.time + data.repeatDelay;

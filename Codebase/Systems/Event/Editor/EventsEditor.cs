@@ -12,6 +12,7 @@ namespace Zios.Editors{
 			this.listeners = Event.listeners.GroupBy(x=>Event.GetTargetName(x.target)).ToDictionary(x=>x.Key,x=>x.ToList());
 		}
 		public override void OnInspectorGUI(){
+			EditorUI.Reset();
 			Event.disabled = (EventDisabled)Event.disabled.DrawMask("Disabled");
 			Event.debugScope = (EventDebugScope)Event.debugScope.DrawMask("Debug Scope");
 			Event.debug = (EventDebug)Event.debug.DrawMask("Debug");

@@ -11,6 +11,7 @@ namespace Zios.Editors{
 		public List<string> items = new List<string>();
 		public int index = 0;
 		public override void OnGUI(Rect position,SerializedProperty property,GUIContent label){
+			EditorUI.Reset();
 			var parent = property.serializedObject.targetObject;
 			var target = property.GetObject();
 			var value = "";

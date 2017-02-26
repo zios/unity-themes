@@ -6,6 +6,7 @@ namespace Zios.Editors.StateEditors{
 	[CustomEditor(typeof(StateTable),true)]
 	public class StateTableEditor : StateMonoBehaviourEditor{
 		public override void OnInspectorGUI(){
+			EditorUI.Reset();
 			this.SetupStyles();
 			this.DrawBreakdown();
 			string message = "Click here to open the State Window.";

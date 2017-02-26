@@ -55,6 +55,7 @@ namespace Zios.Editors.StateEditors{
 		}
 		public void OnGUI(){
 			if(this.target.IsNull()){return;}
+			this.SetTitle("State");
 			this.tableGUI.scroll.Set(this.scroll);
 			//if(!UnityEvent.current.IsUseful()){return;}
 			if(UnityEvent.current.type == EventType.ScrollWheel){

@@ -113,7 +113,7 @@ namespace Zios.Motion{
 			Event.Add("On Collision End",(MethodObject)this.OnCollisionEnd,this.gameObject);
 			ColliderController.SetupColliders();
 			if(Application.isPlaying){
-				var body = this.gameObject.AddComponent<Rigidbody>();
+				var body = this.gameObject.GetComponent<Rigidbody>() ?? this.gameObject.AddComponent<Rigidbody>();
 				body.useGravity = false;
 				body.freezeRotation = true;
 				body.isKinematic = false;
