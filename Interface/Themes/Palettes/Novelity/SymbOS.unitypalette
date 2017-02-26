@@ -6,7 +6,7 @@
 	MainIcons           : #630100  
 	Border              : #630100  
 	BorderActive        : #000000  
-	BorderButton        : #630100   : Border   
+	BorderButton        : #630100   : Border      
 	BorderIcons         : #F7F763E1
 	Highlight           : #B36100  
 	HighlightActive     : #000000  
@@ -31,10 +31,10 @@
 	TextError           : #BF4335  
 	TextHeader          : #700D02  
 (Other)
-	Frame               : #630100   : Border   
-	Window              : #F89108   : Main     
-	Details             : #FFFFFF37 : Header   
-	Cursor              : #B36100   : Highlight
-	Selection           : #B36100   : Highlight
-	Curve               : #B36100   : Highlight : 1.5
-	CurveBackground     : #630100   : Border    : 0.5
+	Frame               : #630100   : Border      
+	Window              : #F89108   : Main        
+	Details             : #000000   : BorderActive
+	Cursor              : #B36100   : Highlight   
+	Selection           : #B36100   : Highlight   
+	Curve               : #B36100   : Highlight    : 1.5
+	CurveBackground     : #630100   : Border       : 0.5
