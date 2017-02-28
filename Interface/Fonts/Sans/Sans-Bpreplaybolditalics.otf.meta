@@ -13,9 +13,9 @@ TrueTypeFontImporter:
   - BPreplay
   fallbackFontReferences:
   - {fileID: 12800000, guid: 002ff8d041bff334083382d78270e634, type: 3}
-  customCharacters: 
+  customCharacters:
   fontRenderingMode: 0
   ascentCalculationMode: 1
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
+  userData:
+  assetBundleName:
+  assetBundleVariant:

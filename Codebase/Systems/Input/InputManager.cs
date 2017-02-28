@@ -147,7 +147,6 @@ namespace Zios.Inputs{
 				var buttonWidth = Screen.width * 0.5f;
 				var buttonHeight = Screen.height * 0.09f;
 				var area = new Rect((Screen.width/2)-buttonWidth/2,10,buttonWidth,buttonHeight);
-				GUI.skin = FileManager.GetAsset<GUISkin>("Gentleface-Light.guiskin");
 				var style = GUI.skin.button.Font("Bombardier.otf").FontSize((int)(buttonHeight*0.7f));
 				GUI.Label(area,this.selectionHeader,style.Background(""));
 				area = area.AddY(buttonHeight+8);

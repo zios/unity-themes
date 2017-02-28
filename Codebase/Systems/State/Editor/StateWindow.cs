@@ -110,7 +110,7 @@ namespace Zios.Editors.StateEditors{
 		}
 		public void CheckHotkeys(){
 			if(prompted){
-				int state = "Group Name?".DrawPrompt(ref this.newSection);
+				int state = "Group Name?".ToLabel().DrawPrompt(ref this.newSection);
 				if(state > 0){
 					Utility.RecordObject(this.target,"State Window - Group Assignment");
 					var selected = this.tableGUI.rows.Where(x=>x.selected).ToArray();
