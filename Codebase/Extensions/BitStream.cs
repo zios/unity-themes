@@ -1,3 +1,4 @@
+#if ENABLE_MONO
 using System;
 using UnityEngine;
 namespace Zios{
@@ -49,3 +50,4 @@ namespace Zios{
 		}
 	}
 }
+#endif

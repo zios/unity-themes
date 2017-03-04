@@ -875,6 +875,7 @@ namespace Zios.Interface{
 				importer.npotScale = TextureImporterNPOTScale.None;
 				importer.isReadable = true;
 				importer.mipmapEnabled = false;
+				importer.sRGBTexture = false;
 			}
 		}
 	}

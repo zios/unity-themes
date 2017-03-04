@@ -7,7 +7,7 @@ namespace Zios.Actions.RotateComponents{
 		public override void Awake(){
 			base.Awake();
 			this.target.Setup("Target",this);
-			this.goal.showInEditor = false;;
+			this.goal.showInEditor = false;
 		}
 		public override void Use(){
 			Vector3 goalPosition = this.target.Get().transform.position;
