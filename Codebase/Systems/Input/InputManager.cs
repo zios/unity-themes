@@ -1,5 +1,4 @@
 using System;
-using System.IO;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,42 +7,17 @@ using UnityEvent = UnityEngine.Event;
 namespace Zios.Inputs{
 	using Interface;
 	using Events;
-	using Containers;
-	[InitializeOnLoad]
-	public static class InputHook{
-		public static Hook<InputManager> hook;
-		static InputHook(){
-			if(Utility.IsPlaying()){return;}
-			InputHook.hook = new Hook<InputManager>(null,InputHook.Create);
-		}
-		public static void Create(){
-			bool wasNull = InputManager.instance.IsNull();
-			InputHook.hook.Create();
-			var instance = InputManager.instance;
-			if(wasNull){
-				instance.uiObject = Locate.Find("@Main/InputUI");
-				if(instance.uiObject.IsNull()){
-					instance.uiObject = GameObject.Instantiate(FileManager.GetAsset<GameObject>("InputUI.prefab"));
-					instance.uiObject.name = instance.uiObject.name.Remove("(Clone)");
-					instance.uiObject.transform.SetParent(Hook.main.transform);
-				}
-				InputGroup.Load();
-			}
-			Event.Add("On Enter Play",InputGroup.Save).SetPermanent();
-			Event.Add("On Validate",instance.Refresh,instance).SetPermanent();
-		}
-	}
 	public enum InputUIState{None,SelectProfile,EditProfile}
 	public enum InputInstanceOptions{AllowCurrentlyUsedProfiles=1,AllowMultipleProfiles=2,ReassignInvalidProfiles=4}
-	public class InputManager : MonoBehaviour{
-		[NonSerialized] public static bool disabled = true;
-		[NonSerialized] public static InputManager instance;
-		[NonSerialized] public static Vector2 mouseChange;
-		[NonSerialized] public static Vector2 mouseScroll;
-		[NonSerialized] public static Vector2 mousePosition;
-		[NonSerialized] public static Vector2 mouseChangeAverage;
-		[NonSerialized] public static float lastMouseChange;
-		[NonSerialized] public static float registerTime = 1;
+	public class InputManager : ScriptableObject{
+		public static bool disabled = true;
+		public static InputManager instance;
+		public static Vector2 mouseChange;
+		public static Vector2 mouseScroll;
+		public static Vector2 mousePosition;
+		public static Vector2 mouseChangeAverage;
+		public static float lastMouseChange;
+		public static float registerTime = 1;
 		[EnumMask] public InputInstanceOptions instanceOptions = (InputInstanceOptions)(2);
 		public float gamepadDeadZone = 0.1f;
 		public float gamepadSensitivity = 1;
@@ -53,8 +27,8 @@ namespace Zios.Inputs{
 		[Internal] public List<InputDevice> devices = new List<InputDevice>();
 		[Internal] public List<InputProfile> profiles = new List<InputProfile>();
 		[Internal] public string[] joystickNames = new string[0];
-		[Internal] public GameObject uiObject;
-		[NonSerialized] public InputUIState uiState;
+		private GameObject uiObject;
+		private InputUIState uiState;
 		private Dictionary<string,bool> joystickAxis = new Dictionary<string,bool>();
 		private bool waitForRelease;
 		private string selectionHeader;
@@ -75,13 +49,22 @@ namespace Zios.Inputs{
 				InputGroup.Load();
 			}
 		}
-		public void Awake(){
+		public void Setup(){
 			InputManager.instance = this;
+			this.uiState = 0;
+			this.activeProfile = null;
+			this.devices.Clear();
+			this.profiles.Clear();
+			this.joystickNames = this.joystickNames.Clear();
+		}
+		public void OnEnable(){
+			this.Setup();
+			InputGroup.Load();
+			if(!Utility.IsPlaying()){return;}
 			InputManager.Validate();
 			if(InputManager.disabled){return;}
 			InputProfile.Load();
 			InputInstance.Load();
-			InputGroup.Load();
 			Console.AddKeyword("inputShowProfiles",this.ShowProfiles);
 			Console.AddKeyword("inputAssignProfile",this.AssignProfile);
 			Console.AddKeyword("inputCreateProfile",this.CreateProfile);
@@ -89,6 +72,10 @@ namespace Zios.Inputs{
 			Console.AddKeyword("inputRemoveProfile",this.RemoveProfile);
 			Event.Register("On Profile Selected",this);
 			Event.Register("On Profile Edited",this);
+			Event.Add("On Update",this.Update);
+			Event.Add("On Fixed Update",this.FixedUpdate);
+			Event.Add("On GUI",this.OnGUI);
+			Event.Add("On Validate",this.OnValidate);
 			this.DetectGamepads();
 		}
 		public static bool Validate(){
@@ -119,6 +106,15 @@ namespace Zios.Inputs{
 				}
 			}
 			bool uiActive = this.uiState != InputUIState.None;
+			if(this.uiObject.IsNull()){
+				this.uiObject = Locate.Find("@Main/InputUI");
+				if(this.uiObject.IsNull()){
+					this.uiObject = GameObject.Instantiate(FileManager.GetAsset<GameObject>("InputUI.prefab"));
+					this.uiObject.name = this.uiObject.name.Remove("(Clone)");
+					this.uiObject.transform.SetParent(Locate.GetScenePath("@Main").transform);
+					Locate.SetDirty();
+				}
+			}
 			this.uiObject.SetActive(uiActive);
 			Locate.Find("@Main/InputUI/ProfileCreate/").SetActive(false);
 			Locate.Find("@Main/InputUI/ProfileSelect/").SetActive(false);
@@ -137,7 +133,7 @@ namespace Zios.Inputs{
 		//===============
 		// GUI
 		//===============
-		[ContextMenu("Prepare Settings")] public void Setup(){InputGroup.Setup();}
+		[ContextMenu("Prepare Settings")] public void Prepare(){InputGroup.Setup();}
 		[ContextMenu("Save Settings")] public void Save(){InputGroup.Save();}
 		[ContextMenu("Load Settings")] public void Load(){InputGroup.Load();}
 		public void DrawProfileSelect(){
@@ -150,7 +146,7 @@ namespace Zios.Inputs{
 				var style = GUI.skin.button.Font("Bombardier.otf").FontSize((int)(buttonHeight*0.7f));
 				GUI.Label(area,this.selectionHeader,style.Background(""));
 				area = area.AddY(buttonHeight+8);
-				foreach(var profile in this.profiles){
+				foreach(var profile in this.profiles.Copy()){
 					bool usable = this.devices.Select(x=>x.name).ContainsAll(profile.requiredDevices);
 					if(!usable){GUI.enabled = false;}
 					if(GUI.Button(area,profile.name,style)){
@@ -198,7 +194,7 @@ namespace Zios.Inputs{
 					}
 					else if(inputName.Contains("Mouse")){device = "Mouse";}
 					var existsText = Locate.Find(path+"Text-Exists");
-					var match = profile.mappings.collection.Where(x=>x.Key.Contains(groupName) && x.Value.Contains(inputName)).FirstOrDefault();
+					var match = profile.mappings.collection.Where(x=>x.Key.Contains(groupName+"-",true) && x.Value.Matches(inputName,true)).FirstOrDefault();
 					existsText.SetActive(!match.Key.IsEmpty());
 					if(!match.Key.IsEmpty()){
 						existsText.GetComponent<Text>().text = inputName.Remove("*") + " already mapped to : <color=#FF9999FF>" + match.Key.Split("-")[1] + "</color>";
@@ -390,7 +386,7 @@ namespace Zios.Inputs{
 			}
 		}
 		public void CreateProfile(string name){
-			int index = 0;
+			int index = 1;
 			while(this.profiles.Exists(x=>x.name==name)){
 				name = "Profile"+index;
 				index += 1;

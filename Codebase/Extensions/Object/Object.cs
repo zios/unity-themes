@@ -71,6 +71,7 @@ namespace Zios{
 		}
 		public static bool IsNot<T>(this T current,Type value){return !current.Is(value);}
 		public static bool IsNot<T>(this T current,string name){return !current.Is(name);}
+		public static bool IsNot<T>(this object current){return !current.Is<T>();}
 		//============================
 		// Casts
 		//============================

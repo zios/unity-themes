@@ -17,7 +17,7 @@ namespace Zios.Containers{
 		public string search = "";
 		public GameObject directObject;
 		public GameObject searchObject;
-		public Component parent;
+		public UnityObject parent;
 		public TargetMode mode = TargetMode.Search;
 		public string path;
 		private bool verified;
@@ -46,44 +46,47 @@ namespace Zios.Containers{
 				this.disabled = true;
 			}
 		}
-		public void Setup(string path,Component parent){
+		public void Setup(string path,UnityObject parent){
 			this.disabled = false;
-			this.path = parent.GetPath() + "/" + path;
-			this.parent = parent;
-			if(!Application.isPlaying){
-				this.AddSpecial("[This]",parent.gameObject);
-				this.AddSpecial("[Self]",parent.gameObject);
-				this.AddSpecial("[Next]",parent.gameObject.GetNextSibling(true));
-				this.AddSpecial("[Previous]",parent.gameObject.GetPreviousSibling(true));
-				this.AddSpecial("[NextEnabled]",parent.gameObject.GetNextSibling());
-				this.AddSpecial("[PreviousEnabled]",parent.gameObject.GetPreviousSibling());
-				this.AddSpecial("[Root]",parent.gameObject.GetPrefabRoot());
-				Event.Add("On Validate",this.Search,parent);
-				Event.Add("On Components Changed",this.Search,parent);
-				if(parent is StateMonoBehaviour){
-					var state = (StateMonoBehaviour)parent;
-					GameObject stateObject = state.gameObject;
-					GameObject parentObject = state.gameObject;
-					if(state.controller != null){
-						stateObject = state.controller.gameObject;
-						parentObject = state.controller.gameObject;
-						if(state.controller.controller != null){
-							parentObject = state.controller.controller.gameObject;
+			if(parent.Is<Component>()){
+				var component = this.parent.As<Component>();
+				this.path = component.GetPath() + "/" + path;
+				this.parent = parent;
+				if(!Application.isPlaying){
+					this.AddSpecial("[This]",component.gameObject);
+					this.AddSpecial("[Self]",component.gameObject);
+					this.AddSpecial("[Next]",component.gameObject.GetNextSibling(true));
+					this.AddSpecial("[Previous]",component.gameObject.GetPreviousSibling(true));
+					this.AddSpecial("[NextEnabled]",component.gameObject.GetNextSibling());
+					this.AddSpecial("[PreviousEnabled]",component.gameObject.GetPreviousSibling());
+					this.AddSpecial("[Root]",component.gameObject.GetPrefabRoot());
+					Event.Add("On Validate",this.Search,parent);
+					Event.Add("On Components Changed",this.Search,parent);
+					if(parent is StateMonoBehaviour){
+						var state = (StateMonoBehaviour)parent;
+						GameObject stateObject = state.gameObject;
+						GameObject parentObject = state.gameObject;
+						if(state.controller != null){
+							stateObject = state.controller.gameObject;
+							parentObject = state.controller.gameObject;
+							if(state.controller.controller != null){
+								parentObject = state.controller.controller.gameObject;
+							}
 						}
+						this.AddSpecial("[ParentController]",parentObject);
+						this.AddSpecial("[Controller]",stateObject);
+						this.AddSpecial("[State]",state.gameObject);
 					}
-					this.AddSpecial("[ParentController]",parentObject);
-					this.AddSpecial("[Controller]",stateObject);
-					this.AddSpecial("[State]",state.gameObject);
-				}
-				this.SetFallback(Target.defaultSearch);
-				if(this.searchObject.IsNull()){
-					this.Search();
+					this.SetFallback(Target.defaultSearch);
+					if(this.searchObject.IsNull()){
+						this.Search();
+					}
 				}
 			}
 		}
 		public void SetFallback(string name){this.fallbackSearch = name;}
 		public void AddSpecial(string name,GameObject target){
-			if(target.IsNull()){target = this.parent.gameObject;}
+			if(target.IsNull()){target = this.parent.Is<Component>() ? this.parent.As<Component>().gameObject : null;}
 			if(!this.specialNames.Any(x=>x.Contains(name,true))){
 				this.specialNames.Add(name);
 				this.special.Add(target);

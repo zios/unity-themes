@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityObject = UnityEngine.Object;
 namespace Zios.Attributes{
 	[Serializable]
 	public class AttributeGameObject : Attribute<GameObject,AttributeGameObject,AttributeGameObjectData>{
@@ -17,7 +18,7 @@ namespace Zios.Attributes{
 			}
 			return data.As<AttributeGameObjectData>().Get();
 		}
-		public override void Setup(string path,Component component){
+		public override void Setup(string path,UnityObject component){
 			base.Setup(path,component);
 			this.canDirect = this.canFormula = this.canAdvanced = false;
 			this.canGroup = true;

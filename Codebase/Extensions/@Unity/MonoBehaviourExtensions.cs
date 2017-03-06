@@ -22,5 +22,8 @@ namespace Zios{
 		public static bool IsEnabled(this MonoBehaviour current){
 			return !current.IsNull() && current.enabled && current.gameObject.activeInHierarchy;
 		}
+		public static Type Get<Type>(this MonoBehaviour current){
+			return current.gameObject.GetComponent<Type>();
+		}
 	}
 }

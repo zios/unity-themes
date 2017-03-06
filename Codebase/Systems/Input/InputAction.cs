@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityObject = UnityEngine.Object;
 namespace Zios.Inputs{
 	using Actions.TransitionComponents;
 	[Serializable]
@@ -15,7 +16,7 @@ namespace Zios.Inputs{
 			this.options = action.options;
 			this.transition = new Transition(action.transition);
 		}
-		public void Setup(string path,Component parent){
+		public void Setup(string path,UnityObject parent){
 			this.path = path + "/" + this.name;
 			if(this.transition.IsNull() || this.transition.acceleration.keys.Length < 1){
 				this.transition = new Transition();

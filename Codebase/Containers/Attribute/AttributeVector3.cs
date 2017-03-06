@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityObject = UnityEngine.Object;
 namespace Zios.Attributes{
 	[Serializable]
 	public class AttributeVector3 : Attribute<Vector3,AttributeVector3,AttributeVector3Data>{
@@ -21,11 +22,11 @@ namespace Zios.Attributes{
 		public AttributeFloat x = 0;
 		public AttributeFloat y = 0;
 		public AttributeFloat z = 0;
-		public override void Setup(string path,Component component){
-			base.Setup(path,component);
-			this.x.Setup(path+"/X",component);
-			this.y.Setup(path+"/Y",component);
-			this.z.Setup(path+"/Z",component);
+		public override void Setup(string path,UnityObject parent){
+			base.Setup(path,parent);
+			this.x.Setup(path+"/X",parent);
+			this.y.Setup(path+"/Y",parent);
+			this.z.Setup(path+"/Z",parent);
 			this.x.getMethod = ()=>this.Get().x;
 			this.y.getMethod = ()=>this.Get().y;
 			this.z.getMethod = ()=>this.Get().z;

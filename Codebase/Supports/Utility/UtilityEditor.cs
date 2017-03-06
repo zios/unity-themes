@@ -134,6 +134,25 @@ namespace Zios{
 		public static void BuildAssetBundles(){
 			BuildPipeline.BuildAssetBundles("Assets/",BuildAssetBundleOptions.None,BuildTarget.StandaloneWindows64);
 		}
+		[MenuItem("Zios/Create Singleton")]
+		public static ScriptableObject CreateSingleton(){
+			var path = EditorUtility.SaveFilePanelInProject("Create Singleton","","","");
+			return Utility.CreateSingleton(path);
+		}
+		public static ScriptableObject CreateSingleton(string path){
+			var name = path.GetPathTerm();
+			var folder = Application.dataPath + "/" + path.TrimLeft("Assets/").GetDirectory();
+			FileManager.Create(folder);
+			AssetDatabase.ImportAsset(folder.GetAssetPath());
+			try{
+				var instance = ScriptableObject.CreateInstance(name);
+				AssetDatabase.CreateAsset(instance,path+".asset");
+				AssetDatabase.Refresh();
+				return instance;
+			}
+			catch{Debug.LogWarning("[Utility] No scriptableObject exists named -- " + name + ".asset");}
+			return null;
+		}
 		#endif
 	}
 	#endif

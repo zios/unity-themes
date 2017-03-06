@@ -1,5 +1,6 @@
-using UnityEngine;
 using System;
+using UnityEngine;
+using UnityObject = UnityEngine.Object;
 namespace Zios.Actions.TransitionComponents{
 	using Attributes;
 	using Events;
@@ -12,7 +13,7 @@ namespace Zios.Actions.TransitionComponents{
 		[Advanced] public AnimationCurve deceleration = AnimationCurve.EaseInOut(1,1,1,1);
 		[NonSerialized] public TransitionState state;
 		[HideInInspector] public AttributeFloat delta = 0;
-		[HideInInspector] public Component parent;
+		[HideInInspector] public UnityObject parent;
 		[HideInInspector] public string path;
 		protected float startValue;
 		protected float startTime;
@@ -32,7 +33,7 @@ namespace Zios.Actions.TransitionComponents{
 			this.time.delayedValue = time;
 			this.speed.delayedValue = speed;
 		}
-		public void Setup(string path,Component parent){
+		public void Setup(string path,UnityObject parent){
 			this.path = path;
 			this.parent = parent;
 			this.time.Setup(path+"/Transition Time",parent);

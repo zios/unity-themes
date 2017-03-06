@@ -206,7 +206,7 @@ namespace Zios.Interface{
 		// Binds
 		//===========================
 		public static void AddBind(string key,string action,bool toggle=false,bool repeat=false,float repeatDelay=0){
-			if(!Application.isPlaying){return;}
+			if(!Utility.IsPlaying()){return;}
 			List<string> keyCodes = new List<string>(Enum.GetNames(typeof(KeyCode)));
 			if(!keyCodes.Contains(key)){
 				key = Button.GetName(key);
@@ -324,28 +324,28 @@ namespace Zios.Interface{
 		// Cvars
 		//===========================
 		public static void AddCvarMethod(string name,object scope,string dataName,string fullName="",string help="",Method method=null){
-			if(!Application.isPlaying){return;}
+			if(!Utility.IsPlaying()){return;}
 			Console.AddCvar(name,scope,dataName,fullName,help);
 			Console.cvars[name].method.simple = method;
 		}
 		public static void AddCvarMethod(string name,object scope,string dataName,string fullName="",string help="",ConsoleMethod method=null){
-			if(!Application.isPlaying){return;}
+			if(!Utility.IsPlaying()){return;}
 			Console.AddCvar(name,scope,dataName,fullName,help);
 			Console.cvars[name].method.basic = method;
 		}
 		public static void AddCvarMethod(string name,object scope,string dataName,string fullName="",string help="",ConsoleMethodFull method=null){
-			if(!Application.isPlaying){return;}
+			if(!Utility.IsPlaying()){return;}
 			Console.AddCvar(name,scope,dataName,fullName,help);
 			Console.cvars[name].method.full = method;
 		}
 		public static void AddCvar(string name,object scope,string dataName,string fullName,Dictionary<string,string> help,bool formatHelp=true){
-			if(!Application.isPlaying){return;}
+			if(!Utility.IsPlaying()){return;}
 			if(help.ContainsKey(name)){
 				Console.AddCvar(name,scope,dataName,fullName,name + " " + help[name],formatHelp);
 			}
 		}
 		public static void AddCvar(string name,object scope,string dataName,string fullName="",string help="",bool formatHelp=true){
-			if(!Application.isPlaying){return;}
+			if(!Utility.IsPlaying()){return;}
 			if(Console.cvars.ContainsKey(name)){
 				Debug.LogWarning("[Console] Already has registered Cvar for -- " + name);
 				return;
@@ -428,7 +428,7 @@ namespace Zios.Interface{
 		// Keywords/Shortcuts
 		//===========================
 		public static void AddKeyword(string name,ConsoleCallback call){
-			if(!Application.isPlaying){return;}
+			if(!Utility.IsPlaying()){return;}
 			if(Console.keywords.ContainsKey(name)){
 				Debug.LogWarning("[Console] Already has registered Keyword for -- " + name);
 				return;
@@ -436,7 +436,7 @@ namespace Zios.Interface{
 			Console.keywords.Add(name,call);
 		}
 		public static void AddKeyword(string name,Method method=null,int minimumParameters=-1,string help=""){
-			if(!Application.isPlaying){return;}
+			if(!Utility.IsPlaying()){return;}
 			ConsoleCallback call = new ConsoleCallback();
 			call.simple = method;
 			call.help = help;
@@ -444,7 +444,7 @@ namespace Zios.Interface{
 			Console.AddKeyword(name,call);
 		}
 		public static void AddKeyword(string name,ConsoleMethod method=null,int minimumParameters=-1,string help=""){
-			if(!Application.isPlaying){return;}
+			if(!Utility.IsPlaying()){return;}
 			ConsoleCallback call = new ConsoleCallback();
 			call.basic = method;
 			call.help = help;
@@ -452,7 +452,7 @@ namespace Zios.Interface{
 			Console.AddKeyword(name,call);
 		}
 		public static void AddKeyword(string name,ConsoleMethodFull method=null,int minimumParameters=-1,string help=""){
-			if(!Application.isPlaying){return;}
+			if(!Utility.IsPlaying()){return;}
 			ConsoleCallback call = new ConsoleCallback();
 			call.full = method;
 			call.help = help;
@@ -460,13 +460,13 @@ namespace Zios.Interface{
 			Console.AddKeyword(name,call);
 		}
 		public static void AddShortcut(string term,params string[] shortcuts){
-			if(!Application.isPlaying){return;}
+			if(!Utility.IsPlaying()){return;}
 			foreach(string name in shortcuts){
 				Console.AddShortcut(term,name);
 			}
 		}
 		public static void AddShortcut(string term,string shortcut){
-			if(!Application.isPlaying){return;}
+			if(!Utility.IsPlaying()){return;}
 			if(Console.shortcuts.ContainsKey(shortcut)){
 				Debug.LogWarning("[Console] Already has registered Shortcut for -- " + shortcut);
 				return;
@@ -521,7 +521,7 @@ namespace Zios.Interface{
 		}
 		public static void AddLog(string text,bool system=false){
 			if(Console.disableLogging){return;}
-			if(!Application.isPlaying){
+			if(!Utility.IsPlaying()){
 				Application.logMessageReceived -= Console.HandleLog;
 				Debug.Log(text);
 				Application.logMessageReceived += Console.HandleLog;

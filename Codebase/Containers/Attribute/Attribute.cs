@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityObject = UnityEngine.Object;
 namespace Zios.Attributes{
 	using Events;
+	using Containers;
 	public enum AttributeMode{Normal,Linked,Formula,Group};
 	public enum AttributeUsage{Direct,Shaped};
 	public enum LinkType{Both,Get};
@@ -16,7 +18,7 @@ namespace Zios.Attributes{
 		public string relativePath;
 		public string id;
 		public string localID;
-		public Component parent;
+		public UnityObject parent;
 		public AttributeMode mode = AttributeMode.Normal;
 		public LinkType linkType;
 		public Type type;
@@ -47,8 +49,8 @@ namespace Zios.Attributes{
 		[EnumMask] public static AttributeRepair repair = (AttributeRepair)(-1);
 		[NonSerialized] public static bool ready;
 		[NonSerialized] public static List<Attribute> all = new List<Attribute>();
-		[NonSerialized] public static Dictionary<GameObject,Dictionary<string,Attribute>> lookup = new Dictionary<GameObject,Dictionary<string,Attribute>>();
-		[NonSerialized] public static Dictionary<GameObject,Dictionary<string,string>> resolve = new Dictionary<GameObject,Dictionary<string,string>>();
+		[NonSerialized] public static Hierarchy<UnityObject,string,Attribute> lookup = new Hierarchy<UnityObject,string,Attribute>();
+		[NonSerialized] public static Hierarchy<UnityObject,string,string> resolve = new Hierarchy<UnityObject,string,string>();
 		[NonSerialized] public static Dictionary<Attribute,bool> setWarning = new Dictionary<Attribute,bool>();
 		[NonSerialized] public static Dictionary<AttributeData,bool> getWarning = new Dictionary<AttributeData,bool>();
 		public AttributeInfo info = new AttributeInfo();
@@ -104,7 +106,7 @@ namespace Zios.Attributes{
 		public virtual AttributeData[] GetData(){return null;}
 		public virtual void Add<Type>(int index=-1,string set="") where Type : AttributeData,new(){}
 		public virtual void Remove(AttributeData data,string set=""){}
-		public virtual void Setup(string path,Component parent){}
+		public virtual void Setup(string path,UnityObject parent){}
 		public virtual void PrepareData(){}
 		public virtual void BuildLookup(){}
 		public virtual void BuildData(AttributeData[] dataSet){}
@@ -201,8 +203,8 @@ namespace Zios.Attributes{
 		// Setup
 		// ======================
 		public void Reset(){this.Setup(this.info.relativePath,this.info.parent);}
-		public override void Setup(string path,Component parent){
-			bool disabled = parent.IsNull() || (Application.isPlaying && !parent.IsEnabled());
+		public override void Setup(string path,UnityObject parent){
+			bool disabled = parent.IsNull() || (Application.isPlaying && parent is Component && !parent.As<Component>().IsEnabled());
 			if(disabled){return;}
 			if(!Application.isPlaying){
 				string previousID = this.info.id;
@@ -221,7 +223,7 @@ namespace Zios.Attributes{
 			}
 			this.isSetup = true;
 		}
-		public void BuildInfo(string path,Component parent){
+		public void BuildInfo(string path,UnityObject parent){
 			Utility.RecordObject(parent,"Attribute - Info Changes");
 			string previousID = this.info.id;
 			this.info.relativePath = path;
@@ -233,7 +235,7 @@ namespace Zios.Attributes{
 			this.info.parent = parent;
 			this.info.path = path;
 			this.info.name = path.Split("/").Last();
-			this.info.fullPath = parent.GetPath().TrimLeft("/") + path.Trim(parent.GetAlias());
+			this.info.fullPath = parent is Component ? parent.As<Component>().GetPath().TrimLeft("/") + path.Trim(parent.GetAlias()) : "Asset/";
 			this.info.localID = this.info.localID.IsEmpty() ? Guid.NewGuid().ToString() : this.info.localID;
 			this.info.id = parent.GetInstanceID()+"/"+this.info.localID;
 			dirty = dirty || this.info.id != previousID;
@@ -243,7 +245,7 @@ namespace Zios.Attributes{
 		}
 		public override void BuildLookup(){
 			AttributeType self = (AttributeType)this;
-			GameObject target = this.info.parent.gameObject;
+			UnityObject target = this.info.parent is Component ? this.info.parent.As<Component>().gameObject : this.info.parent;
 			var lookup = Attribute.lookup;
 			lookup.AddNew(target);
 			lookup[target].RemoveValue(self);
@@ -285,7 +287,7 @@ namespace Zios.Attributes{
 							if(path.Equals(data.referencePath)){
 								if(Attribute.debug.Has("IssueMinor")){
 									string message = "[Attribute] ID missing : " + data + ".  Resolved via path : " + data.referencePath;
-									Debug.Log(message,this.info.parent.gameObject);
+									Debug.Log(message,this.info.parent);
 								}
 								Utility.RecordObject(this.info.parent,"Attribute - Fix Reference");
 								Utility.RecordObject(attribute.Value.info.parent,"Attribute - Fix Reference");
@@ -299,7 +301,7 @@ namespace Zios.Attributes{
 						}
 						if(!resolved && Attribute.debug.Has("Issue")){
 							string message = "[Attribute] ID missing : " + data.path + ".  Unable to find : " + data.referencePath;
-							Debug.LogWarning(message,this.info.parent.gameObject);
+							Debug.LogWarning(message,this.info.parent);
 						}
 					}
 				}
@@ -336,8 +338,10 @@ namespace Zios.Attributes{
 		// Repair
 		// ======================
 		public void FixDuplicates(){
+			if(this.info.parent.IsNot<Component>()){return;}
+			var parent = this.info.parent.As<Component>();
 			Utility.RecordObject(this.info.parent,"Attribute - Fix Duplicates");
-			GameObject current = this.info.parent.gameObject;
+			GameObject current = parent.gameObject;
 			string path = this.info.path;
 			string name = current.name;
 			if(Attribute.repair.Has("SamePathGameObjects")){
@@ -351,27 +355,29 @@ namespace Zios.Attributes{
 					if(Attribute.all.Contains(this)){break;}
 					this.info.path = this.info.path.ToLetterSequence();
 					this.info.name = this.info.path.Split("/").Last();
-					this.info.fullPath = this.info.parent.GetPath().TrimLeft("/") + this.info.path.Trim(this.info.parent.GetAlias());
+					this.info.fullPath = parent.GetPath().TrimLeft("/") + this.info.path.Trim(this.info.parent.GetAlias());
 				}
 			}
 			if(name != current.name && Attribute.debug.Has("Issue")){
 				Debug.Log("[Attribute] Resolving same name siblings : " + name,current);
 			}
 			if(path != this.info.path){
-				if(Attribute.debug.Has("IssueMinor")){Debug.Log("[Attribute] Resolving same name sibling attributes : " + this.info.fullPath,this.info.parent.gameObject);}
+				if(Attribute.debug.Has("IssueMinor")){Debug.Log("[Attribute] Resolving same name sibling attributes : " + this.info.fullPath,parent.gameObject);}
 				this.info.parent.CallEvent("On Validate");
 				Utility.SetDirty(this.info.parent);
 			}
 		}
 		public void FixChanged(string previousID){
+			if(this.info.parent.IsNot<Component>()){return;}
+			var parent = this.info.parent.As<Component>();
 			bool changedID = !previousID.IsEmpty() && this.info.id != previousID;
 			if(changedID){
-				if(Attribute.debug.Has("IssueMinor")){Debug.Log("[Attribute] Resolving changed ID : " + this.info.fullPath,this.info.parent.gameObject);}
+				if(Attribute.debug.Has("IssueMinor")){Debug.Log("[Attribute] Resolving changed ID : " + this.info.fullPath,parent.gameObject);}
 				var resolve = Attribute.resolve;
-				if(!resolve.ContainsKey(this.info.parent.gameObject)){
-					resolve[this.info.parent.gameObject] = new Dictionary<string,string>();
+				if(!resolve.ContainsKey(parent.gameObject)){
+					resolve[parent.gameObject] = new Dictionary<string,string>();
 				}
-				resolve[this.info.parent.gameObject][previousID] = this.info.id;
+				resolve[parent.gameObject][previousID] = this.info.id;
 			}
 		}
 		public override void PrepareData(){

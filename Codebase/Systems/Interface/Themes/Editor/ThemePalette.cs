@@ -229,7 +229,7 @@ namespace Zios.Interface{
 			int index = 0;
 			bool changes = false;
 			var originalPath = path.GetDirectory().GetDirectory()+"/"+name;
-			var originalImage = FileManager.GetAsset<Texture2D>(originalPath,false);
+			var originalImage = FileManager.GetAsset<Texture2D>(originalPath,false) ?? FileManager.GetAsset<Texture2D>(name,false);
 			var pixels = texture.GetPixels();
 			if(originalImage.IsNull() || pixels.Length != originalImage.GetPixels().Length){
 				Debug.Log("[TexturePalette] : Generating source for index/splat -- " + originalPath.GetPathTerm());
@@ -237,6 +237,7 @@ namespace Zios.Interface{
 				AssetDatabase.ImportAsset(originalPath.GetAssetPath());
 				originalImage = FileManager.GetAsset<Texture2D>(originalPath,false);
 			}
+			originalPath = originalImage.GetAssetPath();
 			if(Theme.debug && originalImage.format != TextureFormat.RGBA32){
 				Debug.Log("[ThemePalette] Original image is not an RGBA32 texture -- " + originalPath);
 			}
