@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 namespace Zios.Animations{
 	using Attributes;
-	using Events;
+	using Event;
 	[Serializable]
 	public class AnimationData{
 		public string name;
@@ -41,12 +41,12 @@ namespace Zios.Animations{
 			this.defaultTransitionIn.Setup("Default Transition In",this);
 			this.defaultTransitionOut.Setup("Default Transition Out",this);
 			this.defaultAnimationName.Setup("Default Animation Name",this);
-			Event.Add("Set Animation",this.OnSet,this.gameObject);
-			Event.Add("Set Animation Default",this.OnSetDefault,this.gameObject);
-			Event.Add("Set Animation Speed",this.OnSetSpeed,this.gameObject);
-			Event.Add("Set Animation Weight",this.OnSetWeight,this.gameObject);
-			Event.Add("Play Animation",this.OnPlay,this.gameObject);
-			Event.Add("Stop Animation",this.OnStop,this.gameObject);
+			Events.Add("Set Animation",this.OnSet,this.gameObject);
+			Events.Add("Set Animation Default",this.OnSetDefault,this.gameObject);
+			Events.Add("Set Animation Speed",this.OnSetSpeed,this.gameObject);
+			Events.Add("Set Animation Weight",this.OnSetWeight,this.gameObject);
+			Events.Add("Play Animation",this.OnPlay,this.gameObject);
+			Events.Add("Stop Animation",this.OnStop,this.gameObject);
 			if(this.animations.Count > 0){
 				this.defaultAnimationName.SetDefault(this.animations.First().name);
 			}

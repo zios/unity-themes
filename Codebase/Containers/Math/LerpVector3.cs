@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 namespace Zios.Containers.Math{
 	using Attributes;
-	using Events;
+	using Event;
 	[Serializable]
 	public class LerpVector3 : LerpTransition{
 		public ListBool lerpAxes = new ListBool{true,true,true};
@@ -12,8 +12,8 @@ namespace Zios.Containers.Math{
 		public override void Setup(string path,Component parent){
 			base.Setup(path,parent);
 			this.endProximity.Setup("End Proximity",parent);
-			Event.Register(this.path+"/Transition/On End",this.parent.gameObject);
-			Event.Register(this.path+"/Transition/On Start",this.parent.gameObject);
+			Events.Register(this.path+"/Transition/On End",this.parent.gameObject);
+			Events.Register(this.path+"/Transition/On Start",this.parent.gameObject);
 		}
 		public virtual Vector3 Step(Vector3 current){
 			return this.Step(current,current);

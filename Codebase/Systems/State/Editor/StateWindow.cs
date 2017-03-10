@@ -7,7 +7,7 @@ using UnityEvent = UnityEngine.Event;
 namespace Zios.Editors.StateEditors{
 	using Interface;
 	using Actions;
-	using Events;
+	using Event;
 	public enum HeaderMode{Vertical,Horizontal,HorizontalFit}
 	public class StateWindow : EditorWindow{
 		//===================================
@@ -46,9 +46,9 @@ namespace Zios.Editors.StateEditors{
 			this.wantsMouseMove = true;
 			this.CheckTarget();
 			if(this.target.IsNull()){return;}
-			Event.Add("On State Refreshed",this.BuildTable,this.target);
+			Events.Add("On State Refreshed",this.BuildTable,this.target);
 			if(Application.isPlaying){
-				Event.Add("On State Updated",this.Repaint,this.target);
+				Events.Add("On State Updated",this.Repaint,this.target);
 				this.row = -1;
 				this.column = -1;
 			}
@@ -94,11 +94,11 @@ namespace Zios.Editors.StateEditors{
 				bool changed = table != this.target || this.target.IsNull();
 				if(changed && !table.IsNull()){
 					if(!this.target.IsNull()){
-						Event.Remove("On State Updated",this.Repaint,this.target);
-						Event.Remove("On State Refreshed",this.BuildTable,this.target);
-						Event.Remove("On Components Changed",this.BuildTable,this.target.gameObject);
+						Events.Remove("On State Updated",this.Repaint,this.target);
+						Events.Remove("On State Refreshed",this.BuildTable,this.target);
+						Events.Remove("On Components Changed",this.BuildTable,this.target.gameObject);
 					}
-					Event.Add("On Components Changed",this.BuildTable,table.gameObject);
+					Events.Add("On Components Changed",this.BuildTable,table.gameObject);
 					this.target = table;
 					this.tableIndex = 0;
 					this.BuildTable();

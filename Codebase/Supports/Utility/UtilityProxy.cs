@@ -5,10 +5,10 @@ using UnityEngine;
 using UnityEditor;
 using UnityObject = UnityEngine.Object;
 namespace Zios{
-	using Events;
+	using Event;
 	public static partial class Utility{
 		//============================
-		// AssetDatabase
+		// AssetsDatabase
 		//============================
 		public static bool IsAsset(UnityObject target){
 			return !FileManager.GetPath(target).IsEmpty();
@@ -31,6 +31,43 @@ namespace Zios{
 		public static void DeleteAsset(string path){
 			AssetDatabase.DeleteAsset(path);
 		}
+		//============================
+		// Assets
+		//============================
+		#if !UNITY_THEMES
+		[MenuItem("Zios/Reload Scripts &#R")]
+		public static void ReloadScripts(){
+			Debug.Log("[Utility] : Forced Reload Scripts.");
+			typeof(UnityEditorInternal.InternalEditorUtility).CallMethod("RequestScriptReload");
+		}
+		[MenuItem("Assets/Build AssetBundles")]
+		public static void BuildAssetBundles(){
+			BuildPipeline.BuildAssetBundles("Assets/",BuildAssetBundleOptions.None,BuildTarget.StandaloneWindows64);
+		}
+		[MenuItem("Zios/Create Singleton")]
+		public static ScriptableObject CreateSingleton(){
+			var path = EditorUtility.SaveFilePanelInProject("Create Singleton","","","");
+			return Utility.CreateSingleton(path);
+		}
+		public static ScriptableObject CreateSingleton(string path,bool createPath=true){
+			var name = path.GetPathTerm();
+			var folder = Application.dataPath + "/" + path.TrimLeft("Assets/").GetDirectory();
+			if(createPath){FileManager.Create(folder);}
+			AssetDatabase.ImportAsset(folder.GetAssetPath());
+			try{
+				var instance = ScriptableObject.CreateInstance(name);
+				AssetDatabase.CreateAsset(instance,path+".asset");
+				AssetDatabase.Refresh();
+				return instance;
+			}
+			catch{Debug.LogWarning("[Utility] No scriptableObject exists named -- " + name + ".asset");}
+			return null;
+		}
+		public static Type GetSingleton<Type>() where Type : ScriptableObject{
+			var name = typeof(Type).Name;
+			return FileManager.GetAsset<Type>(name+".asset",false) ?? Utility.CreateSingleton("Assets/Settings/"+name,false).As<Type>();
+		}
+		#endif
 		//============================
 		// PrefabUtility
 		//============================
@@ -155,8 +192,8 @@ namespace Zios{
 			if(target.IsNull()){return;}
 			if(delayed){
 				if(!Utility.delayedDirty.Contains(target)){
-					Event.AddLimited("On Enter Play",()=>Utility.SetDirty(target),1);
-					Event.AddLimited("On Enter Play",Utility.ClearDirty,1);
+					Events.AddLimited("On Enter Play",()=>Utility.SetDirty(target),1);
+					Events.AddLimited("On Enter Play",Utility.ClearDirty,1);
 					Utility.delayedDirty.AddNew(target);
 				}
 				return;

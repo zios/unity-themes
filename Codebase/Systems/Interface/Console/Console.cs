@@ -8,17 +8,8 @@ using UnityEvent = UnityEngine.Event;
 using UnityInput = UnityEngine.Input;
 namespace Zios.Interface{
 	using Containers;
-	using Events;
+	using Event;
 	using Inputs;
-	public delegate void ConsoleMethod(string[] values);
-	public delegate void ConsoleMethodFull(string[] values,bool help);
-	public class ConsoleCallback{
-		public Method simple;
-		public ConsoleMethod basic;
-		public ConsoleMethodFull full;
-		public int minimumParameters = -1;
-		public string help;
-	}
 	public struct ConsoleState{
 		public const byte closed = 0;
 		public const byte closeBegin = 1;
@@ -27,36 +18,9 @@ namespace Zios.Interface{
 		public const byte openBegin = 4;
 		public const byte opening = 5;
 	}
-	public struct Cvar{
-		public Accessor value;
-		public object defaultValue;
-		public object scope;
-		public string name;
-		public string fullName;
-		public string help;
-		public ConsoleCallback method;
-	}
-	public struct Bind{
-		public string name;
-		public KeyCode key;
-		public string action;
-		public bool toggle;
-		public bool repeat;
-		public float repeatDelay;
-		public float nextRepeat;
-		public bool released;
-		public bool toggleActive;
-	}
 	[InitializeOnLoad]
-	public static class ConsoleHook{
-		public static Hook<Console> hook;
-		static ConsoleHook(){
-			if(Utility.IsPlaying()){return;}
-			new Hook<Console>();
-		}
-	}
-	[ExecuteInEditMode][AddComponentMenu("Zios/Singleton/Console")]
-	public partial class Console : MonoBehaviour{
+	public partial class Console : ScriptableObject{
+		public static Console singleton;
 		public GUISkin skin;
 		public Material background;
 		public Material inputBackground;
@@ -70,6 +34,9 @@ namespace Zios.Interface{
 		public int logFontSize = 15;
 		public byte logFontColor = 7;
 		public bool logFontAllowColors = true;
+		static Console(){
+			Utility.DelayCall(()=>Console.Get());
+		}
 		public void OnValidate(){
 			if(this.skin.IsNull()){
 				this.skin = FileManager.GetAsset<GUISkin>("Console.guiskin");
@@ -78,9 +45,14 @@ namespace Zios.Interface{
 				this.textArrow = FileManager.GetAsset<Material>("ConsoleArrow.mat");
 			}
 		}
-		public void Awake(){
+		public static Console Get(){
+			Console.singleton = Console.singleton ?? Utility.GetSingleton<Console>();
+			return Console.singleton;
+		}
+		public void OnEnable(){
+			Console.singleton = this;
 			this.OnValidate();
-			Console.instance = this;
+			Application.logMessageReceived += Console.HandleLog;
 			if(!this.logFile.IsEmpty() && !Application.isWebPlayer){
 				string logPath = Application.persistentDataPath + "/" + this.logFile;
 				try{
@@ -96,8 +68,10 @@ namespace Zios.Interface{
 					Console.AddLog("Log file is not writable. File in use or has bad path.");
 				}
 			}
+			Events.Add("On Application Quit",this.OnApplicationQuit);
+			Events.Add("On GUI",this.OnGUI);
+			Events.Add("On Start",this.Start);
 		}
-		public void OnEnable(){Application.logMessageReceived += Console.HandleLog;}
 		public void OnDisable(){Application.logMessageReceived -= Console.HandleLog;}
 		public void OnApplicationQuit(){
 			Console.SaveCvars();
@@ -107,7 +81,6 @@ namespace Zios.Interface{
 			}
 		}
 		public void OnGUI(){
-			if(Console.instance.IsNull()){return;}
 			Console.Setup();
 			Console.CheckTrigger();
 			Console.CheckBinds();
@@ -157,13 +130,9 @@ namespace Zios.Interface{
 		}
 	}
 	public partial class Console{
-		public static Console instance;
 		public static FixedList<string> log = new FixedList<string>(256);
 		public static FixedList<string> history = new FixedList<string>(256);
-		public static Dictionary<string,Bind> binds = new Dictionary<string,Bind>();
 		public static Dictionary<string,string> shortcuts = new Dictionary<string,string>();
-		public static Dictionary<string,ConsoleCallback> keywords = new Dictionary<string,ConsoleCallback>();
-		public static Dictionary<string,Cvar> cvars = new Dictionary<string,Cvar>();
 		private static List<string> autocomplete = new List<string>();
 		private static byte status = 0;
 		private static float logScrollLimit = 0;
@@ -174,7 +143,6 @@ namespace Zios.Interface{
 		private static string inputText = "";
 		private static string keyDetection = "";
 		private static string lastCommand = "";
-		private static List<string> configOutput = new List<string>();
 		private static Vector3 dragStart = Vector3.zero;
 		private static GUIStyle logStyle;
 		private static bool logFileUsable;
@@ -203,268 +171,8 @@ namespace Zios.Interface{
 			"^3consoleLoadConfig ^9<^7name^9>:^10 Adds an existing file's contents as console commands."
 		};
 		//===========================
-		// Binds
-		//===========================
-		public static void AddBind(string key,string action,bool toggle=false,bool repeat=false,float repeatDelay=0){
-			if(!Utility.IsPlaying()){return;}
-			List<string> keyCodes = new List<string>(Enum.GetNames(typeof(KeyCode)));
-			if(!keyCodes.Contains(key)){
-				key = Button.GetName(key);
-				if(!keyCodes.Contains(key)){
-					Debug.LogWarning("[Console] " + key + " could not be bound. It is not a valid key.");
-					return;
-				}
-			}
-			Bind data;
-			data.key = (KeyCode)Enum.Parse(typeof(KeyCode),key);
-			data.name = "bind-"+key;
-			if(toggle){data.name = "toggle-"+key;}
-			if(repeat){data.name = "repeat-"+key;}
-			data.action = action;
-			data.toggle = toggle;
-			data.repeat = repeat;
-			data.repeatDelay = repeatDelay;
-			data.nextRepeat = Time.time;
-			data.released = true;
-			data.toggleActive = false;
-			if(Console.binds.ContainsKey(key,true)){
-				Console.binds.Remove(key);
-			}
-			Console.binds.Add(key,data);
-		}
-		public static void LoadBinds(){
-			Console.AddBind("BackQuote","console");
-			if(!Application.isWebPlayer && Console.instance.configFile != ""){return;}
-			if(!Utility.HasPlayerPref("binds")){
-				Utility.SetPlayerPref<string>("binds","|");
-			}
-			string binds = Utility.GetPlayerPref<string>("binds");
-			string[] bindList = binds.Split('|');
-			foreach(string item in bindList){
-				string[] dataList = item.Split('-');
-				if(dataList.Length < 3){continue;}
-				string key = dataList[1];
-				string action = dataList[2];
-				bool toggle = dataList[0] == "toggle";
-				bool repeat = dataList[0] == "repeat";
-				float repeatDelay = dataList.Length > 3 ? Convert.ToSingle(dataList[3]) : 0;
-				Console.AddBind(key,action,toggle,repeat,repeatDelay);
-			}
-		}
-		public static void ResetBinds(string[] values){
-			Console.binds.Clear();
-			PlayerPrefs.DeleteKey("binds");
-			Console.AddLog("^10All stored ^3binds^10 have been cleared.");
-		}
-		public static void BindCommand(string[] values){
-			string data = string.Join(" ",values.Skip(2).ToArray()).Trim();
-			Console.AddBind(values[1],data);
-		}
-		public static void ToggleCommand(string[] values){
-			string data = string.Join(" ",values.Skip(2).ToArray()).Trim();
-			Console.AddBind(values[1],data,true);
-		}
-		public static void RepeatCommand(string[] values){
-			float repeatDelay = values.Length > 2 ? Convert.ToSingle(values.Last()) : 0;
-			string data = string.Join(" ",values.Skip(2).Take(values.Length-2).ToArray()).Trim();
-			Console.AddBind(values[1],data,false,true,repeatDelay);
-		}
-		public static void ListConsoleBinds(string[] values){
-			foreach(var item in Console.binds){
-				Bind data = item.Value;
-				string type = data.toggle ? "toggle" : "bind";
-				type = data.repeat ? "repeat (" + data.repeatDelay + "s)" : type;
-				Console.AddLog("  ^17" + type + "^8| " + data.key + " ^7|" + data.action);
-			}
-		}
-		public static void SaveBinds(){
-			string bindString = "";
-			foreach(var item in Console.binds){
-				Bind data = item.Value;
-				bindString += data.name + "-" + data.action;
-				if(data.repeat){bindString += "-" + data.repeatDelay;}
-				bindString += "|";
-			}
-			if(Application.isWebPlayer || Console.instance.configFile == ""){
-				bindString = bindString.Trim('|') + "|";
-				Utility.SetPlayerPref<string>("binds",bindString);
-			}
-			else{
-				Console.configOutput.Add(bindString.Replace("-"," ").Replace("|","\r\n"));
-			}
-		}
-		public static void CheckBinds(){
-			if(Console.keyDetection != ""){return;}
-			foreach(var item in Console.binds){
-				Bind data = item.Value;
-				if(Console.status > 0 && !data.action.Contains("console",true)){continue;}
-				bool keyDown = Button.EventKeyUp(data.key);
-				if(keyDown && data.repeat && data.nextRepeat > Time.time){
-					Console.AddCommand(data.action);
-					data.nextRepeat += Time.time + data.repeatDelay;
-				}
-				else if(data.toggle){
-					if(data.toggleActive){
-						Console.AddCommand(data.action);
-					}
-					if(keyDown && data.released){
-						data.toggleActive = !data.toggleActive;
-					}
-				}
-				else if(keyDown && data.released){
-					Console.AddCommand(data.action);
-				}
-				if(Console.lastCommand.Matches(data.action,true)){
-					UnityEvent.current.Use();
-				}
-				data.released = !keyDown;
-			}
-		}
-		//===========================
-		// Cvars
-		//===========================
-		public static void AddCvarMethod(string name,object scope,string dataName,string fullName="",string help="",Method method=null){
-			if(!Utility.IsPlaying()){return;}
-			Console.AddCvar(name,scope,dataName,fullName,help);
-			Console.cvars[name].method.simple = method;
-		}
-		public static void AddCvarMethod(string name,object scope,string dataName,string fullName="",string help="",ConsoleMethod method=null){
-			if(!Utility.IsPlaying()){return;}
-			Console.AddCvar(name,scope,dataName,fullName,help);
-			Console.cvars[name].method.basic = method;
-		}
-		public static void AddCvarMethod(string name,object scope,string dataName,string fullName="",string help="",ConsoleMethodFull method=null){
-			if(!Utility.IsPlaying()){return;}
-			Console.AddCvar(name,scope,dataName,fullName,help);
-			Console.cvars[name].method.full = method;
-		}
-		public static void AddCvar(string name,object scope,string dataName,string fullName,Dictionary<string,string> help,bool formatHelp=true){
-			if(!Utility.IsPlaying()){return;}
-			if(help.ContainsKey(name)){
-				Console.AddCvar(name,scope,dataName,fullName,name + " " + help[name],formatHelp);
-			}
-		}
-		public static void AddCvar(string name,object scope,string dataName,string fullName="",string help="",bool formatHelp=true){
-			if(!Utility.IsPlaying()){return;}
-			if(Console.cvars.ContainsKey(name)){
-				Debug.LogWarning("[Console] Already has registered Cvar for -- " + name);
-				return;
-			}
-			if(fullName == ""){fullName = scope.GetType().ToString() + "^1 " + dataName;}
-			int index = -1;
-			if(dataName.Contains("[")){
-				string[] words = dataName.Split('[');
-				dataName = words[0];
-				index = Convert.ToInt16(words[1].Replace("]",""));
-			}
-			Cvar data;
-			data.scope = scope;
-			data.name = dataName;
-			data.help = help;
-			data.fullName = fullName;
-			data.method = new ConsoleCallback();
-			data.value = new Accessor(scope,dataName,index);
-			data.defaultValue = data.value.Get().ToString();
-			Console.cvars.Add(name,data);
-			Console.LoadCvar(data);
-			Console.AddKeyword(name,Console.HandleCvar);
-		}
-		public static void LoadCvar(Cvar data){
-			if(!Application.isWebPlayer && Console.instance.configFile != ""){return;}
-			if(Utility.HasPlayerPref(data.fullName)){
-				object value = data.value.Get();
-				Type type = data.value.type;
-				if(type == typeof(float)){value = Utility.GetPlayerPref<float>(data.fullName);}
-				else if(type == typeof(string)){value = Utility.GetPlayerPref<string>(data.fullName);}
-				else if(type == typeof(int) || type == typeof(byte)){value = Utility.GetPlayerPref<int>(data.fullName);}
-				else if(type == typeof(bool)){value = Utility.GetPlayerPref<int>(data.fullName) == 1 ? true : false;}
-				data.value.Set(value);
-			}
-		}
-		public static void ResetCvars(string[] values){
-			string binds = Utility.GetPlayerPref<string>("binds");
-			Utility.DeletePlayerPrefs();
-			Utility.SetPlayerPref<string>("binds",binds);
-			foreach(var item in Console.cvars){
-				Cvar data = item.Value;
-				data.value.Set(data.defaultValue);
-			}
-			Console.AddLog("^10All stored ^3cvars^10 have been reset to default values.");
-		}
-		public static void SaveCvars(){
-			foreach(var item in Console.cvars){
-				if(item.Key.StartsWith("!")){continue;}
-				if(item.Key.StartsWith("#")){continue;}
-				Cvar data = item.Value;
-				object current = data.value.Get();
-				if(Application.isWebPlayer || Console.instance.configFile == ""){
-					Utility.SetPlayerPref(data.fullName,current);
-				}
-				else{
-					Console.configOutput.Add(item.Key + " " + current.SerializeAuto());
-				}
-			}
-		}
-		public static void HandleCvar(string[] values,bool help){
-			Cvar data = Console.cvars[values[0]];
-			string defaultText = "";
-			if(help){
-				if(data.help != ""){Console.AddLog(data.help);}
-				return;
-			}
-			if(values.Length > 1 && values[1] != ""){
-				data.value.Set(values[1]);
-			}
-			if(data.value.Get().ToString() != data.defaultValue.ToString()){
-				string value = data.defaultValue.ToString() != "" ? data.defaultValue.ToString() : "empty";
-				defaultText = "^7 (default : ^8|" + value + "^7)";
-			}
-			if(data.method.simple != null){data.method.simple();}
-			if(data.method.basic != null){data.method.basic(values);}
-			if(data.method.full != null){data.method.full(values,false);}
-			Console.AddLog("^10" + data.fullName + "^10 is :^3 " + data.value.Get() + defaultText);
-		}
-		//===========================
 		// Keywords/Shortcuts
 		//===========================
-		public static void AddKeyword(string name,ConsoleCallback call){
-			if(!Utility.IsPlaying()){return;}
-			if(Console.keywords.ContainsKey(name)){
-				Debug.LogWarning("[Console] Already has registered Keyword for -- " + name);
-				return;
-			}
-			Console.keywords.Add(name,call);
-		}
-		public static void AddKeyword(string name,Method method=null,int minimumParameters=-1,string help=""){
-			if(!Utility.IsPlaying()){return;}
-			ConsoleCallback call = new ConsoleCallback();
-			call.simple = method;
-			call.help = help;
-			call.minimumParameters = minimumParameters;
-			Console.AddKeyword(name,call);
-		}
-		public static void AddKeyword(string name,ConsoleMethod method=null,int minimumParameters=-1,string help=""){
-			if(!Utility.IsPlaying()){return;}
-			ConsoleCallback call = new ConsoleCallback();
-			call.basic = method;
-			call.help = help;
-			call.minimumParameters = minimumParameters;
-			Console.AddKeyword(name,call);
-		}
-		public static void AddKeyword(string name,ConsoleMethodFull method=null,int minimumParameters=-1,string help=""){
-			if(!Utility.IsPlaying()){return;}
-			ConsoleCallback call = new ConsoleCallback();
-			call.full = method;
-			call.help = help;
-			call.minimumParameters = minimumParameters;
-			Console.AddKeyword(name,call);
-		}
-		public static void AddShortcut(string term,params string[] shortcuts){
-			if(!Utility.IsPlaying()){return;}
-			foreach(string name in shortcuts){
-				Console.AddShortcut(term,name);
-			}
-		}
 		public static void AddShortcut(string term,string shortcut){
 			if(!Utility.IsPlaying()){return;}
 			if(Console.shortcuts.ContainsKey(shortcut)){
@@ -474,42 +182,12 @@ namespace Zios.Interface{
 			Console.shortcuts[shortcut] = term;
 		}
 		//===========================
-		// Config
-		//===========================
-		public static void SaveConfig(){
-			if(!Application.isWebPlayer){
-				using(StreamWriter file = new StreamWriter(Console.instance.configFile,false)){
-					foreach(string line in Console.configOutput){
-						file.WriteLine(line);
-					}
-				}
-			}
-		}
-		public static void LoadConfig(string name){
-			if(name != "" && !Application.isWebPlayer && FileManager.Exists(name)){
-				using(StreamReader file = new StreamReader(name)){
-					string line = "";
-					while((line = file.ReadLine()) != null){
-						Console.AddCommand(line,true);
-					}
-				}
-			}
-		}
-		public static void LoadConfig(string[] values){
-			Console.LoadConfig(values[1]);
-		}
-		public static void DeleteConfig(string name){
-			if(name != "" && FileManager.Exists(name)){
-				File.Delete(name);
-			}
-		}
-		//===========================
 		// Internal
 		//===========================
 		public static void Setup(){
 			if(Console.logStyle == null){
-				if(Console.instance.skin == null){Console.instance.skin = GUI.skin;}
-				Console.logStyle = new GUIStyle(Console.instance.skin.textField);
+				if(Console.Get().skin == null){Console.Get().skin = GUI.skin;}
+				Console.logStyle = new GUIStyle(Console.Get().skin.textField);
 			}
 		}
 		public static void AddCommand(string text,bool disableLogging=false){
@@ -528,7 +206,7 @@ namespace Zios.Interface{
 				if(system){return;}
 			}
 			if(Console.logFileUsable){
-				string logPath = Application.persistentDataPath + "/" + Console.instance.logFile;
+				string logPath = Application.persistentDataPath + "/" + Console.Get().logFile;
 				string cleanText = text;
 				for(int index=Console.color.Length-1;index>=0;--index){
 					cleanText = cleanText.Replace("^"+index,"").Replace("|","");
@@ -539,7 +217,7 @@ namespace Zios.Interface{
 			}
 			float lastPosition = Console.log.Count * Console.logPosition;
 			while(text.Length > 0){
-				int max = text.Length > Console.instance.logLineSize ? Console.instance.logLineSize : text.Length;
+				int max = text.Length > Console.Get().logLineSize ? Console.Get().logLineSize : text.Length;
 				Console.log.Add(text.Substring(0,max));
 				text = text.Substring(max);
 			}
@@ -598,7 +276,7 @@ namespace Zios.Interface{
 			}
 		}
 		public static void CheckTrigger(){
-			if(Button.EventKeyDown(Console.instance.triggerKey)){
+			if(Button.EventKeyDown(Console.Get().triggerKey)){
 				Console.Toggle();
 				UnityEvent.current.Use();
 			}
@@ -635,8 +313,8 @@ namespace Zios.Interface{
 			else if(UnityEvent.current.type == EventType.MouseDown){Console.mouseHeld = true;}
 			else if(UnityEvent.current.type == EventType.MouseUp){Console.mouseHeld = false;}
 			else if(UnityEvent.current.type == EventType.ScrollWheel){
-				if(control){Console.instance.logFontSize -= (int)UnityEvent.current.delta[1];}
-				else if(shift){Console.instance.height += Math.Sign(UnityEvent.current.delta[1]) * 0.02f;}
+				if(control){Console.Get().logFontSize -= (int)UnityEvent.current.delta[1];}
+				else if(shift){Console.Get().height += Math.Sign(UnityEvent.current.delta[1]) * 0.02f;}
 				else{Console.logPosition += (float)(UnityEvent.current.delta[1]) / (float)(Console.log.Count);}
 				UnityEvent.current.Use();
 			}
@@ -649,10 +327,10 @@ namespace Zios.Interface{
 				Console.historyIndex = (byte)Mathf.Clamp(Console.historyIndex,0,Console.history.Count-1);
 				Console.inputText = Console.history[Console.historyIndex];
 			}
-			Console.instance.logFontSize = Mathf.Clamp(Console.instance.logFontSize,9,128);
+			Console.Get().logFontSize = Mathf.Clamp(Console.Get().logFontSize,9,128);
 		}
 		public static void CheckDrag(){
-			float consoleHeight = (Screen.height * Console.offset)*Console.instance.height;
+			float consoleHeight = (Screen.height * Console.offset)*Console.Get().height;
 			Rect dragBounds = new Rect(0,consoleHeight,Screen.width,30);
 			Vector3 mouse = UnityInput.mousePosition;
 			mouse[1] = Screen.height - mouse[1];
@@ -662,31 +340,31 @@ namespace Zios.Interface{
 				}
 				else{
 					Vector3 changed = mouse - Console.dragStart;
-					Console.instance.height = Console.dragStart[2] + (changed.y/Screen.height);
+					Console.Get().height = Console.dragStart[2] + (changed.y/Screen.height);
 				}
 			}
 			else if(UnityInput.GetMouseButtonDown(0)){
 				if(dragBounds.Contains(mouse)){
 					Console.dragStart = mouse;
-					Console.dragStart[2] = Console.instance.height;
+					Console.dragStart[2] = Console.Get().height;
 				}
 			}
-			Console.instance.height = Mathf.Clamp(Console.instance.height,0.05f,(((float)Screen.height-30.0f)/(float)Screen.height));
+			Console.Get().height = Mathf.Clamp(Console.Get().height,0.05f,(((float)Screen.height-30.0f)/(float)Screen.height));
 		}
 		public static void DrawElements(){
-			GUI.skin = Console.instance.skin;
-			float consoleHeight = (Screen.height * Console.offset)*Console.instance.height;
+			GUI.skin = Console.Get().skin;
+			float consoleHeight = (Screen.height * Console.offset)*Console.Get().height;
 			byte logLinesShown = 0;
-			int logTextOffset = 15 - Console.instance.logFontSize;
+			int logTextOffset = 15 - Console.Get().logFontSize;
 			Rect logBounds = new Rect(-10,5,Screen.width-20,18);
 			Rect scrollBounds = new Rect(Screen.width-15,0,20,consoleHeight);
 			Rect consoleBounds = new Rect(0,0,Screen.width,consoleHeight);
 			Rect inputBounds = new Rect(0,consoleHeight,Screen.width,30);
 			Rect inputArrowBounds = new Rect(2,consoleHeight+6,12,12);
-			Console.logStyle.fontSize = Console.instance.logFontSize;
+			Console.logStyle.fontSize = Console.Get().logFontSize;
 			if(UnityEvent.current.type == EventType.Repaint){
-				var backgroundTexture = Console.instance.background.GetTexture("textureMap");
-				var inputTexture = Console.instance.inputBackground.GetTexture("textureMap");
+				var backgroundTexture = Console.Get().background.GetTexture("textureMap");
+				var inputTexture = Console.Get().inputBackground.GetTexture("textureMap");
 				if(!backgroundTexture.IsNull()){
 					backgroundTexture.wrapMode = TextureWrapMode.Repeat;
 					backgroundTexture.filterMode = FilterMode.Bilinear;
@@ -695,20 +373,20 @@ namespace Zios.Interface{
 					inputTexture.wrapMode = TextureWrapMode.Repeat;
 					inputTexture.filterMode = FilterMode.Bilinear;
 				}
-				Graphics.DrawTexture(consoleBounds,Texture2D.whiteTexture,Console.instance.background);
-				Graphics.DrawTexture(inputBounds,Texture2D.whiteTexture,Console.instance.inputBackground);
-				Graphics.DrawTexture(inputArrowBounds,Texture2D.whiteTexture,Console.instance.textArrow);
+				Graphics.DrawTexture(consoleBounds,Texture2D.whiteTexture,Console.Get().background);
+				Graphics.DrawTexture(inputBounds,Texture2D.whiteTexture,Console.Get().inputBackground);
+				Graphics.DrawTexture(inputArrowBounds,Texture2D.whiteTexture,Console.Get().textArrow);
 			}
 			if(Console.status == ConsoleState.open && Console.log.Count > 0){
-				Console.logStyle.normal.textColor = Console.color[Console.instance.logFontColor];
+				Console.logStyle.normal.textColor = Console.color[Console.Get().logFontColor];
 				float clampedPosition = Mathf.Clamp(Console.logPosition,0,Console.logScrollLimit);
 				byte logPosition = (byte)(clampedPosition * (Console.log.Count+1));
 				for(byte lineIndex = 0;lineIndex < Console.log.Count;++lineIndex){
 					if(logPosition > lineIndex){continue;}
-					if(logBounds.y + Console.instance.logFontSize > consoleBounds.yMax - 5){break;}
+					if(logBounds.y + Console.Get().logFontSize > consoleBounds.yMax - 5){break;}
 					string colorCode = "";
 					StringBuilder word = new StringBuilder();
-					Console.logStyle.normal.textColor = Console.color[Console.instance.logFontColor];
+					Console.logStyle.normal.textColor = Console.color[Console.Get().logFontColor];
 					foreach(char letter in Console.log[lineIndex]){
 						if(logBounds.x > Screen.width){break;}
 						if(letter == '^'){
@@ -717,17 +395,17 @@ namespace Zios.Interface{
 						}
 						else if(colorCode.Length > 0){
 							if(Char.IsNumber(letter)){
-								if(Console.instance.logFontAllowColors){colorCode += letter;}
+								if(Console.Get().logFontAllowColors){colorCode += letter;}
 								continue;
 							}
-							if(Console.instance.logFontAllowColors){
+							if(Console.Get().logFontAllowColors){
 								if(word.Length > 0){
 									logBounds.width = Console.logStyle.CalcSize(new GUIContent(word.ToString()))[0];
 									GUI.Label(logBounds,word.ToString().Replace("|",""),Console.logStyle);
 									logBounds.x += logBounds.width - (15+logTextOffset/2);
 									word = new StringBuilder();
 								}
-								colorCode = colorCode.Length < 2 ? Console.instance.logFontColor.ToString() : colorCode;
+								colorCode = colorCode.Length < 2 ? Console.Get().logFontColor.ToString() : colorCode;
 								if(colorCode.IsInt()){
 									int colorIndex = Mathf.Clamp(Convert.ToInt32(colorCode),0,Console.color.Length-1);
 									Console.logStyle.normal.textColor = Console.color[colorIndex];
@@ -758,7 +436,7 @@ namespace Zios.Interface{
 			}
 		}
 		public static void ManageState(){
-			float slideStep = Console.instance.speed * Time.deltaTime;
+			float slideStep = Console.Get().speed * Time.deltaTime;
 			if(Console.status == ConsoleState.open && Console.keyDetection == ""){
 				GUI.FocusControl("inputText");
 			}

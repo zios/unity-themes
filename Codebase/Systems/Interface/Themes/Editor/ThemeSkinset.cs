@@ -3,7 +3,7 @@ using System;
 using System.IO;
 using System.Linq;
 namespace Zios.Interface{
-	using Events;
+	using Event;
 	using UnityEngine;
 	using UnityEditor;
 	[Serializable]

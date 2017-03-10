@@ -9,7 +9,7 @@ namespace Zios.Inputs{
 		public string path;
 		[EnumMask] public InputActionOptions options;
 		public Sprite helpImage;
-		public Transition transition;
+		public Transition transition = new Transition();
 		public InputAction(){}
 		public InputAction(InputAction action){
 			this.name = action.name;

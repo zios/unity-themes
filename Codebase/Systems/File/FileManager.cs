@@ -5,7 +5,7 @@ using System.IO;
 using UnityEngine;
 using UnityObject = UnityEngine.Object;
 namespace Zios{
-	using Events;
+	using Event;
 	using Containers;
 	#if UNITY_EDITOR
 	using UnityEditor;
@@ -118,8 +118,8 @@ namespace Zios{
 		//===============
 		public static void Refresh(){
 			var time = FileManager.GetTime();
-			Event.Add("On Editor Update",FileManager.Monitor).SetPermanent();
-			Event.Add("On Asset Changed",FileManager.Refresh).SetPermanent();
+			Events.Add("On Editor Update",FileManager.Monitor).SetPermanent();
+			Events.Add("On Asset Changed",FileManager.Refresh).SetPermanent();
 			FileManager.assets.Clear();
 			FileManager.assetPaths.Clear();
 			FileManager.filesByPath.Clear();

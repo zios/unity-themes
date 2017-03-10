@@ -6,18 +6,20 @@ using UnityEngine.UI;
 using UnityEvent = UnityEngine.Event;
 namespace Zios.Inputs{
 	using Interface;
-	using Events;
+	using Event;
 	public enum InputUIState{None,SelectProfile,EditProfile}
 	public enum InputInstanceOptions{AllowCurrentlyUsedProfiles=1,AllowMultipleProfiles=2,ReassignInvalidProfiles=4}
+	[InitializeOnLoad]
 	public class InputManager : ScriptableObject{
-		public static bool disabled = true;
-		public static InputManager instance;
+		public bool disabled;
+		public static InputManager singleton;
 		public static Vector2 mouseChange;
 		public static Vector2 mouseScroll;
 		public static Vector2 mousePosition;
 		public static Vector2 mouseChangeAverage;
 		public static float lastMouseChange;
 		public static float registerTime = 1;
+		public GameObject uiPrefab;
 		[EnumMask] public InputInstanceOptions instanceOptions = (InputInstanceOptions)(2);
 		public float gamepadDeadZone = 0.1f;
 		public float gamepadSensitivity = 1;
@@ -36,21 +38,24 @@ namespace Zios.Inputs{
 		private Dictionary<string,float> lastInput = new Dictionary<string,float>();
 		private int uiGroupIndex;
 		private int uiIndex;
+		static InputManager(){
+			Utility.DelayCall(()=>InputManager.Get());
+		}
+		public static InputManager Get(){
+			InputManager.singleton = InputManager.singleton ?? Utility.GetSingleton<InputManager>();
+			return InputManager.singleton;
+		}
 		//===============
 		// Unity
 		//===============
-		public void OnValidate(){
-			this.DelayEvent("InputManager","On Validate",1);
-		}
 		public void Refresh(){
 			if(Application.isEditor){
-				InputManager.instance = this;
 				InputGroup.Save();
 				InputGroup.Load();
 			}
 		}
 		public void Setup(){
-			InputManager.instance = this;
+			InputManager.singleton = this;
 			this.uiState = 0;
 			this.activeProfile = null;
 			this.devices.Clear();
@@ -61,8 +66,8 @@ namespace Zios.Inputs{
 			this.Setup();
 			InputGroup.Load();
 			if(!Utility.IsPlaying()){return;}
-			InputManager.Validate();
-			if(InputManager.disabled){return;}
+			this.Validate();
+			if(this.disabled){return;}
 			InputProfile.Load();
 			InputInstance.Load();
 			Console.AddKeyword("inputShowProfiles",this.ShowProfiles);
@@ -70,35 +75,34 @@ namespace Zios.Inputs{
 			Console.AddKeyword("inputCreateProfile",this.CreateProfile);
 			Console.AddKeyword("inputEditProfile",this.EditProfile);
 			Console.AddKeyword("inputRemoveProfile",this.RemoveProfile);
-			Event.Register("On Profile Selected",this);
-			Event.Register("On Profile Edited",this);
-			Event.Add("On Update",this.Update);
-			Event.Add("On Fixed Update",this.FixedUpdate);
-			Event.Add("On GUI",this.OnGUI);
-			Event.Add("On Validate",this.OnValidate);
+			Events.Register("On Profile Selected",this);
+			Events.Register("On Profile Edited",this);
+			Events.Add("On Update",this.Update);
+			Events.Add("On Fixed Update",this.FixedUpdate);
+			Events.Add("On GUI",this.OnGUI);
 			this.DetectGamepads();
 		}
-		public static bool Validate(){
+		public bool Validate(){
 			try{Input.GetAxis("Joystick1-Axis1");}
 			catch{
 				Debug.LogWarning("[InputManager] Unity input not setup. Please copy provided InputManager.asset to Assets/ProjectSettings");
-				InputManager.disabled = true;
+				this.disabled = true;
 				return false;
 			}
-			InputManager.disabled = false;
+			this.disabled = false;
 			return true;
 		}
 		public void Update(){
-			if(InputManager.disabled){return;}
+			if(this.disabled){return;}
 			this.DetectMouse();
 			this.DetectKey();
 		}
 		public void FixedUpdate(){
-			if(InputManager.disabled){return;}
+			if(this.disabled){return;}
 			this.DetectGamepads();
 		}
 		public void OnGUI(){
-			if(!Application.isPlaying || InputManager.disabled){return;}
+			if(!Application.isPlaying || this.disabled){return;}
 			var current = UnityEvent.current;
 			if(current.isKey || current.shift || current.alt || current.control || current.command){
 				if(!this.devices.Exists(x=>x.name=="Keyboard")){
@@ -109,7 +113,7 @@ namespace Zios.Inputs{
 			if(this.uiObject.IsNull()){
 				this.uiObject = Locate.Find("@Main/InputUI");
 				if(this.uiObject.IsNull()){
-					this.uiObject = GameObject.Instantiate(FileManager.GetAsset<GameObject>("InputUI.prefab"));
+					this.uiObject = GameObject.Instantiate(this.uiPrefab);
 					this.uiObject.name = this.uiObject.name.Remove("(Clone)");
 					this.uiObject.transform.SetParent(Locate.GetScenePath("@Main").transform);
 					Locate.SetDirty();
@@ -334,11 +338,11 @@ namespace Zios.Inputs{
 			if(instance.IsNull()){return;}
 			if(this.profiles.Count < 1){
 				this.CreateProfile("Default");
-				Event.AddLimited("On Profile Edited",()=>this.SelectProfile(instance),1,this);
+				Events.AddLimited("On Profile Edited",()=>this.SelectProfile(instance),1,this);
 				return;
 			}
 			if(this.uiState == InputUIState.SelectProfile){
-				Event.AddLimited("On Profile Selected",()=>this.SelectProfile(instance),1,this);
+				Events.AddLimited("On Profile Selected",()=>this.SelectProfile(instance),1,this);
 				return;
 			}
 			this.ShowProfiles();
@@ -349,7 +353,7 @@ namespace Zios.Inputs{
 				instance.profile = this.activeProfile;
 				instance.Save();
 			};
-			Event.AddLimited("On Profile Selected",selected,1,this);
+			Events.AddLimited("On Profile Selected",selected,1,this);
 		}
 		public void ShowProfiles(){
 			this.activeProfile = null;
@@ -361,7 +365,7 @@ namespace Zios.Inputs{
 			if(FileManager.Find(name+".profile",false).IsNull()){
 				this.ShowProfiles();
 				this.selectionHeader = "Remove Profile";
-				Event.AddLimited("On Profile Selected",()=>this.RemoveProfile(this.activeProfile.name),1,this);
+				Events.AddLimited("On Profile Selected",()=>this.RemoveProfile(this.activeProfile.name),1,this);
 				return;
 			}
 			this.profiles.RemoveAll(x=>x.name==name);
@@ -369,7 +373,7 @@ namespace Zios.Inputs{
 			foreach(var instance in Locate.GetSceneComponents<InputInstance>()){
 				if(!instance.profile.IsNull() && instance.profile.name == name){
 					this.instanceProfile.Remove(instance.alias);
-					InputManager.instance.SelectProfile(instance);
+					InputManager.Get().SelectProfile(instance);
 				}
 			}
 		}
@@ -382,7 +386,7 @@ namespace Zios.Inputs{
 			if(this.activeProfile.IsNull()){
 				this.ShowProfiles();
 				this.selectionHeader = "Edit Profile";
-				Event.AddLimited("On Profile Selected",()=>this.EditProfile(this.activeProfile.name),1,this);
+				Events.AddLimited("On Profile Selected",()=>this.EditProfile(this.activeProfile.name),1,this);
 			}
 		}
 		public void CreateProfile(string name){

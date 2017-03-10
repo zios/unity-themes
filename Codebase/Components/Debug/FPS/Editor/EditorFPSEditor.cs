@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEvent = UnityEngine.Event;
 namespace Zios.Editors.DebugEditors{
 	using Interface;
-	using Events;
+	using Event;
 	[CustomEditor(typeof(EditorFPS))]
 	public class EditorFPSEditor : Editor{
 		private static EditorFPSEditor instance;
@@ -15,7 +15,7 @@ namespace Zios.Editors.DebugEditors{
 			if(!UnityEvent.current.IsUseful()){return;}
 			EditorUI.Reset();
 			EditorFPSEditor.instance = this;
-			Event.Add("On Editor Update",EditorFPSEditor.EditorUpdate);
+			Events.Add("On Editor Update",EditorFPSEditor.EditorUpdate);
 			var style = GUI.skin.textField.RichText(true).Alignment("MiddleCenter").FixedHeight(0).FontSize(24);
 			style.normal = style.focused;
 			EditorUI.SetLayoutOnce(-1,40);

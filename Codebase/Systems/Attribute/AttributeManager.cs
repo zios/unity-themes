@@ -4,34 +4,15 @@ using UnityEngine;
 using UnityEditor;
 #endif
 namespace Zios.Attributes{
-	using Events;
+	using Event;
 	[InitializeOnLoad]
-	public static class AttributeManagerHook{
-		public static Hook<AttributeManager> hook;
-		static AttributeManagerHook(){
-			if(Utility.IsPlaying()){return;}
-			AttributeManagerHook.hook = new Hook<AttributeManager>(AttributeManagerHook.Reset);
-		}
-		public static void Reset(){
-			//SerializerHook.hook.Reset();
-			AttributeManagerHook.hook.Reset();
-			if(AttributeManager.instance){
-				Event.Add("On Level Was Loaded",AttributeManager.instance.Awake);
-				Event.Add("On Editor Update",AttributeManager.instance.EditorUpdate);
-			}
-			AttributeManager.Refresh();
-		}
-	}
-	[AddComponentMenu("Zios/Singleton/Attribute Manager")][ExecuteInEditMode]
-	public class AttributeManager : MonoBehaviour{
-		public static AttributeManager instance;
-		public static bool disabled = false;
-		[NonSerialized] public static float nextRefresh;
-		[NonSerialized] public static float percentLoaded;
-		[NonSerialized] public static bool safe = false;
+	public class AttributeManager : ScriptableObject{
+		public static AttributeManager singleton;
+		public static float nextRefresh;
+		public static float percentLoaded;
+		public bool disabled = false;
 		public int editorRefreshPasses = -1;
 		public bool editorIncludeDisabled = true;
-		public bool refreshOnHierarchyChanged = false;
 		public bool refreshOnComponentsChanged = true;
 		public bool safeMode = true;
 		private float start;
@@ -55,17 +36,28 @@ namespace Zios.Attributes{
 		#endif
 		public static void PerformRefresh(){AttributeManager.Refresh();}
 		public static void Refresh(int delay = 0){
-			if(Application.isPlaying || AttributeManager.disabled){return;}
-			Event.Call("On Attributes Refresh");
+			if(Application.isPlaying || AttributeManager.Get().disabled){return;}
+			Events.Call("On Attributes Refresh");
 			AttributeManager.nextRefresh = Time.realtimeSinceStartup + delay;
 		}
 		//==============================
 		// Unity
 		//==============================
+		static AttributeManager(){
+			Utility.DelayCall(()=>AttributeManager.Get());
+		}
+		public static AttributeManager Get(){
+			AttributeManager.singleton = AttributeManager.singleton ?? Utility.GetSingleton<AttributeManager>();
+			return AttributeManager.singleton;
+		}
 		public void OnValidate(){this.SetupEvents();}
-		public void Awake(){this.EditorUpdate();}
+		public void OnEnable(){
+			this.Setup();
+			AttributeManager.Refresh();
+			this.EditorUpdate();
+		}
 		public void EditorUpdate(){
-			if(AttributeManager.disabled){return;}
+			if(AttributeManager.Get().disabled){return;}
 			if(AttributeManager.nextRefresh > 0 && Time.realtimeSinceStartup > AttributeManager.nextRefresh){
 				if(Attribute.debug.Has("ProcessRefresh")){Utility.EditorLog("[AttributeManager] Refreshing...");}
 				this.Setup();
@@ -75,7 +67,7 @@ namespace Zios.Attributes{
 					this.Setup();
 					this.SceneRefresh();
 					if(Attribute.debug.Has("ProcessStage")){Utility.EditorLog("[AttributeManager] Stage 1 (Awake) start...");}
-					Event.Call("On Attributes Setup");
+					Events.Call("On Attributes Setup");
 					this.block = Time.realtimeSinceStartup;
 					while(this.stage != 0){this.Process();}
 				}
@@ -86,7 +78,7 @@ namespace Zios.Attributes{
 				}
 			}
 		}
-		public void OnDestroy(){Event.RemoveAll(this);}
+		public void OnDisable(){Events.RemoveAll(this);}
 		//==============================
 		// Main
 		//==============================
@@ -94,21 +86,22 @@ namespace Zios.Attributes{
 			this.stage = 1;
 			this.nextIndex = 0;
 			Attribute.ready = false;
-			AttributeManager.instance = this;
-			AttributeManager.safe = this.safeMode;
+			AttributeManager.singleton = this;
 			AttributeManager.nextRefresh = 0;
 			this.SetupEvents();
 		}
 		public void SetupEvents(){
 			if(!Application.isPlaying){
-				Event.Register("On Attribute Setup");
-				Event.Register("On Attribute Ready");
-				Event.Register("On Attribute Refresh");
-				Event.Remove("On Components Changed",AttributeManager.PerformRefresh);
-				Event.Add("On Events Reset",AttributeManager.PerformRefresh);
+				Events.Register("On Attribute Setup");
+				Events.Register("On Attribute Ready");
+				Events.Register("On Attribute Refresh");
+				Events.Remove("On Components Changed",AttributeManager.PerformRefresh);
+				Events.Add("On Events Reset",AttributeManager.PerformRefresh);
 				//if(this.refreshOnHierarchyChanged){Event.Add("On Hierarchy Changed",AttributeManager.PerformRefresh);}
-				if(this.refreshOnComponentsChanged){Event.Add("On Components Changed",AttributeManager.PerformRefresh);}
+				if(this.refreshOnComponentsChanged){Events.Add("On Components Changed",AttributeManager.PerformRefresh);}
 			}
+			Events.Add("On Editor Update",this.EditorUpdate);
+			Events.Add("On Validate",this.SetupEvents,this);
 		}
 		public void Process(){
 			if(this.stage > 0){
@@ -179,8 +172,8 @@ namespace Zios.Attributes{
 				Attribute.ready = true;
 				AttributeManager.percentLoaded = 1;
 				Utility.RepaintInspectors();
-				Event.Call("On Attributes Ready");
-				Event.Rest("On Attributes Refresh",1);
+				Events.Call("On Attributes Ready");
+				Events.Rest("On Attributes Refresh",1);
 				this.stage = 0;
 				this.nextIndex = 0;
 				return;

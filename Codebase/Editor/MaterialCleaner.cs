@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 namespace Zios.Editors{
-	using Events;
+	using Event;
 	public static class MaterialCleaner{
-		[NonSerialized] public static bool changes;
+		public static bool changes;
 		[MenuItem ("Zios/Material/Remove Unused Data (All)")]
 		public static void Clean(){MaterialCleaner.Clean(null);}
 		public static void Clean(FileData[] materials){
 			MaterialCleaner.changes = false;
 			FileData[] files = materials ?? FileManager.FindAll("*.mat");
-			Event.AddStepper("On Editor Update",MaterialCleaner.Step,files,50);
+			Events.AddStepper("On Editor Update",MaterialCleaner.Step,files,50);
 		}
 		public static void Step(object collection,int itemIndex){
 			var materials = (FileData[])collection;

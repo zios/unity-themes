@@ -7,31 +7,6 @@ using System.Reflection;
 using System.Text;
 using UnityEngine;
 namespace Zios{
-	using Events;
-	[InitializeOnLoad]
-	public static class SerializerHook{
-		public static Hook<Serializer> hook;
-		static SerializerHook(){
-			if(Utility.IsPlaying()){return;}
-			//SerializerHook.hook = new Hook<Serializer>(SerializerHook.Reset,SerializerHook.Create);
-		}
-		public static void Reset(){
-			SerializerHook.hook.Reset();
-			if(Serializer.instance){
-				Event.Add("On Enter Play",Serializer.instance.Save);
-				Event.Add("On Scene Saving",Serializer.instance.Save);
-				Event.Add("On Asset Changed",Serializer.instance.Save);
-				Event.Add("On Level Was Loaded",Serializer.instance.Setup);
-				Event.Add("On Exit Play",Serializer.instance.Load);
-				Event.Add("On Level Was Loaded",Serializer.instance.Load);
-			}
-		}
-		public static void Create(){
-			bool wasNull = Serializer.instance.IsNull();
-			SerializerHook.hook.Create();
-			if(wasNull){Serializer.instance.Setup();}
-		}
-	}
 	[Flags]
 	public enum SerializerDebug : int{
 		Build         = 0x001,
@@ -43,8 +18,7 @@ namespace Zios{
 		SaveDetailed  = 0x040,
 		Time          = 0x080,
 	}
-	[ExecuteInEditMode][AddComponentMenu("")]
-	public class Serializer : MonoBehaviour{
+	public class Serializer : ScriptableObject{
 		public static Serializer instance;
 		public static Serializer Get(){return Serializer.instance;}
 		public static Dictionary<Type,Dictionary<string,object>> defaults = new Dictionary<Type,Dictionary<string,object>>();

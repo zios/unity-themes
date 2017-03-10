@@ -4,7 +4,7 @@ using UnityEvent = UnityEngine.Event;
 namespace Zios.Editors{
 	using Containers;
 	using Interface;
-	using Events;
+	using Event;
 	[CustomPropertyDrawer(typeof(Target),true)]
 	public class TargetDrawer : PropertyDrawer{
 		public bool setup;

@@ -6,7 +6,7 @@ using UnityObject = UnityEngine.Object;
 using UnityEvent= UnityEngine.Event;
 namespace Zios.Interface{
 	using UnityEditor;
-	using Events;
+	using Event;
 	public enum HoverResponse{None=1,Slow,Moderate,Instant};
 	[InitializeOnLoad][NotSerialized]
 	public partial class Theme{
@@ -50,8 +50,8 @@ namespace Zios.Interface{
 			EditorApplication.playmodeStateChanged += Theme.CheckUpdate;
 			EditorApplication.update += ThemeWindow.ShowWindow;
 			AppDomain.CurrentDomain.DomainUnload += ThemeWindow.CloseWindow;
-			Event.Add("On Window Reordered",ThemeWindow.CloseWindow);
-			Event.Add("On GUISkin Changed",()=>{
+			Events.Add("On Window Reordered",ThemeWindow.CloseWindow);
+			Events.Add("On GUISkin Changed",()=>{
 				if(Theme.liveEdit){
 					Utility.DelayCall(Theme.DelayedInstantRefresh,0.5f);
 				}
@@ -861,22 +861,6 @@ namespace Zios.Interface{
 				Application.OpenURL("https://github.com/zios/unity-themes");
 			}
 			EditorGUILayout.EndVertical();
-		}
-	}
-	public class ColorImportSettings : AssetPostprocessor{
-		public static void OnPostprocessAllAssets(string[] imported,string[] deleted,string[] movedTo,string[] movedFrom){
-			Theme.Reset(true);
-		}
-		public void OnPreprocessTexture(){
-			TextureImporter importer = (TextureImporter)this.assetImporter;
-			if(importer.assetPath.ContainsAny("Themes","@Themes")){
-				importer.SetTextureType("Advanced");
-				importer.SetTextureFormat(TextureImporterFormat.RGBA32);
-				importer.npotScale = TextureImporterNPOTScale.None;
-				importer.isReadable = true;
-				importer.mipmapEnabled = false;
-				importer.sRGBTexture = false;
-			}
 		}
 	}
 }

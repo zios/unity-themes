@@ -8,15 +8,15 @@ namespace Zios.Inputs{
 		public string name;
 		public List<InputAction> actions = new List<InputAction>();
 		public static void Setup(){
-			foreach(var group in InputManager.instance.groups){
+			foreach(var group in InputManager.Get().groups){
 				foreach(var action in group.actions){
-					action.Setup(group.name,InputManager.instance);
+					action.Setup(group.name,InputManager.Get());
 				}
 			}
 		}
 		public static void Save(){
-			if(InputManager.instance.groups.Count < 1){return;}
-			var manager = InputManager.instance;
+			if(InputManager.Get().groups.Count < 1){return;}
+			var manager = InputManager.Get();
 			var contents = "";
 			var file = FileManager.Find("InputControls.cfg",false) ?? FileManager.Create("InputControls.cfg");
 			contents = contents.AddLine("[InputSettings]");
@@ -25,7 +25,7 @@ namespace Zios.Inputs{
 			if(manager.gamepadSensitivity != 1){contents = contents.AddLine("GamepadSensitivity " + manager.gamepadSensitivity);}
 			if(manager.mouseSensitivity != 1){contents = contents.AddLine("MouseSensitivity " + manager.mouseSensitivity);}
 			InputGroup.Setup();
-			foreach(var group in InputManager.instance.groups){
+			foreach(var group in InputManager.Get().groups){
 				foreach(var action in group.actions){
 					var helpPath = FileManager.GetPath(action.helpImage);
 					var options = action.options.ToInt();
@@ -33,8 +33,8 @@ namespace Zios.Inputs{
 					if(options != 0){contents = contents.AddLine("Options " + options);}
 					if(!helpPath.IsEmpty()){contents = contents.AddLine("HelpImage " + helpPath);}
 					var transition = action.transition;
-					if(transition.time.Get() != 0.5f){contents = contents.AddLine("Transition-Time " + transition.time.Get());}
-					if(transition.speed.Get() != 3){contents = contents.AddLine("Transition-Speed " + transition.speed.Get());}
+					if(transition.time != 0.5f){contents = contents.AddLine("Transition-Time " + transition.time);}
+					if(transition.speed != 3){contents = contents.AddLine("Transition-Speed " + transition.speed);}
 					if(transition.acceleration.Serialize() != "0-0-0-0|1-1-0-0"){contents = contents.AddLine("Transition-Acceleration " + transition.acceleration.Serialize());}
 					if(transition.acceleration.Serialize() != "0-0-0-0|1-1-0-0"){contents = contents.AddLine("Transition-Acceleration " + transition.acceleration.Serialize());}
 					if(transition.deceleration.Serialize() != "1-1-0-0|1-1-0-0"){contents = contents.AddLine("Transition-Deceleration " + transition.deceleration.Serialize());}
@@ -51,7 +51,7 @@ namespace Zios.Inputs{
 			var fileText = file.GetText();
 			var settings = fileText.Parse("[InputSettings]","[").GetLines();
 			var remaining = fileText.GetLines().Skip(settings.Length+1);
-			var manager = InputManager.instance;
+			var manager = InputManager.Get();
 			foreach(var line in settings){
 				if(line.IsEmpty()){continue;}
 				var name = line.Parse(""," ").Trim();
@@ -79,8 +79,8 @@ namespace Zios.Inputs{
 				inputAction.Setup("InputGroup",manager);
 				if(name.Contains("Options")){inputAction.options = value.ToInt().ToEnum<InputActionOptions>();}
 				if(name.Contains("HelpImage")){inputAction.helpImage = FileManager.GetAsset<Sprite>(value);}
-				if(name.Contains("Time")){inputAction.transition.time.Set(value.ToFloat());}
-				if(name.Contains("Speed")){inputAction.transition.speed.Set(value.ToFloat());}
+				if(name.Contains("Time")){inputAction.transition.time = value.ToFloat();}
+				if(name.Contains("Speed")){inputAction.transition.speed = value.ToFloat();}
 				if(name.Contains("Acceleration")){inputAction.transition.acceleration.Deserialize(value);}
 				if(name.Contains("Deceleration")){inputAction.transition.deceleration.Deserialize(value);}
 			}

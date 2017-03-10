@@ -10,6 +10,7 @@ namespace Zios{
 		#if UNITY_EDITOR
 		public static Dictionary<string,object> cache = new Dictionary<string,object>();
 		public static void SetPref<T>(string name,T value){
+			if(Utility.cache.ContainsKey(name) && Utility.cache[name].Equals(value)){return;}
 			Utility.cache[name] = value;
 			if(value is bool){EditorPrefs.SetBool(name,value.As<bool>());}
 			else if(value is int){EditorPrefs.SetInt(name,value.As<int>());}

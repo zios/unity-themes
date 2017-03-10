@@ -1,6 +1,6 @@
 using UnityEngine;
 namespace Zios.Actions.EventComponents{
-	using Events;
+	using Event;
 	[AddComponentMenu("Zios/Component/Action/Event/Event Listen")]
 	public class EventListen : StateMonoBehaviour{
 		public EventTarget target = new EventTarget();

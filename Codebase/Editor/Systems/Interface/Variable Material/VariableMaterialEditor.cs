@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEvent = UnityEngine.Event;
 namespace Zios.Editors{
 	using Interface;
-	using Events;
+	using Event;
 	[CanEditMultipleObjects]
 	public class VariableMaterialEditor : ShaderGUI{
 		public MaterialEditor editor;
@@ -33,7 +33,7 @@ namespace Zios.Editors{
 				if("Update".ToLabel().DrawButton()){
 					VariableMaterial.force = true;
 					var materials = editor.targets.Cast<Material>().ToList();
-					Event.AddStepper("On Editor Update",VariableMaterialEditor.RefreshStep,materials,50);
+					Events.AddStepper("On Editor Update",VariableMaterialEditor.RefreshStep,materials,50);
 				}
 				GUI.enabled = true;
 				EditorGUILayout.EndHorizontal();
@@ -58,12 +58,12 @@ namespace Zios.Editors{
 			var renderers = Locate.GetSceneComponents<Renderer>();
 			foreach(var renderer in renderers){materials.AddRange(renderer.sharedMaterials);}
 			materials = materials.Distinct().ToList();
-			Event.AddStepper("On Editor Update",VariableMaterialEditor.RefreshStep,materials,50);
+			Events.AddStepper("On Editor Update",VariableMaterialEditor.RefreshStep,materials,50);
 		}
 		[MenuItem("Zios/Material/Refresh Variable Materials (All)")]
 		public static void RefreshAll(){
 			var materials = VariableMaterial.GetAll();
-			Event.AddStepper("On Editor Update",VariableMaterialEditor.RefreshStep,materials,50);
+			Events.AddStepper("On Editor Update",VariableMaterialEditor.RefreshStep,materials,50);
 		}
 		public static void RefreshStep(object collection,int index){
 			var materials = (List<Material>)collection;

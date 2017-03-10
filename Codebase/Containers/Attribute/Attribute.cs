@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 using UnityObject = UnityEngine.Object;
 namespace Zios.Attributes{
-	using Events;
+	using Event;
 	using Containers;
 	public enum AttributeMode{Normal,Linked,Formula,Group};
 	public enum AttributeUsage{Direct,Shaped};
@@ -47,12 +47,12 @@ namespace Zios.Attributes{
 	public class Attribute{
 		[EnumMask] public static AttributeDebug debug = 0;
 		[EnumMask] public static AttributeRepair repair = (AttributeRepair)(-1);
-		[NonSerialized] public static bool ready;
-		[NonSerialized] public static List<Attribute> all = new List<Attribute>();
-		[NonSerialized] public static Hierarchy<UnityObject,string,Attribute> lookup = new Hierarchy<UnityObject,string,Attribute>();
-		[NonSerialized] public static Hierarchy<UnityObject,string,string> resolve = new Hierarchy<UnityObject,string,string>();
-		[NonSerialized] public static Dictionary<Attribute,bool> setWarning = new Dictionary<Attribute,bool>();
-		[NonSerialized] public static Dictionary<AttributeData,bool> getWarning = new Dictionary<AttributeData,bool>();
+		public static bool ready;
+		public static List<Attribute> all = new List<Attribute>();
+		public static Hierarchy<UnityObject,string,Attribute> lookup = new Hierarchy<UnityObject,string,Attribute>();
+		public static Hierarchy<UnityObject,string,string> resolve = new Hierarchy<UnityObject,string,string>();
+		public static Dictionary<Attribute,bool> setWarning = new Dictionary<Attribute,bool>();
+		public static Dictionary<AttributeData,bool> getWarning = new Dictionary<AttributeData,bool>();
 		public AttributeInfo info = new AttributeInfo();
 		public string path{
 			get{return this.info.fullPath;}
@@ -159,7 +159,7 @@ namespace Zios.Attributes{
 		public AttributeData[] CreateData<Type>(AttributeData[] dataArray,int index) where Type : AttributeData,new(){
 			if(Attribute.debug.Has("Add")){Debug.Log("[Attribute] Creating attribute data : " + this.info.fullPath);}
 			AttributeData data = new Type();
-			Event.Add("On Validate Raw",data.Serialize,this.info.parent);
+			Events.Add("On Validate Raw",data.Serialize,this.info.parent);
 			data.rawType = typeof(Type).FullName;
 			data.attribute = this.info;
 			if(index == -1){index = dataArray.Length;}
@@ -213,8 +213,8 @@ namespace Zios.Attributes{
 					this.FixDuplicates();
 					this.FixChanged(previousID);
 				}
-				Event.Add("On Validate",this.ValidateDependents,parent);
-				Event.AddLimited("On Reset",this.Reset,1,parent);
+				Events.Add("On Validate",this.ValidateDependents,parent);
+				Events.AddLimited("On Reset",this.Reset,1,parent);
 			}
 			this.info.type = typeof(DataType);
 			this.PrepareData();
@@ -418,8 +418,8 @@ namespace Zios.Attributes{
 					data = dataSet[index] = this.Deserialize(dataSet[index]);
 				}
 				if(!Application.isPlaying){
-					Event.Add("On Enter Play",data.Serialize);
-					Event.Add("On Scene Saving",data.Serialize);
+					Events.Add("On Enter Play",data.Serialize);
+					Events.Add("On Scene Saving",data.Serialize);
 				}
 				if(data.usage == AttributeUsage.Shaped){data.target.Setup(index + "/Target",this.info.parent);}
 				if(data.usage == AttributeUsage.Direct){data.target.Clear();}

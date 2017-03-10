@@ -1,7 +1,7 @@
 using UnityEngine;
 namespace Zios.Actions.MoveComponents{
 	using Attributes;
-	using Events;
+	using Event;
 	using Motion;
 	public enum MoveType{Absolute,Relative}
 	[AddComponentMenu("Zios/Component/Action/Motion/Add Move")]

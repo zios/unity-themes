@@ -10,7 +10,7 @@ using UnityObject = UnityEngine.Object;
 namespace Zios.Editors{
 	using Containers;
 	using Interface;
-	using Events;
+	using Event;
 	public class StaticInspector : EditorWindow{
 		public static string currentAssembly;
 		public static string currentNamespace;
@@ -38,7 +38,7 @@ namespace Zios.Editors{
 			window.Start();
 		}
 		public void OnGUI(){
-			Event.Add("On Editor Update",this.Setup);
+			Events.Add("On Editor Update",this.Setup);
 			if(this.assemblies.Count < 1){this.setup = false;}
 			if(this.setup){
 				this.DrawContext();

@@ -8,7 +8,7 @@ using UnityObject = UnityEngine.Object;
 using UnityEditor;
 #endif
 namespace Zios{
-	using Events;
+	using Event;
 	using Containers;
 	[InitializeOnLoad]
 	public static class Locate{
@@ -36,17 +36,17 @@ namespace Zios{
 		static Locate(){
 			if(!Application.isPlaying){
 				//Event.Add("On Application Quit",Locate.SetDirty);
-				Event.Add("On Level Was Loaded",Locate.SetDirty).SetPermanent();
-				Event.Add("On Hierarchy Changed",Locate.SetDirty).SetPermanent();
-				Event.Add("On Asset Changed",()=>Locate.assets.Clear()).SetPermanent();
+				Events.Add("On Level Was Loaded",Locate.SetDirty).SetPermanent();
+				Events.Add("On Hierarchy Changed",Locate.SetDirty).SetPermanent();
+				Events.Add("On Asset Changed",()=>Locate.assets.Clear()).SetPermanent();
 			}
-			Event.Register("On Components Changed");
+			Events.Register("On Components Changed");
 			if(!Locate.setup){Locate.SetDirty();}
 		}
 		public static void CheckChanges(){
 			var components = Resources.FindObjectsOfTypeAll<Component>();
 			if(components.Length != Locate.allComponents.Count() && !Locate.allComponents.SequenceEqual(components)){
-				if(Locate.setup){Event.Call("On Components Changed");}
+				if(Locate.setup){Events.Call("On Components Changed");}
 				Locate.allComponents = components;
 			}
 		}

@@ -5,7 +5,7 @@ namespace Zios.Editors{
 	using Attributes;
 	using Interface;
 	using Inputs;
-	using Events;
+	using Event;
 	[CustomPropertyDrawer(typeof(InputNameAttribute))]
 	public class InputNameDrawer : PropertyDrawer{
 		public List<string> items = new List<string>();
@@ -22,7 +22,7 @@ namespace Zios.Editors{
 			}
 			if(target is string){value = property.stringValue;}
 			if(this.items.Count < 1){
-				foreach(var group in InputManager.instance.groups){
+				foreach(var group in InputManager.Get().groups){
 					foreach(var action in group.actions){
 						this.items.Add(group.name.ToPascalCase()+"-"+action.name.ToPascalCase());
 					}

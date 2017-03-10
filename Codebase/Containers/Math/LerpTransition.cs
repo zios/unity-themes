@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Zios.Containers.Math{
 	using Attributes;
 	using Actions;
-	using Events;
+	using Event;
 	public class LerpTransition{
 		public AttributeBool isAngle = true;
 		public AttributeBool isResetOnChange = true;
@@ -25,9 +25,9 @@ namespace Zios.Containers.Math{
 			}
 			if(this.parent is StateMonoBehaviour){
 				var script = (StateMonoBehaviour)parent;
-				Event.Add(script.alias+"/On End",this.Reset,parent.gameObject);
+				Events.Add(script.alias+"/On End",this.Reset,parent.gameObject);
 			}
-			Event.Add(path+"/Transition/On Reset",this.Reset,parent.gameObject);
+			Events.Add(path+"/Transition/On Reset",this.Reset,parent.gameObject);
 			this.isAngle.Setup(path+"/Is Angle",parent);
 			this.isResetOnChange.Setup(path+"/Is Reset On Change",parent);
 			this.speed.Setup(path+"/Transition/Speed",parent);

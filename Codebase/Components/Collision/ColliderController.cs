@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 namespace Zios.Motion{
 	using Attributes;
-	using Events;
+	using Event;
 	public enum ColliderMode{Sweep,SweepAndValidate};
 	public class CollisionData{
 		public bool isSource;
@@ -72,12 +72,12 @@ namespace Zios.Motion{
 		public static void SetupColliders(){
 			foreach(var collider in Locate.GetSceneComponents<Collider>()){
 				if(collider.IsNull() || collider.gameObject.IsNull()){continue;}
-				Event.Register("On Collision",collider.gameObject);
-				Event.Register("On Collision Start",collider.gameObject);
-				Event.Register("On Collision End",collider.gameObject);
+				Events.Register("On Collision",collider.gameObject);
+				Events.Register("On Collision Start",collider.gameObject);
+				Events.Register("On Collision End",collider.gameObject);
 			}
-			Event.Add("On Level Was Loaded",ColliderController.SetupColliders).SetPermanent();
-			Event.Add("On Components Changed",ColliderController.SetupColliders).SetPermanent();
+			Events.Add("On Level Was Loaded",ColliderController.SetupColliders).SetPermanent();
+			Events.Add("On Components Changed",ColliderController.SetupColliders).SetPermanent();
 		}
 		//================================
 		// Unity-Specific
@@ -106,11 +106,11 @@ namespace Zios.Motion{
 			this.onSlide.Setup("On Slide",this);
 			this.slopeNormal.Setup("Slope Normal",this);
 			this.ResetBlocked(true);
-			Event.Add("Add Move",(MethodVector3)this.AddMove,this.gameObject);
-			Event.Add("Add Move Raw",(MethodVector3)this.AddMoveRaw,this.gameObject);
-			Event.Add("On Collision",(MethodObject)this.OnCollision,this.gameObject);
-			Event.Add("On Collision Start",(MethodObject)this.OnCollisionStart,this.gameObject);
-			Event.Add("On Collision End",(MethodObject)this.OnCollisionEnd,this.gameObject);
+			Events.Add("Add Move",(MethodVector3)this.AddMove,this.gameObject);
+			Events.Add("Add Move Raw",(MethodVector3)this.AddMoveRaw,this.gameObject);
+			Events.Add("On Collision",(MethodObject)this.OnCollision,this.gameObject);
+			Events.Add("On Collision Start",(MethodObject)this.OnCollisionStart,this.gameObject);
+			Events.Add("On Collision End",(MethodObject)this.OnCollisionEnd,this.gameObject);
 			ColliderController.SetupColliders();
 			if(Application.isPlaying){
 				var body = this.gameObject.GetComponent<Rigidbody>() ?? this.gameObject.AddComponent<Rigidbody>();

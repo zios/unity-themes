@@ -4,34 +4,31 @@ using UnityEditor;
 using UnityEngine;
 namespace Zios.Editors{
 	using Interface;
-	using Events;
-	[CustomEditor(typeof(Event))]
-	public class EventsEditor : Editor{
+	using Event;
+	[CustomEditor(typeof(Events))]
+	public class EventsEditor : MonoBehaviourEditor{
 		public Dictionary<string,List<EventListener>> listeners = new Dictionary<string,List<EventListener>>();
 		public void BuildListeners(){
-			this.listeners = Event.listeners.GroupBy(x=>Event.GetTargetName(x.target)).ToDictionary(x=>x.Key,x=>x.ToList());
+			this.listeners = Events.listeners.GroupBy(x=>Events.GetTargetName(x.target)).ToDictionary(x=>x.Key,x=>x.ToList());
 		}
-		public override void OnInspectorGUI(){
+		public override void OnInspectorGUI(){;
+			this.title = "Events";
+			this.header = this.header ?? FileManager.GetAsset<Texture2D>("EventsIcon.png");
+			base.OnInspectorGUI();
 			EditorUI.Reset();
-			Event.disabled = (EventDisabled)Event.disabled.DrawMask("Disabled");
-			Event.debugScope = (EventDebugScope)Event.debugScope.DrawMask("Debug Scope");
-			Event.debug = (EventDebug)Event.debug.DrawMask("Debug");
 			if("Listeners".ToLabel().DrawFoldout()){
 				EditorGUI.indentLevel += 1;
-				if(this.listeners.Count != Event.listeners.Count){this.BuildListeners();}
-				var labelStyle = GUI.skin.label.FixedWidth(200);
-				var valueStyle = GUI.skin.label.FixedWidth(250);
-				var checkStyle = GUI.skin.toggle.FixedWidth(16);
+				if(this.listeners.Count != Events.listeners.Count){this.BuildListeners();}
 				foreach(var item in this.listeners){
 					if(item.Key.ToLabel().DrawFoldout()){
 						EditorGUI.indentLevel += 1;
 						foreach(var listener in item.Value){
 							GUILayout.BeginHorizontal();
-							listener.name.ToLabel().DrawLabel(labelStyle,true);
-							Event.GetMethodName(listener.method).ToLabel().DrawLabel(valueStyle,false);
-							listener.isStatic.Draw(null,checkStyle,false);
-							listener.permanent.Draw(null,checkStyle,false);
-							listener.unique.Draw(null,checkStyle,false);
+							listener.name.ToLabel().Layout(200).DrawLabel();
+							Events.GetMethodName(listener.method).ToLabel().Layout(250).DrawLabel(null,false);
+							listener.isStatic.Layout(16).Draw(null,null,false);
+							listener.permanent.Layout(16).Draw(null,null,false);
+							listener.unique.Layout(16).Draw(null,null,false);
 							GUILayout.EndHorizontal();
 						}
 						EditorGUI.indentLevel -= 1;
@@ -39,7 +36,11 @@ namespace Zios.Editors{
 				}
 				EditorGUI.indentLevel -= 1;
 			}
-			Event.eventHistory.Draw("Event History");
+			Events.eventHistory.Draw("Event History");
+		}
+		[MenuItem("Zios/Settings/Events")]
+		public static void Select(){
+			Selection.activeObject = FileManager.GetAsset<Events>("Events.asset",false) ?? Utility.CreateSingleton("Assets/Settings/Events");
 		}
 	}
 }

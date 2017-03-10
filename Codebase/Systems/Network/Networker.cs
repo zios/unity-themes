@@ -6,15 +6,8 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.Networking.Types;
 namespace Zios{
-	using Events;
+	using Event;
 	using Interface;
-	[InitializeOnLoad]
-	public static class NetworkerHook{
-		static NetworkerHook(){
-			if(Utility.IsPlaying()){return;}
-			new Hook<Networker>();
-		}
-	}
 	[Flags]
 	public enum NetworkerDebug : int{
 		Events = 0x001,
@@ -22,11 +15,11 @@ namespace Zios{
 		Data   = 0x004,
 	}
 	public enum NetworkerMode{None,Client,Server,Listen}
-	[ExecuteInEditMode][AddComponentMenu("")]
-	public class Networker : MonoBehaviour{
+	[InitializeOnLoad]
+	public class Networker : ScriptableObject{
 		public static NetworkerDebug debug;
-		[NonSerialized] public static NetworkerMode mode;
-		public static Networker instance;
+		public static NetworkerMode mode;
+		public static Networker singleton;
 		//==============
 		// Settings
 		//==============
@@ -60,7 +53,19 @@ namespace Zios{
 		//==============
 		// Unity
 		//==============
-		public void Awake(){Networker.instance = this;}
+		static Networker(){
+			Utility.DelayCall(()=>Networker.Get());
+		}
+		public static Networker Get(){
+			Networker.singleton = Networker.singleton ?? Utility.GetSingleton<Networker>();
+			return Networker.singleton;
+		}
+		public void OnEnable(){
+			Networker.singleton = this;
+			if(Application.isPlaying){NetworkTransport.Init();}
+			Events.Add("On Update",this.Update);
+			Events.Add("On Start",this.Start);
+		}
 		public void Start(){
 			Console.AddKeyword("networkDisconnect",this.Disconnect);
 			Console.AddKeyword("networkConnect",this.Join);
@@ -88,7 +93,6 @@ namespace Zios{
 			Networker.AddEvent("SyncClient",this.SyncClient);
 			Networker.AddEvent("AddClient",this.AddClient);
 			Networker.AddEvent("RemoveClient",this.RemoveClient);
-			if(Application.isPlaying){NetworkTransport.Init();}
 		}
 		public void Update(){
 			if(!this.setup){return;}
@@ -139,35 +143,35 @@ namespace Zios{
 		//==============
 		// Global
 		//==============
-		public static int GetActiveID(){return Networker.instance.receivedID;}
+		public static int GetActiveID(){return Networker.Get().receivedID;}
 		public static void AddEvent(string name,Action<byte[]> method){
-			Networker.instance.events.Add(new NetworkerEvent(name,method));
+			Networker.Get().events.Add(new NetworkerEvent(name,method));
 		}
-		public static void SendEventToServer(string name,byte[] data){Networker.SendMessage(name,data,Networker.instance.eventChannel,Networker.instance.connectionID,-1);}
-		public static void SendEventToClient(string name,byte[] data,int clientID=-1,int excludeID=-1){Networker.SendMessage(name,data,Networker.instance.eventChannel,clientID,excludeID);}
+		public static void SendEventToServer(string name,byte[] data){Networker.SendMessage(name,data,Networker.Get().eventChannel,Networker.Get().connectionID,-1);}
+		public static void SendEventToClient(string name,byte[] data,int clientID=-1,int excludeID=-1){Networker.SendMessage(name,data,Networker.Get().eventChannel,clientID,excludeID);}
 		public static void SendDataToServer(string name,byte[] data){
-			if(!Networker.instance.PrepareEvent(name,ref data)){return;}
-			Networker.instance.syncBufferToServer.AddNew(name).AddRange(data);
+			if(!Networker.Get().PrepareEvent(name,ref data)){return;}
+			Networker.Get().syncBufferToServer.AddNew(name).AddRange(data);
 		}
 		public static void SendDataToClients(string name,byte[] data,int clientID=-1,int excludeID=-1){
-			if(!Networker.instance.PrepareEvent(name,ref data)){return;}
+			if(!Networker.Get().PrepareEvent(name,ref data)){return;}
 			if(clientID == -1){
-				foreach(var client in Networker.instance.clients){
+				foreach(var client in Networker.Get().clients){
 					if(excludeID == client.id){continue;}
-					Networker.instance.syncBufferToClients.AddNew(client.id).AddNew(name).AddRange(data);
+					Networker.Get().syncBufferToClients.AddNew(client.id).AddNew(name).AddRange(data);
 				}
 				return;
 			}
-			Networker.instance.syncBufferToClients.AddNew(clientID).AddNew(name).AddRange(data);
+			Networker.Get().syncBufferToClients.AddNew(clientID).AddNew(name).AddRange(data);
 		}
 		public static void SendMessage(string name,byte[] data,int channel,int clientID,int excludeID,bool useHistory=true){
-			if(!Networker.instance.PrepareEvent(name,ref data)){return;}
+			if(!Networker.Get().PrepareEvent(name,ref data)){return;}
 			var message = new NetworkerMessage(name,data,channel,clientID,excludeID);
-			if(useHistory && clientID == -1){Networker.instance.eventHistory.Add(message);}
+			if(useHistory && clientID == -1){Networker.Get().eventHistory.Add(message);}
 			Networker.SendMessage(message);
 		}
 		public static void SendMessage(NetworkerMessage message,int? targetID=null){
-			var network = Networker.instance;
+			var network = Networker.Get();
 			int clientID = targetID.IsNull() ? message.clientID : (int)targetID;
 			if(clientID == -1){
 				foreach(var client in network.clients){
@@ -222,14 +226,14 @@ namespace Zios{
 			this.clients.Add(client);
 			Debug.Log("Client connected -- " + name + ".");
 			string eventName = id == this.connectionID ? "Network Connection Success" : "Network Client Connected";
-			Event.Call(eventName,id);
+			Events.Call(eventName,id);
 		}
 		public void RemoveClient(byte[] data){
 			int id = data.ReadInt(2);
 			var client = this.clients.Find(x=>x.id==id);
 			this.clients.Remove(client);
 			Debug.Log("Client disconnected -- " + client.name + ".");
-			Event.Call("Network Client Disconnected",id);
+			Events.Call("Network Client Disconnected",id);
 		}
 		//==============
 		// Commands

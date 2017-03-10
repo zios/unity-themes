@@ -10,6 +10,10 @@ namespace Zios{
 		public static void SaveAssets(){}
 		public static void ImportAsset(string path){}
 		public static void DeleteAsset(string path){}
+		public static void ReloadScripts(){}
+		public static void BuildAssetBundles(){}
+		public static ScriptableObject CreateSingleton(){return null;}
+		public static ScriptableObject CreateSingleton(string path,bool createPath=true){return null;}
 		//============================
 		// PrefabUtility
 		//============================
@@ -24,7 +28,7 @@ namespace Zios{
 		//============================
 		public static bool IsPaused(){return false;}
 		public static bool IsBusy(){return false;}
-		public static bool IsPlaying(){return false;}
+		public static bool IsPlaying(){return Application.isPlaying;}
 		//============================
 		// Undo
 		//============================

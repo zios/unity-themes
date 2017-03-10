@@ -283,4 +283,23 @@ namespace Zios.Interface{
 			}
 		}
 	}
+	public class ColorImportSettings : AssetPostprocessor{
+		public static void OnPostprocessAllAssets(string[] imported,string[] deleted,string[] movedTo,string[] movedFrom){
+			Theme.Reset(true);
+		}
+		public void OnPreprocessTexture(){
+			TextureImporter importer = (TextureImporter)this.assetImporter;
+			if(importer.assetPath.ContainsAny("Themes","@Themes")){
+				ColorImportSettings.Apply(importer);
+			}
+		}
+		public static void Apply(TextureImporter importer){
+			importer.SetTextureType("Advanced");
+			importer.SetTextureFormat(TextureImporterFormat.RGBA32);
+			importer.npotScale = TextureImporterNPOTScale.None;
+			importer.isReadable = true;
+			importer.mipmapEnabled = false;
+			importer.sRGBTexture = false;
+		}
+	}
 }

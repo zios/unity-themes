@@ -3,16 +3,18 @@ using UnityEngine;
 using UnityObject = UnityEngine.Object;
 namespace Zios.Actions.TransitionComponents{
 	using Attributes;
-	using Events;
+	using Event;
+	public enum TransitionType{Time,Speed};
+	public enum TransitionState{Idle,Acceleration,Travel,Deceleration};
 	[Serializable]
 	public class Transition{
 		//public TransitionType type;
-		public AttributeFloat time = 0.5f;
-		public AttributeFloat speed = 3;
+		public float time = 0.5f;
+		public float speed = 3;
 		[Advanced] public AnimationCurve acceleration = AnimationCurve.EaseInOut(0,0,1,1);
 		[Advanced] public AnimationCurve deceleration = AnimationCurve.EaseInOut(1,1,1,1);
 		[NonSerialized] public TransitionState state;
-		[HideInInspector] public AttributeFloat delta = 0;
+		[HideInInspector] public float delta = 0;
 		[HideInInspector] public UnityObject parent;
 		[HideInInspector] public string path;
 		protected float startValue;
@@ -24,31 +26,29 @@ namespace Zios.Actions.TransitionComponents{
 		protected bool finished;
 		public Transition(){}
 		public Transition(Transition transition){
-			this.time.delayedValue = transition.time;
-			this.speed.delayedValue = transition.speed;
+			this.time = transition.time;
+			this.speed = transition.speed;
 			this.acceleration = new AnimationCurve().Deserialize(transition.acceleration.Serialize());
 			this.deceleration = new AnimationCurve().Deserialize(transition.deceleration.Serialize());
 		}
 		public Transition(float time,float speed){
-			this.time.delayedValue = time;
-			this.speed.delayedValue = speed;
+			this.time = time;
+			this.speed = speed;
 		}
-		public void Setup(string path,UnityObject parent){
+		public virtual void Setup(string path,UnityObject parent){
 			this.path = path;
 			this.parent = parent;
-			this.time.Setup(path+"/Transition Time",parent);
-			this.speed.Setup(path+"/Transition Speed",parent);
-			this.delta.Setup(path+"/Transition Delta",parent);
-			Event.Register(path+"/Start",parent);
-			Event.Register(path+"/End",parent);
 		}
+		public virtual void SetDelta(float value){this.delta = value;}
+		public virtual void SetTime(float value){this.time = value;}
+		public virtual void SetSpeed(float value){this.speed = value;}
 		public int Step(int current,int goal){
 			return (int)this.Step((float)current,(float)goal);
 		}
 		public float Step(float current,float goal){
 			float output = 0;
-			float speed = this.speed.Get();
-			float time = this.time.Get();
+			float speed = this.speed;
+			float time = this.time;
 			if(time == 0 && speed == 0){
 				current = goal;
 				output = goal;
@@ -58,7 +58,7 @@ namespace Zios.Actions.TransitionComponents{
 			if(remainingDistance <= 0){
 				if(!this.finished){this.parent.CallEvent(this.path+"/End");}
 				this.finished = true;
-				this.delta.Set(0);
+				this.SetDelta(0);
 				this.state = TransitionState.Idle;
 				return goal;
 			}
@@ -101,8 +101,8 @@ namespace Zios.Actions.TransitionComponents{
 				this.previousGoal = goal;
 			}
 			speed *= this.GetTimeOffset();
-			this.delta.Set(current.MoveTowards(goal,speed) - current);
-			output = current + this.delta.Get();
+			this.SetDelta((current.MoveTowards(goal,speed) - current));
+			output = current + this.delta;
 			return output;
 		}
 		public float GetTimeOffset(){
@@ -112,6 +112,33 @@ namespace Zios.Actions.TransitionComponents{
 			return Time.deltaTime;
 		}
 	}
-	public enum TransitionType{Time,Speed};
-	public enum TransitionState{Idle,Acceleration,Travel,Deceleration};
+	[Serializable]
+	public class AttributeTransition : Transition{
+		new public AttributeFloat time = 0.5f;
+		new public AttributeFloat speed = 3;
+		[HideInInspector] new public AttributeFloat delta = 0;
+		public AttributeTransition(){}
+		public AttributeTransition(AttributeTransition transition){
+			this.time.delayedValue = transition.time;
+			this.speed.delayedValue = transition.speed;
+			this.acceleration = new AnimationCurve().Deserialize(transition.acceleration.Serialize());
+			this.deceleration = new AnimationCurve().Deserialize(transition.deceleration.Serialize());
+		}
+		public AttributeTransition(float time,float speed){
+			this.time.delayedValue = time;
+			this.speed.delayedValue = speed;
+		}
+		public override void Setup(string path,UnityObject parent){
+			this.path = path;
+			this.parent = parent;
+			this.time.Setup(path+"/Transition Time",parent);
+			this.speed.Setup(path+"/Transition Speed",parent);
+			this.delta.Setup(path+"/Transition Delta",parent);
+			Events.Register(path+"/Start",parent);
+			Events.Register(path+"/End",parent);
+		}
+		public override void SetDelta(float value){this.delta.Set(value);}
+		public override void SetTime(float value){this.time.Set(value);}
+		public override void SetSpeed(float value){this.speed.Set(value);}
+	}
 }

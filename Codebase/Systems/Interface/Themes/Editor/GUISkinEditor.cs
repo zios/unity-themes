@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using Zios.Interface;
 using UnityEvent = UnityEngine.Event;
 namespace Zios.Editors{
-	using Events;
+	using Event;
 	[CustomEditor(typeof(GUISkin))]
 	public partial class GUISkinEditor : Editor{
 		public static GUIStyle focus;
@@ -500,7 +500,7 @@ namespace Zios.Editors{
 				foreach(var fragment in fragments){
 					Utility.SetAssetDirty(fragment);
 				}
-				Event.Call("On GUISkin Changed");
+				Events.Call("On GUISkin Changed");
 				this.changes = false;
 			}
 			if(!this.queue.IsNull()){

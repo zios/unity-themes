@@ -3,7 +3,7 @@ using UnityEditor;
 namespace Zios.Editors.AnimationEditors{
 	using Animations;
 	using Interface;
-	using Events;
+	using Event;
 	[CustomEditor(typeof(AnimationSettings))]
 	public class AnimationSettingsEditor : Editor{
 		public static AnimationSettingsEditor instance;
@@ -13,7 +13,7 @@ namespace Zios.Editors.AnimationEditors{
 			EditorUI.Reset();
 			EditorUI.allowIndention = false;
 			AnimationSettingsEditor.instance = this;
-			Event.Add("On Editor Update",AnimationSettingsEditor.EditorUpdate);
+			Events.Add("On Editor Update",AnimationSettingsEditor.EditorUpdate);
 			EditorGUILayout.BeginHorizontal();
 			"Name".ToLabel().Layout(120).DrawLabel();
 			"FPS".ToLabel().Layout(30).DrawLabel();
@@ -31,7 +31,7 @@ namespace Zios.Editors.AnimationEditors{
 				if(!isPlaying && "Play".ToLabel().Layout(0,17).DrawButton()){
 					this.time = 0;
 					this.active = config;
-					Event.Pause("On Hierarchy Changed");
+					Events.Pause("On Hierarchy Changed");
 				}
 				if(GUI.changed){
 					Utility.RecordObject(this.target,"Animation Settings Changed");
@@ -43,12 +43,12 @@ namespace Zios.Editors.AnimationEditors{
 		}
 		public void Stop(){
 			this.active = null;
-			Event.Resume("On Hierarchy Changed");
+			Events.Resume("On Hierarchy Changed");
 		}
 		public static void EditorUpdate(){
 			var instance = AnimationSettingsEditor.instance;
 			if(!instance.IsNull() && !instance.active.IsNull() && !instance.active.name.IsEmpty()){
-				Event.Pause("On Hierarchy Changed");
+				Events.Pause("On Hierarchy Changed");
 				var state = instance.active.parent[instance.active.name];
 				instance.time += (state.clip.frameRate * state.speed) / (10000*0.4f);
 				var settings = instance.target.As<AnimationSettings>();

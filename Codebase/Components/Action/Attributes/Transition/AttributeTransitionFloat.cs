@@ -5,7 +5,7 @@ namespace Zios.Actions.TransitionComponents{
 	public class AttributeTransitionFloat : StateMonoBehaviour{
 		public AttributeFloat target = 0;
 		public AttributeFloat goal = 0;
-		public Transition transition;
+		public AttributeTransition transition;
 		public override void Awake(){
 			base.Awake();
 			this.transition.Setup("",this);

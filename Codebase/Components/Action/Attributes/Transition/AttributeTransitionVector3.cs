@@ -5,9 +5,9 @@ namespace Zios.Actions.TransitionComponents{
 	public class AttributeTransitionVector3 : StateMonoBehaviour{
 		public AttributeVector3 target = Vector3.zero;
 		public AttributeVector3 goal = Vector3.zero;
-		public Transition transitionX;
-		public Transition transitionY;
-		public Transition transitionZ;
+		public AttributeTransition transitionX;
+		public AttributeTransition transitionY;
+		public AttributeTransition transitionZ;
 		public override void Awake(){
 			base.Awake();
 			this.transitionX.Setup("X",this);

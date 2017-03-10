@@ -3,12 +3,12 @@ using UnityEditor;
 using UnityEvent = UnityEngine.Event;
 namespace Zios.Editors{
 	using Inputs;
-	using Interface;
 	[CustomEditor(typeof(InputManager))]
 	public class InputManagerEditor : MonoBehaviourEditor{
 		public override void OnInspectorGUI(){
-			EditorUI.Reset();
-			Utility.GetInspector(this).SetTitle("Input");
+			this.title = "Input";
+			this.header = this.header ?? FileManager.GetAsset<Texture2D>("InputIcon.png");
+			base.OnInspectorGUI();
 			var target = this.target.As<InputManager>();
 			if(Application.isPlaying){
 				var current =  UnityEvent.current;
@@ -18,18 +18,8 @@ namespace Zios.Editors{
 					}
 				}
 			}
-			base.OnInspectorGUI();
-			if(Utility.IsRepainting()){
-				Utility.GetInspector(this).SetTitle("Inspector");
-			}
 		}
-		public override bool HasPreviewGUI(){return true;}
-		public override void DrawPreview(Rect previewArea){}
-		public override void OnPreviewGUI(Rect area,GUIStyle background){
-			base.OnPreviewGUI(area,background.Background(FileManager.GetAsset<Texture2D>("InputIcon.png")));
-		}
-		public override GUIContent GetPreviewTitle(){return new GUIContent("");}
-		[MenuItem("Zios/System/Input")]
+		[MenuItem("Zios/Settings/Input")]
 		public static void Select(){
 			Selection.activeObject = FileManager.GetAsset<InputManager>("InputManager.asset",false) ?? Utility.CreateSingleton("Assets/Settings/InputManager");
 		}

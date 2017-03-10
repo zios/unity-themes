@@ -10,7 +10,7 @@ using UnityEditor;
 namespace Zios{
 	using Actions;
 	using Attributes;
-	using Events;
+	using Event;
 	using Interface;
 	[ExecuteInEditMode][AddComponentMenu("")]
 	public class DataMonoBehaviour : MonoBehaviour{
@@ -36,10 +36,10 @@ namespace Zios{
 				}
 			}
 			if(!Application.isPlaying){
-				Event.Register("On Destroy",this);
-				Event.Register("On Validate",this);
-				Event.Add("On Validate",this.CheckDependents,this);
-				Event.Add("On Validate",this.CheckAlias,this);
+				Events.Register("On Destroy",this);
+				Events.Register("On Validate",this);
+				Events.Add("On Validate",this.CheckDependents,this);
+				Events.Add("On Validate",this.CheckAlias,this);
 			}
 		}
 		public virtual void Start(){
@@ -57,7 +57,7 @@ namespace Zios{
 				this.CallEvent("On Reset");
 				return;
 			}
-			Event.Call("On Attach",this);
+			Events.Call("On Attach",this);
 		}
 		public virtual void OnDisable(){
 			if(!this.setup || Utility.IsBusy()){return;}
@@ -82,7 +82,7 @@ namespace Zios{
 		public virtual void OnDestroy(){
 			if(Application.isPlaying || Utility.IsBusy()){return;}
 			this.CallEvent("On Destroy");
-			Event.RemoveAll(this);
+			Events.RemoveAll(this);
 		}
 		public void CheckAlias(){
 			if(this.lastAlias != this.alias || this.alias.IsEmpty()){
@@ -129,7 +129,7 @@ namespace Zios{
 			if(!Application.isEditor){return;}
 			if(this.dependents.Exists(x=>Enumerable.SequenceEqual(x.types,types))){return;}
 			Method delayAdd = ()=>this.DelayAddDependent(target,isScript,types);
-			Event.AddLimited("On Attributes Ready",delayAdd,1);
+			Events.AddLimited("On Attributes Ready",delayAdd,1);
 		}
 		public void DelayAddDependent(object target,bool isScript=false,params Type[] types){
 			if(this.dependents.Exists(x=>Enumerable.SequenceEqual(x.types,types))){return;}
@@ -170,11 +170,11 @@ namespace Zios{
 			DataMonoBehaviour.sorting = Locate.GetSceneObjects();
 			if(DataMonoBehaviour.sorting.Length > 0){
 				DataMonoBehaviour.processIndex = 0;
-				Event.Add("On Editor Update",DataMonoBehaviour.SortSmartNext);
+				Events.Add("On Editor Update",DataMonoBehaviour.SortSmartNext);
 			}
 		}
 		public static void SortSmartNext(){
-			Event.Pause("On Hierarchy Changed");
+			Events.Pause("On Hierarchy Changed");
 			int index = DataMonoBehaviour.processIndex;
 			var sorting = DataMonoBehaviour.sorting;
 			bool canceled = true;
@@ -190,8 +190,8 @@ namespace Zios{
 			DataMonoBehaviour.processIndex += 1;
 			if(canceled || index+1 > sorting.Length-1){
 				EditorUI.ClearProgressBar();
-				Event.Remove("On Editor Update",DataMonoBehaviour.SortSmartNext);
-				Event.Resume("On Hierarchy Changed");
+				Events.Remove("On Editor Update",DataMonoBehaviour.SortSmartNext);
+				Events.Resume("On Hierarchy Changed");
 			}
 		}
 		//===============
@@ -216,11 +216,11 @@ namespace Zios{
 			}
 		}
 		public static void ApplyPrefabTarget(GameObject target){
-			Event.Pause("On Hierarchy Changed");
+			Events.Pause("On Hierarchy Changed");
 			target.PauseValidate();
 			Utility.ApplyPrefab(target);
 			target.ResumeValidate();
-			Event.Resume("On Hierarchy Changed");
+			Events.Resume("On Hierarchy Changed");
 		}
 		//===============
 		// Context

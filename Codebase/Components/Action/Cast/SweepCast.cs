@@ -2,7 +2,7 @@ using UnityEngine;
 namespace Zios.Actions.CastComponents{
 	using Attributes;
 	using Motion;
-	using Events;
+	using Event;
 	[AddComponentMenu("Zios/Component/Action/Cast/Sweepcast")]
 	public class SweepCast : StateMonoBehaviour{
 		public AttributeGameObject source = new AttributeGameObject();
@@ -23,7 +23,7 @@ namespace Zios.Actions.CastComponents{
 			this.hitPoint.Setup("Hit Point",this);
 			this.hitNormal.Setup("Hit Normal",this);
 			this.hitDistance.Setup("Hit Distance",this);
-			Event.Add("On Validate",this.FixDistance,this);
+			Events.Add("On Validate",this.FixDistance,this);
 			this.AddDependent(this.source,false,typeof(Rigidbody),typeof(ColliderController));
 			this.FixDistance();
 		}

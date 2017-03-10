@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace Zios.Inputs{
 	using Attributes;
-	using Events;
+	using Event;
 	public class InputInstance : ManagedMonoBehaviour{
 		public Dictionary<string,bool> active = new Dictionary<string,bool>();
 		public Dictionary<string,float> intensity = new Dictionary<string,float>();
@@ -24,8 +24,8 @@ namespace Zios.Inputs{
 				if(line.IsEmpty()){continue;}
 				var instanceName = line.Parse(""," ");
 				var profileName = line.Parse(" ");
-				var profile = InputManager.instance.profiles.Find(x=>x.name==profileName);
-				InputManager.instance.instanceProfile[instanceName] = profile;
+				var profile = InputManager.Get().profiles.Find(x=>x.name==profileName);
+				InputManager.Get().instanceProfile[instanceName] = profile;
 			}
 		}
 		public void Save(){
@@ -51,15 +51,15 @@ namespace Zios.Inputs{
 			base.Awake();
 			this.DefaultRate("Update");
 			this.state.Setup("State",this);
-			Event.Add("Hold Input",this.HoldInput,this);
-			Event.Add("Release Input",this.ReleaseInput,this);
+			Events.Add("Hold Input",this.HoldInput,this);
+			Events.Add("Release Input",this.ReleaseInput,this);
 			if(Application.isPlaying){
-				this.profile = InputManager.instance.GetInstanceProfile(this);
+				this.profile = InputManager.Get().GetInstanceProfile(this);
 				if(this.profile.IsNull() || this.profile.name.IsEmpty()){
-					Utility.DelayCall(()=>InputManager.instance.SelectProfile(this),0.1f);
+					Utility.DelayCall(()=>InputManager.Get().SelectProfile(this),0.1f);
 				}
 			}
-			Event.Add("On Validate",this.PrepareInput,InputManager.instance);
+			Events.Add("On Validate",this.PrepareInput,InputManager.Get());
 			this.PrepareInput();
 		}
 		//===============
@@ -68,7 +68,7 @@ namespace Zios.Inputs{
 		public override void Step(){
 			if(this.manuallyControlled){
 				if(this.state != -1){
-					this.active.SetValues(Store.UnpackBools(this.active.Count,this.state));
+					this.active.SetValues(Pack.UnpackBools(this.active.Count,this.state));
 					this.state = -1;
 				}
 				this.StepInput();
@@ -83,7 +83,7 @@ namespace Zios.Inputs{
 		public void PrepareGamepad(){
 			if(!this.joystickID.IsEmpty()){return;}
 			string gamepad = this.profile.requiredDevices.Find(x=>!x.MatchesAny("Keyboard","Mouse")) ?? "";
-			var allGamepads = InputManager.instance.joystickNames;
+			var allGamepads = InputManager.Get().joystickNames;
 			for(int index=0;index<allGamepads.Length;++index){
 				string name = allGamepads[index].Trim();
 				if(name == gamepad.Trim()){
@@ -94,9 +94,9 @@ namespace Zios.Inputs{
 			this.joystickID = "[None]";
 		}
 		public void PrepareInput(){
-			if(!Application.isPlaying && !InputManager.instance.IsNull()){
+			if(!Application.isPlaying && !InputManager.Get().IsNull()){
 				this.actions.Clear();
-				foreach(var group in InputManager.instance.groups){
+				foreach(var group in InputManager.Get().groups){
 					foreach(var action in group.actions){
 						var newAction = action.Copy();
 						newAction.name = group.name.ToPascalCase() + "-" + action.name.ToPascalCase();
@@ -124,10 +124,10 @@ namespace Zios.Inputs{
 				if(input.ContainsAll("Joystick","Axis") && !this.joystickID.IsEmpty()){
 					string axisName = input.Remove("Negative","Positive");
 					float axis = Input.GetAxis(axisName);
-					if(Mathf.Abs(axis) > InputManager.instance.gamepadDeadZone){
+					if(Mathf.Abs(axis) > InputManager.Get().gamepadDeadZone){
 						if(axis < 0 && input.Contains("Negative")){this.active[action] = true;}
 						if(axis > 0 && input.Contains("Positive")){this.active[action] = true;}
-						this.maxIntensity[action] = axis.Abs() * InputManager.instance.gamepadSensitivity;
+						this.maxIntensity[action] = axis.Abs() * InputManager.Get().gamepadSensitivity;
 						this.ClampIntensity(action);
 					}
 				}
@@ -156,7 +156,7 @@ namespace Zios.Inputs{
 			}
 		}
 		public void StepInput(){
-			int packed = Store.PackBools(this.active.Values.ToArray());
+			int packed = Pack.PackBools(this.active.Values.ToArray());
 			this.state.Set(packed);
 			foreach(var item in this.active){
 				var action = item.Key;

@@ -8,9 +8,9 @@ using MenuFunction = UnityEditor.GenericMenu.MenuFunction;
 namespace Zios.Editors{
 	using Interface;
 	using Attributes;
-	using Events;
+	using Event;
 	[CustomEditor(typeof(MonoBehaviour),true)][CanEditMultipleObjects]
-	public class MonoBehaviourEditor : Editor{
+	public class MonoBehaviourEditor : HeaderEditor{
 		public static Dictionary<Type,Dictionary<string,object>> defaults = new Dictionary<Type,Dictionary<string,object>>();
 		public static float resumeHierarchyTime = -1;
 		public static Dictionary<Editor,bool> offScreen = new Dictionary<Editor,bool>();
@@ -30,6 +30,7 @@ namespace Zios.Editors{
 		public Method dirtyEvent;
 		public override void OnInspectorGUI(){
 			EditorUI.Reset();
+			Utility.GetInspector(this).SetTitle(this.title);
 			Utility.GetInspectors().ForEach(x=>x.wantsMouseMove = true);
 			if(!UnityEvent.current.IsUseful()){return;}
 			if(this.target is MonoBehaviour && this.target.As<MonoBehaviour>().InPrefabFile()){return;}
@@ -41,7 +42,7 @@ namespace Zios.Editors{
 				return;
 			}*/
 			if(UnityEvent.current.type == EventType.MouseMove){
-				Utility.GetInspectors().ForEach(x=>Utility.DelayCall(x.Repaint,0.01f));
+				Utility.DelayCall(Utility.RepaintInspectors,0.1f);
 			}
 			bool hideAllDefault = Utility.GetPref<bool>("MonoBehaviourEditor-HideAllDefault",false);
 			this.hideDefault = Utility.GetPref<bool>("MonoBehaviourEditor-"+this.target.GetInstanceID()+"HideDefault",false);
@@ -126,6 +127,9 @@ namespace Zios.Editors{
 				Utility.SetDirty(this.serializedObject.targetObject,false,true);
 			}
 			this.CheckChanges();
+			if(Utility.IsRepainting()){
+				Utility.GetInspector(this).SetTitle("Inspector");
+			}
 		}
 		public void CheckChanges(){
 			if(UnityEvent.current.type == EventType.Repaint){
@@ -193,10 +197,10 @@ namespace Zios.Editors{
 			var defaults = MonoBehaviourEditor.defaults;
 			if(!(this.target is MonoBehaviour)){return;}
 			if(!defaults.ContainsKey(type)){
-				Event.Pause("On Hierarchy Changed");
-				var state = Event.disabled;
-				Event.disabled = (EventDisabled)(-1);
-				AttributeManager.disabled = true;
+				Events.Pause("On Hierarchy Changed");
+				var state = Events.Get().disabled;
+				Events.Get().disabled = (EventDisabled)(-1);
+				AttributeManager.Get().disabled = true;
 				//Utility.delayPaused = true;
 				defaults.AddNew(type);
 				var script = (MonoBehaviour)this.target;
@@ -217,13 +221,13 @@ namespace Zios.Editors{
 				}
 				Utility.Destroy(component);
 				//Utility.delayPaused = false;
-				Event.disabled = state;
-				AttributeManager.disabled = false;
+				Events.Get().disabled = state;
+				AttributeManager.Get().disabled = false;
 				MonoBehaviourEditor.resumeHierarchyTime = Time.realtimeSinceStartup + 0.5f;
 			}
 			else if(MonoBehaviourEditor.resumeHierarchyTime != -1 && Time.realtimeSinceStartup > MonoBehaviourEditor.resumeHierarchyTime){
 				MonoBehaviourEditor.resumeHierarchyTime = -1;
-				Event.Resume("On Hierarchy Changed");
+				Events.Resume("On Hierarchy Changed");
 			}
 		}
 		public void SortProperties(){

@@ -3,17 +3,17 @@ using UnityEngine;
 namespace Zios.Editors{
 	using Actions.TransitionComponents;
 	using Interface;
-	using Events;
-	[CustomPropertyDrawer(typeof(Transition))]
+	using Event;
+	[CustomPropertyDrawer(typeof(AttributeTransition))]
 	public class TransitionDrawer : PropertyDrawer{
 		public override float GetPropertyHeight(SerializedProperty property,GUIContent label){
-			var hash = property.GetObject<Transition>().path;
+			var hash = property.GetObject<AttributeTransition>().path;
 			if(Utility.GetPref<bool>(hash)){return EditorGUIUtility.singleLineHeight*5+8;}
 			return base.GetPropertyHeight(property,label);
 		}
 		public override void OnGUI(Rect area,SerializedProperty property,GUIContent label){
 			EditorUI.Reset();
-			Transition transition = property.GetObject<Transition>();
+			AttributeTransition transition = property.GetObject<AttributeTransition>();
 			var spacing = area.height = EditorGUIUtility.singleLineHeight;
 			if(!transition.time.isSetup){return;}
 			if("Transition".ToLabel().DrawFoldout(area,transition.path,null,true)){

@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Zios.Actions.InputComponents{
 	using Attributes;
 	using Inputs;
-	using Events;
+	using Event;
 	[AddComponentMenu("Zios/Component/Action/Input/Input Pressed")]
 	public class InputPressed : StateMonoBehaviour{
 		[Advanced] public InputRange requirement;
@@ -18,7 +18,7 @@ namespace Zios.Actions.InputComponents{
 			this.released.Setup("Released",this);
 			this.AddDependent<InputInstance>(target);
 			this.SetInstance();
-			Event.Add("On Validate",this.SetInstance,this);
+			Events.Add("On Validate",this.SetInstance,this);
 		}
 		public void SetInstance(){
 			this.instance = this.target.Get() ? this.target.Get().GetComponent<InputInstance>() : null;

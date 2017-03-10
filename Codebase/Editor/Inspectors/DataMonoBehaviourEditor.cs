@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEvent = UnityEngine.Event;
 namespace Zios.Editors{
 	using Interface;
-	using Events;
+	using Event;
 	[CustomEditor(typeof(DataMonoBehaviour),true)][CanEditMultipleObjects]
 	public class DataMonoBehaviourEditor : MonoBehaviourEditor{
 		public static DataMonoBehaviour current;
@@ -14,8 +14,8 @@ namespace Zios.Editors{
 		public override void OnInspectorGUI(){
 			if(!UnityEvent.current.IsUseful()){return;}
 			EditorUI.Reset();
-			Event.Add("On Components Changed",DataMonoBehaviourEditor.CheckDependents);
-			Event.Add("On Attributes Ready",DataMonoBehaviourEditor.CheckDependents);
+			Events.Add("On Components Changed",DataMonoBehaviourEditor.CheckDependents);
+			Events.Add("On Attributes Ready",DataMonoBehaviourEditor.CheckDependents);
 			var target = DataMonoBehaviourEditor.current = (DataMonoBehaviour)this.target;
 			bool targetsMissing = false;
 			string message = "";

@@ -9,7 +9,7 @@ using MenuFunction = UnityEditor.GenericMenu.MenuFunction;
 namespace Zios.Editors{
 	using Interface;
 	using Attributes;
-	using Events;
+	using Event;
 	[CustomPropertyDrawer(typeof(Attribute),true)]
 	public class AttributeDrawer : PropertyDrawer{
 		public IAttributeAccess access;
@@ -48,7 +48,7 @@ namespace Zios.Editors{
 				return;
 			}
 			this.overallHeight = this.GetBaseHeight(property,label);
-			if(!Attribute.ready && AttributeManager.safe){
+			if(!Attribute.ready && AttributeManager.Get().safeMode){
 				EditorGUI.ProgressBar(area,AttributeManager.percentLoaded,"Updating");
 				return;
 			}

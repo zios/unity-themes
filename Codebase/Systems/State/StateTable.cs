@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityObject = UnityEngine.Object;
 namespace Zios.Actions{
 	using Attributes;
-	using Events;
+	using Event;
 	[AddComponentMenu("Zios/Component/Action/State Table")]
 	public class StateTable : StateMonoBehaviour{
 		public static bool debug;
@@ -21,13 +21,13 @@ namespace Zios.Actions{
 		public override void Awake(){
 			base.Awake();
 			this.alias = this.gameObject.name.Contains("Main") && !this.transform.parent.IsNull() ? this.transform.parent.name : this.gameObject.name;
-			Event.Register("On State Updated",this);
-			Event.Register("On State Refreshed",this);
-			Event.Add("On State Update",this.UpdateStates,this);
-			Event.Add("On Start",StateTable.RefreshTables);
+			Events.Register("On State Updated",this);
+			Events.Register("On State Refreshed",this);
+			Events.Add("On State Update",this.UpdateStates,this);
+			Events.Add("On Start",StateTable.RefreshTables);
 			if(!Application.isPlaying){
-				Event.Add("On Components Changed",StateTable.RefreshTables);
-				Event.Add("On Components Changed",StateTable.RefreshTables,this.gameObject);
+				Events.Add("On Components Changed",StateTable.RefreshTables);
+				Events.Add("On Components Changed",StateTable.RefreshTables,this.gameObject);
 			}
 			this.external.Setup("External",this);
 		}

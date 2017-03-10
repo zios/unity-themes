@@ -3,14 +3,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Zios.Events{
+namespace Zios.Event{
 	using Interface;
 	[Serializable]
 	public class EventStepper{
-		[NonSerialized] public static List<EventStepper> instances = new List<EventStepper>();
-		[NonSerialized] public static EventStepper active;
-		[NonSerialized] public static string title;
-		[NonSerialized] public static string message;
+		public static List<EventStepper> instances = new List<EventStepper>();
+		public static EventStepper active;
+		public static string title;
+		public static string message;
 		public Method onComplete = ()=>{};
 		public MethodStep method;
 		public IList collection;

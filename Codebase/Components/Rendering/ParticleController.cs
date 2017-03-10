@@ -1,6 +1,6 @@
 using UnityEngine;
 namespace Zios.Rendering{
-	using Events;
+	using Event;
 	[AddComponentMenu("Zios/Component/Rendering/Particle Controller")]
 	public class ParticleController : MonoBehaviour{
 		public Method onLast;

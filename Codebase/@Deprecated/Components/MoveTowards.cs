@@ -2,7 +2,7 @@ using UnityEngine;
 namespace Zios.Actions.MoveComponents{
 	using Containers.Math;
 	using Attributes;
-	using Events;
+	using Event;
 	using Motion;
 	[AddComponentMenu("Zios/Component/Action/Move/Move Towards")]
 	public class MoveTowards : StateMonoBehaviour{

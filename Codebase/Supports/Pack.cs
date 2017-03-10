@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 namespace Zios{
-	public static class Store{
+	public static class Pack{
 		public static int PackBools(params bool[] values){
 			int packed = 0;
 			int slot = 0;

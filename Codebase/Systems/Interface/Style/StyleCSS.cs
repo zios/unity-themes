@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace Zios{
 	public static partial class Style{
-		[NonSerialized] private static StringBuilder contents = new StringBuilder();
+		private static StringBuilder contents = new StringBuilder();
 		public static void SaveCSS(string path,GUISkin skin){
 			var output = new StringBuilder();
 			var emptySkin = ScriptableObject.CreateInstance<GUISkin>();

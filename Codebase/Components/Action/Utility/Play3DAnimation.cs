@@ -2,7 +2,7 @@ using UnityEngine;
 namespace Zios.Actions.AnimationComponents{
 	using Animations;
 	using Attributes;
-	using Events;
+	using Event;
 	[AddComponentMenu("Zios/Component/Action/General/Play Animation (3D)")]
 	public class Play3DAnimation : StateMonoBehaviour{
 		public AttributeString animationName = "";

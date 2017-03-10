@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 namespace Zios.Shaders{
-	using Events;
+	using Event;
 	[AddComponentMenu("Zios/Singleton/Shader Settings (Global)")][ExecuteInEditMode]
 	public class ShaderGlobalSettings : MonoBehaviour{
 		public static ShaderGlobalSettings instance;
@@ -46,7 +46,7 @@ namespace Zios.Shaders{
 				this.SetKeyword(fadeBlend);
 				this.SetKeyword(fadeGrayscale);
 				if(this.dirty){
-					Event.AddStepper("On Editor Update",ShaderGlobalSettings.RefreshStep,this.materialsChanged,50);
+					Events.AddStepper("On Editor Update",ShaderGlobalSettings.RefreshStep,this.materialsChanged,50);
 				}
 			}
 		}

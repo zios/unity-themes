@@ -6,7 +6,7 @@ using UnityObject = UnityEngine.Object;
 namespace Zios.Containers{
 	using Attributes;
 	using Actions;
-	using Events;
+	using Event;
 	public enum TargetMode{Search,Direct};
 	[Serializable]
 	public class Target{
@@ -41,8 +41,8 @@ namespace Zios.Containers{
 		}
 		public void Clear(){
 			if(!this.disabled){
-				Event.Remove("On Validate",this.Search,this.parent);
-				Event.Remove("On Components Changed",this.Search,this.parent);
+				Events.Remove("On Validate",this.Search,this.parent);
+				Events.Remove("On Components Changed",this.Search,this.parent);
 				this.disabled = true;
 			}
 		}
@@ -60,8 +60,8 @@ namespace Zios.Containers{
 					this.AddSpecial("[NextEnabled]",component.gameObject.GetNextSibling());
 					this.AddSpecial("[PreviousEnabled]",component.gameObject.GetPreviousSibling());
 					this.AddSpecial("[Root]",component.gameObject.GetPrefabRoot());
-					Event.Add("On Validate",this.Search,parent);
-					Event.Add("On Components Changed",this.Search,parent);
+					Events.Add("On Validate",this.Search,parent);
+					Events.Add("On Components Changed",this.Search,parent);
 					if(parent is StateMonoBehaviour){
 						var state = (StateMonoBehaviour)parent;
 						GameObject stateObject = state.gameObject;

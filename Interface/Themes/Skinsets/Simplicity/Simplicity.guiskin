@@ -30553,7 +30553,7 @@ MonoBehaviour:
     m_Overflow:
       m_Left: 1
       m_Right: 2
-      m_Top: 1
+      m_Top: 0
       m_Bottom: 1
     m_Font: {fileID: 0}
     m_FontSize: 0
