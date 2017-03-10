@@ -46,7 +46,7 @@ namespace Zios.Inputs{
 						profile.mappings[group+"-"+actionName] = buttonName;
 					}
 				}
-				InputManager.instance.profiles.Add(profile);
+				InputManager.Get().profiles.Add(profile);
 			}
 		}
 	}

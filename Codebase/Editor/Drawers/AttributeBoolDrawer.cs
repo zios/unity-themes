@@ -18,7 +18,7 @@ namespace Zios.Editors{
 			}
 			if(this.isPrefabFile){return;}
 			this.overallHeight = this.GetBaseHeight(property,label);
-			if(!Attribute.ready && AttributeManager.safe){
+			if(!Attribute.ready && AttributeManager.Get().safeMode){
 				EditorGUI.ProgressBar(area,AttributeManager.percentLoaded,"Updating");
 				return;
 			}
