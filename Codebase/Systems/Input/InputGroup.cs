@@ -76,7 +76,7 @@ namespace Zios.Inputs{
 				var inputAction = inputGroup.actions.Find(x=>x.name.Trim()==action) ?? inputGroup.actions.AddNew();
 				inputGroup.name = group;
 				inputAction.name = action;
-				inputAction.Setup("InputGroup",manager);
+				inputAction.Setup(inputGroup.name,manager);
 				if(name.Contains("Options")){inputAction.options = value.ToInt().ToEnum<InputActionOptions>();}
 				if(name.Contains("HelpImage")){inputAction.helpImage = FileManager.GetAsset<Sprite>(value);}
 				if(name.Contains("Time")){inputAction.transition.time = value.ToFloat();}

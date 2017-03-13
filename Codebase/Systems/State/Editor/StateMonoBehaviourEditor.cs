@@ -91,14 +91,16 @@ namespace Zios.Editors.StateEditors{
 									this.DrawState(onRows,index,title,true);
 								}
 							}
-						}	
+						}
 					}
 					EditorGUILayout.EndVertical();
 					this.height = EditorUI.foldoutChanged ? 0 : this.height.Max(GUILayoutUtility.GetLastRect().height);
 				}
 				else{
+					EditorGUILayout.BeginVertical(EditorStyles.helpBox);
 					string phrase = ("Always <b><color="+this.onColor+">ENABLED</color></b>").ToUpper();
 					phrase.ToLabel().DrawLabel(this.labelStyle.Alignment("MiddleCenter"));
+					EditorGUILayout.EndVertical();
 				}
 				EditorGUILayout.EndHorizontal();
 				Rect area = GUILayoutUtility.GetLastRect();

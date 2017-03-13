@@ -18,7 +18,7 @@ namespace Zios{
 		SaveDetailed  = 0x040,
 		Time          = 0x080,
 	}
-	public class Serializer : ScriptableObject{
+	public class Serializer : Singleton{
 		public static Serializer instance;
 		public static Serializer Get(){return Serializer.instance;}
 		public static Dictionary<Type,Dictionary<string,object>> defaults = new Dictionary<Type,Dictionary<string,object>>();

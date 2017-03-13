@@ -1,6 +1,6 @@
 [Textured]
 (Main)
-	Main                : #BD3636  
+	Main                : #8A2D2D  
 	MainActive          : #303841  
 	MainButton          : #0000002B
 	MainIcons           : #101010  
@@ -18,7 +18,7 @@
 
 [NonTextured]
 (Text)
-	Text                : #FFFFFFB6
+	Text                : #F5C6C6  
 	TextActive          : #FFFFFF  
 	TextButton          : #FFFFFFD3
 	TextBorder          : #FFFFFFC7
@@ -32,9 +32,9 @@
 	TextHeader          : #FFFFFF  
 (Other)
 	Frame               : #303841   : Border   
-	Window              : #BD3636   : Main     
+	Window              : #8A2D2D   : Main     
 	Details             : #303841   : Border   
 	Cursor              : #AAAAAA   : Highlight
-	Selection           : #972B2B   : Main      : 0.8
+	Selection           : #6E2424   : Main      : 0.8
 	Curve               : #FFFFFF   : Highlight : 1.5
 	CurveBackground     : #181C20   : Border    : 0.5

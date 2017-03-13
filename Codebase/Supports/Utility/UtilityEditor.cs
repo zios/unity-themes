@@ -125,6 +125,12 @@ namespace Zios{
 				file.WriteText(output.ToString().TrimEnd(null));
 			}
 		}
+		[MenuItem("Zios/Unhide GameObjects")]
+		public static void UnhideAll(){
+			foreach(var target in Locate.GetSceneObjects()){
+				target.hideFlags = HideFlags.None;
+			}
+		}
 		#endif
 	}
 	#endif

@@ -9,7 +9,7 @@ namespace Zios.Inputs{
 	using Event;
 	public enum InputUIState{None,SelectProfile,EditProfile}
 	public enum InputInstanceOptions{AllowCurrentlyUsedProfiles=1,AllowMultipleProfiles=2,ReassignInvalidProfiles=4}
-	public class InputManager : ScriptableObject{
+	public class InputManager : Singleton{
 		public bool disabled;
 		public static InputManager singleton;
 		public static Vector2 mouseChange;

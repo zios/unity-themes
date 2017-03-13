@@ -15,7 +15,7 @@ namespace Zios{
 		Data   = 0x004,
 	}
 	public enum NetworkerMode{None,Client,Server,Listen}
-	public class Networker : ScriptableObject{
+	public class Networker : Singleton{
 		public static NetworkerDebug debug;
 		public static NetworkerMode mode;
 		public static Networker singleton;

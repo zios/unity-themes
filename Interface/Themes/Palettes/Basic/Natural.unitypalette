@@ -1,6 +1,6 @@
 [Textured]
 (Main)
-	Main                : #32473B  
+	Main                : #3E4340  
 	MainActive          : #2C2C2C  
 	MainButton          : #A1C19D25
 	MainIcons           : #A1C19D  
@@ -32,9 +32,9 @@
 	TextHeader          : #FFFFFF  
 (Other)
 	Frame               : #262B26   : Border     
-	Window              : #32473B   : Main       
+	Window              : #3E4340   : Main       
 	Details             : #262B26   : Border     
 	Cursor              : #FFF700   : TextWarning
 	Selection           : #373D38   : Highlight  
-	Curve               : #373D38   : Highlight   : 1.5
-	CurveBackground     : #262B26   : Border      : 0.5
+	Curve               : #525B54   : Highlight   : 1.5
+	CurveBackground     : #1E221E   : Border      : 0.5

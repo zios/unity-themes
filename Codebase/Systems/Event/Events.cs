@@ -73,26 +73,27 @@ namespace Zios.Event{
 		public static string lastCalled;
 		public static FixedList<string> eventHistory = new FixedList<string>(15);
 		public static List<EventListener> stack = new List<EventListener>();
-		public static bool setup;
 		static Events(){
 			Events.callers.Clear();
 			Events.cache.Clear();
 			Events.listeners.RemoveAll(x=>x.name!="On Events Reset"&&(!x.permanent||x.occurrences==0));
 			Action Repair = ()=>{
 				var main = Locate.GetScenePath("@Main");
-				//main.hideFlags = HideFlags.HideAndDontSave;
+				main.hideFlags = HideFlags.HideAndDontSave;
 				if(main.GetComponent<EventDetector>().IsNull()){
 					main.AddComponent<EventDetector>();
 				}
+				foreach(var item in FileManager.FindAll("Settings/*.asset",false)){
+					item.GetAsset<Singleton>();
+				}
 			};
-			Events.Add("On Awake",()=>Repair());
+			Repair();
 			Events.Add("On Destroy",()=>Utility.DelayCall(Repair));
 			foreach(var listener in Events.listeners){
 				var scope = Events.cache.AddNew(listener.target).AddNew(listener.name);
 				scope[listener.method] = listener;
 			}
 			Events.Call("On Events Reset");
-			Events.setup = true;
 		}
 		public static void Cleanup(){
 			if(Application.isPlaying){return;}
@@ -171,13 +172,6 @@ namespace Zios.Event{
 		public static EventListener AddLimited(string name,MethodVector2 method,int amount=1,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
 		public static EventListener AddLimited(string name,MethodVector3 method,int amount=1,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
 		public static EventListener Add(string name,object method,int amount,params object[] targets){
-			bool delayed = false;
-			if(!Events.setup){
-				if(Events.HasDebug("Add")){
-					Debug.Log("[Events] : System not ready.  Delaying event add -- " + Events.GetMethodName(method.As<Delegate>()) + " -- " + name);
-				}
-				delayed = true;
-			}
 			if(Events.HasDisabled("Add")){
 				Debug.LogWarning("[Events] : Add attempted while Events disabled. " + name);
 				return null;
@@ -193,7 +187,7 @@ namespace Zios.Event{
 				}
 				if(!Events.cache.AddNew(target).AddNew(name).ContainsKey(method)){
 					listener = new EventListener();
-					if(Events.setup && Events.HasDebug("Add")){
+					if(Events.HasDebug("Add")){
 						var info = (Delegate)method;
 						Debug.Log("[Events] : Adding event -- " + Events.GetMethodName(info) + " -- " + name,target as UnityObject);
 					}
@@ -203,25 +197,11 @@ namespace Zios.Event{
 				else{
 					listener = Events.cache[target][name].AddNew(method);
 				}
-				if(delayed){
-					listener.name = "On Events Reset";
-					listener.method = (Method)(()=>{
-						var newEvent = Events.Add(name,method,amount,target);
-						newEvent.SetPermanent(listener.permanent);
-						newEvent.SetUnique(listener.unique);
-						listener.SetPermanent(false);
-						listener.SetUnique(false);
-					});
-					listener.target = target = Events.global;
-					listener.occurrences = 1;
-				}
-				else{
-					listener.name = name;
-					listener.method = method;
-					listener.target = target;
-					listener.occurrences = amount;
-					listener.isStatic = ((Delegate)method).Target.IsNull();
-				}
+				listener.name = name;
+				listener.method = method;
+				listener.target = target;
+				listener.occurrences = amount;
+				listener.isStatic = ((Delegate)method).Target.IsNull();
 				Events.cache.AddNew(target).AddNew(listener.name)[listener.method] = listener;
 				Events.cache.AddNew(Events.all).AddNew(listener.name)[listener.method] = listener;
 			}
@@ -346,7 +326,7 @@ namespace Zios.Event{
 			bool canDebug = Events.CanDebug(target,name,count);
 			bool debugDeep = canDebug && Events.HasDebug("CallDeep");
 			bool debugTime = canDebug && Events.HasDebug("CallTimer");
-			float duration = Events.setup ? Time.realtimeSinceStartup : 0;
+			float duration = Time.realtimeSinceStartup;
 			if(hasEvents){
 				Events.lastCalled = name;
 				Events.active[target].Add(name);
@@ -357,7 +337,7 @@ namespace Zios.Event{
 				Events.active[target].Remove(name);
 			}
 			if(debugTime && (!debugDeep || count < 1)){
-				duration = Events.setup ? Time.realtimeSinceStartup - duration : 0;
+				duration = Time.realtimeSinceStartup - duration;
 				if(duration > 0.001f || Events.HasDebug("CallTimerZero")){
 					string time = duration.ToString("F10").TrimRight("0",".").Trim() + " seconds.";
 					string message = "[Events] : " + Events.GetTargetName(target) + " -- " + name + " -- " + count + " events -- " + time;

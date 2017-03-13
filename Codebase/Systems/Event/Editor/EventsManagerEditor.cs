@@ -15,11 +15,7 @@ namespace Zios.Editors{
 			this.title = "Events";
 			this.header = this.header ?? FileManager.GetAsset<Texture2D>("EventsIcon.png");
 			base.OnInspectorGUI();
-			if(GUI.changed){
-				Events.disabled = this.target.As<EventsManager>().disabled;
-				Events.debugScope = this.target.As<EventsManager>().debugScope;
-				Events.debug = this.target.As<EventsManager>().debug;
-			}
+			if(GUI.changed){this.target.As<EventsManager>().Update();}
 			EditorUI.Reset();
 			if("Listeners".ToLabel().DrawFoldout()){
 				EditorGUI.indentLevel += 1;

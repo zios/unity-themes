@@ -5,7 +5,7 @@ using UnityEditor;
 #endif
 namespace Zios.Attributes{
 	using Event;
-	public class AttributeManager : ScriptableObject{
+	public class AttributeManager : Singleton{
 		public static AttributeManager singleton;
 		public static float nextRefresh;
 		public static float percentLoaded;

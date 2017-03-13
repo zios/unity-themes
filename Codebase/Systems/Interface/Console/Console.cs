@@ -18,7 +18,7 @@ namespace Zios.Interface{
 		public const byte openBegin = 4;
 		public const byte opening = 5;
 	}
-	public partial class Console : ScriptableObject{
+	public partial class Console : Singleton{
 		public static Console singleton;
 		public GUISkin skin;
 		public Material background;

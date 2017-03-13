@@ -68,8 +68,8 @@ namespace Zios.Event{
 		public virtual void OnEnable(){Events.Call("On Enable");}
 		public virtual void OnDisable(){Events.Call("On Disable");}
 		public virtual void OnDestroy(){
-			Events.RemoveAll(this);
 			Events.Call("On Destroy");
+			Events.RemoveAll(this);
 		}
 		public virtual void Reset(){Events.Call("On Reset");}
 	}
