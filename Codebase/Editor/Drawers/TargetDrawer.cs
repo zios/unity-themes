@@ -8,16 +8,19 @@ namespace Zios.Editors{
 	[CustomPropertyDrawer(typeof(Target),true)]
 	public class TargetDrawer : PropertyDrawer{
 		public bool setup;
+		public static GUISkin skin;
 		public override void OnGUI(Rect area,SerializedProperty property,GUIContent label){
 			EditorUI.Reset();
 			property.serializedObject.Update();
-			string skin = EditorGUIUtility.isProSkin || Utility.GetPref<bool>("EditorTheme-Dark",false) ? "Dark" : "Light";
-			GUI.skin = FileManager.GetAsset<GUISkin>("Gentleface-" + skin + ".guiskin");
 			Target target = property.GetObject<Target>();
 			TargetDrawer.Draw(area,target,label);
 		}
 		public static void Draw(Rect area,Target target,GUIContent label){
 			if(target.parent.IsNull()){return;}
+			if(TargetDrawer.skin.IsNull()){
+				string skin = EditorGUIUtility.isProSkin || Utility.GetPref<bool>("EditorTheme-Dark",false) ? "Dark" : "Light";
+				TargetDrawer.skin = FileManager.GetAsset<GUISkin>("Gentleface-" + skin + ".guiskin");
+			}
 			Rect toggleRect = new Rect(area);
 			Rect propertyRect = new Rect(area);
 			float labelWidth = label.text.IsEmpty() ? 0 : EditorGUIUtility.labelWidth;
@@ -26,7 +29,7 @@ namespace Zios.Editors{
 			toggleRect.x += labelWidth;
 			toggleRect.width = 18;
 			bool previousMode = target.mode == TargetMode.Direct;
-			bool currentMode = previousMode.Draw(toggleRect,"",GUI.skin.GetStyle("TargetToggle"));
+			bool currentMode = previousMode.Draw(toggleRect,"",TargetDrawer.skin.GetStyle("TargetToggle"));
 			if(previousMode != currentMode){
 				target.mode = target.mode == TargetMode.Direct ? TargetMode.Search : TargetMode.Direct;
 			}
@@ -37,10 +40,11 @@ namespace Zios.Editors{
 			}
 			else{
 				target.Verify();
+				var faded = GUI.skin.textField.Background("").TextColor(GUI.skin.textField.normal.textColor.SetAlpha(0.75f)).ContentOffset(-3,0).UseState("normal");
 				Rect textRect = propertyRect;
 				string result = !target.searchObject.IsNull() ? target.searchObject.GetPath().Trim("/") : "Not Found.";
-				Vector2 textSize = GUI.skin.textField.CalcSize(new GUIContent(target.search));
-				Vector2 subtleSize = GUI.skin.GetStyle("SubtleInfo").CalcSize(new GUIContent(result));
+				Vector2 textSize = TargetDrawer.skin.textField.CalcSize(new GUIContent(target.search));
+				Vector2 subtleSize = faded.CalcSize(new GUIContent(result));
 				float subtleX = propertyRect.x+propertyRect.width-subtleSize.x;
 				float subtleWidth = subtleSize.x;
 				float minimumX = propertyRect.x+textSize.x+3;
@@ -55,7 +59,7 @@ namespace Zios.Editors{
 					UnityEvent.current.Use();
 				}
 				target.search = target.search.Draw(textRect);
-				result.ToLabel().DrawLabel(propertyRect,GUI.skin.GetStyle("SubtleInfo"));
+				result.ToLabel().DrawLabel(propertyRect,faded);
 			}
 			if(GUI.changed && !target.IsNull()){
 				target.Search();

@@ -58,11 +58,10 @@ namespace Zios.Event{
 	// Main
 	//=======================
 	[InitializeOnLoad]
-	public class Events : ScriptableObject{
-		[EnumMask] public EventDisabled disabled;
-		[EnumMask] public EventDebugScope debugScope;
-		[EnumMask] public EventDebug debug;
-		public static Events singleton;
+	public static class Events{
+		[EnumMask] public static EventDisabled disabled;
+		[EnumMask] public static EventDebugScope debugScope;
+		[EnumMask] public static EventDebug debug;
 		public static object all = "All";
 		public static object global = "Global";
 		public static EventListener emptyListener = new EventListener();
@@ -74,18 +73,8 @@ namespace Zios.Event{
 		public static string lastCalled;
 		public static FixedList<string> eventHistory = new FixedList<string>(15);
 		public static List<EventListener> stack = new List<EventListener>();
-		private bool setup;
-		public static bool IsSetup(){return !Events.singleton.IsNull() && Events.singleton.setup;}
+		public static bool setup;
 		static Events(){
-			Utility.DelayCall(()=>Events.Get());
-		}
-		public static Events Get(){
-			Events.singleton = Events.singleton ?? Utility.GetSingleton<Events>();
-			return Events.singleton;
-		}
-		public void OnEnable(){
-			Events.singleton = this;
-			this.setup = true;
 			Events.callers.Clear();
 			Events.cache.Clear();
 			Events.listeners.RemoveAll(x=>x.name!="On Events Reset"&&(!x.permanent||x.occurrences==0));
@@ -96,21 +85,14 @@ namespace Zios.Event{
 					main.AddComponent<EventDetector>();
 				}
 			};
-			Repair();
+			Events.Add("On Awake",()=>Repair());
 			Events.Add("On Destroy",()=>Utility.DelayCall(Repair));
 			foreach(var listener in Events.listeners){
 				var scope = Events.cache.AddNew(listener.target).AddNew(listener.name);
 				scope[listener.method] = listener;
 			}
 			Events.Call("On Events Reset");
-		}
-		[ContextMenu("Reset All")]
-		public void ResetAll(){
-			Events.listeners.Clear();
-			Events.cache.Clear();
-			Events.callers.Clear();
-			Events.unique.Clear();
-			EventStepper.instances.Clear();
+			Events.setup = true;
 		}
 		public static void Cleanup(){
 			if(Application.isPlaying){return;}
@@ -190,8 +172,7 @@ namespace Zios.Event{
 		public static EventListener AddLimited(string name,MethodVector3 method,int amount=1,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
 		public static EventListener Add(string name,object method,int amount,params object[] targets){
 			bool delayed = false;
-			bool systemReady = !Events.singleton.IsNull() && Events.Get().setup;;
-			if(!systemReady){
+			if(!Events.setup){
 				if(Events.HasDebug("Add")){
 					Debug.Log("[Events] : System not ready.  Delaying event add -- " + Events.GetMethodName(method.As<Delegate>()) + " -- " + name);
 				}
@@ -212,7 +193,7 @@ namespace Zios.Event{
 				}
 				if(!Events.cache.AddNew(target).AddNew(name).ContainsKey(method)){
 					listener = new EventListener();
-					if(systemReady && Events.HasDebug("Add")){
+					if(Events.setup && Events.HasDebug("Add")){
 						var info = (Delegate)method;
 						Debug.Log("[Events] : Adding event -- " + Events.GetMethodName(info) + " -- " + name,target as UnityObject);
 					}
@@ -355,7 +336,7 @@ namespace Zios.Event{
 			if(Events.active.AddNew(target).Contains(name)){return;}
 			if(Events.stack.Count > 1000){
 				Debug.LogWarning("[Events] : Event stack overflow.");
-				Events.Get().disabled = (EventDisabled)(-1);
+				Events.disabled = (EventDisabled)(-1);
 				return;
 			}
 			target = Events.Verify(target);
@@ -365,7 +346,7 @@ namespace Zios.Event{
 			bool canDebug = Events.CanDebug(target,name,count);
 			bool debugDeep = canDebug && Events.HasDebug("CallDeep");
 			bool debugTime = canDebug && Events.HasDebug("CallTimer");
-			float duration = Time.realtimeSinceStartup;
+			float duration = Events.setup ? Time.realtimeSinceStartup : 0;
 			if(hasEvents){
 				Events.lastCalled = name;
 				Events.active[target].Add(name);
@@ -376,7 +357,7 @@ namespace Zios.Event{
 				Events.active[target].Remove(name);
 			}
 			if(debugTime && (!debugDeep || count < 1)){
-				duration = Time.realtimeSinceStartup - duration;
+				duration = Events.setup ? Time.realtimeSinceStartup - duration : 0;
 				if(duration > 0.001f || Events.HasDebug("CallTimerZero")){
 					string time = duration.ToString("F10").TrimRight("0",".").Trim() + " seconds.";
 					string message = "[Events] : " + Events.GetTargetName(target) + " -- " + name + " -- " + count + " events -- " + time;
@@ -446,8 +427,8 @@ namespace Zios.Event{
 		}
 		public static bool CanDebug(object target,string name,int count){
 			bool allowed = true;
-			var debug = Events.singleton.IsNull() ? 0 : Events.Get().debug;
-			var scope = Events.singleton.IsNull() ? 0 : Events.Get().debugScope;
+			var debug = Events.debug;
+			var scope = Events.debugScope;
 			allowed = target == Events.global ? scope.Has("Global") : scope.Has("Scoped");
 			allowed = allowed && (count > 0 || debug.HasAny("CallEmpty"));
 			if(allowed && name.ContainsAny("On Update","On Late Update","On Fixed Update","On Editor Update","On GUI","On Camera","On Undo Flushing")){
@@ -460,12 +441,10 @@ namespace Zios.Event{
 			return allowed;
 		}
 		public static bool HasDisabled(string term){
-			if(Events.singleton.IsNull()){return false;}
-			return Events.Get().disabled.Has(term);
+			return Events.disabled.Has(term);
 		}
 		public static bool HasDebug(string term){
-			if(Events.singleton.IsNull()){return false;}
-			return Events.Get().debug.Has(term);
+			return Events.debug.Has(term);
 		}
 		public static void Clean(string ignoreName="",object target=null,object targetMethod=null){
 			foreach(var eventListener in Events.listeners){

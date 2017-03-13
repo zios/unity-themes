@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Zios.Editors{
 	using Interface;
 	using Event;
-	[CustomEditor(typeof(Events))]
+	[CustomEditor(typeof(EventsManager))]
 	public class EventsEditor : MonoBehaviourEditor{
 		public Dictionary<string,List<EventListener>> listeners = new Dictionary<string,List<EventListener>>();
 		public void BuildListeners(){
@@ -15,6 +15,11 @@ namespace Zios.Editors{
 			this.title = "Events";
 			this.header = this.header ?? FileManager.GetAsset<Texture2D>("EventsIcon.png");
 			base.OnInspectorGUI();
+			if(GUI.changed){
+				Events.disabled = this.target.As<EventsManager>().disabled;
+				Events.debugScope = this.target.As<EventsManager>().debugScope;
+				Events.debug = this.target.As<EventsManager>().debug;
+			}
 			EditorUI.Reset();
 			if("Listeners".ToLabel().DrawFoldout()){
 				EditorGUI.indentLevel += 1;
@@ -40,7 +45,7 @@ namespace Zios.Editors{
 		}
 		[MenuItem("Zios/Settings/Events")]
 		public static void Select(){
-			Selection.activeObject = FileManager.GetAsset<Events>("Events.asset",false) ?? Utility.CreateSingleton("Assets/Settings/Events");
+			Selection.activeObject = FileManager.GetAsset<EventsManager>("EventsManager.asset",false) ?? Utility.CreateSingleton("Assets/Settings/EventsManager");
 		}
 	}
 }

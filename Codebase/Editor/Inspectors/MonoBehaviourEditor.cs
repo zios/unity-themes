@@ -198,8 +198,8 @@ namespace Zios.Editors{
 			if(!(this.target is MonoBehaviour)){return;}
 			if(!defaults.ContainsKey(type)){
 				Events.Pause("On Hierarchy Changed");
-				var state = Events.Get().disabled;
-				Events.Get().disabled = (EventDisabled)(-1);
+				var state = Events.disabled;
+				Events.disabled = (EventDisabled)(-1);
 				AttributeManager.Get().disabled = true;
 				//Utility.delayPaused = true;
 				defaults.AddNew(type);
@@ -221,7 +221,7 @@ namespace Zios.Editors{
 				}
 				Utility.Destroy(component);
 				//Utility.delayPaused = false;
-				Events.Get().disabled = state;
+				Events.disabled = state;
 				AttributeManager.Get().disabled = false;
 				MonoBehaviourEditor.resumeHierarchyTime = Time.realtimeSinceStartup + 0.5f;
 			}

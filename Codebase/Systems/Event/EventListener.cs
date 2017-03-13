@@ -18,7 +18,7 @@ namespace Zios.Event{
 		public bool IsValid(){
 			var method = this.method.As<Delegate>();
 			bool nullTarget = this.target.IsNull() || (!this.isStatic && method.Target.IsNull());
-			if(nullTarget && !this.warned && Events.Get().debug.Has("Call")){
+			if(nullTarget && !this.warned && Events.debug.Has("Call")){
 				Debug.LogWarning("[Events] Null call attempted -- " + this.name + " -- " + this.target + " -- " + Events.GetMethodName(method));
 				this.warned = true;
 			}
@@ -79,7 +79,7 @@ namespace Zios.Event{
 				string message = "[Events] : " + name + " -- " + Events.GetMethodName(this.method);
 				if(debugTime){
 					duration = Time.realtimeSinceStartup - duration;
-					if(duration > 0.001f || Events.Get().debug.Has("CallTimerZero")){
+					if(duration > 0.001f || Events.debug.Has("CallTimerZero")){
 						string time = duration.ToString("F10").TrimRight("0",".").Trim() + " seconds.";
 						message = message + " -- " + time;
 					}

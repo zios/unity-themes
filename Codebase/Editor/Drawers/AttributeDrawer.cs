@@ -95,7 +95,6 @@ namespace Zios.Editors{
 			}
 			var info = this.attribute.info;
 			this.activeDataset = info.data;
-			GUI.skin = this.skin;
 			this.drawer = drawer;
 			this.property = property;
 			this.label = label;
@@ -128,14 +127,14 @@ namespace Zios.Editors{
 					this.DrawDirect(this.fullRect,this.valueRect,firstData,this.label);
 				}
 				if(firstData.usage == AttributeUsage.Shaped){
-					GUI.Box(this.iconRect,"",GUI.skin.GetStyle("IconShaped"));
+					GUI.Box(this.iconRect,"",this.skin.GetStyle("IconShaped"));
 					this.labelRect = this.labelRect.AddX(16);
 					this.DrawShaped(this.valueRect,firstData,this.label,true);
 				}
 			}
 			if(this.attribute.info.mode == AttributeMode.Linked){
 				this.attribute.usage = AttributeUsage.Shaped;
-				GUI.Box(this.iconRect,"",GUI.skin.GetStyle("IconLinked"));
+				GUI.Box(this.iconRect,"",this.skin.GetStyle("IconLinked"));
 				this.labelRect = this.labelRect.AddX(16);
 				this.DrawShaped(this.valueRect,firstData,this.label,true);
 			}
@@ -186,7 +185,7 @@ namespace Zios.Editors{
 			label.ToLabel().DrawLabel(this.labelRect);
 			Rect toggleRect = area.SetWidth(16);
 			bool toggleActive = this.targetMode.ContainsKey(data) ? this.targetMode[data] : !data.referenceID.IsEmpty();
-			this.targetMode[data] = toggleActive.Draw(toggleRect,"",GUI.skin.GetStyle("CheckmarkToggle"));
+			this.targetMode[data] = toggleActive.Draw(toggleRect,"",this.skin.GetStyle("CheckmarkToggle"));
 			if(!this.targetMode[data]){
 				Rect targetRect = area.Add(18,0,-18,0);
 				bool ticked = GUI.changed;
@@ -259,7 +258,7 @@ namespace Zios.Editors{
 				string targetName = targetScope.IsNull() ? "Target" : targetScope.ToString().Remove("(UnityEngine.GameObject)").Trim();
 				string typeName = data.GetType().Name.Trim("Attribute","Data");
 				string message = "<b>" + targetName.Truncate(24) + "</b> has no <b>"+typeName+"</b> attributes.";
-				message.ToLabel().DrawLabel(warningRect,GUI.skin.GetStyle("WarningLabel"));
+				message.ToLabel().DrawLabel(warningRect,this.skin.GetStyle("WarningLabel"));
 			}
 		}
 		public virtual void DrawSpecial(Rect area,AttributeData data){
@@ -302,7 +301,7 @@ namespace Zios.Editors{
 				this.dirty = true;
 				formulaExpanded = !formulaExpanded;
 			}
-			formulaExpanded = EditorGUI.Foldout(labelRect,formulaExpanded,label,GUI.skin.GetStyle("IconFormula"));
+			formulaExpanded = EditorGUI.Foldout(labelRect,formulaExpanded,label,this.skin.GetStyle("IconFormula"));
 			Utility.SetPref<bool>(this.attribute.info.fullPath+"FormulaExpanded",formulaExpanded);
 			if(formulaExpanded){
 				float lineHeight = EditorGUIUtility.singleLineHeight+2;
@@ -325,7 +324,7 @@ namespace Zios.Editors{
 			}
 			else{
 				string message = "[expand for details]";
-				message.ToLabel().DrawLabel(this.valueRect,GUI.skin.GetStyle("WarningLabel"));
+				message.ToLabel().DrawLabel(this.valueRect,this.skin.GetStyle("WarningLabel"));
 			}
 		}
 		public virtual void DrawGroupRow(AttributeData data,int index,bool drawAdvanced){
@@ -338,7 +337,7 @@ namespace Zios.Editors{
 			this.drawer.overallHeight += lineHeight;
 			bool? operatorState = index == 0 || !drawAdvanced ? (bool?)false : (bool?)true;
 			if(data.usage == AttributeUsage.Direct){
-				GUI.Box(this.labelRect.AddX(2),"",GUI.skin.GetStyle("IconDirect"));
+				GUI.Box(this.labelRect.AddX(2),"",this.skin.GetStyle("IconDirect"));
 				this.DrawDirect(this.fullRect,this.valueRect,data,formulaLabel,drawAdvanced,operatorState);
 			}
 			else if(data.usage == AttributeUsage.Shaped){

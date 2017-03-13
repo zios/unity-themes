@@ -63,9 +63,9 @@ namespace Zios{
 			catch{Debug.LogWarning("[Utility] No scriptableObject exists named -- " + name + ".asset");}
 			return null;
 		}
-		public static Type GetSingleton<Type>() where Type : ScriptableObject{
+		public static Type GetSingleton<Type>(bool create=true) where Type : ScriptableObject{
 			var name = typeof(Type).Name;
-			return FileManager.GetAsset<Type>(name+".asset",false) ?? Utility.CreateSingleton("Assets/Settings/"+name,false).As<Type>();
+			return FileManager.GetAsset<Type>(name+".asset",true) ?? create ? Utility.CreateSingleton("Assets/Settings/"+name,false).As<Type>() : null;
 		}
 		#endif
 		//============================

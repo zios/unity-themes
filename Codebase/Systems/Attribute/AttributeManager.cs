@@ -5,7 +5,6 @@ using UnityEditor;
 #endif
 namespace Zios.Attributes{
 	using Event;
-	[InitializeOnLoad]
 	public class AttributeManager : ScriptableObject{
 		public static AttributeManager singleton;
 		public static float nextRefresh;
@@ -43,9 +42,6 @@ namespace Zios.Attributes{
 		//==============================
 		// Unity
 		//==============================
-		static AttributeManager(){
-			Utility.DelayCall(()=>AttributeManager.Get());
-		}
 		public static AttributeManager Get(){
 			AttributeManager.singleton = AttributeManager.singleton ?? Utility.GetSingleton<AttributeManager>();
 			return AttributeManager.singleton;

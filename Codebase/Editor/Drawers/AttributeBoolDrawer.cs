@@ -60,7 +60,7 @@ namespace Zios.Editors{
 					if(this.valueRect.Clicked(0) || this.valueRect.Clicked(1)){
 						this.DrawTypeMenu(dataB[dataIndex]);
 					}
-					warning.Draw(this.valueRect,"",GUI.skin.GetStyle("WarningLabel"));
+					warning.Draw(this.valueRect,"",this.skin.GetStyle("WarningLabel"));
 				}
 				else{
 					this.operatorOverride = AttributeBool.comparers[dataType+compareType].ToList();
@@ -83,7 +83,7 @@ namespace Zios.Editors{
 			GUIContent formulaLabel = new GUIContent(" ");
 			bool? operatorState = index == 0 ? (bool?)false : (bool?)true;
 			if(data.usage == AttributeUsage.Direct){
-				GUI.Box(this.labelRect.AddX(2),"",GUI.skin.GetStyle("IconDirect"));
+				GUI.Box(this.labelRect.AddX(2),"",this.skin.GetStyle("IconDirect"));
 				this.DrawDirect(this.fullRect,this.valueRect,data,formulaLabel,true,operatorState);
 			}
 			else if(data.usage == AttributeUsage.Shaped){

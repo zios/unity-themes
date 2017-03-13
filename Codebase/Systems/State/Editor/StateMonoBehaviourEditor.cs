@@ -10,22 +10,14 @@ namespace Zios.Editors.StateEditors{
 	[CustomEditor(typeof(StateMonoBehaviour),true)]
 	public class StateMonoBehaviourEditor : DataMonoBehaviourEditor{
 		public static bool isVisible = true;
-		public static bool isFixed;
-		public static bool isOneLine;
-		public GUISkin skin;
 		public Rect breakdownArea;
 		public bool breakdownVisible = true;
 		private string nameColor;
-		private string warningColor;
-		private string headerColor;
 		private string onColor;
 		private string offColor;
 		private string usedColor;
+		private float height = 0;
 		private GUIStyle labelStyle;
-		private GUIStyle warningStyle;
-		private GUIStyle boxStyle;
-		private GUIStyle columnStyle;
-		private GUIStyle containerStyle;
 		public virtual StateTable GetTable(){
 			var script = (StateMonoBehaviour)this.target;
 			return script.controller;
@@ -33,31 +25,20 @@ namespace Zios.Editors.StateEditors{
 		public override void OnInspectorGUI(){
 			if(!UnityEvent.current.IsUseful()){return;}
 			EditorUI.Reset();
-			this.SetupStyles();
+			this.SetupColors();
 			this.DrawBreakdown();
 			base.OnInspectorGUI();
 		}
-		public void SetupStyles(){
-			string skinName = EditorGUIUtility.isProSkin || Utility.GetPref<bool>("EditorTheme-Dark",false) ? "Dark" : "Light";
-			if(this.skin == null || !this.skin.name.Contains(skinName)){
-				this.skin = FileManager.GetAsset<GUISkin>("Gentleface-" + skinName + ".guiskin");
-			}
-			GUI.skin = this.skin;
-			int fixedWidth = Class.isFixed ? 200 : (Screen.width/2)-18;
-			this.headerColor = EditorGUIUtility.isProSkin || Utility.GetPref<bool>("EditorTheme-Dark",false) ? "#AAAAAA" : "#555555";
-			this.nameColor = EditorGUIUtility.isProSkin || Utility.GetPref<bool>("EditorTheme-Dark",false) ? "#CCCCCC" : "#000000";
-			this.warningColor = EditorGUIUtility.isProSkin || Utility.GetPref<bool>("EditorTheme-Dark",false) ? "#FF6666" : "#770000";
-			this.onColor = EditorGUIUtility.isProSkin || Utility.GetPref<bool>("EditorTheme-Dark",false) ? "#95e032" : "#0000AA99";
-			this.offColor = EditorGUIUtility.isProSkin || Utility.GetPref<bool>("EditorTheme-Dark",false) ? "#e03232" : "#a22e2e";
-			this.usedColor = EditorGUIUtility.isProSkin || Utility.GetPref<bool>("EditorTheme-Dark",false) ? "#E0C532" : "#8F7E21";
-			this.boxStyle = GUI.skin.GetStyle("Box");
-			this.columnStyle = GUI.skin.GetStyle("Box").FixedWidth(fixedWidth);
-			this.containerStyle = GUI.skin.GetStyle("Box").FixedWidth(fixedWidth).Background("");
-			this.warningStyle = GUI.skin.GetStyle("Label").Alignment("MiddleCenter");
-			this.labelStyle = GUI.skin.GetStyle("FixedLabel").Alignment("MiddleRight");
+		public void SetupColors(){
+			this.nameColor = EditorStyles.label.normal.textColor.ToHex();
+			this.offColor = GUI.skin.GetStyle("CN EntryError").normal.textColor.ToHex();
+			this.onColor = EditorStyles.boldLabel.normal.textColor.ToHex();
+			this.usedColor = EditorStyles.whiteLabel.normal.textColor.ToHex();
+			this.labelStyle = GUI.skin.label.RichText(true);
 		}
 		public void DrawBreakdown(){
 			string breakdown = "StateMonoBehaviourEditor-ToggleBreakdown";
+			var alias = "State-"+this.target.As<StateMonoBehaviour>().alias;
 			if(Utility.HasPref(breakdown)){
 				Class.isVisible = !Class.isVisible;
 				EditorPrefs.DeleteKey(breakdown);
@@ -75,69 +56,57 @@ namespace Zios.Editors.StateEditors{
 					hasOnData = onRows.Select(x=>x.data).First().Where(x=>x.requireOn||x.requireOff).FirstOrDefault() != null;
 				}
 				this.BeginArea();
-				bool fastInspector = Utility.GetPref<bool>("MonoBehaviourEditor-FastInspector");
-				if(fastInspector && !this.breakdownVisible){
-					GUILayout.Space(this.breakdownArea.height);
-				}
-				else{
-					EditorGUILayout.BeginHorizontal();
-					if(hasOnData){
-						EditorGUILayout.BeginVertical(this.containerStyle);
-						for(int index=0;index<onRows.Length;++index){
-							string title = index < 1 ? "<b>ON</b> When" : "<b>OR</b> When";
-							this.DrawState(onRows,index,title);
-						}
-						EditorGUILayout.EndVertical();
-						EditorGUILayout.BeginVertical(this.containerStyle);
-						if(table.advanced){
-							bool hasOffData = offRows.Select(x=>x.data).First().Where(x=>x.requireOn||x.requireOff).FirstOrDefault() != null;
-							if(!hasOffData){
-								GUIStyle boxStyle = this.columnStyle.Background("BoxWhiteHighlightRedA50.png");
-								EditorGUILayout.BeginVertical(boxStyle);
-								string phrase = "<color="+this.warningColor+">Never turns off!</color>".ToUpper();
-								phrase.ToLabel().DrawLabel(this.warningStyle);
-								EditorGUILayout.EndVertical();
-							}
-							else{
-								for(int index=0;index<offRows.Length;++index){
-									string title = index < 1 ? "<b>OFF</b> When" : "<b>OR</b> When";
-									this.DrawState(offRows,index,title);
-								}
-							}
+				EditorGUILayout.BeginHorizontal();
+				if(hasOnData){
+					var container = EditorStyles.helpBox.FixedWidth(Screen.width/2-23).Padding(20,20,8,8);
+					EditorGUILayout.BeginVertical(container,GUILayout.MinHeight(this.height));
+					for(int index=0;index<onRows.Length;++index){
+						string title = index < 1 ? "<b>ENABLED</b> if" : "<b>OR</b> if";
+						this.DrawState(onRows,index,title);
+					}
+					EditorGUILayout.EndVertical();
+					this.height = EditorUI.foldoutChanged ? 0 : this.height.Max(GUILayoutUtility.GetLastRect().height);
+					EditorGUILayout.BeginVertical(container,GUILayout.MinHeight(this.height));
+					if(table.advanced){
+						bool hasOffData = offRows.Select(x=>x.data).First().Where(x=>x.requireOn||x.requireOff).FirstOrDefault() != null;
+						if(!hasOffData){
+							string phrase = "Never turns off!".ToUpper();
+							phrase.DrawHelp("Warning");
 						}
 						else{
-							EditorGUILayout.BeginVertical(this.columnStyle);
-							string header = "<color="+this.headerColor+"><b>OFF</b> When</color>";
+							for(int index=0;index<offRows.Length;++index){
+								string title = index < 1 ? "<b>DISABLED</b> if" : "<b>OR</b> if";
+								this.DrawState(offRows,index,title);
+							}
+						}
+					}
+					else{
+						string header = "<b>DISABLED</b> if";
+						if(header.ToLabel().DrawFoldout(alias+"-Disabled",EditorStyles.foldout.RichText(true))){
 							string phrase = "<color="+this.nameColor+">@EXTERNAL</color><i> is </i><color="+this.offColor+"><b>OFF</b></color>";
-							header.ToLabel().DrawLabel(this.labelStyle);
 							phrase.ToLabel().DrawLabel(this.labelStyle);
-							EditorGUILayout.EndVertical();
 							if(onRows.SelectMany(x=>x.data).ToList().Exists(x=>x.name!="@External"&&(x.requireOn||x.requireOff))){
 								for(int index=0;index<onRows.Length;++index){
-									string title = "<b>OR</b> When";
+									string title = "<b>OR</b> if";
 									this.DrawState(onRows,index,title,true);
 								}
 							}
-						}
-						EditorGUILayout.EndVertical();
+						}	
 					}
-					else{
-						int size = Screen.width-37;
-						EditorGUILayout.BeginVertical(this.containerStyle);
-						EditorGUILayout.BeginVertical(this.columnStyle.FixedWidth(size));
-						string phrase = ("Always <b><color="+this.onColor+">On</color></b>").ToUpper();
-						phrase.ToLabel().DrawLabel(this.labelStyle.Alignment("MiddleCenter"));
-						EditorGUILayout.EndVertical();
-						EditorGUILayout.EndVertical();
-					}
-					EditorGUILayout.EndHorizontal();
-					Rect area = GUILayoutUtility.GetLastRect();
-					if(!area.IsEmpty()){
-						if(UnityEvent.current.type == EventType.Repaint){this.breakdownArea = area;}
-						if(area.Clicked(1)){this.DrawBreakdownMenu();}
-						if(UnityEvent.current.shift && area.Clicked(0)){
-							Class.isVisible = !Class.isVisible;
-						}
+					EditorGUILayout.EndVertical();
+					this.height = EditorUI.foldoutChanged ? 0 : this.height.Max(GUILayoutUtility.GetLastRect().height);
+				}
+				else{
+					string phrase = ("Always <b><color="+this.onColor+">ENABLED</color></b>").ToUpper();
+					phrase.ToLabel().DrawLabel(this.labelStyle.Alignment("MiddleCenter"));
+				}
+				EditorGUILayout.EndHorizontal();
+				Rect area = GUILayoutUtility.GetLastRect();
+				if(!area.IsEmpty()){
+					if(UnityEvent.current.type == EventType.Repaint){this.breakdownArea = area;}
+					if(area.Clicked(1)){this.DrawBreakdownMenu();}
+					if(UnityEvent.current.shift && area.Clicked(0)){
+						Class.isVisible = !Class.isVisible;
 					}
 				}
 				if(UnityEvent.current.type == EventType.Repaint && !this.breakdownArea.IsEmpty()){
@@ -148,45 +117,41 @@ namespace Zios.Editors.StateEditors{
 		public void DrawBreakdownMenu(){
 			GenericMenu menu = new GenericMenu();
 			MenuFunction hideBreakdown = ()=>{Class.isVisible = false;};
-			MenuFunction toggleFixed = ()=>{Class.isFixed = !Class.isFixed;};
-			menu.AddItem(new GUIContent("Settings/Fixed"),Class.isFixed,toggleFixed);
 			menu.AddItem(new GUIContent("Settings/Hide"),false,hideBreakdown);
 			menu.ShowAsContext();
 		}
 		public string DrawState(StateRowData[] rowData,int rowIndex,string title,bool flip=false){
 			StateRowData row = rowData[rowIndex];
-			EditorGUILayout.BeginVertical(this.boxStyle);
 			string phrase = "";
-			string header = "<color="+this.headerColor+">"+title+"</color>";
-			header.ToLabel().DrawLabel(this.labelStyle);
-			bool hasDrawn = false;
-			for(int index=0;index<row.data.Length;++index){
-				StateRequirement requirement = row.data[index];
-				if(flip && requirement.name == "@External"){continue;}
-				if(!requirement.requireOn && !requirement.requireOff && !requirement.requireUsed){continue;}
-				string name = "</i><color="+nameColor+">"+requirement.name+"</color><i>";
-				string stateName = "ON";
-				string stateColor = this.onColor;
-				string term = "is";
-				if(requirement.requireOff || (flip && requirement.requireOn)){
-					stateName = "OFF";
-					stateColor = this.offColor;
-				}
-				if(requirement.requireUsed){
-					stateName = "USED";
-					stateColor = this.usedColor;
-					term = "has";
-				}
-				string state = "</i><color="+stateColor+"><b>"+stateName+"</b></color><i>";
-				phrase = name + " " + term + " " + state;
-				if(hasDrawn){phrase = (flip ? "or " : "and ") + phrase;}
-				phrase = "<i>"+phrase.ToUpper()+"</i>";
-				if(!Class.isOneLine){
+			var alias = "State-"+this.target.As<StateMonoBehaviour>().alias;
+			if(title.ToLabel().DrawFoldout(alias+"-"+title+rowIndex.ToString()+flip.Serialize(),EditorStyles.foldout.RichText(true))){
+				EditorGUILayout.BeginVertical();
+				bool hasDrawn = false;
+				for(int index=0;index<row.data.Length;++index){
+					StateRequirement requirement = row.data[index];
+					if(flip && requirement.name == "@External"){continue;}
+					if(!requirement.requireOn && !requirement.requireOff && !requirement.requireUsed){continue;}
+					string name = "</i><color="+this.nameColor+">"+requirement.name+"</color><i>";
+					string stateName = "ON";
+					string stateColor = this.onColor;
+					if(requirement.requireOff || (flip && requirement.requireOn)){
+						stateName = "OFF";
+						stateColor = this.offColor;
+					}
+					if(requirement.requireUsed){
+						stateName = "USED";
+						stateColor = this.usedColor;
+					}
+					string state = "</i><color="+stateColor+"><b>"+stateName+"</b></color><i>";
+					phrase = name + " " + state;
+					var extraColor = "<color=" + this.nameColor.ToColor().SetAlpha(0.3f).ToHex() + ">";
+					if(hasDrawn){phrase = extraColor + (flip ? "or " : "and ") + "</color>" + phrase;}
+					phrase = "<i>"+phrase.ToUpper()+"</i>";
 					phrase.ToLabel().DrawLabel(this.labelStyle);
+					hasDrawn = true;
 				}
-				hasDrawn = true;
+				EditorGUILayout.EndVertical();
 			}
-			EditorGUILayout.EndVertical();
 			return phrase;
 		}
 	}

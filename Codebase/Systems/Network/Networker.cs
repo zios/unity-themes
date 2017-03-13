@@ -15,7 +15,6 @@ namespace Zios{
 		Data   = 0x004,
 	}
 	public enum NetworkerMode{None,Client,Server,Listen}
-	[InitializeOnLoad]
 	public class Networker : ScriptableObject{
 		public static NetworkerDebug debug;
 		public static NetworkerMode mode;
@@ -53,9 +52,6 @@ namespace Zios{
 		//==============
 		// Unity
 		//==============
-		static Networker(){
-			Utility.DelayCall(()=>Networker.Get());
-		}
 		public static Networker Get(){
 			Networker.singleton = Networker.singleton ?? Utility.GetSingleton<Networker>();
 			return Networker.singleton;

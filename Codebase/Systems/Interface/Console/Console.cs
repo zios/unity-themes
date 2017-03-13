@@ -18,7 +18,6 @@ namespace Zios.Interface{
 		public const byte openBegin = 4;
 		public const byte opening = 5;
 	}
-	[InitializeOnLoad]
 	public partial class Console : ScriptableObject{
 		public static Console singleton;
 		public GUISkin skin;
@@ -34,9 +33,6 @@ namespace Zios.Interface{
 		public int logFontSize = 15;
 		public byte logFontColor = 7;
 		public bool logFontAllowColors = true;
-		static Console(){
-			Utility.DelayCall(()=>Console.Get());
-		}
 		public void OnValidate(){
 			if(this.skin.IsNull()){
 				this.skin = FileManager.GetAsset<GUISkin>("Console.guiskin");

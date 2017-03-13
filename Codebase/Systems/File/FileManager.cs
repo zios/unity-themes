@@ -118,8 +118,10 @@ namespace Zios{
 		//===============
 		public static void Refresh(){
 			var time = FileManager.GetTime();
-			Events.Add("On Editor Update",FileManager.Monitor).SetPermanent();
-			Events.Add("On Asset Changed",FileManager.Refresh).SetPermanent();
+			if(Application.isEditor){
+				Events.Add("On Editor Update",FileManager.Monitor).SetPermanent();
+				Events.Add("On Asset Changed",FileManager.Refresh).SetPermanent();
+			}
 			FileManager.assets.Clear();
 			FileManager.assetPaths.Clear();
 			FileManager.filesByPath.Clear();

@@ -737,8 +737,8 @@ namespace Zios.Editors.SpriteEditors{
 						float lerpCutoff = material.HasProperty("lerpCutoff") ? material.GetFloat("lerpCutoff") : 0;
 						//float alpha = material.GetFloat("alpha");
 						float shadingSteps = material.HasProperty("shadingSteps") ? 1.0f / (material.GetFloat("shadingSteps")-1) : 0;
-						float packedA = Store.PackFloats(shading.r,shading.g,shading.b,shading.a);
-						float packedB = Store.PackFloats(shadingSteps,lerpCutoff,shadingIgnoreCutoff);
+						float packedA = Pack.PackFloats(shading.r,shading.g,shading.b,shading.a);
+						float packedB = Pack.PackFloats(shadingSteps,lerpCutoff,shadingIgnoreCutoff);
 						Vector2[] meshUV2 = new Vector2[4];
 						Color32[] meshColors = new Color32[4];
 						for(int index=0;index<4;++index){

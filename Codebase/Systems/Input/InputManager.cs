@@ -9,7 +9,6 @@ namespace Zios.Inputs{
 	using Event;
 	public enum InputUIState{None,SelectProfile,EditProfile}
 	public enum InputInstanceOptions{AllowCurrentlyUsedProfiles=1,AllowMultipleProfiles=2,ReassignInvalidProfiles=4}
-	[InitializeOnLoad]
 	public class InputManager : ScriptableObject{
 		public bool disabled;
 		public static InputManager singleton;
@@ -38,9 +37,6 @@ namespace Zios.Inputs{
 		private Dictionary<string,float> lastInput = new Dictionary<string,float>();
 		private int uiGroupIndex;
 		private int uiIndex;
-		static InputManager(){
-			Utility.DelayCall(()=>InputManager.Get());
-		}
 		public static InputManager Get(){
 			InputManager.singleton = InputManager.singleton ?? Utility.GetSingleton<InputManager>();
 			return InputManager.singleton;
