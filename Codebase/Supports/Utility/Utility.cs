@@ -121,8 +121,21 @@ namespace Zios{
 			if(!Application.isPlaying){UnityObject.DestroyImmediate(target,destroyAssets);}
 			else{UnityObject.Destroy(target);}
 		}
+		public static List<Type> GetTypes<T>(){
+			var assemblies = ObjectExtension.GetAssemblies();
+			var matches = new List<Type>();
+			foreach(var assembly in assemblies){
+				var types = assembly.GetTypes();
+				foreach(var type in types){
+					if(type.IsSubclassOf(typeof(T))){
+						matches.Add(type);
+					}
+				}
+			}
+			return matches;
+		}
 		public static Type GetType(string path){
-			Assembly[] assemblies = AppDomain.CurrentDomain.GetAssemblies();
+			var assemblies = ObjectExtension.GetAssemblies();
 			foreach(var assembly in assemblies){
 				Type[] types = assembly.GetTypes();
 				foreach(Type type in types){

@@ -65,7 +65,7 @@ namespace Zios{
 		}
 		public static Type GetSingleton<Type>(bool create=true) where Type : ScriptableObject{
 			var name = typeof(Type).Name;
-			return FileManager.GetAsset<Type>(name+".asset",true) ?? create ? Utility.CreateSingleton("Assets/Settings/"+name,false).As<Type>() : null;
+			return FileManager.GetAsset<Type>(name+".asset",false) ?? create ? Utility.CreateSingleton("Assets/Settings/"+name).As<Type>() : null;
 		}
 		#endif
 		//============================

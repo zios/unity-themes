@@ -79,9 +79,18 @@ namespace Zios.Event{
 			Events.listeners.RemoveAll(x=>x.name!="On Events Reset"&&(!x.permanent||x.occurrences==0));
 			Action Repair = ()=>{
 				var main = Locate.GetScenePath("@Main");
-				main.hideFlags = HideFlags.HideAndDontSave;
 				if(main.GetComponent<EventDetector>().IsNull()){
 					main.AddComponent<EventDetector>();
+					main.hideFlags = HideFlags.HideInHierarchy;
+				}
+				#if UNITY_THEMES
+				main.hideFlags = HIdeFlags.HideAndDontSave;
+				#endif
+				if(!FileManager.Exists("Assets/Settings")){
+					Debug.Log("[Events] -- Rebuilding Settings assets");
+					foreach(var item in Utility.GetTypes<Singleton>()){
+						item.CallMethod("Get");
+					}
 				}
 				foreach(var item in FileManager.FindAll("Settings/*.asset",false)){
 					item.GetAsset<Singleton>();

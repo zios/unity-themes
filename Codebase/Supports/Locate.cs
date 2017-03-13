@@ -130,8 +130,8 @@ namespace Zios{
 			GameObject current = null;
 			Transform parent = null;
 			foreach(string part in parts){
-				path = path + "/" + part;
-				current = Locate.Find(path);
+				path = path.IsEmpty() ? part : path + "/" + part;
+				current = GameObject.Find(path);
 				if(current.IsNull()){
 					if(!autocreate){
 						return null;

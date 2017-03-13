@@ -18,7 +18,7 @@ namespace Zios{
 		public static List<PoolPrefab> prefabs = new List<PoolPrefab>();
 		public static Dictionary<string,Instance[]> instances = new Dictionary<string,Instance[]>();
 		static Pool(){
-			if(Application.isPlaying){
+			if(Application.isPlaying && Pool.prefabs.Count > 0){
 				GameObject empty = new GameObject("@Null");
 				empty.transform.parent = Locate.GetScenePath("@Instances").transform;
 				Pool.empty = empty.AddComponent<Instance>();

@@ -17,6 +17,7 @@ namespace Zios{
 		public static bool monitor = true;
 		private static bool debug = false;
 		private static bool clock = false;
+		private static bool needsSave = false;
 		private static bool fullScan = true;
 		private static float lastMonitor;
 		private static Dictionary<string,FileMonitor> monitors = new Dictionary<string,FileMonitor>();
@@ -82,6 +83,12 @@ namespace Zios{
 			}
 			if(FileManager.clock){Debug.Log("[FileManager] : Load cache complete -- " + (FileManager.GetTime()-time) + " seconds.");}
 		}
+		public static void CheckSave(){
+			if(FileManager.needsSave){
+				FileManager.needsSave = false;
+				FileManager.Save();
+			}
+		}
 		public static void Save(){
 			string lastPath = ")@#(*$";
 			var time = FileManager.GetTime();
@@ -121,6 +128,7 @@ namespace Zios{
 			if(Application.isEditor){
 				Events.Add("On Editor Update",FileManager.Monitor).SetPermanent();
 				Events.Add("On Asset Changed",FileManager.Refresh).SetPermanent();
+				Events.Add("On Mode Changed",FileManager.CheckSave).SetPermanent();
 			}
 			FileManager.assets.Clear();
 			FileManager.assetPaths.Clear();
@@ -274,6 +282,7 @@ namespace Zios{
 				Directory.CreateDirectory(path);
 			}
 			FileManager.BuildCache(data);
+			FileManager.needsSave = true;
 			return data;
 		}
 		public static void Copy(string path,string destination){

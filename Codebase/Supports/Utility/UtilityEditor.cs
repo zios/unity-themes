@@ -127,8 +127,10 @@ namespace Zios{
 		}
 		[MenuItem("Zios/Unhide GameObjects")]
 		public static void UnhideAll(){
-			foreach(var target in Locate.GetSceneObjects()){
-				target.hideFlags = HideFlags.None;
+			foreach(var target in Resources.FindObjectsOfTypeAll<GameObject>()){
+				if(!target.name.ContainsAny("SceneCamera","SceneLight")){
+					target.hideFlags = HideFlags.None;
+				}
 			}
 		}
 		#endif
