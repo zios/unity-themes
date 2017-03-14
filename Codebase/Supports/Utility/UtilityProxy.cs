@@ -45,6 +45,7 @@ namespace Zios{
 			BuildPipeline.BuildAssetBundles("Assets/",BuildAssetBundleOptions.None,BuildTarget.StandaloneWindows64);
 		}
 		[MenuItem("Zios/Create Singleton")]
+		#endif
 		public static ScriptableObject CreateSingleton(){
 			var path = EditorUtility.SaveFilePanelInProject("Create Singleton","","","");
 			return Utility.CreateSingleton(path);
@@ -65,9 +66,8 @@ namespace Zios{
 		}
 		public static Type GetSingleton<Type>(bool create=true) where Type : ScriptableObject{
 			var name = typeof(Type).Name;
-			return FileManager.GetAsset<Type>(name+".asset",false) ?? create ? Utility.CreateSingleton("Assets/Settings/"+name).As<Type>() : null;
+			return FileManager.GetAsset<Type>(name+".asset",false) ?? ScriptableObject.FindObjectOfType<Type>() ?? create ? Utility.CreateSingleton("Assets/Settings/"+name).As<Type>() : null;
 		}
-		#endif
 		//============================
 		// PrefabUtility
 		//============================
@@ -109,6 +109,7 @@ namespace Zios{
 		// Undo
 		//============================
 		public static void RecordObject(UnityObject target,string name){
+			if(target.IsNull()){return;}
 			Undo.RecordObject(target,name);
 		}
 		public static void RegisterCompleteObjectUndo(UnityObject target,string name){

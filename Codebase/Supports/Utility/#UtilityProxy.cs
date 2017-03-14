@@ -13,7 +13,14 @@ namespace Zios{
 		public static void ReloadScripts(){}
 		public static void BuildAssetBundles(){}
 		public static ScriptableObject CreateSingleton(){return null;}
-		public static ScriptableObject CreateSingleton(string path,bool createPath=true){return null;}
+		public static ScriptableObject CreateSingleton(string path,bool createPath=true){
+			var name = path.GetPathTerm();
+			return ScriptableObject.CreateInstance(name)
+		}
+		public static Type GetSingleton<Type>(bool create=true) where Type : ScriptableObject{
+			var name = typeof(Type).Name;
+			return ScriptableObject.FindObjectOfType<Type>();
+		}
 		//============================
 		// PrefabUtility
 		//============================
