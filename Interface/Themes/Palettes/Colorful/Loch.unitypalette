@@ -13,7 +13,7 @@
 	HighlightButton     : #00000080
 	HighlightIcons      : #00FFB5  
 	Scrollbar           : #203F39  
-	ScrollbarThumb      : #00FFB52A
+	ScrollbarThumb      : #307D67  
 	Header              : #00FFB52A
 
 [NonTextured]
@@ -37,4 +37,4 @@
 	Cursor              : #245F4E   : Highlight
 	Selection           : #245F4E80
 	Curve               : #368E75   : Highlight : 1.5
-	CurveBackground     : #232729   : Border    : 0.5
+	CurveBackground     : #232629   : Border    : 0.5
