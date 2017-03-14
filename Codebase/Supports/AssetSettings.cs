@@ -3,7 +3,7 @@ namespace Zios{
 	[InitializeOnLoad]
 	public static class AssetSettings{
 		static AssetSettings(){
-			#if !UNITY_THEMES
+			#if UNITY_EDITOR && !UNITY_THEMES
 			if(!FileManager.Exists("Assets/Settings")){
 				Debug.Log("[AssetSettings] : Rebuilding missing Settings folder assets.");
 				foreach(var item in Utility.GetTypes<Singleton>()){

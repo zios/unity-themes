@@ -77,6 +77,7 @@ namespace Zios.Event{
 			Events.callers.Clear();
 			Events.cache.Clear();
 			Events.listeners.RemoveAll(x=>x.name!="On Events Reset"&&(!x.permanent||x.occurrences==0));
+			#if UNITY_EDITOR
 			Action Repair = ()=>{
 				var main = Locate.GetScenePath("@Main");
 				if(main.GetComponent<EventDetector>().IsNull()){
@@ -84,11 +85,12 @@ namespace Zios.Event{
 					main.hideFlags = HideFlags.HideInHierarchy;
 				}
 				#if UNITY_THEMES
-				main.hideFlags = HIdeFlags.HideAndDontSave;
+				main.hideFlags = HideFlags.HideAndDontSave;
 				#endif
 			};
 			Repair();
 			Events.Add("On Destroy",()=>Utility.DelayCall(Repair));
+			#endif
 			foreach(var listener in Events.listeners){
 				var scope = Events.cache.AddNew(listener.target).AddNew(listener.name);
 				scope[listener.method] = listener;
