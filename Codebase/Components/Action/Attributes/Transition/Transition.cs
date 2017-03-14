@@ -7,14 +7,11 @@ namespace Zios.Actions.TransitionComponents{
 	public enum TransitionType{Time,Speed};
 	public enum TransitionState{Idle,Acceleration,Travel,Deceleration};
 	[Serializable]
-	public class Transition{
+	public class TransitionBase{
 		//public TransitionType type;
-		public float time = 0.5f;
-		public float speed = 3;
 		[Advanced] public AnimationCurve acceleration = AnimationCurve.EaseInOut(0,0,1,1);
 		[Advanced] public AnimationCurve deceleration = AnimationCurve.EaseInOut(1,1,1,1);
 		[NonSerialized] public TransitionState state;
-		[HideInInspector] public float delta = 0;
 		[HideInInspector] public UnityObject parent;
 		[HideInInspector] public string path;
 		protected float startValue;
@@ -24,31 +21,28 @@ namespace Zios.Actions.TransitionComponents{
 		protected float totalDistance;
 		protected float previousGoal;
 		protected bool finished;
-		public Transition(){}
-		public Transition(Transition transition){
-			this.time = transition.time;
-			this.speed = transition.speed;
+		public TransitionBase(){}
+		public TransitionBase(Transition transition){
 			this.acceleration = new AnimationCurve().Deserialize(transition.acceleration.Serialize());
 			this.deceleration = new AnimationCurve().Deserialize(transition.deceleration.Serialize());
 		}
-		public Transition(float time,float speed){
-			this.time = time;
-			this.speed = speed;
-		}
+		public virtual float GetTime(){return 0;}
+		public virtual float GetSpeed(){return 0;}
+		public virtual float GetDelta(){return 0;}
+		public virtual void SetDelta(float value){}
+		public virtual void SetTime(float value){}
+		public virtual void SetSpeed(float value){}
 		public virtual void Setup(string path,UnityObject parent){
 			this.path = path;
 			this.parent = parent;
 		}
-		public virtual void SetDelta(float value){this.delta = value;}
-		public virtual void SetTime(float value){this.time = value;}
-		public virtual void SetSpeed(float value){this.speed = value;}
 		public int Step(int current,int goal){
 			return (int)this.Step((float)current,(float)goal);
 		}
 		public float Step(float current,float goal){
 			float output = 0;
-			float speed = this.speed;
-			float time = this.time;
+			float speed = this.GetSpeed();
+			float time = this.GetTime();
 			if(time == 0 && speed == 0){
 				current = goal;
 				output = goal;
@@ -102,7 +96,7 @@ namespace Zios.Actions.TransitionComponents{
 			}
 			speed *= this.GetTimeOffset();
 			this.SetDelta((current.MoveTowards(goal,speed) - current));
-			output = current + this.delta;
+			output = current + this.GetDelta();
 			return output;
 		}
 		public float GetTimeOffset(){
@@ -113,10 +107,31 @@ namespace Zios.Actions.TransitionComponents{
 		}
 	}
 	[Serializable]
-	public class AttributeTransition : Transition{
-		new public AttributeFloat time = 0.5f;
-		new public AttributeFloat speed = 3;
-		[HideInInspector] new public AttributeFloat delta = 0;
+	public class Transition : TransitionBase{
+		public float time = 0.5f;
+		public float speed = 3;
+		[HideInInspector] public float delta = 0;
+		public Transition(){}
+		public Transition(Transition transition) : base(transition){
+			this.time = transition.time;
+			this.speed = transition.speed;
+		}
+		public Transition(float time,float speed){
+			this.time = time;
+			this.speed = speed;
+		}
+		public override float GetTime(){return this.time;}
+		public override float GetSpeed(){return this.speed;}
+		public override float GetDelta(){return this.delta;}
+		public override void SetDelta(float value){this.delta = value;}
+		public override void SetTime(float value){this.time = value;}
+		public override void SetSpeed(float value){this.speed = value;}
+	}
+	[Serializable]
+	public class AttributeTransition : TransitionBase{
+		public AttributeFloat time = 0.5f;
+		public AttributeFloat speed = 3;
+		[HideInInspector] public AttributeFloat delta = 0;
 		public AttributeTransition(){}
 		public AttributeTransition(AttributeTransition transition){
 			this.time.delayedValue = transition.time;
@@ -137,6 +152,9 @@ namespace Zios.Actions.TransitionComponents{
 			Events.Register(path+"/Start",parent);
 			Events.Register(path+"/End",parent);
 		}
+		public override float GetTime(){return this.time.Get();}
+		public override float GetSpeed(){return this.speed.Get();}
+		public override float GetDelta(){return this.delta.Get();}
 		public override void SetDelta(float value){this.delta.Set(value);}
 		public override void SetTime(float value){this.time.Set(value);}
 		public override void SetSpeed(float value){this.speed.Set(value);}
