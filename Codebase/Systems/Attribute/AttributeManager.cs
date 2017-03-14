@@ -96,6 +96,7 @@ namespace Zios.Attributes{
 				//if(this.refreshOnHierarchyChanged){Event.Add("On Hierarchy Changed",AttributeManager.PerformRefresh);}
 				if(this.refreshOnComponentsChanged){Events.Add("On Components Changed",AttributeManager.PerformRefresh);}
 			}
+			Events.Add("On Level Was Loaded",this.OnEnable);
 			Events.Add("On Editor Update",this.EditorUpdate);
 			Events.Add("On Validate",this.SetupEvents,this);
 		}
