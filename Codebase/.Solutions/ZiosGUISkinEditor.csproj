@@ -32,6 +32,8 @@
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="..\Containers\Container.cs" />
+    <Compile Include="..\Containers\Singleton.cs" />
+    <Compile Include="..\Containers\Store.cs" />
     <Compile Include="..\Extensions\%40Unity\Color.cs" />
     <Compile Include="..\Extensions\%40Unity\ComponentExtensions.cs" />
     <Compile Include="..\Extensions\%40Unity\EventExtensions.cs" />
@@ -43,6 +45,7 @@
     <Compile Include="..\Extensions\%40Unity\Rect.cs" />
     <Compile Include="..\Extensions\%40Unity\RectOffset.cs" />
     <Compile Include="..\Extensions\%40Unity\Texture.cs" />
+    <Compile Include="..\Extensions\%40Unity\UnityObject.cs" />
     <Compile Include="..\Extensions\%40Unity\Vector3.cs" />
     <Compile Include="..\Extensions\%40Unity\Vector4.cs" />
     <Compile Include="..\Extensions\%40Unity\Editor\EditorWindow.cs" />
@@ -74,9 +77,8 @@
     <Compile Include="..\Extensions\Type.cs" />
     <Compile Include="..\Supports\Button.cs" />
     <Compile Include="..\Supports\Colors.cs" />
-    <Compile Include="..\Supports\Hook.cs" />
     <Compile Include="..\Supports\Locate.cs" />
-    <Compile Include="..\Supports\Store.cs" />
+    <Compile Include="..\Supports\Pack.cs" />
     <Compile Include="..\Supports\Utility\Utility.cs" />
     <Compile Include="..\Supports\Utility\UtilityEditor.cs" />
     <Compile Include="..\Supports\Utility\UtilityPref.cs" />
@@ -85,7 +87,7 @@
     <Compile Include="..\System Attributes\Internal.cs" />
     <Compile Include="..\System Attributes\NotSerialized.cs" />
     <Compile Include="..\System Attributes\Unity\InitializeOnLoad.cs" />
-    <Compile Include="..\Systems\Event\Event.cs" />
+    <Compile Include="..\Systems\Event\Events.cs" />
     <Compile Include="..\Systems\Event\EventDetector.cs" />
     <Compile Include="..\Systems\Event\EventListener.cs" />
     <Compile Include="..\Systems\Event\EventStepper.cs" />
@@ -94,6 +96,7 @@
     <Compile Include="..\Systems\Interface\EditorUI\EditorUI.cs" />
     <Compile Include="..\Systems\Interface\EditorUI\EditorGUI.cs" />
     <Compile Include="..\Systems\Interface\EditorUI\EditorGUILayout.cs" />
+    <Compile Include="..\Systems\Interface\Style\Style.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

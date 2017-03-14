@@ -1,8 +1,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26206.0
+VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{5DFB3C2D-10DE-4B11-98DA-E13A291B1DA9}") = "ZiosGUISkinEditor", "ZiosGUISkinEditor.csproj", "{9A8DEC36-BA9D-4780-8B37-13F015CBA49D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZiosGUISkinEditor", "ZiosGUISkinEditor.csproj", "{9A8DEC36-BA9D-4780-8B37-13F015CBA49D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
