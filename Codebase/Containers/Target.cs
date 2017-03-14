@@ -49,7 +49,7 @@ namespace Zios.Containers{
 		public void Setup(string path,UnityObject parent){
 			this.disabled = false;
 			if(parent.Is<Component>()){
-				var component = this.parent.As<Component>();
+				var component = parent.As<Component>();
 				this.path = component.GetPath() + "/" + path;
 				this.parent = parent;
 				if(!Application.isPlaying){
