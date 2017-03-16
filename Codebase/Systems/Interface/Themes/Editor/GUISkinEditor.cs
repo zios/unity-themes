@@ -52,7 +52,7 @@ namespace Zios.Editors{
 			GUI.changed = false;
 			this.drawn = false;
 			this.count = 0;
-			this.fragments = FileManager.GetAssets<GUISkin>(this.skin.name+"#*.guiSkin",false);
+			this.fragments = FileManager.GetAssets<GUISkin>(this.skin.name+"#*.guiskin",false);
 			this.ProcessMenu();
 			this.DrawSearch();
 			//this.DrawSplit();

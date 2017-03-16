@@ -9,7 +9,7 @@ namespace Zios.Interface{
 		public static void SyncSkinNames(){Theme.SyncSkinNames("");}
 		public static void SyncSkinNames(string path=""){
 			path = path.IsEmpty() ? EditorUtility.SaveFolderPanel("Sync Names [GUISkin]",Theme.storagePath,"").GetAssetPath() : path;
-			var files = FileManager.FindAll(path+"/*.guiSkin");
+			var files = FileManager.FindAll(path+"/*.guiskin");
 			foreach(var file in files){
 				var stylesSkin = file.GetAsset<GUISkin>().customStyles;
 				var stylesReflected = file.name.Contains(".") ? Theme.ReflectStyles(file.name) : null;
@@ -60,7 +60,7 @@ namespace Zios.Interface{
 		public static void LocalizeAssets(){Theme.LocalizeAssets("");}
 		public static void LocalizeAssets(string path="",bool includeBuiltin=false){
 			path = path.IsEmpty() ? EditorUtility.SaveFolderPanel("Localize Theme [Assets]",Theme.storagePath,"").GetAssetPath() : path;
-			var files = FileManager.FindAll(path+"/*.guiSkin");
+			var files = FileManager.FindAll(path+"/*.guiskin");
 			foreach(var file in files){
 				string assetPath = "";
 				var skin = file.GetAsset<GUISkin>();

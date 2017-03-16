@@ -24,7 +24,7 @@ namespace Zios.Editors{
 		}
 		public void OnGUI(){
 			Theme.Apply("Grayson");
-			GUI.skin = FileManager.GetAsset<GUISkin>("EditorStyles-Grayson.guiSkin");
+			GUI.skin = FileManager.GetAsset<GUISkin>("EditorStyles-Grayson.guiskin");
 			var headerStyle = Style.Get("m_InspectorTitlebar").Padding(32,0,4,0);
 			var containerStyle = Style.Get("m_InspectorDefaultMargins");
 			var cursorArea = new Rect(UnityEvent.current.mousePosition.x,UnityEvent.current.mousePosition.y,0,0);

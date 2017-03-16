@@ -155,7 +155,7 @@ namespace Zios.Interface{
 		public static void DumpAssets(){ThemeSkinset.DumpAssets("");}
 		public static void DumpAssets(string path,bool includeBuiltin=false){
 			path = path.IsEmpty() ? EditorUtility.SaveFolderPanel("Dump GUISkin Assets",Theme.storagePath,"").GetAssetPath() : path;
-			var files = FileManager.FindAll(path+"/*.guiSkin");
+			var files = FileManager.FindAll(path+"/*.guiskin");
 			FileManager.Create(path+"/Background");
 			FileManager.Create(path+"/Font");
 			AssetDatabase.StartAssetEditing();
