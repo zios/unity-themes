@@ -14,7 +14,7 @@ namespace Zios.Interface{
 		public static Type Draw<Type>(Func<Type> method,bool indention=true){
 			int indentValue = EditorGUI.indentLevel;
 			indention = EditorUI.allowIndention && indention;
-			if(indention && EditorUI.space!=0){GUILayout.Space(EditorUI.space);}
+			if(EditorUI.space!=0){GUILayout.Space(EditorUI.space);}
 			if(!indention){EditorGUI.indentLevel = 0;}
 			bool wasChanged = GUI.changed;
 			GUI.changed = false;

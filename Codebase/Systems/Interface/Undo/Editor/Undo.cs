@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using Zios.Containers;
 namespace Zios.Interface{
-	public class Undo : ScriptableObject{
+	public class Undo : Singleton{
 		public static Undo instance;
 		public static int position = -1;
 		public static Hierarchy<Type,string,object> snapshot = new Hierarchy<Type,string,object>();

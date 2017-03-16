@@ -34,8 +34,8 @@ namespace Zios{
 		public static T Find<T>(this T[] current,Predicate<T> predicate){
 			return Array.Find(current,predicate);
 		}
-		public static void Clear<T>(this T[] current){
-			Array.Clear(current,0,current.Length);
+		public static T[] Clear<T>(this T[] current){
+			return new T[0]{};
 		}
 		public static T[] Add<T>(this T[] current,T element){
 			T[] extra = new T[]{element};

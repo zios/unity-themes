@@ -8,38 +8,38 @@ using UnityEngine;
 using UnityObject = UnityEngine.Object;
 namespace Zios{
 	#if UNITY_EDITOR
-	using Events;
+	using Event;
 	using UnityEditor;
 	public class UtilityListener : AssetPostprocessor{
 		public static void OnPostprocessAllAssets(string[] imported,string[] deleted,string[] movedTo, string[] movedFrom){
 			bool playing = EditorApplication.isPlaying || EditorApplication.isPlayingOrWillChangePlaymode;
-			if(!playing){Event.Call("On Asset Changed");}
+			if(!playing){Events.Call("On Asset Changed");}
 		}
 	}
 	public class UtilityModificationListener : AssetModificationProcessor{
 		public static string[] OnWillSaveAssets(string[] paths){
 			//foreach(string path in paths){Debug.Log("Saving Changes : " + path);}
-			if(paths.Exists(x=>x.Contains(".unity"))){Event.Call("On Scene Saving");}
-			Event.Call("On Asset Saving");
-			Event.Call("On Asset Modifying");
+			if(paths.Exists(x=>x.Contains(".unity"))){Events.Call("On Scene Saving");}
+			Events.Call("On Asset Saving");
+			Events.Call("On Asset Modifying");
 			return paths;
 		}
 		public static string OnWillCreateAssets(string path){
 			Debug.Log("Creating : " + path);
-			Event.Call("On Asset Creating");
-			Event.Call("On Asset Modifying");
+			Events.Call("On Asset Creating");
+			Events.Call("On Asset Modifying");
 			return path;
 		}
 		public static string[] OnWillDeleteAssets(string[] paths,RemoveAssetOptions option){
 			foreach(string path in paths){Debug.Log("Deleting : " + path);}
-			Event.Call("On Asset Deleting");
-			Event.Call("On Asset Modifying");
+			Events.Call("On Asset Deleting");
+			Events.Call("On Asset Modifying");
 			return paths;
 		}
 		public static string OnWillMoveAssets(string path,string destination){
 			Debug.Log("Moving : " + path + " to " + destination);
-			Event.Call("On Asset Moving");
-			Event.Call("On Asset Modifying");
+			Events.Call("On Asset Moving");
+			Events.Call("On Asset Modifying");
 			return path;
 		}
 	}
@@ -125,14 +125,13 @@ namespace Zios{
 				file.WriteText(output.ToString().TrimEnd(null));
 			}
 		}
-		[MenuItem("Zios/Reload Scripts &#R")]
-		public static void ReloadScripts(){
-			Debug.Log("[Utility] : Forced Reload Scripts.");
-			typeof(UnityEditorInternal.InternalEditorUtility).CallMethod("RequestScriptReload");
-		}
-		[MenuItem("Assets/Build AssetBundles")]
-		public static void BuildAssetBundles(){
-			BuildPipeline.BuildAssetBundles("Assets/",BuildAssetBundleOptions.None,BuildTarget.StandaloneWindows64);
+		[MenuItem("Zios/Unhide GameObjects")]
+		public static void UnhideAll(){
+			foreach(var target in Resources.FindObjectsOfTypeAll<GameObject>()){
+				if(!target.name.ContainsAny("SceneCamera","SceneLight","InternalIdentityTransform")){
+					target.hideFlags = HideFlags.None;
+				}
+			}
 		}
 		#endif
 	}

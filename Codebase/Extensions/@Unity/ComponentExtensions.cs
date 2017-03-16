@@ -20,8 +20,8 @@ namespace Zios{
 			if(includeSelf){path += current.GetAlias();}
 			return path;
 		}
-		public static bool IsPrefab(this Component current){
-			return !current.IsNull() && current.gameObject.IsPrefab();
+		public static bool InPrefabFile(this Component current){
+			return !current.IsNull() && current.gameObject.IsPrefabFile();
 		}
 		public static bool IsEnabled(this Component current){
 			bool enabled = !current.IsNull() && current.gameObject.activeInHierarchy;

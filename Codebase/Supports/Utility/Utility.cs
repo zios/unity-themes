@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityObject = UnityEngine.Object;
 using UnityAction = UnityEngine.Events.UnityAction;
 namespace Zios{
-	using Events;
+	using Event;
 	#if UNITY_EDITOR
 	using UnityEditor;
 	using CallbackFunction = UnityEditor.EditorApplication.CallbackFunction;
@@ -23,54 +23,54 @@ namespace Zios{
 		private static Dictionary<string,Type> internalTypes = new Dictionary<string,Type>();
 		static Utility(){Utility.Setup();}
 		public static void Setup(){
-			Event.Add("On Late Update",(Method)Utility.CheckLoaded);
-			Event.Add("On Late Update",(Method)Utility.CheckDelayed);
+			Events.Add("On Late Update",(Method)Utility.CheckLoaded);
+			Events.Add("On Late Update",(Method)Utility.CheckDelayed);
 			#if UNITY_EDITOR
-			Event.Register("On Global Event");
-			Event.Register("On Editor Update");
-			Event.Register("On Prefab Changed");
-			Event.Register("On Lightmap Baked");
-			Event.Register("On Windows Reordered");
-			Event.Register("On Hierarchy Changed");
-			Event.Register("On Asset Changed");
-			Event.Register("On Asset Saving");
-			Event.Register("On Asset Creating");
-			Event.Register("On Asset Deleting");
-			Event.Register("On Asset Moving");
-			Event.Register("On Scene Loaded");
-			Event.Register("On Editor Scene Loaded");
-			Event.Register("On Editor Quit");
-			Event.Register("On Mode Changed");
-			Event.Register("On Enter Play");
-			Event.Register("On Exit Play");
-			Event.Register("On Undo Flushing");
-			Event.Register("On Undo");
-			Event.Register("On Redo");
+			Events.Register("On Global Event");
+			Events.Register("On Editor Update");
+			Events.Register("On Prefab Changed");
+			Events.Register("On Lightmap Baked");
+			Events.Register("On Windows Reordered");
+			Events.Register("On Hierarchy Changed");
+			Events.Register("On Asset Changed");
+			Events.Register("On Asset Saving");
+			Events.Register("On Asset Creating");
+			Events.Register("On Asset Deleting");
+			Events.Register("On Asset Moving");
+			Events.Register("On Scene Loaded");
+			Events.Register("On Editor Scene Loaded");
+			Events.Register("On Editor Quit");
+			Events.Register("On Mode Changed");
+			Events.Register("On Enter Play");
+			Events.Register("On Exit Play");
+			Events.Register("On Undo Flushing");
+			Events.Register("On Undo");
+			Events.Register("On Redo");
 			#if UNITY_5
-			Camera.onPostRender += (Camera camera)=>Event.Call("On Camera Post Render",camera);
-			Camera.onPreRender += (Camera camera)=>Event.Call("On Camera Pre Render",camera);
-			Camera.onPreCull += (Camera camera)=>Event.Call("On Camera Pre Cull",camera);
-			Lightmapping.completed += ()=>Event.Call("On Lightmap Baked");
+			Camera.onPostRender += (Camera camera)=>Events.Call("On Camera Post Render",camera);
+			Camera.onPreRender += (Camera camera)=>Events.Call("On Camera Pre Render",camera);
+			Camera.onPreCull += (Camera camera)=>Events.Call("On Camera Pre Cull",camera);
+			Lightmapping.completed += ()=>Events.Call("On Lightmap Baked");
 			#endif
-			Undo.willFlushUndoRecord += ()=>Event.Call("On Undo Flushing");
-			Undo.undoRedoPerformed += ()=>Event.Call("On Undo");
-			Undo.undoRedoPerformed += ()=>Event.Call("On Redo");
-			PrefabUtility.prefabInstanceUpdated += (GameObject target)=>Event.Call("On Prefab Changed",target);
-			EditorApplication.projectWindowChanged += ()=>Event.Call("On Project Changed");
-			EditorApplication.playmodeStateChanged += ()=>Event.Call("On Mode Changed");
+			Undo.willFlushUndoRecord += ()=>Events.Call("On Undo Flushing");
+			Undo.undoRedoPerformed += ()=>Events.Call("On Undo");
+			Undo.undoRedoPerformed += ()=>Events.Call("On Redo");
+			PrefabUtility.prefabInstanceUpdated += (GameObject target)=>Events.Call("On Prefab Changed",target);
+			EditorApplication.projectWindowChanged += ()=>Events.Call("On Project Changed");
 			EditorApplication.playmodeStateChanged += ()=>{
+				Events.Call("On Mode Changed");
 				bool changing = EditorApplication.isPlayingOrWillChangePlaymode;
 				bool playing = Application.isPlaying;
-				if(changing && !playing){Event.Call("On Enter Play");}
-				if(!changing && playing){Event.Call("On Exit Play");}
+				if(changing && !playing){Events.Call("On Enter Play");}
+				if(!changing && playing){Events.Call("On Exit Play");}
 			};
-			EditorApplication.hierarchyWindowChanged += ()=>Event.DelayCall("On Hierarchy Changed",0.25f);
-			EditorApplication.update += ()=>Event.Call("On Editor Update");
+			EditorApplication.hierarchyWindowChanged += ()=>Events.DelayCall("On Hierarchy Changed",0.25f);
+			EditorApplication.update += ()=>Events.Call("On Editor Update");
 			EditorApplication.update += ()=>Utility.CheckLoaded(true);
 			EditorApplication.update += ()=>Utility.CheckDelayed(true);
-			UnityAction editorQuitEvent = new UnityAction(()=>Event.Call("On Editor Quit"));
-			CallbackFunction windowEvent = ()=>Event.Call("On Window Reordered");
-			CallbackFunction globalEvent = ()=>Event.Call("On Global Event");
+			UnityAction editorQuitEvent = new UnityAction(()=>Events.Call("On Editor Quit"));
+			CallbackFunction windowEvent = ()=>Events.Call("On Window Reordered");
+			CallbackFunction globalEvent = ()=>Events.Call("On Global Event");
 			var windowsReordered = typeof(EditorApplication).GetVariable<CallbackFunction>("windowsReordered");
 			typeof(EditorApplication).SetVariable("windowsReordered",windowsReordered+windowEvent);
 			var globalEventHandler = typeof(EditorApplication).GetVariable<CallbackFunction>("globalEventHandler");
@@ -85,7 +85,7 @@ namespace Zios{
 			if(!editor && !Application.isPlaying){return;}
 			if(Time.realtimeSinceStartup < 0.5 && Utility.sceneCheck == 0){
 				var term = editor ? " Editor" : "";
-				Event.Call("On" + term + " Scene Loaded");
+				Events.Call("On" + term + " Scene Loaded");
 				Utility.sceneCheck = 1;
 			}
 			if(Time.realtimeSinceStartup > Utility.sceneCheck){
@@ -121,8 +121,21 @@ namespace Zios{
 			if(!Application.isPlaying){UnityObject.DestroyImmediate(target,destroyAssets);}
 			else{UnityObject.Destroy(target);}
 		}
+		public static List<Type> GetTypes<T>(){
+			var assemblies = ObjectExtension.GetAssemblies();
+			var matches = new List<Type>();
+			foreach(var assembly in assemblies){
+				var types = assembly.GetTypes();
+				foreach(var type in types){
+					if(type.IsSubclassOf(typeof(T))){
+						matches.Add(type);
+					}
+				}
+			}
+			return matches;
+		}
 		public static Type GetType(string path){
-			Assembly[] assemblies = AppDomain.CurrentDomain.GetAssemblies();
+			var assemblies = ObjectExtension.GetAssemblies();
 			foreach(var assembly in assemblies){
 				Type[] types = assembly.GetTypes();
 				foreach(Type type in types){

@@ -228,7 +228,7 @@ namespace Zios.Interface{
 			if(previous != state){
 				Utility.SetPref<bool>(name,state);
 				EditorUI.foldoutChanged = true;
-				GUI.FocusControl("");
+				//GUI.FocusControl("");
 			}
 			GUI.changed = lastState;
 			return state;
@@ -253,6 +253,34 @@ namespace Zios.Interface{
 			}
 			return state;
 		}
+		public static int DrawPrompt(this UnityLabel current,ref string field,GUIStyle titleStyle=null,GUIStyle inputStyle=null){
+			int result = 0;
+			if(Button.EventKeyDown("KeypadEnter") || Button.EventKeyDown("Return")){result = 1;}
+			if(Button.EventKeyDown("Escape")){result = -1;}
+			if(titleStyle == null){titleStyle = Style.Get("Prompt","DialogQuestion");}
+			if(inputStyle == null){inputStyle = Style.Get("Prompt","DialogInput");}
+			float width = (Screen.width/2).Max(150);
+			Rect full = new Rect(0,0,Screen.width,Screen.height);
+			Rect center = new Rect(Screen.width/2,Screen.height/2,0,0);
+			Rect input = center.AddY(-15).SetSize(width,40).AddX(-width/2);
+			current.DrawLabel(full,titleStyle);
+			GUI.SetNextControlName("PromptField");
+			field = field.Draw(input,null,inputStyle);
+			EditorGUI.FocusTextInControl("PromptField");
+			return result;
+		}
+		public static int DrawButtonPrompt(this UnityLabel current,GUIStyle titleStyle=null,GUIStyle buttonStyle=null){
+			int result = 0;
+			if(Button.EventKeyDown("Escape")){result = -1;}
+			if(titleStyle == null){titleStyle = Style.Get("Prompt","DialogQuestion");}
+			if(buttonStyle == null){buttonStyle = Style.Get("Prompt","DialogButton");}
+			Rect full = new Rect(0,0,Screen.width,Screen.height);
+			Rect button = new Rect(Screen.width/2,Screen.height/2,100,40).AddY(-10);
+			current.DrawLabel(full,titleStyle);
+			if("Yes".ToLabel().DrawButton(button.AddX(-105),buttonStyle)){result = 1;}
+			if("No".ToLabel().DrawButton(button.AddX(5),buttonStyle)){result = 2;}
+			return result;
+		}
 	}
 	//============================
 	// Layout
@@ -271,7 +299,6 @@ namespace Zios.Interface{
 		public static bool resetField;
 		public static Vector2 resetFieldSize;
 		public static EditorUILayout layoutType = EditorUILayout.Global;
-		public static void ResetFieldSize(){EditorUI.SetFieldSize(0,0,false);}
 		public static void SetFieldSize(Vector2 size,bool nextOnly=true){EditorUI.SetFieldSize(size.x,size.y,nextOnly);}
 		public static void SetFieldSize(float valueWidth=-1,float labelWidth=-1,bool nextOnly=true){
 			var reset = new Vector2(-1,-1);
@@ -300,6 +327,10 @@ namespace Zios.Interface{
 			EditorUI.autoHeight = autoHeight;
 			EditorUI.resetLayout = nextOnly;
 		}
+		public static T Layout<T>(this T current,float width=-1,float height=-1,float maxWidth=-1,float maxHeight=-1,float minWidth=-1,float minHeight=-1,bool? autoWidth=null,bool? autoHeight=null,bool nextOnly=true){
+			EditorUI.SetLayout(width,height,maxWidth,maxHeight,minWidth,minHeight,autoWidth,autoHeight,nextOnly);
+			return current;
+		}
 		public static GUILayoutOption[] CreateLayout(this GUIStyle current){
 			var options = new GUILayoutOption[0];
 			if(!current.IsNull() && EditorUI.layoutType.MatchesAny("Style","Auto")){
@@ -325,6 +356,30 @@ namespace Zios.Interface{
 			if(autoWidth != null){options.Add(GUILayout.ExpandWidth(autoWidth.As<bool>()));}
 			if(autoHeight != null){options.Add(GUILayout.ExpandHeight(autoHeight.As<bool>()));}
 			return options.ToArray();
+		}
+		public static void Status(){
+			Debug.Log("------------------------------");
+			Debug.Log("Width      : " + EditorUI.width);
+			Debug.Log("Height     : " + EditorUI.height);
+			Debug.Log("MaxWidth   : " + EditorUI.maxWidth);
+			Debug.Log("MaxHeight  : " + EditorUI.maxHeight);
+			Debug.Log("MinWidth   : " + EditorUI.minWidth);
+			Debug.Log("MinHeight  : " + EditorUI.minHeight);
+			Debug.Log("AutoWidth  : " + EditorUI.autoWidth);
+			Debug.Log("AutoHeight : " + EditorUI.autoHeight);
+			Debug.Log("Reset      : " + EditorUI.resetLayout);
+		}
+		public static void Reset(){
+			EditorUI.space = 0;
+			EditorUI.allowIndention = true;
+			EditorUI.anyChanged = false;
+			EditorUI.lastChanged = false;
+			EditorUI.foldoutChanged = false;
+			EditorUI.ResetFieldSize();
+			EditorUI.ResetLayout();
+		}
+		public static void ResetFieldSize(){
+			EditorUI.SetFieldSize(0,0,false);
 		}
 		public static void ResetLayout(){
 			EditorUI.SetLayout(0,0,0,0,0,0,null,null,false);

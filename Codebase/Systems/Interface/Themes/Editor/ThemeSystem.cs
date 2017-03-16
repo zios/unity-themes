@@ -6,7 +6,7 @@ using UnityObject = UnityEngine.Object;
 using UnityEvent= UnityEngine.Event;
 namespace Zios.Interface{
 	using UnityEditor;
-	using Events;
+	using Event;
 	public enum HoverResponse{None=1,Slow,Moderate,Instant};
 	[InitializeOnLoad][NotSerialized]
 	public partial class Theme{
@@ -32,6 +32,7 @@ namespace Zios.Interface{
 		public static bool debug;
 		public static ThemeWindow window;
 		public static string suffix;
+		private static bool liveEdit;
 		private static bool needsRefresh;
 		private static bool needsRebuild;
 		private static bool needsInstantRefresh;
@@ -49,8 +50,12 @@ namespace Zios.Interface{
 			EditorApplication.playmodeStateChanged += Theme.CheckUpdate;
 			EditorApplication.update += ThemeWindow.ShowWindow;
 			AppDomain.CurrentDomain.DomainUnload += ThemeWindow.CloseWindow;
-			Event.Add("On Window Reordered",ThemeWindow.CloseWindow);
-			Event.Add("On GUISkin Changed",()=>Utility.DelayCall(Theme.DelayedInstantRefresh,0.5f));
+			Events.Add("On Window Reordered",ThemeWindow.CloseWindow);
+			Events.Add("On GUISkin Changed",()=>{
+				if(Theme.liveEdit){
+					Utility.DelayCall(Theme.DelayedInstantRefresh,0.5f);
+				}
+			});
 		}
 		public static void Update(){
 			if(Theme.disabled){return;}
@@ -240,6 +245,7 @@ namespace Zios.Interface{
 		//=================================
 		[PreferenceItem("Themes")]
 		public static void DrawPreferences(){
+			EditorUI.Reset();
 			Theme.LoadCheck();
 			if(!Theme.separatePlaymodeSettings && EditorApplication.isPlayingOrWillChangePlaymode){
 				"Theme Settings are not available while in play mode unless \"Separate play mode\" active.".DrawHelp();
@@ -763,6 +769,11 @@ namespace Zios.Interface{
 			Theme.debug = !Theme.debug;
 			Debug.Log("[Themes] Debug messages : " + Theme.debug);
 		}
+		[MenuItem("Edit/Themes/Development/Toggle Live Edit #F3")]
+		public static void ToggleLiveEdit(){
+			Theme.liveEdit = !Theme.liveEdit;
+			Debug.Log("[Themes] Live edit : " + Theme.liveEdit);
+		}
 		[MenuItem("Edit/Themes/Previous Palette &F1")]
 		public static void PreviousPalette(){Theme.RecordAction(()=>Theme.AdjustPalette(-1));}
 		[MenuItem("Edit/Themes/Next Palette &F2")]
@@ -850,21 +861,6 @@ namespace Zios.Interface{
 				Application.OpenURL("https://github.com/zios/unity-themes");
 			}
 			EditorGUILayout.EndVertical();
-		}
-	}
-	public class ColorImportSettings : AssetPostprocessor{
-		public static void OnPostprocessAllAssets(string[] imported,string[] deleted,string[] movedTo,string[] movedFrom){
-			Theme.Reset(true);
-		}
-		public void OnPreprocessTexture(){
-			TextureImporter importer = (TextureImporter)this.assetImporter;
-			if(importer.assetPath.ContainsAny("Themes","@Themes")){
-				importer.SetTextureType("Advanced");
-				importer.SetTextureFormat(TextureImporterFormat.RGBA32);
-				importer.npotScale = TextureImporterNPOTScale.None;
-				importer.isReadable = true;
-				importer.mipmapEnabled = false;
-			}
 		}
 	}
 }

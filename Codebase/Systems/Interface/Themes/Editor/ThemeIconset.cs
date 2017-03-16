@@ -44,12 +44,12 @@ namespace Zios.Interface{
 				if(split){
 					foreach(var data in contents.Split("(")){
 						var group = data.Parse("",")");
-						var file = FileManager.Create(savePath+"/"+group+".guiContent");
+						var file = FileManager.Create(savePath+"/"+group+".guicontent");
 						file.WriteText("("+group);
 					}
 				}
 				else{
-					var file = FileManager.Create(savePath+"/"+savePath.GetPathTerm()+".guiContent");
+					var file = FileManager.Create(savePath+"/"+savePath.GetPathTerm()+".guicontent");
 					file.WriteText(contents);
 				}
 				Theme.Reset(true);
@@ -80,7 +80,7 @@ namespace Zios.Interface{
 		public GUIContent value = new GUIContent();
 		public static List<ThemeContent> Import(string path){
 			var imported = new List<ThemeContent>();
-			foreach(var file in FileManager.FindAll(path+"/*.guiContent",Theme.debug)){
+			foreach(var file in FileManager.FindAll(path+"/*.guicontent",Theme.debug)){
 				var contents = ThemeContent.DeserializeGroup(file.GetText());
 				foreach(var content in contents){content.Setup(path);}
 				imported.AddRange(contents);
@@ -190,7 +190,7 @@ namespace Zios.Interface{
 					}
 					contents = contents.AddLine(content.Serialize());
 				}
-				FileManager.Create(path+target+".guiContent").WriteText(contents);
+				FileManager.Create(path+target+".guicontent").WriteText(contents);
 			}
 		}
 	}

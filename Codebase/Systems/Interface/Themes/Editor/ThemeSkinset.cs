@@ -3,7 +3,7 @@ using System;
 using System.IO;
 using System.Linq;
 namespace Zios.Interface{
-	using Events;
+	using Event;
 	using UnityEngine;
 	using UnityEditor;
 	[Serializable]
@@ -33,7 +33,7 @@ namespace Zios.Interface{
 			var isVariant = path.GetPathTerm().Contains("+");
 			skinset.name = path.GetPathTerm().Remove("+");
 			skinset.path = path;
-			foreach(var skinFile in FileManager.FindAll(path+"/*.guiskin",Theme.debug,false)){
+			foreach(var skinFile in FileManager.FindAll(path+"/*.guiskin",Theme.debug)){
 				if(!isVariant && skinFile.path.Contains("/+")){continue;}
 				var active = skinset.skins.AddNew();
 				var filter = skinFile.name.Contains("#") ? skinFile.name.Parse("#",".") : "";
@@ -155,7 +155,7 @@ namespace Zios.Interface{
 		public static void DumpAssets(){ThemeSkinset.DumpAssets("");}
 		public static void DumpAssets(string path,bool includeBuiltin=false){
 			path = path.IsEmpty() ? EditorUtility.SaveFolderPanel("Dump GUISkin Assets",Theme.storagePath,"").GetAssetPath() : path;
-			var files = FileManager.FindAll(path+"/*.guiSkin");
+			var files = FileManager.FindAll(path+"/*.guiskin");
 			FileManager.Create(path+"/Background");
 			FileManager.Create(path+"/Font");
 			AssetDatabase.StartAssetEditing();

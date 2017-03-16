@@ -8,7 +8,7 @@ using UnityObject = UnityEngine.Object;
 using UnityEditor;
 #endif
 namespace Zios{
-	using Events;
+	using Event;
 	using Containers;
 	[InitializeOnLoad]
 	public static class Locate{
@@ -17,7 +17,6 @@ namespace Zios{
 		private static List<Type> cleanSceneComponents = new List<Type>();
 		private static List<GameObject> cleanSiblings = new List<GameObject>();
 		private static Dictionary<string,GameObject> searchCache = new Dictionary<string,GameObject>();
-		private static Dictionary<string,AssetImporter> importers = new Dictionary<string,AssetImporter>();
 		private static Dictionary<Type,UnityObject[]> assets = new Dictionary<Type,UnityObject[]>();
 		private static Dictionary<GameObject,GameObject[]> siblings = new Dictionary<GameObject,GameObject[]>();
 		private static Dictionary<GameObject,GameObject[]> enabledSiblings = new Dictionary<GameObject,GameObject[]>();
@@ -31,20 +30,23 @@ namespace Zios{
 		private static Dictionary<Type,Component[]> enabledComponents = new Dictionary<Type,Component[]>();
 		private static Dictionary<Type,Component[]> disabledComponents = new Dictionary<Type,Component[]>();
 		private static Hierarchy<GameObject,Type,Component[]> objectComponents = new Hierarchy<GameObject,Type,Component[]>();
+		#if UNITY_EDITOR
+		private static Dictionary<string,AssetImporter> importers = new Dictionary<string,AssetImporter>();
+		#endif
 		static Locate(){
 			if(!Application.isPlaying){
 				//Event.Add("On Application Quit",Locate.SetDirty);
-				Event.Add("On Level Was Loaded",Locate.SetDirty).SetPermanent();
-				Event.Add("On Hierarchy Changed",Locate.SetDirty).SetPermanent();
-				Event.Add("On Asset Changed",()=>Locate.assets.Clear()).SetPermanent();
+				Events.Add("On Level Was Loaded",Locate.SetDirty).SetPermanent();
+				Events.Add("On Hierarchy Changed",Locate.SetDirty).SetPermanent();
+				Events.Add("On Asset Changed",()=>Locate.assets.Clear()).SetPermanent();
 			}
-			Event.Register("On Components Changed");
+			Events.Register("On Components Changed");
 			if(!Locate.setup){Locate.SetDirty();}
 		}
 		public static void CheckChanges(){
 			var components = Resources.FindObjectsOfTypeAll<Component>();
 			if(components.Length != Locate.allComponents.Count() && !Locate.allComponents.SequenceEqual(components)){
-				if(Locate.setup){Event.Call("On Components Changed");}
+				if(Locate.setup){Events.Call("On Components Changed");}
 				Locate.allComponents = components;
 			}
 		}
@@ -66,7 +68,7 @@ namespace Zios{
 			Type[] all = (Type[])Resources.FindObjectsOfTypeAll(typeof(Type));
 			foreach(Type current in all){
 				if(current.IsNull()){continue;}
-				if(current.IsPrefab()){continue;}
+				if(current.InPrefabFile()){continue;}
 				if(current.gameObject.IsNull()){continue;}
 				if(current.gameObject.transform.parent == null){rootObjects.Add(current.gameObject);}
 				if(current.gameObject.activeInHierarchy){enabled.Add(current);}
@@ -128,8 +130,8 @@ namespace Zios{
 			GameObject current = null;
 			Transform parent = null;
 			foreach(string part in parts){
-				path = path + "/" + part;
-				current = Locate.Find(path);
+				path = path.IsEmpty() ? part : path + "/" + part;
+				current = GameObject.Find(path);
 				if(current.IsNull()){
 					if(!autocreate){
 						return null;
@@ -211,10 +213,12 @@ namespace Zios{
 		//=====================
 		// Importers
 		//=====================
+		#if UNITY_EDITOR
 		public static Type GetImporter<Type>(string path) where Type : AssetImporter{
 			if(Application.isLoadingLevel){return default(Type);}
 			if(!Locate.importers.ContainsKey(path)){Locate.importers[path] = AssetImporter.GetAtPath(path);}
 			return Locate.importers[path].As<Type>();
 		}
+		#endif
 	}
 }

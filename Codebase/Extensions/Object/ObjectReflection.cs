@@ -8,7 +8,7 @@ namespace Zios{
 	using Containers;
 	using Class = ObjectExtension;
 	public static partial class ObjectExtension{
-		[NonSerialized] public static bool debug;
+		public static bool debug;
 		public static List<Type> emptyList = new List<Type>();
 		public static List<Assembly> assemblies = new List<Assembly>();
 		public static Hierarchy<Assembly,string,Type> lookup = new Hierarchy<Assembly,string,Type>();

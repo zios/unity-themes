@@ -7,7 +7,7 @@ namespace Zios{
 		public static string ToString(this Vector4 current){return "("+current.x+","+current.y+","+current.z+","+current.w+")";}
 		public static byte[] ToBytes(this Vector4 current){return current.ToBytes(false);}
 		public static byte[] ToBytes(this Vector4 current,bool pack){
-			if(pack){return Store.PackFloats(current.x,current.y,current.z,current.w).ToBytes();}
+			if(pack){return Pack.PackFloats(current.x,current.y,current.z,current.w).ToBytes();}
 			return current.x.ToBytes().Append(current.y).Append(current.z).Append(current.w);
 		}
 		public static float[] ToFloatArray(this Vector4 current){

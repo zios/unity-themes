@@ -5,18 +5,19 @@ using System.IO;
 using UnityEngine;
 using UnityObject = UnityEngine.Object;
 namespace Zios{
-	using Events;
+	using Event;
 	using Containers;
 	#if UNITY_EDITOR
 	using UnityEditor;
 	#endif
 	[InitializeOnLoad]
 	public static class FileManager{
-		private static string path;
+		private static string root;
 		private static string dataPath;
 		public static bool monitor = true;
 		private static bool debug = false;
 		private static bool clock = false;
+		private static bool needsSave = false;
 		private static bool fullScan = true;
 		private static float lastMonitor;
 		private static Dictionary<string,FileMonitor> monitors = new Dictionary<string,FileMonitor>();
@@ -52,15 +53,16 @@ namespace Zios{
 		}
 		public static void Load(){
 			var time = FileManager.GetTime();
-			if(FileManager.Exists("Temp/FileManager.data")){
+			var cachePath = Application.isEditor ? "Temp/FileManager.data" : FileManager.root+"/FileManager.data";
+			if(FileManager.Exists(cachePath)){
 				string extension = "";
 				string lastPath = "";
-				var lines = File.ReadAllLines("Temp/FileManager.data");
+				var lines = File.ReadAllLines(cachePath);
 				for(int index=0;index<lines.Length;++index){
 					var line = lines[index];
 					if(line.StartsWith("(")){extension = line.Parse("(",")");}
 					else if(line.StartsWith("=") || line.StartsWith("+")){
-						lastPath = line.StartsWith("=") ? line.TrimLeft("=").Replace("$",FileManager.path) : lastPath + line.TrimLeft("+");
+						lastPath = line.StartsWith("=") ? line.TrimLeft("=").Replace("$",FileManager.root) : lastPath + line.TrimLeft("+");
 						var folderData = new FileData();
 						folderData.name = lastPath.GetPathTerm();
 						folderData.directory = lastPath.GetDirectory();
@@ -81,11 +83,18 @@ namespace Zios{
 			}
 			if(FileManager.clock){Debug.Log("[FileManager] : Load cache complete -- " + (FileManager.GetTime()-time) + " seconds.");}
 		}
+		public static void CheckSave(){
+			if(FileManager.needsSave){
+				FileManager.needsSave = false;
+				FileManager.Save();
+			}
+		}
 		public static void Save(){
 			string lastPath = ")@#(*$";
 			var time = FileManager.GetTime();
-			FileManager.Create("Temp");
-			using(var output = new StreamWriter("Temp/FileManager.data",false)){
+			var cachePath = Application.isEditor ? "Temp/FileManager.data" : FileManager.root+"/FileManager.data";
+			if(Application.isEditor){FileManager.Create("Temp");}
+			using(var output = new StreamWriter(cachePath,false)){
 				foreach(var item in FileManager.filesByType){
 					var extension = item.Key;
 					var files = item.Value;
@@ -98,7 +107,7 @@ namespace Zios{
 			if(FileManager.clock){Debug.Log("[FileManager] : Save cache complete -- " + (FileManager.GetTime()-time) + " seconds.");}
 		}
 		public static void SaveData(FileData data,StreamWriter output,ref string lastPath){
-			var directory = data.directory.Replace(FileManager.path,"$");
+			var directory = data.directory.Replace(FileManager.root,"$");
 			if(directory == lastPath){}
 			else if(directory.Contains(lastPath)){
 				var addition = directory.Replace(lastPath,"");
@@ -116,19 +125,22 @@ namespace Zios{
 		//===============
 		public static void Refresh(){
 			var time = FileManager.GetTime();
-			Event.Add("On Editor Update",FileManager.Monitor).SetPermanent();
-			Event.Add("On Asset Changed",FileManager.Refresh).SetPermanent();
+			if(Application.isEditor){
+				Events.Add("On Editor Update",FileManager.Monitor).SetPermanent();
+				Events.Add("On Asset Changed",FileManager.Refresh).SetPermanent();
+				Events.Add("On Mode Changed",FileManager.CheckSave).SetPermanent();
+			}
 			FileManager.assets.Clear();
 			FileManager.assetPaths.Clear();
 			FileManager.filesByPath.Clear();
 			FileManager.filesByType.Clear();
 			FileManager.folders.Clear();
 			FileManager.cache.Clear();
-			FileManager.path = FileManager.dataPath.GetDirectory();
+			FileManager.root = Application.isEditor ? FileManager.dataPath.GetDirectory() : FileManager.dataPath;
 			var needsScan = !Application.isEditor || (Application.isEditor && !Utility.IsPlaying());
 			if(needsScan){
-				FileManager.Scan(FileManager.path);
-				FileManager.Scan(FileManager.path+"/Temp",true);
+				FileManager.Scan(FileManager.root);
+				if(Application.isEditor){FileManager.Scan(FileManager.root+"/Temp",true);}
 				if(FileManager.fullScan){FileManager.Scan(FileManager.dataPath,true);}
 				FileManager.Save();
 			}
@@ -170,7 +182,7 @@ namespace Zios{
 		//===============
 		// Primary
 		//===============
-		public static FileData[] FindAll(string name,bool showWarnings=true,bool firstOnly=false){
+		public static FileData[] FindAll(string name,bool showWarnings=true,bool returnFirstMatch=false){
 			name = name.Replace("\\","/");
 			var time = FileManager.GetTime();
 			if(name == "" && showWarnings){
@@ -188,9 +200,6 @@ namespace Zios{
 					return new FileData[0];
 				}
 			}
-			if(!name.Contains(".") && name.EndsWith("*")){name = name + ".*";}
-			if(name.Contains("*")){firstOnly = false;}
-			else if(name.Contains(":")){firstOnly = true;}
 			string fileName = name.GetFileName();
 			string path = name.GetDirectory();
 			string type = name.GetFileExtension().ToLower();
@@ -202,7 +211,7 @@ namespace Zios{
 			else if(type.EndsWith("*")){types.AddRange(allTypes.Where(x=>x.StartsWith(type.Remove("*"),true)));}
 			else if(FileManager.filesByType.ContainsKey(type)){types.Add(type);}
 			foreach(var typeName in types){
-				FileManager.SearchType(fileName,typeName,path,firstOnly,ref results);
+				FileManager.SearchType(fileName,typeName,path,returnFirstMatch,ref results);
 			}
 			if(results.Count == 0){
 				foreach(var item in FileManager.folders){
@@ -213,6 +222,7 @@ namespace Zios{
 					}
 				}
 			}
+			if(results.Count == 0 && !name.Contains(".")){return FileManager.FindAll(name+".*",showWarnings,returnFirstMatch);}
 			if(results.Count == 0 && showWarnings){Debug.LogWarning("[FileManager] Path [" + name + "] could not be found.");}
 			FileManager.cache[searchKey] = results.ToArray();
 			if(FileManager.clock){Debug.Log("[FileManager] : Find [" + name + "] complete (" + results.Count + ") -- " + (FileManager.GetTime()-time) + " seconds.");}
@@ -272,6 +282,7 @@ namespace Zios{
 				Directory.CreateDirectory(path);
 			}
 			FileManager.BuildCache(data);
+			FileManager.needsSave = true;
 			return data;
 		}
 		public static void Copy(string path,string destination){
@@ -297,7 +308,7 @@ namespace Zios{
 		public static bool Exists(string path){return File.Exists(path) || Directory.Exists(path);}
 		public static FileData Find(string name,bool showWarnings=true){
 			name = !name.ContainsAny("*") ? "!"+name : name;
-			var results = FileManager.FindAll(name,showWarnings,true);
+			var results = FileManager.FindAll(name,showWarnings,!name.Contains("*"));
 			if(results.Length > 0){return results[0];}
 			return null;
 		}
