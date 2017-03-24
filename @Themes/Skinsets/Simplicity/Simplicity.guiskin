@@ -132,7 +132,7 @@ MonoBehaviour:
       m_Left: 0
       m_Right: 0
       m_Top: 0
-      m_Bottom: -1
+      m_Bottom: 0
     m_Font: {fileID: 12800000, guid: 5ba0a9c28e7c9404491cba2899be7439, type: 3}
     m_FontSize: 13
     m_FontStyle: 0
@@ -333,7 +333,7 @@ MonoBehaviour:
       m_Left: 0
       m_Right: 0
       m_Top: 0
-      m_Bottom: 0
+      m_Bottom: -1
     m_Font: {fileID: 12800000, guid: 34d23e265a76d2146b73a2b47ea46b98, type: 3}
     m_FontSize: 12
     m_FontStyle: 0
@@ -5539,7 +5539,7 @@ MonoBehaviour:
     m_StretchHeight: 0
   - m_Name: dockareaOverlay
     m_Normal:
-      m_Background: {fileID: 2800000, guid: 7cdd483083e927d47847619ae7d46404, type: 3}
+      m_Background: {fileID: 2800000, guid: 5c9084f4b70a7904a8d4af87bbc6d87b, type: 3}
       m_ScaledBackgrounds: []
       m_TextColor: {r: 0.1008065, g: 0.1008065, b: 0.1008065, a: 1}
     m_Hover:
@@ -5587,8 +5587,8 @@ MonoBehaviour:
       m_Bottom: 0
     m_Overflow:
       m_Left: 0
-      m_Right: 0
-      m_Top: 0
+      m_Right: 2
+      m_Top: -16
       m_Bottom: 0
     m_Font: {fileID: 3459068928204737762, guid: 0000000000000000d000000000000000,
       type: 0}
@@ -5988,8 +5988,8 @@ MonoBehaviour:
       m_Top: 0
       m_Bottom: 0
     m_Overflow:
-      m_Left: 0
-      m_Right: 0
+      m_Left: -1
+      m_Right: 1
       m_Top: 3
       m_Bottom: 0
     m_Font: {fileID: 12800000, guid: cdc152662dd567b4aac56b960d250bf7, type: 3}
@@ -6054,8 +6054,8 @@ MonoBehaviour:
       m_Top: 0
       m_Bottom: 0
     m_Overflow:
-      m_Left: -1
-      m_Right: 0
+      m_Left: 1
+      m_Right: -1
       m_Top: 3
       m_Bottom: -1
     m_Font: {fileID: 12800000, guid: cdc152662dd567b4aac56b960d250bf7, type: 3}
@@ -11768,27 +11768,27 @@ MonoBehaviour:
     m_Active:
       m_Background: {fileID: 2800000, guid: 1accb3fd952abf447b7dbda9e3727030, type: 3}
       m_ScaledBackgrounds: []
-      m_TextColor: {r: 0.015686275, g: 1, b: 1, a: 0}
+      m_TextColor: {r: 1, g: 0.007843138, b: 1, a: 0}
     m_Focused:
       m_Background: {fileID: 2800000, guid: 1accb3fd952abf447b7dbda9e3727030, type: 3}
       m_ScaledBackgrounds: []
-      m_TextColor: {r: 0.015686275, g: 1, b: 1, a: 0}
+      m_TextColor: {r: 1, g: 0.007843138, b: 1, a: 0}
     m_OnNormal:
       m_Background: {fileID: 2800000, guid: a6715545a15be9b49a85a99c47650a59, type: 3}
       m_ScaledBackgrounds: []
-      m_TextColor: {r: 0.015686275, g: 1, b: 1, a: 0}
+      m_TextColor: {r: 1, g: 0.007843138, b: 1, a: 0}
     m_OnHover:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_TextColor: {r: 1, g: 0.047058824, b: 1, a: 0}
     m_OnActive:
       m_Background: {fileID: 2800000, guid: a6715545a15be9b49a85a99c47650a59, type: 3}
       m_ScaledBackgrounds: []
-      m_TextColor: {r: 0.015686275, g: 1, b: 1, a: 0}
+      m_TextColor: {r: 1, g: 0.007843138, b: 1, a: 0}
     m_OnFocused:
       m_Background: {fileID: 2800000, guid: a6715545a15be9b49a85a99c47650a59, type: 3}
       m_ScaledBackgrounds: []
-      m_TextColor: {r: 0.015686275, g: 1, b: 1, a: 0}
+      m_TextColor: {r: 1, g: 0.007843138, b: 1, a: 0}
     m_Border:
       m_Left: 14
       m_Right: 0
@@ -13230,7 +13230,7 @@ MonoBehaviour:
       m_Left: 0
       m_Right: 0
       m_Top: 0
-      m_Bottom: -1
+      m_Bottom: 2
     m_Font: {fileID: 12800000, guid: cdc152662dd567b4aac56b960d250bf7, type: 3}
     m_FontSize: 13
     m_FontStyle: 0
@@ -13488,7 +13488,7 @@ MonoBehaviour:
       m_Top: 0
       m_Bottom: 0
     m_Padding:
-      m_Left: 2
+      m_Left: 14
       m_Right: 2
       m_Top: 2
       m_Bottom: 2
@@ -27681,7 +27681,7 @@ MonoBehaviour:
     m_StretchHeight: 0
   - m_Name: ScriptText
     m_Normal:
-      m_Background: {fileID: 2800000, guid: d0b5ab030e9e44e4d810d562637e631e, type: 3}
+      m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
       m_TextColor: {r: 1, g: 0.007843138, b: 1, a: 0}
     m_Hover:
@@ -30504,7 +30504,7 @@ MonoBehaviour:
     m_StretchHeight: 0
   - m_Name: TabWindowBackground
     m_Normal:
-      m_Background: {fileID: 2800000, guid: 8ac5c69f786ff674bb69a5f9b5898c49, type: 3}
+      m_Background: {fileID: 2800000, guid: acce7a916ad2bb1428995efb292c0a43, type: 3}
       m_ScaledBackgrounds: []
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Hover:
@@ -30552,8 +30552,8 @@ MonoBehaviour:
       m_Bottom: 0
     m_Overflow:
       m_Left: 1
-      m_Right: 1
-      m_Top: 1
+      m_Right: 2
+      m_Top: 0
       m_Bottom: 1
     m_Font: {fileID: 0}
     m_FontSize: 0

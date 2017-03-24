@@ -1679,7 +1679,7 @@ MonoBehaviour:
     m_RichText: 0
     m_TextClipping: 0
     m_ImagePosition: 0
-    m_ContentOffset: {x: 2, y: 0}
+    m_ContentOffset: {x: 0, y: 0}
     m_FixedWidth: 0
     m_FixedHeight: 17
     m_StretchWidth: 0

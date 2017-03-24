@@ -6,9 +6,9 @@
 	MainIcons           : #A5B5CE  
 	Border              : #414A56  
 	BorderActive        : #2C2C2C  
-	BorderButton        : #FFFFFF20
+	BorderButton        : #2C2C2C00
 	BorderIcons         : #FFFFFF60
-	Highlight           : #69788B  
+	Highlight           : #2C2C2C  
 	HighlightActive     : #2C2C2C  
 	HighlightButton     : #00000080
 	HighlightIcons      : #FFFFFF83
@@ -34,7 +34,7 @@
 	Frame               : #414A56   : Border   
 	Window              : #2C3747   : Main     
 	Details             : #414A56   : Border   
-	Cursor              : #69788B   : Highlight
-	Selection           : #69788B   : Highlight
-	Curve               : #9DB4D0   : Highlight : 1.5
-	CurveBackground     : #20252B   : Border    : 0.5
+	Cursor              : #2C2C2C   : Highlight
+	Selection           : #2C2C2C   : Highlight
+	Curve               : #2C2C2C   : Highlight : 1.5
+	CurveBackground     : #414A56   : Border    : 0.5

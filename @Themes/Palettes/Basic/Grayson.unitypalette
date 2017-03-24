@@ -20,7 +20,7 @@
 (Text)
 	Text                : #FFFFFFC0
 	TextActive          : #FFFFFF  
-	TextButton          : #FFFFFF88
+	TextButton          : #FFFFFF  
 	TextBorder          : #FFFFFFC7
 	TextBorderActive    : #FFFFFF  
 	TextBorderButton    : #FFFFFFC7
@@ -36,5 +36,5 @@
 	Details             : #272727   : Border   
 	Cursor              : #2B2E9B   : Highlight
 	Selection           : #2B2E9B   : Highlight
-	Curve               : #2B2E9B   : Highlight : 1.5
-	CurveBackground     : #272727   : Border    : 0.5
+	Curve               : #4045E8   : Highlight : 1.5
+	CurveBackground     : #202020   : Border    : 0.5
