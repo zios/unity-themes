@@ -12,11 +12,7 @@ namespace Zios.Editors{
 				importer.meshCompression = ModelImporterMeshCompression.Off;
 				importer.optimizeMesh = true;
 				importer.importMaterials = false;
-				#if UNITY_5_3_OR_NEWER
 				importer.importTangents = ModelImporterTangents.None;
-				#else
-				importer.tangentImportMode = ModelImporterTangentSpaceMode.None;
-				#endif
 				importer.animationCompression = ModelImporterAnimationCompression.Off;
 				importer.animationType = ModelImporterAnimationType.None;
 				importer.generateAnimations = ModelImporterGenerateAnimations.None;
@@ -34,11 +30,13 @@ namespace Zios.Editors{
 			TextureImporter importer = (TextureImporter)assetImporter;
 			string assetName = importer.assetPath.Split("/").Last();
 			importer.npotScale = assetName.Contains(".exr") ? TextureImporterNPOTScale.ToNearest : TextureImporterNPOTScale.None;
-			if(assetName.ContainsAny("Index","Outlines","Shading","Interface")){
-				importer.filterMode = FilterMode.Point;
+			if(assetName.ContainsAny("Index","Outline","Shading","Interface")){
 				importer.wrapMode = TextureWrapMode.Clamp;
 				importer.mipmapEnabled = false;
-				importer.SetTextureFormat(TextureImporterFormat.RGBA32);
+				if(assetName.ContainsAny("Outline","Shading","Interface")){importer.SetTextureFormat(TextureImporterFormat.BC7);}
+				if(assetName.ContainsAny("Index")){importer.SetTextureFormat(TextureImporterFormat.BC5);}
+				if(assetName.ContainsAny("Outline","Interface")){importer.filterMode = FilterMode.Trilinear;}
+				if(assetName.ContainsAny("Index","Shading")){importer.filterMode = FilterMode.Point;}
 			}
 		}
 	}
