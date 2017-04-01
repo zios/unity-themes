@@ -24,7 +24,6 @@ Shader "Zios/Standalone/Megashader UI"{
 			ZWrite On
 			Colormask 0
 			CGPROGRAM
-			#include "UnityCG.cginc"
 			#pragma vertex vertexPass
 			#pragma fragment pixelPass
 			#pragma target 3.0
