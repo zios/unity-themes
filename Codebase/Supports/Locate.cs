@@ -125,7 +125,7 @@ namespace Zios{
 			return results;
 		}
 		public static GameObject GetScenePath(string name,bool autocreate=true){
-			string[] parts = name.Split('/');
+			string[] parts = name.Replace("\\","/").Split('/');
 			string path = "";
 			GameObject current = null;
 			Transform parent = null;

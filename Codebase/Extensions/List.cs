@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
 namespace Zios{
 	public static class ListExtension{
@@ -77,6 +78,9 @@ namespace Zios{
 		public static List<T> Append<T>(this List<T> current,T value){
 			current.Add(value);
 			return current;
+		}
+		public static T TakeRandom<T>(this List<T> current){
+			return current.Shuffle().First();
 		}
 	}
 }
