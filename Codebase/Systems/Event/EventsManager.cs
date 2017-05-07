@@ -7,6 +7,11 @@ namespace Zios.Event{
 		[EnumMask] public EventDisabled disabled;
 		[EnumMask] public EventDebugScope debugScope;
 		[EnumMask] public EventDebug debug;
+		public static EventsManager Get()
+		{
+			EventsManager.singleton = EventsManager.singleton ?? Utility.GetSingleton<EventsManager>();
+			return EventsManager.singleton;
+		}
 		public void OnEnable(){this.Update();}
 		public void Update(){
 			Events.disabled = this.disabled;

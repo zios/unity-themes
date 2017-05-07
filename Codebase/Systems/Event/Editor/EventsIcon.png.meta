@@ -66,6 +66,22 @@ TextureImporter:
     crunchedCompression: 1
     allowsAlphaSplitting: 0
     overridden: 1
+  - buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 1
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 1
   spriteSheet:
     serializedVersion: 2
     sprites: []
