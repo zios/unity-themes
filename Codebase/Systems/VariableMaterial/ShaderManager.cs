@@ -3,38 +3,44 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace Zios.Shaders{
 	using Event;
-	[AddComponentMenu("Zios/Singleton/Shader Settings (Global)")][ExecuteInEditMode]
-	public class ShaderGlobalSettings : MonoBehaviour{
-		public static ShaderGlobalSettings instance;
+	public class ShaderManager : Singleton{
+		public static ShaderManager instance;
 		[Header("Shading")]
 		public ShadingBlend shadingBlend = ShadingBlend.Multiply;
+		[Range(0,1)] public float alphaCutoff = 0.3f;
 		[Header("Shadows")]
 		public ShadowType shadowType = ShadowType.Stepped;
 		public ShadowMode shadowMode;
 		public ShadowBlend shadowBlend;
+		public Color shadowColor = new Color(0,0,0,0.25f);
+		[Range(1,32)] public int shadowSteps = 3;
 		[Header("Lightmap")]
 		public LightmapType lightmapType = LightmapType.Stepped;
 		public LightmapMode lightmapMode;
 		public LightmapBlend lightmapBlend;
+		public Color lightmapColor = new Color(0,0,0,0.25f);
+		[Range(1,32)] public int lightmapSteps = 3;
 		[Header("Visibility")]
 		public FadeType fadeType;
 		public FadeGrayscale fadeGrayscale;
 		public FadeBlend fadeBlend;
-		private bool dirty;
+		public int cullDistance = 150;
+		[Range(1,32)] public int fadeSteps = 3;
+		public int fadeStartDistance = 80;
+		public int fadeEndDistance = 100;
+		public Color fadeStartColor = new Color(0,0,0,1);
+		public Color fadeEndColor = new Color(0,0,0,0);
+		private bool keywordsChanged;
 		private List<Material> materials = new List<Material>();
 		private List<Material> materialsChanged = new List<Material>();
-		public static ShaderGlobalSettings Get(){return ShaderGlobalSettings.instance;}
+		public static ShaderManager Get(){return ShaderManager.instance;}
 		public void OnEnable(){this.Setup();}
-		public void Awake(){this.Setup();}
-		public void OnValidate(){
-			if(!this.CanValidate()){return;}
-			this.Setup();
-		}
 		public void Setup(){
-			ShaderGlobalSettings.instance = this;
+			ShaderManager.instance = this;
+			Events.Add("On Update",this.Update);
 			if(Application.isEditor){
 				this.materials = VariableMaterial.GetAll();
-				this.dirty = false;
+				this.keywordsChanged = false;
 				this.SetKeyword(shadingBlend);
 				this.SetKeyword(shadowType);
 				this.SetKeyword(shadowMode);
@@ -45,10 +51,27 @@ namespace Zios.Shaders{
 				this.SetKeyword(fadeType);
 				this.SetKeyword(fadeBlend);
 				this.SetKeyword(fadeGrayscale);
-				if(this.dirty){
-					Events.AddStepper("On Editor Update",ShaderGlobalSettings.RefreshStep,this.materialsChanged,50);
+				if(this.keywordsChanged){
+					Events.AddStepper("On Editor Update",ShaderManager.RefreshStep,this.materialsChanged,50);
 				}
 			}
+			this.cullDistance = Math.Max(0,this.cullDistance);
+			this.fadeStartDistance = Math.Max(0,Math.Min(this.fadeStartDistance,this.fadeEndDistance));
+			this.fadeEndDistance = Math.Max(this.fadeStartDistance,this.fadeEndDistance);
+			Shader.SetGlobalFloat("globalAlphaCutoff",this.alphaCutoff);
+			Shader.SetGlobalColor("globalShadowColor",this.shadowColor);
+			Shader.SetGlobalFloat("globalShadowSteps",this.shadowSteps);
+			Shader.SetGlobalColor("globalLightmapColor",this.lightmapColor);
+			Shader.SetGlobalFloat("globalLightmapSteps",this.lightmapSteps);
+			Shader.SetGlobalFloat("cullDistance",this.cullDistance);
+			Shader.SetGlobalFloat("fadeSteps",this.fadeSteps);
+			Shader.SetGlobalFloat("fadeStartDistance",this.fadeStartDistance);
+			Shader.SetGlobalFloat("fadeEndDistance",this.fadeEndDistance);
+			Shader.SetGlobalColor("fadeStartColor",this.fadeStartColor);
+			Shader.SetGlobalColor("fadeEndColor",this.fadeEndColor);
+		}
+		public void Update(){
+			Shader.SetGlobalFloat("timeConstant",Time.realtimeSinceStartup);
 		}
 		public static void RefreshStep(object collection,int index){
 			var materials = (List<Material>)collection;
@@ -67,9 +90,9 @@ namespace Zios.Shaders{
 					}
 				}
 				if(!material.IsKeywordEnabled(targetKeyword)){
-					if(!this.dirty){
+					if(!this.keywordsChanged){
 						this.materialsChanged.Clear();
-						this.dirty = true;
+						this.keywordsChanged = true;
 					}
 					this.materialsChanged.Add(material);
 					material.EnableKeyword(targetKeyword);

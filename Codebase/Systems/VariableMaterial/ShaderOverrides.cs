@@ -1,9 +1,9 @@
 using System;
 using UnityEngine;
 namespace Zios.Shaders{
-	[AddComponentMenu("Zios/Component/Rendering/Shader Settings (Local)")][ExecuteInEditMode]
-	public class ShaderLocalSettings : MonoBehaviour{
-		public static ShaderLocalSettings instance;
+	[AddComponentMenu("Zios/Component/Rendering/Shader Overrides")][ExecuteInEditMode]
+	public class ShaderOverrides : MonoBehaviour{
+		public static ShaderOverrides instance;
 		[Header("General")]
 		[Range(0,1)] public float alphaCutoff = 0.3f;
 		[Header("Shadows")]
@@ -19,11 +19,11 @@ namespace Zios.Shaders{
 		public int fadeEndDistance = 100;
 		public Color fadeStartColor = new Color(0,0,0,1);
 		public Color fadeEndColor = new Color(0,0,0,0);
-		public static ShaderLocalSettings Get(){return ShaderLocalSettings.instance;}
+		public static ShaderOverrides Get(){return ShaderOverrides.instance;}
 		public void OnEnable(){this.Setup();}
 		public void Awake(){this.Setup();}
 		public void Setup(){
-			ShaderLocalSettings.instance = this;
+			ShaderOverrides.instance = this;
 			this.cullDistance = Math.Max(0,this.cullDistance);
 			this.fadeStartDistance = Math.Max(0,Math.Min(this.fadeStartDistance,this.fadeEndDistance));
 			this.fadeEndDistance = Math.Max(this.fadeStartDistance,this.fadeEndDistance);

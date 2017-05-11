@@ -16,6 +16,7 @@ namespace Zios.Editors{
 		public static Dictionary<Editor,bool> offScreen = new Dictionary<Editor,bool>();
 		public bool hideDefault;
 		public bool setup;
+		public bool changed;
 		public List<SerializedProperty> properties = new List<SerializedProperty>();
 		public List<SerializedProperty> hidden = new List<SerializedProperty>();
 		public Dictionary<string,object> dictionaries = new Dictionary<string,object>();
@@ -52,7 +53,7 @@ namespace Zios.Editors{
 			this.SortProperties();
 			this.Setup();
 			Type type = this.target.GetType();
-			bool changed = false;
+			this.changed = false;
 			bool showAdvanced = Utility.GetPref<bool>("MonoBehaviourEditor-Advanced");
 			bool showInternal = Utility.GetPref<bool>("MonoBehaviourEditor-Internal");
 			bool showDictionary = Utility.GetPref<bool>("MonoBehaviourEditor-Dictionary");
@@ -104,7 +105,7 @@ namespace Zios.Editors{
 					property.Draw(propertyName);
 					if(hasArea){EditorGUI.EndProperty();}
 					EditorGUILayout.EndVertical();
-					changed = changed || GUI.changed;
+					this.changed = this.changed || GUI.changed;
 					if(isReadOnly){GUI.enabled = true;}
 					if(UnityEvent.current.type == EventType.Repaint){
 						Rect area = GUILayoutUtility.GetLastRect();
@@ -121,7 +122,7 @@ namespace Zios.Editors{
 			}
 			EditorGUILayout.EndVertical();
 			this.EndArea();
-			if(changed){
+			if(this.changed){
 				this.serializedObject.ApplyModifiedProperties();
 				//this.serializedObject.targetObject.CallMethod("OnValidate");
 				Utility.SetDirty(this.serializedObject.targetObject,false,true);
