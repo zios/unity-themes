@@ -2,21 +2,35 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-namespace Zios{
+namespace Zios.Program{
 	using Interface;
 	using Utilities;
 	using Event;
-	[AddComponentMenu("Zios/Singleton/Program")][ExecuteInEditMode]
-	public class ProgramManager : MonoBehaviour{
-		public static ProgramManager instance;
-		public static ProgramManager Get(){return ProgramManager.instance;}
+	public class ProgramManager : Singleton{
+		public static ProgramManager singleton;
 		public bool[] pixelSnap = new bool[3]{false,false,false};
 		public int targetFPS = -1;
 		private int[] resolution = new int[3]{640,480,60};
 		private bool allowResolution = true;
-		public void OnEnable(){this.Setup();}
-		public void Awake(){this.Setup();}
-		public void Start(){
+		public static ProgramManager Get(){
+			ProgramManager.singleton = ProgramManager.singleton ?? Utility.GetSingleton<ProgramManager>();
+			return ProgramManager.singleton;
+		}
+
+		public void Start(){}
+		public void Setup(){
+			ProgramManager.singleton = this;
+			Events.Register("On Resolution Change");
+			Events.Add("On Editor Update",this.EditorUpdate);
+			Events.Add("On Enter Play",this.UpdateEffects);
+			Application.targetFrameRate = this.targetFPS;
+			Resolution screen = Screen.currentResolution;
+			this.resolution = new int[3]{Screen.width,Screen.height,screen.refreshRate};
+			Locate.GetSceneComponents<Persistent>().Where(x=>x.activateOnLoad).ToList().ForEach(x=>x.gameObject.SetActive(true));
+			this.DetectResolution();
+		}
+		public void OnEnable(){
+			this.Setup();
 			Console.AddShortcut("changeResolution","res","resolution");
 			Console.AddShortcut("closeProgram","quit");
 			Console.AddShortcut("verticalSync","vsync");
@@ -30,29 +44,15 @@ namespace Zios{
 			Console.AddCvar("maxfps",typeof(Application),"targetFrameRate","Maximum FPS");
 			Console.AddCvar("verticalSync",typeof(QualitySettings),"vSyncCount","Vertical Sync");
 		}
-		public void Setup(){
-			ProgramManager.instance = this;
-			Events.Register("On Resolution Change");
-			Events.Add("On Editor Update",this.EditorUpdate);
-			Events.Add("On Enter Play",this.UpdateEffects);
-			Application.targetFrameRate = this.targetFPS;
-			Resolution screen = Screen.currentResolution;
-			this.resolution = new int[3]{Screen.width,Screen.height,screen.refreshRate};
-			Locate.GetSceneComponents<Persistent>().Where(x=>x.activateOnLoad).ToList().ForEach(x=>x.gameObject.SetActive(true));
-			this.DetectResolution();
-		}
 		public void Update(){
 			this.DetectResolution();
 		}
 		public void OnValidate(){
-			if(!this.CanValidate()){return;}
 			this.Setup();
 		}
 		public void EditorUpdate(){
 			#if UNITY_EDITOR
-			if(this.CanValidate()){
 				this.UpdateEffects();
-			}
 			#endif
 		}
 		public void UpdateEffects(){
@@ -111,8 +111,8 @@ namespace Zios{
 			}
 			else if(!this.allowResolution){
 				this.allowResolution = true;
-				//string log = "^10Program resolution is : ^8| " + size[0] + "^7x^8|" + size[1];
-				//if(Application.isPlaying){Debug.Log(log);}
+				string log = "^10Program resolution is : ^8| " + size[0] + "^7x^8|" + size[1];
+				if(Application.isPlaying){Debug.Log(log);}
 			}
 		}
 		public void ChangeResolution(string[] values){
