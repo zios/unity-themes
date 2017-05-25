@@ -87,5 +87,5 @@ Shader "Zios/SuperCity/Sprite + Lerp + Non-Atlas"{
 			ENDCG
 		}
 	}
-	CustomEditor "ExtendedMaterialEditor"
+	CustomEditor "Zios.Editors.MaterialEditors.ExtendedMaterialEditor"
 }

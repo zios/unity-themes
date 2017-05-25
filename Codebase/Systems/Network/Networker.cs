@@ -348,9 +348,11 @@ namespace Zios{
 					}
 					this.socketID = NetworkTransport.AddHost(topology,this.hostPort);
 				}
+				#if !UNITY_WEBGL
 				else {
 					this.socketID = NetworkTransport.AddHost(topology);
 				}
+				#endif
 				this.setup = true;
 			}
 		}

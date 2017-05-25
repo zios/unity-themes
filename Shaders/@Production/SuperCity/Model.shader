@@ -66,5 +66,5 @@ Shader "Zios/SuperCity/Model"{
 			ENDCG
 		}
 	}
-	CustomEditor "ExtendedMaterialEditor"
+	CustomEditor "Zios.Editors.MaterialEditors.ExtendedMaterialEditor"
 }

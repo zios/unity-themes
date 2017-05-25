@@ -96,5 +96,5 @@ Shader "Zios/SuperCity/Sprite"{
 			ENDCG
 		}
 	}
-	CustomEditor "ExtendedMaterialEditor"
+	CustomEditor "Zios.Editors.MaterialEditors.ExtendedMaterialEditor"
 }

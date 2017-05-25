@@ -5,5 +5,5 @@ Shader "Zios/(Empty)"{
 		Pass{
 		}
 	}
-	CustomEditor "ExtendedMaterialEditor"
+	CustomEditor "Zios.Editors.MaterialEditors.ExtendedMaterialEditor"
 }

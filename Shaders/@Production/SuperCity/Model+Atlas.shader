@@ -82,5 +82,5 @@ Shader "Zios/SuperCity/Model + Atlas"{
 			ENDCG
 		}
 	}
-	CustomEditor "ExtendedMaterialEditor"
+	CustomEditor "Zios.Editors.MaterialEditors.ExtendedMaterialEditor"
 }

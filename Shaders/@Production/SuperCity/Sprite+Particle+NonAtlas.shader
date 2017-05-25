@@ -85,5 +85,5 @@ Shader "Zios/SuperCity/Sprite + Particle + Non-Atlas"{
 			ENDCG
 		}
 	}
-	CustomEditor "ExtendedMaterialEditor"
+	CustomEditor "Zios.Editors.MaterialEditors.ExtendedMaterialEditor"
 }

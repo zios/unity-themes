@@ -163,7 +163,7 @@ namespace Zios{
 				FileManager.BuildCache(new FileData(path));
 			}
 			foreach(string folderPath in folderEntries){
-				if(folderPath.ContainsAny(".svn","~")){continue;}
+				if(folderPath.ContainsAny(".svn","~",".git")){continue;}
 				var path = folderPath.Replace("\\","/");
 				FileManager.BuildCache(new FileData(path,true));
 				if(deep){FileManager.Scan(path,true);}

@@ -46,7 +46,7 @@ namespace Zios{
 			Events.Register("On Undo Flushing");
 			Events.Register("On Undo");
 			Events.Register("On Redo");
-			#if UNITY_5
+			#if UNITY_5 || UNITY_2017_1_OR_NEWER
 			Camera.onPostRender += (Camera camera)=>Events.Call("On Camera Post Render",camera);
 			Camera.onPreRender += (Camera camera)=>Events.Call("On Camera Pre Render",camera);
 			Camera.onPreCull += (Camera camera)=>Events.Call("On Camera Pre Cull",camera);

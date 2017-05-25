@@ -33,5 +33,5 @@ Shader "Zios/Sprite/Alpha Blend"{
 			ENDCG
 		}
 	}
-	CustomEditor "ExtendedMaterialEditor"
+	CustomEditor "Zios.Editors.MaterialEditors.ExtendedMaterialEditor"
 }

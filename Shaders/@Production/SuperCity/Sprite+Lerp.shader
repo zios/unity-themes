@@ -103,5 +103,5 @@ Shader "Zios/SuperCity/Sprite + Lerp"{
 			ENDCG
 		}
 	}
-	CustomEditor "ExtendedMaterialEditor"
+	CustomEditor "Zios.Editors.MaterialEditors.ExtendedMaterialEditor"
 }

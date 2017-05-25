@@ -140,5 +140,5 @@ Shader "Zios/Dori/Vertex Color + Outline + Shading"{
 			ENDCG
 		}
 	}
-	//CustomEditor "ExtendedMaterialEditor"
+	CustomEditor "Zios.Editors.MaterialEditors.ExtendedMaterialEditor"
 }
