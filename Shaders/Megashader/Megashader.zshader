@@ -102,6 +102,7 @@ Shader "Zios/Standalone/(Megashader)"{
 			#include "../@Zios/Shaders/Megashader/PhotoshopBlend.cginc"
 			#pragma vertex vertexPass
 			#pragma fragment pixelPass
+			#pragma multi_compile_fwdbase
 			#pragma target 3.0
 			#pragma fragmentoption ARB_precision_hint_fastest
 			#define pi = 3.14159265f

@@ -33,9 +33,9 @@ namespace Zios.Editors{
 			if(assetName.ContainsAny("Index","Outline","Shading","Interface")){
 				importer.wrapMode = TextureWrapMode.Clamp;
 				importer.mipmapEnabled = false;
-				if(assetName.ContainsAny("Outline","Shading","Interface")){importer.SetTextureFormat(TextureImporterFormat.BC7);}
+				//if(assetName.ContainsAny("Outline","Shading","Interface")){importer.SetTextureFormat(TextureImporterFormat.BC7);}
 				if(assetName.ContainsAny("Index")){importer.SetTextureFormat(TextureImporterFormat.BC5);}
-				if(assetName.ContainsAny("Outline","Interface")){importer.filterMode = FilterMode.Trilinear;}
+				//if(assetName.ContainsAny("Outline","Interface")){importer.filterMode = FilterMode.Trilinear;}
 				if(assetName.ContainsAny("Index","Shading")){importer.filterMode = FilterMode.Point;}
 			}
 		}

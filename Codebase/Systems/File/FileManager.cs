@@ -29,7 +29,8 @@ namespace Zios{
 		public static Dictionary<UnityObject,string> assetPaths = new Dictionary<UnityObject,string>();
 		public static Hierarchy<Type,string,string,UnityObject> namedAssets = new Hierarchy<Type,string,string,UnityObject>();
 		static FileManager(){
-			FileManager.dataPath = Application.dataPath;
+			var needsPersistent = !Application.isEditor && Application.platform.MatchesAny("WebGLPlayer","IPhonePlayer","MetroPlayerX86","MetroPlayerX64","MetroPlayerARM");
+			FileManager.dataPath = needsPersistent ? Application.persistentDataPath : Application.dataPath;
 			FileManager.Refresh();
 		}
 		public static void Monitor(){

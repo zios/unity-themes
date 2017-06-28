@@ -65,6 +65,7 @@ namespace Zios{
 			return null;
 		}
 		public static Type GetSingleton<Type>(bool create=true) where Type : ScriptableObject{
+			if(Utility.IsSwitching()){return null;}
 			var name = typeof(Type).Name;
 			return FileManager.GetAsset<Type>(name+".asset",false) ?? ScriptableObject.FindObjectOfType<Type>() ?? create ? Utility.CreateSingleton("Assets/Settings/"+name).As<Type>() : null;
 		}
@@ -97,7 +98,7 @@ namespace Zios{
 			return EditorApplication.isPaused;
 		}
 		public static bool IsSwitching(){
-			return EditorApplication.isPlayingOrWillChangePlaymode && !Application.isPlaying;
+			return EditorApplication.isPlayingOrWillChangePlaymode;
 		}
 		public static bool IsBusy(){
 			return EventDetector.loading || Application.isLoadingLevel || EditorApplication.isPlayingOrWillChangePlaymode || EditorApplication.isCompiling || EditorApplication.isUpdating;
