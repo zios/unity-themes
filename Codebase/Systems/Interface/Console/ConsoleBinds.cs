@@ -35,7 +35,7 @@ namespace Zios.Interface{
 		}
 		public static void LoadBinds(){
 			Console.AddBind("BackQuote","console");
-			if(!Application.isWebPlayer && Console.Get().configFile != ""){return;}
+			if(Console.Get().configFile != ""){return;}
 			if(!Utility.HasPlayerPref("binds")){
 				Utility.SetPlayerPref<string>("binds","|");
 			}
@@ -86,7 +86,7 @@ namespace Zios.Interface{
 				if(data.repeat){bindString += "-" + data.repeatDelay;}
 				bindString += "|";
 			}
-			if(Application.isWebPlayer || Console.Get().configFile == ""){
+			if(Console.Get().configFile == ""){
 				bindString = bindString.Trim('|') + "|";
 				Utility.SetPlayerPref<string>("binds",bindString);
 			}

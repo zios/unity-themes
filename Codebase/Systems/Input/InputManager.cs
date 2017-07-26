@@ -169,8 +169,8 @@ namespace Zios.Inputs{
 				Locate.Find(path).SetActive(true);
 				Locate.Find(path+"Text-Key").GetComponent<Text>().text = action.name;
 				Locate.Find(path+"Text-Profile").GetComponent<Text>().text = "<size=100><color=#888888FF>"+profile.name+"</color></size>\nProfile";
-				Locate.Find(path+"Icon-Gamepad").GetComponent<Image>().sprite = action.helpImage;
 				Locate.Find(path+"Icon-Gamepad").SetActive(!action.helpImage.IsNull());
+				Locate.Find(path+"Icon-Gamepad/"+action.helpImage).SetActive(!action.helpImage.IsNull());
 				if(this.waitForRelease){
 					foreach(var key in this.lastInput.Keys.ToList()){this.lastInput[key] = 0;}
 					this.waitForRelease = this.waitForRelease && this.lastInput.Count != 0;
@@ -183,6 +183,7 @@ namespace Zios.Inputs{
 				progress.GetComponent<Image>().fillAmount = InputManager.registerTime-(timeHeld-Time.realtimeSinceStartup);
 				if(!this.waitForRelease && !targetInput.Key.IsEmpty()){
 					this.waitForRelease = true;
+					Locate.Find(path+"Icon-Gamepad/"+action.helpImage).SetActive(false);
 					var inputName = targetInput.Key;
 					string device = "Keyboard";
 					string groupName = group.name.ToPascalCase();

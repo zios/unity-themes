@@ -27,11 +27,11 @@ namespace Zios.Inputs{
 			InputGroup.Setup();
 			foreach(var group in InputManager.Get().groups){
 				foreach(var action in group.actions){
-					var helpPath = FileManager.GetPath(action.helpImage);
+					//var helpPath = FileManager.GetPath(action.helpImage);
 					var options = action.options.ToInt();
 					contents = contents.AddLine("["+group.name.ToPascalCase()+"-"+action.name.ToPascalCase()+"]");
 					if(options != 0){contents = contents.AddLine("Options " + options);}
-					if(!helpPath.IsEmpty()){contents = contents.AddLine("HelpImage " + helpPath);}
+					contents = contents.AddLine("HelpImage ");
 					var transition = action.transition;
 					if(transition.time != 0.5f){contents = contents.AddLine("Transition-Time " + transition.time);}
 					if(transition.speed != 3){contents = contents.AddLine("Transition-Speed " + transition.speed);}
@@ -78,7 +78,7 @@ namespace Zios.Inputs{
 				inputAction.name = action;
 				inputAction.Setup(inputGroup.name,manager);
 				if(name.Contains("Options")){inputAction.options = value.ToInt().ToEnum<InputActionOptions>();}
-				if(name.Contains("HelpImage")){inputAction.helpImage = FileManager.GetAsset<Sprite>(value);}
+				if(name.Contains("HelpImage")){inputAction.helpImage = value;}
 				if(name.Contains("Time")){inputAction.transition.time = value.ToFloat();}
 				if(name.Contains("Speed")){inputAction.transition.speed = value.ToFloat();}
 				if(name.Contains("Acceleration")){inputAction.transition.acceleration.Deserialize(value);}

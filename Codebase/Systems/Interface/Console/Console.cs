@@ -49,7 +49,7 @@ namespace Zios.Interface{
 			Console.singleton = this;
 			this.OnValidate();
 			Application.logMessageReceived += Console.HandleLog;
-			if(!this.logFile.IsEmpty() && !Application.isWebPlayer){
+			if(!this.logFile.IsEmpty()){
 				string logPath = Application.persistentDataPath + "/" + this.logFile;
 				try{
 					using(StreamWriter file = new StreamWriter(logPath,true)){
@@ -539,10 +539,6 @@ namespace Zios.Interface{
 		public static void SaveConsoleFile(string[] values){
 			string fileName = values.Length > 1 ? values[1] : "ConsoleDump.txt";
 			string path = "";
-			if(Application.isWebPlayer){
-				Console.AddLog("^3Console log dumping not supported in web player.");
-				return;
-			}
 			if(fileName == ""){return;}
 			using(StreamWriter file = new StreamWriter(fileName,true)){
 				foreach(string line in Console.log){

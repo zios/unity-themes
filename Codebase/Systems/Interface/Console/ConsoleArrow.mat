@@ -7,162 +7,152 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: ConsoleArrow
-  m_Shader: {fileID: 10755, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: ed86ec17a50003c4dbe9e48ca716b350, type: 3}
   m_ShaderKeywords: 'ATLASSTATE_OFF
 
-    SCROLLSTATE_OFF WARPDISTORT_ON WARPTYPE_NONE _EMISSION'
-  m_LightmapFlags: 1
+    SCROLLSTATE_OFF COLORMODE_NORMAL CULLMODE_BACK DIRECTIONALSTATE_ON LIGHTINGTYPE_LAMBERTSTEPPED
+    POINTSTATE_ON SCROLLSTATE_OFF SHADINGTYPE_MANUAL TEXTUREBLEND_MULTIPLY TEXTUREMAPPING_UV
+    TEXTURESTATE_ON WARPDISTORT_OFF WARPTYPE_NONE ZTESTMODE_EQUAL ZWRITEMODE_ON _ALPHATEST_ON'
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
+  disabledShaderPasses: []
   m_SavedProperties:
-    serializedVersion: 2
+    serializedVersion: 3
     m_TexEnvs:
-    - first:
-        name: _BumpMap
-      second:
+    - _AlphaTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: _DetailAlbedoMap
-      second:
+    - _BumpMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: _DetailMask
-      second:
+    - _Detail:
+        m_Texture: {fileID: 2800000, guid: 3bec0e21ee59a614ea03aac084d7e3db, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: _DetailNormalMap
-      second:
+    - _DetailMask:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: _EmissionMap
-      second:
+    - _DetailNormalMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: _MainTex
-      second:
+    - _EmissionMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: _MetallicGlossMap
-      second:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 3bec0e21ee59a614ea03aac084d7e3db, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: _OcclusionMap
-      second:
+    - _OcclusionMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: _ParallaxMap
-      second:
+    - _ParallaxMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - first:
-        name: textureMap
-      second:
-        m_Texture: {fileID: 2800000, guid: 2c667a1cb359554488e79fcfe3e5e4d1, type: 3}
+    - _SpecGlossMap:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - diffuseMap:
+        m_Texture: {fileID: 2800000, guid: 3bec0e21ee59a614ea03aac084d7e3db, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - indexMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - outlineMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - shadingAtlas:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - shadingTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - textureMap:
+        m_Texture: {fileID: 2800000, guid: 3bec0e21ee59a614ea03aac084d7e3db, type: 3}
+        m_Scale: {x: 1, y: 0}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - first:
-        name: _BumpScale
-      second: 1
-    - first:
-        name: _Cutoff
-      second: 0.5
-    - first:
-        name: _DetailNormalMapScale
-      second: 1
-    - first:
-        name: _DstBlend
-      second: 0
-    - first:
-        name: _GlossMapScale
-      second: 1
-    - first:
-        name: _Glossiness
-      second: 0.5
-    - first:
-        name: _GlossyReflections
-      second: 1
-    - first:
-        name: _Metallic
-      second: 0
-    - first:
-        name: _Mode
-      second: 0
-    - first:
-        name: _OcclusionStrength
-      second: 1
-    - first:
-        name: _Parallax
-      second: 0.02
-    - first:
-        name: _SmoothnessTextureChannel
-      second: 0
-    - first:
-        name: _SpecularHighlights
-      second: 1
-    - first:
-        name: _SrcBlend
-      second: 1
-    - first:
-        name: _UVSec
-      second: 0
-    - first:
-        name: _ZWrite
-      second: 1
-    - first:
-        name: scrollState
-      second: 0
-    - first:
-        name: scrollX
-      second: 0.05
-    - first:
-        name: scrollY
-      second: 0.03
-    - first:
-        name: triplanarScale
-      second: 1
-    - first:
-        name: warpDistort
-      second: 1
-    - first:
-        name: warpFrequency
-      second: 13.3
-    - first:
-        name: warpPowerX
-      second: 0.3
-    - first:
-        name: warpPowerY
-      second: 1.39
-    - first:
-        name: warpScale
-      second: 2.16
-    - first:
-        name: warpType
-      second: 0
+    - PixelSnap: 0
+    - _BumpScale: 1
+    - _ColorMask: 15
+    - _Cutoff: 0.434
+    - _DetailNormalMapScale: 1
+    - _DstBlend: 0
+    - _EnableExternalAlpha: 0
+    - _GlossMapScale: 1
+    - _Glossiness: 0.511
+    - _GlossyReflections: 1
+    - _Metallic: 0
+    - _Mode: 1
+    - _OcclusionStrength: 1
+    - _Parallax: 0.02
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UVSec: 0
+    - _UseUIAlphaClip: 0
+    - _ZWrite: 1
+    - alpha: 1
+    - alphaCutoff: 0
+    - blendLights: 0
+    - colorMode: 0
+    - cullMode: 2
+    - directionalState: 1
+    - lightingSteps: 3
+    - lightingType: 3
+    - outlineLength: 0.004
+    - pointState: 1
+    - scrollState: 0
+    - scrollX: 2
+    - scrollY: 2
+    - shadingType: 1
+    - textureBlend: 0
+    - textureMapping: 0
+    - textureState: 1
+    - triplanarScale: 0.1
+    - warpDistort: 0
+    - warpFrequency: 0
+    - warpPowerX: 0
+    - warpPowerY: 0
+    - warpScale: 0
+    - warpType: 0
+    - zTestMode: 4
+    - zWriteMode: 1
     m_Colors:
-    - first:
-        name: _Color
-      second: {r: 1, g: 1, b: 1, a: 1}
-    - first:
-        name: _EmissionColor
-      second: {r: 0, g: 0, b: 0, a: 1}
-    - first:
-        name: baseColor
-      second: {r: 1, g: 1, b: 1, a: 0.228}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+    - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+    - baseColor: {r: 1, g: 1, b: 1, a: 1}
+    - outlineColor: {r: 0, g: 0, b: 0, a: 1}
+    - shadingLitColor: {r: 1, g: 1, b: 1, a: 1}
+    - shadingUnlitColor: {r: 0, g: 0, b: 0, a: 0.5}

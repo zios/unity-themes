@@ -8,70 +8,32 @@ Material:
   m_PrefabInternal: {fileID: 0}
   m_Name: ConsoleBackground
   m_Shader: {fileID: 4800000, guid: f4b5aaf6a22722744a7421a147dfefdf, type: 3}
-  m_ShaderKeywords: ATLASSTATE_OFF
-   
-    SCROLLSTATE_ON
-    WARPDISTORT_ON
-    WARPTYPE_OFFSET
+  m_ShaderKeywords: 'ATLASSTATE_OFF
+
+    SCROLLSTATE_ON WARPDISTORT_ON WARPTYPE_OFFSET'
   m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
   m_CustomRenderQueue: 2000
   stringTagMap: {}
+  disabledShaderPasses: []
   m_SavedProperties:
-    serializedVersion: 2
+    serializedVersion: 3
     m_TexEnvs:
-      data:
-        first:
-          name: textureMap
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      
+    - textureMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
-      data:
-        first:
-          name: triplanarScale
-        second: 16
-      data:
-        first:
-          name: scrollState
-        second: 1
-      data:
-        first:
-          name: scrollX
-        second: 0.5
-      data:
-        first:
-          name: scrollY
-        second: 0.5
-      data:
-        first:
-          name: warpType
-        second: 1
-      data:
-        first:
-          name: warpDistort
-        second: 1
-      data:
-        first:
-          name: warpFrequency
-        second: 0
-      data:
-        first:
-          name: warpPowerX
-        second: 5
-      data:
-        first:
-          name: warpPowerY
-        second: -1.67
-      data:
-        first:
-          name: warpScale
-        second: -0.73
-      
+    - scrollState: 1
+    - scrollX: 0.5
+    - scrollY: 0.5
+    - triplanarScale: 16
+    - warpDistort: 1
+    - warpFrequency: 0
+    - warpPowerX: 5
+    - warpPowerY: -1.67
+    - warpScale: -0.73
+    - warpType: 1
     m_Colors:
-      data:
-        first:
-          name: baseColor
-        second: {r: 0.16858754, g: 0.0034061454, b: 0.46323532, a: 1}
-      
+    - baseColor: {r: 0.16858754, g: 0.0034061454, b: 0.46323532, a: 1}

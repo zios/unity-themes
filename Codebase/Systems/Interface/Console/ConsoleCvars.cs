@@ -53,7 +53,7 @@ namespace Zios.Interface{
 			Console.AddKeyword(name,Console.HandleCvar);
 		}
 		public static void LoadCvar(Cvar data){
-			if(!Application.isWebPlayer && Console.Get().configFile != ""){return;}
+			if(Console.Get().configFile != ""){return;}
 			if(Utility.HasPlayerPref(data.fullName)){
 				object value = data.value.Get();
 				Type type = data.value.type;
@@ -80,7 +80,7 @@ namespace Zios.Interface{
 				if(item.Key.StartsWith("#")){continue;}
 				Cvar data = item.Value;
 				object current = data.value.Get();
-				if(Application.isWebPlayer || Console.Get().configFile == ""){
+				if(Console.Get().configFile == ""){
 					Utility.SetPlayerPref(data.fullName,current);
 				}
 				else{
