@@ -29,7 +29,7 @@ namespace Zios{
 		public static Dictionary<UnityObject,string> assetPaths = new Dictionary<UnityObject,string>();
 		public static Hierarchy<Type,string,string,UnityObject> namedAssets = new Hierarchy<Type,string,string,UnityObject>();
 		static FileManager(){
-			var needsPersistent = !Application.isEditor && Application.platform.MatchesAny("WebGLPlayer","IPhonePlayer","MetroPlayerX86","MetroPlayerX64","MetroPlayerARM");
+			var needsPersistent = !Application.isEditor && Application.platform.MatchesAny("IPhonePlayer","MetroPlayerX86","MetroPlayerX64","MetroPlayerARM");
 			FileManager.dataPath = needsPersistent ? Application.persistentDataPath : Application.dataPath;
 			FileManager.Refresh();
 		}
@@ -137,11 +137,11 @@ namespace Zios{
 			FileManager.filesByType.Clear();
 			FileManager.folders.Clear();
 			FileManager.cache.Clear();
-			FileManager.root = Application.isEditor ? FileManager.dataPath.GetDirectory() : FileManager.dataPath;
+			FileManager.root = Application.isEditor || Application.platform.MatchesAny("WindowsPlayer","OSXPlayer","LinuxPlayer") ? FileManager.dataPath.GetDirectory() : FileManager.dataPath;
 			var needsScan = !Application.isEditor || (Application.isEditor && !Utility.IsPlaying());
 			if(needsScan){
 				FileManager.Scan(FileManager.root);
-				if(Application.isEditor){FileManager.Scan(FileManager.root+"/Temp",true);}
+				if(Application.isEditor || Application.platform.MatchesAny("WindowsPlayer","OSXPlayer","LinuxPlayer")){FileManager.Scan(FileManager.root+"/Temp",true);}
 				if(FileManager.fullScan){FileManager.Scan(FileManager.dataPath,true);}
 				FileManager.Save();
 			}

@@ -98,7 +98,7 @@ namespace Zios{
 			return EditorApplication.isPaused;
 		}
 		public static bool IsSwitching(){
-			return EditorApplication.isPlayingOrWillChangePlaymode;
+			return EditorApplication.isPlayingOrWillChangePlaymode || EditorApplication.isCompiling;
 		}
 		public static bool IsBusy(){
 			return EventDetector.loading || Application.isLoadingLevel || EditorApplication.isPlayingOrWillChangePlaymode || EditorApplication.isCompiling || EditorApplication.isUpdating;
