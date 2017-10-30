@@ -29,10 +29,10 @@ namespace Zios.Editors.SpriteEditors{
 			this.gridSilver = FileManager.GetAsset<Texture2D>("TransparencySilver.png");
 			this.UI = FileManager.GetAsset<GUISkin>("Sprite.guiskin");
 			this.spriteMesh = FileManager.GetAsset<Mesh>("Sprite.fbx");
-			this.shaderNormal = Shader.Find("Zios/Shared/Sprite");
-			this.shaderFlat = Shader.Find("Zios/Shared/Sprite + Particle");
-			this.shaderEditor = Shader.Find("Zios/Shared/Sprite + Clip");
-			this.shaderEmbed = Shader.Find("Zios/Shared/Sprite + Embedded");
+			this.shaderNormal = Shader.Find("Hidden/Zios/Sprite");
+			this.shaderFlat = Shader.Find("Hidden/Zios/Sprite + Particle");
+			this.shaderEditor = Shader.Find("Hidden/Zios/Sprite + Clip");
+			this.shaderEmbed = Shader.Find("Hidden/Zios/Sprite + Embedded");
 			this.spritePreview = new Material(this.shaderEditor);
 			this.spriteBrush = new Material(this.shaderNormal);
 			this.spriteEmbed = new Material(this.shaderEmbed);
