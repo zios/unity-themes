@@ -65,7 +65,7 @@ namespace Zios.Animations{
 				if(this.lookup.ContainsKey(this.defaultAnimationName)){
 					this.defaultAnimation = this.lookup[this.defaultAnimationName];
 					this.defaultAnimation.active = true;
-					this.current[name] = this.defaultAnimation;
+					this.current[this.name] = this.defaultAnimation;
 				}
 				else{
 					Debug.LogWarning("[AnimationController] Default animation (" + this.defaultAnimationName + ") not found.",this.gameObject);

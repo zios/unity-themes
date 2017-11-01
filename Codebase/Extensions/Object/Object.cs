@@ -143,7 +143,7 @@ namespace Zios{
 			else if(current is byte){return current.As<byte>().Serialize();}
 			else if(current is short){return current.As<short>().Serialize();}
 			else if(current is double){return current.As<double>().Serialize();}
-			else if(current is ICollection){return current.As<IEnumerable<object>>().Serialize();}
+			else if(current is ICollection){return current.As<Array>().Cast<object>().Serialize();}
 			return current.ToString();
 		}
 		//============================

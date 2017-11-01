@@ -12,7 +12,10 @@ namespace Zios.Interface{
 		public List<string> buffer = new List<string>();
 		private List<string> cache = new List<string>();
 		private List<Action<string>> callback = new List<Action<string>>();
-		public void OnEnable(){Undo.Setup();}
+		public void OnEnable(){
+			Undo.Setup();
+			this.SetupHooks();
+		}
 		public static void Reset(){
 			Undo.instance.buffer.Clear();
 			Undo.instance.cache.Clear();

@@ -103,7 +103,7 @@ namespace Zios{
 			}
 			return (V)methods[0].Invoke(current,parameters);
 		}
-		public static object CallMethod(this string current,params object[] parameters){
+		public static object CallPath(this string current,params object[] parameters){
 			if(Class.lookup.Count < 1){
 				foreach(var assembly in Class.GetAssemblies()){
 					var types = assembly.GetTypes();
@@ -112,13 +112,14 @@ namespace Zios{
 					}
 				}
 			}
-			var name = current.Split(".").Last();
-			var path = current.Remove("."+name);
-			foreach(var item in Class.lookup){
+			var methodName = current.Split(".").Last();
+			var path = current.Remove("."+methodName);
+			foreach(var member in Class.lookup){
 				Type existing;
-				var assembly = item.Value;
-				if(assembly.TryGetValue(path,out existing)){
-					var method = Class.GetMethod(existing,name);
+				var assembly = member.Value;
+				var found = assembly.TryGetValue(path,out existing);
+				if(existing != null){
+					var method = Class.GetMethod(existing,methodName);
 					if(method.IsNull()){
 						if(ObjectExtension.debug){Debug.Log("[ObjectReflection] Cannot call. Method does not exist -- " + current + "()");}
 						return null;
@@ -127,7 +128,7 @@ namespace Zios{
 						if(ObjectExtension.debug){Debug.Log("[ObjectReflection] Cannot call. Method is not static -- " + current + "()");}
 						return null;
 					}
-					var value = existing.CallExactMethod(name,parameters);
+					var value = existing.CallExactMethod(methodName,parameters);
 					return value ?? true;
 				}
 			}

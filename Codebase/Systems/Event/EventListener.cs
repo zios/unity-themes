@@ -66,7 +66,7 @@ namespace Zios.Event{
 			}
 			else{
 				object value = values[0];
-				if(this.method is MethodFull){((MethodFull)this.method)(values);}
+				if(this.method is MethodObjects){((MethodObjects)this.method)(values);}
 				else if(value is object && this.method is MethodObject){((MethodObject)this.method)((object)value);}
 				else if(value is int && this.method is MethodInt){((MethodInt)this.method)((int)value);}
 				else if(value is float && this.method is MethodFloat){((MethodFloat)this.method)((float)value);}

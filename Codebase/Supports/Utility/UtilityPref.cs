@@ -35,7 +35,7 @@ namespace Zios{
 			ObjectExtension.debug = showWarnings;
 			foreach(var method in callbacks.Split("|")){
 				if(called.Contains(method) || method.IsEmpty()){continue;}
-				if(!method.CallMethod().IsNull()){
+				if(!method.CallPath().IsNull()){
 					success.Add(method);
 				}
 				called.Add(method);
@@ -74,6 +74,7 @@ namespace Zios{
 			else if(value is short){PlayerPrefs.SetInt(name,value.As<short>().ToInt());}
 			else if(value is double){PlayerPrefs.SetFloat(name,value.As<double>().ToFloat());}
 			else if(value is ICollection){PlayerPrefs.SetString(name,value.As<IEnumerable>().SerializeAuto());}
+			else if(typeof(T).IsEnum){PlayerPrefs.SetInt(name,value.As<int>());}
 		}
 		public static T GetPlayerPref<T>(string name,T fallback=default(T)){
 			if(Utility.cachePlayer.ContainsKey(name)){return Utility.cachePlayer[name].As<T>();}
@@ -87,6 +88,7 @@ namespace Zios{
 			else if(fallback is short){value = PlayerPrefs.GetInt(name,fallback.As<short>().ToInt());}
 			else if(fallback is double){value = PlayerPrefs.GetFloat(name,fallback.As<double>().ToFloat());}
 			else if(fallback is ICollection){value = PlayerPrefs.GetString(name,fallback.As<IEnumerable>().SerializeAuto());}
+			else if(typeof(T).IsEnum){value = PlayerPrefs.GetInt(name,fallback.As<int>());}
 			Utility.cachePlayer[name] = value;
 			return value.As<T>();
 		}

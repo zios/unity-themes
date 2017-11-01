@@ -88,6 +88,7 @@ namespace Zios{
 			//return (current.ToInt() & bits) == bits;
 			//return (current.ToInt() | (1<<mask.ToInt())) == current.ToInt();
 		}
+		public static bool ContainsAny(this Enum current,params string[] values){return current.HasAny(values);}
 		public static bool Contains(this Enum current,params string[] values){return current.Has(values);}
 		public static bool Has(this Enum current,Enum mask){return current.Contains(mask);}
 		public static bool Has(this Enum current,params string[] values){return current.HasAny(values);}

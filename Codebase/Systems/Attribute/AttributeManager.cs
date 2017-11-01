@@ -85,6 +85,7 @@ namespace Zios.Attributes{
 			AttributeManager.singleton = this;
 			AttributeManager.nextRefresh = 0;
 			this.SetupEvents();
+			this.SetupHooks();
 		}
 		public void SetupEvents(){
 			if(!Application.isPlaying){

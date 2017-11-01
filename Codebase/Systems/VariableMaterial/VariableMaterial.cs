@@ -23,18 +23,16 @@ namespace Zios{
 			return false;
 		}
 		public static List<Material> GetAll(){
-			var materialFiles = FileManager.FindAll("*.mat");
-			var materials = new List<Material>();
-			foreach(var file in materialFiles){
-				var material = file.GetAsset<Material>();
+			var materials = FileManager.GetAssets<Material>("*.mat");
+			var variableMaterials = new List<Material>();
+			foreach(var material in materials){
 				if(material.IsNull()){continue;}
 				string editorName = material.shader.GetVariable<string>("customEditor");
 				if(editorName.Contains("VariableMaterialEditor") || VariableMaterial.IsBroken(material)){
-					materials.Add(material);
+					variableMaterials.Add(material);
 				}
 			}
-			materials = materials.Distinct().ToList();
-			return materials;
+			return variableMaterials;
 		}
 		public static void Refresh(params UnityObject[] targets){
 			VariableMaterial.Refresh(false,targets);

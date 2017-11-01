@@ -22,6 +22,9 @@ namespace Zios.Interface{
 		public static void ClearProgressBar(){
 			EditorUtility.ClearProgressBar();
 		}
+		public static void DrawMenu(this IEnumerable<string> current,GenericMenu.MenuFunction2 callback,IEnumerable<string> selected=null,IEnumerable<string> disabled=null){
+			current.DrawMenu(GUILayoutUtility.GetLastRect(),callback,selected,disabled);
+		}
 		public static void DrawMenu(this IEnumerable<string> current,Rect area,GenericMenu.MenuFunction2 callback,IEnumerable<string> selected=null,IEnumerable<string> disabled=null){
 			if(selected.IsNull()){selected = new List<string>();}
 			if(disabled.IsNull()){disabled = new List<string>();}

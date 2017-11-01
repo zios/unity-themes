@@ -93,6 +93,13 @@ namespace Zios{
 			if(current > max){return max;}
 			return current;
 		}
+		public static float NormalizeRange(this float current,float min,float max){
+			var result = (current-min)/(max-min);
+			return result.Saturate();
+		}
+		public static double ClampStep(this float current,float stepSize){
+			return (Math.Round(current / stepSize) * stepSize);
+		}
 		public static float LerpRelative(this float current,float start,float end){
 			return ((current-start)/(end-start)).Saturate();
 		}

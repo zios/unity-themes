@@ -12,7 +12,10 @@ namespace Zios.Event{
 			EventsManager.singleton = EventsManager.singleton ?? Utility.GetSingleton<EventsManager>();
 			return EventsManager.singleton;
 		}
-		public void OnEnable(){this.Update();}
+		public void OnEnable(){
+			this.Update();
+			this.SetupHooks();
+		}
 		public void Update(){
 			Events.disabled = this.disabled;
 			Events.debugScope = this.debugScope;

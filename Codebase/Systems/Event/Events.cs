@@ -44,7 +44,7 @@ namespace Zios.Event{
 	public delegate void MethodBool(bool value);
 	public delegate void MethodVector2(Vector2 value);
 	public delegate void MethodVector3(Vector3 value);
-	public delegate void MethodFull(object[] values);
+	public delegate void MethodObjects(object[] values);
 	public delegate void MethodStep(object collection,int value);
 	public delegate object MethodReturn();
 	public delegate object MethodObjectReturn(object value);
@@ -157,16 +157,17 @@ namespace Zios.Event{
 		}
 		public static EventListener Add(string name,Method method,params object[] targets){return Events.Add(name,(object)method,-1,targets);}
 		public static EventListener Add(string name,MethodObject method,params object[] targets){return Events.Add(name,(object)method,-1,targets);}
-		public static EventListener Add(string name,MethodFull method,params object[] targets){return Events.Add(name,(object)method,-1,targets);}
+		public static EventListener Add(string name,MethodObjects method,params object[] targets){return Events.Add(name,(object)method,-1,targets);}
 		public static EventListener Add(string name,MethodString method,params object[] targets){return Events.Add(name,(object)method,-1,targets);}
 		public static EventListener Add(string name,MethodInt method,params object[] targets){return Events.Add(name,(object)method,-1,targets);}
 		public static EventListener Add(string name,MethodFloat method,params object[] targets){return Events.Add(name,(object)method,-1,targets);}
 		public static EventListener Add(string name,MethodBool method,params object[] targets){return Events.Add(name,(object)method,-1,targets);}
 		public static EventListener Add(string name,MethodVector2 method,params object[] targets){return Events.Add(name,(object)method,-1,targets);}
 		public static EventListener Add(string name,MethodVector3 method,params object[] targets){return Events.Add(name,(object)method,-1,targets);}
+		public static EventListener Add<Type>(string name,Type method,params object[] targets){return Events.Add(name,(object)method,-1,targets);}
 		public static EventListener AddLimited(string name,Method method,int amount=1,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
 		public static EventListener AddLimited(string name,MethodObject method,int amount=1,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
-		public static EventListener AddLimited(string name,MethodFull method,int amount=1,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
+		public static EventListener AddLimited(string name,MethodObjects method,int amount=1,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
 		public static EventListener AddLimited(string name,MethodString method,int amount=1,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
 		public static EventListener AddLimited(string name,MethodInt method,int amount=1,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
 		public static EventListener AddLimited(string name,MethodFloat method,int amount=1,params object[] targets){return Events.Add(name,(object)method,amount,targets);}
@@ -212,7 +213,7 @@ namespace Zios.Event{
 		public static void OnEventsChanged(){Events.Call("On Events Changed");}
 		public static void Remove(string name,Method method,params object[] targets){Events.Remove(name,(object)method,targets);}
 		public static void Remove(string name,MethodObject method,params object[] targets){Events.Remove(name,(object)method,targets);}
-		public static void Remove(string name,MethodFull method,params object[] targets){Events.Remove(name,(object)method,targets);}
+		public static void Remove(string name,MethodObjects method,params object[] targets){Events.Remove(name,(object)method,targets);}
 		public static void Remove(string name,MethodString method,params object[] targets){Events.Remove(name,(object)method,targets);}
 		public static void Remove(string name,MethodInt method,params object[] targets){Events.Remove(name,(object)method,targets);}
 		public static void Remove(string name,MethodFloat method,params object[] targets){Events.Remove(name,(object)method,targets);}

@@ -28,8 +28,14 @@ namespace Zios.Animations{
 	}
 	[Serializable]
 	public class AnimationConfiguration{
+		public static Store<SpeedUnit> rateMode = new Store<SpeedUnit>("AnimationSettings.rateMode");
+		public static Store<SpeedUnit> speedMode = new Store<SpeedUnit>("AnimationSettings.speedMode",SpeedUnit.Scalar);
 		public string name;
-		public float fps;
+		public float rate;
+		public float speed;
+		public float originalSpeed;
+		[NonSerialized] public double time = 0;
+		[NonSerialized] public double lastFrame = 0;
 		public AnimationBlendMode blendMode;
 		public WrapMode wrapMode;
 		public Animation parent;
@@ -37,7 +43,9 @@ namespace Zios.Animations{
 		public static AnimationConfiguration Create(AnimationState state){
 			var config = new AnimationConfiguration();
 			config.name = state.name;
-			config.fps = state.clip.frameRate;
+			config.rate = AnimationConfiguration.rateMode == SpeedUnit.Scalar ? 1 : state.clip.frameRate;
+			config.speed = AnimationConfiguration.speedMode == SpeedUnit.Scalar ? state.speed : state.speed*state.clip.frameRate;
+			config.originalSpeed = state.clip.frameRate;
 			config.blendMode = state.blendMode;
 			config.wrapMode = state.clip.wrapMode;
 			return config;
@@ -45,10 +53,13 @@ namespace Zios.Animations{
 		public void Apply(){
 			var state = this.parent[this.name];
 			if(state != null && state.clip != null){
-				state.speed = this.fps / state.clip.frameRate;
+				state.clip.frameRate = AnimationConfiguration.rateMode == SpeedUnit.Scalar ? this.rate*this.originalSpeed : this.rate;
+				state.speed = AnimationConfiguration.speedMode == SpeedUnit.Scalar ? this.speed : this.speed/this.originalSpeed;
 				state.blendMode = this.blendMode;
+				state.wrapMode = this.wrapMode;
 				state.clip.wrapMode = this.wrapMode;
 			}
 		}
 	}
+	public enum SpeedUnit{Framerate,Scalar};
 }
