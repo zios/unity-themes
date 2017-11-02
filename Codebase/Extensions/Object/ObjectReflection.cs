@@ -117,7 +117,7 @@ namespace Zios{
 			foreach(var member in Class.lookup){
 				Type existing;
 				var assembly = member.Value;
-				var found = assembly.TryGetValue(path,out existing);
+				assembly.TryGetValue(path,out existing);
 				if(existing != null){
 					var method = Class.GetMethod(existing,methodName);
 					if(method.IsNull()){

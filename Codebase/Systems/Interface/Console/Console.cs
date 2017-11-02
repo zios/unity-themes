@@ -195,10 +195,8 @@ namespace Zios.Interface{
 		}
 		public static void AddLog(string text,bool system=false){
 			if(Console.disableLogging){return;}
-			if(!Utility.IsPlaying()){
-				Application.logMessageReceived -= Console.HandleLog;
+			if(Application.isEditor){
 				Debug.Log(text);
-				Application.logMessageReceived += Console.HandleLog;
 				if(system){return;}
 			}
 			if(Console.logFileUsable){
@@ -220,6 +218,7 @@ namespace Zios.Interface{
 			Console.logPosition = !Console.mouseHeld ? 1.0f : lastPosition / Console.log.Count;
 		}
 		public static void HandleLog(string text,string trace,LogType type){
+			if(Application.isEditor){return;}
 			if(type == LogType.Error){text = "^1" + text + "^10 -- ^7" + trace;}
 			if(type == LogType.Assert){text = "^1" + text + "^10 -- ^7" + trace;}
 			if(type == LogType.Warning){text = "^8" + text + "^10 -- ^7" + trace;}

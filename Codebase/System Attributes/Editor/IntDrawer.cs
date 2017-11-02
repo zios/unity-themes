@@ -7,7 +7,7 @@ namespace Zios.Editors{
 			EditorUI.Reset();
 			Vector2 limits = property.rangeLimits;
 			float value = property.floatValue;
-			float labelSize = Screen.width * 0.345f;
+			float labelSize = EditorGUIUtility.labelWidth;
 			property.displayName.ToLabel().DrawLabel(position.SetWidth(labelSize));
 			position = position.AddX(labelSize).AddWidth(-labelSize-69);
 			if(limits != Vector2.zero){

@@ -47,7 +47,7 @@ namespace Zios.Interface{
 		private static Font[] fonts = new Font[0];
 		private static Font[] builtinFonts = new Font[0];
 		static Theme(){
-			EditorApplication.playmodeStateChanged += Theme.CheckUpdate;
+			EditorApplication.playModeStateChanged += Theme.CheckUpdate;
 			EditorApplication.update += ThemeWindow.ShowWindow;
 			AppDomain.CurrentDomain.DomainUnload += ThemeWindow.CloseWindow;
 			Events.Add("On Window Reordered",ThemeWindow.CloseWindow);
@@ -163,7 +163,7 @@ namespace Zios.Interface{
 		//=================================
 		// Updating
 		//=================================
-		public static void CheckUpdate(){
+		public static void CheckUpdate(PlayModeStateChange state){
 			if(Theme.separatePlaymodeSettings && !EditorApplication.isPlayingOrWillChangePlaymode){
 				Theme.Reset(true);
 			}

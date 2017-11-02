@@ -57,7 +57,7 @@ namespace Zios{
 			Undo.undoRedoPerformed += ()=>Events.Call("On Redo");
 			PrefabUtility.prefabInstanceUpdated += (GameObject target)=>Events.Call("On Prefab Changed",target);
 			EditorApplication.projectWindowChanged += ()=>Events.Call("On Project Changed");
-			EditorApplication.playmodeStateChanged += ()=>{
+			EditorApplication.playModeStateChanged += (PlayModeStateChange state)=>{
 				Events.Call("On Mode Changed");
 				bool changing = EditorApplication.isPlayingOrWillChangePlaymode;
 				bool playing = Application.isPlaying;
