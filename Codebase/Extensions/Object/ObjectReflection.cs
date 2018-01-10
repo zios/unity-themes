@@ -13,6 +13,7 @@ namespace Zios{
 		public static List<Assembly> assemblies = new List<Assembly>();
 		public static Hierarchy<Assembly,string,Type> lookup = new Hierarchy<Assembly,string,Type>();
 		public static Hierarchy<object,string,bool> warned = new Hierarchy<object,string,bool>();
+		public static Hierarchy<Type,BindingFlags,IList<Type>,string,object> attributedVariables = new Hierarchy<Type,BindingFlags,IList<Type>,string,object>();
 		public static Hierarchy<Type,BindingFlags,IList<Type>,string,object> variables = new Hierarchy<Type,BindingFlags,IList<Type>,string,object>();
 		public static Hierarchy<Type,BindingFlags,string,PropertyInfo> properties = new Hierarchy<Type,BindingFlags,string,PropertyInfo>();
 		public static Hierarchy<Type,BindingFlags,string,FieldInfo> fields = new Hierarchy<Type,BindingFlags,string,FieldInfo>();
@@ -135,6 +136,12 @@ namespace Zios{
 			if(ObjectExtension.debug){Debug.Log("[ObjectReflection] Cannot call. Path not found -- " + current + "()");}
 			return null;
 		}
+		public static object Call(this object current,string name,params object[] parameters){
+			return current.CallMethod<object>(name,allFlags,parameters);
+		}
+		public static V Call<V>(this object current,string name,params object[] parameters){
+			return current.CallMethod<V>(name,allFlags,parameters);
+		}
 		public static object CallMethod(this object current,string name,params object[] parameters){
 			return current.CallMethod<object>(name,allFlags,parameters);
 		}
@@ -165,6 +172,24 @@ namespace Zios{
 			if(!field.IsNull()){return Attribute.GetCustomAttributes(field);}
 			var property = Class.GetProperty(type,name,allFlags);
 			return property.IsNull() ? new Attribute[0] : Attribute.GetCustomAttributes(property);
+		}
+		public static Dictionary<string,object> GetAttributedVariables(this object current,IList<Type> withAttributes=null,BindingFlags flags=allFlags){
+			if(current.IsNull()){return new Dictionary<string,object>();}
+			Type type = current is Type ? (Type)current : current.GetType();
+			var target = Class.attributedVariables.AddNew(type).AddNew(flags);
+			var existing = target.Where(x=>x.Key.SequenceEqual(withAttributes)).FirstOrDefault();
+			if(!existing.IsNull()){return existing.Value;}
+			var matches = target.AddNew(withAttributes);
+			var allVariables = current.GetVariables(null,flags);
+			foreach(var variable in allVariables){
+				var name = variable.Key;
+				var value = variable.Value;
+				foreach(var attribute in withAttributes){
+					if(!value.HasAttribute(name,attribute)){continue;}
+				}
+				matches[name] = value;
+			}
+			return matches;
 		}
 		//=========================
 		// Variables

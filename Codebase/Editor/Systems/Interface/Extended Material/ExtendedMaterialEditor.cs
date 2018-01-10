@@ -147,7 +147,7 @@ namespace Zios.Editors.MaterialEditors{
 			return result;
 		}
 		public bool CheckHover(){
-			if(UnityEvent.current.type == EventType.Repaint){
+			if(Utility.IsRepainting()){
 				Rect last = GUILayoutUtility.GetLastRect();
 				Vector2 mousePosition = UnityEvent.current.mousePosition;
 				return last.Contains(mousePosition);

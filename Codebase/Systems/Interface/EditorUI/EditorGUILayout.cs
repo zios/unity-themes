@@ -163,7 +163,7 @@ namespace Zios.Interface{
 			if(isDictionary){current.As<IDictionary>().Draw(label,style,indention);}
 		}
 		public static void DrawFields(this object current,string header="Fields"){
-			if(header.IsEmpty() || EditorUI.DrawFoldout(header)){
+			if(header.IsEmpty() || EditorUI.DrawFoldout(header,current)){
 				if(!header.IsEmpty()){EditorGUI.indentLevel += 1;}
 				foreach(var item in current.GetVariables()){
 					string label = item.Key.ToTitleCase();

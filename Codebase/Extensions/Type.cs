@@ -1,7 +1,11 @@
 using System;
+using System.Linq;
 using System.Collections;
 namespace Zios{
 	public static class TypeExtension{
+		public static Type GetClass(this Type current,string name){
+			return current.GetNestedTypes(ObjectExtension.allFlags).FirstOrDefault(x=>x.Name==name);
+		}
 		public static bool Has(this Type current,object value){return current.Has(value.GetType());}
 		public static bool Has(this Type current,Type value){
 			if(value.IsInterface){return current.GetInterface(value.Name) != null;}

@@ -1,5 +1,6 @@
 #pragma warning disable 0618
 using UnityEngine;
+using UnityEvent = UnityEngine.Event;
 namespace Zios.Event{
 	[AddComponentMenu("")][ExecuteInEditMode]
 	public class EventDetector : MonoBehaviour{
@@ -27,6 +28,24 @@ namespace Zios.Event{
 			Events.Register("On Enable");
 			Events.Register("On Disable");
 			Events.Register("On GUI");
+			Events.Register("On GUI Repaint");
+			Events.Register("On GUI Layout");
+			Events.Register("On GUI Key Down");
+			Events.Register("On GUI Key Up");
+			Events.Register("On GUI Scroll Wheel");
+			Events.Register("On GUI Context Click");
+			Events.Register("On GUI Mouse Down");
+			Events.Register("On GUI Mouse Up");
+			Events.Register("On GUI Mouse Move");
+			Events.Register("On GUI Mouse Drag");
+			Events.Register("On GUI Mouse Enter Window");
+			Events.Register("On GUI Mouse Leave Window");
+			Events.Register("On GUI Drag Perform");
+			Events.Register("On GUI Drag Exited");
+			Events.Register("On GUI Drag Updated");
+			Events.Register("On GUI Validate Command");
+			Events.Register("On GUI Ignore");
+			Events.Register("On GUI Used");
 			Events.Register("On Destroy");
 			Events.Register("On Validate");
 			Events.Register("On Reset");
@@ -64,7 +83,28 @@ namespace Zios.Event{
 		public virtual void OnApplicationFocus(){Events.Call("On Application Focus");}
 		public virtual void OnApplicationPause(){Events.Call("On Application Pause");}
 		public virtual void OnDisconnectedFromServer(){Events.Call("On Disconnected From Server");}
-		public virtual void OnGUI(){Events.Call("On GUI");}
+		public virtual void OnGUI(){
+			Events.Call("On GUI");
+			var current = UnityEvent.current.type;
+			if(current == EventType.Repaint){Events.Call("On GUI Repaint");}
+			else if(current == EventType.Layout){Events.Call("On GUI Layout");}
+			else if(current == EventType.KeyDown){Events.Call("On GUI Key Down");}
+			else if(current == EventType.KeyUp){Events.Call("On GUI Key Up");}
+			else if(current == EventType.ScrollWheel){Events.Call("On GUI Scroll Wheel");}
+			else if(current == EventType.ContextClick){Events.Call("On GUI Context Click");}
+			else if(current == EventType.MouseDown){Events.Call("On GUI Mouse Down");}
+			else if(current == EventType.MouseUp){Events.Call("On GUI Mouse Up");}
+			else if(current == EventType.MouseMove){Events.Call("On GUI Mouse Move");}
+			else if(current == EventType.MouseDrag){Events.Call("On GUI Mouse Drag");}
+			else if(current == EventType.MouseEnterWindow){Events.Call("On GUI Mouse Enter Window");}
+			else if(current == EventType.MouseLeaveWindow){Events.Call("On GUI Mouse Leave Window");}
+			else if(current == EventType.DragPerform){Events.Call("On GUI Drag Perform");}
+			else if(current == EventType.DragExited){Events.Call("On GUI Drag Exited");}
+			else if(current == EventType.DragUpdated){Events.Call("On GUI Drag Updated");}
+			else if(current == EventType.ValidateCommand){Events.Call("On GUI Validate Command");}
+			else if(current == EventType.Ignore){Events.Call("On GUI Ignore");}
+			else if(current == EventType.Used){Events.Call("On GUI Used");}
+		}
 		public virtual void OnEnable(){Events.Call("On Enable");}
 		public virtual void OnDisable(){Events.Call("On Disable");}
 		public virtual void OnDestroy(){

@@ -94,6 +94,9 @@ namespace Zios{
 		//============================
 		// EditorApplication
 		//============================
+		public static bool IsCompiling(){
+			return EditorApplication.isCompiling;
+		}
 		public static bool IsPaused(){
 			return EditorApplication.isPaused;
 		}

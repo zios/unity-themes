@@ -1,8 +1,10 @@
 using System;
 using System.Linq;
+using System.Collections.Generic;
 using UnityEditor;
 namespace Zios{
 	public static class SerializedPropertyExtension{
+		public static Dictionary<SerializedProperty,object> cache = new Dictionary<SerializedProperty,object>();
 		public static object GetObject(this SerializedProperty current,bool parent=false){
 			return current.GetObject<object>(parent);
 		}
@@ -17,6 +19,7 @@ namespace Zios{
 			return index;
 		}
 		public static T GetObject<T>(this SerializedProperty current,bool parent=false){
+			if(cache.ContainsKey(current)){return (T)cache[current];}
 			object container = current.serializedObject.targetObject;
 			string path = current.propertyPath.Replace(".Array.data[","[");
 			string[] elements = path.Split('.');
@@ -31,6 +34,7 @@ namespace Zios{
 					container = container.GetVariable(element);
 				}
 			}
+			cache[current] = container;
 			return (T)container;
 		}
 	}

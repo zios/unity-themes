@@ -16,7 +16,11 @@ namespace Zios.Interface{
 		public static bool DrawDialog(this string title,string prompt,string confirm,string cancel){
 			return EditorUtility.DisplayDialog(title,prompt,confirm,cancel);
 		}
-		public static bool DrawProgressBar(this string title,string message,float percent){
+		public static bool DrawProgressBar(this string title,string message,float percent,bool inline=false){
+			if(inline){
+				EditorGUI.ProgressBar(EditorGUILayout.GetControlRect().SetWidth(Screen.width-20),percent,title+" - "+message);
+				return false;
+			}
 			return EditorUtility.DisplayCancelableProgressBar(title,message,percent);
 		}
 		public static void ClearProgressBar(){

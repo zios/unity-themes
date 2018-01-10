@@ -19,7 +19,7 @@ Shader "Zios/Standalone/(Megashader)"{
 			[Toggle] yBlending("Y Blending",Float) = 1
 			[Toggle] zBlending("Z Blending",Float) = 1
 		[Header(Mask)]
-			[KeywordEnum(Off,On)] textureMaskState("State",Float) = 1
+			[KeywordEnum(Off,On)] textureMaskState("State",Float) = 0
 			textureMaskMap("Mask Texture",2D) = "white"{}
 			textureBlendMap("Blend Texture",2D) = "white"{}
 		[Header(Reflection)]
@@ -27,13 +27,13 @@ Shader "Zios/Standalone/(Megashader)"{
 			reflectionColor("Color",Color) = (1,1,1,0.3)
 			reflectionMap("Texture",2D) = "white"{}
 		[Header(Lighting)]
-			[KeywordEnum(None,Lambert,LambertHalf,LambertStepped)] lightingType("Type",Float) = 3
+			[KeywordEnum(None,Lambert,LambertHalf,LambertStepped)] lightingType("Type",Float) = 1
 			[Int] lightingSteps("Lighting Steps",Range(2,256)) = 3
 			[KeywordEnum(Off,On)] directionalState("Use Directional Lights",Float) = 1
 			[KeywordEnum(Off,On)] pointState("Use Point Lights",Float) = 1
 		[Header(Shading)]
-			[KeywordEnum(Normal,Manual,Texture)] shadingType("Type",Float) = 1
-			[Toggle] blendLights("Blend Light Color",Float) = 0
+			[KeywordEnum(Normal,Manual,Texture)] shadingType("Type",Float) = 0
+			[Toggle] blendLights("Blend Light Color",Float) = 1
 			shadingLitColor("Shading Manual Lit Color",Color) = (1,1,1,1)
 			shadingUnlitColor("Shading Manual Unlit Color",Color) = (0,0,0,0.5)
 			shadingTexture("Shading Texture",2D) = "white"{}
@@ -63,7 +63,7 @@ Shader "Zios/Standalone/(Megashader)"{
 	}
 	SubShader{
 		Tags{"LightMode"="ForwardBase" "Queue"="Geometry"}
-		/*Pass{
+		Pass{
 			Cull [cullMode]
 			ZTest [zTestMode]
 			ZWrite [zWriteMode]
@@ -74,19 +74,18 @@ Shader "Zios/Standalone/(Megashader)"{
 			#pragma target 3.0
 			float cullDistance;
 			float4 vertexPass(float4 vertex:POSITION) : SV_POSITION{
-				float4 position = UnityObjectToClipPos(vertex);
 				#ifdef DISTANCECULL_ON
 				if(distance(_WorldSpaceCameraPos,mul(unity_ObjectToWorld,vertex)) > cullDistance){
-					position.w = 0;
+					return float4(0,0,0,0);
 				}
 				#endif
-                return position;
+				return UnityObjectToClipPos(vertex);
             }
 			fixed4 pixelPass() : SV_Target{
 				return fixed4(0,0,0,0);
 			}
 			ENDCG
-		}*/
+		}
 		Pass{
 			/*ZWrite Off
 			Cull [cullMode]
@@ -344,6 +343,7 @@ Shader "Zios/Standalone/(Megashader)"{
 			//===========================
 			// Lighting
 			//===========================
+			sampler2D shadingTexture;
 			fixed lighting;
 			fixed lightingSteps;
 			fixed3 pointColor;
@@ -358,7 +358,9 @@ Shader "Zios/Standalone/(Megashader)"{
 			void SetupDirectionalLighting(){
 				#if !defined(LIGHTINGTYPE_NONE) && defined(DIRECTIONALSTATE_ON)
 					directionalIntensity = _WorldSpaceLightPos0.w == 0 ? saturate(dot(input.normal,input.lightNormal)) : 0;
-					#if defined(LIGHTINGTYPE_LAMBERTHALF)
+					#if defined(SHADINGTYPE_TEXTURE)
+						directionalIntensity = length(tex2D(shadingTexture,float2(directionalIntensity,0)).rgb);
+					#elif defined(LIGHTINGTYPE_LAMBERTHALF)
 						directionalIntensity = SetupHalf(directionalIntensity);
 					#elif defined(LIGHTINGTYPE_LAMBERTSTEPPED)
 						directionalIntensity = SetupStepped(directionalIntensity,lightingSteps);
@@ -377,6 +379,14 @@ Shader "Zios/Standalone/(Megashader)"{
 						float4 lightX = unity_4LightPosX0 - input.worldPosition.x;
 						float4 lightY = unity_4LightPosY0 - input.worldPosition.y;
 						float4 lightZ = unity_4LightPosZ0 - input.worldPosition.z;
+						[unroll]
+						for(int index=0;index<4;++index){
+							if(length(unity_LightColor[index])<=0){
+								lightX[index] = 0;
+								lightY[index] = 0;
+								lightZ[index] = 0;
+							}
+						}
 						float4 distance = lightX * lightX;
 						distance += lightY * lightY;
 						distance += lightZ * lightZ;
@@ -385,16 +395,21 @@ Shader "Zios/Standalone/(Megashader)"{
 						intensity += lightY * input.worldNormal.y;
 						intensity += lightZ * input.worldNormal.z;
 						intensity = max(float4(0,0,0,0),intensity*fixedDistance);
-						float4 attenuation = 1.0 / (1.0 + distance * unity_4LightAtten0);
-						pointIntensity = saturate(intensity * attenuation * 2);;
-						#if defined(LIGHTINGTYPE_LAMBERTSTEPPED)
+						float4 light = unity_4LightAtten0;
+						float4 attenuation = 1.0 / (1.0 + distance * light);
+						pointIntensity = saturate(intensity * attenuation);
+						#if defined(SHADINGTYPE_TEXTURE)
+							pointIntensity.x = length(tex2D(shadingTexture,float2(pointIntensity.x,0)).rgb);
+							pointIntensity.y = length(tex2D(shadingTexture,float2(pointIntensity.y,0)).rgb);
+							pointIntensity.z = length(tex2D(shadingTexture,float2(pointIntensity.z,0)).rgb);
+							pointIntensity.w = length(tex2D(shadingTexture,float2(pointIntensity.w,0)).rgb);
+						#elif defined(LIGHTINGTYPE_LAMBERTSTEPPED)
 							pointIntensity = SetupStepped(pointIntensity,lightingSteps);
 						#endif
 						#if defined(BLENDLIGHTS_ON)
-							pointColor  = unity_LightColor[0]*pointIntensity.x;
-							pointColor += unity_LightColor[1]*pointIntensity.y;
-							pointColor += unity_LightColor[2]*pointIntensity.z;
-							pointColor += unity_LightColor[3]*pointIntensity.w;
+							for(int current=3;current>=0;--current){
+								pointColor = lerp(pointColor,unity_LightColor[current].rgb*unity_LightColor[current].a,pointIntensity[current]);
+							}
 						#else
 							pointColor = fixed4(1,1,1,1);
 						#endif
@@ -421,14 +436,17 @@ Shader "Zios/Standalone/(Megashader)"{
 			//===========================
 			// Shading
 			//===========================
-			sampler2D shadingTexture;
 			fixed4 shadingTexture_ST;
 			fixed3 shadingColor;
 			fixed4 shadingLitColor;
 			fixed4 shadingUnlitColor;
 			void SetupShadingLights(){
 				#if !defined(LIGHTINGTYPE_NONE)
-					#if defined(SHADINGTYPE_MANUAL)
+					#if defined(SHADINGTYPE_TEXTURE)
+						fixed4 lookup = tex2D(shadingTexture,float2(lighting,0));
+						shadingColor.rgb = lerp(lookup.rgb*lookup.a,pointColor,pointAverageIntensity);
+						shadingColor.rgb = lerp(shadingColor,directionalColor,saturate(directionalIntensity-pointAverageIntensity));
+					#elif defined(SHADINGTYPE_MANUAL
 						shadingLitColor.rgb = lerp(shadingLitColor,pointColor,pointAverageIntensity);
 						shadingLitColor.rgb = lerp(shadingLitColor,directionalColor,saturate(directionalIntensity-pointAverageIntensity));
 					#else
@@ -468,9 +486,6 @@ Shader "Zios/Standalone/(Megashader)"{
 							lighting = SetupStepped(lighting,lightingSteps);
 						#endif
 						shadingColor = lerp(shadingUnlitColor,shadingLitColor,lighting);
-					#elif defined(SHADINGTYPE_TEXTURE)
-						fixed4 lookup = tex2D(shadingTexture,float2(lighting,0));
-						shadingColor = BlendShading(lookup.rgb*lookup.a,shadingColor);
 					#endif
 					output.color.rgb = BlendShading(output.color,shadingColor);
 				#endif
@@ -619,13 +634,13 @@ Shader "Zios/Standalone/(Megashader)"{
 			vertexOutput vertexPass(vertexInput input){
 				vertexOutput output;
 				UNITY_INITIALIZE_OUTPUT(vertexOutput,output)
-				output.pos = UnityObjectToClipPos(input.vertex);
 				#ifdef DISTANCECULL_ON
 				if(distance(_WorldSpaceCameraPos,mul(unity_ObjectToWorld,input.vertex)) > cullDistance){
-					output.pos.w = 0;
+					output.pos.xyzw = 0;
 					return output;
 				}
 				#endif
+				output.pos = UnityObjectToClipPos(input.vertex);
 				#if defined(TEXTUREMAPPING_UV) || defined(TEXTUREMASKSTATE_ON)
 					output.UV.xy = input.texcoord;
 				#endif
@@ -640,12 +655,12 @@ Shader "Zios/Standalone/(Megashader)"{
 				#ifdef REFLECTIONTYPE_SPHERE
 					float3 view = normalize(ObjSpaceViewDir(input.vertex));
 					float3 reflection = normalize(reflect(normalize(view),input.normal));
-					reflection = mul((float3x3)UNITY_MATRIX_MV,reflection);
+					reflection = UnityObjectToViewPos(reflection);
 					reflection.z += 1;
 					output.reflectionUV = float3((reflection.xy / (2 * length(reflection))) + 0.5,0);
 				#endif
 				#ifdef REFLECTIONTYPE_VIEW
-					output.reflectionUV = normalize(mul(UNITY_MATRIX_MV,input.vertex));
+					output.reflectionUV = normalize(UnityObjectToViewPos(input.vertex));
 				#endif
 				#if defined(TEXTUREMAPPING_TRIPLANAR) || !defined(LIGHTINGTYPE_NONE) || defined(FADESTATE_ON)
 					output.worldNormal = UnityObjectToWorldNormal(input.normal);

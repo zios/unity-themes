@@ -106,5 +106,7 @@ namespace Zios{
 		public static float Min(this float current,float value){return Math.Min(current,value);}
 		public static float Max(this float current,float value){return Math.Max(current,value);}
 		public static float Abs(this float current){return Math.Abs(current);}
+		public static float Ciel(this float current){return Math.Ceiling(current).ToFloat();}
+		public static float Floor(this float current){return Math.Floor(current).ToFloat();}
 	}
 }

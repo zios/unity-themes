@@ -18,9 +18,9 @@ namespace Zios{
 		SaveDetailed  = 0x040,
 		Time          = 0x080,
 	}
-	public class Serializer : Singleton{
-		public static Serializer instance;
-		public static Serializer Get(){return Serializer.instance;}
+	public class StaticSerializer : Singleton{
+		public static StaticSerializer instance;
+		public static StaticSerializer Get(){return StaticSerializer.instance;}
 		public static Dictionary<Type,Dictionary<string,object>> defaults = new Dictionary<Type,Dictionary<string,object>>();
 		public bool disabled = true;
 		[EnumMask] public SerializerDebug debug;
@@ -30,8 +30,8 @@ namespace Zios{
 		[ContextMenu("Refresh")]
 		public void Setup(){
 			if(this.disabled){return;}
-			if(Serializer.defaults.Count < 1){
-				Serializer.instance = this;
+			if(StaticSerializer.defaults.Count < 1){
+				StaticSerializer.instance = this;
 				this.path = Application.dataPath+"/@Serialized/";
 				if(Application.isEditor){
 					this.BuildDefault();
@@ -59,11 +59,11 @@ namespace Zios{
 			if(contents.Contains("{")){this.tabs += 1;}
 		}
 		public bool Skip(Type type,string name,object value){
-			if(!Serializer.defaults.ContainsKey(type) || !Serializer.defaults[type].ContainsKey(name)){
+			if(!StaticSerializer.defaults.ContainsKey(type) || !StaticSerializer.defaults[type].ContainsKey(name)){
 				if(this.debug.Has("SaveDetailed")){Debug.Log("[Serializer] : Skipping save for -- " + type + " -- " + name + " -- " + value);}
 				return true;
 			}
-			var lastValue = Serializer.defaults[type][name];
+			var lastValue = StaticSerializer.defaults[type][name];
 			if(this.debug.Has("SaveDetailed")){Debug.Log("[Serializer] : " + type + "." + name + " -- " + lastValue + " = " + value);}
 			if(lastValue.IsNull() || value.IsNull()){return lastValue == value;}
 			return lastValue.Equals(value);
@@ -88,11 +88,11 @@ namespace Zios{
 		}
 		public void BuildDefault(Type type){
 			if(this.disabled){return;}
-			if(Serializer.defaults.ContainsKey(type)){return;}
+			if(StaticSerializer.defaults.ContainsKey(type)){return;}
 			if(this.debug.Has("BuildDetailed")){Debug.Log("[Serializer] : Building defaults for type -- " + type.Name);}
-			Serializer.defaults.AddNew(type);
+			StaticSerializer.defaults.AddNew(type);
 			foreach(var item in this.GetVariables(type)){
-				Serializer.defaults[type][item.Key] = item.Value;
+				StaticSerializer.defaults[type][item.Key] = item.Value;
 			}
 		}
 		//=================

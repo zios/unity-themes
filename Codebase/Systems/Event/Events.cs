@@ -34,27 +34,6 @@ namespace Zios.Event{
 		Scoped     = 0x002,
 	}
 	//=======================
-	// Delegates
-	//=======================
-	public delegate void Method();
-	public delegate void MethodObject(object value);
-	public delegate void MethodInt(int value);
-	public delegate void MethodFloat(float value);
-	public delegate void MethodString(string value);
-	public delegate void MethodBool(bool value);
-	public delegate void MethodVector2(Vector2 value);
-	public delegate void MethodVector3(Vector3 value);
-	public delegate void MethodObjects(object[] values);
-	public delegate void MethodStep(object collection,int value);
-	public delegate object MethodReturn();
-	public delegate object MethodObjectReturn(object value);
-	public delegate object MethodIntReturn(int value);
-	public delegate object MethodFloatReturn(float value);
-	public delegate object MethodStringReturn(string value);
-	public delegate object MethodBoolReturn(bool value);
-	public delegate object MethodVector2Return(Vector2 value);
-	public delegate object MethodVector3Return(Vector3 value);
-	//=======================
 	// Main
 	//=======================
 	[InitializeOnLoad]
@@ -150,9 +129,9 @@ namespace Zios.Event{
 				Events.callers[target].AddNew(name);
 			}
 		}
-		public static void AddStepper(string eventName,MethodStep method,IList collection,int passes=1){
-			var stepper = new EventStepper(method,null,collection,passes);
-			stepper.onComplete = ()=>Events.Remove(eventName,stepper.Step);
+		public static void AddStepper(string eventName,MethodStep method,IList collection,int passes=1,bool inline=false){
+			var stepper = new Stepper(method,null,collection,passes,inline);
+			stepper.onEnd = ()=>Events.Remove(eventName,stepper.Step);
 			Events.Add(eventName,stepper.Step).SetPermanent();
 		}
 		public static EventListener Add(string name,Method method,params object[] targets){return Events.Add(name,(object)method,-1,targets);}

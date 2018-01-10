@@ -9,21 +9,21 @@ namespace Zios.Shaders{
 		public ShadingBlend shadingBlend = ShadingBlend.Multiply;
 		[Range(0,1)] public float alphaCutoff = 0.3f;
 		[Header("Shadows")]
-		public ShadowType shadowType = ShadowType.Stepped;
+		public ShadowType shadowType = ShadowType.Smooth;
 		public ShadowMode shadowMode;
 		public ShadowBlend shadowBlend;
 		public Color shadowColor = new Color(0,0,0,0.25f);
 		[Range(1,32)] public int shadowSteps = 3;
 		[Header("Lightmap")]
-		public LightmapType lightmapType = LightmapType.Stepped;
+		public LightmapType lightmapType = LightmapType.Smooth;
 		public LightmapMode lightmapMode;
 		public LightmapBlend lightmapBlend;
 		public Color lightmapColor = new Color(0,0,0,0.25f);
 		[Range(1,32)] public int lightmapSteps = 3;
 		[Header("Visibility")]
-		public FadeType fadeType;
+		public FadeType fadeType = FadeType.Smooth;
 		public FadeGrayscale fadeGrayscale;
-		public FadeBlend fadeBlend;
+		public FadeBlend fadeBlend = FadeBlend.Screen;
 		public int cullDistance = 150;
 		[Range(1,32)] public int fadeSteps = 3;
 		public int fadeStartDistance = 80;
@@ -75,8 +75,8 @@ namespace Zios.Shaders{
 		}
 		public static void RefreshStep(object collection,int index){
 			var materials = (List<Material>)collection;
-			EventStepper.title = "Updating " + materials.Count + " Materials";
-			EventStepper.message = "Updating material : " + materials[index].name;
+			Stepper.title = "Updating " + materials.Count + " Materials";
+			Stepper.message = "Updating material : " + materials[index].name;
 			VariableMaterial.Refresh(true,materials[index]);
 		}
 		public void SetKeyword(Enum target){

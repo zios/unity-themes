@@ -82,5 +82,39 @@ namespace Zios{
 		public static T TakeRandom<T>(this List<T> current){
 			return current.Shuffle().First();
 		}
+		public static Dictionary<string,Type> ToDictionary<Type>(this List<Type> current){
+			var values = new Dictionary<string,Type>();
+			for(int index=0;index<current.Count;++index){
+				values["#"+index] = current[index];
+			}
+			return values;
+		}
+		public static List<int> DivideSize<T>(this List<T> current,int size){
+			var data = new int[size].ToList();
+			var index = 0;
+			while(index < current.Count){
+				data[index%size] += 1;
+				index += 1;
+			}
+			return data;
+		}
+		public static List<List<T>> DivideEvery<T>(this List<T> current,int amount){
+			return current.DivideInto(current.Count / amount);
+		}
+		public static List<List<T>> DivideInto<T>(this List<T> current,int amount){
+			var data = new List<List<T>>();
+			var sizes = current.DivideSize(amount);
+			var index = 0;
+			foreach(var size in sizes){
+				var count = 0;
+				var entry = data.AddNew();
+				while(count < size){
+					entry.Add(current[count+index]);
+					count += 1;
+				}
+				index += size;
+			}
+			return data;
+		}
 	}
 }

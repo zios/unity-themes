@@ -30,6 +30,7 @@ namespace Zios{
 		//============================
 		// EditorApplication
 		//============================
+		public static bool IsCompiling(){return false;}
 		public static bool IsPaused(){return false;}
 		public static bool IsBusy(){return false;}
 		public static bool IsSwitching(){return false;}

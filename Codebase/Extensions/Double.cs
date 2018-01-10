@@ -88,6 +88,8 @@ namespace Zios{
 		public static double Min(this double current,double value){return Math.Min(current,value);}
 		public static double Max(this double current,double value){return Math.Max(current,value);}
 		public static double Abs(this double current){return Math.Abs(current);}
+		public static double Ciel(this double current){return Math.Ceiling(current);}
+		public static double Floor(this double current){return Math.Floor(current);}
 		public static double ClampStep(this double current,double stepSize){
 			return (Math.Round(current / stepSize) * stepSize);
 		}

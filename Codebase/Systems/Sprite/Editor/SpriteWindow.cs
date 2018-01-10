@@ -1073,7 +1073,7 @@ namespace Zios.Editors.SpriteEditors{
 				//DestroyImmediate(this.brush);
 				this.brush.SetActive(false);
 			}
-			if(this.placementMode && brushUsable && UnityEvent.current.type != EventType.Repaint && UnityEvent.current.type != EventType.Layout){
+			if(this.placementMode && brushUsable && !Utility.IsRepainting() && UnityEvent.current.type != EventType.Layout){
 				bool alt = UnityEvent.current.alt;
 				bool control = UnityEvent.current.control;
 				bool shift = UnityEvent.current.shift;

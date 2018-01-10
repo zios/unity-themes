@@ -28,8 +28,8 @@ namespace Zios.Animations{
 	}
 	[Serializable]
 	public class AnimationConfiguration{
-		public static Store<SpeedUnit> rateMode = new Store<SpeedUnit>("AnimationSettings.rateMode");
-		public static Store<SpeedUnit> speedMode = new Store<SpeedUnit>("AnimationSettings.speedMode",SpeedUnit.Scalar);
+		public static Storage<SpeedUnit> rateMode = new Storage<SpeedUnit>("AnimationSettings.rateMode");
+		public static Storage<SpeedUnit> speedMode = new Storage<SpeedUnit>("AnimationSettings.speedMode",SpeedUnit.Scalar);
 		public string name;
 		public float rate;
 		public float speed;

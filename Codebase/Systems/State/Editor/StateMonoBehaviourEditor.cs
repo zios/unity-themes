@@ -105,13 +105,13 @@ namespace Zios.Editors.StateEditors{
 				EditorGUILayout.EndHorizontal();
 				Rect area = GUILayoutUtility.GetLastRect();
 				if(!area.IsEmpty()){
-					if(UnityEvent.current.type == EventType.Repaint){this.breakdownArea = area;}
+					if(Utility.IsRepainting()){this.breakdownArea = area;}
 					if(area.Clicked(1)){this.DrawBreakdownMenu();}
 					if(UnityEvent.current.shift && area.Clicked(0)){
 						Class.isVisible = !Class.isVisible;
 					}
 				}
-				if(UnityEvent.current.type == EventType.Repaint && !this.breakdownArea.IsEmpty()){
+				if(Utility.IsRepainting() && !this.breakdownArea.IsEmpty()){
 					this.breakdownVisible = this.breakdownArea.InInspectorWindow();
 				}
 			}

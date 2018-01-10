@@ -84,6 +84,13 @@ namespace Zios{
 			}
 			return true;
 		}
+		public static bool ContainsAmount<T>(this T[] current,int amount,params T[] values){
+			var count = 0;
+			for(int index=0;index<values.Length;++index){
+				if(current.Contains(values[index])){count += 1;}
+			}
+			return count >= amount;
+		}
 		public static void ForEach<T>(this T[] current,Action<T> method){
 			for(int index=0;index<current.Length;++index){
 				method(current[index]);

@@ -63,6 +63,9 @@ namespace Zios{
 			}
 			return "";
 		}
+		public static Key GetKey<Key,Value>(this Dictionary<Key,Value> current,Value value){
+			return current.FirstOrDefault(x=>x.Value.Equals(value)).Key;
+		}
 		public static void RemoveValue<TKey,TValue>(this Dictionary<TKey,TValue> current,TValue value){
 			foreach(var item in current.Copy()){
 				if(item.Value.Equals(value)){

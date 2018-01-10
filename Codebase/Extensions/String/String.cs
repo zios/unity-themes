@@ -1,6 +1,5 @@
 using System;
 using System.Linq;
-using System.Collections;
 using System.Globalization;
 using System.Security.Cryptography;
 using System.Text;
@@ -67,6 +66,20 @@ namespace Zios{
 		public static byte[] ToStringBytes(this string current){return Encoding.ASCII.GetBytes(current);}
 		public static string Serialize(this string current){return current;}
 		public static string Deserialize(this string current,string value){return value;}
+		public static object Deserialize(this string current,Type type){
+			if(type == typeof(Texture2D)){return new Texture2D(1,1).Deserialize(current).Box();}
+			else if(type == typeof(GUIContent)){return new GUIContent().Deserialize(current).Box();}
+			else if(type == typeof(Vector3)){return Vector3.zero.Deserialize(current).Box();}
+			else if(type == typeof(Color)){return Color.white.Deserialize(current).Box();}
+			else if(type == typeof(float)){return new Single().Deserialize(current).Box();}
+			else if(type == typeof(int)){return new Int32().Deserialize(current).Box();}
+			else if(type == typeof(bool)){return new Boolean().Deserialize(current).Box();}
+			else if(type == typeof(string)){return String.Empty.Deserialize(current).Box();}
+			else if(type == typeof(byte)){return new Byte().Deserialize(current).Box();}
+			else if(type == typeof(short)){return new Int16().Deserialize(current).Box();}
+			else if(type == typeof(double)){return new Double().Deserialize(current).Box();}
+			return default(Type);
+		}
 		public static Type Deserialize<Type>(this string current){
 			if(typeof(Type) == typeof(Texture2D)){return (Type)new Texture2D(1,1).Deserialize(current).Box();}
 			else if(typeof(Type) == typeof(GUIContent)){return (Type)new GUIContent().Deserialize(current).Box();}

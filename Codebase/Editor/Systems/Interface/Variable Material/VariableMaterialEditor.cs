@@ -89,9 +89,10 @@ namespace Zios.Editors{
 					else if(current.type == MaterialProperty.PropType.Texture){
 						current.textureValue = current.textureValue.As<Texture2D>().Layout(-1,16).Draw<Texture2D>(label);
 						EditorGUI.indentLevel += 1;
-						var offset = current.textureScaleAndOffset;
-						current.textureScaleAndOffset = new Vector2(offset.x,offset.y).DrawVector2("Tiling");
-						current.textureScaleAndOffset = new Vector2(offset.z,offset.w).DrawVector2("Offset");
+						var data = current.textureScaleAndOffset;
+						var tiling = new Vector2(data.x,data.y).DrawVector2("Tiling");
+						var offset = new Vector2(data.z,data.w).DrawVector2("Offset");
+						current.textureScaleAndOffset = new Vector4(tiling.x,tiling.y,offset.x,offset.y);
 						EditorGUI.indentLevel -= 1;
 						//current.textureValue = editor.TextureProperty(current,label);
 					}
@@ -128,8 +129,8 @@ namespace Zios.Editors{
 		}
 		public static void RefreshStep(object collection,int index){
 			var materials = (List<Material>)collection;
-			EventStepper.title = "Updating " + materials.Count + " Materials";
-			EventStepper.message = "Updating material : " + materials[index].name;
+			Stepper.title = "Updating " + materials.Count + " Materials";
+			Stepper.message = "Updating material : " + materials[index].name;
 			VariableMaterial.Refresh(true,materials[index]);
 		}
 	}

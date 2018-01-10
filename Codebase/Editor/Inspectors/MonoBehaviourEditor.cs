@@ -107,7 +107,7 @@ namespace Zios.Editors{
 					EditorGUILayout.EndVertical();
 					this.changed = this.changed || GUI.changed;
 					if(isReadOnly){GUI.enabled = true;}
-					if(UnityEvent.current.type == EventType.Repaint){
+					if(Utility.IsRepainting()){
 						Rect area = GUILayoutUtility.GetLastRect();
 						if(!area.IsEmpty()){this.propertyArea[property] = area.AddHeight(2);}
 					}
@@ -133,7 +133,7 @@ namespace Zios.Editors{
 			}
 		}
 		public void CheckChanges(){
-			if(UnityEvent.current.type == EventType.Repaint){
+			if(Utility.IsRepainting()){
 				bool fastInspector = Utility.GetPref<bool>("MonoBehaviourEditor-FastInspector");
 				Vector2 mousePosition = UnityEvent.current.mousePosition;
 				this.showAll = UnityEvent.current.alt && this.area.Contains(mousePosition);

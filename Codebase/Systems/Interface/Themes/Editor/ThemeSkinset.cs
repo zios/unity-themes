@@ -98,7 +98,7 @@ namespace Zios.Interface{
 			if(EditorUI.DrawDialog("Scan/Dump All GUIStyles?",warning,"Yes","Cancel")){
 				ThemeSkinset.dumpPath = EditorUtility.SaveFolderPanel("Dump GUISkin [Extended]",Theme.storagePath,"Default");
 				var allTypes = typeof(Editor).Assembly.GetTypes().Where(x=>!x.IsNull()).ToArray();
-				var stepper = new EventStepper(ThemeSkinset.DumpExtendedStep,ThemeSkinset.DumpExtendedComplete,allTypes,50);
+				var stepper = new Stepper(ThemeSkinset.DumpExtendedStep,ThemeSkinset.DumpExtendedComplete,allTypes,50);
 				EditorApplication.update += stepper.Step;
 			}
 		}
@@ -107,9 +107,9 @@ namespace Zios.Interface{
 			var type = types[itemIndex];
 			if(type.IsGeneric()){return;}
 			if(!type.Name.ContainsAny("$","__Anon","<","AudioMixerDraw")){
-				EventStepper.title = "Scanning " + types.Length + " Types";
-				EventStepper.message = "Analyzing : " + type.Name;
-				var terms = new string[]{"Styles","styles","s_GOStyles","s_Current","s_Styles","m_Styles","ms_Styles","constants","s_Defaults"};
+				Stepper.title = "Scanning " + types.Length + " Types";
+				Stepper.message = "Analyzing : " + type.Name;
+				var terms = new string[]{"Styles","styles","s_GOStyles","s_Current","s_Styles","m_Styles","ms_Styles","constants","Constants","s_Defaults"};
 				foreach(var term in terms){
 					if(!type.HasVariable(term,ObjectExtension.staticFlags)){continue;}
 					if(!type.GetProperty(term).IsNull()){continue;}
@@ -125,7 +125,7 @@ namespace Zios.Interface{
 			var themeName = savePath.Split("/").Last();
 			AssetDatabase.StartAssetEditing();
 			EditorUI.ClearProgressBar();
-			EditorApplication.update -= EventStepper.active.Step;
+			EditorApplication.update -= Stepper.active.Step;
 			foreach(var buffer in ThemeSkinset.dumpBuffer){
 				var skinPath = savePath+"/"+buffer.Key+".guiskin";
 				var customStyles = new List<GUIStyle>();

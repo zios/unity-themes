@@ -17,8 +17,8 @@ namespace Zios.Editors{
 			var materials = (FileData[])collection;
 			var file = materials[itemIndex];
 			bool last = itemIndex == materials.Length-1;
-			EventStepper.title = "Updating " + materials.Length + " Materials";
-			EventStepper.message = "Updating material : " + file.name;
+			Stepper.title = "Updating " + materials.Length + " Materials";
+			Stepper.message = "Updating material : " + file.name;
 			string text = file.GetText();
 			string copy = text;
 			int index = 0;

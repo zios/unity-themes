@@ -74,7 +74,7 @@ namespace Zios.Editors.StateEditors{
 			this.CheckHotkeys();
 			if(UnityEvent.current.type == EventType.MouseDown && !UnityEvent.current.control && !UnityEvent.current.shift){this.DeselectAll();}
 			if(UnityEvent.current.type == EventType.MouseMove){this.Repaint();}
-			if(UnityEvent.current.type == EventType.Repaint){
+			if(Utility.IsRepainting()){
 				this.repaintHooks();
 				this.repaintHooks = ()=>{};
 				if(!this.hovered){
