@@ -240,7 +240,7 @@ namespace Zios{
 			PrefabType type = PrefabUtility.GetPrefabType(current);
 			if(current.hideFlags == HideFlags.HideInHierarchy || type == PrefabType.Prefab || type == PrefabType.ModelPrefab){
 				path = "Prefab/"+path;
-			 }
+			}
 			#endif
 			Transform parent = current.transform.parent;
 			while(!parent.IsNull()){
