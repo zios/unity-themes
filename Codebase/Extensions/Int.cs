@@ -111,5 +111,8 @@ namespace Zios{
 			}
 			return false;
 		}
+		public static bool Elapsed(this int current,bool unity=true){return Utility.GetTime()>=current;}
+		public static string Passed(this int current,bool unity=true){return Utility.GetTime()-current+" seconds";}
+		public static float AddTime(this int current,bool unity=true){return current+Utility.GetTime();}
 	}
 }

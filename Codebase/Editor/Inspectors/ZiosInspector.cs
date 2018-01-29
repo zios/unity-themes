@@ -23,7 +23,7 @@ namespace Zios.Editors{
 			window.autoRepaintOnSceneChange = true;
 		}
 		public void OnGUI(){
-			Theme.Apply("Grayson");
+			//Theme.Apply("Grayson");
 			GUI.skin = FileManager.GetAsset<GUISkin>("EditorStyles-Grayson.guiskin");
 			var headerStyle = Style.Get("m_InspectorTitlebar").Padding(32,0,4,0);
 			var containerStyle = Style.Get("m_InspectorDefaultMargins");
@@ -77,7 +77,7 @@ namespace Zios.Editors{
 				var componentWindow = Utility.GetUnityType("AddComponentWindow");
 				componentWindow.CallExactMethod("Show",cursorArea,this.target.AsArray());
 			}
-			Theme.Apply();
+			//Theme.Apply();
 			if(this.dirty){this.Repaint();}
 		}
 		public void OnSelectionChange(){

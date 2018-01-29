@@ -140,9 +140,11 @@ namespace Zios{
 			FileManager.root = Application.isEditor || Application.platform.MatchesAny("WindowsPlayer","OSXPlayer","LinuxPlayer") ? FileManager.dataPath.GetDirectory() : FileManager.dataPath;
 			var needsScan = !Application.isEditor || (Application.isEditor && !Utility.IsPlaying());
 			if(needsScan){
+				var scanTime = FileManager.GetTime();
 				FileManager.Scan(FileManager.root);
 				if(Application.isEditor || Application.platform.MatchesAny("WindowsPlayer","OSXPlayer","LinuxPlayer")){FileManager.Scan(FileManager.root+"/Temp",true);}
 				if(FileManager.fullScan){FileManager.Scan(FileManager.dataPath,true);}
+				if(FileManager.clock){Debug.Log("[FileManager] : Scan complete -- " + (FileManager.GetTime()-scanTime) + " seconds.");}
 				FileManager.Save();
 			}
 			else{
@@ -381,6 +383,7 @@ namespace Zios{
 			this.fullName = isFolder ? this.name : this.name + "." + this.extension;
 			this.isFolder = isFolder;
 		}
+		public override string ToString(){return this.path;}
 		public string GetText(){return File.ReadAllText(this.path);}
 		public void WriteText(string contents){File.WriteAllText(this.path,contents);}
 		public void Delete(bool cacheOnly=false){

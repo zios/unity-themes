@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 namespace Zios.Animations{
-	[ExecuteInEditMode][AddComponentMenu("Zios/Component/Animation/Animation Settings")]
+	[ExecuteInEditMode][AddComponentMenu("Zios/Component/Animation/Animation Settings")][RequireComponent(typeof(SkinnedMeshRenderer))]
 	public class AnimationSettings : MonoBehaviour{
 		public List<AnimationConfiguration> animations = new List<AnimationConfiguration>();
 		public void Reset(){

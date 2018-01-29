@@ -131,7 +131,7 @@ namespace Zios.Interface{
 					var tooBright = result > 1.25f;
 					if(tooDark){
 						var natural = source.ToVector3().normalized.ToColor();
-						source = natural.Lerp(source,sourceIntensity.LerpRelative(0,0.2f));
+						source = natural.Lerp(source,sourceIntensity.InverseLerp(0,0.2f));
 						if(sourceIntensity == 0){source = new Color(0.25f,0.25f,0.25f);}
 					}
 					var difference = source.Multiply(offset).Difference(source);
@@ -143,19 +143,23 @@ namespace Zios.Interface{
 			}
 			return this.value;
 		}
-		public Texture2D UpdateTexture(string path){
+		public Texture2D UpdateTexture(string path=""){
 			var color = this.value;
-			path = path.GetAssetPath();
+			path = path.IsEmpty() ? Theme.storagePath.GetAssetPath() : path.GetAssetPath();
 			FileManager.Create(path+"Palettes/@Generated/");
 			var imagePath = path+"Palettes/@Generated/Color"+this.name+".png";
-			var image = (Texture2D)AssetDatabase.LoadAssetAtPath(imagePath,typeof(Texture2D));
-			if(image.IsNull()){
-				image = new Texture2D(1,1,TextureFormat.RGBA32,false);
-				image.SaveAs(imagePath);
-				AssetDatabase.ImportAsset(imagePath);
-			}
-			image.SetPixel(0,0,color);
-			image.Apply();
+			var image = default(Texture2D);
+			Action method = ()=>{
+				image = (Texture2D)AssetDatabase.LoadAssetAtPath(imagePath,typeof(Texture2D));
+				if(image.IsNull()){
+					image = new Texture2D(1,1,TextureFormat.RGBA32,false);
+					image.SaveAs(imagePath);
+					AssetDatabase.ImportAsset(imagePath);
+				}
+				image.SetPixel(0,0,color);
+				image.Apply();
+			};
+			Worker.MainThread(method);
 			return image;
 		}
 	}

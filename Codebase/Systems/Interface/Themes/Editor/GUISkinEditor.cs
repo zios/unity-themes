@@ -31,7 +31,7 @@ namespace Zios.Editors{
 		// Main
 		//=================================
 		public override void OnInspectorGUI(){
-			if(UnityEvent.current.type.MatchesAny("mouseMove") || Utility.IsBusy()){return;}
+			if(UnityEvent.current.type.MatchesAny("mouseMove")){return;}
 			EditorUI.Reset();
 			this.hash = this.hash ?? Utility.GetInspector(this).GetInstanceID().ToString();
 			this.skin = this.skin ?? this.target.As<GUISkin>();
@@ -116,7 +116,7 @@ namespace Zios.Editors{
 			if(inputChanged || (this.advanced && this.DrawAdvancedSearch())){
 				this.queueMethod = ()=>{this.searchResults = this.PerformSearch(null,!this.isFragment);};
 			}
-			if(this.inputTerms.Count > 0 && this.inputTerms[0] != "Search"){
+			if(this.inputTerms.Count > 0 && !this.inputTerms[0].MatchesAny("Search","")){
 				if(this.searchResults.Length < 1){
 					EditorGUI.indentLevel += 1;
 					"No results found.".ToLabel().DrawLabel(EditorStyles.label.Alignment("MiddleCenter"),false);
@@ -372,7 +372,7 @@ namespace Zios.Editors{
 						var styleState = item.Value;
 						if(name.Matches("textColor",true)){
 							bool hasAlpha = !rawValue.Contains(" ") ? value.Length > 6 : value.Split(" ").Length == 4;
-							bool hexMatch = !rawValue.Contains(" ") && CheckMatch(styleState.textColor.ToHex(hasAlpha));
+							bool hexMatch = !rawValue.Contains(" ") && CheckMatch(styleState.textColor.ToHex(hasAlpha).Remove("#"));
 							bool decimalMatch = rawValue.Contains(" ") && CheckMatch(styleState.textColor.ToDecimal(hasAlpha));
 							if(hexMatch || decimalMatch){found = true;}
 						}

@@ -29,13 +29,16 @@ namespace Zios.Interface{
 		}
 		public void Apply(){this.Apply(true);}
 		public void Apply(bool includeBuiltin){
-			foreach(var content in this.contents){
-				if(!includeBuiltin && content.builtin){continue;}
-				content.Sync();
-				content.target.text = content.value.text;
-				content.target.tooltip = content.value.tooltip;
-				content.target.image = content.value.image;
-			}
+			MethodStepSimple<ThemeContent> method = (content)=>{
+				if(!content.builtin || includeBuiltin){
+					content.Sync();
+					content.target.text = content.value.text;
+					content.target.tooltip = content.value.tooltip;
+					content.target.image = content.value.image;
+				}
+				return true;
+			};
+			Worker.Create(this.contents,method.AsIndexed());
 		}
 		public void Export(string savePath=null,bool split=true){
 			savePath = savePath ?? this.path.GetDirectory();
@@ -52,7 +55,7 @@ namespace Zios.Interface{
 					var file = FileManager.Create(savePath+"/"+savePath.GetPathTerm()+".guicontent");
 					file.WriteText(contents);
 				}
-				Theme.Reset(true);
+				Theme.Reset();
 			}
 		}
 		public string Serialize(){
@@ -100,6 +103,7 @@ namespace Zios.Interface{
 			var contents = typeof(EditorGUIUtility).GetVariable<Hashtable>("s_IconGUIContents");
 			ThemeContent.iconAmount = contents.Count;
 			foreach(DictionaryEntry item in contents){
+				if(item.Value.As<GUIContent>().image.IsNull()){continue;}
 				var fileName = path+"/"+item.Value.As<GUIContent>().image.name+".png";
 				if(FileManager.Exists(fileName)){
 					var content = imported.AddNew();
@@ -163,13 +167,15 @@ namespace Zios.Interface{
 				if(Theme.debug){Debug.LogWarning("[Themes] No matching class/field found for GUIContent -- " + this.targetPath);}
 				return;
 			}
-			this.targetScope = typeDirect ?? typeParent.InstanceVariable(field);
+			Action method = ()=>{this.targetScope = typeDirect ?? typeParent.InstanceVariable(field);};
+			Worker.MainThread(method);
 			if(this.targetScope.IsNull()){return;}
 			if(this.targetScope.Is<GUIContent[]>() || this.targetScope.Is<Hashtable>() || this.targetScope.HasVariable(this.name)){
 				if(this.targetScope.Is<GUIContent[]>() && this.name.ToInt() >= this.targetScope.As<IList>().Count){
 					return;
 				}
-				this.target = this.targetScope.InstanceVariable(this.name).As<GUIContent>();
+				method = ()=>{this.target = this.targetScope.InstanceVariable(this.name).As<GUIContent>();};
+				Worker.MainThread(method);
 			}
 		}
 		[MenuItem("Edit/Themes/Development/Dump/Active/GUIContent")]

@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Linq;
 using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
@@ -10,44 +10,138 @@ namespace Zios.Editors.AnimationEditors{
 	[CustomEditor(typeof(AnimationSettings))]
 	public class AnimationSettingsEditor : Editor{
 		public static float lastTime;
+		private SkinnedMeshRenderer renderer;
+		private string newState;
+		private BlendState blendState;
+		private Dictionary<string,BlendState> blendStates = new Dictionary<string,BlendState>();
 		private List<AnimationConfiguration> active = new List<AnimationConfiguration>();
+		public void OnEnable(){
+			this.blendStates.Clear();
+			this.renderer = this.target.As<AnimationSettings>().Get<SkinnedMeshRenderer>();
+			this.blendState = this.blendStates.AddNew("Default").Set("Default",this.renderer.sharedMesh);
+		}
 		public override void OnInspectorGUI(){
 			EditorUI.Reset();
-			EditorUI.allowIndention = false;
 			Events.Add("On Editor Update",this.EditorUpdate);
-			EditorGUILayout.BeginHorizontal();
-			"Name".ToLabel().Layout(150).DrawLabel();
-			"Rate •".ToLabel().Layout(50).DrawLabel();
-			if(GUILayoutUtility.GetLastRect().Clicked()){
-				Config.rateMode.Get().GetNames().DrawMenu(this.SetRateMode,Config.rateMode.Get().ToName().AsList());
-			}
-			"Speed •".ToLabel().Layout(50).DrawLabel();
-			if(GUILayoutUtility.GetLastRect().Clicked()){
-				Config.speedMode.Get().GetNames().DrawMenu(this.SetSpeedMode,Config.speedMode.Get().ToName().AsList());
-			}
-			"Blend".ToLabel().Layout(80).DrawLabel();
-			"Wrap".ToLabel().Layout(115).DrawLabel();
-			EditorGUILayout.EndHorizontal();
-			foreach(var config in this.target.As<AnimationSettings>().animations){
-				EditorGUILayout.BeginHorizontal();
-				bool isPlaying = this.active.Contains(config);
-				config.name.ToLabel().Layout(150).DrawLabel();
-				config.rate = config.rate.Layout(50).Draw();
-				config.speed = config.speed.Layout(50).Draw();
-				config.blendMode = config.blendMode.Layout(80).Draw().As<AnimationBlendMode>();
-				config.wrapMode = config.wrapMode.Layout(115).Draw().As<WrapMode>();
-				if(isPlaying && "Stop".ToLabel().Layout(0,17).DrawButton()){this.Stop(config);}
-				if(!isPlaying && "Play".ToLabel().Layout(0,17).DrawButton()){
-					this.StopAll();
-					this.active.AddNew(config);
-					Events.Pause("On Hierarchy Changed");
+			if(this.renderer.sharedMesh != this.blendState.mesh){this.OnEnable();}
+			var blendValues = this.blendState.values;
+			var id = this.renderer.GetInstanceID();
+			EditorUI.SetFieldSize(-1,150,false);
+			var hasSkeletal = !this.target.As<AnimationSettings>().Get<Animation>().IsNull();
+			var hasBlendshapes = blendValues.Count > 0;
+			if(hasBlendshapes && (!hasSkeletal || EditorUI.DrawFoldout("Blend Shapes",id+"Blend"))){
+				EditorGUI.indentLevel += 1;
+				var names = blendValues.Keys.ToList();
+				var values = this.blendStates.Values.ToList();
+				var active = values.IndexOf(this.blendState);
+				this.blendState = values[this.blendStates.Keys.ToList().Draw(active,"State")];
+				if(EditorUI.lastChanged){
+					this.SetBlendState(this.blendState.name);
+					this.Repaint();
 				}
-				if(GUI.changed){
-					Utility.RecordObject(this.target,"Animation Settings Changed");
-					config.Apply();
-					Utility.SetDirty(this.target);
+				for(var index=0;index<blendValues.Count;++index){
+					var shapeName = names[index];
+					var shapeValue = this.renderer.GetBlendShapeWeight(index);
+					var separated = blendValues.ContainsKey(shapeName+"-Left") && blendValues.ContainsKey(shapeName+"-Right");
+					if(shapeName.EndsWith("-")){continue;}
+					if(shapeName.EndsWith("+")){
+						shapeName = shapeName.TrimRight("+");
+						var otherValue = this.renderer.GetBlendShapeWeight(index+1);
+						var displayValue = shapeValue > 0 ? (shapeValue/100f).Lerp(50,100) : 50f;
+						displayValue = otherValue > 0 ? (otherValue/100f).Lerp(50,0) : displayValue;
+						displayValue = displayValue.DrawSlider(0,100,shapeName);
+						if(EditorUI.lastChanged){
+							blendValues[shapeName+"+"] = 100*displayValue.InverseLerp(50,100);
+							blendValues[shapeName+"-"] = 100*displayValue.InverseLerp(50,0);
+							this.renderer.SetBlendShapeWeight(index,blendValues[shapeName+"+"]);
+							this.renderer.SetBlendShapeWeight(index+1,blendValues[shapeName+"-"]);
+						}
+						index += 1;
+						continue;
+					}
+					var expanded = false;
+					if(separated){
+						EditorGUILayout.BeginHorizontal();
+						expanded = EditorUI.DrawFoldout(shapeName,id+shapeName+"Individual",EditorStyles.toggle);
+						EditorUI.SetFieldSize(-1,96);
+						this.DrawBlendState(index,shapeName,shapeValue,null);
+						EditorGUILayout.EndHorizontal();
+						if(expanded){
+							EditorGUI.indentLevel += 1;
+							EditorUI.SetFieldSize(-1,150,false);
+							this.DrawBlendState(index+1,shapeName+"-Left",this.renderer.GetBlendShapeWeight(index+1),"Left");
+							this.DrawBlendState(index+2,shapeName+"-Right",this.renderer.GetBlendShapeWeight(index+2),"Right");
+							EditorGUI.indentLevel -= 1;
+						}
+						index += 2;
+						continue;
+					}
+					this.DrawBlendState(index,shapeName,shapeValue);
+				}
+				EditorGUILayout.BeginHorizontal();
+				this.newState = this.newState.Layout(150,18).Draw();
+				if("Add State".ToLabel().Layout(100,19).DrawButton() && !this.newState.IsEmpty() && !this.blendStates.ContainsKey(this.newState)){
+					var mesh = Mesh.Instantiate(this.renderer.sharedMesh);
+					this.renderer.BakeMesh(mesh);
+					this.blendStates.AddNew(this.newState).Set(this.newState,mesh);
+					this.SetBlendState(this.newState);
+					this.newState = "";
 				}
 				EditorGUILayout.EndHorizontal();
+				EditorGUI.indentLevel -= 1;
+			}
+			EditorUI.allowIndention = false;
+			if(hasSkeletal && (!hasBlendshapes || EditorUI.DrawFoldout("Skeletal",id+"Skeleton"))){
+				EditorGUILayout.BeginHorizontal();
+				"Name".Layout(150).DrawLabel();
+				"Rate •".Layout(50).DrawLabel();
+				if(GUILayoutUtility.GetLastRect().Clicked()){
+					Config.rateMode.Get().GetNames().DrawMenu(this.SetRateMode,Config.rateMode.Get().ToName().AsList());
+				}
+				"Speed •".Layout(50).DrawLabel();
+				if(GUILayoutUtility.GetLastRect().Clicked()){
+					Config.speedMode.Get().GetNames().DrawMenu(this.SetSpeedMode,Config.speedMode.Get().ToName().AsList());
+				}
+				"Blend".Layout(80).DrawLabel();
+				"Wrap".Layout(115).DrawLabel();
+				EditorGUILayout.EndHorizontal();
+				foreach(var config in this.target.As<AnimationSettings>().animations){
+					EditorGUILayout.BeginHorizontal();
+					bool isPlaying = this.active.Contains(config);
+					config.name.Layout(150).DrawLabel();
+					config.rate = config.rate.Layout(50).Draw();
+					config.speed = config.speed.Layout(50).Draw();
+					config.blendMode = config.blendMode.Layout(80).Draw().As<AnimationBlendMode>();
+					config.wrapMode = config.wrapMode.Layout(115).Draw().As<WrapMode>();
+					if(isPlaying && "Stop".ToLabel().Layout(0,17).DrawButton()){this.Stop(config);}
+					if(!isPlaying && "Play".ToLabel().Layout(0,17).DrawButton()){
+						this.StopAll();
+						this.active.AddNew(config);
+						Events.Pause("On Hierarchy Changed");
+					}
+					if(GUI.changed){
+						Utility.RecordObject(this.target,"Animation Settings Changed");
+						config.Apply();
+						Utility.SetDirty(this.target);
+					}
+					EditorGUILayout.EndHorizontal();
+				}
+			}
+		}
+		public void SetBlendState(string state){
+			this.blendState = this.blendStates[state];
+			this.renderer.sharedMesh = this.blendState.mesh;
+			var values = this.blendState.values.Values.ToList();
+			for(var index=0;index<this.blendState.values.Count;++index){
+				this.renderer.SetBlendShapeWeight(index,values[index]);
+			}
+		}
+		public void DrawBlendState(int index,string name,float shapeValue,string label=""){
+			if(label == ""){label = name;}
+			shapeValue = shapeValue.DrawSlider(0,100,label);
+			if(EditorUI.lastChanged){
+				this.blendState.values[name] = shapeValue;
+				this.renderer.SetBlendShapeWeight(index,shapeValue);
 			}
 		}
 		public void SetRateMode(object index){
@@ -115,6 +209,20 @@ namespace Zios.Editors.AnimationEditors{
 				}
 			}
 			AnimationSettingsEditor.lastTime = Time.realtimeSinceStartup;
+		}
+	}
+	public class BlendState{
+		public string name;
+		public Mesh mesh;
+		public Dictionary<string,float> values = new Dictionary<string,float>();
+		public BlendState Set(string name,Mesh mesh){
+			if(mesh.IsNull()){return this;}
+			this.name = name;
+			this.mesh = mesh;
+			for(var index=0;index<mesh.blendShapeCount;++index){
+				this.values.Add(mesh.GetBlendShapeName(index).Replace(" ",""),0);
+			}
+			return this;
 		}
 	}
 }

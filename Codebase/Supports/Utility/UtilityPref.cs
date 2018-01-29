@@ -9,12 +9,13 @@ namespace Zios{
 	public static partial class Utility{
 		#if UNITY_EDITOR
 		public static Dictionary<string,object> cache = new Dictionary<string,object>();
-		public static void SetPref<T>(string name,T value){
+		public static T SetPref<T>(string name,T value){
 			Utility.cache[name] = value;
 			if(value is bool){EditorPrefs.SetBool(name,value.As<bool>());}
 			else if(value is int){EditorPrefs.SetInt(name,value.As<int>());}
 			else if(value is float){EditorPrefs.SetFloat(name,value.As<float>());}
 			else if(value is string){EditorPrefs.SetString(name,value.As<string>());}
+			return value;
 		}
 		public static bool HasPref(string name){return EditorPrefs.HasKey(name);}
 		public static T GetPref<T>(string name,T fallback=default(T)){
@@ -26,6 +27,13 @@ namespace Zios{
 			else if(fallback is string){value = EditorPrefs.GetString(name,fallback.As<string>());}
 			Utility.cache[name] = value;
 			return value.As<T>();
+		}
+		public static T BuildPref<T>(string name,T fallback=default(T)){
+			return Utility.HasPref(name) ? Utility.GetPref<T>(name,fallback) : Utility.SetPref<T>(name,fallback);
+		}
+		public static void ClearPref(string name){
+			Utility.cache.Remove(name);
+			EditorPrefs.DeleteKey(name);
 		}
 		public static void CallEditorPref(string name,bool showWarnings=false){
 			var callbacks = EditorPrefs.GetString(name);

@@ -94,7 +94,7 @@ namespace Zios.Interface{
 		[MenuItem("Edit/Themes/Development/Dump/GUISkin [Extended]")]
 		public static void DumpExtended(){
 			var warning = "Dumping all GUISkin will deep scan the editor assembly for GUIStyles.  ";
-			warning += "This will produce warnings/errors and could cause Unity to become unresponsible at end of operation.  Continue?";
+			warning += "This will produce warnings/errors and could cause Unity to become unresponsive at end of operation.  Continue?";
 			if(EditorUI.DrawDialog("Scan/Dump All GUIStyles?",warning,"Yes","Cancel")){
 				ThemeSkinset.dumpPath = EditorUtility.SaveFolderPanel("Dump GUISkin [Extended]",Theme.storagePath,"Default");
 				var allTypes = typeof(Editor).Assembly.GetTypes().Where(x=>!x.IsNull()).ToArray();
@@ -109,8 +109,7 @@ namespace Zios.Interface{
 			if(!type.Name.ContainsAny("$","__Anon","<","AudioMixerDraw")){
 				Stepper.title = "Scanning " + types.Length + " Types";
 				Stepper.message = "Analyzing : " + type.Name;
-				var terms = new string[]{"Styles","styles","s_GOStyles","s_Current","s_Styles","m_Styles","ms_Styles","constants","Constants","s_Defaults"};
-				foreach(var term in terms){
+				foreach(var term in Theme.buildTerms){
 					if(!type.HasVariable(term,ObjectExtension.staticFlags)){continue;}
 					if(!type.GetProperty(term).IsNull()){continue;}
 					ThemeSkinset.dumpBuffer[type.FullName+"."+term] = type.InstanceVariable(term,-1,ObjectExtension.staticFlags);
@@ -230,9 +229,7 @@ namespace Zios.Interface{
 			foreach(var window in Locate.GetAssets<EditorWindow>()){
 				window.minSize = new Vector2(100,20);
 			}
-			if(!isDefault){
-				Utility.GetUnityType("PreferencesWindow").InstanceVariable("constants").SetVariable("sectionHeader",skin.Get("HeaderLabel"));
-			}
+			Utility.GetUnityType("PreferencesWindow").InstanceVariable("constants").SetVariable("sectionHeader",skin.Get("HeaderLabel"));
 			Utility.GetUnityType("BuildPlayerWindow").InstanceVariable("styles").SetVariable("toggleSize",new Vector2(24,16));
 		}
 		public static void RemoveHover(GUISkin skin){

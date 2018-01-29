@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Diagnostics;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityObject = UnityEngine.Object;
@@ -7,11 +8,14 @@ using UnityEvent= UnityEngine.Event;
 namespace Zios.Interface{
 	using UnityEditor;
 	using Event;
+	using Debug = UnityEngine.Debug;
 	public enum HoverResponse{None=1,Slow,Moderate,Instant};
 	[InitializeOnLoad][NotSerialized]
 	public partial class Theme{
+		public static Stopwatch clock;
 		public static string revision = "[r{revision}]";
 		public static string storagePath = "Assets/@Themes/";
+		public static string[] buildTerms = new string[]{"Styles","styles","s_GOStyles","s_Current","s_Styles","m_Styles","ms_Styles","constants","s_Defaults","ms_Loaded","ms_LoadedIcons"};
 		public static int themeIndex;
 		public static int paletteIndex;
 		public static int fontsetIndex;
@@ -26,7 +30,6 @@ namespace Zios.Interface{
 		public static bool changed;
 		public static bool initialized;
 		public static bool setup;
-		public static bool loaded;
 		public static bool lazyLoaded;
 		public static bool disabled;
 		public static bool debug;
@@ -35,7 +38,8 @@ namespace Zios.Interface{
 		private static bool liveEdit;
 		private static bool needsRefresh;
 		private static bool needsRebuild;
-		private static bool needsInstantRefresh;
+		private static bool needsIconRebuild;
+		private static bool needsReset;
 		private static bool setupPreferences;
 		private static Vector2 scroll = Vector2.zero;
 		private static float colorChangeTime;
@@ -53,31 +57,24 @@ namespace Zios.Interface{
 			Events.Add("On Window Reordered",ThemeWindow.CloseWindow);
 			Events.Add("On GUISkin Changed",()=>{
 				if(Theme.liveEdit){
-					Utility.DelayCall(Theme.DelayedInstantRefresh,0.5f);
+					Utility.DelayCall(Theme.Rebuild,0.5f);
 				}
 			});
 		}
 		public static void Update(){
 			if(Theme.disabled){return;}
-			if(!Theme.needsRefresh && !Theme.needsRebuild && Theme.needsInstantRefresh){
-				Theme.needsInstantRefresh = false;
-				Theme.InstantRefresh();
-			}
+			if(Theme.needsReset){Theme.InstantReset();}
 			if(Theme.needsRebuild){
-				Theme.RebuildStyles();
-				Theme.Refresh();
-				if(!Theme.active.IsNull() && !Theme.active.iconset.IsNull()){
-					Theme.active.iconset.Apply(false);
-				}
+				Theme.ClearStyles();
+				Theme.ApplyIconset(Theme.needsIconRebuild);
 				Utility.CallEditorPref("EditorTheme-Rebuild",Theme.debug);
 				Theme.needsRebuild = false;
-				Theme.Update();
+				Theme.needsIconRebuild = false;
+				Theme.Refresh();
 			}
 			else if(Theme.needsRefresh){
 				Theme.ApplySettings();
 				Utility.CallEditorPref("EditorTheme-Refresh",Theme.debug);
-				Utility.RepaintAll();
-				Utility.DelayCall(Utility.RepaintAll,0.25f);
 				Theme.Cleanup();
 				Theme.needsRefresh = false;
 			}
@@ -91,81 +88,80 @@ namespace Zios.Interface{
 				}
 				Theme.storagePath = themes.path.GetDirectory()+"/";
 				Theme.Load(!Theme.initialized);
-				Theme.LoadSettings();
-				Theme.Rebuild();
-				Theme.fontNames.Clear();
-				Theme.fontsetNames.Clear();
-				Theme.paletteNames.Clear();
 				Theme.setupPreferences = false;
-				if(Theme.separatePlaymodeSettings){Utility.DelayCall(Theme.Rebuild,0.25f);}
 				Utility.CallEditorPref("EditorTheme-Setup",Theme.debug);
 				Theme.setup = true;
 				Theme.initialized = true;
+				Theme.Rebuild();
 				Theme.Update();
 			}
 		}
 		public static void LoadCheck(){
 			if(Theme.lazyLoaded){
+				Theme.paletteNames.Clear();
+				Theme.fontsetNames.Clear();
 				Theme.Load(false);
-				Theme.LoadSettings();
 				Theme.ApplySettings();
 			}
 		}
 		public static void Load(bool lazy=false){
-			Theme.separatePlaymodeSettings = Utility.GetPref("EditorTheme-SeparatePlaymodeSettings",false);
+			FileManager.monitor = false;
+			var themeName = Utility.BuildPref("EditorTheme","Default");
+			RelativeColor.autoBalance = Utility.BuildPref("EditorTheme-AutobalanceColors",1).As<AutoBalance>();
+			Theme.showColorsAdvanced = Utility.BuildPref("EditorTheme-ShowAdvancedColors",false);
+			Theme.showFontsAdvanced = Utility.BuildPref("EditorTheme-ShowAdvancedFonts",false);
+			Theme.hoverResponse = Utility.BuildPref("EditorTheme-HoverResponse",1).As<HoverResponse>();
+			Theme.separatePlaymodeSettings = Utility.BuildPref("EditorTheme-SeparatePlaymodeSettings",false);
 			Theme.suffix = EditorApplication.isPlayingOrWillChangePlaymode && Theme.separatePlaymodeSettings ? "-Playmode" : "";
-			var theme = Utility.GetPref("EditorTheme"+Theme.suffix,"Default").ToPascalCase();
-			var suffix = "-"+theme+Theme.suffix;
-			if(!Utility.HasPref("EditorSkinset"+suffix)){lazy = false;}
-			var fontset = lazy ? Utility.GetPref("EditorFontset"+suffix,"Classic") + ".unityFontset" : null;
-			var palette = lazy ? Utility.GetPref("EditorPalette"+suffix,"Classic") + ".unityPalette" : null;
-			var iconset = lazy ? FileManager.Find("Iconsets/"+Utility.GetPref("EditorIconset"+suffix,"Default")) : null;
-			var skinset = lazy ? FileManager.Find("Skinsets/"+Utility.GetPref("EditorSkinset"+suffix,"Default")) : null;
-			var unityTheme = lazy ? theme + ".unitytheme" : null;
+			Theme.suffix = "-"+themeName+Theme.suffix;
+			var fontset = lazy ? Utility.GetPref<string>("EditorFontset"+Theme.suffix,"Classic") + ".unityFontset" : null;
+			var palette = lazy ? Utility.GetPref<string>("EditorPalette"+Theme.suffix,"Classic") + ".unityPalette" : null;
+			var iconset = lazy ? FileManager.Find("Iconsets/"+Utility.GetPref<string>("EditorIconset"+Theme.suffix,"Default")) : null;
+			var skinset = lazy ? FileManager.Find("Skinsets/"+Utility.GetPref<string>("EditorSkinset"+Theme.suffix,"Default")) : null;
+			var unityTheme = lazy ? themeName + ".unitytheme" : null;
 			ThemeFontset.all = ThemeFontset.Import(fontset);
 			ThemePalette.all = ThemePalette.Import(palette);
 			ThemeSkinset.all = skinset.IsNull() ? ThemeSkinset.Import() : ThemeSkinset.Import(skinset.path).AsList();
 			ThemeIconset.all = iconset.IsNull() ? ThemeIconset.Import() : ThemeIconset.Import(iconset.path).AsList();
 			Theme.all = Theme.Import(unityTheme).OrderBy(x=>x.name!="Default").ToList();
-			Theme.loaded = true;
+			Theme.themeIndex = Theme.all.FindIndex(x=>x.name==Utility.BuildPref("EditorTheme"+Theme.suffix,"Default")).Max(0);
+			Theme.active = new Theme().Use(Theme.all[Theme.themeIndex]);
+			if(!lazy){
+				Theme.fontsetIndex = ThemeFontset.all.FindIndex(x=>x.name==Utility.BuildPref<string>("EditorFontset"+Theme.suffix,Theme.active.fontset.name)).Max(0);
+				Theme.paletteIndex = ThemePalette.all.FindIndex(x=>x.name==Utility.BuildPref<string>("EditorPalette"+Theme.suffix,Theme.active.palette.name)).Max(0);
+				Theme.skinsetIndex = ThemeSkinset.all.FindIndex(x=>x.name==Utility.BuildPref<string>("EditorSkinset"+Theme.suffix,Theme.active.skinset.name)).Max(0);
+				Theme.iconsetIndex = ThemeIconset.all.FindIndex(x=>x.name==Utility.BuildPref<string>("EditorIconset"+Theme.suffix,Theme.active.iconset.name)).Max(0);
+			}
+			Utility.SetPref<string>("EditorSkinset"+Theme.suffix,Theme.active.skinset.name);
 			Theme.lazyLoaded = lazy;
 		}
-		public static void LoadSettings(){
-			FileManager.monitor = false;
-			RelativeColor.autoBalance = Utility.GetPref("EditorTheme-AutobalanceColors",1).As<AutoBalance>();
-			Theme.showColorsAdvanced = Utility.GetPref("EditorTheme-ShowAdvancedColors",false);
-			Theme.showFontsAdvanced = Utility.GetPref("EditorTheme-ShowAdvancedFonts",false);
-			Theme.hoverResponse = Utility.GetPref("EditorTheme-HoverResponse",1).As<HoverResponse>();
-			Theme.themeIndex = Theme.all.FindIndex(x=>x.name==Utility.GetPref("EditorTheme"+Theme.suffix,"Default")).Max(0);
-			var theme = Theme.all[Theme.themeIndex];
-			Theme.suffix = "-"+theme.name+Theme.suffix;
-			if(!Theme.lazyLoaded){
-				Theme.fontsetIndex = ThemeFontset.all.FindIndex(x=>x.name==Utility.GetPref<string>("EditorFontset"+Theme.suffix,theme.fontset.name)).Max(0);
-				Theme.paletteIndex = ThemePalette.all.FindIndex(x=>x.name==Utility.GetPref<string>("EditorPalette"+Theme.suffix,theme.palette.name)).Max(0);
-				Theme.skinsetIndex = ThemeSkinset.all.FindIndex(x=>x.name==Utility.GetPref<string>("EditorSkinset"+Theme.suffix,theme.skinset.name)).Max(0);
-				Theme.iconsetIndex = ThemeIconset.all.FindIndex(x=>x.name==Utility.GetPref<string>("EditorIconset"+Theme.suffix,theme.iconset.name)).Max(0);
-			}
-		}
+		public static void Reset(){Theme.setup = false;}
 		public static void Refresh(){Theme.needsRefresh = true;}
 		public static void Rebuild(){Theme.needsRebuild = true;}
-		public static void RebuildStyles(){
-			var terms = new string[]{"Styles","styles","s_GOStyles","s_Current","s_Styles","m_Styles","ms_Styles","constants","s_Defaults"};
-			foreach(var type in typeof(Editor).Assembly.GetTypes()){
+		public static void InstantReset(bool delay=false){
+			Theme.needsReset = delay;
+			Theme.needsIconRebuild = true;
+			if(delay){return;}
+			Theme.Reset();
+			Theme.Update();
+		}
+		public static void ClearStyles(){
+			var types = typeof(Editor).Assembly.GetTypes();	
+			for(int index=0;index<types.Length;++index){
+				var type = types[index];
 				if(type.Name.Contains("LookDev")){continue;}
-				foreach(var term in terms){
-					type.ClearVariable(term,ObjectExtension.staticFlags);
-				}
+				Theme.buildTerms.ForEach(x=>type.ClearVariable(x,ObjectExtension.staticFlags));
 			}
-			typeof(EditorStyles).SetVariable<EditorStyles>("s_CachedStyles",null,0);
-			typeof(EditorStyles).SetVariable<EditorStyles>("s_CachedStyles",null,1);
-			typeof(EditorGUIUtility).CallMethod("SkinChanged");
 		}
 		//=================================
 		// Updating
 		//=================================
 		public static void CheckUpdate(PlayModeStateChange state){
 			if(Theme.separatePlaymodeSettings && !EditorApplication.isPlayingOrWillChangePlaymode){
-				Theme.Reset(true);
+				Theme.InstantReset(true);
+			}
+			else{
+				Theme.ApplyIconset();
 			}
 		}
 		public static void UpdateColors(){
@@ -179,8 +175,7 @@ namespace Zios.Interface{
 		}
 		public static void ApplySettings(){
 			if(Theme.all.Count < 1){return;}
-			var baseTheme = Theme.all[Theme.themeIndex];
-			var theme = Theme.active = new Theme().Use(baseTheme);
+			var theme = Theme.active;
 			if(theme.customizablePalette && ThemePalette.all.Count > 0){
 				var basePalette = ThemePalette.all[Theme.paletteIndex];
 				theme.palette = new ThemePalette().Use(basePalette);
@@ -200,34 +195,28 @@ namespace Zios.Interface{
 			foreach(var variant in theme.skinset.variants){
 				variant.active = Utility.GetPref<bool>("EditorVariant"+Theme.suffix+"-"+variant.name,false);
 			}
-			Utility.SetPref<string>("EditorSkinset"+Theme.suffix,theme.skinset.name);
-			if(!Utility.HasPref("EditorFontset"+Theme.suffix)){Utility.SetPref<string>("EditorFontset"+Theme.suffix,theme.fontset.name);}
-			if(!Utility.HasPref("EditorPalette"+Theme.suffix)){Utility.SetPref<string>("EditorPalette"+Theme.suffix,theme.palette.name);}
-			if(!Utility.HasPref("EditorIconset"+Theme.suffix)){Utility.SetPref<string>("EditorIconset"+Theme.suffix,theme.iconset.name);}
 			Theme.Apply();
 		}
 		public static void Apply(string themeName="",bool forceWrite=false){
 			if(Theme.active.IsNull()){return;}
-			var theme = Theme.active;
-			theme.skinset.Apply(theme);
-			forceWrite = !Utility.IsPlaying() && (forceWrite || Theme.singleUpdate);
-			var shouldUpdate = !Utility.IsPlaying() || Theme.singleUpdate || Theme.separatePlaymodeSettings;
-			if(theme.name != "Default" && shouldUpdate){
-				foreach(var color in theme.palette.colors["*"]){
-					if(color.Value.skipTexture){continue;}
-					color.Value.UpdateTexture(Theme.storagePath);
-				}
-				Action UpdateDynamic = ()=>{
-					if(theme.palette.swap.Count < 1){return;}
-					var variants = Theme.active.skinset.variants.Where(x=>x.active).Select(x=>x.name).ToArray();
-					foreach(var file in FileManager.FindAll("#*.png")){
-						 if(file.path.Contains("+") && !variants.Contains(file.path.Parse("+","/"))){
-							continue;
-						}
-						theme.palette.ApplyTexture(file.path,file.GetAsset<Texture2D>(),forceWrite);
-					}
+			Theme.ApplySkinset();
+			Theme.singleUpdate = Theme.singleUpdate || forceWrite;
+			var colors = Theme.active.palette.colors["*"].Where(x=>!x.Value.skipTexture).Select(x=>x.Value).ToList();
+			MethodStepSimple<RelativeColor> colorMethod = (color)=>{
+				color.UpdateTexture();
+				return true;
+			};
+			Worker.Create(colors,colorMethod.AsIndexed());
+			if(Theme.active.palette.swap.Count >= 1){
+				var variants = Theme.active.skinset.variants.Where(x=>x.active).Select(x=>x.name).ToArray();
+				var files = FileManager.FindAll("#*.png").Where(x=>!(x.path.Contains("+")&&!variants.Contains(x.path.Parse("+","/")))).ToList();
+				MethodStepSimple<FileData> dynamicMethod = (file)=>{
+					var texture = default(Texture2D);
+					Worker.MainThread(()=>texture=file.GetAsset<Texture2D>());
+					Theme.active.palette.ApplyTexture(file.path,texture,Theme.singleUpdate);
+					return true;
 				};
-				Utility.DelayCall("UpdateDynamic",UpdateDynamic,Theme.delayUpdate ? 0.25f : 0);
+				Worker.Create(files,dynamicMethod.AsIndexed());
 			}
 			Theme.delayUpdate = false;
 			Theme.singleUpdate = false;
@@ -246,7 +235,7 @@ namespace Zios.Interface{
 		[PreferenceItem("Themes")]
 		public static void DrawPreferences(){
 			EditorUI.Reset();
-			Theme.LoadCheck();
+			if(!Theme.disabled){Theme.LoadCheck();}
 			if(!Theme.separatePlaymodeSettings && EditorApplication.isPlayingOrWillChangePlaymode){
 				"Theme Settings are not available while in play mode unless \"Separate play mode\" active.".DrawHelp();
 				return;
@@ -255,16 +244,11 @@ namespace Zios.Interface{
 				Theme.disabled = Theme.disabled.Draw("Disable System");
 				Undo.RecordPref<bool>("EditorTheme-Disabled",Theme.disabled);
 				"Disabling existing themes requires Unity to be restarted.".DrawHelp("Info");
+				return;
 			}
-			if(Theme.disabled){return;}
 			if(Theme.active.IsNull()){
 				ThemeWindow.ShowWindow();
-				Theme.Reset(true);
-				Theme.InstantRefresh();
-				if(Theme.active.IsNull()){
-					Theme.disabled = true;
-					return;
-				}
+				return;
 			}
 			var current = Theme.themeIndex;
 			var window = EditorWindow.focusedWindow;
@@ -291,12 +275,8 @@ namespace Zios.Interface{
 				var suffix = Theme.suffix.Remove("-"+Theme.active.name);
 				Undo.RecordPref<string>("EditorTheme"+suffix,Theme.all[Theme.themeIndex].name);
 				Theme.changed = true;
-				Theme.InstantRefresh();
-				Utility.DelayCall(Theme.Rebuild,0.25f);
-				Theme.undoCallback = ()=>{
-					Theme.DelayedInstantRefresh();
-					Utility.DelayCall(Theme.Rebuild,0.25f);
-				};
+				Theme.InstantReset();
+				Theme.undoCallback = ()=>Theme.InstantReset(true);
 			}
 			else if(!Theme.needsRebuild && GUI.changed){
 				Theme.Rebuild();
@@ -320,7 +300,7 @@ namespace Zios.Interface{
 				GUILayout.Space(3);
 				if(EditorUI.lastChanged){
 					Theme.ApplyIconset();
-					Theme.undoCallback = Theme.ApplyIconset;
+					Theme.undoCallback = ()=>Theme.ApplyIconset();
 				}
 			}
 		}
@@ -460,7 +440,7 @@ namespace Zios.Interface{
 				Theme.separatePlaymodeSettings = Theme.separatePlaymodeSettings.Draw("Separate Playmode Settings");
 				if(EditorUI.lastChanged){
 					Undo.RecordPref<bool>("EditorTheme-SeparatePlaymodeSettings",Theme.separatePlaymodeSettings);
-					Theme.Reset(true);
+					Theme.InstantReset(true);
 					return;
 				}
 				Theme.disabled = Theme.disabled.Draw("Disable System");
@@ -539,7 +519,7 @@ namespace Zios.Interface{
 							area = GUILayoutUtility.GetLastRect();
 						}
 						if(area.Clicked(1)){
-							GenericMenu menu = new GenericMenu();
+							var menu = new GenericMenu();
 							menu.AddItem(new GUIContent("Normal"),color.sourceName.IsEmpty(),()=>{
 								color.blendMode = ColorBlend.Normal;
 								color.sourceName = "";
@@ -581,8 +561,10 @@ namespace Zios.Interface{
 		public static void PrepareFonts(){
 			var fontPath = Theme.storagePath+"Fonts/";
 			var fontFiles = FileManager.FindAll("*.*tf").Where(x=>!x.path.Contains("Fontsets")).ToArray();
+			var fontPaths = fontFiles.Select(x=>x.path);
+			var fontAssets = fontFiles.Select(x=>x.GetAsset<Font>());
 			Theme.builtinFonts = Locate.GetAssets<Font>().Where(x=>FileManager.GetPath(x).Contains("Library/unity")).ToArray();
-			Theme.fontNames = Theme.builtinFonts.Select(x=>"@Builtin/"+x.name).Concat(fontFiles.Select(x=>x.path)).ToList();
+			Theme.fontNames = Theme.builtinFonts.Select(x=>"@Builtin/"+x.name).Concat(fontPaths).ToList();
 			Func<string,string> FixFontNames = (data)=>{
 				data = data.Remove(fontPath,".ttf",".otf");
 				if(data.Contains("/")){
@@ -595,8 +577,8 @@ namespace Zios.Interface{
 				}
 				return data.GetAssetPath().Trim("/");
 			};
-			Theme.fontNames = Theme.fontNames.Select(x=>FixFontNames(x)).ToList();
-			Theme.fonts = Theme.builtinFonts.Concat(fontFiles.Select(x=>x.GetAsset<Font>())).ToArray();
+			Theme.fontNames = Theme.fontNames.ThreadedSelect(x=>FixFontNames(x)).ToList();
+			Theme.fonts = Theme.builtinFonts.Concat(fontAssets).ToArray();
 		}
 		public static void DrawFonts(){
 			var theme = Theme.active;
@@ -673,15 +655,25 @@ namespace Zios.Interface{
 			}
 		}
 		//=================================
+		// Skinset
+		//=================================
+		public static void ApplySkinset(){
+			if(Theme.active.IsNull()){return;}
+			var theme = Theme.active;
+			theme.skinset.Apply(theme);
+			Utility.RepaintAll();
+			Utility.DelayCall(Utility.RepaintAll,0.25f);
+		}
+		//=================================
 		// Iconset
 		//=================================
-		public static void ApplyIconset(){
+		public static void ApplyIconset(bool includeBuiltin=true){
 			if(Theme.active.IsNull()){return;}
 			Theme.active.iconset = ThemeIconset.all[Theme.iconsetIndex];
 			if(!Theme.lazyLoaded && Theme.active.customizableIconset){
 				Undo.RecordPref<string>("EditorIconset"+Theme.suffix,Theme.active.iconset.name);
 			}
-			Theme.active.iconset.Apply();
+			Theme.active.iconset.Apply(includeBuiltin);
 		}
 		//=================================
 		// Fonts
@@ -739,29 +731,18 @@ namespace Zios.Interface{
 		//=================================
 		// Shortcuts
 		//=================================
-		public static void DelayedInstantRefresh(){
-			Theme.needsInstantRefresh = true;
-		}
-		public static void InstantRefresh(){
-			Theme.setup = false;
-			Theme.Update();
-			Utility.DelayCall(Utility.RepaintAll,0.25f);
-			Theme.ApplyIconset();
-		}
-		public static void Reset(){Theme.Reset(false);}
-		public static void Reset(bool force){
-			if(force || Utility.IsPlaying()){
-				Theme.loaded = false;
-				Theme.setup = false;
-			}
-		}
-		[MenuItem("Edit/Themes/Development/Refresh #F1")]
-		public static void DebugRefresh(){
+		[MenuItem("Edit/Themes/Development/Reset #F1")]
+		public static void DebugReset(){
 			Theme.LoadCheck();
-			Debug.Log("[Themes] Example Info message.");
-			Debug.LogError("[Themes] Example Error message.");
-			Debug.LogWarning("[Themes] Example Warning message.");
-			Theme.Reset(true);
+			if(Theme.debug){
+				Debug.Log("[Themes] Example Info message.");
+				Debug.LogError("[Themes] Example Error message.");
+				Debug.LogWarning("[Themes] Example Warning message.");
+			}
+			else{
+				Debug.Log("[Themes] System Reset.");
+			}
+			Theme.InstantReset(true);
 			Theme.disabled = false;
 		}
 		[MenuItem("Edit/Themes/Development/Toggle Debug #F2")]
@@ -793,8 +774,8 @@ namespace Zios.Interface{
 				}
 				theme.palette = new ThemePalette().Use(palette);
 				Undo.RecordPref<string>("EditorPalette"+Theme.suffix,palette.name);
-				Theme.SaveColors();
 				Theme.singleUpdate = true;
+				Theme.SaveColors();
 				Theme.UpdateColors();
 				Theme.Refresh();
 				Utility.DelayCall(Theme.Rebuild,0.5f);

@@ -2,8 +2,10 @@
 #pragma warning disable 0618
 using System;
 using System.Linq;
+using System.Diagnostics;
 using System.Collections.Generic;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 using UnityObject = UnityEngine.Object;
 using UnityAction = UnityEngine.Events.UnityAction;
 namespace Zios{
@@ -111,6 +113,14 @@ namespace Zios{
 		//============================
 		// General
 		//============================
+		public static float GetTime(){
+			return Time.realtimeSinceStartup;
+		}
+		public static Stopwatch StartTimer(){
+			var watch = new Stopwatch();
+			watch.Start();
+			return watch;
+		}
 		public static void Destroy(UnityObject target,bool destroyAssets=false){
 			if(target.IsNull()){return;}
 			if(target is Component){

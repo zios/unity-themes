@@ -66,6 +66,8 @@ namespace Zios.Interface{
 			if(this.path.IsEmpty()){this.path = other.path;}
 			this.skinset = other.skinset;
 			this.iconset = other.iconset;
+			this.palette = other.palette;
+			this.fontset = other.fontset;
 			return this;
 		}
 	}

@@ -37,7 +37,7 @@ namespace Zios.Interface{
 				file.WriteText(this.Serialize());
 				AssetDatabase.ImportAsset(path.GetAssetPath());
 				Utility.SetPref<string>("EditorFontset"+Theme.suffix,path.GetFileName());
-				Theme.Reset(true);
+				Theme.Reset();
 			}
 		}
 		//=================================

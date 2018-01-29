@@ -88,6 +88,23 @@ namespace Zios{
 			return current.Skip(current.Count() - amount).Take(amount);
 		}
 		//=======================
+		// Threaded
+		//=======================
+		public static IEnumerable<Output> ThreadedSelect<Type,Output>(this IEnumerable<Type> source,Func<Type,Output> method){
+			MethodStepItem<Type,Output> Select = (worker,response,value)=>method(value);
+			return Worker.Create(source.ToList(),Select.AsIndexedOut()).result.SelectMany(x=>x);
+		}
+		public static IEnumerable<Type> ThreadedWhere<Type>(this IEnumerable<Type> source,Func<Type,bool> method){
+			MethodStepItem<Type,Type> Where = (worker,response,value)=>{
+				response.skip = !method(value);
+				return value;
+			};
+			return Worker.Create(source.ToList(),Where.AsIndexedOut()).result.SelectMany(x=>x);
+		}
+		public static int ThreadedCount<Type>(this IEnumerable<Type> source,Func<Type,bool> method){
+			return source.ThreadedWhere(method).Count();
+		}
+		//=======================
 		// String
 		//=======================
 		public static string Join(this IEnumerable<string> current,string separator=" "){

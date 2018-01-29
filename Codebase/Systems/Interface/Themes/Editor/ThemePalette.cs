@@ -37,7 +37,7 @@ namespace Zios.Interface{
 				file.WriteText(this.Serialize());
 				AssetDatabase.ImportAsset(path.GetAssetPath());
 				Utility.SetPref<string>("EditorPalette"+Theme.suffix,path.GetFileName());
-				Theme.Reset(true);
+				Theme.Reset();
 			}
 		}
 		//=================================
@@ -226,23 +226,39 @@ namespace Zios.Interface{
 				parts = parts.Skip(3).ToArray();
 			}
 			name = parts.Join("-");
-			int index = 0;
 			bool changes = false;
+			Texture2D originalImage = null;
 			var originalPath = path.GetDirectory().GetDirectory()+"/"+name;
-			var originalImage = FileManager.GetAsset<Texture2D>(originalPath,false) ?? FileManager.GetAsset<Texture2D>(name,false);
-			var pixels = texture.GetPixels();
-			if(originalImage.IsNull() || pixels.Length != originalImage.GetPixels().Length){
-				Debug.Log("[TexturePalette] : Generating source for index/splat -- " + originalPath.GetPathTerm());
-				texture.SaveAs(originalPath);
-				AssetDatabase.ImportAsset(originalPath.GetAssetPath());
+			var pixels = new Color[0];
+			Action method = ()=>{
 				originalImage = FileManager.GetAsset<Texture2D>(originalPath,false);
+				if(originalImage.IsNull() && !originalPath.ContainsAny("Themes","@Themes")){
+					originalImage = FileManager.GetAsset<Texture2D>(name,false);
+				}
+				pixels = texture.GetPixels();
+				if(originalImage.IsNull() || pixels.Length != originalImage.GetPixels().Length){
+					Debug.Log("[TexturePalette] : Generating source for index/splat -- " + originalPath.GetPathTerm());
+					texture.SaveAs(originalPath);
+					var assetPath = originalPath.GetAssetPath();
+					AssetDatabase.ImportAsset(assetPath);
+					var importer = TextureImporter.GetAtPath(assetPath).As<TextureImporter>();
+					ColorImportSettings.Apply(importer);
+					importer.SaveAndReimport();
+					originalImage = FileManager.GetAsset<Texture2D>(originalPath,false);
+				}
+				originalPath = originalImage.GetAssetPath();
+				if(Theme.debug && originalImage.format != TextureFormat.RGBA32){
+					Debug.Log("[ThemePalette] Original image is not an RGBA32 texture -- " + originalPath);
+				}
+			};
+			Worker.MainThread(method);
+			if(Theme.debug && pixels.Length > 65536){
+				Debug.LogWarning("[ThemePalette] Dynamic image has over 65K pixels. Performance can be affected -- " + name);
 			}
-			originalPath = originalImage.GetAssetPath();
-			if(Theme.debug && originalImage.format != TextureFormat.RGBA32){
-				Debug.Log("[ThemePalette] Original image is not an RGBA32 texture -- " + originalPath);
-			}
+			var swapKeys = this.swap.Keys.ToArray();
 			var originalPixels = pixels.Copy();
-			foreach(var pixel in pixels){
+			for(int index=0;index<pixels.Length;++index){
+				var pixel = pixels[index];
 				if(isSplat){
 					var emptyRed = pixel.r == 0 || colorA.a == 0;
 					var emptyGreen = pixel.g == 0 || colorB.a == 0;
@@ -259,12 +275,12 @@ namespace Zios.Interface{
 						originalPixels[index] = pixelColor;
 						changes = true;
 					}
-					index += 1;
 					continue;
 				}
-				foreach(var swap in this.swap){
-					if(pixel.Matches(swap.Key,false)){
-						var color = swap.Value.value;
+				for(int swapIndex=0;swapIndex<swapKeys.Length;++swapIndex){
+					var swapColor = swapKeys[swapIndex];
+					if(pixel.Matches(swapColor,false)){
+						var color = this.swap[swapColor].value;
 						color.a = ignoreAlpha ? pixel.a : color.a * pixel.a;
 						if(originalPixels[index] != color){
 							originalPixels[index] = color;
@@ -272,20 +288,23 @@ namespace Zios.Interface{
 						}
 					}
 				}
-				index += 1;
 			}
 			if(changes){
-				originalImage.SetPixels(originalPixels);
-				originalImage.Apply();
-				if(writeToDisk){
-					Utility.DelayCall(originalImage,()=>originalImage.SaveAs(originalPath),0.5f);
-				}
+				method = ()=>{
+					originalImage.SetPixels(originalPixels);
+					originalImage.Apply();
+					if(writeToDisk){
+						originalImage.SaveAs(originalPath);
+						//Utility.DelayCall(originalImage,()=>originalImage.SaveAs(originalPath),0.5f);
+					}
+				};
+				Worker.MainThread(method);
 			}
 		}
 	}
 	public class ColorImportSettings : AssetPostprocessor{
 		public static void OnPostprocessAllAssets(string[] imported,string[] deleted,string[] movedTo,string[] movedFrom){
-			Theme.Reset(true);
+			Theme.Reset();
 		}
 		public void OnPreprocessTexture(){
 			TextureImporter importer = (TextureImporter)this.assetImporter;

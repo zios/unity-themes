@@ -51,6 +51,9 @@ namespace Zios.Interface{
 		public static Color Draw(this Color current,UnityLabel label=null,bool indention=true){
 			return EditorUI.Draw<Color>(()=>EditorGUILayout.ColorField(label,current,EditorUI.CreateLayout()),indention);
 		}
+		public static void DrawLabel(this string current,GUIStyle style=null,bool indention=true){
+			current.ToLabel().DrawLabel(style,indention);
+		}
 		public static void DrawLabel(this UnityLabel current,GUIStyle style=null,bool indention=true){
 			style = style ?? EditorStyles.label;
 			var layout = style.CreateLayout() ?? Class.CreateLayout();
@@ -377,6 +380,7 @@ namespace Zios.Interface{
 			EditorUI.foldoutChanged = false;
 			EditorUI.ResetFieldSize();
 			EditorUI.ResetLayout();
+			GUI.changed = false;
 		}
 		public static void ResetFieldSize(){
 			EditorUI.SetFieldSize(0,0,false);

@@ -11,6 +11,12 @@ namespace Zios{
 		public static Dictionary<TKey,TValue> Copy<TKey,TValue>(this Dictionary<TKey,TValue> current){
 			return new Dictionary<TKey,TValue>(current);
 		}
+		public static Dictionary<TKey,TValue> Remove<TKey,TValue>(this Dictionary<TKey,TValue> current,Func<KeyValuePair<TKey,TValue>,bool> method){
+			foreach(var item in current.Copy()){
+				if(method(item)){current.Remove(item.Key);}
+			}
+			return current;
+		}
 		public static TValue Get<TKey,TValue>(this IDictionary<TKey,TValue> current,TKey key,TValue value=default(TValue)) where TValue : new(){
 			TValue output;
 			if(!current.TryGetValue(key,out output)){
@@ -62,6 +68,11 @@ namespace Zios{
 				}
 			}
 			return "";
+		}
+		public static Value TryGet<Key,Value>(this IDictionary<Key,Value> current,Key key){
+			Value output;
+			current.TryGetValue(key,out output);
+			return output;
 		}
 		public static Key GetKey<Key,Value>(this Dictionary<Key,Value> current,Value value){
 			return current.FirstOrDefault(x=>x.Value.Equals(value)).Key;
