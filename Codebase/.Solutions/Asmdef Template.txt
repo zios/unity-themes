@@ -1,0 +1,6 @@
+{
+	"name": "$asmdef",
+	"references": [$references],
+	"includePlatforms": [$editorOnly],
+	"excludePlatforms": []
+}

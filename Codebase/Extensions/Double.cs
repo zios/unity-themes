@@ -1,21 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-namespace Zios{
+namespace Zios.Extensions{
 	public static class DoubleExtension{
-		//=====================
-		// Conversion
-		//=====================
-		public static bool ToBool(this double current){return current != 0;}
-		public static int ToInt(this double current){return (int)current;}
-		public static byte ToByte(this double current){return (byte)current;}
-		public static float ToFloat(this double current) {return (float)current;}
-		public static byte[] ToBytes(this double current){return BitConverter.GetBytes(current);}
-		public static string Serialize(this double current){return current.ToString();}
-		public static double Deserialize(this double current,string value){return value.ToDouble();}
-		//=====================
-		// Numeric
-		//=====================
 		public static double MoveTowards(this double current,double end,double speed){
 			if(current > end){speed *= -1;}
 			current += speed;

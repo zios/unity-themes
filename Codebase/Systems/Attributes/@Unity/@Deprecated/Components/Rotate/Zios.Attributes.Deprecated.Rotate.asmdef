@@ -1,0 +1,14 @@
+{
+	"name": "Zios.Attributes.Deprecated.Rotate",
+	"references": [
+		"Zios.Attributes.Deprecated",
+		"Zios.Attributes.Supports",
+		"Zios.State",
+		"Zios.Supports.NonGeneric",
+		"Zios.Unity.Components.DataBehaviour",
+		"Zios.Unity.Components.ManagedBehaviour",
+		"Zios.Unity.Deprecated"
+	],
+	"includePlatforms": [],
+	"excludePlatforms": []
+}

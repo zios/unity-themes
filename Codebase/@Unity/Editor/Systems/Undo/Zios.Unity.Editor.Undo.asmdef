@@ -1,0 +1,15 @@
+{
+	"name": "Zios.Unity.Editor.Undo",
+	"references": [
+		"Zios.Extensions",
+		"Zios.Extensions.Convert",
+		"Zios.Reflection",
+		"Zios.Supports.Hierarchy",
+		"Zios.Unity.Editor.Pref",
+		"Zios.Unity.Proxy",
+		"Zios.Unity.ProxyEditor",
+		"Zios.Unity.Supports.Singleton"
+	],
+	"includePlatforms": ["Editor"],
+	"excludePlatforms": []
+}

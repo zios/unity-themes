@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-namespace Zios{
+namespace Zios.Extensions{
 	public static class DecimalExtension{
 		//=====================
 		// Numeric
@@ -21,9 +21,6 @@ namespace Zios{
 		}
 		public static bool InRange(this decimal current,decimal start,decimal end){
 			return current.Between(start,end);
-		}
-		public static bool ToBool(this decimal current){
-			return current != 0;
 		}
 		public static decimal Closest(this decimal current,params decimal[] values){
 			decimal match = decimal.MaxValue;

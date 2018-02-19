@@ -1,0 +1,14 @@
+{
+	"name": "Zios.Unity.Editor.Components.EditorFPS",
+	"references": [
+		"Zios.Events",
+		"Zios.Extensions",
+		"Zios.Shortcuts",
+		"Zios.Unity.EditorUI",
+		"Zios.Unity.Extensions",
+		"Zios.Unity.Shortcuts",
+		"Zios.Unity.Time"
+	],
+	"includePlatforms": ["Editor"],
+	"excludePlatforms": []
+}

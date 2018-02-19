@@ -1,6 +1,6 @@
+using System;
 using System.Collections;
-using UnityEngine;
-namespace Zios{
+namespace Zios.Extensions{
 	public static class BitArrayExtension{
 		public static int GetInt(this BitArray bitArray){
 			int[] array = new int[1];
@@ -33,7 +33,7 @@ namespace Zios{
 		public static bool Check(this BitArray bitArray,sbyte[] values){
 			for(int index=0;index < values.Length;++index){
 				bool state = values[index] < 0 ? false : true;
-				int target = Mathf.Abs(values[index]);
+				int target = Math.Abs(values[index]);
 				if(bitArray[target] != state){
 					return false;
 				}

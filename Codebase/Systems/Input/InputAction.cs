@@ -1,8 +1,9 @@
 using System;
-using UnityEngine;
 using UnityObject = UnityEngine.Object;
 namespace Zios.Inputs{
-	using Actions.TransitionComponents;
+	using Zios.Supports.Transition;
+	using Zios.Extensions;
+	using Zios.Unity.SystemAttributes;
 	[Serializable]
 	public class InputAction{
 		public string name;

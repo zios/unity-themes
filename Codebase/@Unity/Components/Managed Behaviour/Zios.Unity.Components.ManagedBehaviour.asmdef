@@ -1,0 +1,10 @@
+{
+	"name": "Zios.Unity.Components.ManagedBehaviour",
+	"references": [
+		"Zios.SystemAttributes",
+		"Zios.Unity.Components.DataBehaviour",
+		"Zios.Unity.Time"
+	],
+	"includePlatforms": [],
+	"excludePlatforms": []
+}

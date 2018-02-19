@@ -1,0 +1,8 @@
+{
+	"name": "Zios.Unity.Components.ParticleController",
+	"references": [
+		"Zios.Shortcuts"
+	],
+	"includePlatforms": [],
+	"excludePlatforms": []
+}

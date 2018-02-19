@@ -3,11 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
-using UnityEvent = UnityEngine.Event;
-namespace Zios.Editors.StateEditors{
-	using Interface;
-	using Actions;
-	using Event;
+namespace Zios.Unity.Editor.State{
+	using Zios.Events;
+	using Zios.Extensions;
+	using Zios.Extensions.Convert;
+	using Zios.State;
+	using Zios.Unity.Button;
+	using Zios.Unity.Editor.Drawers.Table;
+	using Zios.Unity.Editor.Pref;
+	using Zios.Unity.ProxyEditor;
+	using Zios.Unity.EditorUI;
+	using Zios.Unity.Extensions;
+	using Zios.Unity.Editor.Extensions;
+	using Zios.Unity.Proxy;
+	//asm Zios.Shortcuts;
+	//asm Zios.Supports.Mutant;
+	//asm Zios.Unity.Shortcuts;
+	//asm Zios.Unity.Components.ManagedBehaviour;
 	public enum HeaderMode{Vertical,Horizontal,HorizontalFit}
 	public class StateWindow : EditorWindow{
 		//===================================
@@ -47,7 +59,7 @@ namespace Zios.Editors.StateEditors{
 			this.CheckTarget();
 			if(this.target.IsNull()){return;}
 			Events.Add("On State Refreshed",this.BuildTable,this.target);
-			if(Application.isPlaying){
+			if(Proxy.IsPlaying()){
 				Events.Add("On State Updated",this.Repaint,this.target);
 				this.row = -1;
 				this.column = -1;
@@ -57,10 +69,10 @@ namespace Zios.Editors.StateEditors{
 			if(this.target.IsNull()){return;}
 			this.SetTitle("State");
 			this.tableGUI.scroll.Set(this.scroll);
-			//if(!UnityEvent.current.IsUseful()){return;}
-			if(UnityEvent.current.type == EventType.ScrollWheel){
-				this.scroll += UnityEvent.current.delta*5;
-				UnityEvent.current.Use();
+			//if(!Event.current.IsUseful()){return;}
+			if(Event.current.type == EventType.ScrollWheel){
+				this.scroll += Event.current.delta*5;
+				Event.current.Use();
 				this.Repaint();
 			}
 			if(!this.prompted){
@@ -72,9 +84,9 @@ namespace Zios.Editors.StateEditors{
 				GUILayout.EndScrollView();
 			}
 			this.CheckHotkeys();
-			if(UnityEvent.current.type == EventType.MouseDown && !UnityEvent.current.control && !UnityEvent.current.shift){this.DeselectAll();}
-			if(UnityEvent.current.type == EventType.MouseMove){this.Repaint();}
-			if(Utility.IsRepainting()){
+			if(Event.current.type == EventType.MouseDown && !Event.current.control && !Event.current.shift){this.DeselectAll();}
+			if(Event.current.type == EventType.MouseMove){this.Repaint();}
+			if(Proxy.IsRepainting()){
 				this.repaintHooks();
 				this.repaintHooks = ()=>{};
 				if(!this.hovered){
@@ -112,12 +124,12 @@ namespace Zios.Editors.StateEditors{
 			if(prompted){
 				int state = "Group Name?".ToLabel().DrawPrompt(ref this.newSection);
 				if(state > 0){
-					Utility.RecordObject(this.target,"State Window - Group Assignment");
+					ProxyEditor.RecordObject(this.target,"State Window - Group Assignment");
 					var selected = this.tableGUI.rows.Where(x=>x.selected).ToArray();
 					foreach(var row in selected){
 						row.target.As<StateRow>().section = this.newSection;
 					}
-					Utility.SetDirty(this.target,false,true);
+					ProxyEditor.SetDirty(this.target,false,true);
 				}
 				if(state != 0){
 					GUIUtility.keyboardControl = 0;
@@ -172,12 +184,12 @@ namespace Zios.Editors.StateEditors{
 		}
 		public void UngroupSelected(){
 			var selected = this.tableGUI.rows.Where(x=>x.selected).ToArray();
-			Utility.RecordObject(this.target,"State Window - Group Assignment");
+			ProxyEditor.RecordObject(this.target,"State Window - Group Assignment");
 			foreach(var row in selected){
 				var stateRow = (StateRow)row.target;
 				stateRow.section = "";
 			}
-			Utility.SetDirty(this.target,false,true);
+			ProxyEditor.SetDirty(this.target,false,true);
 			this.BuildTable();
 		}
 		public void FitLabels(){
@@ -231,7 +243,7 @@ namespace Zios.Editors.StateEditors{
 					var stateRow = row.target.As<StateRow>();
 					string section = stateRow.section;
 					if(!section.IsEmpty() && !this.setupSections.Contains(section)){
-						bool open = Utility.GetPref<bool>("StateWindow-GroupRow-"+section,false);
+						bool open = EditorPref.Get<bool>("StateWindow-GroupRow-"+section,false);
 						var groupRow = new TableRow(stateRow,this.tableGUI);
 						var groupLabel = new GroupLabelField(section);
 						var groupRows = tableRows.Where(x=>x.target.As<StateRow>().section==section).ToArray();

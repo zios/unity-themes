@@ -1,13 +1,26 @@
-using UnityEngine;
 using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 using UnityObject = UnityEngine.Object;
-namespace Zios.Actions{
-	using Attributes;
-	using Event;
+namespace Zios.State{
+	using Zios.Attributes.Supports;
+	using Zios.Events;
+	using Zios.Extensions;
+	using Zios.Extensions.Convert;
+	using Zios.SystemAttributes;
+	using Zios.Unity.Components.ManagedBehaviour;
+	using Zios.Unity.ProxyEditor;
+	using Zios.Unity.Extensions;
+	using Zios.Unity.Locate;
+	using Zios.Unity.Log;
+	using Zios.Unity.Proxy;
+	//asm Zios.Shortcuts;
+	//asm Zios.Unity.Components.DataBehaviour;
+	//asm Zios.Unity.Components.ManagedBehaviour;
+	//asm Zios.Unity.Shortcuts;
 	[AddComponentMenu("Zios/Component/Action/State Table")]
-	public class StateTable : StateMonoBehaviour{
+	public class StateTable : StateBehaviour{
 		public static bool debug;
 		public StateRow[] table = new StateRow[0];
 		public StateRow[] tableOff = new StateRow[0];
@@ -15,8 +28,8 @@ namespace Zios.Actions{
 		public bool advanced;
 		public AttributeBool external = true;
 		public List<StateRow[]> tables = new List<StateRow[]>();
-		public List<StateMonoBehaviour> scripts = new List<StateMonoBehaviour>();
-		public Dictionary<StateMonoBehaviour,bool> scriptUsed = new Dictionary<StateMonoBehaviour,bool>();
+		public List<StateBehaviour> scripts = new List<StateBehaviour>();
+		public Dictionary<StateBehaviour,bool> scriptUsed = new Dictionary<StateBehaviour,bool>();
 		[NonSerialized] public bool dirty;
 		public override void Awake(){
 			base.Awake();
@@ -25,7 +38,7 @@ namespace Zios.Actions{
 			Events.Register("On State Refreshed",this);
 			Events.Add("On State Update",this.UpdateStates,this);
 			Events.Add("On Start",StateTable.RefreshTables);
-			if(!Application.isPlaying){
+			if(!Proxy.IsPlaying()){
 				Events.Add("On Components Changed",StateTable.RefreshTables);
 				Events.Add("On Components Changed",StateTable.RefreshTables,this.gameObject);
 			}
@@ -72,10 +85,10 @@ namespace Zios.Actions{
 		public void RefreshAll(){StateTable.RefreshTables();}
 		[ContextMenu("Refresh")]
 		public virtual void Refresh(){
-			if(Application.isPlaying){return;}
+			if(Proxy.IsPlaying()){return;}
 			if(!this.controller.IsEnabled()){this.controller = null;}
 			if(!this.IsEnabled()){return;}
-			//Utility.RecordObject(this,"State Table - Refresh");
+			//ProxyEditor.RecordObject(this,"State Table - Refresh");
 			this.UpdateScripts();
 			if(this.scripts.Count > 0){
 				this.UpdateTableList();
@@ -84,14 +97,14 @@ namespace Zios.Actions{
 				this.UpdateRequirements();
 				this.UpdateOrder();
 			}
-			Utility.SetDirty(this);
+			ProxyEditor.SetDirty(this);
 			this.CallEvent("On State Refreshed");
 		}
 		//=============================
 		//  Maintenence
 		//=============================
 		public virtual void UpdateStates(){
-			if(!Application.isPlaying){return;}
+			if(!Proxy.IsPlaying()){return;}
 			if(this.advanced){this.UpdateTable(this.tableOff,true);}
 			this.UpdateTable(this.table);
 			this.CallEvent("On State Updated");
@@ -102,7 +115,7 @@ namespace Zios.Actions{
 				bool isUsable = false;
 				bool isEmpty = isOwnerUsable;
 				bool isChild = row.target is StateTable && row.target != this;
-				StateMonoBehaviour script = row.target;
+				StateBehaviour script = row.target;
 				if(!script.IsEnabled()){continue;}
 				if(isOwnerUsable){
 					foreach(StateRowData requirements in row.requirements){
@@ -155,10 +168,10 @@ namespace Zios.Actions{
 			this.rate = !this.scripts.Exists(x=>x.rate == UpdateRate.Update) ? UpdateRate.FixedUpdate : UpdateRate.Update;
 		}
 		public void ScanTarget(GameObject target){
-			var states = Locate.GetObjectComponents<StateTable>(target).Cast<StateMonoBehaviour>().ToArray();
+			var states = Locate.GetObjectComponents<StateTable>(target).Cast<StateBehaviour>().ToArray();
 			bool keepSearching = states.Length < 1 || states[0] == this;
 			if(states.Contains(this) && states.Length == 1 || states.Length == 0){
-				states = Locate.GetObjectComponents<StateMonoBehaviour>(target);
+				states = Locate.GetObjectComponents<StateBehaviour>(target);
 			}
 			foreach(var state in states){
 				if(state.id.IsEmpty()){
@@ -179,10 +192,10 @@ namespace Zios.Actions{
 		public virtual void ResolveDuplicates(){
 			foreach(StateRow[] table in this.tables){
 				foreach(StateRow row in table){
-					List<StateMonoBehaviour> entries = this.scripts.FindAll(x=>x.id==row.id);
-					foreach(StateMonoBehaviour entry in entries.Skip(1)){
+					List<StateBehaviour> entries = this.scripts.FindAll(x=>x.id==row.id);
+					foreach(StateBehaviour entry in entries.Skip(1)){
 						bool hasName = !entry.alias.IsEmpty() && !row.name.IsEmpty();
-						if(StateTable.debug){Debug.Log("[StateTable] Resolving duplicate ID [" + row.name + "]",(UnityObject)row.target);}
+						if(StateTable.debug){Log.Show("[StateTable] Resolving duplicate ID [" + row.name + "]",(UnityObject)row.target);}
 						if(hasName && this.scripts.FindAll(x=>x.alias==row.name).Count > 1){
 							row.name = entry.alias = row.name + "2";
 						}
@@ -259,7 +272,7 @@ namespace Zios.Actions{
 						var removeTarget = duplicateSource && targetA.name == "@Active" ? targetB : targetA;
 						if(items.Contains(removeTarget)){
 							items.Remove(removeTarget);
-							Debug.LogWarning("[StateTable] Removing duplicate " + typeName + " -- " + removeTarget.name,this.gameObject);
+							Log.Warning("[StateTable] Removing duplicate " + typeName + " -- " + removeTarget.name,this.gameObject);
 						}
 					}
 				}
@@ -269,7 +282,7 @@ namespace Zios.Actions{
 			string typeName = typeof(T).ToString();
 			foreach(T item in items.Copy()){
 				if(this.controller.IsEnabled() && item.name == "@External"){continue;}
-				StateMonoBehaviour match = this.scripts.Find(x=>x.id==item.id);
+				StateBehaviour match = this.scripts.Find(x=>x.id==item.id);
 				if(match == null){
 					match = this.scripts.Find(x=>x.alias==item.name);
 					if(match != null){
@@ -280,7 +293,7 @@ namespace Zios.Actions{
 					if(StateTable.debug){
 						string itemInfo = typeName + " -- " + item.name + " [" + item.id + "]";
 						string action = match == null ? "Removing" : "Repairing";
-						Debug.Log("[StateTable] " + action + " old " + itemInfo,this.gameObject);
+						Log.Show("[StateTable] " + action + " old " + itemInfo,this.gameObject);
 					}
 				}
 			}
@@ -291,14 +304,14 @@ namespace Zios.Actions{
 				if(item.target == null){
 					items.Remove(item);
 					string itemInfo = typeName + " -- " + item.name + " [" + item.id + "]";
-					if(StateTable.debug){Debug.Log("[StateTable] Removing null " + itemInfo,this.gameObject);}
+					if(StateTable.debug){Log.Show("[StateTable] Removing null " + itemInfo,this.gameObject);}
 				}
 			}
 		}
 		private void AddUpdate<T>(ref List<T> items,string[] ignore=null) where T : StateBase,new(){
 			ignore = ignore ?? new string[0];
 			string typeName = typeof(T).ToString();
-			foreach(StateMonoBehaviour script in this.scripts){
+			foreach(StateBehaviour script in this.scripts){
 				string name = script.alias.IsEmpty() ? script.GetType().ToString() : script.alias;
 				if(ignore.Contains(name)){continue;}
 				T item = items.Find(x=>x.id==script.id);
@@ -312,14 +325,14 @@ namespace Zios.Actions{
 					items.Add(item);
 					if(StateTable.debug){
 						string itemInfo = typeName + " -- " + item.name + " [" + item.id + "]";
-						Debug.Log("[StateTable] Creating " + itemInfo,this);
+						Log.Show("[StateTable] Creating " + itemInfo,this);
 					}
 				}
 				else{
 					if(item.target == this){name = "@Active";}
 					item.name = name;
 					item.target = script;
-					//if(StateTable.debug){Debug.Log("[StateTable] Updating " + typeName + " -- " + item.name);}
+					//if(StateTable.debug){Log.Show("[StateTable] Updating " + typeName + " -- " + item.name);}
 				}
 			}
 		}
@@ -329,8 +342,8 @@ namespace Zios.Actions{
 		public string name;
 		public StateTable stateTable;
 		[Internal] public string id;
-		[Internal] public StateMonoBehaviour target;
-		public virtual void Setup(string name,StateMonoBehaviour script,StateTable stateTable){
+		[Internal] public StateBehaviour target;
+		public virtual void Setup(string name,StateBehaviour script,StateTable stateTable){
 			this.name = name;
 			this.stateTable = stateTable;
 			if(script != null){
@@ -346,10 +359,10 @@ namespace Zios.Actions{
 		public StateRowData[] requirements = new StateRowData[1];
 		//public StateRequirement[] fields = new StateRequirement[0];
 		public StateRow(){}
-		public StateRow(string name="",StateMonoBehaviour script=null,StateTable stateTable=null){
+		public StateRow(string name="",StateBehaviour script=null,StateTable stateTable=null){
 			this.Setup(name,script,stateTable);
 		}
-		public override void Setup(string name="",StateMonoBehaviour script=null,StateTable stateTable=null){
+		public override void Setup(string name="",StateBehaviour script=null,StateTable stateTable=null){
 			this.requirements[0] = new StateRowData();
 			base.Setup(name,script,stateTable);
 		}
@@ -364,7 +377,7 @@ namespace Zios.Actions{
 		public bool requireOff;
 		public bool requireUsed;
 		public StateRequirement(){}
-		public StateRequirement(string name="",StateMonoBehaviour script=null,StateTable stateTable=null){
+		public StateRequirement(string name="",StateBehaviour script=null,StateTable stateTable=null){
 			this.Setup(name,script,stateTable);
 		}
 	}

@@ -1,0 +1,11 @@
+{
+	"name": "Zios.Unity.Editor.SystemAttributes.EnumMaskDrawer",
+	"references": [
+		"Zios.Extensions.Convert",
+		"Zios.Unity.Editor.Extensions",
+		"Zios.Unity.EditorUI",
+		"Zios.Unity.SystemAttributes"
+	],
+	"includePlatforms": ["Editor"],
+	"excludePlatforms": []
+}

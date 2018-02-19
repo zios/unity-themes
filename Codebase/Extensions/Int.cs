@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-namespace Zios{
+namespace Zios.Extensions{
 	public static class IntExtension{
 		//=====================
 		// General
@@ -13,23 +13,11 @@ namespace Zios{
 		// Bitwise
 		//=====================
 		public static bool Contains(this int current,Enum mask){
-			return (current & mask.ToInt()) != 0;
+			return (current & System.Convert.ToInt32(mask)) != 0;
 		}
 		public static bool Contains(this int current,int mask){
 			return (current & mask) != 0;
 		}
-		//=====================
-		// Conversion
-		//=====================
-		public static string ToHex(this int current){return current.ToString("X6");}
-		public static Enum ToEnum(this int current,Type enumType){return (Enum)Enum.ToObject(enumType,current);}
-		public static T ToEnum<T>(this int current){return (T)Enum.ToObject(typeof(T),current);}
-		public static bool ToBool(this int current){return current != 0;}
-		public static byte ToByte(this int current){return (byte)current;}
-		public static short ToShort(this int current){return (short)current;}
-		public static byte[] ToBytes(this int current){return BitConverter.GetBytes(current);}
-		public static string Serialize(this int current){return current.ToString();}
-		public static int Deserialize(this int current,string value){return value.ToInt();}
 		//=====================
 		// Numeric
 		//=====================
@@ -111,8 +99,5 @@ namespace Zios{
 			}
 			return false;
 		}
-		public static bool Elapsed(this int current,bool unity=true){return Utility.GetTime()>=current;}
-		public static string Passed(this int current,bool unity=true){return Utility.GetTime()-current+" seconds";}
-		public static float AddTime(this int current,bool unity=true){return current+Utility.GetTime();}
 	}
 }

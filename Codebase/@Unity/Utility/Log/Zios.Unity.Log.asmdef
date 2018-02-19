@@ -1,0 +1,9 @@
+{
+	"name": "Zios.Unity.Log",
+	"references": [
+		"Zios.Extensions",
+		"Zios.Unity.Proxy"
+	],
+	"includePlatforms": [],
+	"excludePlatforms": []
+}

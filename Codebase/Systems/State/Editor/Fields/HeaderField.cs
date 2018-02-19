@@ -1,9 +1,21 @@
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
-namespace Zios.Editors.StateEditors{
-	using Interface;
-	using Actions;
+namespace Zios.Unity.Editor.State{
+	using Zios.Extensions;
+	using Zios.Extensions.Convert;
+	using Zios.File;
+	using Zios.Reflection;
+	using Zios.State;
+	using Zios.Unity.Colors;
+	using Zios.Unity.Editor.Drawers.Table;
+	using Zios.Unity.Editor.Pref;
+	using Zios.Unity.EditorUI;
+	using Zios.Unity.Extensions;
+	using Zios.Unity.Proxy;
+	//asm Zios.Attributes.Supports;
+	//asm Zios.Unity.Components.DataBehaviour;
+	//asm Zios.Unity.Components.ManagedBehaviour;
 	public class HeaderField : TableField{
 		public HeaderField(object target=null,TableRow row=null) : base(target,row){}
 		public override void Draw(){
@@ -11,12 +23,12 @@ namespace Zios.Editors.StateEditors{
 			var hidden = !this.target.Equals("") && !window.target.manual && this.target.As<StateRequirement>().name == "@External";
 			if(hidden){return;}
 			var target = this.target is StateRequirement ? this.target.As<StateRequirement>() : null;
-			var script = !target.IsNull() ? target.target.As<StateMonoBehaviour>() : null;
+			var script = !target.IsNull() ? target.target.As<StateBehaviour>() : null;
 			var scroll = window.scroll;
 			var label = this.target is string ? new GUIContent("") : new GUIContent(this.target.GetVariable<string>("name"));
 			GUIStyle style = new GUIStyle(GUI.skin.label);
-			var mode = (HeaderMode)Utility.GetPref<int>("StateWindow-Mode",2);
-			bool darkSkin = EditorGUIUtility.isProSkin || Utility.GetPref<bool>("EditorTheme-Dark",false);
+			var mode = (HeaderMode)EditorPref.Get<int>("StateWindow-Mode",2);
+			bool darkSkin = EditorGUIUtility.isProSkin || EditorPref.Get<bool>("EditorTheme-Dark",false);
 			Color textColor = Colors.Get("Gray");
 			string background = darkSkin ? "BoxBlackAWarm30" : "BoxWhiteBWarm50";
 			if(window.target.external){
@@ -28,7 +40,7 @@ namespace Zios.Editors.StateEditors{
 				window.headerSize = 64;
 				style.margin.left = 5;
 				style.hover = style.normal;
-				style.normal.background = FileManager.GetAsset<Texture2D>(background);
+				style.normal.background = File.GetAsset<Texture2D>(background);
 				if(mode == HeaderMode.Vertical){
 					window.headerSize = 35;
 					style.fixedHeight = style.fixedWidth;
@@ -42,7 +54,7 @@ namespace Zios.Editors.StateEditors{
 				background = darkSkin ? "BoxBlackHighlightBlueAWarm" : "BoxBlackHighlightBlueDWarm";
 				textColor = darkSkin ? Colors.Get("ZestyBlue") : Colors.Get("White");
 			}
-			if(Application.isPlaying && !script.IsNull()){
+			if(Proxy.IsPlaying() && !script.IsNull()){
 				textColor = Colors.Get("Gray");
 				background = darkSkin ? "BoxBlackAWarm30" : "BoxWhiteBWarm50";
 				bool usable = target.name == "@External" ? window.target.external : script.usable;
@@ -61,7 +73,7 @@ namespace Zios.Editors.StateEditors{
 				}
 			}
 			style.normal.textColor = textColor;
-			style.normal.background = FileManager.GetAsset<Texture2D>(background);
+			style.normal.background = File.GetAsset<Texture2D>(background);
 			if(mode == HeaderMode.Vertical){
 				window.cellSize = style.fixedHeight;
 				float halfWidth = style.fixedWidth / 2;
@@ -95,8 +107,8 @@ namespace Zios.Editors.StateEditors{
 		}
 		public override void Clicked(int button){
 			if(button == 0){
-				int mode = (Utility.GetPref<int>("StateWindow-Mode",2)+1)%3;
-				Utility.SetPref<int>("StateWindow-Mode",mode);
+				int mode = (EditorPref.Get<int>("StateWindow-Mode",2)+1)%3;
+				EditorPref.Set<int>("StateWindow-Mode",mode);
 				this.row.table.ShowAll();
 				StateWindow.Get().Repaint();
 				return;

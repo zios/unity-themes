@@ -1,0 +1,9 @@
+{
+	"name": "Zios.Unity.Supports.MeshSource",
+	"references": [
+		"Zios.Extensions",
+		"Zios.Unity.Log"
+	],
+	"includePlatforms": [],
+	"excludePlatforms": []
+}

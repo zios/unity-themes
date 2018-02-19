@@ -1,10 +1,13 @@
 using UnityEditor;
 using UnityEngine;
-namespace Zios.Editors.StateEditors{
-	using Interface;
-	using Actions;
+namespace Zios.Unity.Editor.State{
+	using Zios.State;
+	using Zios.Unity.EditorUI;
+	using Zios.Unity.Extensions;
+	//asm Zios.Unity.Components.DataBehaviour;
+	//asm Zios.Unity.Components.ManagedBehaviour;
 	[CustomEditor(typeof(StateTable),true)]
-	public class StateTableEditor : StateMonoBehaviourEditor{
+	public class StateTableEditor : StateBehaviourEditor{
 		public override void OnInspectorGUI(){
 			EditorUI.Reset();
 			this.SetupColors();

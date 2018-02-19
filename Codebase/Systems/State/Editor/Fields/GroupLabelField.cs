@@ -1,9 +1,16 @@
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
-using UnityEvent = UnityEngine.Event;
-namespace Zios.Editors.StateEditors{
-	using Actions;
+namespace Zios.Unity.Editor.State{
+	using Zios.Extensions.Convert;
+	using Zios.File;
+	using Zios.State;
+	using Zios.Unity.Colors;
+	using Zios.Unity.Editor.Drawers.Table;
+	using Zios.Unity.Editor.Pref;
+	using Zios.Unity.Extensions;
+	using Zios.Unity.Editor.Extensions;
+	using Zios.Unity.Style;
 	public class GroupLabelField : LabelField{
 		public TableRow[] groupRows = new TableRow[0];
 		public GroupLabelField(object target=null,TableRow row=null) : base(target,row){}
@@ -16,7 +23,7 @@ namespace Zios.Editors.StateEditors{
 			var window = StateWindow.Get();
 			var row = this.row.target.As<StateRow>();
 			var script = row.target;
-			bool darkSkin = EditorGUIUtility.isProSkin || Utility.GetPref<bool>("EditorTheme-Dark",false);
+			bool darkSkin = EditorGUIUtility.isProSkin || EditorPref.Get<bool>("EditorTheme-Dark",false);
 			string name = this.target is string ? (string)this.target : script.alias;
 			string background = darkSkin ? "BoxBlackA30" : "BoxWhiteBWarm";
 			Color textColor = darkSkin? Colors.Get("Silver") : Colors.Get("Black");
@@ -34,20 +41,20 @@ namespace Zios.Editors.StateEditors{
 			style.fixedWidth -= 28;
 			style.margin.left = 0;
 			style.normal.textColor = textColor;
-			style.normal.background = FileManager.GetAsset<Texture2D>(background);
+			style.normal.background = File.GetAsset<Texture2D>(background);
 			if(this.row.selected){
 				expand.normal.background = style.normal.background;
 				expand.normal.textColor = textColor;
 				expand.hover = expand.normal;
 				style.hover = style.normal;
 			}
-			bool open = Utility.GetPref<bool>("StateWindow-GroupRow-"+row.section,false);
+			bool open = EditorPref.Get<bool>("StateWindow-GroupRow-"+row.section,false);
 			string symbol = open ? "-" : "+";
 			StateWindow.Clip(symbol,expand,-1,window.headerSize);
 			if(GUILayoutUtility.GetLastRect().AddX(window.scroll.x).Clicked()){
-				Utility.ToggleEditorPref("StateWindow-GroupRow-"+row.section);
+				EditorPref.Toggle("StateWindow-GroupRow-"+row.section);
 				foreach(var groupRow in this.groupRows){groupRow.disabled = !groupRow.disabled;}
-				UnityEvent.current.Use();
+				Event.current.Use();
 				window.tableGUI.ShowAll();
 				window.Repaint();
 			}
@@ -66,7 +73,7 @@ namespace Zios.Editors.StateEditors{
 			var window = StateWindow.Get();
 			if(button == 0){
 				var multiple = window.tableGUI.rows.Count(x=>x.selected && !this.groupRows.Contains(x)) > 0;
-				if(!multiple && !UnityEvent.current.control){window.DeselectAll();}
+				if(!multiple && !Event.current.control){window.DeselectAll();}
 				this.SelectGroup(true);
 				this.row.selected = this.groupRows.Count(x=>x.selected) > 0;
 			}

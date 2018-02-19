@@ -1,0 +1,21 @@
+{
+	"name": "Zios.Unity.Editor.Attributes.Supports.Target",
+	"references": [
+		"Zios.Attributes.Supports",
+		"Zios.Events",
+		"Zios.Extensions",
+		"Zios.Extensions.Convert",
+		"Zios.File",
+		"Zios.Shortcuts",
+		"Zios.Unity.Colors",
+		"Zios.Unity.Components.DataBehaviour",
+		"Zios.Unity.Editor.Extensions",
+		"Zios.Unity.Editor.Pref",
+		"Zios.Unity.EditorUI",
+		"Zios.Unity.Extensions",
+		"Zios.Unity.ProxyEditor",
+		"Zios.Unity.Shortcuts"
+	],
+	"includePlatforms": ["Editor"],
+	"excludePlatforms": []
+}

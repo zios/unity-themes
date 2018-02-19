@@ -1,0 +1,33 @@
+{
+	"name": "Zios.Unity.Editor.State",
+	"references": [
+		"Zios.Attributes.Supports",
+		"Zios.Events",
+		"Zios.Extensions",
+		"Zios.Extensions.Convert",
+		"Zios.File",
+		"Zios.Reflection",
+		"Zios.Shortcuts",
+		"Zios.State",
+		"Zios.Supports.Mutant",
+		"Zios.Unity.Button",
+		"Zios.Unity.Colors",
+		"Zios.Unity.Components.DataBehaviour",
+		"Zios.Unity.Components.ManagedBehaviour",
+		"Zios.Unity.Editor.Drawers.Table",
+		"Zios.Unity.Editor.Extensions",
+		"Zios.Unity.Editor.Inspectors",
+		"Zios.Unity.Editor.Inspectors.DataBehaviour",
+		"Zios.Unity.Editor.MonoBehaviourEditor",
+		"Zios.Unity.Editor.Pref",
+		"Zios.Unity.EditorUI",
+		"Zios.Unity.Extensions",
+		"Zios.Unity.Extensions.Convert",
+		"Zios.Unity.Proxy",
+		"Zios.Unity.ProxyEditor",
+		"Zios.Unity.Shortcuts",
+		"Zios.Unity.Style"
+	],
+	"includePlatforms": ["Editor"],
+	"excludePlatforms": []
+}

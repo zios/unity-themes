@@ -1,0 +1,23 @@
+{
+	"name": "Zios.Console",
+	"references": [
+		"Zios.Events",
+		"Zios.Extensions",
+		"Zios.Extensions.Convert",
+		"Zios.File",
+		"Zios.Shortcuts",
+		"Zios.Supports.Accessor",
+		"Zios.Supports.FixedList",
+		"Zios.Unity.Button",
+		"Zios.Unity.Call",
+		"Zios.Unity.Colors",
+		"Zios.Unity.Log",
+		"Zios.Unity.Pref",
+		"Zios.Unity.Proxy",
+		"Zios.Unity.Shortcuts",
+		"Zios.Unity.Supports.Singleton",
+		"Zios.Unity.Time"
+	],
+	"includePlatforms": [],
+	"excludePlatforms": []
+}

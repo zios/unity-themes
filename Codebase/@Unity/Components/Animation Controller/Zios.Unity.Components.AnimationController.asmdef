@@ -1,0 +1,16 @@
+{
+	"name": "Zios.Unity.Components.AnimationController",
+	"references": [
+		"Zios.Attributes.Supports",
+		"Zios.Events",
+		"Zios.Shortcuts",
+		"Zios.SystemAttributes",
+		"Zios.Unity.Components.DataBehaviour",
+		"Zios.Unity.Components.ManagedBehaviour",
+		"Zios.Unity.Log",
+		"Zios.Unity.Proxy",
+		"Zios.Unity.Shortcuts"
+	],
+	"includePlatforms": [],
+	"excludePlatforms": []
+}

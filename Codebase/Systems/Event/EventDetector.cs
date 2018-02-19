@@ -1,14 +1,15 @@
-#pragma warning disable 0618
 using UnityEngine;
-using UnityEvent = UnityEngine.Event;
-namespace Zios.Event{
+namespace Zios.Events{
+	using Zios.Unity.Log;
+	using Zios.Unity.Proxy;
+	using Zios.Unity.Time;
 	[AddComponentMenu("")][ExecuteInEditMode]
 	public class EventDetector : MonoBehaviour{
 		private static bool showTime = false;
 		private float loadStart;
 		public static bool loading = true;
 		public void Loading(){
-			this.loadStart = Time.realtimeSinceStartup;
+			this.loadStart = Time.Get();
 			EventDetector.loading = true;
 		}
 		public virtual void OnValidate(){
@@ -61,12 +62,12 @@ namespace Zios.Event{
 		}
 		public virtual void Start(){Events.Call("On Start");}
 		public virtual void Update(){
-			Utility.CheckLoaded(false);
-			if(!Application.isLoadingLevel && EventDetector.loading){
+			//Utility.CheckLoaded(false);
+			if(!Proxy.IsLoading() && EventDetector.loading){
 				Events.Call("On Level Was Loaded");
-				float totalTime = Mathf.Max(Time.realtimeSinceStartup-this.loadStart,0);
+				float totalTime = Mathf.Max(Time.Get()-this.loadStart,0);
 				if(EventDetector.showTime){
-					Debug.Log("[Scene] : Load complete -- " + (totalTime) + " seconds.");
+					Log.Show("[Scene] : Load complete -- " + (totalTime) + " seconds.");
 				}
 				this.loadStart = 0;
 				EventDetector.loading = false;
@@ -85,7 +86,7 @@ namespace Zios.Event{
 		public virtual void OnDisconnectedFromServer(){Events.Call("On Disconnected From Server");}
 		public virtual void OnGUI(){
 			Events.Call("On GUI");
-			var current = UnityEvent.current.type;
+			var current = Event.current.type;
 			if(current == EventType.Repaint){Events.Call("On GUI Repaint");}
 			else if(current == EventType.Layout){Events.Call("On GUI Layout");}
 			else if(current == EventType.KeyDown){Events.Call("On GUI Key Down");}

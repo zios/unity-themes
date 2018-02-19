@@ -1,0 +1,8 @@
+{
+	"name": "Zios.Unity.Proxy",
+	"references": [
+		"Zios.Extensions"
+	],
+	"includePlatforms": [],
+	"excludePlatforms": []
+}

@@ -1,0 +1,9 @@
+{
+	"name": "Zios.Unity.Supports.NonGeneric",
+	"references": [
+		"Zios.Attributes.Supports",
+		"Zios.Supports.NonGeneric"
+	],
+	"includePlatforms": [],
+	"excludePlatforms": []
+}

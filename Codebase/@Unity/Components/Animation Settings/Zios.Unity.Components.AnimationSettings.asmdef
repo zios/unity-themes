@@ -1,0 +1,9 @@
+{
+	"name": "Zios.Unity.Components.AnimationSettings",
+	"references": [
+		"Zios.Extensions",
+		"Zios.Unity.Supports.Storage"
+	],
+	"includePlatforms": [],
+	"excludePlatforms": []
+}

@@ -1,0 +1,23 @@
+{
+	"name": "Zios.Unity.Editor.MonoBehaviourEditor",
+	"references": [
+		"Zios.Events",
+		"Zios.Extensions",
+		"Zios.Extensions.Convert",
+		"Zios.Reflection",
+		"Zios.Shortcuts",
+		"Zios.SystemAttributes",
+		"Zios.Unity.Call",
+		"Zios.Unity.Editor.Extensions",
+		"Zios.Unity.Editor.Inspectors",
+		"Zios.Unity.Editor.Pref",
+		"Zios.Unity.EditorUI",
+		"Zios.Unity.Extensions",
+		"Zios.Unity.Proxy",
+		"Zios.Unity.ProxyEditor",
+		"Zios.Unity.Shortcuts",
+		"Zios.Unity.Time"
+	],
+	"includePlatforms": ["Editor"],
+	"excludePlatforms": []
+}

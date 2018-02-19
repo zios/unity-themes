@@ -1,0 +1,13 @@
+{
+	"name": "Zios.Unity.Editor.Drawers.LayerDistances",
+	"references": [
+		"Zios.Extensions",
+		"Zios.Unity.Components.CameraAdvanced",
+		"Zios.Unity.Editor.Extensions",
+		"Zios.Unity.Editor.Pref",
+		"Zios.Unity.EditorUI",
+		"Zios.Unity.Extensions"
+	],
+	"includePlatforms": ["Editor"],
+	"excludePlatforms": []
+}

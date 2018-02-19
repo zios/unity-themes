@@ -1,0 +1,14 @@
+{
+	"name": "Zios.Unity.Editor.Input",
+	"references": [
+		"Zios.Extensions.Convert",
+		"Zios.File",
+		"Zios.Inputs",
+		"Zios.Unity.Editor.Inspectors",
+		"Zios.Unity.Editor.MonoBehaviourEditor",
+		"Zios.Unity.ProxyEditor",
+		"Zios.Unity.Supports.Singleton"
+	],
+	"includePlatforms": ["Editor"],
+	"excludePlatforms": []
+}

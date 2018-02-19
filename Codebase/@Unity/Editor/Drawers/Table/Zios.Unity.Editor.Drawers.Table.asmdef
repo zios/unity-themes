@@ -1,0 +1,12 @@
+{
+	"name": "Zios.Unity.Editor.Drawers.Table",
+	"references": [
+		"Zios.Extensions",
+		"Zios.File",
+		"Zios.Supports.Mutant",
+		"Zios.Unity.Editor.Pref",
+		"Zios.Unity.Extensions"
+	],
+	"includePlatforms": ["Editor"],
+	"excludePlatforms": []
+}

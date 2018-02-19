@@ -1,0 +1,12 @@
+{
+	"name": "Zios.Unity.Editor.Locate",
+	"references": [
+		"Zios.Extensions",
+		"Zios.Extensions.Convert",
+		"Zios.Reflection",
+		"Zios.Unity.Locate",
+		"Zios.Unity.Proxy"
+	],
+	"includePlatforms": ["Editor"],
+	"excludePlatforms": []
+}

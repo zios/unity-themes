@@ -1,0 +1,12 @@
+{
+	"name": "Zios.Attributes.Deprecated.SetPosition",
+	"references": [
+		"Zios.Attributes.Supports",
+		"Zios.Extensions",
+		"Zios.State",
+		"Zios.Unity.Components.DataBehaviour",
+		"Zios.Unity.Components.ManagedBehaviour"
+	],
+	"includePlatforms": [],
+	"excludePlatforms": []
+}

@@ -1,12 +1,25 @@
 using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEvent = UnityEngine.Event;
 namespace Zios.Inputs{
-	using Interface;
-	using Event;
+	using Zios.Console;
+	using Zios.Events;
+	using Zios.Extensions;
+	using Zios.Extensions.Convert;
+	using Zios.File;
+	using Zios.SystemAttributes;
+	using Zios.Unity.Extensions;
+	using Zios.Unity.Locate;
+	using Zios.Unity.Log;
+	using Zios.Unity.Proxy;
+	using Zios.Unity.Supports.Singleton;
+	using Zios.Unity.SystemAttributes;
+	using Zios.Unity.Time;
+	using Zios.Shortcuts;
+	//asm Zios.Shortcuts;
+	//asm Zios.Unity.Shortcuts;
 	public enum InputUIState{None,SelectProfile,EditProfile}
 	public enum InputInstanceOptions{AllowCurrentlyUsedProfiles=1,AllowMultipleProfiles=2,ReassignInvalidProfiles=4}
 	public class InputManager : Singleton{
@@ -38,14 +51,14 @@ namespace Zios.Inputs{
 		private int uiGroupIndex;
 		private int uiIndex;
 		public static InputManager Get(){
-			InputManager.singleton = InputManager.singleton ?? Utility.GetSingleton<InputManager>();
+			InputManager.singleton = InputManager.singleton ?? Singleton.Get<InputManager>();
 			return InputManager.singleton;
 		}
 		//===============
 		// Unity
 		//===============
 		public void Refresh(){
-			if(Application.isEditor){
+			if(Proxy.IsEditor()){
 				InputGroup.Save();
 				InputGroup.Load();
 			}
@@ -61,7 +74,7 @@ namespace Zios.Inputs{
 		public void OnEnable(){
 			this.Setup();
 			InputGroup.Load();
-			if(!Utility.IsPlaying()){return;}
+			if(!Proxy.IsPlaying()){return;}
 			this.Validate();
 			if(this.disabled){return;}
 			InputProfile.Load();
@@ -81,7 +94,7 @@ namespace Zios.Inputs{
 		public bool Validate(){
 			try{Input.GetAxis("Joystick1-Axis1");}
 			catch{
-				Debug.LogWarning("[InputManager] Unity input not setup. Please copy provided InputManager.asset to Assets/ProjectSettings");
+				Log.Warning("[InputManager] Unity input not setup. Please copy provided InputManager.asset to Assets/ProjectSettings");
 				this.disabled = true;
 				return false;
 			}
@@ -98,8 +111,8 @@ namespace Zios.Inputs{
 			this.DetectGamepads();
 		}
 		public void OnGUI(){
-			if(!Application.isPlaying || this.disabled){return;}
-			var current = UnityEvent.current;
+			if(!Proxy.IsPlaying() || this.disabled){return;}
+			var current = Event.current;
 			if(current.isKey || current.shift || current.alt || current.control || current.command){
 				if(!this.devices.Exists(x=>x.name=="Keyboard")){
 					this.devices.Add(new InputDevice("Keyboard"));
@@ -123,8 +136,8 @@ namespace Zios.Inputs{
 				InputState.disabled = true;
 				this.DrawProfileSelect();
 				this.DrawProfileEdit();
-				bool hitEscape = UnityEvent.current.keyCode == KeyCode.Escape;
-				if(UnityEvent.current.type == EventType.KeyDown && hitEscape){
+				bool hitEscape = Event.current.keyCode == KeyCode.Escape;
+				if(Event.current.type == EventType.KeyDown && hitEscape){
 					this.uiState = InputUIState.None;
 					InputState.disabled = false;
 				}
@@ -177,10 +190,10 @@ namespace Zios.Inputs{
 				}
 				var progress = Locate.Find(path+"Image-Timer");
 				var highest = this.lastInput.OrderBy(x=>x.Value).FirstOrDefault();
-				var timeHeld = highest.Key.IsEmpty() ? Time.realtimeSinceStartup + InputManager.registerTime : highest.Value;
-				var targetInput = this.lastInput.Where(x=>Time.realtimeSinceStartup>x.Value).FirstOrDefault();
+				var timeHeld = highest.Key.IsEmpty() ? Time.Get() + InputManager.registerTime : highest.Value;
+				var targetInput = this.lastInput.Where(x=>Time.Get()>x.Value).FirstOrDefault();
 				progress.SetActive(highest.Value > 0);
-				progress.GetComponent<Image>().fillAmount = InputManager.registerTime-(timeHeld-Time.realtimeSinceStartup);
+				progress.GetComponent<Image>().fillAmount = InputManager.registerTime-(timeHeld-Time.Get());
 				if(!this.waitForRelease && !targetInput.Key.IsEmpty()){
 					this.waitForRelease = true;
 					Locate.Find(path+"Icon-Gamepad/"+action.helpImage).SetActive(false);
@@ -230,7 +243,7 @@ namespace Zios.Inputs{
 							axisName += value < 0 ? "Negative" : "Positive";
 							this.joystickAxis[axisName] = true;
 							if(!this.lastInput.ContainsKey(axisName)){
-								this.lastInput[axisName] = Time.realtimeSinceStartup + InputManager.registerTime;
+								this.lastInput[axisName] = Time.Get() + InputManager.registerTime;
 							}
 							continue;
 						}
@@ -247,7 +260,7 @@ namespace Zios.Inputs{
 						if(keyName.Contains("JoystickButton")){continue;}
 						if(Input.GetKey(keyCode)){
 							if(!this.lastInput.ContainsKey(keyName)){
-								this.lastInput[keyName] = Time.realtimeSinceStartup + InputManager.registerTime;
+								this.lastInput[keyName] = Time.Get() + InputManager.registerTime;
 							}
 							continue;
 						}
@@ -265,13 +278,13 @@ namespace Zios.Inputs{
 				foreach(var change in names.Except(this.joystickNames)){
 					if(change.IsEmpty()){continue;}
 					int id = names.IndexOf(change);
-					Debug.Log("[InputManager] Joystick #" + id + " plugged in -- " + change);
+					Log.Show("[InputManager] Joystick #" + id + " plugged in -- " + change);
 					this.devices.Add(new InputDevice(change,id));
 				}
 				foreach(var change in this.joystickNames.Except(names)){
 					if(change.IsEmpty()){continue;}
 					int id = this.joystickNames.IndexOf(change);
-					Debug.Log("[InputManager] Joystick #" +id + " unplugged -- " + change);
+					Log.Show("[InputManager] Joystick #" +id + " unplugged -- " + change);
 					this.devices.RemoveAll(x=>x.name==change&&x.id==id);
 				}
 				this.joystickNames = names;
@@ -286,7 +299,7 @@ namespace Zios.Inputs{
 			if(editing || mouseChanges){
 				InputManager.mouseChangeAverage = (InputManager.mouseChangeAverage+InputManager.mouseChange)/2;
 				if(mouseChanges){
-					InputManager.lastMouseChange = Time.realtimeSinceStartup;
+					InputManager.lastMouseChange = Time.Get();
 					if(!this.devices.Exists(x=>x.name=="Mouse")){
 						this.devices.Add(new InputDevice("Mouse"));
 					}
@@ -310,13 +323,13 @@ namespace Zios.Inputs{
 						}
 					}
 					if(!inputName.IsEmpty() && !this.lastInput.ContainsKey(inputName)){
-						var time = inputName.Contains("Scroll") ? 0 : Time.realtimeSinceStartup + InputManager.registerTime;
+						var time = inputName.Contains("Scroll") ? 0 : Time.Get() + InputManager.registerTime;
 						this.lastInput.Clear();
 						this.lastInput[inputName] = time;
 					}
 				}
 			}
-			if((Time.realtimeSinceStartup-InputManager.lastMouseChange) > 0.1f){
+			if((Time.Get()-InputManager.lastMouseChange) > 0.1f){
 				InputManager.mouseChangeAverage = Vector2.zero;
 				this.lastInput = this.lastInput.Where(x=>!x.Key.ContainsAny("MouseX","MouseY","MouseScroll")).ToDictionary();
 			}
@@ -355,18 +368,18 @@ namespace Zios.Inputs{
 		public void ShowProfiles(){
 			this.activeProfile = null;
 			this.selectionHeader = "";
-			this.profiles.RemoveAll(x=>!FileManager.Exists(x.name+".profile"));
+			this.profiles.RemoveAll(x=>!File.Exists(x.name+".profile"));
 			this.uiState = InputUIState.SelectProfile;
 		}
 		public void RemoveProfile(string name){
-			if(FileManager.Find(name+".profile",false).IsNull()){
+			if(File.Find(name+".profile",false).IsNull()){
 				this.ShowProfiles();
 				this.selectionHeader = "Remove Profile";
 				Events.AddLimited("On Profile Selected",()=>this.RemoveProfile(this.activeProfile.name),1,this);
 				return;
 			}
 			this.profiles.RemoveAll(x=>x.name==name);
-			FileManager.Delete(name+".profile");
+			File.Delete(name+".profile");
 			foreach(var instance in Locate.GetSceneComponents<InputInstance>()){
 				if(!instance.profile.IsNull() && instance.profile.name == name){
 					this.instanceProfile.Remove(instance.alias);

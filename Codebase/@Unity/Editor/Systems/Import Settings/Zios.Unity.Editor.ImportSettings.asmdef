@@ -1,0 +1,9 @@
+{
+	"name": "Zios.Unity.Editor.ImportSettings",
+	"references": [
+		"Zios.Extensions",
+		"Zios.Unity.Editor.Extensions"
+	],
+	"includePlatforms": ["Editor"],
+	"excludePlatforms": []
+}

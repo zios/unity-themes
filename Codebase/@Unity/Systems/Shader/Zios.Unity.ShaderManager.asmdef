@@ -1,0 +1,13 @@
+{
+	"name": "Zios.Unity.ShaderManager",
+	"references": [
+		"Zios.Events",
+		"Zios.Shortcuts",
+		"Zios.Unity.Proxy",
+		"Zios.Unity.Shortcuts",
+		"Zios.Unity.Supports.Singleton",
+		"Zios.Unity.Time"
+	],
+	"includePlatforms": [],
+	"excludePlatforms": []
+}

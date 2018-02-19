@@ -1,15 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
-namespace Zios{
+namespace Zios.Extensions{
 	public static class ArrayExtension{
 		//=======================
 		// Default
 		//=======================
-		public static List<T> ToList<T>(this T[] current){
-			return new List<T>(current);
-		}
 		public static int IndexOf<T>(this Array current,T value){
 			return Array.IndexOf(current,value);
 		}
@@ -104,44 +100,6 @@ namespace Zios{
 			for(int index=0;index<current.Length;++index){
 				result[index] = current[index] * scalar;
 			}
-			return result;
-		}
-		public static Color ToColor(this float[] current){
-			if(current.Length >= 3){
-				float r = current[0];
-				float g = current[1];
-				float b = current[2];
-				if(current.Length > 3){
-					return new Color(r,g,b,current[3]);
-				}
-				return new Color(r,g,b);
-			}
-			return Color.white;
-		}
-		public static Vector2 ToVector2(this float[] current){
-			float x = current.Length >= 1 ? current[0] : 0;
-			float y = current.Length >= 2 ? current[1] : 0;
-			return new Vector2(x,y);
-		}
-		public static Vector3 ToVector3(this float[] current){
-			float x = current.Length >= 1 ? current[0] : 0;
-			float y = current.Length >= 2 ? current[1] : 0;
-			float z = current.Length >= 3 ? current[2] : 0;
-			return new Vector3(x,y,z);
-		}
-		public static Vector4 ToVector4(this float[] current){
-			float x = current.Length >= 1 ? current[0] : 0;
-			float y = current.Length >= 2 ? current[1] : 0;
-			float z = current.Length >= 3 ? current[2] : 0;
-			float w = current.Length >= 4 ? current[3] : 0;
-			return new Vector4(x,y,z,w);
-		}
-		public static Rect ToRect(this float[] current){
-			Rect result = new Rect();
-			result.x = current.Length >= 1 ? current[0] : 0;
-			result.y = current.Length >= 2 ? current[1] : 0;
-			result.width = current.Length >= 3 ? current[2] : 0;
-			result.height = current.Length >= 4 ? current[3] : 0;
 			return result;
 		}
 	}

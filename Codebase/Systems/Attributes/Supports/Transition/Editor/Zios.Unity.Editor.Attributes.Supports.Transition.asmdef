@@ -1,0 +1,17 @@
+{
+	"name": "Zios.Unity.Editor.Attributes.Supports.Transition",
+	"references": [
+		"Zios.Attributes.Supports",
+		"Zios.Attributes.Supports.Transition",
+		"Zios.Events",
+		"Zios.Shortcuts",
+		"Zios.Supports.Transition",
+		"Zios.Unity.Editor.Extensions",
+		"Zios.Unity.Editor.Pref",
+		"Zios.Unity.EditorUI",
+		"Zios.Unity.Extensions",
+		"Zios.Unity.Shortcuts"
+	],
+	"includePlatforms": ["Editor"],
+	"excludePlatforms": []
+}

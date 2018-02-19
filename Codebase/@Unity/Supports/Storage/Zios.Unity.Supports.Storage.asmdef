@@ -1,0 +1,9 @@
+{
+	"name": "Zios.Unity.Supports.Storage",
+	"references": [
+		"Zios.Extensions.Convert",
+		"Zios.Unity.Pref"
+	],
+	"includePlatforms": [],
+	"excludePlatforms": []
+}

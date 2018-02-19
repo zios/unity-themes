@@ -1,0 +1,10 @@
+{
+	"name": "Zios.Unity.Call",
+	"references": [
+		"Zios.Extensions",
+		"Zios.Unity.Proxy",
+		"Zios.Unity.Time"
+	],
+	"includePlatforms": [],
+	"excludePlatforms": []
+}

@@ -1,0 +1,17 @@
+{
+	"name": "Zios.Attributes.Deprecated.MoveTowards",
+	"references": [
+		"Zios.Attributes.Deprecated",
+		"Zios.Attributes.Supports",
+		"Zios.Events",
+		"Zios.Extensions",
+		"Zios.Shortcuts",
+		"Zios.State",
+		"Zios.Unity.Components.ColliderController",
+		"Zios.Unity.Components.DataBehaviour",
+		"Zios.Unity.Components.ManagedBehaviour",
+		"Zios.Unity.Shortcuts"
+	],
+	"includePlatforms": [],
+	"excludePlatforms": []
+}

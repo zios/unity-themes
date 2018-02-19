@@ -1,0 +1,14 @@
+{
+	"name": "Zios.Unity.Editor.Inspectors",
+	"references": [
+		"Zios.Extensions",
+		"Zios.File",
+		"Zios.Unity.Call",
+		"Zios.Unity.Editor.Extensions",
+		"Zios.Unity.EditorUI",
+		"Zios.Unity.Extensions",
+		"Zios.Unity.ProxyEditor"
+	],
+	"includePlatforms": ["Editor"],
+	"excludePlatforms": []
+}

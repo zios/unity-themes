@@ -1,0 +1,12 @@
+{
+	"name": "Zios.Unity.AudioManager",
+	"references": [
+		"Zios.Console",
+		"Zios.Shortcuts",
+		"Zios.Unity.Log",
+		"Zios.Unity.Supports.Singleton",
+		"Zios.Unity.Time"
+	],
+	"includePlatforms": [],
+	"excludePlatforms": []
+}

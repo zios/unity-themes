@@ -1,0 +1,19 @@
+{
+	"name": "Zios.Unity.Editor.Inspectors.ExtendedMaterial",
+	"references": [
+		"Zios.Extensions",
+		"Zios.Extensions.Convert",
+		"Zios.File",
+		"Zios.Reflection",
+		"Zios.Unity.Editor.Pref",
+		"Zios.Unity.EditorUI",
+		"Zios.Unity.Extensions",
+		"Zios.Unity.Extensions.Convert",
+		"Zios.Unity.Log",
+		"Zios.Unity.Proxy",
+		"Zios.Unity.ProxyEditor",
+		"Zios.Unity.Time"
+	],
+	"includePlatforms": ["Editor"],
+	"excludePlatforms": []
+}

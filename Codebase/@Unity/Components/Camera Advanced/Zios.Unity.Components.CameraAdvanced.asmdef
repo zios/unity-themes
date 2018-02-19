@@ -1,0 +1,9 @@
+{
+	"name": "Zios.Unity.Components.CameraAdvanced",
+	"references": [
+		"Zios.SystemAttributes",
+		"Zios.Unity.Proxy"
+	],
+	"includePlatforms": [],
+	"excludePlatforms": []
+}

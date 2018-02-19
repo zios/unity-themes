@@ -1,0 +1,10 @@
+{
+	"name": "Zios.Unity.Editor.Extensions",
+	"references": [
+		"Zios.Extensions",
+		"Zios.Extensions.Convert",
+		"Zios.Reflection"
+	],
+	"includePlatforms": ["Editor"],
+	"excludePlatforms": []
+}

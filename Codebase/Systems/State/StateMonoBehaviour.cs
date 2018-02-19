@@ -1,10 +1,19 @@
 using System;
 using UnityEngine;
-namespace Zios.Actions{
-	using Event;
-	using Attributes;
+namespace Zios.State{
+	using Zios.Unity.Components.ManagedBehaviour;
+	using Zios.Attributes.Supports;
+	using Zios.Events;
+	using Zios.Extensions;
+	using Zios.SystemAttributes;
+	using Zios.Unity.Extensions;
+	using Zios.Unity.Pref;
+	using Zios.Unity.Proxy;
+	//asm Zios.Shortcuts;
+	//asm Zios.Unity.Components.DataBehaviour;
+	//asm Zios.Unity.Shortcuts;
 	[AddComponentMenu("")]
-	public class StateMonoBehaviour : ManagedMonoBehaviour{
+	public class StateBehaviour : ManagedBehaviour{
 		[Advanced] public StateOccurrence occurrence = StateOccurrence.Default;
 		[Internal] public StateTable controller;
 		[Internal] public string id;
@@ -22,12 +31,10 @@ namespace Zios.Actions{
 			this.used.Setup("Used",this);
 			this.usable.Set(this.controller.IsNull());
 		}
-		#if UNITY_EDITOR
 		[ContextMenu("Toggle Breakdown")]
 		public virtual void ToggleLinkBreakdown(){
-			Utility.ToggleEditorPref("StateMonoBehaviourEditor-ToggleBreakdown");
+			PlayerPref.Toggle("StateBehaviourEditor-ToggleBreakdown");
 		}
-		#endif
 		public void DefaultAlias(string name){
 			if(this.alias.IsEmpty()){
 				this.alias = name;
@@ -48,7 +55,7 @@ namespace Zios.Actions{
 		public virtual void Use(){this.Toggle(true);}
 		public virtual void End(){this.Toggle(false);}
 		public virtual void Toggle(bool state){
-			if(!Application.isPlaying){return;}
+			if(!Proxy.IsPlaying()){return;}
 			bool resetUsed = this.used && this.occurrence == StateOccurrence.Once && !state;
 			if(resetUsed || (state != this.active)){
 				if(this.controller.IsEnabled()){

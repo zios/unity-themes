@@ -1,0 +1,12 @@
+{
+	"name": "Zios.Unity.Editor.Deprecated",
+	"references": [
+		"Zios.Attributes.Deprecated",
+		"Zios.Attributes.Supports",
+		"Zios.Unity.Editor.Extensions",
+		"Zios.Unity.EditorUI",
+		"Zios.Unity.Extensions"
+	],
+	"includePlatforms": ["Editor"],
+	"excludePlatforms": []
+}

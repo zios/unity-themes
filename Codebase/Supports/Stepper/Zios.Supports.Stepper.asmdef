@@ -1,0 +1,11 @@
+{
+	"name": "Zios.Supports.Stepper",
+	"references": [
+		"Zios.Extensions",
+		"Zios.Shortcuts",
+		"Zios.Unity.EditorUI",
+		"Zios.Unity.Proxy"
+	],
+	"includePlatforms": [],
+	"excludePlatforms": []
+}

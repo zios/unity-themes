@@ -1,0 +1,9 @@
+{
+	"name": "Zios.Unity.Pref",
+	"references": [
+		"Zios.Extensions.Convert",
+		"Zios.Unity.Extensions.Convert"
+	],
+	"includePlatforms": [],
+	"excludePlatforms": []
+}

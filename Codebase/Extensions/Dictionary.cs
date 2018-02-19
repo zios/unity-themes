@@ -1,13 +1,9 @@
 using System;
-using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-namespace Zios{
+using System.Linq;
+namespace Zios.Extensions{
 	public static class DictionaryExtension{
-		public static SortedList<TKey,TValue> ToSortedList<TKey,TValue>(this Dictionary<TKey,TValue> current){
-			return new SortedList<TKey,TValue>(current);
-		}
 		public static Dictionary<TKey,TValue> Copy<TKey,TValue>(this Dictionary<TKey,TValue> current){
 			return new Dictionary<TKey,TValue>(current);
 		}
@@ -59,15 +55,6 @@ namespace Zios{
 				}
 			}
 			return false;
-		}
-		public static string GetKey(this Dictionary<KeyCode,string> current,string value){
-			foreach(var item in current){
-				string itemValue = Convert.ToString(item.Value);
-				if(itemValue.Matches(value,true)){
-					return Convert.ToString(item.Key);
-				}
-			}
-			return "";
 		}
 		public static Value TryGet<Key,Value>(this IDictionary<Key,Value> current,Key key){
 			Value output;

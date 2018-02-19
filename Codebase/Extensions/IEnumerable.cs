@@ -1,43 +1,8 @@
-using System.Collections.Generic;
 using System;
-using System.Text;
+using System.Collections.Generic;
 using System.Linq;
-namespace Zios{
-	public static class IEnumerableExtension{
-		//=======================
-		// Conversion
-		//=======================
-		public static To[] ConvertAll<To>(this IEnumerable<string> current){
-			return current.ConvertAll<string,To>();
-		}
-		public static To[] ConvertAll<From,To>(this IEnumerable<From> current){
-			var source = current.ToArray<From>();
-			return Array.ConvertAll(source,x=>x.Convert<To>()).ToArray();
-		}
-		public static Dictionary<TKey,TValue> ToDictionary<TKey,TValue>(this IEnumerable<KeyValuePair<TKey,TValue>> current){
-			return current.ToDictionary(x=>x.Key,x=>x.Value);
-		}
-		public static string ToText<T>(this IEnumerable<T> current){
-			var value = new StringBuilder();
-			foreach(var item in current){
-				value.Append(item.ToString());
-				value.Append(" | ");
-			}
-			return value.ToString().TrimRight(" | ");
-		}
-		public static string ToString<T>(this IEnumerable<T> current,string separator=" ",string endTerm="or"){
-			string result = "";
-			foreach(var item in current){
-				bool isLast = current.Last().Equals(item);
-				if(isLast){result += endTerm;}
-				result += item.ToString();
-				if(!isLast){result += separator;}
-			}
-			return result;
-		}
-		public static HashSet<T> ToHashSet<T>(this IEnumerable<T> current){
-		   return new HashSet<T>(current);
-		}
+namespace Zios.Extensions{
+	public static class IEnumerableExtensions{
 		//=======================
 		// General
 		//=======================
@@ -46,16 +11,6 @@ namespace Zios{
 		}
 		public static IEnumerable<T> Diff<T>(this IEnumerable<T> current,IEnumerable<T> other){
 			return current.Except(other).Concat(other.Except(current));
-		}
-		public static string Serialize<T>(this IEnumerable<T> current){
-			string output = "";
-			foreach(var value in current){
-				output += value.SerializeAuto()+"-";
-			}
-			return output.TrimRight("-");
-		}
-		public static IEnumerable<T> Deserialize<T>(this IEnumerable<T> current,string value){
-			return value.Split("-").Select(x=>x.Deserialize<T>()).ToArray();
 		}
 		public static IEnumerable<T> Unshift<T>(this IEnumerable<T> current,T item){
 			var result = current.ToList();
@@ -86,23 +41,6 @@ namespace Zios{
 		}
 		public static IEnumerable<Type> TakeRight<Type>(this IEnumerable<Type> current,int amount){
 			return current.Skip(current.Count() - amount).Take(amount);
-		}
-		//=======================
-		// Threaded
-		//=======================
-		public static IEnumerable<Output> ThreadedSelect<Type,Output>(this IEnumerable<Type> source,Func<Type,Output> method){
-			MethodStepItem<Type,Output> Select = (worker,response,value)=>method(value);
-			return Worker.Create(source.ToList(),Select.AsIndexedOut()).result.SelectMany(x=>x);
-		}
-		public static IEnumerable<Type> ThreadedWhere<Type>(this IEnumerable<Type> source,Func<Type,bool> method){
-			MethodStepItem<Type,Type> Where = (worker,response,value)=>{
-				response.skip = !method(value);
-				return value;
-			};
-			return Worker.Create(source.ToList(),Where.AsIndexedOut()).result.SelectMany(x=>x);
-		}
-		public static int ThreadedCount<Type>(this IEnumerable<Type> source,Func<Type,bool> method){
-			return source.ThreadedWhere(method).Count();
 		}
 		//=======================
 		// String
@@ -142,9 +80,5 @@ namespace Zios{
 		public static string[] ToTitleCase(this IEnumerable<string> current){return current.Select(x=>x.ToTitleCase()).ToArray();}
 		public static string[] ToCamelCase(this IEnumerable<string> current){return current.Select(x=>x.ToCamelCase()).ToArray();}
 		public static string[] ToPascalCase(this IEnumerable<string> current){return current.Select(x=>x.ToPascalCase()).ToArray();}
-		public static int[] ToInt(this IEnumerable<string> current){return current.Select(x=>x.ToInt()).ToArray();}
-		public static bool[] ToBool(this IEnumerable<string> current){return current.Select(x=>x.ToBool()).ToArray();}
-		public static float[] ToFloat(this IEnumerable<string> current){return current.Select(x=>x.ToFloat()).ToArray();}
-		public static UnityEngine.Color[] ToColor(this IEnumerable<string> current){return current.Select(x=>x.ToColor()).ToArray();}
 	}
 }

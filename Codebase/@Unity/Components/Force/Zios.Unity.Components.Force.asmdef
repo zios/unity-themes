@@ -1,0 +1,15 @@
+{
+	"name": "Zios.Unity.Components.Force",
+	"references": [
+		"Zios.Attributes.Supports",
+		"Zios.Events",
+		"Zios.Shortcuts",
+		"Zios.Unity.Components.ColliderController",
+		"Zios.Unity.Components.DataBehaviour",
+		"Zios.Unity.Components.ManagedBehaviour",
+		"Zios.Unity.Extensions",
+		"Zios.Unity.Shortcuts"
+	],
+	"includePlatforms": [],
+	"excludePlatforms": []
+}

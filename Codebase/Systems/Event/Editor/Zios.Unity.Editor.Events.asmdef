@@ -1,0 +1,16 @@
+{
+	"name": "Zios.Unity.Editor.Events",
+	"references": [
+		"Zios.Events",
+		"Zios.Extensions.Convert",
+		"Zios.File",
+		"Zios.Shortcuts",
+		"Zios.Unity.Editor.Inspectors",
+		"Zios.Unity.Editor.MonoBehaviourEditor",
+		"Zios.Unity.EditorUI",
+		"Zios.Unity.Shortcuts",
+		"Zios.Unity.Supports.Singleton"
+	],
+	"includePlatforms": ["Editor"],
+	"excludePlatforms": []
+}

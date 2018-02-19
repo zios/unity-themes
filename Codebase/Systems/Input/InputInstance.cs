@@ -1,10 +1,21 @@
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 namespace Zios.Inputs{
-	using Attributes;
-	using Event;
-	public class InputInstance : ManagedMonoBehaviour{
+	using Zios.Attributes.Supports;
+	using Zios.Events;
+	using Zios.Extensions;
+	using Zios.Extensions.Convert;
+	using Zios.File;
+	using Zios.SystemAttributes;
+	using Zios.Unity.Call;
+	using Zios.Unity.Components.ManagedBehaviour;
+	using Zios.Unity.Pack;
+	using Zios.Unity.Proxy;
+	//asm Zios.Shortcuts;
+	//asm Zios.Unity.Components.DataBehaviour;
+	//asm Zios.Unity.Shortcuts;
+	public class InputInstance : ManagedBehaviour{
 		public Dictionary<string,bool> active = new Dictionary<string,bool>();
 		public Dictionary<string,float> intensity = new Dictionary<string,float>();
 		public Dictionary<string,float> maxIntensity = new Dictionary<string,float>();
@@ -18,7 +29,7 @@ namespace Zios.Inputs{
 		// Storage
 		//===============
 		public static void Load(){
-			var file = FileManager.Find("InputDefaults.cfg",false) ?? FileManager.Create("InputDefaults.cfg");
+			var file = File.Find("InputDefaults.cfg",false) ?? File.Create("InputDefaults.cfg");
 			var contents = file.GetText().GetLines();
 			foreach(var line in contents){
 				if(line.IsEmpty()){continue;}
@@ -30,7 +41,7 @@ namespace Zios.Inputs{
 		}
 		public void Save(){
 			if(this.profile.IsNull() || this.profile.name.IsEmpty() || this.profile.mappings.Count < 1){return;}
-			var file = FileManager.Find("InputDefaults.cfg",false) ?? FileManager.Create("InputDefaults.cfg");
+			var file = File.Find("InputDefaults.cfg",false) ?? File.Create("InputDefaults.cfg");
 			var contents = file.GetText();
 			var alias = this.alias.ToPascalCase();
 			var profile = this.profile.name.ToPascalCase();
@@ -53,10 +64,10 @@ namespace Zios.Inputs{
 			this.state.Setup("State",this);
 			Events.Add("Hold Input",this.HoldInput,this);
 			Events.Add("Release Input",this.ReleaseInput,this);
-			if(Application.isPlaying){
+			if(Proxy.IsPlaying()){
 				this.profile = InputManager.Get().GetInstanceProfile(this);
 				if(this.profile.IsNull() || this.profile.name.IsEmpty()){
-					Utility.DelayCall(()=>InputManager.Get().SelectProfile(this),0.1f);
+					Call.Delay(()=>InputManager.Get().SelectProfile(this),0.1f);
 				}
 			}
 			Events.Add("On Validate",this.PrepareInput,InputManager.Get());
@@ -94,7 +105,7 @@ namespace Zios.Inputs{
 			this.joystickID = "[None]";
 		}
 		public void PrepareInput(){
-			if(!Application.isPlaying && !InputManager.Get().IsNull()){
+			if(!Proxy.IsPlaying() && !InputManager.Get().IsNull()){
 				this.actions.Clear();
 				foreach(var group in InputManager.Get().groups){
 					foreach(var action in group.actions){

@@ -1,4 +1,3 @@
-using UnityEngine;
-namespace Zios{
-	public class InternalAttribute : PropertyAttribute{}
+namespace Zios.SystemAttributes{
+	public class InternalAttribute : System.Attribute{}
 }

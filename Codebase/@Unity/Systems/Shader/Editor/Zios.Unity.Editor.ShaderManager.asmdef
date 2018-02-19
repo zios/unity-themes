@@ -1,0 +1,19 @@
+{
+	"name": "Zios.Unity.Editor.ShaderManager",
+	"references": [
+		"Zios.Events",
+		"Zios.Extensions",
+		"Zios.Extensions.Convert",
+		"Zios.File",
+		"Zios.Shortcuts",
+		"Zios.Supports.Stepper",
+		"Zios.Unity.Editor.Inspectors",
+		"Zios.Unity.Editor.MonoBehaviourEditor",
+		"Zios.Unity.Editor.VariableMaterial",
+		"Zios.Unity.ShaderManager",
+		"Zios.Unity.Shortcuts",
+		"Zios.Unity.Supports.Singleton"
+	],
+	"includePlatforms": ["Editor"],
+	"excludePlatforms": []
+}

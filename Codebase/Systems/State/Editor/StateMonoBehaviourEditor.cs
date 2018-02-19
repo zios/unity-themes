@@ -1,14 +1,24 @@
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
-using UnityEvent = UnityEngine.Event;
 using MenuFunction = UnityEditor.GenericMenu.MenuFunction;
-namespace Zios.Editors.StateEditors{
-	using Interface;
-	using Actions;
-	using Class = StateMonoBehaviourEditor;
-	[CustomEditor(typeof(StateMonoBehaviour),true)]
-	public class StateMonoBehaviourEditor : DataMonoBehaviourEditor{
+namespace Zios.Unity.Editor.State{
+	using Zios.Extensions;
+	using Zios.Extensions.Convert;
+	using Zios.State;
+	using Zios.Unity.Editor.Inspectors.DataBehaviour;
+	using Zios.Unity.Editor.Pref;
+	using Zios.Unity.ProxyEditor;
+	using Zios.Unity.EditorUI;
+	using Zios.Unity.Extensions;
+	using Zios.Unity.Extensions.Convert;
+	using Zios.Unity.Proxy;
+	//asm Zios.Unity.Components.DataBehaviour;
+	//asm Zios.Unity.Components.ManagedBehaviour;
+	//asm Zios.Unity.Editor.Inspectors;
+	//asm Zios.Unity.Editor.MonoBehaviourEditor;
+	[CustomEditor(typeof(StateBehaviour),true)]
+	public class StateBehaviourEditor : DataBehaviourEditor{
 		public static bool isVisible = true;
 		public Rect breakdownArea;
 		public bool breakdownVisible = true;
@@ -19,11 +29,11 @@ namespace Zios.Editors.StateEditors{
 		private float height = 0;
 		private GUIStyle labelStyle;
 		public virtual StateTable GetTable(){
-			var script = (StateMonoBehaviour)this.target;
+			var script = (StateBehaviour)this.target;
 			return script.controller;
 		}
 		public override void OnInspectorGUI(){
-			if(!UnityEvent.current.IsUseful()){return;}
+			if(!Event.current.IsUseful()){return;}
 			EditorUI.Reset();
 			this.SetupColors();
 			this.DrawBreakdown();
@@ -37,14 +47,14 @@ namespace Zios.Editors.StateEditors{
 			this.labelStyle = GUI.skin.label.RichText(true);
 		}
 		public void DrawBreakdown(){
-			string breakdown = "StateMonoBehaviourEditor-ToggleBreakdown";
-			var alias = "State-"+this.target.As<StateMonoBehaviour>().alias;
-			if(Utility.HasPref(breakdown)){
-				Class.isVisible = !Class.isVisible;
+			string breakdown = "StateBehaviourEditor-ToggleBreakdown";
+			var alias = "State-"+this.target.As<StateBehaviour>().alias;
+			if(EditorPref.Has(breakdown)){
+				StateBehaviourEditor.isVisible = !StateBehaviourEditor.isVisible;
 				EditorPrefs.DeleteKey(breakdown);
 			}
 			StateTable table = this.GetTable();
-			if((this.showAll || Class.isVisible) && table != null){
+			if((this.showAll || StateBehaviourEditor.isVisible) && table != null){
 				var matchingOnRows = table.table.Where(x=>x.target==this.target).FirstOrDefault();
 				var matchingOffRows = table.tableOff.Where(x=>x.target==this.target).FirstOrDefault();
 				StateRowData[] onRows = new StateRowData[0];
@@ -105,27 +115,27 @@ namespace Zios.Editors.StateEditors{
 				EditorGUILayout.EndHorizontal();
 				Rect area = GUILayoutUtility.GetLastRect();
 				if(!area.IsEmpty()){
-					if(Utility.IsRepainting()){this.breakdownArea = area;}
+					if(Proxy.IsRepainting()){this.breakdownArea = area;}
 					if(area.Clicked(1)){this.DrawBreakdownMenu();}
-					if(UnityEvent.current.shift && area.Clicked(0)){
-						Class.isVisible = !Class.isVisible;
+					if(Event.current.shift && area.Clicked(0)){
+						StateBehaviourEditor.isVisible = !StateBehaviourEditor.isVisible;
 					}
 				}
-				if(Utility.IsRepainting() && !this.breakdownArea.IsEmpty()){
+				if(Proxy.IsRepainting() && !this.breakdownArea.IsEmpty()){
 					this.breakdownVisible = this.breakdownArea.InInspectorWindow();
 				}
 			}
 		}
 		public void DrawBreakdownMenu(){
 			GenericMenu menu = new GenericMenu();
-			MenuFunction hideBreakdown = ()=>{Class.isVisible = false;};
+			MenuFunction hideBreakdown = ()=>{StateBehaviourEditor.isVisible = false;};
 			menu.AddItem(new GUIContent("Settings/Hide"),false,hideBreakdown);
 			menu.ShowAsContext();
 		}
 		public string DrawState(StateRowData[] rowData,int rowIndex,string title,bool flip=false){
 			StateRowData row = rowData[rowIndex];
 			string phrase = "";
-			var alias = "State-"+this.target.As<StateMonoBehaviour>().alias;
+			var alias = "State-"+this.target.As<StateBehaviour>().alias;
 			if(title.ToLabel().DrawFoldout(alias+"-"+title+rowIndex.ToString()+flip.Serialize(),EditorStyles.foldout.RichText(true))){
 				EditorGUILayout.BeginVertical();
 				bool hasDrawn = false;

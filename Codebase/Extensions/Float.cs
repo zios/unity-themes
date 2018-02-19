@@ -1,21 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-namespace Zios{
+namespace Zios.Extensions{
 	public static class FloatExtension{
-		//=====================
-		// Conversion
-		//=====================
-		public static bool ToBool(this float current){return current != 0;}
-		public static int ToInt(this float current){return (int)current;}
-		public static byte ToByte(this float current){return (byte)current;}
-		public static short ToShort(this float current){return (short)current;}
-		public static byte[] ToBytes(this float current){return BitConverter.GetBytes(current);}
-		public static string Serialize(this float current){return current.ToString();}
-		public static float Deserialize(this float current,string value){return value.ToFloat();}
-		//=====================
-		// Numeric
-		//=====================
 		public static float MoveTowards(this float current,float end,float speed){
 			if(current > end){speed *= -1;}
 			current += speed;
@@ -105,10 +92,7 @@ namespace Zios{
 		public static float Min(this float current,float value){return Math.Min(current,value);}
 		public static float Max(this float current,float value){return Math.Max(current,value);}
 		public static float Abs(this float current){return Math.Abs(current);}
-		public static float Ciel(this float current){return Math.Ceiling(current).ToFloat();}
-		public static float Floor(this float current){return Math.Floor(current).ToFloat();}
-		public static bool Elapsed(this float current,bool unity=true){return Utility.GetTime()>=current;}
-		public static string Passed(this float current,bool unity=true){return Utility.GetTime()-current+" seconds";}
-		public static float AddTime(this float current,bool unity=true){return current+Utility.GetTime();}
+		public static float Ciel(this float current){return (float)Math.Ceiling(current);}
+		public static float Floor(this float current){return (float)Math.Floor(current);}
 	}
 }

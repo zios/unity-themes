@@ -1,0 +1,12 @@
+{
+	"name": "Zios.Reflection",
+	"references": [
+		"Zios.Extensions",
+		"Zios.Extensions.Convert",
+		"Zios.Supports.Hierarchy",
+		"Zios.Unity.Log",
+		"Zios.Unity.Proxy"
+	],
+	"includePlatforms": [],
+	"excludePlatforms": []
+}

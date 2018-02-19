@@ -1,0 +1,31 @@
+{
+	"name": "Zios.Unity.Editor.Themes",
+	"references": [
+		"Zios.Events",
+		"Zios.Extensions",
+		"Zios.Extensions.Convert",
+		"Zios.File",
+		"Zios.Reflection",
+		"Zios.Shortcuts",
+		"Zios.Supports.Hierarchy",
+		"Zios.Supports.Stepper",
+		"Zios.Supports.Worker",
+		"Zios.SystemAttributes",
+		"Zios.Unity.Call",
+		"Zios.Unity.Editor.Extensions",
+		"Zios.Unity.Editor.Locate",
+		"Zios.Unity.Editor.Pref",
+		"Zios.Unity.Editor.Undo",
+		"Zios.Unity.EditorUI",
+		"Zios.Unity.Extensions",
+		"Zios.Unity.Extensions.Convert",
+		"Zios.Unity.Locate",
+		"Zios.Unity.Log",
+		"Zios.Unity.ProxyEditor",
+		"Zios.Unity.Shortcuts",
+		"Zios.Unity.Supports.Singleton",
+		"Zios.Unity.Time"
+	],
+	"includePlatforms": ["Editor"],
+	"excludePlatforms": []
+}

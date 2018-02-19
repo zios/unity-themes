@@ -1,0 +1,21 @@
+{
+	"name": "Zios.Unity.Editor.Inspectors.GUISkin",
+	"references": [
+		"Zios.Events",
+		"Zios.Extensions",
+		"Zios.Extensions.Convert",
+		"Zios.File",
+		"Zios.Reflection",
+		"Zios.Shortcuts",
+		"Zios.Unity.Call",
+		"Zios.Unity.Editor.Pref",
+		"Zios.Unity.EditorUI",
+		"Zios.Unity.Extensions",
+		"Zios.Unity.Extensions.Convert",
+		"Zios.Unity.Proxy",
+		"Zios.Unity.ProxyEditor",
+		"Zios.Unity.Shortcuts"
+	],
+	"includePlatforms": ["Editor"],
+	"excludePlatforms": []
+}

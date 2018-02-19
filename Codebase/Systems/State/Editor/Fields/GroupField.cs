@@ -1,6 +1,8 @@
 using System.Linq;
-namespace Zios.Editors.StateEditors{
-	using Actions;
+namespace Zios.Unity.Editor.State{
+	using Zios.Extensions.Convert;
+	using Zios.State;
+	using Zios.Unity.Editor.Drawers.Table;
 	public class GroupField : StateField{
 		public StateField[] columnFields = new StateField[0];
 		public GroupField(object target=null,TableRow row=null) : base(target,row){}

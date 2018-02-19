@@ -1,0 +1,9 @@
+{
+	"name": "Zios.Unity.Colors",
+	"references": [
+		"Zios.Extensions",
+		"Zios.Unity.Extensions"
+	],
+	"includePlatforms": [],
+	"excludePlatforms": []
+}

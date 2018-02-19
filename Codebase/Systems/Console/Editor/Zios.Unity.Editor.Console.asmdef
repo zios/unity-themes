@@ -1,0 +1,12 @@
+{
+	"name": "Zios.Unity.Editor.Console",
+	"references": [
+		"Zios.Console",
+		"Zios.File",
+		"Zios.Unity.Editor.Inspectors",
+		"Zios.Unity.Editor.MonoBehaviourEditor",
+		"Zios.Unity.Supports.Singleton"
+	],
+	"includePlatforms": ["Editor"],
+	"excludePlatforms": []
+}

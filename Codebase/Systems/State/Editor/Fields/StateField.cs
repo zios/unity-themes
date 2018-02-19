@@ -1,8 +1,16 @@
 using System.Linq;
-using UnityEditor;
 using UnityEngine;
-namespace Zios.Editors.StateEditors{
-	using Actions;
+namespace Zios.Unity.Editor.State{
+	using Zios.Extensions;
+	using Zios.Extensions.Convert;
+	using Zios.State;
+	using Zios.Unity.Editor.Drawers.Table;
+	using Zios.Unity.Editor.Pref;
+	using Zios.Unity.ProxyEditor;
+	using Zios.Unity.EditorUI;
+	using Zios.Unity.Extensions;
+	using Zios.Unity.Proxy;
+	using Zios.Unity.Style;
 	public class StateField : TableField{
 		public StateField(object target=null,TableRow row=null) : base(target,row){}
 		public override void Draw(){
@@ -23,7 +31,7 @@ namespace Zios.Editors.StateEditors{
 			var stateRow = (StateRow)this.row.target;
 			var row = this.row.target.As<StateRow>();
 			int rowIndex = window.rowIndex[row];
-			var mode = (HeaderMode)Utility.GetPref<int>("StateWindow-Mode",3);
+			var mode = (HeaderMode)EditorPref.Get<int>("StateWindow-Mode",3);
 			GUIStyle style = new GUIStyle(GUI.skin.button);
 			value = stateRow.requirements.Length > 1 ? (rowIndex+1).ToString() : "";
 			if(this.row.selected){style = Style.Get("buttonSelected",true);}
@@ -38,8 +46,8 @@ namespace Zios.Editors.StateEditors{
 				style.fixedWidth = lastEnabled ? 0 : style.fixedWidth;
 			}
 			float headerSize = window.headerSize;
-			StateWindow.Clip(value,style,GUI.skin.label.fixedWidth+7,headerSize);
-			if(!Application.isPlaying && GUILayoutUtility.GetLastRect().Hovered()){
+			StateWindow.Clip(value.ToLabel(),style,GUI.skin.label.fixedWidth+7,headerSize);
+			if(!Proxy.IsPlaying() && GUILayoutUtility.GetLastRect().Hovered()){
 				window.row = this.row.order;
 				window.column = this.order;
 				window.hovered = true;
@@ -47,7 +55,7 @@ namespace Zios.Editors.StateEditors{
 		}
 		public override void Clicked(int button){
 			var window = StateWindow.Get();
-			Utility.RecordObject(window.target,"State Window - Field Toggle");
+			ProxyEditor.RecordObject(window.target,"State Window - Field Toggle");
 			this.row.selected = false;
 			int state = 0;
 			var requirement = (StateRequirement)this.target;
@@ -63,7 +71,7 @@ namespace Zios.Editors.StateEditors{
 			if(state == 1){requirement.requireOn = true;}
 			if(state == 2){requirement.requireOff = true;}
 			if(state == 3){requirement.requireUsed = true;}
-			Utility.SetDirty(window.target);
+			ProxyEditor.SetDirty(window.target);
 			window.target.UpdateStates();
 			window.Repaint();
 		}

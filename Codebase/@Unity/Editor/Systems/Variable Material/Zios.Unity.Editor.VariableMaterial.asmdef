@@ -1,0 +1,21 @@
+{
+	"name": "Zios.Unity.Editor.VariableMaterial",
+	"references": [
+		"Zios.Events",
+		"Zios.Extensions",
+		"Zios.Extensions.Convert",
+		"Zios.File",
+		"Zios.Reflection",
+		"Zios.Shortcuts",
+		"Zios.Supports.Stepper",
+		"Zios.Unity.Call",
+		"Zios.Unity.EditorUI",
+		"Zios.Unity.Locate",
+		"Zios.Unity.Log",
+		"Zios.Unity.Proxy",
+		"Zios.Unity.ProxyEditor",
+		"Zios.Unity.Shortcuts"
+	],
+	"includePlatforms": ["Editor"],
+	"excludePlatforms": []
+}

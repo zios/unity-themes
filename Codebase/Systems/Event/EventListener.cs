@@ -1,6 +1,14 @@
 using System;
 using UnityEngine;
-namespace Zios.Event{
+namespace Zios.Events{
+	using Zios.Extensions;
+	using Zios.Extensions.Convert;
+	using Zios.Shortcuts;
+	using Zios.Unity.ProxyEditor;
+	using Zios.Unity.Log;
+	using Zios.Unity.Shortcuts;
+	using Zios.Unity.Time;
+	using UnityCall = Zios.Unity.Call.Call;
 	[Serializable]
 	public class EventListener{
 		public object target;
@@ -19,13 +27,13 @@ namespace Zios.Event{
 			var method = this.method.As<Delegate>();
 			bool nullTarget = this.target.IsNull() || (!this.isStatic && method.Target.IsNull());
 			if(nullTarget && !this.warned && Events.debug.Has("Call")){
-				Debug.LogWarning("[Events] Null call attempted -- " + this.name + " -- " + this.target + " -- " + Events.GetMethodName(method));
+				Log.Warning("[Events] Null call attempted -- " + this.name + " -- " + this.target + " -- " + Events.GetMethodName(method));
 				this.warned = true;
 			}
 			return !nullTarget;
 		}
-		public bool IsResting(){return Time.realtimeSinceStartup < this.resting;}
-		public void Rest(float seconds=1){this.resting = Time.realtimeSinceStartup+seconds;}
+		public bool IsResting(){return Time.Get() < this.resting;}
+		public void Rest(float seconds=1){this.resting = Time.Get()+seconds;}
 		public EventListener SetCooldown(float seconds=1){this.cooldown = seconds;return this;}
 		public EventListener SetPaused(bool state=true){this.paused = state;return this;}
 		public EventListener SetPermanent(bool state=true){this.permanent = state;return this;}
@@ -45,11 +53,11 @@ namespace Zios.Event{
 			this.paused = true;
 		}
 		public void Call(bool debugDeep,bool debugTime,object[] values){
-			if(Utility.IsPaused() || this.paused || !this.IsValid()){return;}
+			if(ProxyEditor.IsPaused() || this.paused || !this.IsValid()){return;}
 			if(this.IsResting()){
 				if(!this.delayed){
-					float remaining = this.resting-Time.realtimeSinceStartup;
-					Utility.DelayCall(this.method,()=>this.Call(debugDeep,debugTime,values),remaining);
+					float remaining = this.resting-Time.Get();
+					UnityCall.Delay(this.method,()=>this.Call(debugDeep,debugTime,values),remaining);
 					this.delayed = true;
 				}
 				return;
@@ -57,7 +65,7 @@ namespace Zios.Event{
 			this.delayed = false;
 			Events.stack.Add(this);
 			Events.AddHistory(this.name);
-			float duration = Time.realtimeSinceStartup;
+			float duration = Time.Get();
 			if(this.cooldown > 0){this.Rest(this.cooldown);}
 			if(this.occurrences > 0){this.occurrences -= 1;}
 			if(this.occurrences == 0){this.Remove();}
@@ -78,13 +86,13 @@ namespace Zios.Event{
 			if(debugDeep){
 				string message = "[Events] : " + name + " -- " + Events.GetMethodName(this.method);
 				if(debugTime){
-					duration = Time.realtimeSinceStartup - duration;
+					duration = Time.Get() - duration;
 					if(duration > 0.001f || Events.debug.Has("CallTimerZero")){
 						string time = duration.ToString("F10").TrimRight("0",".").Trim() + " seconds.";
 						message = message + " -- " + time;
 					}
 				}
-				Debug.Log(message);
+				Log.Show(message);
 			}
 			Events.stack.Remove(this);
 		}

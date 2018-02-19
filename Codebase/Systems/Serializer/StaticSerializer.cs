@@ -1,12 +1,20 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using UnityEngine;
-namespace Zios{
+namespace Zios.StaticSerializer{
+	using Zios.Extensions;
+	using Zios.Extensions.Convert;
+	using Zios.File;
+	using Zios.Reflection;
+	using Zios.Unity.Log;
+	using Zios.Unity.Proxy;
+	using Zios.Unity.Supports.Singleton;
+	using Zios.Unity.SystemAttributes;
+	using Zios.Unity.Time;
 	[Flags]
 	public enum SerializerDebug : int{
 		Build         = 0x001,
@@ -33,7 +41,7 @@ namespace Zios{
 			if(StaticSerializer.defaults.Count < 1){
 				StaticSerializer.instance = this;
 				this.path = Application.dataPath+"/@Serialized/";
-				if(Application.isEditor){
+				if(Proxy.IsEditor()){
 					this.BuildDefault();
 				}
 			}
@@ -60,11 +68,11 @@ namespace Zios{
 		}
 		public bool Skip(Type type,string name,object value){
 			if(!StaticSerializer.defaults.ContainsKey(type) || !StaticSerializer.defaults[type].ContainsKey(name)){
-				if(this.debug.Has("SaveDetailed")){Debug.Log("[Serializer] : Skipping save for -- " + type + " -- " + name + " -- " + value);}
+				if(this.debug.Has("SaveDetailed")){Log.Show("[Serializer] : Skipping save for -- " + type + " -- " + name + " -- " + value);}
 				return true;
 			}
 			var lastValue = StaticSerializer.defaults[type][name];
-			if(this.debug.Has("SaveDetailed")){Debug.Log("[Serializer] : " + type + "." + name + " -- " + lastValue + " = " + value);}
+			if(this.debug.Has("SaveDetailed")){Log.Show("[Serializer] : " + type + "." + name + " -- " + lastValue + " = " + value);}
 			if(lastValue.IsNull() || value.IsNull()){return lastValue == value;}
 			return lastValue.Equals(value);
 		}
@@ -73,14 +81,14 @@ namespace Zios{
 		//=================
 		public void BuildDefault(){
 			if(this.disabled){return;}
-			var time = Time.realtimeSinceStartup;
+			var time = Time.Get();
 			this.BuildDefault(Assembly.Load("Assembly-CSharp"));
 			this.BuildDefault(Assembly.Load("Assembly-CSharp-Editor"));
-			if(this.debug.Has("Time")){Debug.Log("[Serializer] : Build Default complete -- " + (Time.realtimeSinceStartup - time) + " seconds.");}
+			if(this.debug.Has("Time")){Log.Show("[Serializer] : Build Default complete -- " + (Time.Get() - time) + " seconds.");}
 		}
 		public void BuildDefault(Assembly assembly){
 			if(this.disabled){return;}
-			if(this.debug.Has("Build")){Debug.Log("[Serializer] : Building defaults for assembly -- " + assembly.FullName.Split(",")[0]);}
+			if(this.debug.Has("Build")){Log.Show("[Serializer] : Building defaults for assembly -- " + assembly.FullName.Split(",")[0]);}
 			foreach(Type type in assembly.GetTypes()){
 				if(type.IsEnum || type == null || type.Name.Contains("_AnonStorey")){continue;}
 				this.BuildDefault(type);
@@ -89,7 +97,7 @@ namespace Zios{
 		public void BuildDefault(Type type){
 			if(this.disabled){return;}
 			if(StaticSerializer.defaults.ContainsKey(type)){return;}
-			if(this.debug.Has("BuildDetailed")){Debug.Log("[Serializer] : Building defaults for type -- " + type.Name);}
+			if(this.debug.Has("BuildDetailed")){Log.Show("[Serializer] : Building defaults for type -- " + type.Name);}
 			StaticSerializer.defaults.AddNew(type);
 			foreach(var item in this.GetVariables(type)){
 				StaticSerializer.defaults[type][item.Key] = item.Value;
@@ -101,10 +109,10 @@ namespace Zios{
 		[ContextMenu("Save")]
 		public void Save(){
 			if(this.disabled){return;}
-			var time = Time.realtimeSinceStartup;
+			var time = Time.Get();
 			this.Save(Assembly.Load("Assembly-CSharp"));
 			this.Save(Assembly.Load("Assembly-CSharp-Editor"));
-			if(this.debug.Has("Time")){Debug.Log("[Serializer] : Save complete -- " + (Time.realtimeSinceStartup - time) + " seconds.");}
+			if(this.debug.Has("Time")){Log.Show("[Serializer] : Save complete -- " + (Time.Get() - time) + " seconds.");}
 		}
 		public void Save(Assembly assembly){
 			if(this.disabled){return;}
@@ -115,24 +123,23 @@ namespace Zios{
 		}
 		public void Save(Type type){
 			if(this.disabled){return;}
-			if(this.debug.Has("SaveType")){Debug.Log("[Serializer] : Serializing type -- " + type.Name);}
+			if(this.debug.Has("SaveType")){Log.Show("[Serializer] : Serializing type -- " + type.Name);}
 			this.tabs = 0;
 			this.contents.Clear();
-			var file = FileManager.Find(type.Name+".cs",false);
+			var file = File.Find(type.Name+".cs",false);
 			string path = file != null ? file.directory+"/" : this.path;
 			string filePath = path+type.Name+".static";
 			this.Add(type.FullName,"{");
 			bool empty = true;
 			foreach(var item in this.GetVariables(type)){
 				if(this.Skip(type,item.Key,item.Value)){continue;}
-				if(this.debug.Has("Save")){Debug.Log("[Serializer] : " + type.Name + "." + item.Key + " = " + item.Value);}
+				if(this.debug.Has("Save")){Log.Show("[Serializer] : " + type.Name + "." + item.Key + " = " + item.Value);}
 				bool wasSaved = this.Save(item.Key,item.Value);
 				if(wasSaved){empty = false;}
 			}
 			this.Add("}");
-			if(FileManager.Exists(filePath) || !empty){
-				FileManager.Create(path);
-				File.WriteAllText(filePath,this.contents.ToString());
+			if(File.Exists(filePath) || !empty){
+				File.Create(path).WriteText(this.contents.ToString());
 			}
 		}
 		public bool Save(string name,object value){
@@ -167,19 +174,19 @@ namespace Zios{
 		[ContextMenu("Load")]
 		public void Load(){
 			if(this.disabled){return;}
-			var time = Time.realtimeSinceStartup;
+			var time = Time.Get();
 			this.LoadStatic();
 			//this.LoadScene();
 			//this.LoadInstance();
-			if(this.debug.Has("Time")){Debug.Log("[Serializer] : Load complete -- " + (Time.realtimeSinceStartup - time) + " seconds.");}
+			if(this.debug.Has("Time")){Log.Show("[Serializer] : Load complete -- " + (Time.Get() - time) + " seconds.");}
 		}
 		public void LoadStatic(){
 			if(this.disabled){return;}
-			if(this.debug.Has("Load")){Debug.Log("[Serializer] : Loading .static files");}
-			foreach(var file in FileManager.FindAll("*.static",false)){
-				if(this.debug.Has("Load")){Debug.Log("[Serializer] : Loading "+file.fullName);}
+			if(this.debug.Has("Load")){Log.Show("[Serializer] : Loading .static files");}
+			foreach(var file in File.FindAll("*.static",false)){
+				if(this.debug.Has("Load")){Log.Show("[Serializer] : Loading "+file.fullName);}
 				string contents = file.GetText();
-				var type = Utility.GetType(contents.Parse("","{"));
+				var type = Reflection.GetType(contents.Parse("","{"));
 				if(type.IsNull()){continue;}
 				foreach(string line in contents.GetLines().Skip(1)){
 					if(line.IsEmpty() || line.ContainsAny("{","}")){continue;}

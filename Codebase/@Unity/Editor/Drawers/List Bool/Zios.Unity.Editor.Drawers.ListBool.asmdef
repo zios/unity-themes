@@ -1,0 +1,12 @@
+{
+	"name": "Zios.Unity.Editor.Drawers.ListBool",
+	"references": [
+		"Zios.Extensions",
+		"Zios.Supports.NonGeneric",
+		"Zios.Unity.Editor.Extensions",
+		"Zios.Unity.EditorUI",
+		"Zios.Unity.Extensions"
+	],
+	"includePlatforms": ["Editor"],
+	"excludePlatforms": []
+}

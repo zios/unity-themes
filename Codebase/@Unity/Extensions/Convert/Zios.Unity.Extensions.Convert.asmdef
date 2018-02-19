@@ -1,0 +1,10 @@
+{
+	"name": "Zios.Unity.Extensions.Convert",
+	"references": [
+		"Zios.Extensions",
+		"Zios.Extensions.Convert",
+		"Zios.Unity.SystemAttributes"
+	],
+	"includePlatforms": [],
+	"excludePlatforms": []
+}

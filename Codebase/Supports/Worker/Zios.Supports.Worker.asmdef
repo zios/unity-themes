@@ -1,0 +1,11 @@
+{
+	"name": "Zios.Supports.Worker",
+	"references": [
+		"Zios.Extensions",
+		"Zios.Extensions.Convert",
+		"Zios.Unity.Log",
+		"Zios.Unity.ProxyEditor"
+	],
+	"includePlatforms": [],
+	"excludePlatforms": []
+}

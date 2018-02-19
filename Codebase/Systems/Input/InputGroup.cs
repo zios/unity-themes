@@ -1,8 +1,13 @@
 using System;
-using System.Linq;
 using System.Collections.Generic;
-using UnityEngine;
+using System.Linq;
 namespace Zios.Inputs{
+	using Zios.Extensions;
+	using Zios.Extensions.Convert;
+	using Zios.File;
+	using Zios.Unity.Extensions;
+	using Zios.Unity.Extensions.Convert;
+	using Zios.Unity.Proxy;
 	[Serializable]
 	public class InputGroup{
 		public string name;
@@ -18,7 +23,7 @@ namespace Zios.Inputs{
 			if(InputManager.Get().groups.Count < 1){return;}
 			var manager = InputManager.Get();
 			var contents = "";
-			var file = FileManager.Find("InputControls.cfg",false) ?? FileManager.Create("InputControls.cfg");
+			var file = File.Find("InputControls.cfg",false) ?? File.Create("InputControls.cfg");
 			contents = contents.AddLine("[InputSettings]");
 			if(manager.instanceOptions.ToInt() != 2){contents = contents.AddLine("InstanceOptions " + manager.instanceOptions.ToInt());}
 			if(manager.gamepadDeadZone != 0.1f){contents = contents.AddLine("GamepadDeadZone " + manager.gamepadDeadZone);}
@@ -27,7 +32,7 @@ namespace Zios.Inputs{
 			InputGroup.Setup();
 			foreach(var group in InputManager.Get().groups){
 				foreach(var action in group.actions){
-					//var helpPath = FileManager.GetPath(action.helpImage);
+					//var helpPath = File.GetPath(action.helpImage);
 					var options = action.options.ToInt();
 					contents = contents.AddLine("["+group.name.ToPascalCase()+"-"+action.name.ToPascalCase()+"]");
 					if(options != 0){contents = contents.AddLine("Options " + options);}
@@ -43,8 +48,8 @@ namespace Zios.Inputs{
 			file.WriteText(contents);
 		}
 		public static void Load(){
-			if(!Application.isEditor){return;}
-			var file = FileManager.Find("InputControls.cfg",false);
+			if(!Proxy.IsEditor()){return;}
+			var file = File.Find("InputControls.cfg",false);
 			if(file.IsNull()){return;}
 			string group = "";
 			string action = "";

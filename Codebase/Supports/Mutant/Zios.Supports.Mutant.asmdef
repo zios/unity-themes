@@ -1,0 +1,8 @@
+{
+	"name": "Zios.Supports.Mutant",
+	"references": [
+		"Zios.Extensions"
+	],
+	"includePlatforms": [],
+	"excludePlatforms": []
+}

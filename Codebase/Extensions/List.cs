@@ -1,8 +1,8 @@
 using System;
-using System.Linq;
 using System.Collections.Generic;
-namespace Zios{
-	public static class ListExtension{
+using System.Linq;
+namespace Zios.Extensions{
+	public static class ListExtensions{
 		public static List<T> Copy<T>(this List<T> current){
 			return new List<T>(current);
 		}
@@ -43,7 +43,7 @@ namespace Zios{
 		}
 		public static List<T> Shuffle<T>(this List<T> current){
 			List<T> copy = current.Copy();
-			System.Random random = new System.Random();
+			Random random = new Random();
 			int total = copy.Count;
 			while(total > 1){
 				total--;
@@ -81,13 +81,6 @@ namespace Zios{
 		}
 		public static T TakeRandom<T>(this List<T> current){
 			return current.Shuffle().First();
-		}
-		public static Dictionary<string,Type> ToDictionary<Type>(this List<Type> current){
-			var values = new Dictionary<string,Type>();
-			for(int index=0;index<current.Count;++index){
-				values["#"+index] = current[index];
-			}
-			return values;
 		}
 		public static List<int> DivideSize<T>(this List<T> current,int size){
 			var data = new int[size].ToList();

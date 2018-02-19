@@ -1,0 +1,18 @@
+{
+	"name": "Zios.Attributes.Deprecated",
+	"references": [
+		"Zios.Attributes.Supports",
+		"Zios.Events",
+		"Zios.Extensions",
+		"Zios.Reflection",
+		"Zios.Shortcuts",
+		"Zios.State",
+		"Zios.Supports.NonGeneric",
+		"Zios.Unity.Components.DataBehaviour",
+		"Zios.Unity.Components.ManagedBehaviour",
+		"Zios.Unity.Shortcuts",
+		"Zios.Unity.Time"
+	],
+	"includePlatforms": [],
+	"excludePlatforms": []
+}

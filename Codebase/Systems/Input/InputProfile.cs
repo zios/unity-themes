@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 namespace Zios.Inputs{
-	using Containers;
+	using Zios.Extensions;
+	using Zios.File;
+	using Zios.Supports.Container;
 	[Serializable]
 	public class InputProfile{
 		public string name;
@@ -11,7 +12,7 @@ namespace Zios.Inputs{
 		public InputProfile(string name){this.name = name;}
 		public void Save(){
 			var contents = "";
-			var file = FileManager.Find(this.name+".profile",false) ?? FileManager.Create(this.name+".profile");
+			var file = File.Find(this.name+".profile",false) ?? File.Create(this.name+".profile");
 			contents = contents.AddLine("[Input-Devices]");
 			this.requiredDevices.ForEach(x=>contents = contents.AddLine(x));
 			var activeGroup = "";
@@ -27,7 +28,7 @@ namespace Zios.Inputs{
 			file.WriteText(contents);
 		}
 		public static void Load(){
-			foreach(var file in FileManager.FindAll("*.profile",true)){
+			foreach(var file in File.FindAll("*.profile",true)){
 				var profile = new InputProfile(file.name);
 				var text = file.GetText().GetLines();
 				int mode = 0;

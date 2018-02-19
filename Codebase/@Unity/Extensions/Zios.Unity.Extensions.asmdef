@@ -1,0 +1,13 @@
+{
+	"name": "Zios.Unity.Extensions",
+	"references": [
+		"Zios.Extensions",
+		"Zios.Extensions.Convert",
+		"Zios.Reflection",
+		"Zios.Unity.Extensions.Convert",
+		"Zios.Unity.Proxy",
+		"Zios.Unity.ProxyEditor"
+	],
+	"includePlatforms": [],
+	"excludePlatforms": []
+}

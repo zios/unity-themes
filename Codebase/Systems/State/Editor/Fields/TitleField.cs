@@ -1,9 +1,16 @@
+using System;
 using UnityEditor;
 using UnityEngine;
 using MenuFunction = UnityEditor.GenericMenu.MenuFunction;
-namespace Zios.Editors.StateEditors{
-	using Interface;
-	using Actions;
+namespace Zios.Unity.Editor.State{
+	using Zios.Extensions.Convert;
+	using Zios.State;
+	using Zios.Unity.Editor.Drawers.Table;
+	using Zios.Unity.ProxyEditor;
+	using Zios.Unity.EditorUI;
+	using Zios.Unity.Extensions;
+	using Zios.Unity.Editor.Extensions;
+	using Zios.Unity.Style;
 	public class TitleField : TableField{
 		public TitleField(object target=null,TableRow row=null) : base(target,row){}
 		public override void Draw(){
@@ -18,6 +25,9 @@ namespace Zios.Editors.StateEditors{
 			title.ToLabel().DrawLabel(next.AddXY(window.scroll),style);
 			this.CheckClicked();
 		}
+		private void CheckClicked(){
+			throw new NotImplementedException();
+		}
 		public override void Clicked(int button){
 			var window = StateWindow.Get();
 			if(button == 0){
@@ -28,15 +38,15 @@ namespace Zios.Editors.StateEditors{
 			}
 			if(button == 1){
 				var menu = new GenericMenu();
-				MenuFunction markDirty = ()=>Utility.SetDirty(window.target);
+				MenuFunction markDirty = ()=>ProxyEditor.SetDirty(window.target);
 				MenuFunction toggleAdvanced = ()=>{
-					Utility.RecordObject(window.target,"State Window - Advanced Toggle");
+					ProxyEditor.RecordObject(window.target,"State Window - Advanced Toggle");
 					window.target.advanced = !window.target.advanced;
 					window.tableIndex = 0;
 					window.BuildTable();
 				};
 				MenuFunction toggleManual = ()=>{
-					Utility.RecordObject(window.target,"State Window - Manual Toggle");
+					ProxyEditor.RecordObject(window.target,"State Window - Manual Toggle");
 					window.target.manual = !window.target.manual;
 					window.BuildTable();
 				};

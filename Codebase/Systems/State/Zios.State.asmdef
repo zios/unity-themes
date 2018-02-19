@@ -1,0 +1,22 @@
+{
+	"name": "Zios.State",
+	"references": [
+		"Zios.Attributes.Supports",
+		"Zios.Events",
+		"Zios.Extensions",
+		"Zios.Extensions.Convert",
+		"Zios.Shortcuts",
+		"Zios.SystemAttributes",
+		"Zios.Unity.Components.DataBehaviour",
+		"Zios.Unity.Components.ManagedBehaviour",
+		"Zios.Unity.Extensions",
+		"Zios.Unity.Locate",
+		"Zios.Unity.Log",
+		"Zios.Unity.Pref",
+		"Zios.Unity.Proxy",
+		"Zios.Unity.ProxyEditor",
+		"Zios.Unity.Shortcuts"
+	],
+	"includePlatforms": [],
+	"excludePlatforms": []
+}

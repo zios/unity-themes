@@ -1,0 +1,11 @@
+{
+	"name": "Zios.Unity.Locate.LocateEvents",
+	"references": [
+		"Zios.Events",
+		"Zios.Shortcuts",
+		"Zios.Unity.Locate",
+		"Zios.Unity.Shortcuts"
+	],
+	"includePlatforms": [],
+	"excludePlatforms": []
+}

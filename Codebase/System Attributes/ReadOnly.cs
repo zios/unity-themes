@@ -1,4 +1,3 @@
-using UnityEngine;
-namespace Zios{
-	public class ReadOnlyAttribute : PropertyAttribute{}
+namespace Zios.SystemAttributes{
+	public class ReadOnlyAttribute : System.Attribute{}
 }

@@ -1,4 +1,3 @@
-using UnityEngine;
-namespace Zios{
-	public class AdvancedAttribute : PropertyAttribute{}
+namespace Zios.SystemAttributes{
+	public class AdvancedAttribute : System.Attribute{}
 }

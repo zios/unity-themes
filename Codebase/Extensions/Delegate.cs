@@ -1,5 +1,5 @@
 using System;
-namespace Zios{
+namespace Zios.Extensions{
 	public static class DelegateExtension{
 		public static bool ContainsMethod(this Delegate current,Delegate value){
 			if(current.IsNull()){return false;}

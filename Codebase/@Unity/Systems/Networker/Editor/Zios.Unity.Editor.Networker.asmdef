@@ -1,0 +1,12 @@
+{
+	"name": "Zios.Unity.Editor.Networker",
+	"references": [
+		"Zios.File",
+		"Zios.Unity.Editor.Inspectors",
+		"Zios.Unity.Editor.MonoBehaviourEditor",
+		"Zios.Unity.Networker",
+		"Zios.Unity.Supports.Singleton"
+	],
+	"includePlatforms": ["Editor"],
+	"excludePlatforms": []
+}

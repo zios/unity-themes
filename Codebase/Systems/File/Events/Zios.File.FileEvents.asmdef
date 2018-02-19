@@ -1,0 +1,12 @@
+{
+	"name": "Zios.File.FileEvents",
+	"references": [
+		"Zios.Events",
+		"Zios.File",
+		"Zios.Shortcuts",
+		"Zios.Unity.Proxy",
+		"Zios.Unity.Shortcuts"
+	],
+	"includePlatforms": [],
+	"excludePlatforms": []
+}
