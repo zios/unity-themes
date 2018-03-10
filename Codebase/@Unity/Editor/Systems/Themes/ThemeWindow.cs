@@ -61,7 +61,7 @@ namespace Zios.Unity.Editor.Themes{
 		}
 		public static void CloseWindow(object sender,EventArgs arguments){
 			#if UNITY_5_3_4_OR_NEWER
-			if(!ProxyEditor.IsChanging()){
+			if(!ProxyEditor.ProxyEditor.IsChanging()){
 				ThemeWindow.CloseWindow();
 			}
 			#endif

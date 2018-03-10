@@ -24,7 +24,7 @@ set versions=%versions%UNITY_%unity:.=_%;
 set extra=/p:DefineConstants="%versions%"
 echo %extra%
 copy /Y "%unity%\*" . >NUL
-copy /Y "..\Systems\Interface\Themes\Editor\ThemeSystem.cs" . >NUL
+copy /Y "..\@Unity\Editor\Systems\Themes\ThemeSystem.cs" . >NUL
 powershell -Command "(gc ThemeSystem.cs) -replace '{revision}', '%revision%' | Out-File ThemeSystem.cs"
 copy /Y "Properties\AssemblyInfoThemes.cs" . >NUL
 ren AssemblyInfoThemes.cs AssemblyInfo.cs
@@ -36,6 +36,8 @@ IF EXIST "%programfiles%\MSBuild\14.0\Bin" GOTO USE_MSBUILD14_X86
 IF EXIST "%programfiles(x86)%\MSBuild\14.0\Bin" GOTO USE_MSBUILD14_X64
 IF EXIST "%programfiles%\MSBuild\15.0\Bin" GOTO USE_MSBUILD15_X86
 IF EXIST "%programfiles(x86)%\MSBuild\15.0\Bin" GOTO USE_MSBUILD15_X64
+IF EXIST "%programfiles%\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin" GOTO USE_MSBUILD15_VS2017_X86
+IF EXIST "%programfiles(x86)%\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\amd64" GOTO USE_MSBUILD15_VS2017_X64
 GOTO CLOSE
 :USE_MSBUILD14_X86
 	echo Compiling ZiosThemes.dll - MSBuild 14.0 (on 32-bit host)...
@@ -52,6 +54,16 @@ GOTO CLOSE
 :USE_MSBUILD15_X64
 	echo Compiling ZiosThemes.dll - MSBuild 15.0 (on 64-bit host)...
 	"%programfiles(x86)%\MSBuild\15.0\Bin\amd64\MSBuild.exe" ZiosThemes.sln %extra%
+	GOTO CLOSE
+:CLOSE
+:USE_MSBUILD15_VS2017_X86
+	echo Compiling ZiosThemes.dll - MSBuild 15.0 (on 32-bit host)...
+	"%programfiles%\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\MSBuild.exe" ZiosThemes.sln %extra%
+	GOTO CLOSE
+:CLOSE
+:USE_MSBUILD15_VS2017_X64
+	echo Compiling ZiosThemes.dll - MSBuild 15.0 (on 64-bit host)...
+	"%programfiles(x86)%\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\amd64\MSBuild.exe" ZiosThemes.sln %extra%
 	GOTO CLOSE
 :CLOSE
 copy /Y "%unity%\*" . >NUL
