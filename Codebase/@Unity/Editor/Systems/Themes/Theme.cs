@@ -30,7 +30,7 @@ namespace Zios.Unity.Editor.Themes{
 				var active = imported.AddNew();
 				active.name = file.name.ToPascalCase();
 				active.path = file.path;
-				active.Deserialize(file.GetText());
+				active.Deserialize(file.ReadText());
 			}
 			return imported;
 		}
@@ -41,7 +41,7 @@ namespace Zios.Unity.Editor.Themes{
 			path = path.IsEmpty() ? EditorUtility.SaveFilePanel("Save Theme",targetPath,targetName,"unitytheme") : path;
 			if(path.Length > 0){
 				var file = File.Create(path);
-				file.WriteText(this.Serialize());
+				file.Write(this.Serialize());
 				EditorPref.Set<string>("EditorTheme"+Theme.suffix,theme.name);
 				Theme.setup = false;
 			}

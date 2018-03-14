@@ -1,0 +1,19 @@
+{
+	"name": "Zios.Serializer",
+	"references": [
+		"Zios.Events",
+		"Zios.Extensions",
+		"Zios.Extensions.Convert",
+		"Zios.File",
+		"Zios.Reflection",
+		"Zios.Shortcuts",
+		"Zios.Supports.Hierarchy",
+		"Zios.Unity.Extensions",
+		"Zios.Unity.Locate",
+		"Zios.Unity.Shortcuts",
+		"Zios.Unity.Supports.Singleton",
+		"Zios.Unity.SystemAttributes"
+	],
+	"includePlatforms": [],
+	"excludePlatforms": []
+}

@@ -10,56 +10,6 @@ namespace Zios.Unity.Extensions{
 		//====================
 		// Retrieval
 		//====================
-		public static Component[] GetComponentsByInterface<T>(this GameObject current){
-			List<Component> results = new List<Component>();
-			Component[] items = current.GetComponentsInChildren<Component>(true);
-			foreach(Component item in items){
-				if(item.GetType().IsAssignableFrom(typeof(T))){
-					results.Add(item);
-				}
-			}
-			return results.ToArray();
-		}
-		public static bool HasComponent<T>(this GameObject current,bool includeInactive=false) where T : Component{
-			if(current.IsNull()){return false;}
-			return !current.GetComponent<T>(includeInactive).IsNull();
-		}
-		public static T GetComponent<T>(this GameObject current,bool includeInactive=false) where T : Component{
-			if(current.IsNull()){return null;}
-			T[] results = current.GetComponentsInChildren<T>(includeInactive);
-			foreach(T item in results){
-				if(item.transform == current.transform){
-					return item;
-				}
-			}
-			return null;
-		}
-		public static T[] GetComponents<T>(this GameObject current,bool includeInactive=false) where T : Component{
-			if(current.IsNull()){return null;}
-			List<T> results = new List<T>();
-			T[] search = current.GetComponentsInChildren<T>(includeInactive);
-			foreach(T item in search){
-				if(item.transform == current.transform){
-					results.Add(item);
-				}
-			}
-			return results.ToArray();
-		}
-		public static T GetComponentInParent<T>(this GameObject current,bool includeInactive=false) where T : Component{
-			if(current.IsNull()){return null;}
-			T[] results = current.GetComponentsInParent<T>(includeInactive);
-			if(results.Length > 0){
-				return results[0];
-			}
-			return null;
-		}
-		public static T GetComponentInChildren<T>(this GameObject current,bool includeInactive=false) where T : Component{
-			T[] results = current.GetComponentsInChildren<T>(includeInactive);
-			if(results.Length > 0){
-				return results[0];
-			}
-			return null;
-		}
 		public static GameObject[] GetByName(this GameObject current,string name,bool includeInactive=true){
 			if(current.IsNull()){return null;}
 			Transform[] all = current.GetComponentsInChildren<Transform>(includeInactive);
@@ -70,6 +20,14 @@ namespace Zios.Unity.Extensions{
 				}
 			}
 			return matches.ToArray();
+		}
+		public static Mesh GetMesh(this GameObject current){
+			if(current.IsNull()){return null;}
+			return current.transform.GetMesh();
+		}
+		public static Mesh[] GetMeshes(this GameObject current){
+			if(current.IsNull()){return new Mesh[0];}
+			return current.transform.GetMeshes();
 		}
 		//====================
 		// Layers / Tags
@@ -156,6 +114,70 @@ namespace Zios.Unity.Extensions{
 		//====================
 		// Components
 		//====================
+		public static GameObject Destroy<Type>(this GameObject current) where Type : Component{return current.RemoveComponent<Type>();}
+		public static GameObject Remove<Type>(this GameObject current) where Type : Component{return current.RemoveComponent<Type>();}
+		public static GameObject RemoveComponent<Type>(this GameObject current) where Type : Component{
+			var target = current.GetComponent<Type>();
+			if(!target.IsNull()){
+				target.Destroy();
+			}
+			return current;
+		}
+		public static Type Add<Type>(this GameObject current) where Type : Component{return current.AddComponent<Type>();}
+		public static Type Get<Type>(this GameObject current){
+			return current.GetComponent<Type>();
+		}
+		public static Component[] GetComponentsByInterface<T>(this GameObject current){
+			List<Component> results = new List<Component>();
+			Component[] items = current.GetComponentsInChildren<Component>(true);
+			foreach(Component item in items){
+				if(item.GetType().IsAssignableFrom(typeof(T))){
+					results.Add(item);
+				}
+			}
+			return results.ToArray();
+		}
+		public static bool Has<T>(this GameObject current,bool includeInactive=false) where T : Component{return current.HasComponent<T>(includeInactive);}
+		public static bool HasComponent<T>(this GameObject current,bool includeInactive=false) where T : Component{
+			if(current.IsNull()){return false;}
+			return !current.GetComponent<T>(includeInactive).IsNull();
+		}
+		public static T GetComponent<T>(this GameObject current,bool includeInactive=false) where T : Component{
+			if(current.IsNull()){return null;}
+			T[] results = current.GetComponentsInChildren<T>(includeInactive);
+			foreach(T item in results){
+				if(item.transform == current.transform){
+					return item;
+				}
+			}
+			return null;
+		}
+		public static T[] GetComponents<T>(this GameObject current,bool includeInactive=false) where T : Component{
+			if(current.IsNull()){return null;}
+			List<T> results = new List<T>();
+			T[] search = current.GetComponentsInChildren<T>(includeInactive);
+			foreach(T item in search){
+				if(item.transform == current.transform){
+					results.Add(item);
+				}
+			}
+			return results.ToArray();
+		}
+		public static T GetComponentInParent<T>(this GameObject current,bool includeInactive=false) where T : Component{
+			if(current.IsNull()){return null;}
+			T[] results = current.GetComponentsInParent<T>(includeInactive);
+			if(results.Length > 0){
+				return results[0];
+			}
+			return null;
+		}
+		public static T GetComponentInChildren<T>(this GameObject current,bool includeInactive=false) where T : Component{
+			T[] results = current.GetComponentsInChildren<T>(includeInactive);
+			if(results.Length > 0){
+				return results[0];
+			}
+			return null;
+		}
 		public static void EnableComponents(this GameObject current,params Type[] types){
 			current.ToggleComponents(true,false,types);
 		}
@@ -192,6 +214,11 @@ namespace Zios.Unity.Extensions{
 		//====================
 		// Utility
 		//====================
+		public static void Remove(this GameObject current){current.Destroy();}
+		public static void Destroy(this GameObject current){
+			if(Application.isPlaying){GameObject.Destroy(current);}
+			else{GameObject.DestroyImmediate(current);}
+		}
 		public static void MoveTo(this GameObject current,Vector3 location,bool useX=true,bool useY=true,bool useZ=true){
 			Vector3 position = current.transform.position;
 			if(useX){position.x = location.x;}
@@ -204,7 +231,7 @@ namespace Zios.Unity.Extensions{
 			string path = current.transform.name;
 			if(Proxy.IsEditor()){
 				var type = ProxyEditor.GetPrefabType(current);
-				if(current.hideFlags == HideFlags.HideInHierarchy || type.ContainsAny("Prefab","ModelPrefab")){
+				if(type.ContainsAny("Prefab","ModelPrefab")){
 					path = "Prefab/"+path;
 				}
 			}

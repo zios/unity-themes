@@ -8,17 +8,18 @@ namespace Zios.Unity.Extensions.Convert{
 		static ConvertGUIContent(){Setup();}
 		[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
 		public static void Setup(){
-			ConvertObject.serializeMethods.Add((current)=>{
+			ConvertObject.serializeMethods.Add((current,separator,changesOnly)=>{
 				return current is GUIContent ? current.As<GUIContent>().Serialize() : null;
 			});
-			ConvertString.deserializeMethods.Add((type,current)=>{
+			ConvertString.deserializeMethods.Add((type,current,separator)=>{
 				return type == typeof(GUIContent) ? new GUIContent().Deserialize(current).Box() : null;
 			});
 		}
 		//============================
 		// From
 		//============================
-		public static string Serialize(this GUIContent current){
+		public static string Serialize(this GUIContent current,bool ignoreDefault=false,string defaultValue=""){
+			if(ignoreDefault && current.text == defaultValue){return "";}
 			var data = current.image.IsNull() ? "" : current.image.As<Texture2D>().Serialize();
 			return current.text+"||"+current.tooltip+"||"+data;
 		}

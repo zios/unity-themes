@@ -9,7 +9,10 @@ def Scan(start):
 			os.chdir(start)
 		if ".asmdef" in path and "Zios." in item and not item.startswith("."):
 			fixedName = "."+item
-			try: os.rename(item,fixedName)
-			except : pass
+			try: 
+				os.system("svn rename " + item + " " + fixedName)
+				#os.rename(item,fixedName)
+			except :
+				pass
 Scan(start)
 os.system("pause")

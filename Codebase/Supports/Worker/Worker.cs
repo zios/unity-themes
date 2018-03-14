@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 namespace Zios.Supports.Worker{
@@ -9,81 +10,67 @@ namespace Zios.Supports.Worker{
 	using Zios.Unity.Log;
 	public class Worker{
 		public static Dictionary<Thread,Worker> all = new Dictionary<Thread,Worker>();
-		public static bool monitored = true;
+		public static Thread mainThread;
 		public List<Thread> threads = new List<Thread>();
 		public List<Thread> remaining = new List<Thread>();
 		public List<Action> sourceCallback = new List<Action>();
 		public Func<bool> executeStep = ()=>true;
+		public MethodEnd onEnd;
 		public Thread manager;
+		public bool finalize;
+		public object group;
+		public bool monitor;
 		public bool async;
 		public bool quit;
+		public int threadCount = -1;
 		public int progress;
 		public int size;
 		//=================
 		// Interface
 		//=================
-		public static Worker<int> Create(int size,MethodStepIndex<int> onStep=null,MethodEndIndex<int> onEnd=null,bool async=false,int threads=-1){
-			var data = Enumerable.Range(0,++size).ToList();
-			return Worker.Create<int>(data,onStep,onEnd,async,threads);
+		static Worker(){
+			Worker.mainThread = Thread.CurrentThread;
+		}
+		public static Worker<Type> Get<Type>(){
+			return (Worker<Type>)Worker.Get();
+		}
+		public static Worker Get(){
+			var thread = Thread.CurrentThread;
+			//var managerThread = Worker.all.Where(x=>x.Value.manager==thread).ToArray();
+			//if(managerThread.Length > 0){return managerThread[0].Value;}
+			return Worker.all.TryGet(thread);
 		}
 		public static Worker Create(Func<bool> method){
-			var worker = new Worker();
+			var worker = new Worker().Async();
 			worker.executeStep = method;
-			worker.async = true;
 			var perform = new ThreadStart(worker.Step);
 			var thread = new Thread(perform);
-			Worker.all[thread] = worker;
+			lock(Worker.all){Worker.all[thread] = worker;}
 			worker.threads.Add(thread);
-			worker.Build();
+			worker.MonitorStart();
 			return worker;
 		}
-		public static Worker<Value> Create<Value>(List<Value> collection,MethodStepIndex<Value> onStep=null,MethodEndIndex<Value> onEnd=null,bool async=false,int threads=-1){
-			var worker = new Worker<Value>();
-			worker.onStep = onStep;
-			worker.onEnd = onEnd ?? worker.onEnd;
-			worker.collection = collection;
-			worker.Build(collection,async,threads);
-			return worker;
+		public static Worker<int> Create(int size){
+			var data = Enumerable.Range(0,++size).ToList();
+			return Worker.Create(data);
 		}
-		public static Worker<Value,Output> Create<Value,Output>(List<Value> collection,MethodStepIndex<Value,Output> onStep=null,MethodEndIndex<Value> onEnd=null,bool async=false,int threads=-1){
-			var worker = new Worker<Value,Output>();
-			worker.onStep = onStep;
-			worker.onEnd = onEnd ?? worker.onEnd;
-			worker.collection = collection;
-			worker.Build(collection,async,threads);
-			return worker;
+		public static Worker<Value> Create<Value>(List<Value> collection){
+			return new Worker<Value>(collection);
 		}
-		public static WorkerDictionary<Key,Value> CreateKeyed<Key,Value>(Dictionary<Key,Value> collection,MethodStepKey<Key,Value> onStep=null,MethodEndKey<Key,Value> onEnd=null,bool async=false,int threads=-1){
-			var worker = new WorkerDictionary<Key,Value>();
-			worker.onStep = onStep;
-			worker.onEnd = onEnd ?? worker.onEnd;
-			worker.collection = collection;
-			worker.Build(collection.Keys.ToList(),async,threads);
-			return worker;
+		public static WorkerDictionary<Key,Value> Create<Key,Value>(Dictionary<Key,Value> collection){
+			return new WorkerDictionary<Key,Value>(collection);
 		}
-		public static WorkerDictionary<Key,Value> CreateAsyncKeyed<Key,Value>(Dictionary<Key,Value> collection,MethodStepKey<Key,Value> onStep=null,MethodEndKey<Key,Value> onEnd=null,int threads=-1){
-			return Worker.CreateKeyed(collection,onStep,onEnd,true,threads);
+		public static Worker<Value,Output> Create<Output,Value>(List<Value> collection,MethodStep<Value,Output> onStep){
+			return new Worker<Value,Output>(collection).OnStep(onStep);
 		}
-		public static Worker<int> CreateAsync<Value>(int size,MethodStepIndex<int> onStep=null,MethodEndIndex<int> onEnd=null,int threads=-1){
-			return Worker.Create(size,onStep,onEnd,true,threads);
+		public static void Quit(object group,bool finish=true){
+			if(group.IsNull()){return;}
+			lock(Worker.all){
+				foreach(var worker in Worker.all.Select(x=>x.Value).Where(x=>x.group==group)){
+					lock(worker){worker.quit = true;}
+				}
+			}
 		}
-		public static Worker<Value> CreateAsync<Value>(List<Value> collection,MethodStepIndex<Value> onStep=null,MethodEndIndex<Value> onEnd=null,int threads=-1){
-			return Worker.Create(collection,onStep,onEnd,true,threads);
-		}
-		public static Worker<Value> CreateAsync<Value>(List<Value> collection,MethodStepItem<Value> onStep=null,MethodEndIndex<Value> onEnd=null,int threads=-1){
-			return Worker.Create(collection,onStep.AsIndexed(),onEnd,true,threads);
-		}
-		public static Worker<Value> CreateAsync<Value>(List<Value> collection,MethodStepSimple<Value> onStep=null,MethodEndIndex<Value> onEnd=null,int threads=-1){
-			return Worker.Create(collection,onStep.AsIndexed(),onEnd,true,threads);
-		}
-		public static Worker<Value,Output> CreateAsync<Value,Output>(List<Value> collection,MethodStepIndex<Value,Output> onStep=null,MethodEndIndex<Value> onEnd=null,int threads=-1){
-			return Worker.Create(collection,onStep,onEnd,true,threads);
-		}
-		public static Worker<Value,Output> CreateAsync<Value,Output>(List<Value> collection,MethodStepItem<Value,Output> onStep=null,MethodEndIndex<Value> onEnd=null,int threads=-1){
-			return Worker.Create(collection,onStep.AsIndexedOut(),onEnd,true,threads);
-		}
-		public static Worker<Type> Get<Type>(){return (Worker<Type>)Worker.all[Thread.CurrentThread];}
-		public static Worker Get(){return Worker.all.TryGet(Thread.CurrentThread);}
 		public static void MainThread(Action method){
 			var worker = Worker.Get();
 			if(worker.IsNull()){
@@ -92,86 +79,58 @@ namespace Zios.Supports.Worker{
 			}
 			worker.Handoff(method);
 		}
+		//=================
+		// Internal
+		//=================
 		public void Handoff(Action method){
 			lock(this.sourceCallback){this.sourceCallback.Add(method);}
-			if(this.threads.Count<1){this.CheckHandoff();}
+			if(!this.async && this.threads.Count<1){this.CheckHandoff();}
 			while(true){
 				lock(this.sourceCallback){
 					if(!this.sourceCallback.Contains(method)){break;}
 				}
 			}
 		}
-		//=================
-		// Internal
-		//=================
-		public static void Check(){
-			var workers = Worker.all.Copy().Values;
+		public void MonitorStart(){
+			this.ThreadStart();
+			ProxyEditor.AddUpdate(Worker.MonitorCheck);
+		}
+		public static void MonitorCheck(){
+			var workers = new Worker[0];
+			lock(Worker.all){workers = Worker.all.Copy().Values.Where(x=>x.monitor).ToArray();}
 			foreach(var worker in workers){
-				if(worker.async && worker.manager.IsNull()){
-					foreach(var thread in worker.remaining.Copy()){
+				lock(worker.remaining){
+					foreach(var thread in worker.remaining){
 						worker.CheckHandoff();
-						if(thread.Join(0)){worker.remaining.Remove(thread);}
 					}
-					if(worker.remaining.Count()<1){worker.End();}
 				}
 			}
 		}
-		public void Build(){
-			this.Start();
-			ProxyEditor.AddUpdate(Worker.Check);
-		}
-		public void Build<Type>(List<Type> items,bool async,int threads){
-			if(threads==-1){threads = Environment.ProcessorCount;}
-			threads -= 1;
-			this.async = async;
-			this.size = items.Count;
-			if(threads <= 0){
-				this.Step(items,0);
-				this.Main();
-				return;
-			}
-			var index = 0;
-			foreach(var item in items.DivideInto(threads)){
-				if(item.Count == 0){break;}
-				var part = item;
-				var position = index;
-				var chunk = new ThreadStart(()=>this.Step(part,position));
-				var thread = new Thread(chunk);
-				this.threads.Add(thread);
-				Worker.all[thread] = this;
-				index += part.Count;
-			}
-			if(!async){
-				this.Main();
-				return;
-			}
-			if(Worker.monitored){
-				this.Build();
-				return;
-			}
-			var perform = new ThreadStart(this.Main);
-			this.manager = new Thread(perform);
-		}
-		public virtual void Main(){
-			this.Start();
-			this.Monitor();
-			this.End();
-		}
-		public virtual void Start(){
+		public virtual void ThreadStart(){
 			this.remaining = this.threads.Copy();
 			foreach(var thread in this.threads){thread.Start();}
 		}
-		public virtual void Monitor(){
+		public virtual void ThreadCheck(){
 			while(this.remaining.Count > 0){
-				foreach(var thread in this.remaining.Copy()){
-					this.CheckHandoff();
-					if(thread.Join(0)){this.remaining.Remove(thread);}
+				lock(this.remaining){
+					foreach(var thread in this.remaining){
+						this.CheckHandoff();
+					}
 				}
 			}
 		}
-		public virtual void End(){
-			foreach(var thread in this.remaining){thread.Abort();}
-			Worker.all.Remove(x=>x.Value==this);
+		public virtual void ThreadEnd(){
+			if(this.onEnd != null && (!this.quit || this.finalize)){this.onEnd();}
+			//foreach(var thread in this.remaining){thread.Abort();}
+			lock(Worker.all){Worker.all.Remove(x=>x.Value==this);}
+		}
+		public virtual void StepEnd(){
+			lock(this.remaining){
+				this.remaining.Remove(Thread.CurrentThread);
+				if(this.remaining.Count()<1){
+					this.ThreadEnd();
+				}
+			}
 		}
 		public void CheckHandoff(){
 			while(true){
@@ -180,7 +139,7 @@ namespace Zios.Supports.Worker{
 					try{this.sourceCallback[0]();}
 					catch(Exception exception){
 						var message = "[Worker-Handoff] Uncaught exception. \n";
-						message += exception.Message;
+						message += exception.Message + "\n" + exception.StackTrace;
 						Log.Error(message);
 					}
 					this.sourceCallback.RemoveAt(0);
@@ -189,14 +148,15 @@ namespace Zios.Supports.Worker{
 		}
 		public virtual void Step(){
 			while(this.executeStep()){}
+			this.StepEnd();
 		}
-		public virtual void Step<Data>(List<Data> data,int position=0){}
-		public virtual int Execute(int index,int size,object element){
+		public virtual void Step<Data>(List<Data> data,int position=0){this.StepEnd();}
+		public virtual int Execute(int index,object element){
 			bool success = false;
 			try{success = this.executeStep();}
 			catch(Exception exception){
-				var message = "[Worker] Uncaught exception for ("+element.GetType().Name + ") on " + index + "/" + size + "\n";
-				message += element.ToString() + "\n" + exception.Message;
+				var message = "[Worker] Uncaught exception for ("+element.GetType().Name + ") on " + index + "/" + this.size + "\n";
+				message += element.GetType().Name + "\n" + exception.Message + "\n" + exception.StackTrace;
 				Log.Error(message);
 				return -1;
 			}
@@ -208,109 +168,215 @@ namespace Zios.Supports.Worker{
 		}
 	}
 	public class Worker<Value> : Worker{
-		public MethodEndIndex<Value> onEnd = (x)=>{};
-		public MethodStepIndex<Value> onStep;
+		public MethodStep<Value> onStep;
+		public MethodStepIndex onStepIndex;
 		public List<Value> collection;
-		public override void End(){
-			this.onEnd(this);
-			base.End();
-		}
+		public Worker(List<Value> collection){this.collection = collection;}
+		public Worker<Value> Build(){return this.Build(this.collection);}
 		public override void Step<Data>(List<Data> data,int position=0){
 			var index = 0;
+			var useIndex = !this.onStepIndex.IsNull();
 			while(index < data.Count && index >= 0){
 				if(this.quit){break;}
-				this.executeStep = ()=>this.onStep(this,position+index);
-				index = this.Execute(index,this.collection.Count,data[index]);
+				if(useIndex){
+					this.executeStep = ()=>this.onStepIndex(position+index);
+				}
+				else{
+					var element = data[index].As<Value>();
+					this.executeStep = ()=>this.onStep(element);
+				}
+				index = this.Execute(index,data[index]);
 			}
+			this.StepEnd();
 		}
 	}
 	public class Worker<Value,Output> : Worker<Value>{
-		public new MethodStepIndex<Value,Output> onStep;
+		public new MethodStep<Value,Output> onStep;
+		public new MethodStepIndex<Output> onStepIndex;
 		public List<Output>[] result;
 		public bool skip;
-		public override void Start(){
+		public Worker(List<Value> collection) : base(collection){}
+		public new Worker<Value,Output> Build(){return this.Build(this.collection);}
+		public override void ThreadStart(){
 			this.result = new List<Output>[this.threads.Count];
-			base.Start();
+			base.ThreadStart();
 		}
 		public override void Step<Data>(List<Data> data,int position=0){
 			var index = 0;
 			var result = default(Output);
 			var output = new List<Output>();
 			var response = new WorkerResponse();
+			var useIndex = !this.onStepIndex.IsNull();
 			while(index < data.Count && index >= 0){
 				if(this.quit){break;}
-				try{result = this.onStep(this,response,position+index);}
-				catch(Exception exception){
-					var message = "[Worker] Uncaught exception for ("+data[index].GetType().Name + ") on " + index + "/" + this.collection.Count + "\n";
-					message += data[index].ToString() + "\n" + exception.Message;
-					Log.Error(message);
-					break;
+				if(useIndex){
+					this.executeStep = ()=>{
+						result = this.onStepIndex(response,position+index);
+						return true;
+					};
 				}
+				else{
+					var element = data[index].As<Value>();
+					this.executeStep = ()=>{
+						result = this.onStep(response,element);
+						return true;
+					};
+				}
+				index = this.Execute(index,data[index]);
+				if(index == -1){break;}
 				if(!response.skip){output.Add(result);}
 				response.skip = false;
-				Interlocked.Increment(ref this.progress);
-				index += 1;
 			}
 			lock(this.result){this.result[this.threads.IndexOf(Thread.CurrentThread)] = output;}
+			this.StepEnd();
 		}
 	}
 	public class WorkerDictionary<Key,Value> : Worker{
-		public MethodEndKey<Key,Value> onEnd = (x)=>{};
-		public MethodStepKey<Key,Value> onStep;
+		public MethodStep<Value> onStep;
+		public MethodStep<Key> onStepKey;
 		public Dictionary<Key,Value> collection;
-		public override void End(){
-			this.onEnd(this);
-			base.End();
-		}
+		public WorkerDictionary(Dictionary<Key,Value> collection){this.collection = collection;}
+		public WorkerDictionary<Key,Value> Build(){return this.Build(this.collection.Keys.ToList());}
 		public override void Step<Data>(List<Data> data,int position=0){
 			var index = 0;
 			var part = data.As<List<Key>>();
+			var useKey = !this.onStepKey.IsNull();
 			while(index < data.Count && index >= 0){
 				if(this.quit){break;}
-				var element = part[position+index];
-				this.executeStep = ()=>this.onStep(this,element);
-				index = this.Execute(index,this.collection.Count,this.collection[element]);
+				if(useKey){
+					var key = part[index];
+					this.executeStep = ()=>this.onStepKey(key);
+					index = this.Execute(index,key);
+				}
+				else{
+					var value = this.collection[part[index]];
+					this.executeStep = ()=>this.onStep(value);
+					index = this.Execute(index,value);
+				}
 			}
+			this.StepEnd();
 		}
 	}
 	public class WorkerResponse{
 		public bool skip;
 	}
-	public delegate void MethodEndKey<Key,Value>(WorkerDictionary<Key,Value> worker);
-	public delegate void MethodEndIndex<Value>(Worker<Value> worker);
-	public delegate bool MethodStepSimple<Value>(Value item);
-	public delegate bool MethodStepKey<Key,Value>(WorkerDictionary<Key,Value> worker,Key key);
-	public delegate bool MethodStepIndex<Value>(Worker<Value> info,int index);
-	public delegate bool MethodStepItem<Value>(Worker<Value> info,Value item);
-	public delegate Output MethodStepIndex<Value,Output>(Worker<Value> info,WorkerResponse response,int index);
-	public delegate Output MethodStepItem<Value,Output>(Worker<Value> info,WorkerResponse response,Value item);
-	public static class MethodStepExtensions{
-		public static MethodStepIndex<Value> AsIndexed<Value>(this MethodStepItem<Value> current){
-			return (worker,index)=>current(worker,worker.collection[index]);
-		}
-		public static MethodStepIndex<Value> AsIndexed<Value>(this MethodStepSimple<Value> current){
-			return (worker,index)=>current(worker.collection[index]);
-		}
-		public static MethodStepIndex<Value,Output> AsIndexedOut<Value,Output>(this MethodStepItem<Value,Output> current){
-			return (worker,response,index)=>current(worker,response,worker.collection[index]);
-		}
-	}
 }
 namespace Zios.Supports.Worker{
+	using Zios.Unity.Log;
+	using Zios.Extensions;
+	using Zios.Reflection;
 	public static class IEnumerableExtensions{
 		public static IEnumerable<Output> ThreadedSelect<Type,Output>(this IEnumerable<Type> source,Func<Type,Output> method){
-			MethodStepItem<Type,Output> Select = (worker,response,value)=>method(value);
-			return Worker.Create(source.ToList(),Select.AsIndexedOut()).result.SelectMany(x=>x);
+			MethodStep<Type,Output> Select = (response,value)=>method(value);
+			return Worker.Create(source.ToList(),Select).Build().result.SelectMany(x=>x);
 		}
 		public static IEnumerable<Type> ThreadedWhere<Type>(this IEnumerable<Type> source,Func<Type,bool> method){
-			MethodStepItem<Type,Type> Where = (worker,response,value)=>{
+			MethodStep<Type,Type> Where = (response,value)=>{
 				response.skip = !method(value);
 				return value;
 			};
-			return Worker.Create(source.ToList(),Where.AsIndexedOut()).result.SelectMany(x=>x);
+			return Worker.Create(source.ToList(),Where).Build().result.SelectMany(x=>x);
 		}
 		public static int ThreadedCount<Type>(this IEnumerable<Type> source,Func<Type,bool> method){
 			return source.ThreadedWhere(method).Count();
 		}
 	}
+	public static class WorkerExtensions{
+		public static Worker<Value> OnStep<Value>(this Worker<Value> current,MethodStepIndex method){
+			current.onStepIndex = method;
+			return current;
+		}
+		public static Worker<int,Output> OnStep<Output>(this Worker<int,Output> current,MethodStepIndex<Output> method){
+			current.onStepIndex = method;
+			return current;
+		}
+		public static Worker<Value> OnStep<Value>(this Worker<Value> current,MethodStep<Value> method){
+			current.onStep = method;
+			return current;
+		}
+		public static Worker<Value,Output> OnStep<Value,Output>(this Worker<Value,Output> current,MethodStep<Value,Output> method){
+			current.onStep = method;
+			return current;
+		}
+		public static WorkerDictionary<Key,Value> OnStep<Key,Value>(this WorkerDictionary<Key,Value> current,MethodStep<Value> method){
+			current.onStep = method;
+			return current;
+		}
+		public static WorkerDictionary<Key,Value> OnStep<Key,Value>(this WorkerDictionary<Key,Value> current,MethodStep<Key> method){
+			current.onStepKey = method;
+			return current;
+		}
+		public static Type OnEnd<Type>(this Type current,MethodEnd method) where Type : Worker{
+			current.onEnd = method;
+			return current;
+		}
+		public static Type Threads<Type>(this Type current,int count) where Type : Worker{
+			current.threadCount = count;
+			return current;
+		}
+		public static Type Group<Type>(this Type current,object group) where Type : Worker{
+			current.group = group;
+			return current;
+		}
+		public static Type Async<Type>(this Type current,bool state=true) where Type : Worker{
+			current.async = state;
+			return current;
+		}
+		public static Type Finalize<Type>(this Type current,bool state=true) where Type : Worker{
+			current.finalize = state;
+			return current;
+		}
+		public static Type Monitor<Type>(this Type current,bool monitor=true) where Type : Worker{
+			current.monitor = monitor;
+			current.Async(monitor);
+			return current;
+		}
+		public static Type Quit<Type>(this Type current) where Type : Worker{
+			current.quit = true;
+			return current;
+		}
+		public static Type Build<Type,Data>(this Type current,List<Data> items) where Type : Worker{
+			if(current.threadCount < 0){
+				var active = 1+Worker.all.Where(x=>x.Key!=Worker.mainThread).Select(x=>x.Value).Where(x=>!x.quit).Select(x=>x.remaining.Count).DefaultIfEmpty(0).Sum();
+				var limit = current.threadCount+1;
+				//Log.Show("[Worker] Creating dynamic worker -- " + (Environment.ProcessorCount-active-limit) + " threads.");
+				current.threadCount = (Environment.ProcessorCount-active-limit).Max(1);
+			}
+			current.size = items.Count;
+			if(!current.async && current.threadCount <= 0){
+				Worker.all[Thread.CurrentThread] = current;
+				current.Step(items,0);
+				return current;
+			}
+			var index = 0;
+			foreach(var item in items.DivideInto(current.threadCount)){
+				if(item.Count == 0){break;}
+				var part = item;
+				var position = index;
+				var chunk = new ThreadStart(()=>current.Step(part,position));
+				var thread = new Thread(chunk);
+				current.threads.Add(thread);
+				lock(Worker.all){Worker.all[thread] = current;}
+				index += part.Count;
+			}
+			if(!current.async){
+				current.ThreadStart();
+				current.ThreadCheck();
+				return current;
+			}
+			if(current.monitor){
+				current.MonitorStart();
+				return current;
+			}
+			current.ThreadStart();
+			return current;
+		}
+	}
+}
+namespace Zios.Supports.Worker{
+	public delegate void MethodEnd();
+	public delegate bool MethodStep<Value>(Value item);
+	public delegate bool MethodStepIndex(int index);
+	public delegate Output MethodStep<Value,Output>(WorkerResponse response,Value item);
+	public delegate Output MethodStepIndex<Output>(WorkerResponse response,int index);
 }

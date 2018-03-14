@@ -81,7 +81,7 @@ namespace Zios.Unity.Editor.Undo{
 		public static void RecordStart(Type target,bool clearPrefRecords=true){
 			Reflection.ResetCache();
 			if(clearPrefRecords){Undo.snapshotPrefs.Clear();}
-			Undo.snapshot[target] = target.GetVariables(null,Reflection.staticPublicFlags);
+			Undo.snapshot[target] = target.GetVariables(Reflection.staticPublicFlags);
 		}
 		public static void RecordPref<Type>(string name,Type value){
 			var current = EditorPref.Get<Type>(name,value);
@@ -101,7 +101,7 @@ namespace Zios.Unity.Editor.Undo{
 			var undo = "";
 			var redo = "";
 			if(Undo.snapshot.ContainsKey(target)){
-				var changes = Undo.snapshot[target].Difference(target.GetVariables(null,Reflection.staticPublicFlags));
+				var changes = Undo.snapshot[target].Difference(target.GetVariables(Reflection.staticPublicFlags));
 				foreach(var item in changes){
 					var scope = "&&&"+target.FullName+"###"+item.Key+"|||";
 					undo += scope + Undo.snapshot[target][item.Key];

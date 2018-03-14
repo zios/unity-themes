@@ -8,8 +8,9 @@ namespace Zios.Unity.Editor.Components.EditorFPS{
 	using Zios.Unity.Time;
 	//asm Zios.Shortcuts;
 	//asm Zios.Unity.Shortcuts;
+	using Editor = UnityEditor.Editor;
 	[CustomEditor(typeof(EditorFPS))]
-	public class EditorFPSEditor : UnityEditor.Editor{
+	public class EditorFPSEditor : Editor{
 		private static EditorFPSEditor instance;
 		public string text;
 		private int frames = 0;

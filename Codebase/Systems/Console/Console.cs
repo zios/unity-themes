@@ -30,6 +30,7 @@ namespace Zios.Console{
 	}
 	public partial class Console : Singleton{
 		public static Console singleton;
+		public bool disabled;
 		public GUISkin skin;
 		public Material background;
 		public Material inputBackground;
@@ -57,6 +58,7 @@ namespace Zios.Console{
 		}
 		public void OnEnable(){
 			Console.singleton = this;
+			if(Console.Get().disabled){return;}
 			this.OnValidate();
 			Proxy.AddLogCallback(Console.HandleLog);
 			if(!this.logFile.IsEmpty()){
@@ -100,6 +102,7 @@ namespace Zios.Console{
 			}
 		}
 		public void Start(){
+			if(Console.Get().disabled){return;}
 			Console.AddCvar("consoleFontColor",this,"logFontColor","Console Font color",Console.help[5]);
 			Console.AddCvar("consoleFontSize",this,"logFontSize","Console Font size",Console.help[0]);
 			Console.AddCvar("consoleSize",this,"height","Console Height percent",Console.help[1]);
@@ -180,7 +183,7 @@ namespace Zios.Console{
 		// Keywords/Shortcuts
 		//===========================
 		public static void AddShortcut(string term,string shortcut){
-			if(!Proxy.IsPlaying()){return;}
+			if(Console.Get().disabled || !Proxy.IsPlaying()){return;}
 			if(Console.shortcuts.ContainsKey(shortcut)){
 				Log.Warning("[Console] Already has registered Shortcut for -- " + shortcut);
 				return;
@@ -197,6 +200,7 @@ namespace Zios.Console{
 			}
 		}
 		public static void AddCommand(string text,bool disableLogging=false){
+			if(Console.Get().disabled){return;}
 			var usable = Console.disableLogging;
 			Console.disableLogging = disableLogging;
 			Console.lastCommand = text;
@@ -204,7 +208,7 @@ namespace Zios.Console{
 			Console.disableLogging = usable;
 		}
 		public static void AddLog(string text,bool system=false){
-			if(Console.disableLogging){return;}
+			if(Console.Get().disabled || Console.disableLogging){return;}
 			if(Proxy.IsEditor()){
 				Log.Show(text);
 				if(system){return;}
@@ -367,7 +371,7 @@ namespace Zios.Console{
 			Rect inputBounds = new Rect(0,consoleHeight,Screen.width,30);
 			Rect inputArrowBounds = new Rect(2,consoleHeight+6,12,12);
 			Console.logStyle.fontSize = Console.Get().logFontSize;
-			if(Event.current.type == EventType.Repaint){
+			if(Proxy.IsRepainting()){
 				var backgroundTexture = Console.Get().background.GetTexture("textureMap");
 				var inputTexture = Console.Get().inputBackground.GetTexture("textureMap");
 				if(!backgroundTexture.IsNull()){

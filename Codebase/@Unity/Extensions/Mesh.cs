@@ -1,19 +1,41 @@
 using UnityEngine;
 namespace Zios.Unity.Extensions{
+	using System.Linq;
 	using Zios.Extensions;
 	public static class MeshExtension{
 		public static Mesh Copy(this Mesh mesh){
-			Mesh copy = new Mesh();
-			copy.vertices = mesh.vertices;
+			var copy = new Mesh();
+			if(mesh.IsNull()){return copy;}
+			var positions = mesh.vertices.Copy();
+			copy.indexFormat = mesh.indexFormat;
+			copy.subMeshCount = mesh.subMeshCount;
+			copy.SetVertices(positions.ToList());
+			copy.SetColors(mesh.colors.ToList());
+			copy.SetNormals(mesh.normals.ToList());
+			copy.SetTangents(mesh.tangents.ToList());
+			for(int index=0;index<mesh.subMeshCount;++index){
+				copy.SetIndices(mesh.GetIndices(index),mesh.GetTopology(index),index);
+				copy.SetTriangles(mesh.GetTriangles(index),index);
+			}
+			for(var shapeIndex=0;shapeIndex<mesh.blendShapeCount;++shapeIndex){
+				var shapeName = mesh.GetBlendShapeName(shapeIndex);
+				for(var frameIndex=0;frameIndex<mesh.GetBlendShapeFrameCount(shapeIndex);++frameIndex){
+					var shapeWeight = mesh.GetBlendShapeFrameWeight(shapeIndex,frameIndex);
+					var deltaPositions = new Vector3[mesh.vertexCount];
+					var deltaNormals = new Vector3[mesh.vertexCount];
+					var deltaTangents = new Vector3[mesh.vertexCount];
+					mesh.GetBlendShapeFrameVertices(shapeIndex,frameIndex,deltaPositions,deltaNormals,deltaTangents);
+					copy.AddBlendShapeFrame(shapeName,shapeWeight,deltaPositions,deltaNormals,deltaTangents);
+				}
+			}
+			copy.SetUVs(0,mesh.uv.ToList());
+			copy.SetUVs(1,mesh.uv2.ToList());
+			copy.SetUVs(2,mesh.uv3.ToList());
+			copy.SetUVs(3,mesh.uv4.ToList());
 			copy.bindposes = mesh.bindposes.Copy();
 			copy.boneWeights = mesh.boneWeights.Copy();
-			copy.colors32 = mesh.colors32.Copy();
-			copy.normals = mesh.normals.Copy();
-			copy.tangents = mesh.tangents.Copy();
-			copy.triangles = mesh.triangles.Copy();
-			copy.uv = mesh.uv.Copy();
-			copy.uv2 = mesh.uv2.Copy();
-			//copy.bounds = mesh.bounds;
+			copy.bounds = mesh.bounds;
+			copy.RecalculateBounds();
 			return copy;
 		}
 		public static void RecalculateTangents(this Mesh mesh){

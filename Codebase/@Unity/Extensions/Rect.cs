@@ -49,6 +49,9 @@ namespace Zios.Unity.Extensions{
 		public static Rect SetHeight(this Rect current,float value){
 			return new Rect(current).OverrideHeight(value);
 		}
+		public static Rect Center(this Rect current){
+			return new Rect(current).OverrideX((Screen.width-current.width)/2);
+		}
 		public static Rect AddXY(this Rect current,Vector2 value){return current.AddX(value.x).AddY(value.y);}
 		public static Rect AddXY(this Rect current,float x,float y){return current.AddX(x).AddY(y);}
 		public static Rect AddX(this Rect current,float value){return current.Add(value);}

@@ -94,5 +94,41 @@ namespace Zios.Extensions{
 		public static float Abs(this float current){return Math.Abs(current);}
 		public static float Ciel(this float current){return (float)Math.Ceiling(current);}
 		public static float Floor(this float current){return (float)Math.Floor(current);}
+		public static float[] Subtract(this IList<float> current,IList<float> other){
+			var result = new float[current.Count];
+			for(int index=0;index<current.Count;++index){
+				result[index] = current[index];
+				if(index >= other.Count){continue;}
+				result[index] -= other[index];
+			}
+			return result;
+		}
+		public static float[] Add(this IList<float> current,IList<float> other){
+			var result = new float[current.Count];
+			for(int index=0;index<current.Count;++index){
+				result[index] = current[index];
+				if(index >= other.Count){continue;}
+				result[index] += other[index];
+			}
+			return result;
+		}
+		public static float[] Multiply(this IList<float> current,IList<float> other){
+			var result = new float[current.Count];
+			for(int index=0;index<current.Count;++index){
+				result[index] = current[index];
+				if(index >= other.Count){continue;}
+				result[index] *= other[index];
+			}
+			return result;
+		}
+		public static float[] Divide(this IList<float> current,IList<float> other){
+			var result = new float[current.Count];
+			for(int index=0;index<current.Count;++index){
+				result[index] = current[index];
+				if(index >= other.Count){continue;}
+				result[index] /= other[index];
+			}
+			return result;
+		}
 	}
 }

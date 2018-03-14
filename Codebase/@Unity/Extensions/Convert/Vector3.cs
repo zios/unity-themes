@@ -9,20 +9,22 @@ namespace Zios.Unity.Extensions.Convert{
 		static ConvertVector3(){Setup();}
 		[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
 		public static void Setup(){
-			ConvertObject.serializeMethods.Add((current)=>{
+			ConvertObject.serializeMethods.Add((current,separator,changesOnly)=>{
 				return current is Vector3 ? current.As<Vector3>().Serialize() : null;
 			});
 			ConvertObject.byteMethods.Add((current)=>{
 				return current is Vector3 ? current.As<Vector3>().ToBytes() : null;
 			});
-			ConvertString.deserializeMethods.Add((type,current)=>{
+			ConvertString.deserializeMethods.Add((type,current,separator)=>{
 				return type == typeof(Vector3) ? Vector3.zero.Deserialize(current).Box() : null;
 			});
 		}
 		//============================
 		// From
 		//============================
-		public static string Serialize(this Vector3 current){return current.ToString();}
+		public static string Serialize(this Vector3 current,bool ignoreDefault=false,Vector3 defaultValue=default(Vector3)){
+			return ignoreDefault && current == defaultValue ? "" : current.ToString();
+		}
 		public static byte[] ToBytes(this Vector3 current){return current.x.ToBytes().Append(current.y).Append(current.z);}
 		public static string ToString(this Vector3 current){return "("+current.x+","+current.y+","+current.z+")";}
 		public static Vector3 ToRadian(this Vector3 vector){

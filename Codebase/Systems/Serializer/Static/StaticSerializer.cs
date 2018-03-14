@@ -139,7 +139,7 @@ namespace Zios.StaticSerializer{
 			}
 			this.Add("}");
 			if(File.Exists(filePath) || !empty){
-				File.Create(path).WriteText(this.contents.ToString());
+				File.Create(path).Write(this.contents.ToString());
 			}
 		}
 		public bool Save(string name,object value){
@@ -185,7 +185,7 @@ namespace Zios.StaticSerializer{
 			if(this.debug.Has("Load")){Log.Show("[Serializer] : Loading .static files");}
 			foreach(var file in File.FindAll("*.static",false)){
 				if(this.debug.Has("Load")){Log.Show("[Serializer] : Loading "+file.fullName);}
-				string contents = file.GetText();
+				string contents = file.ReadText();
 				var type = Reflection.GetType(contents.Parse("","{"));
 				if(type.IsNull()){continue;}
 				foreach(string line in contents.GetLines().Skip(1)){

@@ -3,6 +3,7 @@
 	"references": [
 		"Zios.Extensions",
 		"Zios.Extensions.Convert",
+		"Zios.Reflection",
 		"Zios.Unity.Log",
 		"Zios.Unity.ProxyEditor"
 	],

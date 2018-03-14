@@ -11,6 +11,7 @@
 		"Zios.Unity.Extensions",
 		"Zios.Unity.ProxyEditor",
 		"Zios.Unity.Shortcuts",
+		"Zios.Unity.Supports.MeshWrap",
 		"Zios.Unity.Supports.Storage",
 		"Zios.Unity.Time"
 	],

@@ -30,7 +30,7 @@ namespace Zios.Inputs{
 		//===============
 		public static void Load(){
 			var file = File.Find("InputDefaults.cfg",false) ?? File.Create("InputDefaults.cfg");
-			var contents = file.GetText().GetLines();
+			var contents = file.ReadText().GetLines();
 			foreach(var line in contents){
 				if(line.IsEmpty()){continue;}
 				var instanceName = line.Parse(""," ");
@@ -42,7 +42,7 @@ namespace Zios.Inputs{
 		public void Save(){
 			if(this.profile.IsNull() || this.profile.name.IsEmpty() || this.profile.mappings.Count < 1){return;}
 			var file = File.Find("InputDefaults.cfg",false) ?? File.Create("InputDefaults.cfg");
-			var contents = file.GetText();
+			var contents = file.ReadText();
 			var alias = this.alias.ToPascalCase();
 			var profile = this.profile.name.ToPascalCase();
 			var phrase = alias+" "+profile+"\r\n";
@@ -53,7 +53,7 @@ namespace Zios.Inputs{
 			else{
 				contents += phrase;
 			}
-			file.WriteText(contents);
+			file.Write(contents);
 		}
 		//===============
 		// Unity

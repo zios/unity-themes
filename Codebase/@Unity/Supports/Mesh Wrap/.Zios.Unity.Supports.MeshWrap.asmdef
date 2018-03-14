@@ -1,0 +1,9 @@
+{
+	"name": "Zios.Unity.Supports.MeshWrap",
+	"references": [
+		"Zios.Extensions",
+		"Zios.Unity.Extensions"
+	],
+	"includePlatforms": [],
+	"excludePlatforms": []
+}

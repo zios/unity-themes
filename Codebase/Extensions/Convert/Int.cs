@@ -8,7 +8,9 @@ namespace Zios.Extensions.Convert{
 		public static byte ToByte(this int current){return (byte)current;}
 		public static short ToShort(this int current){return (short)current;}
 		public static byte[] ToBytes(this int current){return BitConverter.GetBytes(current);}
-		public static string Serialize(this int current){return current.ToString();}
+		public static string Serialize(this int current,bool ignoreDefault=false,int defaultValue=0){
+			return ignoreDefault && current == defaultValue ? "" : current.ToString();
+		}
 		public static int Deserialize(this int current,string value){return value.ToInt();}
 	}
 }

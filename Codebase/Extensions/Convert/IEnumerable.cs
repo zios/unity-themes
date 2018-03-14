@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 namespace Zios.Extensions.Convert{
+	using System.Collections;
 	using Zios.Extensions;
 	public static class ConvertIEnumerable{
 		public static To[] ConvertAll<To>(this IEnumerable<string> current){
@@ -39,15 +40,23 @@ namespace Zios.Extensions.Convert{
 		public static HashSet<T> ToHashSet<T>(this IEnumerable<T> current){
 		   return new HashSet<T>(current);
 		}
-		public static string Serialize<T>(this IEnumerable<T> current){
-			string output = "";
+		public static string Serialize<T>(this IEnumerable<T> current,string separator="-",bool changesOnly=false){
+			var output = new StringBuilder();
+			var index = 0;
+			var prefix = "";
 			foreach(var value in current){
-				output += value.SerializeAuto()+"-";
+				index += 1;
+				var result = value.SerializeAuto(separator,changesOnly);
+				if(changesOnly){
+					if(result.IsEmpty()){continue;}
+					prefix = "["+(index-1)+"]";
+				}
+				output.Append(prefix+result+separator);
 			}
-			return output.TrimRight("-");
+			return output.ToString().TrimRight(separator);
 		}
-		public static IEnumerable<T> Deserialize<T>(this IEnumerable<T> current,string value){
-			return value.Split("-").Select(x=>x.Deserialize<T>()).ToArray();
+		public static IEnumerable<T> Deserialize<T>(this IEnumerable<T> current,string value,string separator="-"){
+			return value.Split(separator).Select(x=>x.Deserialize<T>()).ToArray();
 		}
 	}
 }

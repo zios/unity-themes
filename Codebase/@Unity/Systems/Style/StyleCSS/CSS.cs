@@ -25,7 +25,7 @@ namespace Zios.Unity.Style.CSS{
 			}
 			if(output.Length > 0){
 				var file = File.Create(path+"/"+skin.name.Split("-")[0]+"/"+skin.name+".css");
-				file.WriteText(output.ToString().Trim());
+				file.Write(output.ToString().Trim());
 			}
 		}
 		public static string SaveCSS(GUIStyle style,GUIStyle empty=null,bool asTag=true){

@@ -20,8 +20,10 @@ namespace Zios.Unity.ProgramManager{
 	public class ProgramManager : Singleton{
 		public static ProgramManager singleton;
 		public bool[] pixelSnap = new bool[3]{false,false,false};
-		public int targetFPS = -1;
-		private int[] resolution = new int[3]{640,480,60};
+		public int maxFPS = -1;
+		public int vsync;
+		public int refreshRate = 60;
+		public int[] resolution = new int[2]{1920,1080};
 		private bool allowResolution = true;
 		public static ProgramManager Get(){
 			ProgramManager.singleton = ProgramManager.singleton ?? Singleton.Get<ProgramManager>();
@@ -29,16 +31,17 @@ namespace Zios.Unity.ProgramManager{
 		}
 		public void Setup(){
 			ProgramManager.singleton = this;
+			this.vsync = QualitySettings.vSyncCount;
 			Events.Register("On Resolution Change");
 			Events.Add("On Editor Update",this.UpdateEffects);
 			Events.Add("On Enter Play",this.UpdateEffects);
-			Application.targetFrameRate = this.targetFPS;
+			Application.targetFrameRate = this.maxFPS;
 			Resolution screen = Screen.currentResolution;
 			this.resolution = new int[3]{Screen.width,Screen.height,screen.refreshRate};
 			Locate.GetSceneComponents<Persistent>().Where(x=>x.activateOnLoad).ToList().ForEach(x=>x.gameObject.SetActive(true));
 			this.DetectResolution();
 		}
-		public void OnEnable(){
+		public void Awake(){
 			this.Setup();
 			Console.AddShortcut("changeResolution","res","resolution");
 			Console.AddShortcut("closeProgram","quit");
@@ -52,6 +55,9 @@ namespace Zios.Unity.ProgramManager{
 			Console.AddCvarMethod("changeResolution",this,"resolution","Change Resolution","",this.ChangeResolution);
 			Console.AddCvar("maxfps",typeof(Application),"targetFrameRate","Maximum FPS");
 			Console.AddCvar("verticalSync",typeof(QualitySettings),"vSyncCount","Vertical Sync");
+		}
+		public void OnEnable(){
+			Events.Add("On Awake",this.Awake);
 		}
 		public void Update(){
 			this.DetectResolution();
@@ -98,7 +104,7 @@ namespace Zios.Unity.ProgramManager{
 			int[] size = this.resolution;
 			bool changedWidth = Screen.width != size[0];
 			bool changedHeight = Screen.height != size[1];
-			bool changedRefresh = screen.refreshRate != size[2];
+			bool changedRefresh = screen.refreshRate != this.refreshRate;
 			if(changedWidth || changedHeight || changedRefresh){
 				Events.Call("On Resolution Change");
 				if(!this.allowResolution){
@@ -106,10 +112,10 @@ namespace Zios.Unity.ProgramManager{
 					if(Proxy.IsPlaying()){Log.Show("^7Screen settings auto-adjusted to closest allowed values.");}
 					if(changedWidth){this.resolution[0] = Screen.width;}
 					if(changedHeight){this.resolution[1] = Screen.height;}
-					if(changedRefresh){this.resolution[2] = screen.refreshRate;}
+					if(changedRefresh){this.refreshRate = screen.refreshRate;}
 				}
 				else{
-					Screen.SetResolution(size[0],size[1],Screen.fullScreen,size[2]);
+					Screen.SetResolution(size[0],size[1],Screen.fullScreen,this.refreshRate);
 					this.allowResolution = false;
 				}
 			}

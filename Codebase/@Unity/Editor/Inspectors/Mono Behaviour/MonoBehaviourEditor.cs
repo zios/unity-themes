@@ -240,7 +240,7 @@ namespace Zios.Unity.Editor.MonoBehaviourEditor{
 					this.properties.Add(realProperty);
 				}
 				this.properties = this.properties.OrderBy(x=>target.HasAttribute(x.name,typeof(InternalAttribute))).ToList();
-				foreach(var item in target.GetVariables(null,Reflection.publicFlags)){
+				foreach(var item in target.GetVariables(Reflection.publicFlags)){
 					if(item.Value == null){continue;}
 					var type = item.Value.GetType();
 					if(type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Dictionary<,>)){

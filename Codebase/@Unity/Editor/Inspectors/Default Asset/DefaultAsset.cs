@@ -5,9 +5,10 @@ namespace Zios.Unity.Editor.Inspectors{
 	using Zios.File;
 	using Zios.Unity.Call;
 	using Zios.Unity.EditorUI;
+	using Editor = UnityEditor.Editor;
 	[CustomEditor(typeof(DefaultAsset))]
-	public class DefaultAssetEditor : UnityEditor.Editor{
-		public UnityEditor.Editor instance;
+	public class DefaultAssetEditor : Editor{
+		public Editor instance;
 		public override void OnInspectorGUI(){
 			EditorUI.Reset();
 			if(!this.instance.IsNull()){
@@ -24,8 +25,8 @@ namespace Zios.Unity.Editor.Inspectors{
 				string format = file.isFolder ? this.target.name : file.extension.ToUpper();
 				string editorName = prefix + format + "Editor";
 				Type type = Type.GetType(editorName);
-				if(type != null && type.IsSubclassOf(typeof(UnityEditor.Editor))){
-					this.instance = UnityEditor.Editor.CreateEditor(this.target,type);
+				if(type != null && type.IsSubclassOf(typeof(Editor))){
+					this.instance = Editor.CreateEditor(this.target,type);
 					this.instance.OnInspectorGUI();
 				}
 			}

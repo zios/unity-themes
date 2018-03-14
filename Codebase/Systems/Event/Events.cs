@@ -66,23 +66,23 @@ namespace Zios.Events{
 			Events.callers.Clear();
 			Events.cache.Clear();
 			Events.listeners.RemoveAll(x=>x.name!="On Events Reset"&&(!x.permanent||x.occurrences==0));
-			Action Repair = ()=>{
-				var main = Locate.GetScenePath("@Main");
-				if(main.GetComponent<EventDetector>().IsNull()){
-					main.AddComponent<EventDetector>();
-					main.hideFlags = HideFlags.HideInHierarchy;
-				}
-				#if UNITY_THEMES
-				main.hideFlags = HideFlags.HideAndDontSave;
-				#endif
-			};
-			Repair();
-			Events.Add("On Destroy",()=> UtilityCall.Delay(Repair));
+			Events.Repair();
+			Events.Add("On Destroy",()=>UtilityCall.Delay(Events.Repair));
 			foreach(var listener in Events.listeners){
 				var scope = Events.cache.AddNew(listener.target).AddNew(listener.name);
 				scope[listener.method] = listener;
 			}
 			Events.Call("On Events Reset");
+		}
+		public static void Repair(){
+			var main = Locate.GetScenePath("@Main");
+			if(main.GetComponent<EventDetector>().IsNull()){
+				main.AddComponent<EventDetector>();
+				main.hideFlags = HideFlags.HideInHierarchy;
+			}
+			#if UNITY_THEMES
+			main.hideFlags = HideFlags.HideAndDontSave;
+			#endif
 		}
 		public static void Cleanup(){
 			if(Proxy.IsPlaying()){return;}

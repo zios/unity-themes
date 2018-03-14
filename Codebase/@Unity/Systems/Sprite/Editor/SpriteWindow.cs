@@ -613,7 +613,7 @@ namespace Zios.Unity.Editor.SpriteManager{
 						lookupTexture.SetPixels(bounds[0],bounds[1],bounds[2],bounds[3],area);
 					}
 				}
-				File.WriteFile(path,lookupTexture.EncodeToPNG());
+				File.Write(path,lookupTexture.EncodeToPNG());
 				DestroyImmediate(lookupTexture);
 				this.assetIndex += 1;
 			}

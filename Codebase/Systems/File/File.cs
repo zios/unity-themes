@@ -18,7 +18,7 @@ namespace Zios.File{
 	[InitializeOnLoad]
 	public static partial class File{
 		private static string root;
-		private static string dataPath;
+		public static string dataPath;
 		public static bool monitor = true;
 		private static bool debug = false;
 		private static bool clock = false;
@@ -41,7 +41,7 @@ namespace Zios.File{
 		}
 		public static void Monitor(){
 			if(!File.monitor){return;}
-			var time = File.GetTime();
+			var time = Time.Get();
 			if(time>File.lastMonitor){
 				foreach(var item in File.monitors){
 					if(item.Value.WasChanged()){
@@ -55,11 +55,8 @@ namespace Zios.File{
 		//===============
 		// Storage
 		//===============
-		public static float GetTime(){
-			return Time.Get();
-		}
 		public static void Load(){
-			var time = File.GetTime();
+			var time = Time.Get();
 			var cachePath = Proxy.IsEditor() ? "Temp/File.data" : File.root+"/File.data";
 			if(File.Exists(cachePath)){
 				string extension = "";
@@ -88,7 +85,7 @@ namespace Zios.File{
 					}
 				}
 			}
-			if(File.clock){Log.Show("[File] : Load cache complete -- " + (File.GetTime()-time) + " seconds.");}
+			if(File.clock){Log.Show("[File] : Load cache complete -- " + time.Passed() + ".");}
 		}
 		public static void CheckSave(){
 			if(File.needsSave){
@@ -98,7 +95,7 @@ namespace Zios.File{
 		}
 		public static void Save(){
 			string lastPath = ")@#(*$";
-			var time = File.GetTime();
+			var time = Time.Get();
 			var cachePath = Proxy.IsEditor() ? "Temp/File.data" : File.root+"/File.data";
 			if(Proxy.IsEditor()){File.Create("Temp");}
 			using(var output = new StreamWriter(cachePath,false)){
@@ -111,7 +108,7 @@ namespace Zios.File{
 					}
 				}
 			}
-			if(File.clock){Log.Show("[File] : Save cache complete -- " + (File.GetTime()-time) + " seconds.");}
+			if(File.clock){Log.Show("[File] : Save cache complete -- " + time.Passed() + ".");}
 		}
 		public static void SaveData(FileData data,StreamWriter output,ref string lastPath){
 			var directory = data.directory.Replace(File.root,"$");
@@ -131,7 +128,7 @@ namespace Zios.File{
 		// Setup
 		//===============
 		public static void Refresh(){
-			var time = File.GetTime();
+			var time = Time.Get();
 			File.refreshHooks();
 			File.assets.Clear();
 			File.assetPaths.Clear();
@@ -142,17 +139,17 @@ namespace Zios.File{
 			File.root = Proxy.IsEditor() || Application.platform.MatchesAny("WindowsPlayer","OSXPlayer","LinuxPlayer") ? File.dataPath.GetDirectory() : File.dataPath;
 			var needsScan = !Proxy.IsEditor() || (Proxy.IsEditor() && !Proxy.IsPlaying());
 			if(needsScan){
-				var scanTime = File.GetTime();
+				var scanTime = Time.Get();
 				File.Scan(File.root);
 				if(Proxy.IsEditor() || Application.platform.MatchesAny("WindowsPlayer","OSXPlayer","LinuxPlayer")){File.Scan(File.root+"/Temp",true);}
 				if(File.fullScan){File.Scan(File.dataPath,true);}
-				if(File.clock){Log.Show("[File] : Scan complete -- " + (File.GetTime()-scanTime) + " seconds.");}
+				if(File.clock){Log.Show("[File] : Scan complete -- " + scanTime.Passed() + ".");}
 				File.Save();
 			}
 			else{
 				File.Load();
 			}
-			if(File.clock){Log.Show("[File] : Refresh complete -- " + (File.GetTime()-time) + " seconds.");}
+			if(File.clock){Log.Show("[File] : Refresh complete -- " + time.Passed() + ".");}
 		}
 		public static void Scan(string directory,bool deep=false){
 			if(!Directory.Exists(directory)){return;}
@@ -189,13 +186,16 @@ namespace Zios.File{
 		//===============
 		public static FileData[] FindAll(string name,bool showWarnings=true,bool returnFirstMatch=false){
 			name = name.Replace("\\","/");
-			var time = File.GetTime();
+			var time = Time.Get();
 			if(name == "" && showWarnings){
 				Log.Warning("[File] No path given for search.");
 				return null;
 			}
 			string searchKey = name.ToLower();
 			if(File.cache.ContainsKey(searchKey)){
+				if(File.clock){
+					Log.Show("[File] : Find [" + name + "] complete (cached:" + File.cache[searchKey].Count() + ") -- " + time.Passed() + ".");
+				}
 				return File.cache[searchKey];
 			}
 			if(name.StartsWith("!")){name = name.ReplaceFirst("!","");}
@@ -230,7 +230,7 @@ namespace Zios.File{
 			if(results.Count == 0 && !name.Contains(".")){return File.FindAll(name+".*",showWarnings,returnFirstMatch);}
 			if(results.Count == 0 && showWarnings){Log.Warning("[File] Path [" + name + "] could not be found.");}
 			File.cache[searchKey] = results.ToArray();
-			if(File.clock){Log.Show("[File] : Find [" + name + "] complete (" + results.Count + ") -- " + (File.GetTime()-time) + " seconds.");}
+			if(File.clock){Log.Show("[File] : Find [" + name + "] complete (" + results.Count + ") -- " + time.Passed() + ".");}
 			return results.ToArray();
 		}
 		public static void SearchType(string name,string type,string path,bool firstOnly,ref List<FileData> results){
@@ -248,6 +248,9 @@ namespace Zios.File{
 					if(firstOnly){return;}
 				}
 			}
+		}
+		public static FileData AddNew(string path){
+			return File.Find(path,false) ?? File.Create(path);
 		}
 		public static string GetPath(UnityObject target){
 			if(!File.assetPaths.ContainsKey(target)){
@@ -294,14 +297,12 @@ namespace Zios.File{
 				file.Delete();
 			}
 		}
-		public static void WriteFile(string path,byte[] bytes){
-			if(!File.Exists(path)){File.Create(path);}
-			var stream = new FileStream(path,FileMode.Create);
-			var file = new BinaryWriter(stream);
-			file.Write(bytes);
-			file.Close();
-			stream.Close();
-		}
+		public static void Write(string path,byte[] bytes){File.AddNew(path).Write(bytes);}
+		public static void Write(string path,string content){File.AddNew(path).Write(content);}
+		public static void Write(string path,string[] lines){File.AddNew(path).Write(lines);}
+		public static byte[] ReadBytes(string path){return File.AddNew(path).ReadBytes();}
+		public static string ReadText(string path){return File.AddNew(path).ReadText();}
+		public static IEnumerable<string> ReadLines(string path){return File.AddNew(path).ReadLines();}
 		//===============
 		// Shorthand
 		//===============
@@ -377,8 +378,12 @@ namespace Zios.File{
 			this.isFolder = isFolder;
 		}
 		public override string ToString(){return this.path;}
-		public string GetText(){return SystemFile.ReadAllText(this.path);}
-		public void WriteText(string contents){SystemFile.WriteAllText(this.path,contents);}
+		public IEnumerable<string> ReadLines(){return File.ReadLines(this.path);}
+		public byte[] ReadBytes(){return SystemFile.ReadAllBytes(this.path);}
+		public string ReadText(){return SystemFile.ReadAllText(this.path);}
+		public void Write(byte[] bytes){SystemFile.WriteAllBytes(this.path,bytes);}
+		public void Write(string contents){SystemFile.WriteAllText(this.path,contents);}
+		public void Write(string[] lines){SystemFile.WriteAllLines(this.path,lines);}
 		public void Delete(bool cacheOnly=false){
 			foreach(var item in File.cache.Copy()){
 				if(item.Value.Contains(this)){
@@ -401,7 +406,7 @@ namespace Zios.File{
 		public string GetModifiedDate(string format="M-d-yy"){return SystemFile.GetLastWriteTime(this.path).ToString(format);}
 		public string GetAccessedDate(string format="M-d-yy"){return SystemFile.GetLastAccessTime(this.path).ToString(format);}
 		public string GetCreatedDate(string format="M-d-yy"){return SystemFile.GetCreationTime(this.path).ToString(format);}
-		public string GetChecksum(){return this.GetText().ToMD5();}
+		public string GetChecksum(){return this.ReadText().ToMD5();}
 		public long GetSize(){return new FileInfo(this.path).Length;}
 		public T GetAsset<T>() where T : UnityObject{
 			if(Proxy.IsEditor()){
@@ -436,7 +441,7 @@ namespace Zios.File{
 			var output = new StringBuilder();
 			var current = "";
 			foreach(var file in File.FindAll("*.cs")){
-				var contents = file.GetText();
+				var contents = file.ReadText();
 				output.Clear();
 				foreach(var line in contents.GetLines()){
 					var leading = line.Substring(0,line.TakeWhile(char.IsWhiteSpace).Count()).Replace("    ","\t");
@@ -444,7 +449,7 @@ namespace Zios.File{
 					if(line.Trim().IsEmpty()){continue;}
 					output.AppendLine(current);
 				}
-				file.WriteText(output.ToString().TrimEnd(null));
+				file.Write(output.ToString().TrimEnd(null));
 			}
 		}
 	}
@@ -459,7 +464,7 @@ namespace Zios.File{
 				RenderTexture.active = null;
 				RenderTexture.DestroyImmediate(RenderTexture.active);
 			}
-			File.WriteFile(path,texture.EncodeToPNG());
+			File.Write(path,texture.EncodeToPNG());
 			return texture;
 		}
 	}

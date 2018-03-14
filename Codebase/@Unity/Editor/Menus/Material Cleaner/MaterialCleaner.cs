@@ -27,7 +27,7 @@ namespace Zios.Unity.Editor.Menus{
 			bool last = itemIndex == materials.Length-1;
 			Stepper.title = "Updating " + materials.Length + " Materials";
 			Stepper.message = "Updating material : " + file.name;
-			string text = file.GetText();
+			string text = file.ReadText();
 			string copy = text;
 			int index = 0;
 			bool changed = false;
@@ -78,7 +78,7 @@ namespace Zios.Unity.Editor.Menus{
 					if(changed){
 						MaterialCleaner.changes = true;
 						Log.Show("[MaterialCleaner] : Cleaned unused serialized data " + file.fullName);
-						file.WriteText(copy);
+						file.Write(copy);
 					}
 				}
 			}

@@ -11,7 +11,7 @@ namespace Zios.Unity.Editor.SystemAttributes.EnumMaskDrawer{
 		public override void OnGUI(Rect position,SerializedProperty property,GUIContent label){
 			EditorUI.Reset();
 			Enum value = property.GetObject<Enum>();
-			value = value.DrawMask(position,label,null,true);
+			value = value.DrawMask(position,label);
 			property.intValue = value.ToInt();
 			property.serializedObject.ApplyModifiedProperties();
 		}

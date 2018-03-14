@@ -3,9 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Reflection.Emit;
 using UnityEngine;
 using UnityObject = UnityEngine.Object;
 namespace Zios.Reflection{
+	using System.Linq.Expressions;
 	using Zios.Extensions;
 	using Zios.Extensions.Convert;
 	using Zios.Supports.Hierarchy;
@@ -17,7 +19,7 @@ namespace Zios.Reflection{
 		public static Hierarchy<Type,BindingFlags,IList<Type>,string,object> variables = new Hierarchy<Type,BindingFlags,IList<Type>,string,object>();
 		public static Hierarchy<Type,BindingFlags,string,PropertyInfo> properties = new Hierarchy<Type,BindingFlags,string,PropertyInfo>();
 		public static Hierarchy<Type,BindingFlags,string,FieldInfo> fields = new Hierarchy<Type,BindingFlags,string,FieldInfo>();
-		public static Hierarchy<Type,BindingFlags,string,MethodInfo> methods = new Hierarchy<Type,BindingFlags,string,MethodInfo>();
+		public static Hierarchy<Type,BindingFlags,List<MethodInfo>> methods = new Hierarchy<Type,BindingFlags,List<MethodInfo>>();
 		//=========================
 		// Interface
 		//=========================
@@ -91,27 +93,30 @@ namespace Zios.Reflection{
 			var target = Reflection.methods.AddNew(type).AddNew(flags);
 			if(target.Count < 1){
 				foreach(var method in type.GetMethods(flags)){
-					target[method.Name] = method;
+					target.Add(method);
 				}
 			}
-			return target.Values.ToList();
+			return target;
 		}
 		public static MethodInfo GetMethod(Type type,string name,BindingFlags flags=allFlags){
 			var target = Reflection.methods.AddNew(type).AddNew(flags);
-			MethodInfo method;
-			if(!target.TryGetValue(name,out method)){target[name] = method = type.GetMethod(name,flags);}
+			var method = target.FirstOrDefault(x=>x.Name==name);
+			if(method == null){
+				method = type.GetMethod(name,flags);
+				if(method != null){target.Add(method);}
+			}
 			return method;
 		}
 		public static PropertyInfo GetProperty(Type type,string name,BindingFlags flags=allFlags){
 			var target = Reflection.properties.AddNew(type).AddNew(flags);
-			PropertyInfo property;
-			if(!target.TryGetValue(name,out property)){target[name] = property = type.GetProperty(name,flags);}
+			var property = target.TryGet(name);
+			if(property == null){target[name] = property = type.GetProperty(name,flags);}
 			return property;
 		}
 		public static FieldInfo GetField(Type type,string name,BindingFlags flags=allFlags){
 			var target = Reflection.fields.AddNew(type).AddNew(flags);
-			FieldInfo field;
-			if(!target.TryGetValue(name,out field)){target[name] = field = type.GetField(name,flags);}
+			var field = target.TryGet(name);
+			if(field == null){target[name] = field = type.GetField(name,flags);}
 			return field;
 		}
 	}
@@ -124,8 +129,10 @@ namespace Zios.Reflection{
 		public static Hierarchy<Type,BindingFlags,IList<Type>,string,MethodInfo> exactMethods = new Hierarchy<Type,BindingFlags,IList<Type>,string,MethodInfo>();
 		public const BindingFlags allFlags = BindingFlags.Static|BindingFlags.Instance|BindingFlags.NonPublic|BindingFlags.Public;
 		public const BindingFlags allFlatFlags = BindingFlags.Static|BindingFlags.Instance|BindingFlags.NonPublic|BindingFlags.Public|BindingFlags.FlattenHierarchy;
+		public const BindingFlags allDeclaredFlags = BindingFlags.Static|BindingFlags.Instance|BindingFlags.NonPublic|BindingFlags.Public|BindingFlags.DeclaredOnly;
 		public const BindingFlags staticFlags = BindingFlags.Static|BindingFlags.Public|BindingFlags.NonPublic;
 		public const BindingFlags staticPublicFlags = BindingFlags.Static|BindingFlags.Public;
+		public const BindingFlags declaredFlags = BindingFlags.Instance|BindingFlags.NonPublic|BindingFlags.Public|BindingFlags.DeclaredOnly;
 		public const BindingFlags instanceFlags = BindingFlags.Instance|BindingFlags.NonPublic|BindingFlags.Public;
 		public const BindingFlags privateFlags = BindingFlags.Instance|BindingFlags.NonPublic;
 		public const BindingFlags publicFlags = BindingFlags.Instance|BindingFlags.Public;
@@ -136,14 +143,30 @@ namespace Zios.Reflection{
 			return current.GetNestedTypes(Reflection.allFlags).FirstOrDefault(x=>x.Name==name);
 		}
 		//=========================
+		// Generics
+		//=========================
+		public static Type[] GetGenerics(this object current){
+			return current.AsType().GetGenericArguments();
+		}
+		//=========================
 		// Method
 		//=========================
 		public static bool HasMethod(this object current,string name,BindingFlags flags=allFlags){
-			Type type = current is Type ? (Type)current : current.GetType();
-			return !Reflection.GetMethod(type,name,flags).IsNull();
+			return !Reflection.GetMethod(current.AsType(),name,flags).IsNull();
+		}
+		public static MethodInfo GetExactMethod(this object current,string name,BindingFlags flags=allFlags,params object[] parameters){
+			var argumentTypes = new List<Type>();
+			foreach(var parameter in parameters){
+				var type = parameter == null ? typeof(object) : parameter.GetType();
+				argumentTypes.Add(type);
+			}
+			return current.GetExactMethods(argumentTypes,name,flags).FirstOrDefault();
+		}
+		public static MethodInfo GetExactMethod(this object current,IList<Type> argumentTypes=null,string name="",BindingFlags flags=allFlags){
+			return current.GetExactMethods(argumentTypes,name,flags).FirstOrDefault();
 		}
 		public static List<MethodInfo> GetExactMethods(this object current,IList<Type> argumentTypes=null,string name="",BindingFlags flags=allFlags){
-			Type type = current is Type ? (Type)current : current.GetType();
+			var type = current.AsType();
 			var methods = Reflection.exactMethods.AddNew(type).AddNew(flags).AddNew(argumentTypes);
 			if(name.IsEmpty() && methods.Count > 0){return methods.Select(x=>x.Value).ToList();}
 			MethodInfo existing;
@@ -177,19 +200,15 @@ namespace Zios.Reflection{
 			return current.CallExactMethod<V>(name,allFlags,parameters);
 		}
 		public static V CallExactMethod<V>(this object current,string name,BindingFlags flags,params object[] parameters){
-			List<Type> argumentTypes = new List<Type>();
-			foreach(var parameter in parameters){
-				argumentTypes.Add(parameter.GetType());
-			}
-			var methods = current.GetExactMethods(argumentTypes,name,flags);
-			if(methods.Count < 1){
+			var method = current.GetExactMethod(name,flags,parameters);
+			if(method == null){
 				if(Reflection.debug){Log.Warning("[Object] No method found to call -- " + name);}
 				return default(V);
 			}
 			if(current.IsStatic() || current is Type){
-				return (V)methods[0].Invoke(null,parameters);
+				return (V)method.Invoke(null,parameters);
 			}
-			return (V)methods[0].Invoke(current,parameters);
+			return (V)method.Invoke(current,parameters);
 		}
 		public static object CallPath(this string current,params object[] parameters){
 			if(Reflection.lookup.Count < 1){
@@ -236,8 +255,7 @@ namespace Zios.Reflection{
 			return current.CallMethod<V>(name,allFlags,parameters);
 		}
 		public static V CallMethod<V>(this object current,string name,BindingFlags flags,params object[] parameters){
-			Type type = current is Type ? (Type)current : current.GetType();
-			var method = Reflection.GetMethod(type,name,flags);
+			var method = Reflection.GetMethod(current.AsType(),name,flags);
 			if(method.IsNull()){
 				if(Reflection.debug){Log.Warning("[Object] No method found to call -- " + name);}
 				return default(V);
@@ -250,43 +268,48 @@ namespace Zios.Reflection{
 		//=========================
 		// Attribute
 		//=========================
+		public static Dictionary<string,object> GetAttributedVariables(this object current,IList<Type> withAttributes=null,BindingFlags flags=allFlags){
+			if(current.IsNull()){return new Dictionary<string,object>();}
+			var type = current.AsType();
+			var target = Reflection.attributedVariables.AddNew(type).AddNew(flags);
+			var existing = target.Where(x=>x.Key.SequenceEqual(withAttributes));
+			if(existing.Count() > 0){return existing.FirstOrDefault().Value;}
+			var matches = target.AddNew(withAttributes);
+			var allVariables = current.GetVariables(flags);
+			foreach(var variable in allVariables){
+				var name = variable.Key;
+				var value = variable.Value;
+				var missing = false;
+				foreach(var attribute in withAttributes){
+					if(!current.HasAttribute(name,attribute) && Attribute.GetCustomAttribute(value.GetType(),attribute).IsNull()){
+						missing = true;
+						break;
+					}
+				}
+				if(missing){continue;}
+				matches[name] = value;
+			}
+			return matches;
+		}
 		public static bool HasAttribute(this object current,string name,Type attribute){
 			return current.ListAttributes(name).Exists(x=>x.GetType()==attribute);
 		}
 		public static Attribute[] ListAttributes(this object current,string name){
-			Type type = current is Type ? (Type)current : current.GetType();
+			var type = current.AsType();
 			var field = Reflection.GetField(type,name,allFlags);
 			if(!field.IsNull()){return Attribute.GetCustomAttributes(field);}
 			var property = Reflection.GetProperty(type,name,allFlags);
 			return property.IsNull() ? new Attribute[0] : Attribute.GetCustomAttributes(property);
 		}
-		public static Dictionary<string,object> GetAttributedVariables(this object current,IList<Type> withAttributes=null,BindingFlags flags=allFlags){
-			if(current.IsNull()){return new Dictionary<string,object>();}
-			Type type = current is Type ? (Type)current : current.GetType();
-			var target = Reflection.attributedVariables.AddNew(type).AddNew(flags);
-			var existing = target.Where(x=>x.Key.SequenceEqual(withAttributes)).FirstOrDefault();
-			if(!existing.IsNull()){return existing.Value;}
-			var matches = target.AddNew(withAttributes);
-			var allVariables = current.GetVariables(null,flags);
-			foreach(var variable in allVariables){
-				var name = variable.Key;
-				var value = variable.Value;
-				foreach(var attribute in withAttributes){
-					if(!value.HasAttribute(name,attribute)){continue;}
-				}
-				matches[name] = value;
-			}
-			return matches;
-		}
 		//=========================
 		// Variable
 		//=========================
 		public static bool HasVariable(this object current,string name,BindingFlags flags=allFlags){
-			Type type = current is Type ? (Type)current : current.GetType();
+			var type = current.AsType();
 			return !Reflection.GetField(type,name,flags).IsNull() || !Reflection.GetProperty(type,name,flags).IsNull();
 		}
 		public static Type GetVariableType(this object current,string name,int index=-1,BindingFlags flags=allFlags){
-			Type type = current is Type ? (Type)current : current.GetType();
+			var type = current.AsType();
 			var field = Reflection.GetField(type,name,flags);
 			if(!field.IsNull()){
 				if(index != -1){
@@ -312,7 +335,7 @@ namespace Zios.Reflection{
 			if(index != -1 && current is IList){return current.As<IList>()[index].As<T>();}
 			var value = default(T);
 			object instance = current is Type || current.IsStatic() ? null : current;
-			var type = current is Type ? (Type)current : current.GetType();
+			var type = current.AsType();
 			var field = Reflection.GetField(type,name,flags);
 			var property = field.IsNull() ? Reflection.GetProperty(type,name,flags) : null;
 			if(!name.IsEmpty() && property.IsNull() && field.IsNull()){
@@ -355,7 +378,7 @@ namespace Zios.Reflection{
 				return;
 			}
 			var instance = current is Type || current.IsStatic() ? null : current;
-			var type = current is Type ? (Type)current : current.GetType();
+			var type = current.AsType();
 			var field = Reflection.GetField(type,name,flags);
 			var property = field.IsNull() ? Reflection.GetProperty(type,name,flags) : null;
 			if(!name.IsNull() && property.IsNull() && field.IsNull() && !Reflection.debugWarned.AddNew(current).AddNew(name)){
@@ -377,13 +400,19 @@ namespace Zios.Reflection{
 				property.SetValue(instance,value,null);
 			}
 		}
-		public static Dictionary<string,T> GetVariables<T>(this object current,IList<Type> withoutAttributes=null,BindingFlags flags=allFlags){
+		public static Dictionary<string,T> GetVariables<T>(this object current,BindingFlags flags=allFlags){
+			return current.GetVariables<T>(null,flags);
+		}
+		public static Dictionary<string,object> GetVariables(this object current,BindingFlags flags=allFlags){
+			return current.GetVariables(null,flags);
+		}
+		public static Dictionary<string,T> GetVariables<T>(this object current,IList<Type> withoutAttributes,BindingFlags flags=allFlags){
 			var allVariables = current.GetVariables(withoutAttributes,flags);
 			return allVariables.Where(x=>x.Value.Is<T>()).ToDictionary(x=>x.Key,x=>(T)x.Value);
 		}
-		public static Dictionary<string,object> GetVariables(this object current,IList<Type> withoutAttributes=null,BindingFlags flags=allFlags){
+		public static Dictionary<string,object> GetVariables(this object current,IList<Type> withoutAttributes,BindingFlags flags=allFlags){
 			if(current.IsNull()){return new Dictionary<string,object>();}
-			Type type = current is Type ? (Type)current : current.GetType();
+			Type type = current.AsType();
 			var target = Reflection.variables.AddNew(type).AddNew(flags);
 			IEnumerable<KeyValuePair<IList<Type>,Dictionary<string,object>>> match = null;
 			if(withoutAttributes.IsNull()){
@@ -431,17 +460,19 @@ namespace Zios.Reflection{
 			return current;
 		}
 		public static void ClearVariable(this object current,string name,BindingFlags flags=allFlags){
-			Type type = current is Type ? (Type)current : current.GetType();
+			var type = current.AsType();
 			current = current.IsStatic() ? null : current;
-			FieldInfo field = Reflection.GetField(type,name,flags);
+			var field = Reflection.GetField(type,name,flags);
 			if(!field.IsNull()){
 				if(!field.FieldType.IsGeneric()){
 					field.SetValue(current,null);
 				}
 				return;
 			}
-			PropertyInfo property = Reflection.GetProperty(type,name,flags);
+			var property = Reflection.GetProperty(type,name,flags);
 			if(!property.IsNull() && property.CanWrite){
+				//var emitter = Emit<Func<object,string>>.NewDynamicMethod("Clear"+name).LoadArgument(3).CastClass(type).Call(property.GetGetMethod()).Return();
+				//var setter = emitter.CreateDelegate();
 				property.SetValue(current,null,null);
 			}
 		}

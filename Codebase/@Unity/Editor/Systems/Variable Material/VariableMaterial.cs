@@ -136,7 +136,7 @@ namespace Zios.Unity.Editor.VariableMaterial{
 					continue;
 				}
 				originalName = shaderFile.fullName;
-				string text = shaderFile.GetText();
+				string text = shaderFile.ReadText();
 				string shaderName = text.Parse("Shader ","{").Trim(' ','"');
 				if(shaderName.Contains("#")){continue;}
 				string output = "Shader " + '"' + "Hidden/"+shaderName+"#"+hash+'"'+"{\r\n";
@@ -223,7 +223,7 @@ namespace Zios.Unity.Editor.VariableMaterial{
 				}
 				if(output != text){
 					Action write = ()=>{
-						File.Create(outputPath).WriteText(output);
+						File.Create(outputPath).Write(output);
 					};
 					VariableMaterial.writes += write;
 					VariableMaterial.updates += update;

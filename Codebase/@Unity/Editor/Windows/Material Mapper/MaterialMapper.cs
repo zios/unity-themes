@@ -141,7 +141,7 @@ namespace Zios.Unity.Editor.Windows{
 				return;
 			}
 			ProxyEditor.CreateAsset(new Material(this.goal),"Assets/Temporary.mat");
-			string goalHeader = File.Find("Temporary.mat").GetText().Cut("%YAML","m_SavedProperties");
+			string goalHeader = File.Find("Temporary.mat").ReadText().Cut("%YAML","m_SavedProperties");
 			string goalName = goalHeader.Parse("m_Name:","\n");
 			ProxyEditor.DeleteAsset("Assets/Temporary.mat");
 			List<string> guids = new List<string>();
@@ -155,7 +155,7 @@ namespace Zios.Unity.Editor.Windows{
 			ProxyEditor.StartAssetEditing();
 			foreach(FileData materialFile in allMaterials){
 				Material material = materialFile.GetAsset<Material>();
-				string text = materialFile.GetText();
+				string text = materialFile.ReadText();
 				foreach(string guid in guids){
 					string idLine = "guid: "+guid;
 					bool repair = material.shader.name.Contains("Hidden/InternalErrorShader");
@@ -169,7 +169,7 @@ namespace Zios.Unity.Editor.Windows{
 						}
 						text = text.Replace(header,goalHeader);
 						text = text.Replace(goalName,name);
-						materialFile.WriteText(text);
+						materialFile.Write(text);
 						matching.AddNew(materialFile);
 						break;
 					}

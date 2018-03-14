@@ -73,6 +73,9 @@ namespace Zios.Unity.Extensions{
 			current.fixedHeight = value;
 			return current;
 		}
+		public static GUIStyle Center(this GUIStyle current,int width,bool asCopy=true){
+			return current.Margin((Screen.width-width)/2,0,current.margin.top,current.margin.bottom);
+		}
 		public static GUIStyle Margin(this GUIStyle current,int value,bool asCopy=true){
 			return current.Margin(value,value,value,value,asCopy);
 		}

@@ -224,10 +224,10 @@ namespace Zios.Unity.Editor.Inspectors.GUISkin{
 				queue.Add(term);
 			}
 			this.refocus = refocus;
-            if("Add".ToLabel().DrawButton()){
+			if("Add".ToLabel().DrawButton()){
 				GUI.FocusControl("");
 				queue.Add("[textColor=#FFF]");
-            }
+			}
 			this.queue = queue.Count > 0 ? queue.Join(" ") : "Search";
 			EditorGUILayout.EndVertical();
 			return EditorUI.anyChanged;
@@ -305,20 +305,20 @@ namespace Zios.Unity.Editor.Inspectors.GUISkin{
 				}
 			}
 		}
-        public void DrawMenu(GUIStyle style,bool editable=false){
-            if(GUILayoutUtility.GetLastRect().Clicked(1)){
+		public void DrawMenu(GUIStyle style,bool editable=false){
+			if(GUILayoutUtility.GetLastRect().Clicked(1)){
 				var menu = new EditorMenu();
 				Action select = ()=>GUISkinEditor.focus=style;
 				menu["Copy Style"] = (()=>GUISkinEditor.action="copy")+select;
-                if(editable){
+				if(editable){
 					menu["Duplicate Style"] = (()=>GUISkinEditor.action="duplicate")+select;
 					menu["Delete Style"] = (()=>GUISkinEditor.action="delete")+select;
-                }
-                if(!GUISkinEditor.focus.IsNull()){
+				}
+				if(!GUISkinEditor.focus.IsNull()){
 					Action paste = ()=>style.Use(GUISkinEditor.focus);
-                    menu["/"] = null;
+					menu["/"] = null;
 					menu["Paste Style"] = (()=>GUISkinEditor.action="paste")+paste;
-                }
+				}
 				menu.Draw();
 			}
 		}

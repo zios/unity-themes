@@ -11,18 +11,18 @@ namespace Zios.Unity.Extensions.Convert{
 		static ConvertColor(){Setup();}
 		[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
 		public static void Setup(){
-			ConvertObject.serializeMethods.Add((current)=>{
+			ConvertObject.serializeMethods.Add((current,separator,changesOnly)=>{
 				return current is Color ? current.As<Color>().Serialize() : null;
 			});
-			ConvertString.deserializeMethods.Add((type,current)=>{
+			ConvertString.deserializeMethods.Add((type,current,separator)=>{
 				return type == typeof(Color) ? Color.white.Deserialize(current).Box() : null;
 			});
 		}
 		//============================
 		// From
 		//============================
-		public static string Serialize(this Color current){
-			return current.ToHex(false);
+		public static string Serialize(this Color current,bool ignoreDefault=false,Color defaultValue=new Color()){
+			return ignoreDefault && current == defaultValue ? "" : current.ToHex(false);
 		}
 		public static string ToHex(this Color current,bool alwaysAlpha=true){
 			var red = (current.r*255).ToInt().ToString("X2");

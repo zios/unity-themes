@@ -36,7 +36,7 @@ namespace Zios.Unity.Editor.Themes{
 		}
 		public void Apply(){this.Apply(true);}
 		public void Apply(bool includeBuiltin){
-			MethodStepSimple<ThemeContent> method = (content)=>{
+			MethodStep<ThemeContent> method = (content)=>{
 				if(!content.builtin || includeBuiltin){
 					content.Sync();
 					content.target.text = content.value.text;
@@ -45,7 +45,7 @@ namespace Zios.Unity.Editor.Themes{
 				}
 				return true;
 			};
-			Worker.Create(this.contents,method.AsIndexed());
+			Worker.Create(this.contents).OnStep(method).Build();
 		}
 		public void Export(string savePath=null,bool split=true){
 			savePath = savePath ?? this.path.GetDirectory();
@@ -55,12 +55,12 @@ namespace Zios.Unity.Editor.Themes{
 					foreach(var data in contents.Split("(")){
 						var group = data.Parse("",")");
 						var file = File.Create(savePath+"/"+group+".guicontent");
-						file.WriteText("("+group);
+						file.Write("("+group);
 					}
 				}
 				else{
 					var file = File.Create(savePath+"/"+savePath.GetPathTerm()+".guicontent");
-					file.WriteText(contents);
+					file.Write(contents);
 				}
 				Theme.Reset();
 			}
@@ -91,7 +91,7 @@ namespace Zios.Unity.Editor.Themes{
 		public static List<ThemeContent> Import(string path){
 			var imported = new List<ThemeContent>();
 			foreach(var file in File.FindAll(path+"/*.guicontent",Theme.debug)){
-				var contents = ThemeContent.DeserializeGroup(file.GetText());
+				var contents = ThemeContent.DeserializeGroup(file.ReadText());
 				foreach(var content in contents){content.Setup(path);}
 				imported.AddRange(contents);
 			}
@@ -203,7 +203,7 @@ namespace Zios.Unity.Editor.Themes{
 					}
 					contents = contents.AddLine(content.Serialize());
 				}
-				File.Create(path+target+".guicontent").WriteText(contents);
+				File.Create(path+target+".guicontent").Write(contents);
 			}
 		}
 	}

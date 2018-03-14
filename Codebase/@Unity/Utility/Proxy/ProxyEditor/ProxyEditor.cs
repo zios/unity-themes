@@ -15,12 +15,13 @@ namespace Zios.Unity.ProxyEditor{
 	using Zios.Unity.Call;
 	using Zios.Unity.Log;
 	using Zios.Unity.Proxy;
+	using Editor = UnityEditor.Editor;
 	[InitializeOnLoad]
 	public static class ProxyEditor{
 		private static List<UnityObject> delayedDirty = new List<UnityObject>();
 		private static EditorWindow inspector;
 		private static EditorWindow[] inspectors;
-		private static Dictionary<UnityEditor.Editor,EditorWindow> editorInspectors = new Dictionary<UnityEditor.Editor,EditorWindow>();
+		private static Dictionary<Editor,EditorWindow> editorInspectors = new Dictionary<Editor,EditorWindow>();
 		private static Dictionary<UnityObject,SerializedObject> serializedObjects = new Dictionary<UnityObject,SerializedObject>();
 		static ProxyEditor(){
 			Proxy.busyMethods.Add(ProxyEditor.IsChanging);
@@ -184,6 +185,7 @@ namespace Zios.Unity.ProxyEditor{
 			return ProxyEditor.IsChanging() || ProxyEditor.IsCompiling();
 		}
 		public static void AddUpdate(CallbackFunction method){
+			EditorApplication.update -= method;
 			EditorApplication.update += method;
 		}
 		public static void RemoveUpdate(CallbackFunction method){
@@ -218,7 +220,7 @@ namespace Zios.Unity.ProxyEditor{
 			}
 			return ProxyEditor.inspectors;
 		}
-		public static EditorWindow GetInspector(UnityEditor.Editor editor){
+		public static EditorWindow GetInspector(Editor editor){
 			if(!ProxyEditor.editorInspectors.ContainsKey(editor)){
 				Type inspectorType = Reflection.GetUnityType("InspectorWindow");
 				var windows = inspectorType.CallMethod<EditorWindow[]>("GetAllInspectorWindows");
@@ -233,7 +235,7 @@ namespace Zios.Unity.ProxyEditor{
 			}
 			return ProxyEditor.editorInspectors[editor];;
 		}
-		public static Vector2 GetInspectorScroll(UnityEditor.Editor editor){
+		public static Vector2 GetInspectorScroll(Editor editor){
 			return ProxyEditor.GetInspector(editor).GetVariable<Vector2>("m_ScrollPosition");
 		}
 		public static Vector2 GetInspectorScroll(){
@@ -527,9 +529,9 @@ namespace Zios.Unity.ProxyEditor{
 		//public static SerializedObject GetSerializedObject(UnityObject target){return null;}
 		//public static SerializedObject GetSerialized(UnityObject target){return null;}
 		//public static EditorWindow[] GetInspectors(){return null;}
-		//public static EditorWindow GetInspector(UnityEditor.Editor editor){return null;}
+		//public static EditorWindow GetInspector(Editor editor){return null;}
 		public static void UpdateSerialized(UnityObject target){}
-		//public static Vector2 GetInspectorScroll(UnityEditor.Editor editor){return Vector2.zero;}
+		//public static Vector2 GetInspectorScroll(Editor editor){return Vector2.zero;}
 		public static Vector2 GetInspectorScroll(){return Vector2.zero;}
 		public static Vector2 GetInspectorScroll(this Rect current){return Vector2.zero;}
 		public static void UnhideAll(){}

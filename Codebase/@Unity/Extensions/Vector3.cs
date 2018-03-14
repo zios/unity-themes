@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 namespace Zios.Unity.Extensions{
 	using Zios.Extensions;
@@ -77,6 +78,57 @@ namespace Zios.Unity.Extensions{
 			bool y = Mathf.Approximately(current.y,value.y);
 			bool z = Mathf.Approximately(current.z,value.z);
 			return x && y && z;
+		}
+		public static Vector3 Divide(this Vector3 current,Vector3 value){
+			Vector3 copy = current;
+			copy[0] /= value[0];
+			copy[1] /= value[1];
+			copy[2] /= value[2];
+			return copy;
+		}
+		public static float[] Distance(this IList<Vector3> current,IList<Vector3> other){
+			var result = new float[current.Count];
+			for(int index=0;index<current.Count;++index){
+				if(index >= other.Count){continue;}
+				result[index] = Vector3.Distance(current[index],other[index]);
+			}
+			return result;
+		}
+		public static Vector3[] Subtract(this IList<Vector3> current,IList<Vector3> other){
+			var result = new Vector3[current.Count];
+			for(int index=0;index<current.Count;++index){
+				result[index] = current[index];
+				if(index >= other.Count){continue;}
+				result[index] -= other[index];
+			}
+			return result;
+		}
+		public static Vector3[] Add(this IList<Vector3> current,IList<Vector3> other){
+			var result = new Vector3[current.Count];
+			for(int index=0;index<current.Count;++index){
+				result[index] = current[index];
+				if(index >= other.Count){continue;}
+				result[index] += other[index];
+			}
+			return result;
+		}
+		public static Vector3[] Multiply(this IList<Vector3> current,IList<Vector3> other){
+			var result = new Vector3[current.Count];
+			for(int index=0;index<current.Count;++index){
+				result[index] = current[index];
+				if(index >= other.Count){continue;}
+				result[index].Scale(other[index]);
+			}
+			return result;
+		}
+		public static Vector3[] Divide(this IList<Vector3> current,IList<Vector3> other){
+			var result = new Vector3[current.Count];
+			for(int index=0;index<current.Count;++index){
+				result[index] = current[index];
+				if(index >= other.Count){continue;}
+				result[index] = current[index].Divide(other[index]);
+			}
+			return result;
 		}
 	}
 }

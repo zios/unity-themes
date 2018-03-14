@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 using UnityObject = UnityEngine.Object;
@@ -101,7 +102,7 @@ namespace Zios.Unity.EditorUI{
 		public static Type Draw<Type>(this UnityObject current,UnityLabel label=null,bool allowScene=true,bool indention=true) where Type : UnityObject{
 			return (Type)EditorUI.Draw<UnityObject>(()=>EditorGUILayout.ObjectField(label,current,typeof(Type),allowScene,EditorUI.CreateLayout()),indention);
 		}
-		public static Enum DrawMask(this Enum current,UnityLabel label=null,GUIStyle style=null,bool indention=true){
+		public static Enum DrawMaskField(this Enum current,UnityLabel label=null,GUIStyle style=null,bool indention=true){
 			style = style ?? EditorStyles.popup;
 			var layout = style.CreateLayout() ?? EditorUI.CreateLayout();
 			return EditorUI.Draw<Enum>(()=>EditorGUILayout.EnumFlagsField(label,current,style,layout),indention);
@@ -172,10 +173,10 @@ namespace Zios.Unity.EditorUI{
 			if(current is Vector4){current.As<Vector4>().DrawVector4(label,indention);}
 			if(isDictionary){current.As<IDictionary>().Draw(label,style,indention);}
 		}
-		public static void DrawFields(this object current,string header="Fields"){
+		public static void DrawFields(this object current,string header="Fields",BindingFlags flags=Reflection.declaredFlags){
 			if(header.IsEmpty() || EditorUI.DrawFoldout(header,current)){
 				if(!header.IsEmpty()){EditorGUI.indentLevel += 1;}
-				foreach(var item in current.GetVariables()){
+				foreach(var item in current.GetVariables(flags)){
 					string label = item.Key.ToTitleCase();
 					object field = item.Value;
 					if(field is ICollection){
@@ -227,7 +228,7 @@ namespace Zios.Unity.EditorUI{
 		public static bool DrawFoldout(this UnityLabel current,object key=null,GUIStyle style=null,bool indention=true){
 			var lastState = GUI.changed;
 			style = style ?? EditorStyles.foldout;
-			string name = key.IsNull() ? current + "Header" : key.GetHashCode().ToString();
+			string name = key.IsNull() ? current + "Header" : key.GetHashCode().ToString() + "Header";
 			if(key is string){name = (string)key;}
 			bool previous = PlayerPref.Get<bool>(name);
 			#if UNITY_5_5_OR_NEWER
@@ -244,7 +245,7 @@ namespace Zios.Unity.EditorUI{
 			return state;
 		}
 		public static bool DrawHeader(this UnityLabel current,object key=null,GUIStyle style=null,bool editable=false,Action callback=null,bool indention=true){
-			string stateName = key.IsNull() ? current + "Header" : key.GetHashCode().ToString();
+			string stateName = key.IsNull() ? current + "Header" : key.GetHashCode().ToString() + "Header";
 			if(key is string){stateName = (string)key;}
 			bool state = PlayerPref.Get<bool>(stateName);
 			//current = state ? "▼ " + current : "▶ " + current;
@@ -262,6 +263,10 @@ namespace Zios.Unity.EditorUI{
 				current.value.text = current.value.text.Draw(null,currentStyle,indention);
 			}
 			return state;
+		}
+		public static Enum DrawMask(this Enum current,UnityLabel label=null,GUIStyle style=null,bool indention=true){
+			var control = EditorGUILayout.GetControlRect();
+			return current.DrawMask(control,label,style,indention);
 		}
 		public static int DrawPrompt(this UnityLabel current,ref string field,GUIStyle titleStyle=null,GUIStyle inputStyle=null){
 			int result = 0;

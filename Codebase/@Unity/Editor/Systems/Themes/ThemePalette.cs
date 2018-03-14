@@ -32,7 +32,7 @@ namespace Zios.Unity.Editor.Themes{
 				var active = imported.AddNew();
 				active.name = file.name;
 				active.path = file.path;
-				active.Deserialize(file.GetText());
+				active.Deserialize(file.ReadText());
 			}
 			return imported;
 		}
@@ -43,7 +43,7 @@ namespace Zios.Unity.Editor.Themes{
 			path = path.IsEmpty() ? ProxyEditor.SaveFilePanel("Save Theme [Palette]",savePath.GetAssetPath(),saveName,"unitypalette") : path;
 			if(path.Length > 0){
 				var file = File.Create(path);
-				file.WriteText(this.Serialize());
+				file.Write(this.Serialize());
 				ProxyEditor.ImportAsset(path.GetAssetPath());
 				EditorPref.Set<string>("EditorPalette"+Theme.suffix,path.GetFileName());
 				Theme.Reset();

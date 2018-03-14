@@ -11,6 +11,8 @@ namespace Zios.Unity.Editor.Components.AnimationSettings{
 	using Zios.Unity.ProxyEditor;
 	using Zios.Unity.EditorUI;
 	using Zios.Unity.Extensions;
+	using Zios.Unity.Log;
+	using Zios.Unity.Supports.MeshWrap;
 	using Zios.Unity.Time;
 	//asm Zios.Shortcuts;
 	//asm Zios.Unity.Shortcuts;
@@ -39,6 +41,7 @@ namespace Zios.Unity.Editor.Components.AnimationSettings{
 			var hasBlendshapes = blendValues.Count > 0;
 			if(hasBlendshapes && (!hasSkeletal || EditorUI.DrawFoldout("Blend Shapes",id+"Blend"))){
 				EditorGUI.indentLevel += 1;
+				var wrap = this.renderer.gameObject.GetMeshWrap();
 				var names = blendValues.Keys.ToList();
 				var values = this.blendStates.Values.ToList();
 				var active = values.IndexOf(this.blendState);
@@ -48,21 +51,28 @@ namespace Zios.Unity.Editor.Components.AnimationSettings{
 					this.Repaint();
 				}
 				for(var index=0;index<blendValues.Count;++index){
+					if(index > names.Count-1){break;}
 					var shapeName = names[index];
 					var shapeValue = this.renderer.GetBlendShapeWeight(index);
 					var separated = blendValues.ContainsKey(shapeName+"-Left") && blendValues.ContainsKey(shapeName+"-Right");
 					if(shapeName.EndsWith("-")){continue;}
 					if(shapeName.EndsWith("+")){
 						shapeName = shapeName.TrimRight("+");
-						var otherValue = this.renderer.GetBlendShapeWeight(index+1);
+						if(!wrap.blendShapes.ContainsKey(shapeName+"-")){
+							Log.Warning("[AnimationSettings] Matching blendshape ("+shapeName+"-) does not exist. Skipping.");
+							continue;
+						}
+						var negativeIndex = wrap.blendShapes[shapeName+"-"].index;
+						var positiveIndex = wrap.blendShapes[shapeName+"+"].index;
+						var negativeValue = this.renderer.GetBlendShapeWeight(negativeIndex);
 						var displayValue = shapeValue > 0 ? (shapeValue/100f).Lerp(50,100) : 50f;
-						displayValue = otherValue > 0 ? (otherValue/100f).Lerp(50,0) : displayValue;
+						displayValue = negativeValue > 0 ? (negativeValue/100f).Lerp(50,0) : displayValue;
 						displayValue = displayValue.DrawSlider(0,100,shapeName);
 						if(EditorUI.lastChanged){
 							blendValues[shapeName+"+"] = 100*displayValue.InverseLerp(50,100);
 							blendValues[shapeName+"-"] = 100*displayValue.InverseLerp(50,0);
-							this.renderer.SetBlendShapeWeight(index,blendValues[shapeName+"+"]);
-							this.renderer.SetBlendShapeWeight(index+1,blendValues[shapeName+"-"]);
+							this.renderer.SetBlendShapeWeight(positiveIndex,blendValues[shapeName+"+"]);
+							this.renderer.SetBlendShapeWeight(negativeIndex,blendValues[shapeName+"-"]);
 						}
 						index += 1;
 						continue;
@@ -94,6 +104,18 @@ namespace Zios.Unity.Editor.Components.AnimationSettings{
 					this.blendStates.AddNew(this.newState).Set(this.newState,mesh);
 					this.SetBlendState(this.newState);
 					this.newState = "";
+				}
+				if("Randomize".ToLabel().Layout(100,19).DrawButton()){
+					foreach(var item in wrap.blendShapes){
+						var shape = item.Value;
+						this.renderer.SetBlendShapeWeight(shape.index,Random.Range(0,100));
+					}
+				}
+				if("Reset".ToLabel().Layout(100,19).DrawButton()){
+					foreach(var item in wrap.blendShapes){
+						var shape = item.Value;
+						this.renderer.SetBlendShapeWeight(shape.index,0);
+					}
 				}
 				EditorGUILayout.EndHorizontal();
 				EditorGUI.indentLevel -= 1;

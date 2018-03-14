@@ -5,11 +5,18 @@ using System.Text;
 namespace Zios.Extensions.Convert{
 	using Zios.Extensions;
 	public static class ConvertString{
-		public static List<Func<Type,string,object>> deserializeMethods = new List<Func<Type,string,object>>();
+		public static List<Func<Type,string,string,object>> deserializeMethods = new List<Func<Type,string,string,object>>();
 		public static string ToMD5(this string current){
 			byte[] bytes = Encoding.UTF8.GetBytes(current);
 			byte[] hash = MD5.Create().ComputeHash(bytes);
 			return BitConverter.ToString(hash).Replace("-","");
+		}
+		public static Enum ToEnum(this string current,Type type){
+			return (Enum)Enum.Parse(type,current,true);
+		}
+		public static float ToFloat(this string current){
+			if(current.IsEmpty()){return 0;}
+			return System.Convert.ToSingle(current);
 		}
 		public static short ToShort(this string current){
 			if(current.IsEmpty()){return 0;}
@@ -18,10 +25,6 @@ namespace Zios.Extensions.Convert{
 		public static int ToInt(this string current){
 			if(current.IsEmpty()){return 0;}
 			return System.Convert.ToInt32(current);
-		}
-		public static float ToFloat(this string current){
-			if(current.IsEmpty()){return 0;}
-			return System.Convert.ToSingle(current);
 		}
 		public static double ToDouble(this string current){
 			if(current.IsEmpty()){return 0;}
@@ -37,11 +40,13 @@ namespace Zios.Extensions.Convert{
 		}
 		public static byte ToByte(this string current){return System.Convert.ToByte(current);}
 		public static byte[] ToStringBytes(this string current){return Encoding.ASCII.GetBytes(current);}
-		public static string Serialize(this string current){return current;}
+		public static string Serialize(this string current,bool ignoreDefault=false,string defaultValue=""){
+			return ignoreDefault && current == defaultValue ? "" : current;
+		}
 		public static string Deserialize(this string current,string value){return value;}
-		public static object Deserialize(this string current,Type type){
+		public static object Deserialize(this string current,Type type,string separator="-"){
 			foreach(var custom in ConvertString.deserializeMethods){
-				var result = custom(type,current);
+				var result = custom(type,current,separator);
 				if(!result.IsNull()){return result;}
 			}
 			if(type == typeof(float)){return new Single().Deserialize(current).Box();}
@@ -51,11 +56,12 @@ namespace Zios.Extensions.Convert{
 			else if(type == typeof(byte)){return new Byte().Deserialize(current).Box();}
 			else if(type == typeof(short)){return new Int16().Deserialize(current).Box();}
 			else if(type == typeof(double)){return new Double().Deserialize(current).Box();}
+			else if(typeof(Type).IsEnum){return current.ToEnum(type);}
 			return default(Type);
 		}
-		public static Type Deserialize<Type>(this string current){
+		public static Type Deserialize<Type>(this string current,string separator="-"){
 			foreach(var custom in ConvertString.deserializeMethods){
-				var result = custom(typeof(Type),current);
+				var result = custom(typeof(Type),current,separator);
 				if(!result.IsNull()){return result.As<Type>();}
 			}
 			if(typeof(Type) == typeof(float)){return (Type)new Single().Deserialize(current).Box();}
@@ -65,7 +71,8 @@ namespace Zios.Extensions.Convert{
 			else if(typeof(Type) == typeof(byte)){return (Type)new Byte().Deserialize(current).Box();}
 			else if(typeof(Type) == typeof(short)){return (Type)new Int16().Deserialize(current).Box();}
 			else if(typeof(Type) == typeof(double)){return (Type)new Double().Deserialize(current).Box();}
-			else if(typeof(Type).IsCollection()){return (Type)new Type[0].Deserialize(current).Box();}
+			else if(typeof(Type).IsCollection()){return (Type)new Type[0].Deserialize(current,separator).Box();}
+			else if(typeof(Type).IsEnum){return current.ToInt().ToEnum<Type>();}
 			return default(Type);
 		}
 	}

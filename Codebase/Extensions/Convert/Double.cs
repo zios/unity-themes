@@ -6,7 +6,9 @@ namespace Zios.Extensions.Convert{
 		public static byte ToByte(this double current){return (byte)current;}
 		public static float ToFloat(this double current){return (float)current;}
 		public static byte[] ToBytes(this double current){return BitConverter.GetBytes(current);}
-		public static string Serialize(this double current){return current.ToString();}
+		public static string Serialize(this double current,bool ignoreDefault=false,double defaultValue=0){
+			return ignoreDefault && current == defaultValue ? "" : current.ToString();
+		}
 		public static double Deserialize(this double current,string value){return value.ToDouble();}
 	}
 }

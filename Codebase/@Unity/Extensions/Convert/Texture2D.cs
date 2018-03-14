@@ -7,10 +7,10 @@ namespace Zios.Unity.Extensions.Convert{
 		static ConvertTexture2D(){Setup();}
 		[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
 		public static void Setup(){
-			ConvertObject.serializeMethods.Add((current)=>{
+			ConvertObject.serializeMethods.Add((current,separator,changesOnly)=>{
 				return current is Texture2D ? current.As<Texture2D>().Serialize() : null;
 			});
-			ConvertString.deserializeMethods.Add((type,current)=>{
+			ConvertString.deserializeMethods.Add((type,current,separator)=>{
 				return type == typeof(Texture2D) ? new Texture2D(1,1).Deserialize(current).Box() : null;
 			});
 		}

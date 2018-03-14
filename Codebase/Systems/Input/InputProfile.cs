@@ -25,12 +25,12 @@ namespace Zios.Inputs{
 				}
 				contents = contents.AddLine(name[1] + " " + item.Value);
 			}
-			file.WriteText(contents);
+			file.Write(contents);
 		}
 		public static void Load(){
 			foreach(var file in File.FindAll("*.profile",true)){
 				var profile = new InputProfile(file.name);
-				var text = file.GetText().GetLines();
+				var text = file.ReadText().GetLines();
 				int mode = 0;
 				string group = "";
 				foreach(var line in text){

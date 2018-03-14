@@ -45,7 +45,7 @@ namespace Zios.Inputs{
 					if(transition.deceleration.Serialize() != "1-1-0-0|1-1-0-0"){contents = contents.AddLine("Transition-Deceleration " + transition.deceleration.Serialize());}
 				}
 			}
-			file.WriteText(contents);
+			file.Write(contents);
 		}
 		public static void Load(){
 			if(!Proxy.IsEditor()){return;}
@@ -53,7 +53,7 @@ namespace Zios.Inputs{
 			if(file.IsNull()){return;}
 			string group = "";
 			string action = "";
-			var fileText = file.GetText();
+			var fileText = file.ReadText();
 			var settings = fileText.Parse("[InputSettings]","[").GetLines();
 			var remaining = fileText.GetLines().Skip(settings.Length+1);
 			var manager = InputManager.Get();

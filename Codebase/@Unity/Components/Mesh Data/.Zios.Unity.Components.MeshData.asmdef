@@ -1,0 +1,9 @@
+{
+	"name": "Zios.Unity.Components.MeshData",
+	"references": [
+		"Zios.Unity.Supports.MeshInfo",
+		"Zios.Unity.Supports.MeshWrap"
+	],
+	"includePlatforms": [],
+	"excludePlatforms": []
+}

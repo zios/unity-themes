@@ -31,6 +31,9 @@ namespace Zios.Extensions.Convert{
 			cache.AddNew(type)[current] = name;
 			return name;
 		}
+		public static string Serialize(this Enum current,bool ignoreDefault=false,int defaultValue=0){
+			return ignoreDefault && current.ToInt() == defaultValue ? null : current.ToName().Serialize();
+		}
 		public static int ToInt(this Enum current){
 			return System.Convert.ToInt32(current);
 		}

@@ -53,16 +53,18 @@ namespace Zios.Extensions{
 			return copy.ToArray();
 		}
 		public static T[] Resize<T>(this T[] current,int newSize){
-			while(current.Length > newSize){
-				current = current.RemoveAt(current.Length-1);
+			if(current == null || current.Length == newSize){return current;}
+			var result = new T[newSize];
+			if(current.Length > newSize){
+				current = current.ToList().Take(newSize).ToArray();
 			}
-			while(current.Length < newSize){
-				current = current.Add(default(T));
+			if(current.Length < newSize){
+				Array.Copy(current,result,newSize);
 			}
-			return current;
+			return result;
 		}
 		public static T[] Order<T>(this T[] current){
-			var copy = current.Copy().ToList();
+			var copy = current.ToList();
 			copy.Sort();
 			return copy.ToArray();
 		}
