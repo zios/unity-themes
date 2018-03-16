@@ -9,6 +9,7 @@ namespace Zios.Events{
 	using Zios.Reflection;
 	using Zios.Shortcuts;
 	using Zios.Supports.Stepper;
+	using Zios.Unity.Call;
 	using Zios.Unity.Extensions;
 	using Zios.Unity.Locate;
 	using Zios.Unity.Log;
@@ -66,7 +67,7 @@ namespace Zios.Events{
 			Events.callers.Clear();
 			Events.cache.Clear();
 			Events.listeners.RemoveAll(x=>x.name!="On Events Reset"&&(!x.permanent||x.occurrences==0));
-			Events.Repair();
+			UtilityCall.Delay(Events.Repair);
 			Events.Add("On Destroy",()=>UtilityCall.Delay(Events.Repair));
 			foreach(var listener in Events.listeners){
 				var scope = Events.cache.AddNew(listener.target).AddNew(listener.name);

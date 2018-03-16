@@ -43,7 +43,7 @@ namespace Zios.Unity.Editor.Themes{
 				var file = File.Create(path);
 				file.Write(this.Serialize());
 				EditorPref.Set<string>("EditorTheme"+Theme.suffix,theme.name);
-				Theme.setup = false;
+				Theme.needsSetup = true;
 			}
 		}
 		public string Serialize(){return "";}

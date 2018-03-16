@@ -48,7 +48,7 @@ namespace Zios.Unity.Editor.Menus{
 			if(canceled){ size = 0; }
 			else if(filter && filter.sharedMesh && renderer.sharedMaterial){
 				bool generateMesh = true;
-				string meshPath = File.GetPath(filter.sharedMesh);
+				string meshPath = File.GetAssetPath(filter.sharedMesh);
 				if(meshPath.Contains(".fbx",true)){
 					FileData file = File.Find(meshPath);
 					int subMeshIndex = 0;

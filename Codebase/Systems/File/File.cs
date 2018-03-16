@@ -56,7 +56,7 @@ namespace Zios.File{
 		// Storage
 		//===============
 		public static void Load(){
-			var time = Time.Get();
+			Time.Start();
 			var cachePath = Proxy.IsEditor() ? "Temp/File.data" : File.root+"/File.data";
 			if(File.Exists(cachePath)){
 				string extension = "";
@@ -85,7 +85,7 @@ namespace Zios.File{
 					}
 				}
 			}
-			if(File.clock){Log.Show("[File] : Load cache complete -- " + time.Passed() + ".");}
+			if(File.clock){Log.Show("[File] : Load cache complete -- " + Time.Passed() + ".");}
 		}
 		public static void CheckSave(){
 			if(File.needsSave){
@@ -95,7 +95,7 @@ namespace Zios.File{
 		}
 		public static void Save(){
 			string lastPath = ")@#(*$";
-			var time = Time.Get();
+			Time.Start();
 			var cachePath = Proxy.IsEditor() ? "Temp/File.data" : File.root+"/File.data";
 			if(Proxy.IsEditor()){File.Create("Temp");}
 			using(var output = new StreamWriter(cachePath,false)){
@@ -108,7 +108,7 @@ namespace Zios.File{
 					}
 				}
 			}
-			if(File.clock){Log.Show("[File] : Save cache complete -- " + time.Passed() + ".");}
+			if(File.clock){Log.Show("[File] : Save cache complete -- " + Time.Passed() + ".");}
 		}
 		public static void SaveData(FileData data,StreamWriter output,ref string lastPath){
 			var directory = data.directory.Replace(File.root,"$");
@@ -128,7 +128,7 @@ namespace Zios.File{
 		// Setup
 		//===============
 		public static void Refresh(){
-			var time = Time.Get();
+			Time.Start();
 			File.refreshHooks();
 			File.assets.Clear();
 			File.assetPaths.Clear();
@@ -139,17 +139,16 @@ namespace Zios.File{
 			File.root = Proxy.IsEditor() || Application.platform.MatchesAny("WindowsPlayer","OSXPlayer","LinuxPlayer") ? File.dataPath.GetDirectory() : File.dataPath;
 			var needsScan = !Proxy.IsEditor() || (Proxy.IsEditor() && !Proxy.IsPlaying());
 			if(needsScan){
-				var scanTime = Time.Get();
 				File.Scan(File.root);
 				if(Proxy.IsEditor() || Application.platform.MatchesAny("WindowsPlayer","OSXPlayer","LinuxPlayer")){File.Scan(File.root+"/Temp",true);}
 				if(File.fullScan){File.Scan(File.dataPath,true);}
-				if(File.clock){Log.Show("[File] : Scan complete -- " + scanTime.Passed() + ".");}
+				if(File.clock){Log.Show("[File] : Scan complete -- " + Time.Passed() + ".");}
 				File.Save();
 			}
 			else{
 				File.Load();
 			}
-			if(File.clock){Log.Show("[File] : Refresh complete -- " + time.Passed() + ".");}
+			if(File.clock){Log.Show("[File] : Refresh complete -- " + Time.Passed() + ".");}
 		}
 		public static void Scan(string directory,bool deep=false){
 			if(!Directory.Exists(directory)){return;}
@@ -186,7 +185,7 @@ namespace Zios.File{
 		//===============
 		public static FileData[] FindAll(string name,bool showWarnings=true,bool returnFirstMatch=false){
 			name = name.Replace("\\","/");
-			var time = Time.Get();
+			Time.Start();
 			if(name == "" && showWarnings){
 				Log.Warning("[File] No path given for search.");
 				return null;
@@ -194,7 +193,7 @@ namespace Zios.File{
 			string searchKey = name.ToLower();
 			if(File.cache.ContainsKey(searchKey)){
 				if(File.clock){
-					Log.Show("[File] : Find [" + name + "] complete (cached:" + File.cache[searchKey].Count() + ") -- " + time.Passed() + ".");
+					Log.Show("[File] : Find [" + name + "] complete (cached:" + File.cache[searchKey].Count() + ") -- " + Time.Passed() + ".");
 				}
 				return File.cache[searchKey];
 			}
@@ -230,7 +229,7 @@ namespace Zios.File{
 			if(results.Count == 0 && !name.Contains(".")){return File.FindAll(name+".*",showWarnings,returnFirstMatch);}
 			if(results.Count == 0 && showWarnings){Log.Warning("[File] Path [" + name + "] could not be found.");}
 			File.cache[searchKey] = results.ToArray();
-			if(File.clock){Log.Show("[File] : Find [" + name + "] complete (" + results.Count + ") -- " + time.Passed() + ".");}
+			if(File.clock){Log.Show("[File] : Find [" + name + "] complete (" + results.Count + ") -- " + Time.Passed() + ".");}
 			return results.ToArray();
 		}
 		public static void SearchType(string name,string type,string path,bool firstOnly,ref List<FileData> results){
@@ -252,7 +251,7 @@ namespace Zios.File{
 		public static FileData AddNew(string path){
 			return File.Find(path,false) ?? File.Create(path);
 		}
-		public static string GetPath(UnityObject target){
+		public static string GetAssetPath(UnityObject target){
 			if(!File.assetPaths.ContainsKey(target)){
 				File.assetPaths[target] = ProxyEditor.GetAssetPath(target);
 			}
@@ -262,7 +261,7 @@ namespace Zios.File{
 			#if UNITY_EDITOR
 			if(Proxy.IsEditor()){
 				if(!File.assets.ContainsKey(target)){
-					string assetPath = File.GetPath(target);
+					string assetPath = File.GetAssetPath(target);
 					object asset = ProxyEditor.LoadAsset(assetPath,typeof(T));
 					if(asset == null){return default(T);}
 					File.assets[target] = Convert.ChangeType(asset,typeof(T));
@@ -306,7 +305,7 @@ namespace Zios.File{
 		//===============
 		// Shorthand
 		//===============
-		public static bool Exists(string path){return SystemFile.Exists(path) || Directory.Exists(path);}
+		public static bool Exists(string path){return !path.IsEmpty() && (SystemFile.Exists(path) || Directory.Exists(path));}
 		public static FileData Find(string name,bool showWarnings=true){
 			name = !name.ContainsAny("*") ? "!"+name : name;
 			var results = File.FindAll(name,showWarnings,!name.Contains("*"));
@@ -314,7 +313,7 @@ namespace Zios.File{
 			return null;
 		}
 		public static FileData Get(UnityObject target,bool showWarnings=false){
-			string path = File.dataPath.Replace("Assets","") + File.GetPath(target);
+			string path = File.dataPath.Replace("Assets","") + File.GetAssetPath(target);
 			return File.Find(path,showWarnings);
 		}
 		public static string GetGUID(string name,bool showWarnings=true){
@@ -323,7 +322,7 @@ namespace Zios.File{
 			return "";
 		}
 		public static string GetGUID(UnityObject target){
-			return ProxyEditor.GetGUID(File.GetPath(target));
+			return ProxyEditor.GetGUID(File.GetAssetPath(target));
 		}
 		public static T GetAsset<T>(string name,bool showWarnings=true) where T : UnityObject{
 			FileData file = File.Find(name,showWarnings);
@@ -378,7 +377,7 @@ namespace Zios.File{
 			this.isFolder = isFolder;
 		}
 		public override string ToString(){return this.path;}
-		public IEnumerable<string> ReadLines(){return File.ReadLines(this.path);}
+		public IEnumerable<string> ReadLines(){return SystemFile.ReadAllLines(this.path);}
 		public byte[] ReadBytes(){return SystemFile.ReadAllBytes(this.path);}
 		public string ReadText(){return SystemFile.ReadAllText(this.path);}
 		public void Write(byte[] bytes){SystemFile.WriteAllBytes(this.path,bytes);}
@@ -470,10 +469,10 @@ namespace Zios.File{
 	}
 	public static class UnityObjectExtensions{
 		public static string GetAssetPath(this UnityObject current){
-			return File.GetPath(current);
+			return File.GetAssetPath(current);
 		}
 		public static bool IsAsset(this UnityObject current){
-			return !File.GetPath(current).IsEmpty();
+			return !File.GetAssetPath(current).IsEmpty();
 		}
 	}
 	public static class GUIStyleExtensions{
@@ -492,7 +491,7 @@ namespace Zios.File{
 	public static class MonoBehaviourExtensions{
 		public static string GetGUID(this MonoBehaviour current){
 			var scriptFile = ProxyEditor.GetMonoScript(current);
-			string path = File.GetPath(scriptFile);
+			string path = File.GetAssetPath(scriptFile);
 			return ProxyEditor.GetGUID(path);
 		}
 	}

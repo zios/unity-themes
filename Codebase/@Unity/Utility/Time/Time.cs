@@ -12,6 +12,7 @@ namespace Zios.Unity.Time{
 			Time.clock.Start();
 		}
 		public static float Check(){return (float)Time.clock.Elapsed.TotalMilliseconds/1000f;}
+		public static string Passed(){return Time.Check() + " seconds";}
 	}
 	public static class FloatExtensions{
 		public static bool Elapsed(this float current,bool unity=true){return Time.Get()>=current;}

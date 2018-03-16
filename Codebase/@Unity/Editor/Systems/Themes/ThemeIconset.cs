@@ -36,7 +36,7 @@ namespace Zios.Unity.Editor.Themes{
 		}
 		public void Apply(){this.Apply(true);}
 		public void Apply(bool includeBuiltin){
-			MethodStep<ThemeContent> method = (content)=>{
+			Worker.Create(this.contents).OnStep(content=>{
 				if(!content.builtin || includeBuiltin){
 					content.Sync();
 					content.target.text = content.value.text;
@@ -44,8 +44,7 @@ namespace Zios.Unity.Editor.Themes{
 					content.target.image = content.value.image;
 				}
 				return true;
-			};
-			Worker.Create(this.contents).OnStep(method).Build();
+			}).Build();
 		}
 		public void Export(string savePath=null,bool split=true){
 			savePath = savePath ?? this.path.GetDirectory();
@@ -158,7 +157,7 @@ namespace Zios.Unity.Editor.Themes{
 			this.value.image = File.GetAsset<Texture2D>(path+"/"+this.imageName+".png");
 			if(this.value.image.IsNull()){
 				foreach(var texture in Locate.GetAssets<Texture2D>()){
-					if(texture.name == this.imageName && File.GetPath(texture).Contains("Library/unity")){
+					if(texture.name == this.imageName && File.GetAssetPath(texture).Contains("Library/unity")){
 						this.value.image = texture;
 						return;
 					}

@@ -150,23 +150,23 @@ namespace Zios.Unity.Editor.Themes{
 			}
 			return this.value;
 		}
-		public Texture2D UpdateTexture(string path=""){
+		public Texture2D UpdateTexture(){
 			var color = this.value;
-			path = path.IsEmpty() ? Theme.storagePath.GetAssetPath() : path.GetAssetPath();
-			File.Create(path+"Palettes/@Generated/");
-			var imagePath = path+"Palettes/@Generated/Color"+this.name+".png";
+			var path = Theme.storagePath.GetAssetPath()+"Palettes/@Generated/";
+			if(!File.Exists(path)){File.Create(path);}
+			var imagePath = path+"Color"+this.name+".png";
 			var image = default(Texture2D);
-			Action method = ()=>{
-				image = (Texture2D)ProxyEditor.LoadAsset(imagePath,typeof(Texture2D));
+			Worker.MainThread(()=>{
+				image = File.GetAsset<Texture2D>(imagePath);
 				if(image.IsNull()){
 					image = new Texture2D(1,1,TextureFormat.RGBA32,false);
 					image.SaveAs(imagePath);
 					ProxyEditor.ImportAsset(imagePath);
+					return;
 				}
 				image.SetPixel(0,0,color);
 				image.Apply();
-			};
-			Worker.MainThread(method);
+			});
 			return image;
 		}
 	}

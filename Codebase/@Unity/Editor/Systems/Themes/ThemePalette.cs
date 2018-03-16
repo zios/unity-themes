@@ -218,7 +218,7 @@ namespace Zios.Unity.Editor.Themes{
 			}
 			return current;
 		}
-		public void ApplyTexture(string path,Texture2D texture,bool writeToDisk=false){
+		public void ApplyTexture(string path,Texture2D texture){
 			if(texture.IsNull()){return;}
 			var name = path.GetPathTerm().TrimLeft("#");
 			var ignoreAlpha = name.StartsWith("A-");
@@ -302,10 +302,6 @@ namespace Zios.Unity.Editor.Themes{
 				method = ()=>{
 					originalImage.SetPixels(originalPixels);
 					originalImage.Apply();
-					if(writeToDisk){
-						originalImage.SaveAs(originalPath);
-						//Call.Delay(originalImage,()=>originalImage.SaveAs(originalPath),0.5f);
-					}
 				};
 				Worker.MainThread(method);
 			}

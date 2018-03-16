@@ -259,7 +259,7 @@ namespace Zios.Unity.Editor.Themes{
 		public static void SaveFonts(this GUISkin current,string path,bool includeBuiltin=true){
 			foreach(var style in current.GetStyles()){
 				if(!style.font.IsNull()){
-					string assetPath = File.GetPath(style.font);
+					string assetPath = File.GetAssetPath(style.font);
 					string savePath = path+"/"+assetPath.GetPathTerm();
 					if(!includeBuiltin && assetPath.Contains("unity editor resources")){continue;}
 					if(!File.Exists(savePath)){
@@ -272,7 +272,7 @@ namespace Zios.Unity.Editor.Themes{
 			foreach(var style in current.GetStyles()){
 				foreach(var state in style.GetStates()){
 					if(!state.background.IsNull()){
-						string assetPath = File.GetPath(state.background);
+						string assetPath = File.GetAssetPath(state.background);
 						string savePath = path+"/"+state.background.name+".png";
 						if(!includeBuiltin && assetPath.Contains("unity editor resources")){continue;}
 						if(!File.Exists(savePath)){

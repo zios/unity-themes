@@ -30,6 +30,7 @@ namespace Zios.Unity.Editor.MeshOperations{
 	public enum OperationMode{Merge,Flatten}
 	public class MeshOperations : EditorWindow{
 		public static MeshOperations instance;
+		public static bool debug;
 		public static bool operating;
 		private Dictionary<GameObject,MeshSource[]> cached = new Dictionary<GameObject,MeshSource[]>();
 		private List<GameObject> distanceMeshes = new List<GameObject>();
@@ -39,7 +40,6 @@ namespace Zios.Unity.Editor.MeshOperations{
 		private Material distanceMaterial;
 		private VertexMode vertexMode;
 		private OperationMode operationMode;
-		private Worker overlapWorker = new Worker();
 		private bool needsVertexUpdate;
 		public bool visible;
 		public bool busy;
@@ -241,7 +241,7 @@ namespace Zios.Unity.Editor.MeshOperations{
 				}
 			}
 			Worker.Quit(this);
-			Worker.Create(cache).Threads(1).Group(this).Monitor().OnStep((selectionA)=>{
+			Worker.Create(cache).Threads(1).Group(this).Monitor().OnStep(selectionA=>{
 				var worker = Worker.Get();
 				var meshSetA = cache[selectionA];
 				for(int sourceIndexA=0;sourceIndexA<meshSetA.Length;++sourceIndexA){
@@ -258,7 +258,7 @@ namespace Zios.Unity.Editor.MeshOperations{
 							var sourceB = meshSetB[sourceIndexB];
 							var positionsB = positions[meshSetB][sourceIndexB];
 							var transformB = transforms[meshSetB][sourceIndexB];
-							Worker.Create(positionsA).Group(this).OnStep((int indexA)=>{
+							Worker.Create(positionsA).Group(this).OnStep(indexA=>{
 								if(worker.quit){return true;}
 								var pointA = transformA.MultiplyPoint3x4(positionsA[indexA]);
 								for(int indexB=0;indexB<positionsB.Count;++indexB){
@@ -284,7 +284,7 @@ namespace Zios.Unity.Editor.MeshOperations{
 				}
 				return true;
 			}).OnEnd(()=>{
-				//Log.Show("[MeshOperations] Find Overlapping -- " + Time.Check());
+				if(MeshOperations.debug){Log.Show("[MeshOperations] Find Overlapping -- " + Time.Check());}
 				this.needsVertexUpdate = true;
 			}).Build();
 		}
@@ -303,7 +303,7 @@ namespace Zios.Unity.Editor.MeshOperations{
 			}
 		}
 		public void SetupVertexes(){
-			var time = Time.Get();
+			Time.Start();
 			var showOverlap = this.vertexDisplay.Contains("Overlap");
 			var showDistance = this.vertexDisplay.Contains("Distance");
 			var showNonOverlap = this.vertexDisplay.Contains("NonOverlap");
@@ -320,7 +320,6 @@ namespace Zios.Unity.Editor.MeshOperations{
 				var vertexColors = new Color[mesh.vertexCount];
 				var distanceColors = new Color[mesh.vertexCount];
 				for(int vertexIndex=0;vertexIndex<mesh.positions.Length;++vertexIndex){
-					var position = source.target.transform.TransformPoint(mesh.positions[vertexIndex]);
 					var overlaps = this.matches.AddNew(target).Contains(vertexIndex);
 					var display = (overlaps && showOverlap) || showNonOverlap;
 					distanceColors[vertexIndex] = Color.clear;
@@ -334,7 +333,7 @@ namespace Zios.Unity.Editor.MeshOperations{
 				this.vertexMeshes[index].GetMesh().colors = vertexColors;
 			}
 			this.needsVertexUpdate = false;
-			//Debug.Log("Setup Vertex -- " + time.Passed());
+			if(MeshOperations.debug){Debug.Log("[MeshOperations] Setup Vertex -- " + Time.Check());}
 		}
 		public void CheckChanged(){
 			var cachedTargets = this.cached.SelectMany(x=>x.Value).ToArray();
@@ -367,8 +366,6 @@ namespace Zios.Unity.Editor.MeshOperations{
 			var merged = primary.GetMeshSource().GetMesh().Copy();
 			var wrap = merged.GetMeshWrap();
 			var originalPositions = wrap.positions;
-			var originalNormals = wrap.normals;
-			var originalTangents = wrap.tangents;
 			primary.SetActive(false);
 			foreach(var current in targets.Skip(1)){
 				var mesh = current.GetMeshWrap();

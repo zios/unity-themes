@@ -489,7 +489,7 @@ namespace Zios.Unity.Editor.SpriteManager{
 				if(current.GetComponent<Renderer>() != null){
 					if(current.GetComponent<Renderer>().sharedMaterial == null){
 						string fullName = this.assetPrefix+sprite.fullName;
-						string sourcePath = File.GetPath(sprite.parent.xml);
+						string sourcePath = File.GetAssetPath(sprite.parent.xml);
 						sourcePath = this.FindAssetFolder(sourcePath,sprite.name,"Materials");
 						string materialPath = sourcePath+fullName+".mat";
 						current.GetComponent<Renderer>().sharedMaterial = File.GetAsset<Material>(materialPath);
@@ -656,7 +656,7 @@ namespace Zios.Unity.Editor.SpriteManager{
 		public void CreateMaterial(Sprite sprite,bool forceOverwrite=false,bool forceUpdate=false){
 			string core = this.assetPrefix+sprite.fullName;
 			string[] names ={core};
-			string sourcePath = File.GetPath(sprite.parent.xml);
+			string sourcePath = File.GetAssetPath(sprite.parent.xml);
 			Shader spriteShader = this.assets.shaderNormal;
 			sourcePath = this.FindAssetFolder(sourcePath,sprite.name,"Materials");
 			foreach(string name in names){
@@ -701,7 +701,7 @@ namespace Zios.Unity.Editor.SpriteManager{
 		public void CreateMesh(Sprite sprite,bool forceOverwrite=false,bool forceUpdate=false){
 			string core = this.assetPrefix+sprite.fullName;
 			string[] names ={core};
-			string sourcePath = File.GetPath(sprite.parent.xml);
+			string sourcePath = File.GetAssetPath(sprite.parent.xml);
 			sourcePath = this.FindAssetFolder(sourcePath,sprite.name,"Meshes");
 			foreach(string name in names){
 				string meshPath = sourcePath+name+".asset";
@@ -775,7 +775,7 @@ namespace Zios.Unity.Editor.SpriteManager{
 		public void CreatePrefab(Sprite sprite,bool forceOverwrite=false,bool forceUpdate=false){
 			string core = this.assetPrefix+sprite.fullName;
 			string[] names ={core};
-			string sourcePath = File.GetPath(sprite.parent.xml);
+			string sourcePath = File.GetAssetPath(sprite.parent.xml);
 			sourcePath = this.FindAssetFolder(sourcePath,sprite.name,"Prefabs");
 			foreach(string name in names){
 				string prefabName = name.EndsWith("@Bottom") ? name.Replace("@Bottom","") : name;
@@ -1225,7 +1225,7 @@ namespace Zios.Unity.Editor.SpriteManager{
 					Material atlasMaterial = new Material(this.assets.shaderEmbed);
 					FileData materialFile = File.Find(atlasName);
 					if(materialFile == null){
-						string atlasPath = File.GetPath(sprite.parent.xml);
+						string atlasPath = File.GetAssetPath(sprite.parent.xml);
 						atlasPath = atlasPath.GetDirectory() + "/" + atlasName;
 						ProxyEditor.CreateAsset(atlasMaterial,atlasPath);
 						ProxyEditor.RefreshAssets();

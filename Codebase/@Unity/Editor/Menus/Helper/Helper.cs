@@ -59,7 +59,7 @@ namespace Zios.Unity.Editor.Menus{
 							continue;
 						}
 						string clipPath = clip.name + ".anim";
-						string originalPath = File.GetPath(clip);
+						string originalPath = File.GetAssetPath(clip);
 						string savePath = originalPath.GetDirectory() + "/" + clipPath;
 						var newClip = new AnimationClip();
 						if(originalPath.Contains(".anim")){

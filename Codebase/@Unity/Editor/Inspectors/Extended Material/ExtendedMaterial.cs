@@ -421,11 +421,11 @@ namespace Zios.Unity.Editor.Inspectors.ExtendedMaterial{
 			return "";
 		}
 		public void Load(Material material){
-			string assetPath = File.GetPath(material.shader);
+			string assetPath = File.GetAssetPath(material.shader);
 			this.Load(assetPath);
 		}
 		public void Load(Shader shader){
-			string assetPath = File.GetPath(shader);
+			string assetPath = File.GetAssetPath(shader);
 			this.Load(assetPath);
 		}
 		public void Load(string path){

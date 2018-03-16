@@ -14,7 +14,6 @@ namespace Zios.Supports.Worker{
 		public List<Thread> threads = new List<Thread>();
 		public List<Thread> remaining = new List<Thread>();
 		public List<Action> sourceCallback = new List<Action>();
-		public Func<bool> executeStep = ()=>true;
 		public MethodEnd onEnd;
 		public Thread manager;
 		public bool finalize;
@@ -41,8 +40,8 @@ namespace Zios.Supports.Worker{
 			return Worker.all.TryGet(thread);
 		}
 		public static Worker Create(Func<bool> method){
-			var worker = new Worker().Async();
-			worker.executeStep = method;
+			var worker = new WorkerCall().Async();
+			worker.method = method;
 			var perform = new ThreadStart(worker.Step);
 			var thread = new Thread(perform);
 			lock(Worker.all){Worker.all[thread] = worker;}
@@ -146,14 +145,10 @@ namespace Zios.Supports.Worker{
 				}
 			}
 		}
-		public virtual void Step(){
-			while(this.executeStep()){}
-			this.StepEnd();
-		}
 		public virtual void Step<Data>(List<Data> data,int position=0){this.StepEnd();}
-		public virtual int Execute(int index,object element){
+		public virtual int Execute(Func<bool> step,int index,object element){
 			bool success = false;
-			try{success = this.executeStep();}
+			try{success = step();}
 			catch(Exception exception){
 				var message = "[Worker] Uncaught exception for ("+element.GetType().Name + ") on " + index + "/" + this.size + "\n";
 				message += element.GetType().Name + "\n" + exception.Message + "\n" + exception.StackTrace;
@@ -167,6 +162,13 @@ namespace Zios.Supports.Worker{
 			return index;
 		}
 	}
+	public class WorkerCall : Worker{
+		public Func<bool> method;
+		public void Step(){
+			while(this.method()){}
+			this.StepEnd();
+		}
+	}
 	public class Worker<Value> : Worker{
 		public MethodStep<Value> onStep;
 		public MethodStepIndex onStepIndex;
@@ -176,16 +178,17 @@ namespace Zios.Supports.Worker{
 		public override void Step<Data>(List<Data> data,int position=0){
 			var index = 0;
 			var useIndex = !this.onStepIndex.IsNull();
+			Func<bool> step = ()=>false;
 			while(index < data.Count && index >= 0){
 				if(this.quit){break;}
 				if(useIndex){
-					this.executeStep = ()=>this.onStepIndex(position+index);
+					step = ()=>this.onStepIndex(position+index);
 				}
 				else{
 					var element = data[index].As<Value>();
-					this.executeStep = ()=>this.onStep(element);
+					step = ()=>this.onStep(element);
 				}
-				index = this.Execute(index,data[index]);
+				index = this.Execute(step,index,data[index]);
 			}
 			this.StepEnd();
 		}
@@ -207,22 +210,23 @@ namespace Zios.Supports.Worker{
 			var output = new List<Output>();
 			var response = new WorkerResponse();
 			var useIndex = !this.onStepIndex.IsNull();
+			Func<bool> step = ()=>false;
 			while(index < data.Count && index >= 0){
 				if(this.quit){break;}
 				if(useIndex){
-					this.executeStep = ()=>{
+					step = ()=>{
 						result = this.onStepIndex(response,position+index);
 						return true;
 					};
 				}
 				else{
 					var element = data[index].As<Value>();
-					this.executeStep = ()=>{
+					step = ()=>{
 						result = this.onStep(response,element);
 						return true;
 					};
 				}
-				index = this.Execute(index,data[index]);
+				index = this.Execute(step,index,data[index]);
 				if(index == -1){break;}
 				if(!response.skip){output.Add(result);}
 				response.skip = false;
@@ -241,17 +245,18 @@ namespace Zios.Supports.Worker{
 			var index = 0;
 			var part = data.As<List<Key>>();
 			var useKey = !this.onStepKey.IsNull();
+			Func<bool> step = ()=>false;
 			while(index < data.Count && index >= 0){
 				if(this.quit){break;}
 				if(useKey){
 					var key = part[index];
-					this.executeStep = ()=>this.onStepKey(key);
-					index = this.Execute(index,key);
+					step = ()=>this.onStepKey(key);
+					index = this.Execute(step,index,key);
 				}
 				else{
 					var value = this.collection[part[index]];
-					this.executeStep = ()=>this.onStep(value);
-					index = this.Execute(index,value);
+					step = ()=>this.onStep(value);
+					index = this.Execute(step,index,value);
 				}
 			}
 			this.StepEnd();

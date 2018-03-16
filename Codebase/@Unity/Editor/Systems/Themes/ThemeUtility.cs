@@ -73,14 +73,14 @@ namespace Zios.Unity.Editor.Themes{
 				foreach(var style in skin.GetStyles()){
 					if(!style.font.IsNull()){
 						assetPath = path+"/Font/"+style.font.name;
-						if(!includeBuiltin && File.GetPath(style.font).Contains("unity editor resources")){continue;}
+						if(!includeBuiltin && File.GetAssetPath(style.font).Contains("unity editor resources")){continue;}
 						var font = File.GetAsset<Font>(assetPath+".ttf",false);
 						font = font ?? File.GetAsset<Font>(assetPath+".otf",false);
 						style.font = font ?? style.font;
 					}
 					foreach(var state in style.GetStates()){
 						if(state.background.IsNull()){continue;}
-						if(!includeBuiltin && File.GetPath(state.background).Contains("unity editor resources")){continue;}
+						if(!includeBuiltin && File.GetAssetPath(state.background).Contains("unity editor resources")){continue;}
 						assetPath = path+"/Background/"+state.background.name+".png";
 						state.background = File.GetAsset<Texture2D>(assetPath) ?? state.background;
 					}
@@ -108,6 +108,6 @@ namespace Zios.Unity.Editor.Themes{
 			ProxyEditor.SetAssetDirty(destination);
 		}
 		[MenuItem("Edit/Themes/Development/Sync/Dynamic Textures")]
-		public static void SyncTextures(){Theme.Apply("",true);}
+		public static void SyncTextures(){Theme.Apply();}
 	}
 }

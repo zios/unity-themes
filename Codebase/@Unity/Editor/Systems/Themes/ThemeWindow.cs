@@ -9,6 +9,7 @@ namespace Zios.Unity.Editor.Themes{
 	using Zios.Unity.Call;
 	using Zios.Unity.Editor.Pref;
 	using Zios.Unity.Locate;
+	using Zios.Unity.ProxyEditor;
 	public class ThemeWindow : EditorWindow{
 		public Vector2 lastMouse;
 		public static bool setup;
@@ -61,7 +62,7 @@ namespace Zios.Unity.Editor.Themes{
 		}
 		public static void CloseWindow(object sender,EventArgs arguments){
 			#if UNITY_5_3_4_OR_NEWER
-			if(!ProxyEditor.ProxyEditor.IsChanging()){
+			if(!ProxyEditor.IsChanging()){
 				ThemeWindow.CloseWindow();
 			}
 			#endif

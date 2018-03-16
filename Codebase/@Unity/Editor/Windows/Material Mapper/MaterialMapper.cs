@@ -149,7 +149,7 @@ namespace Zios.Unity.Editor.Windows{
 			FileData[] allMaterials = File.FindAll("*.mat");
 			foreach(var shader in this.shaders){
 				if(shader == null){continue;}
-				var path = File.GetPath(shader);
+				var path = File.GetAssetPath(shader);
 				guids.AddNew(ProxyEditor.GetGUID(path));
 			}
 			ProxyEditor.StartAssetEditing();
