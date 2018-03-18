@@ -1,7 +1,0 @@
-CustomizablePalette = True
-CustomizableFontset = True
-CustomizableIconset = True
-Palette = Steamed
-Fontset = Orkney
-Iconset = Simplicity
-Skinset = Simplicity+ClassyForms

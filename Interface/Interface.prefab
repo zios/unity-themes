@@ -5,12 +5,12 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 22496964}
-  - 223: {fileID: 22358436}
-  - 114: {fileID: 11480272}
-  - 114: {fileID: 11485424}
+  - component: {fileID: 22496964}
+  - component: {fileID: 22358436}
+  - component: {fileID: 11480272}
+  - component: {fileID: 11485424}
   m_Layer: 5
   m_Name: Debug
   m_TagString: Untagged
@@ -23,11 +23,11 @@ GameObject:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 22411150}
-  - 222: {fileID: 22234566}
-  - 114: {fileID: 11405896}
+  - component: {fileID: 22411150}
+  - component: {fileID: 22234566}
+  - component: {fileID: 11405896}
   m_Layer: 5
   m_Name: FrameTime
   m_TagString: Untagged
@@ -40,12 +40,12 @@ GameObject:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 22414152}
-  - 222: {fileID: 22283280}
-  - 114: {fileID: 11473888}
-  - 114: {fileID: 11490290}
+  - component: {fileID: 22414152}
+  - component: {fileID: 22283280}
+  - component: {fileID: 11473888}
+  - component: {fileID: 11490290}
   m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
@@ -58,12 +58,12 @@ GameObject:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 22405380}
-  - 222: {fileID: 22259380}
-  - 114: {fileID: 11400180}
-  - 114: {fileID: 11468750}
+  - component: {fileID: 22405380}
+  - component: {fileID: 22259380}
+  - component: {fileID: 11400180}
+  - component: {fileID: 11468750}
   m_Layer: 5
   m_Name: FrameTimeValue
   m_TagString: Untagged
@@ -76,12 +76,12 @@ GameObject:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 22454810}
-  - 222: {fileID: 22228642}
-  - 114: {fileID: 11405890}
-  - 114: {fileID: 11437074}
+  - component: {fileID: 22454810}
+  - component: {fileID: 22228642}
+  - component: {fileID: 11405890}
+  - component: {fileID: 11437074}
   m_Layer: 5
   m_Name: FPSValue
   m_TagString: Untagged
@@ -94,12 +94,12 @@ GameObject:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 22452214}
-  - 222: {fileID: 22214080}
-  - 114: {fileID: 11414640}
-  - 114: {fileID: 11410470}
+  - component: {fileID: 22452214}
+  - component: {fileID: 22214080}
+  - component: {fileID: 11414640}
+  - component: {fileID: 11410470}
   m_Layer: 5
   m_Name: Colon
   m_TagString: Untagged
@@ -112,9 +112,9 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 477624}
+  - component: {fileID: 477624}
   m_Layer: 0
   m_Name: Interface
   m_TagString: Untagged
@@ -127,12 +127,12 @@ GameObject:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 22475382}
-  - 222: {fileID: 22204740}
-  - 114: {fileID: 11488140}
-  - 114: {fileID: 11415530}
+  - component: {fileID: 22475382}
+  - component: {fileID: 22204740}
+  - component: {fileID: 11488140}
+  - component: {fileID: 11415530}
   m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
@@ -145,12 +145,12 @@ GameObject:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 22436492}
-  - 222: {fileID: 22292180}
-  - 114: {fileID: 11482412}
-  - 114: {fileID: 11494218}
+  - component: {fileID: 22436492}
+  - component: {fileID: 22292180}
+  - component: {fileID: 11482412}
+  - component: {fileID: 11494218}
   m_Layer: 5
   m_Name: Colon
   m_TagString: Untagged
@@ -163,11 +163,11 @@ GameObject:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 22450352}
-  - 222: {fileID: 22221678}
-  - 114: {fileID: 11499666}
+  - component: {fileID: 22450352}
+  - component: {fileID: 22221678}
+  - component: {fileID: 11499666}
   m_Layer: 5
   m_Name: FPS
   m_TagString: Untagged
@@ -188,6 +188,7 @@ Transform:
   - {fileID: 22496964}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &11400180
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -545,8 +546,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 4bed1d5d95dd39a41837386b0ffd4a2a, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 3c5db91fbe5b49c45a754afaa5601199, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -608,7 +609,7 @@ Canvas:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 105634}
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
@@ -616,6 +617,8 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -631,6 +634,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 22411150}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 56.9, y: -0.4}
@@ -651,6 +655,7 @@ RectTransform:
   - {fileID: 22475382}
   m_Father: {fileID: 22496964}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -101.8, y: -18.3}
@@ -668,6 +673,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 22450352}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -38.7, y: -0.1}
@@ -685,6 +691,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 22450352}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -8, y: 1.4}
@@ -705,6 +712,7 @@ RectTransform:
   - {fileID: 22414152}
   m_Father: {fileID: 22496964}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -73.57501, y: -20.43}
@@ -722,6 +730,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 22411150}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 19.800049, y: 0.6750488}
@@ -739,6 +748,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 22450352}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 29.9, y: -0.5}
@@ -756,6 +766,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 22411150}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -37.7, y: -0.2}
@@ -775,6 +786,7 @@ RectTransform:
   - {fileID: 22411150}
   m_Father: {fileID: 477624}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
