@@ -1,8 +1,0 @@
-{
-	"name": "Zios.Unity.Components.Persistent",
-	"references": [
-		"Zios.Unity.Proxy"
-	],
-	"includePlatforms": [],
-	"excludePlatforms": []
-}

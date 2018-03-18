@@ -1,9 +1,0 @@
-{
-	"name": "Zios.Unity.Style",
-	"references": [
-		"Zios.Extensions",
-		"Zios.Unity.Locate"
-	],
-	"includePlatforms": [],
-	"excludePlatforms": []
-}

@@ -1,8 +1,0 @@
-{
-	"name": "Zios.Unity.Button",
-	"references": [
-		"Zios.Extensions"
-	],
-	"includePlatforms": [],
-	"excludePlatforms": []
-}

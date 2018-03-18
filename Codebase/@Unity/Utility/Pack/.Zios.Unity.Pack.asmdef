@@ -1,8 +1,0 @@
-{
-	"name": "Zios.Unity.Pack",
-	"references": [
-		"Zios.Extensions.Convert"
-	],
-	"includePlatforms": [],
-	"excludePlatforms": []
-}

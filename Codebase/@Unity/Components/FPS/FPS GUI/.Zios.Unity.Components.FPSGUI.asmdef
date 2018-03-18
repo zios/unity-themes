@@ -1,8 +1,0 @@
-{
-	"name": "Zios.Unity.Components.FPSGUI",
-	"references": [
-		"Zios.Unity.Time"
-	],
-	"includePlatforms": [],
-	"excludePlatforms": []
-}
