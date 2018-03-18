@@ -7,7 +7,9 @@ namespace Zios.Unity.Extensions{
 			var copy = new Mesh();
 			if(mesh.IsNull()){return copy;}
 			var positions = mesh.vertices.Copy();
+			#if UNITY_2017_3_OR_NEWER
 			copy.indexFormat = mesh.indexFormat;
+			#endif
 			copy.subMeshCount = mesh.subMeshCount;
 			copy.SetVertices(positions.ToList());
 			copy.SetColors(mesh.colors.ToList());

@@ -3,22 +3,25 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{68B7BA2A-873B-588C-A693-A85750CFE254}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Zios</RootNamespace>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Zios.Unity.Editor.Themes</AssemblyName>
     <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>.</OutputPath>
+    <OutputPath>./Release/</OutputPath>
+    <IntermediateOutputPath>./Release/Temp</IntermediateOutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DefineConstants>UNITY_EDITOR;UNITY_THEMES</DefineConstants>
+    <DefineConstants></DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
@@ -36,117 +39,120 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="..\Extensions\Array.cs" />
-    <Compile Include="..\Extensions\BitArray.cs" />
-    <Compile Include="..\Extensions\ByteArray.cs" />
-    <Compile Include="..\Extensions\Decimal.cs" />
-    <Compile Include="..\Extensions\Delegate.cs" />
-    <Compile Include="..\Extensions\Dictionary.cs" />
-    <Compile Include="..\Extensions\Double.cs" />
-    <Compile Include="..\Extensions\Enum.cs" />
-    <Compile Include="..\Extensions\Float.cs" />
-    <Compile Include="..\Extensions\IEnumerable.cs" />
-    <Compile Include="..\Extensions\Int.cs" />
-    <Compile Include="..\Extensions\List.cs" />
-    <Compile Include="..\Extensions\Object.cs" />
-    <Compile Include="..\Extensions\Serializable.cs" />
-    <Compile Include="..\Extensions\SortedList.cs" />
-    <Compile Include="..\Extensions\Stopwatch.cs" />
-    <Compile Include="..\Extensions\String.cs" />
-    <Compile Include="..\Extensions\StringBuilder.cs" />
-    <Compile Include="..\Extensions\Type.cs" />
-    <Compile Include="..\Extensions\Convert\Bool.cs" />
-    <Compile Include="..\Extensions\Convert\Byte.cs" />
-    <Compile Include="..\Extensions\Convert\ByteArray.cs" />
-    <Compile Include="..\Extensions\Convert\DateTime.cs" />
-    <Compile Include="..\Extensions\Convert\Decimal.cs" />
-    <Compile Include="..\Extensions\Convert\Dictionary.cs" />
-    <Compile Include="..\Extensions\Convert\Double.cs" />
-    <Compile Include="..\Extensions\Convert\Enum.cs" />
-    <Compile Include="..\Extensions\Convert\Float.cs" />
-    <Compile Include="..\Extensions\Convert\IEnumerable.cs" />
-    <Compile Include="..\Extensions\Convert\Int.cs" />
-    <Compile Include="..\Extensions\Convert\List.cs" />
-    <Compile Include="..\Extensions\Convert\Object.cs" />
-    <Compile Include="..\Extensions\Convert\Short.cs" />
-    <Compile Include="..\Extensions\Convert\String.cs" />
-    <Compile Include="..\Supports\Hierarchy\Hierarchy.cs" />
-    <Compile Include="..\@Unity\Utility\Proxy\Proxy.cs" />
-    <Compile Include="..\@Unity\Utility\Log\Log.cs" />
-    <Compile Include="..\Systems\Reflection\Reflection.cs" />
-    <Compile Include="..\Supports\Shortcuts\Shortcuts.cs" />
-    <Compile Include="..\@Unity\Utility\Button\Button.cs" />
-    <Compile Include="..\@Unity\System Attributes\EnumMask.cs" />
-    <Compile Include="..\@Unity\System Attributes\InitializeOnLoad.cs" />
-    <Compile Include="..\@Unity\System Attributes\InputName.cs" />
-    <Compile Include="..\@Unity\Extensions\Convert\AnimationCurve.cs" />
-    <Compile Include="..\@Unity\Extensions\Convert\BitStream.cs" />
-    <Compile Include="..\@Unity\Extensions\Convert\Color.cs" />
-    <Compile Include="..\@Unity\Extensions\Convert\GUIContent.cs" />
-    <Compile Include="..\@Unity\Extensions\Convert\Rect.cs" />
-    <Compile Include="..\@Unity\Extensions\Convert\RectOffset.cs" />
-    <Compile Include="..\@Unity\Extensions\Convert\Texture2D.cs" />
-    <Compile Include="..\@Unity\Extensions\Convert\Vector2.cs" />
-    <Compile Include="..\@Unity\Extensions\Convert\Vector3.cs" />
-    <Compile Include="..\@Unity\Extensions\Convert\Vector4.cs" />
-    <Compile Include="..\@Unity\Utility\Time\Time.cs" />
-    <Compile Include="..\@Unity\Utility\Call\Call.cs" />
-    <Compile Include="..\@Unity\Utility\Proxy\ProxyEditor\ProxyEditor.cs" />
-    <Compile Include="..\@Unity\Extensions\AnimationExtensions.cs" />
-    <Compile Include="..\@Unity\Extensions\Color.cs" />
-    <Compile Include="..\@Unity\Extensions\ComponentExtensions.cs" />
-    <Compile Include="..\@Unity\Extensions\Event.cs" />
-    <Compile Include="..\@Unity\Extensions\GameObject.cs" />
-    <Compile Include="..\@Unity\Extensions\GUISkin.cs" />
-    <Compile Include="..\@Unity\Extensions\GUIStyle.cs" />
-    <Compile Include="..\@Unity\Extensions\GUIStyleState.cs" />
-    <Compile Include="..\@Unity\Extensions\LayerMask.cs" />
-    <Compile Include="..\@Unity\Extensions\Mesh.cs" />
-    <Compile Include="..\@Unity\Extensions\MonoBehaviourExtensions.cs" />
-    <Compile Include="..\@Unity\Extensions\Rect.cs" />
-    <Compile Include="..\@Unity\Extensions\RectOffset.cs" />
-    <Compile Include="..\@Unity\Extensions\TransformExtensions.cs" />
-    <Compile Include="..\@Unity\Extensions\Vector3.cs" />
-    <Compile Include="..\@Unity\Utility\Pref\Player.cs" />
-    <Compile Include="..\@Unity\Utility\Locate\Locate.cs" />
-    <Compile Include="..\@Unity\Systems\Style\Style.cs" />
-    <Compile Include="..\@Unity\Systems\UI\EditorAction.cs" />
-    <Compile Include="..\@Unity\Systems\UI\EditorGUI.cs" />
-    <Compile Include="..\@Unity\Systems\UI\EditorGUILayout.cs" />
-    <Compile Include="..\@Unity\Systems\UI\UI.cs" />
-    <Compile Include="..\@Unity\Systems\UI\UnityLabel.cs" />
-    <Compile Include="..\Supports\Stepper\Stepper.cs" />
-    <Compile Include="..\@Unity\Utility\Shortcuts\Shortcuts.cs" />
-    <Compile Include="..\Systems\File\File.cs" />
-    <Compile Include="..\@Unity\Supports\Singleton\Singleton.cs" />
-    <Compile Include="..\Systems\Event\EventDetector.cs" />
-    <Compile Include="..\Systems\Event\EventListener.cs" />
-    <Compile Include="..\Systems\Event\Events.cs" />
-    <Compile Include="..\Systems\Event\EventsManager.cs" />
-    <Compile Include="..\Supports\Worker\Worker.cs" />
-    <Compile Include="..\System Attributes\Advanced.cs" />
-    <Compile Include="..\System Attributes\Internal.cs" />
-    <Compile Include="..\System Attributes\NotSerialized.cs" />
-    <Compile Include="..\System Attributes\ReadOnly.cs" />
-    <Compile Include="..\@Unity\Extensions\Editor\EditorWindow.cs" />
-    <Compile Include="..\@Unity\Extensions\Editor\GenericMenu.cs" />
-    <Compile Include="..\@Unity\Extensions\Editor\SerializedProperty.cs" />
-    <Compile Include="..\@Unity\Extensions\Editor\TextureImporter.cs" />
-    <Compile Include="..\@Unity\Utility\Locate\Editor\Locate.cs" />
-    <Compile Include="..\@Unity\Utility\Pref\Editor\Player.cs" />
-    <Compile Include="..\@Unity\Utility\Pref\Editor\Pref.cs" />
-    <Compile Include="..\@Unity\Editor\Systems\Undo\Undo.cs" />
-    <Compile Include="..\@Unity\Editor\Systems\Themes\RelativeColor.cs" />
-    <Compile Include="..\@Unity\Editor\Systems\Themes\Theme.cs" />
-    <Compile Include="..\@Unity\Editor\Systems\Themes\ThemeFontset.cs" />
-    <Compile Include="..\@Unity\Editor\Systems\Themes\ThemeIconset.cs" />
-    <Compile Include="..\@Unity\Editor\Systems\Themes\ThemePalette.cs" />
-    <Compile Include="..\@Unity\Editor\Systems\Themes\ThemeSkinset.cs" />
+    <Compile Include="../Extensions/Array.cs" />
+    <Compile Include="../Extensions/BitArray.cs" />
+    <Compile Include="../Extensions/ByteArray.cs" />
+    <Compile Include="../Extensions/Decimal.cs" />
+    <Compile Include="../Extensions/Delegate.cs" />
+    <Compile Include="../Extensions/Dictionary.cs" />
+    <Compile Include="../Extensions/Double.cs" />
+    <Compile Include="../Extensions/Enum.cs" />
+    <Compile Include="../Extensions/Float.cs" />
+    <Compile Include="../Extensions/IEnumerable.cs" />
+    <Compile Include="../Extensions/Int.cs" />
+    <Compile Include="../Extensions/List.cs" />
+    <Compile Include="../Extensions/Object.cs" />
+    <Compile Include="../Extensions/Serializable.cs" />
+    <Compile Include="../Extensions/SortedList.cs" />
+    <Compile Include="../Extensions/Stopwatch.cs" />
+    <Compile Include="../Extensions/String.cs" />
+    <Compile Include="../Extensions/StringBuilder.cs" />
+    <Compile Include="../Extensions/Type.cs" />
+    <Compile Include="../Extensions/Convert/Bool.cs" />
+    <Compile Include="../Extensions/Convert/Byte.cs" />
+    <Compile Include="../Extensions/Convert/ByteArray.cs" />
+    <Compile Include="../Extensions/Convert/DateTime.cs" />
+    <Compile Include="../Extensions/Convert/Decimal.cs" />
+    <Compile Include="../Extensions/Convert/Dictionary.cs" />
+    <Compile Include="../Extensions/Convert/Double.cs" />
+    <Compile Include="../Extensions/Convert/Enum.cs" />
+    <Compile Include="../Extensions/Convert/Float.cs" />
+    <Compile Include="../Extensions/Convert/IEnumerable.cs" />
+    <Compile Include="../Extensions/Convert/Int.cs" />
+    <Compile Include="../Extensions/Convert/List.cs" />
+    <Compile Include="../Extensions/Convert/Object.cs" />
+    <Compile Include="../Extensions/Convert/Short.cs" />
+    <Compile Include="../Extensions/Convert/String.cs" />
+    <Compile Include="../Supports/Hierarchy/Hierarchy.cs" />
+    <Compile Include="../@Unity/Utility/Proxy/Proxy.cs" />
+    <Compile Include="../@Unity/Utility/Log/Log.cs" />
+    <Compile Include="../Systems/Reflection/Reflection.cs" />
+    <Compile Include="../Supports/Shortcuts/Shortcuts.cs" />
+    <Compile Include="../@Unity/Utility/Button/Button.cs" />
+    <Compile Include="../@Unity/System Attributes/EnumMask.cs" />
+    <Compile Include="../@Unity/System Attributes/InitializeOnLoad.cs" />
+    <Compile Include="../@Unity/System Attributes/InputName.cs" />
+    <Compile Include="../@Unity/Extensions/Convert/AnimationCurve.cs" />
+    <Compile Include="../@Unity/Extensions/Convert/BitStream.cs" />
+    <Compile Include="../@Unity/Extensions/Convert/Color.cs" />
+    <Compile Include="../@Unity/Extensions/Convert/GUIContent.cs" />
+    <Compile Include="../@Unity/Extensions/Convert/Rect.cs" />
+    <Compile Include="../@Unity/Extensions/Convert/RectOffset.cs" />
+    <Compile Include="../@Unity/Extensions/Convert/Texture2D.cs" />
+    <Compile Include="../@Unity/Extensions/Convert/Vector2.cs" />
+    <Compile Include="../@Unity/Extensions/Convert/Vector3.cs" />
+    <Compile Include="../@Unity/Extensions/Convert/Vector4.cs" />
+    <Compile Include="../@Unity/Editor/Events/EditorEvents.cs" />
+    <Compile Include="../@Unity/Utility/Time/Time.cs" />
+    <Compile Include="../@Unity/Utility/Call/Call.cs" />
+	<Compile Include="../@Unity/Utility/Call/Events/CallEvents.cs" />
+    <Compile Include="../@Unity/Utility/Proxy/ProxyEditor/ProxyEditor.cs" />
+    <Compile Include="../@Unity/Extensions/AnimationExtensions.cs" />
+    <Compile Include="../@Unity/Extensions/Color.cs" />
+    <Compile Include="../@Unity/Extensions/ComponentExtensions.cs" />
+    <Compile Include="../@Unity/Extensions/Event.cs" />
+    <Compile Include="../@Unity/Extensions/GameObject.cs" />
+    <Compile Include="../@Unity/Extensions/GUISkin.cs" />
+    <Compile Include="../@Unity/Extensions/GUIStyle.cs" />
+    <Compile Include="../@Unity/Extensions/GUIStyleState.cs" />
+    <Compile Include="../@Unity/Extensions/LayerMask.cs" />
+    <Compile Include="../@Unity/Extensions/Mesh.cs" />
+    <Compile Include="../@Unity/Extensions/MonoBehaviourExtensions.cs" />
+    <Compile Include="../@Unity/Extensions/Rect.cs" />
+    <Compile Include="../@Unity/Extensions/RectOffset.cs" />
+    <Compile Include="../@Unity/Extensions/SkinnedMeshRenderer.cs" />
+    <Compile Include="../@Unity/Extensions/TransformExtensions.cs" />
+    <Compile Include="../@Unity/Extensions/Vector3.cs" />
+    <Compile Include="../@Unity/Utility/Pref/Player.cs" />
+    <Compile Include="../@Unity/Utility/Locate/Locate.cs" />
+    <Compile Include="../@Unity/Systems/Style/Style.cs" />
+    <Compile Include="../@Unity/Systems/UI/EditorAction.cs" />
+    <Compile Include="../@Unity/Systems/UI/EditorGUI.cs" />
+    <Compile Include="../@Unity/Systems/UI/EditorGUILayout.cs" />
+    <Compile Include="../@Unity/Systems/UI/UI.cs" />
+    <Compile Include="../@Unity/Systems/UI/UnityLabel.cs" />
+    <Compile Include="../Supports/Stepper/Stepper.cs" />
+    <Compile Include="../@Unity/Utility/Shortcuts/Shortcuts.cs" />
+    <Compile Include="../Systems/File/File.cs" />
+    <Compile Include="../@Unity/Supports/Singleton/Singleton.cs" />
+    <Compile Include="../Systems/Event/EventDetector.cs" />
+    <Compile Include="../Systems/Event/EventListener.cs" />
+    <Compile Include="../Systems/Event/Events.cs" />
+    <Compile Include="../Systems/Event/EventsManager.cs" />
+    <Compile Include="../Supports/Worker/Worker.cs" />
+    <Compile Include="../System Attributes/Advanced.cs" />
+    <Compile Include="../System Attributes/Internal.cs" />
+    <Compile Include="../System Attributes/NotSerialized.cs" />
+    <Compile Include="../System Attributes/ReadOnly.cs" />
+    <Compile Include="../@Unity/Extensions/Editor/EditorWindow.cs" />
+    <Compile Include="../@Unity/Extensions/Editor/GenericMenu.cs" />
+    <Compile Include="../@Unity/Extensions/Editor/SerializedProperty.cs" />
+    <Compile Include="../@Unity/Extensions/Editor/TextureImporter.cs" />
+    <Compile Include="../@Unity/Utility/Locate/Editor/Locate.cs" />
+    <Compile Include="../@Unity/Utility/Pref/Editor/Player.cs" />
+    <Compile Include="../@Unity/Utility/Pref/Editor/Pref.cs" />
+    <Compile Include="../@Unity/Editor/Systems/Undo/Undo.cs" />
+    <Compile Include="../@Unity/Editor/Systems/Themes/RelativeColor.cs" />
+    <Compile Include="../@Unity/Editor/Systems/Themes/Theme.cs" />
+    <Compile Include="../@Unity/Editor/Systems/Themes/ThemeFontset.cs" />
+    <Compile Include="../@Unity/Editor/Systems/Themes/ThemeIconset.cs" />
+    <Compile Include="../@Unity/Editor/Systems/Themes/ThemePalette.cs" />
+    <Compile Include="../@Unity/Editor/Systems/Themes/ThemeSkinset.cs" />
     <Compile Include="ThemeSystem.cs" />
-    <Compile Include="..\@Unity\Editor\Systems\Themes\ThemeUtility.cs" />
-    <Compile Include="..\@Unity\Editor\Systems\Themes\ThemeVerticalSpace.cs" />
-    <Compile Include="..\@Unity\Editor\Systems\Themes\ThemeWindow.cs" />
+    <Compile Include="../@Unity/Editor/Systems/Themes/ThemeUtility.cs" />
+    <Compile Include="../@Unity/Editor/Systems/Themes/ThemeVerticalSpace.cs" />
+    <Compile Include="../@Unity/Editor/Systems/Themes/ThemeWindow.cs" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildToolsPath)/Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
 </Project>

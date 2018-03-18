@@ -8,8 +8,7 @@ namespace Zios.Unity.Time{
 		public static float GetFixed(){return UnityTime.fixedTime;}
 		public static float GetFixedDelta(){return UnityTime.fixedDeltaTime;}
 		public static void Start(){
-			Time.clock.Reset();
-			Time.clock.Start();
+			Time.clock = Stopwatch.StartNew();
 		}
 		public static float Check(){return (float)Time.clock.Elapsed.TotalMilliseconds/1000f;}
 		public static string Passed(){return Time.Check() + " seconds";}

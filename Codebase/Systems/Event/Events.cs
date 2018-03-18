@@ -81,7 +81,7 @@ namespace Zios.Events{
 				main.AddComponent<EventDetector>();
 				main.hideFlags = HideFlags.HideInHierarchy;
 			}
-			#if UNITY_THEMES
+			#if ZIOS_MINIMAL
 			main.hideFlags = HideFlags.HideAndDontSave;
 			#endif
 		}

@@ -433,7 +433,7 @@ namespace Zios.File{
 	using Zios.Unity.ProxyEditor;
 	using Zios.Unity.Extensions;
 	public static partial class File{
-		#if !UNITY_THEMES
+		#if !ZIOS_MINIMAL
 		//[MenuItem("Zios/Format Code")]
 		#endif
 		public static void FormatCode(){

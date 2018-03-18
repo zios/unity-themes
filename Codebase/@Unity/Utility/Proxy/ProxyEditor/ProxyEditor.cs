@@ -82,7 +82,7 @@ namespace Zios.Unity.ProxyEditor{
 		//============================
 		// Assets
 		//============================
-		#if !UNITY_THEMES
+		#if !ZIOS_MINIMAL
 		[MenuItem("Zios/Reload Scripts &#R")]
 		public static void ReloadScripts(){
 			Log.Show("[Utility] : Forced Reload Scripts.");
@@ -191,6 +191,19 @@ namespace Zios.Unity.ProxyEditor{
 		public static void RemoveUpdate(CallbackFunction method){
 			EditorApplication.update -= method;
 		}
+		public static void AddModeChange(CallbackFunction method){
+			#if UNITY_2017_2_OR_NEWER
+			EditorApplication.playModeStateChanged += (x)=>method();
+			#else
+			EditorApplication.playmodeStateChanged += method;
+			#endif
+		}
+		public static void RemoveModeChange(CallbackFunction method){
+			#if UNITY_2017_2_OR_NEWER
+			#else
+			EditorApplication.playmodeStateChanged -= method;
+			#endif
+		}
 		//============================
 		// EditorUtility
 		//============================
@@ -250,7 +263,7 @@ namespace Zios.Unity.ProxyEditor{
 			var window = EditorWindow.GetWindowWithRect(inspectorWindow,current);
 			return window.GetVariable<Vector2>("m_ScrollPosition");
 		}
-		#if !UNITY_THEMES
+		#if !ZIOS_MINIMAL
 		[MenuItem("Zios/Unhide GameObjects")]
 		public static void UnhideAll(){
 			foreach(var target in Resources.FindObjectsOfTypeAll<GameObject>()){

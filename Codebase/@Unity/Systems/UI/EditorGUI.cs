@@ -116,7 +116,11 @@ namespace Zios.Unity.EditorUI{
 		}
 		public static Enum DrawMaskField(this Enum current,Rect area,UnityLabel label=null,GUIStyle style=null,bool indention=true){
 			style = style ?? EditorStyles.popup;
+			#if UNITY_2017_3_OR_NEWER
 			return EditorUI.Draw<Enum>(()=>EditorGUI.EnumFlagsField(area,label,current,style),indention,area);
+			#else
+			return EditorUI.Draw<Enum>(()=>EditorGUI.EnumMaskField(area,label,current,style),indention,area);
+			#endif
 		}
 		public static Vector2 DrawVector2(this Vector2 current,Rect area,UnityLabel label=null,bool indention=true){
 			return EditorUI.Draw<Vector2>(()=>EditorGUI.Vector2Field(area,label,current),indention,area);

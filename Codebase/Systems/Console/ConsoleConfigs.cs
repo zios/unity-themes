@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 namespace Zios.Console{
+	using Zios.Extensions;
 	using Zios.File;
 	public partial class Console{
 		private static List<string> configOutput = new List<string>();
@@ -12,13 +13,10 @@ namespace Zios.Console{
 			}
 		}
 		public static void LoadConfig(string name){
-			if(name != "" && File.Exists(name)){
-				using(StreamReader file = new StreamReader(name)){
-					string line = "";
-					while((line = file.ReadLine()) != null){
-						Console.AddCommand(line,true);
-					}
-				}
+			if(!File.Exists(name)){return;}
+			foreach(var line in File.ReadLines(name)){
+				if(line.IsEmpty()){continue;}
+				Console.AddCommand(line,true);
 			}
 		}
 		public static void LoadConfig(string[] values){

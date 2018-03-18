@@ -44,14 +44,6 @@ namespace Zios.Console{
 		public int logFontSize = 15;
 		public byte logFontColor = 7;
 		public bool logFontAllowColors = true;
-		public void OnValidate(){
-			if(this.skin.IsNull()){
-				this.skin = File.GetAsset<GUISkin>("Console.guiskin");
-				this.background = File.GetAsset<Material>("ConsoleBackground.mat");
-				this.inputBackground = File.GetAsset<Material>("ConsoleInput.mat");
-				this.textArrow = File.GetAsset<Material>("ConsoleArrow.mat");
-			}
-		}
 		public static Console Get(){
 			Console.singleton = Console.singleton ?? Singleton.Get<Console>();
 			return Console.singleton;
@@ -59,7 +51,12 @@ namespace Zios.Console{
 		public void OnEnable(){
 			Console.singleton = this;
 			if(Console.Get().disabled){return;}
-			this.OnValidate();
+			if(this.skin.IsNull()){
+				this.skin = File.GetAsset<GUISkin>("Console.guiskin");
+				this.background = File.GetAsset<Material>("ConsoleBackground.mat");
+				this.inputBackground = File.GetAsset<Material>("ConsoleInput.mat");
+				this.textArrow = File.GetAsset<Material>("ConsoleArrow.mat");
+			}
 			Proxy.AddLogCallback(Console.HandleLog);
 			if(!this.logFile.IsEmpty()){
 				string logPath = Application.persistentDataPath + "/" + this.logFile;

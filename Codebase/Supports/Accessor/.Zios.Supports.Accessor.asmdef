@@ -1,8 +1,0 @@
-{
-	"name": "Zios.Supports.Accessor",
-	"references": [
-		"Zios.Reflection"
-	],
-	"includePlatforms": [],
-	"excludePlatforms": []
-}

@@ -6,6 +6,7 @@ namespace Zios.Unity.ProgramManager{
 	using Zios.Console;
 	using Zios.Events;
 	using Zios.Extensions;
+	using Zios.Extensions.Convert;
 	using Zios.Unity.Components.ParticleUpdater;
 	using Zios.Unity.Components.Persistent;
 	using Zios.Unity.ProxyEditor;
@@ -36,8 +37,8 @@ namespace Zios.Unity.ProgramManager{
 			Events.Add("On Editor Update",this.UpdateEffects);
 			Events.Add("On Enter Play",this.UpdateEffects);
 			Application.targetFrameRate = this.maxFPS;
-			Resolution screen = Screen.currentResolution;
-			this.resolution = new int[3]{Screen.width,Screen.height,screen.refreshRate};
+			var screen = Screen.currentResolution;
+			this.resolution = new int[2]{Screen.width,Screen.height};
 			Locate.GetSceneComponents<Persistent>().Where(x=>x.activateOnLoad).ToList().ForEach(x=>x.gameObject.SetActive(true));
 			this.DetectResolution();
 		}
@@ -52,7 +53,7 @@ namespace Zios.Unity.ProgramManager{
 			Console.AddKeyword("instance",this.InstanceGameObject,1);
 			Console.AddKeyword("destroy",this.DestroyGameObject,1);
 			Console.AddKeyword("closeProgram",this.CloseProgram);
-			Console.AddCvarMethod("changeResolution",this,"resolution","Change Resolution","",this.ChangeResolution);
+			//Console.AddCvarMethod("changeResolution",this,"resolution","Change Resolution","",this.ChangeResolution);
 			Console.AddCvar("maxfps",typeof(Application),"targetFrameRate","Maximum FPS");
 			Console.AddCvar("verticalSync",typeof(QualitySettings),"vSyncCount","Vertical Sync");
 		}
@@ -67,8 +68,8 @@ namespace Zios.Unity.ProgramManager{
 		}
 		public void UpdateEffects(){
 			#if UNITY_EDITOR
-			bool updateShaders = PlayerPref.Get<bool>("EditorSettings-AlwaysUpdateShaders");
-			bool updateParticles = PlayerPref.Get<bool>("EditorSettings-AlwaysUpdateParticles");
+			var updateShaders = PlayerPref.Get<bool>("EditorSettings-AlwaysUpdateShaders");
+			var updateParticles = PlayerPref.Get<bool>("EditorSettings-AlwaysUpdateParticles");
 			if(updateShaders){Shader.SetGlobalFloat("timeConstant",Time.Get());}
 			foreach(var system in Locate.GetSceneComponents<ParticleSystem>()){
 				if(system.IsNull()){continue;}
@@ -100,11 +101,11 @@ namespace Zios.Unity.ProgramManager{
 		public void ToggleGameObject(string[] values){Locate.GetSceneObjects().Where(x=>x.name==values[1]).ToList().ForEach(x=>x.SetActive(!x.activeInHierarchy));}
 		public void DetectResolution(){
 			if(!Proxy.IsPlaying()){return;}
-			Resolution screen = Screen.currentResolution;
-			int[] size = this.resolution;
-			bool changedWidth = Screen.width != size[0];
-			bool changedHeight = Screen.height != size[1];
-			bool changedRefresh = screen.refreshRate != this.refreshRate;
+			var screen = Screen.currentResolution;
+			var size = this.resolution;
+			var changedWidth = Screen.width != size[0];
+			var changedHeight = Screen.height != size[1];
+			var changedRefresh = screen.refreshRate != this.refreshRate;
 			if(changedWidth || changedHeight || changedRefresh){
 				Events.Call("On Resolution Change");
 				if(!this.allowResolution){
@@ -130,15 +131,15 @@ namespace Zios.Unity.ProgramManager{
 				this.allowResolution = false;
 				return;
 			}
-			this.resolution[0] = Convert.ToInt32(values[1]);
-			this.resolution[1] = Convert.ToInt32(values[2]);
+			this.resolution[0] = values[1].ToInt();
+			this.resolution[1] = values[1].ToInt();
 		}
 		public void SnapPixels(string[] values){
 			if(values.Length < 2){
 				Log.Show("@pixelSnap*");
 				return;
 			}
-			bool[] states = new List<bool>(this.pixelSnap).ToArray();
+			var states = new List<bool>(this.pixelSnap).ToArray();
 			if(values.Length == 2){
 				values = new string[]{"",values[1],values[1],values[1]};
 			}

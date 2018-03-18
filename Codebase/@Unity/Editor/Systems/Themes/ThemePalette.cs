@@ -219,7 +219,9 @@ namespace Zios.Unity.Editor.Themes{
 			return current;
 		}
 		public void ApplyTexture(string path,Texture2D texture){
-			if(texture.IsNull()){return;}
+			var empty = false;
+			Worker.MainThread(()=>empty=texture.IsNull());
+			if(empty){return;}
 			var name = path.GetPathTerm().TrimLeft("#");
 			var ignoreAlpha = name.StartsWith("A-");
 			var isSplat = name.StartsWith("!");

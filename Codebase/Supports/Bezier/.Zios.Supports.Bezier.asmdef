@@ -1,8 +1,0 @@
-{
-	"name": "Zios.Supports.Bezier",
-	"references": [
-		"Zios.Supports.Vector"
-	],
-	"includePlatforms": [],
-	"excludePlatforms": []
-}

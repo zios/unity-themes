@@ -34,10 +34,23 @@ namespace Zios.Extensions.Convert{
 			}
 			return result;
 		}
-		public static int[] ToInt(this IEnumerable<string> current){return current.Select(x=>x.ToInt()).ToArray();}
-		public static bool[] ToBool(this IEnumerable<string> current){return current.Select(x=>x.ToBool()).ToArray();}
-		public static float[] ToFloat(this IEnumerable<string> current){return current.Select(x=>x.ToFloat()).ToArray();}
-		public static HashSet<T> ToHashSet<T>(this IEnumerable<T> current){
+		public static int ToBitFlags<Type>(this IEnumerable<Type> current,Func<Type,bool> compare){
+			var index = 0;
+			var value = 0;
+			var increment = 1;
+			foreach(var item in current){
+				if(compare(item)){
+					value += increment;
+				}
+				increment *= 2;
+				index += 1;
+			}
+			return value;
+		}
+		public static int[] ToInt(this IList<string> current){return current.Select(x=>x.ToInt()).ToArray();}
+		public static bool[] ToBool(this IList<string> current){return current.Select(x=>x.ToBool()).ToArray();}
+		public static float[] ToFloat(this IList<string> current){return current.Select(x=>x.ToFloat()).ToArray();}
+		public static HashSet<T> ToHashSet<T>(this IList<T> current){
 		   return new HashSet<T>(current);
 		}
 		public static string Serialize<T>(this IEnumerable<T> current,string separator="-",bool changesOnly=false){

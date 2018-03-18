@@ -15,7 +15,7 @@ namespace Zios.Unity.Editor.Undo{
 	public class Undo : Singleton{
 		public static Undo singleton;
 		public static int position = -1;
-		public static Hierarchy<Type,string,object> snapshot = new Hierarchy<Type,string,object>();
+		public static Hierarchy<object,string,object> snapshot = new Hierarchy<object,string,object>();
 		public static Hierarchy<string,object> snapshotPrefs = new Hierarchy<string,object>();
 		public List<string> buffer = new List<string>();
 		private List<string> cache = new List<string>();
@@ -78,7 +78,7 @@ namespace Zios.Unity.Editor.Undo{
 			instance.cache = instance.buffer.Copy();
 		}
 		public static void RecordStart<Type>(bool clearPrefRecords=true){Undo.RecordStart(typeof(Type),clearPrefRecords);}
-		public static void RecordStart(Type target,bool clearPrefRecords=true){
+		public static void RecordStart(object target,bool clearPrefRecords=true){
 			Reflection.ResetCache();
 			if(clearPrefRecords){Undo.snapshotPrefs.Clear();}
 			Undo.snapshot[target] = target.GetVariables(Reflection.staticPublicFlags);
@@ -93,17 +93,17 @@ namespace Zios.Unity.Editor.Undo{
 		public static void RecordEnd<Type>(string operation,Action callback,bool handlePrefs=true){
 			Undo.RecordEnd(operation,typeof(Type),(x)=>callback(),handlePrefs);
 		}
-		public static void RecordEnd(string operation,Type target,Action callback,bool handlePrefs=true){
+		public static void RecordEnd(string operation,object target,Action callback,bool handlePrefs=true){
 			Undo.RecordEnd(operation,target,(x)=>callback(),handlePrefs);
 		}
-		public static void RecordEnd(string operation,Type target,Action<string> callback=null,bool handlePrefs=true){
+		public static void RecordEnd(string operation,object target,Action<string> callback=null,bool handlePrefs=true){
 			Reflection.ResetCache();
 			var undo = "";
 			var redo = "";
 			if(Undo.snapshot.ContainsKey(target)){
 				var changes = Undo.snapshot[target].Difference(target.GetVariables(Reflection.staticPublicFlags));
 				foreach(var item in changes){
-					var scope = "&&&"+target.FullName+"###"+item.Key+"|||";
+					var scope = "&&&"+target.AsType().FullName+"###"+item.Key+"|||";
 					undo += scope + Undo.snapshot[target][item.Key];
 					redo += scope + item.Value;
 				}

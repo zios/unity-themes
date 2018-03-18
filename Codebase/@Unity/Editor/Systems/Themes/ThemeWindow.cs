@@ -46,13 +46,14 @@ namespace Zios.Unity.Editor.Themes{
 			if(Theme.window.IsNull()){
 				Theme.window = Locate.GetAssets<ThemeWindow>().FirstOrDefault();
 				if(Theme.window.IsNull()){
-					Theme.window = ScriptableObject.CreateInstance<ThemeWindow>();
+					Theme.window = EditorWindow.CreateInstance<ThemeWindow>();
 					Theme.window.position = ThemeWindow.hiddenPosition;
 					Theme.window.minSize = ThemeWindow.hiddenSize;
 					Theme.window.maxSize = ThemeWindow.hiddenSize;
 					Theme.window.wantsMouseMove = Theme.hoverResponse != HoverResponse.None;
 					Theme.window.ShowPopup();
 				}
+				if(Theme.window.IsNull()){return;}
 			}
 			if(Theme.window.position != ThemeWindow.hiddenPosition){Theme.window.position = ThemeWindow.hiddenPosition;}
 			if(Theme.window.maxSize != ThemeWindow.hiddenSize){
@@ -60,20 +61,11 @@ namespace Zios.Unity.Editor.Themes{
 				Theme.window.maxSize = ThemeWindow.hiddenSize;
 			}
 		}
-		public static void CloseWindow(object sender,EventArgs arguments){
-			#if UNITY_5_3_4_OR_NEWER
-			if(!ProxyEditor.IsChanging()){
-				ThemeWindow.CloseWindow();
-			}
-			#endif
+		public void OnDestroy(){
+			Theme.window = null;
+			ThemeWindow.setup = false;
 		}
-		public static void CloseWindow(){
-			var windows = Theme.window.IsNull() ? Resources.FindObjectsOfTypeAll<ThemeWindow>() : Theme.window.AsArray();
-			foreach(var window in windows){
-				if(!window.IsNull()){
-					window.Close();
-				}
-			}
+		public void OnDisable(){
 			Theme.window = null;
 			ThemeWindow.setup = false;
 		}

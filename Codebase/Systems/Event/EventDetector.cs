@@ -9,6 +9,7 @@ namespace Zios.Events{
 		private float loadStart;
 		public static bool loading = true;
 		public void Loading(){
+			Proxy.busyMethods.Add(()=>EventDetector.loading);
 			this.loadStart = Time.Get();
 			EventDetector.loading = true;
 		}

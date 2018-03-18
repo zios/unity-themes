@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 namespace Zios.Unity.Call{
 	using Zios.Unity.Proxy;
+	using Zios.Unity.ProxyEditor;
 	using Zios.Unity.Time;
 	using Zios.Extensions;
-#if UNITY_EDITOR
+	#if UNITY_EDITOR
 	using UnityEditor;
 	using CallbackFunction = UnityEditor.EditorApplication.CallbackFunction;
-#else
+	#else
 	public delegate void CallbackFunction();
-#endif
+	#endif
 	public static class Call{
 		private static Dictionary<object,KeyValuePair<Action,float>> delayedMethods = new Dictionary<object,KeyValuePair<Action,float>>();
 		public static void Repeat(Action method,int amount){

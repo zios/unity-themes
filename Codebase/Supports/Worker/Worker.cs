@@ -18,6 +18,7 @@ namespace Zios.Supports.Worker{
 		public Thread manager;
 		public bool finalize;
 		public object group;
+		public bool stepper;
 		public bool monitor;
 		public bool async;
 		public bool quit;
@@ -119,7 +120,10 @@ namespace Zios.Supports.Worker{
 			}
 		}
 		public virtual void ThreadEnd(){
-			if(this.onEnd != null && (!this.quit || this.finalize)){this.onEnd();}
+			if(this.onEnd != null && (!this.quit || this.finalize)){
+				if(this.stepper){Worker.MainThread(()=>this.onEnd());}
+				else{this.onEnd();}
+			}
 			//foreach(var thread in this.remaining){thread.Abort();}
 			lock(Worker.all){Worker.all.Remove(x=>x.Value==this);}
 		}
@@ -148,7 +152,10 @@ namespace Zios.Supports.Worker{
 		public virtual void Step<Data>(List<Data> data,int position=0){this.StepEnd();}
 		public virtual int Execute(Func<bool> step,int index,object element){
 			bool success = false;
-			try{success = step();}
+			try{
+				if(this.stepper){Worker.MainThread(()=>success = step());}
+				else{success = step();}
+			}
 			catch(Exception exception){
 				var message = "[Worker] Uncaught exception for ("+element.GetType().Name + ") on " + index + "/" + this.size + "\n";
 				message += element.GetType().Name + "\n" + exception.Message + "\n" + exception.StackTrace;
@@ -331,9 +338,15 @@ namespace Zios.Supports.Worker{
 			current.finalize = state;
 			return current;
 		}
-		public static Type Monitor<Type>(this Type current,bool monitor=true) where Type : Worker{
-			current.monitor = monitor;
-			current.Async(monitor);
+		public static Type Monitor<Type>(this Type current,bool state=true) where Type : Worker{
+			current.monitor = state;
+			current.Async(state);
+			return current;
+		}
+		public static Type Stepper<Type>(this Type current,bool state=true) where Type : Worker{
+			current.stepper = state;
+			current.Monitor(state);
+			current.Threads(1);
 			return current;
 		}
 		public static Type Quit<Type>(this Type current) where Type : Worker{
@@ -353,16 +366,18 @@ namespace Zios.Supports.Worker{
 				current.Step(items,0);
 				return current;
 			}
-			var index = 0;
-			foreach(var item in items.DivideInto(current.threadCount)){
-				if(item.Count == 0){break;}
-				var part = item;
-				var position = index;
-				var chunk = new ThreadStart(()=>current.Step(part,position));
-				var thread = new Thread(chunk);
-				current.threads.Add(thread);
-				lock(Worker.all){Worker.all[thread] = current;}
-				index += part.Count;
+			if(current.threadCount > 0){
+				var index = 0;
+				foreach(var item in items.DivideInto(current.threadCount)){
+					if(item.Count == 0){break;}
+					var part = item;
+					var position = index;
+					var chunk = new ThreadStart(()=>current.Step(part,position));
+					var thread = new Thread(chunk);
+					current.threads.Add(thread);
+					lock(Worker.all){Worker.all[thread] = current;}
+					index += part.Count;
+				}
 			}
 			if(!current.async){
 				current.ThreadStart();

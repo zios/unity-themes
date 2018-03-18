@@ -98,10 +98,10 @@ namespace Zios.Console{
 			}
 			if(values.Length > 1 && values[1] != ""){
 				try{
-					data.value.Set(values[1].Deserialize(data.value.type));
+					data.value.Set(values[1].Deserialize(data.value.type," "));
 				}
 				catch{
-					Log.Show(values[1] + " -- " + values[1].Deserialize(data.value.type).GetType());
+					Log.Show(values[1] + " -- " + values[1].Deserialize(data.value.type," ").GetType());
 					Log.Show("[ConsoleCvars] : Issue setting cvar ["+data.value.type+"] -- " + data.value.name + " to " + values[1]);
 				}
 			}

@@ -92,14 +92,14 @@ namespace Zios.Unity.Editor.Themes{
 		//=================================
 		// Dump
 		//=================================
-		[MenuItem("Edit/Themes/Development/Dump/GUISkin")]
+		[MenuItem("Edit/Themes/Development/Dump/Active/GUISkin")]
 		public static void Dump(){
 			var savePath = EditorUtility.SaveFilePanel("Dump GUISkin",Theme.storagePath,"Default","guiSkin").GetAssetPath();
 			var skin = EditorGUIUtility.GetBuiltinSkin(EditorSkin.Inspector);
 			skin = ScriptableObject.CreateInstance<GUISkin>().Use(skin);
 			ProxyEditor.CreateAsset(skin,savePath);
 		}
-		[MenuItem("Edit/Themes/Development/Dump/GUISkin [Extended]")]
+		[MenuItem("Edit/Themes/Development/Dump/Active/GUISkin [All]")]
 		public static void DumpExtended(){
 			var warning = "Dumping all GUISkin will deep scan the editor assembly for GUIStyles.  ";
 			warning += "This will produce warnings/errors and could cause Unity to become unresponsive at end of operation.  Continue?";

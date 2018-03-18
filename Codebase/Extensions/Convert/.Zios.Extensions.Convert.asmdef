@@ -1,8 +1,0 @@
-{
-	"name": "Zios.Extensions.Convert",
-	"references": [
-		"Zios.Extensions"
-	],
-	"includePlatforms": [],
-	"excludePlatforms": []
-}

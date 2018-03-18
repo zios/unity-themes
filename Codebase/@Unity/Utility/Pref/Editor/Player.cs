@@ -7,7 +7,7 @@ namespace Zios.Unity.Editor.Pref{
 				PlayerPref.ClearAll();
 			}
 		}
-		#if !UNITY_THEMES
+		#if !ZIOS_MINIMAL
 		[MenuItem("Zios/Prefs/Clear Player")]
 		public static void ClearAll(){PlayerPrefEditor.ClearAll(true);}
 		#endif

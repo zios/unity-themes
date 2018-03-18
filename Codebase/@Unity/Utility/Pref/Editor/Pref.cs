@@ -62,7 +62,7 @@ namespace Zios.Unity.Editor.Pref{
 				EditorPrefs.DeleteAll();
 			}
 		}
-		#if !UNITY_THEMES
+		#if !ZIOS_MINIMAL
 		[MenuItem("Zios/Prefs/Clear Editor")]
 		public static void DeleteAll(){EditorPref.ClearAll(true);}
 		#endif
