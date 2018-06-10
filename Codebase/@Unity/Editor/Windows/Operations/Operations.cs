@@ -8,6 +8,7 @@ namespace Zios.Unity.Editor.Windows{
 	using Zios.Unity.Colors;
 	using Zios.Unity.ProxyEditor;
 	using Zios.Unity.EditorUI;
+	using Zios.Unity.Editor.Extensions;
 	public class Operations : EditorWindow{
 		public bool preserveScale = true;
 		public ReplaceSelector optionA = new ReplaceSelector();
@@ -28,7 +29,7 @@ namespace Zios.Unity.Editor.Windows{
 		}
 		public void Start(){}
 		public void OnGUI(){
-			this.titleContent = new GUIContent("Utility");
+			EditorWindowExtensions.SetTitle(this, "Utility");
 			GUILayout.Label("--------------------------------------------------------------");
 			this.DrawMeshCombiner();
 			GUILayout.Label("--------------------------------------------------------------");
@@ -323,7 +324,11 @@ namespace Zios.Unity.Editor.Windows{
 				ProxyEditor.RegisterSceneUndo("Apply Selected Prefabs");
 				foreach(GameObject current in Selection.gameObjects){
 					GameObject root = PrefabUtility.FindPrefabRoot(current);
+					#if UNITY_2018_2_OR_NEWER
+					PrefabUtility.ReplacePrefab(root,PrefabUtility.GetCorrespondingObjectFromSource(root),ReplacePrefabOptions.ConnectToPrefab);
+					#else
 					PrefabUtility.ReplacePrefab(root,PrefabUtility.GetPrefabParent(root),ReplacePrefabOptions.ConnectToPrefab);
+					#endif
 				}
 			}
 			if(GUILayout.Button("Detach",GUILayout.Width(100))){

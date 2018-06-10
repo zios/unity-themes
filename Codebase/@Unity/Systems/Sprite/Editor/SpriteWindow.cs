@@ -1,4 +1,3 @@
-#pragma warning disable CS0618
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -20,6 +19,7 @@ namespace Zios.Unity.Editor.SpriteManager{
 	using Zios.Unity.Proxy;
 	using Zios.Unity.Shortcuts;
 	using Zios.Unity.SpriteManager;
+	using Zios.Unity.Editor.Extensions;
 	public class SpriteAssets{
 		public GUISkin UI;
 		public Mesh spriteMesh;
@@ -179,6 +179,7 @@ namespace Zios.Unity.Editor.SpriteManager{
 		public bool generateMaterials = false;
 		public bool generateMeshes = false;
 		public bool generatePrefabs = false;
+		private bool isShadowEnabled = false;
 		public int scaleMode = ScaleMode.Auto2D;
 		public float brushDistanceOffset = 1.0f;
 		public Vector3 brushScale = new Vector3(1,1,1);
@@ -329,7 +330,9 @@ namespace Zios.Unity.Editor.SpriteManager{
 				Vector3 rotation = active.localEulerAngles;
 				if(hasRenderer){
 					if(CheckKey(KeyCode.S)){
-						active.GetComponent<Renderer>().castShadows = !active.GetComponent<Renderer>().castShadows;
+						#if !UNITY_5 || !UNITY_2017_1_OR_NEWER
+						active.GetComponent<Renderer>().shadowCastingMode = isShadowEnabled ? UnityEngine.Rendering.ShadowCastingMode.On : UnityEngine.Rendering.ShadowCastingMode.Off;
+						#endif
 						useEvent = true;
 					}
 				}
@@ -650,7 +653,7 @@ namespace Zios.Unity.Editor.SpriteManager{
 				if(shader != targetShader){
 					instance.GetComponent<Renderer>().sharedMaterial.shader = targetShader;
 				}
-				instance.GetComponent<Renderer>().castShadows = !flat;
+				if(!flat){instance.GetComponent<Renderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;}
 			}
 		}
 		public void CreateMaterial(Sprite sprite,bool forceOverwrite=false,bool forceUpdate=false){
@@ -1254,12 +1257,12 @@ namespace Zios.Unity.Editor.SpriteManager{
 			GameObject root = PrefabUtility.FindPrefabRoot(current);
 			PrefabType type = PrefabUtility.GetPrefabType(root);
 			if(type == PrefabType.PrefabInstance || type == PrefabType.ModelPrefabInstance){
-				PrefabUtility.ReplacePrefab(root,PrefabUtility.GetPrefabParent(root),ReplacePrefabOptions.ConnectToPrefab);
+				ProxyEditor.ApplyPrefab(root);
 			}
 		}
 		public void DrawWindow(){
 			this.disabled = false;
-			this.title = "Sprites";
+			EditorWindowExtensions.SetTitle(this, "Sprites");
 			if(Proxy.IsPlaying()){
 				Rect area = new Rect(0,5,Screen.width,28);
 				GUI.Label(area,"Sprite Window disabled in Play Mode.",this.assets.UI.GetStyle("Title Options"));

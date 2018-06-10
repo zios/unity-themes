@@ -19,6 +19,7 @@ namespace Zios.Unity.Editor.MeshOperations{
 	using Zios.Supports.Worker;
 	using Zios.Unity.Components.AnimationSettings;
 	using Zios.Reflection;
+	using Zios.Unity.Editor.Extensions;
 
 	public enum VertexDisplay : int{
 		Distance    = 0x001,
@@ -92,7 +93,7 @@ namespace Zios.Unity.Editor.MeshOperations{
 			if("Flatten".ToLabel().Layout(200,20).DrawButton(EditorStyles.miniButtonRight.FixedHeight(0))){this.operationMode = OperationMode.Flatten;}
 			EditorGUILayout.EndHorizontal();
 			if(this.operationMode.Has("Merge")){
-				this.titleContent = new GUIContent("Mesh");
+				EditorWindowExtensions.SetTitle(this, "Mesh");
 				//"Vertex".DrawLabel(EditorStyles.boldLabel);
 				this.vertexMode = this.vertexMode.Draw("Vertex Mode").As<VertexMode>();
 				this.vertexDisplay = this.vertexDisplay.DrawMask("Vertex Display").As<VertexDisplay>();

@@ -1,4 +1,3 @@
-#pragma warning disable CS0618
 #if UNITY_EDITOR
 using System;
 using System.Collections.Generic;
@@ -140,7 +139,11 @@ namespace Zios.Unity.ProxyEditor{
 		}
 		public static void ApplyPrefab(GameObject target){
 			GameObject root = PrefabUtility.FindPrefabRoot(target);
+			#if UNITY_2018_2_OR_NEWER
+			PrefabUtility.ReplacePrefab(root,PrefabUtility.GetCorrespondingObjectFromSource(root),ReplacePrefabOptions.ConnectToPrefab);
+			#else
 			PrefabUtility.ReplacePrefab(root,PrefabUtility.GetPrefabParent(root),ReplacePrefabOptions.ConnectToPrefab);
+			#endif
 		}
 		public static void UpdatePrefab(UnityObject target){
 			PrefabUtility.RecordPrefabInstancePropertyModifications(target);
@@ -291,8 +294,20 @@ namespace Zios.Unity.ProxyEditor{
 			UnityUndo.RegisterCreatedObjectUndo(target,name);
 		}
 		public static void RegisterSceneUndo(string name){UnityUndo.RegisterSceneUndo(name);}
-		public static void RegisterUndo(UnityObject target,string name){UnityUndo.RegisterUndo(target,name);}
-		public static void RegisterUndo(UnityObject[] targets,string name){UnityUndo.RegisterUndo(targets,name);}
+		public static void RegisterUndo(UnityObject target,string name){
+			#if UNITY_3_0 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2
+			UnityUndo.RegisterUndo(target,name);
+			#else
+			UnityUndo.RecordObject(target,name);
+			#endif
+		}
+		public static void RegisterUndo(UnityObject[] targets,string name){
+			#if UNITY_3_0 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2
+			UnityUndo.RegisterUndo(targets,name);	
+			#else
+			UnityUndo.RecordObjects(targets,name);
+			#endif
+		}
 		//============================
 		// Other
 		//============================
