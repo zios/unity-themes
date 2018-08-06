@@ -207,6 +207,24 @@ namespace Zios.Unity.ProxyEditor{
 			EditorApplication.playmodeStateChanged -= method;
 			#endif
 		}
+		#if UNITY_2018_1_OR_NEWER
+		public static void HierarchyChanged(Action method){
+			EditorApplication.hierarchyChanged += method;
+		}
+		#else
+		public static void HierarchyWindowChanged(CallbackFunction method){
+			EditorApplication.hierarchyWindowChanged += method;
+		}
+		#endif
+		#if UNITY_2018_1_OR_NEWER
+		public static void ProjectChanged(Action method){
+			EditorApplication.projectChanged += method;
+		}
+		#else
+		public static void ProjectChanged(CallbackFunction method){
+			EditorApplication.projectWindowChanged += method;
+		}
+		#endif
 		//============================
 		// EditorUtility
 		//============================
@@ -293,7 +311,13 @@ namespace Zios.Unity.ProxyEditor{
 		public static void RegisterCreatedObjectUndo(UnityObject target,string name){
 			UnityUndo.RegisterCreatedObjectUndo(target,name);
 		}
-		public static void RegisterSceneUndo(string name){UnityUndo.RegisterSceneUndo(name);}
+		public static void RegisterSceneUndo(UnityObject target, string name){
+			#if UNITY_3_0 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2
+			UnityUndo.RegisterSceneUndo(name);
+			#else
+			UnityUndo.RegisterCompleteObjectUndo(target, name);
+			#endif
+		}
 		public static void RegisterUndo(UnityObject target,string name){
 			#if UNITY_3_0 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2
 			UnityUndo.RegisterUndo(target,name);

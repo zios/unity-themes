@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 namespace Zios.Unity.Extensions.Convert{
-#if ENABLE_MONO
+#if ENABLE_MONO && !UNITY_2018_2_OR_NEWER
 	public static class ConvertBitStream{
 		//============================
 		// From

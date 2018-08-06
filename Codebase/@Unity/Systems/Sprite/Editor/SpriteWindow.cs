@@ -306,12 +306,12 @@ namespace Zios.Unity.Editor.SpriteManager{
 				useEvent = true;
 			}
 			if(CheckKey(KeyCode.F)){
-				ProxyEditor.RegisterSceneUndo("Fix Scene Sprites");
+				ProxyEditor.RegisterSceneUndo(this, "Fix Scene Sprites");
 				this.FixScene(true);
 				useEvent = true;
 			}
 			if(CheckKey(KeyCode.P)){
-				ProxyEditor.RegisterSceneUndo("Revert All to Prefab");
+				ProxyEditor.RegisterSceneUndo(this, "Revert All to Prefab");
 				this.RevertSprites();
 				useEvent = true;
 			}
@@ -337,7 +337,7 @@ namespace Zios.Unity.Editor.SpriteManager{
 					}
 				}
 				if(!isBrush && CheckKey(KeyCode.L)){
-					ProxyEditor.RegisterSceneUndo("Revert Selected to Prefab");
+					ProxyEditor.RegisterSceneUndo(this, "Revert Selected to Prefab");
 					PrefabUtility.RevertPrefabInstance(active.gameObject);
 				}
 				if(control && CheckKey(KeyCode.G)){
@@ -1172,7 +1172,7 @@ namespace Zios.Unity.Editor.SpriteManager{
 		}
 		public void DrawResetButton(float x,float y,float width,float height){
 			if(GUI.Button(new Rect(x,y,width,height),"Reset")){
-				ProxyEditor.RegisterSceneUndo("Reset Sprite System");
+				ProxyEditor.RegisterSceneUndo(this, "Reset Sprite System");
 				this.ResetSystem();
 			}
 		}
@@ -1472,7 +1472,7 @@ namespace Zios.Unity.Editor.SpriteManager{
 				this.selected = sprite;
 				PlayerPref.Set<string>("SpriteWindow-Selected",sprite.fullName);
 				if(this.applyOnSelection){
-					if(target != this.brush){ProxyEditor.RegisterSceneUndo("Apply Sprites");}
+					if(target != this.brush){ProxyEditor.RegisterSceneUndo(this, "Apply Sprites");}
 					this.ApplySprite(target);
 				}
 			}

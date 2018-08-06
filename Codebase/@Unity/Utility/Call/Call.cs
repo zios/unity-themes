@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 namespace Zios.Unity.Call{
 	using Zios.Unity.Proxy;
-	using Zios.Unity.ProxyEditor;
 	using Zios.Unity.Time;
 	using Zios.Extensions;
 	#if UNITY_EDITOR

@@ -44,7 +44,7 @@ namespace Zios.Unity.Editor.Events{
 			UnityUndo.undoRedoPerformed += ()=>Events.Call("On Undo");
 			UnityUndo.undoRedoPerformed += ()=>Events.Call("On Redo");
 			PrefabUtility.prefabInstanceUpdated += (target)=>Events.Call("On Prefab Changed",target);
-			EditorApplication.projectWindowChanged += ()=>Events.Call("On Project Changed");
+			ProxyEditor.ProjectChanged(()=>Events.Call("On Project Changed"));
 			EditorApplication.playModeStateChanged += (PlayModeStateChange state)=>{
 				Events.Call("On Mode Changed");
 				bool changing = ProxyEditor.IsChanging();
@@ -52,7 +52,7 @@ namespace Zios.Unity.Editor.Events{
 				if(changing && !playing){Events.Call("On Enter Play");}
 				if(!changing && playing){Events.Call("On Exit Play");}
 			};
-			EditorApplication.hierarchyWindowChanged += ()=>Events.DelayCall("On Hierarchy Changed",0.25f);
+			ProxyEditor.HierarchyChanged(()=>Events.DelayCall("On Hierarchy Changed",0.25f));
 			EditorApplication.update += ()=>Events.Call("On Editor Update");
 			UnityCallback windowEvent = ()=>Events.Call("On Window Reordered");
 			UnityCallback globalEvent = ()=>Events.Call("On Global Event");
