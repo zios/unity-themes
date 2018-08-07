@@ -325,7 +325,11 @@ namespace Zios.Unity.Editor.Themes{
 			importer.npotScale = TextureImporterNPOTScale.None;
 			importer.isReadable = true;
 			importer.mipmapEnabled = false;
+			#if UNITY_2018_OR_NEWER
+			importer.sRGBTexture = true;
+			#else
 			importer.sRGBTexture = false;
+			#endif
 		}
 	}
 }

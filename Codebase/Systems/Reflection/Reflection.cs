@@ -14,7 +14,9 @@ namespace Zios.Reflection{
 	using Zios.Unity.Log;
 	using Zios.Unity.Proxy;
 	public static partial class Reflection{
-		private static Dictionary<string,Type> internalTypes = new Dictionary<string,Type>();
+		private static Dictionary<string,Type> unityTypes = new Dictionary<string,Type>();
+		public static Dictionary<string,Type> namedTypes = new Dictionary<string,Type>();
+		public static List<Type> types = new List<Type>();
 		public static List<Assembly> assemblies = new List<Assembly>();
 		public static Hierarchy<Type,BindingFlags,IList<Type>,string,object> variables = new Hierarchy<Type,BindingFlags,IList<Type>,string,object>();
 		public static Hierarchy<Type,BindingFlags,string,PropertyInfo> properties = new Hierarchy<Type,BindingFlags,string,PropertyInfo>();
@@ -23,27 +25,39 @@ namespace Zios.Reflection{
 		//=========================
 		// Interface
 		//=========================
-		public static List<Type> GetSubTypes<Scope>(){
-			var assemblies = Reflection.GetAssemblies();
-			var matches = new List<Type>();
-			foreach(var assembly in assemblies){
-				var types = assembly.GetTypes();
-				foreach(var type in types){
-					if(type.IsSubclassOf(typeof(Scope))){
-						matches.Add(type);
+		public static void FindTypes(){
+			if(Reflection.types.Count < 1){
+				var assemblies = Reflection.GetAssemblies();
+				foreach(var assembly in assemblies){
+					var types = assembly.GetTypes();
+					foreach(var type in types){
+						Reflection.namedTypes[type.FullName] = type;
+						Reflection.types.Add(type);
 					}
+				}
+			}
+		}
+		public static Dictionary<string,Type> GetNamedTypes(){
+			Reflection.FindTypes();
+			return Reflection.namedTypes;
+		}
+		public static List<Type> GetTypes(){
+			Reflection.FindTypes();
+			return Reflection.types;
+		}
+		public static List<Type> GetSubTypes<Scope>(){
+			var matches = new List<Type>();
+			foreach(var type in Reflection.GetTypes()){
+				if(type.IsSubclassOf(typeof(Scope))){
+					matches.Add(type);
 				}
 			}
 			return matches;
 		}
 		public static Type GetType(string path){
-			var assemblies = Reflection.GetAssemblies();
-			foreach(var assembly in assemblies){
-				Type[] types = assembly.GetTypes();
-				foreach(Type type in types){
-					if(type.FullName == path){
-						return type;
-					}
+			foreach(var type in Reflection.GetNamedTypes()){
+				if(type.Key == path){
+					return type.Value;
 				}
 			}
 			return null;
@@ -57,21 +71,21 @@ namespace Zios.Reflection{
 		//=========================
 		public static Type GetUnityType(string name){
 			#if UNITY_EDITOR
-			if(Reflection.internalTypes.ContainsKey(name)){return Reflection.internalTypes[name];}
+			if(Reflection.unityTypes.ContainsKey(name)){return Reflection.unityTypes[name];}
 			var fullCheck = name.ContainsAny(".","+");
 			var alternative = name.ReplaceLast(".","+");
 			var term = alternative.Split("+").Last();
 			foreach(var type in typeof(UnityEditor.Editor).Assembly.GetTypes()){
 				bool match = fullCheck && (type.FullName.Contains(name) || type.FullName.Contains(alternative)) && term.Matches(type.Name,true);
 				if(type.Name == name || match){
-					Reflection.internalTypes[name] = type;
+					Reflection.unityTypes[name] = type;
 					return type;
 				}
 			}
 			foreach(var type in typeof(UnityEngine.Object).Assembly.GetTypes()){
 				bool match = fullCheck && (type.FullName.Contains(name) || type.FullName.Contains(alternative)) && term.Matches(type.Name,true);
 				if(type.Name == name || match){
-					Reflection.internalTypes[name] = type;
+					Reflection.unityTypes[name] = type;
 					return type;
 				}
 			}
@@ -83,7 +97,9 @@ namespace Zios.Reflection{
 		//=========================
 		public static void ResetCache(){
 			Reflection.assemblies.Clear();
-			Reflection.internalTypes.Clear();
+			Reflection.types.Clear();
+			Reflection.namedTypes.Clear();
+			Reflection.unityTypes.Clear();
 			Reflection.properties.Clear();
 			Reflection.variables.Clear();
 			Reflection.methods.Clear();
@@ -124,7 +140,6 @@ namespace Zios.Reflection{
 		public static bool debug;
 		public static List<Type> emptyList = new List<Type>();
 		public static Hierarchy<object,string,bool> debugWarned = new Hierarchy<object,string,bool>();
-		public static Hierarchy<Assembly,string,Type> lookup = new Hierarchy<Assembly,string,Type>();
 		public static Hierarchy<Type,BindingFlags,IList<Type>,string,object> attributedVariables = new Hierarchy<Type,BindingFlags,IList<Type>,string,object>();
 		public static Hierarchy<Type,BindingFlags,IList<Type>,string,MethodInfo> exactMethods = new Hierarchy<Type,BindingFlags,IList<Type>,string,MethodInfo>();
 		public const BindingFlags allFlags = BindingFlags.Static|BindingFlags.Instance|BindingFlags.NonPublic|BindingFlags.Public;
@@ -211,22 +226,11 @@ namespace Zios.Reflection{
 			return (V)method.Invoke(current,parameters);
 		}
 		public static object CallPath(this string current,params object[] parameters){
-			if(Reflection.lookup.Count < 1){
-				foreach(var assembly in Reflection.GetAssemblies()){
-					var types = assembly.GetTypes();
-					foreach(var type in types){
-						Reflection.lookup.AddNew(assembly)[type.FullName] = type;
-					}
-				}
-			}
 			var methodName = current.Split(".").Last();
 			var path = current.Remove("."+methodName);
-			foreach(var member in Reflection.lookup){
-				Type existing;
-				var assembly = member.Value;
-				assembly.TryGetValue(path,out existing);
-				if(existing != null){
-					var method = Reflection.GetMethod(existing,methodName);
+			foreach(var type in Reflection.GetTypes()){
+				if(type.FullName == path){
+					var method = Reflection.GetMethod(type,methodName);
 					if(method.IsNull()){
 						if(Reflection.debug){Log.Show("[ObjectReflection] Cannot call. Method does not exist -- " + current + "()");}
 						return null;
@@ -235,7 +239,7 @@ namespace Zios.Reflection{
 						if(Reflection.debug){Log.Show("[ObjectReflection] Cannot call. Method is not static -- " + current + "()");}
 						return null;
 					}
-					var value = existing.CallExactMethod(methodName,parameters);
+					var value = type.CallExactMethod(methodName,parameters);
 					return value ?? true;
 				}
 			}
@@ -291,15 +295,21 @@ namespace Zios.Reflection{
 			}
 			return matches;
 		}
+		public static bool HasAttribute(this object current,Type attribute){
+			return current.ListAttributes().Exists(x=>x.GetType()==attribute);
+		}
 		public static bool HasAttribute(this object current,string name,Type attribute){
 			return current.ListAttributes(name).Exists(x=>x.GetType()==attribute);
 		}
-		public static Attribute[] ListAttributes(this object current,string name){
+		public static Attribute[] ListAttributes(this object current,string name=null){
 			var type = current.AsType();
-			var field = Reflection.GetField(type,name,allFlags);
-			if(!field.IsNull()){return Attribute.GetCustomAttributes(field);}
-			var property = Reflection.GetProperty(type,name,allFlags);
-			return property.IsNull() ? new Attribute[0] : Attribute.GetCustomAttributes(property);
+			if(!name.IsNull()){
+				var field = Reflection.GetField(type,name,allFlags);
+				if(!field.IsNull()){return Attribute.GetCustomAttributes(field);}
+				var property = Reflection.GetProperty(type,name,allFlags);
+				return property.IsNull() ? new Attribute[0] : Attribute.GetCustomAttributes(property);
+			}
+			return Attribute.GetCustomAttributes(type);
 		}
 		//=========================
 		// Variable

@@ -45,7 +45,7 @@ namespace Zios.Unity.Editor.Menus{
 			MeshFilter filter = current.GetComponent<MeshFilter>();
 			string updateMessage = "Mesh " + BakeVertexData.index + "/" + size;
 			bool canceled = EditorUI.DrawProgressBar("Baking Vertex Colors",updateMessage,((float)BakeVertexData.index) / size);
-			if(canceled){ size = 0; }
+			if(canceled){size = 0;}
 			else if(filter && filter.sharedMesh && renderer.sharedMaterial){
 				bool generateMesh = true;
 				string meshPath = File.GetAssetPath(filter.sharedMesh);

@@ -419,12 +419,12 @@ namespace Zios.Unity.Editor.MeshOperations{
 					for(int indexB=0;indexB<mesh.positions.Length;++indexB){
 						var vertexB = mesh.positions[indexB];
 						var distance = Vector3.Distance(vertexA,vertexB);
-						/*if(distance < this.distance){
-							Log.Show("Difference is : " + distance);
-							Log.Show(indexA + " matches " + indexB);
+						if(distance < MeshOperations.Get().distance){
+							//Log.Show("Difference is : " + distance);
+							//Log.Show(indexA + " matches " + indexB);
 							matches[indexA] = indexB;
 							break;
-						}*/
+						}
 					}
 				}
 			}

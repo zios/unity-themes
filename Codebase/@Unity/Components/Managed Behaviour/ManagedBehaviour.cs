@@ -5,7 +5,7 @@ namespace Zios.Unity.Components.ManagedBehaviour{
 	using Zios.Unity.Components.DataBehaviour;
 	using Zios.Unity.Time;
 	public enum UpdateRate{Default,FixedUpdate,Update,LateUpdate,None};
-	[Serializable][AddComponentMenu("")]
+	[AddComponentMenu("")]
 	public class ManagedBehaviour : DataBehaviour{
 		[Advanced] public UpdateRate rate = UpdateRate.Default;
 		public float GetTimeOffset(){

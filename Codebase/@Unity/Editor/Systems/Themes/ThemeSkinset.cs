@@ -54,7 +54,7 @@ namespace Zios.Unity.Editor.Themes{
 				active.path = skinFile.path;
 				active.skin = skinFile.GetAsset<GUISkin>();
 				if(active.skin.IsNull()){
-					Log.Warning("[Themes] GUISkin could not be loaded. This usually occurs when the guiSkin was saved as binary in a newer version.");
+					Log.Warning("[Themes] GUISkin ("+ skinName +") could not be loaded. This usually occurs when the guiSkin was saved as binary in a newer version.");
 					skinset.skins.Remove(active);
 					continue;
 				}

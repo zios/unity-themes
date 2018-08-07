@@ -311,11 +311,11 @@ namespace Zios.Unity.ProxyEditor{
 		public static void RegisterCreatedObjectUndo(UnityObject target,string name){
 			UnityUndo.RegisterCreatedObjectUndo(target,name);
 		}
-		public static void RegisterSceneUndo(UnityObject target, string name){
+		public static void RegisterSceneUndo(UnityObject target,string name){
 			#if UNITY_3_0 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2
 			UnityUndo.RegisterSceneUndo(name);
 			#else
-			UnityUndo.RegisterCompleteObjectUndo(target, name);
+			UnityUndo.RegisterCompleteObjectUndo(target,name);
 			#endif
 		}
 		public static void RegisterUndo(UnityObject target,string name){

@@ -19,8 +19,8 @@ namespace Zios.Unity.Editor.Windows{
 		public Editor editor;
 		public Editor[] editors = new Editor[0];
 		public bool dirty;
-		private Dictionary<Component,Rect> componentArea = new Dictionary<Component,Rect>();
-		private Dictionary<Component,Rect> headerArea = new Dictionary<Component,Rect>();
+		//private Dictionary<Component,Rect> componentArea = new Dictionary<Component,Rect>();
+		//private Dictionary<Component,Rect> headerArea = new Dictionary<Component,Rect>();
 		private Vector2 scrollPosition;
 		[MenuItem("Zios/Window/Inspector",false,0)]
 		private static void Init(){
