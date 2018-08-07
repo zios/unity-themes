@@ -14,7 +14,7 @@ Shader "Zios/Utility/Draw Vertexes Outlined"{
 		ZWrite Off
 		ZTest [zTestMode]
 		Blend SrcAlpha OneMinusSrcAlpha
-		Tags{"RenderType"="TRansparent" "Queue"="Transparent+1999"}
+		Tags{"RenderType"="Transparent" "Queue"="Transparent+1999"}
 		Pass{
 			CGPROGRAM
 			#include "UnityCG.cginc"

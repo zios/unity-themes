@@ -1,22 +1,22 @@
-Shader "Hidden/Zios/Fallback/Vertex Lit" {
-Properties {
+Shader "Hidden/Zios/Fallback/Vertex Lit"{
+Properties{
 	diffuseColor ("Diffuse Color", Color) = (1,1,1,1)
 	specularColor ("Spec Color", Color) = (1,1,1,1)
 	emissiveColor ("Emissive Color", Color) = (0,0,0,0)
 	specularAmount ("Shininess", Range (0.01, 1)) = 0.7
-	diffuseMap ("Base (RGB)", 2D) = "white" {}
+	diffuseMap ("Base (RGB)", 2D) = "white"{}
 }
 
 // 2/3 texture stage GPUs
-SubShader {
-	Tags { "RenderType"="Opaque" }
+SubShader{
+	Tags{ "RenderType"="Opaque" }
 	LOD 100
 	
 	// Non-lightmapped
-	Pass {
-		Tags { "LightMode" = "Vertex" }
+	Pass{
+		Tags{ "LightMode" = "Vertex" }
 		
-		Material {
+		Material{
 			Diffuse [diffuseColor]
 			Ambient [diffuseColor]
 			Shininess [specularAmount]
@@ -25,37 +25,37 @@ SubShader {
 		} 
 		Lighting On
 		SeparateSpecular On
-		SetTexture [diffuseMap] {
+		SetTexture [diffuseMap]{
 			Combine texture * primary DOUBLE, texture * primary
 		} 
 	}
 	
 	// Lightmapped, encoded as dLDR
-	Pass {
-		Tags { "LightMode" = "VertexLM" }
+	Pass{
+		Tags{ "LightMode" = "VertexLM" }
 		
-		BindChannels {
+		BindChannels{
 			Bind "Vertex", vertex
 			Bind "normal", normal
 			Bind "texcoord1", texcoord0 // lightmap uses 2nd uv
 			Bind "texcoord", texcoord1 // main uses 1st uv
 		}
 		
-		SetTexture [unity_Lightmap] {
+		SetTexture [unity_Lightmap]{
 			matrix [unity_LightmapMatrix]
 			constantColor [diffuseColor]
 			combine texture * constant
 		}
-		SetTexture [diffuseMap] {
+		SetTexture [diffuseMap]{
 			combine texture * previous DOUBLE, texture * primary
 		}
 	}
 	
 	// Lightmapped, encoded as RGBM
-	Pass {
-		Tags { "LightMode" = "VertexLMRGBM" }
+	Pass{
+		Tags{ "LightMode" = "VertexLMRGBM" }
 		
-		BindChannels {
+		BindChannels{
 			Bind "Vertex", vertex
 			Bind "normal", normal
 			Bind "texcoord1", texcoord0 // lightmap uses 2nd uv
@@ -63,25 +63,25 @@ SubShader {
 			Bind "texcoord", texcoord2 // main uses 1st uv
 		}
 		
-		SetTexture [unity_Lightmap] {
+		SetTexture [unity_Lightmap]{
 			matrix [unity_LightmapMatrix]
 			combine texture * texture alpha DOUBLE
 		}
-		SetTexture [unity_Lightmap] {
+		SetTexture [unity_Lightmap]{
 			constantColor [diffuseColor]
 			combine previous * constant
 		}
-		SetTexture [diffuseMap] {
+		SetTexture [diffuseMap]{
 			combine texture * previous QUAD, texture * primary
 		}
 	}
 	
 	// Pass to render object as a shadow caster
-	Pass {
+	Pass{
 		Name "ShadowCaster"
-		Tags { "LightMode" = "ShadowCaster" }
+		Tags{ "LightMode" = "ShadowCaster" }
 		
-		Fog {Mode Off}
+		Fog{Mode Off}
 		ZWrite On ZTest Less Cull Off
 		Offset 1, 1
 
@@ -92,7 +92,7 @@ CGPROGRAM
 #pragma fragmentoption ARB_precision_hint_fastest
 #include "UnityCG.cginc"
 
-struct v2f { 
+struct v2f{ 
 	V2F_SHADOW_CASTER;
 };
 
@@ -112,11 +112,11 @@ ENDCG
 	}
 	
 	// Pass to render object as a shadow collector
-	Pass {
+	Pass{
 		Name "ShadowCollector"
-		Tags { "LightMode" = "ShadowCollector" }
+		Tags{ "LightMode" = "ShadowCollector" }
 		
-		Fog {Mode Off}
+		Fog{Mode Off}
 		ZWrite On ZTest Less
 
 CGPROGRAM
@@ -128,11 +128,11 @@ CGPROGRAM
 #define SHADOW_COLLECTOR_PASS
 #include "UnityCG.cginc"
 
-struct appdata {
+struct appdata{
 	float4 vertex : POSITION;
 };
 
-struct v2f {
+struct v2f{
 	V2F_SHADOW_COLLECTOR;
 };
 
@@ -153,15 +153,15 @@ ENDCG
 }
 
 // 1 texture stage GPUs
-SubShader {
-	Tags { "RenderType"="Opaque" }
+SubShader{
+	Tags{ "RenderType"="Opaque" }
 	LOD 100
 
 	// Non-lightmapped
-	Pass {
-		Tags { "LightMode" = "Vertex" }
+	Pass{
+		Tags{ "LightMode" = "Vertex" }
 		
-		Material {
+		Material{
 			Diffuse [diffuseColor]
 			Ambient [diffuseColor]
 			Shininess [specularAmount]
@@ -170,32 +170,32 @@ SubShader {
 		} 
 		Lighting On
 		SeparateSpecular On
-		SetTexture [diffuseMap] {
+		SetTexture [diffuseMap]{
 			Combine texture * primary DOUBLE, texture * primary
 		} 
 	}	
 	// Lightmapped, encoded as dLDR
-	Pass {
+	Pass{
 		// 1st pass - sample Lightmap
-		Tags { "LightMode" = "VertexLM" }
+		Tags{ "LightMode" = "VertexLM" }
 
-		BindChannels {
+		BindChannels{
 			Bind "Vertex", vertex
 			Bind "texcoord1", texcoord0 // lightmap uses 2nd uv
 		}		
-		SetTexture [unity_Lightmap] {
+		SetTexture [unity_Lightmap]{
 			matrix [unity_LightmapMatrix]
 			constantColor [diffuseColor]
 			combine texture * constant
 		}
 	}
-	Pass {
+	Pass{
 		// 2nd pass - multiply with diffuseMap
-		Tags { "LightMode" = "VertexLM" }
+		Tags{ "LightMode" = "VertexLM" }
 		ZWrite Off
-		Fog {Mode Off}
+		Fog{Mode Off}
 		Blend DstColor Zero
-		SetTexture [diffuseMap] {
+		SetTexture [diffuseMap]{
 			combine texture
 		}
 	}

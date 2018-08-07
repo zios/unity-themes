@@ -22,7 +22,7 @@ namespace Zios.Supports.Worker{
 		public bool monitor;
 		public bool async;
 		public bool quit;
-		public int threadCount = -1;
+		public int threadCount;
 		public int progress;
 		public int size;
 		//=================
@@ -354,9 +354,9 @@ namespace Zios.Supports.Worker{
 			return current;
 		}
 		public static Type Build<Type,Data>(this Type current,List<Data> items) where Type : Worker{
-			if(current.threadCount < 0){
+			if(current.threadCount <= 0){
 				var active = 1+Worker.all.Where(x=>x.Key!=Worker.mainThread).Select(x=>x.Value).Where(x=>!x.quit).Select(x=>x.remaining.Count).DefaultIfEmpty(0).Sum();
-				var limit = current.threadCount+1;
+				var limit = current.threadCount;
 				//Log.Show("[Worker] Creating dynamic worker -- " + (Environment.ProcessorCount-active-limit) + " threads.");
 				current.threadCount = (Environment.ProcessorCount-active-limit).Max(1);
 			}

@@ -1,15 +1,15 @@
-Shader "Hidden/Zios/Fallback/Alpha Vertex Lit" {
-Properties {
+Shader "Hidden/Zios/Fallback/Alpha Vertex Lit"{
+Properties{
 	diffuseColor ("Diffuse Color", Color) = (1,1,1,1)
 	specularColor ("Spec Color", Color) = (1,1,1,0)
 	emissiveColor ("Emissive Color", Color) = (0,0,0,0)
 	specularAmount ("Shininess", Range (0.1, 1)) = 0.7
-	diffuseMap ("Base (RGB) Trans (A)", 2D) = "white" {}
+	diffuseMap ("Base (RGB) Trans (A)", 2D) = "white"{}
 }
 
 // 2/3 texture stage GPUs
-SubShader {
-	Tags {"Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="Transparent"}
+SubShader{
+	Tags{"Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="Transparent"}
 	LOD 100
 	
 	Alphatest Greater 0
@@ -18,9 +18,9 @@ SubShader {
 	ColorMask RGB
 		
 	// Non-lightmapped
-	Pass {
-		Tags { "LightMode" = "Vertex" }
-		Material {
+	Pass{
+		Tags{ "LightMode" = "Vertex" }
+		Material{
 			Diffuse [diffuseColor]
 			Ambient [diffuseColor]
 			Shininess [specularAmount]
@@ -29,36 +29,36 @@ SubShader {
 		}
 		Lighting On
 		SeparateSpecular On
-		SetTexture [diffuseMap] {
+		SetTexture [diffuseMap]{
 			Combine texture * primary DOUBLE, texture * primary
 		} 
 	}
 	
 	// Lightmapped, encoded as dLDR
-	Pass {
-		Tags { "LightMode" = "VertexLM" }
+	Pass{
+		Tags{ "LightMode" = "VertexLM" }
 		
-		BindChannels {
+		BindChannels{
 			Bind "Vertex", vertex
 			Bind "normal", normal
 			Bind "texcoord1", texcoord0 // lightmap uses 2nd uv
 			Bind "texcoord", texcoord1 // main uses 1st uv
 		}
-		SetTexture [unity_Lightmap] {
+		SetTexture [unity_Lightmap]{
 			matrix [unity_LightmapMatrix]
 			constantColor [diffuseColor]
 			combine texture * constant
 		}
-		SetTexture [diffuseMap] {
+		SetTexture [diffuseMap]{
 			combine texture * previous DOUBLE, texture * primary
 		}
 	}
 	
 	// Lightmapped, encoded as RGBM
-	Pass {
-		Tags { "LightMode" = "VertexLMRGBM" }
+	Pass{
+		Tags{ "LightMode" = "VertexLMRGBM" }
 		
-		BindChannels {
+		BindChannels{
 			Bind "Vertex", vertex
 			Bind "normal", normal
 			Bind "texcoord1", texcoord0 // lightmap uses 2nd uv
@@ -66,23 +66,23 @@ SubShader {
 			Bind "texcoord", texcoord2 // main uses 1st uv
 		}
 		
-		SetTexture [unity_Lightmap] {
+		SetTexture [unity_Lightmap]{
 			matrix [unity_LightmapMatrix]
 			combine texture * texture alpha DOUBLE
 		}
-		SetTexture [unity_Lightmap] {
+		SetTexture [unity_Lightmap]{
 			constantColor [diffuseColor]
 			combine previous * constant
 		}
-		SetTexture [diffuseMap] {
+		SetTexture [diffuseMap]{
 			combine texture * previous QUAD, texture * primary
 		}
 	}
 }
 
 // 1 texture stage GPUs
-SubShader {
-	Tags {"Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="Transparent"}
+SubShader{
+	Tags{"Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="Transparent"}
 	LOD 100
 	
 	Alphatest Greater 0
@@ -90,9 +90,9 @@ SubShader {
 	Blend SrcAlpha OneMinusSrcAlpha 
 	ColorMask RGB
 		
-	Pass {
-		Tags { "LightMode" = "Always" }
-		Material {
+	Pass{
+		Tags{ "LightMode" = "Always" }
+		Material{
 			Diffuse [diffuseColor]
 			Ambient [diffuseColor]
 			Shininess [specularAmount]
@@ -101,7 +101,7 @@ SubShader {
 		}
 		Lighting On
 		SeparateSpecular On
-		SetTexture [diffuseMap] {
+		SetTexture [diffuseMap]{
 			Combine texture * primary DOUBLE, texture * primary
 		} 
 	}	

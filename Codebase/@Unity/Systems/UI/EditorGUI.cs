@@ -11,43 +11,8 @@ namespace Zios.Unity.EditorUI{
 	using Zios.Extensions.Convert;
 	using Zios.Reflection;
 	using Zios.Unity.Extensions;
+	using Zios.Unity.Extensions.Convert;
 	using Zios.Unity.Pref;
-	//============================
-	// Core
-	//============================
-	public static partial class EditorUI{
-		public static bool allowIndention = true;
-		public static Rect lastRect;
-		public static Type Draw<Type>(Func<Type> method,bool indention=true){
-			int indentValue = EditorGUI.indentLevel;
-			indention = EditorUI.allowIndention && indention;
-			if(EditorUI.space!=0){GUILayout.Space(EditorUI.space);}
-			if(!indention){EditorGUI.indentLevel = 0;}
-			bool wasChanged = GUI.changed;
-			GUI.changed = false;
-			Type value = (Type)method();
-			EditorUI.lastChanged = GUI.changed;
-			EditorUI.anyChanged = GUI.changed = GUI.changed || wasChanged;
-			EditorGUI.indentLevel = indentValue;
-			if(EditorUI.resetField){EditorUI.SetFieldSize(EditorUI.resetFieldSize,false);}
-			if(EditorUI.resetLayout){EditorUI.ResetLayout();}
-			return value;
-		}
-		public static Type Draw<Type>(Func<Type> method,bool indention,Rect area){
-			EditorUI.lastRect = area;
-			return EditorUI.Draw<Type>(method,indention);
-		}
-		public static void Draw(Action method,bool indention=true){
-			int indentValue = EditorGUI.indentLevel;
-			if(!indention){EditorGUI.indentLevel = 0;}
-			if(EditorUI.render){method();}
-			if(!indention){EditorGUI.indentLevel = indentValue;}
-		}
-		public static void Draw(Action method,bool indention,Rect area){
-			EditorUI.lastRect = area;
-			EditorUI.Draw(method,indention);
-		}
-	}
 	//============================
 	// Proxy
 	//============================
@@ -136,9 +101,39 @@ namespace Zios.Unity.EditorUI{
 			return (Type)EditorUI.Draw<UnityObject>(()=>EditorGUI.ObjectField(area,label,current,typeof(Type),allowScene),indention,area);
 		}
 	}
+	//============================
+	// Special
+	//============================
 	public static partial class EditorUI{
+		public static Rect lastRect;
 		public static Rect menuArea;
 		public static object menuValue;
+		public static Type Draw<Type>(Func<Type> method,bool indention,Rect area){
+			EditorUI.lastRect = area;
+			return EditorUI.Draw<Type>(method,indention);
+		}
+		public static void Draw(Action method,bool indention,Rect area){
+			EditorUI.lastRect = area;
+			EditorUI.Draw(method,indention);
+		}
+		public static void DrawMenu(this IEnumerable<string> current,GenericMenu.MenuFunction2 callback,IEnumerable<string> selected=null,IEnumerable<string> disabled=null){
+			current.DrawMenu(GUILayoutUtility.GetLastRect(),callback,selected,disabled);
+		}
+		public static void DrawMenu(this IEnumerable<string> current,Rect area,GenericMenu.MenuFunction2 callback,IEnumerable<string> selected=null,IEnumerable<string> disabled=null){
+			if(selected.IsNull()){selected = new List<string>();}
+			if(disabled.IsNull()){disabled = new List<string>();}
+			var menu = new GenericMenu();
+			var index = 0;
+			foreach(var item in current){
+				++index;
+				if(!disabled.Contains(item)){
+					menu.AddItem(item.ToContent(),selected.Contains(item),callback,index-1);
+					continue;
+				}
+				menu.AddDisabledItem(item.ToContent());
+			}
+			menu.DropDown(area);
+		}
 		public static void DrawAuto(this object current,Rect area,UnityLabel label=null,GUIStyle style=null,bool indention=true){
 			if(current is string){current.As<string>().Draw(area,label,style,indention);}
 			if(current is int){current.As<int>().DrawInt(area,label,style,indention);}
@@ -261,13 +256,6 @@ using UnityEngine;
 using UnityObject = UnityEngine.Object;
 namespace Zios.Unity.EditorUI{
 	//============================
-	// Core
-	//============================
-	public static partial class EditorUI{
-		public static bool allowIndention;
-		public static Rect lastRect;
-	}
-	//============================
 	// Proxy
 	//============================
 	public static partial class EditorUI{
@@ -292,9 +280,17 @@ namespace Zios.Unity.EditorUI{
 		public static Vector4 DrawVector4(this Vector4 current,Rect area,UnityLabel label=null,bool indention=true){return Vector4.zero;}
 		public static Type Draw<Type>(this UnityObject current,Rect area,UnityLabel label=null,bool allowScene=true,bool indention=true) where Type : UnityObject{return default(Type);}
 	}
+	//============================
+	// Special
+	//============================
 	public static partial class EditorUI{
+		public static Rect lastRect;
 		public static Rect menuArea;
 		public static object menuValue;
+		public static Type Draw<Type>(Func<Type> method,bool indention,Rect area){return default(Type);}
+		public static void Draw(Action method,bool indention,Rect area){}
+		public static void DrawMenu(this IEnumerable<string> current,MenuFunction2 callback,IEnumerable<string> selected=null,IEnumerable<string> disabled=null){}
+		public static void DrawMenu(this IEnumerable<string> current,Rect area,MenuFunction2 callback,IEnumerable<string> selected=null,IEnumerable<string> disabled=null){}
 		public static void DrawAuto(this object current,Rect area,UnityLabel label=null,GUIStyle style=null,bool indention=true){}
 		public static Rect DrawFields<Type>(this Dictionary<string,Type> current,Rect area,string key,string header="Fields",int maxDepth=9){return Rect.zero;}
 		public static Rect DrawFields(this object current,Rect area,string key,string header="Fields",int maxDepth=9){return Rect.zero;}

@@ -5,7 +5,7 @@ Shader "Hidden/Zios/(Components)/Utility/Vertex Outlines"{
 		Tags{"RenderType"="Opaque"}
 		Pass{
 			Name "Normal"
-			Tags {"LightMode"="ForwardBase"}
+			Tags{"LightMode"="ForwardBase"}
 			Blend SrcAlpha OneMinusSrcAlpha
 			Cull Front
 			CGPROGRAM
@@ -49,7 +49,7 @@ Shader "Hidden/Zios/(Components)/Utility/Vertex Outlines"{
 			Cull Front
 			Lighting Off
             ZWrite On
-			Tags {"LightMode"="ForwardBase"}
+			Tags{"LightMode"="ForwardBase"}
 			CGPROGRAM
 			#include "UnityCG.cginc"
 			#pragma vertex vertexPassOutline

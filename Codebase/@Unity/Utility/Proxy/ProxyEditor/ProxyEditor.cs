@@ -212,7 +212,7 @@ namespace Zios.Unity.ProxyEditor{
 			EditorApplication.hierarchyChanged += method;
 		}
 		#else
-		public static void HierarchyWindowChanged(CallbackFunction method){
+		public static void HierarchyChanged(CallbackFunction method){
 			EditorApplication.hierarchyWindowChanged += method;
 		}
 		#endif

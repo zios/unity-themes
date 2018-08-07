@@ -33,6 +33,14 @@ namespace Zios.Extensions{
 		public static T[] Clear<T>(this T[] current){
 			return new T[0]{};
 		}
+		public static T[] Append<T>(this T[] current,T element){
+			return current.Add(element);
+		}
+		public static T[] Prepend<T>(this T[] current,T element){
+			var copy = new List<T>(current);
+			copy.Insert(0,element);
+			return copy.ToArray();
+		}
 		public static T[] Add<T>(this T[] current,T element){
 			T[] extra = new T[]{element};
 			return current.Concat(extra);

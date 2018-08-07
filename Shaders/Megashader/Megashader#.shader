@@ -1,7 +1,7 @@
 Shader "Zios/(Megashader)#"{
 	Properties{
 		[Header(General)]
-			baseColor("Color",Color) = (1,1,1,1)
+			baseColor("Color",Color) = (0.5,0.5,0.5,1)
 			alphaClip("Alpha Clip",Range(0,1)) = 0.1
 			[KeywordEnum(Normal,Vertex)] colorMode("Color Mode",Float) = 0
 			[Enum(None,0,Front,1,Back,2)] cullMode("Cull",Float) = 2
@@ -19,7 +19,7 @@ Shader "Zios/(Megashader)#"{
 			[Toggle] yBlending("Y Blending",Float) = 1
 			[Toggle] zBlending("Z Blending",Float) = 1
 		[Header(Mask)]
-			[KeywordEnum(Off,On)] textureMaskState("State",Float) = 1
+			[KeywordEnum(Off,On)] textureMaskState("State",Float) = 0
 			textureMaskMap("Mask Texture",2D) = "white"{}
 			textureBlendMap("Blend Texture",2D) = "white"{}
 		[Header(Reflection)]
@@ -27,7 +27,7 @@ Shader "Zios/(Megashader)#"{
 			reflectionColor("Color",Color) = (1,1,1,0.3)
 			reflectionMap("Texture",2D) = "white"{}
 		[Header(Lighting)]
-			[KeywordEnum(None,Lambert,LambertHalf,LambertStepped)] lightingType("Type",Float) = 3
+			[KeywordEnum(None,Lambert,LambertHalf,LambertStepped)] lightingType("Type",Float) = 2
 			[Int] lightingSteps("Lighting Steps",Range(2,256)) = 3
 			[KeywordEnum(Off,On)] directionalState("Use Directional Lights",Float) = 1
 			[KeywordEnum(Off,On)] pointState("Use Point Lights",Float) = 1
@@ -43,8 +43,8 @@ Shader "Zios/(Megashader)#"{
 		[Header(Lightmap)]
 			[KeywordEnum(Off,On)] lightmapState("State",Float) = 1
 		[Header(Visibility)]
-			[KeywordEnum(Off,On)] fadeState("Distance Fade",Float) = 1
-			[KeywordEnum(Off,On)] distanceCull("Distance Cull",Float) = 1
+			[KeywordEnum(Off,On)] fadeState("Distance Fade",Float) = 0
+			[KeywordEnum(Off,On)] distanceCull("Distance Cull",Float) = 0
 		[Header(Atlas)]
 			[KeywordEnum(Off,On)] atlasState("State",Float) = 0
 			atlasUV("Atlas UV",Vector) = (0,0,1,1)
@@ -73,5 +73,5 @@ Shader "Zios/(Megashader)#"{
 		}
 	}
 	Fallback "Hidden/Zios/Fallback/Vertex Lit"
-	CustomEditor "Zios.Editors.VariableMaterialEditor"
+	CustomEditor "Zios.Unity.Editor.VariableMaterial.VariableMaterialEditor"
 }

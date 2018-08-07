@@ -234,6 +234,7 @@ namespace Zios.Unity.Extensions{
 			}
 			return current;
 		}
+		public static GUIStyle Copy(this GUIStyle current){return new GUIStyle(current);}
 		public static GUIStyle Use(this GUIStyle current,GUIStyle other){
 			if(current.IsNull() || other.IsNull()){return current;}
 			current.normal = other.normal;

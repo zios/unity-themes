@@ -68,13 +68,13 @@ namespace Zios.Unity.Editor.MeshOperations{
 			this.vertexMaterial = new Material(Shader.Find("Zios/Utility/Draw Vertexes"));
 			this.distanceMaterial = new Material(Shader.Find("Zios/Utility/Draw Vertexes Outlined"));
 			this.lockSelection = false;
-			Selection.selectionChanged += this.RefreshDisplay;
+			Selection.selectionChanged += this.RefreshSceneView;
 			EditorApplication.update += this.CheckChanged;
 			//EditorApplication.hierarchyWindowChanged += this.Reset;
-			this.RefreshDisplay(true);
+			this.RefreshSceneView(true);
 		}
 		public void OnDisable(){
-			Selection.selectionChanged -= this.RefreshDisplay;
+			Selection.selectionChanged -= this.RefreshSceneView;
 			EditorApplication.update -= this.CheckChanged;
 			this.RemoveMeshes();
 			ProxyEditor.RepaintSceneView();
@@ -87,10 +87,15 @@ namespace Zios.Unity.Editor.MeshOperations{
 		public void OnGUI(){
 			EditorUI.Reset();
 			EditorUI.SetFieldSize(-1,175,false);
+			var width = (Screen.width * 0.25f).Clamp(100,250).ToInt();
+			var mergeStyle = EditorStyles.miniButtonLeft.FixedHeight(0);
+			var flattenStyle = EditorStyles.miniButtonRight.FixedHeight(0);
+			if(this.operationMode == OperationMode.Merge){mergeStyle = mergeStyle.UseState("onNormal","*");}
+			if(this.operationMode == OperationMode.Flatten){flattenStyle = flattenStyle.UseState("onNormal","*");}
 			EditorGUILayout.BeginVertical(new GUIStyle().Margin(8,8,15,8));
-			EditorGUILayout.BeginHorizontal(new GUIStyle().Margin(0,0,0,10).Center(400));
-			if("Merge".ToLabel().Layout(200,20).DrawButton(EditorStyles.miniButtonLeft.FixedHeight(0))){this.operationMode = OperationMode.Merge;}
-			if("Flatten".ToLabel().Layout(200,20).DrawButton(EditorStyles.miniButtonRight.FixedHeight(0))){this.operationMode = OperationMode.Flatten;}
+			EditorGUILayout.BeginHorizontal(new GUIStyle().Margin(0,0,0,10).Center(width*2));
+			if("Merge".ToLabel().Layout(width,20).DrawButton(mergeStyle)){this.operationMode = OperationMode.Merge;}
+			if("Flatten".ToLabel().Layout(width,20).DrawButton(flattenStyle)){this.operationMode = OperationMode.Flatten;}
 			EditorGUILayout.EndHorizontal();
 			if(this.operationMode.Has("Merge")){
 				EditorWindowExtensions.SetTitle(this, "Mesh");
@@ -118,7 +123,7 @@ namespace Zios.Unity.Editor.MeshOperations{
 			if(EditorUI.anyChanged){
 				ProxyEditor.RegisterUndo(this,"Mesh Operation Changes");
 				this.Repaint();
-				this.RefreshDisplay();
+				this.RefreshSceneView();
 			}
 			EditorGUILayout.EndVertical();
 			this.visible = true;
@@ -134,11 +139,11 @@ namespace Zios.Unity.Editor.MeshOperations{
 		}
 		public void OnLostFocus(){
 			this.visible = false;
-			this.RefreshDisplay();
+			this.RefreshSceneView();
 		}
 		public void OnFocus(){
 			this.visible = true;
-			this.RefreshDisplay();
+			this.RefreshSceneView();
 		}
 		public void RefreshShader(){
 			var showHidden = this.vertexDisplay.Contains("Hidden");
@@ -169,8 +174,8 @@ namespace Zios.Unity.Editor.MeshOperations{
 				}
 			}
 		}
-		public void RefreshDisplay(){this.RefreshDisplay(true);}
-		public void RefreshDisplay(bool rebuild){
+		public void RefreshSceneView(){this.RefreshSceneView(true);}
+		public void RefreshSceneView(bool rebuild){
 			this.Setup();
 			this.RefreshShader();
 			var meshLists = new List<GameObject>[2]{this.vertexMeshes,this.distanceMeshes};
@@ -351,8 +356,8 @@ namespace Zios.Unity.Editor.MeshOperations{
 					needsRefresh = 2;
 				}
 			}
-			if(needsRefresh == 1){this.RefreshDisplay();}
-			if(needsRefresh == 2){this.RefreshDisplay(false);}
+			if(needsRefresh == 1){this.RefreshSceneView();}
+			if(needsRefresh == 2){this.RefreshSceneView(false);}
 		}
 		//==================
 		// Operations

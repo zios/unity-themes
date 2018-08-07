@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 namespace Zios.Extensions.Convert{
 	public static class ConvertInt{
 		public static string ToHex(this int current){return current.ToString("X6");}
@@ -10,6 +11,24 @@ namespace Zios.Extensions.Convert{
 		public static byte[] ToBytes(this int current){return BitConverter.GetBytes(current);}
 		public static string Serialize(this int current,bool ignoreDefault=false,int defaultValue=0){
 			return ignoreDefault && current == defaultValue ? "" : current.ToString();
+		}
+		public static bool[] ToFlags(this int current){
+			var value = 1;
+			var result = new List<bool>();
+			while(value <= current){
+				result.Add((value & current) != 0);
+				value *= 2;
+			}
+			return result.ToArray();
+		}
+		public static bool[] ToFlags(this int current,int size){
+			var value = 1;
+			var result = new bool[size];
+			for(int index=0;index<size;++index){
+				result[index] = ((value & current) != 0);
+				value *= 2;
+			}
+			return result;
 		}
 		public static int Deserialize(this int current,string value){return value.ToInt();}
 	}

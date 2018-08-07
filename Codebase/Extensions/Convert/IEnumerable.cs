@@ -35,17 +35,16 @@ namespace Zios.Extensions.Convert{
 			return result;
 		}
 		public static int ToBitFlags<Type>(this IEnumerable<Type> current,Func<Type,bool> compare){
-			var index = 0;
 			var value = 0;
 			var increment = 1;
 			foreach(var item in current){
-				if(compare(item)){
-					value += increment;
-				}
+				if(compare(item)){value += increment;}
 				increment *= 2;
-				index += 1;
 			}
 			return value;
+		}
+		public static int ToBitFlags(this IEnumerable<bool> current){
+			return current.ToBitFlags(x=>x);
 		}
 		public static int[] ToInt(this IList<string> current){return current.Select(x=>x.ToInt()).ToArray();}
 		public static bool[] ToBool(this IList<string> current){return current.Select(x=>x.ToBool()).ToArray();}

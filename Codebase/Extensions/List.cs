@@ -11,6 +11,10 @@ namespace Zios.Extensions{
 			current.Remove(item);
 			current.Insert(newIndex,item);
 		}
+		public static List<T> Unshift<T>(this List<T> current,T element){
+			current.Insert(0,element);
+			return current;
+		}
 		public static T Find<T>(this List<T> current,T value){
 			return current.Find(x=>x.Equals(value));
 		}

@@ -1,25 +1,25 @@
-Shader "Hidden/Zios/Fallback/Cutout Vertex Lit" {
-Properties {
+Shader "Hidden/Zios/Fallback/Cutout Vertex Lit"{
+Properties{
 	diffuseColor ("Diffuse Color", Color) = (1,1,1,1)
 	specularColor ("Spec Color", Color) = (1,1,1,0)
 	emissiveColor ("Emissive Color", Color) = (0,0,0,0)
 	specularAmount ("Shininess", Range (0.1, 1)) = 0.7
-	diffuseMap ("Base (RGB) Trans (A)", 2D) = "white" {}
+	diffuseMap ("Base (RGB) Trans (A)", 2D) = "white"{}
 	alphaCutoff ("Alpha cutoff", Range(0,1)) = 0.5
 }
 
 // 2/3 texture stage GPUs
-SubShader {
-	Tags {"Queue"="AlphaTest" "IgnoreProjector"="True" "RenderType"="TransparentCutout"}
+SubShader{
+	Tags{"Queue"="AlphaTest" "IgnoreProjector"="True" "RenderType"="TransparentCutout"}
 	LOD 100
 	
 	// Non-lightmapped
-	Pass {
-		Tags { "LightMode" = "Vertex" }
+	Pass{
+		Tags{ "LightMode" = "Vertex" }
 		Alphatest Greater [alphaCutoff]
 		AlphaToMask True
 		ColorMask RGB
-		Material {
+		Material{
 			Diffuse [diffuseColor]
 			Ambient [diffuseColor]
 			Shininess [specularAmount]
@@ -28,42 +28,42 @@ SubShader {
 		}
 		Lighting On
 		SeparateSpecular On
-		SetTexture [diffuseMap] {
+		SetTexture [diffuseMap]{
 			Combine texture * primary DOUBLE, texture * primary 
 		} 
 	}
 	
 	// Lightmapped, encoded as dLDR
-	Pass {
-		Tags { "LightMode" = "VertexLM" }
+	Pass{
+		Tags{ "LightMode" = "VertexLM" }
 		Alphatest Greater [alphaCutoff]
 		AlphaToMask True
 		ColorMask RGB
 		
-		BindChannels {
+		BindChannels{
 			Bind "Vertex", vertex
 			Bind "normal", normal
 			Bind "texcoord1", texcoord0 // lightmap uses 2nd uv
 			Bind "texcoord", texcoord1 // main uses 1st uv
 		}
-		SetTexture [unity_Lightmap] {
+		SetTexture [unity_Lightmap]{
 			matrix [unity_LightmapMatrix]
 			constantColor [diffuseColor]
 			combine texture * constant
 		}
-		SetTexture [diffuseMap] {
+		SetTexture [diffuseMap]{
 			combine texture * previous DOUBLE, texture * primary
 		}
 	}
 	
 	// Lightmapped, encoded as RGBM
-	Pass {
-		Tags { "LightMode" = "VertexLMRGBM" }
+	Pass{
+		Tags{ "LightMode" = "VertexLMRGBM" }
 		Alphatest Greater [alphaCutoff]
 		AlphaToMask True
 		ColorMask RGB
 		
-		BindChannels {
+		BindChannels{
 			Bind "Vertex", vertex
 			Bind "normal", normal
 			Bind "texcoord1", texcoord0 // lightmap uses 2nd uv
@@ -71,26 +71,26 @@ SubShader {
 			Bind "texcoord", texcoord2 // main uses 1st uv
 		}
 		
-		SetTexture [unity_Lightmap] {
+		SetTexture [unity_Lightmap]{
 			matrix [unity_LightmapMatrix]
 			combine texture * texture alpha DOUBLE
 		}
-		SetTexture [unity_Lightmap] {
+		SetTexture [unity_Lightmap]{
 			constantColor [diffuseColor]
 			combine previous * constant
 		}
-		SetTexture [diffuseMap] {
+		SetTexture [diffuseMap]{
 			combine texture * previous QUAD, texture * primary
 		}
 	}
 	
 	// Pass to render object as a shadow caster
-	Pass {
+	Pass{
 		Name "ShadowCaster"
-		Tags { "LightMode" = "ShadowCaster" }
+		Tags{ "LightMode" = "ShadowCaster" }
 		Offset 1, 1
 		
-		Fog {Mode Off}
+		Fog{Mode Off}
 		ZWrite On ZTest Less Cull Off
 
 CGPROGRAM
@@ -100,7 +100,7 @@ CGPROGRAM
 #pragma fragmentoption ARB_precision_hint_fastest
 #include "UnityCG.cginc"
 
-struct v2f { 
+struct v2f{ 
 	V2F_SHADOW_CASTER;
 	float2  uv : TEXCOORD1;
 };
@@ -131,11 +131,11 @@ ENDCG
 	}
 	
 	// Pass to render object as a shadow collector
-	Pass {
+	Pass{
 		Name "ShadowCollector"
-		Tags { "LightMode" = "ShadowCollector" }
+		Tags{ "LightMode" = "ShadowCollector" }
 		
-		Fog {Mode Off}
+		Fog{Mode Off}
 		ZWrite On ZTest Less
 
 CGPROGRAM
@@ -147,7 +147,7 @@ CGPROGRAM
 #define SHADOW_COLLECTOR_PASS
 #include "UnityCG.cginc"
 
-struct v2f {
+struct v2f{
 	V2F_SHADOW_COLLECTOR;
 	float2  uv : TEXCOORD5;
 };
@@ -179,16 +179,16 @@ ENDCG
 }
 
 // 1 texture stage GPUs
-SubShader {
-	Tags {"IgnoreProjector"="True" "RenderType"="TransparentCutout"}
+SubShader{
+	Tags{"IgnoreProjector"="True" "RenderType"="TransparentCutout"}
 	LOD 100
 	
-	Pass {
-		Tags { "LightMode" = "Always" }
+	Pass{
+		Tags{ "LightMode" = "Always" }
 		Alphatest Greater [alphaCutoff]
 		AlphaToMask True
 		ColorMask RGB
-		Material {
+		Material{
 			Diffuse [diffuseColor]
 			Ambient [diffuseColor]
 			Shininess [specularAmount]
@@ -197,7 +197,7 @@ SubShader {
 		}
 		Lighting On
 		SeparateSpecular On
-		SetTexture [diffuseMap] {
+		SetTexture [diffuseMap]{
 			Combine texture * primary DOUBLE, texture * primary 
 		} 
 	}	

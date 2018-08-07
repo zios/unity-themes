@@ -39,6 +39,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="ThemeSystem.cs" />
     <Compile Include="../Extensions/Array.cs" />
     <Compile Include="../Extensions/BitArray.cs" />
     <Compile Include="../Extensions/ByteArray.cs" />
@@ -148,7 +149,6 @@
     <Compile Include="../@Unity/Editor/Systems/Themes/ThemeIconset.cs" />
     <Compile Include="../@Unity/Editor/Systems/Themes/ThemePalette.cs" />
     <Compile Include="../@Unity/Editor/Systems/Themes/ThemeSkinset.cs" />
-    <Compile Include="ThemeSystem.cs" />
     <Compile Include="../@Unity/Editor/Systems/Themes/ThemeUtility.cs" />
     <Compile Include="../@Unity/Editor/Systems/Themes/ThemeVerticalSpace.cs" />
     <Compile Include="../@Unity/Editor/Systems/Themes/ThemeWindow.cs" />

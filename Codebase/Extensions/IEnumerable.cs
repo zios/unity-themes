@@ -24,6 +24,14 @@ namespace Zios.Extensions{
 		//=======================
 		// LINQ-ish
 		//=======================
+		public static void Map<From,To>(this IEnumerable<From> current,IList<To> other,Action<To,From> method){
+			var index = 0;
+			foreach(var value in current){
+				if(index >= other.Count()){break;}
+				method(other[index],value);
+				index += 1;
+			}
+		}
 		public static List<Type> If<Type>(this IEnumerable<Type> current,Func<Type,bool> comparer){
 			var results = new List<Type>();
 			foreach(var item in current){
@@ -49,7 +57,7 @@ namespace Zios.Extensions{
 			return string.Join(separator,current.ToArray());
 		}
 		public static List<string> Filter(this IEnumerable<string> current,string text){
-			List<string> newList = new List<string>();
+			var newList = new List<string>();
 			bool wildcard = text.Contains("*");
 			text = text.Replace("*","");
 			foreach(string item in current){
@@ -63,14 +71,14 @@ namespace Zios.Extensions{
 			return newList;
 		}
 		public static List<string> Replace(this IEnumerable<string> current,string replace,string with,bool ignoreCase=true){
-			List<string> results = new List<string>();
+			var results = new List<string>();
 			foreach(string item in current){
 				results.Add(item.Replace(replace,with));
 			}
 			return results;
 		}
 		public static List<string> AddSuffix(this IEnumerable<string> current,string suffix){
-			List<string> results = new List<string>();
+			var results = new List<string>();
 			foreach(string item in current){
 				results.Add(item+suffix);
 			}
