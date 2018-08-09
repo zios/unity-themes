@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
-namespace Zios.Unity.Editor.Events{
+namespace Zios.Unity.Editor.EventsManager{
 	using Zios.Events;
 	using Zios.Extensions.Convert;
 	using Zios.File;
