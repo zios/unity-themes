@@ -471,7 +471,6 @@ using System.Reflection;
 using UnityEngine;
 using UnityObject = UnityEngine.Object;
 namespace Zios.Unity.EditorUI{
-	using Zios.Reflection;
 	//============================
 	// Proxy
 	//============================
@@ -515,7 +514,7 @@ namespace Zios.Unity.EditorUI{
 	//============================
 	public static partial class EditorUI{
 		public static void DrawAuto(this object current,UnityLabel label=null,GUIStyle style=null,bool indention=true){}
-		public static void DrawFields(this object current,string header="Fields",BindingFlags flags=Reflection.declaredFlags){}
+		public static void DrawFields(this object current,string header="Fields",BindingFlags flags=default(BindingFlags)){}
 		public static void Draw<T>(this IList<T> current,string header="List"){}
 		public static void Draw(this IDictionary current,UnityLabel label=null,GUIStyle style=null,bool indention=true){}
 		public static void PadStart(int space=0){}
