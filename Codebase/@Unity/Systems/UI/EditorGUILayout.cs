@@ -465,10 +465,13 @@ namespace Zios.Unity.EditorUI{
 }
 #else
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 using UnityObject = UnityEngine.Object;
 namespace Zios.Unity.EditorUI{
+	using Zios.Reflection;
 	//============================
 	// Proxy
 	//============================
@@ -477,8 +480,8 @@ namespace Zios.Unity.EditorUI{
 		public static float Draw(this float current,UnityLabel label=null,GUIStyle style=null,bool indention=true){return current;}
 		public static bool Draw(this bool current,UnityLabel label=null,GUIStyle style=null,bool indention=true){return current;}
 		public static Enum Draw(this Enum current,UnityLabel label=null,GUIStyle style=null,bool indention=true){return current;}
-		public static int Draw(this IEnumerable<string> current,int index,UnityLabel label=null,GUIStyle style=null,bool indention=true){return current;}
-		public static void Draw(this SerializedProperty current,UnityLabel label=null,bool allowScene=true,bool indention=true){}
+		public static int Draw(this IEnumerable<string> current,int index,UnityLabel label=null,GUIStyle style=null,bool indention=true){return 0;}
+		//public static void Draw(this SerializedProperty current,UnityLabel label=null,bool allowScene=true,bool indention=true){}
 		public static Rect Draw(this Rect current,UnityLabel label=null,bool indention=true){return current;}
 		public static AnimationCurve Draw(this AnimationCurve current,UnityLabel label=null,bool indention=true){return current;}
 		public static Color Draw(this Color current,UnityLabel label=null,bool indention=true){return current;}
@@ -529,6 +532,7 @@ namespace Zios.Unity.EditorUI{
 	//============================
 	// Layout
 	//============================
+	public enum EditorUILayout{Auto,Global,Style,None}
 	public static partial class EditorUI{
 		public static float width;
 		public static float height;
