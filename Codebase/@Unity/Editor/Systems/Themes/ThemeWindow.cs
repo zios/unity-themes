@@ -15,17 +15,17 @@ namespace Zios.Unity.Editor.Themes{
 		public static bool setup;
 		public static Rect hiddenPosition = new Rect(9001,9001,1,1);
 		public static Vector2 hiddenSize = new Vector2(1,1);
+		public static bool Inactive(){return Theme.disabled || !ThemeWindow.setup || EditorApplication.isCompiling || EditorApplication.isUpdating;}
 		public void OnEnable(){ThemeWindow.setup = true;}
 		public void OnGUI(){
 			Theme.disabled = EditorPref.Get<bool>("EditorTheme-Disabled",false);
 			this.Repaint();
-			if(Theme.disabled || !ThemeWindow.setup || EditorApplication.isCompiling || EditorApplication.isUpdating){
-				return;
-			}
+			if(ThemeWindow.Inactive()){return;}
 			Theme.Update();
+			if(ThemeWindow.Inactive()){return;}
 			ThemeContent.Monitor();
-			bool validTheme = !Theme.active.IsNull() && Theme.active.name != "Default";
-			bool mouseChanged = this.lastMouse != Event.current.mousePosition;
+			var validTheme = !Theme.active.IsNull() && Theme.active.name != "Default";
+			var mouseChanged = this.lastMouse != Event.current.mousePosition;
 			Call.Delay(RelativeColor.UpdateSystem,0.2f,false);
 			if(validTheme && mouseChanged){
 				this.lastMouse = Event.current.mousePosition;

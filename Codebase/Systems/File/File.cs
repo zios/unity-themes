@@ -140,7 +140,10 @@ namespace Zios.File{
 			var needsScan = !Proxy.IsEditor() || (Proxy.IsEditor() && !Proxy.IsPlaying());
 			if(needsScan){
 				File.Scan(File.root);
-				if(Proxy.IsEditor() || Application.platform.MatchesAny("WindowsPlayer","OSXPlayer","LinuxPlayer")){File.Scan(File.root+"/Temp",true);}
+				if(Proxy.IsEditor() || Application.platform.MatchesAny("WindowsPlayer","OSXPlayer","LinuxPlayer")){
+					File.Scan(File.root+"/Temp",true);
+					File.Scan(File.root+"/Packages",true);
+				}
 				if(File.fullScan){File.Scan(File.dataPath,true);}
 				if(File.clock){Log.Show("[File] : Scan complete -- " + Time.Passed() + ".");}
 				File.Save();

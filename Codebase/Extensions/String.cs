@@ -209,8 +209,9 @@ namespace Zios.Extensions{
 			return current.Substring(0,last);
 		}
 		public static string GetAssetPath(this string current){
-			if(!current.Contains("Assets")){return current;}
-			return "Assets" + current.FixPath().Split("/Assets")[1];
+			if(current.Contains("Packages")){return "Packages" + current.FixPath().Split("/Packages")[1];}
+			if(current.Contains("Assets")){return "Assets" + current.FixPath().Split("/Assets")[1];}
+			return current;
 		}
 		public static string GetPathTerm(this string current){
 			return current.FixPath().Split("/").LastOrDefault() ?? "";

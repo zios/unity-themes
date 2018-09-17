@@ -33,7 +33,7 @@ namespace Zios.Unity.Components.AnimationSettings{
 		public static Storage<SpeedUnit> rateMode = new Storage<SpeedUnit>("AnimationSettings.rateMode");
 		public static Storage<SpeedUnit> speedMode = new Storage<SpeedUnit>("AnimationSettings.speedMode",SpeedUnit.Scalar);
 		public string name;
-		public float rate;
+		public float rate = 30;
 		public float speed;
 		public float originalSpeed;
 		[NonSerialized] public double time = 0;

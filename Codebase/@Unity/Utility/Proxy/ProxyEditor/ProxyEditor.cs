@@ -575,6 +575,7 @@ namespace Zios.Unity.ProxyEditor{
 		public static bool IsSwitching(){return false;}
 		public static void AddUpdate(Action method){}
 		public static void RemoveUpdate(Action method){}
+		public static void AddModeChange(Action method){}
 		//============================
 		// EditorUtility
 		//============================
