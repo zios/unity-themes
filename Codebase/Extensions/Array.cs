@@ -67,7 +67,7 @@ namespace Zios.Extensions{
 				current = current.ToList().Take(newSize).ToArray();
 			}
 			if(current.Length < newSize){
-				Array.Copy(current,result,newSize);
+				Array.Copy(current,result,current.Length);
 			}
 			return result;
 		}
