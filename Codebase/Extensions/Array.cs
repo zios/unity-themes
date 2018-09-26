@@ -61,15 +61,8 @@ namespace Zios.Extensions{
 			return copy.ToArray();
 		}
 		public static T[] Resize<T>(this T[] current,int newSize){
-			if(current == null || current.Length == newSize){return current;}
-			var result = new T[newSize];
-			if(current.Length > newSize){
-				current = current.ToList().Take(newSize).ToArray();
-			}
-			if(current.Length < newSize){
-				Array.Copy(current,result,current.Length);
-			}
-			return result;
+			Array.Resize(ref current,newSize);
+			return current;
 		}
 		public static T[] Order<T>(this T[] current){
 			var copy = current.ToList();

@@ -27,6 +27,7 @@ namespace Zios.Unity.Supports.Singleton{
 		}
 		#endif
 		public static Type Create<Type>(string path,bool createPath=true) where Type : ScriptableObject{
+			if(path.IsNull()){return default(Type);}
 			var name = path.GetPathTerm();
 			var useName = typeof(Type).Name == "ScriptableObject";
 			var folder = Application.dataPath + Singleton.storagePath;

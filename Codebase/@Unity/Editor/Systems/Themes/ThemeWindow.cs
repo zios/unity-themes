@@ -19,7 +19,6 @@ namespace Zios.Unity.Editor.Themes{
 		public void OnEnable(){ThemeWindow.setup = true;}
 		public void OnGUI(){
 			Theme.disabled = EditorPref.Get<bool>("EditorTheme-Disabled",false);
-			this.Repaint();
 			if(ThemeWindow.Inactive()){return;}
 			Theme.Update();
 			if(ThemeWindow.Inactive()){return;}
@@ -60,6 +59,7 @@ namespace Zios.Unity.Editor.Themes{
 				Theme.window.minSize = ThemeWindow.hiddenSize;
 				Theme.window.maxSize = ThemeWindow.hiddenSize;
 			}
+			Theme.window.Repaint();
 		}
 		public void OnDestroy(){
 			Theme.window = null;
