@@ -23,7 +23,7 @@ namespace Zios.Unity.Editor.State{
 			var window = StateWindow.Get();
 			var row = this.row.target.As<StateRow>();
 			var script = row.target;
-			bool darkSkin = EditorGUIUtility.isProSkin || EditorPref.Get<bool>("EditorTheme-Dark",false);
+			bool darkSkin = EditorGUIUtility.isProSkin || EditorPref.Get<bool>("Zios.Theme.Dark",false);
 			string name = this.target is string ? (string)this.target : script.alias;
 			string background = darkSkin ? "BoxBlackA30" : "BoxWhiteBWarm";
 			Color textColor = darkSkin? Colors.Get("Silver") : Colors.Get("Black");

@@ -1,7 +1,7 @@
 CustomizablePalette = True
 CustomizableFontset = True
 CustomizableIconset = True
-Palette = Muted
+Palette = GDot
 Fontset = Liberation
 Iconset = Simplicity
-Skinset = Simplicity
+Skinset = Simplicity+ClassyForms

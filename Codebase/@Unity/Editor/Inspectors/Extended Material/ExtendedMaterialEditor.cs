@@ -127,7 +127,7 @@ namespace Zios.Unity.Editor.Inspectors.ExtendedMaterial{
 		}
 		public bool DrawTitle(string title,bool current){
 			EditorGUI.BeginChangeCheck();
-			string skinSuffix = EditorGUIUtility.isProSkin || EditorPref.Get<bool>("EditorTheme-Dark",false) ? "Dark" : "Light";
+			string skinSuffix = EditorGUIUtility.isProSkin || EditorPref.Get<bool>("Zios.Theme.Dark",false) ? "Dark" : "Light";
 			skinSuffix += current ? "Open" : "";
 			GUIStyle styleTitle = this.UI.GetStyle("Title"+skinSuffix);
 			string arrow = "<color=#008ffeFF>▼</color>";
@@ -137,7 +137,7 @@ namespace Zios.Unity.Editor.Inspectors.ExtendedMaterial{
 			return pressed;
 		}
 		public bool DrawToggleButton(string label,bool state){
-			string skinSuffix = EditorGUIUtility.isProSkin || EditorPref.Get<bool>("EditorTheme-Dark",false) ? "Dark" : "Light";
+			string skinSuffix = EditorGUIUtility.isProSkin || EditorPref.Get<bool>("Zios.Theme.Dark",false) ? "Dark" : "Light";
 			string prefix = state ? "☗ " : "☖ ";
 			skinSuffix += state ? "Active" : "";
 			GUIStyle buttonStyle = this.UI.GetStyle("Button"+skinSuffix);

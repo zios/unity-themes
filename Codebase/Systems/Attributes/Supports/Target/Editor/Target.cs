@@ -28,7 +28,7 @@ namespace Zios.Unity.Editor.Attributes.Supports.Target{
 		public static void Draw(Rect area,Target target,GUIContent label){
 			if(target.parent.IsNull()){return;}
 			if(TargetDrawer.skin.IsNull()){
-				string skin = EditorGUIUtility.isProSkin || EditorPref.Get<bool>("EditorTheme-Dark",false) ? "Dark" : "Light";
+				string skin = EditorGUIUtility.isProSkin || EditorPref.Get<bool>("Zios.Theme.Dark",false) ? "Dark" : "Light";
 				TargetDrawer.skin = File.GetAsset<GUISkin>("Gentleface-" + skin + ".guiskin");
 			}
 			Rect toggleRect = new Rect(area);

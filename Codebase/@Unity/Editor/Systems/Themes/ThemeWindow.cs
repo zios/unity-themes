@@ -18,7 +18,7 @@ namespace Zios.Unity.Editor.Themes{
 		public static bool Inactive(){return Theme.disabled || !ThemeWindow.setup || EditorApplication.isCompiling || EditorApplication.isUpdating;}
 		public void OnEnable(){ThemeWindow.setup = true;}
 		public void OnGUI(){
-			Theme.disabled = EditorPref.Get<bool>("EditorTheme-Disabled",false);
+			Theme.disabled = EditorPref.Get<bool>("Zios.Theme.Options.Disabled",false);
 			if(ThemeWindow.Inactive()){return;}
 			Theme.Update();
 			if(ThemeWindow.Inactive()){return;}

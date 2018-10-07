@@ -20,7 +20,7 @@ namespace Zios.Unity.Editor.Drawers.Table{
 			return row;
 		}
 		public GUISkin GetSkin(){
-			string skin = EditorGUIUtility.isProSkin || EditorPref.Get<bool>("EditorTheme-Dark",false) ? this.skinDark : this.skinLight;
+			string skin = EditorGUIUtility.isProSkin || EditorPref.Get<bool>("Zios.Theme.Dark",false) ? this.skinDark : this.skinLight;
 			return File.GetAsset<GUISkin>(skin+".guiskin");
 		}
 		public TableRow AddRow(object target=null){

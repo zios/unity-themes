@@ -43,7 +43,7 @@ namespace Zios.Unity.Editor.Themes{
 				var file = File.Create(path);
 				file.Write(this.Serialize());
 				ProxyEditor.ImportAsset(path.GetAssetPath());
-				EditorPref.Set<string>("EditorFontset"+Theme.suffix,path.GetFileName());
+				EditorPref.Set<string>("Zios.Theme.Fontset"+Theme.suffix,path.GetFileName());
 				Theme.Reset();
 			}
 		}

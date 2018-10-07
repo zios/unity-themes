@@ -50,7 +50,7 @@ namespace Zios.Unity.Editor.Themes{
 			if(path.Length > 0){
 				var file = File.Create(path);
 				file.Write(this.Serialize());
-				EditorPref.Set<string>("EditorTheme"+Theme.suffix,theme.name);
+				EditorPref.Set<string>("Zios.Theme"+Theme.suffix,theme.name);
 				Theme.needsSetup = true;
 			}
 		}
