@@ -1,8 +1,5 @@
 #if ENABLE_MONO
 
-using System;
-using UnityEngine;
-
 namespace Zios
 {
     /*public static class BitStreamExtension

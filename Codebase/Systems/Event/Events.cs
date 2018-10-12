@@ -215,9 +215,11 @@ namespace Zios.Event
 
         public static void AddStepper(string eventName, MethodStep method, IList collection, int passes = 1)
         {
+#if UNITY_EDITOR
             var stepper = new EventStepper(method, null, collection, passes);
             stepper.onComplete = () => Events.Remove(eventName, stepper.Step);
             Events.Add(eventName, stepper.Step).SetPermanent();
+#endif
         }
 
         public static EventListener Add(string name, Method method, params object[] targets)

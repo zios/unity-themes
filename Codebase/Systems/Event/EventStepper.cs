@@ -7,6 +7,8 @@ using UnityEngine;
 
 namespace Zios.Event
 {
+#if UNITY_EDITOR
+
     using Interface;
 
     [Serializable]
@@ -62,4 +64,6 @@ namespace Zios.Event
             EventStepper.active = null;
         }
     }
+
+#endif
 }

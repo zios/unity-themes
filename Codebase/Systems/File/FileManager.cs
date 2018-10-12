@@ -174,7 +174,11 @@ namespace Zios
             FileManager.folders.Clear();
             FileManager.cache.Clear();
             FileManager.root = Application.isEditor ? FileManager.dataPath.GetDirectory() : FileManager.dataPath;
+#if UNITY_EDITOR
             var needsScan = !Application.isEditor || (Application.isEditor && !Utility.IsPlaying());
+#else
+            var needsScan = !Application.isEditor || (Application.isEditor && !Application.isPlaying);
+#endif
             if (needsScan)
             {
                 FileManager.Scan(FileManager.root);

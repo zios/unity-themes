@@ -20,7 +20,11 @@ namespace Zios
         //====================
         public static GameObject GetPrefabRoot(this GameObject current)
         {
+#if UNITY_EDITOR
             return Utility.GetPrefabRoot(current);
+#else
+            return current.transform.root.gameObject;
+#endif
         }
 
         public static int GetSiblingCount(this GameObject current, bool includeInactive = false)

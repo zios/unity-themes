@@ -79,6 +79,7 @@ namespace Zios.Event
 
         public void Call(bool debugDeep, bool debugTime, object[] values)
         {
+#if UNITY_EDITOR
             if (Utility.IsPaused() || this.paused || !this.IsValid()) { return; }
             if (this.IsResting())
             {
@@ -128,6 +129,7 @@ namespace Zios.Event
                 Debug.Log(message);
             }
             Events.stack.Remove(this);
+#endif
         }
     }
 }

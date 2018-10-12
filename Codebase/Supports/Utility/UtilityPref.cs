@@ -10,7 +10,11 @@ using UnityEditor;
 
 namespace Zios
 {
+#if UNITY_EDITOR
+
     using Interface;
+
+#endif
 
     public static partial class Utility
     {
@@ -135,13 +139,15 @@ namespace Zios
 
         public static void DeletePlayerPrefs(bool prompt)
         {
+#if UNITY_EDITOR
             if (!prompt || EditorUI.DrawDialog("Clear Player Prefs", "Delete all the player preferences?", "Yes", "No"))
             {
                 PlayerPrefs.DeleteAll();
             }
+#endif
         }
 
-#if !UNITY_THEMES
+#if !UNITY_THEMES && UNITY_EDITOR
 
         [MenuItem("Zios/Prefs/Clear Player")]
         public static void DeletePlayerPrefs() { Utility.DeletePlayerPrefs(true); }

@@ -46,17 +46,23 @@ namespace Zios
         public static void Move(this Component current, int amount)
         {
             if (current.IsNull()) { return; }
+#if UNITY_EDITOR
             Utility.DisconnectPrefabInstance(current);
+#endif
             while (amount != 0)
             {
                 if (amount > 0)
                 {
+#if UNITY_EDITOR
                     Utility.MoveComponentDown(current);
+#endif
                     amount -= 1;
                 }
                 if (amount < 0)
                 {
+#if UNITY_EDITOR
                     Utility.MoveComponentUp(current);
+#endif
                     amount += 1;
                 }
             }
@@ -99,7 +105,9 @@ namespace Zios
         public static void MoveToTop(this Component current)
         {
             if (current.IsNull()) { return; }
+#if UNITY_EDITOR
             Utility.DisconnectPrefabInstance(current);
+#endif
             Component[] components = current.GetComponents<Component>();
             int position = components.IndexOf(current);
             current.Move(-position);
@@ -108,7 +116,9 @@ namespace Zios
         public static void MoveToBottom(this Component current)
         {
             if (current.IsNull()) { return; }
+#if UNITY_EDITOR
             Utility.DisconnectPrefabInstance(current);
+#endif
             Component[] components = current.GetComponents<Component>();
             int position = components.IndexOf(current);
             current.Move(components.Length - position);
