@@ -1,3 +1,4 @@
-namespace Zios{
-	public class NotSerialized : System.Attribute{}
+namespace Zios
+{
+    public class NotSerialized : System.Attribute { }
 }

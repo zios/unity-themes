@@ -1,2 +1,3 @@
 using UnityEngine;
-public class Singleton : ScriptableObject{}
+
+public class Singleton : ScriptableObject { }
