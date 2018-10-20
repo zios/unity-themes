@@ -305,7 +305,7 @@ namespace Zios.Interface
         //=================================
         // Preferences
         //=================================
-        [PreferenceItem("Themes")]
+        [SettingsProvider]
         public static void DrawPreferences()
         {
             EditorUI.Reset();

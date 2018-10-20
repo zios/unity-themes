@@ -65,11 +65,25 @@ namespace Zios.Interface
                     Theme.window.ShowPopup();
                 }
             }
-            if (Theme.window.position != ThemeWindow.hiddenPosition) { Theme.window.position = ThemeWindow.hiddenPosition; }
-            if (Theme.window.maxSize != ThemeWindow.hiddenSize)
+
+            try
             {
-                Theme.window.minSize = ThemeWindow.hiddenSize;
-                Theme.window.maxSize = ThemeWindow.hiddenSize;
+                if (Theme.window == null || (Theme.window != null && Theme.window.position == null))
+                    return;
+
+                if (Theme.window.position != ThemeWindow.hiddenPosition)
+                {
+                    Theme.window.position = ThemeWindow.hiddenPosition;
+                }
+
+                if (Theme.window.maxSize != ThemeWindow.hiddenSize)
+                {
+                    Theme.window.minSize = ThemeWindow.hiddenSize;
+                    Theme.window.maxSize = ThemeWindow.hiddenSize;
+                }
+            }
+            catch
+            {
             }
         }
 
