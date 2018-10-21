@@ -201,7 +201,7 @@ namespace Zios.Interface
             if (key is string) { name = (string)key; }
             bool previous = Utility.GetPref<bool>(name);
             bool state = EditorUI.Draw<bool>(() => EditorGUI.Foldout(area, previous, current, style), indention);
-            if (previous != state) { Utility.SetPref<bool>(name, state); }
+            if (previous != state) { Utility.SetPref(name, state); }
             return state;
         }
 
@@ -216,7 +216,7 @@ namespace Zios.Interface
             if (current.DrawButton(area, currentStyle, indention))
             {
                 state = !state;
-                Utility.SetPref<bool>(stateName, state);
+                Utility.SetPref(stateName, state);
             }
             return state;
         }

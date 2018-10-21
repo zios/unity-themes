@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 using UnityEvent = UnityEngine.Event;
@@ -49,6 +50,14 @@ namespace Zios.Interface
                 }, delay, false);
             }
         }
+
+#if !UNITY_2018_3_OR_NEWER
+        [MenuItem("Window/Preferences/Themes")]
+        public static void ShowWindowFromMenu()
+        {
+            PreferencesTools.ShowSection("Themes");
+        }
+#endif
 
         public static void ShowWindow()
         {

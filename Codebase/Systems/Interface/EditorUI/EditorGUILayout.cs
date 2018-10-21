@@ -301,7 +301,7 @@ namespace Zios.Interface
 #endif
             if (previous != state)
             {
-                Utility.SetPref<bool>(name, state);
+                Utility.SetPref(name, state);
                 EditorUI.foldoutChanged = true;
                 //GUI.FocusControl("");
             }
@@ -323,7 +323,7 @@ namespace Zios.Interface
                 if (current.DrawButton(currentStyle, indention))
                 {
                     state = !state;
-                    Utility.SetPref<bool>(stateName, state);
+                    Utility.SetPref(stateName, state);
                     if (!callback.IsNull()) { callback(); }
                 }
             }

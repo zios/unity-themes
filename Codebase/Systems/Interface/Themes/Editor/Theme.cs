@@ -37,7 +37,7 @@ namespace Zios.Interface
 
         public void Export(string path = null)
         {
-            var theme = Theme.active;
+            var theme = active;
             var targetPath = path ?? Theme.storagePath;
             var targetName = theme.name + "-Variant";
             path = path.IsEmpty() ? EditorUtility.SaveFilePanel("Save Theme", targetPath, targetName, "unitytheme") : path;
@@ -45,7 +45,7 @@ namespace Zios.Interface
             {
                 var file = FileManager.Create(path);
                 file.WriteText(this.Serialize());
-                Utility.SetPref<string>("EditorTheme" + Theme.suffix, theme.name);
+                Utility.SetPref("EditorTheme" + suffix, theme.name);
                 Theme.setup = false;
             }
         }

@@ -179,9 +179,9 @@ namespace Zios.Interface
                     var key = change.Split("|||")[0];
                     var type = change.Split("|||")[1].Split("---")[0];
                     var value = change.Split("|||")[1].Split("---")[1];
-                    if (type.Contains("Bool")) { Utility.SetPref<bool>(key, value.ToBool()); }
+                    if (type.Contains("Bool")) { Utility.SetPref(key, value.ToBool()); }
                     else if (type.Contains("Int")) { Utility.SetPref<int>(key, value.ToInt()); }
-                    else if (type.Contains("String")) { Utility.SetPref<string>(key, value); }
+                    else if (type.Contains("String")) { Utility.SetPref(key, value); }
                     else if (type.Contains("Float")) { Utility.SetPref<float>(key, value.ToFloat()); }
                 }
             }

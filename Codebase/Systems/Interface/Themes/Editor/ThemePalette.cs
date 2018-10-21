@@ -46,7 +46,7 @@ namespace Zios.Interface
                 var file = FileManager.Create(path);
                 file.WriteText(this.Serialize());
                 AssetDatabase.ImportAsset(path.GetAssetPath());
-                Utility.SetPref<string>("EditorPalette" + Theme.suffix, path.GetFileName());
+                Utility.SetPref("EditorPalette" + Theme.suffix, path.GetFileName());
                 Theme.Reset(true);
             }
         }
