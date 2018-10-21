@@ -55,8 +55,8 @@ namespace Zios.Interface
 
         static Theme()
         {
-            EditorApplication.playmodeStateChanged += Theme.CheckUpdate;
-            EditorApplication.update += ThemeWindow.ShowWindow;
+            EditorApplication.playModeStateChanged += Theme.CheckUpdate;
+            // EditorApplication.update += ThemeWindow.ShowWindow; // Why?
             AppDomain.CurrentDomain.DomainUnload += ThemeWindow.CloseWindow;
             Events.Add("On Window Reordered", ThemeWindow.CloseWindow);
             Events.Add("On GUISkin Changed", () =>
@@ -202,7 +202,7 @@ namespace Zios.Interface
         //=================================
         // Updating
         //=================================
-        public static void CheckUpdate()
+        public static void CheckUpdate(PlayModeStateChange playModeStateChange)
         {
             if (Theme.separatePlaymodeSettings && !EditorApplication.isPlayingOrWillChangePlaymode)
             {

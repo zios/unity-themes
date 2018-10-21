@@ -7,8 +7,8 @@ namespace Zios
     {
         public static void SetTitle(this EditorWindow current, string title, Texture2D icon = null)
         {
-#if UNITY_5 && !UNITY_5_0
-			current.titleContent = new GUIContent(title,icon);
+#if UNITY_5_5_OR_NEWER
+            current.titleContent = new GUIContent(title, icon);
 #else
             current.title = title;
 #endif
