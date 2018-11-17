@@ -313,7 +313,7 @@ namespace Zios.Interface
 
         private class MyPrefSettingsProvider : SettingsProvider
         {
-            public MyPrefSettingsProvider(string path, SettingsScopes scopes = SettingsScopes.Any)
+            public MyPrefSettingsProvider(string path, SettingsScope scopes = SettingsScope.User)
             : base(path, scopes)
             { }
 
