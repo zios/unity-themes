@@ -8,6 +8,7 @@ namespace Zios.Unity.Editor.Menus{
 	using Zios.Unity.ProxyEditor;
 	using Zios.Unity.Log;
 	using Zios.Unity.SpriteManager;
+	using PrefabType = Zios.Unity.ProxyEditor.ProxyEditor.PrefabType;
 	public static class HelperMenu{
 		public static bool IsSprite(GameObject instance){
 			MeshFilter filter = instance.GetComponent<MeshFilter>();
@@ -21,7 +22,7 @@ namespace Zios.Unity.Editor.Menus{
 			int removed = 0;
 			ProxyEditor.RecordObjects(objects,"Remove Invisible Sprites");
 			foreach(GameObject gameObject in objects){
-				PrefabType type = PrefabUtility.GetPrefabType(gameObject);
+				PrefabType type = ProxyEditor.GetPrefabType(gameObject);
 				if(type == PrefabType.Prefab || type == PrefabType.ModelPrefab || gameObject == null){continue;}
 				Vector3 position = gameObject.transform.localPosition;
 				bool isRoot = gameObject.transform.parent == null;

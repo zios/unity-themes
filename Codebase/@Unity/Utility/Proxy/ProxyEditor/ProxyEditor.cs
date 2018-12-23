@@ -129,19 +129,132 @@ namespace Zios.Unity.ProxyEditor{
 		// PrefabUtility
 		//============================
 		public static UnityObject GetPrefab(UnityObject target){
+			#if UNITY_2018_3_OR_NEWER
+			return PrefabUtility.GetPrefabInstanceHandle(target);
+			#else
 			return PrefabUtility.GetPrefabObject(target);
+			#endif
 		}
 		public static GameObject GetPrefabRoot(GameObject target){
+			#if UNITY_2018_3_OR_NEWER
+			return PrefabUtility.GetOutermostPrefabInstanceRoot(target);
+			#else
 			return PrefabUtility.FindPrefabRoot(target);
+			#endif
 		}
 		public static PrefabType GetPrefabType(UnityObject target){
-			return PrefabUtility.GetPrefabType(target);
+			#if UNITY_2018_3_OR_NEWER
+			var data = new PrefabType();
+			var type = PrefabUtility.GetPrefabAssetType(target);
+			var status = PrefabUtility.GetPrefabInstanceStatus(target);
+			var isPrefab = !type.Has("NotAPrefab");
+			var isInstance = !status.Has("NotAPrefab");
+			if(isPrefab){
+				if(isInstance){
+					var isDisconnected = status.Has("Disconnected");
+					if(isDisconnected){
+						if(type.Has("Regular")){data |= PrefabType.DisconnectedPrefabInstance;}
+						if(type.Has("Model")){data |= PrefabType.DisconnectedModelPrefabInstance;}
+					}
+					else{
+						if(type.Has("Regular")){data |= PrefabType.PrefabInstance;}
+						if(type.Has("Model")){data |= PrefabType.ModelPrefabInstance;}
+						if(status.Has("MissingAsset")){data |= PrefabType.MissingPrefabInstance;}
+					}
+				}
+				else{
+					if(type.Has("Regular")){data |= PrefabType.Prefab;}
+					if(type.Has("Model")){data |= PrefabType.ModelPrefab;}
+					if(type.Has("MissingAsset")){data |= PrefabType.MissingPrefabInstance;}
+				}
+			}
+			else{
+				data |= PrefabType.None;
+			}
+			return data;
+			#else
+			return PrefabUtility.GetPrefabType(target).ToInt().As<PrefabType>();
+			#endif
+		}
+		[Flags]
+		public enum PrefabType{None,Prefab,ModelPrefab,PrefabInstance,ModelPrefabInstance,MissingPrefabInstance,DisconnectedPrefabInstance,DisconnectedModelPrefabInstance}
+		public static ReplacePrefabOptions GetReplacePrefabOptions(ReplacePrefabOptions replacePrefabOptions){return replacePrefabOptions;}
+		[Flags]
+		public enum ReplacePrefabOptions{Default,ConnectToPrefab,ReplaceNameBased}
+		public static UnityObject CreateEmptyPrefab(GameObject target, string path){
+			#if UNITY_2018_3_OR_NEWER
+			return PrefabUtility.SaveAsPrefabAsset(target, path);
+			#else
+			return PrefabUtility.CreateEmptyPrefab(path);
+			#endif
+		}
+		public static object GetCorrespondingObjectFromSource(GameObject target){
+			return PrefabUtility.GetCorrespondingObjectFromSource(target);
 		}
 		public static void ApplyPrefab(GameObject target){
+			#if UNITY_2018_3_OR_NEWER
+			GameObject root = PrefabUtility.GetOutermostPrefabInstanceRoot(target);
+			PrefabUtility.SaveAsPrefabAssetAndConnect(root,PrefabUtility.GetCorrespondingObjectFromSource(root).ToString(), InteractionMode.AutomatedAction);
+			#elif UNITY_2018_2
 			GameObject root = PrefabUtility.FindPrefabRoot(target);
-			#if UNITY_2018_2_OR_NEWER
-			PrefabUtility.ReplacePrefab(root,PrefabUtility.GetCorrespondingObjectFromSource(root),ReplacePrefabOptions.ConnectToPrefab);
+			ProxyEditor.ReplacePrefab(root,PrefabUtility.GetCorrespondingObjectFromSource(root),GetReplacePrefabOptions(ReplacePrefabOptions.ConnectToPrefab));
 			#else
+			GameObject root = PrefabUtility.FindPrefabRoot(target);
+			ProxyEditor.ReplacePrefab(root,PrefabUtility.GetPrefabParent(root),ReplacePrefabOptions.ConnectToPrefab);
+			#endif
+		}
+		/*
+		#if UNITY_2018_3_OR_NEWER
+		public static int ReplacePrefabOptions(int replacePrefabType, GameObject target, string path){
+			if (replacePrefabType == 0)
+				PrefabUtility.SavePrefabAsset(target);
+			else if (replacePrefabType == 1)
+				PrefabUtility.SaveAsPrefabAssetAndConnect(target, path, InteractionMode.AutomatedAction);
+			else if (replacePrefabType == 2)
+				PrefabUtility.SaveAsPrefabAsset(target, path);
+			return (replacePrefabType);
+		}
+		#else
+		public static ReplacePrefabOptions ReplacePrefabOptions(int replacePrefabType, GameObject target){
+			ReplacePrefabOptions replacePrefabOptions = new ReplacePrefabOptions();
+			switch (replacePrefabType)
+			{
+				case 0:
+					replacePrefabOptions = UnityEditor.ReplacePrefabOptions.Default;
+					return replacePrefabOptions;
+				case 1:
+					replacePrefabOptions = UnityEditor.ReplacePrefabOptions.ConnectToPrefab;
+					return replacePrefabOptions;
+				case 2:
+					replacePrefabOptions = UnityEditor.ReplacePrefabOptions.ReplaceNameBased;
+					return replacePrefabOptions;
+				default:
+					return replacePrefabOptions;
+			}
+		}
+		#endif
+		*/
+		public static void ApplyPrefab(GameObject target, object source){
+			#if UNITY_2018_3_OR_NEWER
+			GameObject root = PrefabUtility.GetOutermostPrefabInstanceRoot(target);
+			PrefabUtility.SaveAsPrefabAssetAndConnect(root,PrefabUtility.GetCorrespondingObjectFromSource(root).ToString(), InteractionMode.AutomatedAction);
+			#elif UNITY_2018_2
+			GameObject root = PrefabUtility.FindPrefabRoot(target);
+			ProxyEditor.ReplacePrefab(root, PrefabUtility.GetCorrespondingObjectFromSource(root),(ReplacePrefabOptions.ConnectToPrefab));
+			#else
+			GameObject root = PrefabUtility.FindPrefabRoot(target);
+			ProxyEditor.ReplacePrefab(root,PrefabUtility.GetPrefabParent(root),ReplacePrefabOptions.ConnectToPrefab);
+			#endif
+		}
+		public static void ReplacePrefab(GameObject target, object source, ReplacePrefabOptions replacePrefabOptions){
+			#if UNITY_2018_3_OR_NEWER
+			GameObject root = PrefabUtility.GetOutermostPrefabInstanceRoot(target);
+			PrefabUtility.SaveAsPrefabAssetAndConnect(root,PrefabUtility.GetCorrespondingObjectFromSource(root).ToString(), InteractionMode.AutomatedAction);
+			#elif UNITY_2018_2
+			GameObject root = PrefabUtility.FindPrefabRoot(target);
+			PrefabUtility.ReplacePrefab(root, PrefabUtility.GetCorrespondingObjectFromSource(root),(UnityEditor.ReplacePrefabOptions)ReplacePrefabOptions.ConnectToPrefab);
+			#else
+			GameObject root = PrefabUtility.FindPrefabRoot(target);
 			PrefabUtility.ReplacePrefab(root,PrefabUtility.GetPrefabParent(root),ReplacePrefabOptions.ConnectToPrefab);
 			#endif
 		}
@@ -149,11 +262,24 @@ namespace Zios.Unity.ProxyEditor{
 			PrefabUtility.RecordPrefabInstancePropertyModifications(target);
 		}
 		public static bool ReconnectToLastPrefab(GameObject target){
+			#if UNITY_2018_3_OR_NEWER
+			PrefabUtility.RevertPrefabInstance(target, InteractionMode.UserAction);
+			return PrefabUtility.IsDisconnectedFromPrefabAsset(target);
+			#else
 			return PrefabUtility.ReconnectToLastPrefab(target);
+			#endif
 		}
 		public static void DisconnectPrefabInstance(UnityObject target){
+			#if UNITY_2018_3_OR_NEWER
+			PrefabUtility.UnpackPrefabInstance(target.As<GameObject>(), PrefabUnpackMode.Completely, InteractionMode.UserAction);
+			#else
 			PrefabUtility.DisconnectPrefabInstance(target);
+		#endif
 		}
+		public static UnityEngine.Object InstantiatePrefab(UnityObject target){
+			return PrefabUtility.InstantiatePrefab(target);
+		}
+		public static PrefabUtility.PrefabInstanceUpdated prefabInstanceUpdated;
 		//============================
 		// ShaderUtil
 		//============================
@@ -508,16 +634,6 @@ using System;
 using UnityEngine;
 using UnityObject = UnityEngine.Object;
 namespace Zios.Unity.ProxyEditor{
-	public enum PrefabType{
-		None,
-		Prefab,
-		ModelPrefab,
-		PrefabInstance,
-		ModelPrefabInstance,
-		MissingPrefabInstance,
-		DisconnectedPrefabInstance,
-		DisconnectedModelPrefabInstance
-	}
 	public static class ProxyEditor{
 		//============================
 		// AssetsDatabase
@@ -556,8 +672,19 @@ namespace Zios.Unity.ProxyEditor{
 		public static GameObject GetPrefabRoot(GameObject target){return target;}
 		public static void ApplyPrefab(GameObject target){}
 		public static void UpdatePrefab(UnityObject target){}
-		public static bool ReconnectToLastPrefab(GameObject target){return true;}
+		public static void ReconnectToLastPrefab(GameObject target){}
 		public static void DisconnectPrefabInstance(UnityObject target){}
+		public static object GetCorrespondingObjectFromSource(GameObject target){return target;}
+		public static UnityObject CreateEmptyPrefab(GameObject target, string path){return target;}
+		public static void ApplyPrefab(GameObject target, object source){}
+		public static void ApplyPrefab(GameObject target, object source, int replacePrefabOptions){}
+		public static UnityEngine.Object InstantiatePrefab(UnityObject target){return target;}
+		public static void ReplacePrefab(GameObject target, object source, ReplacePrefabOptions replacePrefabOptions){}
+		public static ReplacePrefabOptions GetReplacePrefabOptions(ReplacePrefabOptions replacePrefabOptions){return replacePrefabOptions;}
+		public enum ReplacePrefabOptions{Default,ConnectToPrefab,ReplaceNameBased}
+		[Flags]
+		public enum PrefabType{None,Prefab,ModelPrefab,PrefabInstance,ModelPrefabInstance,MissingPrefabInstance,DisconnectedPrefabInstance,DisconnectedModelPrefabInstance}
+
 		//============================
 		// ShaderUtil
 		//============================
@@ -594,9 +721,10 @@ namespace Zios.Unity.ProxyEditor{
 		public static void RecordObject(UnityObject target,string name){}
 		public static void RecordObjects(UnityObject[] target,string name){}
 		public static void RegisterCompleteObjectUndo(UnityObject target,string name){}
-		public static void RegisterSceneUndo(string name){}
+		public static void RegisterSceneUndo(UnityObject target,string name){}
 		public static void RegisterUndo(UnityObject target,string name){}
 		public static void RegisterUndo(UnityObject[] targets,string name){}
+		public static void RegisterCreatedObjectUndo(UnityObject target,string name){}
 		//============================
 		// Other
 		//============================

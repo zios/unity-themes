@@ -97,12 +97,12 @@ namespace Zios.Unity.Editor.Windows{
 		public void PerformReplace(){
 			if(this.optionA.type == ReplaceOption.Prefab){
 				ProxyEditor.RegisterSceneUndo(this,"Replace Operation");
-				Object prefab = PrefabUtility.CreateEmptyPrefab(this.optionA.targetPath);
-				PrefabUtility.ReplacePrefab(this.optionB.found.First(),prefab);
+				Object prefab = ProxyEditor.CreateEmptyPrefab(null, this.optionA.targetPath);
+				ProxyEditor.ApplyPrefab(this.optionB.found.First(),prefab);
 			}
 			if(this.optionA.type == ReplaceOption.GameObject){
 				foreach(GameObject current in new List<GameObject>(this.optionA.found)){
-					GameObject newObject = (GameObject)PrefabUtility.InstantiatePrefab(this.optionB.found.First());
+					GameObject newObject = (GameObject)ProxyEditor.InstantiatePrefab(this.optionB.found.First());
 					newObject.transform.parent = current.transform.parent;
 					newObject.transform.position = current.transform.position;
 					newObject.transform.rotation = current.transform.rotation;
@@ -317,24 +317,20 @@ namespace Zios.Unity.Editor.Windows{
 			if(GUILayout.Button("Revert",GUILayout.Width(100))){
 				ProxyEditor.RegisterSceneUndo(this,"Revert Selected Prefabs");
 				foreach(GameObject current in Selection.gameObjects){
-					PrefabUtility.RevertPrefabInstance(current);
+					ProxyEditor.ReconnectToLastPrefab(current);
 				}
 			}
 			if(GUILayout.Button("Apply",GUILayout.Width(100))){
 				ProxyEditor.RegisterSceneUndo(this,"Apply Selected Prefabs");
 				foreach(GameObject current in Selection.gameObjects){
-					GameObject root = PrefabUtility.FindPrefabRoot(current);
-					#if UNITY_2018_2_OR_NEWER
-					PrefabUtility.ReplacePrefab(root,PrefabUtility.GetCorrespondingObjectFromSource(root),ReplacePrefabOptions.ConnectToPrefab);
-					#else
-					PrefabUtility.ReplacePrefab(root,PrefabUtility.GetPrefabParent(root),ReplacePrefabOptions.ConnectToPrefab);
-					#endif
+					GameObject root = ProxyEditor.GetPrefabRoot(current);
+					ProxyEditor.ApplyPrefab(root,ProxyEditor.GetPrefab(root));
 				}
 			}
 			if(GUILayout.Button("Detach",GUILayout.Width(100))){
 				ProxyEditor.RegisterSceneUndo(this,"Apply Selected Prefabs");
 				foreach(GameObject current in Selection.gameObjects){
-					PrefabUtility.DisconnectPrefabInstance(current);
+					ProxyEditor.DisconnectPrefabInstance(current);
 				}
 			}
 			GUILayout.EndHorizontal();

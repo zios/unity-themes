@@ -42,7 +42,7 @@ namespace Zios.Unity.Extensions{
 		//====================
 		// Interface
 		//====================
-		public static GameObject Remove(this Component current){return current.Destroy();}
+		public static GameObject Remove(this Component current){return Destroy(current);}
 		public static GameObject Destroy(this Component current){
 			var source = current.gameObject;
 			if(Application.isPlaying){Component.Destroy(current);}

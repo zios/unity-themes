@@ -1,4 +1,5 @@
 #if UNITY_5_4_OR_NEWER
+#pragma warning disable 618
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -399,4 +400,5 @@ namespace Zios.Unity.Networker{
 		}
 	}
 }
+#pragma warning restore 618
 #endif

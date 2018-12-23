@@ -234,7 +234,7 @@ namespace Zios.Unity.Editor.Inspectors.GUISkin{
 		}
 		public void DrawSplit(){
 			if(this.inputMode != 1){return;}
-			this.DrawInputMode("Split | By | Terms"," | ","•");
+			this.DrawInputMode("Split | By | Terms"," | ","â€¢");
 			if(EditorUI.lastChanged){
 				var original = this.inputTerms.Copy();
 				GUIStyle[] styles = null;

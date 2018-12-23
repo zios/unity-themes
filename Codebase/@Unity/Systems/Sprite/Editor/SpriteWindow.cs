@@ -20,6 +20,7 @@ namespace Zios.Unity.Editor.SpriteManager{
 	using Zios.Unity.Shortcuts;
 	using Zios.Unity.SpriteManager;
 	using Zios.Unity.Editor.Extensions;
+	using PrefabType = Zios.Unity.ProxyEditor.ProxyEditor.PrefabType;
 	public class SpriteAssets{
 		public GUISkin UI;
 		public Mesh spriteMesh;
@@ -338,7 +339,7 @@ namespace Zios.Unity.Editor.SpriteManager{
 				}
 				if(!isBrush && CheckKey(KeyCode.L)){
 					ProxyEditor.RegisterSceneUndo(this,"Revert Selected to Prefab");
-					PrefabUtility.RevertPrefabInstance(active.gameObject);
+					ProxyEditor.ReconnectToLastPrefab(active.gameObject);
 				}
 				if(control && CheckKey(KeyCode.G)){
 					GameObject newObject = new GameObject();
@@ -413,7 +414,7 @@ namespace Zios.Unity.Editor.SpriteManager{
 			bool forceState = this.forceOverwrite;
 			this.forceOverwrite = false;
 			foreach(GameObject current in objects){
-				PrefabType type = PrefabUtility.GetPrefabType(current);
+				PrefabType type = ProxyEditor.GetPrefabType(current);
 				if(type == PrefabType.Prefab || type == PrefabType.ModelPrefab || current == null){continue;}
 				if(current.transform.localPosition == Vector3.zero){continue;}
 				bool isSprite = this.IsSprite(current);
@@ -465,11 +466,11 @@ namespace Zios.Unity.Editor.SpriteManager{
 		public void RevertSprites(){
 			GameObject[] objects = (GameObject[])Resources.FindObjectsOfTypeAll(typeof(GameObject));
 			foreach(GameObject instance in objects){
-				bool hasPrefab = PrefabUtility.GetPrefabObject(instance) != null;
-				PrefabType type = PrefabUtility.GetPrefabType(instance);
+				bool hasPrefab = ProxyEditor.GetPrefab(instance) != null;
+				PrefabType type = ProxyEditor.GetPrefabType(instance);
 				if(type == PrefabType.Prefab || type == PrefabType.ModelPrefab){continue;}
 				if(hasPrefab){
-					PrefabUtility.RevertPrefabInstance(instance);
+					ProxyEditor.ReconnectToLastPrefab(instance);
 				}
 			}
 		}
@@ -795,7 +796,7 @@ namespace Zios.Unity.Editor.SpriteManager{
 					if(prefab == null){
 						Log.Show("[SpriteWindow] Creating Prefab -- " + name);
 						this.ProgressReport(prefabName+".prefab");
-						prefab = PrefabUtility.CreateEmptyPrefab(prefabPath);
+						prefab = ProxyEditor.CreateEmptyPrefab(null, prefabPath);
 						spritePrefab = scalePrefab = new GameObject(name);
 						MeshFilter meshFilter = spritePrefab.AddComponent<MeshFilter>();
 						MeshRenderer meshRenderer = spritePrefab.AddComponent<MeshRenderer>();
@@ -821,7 +822,7 @@ namespace Zios.Unity.Editor.SpriteManager{
 						adjustScale = true;
 					}
 					else{
-						spritePrefab = scalePrefab = (GameObject)PrefabUtility.InstantiatePrefab(prefab);
+						spritePrefab = scalePrefab = (GameObject)ProxyEditor.InstantiatePrefab(prefab);
 						Vector3 localScale = spritePrefab.transform.localScale;
 						this.ProgressReport(prefabName+".prefab");
 						if(localScale == Vector3.one){
@@ -841,7 +842,7 @@ namespace Zios.Unity.Editor.SpriteManager{
 						if(this.scaleMode == ScaleMode.Auto3D){currentScale.y *= 1.414f;}
 						scalePrefab.transform.localScale = currentScale;
 					}
-					PrefabUtility.ReplacePrefab(spritePrefab,prefab,ReplacePrefabOptions.ConnectToPrefab);
+					ProxyEditor.ReplacePrefab(spritePrefab,prefab,ProxyEditor.ReplacePrefabOptions.ConnectToPrefab);
 					DestroyImmediate(spritePrefab);
 					ProxyEditor.RefreshAssets();
 				}
@@ -923,7 +924,7 @@ namespace Zios.Unity.Editor.SpriteManager{
 			for(int index=0;index < all.Length;++index){
 				GameObject current = all[index];
 				if(current == null){continue;}
-				PrefabType type = PrefabUtility.GetPrefabType(current);
+				PrefabType type = ProxyEditor.GetPrefabType(current);
 				if(type == PrefabType.Prefab || type == PrefabType.ModelPrefab){continue;}
 				if(current.name.Contains(name)){
 					DestroyImmediate(current);
@@ -975,7 +976,7 @@ namespace Zios.Unity.Editor.SpriteManager{
 					if(this.brush == current){
 						DestroyImmediate(this.brush);
 						this.brushPrefab = this.spritePrefabs[spriteName];
-						this.brush = (GameObject)PrefabUtility.InstantiatePrefab(this.brushPrefab);
+						this.brush = (GameObject)ProxyEditor.InstantiatePrefab(this.brushPrefab);
 						this.brush.tag = "EditorOnly";
 						//this.brush.hideFlags = HideFlags.HideAndDontSave;
 						this.brush.name = "@Brush ["+sprite.fullName+"]";
@@ -989,7 +990,7 @@ namespace Zios.Unity.Editor.SpriteManager{
 						bool root = current.transform.parent == null;
 						bool dualSprite = sprite.fullName.Contains("@Bottom") || sprite.fullName.Contains("@Top");
 						bool fixablePath = root || current.transform.parent.name.Contains("SpriteGroup");
-						bool childOfPrefab = !root && PrefabUtility.GetPrefabObject(current.transform.parent) != null;
+						bool childOfPrefab = !root && ProxyEditor.GetPrefab(current.transform.parent) != null;
 						if(fixPath && fixablePath){
 							GameObject path = Locate.GetScenePath("Scene/SpriteGroup-"+cleanName);
 							if(!dualSprite){current.transform.parent = path.transform;}
@@ -1145,7 +1146,7 @@ namespace Zios.Unity.Editor.SpriteManager{
 					if(mousePressed){
 						string prefabName = this.selected.name.Replace("@Bottom","").Replace("@Top","");
 						GameObject path = Locate.GetScenePath("Scene/SpriteGroup-"+prefabName);
-						GameObject stamp = (GameObject)PrefabUtility.InstantiatePrefab(this.brushPrefab);
+						GameObject stamp = (GameObject)ProxyEditor.InstantiatePrefab(this.brushPrefab);
 						ProxyEditor.RegisterCreatedObjectUndo(stamp,"Stamp Brush");
 						Renderer renderer = stamp.GetComponentInChildren<Renderer>();
 						if(this.selected.animated && renderer != null){
@@ -1209,8 +1210,8 @@ namespace Zios.Unity.Editor.SpriteManager{
 						this.spriteBakes.Add(current,bake);
 					}
 				}
-				GameObject root = PrefabUtility.FindPrefabRoot(current);
-				PrefabType type = PrefabUtility.GetPrefabType(root);
+				GameObject root = ProxyEditor.GetPrefabRoot(current);
+				PrefabType type = ProxyEditor.GetPrefabType(root);
 				if(type == PrefabType.PrefabInstance || type == PrefabType.ModelPrefabInstance){
 					handled.Add(current.name);
 				}
@@ -1254,8 +1255,8 @@ namespace Zios.Unity.Editor.SpriteManager{
 				current.GetComponent<Renderer>().sharedMaterial = spriteMaterial;
 				filter.sharedMesh = this.assets.spriteMesh;
 			}
-			GameObject root = PrefabUtility.FindPrefabRoot(current);
-			PrefabType type = PrefabUtility.GetPrefabType(root);
+			GameObject root = ProxyEditor.GetPrefabRoot(current);
+			PrefabType type = ProxyEditor.GetPrefabType(root);
 			if(type == PrefabType.PrefabInstance || type == PrefabType.ModelPrefabInstance){
 				ProxyEditor.ApplyPrefab(root);
 			}

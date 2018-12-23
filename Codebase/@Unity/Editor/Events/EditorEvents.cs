@@ -43,7 +43,7 @@ namespace Zios.Unity.Editor.Events{
 			UnityUndo.willFlushUndoRecord += ()=>Events.Call("On Undo Flushing");
 			UnityUndo.undoRedoPerformed += ()=>Events.Call("On Undo");
 			UnityUndo.undoRedoPerformed += ()=>Events.Call("On Redo");
-			PrefabUtility.prefabInstanceUpdated += (target)=>Events.Call("On Prefab Changed",target);
+			ProxyEditor.prefabInstanceUpdated += (target)=>Events.Call("On Prefab Changed",target);
 			ProxyEditor.ProjectChanged(()=>Events.Call("On Project Changed"));
 			EditorApplication.playModeStateChanged += (PlayModeStateChange state)=>{
 				Events.Call("On Mode Changed");
