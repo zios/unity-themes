@@ -1,0 +1,137 @@
+using System;
+using UnityEngine;
+<<<<<<< HEAD
+namespace Zios.Events{
+	using Zios.Extensions;
+	using Zios.Extensions.Convert;
+	using Zios.Shortcuts;
+	using Zios.Unity.ProxyEditor;
+	using Zios.Unity.Log;
+	using Zios.Unity.Shortcuts;
+	using Zios.Unity.Time;
+	using UnityCall = Zios.Unity.Call.Call;
+=======
+namespace Zios.Event{
+>>>>>>> 711216bcc28d9af72177f685e736e1fb66a9208b
+	[Serializable]
+	public class EventListener{
+		public object target;
+		public object method;
+		public string name;
+		public int occurrences;
+		public bool paused;
+		public bool permanent;
+		public bool unique;
+		public bool isStatic;
+		public float cooldown;
+		private float resting;
+		private bool warned;
+		private bool delayed;
+		public bool IsValid(){
+			var method = this.method.As<Delegate>();
+			bool nullTarget = this.target.IsNull() || (!this.isStatic && method.Target.IsNull());
+			if(nullTarget && !this.warned && Events.debug.Has("Call")){
+<<<<<<< HEAD
+				Log.Warning("[Events] Null call attempted -- " + this.name + " -- " + this.target + " -- " + Events.GetMethodName(method));
+=======
+				Debug.LogWarning("[Events] Null call attempted -- " + this.name + " -- " + this.target + " -- " + Events.GetMethodName(method));
+>>>>>>> 711216bcc28d9af72177f685e736e1fb66a9208b
+				this.warned = true;
+			}
+			return !nullTarget;
+		}
+<<<<<<< HEAD
+		public bool IsResting(){return Time.Get() < this.resting;}
+		public void Rest(float seconds=1){this.resting = Time.Get()+seconds;}
+=======
+		public bool IsResting(){return Time.realtimeSinceStartup < this.resting;}
+		public void Rest(float seconds=1){this.resting = Time.realtimeSinceStartup+seconds;}
+>>>>>>> 711216bcc28d9af72177f685e736e1fb66a9208b
+		public EventListener SetCooldown(float seconds=1){this.cooldown = seconds;return this;}
+		public EventListener SetPaused(bool state=true){this.paused = state;return this;}
+		public EventListener SetPermanent(bool state=true){this.permanent = state;return this;}
+		public EventListener SetUnique(bool state=true){
+			if(state){Events.unique.AddNew(this.target)[this.name] = this;}
+			this.unique = state;
+			return this;
+		}
+		public void Remove(){
+			if(Events.cache.ContainsKey(this.target) && Events.cache[this.target].ContainsKey(this.name)){
+				Events.cache[this.target][this.name].Remove(this.method);
+			}
+			if(Events.cache.AddNew(Events.all).ContainsKey(this.name)){
+				Events.cache[Events.all][this.name].Remove(this.method);
+			}
+			Events.listeners.Remove(this);
+			this.paused = true;
+		}
+		public void Call(bool debugDeep,bool debugTime,object[] values){
+<<<<<<< HEAD
+			if(ProxyEditor.IsPaused() || this.paused || !this.IsValid()){return;}
+			if(this.IsResting()){
+				if(!this.delayed){
+					float remaining = this.resting-Time.Get();
+					UnityCall.Delay(this.method,()=>this.Call(debugDeep,debugTime,values),remaining);
+=======
+			if(Utility.IsPaused() || this.paused || !this.IsValid()){return;}
+			if(this.IsResting()){
+				if(!this.delayed){
+					float remaining = this.resting-Time.realtimeSinceStartup;
+					Utility.DelayCall(this.method,()=>this.Call(debugDeep,debugTime,values),remaining);
+>>>>>>> 711216bcc28d9af72177f685e736e1fb66a9208b
+					this.delayed = true;
+				}
+				return;
+			}
+			this.delayed = false;
+			Events.stack.Add(this);
+			Events.AddHistory(this.name);
+<<<<<<< HEAD
+			float duration = Time.Get();
+=======
+			float duration = Time.realtimeSinceStartup;
+>>>>>>> 711216bcc28d9af72177f685e736e1fb66a9208b
+			if(this.cooldown > 0){this.Rest(this.cooldown);}
+			if(this.occurrences > 0){this.occurrences -= 1;}
+			if(this.occurrences == 0){this.Remove();}
+			if(values.Length < 1 || this.method is Method){
+				((Method)this.method)();
+			}
+			else{
+				object value = values[0];
+<<<<<<< HEAD
+				if(this.method is MethodObjects){((MethodObjects)this.method)(values);}
+=======
+				if(this.method is MethodFull){((MethodFull)this.method)(values);}
+>>>>>>> 711216bcc28d9af72177f685e736e1fb66a9208b
+				else if(value is object && this.method is MethodObject){((MethodObject)this.method)((object)value);}
+				else if(value is int && this.method is MethodInt){((MethodInt)this.method)((int)value);}
+				else if(value is float && this.method is MethodFloat){((MethodFloat)this.method)((float)value);}
+				else if(value is string && this.method is MethodString){((MethodString)this.method)((string)value);}
+				else if(value is bool && this.method is MethodBool){((MethodBool)this.method)((bool)value);}
+				else if(value is Vector2 && this.method is MethodVector2){((MethodVector2)this.method)((Vector2)value);}
+				else if(value is Vector3 && this.method is MethodVector3){((MethodVector3)this.method)((Vector3)value);}
+			}
+			if(debugDeep){
+				string message = "[Events] : " + name + " -- " + Events.GetMethodName(this.method);
+				if(debugTime){
+<<<<<<< HEAD
+					duration = Time.Get() - duration;
+=======
+					duration = Time.realtimeSinceStartup - duration;
+>>>>>>> 711216bcc28d9af72177f685e736e1fb66a9208b
+					if(duration > 0.001f || Events.debug.Has("CallTimerZero")){
+						string time = duration.ToString("F10").TrimRight("0",".").Trim() + " seconds.";
+						message = message + " -- " + time;
+					}
+				}
+<<<<<<< HEAD
+				Log.Show(message);
+=======
+				Debug.Log(message);
+>>>>>>> 711216bcc28d9af72177f685e736e1fb66a9208b
+			}
+			Events.stack.Remove(this);
+		}
+	}
+}

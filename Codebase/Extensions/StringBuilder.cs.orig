@@ -1,0 +1,30 @@
+using System.Text;
+<<<<<<< HEAD
+namespace Zios.Extensions{
+=======
+namespace Zios{
+>>>>>>> 711216bcc28d9af72177f685e736e1fb66a9208b
+	public static class StringBuilderExtension{
+		public static void Clear(this StringBuilder current){
+			current.Length = 0;
+			current.Capacity = 0;
+		}
+<<<<<<< HEAD
+		public static StringBuilder Append(this StringBuilder current,params string[] values){
+			foreach(var value in values){
+				current.Append(value);
+			}
+			return current;
+		}
+		public static StringBuilder Prepend(this StringBuilder current,params string[] values){
+			var index = 0;
+			foreach(var value in values){
+				current.Insert(index,value);
+				index += value.Length;
+			}
+			return current;
+		}
+=======
+>>>>>>> 711216bcc28d9af72177f685e736e1fb66a9208b
+	}
+}
