@@ -66,7 +66,10 @@ namespace Zios.Extensions{
 		//============================
 		// Other
 		//============================
-		public static Type AsType(this object current){return current is Type ? (Type)current : current.GetType();}
+		public static Type AsType(this object current){
+            if (current == null) return typeof(Type);
+            return current is Type ? (Type)current : current.GetType();
+        }
 		public static Type Default<Type>(this Type current){return default(Type);}
 		public static byte[] CreateHash<T>(this T current) where T : class{
 			using(MemoryStream stream = new MemoryStream()){
