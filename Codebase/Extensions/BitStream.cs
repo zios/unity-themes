@@ -1,4 +1,4 @@
-#if ENABLE_MONO
+#if ENABLE_MONO && UNITY_5
 using System;
 using UnityEngine;
 namespace Zios{

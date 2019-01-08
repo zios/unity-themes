@@ -6,7 +6,7 @@ using UnityObject = UnityEngine.Object;
 using UnityEvent= UnityEngine.Event;
 namespace Zios.Interface{
 	using UnityEditor;
-	using Event;
+	using SystemAttributes;
 	public enum HoverResponse{None=1,Slow,Moderate,Instant};
 	[InitializeOnLoad][NotSerialized]
 	public partial class Theme{

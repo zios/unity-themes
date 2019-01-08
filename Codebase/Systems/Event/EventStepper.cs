@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace Zios.Event{
 	using Interface;
+    using Shortcuts;
+    using Extensions;
 	[Serializable]
 	public class EventStepper{
 		public static List<EventStepper> instances = new List<EventStepper>();
