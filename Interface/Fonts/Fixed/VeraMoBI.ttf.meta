@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 21ba756ab6e6dfe49a373e84327fb6f9
+timeCreated: 1457272599
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Bitstream Vera Sans Mono
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 0ddcbc069f482c64f940f3245f67af19, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,7 +1,0 @@
-CustomizablePalette = True
-CustomizableFontset = True
-CustomizableIconset = True
-Palette = Muted
-Fontset = Liberation
-Iconset = Simplicity
-Skinset = Simplicity

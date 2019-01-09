@@ -1,0 +1,42 @@
+[Main]
+Font = SFPixelate
+SizeOffset = -2
+OffsetX = 0
+OffsetY = 0
+
+[Border]
+Font = SFPixelate-BoldOblique
+SizeOffset = -3
+OffsetX = 0
+OffsetY = 1
+
+[Button]
+Font = SFPixelate-Bold
+SizeOffset = -3
+OffsetX = 0
+OffsetY = 0
+
+[Highlight]
+Font = SFPixelate-Bold
+SizeOffset = -3
+OffsetX = 0
+OffsetY = 1
+
+[Search]
+Font = SFPixelate-Oblique
+SizeOffset = -3
+OffsetX = 0
+OffsetY = 1
+
+[Code]
+Font = PixelOperatorMono
+SizeOffset = 4
+OffsetX = 0
+OffsetY = 0
+
+[Header]
+Font = SFPixelate-Bold
+SizeOffset = -3
+OffsetX = 0
+OffsetY = 0
+

@@ -1,0 +1,42 @@
+[Main]
+Font = Ubuntu-Regular
+SizeOffset = 1
+OffsetX = 0
+OffsetY = -1
+
+[Border]
+Font = Ubuntu-BoldItalic
+SizeOffset = -1
+OffsetX = 0
+OffsetY = 0
+
+[Button]
+Font = Ubuntu-Bold
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
+[Highlight]
+Font = Ubuntu-BoldItalic
+SizeOffset = -1
+OffsetX = 0
+OffsetY = 0
+
+[Search]
+Font = Ubuntu-Italic
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
+[Code]
+Font = AurulentSansMono
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
+[Header]
+Font = Ubuntu-Bold
+SizeOffset = 0
+OffsetX = 0
+OffsetY = -2
+

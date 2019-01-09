@@ -1,0 +1,27 @@
+fileFormatVersion: 2
+guid: 065b5ba1159d10843ad00982a978a321
+timeCreated: 1458145696
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Stilu
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: ba99f8e0b2892f74184d54ef017fdf07, type: 3}
+  - {fileID: 12800000, guid: eebe37121dfb11146b360c68077db589, type: 3}
+  - {fileID: 12800000, guid: 31fe1b22b07cb9d498d790e576c57644, type: 3}
+  - {fileID: 12800000, guid: f1a99e636a152a744865771922db1a42, type: 3}
+  - {fileID: 12800000, guid: a699aad37b6b622468908db62dbc647b, type: 3}
+  - {fileID: 12800000, guid: 84397d94611be38498eed219faba7872, type: 3}
+  - {fileID: 12800000, guid: 20d1625feca70b549bc29cc4f304d00e, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

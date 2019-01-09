@@ -1,0 +1,42 @@
+[Main]
+Font = Comfortaa-Bold
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
+[Border]
+Font = Comfortaa-Bold
+SizeOffset = -1
+OffsetX = 0
+OffsetY = 0
+
+[Button]
+Font = Comfortaa-Bold
+SizeOffset = 0
+OffsetX = 0
+OffsetY = -1
+
+[Highlight]
+Font = Comfortaa-Bold
+SizeOffset = -1
+OffsetX = 0
+OffsetY = 1
+
+[Search]
+Font = Comfortaa-Regular
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
+[Code]
+Font = AurulentSansMono
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
+[Header]
+Font = Comfortaa-Bold
+SizeOffset = -1
+OffsetX = 0
+OffsetY = -1
+

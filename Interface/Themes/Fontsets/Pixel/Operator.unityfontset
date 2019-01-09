@@ -1,0 +1,42 @@
+[Main]
+Font = PixelOperator
+SizeOffset = 4
+OffsetX = 0
+OffsetY = -1
+
+[Border]
+Font = PixelOperatorSC
+SizeOffset = 3
+OffsetX = 0
+OffsetY = -1
+
+[Button]
+Font = PixelOperatorSC
+SizeOffset = 3
+OffsetX = 0
+OffsetY = -1
+
+[Highlight]
+Font = PixelOperatorSC
+SizeOffset = 3
+OffsetX = 0
+OffsetY = -1
+
+[Search]
+Font = PixelOperator
+SizeOffset = 3
+OffsetX = 0
+OffsetY = -1
+
+[Code]
+Font = PixelOperatorMono
+SizeOffset = 4
+OffsetX = 0
+OffsetY = 0
+
+[Header]
+Font = PixelOperatorSC-Bold
+SizeOffset = 3
+OffsetX = 0
+OffsetY = -2
+

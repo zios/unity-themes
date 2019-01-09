@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: c6dd6b6f00227624d86f5389f9d91e78
+timeCreated: 1458145697
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Anke
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 334ce4a33cc60cc49867d20f02923f66, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

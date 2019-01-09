@@ -1,0 +1,41 @@
+[Main]
+Font = Iceberg-Regular
+SizeOffset = 2
+OffsetX = 0
+OffsetY = -1
+
+[Border]
+Font = Iceland-Regular
+SizeOffset = 3
+OffsetX = 0
+OffsetY = 0
+
+[Button]
+Font = Iceland-Regular
+SizeOffset = 4
+OffsetX = 0
+OffsetY = -1
+
+[Highlight]
+Font = Iceland-Regular
+SizeOffset = 3
+OffsetX = 0
+OffsetY = 0
+
+[Search]
+Font = Iceland-Regular
+SizeOffset = 2
+OffsetX = 0
+OffsetY = 0
+
+[Code]
+Font = SourceCodePro-Semibold
+SizeOffset = 2
+OffsetX = 0
+OffsetY = 0
+
+[Header]
+Font = Iceland-Regular
+SizeOffset = 4
+OffsetX = 0
+OffsetY = -1

@@ -1,0 +1,42 @@
+[Main]
+Font = Lato-Regular
+SizeOffset = 1
+OffsetX = 0
+OffsetY = -1
+
+[Border]
+Font = Lato-Regular
+SizeOffset = 0
+OffsetX = 0
+OffsetY = -1
+
+[Button]
+Font = Lato-Regular
+SizeOffset = 0
+OffsetX = 0
+OffsetY = -1
+
+[Highlight]
+Font = Lato-Regular
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
+[Search]
+Font = Lato-Italic
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
+[Code]
+Font = AurulentSansMono
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
+[Header]
+Font = Lato-Bold
+SizeOffset = 0
+OffsetX = 0
+OffsetY = -1
+

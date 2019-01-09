@@ -1,0 +1,42 @@
+[Main]
+Font = Orkney-Medium
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
+[Border]
+Font = Orkney-Medium
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
+[Button]
+Font = Orkney-Medium
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
+[Highlight]
+Font = Orkney-Medium
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
+[Search]
+Font = Orkney-Medium
+SizeOffset = -1
+OffsetX = 0
+OffsetY = 1
+
+[Code]
+Font = AurulentSansMono
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
+[Header]
+Font = Orkney-Bold
+SizeOffset = -1
+OffsetX = 0
+OffsetY = 0
+

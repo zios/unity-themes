@@ -1,0 +1,41 @@
+[Main]
+Font = GrecoRomanLubedWrestling
+SizeOffset = 1
+OffsetX = 0
+OffsetY = 1
+
+[Border]
+Font = GrecoRomanLubedWrestling
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 1
+
+[Button]
+Font = GrecoRomanLubedWrestling
+SizeOffset = 1
+OffsetX = 0
+OffsetY = 0
+
+[Highlight]
+Font = GrecoRomanLubedWrestling
+SizeOffset = 1
+OffsetX = 0
+OffsetY = 1
+
+[Search]
+Font = GrecoRomanLubedWrestling
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
+[Code]
+Font = SpaceMono-Bold
+SizeOffset = 2
+OffsetX = 0
+OffsetY = 0
+
+[Header]
+Font = GrecoRomanLubedWrestling
+SizeOffset = 1
+OffsetX = 0
+OffsetY = 0

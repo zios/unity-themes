@@ -1,0 +1,42 @@
+[Main]
+Font = Lucida Grande
+SizeOffset = -1
+OffsetX = 0
+OffsetY = -1
+
+[Border]
+Font = Lucida Grande Big
+SizeOffset = -2
+OffsetX = 0
+OffsetY = 0
+
+[Button]
+Font = Lucida Grande
+SizeOffset = -1
+OffsetX = 0
+OffsetY = 0
+
+[Highlight]
+Font = Lucida Grande
+SizeOffset = -4
+OffsetX = 0
+OffsetY = 1
+
+[Search]
+Font = Lucida Grande
+SizeOffset = -4
+OffsetX = 0
+OffsetY = 0
+
+[Code]
+Font = Lucida Grande small
+SizeOffset = -2
+OffsetX = 0
+OffsetY = 0
+
+[Header]
+Font = Lucida Grande Bold
+SizeOffset = -2
+OffsetX = -2
+OffsetY = -1
+

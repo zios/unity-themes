@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 2a0ff60c3b252d44897cfb4730f3eafa
+timeCreated: 1454342867
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Muro
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: fc40ab7a9b3cdb544a967559d41f33b4, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

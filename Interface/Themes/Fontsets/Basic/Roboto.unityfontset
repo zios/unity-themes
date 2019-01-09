@@ -1,0 +1,42 @@
+[Main]
+Font = Roboto-Regular
+SizeOffset = 1
+OffsetX = 0
+OffsetY = 0
+
+[Border]
+Font = Roboto-Bold
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
+[Button]
+Font = Roboto-Black
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
+[Highlight]
+Font = Roboto-Italic
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 1
+
+[Search]
+Font = Roboto-BoldItalic
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
+[Code]
+Font = AurulentSansMono
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
+[Header]
+Font = Roboto-Black
+SizeOffset = 0
+OffsetX = 0
+OffsetY = -1
+

@@ -1,0 +1,41 @@
+[Main]
+Font = Righteous-Regular
+SizeOffset = 0
+OffsetX = 0
+OffsetY = -1
+
+[Border]
+Font = Righteous-Regular
+SizeOffset = 0
+OffsetX = 0
+OffsetY = -1
+
+[Button]
+Font = Righteous-Regular
+SizeOffset = 0
+OffsetX = 0
+OffsetY = -1
+
+[Highlight]
+Font = Righteous-Regular
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
+[Search]
+Font = Righteous-Regular
+SizeOffset = -1
+OffsetX = 0
+OffsetY = 1
+
+[Code]
+Font = AurulentSansMono
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
+[Header]
+Font = Righteous-Regular
+SizeOffset = 0
+OffsetX = 0
+OffsetY = -1

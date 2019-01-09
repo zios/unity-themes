@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 4451b4d53f3640e44a3a53c54a5e0ce4
+timeCreated: 1457271195
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - monofur
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: b4b25467281a8b94fa93f29154ad4ddc, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

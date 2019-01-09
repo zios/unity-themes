@@ -1,0 +1,42 @@
+[Main]
+Font = Paprika-Regular
+SizeOffset = -2
+OffsetX = 0
+OffsetY = 0
+
+[Border]
+Font = JosefinSans-SemiBoldItalic
+SizeOffset = 1
+OffsetX = 0
+OffsetY = 1
+
+[Button]
+Font = JosefinSans-SemiBoldItalic
+SizeOffset = 1
+OffsetX = 0
+OffsetY = 0
+
+[Highlight]
+Font = JosefinSans-SemiBoldItalic
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 2
+
+[Search]
+Font = Paprika-Regular
+SizeOffset = -3
+OffsetX = 0
+OffsetY = 0
+
+[Code]
+Font = AurulentSansMono
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
+[Header]
+Font = JosefinSans-BoldItalic
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+

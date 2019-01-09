@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!200 &20000000
+ShaderVariantCollection:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Empty
+  m_Shaders:
+    data:
+      first: {fileID: 4800000, guid: 3bdc85f57f7d06449a2d32ad7e71712b, type: 3}
+      second:
+        variants:
+        - keywords: DIRECTIONAL DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF LIGHTMAP_OFF SHADOWS_SCREEN
+          passType: 4
+        - keywords: SHADOWS_DEPTH
+          passType: 8
+    data:
+      first: {fileID: 4800000, guid: c70c80db13a681544860697dfa3f8f3e, type: 3}
+      second:
+        variants:
+        - keywords: SHADOWS_DEPTH
+          passType: 8
+    data:
+      first: {fileID: 4800000, guid: faeb64ddd8576db4d8440b8e59dffbc9, type: 3}
+      second:
+        variants:
+        - keywords: DIRECTIONAL DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF LIGHTMAP_OFF SHADOWS_SCREEN
+          passType: 4
+        - keywords: SHADOWS_DEPTH
+          passType: 8
+    data:
+      first: {fileID: 4800000, guid: 895a19fe9600b474286c6858a811c4bf, type: 3}
+      second:
+        variants:
+        - keywords: DIRECTIONAL DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF LIGHTMAP_OFF SHADOWS_SCREEN
+          passType: 4
+        - keywords: SHADOWS_DEPTH
+          passType: 8
+    data:
+      first: {fileID: 106, guid: 0000000000000000f000000000000000, type: 0}
+      second:
+        variants:
+        - keywords: UNITY_COLORSPACE_GAMMA
+          passType: 0
+    data:
+      first: {fileID: 10770, guid: 0000000000000000f000000000000000, type: 0}
+      second:
+        variants:
+        - keywords: 
+          passType: 0
+    data:
+      first: {fileID: 10782, guid: 0000000000000000f000000000000000, type: 0}
+      second:
+        variants:
+        - keywords: 
+          passType: 0

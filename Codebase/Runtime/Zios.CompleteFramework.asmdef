@@ -1,0 +1,9 @@
+{
+    "name": "Zios.CompleteFramework",
+    "references": [
+        "Zios.CompleteFramework.Interface"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": []
+}

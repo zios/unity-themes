@@ -1,0 +1,41 @@
+[Main]
+Font = Delius-Regular
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
+[Border]
+Font = DeliusSwashCaps-Regular
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
+[Button]
+Font = DeliusSwashCaps-Regular
+SizeOffset = 1
+OffsetX = 0
+OffsetY = -1
+
+[Highlight]
+Font = DeliusSwashCaps-Regular
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
+[Search]
+Font = Delius-Regular
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 1
+
+[Code]
+Font = AurulentSansMono
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
+[Header]
+Font = DeliusSwashCaps-Regular
+SizeOffset = 1
+OffsetX = 0
+OffsetY = -1

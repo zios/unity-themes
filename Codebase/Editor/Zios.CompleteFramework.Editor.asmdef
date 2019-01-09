@@ -1,0 +1,11 @@
+{
+    "name": "Zios.CompleteFramework.Editor",
+    "references": [
+        "Zios.CompleteFramework"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [
+		"Editor"
+    ],
+    "excludePlatforms": []
+}

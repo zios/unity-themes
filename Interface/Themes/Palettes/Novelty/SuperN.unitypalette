@@ -1,0 +1,40 @@
+[Textured]
+(Main)
+	Main                : #C0BFC0  
+	MainActive          : #805AB6  
+	MainButton          : #9795A0E7
+	MainIcons           : #55338D  
+	Border              : #CDCCD1  
+	BorderActive        : #805AB6  
+	BorderButton        : #CDCCD1   : Border   
+	BorderIcons         : #805AB6  
+	Highlight           : #805AB6  
+	HighlightActive     : #727276  
+	HighlightButton     : #ACA8E1  
+	HighlightIcons      : #ACA8E1  
+	Scrollbar           : #ACA9AD5B
+	ScrollbarThumb      : #5B5A5E  
+	Header              : #805AB665
+
+[NonTextured]
+(Text)
+	Text                : #67686C  
+	TextActive          : #38383B  
+	TextButton          : #FFFFFF  
+	TextBorder          : #805AB6  
+	TextBorderActive    : #FFFFFF  
+	TextBorderButton    : #805AB6  
+	TextHighlight       : #FFFFFF  
+	TextHighlightActive : #FFFFFF  
+	TextHighlightButton : #7B5EA5  
+	TextWarning         : #946223  
+	TextError           : #AE4747  
+	TextHeader          : #55338D  
+(Other)
+	Frame               : #CDCCD1   : Border   
+	Window              : #C0BFC0   : Main     
+	Details             : #CDCCD1   : Border   
+	Cursor              : #805AB6   : Highlight
+	Selection           : #402D5B   : Highlight : 0.5
+	Curve               : #C087FF   : Highlight : 1.5
+	CurveBackground     : #666668   : Border    : 0.5

@@ -1,0 +1,27 @@
+fileFormatVersion: 2
+guid: 653865b59b17094428240e5c468a976c
+timeCreated: 1458145696
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Lato
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 19306fc18c7d98e4f888f8ce158567b4, type: 3}
+  - {fileID: 12800000, guid: 375e4a252d871f048bb762fddb75519e, type: 3}
+  - {fileID: 12800000, guid: 0f79fba7e6b402644862db0dec7ea741, type: 3}
+  - {fileID: 12800000, guid: 377ddf48fa8ed184cb15d8e972661934, type: 3}
+  - {fileID: 12800000, guid: 386eec2b652bff14fa307869c5797aed, type: 3}
+  - {fileID: 12800000, guid: 30a299ac5d7eed64a97cb7bad96df6ac, type: 3}
+  - {fileID: 12800000, guid: 43201bdee281f1245ab11831a24369bd, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

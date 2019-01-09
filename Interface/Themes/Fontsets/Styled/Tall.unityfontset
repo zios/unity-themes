@@ -1,0 +1,42 @@
+[Main]
+Font = Homenaje-Regular
+SizeOffset = 3
+OffsetX = 0
+OffsetY = 0
+
+[Border]
+Font = Oswald-Regular
+SizeOffset = -1
+OffsetX = 0
+OffsetY = 0
+
+[Button]
+Font = Oswald-Regular
+SizeOffset = 0
+OffsetX = 0
+OffsetY = -1
+
+[Highlight]
+Font = Oswald-Regular
+SizeOffset = -1
+OffsetX = 0
+OffsetY = 0
+
+[Search]
+Font = Homenaje-Regular
+SizeOffset = 2
+OffsetX = 0
+OffsetY = 1
+
+[Code]
+Font = AurulentSansMono
+SizeOffset = 0
+OffsetX = 0
+OffsetY = 0
+
+[Header]
+Font = Oswald-Bold
+SizeOffset = 0
+OffsetX = 0
+OffsetY = -2
+

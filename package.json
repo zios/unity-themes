@@ -1,0 +1,7 @@
+{
+  "description": "Complete Zios Framework.", 
+  "displayName": "Zios Framework", 
+  "name": "com.zios.completeframework",
+  "unity": "2018.2", 
+  "version": "1.0.0"
+}

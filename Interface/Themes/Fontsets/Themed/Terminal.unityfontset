@@ -1,0 +1,41 @@
+[Main]
+Font = SquaresBoldFree
+SizeOffset = -2
+OffsetX = 0
+OffsetY = -1
+
+[Border]
+Font = SquaresBoldFree
+SizeOffset = -3
+OffsetX = 0
+OffsetY = 0
+
+[Button]
+Font = SquaresBoldFree
+SizeOffset = -3
+OffsetX = 0
+OffsetY = -1
+
+[Highlight]
+Font = SquaresBoldFree
+SizeOffset = -3
+OffsetX = 0
+OffsetY = 0
+
+[Search]
+Font = SquaresBoldFree
+SizeOffset = -4
+OffsetX = 0
+OffsetY = 1
+
+[Code]
+Font = AurulentSansMono
+SizeOffset = 1
+OffsetX = 0
+OffsetY = 0
+
+[Header]
+Font = SquaresBoldFree
+SizeOffset = -3
+OffsetX = 0
+OffsetY = -1
