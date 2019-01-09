@@ -36,7 +36,7 @@ namespace Zios.File{
 		public static Hierarchy<Type,string,string,UnityObject> namedAssets = new Hierarchy<Type,string,string,UnityObject>();
 		static File(){
 			var needsPersistent = !Proxy.IsEditor() && Application.platform.MatchesAny("IPhonePlayer","MetroPlayerX86","MetroPlayerX64","MetroPlayerARM");
-			File.dataPath = needsPersistent ? Application.persistentDataPath : Application.dataPath;
+			File.dataPath = (needsPersistent ? Application.persistentDataPath : Application.dataPath);
 			File.Refresh();
 		}
 		public static void Monitor(){
